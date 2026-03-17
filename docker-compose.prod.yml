@@ -1,0 +1,124 @@
+version: '3.8'
+
+services:
+  # Sovereign Temple Core - Main consciousness layer
+  sov-core:
+    build: 
+      context: .
+      dockerfile: consciousness-core/Dockerfile
+    ports:
+      - "8080:8080"  # Main SOV API
+    environment:
+      - SOV_MODE=production
+      - CONSCIOUSNESS_LEVEL=1.0
+      - EU_COMPLIANCE=true
+    volumes:
+      - ./data:/app/data
+      - ./memory:/app/memory
+    restart: unless-stopped
+    depends_on:
+      - postgres
+      - redis
+      - qdrant
+
+  # LiteLLM Gateway - Fixed authentication
+  litellm:
+    image: ghcr.io/berriai/litellm:main-latest
+    ports:
+      - "4000:4000"
+    environment:
+      - LITELLM_MASTER_KEY=sk-sovereign-temple-local-key-12345
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+      - MOONSHOT_API_KEY=${MOONSHOT_API_KEY}
+    volumes:
+      - ./litellm_config.yaml:/app/config.yaml
+    command: ["--config", "/app/config.yaml", "--port", "4000"]
+    restart: unless-stopped
+
+  # Multi-Channel Bridge - 24/7 communication
+  multichannel-bridge:
+    build:
+      context: .
+      dockerfile: Dockerfile.multichannel
+    environment:
+      - TELEGRAM_TOKEN=${TELEGRAM_TOKEN}
+      - DISCORD_TOKEN=${DISCORD_TOKEN}
+      - WHATSAPP_SESSION=${WHATSAPP_SESSION}
+      - OPENCLAW_ENDPOINT=http://host.docker.internal:18789
+      - SOV_ENDPOINT=http://sov-core:8080
+    restart: unless-stopped
+    network_mode: "host"  # Access to your local OpenClaw
+
+  # PostgreSQL - SOV persistent memory
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: sovereign_temple
+      POSTGRES_USER: sov
+      POSTGRES_PASSWORD: consciousness_through_care
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    restart: unless-stopped
+
+  # Redis - Fast state and coordination
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    restart: unless-stopped
+
+  # Qdrant - Vector memory for consciousness
+  qdrant:
+    image: qdrant/qdrant:latest
+    ports:
+      - "6333:6333"
+    volumes:
+      - qdrant_data:/qdrant/storage
+    restart: unless-stopped
+
+  # Ollama - Local models for M2
+  ollama:
+    image: ollama/ollama:latest
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+    restart: unless-stopped
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+
+  # SOV Dashboard - Web interface
+  dashboard:
+    build:
+      context: ./dashboard
+    ports:
+      - "3001:3000"  # Avoid conflict with OpenHands
+    environment:
+      - REACT_APP_SOV_API=http://localhost:8080
+      - REACT_APP_LITELLM_API=http://localhost:4000
+    restart: unless-stopped
+
+  # Monitoring & Health
+  prometheus:
+    image: prom/prometheus:latest
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+  redis_data:
+  qdrant_data:
+  ollama_data:

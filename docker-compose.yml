@@ -1,0 +1,97 @@
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: meok-postgres
+    environment:
+      POSTGRES_USER: ${MEOK_DB_USER:-meok}
+      POSTGRES_PASSWORD: ${MEOK_DB_PASSWORD:-meok}
+      POSTGRES_DB: ${MEOK_DB_NAME:-meok}
+    ports:
+      - "${MEOK_DB_PORT:-5432}:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U meok -d meok"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - meok-network
+
+  weaviate:
+    image: semitechnologies/weaviate:1.24.0
+    container_name: meok-weaviate
+    ports:
+      - "${MEOK_WEAVIATE_PORT:-8080}:8080"
+    environment:
+      QUERY_DEFAULTS_LIMIT: 25
+      AUTHENTICATION_ANONYMOUS_ACCESS_ENABLED: 'true'
+      PERSISTENCE_DATA_PATH: '/var/lib/weaviate'
+      DEFAULT_VECTORIZER_MODULE: 'text2vec-openai'
+      ENABLE_MODULES: 'text2vec-openai'
+      OPENAI_APIKEY: ${OPENAI_API_KEY:-}
+      CLUSTER_HOSTNAME: 'meok-weaviate'
+    volumes:
+      - weaviate_data:/var/lib/weaviate
+    healthcheck:
+      test: ["CMD-SHELL", "wget -q --spider http://localhost:8080/v1/.well-known/ready || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - meok-network
+
+  neo4j:
+    image: neo4j:5.15-community
+    container_name: meok-neo4j
+    environment:
+      NEO4J_AUTH: ${MEOK_NEO4J_USER:-neo4j}/${MEOK_NEO4J_PASSWORD:-meok}
+      NEO4J_PLUGINS: '["apoc"]'
+    ports:
+      - "${MEOK_NEO4J_HTTP_PORT:-7474}:7474"
+      - "${MEOK_NEO4J_BOLT_PORT:-7687}:7687"
+    volumes:
+      - neo4j_data:/data
+    networks:
+      - meok-network
+
+  meok:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: meok-mcp
+    ports:
+      - "${MEOK_MCP_PORT:-3100}:3100"
+    environment:
+      - MEOK_DB_DSN=postgresql://${MEOK_DB_USER:-meok}:${MEOK_DB_PASSWORD:-meok}@postgres:5432/${MEOK_DB_NAME:-meok}
+      - MEOK_WEAVIATE_URL=http://weaviate:8080
+      - MEOK_NEO4J_URI=bolt://neo4j:7687
+      - MEOK_NEO4J_USER=${MEOK_NEO4J_USER:-neo4j}
+      - MEOK_NEO4J_PASSWORD=${MEOK_NEO4J_PASSWORD:-meok}
+      - MEOK_MCP_PORT=3100
+      - OPENAI_API_KEY=${OPENAI_API_KEY:-}
+      - KIMI_API_KEY=${KIMI_API_KEY:-}
+      - PYTHONPATH=/app
+    volumes:
+      - ./neural/models:/app/neural/models
+      - ./logs:/app/logs
+    depends_on:
+      postgres:
+        condition: service_healthy
+      weaviate:
+        condition: service_healthy
+      neo4j:
+        condition: service_started
+    networks:
+      - meok-network
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+  weaviate_data:
+  neo4j_data:
+
+networks:
+  meok-network:
+    driver: bridge
