@@ -1,0 +1,42 @@
+# Dependencies & build artifacts
+ui/node_modules/
+ui/.next/
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+
+# Git
+.git/
+.gitignore
+
+# Environment & secrets
+.env
+.env.*
+!.env.example
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Docker (keep deploy/serverless for serverless build)
+docker-compose*.yml
+
+# Deploy scripts (keep serverless config)
+deploy/prod/
+deploy/dev/
+
+# Docs
+*.md
+LICENSE
+
+# Tests
+tests/
+test_*.py
+
+# Logs & temp
+logs/
+*.log
+/tmp/

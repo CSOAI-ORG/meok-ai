@@ -18,32 +18,7 @@ from typing import Dict, Any, List, Optional
 import os
 import sys
 
-# Handle import whether run from project root or neural_core directory
-try:
-    from neural_core.base_model import BaseNeuralModel
-except ImportError:
-    try:
-        import base_model
-        BaseNeuralModel = base_model.BaseNeuralModel
-    except ImportError:
-        # Fallback: define minimal base
-        from abc import ABC, abstractmethod
-
-        class BaseNeuralModel(ABC):
-            def __init__(self, model_name, model_dir="models"):
-                self.model_name = model_name
-                self.model_dir = model_dir
-                self.model = None
-                self.is_trained = False
-                self.metrics = {}
-                os.makedirs(model_dir, exist_ok=True)
-
-            @abstractmethod
-            def extract_features(self, input_data): pass
-            @abstractmethod
-            def train_model(self, training_data=None): pass
-            @abstractmethod
-            def predict(self, input_data): pass
+from .base_model import BaseNeuralModel
 
 
 # Feature names for documentation and debugging

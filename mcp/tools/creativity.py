@@ -338,12 +338,26 @@ async def handle_creativity_tool(name: str, arguments: Dict[str, Any], state: Se
         if state.consciousness:
             meta_monitor = getattr(state.consciousness, 'meta_monitor', None)
             if meta_monitor:
-                obs = await meta_monitor.observe(
-                    state.consciousness.emotional_state,
-                    state.consciousness.reflection_cycle,
-                    state.consciousness.dream_state,
-                )
-                return obs
+                emotional_state = getattr(state.consciousness, 'emotional_state', None)
+                reflection = getattr(state.consciousness, 'reflection', None)
+                dream = getattr(state.consciousness, 'dream', None)
+                if emotional_state and reflection and dream:
+                    try:
+                        obs = await meta_monitor.observe(
+                            emotional_state,
+                            reflection,
+                            dream,
+                        )
+                        return obs
+                    except Exception as e:
+                        # Graceful fallback
+                        if meta_monitor.observations:
+                            return {"observations": meta_monitor.observations[-5:], "count": len(meta_monitor.observations)}
+                        return {"mode": "turiya_error", "message": str(e)}
+                # Return cached observations if available
+                if meta_monitor.observations:
+                    return {"observations": meta_monitor.observations[-5:], "count": len(meta_monitor.observations)}
+                return {"mode": "turiya_initializing", "message": "MetaMonitor active but no observations yet"}
             return {"mode": "turiya_not_initialized", "message": "MetaMonitor not yet active"}
         return {"error": "Consciousness not available"}
 

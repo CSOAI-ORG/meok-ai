@@ -191,7 +191,7 @@ class DreamEngine:
 
         # Store in RAG memory for semantic recall
         try:
-            from rag_memory import get_memory
+            from meok.memory.rag_memory import get_memory
             memory = get_memory()
             summary = f"Dream themes: {', '.join(dream.get('themes', []))}. " \
                       f"Patterns: {', '.join(dream.get('patterns_detected', []))}. " \

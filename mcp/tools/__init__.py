@@ -71,9 +71,12 @@ TOOL_HANDLERS = {
 }
 
 
-async def execute_tool(name: str, arguments: Dict[str, Any], state: ServiceState) -> Dict[str, Any]:
+async def execute_tool(name: str, arguments: Dict[str, Any], state: ServiceState, tenant_id: str = "default") -> Dict[str, Any]:
     """Execute an MCP tool by name, routing to the appropriate handler."""
     start_time = datetime.now()
+
+    # Inject tenant context for handlers that need it
+    arguments["_tenant_id"] = tenant_id
 
     try:
         handler = _TOOL_NAME_TO_HANDLER.get(name)

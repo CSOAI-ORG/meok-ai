@@ -136,6 +136,46 @@ CREATE INDEX IF NOT EXISTS idx_tasks_assigned ON agent_tasks(assigned_to);
 
 CREATE INDEX IF NOT EXISTS idx_chains_tenant ON temporal_chains(tenant_id);
 
+-- Users table (Phase 3: auth)
+CREATE TABLE IF NOT EXISTS users (
+    id TEXT PRIMARY KEY DEFAULT uuid_generate_v4()::text,
+    email TEXT UNIQUE NOT NULL,
+    password_hash TEXT NOT NULL,
+    tenant_id TEXT NOT NULL REFERENCES tenants(id),
+    created_at TIMESTAMPTZ DEFAULT NOW(),
+    is_active BOOLEAN DEFAULT true
+);
+
+-- API keys table (Phase 3: MCP auth via API key)
+CREATE TABLE IF NOT EXISTS api_keys (
+    id TEXT PRIMARY KEY DEFAULT uuid_generate_v4()::text,
+    user_id TEXT NOT NULL REFERENCES users(id),
+    tenant_id TEXT NOT NULL REFERENCES tenants(id),
+    key_hash TEXT NOT NULL,
+    key_prefix TEXT NOT NULL,
+    name TEXT DEFAULT 'default',
+    created_at TIMESTAMPTZ DEFAULT NOW(),
+    last_used_at TIMESTAMPTZ,
+    is_active BOOLEAN DEFAULT true
+);
+
+-- Refresh tokens table (Phase 3: JWT refresh flow)
+CREATE TABLE IF NOT EXISTS refresh_tokens (
+    id TEXT PRIMARY KEY DEFAULT uuid_generate_v4()::text,
+    user_id TEXT NOT NULL REFERENCES users(id),
+    token_hash TEXT NOT NULL,
+    expires_at TIMESTAMPTZ NOT NULL,
+    created_at TIMESTAMPTZ DEFAULT NOW(),
+    revoked BOOLEAN DEFAULT false
+);
+
+CREATE INDEX IF NOT EXISTS idx_users_email ON users(email);
+CREATE INDEX IF NOT EXISTS idx_users_tenant ON users(tenant_id);
+CREATE INDEX IF NOT EXISTS idx_api_keys_hash ON api_keys(key_hash);
+CREATE INDEX IF NOT EXISTS idx_api_keys_tenant ON api_keys(tenant_id);
+CREATE INDEX IF NOT EXISTS idx_refresh_tokens_hash ON refresh_tokens(token_hash);
+CREATE INDEX IF NOT EXISTS idx_refresh_tokens_user ON refresh_tokens(user_id);
+
 -- Insert default system agent
 INSERT INTO agents (id, tenant_id, name, description, capabilities, status, trust_level, created_at, last_seen, metadata)
 VALUES (

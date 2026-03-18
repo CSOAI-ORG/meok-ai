@@ -12,15 +12,15 @@ RUN apt-get update && apt-get install -y \
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy application code
-COPY . .
+# Copy application code into /app/meok/ so `from meok.X` works
+COPY . /app/meok/
 
 # Create necessary directories
-RUN mkdir -p neural/models logs
+RUN mkdir -p /app/meok/neural/models /app/logs
 
 EXPOSE 3100
 
 HEALTHCHECK --interval=30s --timeout=5s --retries=3 \
     CMD python -c "import urllib.request; urllib.request.urlopen('http://localhost:3100/health')" || exit 1
 
-CMD ["python", "-m", "mcp.server"]
+CMD ["python", "-m", "meok.mcp.server"]

@@ -20,12 +20,8 @@ import random
 from datetime import datetime
 from typing import Dict, List, Optional
 
-try:
-    from council_nodes.expertise_network import ExpertiseNetwork
-    from council_nodes.bridge_network import BridgeNetwork
-except ImportError:
-    from expertise_network import ExpertiseNetwork
-    from bridge_network import BridgeNetwork
+from meok.council.expertise_network import ExpertiseNetwork
+from meok.council.bridge_network import BridgeNetwork
 
 
 # 33 council node definitions with care specializations
@@ -129,6 +125,8 @@ class BFTCouncil:
     Care veto: enabled (care score < 0.4 = auto-reject from node).
     11 domains x 3 nodes per domain.
     """
+
+    DECISION_HISTORY_MAX = 1000
 
     def __init__(self, threshold: int = 22):
         self.nodes = COUNCIL_NODES
@@ -246,6 +244,7 @@ class BFTCouncil:
                 "care_veto_active": True
             }
             self.decision_history.append(result)
+            self.decision_history = self.decision_history[-self.DECISION_HISTORY_MAX:]
             return result
 
         # 2. Score the proposal
@@ -325,6 +324,7 @@ class BFTCouncil:
         }
 
         self.decision_history.append(result)
+        self.decision_history = self.decision_history[-self.DECISION_HISTORY_MAX:]
         return result
 
 

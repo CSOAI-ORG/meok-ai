@@ -21,7 +21,7 @@ MEMORY_TOOLS = [
                 "tags": {"type": "array", "items": {"type": "string"}},
                 "emotional_valence": {"type": "number"}
             },
-            "required": ["content", "source_agent"]
+            "required": ["content"]
         }
     },
     {
@@ -40,15 +40,15 @@ MEMORY_TOOLS = [
     },
     {
         "name": "get_temporal_chain",
-        "description": "Get temporal chain of related memories",
+        "description": "Get temporal chain of related memories. If no episode_id given, returns recent memories.",
         "inputSchema": {
             "type": "object",
             "properties": {
-                "episode_id": {"type": "string"},
+                "episode_id": {"type": "string", "description": "Starting episode ID (optional — omit to get recent chain)"},
                 "direction": {"type": "string", "enum": ["forward", "backward", "both"]},
-                "max_steps": {"type": "integer"}
-            },
-            "required": ["episode_id"]
+                "max_steps": {"type": "integer"},
+                "limit": {"type": "integer", "description": "Number of recent memories when no episode_id given"}
+            }
         }
     },
     {
@@ -77,7 +77,7 @@ async def handle_memory_tool(name: str, arguments: Dict[str, Any], state: Servic
             return {"error": "Memory store not available"}
         episode = await state.memory_store.record_episode(
             content=arguments["content"],
-            source_agent=arguments["source_agent"],
+            source_agent=arguments.get("source_agent", "user"),
             memory_type=arguments.get("memory_type", "interaction"),
             care_weight=arguments.get("care_weight", 0.5),
             tags=arguments.get("tags", []),
@@ -99,6 +99,11 @@ async def handle_memory_tool(name: str, arguments: Dict[str, Any], state: Servic
     elif name == "get_temporal_chain":
         if not state.memory_store:
             return {"error": "Memory store not available"}
+        if "episode_id" not in arguments:
+            # If no episode_id given, return recent memories as chain
+            limit = arguments.get("limit", arguments.get("max_steps", 10))
+            memories = await state.memory_store.list_all_memories(limit=limit)
+            return {"chain": memories, "count": len(memories)}
         chain = await state.memory_store.get_temporal_chain(
             episode_id=arguments["episode_id"],
             direction=arguments.get("direction", "forward"),

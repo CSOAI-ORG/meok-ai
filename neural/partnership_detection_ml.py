@@ -9,7 +9,7 @@ from sklearn.neural_network import MLPRegressor
 from sklearn.feature_extraction.text import TfidfVectorizer
 from typing import Dict, Any, List, Optional
 import re
-import base_model
+from . import base_model
 import pickle
 import os
 

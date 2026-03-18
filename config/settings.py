@@ -31,7 +31,7 @@ class DatabaseSettings(BaseSettings):
     model_config = SettingsConfigDict(env_prefix="MEOK_DATABASE__")
 
     postgres_dsn: str = Field(
-        default="postgresql://sovereign:sovereign@localhost:5432/sovereign_memory",
+        default="postgresql://meok:meok@localhost:5432/meok",
         description="PostgreSQL connection string",
     )
     weaviate_url: str = Field(
@@ -47,7 +47,7 @@ class DatabaseSettings(BaseSettings):
         description="Neo4j username",
     )
     neo4j_password: SecretStr = Field(
-        default="sovereign",
+        default="meok",
         description="Neo4j password",
     )
     redis_url: str = Field(
@@ -330,6 +330,10 @@ class AuthSettings(BaseSettings):
     """Authentication settings (Phase 2 — JWT-based API auth)."""
     model_config = SettingsConfigDict(env_prefix="MEOK_AUTH__")
 
+    required: bool = Field(
+        default=False,
+        description="Require authentication on all endpoints (set true in production)",
+    )
     jwt_secret: SecretStr = Field(
         default="meok-dev-secret-change-in-production",
         description="JWT signing secret (MUST override in production)",
@@ -386,6 +390,16 @@ class MeokSettings(BaseSettings):
     log_level: str = Field(
         default="INFO",
         description="Python logging level",
+    )
+
+    # Feature flags (dev vs prod separation)
+    multi_tenant: bool = Field(
+        default=False,
+        description="Enable multi-tenant mode (tenant isolation, per-user data)",
+    )
+    self_learning: bool = Field(
+        default=True,
+        description="Enable autonomous self-learning (heartbeat, research, creativity cycles)",
     )
 
     # Nested configuration groups

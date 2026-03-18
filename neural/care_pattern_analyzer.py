@@ -8,7 +8,7 @@ import numpy as np
 from sklearn.neural_network import MLPRegressor
 from typing import Dict, Any, List, Optional, Tuple
 from datetime import datetime, timedelta
-import base_model
+from . import base_model
 
 
 class CarePatternAnalyzer(base_model.BaseNeuralModel):

@@ -1,0 +1,68 @@
+# ═══════════════════════════════════════════════════════════
+# MEOK.ai — Vast.ai Serverless Image
+# PostgreSQL + MCP Server (lean, fast cold start)
+# For endpoint z0ltwqdk within $0.25/hr budget
+# Image: csoai/meok-sovereign:latest
+# ═══════════════════════════════════════════════════════════
+
+FROM python:3.11-slim AS base
+
+ENV DEBIAN_FRONTEND=noninteractive
+ENV PYTHONPATH=/app
+ENV MEOK_MCP__PORT=3100
+ENV MEOK_AUTH__REQUIRED=true
+ENV MEOK_DATABASE__POSTGRES_DSN=postgresql://meok:meok@127.0.0.1:5432/meok
+
+WORKDIR /app
+
+# ─── System dependencies ────────────────────────────────
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    gcc \
+    curl \
+    wget \
+    gnupg2 \
+    lsb-release \
+    supervisor \
+    procps \
+    cron \
+    && rm -rf /var/lib/apt/lists/*
+
+# ─── PostgreSQL 15 (modern signed-by keyring) ────────────
+RUN mkdir -p /usr/share/postgresql-common/pgdg \
+    && wget -qO /usr/share/postgresql-common/pgdg/apt.postgresql.org.asc \
+       https://www.postgresql.org/media/keys/ACCC4CF8.asc \
+    && echo "deb [signed-by=/usr/share/postgresql-common/pgdg/apt.postgresql.org.asc] http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" \
+       > /etc/apt/sources.list.d/pgdg.list \
+    && apt-get update && apt-get install -y --no-install-recommends \
+    postgresql-15 \
+    postgresql-client-15 \
+    && rm -rf /var/lib/apt/lists/*
+
+# ─── Python dependencies ────────────────────────────────
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# ─── MEOK source code ───────────────────────────────────
+COPY . /app/meok/
+
+# Create necessary directories (PG data dir created at runtime by start.sh)
+RUN mkdir -p /app/meok/neural/models /app/logs /app/backups \
+    /var/log/supervisor /var/run/postgresql \
+    && chown -R postgres:postgres /var/run/postgresql \
+    && rm -rf /var/lib/postgresql/15/main
+
+# ─── DB init script ─────────────────────────────────────
+COPY db/init.sql /docker-entrypoint-initdb.d/init.sql
+
+# ─── Supervisor + startup ───────────────────────────────
+COPY deploy/serverless/supervisord.conf /etc/supervisor/conf.d/meok.conf
+COPY deploy/serverless/start.sh /start.sh
+COPY deploy/serverless/backup.sh /app/meok/deploy/serverless/backup.sh
+RUN chmod +x /start.sh /app/meok/deploy/serverless/backup.sh
+
+EXPOSE 3100
+
+HEALTHCHECK --interval=30s --timeout=10s --retries=5 --start-period=60s \
+    CMD curl -sf http://localhost:3100/health || exit 1
+
+CMD ["/start.sh"]

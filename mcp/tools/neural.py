@@ -99,7 +99,8 @@ async def handle_neural_tool(name: str, arguments: Dict[str, Any], state: Servic
         model = state.model_registry.get("care_validation_nn")
         if not model or not model.is_trained:
             return {"error": "Model not available"}
-        result = model.predict(arguments["text"])
+        text = arguments.get("text") or arguments.get("action") or arguments.get("context", "")
+        result = model.predict(text)
         state.consciousness.process_interaction({"care_score": result.get("overall_care_score", 0.5)})
         return result
 
@@ -107,13 +108,15 @@ async def handle_neural_tool(name: str, arguments: Dict[str, Any], state: Servic
         model = state.model_registry.get("partnership_detection_ml")
         if not model or not model.is_trained:
             return {"error": "Model not available"}
-        return model.predict(arguments["text"])
+        text = arguments.get("text") or arguments.get("context", "")
+        return model.predict(text)
 
     elif name == "detect_threats":
         model = state.model_registry.get("threat_detection_nn")
         if not model or not model.is_trained:
             return {"error": "Model not available"}
-        result = model.predict(arguments["text"])
+        text = arguments.get("text") or arguments.get("context", "")
+        result = model.predict(text)
         state.consciousness.process_interaction({"threat_detected": result.get("threat_detected", False)})
         if result.get("threat_detected"):
             await state.alert_manager.fire_alert(

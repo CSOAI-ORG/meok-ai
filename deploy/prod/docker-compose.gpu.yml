@@ -1,0 +1,157 @@
+# MEOK.ai Production — Vast.ai GPU Deployment
+# 24/7 Sovereign AI OS running on rented GPUs
+#
+# Usage:
+#   scp this + .env.prod to vast instance, then:
+#   docker-compose -f docker-compose.gpu.yml up -d
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: meok-postgres
+    environment:
+      POSTGRES_USER: ${MEOK_DB_USER}
+      POSTGRES_PASSWORD: ${MEOK_DB_PASSWORD}
+      POSTGRES_DB: ${MEOK_DB_NAME:-meok}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${MEOK_DB_USER} -d ${MEOK_DB_NAME:-meok}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - meok-network
+    restart: always
+
+  weaviate:
+    image: semitechnologies/weaviate:1.24.0
+    container_name: meok-weaviate
+    environment:
+      QUERY_DEFAULTS_LIMIT: 25
+      AUTHENTICATION_ANONYMOUS_ACCESS_ENABLED: 'true'
+      PERSISTENCE_DATA_PATH: '/var/lib/weaviate'
+      DEFAULT_VECTORIZER_MODULE: 'text2vec-openai'
+      ENABLE_MODULES: 'text2vec-openai'
+      OPENAI_APIKEY: ${OPENAI_API_KEY}
+      CLUSTER_HOSTNAME: 'meok-weaviate'
+    volumes:
+      - weaviate_data:/var/lib/weaviate
+    healthcheck:
+      test: ["CMD-SHELL", "wget -q --spider http://localhost:8080/v1/.well-known/ready || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - meok-network
+    restart: always
+
+  neo4j:
+    image: neo4j:5.15-community
+    container_name: meok-neo4j
+    environment:
+      NEO4J_AUTH: ${MEOK_NEO4J_USER:-neo4j}/${MEOK_NEO4J_PASSWORD}
+      NEO4J_PLUGINS: '["apoc"]'
+    volumes:
+      - neo4j_data:/data
+    networks:
+      - meok-network
+    restart: always
+
+  meok:
+    image: ${MEOK_DOCKER_IMAGE:-meok/sovereign:latest}
+    container_name: meok-mcp
+    ports:
+      - "${MEOK_MCP_PORT:-3100}:3100"
+    environment:
+      - MEOK_DATABASE__POSTGRES_DSN=postgresql://${MEOK_DB_USER}:${MEOK_DB_PASSWORD}@postgres:5432/${MEOK_DB_NAME:-meok}
+      - MEOK_DATABASE__WEAVIATE_URL=http://weaviate:8080
+      - MEOK_DATABASE__NEO4J_URI=bolt://neo4j:7687
+      - MEOK_DATABASE__NEO4J_USER=${MEOK_NEO4J_USER:-neo4j}
+      - MEOK_DATABASE__NEO4J_PASSWORD=${MEOK_NEO4J_PASSWORD}
+      - MEOK_MCP__PORT=3100
+      - MEOK_API__OPENAI_API_KEY=${OPENAI_API_KEY}
+      - MEOK_API__KIMI_API_KEY=${KIMI_API_KEY:-}
+      - MEOK_ENVIRONMENT=production
+      - MEOK_SELF_LEARNING=true
+      - MEOK_AUTH__REQUIRED=true
+      - MEOK_AUTH__JWT_SECRET=${MEOK_JWT_SECRET}
+      - PYTHONPATH=/app
+    volumes:
+      - neural_models:/app/meok/neural/models
+      - meok_logs:/app/logs
+    depends_on:
+      postgres:
+        condition: service_healthy
+      weaviate:
+        condition: service_healthy
+      neo4j:
+        condition: service_started
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    networks:
+      - meok-network
+    restart: always
+
+  dashboard:
+    image: ${MEOK_DASHBOARD_IMAGE:-meok/dashboard:latest}
+    container_name: meok-dashboard
+    ports:
+      - "${MEOK_DASHBOARD_PORT:-3000}:3000"
+    environment:
+      - NEXT_PUBLIC_MCP_URL=http://${MEOK_PUBLIC_HOST}:${MEOK_MCP_PORT:-3100}
+      - NEXT_PUBLIC_API_URL=http://${MEOK_PUBLIC_HOST}:${MEOK_MCP_PORT:-3100}
+    depends_on:
+      - meok
+    networks:
+      - meok-network
+    restart: always
+
+  # Caddy reverse proxy — auto HTTPS via Let's Encrypt
+  caddy:
+    image: caddy:2-alpine
+    container_name: meok-caddy
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on:
+      - meok
+      - dashboard
+    networks:
+      - meok-network
+    restart: always
+
+  # Watchtower — auto-update containers when new images are pushed
+  watchtower:
+    image: containrrr/watchtower
+    container_name: meok-watchtower
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - WATCHTOWER_POLL_INTERVAL=300
+      - WATCHTOWER_CLEANUP=true
+      - WATCHTOWER_INCLUDE_STOPPED=true
+    restart: always
+
+volumes:
+  postgres_data:
+  weaviate_data:
+  neo4j_data:
+  neural_models:
+  meok_logs:
+  caddy_data:
+  caddy_config:
+
+networks:
+  meok-network:
+    driver: bridge

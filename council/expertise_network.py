@@ -17,10 +17,8 @@ Based on CSGA SOV3 Fractal Council Architecture.
 
 import math
 import random
-import sys
 from collections import defaultdict
 from datetime import datetime, timedelta
-from pathlib import Path
 from typing import Dict, List, Optional, Any, Tuple
 
 # Lazy RAG memory accessor — avoids circular imports
@@ -32,10 +30,7 @@ def _get_rag_memory():
     global _rag_memory
     if _rag_memory is None:
         try:
-            consciousness_core = Path(__file__).resolve().parent.parent / "consciousness-core"
-            if str(consciousness_core) not in sys.path:
-                sys.path.insert(0, str(consciousness_core))
-            from rag_memory import get_memory
+            from meok.memory.rag_memory import get_memory
             _rag_memory = get_memory()
         except Exception:
             pass

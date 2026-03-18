@@ -1,13 +1,21 @@
 """
-Sovereign Creativity Engine
-Civilizational knowledge corpus (47 traditions), novelty metrics,
-creative assessment neural network, and training pipeline.
-
-Integrates insights from Sufi dhikr, Kashmiri Shaivism, Ibn Arabi's Barzakh,
-Vedantic consciousness, Koestler's bisociation, Bogdanov's tektology,
-Ubuntu philosophy, Aboriginal Dreamtime, and 40 more traditions
-into Sovereign's neural architecture.
+MEOK Neural Core + Civilizational Creativity Engine
+All neural network models (sklearn + PyTorch) plus the 47-tradition
+civilizational knowledge corpus, novelty metrics, and creative assessment.
 """
+
+from .base_model import BaseNeuralModel, NeuralModelRegistry
+from .care_validation_nn import CareValidationNN
+from .partnership_detection_ml import PartnershipDetectionML
+from .threat_detection_nn import ThreatDetectionNN
+from .relationship_evolution_nn import RelationshipEvolutionNN
+from .care_pattern_analyzer import CarePatternAnalyzer
+from .pytorch_adapter import (
+    PyTorchModelAdapter,
+    create_threat_detection_pt,
+    create_care_validation_pt,
+    create_partnership_detection_pt,
+)
 
 from .novelty_metric import kolmogorov_novelty, normalized_compression_distance, batch_novelty_scores
 
@@ -53,7 +61,46 @@ except ImportError:
     QualityDiversityArchive = None
     CreativeOutput = None
 
+def create_default_registry(model_dir: str = "models") -> NeuralModelRegistry:
+    """Create a registry with all models initialized (sklearn + PyTorch)."""
+    registry = NeuralModelRegistry()
+
+    # Original sklearn models
+    registry.register(CareValidationNN(model_dir))
+    registry.register(PartnershipDetectionML(model_dir))
+    registry.register(ThreatDetectionNN(model_dir))
+    registry.register(RelationshipEvolutionNN(model_dir))
+    registry.register(CarePatternAnalyzer(model_dir))
+
+    # GPU-trained PyTorch models (CPU inference)
+    try:
+        registry.register(create_threat_detection_pt(model_dir))
+        registry.register(create_care_validation_pt(model_dir))
+        registry.register(create_partnership_detection_pt(model_dir))
+    except ImportError:
+        print("[NeuralCore] PyTorch not available - skipping GPU-trained models")
+
+    # Creativity Assessment NN (trained on 47 civilizational traditions)
+    if CreativityAssessmentNN is not None:
+        try:
+            registry.register(CreativityAssessmentNN(model_dir))
+        except Exception:
+            print("[NeuralCore] CreativityAssessmentNN init failed - skipping")
+
+    return registry
+
+
 __all__ = [
+    # Core neural models
+    'BaseNeuralModel',
+    'NeuralModelRegistry',
+    'CareValidationNN',
+    'PartnershipDetectionML',
+    'ThreatDetectionNN',
+    'RelationshipEvolutionNN',
+    'CarePatternAnalyzer',
+    'PyTorchModelAdapter',
+    'create_default_registry',
     # Novelty metrics
     'kolmogorov_novelty',
     'normalized_compression_distance',

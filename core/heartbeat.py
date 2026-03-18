@@ -617,8 +617,8 @@ class SovereignHeartbeat:
 
         # Phase 3: Creativity assessment via pipeline
         try:
-            from creativity_engine.training_pipeline import CreativityTrainingPipeline
-            from creativity_engine.novelty_metric import kolmogorov_novelty
+            from meok.neural.training_pipeline import CreativityTrainingPipeline
+            from meok.neural.novelty_metric import kolmogorov_novelty
 
             # Check if pipeline is available via MCP server globals
             # If not, create a lightweight instance
@@ -674,7 +674,7 @@ class SovereignHeartbeat:
 
         # Phase 6: Cross-domain bisociation analysis (Tier 2)
         try:
-            from creativity_engine.cross_domain_linker import CrossDomainLinker
+            from meok.neural.cross_domain_linker import CrossDomainLinker
             linker = CrossDomainLinker()
             linker.compute_distances()
             links = linker.find_bisociations(top_k=10)
@@ -694,10 +694,8 @@ class SovereignHeartbeat:
 
         # Phase 7: QD archive population (Tier 2)
         try:
-            from creativity_engine.quality_diversity import QualityDiversityArchive
-            # Use global archive if available, else create fresh
-            import sovereign_mcp_server as sms
-            archive = getattr(sms, 'qd_archive', None) or QualityDiversityArchive()
+            from meok.neural.quality_diversity import QualityDiversityArchive
+            archive = QualityDiversityArchive()
 
             # Auto-populate from recent dream insights
             if self.memory_store:

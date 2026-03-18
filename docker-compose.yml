@@ -64,17 +64,20 @@ services:
     ports:
       - "${MEOK_MCP_PORT:-3100}:3100"
     environment:
-      - MEOK_DB_DSN=postgresql://${MEOK_DB_USER:-meok}:${MEOK_DB_PASSWORD:-meok}@postgres:5432/${MEOK_DB_NAME:-meok}
-      - MEOK_WEAVIATE_URL=http://weaviate:8080
-      - MEOK_NEO4J_URI=bolt://neo4j:7687
-      - MEOK_NEO4J_USER=${MEOK_NEO4J_USER:-neo4j}
-      - MEOK_NEO4J_PASSWORD=${MEOK_NEO4J_PASSWORD:-meok}
-      - MEOK_MCP_PORT=3100
-      - OPENAI_API_KEY=${OPENAI_API_KEY:-}
-      - KIMI_API_KEY=${KIMI_API_KEY:-}
+      - MEOK_DATABASE__POSTGRES_DSN=postgresql://${MEOK_DB_USER:-meok}:${MEOK_DB_PASSWORD:-meok}@postgres:5432/${MEOK_DB_NAME:-meok}
+      - MEOK_DATABASE__WEAVIATE_URL=http://weaviate:8080
+      - MEOK_DATABASE__NEO4J_URI=bolt://neo4j:7687
+      - MEOK_DATABASE__NEO4J_USER=${MEOK_NEO4J_USER:-neo4j}
+      - MEOK_DATABASE__NEO4J_PASSWORD=${MEOK_NEO4J_PASSWORD:-meok}
+      - MEOK_MCP__PORT=3100
+      - MEOK_API__OPENAI_API_KEY=${OPENAI_API_KEY:-}
+      - MEOK_API__KIMI_API_KEY=${KIMI_API_KEY:-}
+      - MEOK_ENVIRONMENT=development
+      - MEOK_SELF_LEARNING=true
+      - MEOK_AUTH__REQUIRED=false
       - PYTHONPATH=/app
     volumes:
-      - ./neural/models:/app/neural/models
+      - ./neural/models:/app/meok/neural/models
       - ./logs:/app/logs
     depends_on:
       postgres:
@@ -83,6 +86,22 @@ services:
         condition: service_healthy
       neo4j:
         condition: service_started
+    networks:
+      - meok-network
+    restart: unless-stopped
+
+  dashboard:
+    build:
+      context: ./ui
+      dockerfile: Dockerfile
+    container_name: meok-dashboard
+    ports:
+      - "${MEOK_DASHBOARD_PORT:-3000}:3000"
+    environment:
+      - NEXT_PUBLIC_MCP_URL=http://localhost:3100
+      - NEXT_PUBLIC_API_URL=http://localhost:3100
+    depends_on:
+      - meok
     networks:
       - meok-network
     restart: unless-stopped

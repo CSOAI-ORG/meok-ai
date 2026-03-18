@@ -11,7 +11,7 @@ from dataclasses import dataclass, field, asdict
 
 from .task_queue import TaskQueue, Task, TaskPriority
 from .file_lock import FileLockManager
-from .agent_registry import AgentRegistry
+from .registry import AgentRegistry
 
 
 @dataclass

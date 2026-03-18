@@ -89,9 +89,27 @@ class AgentRegistry:
     
     async def initialize(self):
         """Initialize the registry"""
-        self.pool = await asyncpg.create_pool(self.postgres_dsn)
-        await self._create_tables()
+        await self._ensure_pool()
         await self._load_agents()
+
+    async def _ensure_pool(self):
+        """Ensure database connection pool is alive, reinitialize if needed."""
+        if self.pool is None or self.pool._closed:
+            self.pool = await asyncpg.create_pool(self.postgres_dsn)
+            await self._create_tables()
+
+    @staticmethod
+    def _ensure_json(value) -> dict:
+        """Normalize JSONB value — asyncpg may return str or dict."""
+        if isinstance(value, dict):
+            return value
+        if isinstance(value, str):
+            try:
+                parsed = json.loads(value)
+                return parsed if isinstance(parsed, dict) else {}
+            except (json.JSONDecodeError, TypeError):
+                return {}
+        return {}
     
     async def _create_tables(self):
         """Create database tables"""
@@ -133,29 +151,13 @@ class AgentRegistry:
     
     async def _load_agents(self):
         """Load agents from database"""
+        await self._ensure_pool()
         async with self.pool.acquire() as conn:
             rows = await conn.fetch("SELECT * FROM agents")
         
         for row in rows:
-            # Ensure relationships is always a dict (DB may return string)
-            raw_relationships = row["relationships"]
-            if isinstance(raw_relationships, str):
-                try:
-                    raw_relationships = json.loads(raw_relationships)
-                except (json.JSONDecodeError, TypeError):
-                    raw_relationships = {}
-            if not isinstance(raw_relationships, dict):
-                raw_relationships = {}
-
-            # Ensure metadata is always a dict
-            raw_metadata = row["metadata"]
-            if isinstance(raw_metadata, str):
-                try:
-                    raw_metadata = json.loads(raw_metadata)
-                except (json.JSONDecodeError, TypeError):
-                    raw_metadata = {}
-            if not isinstance(raw_metadata, dict):
-                raw_metadata = {}
+            raw_relationships = self._ensure_json(row["relationships"])
+            raw_metadata = self._ensure_json(row["metadata"])
 
             agent = Agent(
                 id=row["id"],
@@ -207,9 +209,10 @@ class AgentRegistry:
             self.capability_index[cap].add(agent_id)
         
         # Store in database
+        await self._ensure_pool()
         async with self.pool.acquire() as conn:
             await conn.execute("""
-                INSERT INTO agents 
+                INSERT INTO agents
                 (id, name, description, capabilities, status, trust_level,
                  created_at, last_seen, metadata, relationships)
                 VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)
@@ -254,7 +257,8 @@ class AgentRegistry:
         
         self.agents[agent_id].status = status
         self.agents[agent_id].last_seen = datetime.now()
-        
+
+        await self._ensure_pool()
         async with self.pool.acquire() as conn:
             await conn.execute("""
                 UPDATE agents SET status = $1, last_seen = $2 WHERE id = $3
@@ -267,21 +271,16 @@ class AgentRegistry:
         if agent_id not in self.agents:
             return False
 
-        # Safety: ensure relationships is a dict
+        # Normalize relationships to dict
         if not isinstance(self.agents[agent_id].relationships, dict):
-            if isinstance(self.agents[agent_id].relationships, str):
-                try:
-                    self.agents[agent_id].relationships = json.loads(self.agents[agent_id].relationships)
-                except (json.JSONDecodeError, TypeError):
-                    self.agents[agent_id].relationships = {}
-            else:
-                self.agents[agent_id].relationships = {}
+            self.agents[agent_id].relationships = self._ensure_json(self.agents[agent_id].relationships)
 
         current_trust = self.agents[agent_id].relationships.get(other_agent_id, 0.5)
         new_trust = max(0.0, min(1.0, current_trust + trust_delta))
-        
+
         self.agents[agent_id].relationships[other_agent_id] = new_trust
-        
+
+        await self._ensure_pool()
         async with self.pool.acquire() as conn:
             await conn.execute("""
                 UPDATE agents SET relationships = $1 WHERE id = $2
@@ -304,10 +303,11 @@ class AgentRegistry:
         total = agent.tasks_completed + agent.tasks_failed
         if total > 0:
             agent.performance_score = agent.tasks_completed / total
-        
+
+        await self._ensure_pool()
         async with self.pool.acquire() as conn:
             await conn.execute("""
-                UPDATE agents SET 
+                UPDATE agents SET
                     tasks_completed = $1,
                     tasks_failed = $2,
                     performance_score = $3
@@ -362,14 +362,8 @@ class AgentRegistry:
         # 1. Mean inter-agent trust across all relationships
         all_trust_values = []
         for agent in agents:
-            rels = agent.relationships
-            if isinstance(rels, str):
-                try:
-                    rels = json.loads(rels)
-                except (json.JSONDecodeError, TypeError):
-                    rels = {}
-            if isinstance(rels, dict):
-                all_trust_values.extend(rels.values())
+            rels = self._ensure_json(agent.relationships)
+            all_trust_values.extend(rels.values())
 
         mean_trust = sum(all_trust_values) / len(all_trust_values) if all_trust_values else 0.5
 
@@ -488,6 +482,7 @@ class TaskDelegator:
         selected_agent.current_task = task_id
         
         # Store task
+        await self.registry._ensure_pool()
         async with self.registry.pool.acquire() as conn:
             await conn.execute("""
                 INSERT INTO agent_tasks
@@ -509,10 +504,10 @@ class TaskDelegator:
                 extra_caps = len(agent.capabilities) - len(task.required_capabilities)
                 score = agent.performance_score - (extra_caps * 0.05)
                 scored.append((score, agent))
-        
-        scored.sort(reverse=True)
+
+        scored.sort(key=lambda x: x[0], reverse=True)
         return scored[0][1] if scored else None
-    
+
     def _trust_weighted_strategy(self, candidates: List[Agent], task: Task) -> Optional[Agent]:
         """Select agent based on trust level"""
         scored = []
@@ -520,10 +515,10 @@ class TaskDelegator:
             if agent.status == AgentStatus.IDLE:
                 score = agent.trust_level * 0.7 + agent.performance_score * 0.3
                 scored.append((score, agent))
-        
-        scored.sort(reverse=True)
+
+        scored.sort(key=lambda x: x[0], reverse=True)
         return scored[0][1] if scored else None
-    
+
     def _load_balanced_strategy(self, candidates: List[Agent], task: Task) -> Optional[Agent]:
         """Select agent with lowest load"""
         scored = []
@@ -532,26 +527,18 @@ class TaskDelegator:
                 # Prefer agents with fewer completed tasks (distribute load)
                 score = 1.0 / (1 + agent.tasks_completed)
                 scored.append((score, agent))
-        
-        scored.sort(reverse=True)
+
+        scored.sort(key=lambda x: x[0], reverse=True)
         return scored[0][1] if scored else None
-    
+
     def _care_aware_strategy(self, candidates: List[Agent], task: Task) -> Optional[Agent]:
         """Select agent considering care weight and trust"""
         scored = []
         for agent in candidates:
             if agent.status in [AgentStatus.IDLE, AgentStatus.ACTIVE]:
-                # Safety: ensure relationships is a dict before calling .get()
-                relationships = agent.relationships
-                if not isinstance(relationships, dict):
-                    if isinstance(relationships, str):
-                        try:
-                            relationships = json.loads(relationships)
-                        except (json.JSONDecodeError, TypeError):
-                            relationships = {}
-                    else:
-                        relationships = {}
-                    agent.relationships = relationships
+                # Normalize relationships to dict
+                relationships = AgentRegistry._ensure_json(agent.relationships)
+                agent.relationships = relationships
 
                 # Weighted combination
                 trust_component = agent.trust_level * 0.3
@@ -565,12 +552,13 @@ class TaskDelegator:
                 
                 score = trust_component + performance_component + care_component + availability_component
                 scored.append((score, agent))
-        
-        scored.sort(reverse=True)
+
+        scored.sort(key=lambda x: x[0], reverse=True)
         return scored[0][1] if scored else None
-    
+
     async def complete_task(self, task_id: str, result: Any, success: bool = True):
         """Mark a task as completed"""
+        await self.registry._ensure_pool()
         async with self.registry.pool.acquire() as conn:
             row = await conn.fetchrow("""
                 SELECT assigned_to FROM agent_tasks WHERE id = $1

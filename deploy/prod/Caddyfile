@@ -1,0 +1,36 @@
+# MEOK.ai Production Caddy Config
+# Auto-HTTPS via Let's Encrypt
+
+{$MEOK_DOMAIN:meok.ai} {
+    # Dashboard
+    handle / {
+        reverse_proxy dashboard:3000
+    }
+    handle /dashboard/* {
+        reverse_proxy dashboard:3000
+    }
+
+    # MCP API
+    handle /mcp {
+        reverse_proxy meok:3100
+    }
+    handle /health {
+        reverse_proxy meok:3100
+    }
+    handle /auth/* {
+        reverse_proxy meok:3100
+    }
+    handle /api/* {
+        reverse_proxy meok:3100
+    }
+
+    # Default to dashboard
+    handle {
+        reverse_proxy dashboard:3000
+    }
+}
+
+# API subdomain
+api.{$MEOK_DOMAIN:meok.ai} {
+    reverse_proxy meok:3100
+}
