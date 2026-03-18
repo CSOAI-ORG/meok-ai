@@ -24,16 +24,18 @@ AGENT_TOOLS = [
     },
     {
         "name": "delegate_task",
-        "description": "Delegate a task to the best available agent",
+        "description": "Delegate a task to the best available agent based on capabilities",
         "inputSchema": {
             "type": "object",
             "properties": {
-                "description": {"type": "string"},
+                "task": {"type": "string", "description": "Short task name or description"},
+                "description": {"type": "string", "description": "Full task description (optional)"},
+                "target_agent": {"type": "string", "description": "Specific agent ID to target (optional)"},
                 "required_capabilities": {"type": "array", "items": {"type": "string"}},
                 "priority": {"type": "integer"},
                 "care_weight": {"type": "number"}
             },
-            "required": ["description", "required_capabilities"]
+            "required": ["task"]
         }
     },
     {
@@ -88,16 +90,32 @@ async def handle_agent_tool(name: str, arguments: Dict[str, Any], state: Service
         return {"agent_id": agent.id, "name": agent.name, "status": "registered"}
 
     elif name == "delegate_task":
+        # Resolve description from task or description field
+        task_desc = arguments.get("description") or arguments.get("task", "")
+        target = arguments.get("target_agent")
+
+        # If targeting a specific agent, route via coordination hub
+        if target and state.COORDINATION_AVAILABLE and state.get_coordination_hub:
+            hub = state.get_coordination_hub()
+            result = hub.submit_task(
+                title=arguments.get("task", task_desc[:50]),
+                description=task_desc,
+                files=[],
+                requester="delegate",
+                care_score=arguments.get("care_weight", 0.7),
+            )
+            return {**result, "target_agent": target, "status": "delegated"}
+
         if not state.task_delegator:
-            return {"error": "Task delegator not available"}
-        task = await state.task_delegator.delegate_task(
-            description=arguments["description"],
-            required_capabilities=[state.AgentCapability(c) for c in arguments["required_capabilities"]],
+            return {"error": "Task delegator not available", "hint": "Use coord_submit_task for coordination hub routing"}
+        task_obj = await state.task_delegator.delegate_task(
+            description=task_desc,
+            required_capabilities=[state.AgentCapability(c) for c in arguments.get("required_capabilities", [])],
             priority=arguments.get("priority", 5),
             care_weight=arguments.get("care_weight", 0.5),
         )
-        if task:
-            return {"task_id": task.id, "assigned_to": task.assigned_to, "status": "assigned"}
+        if task_obj:
+            return {"task_id": task_obj.id, "assigned_to": task_obj.assigned_to, "status": "assigned"}
         return {"error": "No suitable agent found"}
 
     elif name == "submit_council_proposal":

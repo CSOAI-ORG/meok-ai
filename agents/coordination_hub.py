@@ -72,6 +72,11 @@ class SimpleAgentRegistry:
             self._agents[agent_id]["success_rate"] = prev * 0.9 + 0.1  # EMA toward 1.0
             self._save()
 
+    def get_available_agents(self) -> List[Dict]:
+        """Return agents with capacity (active_tasks < 3) and not offline."""
+        return [a for a in self._agents.values()
+                if a.get("active_tasks", 0) < 3 and a.get("status") != "offline"]
+
 
 @dataclass
 class CoordinationEvent:
@@ -259,7 +264,7 @@ class CoordinationHub:
                 "assigned": True,
                 "task_id": task.id,
                 "agent_id": best_agent["agent_id"],
-                "agent_type": best_agent["agent_type"],
+                "agent_type": best_agent.get("agent_type") or best_agent.get("type", "unknown"),
                 "match_score": best_score
             }
         
