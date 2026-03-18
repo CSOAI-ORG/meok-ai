@@ -11,7 +11,66 @@ from dataclasses import dataclass, field, asdict
 
 from .task_queue import TaskQueue, Task, TaskPriority
 from .file_lock import FileLockManager
-from .registry import AgentRegistry
+
+
+class SimpleAgentRegistry:
+    """Lightweight sync, file-backed agent registry for the coordination hub."""
+
+    def __init__(self, state_dir: Path):
+        self.state_dir = state_dir
+        self._file = state_dir / "coord_agents.json"
+        self._agents: Dict[str, Dict] = {}
+        self._load()
+
+    def _load(self):
+        if self._file.exists():
+            try:
+                with open(self._file) as f:
+                    self._agents = json.load(f)
+            except Exception:
+                self._agents = {}
+
+    def _save(self):
+        self.state_dir.mkdir(parents=True, exist_ok=True)
+        with open(self._file, "w") as f:
+            json.dump(self._agents, f, indent=2)
+
+    def register(self, agent_id: str, agent_type: str, capabilities: List[str]) -> Dict:
+        self._agents[agent_id] = {
+            "agent_id": agent_id,
+            "type": agent_type,
+            "capabilities": capabilities,
+            "status": "active",
+            "active_tasks": 0,
+            "success_rate": 1.0,
+            "registered_at": datetime.now().isoformat(),
+            "last_seen": datetime.now().isoformat(),
+        }
+        self._save()
+        return {"registered": True, "agent_id": agent_id, "status": "active"}
+
+    def get_agent(self, agent_id: str) -> Optional[Dict]:
+        return self._agents.get(agent_id)
+
+    def list_agents(self) -> List[Dict]:
+        return list(self._agents.values())
+
+    def decrement_active_tasks(self, agent_id: str):
+        if agent_id in self._agents:
+            self._agents[agent_id]["active_tasks"] = max(0, self._agents[agent_id].get("active_tasks", 0) - 1)
+            self._save()
+
+    def increment_active_tasks(self, agent_id: str):
+        if agent_id in self._agents:
+            self._agents[agent_id]["active_tasks"] = self._agents[agent_id].get("active_tasks", 0) + 1
+            self._agents[agent_id]["last_seen"] = datetime.now().isoformat()
+            self._save()
+
+    def record_success(self, agent_id: str, care_score: float = 0.5):
+        if agent_id in self._agents:
+            prev = self._agents[agent_id].get("success_rate", 1.0)
+            self._agents[agent_id]["success_rate"] = prev * 0.9 + 0.1  # EMA toward 1.0
+            self._save()
 
 
 @dataclass
@@ -45,7 +104,7 @@ class CoordinationHub:
         # Subsystems
         self.task_queue = TaskQueue(self.state_dir)
         self.file_locks = FileLockManager(self.state_dir)
-        self.agent_registry = AgentRegistry(self.state_dir)
+        self.agent_registry = SimpleAgentRegistry(self.state_dir)
         
         # Event log
         self.events: List[CoordinationEvent] = []
@@ -327,12 +386,15 @@ class CoordinationHub:
         """Get coordination dashboard data"""
         agents = self.agent_registry.list_agents()
         tasks = self.task_queue.get_all_tasks()
-        
+
+        agents_by_id = {a["agent_id"]: a for a in agents}
+
         return {
-            "agents": {
+            "agents": agents_by_id,
+            "summary": {
                 "total": len(agents),
                 "active": sum(1 for a in agents if a.get("active_tasks", 0) > 0),
-                "available": sum(1 for a in agents if a.get("active_tasks", 0) < self.MAX_PARALLEL_TASKS)
+                "available": sum(1 for a in agents if a.get("active_tasks", 0) < self.MAX_PARALLEL_TASKS),
             },
             "tasks": {
                 "queued": len([t for t in tasks if t.status == "queued"]),

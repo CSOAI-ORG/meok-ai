@@ -16,7 +16,11 @@ COORDINATION_TOOLS = [
             "type": "object",
             "properties": {
                 "agent_id": {"type": "string"},
-                "agent_type": {"type": "string", "enum": ["claude-desktop", "claude-code", "kimi-cli", "orion-agent", "openhands"]},
+                "agent_type": {"type": "string", "enum": [
+                    "claude-desktop", "claude-code", "kimi-cli", "orion-agent", "openhands",
+                    "openclaw", "openclaw-jarvis", "openclaw-sovereign", "openclaw-meok",
+                    "nemoclaw", "kimi-code", "external"
+                ]},
                 "capabilities": {"type": "array", "items": {"type": "string"}}
             },
             "required": ["agent_id", "agent_type", "capabilities"]
