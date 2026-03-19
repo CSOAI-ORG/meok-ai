@@ -28,6 +28,7 @@ from meok.mcp.tools.code_interpreter import CODE_INTERPRETER_TOOLS, handle_code_
 from meok.mcp.tools.command_interpreter import COMMAND_INTERPRETER_TOOLS, handle_command_interpreter_tool
 from meok.mcp.tools.family_guardian import FAMILY_GUARDIAN_TOOLS, handle_family_guardian
 from meok.mcp.tools.intelligence import INTELLIGENCE_TOOLS, handle_intelligence
+from meok.mcp.tools.sovereign import SOVEREIGN_TOOLS, handle_sovereign
 
 # Combined tool list — order matches the original monolithic server
 ALL_TOOLS = (
@@ -52,6 +53,7 @@ ALL_TOOLS = (
     + COMMAND_INTERPRETER_TOOLS  # Tiered shell execution (4-level safety hierarchy)
     + FAMILY_GUARDIAN_TOOLS   # Care-based child safety (GDPR-K, COPPA, UK Online Safety Act)
     + INTELLIGENCE_TOOLS      # Knowledge graph, SmartRouter, voice pipeline, product catalog
+    + SOVEREIGN_TOOLS         # 7-lifecycle sovereign core: perceive/think/route/act/remember/evolve
 )
 
 # Build name -> handler lookup from each module's tool list
@@ -99,6 +101,8 @@ for _tool in FAMILY_GUARDIAN_TOOLS:
     _TOOL_NAME_TO_HANDLER[_tool["name"]] = handle_family_guardian
 for _tool in INTELLIGENCE_TOOLS:
     _TOOL_NAME_TO_HANDLER[_tool["name"]] = handle_intelligence
+for _tool in SOVEREIGN_TOOLS:
+    _TOOL_NAME_TO_HANDLER[_tool["name"]] = handle_sovereign
 
 # Also expose as a dict for external inspection
 TOOL_HANDLERS = {
