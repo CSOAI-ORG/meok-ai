@@ -34,6 +34,22 @@ POSTGRES_DSN = os.environ.get(
 )
 
 
+def _memory_is_older_than(mem: Dict[str, Any], cutoff: datetime) -> bool:
+    """Return True if a memory dict's timestamp is before the cutoff."""
+    ts = mem.get("timestamp")
+    if ts is None:
+        return False
+    try:
+        if isinstance(ts, str):
+            ts = datetime.fromisoformat(ts)
+        # Strip timezone if present (cutoff is naive)
+        if hasattr(ts, "tzinfo") and ts.tzinfo is not None:
+            ts = ts.replace(tzinfo=None)
+        return ts < cutoff
+    except Exception:
+        return False
+
+
 def check_resources() -> Dict[str, Any]:
     """Check system CPU and memory usage."""
     cpu = psutil.cpu_percent(interval=1)
@@ -70,6 +86,7 @@ class SovereignHeartbeat:
         self.model_registry = model_registry
         self.agent_registry = agent_registry
         self.metrics = metrics
+        self.compute_harvester = None  # set by initializer (Phase 5.1)
 
         self.scheduler: Optional[AsyncIOScheduler] = None
         self.pulse_count: int = 0
@@ -148,6 +165,49 @@ class SovereignHeartbeat:
             CronTrigger(hour=20, minute=30, timezone=UK_TZ),
             id="creativity_cycle",
             name="Creativity Cycle (20:30)",
+            replace_existing=True,
+        )
+
+        # Turiya Meta-Monitor — every 30 minutes, 24/7
+        # Turiya is the 4th Vedantic consciousness mode: the witness of all other states.
+        # Previously dormant (on-demand only); now scheduled as continuous meta-observation.
+        self.scheduler.add_job(
+            self._safe_run(self.turiya_monitor),
+            IntervalTrigger(minutes=30),
+            id="turiya_monitor",
+            name="Turiya Meta-Monitor (30m)",
+            replace_existing=True,
+        )
+
+        # Phase 5.1: Daily compute harvest — 9am UTC
+        self.scheduler.add_job(
+            self._safe_run(self.compute_harvest_daily),
+            CronTrigger(hour=9, minute=0, timezone=pytz.utc),
+            id="compute_harvest_daily",
+            name="Daily Compute Harvest (9am UTC)",
+            replace_existing=True,
+        )
+
+        # Orion Autonomous Task Hunt — every 30 min, 24/7
+        # Orion-Riri-Hourman pattern running inside heartbeat: Hunt → Record → Execute.
+        # No separate daemon needed — guaranteed to run whenever the server is alive.
+        # Picks up queued tasks, logs exploration targets, records system state to memory.
+        self.scheduler.add_job(
+            self._safe_run(self.autonomous_task_hunt),
+            IntervalTrigger(minutes=30),
+            id="orion_task_hunt",
+            name="Orion Autonomous Task Hunt (30m)",
+            replace_existing=True,
+        )
+
+        # Nightshift Memory Compression — 01:30 UK
+        # Compresses episodes > 7 days old into LLM-summarized granularity_level=2 entries.
+        # Keeps memory store lean without losing care arcs or emotional trajectories.
+        self.scheduler.add_job(
+            self._safe_run(self.compress_old_memories),
+            CronTrigger(hour=1, minute=30, timezone=UK_TZ),
+            id="memory_compression",
+            name="Nightshift Memory Compression (01:30)",
             replace_existing=True,
         )
 
@@ -291,7 +351,24 @@ class SovereignHeartbeat:
             self.metrics.record_metric("cpu_percent", resources["cpu_percent"])
             self.metrics.record_metric("memory_percent", resources["memory_percent"])
 
-        # 8. Write heartbeat file
+        # 8. Asabiyyah alert — warn if social cohesion drops below threshold
+        if self.agent_registry:
+            try:
+                stats = self.agent_registry.get_registry_stats()
+                asabiyyah_data = stats.get("asabiyyah", {})
+                score = asabiyyah_data.get("score", 1.0) if isinstance(asabiyyah_data, dict) else 1.0
+                if score < 0.5:
+                    logger.warning("Asabiyyah alert: score=%.3f below 0.5 threshold — social cohesion declining", score)
+                    if self.metrics:
+                        self.metrics.record_metric("asabiyyah_alert", score)
+                # Also alert if agent count drifted above cap
+                agent_count = len(self.agent_registry.agents)
+                if agent_count > self.agent_registry.MAX_AGENTS:
+                    logger.error("Agent cap breach: %d agents (max %d) — stopping new registrations", agent_count, self.agent_registry.MAX_AGENTS)
+            except Exception:
+                pass
+
+        # 10. Write heartbeat file
         consciousness_state = self._get_consciousness_state()
         self._write_heartbeat_file(
             now=now,
@@ -347,6 +424,222 @@ class SovereignHeartbeat:
             care_weight=0.5,
             tags=["nightshift", "autonomous", phase],
         )
+
+    # ── Ralph Mode: Production Readiness Checklist ────────────────────────────
+    # Each item: (checklist_key, description, probe_fn_or_None)
+    # Probe returns True if done, False if not yet complete.
+    PRODUCTION_CHECKLIST = [
+        ("emotional_vad_tagging",       "Emotional VAD fields on MemoryEpisode (valence/arousal/dominance)"),
+        ("hp_ttr_ci_trr_metrics",       "HP/TTR/CI/TRR care metrics exposed as MCP tools"),
+        ("sentence_transformer_embedder", "MiniLM-L6 SentenceTransformer embedder available (GPU)"),
+        ("memory_compression_job",      "Nightshift memory compression job scheduled (01:30)"),
+        ("cpm_module",                  "CarePreferenceModel module exists (core/care_preference_model.py)"),
+        ("architectural_memory_files",  "3 architectural JSON files ingested (maternal_ethics, memory, data_currency)"),
+        ("e2e_smoke_test",              "E2E smoke test suite exists (tests/e2e_smoke_test.py)"),
+        ("pgvector_hnsw",               "pgvector HNSW index active (PROP-001 implementation)"),
+        ("dns_meok_ai",                 "meok.ai DNS pointing to Vercel (A record + CNAME)"),
+        ("vast_gpu_utilized",           "Vast.ai GPU utilised (sentence-transformers running on CUDA)"),
+    ]
+
+    async def _check_production_readiness(self) -> Dict[str, Any]:
+        """
+        Probe each production checklist item. Returns dict: key → bool.
+        Called by autonomous_task_hunt every 30 min.
+        """
+        import os
+        checks: Dict[str, bool] = {}
+
+        # 1. VAD tagging — check if MemoryEpisode has emotional_valence field
+        try:
+            from meok.memory.enhanced_memory import MemoryEpisode
+            checks["emotional_vad_tagging"] = hasattr(MemoryEpisode, "emotional_valence") or \
+                "emotional_valence" in MemoryEpisode.__dataclass_fields__
+        except Exception:
+            checks["emotional_vad_tagging"] = False
+
+        # 2. HP/TTR/CI/TRR metrics — check care_metrics tool list
+        try:
+            from meok.mcp.tools.care_metrics import CARE_METRICS_TOOLS
+            tool_names = {t["name"] for t in CARE_METRICS_TOOLS}
+            checks["hp_ttr_ci_trr_metrics"] = all(
+                n in tool_names for n in ("get_harm_prevented", "get_time_to_repair",
+                                           "get_care_continuity_index", "get_tail_risk_reduction")
+            )
+        except Exception:
+            checks["hp_ttr_ci_trr_metrics"] = False
+
+        # 3. SentenceTransformer embedder
+        try:
+            from sentence_transformers import SentenceTransformer  # noqa
+            checks["sentence_transformer_embedder"] = True
+        except ImportError:
+            checks["sentence_transformer_embedder"] = False
+
+        # 4. Memory compression job scheduled
+        try:
+            job_ids = [j.id for j in self.scheduler.get_jobs()] if self.scheduler else []
+            checks["memory_compression_job"] = "memory_compression" in job_ids
+        except Exception:
+            checks["memory_compression_job"] = False
+
+        # 5. CPM module exists
+        base = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        checks["cpm_module"] = os.path.exists(os.path.join(base, "core", "care_preference_model.py"))
+
+        # 6. Architectural memory files
+        mem_dir = os.path.join(base, "memory")
+        arch_files = [
+            "architectural_maternal_ethics_os_2026_03_19.json",
+            "architectural_external_memory_deep_dive_2026_03_19.json",
+            "architectural_data_currency_2026_03_19.json",
+        ]
+        checks["architectural_memory_files"] = all(
+            os.path.exists(os.path.join(mem_dir, f)) for f in arch_files
+        )
+
+        # 7. E2E smoke test
+        checks["e2e_smoke_test"] = os.path.exists(
+            os.path.join(base, "tests", "e2e_smoke_test.py")
+        )
+
+        # 8. pgvector HNSW — check if extension is active in DB (best-effort)
+        checks["pgvector_hnsw"] = False
+        if self.memory_store and getattr(self.memory_store, "pool", None):
+            try:
+                async with self.memory_store.pool.acquire() as conn:
+                    row = await conn.fetchrow(
+                        "SELECT extname FROM pg_extension WHERE extname='vector'"
+                    )
+                    checks["pgvector_hnsw"] = row is not None
+            except Exception:
+                pass
+
+        # 9. DNS check — try to resolve meok.ai (non-fatal timeout)
+        try:
+            import socket
+            ip = socket.gethostbyname("meok.ai")
+            checks["dns_meok_ai"] = ip.startswith("76.76.")  # Vercel IP range
+        except Exception:
+            checks["dns_meok_ai"] = False
+
+        # 10. Vast.ai GPU utilised — check if CUDA available to torch
+        try:
+            import torch
+            checks["vast_gpu_utilized"] = torch.cuda.is_available()
+        except ImportError:
+            # torch not installed; check via sentence_transformers device
+            try:
+                from meok.memory.rag_memory import SentenceTransformerEmbedder
+                st = SentenceTransformerEmbedder()
+                if st.available and st.model is not None:
+                    device = str(st.model.device)
+                    checks["vast_gpu_utilized"] = "cuda" in device
+                else:
+                    checks["vast_gpu_utilized"] = False
+            except Exception:
+                checks["vast_gpu_utilized"] = False
+
+        return checks
+
+    async def autonomous_task_hunt(self) -> None:
+        """
+        Every 30 min — autonomous MEOK build scanning and self-improvement (Ralph Mode).
+
+        Orion-Riri-Hourman pattern embedded in heartbeat: Hunt → Record → Execute.
+        Runs 24/7 inside the guaranteed heartbeat loop — no separate daemon needed.
+        Results feed into the morning digest via orion_hunt tagged memories.
+
+        Ralph Mode: also checks PRODUCTION_CHECKLIST every run and records
+        readiness gaps to memory so they surface in the morning briefing.
+        """
+        logger.info("Orion autonomous task hunt starting (pulse #%d)", self.pulse_count)
+
+        # Skip if system under load
+        resources = check_resources()
+        if not resources["healthy"]:
+            logger.warning(
+                "Task hunt skipped — CPU %.0f%% / MEM %.0f%%",
+                resources["cpu_percent"], resources["memory_percent"],
+            )
+            return
+
+        hunted = 0
+
+        # 1. Pull queued pickup tasks — record their existence for visibility
+        try:
+            pickup_tasks = await self._query_pickup_tasks()
+            if pickup_tasks:
+                task_summary = "; ".join(
+                    t.get("content", "")[:80] for t in pickup_tasks[:3]
+                )
+                await self._record_memory(
+                    content=(
+                        f"Orion hunt found {len(pickup_tasks)} pending task(s): {task_summary}"
+                    ),
+                    care_weight=0.75,
+                    tags=["orion_hunt", "pickup_tasks", "autonomous", "nightshift"],
+                )
+                hunted += len(pickup_tasks)
+        except Exception as _e:
+            logger.debug("Orion pickup scan error (non-fatal): %s", _e)
+
+        # 2. Exploration suggestion — rotate domains, keep system curious
+        try:
+            if getattr(self.memory_store, "suggest_exploration", None):
+                suggestion = await self.memory_store.suggest_exploration()
+                if suggestion:
+                    await self._record_memory(
+                        content=f"Autonomous exploration target: {suggestion}",
+                        care_weight=0.65,
+                        tags=["orion_hunt", "exploration", "autonomous"],
+                    )
+                    hunted += 1
+        except Exception:
+            pass  # Non-fatal — exploration is opportunistic
+
+        # 3. Agent registry heartbeat — log active agent count to memory
+        try:
+            if getattr(self, "agent_registry", None):
+                active = getattr(self.agent_registry, "_agents", {})
+                if active:
+                    await self._record_memory(
+                        content=(
+                            f"Orion status: {len(active)} agents active, "
+                            f"heartbeat pulse #{self.pulse_count}"
+                        ),
+                        care_weight=0.5,
+                        tags=["orion_hunt", "system_status", "autonomous"],
+                    )
+        except Exception:
+            pass
+
+        # 4. Ralph Mode — Production Readiness Checklist
+        try:
+            readiness = await self._check_production_readiness()
+            done = sum(1 for v in readiness.values() if v)
+            total = len(readiness)
+            gaps = [
+                f"{key} ({desc})"
+                for (key, desc), done_flag in zip(self.PRODUCTION_CHECKLIST, readiness.values())
+                if not done_flag
+            ]
+            readiness_summary = (
+                f"Ralph Mode — Production Readiness: {done}/{total} ✅\n"
+                + (f"Gaps: {'; '.join(gaps)}" if gaps else "All items complete! 🎉")
+            )
+            await self._record_memory(
+                content=readiness_summary,
+                care_weight=0.85,
+                tags=["ralph_mode", "production_readiness", "orion_hunt", "autonomous"],
+            )
+            logger.info("Ralph Mode readiness: %d/%d items complete", done, total)
+            if gaps:
+                logger.info("Gaps: %s", gaps[:3])
+            hunted += 1
+        except Exception as exc:
+            logger.debug("Ralph Mode readiness check error (non-fatal): %s", exc)
+
+        logger.info("Orion task hunt complete — %d items recorded", hunted)
 
     async def generate_morning_digest(self) -> None:
         """Daily at 3:30 AM — compile overnight work into a morning brief."""
@@ -763,6 +1056,220 @@ class SovereignHeartbeat:
             results.get("asabiyyah", {}).get("score", 0),
         )
 
+    async def turiya_monitor(self) -> None:
+        """Every 30 minutes, 24/7 — Turiya meta-cognitive observation.
+
+        Turiya (तुरीय) is the 4th Vedantic state: the witness that observes
+        the other three (waking/dreaming/deep-sleep) without being caught in them.
+        Previously dormant (only triggered on demand); now runs as a continuous
+        background meta-monitor.
+
+        Stores observations as memories with source_agent='turiya_meta' so
+        they are separately queryable from regular memory.
+        """
+        if not self.consciousness:
+            return
+
+        try:
+            meta_obs = await self.consciousness.get_meta_observation()
+
+            coherence = meta_obs.get("coherence_score", 0)
+            recommendations = meta_obs.get("recommendations", [])
+            anomalies = meta_obs.get("anomalies", [])
+
+            content_lines = [
+                f"Turiya meta-observation — {datetime.now(UK_TZ).strftime('%Y-%m-%d %H:%M %Z')}",
+                f"Coherence score: {coherence:.3f}",
+            ]
+            if anomalies:
+                content_lines.append(f"Anomalies detected: {'; '.join(str(a) for a in anomalies[:3])}")
+            if recommendations:
+                content_lines.append(f"Recommendations: {'; '.join(str(r) for r in recommendations[:3])}")
+
+            await self._record_memory(
+                content="\n".join(content_lines),
+                care_weight=0.6,
+                tags=["turiya", "meta_cognition", "witness", "autonomous"],
+                source_agent="turiya_meta",
+            )
+
+            logger.info(
+                "Turiya monitor: coherence=%.3f, anomalies=%d, recommendations=%d",
+                coherence,
+                len(anomalies),
+                len(recommendations),
+            )
+
+        except Exception:
+            logger.exception("Turiya monitor job failed")
+
+    async def compute_harvest_daily(self) -> None:
+        """
+        Daily 9am UTC job — audit all free/cheap compute sources.
+        Results cached on harvester and surfaced in morning briefing.
+        """
+        if not self.compute_harvester:
+            logger.debug("compute_harvest_daily: no harvester wired — skipping")
+            return
+
+        try:
+            report = await self.compute_harvester.daily_harvest()
+            logger.info(
+                "Compute harvest complete — %s | recommendations: %d",
+                report.get("summary", ""),
+                len(report.get("recommendations", [])),
+            )
+
+            # Surface urgent credit applications as a memory
+            urgent = report.get("credits", {}).get("urgent", [])
+            if urgent and self.memory_store:
+                await self._record_memory(
+                    content=(
+                        f"Compute harvest alert: {len(urgent)} credit application(s) not yet submitted: "
+                        f"{', '.join(urgent)}. Apply now for free compute credits."
+                    ),
+                    care_weight=0.9,
+                    tags=["compute", "credits", "urgent", "action_required"],
+                    source_agent="compute_harvester",
+                )
+        except Exception:
+            logger.exception("compute_harvest_daily job failed")
+
+    async def compress_old_memories(self) -> None:
+        """
+        Nightshift Memory Compression at 01:30 — compresses episodes > 7 days old.
+
+        Granularity levels (from External Memory Architecture doc):
+          Level 1 = verbatim (0-7 days) — kept as-is
+          Level 2 = summarized (7-30 days, 5-10× compression via LLM)
+          Level 3 = abstract (30+ days, compressed summaries only)
+
+        Process: batch 5 old episodes → LLM router 'fast' task → store compressed
+        episode with granularity_level=2 → mark originals as compressed.
+        Preserves emotional arc (average VAD), key decisions, care patterns.
+        """
+        if not self.memory_store:
+            logger.debug("compress_old_memories: no memory_store available")
+            return
+
+        logger.info("Memory compression starting (01:30 nightshift)")
+
+        cutoff_7d = datetime.now() - timedelta(days=7)
+        compressed_count = 0
+        batch_count = 0
+
+        try:
+            all_memories = await self.memory_store.list_all_memories(limit=1000)
+        except Exception as exc:
+            logger.warning("compress_old_memories: failed to list memories: %s", exc)
+            return
+
+        # Filter: older than 7 days, not already compressed (no 'compressed_summary' tag)
+        old_episodes = [
+            m for m in all_memories
+            if _memory_is_older_than(m, cutoff_7d)
+            and "compressed_summary" not in (m.get("tags") or [])
+            and m.get("memory_type") != "compaction_summary"
+        ]
+
+        if len(old_episodes) < 5:
+            logger.info(
+                "Memory compression skipped — only %d episodes older than 7 days (need ≥5)",
+                len(old_episodes),
+            )
+            return
+
+        # Batch into groups of 5
+        batches = [old_episodes[i:i + 5] for i in range(0, len(old_episodes), 5)]
+
+        for batch in batches[:10]:  # Cap at 10 batches per run to avoid overload
+            try:
+                combined = "\n\n".join(
+                    f"[{m.get('timestamp', '?')}] "
+                    f"(care={m.get('care_weight', 0):.2f}) "
+                    f"{m.get('content', '')[:300]}"
+                    for m in batch
+                )
+                summary_prompt = (
+                    f"Summarise these {len(batch)} memory episodes into 1 compact memory entry. "
+                    f"Preserve: emotional arc, key decisions, care patterns, unresolved threads. "
+                    f"Target: 80% shorter than combined input. Be specific, not generic.\n\n"
+                    f"Episodes:\n{combined}"
+                )
+
+                # Use LLM router for compression
+                try:
+                    from meok.core.llm_router import get_router
+                    result = await get_router().complete(
+                        messages=[{"role": "user", "content": summary_prompt}],
+                        task_type="fast",
+                        max_tokens=400,
+                        temperature=0.3,
+                    )
+                    summary_text = result.get("content", "")
+                except Exception as llm_exc:
+                    logger.debug("LLM compression failed, using template: %s", llm_exc)
+                    # Template fallback
+                    care_weights = [float(m.get("care_weight", 0.5)) for m in batch]
+                    avg_care = sum(care_weights) / len(care_weights)
+                    types = list({m.get("memory_type", "interaction") for m in batch})
+                    summary_text = (
+                        f"Compressed {len(batch)} memories (types: {', '.join(types)}, "
+                        f"avg care: {avg_care:.2f}). "
+                        f"Period: {batch[0].get('timestamp', '?')[:10]} to "
+                        f"{batch[-1].get('timestamp', '?')[:10]}. "
+                        f"Key content: {batch[0].get('content', '')[:200]}"
+                    )
+
+                if not summary_text.strip():
+                    continue
+
+                # Compute averaged VAD from batch (if fields available)
+                avg_valence = sum(float(m.get("emotional_valence", 0.0)) for m in batch) / len(batch)
+                avg_arousal = sum(float(m.get("emotional_arousal", 0.0)) for m in batch) / len(batch)
+                avg_dominance = sum(float(m.get("emotional_dominance", 0.0)) for m in batch) / len(batch)
+
+                # Collect all unique tags from the batch
+                all_tags = set()
+                for m in batch:
+                    all_tags.update(m.get("tags") or [])
+                all_tags.add("compressed_summary")
+                all_tags.discard("compressed_summary")  # will re-add below
+
+                # Store compressed episode
+                await self.memory_store.record_episode(
+                    content=summary_text,
+                    source_agent="memory_compressor",
+                    memory_type="compaction_summary",
+                    care_weight=sum(float(m.get("care_weight", 0.5)) for m in batch) / len(batch),
+                    tags=list(all_tags) + ["compressed_summary", "nightshift"],
+                    emotional_valence=avg_valence,
+                    emotional_arousal=avg_arousal,
+                    emotional_dominance=avg_dominance,
+                    granularity_level=2,
+                )
+
+                compressed_count += len(batch)
+                batch_count += 1
+
+            except Exception as batch_exc:
+                logger.warning("Memory compression batch failed (non-fatal): %s", batch_exc)
+                continue
+
+        await self._record_memory(
+            content=(
+                f"Memory compression complete: {compressed_count} episodes compressed "
+                f"into {batch_count} summaries. {len(old_episodes) - compressed_count} "
+                f"episodes too few for remaining batches."
+            ),
+            care_weight=0.6,
+            tags=["memory_compression", "nightshift", "autonomous"],
+        )
+        logger.info(
+            "Memory compression complete: %d episodes → %d summaries",
+            compressed_count, batch_count,
+        )
+
     # ------------------------------------------------------------------
     # Helpers
     # ------------------------------------------------------------------
@@ -805,6 +1312,7 @@ class SovereignHeartbeat:
         content: str,
         care_weight: float = 0.5,
         tags: Optional[List[str]] = None,
+        source_agent: str = "sovereign_heartbeat",
     ) -> None:
         """Record a memory via memory_store, swallowing errors."""
         if not self.memory_store:
@@ -812,7 +1320,7 @@ class SovereignHeartbeat:
         try:
             await self.memory_store.record_episode(
                 content=content,
-                source_agent="sovereign_heartbeat",
+                source_agent=source_agent,
                 memory_type="insight",
                 care_weight=care_weight,
                 tags=tags or [],

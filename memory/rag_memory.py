@@ -90,6 +90,83 @@ class LocalEmbedder:
 
 
 # ---------------------------------------------------------------------------
+# Semantic Embedder — sentence-transformers MiniLM-L6-v2 with graceful fallback
+# ---------------------------------------------------------------------------
+
+class SentenceTransformerEmbedder:
+    """
+    MiniLM-L6-v2: 384-dim, MIT license, 80MB download.
+    CPU: ~100ms/query. GPU (Vast.ai CUDA): ~5ms/query — auto-detected.
+
+    Falls back to LocalEmbedder if sentence_transformers is not installed.
+    Install on VPS: pip install sentence-transformers
+    The GPU on Vast.ai will be detected automatically by PyTorch.
+
+    Upgrade path: all-MiniLM-L6-v2 → BGE-M3 (1024-dim, multilingual, Q2)
+    """
+
+    DIM = 384
+    MODEL_NAME = "all-MiniLM-L6-v2"
+
+    def __init__(self):
+        self.available = False
+        self.model = None
+        self._try_load()
+
+    def _try_load(self):
+        try:
+            from sentence_transformers import SentenceTransformer
+            import logging as _log
+            _log.getLogger(__name__).info(
+                "Loading SentenceTransformer '%s' — GPU auto-detected if CUDA available",
+                self.MODEL_NAME,
+            )
+            self.model = SentenceTransformer(self.MODEL_NAME)
+            self.available = True
+            _log.getLogger(__name__).info(
+                "SentenceTransformer loaded: dim=%d device=%s",
+                self.DIM,
+                self.model.device,
+            )
+        except ImportError:
+            import logging as _log
+            _log.getLogger(__name__).info(
+                "sentence_transformers not installed — using LocalEmbedder (256-dim n-gram). "
+                "Run: pip install sentence-transformers  for semantic search on the VPS GPU."
+            )
+        except Exception as exc:
+            import logging as _log
+            _log.getLogger(__name__).warning(
+                "SentenceTransformer load failed (%s) — falling back to LocalEmbedder", exc
+            )
+
+    def embed(self, text: str) -> list[float]:
+        """Embed text into a 384-dim semantic vector using MiniLM-L6-v2."""
+        if not self.available or self.model is None:
+            raise RuntimeError("SentenceTransformerEmbedder not available")
+        embedding = self.model.encode(text, convert_to_numpy=True, normalize_embeddings=True)
+        return embedding.tolist()
+
+    def batch_embed(self, texts: list[str]) -> list[list[float]]:
+        """Batch encode for efficiency (GPU processes batch in parallel)."""
+        if not self.available or self.model is None:
+            raise RuntimeError("SentenceTransformerEmbedder not available")
+        embeddings = self.model.encode(texts, convert_to_numpy=True, normalize_embeddings=True, batch_size=32)
+        return [e.tolist() for e in embeddings]
+
+
+def _make_embedder() -> "LocalEmbedder | SentenceTransformerEmbedder":
+    """
+    Factory: try SentenceTransformerEmbedder first (semantic, GPU-accelerated),
+    fall back to LocalEmbedder (n-gram MD5, always works).
+    """
+    st = SentenceTransformerEmbedder()
+    if st.available:
+        return st
+    return LocalEmbedder()
+
+
+# ---------------------------------------------------------------------------
 # Local Backend — JSON files + numpy cosine similarity
 # ---------------------------------------------------------------------------
 
@@ -116,27 +193,39 @@ class LocalMemoryBackend:
     def __init__(self, storage_dir: Path):
         self.storage_dir = storage_dir
         self.storage_dir.mkdir(parents=True, exist_ok=True)
-        self.embedder = LocalEmbedder()
-        self._cache: dict[str, dict] = {}  # In-memory cache
+        self.embedder = _make_embedder()  # SentenceTransformer (GPU) or LocalEmbedder (fallback)
+        # In-memory cache with maxsize to prevent unbounded memory growth (gap #47 fix)
+        from collections import OrderedDict
+        self._cache: OrderedDict[str, dict] = OrderedDict()
+        self._cache_maxsize: int = 128  # evict LRU entries beyond this
 
     def _collection_path(self, collection: str) -> Path:
         return self.storage_dir / f"{collection}.json"
 
+    def _set_cache(self, collection: str, data: dict) -> None:
+        """Insert into LRU cache, evicting oldest entry when over maxsize."""
+        if collection in self._cache:
+            self._cache.move_to_end(collection)
+        self._cache[collection] = data
+        if len(self._cache) > self._cache_maxsize:
+            self._cache.popitem(last=False)
+
     def _load_collection(self, collection: str) -> dict:
         if collection in self._cache:
+            self._cache.move_to_end(collection)  # mark as recently used
             return self._cache[collection]
 
         path = self._collection_path(collection)
         if path.exists():
             try:
                 data = json.loads(path.read_text())
-                self._cache[collection] = data
+                self._set_cache(collection, data)
                 return data
             except Exception:
                 pass
 
         data = {"collection": collection, "documents": []}
-        self._cache[collection] = data
+        self._set_cache(collection, data)
         return data
 
     def _save_collection(self, collection: str):
@@ -480,7 +569,11 @@ class RAGMemory:
             "backend": self.backend_type,
             "total_documents": total_docs,
             "collections": stats["collections"],
-            "embedding_dim": LocalEmbedder.DIM if self.backend_type == "local" else 1536,
+            "embedding_dim": (
+                getattr(self._backend, "embedder", None) and
+                getattr(self._backend.embedder, "DIM", None)
+            ) or (LocalEmbedder.DIM if self.backend_type == "local" else 1536),
+            "embedder": type(getattr(self._backend, "embedder", None)).__name__ if hasattr(self._backend, "embedder") else "unknown",
             "available_collections": COLLECTIONS,
         }
 

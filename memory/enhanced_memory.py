@@ -6,13 +6,21 @@ Features: Temporal chains, episodic compaction, importance scoring
 import asyncio
 import asyncpg
 import logging
-import weaviate
-from weaviate.util import generate_uuid5
+import json
 from datetime import datetime, timedelta
 from typing import Dict, Any, List, Optional, Tuple
 import numpy as np
 from dataclasses import dataclass, asdict
-import json
+
+try:
+    import weaviate
+    from weaviate.util import generate_uuid5
+    _WEAVIATE_AVAILABLE = True
+except ImportError:
+    import hashlib, uuid as _uuid
+    _WEAVIATE_AVAILABLE = False
+    def generate_uuid5(val):
+        return str(_uuid.UUID(hashlib.md5(str(val).encode()).hexdigest()))
 import hashlib
 
 logger = logging.getLogger(__name__)
@@ -33,7 +41,24 @@ class MemoryEpisode:
     access_count: int = 0
     last_accessed: Optional[datetime] = None
     compacted_from: Optional[List[str]] = None  # IDs of episodes this was summarized from
-    
+    # Emotional state at time of memory (VAD model — persisted from consciousness.py EmotionalState)
+    emotional_valence: float = 0.0        # -1 (very negative) to +1 (very positive)
+    emotional_arousal: float = 0.0        # -1 (very calm) to +1 (very excited)
+    emotional_dominance: float = 0.0      # -1 (submissive) to +1 (dominant/in-control)
+    emotional_score: float = 50.0         # Composite 0-100: 50=neutral, <30=distress, >70=highly positive
+    # Memory lifecycle — granularity for compression management
+    granularity_level: int = 1            # 1=verbatim (0-7d), 2=summarized (7-30d), 3=abstract (30d+)
+
+    @staticmethod
+    def compute_emotional_score(valence: float, arousal: float, dominance: float) -> float:
+        """Compute composite emotional score (0-100) from VAD dimensions.
+
+        Formula from External Memory Architecture doc:
+          score = 50 + (valence × 30) + (|arousal| × 15) + (dominance × 5)
+        Interpretation: < 30 = significant distress | 45-55 = neutral | > 70 = highly positive
+        """
+        return round(50.0 + (valence * 30) + (abs(arousal) * 15) + (dominance * 5), 1)
+
     def to_dict(self) -> Dict[str, Any]:
         data = asdict(self)
         data['timestamp'] = self.timestamp.isoformat()
@@ -80,6 +105,30 @@ class TemporalMemoryChain:
     def get_episode_chains(self, episode_id: str) -> List[str]:
         """Get all chains an episode belongs to"""
         return self.episode_chains.get(episode_id, [])
+
+    def query_by_emotion(
+        self,
+        all_episodes: List["MemoryEpisode"],
+        valence_min: float = -1.0,
+        valence_max: float = 1.0,
+        score_min: float = 0.0,
+        score_max: float = 100.0,
+        limit: int = 20,
+    ) -> List["MemoryEpisode"]:
+        """Filter episodes by emotional VAD range and return sorted by emotional_score.
+
+        Example — find distress moments:
+            query_by_emotion(episodes, score_min=0.0, score_max=35.0)
+        Example — find high-positive moments:
+            query_by_emotion(episodes, valence_min=0.5, score_min=65.0)
+        """
+        matching = [
+            ep for ep in all_episodes
+            if valence_min <= ep.emotional_valence <= valence_max
+            and score_min <= ep.emotional_score <= score_max
+        ]
+        matching.sort(key=lambda ep: ep.emotional_score, reverse=True)
+        return matching[:limit]
     
     def find_causal_path(self, start_episode: str, end_episode: str, max_depth: int = 10) -> Optional[List[str]]:
         """Find a causal path between two episodes"""
@@ -272,12 +321,15 @@ class EnhancedMemoryStore:
     Main memory store integrating all enhanced features
     """
     
-    def __init__(self, 
+    def __init__(self,
                  postgres_dsn: str = "postgresql://sovereign:sovereign@localhost:5432/sovereign_memory",
-                 weaviate_url: str = "http://localhost:8080"):
+                 weaviate_url: str = "http://localhost:8080",
+                 persist_path: str = "/tmp/meok-persist"):
         self.postgres_dsn = postgres_dsn
         self.weaviate_url = weaviate_url
+        self.persist_path = persist_path
         self.pool: Optional[asyncpg.Pool] = None
+        self.sqlite_conn: Optional[Any] = None
         self.weaviate_client: Optional[weaviate.Client] = None
         self.weaviate_available: bool = False
 
@@ -295,6 +347,33 @@ class EnhancedMemoryStore:
         except Exception as e:
             self.pool = None
             logger.warning("PostgreSQL unavailable — memory writes disabled: %s", e)
+
+        # SQLite fallback — persists when Postgres unavailable
+        if self.pool is None:
+            try:
+                import os
+                import aiosqlite
+                os.makedirs(self.persist_path, exist_ok=True)
+                db_path = os.path.join(self.persist_path, "meok.db")
+                self.sqlite_conn = await aiosqlite.connect(db_path)
+                await self.sqlite_conn.execute("""
+                    CREATE TABLE IF NOT EXISTS memory_episodes (
+                        id TEXT PRIMARY KEY,
+                        content TEXT NOT NULL,
+                        timestamp TEXT NOT NULL,
+                        importance_score REAL NOT NULL,
+                        care_weight REAL NOT NULL,
+                        source_agent TEXT NOT NULL,
+                        memory_type TEXT NOT NULL,
+                        tags_json TEXT DEFAULT '[]',
+                        access_count INTEGER DEFAULT 0
+                    )
+                """)
+                await self.sqlite_conn.commit()
+                logger.info("SQLite fallback active at %s", db_path)
+            except Exception as e:
+                self.sqlite_conn = None
+                logger.warning("SQLite fallback also failed: %s", e)
 
         # Weaviate (non-fatal — Postgres is source of truth)
         try:
@@ -324,9 +403,29 @@ class EnhancedMemoryStore:
                     access_count INTEGER DEFAULT 0,
                     last_accessed TIMESTAMP,
                     compacted_from TEXT[],
-                    vector_id TEXT
+                    vector_id TEXT,
+                    emotional_valence FLOAT DEFAULT 0.0,
+                    emotional_arousal FLOAT DEFAULT 0.0,
+                    emotional_dominance FLOAT DEFAULT 0.0,
+                    emotional_score FLOAT DEFAULT 50.0,
+                    granularity_level INTEGER DEFAULT 1
                 )
             """)
+            # Add VAD columns to existing tables (idempotent — fails silently if already exists)
+            for col_def in [
+                "emotional_valence FLOAT DEFAULT 0.0",
+                "emotional_arousal FLOAT DEFAULT 0.0",
+                "emotional_dominance FLOAT DEFAULT 0.0",
+                "emotional_score FLOAT DEFAULT 50.0",
+                "granularity_level INTEGER DEFAULT 1",
+            ]:
+                col_name = col_def.split()[0]
+                try:
+                    await conn.execute(
+                        f"ALTER TABLE memory_episodes ADD COLUMN IF NOT EXISTS {col_def}"
+                    )
+                except Exception:
+                    pass  # Column already exists
             
             await conn.execute("""
                 CREATE TABLE IF NOT EXISTS temporal_chains (
@@ -376,20 +475,30 @@ class EnhancedMemoryStore:
         except weaviate.exceptions.UnexpectedStatusCodeException:
             pass  # Class already exists
     
-    async def record_episode(self, 
+    async def record_episode(self,
                            content: str,
                            source_agent: str,
                            memory_type: str = "interaction",
                            care_weight: float = 0.5,
                            tags: List[str] = None,
                            related_to: Optional[str] = None,
-                           emotional_valence: float = 0.5,
+                           emotional_valence: float = 0.0,
+                           emotional_arousal: float = 0.0,
+                           emotional_dominance: float = 0.0,
                            decision_impact: float = 0.0,
-                           agent_trust: float = 0.5) -> MemoryEpisode:
-        """Record a new memory episode"""
-        
+                           agent_trust: float = 0.5,
+                           granularity_level: int = 1) -> MemoryEpisode:
+        """Record a new memory episode with optional emotional VAD tagging.
+
+        Pass emotional_valence/arousal/dominance from consciousness.py EmotionalState
+        to enable emotion-aware retrieval and care pattern analysis.
+        """
         episode_id = generate_uuid5({"content": content, "timestamp": datetime.now().isoformat()})
-        
+
+        emotional_score = MemoryEpisode.compute_emotional_score(
+            emotional_valence, emotional_arousal, emotional_dominance
+        )
+
         episode = MemoryEpisode(
             id=episode_id,
             content=content,
@@ -399,7 +508,12 @@ class EnhancedMemoryStore:
             source_agent=source_agent,
             memory_type=memory_type,
             related_episodes=[related_to] if related_to else [],
-            tags=tags or []
+            tags=tags or [],
+            emotional_valence=emotional_valence,
+            emotional_arousal=emotional_arousal,
+            emotional_dominance=emotional_dominance,
+            emotional_score=emotional_score,
+            granularity_level=granularity_level,
         )
         
         # Calculate importance
@@ -414,7 +528,23 @@ class EnhancedMemoryStore:
             except Exception:
                 pass
         if not self.pool:
-            # In-memory only — no persistent storage available
+            # Try SQLite fallback
+            if self.sqlite_conn:
+                try:
+                    await self.sqlite_conn.execute("""
+                        INSERT OR REPLACE INTO memory_episodes
+                        (id, content, timestamp, importance_score, care_weight,
+                         source_agent, memory_type, tags_json, access_count)
+                        VALUES (?,?,?,?,?,?,?,?,?)
+                    """, (episode.id, episode.content,
+                          episode.timestamp.isoformat() if hasattr(episode.timestamp, 'isoformat') else str(episode.timestamp),
+                          episode.importance_score, episode.care_weight,
+                          episode.source_agent, episode.memory_type,
+                          json.dumps(episode.tags or []), episode.access_count))
+                    await self.sqlite_conn.commit()
+                    return episode
+                except Exception as e:
+                    logger.warning("SQLite write failed: %s", e)
             logger.warning("No PostgreSQL pool — memory recorded in-memory only")
             return episode
         async with self.pool.acquire() as conn:
@@ -448,10 +578,14 @@ class EnhancedMemoryStore:
                            query: str,
                            care_weight_min: float = 0.0,
                            tags: List[str] = None,
-                           limit: int = 5) -> List[Dict[str, Any]]:
+                           limit: int = 5,
+                           agent_id: str = None) -> List[Dict[str, Any]]:
         """Query memories using vector similarity + care weighting.
 
         Falls back to PostgreSQL keyword search if Weaviate is unavailable.
+
+        Args:
+            agent_id: Optional source_agent filter — returns only memories from this agent.
         """
 
         memories = []
@@ -469,6 +603,9 @@ class EnhancedMemoryStore:
 
                 if results and "data" in results:
                     memories = results.get("data", {}).get("Get", {}).get("MemoryEpisode") or []
+                    # Apply agent_id filter on Weaviate results (post-filter)
+                    if agent_id:
+                        memories = [m for m in memories if m.get("source_agent") == agent_id]
             except Exception as e:
                 logger.warning("Weaviate query failed, falling back to Postgres: %s", e)
 
@@ -476,14 +613,24 @@ class EnhancedMemoryStore:
         if not memories:
             try:
                 async with self.pool.acquire() as conn:
-                    rows = await conn.fetch("""
-                        SELECT content, memory_type, source_agent, tags,
-                               importance_score, care_weight, timestamp
-                        FROM memory_episodes
-                        WHERE content ILIKE $1
-                        ORDER BY importance_score DESC
-                        LIMIT $2
-                    """, f"%{query[:100]}%", limit * 2)
+                    if agent_id:
+                        rows = await conn.fetch("""
+                            SELECT content, memory_type, source_agent, tags,
+                                   importance_score, care_weight, timestamp
+                            FROM memory_episodes
+                            WHERE content ILIKE $1 AND source_agent = $3
+                            ORDER BY importance_score DESC
+                            LIMIT $2
+                        """, f"%{query[:100]}%", limit * 2, agent_id)
+                    else:
+                        rows = await conn.fetch("""
+                            SELECT content, memory_type, source_agent, tags,
+                                   importance_score, care_weight, timestamp
+                            FROM memory_episodes
+                            WHERE content ILIKE $1
+                            ORDER BY importance_score DESC
+                            LIMIT $2
+                        """, f"%{query[:100]}%", limit * 2)
                     memories = [{
                         "content": row["content"],
                         "memory_type": row["memory_type"],
@@ -495,7 +642,40 @@ class EnhancedMemoryStore:
                     } for row in rows]
             except Exception as e:
                 logger.warning("Postgres fallback also failed: %s", e)
-                return []
+                # Try SQLite
+                if self.sqlite_conn:
+                    try:
+                        if agent_id:
+                            sql = """
+                                SELECT content, memory_type, source_agent, tags_json,
+                                       importance_score, care_weight, timestamp
+                                FROM memory_episodes
+                                WHERE content LIKE ? AND source_agent = ?
+                                ORDER BY importance_score DESC
+                                LIMIT ?
+                            """
+                            params = (f"%{query[:100]}%", agent_id, limit * 2)
+                        else:
+                            sql = """
+                                SELECT content, memory_type, source_agent, tags_json,
+                                       importance_score, care_weight, timestamp
+                                FROM memory_episodes
+                                WHERE content LIKE ?
+                                ORDER BY importance_score DESC
+                                LIMIT ?
+                            """
+                            params = (f"%{query[:100]}%", limit * 2)
+                        async with self.sqlite_conn.execute(sql, params) as cursor:
+                            rows = await cursor.fetchall()
+                        memories = [{"content": r[0], "memory_type": r[1],
+                                     "source_agent": r[2], "tags": json.loads(r[3] or "[]"),
+                                     "importance_score": r[4], "care_weight": r[5],
+                                     "timestamp": r[6]} for r in rows]
+                    except Exception as se:
+                        logger.warning("SQLite read also failed: %s", se)
+                        return []
+                else:
+                    return []
 
         # Apply care weighting and filtering
         scored_memories = []
@@ -512,7 +692,77 @@ class EnhancedMemoryStore:
 
         scored_memories.sort(key=lambda x: x[0], reverse=True)
         return [mem for _, mem in scored_memories[:limit]]
-    
+
+    async def recall_for_task(
+        self,
+        query: str,
+        top_k: int = 5,
+        care_weight_min: float = 0.3,
+    ) -> List[Dict[str, Any]]:
+        """
+        Recall memories relevant to a task and increment their access_count.
+
+        This is the GAP 3 fix: memories were written but access_count stayed 0
+        forever because query_memories() was never called before actions.
+        This method both recalls AND marks memories as accessed.
+
+        Called by TaskExecutor._recall_memories() before every task execution.
+        """
+        # Fetch including episode_id so we can increment access counts
+        results: List[Dict[str, Any]] = []
+        episode_ids: List[str] = []
+
+        try:
+            if self.pool:
+                async with self.pool.acquire() as conn:
+                    rows = await conn.fetch(
+                        """
+                        SELECT episode_id, content, source_agent, memory_type,
+                               care_weight, importance_score, access_count, timestamp
+                        FROM memory_episodes
+                        WHERE care_weight >= $1
+                          AND content ILIKE $2
+                        ORDER BY importance_score DESC, care_weight DESC
+                        LIMIT $3
+                        """,
+                        care_weight_min,
+                        f"%{query[:80]}%",
+                        top_k * 2,
+                    )
+                    for row in rows:
+                        episode_ids.append(row["episode_id"])
+                        results.append({
+                            "episode_id": row["episode_id"],
+                            "content": row["content"],
+                            "source_agent": row["source_agent"],
+                            "memory_type": row["memory_type"],
+                            "care_weight": float(row["care_weight"] or 0),
+                            "importance_score": float(row["importance_score"] or 0),
+                            "access_count": (row["access_count"] or 0) + 1,
+                        })
+
+                    # Increment access_count for recalled episodes (THE critical step)
+                    if episode_ids:
+                        await conn.execute(
+                            """
+                            UPDATE memory_episodes
+                            SET access_count = access_count + 1,
+                                accessed_at   = NOW()
+                            WHERE episode_id = ANY($1)
+                            """,
+                            episode_ids,
+                        )
+        except Exception as e:
+            logger.debug("recall_for_task Postgres failed, trying base query: %s", e)
+            # Fall back to query_memories without access_count increment
+            results = await self.query_memories(
+                query=query,
+                care_weight_min=care_weight_min,
+                limit=top_k,
+            )
+
+        return results[:top_k]
+
     async def get_temporal_chain(self, episode_id: str, 
                                 direction: str = "forward",
                                 max_steps: int = 5) -> List[Dict[str, Any]]:
@@ -621,19 +871,63 @@ class EnhancedMemoryStore:
             "top_tags": {row["tag"]: row["count"] for row in tag_counts}
         }
     
-    async def list_all_memories(self, limit: int = 100) -> List[Dict[str, Any]]:
-        """List all memories from PostgreSQL"""
+    async def list_all_memories(self, limit: int = 100, agent_id: str = None) -> List[Dict[str, Any]]:
+        """List all memories from PostgreSQL or SQLite fallback.
+
+        Args:
+            agent_id: Optional source_agent filter — returns only memories from this agent.
+        """
         if not self.pool:
+            if self.sqlite_conn:
+                try:
+                    if agent_id:
+                        sql = """
+                            SELECT id, content, timestamp, importance_score, care_weight,
+                                   source_agent, memory_type, tags_json, access_count
+                            FROM memory_episodes
+                            WHERE source_agent = ?
+                            ORDER BY timestamp DESC
+                            LIMIT ?
+                        """
+                        params = (agent_id, limit)
+                    else:
+                        sql = """
+                            SELECT id, content, timestamp, importance_score, care_weight,
+                                   source_agent, memory_type, tags_json, access_count
+                            FROM memory_episodes
+                            ORDER BY timestamp DESC
+                            LIMIT ?
+                        """
+                        params = (limit,)
+                    async with self.sqlite_conn.execute(sql, params) as cursor:
+                        rows = await cursor.fetchall()
+                    return [{"id": r[0], "content": r[1], "timestamp": r[2],
+                             "importance_score": r[3], "care_weight": r[4],
+                             "source_agent": r[5], "memory_type": r[6],
+                             "tags": json.loads(r[7] or "[]"), "access_count": r[8]}
+                            for r in rows]
+                except Exception as e:
+                    logger.warning("SQLite list_all failed: %s", e)
             return []
         async with self.pool.acquire() as conn:
-            rows = await conn.fetch("""
-                SELECT id, content, timestamp, importance_score, care_weight,
-                       source_agent, memory_type, tags, access_count
-                FROM memory_episodes
-                ORDER BY timestamp DESC
-                LIMIT $1
-            """, limit)
-            
+            if agent_id:
+                rows = await conn.fetch("""
+                    SELECT id, content, timestamp, importance_score, care_weight,
+                           source_agent, memory_type, tags, access_count
+                    FROM memory_episodes
+                    WHERE source_agent = $2
+                    ORDER BY timestamp DESC
+                    LIMIT $1
+                """, limit, agent_id)
+            else:
+                rows = await conn.fetch("""
+                    SELECT id, content, timestamp, importance_score, care_weight,
+                           source_agent, memory_type, tags, access_count
+                    FROM memory_episodes
+                    ORDER BY timestamp DESC
+                    LIMIT $1
+                """, limit)
+
             return [{
                 "id": row["id"],
                 "content": row["content"],

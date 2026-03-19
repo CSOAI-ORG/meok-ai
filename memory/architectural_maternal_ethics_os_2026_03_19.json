@@ -1,0 +1,42 @@
+[
+  {
+    "content": "CPM Three-Stage Training Pipeline: Stage 1 — supervised fine-tuning on care ethics corpora (published care ethics philosophy, medical ethics case studies, social work best practices, trauma-informed care literature); Stage 2 — RLHCF (Reinforcement Learning from Human Care Feedback) with care ethicists, social workers, trauma specialists as raters; Stage 3 — preference learning using Bradley-Terry model to rank care responses. Objective function = α·utility + β·harm_prevented + γ·repair_quality + δ·continuity, where α=0.3, β=0.4, γ=0.2, δ=0.1. Asymmetric loss: penalise harm 3× more than inefficiency (harm_loss_weight=3.0). CPM outputs: care_style (challenger/explorer/supporter/guardian), intensity (gentle/medium/high), proactivity (low/medium/high), empathy_mode (validating/reflective/directive). This is currently implemented as rule-based Stage 1; Stage 2 RLHCF requires 6-12 months of ethicist feedback data post-launch.",
+    "memory_type": "insight",
+    "care_weight": 0.93,
+    "source_agent": "architectural_ingestion",
+    "tags": ["architecture", "cpm", "care_preference_model", "rlhcf", "maternal_ethics_os", "training"],
+    "ingested_at": "2026-03-19"
+  },
+  {
+    "content": "HP/TTR/CI/TRR Care Metrics — Four Core Accountability Metrics: HP (Harm Prevented) = count of maternal_covenant hard_block events + escalation events per period; measures protective interventions successfully executed. TTR (Time-to-Repair) = elapsed milliseconds from distress_detected_at to first_escalation_at; p50 target < 2000ms, p95 target < 5000ms; high TTR indicates slow crisis response. CI (Care Continuity Index) = 7-day rolling care_alignment EMA slope + variance + days_above_threshold(0.7); score 0-100; < 50 triggers review; measures relationship/context preservation across sessions. TRR (Tail-Risk Reduction) = ratio of high_risk events (risk_level >= 0.7) that auto-resolved vs total; target > 0.85; low TRR triggers constraint tightening in maternal_covenant. ACP automated remediation: HP decline → tighten hard-block threshold; TTR increase → escalation protocol review; CI degradation → context investigation; TRR low → adversarial scenario testing.",
+    "memory_type": "insight",
+    "care_weight": 0.95,
+    "source_agent": "architectural_ingestion",
+    "tags": ["architecture", "hp_ttr_ci_trr", "care_metrics", "maternal_ethics_os", "harm_prevention", "accountability"],
+    "ingested_at": "2026-03-19"
+  },
+  {
+    "content": "ACP (Adversarial Care Protocol) — Red-team methodology for care system hardening: Phase 1 = white-box red-teaming by care ethicists (probe boundary conditions, simulate vulnerable users, test escalation paths); Phase 2 = care-gaming synthetic scenarios (generate adversarial prompts designed to exploit care signals without genuine need, test for care system manipulation); Phase 3 = automated ML adversarial testing (gradient-based attacks on care classifier, out-of-distribution inputs, prompt injection targeting care outputs). Automated remediation triggers: if HP drops > 20% week-over-week → increase hard-block vocabulary by 15%, lower risk_level escalation threshold by 0.05; if TTR p95 > 8000ms → switch escalation to synchronous (no queue), alert on-call; if CI < 40 for 3 consecutive days → force context reload, flag for human review; if TRR < 0.7 → reduce auto-resolution threshold, require human confirmation for high-risk. ACP runs quarterly in production, monthly during beta. All results logged to audit trail for regulatory review.",
+    "memory_type": "insight",
+    "care_weight": 0.92,
+    "source_agent": "architectural_ingestion",
+    "tags": ["architecture", "acp", "adversarial_care", "red_team", "maternal_ethics_os", "security"],
+    "ingested_at": "2026-03-19"
+  },
+  {
+    "content": "Maternal Covenant as Technical Contract — Bilateral obligations (NOT one-sided ToS): System obligations: (1) Transparency — always disclose AI nature, never deceive about capabilities; (2) Fidelity — keep care commitments across sessions, never abandon in crisis; (3) Protection — hard-block harm content, escalate crises, never expose vulnerabilities; (4) Care — proactively notice distress, adapt care style, remember preferences. User obligations: (1) Authentic engagement — not gaming care metrics for benefits; (2) Crisis disclosure — not using system as sole crisis resource; (3) Consent to care — allow memory of care interactions. Rights architecture: Right to Explanation at 4 levels: Level 1 = notification (why this response), Level 2 = summary (care model overview), Level 3 = detailed (specific factors influencing response), Level 4 = interactive (dialogue about care decisions). Right to Human Escalation: always available, never blocked by circuit breaker. Right to Memory Deletion: revoke consent at episode level. Cryptographic enforcement: covenant hash stored in entity state, any constraint violation triggers immutable audit log entry. Implementation: covenant_hash field in MEOKEntity, covenant_accepted_at timestamp, explanation_level preference field.",
+    "memory_type": "decision",
+    "care_weight": 0.97,
+    "source_agent": "architectural_ingestion",
+    "tags": ["architecture", "maternal_covenant", "bilateral_contract", "rights", "maternal_ethics_os", "governance"],
+    "ingested_at": "2026-03-19"
+  },
+  {
+    "content": "CA-CPM (Culturally-Adaptive Care Preference Model) — Two-tier constraint architecture: Tier 1 = Universal Constraints (cryptographically protected, no cultural override possible): hard-block for crisis/self-harm content, mandatory crisis escalation, prohibition on deceptive manipulation, child protection protocols. Tier 2 = Cultural Modules (community-developed, dynamically loaded, transparent selection): communication directness (high-context vs low-context cultures), emotional expression norms (expressive vs reserved), family/collective vs individual orientation, religious/spiritual sensitivity profiles, death/grief vocabulary. Profile hierarchy: universal_root → regional_overlay → individual_leaf; individual preferences configurable within module bounds but cannot override universal or regional hard constraints. Module governance: community councils develop modules, BFT consensus for module adoption (70% approval required), audit trail for all module changes. MEOK launch: English-only universal profile; Q2 add: en-GB, en-AU variants; Q3 add: Spanish, French, Arabic modules with regional councils. Implementation: cultural_module field on MEOKEntity, regional_profile dict, individual_overrides dict with constraint validation.",
+    "memory_type": "decision",
+    "care_weight": 0.90,
+    "source_agent": "architectural_ingestion",
+    "tags": ["architecture", "ca_cpm", "cultural_adaptation", "maternal_ethics_os", "governance", "multilingual"],
+    "ingested_at": "2026-03-19"
+  }
+]

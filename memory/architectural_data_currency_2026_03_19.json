@@ -1,0 +1,26 @@
+[
+  {
+    "content": "MEOK Data Sovereignty Model — PMDP (Privacy-Monetization Differential Privacy) architecture: Users own ALL their data: memory episodes, entity state, gaming sessions, care interaction history, VAD emotional traces. No data leaves the system without explicit, revocable, attribute-level consent. Tiered data release model (ordered by sovereignty): Tier 1 = Synthetic only (no real data, MEOK-generated, always allowed, no consent required); Tier 2 = DP queries (formal differential privacy guarantees, epsilon-based, aggregated insights only, opt-in with clear explanation); Tier 3 = Federated (local compute only, model gradients shared not data, never raw interactions, explicit opt-in with revocation); Tier 4 = Raw (self-hosted only, Nick's own VPS/local machine, no third-party ever). PMDP pricing: epsilon is the 'privacy cost'; higher epsilon = less private = lower market value; lower epsilon = stronger guarantee = higher value. Example: epsilon=0.1 data worth 3× epsilon=1.0 data. Privacy budget dashboard: track cumulative epsilon consumed per user per query category; when budget exhausted, query refused until next budget reset period. MEOK MVP launch policy: Tier 4 only (self-hosted raw), no marketplace, no external data flows. Q2 milestone: implement DP query layer for aggregate research partnerships. Q3 milestone: opt-in federated learning for care alignment improvement.",
+    "memory_type": "decision",
+    "care_weight": 0.95,
+    "source_agent": "architectural_ingestion",
+    "tags": ["architecture", "data_sovereignty", "pmdp", "differential_privacy", "data_currency", "gdpr", "privacy"],
+    "ingested_at": "2026-03-19"
+  },
+  {
+    "content": "Consent and Revocation Architecture for MEOK — Granular, cryptographically-enforced consent management: Attribute-level consent: engagement_metrics, purchase_history, gaming_sessions, care_interactions, emotional_vad_traces, and entity_state each have independent consent flags — consent to one does NOT imply consent to all. Temporal expiration defaults (can be extended by user, never shortened by system): behavioral/engagement data = 90 days auto-expire; care interaction history = 1 year; entity state snapshots = until account deletion; emotional VAD traces = 30 days (sensitive biometric-adjacent data). Cryptographic revocation: consent stored as signed token; revocation = key rotation + smart contract state transition (on-chain audit trail); revoked data deleted within 24 hours (not 30 days like GDPR minimum — MEOK exceeds GDPR). User-facing access log: every data access logged with: accessor_id, data_category, timestamp, purpose, compensation_paid (if any). Implementation: add consent_scope (dict of category→bool) and expires_at (dict of category→timestamp) to MemoryEpisode. Add revoke_memory(episode_id, categories) MCP tool. Add data_access_log table in Postgres. Right to full export: GET /api/user/export returns all data as encrypted ZIP within 1 hour. Covenant alignment: consent architecture IS the technical implementation of the Maternal Covenant bilateral contract.",
+    "memory_type": "decision",
+    "care_weight": 0.93,
+    "source_agent": "architectural_ingestion",
+    "tags": ["architecture", "consent", "revocation", "gdpr", "data_currency", "privacy", "maternal_covenant"],
+    "ingested_at": "2026-03-19"
+  },
+  {
+    "content": "Gaming Data as High-Value Asset — Q3 roadmap for MEOK Gaming Companion data layer: Why gaming data is premium: in-game economy patterns (player trading, market-making, pricing signals) = 50-100× premium over standard behavioral data for market research; esports performance metrics = premium tier for team scouting, brand sponsorship; cross-game identity signals = authentication and reputation use cases. Value hierarchy: casual gameplay logs = low value; ranked match performance = medium; in-game economy participation = high; tournament data = premium. ZK cross-game reputation passport: zero-knowledge proofs of skill level without exposing specific match data; 'I am top-5% Valorant IGL' provable without revealing opponent names or strategies; portable across games using zkSNARK commitment scheme. Esports tokenization: granular performance metrics licensed by players (not orgs) on per-use basis; smart contract enforces attribution and payment; micro-payment per research query (e.g., $0.001 per aggregated stat request). Privacy preservation: all gaming data under same PMDP model; individual match data never exposed without explicit consent; only aggregate trends and ZK proofs in marketplace. MEOK Q3 roadmap: (1) add game_session_value_score to gaming companion (quantify data value to user); (2) opt-in esports data marketplace (smart contract integration); (3) cross-game reputation passport (ZK proof generation for top performers). MVP constraint: zero gaming data external flows — all companion data stays on user's sovereign instance.",
+    "memory_type": "insight",
+    "care_weight": 0.85,
+    "source_agent": "architectural_ingestion",
+    "tags": ["architecture", "gaming", "data_currency", "esports", "zk_proofs", "tokenization", "q3_roadmap"],
+    "ingested_at": "2026-03-19"
+  }
+]

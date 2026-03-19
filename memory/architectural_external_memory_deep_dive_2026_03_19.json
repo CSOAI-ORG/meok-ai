@@ -1,0 +1,42 @@
+[
+  {
+    "content": "Vector DB Selection for MEOK — Benchmark results and decision: Qdrant in-memory: 15-30ms p95 (Rust implementation, best efficiency per watt, excellent for < 10M vectors); Milvus HNSW: 25-50ms p95 (best for billion+ scale, storage-compute separation, GPU acceleration); pgvector DiskANN: 471 QPS at 99% recall on 50M vectors, 28× lower p95 than Pinecone at scale; Weaviate: 30-70ms (best native hybrid BM25+vector, GraphQL API, good for complex schemas). Decision hierarchy: MEOK MVP = pgvector HNSW (PROP-001 approved by BFT council, already in Postgres stack, zero new infra); MEOK 100K users = evaluate Qdrant (easiest migration from pgvector, Rust client available); MEOK 1M+ users = Milvus with GPU acceleration (storage-compute separation critical at scale). Sovereignty principle: never use Pinecone, Weaviate Cloud, or any managed-only vector DB — must be self-hostable. Current LocalEmbedder (256-dim MD5) compatible with pgvector; MiniLM-L6 (384-dim) requires index rebuild on upgrade.",
+    "memory_type": "decision",
+    "care_weight": 0.88,
+    "source_agent": "architectural_ingestion",
+    "tags": ["architecture", "vector_db", "pgvector", "qdrant", "milvus", "external_memory", "rag"],
+    "ingested_at": "2026-03-19"
+  },
+  {
+    "content": "Embedding Model Upgrade Path for MEOK — Current to production trajectory: CURRENT: LocalEmbedder (256-dim n-gram MD5 hashing, deterministic, zero dependencies, always works, but semantic similarity is poor — 'gaming' ≠ 'valorant'). NEXT (implement now): sentence-transformers MiniLM-L6-v2 (384-dim, MIT license, 80MB download, CPU: ~100ms/query, GPU: ~5ms/query, runs on Vast.ai CUDA without extra infra). PRODUCTION (Q2): BGE-M3 (1024-dim, MIT license, sparse+dense hybrid retrieval, multilingual 100+ languages, CPU: ~300ms, GPU: ~15ms). ENTERPRISE (Q3+): Custom fine-tuned on MEOK care interactions for domain-specific retrieval. Implementation strategy: try SentenceTransformerEmbedder first at import time; if sentence_transformers not installed → fall back to LocalEmbedder (zero degradation in function, only in recall quality). GPU detection: sentence_transformers auto-detects CUDA; on Vast.ai this means all encode() calls use GPU automatically. Sovereignty: never use OpenAI embeddings API as primary (data exposure + cost + lock-in); OK as optional secondary for comparison only.",
+    "memory_type": "decision",
+    "care_weight": 0.91,
+    "source_agent": "architectural_ingestion",
+    "tags": ["architecture", "embeddings", "minilm", "bge_m3", "sentence_transformers", "external_memory", "gpu", "vast_ai"],
+    "ingested_at": "2026-03-19"
+  },
+  {
+    "content": "RAG Pattern Architecture for MEOK — Utterance-level chunking with emotional context: Chunking strategy: utterance-level (per conversation turn); preserve 2-3 turn sliding window for context coherence; never split mid-sentence; max chunk size 512 tokens. Retrieval pipeline: (1) Query expansion via LLM router (fast task_type) to generate 3 alternative phrasings; (2) Hybrid BM25+vector with α=0.7 weight on semantic, 0.3 on keyword; (3) ColBERT-style late interaction re-ranking (2-5ms per candidate, top-100 → top-10); (4) Emotional VAD filter: boost memories with matching emotional valence ±0.3; (5) Time-decay: λ=0.05/day for conversational memories, λ=0.01/day for stable preferences/facts. Staleness management: flag memories > 90 days old with staleness_flag=True; during retrieval, surface flagged memories with confirmation prompt ('This memory is from 3 months ago — still relevant?'). Context injection: inject top-5 retrieved memories as system context prefix, formatted as 'Memory [date]: [content] (emotional_score: [N])'. BM25 implementation: use rank_bm25 library (MIT, no dependencies); build inverted index on episode content at startup.",
+    "memory_type": "insight",
+    "care_weight": 0.89,
+    "source_agent": "architectural_ingestion",
+    "tags": ["architecture", "rag", "retrieval", "bm25", "colbert", "chunking", "external_memory", "hybrid_search"],
+    "ingested_at": "2026-03-19"
+  },
+  {
+    "content": "Emotional VAD Tagging Architecture — Bridging consciousness.py and enhanced_memory.py: The consciousness module already computes 6D EmotionalState (valence, arousal, dominance + care_resonance, curiosity_spark, aesthetic_pleasure) per interaction in real-time. The gap: these emotional signals are NOT persisted to memory episodes. Solution: at MemoryEpisode creation time, capture the current EmotionalState and store as 4 fields: emotional_valence (-1 to 1, from EmotionalState.valence), emotional_arousal (-1 to 1, from EmotionalState.arousal), emotional_dominance (-1 to 1, from EmotionalState.dominance), emotional_score (0-100 composite). Composite formula: score = 50 + (valence × 30) + (|arousal| × 15) + (dominance × 5). Score interpretation: < 30 = significant distress; 30-45 = mild negative; 45-55 = neutral; 55-70 = positive; > 70 = highly positive/excited. Applications enabled by VAD tagging: (1) Morning briefing emotional arc ('Nick had a rough Tuesday evening, VAD score 28, recovered by Wednesday'); (2) Emotion-aware retrieval (boost memories matching current emotional context); (3) Care pattern analysis ('whenever care_alignment drops below 0.6, emotional_score follows within 2 hours'); (4) Crisis early warning (sustained low VAD score despite neutral content = masked distress signal).",
+    "memory_type": "decision",
+    "care_weight": 0.94,
+    "source_agent": "architectural_ingestion",
+    "tags": ["architecture", "emotional_vad", "valence", "arousal", "dominance", "memory", "external_memory", "consciousness"],
+    "ingested_at": "2026-03-19"
+  },
+  {
+    "content": "Memory Lifecycle Management — Three-tier compression architecture: Granularity levels: Level 1 = verbatim (0-7 days, stored full-text, all fields); Level 2 = summarized (7-30 days, 5-10× compression via LLM, emotional arc + key decisions + unresolved threads preserved, VAD averaged); Level 3 = abstract (30+ days, 50-100× compression, only care-critical signals kept, entity state snapshot only). Compression triggers: nightshift cycle at 01:30 when episode_count > 500 OR any episode older than 7 days with granularity_level=1. Compression algorithm: batch 5 episodes; system prompt = 'Summarise these episodes into 1 memory preserving: emotional arc, key decisions, care patterns, unresolved threads. Target: 80% shorter.'; LLM router task_type='fast'; store compressed as new episode with granularity_level=2 + source_episode_ids list. Deletion policy: original verbatim episodes deleted 24h after compression confirmed (soft delete with deleted_at timestamp, hard delete on next nightshift). Storage tiers: granularity 1+2 in Postgres hot storage; granularity 3 in JSON flat file cold storage (significant cost reduction at scale). VAD preservation: average emotional_valence/arousal/dominance across batch; keep emotional_score of highest-intensity episode as peak_emotional_score. Retrieval: compressed summaries participate in RAG search normally; mark result with granularity_level in metadata so UI can show '[Compressed memory from March 2026]'.",
+    "memory_type": "decision",
+    "care_weight": 0.87,
+    "source_agent": "architectural_ingestion",
+    "tags": ["architecture", "memory_lifecycle", "compression", "granularity", "nightshift", "external_memory", "storage"],
+    "ingested_at": "2026-03-19"
+  }
+]
