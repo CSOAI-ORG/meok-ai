@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MEOK — Character Emergence Demo</title>
+  <link rel="stylesheet" href="nav.css">
+  <style>
+    .demo-wrap {
+      padding: 80px 5%;
+      text-align: center;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 48px;
+    }
+    .demo-companion { min-height: 200px; display: flex; align-items: center; justify-content: center; }
+    .controls { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+    .ctrl-btn {
+      padding: 10px 20px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--light);
+      cursor: pointer;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--mid);
+      transition: all var(--transition-care);
+      min-height: var(--touch-min);
+    }
+    .ctrl-btn:hover { background: var(--deep-blue); color: #fff; border-color: var(--deep-blue); }
+    .stage-info {
+      font-family: var(--font-serif, Georgia);
+      font-size: 0.95rem;
+      color: var(--mid);
+      max-width: 480px;
+      line-height: 1.7;
+    }
+    .interaction-count {
+      font-size: 2rem;
+      font-weight: 900;
+      color: var(--deep-blue);
+    }
+    .interaction-label { font-size: 0.8rem; color: var(--mid); margin-top: 4px; }
+  </style>
+</head>
+<body>
+
+<nav class="nav" role="navigation">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">MEOK<span>.AI</span></a>
+    <a href="index.html" style="font-size:0.85rem;color:var(--mid);text-decoration:none;">← Back to site</a>
+  </div>
+</nav>
+
+<div class="demo-wrap">
+  <div>
+    <h1 class="section-title" style="margin-bottom:8px;">Character Emergence System</h1>
+    <p class="section-sub" style="margin:0 auto;">6 stages · Egg → Cracking → Hatching → Growing → Mature → Full</p>
+  </div>
+
+  <!-- Companion render target -->
+  <div class="demo-companion" id="companion-mount"></div>
+
+  <!-- Interaction counter -->
+  <div>
+    <div class="interaction-count" id="count-display">0</div>
+    <div class="interaction-label">interactions</div>
+  </div>
+
+  <!-- Controls -->
+  <div class="controls">
+    <button class="ctrl-btn" id="btn-add1">+ 1 interaction</button>
+    <button class="ctrl-btn" id="btn-add10">+ 10 interactions</button>
+    <button class="ctrl-btn" id="btn-cracking">Jump to Cracking (10)</button>
+    <button class="ctrl-btn" id="btn-hatching">Jump to Hatching (25)</button>
+    <button class="ctrl-btn" id="btn-growing">Jump to Growing (50)</button>
+    <button class="ctrl-btn" id="btn-mature">Jump to Mature (100)</button>
+    <button class="ctrl-btn" id="btn-full">Jump to Full (200)</button>
+    <button class="ctrl-btn" id="btn-reset">Reset to Egg (0)</button>
+  </div>
+
+  <p class="stage-info" id="stage-info">
+    Your companion starts as an egg, waiting to learn who you are.<br>
+    Each interaction helps it emerge.
+  </p>
+</div>
+
+<script type="module">
+  import { CharacterEmergence, STAGES } from './character-emergence.js';
+
+  const mount  = document.getElementById('companion-mount');
+  const countEl = document.getElementById('count-display');
+  const infoEl  = document.getElementById('stage-info');
+
+  const ce = new CharacterEmergence({
+    entityId: 'demo',
+    container: mount,
+    interactions: 0,
+    animate: true,
+    onStageChange(newStage, oldStage) {
+      infoEl.textContent = `✨ Stage advanced: ${oldStage.label} → ${newStage.label}. ${newStage.description}`;
+    },
+  });
+  ce.mount();
+
+  function refresh() {
+    countEl.textContent = ce.interactions;
+  }
+
+  document.getElementById('btn-add1').addEventListener('click', () => { ce.addInteraction(1); refresh(); });
+  document.getElementById('btn-add10').addEventListener('click', () => { ce.addInteraction(10); refresh(); });
+  document.getElementById('btn-cracking').addEventListener('click', () => { ce.setInteractions(10); refresh(); });
+  document.getElementById('btn-hatching').addEventListener('click', () => { ce.setInteractions(25); refresh(); });
+  document.getElementById('btn-growing').addEventListener('click', () => { ce.setInteractions(50); refresh(); });
+  document.getElementById('btn-mature').addEventListener('click', () => { ce.setInteractions(100); refresh(); });
+  document.getElementById('btn-full').addEventListener('click', () => { ce.setInteractions(200); refresh(); });
+  document.getElementById('btn-reset').addEventListener('click', () => { ce.setInteractions(0); refresh(); });
+</script>
+</body>
+</html>
