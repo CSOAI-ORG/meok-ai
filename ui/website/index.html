@@ -8,8 +8,67 @@
   <link rel="stylesheet" href="nav.css">
   <style>
     .hero { padding-top: 112px; padding-bottom: 96px; }
-    .egg { font-size: 4rem; display: block; margin-bottom: 24px; animation: float 3s ease-in-out infinite; }
-    @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-12px)} }
+
+    /* ── Organic egg — care-based motion (anticipation + follow-through) ── */
+    .egg-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 32px;
+    }
+    .egg {
+      font-size: 4.5rem;
+      display: block;
+      animation: egg-float 3.6s cubic-bezier(0.4, 0.0, 0.2, 1) infinite;
+      transform-origin: center bottom;
+      filter: drop-shadow(0 16px 20px rgba(74,144,217,0.18));
+      cursor: default;
+      user-select: none;
+    }
+    /* Stage 1: gentle organic float with subtle tilt (anticipation) */
+    @keyframes egg-float {
+      0%   { transform: translateY(0)      rotate(0deg)    scale(1); }
+      15%  { transform: translateY(-2px)   rotate(-1.5deg) scale(1.01); } /* anticipation */
+      40%  { transform: translateY(-14px)  rotate(1deg)    scale(1.03); } /* lift */
+      60%  { transform: translateY(-16px)  rotate(-0.5deg) scale(1.03); } /* hover */
+      80%  { transform: translateY(-4px)   rotate(1.5deg)  scale(1.01); } /* follow-through */
+      100% { transform: translateY(0)      rotate(0deg)    scale(1); }    /* settle */
+    }
+    /* Crack hint: subtle shake on hover — crack initiation micro-interaction */
+    .egg:hover {
+      animation: egg-crack 400ms cubic-bezier(0.4, 0.0, 0.2, 1) forwards,
+                 egg-float 3.6s cubic-bezier(0.4, 0.0, 0.2, 1) 400ms infinite;
+    }
+    @keyframes egg-crack {
+      0%   { transform: rotate(0deg)   scale(1); }
+      20%  { transform: rotate(-4deg)  scale(1.04); }
+      40%  { transform: rotate(4deg)   scale(1.06); }
+      60%  { transform: rotate(-2deg)  scale(1.04); }
+      80%  { transform: rotate(2deg)   scale(1.02); }
+      100% { transform: rotate(0deg)   scale(1); }
+    }
+    /* Hatch progress bar — widening phase (progressive disclosure) */
+    .egg-progress {
+      width: 56px;
+      height: 3px;
+      background: rgba(74,144,217,0.12);
+      border-radius: 100px;
+      margin-top: 12px;
+      overflow: hidden;
+    }
+    .egg-progress-bar {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--sky-blue), var(--deep-blue));
+      border-radius: 100px;
+      animation: hatch-progress 6s cubic-bezier(0.0, 0.0, 0.2, 1) 1.5s infinite;
+    }
+    @keyframes hatch-progress {
+      0%   { width: 0%; opacity: 0.6; }
+      60%  { width: 80%; opacity: 1; }
+      85%  { width: 100%; opacity: 1; }
+      100% { width: 100%; opacity: 0; }
+    }
     .pillars { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 24px; }
     .pillar { text-align: center; padding: 40px 28px; background: var(--light); border-radius: var(--radius); }
     .pillar .icon { font-size: 2.5rem; margin-bottom: 16px; }
@@ -30,31 +89,49 @@
 </head>
 <body>
 
-<nav class="nav">
+<!-- NAV — see _nav.html for full dropdown spec -->
+<nav class="nav" role="navigation" aria-label="Main navigation">
   <div class="nav-inner">
     <a href="index.html" class="nav-logo">MEOK<span>.AI</span></a>
-    <button class="nav-hamburger" onclick="this.nextElementSibling.classList.toggle('open')" aria-label="Menu">&#9776;</button>
-    <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="sovereign-os.html">Sovereign OS</a></li>
-      <li><a href="any-llm.html">Any LLM</a></li>
-      <li><a href="gaming.html">Gaming</a></li>
-      <li><a href="family-guardian.html">Family</a></li>
-      <li><a href="external-memory.html">Memory</a></li>
-      <li><a href="how-it-works.html">How It Works</a></li>
-      <li><a href="pricing.html">Pricing</a></li>
-      <li><a href="faq.html">FAQ</a></li>
-      <li><a href="open-source.html">Open Source</a></li>
-      <li><a href="contact.html">Contact</a></li>
+    <button class="nav-hamburger" id="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open menu">
+      <span class="ham-bar"></span><span class="ham-bar"></span><span class="ham-bar"></span>
+    </button>
+    <ul class="nav-links" id="nav-menu">
+      <li class="nav-dropdown">
+        <button class="nav-drop-btn">Product <span class="drop-caret">▾</span></button>
+        <ul class="drop-menu">
+          <li><a href="sovereign-os.html"><span class="drop-icon">🛡️</span><span><strong>Sovereign OS</strong><em>Your AI operating layer</em></span></a></li>
+          <li><a href="any-llm.html"><span class="drop-icon">🔗</span><span><strong>Any LLM</strong><em>Claude, GPT, Gemini — you choose</em></span></a></li>
+          <li><a href="gaming.html"><span class="drop-icon">🎮</span><span><strong>Gaming</strong><em>Your AI companion in every game</em></span></a></li>
+          <li><a href="family-guardian.html"><span class="drop-icon">🌱</span><span><strong>Family Guardian</strong><em>Care-based child safety</em></span></a></li>
+          <li><a href="external-memory.html"><span class="drop-icon">🧠</span><span><strong>External Memory</strong><em>Lifelong sovereign recall</em></span></a></li>
+        </ul>
+      </li>
+      <li class="nav-dropdown">
+        <button class="nav-drop-btn">Use cases <span class="drop-caret">▾</span></button>
+        <ul class="drop-menu">
+          <li><a href="gaming.html"><span class="drop-icon">🎮</span><span><strong>Gaming</strong><em>Never lose your playstyle again</em></span></a></li>
+          <li><a href="family-guardian.html"><span class="drop-icon">👨‍👩‍👧</span><span><strong>Family</strong><em>Protect without surveilling</em></span></a></li>
+          <li><a href="sovereign-os.html"><span class="drop-icon">💼</span><span><strong>Work</strong><em>Sovereign AI for professionals</em></span></a></li>
+          <li><a href="external-memory.html"><span class="drop-icon">🔬</span><span><strong>Research</strong><em>Persistent memory for deep work</em></span></a></li>
+        </ul>
+      </li>
+      <li><a href="about.html" class="nav-link">About</a></li>
+      <li><a href="pricing.html" class="nav-link">Pricing</a></li>
+      <li><a href="open-source.html" class="nav-link nav-opensource"><span class="os-dot"></span> Open Source</a></li>
       <li><a href="pricing.html" class="nav-cta">Get Started</a></li>
     </ul>
   </div>
 </nav>
 
+<!-- ── Step 1: Hero — emotional connection ── -->
 <section class="hero">
   <div class="container">
-    <span class="egg">🥚</span>
+    <!-- Organic egg — anticipation → lift → hover → settle -->
+    <div class="egg-wrap" aria-hidden="true">
+      <span class="egg" title="Something is hatching…">🥚</span>
+      <div class="egg-progress"><div class="egg-progress-bar"></div></div>
+    </div>
     <div class="hero-badge">Sovereign AI — No Ads. No Surveillance. No Compromise.</div>
     <h1>Your AI. Your Data.<br><span class="accent">Your Companion.</span></h1>
     <p>A personal AI that lives on your device, remembers your life, and works with any model you choose. Your data never trains their models. You own everything.</p>
@@ -165,19 +242,166 @@
   </div>
 </section>
 
-<footer class="footer">
-  <div class="footer-logo">MEOK.AI</div>
-  <div class="footer-tagline">Your AI. Your Data. Your Companion.</div>
-  <ul class="footer-links">
-    <li><a href="about.html">About</a></li>
-    <li><a href="pricing.html">Pricing</a></li>
-    <li><a href="open-source.html">Open Source</a></li>
-    <li><a href="faq.html">FAQ</a></li>
-    <li><a href="contact.html">Contact</a></li>
-  </ul>
-  <div class="footer-copy">&copy; 2026 MEOK AI LTD. Incorporated in England &amp; Wales.</div>
+<!-- Footer — 6 sections (partners, trust, testimonial, engage, links, copy) -->
+<footer class="footer" role="contentinfo">
+
+  <div class="footer-partners">
+    <p class="footer-partners-label">Powered by / works in relation with</p>
+    <div class="partner-carousel">
+      <span class="partner-item">Claude</span>
+      <span class="partner-item">ChatGPT</span>
+      <span class="partner-item">Gemini</span>
+      <span class="partner-item">Ollama</span>
+      <span class="partner-item">Qdrant</span>
+      <span class="partner-item">MCP</span>
+      <span class="partner-item">CSOAI Framework</span>
+    </div>
+  </div>
+
+  <div class="footer-trust">
+    <div class="trust-badge"><span class="badge-icon">🔒</span> PASS-Rated MCPs</div>
+    <div class="trust-badge"><span class="badge-icon">🛡️</span> CSOAI Governance</div>
+    <div class="trust-badge"><span class="badge-icon">🇪🇺</span> GDPR + EU AI Act</div>
+    <div class="trust-badge"><span class="badge-icon">👶</span> COPPA + GDPR-K</div>
+    <div class="trust-badge"><span class="badge-icon">🌿</span> Care Principles Certified</div>
+    <div class="trust-badge"><span class="badge-icon">📖</span> AGPL-3.0 Core</div>
+  </div>
+
+  <div class="footer-testimonial">
+    <blockquote>
+      "Finally, AI that respects human dignity — not as a marketing claim, but as an architectural constraint."
+    </blockquote>
+    <cite>— Founding Council, MEOK.AI · CSOAI Research Institute</cite>
+  </div>
+
+  <div class="footer-engage">
+    <div class="engage-item">
+      <h4>Stay in the loop</h4>
+      <p>Thoughtful updates — never noise. Unsubscribe any time.</p>
+      <a href="contact.html" class="btn-outline-white">Newsletter →</a>
+    </div>
+    <div class="engage-item">
+      <h4>Join the community</h4>
+      <p>Real-time support, peer connection, shape what we build.</p>
+      <a href="https://discord.gg/meok" class="btn-outline-white" target="_blank" rel="noopener">Discord →</a>
+    </div>
+    <div class="engage-item">
+      <h4>Research Institute</h4>
+      <p>Consciousness studies, ethical AI, early access. By invitation.</p>
+      <a href="about.html#research-institute" class="btn-outline-white">Learn more →</a>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="footer-bottom-inner">
+      <div>
+        <span class="footer-logo">MEOK<span style="color:rgba(255,255,255,0.4)">.AI</span></span>
+        <p class="footer-tagline">Your AI. Your data. Your companion.<br>Built with care — not extraction.</p>
+      </div>
+      <nav class="footer-cols" aria-label="Footer navigation">
+        <div class="footer-col">
+          <h5>Product</h5>
+          <ul>
+            <li><a href="sovereign-os.html">Sovereign OS</a></li>
+            <li><a href="any-llm.html">Any LLM</a></li>
+            <li><a href="gaming.html">Gaming</a></li>
+            <li><a href="family-guardian.html">Family Guardian</a></li>
+            <li><a href="external-memory.html">External Memory</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Company</h5>
+          <ul>
+            <li><a href="about.html">About</a></li>
+            <li><a href="how-it-works.html">How It Works</a></li>
+            <li><a href="open-source.html">Open Source</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Resources</h5>
+          <ul>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Legal</h5>
+          <ul>
+            <li><a href="/legal/privacy">Privacy Policy</a></li>
+            <li><a href="/legal/terms">Terms of Service</a></li>
+            <li><a href="/legal/cookies">Cookie Policy</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <p class="footer-copy">
+      &copy; 2026 MEOK AI LTD &nbsp;·&nbsp; Registered in England &amp; Wales &nbsp;·&nbsp;
+      Core licensed under <a href="https://github.com/CSOAI-ORG/meok-ai" style="color:rgba(255,255,255,0.4)" target="_blank" rel="noopener">AGPL-3.0</a>
+    </p>
+  </div>
+
 </footer>
 
-<script src="nav.js"></script>
+<style>
+/* Dropdown nav */
+.nav-dropdown { position: relative; }
+.nav-drop-btn { background: none; border: none; cursor: pointer; font-family: var(--font-sans); font-size: 0.88rem; font-weight: 500; color: var(--mid); padding: 6px 10px; border-radius: 8px; transition: color var(--transition), background var(--transition); display: flex; align-items: center; gap: 4px; white-space: nowrap; min-height: var(--touch-min); }
+.nav-drop-btn:hover, .nav-dropdown.open .nav-drop-btn { color: var(--deep-blue); background: var(--light); }
+.drop-caret { font-size: 0.65rem; transition: transform var(--transition-care); }
+.nav-dropdown.open .drop-caret { transform: rotate(180deg); }
+.drop-menu { display: none; position: absolute; top: calc(100% + 8px); left: 0; min-width: 260px; background: #fff; border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow-lg); list-style: none; padding: 8px; z-index: 200; animation: dropIn var(--transition-care) var(--ease-in); }
+@keyframes dropIn { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
+.nav-dropdown.open .drop-menu, .nav-dropdown:hover .drop-menu { display: block; }
+.drop-menu a { display: flex; align-items: center; gap: 12px; padding: 10px 12px; border-radius: 8px; text-decoration: none; color: var(--dark); transition: background var(--transition-care); }
+.drop-menu a:hover { background: var(--light); }
+.drop-icon { font-size: 1.2rem; flex-shrink: 0; }
+.drop-menu strong { display: block; font-size: 0.9rem; font-weight: 700; }
+.drop-menu em { display: block; font-size: 0.78rem; color: var(--mid); font-style: normal; }
+.nav-opensource { display: flex !important; align-items: center; gap: 5px; }
+.os-dot { width: 7px; height: 7px; background: var(--green); border-radius: 50%; flex-shrink: 0; animation: pulse 2.4s var(--ease) infinite; }
+@keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(1.3); } }
+.nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 8px; min-height: var(--touch-min); min-width: var(--touch-min); justify-content: center; align-items: center; }
+.ham-bar { display: block; width: 22px; height: 2px; background: var(--dark); border-radius: 2px; transition: all var(--transition-care); }
+.nav-hamburger[aria-expanded="true"] .ham-bar:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-hamburger[aria-expanded="true"] .ham-bar:nth-child(2) { opacity: 0; }
+.nav-hamburger[aria-expanded="true"] .ham-bar:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+@media (max-width: 960px) {
+  .nav-hamburger { display: flex; }
+  .nav-links { display: none; position: absolute; top: 64px; left: 0; right: 0; background: #fff; border-bottom: 1px solid var(--border); flex-direction: column; padding: 12px 5%; gap: 2px; z-index: 150; box-shadow: 0 8px 32px rgba(0,0,0,0.08); }
+  .nav-links.open { display: flex; }
+  .nav-drop-btn, .nav-link { width: 100%; padding: 12px 14px !important; }
+  .drop-menu { position: static; box-shadow: none; border: none; border-left: 3px solid var(--border); margin-left: 12px; border-radius: 0; animation: none; }
+}
+</style>
+
+<script>
+(function() {
+  const toggle = document.getElementById('nav-toggle');
+  const menu   = document.getElementById('nav-menu');
+  if (toggle && menu) {
+    toggle.addEventListener('click', () => {
+      const open = menu.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', String(open));
+    });
+  }
+  document.querySelectorAll('.nav-drop-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const li = btn.closest('.nav-dropdown');
+      li.classList.toggle('open');
+    });
+  });
+  document.addEventListener('click', e => {
+    if (!e.target.closest('.nav-dropdown')) {
+      document.querySelectorAll('.nav-dropdown.open').forEach(d => d.classList.remove('open'));
+    }
+  });
+  // Active page
+  const path = window.location.pathname.split('/').pop() || 'index.html';
+  document.querySelectorAll('.nav-links a[href]').forEach(a => {
+    if (a.getAttribute('href') === path) a.classList.add('active');
+  });
+})();
+</script>
 </body>
 </html>
