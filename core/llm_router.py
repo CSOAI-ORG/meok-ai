@@ -479,3 +479,192 @@ def init_router() -> LLMRouter:
     global _router
     _router = LLMRouter()
     return _router
+
+
+# ── Smart Routing Engine (4 dimensions from Research Brief §12.1.1) ───────────
+
+import re as _re
+
+# PII / sensitive content patterns (privacy routing — absolute override)
+_PII_PATTERNS = [
+    _re.compile(r"\b\d{3}[-.\s]?\d{3}[-.\s]?\d{4}\b"),               # phone
+    _re.compile(r"\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b"),  # email
+    _re.compile(r"\b(?:passport|ssn|nino|national insurance)\b", _re.I),
+    _re.compile(r"\b(?:my address|i live at|home is at)\b", _re.I),
+    _re.compile(r"\b(?:my password|credit card|bank account)\b", _re.I),
+    _re.compile(r"\b(?:suicid|self.harm|hurting myself|end my life)\b", _re.I),
+    _re.compile(r"\b(?:abuse|assault|rape|traffick)\b", _re.I),
+]
+
+# Simple/conversational patterns → local model preferred
+_SIMPLE_PATTERNS = [
+    _re.compile(r"^(hi|hello|hey|good morning|good night|thanks|thank you|ok|okay|yes|no)\b", _re.I),
+    _re.compile(r"^what('s| is) (the time|today|the date|the weather)\b", _re.I),
+    _re.compile(r"^(how are you|how's it going|what's up)\b", _re.I),
+]
+
+
+@dataclass
+class RoutingDecision:
+    """Result of 4-dimension routing analysis."""
+    task_type: str                         # final task type to route with
+    force_local: bool = False              # privacy override triggered
+    reason: str = ""                       # human-readable decision rationale
+    privacy_triggered: bool = False        # PII detected
+    cost_preference: str = "cloud"         # "local" or "cloud"
+    latency_mode: str = "standard"         # "realtime" (voice) or "standard"
+    complexity: str = "complex"            # "simple" or "complex"
+    monthly_cost_usd: float = 0.0
+
+
+class SmartRouter:
+    """
+    4-dimension intelligent routing wrapper around LLMRouter.
+
+    Dimensions (from MEOK.AI Research Brief §12.1.1):
+    1. Privacy  — absolute override: PII/sensitive → local only
+    2. Complexity — simple convo → local 7B; complex → cloud frontier
+    3. Cost     — approaching monthly budget → prefer local
+    4. Latency  — voice/realtime → local if <150ms available
+
+    Usage:
+        smart = SmartRouter(monthly_budget_usd=10.0)
+        decision = smart.analyze("What's the weather?", is_voice=False)
+        result = await smart.complete(messages, context={"is_voice": True})
+    """
+
+    def __init__(
+        self,
+        monthly_budget_usd: float = 10.0,
+        cost_threshold_pct: float = 0.8,   # switch to local at 80% of budget
+    ):
+        self.router = get_router()
+        self.monthly_budget_usd = monthly_budget_usd
+        self.cost_threshold_pct = cost_threshold_pct
+
+    def _check_privacy(self, text: str) -> bool:
+        """Return True if text contains PII or sensitive content."""
+        return any(p.search(text) for p in _PII_PATTERNS)
+
+    def _check_complexity(self, text: str) -> str:
+        """Return 'simple' or 'complex'."""
+        if any(p.match(text.strip()) for p in _SIMPLE_PATTERNS):
+            return "simple"
+        word_count = len(text.split())
+        if word_count < 8:
+            return "simple"
+        # Multi-step / analytical signals
+        complex_signals = ["explain", "analyze", "compare", "design", "write", "code",
+                           "research", "summarize", "create", "generate", "why", "how does"]
+        if any(sig in text.lower() for sig in complex_signals):
+            return "complex"
+        return "simple" if word_count < 20 else "complex"
+
+    def _check_cost(self) -> str:
+        """Return 'local' preference if approaching monthly budget."""
+        stats = self.router.get_usage_stats()
+        total = stats.get("total_cost_usd", 0.0)
+        if self.monthly_budget_usd > 0 and total >= self.monthly_budget_usd * self.cost_threshold_pct:
+            return "local"
+        return "cloud"
+
+    def analyze(
+        self,
+        user_text: str,
+        task_type: str = "default",
+        is_voice: bool = False,
+        context: Optional[Dict[str, Any]] = None,
+    ) -> RoutingDecision:
+        """
+        Run 4-dimension analysis and return routing decision.
+        Privacy dimension is always evaluated first (absolute override).
+        """
+        ctx = context or {}
+        decision = RoutingDecision(task_type=task_type)
+
+        # Dimension 1: Privacy (absolute override)
+        if self._check_privacy(user_text):
+            decision.force_local = True
+            decision.privacy_triggered = True
+            decision.task_type = "dream"  # local-only task type
+            decision.reason = "Privacy override: PII or sensitive content detected — local only"
+            return decision
+
+        # Dimension 2: Complexity
+        decision.complexity = self._check_complexity(user_text)
+        if decision.complexity == "simple" and task_type == "default":
+            decision.task_type = "fast"   # local 7B preferred for simple tasks
+            decision.reason = f"Simple conversational query → prefer fast/local"
+        else:
+            decision.reason = f"Complex query → cloud frontier model"
+
+        # Dimension 3: Cost
+        cost_pref = self._check_cost()
+        decision.cost_preference = cost_pref
+        decision.monthly_cost_usd = self.router.get_usage_stats().get("total_cost_usd", 0.0)
+        if cost_pref == "local":
+            decision.task_type = "fast"
+            decision.force_local = True
+            decision.reason += f" | Cost cap approaching (${decision.monthly_cost_usd:.4f}/${self.monthly_budget_usd}) → local"
+
+        # Dimension 4: Latency / realtime voice
+        if is_voice or ctx.get("is_voice"):
+            decision.latency_mode = "realtime"
+            decision.task_type = "fast"  # local if available
+            decision.reason += " | Voice realtime → prefer low-latency local"
+
+        if not decision.reason:
+            decision.reason = f"Standard routing: task_type={decision.task_type}"
+
+        return decision
+
+    async def complete(
+        self,
+        messages: List[Dict[str, str]],
+        user_text: str = "",
+        task_type: str = "default",
+        is_voice: bool = False,
+        max_tokens: int = 1024,
+        temperature: float = 0.7,
+        system: Optional[str] = None,
+        context: Optional[Dict[str, Any]] = None,
+    ) -> Dict[str, Any]:
+        """
+        Smart-routed completion with 4-dimension analysis.
+        Returns router result + routing_decision metadata.
+        """
+        decision = self.analyze(
+            user_text=user_text or (messages[-1].get("content", "") if messages else ""),
+            task_type=task_type,
+            is_voice=is_voice,
+            context=context,
+        )
+
+        result = await self.router.complete(
+            messages=messages,
+            task_type=decision.task_type,
+            max_tokens=max_tokens,
+            temperature=temperature,
+            system=system,
+        )
+
+        result["routing_decision"] = {
+            "task_type": decision.task_type,
+            "force_local": decision.force_local,
+            "privacy_triggered": decision.privacy_triggered,
+            "complexity": decision.complexity,
+            "latency_mode": decision.latency_mode,
+            "reason": decision.reason,
+        }
+
+        return result
+
+
+_smart_router: Optional[SmartRouter] = None
+
+
+def get_smart_router(monthly_budget_usd: float = 10.0) -> SmartRouter:
+    global _smart_router
+    if _smart_router is None:
+        _smart_router = SmartRouter(monthly_budget_usd=monthly_budget_usd)
+    return _smart_router
