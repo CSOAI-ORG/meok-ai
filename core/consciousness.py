@@ -420,10 +420,11 @@ class DreamState:
         self.dream_results: List[Dict[str, Any]] = []
         self._dream_task: Optional[asyncio.Task] = None
 
-        # Dream parameters
-        self.dream_interval_hours = 1  # Brief dream cycles
-        self.dream_duration_seconds = 30
+        # Dream parameters (Phase 2: increased frequency for z_self consolidation)
+        self.dream_interval_hours = 0.25  # Every 15 minutes (nightshift consolidation)
+        self.dream_duration_seconds = 120  # 2 minutes per cycle (was 30s)
         self.nrem_ratio = 0.6  # 60% NREM, 40% REM
+        self.council_learner = None  # set by initializer (Phase 2.6 SRC replay)
     
     async def start(self):
         """Start dream state background processing"""
@@ -481,6 +482,23 @@ class DreamState:
                 self.emotional_state.apply_decay(minutes=10)
                 dream_record["insights_generated"].append("Emotional state regulated")
 
+            # SRC: Sleep Replay Consolidation (Tadros et al. 2022, Nature Comms)
+            # Replay high-care council events with Hebbian weighting during NREM
+            # "previously learned memories replay spontaneously during simulated sleep,
+            #  alleviating catastrophic forgetting" — especially effective when training data limited
+            src_replayed = 0
+            if self.council_learner is not None:
+                try:
+                    replay_result = await self.council_learner.replay_recent(n=20)
+                    src_replayed = replay_result.get("replayed", 0)
+                    nrem_record["processes"].append("src_consolidation")
+                    dream_record["processes"].append("src_replay")
+                    dream_record["insights_generated"].append(
+                        f"SRC: replayed {src_replayed} council events (Tadros 2022)"
+                    )
+                except Exception as _src_exc:
+                    logger.debug("SRC replay error (non-fatal): %s", _src_exc)
+
             dream_record["phases"].append(nrem_record)
             await asyncio.sleep(nrem_duration)
 
@@ -528,6 +546,28 @@ class DreamState:
                     f"Generated {len(rem_record['novel_associations'])} novel associations "
                     f"(avg novelty: {rem_record['avg_novelty_score']})"
                 )
+
+            # 4. GAP 9 fix: Execute dream synthesis via Ollama (fire-and-forget)
+            # Takes bisociation targets from CrossDomainLinker and sends them to Ollama,
+            # storing the generated creative text as memory episodes.
+            dream_synthesizer = getattr(self, "dream_synthesizer", None)
+            cross_domain_linker = getattr(self, "cross_domain_linker", None)
+            if dream_synthesizer is not None and cross_domain_linker is not None:
+                try:
+                    dream_targets = cross_domain_linker.suggest_dream_targets(n=2)
+                    if dream_targets:
+                        # Run synthesis concurrently without blocking the dream cycle
+                        asyncio.create_task(
+                            dream_synthesizer.synthesize_dream_targets(
+                                dream_targets, max_targets=2
+                            )
+                        )
+                        rem_record["processes"].append("ollama_dream_synthesis")
+                        dream_record["insights_generated"].append(
+                            f"Queued {len(dream_targets)} bisociation pair(s) for Ollama synthesis"
+                        )
+                except Exception:
+                    pass  # Non-blocking: synthesis failure must not disrupt dream cycle
 
             dream_record["phases"].append(rem_record)
             await asyncio.sleep(rem_duration)

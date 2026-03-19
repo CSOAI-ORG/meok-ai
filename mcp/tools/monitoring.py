@@ -35,6 +35,40 @@ MONITORING_TOOLS = [
             }
         }
     },
+    {
+        "name": "get_maternal_covenant_status",
+        "description": "Get Maternal Covenant monitoring status — vulnerability detection, escalation rates, last assessment",
+        "inputSchema": {"type": "object", "properties": {}}
+    },
+    {
+        "name": "check_hard_block",
+        "description": "Deterministic crisis safety check — returns crisis response if input contains hard-block phrases. Must be called before any model inference on user input. Cannot be bypassed by model outputs.",
+        "inputSchema": {
+            "type": "object",
+            "properties": {
+                "user_input": {"type": "string", "description": "User input to check for crisis signals"}
+            },
+            "required": ["user_input"]
+        }
+    },
+    {
+        "name": "get_compute_status",
+        "description": (
+            "Get daily compute harvest status: free API availability (Groq, HuggingFace, Together.ai, etc.), "
+            "running Vast.ai instances, credit application status ($402K+ pending from Google/Microsoft/NVIDIA/AWS), "
+            "and actionable recommendations. Shows what compute is available right now."
+        ),
+        "inputSchema": {"type": "object", "properties": {}},
+    },
+    {
+        "name": "trigger_compute_harvest",
+        "description": (
+            "Run a fresh compute harvest immediately (don't wait for daily schedule). "
+            "Checks all free APIs, Vast.ai instances, and credit application status. "
+            "Returns full report with recommendations."
+        ),
+        "inputSchema": {"type": "object", "properties": {}},
+    },
 ]
 
 
@@ -74,5 +108,45 @@ async def handle_monitoring_tool(name: str, arguments: Dict[str, Any], state: Se
                 "timestamp": a.timestamp.isoformat(),
             } for a in alerts]
         }
+
+    elif name == "get_maternal_covenant_status":
+        mc = getattr(state, 'maternal_covenant', None)
+        if mc is None:
+            return {
+                "status": "not_initialised",
+                "message": "MaternalCovenant layer not yet initialised",
+            }
+        return mc.get_status()
+
+    elif name == "check_hard_block":
+        mc = getattr(state, 'maternal_covenant', None)
+        user_input = arguments.get("user_input", "")
+        if mc is None:
+            return {"blocked": False, "reason": "MaternalCovenant not initialised"}
+        response = mc.check_hard_block(user_input)
+        if response:
+            return {
+                "blocked": True,
+                "crisis_response": response,
+                "instruction": "Display this response to the user. Do NOT pass the original input to any language model.",
+            }
+        return {"blocked": False}
+
+    elif name == "get_compute_status":
+        harvester = getattr(state, "compute_harvester", None)
+        if harvester is None:
+            return {"status": "not_initialised", "message": "ComputeHarvester not wired — check initializer"}
+        return harvester.get_status()
+
+    elif name == "trigger_compute_harvest":
+        harvester = getattr(state, "compute_harvester", None)
+        if harvester is None:
+            return {"status": "not_initialised", "message": "ComputeHarvester not wired — check initializer"}
+        try:
+            report = await harvester.daily_harvest()
+            return {**report, "triggered_manually": True}
+        except Exception as exc:
+            import traceback
+            return {"error": str(exc), "traceback": traceback.format_exc()}
 
     return {"error": f"Unknown monitoring tool: {name}"}

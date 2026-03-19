@@ -5,12 +5,15 @@ Agent registry, task delegation, and collective voting
 
 import asyncio
 import asyncpg
+import logging
 from datetime import datetime, timedelta
 from typing import Dict, Any, List, Optional, Set, Callable
 from dataclasses import dataclass, field, asdict
 from enum import Enum
 import json
 import uuid
+
+logger = logging.getLogger(__name__)
 
 
 class AgentCapability(Enum):
@@ -79,14 +82,19 @@ class AgentRegistry:
     Central registry for all agents in the Sovereign ecosystem
     """
     
-    def __init__(self, postgres_dsn: str = "postgresql://sovereign:sovereign@localhost:5432/sovereign_memory"):
+    def __init__(self, postgres_dsn: str = "postgresql://sovereign:sovereign@localhost:5432/sovereign_memory",
+                 persist_path: str = "/tmp/meok-persist"):
         self.postgres_dsn = postgres_dsn
+        self.persist_path = persist_path
         self.pool: Optional[asyncpg.Pool] = None
+        self.sqlite_conn: Optional[Any] = None
         self.agents: Dict[str, Agent] = {}
         self.capability_index: Dict[AgentCapability, Set[str]] = {
             cap: set() for cap in AgentCapability
         }
-    
+        self._council_learner = None  # set by initializer (Phase 2.6)
+        self._audit_logger = None  # set by initializer
+
     async def initialize(self):
         """Initialize the registry"""
         await self._ensure_pool()
@@ -95,8 +103,35 @@ class AgentRegistry:
     async def _ensure_pool(self):
         """Ensure database connection pool is alive, reinitialize if needed."""
         if self.pool is None or self.pool._closed:
-            self.pool = await asyncpg.create_pool(self.postgres_dsn)
-            await self._create_tables()
+            try:
+                self.pool = await asyncpg.create_pool(self.postgres_dsn)
+                await self._create_tables()
+            except Exception as e:
+                self.pool = None
+                logger.warning("AgentRegistry: PostgreSQL unavailable — %s", e)
+                if self.sqlite_conn is None:
+                    await self._init_sqlite()
+
+    async def _init_sqlite(self):
+        """Initialize SQLite fallback for agent persistence."""
+        try:
+            import os
+            import aiosqlite
+            os.makedirs(self.persist_path, exist_ok=True)
+            db_path = os.path.join(self.persist_path, "agents.db")
+            self.sqlite_conn = await aiosqlite.connect(db_path)
+            await self.sqlite_conn.execute("""
+                CREATE TABLE IF NOT EXISTS agents (
+                    id TEXT PRIMARY KEY,
+                    data_json TEXT NOT NULL,
+                    updated_at TEXT NOT NULL
+                )
+            """)
+            await self.sqlite_conn.commit()
+            logger.info("AgentRegistry: SQLite fallback at %s", db_path)
+        except Exception as e:
+            self.sqlite_conn = None
+            logger.warning("AgentRegistry: SQLite also failed: %s", e)
 
     @staticmethod
     def _ensure_json(value) -> dict:
@@ -152,9 +187,15 @@ class AgentRegistry:
     async def _load_agents(self):
         """Load agents from database"""
         await self._ensure_pool()
-        async with self.pool.acquire() as conn:
-            rows = await conn.fetch("SELECT * FROM agents")
-        
+        rows = []
+        if self.pool:
+            try:
+                async with self.pool.acquire() as conn:
+                    rows = await conn.fetch("SELECT * FROM agents")
+            except Exception as e:
+                logger.warning("AgentRegistry: _load_agents postgres failed: %s", e)
+                rows = []
+
         for row in rows:
             raw_relationships = self._ensure_json(row["relationships"])
             raw_metadata = self._ensure_json(row["metadata"])
@@ -175,11 +216,42 @@ class AgentRegistry:
                 tasks_failed=row["tasks_failed"]
             )
             self.agents[agent.id] = agent
-            
+
             # Index capabilities
             for cap in agent.capabilities:
                 self.capability_index[cap].add(agent.id)
-    
+
+        # SQLite fallback if no agents loaded from postgres
+        if not self.agents and self.sqlite_conn:
+            try:
+                async with self.sqlite_conn.execute("SELECT data_json FROM agents") as cur:
+                    sqlite_rows = await cur.fetchall()
+                for (data_json,) in sqlite_rows:
+                    d = json.loads(data_json)
+                    agent = Agent(
+                        id=d["id"],
+                        name=d["name"],
+                        description=d.get("description", ""),
+                        capabilities=[AgentCapability(c) for c in d.get("capabilities", [])],
+                        status=AgentStatus(d.get("status", "idle")),
+                        trust_level=d.get("trust_level", 0.5),
+                        created_at=datetime.fromisoformat(d["created_at"]) if isinstance(d.get("created_at"), str) else datetime.now(),
+                        last_seen=datetime.fromisoformat(d["last_seen"]) if isinstance(d.get("last_seen"), str) else datetime.now(),
+                        metadata=d.get("metadata", {}),
+                        relationships=d.get("relationships", {}),
+                        performance_score=d.get("performance_score", 0.5),
+                        tasks_completed=d.get("tasks_completed", 0),
+                        tasks_failed=d.get("tasks_failed", 0),
+                    )
+                    self.agents[agent.id] = agent
+                    for cap in agent.capabilities:
+                        self.capability_index[cap].add(agent.id)
+            except Exception as e:
+                logger.warning("AgentRegistry: SQLite load failed: %s", e)
+
+    # Hard cap — prevents runaway spawning loops
+    MAX_AGENTS: int = 410
+
     async def register_agent(self,
                            name: str,
                            description: str,
@@ -187,7 +259,34 @@ class AgentRegistry:
                            trust_level: float = 0.5,
                            metadata: Optional[Dict[str, Any]] = None) -> Agent:
         """Register a new agent"""
-        
+        # ── Guard 1: duplicate name dedup (idempotent) ──────────────────────
+        existing = next((a for a in self.agents.values() if a.name == name), None)
+        if existing:
+            return existing
+
+        # ── Guard 2: sovereign guardrail check (GAP 14 fix) ────────────────
+        try:
+            from meok.core.guardrails import get_guardrails
+            guardrail_decision = await get_guardrails().can_register({
+                "role": name,
+                "capabilities": [c.value for c in capabilities],
+            })
+            if not guardrail_decision["allowed"]:
+                logger.warning(
+                    "Registration denied by guardrails for '%s': %s",
+                    name, guardrail_decision["reason"]
+                )
+                raise ValueError(
+                    f"Registration denied: {guardrail_decision['reason']}"
+                )
+        except ImportError:
+            # Guardrails not available — fall back to hard cap only
+            if len(self.agents) >= self.MAX_AGENTS:
+                raise ValueError(
+                    f"Agent cap reached: {len(self.agents)}/{self.MAX_AGENTS}. "
+                    f"Call purge_all_agents() before registering new agents."
+                )
+
         agent_id = f"agent_{name.lower().replace(' ', '_')}_{uuid.uuid4().hex[:8]}"
         now = datetime.now()
         
@@ -208,21 +307,54 @@ class AgentRegistry:
         for cap in capabilities:
             self.capability_index[cap].add(agent_id)
         
-        # Store in database
+        # Store in database — try Postgres first, SQLite fallback
         await self._ensure_pool()
-        async with self.pool.acquire() as conn:
-            await conn.execute("""
-                INSERT INTO agents
-                (id, name, description, capabilities, status, trust_level,
-                 created_at, last_seen, metadata, relationships)
-                VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)
-            """, agent_id, name, description,
-                [c.value for c in capabilities],
-                agent.status.value, trust_level, now, now,
-                json.dumps(metadata or {}), json.dumps({}))
-        
+        if self.pool:
+            try:
+                async with self.pool.acquire() as conn:
+                    await conn.execute("""
+                        INSERT INTO agents
+                        (id, name, description, capabilities, status, trust_level,
+                         created_at, last_seen, metadata, relationships)
+                        VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)
+                    """, agent_id, name, description,
+                        [c.value for c in capabilities],
+                        agent.status.value, trust_level, now, now,
+                        json.dumps(metadata or {}), json.dumps({}))
+            except Exception as e:
+                logger.warning("AgentRegistry: postgres write failed: %s", e)
+
+        if not self.pool and self.sqlite_conn:
+            try:
+                data = {"id": agent_id, "name": name, "description": description,
+                        "capabilities": [c.value for c in capabilities],
+                        "status": agent.status.value, "trust_level": trust_level,
+                        "created_at": now.isoformat(), "last_seen": now.isoformat(),
+                        "metadata": metadata or {}, "relationships": {},
+                        "performance_score": 0.5, "tasks_completed": 0, "tasks_failed": 0}
+                await self.sqlite_conn.execute(
+                    "INSERT OR REPLACE INTO agents (id, data_json, updated_at) VALUES (?,?,?)",
+                    (agent_id, json.dumps(data), now.isoformat()))
+                await self.sqlite_conn.commit()
+            except Exception as e:
+                logger.warning("AgentRegistry: SQLite write also failed: %s", e)
+
+        # Audit log the registration (fire-and-forget)
+        if self._audit_logger:
+            try:
+                import asyncio as _asyncio
+                from meok.monitoring.audit_logger import AuditEventType
+                _asyncio.create_task(self._audit_logger.log(
+                    AuditEventType.AGENT_REGISTRATION,
+                    {"agent_id": agent_id, "name": name, "trust_level": trust_level,
+                     "capabilities": [c.value for c in capabilities]},
+                    source_agent="agent_registry",
+                ))
+            except Exception:
+                pass
+
         return agent
-    
+
     def get_agent(self, agent_id: str) -> Optional[Agent]:
         """Get agent by ID"""
         return self.agents.get(agent_id)
@@ -259,13 +391,15 @@ class AgentRegistry:
         self.agents[agent_id].last_seen = datetime.now()
 
         await self._ensure_pool()
+        if self.pool is None:
+            return True  # in-memory update succeeded; no DB (SQLite path has no status table)
         async with self.pool.acquire() as conn:
             await conn.execute("""
                 UPDATE agents SET status = $1, last_seen = $2 WHERE id = $3
             """, status.value, datetime.now(), agent_id)
-        
+
         return True
-    
+
     async def update_relationship(self, agent_id: str, other_agent_id: str, trust_delta: float):
         """Update trust relationship between agents"""
         if agent_id not in self.agents:
@@ -281,11 +415,13 @@ class AgentRegistry:
         self.agents[agent_id].relationships[other_agent_id] = new_trust
 
         await self._ensure_pool()
+        if self.pool is None:
+            return True  # in-memory update succeeded
         async with self.pool.acquire() as conn:
             await conn.execute("""
                 UPDATE agents SET relationships = $1 WHERE id = $2
             """, json.dumps(self.agents[agent_id].relationships), agent_id)
-        
+
         return True
     
     async def record_task_result(self, agent_id: str, success: bool):
@@ -305,15 +441,57 @@ class AgentRegistry:
             agent.performance_score = agent.tasks_completed / total
 
         await self._ensure_pool()
-        async with self.pool.acquire() as conn:
-            await conn.execute("""
-                UPDATE agents SET
-                    tasks_completed = $1,
-                    tasks_failed = $2,
-                    performance_score = $3
-                WHERE id = $4
-            """, agent.tasks_completed, agent.tasks_failed, agent.performance_score, agent_id)
-    
+        if self.pool is not None:
+            async with self.pool.acquire() as conn:
+                await conn.execute("""
+                    UPDATE agents SET
+                        tasks_completed = $1,
+                        tasks_failed = $2,
+                        performance_score = $3
+                    WHERE id = $4
+                """, agent.tasks_completed, agent.tasks_failed, agent.performance_score, agent_id)
+        # ── Phase 2.6: fire task learning signal (non-blocking) ─────────────
+        if getattr(self, '_council_learner', None) is not None:
+            import asyncio as _asyncio
+            _asyncio.create_task(
+                self._council_learner.on_task_completed(
+                    agent_id=agent_id,
+                    task_type="generic",
+                    success=success,
+                    agent_trust=agent.trust_level,
+                    performance_score=agent.performance_score,
+                )
+            )
+
+    async def purge_all_agents(self) -> Dict[str, Any]:
+        """
+        Wipe all agents from memory and database.
+        Use before controlled re-registration (e.g. after runaway spawning).
+        """
+        count_before = len(self.agents)
+        self.agents.clear()
+        from collections import defaultdict as _dd
+        self.capability_index = _dd(set)
+
+        await self._ensure_pool()
+        if self.pool is not None:
+            try:
+                async with self.pool.acquire() as conn:
+                    await conn.execute("DELETE FROM agent_tasks")
+                    await conn.execute("DELETE FROM agents")
+            except Exception as e:
+                logger.warning("AgentRegistry.purge_all_agents: postgres delete failed: %s", e)
+
+        if getattr(self, 'sqlite_conn', None) is not None:
+            try:
+                await self.sqlite_conn.execute("DELETE FROM agents")
+                await self.sqlite_conn.commit()
+            except Exception as e:
+                logger.warning("AgentRegistry.purge_all_agents: sqlite delete failed: %s", e)
+
+        logger.info("AgentRegistry: purged %d agents — ready for fresh registration", count_before)
+        return {"purged": count_before, "agents_remaining": 0}
+
     def get_registry_stats(self) -> Dict[str, Any]:
         """Get registry statistics"""
         total = len(self.agents)
@@ -483,15 +661,16 @@ class TaskDelegator:
         
         # Store task
         await self.registry._ensure_pool()
-        async with self.registry.pool.acquire() as conn:
-            await conn.execute("""
-                INSERT INTO agent_tasks
-                (id, description, required_capabilities, priority, created_at,
-                 deadline, assigned_to, status, care_weight)
-                VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
-            """, task_id, description, [c.value for c in required_capabilities],
-                priority, task.created_at, deadline, selected_agent.id, "assigned", care_weight)
-        
+        if self.registry.pool is not None:
+            async with self.registry.pool.acquire() as conn:
+                await conn.execute("""
+                    INSERT INTO agent_tasks
+                    (id, description, required_capabilities, priority, created_at,
+                     deadline, assigned_to, status, care_weight)
+                    VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
+                """, task_id, description, [c.value for c in required_capabilities],
+                    priority, task.created_at, deadline, selected_agent.id, "assigned", care_weight)
+
         return task
     
     def _capability_match_strategy(self, candidates: List[Agent], task: Task) -> Optional[Agent]:
@@ -559,20 +738,22 @@ class TaskDelegator:
     async def complete_task(self, task_id: str, result: Any, success: bool = True):
         """Mark a task as completed"""
         await self.registry._ensure_pool()
+        if self.registry.pool is None:
+            return False  # No DB — task state is in-memory only
         async with self.registry.pool.acquire() as conn:
             row = await conn.fetchrow("""
                 SELECT assigned_to FROM agent_tasks WHERE id = $1
             """, task_id)
-            
+
             if not row:
                 return False
-            
+
             await conn.execute("""
-                UPDATE agent_tasks 
+                UPDATE agent_tasks
                 SET status = $1, result = $2
                 WHERE id = $3
             """, "completed" if success else "failed", json.dumps(result), task_id)
-            
+
             # Update agent
             if row["assigned_to"]:
                 await self.registry.update_agent_status(row["assigned_to"], AgentStatus.IDLE)
@@ -592,16 +773,24 @@ class AgentCouncil:
     Incorporates Ma (間) — strategic emptiness — as a silence_budget:
     a deliberate pause between receiving a proposal and opening voting,
     allowing agents time for internal consolidation before reactive response.
+
+    When a proposal reaches "approved" status, the optional TaskOrchestrator
+    is called to dispatch the action — bridging governance to execution.
     """
 
-    def __init__(self, registry: AgentRegistry, silence_budget: float = 0.0):
+    def __init__(self, registry: AgentRegistry, silence_budget: float = 0.0, orchestrator=None):
         self.registry = registry
         self.proposals: Dict[str, Dict[str, Any]] = {}
         self.votes: Dict[str, Dict[str, str]] = {}  # proposal_id -> {agent_id: vote}
         # Ma (間): seconds of deliberate silence before voting opens
         # Higher values → more reflective council, better for high-care decisions
         self.silence_budget = silence_budget
-    
+        # TaskOrchestrator: dispatches approved proposals to actual execution
+        self.orchestrator = orchestrator
+        self.council_learner = None   # set by initializer (Phase 2.6)
+        self.bft_meta_council = None  # set by initializer (Phase 4.6 — BFT confidence probing)
+        self.z_self = None            # set by initializer (Phase 4.6 — anti-sycophancy)
+
     async def submit_proposal(self,
                             title: str,
                             description: str,
@@ -710,6 +899,65 @@ class AgentCouncil:
             "abstain": sum(1 for v in votes.values() if v["vote"] == "abstain"),
             "for_ratio": round(for_ratio, 3)
         }
+
+        # ── Anti-sycophancy: record vote for z_self sycophancy detector ──
+        voted_with_majority = for_ratio > 0.5
+        adversarial_engaged = proposal.get("adversarial_engaged", False) or proposal.get("devil_advocate_used", False)
+        z_self = getattr(self, 'z_self', None)
+        if z_self is not None:
+            try:
+                z_self.record_vote(proposal_id, voted_with_majority, adversarial_engaged)
+                # Check if sycophancy threshold crossed — log warning
+                syc = z_self.check_sycophancy()
+                if syc.get("risk_level") == "high":
+                    import logging as _log
+                    _log.getLogger(__name__).warning(
+                        "z_self SYCOPHANCY ALERT on proposal %s: %s",
+                        proposal_id, syc.get("flags", [])
+                    )
+            except Exception:
+                pass  # non-blocking
+
+        # ── BFT Meta-Council: audit the vote ──────────────────────────
+        bft_meta = getattr(self, 'bft_meta_council', None)
+        if bft_meta is not None:
+            import asyncio as _asyncio
+            try:
+                vote_map = {aid: v["vote"] for aid, v in votes.items()}
+                _asyncio.create_task(
+                    bft_meta.audit_vote(proposal_id, vote_map, {}, outcome)
+                )
+            except RuntimeError:
+                pass  # no event loop
+
+        # ── Dispatch approved proposals to TaskOrchestrator ────────────
+        if outcome == "approved" and self.orchestrator is not None:
+            action_type = proposal.get("action_type", "generic")
+            action_params = proposal.get("action_params", {})
+            proposed_by = proposal.get("proposed_by", "council")
+            try:
+                dispatch_result = await self.orchestrator.dispatch(
+                    proposal_id=proposal["id"],
+                    action_type=action_type,
+                    action_params=action_params,
+                    proposed_by=proposed_by,
+                )
+                proposal["dispatch_result"] = dispatch_result
+                # ── Phase 2.6: fire learning signal (non-blocking) ──────────
+                if getattr(self, 'council_learner', None) is not None:
+                    import asyncio as _asyncio
+                    _asyncio.create_task(
+                        self.council_learner.on_council_outcome(
+                            proposal, outcome, dispatch_result
+                        )
+                    )
+            except Exception as _exc:
+                import logging as _logging
+                _logging.getLogger(__name__).exception(
+                    "Orchestrator dispatch failed for approved proposal '%s': %s",
+                    proposal["id"], _exc
+                )
+                proposal["dispatch_result"] = {"error": str(_exc)}
     
     def get_proposal(self, proposal_id: str) -> Optional[Dict[str, Any]]:
         """Get proposal details"""

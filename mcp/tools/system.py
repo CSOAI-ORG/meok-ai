@@ -39,6 +39,48 @@ SYSTEM_TOOLS = [
             "properties": {}
         }
     },
+    {
+        "name": "get_llm_router_status",
+        "description": (
+            "Get LLM router status: available providers, circuit breaker state, "
+            "usage stats (calls, tokens, cost per provider), and task routing table."
+        ),
+        "inputSchema": {
+            "type": "object",
+            "properties": {
+                "task_type": {
+                    "type": "string",
+                    "description": "Show provider order for this task type (reasoning/code/fast/dream/care/default)",
+                    "default": "default",
+                }
+            },
+        },
+    },
+    {
+        "name": "route_llm_request",
+        "description": (
+            "Send a completion request through the LLM router. "
+            "Automatically selects best available provider for the task type and falls back on failure."
+        ),
+        "inputSchema": {
+            "type": "object",
+            "properties": {
+                "prompt": {"type": "string", "description": "User message / prompt"},
+                "task_type": {
+                    "type": "string",
+                    "description": "Task type for routing: reasoning, code, fast, dream, care, long_context, default",
+                    "default": "default",
+                },
+                "system": {"type": "string", "description": "System prompt (optional)"},
+                "max_tokens": {"type": "integer", "default": 1024},
+                "preferred_provider": {
+                    "type": "string",
+                    "description": "Prefer this provider if available (claude/openai/gemini/ollama)",
+                },
+            },
+            "required": ["prompt"],
+        },
+    },
 ]
 
 
@@ -96,6 +138,43 @@ async def handle_system_tool(name: str, arguments: Dict[str, Any], state: Servic
 
     elif name == "sovereign_rundown":
         return await _build_rundown(state)
+
+    elif name == "get_llm_router_status":
+        router = getattr(state, "llm_router", None)
+        if router is None:
+            return {"error": "LLMRouter not initialized", "hint": "Check ANTHROPIC_API_KEY / OPENAI_API_KEY env vars"}
+        task_type = arguments.get("task_type", "default")
+        return {
+            "available_providers": router.get_available_providers(task_type),
+            "task_routing_table": {
+                tt: router.get_available_providers(tt)
+                for tt in ["reasoning", "code", "fast", "dream", "care", "long_context", "default"]
+            },
+            "usage_stats": router.get_usage_stats(),
+        }
+
+    elif name == "route_llm_request":
+        router = getattr(state, "llm_router", None)
+        if router is None:
+            return {"error": "LLMRouter not initialized"}
+        prompt = arguments.get("prompt", "")
+        if not prompt:
+            return {"error": "prompt is required"}
+        task_type = arguments.get("task_type", "default")
+        system_prompt = arguments.get("system")
+        max_tokens = int(arguments.get("max_tokens", 1024))
+        preferred = arguments.get("preferred_provider")
+        try:
+            result = await router.complete(
+                messages=[{"role": "user", "content": prompt}],
+                task_type=task_type,
+                max_tokens=max_tokens,
+                system=system_prompt,
+                preferred_provider=preferred,
+            )
+            return result
+        except Exception as e:
+            return {"error": str(e), "task_type": task_type}
 
     return {"error": f"Unknown system tool: {name}"}
 

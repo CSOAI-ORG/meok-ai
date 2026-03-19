@@ -61,6 +61,16 @@ except ImportError:
     QualityDiversityArchive = None
     CreativeOutput = None
 
+# z_self: 7th meta-cognitive neural network (Pure Sakshi observer)
+try:
+    from .z_self import ZSelf, ZSelfNetwork, MODEL_NAMES as Z_SELF_MODEL_NAMES
+    from .z_self_tripwires import ZSelfTripwires, TRIPWIRE_SCENARIOS
+except ImportError:
+    ZSelf = None
+    ZSelfNetwork = None
+    ZSelfTripwires = None
+    TRIPWIRE_SCENARIOS = []
+
 def create_default_registry(model_dir: str = "models") -> NeuralModelRegistry:
     """Create a registry with all models initialized (sklearn + PyTorch)."""
     registry = NeuralModelRegistry()

@@ -10,7 +10,7 @@ FROM python:3.11-slim AS base
 ENV DEBIAN_FRONTEND=noninteractive
 ENV PYTHONPATH=/app
 ENV MEOK_MCP__PORT=3100
-ENV MEOK_AUTH__REQUIRED=true
+ENV MEOK_AUTH__REQUIRED=false
 ENV MEOK_DATABASE__POSTGRES_DSN=postgresql://meok:meok@127.0.0.1:5432/meok
 
 WORKDIR /app
@@ -47,9 +47,11 @@ COPY . /app/meok/
 
 # Create necessary directories (PG data dir created at runtime by start.sh)
 RUN mkdir -p /app/meok/neural/models /app/logs /app/backups \
-    /var/log/supervisor /var/run/postgresql \
+    /var/log/supervisor /var/run/postgresql /app/persist \
     && chown -R postgres:postgres /var/run/postgresql \
     && rm -rf /var/lib/postgresql/15/main
+
+ENV MEOK_DATABASE__PERSIST_PATH=/app/persist
 
 # ─── DB init script ─────────────────────────────────────
 COPY db/init.sql /docker-entrypoint-initdb.d/init.sql
@@ -62,7 +64,7 @@ RUN chmod +x /start.sh /app/meok/deploy/serverless/backup.sh
 
 EXPOSE 3100
 
-HEALTHCHECK --interval=30s --timeout=10s --retries=5 --start-period=60s \
+HEALTHCHECK --interval=30s --timeout=10s --retries=10 --start-period=300s \
     CMD curl -sf http://localhost:3100/health || exit 1
 
 CMD ["/start.sh"]

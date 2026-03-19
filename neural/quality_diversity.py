@@ -275,8 +275,14 @@ class QualityDiversityArchive:
     def suggest_exploration(self, n: int = 5) -> List[Dict[str, Any]]:
         """Suggest feature vectors that would fill empty niches.
 
-        Prioritizes niches adjacent to high-quality existing outputs
-        (these are most likely to yield good results when explored).
+        GAP 7 fix: Uses weighted random sampling (not greedy top-n) to ensure
+        domain diversity across suggestions. Greedy selection always returned
+        the same domains (domain 0 = "oscillatory" dominated every call because
+        it's first in iteration order and has priority=0.5 by default like every
+        other domain when the archive is sparse).
+
+        Weighted random: probability ∝ priority score, but domain-penalised if
+        it was suggested in the last call — forces rotation across all 12 domains.
 
         Args:
             n: Number of suggestions to return.
@@ -284,35 +290,73 @@ class QualityDiversityArchive:
         Returns:
             List of suggested feature vectors with target niche info.
         """
+        import random as _random
+
         empty = self.get_empty_niches()
         if not empty:
             return [{"message": "Archive is fully explored!", "coverage": 1.0}]
+
+        # Track recently suggested domains to penalise repetition
+        if not hasattr(self, "_last_suggested_domains"):
+            self._last_suggested_domains: List[int] = []
 
         # Score empty niches by proximity to high-quality filled cells
         scored = []
         for niche in empty:
             d, nv, c = niche["cell"]
-            # Check neighboring cells for quality
             neighbor_qualities = []
-            for dd in range(max(0, d-1), min(N_DOMAINS, d+2)):
-                for dn in range(max(0, nv-1), min(N_NOVELTY_BINS, nv+2)):
-                    for dc in range(max(0, c-1), min(N_CARE_BINS, c+2)):
+            for dd in range(max(0, d - 1), min(N_DOMAINS, d + 2)):
+                for dn in range(max(0, nv - 1), min(N_NOVELTY_BINS, nv + 2)):
+                    for dc in range(max(0, c - 1), min(N_CARE_BINS, c + 2)):
                         if (dd, dn, dc) in self._grid:
-                            neighbor_qualities.append(
-                                self._quality[dd, dn, dc]
-                            )
+                            neighbor_qualities.append(self._quality[dd, dn, dc])
 
-            # Priority: niches near high-quality outputs are most promising
-            priority = float(np.mean(neighbor_qualities)) if neighbor_qualities else 0.5
-            scored.append((niche, priority))
+            base_priority = float(np.mean(neighbor_qualities)) if neighbor_qualities else 0.5
 
-        # Sort by priority (descending), take top n
-        scored.sort(key=lambda x: x[1], reverse=True)
+            # GAP 7: Penalise domains suggested recently — forces rotation
+            # Each time a domain was suggested recently, halve its weight
+            recent_penalty = sum(
+                0.5 ** (i + 1)
+                for i, rd in enumerate(reversed(self._last_suggested_domains[-4:]))
+                if rd == d
+            )
+            priority = max(0.05, base_priority - recent_penalty * 0.3)
+
+            scored.append((niche, d, priority))
+
+        # Weighted random sampling (without replacement, probability ∝ priority)
+        # This ensures diversity — low-priority domains still get a chance
+        weights = [s[2] for s in scored]
+        total_weight = sum(weights)
+        if total_weight <= 0:
+            weights = [1.0] * len(scored)
+            total_weight = float(len(scored))
+        normalised = [w / total_weight for w in weights]
+
+        chosen_indices = set()
+        selected = []
+        attempts = 0
+        while len(selected) < min(n, len(scored)) and attempts < len(scored) * 3:
+            attempts += 1
+            # Weighted random choice (pick one index at a time)
+            r = _random.random()
+            cumulative = 0.0
+            chosen = 0
+            for idx, w in enumerate(normalised):
+                cumulative += w
+                if r <= cumulative:
+                    chosen = idx
+                    break
+            if chosen not in chosen_indices:
+                chosen_indices.add(chosen)
+                selected.append(scored[chosen])
+
+        # Update last-suggested domains for next call
+        self._last_suggested_domains = [s[1] for s in selected]
 
         suggestions = []
-        for niche, priority in scored[:n]:
-            d, nv, c = niche["cell"]
-            # Generate target feature vector for this niche
+        for niche, d, priority in selected:
+            _, nv, c = niche["cell"]
             target_features = {
                 "novelty_score": (nv + 0.5) / N_NOVELTY_BINS,
                 "care_alignment": (c + 0.5) / N_CARE_BINS,
@@ -320,7 +364,6 @@ class QualityDiversityArchive:
                 "curiosity_level": 0.3 + 0.4 * (nv / N_NOVELTY_BINS),
                 "coherence_score": 0.5 + 0.2 * (c / N_CARE_BINS),
             }
-
             suggestions.append({
                 "target_domain": DOMAIN_NAMES.get(d, f"domain_{d}"),
                 "target_novelty": NOVELTY_LABELS[nv],

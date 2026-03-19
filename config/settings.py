@@ -54,6 +54,10 @@ class DatabaseSettings(BaseSettings):
         default="redis://localhost:6379/0",
         description="Redis connection URL (future use)",
     )
+    persist_path: str = Field(
+        default="/tmp/meok-persist",
+        description="Local path for SQLite fallback persistence (used when Postgres unavailable)",
+    )
 
 
 class McpSettings(BaseSettings):

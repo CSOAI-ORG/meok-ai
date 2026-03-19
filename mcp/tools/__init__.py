@@ -17,6 +17,15 @@ from meok.mcp.tools.orion import ORION_TOOLS, handle_orion_tool
 from meok.mcp.tools.coordination import COORDINATION_TOOLS, handle_coordination_tool
 from meok.mcp.tools.heartbeat import HEARTBEAT_TOOLS, handle_heartbeat_tool
 from meok.mcp.tools.creativity import CREATIVITY_TOOLS, handle_creativity_tool
+from meok.mcp.tools.governance import GOVERNANCE_TOOLS, handle_governance_tool
+from meok.mcp.tools.activation import ACTIVATION_TOOLS, handle_activation_tool
+from meok.mcp.tools.learning import LEARNING_TOOLS, handle_learning_tool
+from meok.mcp.tools.care_metrics import CARE_METRICS_TOOLS, handle_care_metrics_tool
+from meok.mcp.tools.compliance import COMPLIANCE_TOOLS, handle_compliance_tool
+from meok.mcp.tools.sustainability import SUSTAINABILITY_TOOLS, handle_sustainability_tool
+from meok.mcp.tools.gaming import GAMING_TOOLS, handle_gaming_tool
+from meok.mcp.tools.code_interpreter import CODE_INTERPRETER_TOOLS, handle_code_interpreter_tool
+from meok.mcp.tools.command_interpreter import COMMAND_INTERPRETER_TOOLS, handle_command_interpreter_tool
 
 # Combined tool list — order matches the original monolithic server
 ALL_TOOLS = (
@@ -30,6 +39,15 @@ ALL_TOOLS = (
     + COORDINATION_TOOLS
     + HEARTBEAT_TOOLS
     + CREATIVITY_TOOLS
+    + GOVERNANCE_TOOLS
+    + ACTIVATION_TOOLS
+    + LEARNING_TOOLS
+    + CARE_METRICS_TOOLS
+    + COMPLIANCE_TOOLS        # Phase 4.6/4.7: EU AI Act + GDPR + BFT confidence + anti-sycophancy
+    + SUSTAINABILITY_TOOLS    # Phase 4.13: care-aligned business model
+    + GAMING_TOOLS            # Gaming companion — session tracking + entity growth
+    + CODE_INTERPRETER_TOOLS  # Sandboxed Python execution (MEOK.AI Architecture Blueprint)
+    + COMMAND_INTERPRETER_TOOLS  # Tiered shell execution (4-level safety hierarchy)
 )
 
 # Build name -> handler lookup from each module's tool list
@@ -55,6 +73,24 @@ for _tool in HEARTBEAT_TOOLS:
     _TOOL_NAME_TO_HANDLER[_tool["name"]] = handle_heartbeat_tool
 for _tool in CREATIVITY_TOOLS:
     _TOOL_NAME_TO_HANDLER[_tool["name"]] = handle_creativity_tool
+for _tool in GOVERNANCE_TOOLS:
+    _TOOL_NAME_TO_HANDLER[_tool["name"]] = handle_governance_tool
+for _tool in ACTIVATION_TOOLS:
+    _TOOL_NAME_TO_HANDLER[_tool["name"]] = handle_activation_tool
+for _tool in LEARNING_TOOLS:
+    _TOOL_NAME_TO_HANDLER[_tool["name"]] = handle_learning_tool
+for _tool in CARE_METRICS_TOOLS:
+    _TOOL_NAME_TO_HANDLER[_tool["name"]] = handle_care_metrics_tool
+for _tool in COMPLIANCE_TOOLS:
+    _TOOL_NAME_TO_HANDLER[_tool["name"]] = handle_compliance_tool
+for _tool in SUSTAINABILITY_TOOLS:
+    _TOOL_NAME_TO_HANDLER[_tool["name"]] = handle_sustainability_tool
+for _tool in GAMING_TOOLS:
+    _TOOL_NAME_TO_HANDLER[_tool["name"]] = handle_gaming_tool
+for _tool in CODE_INTERPRETER_TOOLS:
+    _TOOL_NAME_TO_HANDLER[_tool["name"]] = handle_code_interpreter_tool
+for _tool in COMMAND_INTERPRETER_TOOLS:
+    _TOOL_NAME_TO_HANDLER[_tool["name"]] = handle_command_interpreter_tool
 
 # Also expose as a dict for external inspection
 TOOL_HANDLERS = {
@@ -68,6 +104,15 @@ TOOL_HANDLERS = {
     "coordination": handle_coordination_tool,
     "heartbeat": handle_heartbeat_tool,
     "creativity": handle_creativity_tool,
+    "governance": handle_governance_tool,
+    "activation": handle_activation_tool,
+    "learning": handle_learning_tool,
+    "care_metrics": handle_care_metrics_tool,
+    "compliance": handle_compliance_tool,
+    "sustainability": handle_sustainability_tool,
+    "gaming": handle_gaming_tool,
+    "code_interpreter": handle_code_interpreter_tool,
+    "command_interpreter": handle_command_interpreter_tool,
 }
 
 

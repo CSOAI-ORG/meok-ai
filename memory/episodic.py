@@ -5,14 +5,22 @@ Features: Temporal chains, episodic compaction, importance scoring
 
 import asyncio
 import asyncpg
-import weaviate
-from weaviate.util import generate_uuid5
+import json
+import hashlib
 from datetime import datetime, timedelta
 from typing import Dict, Any, List, Optional, Tuple
 import numpy as np
 from dataclasses import dataclass, asdict
-import json
-import hashlib
+
+try:
+    import weaviate
+    from weaviate.util import generate_uuid5
+    _WEAVIATE_AVAILABLE = True
+except ImportError:
+    _WEAVIATE_AVAILABLE = False
+    def generate_uuid5(val):
+        import uuid
+        return str(uuid.UUID(hashlib.md5(str(val).encode()).hexdigest()))
 
 
 @dataclass

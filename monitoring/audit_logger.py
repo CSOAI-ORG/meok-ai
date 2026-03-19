@@ -178,10 +178,15 @@ class AuditLogger:
         """Flush event buffer to database"""
         if not self._event_buffer:
             return
-        
+
+        if self.pool is None:
+            # PostgreSQL unavailable — keep buffer (don't lose events, retry next flush)
+            logger.debug("AuditLogger: pool unavailable, deferring flush (%d events)", len(self._event_buffer))
+            return
+
         events_to_flush = self._event_buffer[:]
         self._event_buffer = []
-        
+
         async with self.pool.acquire() as conn:
             async with conn.transaction():
                 for event in events_to_flush:
@@ -213,7 +218,13 @@ class AuditLogger:
                         limit: int = 100) -> List[Dict[str, Any]]:
         """Query audit logs with filters"""
         if not self.pool:
-            return []
+            # Return in-memory buffer when PostgreSQL unavailable
+            results = list(reversed(self._event_buffer[-limit:]))
+            if event_type:
+                results = [e for e in results if e.get("event_type") == event_type.value]
+            if source_agent:
+                results = [e for e in results if e.get("source_agent") == source_agent]
+            return results[:limit]
 
         conditions = ["1=1"]
         params = []

@@ -1,0 +1,34 @@
+[
+  {
+    "content": "ARCHITECTURAL KNOWLEDGE — CodeInterpreter.python (MEOK.AI Technical Blueprint 2026-03-19):\n\nSandboxed Python execution engine with tiered safety and iterative error recovery. Implemented in meok/mcp/tools/code_interpreter.py.\n\nARCHITECTURE DECISIONS LOCKED IN:\n1. Level 1 (default): restricted builtins — blocks __import__, open, eval, exec. Allows math, json, re, datetime, numpy, pandas. asyncio.create_subprocess_exec isolation.\n2. Level 2: file I/O via pathlib within ephemeral tempdir — created per-execution, deleted after.\n3. Iterative recovery: on RC!=0 + RC!=124, retry once with error appended as comment — mimics blueprint auto-retry pattern.\n4. Dangerous pattern detection at AST parse level: blocks os/sys/subprocess/socket/ctypes imports.\n5. Execution ring buffer: last 50 executions tracked for audit.\n6. Timeout enforcement: asyncio.wait_for with kill on TimeoutError → RC 124.\n\nGAPS STILL OPEN FROM BLUEPRINT:\n- No GPU/CUDA tier — needs Docker backend\n- No visual intelligence (PIL/OpenCV) — Level 3 sandbox needed\n- No persistent session IDs across executions\n- Multi-language: JS, SQL, Rust — not yet implemented",
+    "memory_type": "insight",
+    "care_weight": 0.9,
+    "source_agent": "architectural_ingestion",
+    "tags": ["architecture", "code_interpreter", "sandboxing", "security", "blueprint"],
+    "ingested_at": "2026-03-19"
+  },
+  {
+    "content": "ARCHITECTURAL KNOWLEDGE — CommandInterpreter.execute_command (MEOK.AI Technical Blueprint 2026-03-19):\n\n4-level tiered shell execution with default-deny permissions. Implemented in meok/mcp/tools/command_interpreter.py.\n\nLEVELS:\n1. Level 1: read-only — ls, cat, grep, rg, find, git log/status/diff, python/node --version\n2. Level 2: write-enabled — git add/commit/push, npm install/run, pip install, docker, mkdir/cp/mv/rm\n3. Level 3: any binary with structured args (shlex.split → create_subprocess_exec)\n4. Level 4: full shell — pipes, variables, redirection\n\nALWAYS_BLOCKED: rm -rf /, fork bombs, mkfs, dd if=/dev/zero, curl|sh, bash <(), nc -e, /etc/passwd, DROP DATABASE\n\nCredential env stripping: removes AWS_SECRET, GITHUB_TOKEN, ANTHROPIC_API_KEY from every execution.\n\nGAPS STILL OPEN:\n- Audit log not persisted to DB (connect to GAP 8 EventBus)\n- No network egress control per-command\n- No file system security policy (chroot/namespace isolation)\n- No resource usage tracking per command",
+    "memory_type": "insight",
+    "care_weight": 0.9,
+    "source_agent": "architectural_ingestion",
+    "tags": ["architecture", "command_interpreter", "shell", "security", "tiered_permissions", "blueprint"],
+    "ingested_at": "2026-03-19"
+  },
+  {
+    "content": "ARCHITECTURAL KNOWLEDGE — Multi-Provider LLM + Session Management (MEOK.AI Technical Blueprint 2026-03-19):\n\nPROVIDERS (priority order for MEOK integration):\n1. Anthropic Claude: primary reasoning + care alignment. Already integrated.\n2. OpenAI GPT-4.1/o3/o4-mini: reasoning/coding backup.\n3. Google Gemini 2.5-pro: native code execution, long-context analysis.\n4. Ollama (local): DreamSynthesizer already uses. Expand to llama3.3, qwen2.5-coder.\n5. Custom OpenAI-compatible endpoints.\n\nSESSION MANAGEMENT NEEDED (not yet built):\n- Named sessions: persistent conversation context with session_id\n- Ephemeral sessions: single-request, no state\n- Temporary sessions: TTL-based expiry (24h default)\n- Conversation buffer memory: last N messages injected automatically\n- Tool execution history: prevents repeat tool spam\n\nWHAT TO BUILD NEXT:\n1. meok/core/llm_router.py — routes to cheapest/fastest capable provider per task type\n2. meok/core/session_manager.py — named session CRUD with SQLite backend\n3. Provider health check with circuit breaker fallback\n4. Cost tracking per session: tokens × pricing → sustainability metrics",
+    "memory_type": "insight",
+    "care_weight": 0.88,
+    "source_agent": "architectural_ingestion",
+    "tags": ["architecture", "llm_router", "multi_provider", "sessions", "blueprint", "ollama", "claude", "openai", "gemini"],
+    "ingested_at": "2026-03-19"
+  },
+  {
+    "content": "ARCHITECTURAL DECISION — MEOK March 31 Launch Readiness vs Blueprint Gaps (2026-03-19):\n\nLAUNCH READINESS: MEOK is architecturally sound for March 31 with subprocess sandboxing. Full enterprise container isolation is Q2 2026.\n\nPRIORITY ACTIONS FROM BLUEPRINT:\nHIGH:\n1. meok/core/llm_router.py — multi-provider routing with circuit breaker fallback\n2. Persist command_interpreter audit logs to DB (connect GAP 8 EventBus → audit_logs)\n3. Network egress blocking in code_interpreter Level 1 sandbox\n\nMEDIUM:\n4. meok/core/session_manager.py — named session CRUD\n5. Resource usage tracking per subprocess (CPU/RAM measurement)\n6. Docker backend for code_interpreter Level 3\n\nLOW (post-launch Q2):\n7. Kubernetes deployment manifests\n8. Redis session backend\n9. S3 artifact storage for code execution outputs\n10. gVisor/Firecracker for high-security multi-tenant sandboxing\n\nDEPLOYMENT CURRENT STATE:\n- Docker-compose locally ✓\n- /health, /pulse endpoints ✓\n- SQLite (upgrade to Postgres for multi-tenant) \n- In-memory caches (upgrade to Redis post-launch)",
+    "memory_type": "decision",
+    "care_weight": 0.92,
+    "source_agent": "architectural_ingestion",
+    "tags": ["architecture", "security", "deployment", "roadmap", "launch", "blueprint", "gaps"],
+    "ingested_at": "2026-03-19"
+  }
+]
