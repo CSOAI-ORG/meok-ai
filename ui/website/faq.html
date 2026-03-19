@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FAQ — MEOK.AI</title>
+  <meta name="description" content="Honest answers to real questions about MEOK.AI — privacy, data ownership, how it works, pricing, and more.">
+  <link rel="stylesheet" href="nav.css">
+  <style>
+    .faq-list { max-width: 780px; margin: 0 auto; display: grid; gap: 16px; }
+    .faq-item { border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+    .faq-question { width: 100%; text-align: left; background: none; border: none; padding: 24px 28px; font-size: 1.05rem; font-weight: 700; color: var(--dark); cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-family: inherit; transition: background 0.15s; }
+    .faq-question:hover { background: var(--light); }
+    .faq-question .faq-icon { font-size: 1.2rem; flex-shrink: 0; transition: transform 0.2s; color: var(--deep-blue); }
+    .faq-question.open .faq-icon { transform: rotate(45deg); }
+    .faq-answer { display: none; padding: 0 28px 24px; color: var(--mid); font-size: 0.97rem; line-height: 1.75; }
+    .faq-answer.open { display: block; }
+    .faq-answer a { color: var(--deep-blue); }
+    .faq-category { font-size: 0.75rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--deep-blue); margin: 40px 0 12px; max-width: 780px; margin-left: auto; margin-right: auto; }
+    .faq-category:first-child { margin-top: 0; }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">MEOK<span>.AI</span></a>
+    <button class="nav-hamburger" onclick="this.nextElementSibling.classList.toggle('open')" aria-label="Menu">&#9776;</button>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="sovereign-os.html">Sovereign OS</a></li>
+      <li><a href="any-llm.html">Any LLM</a></li>
+      <li><a href="gaming.html">Gaming</a></li>
+      <li><a href="family-guardian.html">Family</a></li>
+      <li><a href="external-memory.html">Memory</a></li>
+      <li><a href="how-it-works.html">How It Works</a></li>
+      <li><a href="pricing.html">Pricing</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="open-source.html">Open Source</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="pricing.html" class="nav-cta">Get Started</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="container">
+    <div class="hero-badge">FAQ</div>
+    <h1>Honest Answers</h1>
+    <p>Real questions, straight answers. If we don't cover something here, <a href="contact.html" style="color:var(--deep-blue);">ask us directly</a>.</p>
+    <div class="hero-actions">
+      <a href="contact.html" class="btn btn-primary">Ask Us Anything</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+
+    <div class="faq-category">Privacy &amp; Data</div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggle(this)">
+          Do you sell or share my data with anyone?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          No. Full stop. We earn revenue from subscriptions, not from monetising your data. We don't sell data to advertisers, data brokers, AI trainers, or any third party. Our <a href="open-source.html">open-source client code</a> lets you verify this claim technically — not just take our word for it.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggle(this)">
+          Do my conversations train your AI models?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          No. Your conversations do not train MEOK's models or any third-party model we integrate with. When you use your own API key (e.g., your OpenAI key), your requests go directly to that provider under their own terms — check their terms if you want zero training opt-out. When you use our integrated access, we contractually prohibit training use.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggle(this)">
+          Can MEOK read my memories and stored data?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          No. Your memory archive is encrypted with keys you hold. If you enable optional cloud sync, we store ciphertext — mathematically unreadable without your key. This is a zero-knowledge architecture. Even if we were subpoenaed, we couldn't hand over readable data.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggle(this)">
+          What happens if I delete my account?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          Cryptographic erasure. We destroy your encryption key. Your stored data becomes mathematically unrecoverable — not "scheduled for deletion in 30 days" but immediately irreversible. This applies to all tiers.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggle(this)">
+          Is MEOK GDPR compliant?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          Yes. MEOK AI LTD is incorporated in England and Wales and GDPR is the baseline for all data practices globally, not just for EU users. We also comply with GDPR-K (children's data), COPPA, the UK Online Safety Act, California AB 2273, and the EU AI Act. Our privacy architecture was designed around these frameworks, not retrofitted to them.
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-category">How It Works</div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggle(this)">
+          Do I need an internet connection to use MEOK?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          No. The free tier with community models runs entirely offline. If you use cloud-based models (Claude, GPT-4, Gemini), those requests need internet access — but your memory and companion layer remain local. Optional cloud sync also requires internet, but it's opt-in.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggle(this)">
+          What is the "hatching egg" and why does it take 72 hours?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          The hatching egg is a deliberate onboarding philosophy. We believe AI companions should earn your trust, not arrive fully formed demanding it. The 72-hour hatching window gives you time to interact naturally — your companion learns from that interaction and becomes something shaped by you specifically, not a generic pre-configured assistant.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggle(this)">
+          Can I use my own OpenAI / Anthropic / Google API key?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          Yes. You can connect your own API keys at any tier. Keys are stored in your local OS keychain — not in our cloud. Requests go directly from your device to the model provider. We're not proxying and logging your conversations.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggle(this)">
+          Can I export my memories and conversations?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          Yes, all plans support data export. Memory Scholar and Archivist tiers include full export to JSON, Markdown, and raw vector embeddings. You can take your data to another tool, archive it, or use the API to build your own integrations.
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-category">Pricing &amp; Plans</div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggle(this)">
+          Is there a genuinely free tier or is it a "freemium trap"?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          MEOK Core Free is a genuine free tier — local-only processing, community models, basic conversation memory, one device. No credit card. No usage limits that push you to upgrade immediately. The conversion trigger is natural: you hit device limits or want cloud sync. We don't throttle free tier arbitrarily or use dark patterns to force upgrades.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggle(this)">
+          Can I cancel anytime?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          Yes. Cancel anytime in one click. No cancellation fee, no "are you sure?" dark pattern flow, no "please call us to cancel." Monthly plans cancel at end of billing period. Annual plans pro-rated if cancelled within 30 days; otherwise run to end of period.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggle(this)">
+          Do you offer a money-back guarantee?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          Yes, Family plans include a 30-day money-back guarantee. Other paid plans can be cancelled immediately with no partial refund, but we're working on extending the money-back policy across all plans. If you're unhappy for any reason, <a href="contact.html">contact us</a> — we'll work it out.
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-category">Family Guardian</div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggle(this)">
+          Does Family Guardian read my child's messages?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          No. Family Guardian learns behavioural baselines and detects anomalies — it does not provide a transcript of your child's conversations. The distinction is important: we alert you to distress signals and harmful contact patterns, not to everything your child says. This is by design.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggle(this)">
+          Can my child see what Family Guardian monitors?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          Yes. We actively encourage age-appropriate transparency. Children can see a summary of what's monitored via their own view of the dashboard. We believe surveillance AI that children don't know about creates trust problems in families — that's the opposite of what we want.
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="highlight-box">
+      <h2 class="section-title">Still have questions?</h2>
+      <p>We're real people. Email us, and a human will respond — not a bot trained to deflect.</p>
+      <a href="contact.html" class="btn btn-yellow">Contact Us</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-logo">MEOK.AI</div>
+  <div class="footer-tagline">Your AI. Your Data. Your Companion.</div>
+  <ul class="footer-links">
+    <li><a href="about.html">About</a></li>
+    <li><a href="pricing.html">Pricing</a></li>
+    <li><a href="open-source.html">Open Source</a></li>
+    <li><a href="faq.html">FAQ</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="footer-copy">&copy; 2026 MEOK AI LTD. Incorporated in England &amp; Wales.</div>
+</footer>
+
+<script src="nav.js"></script>
+<script>
+function toggle(btn) {
+  var answer = btn.nextElementSibling;
+  var isOpen = answer.classList.contains('open');
+  // close all
+  document.querySelectorAll('.faq-answer.open').forEach(function(a){ a.classList.remove('open'); });
+  document.querySelectorAll('.faq-question.open').forEach(function(b){ b.classList.remove('open'); });
+  if (!isOpen) {
+    answer.classList.add('open');
+    btn.classList.add('open');
+  }
+}
+</script>
+</body>
+</html>

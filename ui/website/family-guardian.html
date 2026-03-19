@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Family Guardian — MEOK.AI</title>
+  <meta name="description" content="Care-based child safety AI. Anomaly detection without surveillance. Up to 5 child profiles, weekly wellness reports, GDPR-K and COPPA compliant.">
+  <link rel="stylesheet" href="nav.css">
+  <style>
+    .promise-box { background: rgba(46,204,113,0.08); border: 1px solid rgba(46,204,113,0.2); border-radius: var(--radius); padding: 32px; margin-bottom: 32px; }
+    .promise-box h3 { color: #27ae60; font-size: 1.1rem; font-weight: 700; margin-bottom: 12px; }
+    .compliance-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
+    .tier-compare { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    @media(max-width:600px){.tier-compare{grid-template-columns:1fr;}}
+    .tier-box { border: 1px solid var(--border); border-radius: var(--radius); padding: 32px; }
+    .tier-box.featured { border-color: var(--green); box-shadow: 0 4px 24px rgba(46,204,113,0.15); }
+    .tier-price { font-size: 2rem; font-weight: 900; color: var(--deep-blue); margin: 8px 0; }
+    .tier-price small { font-size: 1rem; font-weight: 400; color: var(--mid); }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">MEOK<span>.AI</span></a>
+    <button class="nav-hamburger" onclick="this.nextElementSibling.classList.toggle('open')" aria-label="Menu">&#9776;</button>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="sovereign-os.html">Sovereign OS</a></li>
+      <li><a href="any-llm.html">Any LLM</a></li>
+      <li><a href="gaming.html">Gaming</a></li>
+      <li><a href="family-guardian.html">Family</a></li>
+      <li><a href="external-memory.html">Memory</a></li>
+      <li><a href="how-it-works.html">How It Works</a></li>
+      <li><a href="pricing.html">Pricing</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="open-source.html">Open Source</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="pricing.html" class="nav-cta">Start Free</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="container">
+    <div class="hero-badge">Family Guardian</div>
+    <h1>Care for Your Family,<br><span class="accent">Not Surveillance</span></h1>
+    <p>AI that learns your child's behavioural baseline and quietly alerts you when something's genuinely wrong — without watching every message or creating a surveillance state in your home.</p>
+    <div class="hero-actions">
+      <a href="pricing.html" class="btn btn-primary">Start Free</a>
+      <a href="faq.html" class="btn btn-secondary">Read the FAQ</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="two-col">
+      <div>
+        <div class="promise-box">
+          <h3>Our care-based promise</h3>
+          <p style="color:var(--mid);font-size:0.95rem;">We alert you to genuine distress signals and harmful contact patterns. We do not provide a feed of your child's messages. We do not build a dossier. We do not profit from what we learn about your family.</p>
+        </div>
+        <h2 class="section-title">Built for parents who want safety, not control</h2>
+        <p style="color:var(--mid);margin-bottom:24px;">There's a difference between knowing your child is in danger and reading every message they've ever sent. MEOK Family Guardian is designed for the former.</p>
+        <ul class="features">
+          <li>Behavioural baseline per child — normal vs. anomalous patterns</li>
+          <li>Distress signal detection — mood shifts, isolation, harmful content</li>
+          <li>Predatory contact pattern recognition</li>
+          <li>Weekly wellness reports — not surveillance logs</li>
+          <li>Parent dashboard with full consent controls</li>
+          <li>Child can see what's monitored — age-appropriate transparency</li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="section-title">Compliant with every major child safety framework</h2>
+        <p style="color:var(--mid);margin-bottom:20px;">We hold ourselves to the highest standards, across every jurisdiction where families use MEOK.</p>
+        <div class="compliance-row">
+          <span class="tag tag-green">GDPR-K</span>
+          <span class="tag tag-green">COPPA</span>
+          <span class="tag tag-green">UK Online Safety Act</span>
+          <span class="tag tag-green">California AB 2273</span>
+          <span class="tag tag-green">EU AI Act</span>
+        </div>
+        <div style="margin-top:28px;">
+          <ul class="features">
+            <li>Children's data never used for advertising</li>
+            <li>No profiling for commercial purposes</li>
+            <li>Data minimisation — only what's needed for safety</li>
+            <li>Right to deletion — cryptographic erasure</li>
+            <li>Age verification for account creation</li>
+            <li>Parental consent flow built in</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bg-light">
+  <div class="container">
+    <div class="section-header center">
+      <h2 class="section-title">What Family Guardian actually does</h2>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">📈</div>
+        <h3>Builds a behavioural baseline</h3>
+        <p>Learns what's normal for each child — their communication patterns, activity levels, social signals — so it can spot when something's genuinely different.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🚨</div>
+        <h3>Alerts on anomalies, not everything</h3>
+        <p>WhatsApp and SMS alerts only for significant anomalies. Not a firehose. Not every message. Just: "Something's different with your child this week."</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">📋</div>
+        <h3>Weekly wellness reports</h3>
+        <p>A gentle weekly summary — mood signals, social connection, any concerns. Built for conversation with your child, not confrontation.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">👥</div>
+        <h3>Up to 5 child profiles</h3>
+        <p>Standard plan covers up to 5 children with individual baselines. Each child gets their own context — siblings are not compared to each other.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-header center">
+      <h2 class="section-title">Choose your plan</h2>
+    </div>
+    <div class="tier-compare">
+      <div class="tier-box">
+        <div style="font-size:0.75rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--mid);margin-bottom:8px;">FAMILY</div>
+        <div style="font-size:1.3rem;font-weight:800;color:var(--dark);">Family Guardian</div>
+        <div class="tier-price">$19.99 <small>/mo</small></div>
+        <div style="font-size:0.9rem;color:var(--mid);margin-bottom:20px;">Or $199/yr (17% off)</div>
+        <ul class="features">
+          <li>Up to 5 child profiles</li>
+          <li>Behavioural baseline per child</li>
+          <li>Anomaly detection and alerts</li>
+          <li>Weekly wellness reports</li>
+          <li>Parent dashboard</li>
+          <li>WhatsApp/SMS alerts</li>
+          <li>GDPR-K and COPPA compliant</li>
+          <li>10GB encrypted memory</li>
+        </ul>
+        <div style="margin-top:24px;"><a href="pricing.html" class="btn btn-secondary" style="width:100%;text-align:center;display:block;">Get Guardian Plan</a></div>
+      </div>
+      <div class="tier-box featured">
+        <div style="font-size:0.75rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#27ae60;margin-bottom:8px;">FAMILY PLUS</div>
+        <div style="font-size:1.3rem;font-weight:800;color:var(--dark);">Guardian Plus</div>
+        <div class="tier-price">$39.99 <small>/mo</small></div>
+        <div style="font-size:0.9rem;color:var(--mid);margin-bottom:20px;">Or $399/yr (17% off)</div>
+        <ul class="features">
+          <li>Unlimited child profiles</li>
+          <li>Professional safeguarding monitoring</li>
+          <li>Emergency response protocols</li>
+          <li>Family therapy integration pathway</li>
+          <li>Custom SLA</li>
+          <li>Priority support</li>
+          <li>Institutional deployment option</li>
+          <li>50GB encrypted memory, API access</li>
+        </ul>
+        <div style="margin-top:24px;"><a href="pricing.html" class="btn btn-primary" style="width:100%;text-align:center;display:block;">Get Guardian Plus</a></div>
+      </div>
+    </div>
+    <p style="text-align:center;color:var(--mid);font-size:0.9rem;margin-top:20px;">30-day money-back guarantee on all Family plans. No questions asked.</p>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="highlight-box">
+      <h2 class="section-title">Your family's safety shouldn't require surrendering their privacy</h2>
+      <p>Start with a free trial. No credit card. 30-day money-back guarantee if you change your mind.</p>
+      <a href="pricing.html" class="btn btn-yellow">Start Free Trial</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-logo">MEOK.AI</div>
+  <div class="footer-tagline">Your AI. Your Data. Your Companion.</div>
+  <ul class="footer-links">
+    <li><a href="about.html">About</a></li>
+    <li><a href="pricing.html">Pricing</a></li>
+    <li><a href="open-source.html">Open Source</a></li>
+    <li><a href="faq.html">FAQ</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="footer-copy">&copy; 2026 MEOK AI LTD. Incorporated in England &amp; Wales.</div>
+</footer>
+
+<script src="nav.js"></script>
+</body>
+</html>

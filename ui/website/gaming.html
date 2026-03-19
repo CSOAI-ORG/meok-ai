@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gaming — MEOK.AI</title>
+  <meta name="description" content="An AI companion that lives in your game. Voice chat, match analysis, coaching, and &lt;100ms latency. Supports Fortnite, Valorant, CS2, Minecraft and more.">
+  <link rel="stylesheet" href="nav.css">
+  <style>
+    .hero { background: linear-gradient(160deg, #0d1117 0%, #1a1f35 60%); }
+    .hero h1, .hero p { color: #fff; }
+    .hero h1 .accent { color: var(--yellow); }
+    .hero-badge { background: rgba(255,215,0,0.15); color: var(--yellow); }
+    .latency-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(46,204,113,0.15); color: var(--green); font-weight: 700; font-size: 1.2rem; padding: 12px 24px; border-radius: var(--radius); border: 1px solid rgba(46,204,113,0.3); margin: 16px 0; }
+    .games-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 16px; }
+    .game-badge { border: 1px solid var(--border); border-radius: var(--radius); padding: 20px 12px; text-align: center; }
+    .game-badge .game-icon { font-size: 1.8rem; margin-bottom: 8px; }
+    .game-badge .game-name { font-size: 0.85rem; font-weight: 700; color: var(--dark); }
+    .tier-compare { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    @media(max-width:600px){.tier-compare{grid-template-columns:1fr;}}
+    .tier-box { border: 1px solid var(--border); border-radius: var(--radius); padding: 32px; }
+    .tier-box.featured { border-color: var(--deep-blue); box-shadow: var(--shadow-lg); }
+    .tier-box .tier-badge { font-size: 0.75rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--deep-blue); margin-bottom: 8px; }
+    .tier-box .tier-name { font-size: 1.3rem; font-weight: 800; color: var(--dark); margin-bottom: 4px; }
+    .tier-box .tier-price { font-size: 2rem; font-weight: 900; color: var(--deep-blue); margin-bottom: 4px; }
+    .tier-box .tier-price small { font-size: 1rem; font-weight: 400; color: var(--mid); }
+    .tier-box .tier-desc { font-size: 0.9rem; color: var(--mid); margin-bottom: 20px; }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">MEOK<span>.AI</span></a>
+    <button class="nav-hamburger" onclick="this.nextElementSibling.classList.toggle('open')" aria-label="Menu">&#9776;</button>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="sovereign-os.html">Sovereign OS</a></li>
+      <li><a href="any-llm.html">Any LLM</a></li>
+      <li><a href="gaming.html">Gaming</a></li>
+      <li><a href="family-guardian.html">Family</a></li>
+      <li><a href="external-memory.html">Memory</a></li>
+      <li><a href="how-it-works.html">How It Works</a></li>
+      <li><a href="pricing.html">Pricing</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="open-source.html">Open Source</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="pricing.html" class="nav-cta">Join Beta</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="container">
+    <div class="hero-badge">Gaming Vertical — Beta</div>
+    <h1>An AI That Gets<br><span class="accent">Your Game</span></h1>
+    <p style="color:rgba(255,255,255,0.8);">A companion that watches your matches, talks with you in voice, coaches your weak spots, and remembers your playstyle — all without uploading your gameplay to train their models.</p>
+    <div class="latency-badge">
+      <span>⚡</span>
+      <span>&lt;100ms voice response target</span>
+    </div>
+    <div class="hero-actions">
+      <a href="pricing.html" class="btn btn-yellow">Join the Beta</a>
+      <a href="#games" class="btn" style="background:rgba(255,255,255,0.1);color:#fff;border:1px solid rgba(255,255,255,0.2);">See Supported Games</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-header center">
+      <h2 class="section-title">Your AI teammate, not a stats website</h2>
+      <p class="section-sub">MEOK Gaming knows your history, your weaknesses, and how you play — and gives you real-time advice in a voice that doesn't distract.</p>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">🎮</div>
+        <h3>In-game overlay</h3>
+        <p>Transparent overlay that doesn't interfere with gameplay. OBS-independent. Works with any game using our supported integrations.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🎙️</div>
+        <h3>Voice-to-voice companion</h3>
+        <p>Talk naturally mid-match. Under 100ms response target. Your companion responds in the heat of play, not after a 2-second delay.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">📊</div>
+        <h3>Match history analysis</h3>
+        <p>Remembers your last 500+ matches. Spots patterns in your deaths, your aim, your decision-making. Coaches the specific things holding you back.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🎭</div>
+        <h3>Game-specific personalities</h3>
+        <p>A different persona for Valorant vs Minecraft vs Fortnite — the companion adapts its tone and knowledge to the game you're in.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bg-light" id="games">
+  <div class="container">
+    <div class="section-header center">
+      <h2 class="section-title">Supported games at launch</h2>
+    </div>
+    <div class="games-grid">
+      <div class="game-badge"><div class="game-icon">⛏️</div><div class="game-name">Minecraft</div></div>
+      <div class="game-badge"><div class="game-icon">🎯</div><div class="game-name">Valorant</div></div>
+      <div class="game-badge"><div class="game-icon">🔫</div><div class="game-name">CS2</div></div>
+      <div class="game-badge"><div class="game-icon">🏗️</div><div class="game-name">Fortnite</div></div>
+      <div class="game-badge"><div class="game-icon">🌟</div><div class="game-name">Roblox</div></div>
+      <div class="game-badge"><div class="game-icon">🌌</div><div class="game-name">Destiny 2</div></div>
+      <div class="game-badge"><div class="game-icon">⚔️</div><div class="game-name">League of Legends</div></div>
+      <div class="game-badge"><div class="game-icon">➕</div><div class="game-name">More coming</div></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-header center">
+      <h2 class="section-title">Gamer or Streamer?</h2>
+      <p class="section-sub">Two tiers built for different needs.</p>
+    </div>
+    <div class="tier-compare">
+      <div class="tier-box">
+        <div class="tier-badge">Gaming</div>
+        <div class="tier-name">Gamer</div>
+        <div class="tier-price">$14.99 <small>/mo</small></div>
+        <div class="tier-desc">Or $149/yr (17% off)</div>
+        <ul class="features">
+          <li>In-game overlay</li>
+          <li>Voice-to-voice companion</li>
+          <li>&lt;100ms latency target</li>
+          <li>Game-specific personalities</li>
+          <li>Match history analysis</li>
+          <li>Performance coaching</li>
+          <li>2 devices, 5GB memory</li>
+        </ul>
+        <div style="margin-top:24px;"><a href="pricing.html" class="btn btn-secondary" style="width:100%;text-align:center;display:block;">Get Gamer Plan</a></div>
+      </div>
+      <div class="tier-box featured">
+        <div class="tier-badge">Gaming + Streaming</div>
+        <div class="tier-name">Streamer</div>
+        <div class="tier-price">$29.99 <small>/mo</small></div>
+        <div class="tier-desc">Or $299/yr (17% off)</div>
+        <ul class="features">
+          <li>Everything in Gamer</li>
+          <li>Full OBS Studio integration</li>
+          <li>Twitch/YouTube audience interaction</li>
+          <li>Streamer analytics dashboard</li>
+          <li>Affiliate code management</li>
+          <li>Custom companion persona for channel</li>
+          <li>Revenue share eligibility</li>
+          <li>3 devices, 20GB memory, API access</li>
+        </ul>
+        <div style="margin-top:24px;"><a href="pricing.html" class="btn btn-primary" style="width:100%;text-align:center;display:block;">Get Streamer Plan</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="highlight-box">
+      <h2 class="section-title">Gaming beta — spots are limited</h2>
+      <p>We're opening the beta to 1,000 players. Join now to shape the product and lock in beta pricing.</p>
+      <a href="pricing.html" class="btn btn-yellow">Join the Beta</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-logo">MEOK.AI</div>
+  <div class="footer-tagline">Your AI. Your Data. Your Companion.</div>
+  <ul class="footer-links">
+    <li><a href="about.html">About</a></li>
+    <li><a href="pricing.html">Pricing</a></li>
+    <li><a href="open-source.html">Open Source</a></li>
+    <li><a href="faq.html">FAQ</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="footer-copy">&copy; 2026 MEOK AI LTD. Incorporated in England &amp; Wales.</div>
+</footer>
+
+<script src="nav.js"></script>
+</body>
+</html>

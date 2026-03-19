@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact — MEOK.AI</title>
+  <meta name="description" content="We're real people. Get in touch with the MEOK.AI team — partnerships, press, support, or just a conversation.">
+  <link rel="stylesheet" href="nav.css">
+  <style>
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: flex-start; }
+    @media(max-width:768px){.contact-grid{grid-template-columns:1fr;gap:40px;}}
+    .contact-form { display: grid; gap: 18px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    @media(max-width:500px){.form-row{grid-template-columns:1fr;}}
+    .form-group { display: flex; flex-direction: column; gap: 6px; }
+    .form-group label { font-size: 0.88rem; font-weight: 600; color: var(--dark); }
+    .form-group input, .form-group select, .form-group textarea {
+      padding: 12px 14px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 0.97rem;
+      color: var(--dark);
+      background: #fff;
+      transition: border-color 0.15s;
+      width: 100%;
+    }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+      outline: none;
+      border-color: var(--deep-blue);
+      box-shadow: 0 0 0 3px rgba(74,144,217,0.1);
+    }
+    .form-group textarea { resize: vertical; min-height: 120px; }
+    .contact-method { display: flex; gap: 16px; align-items: flex-start; padding: 20px 0; border-bottom: 1px solid var(--border); }
+    .contact-method:last-child { border-bottom: none; }
+    .contact-method .cm-icon { font-size: 1.4rem; flex-shrink: 0; margin-top: 2px; }
+    .contact-method h4 { font-size: 0.95rem; font-weight: 700; color: var(--dark); margin-bottom: 4px; }
+    .contact-method p, .contact-method a { font-size: 0.9rem; color: var(--mid); text-decoration: none; }
+    .contact-method a:hover { color: var(--deep-blue); }
+    .notice { background: rgba(74,144,217,0.06); border: 1px solid rgba(74,144,217,0.15); border-radius: var(--radius); padding: 20px; font-size: 0.9rem; color: var(--mid); }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">MEOK<span>.AI</span></a>
+    <button class="nav-hamburger" onclick="this.nextElementSibling.classList.toggle('open')" aria-label="Menu">&#9776;</button>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="sovereign-os.html">Sovereign OS</a></li>
+      <li><a href="any-llm.html">Any LLM</a></li>
+      <li><a href="gaming.html">Gaming</a></li>
+      <li><a href="family-guardian.html">Family</a></li>
+      <li><a href="external-memory.html">Memory</a></li>
+      <li><a href="how-it-works.html">How It Works</a></li>
+      <li><a href="pricing.html">Pricing</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="open-source.html">Open Source</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="pricing.html" class="nav-cta">Get Started</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="container">
+    <div class="hero-badge">Contact</div>
+    <h1>We're Real People</h1>
+    <p>Email us with questions, partnership ideas, press enquiries, or feedback. A human will respond — we don't outsource our inbox to a bot.</p>
+    <div class="hero-actions">
+      <a href="mailto:hello@meok.ai" class="btn btn-primary">Get in Touch</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="contact-grid">
+      <div>
+        <h2 class="section-title" style="margin-bottom:32px;">Send us a message</h2>
+        <form class="contact-form" onsubmit="handleSubmit(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="fname">First name</label>
+              <input type="text" id="fname" name="fname" placeholder="Your first name" required>
+            </div>
+            <div class="form-group">
+              <label for="lname">Last name</label>
+              <input type="text" id="lname" name="lname" placeholder="Your last name">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="you@example.com" required>
+          </div>
+          <div class="form-group">
+            <label for="subject">What's this about?</label>
+            <select id="subject" name="subject">
+              <option value="">Select a topic...</option>
+              <option value="support">Product support</option>
+              <option value="partnership">Partnership / Business</option>
+              <option value="press">Press / Media</option>
+              <option value="beta">Beta access request</option>
+              <option value="enterprise">Enterprise / Institutional</option>
+              <option value="open-source">Open source contribution</option>
+              <option value="other">Something else</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" placeholder="Tell us what's on your mind..." required></textarea>
+          </div>
+          <div class="notice">
+            We typically respond within 1 business day. We don't use your email for marketing unless you explicitly ask to be added to the list.
+          </div>
+          <button type="submit" class="btn btn-primary">Send Message</button>
+        </form>
+      </div>
+      <div>
+        <h2 class="section-title" style="margin-bottom:32px;">Other ways to reach us</h2>
+        <div>
+          <div class="contact-method">
+            <div class="cm-icon">📧</div>
+            <div>
+              <h4>General enquiries</h4>
+              <a href="mailto:hello@meok.ai">hello@meok.ai</a>
+              <p>Questions, feedback, anything goes here.</p>
+            </div>
+          </div>
+          <div class="contact-method">
+            <div class="cm-icon">🛡️</div>
+            <div>
+              <h4>Privacy &amp; data</h4>
+              <a href="mailto:privacy@meok.ai">privacy@meok.ai</a>
+              <p>GDPR requests, deletion, data portability.</p>
+            </div>
+          </div>
+          <div class="contact-method">
+            <div class="cm-icon">🔐</div>
+            <div>
+              <h4>Security disclosures</h4>
+              <a href="mailto:security@meok.ai">security@meok.ai</a>
+              <p>Responsible disclosure. We respond within 24 hours.</p>
+            </div>
+          </div>
+          <div class="contact-method">
+            <div class="cm-icon">📰</div>
+            <div>
+              <h4>Press &amp; media</h4>
+              <a href="mailto:press@meok.ai">press@meok.ai</a>
+              <p>Press kit, interviews, speaking requests.</p>
+            </div>
+          </div>
+          <div class="contact-method">
+            <div class="cm-icon">🤝</div>
+            <div>
+              <h4>Partnerships</h4>
+              <a href="mailto:partnerships@meok.ai">partnerships@meok.ai</a>
+              <p>Integration partners, affiliates, co-development.</p>
+            </div>
+          </div>
+          <div class="contact-method">
+            <div class="cm-icon">🏛️</div>
+            <div>
+              <h4>Registered office</h4>
+              <p>MEOK AI LTD<br>Incorporated in England &amp; Wales<br>Company Number: pending</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bg-light">
+  <div class="container">
+    <div class="section-header center">
+      <h2 class="section-title">Before you reach out</h2>
+      <p class="section-sub">These might answer your question faster.</p>
+    </div>
+    <div class="cards">
+      <a href="faq.html" class="card" style="text-decoration:none;">
+        <div class="card-icon">❓</div>
+        <h3>FAQ</h3>
+        <p>Honest answers to the most common questions about privacy, data, pricing, and how MEOK works.</p>
+      </a>
+      <a href="open-source.html" class="card" style="text-decoration:none;">
+        <div class="card-icon">💻</div>
+        <h3>Open Source</h3>
+        <p>The client code is public. If you're a developer, answers to technical questions might be in the repo.</p>
+      </a>
+      <a href="how-it-works.html" class="card" style="text-decoration:none;">
+        <div class="card-icon">⚙️</div>
+        <h3>How It Works</h3>
+        <p>Step-by-step explanation of the onboarding, memory, encryption, and model architecture.</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-logo">MEOK.AI</div>
+  <div class="footer-tagline">Your AI. Your Data. Your Companion.</div>
+  <ul class="footer-links">
+    <li><a href="about.html">About</a></li>
+    <li><a href="pricing.html">Pricing</a></li>
+    <li><a href="open-source.html">Open Source</a></li>
+    <li><a href="faq.html">FAQ</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="footer-copy">&copy; 2026 MEOK AI LTD. Incorporated in England &amp; Wales.</div>
+</footer>
+
+<script src="nav.js"></script>
+<script>
+function handleSubmit(e) {
+  e.preventDefault();
+  var btn = e.target.querySelector('button[type="submit"]');
+  btn.textContent = 'Message sent!';
+  btn.style.background = 'var(--green)';
+  btn.disabled = true;
+  // In production: send to a real form endpoint (Formspree, etc.)
+}
+</script>
+</body>
+</html>

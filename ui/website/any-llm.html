@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Any LLM — MEOK.AI</title>
+  <meta name="description" content="Connect MEOK to any LLM — Claude, GPT-4, Gemini, Llama, Mistral, or your own model. Your companion persists across every brain.">
+  <link rel="stylesheet" href="nav.css">
+  <style>
+    .llm-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 16px; }
+    .llm-card { border: 1px solid var(--border); border-radius: var(--radius); padding: 24px 16px; text-align: center; transition: all 0.2s; }
+    .llm-card:hover { border-color: var(--sky-blue); box-shadow: var(--shadow); }
+    .llm-card .llm-icon { font-size: 2rem; margin-bottom: 10px; }
+    .llm-card .llm-name { font-weight: 700; font-size: 0.95rem; color: var(--dark); }
+    .llm-card .llm-status { font-size: 0.75rem; color: var(--mid); margin-top: 4px; }
+    .llm-card.available .llm-status { color: var(--green); }
+    .llm-card.soon .llm-status { color: #f39c12; }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">MEOK<span>.AI</span></a>
+    <button class="nav-hamburger" onclick="this.nextElementSibling.classList.toggle('open')" aria-label="Menu">&#9776;</button>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="sovereign-os.html">Sovereign OS</a></li>
+      <li><a href="any-llm.html">Any LLM</a></li>
+      <li><a href="gaming.html">Gaming</a></li>
+      <li><a href="family-guardian.html">Family</a></li>
+      <li><a href="external-memory.html">Memory</a></li>
+      <li><a href="how-it-works.html">How It Works</a></li>
+      <li><a href="pricing.html">Pricing</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="open-source.html">Open Source</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="pricing.html" class="nav-cta">Get Started</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="container">
+    <div class="hero-badge">Model Agnostic</div>
+    <h1>Your Companion.<br><span class="accent">Any Brain.</span></h1>
+    <p>MEOK separates the companion layer from the model layer. Switch between Claude, GPT-4, Gemini, or local Llama without losing your memory, personality, or context.</p>
+    <div class="hero-actions">
+      <a href="pricing.html" class="btn btn-primary">Connect Your LLM</a>
+      <a href="how-it-works.html" class="btn btn-secondary">How It Works</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-header center">
+      <h2 class="section-title">Compatible with the models you already use</h2>
+      <p class="section-sub">Plug in your own API keys, or use MEOK's integrated access for supported models.</p>
+    </div>
+    <div class="llm-grid">
+      <div class="llm-card available"><div class="llm-icon">🤖</div><div class="llm-name">Claude</div><div class="llm-status">Available</div></div>
+      <div class="llm-card available"><div class="llm-icon">⚡</div><div class="llm-name">GPT-4o</div><div class="llm-status">Available</div></div>
+      <div class="llm-card available"><div class="llm-icon">🦙</div><div class="llm-name">Llama 3</div><div class="llm-status">Available (local)</div></div>
+      <div class="llm-card available"><div class="llm-icon">🌟</div><div class="llm-name">Gemini</div><div class="llm-status">Available</div></div>
+      <div class="llm-card available"><div class="llm-icon">🌬️</div><div class="llm-name">Mistral</div><div class="llm-status">Available (local)</div></div>
+      <div class="llm-card soon"><div class="llm-icon">🔷</div><div class="llm-name">Grok</div><div class="llm-status">Coming soon</div></div>
+      <div class="llm-card available"><div class="llm-icon">🧬</div><div class="llm-name">Deepseek</div><div class="llm-status">Available (local)</div></div>
+      <div class="llm-card available"><div class="llm-icon">🔧</div><div class="llm-name">Custom API</div><div class="llm-status">OpenAI-compatible</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="bg-light">
+  <div class="container">
+    <div class="two-col">
+      <div>
+        <h2 class="section-title">The companion persists. The brain is swappable.</h2>
+        <p style="color:var(--mid);margin-bottom:24px;">This is the key architectural insight that makes MEOK different. Most AI products are tightly coupled to one model — when the model changes (or disappears), so does your relationship with it.</p>
+        <p style="color:var(--mid);margin-bottom:24px;">MEOK's companion layer holds your personality preferences, memory, emotional context, and conversation style. The model just provides the reasoning. You can swap models mid-conversation and your companion doesn't forget who you are.</p>
+        <ul class="features">
+          <li>Personality and preferences stored in companion layer</li>
+          <li>Memories persist across all model switches</li>
+          <li>Each model given relevant context from your history</li>
+          <li>Compare models side-by-side for the same question</li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="section-title">Bring your own keys</h2>
+        <p style="color:var(--mid);margin-bottom:24px;">Prefer to use your own API subscriptions? Connect your OpenAI, Anthropic, or Google API key directly. MEOK never stores your keys in our cloud — they live in your local encrypted keychain.</p>
+        <ul class="features">
+          <li>API keys encrypted in local OS keychain</li>
+          <li>Direct API calls — we're not a proxy harvesting responses</li>
+          <li>Works with enterprise API keys and private endpoints</li>
+          <li>Self-hosted model support (Ollama, LM Studio, vLLM)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-header center">
+      <h2 class="section-title">Why this matters for your privacy</h2>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">🔑</div>
+        <h3>No middleman on your keys</h3>
+        <p>When you use your own API key, requests go directly to the model provider. MEOK isn't logging your conversations or using them to train anything.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🏠</div>
+        <h3>Local models: zero data leaves</h3>
+        <p>Running Llama or Mistral locally? Nothing leaves your device. The most private setup possible.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🔄</div>
+        <h3>No vendor lock-in</h3>
+        <p>If your preferred model raises prices, gets acquired, or changes terms — switch with one tap. Your memory and companion stay with you.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="highlight-box">
+      <h2 class="section-title">Start with the free community models</h2>
+      <p>Free tier includes community open-source models locally. Upgrade to access Claude, GPT-4, and more via integrated access.</p>
+      <a href="pricing.html" class="btn btn-yellow">See Plans</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-logo">MEOK.AI</div>
+  <div class="footer-tagline">Your AI. Your Data. Your Companion.</div>
+  <ul class="footer-links">
+    <li><a href="about.html">About</a></li>
+    <li><a href="pricing.html">Pricing</a></li>
+    <li><a href="open-source.html">Open Source</a></li>
+    <li><a href="faq.html">FAQ</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="footer-copy">&copy; 2026 MEOK AI LTD. Incorporated in England &amp; Wales.</div>
+</footer>
+
+<script src="nav.js"></script>
+</body>
+</html>

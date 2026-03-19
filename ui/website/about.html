@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About — MEOK.AI</title>
+  <meta name="description" content="MEOK.AI is built different by design. Learn why we started with privacy as the foundation, not an afterthought.">
+  <link rel="stylesheet" href="nav.css">
+  <style>
+    .manifesto { max-width: 780px; margin: 0 auto; }
+    .manifesto p { font-size: 1.1rem; color: var(--mid); margin-bottom: 24px; line-height: 1.8; }
+    .manifesto h2 { font-size: 1.5rem; font-weight: 800; color: var(--dark); margin: 48px 0 16px; }
+    .contrast { background: var(--light); border-radius: var(--radius); padding: 40px; margin: 48px 0; }
+    .contrast-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+    @media(max-width:600px){.contrast-grid{grid-template-columns:1fr;}}
+    .contrast-col h3 { font-size: 1rem; font-weight: 700; margin-bottom: 16px; }
+    .contrast-col.bad h3 { color: #e74c3c; }
+    .contrast-col.good h3 { color: var(--green); }
+    .contrast-col ul { list-style: none; display: grid; gap: 10px; }
+    .contrast-col ul li { font-size: 0.95rem; color: var(--mid); display: flex; gap: 10px; }
+    .contrast-col.bad ul li::before { content: '✗'; color: #e74c3c; font-weight: 700; }
+    .contrast-col.good ul li::before { content: '✓'; color: var(--green); font-weight: 700; }
+    .team-note { border-left: 4px solid var(--deep-blue); padding: 20px 28px; background: rgba(74,144,217,0.06); border-radius: 0 var(--radius) var(--radius) 0; }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">MEOK<span>.AI</span></a>
+    <button class="nav-hamburger" onclick="this.nextElementSibling.classList.toggle('open')" aria-label="Menu">&#9776;</button>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="sovereign-os.html">Sovereign OS</a></li>
+      <li><a href="any-llm.html">Any LLM</a></li>
+      <li><a href="gaming.html">Gaming</a></li>
+      <li><a href="family-guardian.html">Family</a></li>
+      <li><a href="external-memory.html">Memory</a></li>
+      <li><a href="how-it-works.html">How It Works</a></li>
+      <li><a href="pricing.html">Pricing</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="open-source.html">Open Source</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="pricing.html" class="nav-cta">Get Started</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="container">
+    <div class="hero-badge">Our Story</div>
+    <h1>Built Different,<br><span class="accent">By Design</span></h1>
+    <p>We didn't start with "how do we monetise attention?" We started with "what would AI look like if users actually owned it?"</p>
+    <div class="hero-actions">
+      <a href="pricing.html" class="btn btn-primary">Our Story</a>
+      <a href="open-source.html" class="btn btn-secondary">Read the Code</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="manifesto">
+      <h2>Why we exist</h2>
+      <p>The AI industry made a deal you never agreed to: your conversations, your habits, your fears, your searches — all collected, analysed, and monetised. The product was never the AI. The product was you.</p>
+      <p>We think that's wrong. Not just ethically wrong — strategically wrong. AI companions are only valuable if you actually trust them. And you can't trust something that sells your secrets.</p>
+      <p>MEOK.AI starts from a different premise: <strong>you pay us for the service, so we work for you</strong>. Not for advertisers. Not for data brokers. Not for growth hackers optimising engagement metrics.</p>
+
+      <div class="contrast">
+        <div class="contrast-grid">
+          <div class="contrast-col bad">
+            <h3>How most AI companies operate</h3>
+            <ul>
+              <li>Free tier funded by data collection</li>
+              <li>Conversations train future models (with your content)</li>
+              <li>Behavioral profiling for targeted ads</li>
+              <li>Dark patterns that keep you engaged, not well</li>
+              <li>Data stored on their servers, their keys</li>
+              <li>Deletion is a form — not actually deleted</li>
+            </ul>
+          </div>
+          <div class="contrast-col good">
+            <h3>How MEOK.AI operates</h3>
+            <ul>
+              <li>Subscription funded — you're the customer</li>
+              <li>Your conversations never train our models</li>
+              <li>No behavioral profiling, no ad targeting</li>
+              <li>Designed for your wellbeing, not your addiction</li>
+              <li>Local-first, client-side encryption</li>
+              <li>Cryptographic erasure — key destroyed, data gone</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <h2>The egg</h2>
+      <p>Our mascot is a hatching egg. It's deliberate. Your companion doesn't arrive fully formed — it grows with you. In the first 24 hours you get an egg. Over 48-72 hours, it cracks and hatches. Over weeks and months, it becomes something that genuinely knows you.</p>
+      <p>That's not a product feature. That's a philosophy. AI companions should earn your trust, not demand it on install.</p>
+
+      <h2>MEOK AI LTD</h2>
+      <p>We're incorporated in England and Wales. We're GDPR-compliant by design, not by checkbox. We hold ourselves to COPPA, the UK Online Safety Act, and the EU AI Act — not because we have to, but because the families who use our product deserve it.</p>
+
+      <div class="team-note">
+        <strong>A note on size:</strong> We're a small, focused team. We're not trying to become the next trillion-dollar platform. We're trying to build AI that's genuinely worth trusting. If that resonates, <a href="contact.html" style="color:var(--deep-blue);">come talk to us</a>.
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bg-light">
+  <div class="container">
+    <div class="section-header center">
+      <h2 class="section-title">Our commitments</h2>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">📖</div>
+        <h3>Open source client</h3>
+        <p>The client code is open source. Reproducible builds. Third-party security audits. Trust through transparency, not marketing.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">💳</div>
+        <h3>Simple pricing</h3>
+        <p>No free tier funded by surveillance. Nine tiers, each with clear limits. Annual discount, no auto-renewal tricks.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">📤</div>
+        <h3>Full data export</h3>
+        <p>Export everything you've ever stored — JSON, Markdown, vector embeddings. Your data is yours to take with you.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="highlight-box">
+      <h2 class="section-title">Ready to try a different kind of AI?</h2>
+      <p>No credit card required. No data harvesting. Just a companion that remembers what you tell it — and only you.</p>
+      <a href="pricing.html" class="btn btn-yellow">See Pricing</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-logo">MEOK.AI</div>
+  <div class="footer-tagline">Your AI. Your Data. Your Companion.</div>
+  <ul class="footer-links">
+    <li><a href="about.html">About</a></li>
+    <li><a href="pricing.html">Pricing</a></li>
+    <li><a href="open-source.html">Open Source</a></li>
+    <li><a href="faq.html">FAQ</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="footer-copy">&copy; 2026 MEOK AI LTD. Incorporated in England &amp; Wales.</div>
+</footer>
+
+<script src="nav.js"></script>
+</body>
+</html>

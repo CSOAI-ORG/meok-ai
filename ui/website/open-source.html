@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Open Source — MEOK.AI</title>
+  <meta name="description" content="MEOK's client is fully open source. Read the code, verify our privacy claims, contribute, or build on it. Trust nothing blindly.">
+  <link rel="stylesheet" href="nav.css">
+  <style>
+    .code-block { background: var(--dark); border-radius: var(--radius); padding: 28px 32px; font-family: 'Courier New', monospace; font-size: 0.85rem; color: rgba(255,255,255,0.85); overflow-x: auto; }
+    .code-block .comment { color: rgba(255,255,255,0.35); }
+    .code-block .kw { color: var(--sky-blue); }
+    .code-block .str { color: var(--yellow); }
+    .code-block .fn { color: var(--green); }
+    .repo-card { border: 1px solid var(--border); border-radius: var(--radius); padding: 28px; display: flex; align-items: flex-start; gap: 20px; text-decoration: none; color: inherit; transition: all 0.2s; }
+    .repo-card:hover { box-shadow: var(--shadow-lg); border-color: var(--sky-blue); }
+    .repo-card .repo-icon { font-size: 2rem; flex-shrink: 0; }
+    .repo-card h3 { font-size: 1.1rem; font-weight: 700; color: var(--dark); margin-bottom: 6px; }
+    .repo-card p { font-size: 0.9rem; color: var(--mid); }
+    .repo-card .repo-meta { display: flex; gap: 12px; margin-top: 10px; font-size: 0.8rem; color: var(--mid); }
+    .repos { display: grid; gap: 16px; }
+    .audit-row { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px; }
+    .audit-item { padding: 24px; border: 1px solid var(--border); border-radius: var(--radius); }
+    .audit-item h4 { font-size: 0.95rem; font-weight: 700; color: var(--dark); margin-bottom: 8px; }
+    .audit-item p { font-size: 0.85rem; color: var(--mid); }
+    .audit-status { display: inline-flex; align-items: center; gap: 6px; font-size: 0.78rem; font-weight: 700; margin-top: 10px; }
+    .audit-status.done { color: var(--green); }
+    .audit-status.pending { color: #f39c12; }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">MEOK<span>.AI</span></a>
+    <button class="nav-hamburger" onclick="this.nextElementSibling.classList.toggle('open')" aria-label="Menu">&#9776;</button>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="sovereign-os.html">Sovereign OS</a></li>
+      <li><a href="any-llm.html">Any LLM</a></li>
+      <li><a href="gaming.html">Gaming</a></li>
+      <li><a href="family-guardian.html">Family</a></li>
+      <li><a href="external-memory.html">Memory</a></li>
+      <li><a href="how-it-works.html">How It Works</a></li>
+      <li><a href="pricing.html">Pricing</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="open-source.html">Open Source</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="pricing.html" class="nav-cta">Get Started</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="container">
+    <div class="hero-badge">Open Source</div>
+    <h1>See Everything.<br><span class="accent">Trust Nothing Blindly.</span></h1>
+    <p>We make privacy claims. You shouldn't just take our word for it. The client code is open source, reproducible builds are available, and third-party audits are published in full.</p>
+    <div class="hero-actions">
+      <a href="https://github.com/CSOAI-ORG/meok-ai" class="btn btn-primary" target="_blank" rel="noopener">View on GitHub</a>
+      <a href="about.html" class="btn btn-secondary">Our Philosophy</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">What's open and what isn't</h2>
+      <p class="section-sub">We're transparent about the boundary between open and proprietary.</p>
+    </div>
+    <div class="two-col">
+      <div>
+        <h3 style="font-size:1.1rem;font-weight:700;color:var(--green);margin-bottom:16px;">Open source (MIT licensed)</h3>
+        <ul class="features">
+          <li>Client application (all platforms)</li>
+          <li>Encryption and key management layer</li>
+          <li>Memory storage engine (pgvector integration)</li>
+          <li>Model bridge and API key handling</li>
+          <li>Companion layer and personality system</li>
+          <li>Onboarding and egg hatching flow</li>
+          <li>Export and data portability tools</li>
+          <li>MCP server protocol implementation</li>
+        </ul>
+      </div>
+      <div>
+        <h3 style="font-size:1.1rem;font-weight:700;color:var(--mid);margin-bottom:16px;">Proprietary (cloud infrastructure)</h3>
+        <ul class="features" style="--check-color:#999;">
+          <li>Cloud sync relay (ciphertext only — you can't read it, neither can we)</li>
+          <li>Billing and subscription management</li>
+          <li>Account authentication server</li>
+          <li>Analytics aggregation (no PII, aggregate only)</li>
+        </ul>
+        <p style="margin-top:16px;font-size:0.88rem;color:var(--mid);">The proprietary components touch no user data in readable form. They are not where your privacy lives or dies — that's all in the open-source client.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bg-light">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Repositories</h2>
+    </div>
+    <div class="repos">
+      <a href="https://github.com/CSOAI-ORG/meok-ai" class="repo-card" target="_blank" rel="noopener">
+        <div class="repo-icon">📦</div>
+        <div>
+          <h3>CSOAI-ORG/meok-ai</h3>
+          <p>Main application repository. Companion layer, memory engine, model bridge, MCP server, all platform clients.</p>
+          <div class="repo-meta">
+            <span>Python</span>
+            <span>MIT License</span>
+            <span>Main branch</span>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Verify our privacy claims yourself</h2>
+      <p class="section-sub">Here's the specific code to read if you want to validate our key claims.</p>
+    </div>
+    <div class="code-block">
+      <div class="comment"># Verify: no data leaves your device without encryption</div>
+      <div class="kw">grep</div> <span class="str">-r "cloud_sync"</span> meok/core/memory/ <span class="comment"># All sync goes through encryption layer</span>
+      <br><br>
+      <div class="comment"># Verify: conversations don't train models</div>
+      <div class="kw">grep</div> <span class="str">-r "training\|fine_tune\|finetune"</span> meok/mcp/ <span class="comment"># Should return nothing</span>
+      <br><br>
+      <div class="comment"># Verify: cryptographic erasure on delete</div>
+      <div class="kw">grep</div> <span class="str">-r "key_destroy\|cryptographic_erase"</span> meok/core/ <span class="comment"># See the implementation</span>
+      <br><br>
+      <div class="comment"># Verify: API keys stored in OS keychain, not cloud</div>
+      <div class="kw">grep</div> <span class="str">-r "keychain\|SecretService"</span> meok/auth/ <span class="comment"># Platform keychain integration</span>
+    </div>
+  </div>
+</section>
+
+<section class="bg-light">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Security audit status</h2>
+    </div>
+    <div class="audit-row">
+      <div class="audit-item">
+        <h4>Encryption Layer Audit</h4>
+        <p>Third-party review of client-side encryption implementation and key management.</p>
+        <div class="audit-status pending">⏳ Scheduled Q3 2026</div>
+      </div>
+      <div class="audit-item">
+        <h4>Penetration Test</h4>
+        <p>Full application penetration test by independent security firm.</p>
+        <div class="audit-status pending">⏳ Scheduled Q3 2026</div>
+      </div>
+      <div class="audit-item">
+        <h4>GDPR Compliance Review</h4>
+        <p>Legal and technical review by data protection specialists.</p>
+        <div class="audit-status pending">⏳ In progress</div>
+      </div>
+      <div class="audit-item">
+        <h4>Reproducible Builds</h4>
+        <p>Verify that distributed binaries match the published source code exactly.</p>
+        <div class="audit-status pending">⏳ Tooling in progress</div>
+      </div>
+    </div>
+    <p style="margin-top:24px;font-size:0.9rem;color:var(--mid);">Audit reports will be published in full at this URL when completed. We don't cherry-pick findings.</p>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Contributing</h2>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">🐛</div>
+        <h3>Report a bug</h3>
+        <p>Found something that doesn't work? Open an issue on GitHub with steps to reproduce. We respond to all genuine bug reports.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🔐</div>
+        <h3>Responsible disclosure</h3>
+        <p>Found a security vulnerability? Email <a href="mailto:security@meok.ai" style="color:var(--deep-blue);">security@meok.ai</a> before opening a public issue. We respond within 24 hours.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🌍</div>
+        <h3>Translate</h3>
+        <p>Help make MEOK accessible in your language. Translation files are in <code>meok/i18n/</code> in the repository.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">💡</div>
+        <h3>Feature proposals</h3>
+        <p>Open a GitHub Discussion before building a large feature. We want to know what you're planning so we can align roadmap.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="highlight-box">
+      <h2 class="section-title">Read the code. Then use MEOK.</h2>
+      <p>We'd rather you verified our claims first than trusted us on faith. The code is all there.</p>
+      <div class="hero-actions">
+        <a href="https://github.com/CSOAI-ORG/meok-ai" class="btn btn-yellow" target="_blank" rel="noopener">View on GitHub</a>
+        <a href="pricing.html" class="btn" style="background:rgba(255,255,255,0.15);color:#fff;">Start Using MEOK</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-logo">MEOK.AI</div>
+  <div class="footer-tagline">Your AI. Your Data. Your Companion.</div>
+  <ul class="footer-links">
+    <li><a href="about.html">About</a></li>
+    <li><a href="pricing.html">Pricing</a></li>
+    <li><a href="open-source.html">Open Source</a></li>
+    <li><a href="faq.html">FAQ</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="footer-copy">&copy; 2026 MEOK AI LTD. Incorporated in England &amp; Wales.</div>
+</footer>
+
+<script src="nav.js"></script>
+</body>
+</html>

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sovereign OS — MEOK.AI</title>
+  <meta name="description" content="AI that lives on your terms. Local-first, encrypted, runs any model, zero cloud dependency. The sovereign AI OS.">
+  <link rel="stylesheet" href="nav.css">
+  <style>
+    .arch-diagram { background: var(--dark); border-radius: var(--radius); padding: 40px; color: #fff; font-family: 'Courier New', monospace; font-size: 0.85rem; line-height: 2; overflow-x: auto; }
+    .arch-diagram .layer { color: var(--sky-blue); font-weight: 700; }
+    .arch-diagram .item { color: rgba(255,255,255,0.75); margin-left: 24px; }
+    .arch-diagram .arrow { color: var(--yellow); }
+    .compliance-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">MEOK<span>.AI</span></a>
+    <button class="nav-hamburger" onclick="this.nextElementSibling.classList.toggle('open')" aria-label="Menu">&#9776;</button>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="sovereign-os.html">Sovereign OS</a></li>
+      <li><a href="any-llm.html">Any LLM</a></li>
+      <li><a href="gaming.html">Gaming</a></li>
+      <li><a href="family-guardian.html">Family</a></li>
+      <li><a href="external-memory.html">Memory</a></li>
+      <li><a href="how-it-works.html">How It Works</a></li>
+      <li><a href="pricing.html">Pricing</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="open-source.html">Open Source</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="pricing.html" class="nav-cta">Get Started</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="container">
+    <div class="hero-badge">Sovereign OS</div>
+    <h1>AI That Lives<br><span class="accent">on Your Terms</span></h1>
+    <p>A full local AI operating system — models, memory, governance, and encryption all running on your hardware. No cloud dependency. No subscription required to stay private.</p>
+    <div class="hero-actions">
+      <a href="pricing.html" class="btn btn-primary">See the Architecture</a>
+      <a href="open-source.html" class="btn btn-secondary">View Source</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="two-col">
+      <div>
+        <h2 class="section-title">What "local-first" actually means</h2>
+        <p style="color:var(--mid);margin-bottom:24px;">Not "local until we need to sync." Not "local with some cloud features." Genuinely local-first: your conversations, memories, and model responses never leave your device unless you explicitly enable encrypted sync.</p>
+        <ul class="features">
+          <li>Conversations processed entirely on-device</li>
+          <li>Memory stored in encrypted local vector database</li>
+          <li>Optional cloud sync uses client-held keys — we can't read it</li>
+          <li>Works completely offline — no internet required</li>
+          <li>Delete data with cryptographic key erasure — instantly unrecoverable</li>
+        </ul>
+      </div>
+      <div class="arch-diagram">
+        <div class="layer">YOUR DEVICE</div>
+        <div class="item">┌─ MEOK Companion Layer</div>
+        <div class="item">│  ├─ Personality &amp; Memory</div>
+        <div class="item">│  ├─ Governance Engine</div>
+        <div class="item">│  └─ Privacy Controls</div>
+        <div class="item">│</div>
+        <div class="item">├─ Model Bridge</div>
+        <div class="item">│  ├─ Local: Llama, Mistral</div>
+        <div class="item">│  └─ API: Claude, GPT-4, Gemini</div>
+        <div class="item">│</div>
+        <div class="item">└─ Encrypted Storage</div>
+        <div class="item">   ├─ pgvector (memories)</div>
+        <div class="item">   └─ Client-side keys</div>
+        <div style="margin-top:16px;" class="arrow">↕ Encrypted sync only (optional)</div>
+        <div class="layer" style="margin-top:8px;">MEOK CLOUD (zero-knowledge)</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bg-light">
+  <div class="container">
+    <div class="section-header center">
+      <h2 class="section-title">Every platform. One sovereign companion.</h2>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">🪟</div>
+        <h3>Windows</h3>
+        <p>MSIX package via Microsoft Store or direct .exe installer. Winget support for developers.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🍎</div>
+        <h3>macOS</h3>
+        <p>Notarized DMG. Direct download or Homebrew. Runs on Apple Silicon natively.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">📱</div>
+        <h3>iOS &amp; Android</h3>
+        <p>TestFlight beta now. App Store launch Q3 2026. Android via Play Store and F-Droid.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🐧</div>
+        <h3>Linux</h3>
+        <p>Flatpak on Flathub, Snap, and AUR package. Community-maintained with official support.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🌐</div>
+        <h3>Web PWA</h3>
+        <p>Progressive Web App — install from meok.ai. Works offline. No app store required.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="two-col">
+      <div>
+        <h2 class="section-title">Compliance built in, not bolted on</h2>
+        <p style="color:var(--mid);margin-bottom:24px;">Privacy-by-design means the architecture itself is compliant — not a policy document added after the fact.</p>
+        <div class="compliance-tags">
+          <span class="tag tag-blue">GDPR</span>
+          <span class="tag tag-blue">GDPR-K (Children)</span>
+          <span class="tag tag-blue">COPPA</span>
+          <span class="tag tag-blue">UK Online Safety Act</span>
+          <span class="tag tag-blue">California AB 2273</span>
+          <span class="tag tag-blue">EU AI Act</span>
+        </div>
+        <div style="margin-top:28px;">
+          <ul class="features">
+            <li>Data residency: local-first, user-controlled</li>
+            <li>Encryption: client-held keys, zero-knowledge server</li>
+            <li>Deletion: cryptographic erasure (key destruction)</li>
+            <li>Audit: open-source client, reproducible builds</li>
+            <li>Third-party penetration testing (public reports)</li>
+          </ul>
+        </div>
+      </div>
+      <div>
+        <h2 class="section-title">Governance engine</h2>
+        <p style="color:var(--mid);margin-bottom:24px;">The Sovereign OS includes a governance layer — not just privacy controls, but a system for how your AI makes decisions and what values it operates within.</p>
+        <ul class="features">
+          <li>Configurable value system — you define your companion's principles</li>
+          <li>Transparency log — see every decision the AI made and why</li>
+          <li>Override controls — always in the chair, never on autopilot</li>
+          <li>No engagement manipulation — no dark patterns in the AI itself</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="highlight-box">
+      <h2 class="section-title">Start with the free tier — no credit card needed</h2>
+      <p>Local-only processing, community models, basic memory. Upgrade when you want cloud sync or better models.</p>
+      <a href="pricing.html" class="btn btn-yellow">See All Plans</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-logo">MEOK.AI</div>
+  <div class="footer-tagline">Your AI. Your Data. Your Companion.</div>
+  <ul class="footer-links">
+    <li><a href="about.html">About</a></li>
+    <li><a href="pricing.html">Pricing</a></li>
+    <li><a href="open-source.html">Open Source</a></li>
+    <li><a href="faq.html">FAQ</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="footer-copy">&copy; 2026 MEOK AI LTD. Incorporated in England &amp; Wales.</div>
+</footer>
+
+<script src="nav.js"></script>
+</body>
+</html>

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>External Memory — MEOK.AI</title>
+  <meta name="description" content="Everything you care about, remembered. 10–100GB encrypted vector memory with emotional tagging, semantic search, and full export.">
+  <link rel="stylesheet" href="nav.css">
+  <style>
+    .memory-viz { background: var(--dark); border-radius: var(--radius); padding: 32px; color: #fff; font-family: 'Courier New', monospace; font-size: 0.82rem; }
+    .memory-entry { border-left: 3px solid var(--sky-blue); padding: 12px 16px; margin-bottom: 12px; background: rgba(255,255,255,0.04); border-radius: 0 8px 8px 0; }
+    .memory-entry .mem-date { color: rgba(255,255,255,0.4); font-size: 0.75rem; }
+    .memory-entry .mem-text { color: rgba(255,255,255,0.85); margin: 4px 0; }
+    .memory-entry .mem-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+    .mem-tag { font-size: 0.72rem; padding: 2px 8px; border-radius: 100px; }
+    .mem-tag.emo { background: rgba(255,215,0,0.2); color: var(--yellow); }
+    .mem-tag.topic { background: rgba(135,206,235,0.2); color: var(--sky-blue); }
+    .mem-tag.val { background: rgba(46,204,113,0.2); color: var(--green); }
+    .tier-compare { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    @media(max-width:600px){.tier-compare{grid-template-columns:1fr;}}
+    .tier-box { border: 1px solid var(--border); border-radius: var(--radius); padding: 32px; }
+    .tier-box.featured { border-color: var(--deep-blue); box-shadow: var(--shadow-lg); }
+    .tier-price { font-size: 2rem; font-weight: 900; color: var(--deep-blue); margin: 8px 0; }
+    .tier-price small { font-size: 1rem; font-weight: 400; color: var(--mid); }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">MEOK<span>.AI</span></a>
+    <button class="nav-hamburger" onclick="this.nextElementSibling.classList.toggle('open')" aria-label="Menu">&#9776;</button>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="sovereign-os.html">Sovereign OS</a></li>
+      <li><a href="any-llm.html">Any LLM</a></li>
+      <li><a href="gaming.html">Gaming</a></li>
+      <li><a href="family-guardian.html">Family</a></li>
+      <li><a href="external-memory.html">Memory</a></li>
+      <li><a href="how-it-works.html">How It Works</a></li>
+      <li><a href="pricing.html">Pricing</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="open-source.html">Open Source</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="pricing.html" class="nav-cta">Begin Archive</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="container">
+    <div class="hero-badge">External Memory</div>
+    <h1>Everything You Care About,<br><span class="accent">Remembered</span></h1>
+    <p>An encrypted personal memory archive — semantic search, emotional tagging, full export, and a companion that actually recalls what matters to you.</p>
+    <div class="hero-actions">
+      <a href="pricing.html" class="btn btn-primary">Begin Your Archive</a>
+      <a href="how-it-works.html" class="btn btn-secondary">How Memory Works</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="two-col">
+      <div>
+        <h2 class="section-title">Memory that's actually yours</h2>
+        <p style="color:var(--mid);margin-bottom:24px;">Every AI remembers things about you. The difference is who owns that memory. With MEOK, your memory archive is encrypted with your keys, stored on your device or optionally synced with zero-knowledge encryption. We can't read it. Neither can anyone you don't explicitly share with.</p>
+        <ul class="features">
+          <li>pgvector HNSW for fast semantic retrieval</li>
+          <li>Emotional state tagging — valence, arousal, dominant emotion</li>
+          <li>Knowledge graph compression for long-term retention</li>
+          <li>Semantic search across your entire history</li>
+          <li>Full export: JSON, Markdown, vector embeddings</li>
+          <li>API access for integrations (Scholar and above)</li>
+        </ul>
+      </div>
+      <div class="memory-viz">
+        <div style="color:var(--sky-blue);font-weight:700;margin-bottom:16px;">MEMORY TIMELINE</div>
+        <div class="memory-entry">
+          <div class="mem-date">2026-03-18 · 14:23</div>
+          <div class="mem-text">Talked about launching the new product page. Felt energised about the direction.</div>
+          <div class="mem-tags">
+            <span class="mem-tag emo">😊 Energised</span>
+            <span class="mem-tag topic">Product</span>
+            <span class="mem-tag val">+0.82</span>
+          </div>
+        </div>
+        <div class="memory-entry">
+          <div class="mem-date">2026-03-15 · 09:11</div>
+          <div class="mem-text">Running session. 8km. Thinking about the pricing strategy for gaming vertical.</div>
+          <div class="mem-tags">
+            <span class="mem-tag emo">🏃 Focused</span>
+            <span class="mem-tag topic">Gaming / Health</span>
+            <span class="mem-tag val">+0.74</span>
+          </div>
+        </div>
+        <div class="memory-entry">
+          <div class="mem-date">2026-03-10 · 20:44</div>
+          <div class="mem-text">Long conversation about GDPR-K compliance for children's features.</div>
+          <div class="mem-tags">
+            <span class="mem-tag emo">🔬 Analytical</span>
+            <span class="mem-tag topic">Compliance / Family</span>
+            <span class="mem-tag val">+0.45</span>
+          </div>
+        </div>
+        <div style="color:rgba(255,255,255,0.3);font-size:0.75rem;margin-top:12px;">↑ Encrypted locally · pgvector HNSW · Your keys only</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bg-light">
+  <div class="container">
+    <div class="section-header center">
+      <h2 class="section-title">What makes this different from a note app</h2>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">🔍</div>
+        <h3>Semantic, not keyword</h3>
+        <p>Search "times I felt anxious about money" and find relevant memories — even if you never used those words. Meaning-based retrieval.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">💛</div>
+        <h3>Emotionally indexed</h3>
+        <p>Every memory tagged with emotional context. Review your emotional history over time. Spot patterns in what energises or depletes you.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🤝</div>
+        <h3>Companion-aware context</h3>
+        <p>Your companion uses memory automatically — it doesn't wait for you to reference the past. Relevant context surfaces in every conversation.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">📦</div>
+        <h3>Full export, always</h3>
+        <p>Export your entire memory archive as JSON, Markdown, or raw vector embeddings. Take it to another tool, archive it, or just own it.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-header center">
+      <h2 class="section-title">Memory plans</h2>
+    </div>
+    <div class="tier-compare">
+      <div class="tier-box">
+        <div style="font-size:0.75rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--mid);margin-bottom:8px;">MEMORY</div>
+        <div style="font-size:1.3rem;font-weight:800;color:var(--dark);">Memory Scholar</div>
+        <div class="tier-price">$24.99 <small>/mo</small></div>
+        <div style="font-size:0.9rem;color:var(--mid);margin-bottom:20px;">Or $249/yr (17% off)</div>
+        <ul class="features">
+          <li>10GB encrypted vector memory</li>
+          <li>Emotional state tagging</li>
+          <li>Full export (JSON, Markdown, embeddings)</li>
+          <li>API access for integrations</li>
+          <li>Semantic search (pgvector HNSW)</li>
+          <li>Knowledge graph compression</li>
+          <li>Long-term recall across all sessions</li>
+        </ul>
+        <div style="margin-top:24px;"><a href="pricing.html" class="btn btn-secondary" style="width:100%;text-align:center;display:block;">Get Scholar Plan</a></div>
+      </div>
+      <div class="tier-box featured">
+        <div style="font-size:0.75rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--deep-blue);margin-bottom:8px;">MEMORY PRO</div>
+        <div style="font-size:1.3rem;font-weight:800;color:var(--dark);">Memory Archivist</div>
+        <div class="tier-price">$49.99 <small>/mo</small></div>
+        <div style="font-size:0.9rem;color:var(--mid);margin-bottom:20px;">Or $499/yr (17% off)</div>
+        <ul class="features">
+          <li>100GB encrypted vector memory</li>
+          <li>Team/family memory sharing</li>
+          <li>Advanced memory analytics</li>
+          <li>Custom embedding models</li>
+          <li>Institutional deployment</li>
+          <li>Per-seat pricing option</li>
+          <li>Priority support + SLA</li>
+        </ul>
+        <div style="margin-top:24px;"><a href="pricing.html" class="btn btn-primary" style="width:100%;text-align:center;display:block;">Get Archivist Plan</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="highlight-box">
+      <h2 class="section-title">Archive your life, starting today</h2>
+      <p>Your memories deserve better than a chat log that disappears. Start with free basic memory, upgrade to Scholar or Archivist when you're ready.</p>
+      <a href="pricing.html" class="btn btn-yellow">Begin Your Archive</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-logo">MEOK.AI</div>
+  <div class="footer-tagline">Your AI. Your Data. Your Companion.</div>
+  <ul class="footer-links">
+    <li><a href="about.html">About</a></li>
+    <li><a href="pricing.html">Pricing</a></li>
+    <li><a href="open-source.html">Open Source</a></li>
+    <li><a href="faq.html">FAQ</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="footer-copy">&copy; 2026 MEOK AI LTD. Incorporated in England &amp; Wales.</div>
+</footer>
+
+<script src="nav.js"></script>
+</body>
+</html>

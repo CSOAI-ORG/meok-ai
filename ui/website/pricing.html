@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pricing — MEOK.AI</title>
+  <meta name="description" content="Simple, sovereign, fair. Nine pricing tiers across Core, Gaming, Family, Memory, and Care verticals. Starts free. No credit card required.">
+  <link rel="stylesheet" href="nav.css">
+  <style>
+    .pricing-filter { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-bottom: 48px; }
+    .filter-btn { padding: 8px 20px; border-radius: 100px; border: 1px solid var(--border); background: #fff; color: var(--mid); font-size: 0.88rem; font-weight: 600; cursor: pointer; transition: all 0.15s; font-family: inherit; }
+    .filter-btn.active, .filter-btn:hover { background: var(--deep-blue); color: #fff; border-color: var(--deep-blue); }
+    .pricing-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px; }
+    .pricing-card { border: 1px solid var(--border); border-radius: var(--radius); padding: 36px; transition: all 0.2s; position: relative; }
+    .pricing-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-2px); }
+    .pricing-card.featured { border-color: var(--deep-blue); box-shadow: var(--shadow-lg); }
+    .pricing-card.free-tier { border-style: dashed; }
+    .featured-badge { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: var(--deep-blue); color: #fff; font-size: 0.72rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 4px 14px; border-radius: 100px; white-space: nowrap; }
+    .vertical-tag { font-size: 0.72rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--mid); margin-bottom: 6px; }
+    .plan-name { font-size: 1.25rem; font-weight: 800; color: var(--dark); margin-bottom: 4px; }
+    .plan-price { margin: 12px 0; }
+    .plan-price .amount { font-size: 2.4rem; font-weight: 900; color: var(--deep-blue); }
+    .plan-price .period { font-size: 1rem; color: var(--mid); }
+    .plan-price .annual { font-size: 0.82rem; color: var(--green); font-weight: 600; display: block; margin-top: 2px; }
+    .plan-desc { font-size: 0.9rem; color: var(--mid); margin-bottom: 20px; line-height: 1.6; }
+    .plan-features { list-style: none; display: grid; gap: 9px; margin-bottom: 24px; }
+    .plan-features li { font-size: 0.88rem; color: var(--mid); display: flex; gap: 10px; align-items: flex-start; }
+    .plan-features li::before { content: '✓'; color: var(--green); font-weight: 700; flex-shrink: 0; }
+    .plan-limits { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 24px; }
+    .limit-badge { font-size: 0.75rem; background: var(--light); color: var(--mid); padding: 3px 10px; border-radius: 100px; }
+    .plan-cta { display: block; width: 100%; text-align: center; padding: 12px; border-radius: var(--radius); font-weight: 700; font-size: 0.95rem; text-decoration: none; transition: all 0.2s; }
+    .plan-cta.primary { background: var(--deep-blue); color: #fff; }
+    .plan-cta.primary:hover { background: #3a7bc8; }
+    .plan-cta.secondary { background: var(--light); color: var(--deep-blue); }
+    .plan-cta.secondary:hover { background: var(--border); }
+    .plan-cta.free { background: transparent; color: var(--mid); border: 1px solid var(--border); }
+    .plan-cta.free:hover { background: var(--light); }
+    .pricing-guarantee { text-align: center; margin-top: 32px; color: var(--mid); font-size: 0.9rem; }
+    .principles { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px; margin-top: 40px; }
+    .principle { text-align: center; padding: 24px 20px; }
+    .principle .p-icon { font-size: 1.8rem; margin-bottom: 10px; }
+    .principle h4 { font-size: 0.95rem; font-weight: 700; color: var(--dark); margin-bottom: 6px; }
+    .principle p { font-size: 0.85rem; color: var(--mid); }
+
+    /* Filter logic */
+    .pricing-card[data-vertical] { display: block; }
+    .pricing-card[data-vertical].hidden { display: none; }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">MEOK<span>.AI</span></a>
+    <button class="nav-hamburger" onclick="this.nextElementSibling.classList.toggle('open')" aria-label="Menu">&#9776;</button>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="sovereign-os.html">Sovereign OS</a></li>
+      <li><a href="any-llm.html">Any LLM</a></li>
+      <li><a href="gaming.html">Gaming</a></li>
+      <li><a href="family-guardian.html">Family</a></li>
+      <li><a href="external-memory.html">Memory</a></li>
+      <li><a href="how-it-works.html">How It Works</a></li>
+      <li><a href="pricing.html">Pricing</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="open-source.html">Open Source</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="pricing.html" class="nav-cta">Get Started</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="container">
+    <div class="hero-badge">Pricing</div>
+    <h1>Simple, Sovereign, Fair</h1>
+    <p>Nine tiers across five verticals. Starts free. No credit card required. No dark patterns. No data sold to make the numbers work.</p>
+    <div class="hero-actions">
+      <a href="pricing.html#plans" class="btn btn-primary">Start Free</a>
+      <a href="faq.html#pricing" class="btn btn-secondary">Pricing FAQ</a>
+    </div>
+    <p style="margin-top:16px;font-size:0.9rem;color:var(--mid);">No credit card required &nbsp;·&nbsp; 30-day money-back on Family plans &nbsp;·&nbsp; Cancel anytime</p>
+  </div>
+</section>
+
+<section id="plans">
+  <div class="container">
+    <div class="pricing-filter">
+      <button class="filter-btn active" onclick="filterPlans('all', this)">All Plans</button>
+      <button class="filter-btn" onclick="filterPlans('core', this)">Core</button>
+      <button class="filter-btn" onclick="filterPlans('gaming', this)">Gaming</button>
+      <button class="filter-btn" onclick="filterPlans('family', this)">Family</button>
+      <button class="filter-btn" onclick="filterPlans('memory', this)">Memory</button>
+      <button class="filter-btn" onclick="filterPlans('care', this)">Care</button>
+    </div>
+
+    <div class="pricing-grid">
+
+      <!-- CORE FREE -->
+      <div class="pricing-card free-tier" data-vertical="core">
+        <div class="vertical-tag">Core</div>
+        <div class="plan-name">MEOK Core Free</div>
+        <div class="plan-price">
+          <span class="amount">Free</span>
+          <span class="annual">Forever free · no credit card</span>
+        </div>
+        <div class="plan-desc">Local-only processing, community open-source models, basic conversation memory. Privacy by default.</div>
+        <ul class="plan-features">
+          <li>Local-first processing, no cloud required</li>
+          <li>Community open-source models</li>
+          <li>Basic conversation memory</li>
+          <li>Single device</li>
+          <li>Hatching egg onboarding</li>
+        </ul>
+        <div class="plan-limits">
+          <span class="limit-badge">1 device</span>
+          <span class="limit-badge">1GB memory</span>
+          <span class="limit-badge">No cloud sync</span>
+        </div>
+        <a href="#" class="plan-cta free">Download Free</a>
+      </div>
+
+      <!-- CORE PRO -->
+      <div class="pricing-card featured" data-vertical="core">
+        <div class="featured-badge">Most Popular</div>
+        <div class="vertical-tag">Core</div>
+        <div class="plan-name">MEOK Core Pro</div>
+        <div class="plan-price">
+          <span class="amount">$9.99</span><span class="period">/mo</span>
+          <span class="annual">or $99/yr — save 17%</span>
+        </div>
+        <div class="plan-desc">Cloud sync across 3 devices, priority inference, advanced models, 5GB encrypted memory.</div>
+        <ul class="plan-features">
+          <li>Cloud sync across 3 devices</li>
+          <li>Priority inference queue</li>
+          <li>Advanced models (Claude, GPT-4 class)</li>
+          <li>5GB encrypted memory storage</li>
+          <li>Full personality customisation</li>
+          <li>Export tools</li>
+        </ul>
+        <div class="plan-limits">
+          <span class="limit-badge">3 devices</span>
+          <span class="limit-badge">5GB memory</span>
+          <span class="limit-badge">Cloud sync</span>
+        </div>
+        <a href="#" class="plan-cta primary">Get Core Pro</a>
+      </div>
+
+      <!-- GAMING GAMER -->
+      <div class="pricing-card" data-vertical="gaming">
+        <div class="vertical-tag">Gaming</div>
+        <div class="plan-name">MEOK Gaming Gamer</div>
+        <div class="plan-price">
+          <span class="amount">$14.99</span><span class="period">/mo</span>
+          <span class="annual">or $149/yr — save 17%</span>
+        </div>
+        <div class="plan-desc">In-game overlay, voice companion, match analysis, &lt;100ms latency target.</div>
+        <ul class="plan-features">
+          <li>In-game overlay (OBS-independent)</li>
+          <li>Voice-to-voice companion chat</li>
+          <li>&lt;100ms latency target</li>
+          <li>Game-specific AI personalities</li>
+          <li>Match history analysis</li>
+          <li>Performance coaching</li>
+          <li>Fortnite, Valorant, Minecraft, CS2, LoL &amp; more</li>
+        </ul>
+        <div class="plan-limits">
+          <span class="limit-badge">2 devices</span>
+          <span class="limit-badge">5GB memory</span>
+        </div>
+        <a href="#" class="plan-cta primary">Get Gamer Plan</a>
+      </div>
+
+      <!-- GAMING STREAMER -->
+      <div class="pricing-card" data-vertical="gaming">
+        <div class="vertical-tag">Gaming</div>
+        <div class="plan-name">MEOK Gaming Streamer</div>
+        <div class="plan-price">
+          <span class="amount">$29.99</span><span class="period">/mo</span>
+          <span class="annual">or $299/yr — save 17%</span>
+        </div>
+        <div class="plan-desc">OBS integration, audience interaction tools, analytics dashboard, affiliate codes for streamers.</div>
+        <ul class="plan-features">
+          <li>Full OBS Studio integration</li>
+          <li>Twitch/YouTube audience interaction</li>
+          <li>Streamer analytics dashboard</li>
+          <li>Affiliate code management (Rewardful)</li>
+          <li>Custom companion persona for channel</li>
+          <li>Revenue share eligibility</li>
+          <li>Direct tip/donation routing</li>
+        </ul>
+        <div class="plan-limits">
+          <span class="limit-badge">3 devices</span>
+          <span class="limit-badge">20GB memory</span>
+          <span class="limit-badge">API access</span>
+        </div>
+        <a href="#" class="plan-cta primary">Get Streamer Plan</a>
+      </div>
+
+      <!-- FAMILY GUARDIAN -->
+      <div class="pricing-card" data-vertical="family">
+        <div class="vertical-tag">Family</div>
+        <div class="plan-name">MEOK Family Guardian</div>
+        <div class="plan-price">
+          <span class="amount">$19.99</span><span class="period">/mo</span>
+          <span class="annual">or $199/yr — save 17%</span>
+        </div>
+        <div class="plan-desc">Care-based child safety: 5 child profiles, anomaly detection, weekly reports, GDPR-K compliant.</div>
+        <ul class="plan-features">
+          <li>Up to 5 child profiles</li>
+          <li>Behavioural baseline per child</li>
+          <li>Anomaly detection (distress, predatory patterns)</li>
+          <li>Weekly family wellness reports</li>
+          <li>Parent dashboard with consent controls</li>
+          <li>WhatsApp/SMS alert integration</li>
+          <li>GDPR-K &amp; COPPA compliant</li>
+        </ul>
+        <div class="plan-limits">
+          <span class="limit-badge">5 profiles</span>
+          <span class="limit-badge">10GB memory</span>
+          <span class="limit-badge">30-day guarantee</span>
+        </div>
+        <a href="#" class="plan-cta primary">Get Guardian Plan</a>
+      </div>
+
+      <!-- FAMILY PLUS -->
+      <div class="pricing-card" data-vertical="family">
+        <div class="vertical-tag">Family</div>
+        <div class="plan-name">MEOK Family Guardian Plus</div>
+        <div class="plan-price">
+          <span class="amount">$39.99</span><span class="period">/mo</span>
+          <span class="annual">or $399/yr — save 17%</span>
+        </div>
+        <div class="plan-desc">Unlimited profiles, professional safeguarding monitoring, emergency protocols, institutional deployment.</div>
+        <ul class="plan-features">
+          <li>Unlimited child profiles</li>
+          <li>Professional safeguarding monitoring</li>
+          <li>Emergency response protocols</li>
+          <li>Family therapy integration pathway</li>
+          <li>Custom SLA + priority support</li>
+          <li>Institutional deployment option</li>
+        </ul>
+        <div class="plan-limits">
+          <span class="limit-badge">Unlimited profiles</span>
+          <span class="limit-badge">50GB memory</span>
+          <span class="limit-badge">API access</span>
+        </div>
+        <a href="#" class="plan-cta primary">Get Guardian Plus</a>
+      </div>
+
+      <!-- MEMORY SCHOLAR -->
+      <div class="pricing-card" data-vertical="memory">
+        <div class="vertical-tag">Memory</div>
+        <div class="plan-name">MEOK Memory Scholar</div>
+        <div class="plan-price">
+          <span class="amount">$24.99</span><span class="period">/mo</span>
+          <span class="annual">or $249/yr — save 17%</span>
+        </div>
+        <div class="plan-desc">10GB encrypted vector memory, emotional tagging, full export, API access, long-term recall.</div>
+        <ul class="plan-features">
+          <li>10GB encrypted vector memory</li>
+          <li>Emotional state tagging</li>
+          <li>Full export (JSON, Markdown, embeddings)</li>
+          <li>API access for integrations</li>
+          <li>Semantic search (pgvector HNSW)</li>
+          <li>Knowledge graph compression</li>
+        </ul>
+        <div class="plan-limits">
+          <span class="limit-badge">10GB storage</span>
+          <span class="limit-badge">API access</span>
+          <span class="limit-badge">Full export</span>
+        </div>
+        <a href="#" class="plan-cta primary">Get Scholar Plan</a>
+      </div>
+
+      <!-- MEMORY ARCHIVIST -->
+      <div class="pricing-card" data-vertical="memory">
+        <div class="vertical-tag">Memory</div>
+        <div class="plan-name">MEOK Memory Archivist</div>
+        <div class="plan-price">
+          <span class="amount">$49.99</span><span class="period">/mo</span>
+          <span class="annual">or $499/yr — save 17%</span>
+        </div>
+        <div class="plan-desc">100GB storage, team sharing, advanced analytics, custom embeddings, institutional features.</div>
+        <ul class="plan-features">
+          <li>100GB encrypted vector memory</li>
+          <li>Team/family memory sharing</li>
+          <li>Advanced memory analytics</li>
+          <li>Custom embedding models</li>
+          <li>Institutional deployment</li>
+          <li>Per-seat pricing option</li>
+          <li>Priority support + SLA</li>
+        </ul>
+        <div class="plan-limits">
+          <span class="limit-badge">100GB storage</span>
+          <span class="limit-badge">Unlimited seats</span>
+          <span class="limit-badge">API access</span>
+        </div>
+        <a href="#" class="plan-cta primary">Get Archivist Plan</a>
+      </div>
+
+      <!-- CARE COMPANION -->
+      <div class="pricing-card" data-vertical="care">
+        <div class="vertical-tag">Care</div>
+        <div class="plan-name">MEOK Care Companion</div>
+        <div class="plan-price">
+          <span class="amount">$29.99</span><span class="period">/mo</span>
+          <span class="annual">or $299/yr — save 17%</span>
+        </div>
+        <div class="plan-desc">Voice-first AI for seniors and caregivers. Health reminders, family dashboard, emergency contacts.</div>
+        <ul class="plan-features">
+          <li>Voice-first interface (no typing required)</li>
+          <li>Medication and health reminders</li>
+          <li>Family coordination dashboard</li>
+          <li>Emergency contact integration</li>
+          <li>Accessibility optimisation (large text, slow pacing)</li>
+          <li>Adult child purchaser pathway</li>
+          <li>Healthcare provider integration pathway</li>
+        </ul>
+        <div class="plan-limits">
+          <span class="limit-badge">3 devices</span>
+          <span class="limit-badge">10GB memory</span>
+        </div>
+        <a href="#" class="plan-cta primary">Get Care Plan</a>
+      </div>
+
+    </div>
+
+    <div class="pricing-guarantee">
+      <strong>No credit card required</strong> to start &nbsp;·&nbsp; 30-day money-back on Family plans &nbsp;·&nbsp; Cancel anytime &nbsp;·&nbsp; All prices in USD
+    </div>
+
+  </div>
+</section>
+
+<section class="bg-light">
+  <div class="container">
+    <div class="section-header center">
+      <h2 class="section-title">Our pricing philosophy</h2>
+    </div>
+    <div class="principles">
+      <div class="principle">
+        <div class="p-icon">👤</div>
+        <h4>You own your data</h4>
+        <p>Local-first default, encrypted optional sync, comprehensive export. It's yours to take with you.</p>
+      </div>
+      <div class="principle">
+        <div class="p-icon">💳</div>
+        <h4>Pays for service</h4>
+        <p>Transparent subscription, no hidden fees. You pay us for the service — we work for you, not advertisers.</p>
+      </div>
+      <div class="principle">
+        <div class="p-icon">🚫</div>
+        <h4>No surveillance</h4>
+        <p>No ad targeting, no behavioral profiling, no data brokerage. Not even anonymised.</p>
+      </div>
+      <div class="principle">
+        <div class="p-icon">✋</div>
+        <h4>No dark patterns</h4>
+        <p>No engagement manipulation, no fake urgency, no "limited time" pressure. Just honest pricing.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="highlight-box">
+      <h2 class="section-title">Start free. No card. No tricks.</h2>
+      <p>The Core Free tier is genuinely free. Upgrade only when you want more — and only if you want to.</p>
+      <a href="#plans" class="btn btn-yellow">See All Plans</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-logo">MEOK.AI</div>
+  <div class="footer-tagline">Your AI. Your Data. Your Companion.</div>
+  <ul class="footer-links">
+    <li><a href="about.html">About</a></li>
+    <li><a href="pricing.html">Pricing</a></li>
+    <li><a href="open-source.html">Open Source</a></li>
+    <li><a href="faq.html">FAQ</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="footer-copy">&copy; 2026 MEOK AI LTD. Incorporated in England &amp; Wales.</div>
+</footer>
+
+<script src="nav.js"></script>
+<script>
+function filterPlans(vertical, btn) {
+  document.querySelectorAll('.filter-btn').forEach(function(b){ b.classList.remove('active'); });
+  btn.classList.add('active');
+  document.querySelectorAll('.pricing-card[data-vertical]').forEach(function(card){
+    if (vertical === 'all' || card.dataset.vertical === vertical) {
+      card.classList.remove('hidden');
+    } else {
+      card.classList.add('hidden');
+    }
+  });
+}
+</script>
+</body>
+</html>

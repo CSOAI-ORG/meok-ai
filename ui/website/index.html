@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MEOK.AI — Your AI. Your Data. Your Companion.</title>
+  <meta name="description" content="A personal AI companion that lives on your device, remembers your life, and never sells your data. Truly sovereign AI.">
+  <link rel="stylesheet" href="nav.css">
+  <style>
+    .hero { padding-top: 112px; padding-bottom: 96px; }
+    .egg { font-size: 4rem; display: block; margin-bottom: 24px; animation: float 3s ease-in-out infinite; }
+    @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-12px)} }
+    .pillars { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 24px; }
+    .pillar { text-align: center; padding: 40px 28px; background: var(--light); border-radius: var(--radius); }
+    .pillar .icon { font-size: 2.5rem; margin-bottom: 16px; }
+    .pillar h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 8px; }
+    .pillar p { font-size: 0.92rem; color: var(--mid); }
+    .stat-strip { background: var(--dark); color: #fff; padding: 48px 5%; }
+    .stats { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 32px; text-align: center; max-width: 900px; margin: 0 auto; }
+    .stat-num { font-size: 2.4rem; font-weight: 900; color: var(--sky-blue); }
+    .stat-label { font-size: 0.88rem; color: rgba(255,255,255,0.6); margin-top: 4px; }
+    .verticals { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 24px; }
+    .vertical-card { border: 1px solid var(--border); border-radius: var(--radius); padding: 32px; text-decoration: none; color: inherit; transition: all 0.2s; display: block; }
+    .vertical-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-3px); border-color: var(--sky-blue); }
+    .vertical-card .vc-icon { font-size: 2rem; margin-bottom: 14px; }
+    .vertical-card h3 { font-size: 1.1rem; font-weight: 700; color: var(--dark); margin-bottom: 8px; }
+    .vertical-card p { font-size: 0.9rem; color: var(--mid); }
+    .vertical-card .vc-price { display: inline-block; margin-top: 12px; font-weight: 700; color: var(--deep-blue); font-size: 0.9rem; }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">MEOK<span>.AI</span></a>
+    <button class="nav-hamburger" onclick="this.nextElementSibling.classList.toggle('open')" aria-label="Menu">&#9776;</button>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="sovereign-os.html">Sovereign OS</a></li>
+      <li><a href="any-llm.html">Any LLM</a></li>
+      <li><a href="gaming.html">Gaming</a></li>
+      <li><a href="family-guardian.html">Family</a></li>
+      <li><a href="external-memory.html">Memory</a></li>
+      <li><a href="how-it-works.html">How It Works</a></li>
+      <li><a href="pricing.html">Pricing</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="open-source.html">Open Source</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="pricing.html" class="nav-cta">Get Started</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="container">
+    <span class="egg">🥚</span>
+    <div class="hero-badge">Sovereign AI — No Ads. No Surveillance. No Compromise.</div>
+    <h1>Your AI. Your Data.<br><span class="accent">Your Companion.</span></h1>
+    <p>A personal AI that lives on your device, remembers your life, and works with any model you choose. Your data never trains their models. You own everything.</p>
+    <div class="hero-actions">
+      <a href="pricing.html" class="btn btn-primary">Meet Your Companion</a>
+      <a href="how-it-works.html" class="btn btn-secondary">See How It Works</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-header center">
+      <h2 class="section-title">Built on three unbreakable principles</h2>
+      <p class="section-sub">No exceptions. No asterisks. No "we may share with trusted partners."</p>
+    </div>
+    <div class="pillars">
+      <div class="pillar">
+        <div class="icon">🔒</div>
+        <h3>Local-first</h3>
+        <p>Your AI runs on your device. Conversations never leave unless you choose encrypted cloud sync.</p>
+      </div>
+      <div class="pillar">
+        <div class="icon">🗝️</div>
+        <h3>You hold the keys</h3>
+        <p>Client-side encryption. Zero-knowledge servers. Delete your data with a single keystroke — cryptographic erasure.</p>
+      </div>
+      <div class="pillar">
+        <div class="icon">🚫</div>
+        <h3>No data brokerage</h3>
+        <p>We earn from subscriptions, not your attention. No ads, no behavioral profiling, no dark patterns. Ever.</p>
+      </div>
+      <div class="pillar">
+        <div class="icon">🌐</div>
+        <h3>Any LLM</h3>
+        <p>Connect Claude, GPT-4, Llama, Gemini, or your own model. The companion persists — the brain is your choice.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="stat-strip">
+  <div class="stats">
+    <div>
+      <div class="stat-num">53%</div>
+      <div class="stat-label">of users pay premium for guaranteed data safety</div>
+    </div>
+    <div>
+      <div class="stat-num">&lt;2min</div>
+      <div class="stat-label">to first AI interaction — no signup required</div>
+    </div>
+    <div>
+      <div class="stat-num">100%</div>
+      <div class="stat-label">open-source client — verify everything yourself</div>
+    </div>
+    <div>
+      <div class="stat-num">6</div>
+      <div class="stat-label">compliance frameworks: GDPR, COPPA, UK OSA &amp; more</div>
+    </div>
+  </div>
+</div>
+
+<section class="bg-light">
+  <div class="container">
+    <div class="section-header center">
+      <h2 class="section-title">One companion. Every part of your life.</h2>
+      <p class="section-sub">Purpose-built verticals so your AI actually understands your context.</p>
+    </div>
+    <div class="verticals">
+      <a href="sovereign-os.html" class="vertical-card">
+        <div class="vc-icon">🏛️</div>
+        <h3>Sovereign OS</h3>
+        <p>Full local AI stack — model selection, privacy controls, no cloud dependency.</p>
+        <span class="vc-price">Free — $9.99/mo</span>
+      </a>
+      <a href="gaming.html" class="vertical-card">
+        <div class="vc-icon">🎮</div>
+        <h3>Gaming</h3>
+        <p>In-game overlay, voice companion, match analysis, &lt;100ms latency.</p>
+        <span class="vc-price">$14.99 — $29.99/mo</span>
+      </a>
+      <a href="family-guardian.html" class="vertical-card">
+        <div class="vc-icon">👨‍👩‍👧</div>
+        <h3>Family Guardian</h3>
+        <p>Care-based child safety — anomaly detection, not surveillance. GDPR-K compliant.</p>
+        <span class="vc-price">$19.99 — $39.99/mo</span>
+      </a>
+      <a href="external-memory.html" class="vertical-card">
+        <div class="vc-icon">🧠</div>
+        <h3>External Memory</h3>
+        <p>10–100GB encrypted memory with semantic search, emotional tagging, full export.</p>
+        <span class="vc-price">$24.99 — $49.99/mo</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="highlight-box">
+      <h2 class="section-title" style="color:#fff;">Ready to meet your companion?</h2>
+      <p>No credit card required. Your egg hatches within 72 hours of first use.</p>
+      <div class="hero-actions">
+        <a href="pricing.html" class="btn btn-yellow">Start Free</a>
+        <a href="open-source.html" class="btn" style="background:rgba(255,255,255,0.15);color:#fff;">View Source Code</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-logo">MEOK.AI</div>
+  <div class="footer-tagline">Your AI. Your Data. Your Companion.</div>
+  <ul class="footer-links">
+    <li><a href="about.html">About</a></li>
+    <li><a href="pricing.html">Pricing</a></li>
+    <li><a href="open-source.html">Open Source</a></li>
+    <li><a href="faq.html">FAQ</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="footer-copy">&copy; 2026 MEOK AI LTD. Incorporated in England &amp; Wales.</div>
+</footer>
+
+<script src="nav.js"></script>
+</body>
+</html>

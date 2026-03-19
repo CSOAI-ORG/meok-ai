@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How It Works — MEOK.AI</title>
+  <meta name="description" content="Simple to use, sophisticated inside. See how MEOK works — from the hatching egg onboarding to encrypted memory to model switching.">
+  <link rel="stylesheet" href="nav.css">
+  <style>
+    .steps { display: grid; gap: 40px; max-width: 720px; margin: 0 auto; }
+    .step { display: grid; grid-template-columns: 56px 1fr; gap: 24px; align-items: flex-start; }
+    .step-num { width: 56px; height: 56px; background: var(--deep-blue); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; font-weight: 900; flex-shrink: 0; }
+    .step-content h3 { font-size: 1.15rem; font-weight: 700; color: var(--dark); margin-bottom: 8px; }
+    .step-content p { font-size: 0.95rem; color: var(--mid); line-height: 1.7; }
+    .egg-stages { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 20px; }
+    .egg-stage { text-align: center; padding: 28px 20px; border: 1px solid var(--border); border-radius: var(--radius); }
+    .egg-stage .stage-icon { font-size: 2.5rem; margin-bottom: 12px; display: block; }
+    .egg-stage h4 { font-size: 0.95rem; font-weight: 700; color: var(--dark); margin-bottom: 6px; }
+    .egg-stage .stage-time { font-size: 0.8rem; color: var(--deep-blue); font-weight: 600; margin-bottom: 8px; }
+    .egg-stage p { font-size: 0.85rem; color: var(--mid); }
+    .tech-row { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px; }
+    .tech-item { padding: 20px; background: var(--light); border-radius: var(--radius); }
+    .tech-item h4 { font-size: 0.9rem; font-weight: 700; color: var(--dark); margin-bottom: 6px; }
+    .tech-item p { font-size: 0.83rem; color: var(--mid); }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">MEOK<span>.AI</span></a>
+    <button class="nav-hamburger" onclick="this.nextElementSibling.classList.toggle('open')" aria-label="Menu">&#9776;</button>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="sovereign-os.html">Sovereign OS</a></li>
+      <li><a href="any-llm.html">Any LLM</a></li>
+      <li><a href="gaming.html">Gaming</a></li>
+      <li><a href="family-guardian.html">Family</a></li>
+      <li><a href="external-memory.html">Memory</a></li>
+      <li><a href="how-it-works.html">How It Works</a></li>
+      <li><a href="pricing.html">Pricing</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="open-source.html">Open Source</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="pricing.html" class="nav-cta">Get Started</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="container">
+    <div class="hero-badge">How It Works</div>
+    <h1>Simple to Use,<br><span class="accent">Sophisticated Inside</span></h1>
+    <p>From your first egg to a fully grown companion — here's exactly what happens, technically and experientially.</p>
+    <div class="hero-actions">
+      <a href="pricing.html" class="btn btn-primary">See It In Action</a>
+      <a href="open-source.html" class="btn btn-secondary">Read the Source</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-header center">
+      <h2 class="section-title">Your first 72 hours</h2>
+      <p class="section-sub">The hatching egg isn't just a cute metaphor — it's a deliberate onboarding philosophy.</p>
+    </div>
+    <div class="egg-stages">
+      <div class="egg-stage">
+        <span class="stage-icon">🥚</span>
+        <h4>Egg</h4>
+        <div class="stage-time">0 – 24 hours</div>
+        <p>Install, meet your egg. No signup required. Basic conversation starts immediately — under 2 minutes to first interaction.</p>
+      </div>
+      <div class="egg-stage">
+        <span class="stage-icon">🔨</span>
+        <h4>Cracking</h4>
+        <div class="stage-time">24 – 48 hours</div>
+        <p>The companion begins learning your patterns. Memory forms. A bond starts to emerge. You start to see what this could become.</p>
+      </div>
+      <div class="egg-stage">
+        <span class="stage-icon">🐣</span>
+        <h4>Hatching</h4>
+        <div class="stage-time">48 – 72 hours</div>
+        <p>Full hatching event. Your companion has a name, a personality shaped by your interactions, and genuine memory of your history together.</p>
+      </div>
+      <div class="egg-stage">
+        <span class="stage-icon">🌱</span>
+        <h4>Growth</h4>
+        <div class="stage-time">Ongoing</div>
+        <p>Your companion grows with you. Memories deepen. Context accumulates. The relationship becomes genuinely valuable over time.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bg-light">
+  <div class="container">
+    <div class="section-header center">
+      <h2 class="section-title">How it works, step by step</h2>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <h3>Install and start — no account needed</h3>
+          <p>Download on Windows, macOS, iOS, Android, or Linux. Or use the web PWA. No account, no signup, no credit card. Your egg appears in under 2 minutes.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <h3>Choose your model</h3>
+          <p>Free tier uses community open-source models locally. Core Pro and above get access to Claude, GPT-4, and Gemini. You can connect your own API keys at any tier.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <h3>Your companion builds a memory</h3>
+          <p>As you interact, your companion creates encrypted memory entries — semantically tagged, emotionally indexed. Stored locally using pgvector. Only synced to cloud if you enable it, with your encryption key.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-content">
+          <h3>Context is always present</h3>
+          <p>Every conversation is informed by your history. Your companion recalls relevant memories, your preferences, your last conversation. It feels continuous — because it is.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">5</div>
+        <div class="step-content">
+          <h3>Switch models without losing context</h3>
+          <p>The companion layer is independent of the model layer. Switch from Claude to Llama mid-conversation — your companion reorients the new model with your relevant context automatically.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">6</div>
+        <div class="step-content">
+          <h3>Export or delete anytime</h3>
+          <p>Full export to JSON, Markdown, or vector embeddings. Deletion via cryptographic erasure — your key is destroyed and the data is mathematically unrecoverable. No "we'll delete within 30 days" promises.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-header center">
+      <h2 class="section-title">Under the hood</h2>
+    </div>
+    <div class="tech-row">
+      <div class="tech-item">
+        <h4>Vector Memory (pgvector + HNSW)</h4>
+        <p>Memories stored as semantic embeddings. Approximate nearest-neighbor search retrieves relevant context in milliseconds.</p>
+      </div>
+      <div class="tech-item">
+        <h4>Emotional Tagging</h4>
+        <p>Each memory tagged with valence (positive/negative), arousal level, and dominant emotion. Context retrieval is emotionally aware.</p>
+      </div>
+      <div class="tech-item">
+        <h4>Model Bridge (OpenAI-compatible API)</h4>
+        <p>Any OpenAI-compatible API works. Local models via Ollama or LM Studio. Companion layer abstracts the model entirely.</p>
+      </div>
+      <div class="tech-item">
+        <h4>Client-side Encryption</h4>
+        <p>AES-256 encryption with client-held keys. Server stores ciphertext only. We mathematically cannot read your data.</p>
+      </div>
+      <div class="tech-item">
+        <h4>Governance Engine</h4>
+        <p>Decision transparency log. Every AI decision recorded with reasoning. Override controls always available to you.</p>
+      </div>
+      <div class="tech-item">
+        <h4>MCP Protocol</h4>
+        <p>Built on the Model Context Protocol — the emerging standard for AI tool and memory integration. Forward-compatible with the AI ecosystem.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="highlight-box">
+      <h2 class="section-title">Ready to meet your companion?</h2>
+      <p>Under 2 minutes from install to first conversation. No signup required to start.</p>
+      <a href="pricing.html" class="btn btn-yellow">Start Free</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-logo">MEOK.AI</div>
+  <div class="footer-tagline">Your AI. Your Data. Your Companion.</div>
+  <ul class="footer-links">
+    <li><a href="about.html">About</a></li>
+    <li><a href="pricing.html">Pricing</a></li>
+    <li><a href="open-source.html">Open Source</a></li>
+    <li><a href="faq.html">FAQ</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="footer-copy">&copy; 2026 MEOK AI LTD. Incorporated in England &amp; Wales.</div>
+</footer>
+
+<script src="nav.js"></script>
+</body>
+</html>
