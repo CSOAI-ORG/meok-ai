@@ -2,6 +2,7 @@
 -- Evolved from Sovereign Temple v3.0
 
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+CREATE EXTENSION IF NOT EXISTS vector;  -- pgvector: HNSW semantic search
 
 -- Tenants table (Phase 2: multi-user hatch system)
 CREATE TABLE IF NOT EXISTS tenants (
@@ -40,8 +41,21 @@ CREATE TABLE IF NOT EXISTS memory_episodes (
     access_count INTEGER DEFAULT 0,
     last_accessed TIMESTAMP,
     compacted_from TEXT[],
-    vector_id TEXT
+    vector_id TEXT,
+    embedding vector(384)  -- pgvector: 384-dim from MiniLM-L6-v2 / SentenceTransformer
 );
+
+-- HNSW index for fast approximate nearest-neighbour search on memory embeddings
+-- O(log n) query vs O(n) numpy cosine scan; m=16 ef_construction=64 = balanced quality/speed
+CREATE INDEX IF NOT EXISTS idx_memory_episodes_embedding_hnsw
+    ON memory_episodes USING hnsw (embedding vector_cosine_ops)
+    WITH (m = 16, ef_construction = 64);
+
+-- Migration: add embedding column to existing tables (idempotent)
+DO $$ BEGIN
+    ALTER TABLE memory_episodes ADD COLUMN IF NOT EXISTS embedding vector(384);
+EXCEPTION WHEN OTHERS THEN NULL;
+END $$;
 
 -- Temporal chains table
 CREATE TABLE IF NOT EXISTS temporal_chains (

@@ -32,3 +32,7 @@ bcrypt>=4.1.0
 # GPU auto-detected on Vast.ai CUDA instances. Falls back to CPU.
 # Upgrade path: MiniLM-L6-v2 (now) → BGE-M3 (Q2, 1024-dim multilingual)
 sentence-transformers>=2.7.0
+
+# pgvector Python client — HNSW index search via asyncpg (Phase PROP-001)
+# Enables O(log n) ANN search vs O(n) numpy cosine for memory retrieval
+pgvector>=0.3.0

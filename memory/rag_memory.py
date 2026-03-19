@@ -198,6 +198,46 @@ class LocalMemoryBackend:
         from collections import OrderedDict
         self._cache: OrderedDict[str, dict] = OrderedDict()
         self._cache_maxsize: int = 128  # evict LRU entries beyond this
+        # Optional: asyncpg pool for pgvector HNSW search (set by caller via set_pg_pool)
+        self._pg_pool = None
+
+    def set_pg_pool(self, pool) -> None:
+        """Inject asyncpg pool for pgvector HNSW search. Called by server on startup."""
+        self._pg_pool = pool
+
+    async def pgvector_search(self, collection: str, query: str, top_k: int = 5) -> list[dict]:
+        """
+        pgvector HNSW approximate nearest-neighbour search.
+        O(log n) vs O(n) numpy cosine — critical for large memory stores.
+        Falls back to empty list (caller uses numpy cosine) if pool unavailable.
+        """
+        if not self._pg_pool:
+            return []
+        query_vec = self.embedder.embed(query)
+        vec_str = "[" + ",".join(str(v) for v in query_vec) + "]"
+        try:
+            async with self._pg_pool.acquire() as conn:
+                rows = await conn.fetch(
+                    """SELECT id, content, tags, source_agent,
+                              1 - (embedding <=> $1::vector) AS score
+                       FROM memory_episodes
+                       WHERE tags @> ARRAY[$2::text]
+                         AND embedding IS NOT NULL
+                       ORDER BY embedding <=> $1::vector
+                       LIMIT $3""",
+                    vec_str, collection, top_k
+                )
+            return [
+                {
+                    "id": r["id"],
+                    "text": r["content"],
+                    "metadata": {"tags": r["tags"], "source_agent": r["source_agent"]},
+                    "similarity": round(float(r["score"]), 4),
+                }
+                for r in rows
+            ]
+        except Exception:
+            return []  # graceful fallback to numpy
 
     def _collection_path(self, collection: str) -> Path:
         return self.storage_dir / f"{collection}.json"
