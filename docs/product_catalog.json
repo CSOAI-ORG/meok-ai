@@ -1,0 +1,421 @@
+{
+  "_meta": {
+    "version": "1.0.0",
+    "last_updated": "2026-03-19",
+    "description": "MEOK.AI Living Product Catalog — single source of truth for Stripe, pricing, tiers, features, and ecosystem",
+    "source": "Market Research & Business Intelligence Brief (March 2026)"
+  },
+
+  "brand": {
+    "name": "MEOK.AI",
+    "tagline": "Your AI. Your Data. Your Companion.",
+    "colors": {
+      "background": "#FFFFFF",
+      "primary_sky_blue": "#87CEEB",
+      "primary_deep_blue": "#4A90D9",
+      "accent_yellow": "#FFD700",
+      "accent_green": "#2ECC71"
+    },
+    "mascot": "hatching_egg",
+    "emergence_mechanic": "egg → cracking (24-48h) → hatching (48-72h) → growth (ongoing)"
+  },
+
+  "stripe_products": [
+    {
+      "id": "meok_core_free",
+      "name": "MEOK Core Free",
+      "vertical": "core",
+      "monthly_usd": 0,
+      "annual_usd": 0,
+      "annual_discount_pct": 0,
+      "billing_interval": null,
+      "stripe_price_id": "meok_core_free",
+      "description": "Local-only, community models, self-hosted",
+      "features": [
+        "Local-first processing, no cloud required",
+        "Community open-source models",
+        "Basic conversation memory",
+        "Single device",
+        "Hatching egg onboarding"
+      ],
+      "limits": {
+        "devices": 1,
+        "memory_gb": 1,
+        "cloud_sync": false,
+        "api_access": false
+      },
+      "notes": "No billing; usage limits enforced application-side",
+      "target_user": "Privacy-first technical users, open-source community",
+      "conversion_trigger": "Cloud sync friction at device 2"
+    },
+    {
+      "id": "meok_core_pro_999",
+      "name": "MEOK Core Pro",
+      "vertical": "core",
+      "monthly_usd": 9.99,
+      "annual_usd": 99,
+      "annual_discount_pct": 17,
+      "billing_interval": "monthly",
+      "stripe_price_id": "meok_core_pro_999",
+      "description": "Cloud sync (3 devices), priority inference, advanced models, 5GB memory",
+      "features": [
+        "Cloud sync across 3 devices",
+        "Priority inference queue",
+        "Advanced model access (Claude, GPT-4 class)",
+        "5GB encrypted memory storage",
+        "Full personality customisation",
+        "Export tools"
+      ],
+      "limits": {
+        "devices": 3,
+        "memory_gb": 5,
+        "cloud_sync": true,
+        "api_access": false
+      },
+      "notes": "17% annual discount; subscription schedules for upgrade/downgrade",
+      "target_user": "Regular users who want cloud sync and better models",
+      "conversion_trigger": "Device limit or model quality friction"
+    },
+    {
+      "id": "meok_gaming_1499",
+      "name": "MEOK Gaming Gamer",
+      "vertical": "gaming",
+      "monthly_usd": 14.99,
+      "annual_usd": 149,
+      "annual_discount_pct": 17,
+      "billing_interval": "monthly",
+      "stripe_price_id": "meok_gaming_1499",
+      "description": "In-game overlay, voice chat, <100ms latency, game-specific personalities",
+      "features": [
+        "In-game overlay (OBS-independent)",
+        "Voice-to-voice companion chat",
+        "<100ms latency target",
+        "Game-specific AI personalities",
+        "Match history analysis",
+        "Performance coaching",
+        "Supported games: Fortnite, Valorant, Minecraft, Roblox, CS2, Destiny 2, LoL"
+      ],
+      "limits": {
+        "devices": 2,
+        "memory_gb": 5,
+        "cloud_sync": true,
+        "api_access": false,
+        "games": "standard_list"
+      },
+      "notes": "Partnership revenue share eligibility; exclusive cosmetic items annual",
+      "target_user": "Casual to competitive gamers wanting a persistent AI teammate",
+      "conversion_trigger": "Voice latency free-tier limit; overlay feature gate"
+    },
+    {
+      "id": "meok_gaming_stream_2999",
+      "name": "MEOK Gaming Streamer",
+      "vertical": "gaming",
+      "monthly_usd": 29.99,
+      "annual_usd": 299,
+      "annual_discount_pct": 17,
+      "billing_interval": "monthly",
+      "stripe_price_id": "meok_gaming_stream_2999",
+      "description": "OBS integration, audience interaction tools, analytics dashboard, affiliate codes",
+      "features": [
+        "Full OBS Studio integration",
+        "Twitch/YouTube audience interaction via companion",
+        "Streamer analytics dashboard",
+        "Affiliate code management (Rewardful)",
+        "Custom companion persona for channel",
+        "Revenue share eligibility",
+        "Direct tip/donation routing"
+      ],
+      "limits": {
+        "devices": 3,
+        "memory_gb": 20,
+        "cloud_sync": true,
+        "api_access": true
+      },
+      "notes": "Direct tip/donation enablement; revenue share distribution via Stripe Connect",
+      "target_user": "Streamers 10K+ followers who want AI-enhanced audience engagement",
+      "conversion_trigger": "OBS integration or audience analytics access"
+    },
+    {
+      "id": "meok_family_1999",
+      "name": "MEOK Family Guardian",
+      "vertical": "family",
+      "monthly_usd": 19.99,
+      "annual_usd": 199,
+      "annual_discount_pct": 17,
+      "billing_interval": "monthly",
+      "stripe_price_id": "meok_family_1999",
+      "description": "5 child profiles, safety alerts, weekly reports, parent dashboard, care-based AI",
+      "features": [
+        "Up to 5 child profiles",
+        "Behavioural baseline per child",
+        "Anomaly detection (distress, predatory contact patterns)",
+        "Weekly family wellness reports",
+        "Parent dashboard with consent controls",
+        "Care-based AI (not surveillance-based)",
+        "WhatsApp/SMS alert integration",
+        "GDPR-K compliant, COPPA compliant",
+        "UK Online Safety Act aligned"
+      ],
+      "limits": {
+        "child_profiles": 5,
+        "memory_gb": 10,
+        "cloud_sync": true,
+        "api_access": false
+      },
+      "notes": "Strong annual preference; money-back guarantee for trust building",
+      "target_user": "Parents of children aged 5-17; privacy-first families",
+      "conversion_trigger": "Second child profile or alert configuration"
+    },
+    {
+      "id": "meok_family_plus_3999",
+      "name": "MEOK Family Guardian Plus",
+      "vertical": "family",
+      "monthly_usd": 39.99,
+      "annual_usd": 399,
+      "annual_discount_pct": 17,
+      "billing_interval": "monthly",
+      "stripe_price_id": "meok_family_plus_3999",
+      "description": "Unlimited profiles, professional monitoring, emergency response, family therapy integration",
+      "features": [
+        "Unlimited child profiles",
+        "Professional safeguarding monitoring",
+        "Emergency response protocols",
+        "Family therapy integration pathway",
+        "Custom SLA",
+        "Priority support",
+        "Institutional deployment option"
+      ],
+      "limits": {
+        "child_profiles": -1,
+        "memory_gb": 50,
+        "cloud_sync": true,
+        "api_access": true
+      },
+      "notes": "Direct sales support for institutional; custom SLA available",
+      "target_user": "Large families, foster care organisations, schools, enterprises",
+      "conversion_trigger": "More than 5 profiles or compliance reporting need"
+    },
+    {
+      "id": "meok_memory_2499",
+      "name": "MEOK Memory Scholar",
+      "vertical": "memory",
+      "monthly_usd": 24.99,
+      "annual_usd": 249,
+      "annual_discount_pct": 17,
+      "billing_interval": "monthly",
+      "stripe_price_id": "meok_memory_2499",
+      "description": "10GB vector storage, emotional tagging, export tools, API access, long-term recall",
+      "features": [
+        "10GB encrypted vector memory",
+        "Emotional state tagging (valence + arousal + dominant emotion)",
+        "Full export (JSON, Markdown, vector embeddings)",
+        "API access for integrations",
+        "Semantic search (pgvector HNSW)",
+        "Knowledge graph compression",
+        "Long-term recall across all sessions"
+      ],
+      "limits": {
+        "memory_gb": 10,
+        "cloud_sync": true,
+        "api_access": true,
+        "export": true
+      },
+      "notes": "'Archive forever' annual messaging; prorated upgrade to Archivist",
+      "target_user": "Knowledge workers, creatives, researchers, heavy AI users",
+      "conversion_trigger": "Storage limit at 8GB or API access request"
+    },
+    {
+      "id": "meok_memory_4999",
+      "name": "MEOK Memory Archivist",
+      "vertical": "memory",
+      "monthly_usd": 49.99,
+      "annual_usd": 499,
+      "annual_discount_pct": 17,
+      "billing_interval": "monthly",
+      "stripe_price_id": "meok_memory_4999",
+      "description": "100GB storage, team sharing, advanced analytics, custom embeddings, institutional features",
+      "features": [
+        "100GB encrypted vector memory",
+        "Team/family memory sharing",
+        "Advanced memory analytics",
+        "Custom embedding models",
+        "Institutional deployment",
+        "Per-seat pricing option",
+        "Priority support + SLA"
+      ],
+      "limits": {
+        "memory_gb": 100,
+        "cloud_sync": true,
+        "api_access": true,
+        "export": true,
+        "team_seats": -1
+      },
+      "notes": "Per-seat pricing for teams; enterprise contract alternative",
+      "target_user": "Research teams, organisations, power users",
+      "conversion_trigger": "100GB storage or team collaboration need"
+    },
+    {
+      "id": "meok_care_2999",
+      "name": "MEOK Care Companion",
+      "vertical": "care",
+      "monthly_usd": 29.99,
+      "annual_usd": 299,
+      "annual_discount_pct": 17,
+      "billing_interval": "monthly",
+      "stripe_price_id": "meok_care_2999",
+      "description": "Health reminders, family dashboard, emergency contacts, accessibility optimization, voice-first",
+      "features": [
+        "Voice-first interface (no typing required)",
+        "Medication and health reminders",
+        "Family coordination dashboard",
+        "Emergency contact integration",
+        "Accessibility optimisation (large text, slow pacing, repeat summaries)",
+        "Adult child purchaser pathway",
+        "Healthcare provider integration pathway"
+      ],
+      "limits": {
+        "devices": 3,
+        "memory_gb": 10,
+        "cloud_sync": true,
+        "api_access": false
+      },
+      "notes": "Adult child purchaser focus; healthcare integration pathway",
+      "target_user": "Elderly users, caregivers, adult children managing aging parents",
+      "conversion_trigger": "Emergency contact setup or family dashboard sharing"
+    }
+  ],
+
+  "pricing_philosophy": {
+    "model": "sovereign_subscription",
+    "principles": [
+      "User owns data — local-first default, encrypted optional sync, comprehensive export",
+      "Pays for service — transparent subscription, no hidden fees",
+      "No surveillance — no ad targeting, no behavioral profiling, no data brokerage",
+      "No dark patterns — no engagement manipulation, no fake urgency"
+    ],
+    "anti_patterns": [
+      "Advertising targeting based on user data",
+      "Behavioral profiling for third-party sale",
+      "Engagement manipulation",
+      "Free service in exchange for data"
+    ],
+    "revenue_streams": {
+      "primary": "Subscription (aligned user-company success)",
+      "secondary": "API usage (developer/enterprise)",
+      "tertiary": "Professional services ($5K-$25K annual contracts, 15-20% of org free-tier)",
+      "phase2": "Opt-in anonymised research datasets with user compensation"
+    }
+  },
+
+  "affiliate_program": {
+    "platform": "Rewardful",
+    "attribution_window_days": 60,
+    "payout_threshold_usd": 50,
+    "tiers": [
+      {"name": "Seed", "followers": "1K-10K", "commission_pct": 20, "conversion_benchmark_pct": 2},
+      {"name": "Sprout", "followers": "10K-50K", "commission_pct": 25, "conversion_benchmark_pct": 3, "bonus_usd": 500, "bonus_at_conversions": 50},
+      {"name": "Growth", "followers": "50K-250K", "commission_pct": 30, "conversion_benchmark_pct": 4, "bonus_usd": 2500, "bonus_at_conversions": 200},
+      {"name": "Canopy", "followers": "250K-1M", "commission_pct": 35, "conversion_benchmark_pct": 5, "bonus_usd": 10000, "bonus_at_conversions": 500},
+      {"name": "Ecosystem", "followers": "1M+", "commission_pct": "6+", "notes": "Custom negotiation, co-branded product line, equity consideration"}
+    ]
+  },
+
+  "gaming_partnerships": {
+    "revenue_share": [
+      {"partner_type": "Game Studio", "model": "Per-DAU licensing", "meok_share": "$0.10-$0.50/user/month"},
+      {"partner_type": "Platform (Steam/Epic)", "model": "Store integration fee", "meok_share": "70-85% of subscription"},
+      {"partner_type": "Esports Organiser", "model": "Tournament sponsorship", "meok_share": "Fixed + performance bonus"},
+      {"partner_type": "Streamer/Creator", "model": "Affiliate code + revenue share", "meok_share": "70-80% of subscription"},
+      {"partner_type": "Mod Community", "model": "Premium mod revenue share", "meok_share": "50%"}
+    ],
+    "priority_games": [
+      {"game": "Minecraft", "api": "Bedrock/Java APIs", "priority": "Very High"},
+      {"game": "Roblox", "api": "Luau + Open Cloud", "priority": "Very High"},
+      {"game": "Counter-Strike 2", "api": "Steamworks + GSI", "priority": "Very High"},
+      {"game": "Fortnite", "api": "Epic Online Services", "priority": "High"},
+      {"game": "Valorant", "api": "Riot Games API", "priority": "High"},
+      {"game": "Destiny 2", "api": "Bungie.net API", "priority": "High"},
+      {"game": "League of Legends", "api": "Riot Games API", "priority": "High"}
+    ]
+  },
+
+  "market_data": {
+    "consumer_ai_companion": {
+      "market_2026_bn": 8.5,
+      "market_2030_bn": 35,
+      "cagr_pct": 30
+    },
+    "gaming_ai": {
+      "market_2030_bn": 34.10,
+      "cagr_2026_2030_pct": 40.7
+    },
+    "family_safety": {
+      "market_2026_bn": 2.5,
+      "market_2032_bn": 6.8,
+      "cagr_pct": 18
+    },
+    "sovereign_ai": {
+      "market_2026_bn": 80,
+      "growth_pct": 35.6
+    },
+    "vector_db": {
+      "market_2026_bn": 1.5,
+      "market_2032_bn": 8.5
+    },
+    "key_insights": [
+      "50% US consumers unwilling to pay for generic AI features",
+      "53% would pay premium for guaranteed data safety/cybersecurity",
+      "EU consumers show 34% higher WTP for sovereign solutions",
+      "Family safety churn below 15% for established solutions",
+      "ChatGPT freemium conversion 3-4% at scale",
+      "2026-2027 is critical window for early adopter acquisition"
+    ]
+  },
+
+  "onboarding": {
+    "zero_signup_trial": true,
+    "time_to_first_interaction_target": "< 2 minutes",
+    "voice_setup_duration": "< 60 seconds",
+    "d7_retention_target": "> 40%",
+    "conversion_timeline_days": "14-30",
+    "conversion_target_pct": 5,
+    "hatching_egg_stages": [
+      {"stage": "Egg", "duration": "0-24h", "emotional_beat": "Curiosity, anticipation"},
+      {"stage": "Cracking", "duration": "24-48h", "emotional_beat": "Connection, emerging bond"},
+      {"stage": "Hatching", "duration": "48-72h", "emotional_beat": "Delight, commitment, ownership"},
+      {"stage": "Growth", "duration": "Ongoing", "emotional_beat": "Loyalty, advocacy, life integration"}
+    ]
+  },
+
+  "compliance": {
+    "frameworks": ["GDPR", "GDPR-K (Children)", "COPPA", "UK Online Safety Act", "California AB 2273", "EU AI Act"],
+    "data_residency": "local-first",
+    "encryption": "client-held keys, zero-knowledge server",
+    "deletion": "cryptographic erasure (key destruction)",
+    "audit": "open-source client, reproducible builds, third-party penetration test"
+  },
+
+  "platforms": [
+    {"platform": "Windows", "format": "MSIX + standalone .exe", "channel": "Microsoft Store + winget"},
+    {"platform": "macOS", "format": "Notarized DMG", "channel": "Direct + Homebrew"},
+    {"platform": "iOS", "format": "TestFlight → App Store", "channel": "Apple App Store"},
+    {"platform": "Android", "format": "Play Store + F-Droid", "channel": "Google Play + F-Droid"},
+    {"platform": "Linux", "format": "Flatpak + Snap + AUR", "channel": "Flathub + community"},
+    {"platform": "Web", "format": "PWA", "channel": "meok.ai direct"}
+  ],
+
+  "website_pages": [
+    {"slug": "/", "name": "Home", "hero_headline": "Your AI. Your Data. Your Companion.", "primary_cta": "Meet Your Companion"},
+    {"slug": "/about", "name": "About", "hero_headline": "Built Different, By Design", "primary_cta": "Our Story"},
+    {"slug": "/sovereign-os", "name": "Sovereign/OS", "hero_headline": "AI That Lives on Your Terms", "primary_cta": "See the Architecture"},
+    {"slug": "/any-llm", "name": "Any LLM", "hero_headline": "Your Companion. Any Brain.", "primary_cta": "Connect Your LLM"},
+    {"slug": "/gaming", "name": "Gaming", "hero_headline": "An AI That Gets Your Game", "primary_cta": "Join the Beta", "above_fold_visual": "In-game overlay demo, latency counter"},
+    {"slug": "/family-guardian", "name": "Family Guardian", "hero_headline": "Care for Your Family, Not Surveillance", "primary_cta": "Start Free", "above_fold_visual": "Parent-child co-view dashboard"},
+    {"slug": "/how-it-works", "name": "How It Works", "hero_headline": "Simple to Use, Sophisticated Inside", "primary_cta": "See It In Action"},
+    {"slug": "/external-memory", "name": "External Memory", "hero_headline": "Everything You Care About, Remembered", "primary_cta": "Begin Your Archive", "above_fold_visual": "Memory timeline + emotional tagging"},
+    {"slug": "/faq", "name": "FAQs", "hero_headline": "Honest Answers", "primary_cta": "Ask Us Anything"},
+    {"slug": "/pricing", "name": "Pricing", "hero_headline": "Simple, Sovereign, Fair", "primary_cta": "Start Free", "notes": "No credit card required, money-back guarantee"},
+    {"slug": "/contact", "name": "Contact", "hero_headline": "We're Real People", "primary_cta": "Get in Touch"},
+    {"slug": "/open-source", "name": "Open Source", "hero_headline": "See Everything. Trust Nothing Blindly.", "primary_cta": "View on GitHub"}
+  ]
+}
