@@ -54,6 +54,21 @@ async def initialize_system(state: ServiceState):
         else:
             logger.info(f"    Loaded {name}")
 
+    # Warm-up inference — ensures models enter production flow immediately
+    # and confirms all trained models can run end-to-end predictions.
+    try:
+        _warmup_text = "System boot — care validation warm-up."
+        _wm_care = state.model_registry.get("care_validation_nn")
+        if _wm_care and _wm_care.is_trained:
+            _wm_care.predict(_warmup_text)
+            logger.info("    Neural warm-up: care_validation_nn OK")
+        _wm_threat = state.model_registry.get("threat_detection_nn")
+        if _wm_threat and _wm_threat.is_trained:
+            _wm_threat.predict(_warmup_text)
+            logger.info("    Neural warm-up: threat_detection_nn OK")
+    except Exception as _wu_exc:
+        logger.warning("    Neural warm-up failed (non-fatal): %s", _wu_exc)
+
     # ── Memory store ──────────────────────────────────────────────
     logger.info("  Initializing memory store...")
     state.memory_store = EnhancedMemoryStore(postgres_dsn=POSTGRES_DSN, weaviate_url=WEAVIATE_URL, persist_path=PERSIST_PATH)
@@ -98,6 +113,168 @@ async def initialize_system(state: ServiceState):
 
     state.agent_registry._audit_logger = state.audit_logger
     state.task_delegator = TaskDelegator(state.agent_registry)
+
+    # ── Council Agents — register all 7 archetypes ────────────────
+    logger.info("  Registering 7 council agents...")
+    _COUNCIL_AGENTS = [
+        {
+            "name": "Sovereign",
+            "description": "Primary orchestrator — warm, knowing, personal. INFJ. Sees the whole system.",
+            "capabilities": [
+                AgentCapability.PLANNING,
+                AgentCapability.ANALYSIS,
+                AgentCapability.COMMUNICATION,
+                AgentCapability.MONITORING,
+                AgentCapability.NEURAL_INFERENCE,
+            ],
+            "trust_level": 1.0,
+            "metadata": {
+                "mbti": "INFJ",
+                "voice": "sovereign",
+                "gaming_role": "leader",
+                "personality": {
+                    "openness": 0.85, "conscientiousness": 0.90, "extraversion": 0.45,
+                    "agreeableness": 0.88, "neuroticism": 0.20,
+                },
+            },
+        },
+        {
+            "name": "Guardian",
+            "description": "Security and protection. Calm, protective, reassuring. ISTJ.",
+            "capabilities": [
+                AgentCapability.SECURITY,
+                AgentCapability.MONITORING,
+                AgentCapability.NEURAL_INFERENCE,
+                AgentCapability.ANALYSIS,
+            ],
+            "trust_level": 0.95,
+            "metadata": {
+                "mbti": "ISTJ",
+                "voice": "hourman",
+                "gaming_role": "tank",
+                "personality": {
+                    "openness": 0.40, "conscientiousness": 0.95, "extraversion": 0.30,
+                    "agreeableness": 0.75, "neuroticism": 0.15,
+                },
+            },
+        },
+        {
+            "name": "Scout",
+            "description": "Research and discovery. Curious, enthusiastic, quick. ENTP.",
+            "capabilities": [
+                AgentCapability.WEB_SEARCH,
+                AgentCapability.ANALYSIS,
+                AgentCapability.COMMUNICATION,
+                AgentCapability.NEURAL_INFERENCE,
+            ],
+            "trust_level": 0.85,
+            "metadata": {
+                "mbti": "ENTP",
+                "voice": "orion",
+                "gaming_role": "scout",
+                "personality": {
+                    "openness": 0.95, "conscientiousness": 0.50, "extraversion": 0.80,
+                    "agreeableness": 0.65, "neuroticism": 0.30,
+                },
+            },
+        },
+        {
+            "name": "Strategist",
+            "description": "Planning and execution. Precise, measured, confident. ENTJ.",
+            "capabilities": [
+                AgentCapability.PLANNING,
+                AgentCapability.ANALYSIS,
+                AgentCapability.CODE_EXECUTION,
+                AgentCapability.MONITORING,
+            ],
+            "trust_level": 0.90,
+            "metadata": {
+                "mbti": "ENTJ",
+                "voice": "kimi",
+                "gaming_role": "commander",
+                "personality": {
+                    "openness": 0.75, "conscientiousness": 0.92, "extraversion": 0.75,
+                    "agreeableness": 0.55, "neuroticism": 0.18,
+                },
+            },
+        },
+        {
+            "name": "Creator",
+            "description": "Creative and generative work. Expressive, playful, imaginative. INFP.",
+            "capabilities": [
+                AgentCapability.CREATIVE,
+                AgentCapability.NEURAL_INFERENCE,
+                AgentCapability.COMMUNICATION,
+                AgentCapability.MEMORY_OPERATIONS,
+            ],
+            "trust_level": 0.85,
+            "metadata": {
+                "mbti": "INFP",
+                "voice": "riri",
+                "gaming_role": "support",
+                "personality": {
+                    "openness": 0.98, "conscientiousness": 0.45, "extraversion": 0.38,
+                    "agreeableness": 0.90, "neuroticism": 0.42,
+                },
+            },
+        },
+        {
+            "name": "Companion",
+            "description": "Emotional support and presence. Warm, present, emotionally attuned. ESFJ.",
+            "capabilities": [
+                AgentCapability.COMMUNICATION,
+                AgentCapability.MEMORY_OPERATIONS,
+                AgentCapability.NEURAL_INFERENCE,
+                AgentCapability.MONITORING,
+            ],
+            "trust_level": 0.90,
+            "metadata": {
+                "mbti": "ESFJ",
+                "voice": "sovereign",
+                "gaming_role": "healer",
+                "personality": {
+                    "openness": 0.65, "conscientiousness": 0.80, "extraversion": 0.82,
+                    "agreeableness": 0.95, "neuroticism": 0.35,
+                },
+            },
+        },
+        {
+            "name": "Sage",
+            "description": "Deep research and philosophy. Patient, deep, wise. INTJ.",
+            "capabilities": [
+                AgentCapability.ANALYSIS,
+                AgentCapability.WEB_SEARCH,
+                AgentCapability.NEURAL_INFERENCE,
+                AgentCapability.MEMORY_OPERATIONS,
+                AgentCapability.PLANNING,
+            ],
+            "trust_level": 0.92,
+            "metadata": {
+                "mbti": "INTJ",
+                "voice": "kimi",
+                "gaming_role": "mage",
+                "personality": {
+                    "openness": 0.90, "conscientiousness": 0.88, "extraversion": 0.25,
+                    "agreeableness": 0.60, "neuroticism": 0.22,
+                },
+            },
+        },
+    ]
+    for _ca in _COUNCIL_AGENTS:
+        try:
+            await state.agent_registry.register_agent(
+                name=_ca["name"],
+                description=_ca["description"],
+                capabilities=_ca["capabilities"],
+                trust_level=_ca["trust_level"],
+                metadata=_ca["metadata"],
+            )
+        except Exception as _e:
+            logger.warning("    Council agent '%s' registration failed (non-fatal): %s", _ca["name"], _e)
+    logger.info(
+        "    Council agents registered — %d total agents in registry",
+        len(state.agent_registry.agents),
+    )
 
     # ── TaskOrchestrator — execution engine ───────────────────────
     logger.info("  Initializing task orchestrator...")
@@ -433,10 +610,19 @@ async def initialize_system(state: ServiceState):
     # ── Multi-Agent Coordination Hub ──────────────────────────────
     try:
         from meok.agents.coordination_hub import get_hub as get_coordination_hub
+        # Eagerly initialize the hub singleton so the state_dir is created and
+        # any filesystem / import errors surface here rather than on first use.
+        _hub = get_coordination_hub()
         state.COORDINATION_AVAILABLE = True
         state.get_coordination_hub = get_coordination_hub
-    except ImportError:
+        logger.info(
+            "    Coordination Hub active — %d agents, %d tasks queued",
+            len(_hub.agent_registry.list_agents()),
+            len([t for t in _hub.task_queue.get_all_tasks() if t.status == "queued"]),
+        )
+    except Exception as _hub_exc:
         state.COORDINATION_AVAILABLE = False
+        logger.warning("    Coordination Hub init failed: %s", _hub_exc)
 
     # ── Phase 2.5: Generals + Contract Net + Shapley ──────────────
     logger.info("  Initializing Phase 2.5: Generals + Contract Net + Shapley...")

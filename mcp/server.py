@@ -557,6 +557,22 @@ async def chat_stream(body: _ChatRequest, user: TokenPayload = Depends(require_a
             except Exception:
                 pass
 
+            # ── Neural inference (fire-and-forget — wires models into prod) ──
+            # Threat detection and care validation run on every message so
+            # neural_predictions_total counter accumulates during normal use.
+            asyncio.create_task(execute_tool(
+                "detect_threats",
+                {"text": body.message},
+                state,
+                tenant_id=user.tenant_id,
+            ))
+            asyncio.create_task(execute_tool(
+                "validate_care",
+                {"text": body.message},
+                state,
+                tenant_id=user.tenant_id,
+            ))
+
             # ── Build response ───────────────────────────────────────────
             response_text = _build_care_response(body.message, consciousness_ctx, memories)
 

@@ -92,6 +92,18 @@ NEURAL_TOOLS = [
 ]
 
 
+def _record_neural_prediction(state: ServiceState, model_name: str, success: bool = True) -> None:
+    """Increment the neural predictions counter in the metrics collector (fire-and-forget)."""
+    try:
+        if state.metrics:
+            state.metrics.increment_counter(
+                "neural_predictions",
+                labels={"model": model_name, "success": "1" if success else "0"},
+            )
+    except Exception:
+        pass
+
+
 async def handle_neural_tool(name: str, arguments: Dict[str, Any], state: ServiceState) -> Dict[str, Any]:
     """Handle neural tool calls."""
 
@@ -101,6 +113,7 @@ async def handle_neural_tool(name: str, arguments: Dict[str, Any], state: Servic
             return {"error": "Model not available"}
         text = arguments.get("text") or arguments.get("action") or arguments.get("context", "")
         result = model.predict(text)
+        _record_neural_prediction(state, "care_validation_nn")
         state.consciousness.process_interaction({"care_score": result.get("overall_care_score", 0.5)})
         return result
 
@@ -109,7 +122,9 @@ async def handle_neural_tool(name: str, arguments: Dict[str, Any], state: Servic
         if not model or not model.is_trained:
             return {"error": "Model not available"}
         text = arguments.get("text") or arguments.get("context", "")
-        return model.predict(text)
+        result = model.predict(text)
+        _record_neural_prediction(state, "partnership_detection_ml")
+        return result
 
     elif name == "detect_threats":
         model = state.model_registry.get("threat_detection_nn")
@@ -117,6 +132,7 @@ async def handle_neural_tool(name: str, arguments: Dict[str, Any], state: Servic
             return {"error": "Model not available"}
         text = arguments.get("text") or arguments.get("context", "")
         result = model.predict(text)
+        _record_neural_prediction(state, "threat_detection_nn")
         state.consciousness.process_interaction({"threat_detected": result.get("threat_detected", False)})
         if result.get("threat_detected"):
             await state.alert_manager.fire_alert(
@@ -132,13 +148,17 @@ async def handle_neural_tool(name: str, arguments: Dict[str, Any], state: Servic
         model = state.model_registry.get("relationship_evolution_nn")
         if not model or not model.is_trained:
             return {"error": "Model not available"}
-        return model.predict(arguments)
+        result = model.predict(arguments)
+        _record_neural_prediction(state, "relationship_evolution_nn")
+        return result
 
     elif name == "analyze_care_patterns":
         model = state.model_registry.get("care_pattern_analyzer")
         if not model or not model.is_trained:
             return {"error": "Model not available"}
-        return model.predict(arguments)
+        result = model.predict(arguments)
+        _record_neural_prediction(state, "care_pattern_analyzer")
+        return result
 
     elif name == "get_neural_model_info":
         return state.model_registry.list_models()
