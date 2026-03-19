@@ -35,8 +35,8 @@ class CareValidationNN(base_model.BaseNeuralModel):
     def extract_features(self, text: str) -> np.ndarray:
         """Extract TF-IDF features from text"""
         if not hasattr(self.vectorizer, 'vocabulary_'):
-            # Vectorizer not fitted yet, return zeros
-            return np.zeros(256)
+            # Vectorizer not fitted — retrain now so we don't return zeros
+            self.train_model()
         return self.vectorizer.transform([text]).toarray()[0]
     
     def _generate_training_data(self) -> tuple:
@@ -199,13 +199,16 @@ class CareValidationNN(base_model.BaseNeuralModel):
         try:
             # Load the base model
             base_result = super().load_model()
-            
+
             # Load the vectorizer
             vectorizer_path = os.path.join(self.model_dir, f"{self.model_name}_vectorizer.pkl")
             if os.path.exists(vectorizer_path):
                 with open(vectorizer_path, 'rb') as f:
                     self.vectorizer = pickle.load(f)
                 return True and base_result
+            else:
+                # Vectorizer missing — force retrain so model is never in broken state
+                return False
         except Exception as e:
             print(f"Error loading model {self.model_name}: {e}")
         return False

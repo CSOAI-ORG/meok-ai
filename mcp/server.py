@@ -306,7 +306,7 @@ async def get_my_entity(user: TokenPayload = Depends(require_auth)):
 # ── MCP endpoint (tenant-aware) ──────────────────────────────────
 
 @app.post("/mcp")
-async def mcp_endpoint(request: Request, user: TokenPayload = Depends(get_current_user)):
+async def mcp_endpoint(request: Request, user: TokenPayload = Depends(require_auth)):
     """MCP endpoint for tool calls — tenant-scoped."""
     body = await request.json()
 

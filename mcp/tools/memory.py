@@ -1,11 +1,14 @@
 """
 Memory tool definitions and handler.
-Tools: record_memory, query_memories, get_temporal_chain, get_memory_stats, list_memories
+Tools: record_memory, query_memories, get_temporal_chain, get_memory_stats, list_memories, pgvector_search
 """
 
 from typing import Dict, Any
 
+import logging
 from meok.mcp.state import ServiceState
+
+logger = logging.getLogger(__name__)
 
 MEMORY_TOOLS = [
     {
@@ -66,6 +69,19 @@ MEMORY_TOOLS = [
             }
         }
     },
+    {
+        "name": "pgvector_search",
+        "description": "Semantic vector search using pgvector HNSW index — sub-100ms O(log n) recall across all stored memories",
+        "inputSchema": {
+            "type": "object",
+            "properties": {
+                "query": {"type": "string", "description": "Natural language search query"},
+                "top_k": {"type": "integer", "description": "Number of results to return", "default": 5},
+                "min_similarity": {"type": "number", "description": "Minimum cosine similarity threshold (0-1)", "default": 0.0}
+            },
+            "required": ["query"]
+        }
+    },
 ]
 
 
@@ -123,5 +139,65 @@ async def handle_memory_tool(name: str, arguments: Dict[str, Any], state: Servic
             limit=arguments.get("limit", 50)
         )
         return {"memories": memories, "count": len(memories)}
+
+    elif name == "pgvector_search":
+        if not state.memory_store:
+            return {"error": "Memory store not available"}
+        pool = getattr(state.memory_store, "pool", None)
+        if not pool:
+            return {"error": "pgvector requires PostgreSQL connection — pool not available"}
+        query_text = arguments.get("query", "")
+        top_k = int(arguments.get("top_k", 5))
+        min_sim = float(arguments.get("min_similarity", 0.0))
+        if not query_text:
+            return {"error": "query parameter required"}
+        try:
+            # Build embedding for the query
+            import sys, os
+            sys.path.insert(0, os.path.join(os.path.dirname(__file__), "../../.."))
+            from meok.memory.rag_memory import _make_embedder
+            embedder = _make_embedder()
+            query_vec = embedder.embed(query_text)
+            dim = len(query_vec)
+            vec_str = "[" + ",".join(f"{v:.8f}" for v in query_vec) + "]"
+            async with pool.acquire() as conn:
+                # Check column exists and has correct dimension
+                col_check = await conn.fetchval(
+                    "SELECT data_type FROM information_schema.columns "
+                    "WHERE table_name='memory_episodes' AND column_name='embedding'"
+                )
+                if not col_check:
+                    return {"error": "pgvector migration not yet run — embedding column missing. Restart server to apply migration."}
+                rows = await conn.fetch(
+                    """SELECT id, content, tags, source_agent, memory_type, timestamp,
+                              1 - (embedding <=> $1::vector) AS similarity
+                       FROM memory_episodes
+                       WHERE embedding IS NOT NULL
+                         AND 1 - (embedding <=> $1::vector) >= $3
+                       ORDER BY embedding <=> $1::vector
+                       LIMIT $2""",
+                    vec_str, top_k, min_sim
+                )
+            return {
+                "results": [
+                    {
+                        "id": r["id"],
+                        "content": r["content"],
+                        "tags": r["tags"],
+                        "source_agent": r["source_agent"],
+                        "memory_type": r["memory_type"],
+                        "timestamp": str(r["timestamp"]),
+                        "similarity": round(float(r["similarity"]), 4),
+                    }
+                    for r in rows
+                ],
+                "count": len(rows),
+                "query": query_text,
+                "embedding_dim": dim,
+                "backend": "pgvector_hnsw",
+            }
+        except Exception as e:
+            logger.exception("pgvector_search error")
+            return {"error": f"pgvector_search failed: {e}"}
 
     return {"error": f"Unknown memory tool: {name}"}

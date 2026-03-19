@@ -445,9 +445,23 @@ class EnhancedMemoryStore:
                 ON memory_episodes(importance_score DESC)
             """)
             await conn.execute("""
-                CREATE INDEX IF NOT EXISTS idx_episodes_tags 
+                CREATE INDEX IF NOT EXISTS idx_episodes_tags
                 ON memory_episodes USING GIN(tags)
             """)
+            # pgvector HNSW semantic search — idempotent migration
+            try:
+                await conn.execute("CREATE EXTENSION IF NOT EXISTS vector")
+                await conn.execute(
+                    "ALTER TABLE memory_episodes ADD COLUMN IF NOT EXISTS embedding vector(384)"
+                )
+                await conn.execute("""
+                    CREATE INDEX IF NOT EXISTS idx_memory_episodes_embedding_hnsw
+                    ON memory_episodes USING hnsw (embedding vector_cosine_ops)
+                    WITH (m = 16, ef_construction = 64)
+                """)
+                logger.info("pgvector HNSW index ready")
+            except Exception as pgvec_err:
+                logger.warning("pgvector not available — semantic search will use fallback: %s", pgvec_err)
     
     async def _ensure_schema(self):
         """Ensure Weaviate schema exists"""
