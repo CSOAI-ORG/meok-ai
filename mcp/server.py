@@ -29,6 +29,8 @@ import uvicorn
 from meok.mcp.state import ServiceState
 from meok.mcp.initializer import initialize_system
 from meok.mcp.tools import ALL_TOOLS, execute_tool
+from meok.api.chat_intelligence import generate_sovereign_response
+from meok.core.tool_dispatch import router as dispatch_router, register_fallback_tools
 from meok.config.settings import get_settings
 from meok.auth.models import (
     UserCreate, UserLogin, TokenResponse, RefreshRequest,
@@ -51,6 +53,10 @@ auth_repo = AuthRepository()
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     await initialize_system(state)
+    # TASK-002: Register tool dispatch fallbacks (real MCP tools hot-swap in later)
+    n_tools = register_fallback_tools()
+    import logging as _logging
+    _logging.getLogger(__name__).info(f"[Startup] Tool dispatch: {n_tools} fallback tools registered")
     yield
 
 
@@ -69,6 +75,9 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# TASK-002: Tool dispatch API routes
+app.include_router(dispatch_router)
 
 
 # ── Health ────────────────────────────────────────────────────────
@@ -686,15 +695,23 @@ async def chat_stream(body: _ChatRequest, user: TokenPayload = Depends(require_a
                 tenant_id=user.tenant_id,
             ))
 
-            # ── Build response ───────────────────────────────────────────
-            response_text = _build_care_response(body.message, consciousness_ctx, memories)
-
-            # ── Stream tokens word-by-word ───────────────────────────────
-            words = response_text.split(" ")
-            for i, word in enumerate(words):
-                token = word if i == len(words) - 1 else word + " "
-                yield f"data: {json.dumps({'event': 'token', 'content': token})}\n\n"
-                await asyncio.sleep(0.018)
+            # ── LLM-powered sovereign response ────────────────────────────
+            full_response_parts: list[str] = []
+            async for chunk in generate_sovereign_response(
+                message=body.message,
+                history=getattr(body, "history", []),
+                archetype=getattr(body, "archetype", "sovereign"),
+                entity_name=getattr(body, "entity_name", "Sovereign"),
+                memories=memories,
+                consciousness_ctx=consciousness_ctx,
+                fallback_fn=lambda: _build_care_response(
+                    body.message, consciousness_ctx, memories
+                ),
+            ):
+                if chunk:
+                    full_response_parts.append(chunk)
+                    yield f"data: {json.dumps({'event': 'token', 'content': chunk})}\n\n"
+            response_text = "".join(full_response_parts)
 
             # ── Record interaction as memory (fire-and-forget) ───────────
             asyncio.create_task(execute_tool(
@@ -761,16 +778,21 @@ async def chat_onboard(body: _OnboardRequest):
                 cs_ctx = cs if isinstance(cs, dict) else {}
             except Exception:
                 pass
-            response_text = _build_care_response(body.question, cs_ctx, [])
             # Prepend anonymous_id so client can persist session
             header = json.dumps({"event": "session", "anonymous_id": anon_id})
             yield f"data: {header}\n\n"
-            words = response_text.split(" ")
-            for i, word in enumerate(words):
-                token = word if i == len(words) - 1 else word + " "
-                payload = json.dumps({"event": "token", "content": token})
-                yield f"data: {payload}\n\n"
-                await asyncio.sleep(0.02)
+            # LLM-powered birth ceremony response
+            async for chunk in generate_sovereign_response(
+                message=body.question,
+                archetype="companion",  # Warmest archetype for first contact
+                entity_name="Sovereign",
+                memories=[],
+                consciousness_ctx=cs_ctx,
+                fallback_fn=lambda: _build_care_response(body.question, cs_ctx, []),
+            ):
+                if chunk:
+                    payload = json.dumps({"event": "token", "content": chunk})
+                    yield f"data: {payload}\n\n"
         except Exception as exc:
             error_payload = json.dumps({"event": "token", "content": f"I'm here. Let's begin again. ({exc})"})
             yield f"data: {error_payload}\n\n"
