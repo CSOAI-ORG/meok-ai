@@ -1,0 +1,6 @@
+Contact: mailto:security@meok.ai
+Expires: 2027-03-31T00:00:00.000Z
+Encryption: https://meok.ai/pgp-key.txt
+Policy: https://meok.ai/security
+Preferred-Languages: en
+Canonical: https://meok.ai/.well-known/security.txt
