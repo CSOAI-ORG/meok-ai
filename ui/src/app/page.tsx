@@ -334,7 +334,7 @@ export default function LandingPage() {
                   ))}
                 </ul>
                 <Link href={plan.href} className="block">
-                  <Button className="w-full" variant={plan.highlight ? "default" : "ghost"} size="lg">
+                  <Button className="w-full" variant={plan.highlight ? "primary" : "ghost"} size="lg">
                     {plan.cta}
                   </Button>
                 </Link>

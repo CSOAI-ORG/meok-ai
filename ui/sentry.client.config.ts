@@ -29,7 +29,7 @@ if (SENTRY_DSN) {
     beforeSend(event) {
       if (process.env.NODE_ENV === "development") return null;
       // Strip sensitive data
-      if (event.request?.cookies) event.request.cookies = "[Filtered]";
+      if (event.request?.cookies) delete event.request.cookies;
       return event;
     },
   });

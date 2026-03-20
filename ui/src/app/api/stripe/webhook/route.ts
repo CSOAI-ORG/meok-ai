@@ -37,7 +37,7 @@ export async function POST(req: NextRequest) {
 
   switch (event.type) {
     case "checkout.session.completed": {
-      const session = event.data.object as Stripe.CheckoutSession;
+      const session = event.data.object as Stripe.Checkout.Session;
       const { userId, planId } = session.metadata || {};
       if (userId && planId) {
         // TODO: Update user tier in DB / Clerk metadata
@@ -49,7 +49,7 @@ export async function POST(req: NextRequest) {
 
     case "invoice.paid": {
       const invoice = event.data.object as Stripe.Invoice;
-      const sub = invoice.subscription as string;
+      const sub = (invoice as Stripe.Invoice & { subscription?: string }).subscription as string;
       console.log(`[Stripe] Invoice paid — subscription ${sub}`);
       // TODO: Extend access, log payment
       break;

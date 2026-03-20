@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import { ClerkProvider } from "@clerk/nextjs";
 import { Suspense } from "react";
 import { PostHogProvider } from "@/components/posthog-provider";
+import { CookieConsent } from "@/components/cookie-consent";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -29,6 +30,7 @@ export default function RootLayout({
           <Suspense>
             <PostHogProvider>{children}</PostHogProvider>
           </Suspense>
+          <CookieConsent />
         </body>
       </html>
     </ClerkProvider>
