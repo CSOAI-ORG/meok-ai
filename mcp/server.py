@@ -1054,6 +1054,52 @@ async def stripe_webhook(request: Request):
     return {"received": True, "type": event_type}
 
 
+# ── Admin: one-time pgvector migration ────────────────────────────
+
+@app.post("/admin/pgvector_migrate")
+async def run_pgvector_migration(request: Request):
+    """
+    One-time idempotent migration: enables pgvector extension + HNSW index.
+    Protected by X-Admin-Token header. Safe to call multiple times.
+    """
+    import os
+    admin_token = request.headers.get("X-Admin-Token", "")
+    expected = os.environ.get("ADMIN_MIGRATE_TOKEN", "meok-migrate-2026")
+    if admin_token != expected:
+        return JSONResponse({"error": "unauthorized"}, status_code=403)
+
+    migration_sql = [
+        "CREATE EXTENSION IF NOT EXISTS vector;",
+        "ALTER TABLE memory_episodes ADD COLUMN IF NOT EXISTS embedding vector(384);",
+        "ALTER TABLE memory_episodes ADD COLUMN IF NOT EXISTS vector_id TEXT;",
+        """CREATE INDEX IF NOT EXISTS memory_episodes_embedding_hnsw
+           ON memory_episodes USING hnsw (embedding vector_cosine_ops)
+           WITH (m = 16, ef_construction = 64);""",
+        """CREATE INDEX IF NOT EXISTS memory_episodes_tags_gin
+           ON memory_episodes USING gin (tags);""",
+    ]
+
+    results = []
+    try:
+        import asyncpg
+        from meok.config.settings import get_settings
+        settings = get_settings()
+        dsn = settings.database.postgres_dsn
+        conn = await asyncpg.connect(dsn)
+        try:
+            for sql in migration_sql:
+                try:
+                    await conn.execute(sql)
+                    results.append({"sql": sql[:60], "status": "ok"})
+                except Exception as e:
+                    results.append({"sql": sql[:60], "status": "error", "detail": str(e)})
+        finally:
+            await conn.close()
+        return {"status": "complete", "steps": results}
+    except Exception as e:
+        return JSONResponse({"status": "error", "detail": str(e)}, status_code=500)
+
+
 # ── Root ──────────────────────────────────────────────────────────
 
 @app.get("/")
