@@ -303,6 +303,28 @@ async def get_my_entity(user: TokenPayload = Depends(require_auth)):
         })
 
 
+# ── Character Catalog endpoints (public — no auth required) ──────
+
+@app.get("/api/characters")
+async def get_all_characters():
+    """Return full character catalog — all 24 MEOK AI companions."""
+    from meok.core.character_catalog import CHARACTER_CATALOG
+    return {
+        "characters": [c.to_dict() for c in CHARACTER_CATALOG.values()],
+        "total": len(CHARACTER_CATALOG),
+    }
+
+
+@app.get("/api/characters/{character_id}")
+async def get_character_by_id(character_id: str):
+    """Return full details for a single character by id."""
+    from meok.core.character_catalog import get_character
+    char = get_character(character_id.lower().strip())
+    if not char:
+        raise HTTPException(status_code=404, detail=f"Character '{character_id}' not found")
+    return char.to_dict()
+
+
 # ── Mirror Mode endpoint (public — no auth, viral demo) ──────────
 
 @app.post("/api/mirror")

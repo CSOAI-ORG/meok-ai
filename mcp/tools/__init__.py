@@ -36,6 +36,7 @@ from meok.mcp.tools.voice_guardian import VOICE_GUARDIAN_TOOLS, handle_voice_gua
 from meok.mcp.tools.osint import OSINT_TOOLS, handle_osint_tool
 from meok.mcp.tools.care_shield import CARE_SHIELD_TOOLS, handle_care_shield
 from meok.mcp.tools.notifications import NOTIFICATION_TOOLS, handle_notifications_tool
+from meok.mcp.tools.character_catalog import CHARACTER_CATALOG_TOOLS, handle_character_catalog_tool
 
 # Combined tool list — order matches the original monolithic server
 ALL_TOOLS = (
@@ -68,6 +69,7 @@ ALL_TOOLS = (
     + OSINT_TOOLS                # Phase L: 7-collector OSINT layer (Ignorant, Subfinder, Gitleaks, etc.)
     + CARE_SHIELD_TOOLS          # Phase L: always-on sovereign monitoring
     + NOTIFICATION_TOOLS         # Phase L: alert delivery (WhatsApp, Web Push, Email)
+    + CHARACTER_CATALOG_TOOLS    # 24 AI companions with CPM integration
 )
 
 # Build name -> handler lookup from each module's tool list
@@ -131,6 +133,8 @@ for _tool in CARE_SHIELD_TOOLS:
     _TOOL_NAME_TO_HANDLER[_tool["name"]] = handle_care_shield
 for _tool in NOTIFICATION_TOOLS:
     _TOOL_NAME_TO_HANDLER[_tool["name"]] = handle_notifications_tool
+for _tool in CHARACTER_CATALOG_TOOLS:
+    _TOOL_NAME_TO_HANDLER[_tool["name"]] = handle_character_catalog_tool
 
 # Also expose as a dict for external inspection
 TOOL_HANDLERS = {

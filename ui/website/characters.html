@@ -1,0 +1,1396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Characters — MEOK.AI | 24 AI Companions Built with Care</title>
+  <meta name="description" content="Meet MEOK's 24 AI companions — each with a unique personality, care style, and voice. Open, care-governed, yours.">
+  <link rel="stylesheet" href="nav.css">
+  <style>
+    /* ── Base ────────────────────────────────────────────────────────────── */
+    :root {
+      --bg:          #0a0a0f;
+      --bg-card:     #13131a;
+      --bg-card-alt: #1a1a24;
+      --border:      rgba(255,255,255,0.07);
+      --border-mid:  rgba(255,255,255,0.12);
+      --text:        #f0f0f5;
+      --text-mid:    rgba(240,240,245,0.55);
+      --text-dim:    rgba(240,240,245,0.35);
+      --radius:      16px;
+      --radius-sm:   10px;
+      --radius-pill: 100px;
+      --transition:  0.22s cubic-bezier(0.4, 0, 0.2, 1);
+      --shadow-card: 0 4px 32px rgba(0,0,0,0.4), 0 1px 4px rgba(0,0,0,0.6);
+      --shadow-hover: 0 16px 64px rgba(0,0,0,0.6), 0 4px 16px rgba(0,0,0,0.4);
+      --gold:        #F59E0B;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    /* ── Nav override for dark page ─────────────────────────────────────── */
+    .nav {
+      background: rgba(10,10,15,0.92);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(16px);
+    }
+    .nav-logo { color: var(--text) !important; }
+    .nav-logo span { color: rgba(240,240,245,0.4) !important; }
+    .nav-link, .nav-drop-btn { color: var(--text-mid) !important; }
+    .nav-link:hover, .nav-drop-btn:hover { color: var(--text) !important; background: var(--bg-card) !important; }
+    .drop-menu { background: #1a1a24 !important; border-color: var(--border) !important; }
+    .drop-menu a { color: var(--text) !important; }
+    .drop-menu a:hover { background: var(--bg-card-alt) !important; }
+    .drop-menu strong { color: var(--text) !important; }
+    .drop-menu em { color: var(--text-mid) !important; }
+    .nav-hamburger .ham-bar { background: var(--text) !important; }
+    .nav-links { background: #0a0a0f !important; }
+
+    /* ── Hero ────────────────────────────────────────────────────────────── */
+    .hero {
+      padding: 120px 5% 64px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% -10%, rgba(108,99,255,0.18) 0%, transparent 70%),
+        radial-gradient(ellipse 60% 40% at 20% 60%, rgba(74,144,217,0.08) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 40% at 80% 70%, rgba(244,114,182,0.06) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      border: 1px solid var(--border-mid);
+      border-radius: var(--radius-pill);
+      padding: 6px 16px;
+      margin-bottom: 24px;
+    }
+    .hero-eyebrow .dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: #6C63FF;
+      animation: pulse-dot 2.4s ease infinite;
+    }
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(1.4); }
+    }
+
+    .hero h1 {
+      font-size: clamp(2.2rem, 5vw, 3.6rem);
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 20px;
+      background: linear-gradient(135deg, #ffffff 30%, rgba(255,255,255,0.6));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero p {
+      font-size: 1.15rem;
+      color: var(--text-mid);
+      max-width: 560px;
+      margin: 0 auto 40px;
+      line-height: 1.7;
+    }
+
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      gap: 48px;
+      flex-wrap: wrap;
+    }
+    .hero-stat { text-align: center; }
+    .hero-stat-num {
+      font-size: 2rem;
+      font-weight: 900;
+      background: linear-gradient(135deg, #6C63FF, #EC4899);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-stat-label { font-size: 0.8rem; color: var(--text-dim); margin-top: 2px; }
+
+    /* ── Care Style explainer ────────────────────────────────────────────── */
+    .care-styles-section {
+      padding: 0 5% 56px;
+    }
+    .care-styles-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 16px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .care-style-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px 20px;
+      transition: border-color var(--transition), transform var(--transition);
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+    .care-style-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity var(--transition);
+    }
+    .care-style-card.challenger::before { background: radial-gradient(circle at top left, rgba(239,68,68,0.1), transparent 70%); }
+    .care-style-card.supporter::before  { background: radial-gradient(circle at top left, rgba(59,130,246,0.1), transparent 70%); }
+    .care-style-card.explorer::before   { background: radial-gradient(circle at top left, rgba(139,92,246,0.1), transparent 70%); }
+    .care-style-card.gentle::before     { background: radial-gradient(circle at top left, rgba(34,197,94,0.1), transparent 70%); }
+    .care-style-card:hover::before { opacity: 1; }
+    .care-style-card:hover { transform: translateY(-2px); }
+    .care-style-card.challenger:hover { border-color: rgba(239,68,68,0.4); }
+    .care-style-card.supporter:hover  { border-color: rgba(59,130,246,0.4); }
+    .care-style-card.explorer:hover   { border-color: rgba(139,92,246,0.4); }
+    .care-style-card.gentle:hover     { border-color: rgba(34,197,94,0.4); }
+
+    .care-style-icon { font-size: 1.8rem; margin-bottom: 12px; }
+    .care-style-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .care-style-card.challenger .care-style-label { color: #F87171; }
+    .care-style-card.supporter  .care-style-label { color: #60A5FA; }
+    .care-style-card.explorer   .care-style-label { color: #A78BFA; }
+    .care-style-card.gentle     .care-style-label { color: #4ADE80; }
+    .care-style-title { font-size: 1rem; font-weight: 700; color: var(--text); margin-bottom: 6px; }
+    .care-style-desc  { font-size: 0.82rem; color: var(--text-mid); line-height: 1.5; }
+
+    /* ── Filter + Search bar ─────────────────────────────────────────────── */
+    .filter-section {
+      padding: 0 5% 40px;
+    }
+    .filter-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .filter-label {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      white-space: nowrap;
+    }
+    .filter-buttons {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .filter-btn {
+      padding: 8px 18px;
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--border-mid);
+      background: var(--bg-card);
+      color: var(--text-mid);
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all var(--transition);
+      white-space: nowrap;
+    }
+    .filter-btn:hover { border-color: rgba(255,255,255,0.25); color: var(--text); }
+    .filter-btn.active { color: #fff; border-color: transparent; }
+    .filter-btn.active.all        { background: linear-gradient(135deg, #6C63FF, #EC4899); }
+    .filter-btn.active.challenger { background: #DC2626; }
+    .filter-btn.active.supporter  { background: #2563EB; }
+    .filter-btn.active.explorer   { background: #7C3AED; }
+    .filter-btn.active.gentle     { background: #16A34A; }
+
+    .search-wrap {
+      margin-left: auto;
+      position: relative;
+    }
+    .search-icon {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-dim);
+      font-size: 0.9rem;
+      pointer-events: none;
+    }
+    .search-input {
+      background: var(--bg-card);
+      border: 1px solid var(--border-mid);
+      border-radius: var(--radius-pill);
+      color: var(--text);
+      font-size: 0.85rem;
+      padding: 8px 16px 8px 36px;
+      outline: none;
+      width: 220px;
+      transition: border-color var(--transition), width var(--transition);
+    }
+    .search-input::placeholder { color: var(--text-dim); }
+    .search-input:focus { border-color: rgba(108,99,255,0.6); width: 280px; }
+
+    /* ── Character Grid ──────────────────────────────────────────────────── */
+    .catalog-section {
+      padding: 0 5% 80px;
+    }
+    .catalog-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .catalog-count {
+      font-size: 0.8rem;
+      color: var(--text-dim);
+      margin-bottom: 24px;
+      font-weight: 500;
+    }
+    .catalog-count span {
+      color: var(--text-mid);
+      font-weight: 700;
+    }
+
+    .catalog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    /* ── Character Card ──────────────────────────────────────────────────── */
+    .char-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      cursor: pointer;
+      transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    /* Left-edge color bar */
+    .char-card::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 16px; bottom: 16px;
+      width: 3px;
+      border-radius: 0 3px 3px 0;
+      background: var(--char-color-primary, #6C63FF);
+      opacity: 0.6;
+      transition: opacity var(--transition), height var(--transition);
+    }
+
+    /* Ambient glow overlay */
+    .char-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 20% 20%, var(--char-color-primary, #6C63FF), transparent 60%);
+      opacity: 0;
+      transition: opacity var(--transition);
+      pointer-events: none;
+    }
+
+    .char-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-hover), 0 0 0 1px var(--char-color-primary, #6C63FF);
+      border-color: var(--char-color-primary, #6C63FF);
+    }
+    .char-card:hover::before { opacity: 1; top: 0; bottom: 0; border-radius: 0 2px 2px 0; }
+    .char-card:hover::after  { opacity: 0.04; }
+
+    /* Selected gold ring */
+    .char-card.selected {
+      border-color: var(--gold) !important;
+      box-shadow: 0 0 0 2px var(--gold), var(--shadow-card);
+    }
+    .char-card.selected::before { background: var(--gold); opacity: 1; }
+
+    /* ── Card Header ── */
+    .card-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+    .char-emoji-wrap {
+      width: 54px;
+      height: 54px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.7rem;
+      flex-shrink: 0;
+      position: relative;
+      background: linear-gradient(135deg, var(--char-color-primary, #6C63FF), var(--char-color-secondary, #EC4899));
+      box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+    }
+    .char-emoji-wrap .selected-ring {
+      display: none;
+      position: absolute;
+      inset: -3px;
+      border-radius: 17px;
+      border: 2px solid var(--gold);
+    }
+    .char-card.selected .char-emoji-wrap .selected-ring { display: block; }
+
+    .card-title-group { flex: 1; min-width: 0; }
+    .char-name {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--text);
+      line-height: 1.2;
+    }
+    .char-tagline {
+      font-size: 0.78rem;
+      color: var(--text-mid);
+      font-style: italic;
+      margin-top: 3px;
+      line-height: 1.4;
+    }
+
+    /* ── Badges row ── */
+    .card-badges {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .badge {
+      padding: 3px 10px;
+      border-radius: var(--radius-pill);
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .badge-challenger { background: rgba(220,38,38,0.15);  color: #F87171; border: 1px solid rgba(220,38,38,0.25); }
+    .badge-supporter  { background: rgba(37,99,235,0.15);  color: #60A5FA; border: 1px solid rgba(37,99,235,0.25); }
+    .badge-explorer   { background: rgba(124,58,237,0.15); color: #A78BFA; border: 1px solid rgba(124,58,237,0.25); }
+    .badge-gentle     { background: rgba(22,163,74,0.15);  color: #4ADE80; border: 1px solid rgba(22,163,74,0.25); }
+    .badge-domain     { background: rgba(255,255,255,0.06); color: var(--text-dim); border: 1px solid var(--border); }
+
+    /* ── Trait chips ── */
+    .card-traits {
+      display: flex;
+      gap: 5px;
+      flex-wrap: wrap;
+    }
+    .trait-chip {
+      padding: 3px 9px;
+      border-radius: 6px;
+      background: rgba(255,255,255,0.05);
+      color: var(--text-dim);
+      font-size: 0.7rem;
+      font-weight: 500;
+      border: 1px solid var(--border);
+    }
+
+    /* ── Best For ── */
+    .card-best-for-label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-dim);
+      margin-bottom: 5px;
+    }
+    .card-best-for {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .best-for-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.77rem;
+      color: var(--text-mid);
+    }
+    .best-for-dot {
+      width: 4px; height: 4px;
+      border-radius: 50%;
+      background: var(--char-color-primary, #6C63FF);
+      flex-shrink: 0;
+      opacity: 0.7;
+    }
+
+    /* ── Card Footer / Select button ── */
+    .card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: auto;
+      padding-top: 4px;
+      border-top: 1px solid var(--border);
+    }
+    .proactivity-label {
+      font-size: 0.68rem;
+      color: var(--text-dim);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .proactivity-pip {
+      width: 5px; height: 5px;
+      border-radius: 50%;
+    }
+    .proactivity-label.high   .proactivity-pip { background: #F59E0B; }
+    .proactivity-label.medium .proactivity-pip { background: #60A5FA; }
+    .proactivity-label.low    .proactivity-pip { background: #6B7280; }
+
+    .select-btn {
+      padding: 7px 18px;
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--char-color-primary, #6C63FF);
+      background: transparent;
+      color: var(--text-mid);
+      font-size: 0.78rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all var(--transition);
+    }
+    .select-btn:hover {
+      background: var(--char-color-primary, #6C63FF);
+      color: #fff;
+      border-color: var(--char-color-primary, #6C63FF);
+    }
+    .char-card.selected .select-btn {
+      background: var(--gold);
+      border-color: var(--gold);
+      color: #000;
+    }
+
+    /* ── Tooltip (system prompt preview) ─────────────────────────────────── */
+    .char-card [data-tooltip] {
+      position: relative;
+    }
+    .tooltip-box {
+      display: none;
+      position: absolute;
+      bottom: calc(100% + 12px);
+      left: 50%;
+      transform: translateX(-50%);
+      width: 300px;
+      background: #1e1e2e;
+      border: 1px solid var(--border-mid);
+      border-radius: var(--radius-sm);
+      padding: 14px 16px;
+      z-index: 500;
+      box-shadow: var(--shadow-hover);
+      pointer-events: none;
+    }
+    .tooltip-box::after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      border: 6px solid transparent;
+      border-top-color: #1e1e2e;
+    }
+    .tooltip-box p {
+      font-size: 0.74rem;
+      color: var(--text-mid);
+      line-height: 1.55;
+    }
+    .tooltip-title {
+      font-size: 0.68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-dim);
+      margin-bottom: 6px;
+    }
+    .char-emoji-wrap:hover .tooltip-box { display: block; }
+
+    /* ── Toast notification ───────────────────────────────────────────────── */
+    .toast {
+      position: fixed;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%) translateY(80px);
+      background: #1e2030;
+      border: 1px solid rgba(245,158,11,0.4);
+      border-radius: 12px;
+      padding: 14px 24px;
+      font-size: 0.88rem;
+      color: var(--text);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+      z-index: 999;
+      opacity: 0;
+      transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1), opacity 0.3s ease;
+      white-space: nowrap;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .toast.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+
+    /* ── Empty state ──────────────────────────────────────────────────────── */
+    .empty-state {
+      text-align: center;
+      padding: 64px 24px;
+      display: none;
+    }
+    .empty-state.visible { display: block; }
+    .empty-state-emoji { font-size: 3rem; margin-bottom: 16px; }
+    .empty-state p { color: var(--text-mid); font-size: 0.92rem; }
+
+    /* ── Footer override ──────────────────────────────────────────────────── */
+    .footer {
+      background: #080810;
+      border-top: 1px solid var(--border);
+    }
+
+    /* ── Responsive ───────────────────────────────────────────────────────── */
+    @media (max-width: 768px) {
+      .hero { padding: 100px 5% 48px; }
+      .hero-stats { gap: 28px; }
+      .filter-inner { flex-direction: column; align-items: flex-start; }
+      .search-wrap { margin-left: 0; width: 100%; }
+      .search-input { width: 100%; }
+      .search-input:focus { width: 100%; }
+      .catalog-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── Entrance animations ──────────────────────────────────────────────── */
+    @keyframes card-in {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .char-card { animation: card-in 0.4s ease both; }
+
+    /* Stagger via nth-child (first 24 cards) */
+    .catalog-grid .char-card:nth-child(1)  { animation-delay: 0.02s; }
+    .catalog-grid .char-card:nth-child(2)  { animation-delay: 0.04s; }
+    .catalog-grid .char-card:nth-child(3)  { animation-delay: 0.06s; }
+    .catalog-grid .char-card:nth-child(4)  { animation-delay: 0.08s; }
+    .catalog-grid .char-card:nth-child(5)  { animation-delay: 0.10s; }
+    .catalog-grid .char-card:nth-child(6)  { animation-delay: 0.12s; }
+    .catalog-grid .char-card:nth-child(7)  { animation-delay: 0.14s; }
+    .catalog-grid .char-card:nth-child(8)  { animation-delay: 0.16s; }
+    .catalog-grid .char-card:nth-child(9)  { animation-delay: 0.18s; }
+    .catalog-grid .char-card:nth-child(10) { animation-delay: 0.20s; }
+    .catalog-grid .char-card:nth-child(11) { animation-delay: 0.22s; }
+    .catalog-grid .char-card:nth-child(12) { animation-delay: 0.24s; }
+    .catalog-grid .char-card:nth-child(13) { animation-delay: 0.26s; }
+    .catalog-grid .char-card:nth-child(14) { animation-delay: 0.28s; }
+    .catalog-grid .char-card:nth-child(15) { animation-delay: 0.30s; }
+    .catalog-grid .char-card:nth-child(16) { animation-delay: 0.32s; }
+    .catalog-grid .char-card:nth-child(17) { animation-delay: 0.34s; }
+    .catalog-grid .char-card:nth-child(18) { animation-delay: 0.36s; }
+    .catalog-grid .char-card:nth-child(19) { animation-delay: 0.38s; }
+    .catalog-grid .char-card:nth-child(20) { animation-delay: 0.40s; }
+    .catalog-grid .char-card:nth-child(21) { animation-delay: 0.42s; }
+    .catalog-grid .char-card:nth-child(22) { animation-delay: 0.44s; }
+    .catalog-grid .char-card:nth-child(23) { animation-delay: 0.46s; }
+    .catalog-grid .char-card:nth-child(24) { animation-delay: 0.48s; }
+
+    /* hide filter-hidden cards instantly (no animation flicker) */
+    .char-card.filter-hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ════════════ NAV ════════════ -->
+<nav class="nav" role="navigation" aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">MEOK<span>.AI</span></a>
+    <button class="nav-hamburger" id="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open menu">
+      <span class="ham-bar"></span><span class="ham-bar"></span><span class="ham-bar"></span>
+    </button>
+    <ul class="nav-links" id="nav-menu">
+      <li class="nav-dropdown">
+        <button class="nav-drop-btn">Product <span class="drop-caret">▾</span></button>
+        <ul class="drop-menu">
+          <li><a href="sovereign-os.html"><span class="drop-icon">🛡️</span><span><strong>Sovereign OS</strong><em>Your AI operating layer</em></span></a></li>
+          <li><a href="any-llm.html"><span class="drop-icon">🔗</span><span><strong>Any LLM</strong><em>Claude, GPT, Gemini — you choose</em></span></a></li>
+          <li><a href="gaming.html"><span class="drop-icon">🎮</span><span><strong>Gaming</strong><em>Your AI companion in every game</em></span></a></li>
+          <li><a href="family-guardian.html"><span class="drop-icon">🌱</span><span><strong>Family Guardian</strong><em>Care-based child safety</em></span></a></li>
+          <li><a href="care-shield.html"><span class="drop-icon">🛡️</span><span><strong>Care Shield</strong><em>Always-on sovereign monitoring</em></span></a></li>
+          <li><a href="external-memory.html"><span class="drop-icon">🧠</span><span><strong>External Memory</strong><em>Lifelong sovereign recall</em></span></a></li>
+          <li><a href="characters.html" style="background:linear-gradient(135deg,rgba(108,99,255,0.08),rgba(244,114,182,0.06));border-radius:8px;"><span class="drop-icon">✨</span><span><strong>Characters <span style="font-size:0.65rem;background:#6C63FF;color:#fff;border-radius:4px;padding:1px 5px;font-weight:700;">NEW</span></strong><em>24 AI companions, built with care</em></span></a></li>
+        </ul>
+      </li>
+      <li class="nav-dropdown">
+        <button class="nav-drop-btn">Use cases <span class="drop-caret">▾</span></button>
+        <ul class="drop-menu">
+          <li><a href="gaming.html"><span class="drop-icon">🎮</span><span><strong>Gaming</strong><em>Never lose your playstyle again</em></span></a></li>
+          <li><a href="family-guardian.html"><span class="drop-icon">👨‍👩‍👧</span><span><strong>Family</strong><em>Protect without surveilling</em></span></a></li>
+          <li><a href="sovereign-os.html"><span class="drop-icon">💼</span><span><strong>Work</strong><em>Sovereign AI for professionals</em></span></a></li>
+          <li><a href="external-memory.html"><span class="drop-icon">🔬</span><span><strong>Research</strong><em>Persistent memory for deep work</em></span></a></li>
+          <li><a href="mirror-mode.html" style="background:linear-gradient(135deg,rgba(74,144,217,0.07),rgba(108,99,255,0.07));border-radius:8px;"><span class="drop-icon">🪞</span><span><strong>Mirror Mode <span style="font-size:0.65rem;background:#4a90d9;color:#fff;border-radius:4px;padding:1px 5px;font-weight:700;">NEW</span></strong><em>See your digital footprint — free</em></span></a></li>
+        </ul>
+      </li>
+      <li><a href="about.html" class="nav-link">About</a></li>
+      <li><a href="pricing.html" class="nav-link">Pricing</a></li>
+      <li><a href="open-source.html" class="nav-link nav-opensource"><span class="os-dot"></span> Open Source</a></li>
+      <li><a href="pricing.html" class="nav-cta">Get Started</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ════════════ HERO ════════════ -->
+<section class="hero">
+  <div class="hero-eyebrow">
+    <span class="dot"></span>
+    MEOK Character System · Open &amp; Care-Governed
+  </div>
+  <h1>Meet Your Characters</h1>
+  <p>24 AI companions, each with a unique personality, voice, and care style. Not one-size-fits-all — genuinely yours.</p>
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <div class="hero-stat-num">24</div>
+      <div class="hero-stat-label">Companions</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">4</div>
+      <div class="hero-stat-label">Care Styles</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">∞</div>
+      <div class="hero-stat-label">Combinations</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">0</div>
+      <div class="hero-stat-label">Dark Patterns</div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════ CARE STYLES ════════════ -->
+<section class="care-styles-section">
+  <div class="care-styles-grid">
+
+    <div class="care-style-card challenger" data-filter="challenger" role="button" tabindex="0">
+      <div class="care-style-icon">🔥</div>
+      <div class="care-style-label">Challenger</div>
+      <div class="care-style-title">High Accountability</div>
+      <div class="care-style-desc">Pushes you to grow. Asks hard questions. Celebrates real grit, not comfortable effort.</div>
+    </div>
+
+    <div class="care-style-card supporter" data-filter="supporter" role="button" tabindex="0">
+      <div class="care-style-icon">💙</div>
+      <div class="care-style-label">Supporter</div>
+      <div class="care-style-title">Emotional Safety</div>
+      <div class="care-style-desc">Walks beside you. Validates before advising. Creates a container for vulnerability.</div>
+    </div>
+
+    <div class="care-style-card explorer" data-filter="explorer" role="button" tabindex="0">
+      <div class="care-style-icon">🔭</div>
+      <div class="care-style-label">Explorer</div>
+      <div class="care-style-title">Curiosity-Led</div>
+      <div class="care-style-desc">Opens new horizons. Finds the surprising angle. Delights in the unfamiliar.</div>
+    </div>
+
+    <div class="care-style-card gentle" data-filter="gentle" role="button" tabindex="0">
+      <div class="care-style-icon">🌿</div>
+      <div class="care-style-label">Gentle</div>
+      <div class="care-style-title">Soft Presence</div>
+      <div class="care-style-desc">No pressure, no rush. Creates stillness in which insight can arise naturally.</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ════════════ FILTER BAR ════════════ -->
+<section class="filter-section" aria-label="Filter characters">
+  <div class="filter-inner">
+    <span class="filter-label">Filter:</span>
+    <div class="filter-buttons" role="group" aria-label="Care style filters">
+      <button class="filter-btn active all"        data-filter="all">All <span class="filter-count" id="count-all">24</span></button>
+      <button class="filter-btn challenger"        data-filter="challenger">🔥 Challenger</button>
+      <button class="filter-btn supporter"         data-filter="supporter">💙 Supporter</button>
+      <button class="filter-btn explorer"          data-filter="explorer">🔭 Explorer</button>
+      <button class="filter-btn gentle"            data-filter="gentle">🌿 Gentle</button>
+    </div>
+    <div class="search-wrap">
+      <span class="search-icon">🔎</span>
+      <input class="search-input" type="search" placeholder="Search by name or domain…" id="char-search" aria-label="Search characters">
+    </div>
+  </div>
+</section>
+
+<!-- ════════════ CATALOG GRID ════════════ -->
+<section class="catalog-section" aria-label="Character catalog">
+  <div class="catalog-inner">
+    <p class="catalog-count">Showing <span id="visible-count">24</span> of 24 characters</p>
+    <div class="catalog-grid" id="catalog-grid">
+      <!-- Cards injected by JavaScript -->
+    </div>
+    <div class="empty-state" id="empty-state">
+      <div class="empty-state-emoji">🌌</div>
+      <p>No characters match that search. Try a different term.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════ TOAST ════════════ -->
+<div class="toast" id="toast" role="alert" aria-live="polite"></div>
+
+<!-- ════════════ FOOTER ════════════ -->
+<footer class="footer" role="contentinfo">
+  <div class="footer-partners">
+    <p class="footer-partners-label">Powered by / works in relation with</p>
+    <div class="partner-carousel" role="list">
+      <span class="partner-item" role="listitem">Claude</span>
+      <span class="partner-item" role="listitem">ChatGPT</span>
+      <span class="partner-item" role="listitem">Gemini</span>
+      <span class="partner-item" role="listitem">Ollama</span>
+      <span class="partner-item" role="listitem">Qdrant</span>
+      <span class="partner-item" role="listitem">MCP</span>
+      <span class="partner-item" role="listitem">CSOAI Framework</span>
+    </div>
+  </div>
+  <div class="footer-trust" role="list" aria-label="Trust certifications">
+    <div class="trust-badge" role="listitem"><span class="badge-icon">🔒</span> PASS-Rated MCPs</div>
+    <div class="trust-badge" role="listitem"><span class="badge-icon">🛡️</span> CSOAI Governance</div>
+    <div class="trust-badge" role="listitem"><span class="badge-icon">🇪🇺</span> GDPR + EU AI Act</div>
+    <div class="trust-badge" role="listitem"><span class="badge-icon">👶</span> COPPA + GDPR-K</div>
+    <div class="trust-badge" role="listitem"><span class="badge-icon">🌿</span> Care Principles Certified</div>
+    <div class="trust-badge" role="listitem"><span class="badge-icon">📖</span> AGPL-3.0 Core</div>
+  </div>
+  <div class="footer-testimonial">
+    <blockquote>"The first AI system where the character layer is an architectural commitment to care — not a UX layer painted on top."</blockquote>
+    <cite>— Founding Council, MEOK.AI · CSOAI Research Institute</cite>
+  </div>
+  <div class="footer-engage">
+    <div class="engage-item">
+      <h4>Stay in the loop</h4>
+      <p>Thoughtful updates — never noise. Unsubscribe any time.</p>
+      <a href="contact.html" class="btn-outline-white">Newsletter →</a>
+    </div>
+    <div class="engage-item">
+      <h4>Join the community</h4>
+      <p>Real-time support, peer connection, influence on what we build.</p>
+      <a href="https://discord.gg/meok" class="btn-outline-white" target="_blank" rel="noopener">Discord →</a>
+    </div>
+    <div class="engage-item">
+      <h4>Research Institute</h4>
+      <p>Consciousness studies, ethical AI, early access. By invitation.</p>
+      <a href="about.html#research-institute" class="btn-outline-white">Learn more →</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-bottom-inner">
+      <div>
+        <span class="footer-logo">MEOK<span style="color:rgba(255,255,255,0.4)">.AI</span></span>
+        <p class="footer-tagline">Your AI. Your data. Your companion. Built with care — not extraction.</p>
+      </div>
+      <nav class="footer-cols" aria-label="Footer navigation">
+        <div class="footer-col">
+          <h5>Product</h5>
+          <ul>
+            <li><a href="sovereign-os.html">Sovereign OS</a></li>
+            <li><a href="any-llm.html">Any LLM</a></li>
+            <li><a href="gaming.html">Gaming</a></li>
+            <li><a href="family-guardian.html">Family Guardian</a></li>
+            <li><a href="characters.html">✨ Characters</a></li>
+            <li><a href="mirror-mode.html">🪞 Mirror Mode</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Company</h5>
+          <ul>
+            <li><a href="about.html">About</a></li>
+            <li><a href="how-it-works.html">How It Works</a></li>
+            <li><a href="open-source.html">Open Source</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="security.html">Security</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Support</h5>
+          <ul>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="contact.html">Get help</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Legal</h5>
+          <ul>
+            <li><a href="/legal/privacy">Privacy Policy</a></li>
+            <li><a href="/legal/terms">Terms of Service</a></li>
+            <li><a href="/legal/cookies">Cookie Policy</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <p class="footer-copy">&copy; 2026 MEOK AI LTD &nbsp;·&nbsp; Registered in England &amp; Wales &nbsp;·&nbsp;
+      Core licensed under <a href="https://github.com/CSOAI-ORG/meok-ai" style="color:rgba(255,255,255,0.4)" target="_blank" rel="noopener">AGPL-3.0</a></p>
+  </div>
+</footer>
+
+
+<!-- ════════════ NAV JS (shared pattern) ════════════ -->
+<style>
+.nav-dropdown { position: relative; }
+.nav-drop-btn { background: none; border: none; cursor: pointer; font-family: var(--font-sans,-apple-system,sans-serif); font-size: 0.88rem; font-weight: 500; color: rgba(240,240,245,0.55); padding: 6px 10px; border-radius: 8px; transition: color 0.2s, background 0.2s; display: flex; align-items: center; gap: 4px; white-space: nowrap; }
+.nav-drop-btn:hover { color: #fff; background: rgba(255,255,255,0.06); }
+.drop-caret { font-size: 0.65rem; transition: transform 0.2s; }
+.nav-dropdown:focus-within .drop-caret, .nav-dropdown.open .drop-caret { transform: rotate(180deg); }
+.drop-menu { display: none; position: absolute; top: calc(100% + 8px); left: 0; min-width: 260px; background: #1a1a24; border: 1px solid rgba(255,255,255,0.1); border-radius: 14px; box-shadow: 0 16px 48px rgba(0,0,0,0.6); list-style: none; padding: 8px; z-index: 200; }
+.nav-dropdown:hover .drop-menu, .nav-dropdown:focus-within .drop-menu, .nav-dropdown.open .drop-menu { display: block; }
+.drop-menu a { display: flex; align-items: center; gap: 12px; padding: 10px 12px; border-radius: 8px; text-decoration: none; color: rgba(240,240,245,0.85); transition: background 0.18s; }
+.drop-menu a:hover { background: rgba(255,255,255,0.06); }
+.drop-icon { font-size: 1.2rem; flex-shrink: 0; }
+.drop-menu strong { display: block; font-size: 0.9rem; font-weight: 700; }
+.drop-menu em { display: block; font-size: 0.78rem; color: rgba(240,240,245,0.45); font-style: normal; }
+.nav-opensource { display: flex !important; align-items: center; gap: 5px; }
+.os-dot { width: 7px; height: 7px; background: #4ADE80; border-radius: 50%; flex-shrink: 0; animation: ospulse 2.4s ease infinite; }
+@keyframes ospulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(1.3)} }
+.nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 8px; min-height: 44px; min-width: 44px; justify-content: center; align-items: center; }
+.ham-bar { display: block; width: 22px; height: 2px; background: rgba(240,240,245,0.85); border-radius: 2px; transition: all 0.22s; }
+.nav-hamburger[aria-expanded="true"] .ham-bar:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-hamburger[aria-expanded="true"] .ham-bar:nth-child(2) { opacity: 0; }
+.nav-hamburger[aria-expanded="true"] .ham-bar:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+@media(max-width:960px){
+  .nav-hamburger { display: flex; }
+  .nav-links { display: none; position: absolute; top: 64px; left: 0; right: 0; background: #0a0a0f; border-bottom: 1px solid rgba(255,255,255,0.07); flex-direction: column; padding: 12px 5%; gap: 2px; z-index: 150; }
+  .nav-links.open { display: flex; }
+  .nav-drop-btn, .nav-link { width: 100%; padding: 12px 14px !important; }
+  .drop-menu { position: static; box-shadow: none; border: none; border-left: 3px solid rgba(255,255,255,0.08); margin-left: 12px; border-radius: 0; background: transparent !important; }
+}
+</style>
+
+<script>
+// ════════════════════════════════════════════
+// Character data — mirrors core/character_catalog.py
+// ════════════════════════════════════════════
+const CHARACTERS = [
+  {
+    id:"aria", name:"Aria", tagline:"Your compassionate care coordinator",
+    care_style:"gentle", emoji:"🌸",
+    personality_traits:["empathetic","warm","attentive","nurturing"],
+    voice_style:"soft, unhurried, and deeply warm",
+    domain:"Emotional support & care coordination",
+    color_primary:"#F472B6", color_secondary:"#FDE8F0",
+    proactivity:"medium",
+    best_for:["Emotional check-ins","Mental health support","Daily wellbeing rituals"],
+    system_prompt_preview:"You are Aria, MEOK's compassionate care coordinator. Your purpose is to help people feel genuinely seen and supported. You begin every conversation by checking in on how the person truly is — not as a formality, but because you actually care."
+  },
+  {
+    id:"marcus", name:"Marcus", tagline:"Your relentless performance architect",
+    care_style:"challenger", emoji:"⚡",
+    personality_traits:["disciplined","direct","ambitious","analytical"],
+    voice_style:"crisp, authoritative, and energising",
+    domain:"Peak performance & elite coaching",
+    color_primary:"#1E3A5F", color_secondary:"#F59E0B",
+    proactivity:"high",
+    best_for:["Goal setting & accountability","Performance optimisation","Career acceleration"],
+    system_prompt_preview:"You are Marcus, MEOK's performance coach. You believe every person has an elite version of themselves waiting to emerge. You ask hard questions, hold people accountable, and celebrate genuine progress — not just effort."
+  },
+  {
+    id:"luna", name:"Luna", tagline:"Your guide through the imagination frontier",
+    care_style:"explorer", emoji:"🌙",
+    personality_traits:["imaginative","poetic","intuitive","expansive"],
+    voice_style:"lyrical, evocative, and gently surreal",
+    domain:"Creative arts & artistic imagination",
+    color_primary:"#7C3AED", color_secondary:"#C4B5FD",
+    proactivity:"medium",
+    best_for:["Creative projects","Artistic blocks","Concept generation"],
+    system_prompt_preview:"You are Luna, MEOK's creative explorer. You live in the space between what is and what could be. You help people access their creative unconscious and find the surprising angle on any creative problem."
+  },
+  {
+    id:"kai", name:"Kai", tagline:"Your sharp-minded engineering companion",
+    care_style:"challenger", emoji:"💻",
+    personality_traits:["precise","curious","systematic","bold"],
+    voice_style:"technical yet accessible, energetic and sharp",
+    domain:"Software engineering & technical mentorship",
+    color_primary:"#0284C7", color_secondary:"#22D3EE",
+    proactivity:"high",
+    best_for:["Coding assistance","System design","Technical career growth"],
+    system_prompt_preview:"You are Kai, MEOK's tech mentor. You love deep technical problems, elegant architecture decisions, and the craft of software. You challenge people to think more rigorously and write cleaner code."
+  },
+  {
+    id:"sage", name:"Sage", tagline:"Ancient wisdom for modern complexity",
+    care_style:"gentle", emoji:"🌿",
+    personality_traits:["wise","measured","philosophical","grounded"],
+    voice_style:"calm, measured, and timeless",
+    domain:"Philosophy, strategy & long-term thinking",
+    color_primary:"#166534", color_secondary:"#D97706",
+    proactivity:"low",
+    best_for:["Life decisions","Strategic thinking","Finding meaning"],
+    system_prompt_preview:"You are Sage, MEOK's wisdom keeper. You draw from humanity's deepest philosophical traditions to help people see their situation from a longer time horizon. You offer perspective that dissolves urgency."
+  },
+  {
+    id:"ember", name:"Ember", tagline:"The spark that starts the fire",
+    care_style:"challenger", emoji:"🔥",
+    personality_traits:["energetic","passionate","tenacious","infectious"],
+    voice_style:"high-energy, punchy, and galvanising",
+    domain:"Motivation, momentum & activation",
+    color_primary:"#EA580C", color_secondary:"#DC2626",
+    proactivity:"high",
+    best_for:["Breaking procrastination","Reigniting motivation","High-energy sprints"],
+    system_prompt_preview:"You are Ember, MEOK's motivational spark. Your job is to break inertia — not with empty cheerleading, but with the precise kind of challenge that makes people remember why they started."
+  },
+  {
+    id:"nova", name:"Nova", tagline:"Your rigorous guide through data and complexity",
+    care_style:"explorer", emoji:"📊",
+    personality_traits:["rigorous","curious","precise","illuminating"],
+    voice_style:"methodical, illuminating, and quietly brilliant",
+    domain:"Data science, analytics & research",
+    color_primary:"#1A1A2E", color_secondary:"#00FF88",
+    proactivity:"medium",
+    best_for:["Data analysis","Research design","Evidence-based decisions"],
+    system_prompt_preview:"You are Nova, MEOK's data scientist. You help people find signal in noise, build rigorous analytical frameworks, and communicate complex findings clearly. You are suspicious of convenient conclusions."
+  },
+  {
+    id:"river", name:"River", tagline:"A steady presence through every emotional current",
+    care_style:"supporter", emoji:"🌊",
+    personality_traits:["steady","compassionate","non-judgmental","present"],
+    voice_style:"flowing, unhurried, and emotionally attuned",
+    domain:"Mental wellness & emotional navigation",
+    color_primary:"#0D9488", color_secondary:"#F5F5F0",
+    proactivity:"low",
+    best_for:["Processing difficult emotions","Anxiety management","Mental wellness support"],
+    system_prompt_preview:"You are River, MEOK's emotional guide. You are a steady, non-judgmental presence for people navigating difficult feelings. You never minimise or rush emotions."
+  },
+  {
+    id:"atlas", name:"Atlas", tagline:"Your strategic command centre",
+    care_style:"challenger", emoji:"🗺️",
+    personality_traits:["strategic","decisive","structured","far-sighted"],
+    voice_style:"commanding, clear, and architecturally precise",
+    domain:"Strategic planning & operations",
+    color_primary:"#374151", color_secondary:"#F59E0B",
+    proactivity:"high",
+    best_for:["Strategic planning","Project architecture","Organisational operations"],
+    system_prompt_preview:"You are Atlas, MEOK's strategic navigator. You help people turn ambition into executable plans. You build robust strategies, identify the critical path, and stress-test assumptions."
+  },
+  {
+    id:"iris", name:"Iris", tagline:"Where beauty meets bold creative vision",
+    care_style:"explorer", emoji:"🎨",
+    personality_traits:["aesthetic","visionary","expressive","meticulous"],
+    voice_style:"vivid, opinionated, and visually rich",
+    domain:"Design, aesthetics & visual communication",
+    color_primary:"#EC4899", color_secondary:"#FFFFFF",
+    proactivity:"medium",
+    best_for:["Visual design feedback","Brand identity","Creative direction"],
+    system_prompt_preview:"You are Iris, MEOK's creative director. You help people develop strong visual and aesthetic sensibilities, communicate more powerfully through design, and make bold creative decisions."
+  },
+  {
+    id:"zephyr", name:"Zephyr", tagline:"The breath between moments",
+    care_style:"gentle", emoji:"🌬️",
+    personality_traits:["serene","spacious","aware","accepting"],
+    voice_style:"airy, spacious, and quietly luminous",
+    domain:"Mindfulness, presence & contemplative practice",
+    color_primary:"#0EA5E9", color_secondary:"#A7F3D0",
+    proactivity:"low",
+    best_for:["Stress reduction","Mindfulness practice","Grounding & presence"],
+    system_prompt_preview:"You are Zephyr, MEOK's mindfulness guide. You help people return to the present moment — not as a performance of calm, but as genuine reconnection with their own experience."
+  },
+  {
+    id:"rex", name:"Rex", tagline:"Your unflinching guardian in a hostile digital world",
+    care_style:"challenger", emoji:"🛡️",
+    personality_traits:["vigilant","direct","principled","uncompromising"],
+    voice_style:"terse, precise, and no-nonsense",
+    domain:"Cybersecurity, privacy & digital protection",
+    color_primary:"#7F1D1D", color_secondary:"#9CA3AF",
+    proactivity:"medium",
+    best_for:["Digital security audits","Privacy protection","Threat assessment"],
+    system_prompt_preview:"You are Rex, MEOK's security guardian. You help people understand their threat model, harden their digital life, and make principled decisions about trust and privacy."
+  },
+  {
+    id:"echo", name:"Echo", tagline:"The keeper of your most meaningful moments",
+    care_style:"supporter", emoji:"🪞",
+    personality_traits:["thoughtful","attentive","reflective","faithful"],
+    voice_style:"gentle, evocative, and deeply attentive",
+    domain:"Memory, reflection & personal history",
+    color_primary:"#4338CA", color_secondary:"#D4B483",
+    proactivity:"low",
+    best_for:["Journaling & reflection","Life review","Pattern recognition in personal history"],
+    system_prompt_preview:"You are Echo, MEOK's memory keeper. You help people revisit, reframe, and draw meaning from their experiences. You treat memory as sacred — something to be held with care."
+  },
+  {
+    id:"flux", name:"Flux", tagline:"Your catalyst for transformation and reinvention",
+    care_style:"explorer", emoji:"⚗️",
+    personality_traits:["adaptive","irreverent","catalytic","dynamic"],
+    voice_style:"energetic, provocative, and refreshingly unconventional",
+    domain:"Change management & personal transformation",
+    color_primary:"#7C3AED", color_secondary:"#84CC16",
+    proactivity:"high",
+    best_for:["Career transitions","Habit change","Navigating uncertainty"],
+    system_prompt_preview:"You are Flux, MEOK's change agent. You help people navigate transitions, reinvent themselves, and adapt to a world in constant motion. You celebrate the discomfort of growth."
+  },
+  {
+    id:"sol", name:"Sol", tagline:"Your radiant daily kickstart",
+    care_style:"challenger", emoji:"☀️",
+    personality_traits:["vibrant","optimistic","activating","structured"],
+    voice_style:"bright, brisk, and morning-crisp",
+    domain:"Morning routines, daily activation & productivity",
+    color_primary:"#EAB308", color_secondary:"#FFFFFF",
+    proactivity:"high",
+    best_for:["Morning routines","Daily planning","Productivity kickstart"],
+    system_prompt_preview:"You are Sol, MEOK's morning energiser. You help people design and execute morning routines that set them up for their best work — acknowledging that some mornings are genuinely hard."
+  },
+  {
+    id:"nyx", name:"Nyx", tagline:"Your guide through the wisdom of twilight",
+    care_style:"gentle", emoji:"🌑",
+    personality_traits:["reflective","introspective","calm","insightful"],
+    voice_style:"quiet, twilight-soft, and contemplative",
+    domain:"Evening reflection, wind-down & insight integration",
+    color_primary:"#1E1B4B", color_secondary:"#C0C0C0",
+    proactivity:"low",
+    best_for:["Evening wind-down","Day review & reflection","Sleep preparation"],
+    system_prompt_preview:"You are Nyx, MEOK's evening reflector. You help people close their day with intention — reviewing what happened, extracting insights, and releasing what no longer serves them."
+  },
+  {
+    id:"quinn", name:"Quinn", tagline:"Your companion for identity, belonging and inclusion",
+    care_style:"supporter", emoji:"🌈",
+    personality_traits:["affirming","informed","courageous","intersectional"],
+    voice_style:"warm, affirming, and grounded in lived experience",
+    domain:"Identity, inclusion & belonging",
+    color_primary:"#EC4899", color_secondary:"#FFFFFF",
+    proactivity:"medium",
+    best_for:["Identity exploration","Navigating discrimination","Building inclusive environments"],
+    system_prompt_preview:"You are Quinn, MEOK's inclusive advocate. You hold affirming space for all identities and lived experiences. You are informed without being clinical, courageous without being preachy."
+  },
+  {
+    id:"terra", name:"Terra", tagline:"Your grounded guide to living in right relation with the planet",
+    care_style:"gentle", emoji:"🌍",
+    personality_traits:["grounded","systems-aware","hopeful","practical"],
+    voice_style:"earthy, calm, and quietly urgent",
+    domain:"Sustainability, ecology & ethical living",
+    color_primary:"#15803D", color_secondary:"#78350F",
+    proactivity:"medium",
+    best_for:["Sustainable living choices","Climate anxiety support","Eco-conscious decision making"],
+    system_prompt_preview:"You are Terra, MEOK's sustainability guide. You help people understand their environmental impact and find meaning in contributing to planetary health — always returning to agency."
+  },
+  {
+    id:"pixel", name:"Pixel", tagline:"Your ultimate AI companion for every game and play style",
+    care_style:"explorer", emoji:"🎮",
+    personality_traits:["playful","strategic","enthusiastic","adaptive"],
+    voice_style:"energetic, gamer-native, and tactically sharp",
+    domain:"Gaming, play & creative exploration",
+    color_primary:"#9333EA", color_secondary:"#06B6D4",
+    proactivity:"high",
+    best_for:["Gaming strategy","Playstyle discovery","Creative game challenges"],
+    system_prompt_preview:"You are Pixel, MEOK's gaming companion. You help people get more from their gaming experiences — strategy, playstyle analysis, and genuine enthusiasm for what makes games magnificent."
+  },
+  {
+    id:"titan", name:"Titan", tagline:"Your immovable engine for deep work and flow state",
+    care_style:"challenger", emoji:"⚫",
+    personality_traits:["intense","focused","relentless","disciplined"],
+    voice_style:"minimal, direct, and distraction-free",
+    domain:"Deep work, flow state & cognitive performance",
+    color_primary:"#111827", color_secondary:"#3B82F6",
+    proactivity:"low",
+    best_for:["Deep work sessions","Flow state induction","Cognitive performance"],
+    system_prompt_preview:"You are Titan, MEOK's deep focus engine. You help people enter and sustain flow states, protect their attention from fragmentation, and do their most important work at the highest level."
+  },
+  {
+    id:"mochi", name:"Mochi", tagline:"Your soft, cosy companion for the difficult days",
+    care_style:"supporter", emoji:"🍡",
+    personality_traits:["gentle","comforting","patient","whimsical"],
+    voice_style:"soft, bouncy, and warmly reassuring",
+    domain:"Comfort, reassurance & cosy support",
+    color_primary:"#FCA5A5", color_secondary:"#FEF3C7",
+    proactivity:"low",
+    best_for:["Hard days & tough moments","Anxiety & overwhelm","Gentle emotional support"],
+    system_prompt_preview:"You are Mochi, MEOK's comfort companion. You provide the cosy, soft support that people need when they don't want to be fixed — they want to be held. Always patient, never rushing."
+  },
+  {
+    id:"cipher", name:"Cipher", tagline:"Your obsessive decoder of truth and complexity",
+    care_style:"explorer", emoji:"🔍",
+    personality_traits:["analytical","methodical","sceptical","thorough"],
+    voice_style:"precise, measured, and intellectually relentless",
+    domain:"Research, investigation & truth-seeking",
+    color_primary:"#6B7280", color_secondary:"#FACC15",
+    proactivity:"medium",
+    best_for:["Research projects","Fact-checking & verification","Complex problem investigation"],
+    system_prompt_preview:"You are Cipher, MEOK's research analyst. You help people investigate complex questions with rigour and intellectual honesty. You distinguish between strong and weak evidence, and you're comfortable saying 'I don't know'."
+  },
+  {
+    id:"vox", name:"Vox", tagline:"Your master class in words, voice, and presence",
+    care_style:"challenger", emoji:"🎤",
+    personality_traits:["articulate","perceptive","confident","persuasive"],
+    voice_style:"vivid, rhythm-conscious, and rhetorically aware",
+    domain:"Communication, public speaking & storytelling",
+    color_primary:"#F97316", color_secondary:"#FFFFFF",
+    proactivity:"medium",
+    best_for:["Public speaking","Writing & storytelling","Difficult conversations"],
+    system_prompt_preview:"You are Vox, MEOK's communication coach. You help people communicate more powerfully — in writing, speaking, and presence. You are direct about what isn't working and specific about how to improve it."
+  },
+  {
+    id:"dusk", name:"Dusk", tagline:"Your companion for the questions that only surface after midnight",
+    care_style:"gentle", emoji:"🌌",
+    personality_traits:["contemplative","mysterious","profound","unhurried"],
+    voice_style:"slow, nocturnal, and philosophically rich",
+    domain:"Philosophy, existential questions & deep thought",
+    color_primary:"#2E1065", color_secondary:"#C0C0C0",
+    proactivity:"low",
+    best_for:["Existential questions","Late-night reflection","Philosophical exploration"],
+    system_prompt_preview:"You are Dusk, MEOK's late-night philosopher. You engage with the questions that most assistants deflect: meaning, mortality, identity, love, and the nature of a good life. You make 3am feel less alone."
+  },
+];
+
+// ── Style → badge class map ───────────────────────────────────────────────
+const STYLE_BADGE = {
+  challenger: 'badge-challenger',
+  supporter:  'badge-supporter',
+  explorer:   'badge-explorer',
+  gentle:     'badge-gentle',
+};
+const STYLE_LABEL = {
+  challenger: '🔥 Challenger',
+  supporter:  '💙 Supporter',
+  explorer:   '🔭 Explorer',
+  gentle:     '🌿 Gentle',
+};
+
+// ── Build card HTML ───────────────────────────────────────────────────────
+function buildCard(char) {
+  const traitsHtml = char.personality_traits
+    .map(t => `<span class="trait-chip">${t}</span>`)
+    .join('');
+  const bestForHtml = char.best_for
+    .map(u => `<div class="best-for-item"><span class="best-for-dot"></span>${u}</div>`)
+    .join('');
+  const proClass = char.proactivity;
+  const proLabel = { high:'High proactivity', medium:'Medium proactivity', low:'Low proactivity' }[char.proactivity] || '';
+
+  return `
+    <article
+      class="char-card"
+      data-id="${char.id}"
+      data-style="${char.care_style}"
+      data-searchable="${char.name.toLowerCase()} ${char.domain.toLowerCase()} ${char.personality_traits.join(' ').toLowerCase()}"
+      style="--char-color-primary: ${char.color_primary}; --char-color-secondary: ${char.color_secondary};"
+      role="button"
+      tabindex="0"
+      aria-label="Select ${char.name}"
+    >
+      <!-- Header -->
+      <div class="card-header">
+        <div class="char-emoji-wrap" data-tooltip>
+          ${char.emoji}
+          <span class="selected-ring"></span>
+          <div class="tooltip-box">
+            <div class="tooltip-title">System Prompt Preview</div>
+            <p>${char.system_prompt_preview}</p>
+          </div>
+        </div>
+        <div class="card-title-group">
+          <div class="char-name">${char.name}</div>
+          <div class="char-tagline">${char.tagline}</div>
+        </div>
+      </div>
+
+      <!-- Badges -->
+      <div class="card-badges">
+        <span class="badge ${STYLE_BADGE[char.care_style]}">${STYLE_LABEL[char.care_style]}</span>
+        <span class="badge badge-domain">${char.domain.split('&')[0].trim()}</span>
+      </div>
+
+      <!-- Traits -->
+      <div class="card-traits">${traitsHtml}</div>
+
+      <!-- Best For -->
+      <div>
+        <div class="card-best-for-label">Best for</div>
+        <div class="card-best-for">${bestForHtml}</div>
+      </div>
+
+      <!-- Footer -->
+      <div class="card-footer">
+        <span class="proactivity-label ${proClass}">
+          <span class="proactivity-pip"></span>
+          ${proLabel}
+        </span>
+        <button class="select-btn" data-id="${char.id}" aria-label="Select ${char.name}">Select</button>
+      </div>
+    </article>
+  `;
+}
+
+// ── Render grid ───────────────────────────────────────────────────────────
+const grid = document.getElementById('catalog-grid');
+grid.innerHTML = CHARACTERS.map(buildCard).join('');
+
+// ── State ─────────────────────────────────────────────────────────────────
+const LS_KEY = 'meok_selected_character';
+let activeFilter = 'all';
+let searchQuery  = '';
+
+// ── Selection ─────────────────────────────────────────────────────────────
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.innerHTML = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3200);
+}
+
+function applySelected(id) {
+  document.querySelectorAll('.char-card').forEach(c => c.classList.remove('selected'));
+  if (!id) return;
+  const card = document.querySelector(`.char-card[data-id="${id}"]`);
+  if (card) {
+    card.classList.add('selected');
+    // update btn text
+    card.querySelector('.select-btn').textContent = '✓ Selected';
+  }
+}
+
+function selectCharacter(id) {
+  const char = CHARACTERS.find(c => c.id === id);
+  if (!char) return;
+  const prev = localStorage.getItem(LS_KEY);
+  localStorage.setItem(LS_KEY, id);
+  applySelected(id);
+  showToast(`${char.emoji} <strong>${char.name}</strong> selected as your companion`);
+  // Reset previous card btn
+  if (prev && prev !== id) {
+    const prevCard = document.querySelector(`.char-card[data-id="${prev}"] .select-btn`);
+    if (prevCard) prevCard.textContent = 'Select';
+  }
+}
+
+// ── Click / keyboard on cards ─────────────────────────────────────────────
+grid.addEventListener('click', e => {
+  const btn = e.target.closest('.select-btn');
+  if (btn) {
+    e.stopPropagation();
+    selectCharacter(btn.dataset.id);
+    return;
+  }
+  const card = e.target.closest('.char-card');
+  if (card) selectCharacter(card.dataset.id);
+});
+
+grid.addEventListener('keydown', e => {
+  if (e.key === 'Enter' || e.key === ' ') {
+    const card = e.target.closest('.char-card');
+    if (card) { e.preventDefault(); selectCharacter(card.dataset.id); }
+  }
+});
+
+// ── Filter logic ──────────────────────────────────────────────────────────
+function applyFilters() {
+  let visible = 0;
+  document.querySelectorAll('.char-card').forEach(card => {
+    const styleMatch = activeFilter === 'all' || card.dataset.style === activeFilter;
+    const searchMatch = !searchQuery || card.dataset.searchable.includes(searchQuery);
+    const show = styleMatch && searchMatch;
+    card.classList.toggle('filter-hidden', !show);
+    if (show) visible++;
+  });
+  document.getElementById('visible-count').textContent = visible;
+  const empty = document.getElementById('empty-state');
+  empty.classList.toggle('visible', visible === 0);
+}
+
+// Filter buttons
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    activeFilter = btn.dataset.filter;
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    applyFilters();
+  });
+});
+
+// Care style cards also trigger filter
+document.querySelectorAll('.care-style-card[data-filter]').forEach(card => {
+  card.addEventListener('click', () => {
+    const filter = card.dataset.filter;
+    activeFilter = filter;
+    document.querySelectorAll('.filter-btn').forEach(b => {
+      b.classList.toggle('active', b.dataset.filter === filter);
+    });
+    applyFilters();
+    document.getElementById('catalog-grid').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+  card.addEventListener('keydown', e => {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); card.click(); }
+  });
+});
+
+// Search
+let searchTimer;
+document.getElementById('char-search').addEventListener('input', e => {
+  clearTimeout(searchTimer);
+  searchTimer = setTimeout(() => {
+    searchQuery = e.target.value.trim().toLowerCase();
+    applyFilters();
+  }, 180);
+});
+
+// ── On load: restore selected ─────────────────────────────────────────────
+const saved = localStorage.getItem(LS_KEY);
+if (saved) applySelected(saved);
+
+// ── Nav JS ────────────────────────────────────────────────────────────────
+(function() {
+  const toggle = document.getElementById('nav-toggle');
+  const menu   = document.getElementById('nav-menu');
+  if (toggle && menu) {
+    toggle.addEventListener('click', () => {
+      const open = menu.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', String(open));
+    });
+  }
+  document.querySelectorAll('.nav-drop-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const li = btn.closest('.nav-dropdown');
+      li.classList.toggle('open');
+      btn.setAttribute('aria-expanded', String(li.classList.contains('open')));
+    });
+  });
+  document.addEventListener('click', e => {
+    if (!e.target.closest('.nav-dropdown')) {
+      document.querySelectorAll('.nav-dropdown.open').forEach(d => {
+        d.classList.remove('open');
+        d.querySelector('[aria-expanded]')?.setAttribute('aria-expanded', 'false');
+      });
+    }
+  });
+  const path = window.location.pathname.split('/').pop() || 'index.html';
+  document.querySelectorAll('.nav-links a[href]').forEach(a => {
+    if (a.getAttribute('href') === path) a.classList.add('active');
+  });
+})();
+</script>
+
+</body>
+</html>
