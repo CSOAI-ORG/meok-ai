@@ -993,6 +993,67 @@ async def morning_briefing(user: TokenPayload = Depends(require_auth)):
     return briefing
 
 
+# ── Stripe Billing Webhook ────────────────────────────────────────
+
+@app.post("/billing/webhook")
+async def stripe_webhook(request: Request):
+    """
+    Stripe webhook handler — validates Stripe-Signature and routes subscription events.
+    Set STRIPE_WEBHOOK_SECRET in env to enable signature validation.
+    Events: checkout.session.completed, customer.subscription.deleted,
+            invoice.payment_failed, invoice.payment_succeeded
+    """
+    import os, hmac as _hmac, hashlib, time
+
+    payload = await request.body()
+    sig_header = request.headers.get("stripe-signature", "")
+    webhook_secret = os.environ.get("STRIPE_WEBHOOK_SECRET", "")
+
+    if webhook_secret and sig_header:
+        try:
+            parts = {k: v for k, v in (p.split("=", 1) for p in sig_header.split(",") if "=" in p)}
+            ts = parts.get("t", "0")
+            signed_payload = ts.encode() + b"." + payload
+            expected = _hmac.new(webhook_secret.encode(), signed_payload, hashlib.sha256).hexdigest()
+            if not _hmac.compare_digest(expected, parts.get("v1", "")):
+                raise HTTPException(status_code=400, detail="Invalid Stripe signature")
+            if abs(time.time() - int(ts)) > 300:
+                raise HTTPException(status_code=400, detail="Webhook timestamp too old")
+        except (ValueError, KeyError):
+            raise HTTPException(status_code=400, detail="Malformed Stripe-Signature header")
+
+    try:
+        event = json.loads(payload)
+    except json.JSONDecodeError:
+        raise HTTPException(status_code=400, detail="Invalid JSON payload")
+
+    event_type = event.get("type", "")
+    data = event.get("data", {}).get("object", {})
+    logger.info(f"Stripe webhook: {event_type} | id={event.get('id')}")
+
+    if event_type == "checkout.session.completed":
+        # client_reference_id = MEOK user_id passed at Stripe checkout creation
+        user_id = data.get("client_reference_id")
+        customer_id = data.get("customer")
+        subscription_id = data.get("subscription")
+        logger.info(f"Subscription activated: user={user_id} customer={customer_id} sub={subscription_id}")
+        # TODO: SET subscription_tier in users table when billing DB column exists
+
+    elif event_type == "customer.subscription.deleted":
+        logger.info(f"Subscription cancelled: customer={data.get('customer')}")
+        # TODO: downgrade user to free tier
+
+    elif event_type == "invoice.payment_failed":
+        logger.warning(f"Payment failed: customer={data.get('customer')}")
+        # TODO: fire NotificationService dunning alert
+
+    elif event_type == "invoice.payment_succeeded":
+        logger.info(f"Payment succeeded: customer={data.get('customer')} "
+                    f"amount=£{data.get('amount_paid', 0)/100:.2f}")
+
+    return {"received": True, "type": event_type}
+
+
 # ── Root ──────────────────────────────────────────────────────────
 
 @app.get("/")
