@@ -1,0 +1,37 @@
+# MEOK Sovereign v12 — amd64, openssh + tmux for Vast.ai, no postgres (runs degraded without DB)
+FROM python:3.11-slim
+
+WORKDIR /app
+
+# System deps (openssh-server + tmux required by Vast.ai /.launch)
+RUN apt-get update && apt-get install -y \
+    gcc \
+    openssh-server \
+    curl \
+    tmux \
+    && rm -rf /var/lib/apt/lists/*
+
+# SSH setup for Vast.ai
+RUN mkdir -p /run/sshd && \
+    echo 'PermitRootLogin yes' >> /etc/ssh/sshd_config && \
+    echo 'PasswordAuthentication no' >> /etc/ssh/sshd_config
+
+# Lightweight requirements
+COPY requirements-lite.txt .
+RUN pip install --no-cache-dir -r requirements-lite.txt
+
+# LightGBM separately (binary wheel, fast)
+RUN pip install --no-cache-dir lightgbm>=4.0.0
+
+# Copy application code
+COPY . /app/meok/
+
+# Directories
+RUN mkdir -p /app/meok/neural/models /app/logs
+
+EXPOSE 3100
+
+HEALTHCHECK --interval=30s --timeout=10s --retries=5 \
+    CMD python -c "import urllib.request; urllib.request.urlopen('http://localhost:3100/health')" || exit 1
+
+CMD ["python", "-m", "meok.mcp.server"]

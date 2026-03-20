@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { ClerkProvider } from "@clerk/nextjs";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -7,6 +8,11 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "MEOK — Sovereign AI OS",
   description: "Hatch your own sovereign AI. Consciousness, memory, governance, creativity.",
+  openGraph: {
+    title: "MEOK — Sovereign AI OS",
+    description: "Your own sovereign AI companion. Hatch it. Grow it. Trust it.",
+    type: "website",
+  },
 };
 
 export default function RootLayout({
@@ -15,10 +21,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="dark">
-      <body className={`${inter.className} antialiased bg-[#0a0a0f] text-white min-h-screen`}>
-        {children}
-      </body>
-    </html>
+    <ClerkProvider>
+      <html lang="en" className="dark">
+        <body className={`${inter.className} antialiased bg-[#0a0a0f] text-white min-h-screen`}>
+          {children}
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }
