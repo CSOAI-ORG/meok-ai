@@ -30,6 +30,8 @@ from meok.mcp.tools.family_guardian import FAMILY_GUARDIAN_TOOLS, handle_family_
 from meok.mcp.tools.intelligence import INTELLIGENCE_TOOLS, handle_intelligence
 from meok.mcp.tools.sovereign import SOVEREIGN_TOOLS, handle_sovereign
 from meok.mcp.tools.character_emergence import CHARACTER_EMERGENCE_TOOLS, handle_character_emergence_tool
+from meok.mcp.tools.mirror_mode import MIRROR_MODE_TOOLS, handle_mirror_mode
+from meok.mcp.tools.soul_vault import SOUL_VAULT_TOOLS, handle_soul_vault
 
 # Combined tool list — order matches the original monolithic server
 ALL_TOOLS = (
@@ -56,6 +58,8 @@ ALL_TOOLS = (
     + INTELLIGENCE_TOOLS      # Knowledge graph, SmartRouter, voice pipeline, product catalog
     + SOVEREIGN_TOOLS         # 7-lifecycle sovereign core: perceive/think/route/act/remember/evolve
     + CHARACTER_EMERGENCE_TOOLS  # 6-stage companion lifecycle: Egg→Cracking→Hatching→Growing→Mature→Full
+    + MIRROR_MODE_TOOLS          # Sovereign OSINT self-investigation — viral launch feature
+    + SOUL_VAULT_TOOLS           # Encrypted character memory + duress wipe (GrapheneOS-inspired)
 )
 
 # Build name -> handler lookup from each module's tool list
@@ -107,6 +111,10 @@ for _tool in SOVEREIGN_TOOLS:
     _TOOL_NAME_TO_HANDLER[_tool["name"]] = handle_sovereign
 for _tool in CHARACTER_EMERGENCE_TOOLS:
     _TOOL_NAME_TO_HANDLER[_tool["name"]] = handle_character_emergence_tool
+for _tool in MIRROR_MODE_TOOLS:
+    _TOOL_NAME_TO_HANDLER[_tool["name"]] = handle_mirror_mode
+for _tool in SOUL_VAULT_TOOLS:
+    _TOOL_NAME_TO_HANDLER[_tool["name"]] = handle_soul_vault
 
 # Also expose as a dict for external inspection
 TOOL_HANDLERS = {

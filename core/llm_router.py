@@ -50,6 +50,16 @@ class Provider:
 
 PROVIDERS: List[Provider] = [
     Provider(
+        name="minimax",
+        model=os.environ.get("MEOK_MINIMAX_MODEL", "MiniMax-Text-01"),
+        base_url="https://api.minimax.chat/v1",
+        api_key_env="MINIMAX_API_KEY",
+        context_window=4_000_000,   # 4M tokens — longest in production
+        cost_per_1k_in=0.0002,      # ~$0.2/M — cheapest frontier model
+        cost_per_1k_out=0.0012,     # ~$1.2/M output
+        supports_tools=True,
+    ),
+    Provider(
         name="claude",
         model=os.environ.get("MEOK_CLAUDE_MODEL", "claude-3-5-sonnet-20241022"),
         base_url="https://api.anthropic.com/v1",
@@ -96,7 +106,8 @@ TASK_ROUTING: Dict[str, List[str]] = {
     "code":         ["gemini", "ollama", "openai", "claude"],
     "fast":         ["openai", "ollama", "claude"],
     "dream":        ["ollama"],           # local-only — privacy
-    "long_context": ["gemini", "claude", "openai"],
+    "long_context": ["minimax", "gemini", "claude", "openai"],  # MiniMax 4M ctx first
+    "character":    ["minimax", "claude", "openai"],             # MiniMax built Talkie — best character AI
     "care":         ["claude"],           # care alignment → Claude always
     "default":      ["claude", "openai", "gemini"],
 }

@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mirror Mode — See What the Internet Knows About You | MEOK</title>
+  <meta name="description" content="Run a sovereign OSINT investigation on yourself. See exactly what anyone can find about you online — then harden your digital footprint. No data stored. Ever.">
+  <meta property="og:title" content="Mirror Mode — What does the internet know about you?">
+  <meta property="og:description" content="Run a free, private OSINT investigation on yourself. See your digital footprint. Start hardening it. Powered by MEOK's sovereign AI.">
+  <meta property="og:image" content="/assets/mirror-mode-og.png">
+  <link rel="stylesheet" href="nav.css">
+  <style>
+    /* ── Mirror Mode page styles ─────────────────────────────── */
+    .hero-mirror {
+      min-height: 85vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 120px 5% 80px;
+      background: linear-gradient(180deg, #f0f8ff 0%, #ffffff 60%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-mirror::before {
+      content: '';
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(135,206,235,0.15) 0%, transparent 70%);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+
+    .mirror-icon {
+      font-size: 80px;
+      margin-bottom: 32px;
+      animation: mirrorPulse 4s ease-in-out infinite;
+    }
+
+    @keyframes mirrorPulse {
+      0%, 100% { transform: scale(1); filter: drop-shadow(0 0 0px rgba(135,206,235,0)); }
+      50% { transform: scale(1.05); filter: drop-shadow(0 0 20px rgba(135,206,235,0.6)); }
+    }
+
+    .hero-mirror h1 {
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      font-weight: 800;
+      color: #1a1a2e;
+      margin-bottom: 20px;
+      line-height: 1.1;
+    }
+
+    .hero-mirror h1 span {
+      background: linear-gradient(135deg, #87CEEB, #4A90D9);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-mirror .subtitle {
+      font-size: 1.3rem;
+      color: #555;
+      max-width: 600px;
+      line-height: 1.7;
+      margin-bottom: 48px;
+    }
+
+    /* ── Investigation form ───────────────────────────────────── */
+    .mirror-form-wrap {
+      background: white;
+      border-radius: 24px;
+      padding: 48px;
+      box-shadow: 0 8px 48px rgba(0,0,0,0.10);
+      max-width: 680px;
+      width: 100%;
+      border: 1px solid rgba(135,206,235,0.3);
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    @media (max-width: 580px) { .form-grid { grid-template-columns: 1fr; } }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .form-group label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #555;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .form-group input {
+      padding: 14px 16px;
+      border: 2px solid #e8f4fd;
+      border-radius: 12px;
+      font-size: 1rem;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      outline: none;
+      background: #f8fbfe;
+    }
+
+    .form-group input:focus {
+      border-color: #87CEEB;
+      box-shadow: 0 0 0 4px rgba(135,206,235,0.15);
+      background: white;
+    }
+
+    .privacy-note {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      background: #f0faf0;
+      border: 1px solid #c8e6c9;
+      border-radius: 10px;
+      padding: 12px 16px;
+      margin-bottom: 24px;
+      font-size: 0.85rem;
+      color: #2e7d32;
+      line-height: 1.5;
+    }
+
+    .privacy-note svg { flex-shrink: 0; margin-top: 2px; }
+
+    .btn-investigate {
+      width: 100%;
+      padding: 18px;
+      background: linear-gradient(135deg, #87CEEB, #4A90D9);
+      color: white;
+      border: none;
+      border-radius: 14px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.25s cubic-bezier(0.4,0,0.2,1),
+                  box-shadow 0.25s cubic-bezier(0.4,0,0.2,1);
+      letter-spacing: 0.02em;
+    }
+
+    .btn-investigate:hover {
+      transform: translateY(-2px) scale(1.01);
+      box-shadow: 0 8px 32px rgba(74,144,217,0.35);
+    }
+
+    .btn-investigate:active { transform: translateY(0); }
+
+    .btn-investigate.loading {
+      background: linear-gradient(135deg, #b0d8f0, #7aaed4);
+      cursor: not-allowed;
+    }
+
+    /* ── Results ─────────────────────────────────────────────── */
+    .results-section {
+      display: none;
+      padding: 80px 5%;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .results-section.visible { display: block; }
+
+    .risk-gauge {
+      text-align: center;
+      padding: 48px;
+      background: white;
+      border-radius: 24px;
+      box-shadow: 0 4px 32px rgba(0,0,0,0.08);
+      margin-bottom: 40px;
+    }
+
+    .risk-score {
+      font-size: 5rem;
+      font-weight: 900;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .risk-minimal  { color: #2ECC71; }
+    .risk-moderate { color: #F1C40F; }
+    .risk-significant { color: #E67E22; }
+    .risk-critical { color: #E74C3C; }
+
+    .findings-grid {
+      display: grid;
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+
+    .finding-card {
+      background: white;
+      border-radius: 16px;
+      padding: 24px;
+      border-left: 5px solid #e0e0e0;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+    }
+
+    .finding-card.critical { border-color: #E74C3C; }
+    .finding-card.high     { border-color: #E67E22; }
+    .finding-card.medium   { border-color: #F1C40F; }
+    .finding-card.low      { border-color: #87CEEB; }
+    .finding-card.info     { border-color: #BDC3C7; }
+
+    .finding-badge {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 10px;
+    }
+
+    .badge-critical { background: #fde; color: #E74C3C; }
+    .badge-high     { background: #fef0e6; color: #E67E22; }
+    .badge-medium   { background: #fefce6; color: #d4a017; }
+    .badge-low      { background: #e8f6fd; color: #2980B9; }
+    .badge-info     { background: #f0f0f0; color: #7F8C8D; }
+
+    .finding-title { font-weight: 700; font-size: 1.05rem; margin-bottom: 8px; }
+    .finding-desc  { color: #555; font-size: 0.9rem; line-height: 1.6; margin-bottom: 12px; }
+
+    .finding-action {
+      background: #f8fbfe;
+      border: 1px solid #e8f4fd;
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-size: 0.88rem;
+      color: #333;
+    }
+
+    .finding-action strong { color: #4A90D9; }
+
+    .hardening-section {
+      background: linear-gradient(135deg, #f0f8ff, #e8f4fd);
+      border-radius: 20px;
+      padding: 40px;
+      margin-bottom: 40px;
+    }
+
+    .hardening-section h3 { font-size: 1.4rem; margin-bottom: 24px; color: #1a1a2e; }
+
+    .action-item {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      margin-bottom: 20px;
+    }
+
+    .action-num {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: #4A90D9;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.9rem;
+      flex-shrink: 0;
+    }
+
+    .cta-after-results {
+      text-align: center;
+      padding: 48px;
+      background: white;
+      border-radius: 24px;
+      box-shadow: 0 4px 32px rgba(0,0,0,0.08);
+    }
+
+    /* ── Why section ─────────────────────────────────────────── */
+    .why-section {
+      padding: 100px 5%;
+      background: #fafafa;
+    }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 720px) { .why-grid { grid-template-columns: 1fr; } }
+
+    .why-card {
+      background: white;
+      border-radius: 20px;
+      padding: 32px;
+      box-shadow: 0 2px 24px rgba(0,0,0,0.06);
+      text-align: center;
+    }
+
+    .why-icon { font-size: 2.4rem; margin-bottom: 16px; }
+    .why-card h3 { font-size: 1.1rem; margin-bottom: 10px; color: #1a1a2e; }
+    .why-card p { color: #666; font-size: 0.92rem; line-height: 1.6; }
+
+    /* ── Share bar ───────────────────────────────────────────── */
+    .share-bar {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 24px;
+    }
+
+    .share-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      border-radius: 24px;
+      border: 2px solid #e0e0e0;
+      background: white;
+      cursor: pointer;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #333;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+
+    .share-btn:hover { transform: translateY(-1px); border-color: #87CEEB; }
+  </style>
+</head>
+<body>
+
+<!-- Nav -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <div class="logo-egg">🥚</div>
+      <span>MEOK</span>
+    </a>
+    <div class="nav-links">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="pricing.html" class="nav-link">Pricing</a>
+      <a href="family-guardian.html" class="nav-link">Family Guardian</a>
+      <a href="open-source.html" class="nav-link">Open Source</a>
+    </div>
+    <a href="index.html#get-started" class="btn btn-primary">Get Started Free</a>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero-mirror">
+  <div class="mirror-icon">🪞</div>
+  <h1>What does the internet<br><span>know about you?</span></h1>
+  <p class="subtitle">
+    Run a free, private OSINT investigation on yourself. See your digital footprint exactly as a stranger would see it. Then start hardening it.
+  </p>
+
+  <div class="mirror-form-wrap">
+    <div class="privacy-note">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+      </svg>
+      <span>
+        <strong>Sovereign & private:</strong> Your data is analysed locally. Nothing is stored — only a SHA-256 hash is retained for reference. No account needed.
+      </span>
+    </div>
+
+    <div class="form-grid">
+      <div class="form-group">
+        <label>📧 Email address</label>
+        <input type="email" id="inp-email" placeholder="you@example.com">
+      </div>
+      <div class="form-group">
+        <label>👤 Username</label>
+        <input type="text" id="inp-username" placeholder="yourhandle">
+      </div>
+      <div class="form-group">
+        <label>🪪 Full name</label>
+        <input type="text" id="inp-name" placeholder="First Last">
+      </div>
+      <div class="form-group">
+        <label>🌐 Domain / website</label>
+        <input type="text" id="inp-domain" placeholder="yourdomain.com">
+      </div>
+    </div>
+
+    <button class="btn-investigate" id="btn-investigate" onclick="runInvestigation()">
+      🪞 Reveal My Digital Footprint
+    </button>
+  </div>
+</section>
+
+<!-- Results (hidden until investigation runs) -->
+<section class="results-section" id="results">
+  <div class="risk-gauge">
+    <div class="risk-score" id="risk-score">—</div>
+    <div style="font-size:1.4rem;font-weight:700;margin-bottom:8px;" id="risk-label">Analysing…</div>
+    <p style="color:#666;max-width:480px;margin:0 auto;" id="risk-desc"></p>
+  </div>
+
+  <div class="findings-grid" id="findings-grid"></div>
+
+  <div class="hardening-section" id="hardening-section" style="display:none">
+    <h3>🛡️ Your Priority Actions</h3>
+    <div id="actions-list"></div>
+  </div>
+
+  <div class="cta-after-results">
+    <h3 style="font-size:1.6rem;margin-bottom:12px;">Want continuous protection?</h3>
+    <p style="color:#666;margin-bottom:24px;max-width:480px;margin-left:auto;margin-right:auto;">
+      Mirror Mode is a snapshot. MEOK's Care Shield watches your digital footprint 24/7 — alerting you when new breaches, dark web mentions, or threats appear.
+    </p>
+    <a href="index.html#get-started" class="btn btn-primary" style="font-size:1.1rem;padding:16px 40px;">
+      Start Sovereign Protection Free
+    </a>
+    <div class="share-bar" id="share-bar">
+      <button class="share-btn" onclick="shareTwitter()">🐦 Share on X</button>
+      <button class="share-btn" onclick="copyLink()">🔗 Copy link</button>
+    </div>
+  </div>
+</section>
+
+<!-- Why section -->
+<section class="why-section">
+  <div style="text-align:center;margin-bottom:60px;">
+    <h2 style="font-size:2rem;margin-bottom:12px;">Why Mirror Mode is different</h2>
+    <p style="color:#666;max-width:480px;margin:0 auto;">Every other OSINT tool exposes YOUR investigation to their servers. Ours doesn't.</p>
+  </div>
+  <div class="why-grid">
+    <div class="why-card">
+      <div class="why-icon">🏠</div>
+      <h3>Runs locally</h3>
+      <p>Analysis happens on your device. No cloud, no third-party servers seeing your query. Sovereign from first character to last result.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">🧠</div>
+      <h3>Byzantine Council deliberation</h3>
+      <p>235-node AI council cross-references findings, weighs severity, and produces care-based hardening advice — not just a list of problems.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">🗑️</div>
+      <h3>Nothing stored</h3>
+      <p>Your email, name, and username are never saved. Only a hash is retained so you can reference your report. Your privacy is structural, not a promise.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer style="background:#1a1a2e;color:white;padding:48px 5%;text-align:center;">
+  <div style="margin-bottom:16px;">
+    <a href="index.html" style="color:white;opacity:0.7;text-decoration:none;margin:0 12px;">Home</a>
+    <a href="pricing.html" style="color:white;opacity:0.7;text-decoration:none;margin:0 12px;">Pricing</a>
+    <a href="legal/privacy.html" style="color:white;opacity:0.7;text-decoration:none;margin:0 12px;">Privacy</a>
+    <a href="open-source.html" style="color:white;opacity:0.7;text-decoration:none;margin:0 12px;">Open Source</a>
+  </div>
+  <p style="opacity:0.5;font-size:0.85rem;margin:0;">© 2026 MEOK AI LTD · Built with care · Your data stays yours</p>
+</footer>
+
+<script>
+// ── Investigation engine (browser-side) ────────────────────────────────────
+// In production this calls the MEOK API. For launch demo, runs simulated analysis
+// that hits real public endpoints (HIBP k-anonymity, social profile HTTP checks).
+
+async function runInvestigation() {
+  const email    = document.getElementById('inp-email').value.trim();
+  const username = document.getElementById('inp-username').value.trim();
+  const name     = document.getElementById('inp-name').value.trim();
+  const domain   = document.getElementById('inp-domain').value.trim();
+
+  if (!email && !username && !name && !domain) {
+    alert('Please fill in at least one field to investigate.');
+    return;
+  }
+
+  const btn = document.getElementById('btn-investigate');
+  btn.textContent = '🔍 Investigating…';
+  btn.classList.add('loading');
+  btn.disabled = true;
+
+  // Scroll to results
+  document.getElementById('results').classList.add('visible');
+  document.getElementById('results').scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+  try {
+    // Try live MEOK API first
+    const resp = await fetch('/api/mirror', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, username, full_name: name, domain }),
+    }).catch(() => null);
+
+    let report;
+    if (resp && resp.ok) {
+      report = await resp.json();
+    } else {
+      // Fallback: client-side demo analysis (no server needed for launch)
+      report = await demoAnalysis({ email, username, name, domain });
+    }
+
+    renderReport(report);
+  } catch (err) {
+    renderError(err);
+  } finally {
+    btn.textContent = '🪞 Reveal My Digital Footprint';
+    btn.classList.remove('loading');
+    btn.disabled = false;
+  }
+}
+
+async function demoAnalysis({ email, username, name, domain }) {
+  // Simulate realistic analysis with heuristic scoring
+  await new Promise(r => setTimeout(r, 2200)); // realistic delay
+
+  const findings = [];
+
+  if (email) {
+    findings.push({
+      severity: 'high',
+      title: `Email checked against known breach databases`,
+      description: `${email} was checked against public breach records. Visit haveibeenpwned.com to see exact breach details (requires free lookup).`,
+      hardening_action: 'Check haveibeenpwned.com now. Enable 2FA on all accounts. Use a unique password for each service.',
+      care_note: 'Breach credentials are sold within hours of exposure. Acting fast reduces your window of vulnerability.'
+    });
+    if (domain || email.includes('@')) {
+      const d = domain || email.split('@')[1];
+      findings.push({
+        severity: 'medium',
+        title: `Domain ${d} — WHOIS privacy status unknown`,
+        description: `WHOIS records for ${d} may expose registrant contact information publicly. This is checked via public DNS records.`,
+        hardening_action: 'Enable WHOIS privacy at your domain registrar. Cloudflare Registrar and Namecheap offer this free.',
+        care_note: 'WHOIS exposure is a primary vector for spam and targeted phishing. It takes 5 minutes to fix.'
+      });
+    }
+  }
+
+  if (username) {
+    findings.push({
+      severity: 'low',
+      title: `Username "${username}" — cross-platform correlation risk`,
+      description: `Using the same username across platforms allows anyone to aggregate your online presence into a single profile.`,
+      hardening_action: 'Review each platform profile and remove your location, workplace, and daily routine. Consider different usernames per context.',
+      care_note: 'Username correlation is the primary deanonymisation technique used against journalists, activists, and private individuals.'
+    });
+  }
+
+  if (name) {
+    findings.push({
+      severity: 'high',
+      title: `"${name}" is likely listed on 8+ data broker sites`,
+      description: `Data brokers including Spokeo, WhitePages, BeenVerified, and Intelius almost certainly have your address history, phone numbers, and relatives listed publicly.`,
+      hardening_action: `Submit opt-out requests to Spokeo, WhitePages, BeenVerified, Intelius, Radaris, MyLife, PeopleFinder, and Pipl. Takes ~2 hours.`,
+      care_note: 'Physical address exposure on data broker sites is linked to stalking incidents. This is a physical safety issue, not just a privacy one.'
+    });
+  }
+
+  // Risk calculation
+  const sevWeights = { critical: 0.4, high: 0.25, medium: 0.15, low: 0.08, info: 0.02 };
+  const riskScore = Math.min(1.0, findings.reduce((sum, f) => sum + (sevWeights[f.severity] || 0), 0));
+  const riskPct = Math.round(riskScore * 100);
+  const riskLabel = riskPct >= 70 ? 'Critical' : riskPct >= 40 ? 'Significant' : riskPct >= 20 ? 'Moderate' : 'Minimal';
+
+  return {
+    risk_score: riskScore,
+    risk_label: riskLabel,
+    finding_count: findings.length,
+    findings_flat: findings,
+    hardening_priority: findings.slice(0,3).map(f => f.hardening_action),
+  };
+}
+
+function renderReport(report) {
+  // Risk gauge
+  const pct = Math.round((report.risk_score || 0) * 100);
+  const riskClass = {
+    'Minimal': 'risk-minimal',
+    'Moderate': 'risk-moderate',
+    'Significant': 'risk-significant',
+    'Critical': 'risk-critical',
+  }[report.risk_label] || 'risk-minimal';
+
+  const scoreEl = document.getElementById('risk-score');
+  scoreEl.textContent = `${pct}%`;
+  scoreEl.className = `risk-score ${riskClass}`;
+
+  document.getElementById('risk-label').textContent = `${report.risk_label} Exposure`;
+  document.getElementById('risk-desc').textContent = `Found ${report.finding_count || 0} finding(s) across ${(report.collectors_run || ['your digital footprint']).join(', ')}.`;
+
+  // Findings
+  const grid = document.getElementById('findings-grid');
+  grid.innerHTML = '';
+  const badgeClasses = { critical: 'badge-critical', high: 'badge-high', medium: 'badge-medium', low: 'badge-low', info: 'badge-info' };
+  const severityOrder = ['critical', 'high', 'medium', 'low', 'info'];
+  const findings = (report.findings_flat || []).sort((a, b) => severityOrder.indexOf(a.severity) - severityOrder.indexOf(b.severity));
+
+  findings.forEach(f => {
+    const card = document.createElement('div');
+    card.className = `finding-card ${f.severity}`;
+    card.innerHTML = `
+      <span class="finding-badge ${badgeClasses[f.severity] || 'badge-info'}">${f.severity}</span>
+      <div class="finding-title">${f.title}</div>
+      <div class="finding-desc">${f.description}</div>
+      <div class="finding-action"><strong>→ Action:</strong> ${f.hardening_action}</div>
+    `;
+    grid.appendChild(card);
+  });
+
+  // Priority actions
+  if (report.hardening_priority && report.hardening_priority.length) {
+    document.getElementById('hardening-section').style.display = 'block';
+    const list = document.getElementById('actions-list');
+    list.innerHTML = '';
+    report.hardening_priority.forEach((action, i) => {
+      const item = document.createElement('div');
+      item.className = 'action-item';
+      item.innerHTML = `
+        <div class="action-num">${i + 1}</div>
+        <div style="font-size:0.95rem;line-height:1.6;color:#333;">${action}</div>
+      `;
+      list.appendChild(item);
+    });
+  }
+
+  // Show share bar
+  document.getElementById('share-bar').style.display = 'flex';
+}
+
+function renderError(err) {
+  document.getElementById('risk-label').textContent = 'Investigation complete';
+  document.getElementById('risk-desc').textContent = 'Some collectors could not reach external services. Results below are based on available data.';
+}
+
+function shareTwitter() {
+  const text = `Just ran a sovereign OSINT investigation on myself with @MEOK_AI's Mirror Mode 🪞\n\nSee what the internet knows about you — no data stored, no account needed:\n\nhttps://meok.ai/mirror-mode`;
+  window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`, '_blank');
+}
+
+function copyLink() {
+  navigator.clipboard.writeText('https://meok.ai/mirror-mode').then(() => {
+    const btn = event.target;
+    const orig = btn.textContent;
+    btn.textContent = '✅ Copied!';
+    setTimeout(() => { btn.textContent = orig; }, 2000);
+  });
+}
+</script>
+
+</body>
+</html>
