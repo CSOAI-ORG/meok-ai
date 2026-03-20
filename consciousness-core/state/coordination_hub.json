@@ -1,0 +1,104 @@
+{
+  "events": [
+    {
+      "timestamp": "2026-03-18T06:20:56.693181",
+      "event_type": "task_created",
+      "agent_id": "delegate",
+      "details": {
+        "task_id": "task_49cdead9",
+        "title": "fix auth bug"
+      },
+      "care_score": 0.8
+    },
+    {
+      "timestamp": "2026-03-18T06:21:58.219677",
+      "event_type": "task_created",
+      "agent_id": "delegate",
+      "details": {
+        "task_id": "task_b91f75aa",
+        "title": "fix auth bug in login endpoint"
+      },
+      "care_score": 0.8
+    },
+    {
+      "timestamp": "2026-03-18T06:21:58.221140",
+      "event_type": "task_assigned",
+      "agent_id": "jarvis-openclaw",
+      "details": {
+        "task_id": "task_b91f75aa",
+        "title": "fix auth bug in login endpoint",
+        "match_score": 0.6
+      },
+      "care_score": 0.8
+    },
+    {
+      "timestamp": "2026-03-18T06:22:35.339765",
+      "event_type": "task_created",
+      "agent_id": "delegate",
+      "details": {
+        "task_id": "task_24317fd8",
+        "title": "fix auth bug in login endpoint"
+      },
+      "care_score": 0.8
+    },
+    {
+      "timestamp": "2026-03-18T06:22:35.342936",
+      "event_type": "task_assigned",
+      "agent_id": "jarvis-openclaw",
+      "details": {
+        "task_id": "task_24317fd8",
+        "title": "fix auth bug in login endpoint",
+        "match_score": 0.6
+      },
+      "care_score": 0.8
+    },
+    {
+      "timestamp": "2026-03-18T06:23:07.674914",
+      "event_type": "task_created",
+      "agent_id": "delegate",
+      "details": {
+        "task_id": "task_0069ea81",
+        "title": "write tests"
+      },
+      "care_score": 0.7
+    },
+    {
+      "timestamp": "2026-03-18T06:23:07.678536",
+      "event_type": "task_assigned",
+      "agent_id": "sovereign-openclaw",
+      "details": {
+        "task_id": "task_0069ea81",
+        "title": "write tests",
+        "match_score": 0.6
+      },
+      "care_score": 0.7
+    },
+    {
+      "timestamp": "2026-03-18T06:46:34.022346",
+      "event_type": "task_created",
+      "agent_id": "claude-mcp",
+      "details": {
+        "task_id": "task_6a50b999",
+        "title": "Team Integration Test"
+      },
+      "care_score": 0.8
+    },
+    {
+      "timestamp": "2026-03-18T06:46:34.026244",
+      "event_type": "task_assigned",
+      "agent_id": "jarvis-openclaw",
+      "details": {
+        "task_id": "task_6a50b999",
+        "title": "Team Integration Test",
+        "match_score": 0.6
+      },
+      "care_score": 0.8
+    }
+  ],
+  "saved_at": "2026-03-18T06:46:34.026918",
+  "settings": {
+    "care_membrane_enabled": true,
+    "auto_assign_enabled": true,
+    "human_escalation_enabled": true
+  }
+}

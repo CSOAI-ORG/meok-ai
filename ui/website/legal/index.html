@@ -4,46 +4,338 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Legal — MEOK.AI</title>
+  <meta name="description" content="MEOK.AI legal documents — Privacy Policy, Terms of Service, and Cookie Policy. Honest, plain-language legal docs for a company that takes privacy seriously.">
   <link rel="stylesheet" href="../nav.css">
   <style>
-    .legal-hub { max-width: 700px; margin: 0 auto; padding: 80px 5% 120px; }
-    .legal-hub h1 { font-size: clamp(1.8rem,3vw,2.4rem); font-weight:900; margin-bottom:8px; }
-    .legal-hub .sub { color:var(--mid); font-size:1.05rem; margin-bottom:56px; }
-    .doc-card { display:block; text-decoration:none; border:1px solid var(--border); border-radius:var(--radius); padding:28px 32px; margin-bottom:20px; color:inherit; transition:all var(--transition-care); }
-    .doc-card:hover { border-color:var(--sky-blue); box-shadow:var(--shadow-lg); transform:translateY(-2px); }
-    .doc-card h2 { font-size:1.15rem; font-weight:800; color:var(--dark); margin-bottom:6px; }
-    .doc-card p { font-size:0.9rem; color:var(--mid); margin:0; }
-    .doc-card .meta { font-size:0.78rem; color:var(--deep-blue); margin-top:10px; font-weight:600; }
-    .plain-nav { display:flex; align-items:center; justify-content:space-between; padding:0 5%; height:60px; border-bottom:1px solid var(--border); }
+    .legal-hub {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 64px 5% 96px;
+    }
+
+    .legal-hub-header {
+      margin-bottom: 56px;
+      padding-bottom: 32px;
+      border-bottom: 2px solid var(--border);
+    }
+    .legal-hub-header .badge {
+      display: inline-block;
+      background: rgba(74,144,217,0.1);
+      color: var(--deep-blue);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      border-radius: 100px;
+      margin-bottom: 16px;
+    }
+    .legal-hub-header h1 {
+      font-size: clamp(1.9rem, 4vw, 2.8rem);
+      font-weight: 900;
+      color: var(--dark);
+      letter-spacing: -0.5px;
+      margin-bottom: 16px;
+    }
+    .legal-hub-header p {
+      font-size: 1.1rem;
+      color: var(--mid);
+      line-height: 1.75;
+      max-width: 600px;
+    }
+
+    /* Document cards */
+    .doc-card {
+      display: flex;
+      gap: 24px;
+      align-items: flex-start;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 32px;
+      margin-bottom: 20px;
+      text-decoration: none;
+      color: inherit;
+      transition: box-shadow var(--transition-care), transform var(--transition-care), border-color var(--transition-care);
+    }
+    .doc-card:hover {
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-2px);
+      border-color: var(--deep-blue);
+    }
+    .doc-card-icon {
+      font-size: 2.2rem;
+      flex-shrink: 0;
+      width: 56px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(74,144,217,0.08);
+      border-radius: var(--radius);
+    }
+    .doc-card-body { flex: 1; min-width: 0; }
+    .doc-card-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--deep-blue);
+      margin-bottom: 6px;
+    }
+    .doc-card-title {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--dark);
+      margin-bottom: 10px;
+    }
+    .doc-card-desc {
+      font-size: 0.97rem;
+      color: var(--mid);
+      line-height: 1.7;
+      margin-bottom: 16px;
+    }
+    .doc-card-topics {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .doc-tag {
+      display: inline-block;
+      background: var(--light);
+      color: var(--mid);
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 100px;
+      border: 1px solid var(--border);
+    }
+    .doc-card-arrow {
+      font-size: 1.2rem;
+      color: var(--deep-blue);
+      flex-shrink: 0;
+      margin-top: 4px;
+      transition: transform var(--transition);
+    }
+    .doc-card:hover .doc-card-arrow { transform: translateX(4px); }
+
+    /* Company info */
+    .company-info {
+      background: var(--light);
+      border-radius: var(--radius);
+      padding: 32px;
+      margin-top: 48px;
+    }
+    .company-info h2 {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--dark);
+      margin-bottom: 20px;
+    }
+    .company-info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    .info-item dt {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--deep-blue);
+      margin-bottom: 4px;
+    }
+    .info-item dd {
+      font-size: 0.95rem;
+      color: var(--mid);
+    }
+    .info-item dd a { color: var(--deep-blue); text-decoration: none; }
+    .info-item dd a:hover { text-decoration: underline; }
+
+    /* Plain-language promise */
+    .promise {
+      border-left: 4px solid var(--green);
+      background: rgba(46,204,113,0.06);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 20px 24px;
+      margin-bottom: 40px;
+      font-size: 0.97rem;
+      color: var(--dark);
+      line-height: 1.7;
+    }
+    .promise strong { color: var(--green-dark); }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--deep-blue);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 32px;
+      transition: gap var(--transition);
+    }
+    .back-link:hover { gap: 10px; }
+
+    @media (max-width: 600px) {
+      .doc-card { flex-direction: column; gap: 16px; }
+      .doc-card-arrow { display: none; }
+      .company-info-grid { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
-<div class="plain-nav">
-  <a href="../index.html" style="font-size:1.3rem;font-weight:800;color:var(--deep-blue);text-decoration:none;">MEOK<span style="color:var(--sky-blue)">.AI</span></a>
-  <a href="../index.html" style="font-size:0.85rem;color:var(--mid);text-decoration:none;">← Back to site</a>
-</div>
-<div class="legal-hub">
-  <h1>Legal</h1>
-  <p class="sub">Honest documents. Plain language. No small print designed to trip you up.</p>
-  <a href="privacy.html" class="doc-card">
-    <h2>🔒 Privacy Policy</h2>
-    <p>How we collect, use, and protect your data. Covers GDPR, UK GDPR, CCPA, COPPA, and more. Includes our data sovereignty commitments and your rights.</p>
-    <div class="meta">Effective March 31, 2026 · Version 1.0</div>
-  </a>
-  <a href="terms.html" class="doc-card">
-    <h2>📋 Terms of Service</h2>
-    <p>Your rights and responsibilities. Subscription terms, refunds, AI disclosure, no-professional-advice warnings, open source rights, and governing law.</p>
-    <div class="meta">Effective March 31, 2026 · Version 1.0</div>
-  </a>
-  <a href="cookies.html" class="doc-card">
-    <h2>🍪 Cookie Policy</h2>
-    <p>What cookies we use and why. No advertising cookies. No Google Analytics. Privacy-preserving analytics only, with your consent.</p>
-    <div class="meta">Effective March 31, 2026 · Version 1.0</div>
-  </a>
-  <p style="margin-top:48px;font-size:0.85rem;color:var(--mid);">
-    Questions? <a href="mailto:privacy@meok.ai" style="color:var(--deep-blue);">privacy@meok.ai</a><br>
-    MEOK AI LTD · Registered in England &amp; Wales · ICO Registration: PENDING
-  </p>
-</div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo">MEOK<span>.AI</span></a>
+    <ul class="nav-links">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="index.html" class="active">Legal</a></li>
+      <li><a href="../contact.html">Contact</a></li>
+      <li><a href="../pricing.html" class="nav-cta">Get Started</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main>
+  <div class="legal-hub">
+
+    <a href="../index.html" class="back-link">&#8592; Back to MEOK.AI</a>
+
+    <div class="legal-hub-header">
+      <div class="badge">Transparency</div>
+      <h1>Legal Documents</h1>
+      <p>Our legal documents are written for people to read, not just for lawyers to file. We think you deserve to know exactly what you're agreeing to.</p>
+    </div>
+
+    <div class="promise">
+      <strong>Our plain-language commitment:</strong> These documents cover everything required by GDPR, UK GDPR, CCPA, PIPEDA, and other applicable laws — but they're written in plain English. If you find any section unclear, email <a href="mailto:privacy@meok.ai" style="color: var(--deep-blue);">privacy@meok.ai</a> and we'll explain it.
+    </div>
+
+    <!-- Privacy Policy card -->
+    <a href="privacy.html" class="doc-card">
+      <div class="doc-card-icon">&#128274;</div>
+      <div class="doc-card-body">
+        <div class="doc-card-label">Privacy Policy</div>
+        <div class="doc-card-title">How we handle your data</div>
+        <div class="doc-card-desc">
+          What data we collect, why we collect it, how long we keep it, how it's encrypted on your device, your rights over it, and how to exercise those rights. Covers GDPR, UK GDPR, CCPA/CPRA, PIPEDA, and Quebec Law 25.
+        </div>
+        <div class="doc-card-topics">
+          <span class="doc-tag">Data collection</span>
+          <span class="doc-tag">AES-256 encryption</span>
+          <span class="doc-tag">Retention tiers</span>
+          <span class="doc-tag">Your rights</span>
+          <span class="doc-tag">Children's privacy</span>
+          <span class="doc-tag">LLM subprocessors</span>
+          <span class="doc-tag">GDPR</span>
+          <span class="doc-tag">CCPA</span>
+        </div>
+      </div>
+      <div class="doc-card-arrow">&#8594;</div>
+    </a>
+
+    <!-- Terms of Service card -->
+    <a href="terms.html" class="doc-card">
+      <div class="doc-card-icon">&#128221;</div>
+      <div class="doc-card-body">
+        <div class="doc-card-label">Terms of Service</div>
+        <div class="doc-card-title">Your rights and responsibilities</div>
+        <div class="doc-card-desc">
+          What you can and can't do with MEOK, how billing and cancellation work, what we are and aren't responsible for, and how we handle AI disclosure, professional advice limitations, and open-source licensing.
+        </div>
+        <div class="doc-card-topics">
+          <span class="doc-tag">AI disclosure</span>
+          <span class="doc-tag">Not professional advice</span>
+          <span class="doc-tag">Subscription &amp; billing</span>
+          <span class="doc-tag">14-day refund right</span>
+          <span class="doc-tag">Open source (AGPL-3.0)</span>
+          <span class="doc-tag">Family Guardian</span>
+          <span class="doc-tag">Gaming</span>
+          <span class="doc-tag">EU AI Act</span>
+        </div>
+      </div>
+      <div class="doc-card-arrow">&#8594;</div>
+    </a>
+
+    <!-- Cookie Policy card -->
+    <a href="cookies.html" class="doc-card">
+      <div class="doc-card-icon">&#127850;</div>
+      <div class="doc-card-body">
+        <div class="doc-card-label">Cookie Policy</div>
+        <div class="doc-card-title">What cookies we use (and don't)</div>
+        <div class="doc-card-desc">
+          Essential cookies for authentication and security, optional functional cookies for preferences, privacy-preserving analytics that are off by default — and a clear statement that we use no advertising cookies or tracking networks whatsoever.
+        </div>
+        <div class="doc-card-topics">
+          <span class="doc-tag">Essential cookies</span>
+          <span class="doc-tag">Functional (opt-in)</span>
+          <span class="doc-tag">Plausible analytics</span>
+          <span class="doc-tag">No Google Analytics</span>
+          <span class="doc-tag">No ad tracking</span>
+          <span class="doc-tag">GPC support</span>
+          <span class="doc-tag">Consent management</span>
+        </div>
+      </div>
+      <div class="doc-card-arrow">&#8594;</div>
+    </a>
+
+    <!-- Company information -->
+    <div class="company-info">
+      <h2>Company information</h2>
+      <dl class="company-info-grid">
+        <div class="info-item">
+          <dt>Legal entity</dt>
+          <dd>MEOK AI LTD</dd>
+        </div>
+        <div class="info-item">
+          <dt>Jurisdiction</dt>
+          <dd>Incorporated in England &amp; Wales</dd>
+        </div>
+        <div class="info-item">
+          <dt>ICO registration</dt>
+          <dd><em>[PENDING — to be updated]</em></dd>
+        </div>
+        <div class="info-item">
+          <dt>Governing law</dt>
+          <dd>England &amp; Wales (primary); California CCPA for CA users</dd>
+        </div>
+        <div class="info-item">
+          <dt>Privacy &amp; DPO contact</dt>
+          <dd><a href="mailto:privacy@meok.ai">privacy@meok.ai</a></dd>
+        </div>
+        <div class="info-item">
+          <dt>Legal enquiries</dt>
+          <dd><a href="mailto:legal@meok.ai">legal@meok.ai</a></dd>
+        </div>
+        <div class="info-item">
+          <dt>Effective date</dt>
+          <dd>31 March 2026</dd>
+        </div>
+        <div class="info-item">
+          <dt>Last updated</dt>
+          <dd>19 March 2026</dd>
+        </div>
+      </dl>
+    </div>
+
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="footer-logo">MEOK.AI</div>
+  <div class="footer-tagline">Your AI. Your Data. Your Companion.</div>
+  <ul class="footer-links">
+    <li><a href="../about.html">About</a></li>
+    <li><a href="../pricing.html">Pricing</a></li>
+    <li><a href="../open-source.html">Open Source</a></li>
+    <li><a href="../faq.html">FAQ</a></li>
+    <li><a href="../contact.html">Contact</a></li>
+    <li><a href="index.html">Legal</a></li>
+  </ul>
+  <div class="footer-copy">&copy; 2026 MEOK AI LTD. Incorporated in England &amp; Wales.</div>
+</footer>
+
 </body>
 </html>

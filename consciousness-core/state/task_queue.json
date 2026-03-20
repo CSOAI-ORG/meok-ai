@@ -1,0 +1,82 @@
+{
+  "tasks": [
+    {
+      "id": "task_49cdead9",
+      "title": "fix auth bug",
+      "description": "fix auth bug",
+      "files": [],
+      "status": "queued",
+      "priority": 3,
+      "care_score": 0.8,
+      "requester": "delegate",
+      "assignee": null,
+      "created_at": "2026-03-18T06:20:56.692428",
+      "assigned_at": null,
+      "completed_at": null,
+      "result_summary": null
+    },
+    {
+      "id": "task_b91f75aa",
+      "title": "fix auth bug in login endpoint",
+      "description": "fix auth bug in login endpoint",
+      "files": [],
+      "status": "assigned",
+      "priority": 3,
+      "care_score": 0.8,
+      "requester": "delegate",
+      "assignee": "jarvis-openclaw",
+      "created_at": "2026-03-18T06:21:58.218847",
+      "assigned_at": "2026-03-18T06:21:58.220153",
+      "completed_at": null,
+      "result_summary": null
+    },
+    {
+      "id": "task_24317fd8",
+      "title": "fix auth bug in login endpoint",
+      "description": "fix auth bug in login endpoint",
+      "files": [],
+      "status": "assigned",
+      "priority": 3,
+      "care_score": 0.8,
+      "requester": "delegate",
+      "assignee": "jarvis-openclaw",
+      "created_at": "2026-03-18T06:22:35.338385",
+      "assigned_at": "2026-03-18T06:22:35.340817",
+      "completed_at": null,
+      "result_summary": null
+    },
+    {
+      "id": "task_0069ea81",
+      "title": "write tests",
+      "description": "write tests",
+      "files": [],
+      "status": "assigned",
+      "priority": 3,
+      "care_score": 0.7,
+      "requester": "delegate",
+      "assignee": "sovereign-openclaw",
+      "created_at": "2026-03-18T06:23:07.673040",
+      "assigned_at": "2026-03-18T06:23:07.676757",
+      "completed_at": null,
+      "result_summary": null
+    },
+    {
+      "id": "task_6a50b999",
+      "title": "Team Integration Test",
+      "description": "Test task to verify AI team coordination and task delegation is working properly",
+      "files": [
+        "test_team.py"
+      ],
+      "status": "assigned",
+      "priority": 3,
+      "care_score": 0.8,
+      "requester": "claude-mcp",
+      "assignee": "jarvis-openclaw",
+      "created_at": "2026-03-18T06:46:34.018565",
+      "assigned_at": "2026-03-18T06:46:34.023679",
+      "completed_at": null,
+      "result_summary": null
+    }
+  ],
+  "saved_at": "2026-03-18T06:46:34.024109"
+}

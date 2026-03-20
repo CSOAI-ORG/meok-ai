@@ -1,0 +1,95 @@
+{
+  "jarvis-openclaw": {
+    "agent_id": "jarvis-openclaw",
+    "type": "openclaw-jarvis",
+    "capabilities": [
+      "communication",
+      "web_search",
+      "browser",
+      "planning",
+      "monitoring"
+    ],
+    "status": "active",
+    "active_tasks": 0,
+    "success_rate": 1.0,
+    "registered_at": "2026-03-19T15:27:32.259871",
+    "last_seen": "2026-03-19T15:27:32.259872"
+  },
+  "sovereign-openclaw": {
+    "agent_id": "sovereign-openclaw",
+    "type": "openclaw-sovereign",
+    "capabilities": [
+      "planning",
+      "analysis",
+      "monitoring",
+      "neural_inference",
+      "memory_operations"
+    ],
+    "status": "active",
+    "active_tasks": 0,
+    "success_rate": 1.0,
+    "registered_at": "2026-03-19T15:27:32.260697",
+    "last_seen": "2026-03-19T15:27:32.260699"
+  },
+  "meok-openclaw": {
+    "agent_id": "meok-openclaw",
+    "type": "openclaw-meok",
+    "capabilities": [
+      "code_execution",
+      "analysis",
+      "neural_inference",
+      "memory_operations",
+      "creative"
+    ],
+    "status": "active",
+    "active_tasks": 0,
+    "success_rate": 1.0,
+    "registered_at": "2026-03-19T15:27:32.261674",
+    "last_seen": "2026-03-19T15:27:32.261675"
+  },
+  "claude-code": {
+    "agent_id": "claude-code",
+    "type": "claude-code",
+    "capabilities": [
+      "code_execution",
+      "analysis",
+      "planning",
+      "memory_operations",
+      "creative"
+    ],
+    "status": "active",
+    "active_tasks": 0,
+    "success_rate": 1.0,
+    "registered_at": "2026-03-19T15:27:32.262424",
+    "last_seen": "2026-03-19T15:27:32.262426"
+  },
+  "kimi-code": {
+    "agent_id": "kimi-code",
+    "type": "kimi-code",
+    "capabilities": [
+      "code_execution",
+      "analysis",
+      "planning",
+      "memory_operations"
+    ],
+    "status": "active",
+    "active_tasks": 0,
+    "success_rate": 1.0,
+    "registered_at": "2026-03-19T15:27:32.263374",
+    "last_seen": "2026-03-19T15:27:32.263375"
+  },
+  "nemoclaw-gateway": {
+    "agent_id": "nemoclaw-gateway",
+    "type": "nemoclaw",
+    "capabilities": [
+      "security",
+      "code_execution",
+      "monitoring"
+    ],
+    "status": "active",
+    "active_tasks": 0,
+    "success_rate": 1.0,
+    "registered_at": "2026-03-19T15:27:32.264079",
+    "last_seen": "2026-03-19T15:27:32.264080"
+  }
+}
