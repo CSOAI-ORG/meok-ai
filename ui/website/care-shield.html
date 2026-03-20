@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Care Shield — MEOK.AI</title>
+  <meta name="description" content="Always-on sovereign monitoring. OSINT collectors run silently in the background — breach checks, dark web, social threats — surfacing only new findings, never storing raw personal data.">
+  <link rel="stylesheet" href="nav.css">
+  <style>
+    /* ── Care Shield page-specific ── */
+    .shield-hero-icon {
+      font-size: 4rem;
+      line-height: 1;
+      margin-bottom: 20px;
+      display: block;
+    }
+    .threat-stat-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin: 40px 0;
+      justify-content: center;
+    }
+    .threat-stat {
+      background: rgba(74,144,217,0.07);
+      border: 1px solid rgba(74,144,217,0.18);
+      border-radius: var(--radius);
+      padding: 24px 32px;
+      text-align: center;
+      flex: 1;
+      min-width: 160px;
+    }
+    .threat-stat strong {
+      display: block;
+      font-size: 2.2rem;
+      font-weight: 900;
+      color: var(--deep-blue);
+      line-height: 1.1;
+    }
+    .threat-stat span {
+      font-size: 0.85rem;
+      color: var(--mid);
+      margin-top: 4px;
+      display: block;
+    }
+
+    /* How it works steps */
+    .steps { display: flex; flex-direction: column; gap: 0; }
+    .step {
+      display: flex;
+      gap: 28px;
+      padding: 32px 0;
+      border-bottom: 1px solid var(--border);
+      align-items: flex-start;
+    }
+    .step:last-child { border-bottom: none; }
+    .step-num {
+      flex-shrink: 0;
+      width: 48px; height: 48px;
+      background: var(--deep-blue);
+      color: #fff;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem; font-weight: 900;
+    }
+    .step-body h3 { font-size: 1.1rem; font-weight: 700; color: var(--dark); margin-bottom: 8px; }
+    .step-body p { color: var(--mid); font-size: 0.95rem; margin: 0; }
+
+    /* Collector grid */
+    .collector-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 16px;
+      margin-top: 32px;
+    }
+    .collector-card {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      background: #fff;
+      transition: box-shadow var(--transition), border-color var(--transition);
+    }
+    .collector-card:hover {
+      box-shadow: var(--shadow);
+      border-color: rgba(74,144,217,0.35);
+    }
+    .collector-icon { font-size: 1.6rem; margin-bottom: 10px; }
+    .collector-card h3 { font-size: 0.95rem; font-weight: 700; color: var(--dark); margin-bottom: 6px; }
+    .collector-card p { font-size: 0.85rem; color: var(--mid); margin: 0; line-height: 1.55; }
+
+    /* Fingerprint callout */
+    .fingerprint-box {
+      background: linear-gradient(135deg, rgba(74,144,217,0.06), rgba(46,204,113,0.06));
+      border: 1px solid rgba(74,144,217,0.2);
+      border-radius: var(--radius-lg);
+      padding: 40px;
+      display: flex;
+      gap: 32px;
+      align-items: flex-start;
+    }
+    .fingerprint-box .fp-icon { font-size: 3rem; flex-shrink: 0; }
+    .fingerprint-box h3 { font-size: 1.2rem; font-weight: 800; color: var(--dark); margin-bottom: 10px; }
+    .fingerprint-box p { color: var(--mid); font-size: 0.95rem; margin: 0; }
+    .fingerprint-box code {
+      display: inline-block;
+      font-family: 'SF Mono', 'Fira Code', monospace;
+      font-size: 0.78rem;
+      background: rgba(26,26,46,0.07);
+      color: var(--deep-blue);
+      border-radius: 4px;
+      padding: 2px 7px;
+      margin-top: 10px;
+    }
+    @media (max-width: 600px) {
+      .fingerprint-box { flex-direction: column; gap: 16px; }
+    }
+
+    /* Comparison table */
+    .compare-table-wrap { overflow-x: auto; margin-top: 32px; }
+    .compare-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+    .compare-table th, .compare-table td {
+      padding: 14px 18px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+    .compare-table th {
+      background: var(--light);
+      font-weight: 700;
+      color: var(--dark);
+      font-size: 0.82rem;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+    .compare-table th.col-shield {
+      background: linear-gradient(135deg, rgba(74,144,217,0.12), rgba(46,204,113,0.08));
+      color: var(--deep-blue);
+    }
+    .compare-table tr:last-child td { border-bottom: none; }
+    .compare-table tr:hover td { background: var(--light); }
+    .compare-table .col-shield { font-weight: 600; color: var(--green-dark); }
+    .check { color: var(--green); font-weight: 700; }
+    .cross { color: #E74C3C; font-weight: 700; }
+    .partial { color: var(--yellow-dark); font-weight: 600; }
+
+    /* Privacy promise */
+    .privacy-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 16px;
+      margin-top: 32px;
+    }
+    .privacy-item {
+      background: rgba(46,204,113,0.06);
+      border: 1px solid rgba(46,204,113,0.18);
+      border-radius: var(--radius);
+      padding: 20px 22px;
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+    .privacy-item .pi-icon { font-size: 1.3rem; flex-shrink: 0; margin-top: 2px; }
+    .privacy-item h4 { font-size: 0.88rem; font-weight: 700; color: var(--dark); margin-bottom: 4px; }
+    .privacy-item p { font-size: 0.82rem; color: var(--mid); margin: 0; line-height: 1.5; }
+  </style>
+</head>
+<body>
+
+<nav class="nav" role="navigation" aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">MEOK<span>.AI</span></a>
+    <button class="nav-hamburger" id="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open menu">
+      <span class="ham-bar"></span>
+      <span class="ham-bar"></span>
+      <span class="ham-bar"></span>
+    </button>
+    <ul class="nav-links" id="nav-menu" role="menubar">
+      <li class="nav-dropdown" role="none">
+        <button class="nav-link nav-drop-btn" aria-haspopup="true" aria-expanded="false">
+          Product <span class="drop-caret" aria-hidden="true">▾</span>
+        </button>
+        <ul class="drop-menu" role="menu" aria-label="Product">
+          <li role="none"><a href="sovereign-os.html" role="menuitem">
+            <span class="drop-icon">🛡️</span>
+            <span><strong>Sovereign OS</strong><em>Your AI operating layer</em></span>
+          </a></li>
+          <li role="none"><a href="any-llm.html" role="menuitem">
+            <span class="drop-icon">🔗</span>
+            <span><strong>Any LLM</strong><em>Claude, GPT, Gemini — you choose</em></span>
+          </a></li>
+          <li role="none"><a href="gaming.html" role="menuitem">
+            <span class="drop-icon">🎮</span>
+            <span><strong>Gaming</strong><em>Your AI companion in every game</em></span>
+          </a></li>
+          <li role="none"><a href="family-guardian.html" role="menuitem">
+            <span class="drop-icon">🌱</span>
+            <span><strong>Family Guardian</strong><em>Care-based child safety</em></span>
+          </a></li>
+          <li role="none"><a href="care-shield.html" role="menuitem">
+            <span class="drop-icon">🛡️</span>
+            <span><strong>Care Shield</strong><em>Always-on sovereign monitoring</em></span>
+          </a></li>
+          <li role="none"><a href="external-memory.html" role="menuitem">
+            <span class="drop-icon">🧠</span>
+            <span><strong>External Memory</strong><em>Lifelong sovereign recall</em></span>
+          </a></li>
+        </ul>
+      </li>
+      <li class="nav-dropdown" role="none">
+        <button class="nav-link nav-drop-btn" aria-haspopup="true" aria-expanded="false">
+          Use cases <span class="drop-caret" aria-hidden="true">▾</span>
+        </button>
+        <ul class="drop-menu" role="menu" aria-label="Use cases">
+          <li role="none"><a href="gaming.html" role="menuitem">
+            <span class="drop-icon">🎮</span>
+            <span><strong>Gaming</strong><em>Never lose your playstyle again</em></span>
+          </a></li>
+          <li role="none"><a href="family-guardian.html" role="menuitem">
+            <span class="drop-icon">👨‍👩‍👧</span>
+            <span><strong>Family</strong><em>Protect without surveilling</em></span>
+          </a></li>
+          <li role="none"><a href="sovereign-os.html" role="menuitem">
+            <span class="drop-icon">💼</span>
+            <span><strong>Work</strong><em>Sovereign AI for professionals</em></span>
+          </a></li>
+          <li role="none"><a href="external-memory.html" role="menuitem">
+            <span class="drop-icon">🔬</span>
+            <span><strong>Research</strong><em>Persistent memory for deep work</em></span>
+          </a></li>
+          <li role="none"><a href="mirror-mode.html" role="menuitem" style="background:linear-gradient(135deg,rgba(74,144,217,0.07),rgba(108,99,255,0.07));border-radius:8px;">
+            <span class="drop-icon">🪞</span>
+            <span><strong>Mirror Mode <span style="font-size:0.68rem;background:var(--sky-blue);color:#fff;border-radius:4px;padding:1px 5px;margin-left:4px;font-weight:700;">NEW</span></strong><em>See your digital footprint — free</em></span>
+          </a></li>
+        </ul>
+      </li>
+      <li role="none"><a href="about.html" class="nav-link" role="menuitem">About</a></li>
+      <li role="none"><a href="pricing.html" class="nav-link" role="menuitem">Pricing</a></li>
+      <li role="none">
+        <a href="open-source.html" class="nav-link nav-opensource" role="menuitem" title="AGPL-3.0 core, MIT functional layers">
+          <span class="os-dot" aria-hidden="true"></span> Open Source
+        </a>
+      </li>
+      <li role="none">
+        <a href="pricing.html" class="nav-cta" role="menuitem">Get Started</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-badge">Care Shield</div>
+    <span class="shield-hero-icon" aria-hidden="true">🛡️</span>
+    <h1>Always-On Sovereign<br><span class="accent">Protection</span></h1>
+    <p>Big Tech monitors you 24 hours a day, 7 days a week — data brokers, breach databases, and dark web markets trade your information right now, without your knowledge. Care Shield flips the equation. It monitors back on your behalf, silently and continuously, surfacing only what's new and genuinely threatening.</p>
+    <div class="hero-actions">
+      <a href="pricing.html" class="btn btn-primary">Start Monitoring</a>
+      <a href="#how-it-works" class="btn btn-secondary">See How It Works</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- THREAT REALITY STATS -->
+<section class="bg-light">
+  <div class="container">
+    <div class="section-header center">
+      <h2 class="section-title">The threat landscape you're already living in</h2>
+      <p style="color:var(--mid);max-width:640px;margin:0 auto;">Every day you're not monitoring is a day someone else is — and profiting from it.</p>
+    </div>
+    <div class="threat-stat-row">
+      <div class="threat-stat">
+        <strong>23B+</strong>
+        <span>records in breach databases right now</span>
+      </div>
+      <div class="threat-stat">
+        <strong>15 min</strong>
+        <span>median time for stolen credentials to be used</span>
+      </div>
+      <div class="threat-stat">
+        <strong>4,000+</strong>
+        <span>data brokers trading personal profiles</span>
+      </div>
+      <div class="threat-stat">
+        <strong>83%</strong>
+        <span>of breaches go undetected for months</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- HOW IT WORKS -->
+<section id="how-it-works">
+  <div class="container">
+    <div class="two-col">
+      <div>
+        <div class="hero-badge" style="margin-bottom:16px;">How it works</div>
+        <h2 class="section-title">Three steps. Silent. Continuous. Precise.</h2>
+        <p style="color:var(--mid);margin-bottom:32px;">Care Shield doesn't spam you with noise. It watches everything — and only speaks when something genuinely new and threatening appears.</p>
+        <div class="steps">
+          <div class="step">
+            <div class="step-num">1</div>
+            <div class="step-body">
+              <h3>Configure what to watch</h3>
+              <p>Tell Care Shield your email addresses, phone numbers, usernames, domain names, and any other identifiers to protect. You control the scope entirely — add or remove targets any time. Profiles are encrypted at rest with your key.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <div class="step-body">
+              <h3>Collectors run silently</h3>
+              <p>Seven specialist OSINT collectors run continuously in the background — breach databases, dark web markets, paste sites, social threat vectors, domain spoofing registries, credential stuffing lists, and data broker listings. You don't need to do anything. They never sleep.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <div class="step-body">
+              <h3>Alert only for new threats</h3>
+              <p>Every finding is SHA-256 fingerprinted. If Care Shield has seen it before, it stays silent. You're only notified when something genuinely new surfaces — and only if it clears the severity threshold you've set. High-severity findings reach you via WhatsApp, push notification, and email simultaneously.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <!-- Fingerprint callout -->
+        <div class="fingerprint-box" style="margin-bottom:24px;">
+          <div class="fp-icon">🔢</div>
+          <div>
+            <h3>Differential fingerprinting — never alert twice</h3>
+            <p>Each finding is hashed before storage. Care Shield compares incoming findings against its fingerprint ledger. If the hash already exists, the finding is discarded silently. You only hear about what's genuinely new.</p>
+            <code>SHA-256(source + entity + finding_content)</code>
+          </div>
+        </div>
+
+        <!-- Multi-channel alerts -->
+        <div class="fingerprint-box" style="background:linear-gradient(135deg,rgba(46,204,113,0.06),rgba(74,144,217,0.06));">
+          <div class="fp-icon">📲</div>
+          <div>
+            <h3>Multi-channel alerts when it matters</h3>
+            <p>High-severity findings trigger WhatsApp, push notification, and email — all three simultaneously, so you never miss a critical alert regardless of which channel you're on. Medium findings go to your dashboard only. Low findings are logged silently for your weekly digest.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- COLLECTOR GRID -->
+<section class="bg-light">
+  <div class="container">
+    <div class="section-header center">
+      <h2 class="section-title">Seven collectors. One shield.</h2>
+      <p style="color:var(--mid);max-width:580px;margin:0 auto;">Each collector is a specialist — purpose-built for its domain, running on its own schedule, feeding a unified threat ledger.</p>
+    </div>
+    <div class="collector-grid">
+      <div class="collector-card">
+        <div class="collector-icon">💥</div>
+        <h3>Breach Database Collector</h3>
+        <p>Monitors breach aggregators and raw dump sources for your email addresses, phone numbers, and usernames. Surfaces credential exposures before attackers can weaponise them.</p>
+      </div>
+      <div class="collector-card">
+        <div class="collector-icon">🕸️</div>
+        <h3>Dark Web Market Collector</h3>
+        <p>Crawls known dark web markets and forums for listings referencing your identifiers — financial data, identity packages, access credentials sold to the highest bidder.</p>
+      </div>
+      <div class="collector-card">
+        <div class="collector-icon">📋</div>
+        <h3>Paste Site Collector</h3>
+        <p>Monitors Pastebin, GitHub Gists, and dozens of public paste services for your email addresses, API keys, and personal identifiers accidentally leaked in code or data dumps.</p>
+      </div>
+      <div class="collector-card">
+        <div class="collector-icon">🎭</div>
+        <h3>Social Threat Collector</h3>
+        <p>Detects impersonation accounts, coordinated harassment campaigns, and brand abuse across major social platforms. Alerts on accounts mimicking your identity or targeting you directly.</p>
+      </div>
+      <div class="collector-card">
+        <div class="collector-icon">🌐</div>
+        <h3>Domain Spoofing Collector</h3>
+        <p>Watches newly registered domains for typosquats and homoglyph attacks targeting your domain — the kind used in phishing campaigns and CEO fraud that comes before the attack, not after.</p>
+      </div>
+      <div class="collector-card">
+        <div class="collector-icon">🔑</div>
+        <h3>Credential Stuffing Collector</h3>
+        <p>Monitors known credential stuffing lists and combolist markets for your email-password pairs. If your credentials appear in an active stuffing list, you'll know immediately.</p>
+      </div>
+      <div class="collector-card">
+        <div class="collector-icon">🗂️</div>
+        <h3>Data Broker Collector</h3>
+        <p>Tracks the data broker ecosystem — people-search sites, marketing databases, and aggregator profiles — showing you where your personal data is being bought and sold commercially.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- PRIVACY BY DESIGN -->
+<section>
+  <div class="container">
+    <div class="two-col">
+      <div>
+        <h2 class="section-title">Privacy by design — not a policy, an architecture</h2>
+        <p style="color:var(--mid);margin-bottom:28px;">Watching the watchers doesn't mean becoming one. Care Shield is built so that monitoring external threats never requires holding your raw personal data internally.</p>
+        <div class="privacy-grid">
+          <div class="privacy-item">
+            <div class="pi-icon">🔒</div>
+            <div>
+              <h4>No raw data stored</h4>
+              <p>Identifiers are hashed before leaving your device. Care Shield queries against hashes — never plain-text emails or phone numbers.</p>
+            </div>
+          </div>
+          <div class="privacy-item">
+            <div class="pi-icon">🗑️</div>
+            <div>
+              <h4>Cryptographic erasure</h4>
+              <p>Delete your profile and your encryption key is destroyed — making stored fingerprints mathematically unreadable, permanently.</p>
+            </div>
+          </div>
+          <div class="privacy-item">
+            <div class="pi-icon">📊</div>
+            <div>
+              <h4>Data minimisation</h4>
+              <p>Care Shield stores only fingerprints and severity metadata. The raw content of a finding is never persisted beyond the alert delivery window.</p>
+            </div>
+          </div>
+          <div class="privacy-item">
+            <div class="pi-icon">🚫</div>
+            <div>
+              <h4>No advertising. Ever.</h4>
+              <p>Your threat profile is never used for targeting, modelling, or sold to third parties. Monitoring data exists for one purpose: protecting you.</p>
+            </div>
+          </div>
+          <div class="privacy-item">
+            <div class="pi-icon">🇪🇺</div>
+            <div>
+              <h4>GDPR compliant</h4>
+              <p>Full data portability, right to deletion, and audit logs available on request. Hosted in EU data centres by default.</p>
+            </div>
+          </div>
+          <div class="privacy-item">
+            <div class="pi-icon">🔍</div>
+            <div>
+              <h4>Open audit logs</h4>
+              <p>Every collector run, every alert fired, every fingerprint matched — logged and available to you in your dashboard at any time.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="promise-box" style="background:rgba(46,204,113,0.07);border:1px solid rgba(46,204,113,0.2);border-radius:var(--radius);padding:36px;margin-bottom:24px;">
+          <h3 style="color:#27ae60;font-size:1.05rem;font-weight:700;margin-bottom:12px;">The Care Shield promise</h3>
+          <p style="color:var(--mid);font-size:0.95rem;line-height:1.7;">We will never store your raw identifiers. We will never sell your threat profile. We will never use your monitoring data for advertising or commercial purposes. We alert you to genuine threats — nothing more. The moment you delete your account, your data is gone. Cryptographically. Permanently.</p>
+        </div>
+        <ul class="features">
+          <li>End-to-end encrypted profile storage</li>
+          <li>Hash-only queries to external sources</li>
+          <li>Differential fingerprinting — zero repeated alerts</li>
+          <li>Multi-channel delivery: WhatsApp, push, email</li>
+          <li>Configurable severity thresholds per channel</li>
+          <li>Weekly digest for low-severity findings</li>
+          <li>Full audit trail — every collector run logged</li>
+          <li>One-click profile deletion with cryptographic erasure</li>
+          <li>EU-hosted infrastructure by default</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- COMPARISON TABLE -->
+<section class="bg-light">
+  <div class="container">
+    <div class="section-header center">
+      <h2 class="section-title">Care Shield vs. the alternatives</h2>
+      <p style="color:var(--mid);max-width:580px;margin:0 auto;">Manual checks are spotty and exhausting. Paid services often store more than they reveal. Care Shield is built differently.</p>
+    </div>
+    <div class="compare-table-wrap">
+      <table class="compare-table" role="table" aria-label="Care Shield comparison">
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th class="col-shield">Care Shield</th>
+            <th>Manual checks</th>
+            <th>Paid breach services</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Always-on continuous monitoring</td>
+            <td class="col-shield"><span class="check">✓</span> 24/7 automated</td>
+            <td><span class="cross">✗</span> Only when you remember</td>
+            <td><span class="partial">~</span> Some, email-only</td>
+          </tr>
+          <tr>
+            <td>Dark web coverage</td>
+            <td class="col-shield"><span class="check">✓</span> Dedicated collector</td>
+            <td><span class="cross">✗</span> Not possible manually</td>
+            <td><span class="partial">~</span> Limited, variable</td>
+          </tr>
+          <tr>
+            <td>Domain spoofing detection</td>
+            <td class="col-shield"><span class="check">✓</span> Real-time registry watch</td>
+            <td><span class="cross">✗</span> No</td>
+            <td><span class="cross">✗</span> Rarely included</td>
+          </tr>
+          <tr>
+            <td>Social impersonation alerts</td>
+            <td class="col-shield"><span class="check">✓</span> Multi-platform</td>
+            <td><span class="cross">✗</span> No</td>
+            <td><span class="cross">✗</span> Rarely included</td>
+          </tr>
+          <tr>
+            <td>Data broker tracking</td>
+            <td class="col-shield"><span class="check">✓</span> Included</td>
+            <td><span class="cross">✗</span> Hours of manual work</td>
+            <td><span class="partial">~</span> Separate paid tier</td>
+          </tr>
+          <tr>
+            <td>Differential fingerprinting (no repeat alerts)</td>
+            <td class="col-shield"><span class="check">✓</span> SHA-256 deduplication</td>
+            <td><span class="cross">✗</span> No system</td>
+            <td><span class="cross">✗</span> Most repeat constantly</td>
+          </tr>
+          <tr>
+            <td>WhatsApp + push + email alerts</td>
+            <td class="col-shield"><span class="check">✓</span> All three simultaneously</td>
+            <td><span class="cross">✗</span> None</td>
+            <td><span class="partial">~</span> Email only typically</td>
+          </tr>
+          <tr>
+            <td>No raw data stored</td>
+            <td class="col-shield"><span class="check">✓</span> Privacy by design</td>
+            <td><span class="check">✓</span> Nothing stored</td>
+            <td><span class="cross">✗</span> Often stores PII</td>
+          </tr>
+          <tr>
+            <td>Cryptographic erasure on delete</td>
+            <td class="col-shield"><span class="check">✓</span> Guaranteed</td>
+            <td>N/A</td>
+            <td><span class="cross">✗</span> Rarely offered</td>
+          </tr>
+          <tr>
+            <td>Open audit logs</td>
+            <td class="col-shield"><span class="check">✓</span> Full transparency</td>
+            <td>N/A</td>
+            <td><span class="cross">✗</span> Black box</td>
+          </tr>
+          <tr>
+            <td>Cost</td>
+            <td class="col-shield">From £9/mo</td>
+            <td>Free (but hours of your time)</td>
+            <td>£15–£30/mo (less coverage)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+
+<!-- FEATURE SUMMARY CARDS -->
+<section>
+  <div class="container">
+    <div class="section-header center">
+      <h2 class="section-title">Everything you need. Nothing you don't.</h2>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">🔎</div>
+        <h3>7 specialist collectors</h3>
+        <p>Breach databases, dark web markets, paste sites, social threats, domain spoofing, credential stuffing lists, and data brokers — each running on its own continuous schedule.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🔢</div>
+        <h3>SHA-256 fingerprinting</h3>
+        <p>Every finding is hashed before it reaches the alert engine. Duplicates are discarded silently. You only hear about genuinely new threats — never the same finding twice.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">📲</div>
+        <h3>Triple-channel alerts</h3>
+        <p>High-severity findings trigger WhatsApp, push, and email simultaneously. Medium findings go to your dashboard. Low findings appear in your weekly digest. Fully configurable.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🔒</div>
+        <h3>Privacy by design</h3>
+        <p>No raw personal data ever stored. Hash-only queries. Cryptographic erasure on account deletion. GDPR compliant. EU-hosted by default. No advertising. Ever.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- CTA -->
+<section>
+  <div class="container">
+    <div class="highlight-box">
+      <h2 class="section-title">You're already being monitored. Start monitoring back.</h2>
+      <p>Care Shield runs silently from the moment you configure it. No credit card required to start. 30-day money-back guarantee.</p>
+      <a href="pricing.html" class="btn btn-yellow">See Pricing &amp; Start Free</a>
+    </div>
+  </div>
+</section>
+
+
+<footer class="footer" role="contentinfo">
+
+  <div class="footer-partners">
+    <p class="footer-partners-label">Powered by / works in relation with</p>
+    <div class="partner-carousel" role="list">
+      <span class="partner-item" role="listitem">Claude</span>
+      <span class="partner-item" role="listitem">ChatGPT</span>
+      <span class="partner-item" role="listitem">Gemini</span>
+      <span class="partner-item" role="listitem">Ollama</span>
+      <span class="partner-item" role="listitem">Qdrant</span>
+      <span class="partner-item" role="listitem">MCP</span>
+      <span class="partner-item" role="listitem">CSOAI Framework</span>
+    </div>
+  </div>
+
+  <div class="footer-trust" role="list" aria-label="Trust certifications">
+    <div class="trust-badge" role="listitem">
+      <span class="badge-icon" aria-hidden="true">🔒</span> PASS-Rated MCPs
+    </div>
+    <div class="trust-badge" role="listitem">
+      <span class="badge-icon" aria-hidden="true">🛡️</span> CSOAI Governance
+    </div>
+    <div class="trust-badge" role="listitem">
+      <span class="badge-icon" aria-hidden="true">🇪🇺</span> GDPR + EU AI Act
+    </div>
+    <div class="trust-badge" role="listitem">
+      <span class="badge-icon" aria-hidden="true">👶</span> COPPA + GDPR-K
+    </div>
+    <div class="trust-badge" role="listitem">
+      <span class="badge-icon" aria-hidden="true">🌿</span> Care Principles Certified
+    </div>
+    <div class="trust-badge" role="listitem">
+      <span class="badge-icon" aria-hidden="true">📖</span> AGPL-3.0 Core
+    </div>
+  </div>
+
+  <div class="footer-testimonial">
+    <blockquote>
+      "Finally, AI that respects human dignity — not as a marketing claim, but as an architectural constraint."
+    </blockquote>
+    <cite>— Founding Council, MEOK.AI · CSOAI Research Institute</cite>
+  </div>
+
+  <div class="footer-engage">
+    <div class="engage-item">
+      <h4>Stay in the loop</h4>
+      <p>Thoughtful updates — never noise. Unsubscribe any time.</p>
+      <a href="contact.html" class="btn-outline-white">Newsletter →</a>
+    </div>
+    <div class="engage-item">
+      <h4>Join the community</h4>
+      <p>Real-time support, peer connection, influence on what we build.</p>
+      <a href="https://discord.gg/meok" class="btn-outline-white" target="_blank" rel="noopener">Discord →</a>
+    </div>
+    <div class="engage-item">
+      <h4>Research Institute</h4>
+      <p>Consciousness studies, ethical AI, early access. By invitation.</p>
+      <a href="about.html#research-institute" class="btn-outline-white">Learn more →</a>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="footer-bottom-inner">
+      <div>
+        <span class="footer-logo">MEOK<span style="color:rgba(255,255,255,0.4)">.AI</span></span>
+        <p class="footer-tagline">Your AI. Your data. Your companion. Built with care — not extraction.</p>
+      </div>
+      <nav class="footer-cols" aria-label="Footer navigation">
+        <div class="footer-col">
+          <h5>Product</h5>
+          <ul>
+            <li><a href="sovereign-os.html">Sovereign OS</a></li>
+            <li><a href="any-llm.html">Any LLM</a></li>
+            <li><a href="gaming.html">Gaming</a></li>
+            <li><a href="family-guardian.html">Family Guardian</a></li>
+            <li><a href="care-shield.html">Care Shield</a></li>
+            <li><a href="external-memory.html">External Memory</a></li>
+            <li><a href="mirror-mode.html">🪞 Mirror Mode</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Company</h5>
+          <ul>
+            <li><a href="about.html">About</a></li>
+            <li><a href="how-it-works.html">How It Works</a></li>
+            <li><a href="open-source.html">Open Source</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Support</h5>
+          <ul>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="contact.html">Get help</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Legal</h5>
+          <ul>
+            <li><a href="/legal/privacy">Privacy Policy</a></li>
+            <li><a href="/legal/terms">Terms of Service</a></li>
+            <li><a href="/legal/cookies">Cookie Policy</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <p class="footer-copy">
+      &copy; 2026 MEOK AI LTD &nbsp;·&nbsp; Registered in England &amp; Wales &nbsp;·&nbsp;
+      Core licensed under <a href="https://github.com/CSOAI-ORG/meok-ai" style="color:rgba(255,255,255,0.4)" target="_blank" rel="noopener">AGPL-3.0</a>
+    </p>
+  </div>
+
+</footer>
+
+
+<style>
+.nav-dropdown { position: relative; }
+.nav-drop-btn {
+  background: none; border: none; cursor: pointer;
+  font-family: var(--font-sans); font-size: 0.88rem; font-weight: 500;
+  color: var(--mid); padding: 6px 10px; border-radius: 8px;
+  transition: color var(--transition), background var(--transition);
+  display: flex; align-items: center; gap: 4px; white-space: nowrap;
+  min-height: var(--touch-min);
+}
+.nav-drop-btn:hover,
+.nav-dropdown:focus-within .nav-drop-btn { color: var(--deep-blue); background: var(--light); }
+.drop-caret { font-size: 0.65rem; transition: transform var(--transition-care); }
+.nav-dropdown:focus-within .drop-caret,
+.nav-dropdown.open .drop-caret { transform: rotate(180deg); }
+.drop-menu {
+  display: none; position: absolute; top: calc(100% + 8px); left: 0;
+  min-width: 260px; background: #fff; border: 1px solid var(--border);
+  border-radius: var(--radius); box-shadow: var(--shadow-lg);
+  list-style: none; padding: 8px; z-index: 200;
+  animation: dropIn var(--transition-care) var(--ease-in);
+}
+@keyframes dropIn {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.nav-dropdown:hover .drop-menu,
+.nav-dropdown:focus-within .drop-menu,
+.nav-dropdown.open .drop-menu { display: block; }
+.drop-menu a {
+  display: flex; align-items: center; gap: 12px; padding: 10px 12px;
+  border-radius: 8px; text-decoration: none; color: var(--dark);
+  transition: background var(--transition-care);
+}
+.drop-menu a:hover { background: var(--light); }
+.drop-icon { font-size: 1.2rem; flex-shrink: 0; }
+.drop-menu strong { display: block; font-size: 0.9rem; font-weight: 700; }
+.drop-menu em { display: block; font-size: 0.78rem; color: var(--mid); font-style: normal; margin-top: 1px; }
+.nav-opensource { display: flex !important; align-items: center; gap: 5px; }
+.os-dot {
+  width: 7px; height: 7px; background: var(--green); border-radius: 50%;
+  flex-shrink: 0; animation: pulse 2.4s var(--ease) infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.3); }
+}
+.nav-hamburger {
+  display: none; flex-direction: column; gap: 5px; cursor: pointer;
+  background: none; border: none; padding: 8px; min-height: var(--touch-min);
+  min-width: var(--touch-min); justify-content: center; align-items: center;
+}
+.ham-bar { display: block; width: 22px; height: 2px; background: var(--dark); border-radius: 2px; transition: all var(--transition-care); }
+.nav-hamburger[aria-expanded="true"] .ham-bar:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-hamburger[aria-expanded="true"] .ham-bar:nth-child(2) { opacity: 0; }
+.nav-hamburger[aria-expanded="true"] .ham-bar:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+@media (max-width: 960px) {
+  .nav-hamburger { display: flex; }
+  .nav-links {
+    display: none; position: absolute; top: 64px; left: 0; right: 0;
+    background: #fff; border-bottom: 1px solid var(--border);
+    flex-direction: column; padding: 12px 5%; gap: 2px; z-index: 150;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+  }
+  .nav-links.open { display: flex; }
+  .nav-drop-btn, .nav-link { width: 100%; padding: 12px 14px !important; }
+  .drop-menu { position: static; box-shadow: none; border: none; border-left: 3px solid var(--border); margin-left: 12px; border-radius: 0; }
+}
+@media (max-width: 768px) {
+  section { padding: var(--section-pad-mob) 5%; }
+  .footer-engage { grid-template-columns: 1fr; }
+  .footer-cols { gap: 28px; }
+  .footer-bottom-inner { flex-direction: column; }
+}
+
+/* Page-specific: promise-box (reused from family-guardian) */
+.promise-box h3 { color: #27ae60; font-size: 1.1rem; font-weight: 700; margin-bottom: 12px; }
+</style>
+
+<script>
+(function() {
+  const toggle = document.getElementById('nav-toggle');
+  const menu   = document.getElementById('nav-menu');
+  if (toggle && menu) {
+    toggle.addEventListener('click', () => {
+      const open = menu.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', String(open));
+    });
+  }
+  document.querySelectorAll('.nav-drop-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const li = btn.closest('.nav-dropdown');
+      li.classList.toggle('open');
+      btn.setAttribute('aria-expanded', String(li.classList.contains('open')));
+    });
+  });
+  document.addEventListener('click', e => {
+    if (!e.target.closest('.nav-dropdown')) {
+      document.querySelectorAll('.nav-dropdown.open').forEach(d => {
+        d.classList.remove('open');
+        d.querySelector('[aria-expanded]')?.setAttribute('aria-expanded', 'false');
+      });
+    }
+  });
+  const path = window.location.pathname.split('/').pop() || 'index.html';
+  document.querySelectorAll('.nav-links a[href]').forEach(a => {
+    if (a.getAttribute('href') === path) a.classList.add('active');
+  });
+})();
+</script>
+
+</body>
+</html>
