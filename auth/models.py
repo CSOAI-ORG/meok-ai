@@ -53,3 +53,43 @@ class UserInfo(BaseModel):
     hatch_name: str
     created_at: datetime
     is_active: bool
+    plan: str = "free"
+    feature_flags: dict = {}
+
+
+# Feature flag keys (use these constants everywhere)
+class FeatureFlag:
+    RALPH_MODE = "ralph_mode"          # autonomous AI task runner
+    PGVECTOR_SEARCH = "pgvector_search"  # semantic memory search
+    VOICE_PIPELINE = "voice_pipeline"  # Silero VAD → WhisperKit → TTS
+    FAMILY_GUARDIAN = "family_guardian"  # parental controls + COPPA mode
+    CUSTOM_CHARACTERS = "custom_characters"  # unlimited character creation
+    BETA_DASHBOARD = "beta_dashboard"  # advanced sovereign dashboard
+
+    # Default flags per plan
+    PLAN_FLAGS = {
+        "free": {
+            RALPH_MODE: False,
+            PGVECTOR_SEARCH: False,
+            VOICE_PIPELINE: False,
+            FAMILY_GUARDIAN: False,
+            CUSTOM_CHARACTERS: False,
+            BETA_DASHBOARD: False,
+        },
+        "pro": {
+            RALPH_MODE: False,
+            PGVECTOR_SEARCH: True,
+            VOICE_PIPELINE: True,
+            FAMILY_GUARDIAN: False,
+            CUSTOM_CHARACTERS: False,
+            BETA_DASHBOARD: True,
+        },
+        "premium": {
+            RALPH_MODE: True,
+            PGVECTOR_SEARCH: True,
+            VOICE_PIPELINE: True,
+            FAMILY_GUARDIAN: True,
+            CUSTOM_CHARACTERS: True,
+            BETA_DASHBOARD: True,
+        },
+    }

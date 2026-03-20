@@ -60,6 +60,8 @@ class AuthRepository:
                     hatch_name TEXT,
                     config TEXT DEFAULT '{}',
                     status TEXT DEFAULT 'active',
+                    plan TEXT DEFAULT 'free',
+                    feature_flags TEXT DEFAULT '{}',
                     created_at TEXT DEFAULT (datetime('now'))
                 );
                 CREATE TABLE IF NOT EXISTS users (
