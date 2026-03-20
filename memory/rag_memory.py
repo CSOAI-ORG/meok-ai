@@ -25,10 +25,12 @@ Usage:
 
 import json
 import hashlib
+import math
 import numpy as np
+from dataclasses import dataclass, field
 from datetime import datetime
 from pathlib import Path
-from typing import Optional
+from typing import Optional, List
 
 MEMORY_DIR = Path(__file__).parent / "memory"
 
@@ -681,6 +683,254 @@ class RAGMemory:
     def recall_knowledge(self, query: str, top_k: int = 5) -> list[dict]:
         """Recall relevant knowledge entries."""
         return self.search("knowledge_base", query, top_k)
+
+
+# ---------------------------------------------------------------------------
+# EmotionalRAG: MemoryEpisode + MemoryStore with Ebbinghaus forgetting curve
+# and emotion-congruence boost (Kimi research 2026-03-19)
+#
+# EmotionalRAG: α*semantic + β*emotion_congruence (Kimi research 2026-03-19)
+# Ebbinghaus forgetting: effective_score = cosine * exp(-λt), λ = 1 - care_weight
+# ---------------------------------------------------------------------------
+
+
+@dataclass
+class MemoryEpisode:
+    """
+    A single memory episode with EmotionalRAG scoring support.
+
+    care_weight  : float in [0, 1] — high care = slow forgetting (λ = 1 - care_weight)
+    emotion_valence: float in [-1, 1] — affective tone of the episode
+    created_at   : ISO-format string timestamp of storage time
+    """
+    id: str
+    content: str
+    created_at: str                   # ISO-8601 string, e.g. datetime.now().isoformat()
+    care_weight: float = 0.5          # [0,1]; high → retained longer
+    emotion_valence: float = 0.0      # [-1,1]; used for emotion-congruence boost
+    importance_score: float = 0.5
+    source_agent: str = "sovereign"
+    memory_type: str = "interaction"
+    tags: List[str] = field(default_factory=list)
+    embedding: List[float] = field(default_factory=list)
+
+    @property
+    def days_old(self) -> float:
+        """Elapsed days since this episode was stored."""
+        try:
+            stored = datetime.fromisoformat(self.created_at)
+        except (ValueError, TypeError):
+            return 0.0
+        delta = datetime.now() - stored
+        return max(0.0, delta.total_seconds() / 86400.0)
+
+    def to_dict(self) -> dict:
+        return {
+            "id": self.id,
+            "content": self.content,
+            "created_at": self.created_at,
+            "care_weight": self.care_weight,
+            "emotion_valence": self.emotion_valence,
+            "importance_score": self.importance_score,
+            "source_agent": self.source_agent,
+            "memory_type": self.memory_type,
+            "tags": self.tags,
+            "embedding": self.embedding,
+        }
+
+    @classmethod
+    def from_dict(cls, data: dict) -> "MemoryEpisode":
+        return cls(
+            id=data["id"],
+            content=data["content"],
+            created_at=data.get("created_at", datetime.now().isoformat()),
+            care_weight=float(data.get("care_weight", 0.5)),
+            emotion_valence=float(data.get("emotion_valence", 0.0)),
+            importance_score=float(data.get("importance_score", 0.5)),
+            source_agent=data.get("source_agent", "sovereign"),
+            memory_type=data.get("memory_type", "interaction"),
+            tags=list(data.get("tags", [])),
+            embedding=list(data.get("embedding", [])),
+        )
+
+
+class MemoryStore:
+    """
+    Lightweight episodic memory store with EmotionalRAG scoring.
+
+    Scoring in query_memories():
+      effective_score = cosine_similarity
+                        * exp(-λ * days_old)          # Ebbinghaus forgetting
+                        + α_emotion_boost              # emotion-congruence boost
+      where λ = 1.0 - episode.care_weight   (high care → slow decay)
+      and   α_emotion_boost = 0.08 if |episode.emotion_valence - query_valence| < 0.3
+
+    EmotionalRAG: α*semantic + β*emotion_congruence (Kimi research 2026-03-19)
+    Ebbinghaus forgetting: effective_score = cosine * exp(-λt), λ = 1 - care_weight
+    """
+
+    COLLECTION = "memory_episodes"
+
+    def __init__(self, storage_path: Optional[Path] = None):
+        self._path = storage_path or (MEMORY_DIR / "memory_store.json")
+        self._path.parent.mkdir(parents=True, exist_ok=True)
+        self._embedder = _make_embedder()
+        self._episodes: List[MemoryEpisode] = []
+        self._load()
+
+    # ------------------------------------------------------------------
+    # Persistence helpers
+    # ------------------------------------------------------------------
+
+    def _load(self) -> None:
+        if self._path.exists():
+            try:
+                raw = json.loads(self._path.read_text())
+                self._episodes = [MemoryEpisode.from_dict(d) for d in raw.get("episodes", [])]
+            except Exception:
+                self._episodes = []
+
+    def _save(self) -> None:
+        data = {"episodes": [ep.to_dict() for ep in self._episodes]}
+        with open(self._path, "w") as fh:
+            json.dump(data, fh, indent=1)
+
+    # ------------------------------------------------------------------
+    # store()
+    # ------------------------------------------------------------------
+
+    def store(
+        self,
+        content: str,
+        care_weight: float = 0.5,
+        emotion_valence: float = 0.0,
+        importance_score: float = 0.5,
+        source_agent: str = "sovereign",
+        memory_type: str = "interaction",
+        tags: Optional[List[str]] = None,
+    ) -> MemoryEpisode:
+        """
+        Store a memory episode, computing its embedding automatically.
+        Returns the stored MemoryEpisode.
+        """
+        ep_id = hashlib.sha256(
+            f"{content}{datetime.now().isoformat()}".encode()
+        ).hexdigest()[:16]
+
+        embedding = self._embedder.embed(content)
+
+        episode = MemoryEpisode(
+            id=ep_id,
+            content=content,
+            created_at=datetime.now().isoformat(),
+            care_weight=float(care_weight),
+            emotion_valence=float(emotion_valence),
+            importance_score=float(importance_score),
+            source_agent=source_agent,
+            memory_type=memory_type,
+            tags=list(tags or []),
+            embedding=embedding,
+        )
+        self._episodes.append(episode)
+
+        # Cap at 10000 episodes
+        if len(self._episodes) > 10000:
+            self._episodes = self._episodes[-10000:]
+
+        self._save()
+        return episode
+
+    # ------------------------------------------------------------------
+    # query_memories()
+    # ------------------------------------------------------------------
+
+    def query_memories(
+        self,
+        query: str,
+        top_k: int = 5,
+        care_weight_min: float = 0.0,
+        tags: Optional[List[str]] = None,
+        query_valence: Optional[float] = None,
+    ) -> List[dict]:
+        """
+        Retrieve memories ranked by EmotionalRAG effective score.
+
+        Scoring (per episode):
+          1. base_score   = cosine_similarity(query_embedding, episode_embedding)
+          2. λ            = 1.0 - episode.care_weight  (Ebbinghaus decay rate)
+          3. effective    = base_score * exp(-λ * days_old)  [Ebbinghaus forgetting]
+          4. If query_valence is given and |episode.emotion_valence - query_valence| < 0.3:
+               effective += 0.08  [emotion-congruence boost, EmotionalRAG β term]
+
+        EmotionalRAG: α*semantic + β*emotion_congruence (Kimi research 2026-03-19)
+        Ebbinghaus forgetting: effective_score = cosine * exp(-λt), λ = 1 - care_weight
+
+        Args:
+            query         : Natural-language query string.
+            top_k         : Number of results to return.
+            care_weight_min: Minimum care_weight filter.
+            tags          : Optional tag filter (episode must contain at least one).
+            query_valence : Optional float in [-1, 1]. When provided, episodes whose
+                            emotion_valence is within 0.3 of this value receive a +0.08
+                            emotion-congruence boost (EmotionalRAG α*sem + β*emo).
+
+        Returns:
+            List of dicts sorted by effective_score descending.
+        """
+        if not self._episodes:
+            return []
+
+        query_vec = np.array(self._embedder.embed(query))
+        norm_q = np.linalg.norm(query_vec)
+
+        results = []
+        for ep in self._episodes:
+            # care_weight filter
+            if ep.care_weight < care_weight_min:
+                continue
+            # tag filter
+            if tags and not any(t in ep.tags for t in tags):
+                continue
+            # skip episodes without embeddings
+            if not ep.embedding:
+                continue
+
+            # --- 1. Cosine similarity (base score) ---
+            ep_vec = np.array(ep.embedding)
+            norm_d = np.linalg.norm(ep_vec)
+            if norm_q > 0 and norm_d > 0:
+                base_score = float(np.dot(query_vec, ep_vec) / (norm_q * norm_d))
+            else:
+                base_score = 0.0
+
+            # --- 2. Ebbinghaus forgetting curve ---
+            # λ = 1 - care_weight → high care memories decay slowly
+            decay_rate = 1.0 - ep.care_weight
+            effective_score = base_score * math.exp(-decay_rate * ep.days_old)
+
+            # --- 3. Emotion-congruence boost (EmotionalRAG β term) ---
+            if query_valence is not None:
+                if abs(ep.emotion_valence - query_valence) < 0.3:
+                    effective_score += 0.08
+
+            results.append({
+                "id": ep.id,
+                "content": ep.content,
+                "created_at": ep.created_at,
+                "days_old": round(ep.days_old, 3),
+                "care_weight": ep.care_weight,
+                "emotion_valence": ep.emotion_valence,
+                "importance_score": ep.importance_score,
+                "source_agent": ep.source_agent,
+                "memory_type": ep.memory_type,
+                "tags": ep.tags,
+                "base_score": round(base_score, 4),
+                "effective_score": round(effective_score, 4),
+            })
+
+        # Sort by effective_score (not raw cosine)
+        results.sort(key=lambda x: x["effective_score"], reverse=True)
+        return results[:top_k]
 
 
 # ---------------------------------------------------------------------------
