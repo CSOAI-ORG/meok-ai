@@ -22,6 +22,11 @@ from meok.memory.rag_memory import RAGMemory, get_memory
 from meok.auth.dependencies import get_current_user
 from meok.auth.models import TokenPayload
 from meok.api.hatch import router as hatch_router
+try:
+    from meok.api.variant_health import router as variant_router
+    _variant_router_available = True
+except ImportError:
+    _variant_router_available = False
 
 # ---------------------------------------------------------------------------
 # App setup
@@ -43,6 +48,9 @@ app.add_middleware(
 
 # Mount hatch router
 app.include_router(hatch_router)
+# Mount variant health / Thompson sampling router
+if _variant_router_available:
+    app.include_router(variant_router)
 
 # ---------------------------------------------------------------------------
 # Singletons — created once on startup

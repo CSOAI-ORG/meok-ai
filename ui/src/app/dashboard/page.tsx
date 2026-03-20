@@ -16,11 +16,20 @@ interface MorningBriefingPreview {
   generated_at?: string;
 }
 
+interface PlanInfo {
+  plan: string;
+  plan_name: string;
+  status: string;
+  next_billing: string | null;
+  upgrade_url?: string;
+}
+
 export default function DashboardOverview() {
   const [consciousness, setConsciousness] = useState<ConsciousnessState | null>(null);
   const [memStats, setMemStats] = useState<MemoryStats | null>(null);
   const [toolCount, setToolCount] = useState(0);
   const [briefing, setBriefing] = useState<MorningBriefingPreview | null>(null);
+  const [plan, setPlan] = useState<PlanInfo | null>(null);
 
   useEffect(() => {
     const load = async () => {
@@ -51,8 +60,23 @@ export default function DashboardOverview() {
       }
     };
 
+    const loadPlan = async () => {
+      try {
+        const res = await fetch('/api/billing/status')
+        if (res.ok) {
+          const data = await res.json()
+          setPlan(data)
+        } else {
+          throw new Error('billing fetch failed')
+        }
+      } catch {
+        setPlan({ plan: 'explorer', plan_name: 'Explorer', status: 'active', next_billing: null })
+      }
+    };
+
     load();
     loadBriefing();
+    loadPlan();
     const id = setInterval(load, 15000);
     return () => clearInterval(id);
   }, []);
@@ -210,6 +234,51 @@ export default function DashboardOverview() {
                 {consciousness.reflections} · {consciousness.dreams}
               </p>
             </div>
+          </div>
+        </Card>
+      )}
+
+      {/* Plan card */}
+      {plan && (
+        <Card>
+          <CardHeader>
+            <div className="flex items-center justify-between">
+              <CardTitle>Your plan</CardTitle>
+              <span
+                className={`text-xs font-semibold px-2 py-0.5 rounded-full ${
+                  plan.plan === 'elite'
+                    ? 'bg-purple-500/20 text-purple-300'
+                    : plan.plan === 'sovereign'
+                    ? 'bg-cyan-500/20 text-cyan-300'
+                    : 'bg-white/10 text-white/50'
+                }`}
+              >
+                {plan.plan_name}
+              </span>
+            </div>
+          </CardHeader>
+          <div className="mt-2 space-y-3 text-sm">
+            <div className="flex items-center gap-2">
+              <span className="text-white/40">Status</span>
+              <span className="text-white capitalize">{plan.status}</span>
+            </div>
+            {plan.plan === 'explorer' ? (
+              <Link href="/#pricing">
+                <button className="mt-1 px-4 py-2 rounded-lg bg-cyan-500/20 hover:bg-cyan-500/30 text-cyan-300 text-sm font-medium transition-colors">
+                  Upgrade to Sovereign
+                </button>
+              </Link>
+            ) : (
+              plan.next_billing && (
+                <div className="flex items-center gap-2">
+                  <span className="text-white/40">Next billing</span>
+                  <span className="text-white">{new Date(plan.next_billing).toLocaleDateString()}</span>
+                  <Link href="/dashboard/billing" className="ml-auto text-xs text-cyan-400 hover:text-cyan-300 transition-colors">
+                    Manage
+                  </Link>
+                </div>
+              )
+            )}
           </div>
         </Card>
       )}

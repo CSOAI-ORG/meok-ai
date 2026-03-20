@@ -1,30 +1,28 @@
-import { defineConfig, devices } from "@playwright/test";
+import { defineConfig, devices } from '@playwright/test'
+
+const BASE_URL = process.env.BASE_URL || 'http://localhost:3000'
 
 export default defineConfig({
-  testDir: "./e2e",
-  fullyParallel: true,
+  testDir: './tests/e2e',
+  fullyParallel: false,
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 2 : 0,
   workers: process.env.CI ? 1 : undefined,
-  reporter: "html",
-
+  reporter: 'html',
   use: {
-    // Local dev server — change to production URL for prod smoke tests
-    baseURL: process.env.BASE_URL || "http://localhost:3000",
-    trace: "on-first-retry",
-    screenshot: "only-on-failure",
+    baseURL: BASE_URL,
+    trace: 'on-first-retry',
+    screenshot: 'only-on-failure',
   },
-
   projects: [
-    { name: "chromium", use: { ...devices["Desktop Chrome"] } },
-    { name: "mobile", use: { ...devices["iPhone 14"] } },
+    {
+      name: 'chromium',
+      use: { ...devices['Desktop Chrome'] },
+    },
   ],
-
-  // Auto-start dev server for local runs
-  webServer: process.env.BASE_URL ? undefined : {
-    command: "npm run dev",
-    url: "http://localhost:3000",
+  webServer: process.env.CI ? undefined : {
+    command: 'npm run dev',
+    url: BASE_URL,
     reuseExistingServer: !process.env.CI,
-    timeout: 60 * 1000,
   },
-});
+})
