@@ -132,7 +132,7 @@ async def handle_family_guardian(tool_name: str, arguments: dict) -> Any:
             )
 
         elif tool_name == "family_analyse_interaction":
-            return g.analyse_interaction(
+            result = g.analyse_interaction(
                 child_id=arguments["child_id"],
                 text=arguments["text"],
                 interaction_type=arguments.get("interaction_type", "conversation"),
@@ -140,6 +140,44 @@ async def handle_family_guardian(tool_name: str, arguments: dict) -> Any:
                 topics=arguments.get("topics"),
                 hour_of_day=arguments.get("hour_of_day"),
             )
+
+            # Notify on high-severity alerts (URGENT = critical/high)
+            high_severity_labels = {"urgent", "concerned"}
+            high_alerts = [
+                a for a in result.get("alerts", [])
+                if a.get("severity", "").lower() in high_severity_labels
+            ]
+            if high_alerts:
+                try:
+                    from meok.core.notifications import get_notification_service
+                    from meok.core.family_guardian import get_guardian as _get_g
+                    _g = _get_g()
+                    _profile = _g._profiles.get(arguments["child_id"])
+                    _contacts = getattr(_profile, "alert_contacts", []) if _profile else []
+                    _ns = get_notification_service()
+                    import asyncio as _asyncio
+                    for alert in high_alerts:
+                        _subject = f"[Family Guardian] {alert.get('alert_type', 'Alert')} — {alert.get('severity', '').upper()}"
+                        _body = (
+                            f"Child: {alert.get('child_id', arguments['child_id'])}\n"
+                            f"Type: {alert.get('alert_type', 'unknown')}\n"
+                            f"Severity: {alert.get('severity', 'unknown').upper()}\n"
+                            f"Detected: {alert.get('created_at', '')}"
+                        )
+                        for contact in _contacts:
+                            _asyncio.ensure_future(
+                                _ns.notify(
+                                    channel="auto",
+                                    recipient=contact,
+                                    subject=_subject,
+                                    body=_body,
+                                    urgency="high",
+                                )
+                            )
+                except Exception as _ne:
+                    logger.warning("Family Guardian notification error: %s", _ne)
+
+            return result
 
         elif tool_name == "family_dashboard":
             return g.get_dashboard(arguments["family_id"])

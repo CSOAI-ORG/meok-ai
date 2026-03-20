@@ -33,6 +33,9 @@ from meok.mcp.tools.character_emergence import CHARACTER_EMERGENCE_TOOLS, handle
 from meok.mcp.tools.mirror_mode import MIRROR_MODE_TOOLS, handle_mirror_mode
 from meok.mcp.tools.soul_vault import SOUL_VAULT_TOOLS, handle_soul_vault
 from meok.mcp.tools.voice_guardian import VOICE_GUARDIAN_TOOLS, handle_voice_guardian
+from meok.mcp.tools.osint import OSINT_TOOLS, handle_osint_tool
+from meok.mcp.tools.care_shield import CARE_SHIELD_TOOLS, handle_care_shield
+from meok.mcp.tools.notifications import NOTIFICATION_TOOLS, handle_notifications_tool
 
 # Combined tool list — order matches the original monolithic server
 ALL_TOOLS = (
@@ -62,6 +65,9 @@ ALL_TOOLS = (
     + MIRROR_MODE_TOOLS          # Sovereign OSINT self-investigation — viral launch feature
     + SOUL_VAULT_TOOLS           # Encrypted character memory + duress wipe (GrapheneOS-inspired)
     + VOICE_GUARDIAN_TOOLS       # Voice stress pipeline: audio → prosodic features → Family Guardian
+    + OSINT_TOOLS                # Phase L: 7-collector OSINT layer (Ignorant, Subfinder, Gitleaks, etc.)
+    + CARE_SHIELD_TOOLS          # Phase L: always-on sovereign monitoring
+    + NOTIFICATION_TOOLS         # Phase L: alert delivery (WhatsApp, Web Push, Email)
 )
 
 # Build name -> handler lookup from each module's tool list
@@ -119,6 +125,12 @@ for _tool in SOUL_VAULT_TOOLS:
     _TOOL_NAME_TO_HANDLER[_tool["name"]] = handle_soul_vault
 for _tool in VOICE_GUARDIAN_TOOLS:
     _TOOL_NAME_TO_HANDLER[_tool["name"]] = handle_voice_guardian
+for _tool in OSINT_TOOLS:
+    _TOOL_NAME_TO_HANDLER[_tool["name"]] = handle_osint_tool
+for _tool in CARE_SHIELD_TOOLS:
+    _TOOL_NAME_TO_HANDLER[_tool["name"]] = handle_care_shield
+for _tool in NOTIFICATION_TOOLS:
+    _TOOL_NAME_TO_HANDLER[_tool["name"]] = handle_notifications_tool
 
 # Also expose as a dict for external inspection
 TOOL_HANDLERS = {
