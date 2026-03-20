@@ -31,6 +31,8 @@ from meok.mcp.initializer import initialize_system
 from meok.mcp.tools import ALL_TOOLS, execute_tool
 from meok.api.chat_intelligence import generate_sovereign_response
 from meok.core.tool_dispatch import router as dispatch_router, register_fallback_tools
+from meok.api.neural_inference import router as neural_router
+from meok.api.memory_search import router as memory_router, set_pg_pool as memory_set_pg_pool
 from meok.config.settings import get_settings
 from meok.auth.models import (
     UserCreate, UserLogin, TokenResponse, RefreshRequest,
@@ -53,8 +55,23 @@ auth_repo = AuthRepository()
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     await initialize_system(state)
-    # TASK-002: Register tool dispatch fallbacks (real MCP tools hot-swap in later)
+
+    # TASK-002: Register tool dispatch fallbacks
     n_tools = register_fallback_tools()
+
+    # TASK-003: Wire asyncpg pool into RAG memory search
+    try:
+        import asyncpg as _asyncpg
+        from meok.config.settings import get_settings as _gs
+        _dsn = _gs().database.postgres_dsn
+        _pg_pool = await _asyncpg.create_pool(_dsn, min_size=1, max_size=5)
+        memory_set_pg_pool(_pg_pool)
+        import logging as _logging
+        _logging.getLogger(__name__).info("[Startup] pgvector pool injected into RAG memory search")
+    except Exception as _pg_exc:
+        import logging as _logging
+        _logging.getLogger(__name__).warning(f"[Startup] pgvector pool failed (RAG will use numpy fallback): {_pg_exc}")
+
     import logging as _logging
     _logging.getLogger(__name__).info(f"[Startup] Tool dispatch: {n_tools} fallback tools registered")
     yield
@@ -76,8 +93,10 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# TASK-002: Tool dispatch API routes
-app.include_router(dispatch_router)
+# TASK-001/002/003: API bridge routers
+app.include_router(dispatch_router)   # POST /api/v1/tools/dispatch  (intent → tool)
+app.include_router(neural_router)     # POST /api/v1/predict          (neural inference)
+app.include_router(memory_router)     # POST /api/v1/memory/search    (RAG retrieval)
 
 
 # ── Health ────────────────────────────────────────────────────────
@@ -804,6 +823,193 @@ async def chat_onboard(body: _OnboardRequest):
         media_type="text/event-stream",
         headers={"Cache-Control": "no-cache", "X-Accel-Buffering": "no"},
     )
+
+
+# ── Alert Management (TASK-004 prerequisite) ──────────────────────
+
+@app.get("/api/v1/alerts")
+async def get_alerts(user: TokenPayload = Depends(require_auth)):
+    """List active alerts — resolves the unacknowledged security alert."""
+    am = getattr(state, "alert_manager", None)
+    if am is None:
+        return {"alerts": [], "total": 0, "note": "alert_manager not initialised"}
+    active = am.get_active_alerts()
+    return {
+        "alerts": [
+            {
+                "id": a.id,
+                "title": getattr(a, "title", str(a)),
+                "message": getattr(a, "message", ""),
+                "severity": getattr(a, "severity", {}).value if hasattr(getattr(a, "severity", None), "value") else str(getattr(a, "severity", "")),
+                "source": getattr(a, "source", ""),
+                "acknowledged": getattr(a, "acknowledged", False),
+                "resolved": getattr(a, "resolved", False),
+                "created_at": str(getattr(a, "created_at", "")),
+            }
+            for a in active
+        ],
+        "total": len(active),
+    }
+
+
+@app.post("/api/v1/alerts/{alert_id}/acknowledge")
+async def acknowledge_alert(alert_id: str, user: TokenPayload = Depends(require_auth)):
+    """Acknowledge an alert by ID — stops heartbeat from reporting it."""
+    am = getattr(state, "alert_manager", None)
+    if am is None:
+        raise HTTPException(status_code=503, detail="alert_manager not initialised")
+    ok = am.acknowledge_alert(alert_id, acknowledged_by=user.sub if hasattr(user, "sub") else "operator")
+    if not ok:
+        raise HTTPException(status_code=404, detail=f"Alert '{alert_id}' not found or already acknowledged")
+    return {"acknowledged": True, "alert_id": alert_id, "by": getattr(user, "sub", "operator")}
+
+
+@app.post("/api/v1/alerts/{alert_id}/resolve")
+async def resolve_alert(alert_id: str, user: TokenPayload = Depends(require_auth)):
+    """Resolve an alert — permanently clears it from active list."""
+    am = getattr(state, "alert_manager", None)
+    if am is None:
+        raise HTTPException(status_code=503, detail="alert_manager not initialised")
+    ok = am.resolve_alert(alert_id)
+    if not ok:
+        raise HTTPException(status_code=404, detail=f"Alert '{alert_id}' not found")
+    return {"resolved": True, "alert_id": alert_id}
+
+
+# ── TASK-004: Hourman Task Queue ───────────────────────────────────
+
+from pydantic import BaseModel as _HourmanBase
+from typing import Optional as _Opt
+
+class _TaskCreate(_HourmanBase):
+    task_name: str
+    task_type: str = "one_shot"
+    priority: int = 5
+    payload: dict = {}
+    tags: list[str] = []
+    care_score: _Opt[float] = None
+    assigned_to: _Opt[str] = None
+
+
+class _SprintStart(_HourmanBase):
+    sprint_type: str = "micro"   # micro | power | deep
+    task_ids: list[int] = []
+    notes: str = ""
+
+
+@app.get("/api/v1/tasks")
+async def list_tasks(
+    status: str = "pending",
+    limit: int = 50,
+    user: TokenPayload = Depends(require_auth),
+):
+    """List ralph_tasks queue — powers Hourman sprint controller."""
+    try:
+        import asyncpg as _apg
+        from meok.config.settings import get_settings as _gs2
+        _dsn2 = _gs2().database.postgres_dsn
+        conn = await _apg.connect(_dsn2)
+        rows = await conn.fetch(
+            "SELECT id, task_id, task_name, task_type, status, priority, payload, tags, "
+            "care_score, assigned_to, created_at, completed_at, error_message "
+            "FROM ralph_tasks WHERE status = $1 ORDER BY priority, created_at LIMIT $2",
+            status, limit,
+        )
+        await conn.close()
+        tasks = [dict(r) for r in rows]
+        for t in tasks:
+            if t.get("created_at"):
+                t["created_at"] = t["created_at"].isoformat()
+            if t.get("completed_at"):
+                t["completed_at"] = t["completed_at"].isoformat()
+        return {"tasks": tasks, "total": len(tasks), "status_filter": status}
+    except Exception as exc:
+        return {"tasks": [], "total": 0, "error": str(exc),
+                "note": "Run db/migrations/002_ralph_tasks.sql to create the queue"}
+
+
+@app.post("/api/v1/tasks")
+async def create_task(body: _TaskCreate, user: TokenPayload = Depends(require_auth)):
+    """Create a task in the ralph_tasks queue."""
+    try:
+        import asyncpg as _apg, json as _json
+        from meok.config.settings import get_settings as _gs3
+        conn = await _apg.connect(_gs3().database.postgres_dsn)
+        row = await conn.fetchrow(
+            "INSERT INTO ralph_tasks (task_name, task_type, priority, payload, tags, "
+            "care_score, assigned_to, created_by) "
+            "VALUES ($1, $2, $3, $4::jsonb, $5, $6, $7, $8) RETURNING id, task_id",
+            body.task_name, body.task_type, body.priority,
+            _json.dumps(body.payload), body.tags, body.care_score,
+            body.assigned_to, getattr(user, "sub", "operator"),
+        )
+        await conn.close()
+        return {"created": True, "id": row["id"], "task_id": row["task_id"]}
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=f"Task creation failed: {exc}")
+
+
+@app.patch("/api/v1/tasks/{task_id}/status")
+async def update_task_status(
+    task_id: str,
+    status: str,
+    user: TokenPayload = Depends(require_auth),
+):
+    """Update task status (pending → running → done/failed)."""
+    allowed = {"pending", "running", "done", "failed", "cancelled"}
+    if status not in allowed:
+        raise HTTPException(status_code=400, detail=f"status must be one of {allowed}")
+    try:
+        import asyncpg as _apg
+        from meok.config.settings import get_settings as _gs4
+        conn = await _apg.connect(_gs4().database.postgres_dsn)
+        ts_field = "completed_at = NOW()," if status in {"done", "failed", "cancelled"} else ""
+        ts_field2 = "started_at = NOW()," if status == "running" else ""
+        await conn.execute(
+            f"UPDATE ralph_tasks SET status=$1, {ts_field}{ts_field2} "
+            "started_at=COALESCE(started_at, NOW()) WHERE task_id=$2 OR id=$3",
+            status, task_id, int(task_id) if task_id.isdigit() else -1,
+        )
+        await conn.close()
+        return {"updated": True, "task_id": task_id, "new_status": status}
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.post("/api/v1/tasks/sprint")
+async def start_sprint(body: _SprintStart, user: TokenPayload = Depends(require_auth)):
+    """
+    Start an Hourman sprint — assigns energy budget and queues tasks.
+    Fixes the Hourman 500 error (ralph_tasks table not existing).
+    """
+    energy_map = {"micro": 10, "power": 35, "deep": 100}
+    energy = energy_map.get(body.sprint_type, 10)
+    result = await execute_tool(
+        "hourman_start_sprint",
+        {"sprint_type": body.sprint_type, "energy_cost": energy, "notes": body.notes},
+        state,
+        tenant_id=user.tenant_id,
+    )
+    if body.task_ids:
+        try:
+            import asyncpg as _apg
+            from meok.config.settings import get_settings as _gs5
+            conn = await _apg.connect(_gs5().database.postgres_dsn)
+            for tid in body.task_ids:
+                await conn.execute(
+                    "UPDATE ralph_tasks SET status='running', started_at=NOW() WHERE id=$1",
+                    tid,
+                )
+            await conn.close()
+        except Exception:
+            pass
+    return {
+        "sprint_started": True,
+        "sprint_type": body.sprint_type,
+        "energy_cost": energy,
+        "tasks_activated": body.task_ids,
+        "hourman_result": result,
+    }
 
 
 # ── Morning Briefing ──────────────────────────────────────────────
