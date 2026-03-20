@@ -303,6 +303,97 @@ async def get_my_entity(user: TokenPayload = Depends(require_auth)):
         })
 
 
+# ── Mirror Mode endpoint (public — no auth, viral demo) ──────────
+
+@app.post("/api/mirror")
+async def mirror_investigate(request: Request):
+    """
+    Public Mirror Mode endpoint — sovereign OSINT self-investigation.
+    No auth required. Raw inputs never stored (SHA-256 hash only).
+    """
+    try:
+        body = await request.json()
+        email     = body.get("email")
+        username  = body.get("username")
+        full_name = body.get("full_name")
+        domain    = body.get("domain")
+
+        if not any([email, username, full_name, domain]):
+            return JSONResponse(
+                {"error": "Provide at least one of: email, username, full_name, domain"},
+                status_code=400,
+            )
+
+        from meok.core.mirror_mode import get_mirror
+        mirror = get_mirror()
+        report = await mirror.investigate(
+            email=email,
+            username=username,
+            full_name=full_name,
+            domain=domain,
+        )
+        d = report.to_dict()
+
+        # Flatten findings for easy frontend consumption
+        flat = []
+        for sev, findings in d.get("findings_by_severity", {}).items():
+            for f in findings:
+                flat.append({
+                    "severity": sev,
+                    "title": f["title"],
+                    "description": f["description"],
+                    "hardening_action": f["hardening_action"],
+                    "care_note": f["care_note"],
+                })
+        d["findings_flat"] = flat
+        return JSONResponse(d)
+
+    except Exception as exc:
+        logger.exception("Mirror Mode error: %s", exc)
+        return JSONResponse({"error": str(exc)}, status_code=500)
+
+
+# ── Voice guardian endpoint (audio → stress + guardian analysis) ──
+
+@app.post("/api/voice-guardian")
+async def voice_guardian(request: Request, user: TokenPayload = Depends(require_auth)):
+    """
+    Voice Guardian pipeline: raw PCM audio → stress analysis → Family Guardian.
+    Accepts multipart or JSON with base64 audio.
+    Raw audio is NEVER stored — only prosodic features + hash.
+    """
+    import base64
+    try:
+        body = await request.json()
+        audio_b64 = body.get("audio_base64", "")
+        sample_rate = int(body.get("sample_rate", 16000))
+        child_id    = body.get("child_id", user.sub)
+        age_group   = body.get("age_group", "9-12")
+        context     = body.get("context")
+        baseline    = body.get("child_baseline")  # optional dict
+
+        if not audio_b64:
+            return JSONResponse({"error": "audio_base64 required"}, status_code=400)
+
+        audio_bytes = base64.b64decode(audio_b64)
+
+        from meok.core.voice_stress import get_voice_guardian_pipeline
+        pipeline = get_voice_guardian_pipeline()
+        result = await pipeline.process_audio(
+            child_id=child_id,
+            audio_bytes=audio_bytes,
+            sample_rate=sample_rate,
+            age_group=age_group,
+            child_baseline=baseline,
+            context=context,
+        )
+        return JSONResponse(result)
+
+    except Exception as exc:
+        logger.exception("Voice Guardian error: %s", exc)
+        return JSONResponse({"error": str(exc)}, status_code=500)
+
+
 # ── MCP endpoint (tenant-aware) ──────────────────────────────────
 
 @app.post("/mcp")

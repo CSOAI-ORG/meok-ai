@@ -32,6 +32,7 @@ from meok.mcp.tools.sovereign import SOVEREIGN_TOOLS, handle_sovereign
 from meok.mcp.tools.character_emergence import CHARACTER_EMERGENCE_TOOLS, handle_character_emergence_tool
 from meok.mcp.tools.mirror_mode import MIRROR_MODE_TOOLS, handle_mirror_mode
 from meok.mcp.tools.soul_vault import SOUL_VAULT_TOOLS, handle_soul_vault
+from meok.mcp.tools.voice_guardian import VOICE_GUARDIAN_TOOLS, handle_voice_guardian
 
 # Combined tool list — order matches the original monolithic server
 ALL_TOOLS = (
@@ -60,6 +61,7 @@ ALL_TOOLS = (
     + CHARACTER_EMERGENCE_TOOLS  # 6-stage companion lifecycle: Egg→Cracking→Hatching→Growing→Mature→Full
     + MIRROR_MODE_TOOLS          # Sovereign OSINT self-investigation — viral launch feature
     + SOUL_VAULT_TOOLS           # Encrypted character memory + duress wipe (GrapheneOS-inspired)
+    + VOICE_GUARDIAN_TOOLS       # Voice stress pipeline: audio → prosodic features → Family Guardian
 )
 
 # Build name -> handler lookup from each module's tool list
@@ -115,6 +117,8 @@ for _tool in MIRROR_MODE_TOOLS:
     _TOOL_NAME_TO_HANDLER[_tool["name"]] = handle_mirror_mode
 for _tool in SOUL_VAULT_TOOLS:
     _TOOL_NAME_TO_HANDLER[_tool["name"]] = handle_soul_vault
+for _tool in VOICE_GUARDIAN_TOOLS:
+    _TOOL_NAME_TO_HANDLER[_tool["name"]] = handle_voice_guardian
 
 # Also expose as a dict for external inspection
 TOOL_HANDLERS = {
