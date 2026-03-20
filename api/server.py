@@ -22,6 +22,8 @@ from meok.memory.rag_memory import RAGMemory, get_memory
 from meok.auth.dependencies import get_current_user
 from meok.auth.models import TokenPayload
 from meok.api.hatch import router as hatch_router
+from meok.api.neural_inference import router as neural_router
+from meok.api.memory_search import router as memory_search_router, set_pg_pool
 try:
     from meok.api.variant_health import router as variant_router
     _variant_router_available = True
@@ -51,6 +53,10 @@ app.include_router(hatch_router)
 # Mount variant health / Thompson sampling router
 if _variant_router_available:
     app.include_router(variant_router)
+# Mount neural inference router (TASK-001: POST /api/v1/predict)
+app.include_router(neural_router)
+# Mount RAG memory search router (TASK-003: POST /api/v1/memory/search)
+app.include_router(memory_search_router)
 
 # ---------------------------------------------------------------------------
 # Singletons — created once on startup
@@ -397,6 +403,20 @@ async def startup():
     print("MEOK Dashboard API started")
     print("  220-node architecture ready")
     print(f"  Dreams dir: {DREAMS_DIR}")
+
+    # Wire pgvector pool into memory search router if DATABASE_URL is set
+    import os as _os
+    _db_url = _os.environ.get("DATABASE_URL", "")
+    if _db_url:
+        try:
+            import asyncpg as _asyncpg
+            _pool = await _asyncpg.create_pool(_db_url, min_size=2, max_size=10)
+            set_pg_pool(_pool)
+            print("  pgvector HNSW pool connected (memory search Tier 1 active)")
+        except Exception as _exc:
+            print(f"  pgvector pool unavailable ({_exc}) — memory search will use EmotionalRAG/cosine fallback")
+    else:
+        print("  DATABASE_URL not set — memory search using EmotionalRAG/cosine fallback")
 
 
 if __name__ == "__main__":
