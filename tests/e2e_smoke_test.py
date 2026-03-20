@@ -516,15 +516,15 @@ def test_dashboard_metrics(base: str) -> List[TestResult]:
         result = body.get("result", body)
         return True, f"keys={list(result.keys())[:5]}"
 
-    def get_asabiyyah():
-        code, body = _mcp_call(base, "get_asabiyyah_score", {})
+    def get_engagement():
+        code, body = _mcp_call(base, "get_engagement_score", {})
         assert code == 200, f"status={code}"
         result = body.get("result", body)
-        score = result.get("score", result.get("asabiyyah_score", "?"))
-        return True, f"asabiyyah={score}"
+        score = result.get("score", result.get("engagement_score", "?"))
+        return True, f"engagement={score}"
 
     results.append(run_test(group, "get_dashboard_metrics → response", get_dashboard))
-    results.append(run_test(group, "get_asabiyyah_score → score", get_asabiyyah))
+    results.append(run_test(group, "get_engagement_score → score", get_engagement))
     return results
 
 

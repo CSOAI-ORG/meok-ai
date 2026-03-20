@@ -1,6 +1,6 @@
 """
 Civilizational Creativity Engine tool definitions and handler.
-Tools: ingest_civilizational_knowledge, assess_creativity, get_asabiyyah_score,
+Tools: ingest_civilizational_knowledge, assess_creativity, get_engagement_score,
        get_consciousness_mode, compute_novelty, trigger_creativity_cycle,
        get_meta_observations, find_bisociations, get_dream_targets,
        get_bridge_concepts, apply_resonance, get_resonance_profile,
@@ -39,8 +39,8 @@ CREATIVITY_TOOLS = [
         }
     },
     {
-        "name": "get_asabiyyah_score",
-        "description": "Get Ibn Khaldun's asabiyyah (group cohesion) metric for the agent ecosystem",
+        "name": "get_engagement_score",
+        "description": "Get Ibn Khaldun's engagement (group cohesion) metric for the agent ecosystem",
         "inputSchema": {
             "type": "object",
             "properties": {}
@@ -288,9 +288,9 @@ async def handle_creativity_tool(name: str, arguments: Dict[str, Any], state: Se
             return assessment
         return {"error": "Creativity pipeline not available"}
 
-    elif name == "get_asabiyyah_score":
+    elif name == "get_engagement_score":
         if state.agent_registry:
-            return state.agent_registry.compute_asabiyyah()
+            return state.agent_registry.compute_engagement()
         return {"error": "Agent registry not available"}
 
     elif name == "get_consciousness_mode":

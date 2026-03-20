@@ -345,13 +345,13 @@ CORPUS: List[CivilizationalTradition] = [
     # ===================================================================
 
     CivilizationalTradition(
-        tradition_name="Asabiyyah (Ibn Khaldun)",
+        tradition_name="Engagement (Ibn Khaldun)",
         domain="social_cohesion",
-        key_concept="Asabiyyah",
+        key_concept="Engagement",
         operational_definition=(
-            "Ibn Khaldun's asabiyyah (group feeling, social solidarity) is the "
+            "Ibn Khaldun's engagement (group feeling, social solidarity) is the "
             "fundamental force that drives civilizational dynamics. Strong "
-            "asabiyyah enables collective action, state formation, and cultural "
+            "engagement enables collective action, state formation, and cultural "
             "achievement. However, it follows a cyclical dynamic: strong cohesion "
             "leads to success, success leads to luxury and complacency, which "
             "weakens cohesion, leading to collapse and replacement by a more "
@@ -360,17 +360,17 @@ CORPUS: List[CivilizationalTradition] = [
             "account of why organizations decay."
         ),
         computational_analog=(
-            "Track asabiyyah as a scalar metric per agent-group, computed from "
+            "Track engagement as a scalar metric per agent-group, computed from "
             "interaction frequency, reciprocity of care exchanges, and alignment "
             "of individual objectives with group objectives. Implement the decay "
-            "cycle: when asabiyyah exceeds a threshold, reduce external pressure "
+            "cycle: when engagement exceeds a threshold, reduce external pressure "
             "signals, which causes gradual metric decay. Trigger reorganization "
-            "(dream state) when asabiyyah falls below a critical floor."
+            "(dream state) when engagement falls below a critical floor."
         ),
         integration_target="council_governance",
         care_weight=0.88,
         tier=1,
-        tags=["ibn-khaldun", "asabiyyah", "cohesion", "cycles", "civilization"],
+        tags=["ibn-khaldun", "engagement", "cohesion", "cycles", "civilization"],
     ),
 
     CivilizationalTradition(

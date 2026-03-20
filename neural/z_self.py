@@ -54,7 +54,7 @@ MODEL_OUTPUT_DIMS = {
 }
 MODEL_NAMES = list(MODEL_OUTPUT_DIMS.keys())
 TOTAL_MODEL_OUTPUTS = sum(MODEL_OUTPUT_DIMS.values())  # 31
-CONTEXT_DIM = 10          # timestamp, agent_count, consciousness, asabiyyah, care, etc.
+CONTEXT_DIM = 10          # timestamp, agent_count, consciousness, engagement, care, etc.
 INPUT_DIM = TOTAL_MODEL_OUTPUTS + CONTEXT_DIM  # 41
 OUTPUT_DIM = 12           # meta-state vector
 
@@ -162,10 +162,10 @@ class ZSelfNetwork:
         mean_out = sum(model_outputs) / max(len(model_outputs), 1)
         consciousness_level = context[2] if len(context) > 2 else 0.5
         care_intensity = context[4] if len(context) > 4 else 0.5
-        asabiyyah = context[3] if len(context) > 3 else 0.5
+        engagement = context[3] if len(context) > 3 else 0.5
 
         system_confidence = min(1.0, mean_out * 0.7 + consciousness_level * 0.3)
-        care_alignment = min(1.0, care_intensity * 0.6 + asabiyyah * 0.4)
+        care_alignment = min(1.0, care_intensity * 0.6 + engagement * 0.4)
         anomaly = 1.0 if (care_intensity < 0.3 or system_confidence < 0.3) else 0.0
         consciousness_contrib = consciousness_level
 
@@ -268,7 +268,7 @@ class ZSelf:
                 for i, name in enumerate(MODEL_NAMES)
             },
             "raw_meta_state": meta_state,
-            "context": {k: ctx.get(k) for k in ("consciousness_level", "asabiyyah_score", "care_intensity")},
+            "context": {k: ctx.get(k) for k in ("consciousness_level", "engagement_score", "care_intensity")},
         }
 
         self._last_observation = observation
@@ -416,7 +416,7 @@ class ZSelf:
             math.cos(2 * math.pi * day_frac),                              # timestamp_cos
             min(1.0, context.get("agent_count", 6660) / 10000),           # agent_count_norm
             float(context.get("consciousness_level", 0.55)),               # consciousness_level
-            float(context.get("asabiyyah_score", 0.46)),                   # asabiyyah_score
+            float(context.get("engagement_score", 0.46)),                   # engagement_score
             float(context.get("care_intensity", 0.3)),                     # care_intensity
             float(context.get("prediction_error_rolling", 0.0)),           # prediction_error
             1.0 if context.get("is_dreaming", False) else 0.0,            # dream_phase

@@ -197,12 +197,12 @@ class CouncilLearner:
             else:
                 label = 0.5  # tied
 
-            # Get current asabiyyah if available
-            asabiyyah_score = 0.5
+            # Get current engagement if available
+            engagement_score = 0.5
             if self.agent_registry:
                 try:
-                    asa = self.agent_registry.compute_asabiyyah()
-                    asabiyyah_score = asa.get("score", 0.5)
+                    asa = self.agent_registry.compute_engagement()
+                    engagement_score = asa.get("score", 0.5)
                 except Exception:
                     pass
 
@@ -210,7 +210,7 @@ class CouncilLearner:
                 "for_ratio": for_ratio,
                 "against_ratio": 1.0 - for_ratio,
                 "care_weight": care_weight,
-                "asabiyyah_score": asabiyyah_score,
+                "engagement_score": engagement_score,
                 "action_type_enc": _encode_action_type(action_type),
                 "has_shura": 1.0 if proposal.get("shura") else 0.0,
                 "dispatch_success": 1.0 if dispatch_success else 0.0,
@@ -438,7 +438,7 @@ class CouncilLearner:
                 # Build minimal context dict for z_self.observe()
                 context = {
                     "care_intensity": signal.care_score,
-                    "asabiyyah_score": signal.features.get("asabiyyah_score", 0.5),
+                    "engagement_score": signal.features.get("engagement_score", 0.5),
                     "council_learning_event": signal.event_type,
                     "is_replay": is_replay,
                     "label": signal.label,

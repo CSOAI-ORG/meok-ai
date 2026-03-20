@@ -13,7 +13,7 @@ interface GeneralInfo {
   agent_id: string;
   trust_level: number;
   council_count: number;
-  division_asabiyyah: number;
+  division_engagement: number;
   mediations_total: number;
   mediations_resolved: number;
   escalations_to_senior: number;
@@ -26,10 +26,10 @@ interface GeneralsStatus {
   division_generals: number;
   senior_generals: number;
   councils_tracked: number;
-  mean_division_asabiyyah: number;
+  mean_division_engagement: number;
   total_mediations: number;
   total_escalations_to_senior: number;
-  weakest_divisions: { general_id: string; name: string; asabiyyah: number }[];
+  weakest_divisions: { general_id: string; name: string; engagement: number }[];
   generals: GeneralInfo[];
 }
 
@@ -38,8 +38,8 @@ interface ActivationStatus {
   total_auctions: number;
   success_rate: number;
   relationship_density: number;
-  asabiyyah_score: number;
-  asabiyyah_phase: string;
+  engagement_score: number;
+  engagement_phase: string;
   shapley_computations: number;
   trust_updates_applied: number;
   pheromone_specialisations: number;
@@ -83,7 +83,7 @@ const PHASE_COLORS: Record<string, string> = {
   dormant: "text-white/30",
 };
 
-function AsabiyyahBar({ score, label }: { score: number; label?: string }) {
+function EngagementBar({ score, label }: { score: number; label?: string }) {
   const pct = Math.round(score * 100);
   const color =
     score >= 0.7 ? "bg-green-500" : score >= 0.5 ? "bg-cyan-500" : score >= 0.3 ? "bg-yellow-500" : "bg-red-500";
@@ -185,9 +185,9 @@ export default function GeneralsPage() {
           color: activation.relationship_density > 0.01 ? "text-cyan-400" : "text-white/30",
         },
         {
-          label: "Asabiyyah Score",
-          value: `${(activation.asabiyyah_score * 100).toFixed(0)}%`,
-          color: PHASE_COLORS[activation.asabiyyah_phase] ?? "text-white/60",
+          label: "Engagement Score",
+          value: `${(activation.engagement_score * 100).toFixed(0)}%`,
+          color: PHASE_COLORS[activation.engagement_phase] ?? "text-white/60",
         },
         {
           label: "Pheromone Specialists",
@@ -230,17 +230,17 @@ export default function GeneralsPage() {
             applies Shapley trust attribution.
           </p>
 
-          {/* Asabiyyah phase */}
+          {/* Engagement phase */}
           {activation && (
             <div className="flex items-center gap-2">
               <span className="text-xs text-white/40">Phase:</span>
               <Badge
                 variant="outline"
-                className={`text-xs h-5 ${PHASE_COLORS[activation.asabiyyah_phase] ?? ""} border-white/10`}
+                className={`text-xs h-5 ${PHASE_COLORS[activation.engagement_phase] ?? ""} border-white/10`}
               >
-                {activation.asabiyyah_phase.replace("_", " ")}
+                {activation.engagement_phase.replace("_", " ")}
               </Badge>
-              {activation.asabiyyah_phase === "dormant" && (
+              {activation.engagement_phase === "dormant" && (
                 <span className="text-xs text-yellow-400/70">↑ Run seed to activate</span>
               )}
             </div>
@@ -401,7 +401,7 @@ export default function GeneralsPage() {
             <div className="space-y-4">
               {/* Summary */}
               <div className="flex gap-4 text-xs text-white/40 flex-wrap">
-                <span>Mean Asabiyyah: <span className="text-white/70">{(generals.mean_division_asabiyyah * 100).toFixed(0)}%</span></span>
+                <span>Mean Engagement: <span className="text-white/70">{(generals.mean_division_engagement * 100).toFixed(0)}%</span></span>
                 <span>Mediations: <span className="text-white/70">{generals.total_mediations}</span></span>
                 <span>Escalations: <span className="text-white/70">{generals.total_escalations_to_senior}</span></span>
                 <span>Senior Generals: <span className="text-white/70">{generals.senior_generals}</span></span>
@@ -414,7 +414,7 @@ export default function GeneralsPage() {
                   <div className="space-y-1">
                     {generals.weakest_divisions.map((d) => (
                       <div key={d.general_id} className="flex items-center gap-2">
-                        <AsabiyyahBar score={d.asabiyyah} label={d.name} />
+                        <EngagementBar score={d.engagement} label={d.name} />
                       </div>
                     ))}
                   </div>
@@ -430,9 +430,9 @@ export default function GeneralsPage() {
                   >
                     <div
                       className={`mt-1 w-2 h-2 rounded-full shrink-0 ${
-                        g.division_asabiyyah >= 0.6
+                        g.division_engagement >= 0.6
                           ? "bg-green-400"
-                          : g.division_asabiyyah >= 0.4
+                          : g.division_engagement >= 0.4
                           ? "bg-yellow-400"
                           : "bg-red-400"
                       }`}
@@ -446,7 +446,7 @@ export default function GeneralsPage() {
                         </Badge>
                       </div>
                       <div className="flex gap-3 text-xs text-white/30 mt-0.5">
-                        <span>asabiyyah: {(g.division_asabiyyah * 100).toFixed(0)}%</span>
+                        <span>engagement: {(g.division_engagement * 100).toFixed(0)}%</span>
                         <span>mediated: {g.mediations_total}</span>
                         {g.escalations_to_senior > 0 && (
                           <span className="text-yellow-400/60">↑ {g.escalations_to_senior} escalated</span>

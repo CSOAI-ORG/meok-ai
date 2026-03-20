@@ -279,10 +279,10 @@ async def _get_all_care_metrics(state: ServiceState) -> Dict[str, Any]:
     honesty = await _get_error_honesty_rate(state)
     metrics["error_honesty_rate"] = honesty.get("honesty_rate", 0.0)
 
-    # 5. Community Health Score — council participation + asabiyyah
+    # 5. Community Health Score — council participation + engagement
     if state.agent_registry:
         try:
-            asa = state.agent_registry.compute_asabiyyah()
+            asa = state.agent_registry.compute_engagement()
             total_agents = len(state.agent_registry.agents) if state.agent_registry.agents else 1
             proposals_approved = sum(
                 1 for p in (state.agent_council.proposals.values() if state.agent_council else [])
@@ -292,7 +292,7 @@ async def _get_all_care_metrics(state: ServiceState) -> Dict[str, Any]:
             metrics["community_health_score"] = round(
                 asa.get("score", 0.5) * 0.6 + participation_rate * 0.4, 3
             )
-            metrics["asabiyyah_phase"] = asa.get("phase", "unknown")
+            metrics["engagement_phase"] = asa.get("phase", "unknown")
         except Exception:
             metrics["community_health_score"] = 0.0
 

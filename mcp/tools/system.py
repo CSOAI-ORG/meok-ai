@@ -262,10 +262,10 @@ async def _build_rundown(state: ServiceState) -> Dict[str, Any]:
     agents_info["coordination_available"] = state.COORDINATION_AVAILABLE
     rundown["agents"] = agents_info
 
-    # Asabiyyah
-    if state.agent_registry and hasattr(state.agent_registry, 'compute_asabiyyah'):
+    # Engagement
+    if state.agent_registry and hasattr(state.agent_registry, 'compute_engagement'):
         try:
-            rundown["asabiyyah"] = state.agent_registry.compute_asabiyyah()
+            rundown["engagement"] = state.agent_registry.compute_engagement()
         except Exception:
             pass
 

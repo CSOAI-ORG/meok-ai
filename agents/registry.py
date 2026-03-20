@@ -514,12 +514,12 @@ class AgentRegistry:
             "average_performance": round(avg_performance, 3),
             "total_tasks_completed": sum(a.tasks_completed for a in self.agents.values()),
             "total_tasks_failed": sum(a.tasks_failed for a in self.agents.values()),
-            "asabiyyah": self.compute_asabiyyah()
+            "engagement": self.compute_engagement()
         }
 
-    def compute_asabiyyah(self) -> Dict[str, Any]:
+    def compute_engagement(self) -> Dict[str, Any]:
         """
-        Ibn Khaldun's asabiyyah — group feeling/social cohesion as a first-class metric.
+        Ibn Khaldun's engagement — group feeling/social cohesion as a first-class metric.
 
         Measures the collective bonding strength of the agent ecosystem.
         Cyclic dynamics: strong cohesion → success → complacency → weakened cohesion.

@@ -85,7 +85,7 @@ GOVERNANCE_TOOLS = [
         "name": "get_governance_status",
         "description": (
             "Get a full overview of all 5 governance layers: "
-            "Asabiyyah (cohesion), Shura (deliberation), Byzantine (BFT vote), "
+            "Engagement (cohesion), Shura (deliberation), Byzantine (BFT vote), "
             "Coincidentia (reconciliation), and Maternal Covenant (care floor)."
         ),
         "inputSchema": {
@@ -238,17 +238,17 @@ async def handle_governance_tool(
     elif name == "get_governance_status":
         status: Dict[str, Any] = {}
 
-        # Layer 1: Asabiyyah
+        # Layer 1: Engagement
         if state.agent_registry:
             reg_stats = state.agent_registry.get_registry_stats()
-            status["layer_1_asabiyyah"] = {
+            status["layer_1_engagement"] = {
                 "available": True,
-                "score": reg_stats.get("asabiyyah_score", "unknown"),
+                "score": reg_stats.get("engagement_score", "unknown"),
                 "total_agents": reg_stats.get("total_agents", 0),
                 "active_agents": reg_stats.get("active_agents", 0),
             }
         else:
-            status["layer_1_asabiyyah"] = {"available": False}
+            status["layer_1_engagement"] = {"available": False}
 
         # Layer 2: Shura
         shura = getattr(state, "shura_council", None)

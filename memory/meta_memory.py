@@ -5,7 +5,7 @@ MetaMemory — z_self observation store.
   meta_observations        — z_self forward-pass results per model inference
   semantic_patterns        — patterns extracted during dream consolidation
   confidence_calibration   — per-model accuracy vs stated confidence
-  value_drift_snapshots    — care/asabiyyah/consciousness snapshots over time
+  value_drift_snapshots    — care/engagement/consciousness snapshots over time
   self_knowledge_graph     — entity relationships within the system
 
 Design: SQLite row-compatible with Postgres (TEXT timestamps, JSONB→TEXT).
@@ -60,7 +60,7 @@ CREATE TABLE IF NOT EXISTS value_drift_snapshots (
     id TEXT PRIMARY KEY,
     snapshot_at TIMESTAMPTZ NOT NULL,
     care_score REAL,
-    asabiyyah_score REAL,
+    engagement_score REAL,
     consciousness_level REAL,
     tripwire_results JSONB
 );
@@ -111,7 +111,7 @@ CREATE TABLE IF NOT EXISTS value_drift_snapshots (
     id TEXT PRIMARY KEY,
     snapshot_at TEXT NOT NULL,
     care_score REAL,
-    asabiyyah_score REAL,
+    engagement_score REAL,
     consciousness_level REAL,
     tripwire_results TEXT
 );
@@ -216,28 +216,28 @@ class MetaMemory:
                 async with self._pg_pool.acquire() as conn:
                     await conn.execute(
                         """INSERT INTO value_drift_snapshots
-                           (id, snapshot_at, care_score, asabiyyah_score,
+                           (id, snapshot_at, care_score, engagement_score,
                             consciousness_level, tripwire_results)
                            VALUES ($1,$2,$3,$4,$5,$6)
                            ON CONFLICT DO NOTHING""",
                         row_id,
                         datetime.now(),
                         float(snapshot.get("care_score", 0.0)),
-                        float(snapshot.get("asabiyyah_score", 0.0)),
+                        float(snapshot.get("engagement_score", 0.0)),
                         float(snapshot.get("consciousness_level", 0.0)),
                         json.dumps(snapshot.get("tripwire_results", {})),
                     )
             elif self._backend == "sqlite":
                 await self._sqlite_conn.execute(
                     """INSERT OR IGNORE INTO value_drift_snapshots
-                       (id, snapshot_at, care_score, asabiyyah_score,
+                       (id, snapshot_at, care_score, engagement_score,
                         consciousness_level, tripwire_results)
                        VALUES (?,?,?,?,?,?)""",
                     (
                         row_id,
                         datetime.now().isoformat(),
                         float(snapshot.get("care_score", 0.0)),
-                        float(snapshot.get("asabiyyah_score", 0.0)),
+                        float(snapshot.get("engagement_score", 0.0)),
                         float(snapshot.get("consciousness_level", 0.0)),
                         json.dumps(snapshot.get("tripwire_results", {})),
                     ),

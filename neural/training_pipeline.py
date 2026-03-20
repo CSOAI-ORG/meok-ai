@@ -6,7 +6,7 @@ Connects the civilizational corpus to Sovereign's existing neural models:
 2. Enriches existing models with tradition-specific training examples:
    - CareValidationNN ← Ubuntu, Bowlby, Winnicott, Enactivism examples
    - ThreatDetectionNN ← Khaldunian decline patterns, adversarial traditions
-   - PartnershipDetectionML ← Asabiyyah cohesion patterns
+   - PartnershipDetectionML ← Engagement cohesion patterns
 3. Integrates with EWC regularizer for safe incremental learning
 
 Uses existing infrastructure:
@@ -91,7 +91,7 @@ THREAT_TRAINING_EXAMPLES = [
         "text": "Group cohesion weakening after prolonged success. Complacency setting in. Individual interests override collective good.",
         "threat_score": 0.72,
         "threat_type": "organizational_decay",
-        "tradition": "Khaldunian asabiyyah decline",
+        "tradition": "Khaldunian engagement decline",
     },
     # Bogdanov: organizational crisis
     {
@@ -125,11 +125,11 @@ THREAT_TRAINING_EXAMPLES = [
 
 
 PARTNERSHIP_TRAINING_EXAMPLES = [
-    # Asabiyyah: group bonding
+    # Engagement: group bonding
     {
         "text": "Shared purpose and identity creating strong collaborative bonds. Mutual support increasing collective capability.",
         "partnership_score": 0.88,
-        "tradition": "Asabiyyah",
+        "tradition": "Engagement",
     },
     # Ubuntu: relational identity
     {
@@ -260,7 +260,7 @@ class CreativityTrainingPipeline:
         return result
 
     async def enrich_partnership_model(self) -> Dict[str, Any]:
-        """Feed Asabiyyah cohesion and Ubuntu patterns into PartnershipDetectionML."""
+        """Feed Engagement cohesion and Ubuntu patterns into PartnershipDetectionML."""
         if not self.model_registry:
             return {"status": "error", "error": "No model registry"}
 

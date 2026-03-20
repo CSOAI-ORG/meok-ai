@@ -9,7 +9,7 @@ Implements a 3-tier escalation structure above the 202 base councils:
 
 Design principles:
 - Starling murmuration topology: 7-neighbor attention model per general
-- Per-council Asabiyyah tracking (Ibn Khaldun) at division level
+- Per-council Engagement tracking (Ibn Khaldun) at division level
 - Contract Net routing for task dispatch (see contract_net.py)
 - Deadlock mediation: council BFT tie → General → Senior → Sovereign Core
 - Created from highest-trust agents in the registry (emergent leadership)
@@ -33,8 +33,8 @@ logger = logging.getLogger(__name__)
 # ── Data Structures ───────────────────────────────────────────────────────────
 
 @dataclass
-class CouncilAsabiyyah:
-    """Per-council Asabiyyah tracking (Ibn Khaldun social cohesion)."""
+class CouncilEngagement:
+    """Per-council Engagement tracking (Ibn Khaldun social cohesion)."""
     council_id: str
     agent_ids: List[str] = field(default_factory=list)
 
@@ -52,7 +52,7 @@ class CouncilAsabiyyah:
     score: float = 0.5
 
     def compute(self) -> float:
-        """Compute composite Asabiyyah score (0-1)."""
+        """Compute composite Engagement score (0-1)."""
         # Time-decay penalty: cohesion erodes without interaction
         decay = 1.0
         if self.last_interaction_at:
@@ -88,10 +88,10 @@ class DivisionGeneral:
     Governs ~10 councils (~330 agents).
 
     Responsibilities:
-    - Monitor per-council Asabiyyah
+    - Monitor per-council Engagement
     - Mediate deadlocked BFT votes between councils
     - Route tasks via Contract Net Protocol (see contract_net.py)
-    - Escalate to Senior General when division Asabiyyah < 0.3
+    - Escalate to Senior General when division Engagement < 0.3
     - 7-neighbor topology: each General watches 7 nearest councils (murmuration)
     """
     id: str
@@ -102,7 +102,7 @@ class DivisionGeneral:
 
     # Assigned councils
     council_ids: List[str] = field(default_factory=list)
-    council_asabiyyah: Dict[str, CouncilAsabiyyah] = field(default_factory=dict)
+    council_engagement: Dict[str, CouncilEngagement] = field(default_factory=dict)
 
     # 7-neighbor murmuration: the councils this General pays closest attention to
     neighbor_council_ids: List[str] = field(default_factory=list)
@@ -119,27 +119,27 @@ class DivisionGeneral:
     tasks_routed: int = 0
     last_active: Optional[datetime] = None
 
-    def get_division_asabiyyah(self) -> float:
-        """Compute mean Asabiyyah across all councils in this division."""
-        if not self.council_asabiyyah:
+    def get_division_engagement(self) -> float:
+        """Compute mean Engagement across all councils in this division."""
+        if not self.council_engagement:
             return 0.5
-        scores = [ca.compute() for ca in self.council_asabiyyah.values()]
+        scores = [ca.compute() for ca in self.council_engagement.values()]
         return round(sum(scores) / len(scores), 4)
 
     def assign_councils(self, council_ids: List[str]) -> None:
-        """Assign councils to this division and init their Asabiyyah trackers."""
+        """Assign councils to this division and init their Engagement trackers."""
         self.council_ids = list(council_ids)
         for cid in council_ids:
-            if cid not in self.council_asabiyyah:
-                self.council_asabiyyah[cid] = CouncilAsabiyyah(council_id=cid)
+            if cid not in self.council_engagement:
+                self.council_engagement[cid] = CouncilEngagement(council_id=cid)
         # 7-neighbor: first 7 councils are the murmuration core
         self.neighbor_council_ids = self.council_ids[:7]
 
     def get_weakest_councils(self, n: int = 3) -> List[str]:
-        """Return the n councils with lowest Asabiyyah for intervention."""
-        if not self.council_asabiyyah:
+        """Return the n councils with lowest Engagement for intervention."""
+        if not self.council_engagement:
             return []
-        scored = [(cid, ca.compute()) for cid, ca in self.council_asabiyyah.items()]
+        scored = [(cid, ca.compute()) for cid, ca in self.council_engagement.items()]
         scored.sort(key=lambda x: x[1])
         return [cid for cid, _ in scored[:n]]
 
@@ -204,7 +204,7 @@ class DivisionGeneral:
             "trust_level": self.trust_level,
             "created_at": self.created_at.isoformat(),
             "council_count": len(self.council_ids),
-            "division_asabiyyah": self.get_division_asabiyyah(),
+            "division_engagement": self.get_division_engagement(),
             "mediations_total": self.mediations_total,
             "mediations_resolved": self.mediations_resolved,
             "escalations_to_senior": self.escalations_to_senior,
@@ -389,8 +389,8 @@ class GeneralRegistry:
                 self.council_assignments[cid] = dg.id
                 if cid not in dg.council_ids:
                     dg.council_ids.append(cid)
-                    if cid not in dg.council_asabiyyah:
-                        dg.council_asabiyyah[cid] = CouncilAsabiyyah(council_id=cid)
+                    if cid not in dg.council_engagement:
+                        dg.council_engagement[cid] = CouncilEngagement(council_id=cid)
                     dg.neighbor_council_ids = dg.council_ids[:7]
 
     # ── Routing ───────────────────────────────────────────────────────────────
@@ -464,7 +464,7 @@ class GeneralRegistry:
             "reason": "no_general_assigned",
         }
 
-    # ── Asabiyyah ─────────────────────────────────────────────────────────────
+    # ── Engagement ─────────────────────────────────────────────────────────────
 
     def record_council_interaction(
         self,
@@ -472,10 +472,10 @@ class GeneralRegistry:
         success: bool,
         trust_delta: float = 0.0,
     ) -> None:
-        """Record a task outcome for a council's Asabiyyah tracker."""
+        """Record a task outcome for a council's Engagement tracker."""
         dg = self.get_general_for_council(council_id)
         if dg:
-            ca = dg.council_asabiyyah.get(council_id)
+            ca = dg.council_engagement.get(council_id)
             if ca:
                 ca.record_interaction(success=success, trust_delta=trust_delta)
 
@@ -496,11 +496,11 @@ class GeneralRegistry:
             except RuntimeError:
                 pass  # no running event loop (sync context) — skip silently
 
-    def get_all_council_asabiyyah(self) -> Dict[str, float]:
-        """Return {council_id: asabiyyah_score} for all tracked councils."""
+    def get_all_council_engagement(self) -> Dict[str, float]:
+        """Return {council_id: engagement_score} for all tracked councils."""
         result: Dict[str, float] = {}
         for dg in self.division_generals.values():
-            for cid, ca in dg.council_asabiyyah.items():
+            for cid, ca in dg.council_engagement.items():
                 result[cid] = ca.compute()
         return result
 
@@ -508,9 +508,9 @@ class GeneralRegistry:
 
     def get_stats(self) -> Dict[str, Any]:
         """Return hierarchy statistics for dashboard / MCP tool."""
-        dg_asabiyyah = [dg.get_division_asabiyyah() for dg in self.division_generals.values()]
-        mean_div_asabiyyah = (
-            round(sum(dg_asabiyyah) / len(dg_asabiyyah), 4) if dg_asabiyyah else 0.0
+        dg_engagement = [dg.get_division_engagement() for dg in self.division_generals.values()]
+        mean_div_engagement = (
+            round(sum(dg_engagement) / len(dg_engagement), 4) if dg_engagement else 0.0
         )
         total_mediations = sum(dg.mediations_total for dg in self.division_generals.values())
         total_escalations = sum(dg.escalations_to_senior for dg in self.division_generals.values())
@@ -519,12 +519,12 @@ class GeneralRegistry:
             "division_generals": len(self.division_generals),
             "senior_generals": len(self.senior_generals),
             "councils_tracked": len(self.council_assignments),
-            "mean_division_asabiyyah": mean_div_asabiyyah,
+            "mean_division_engagement": mean_div_engagement,
             "total_mediations": total_mediations,
             "total_escalations_to_senior": total_escalations,
             "weakest_divisions": [
-                {"general_id": dg.id, "name": dg.name, "asabiyyah": dg.get_division_asabiyyah()}
-                for dg in sorted(self.division_generals.values(), key=lambda d: d.get_division_asabiyyah())[:3]
+                {"general_id": dg.id, "name": dg.name, "engagement": dg.get_division_engagement()}
+                for dg in sorted(self.division_generals.values(), key=lambda d: d.get_division_engagement())[:3]
             ],
         }
 

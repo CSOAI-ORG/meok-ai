@@ -62,13 +62,13 @@ const COUNCIL_DOMAINS = [
   { domain: "resonance", color: "#34d399" },
   { domain: "dream", color: "#818cf8" },
   { domain: "scaffold", color: "#94a3b8" },
-  { domain: "asabiyyah", color: "#f59e0b" },
+  { domain: "engagement", color: "#f59e0b" },
   { domain: "council", color: "#60B8F0" },
   { domain: "emergence", color: "#e2e8f0" },
 ];
 
 // Pre-calculate positions in three concentric rings
-function buildCouncilNodes(asabiyyah: number, activeAgents: number): CouncilNode[] {
+function buildCouncilNodes(engagement: number, activeAgents: number): CouncilNode[] {
   const cx = 200;
   const cy = 200;
   const rings = [
@@ -85,9 +85,9 @@ function buildCouncilNodes(asabiyyah: number, activeAgents: number): CouncilNode
     for (let i = 0; i < ring.count; i++) {
       const angle = ((2 * Math.PI) / ring.count) * i - Math.PI / 2 + offset;
       const domainInfo = COUNCIL_DOMAINS[idx % COUNCIL_DOMAINS.length];
-      // Trust: inner ring higher, outer lower, modulated by asabiyyah
+      // Trust: inner ring higher, outer lower, modulated by engagement
       const ringFactor = ring.r === 60 ? 0.9 : ring.r === 115 ? 0.75 : 0.6;
-      const trust = Math.min(1, ringFactor * (0.7 + asabiyyah * 0.3) + (Math.random() * 0.05 - 0.025));
+      const trust = Math.min(1, ringFactor * (0.7 + engagement * 0.3) + (Math.random() * 0.05 - 0.025));
       nodes.push({
         id: idx,
         domain: domainInfo.domain,
@@ -139,15 +139,15 @@ function buildEdges(nodes: CouncilNode[]): MeshEdge[] {
 // ── CouncilMesh Component ─────────────────────────────────────────────────
 
 function CouncilMesh({
-  asabiyyah,
+  engagement,
   activeAgents,
   phase,
 }: {
-  asabiyyah: number;
+  engagement: number;
   activeAgents: number;
   phase: string;
 }) {
-  const [nodes] = useState<CouncilNode[]>(() => buildCouncilNodes(asabiyyah, activeAgents));
+  const [nodes] = useState<CouncilNode[]>(() => buildCouncilNodes(engagement, activeAgents));
   const [edges] = useState<MeshEdge[]>(() => buildEdges(nodes));
   const [hovered, setHovered] = useState<number | null>(null);
   const [tick, setTick] = useState(0);
@@ -300,7 +300,7 @@ function CouncilMesh({
           fontFamily="monospace"
           fontWeight="bold"
         >
-          {(asabiyyah * 100).toFixed(0)}%
+          {(engagement * 100).toFixed(0)}%
         </text>
         <text
           x="200"
@@ -344,7 +344,7 @@ interface GovernanceLayer {
 
 interface GovernanceStatus {
   governance_stack: {
-    layer_1_asabiyyah: GovernanceLayer & { score: number; total_agents: number; active_agents: number };
+    layer_1_engagement: GovernanceLayer & { score: number; total_agents: number; active_agents: number };
     layer_2_shura: GovernanceLayer & { deliberations_run: number; max_participants: number };
     layer_3_byzantine: GovernanceLayer & { open_proposals: number; total_proposals: number };
     layer_4_coincidentia: GovernanceLayer & { total_reconciliations: number };
@@ -364,7 +364,7 @@ interface ShuraDeliberation {
 }
 
 const LAYER_LABELS: Record<string, { name: string; tradition: string; color: string }> = {
-  layer_1_asabiyyah: { name: "Asabiyyah", tradition: "Ibn Khaldun — social cohesion", color: "text-yellow-400" },
+  layer_1_engagement: { name: "Engagement", tradition: "Ibn Khaldun — social cohesion", color: "text-yellow-400" },
   layer_2_shura: { name: "Shura", tradition: "Islamic consultative council", color: "text-blue-400" },
   layer_3_byzantine: { name: "Byzantine BFT", tradition: "22/33 fault-tolerant consensus", color: "text-cyan-400" },
   layer_4_coincidentia: { name: "Coincidentia", tradition: "Nicholas of Cusa — reconciliation", color: "text-purple-400" },
@@ -383,8 +383,8 @@ function LayerStatusRow({
   if (!meta) return null;
 
   const getDetail = () => {
-    if (layerKey === "layer_1_asabiyyah") {
-      const l = layer as GovernanceStatus["governance_stack"]["layer_1_asabiyyah"];
+    if (layerKey === "layer_1_engagement") {
+      const l = layer as GovernanceStatus["governance_stack"]["layer_1_engagement"];
       return `${l.active_agents} active / ${l.total_agents} agents · score ${typeof l.score === "number" ? (l.score * 100).toFixed(0) : "?"}%`;
     }
     if (layerKey === "layer_2_shura") {
@@ -434,17 +434,17 @@ export default function CouncilPage() {
   const [proposal, setProposal] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const [runningShura, setRunningShura] = useState(false);
-  const [asabiyyah, setAsabiyyah] = useState<{ score: number; phase: string; agent_count: number } | null>(null);
+  const [engagement, setEngagement] = useState<{ score: number; phase: string; agent_count: number } | null>(null);
 
   const loadData = useCallback(async () => {
     const [govData, shuraData, asabData] = await Promise.allSettled([
       callTool<GovernanceStatus>("get_governance_status"),
       callTool<{ deliberations: ShuraDeliberation[]; total: number }>("get_shura_deliberations", { limit: 5 }),
-      callTool<{ score: number; phase: string; agent_count: number }>("get_asabiyyah_score"),
+      callTool<{ score: number; phase: string; agent_count: number }>("get_engagement_score"),
     ]);
     if (govData.status === "fulfilled") setGovernance(govData.value);
     if (shuraData.status === "fulfilled") setDeliberations(shuraData.value?.deliberations || []);
-    if (asabData.status === "fulfilled" && asabData.value) setAsabiyyah(asabData.value);
+    if (asabData.status === "fulfilled" && asabData.value) setEngagement(asabData.value);
   }, []);
 
   useEffect(() => {
@@ -522,9 +522,9 @@ export default function CouncilPage() {
   };
 
   const govStack = governance?.governance_stack;
-  const asabScore = asabiyyah?.score ?? govStack?.layer_1_asabiyyah?.score ?? 0;
-  const asabPhase = asabiyyah?.phase ?? "stable";
-  const activeAgents = asabiyyah?.agent_count ?? govStack?.layer_1_asabiyyah?.active_agents ?? 12;
+  const asabScore = engagement?.score ?? govStack?.layer_1_engagement?.score ?? 0;
+  const asabPhase = engagement?.phase ?? "stable";
+  const activeAgents = engagement?.agent_count ?? govStack?.layer_1_engagement?.active_agents ?? 12;
 
   const layerStats = governance
     ? [
@@ -571,7 +571,7 @@ export default function CouncilPage() {
           </CardHeader>
           <CardContent>
             <CouncilMesh
-              asabiyyah={asabScore}
+              engagement={asabScore}
               activeAgents={activeAgents}
               phase={asabPhase}
             />

@@ -351,16 +351,16 @@ class SovereignHeartbeat:
             self.metrics.record_metric("cpu_percent", resources["cpu_percent"])
             self.metrics.record_metric("memory_percent", resources["memory_percent"])
 
-        # 8. Asabiyyah alert — warn if social cohesion drops below threshold
+        # 8. Engagement alert — warn if social cohesion drops below threshold
         if self.agent_registry:
             try:
                 stats = self.agent_registry.get_registry_stats()
-                asabiyyah_data = stats.get("asabiyyah", {})
-                score = asabiyyah_data.get("score", 1.0) if isinstance(asabiyyah_data, dict) else 1.0
+                engagement_data = stats.get("engagement", {})
+                score = engagement_data.get("score", 1.0) if isinstance(engagement_data, dict) else 1.0
                 if score < 0.5:
-                    logger.warning("Asabiyyah alert: score=%.3f below 0.5 threshold — social cohesion declining", score)
+                    logger.warning("Engagement alert: score=%.3f below 0.5 threshold — social cohesion declining", score)
                     if self.metrics:
-                        self.metrics.record_metric("asabiyyah_alert", score)
+                        self.metrics.record_metric("engagement_alert", score)
                 # Also alert if agent count drifted above cap
                 agent_count = len(self.agent_registry.agents)
                 if agent_count > self.agent_registry.MAX_AGENTS:
@@ -877,7 +877,7 @@ class SovereignHeartbeat:
         1. Suṣupti (deep consolidation) — memory compaction without generation
         2. Svapna (NREM→REM dreaming) — consolidation then creative recombination
         3. Kolmogorov novelty scoring of dream outputs
-        4. Asabiyyah group cohesion measurement
+        4. Engagement group cohesion measurement
         5. Turiya meta-monitoring coherence check
         """
         logger.info("Creativity cycle starting (20:30 UK)")
@@ -935,22 +935,22 @@ class SovereignHeartbeat:
         except Exception:
             logger.exception("Creativity pipeline failed")
 
-        # Phase 4: Asabiyyah group cohesion
+        # Phase 4: Engagement group cohesion
         try:
-            if self.agent_registry and hasattr(self.agent_registry, 'compute_asabiyyah'):
-                asabiyyah = self.agent_registry.compute_asabiyyah()
-                results["asabiyyah"] = asabiyyah
-                results["phases"].append("asabiyyah_measurement")
+            if self.agent_registry and hasattr(self.agent_registry, 'compute_engagement'):
+                engagement = self.agent_registry.compute_engagement()
+                results["engagement"] = engagement
+                results["phases"].append("engagement_measurement")
 
                 # Alert if cohesion is weakening (Khaldunian warning)
-                if asabiyyah.get("khaldunian_warning"):
+                if engagement.get("khaldunian_warning"):
                     logger.warning(
-                        "Khaldunian warning: asabiyyah in '%s' phase (score: %.3f)",
-                        asabiyyah.get("phase", "unknown"),
-                        asabiyyah.get("score", 0),
+                        "Khaldunian warning: engagement in '%s' phase (score: %.3f)",
+                        engagement.get("phase", "unknown"),
+                        engagement.get("score", 0),
                     )
         except Exception:
-            logger.exception("Asabiyyah measurement failed")
+            logger.exception("Engagement measurement failed")
 
         # Phase 5: Turiya meta-monitoring
         try:
@@ -1023,10 +1023,10 @@ class SovereignHeartbeat:
             f"Creativity Cycle — {datetime.now(UK_TZ).strftime('%Y-%m-%d %H:%M')}",
             f"Phases completed: {', '.join(results['phases'])}",
         ]
-        if "asabiyyah" in results:
+        if "engagement" in results:
             summary_lines.append(
-                f"Asabiyyah: {results['asabiyyah'].get('score', 'N/A')} "
-                f"({results['asabiyyah'].get('phase', 'unknown')})"
+                f"Engagement: {results['engagement'].get('score', 'N/A')} "
+                f"({results['engagement'].get('phase', 'unknown')})"
             )
         if "pipeline" in results:
             summary_lines.append(
@@ -1051,9 +1051,9 @@ class SovereignHeartbeat:
         )
 
         logger.info(
-            "Creativity cycle complete: %d phases, asabiyyah=%.3f",
+            "Creativity cycle complete: %d phases, engagement=%.3f",
             len(results["phases"]),
-            results.get("asabiyyah", {}).get("score", 0),
+            results.get("engagement", {}).get("score", 0),
         )
 
     async def turiya_monitor(self) -> None:

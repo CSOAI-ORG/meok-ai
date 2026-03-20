@@ -15,7 +15,7 @@ Tools exposed via MCP:
     run_activation_sequence      — Full 3-phase sequence (background)
     get_activation_status        — Progress: tasks done, trust points, density
     run_contract_net_auction     — Manual task auction (test routing)
-    get_generals_status          — Division General hierarchy + per-council asabiyyah
+    get_generals_status          — Division General hierarchy + per-council engagement
     get_shapley_stats            — Attribution statistics
 """
 
@@ -119,15 +119,15 @@ ACTIVATION_TOOLS = [
         "name": "get_generals_status",
         "description": (
             "Get Division General hierarchy status: number of generals, councils per division, "
-            "per-division Asabiyyah scores, mediation statistics, and weakest divisions "
+            "per-division Engagement scores, mediation statistics, and weakest divisions "
             "needing intervention."
         ),
         "inputSchema": {
             "type": "object",
             "properties": {
-                "include_council_asabiyyah": {
+                "include_council_engagement": {
                     "type": "boolean",
-                    "description": "Include per-council Asabiyyah scores (can be large)",
+                    "description": "Include per-council Engagement scores (can be large)",
                 },
             },
         },
@@ -187,7 +187,7 @@ ACTIVATION_TOOLS = [
             "Each General bonds with their 33 council nodes (trust 0.8). "
             "T5 bridge agents link to adjacent councils (trust 0.7). "
             "All 12 Generals form a cross-council trust network (trust 0.85). "
-            "Raises relationship_density above 0.0 and boosts asabiyyah toward 0.5+. "
+            "Raises relationship_density above 0.0 and boosts engagement toward 0.5+. "
             "Run after seed_proper_council."
         ),
         "inputSchema": {"type": "object", "properties": {}},
@@ -197,7 +197,7 @@ ACTIVATION_TOOLS = [
         "description": (
             "Seed 120 bootstrap tasks (10 per council) to establish task execution history. "
             "Tasks are simple analysis/monitoring tasks assigned to T3 worker nodes. "
-            "Each completion updates tasks_completed, performance_score, and asabiyyah. "
+            "Each completion updates tasks_completed, performance_score, and engagement. "
             "Run after seed_relationships to push task_success_ratio above 0.0."
         ),
         "inputSchema": {
@@ -366,7 +366,7 @@ async def handle_activation_tool(
 
         # Relationship density from registry
         reg_stats = registry.get_registry_stats() if registry else {}
-        asabiyyah = reg_stats.get("asabiyyah", {})
+        engagement = reg_stats.get("engagement", {})
 
         # Top specialists from pheromone trails
         top_specialists = []
@@ -384,9 +384,9 @@ async def handle_activation_tool(
             "tasks_completed": cnp_stats.get("completed_contracts", 0),
             "total_auctions": cnp_stats.get("total_auctions", 0),
             "success_rate": cnp_stats.get("success_rate", 0.0),
-            "relationship_density": asabiyyah.get("components", {}).get("relationship_density", 0.0),
-            "asabiyyah_score": asabiyyah.get("score", 0.0),
-            "asabiyyah_phase": asabiyyah.get("phase", "dormant"),
+            "relationship_density": engagement.get("components", {}).get("relationship_density", 0.0),
+            "engagement_score": engagement.get("score", 0.0),
+            "engagement_phase": engagement.get("phase", "dormant"),
             "shapley_computations": shapley_stats.get("total_computations", 0),
             "trust_updates_applied": shapley_stats.get("trust_updates_applied", 0),
             "pheromone_specialisations": cnp_stats.get("pheromones", {}).get("specialised_count", 0),
@@ -468,8 +468,8 @@ async def handle_activation_tool(
 
         result = {**stats, "generals": general_list[:20]}
 
-        if arguments.get("include_council_asabiyyah"):
-            result["council_asabiyyah"] = generals.get_all_council_asabiyyah()
+        if arguments.get("include_council_engagement"):
+            result["council_engagement"] = generals.get_all_council_engagement()
 
         return result
 
@@ -597,12 +597,12 @@ async def handle_activation_tool(
                 relationships_seeded += 1
 
             stats = registry.get_registry_stats()
-            asabiyyah = stats.get("asabiyyah", {})
+            engagement = stats.get("engagement", {})
             return {
                 "relationships_seeded": relationships_seeded,
                 "councils": len(councils),
                 "generals_networked": len(generals),
-                "asabiyyah_score": asabiyyah.get("score", 0.0) if isinstance(asabiyyah, dict) else 0.0,
+                "engagement_score": engagement.get("score", 0.0) if isinstance(engagement, dict) else 0.0,
                 "status": "seeded",
             }
         except Exception as exc:
@@ -636,7 +636,7 @@ async def handle_activation_tool(
                 ("analysis", "Evaluate care alignment scores across {council} agents"),
                 ("research", "Synthesise recent memory episodes relevant to {council} domain"),
                 ("monitoring", "Check neural model performance for {council} responsibilities"),
-                ("analysis", "Assess asabiyyah trends within {council} council over 24h"),
+                ("analysis", "Assess engagement trends within {council} council over 24h"),
                 ("monitoring", "Verify agent status and availability in {council} council"),
                 ("analysis", "Review task delegation patterns in {council} subdomain"),
                 ("research", "Identify optimisation opportunities for {council} workflows"),
@@ -675,14 +675,14 @@ async def handle_activation_tool(
                     await registry.update_agent_status(worker.id, AgentStatus.IDLE)
 
             stats = registry.get_registry_stats()
-            asabiyyah = stats.get("asabiyyah", {})
+            engagement = stats.get("engagement", {})
             return {
                 "tasks_created": tasks_created,
                 "agents_updated": agents_updated,
                 "councils": len(councils),
                 "total_tasks_completed": stats.get("total_tasks_completed", 0),
                 "average_performance": stats.get("average_performance", 0.0),
-                "asabiyyah_score": asabiyyah.get("score", 0.0) if isinstance(asabiyyah, dict) else 0.0,
+                "engagement_score": engagement.get("score", 0.0) if isinstance(engagement, dict) else 0.0,
                 "status": "seeded",
             }
         except Exception as exc:

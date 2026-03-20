@@ -39,7 +39,7 @@ class SystemAwareCuriosity:
     _HEALTHY_PROMPTS = [
         "What patterns have I noticed across recent interactions?",
         "Which memories are most frequently recalled — and why?",
-        "How has the asabiyyah score changed, and what drove it?",
+        "How has the engagement score changed, and what drove it?",
         "What does the gap between tasks_completed and tasks_failed reveal?",
         "Which agents are consistently underutilised — and what does that mean?",
         "What creative bisociations have I not explored yet?",
@@ -61,8 +61,8 @@ class SystemAwareCuriosity:
             "The agent registry has {count} agents — approaching the {cap} cap. "
             "Which agents are idle? Should any be pruned?"
         ),
-        "low_asabiyyah": (
-            "Asabiyyah score is {score:.2f} — below the 0.5 stability threshold. "
+        "low_engagement": (
+            "Engagement score is {score:.2f} — below the 0.5 stability threshold. "
             "What is breaking inter-agent trust? Which relationships need repair?"
         ),
         "low_care": (
@@ -143,11 +143,11 @@ class SystemAwareCuriosity:
                 ),
             })
 
-        asabiyyah = metrics.get("asabiyyah", -1)
-        if 0 <= asabiyyah < 0.5:
+        engagement = metrics.get("engagement", -1)
+        if 0 <= engagement < 0.5:
             anomalies.append({
-                "type": "low_asabiyyah",
-                "question": self._ANOMALY_TEMPLATES["low_asabiyyah"].format(score=asabiyyah),
+                "type": "low_engagement",
+                "question": self._ANOMALY_TEMPLATES["low_engagement"].format(score=engagement),
             })
 
         care_score = metrics.get("care_alignment", -1)
@@ -464,12 +464,12 @@ class AutonomousMaintenanceSystem:
                 reg = getattr(self._state, "agent_registry", None)
                 if reg:
                     stats = reg.get_registry_stats()
-                    asabiyyah = stats.get("asabiyyah", {})
+                    engagement = stats.get("engagement", {})
                     metrics["agent_count"] = stats.get("total_agents", 0)
                     metrics["agent_cap"] = getattr(reg, "MAX_AGENTS", 410)
                     metrics["tasks_completed"] = stats.get("total_tasks_completed", -1)
-                    if isinstance(asabiyyah, dict):
-                        metrics["asabiyyah"] = asabiyyah.get("score", -1)
+                    if isinstance(engagement, dict):
+                        metrics["engagement"] = engagement.get("score", -1)
                 executor = getattr(self._state, "task_executor", None)
                 if executor:
                     ex_stats = executor.get_stats()

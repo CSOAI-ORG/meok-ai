@@ -122,18 +122,18 @@ async def pulse():
     except Exception:
         pass
 
-    # Safely get asabiyyah score
-    asabiyyah = 0.0
+    # Safely get engagement score
+    engagement = 0.0
     try:
         if reg:
             stats = reg.get_registry_stats()
             if asyncio.iscoroutine(stats):
                 stats = await stats
             # Try top-level key first, then nested dict
-            if isinstance(stats.get("asabiyyah"), dict):
-                asabiyyah = stats["asabiyyah"].get("score", 0.0)
+            if isinstance(stats.get("engagement"), dict):
+                engagement = stats["engagement"].get("score", 0.0)
             else:
-                asabiyyah = float(stats.get("global_asabiyyah", stats.get("asabiyyah", 0.0)) or 0.0)
+                engagement = float(stats.get("global_engagement", stats.get("engagement", 0.0)) or 0.0)
     except Exception:
         pass
 
@@ -144,7 +144,7 @@ async def pulse():
         "agent_cap": getattr(reg, "MAX_AGENTS", 410) if reg else 410,
         "consciousness_level": consciousness_level,
         "uptime_hours": round((_time.time() - _SERVER_START) / 3600, 2),
-        "asabiyyah": asabiyyah,
+        "engagement": engagement,
         "timestamp": datetime.now().isoformat(),
     }
 
