@@ -1,34 +1,47 @@
-import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
+import { NextRequest, NextResponse } from "next/server";
 
-// Routes that require authentication
-const isProtectedRoute = createRouteMatcher([
-  "/dashboard(.*)",
-  "/chat(.*)",
-  "/birth(.*)",      // onboarding (after signup)
-  "/characters(.*)", // character catalog (logged-in)
-  "/settings(.*)",
-]);
+// Protected routes — require meok_auth cookie or Bearer token
+const PROTECTED = ["/dashboard", "/chat", "/birth", "/characters", "/settings"];
+const PUBLIC = ["/", "/login", "/register", "/api/health", "/api/stripe/webhook"];
 
-// Routes that are always public
-const isPublicRoute = createRouteMatcher([
-  "/",
-  "/login(.*)",
-  "/register(.*)",
-  "/api/health",
-  "/api/public/(.*)",
-]);
+function isProtected(pathname: string): boolean {
+  return PROTECTED.some((p) => pathname.startsWith(p));
+}
 
-export default clerkMiddleware(async (auth, req) => {
-  if (isProtectedRoute(req)) {
-    await auth.protect();
+function isPublic(pathname: string): boolean {
+  return PUBLIC.some((p) => pathname === p || pathname.startsWith(p + "/"));
+}
+
+export function middleware(req: NextRequest) {
+  const { pathname } = req.nextUrl;
+
+  // Always allow public routes and static assets
+  if (isPublic(pathname)) return NextResponse.next();
+
+  // For protected routes: check for meok_auth cookie or Authorization header
+  if (isProtected(pathname)) {
+    const cookie = req.cookies.get("meok_auth")?.value;
+    const bearer = req.headers.get("authorization")?.replace("Bearer ", "");
+    const hasToken = !!(cookie || bearer);
+
+    if (!hasToken) {
+      // API routes → 401
+      if (pathname.startsWith("/api/")) {
+        return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+      }
+      // Pages → redirect to login
+      const loginUrl = new URL("/login", req.url);
+      loginUrl.searchParams.set("from", pathname);
+      return NextResponse.redirect(loginUrl);
+    }
   }
-});
+
+  return NextResponse.next();
+}
 
 export const config = {
   matcher: [
-    // Skip Next.js internals and static files
     "/((?!_next|[^?]*\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest)).*)",
-    // Always run for API routes
     "/(api|trpc)(.*)",
   ],
 };
