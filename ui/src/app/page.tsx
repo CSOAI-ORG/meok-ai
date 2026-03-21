@@ -116,6 +116,12 @@ export default function LandingPage() {
             <Brain className="w-5 h-5 text-cyan-400" />
             <span className="font-bold text-lg tracking-tight">MEOK</span>
           </div>
+          <div className="hidden sm:flex items-center gap-6 text-sm text-white/40">
+            <Link href="/about" className="hover:text-white transition-colors">About</Link>
+            <Link href="/faq" className="hover:text-white transition-colors">FAQ</Link>
+            <Link href="/blog" className="hover:text-white transition-colors">Blog</Link>
+            <Link href="/compare" className="hover:text-white transition-colors">Compare</Link>
+          </div>
           <div className="flex items-center gap-4">
             <Link href="/login" className="text-sm text-white/50 hover:text-white transition-colors">
               Sign in

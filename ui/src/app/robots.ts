@@ -1,21 +1,21 @@
-import { MetadataRoute } from "next";
+import { MetadataRoute } from 'next'
 
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: [
       {
-        userAgent: "*",
-        allow: ["/", "/product", "/labs", "/blog", "/register", "/login", "/privacy", "/terms"],
-        disallow: ["/dashboard", "/chat", "/settings", "/characters", "/api/", "/birth"],
+        userAgent: '*',
+        allow: '/',
+        disallow: ['/dashboard/', '/terminal/', '/api/', '/birth/', '/chat/', '/settings/'],
       },
-      // Allow AI crawlers to index our research content
+      // Explicitly allow AI crawlers to index research and editorial content
       {
-        userAgent: ["GPTBot", "ClaudeBot", "PerplexityBot", "anthropic-ai"],
-        allow: ["/", "/product", "/labs", "/blog"],
-        disallow: ["/dashboard", "/chat", "/settings", "/characters", "/api/"],
+        userAgent: ['GPTBot', 'ClaudeBot', 'PerplexityBot', 'anthropic-ai', 'Googlebot-Extended'],
+        allow: ['/', '/product', '/labs', '/blog', '/about', '/faq', '/compare', '/maternal-covenant'],
+        disallow: ['/dashboard/', '/terminal/', '/api/'],
       },
     ],
-    sitemap: "https://meok.ai/sitemap.xml",
-    host: "https://meok.ai",
-  };
+    sitemap: 'https://meok.ai/sitemap.xml',
+    host: 'https://meok.ai',
+  }
 }
