@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 """
 Ralph Task Runner — PGQueuer-based autonomous task execution
 Polls ralph_tasks table for pending work, executes, updates status.

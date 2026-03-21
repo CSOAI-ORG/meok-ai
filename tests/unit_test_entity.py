@@ -18,8 +18,10 @@ import sys
 import os
 import traceback
 
-# Add meok package to path
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
+# Add meok package to path (clawd/ parent so `import meok` resolves)
+_tests_dir = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, os.path.join(_tests_dir, "..", ".."))  # clawd/
+sys.path.insert(1, os.path.join(_tests_dir, ".."))  # meok/ (fallback)
 
 PASS = "✅"
 FAIL = "❌"

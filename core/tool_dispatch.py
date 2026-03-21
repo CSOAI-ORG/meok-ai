@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 """
 TASK-002: MCP Tool Dispatch — wires Sovereign's 71 registered tools to the reasoning loop.
 

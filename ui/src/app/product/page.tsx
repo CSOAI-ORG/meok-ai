@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Brain, User, BookOpen, Heart, Zap, Sun, Shield, Check, ArrowRight } from "lucide-react";
+import { User, BookOpen, Heart, Zap, Sun, Shield, Check, ArrowRight } from "lucide-react";
+import { MarketingNav } from "@/components/marketing-nav";
+import { MarketingFooter } from "@/components/marketing-footer";
 
 export const metadata: Metadata = {
   title: "Product — MEOK AI | Sovereign AI OS",
@@ -161,32 +163,7 @@ export default function ProductPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      {/* Nav */}
-      <nav className="fixed top-0 left-0 right-0 z-50 border-b border-white/5 bg-[#0a0a0f]/80 backdrop-blur-xl">
-        <div className="max-w-6xl mx-auto px-6 h-14 flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-2 font-bold text-lg tracking-tight">
-            <Brain className="w-5 h-5 text-cyan-400" />
-            MEOK
-          </Link>
-          <div className="flex items-center gap-4 text-sm text-white/50">
-            <Link href="/product" className="text-white transition-colors">
-              Product
-            </Link>
-            <Link href="/labs" className="hover:text-white transition-colors">
-              Labs
-            </Link>
-            <Link href="/blog" className="hover:text-white transition-colors">
-              Blog
-            </Link>
-            <Link
-              href="/register"
-              className="px-3 py-1.5 rounded-full bg-cyan-500 text-black text-xs font-semibold hover:bg-cyan-400 transition-colors"
-            >
-              Hatch your AI
-            </Link>
-          </div>
-        </div>
-      </nav>
+      <MarketingNav activePage="product" />
 
       {/* Hero */}
       <section className="pt-32 pb-20 px-6 text-center">
@@ -306,26 +283,7 @@ export default function ProductPage() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="border-t border-white/5 py-8 px-6">
-        <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-white/20">
-          <div className="flex items-center gap-2">
-            <Brain className="w-4 h-4 text-cyan-400/50" />
-            <span>MEOK AI LTD · Registered in England &amp; Wales</span>
-          </div>
-          <div className="flex gap-6">
-            <Link href="/privacy" className="hover:text-white/50 transition-colors">
-              Privacy
-            </Link>
-            <Link href="/terms" className="hover:text-white/50 transition-colors">
-              Terms
-            </Link>
-            <Link href="/maternal-covenant" className="hover:text-white/50 transition-colors">
-              Maternal Covenant
-            </Link>
-          </div>
-        </div>
-      </footer>
+      <MarketingFooter />
     </div>
   );
 }

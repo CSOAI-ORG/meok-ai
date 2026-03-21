@@ -1,94 +1,61 @@
-"use client";
-
-import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { SignIn } from "@clerk/nextjs";
 import Link from "next/link";
-import { AuthProvider, useAuth } from "@/lib/auth";
-import { Button } from "@/components/ui/button";
-import { Brain } from "lucide-react";
+import type { Metadata } from "next";
 
-function LoginForm() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
-  const { login } = useAuth();
-  const router = useRouter();
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setError("");
-    setLoading(true);
-    try {
-      await login(email, password);
-      router.push("/dashboard");
-    } catch (err: unknown) {
-      setError(err instanceof Error ? err.message : "Login failed");
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  return (
-    <div className="min-h-screen flex items-center justify-center p-4">
-      <div className="w-full max-w-md">
-        <div className="text-center mb-8">
-          <Brain className="w-12 h-12 text-cyan-400 mx-auto mb-4" />
-          <h1 className="text-3xl font-bold">MEOK</h1>
-          <p className="text-white/40 mt-1">Sign in to your sovereign AI</p>
-        </div>
-
-        <form onSubmit={handleSubmit} className="space-y-4">
-          {error && (
-            <div className="p-3 rounded-lg bg-red-500/10 border border-red-500/20 text-red-400 text-sm">
-              {error}
-            </div>
-          )}
-
-          <div>
-            <label className="block text-sm text-white/50 mb-1.5">Email</label>
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="w-full px-4 py-2.5 rounded-lg bg-white/5 border border-white/10 text-white placeholder-white/20 focus:outline-none focus:border-cyan-500/50 focus:ring-1 focus:ring-cyan-500/25"
-              placeholder="you@example.com"
-              required
-            />
-          </div>
-
-          <div>
-            <label className="block text-sm text-white/50 mb-1.5">Password</label>
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              className="w-full px-4 py-2.5 rounded-lg bg-white/5 border border-white/10 text-white placeholder-white/20 focus:outline-none focus:border-cyan-500/50 focus:ring-1 focus:ring-cyan-500/25"
-              placeholder="••••••••"
-              required
-            />
-          </div>
-
-          <Button type="submit" className="w-full" size="lg" disabled={loading}>
-            {loading ? "Signing in..." : "Sign in"}
-          </Button>
-        </form>
-
-        <p className="text-center text-sm text-white/30 mt-6">
-          No account?{" "}
-          <Link href="/register" className="text-cyan-400 hover:text-cyan-300">
-            Hatch your AI
-          </Link>
-        </p>
-      </div>
-    </div>
-  );
-}
+export const metadata: Metadata = {
+  title: "Sign In — MEOK",
+  description: "Sign in to your MEOK sovereign AI.",
+  robots: { index: false, follow: false },
+};
 
 export default function LoginPage() {
   return (
-    <AuthProvider>
-      <LoginForm />
-    </AuthProvider>
+    <div className="min-h-screen bg-[#0a0a0f] flex flex-col items-center justify-center px-4 py-16">
+      {/* Header */}
+      <div className="text-center mb-8">
+        <Link href="/" className="inline-block font-bold text-2xl tracking-tight mb-6">
+          <span className="text-cyan-400">M</span>EOK
+        </Link>
+        <h1 className="text-3xl font-bold text-white mb-2">Welcome back</h1>
+        <p className="text-white/40 text-sm">Sign in to your sovereign AI.</p>
+      </div>
+
+      {/* Clerk SignIn */}
+      <SignIn
+        appearance={{
+          variables: {
+            colorBackground: "#0e0e15",
+            colorInputBackground: "#13131c",
+            colorInputText: "#ffffff",
+            colorText: "#ffffff",
+            colorTextSecondary: "rgba(255,255,255,0.4)",
+            colorPrimary: "#22d3ee",
+            colorDanger: "#f87171",
+            borderRadius: "0.75rem",
+            fontFamily: "inherit",
+          },
+          elements: {
+            card: "bg-[#0e0e15] border border-white/[0.08] shadow-2xl",
+            headerTitle: "text-white font-bold",
+            headerSubtitle: "text-white/40",
+            formButtonPrimary:
+              "bg-cyan-500 hover:bg-cyan-400 text-black font-semibold transition-colors",
+            footerActionLink: "text-cyan-400 hover:text-cyan-300",
+            formFieldLabel: "text-white/50 text-sm",
+            formFieldInput:
+              "bg-white/[0.05] border border-white/10 text-white placeholder-white/20 focus:border-cyan-500/50 focus:ring-1 focus:ring-cyan-500/25",
+            identityPreviewText: "text-white/70",
+            identityPreviewEditButton: "text-cyan-400 hover:text-cyan-300",
+            dividerLine: "bg-white/[0.08]",
+            dividerText: "text-white/30",
+            socialButtonsBlockButton:
+              "bg-white/[0.05] border border-white/10 text-white/70 hover:bg-white/[0.08] hover:text-white transition-colors",
+            socialButtonsBlockButtonText: "text-white/70",
+          },
+        }}
+        forceRedirectUrl="/dashboard"
+        signUpUrl="/register"
+      />
+    </div>
   );
 }

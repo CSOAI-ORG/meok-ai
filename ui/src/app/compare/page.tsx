@@ -1,6 +1,8 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { Brain, Check, X, Minus, ArrowRight } from 'lucide-react'
+import { Check, X, Minus, ArrowRight } from 'lucide-react'
+import { MarketingNav } from '@/components/marketing-nav'
+import { MarketingFooter } from '@/components/marketing-footer'
 
 export const metadata: Metadata = {
   title: 'MEOK vs Other AI Companions — Why Sovereign Matters',
@@ -176,32 +178,7 @@ const WHY_NOW = [
 export default function ComparePage() {
   return (
     <div className="min-h-screen bg-[#0a0a0f] text-white">
-      {/* Nav */}
-      <nav className="fixed top-0 left-0 right-0 z-50 border-b border-white/5 bg-[#0a0a0f]/80 backdrop-blur-xl">
-        <div className="max-w-6xl mx-auto px-6 h-14 flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-2">
-            <Brain className="w-5 h-5 text-cyan-400" />
-            <span className="font-bold text-lg tracking-tight">MEOK</span>
-          </Link>
-          <div className="hidden sm:flex items-center gap-6 text-sm text-white/40">
-            <Link href="/about" className="hover:text-white transition-colors">About</Link>
-            <Link href="/faq" className="hover:text-white transition-colors">FAQ</Link>
-            <Link href="/blog" className="hover:text-white transition-colors">Blog</Link>
-            <Link href="/compare" className="text-cyan-400">Compare</Link>
-          </div>
-          <div className="flex items-center gap-4">
-            <Link href="/login" className="text-sm text-white/50 hover:text-white transition-colors">
-              Sign in
-            </Link>
-            <Link
-              href="/register"
-              className="text-sm px-4 py-1.5 rounded-lg bg-cyan-500 text-black font-semibold hover:bg-cyan-400 transition-colors"
-            >
-              Hatch your AI
-            </Link>
-          </div>
-        </div>
-      </nav>
+      <MarketingNav activePage="compare" />
 
       {/* Header */}
       <section className="pt-32 pb-16 px-6 text-center">
@@ -357,20 +334,7 @@ export default function ComparePage() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="border-t border-white/5 py-8 px-6">
-        <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-white/20">
-          <div className="flex items-center gap-2">
-            <Brain className="w-4 h-4 text-cyan-400/50" />
-            <span>MEOK AI LTD · Registered in England &amp; Wales</span>
-          </div>
-          <div className="flex gap-6">
-            <Link href="/privacy" className="hover:text-white/50 transition-colors">Privacy</Link>
-            <Link href="/terms" className="hover:text-white/50 transition-colors">Terms</Link>
-            <Link href="/maternal-covenant" className="hover:text-white/50 transition-colors">Maternal Covenant</Link>
-          </div>
-        </div>
-      </footer>
+      <MarketingFooter />
     </div>
   )
 }
