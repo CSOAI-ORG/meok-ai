@@ -1,9 +1,21 @@
 import Stripe from "stripe";
 
-// Server-side Stripe instance
-export const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
-  apiVersion: "2026-02-25.clover",
-  appInfo: { name: "MEOK Sovereign AI OS", version: "1.0.0" },
+// Server-side Stripe instance (lazy — avoids build-time throw when env not set)
+let _stripe: Stripe | null = null;
+export function getStripe(): Stripe {
+  if (!_stripe) {
+    const key = process.env.STRIPE_SECRET_KEY;
+    if (!key) throw new Error("STRIPE_SECRET_KEY environment variable is not set");
+    _stripe = new Stripe(key, {
+      apiVersion: "2026-02-25.clover",
+      appInfo: { name: "MEOK Sovereign AI OS", version: "1.0.0" },
+    });
+  }
+  return _stripe;
+}
+/** @deprecated use getStripe() */
+export const stripe = new Proxy({} as Stripe, {
+  get(_t, prop) { return (getStripe() as unknown as Record<string | symbol, unknown>)[prop]; },
 });
 
 // Pricing tiers
