@@ -4,6 +4,12 @@ import Link from "next/link";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 
+interface NavLink {
+  href: string;
+  label: string;
+  special?: boolean;
+}
+
 interface MarketingNavProps {
   activePage?: string;
 }
@@ -13,6 +19,7 @@ export function MarketingNav({ activePage }: MarketingNavProps) {
 
   const links = [
     { href: "/product", label: "Product" },
+    { href: "/ralph", label: "⚡ Ralph", special: true },
     { href: "/pricing", label: "Pricing" },
     { href: "/blog", label: "Blog" },
     { href: "/compare", label: "Compare" },
@@ -34,7 +41,11 @@ export function MarketingNav({ activePage }: MarketingNavProps) {
               key={l.href}
               href={l.href}
               className={`hover:text-white transition-colors ${
-                activePage === l.label.toLowerCase() ? "text-cyan-400" : ""
+                l.special
+                  ? "text-orange-400 hover:text-orange-300"
+                  : activePage === l.label.toLowerCase()
+                  ? "text-cyan-400"
+                  : ""
               }`}
             >
               {l.label}
@@ -76,7 +87,9 @@ export function MarketingNav({ activePage }: MarketingNavProps) {
               key={l.href}
               href={l.href}
               className={`block text-sm py-1 transition-colors ${
-                activePage === l.label.toLowerCase()
+                l.special
+                  ? "text-orange-400 hover:text-orange-300"
+                  : activePage === l.label.toLowerCase()
                   ? "text-cyan-400"
                   : "text-white/50 hover:text-white"
               }`}

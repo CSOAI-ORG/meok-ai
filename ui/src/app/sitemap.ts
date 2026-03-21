@@ -19,6 +19,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // Core pages
     { url: 'https://meok.ai', lastModified: new Date(), changeFrequency: 'weekly', priority: 1.0 },
     { url: 'https://meok.ai/product', lastModified: new Date(), changeFrequency: 'monthly', priority: 0.9 },
+    { url: 'https://meok.ai/ralph', lastModified: new Date(), changeFrequency: 'monthly', priority: 0.9 },
     { url: 'https://meok.ai/pricing', lastModified: new Date(), changeFrequency: 'weekly', priority: 0.9 },
     { url: 'https://meok.ai/about', lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
     { url: 'https://meok.ai/faq', lastModified: new Date(), changeFrequency: 'weekly', priority: 0.9 },
