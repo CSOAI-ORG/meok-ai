@@ -292,12 +292,12 @@ export default function LandingPage() {
             >
               Hatch free <ArrowRight className="w-4 h-4" />
             </Link>
-            <a
-              href="#how-it-works"
+            <Link
+              href="/how-it-works"
               className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl border border-white/10 text-white/60 hover:text-white hover:border-white/20 transition-colors text-sm"
             >
               See how it works ↓
-            </a>
+            </Link>
           </div>
 
           <p className="text-xs text-white/20 mt-5">
@@ -359,6 +359,14 @@ export default function LandingPage() {
                 <p className="text-sm text-white/40 leading-relaxed">{s.desc}</p>
               </div>
             ))}
+          </div>
+          <div className="mt-10">
+            <Link
+              href="/how-it-works"
+              className="inline-flex items-center gap-2 text-sm text-cyan-400 hover:text-cyan-300 transition-colors"
+            >
+              Full walkthrough → <ArrowRight className="w-3.5 h-3.5" />
+            </Link>
           </div>
         </div>
       </section>

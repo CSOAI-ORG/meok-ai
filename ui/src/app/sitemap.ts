@@ -36,10 +36,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: 'https://meok.ai/labs/csga-cai-2026-003', lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
     { url: 'https://meok.ai/labs/csga-cai-2026-004', lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
 
+    // How it works
+    { url: 'https://meok.ai/how-it-works', lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
+
     // Product subpages
     { url: 'https://meok.ai/product/companions', lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
     { url: 'https://meok.ai/product/governance', lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
     { url: 'https://meok.ai/product/memory', lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
+    { url: 'https://meok.ai/product/characters', lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
+    { url: 'https://meok.ai/product/family-guardian', lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
 
     // Legal
     { url: 'https://meok.ai/privacy', lastModified: new Date(), changeFrequency: 'yearly', priority: 0.3 },

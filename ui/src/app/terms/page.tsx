@@ -1,5 +1,5 @@
-import Link from "next/link";
-import { Brain, ArrowLeft } from "lucide-react";
+import { MarketingNav } from "@/components/marketing-nav";
+import { MarketingFooter } from "@/components/marketing-footer";
 
 export const metadata = {
   title: "Terms of Service — MEOK AI",
@@ -9,17 +9,7 @@ export const metadata = {
 export default function TermsPage() {
   return (
     <div className="min-h-screen bg-[#0a0a0f] text-white">
-      <nav className="fixed top-0 left-0 right-0 z-50 border-b border-white/5 bg-[#0a0a0f]/80 backdrop-blur-xl">
-        <div className="max-w-4xl mx-auto px-6 h-14 flex items-center gap-4">
-          <Link href="/" className="flex items-center gap-2 text-white/30 hover:text-white transition-colors text-sm">
-            <ArrowLeft className="w-4 h-4" />Back
-          </Link>
-          <div className="flex items-center gap-2 ml-auto">
-            <Brain className="w-4 h-4 text-cyan-400" />
-            <span className="font-bold">MEOK</span>
-          </div>
-        </div>
-      </nav>
+      <MarketingNav />
 
       <div className="pt-28 pb-24 px-6 max-w-3xl mx-auto">
         <h1 className="text-3xl font-bold mb-2">Terms of Service</h1>
@@ -87,6 +77,8 @@ export default function TermsPage() {
           </div>
         </div>
       </div>
+
+      <MarketingFooter />
     </div>
   );
 }

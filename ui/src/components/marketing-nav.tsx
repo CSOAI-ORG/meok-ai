@@ -19,6 +19,7 @@ export function MarketingNav({ activePage }: MarketingNavProps) {
 
   const links = [
     { href: "/product", label: "Product" },
+    { href: "/how-it-works", label: "How it works" },
     { href: "/ralph", label: "⚡ Ralph", special: true },
     { href: "/pricing", label: "Pricing" },
     { href: "/blog", label: "Blog" },
