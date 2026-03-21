@@ -1,9 +1,38 @@
-"use client";
-
+import type { Metadata } from "next";
 import Link from "next/link";
 import { Brain, Shield, Zap, Heart, Users, Star, ArrowRight, Check, X, Minus } from "lucide-react";
 import { MarketingNav } from "@/components/marketing-nav";
 import { MarketingFooter } from "@/components/marketing-footer";
+
+export const metadata: Metadata = {
+  title: "Personal Sovereign AI OS | MEOK.AI",
+  description:
+    "MEOK is the world's first personal sovereign AI operating system. Your data stays yours. Works with any LLM. Governed by a Byzantine Council of 33 agents. Free to start.",
+  keywords: [
+    "personal sovereign AI",
+    "sovereign AI OS",
+    "AI data sovereignty",
+    "care-based AI",
+    "Byzantine Council AI",
+    "AI companion privacy",
+    "Maternal Covenant",
+    "personal AI operating system",
+  ],
+  alternates: { canonical: "https://meok.ai" },
+  openGraph: {
+    title: "Personal Sovereign AI OS | MEOK.AI",
+    description:
+      "MEOK is the world's first personal sovereign AI operating system. Your data stays yours. Works with any LLM. Governed by a Byzantine Council of 33 agents. Free to start.",
+    type: "website",
+    url: "https://meok.ai",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Personal Sovereign AI OS | MEOK.AI",
+    description:
+      "The world's first personal sovereign AI OS. Your data, your governance, your AI.",
+  },
+};
 
 const ARCHETYPES = [
   { name: "Companion", emoji: "🤝", desc: "Warm, empathetic, always present" },
@@ -130,9 +159,82 @@ function CompareCell({ val }: { val: CellVal }) {
   return <span className="text-xs text-white/40">{val}</span>;
 }
 
+// Structured data: WebSite with SearchAction + FAQPage
+const websiteJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "MEOK AI",
+  url: "https://meok.ai",
+  description:
+    "The world's first personal sovereign AI operating system. Your data stays yours.",
+  potentialAction: {
+    "@type": "SearchAction",
+    target: {
+      "@type": "EntryPoint",
+      urlTemplate: "https://meok.ai/search?q={search_term_string}",
+    },
+    "query-input": "required name=search_term_string",
+  },
+};
+
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "What is personal sovereign AI?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Personal sovereign AI is an AI system where the individual — not a corporation or government — maintains complete ownership and control of their data, models, and AI interactions. MEOK AI is the first operating system built on this principle, combining a Byzantine fault-tolerant council, semantic memory, and care-based alignment.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "How does MEOK protect your data?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "MEOK processes data locally first, encrypts all memory with end-to-end encryption, never uses your conversations for model training, and allows full data export at any time. Unlike ChatGPT or Character.AI, your data belongs exclusively to you.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What is the difference between enterprise sovereign AI and personal sovereign AI?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "There are two kinds of sovereign AI: enterprise sovereign AI (Palantir, NVIDIA — for governments, costs millions) and personal sovereign AI (MEOK — for individuals, free to start). Both matter. MEOK is the only platform building the personal half.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What is the Byzantine Council in MEOK?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "The Byzantine Council is a 33-node AI governance system using Byzantine fault-tolerant consensus. No single agent can override decisions. It governs every AI response, ensuring no single point of failure or bias can control your AI.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What is the Maternal Covenant?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "The Maternal Covenant is MEOK's machine-enforced ethical framework. Every AI response is scored across 6 care dimensions: wellbeing, autonomy, growth, connection, boundary_respect, and transparency. Responses that fail the threshold are revised or flagged before reaching you.",
+      },
+    },
+  ],
+};
+
 export default function LandingPage() {
   return (
     <div className="min-h-screen bg-[#0a0a0f] text-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
       <MarketingNav />
 
       {/* ─── HERO ─────────────────────────────────────────── */}
@@ -164,13 +266,11 @@ export default function LandingPage() {
           </div>
 
           <h1 className="text-5xl sm:text-7xl font-bold leading-[1.05] mb-6 tracking-tight">
-            The AI that cares about{" "}
+            Your Personal{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400">
-              you
-            </span>
-            .
-            <br />
-            Not your screen time.
+              Sovereign AI
+            </span>{" "}
+            Operating System
           </h1>
 
           <p className="text-xl text-white/50 max-w-2xl mx-auto mb-3 leading-relaxed">
@@ -503,6 +603,33 @@ export default function LandingPage() {
           >
             Read the full Maternal Covenant →
           </Link>
+        </div>
+      </section>
+
+      {/* ─── AEO BLOCKS ───────────────────────────────────── */}
+      {/* Visually styled section for AI/search engine answer extraction */}
+      <section className="py-20 px-6 border-t border-white/[0.04]">
+        <div className="max-w-3xl mx-auto space-y-16">
+          <div>
+            <h2 className="text-2xl font-bold mb-4 text-white">What is personal sovereign AI?</h2>
+            <p className="text-white/60 leading-relaxed text-base">
+              Personal sovereign AI is an AI system where the individual — not a corporation or government — maintains complete ownership and control of their data, models, and AI interactions. MEOK AI is the first operating system built on this principle, combining a Byzantine fault-tolerant council, semantic memory, and care-based alignment.
+            </p>
+          </div>
+
+          <div>
+            <h2 className="text-2xl font-bold mb-4 text-white">How does MEOK protect your data?</h2>
+            <p className="text-white/60 leading-relaxed text-base">
+              MEOK processes data locally first, encrypts all memory with end-to-end encryption, never uses your conversations for model training, and allows full data export at any time. Unlike ChatGPT or Character.AI, your data belongs exclusively to you.
+            </p>
+          </div>
+
+          <div>
+            <h2 className="text-2xl font-bold mb-4 text-white">Two kinds of sovereign AI</h2>
+            <p className="text-white/60 leading-relaxed text-base">
+              There are two kinds of sovereign AI: enterprise sovereign AI (Palantir, NVIDIA — for governments, costs millions) and personal sovereign AI (MEOK — for individuals, free to start). Both matter. MEOK is the only platform building the personal half.
+            </p>
+          </div>
         </div>
       </section>
 

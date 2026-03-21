@@ -1,4 +1,4 @@
-import { MetadataRoute } from 'next'
+import type { MetadataRoute } from 'next'
 
 export default function robots(): MetadataRoute.Robots {
   return {
@@ -6,16 +6,21 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: '*',
         allow: '/',
-        disallow: ['/dashboard/', '/terminal/', '/api/', '/birth/', '/chat/', '/settings/'],
+        disallow: ['/api/', '/dashboard/', '/terminal/', '/_next/'],
       },
-      // Explicitly allow AI crawlers to index research and editorial content
-      {
-        userAgent: ['GPTBot', 'ClaudeBot', 'PerplexityBot', 'anthropic-ai', 'Googlebot-Extended'],
-        allow: ['/', '/product', '/labs', '/blog', '/about', '/faq', '/compare', '/maternal-covenant'],
-        disallow: ['/dashboard/', '/terminal/', '/api/'],
-      },
+      { userAgent: 'GPTBot', allow: '/' },
+      { userAgent: 'ChatGPT-User', allow: '/' },
+      { userAgent: 'OAI-SearchBot', allow: '/' },
+      { userAgent: 'ClaudeBot', allow: '/' },
+      { userAgent: 'Claude-Web', allow: '/' },
+      { userAgent: 'PerplexityBot', allow: '/' },
+      { userAgent: 'Google-Extended', allow: '/' },
+      { userAgent: 'Applebot-Extended', allow: '/' },
+      { userAgent: 'Amazonbot', allow: '/' },
+      { userAgent: 'anthropic-ai', allow: '/' },
+      { userAgent: 'Bytespider', allow: '/' },
+      { userAgent: 'cohere-ai', allow: '/' },
     ],
     sitemap: 'https://meok.ai/sitemap.xml',
-    host: 'https://meok.ai',
   }
 }

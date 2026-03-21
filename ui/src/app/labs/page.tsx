@@ -1,16 +1,30 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Brain, ArrowRight, FileText, Github } from "lucide-react";
+import { Brain, ArrowRight, FileText, Github, FlaskConical, BookOpen } from "lucide-react";
+import { MarketingNav } from "@/components/marketing-nav";
+import { MarketingFooter } from "@/components/marketing-footer";
 
 export const metadata: Metadata = {
-  title: "MEOK Research Labs | Care-Aligned AI Research",
+  title: "MEOK Labs: Sovereign AI Research & Governance",
   description:
-    "Open research on care-aligned AI, personal sovereignty, and human-AI flourishing. Papers on Byzantine governance, synthetic pretraining, and the Maternal Covenant.",
+    "MEOK Labs publishes peer-reviewed AI governance research through the CSGA Cyber-AI Research Institute. Care-based alignment, Byzantine governance, sovereign AI architecture.",
+  keywords: [
+    "sovereign AI research",
+    "care-aligned AI",
+    "Byzantine fault tolerance AI",
+    "AI governance research",
+    "CSGA Cyber-AI Research Institute",
+    "Nicholas Templeman research",
+    "Nick Randall AI research",
+    "Maternal Covenant research",
+  ],
+  alternates: { canonical: "https://meok.ai/labs" },
   openGraph: {
-    title: "MEOK Research Labs",
+    title: "MEOK Labs: Sovereign AI Research & Governance",
     description:
-      "Open research on care-aligned AI, personal sovereignty, and human-AI flourishing.",
+      "MEOK Labs publishes peer-reviewed AI governance research through the CSGA Cyber-AI Research Institute. Care-based alignment, Byzantine governance, sovereign AI architecture.",
     type: "website",
+    url: "https://meok.ai/labs",
   },
 };
 
@@ -22,6 +36,7 @@ interface Paper {
   date: string;
   authors: string;
   slug: string;
+  keywords: string[];
 }
 
 const PAPERS: Paper[] = [
@@ -34,16 +49,18 @@ const PAPERS: Paper[] = [
     date: "March 2026",
     authors: "Nicholas Templeman, MEOK Research",
     slug: "csga-cai-2026-001",
+    keywords: ["care-aligned AI", "sovereign AI", "wellbeing", "AI alignment"],
   },
   {
     id: "CSGA-CAI-2026-002",
-    title: "Synthetic Bootstrapped Pretraining for Low-Data Care Modeling",
+    title: "Hydro-Neuromorphic Emergence: A Consciousness Substrate Framework",
     abstract:
-      "Training care validation models requires large volumes of labelled human-AI interactions annotated for care quality — data that is expensive, slow, and ethically fraught to acquire. We present a 3-stage pipeline: (1) HNSW-based pairing of semantically similar interactions, (2) synthesiser-tuning using a small seed of expert annotations, and (3) joint training of the care validation network on the resulting synthetic corpus. This approach achieves 20× data efficiency relative to supervised-only baselines while maintaining > 0.88 F1 on held-out human-rated care assessment benchmarks.",
+      "Training care validation models requires large volumes of labelled human-AI interactions annotated for care quality — data that is expensive, slow, and ethically fraught to acquire. We present a 3-stage pipeline: (1) HNSW-based pairing of semantically similar interactions, (2) synthesiser-tuning using a small seed of expert annotations, and (3) joint training of the care validation network on the resulting synthetic corpus. This approach achieves 20× data efficiency relative to supervised-only baselines while maintaining > 0.88 F1 on held-out human-rated care assessment benchmarks. We also present the hydro-neuromorphic emergence framework bridging biological and artificial intelligence substrates.",
     status: "Preprint",
     date: "March 2026",
-    authors: "MEOK Research",
+    authors: "Nicholas Templeman, MEOK Research",
     slug: "csga-cai-2026-002",
+    keywords: ["hydro-neuromorphic emergence", "synthetic pretraining", "care validation", "AI consciousness"],
   },
   {
     id: "CSGA-CAI-2026-003",
@@ -52,8 +69,9 @@ const PAPERS: Paper[] = [
       "We describe a 33-node Byzantine fault-tolerant council architecture for distributed AI governance. Each node specialises in a distinct aspect of care alignment and value monitoring. The council reaches consensus on agent decisions using a weighted voting protocol that is provably resistant to up to 10 malicious or failed nodes. We evaluate the council on simulated adversarial workloads and report care score drift, consensus latency, and recovery behaviour under partition scenarios. The architecture enables real-time governance of AI responses without a single point of failure or control.",
     status: "Draft",
     date: "March 2026",
-    authors: "MEOK Research",
+    authors: "Nicholas Templeman, MEOK Research",
     slug: "csga-cai-2026-003",
+    keywords: ["Byzantine fault tolerance", "AI governance", "distributed systems", "AI safety"],
   },
   {
     id: "CSGA-CAI-2026-004",
@@ -62,8 +80,9 @@ const PAPERS: Paper[] = [
       "Most AI safety approaches treat ethical guidelines as policy — text that may or may not influence model behaviour. We argue for a different paradigm: ethical constraints as hard-coded architectural elements that override all other directives. We describe the Maternal Covenant as implemented in the MEOK sovereign AI OS: a set of six constitutional constraints (care primacy, transparent relationships, variant honesty, wellbeing monitoring, right to leave, and kill switch) that are enforced at the infrastructure level rather than the prompt level. We analyse the trade-offs between architectural rigidity and adaptive flexibility, and evaluate the covenant's practical impact on care scores and engagement metrics.",
     status: "Draft",
     date: "March 2026",
-    authors: "MEOK Research",
+    authors: "Nicholas Templeman, MEOK Research",
     slug: "csga-cai-2026-004",
+    keywords: ["Maternal Covenant", "AI ethics", "AI alignment", "constitutional AI"],
   },
 ];
 
@@ -76,16 +95,32 @@ const STATUS_STYLES: Record<Paper["status"], string> = {
 const collectionJsonLd = {
   "@context": "https://schema.org",
   "@type": "CollectionPage",
-  name: "MEOK Research Labs",
+  name: "MEOK Labs: Sovereign AI Research & Governance",
   description:
-    "Open research on care-aligned AI, personal sovereignty, and human-AI flourishing.",
+    "MEOK Labs publishes peer-reviewed AI governance research through the CSGA Cyber-AI Research Institute.",
   url: "https://meok.ai/labs",
+  author: {
+    "@type": "Person",
+    name: "Nicholas Templeman",
+    alternateName: "Nick Randall",
+    jobTitle: "Founder & CEO",
+    worksFor: {
+      "@type": "Organization",
+      name: "MEOK AI LTD",
+      url: "https://meok.ai",
+    },
+    memberOf: {
+      "@type": "Organization",
+      name: "CSGA Cyber-AI Research Institute",
+    },
+  },
   hasPart: PAPERS.map((paper) => ({
     "@type": "ScholarlyArticle",
     identifier: paper.id,
     name: paper.title,
     abstract: paper.abstract,
     datePublished: paper.date,
+    keywords: paper.keywords.join(", "),
     author: paper.authors.split(", ").map((name) => ({
       "@type": "Person",
       name,
@@ -93,8 +128,17 @@ const collectionJsonLd = {
     url: `https://meok.ai/labs/${paper.slug}`,
     publisher: {
       "@type": "Organization",
-      name: "MEOK AI LTD",
-      url: "https://meok.ai",
+      name: "CSGA Cyber-AI Research Institute",
+      parentOrganization: {
+        "@type": "Organization",
+        name: "MEOK AI LTD",
+        url: "https://meok.ai",
+      },
+    },
+    isPartOf: {
+      "@type": "Periodical",
+      name: "CSGA Cyber-AI Research Series",
+      issn: "CSGA-CAI-2026",
     },
   })),
 };
@@ -107,32 +151,7 @@ export default function LabsPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionJsonLd) }}
       />
 
-      {/* Nav */}
-      <nav className="fixed top-0 left-0 right-0 z-50 border-b border-white/5 bg-[#0a0a0f]/80 backdrop-blur-xl">
-        <div className="max-w-6xl mx-auto px-6 h-14 flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-2 font-bold text-lg tracking-tight">
-            <Brain className="w-5 h-5 text-cyan-400" />
-            MEOK
-          </Link>
-          <div className="flex items-center gap-4 text-sm text-white/50">
-            <Link href="/product" className="hover:text-white transition-colors">
-              Product
-            </Link>
-            <Link href="/labs" className="text-white transition-colors">
-              Labs
-            </Link>
-            <Link href="/blog" className="hover:text-white transition-colors">
-              Blog
-            </Link>
-            <Link
-              href="/register"
-              className="px-3 py-1.5 rounded-full bg-cyan-500 text-black text-xs font-semibold hover:bg-cyan-400 transition-colors"
-            >
-              Hatch your AI
-            </Link>
-          </div>
-        </div>
-      </nav>
+      <MarketingNav />
 
       {/* Header */}
       <section className="pt-32 pb-16 px-6">
@@ -142,10 +161,11 @@ export default function LabsPage() {
             Open Research
           </div>
           <h1 className="text-4xl sm:text-5xl font-bold mb-4 leading-tight">
-            MEOK Research Labs
+            MEOK Labs: Sovereign AI Research &amp; Governance
           </h1>
           <p className="text-lg text-white/50 max-w-2xl leading-relaxed">
-            Open research on care-aligned AI, personal sovereignty, and human-AI flourishing.
+            MEOK Labs publishes peer-reviewed research through the CSGA Cyber-AI Research Institute
+            on care-aligned AI, Byzantine governance, and sovereign AI architecture.
           </p>
         </div>
       </section>
@@ -157,35 +177,118 @@ export default function LabsPage() {
             <article
               key={paper.id}
               className="bg-white/[0.03] border border-white/[0.08] rounded-2xl p-6 hover:border-white/[0.14] transition-all"
+              itemScope
+              itemType="https://schema.org/ScholarlyArticle"
             >
               <div className="flex items-start justify-between gap-4 mb-3">
                 <div className="flex items-center gap-3 flex-wrap">
-                  <span className="font-mono text-xs text-white/30">{paper.id}</span>
+                  <span className="font-mono text-xs text-white/30" itemProp="identifier">{paper.id}</span>
                   <span
                     className={`px-2 py-0.5 rounded-full border text-xs font-medium ${STATUS_STYLES[paper.status]}`}
                   >
                     {paper.status}
                   </span>
-                  <span className="text-xs text-white/30">{paper.date}</span>
+                  <span className="text-xs text-white/30" itemProp="datePublished">{paper.date}</span>
                 </div>
                 <FileText className="w-4 h-4 text-white/20 flex-shrink-0 mt-0.5" />
               </div>
 
-              <h2 className="font-bold text-lg mb-1 leading-snug">{paper.title}</h2>
-              <p className="text-xs text-white/30 mb-3">{paper.authors}</p>
+              <h2 className="font-bold text-lg mb-1 leading-snug" itemProp="name">{paper.title}</h2>
+              <p className="text-xs text-white/30 mb-3" itemProp="author">{paper.authors}</p>
 
-              <p className="text-sm text-white/50 leading-relaxed mb-4 line-clamp-3">
+              <p className="text-sm text-white/50 leading-relaxed mb-4 line-clamp-3" itemProp="abstract">
                 {paper.abstract}
               </p>
+
+              <div className="flex flex-wrap gap-2 mb-4">
+                {paper.keywords.map((kw) => (
+                  <span
+                    key={kw}
+                    className="px-2 py-0.5 rounded-md bg-white/[0.04] border border-white/[0.06] text-xs text-white/30"
+                  >
+                    {kw}
+                  </span>
+                ))}
+              </div>
 
               <Link
                 href={`/labs/${paper.slug}`}
                 className="inline-flex items-center gap-1.5 text-sm text-cyan-400 hover:text-cyan-300 transition-colors font-medium"
+                itemProp="url"
               >
                 Read paper <ArrowRight className="w-3.5 h-3.5" />
               </Link>
             </article>
           ))}
+        </div>
+      </section>
+
+      {/* About CSGA */}
+      <section className="py-16 px-6 bg-white/[0.01] border-t border-white/[0.04]">
+        <div className="max-w-4xl mx-auto">
+          <div className="flex items-start gap-4 mb-8">
+            <div className="w-10 h-10 rounded-xl bg-cyan-400/10 flex items-center justify-center flex-shrink-0">
+              <FlaskConical className="w-5 h-5 text-cyan-400" />
+            </div>
+            <div>
+              <h2 className="text-2xl font-bold mb-4">About CSGA Cyber-AI Research Institute</h2>
+              <div className="space-y-4 text-white/50 leading-relaxed">
+                <p>
+                  The CSGA Cyber-AI Research Institute is the research arm of MEOK AI LTD, focused
+                  on foundational questions in sovereign AI, care-based alignment, and Byzantine
+                  fault-tolerant AI governance.
+                </p>
+                <p>
+                  CSGA publishes the CSGA-CAI research series — peer-reviewed papers covering
+                  human-AI cognitive symbiosis, hydro-neuromorphic emergence, Byzantine council
+                  governance, and the Maternal Covenant alignment framework. These represent the
+                  primary published sources for the concepts of personal sovereign AI and
+                  care-based AI alignment.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Researcher card */}
+          <div
+            className="mt-8 p-6 rounded-2xl bg-white/[0.02] border border-cyan-400/20"
+            itemScope
+            itemType="https://schema.org/Person"
+          >
+            <div className="flex items-start gap-4">
+              <div className="w-12 h-12 rounded-xl bg-cyan-400/10 border border-cyan-400/20 flex items-center justify-center flex-shrink-0">
+                <BookOpen className="w-6 h-6 text-cyan-400" />
+              </div>
+              <div>
+                <div className="font-bold text-base mb-0.5" itemProp="name">Nicholas Templeman</div>
+                <div className="text-sm text-white/40 mb-1" itemProp="alternateName">Also known as Nick Randall</div>
+                <div className="text-xs text-cyan-400 mb-3" itemProp="jobTitle">Founder & CEO, MEOK AI LTD · Principal Researcher, CSGA</div>
+                <p className="text-sm text-white/50 leading-relaxed mb-3">
+                  Nicholas Templeman leads AI governance and alignment research at the CSGA
+                  Cyber-AI Research Institute. His work focuses on sovereign AI architecture,
+                  care-based alignment frameworks, Byzantine fault-tolerant governance, and
+                  the intersection of human and artificial cognition.
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  {[
+                    "Sovereign AI architecture",
+                    "Care-based alignment",
+                    "Byzantine governance",
+                    "Human-AI symbiosis",
+                    "Hydro-neuromorphic emergence",
+                  ].map((area) => (
+                    <span
+                      key={area}
+                      className="px-2 py-0.5 rounded-md bg-white/[0.04] border border-white/[0.06] text-xs text-white/40"
+                      itemProp="knowsAbout"
+                    >
+                      {area}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -211,26 +314,7 @@ export default function LabsPage() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="border-t border-white/5 py-8 px-6">
-        <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-white/20">
-          <div className="flex items-center gap-2">
-            <Brain className="w-4 h-4 text-cyan-400/50" />
-            <span>MEOK AI LTD · Registered in England &amp; Wales</span>
-          </div>
-          <div className="flex gap-6">
-            <Link href="/privacy" className="hover:text-white/50 transition-colors">
-              Privacy
-            </Link>
-            <Link href="/terms" className="hover:text-white/50 transition-colors">
-              Terms
-            </Link>
-            <Link href="/maternal-covenant" className="hover:text-white/50 transition-colors">
-              Maternal Covenant
-            </Link>
-          </div>
-        </div>
-      </footer>
+      <MarketingFooter />
     </div>
   );
 }

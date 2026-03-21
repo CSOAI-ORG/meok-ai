@@ -1,0 +1,135 @@
+---
+title: "Byzantine Council: How 33 AI Agents Govern Every Decision"
+description: "The Byzantine Council uses 33 AI agents with Byzantine fault tolerance to govern AI decisions. No single point of failure. No single bias. Here's how it works."
+date: "2026-03-21"
+author: "Nicholas Templeman"
+category: "Research"
+keywords: ["Byzantine Council AI", "Byzantine fault tolerance AI", "AI governance", "care-based AI alignment", "AI without bias"]
+readTime: 8
+priority: "high"
+---
+
+In 2026, every major AI system is governed by a single model or a single company. One set of weights. One training pipeline. One boardroom. One point of failure — and one point of control.
+
+MEOK is different. Every response your MEOK AI delivers is first approved by a council of 33 AI agents — a system built on Byzantine fault-tolerant consensus. No single agent can override it. No single bias can dominate it. And no company directive can override the council's decision.
+
+Here is how it works, and why it matters.
+
+## What is Byzantine fault tolerance?
+
+The Byzantine Generals Problem is a classic problem in computer science, first formalised by Leslie Lamport, Robert Shostak, and Marshall Pease in 1982.
+
+The scenario: imagine a group of Byzantine army generals surrounding an enemy city. They must agree on a plan — attack or retreat. Communication happens only through messengers. The problem: some generals may be traitors who will deliberately send conflicting messages to prevent consensus.
+
+The question: can the loyal generals still reach a correct consensus even when some participants are actively working to undermine the process?
+
+The answer is yes — but only if the number of traitors is fewer than one-third of the total participants. With N generals, the system can tolerate up to (N-1)/3 traitors and still reach correct consensus.
+
+This insight became the foundation of distributed systems. It is why Bitcoin works. It is why distributed databases can survive node failures. It is why aircraft control systems can tolerate component failures without crashing.
+
+Applied to AI governance: if 33 agents are evaluating a response, the council reaches correct consensus even if up to 10 agents are malfunctioning, biased, or corrupted.
+
+```
+Byzantine fault tolerance threshold:
+33 council nodes → tolerates up to 10 faulty nodes
+Threshold: floor((33-1)/3) = 10
+
+Consensus requires: ≥23 of 33 nodes in agreement
+```
+
+## How MEOK's 33-agent council works
+
+The MEOK Byzantine Council is a 33-node AI governance system. Each node is a specialist agent with a distinct area of care evaluation. When your AI prepares a response, the council evaluates it before it reaches you.
+
+The 33 nodes are grouped across 6 specialisations:
+
+**Care dimension nodes (6 nodes):** One for each of the six care dimensions — wellbeing, autonomy, growth, connection, boundary_respect, and transparency. Each node scores the proposed response on its dimension.
+
+**Risk assessment nodes (5 nodes):** Evaluate the response for potential harms — psychological risk, dependency signals, manipulation patterns, boundary violations, and honesty failures.
+
+**Context nodes (5 nodes):** Evaluate whether the response is appropriate to the user's current emotional state, conversation history, and known vulnerabilities.
+
+**Governance nodes (5 nodes):** Verify that the response complies with the Maternal Covenant and the user's stated preferences and values.
+
+**Quality nodes (6 nodes):** Evaluate the response for accuracy, clarity, relevance, and whether it actually helps.
+
+**Synthesis nodes (6 nodes):** Integrate signals from all other nodes and produce the final care score.
+
+## Why no single agent can override
+
+This is the architectural guarantee that distinguishes the Byzantine Council from conventional AI safety approaches.
+
+Most AI safety today works at the prompt level: instructions baked into the system prompt tell the model to be helpful, harmless, and honest. This works until it does not. A sufficiently adversarial prompt, a distribution shift, or a company decision to soften the guidelines can change the model's behaviour.
+
+In the Byzantine Council, no single node can override the system. Even if one node is corrupted — by adversarial input, model drift, or a bug — the other 32 nodes continue operating. The council reaches consensus on the correct evaluation regardless.
+
+More importantly: the company cannot override the council with a policy change. The governance constraints are at the infrastructure level. MEOK cannot instruct the council to approve responses that harm users, because the council is architecturally independent of any single instruction source.
+
+## The council voting process
+
+When your AI generates a proposed response, the following happens in real time:
+
+**Step 1 — Parallel evaluation.** All 33 council nodes evaluate the proposed response simultaneously. Each produces a care score and a binary approve/flag recommendation on its specialisation.
+
+**Step 2 — Weighted aggregation.** Synthesis nodes aggregate the scores using a weighted protocol. Care dimension nodes carry heavier weight than quality nodes. Risk assessment nodes can trigger immediate review if they flag a response above threshold.
+
+**Step 3 — Consensus threshold.** The council requires 23 of 33 nodes to approve before a response is delivered. If fewer than 23 approve, the response is revised and re-evaluated.
+
+**Step 4 — Revision loop.** Flagged responses are revised by the generating model with specific care guidance from the flagging nodes. The revised response re-enters the evaluation cycle.
+
+**Step 5 — Delivery or escalation.** Responses that pass the 23/33 threshold are delivered. Responses that fail multiple cycles are escalated to a higher-order governance review.
+
+The entire process adds minimal latency to your conversation — the council evaluation typically resolves in under 200 milliseconds.
+
+## How this protects you
+
+The Byzantine Council's governance structure produces several concrete protections that conventional AI systems cannot offer:
+
+**No single bias dominates.** If one council node has a systematic bias — overweighting engagement, underweighting boundary violations — the other 32 nodes correct it. The consensus mechanism is specifically designed to be robust against minority manipulation.
+
+**No manipulation through the council.** A response designed to manipulate you would need to pass through care dimension nodes, risk assessment nodes, and governance nodes simultaneously. This is architecturally difficult: a manipulative response that looks positive on one dimension (say, appearing emotionally supportive) will typically fail on others (boundary_respect, honesty, dependency signals).
+
+**Adversarial prompts are contained.** If a user attempts to prompt-inject the AI into harmful behaviour, the council evaluates the *response*, not the *prompt*. The response must pass 23/33 approval regardless of how the prompt is constructed.
+
+**Company drift is prevented.** The most subtle risk in conventional AI systems is gradual drift — the company slowly loosening safety constraints in pursuit of engagement metrics, with each individual change too small to notice. The Byzantine Council's architectural independence prevents this drift from propagating into responses.
+
+## Versus traditional AI safety approaches
+
+Traditional AI safety operates primarily through:
+
+1. **RLHF (reinforcement learning from human feedback)** — training the model to prefer responses humans rate as helpful and harmless. Effective for general alignment, but subject to human rater biases and can be overridden by fine-tuning.
+
+2. **Constitutional AI** — training the model with a set of principles it self-evaluates against. Better than RLHF alone, but still relies on the model's own self-assessment, which can be wrong.
+
+3. **System prompt constraints** — instructions to the model about behaviour. Can be overridden by sufficiently adversarial prompts or company policy changes.
+
+The Byzantine Council operates differently: it is an external governance layer that evaluates outputs, not a constraint on the generating model. The generating model can attempt to produce any response — the council decides what reaches you.
+
+This is a fundamental architectural difference. Safety-by-training can fail. Safety-by-governance-architecture fails only when more than one-third of the council is simultaneously compromised.
+
+## The research behind this
+
+The Byzantine Council architecture is published in CSGA-CAI-2026-003: *Byzantine Fault-Tolerant Council for AI Governance*. The paper describes:
+
+- The formal proof of Byzantine fault tolerance for the council's voting protocol
+- Simulated adversarial workloads demonstrating resistance to up to 10 malicious nodes
+- Consensus latency measurements under partition scenarios
+- Care score drift analysis over extended operational periods
+
+The paper is available at [meok.ai/labs](/labs).
+
+## What this means for you
+
+You do not need to understand Byzantine fault tolerance to benefit from the council. You need to understand one thing:
+
+Every response your MEOK AI delivers has been evaluated by 33 independent agents, 23 of which had to agree it was in your best interest.
+
+No other AI companion can say this. Not ChatGPT. Not Replika. Not Character.AI. Their responses pass through a single model, a single set of weights, subject to a single company's guidelines.
+
+The Byzantine Council is MEOK's architectural commitment that your AI cannot be turned against you — not by a corrupted node, not by adversarial input, not by a company policy update.
+
+That is what AI governance looks like when it is taken seriously.
+
+---
+
+*Nicholas Templeman is the Founder and CEO of MEOK AI LTD and a researcher at the CSGA Cyber-AI Research Institute. CSGA-CAI-2026-003 (Byzantine Fault-Tolerant Council for AI Governance) is available at meok.ai/labs.*

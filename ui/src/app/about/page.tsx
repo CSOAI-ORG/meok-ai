@@ -1,37 +1,85 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { Heart, Shield, ArrowRight, Check } from 'lucide-react'
+import { Heart, Shield, ArrowRight, Check, FlaskConical } from 'lucide-react'
 import { MarketingNav } from '@/components/marketing-nav'
 import { MarketingFooter } from '@/components/marketing-footer'
 
 export const metadata: Metadata = {
-  title: 'About MEOK | Personal Sovereign AI OS',
+  title: 'About MEOK AI: Building AI That Cares',
   description:
-    'MEOK is building the world\'s first personal sovereign AI OS. Here\'s why, how, and who.',
+    "MEOK means 'eat' in Korean — we consume data ethically. Founded by Nicholas Templeman (Nick Randall), MEOK AI LTD is building the world's first personal sovereign AI OS.",
   keywords: [
     'about MEOK',
+    'Nicholas Templeman',
+    'Nick Randall',
     'personal sovereign AI',
     'MEOK AI company',
     'care-aligned AI',
     'Maternal Covenant',
     'sovereign AI OS',
+    'CSGA Cyber-AI Research Institute',
   ],
   alternates: { canonical: 'https://meok.ai/about' },
   openGraph: {
-    title: 'About MEOK | Personal Sovereign AI OS',
-    description: 'MEOK is building the world\'s first personal sovereign AI OS. Here\'s why, how, and who.',
+    title: 'About MEOK AI: Building AI That Cares',
+    description:
+      "MEOK means 'eat' in Korean — we consume data ethically. Founded by Nicholas Templeman (Nick Randall), MEOK AI LTD is building the world's first personal sovereign AI OS.",
     type: 'website',
     url: 'https://meok.ai/about',
+  },
+}
+
+const personJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Nicholas Templeman',
+  alternateName: 'Nick Randall',
+  jobTitle: 'Founder & CEO',
+  worksFor: {
+    '@type': 'Organization',
+    name: 'MEOK AI LTD',
+    url: 'https://meok.ai',
+  },
+  url: 'https://meok.ai/about',
+  knowsAbout: [
+    'Sovereign AI',
+    'Care-Based AI Alignment',
+    'Byzantine Fault Tolerance',
+    'AI Governance',
+    'Human-AI Cognitive Symbiosis',
+    'Hydro-Neuromorphic Emergence',
+  ],
+  memberOf: {
+    '@type': 'Organization',
+    name: 'CSGA Cyber-AI Research Institute',
+  },
+}
+
+const organizationJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'MEOK AI LTD',
+  url: 'https://meok.ai',
+  description: "The world's first personal sovereign AI operating system.",
+  foundingDate: '2025',
+  foundingLocation: {
+    '@type': 'Place',
+    name: 'England and Wales',
+  },
+  founder: {
+    '@type': 'Person',
+    name: 'Nicholas Templeman',
+    alternateName: 'Nick Randall',
   },
 }
 
 const STATS = [
   { value: 'Est. 2025', label: 'Founded' },
   { value: 'England & Wales', label: 'Registered' },
-  { value: '43', label: 'Active agents' },
-  { value: '6', label: 'Neural models' },
-  { value: '1,305', label: 'Memory episodes (SOV3)' },
   { value: '220', label: 'Council nodes' },
+  { value: '6', label: 'Care dimensions' },
+  { value: '£0', label: 'Third-party data sales' },
+  { value: '4', label: 'Published research papers' },
 ]
 
 const COVENANT_ITEMS = [
@@ -43,9 +91,26 @@ const COVENANT_ITEMS = [
   { title: 'Kill switch', desc: 'Any AI configuration showing net-negative wellbeing impact over 30 days is automatically paused pending review.' },
 ]
 
+const FOUNDER_EXPERTISE = [
+  'Sovereign AI architecture',
+  'Care-based AI alignment',
+  'Byzantine fault-tolerant governance',
+  'Human-AI cognitive symbiosis',
+  'AI ethics and personal data sovereignty',
+  'Hydro-neuromorphic emergence',
+]
+
 export default function AboutPage() {
   return (
     <div className="min-h-screen bg-[#0a0a0f] text-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+      />
       <MarketingNav activePage="about" />
 
       {/* Hero */}
@@ -56,15 +121,141 @@ export default function AboutPage() {
             About MEOK
           </div>
           <h1 className="text-5xl sm:text-6xl font-bold leading-tight mb-6">
-            We&apos;re building the first{' '}
+            About MEOK AI:{' '}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400">
-              personal sovereign AI OS
+              Building AI That Cares
             </span>
           </h1>
           <p className="text-xl text-white/50 max-w-2xl leading-relaxed">
-            Not a chatbot. Not a companion app. An operating system for your relationship with AI —
-            one where you hold the power, own the data, and set the values.
+            MEOK means &ldquo;eat&rdquo; in Korean — we consume data ethically. Founded by Nicholas
+            Templeman (Nick Randall), MEOK AI LTD is building the world&apos;s first personal
+            sovereign AI operating system.
           </p>
+        </div>
+      </section>
+
+      {/* About the Company */}
+      <section className="py-20 px-6 border-t border-white/[0.04]">
+        <div className="max-w-4xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+            <div>
+              <h2 className="text-3xl font-bold mb-6">About MEOK AI</h2>
+              <div className="space-y-5 text-white/50 leading-relaxed">
+                <p>
+                  MEOK AI LTD was founded in 2025 and registered in England and Wales. We are
+                  building the world&apos;s first personal sovereign AI operating system — giving
+                  individuals the same AI sovereignty that enterprise platforms like Palantir give
+                  to governments.
+                </p>
+                <p>
+                  The name MEOK (먹) means &ldquo;eat&rdquo; in Korean. We consume data
+                  ethically — processing it in service of the individual, never selling it,
+                  never training general models on it. Your data feeds your AI, and no one else.
+                </p>
+                <p>
+                  Our mission: every person on earth deserves a sovereign AI that works for them,
+                  not for advertisers, shareholders, or governments. AI sovereignty is a human
+                  right.
+                </p>
+              </div>
+            </div>
+            <div className="space-y-4">
+              <div className="p-5 rounded-xl bg-cyan-950/20 border border-cyan-500/20">
+                <div className="text-sm font-semibold text-cyan-400 mb-2">Founded</div>
+                <p className="text-sm text-white/60">
+                  2025 · Registered in England and Wales · MEOK AI LTD
+                </p>
+              </div>
+              <div className="p-5 rounded-xl bg-white/[0.02] border border-white/[0.08]">
+                <div className="text-sm font-semibold text-white/60 mb-2">Mission</div>
+                <p className="text-sm text-white/40">
+                  Build the world&apos;s first personal sovereign AI OS. Make AI sovereignty
+                  accessible to every individual, not just governments and enterprises.
+                </p>
+              </div>
+              <div className="p-5 rounded-xl bg-white/[0.02] border border-white/[0.08]">
+                <div className="text-sm font-semibold text-white/60 mb-2">Research affiliation</div>
+                <p className="text-sm text-white/40">
+                  CSGA Cyber-AI Research Institute — publishing peer-reviewed research on
+                  care-aligned AI, Byzantine governance, and sovereign AI architecture.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* About the Founder */}
+      <section className="py-20 px-6 bg-white/[0.01]">
+        <div className="max-w-4xl mx-auto">
+          <div className="flex items-start gap-4 mb-10">
+            <div className="w-10 h-10 rounded-xl bg-cyan-400/10 flex items-center justify-center flex-shrink-0">
+              <FlaskConical className="w-5 h-5 text-cyan-400" />
+            </div>
+            <div>
+              <h2 className="text-3xl font-bold mb-4">About the Founder</h2>
+              <div className="space-y-5 text-white/50 leading-relaxed">
+                <p>
+                  <strong className="text-white/80">Nicholas Templeman</strong> (also known as
+                  Nick Randall) is the Founder and CEO of MEOK AI LTD. He is a researcher,
+                  architect, and builder in the field of sovereign AI and care-based alignment.
+                </p>
+                <p>
+                  Nicholas leads research at the CSGA Cyber-AI Research Institute, where he
+                  has published foundational papers on human-AI cognitive symbiosis, Byzantine
+                  fault-tolerant AI governance, hydro-neuromorphic emergence, and the Maternal
+                  Covenant alignment framework.
+                </p>
+                <p>
+                  His core insight: the same architecture that makes an AI capable of genuinely
+                  understanding a human — persistent memory, multi-agent consensus, pattern
+                  recognition over time — is also the architecture that makes it capable of
+                  genuinely caring for them. The two are not in tension. They are the same thing.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-4">
+            <div className="p-4 rounded-xl bg-white/[0.02] border border-white/[0.05]">
+              <div className="text-xs font-semibold text-white/40 uppercase tracking-wide mb-3">
+                Research expertise
+              </div>
+              <ul className="space-y-2">
+                {FOUNDER_EXPERTISE.map((area) => (
+                  <li key={area} className="flex items-start gap-2 text-sm text-white/60">
+                    <Check className="w-3.5 h-3.5 text-cyan-400 flex-shrink-0 mt-0.5" />
+                    {area}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="space-y-3">
+              <div className="p-4 rounded-xl bg-white/[0.02] border border-white/[0.05]">
+                <div className="text-xs font-semibold text-white/40 uppercase tracking-wide mb-2">
+                  Role
+                </div>
+                <p className="text-sm text-white/60">Founder & CEO, MEOK AI LTD</p>
+              </div>
+              <div className="p-4 rounded-xl bg-white/[0.02] border border-white/[0.05]">
+                <div className="text-xs font-semibold text-white/40 uppercase tracking-wide mb-2">
+                  Research affiliation
+                </div>
+                <p className="text-sm text-white/60">CSGA Cyber-AI Research Institute</p>
+              </div>
+              <div className="p-4 rounded-xl bg-white/[0.02] border border-white/[0.05]">
+                <div className="text-xs font-semibold text-white/40 uppercase tracking-wide mb-2">
+                  Published papers
+                </div>
+                <p className="text-sm text-white/60">
+                  CSGA-CAI-2026-001 through 004 ·{' '}
+                  <Link href="/labs" className="text-cyan-400 hover:text-cyan-300 transition-colors">
+                    View research →
+                  </Link>
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -222,7 +413,7 @@ export default function AboutPage() {
               &ldquo;The question is not whether AI will be powerful enough to care for people.
               It already is. The question is whether we will let it.&rdquo;
             </blockquote>
-            <div className="mt-3 text-sm text-white/30">— Nicholas Templeman, Founder</div>
+            <div className="mt-3 text-sm text-white/30">— Nicholas Templeman, Founder & CEO, MEOK AI LTD</div>
           </div>
         </div>
       </section>
