@@ -31,10 +31,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
     // Labs and research
     { url: 'https://meok.ai/labs', lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
-    { url: 'https://meok.ai/labs/csga-cai-2026-001', lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
-    { url: 'https://meok.ai/labs/csga-cai-2026-002', lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
-    { url: 'https://meok.ai/labs/csga-cai-2026-003', lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
-    { url: 'https://meok.ai/labs/csga-cai-2026-004', lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
+    { url: 'https://meok.ai/labs/meok-ai-2026-001', lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
+    { url: 'https://meok.ai/labs/meok-ai-2026-002', lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
+    { url: 'https://meok.ai/labs/meok-ai-2026-003', lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
+    { url: 'https://meok.ai/labs/meok-ai-2026-004', lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
 
     // How it works
     { url: 'https://meok.ai/how-it-works', lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },

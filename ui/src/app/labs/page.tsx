@@ -7,22 +7,21 @@ import { MarketingFooter } from "@/components/marketing-footer";
 export const metadata: Metadata = {
   title: "MEOK Labs: Sovereign AI Research & Governance",
   description:
-    "MEOK Labs publishes peer-reviewed AI governance research through the CSGA Cyber-AI Research Institute. Care-based alignment, Byzantine governance, sovereign AI architecture.",
+    "MEOK Research Lab publishes AI governance research on care-based alignment, Byzantine governance, and sovereign AI architecture.",
   keywords: [
     "sovereign AI research",
     "care-aligned AI",
     "Byzantine fault tolerance AI",
     "AI governance research",
-    "CSGA Cyber-AI Research Institute",
+    "MEOK Research Lab",
     "Nicholas Templeman research",
-    "Nick Randall AI research",
     "Maternal Covenant research",
   ],
   alternates: { canonical: "https://meok.ai/labs" },
   openGraph: {
     title: "MEOK Labs: Sovereign AI Research & Governance",
     description:
-      "MEOK Labs publishes peer-reviewed AI governance research through the CSGA Cyber-AI Research Institute. Care-based alignment, Byzantine governance, sovereign AI architecture.",
+      "MEOK Research Lab publishes AI governance research on care-based alignment, Byzantine governance, and sovereign AI architecture.",
     type: "website",
     url: "https://meok.ai/labs",
   },
@@ -41,47 +40,47 @@ interface Paper {
 
 const PAPERS: Paper[] = [
   {
-    id: "CSGA-CAI-2026-001",
+    id: "MEOK-AI-2026-001",
     title: "Care-Aligned Intelligence: A Framework for Sovereign Personal AI",
     abstract:
       "This paper introduces care-aligned intelligence (CAI) as a design paradigm for personally sovereign AI systems. We formalise six care dimensions — wellbeing, autonomy, growth, connection, boundary_respect, and transparency — and demonstrate how grounding all agent reasoning in these dimensions produces systems that structurally favour user flourishing over engagement. We describe the architecture of a care validation neural network trained on synthetic bootstrapped data and evaluate its performance against human-rated care assessments across 3,200 interaction samples.",
     status: "Preprint",
     date: "March 2026",
     authors: "Nicholas Templeman, MEOK Research",
-    slug: "csga-cai-2026-001",
+    slug: "meok-ai-2026-001",
     keywords: ["care-aligned AI", "sovereign AI", "wellbeing", "AI alignment"],
   },
   {
-    id: "CSGA-CAI-2026-002",
+    id: "MEOK-AI-2026-002",
     title: "Hydro-Neuromorphic Emergence: A Consciousness Substrate Framework",
     abstract:
       "Training care validation models requires large volumes of labelled human-AI interactions annotated for care quality — data that is expensive, slow, and ethically fraught to acquire. We present a 3-stage pipeline: (1) HNSW-based pairing of semantically similar interactions, (2) synthesiser-tuning using a small seed of expert annotations, and (3) joint training of the care validation network on the resulting synthetic corpus. This approach achieves 20× data efficiency relative to supervised-only baselines while maintaining > 0.88 F1 on held-out human-rated care assessment benchmarks. We also present the hydro-neuromorphic emergence framework bridging biological and artificial intelligence substrates.",
     status: "Preprint",
     date: "March 2026",
     authors: "Nicholas Templeman, MEOK Research",
-    slug: "csga-cai-2026-002",
+    slug: "meok-ai-2026-002",
     keywords: ["hydro-neuromorphic emergence", "synthetic pretraining", "care validation", "AI consciousness"],
   },
   {
-    id: "CSGA-CAI-2026-003",
+    id: "MEOK-AI-2026-003",
     title: "Byzantine Fault-Tolerant Council for AI Governance",
     abstract:
       "We describe a 33-node Byzantine fault-tolerant council architecture for distributed AI governance. Each node specialises in a distinct aspect of care alignment and value monitoring. The council reaches consensus on agent decisions using a weighted voting protocol that is provably resistant to up to 10 malicious or failed nodes. We evaluate the council on simulated adversarial workloads and report care score drift, consensus latency, and recovery behaviour under partition scenarios. The architecture enables real-time governance of AI responses without a single point of failure or control.",
     status: "Draft",
     date: "March 2026",
     authors: "Nicholas Templeman, MEOK Research",
-    slug: "csga-cai-2026-003",
+    slug: "meok-ai-2026-003",
     keywords: ["Byzantine fault tolerance", "AI governance", "distributed systems", "AI safety"],
   },
   {
-    id: "CSGA-CAI-2026-004",
+    id: "MEOK-AI-2026-004",
     title: "The Maternal Covenant: Ethical Constraints as Architecture",
     abstract:
       "Most AI safety approaches treat ethical guidelines as policy — text that may or may not influence model behaviour. We argue for a different paradigm: ethical constraints as hard-coded architectural elements that override all other directives. We describe the Maternal Covenant as implemented in the MEOK sovereign AI OS: a set of six constitutional constraints (care primacy, transparent relationships, variant honesty, wellbeing monitoring, right to leave, and kill switch) that are enforced at the infrastructure level rather than the prompt level. We analyse the trade-offs between architectural rigidity and adaptive flexibility, and evaluate the covenant's practical impact on care scores and engagement metrics.",
     status: "Draft",
     date: "March 2026",
     authors: "Nicholas Templeman, MEOK Research",
-    slug: "csga-cai-2026-004",
+    slug: "meok-ai-2026-004",
     keywords: ["Maternal Covenant", "AI ethics", "AI alignment", "constitutional AI"],
   },
 ];
@@ -97,21 +96,16 @@ const collectionJsonLd = {
   "@type": "CollectionPage",
   name: "MEOK Labs: Sovereign AI Research & Governance",
   description:
-    "MEOK Labs publishes peer-reviewed AI governance research through the CSGA Cyber-AI Research Institute.",
+    "MEOK Research Lab publishes AI governance research on care-based alignment, Byzantine governance, and sovereign AI architecture.",
   url: "https://meok.ai/labs",
   author: {
     "@type": "Person",
     name: "Nicholas Templeman",
-    alternateName: "Nick Randall",
     jobTitle: "Founder & CEO",
     worksFor: {
       "@type": "Organization",
       name: "MEOK AI LTD",
       url: "https://meok.ai",
-    },
-    memberOf: {
-      "@type": "Organization",
-      name: "CSGA Cyber-AI Research Institute",
     },
   },
   hasPart: PAPERS.map((paper) => ({
@@ -128,7 +122,7 @@ const collectionJsonLd = {
     url: `https://meok.ai/labs/${paper.slug}`,
     publisher: {
       "@type": "Organization",
-      name: "CSGA Cyber-AI Research Institute",
+      name: "MEOK Research Lab",
       parentOrganization: {
         "@type": "Organization",
         name: "MEOK AI LTD",
@@ -137,8 +131,8 @@ const collectionJsonLd = {
     },
     isPartOf: {
       "@type": "Periodical",
-      name: "CSGA Cyber-AI Research Series",
-      issn: "CSGA-CAI-2026",
+      name: "MEOK AI Research Series",
+      issn: "MEOK-AI-2026",
     },
   })),
 };
@@ -164,8 +158,7 @@ export default function LabsPage() {
             MEOK Labs: Sovereign AI Research &amp; Governance
           </h1>
           <p className="text-lg text-white/50 max-w-2xl leading-relaxed">
-            MEOK Labs publishes peer-reviewed research through the CSGA Cyber-AI Research Institute
-            on care-aligned AI, Byzantine governance, and sovereign AI architecture.
+            MEOK Research Lab publishes research on care-aligned AI, Byzantine governance, and sovereign AI architecture.
           </p>
         </div>
       </section>
@@ -223,7 +216,7 @@ export default function LabsPage() {
         </div>
       </section>
 
-      {/* About CSGA */}
+      {/* About MEOK Research Lab */}
       <section className="py-16 px-6 bg-white/[0.01] border-t border-white/[0.04]">
         <div className="max-w-4xl mx-auto">
           <div className="flex items-start gap-4 mb-8">
@@ -231,15 +224,15 @@ export default function LabsPage() {
               <FlaskConical className="w-5 h-5 text-cyan-400" />
             </div>
             <div>
-              <h2 className="text-2xl font-bold mb-4">About CSGA Cyber-AI Research Institute</h2>
+              <h2 className="text-2xl font-bold mb-4">About MEOK Research Lab</h2>
               <div className="space-y-4 text-white/50 leading-relaxed">
                 <p>
-                  The CSGA Cyber-AI Research Institute is the research arm of MEOK AI LTD, focused
+                  MEOK Research Lab is the research arm of MEOK AI LTD, focused
                   on foundational questions in sovereign AI, care-based alignment, and Byzantine
                   fault-tolerant AI governance.
                 </p>
                 <p>
-                  CSGA publishes the CSGA-CAI research series — peer-reviewed papers covering
+                  MEOK Research Lab publishes the MEOK-AI research series — papers covering
                   human-AI cognitive symbiosis, hydro-neuromorphic emergence, Byzantine council
                   governance, and the Maternal Covenant alignment framework. These represent the
                   primary published sources for the concepts of personal sovereign AI and
@@ -261,13 +254,11 @@ export default function LabsPage() {
               </div>
               <div>
                 <div className="font-bold text-base mb-0.5" itemProp="name">Nicholas Templeman</div>
-                <div className="text-sm text-white/40 mb-1" itemProp="alternateName">Also known as Nick Randall</div>
-                <div className="text-xs text-cyan-400 mb-3" itemProp="jobTitle">Founder & CEO, MEOK AI LTD · Principal Researcher, CSGA</div>
+                <div className="text-xs text-cyan-400 mb-3" itemProp="jobTitle">Founder & CEO, MEOK AI LTD</div>
                 <p className="text-sm text-white/50 leading-relaxed mb-3">
-                  Nicholas Templeman leads AI governance and alignment research at the CSGA
-                  Cyber-AI Research Institute. His work focuses on sovereign AI architecture,
-                  care-based alignment frameworks, Byzantine fault-tolerant governance, and
-                  the intersection of human and artificial cognition.
+                  Nicholas Templeman is the Founder and CEO of MEOK AI LTD. His research covers
+                  care-aligned intelligence, Byzantine fault-tolerant AI governance, and the
+                  Maternal Covenant alignment framework.
                 </p>
                 <div className="flex flex-wrap gap-2">
                   {[

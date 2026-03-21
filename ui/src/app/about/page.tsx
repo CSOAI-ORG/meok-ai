@@ -7,23 +7,21 @@ import { MarketingFooter } from '@/components/marketing-footer'
 export const metadata: Metadata = {
   title: 'About MEOK AI: Building AI That Cares',
   description:
-    "MEOK means 'eat' in Korean — we consume data ethically. Founded by Nicholas Templeman (Nick Randall), MEOK AI LTD is building the world's first personal sovereign AI OS.",
+    "MEOK means 'eat' in Korean — we consume data ethically. Founded by Nicholas Templeman, MEOK AI LTD is building the world's first personal sovereign AI OS.",
   keywords: [
     'about MEOK',
     'Nicholas Templeman',
-    'Nick Randall',
     'personal sovereign AI',
     'MEOK AI company',
     'care-aligned AI',
     'Maternal Covenant',
     'sovereign AI OS',
-    'CSGA Cyber-AI Research Institute',
   ],
   alternates: { canonical: 'https://meok.ai/about' },
   openGraph: {
     title: 'About MEOK AI: Building AI That Cares',
     description:
-      "MEOK means 'eat' in Korean — we consume data ethically. Founded by Nicholas Templeman (Nick Randall), MEOK AI LTD is building the world's first personal sovereign AI OS.",
+      "MEOK means 'eat' in Korean — we consume data ethically. Founded by Nicholas Templeman, MEOK AI LTD is building the world's first personal sovereign AI OS.",
     type: 'website',
     url: 'https://meok.ai/about',
   },
@@ -33,7 +31,6 @@ const personJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Person',
   name: 'Nicholas Templeman',
-  alternateName: 'Nick Randall',
   jobTitle: 'Founder & CEO',
   worksFor: {
     '@type': 'Organization',
@@ -49,10 +46,6 @@ const personJsonLd = {
     'Human-AI Cognitive Symbiosis',
     'Hydro-Neuromorphic Emergence',
   ],
-  memberOf: {
-    '@type': 'Organization',
-    name: 'CSGA Cyber-AI Research Institute',
-  },
 }
 
 const organizationJsonLd = {
@@ -69,7 +62,6 @@ const organizationJsonLd = {
   founder: {
     '@type': 'Person',
     name: 'Nicholas Templeman',
-    alternateName: 'Nick Randall',
   },
 }
 
@@ -128,8 +120,7 @@ export default function AboutPage() {
           </h1>
           <p className="text-xl text-white/50 max-w-2xl leading-relaxed">
             MEOK means &ldquo;eat&rdquo; in Korean — we consume data ethically. Founded by Nicholas
-            Templeman (Nick Randall), MEOK AI LTD is building the world&apos;s first personal
-            sovereign AI operating system.
+            Templeman, MEOK AI LTD is building the world&apos;s first personal sovereign AI operating system.
           </p>
         </div>
       </section>
@@ -174,10 +165,9 @@ export default function AboutPage() {
                 </p>
               </div>
               <div className="p-5 rounded-xl bg-white/[0.02] border border-white/[0.08]">
-                <div className="text-sm font-semibold text-white/60 mb-2">Research affiliation</div>
+                <div className="text-sm font-semibold text-white/60 mb-2">Research</div>
                 <p className="text-sm text-white/40">
-                  CSGA Cyber-AI Research Institute — publishing peer-reviewed research on
-                  care-aligned AI, Byzantine governance, and sovereign AI architecture.
+                  MEOK Research Lab — publishing research on care-aligned AI, Byzantine governance, and sovereign AI architecture.
                 </p>
               </div>
             </div>
@@ -196,13 +186,10 @@ export default function AboutPage() {
               <h2 className="text-3xl font-bold mb-4">About the Founder</h2>
               <div className="space-y-5 text-white/50 leading-relaxed">
                 <p>
-                  <strong className="text-white/80">Nicholas Templeman</strong> (also known as
-                  Nick Randall) is the Founder and CEO of MEOK AI LTD. He is a researcher,
-                  architect, and builder in the field of sovereign AI and care-based alignment.
+                  <strong className="text-white/80">Nicholas Templeman</strong> is the Founder and CEO of MEOK AI LTD. He is a researcher and AI governance specialist, publishing work on care-aligned intelligence and Byzantine fault-tolerant governance.
                 </p>
                 <p>
-                  Nicholas leads research at the CSGA Cyber-AI Research Institute, where he
-                  has published foundational papers on human-AI cognitive symbiosis, Byzantine
+                  Nicholas has published foundational papers on human-AI cognitive symbiosis, Byzantine
                   fault-tolerant AI governance, hydro-neuromorphic emergence, and the Maternal
                   Covenant alignment framework.
                 </p>
@@ -239,16 +226,16 @@ export default function AboutPage() {
               </div>
               <div className="p-4 rounded-xl bg-white/[0.02] border border-white/[0.05]">
                 <div className="text-xs font-semibold text-white/40 uppercase tracking-wide mb-2">
-                  Research affiliation
+                  Research
                 </div>
-                <p className="text-sm text-white/60">CSGA Cyber-AI Research Institute</p>
+                <p className="text-sm text-white/60">MEOK Research Lab</p>
               </div>
               <div className="p-4 rounded-xl bg-white/[0.02] border border-white/[0.05]">
                 <div className="text-xs font-semibold text-white/40 uppercase tracking-wide mb-2">
                   Published papers
                 </div>
                 <p className="text-sm text-white/60">
-                  CSGA-CAI-2026-001 through 004 ·{' '}
+                  MEOK-AI-2026-001 through 004 ·{' '}
                   <Link href="/labs" className="text-cyan-400 hover:text-cyan-300 transition-colors">
                     View research →
                   </Link>
