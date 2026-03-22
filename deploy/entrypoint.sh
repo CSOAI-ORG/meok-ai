@@ -10,42 +10,46 @@ log "=== MEOK.ai Sovereign AI OS Starting ==="
 log "Instance: ${HOSTNAME:-standalone}"
 
 # ── 1. PostgreSQL ────────────────────────────────────────────────────────────
-log "Starting PostgreSQL 15..."
-# Force PostgreSQL TCP on all interfaces (required for asyncpg in Docker containers)
-PG_CONF="/etc/postgresql/15/main/postgresql.conf"
-PG_HBA="/etc/postgresql/15/main/pg_hba.conf"
-python3 - <<'PYEOF'
-import re, sys
+# Auto-detect version (works for PG15, PG17, any future version)
+PG_VER=$(ls /etc/postgresql/ 2>/dev/null | sort -V | tail -1)
+log "Detected PostgreSQL version: ${PG_VER:-unknown}"
 
-# 1. Force listen_addresses = '*' in postgresql.conf
-conf = open("/etc/postgresql/15/main/postgresql.conf").read()
-conf = re.sub(r"^#*\s*listen_addresses\s*=.*$", "listen_addresses = '*'",
-              conf, flags=re.MULTILINE)
-# Add if not found
-if "listen_addresses" not in conf:
-    conf += "\nlisten_addresses = '*'\n"
-open("/etc/postgresql/15/main/postgresql.conf", "w").write(conf)
+if [ -n "$PG_VER" ]; then
+    PG_CONF="/etc/postgresql/${PG_VER}/main/postgresql.conf"
+    PG_HBA="/etc/postgresql/${PG_VER}/main/pg_hba.conf"
 
-# 2. Add permissive TCP auth rule in pg_hba.conf (before existing rules)
-hba = open("/etc/postgresql/15/main/pg_hba.conf").read()
-rule = "host all all 0.0.0.0/0 md5\n"
-if "0.0.0.0/0" not in hba:
-    hba = rule + hba
-    open("/etc/postgresql/15/main/pg_hba.conf", "w").write(hba)
+    # ── Force TCP at RUNTIME (belt-and-suspenders — image build may be cached) ──
+    # Remove any existing listen_addresses line and re-add with '*'
+    sed -i '/^listen_addresses/d' "$PG_CONF" 2>/dev/null || true
+    echo "listen_addresses = '*'" >> "$PG_CONF"
 
-# 3. Report
-import subprocess
-result = subprocess.run(["grep", "-n", "listen_addresses",
-    "/etc/postgresql/15/main/postgresql.conf"], capture_output=True, text=True)
-print("[PG Config]", result.stdout.strip())
-PYEOF
+    # Ensure pg_hba.conf has TCP access rule
+    grep -q "^host all all 0.0.0.0/0" "$PG_HBA" 2>/dev/null \
+        || echo "host all all 0.0.0.0/0 md5" >> "$PG_HBA"
 
+    log "PostgreSQL TCP configured (listen_addresses='*')"
+    grep listen_addresses "$PG_CONF" | tail -1 | xargs -I{} log "  conf: {}"
+fi
+
+log "Starting PostgreSQL ${PG_VER:-?}..."
 service postgresql start || warn "postgresql service start failed — may already be running"
-# Wait for PostgreSQL to be ready to accept connections
-for i in $(seq 1 10); do
+
+# Wait for PostgreSQL socket (up to 15s)
+for i in $(seq 1 15); do
     su postgres -c "pg_isready -q" 2>/dev/null && break
     sleep 1
 done
+
+# Restart to apply TCP config changes
+service postgresql restart 2>/dev/null || warn "postgresql restart failed"
+
+# Wait for TCP to be ready (up to 15s)
+log "Waiting for PostgreSQL TCP on 127.0.0.1:5432..."
+for i in $(seq 1 15); do
+    pg_isready -h 127.0.0.1 -p 5432 -q 2>/dev/null && log "PostgreSQL TCP ready ✓" && break
+    sleep 1
+done
+pg_isready -h 127.0.0.1 -p 5432 2>/dev/null || warn "PostgreSQL TCP may not be listening"
 
 # Create meok user and database (idempotent)
 su postgres -c "psql -c \"CREATE USER meok WITH PASSWORD 'meok';\" 2>/dev/null" || true

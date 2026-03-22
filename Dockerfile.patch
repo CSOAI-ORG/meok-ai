@@ -1,0 +1,87 @@
+# Patch image: force PostgreSQL TCP + update entrypoint + new faith calibration code
+FROM csoai/meok-sovereign:latest
+
+# ── Force PostgreSQL TCP at IMAGE BUILD TIME (auto-detect PG version) ────────
+RUN PG_VER=$(ls /etc/postgresql/ | sort -V | tail -1) \
+    && PG_CONF="/etc/postgresql/${PG_VER}/main/postgresql.conf" \
+    && PG_HBA="/etc/postgresql/${PG_VER}/main/pg_hba.conf" \
+    && echo "Detected PostgreSQL ${PG_VER}" \
+    && sed -i '/listen_addresses/d' "$PG_CONF" \
+    && echo "listen_addresses = '*'" >> "$PG_CONF" \
+    && grep -q "^host all all 0.0.0.0/0" "$PG_HBA" \
+        || echo "host all all 0.0.0.0/0 md5" >> "$PG_HBA" \
+    && echo "PG TCP config done:" \
+    && grep listen_addresses "$PG_CONF"
+
+# ── Update application code ──────────────────────────────────────────────────
+COPY deploy/entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+# ── pg_setup.sh — called from Vast.ai EXTRA_COMMANDS env var ────────────────
+# Set: vastai create env-var EXTRA_COMMANDS "bash /pg_setup.sh"
+# This runs BEFORE onstart.sh in Vast.ai's /.launch sequence
+COPY deploy/pg_setup.sh /pg_setup.sh
+RUN chmod +x /pg_setup.sh
+
+# ── /etc/rc.local — also runs BEFORE onstart.sh (belt-and-suspenders) ───────
+RUN cp /pg_setup.sh /etc/rc.local && chmod +x /etc/rc.local
+
+# ── Update onstart.sh — Vast.ai runs this on container start ─────────────────
+# Vast.ai's /.launch runs bash /root/onstart.sh. We replace it so PostgreSQL
+# starts before the MEOK Python server.
+RUN printf '#!/bin/bash\n\
+# MEOK.ai Vast.ai onstart — PostgreSQL → MEOK\n\
+set -e\n\
+log() { echo "[$(date +%%H:%%M:%%S)] MEOK ▶ $1"; }\n\
+warn() { echo "[$(date +%%H:%%M:%%S)] MEOK ⚠ $1"; }\n\
+\n\
+mkdir -p /root/.ssh /tmp/meok_logs\n\
+\n\
+# ── Auto-detect PG version and force TCP config ──────────────────────────────\n\
+PG_VER=$(ls /etc/postgresql/ 2>/dev/null | sort -V | tail -1)\n\
+log "PostgreSQL version: ${PG_VER:-none}"\n\
+if [ -n "$PG_VER" ]; then\n\
+    PG_CONF="/etc/postgresql/${PG_VER}/main/postgresql.conf"\n\
+    PG_HBA="/etc/postgresql/${PG_VER}/main/pg_hba.conf"\n\
+    sed -i '"'"'/^listen_addresses/d'"'"' "$PG_CONF" 2>/dev/null || true\n\
+    echo "listen_addresses = '"'"'*'"'"'" >> "$PG_CONF"\n\
+    grep -q "^host all all 0.0.0.0/0" "$PG_HBA" 2>/dev/null \\\n\
+        || echo "host all all 0.0.0.0/0 md5" >> "$PG_HBA"\n\
+    log "PostgreSQL TCP configured"\n\
+fi\n\
+\n\
+# ── Start PostgreSQL ─────────────────────────────────────────────────────────\n\
+log "Starting PostgreSQL..."\n\
+service postgresql start >> /tmp/meok_logs/pg.log 2>&1 || warn "PG start returned non-zero"\n\
+\n\
+for i in $(seq 1 20); do\n\
+    pg_isready -h 127.0.0.1 -p 5432 -q 2>/dev/null && log "PostgreSQL TCP ready" && break\n\
+    sleep 1\n\
+done\n\
+pg_isready -h 127.0.0.1 -p 5432 2>/dev/null || warn "PostgreSQL TCP not responding"\n\
+\n\
+# Create user + DB (idempotent)\n\
+su postgres -c "psql -c \\"CREATE USER meok WITH PASSWORD '"'"'meok'"'"';\\" 2>/dev/null" || true\n\
+su postgres -c "psql -c \\"CREATE DATABASE meok OWNER meok;\\" 2>/dev/null" || true\n\
+su postgres -c "psql -d meok -f /docker-entrypoint-initdb.d/01_schema.sql >> /tmp/meok_logs/pg.log 2>&1" || warn "Schema init warnings"\n\
+\n\
+log "PostgreSQL ready"\n\
+\n\
+# ── Start MEOK MCP Server ────────────────────────────────────────────────────\n\
+export MEOK_DATABASE__POSTGRES_DSN="${MEOK_DATABASE__POSTGRES_DSN:-postgresql://meok:meok@127.0.0.1:5432/meok}"\n\
+export MEOK_ENVIRONMENT="${MEOK_ENVIRONMENT:-production}"\n\
+log "Starting MEOK MCP Server..."\n\
+log "DSN: ${MEOK_DATABASE__POSTGRES_DSN}"\n\
+\n\
+cd /app\n\
+nohup python3 -m meok.mcp.server > /tmp/meok_logs/server.log 2>&1 &\n\
+echo "MEOK started PID=$! log=/tmp/meok_logs/server.log"\n\
+' > /root/onstart.sh && chmod +x /root/onstart.sh
+
+COPY auth/repository.py /app/meok/auth/repository.py
+COPY core/faith_calibration.py /app/meok/core/faith_calibration.py
+COPY mcp/tools/faith.py /app/meok/mcp/tools/faith.py
+COPY mcp/tools/__init__.py /app/meok/mcp/tools/__init__.py
+COPY core/llm_router.py /app/meok/core/llm_router.py
+
+CMD ["/entrypoint.sh"]

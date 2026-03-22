@@ -38,6 +38,7 @@ class AuthRepository:
             self._pool = await asyncpg.create_pool(postgres_dsn, min_size=1, max_size=5,
                                                     timeout=5, command_timeout=5)
             logger.info("Auth: connected to PostgreSQL")
+            await self._init_postgres()
             return self._pool
         except Exception as e:
             logger.warning("Auth: Postgres unavailable (%s) — using SQLite fallback", e)
@@ -49,6 +50,73 @@ class AuthRepository:
         await self._init_sqlite()
         logger.info("Auth: SQLite fallback active at %s", self._sqlite_path)
         return None  # signals SQLite mode
+
+    async def _init_postgres(self):
+        """Create auth tables in PostgreSQL if they don't exist (idempotent)."""
+        async with self._pool.acquire() as conn:
+            await conn.execute("""
+                CREATE TABLE IF NOT EXISTS tenants (
+                    id TEXT PRIMARY KEY,
+                    name TEXT,
+                    email TEXT,
+                    hatch_name TEXT,
+                    config TEXT DEFAULT '{}',
+                    status TEXT DEFAULT 'active',
+                    plan TEXT DEFAULT 'free',
+                    feature_flags TEXT DEFAULT '{}',
+                    created_at TIMESTAMPTZ DEFAULT NOW()
+                );
+                CREATE TABLE IF NOT EXISTS users (
+                    id TEXT PRIMARY KEY,
+                    email TEXT UNIQUE,
+                    password_hash TEXT,
+                    tenant_id TEXT,
+                    created_at TIMESTAMPTZ DEFAULT NOW(),
+                    is_active BOOLEAN DEFAULT TRUE
+                );
+                CREATE TABLE IF NOT EXISTS api_keys (
+                    id TEXT PRIMARY KEY DEFAULT gen_random_uuid()::text,
+                    user_id TEXT,
+                    tenant_id TEXT,
+                    key_hash TEXT UNIQUE,
+                    key_prefix TEXT,
+                    name TEXT DEFAULT 'default',
+                    is_active BOOLEAN DEFAULT TRUE,
+                    created_at TIMESTAMPTZ DEFAULT NOW(),
+                    last_used_at TIMESTAMPTZ
+                );
+                CREATE TABLE IF NOT EXISTS refresh_tokens (
+                    id TEXT PRIMARY KEY DEFAULT gen_random_uuid()::text,
+                    user_id TEXT,
+                    token_hash TEXT UNIQUE,
+                    expires_at TIMESTAMPTZ,
+                    revoked BOOLEAN DEFAULT FALSE
+                );
+                CREATE TABLE IF NOT EXISTS agents (
+                    id TEXT PRIMARY KEY,
+                    tenant_id TEXT,
+                    name TEXT,
+                    description TEXT,
+                    capabilities TEXT,
+                    status TEXT DEFAULT 'active',
+                    trust_level REAL DEFAULT 1.0,
+                    created_at TIMESTAMPTZ DEFAULT NOW(),
+                    last_seen TIMESTAMPTZ,
+                    metadata TEXT DEFAULT '{}'
+                );
+                CREATE TABLE IF NOT EXISTS memory_episodes (
+                    id TEXT PRIMARY KEY,
+                    tenant_id TEXT,
+                    content TEXT,
+                    timestamp TIMESTAMPTZ DEFAULT NOW(),
+                    importance_score REAL DEFAULT 0.5,
+                    care_weight REAL DEFAULT 0.5,
+                    source_agent TEXT,
+                    memory_type TEXT DEFAULT 'interaction',
+                    tags TEXT DEFAULT '[]'
+                );
+            """)
+        logger.info("Auth: PostgreSQL tables initialised (idempotent)")
 
     async def _init_sqlite(self):
         async with aiosqlite.connect(self._sqlite_path) as db:

@@ -1,51 +1,39 @@
 # MEOK.ai — Self-Contained Production Image
-# Includes: Python 3.11 + PostgreSQL 15 + pgvector + Ollama (local LLM)
-# No external dependencies required — single container, full stack.
+# Includes: Python 3.11 + PostgreSQL 15 + pgvector
+# Ollama installed separately on VPS (GPU drivers available from host)
 #
 # Build: docker build -f Dockerfile.standalone -t csoai/meok-sovereign:latest .
-# Run:   docker run -p 3100:3100 -e MEOK_OLLAMA_MODEL=llama3.2:3b csoai/meok-sovereign:latest
+# Run:   docker run -p 3100:3100 csoai/meok-sovereign:latest
 
-FROM ubuntu:22.04
+FROM python:3.11-slim-bookworm
 
-# Prevent interactive prompts during apt installs
+# Prevent interactive prompts
 ENV DEBIAN_FRONTEND=noninteractive
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
-ENV LANG=C.UTF-8
-ENV LC_ALL=C.UTF-8
 
-# ── System packages ─────────────────────────────────────────────────────────
+# ── System packages + PostgreSQL 15 + pgvector ──────────────────────────────
+# python:3.11-slim-bookworm is Debian 12 — use official PGDG repo for PG15 + pgvector
 RUN apt-get update && apt-get install -y \
-    # Python 3.11
-    software-properties-common \
-    && add-apt-repository ppa:deadsnakes/ppa -y \
-    && apt-get update && apt-get install -y \
-    python3.11 python3.11-dev python3.11-distutils python3-pip \
-    # PostgreSQL 15 + pgvector
-    postgresql-15 postgresql-client-15 \
-    postgresql-15-pgvector \
-    # Build tools (for Python packages with C extensions)
+    gnupg curl wget ca-certificates procps \
     gcc g++ make \
-    # Utilities
-    curl wget gnupg ca-certificates procps \
-    # Cleanup
     && rm -rf /var/lib/apt/lists/*
 
-# Ensure python3.11 is default python3
-RUN update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.11 1 \
-    && update-alternatives --install /usr/bin/python python /usr/bin/python3.11 1
-
-# Install pip for python3.11
-RUN curl -sS https://bootstrap.pypa.io/get-pip.py | python3.11
-
-# ── Ollama ───────────────────────────────────────────────────────────────────
-# Install Ollama binary (no model bundled — pulled at runtime to keep image lean)
-RUN curl -fsSL https://ollama.com/install.sh | sh
+# Add PostgreSQL official APT repo (PGDG) for PG15 + pgvector on Debian bookworm
+RUN curl -fsSL https://www.postgresql.org/media/keys/ACCC4CF8.asc \
+    | gpg --dearmor -o /etc/apt/keyrings/postgresql.gpg \
+    && echo "deb [signed-by=/etc/apt/keyrings/postgresql.gpg] https://apt.postgresql.org/pub/repos/apt bookworm-pgdg main" \
+    > /etc/apt/sources.list.d/pgdg.list \
+    && apt-get update && apt-get install -y \
+    postgresql-15 \
+    postgresql-client-15 \
+    postgresql-15-pgvector \
+    && rm -rf /var/lib/apt/lists/*
 
 # ── Python dependencies ──────────────────────────────────────────────────────
 WORKDIR /app
 COPY requirements.txt .
-RUN pip3.11 install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
 # ── Application code ─────────────────────────────────────────────────────────
 COPY . /app/meok/
@@ -54,12 +42,13 @@ COPY . /app/meok/
 COPY db/init.sql /docker-entrypoint-initdb.d/01_schema.sql
 
 # ── Directories ──────────────────────────────────────────────────────────────
-RUN mkdir -p /app/meok/neural/models /logs /tmp/meok_logs /tmp/ollama
+RUN mkdir -p /app/meok/neural/models /logs /tmp/meok_logs
 
-# ── PostgreSQL: configure to allow local connections ─────────────────────────
-# Set up pg_hba.conf to trust local connections (meok user)
-RUN echo "host meok meok 127.0.0.1/32 md5" >> /etc/postgresql/15/main/pg_hba.conf \
-    && echo "local all all trust" >> /etc/postgresql/15/main/pg_hba.conf
+# ── PostgreSQL: configure local auth ─────────────────────────────────────────
+# Trust local connections for postgres superuser (needed for DB init)
+RUN sed -i "s/^local   all             all                                     peer/local all all trust/" \
+    /etc/postgresql/15/main/pg_hba.conf \
+    && echo "host meok meok 127.0.0.1/32 md5" >> /etc/postgresql/15/main/pg_hba.conf
 
 # ── Entrypoint ────────────────────────────────────────────────────────────────
 COPY deploy/entrypoint.sh /entrypoint.sh
@@ -68,6 +57,6 @@ RUN chmod +x /entrypoint.sh
 EXPOSE 3100
 
 HEALTHCHECK --interval=30s --timeout=10s --retries=5 \
-    CMD python3 -c "import urllib.request; urllib.request.urlopen('http://localhost:3100/health', timeout=5)" || exit 1
+    CMD python -c "import urllib.request; urllib.request.urlopen('http://localhost:3100/health', timeout=5)" || exit 1
 
 CMD ["/entrypoint.sh"]
