@@ -37,6 +37,7 @@ from meok.mcp.tools.osint import OSINT_TOOLS, handle_osint_tool
 from meok.mcp.tools.care_shield import CARE_SHIELD_TOOLS, handle_care_shield
 from meok.mcp.tools.notifications import NOTIFICATION_TOOLS, handle_notifications_tool
 from meok.mcp.tools.character_catalog import CHARACTER_CATALOG_TOOLS, handle_character_catalog_tool
+from meok.mcp.tools.faith import FAITH_TOOLS, handle_faith_tool
 
 # Combined tool list — order matches the original monolithic server
 ALL_TOOLS = (
@@ -70,6 +71,7 @@ ALL_TOOLS = (
     + CARE_SHIELD_TOOLS          # Phase L: always-on sovereign monitoring
     + NOTIFICATION_TOOLS         # Phase L: alert delivery (WhatsApp, Web Push, Email)
     + CHARACTER_CATALOG_TOOLS    # 24 AI companions with CPM integration
+    + FAITH_TOOLS                # Faith calibration: 6-billion-person multi-tradition care layer
 )
 
 # Build name -> handler lookup from each module's tool list
@@ -135,6 +137,8 @@ for _tool in NOTIFICATION_TOOLS:
     _TOOL_NAME_TO_HANDLER[_tool["name"]] = handle_notifications_tool
 for _tool in CHARACTER_CATALOG_TOOLS:
     _TOOL_NAME_TO_HANDLER[_tool["name"]] = handle_character_catalog_tool
+for _tool in FAITH_TOOLS:
+    _TOOL_NAME_TO_HANDLER[_tool["name"]] = handle_faith_tool
 
 # Also expose as a dict for external inspection
 TOOL_HANDLERS = {

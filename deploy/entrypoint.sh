@@ -11,13 +11,34 @@ log "Instance: ${HOSTNAME:-standalone}"
 
 # ── 1. PostgreSQL ────────────────────────────────────────────────────────────
 log "Starting PostgreSQL 15..."
-# Ensure TCP listening is enabled (Docker containers may default to socket-only)
+# Force PostgreSQL TCP on all interfaces (required for asyncpg in Docker containers)
 PG_CONF="/etc/postgresql/15/main/postgresql.conf"
-grep -q "^listen_addresses" "$PG_CONF" \
-    || echo "listen_addresses = 'localhost'" >> "$PG_CONF"
-# Ensure IPv6 loopback is in pg_hba.conf for asyncpg compatibility
-grep -q "::1.*md5" /etc/postgresql/15/main/pg_hba.conf \
-    || echo "host meok meok ::1/128 md5" >> /etc/postgresql/15/main/pg_hba.conf
+PG_HBA="/etc/postgresql/15/main/pg_hba.conf"
+python3 - <<'PYEOF'
+import re, sys
+
+# 1. Force listen_addresses = '*' in postgresql.conf
+conf = open("/etc/postgresql/15/main/postgresql.conf").read()
+conf = re.sub(r"^#*\s*listen_addresses\s*=.*$", "listen_addresses = '*'",
+              conf, flags=re.MULTILINE)
+# Add if not found
+if "listen_addresses" not in conf:
+    conf += "\nlisten_addresses = '*'\n"
+open("/etc/postgresql/15/main/postgresql.conf", "w").write(conf)
+
+# 2. Add permissive TCP auth rule in pg_hba.conf (before existing rules)
+hba = open("/etc/postgresql/15/main/pg_hba.conf").read()
+rule = "host all all 0.0.0.0/0 md5\n"
+if "0.0.0.0/0" not in hba:
+    hba = rule + hba
+    open("/etc/postgresql/15/main/pg_hba.conf", "w").write(hba)
+
+# 3. Report
+import subprocess
+result = subprocess.run(["grep", "-n", "listen_addresses",
+    "/etc/postgresql/15/main/postgresql.conf"], capture_output=True, text=True)
+print("[PG Config]", result.stdout.strip())
+PYEOF
 
 service postgresql start || warn "postgresql service start failed — may already be running"
 # Wait for PostgreSQL to be ready to accept connections
@@ -52,7 +73,7 @@ fi
 
 # ── 3. Environment ───────────────────────────────────────────────────────────
 # Set Postgres DSN if not already overridden via env
-export MEOK_DATABASE__POSTGRES_DSN="${MEOK_DATABASE__POSTGRES_DSN:-postgresql://meok:meok@localhost:5432/meok}"
+export MEOK_DATABASE__POSTGRES_DSN="${MEOK_DATABASE__POSTGRES_DSN:-postgresql://meok:meok@127.0.0.1:5432/meok}"
 export OLLAMA_URL="${OLLAMA_URL:-http://localhost:11434}"
 export MEOK_ENVIRONMENT="${MEOK_ENVIRONMENT:-production}"
 
