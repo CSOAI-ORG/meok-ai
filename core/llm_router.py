@@ -50,6 +50,16 @@ class Provider:
 
 PROVIDERS: List[Provider] = [
     Provider(
+        name="groq",
+        model=os.environ.get("MEOK_GROQ_MODEL", "llama-3.3-70b-versatile"),
+        base_url="https://api.groq.com/openai/v1",
+        api_key_env="GROQ_API_KEY",
+        context_window=128_000,
+        cost_per_1k_in=0.00059,     # $0.59/M — Groq free tier / very cheap
+        cost_per_1k_out=0.00079,
+        supports_tools=True,
+    ),
+    Provider(
         name="minimax",
         model=os.environ.get("MEOK_MINIMAX_MODEL", "MiniMax-Text-01"),
         base_url="https://api.minimax.chat/v1",
@@ -101,15 +111,16 @@ PROVIDERS: List[Provider] = [
 PROVIDER_MAP = {p.name: p for p in PROVIDERS}
 
 # Task type → ordered list of provider names (preference order)
+# Groq added as fast free-tier fallback (llama-3.3-70b, OpenAI-compatible)
 TASK_ROUTING: Dict[str, List[str]] = {
-    "reasoning":    ["claude", "openai", "gemini"],
-    "code":         ["gemini", "ollama", "openai", "claude"],
-    "fast":         ["openai", "ollama", "claude"],
-    "dream":        ["ollama"],           # local-only — privacy
-    "long_context": ["minimax", "gemini", "claude", "openai"],  # MiniMax 4M ctx first
-    "character":    ["minimax", "claude", "openai"],             # MiniMax built Talkie — best character AI
-    "care":         ["claude"],           # care alignment → Claude always
-    "default":      ["claude", "openai", "gemini"],
+    "reasoning":    ["claude", "openai", "groq", "gemini"],
+    "code":         ["gemini", "ollama", "openai", "groq", "claude"],
+    "fast":         ["groq", "openai", "ollama", "claude"],       # Groq is fastest inference
+    "dream":        ["ollama", "groq"],    # local preferred, Groq fallback
+    "long_context": ["minimax", "gemini", "claude", "openai"],    # MiniMax 4M ctx first
+    "character":    ["minimax", "claude", "groq", "openai"],      # MiniMax built Talkie — best character AI
+    "care":         ["claude", "groq"],    # care alignment → Claude first, Groq fallback
+    "default":      ["claude", "groq", "openai", "gemini"],
 }
 
 
