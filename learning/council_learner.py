@@ -77,22 +77,42 @@ class CouncilLearningSignal:
 # ── Online learner (River) ────────────────────────────────────────────────────
 
 def _make_river_learner():
-    """Try to create a River HoeffdingTreeClassifier; fall back to a trivial counter."""
+    """Try to create a River HoeffdingTreeClassifier; fall back to a trivial counter.
+
+    Handles both ImportError (river not installed) and API version differences:
+    river>=0.21 renamed split_confidence → delta. We try the modern API first.
+    """
     try:
         from river import tree, preprocessing
         from river import compose
-        pipeline = compose.Pipeline(
-            preprocessing.StandardScaler(),
-            tree.HoeffdingTreeClassifier(
-                grace_period=50,
-                split_confidence=0.01,
-                leaf_prediction="nba",
-                nb_threshold=0,
-            ),
-        )
+        # Try modern API (river>=0.21: split_confidence renamed to delta)
+        try:
+            pipeline = compose.Pipeline(
+                preprocessing.StandardScaler(),
+                tree.HoeffdingTreeClassifier(
+                    grace_period=50,
+                    delta=0.01,
+                    leaf_prediction="nba",
+                    nb_threshold=0,
+                ),
+            )
+        except TypeError:
+            # Fall back to older API parameter name
+            pipeline = compose.Pipeline(
+                preprocessing.StandardScaler(),
+                tree.HoeffdingTreeClassifier(
+                    grace_period=50,
+                    split_confidence=0.01,
+                    leaf_prediction="nba",
+                    nb_threshold=0,
+                ),
+            )
         return pipeline, "river"
     except ImportError:
         logger.info("River not installed — using simple accuracy counter fallback")
+        return None, "fallback"
+    except Exception as e:
+        logger.info("River unavailable (%s) — using simple accuracy counter fallback", e)
         return None, "fallback"
 
 

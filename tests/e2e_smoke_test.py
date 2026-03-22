@@ -7,7 +7,7 @@ Tests run against real services (no mocks). Completes in < 2 minutes.
 
 Targets:
   BASE_LOCAL = http://localhost:8000      # MEOK local dev
-  BASE_VPS   = http://70.29.210.33:44565 # MEOK on Vast.ai GPU VPS
+  BASE_VPS   = http://198.53.64.194:40646 # MEOK on Vast.ai GPU VPS (C.33199588)
   BASE_SOV   = http://localhost:3100      # Sovereign Temple (Docker)
 
 Usage:
@@ -30,7 +30,7 @@ from typing import Any, Dict, List, Optional, Tuple
 # ── Config ────────────────────────────────────────────────────────────────────
 
 BASE_LOCAL = "http://localhost:8000"
-BASE_VPS   = "http://70.29.210.33:44565"
+BASE_VPS   = "http://198.53.64.194:40646"
 BASE_SOV   = "http://localhost:3100"
 TIMEOUT    = 15  # seconds per request
 
