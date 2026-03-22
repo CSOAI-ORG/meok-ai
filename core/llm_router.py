@@ -71,7 +71,7 @@ PROVIDERS: List[Provider] = [
     ),
     Provider(
         name="claude",
-        model=os.environ.get("MEOK_CLAUDE_MODEL", "claude-3-5-sonnet-20241022"),
+        model=os.environ.get("MEOK_CLAUDE_MODEL", "claude-sonnet-4-6"),
         base_url="https://api.anthropic.com/v1",
         api_key_env="ANTHROPIC_API_KEY",
         context_window=200_000,

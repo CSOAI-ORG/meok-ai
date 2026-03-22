@@ -1,6 +1,6 @@
 #!/bin/bash
 # MEOK.ai Standalone Entrypoint
-# Starts: PostgreSQL → Ollama → MEOK MCP Server
+# Starts: PostgreSQL → Ollama (if available) → MEOK MCP Server
 set -e
 
 log() { echo "[$(date '+%H:%M:%S')] MEOK ▶ $1"; }
@@ -11,8 +11,20 @@ log "Instance: ${HOSTNAME:-standalone}"
 
 # ── 1. PostgreSQL ────────────────────────────────────────────────────────────
 log "Starting PostgreSQL 15..."
+# Ensure TCP listening is enabled (Docker containers may default to socket-only)
+PG_CONF="/etc/postgresql/15/main/postgresql.conf"
+grep -q "^listen_addresses" "$PG_CONF" \
+    || echo "listen_addresses = 'localhost'" >> "$PG_CONF"
+# Ensure IPv6 loopback is in pg_hba.conf for asyncpg compatibility
+grep -q "::1.*md5" /etc/postgresql/15/main/pg_hba.conf \
+    || echo "host meok meok ::1/128 md5" >> /etc/postgresql/15/main/pg_hba.conf
+
 service postgresql start || warn "postgresql service start failed — may already be running"
-sleep 2
+# Wait for PostgreSQL to be ready to accept connections
+for i in $(seq 1 10); do
+    su postgres -c "pg_isready -q" 2>/dev/null && break
+    sleep 1
+done
 
 # Create meok user and database (idempotent)
 su postgres -c "psql -c \"CREATE USER meok WITH PASSWORD 'meok';\" 2>/dev/null" || true
@@ -23,36 +35,20 @@ su postgres -c "psql -d meok -f /docker-entrypoint-initdb.d/01_schema.sql 2>&1" 
 
 log "PostgreSQL ready — database: meok"
 
-# ── 2. Ollama (local LLM — uses GPU if available) ───────────────────────────
-OLLAMA_MODEL="${MEOK_OLLAMA_MODEL:-llama3.2:3b}"
-OLLAMA_HOME="${OLLAMA_HOME:-/tmp/ollama}"
-log "Starting Ollama (model: ${OLLAMA_MODEL})..."
-
-export OLLAMA_MODELS="$OLLAMA_HOME/models"
-mkdir -p "$OLLAMA_MODELS"
-
-# Start Ollama server in background
-OLLAMA_MODELS="$OLLAMA_MODELS" nohup ollama serve > /tmp/meok_logs/ollama.log 2>&1 &
-OLLAMA_PID=$!
-log "Ollama server PID=$OLLAMA_PID"
-
-# Wait for Ollama to be ready
-for i in $(seq 1 20); do
-    if curl -sf http://localhost:11434/ > /dev/null 2>&1; then
-        log "Ollama ready"
-        break
-    fi
-    sleep 1
-done
-
-# Pull model in background (non-blocking — MEOK starts before model is ready)
-# Model is used once pulled; subsequent restarts use cached version
-(
-    log "Pulling ${OLLAMA_MODEL} (background)..."
-    OLLAMA_MODELS="$OLLAMA_MODELS" ollama pull "$OLLAMA_MODEL" > /tmp/meok_logs/ollama_pull.log 2>&1 \
-        && log "Model ${OLLAMA_MODEL} ready" \
-        || warn "Model pull failed — check /tmp/meok_logs/ollama_pull.log"
-) &
+# ── 2. Ollama (optional — start if binary is available on host) ─────────────
+if command -v ollama > /dev/null 2>&1; then
+    OLLAMA_MODEL="${MEOK_OLLAMA_MODEL:-llama3.2:3b}"
+    log "Starting Ollama (model: ${OLLAMA_MODEL})..."
+    nohup ollama serve > /tmp/meok_logs/ollama.log 2>&1 &
+    sleep 3
+    # Pull model in background (non-blocking — server starts immediately)
+    (ollama pull "$OLLAMA_MODEL" >> /tmp/meok_logs/ollama.log 2>&1 \
+        && log "Ollama model ${OLLAMA_MODEL} ready" \
+        || warn "Ollama model pull failed") &
+    log "Ollama started (model pull in background)"
+else
+    log "Ollama not found — local LLM disabled. Set GROQ_API_KEY or ANTHROPIC_API_KEY for chat."
+fi
 
 # ── 3. Environment ───────────────────────────────────────────────────────────
 # Set Postgres DSN if not already overridden via env
@@ -61,7 +57,7 @@ export OLLAMA_URL="${OLLAMA_URL:-http://localhost:11434}"
 export MEOK_ENVIRONMENT="${MEOK_ENVIRONMENT:-production}"
 
 log "Postgres DSN: ${MEOK_DATABASE__POSTGRES_DSN}"
-log "Ollama URL:   ${OLLAMA_URL}"
+log "LLM: Groq=${GROQ_API_KEY:+set} | Anthropic=${ANTHROPIC_API_KEY:+set} | Ollama=${OLLAMA_URL}"
 
 # ── 4. MEOK MCP Server ───────────────────────────────────────────────────────
 log "Starting MEOK MCP Server on :3100..."
