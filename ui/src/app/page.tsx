@@ -492,7 +492,7 @@ export default function HomePage() {
                   <ArrowRight className="w-4 h-4" />
                 </Link>
                 <Link
-                  href="/live"
+                  href="/start"
                   className="inline-flex items-center gap-2 font-semibold rounded-full transition-colors hover:bg-white/10"
                   style={{
                     border: "1px solid rgba(255,255,255,0.30)",
@@ -501,7 +501,7 @@ export default function HomePage() {
                     fontSize: "1.125rem",
                   }}
                 >
-                  Watch it hatch
+                  Not sure which? Find yours →
                 </Link>
               </div>
 
@@ -1289,6 +1289,105 @@ export default function HomePage() {
                 className="inline-flex items-center gap-1 text-[#c9a84c] font-semibold hover:underline"
               >
                 Learn about the Sovereign Display <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
+          </section>
+
+          {/* ── 11b. MEMORY DEMO ──────────────────────────────────── */}
+          <section
+            aria-label="Memory demonstration"
+            className="bg-[#1a1a2e] text-white py-24 px-6"
+          >
+            <div className="max-w-[860px] mx-auto text-center">
+              <span className="text-xs font-semibold tracking-[0.2em] uppercase text-white/40 block mb-4">
+                Persistent Memory
+              </span>
+              <h2 className="text-3xl sm:text-4xl font-black tracking-tight mb-4">
+                See how MEOK remembers.
+              </h2>
+              <p className="text-white/55 mb-12 max-w-xl mx-auto leading-relaxed">
+                Other AI forgets by morning. MEOK carries it forward.
+              </p>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left mb-10">
+                {/* Session 1 */}
+                <div className="bg-white/[0.04] border border-white/[0.1] rounded-2xl p-6">
+                  <p className="text-xs font-semibold tracking-[0.16em] uppercase text-white/35 mb-5">
+                    Session 1 — March 15
+                  </p>
+                  <div className="flex flex-col gap-4">
+                    <div className="flex justify-end">
+                      <div className="bg-white/[0.08] rounded-2xl rounded-br-sm px-4 py-3 max-w-[85%]">
+                        <p className="text-sm text-white/80 leading-relaxed">I&apos;ve got a big presentation next Friday. I&apos;m nervous about the Q&amp;A.</p>
+                      </div>
+                    </div>
+                    <div className="flex justify-start">
+                      <div className="bg-[#c9a84c]/[0.08] border border-[#c9a84c]/[0.15] rounded-2xl rounded-bl-sm px-4 py-3 max-w-[85%]">
+                        <p className="text-xs font-semibold text-[#c9a84c]/70 mb-1 tracking-wide">MEOK</p>
+                        <p className="text-sm text-white/75 leading-relaxed">That nerves before Q&amp;As often comes from the unknown. Tell me — what&apos;s the topic? Let&apos;s map the hardest questions they might ask.</p>
+                      </div>
+                    </div>
+                    <div className="flex justify-end">
+                      <div className="bg-white/[0.08] rounded-2xl rounded-br-sm px-4 py-3 max-w-[85%]">
+                        <p className="text-sm text-white/80 leading-relaxed">It&apos;s about our data privacy roadmap. Some stakeholders are skeptical.</p>
+                      </div>
+                    </div>
+                    <div className="flex justify-start">
+                      <div className="bg-[#c9a84c]/[0.08] border border-[#c9a84c]/[0.15] rounded-2xl rounded-bl-sm px-4 py-3 max-w-[85%]">
+                        <p className="text-xs font-semibold text-[#c9a84c]/70 mb-1 tracking-wide">MEOK</p>
+                        <p className="text-sm text-white/75 leading-relaxed">Good. Skeptics ask better questions. What&apos;s the one question you most dread?</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Session 2 */}
+                <div className="bg-[#c9a84c]/[0.06] border border-[#c9a84c]/[0.2] rounded-2xl p-6 relative">
+                  <div className="flex items-center justify-between mb-5">
+                    <p className="text-xs font-semibold tracking-[0.16em] uppercase text-white/35">
+                      Session 2 — March 22
+                    </p>
+                    <span className="text-[10px] font-bold tracking-[0.12em] uppercase bg-[#c9a84c]/[0.15] border border-[#c9a84c]/[0.3] text-[#c9a84c] px-2.5 py-1 rounded-full">
+                      Memory active
+                    </span>
+                  </div>
+                  <div className="flex flex-col gap-4">
+                    <div className="flex justify-end">
+                      <div className="bg-white/[0.08] rounded-2xl rounded-br-sm px-4 py-3 max-w-[85%]">
+                        <p className="text-sm text-white/80 leading-relaxed">Hey.</p>
+                      </div>
+                    </div>
+                    {/* Memory recall — highlighted */}
+                    <div className="flex justify-start">
+                      <div className="bg-[#c9a84c]/[0.12] border border-[#c9a84c]/[0.35] border-l-[3px] border-l-[#c9a84c] rounded-2xl rounded-bl-sm px-4 py-3 max-w-[85%]">
+                        <p className="text-xs font-semibold text-[#c9a84c]/70 mb-1 tracking-wide">MEOK</p>
+                        <p className="text-sm text-white/80 leading-relaxed">Hey. Last week you had that data privacy presentation. How did the Q&amp;A go?</p>
+                      </div>
+                    </div>
+                    <div className="flex justify-end">
+                      <div className="bg-white/[0.08] rounded-2xl rounded-br-sm px-4 py-3 max-w-[85%]">
+                        <p className="text-sm text-white/80 leading-relaxed">Better than I expected, actually.</p>
+                      </div>
+                    </div>
+                    <div className="flex justify-start">
+                      <div className="bg-[#c9a84c]/[0.08] border border-[#c9a84c]/[0.15] rounded-2xl rounded-bl-sm px-4 py-3 max-w-[85%]">
+                        <p className="text-xs font-semibold text-[#c9a84c]/70 mb-1 tracking-wide">MEOK</p>
+                        <p className="text-sm text-white/75 leading-relaxed">I&apos;m glad. The skeptics showed up and you were ready for them.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <p className="text-white/35 text-sm mb-10">
+                🔒 Permanently encrypted. Your conversations never leave your hands.
+              </p>
+
+              <Link
+                href="/hatch"
+                className="inline-flex items-center gap-2 bg-[#c9a84c] text-[#0d0c18] font-bold px-8 py-4 rounded-xl hover:bg-[#d4b561] transition-colors text-sm tracking-wide"
+              >
+                Create your companion — it starts remembering from day 1
               </Link>
             </div>
           </section>

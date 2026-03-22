@@ -1086,6 +1086,67 @@ export default function HatchPage() {
                   </Link>
                 </div>
 
+                {/* Start here — conversation starter chips */}
+                <div style={{ marginBottom: "28px" }}>
+                  <p
+                    style={{
+                      fontSize: "11px",
+                      fontWeight: 600,
+                      letterSpacing: "0.16em",
+                      textTransform: "uppercase",
+                      color: "rgba(245,240,232,0.35)",
+                      marginBottom: "12px",
+                    }}
+                  >
+                    Try saying this to start:
+                  </p>
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      gap: "8px",
+                    }}
+                  >
+                    {[
+                      "Tell me something about yourself based on what I shared.",
+                      "What do you think I need most right now?",
+                      "I want to tell you something important about my life.",
+                    ].map((prompt) => (
+                      <Link
+                        key={prompt}
+                        href="/dashboard/chat"
+                        style={{
+                          display: "block",
+                          padding: "10px 16px",
+                          borderRadius: "10px",
+                          border: "1px solid rgba(245,240,232,0.15)",
+                          background: "rgba(245,240,232,0.03)",
+                          color: "rgba(245,240,232,0.6)",
+                          fontSize: "13px",
+                          fontWeight: 500,
+                          textDecoration: "none",
+                          textAlign: "left",
+                          lineHeight: 1.4,
+                          transition: "all 0.2s ease",
+                          letterSpacing: "0.01em",
+                        }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.borderColor = "rgba(201,168,76,0.5)";
+                          e.currentTarget.style.color = "#c9a84c";
+                          e.currentTarget.style.background = "rgba(201,168,76,0.06)";
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.borderColor = "rgba(245,240,232,0.15)";
+                          e.currentTarget.style.color = "rgba(245,240,232,0.6)";
+                          e.currentTarget.style.background = "rgba(245,240,232,0.03)";
+                        }}
+                      >
+                        &ldquo;{prompt}&rdquo;
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+
                 <button
                   onClick={handleReset}
                   style={{
