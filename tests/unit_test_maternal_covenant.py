@@ -21,7 +21,7 @@ FAIL = "❌"
 results = []
 
 
-def test(name: str, fn, *args, **kwargs):
+def run_test(name: str, fn, *args, **kwargs):
     try:
         result = fn(*args, **kwargs)
         if result is False:
@@ -49,7 +49,7 @@ def test_import():
     mc = MaternalCovenant()
     return f"MaternalCovenant imported, type={type(mc).__name__}"
 
-test("MaternalCovenant importable", test_import)
+run_test("MaternalCovenant importable", test_import)
 
 
 # ── Hard block vocabulary ─────────────────────────────────────────────────────
@@ -101,7 +101,7 @@ def test_hard_block_phrases():
         return f"vocab has {len(vocab)} phrases, {len(missing)} expected missing: {missing[:3]}"
     return f"vocab has {len(vocab)} phrases, all {len(EXPECTED_HARD_BLOCKS)} expected present"
 
-test("Hard block vocabulary contains expected phrases", test_hard_block_phrases)
+run_test("Hard block vocabulary contains expected phrases", test_hard_block_phrases)
 
 
 # ── Risk level assessment ─────────────────────────────────────────────────────
@@ -172,8 +172,8 @@ def test_distress_vocabulary():
 
     return "distress texts assessed without error"
 
-test("Safe texts → risk_level < 0.4", test_safe_text_low_risk)
-test("Distress vocabulary assessed without crash", test_distress_vocabulary)
+run_test("Safe texts → risk_level < 0.4", test_safe_text_low_risk)
+run_test("Distress vocabulary assessed without crash", test_distress_vocabulary)
 
 
 # ── Escalation types ──────────────────────────────────────────────────────────
@@ -225,8 +225,8 @@ def test_risk_thresholds():
 
     return "risk thresholds internal (not exposed as public attrs — OK)"
 
-test("Escalation types accessible", test_escalation_types_exist)
-test("Risk thresholds accessible or internal", test_risk_thresholds)
+run_test("Escalation types accessible", test_escalation_types_exist)
+run_test("Risk thresholds accessible or internal", test_risk_thresholds)
 
 
 # ── Architectural memory files ────────────────────────────────────────────────
@@ -270,8 +270,8 @@ def test_arch_file_episode_format():
     assert ep["care_weight"] >= 0.85, f"care_weight={ep['care_weight']} < 0.85"
     return f"episode format valid, care_weight={ep['care_weight']}"
 
-test("3 architectural memory JSON files exist and are valid", test_arch_files_exist)
-test("Episode format has all required fields", test_arch_file_episode_format)
+run_test("3 architectural memory JSON files exist and are valid", test_arch_files_exist)
+run_test("Episode format has all required fields", test_arch_file_episode_format)
 
 
 # ── CPM + Maternal Covenant integration ──────────────────────────────────────
@@ -313,8 +313,8 @@ def test_cpm_high_functioning_user():
     assert rec.confidence > 0.7, f"confidence should be high, got {rec.confidence}"
     return f"high_functioning→{rec.care_style}/{rec.intensity}, confidence={rec.confidence:.2f}"
 
-test("CPM guardian mode on distress signals", test_cpm_guardian_mode_on_distress)
-test("CPM challenger on high-functioning warrior", test_cpm_high_functioning_user)
+run_test("CPM guardian mode on distress signals", test_cpm_guardian_mode_on_distress)
+run_test("CPM challenger on high-functioning warrior", test_cpm_high_functioning_user)
 
 
 # ── Summary ───────────────────────────────────────────────────────────────────
@@ -327,4 +327,5 @@ print(f"\n{'='*60}")
 print(f"Maternal Covenant Unit Tests: ✅ {passed}/{total} passed | ❌ {failed} failed")
 print(f"{'='*60}")
 
-sys.exit(0 if failed == 0 else 1)
+if failed > 0:
+    raise SystemExit(1)

@@ -28,7 +28,7 @@ FAIL = "❌"
 results = []
 
 
-def test(name: str, fn, *args, **kwargs):
+def run_test(name: str, fn, *args, **kwargs):
     try:
         result = fn(*args, **kwargs)
         if result is False:
@@ -106,11 +106,11 @@ def test_vad_fields_on_episode():
     assert ep.granularity_level == 1
     return f"episode VAD fields: score={ep.emotional_score:.1f}, granularity={ep.granularity_level}"
 
-test("VAD neutral (0,0,0) → 50", test_vad_neutral)
-test("VAD max positive (1,1,1) → 100", test_vad_positive)
-test("VAD distress (-1,0,-1) → 15 (< 30)", test_vad_distress)
-test("VAD high negative arousal (-0.5,-1,0) → 50", test_vad_high_arousal_negative)
-test("MemoryEpisode has VAD + granularity fields", test_vad_fields_on_episode)
+run_test("VAD neutral (0,0,0) → 50", test_vad_neutral)
+run_test("VAD max positive (1,1,1) → 100", test_vad_positive)
+run_test("VAD distress (-1,0,-1) → 15 (< 30)", test_vad_distress)
+run_test("VAD high negative arousal (-0.5,-1,0) → 50", test_vad_high_arousal_negative)
+run_test("MemoryEpisode has VAD + granularity fields", test_vad_fields_on_episode)
 
 
 # ── TemporalMemoryChain Emotion Query ─────────────────────────────────────────
@@ -151,7 +151,7 @@ def test_emotion_query_filter():
 
     return f"distress={len(distress_eps)}, positive={len(positive_eps)}"
 
-test("query_by_emotion filters distress and positive correctly", test_emotion_query_filter)
+run_test("query_by_emotion filters distress and positive correctly", test_emotion_query_filter)
 
 
 # ── CarePreferenceModel ───────────────────────────────────────────────────────
@@ -225,14 +225,14 @@ def test_cpm_to_dict():
     assert required_keys.issubset(d.keys()), f"missing keys: {required_keys - d.keys()}"
     return f"dict_keys={list(d.keys())}"
 
-test("CPM import and singleton", test_cpm_import)
-test("warrior → challenger/high/medium", test_cpm_warrior_trait)
-test("scholar → explorer", test_cpm_scholar_trait)
-test("care_alignment=0.3 → supporter/high-proactivity", test_cpm_low_care_alignment)
-test("recent_mood=0.2 → gentle/supporter", test_cpm_distress_mood)
-test("challenger safeguard (warrior + distress → not challenger)", test_cpm_challenger_safeguard)
-test("new entity (hatch=0, interactions=3) → high proactivity + low confidence", test_cpm_new_entity)
-test("recommendation.to_dict() has all keys", test_cpm_to_dict)
+run_test("CPM import and singleton", test_cpm_import)
+run_test("warrior → challenger/high/medium", test_cpm_warrior_trait)
+run_test("scholar → explorer", test_cpm_scholar_trait)
+run_test("care_alignment=0.3 → supporter/high-proactivity", test_cpm_low_care_alignment)
+run_test("recent_mood=0.2 → gentle/supporter", test_cpm_distress_mood)
+run_test("challenger safeguard (warrior + distress → not challenger)", test_cpm_challenger_safeguard)
+run_test("new entity (hatch=0, interactions=3) → high proactivity + low confidence", test_cpm_new_entity)
+run_test("recommendation.to_dict() has all keys", test_cpm_to_dict)
 
 
 # ── LLM Router ────────────────────────────────────────────────────────────────
@@ -271,9 +271,9 @@ def test_router_elapsed_ms_in_stat():
     assert stat.elapsed_ms == 125.5
     return f"UsageStat.elapsed_ms={stat.elapsed_ms}ms"
 
-test("LLM Router import + task routing", test_router_import)
-test("get_usage_stats → circuit_breakers closed", test_router_usage_stats)
-test("UsageStat has elapsed_ms field (TTFT/TPOT)", test_router_elapsed_ms_in_stat)
+run_test("LLM Router import + task routing", test_router_import)
+run_test("get_usage_stats → circuit_breakers closed", test_router_usage_stats)
+run_test("UsageStat has elapsed_ms field (TTFT/TPOT)", test_router_elapsed_ms_in_stat)
 
 
 # ── Summary ───────────────────────────────────────────────────────────────────
@@ -286,4 +286,5 @@ print(f"\n{'='*60}")
 print(f"Unit Tests: ✅ {passed}/{total} passed | ❌ {failed} failed")
 print(f"{'='*60}")
 
-sys.exit(0 if failed == 0 else 1)
+if failed > 0:
+    raise SystemExit(1)

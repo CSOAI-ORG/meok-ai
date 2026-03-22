@@ -883,6 +883,36 @@ export default function HatchPage() {
                 </div>
               </div>
 
+              {/* Leading archetype hint (visible after Q3) */}
+              {state.currentQuestion >= 3 && (() => {
+                const leading = Object.entries(state.scores).sort((a, b) => b[1] - a[1])[0];
+                const leadingKey = leading[0] as ArchetypeKey;
+                const leadingArchetype = ARCHETYPES[leadingKey];
+                return (
+                  <div style={{
+                    marginTop: "24px",
+                    padding: "12px 16px",
+                    borderRadius: "10px",
+                    border: "1px solid rgba(201,168,76,0.2)",
+                    background: "rgba(201,168,76,0.05)",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "10px",
+                    animation: "fadeSlideUp 0.4s ease",
+                  }}>
+                    <span style={{ fontSize: "20px" }}>{leadingArchetype.emoji}</span>
+                    <div>
+                      <div style={{ fontSize: "11px", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "rgba(201,168,76,0.5)", marginBottom: "2px" }}>
+                        Your egg is forming
+                      </div>
+                      <div style={{ fontSize: "13px", color: "rgba(245,240,232,0.7)", fontStyle: "italic" }}>
+                        Showing signs of {leadingArchetype.trait.toLowerCase()}
+                      </div>
+                    </div>
+                  </div>
+                );
+              })()}
+
               {/* Back button */}
               {state.currentQuestion > 0 && selectedOption === null && (
                 <button

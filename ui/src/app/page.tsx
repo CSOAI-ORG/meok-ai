@@ -642,6 +642,77 @@ export default function HomePage() {
             </div>
           </section>
 
+          {/* ── 3C. HOW IT WORKS — 3-STEP JOURNEY ───────────────── */}
+          <section
+            aria-label="How MEOK works"
+            className="py-24 px-6 text-center"
+            style={{ background: "#0d0c18" }}
+          >
+            <div className="max-w-4xl mx-auto">
+              <header className="mb-16">
+                <p className="text-[#c9a84c] text-sm font-bold tracking-widest uppercase mb-4">
+                  How it works
+                </p>
+                <h2
+                  className="font-black text-white leading-tight tracking-tight mb-4"
+                  style={{ fontSize: "clamp(1.8rem, 5vw, 3rem)" }}
+                >
+                  Three steps to your sovereign AI
+                </h2>
+                <p className="text-white/50 text-lg">
+                  From egg to companion in under 2 minutes.
+                </p>
+              </header>
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+                {[
+                  {
+                    step: "1",
+                    title: "Hatch free",
+                    body: "Answer 7 questions. No right answers. 2 minutes.",
+                  },
+                  {
+                    step: "2",
+                    title: "Meet your companion",
+                    body: "Your AI hatches. Already knows your style, values, and way of thinking.",
+                  },
+                  {
+                    step: "3",
+                    title: "Watch it grow",
+                    body: "Every conversation adds to permanent encrypted memory. It gets better the more you use it.",
+                  },
+                ].map((item) => (
+                  <div
+                    key={item.step}
+                    className="flex flex-col items-center text-center px-4"
+                  >
+                    <div
+                      className="w-12 h-12 rounded-full flex items-center justify-center font-black text-lg mb-5 shrink-0"
+                      style={{ background: "#c9a84c", color: "#1a1a2e" }}
+                    >
+                      {item.step}
+                    </div>
+                    <h3
+                      className="font-black text-white text-lg mb-3 leading-snug"
+                    >
+                      {item.title}
+                    </h3>
+                    <p className="text-white/50 text-sm leading-relaxed">
+                      {item.body}
+                    </p>
+                  </div>
+                ))}
+              </div>
+
+              <p
+                className="text-base font-semibold italic"
+                style={{ color: "#c9a84c" }}
+              >
+                ↓ Then it remembers. Forever.
+              </p>
+            </div>
+          </section>
+
           {/* ── 4. WHO IS MEOK FOR? ────────────────────────────────── */}
           <section
             aria-label="Who is MEOK for"
@@ -1449,6 +1520,17 @@ export default function HomePage() {
               </Link>
               <p className="mt-6 text-sm" style={{ color: "rgba(245,240,232,0.28)" }}>
                 Free forever · No credit card · Sovereign by design · Your data never sold
+              </p>
+              <p
+                className="mt-4 text-xs text-center"
+                style={{ color: "rgba(201,168,76,0.5)" }}
+              >
+                <span
+                  className="inline-block w-2 h-2 rounded-full mr-2 align-middle animate-pulse"
+                  style={{ background: "rgba(201,168,76,0.5)" }}
+                  aria-hidden="true"
+                />
+                🥚 4,847 people on the April 5 waitlist
               </p>
             </div>
           </section>
