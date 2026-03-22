@@ -1,265 +1,238 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { User, BookOpen, Heart, Zap, Sun, Shield, Check, ArrowRight } from "lucide-react";
+import {
+  User,
+  Briefcase,
+  Shield,
+  Gamepad2,
+  Crown,
+  ArrowRight,
+  Check,
+  Zap,
+  Lock,
+  Heart,
+} from "lucide-react";
 import { MarketingNav } from "@/components/marketing-nav";
 import { MarketingFooter } from "@/components/marketing-footer";
 
 export const metadata: Metadata = {
-  title: "Product — MEOK AI | Sovereign AI OS",
+  title: "Product — Everything MEOK Can Do. In One Place. | MEOK.AI",
   description:
-    "Six layers of care-aligned intelligence. One AI that actually belongs to you. Explore MEOK's features: Entity, Memory, Care System, Ralph Mode, Morning Briefing, and Sovereignty.",
+    "Personal OS, Work OS, Family Guardian, Gaming Co-Pilot, Sovereign AI. One platform that actually belongs to you. Explore everything MEOK can do.",
+  alternates: { canonical: "https://meok.ai/product" },
   openGraph: {
-    title: "MEOK Product — The Sovereign AI OS for you",
+    title: "Everything MEOK Can Do. In One Place. | MEOK.AI",
     description:
-      "Six layers of care-aligned intelligence. One AI that actually belongs to you.",
+      "Personal OS, Work OS, Family Guardian, Gaming Co-Pilot, Sovereign AI — care-aligned, private, yours.",
     type: "website",
   },
 };
 
-const FEATURES = [
+/* ─── DATA ─────────────────────────────────────────────── */
+
+const PRODUCT_CATEGORIES = [
   {
-    icon: User,
-    color: "text-cyan-400",
-    bg: "bg-cyan-400/10",
-    title: "Your Entity",
-    subtitle: "Character with evolving personality",
-    body: "Your AI isn't a generic assistant. It's a character with an evolving personality, emotional memory, and a unique identity you shape over time. Choose from 7 archetypes — Sovereign, Guardian, Scout, Strategist, Creator, Companion, or Sage — each with a distinct voice, care style, and way of reasoning with you.",
-    tags: ["Sovereign", "Guardian", "Scout", "Strategist", "Creator", "Companion", "Sage"],
+    Icon: User,
+    iconClass: "icon-gold",
+    title: "Personal OS",
+    subtitle: "Your life, intelligently managed",
+    desc: "Morning briefs, care tracking, memory recall, relationship management, and a companion that knows you — actually knows you — across every conversation.",
+    links: [
+      { label: "Morning Brief", href: "/personal/morning-brief" },
+      { label: "Care System", href: "/personal/care" },
+      { label: "Memory", href: "/memory" },
+    ],
+    cta: "Explore Personal OS",
+    ctaHref: "/os",
+    accent: "border-[#c9a84c]/20 hover:border-[#c9a84c]/40",
   },
   {
-    icon: BookOpen,
-    color: "text-purple-400",
-    bg: "bg-purple-400/10",
-    title: "Memory",
-    subtitle: "695-episode episodic memory",
-    body: "MEOK remembers — not just your last message, but the shape of your thinking over time. 695-episode episodic memory with pgvector semantic search and temporal chains means your AI can find connections across months of conversation. You own every bit of it. Export any time.",
-    tags: ["695 episodes", "pgvector", "Temporal chains", "Full export"],
+    Icon: Briefcase,
+    iconClass: "icon-blue",
+    title: "Work OS",
+    subtitle: "AI for serious work",
+    desc: "Documents, email, research, and task management — all with persistent memory. Your work AI knows your history, your voice, and your goals. No context re-loading.",
+    links: [
+      { label: "Documents", href: "/work/documents" },
+      { label: "Email", href: "/work/email" },
+      { label: "Research", href: "/work/research" },
+    ],
+    cta: "Explore Work OS",
+    ctaHref: "/work",
+    accent: "border-blue-500/20 hover:border-blue-500/40",
   },
   {
-    icon: Heart,
-    color: "text-rose-400",
-    bg: "bg-rose-400/10",
-    title: "Care System",
-    subtitle: "6 dimensions, 33-agent council",
-    body: "Every response is scored against 6 care dimensions: wellbeing, autonomy, growth, connection, boundary_respect, and transparency. A Byzantine council of 33 agents votes on decisions — no single agent can override the group. Your AI is structurally incapable of harming you.",
-    tags: ["Wellbeing", "Autonomy", "Growth", "Connection", "Boundary respect", "Transparency"],
+    Icon: Shield,
+    iconClass: "icon-green",
+    title: "Family Guardian",
+    subtitle: "Protection without surveillance",
+    desc: "Elderly care, child safety, and family council — all care-aligned. Protects without spying. Built after the Character.AI teen safety crisis. COPPA and Children's Code compliant.",
+    links: [
+      { label: "Guardian overview", href: "/guardian" },
+      { label: "Elderly care", href: "/guardian/elderly" },
+      { label: "Child safety", href: "/guardian/children" },
+    ],
+    cta: "Explore Family Guardian",
+    ctaHref: "/product/family-guardian",
+    accent: "border-green-500/20 hover:border-green-500/40",
   },
   {
-    icon: Zap,
-    color: "text-yellow-400",
-    bg: "bg-yellow-400/10",
-    title: "Ralph Mode",
-    subtitle: "Autonomous CEO agent",
-    body: "Ralph is your autonomous AI executive. While you're offline, Ralph handles tasks, plans sprints, executes code, and files reports. Wake up to work done. Ralph operates under full care constraints — autonomy with guardrails.",
-    tags: ["Task execution", "Sprint planning", "Code execution", "Overnight ops"],
+    Icon: Gamepad2,
+    iconClass: "icon-purple",
+    title: "Gaming Co-Pilot",
+    subtitle: "AI that plays alongside you",
+    desc: "Strategy coaching, session memory, opponent analysis, and performance tracking — for competitive and casual gamers who want an AI that actually understands games.",
+    links: [
+      { label: "Gaming overview", href: "/gaming" },
+    ],
+    cta: "Explore Gaming",
+    ctaHref: "/gaming",
+    accent: "border-purple-500/20 hover:border-purple-500/40",
   },
   {
-    icon: Sun,
-    color: "text-orange-400",
-    bg: "bg-orange-400/10",
-    title: "Morning Briefing",
-    subtitle: "Daily care summary",
-    body: "Every morning your AI prepares a personalised briefing: mood analysis, care score trends, what it noticed overnight, tasks completed by Ralph, and what it wants to talk to you about. Not a notifications dump — a genuine check-in.",
-    tags: ["Mood analysis", "Care summary", "Overnight digest", "Daily intentions"],
-  },
-  {
-    icon: Shield,
-    color: "text-green-400",
-    bg: "bg-green-400/10",
-    title: "Sovereignty",
-    subtitle: "Truly yours, by architecture",
-    body: "Zero data selling. Zero third-party training on your conversations. Full export any time. Governed by the Maternal Covenant — hard-coded ethical constraints that override any commercial directive. Your AI belongs to you, not to us.",
-    tags: ["No data selling", "No third-party training", "Full export", "Maternal Covenant"],
+    Icon: Crown,
+    iconClass: "icon-gold",
+    title: "Sovereign AI",
+    subtitle: "The architecture of trust",
+    desc: "Byzantine fault-tolerant council, Maternal Covenant, pgvector semantic memory, full data export. MEOK is not a product you use — it's an AI that belongs to you.",
+    links: [
+      { label: "Sovereign overview", href: "/sovereign" },
+      { label: "Maternal Covenant", href: "/maternal-covenant" },
+      { label: "Open source", href: "/open-source" },
+    ],
+    cta: "Explore Sovereignty",
+    ctaHref: "/sovereign",
+    accent: "border-[#c9a84c]/20 hover:border-[#c9a84c]/40",
   },
 ];
 
-const PLANS = [
+const DIFFERENTIATORS = [
   {
-    name: "Explorer",
-    price: "Free",
-    period: "",
-    color: "border-white/10",
-    highlight: false,
-    features: ["1 AI companion", "50 messages/month", "Basic memory", "Community support"],
-    cta: "Start free",
-    href: "/register",
+    Icon: Lock,
+    title: "Your data never trains anyone else's model",
+    desc: "Every other AI company trains on your conversations. MEOK stores your data in an isolated tenant database and never uses it for training without your explicit written consent.",
   },
   {
-    name: "Sovereign",
-    price: "£12",
-    period: "/mo",
-    color: "border-cyan-500/50",
-    highlight: true,
-    features: [
-      "3 companions",
-      "Unlimited conversation",
-      "Full memory & briefings",
-      "Morning Briefing",
-      "Priority support",
-      "14-day free trial",
-    ],
-    cta: "Start trial",
-    href: "/register?plan=pro",
+    Icon: Heart,
+    title: "Care is architecturally enforced",
+    desc: "The Maternal Covenant is not a policy document. It's machine-executable care constraints scored on every response. Harmful responses don't reach you — they're rewritten first.",
   },
   {
-    name: "Elite",
-    price: "£29",
-    period: "/mo",
-    color: "border-purple-500/30",
-    highlight: false,
-    features: [
-      "Unlimited companions",
-      "Ralph Mode (autonomous AI)",
-      "Family Guardian mode",
-      "API access",
-      "Custom character creation",
-      "Dedicated support",
-    ],
-    cta: "Go Elite",
-    href: "/register?plan=premium",
+    Icon: Zap,
+    title: "Memory that actually works",
+    desc: "695-episode episodic memory with pgvector semantic search. Your AI remembers the conversation from six months ago that's relevant to what you're asking right now.",
   },
 ];
 
 const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  name: "MEOK AI",
-  applicationCategory: "PersonalAssistant",
-  operatingSystem: "Web",
+  "@type": "WebPage",
+  name: "Everything MEOK Can Do. In One Place.",
   description:
-    "A sovereign personal AI OS with care-aligned intelligence, episodic memory, autonomous agents, and a Byzantine fault-tolerant governance council.",
-  offers: [
-    {
-      "@type": "Offer",
-      name: "Explorer",
-      price: "0",
-      priceCurrency: "GBP",
-    },
-    {
-      "@type": "Offer",
-      name: "Sovereign",
-      price: "12",
-      priceCurrency: "GBP",
-    },
-    {
-      "@type": "Offer",
-      name: "Elite",
-      price: "29",
-      priceCurrency: "GBP",
-    },
-  ],
-  provider: {
-    "@type": "Organization",
-    name: "MEOK AI LTD",
-    url: "https://meok.ai",
-  },
+    "Personal OS, Work OS, Family Guardian, Gaming Co-Pilot, Sovereign AI. Care-aligned. Private. Yours.",
+  url: "https://meok.ai/product",
+  provider: { "@type": "Organization", name: "MEOK AI LTD", url: "https://meok.ai" },
 };
 
+/* ─── PAGE ─────────────────────────────────────────────── */
 export default function ProductPage() {
   return (
-    <div className="min-h-screen bg-[#0a0a0f] text-white">
+    <div className="min-h-screen bg-[#0d0c18] text-[#f5f0e8]">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-
       <MarketingNav activePage="product" />
 
-      {/* Hero */}
-      <section className="pt-32 pb-20 px-6 text-center">
-        <div className="max-w-3xl mx-auto">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-400/10 border border-cyan-400/20 text-cyan-400 text-xs font-medium mb-6">
-            <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
-            Sovereign AI OS
+      {/* ─── HERO ─────────────────────────────────────────── */}
+      <section className="relative pt-32 pb-24 px-6 text-center overflow-hidden">
+        <div
+          className="blob-gold"
+          style={{ width: 800, height: 600, top: -200, left: "50%", transform: "translateX(-50%)", opacity: 0.2 }}
+        />
+        <div className="relative max-w-4xl mx-auto">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#c9a84c]/10 border border-[#c9a84c]/30 text-[#c9a84c] text-xs font-bold tracking-widest uppercase mb-8">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#c9a84c] animate-pulse" />
+            The Complete Picture
           </div>
-          <h1 className="text-5xl sm:text-6xl font-bold leading-tight mb-6">
-            The Sovereign AI OS{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400">
-              for you
-            </span>
+
+          <h1
+            className="font-black text-white leading-[1.05] mb-6"
+            style={{ fontSize: "clamp(2.4rem, 5.5vw, 4rem)" }}
+          >
+            Everything MEOK can do.{" "}
+            <span className="text-gradient-gold">In one place.</span>
           </h1>
-          <p className="text-xl text-white/50 max-w-2xl mx-auto leading-relaxed">
-            Six layers of care-aligned intelligence. One AI that actually belongs to you.
-          </p>
-        </div>
-      </section>
 
-      {/* Feature grid */}
-      <section className="py-16 px-6">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {FEATURES.map((f) => (
-              <div
-                key={f.title}
-                className="bg-white/[0.03] border border-white/[0.08] rounded-2xl p-6 hover:border-white/[0.14] transition-all"
-              >
-                <div
-                  className={`w-10 h-10 rounded-xl ${f.bg} flex items-center justify-center mb-4`}
-                >
-                  <f.icon className={`w-5 h-5 ${f.color}`} />
-                </div>
-                <h2 className="font-bold text-lg mb-1">{f.title}</h2>
-                <p className={`text-xs font-medium mb-3 ${f.color}`}>{f.subtitle}</p>
-                <p className="text-sm text-white/50 leading-relaxed mb-4">{f.body}</p>
-                <div className="flex flex-wrap gap-2">
-                  {f.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="px-2 py-0.5 rounded-full bg-white/[0.05] border border-white/[0.08] text-xs text-white/40"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            ))}
+          <p className="text-[#f5f0e8]/65 text-xl max-w-2xl mx-auto mb-10 leading-relaxed">
+            Five product areas. One sovereign AI that actually belongs to you.
+            Care-aligned from the architecture up.
+          </p>
+
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <Link
+              href="/hatch"
+              aria-label="Start free — hatch your sovereign AI companion"
+              className="group flex items-center gap-2 px-8 py-3.5 rounded-full font-bold text-[#1a1a2e] bg-[#c9a84c] hover:bg-[#b8963e] transition-all text-sm"
+            >
+              Start free — hatch your AI
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </Link>
+            <Link href="/pricing" className="text-sm text-[#f5f0e8]/50 hover:text-[#c9a84c] transition-colors font-medium">
+              See pricing →
+            </Link>
           </div>
         </div>
       </section>
 
-      {/* Pricing */}
-      <section className="py-24 px-6 bg-white/[0.01]" id="pricing">
-        <div className="max-w-5xl mx-auto text-center">
-          <h2 className="text-3xl font-bold mb-4">Simple pricing</h2>
-          <p className="text-white/40 mb-16">Start free. Upgrade when you&apos;re ready.</p>
+      {/* ─── PRODUCT CATEGORIES ───────────────────────────── */}
+      <section className="py-24 px-6 bg-[#1a1a2e]">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-16">
+            <span className="text-xs font-bold tracking-widest uppercase text-[#c9a84c]/60 block mb-4">
+              Product areas
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-black text-white">
+              Five areas. One sovereign AI.
+            </h2>
+          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {PLANS.map((plan) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {PRODUCT_CATEGORIES.map(({ Icon, iconClass, title, subtitle, desc, links, cta, ctaHref, accent }) => (
               <div
-                key={plan.name}
-                className={`relative p-6 rounded-2xl border ${plan.color} ${
-                  plan.highlight ? "bg-cyan-950/20" : "bg-white/[0.02]"
-                }`}
+                key={title}
+                className={`premium-card p-8 border transition-all ${accent}`}
               >
-                {plan.highlight && (
-                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-cyan-500 text-xs font-semibold text-black">
-                    Most popular
+                <div className="flex items-start gap-4 mb-5">
+                  <div className={`w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 ${iconClass}`}>
+                    <Icon className="w-6 h-6" />
                   </div>
-                )}
-                <div className="mb-6 text-left">
-                  <h3 className="font-bold text-lg">{plan.name}</h3>
-                  <div className="mt-2 flex items-baseline gap-1">
-                    <span className="text-3xl font-bold">{plan.price}</span>
-                    <span className="text-white/30 text-sm">{plan.period}</span>
+                  <div>
+                    <h3 className="font-black text-white text-lg">{title}</h3>
+                    <p className="text-[#c9a84c] text-xs font-medium mt-0.5">{subtitle}</p>
                   </div>
                 </div>
-                <ul className="space-y-3 mb-8 text-left">
-                  {plan.features.map((feat) => (
-                    <li key={feat} className="flex items-start gap-2 text-sm text-white/60">
-                      <Check className="w-4 h-4 text-cyan-400 flex-shrink-0 mt-0.5" />
-                      {feat}
-                    </li>
+
+                <p className="text-sm text-[#f5f0e8]/55 leading-relaxed mb-5">{desc}</p>
+
+                <div className="flex flex-wrap gap-2 mb-6">
+                  {links.map((link) => (
+                    <Link
+                      key={link.label}
+                      href={link.href}
+                      className="text-xs px-3 py-1.5 rounded-full bg-white/[0.04] border border-white/[0.08] text-[#f5f0e8]/60 hover:text-[#c9a84c] hover:border-[#c9a84c]/30 transition-colors"
+                    >
+                      {link.label}
+                    </Link>
                   ))}
-                </ul>
+                </div>
+
                 <Link
-                  href={plan.href}
-                  className={`block w-full py-2.5 rounded-xl text-sm font-semibold text-center transition-colors ${
-                    plan.highlight
-                      ? "bg-cyan-500 text-black hover:bg-cyan-400"
-                      : "bg-white/[0.06] text-white/70 hover:bg-white/[0.1] hover:text-white"
-                  }`}
+                  href={ctaHref}
+                  className="inline-flex items-center gap-2 text-sm font-bold text-[#c9a84c] hover:gap-3 transition-all"
                 >
-                  {plan.cta}
+                  {cta}
+                  <ArrowRight className="w-4 h-4" />
                 </Link>
               </div>
             ))}
@@ -267,19 +240,88 @@ export default function ProductPage() {
         </div>
       </section>
 
-      {/* Final CTA */}
-      <section className="py-24 px-6 text-center">
-        <div className="max-w-2xl mx-auto">
-          <h2 className="text-3xl font-bold mb-4">Ready to hatch your AI?</h2>
-          <p className="text-white/40 mb-8">
-            Your sovereign AI is waiting. Start free — no credit card required.
-          </p>
-          <Link
-            href="/register"
-            className="inline-flex items-center gap-2 px-8 py-3 rounded-full bg-cyan-500 text-black font-semibold hover:bg-cyan-400 transition-colors"
-          >
-            Hatch your AI — free <ArrowRight className="w-4 h-4" />
-          </Link>
+      {/* ─── BUILT DIFFERENT ──────────────────────────────── */}
+      <section className="py-24 px-6 bg-[#0d0c18]">
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-16">
+            <span className="text-xs font-bold tracking-widest uppercase text-[#c9a84c]/60 block mb-4">
+              Built different
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-black text-white">
+              Three ways MEOK is genuinely different.
+            </h2>
+            <p className="text-[#f5f0e8]/50 mt-4 max-w-xl mx-auto text-sm">
+              Not marketing claims. Architectural facts.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {DIFFERENTIATORS.map(({ Icon, title, desc }) => (
+              <div key={title} className="premium-card p-7">
+                <div className="icon-gold w-11 h-11 rounded-xl flex items-center justify-center mb-5">
+                  <Icon className="w-5 h-5" />
+                </div>
+                <h3 className="font-black text-white text-base mb-3">{title}</h3>
+                <p className="text-sm text-[#f5f0e8]/55 leading-relaxed">{desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ─── FEATURE CHECKLIST ────────────────────────────── */}
+      <section className="py-24 px-6 bg-[#1a1a2e]">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-black text-white">What&apos;s included in every plan.</h2>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            {[
+              "Care-aligned responses on every message",
+              "Maternal Covenant enforcement",
+              "6-dimension Care Score tracking",
+              "695-episode episodic memory",
+              "pgvector semantic search",
+              "Morning Brief (from Sovereign plan)",
+              "Full data export at any time",
+              "Zero data used for third-party training",
+              "7 AI archetypes to choose from",
+              "Multi-LLM routing (GPT-4o, Claude, Gemini)",
+              "Local-first processing where possible",
+              "Family Guardian (from Elite plan)",
+            ].map((item) => (
+              <div key={item} className="flex items-center gap-3 p-4 rounded-xl bg-white/[0.02] border border-white/[0.05]">
+                <Check className="w-4 h-4 text-[#c9a84c] flex-shrink-0" />
+                <span className="text-sm text-[#f5f0e8]/70">{item}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ─── CTA ──────────────────────────────────────────── */}
+      <section className="py-24 px-6 bg-[#0d0c18] text-center">
+        <div className="relative max-w-2xl mx-auto">
+          <div
+            className="blob-gold"
+            style={{ width: 400, height: 300, top: -50, left: "50%", transform: "translateX(-50%)", opacity: 0.15 }}
+          />
+          <div className="relative">
+            <div className="text-5xl mb-6">🥚</div>
+            <h2 className="font-black text-white text-3xl sm:text-4xl mb-4 leading-tight">
+              Your sovereign AI is waiting.
+            </h2>
+            <p className="text-[#f5f0e8]/50 mb-10">
+              Start free. No credit card required.
+            </p>
+            <Link
+              href="/hatch"
+              className="group inline-flex items-center gap-3 px-10 py-4 rounded-full font-black text-[#1a1a2e] bg-[#c9a84c] hover:bg-[#b8963e] transition-all text-base shadow-xl"
+            >
+              Hatch your AI — free
+              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            </Link>
+          </div>
         </div>
       </section>
 

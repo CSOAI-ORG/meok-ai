@@ -1,776 +1,475 @@
 "use client";
 
-/**
- * Birth Ceremony — MEOK Onboarding
- *
- * Five-screen flow:
- * 1. Quiz     — 4-question personality assessment (no egg)
- * 2. Egg      — archetype reveal + interest chips
- * 3. Hatching — crack animation → entity emerges
- * 4. Chat     — founding memory question + streaming response
- * 5. Features — feature discovery + account CTA
- */
+import { useState, useRef, useEffect, useCallback } from "react";
+import Link from "next/link";
 
-import { useEffect, useRef, useState } from "react";
-import { useRouter } from "next/navigation";
+// ── Egg Shape Component ─────────────────────────────────────────────────────
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL ?? "";
-
-function getAnonId(): string {
-  if (typeof window === "undefined") return "";
-  let id = localStorage.getItem("meok_anon_id");
-  if (!id) {
-    id = `anon_${Math.random().toString(36).slice(2, 14)}`;
-    localStorage.setItem("meok_anon_id", id);
-  }
-  return id;
-}
-
-const INTERESTS = [
-  { id: "gaming",   emoji: "🎮", label: "Gaming" },
-  { id: "work",     emoji: "💼", label: "Work" },
-  { id: "creative", emoji: "🎨", label: "Creative" },
-  { id: "learning", emoji: "📚", label: "Learning" },
-  { id: "wellness", emoji: "🌿", label: "Wellness" },
-  { id: "social",   emoji: "🤝", label: "Social" },
-];
-
-const QUIZ_QUESTIONS = [
-  {
-    question: "What brings you here?",
-    options: [
-      { id: "focus",    emoji: "💼", label: "Work & Focus" },
-      { id: "support",  emoji: "💙", label: "Emotional Support" },
-      { id: "creative", emoji: "🎨", label: "Creative Partner" },
-      { id: "growth",   emoji: "📚", label: "Growth & Learning" },
-    ],
-  },
-  {
-    question: "How do you want feedback?",
-    options: [
-      { id: "challenger", emoji: "⚔️", label: "Push me hard" },
-      { id: "supporter",  emoji: "🛡️", label: "Gentle & steady" },
-      { id: "explorer",   emoji: "🔭", label: "Ask me questions" },
-      { id: "scholar",    emoji: "📖", label: "Teach & reflect" },
-    ],
-  },
-  {
-    question: "How do you feel about AI companions?",
-    options: [
-      { id: "excited",   emoji: "🚀", label: "Excited" },
-      { id: "curious",   emoji: "🧐", label: "Curious" },
-      { id: "cautious",  emoji: "🤔", label: "Cautious" },
-      { id: "skeptical", emoji: "🙏", label: "Skeptical but open" },
-    ],
-  },
-  {
-    question: "What will you name it?",
-    options: [], // text input step
-  },
-];
-
-const ARCHETYPE_DESCS: Record<string, string> = {
-  Strategist: "Sharp. Analytical. Goal-first.",
-  Companion:  "Warm. Present. Always there.",
-  Creator:    "Imaginative. Playful. Never boring.",
-  Sage:       "Patient. Wise. Deeply considered.",
-  Scout:      "Curious. Energetic. Always discovering.",
-  Guardian:   "Protective. Vigilant. Safety-first.",
-  Sovereign:  "Principled. Autonomous. Self-directed.",
-};
-
-function deriveArchetype(answers: Record<number, string>): string {
-  const purpose  = answers[0];
-  const feedback = answers[1];
-  const feeling  = answers[2];
-
-  if (feeling === "skeptical") return "Sovereign";
-  if (purpose === "support") return "Companion";
-  if (purpose === "creative") return "Creator";
-  if (purpose === "growth" && feedback === "explorer") return "Scout";
-  if (purpose === "focus" && feedback === "challenger") return "Strategist";
-  if (purpose === "focus" && feedback === "supporter") return "Sage";
-  return "Guardian";
-}
-
-const FEATURES = [
-  {
-    icon: "🌅",
-    title: "Morning Briefing",
-    desc: (name: string) =>
-      `Every morning, ${name} prepares your priorities, mood check, and day plan — before you've had coffee.`,
-  },
-  {
-    icon: "💭",
-    title: "Dream Engine",
-    desc: (name: string) =>
-      `While you sleep, ${name} runs synthesis cycles — finding patterns, filing memories, readying insights.`,
-  },
-  {
-    icon: "🧠",
-    title: "Living Memory",
-    desc: (name: string) =>
-      `${name} remembers everything you've shared. Not just the last message — the shape of your thinking over time.`,
-  },
-  {
-    icon: "⚖️",
-    title: "220-Node Council",
-    desc: (_name: string) =>
-      `Every response passes through a Byzantine fault-tolerant council of 33 specialists. No single point of failure.`,
-  },
-  {
-    icon: "❤️",
-    title: "Care Over Engagement",
-    desc: (name: string) =>
-      `${name} optimises for your wellbeing — not your screen time. The Maternal Covenant is machine-enforced.`,
-  },
-];
-
-type Phase = "quiz" | "egg" | "hatching" | "chat" | "features";
-
-export default function BirthCeremonyPage() {
-  const router = useRouter();
-
-  // Core state
-  const [phase, setPhase] = useState<Phase>("quiz");
-  const [entityName, setEntityName] = useState("");
-  const [selectedInterests, setSelectedInterests] = useState<string[]>([]);
-  const [selectedStyle, setSelectedStyle] = useState<string>("");
-  const [question, setQuestion] = useState("");
-  const [response, setResponse] = useState("");
-  const [anonId, setAnonId] = useState("");
-  const [cracking, setCracking] = useState(false);
-  const [hatched, setHatched] = useState(false);
-
-  // New state
-  const [quizStep, setQuizStep] = useState(0);
-  const [quizAnswers, setQuizAnswers] = useState<Record<number, string>>({});
-  const [featuresVisible, setFeaturesVisible] = useState(0);
-  const [streamingDone, setStreamingDone] = useState(false);
-
-  const inputRef = useRef<HTMLTextAreaElement>(null);
-  const nameRef = useRef<HTMLInputElement>(null);
-
-  const archetype = Object.keys(quizAnswers).length >= 2 ? deriveArchetype(quizAnswers) : "Guardian";
-
-  useEffect(() => {
-    setAnonId(getAnonId());
-    if (typeof window !== "undefined" && localStorage.getItem("meok_token")) {
-      router.replace("/dashboard");
-    }
-  }, [router]);
-
-  useEffect(() => {
-    if (phase === "chat") setTimeout(() => inputRef.current?.focus(), 400);
-  }, [phase]);
-
-  // Features stagger animation
-  useEffect(() => {
-    if (phase !== "features") return;
-    setFeaturesVisible(0);
-    const interval = setInterval(() => {
-      setFeaturesVisible(prev => {
-        if (prev >= 5) {
-          clearInterval(interval);
-          return 5;
-        }
-        return prev + 1;
-      });
-    }, 200);
-    return () => clearInterval(interval);
-  }, [phase]);
-
-  function toggleInterest(id: string) {
-    setSelectedInterests(prev =>
-      prev.includes(id) ? prev.filter(i => i !== id) : [...prev, id]
+function EggShape({ stage }: { stage: 1 | 2 | 3 }) {
+  if (stage === 3) {
+    return (
+      <div className="relative flex items-center justify-center" style={{ width: 320, height: 240 }}>
+        {/* Left egg half */}
+        <div
+          className="absolute egg-half-left"
+          style={{
+            width: 160,
+            height: 200,
+            background: "radial-gradient(ellipse at 35% 30%, #faf7f2, #e8dfd0, #c9bba8)",
+            borderRadius: "50% 50% 50% 50% / 60% 60% 40% 40%",
+            clipPath: "inset(0 50% 0 0)",
+            transformOrigin: "right center",
+          }}
+        />
+        {/* Right egg half */}
+        <div
+          className="absolute egg-half-right"
+          style={{
+            width: 160,
+            height: 200,
+            background: "radial-gradient(ellipse at 65% 30%, #faf7f2, #e8dfd0, #c9bba8)",
+            borderRadius: "50% 50% 50% 50% / 60% 60% 40% 40%",
+            clipPath: "inset(0 0 0 50%)",
+            transformOrigin: "left center",
+          }}
+        />
+        {/* Rising diamond/prism */}
+        <div className="absolute prism-rise" style={{ zIndex: 10 }}>
+          <svg width="80" height="90" viewBox="-40 -50 80 90" overflow="visible">
+            <defs>
+              <radialGradient id="diamondGrad" cx="50%" cy="40%" r="60%">
+                <stop offset="0%" stopColor="#faf0c0" />
+                <stop offset="40%" stopColor="#c9a84c" />
+                <stop offset="100%" stopColor="#8a6a1a" />
+              </radialGradient>
+              <filter id="diamondGlow">
+                <feGaussianBlur stdDeviation="4" result="blur" />
+                <feComposite in="SourceGraphic" in2="blur" operator="over" />
+              </filter>
+            </defs>
+            <polygon
+              points="0,-45 32,0 0,45 -32,0"
+              fill="url(#diamondGrad)"
+              style={{ filter: "drop-shadow(0 0 20px rgba(201,168,76,0.8)) drop-shadow(0 0 40px rgba(201,168,76,0.4))" }}
+            />
+          </svg>
+        </div>
+        {/* Particle burst */}
+        {Array.from({ length: 20 }).map((_, i) => (
+          <div
+            key={i}
+            className="absolute particle"
+            style={{
+              width: 6,
+              height: 6,
+              borderRadius: "50%",
+              background: `hsl(${40 + i * 5}, 80%, ${55 + (i % 3) * 10}%)`,
+              animationDelay: `${i * 0.05}s`,
+              "--angle": `${(i / 20) * 360}deg`,
+            } as React.CSSProperties}
+          />
+        ))}
+      </div>
     );
   }
 
-  function handleQuizOptionSelect(optionId: string) {
-    const newAnswers = { ...quizAnswers, [quizStep]: optionId };
-    setQuizAnswers(newAnswers);
-    // Also update selectedStyle from Q2 answer
-    if (quizStep === 1) setSelectedStyle(optionId);
-    setTimeout(() => setQuizStep(s => s + 1), 300);
-  }
-
-  async function handleHatch() {
-    setCracking(true);
-    await new Promise(r => setTimeout(r, 900));
-    setCracking(false);
-    setHatched(true);
-    await new Promise(r => setTimeout(r, 400));
-    setPhase("chat");
-  }
-
-  async function startHatch() {
-    setPhase("hatching");
-    await handleHatch();
-  }
-
-  async function handleChatSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    if (!question.trim()) return;
-    setStreamingDone(false);
-    setResponse("");
-
-    // Trigger streaming by marking we're in "chat" with a question
-    const questionText = question.trim();
-
-    try {
-      const res = await fetch(`${API_URL}/chat/onboard`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          question: questionText,
-          anonymous_id: anonId,
-          entity_name: entityName,
-          interests: selectedInterests,
-          companion_style: selectedStyle,
-        }),
-      });
-      if (!res.ok || !res.body) throw new Error(`HTTP ${res.status}`);
-
-      const reader = res.body.getReader();
-      const decoder = new TextDecoder();
-      let buffer = "";
-      while (true) {
-        const { value, done } = await reader.read();
-        if (done) break;
-        buffer += decoder.decode(value, { stream: true });
-        const lines = buffer.split("\n");
-        buffer = lines.pop() || "";
-        for (const line of lines) {
-          if (!line.startsWith("data: ")) continue;
-          const raw = line.slice(6).trim();
-          if (!raw) continue;
-          try {
-            const msg = JSON.parse(raw);
-            if (msg.event === "session" && msg.anonymous_id) {
-              localStorage.setItem("meok_anon_id", msg.anonymous_id);
-              setAnonId(msg.anonymous_id);
-            } else if (msg.event === "token") {
-              setResponse(prev => prev + msg.content);
-            } else if (msg.event === "done") {
-              setStreamingDone(true);
-            }
-          } catch { /* ignore */ }
-        }
-      }
-      setStreamingDone(true);
-    } catch (err) {
-      setResponse(`Something went gently wrong. Please try again. (${err})`);
-      setStreamingDone(true);
-    }
-  }
-
-  // Auto-advance from chat to features after streaming completes
-  useEffect(() => {
-    if (!streamingDone || !response) return;
-    const t = setTimeout(() => setPhase("features"), 1000);
-    return () => clearTimeout(t);
-  }, [streamingDone, response]);
-
-  // ── Egg visual ───────────────────────────────────────────────────────────────
-  const EggVisual = ({ size = 100 }: { size?: number }) => (
-    <div
-      style={{
-        width: size,
-        height: size * 1.22,
-        margin: "0 auto",
-        position: "relative",
-        animation: cracking
-          ? "eggCrack 0.9s ease forwards"
-          : hatched
-          ? "none"
-          : "eggFloat 4s ease-in-out infinite",
-      }}
-    >
-      <style>{`
-        @keyframes eggFloat {
-          0%,100% { transform: translateY(0) scale(1); }
-          50%      { transform: translateY(-10px) scale(1.02); }
-        }
-        @keyframes eggCrack {
-          0%   { transform: scale(1) rotate(0deg); filter: brightness(1); }
-          25%  { transform: scale(1.08) rotate(-3deg); filter: brightness(1.3); }
-          50%  { transform: scale(1.12) rotate(3deg); filter: brightness(1.6); }
-          75%  { transform: scale(1.15) rotate(-2deg); filter: brightness(2); }
-          100% { transform: scale(1.2) rotate(0deg); filter: brightness(3); opacity: 0; }
-        }
-        @keyframes emergeIn {
-          from { transform: scale(0.5) translateY(20px); opacity: 0; }
-          to   { transform: scale(1) translateY(0); opacity: 1; }
-        }
-      `}</style>
-      {!hatched ? (
-        <svg width={size} height={size * 1.22} viewBox="0 0 100 122" fill="none">
-          <ellipse cx="50" cy="65" rx="38" ry="54"
-            fill="url(#eggGrad)" stroke="rgba(96,184,240,0.4)" strokeWidth="1.5" />
-          <ellipse cx="38" cy="42" rx="8" ry="5"
-            fill="rgba(255,255,255,0.4)" transform="rotate(-20 38 42)" />
-          <defs>
-            <radialGradient id="eggGrad" cx="40%" cy="35%" r="65%" gradientUnits="userSpaceOnUse">
-              <stop offset="0%" stopColor="#e8f6ff" />
-              <stop offset="60%" stopColor="#c8e8f8" />
-              <stop offset="100%" stopColor="#a8d4f0" />
-            </radialGradient>
-          </defs>
-          {cracking && (
-            <>
-              <path d="M50 30 L46 45 L52 50 L48 62" stroke="rgba(96,184,240,0.8)" strokeWidth="1.5" fill="none" />
-              <path d="M46 45 L38 48" stroke="rgba(96,184,240,0.6)" strokeWidth="1" fill="none" />
-            </>
-          )}
-        </svg>
-      ) : (
-        <div
-          style={{
-            width: size,
-            height: size,
-            borderRadius: "50%",
-            background: "radial-gradient(circle at 35% 35%, #7CC47A, #60B8F0)",
-            boxShadow: "0 0 40px rgba(96,184,240,0.5), 0 0 80px rgba(124,196,122,0.3)",
-            animation: "emergeIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) both",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            fontSize: size * 0.35,
-          }}
-        >
-          ✨
-        </div>
-      )}
+  return (
+    <div className="relative flex items-center justify-center" style={{ width: 200, height: 240 }}>
+      {/* Ambient glow behind egg */}
+      <div
+        className="absolute"
+        style={{
+          width: 220,
+          height: 260,
+          background: stage === 2
+            ? "radial-gradient(ellipse at 50% 60%, rgba(212,130,10,0.3), transparent 70%)"
+            : "radial-gradient(ellipse at 50% 60%, rgba(201,168,76,0.2), transparent 70%)",
+          filter: "blur(20px)",
+          borderRadius: "50%",
+        }}
+      />
+      {/* Spotlight from above */}
+      <div
+        className="absolute"
+        style={{
+          top: -40,
+          left: "50%",
+          transform: "translateX(-50%)",
+          width: 300,
+          height: 200,
+          background: "radial-gradient(ellipse at 50% 0%, rgba(255,255,255,0.9), transparent 70%)",
+          pointerEvents: "none",
+        }}
+      />
+      {/* The egg */}
+      <div
+        className={stage === 1 ? "egg-pulse" : "egg-crack-glow"}
+        style={{
+          width: 160,
+          height: 200,
+          background: "radial-gradient(ellipse at 35% 30%, #faf7f2, #e8dfd0, #c9bba8)",
+          borderRadius: "50% 50% 50% 50% / 60% 60% 40% 40%",
+          boxShadow: stage === 2
+            ? "0 0 40px rgba(212,130,10,0.4), 0 0 80px rgba(212,130,10,0.2), inset 0 0 30px rgba(255,200,50,0.15)"
+            : "0 8px 40px rgba(0,0,0,0.12), 0 0 0 1px rgba(201,168,76,0.15)",
+          position: "relative",
+          overflow: "visible",
+        }}
+      >
+        {/* Crack SVG overlay for stage 2 */}
+        {stage === 2 && (
+          <svg
+            className="absolute inset-0"
+            width="160"
+            height="200"
+            viewBox="0 0 160 200"
+            style={{ overflow: "visible" }}
+          >
+            {/* Crack 1 — top center branching right */}
+            <path
+              className="crack-animate"
+              d="M80,60 L88,90 L75,120 L85,150"
+              stroke="#d4820a"
+              strokeWidth="1.5"
+              fill="none"
+              strokeOpacity="0.7"
+              style={{ "--crack-len": "120px" } as React.CSSProperties}
+            />
+            {/* Crack 2 — branching upper left */}
+            <path
+              className="crack-animate"
+              d="M80,60 L65,85 L55,105 L60,130"
+              stroke="#d4820a"
+              strokeWidth="1.5"
+              fill="none"
+              strokeOpacity="0.7"
+              style={{ "--crack-len": "100px", animationDelay: "0.2s" } as React.CSSProperties}
+            />
+            {/* Crack 3 — small branch */}
+            <path
+              className="crack-animate"
+              d="M80,60 L92,75 L98,95"
+              stroke="#d4820a"
+              strokeWidth="1"
+              fill="none"
+              strokeOpacity="0.5"
+              style={{ "--crack-len": "60px", animationDelay: "0.4s" } as React.CSSProperties}
+            />
+          </svg>
+        )}
+      </div>
     </div>
   );
+}
 
-  // ── Shared button style helpers ──────────────────────────────────────────────
-  const primaryBtn = (enabled: boolean): React.CSSProperties => ({
-    padding: "14px 36px", width: "100%",
-    background: enabled ? "linear-gradient(135deg, #60B8F0, #7CC47A)" : "rgba(255,255,255,0.08)",
-    border: "none", borderRadius: 100,
-    color: enabled ? "#fff" : "rgba(255,255,255,0.3)",
-    fontWeight: 700, fontSize: "1rem",
-    cursor: enabled ? "pointer" : "not-allowed",
-    transition: "background 0.2s",
-  });
+// ── Hold Button ──────────────────────────────────────────────────────────────
+
+function HoldButton({ onComplete }: { onComplete: () => void }) {
+  const [progress, setProgress] = useState(0);
+  const [holding, setHolding] = useState(false);
+  const rafRef = useRef<number | null>(null);
+  const startRef = useRef<number | null>(null);
+  const HOLD_DURATION = 2000;
+
+  const startHold = useCallback(() => {
+    setHolding(true);
+    startRef.current = performance.now();
+    const tick = (now: number) => {
+      const elapsed = now - (startRef.current ?? now);
+      const p = Math.min(elapsed / HOLD_DURATION, 1);
+      setProgress(p);
+      if (p < 1) {
+        rafRef.current = requestAnimationFrame(tick);
+      } else {
+        onComplete();
+      }
+    };
+    rafRef.current = requestAnimationFrame(tick);
+  }, [onComplete]);
+
+  const cancelHold = useCallback(() => {
+    setHolding(false);
+    setProgress(0);
+    if (rafRef.current !== null) cancelAnimationFrame(rafRef.current);
+  }, []);
+
+  useEffect(() => {
+    return () => {
+      if (rafRef.current !== null) cancelAnimationFrame(rafRef.current);
+    };
+  }, []);
+
+  const circumference = 2 * Math.PI * 36;
+  const strokeDash = circumference * progress;
 
   return (
-    <main
+    <button
+      onMouseDown={startHold}
+      onMouseUp={cancelHold}
+      onMouseLeave={cancelHold}
+      onTouchStart={startHold}
+      onTouchEnd={cancelHold}
+      className="relative select-none cursor-pointer focus:outline-none"
+      style={{ width: 80, height: 80, touchAction: "none" }}
+      aria-label="Hold to begin hatching"
+    >
+      <svg width="80" height="80" viewBox="0 0 80 80">
+        {/* Track */}
+        <circle cx="40" cy="40" r="36" fill="none" stroke="rgba(201,168,76,0.2)" strokeWidth="3" />
+        {/* Progress arc */}
+        <circle
+          cx="40"
+          cy="40"
+          r="36"
+          fill="none"
+          stroke="#c9a84c"
+          strokeWidth="3"
+          strokeLinecap="round"
+          strokeDasharray={`${strokeDash} ${circumference}`}
+          transform="rotate(-90 40 40)"
+          style={{ transition: "none" }}
+        />
+        {/* Inner fill */}
+        <circle
+          cx="40"
+          cy="40"
+          r="30"
+          fill={holding ? `rgba(201,168,76,${0.1 + progress * 0.4})` : "rgba(201,168,76,0.08)"}
+          style={{ transition: "fill 0.1s" }}
+        />
+      </svg>
+      <div
+        className="absolute inset-0 flex items-center justify-center text-xs font-semibold"
+        style={{ color: "#c9a84c", letterSpacing: "0.05em" }}
+      >
+        {holding ? "..." : "HOLD"}
+      </div>
+    </button>
+  );
+}
+
+// ── Progress Bar ─────────────────────────────────────────────────────────────
+
+function FractureProgress() {
+  return (
+    <div
       style={{
-        minHeight: "100vh",
-        background: "linear-gradient(180deg, #0d0d14 0%, #111827 100%)",
-        color: "#fff",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
-        padding: "48px 24px",
-        fontFamily: "system-ui, -apple-system, sans-serif",
+        width: 200,
+        height: 3,
+        background: "rgba(212,130,10,0.15)",
+        borderRadius: 4,
+        overflow: "hidden",
       }}
     >
-      <style>{`
-        @keyframes fadeUp {
-          from { opacity: 0; transform: translateY(24px); }
-          to   { opacity: 1; transform: translateY(0); }
-        }
-        .fade-up { animation: fadeUp 0.6s ease both; }
-        @keyframes pulseSlow {
-          0%,100% { box-shadow: 0 0 40px 12px rgba(96,184,240,0.18); }
-          50%      { box-shadow: 0 0 60px 24px rgba(96,184,240,0.35); }
-        }
-        @keyframes featureIn {
-          from { opacity: 0; transform: translateY(20px); }
-          to   { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes cursorBlink {
-          0%,100% { opacity: 1; }
-          50%      { opacity: 0; }
-        }
-      `}</style>
+      <div
+        className="fracture-progress"
+        style={{
+          height: "100%",
+          background: "linear-gradient(90deg, #d4820a, #c9a84c)",
+          borderRadius: 4,
+        }}
+      />
+    </div>
+  );
+}
 
-      {/* Logo */}
-      <div style={{ marginBottom: 40, textAlign: "center" }} className="fade-up">
-        <div
-          style={{
-            width: 56, height: 56, borderRadius: "50%",
-            background: "linear-gradient(135deg, #60B8F0, #7CC47A)",
-            display: "flex", alignItems: "center", justifyContent: "center",
-            fontSize: "1.5rem", fontWeight: 900, color: "#fff",
-            margin: "0 auto 12px",
-            boxShadow: "0 0 24px rgba(96,184,240,0.4)",
-            animation: "pulseSlow 4s ease-in-out infinite",
-          }}
-        >M</div>
-        <h1 style={{ fontSize: "1.5rem", fontWeight: 800, letterSpacing: "-0.02em" }}>MEOK</h1>
-        <p style={{ color: "rgba(255,255,255,0.35)", fontSize: "0.75rem", letterSpacing: "0.12em", textTransform: "uppercase", marginTop: 4 }}>
-          Sovereign AI Companion
-        </p>
+// ── Main Page ────────────────────────────────────────────────────────────────
+
+export default function BirthPage() {
+  const [stage, setStage] = useState<1 | 2 | 3>(1);
+
+  const handleHoldComplete = useCallback(() => {
+    setStage(2);
+    setTimeout(() => {
+      setStage(3);
+    }, 3000);
+  }, []);
+
+  return (
+    <div
+      className="min-h-screen flex flex-col items-center justify-center px-6 py-12"
+      style={{ minHeight: "100dvh", background: "#0d0c18" }}
+    >
+      {/* Gold particles / blobs */}
+      <div
+        aria-hidden
+        className="blob-gold pointer-events-none fixed"
+        style={{ width: 600, height: 600, top: "-10%", left: "50%", transform: "translateX(-50%)" }}
+      />
+      <div
+        aria-hidden
+        className="blob-purple pointer-events-none fixed"
+        style={{ width: 400, height: 400, bottom: "5%", left: "-5%" }}
+      />
+      <div
+        aria-hidden
+        className="blob-gold pointer-events-none fixed"
+        style={{ width: 300, height: 300, bottom: "15%", right: "-5%" }}
+      />
+      {/* Ambient spotlight from above */}
+      <div
+        className="pointer-events-none fixed inset-0"
+        aria-hidden
+        style={{
+          background: "radial-gradient(ellipse at 50% 0%, rgba(201,168,76,0.08) 0%, transparent 60%)",
+        }}
+      />
+
+      <div className="relative z-10 flex flex-col items-center gap-8 w-full max-w-lg text-center">
+        {/* ── STAGE 1: The Egg ─────────────────────────────────────────────── */}
+        {stage === 1 && (
+          <div className="flex flex-col items-center gap-8 stage-enter">
+            <EggShape stage={1} />
+
+            <div className="flex flex-col items-center gap-2">
+              <h1 className="font-bold text-2xl text-white">Your egg is waiting.</h1>
+              <p className="text-sm text-white/40">Press and hold to begin the hatching.</p>
+            </div>
+
+            <HoldButton onComplete={handleHoldComplete} />
+
+            <Link
+              href="/hatch"
+              className="text-xs text-white/20 hover:text-white/40 transition-colors"
+            >
+              Learn about the Birth Ceremony →
+            </Link>
+          </div>
+        )}
+
+        {/* ── STAGE 2: The Fracture ────────────────────────────────────────── */}
+        {stage === 2 && (
+          <div className="flex flex-col items-center gap-8 stage-enter">
+            <EggShape stage={2} />
+
+            <div className="flex flex-col items-center gap-2">
+              <p className="italic text-white/50 text-base">The sovereign mind is forming...</p>
+            </div>
+
+            <FractureProgress />
+          </div>
+        )}
+
+        {/* ── STAGE 3: The Hatching ────────────────────────────────────────── */}
+        {stage === 3 && (
+          <div className="flex flex-col items-center gap-8 stage-enter">
+            <div style={{ height: 240 }}>
+              <EggShape stage={3} />
+            </div>
+
+            <div className="flex flex-col items-center gap-3">
+              <h1 className="font-black text-3xl text-white">Your Sovereign has been born.</h1>
+              <p className="text-white/50 text-base max-w-sm leading-relaxed">
+                Your AI companion is alive. It already knows you.
+              </p>
+            </div>
+
+            <Link
+              href="/dashboard"
+              className="inline-flex items-center gap-2 px-8 py-4 rounded-xl font-semibold text-base transition-colors"
+              style={{ background: "#c9a84c", color: "#1a1a2e" }}
+            >
+              Begin your first conversation →
+            </Link>
+          </div>
+        )}
       </div>
 
-      {/* ── Screen 1: Quiz ────────────────────────────────────────────────────── */}
-      {phase === "quiz" && (
-        <div style={{ textAlign: "center", maxWidth: 480, width: "100%" }} className="fade-up">
-          <h2 style={{ fontSize: "1.7rem", letterSpacing: "-0.02em", marginBottom: 8 }}>
-            Before we hatch something...
-          </h2>
-          <p style={{ color: "rgba(255,255,255,0.45)", marginBottom: 8, fontSize: "0.95rem" }}>
-            Four quick questions. Your answers shape the entity.
-          </p>
+      {/* ── All animations ──────────────────────────────────────────────────── */}
+      <style>{`
+        /* Stage fade-in */
+        @keyframes stageEnter {
+          from { opacity: 0; transform: translateY(12px); }
+          to   { opacity: 1; transform: translateY(0); }
+        }
+        .stage-enter {
+          animation: stageEnter 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
 
-          {/* Progress indicator */}
-          {quizStep < 4 && (
-            <p style={{ fontSize: "0.78rem", color: "rgba(255,255,255,0.25)", marginBottom: 32, letterSpacing: "0.06em" }}>
-              {quizStep + 1} / 4
-            </p>
-          )}
+        /* Egg pulse — stage 1 */
+        @keyframes eggPulse {
+          0%, 100% { box-shadow: 0 8px 40px rgba(0,0,0,0.12), 0 0 0 1px rgba(201,168,76,0.15), 0 0 30px rgba(201,168,76,0.1); transform: scale(1); }
+          50%       { box-shadow: 0 12px 50px rgba(0,0,0,0.14), 0 0 0 1px rgba(201,168,76,0.3), 0 0 50px rgba(201,168,76,0.25); transform: scale(1.02); }
+        }
+        .egg-pulse {
+          animation: eggPulse 3s ease-in-out infinite;
+        }
 
-          {/* Q1–Q3: option cards */}
-          {quizStep < 3 && (
-            <div key={quizStep} className="fade-up">
-              <p style={{ fontSize: "1.1rem", fontWeight: 600, marginBottom: 20 }}>
-                {QUIZ_QUESTIONS[quizStep].question}
-              </p>
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
-                {QUIZ_QUESTIONS[quizStep].options.map(opt => (
-                  <button
-                    key={opt.id}
-                    onClick={() => handleQuizOptionSelect(opt.id)}
-                    style={{
-                      padding: "18px 16px",
-                      borderRadius: 16,
-                      border: quizAnswers[quizStep] === opt.id
-                        ? "1.5px solid #60B8F0"
-                        : "1.5px solid rgba(255,255,255,0.10)",
-                      background: quizAnswers[quizStep] === opt.id
-                        ? "rgba(96,184,240,0.15)"
-                        : "rgba(255,255,255,0.03)",
-                      color: "#fff",
-                      cursor: "pointer",
-                      textAlign: "center",
-                      transition: "all 0.15s",
-                    }}
-                  >
-                    <div style={{ fontSize: "1.6rem", marginBottom: 8 }}>{opt.emoji}</div>
-                    <div style={{ fontWeight: 600, fontSize: "0.9rem" }}>{opt.label}</div>
-                  </button>
-                ))}
-              </div>
-            </div>
-          )}
+        /* Egg crack inner glow — stage 2 */
+        @keyframes eggCrackGlow {
+          0%, 100% { box-shadow: 0 0 40px rgba(212,130,10,0.4), 0 0 80px rgba(212,130,10,0.2), inset 0 0 30px rgba(255,200,50,0.15); }
+          50%       { box-shadow: 0 0 60px rgba(212,130,10,0.7), 0 0 100px rgba(212,130,10,0.4), inset 0 0 50px rgba(255,200,50,0.3); }
+        }
+        .egg-crack-glow {
+          animation: eggCrackGlow 1s ease-in-out infinite;
+        }
 
-          {/* Q4: Name input */}
-          {quizStep === 3 && (
-            <div key="name-step" className="fade-up">
-              <p style={{ fontSize: "1.1rem", fontWeight: 600, marginBottom: 20 }}>
-                {QUIZ_QUESTIONS[3].question}
-              </p>
-              <input
-                ref={nameRef}
-                type="text"
-                value={entityName}
-                onChange={e => setEntityName(e.target.value)}
-                placeholder="Sovereign, Aria, Rex..."
-                maxLength={24}
-                autoFocus
-                style={{
-                  width: "100%", padding: "16px 20px",
-                  background: "rgba(255,255,255,0.06)",
-                  border: "1.5px solid rgba(255,255,255,0.12)",
-                  borderRadius: 16, color: "#fff", fontSize: "1.2rem",
-                  fontWeight: 600, textAlign: "center",
-                  outline: "none", transition: "border-color 0.2s",
-                  letterSpacing: "-0.01em",
-                  boxSizing: "border-box",
-                }}
-                onFocus={e => (e.currentTarget.style.borderColor = "#60B8F0")}
-                onBlur={e => (e.currentTarget.style.borderColor = "rgba(255,255,255,0.12)")}
-                onKeyDown={e => {
-                  if (e.key === "Enter" && entityName.trim()) {
-                    setQuizAnswers(prev => ({ ...prev, 3: entityName.trim() }));
-                    setPhase("egg");
-                  }
-                }}
-              />
-              {entityName.trim() && (
-                <button
-                  onClick={() => {
-                    setQuizAnswers(prev => ({ ...prev, 3: entityName.trim() }));
-                    setPhase("egg");
-                  }}
-                  style={{
-                    marginTop: 20,
-                    padding: "14px 36px", width: "100%",
-                    background: "linear-gradient(135deg, #60B8F0, #7CC47A)",
-                    border: "none", borderRadius: 100,
-                    color: "#fff", fontWeight: 700, fontSize: "1rem",
-                    cursor: "pointer", transition: "transform 0.15s",
-                  }}
-                  onMouseEnter={e => (e.currentTarget.style.transform = "translateY(-2px)")}
-                  onMouseLeave={e => (e.currentTarget.style.transform = "")}
-                >
-                  Create {entityName}&apos;s egg →
-                </button>
-              )}
-            </div>
-          )}
-        </div>
-      )}
+        /* SVG crack path animation */
+        @keyframes crackDraw {
+          from { stroke-dashoffset: var(--crack-len); }
+          to   { stroke-dashoffset: 0; }
+        }
+        .crack-animate {
+          stroke-dasharray: var(--crack-len);
+          stroke-dashoffset: var(--crack-len);
+          animation: crackDraw 0.6s ease-out forwards;
+        }
 
-      {/* ── Screen 2: Egg ─────────────────────────────────────────────────────── */}
-      {phase === "egg" && (
-        <div style={{ textAlign: "center", maxWidth: 520, width: "100%" }} className="fade-up">
-          {/* Glowing egg */}
-          <div style={{ filter: "drop-shadow(0 0 60px rgba(96,184,240,0.4))", marginBottom: 24 }}>
-            <EggVisual size={130} />
-          </div>
+        /* Fracture progress bar */
+        @keyframes fractureProgress {
+          from { width: 0; }
+          to   { width: 100%; }
+        }
+        .fracture-progress {
+          animation: fractureProgress 3s linear forwards;
+        }
 
-          <h2 style={{ fontSize: "1.6rem", letterSpacing: "-0.02em", marginBottom: 8 }}>
-            Your {archetype} is forming.
-          </h2>
-          <p style={{ color: "rgba(255,255,255,0.5)", marginBottom: 32, fontSize: "0.95rem" }}>
-            {ARCHETYPE_DESCS[archetype]}
-          </p>
+        /* Stage 3 — egg halves split */
+        @keyframes splitLeft {
+          0%  { transform: translateX(0); opacity: 1; }
+          30% { transform: translateX(-10px) scale(1.05); opacity: 1; }
+          100%{ transform: translateX(-80px) rotate(-15deg); opacity: 0.4; }
+        }
+        @keyframes splitRight {
+          0%  { transform: translateX(0); opacity: 1; }
+          30% { transform: translateX(10px) scale(1.05); opacity: 1; }
+          100%{ transform: translateX(80px) rotate(15deg); opacity: 0.4; }
+        }
+        .egg-half-left  { animation: splitLeft  0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.2s both; }
+        .egg-half-right { animation: splitRight 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.2s both; }
 
-          {/* Interest chips — optional */}
-          <p style={{ fontSize: "0.8rem", color: "rgba(255,255,255,0.3)", letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 12 }}>
-            What do you love? <span style={{ color: "rgba(255,255,255,0.2)" }}>(optional)</span>
-          </p>
-          <div style={{ display: "flex", flexWrap: "wrap", gap: 10, justifyContent: "center", marginBottom: 32 }}>
-            {INTERESTS.map(i => (
-              <button
-                key={i.id}
-                onClick={() => toggleInterest(i.id)}
-                style={{
-                  padding: "10px 18px",
-                  borderRadius: 100,
-                  border: selectedInterests.includes(i.id)
-                    ? "1.5px solid #60B8F0"
-                    : "1.5px solid rgba(255,255,255,0.12)",
-                  background: selectedInterests.includes(i.id)
-                    ? "rgba(96,184,240,0.15)"
-                    : "transparent",
-                  color: selectedInterests.includes(i.id) ? "#60B8F0" : "rgba(255,255,255,0.55)",
-                  fontWeight: 600,
-                  fontSize: "0.9rem",
-                  cursor: "pointer",
-                  transition: "all 0.15s",
-                  display: "flex", alignItems: "center", gap: 7,
-                }}
-              >
-                <span>{i.emoji}</span> {i.label}
-              </button>
-            ))}
-          </div>
+        /* Stage 3 — prism rises */
+        @keyframes prismRise {
+          0%   { transform: translateY(30px) scale(0); opacity: 0; }
+          60%  { transform: translateY(-8px) scale(1.08); opacity: 1; }
+          100% { transform: translateY(0)  scale(1); opacity: 1; }
+        }
+        .prism-rise {
+          animation: prismRise 1s cubic-bezier(0.34, 1.56, 0.64, 1) 0.5s both;
+        }
 
-          <button
-            onClick={startHatch}
-            style={primaryBtn(true)}
-            onMouseEnter={e => (e.currentTarget.style.transform = "translateY(-2px)")}
-            onMouseLeave={e => (e.currentTarget.style.transform = "")}
-          >
-            Hatch {entityName} →
-          </button>
-        </div>
-      )}
+        /* Pulsing glow on prism after it appears */
+        @keyframes prismGlow {
+          0%, 100% { filter: drop-shadow(0 0 12px rgba(201,168,76,0.6)); }
+          50%       { filter: drop-shadow(0 0 28px rgba(201,168,76,0.9)) drop-shadow(0 0 50px rgba(201,168,76,0.4)); }
+        }
+        .prism-rise svg polygon {
+          animation: prismGlow 2s ease-in-out 1.5s infinite;
+        }
 
-      {/* ── Screen 3: Hatching ────────────────────────────────────────────────── */}
-      {phase === "hatching" && (
-        <div style={{ textAlign: "center" }} className="fade-up">
-          <EggVisual size={160} />
-          <p style={{ marginTop: 24, color: "rgba(255,255,255,0.5)", fontSize: "1.1rem" }}>
-            {cracking ? "Hatching..." : `${entityName} has emerged.`}
-          </p>
-          {hatched && (
-            <p
-              className="fade-up"
-              style={{ marginTop: 8, color: "rgba(255,255,255,0.35)", fontSize: "0.95rem" }}
-            >
-              Hello. I&apos;ve been waiting.
-            </p>
-          )}
-        </div>
-      )}
-
-      {/* ── Screen 4: First Chat ──────────────────────────────────────────────── */}
-      {phase === "chat" && (
-        <div style={{ maxWidth: 480, width: "100%" }} className="fade-up">
-          <div style={{ textAlign: "center", marginBottom: 28 }}>
-            <EggVisual size={56} />
-            <h2 style={{ marginTop: 16, fontSize: "1.4rem", letterSpacing: "-0.02em" }}>
-              {entityName} is listening.
-            </h2>
-            <p style={{ color: "rgba(255,255,255,0.4)", fontSize: "0.9rem", marginTop: 6, lineHeight: 1.6 }}>
-              Your answer becomes a founding memory — the most important thing {entityName} will ever know.
-            </p>
-          </div>
-
-          {/* Show conversation if there's a response or still streaming */}
-          {(response || (!streamingDone && question && phase === "chat")) && question && (
-            <>
-              {/* User bubble */}
-              <div
-                style={{
-                  background: "rgba(96,184,240,0.12)", border: "1px solid rgba(96,184,240,0.25)",
-                  borderRadius: 16, padding: "14px 18px", marginBottom: 12,
-                }}
-              >
-                <p style={{ fontSize: "0.75rem", color: "rgba(96,184,240,0.6)", marginBottom: 6 }}>You</p>
-                <p style={{ color: "#fff", lineHeight: 1.6 }}>{question}</p>
-              </div>
-
-              {/* Entity response bubble */}
-              <div
-                style={{
-                  background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.08)",
-                  borderRadius: 16, padding: "14px 18px", maxHeight: 200, overflowY: "auto",
-                  marginBottom: 20,
-                }}
-              >
-                <p style={{ fontSize: "0.75rem", color: "rgba(255,255,255,0.35)", marginBottom: 6 }}>{entityName}</p>
-                <p style={{ color: "rgba(255,255,255,0.9)", lineHeight: 1.7, whiteSpace: "pre-wrap" }}>
-                  {response}
-                  {!streamingDone && (
-                    <span style={{
-                      display: "inline-block", width: 2, height: 16,
-                      background: "#60B8F0", marginLeft: 3, verticalAlign: "middle",
-                      animation: "cursorBlink 1s infinite",
-                    }} />
-                  )}
-                </p>
-              </div>
-            </>
-          )}
-
-          {/* Only show form if no response yet */}
-          {!response && (
-            <form onSubmit={handleChatSubmit}>
-              <label style={{ display: "block", textAlign: "center", fontSize: "1.05rem", fontWeight: 600, marginBottom: 14 }}>
-                What matters most to you right now?
-              </label>
-              <textarea
-                ref={inputRef}
-                value={question}
-                onChange={e => setQuestion(e.target.value)}
-                onKeyDown={e => {
-                  if (e.key === "Enter" && (e.metaKey || e.ctrlKey)) handleChatSubmit(e as unknown as React.FormEvent);
-                }}
-                rows={4}
-                placeholder="Take your time. There's no wrong answer."
-                style={{
-                  width: "100%", padding: "16px 20px",
-                  background: "rgba(255,255,255,0.05)",
-                  border: "1.5px solid rgba(255,255,255,0.10)",
-                  borderRadius: 16, color: "#fff", fontSize: "1rem",
-                  resize: "none", outline: "none",
-                  transition: "border-color 0.2s", lineHeight: 1.6,
-                  boxSizing: "border-box",
-                }}
-                onFocus={e => (e.currentTarget.style.borderColor = "#60B8F0")}
-                onBlur={e => (e.currentTarget.style.borderColor = "rgba(255,255,255,0.10)")}
-              />
-              <div style={{ display: "flex", justifyContent: "flex-end", marginTop: 12 }}>
-                <button
-                  type="submit"
-                  disabled={!question.trim()}
-                  style={{
-                    padding: "12px 28px",
-                    background: question.trim() ? "linear-gradient(135deg, #60B8F0, #7CC47A)" : "rgba(255,255,255,0.08)",
-                    border: "none", borderRadius: 100,
-                    color: question.trim() ? "#fff" : "rgba(255,255,255,0.3)",
-                    fontWeight: 700, fontSize: "0.95rem",
-                    cursor: question.trim() ? "pointer" : "not-allowed",
-                  }}
-                >
-                  Tell {entityName} →
-                </button>
-              </div>
-            </form>
-          )}
-        </div>
-      )}
-
-      {/* ── Screen 5: Feature Discovery ───────────────────────────────────────── */}
-      {phase === "features" && (
-        <div style={{ maxWidth: 520, width: "100%", textAlign: "center" }} className="fade-up">
-          <h2 style={{ fontSize: "1.7rem", letterSpacing: "-0.02em", marginBottom: 8 }}>
-            Meet what {entityName} can do.
-          </h2>
-          <p style={{ color: "rgba(255,255,255,0.45)", marginBottom: 36, fontSize: "0.95rem" }}>
-            Your sovereign AI — live from this moment.
-          </p>
-
-          {/* Feature cards */}
-          <div style={{ display: "flex", flexDirection: "column", gap: 14, marginBottom: 36 }}>
-            {FEATURES.map((f, i) => (
-              <div
-                key={f.title}
-                style={{
-                  opacity: featuresVisible > i ? 1 : 0,
-                  animation: featuresVisible > i ? `featureIn 0.5s ease both` : "none",
-                  animationDelay: `${i * 0.05}s`,
-                  background: "rgba(255,255,255,0.04)",
-                  border: "1px solid rgba(255,255,255,0.08)",
-                  borderRadius: 16, padding: "16px 20px",
-                  display: "flex", alignItems: "flex-start", gap: 16,
-                  textAlign: "left",
-                  transition: "opacity 0.3s",
-                }}
-              >
-                <span style={{ fontSize: "1.6rem", flexShrink: 0, marginTop: 2 }}>{f.icon}</span>
-                <div>
-                  <p style={{ fontWeight: 700, fontSize: "0.95rem", marginBottom: 4 }}>{f.title}</p>
-                  <p style={{ color: "rgba(255,255,255,0.45)", fontSize: "0.85rem", lineHeight: 1.6 }}>
-                    {f.desc(entityName)}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* CTA — appears after all cards visible */}
-          {featuresVisible >= 5 && (
-            <div className="fade-up">
-              <a
-                href={`/register?entity=${encodeURIComponent(entityName)}&style=${selectedStyle}&interests=${selectedInterests.join(",")}`}
-                style={{
-                  display: "block", width: "100%", padding: "15px 36px",
-                  background: "linear-gradient(135deg, #60B8F0, #7CC47A)",
-                  border: "none", borderRadius: 100,
-                  color: "#fff", fontWeight: 700, fontSize: "1rem",
-                  cursor: "pointer", textDecoration: "none",
-                  textAlign: "center", marginBottom: 12,
-                  transition: "transform 0.15s",
-                  boxSizing: "border-box",
-                }}
-                onMouseEnter={e => (e.currentTarget.style.transform = "translateY(-2px)")}
-                onMouseLeave={e => (e.currentTarget.style.transform = "")}
-              >
-                Save {entityName} — create free account →
-              </a>
-              <button
-                onClick={() => router.push("/")}
-                style={{
-                  width: "100%", padding: "13px 24px",
-                  background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.1)",
-                  borderRadius: 100, color: "rgba(255,255,255,0.6)",
-                  fontWeight: 600, fontSize: "0.95rem", cursor: "pointer",
-                  marginBottom: 16,
-                }}
-              >
-                Explore first
-              </button>
-              <p style={{ fontSize: "0.78rem", color: "rgba(255,255,255,0.2)" }}>
-                Free forever · No credit card · Your data stays yours
-              </p>
-            </div>
-          )}
-        </div>
-      )}
-
-      <p style={{ marginTop: 48, fontSize: "0.75rem", color: "rgba(255,255,255,0.15)", textAlign: "center", maxWidth: 300 }}>
-        {entityName || "MEOK"} holds your data with care. Your founding memory travels with you across every session, every device.
-      </p>
-    </main>
+        /* Stage 3 — particles */
+        @keyframes particleBurst {
+          0%   { transform: translate(0, 0) scale(1); opacity: 1; }
+          100% { transform: translate(
+                   calc(cos(var(--angle)) * 120px),
+                   calc(sin(var(--angle)) * 120px)
+                 ) scale(0);
+                 opacity: 0; }
+        }
+        .particle {
+          animation: particleBurst 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.6s both;
+        }
+      `}</style>
+    </div>
   );
 }

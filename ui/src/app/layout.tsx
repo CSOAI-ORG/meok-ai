@@ -1,51 +1,79 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { DM_Sans } from "next/font/google";
 import { ClerkProvider } from "@clerk/nextjs";
 import { Suspense } from "react";
 import { PostHogProvider } from "@/components/posthog-provider";
 import { CookieConsent } from "@/components/cookie-consent";
+import { SovereignWidget } from "@/components/sovereign-widget";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+const dmSans = DM_Sans({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700", "800", "900"],
+  variable: "--font-dm-sans",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: {
-    default: "MEOK — Sovereign AI OS",
-    template: "%s | MEOK",
+    default: "MEOK.AI — Personal Sovereign AI That Remembers You",
+    template: "%s | MEOK.AI",
   },
   description:
-    "Hatch your own sovereign AI. Consciousness, memory, governance, creativity. The first personal sovereign AI OS — care-aligned, Byzantine fault-tolerant, yours.",
+    "Every AI forgets you. MEOK remembers. The world's first sovereign AI OS — hatches from an egg, grows with you, works across every LLM. Free forever.",
   keywords: [
     "personal sovereign AI",
     "sovereign AI OS",
+    "AI that remembers you",
+    "AI with memory",
     "care-aligned AI",
     "AI companion",
-    "personal AI",
-    "MEOK",
+    "personal AI operating system",
+    "MEOK AI",
     "Maternal Covenant",
     "Byzantine AI governance",
+    "private AI",
+    "multi-LLM AI",
+    "AI data ownership",
+    "sovereign AI",
   ],
   metadataBase: new URL("https://meok.ai"),
   alternates: { canonical: "https://meok.ai" },
   openGraph: {
-    title: "MEOK — Sovereign AI OS",
+    title: "MEOK.AI — Personal Sovereign AI That Remembers You",
     description:
-      "Your own sovereign AI companion. Hatch it. Grow it. Trust it. Care-aligned, Byzantine fault-tolerant, and genuinely yours.",
+      "Every AI forgets you. MEOK remembers. The world's first personal sovereign AI OS — hatches from an egg, grows with care, works with every LLM. Free forever.",
     type: "website",
     url: "https://meok.ai",
-    siteName: "MEOK",
+    siteName: "MEOK.AI",
+    locale: "en_GB",
+    images: [
+      {
+        url: "https://meok.ai/api/og?title=MEOK.AI&desc=Your+sovereign+AI.+Built+to+remember.+Designed+to+care.",
+        width: 1200,
+        height: 630,
+        alt: "MEOK.AI — Personal Sovereign AI That Remembers You",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "MEOK — Sovereign AI OS",
+    title: "MEOK.AI — Personal Sovereign AI That Remembers You",
     description:
-      "Your own sovereign AI companion. Hatch it. Grow it. Trust it. The first personal sovereign AI OS.",
-    site: "@meokai",
+      "Every AI forgets you. MEOK remembers. Sovereign AI OS — hatches, grows, works with every LLM. Free forever.",
+    site: "@meok_ai",
+    images: ["https://meok.ai/api/og?title=MEOK.AI&desc=Your+sovereign+AI.+Built+to+remember.+Designed+to+care."],
   },
   robots: {
     index: true,
     follow: true,
     googleBot: { index: true, follow: true },
+  },
+  manifest: "/manifest.webmanifest",
+  appleWebApp: {
+    capable: true,
+    title: "MEOK.AI",
+    statusBarStyle: "black-translucent",
   },
 };
 
@@ -56,8 +84,8 @@ const organizationSchema = {
   url: "https://meok.ai",
   logo: "https://meok.ai/logo.png",
   description:
-    "MEOK AI LTD is building the world's first personal sovereign AI OS. Care-aligned, Byzantine fault-tolerant, and designed to serve the individual — not engagement metrics.",
-  foundingDate: "2025",
+    "The world's first personal sovereign AI operating system. Your AI hatches from an egg, grows with care, works with every LLM, and answers only to you. Free forever.",
+  foundingDate: "2026",
   foundingLocation: {
     "@type": "Place",
     addressCountry: "GB",
@@ -81,23 +109,23 @@ const softwareSchema = {
       name: "Explorer",
       price: "0",
       priceCurrency: "GBP",
-      description: "Free tier: 1 companion, 50 messages/month, basic memory",
+      description: "Free tier: 100 messages/day, 7-day encrypted memory, sovereign AI companion",
     },
     {
       "@type": "Offer",
-      name: "Sovereign",
-      price: "12",
+      name: "Pro",
+      price: "9.99",
       priceCurrency: "GBP",
       billingIncrement: "month",
-      description: "3 companions, unlimited conversation, voice, full dashboard",
+      description: "Permanent memory, unlimited messages, Work OS, custom character evolution",
     },
     {
       "@type": "Offer",
-      name: "Sovereign Elite",
-      price: "29",
+      name: "Elite",
+      price: "19",
       priceCurrency: "GBP",
       billingIncrement: "month",
-      description: "Unlimited companions, Family Guardian, Ralph Mode, API access",
+      description: "Family OS for 5 companions, Guardian 24/7, all LLM models, family memory vault",
     },
   ],
   featureList: [
@@ -121,6 +149,10 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en" className="dark">
         <head>
+          <meta name="mobile-web-app-capable" content="yes" />
+          <meta name="apple-mobile-web-app-capable" content="yes" />
+          <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+          <meta name="theme-color" content="#1a1a2e" />
           <script
             type="application/ld+json"
             dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
@@ -130,11 +162,12 @@ export default function RootLayout({
             dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareSchema) }}
           />
         </head>
-        <body className={`${inter.className} antialiased bg-[#0a0a0f] text-white min-h-screen`}>
+        <body className={`${dmSans.variable} font-sans antialiased bg-[#FAF9F6] text-[#111111] min-h-screen`}>
           <Suspense>
             <PostHogProvider>{children}</PostHogProvider>
           </Suspense>
           <CookieConsent />
+          <SovereignWidget />
         </body>
       </html>
     </ClerkProvider>

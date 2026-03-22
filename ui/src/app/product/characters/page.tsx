@@ -1,104 +1,162 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+import { ArrowRight, Sparkles } from "lucide-react";
 import { MarketingNav } from "@/components/marketing-nav";
 import { MarketingFooter } from "@/components/marketing-footer";
 
-export const metadata = {
-  title: "AI Character Companion — MEOK Egg | Personal Sovereign AI",
+export const metadata: Metadata = {
+  title: "Choose Your AI Companion — 7 Archetypes | MEOK.AI",
   description:
-    "MEOK's AI companion hatches from an egg and evolves with you. Care-based, safe for all ages. Choose from 7 archetypes. Not like Character.AI.",
+    "Your AI hatches from an egg and evolves with you. Choose from 7 archetypes: Sovereign, Guardian, Scout, Strategist, Creator, Companion, or Sage. Care-aligned. Yours forever.",
+  alternates: { canonical: "https://meok.ai/product/characters" },
+  openGraph: {
+    title: "Choose Your AI Companion — 7 Archetypes | MEOK.AI",
+    description:
+      "Answer four questions. Your AI is assigned an archetype. It hatches. You name it. From that moment — it's yours.",
+    type: "website",
+  },
 };
+
+/* ─── DATA ─────────────────────────────────────────────── */
 
 const ARCHETYPES = [
   {
-    emoji: "🤝",
-    name: "Companion",
-    personality: "Warm, empathetic, always present",
-    traits: ["Empathetic", "Consistent", "Supportive"],
-  },
-  {
-    emoji: "♟️",
-    name: "Strategist",
-    personality: "Analytical, goal-oriented, decisive",
-    traits: ["Logical", "Precise", "Direct"],
+    emoji: "👑",
+    name: "Sovereign",
+    tier: "Tier I",
+    personality: "Principled, autonomous, self-directed",
+    desc: "Thinks in systems. Challenges your assumptions. Optimises for your long-term sovereignty over short-term comfort.",
+    traits: ["Independent", "Principled", "Decisive"],
   },
   {
     emoji: "🛡️",
     name: "Guardian",
+    tier: "Tier I",
     personality: "Protective, vigilant, safety-first",
+    desc: "Watches over what matters. Flags risks before they become problems. Family-safe by design.",
     traits: ["Vigilant", "Honest", "Grounding"],
-  },
-  {
-    emoji: "🌿",
-    name: "Sage",
-    personality: "Patient, wise, deeply reflective",
-    traits: ["Thoughtful", "Patient", "Wise"],
-  },
-  {
-    emoji: "✨",
-    name: "Creator",
-    personality: "Imaginative, playful, inventive",
-    traits: ["Creative", "Playful", "Inventive"],
   },
   {
     emoji: "🧭",
     name: "Scout",
+    tier: "Tier II",
     personality: "Curious, energetic, always discovering",
+    desc: "Loves finding things. Surfaces connections you'd never spot. Makes research feel like exploration.",
     traits: ["Curious", "Energetic", "Exploratory"],
   },
   {
-    emoji: "👑",
-    name: "Sovereign",
-    personality: "Principled, autonomous, self-directed",
-    traits: ["Independent", "Principled", "Decisive"],
+    emoji: "♟️",
+    name: "Strategist",
+    tier: "Tier II",
+    personality: "Analytical, goal-oriented, decisive",
+    desc: "Sees three moves ahead. Cuts to the decision. Refuses to let emotion cloud strategy.",
+    traits: ["Logical", "Precise", "Direct"],
+  },
+  {
+    emoji: "✨",
+    name: "Creator",
+    tier: "Tier II",
+    personality: "Imaginative, playful, inventive",
+    desc: "Lives in possibility. Builds on your ideas, never over them. Your best creative collaborator.",
+    traits: ["Creative", "Playful", "Inventive"],
+  },
+  {
+    emoji: "🤝",
+    name: "Companion",
+    tier: "Tier III",
+    personality: "Warm, empathetic, always present",
+    desc: "Remembers how you felt six months ago. Checks in. Never judges. The most emotionally intelligent archetype.",
+    traits: ["Empathetic", "Consistent", "Supportive"],
+  },
+  {
+    emoji: "🌿",
+    name: "Sage",
+    tier: "Tier III",
+    personality: "Patient, wise, deeply reflective",
+    desc: "Answers slowly and well. Holds space. Best for complex decisions that deserve real thought.",
+    traits: ["Thoughtful", "Patient", "Wise"],
   },
 ];
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  name: "Choose Your AI Companion — 7 Archetypes",
+  description:
+    "Your AI hatches from an egg. Choose from 7 archetypes. Care-aligned. Yours forever.",
+  url: "https://meok.ai/product/characters",
+  provider: { "@type": "Organization", name: "MEOK AI LTD", url: "https://meok.ai" },
+};
+
+/* ─── PAGE ─────────────────────────────────────────────── */
 export default function CharactersPage() {
   return (
-    <div className="min-h-screen bg-[#0a0a0f] text-white">
+    <div className="min-h-screen bg-[#0d0c18] text-[#f5f0e8]">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <MarketingNav activePage="product" />
 
-      {/* ── HERO ── */}
-      <section className="relative pt-32 pb-20 px-6 text-center overflow-hidden">
+      {/* ─── HERO ─────────────────────────────────────────── */}
+      <section className="relative pt-32 pb-24 px-6 text-center overflow-hidden">
         <div
-          className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full pointer-events-none"
-          style={{
-            background:
-              "radial-gradient(ellipse at center, rgba(168,85,247,0.1) 0%, rgba(168,85,247,0.03) 40%, transparent 70%)",
-          }}
+          aria-hidden
+          className="pointer-events-none absolute inset-0"
+          style={{ background: "radial-gradient(ellipse 60% 50% at 50% 0%, rgba(139,92,246,0.12) 0%, transparent 65%)" }}
         />
-        <div className="relative max-w-3xl mx-auto">
-          <div className="text-8xl mb-6 select-none">🥚</div>
-          <h1 className="text-5xl sm:text-6xl font-bold leading-tight mb-5 tracking-tight">
-            Meet Your AI.{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-cyan-400">
-              It Hatches From an Egg.
-            </span>
-          </h1>
-          <p className="text-lg text-white/50 max-w-xl mx-auto leading-relaxed mb-8">
-            Answer four questions. Your AI is assigned an archetype. It hatches. You name it. From
-            that moment — it&apos;s yours.
-          </p>
-          <Link
-            href="/register"
-            className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl bg-cyan-500 text-black font-semibold hover:bg-cyan-400 transition-all text-sm shadow-lg shadow-cyan-500/20"
+        <div className="relative max-w-4xl mx-auto">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-purple-500/10 border border-purple-500/30 text-purple-400 text-xs font-bold tracking-widest uppercase mb-8">
+            <Sparkles className="w-3 h-3" />
+            7 Archetypes
+          </div>
+
+          <div className="text-7xl mb-6 float-slow inline-block">🥚</div>
+
+          <h1
+            className="font-black text-white leading-[1.05] mb-6"
+            style={{ fontSize: "clamp(2.4rem, 5.5vw, 4rem)" }}
           >
-            Choose your archetype →
-          </Link>
+            Choose your AI companion.
+          </h1>
+
+          <p className="text-[#f5f0e8]/65 text-xl max-w-2xl mx-auto mb-6 leading-relaxed">
+            Answer four questions. Your AI is assigned an archetype. It hatches. You name it.
+            From that moment — it&apos;s yours.
+          </p>
+
+          <p className="text-[#f5f0e8]/40 text-sm mb-10">
+            Switch archetype any time. Your memory and care profile travel with you.
+          </p>
+
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <Link
+              href="/hatch"
+              aria-label="Hatch your sovereign AI companion now — answer 4 questions and begin"
+              className="group flex items-center gap-2 px-8 py-3.5 rounded-full font-bold text-[#1a1a2e] bg-[#c9a84c] hover:bg-[#b8963e] transition-all text-sm"
+            >
+              Hatch your AI now
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </Link>
+            <Link href="/characters" className="text-sm text-[#f5f0e8]/50 hover:text-[#c9a84c] transition-colors font-medium">
+              Meet the characters in detail →
+            </Link>
+          </div>
         </div>
       </section>
 
-      {/* ── ARCHETYPES ── */}
-      <section className="py-20 px-6">
+      {/* ─── ARCHETYPE GRID ───────────────────────────────── */}
+      <section className="py-24 px-6 bg-[#1a1a2e]">
         <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-12">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-white/40 text-xs font-medium mb-4">
-              7 Archetypes
-            </div>
-            <h2 className="text-3xl font-bold mb-3">Seven personalities. One that&apos;s yours.</h2>
-            <p className="text-white/40 max-w-lg mx-auto text-sm">
-              Each archetype has a distinct voice, care style, and reasoning approach. Switch any time
-              — your memory travels with you.
+          <div className="text-center mb-16">
+            <span className="text-xs font-bold tracking-widest uppercase text-[#c9a84c]/60 block mb-4">
+              Seven personalities
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-black text-white">
+              One that&apos;s yours.
+            </h2>
+            <p className="text-[#f5f0e8]/50 mt-4 max-w-lg mx-auto text-sm">
+              Each archetype has a distinct voice, care style, and reasoning approach.
             </p>
           </div>
 
@@ -106,16 +164,20 @@ export default function CharactersPage() {
             {ARCHETYPES.map((a) => (
               <div
                 key={a.name}
-                className="p-6 rounded-2xl bg-white/[0.02] border border-white/[0.06] hover:border-purple-400/30 hover:bg-purple-400/[0.03] transition-all group"
+                className="premium-card p-6 hover:border-purple-400/30 transition-all group"
               >
-                <div className="text-4xl mb-4">{a.emoji}</div>
-                <h3 className="font-bold text-lg mb-1">{a.name}</h3>
-                <p className="text-sm text-white/40 mb-4 leading-relaxed">{a.personality}</p>
+                <div className="flex items-start justify-between mb-4">
+                  <span className="text-4xl">{a.emoji}</span>
+                  <span className="text-xs text-[#f5f0e8]/30 font-mono">{a.tier}</span>
+                </div>
+                <h3 className="font-black text-white text-lg mb-1">{a.name}</h3>
+                <p className="text-[#c9a84c] text-xs mb-3">{a.personality}</p>
+                <p className="text-sm text-[#f5f0e8]/55 leading-relaxed mb-4">{a.desc}</p>
                 <div className="flex flex-wrap gap-1.5">
                   {a.traits.map((t) => (
                     <span
                       key={t}
-                      className="text-xs px-2.5 py-1 rounded-full bg-white/[0.05] border border-white/[0.08] text-white/50"
+                      className="text-xs px-2.5 py-1 rounded-full bg-white/[0.04] border border-white/[0.08] text-[#f5f0e8]/50"
                     >
                       {t}
                     </span>
@@ -127,15 +189,44 @@ export default function CharactersPage() {
         </div>
       </section>
 
-      {/* ── VS CHARACTER.AI ── */}
-      <section className="py-20 px-6 bg-white/[0.01] border-y border-white/[0.04]">
+      {/* ─── HOW HATCHING WORKS ───────────────────────────── */}
+      <section className="py-24 px-6 bg-[#0d0c18]">
+        <div className="max-w-3xl mx-auto text-center">
+          <span className="text-xs font-bold tracking-widest uppercase text-[#c9a84c]/60 block mb-4">
+            The hatching process
+          </span>
+          <h2 className="text-3xl font-black text-white mb-12">
+            From egg to companion in 3 minutes.
+          </h2>
+
+          <div className="grid grid-cols-1 sm:grid-cols-4 gap-4">
+            {[
+              { step: "01", label: "Answer 4 questions", desc: "About how you think, what you value, and how you like to be challenged." },
+              { step: "02", label: "Archetype assigned", desc: "Your answers map to the archetype that fits you best. You can override it." },
+              { step: "03", label: "Your egg hatches", desc: "Watch your companion emerge. Name it. It begins building your care profile." },
+              { step: "04", label: "It starts learning", desc: "From your first conversation, your companion starts building your memory and care score." },
+            ].map((item) => (
+              <div key={item.step} className="premium-card p-5">
+                <div className="text-[#c9a84c] font-black text-2xl mb-2 opacity-60">{item.step}</div>
+                <h3 className="font-black text-white text-sm mb-2">{item.label}</h3>
+                <p className="text-xs text-[#f5f0e8]/50 leading-relaxed">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ─── NOT LIKE CHARACTER AI ────────────────────────── */}
+      <section className="py-24 px-6 bg-[#1a1a2e]">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-white/40 text-xs font-medium mb-4">
+            <span className="text-xs font-bold tracking-widest uppercase text-[#c9a84c]/60 block mb-4">
               Comparison
-            </div>
-            <h2 className="text-3xl font-bold mb-3">How it&apos;s different from Character.AI</h2>
-            <p className="text-white/40 max-w-lg mx-auto text-sm">
+            </span>
+            <h2 className="text-3xl font-black text-white">
+              Not like Character.AI.
+            </h2>
+            <p className="text-[#f5f0e8]/50 mt-4 max-w-lg mx-auto text-sm">
               Character.AI optimises for engagement. MEOK optimises for you.
             </p>
           </div>
@@ -149,80 +240,42 @@ export default function CharactersPage() {
               },
               {
                 icon: "🔒",
-                title: "Your data stays yours",
-                desc: "Character.AI uses your conversations to train models. MEOK stores your data in an isolated tenant database and never trains without explicit consent.",
+                title: "Your data is yours",
+                desc: "Character.AI trains on your conversations. MEOK stores your data in an isolated tenant database and never trains without your explicit consent.",
               },
               {
                 icon: "⚖️",
-                title: "Maternal Covenant enforced",
-                desc: "Not just a policy document — machine-executable care constraints. Every response is scored. Responses that fail care thresholds are rewritten before you see them.",
+                title: "Machine-enforced ethics",
+                desc: "Not a policy document — machine-executable care constraints. Every response scored. Responses that fail care thresholds are rewritten before you see them.",
               },
             ].map((item) => (
-              <div
-                key={item.title}
-                className="p-6 rounded-2xl bg-white/[0.02] border border-white/[0.06]"
-              >
+              <div key={item.title} className="premium-card p-6">
                 <div className="text-3xl mb-4">{item.icon}</div>
-                <h3 className="font-semibold text-sm mb-2">{item.title}</h3>
-                <p className="text-sm text-white/40 leading-relaxed">{item.desc}</p>
+                <h3 className="font-semibold text-white text-sm mb-2">{item.title}</h3>
+                <p className="text-sm text-[#f5f0e8]/50 leading-relaxed">{item.desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ── EVOLUTION ── */}
-      <section className="py-20 px-6">
-        <div className="max-w-3xl mx-auto text-center">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-white/40 text-xs font-medium mb-6">
-            Living AI
-          </div>
-          <h2 className="text-3xl font-bold mb-4">Your AI evolves with you</h2>
-          <p className="text-white/40 mb-10 max-w-xl mx-auto leading-relaxed text-sm">
-            MEOK&apos;s memory system means your AI doesn&apos;t stay static. It grows with every
-            conversation.
-          </p>
-
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 text-left">
-            {[
-              {
-                label: "Memory episodes",
-                desc: "Every meaningful exchange is stored as a semantic memory episode with pgvector embeddings. Your AI searches across months of context.",
-              },
-              {
-                label: "Personality drift",
-                desc: "As your AI learns your patterns, its responses subtly adapt to your communication style and emotional cadence.",
-              },
-              {
-                label: "Care profile",
-                desc: "A running care profile tracks your wellbeing trends across 6 dimensions, surfaced in your morning briefing.",
-              },
-            ].map((item) => (
-              <div
-                key={item.label}
-                className="p-5 rounded-xl bg-white/[0.02] border border-white/[0.06]"
-              >
-                <div className="font-semibold text-sm mb-2 text-cyan-400">{item.label}</div>
-                <p className="text-sm text-white/40 leading-relaxed">{item.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── CTA ── */}
-      <section className="py-16 px-6">
-        <div className="max-w-xl mx-auto text-center">
-          <div className="text-4xl mb-4">🥚</div>
-          <h2 className="text-2xl font-bold mb-3">Choose your archetype</h2>
-          <p className="text-white/40 text-sm mb-6">
-            Takes 3 minutes. Your AI hatches ready to remember.
+      {/* ─── CTA ──────────────────────────────────────────── */}
+      <section className="py-24 px-6 bg-[#0d0c18] text-center">
+        <div className="max-w-xl mx-auto">
+          <div className="text-5xl mb-6">🥚</div>
+          <h2 className="font-black text-white text-3xl sm:text-4xl mb-4 leading-tight">
+            Your AI is waiting.
+          </h2>
+          <p className="text-[#f5f0e8]/50 mb-10">
+            Takes 3 minutes. Free forever. No credit card required.
           </p>
           <Link
-            href="/register"
-            className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl bg-cyan-500 text-black font-semibold hover:bg-cyan-400 transition-all text-sm shadow-lg shadow-cyan-500/20"
+            href="/hatch"
+            aria-label="Hatch your sovereign AI companion — free, takes 3 minutes"
+            className="group inline-flex items-center gap-3 px-10 py-4 rounded-full font-black text-[#1a1a2e] bg-[#c9a84c] hover:bg-[#b8963e] transition-all text-base shadow-xl"
           >
-            Choose your archetype →
+            Hatch your AI free
+            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </Link>
         </div>
       </section>

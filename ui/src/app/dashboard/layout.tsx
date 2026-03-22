@@ -32,8 +32,11 @@ function DashboardShell({ children }: { children: React.ReactNode }) {
 
   if (isLoading) {
     return (
-      <div className="flex items-center justify-center min-h-screen">
-        <div className="animate-pulse text-cyan-400">Loading...</div>
+      <div className="flex items-center justify-center min-h-screen bg-[#0f0e1a]">
+        <div className="flex flex-col items-center gap-3">
+          <div className="w-8 h-8 rounded-full border-2 border-[#c9a84c] border-t-transparent animate-spin" />
+          <span className="text-[#c9a84c]/60 text-sm font-medium tracking-wide">Loading MEOK OS...</span>
+        </div>
       </div>
     );
   }
@@ -41,9 +44,12 @@ function DashboardShell({ children }: { children: React.ReactNode }) {
   if (!user) return null;
 
   return (
-    <div className="flex min-h-screen">
+    <div className="flex min-h-screen bg-[#0d0c18]">
       <Sidebar consciousnessMode={mode} />
-      <main className="flex-1 ml-64 p-8">{children}</main>
+      {/* Main content — offset by sidebar width on desktop, no offset on mobile */}
+      <main className="flex-1 ml-0 md:ml-60 min-h-screen bg-[#0d0c18]">
+        {children}
+      </main>
     </div>
   );
 }

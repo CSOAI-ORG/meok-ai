@@ -1,8 +1,26 @@
 import { NextRequest, NextResponse } from "next/server";
 
 // Protected routes — require meok_auth cookie or Bearer token
-const PROTECTED = ["/dashboard", "/chat", "/characters", "/settings"];
-const PUBLIC = ["/", "/login", "/register", "/birth", "/api/health", "/api/stripe/webhook", "/privacy", "/terms", "/maternal-covenant", "/labs", "/blog"];
+const PROTECTED = ["/dashboard", "/chat", "/settings"];
+const PUBLIC = [
+  "/", "/login", "/register", "/birth", "/easter", "/hatch",
+  "/api/health", "/api/stripe/webhook",
+  "/privacy", "/terms", "/cookies", "/maternal-covenant",
+  "/labs", "/blog", "/about", "/pricing",
+  "/work/documents", "/work/research", "/work/email",
+  "/roadmap", "/waitlist", "/terminal",
+  "/os", "/personal", "/memory", "/work", "/family", "/team",
+  "/characters", "/characters/legendary", "/characters/timeless", "/characters/elemental",
+  "/gaming", "/gaming/live-copilot", "/gaming/post-game", "/gaming/strategy", "/gaming/platforms",
+  "/guardian", "/guardian/elderly", "/guardian/children", "/smb", "/council",
+  "/sovereign", "/open-source", "/live", "/research",
+  "/how-it-works", "/press", "/sitemap",
+  "/connect", "/product",
+  "/problems",
+  "/faq",
+  "/compare",
+  "/hatch", "/waitlist", "/easter", "/birth",
+];
 
 function isProtected(pathname: string): boolean {
   return PROTECTED.some((p) => pathname.startsWith(p));

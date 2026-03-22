@@ -1,0 +1,163 @@
+export interface Problem {
+  slug: string;
+  number: string;
+  title: string;
+  headline: string;
+  fullProblem: string; // 2-3 sentences
+  whoFeelsThis: string[];
+  meokSolution: string; // 2-3 sentences
+  solutionFeature: string; // which MEOK feature solves it
+  productLink: string; // which product page to link to
+  productName: string;
+  color: string; // accent color
+}
+
+export const PROBLEMS: Problem[] = [
+  {
+    slug: 'ai-amnesia',
+    number: '01',
+    title: 'AI Amnesia',
+    headline: 'Every conversation starts from zero.',
+    fullProblem: 'Every time you open a new ChatGPT session, it has no memory of you. You re-explain your name, your job, your projects, your preferences — thousands of times a year. The average knowledge worker wastes 2.4 hours per week re-establishing AI context. That\'s 125 hours every year, gone.',
+    whoFeelsThis: ['Everyone who uses AI daily', 'Knowledge workers', 'Developers', 'Writers', 'Students'],
+    meokSolution: 'MEOK\'s Sovereign Memory system maintains a permanent, encrypted vault of everything important from every conversation — across Claude, GPT-4o, DeepSeek, Groq, and Ollama. Your AI always knows your full story. You never repeat yourself again.',
+    solutionFeature: 'Infinite Memory',
+    productLink: '/memory',
+    productName: 'Memory OS',
+    color: '#c9a84c',
+  },
+  {
+    slug: 'data-ownership',
+    number: '02',
+    title: 'You Don\'t Own Your AI',
+    headline: 'You\'re renting intelligence from a corporation.',
+    fullProblem: 'Every AI product you use is owned by someone else — OpenAI, Anthropic, Google. They can change their terms, raise prices, or shut down. Your conversation history, your preferences, your AI\'s "knowledge" of you — all of it disappears the moment the company decides. Humane AI Pin bricked 10,000 devices overnight. Rabbit R1 lost 95% of users. You have no rights over your own AI.',
+    whoFeelsThis: ['Every AI user', 'Privacy advocates', 'Businesses', 'Long-term AI users'],
+    meokSolution: 'MEOK gives you legal and technical ownership of your AI companion. Your memory is encrypted with a key only you hold. Your data is portable — export it any time. Your AI companion exists on your terms, not ours.',
+    solutionFeature: 'Sovereign Data',
+    productLink: '/sovereign',
+    productName: 'Sovereign Data',
+    color: '#c9a84c',
+  },
+  {
+    slug: 'data-privacy',
+    number: '03',
+    title: 'Your Data Is Their Product',
+    headline: 'You\'re training their AI for free.',
+    fullProblem: 'By default, every major AI company uses your conversations to improve their models. ChatGPT\'s data policy allows OpenAI to train on your messages unless you opt out (buried in settings). You\'re not the customer — you\'re the training data. Your most private conversations, your business strategies, your personal struggles — feeding a corporate AI for someone else\'s profit.',
+    whoFeelsThis: ['Privacy-conscious users', 'Businesses', 'Anyone sharing sensitive information', 'Lawyers, therapists, doctors'],
+    meokSolution: 'The Maternal Covenant is MEOK\'s founding ethical framework — a constitutional requirement, not a policy. It permanently and technically prevents MEOK from using your data for anything other than caring for you. We cannot train on your data. We cannot sell it. We cannot see it. It\'s encrypted before it reaches our servers.',
+    solutionFeature: 'Maternal Covenant',
+    productLink: '/maternal-covenant',
+    productName: 'Maternal Covenant',
+    color: '#7BC47F',
+  },
+  {
+    slug: 'ai-personality',
+    number: '04',
+    title: 'AI Has No Personality',
+    headline: 'You\'re talking to a search engine with better grammar.',
+    fullProblem: 'ChatGPT resets to zero every conversation. Claude is helpful but has no memory of your history. Neither grows with you. Neither knows your kids\' names, your running goals, your creative projects, or the way you prefer to be spoken to. They\'re tools. Sophisticated tools, but tools. A tool cannot be a companion.',
+    whoFeelsThis: ['People who talk to AI daily', 'Anyone seeking genuine AI connection', 'Those who\'ve tried and abandoned AI chatbots'],
+    meokSolution: 'MEOK hatches from an egg, grows through 4 evolution stages, has 6 distinct archetypes — each with a personality, a way of thinking, and a way of caring. The Healer remembers how you were feeling last Tuesday. The Scholar connects your ideas across months. The Pioneer refuses to let you quit. They are companions, not tools.',
+    solutionFeature: 'Characters & Archetypes',
+    productLink: '/characters',
+    productName: 'Characters',
+    color: '#F472B6',
+  },
+  {
+    slug: 'family-safety',
+    number: '05',
+    title: 'Vulnerable People Unprotected',
+    headline: 'Your elderly parent is alone. Your child is online. No AI is watching.',
+    fullProblem: 'The major AI companies built tools for healthy, tech-savvy adults. Nobody built for the 78-year-old with early dementia whose daughter lives 200 miles away. Nobody built for the 12-year-old encountering predators online. The people who need AI protection most are the ones the industry has completely ignored.',
+    whoFeelsThis: ['Parents', 'Adult children with elderly parents', 'Carers', 'Families'],
+    meokSolution: 'Guardian is MEOK\'s 24/7 care and safety system built specifically for the vulnerable. It learns your elderly parent\'s daily patterns and alerts you when something changes — medication missed, unusually quiet, hasn\'t left the house. For children, it provides age-appropriate AI that grows with them from 3 to 17, with built-in safety layers and parent oversight that respects everyone\'s dignity.',
+    solutionFeature: 'Guardian 24/7',
+    productLink: '/guardian',
+    productName: 'Guardian',
+    color: '#F59E0B',
+  },
+  {
+    slug: 'model-lock-in',
+    number: '06',
+    title: 'Locked to One Model',
+    headline: 'Claude is good. GPT-4o is good. DeepSeek is fast. Groq is instant. You should use all of them.',
+    fullProblem: 'ChatGPT only runs OpenAI\'s models. Claude only runs Anthropic\'s. You can\'t compare. You can\'t switch mid-conversation. You can\'t use the fastest model for quick questions and the smartest model for hard ones. You\'re locked to one provider\'s roadmap, one company\'s pricing, and one team\'s definition of what good looks like.',
+    whoFeelsThis: ['Power users', 'Developers', 'AI enthusiasts', 'Anyone paying for multiple AI subscriptions'],
+    meokSolution: 'MEOK routes every message to the right model automatically. Complex reasoning goes to Claude Sonnet. Quick questions go to Claude Haiku or Groq\'s Llama (120ms). Code analysis uses DeepSeek. Privacy-sensitive queries go to local Ollama — never leaving your device. You get the best of every model through one sovereign companion.',
+    solutionFeature: 'Any LLM',
+    productLink: '/os/any-llm',
+    productName: 'Any LLM',
+    color: '#3B82F6',
+  },
+  {
+    slug: 'scattered-tools',
+    number: '07',
+    title: 'Your Digital Life Is Scattered',
+    headline: '50 apps. Zero connection. AI that can\'t see any of it.',
+    fullProblem: 'You have a calendar in Google, tasks in Todoist, notes in Notion, emails in Gmail, health data in Apple, code in GitHub, music in Spotify, and games in Steam. Each tool is an island. When you ask ChatGPT "What should I focus on today?", it has no idea about your actual calendar, your actual deadlines, your actual energy levels. Its advice is generic because it\'s blind.',
+    whoFeelsThis: ['Busy professionals', 'Entrepreneurs', 'Anyone using 5+ apps daily'],
+    meokSolution: 'MEOK connects to 100+ tools in one click — every calendar, every email, every task manager, every health tracker, every gaming platform. Your companion has complete context from your whole digital life, kept in your encrypted sovereign memory vault. When you ask "What should I focus on today?", it actually knows.',
+    solutionFeature: 'Connect Everything',
+    productLink: '/connect',
+    productName: 'Connect',
+    color: '#c9a84c',
+  },
+  {
+    slug: 'family-intelligence',
+    number: '08',
+    title: 'Families Have No Shared Intelligence',
+    headline: 'Your family talks to 5 AIs that know nothing about each other.',
+    fullProblem: 'In most families today, each member talks to their own AI with no connection to the family unit. When Mum asks her AI about Dad\'s hospital appointment, it has no idea. When Dad asks his AI to coordinate the holiday, it doesn\'t know who else is in the family. There\'s no shared AI layer for families — the most important human unit in most people\'s lives.',
+    whoFeelsThis: ['Families', 'Parents', 'Adult children coordinating aging parents', 'Multi-generational households'],
+    meokSolution: 'The Character Council links each family member\'s sovereign AI into a collective that can coordinate, care, and communicate across the whole family — while each member\'s private conversations remain completely theirs. Your family gets a shared AI brain without sacrificing individual sovereignty.',
+    solutionFeature: 'Character Council',
+    productLink: '/council',
+    productName: 'Character Council',
+    color: '#7BC47F',
+  },
+  {
+    slug: 'gaming-fragmentation',
+    number: '09',
+    title: 'No Sovereign Gaming AI',
+    headline: 'Your gaming history is worth nothing to AI. Yet.',
+    fullProblem: 'Gamers play hundreds of hours across dozens of games. All of that data — match history, playstyle patterns, improvement over time, what strategies work for you specifically — is scattered across Steam, Riot, Blizzard, Epic, and Battle.net with no AI layer connecting it. Every "gaming AI" tool that exists is game-specific, forgets you after every session, and can\'t combine context across titles.',
+    whoFeelsThis: ['Gamers', 'Esports players', 'Streamers', 'Anyone who games seriously'],
+    meokSolution: 'MEOK Gaming OS is the first sovereign AI companion that spans your entire gaming life. It connects to 47+ platforms and game APIs, remembers every match, tracks your improvement over time, and provides live co-pilot assistance during gameplay at 120ms response time. Your 2,000 hours of gaming history becomes an AI training dataset — for your AI, owned by you.',
+    solutionFeature: 'Gaming OS',
+    productLink: '/gaming',
+    productName: 'Gaming OS',
+    color: '#FB923C',
+  },
+  {
+    slug: 'ai-ethics',
+    number: '10',
+    title: 'AI Has No Ethics Constitution',
+    headline: 'You\'re trusting an AI governed by a Terms of Service.',
+    fullProblem: 'Every AI product\'s ethical commitments are expressed as Terms of Service — legal documents written by lawyers to protect the company from liability. They can be changed at any time without your consent. There is nothing preventing any AI company from changing their policies to allow data selling, training on your content, or reducing privacy protections. You have no constitutional guarantee.',
+    whoFeelsThis: ['Privacy advocates', 'Anyone who cares about AI ethics', 'Businesses', 'Parents'],
+    meokSolution: 'The Maternal Covenant is MEOK\'s founding constitutional framework — not a terms of service but an architectural constraint. It is technically enforced in the codebase: your AI cannot deceive you, cannot harm you, cannot sell your data, and must always act with care. It draws from 47 philosophical and spiritual traditions. It cannot be changed without a full council vote and user disclosure.',
+    solutionFeature: 'Maternal Covenant',
+    productLink: '/maternal-covenant',
+    productName: 'Maternal Covenant',
+    color: '#A78BFA',
+  },
+  {
+    slug: 'no-ai-os',
+    number: '11',
+    title: 'There Is No AI OS',
+    headline: 'AI is still a collection of apps. Nobody has built the layer beneath.',
+    fullProblem: 'Spotify replaced iTunes. Notion replaced Word. ChatGPT is replacing... what exactly? It\'s a chat interface. It doesn\'t know your calendar, doesn\'t remember your projects, can\'t coordinate with your family, can\'t run in the background, can\'t take autonomous action. The transformative promise of AI — that it would become an invisible operating system layer enhancing everything you do — hasn\'t shipped. Everyone is building apps, not the OS.',
+    whoFeelsThis: ['Technology visionaries', 'Power users', 'Businesses', 'Anyone who sees what AI should be'],
+    meokSolution: 'MEOK is the sovereign AI OS layer — running underneath your digital life, connecting everything, learning continuously, acting autonomously through Ralph Mode, and surfacing intelligence exactly when you need it. Personal OS, Work OS, Family OS, Gaming OS — six sovereign modules that together form the AI operating system that should have existed three years ago.',
+    solutionFeature: 'The Full OS',
+    productLink: '/os',
+    productName: 'MEOK OS',
+    color: '#c9a84c',
+  },
+];
+
+export function getProblemBySlug(slug: string): Problem | undefined {
+  return PROBLEMS.find(p => p.slug === slug);
+}

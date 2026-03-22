@@ -551,7 +551,7 @@ export default function CouncilPage() {
     : [];
 
   return (
-    <div className="space-y-6">
+    <div className="min-h-screen bg-[#0d0c18] p-6 md:p-8 space-y-6" style={{ color: "white" }}>
       <div>
         <h2 className="text-2xl font-bold text-white">Council Governance</h2>
         <p className="text-sm text-white/40 mt-1">33-node Byzantine consensus with care-weighted voting</p>

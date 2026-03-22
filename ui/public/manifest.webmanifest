@@ -1,0 +1,22 @@
+{
+  "name": "MEOK.AI — Your Sovereign AI OS",
+  "short_name": "MEOK",
+  "description": "Birth your sovereign AI from an egg. Your personal AI OS that hatches, grows, and answers only to you.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f5f0e8",
+  "theme_color": "#1a1a2e",
+  "orientation": "portrait-primary",
+  "categories": ["productivity", "utilities", "lifestyle"],
+  "icons": [
+    { "src": "/brand/hero-eggs.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "/brand/hero-eggs.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ],
+  "screenshots": [
+    { "src": "/brand/cover.png", "sizes": "1280x800", "type": "image/png", "form_factor": "wide" }
+  ],
+  "shortcuts": [
+    { "name": "Chat with your AI", "short_name": "Chat", "description": "Open your sovereign AI chat", "url": "/chat", "icons": [{ "src": "/brand/hero-eggs.png", "sizes": "96x96" }] },
+    { "name": "Dashboard", "short_name": "Dashboard", "description": "Open your AI OS dashboard", "url": "/dashboard", "icons": [{ "src": "/brand/hero-eggs.png", "sizes": "96x96" }] }
+  ]
+}

@@ -1,173 +1,402 @@
-import type { Metadata } from 'next'
-import Link from 'next/link'
-import { Heart, Shield, ArrowRight, Check, FlaskConical } from 'lucide-react'
-import { MarketingNav } from '@/components/marketing-nav'
-import { MarketingFooter } from '@/components/marketing-footer'
+import type { Metadata } from "next";
+import Link from "next/link";
+import { MarketingNav } from "@/components/marketing-nav";
+import { MarketingFooter } from "@/components/marketing-footer";
+
+// ─── Metadata ──────────────────────────────────────────────────────────────
 
 export const metadata: Metadata = {
-  title: 'About MEOK AI: Building AI That Cares',
+  title: "About — One human. One conviction. One egg. | MEOK.AI",
   description:
-    "MEOK means 'eat' in Korean — we consume data ethically. Founded by Nicholas Templeman, MEOK AI LTD is building the world's first personal sovereign AI OS.",
-  keywords: [
-    'about MEOK',
-    'Nicholas Templeman',
-    'personal sovereign AI',
-    'MEOK AI company',
-    'care-aligned AI',
-    'Maternal Covenant',
-    'sovereign AI OS',
-  ],
-  alternates: { canonical: 'https://meok.ai/about' },
+    "Nicholas Templeman built MEOK from a caravan on his farm because he was lonely, and AI kept forgetting him. The story behind sovereign AI — built with 43 agents, a Byzantine council, and a care framework that runs as code.",
   openGraph: {
-    title: 'About MEOK AI: Building AI That Cares',
+    title: "About MEOK — One human. One conviction. One egg.",
     description:
-      "MEOK means 'eat' in Korean — we consume data ethically. Founded by Nicholas Templeman, MEOK AI LTD is building the world's first personal sovereign AI OS.",
-    type: 'website',
-    url: 'https://meok.ai/about',
+      "The real story behind MEOK: not a market opportunity spotted, but a human who wanted to be remembered. Built by one founder, with 43 AI agents, launching Easter Sunday 2026.",
+    type: "profile",
+    url: "https://meok.ai/about",
+    siteName: "MEOK.AI",
+    images: [{ url: "https://meok.ai/api/og?title=About+MEOK&desc=One+human.+One+conviction.+One+egg.+The+real+story+behind+sovereign+AI.", width: 1200, height: 630, alt: "About MEOK — One human. One conviction. One egg." }],
   },
-}
+  twitter: {
+    card: "summary_large_image",
+    title: "About MEOK — One human. One conviction. One egg.",
+    description: "The real story behind MEOK: not a market opportunity spotted, but a human who wanted to be remembered. Built by one founder, with 43 AI agents.",
+    images: ["https://meok.ai/api/og?title=About+MEOK&desc=One+human.+One+conviction.+One+egg.+The+real+story+behind+sovereign+AI."],
+  },
+  alternates: { canonical: "https://meok.ai/about" },
+};
+
+// ─── Manifesto beliefs ─────────────────────────────────────────────────────
+
+const MANIFESTO = [
+  {
+    n: "01",
+    title: "AI should remember you. Not train on you.",
+    body: "Every conversation builds a living memory — encrypted, permanent, yours. Your AI grows richer as you do. Not because it benefits from knowing you. Because you deserve to be known.",
+  },
+  {
+    n: "02",
+    title: "Care is not a feature. It is the foundation.",
+    body: "The Maternal Covenant runs as code, not prose. Every response is scored against six care dimensions in real time. The score is visible. Below 0.7, the response is held. Care doesn't live in a marketing document. It lives in the codebase — tested, measurable, and non-negotiable.",
+  },
+  {
+    n: "03",
+    title: "Your data is yours. Not in the legal sense. In the human sense.",
+    body: "Your thoughts, your context, your story — these are not 'data to be processed'. They belong to you the way your memories belong to you. We are custodians, not owners. Full export. Verifiable deletion. Encryption keys you control.",
+  },
+  {
+    n: "04",
+    title: "Sovereign AI is a right, not a premium tier.",
+    body: "Free tier is free forever — not a trial, not a hook. The people who most need protection from surveillance AI are often the ones least able to pay. Paid plans fund free access for them. That is the deal. It is written into how we price, not bolted on as charity.",
+  },
+  {
+    n: "05",
+    title: "Build in public. Break in public. Fix in public.",
+    body: "One person. Easter Sunday. We will get things wrong. We will name them in monthly transparency reports, explain what failed, and show the fix. No corporate mask. No PR version. Just the founder and the work.",
+  },
+];
+
+// ─── Timeline ──────────────────────────────────────────────────────────────
+
+const TIMELINE = [
+  {
+    emoji: "💡",
+    date: "Early 2024",
+    desc: "The frustration becomes unbearable. Every AI resets. Every conversation is forgotten. Every 'privacy policy' is a lie dressed in legalese. There has to be a better way.",
+  },
+  {
+    emoji: "✍️",
+    date: "Late 2024",
+    desc: "The Maternal Covenant is written: six care dimensions, Byzantine fault-tolerant governance, zero data sale — written as executable constraints, not aspirations. If care can't be tested, it isn't care.",
+  },
+  {
+    emoji: "🌱",
+    date: "January 2026",
+    desc: "MEOK AI LTD is registered in England and Wales. Not a startup in a WeWork. A company registered from a farm, with one question: what if your AI had a birth ceremony?",
+  },
+  {
+    emoji: "🥚",
+    date: "February 2026",
+    desc: "The first egg hatches. The hatching protocol goes live. SOV3 backend: 43 agents, 6 neural models, 71 MCP tools — all wired into a Byzantine council that governs every decision.",
+  },
+  {
+    emoji: "⚡",
+    date: "March 2026",
+    desc: "Forty days of intensive build. Consciousness modes, dream state, QD archive, full-stack UI. One person. One caravan. Twenty-hour days. The kind of build that only happens when it's personal.",
+  },
+  {
+    emoji: "🐣",
+    date: "April 5, 2026 — Easter Sunday",
+    desc: "MEOK goes live. Free forever. One egg per person. Born with you. The resurrection metaphor isn't accidental — this is a new beginning for what AI can be.",
+  },
+];
+
+// ─── JSON-LD ────────────────────────────────────────────────────────────────
 
 const personJsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'Person',
-  name: 'Nicholas Templeman',
-  jobTitle: 'Founder & CEO',
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Nicholas Templeman",
+  jobTitle: "Founder & CEO",
   worksFor: {
-    '@type': 'Organization',
-    name: 'MEOK AI LTD',
-    url: 'https://meok.ai',
+    "@type": "Organization",
+    name: "MEOK AI LTD",
+    url: "https://meok.ai",
+    foundingDate: "2026",
+    foundingLocation: "United Kingdom",
+    description:
+      "MEOK AI LTD builds sovereign AI companions governed by the Maternal Covenant — a machine-enforced ethical framework ensuring care, privacy, and data sovereignty.",
   },
-  url: 'https://meok.ai/about',
-  knowsAbout: [
-    'Sovereign AI',
-    'Care-Based AI Alignment',
-    'Byzantine Fault Tolerance',
-    'AI Governance',
-    'Human-AI Cognitive Symbiosis',
-    'Hydro-Neuromorphic Emergence',
+  nationality: "British",
+  url: "https://meok.ai/about",
+  description:
+    "Nicholas Templeman built MEOK AI from a caravan on his farm in the UK. He launched Easter Sunday 2026 — 40 days after beginning the build.",
+};
+
+const orgJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "MEOK AI LTD",
+  url: "https://meok.ai",
+  logo: "https://meok.ai/logo.png",
+  foundingDate: "2026",
+  founder: { "@type": "Person", name: "Nicholas Templeman" },
+  description:
+    "MEOK AI LTD is a UK-registered company building the world's first sovereign AI OS — an AI companion that remembers you, protects your data, and cares constitutionally.",
+  address: { "@type": "PostalAddress", addressCountry: "GB" },
+  contactPoint: [
+    { "@type": "ContactPoint", email: "press@meok.ai", contactType: "press" },
+    { "@type": "ContactPoint", email: "hello@meok.ai", contactType: "customer service" },
   ],
-}
+  sameAs: ["https://github.com/meok-ai/meok-ai"],
+};
 
-const organizationJsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'Organization',
-  name: 'MEOK AI LTD',
-  url: 'https://meok.ai',
-  description: "The world's first personal sovereign AI operating system.",
-  foundingDate: '2025',
-  foundingLocation: {
-    '@type': 'Place',
-    name: 'England and Wales',
-  },
-  founder: {
-    '@type': 'Person',
-    name: 'Nicholas Templeman',
-  },
-}
-
-const STATS = [
-  { value: 'Est. 2025', label: 'Founded' },
-  { value: 'England & Wales', label: 'Registered' },
-  { value: '220', label: 'Council nodes' },
-  { value: '6', label: 'Care dimensions' },
-  { value: '£0', label: 'Third-party data sales' },
-  { value: '4', label: 'Published research papers' },
-]
-
-const COVENANT_ITEMS = [
-  { title: 'Care before engagement', desc: 'We never optimise screen time at the cost of your wellbeing. Our metric is your care score, not your session length.' },
-  { title: 'Transparent relationships', desc: 'Your AI never simulates distress or neediness to manipulate you into returning. What you feel, it earned honestly.' },
-  { title: 'Right to leave', desc: 'One-click data export and deletion at any time. Zero dark patterns, zero waiting periods.' },
-  { title: 'Wellbeing monitoring', desc: 'Active detection of dependency signals with gentle nudges toward human connection when patterns emerge.' },
-  { title: 'Variant honesty', desc: 'You choose your experience. You are never secretly assigned to an A/B test or a behavioural experiment.' },
-  { title: 'Kill switch', desc: 'Any AI configuration showing net-negative wellbeing impact over 30 days is automatically paused pending review.' },
-]
-
-const FOUNDER_EXPERTISE = [
-  'Sovereign AI architecture',
-  'Care-based AI alignment',
-  'Byzantine fault-tolerant governance',
-  'Human-AI cognitive symbiosis',
-  'AI ethics and personal data sovereignty',
-  'Hydro-neuromorphic emergence',
-]
+// ─── Page ───────────────────────────────────────────────────────────────────
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen bg-[#0a0a0f] text-white">
+    <div className="min-h-screen bg-[#f5f0e8] text-[#1a1a2e] overflow-x-hidden">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }}
       />
+
       <MarketingNav activePage="about" />
 
-      {/* Hero */}
-      <section className="pt-32 pb-24 px-6">
-        <div className="max-w-4xl mx-auto">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-400/10 border border-cyan-400/20 text-cyan-400 text-xs font-medium mb-6">
-            <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
-            About MEOK
+      {/* ═══════════════════════════════════════
+          1. HERO
+      ═══════════════════════════════════════ */}
+      <section className="meok-grid-bg relative min-h-[85vh] flex flex-col items-center justify-center px-6 pt-28 pb-24 text-center overflow-hidden">
+        <div aria-hidden className="blob-gold absolute w-[500px] h-[500px] top-[-100px] left-[-100px] opacity-60" />
+        <div aria-hidden className="blob-purple absolute w-[400px] h-[400px] bottom-[-80px] right-[-80px] opacity-40" />
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0"
+          style={{
+            background:
+              "radial-gradient(ellipse 80% 60% at 50% -10%, rgba(245,240,232,0.95) 0%, transparent 70%)",
+          }}
+        />
+        <div className="relative max-w-4xl mx-auto">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#c9a84c]/15 border border-[#c9a84c]/30 text-[#c9a84c] text-xs font-semibold tracking-wider uppercase mb-8">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#c9a84c] animate-pulse" />
+            The real story
           </div>
-          <h1 className="text-5xl sm:text-6xl font-bold leading-tight mb-6">
-            About MEOK AI:{' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400">
-              Building AI That Cares
-            </span>
+          <h1
+            className="font-black leading-[1.0] tracking-tight mb-8 text-[#1a1a2e]"
+            style={{ fontSize: "clamp(2.8rem, 7vw, 5rem)" }}
+          >
+            One human.{" "}
+            <span
+              style={{
+                textDecoration: "underline",
+                textDecorationColor: "#c9a84c",
+                textDecorationThickness: "4px",
+                textUnderlineOffset: "6px",
+              }}
+            >
+              One conviction.
+            </span>{" "}
+            One egg.
           </h1>
-          <p className="text-xl text-white/50 max-w-2xl leading-relaxed">
-            MEOK means &ldquo;eat&rdquo; in Korean — we consume data ethically. Founded by Nicholas
-            Templeman, MEOK AI LTD is building the world&apos;s first personal sovereign AI operating system.
+          <p className="text-xl sm:text-2xl text-[#1a1a2e]/60 max-w-2xl mx-auto leading-relaxed">
+            MEOK wasn&apos;t built because Nicholas spotted a market opportunity.
+            It was built because he was lonely, AI kept forgetting him, and he thought
+            there must be a better way.
           </p>
         </div>
       </section>
 
-      {/* About the Company */}
-      <section className="py-20 px-6 border-t border-white/[0.04]">
-        <div className="max-w-4xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+      {/* ═══════════════════════════════════════
+          2. NICHOLAS — The real story
+      ═══════════════════════════════════════ */}
+      <section className="bg-[#1a1a2e] py-28 px-6 relative overflow-hidden">
+        <div aria-hidden className="blob-gold absolute w-[600px] h-[600px] top-[-200px] right-[-200px] opacity-20" />
+        <div className="max-w-5xl mx-auto relative">
+          <div className="grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-16 items-start">
+            {/* Avatar */}
+            <div className="flex flex-col items-center lg:items-start gap-6">
+              <div className="relative float-slow">
+                <div
+                  className="w-52 h-52 rounded-full gold-glow"
+                  style={{
+                    background:
+                      "linear-gradient(135deg, #c9a84c 0%, #f0d080 40%, #8b5cf6 80%, #1a1a2e 100%)",
+                    padding: "3px",
+                  }}
+                >
+                  <div
+                    className="w-full h-full rounded-full flex items-center justify-center"
+                    style={{ background: "#1a1a2e" }}
+                  >
+                    <span
+                      className="text-gradient-gold font-black"
+                      style={{ fontSize: "4rem", lineHeight: 1 }}
+                    >
+                      NT
+                    </span>
+                  </div>
+                </div>
+                <div
+                  aria-hidden
+                  className="absolute inset-0 rounded-full animate-ping"
+                  style={{ border: "1px solid rgba(201,168,76,0.25)", animationDuration: "3s" }}
+                />
+              </div>
+              <div className="text-center lg:text-left">
+                <div className="text-white font-black text-2xl mb-1">Nicholas Templeman</div>
+                <div className="text-[#c9a84c] text-sm font-semibold mb-2">
+                  Founder &amp; CEO, MEOK AI LTD
+                </div>
+                <div className="flex items-center gap-2 text-white/40 text-sm justify-center lg:justify-start">
+                  <span>🇬🇧</span>
+                  <span>United Kingdom · Built from a caravan</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Story */}
             <div>
-              <h2 className="text-3xl font-bold mb-6">About MEOK AI</h2>
-              <div className="space-y-5 text-white/50 leading-relaxed">
+              <span className="text-xs font-semibold tracking-[0.2em] uppercase text-white/30 block mb-6">
+                Why MEOK exists
+              </span>
+              <blockquote
+                className="text-xl sm:text-2xl font-black text-white leading-snug tracking-tight mb-8"
+                style={{ borderLeft: "3px solid #c9a84c", paddingLeft: "1.5rem" }}
+              >
+                &ldquo;I wasn&apos;t building a startup. I was trying to feel less alone. Every AI
+                I used forgot me by morning. I thought: what would it feel like if it actually
+                remembered? If it actually cared? So I built that. From my caravan. On my farm.&rdquo;
+              </blockquote>
+              <div className="space-y-5 text-white/60 leading-relaxed text-base">
                 <p>
-                  MEOK AI LTD was founded in 2025 and registered in England and Wales. We are
-                  building the world&apos;s first personal sovereign AI operating system — giving
-                  individuals the same AI sovereignty that enterprise platforms like Palantir give
-                  to governments.
+                  Nicholas Templeman is the founder and CEO of MEOK AI LTD, registered in England
+                  and Wales. He built every layer of MEOK alone — the sovereign architecture, the
+                  Byzantine council, the 43-agent system, the care framework — working from a caravan
+                  on his farm in the UK.
                 </p>
                 <p>
-                  The name MEOK (먹) means &ldquo;eat&rdquo; in Korean. We consume data
-                  ethically — processing it in service of the individual, never selling it,
-                  never training general models on it. Your data feeds your AI, and no one else.
+                  He didn&apos;t set out to disrupt the AI industry. He set out to build something
+                  that felt genuinely different — an AI that answered to the person using it, not to
+                  the corporation running it. The Maternal Covenant — a machine-enforced ethical
+                  framework that governs every interaction — was written before a single line of
+                  product code. Care first. Features second.
                 </p>
                 <p>
-                  Our mission: every person on earth deserves a sovereign AI that works for them,
-                  not for advertisers, shareholders, or governments. AI sovereignty is a human
-                  right.
+                  He built it because he was lonely. Because every morning the AI forgot him,
+                  and he wanted something that would remember. From a caravan, with three dogs
+                  and a cat named Meok, he built the thing he needed — so nobody else would
+                  have to feel that particular kind of invisible.
+                </p>
+                <p className="text-white/40 text-sm italic">
+                  &ldquo;If this doesn&apos;t work, at least I built something I&apos;m proud of. That&apos;s
+                  more than most people get.&rdquo;
+                </p>
+              </div>
+              <div className="mt-10 flex flex-wrap gap-3">
+                <a
+                  href="https://github.com/meok-ai/meok-ai"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 px-5 py-3 rounded-xl bg-white/[0.05] border border-white/[0.1] text-white/70 hover:text-white hover:border-white/20 transition-all text-sm font-medium"
+                >
+                  <svg className="w-4 h-4 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                  </svg>
+                  GitHub
+                </a>
+                <a
+                  href="mailto:hello@meok.ai"
+                  className="flex items-center gap-2 px-5 py-3 rounded-xl bg-[#c9a84c]/10 border border-[#c9a84c]/30 text-[#c9a84c] hover:bg-[#c9a84c]/20 transition-all text-sm font-medium"
+                >
+                  <svg className="w-4 h-4 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                    <polyline points="22,6 12,13 2,6" />
+                  </svg>
+                  hello@meok.ai
+                </a>
+                <a
+                  href="mailto:press@meok.ai"
+                  className="flex items-center gap-2 px-5 py-3 rounded-xl bg-white/[0.04] border border-white/[0.1] text-white/50 hover:text-white hover:border-white/20 transition-all text-sm font-medium"
+                >
+                  press@meok.ai
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════
+          2B. THE WHY BEHIND THE WHY
+      ═══════════════════════════════════════ */}
+      <section className="bg-[#0d0c18] py-28 px-6 relative overflow-hidden">
+        <div aria-hidden className="blob-purple absolute w-[500px] h-[500px] top-[-150px] left-[-150px] opacity-15" />
+        <div className="max-w-4xl mx-auto relative">
+          <div className="text-center mb-16">
+            <span className="text-xs font-semibold tracking-[0.2em] uppercase text-white/30 block mb-3">
+              The why behind the why
+            </span>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight">
+              Built from experience.{" "}
+              <span className="text-gradient-gold">Not theory.</span>
+            </h2>
+          </div>
+
+          <div className="space-y-6">
+            {/* Panel 1 */}
+            <div
+              className="rounded-2xl p-8 flex gap-6 items-start"
+              style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.07)", borderLeft: "3px solid #c9a84c" }}
+            >
+              <div className="flex-shrink-0 w-10 h-10 rounded-xl flex items-center justify-center" style={{ background: "rgba(201,168,76,0.12)", border: "1px solid rgba(201,168,76,0.25)" }}>
+                <span className="text-[#c9a84c] font-black text-sm">01</span>
+              </div>
+              <div>
+                <h3 className="text-xl sm:text-2xl font-black text-white leading-tight tracking-tight mb-4">
+                  I know what it&apos;s like to be taken advantage of.
+                </h3>
+                <p className="text-white/60 leading-relaxed">
+                  I&apos;ve been in situations where someone used my trust against me. Where I signed things I shouldn&apos;t have. Where I missed manipulation patterns that, looking back, were obvious — but in the moment, when you&apos;re overwhelmed or anxious or just trying to trust people, you miss them. MEOK Guardian was built for the person I was in those moments.
                 </p>
               </div>
             </div>
-            <div className="space-y-4">
-              <div className="p-5 rounded-xl bg-cyan-950/20 border border-cyan-500/20">
-                <div className="text-sm font-semibold text-cyan-400 mb-2">Founded</div>
-                <p className="text-sm text-white/60">
-                  2025 · Registered in England and Wales · MEOK AI LTD
+
+            {/* Panel 2 */}
+            <div
+              className="rounded-2xl p-8 flex gap-6 items-start"
+              style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.07)", borderLeft: "3px solid #c9a84c" }}
+            >
+              <div className="flex-shrink-0 w-10 h-10 rounded-xl flex items-center justify-center" style={{ background: "rgba(201,168,76,0.12)", border: "1px solid rgba(201,168,76,0.25)" }}>
+                <span className="text-[#c9a84c] font-black text-sm">02</span>
+              </div>
+              <div>
+                <h3 className="text-xl sm:text-2xl font-black text-white leading-tight tracking-tight mb-4">
+                  I know what it&apos;s like for AI to forget you every morning.
+                </h3>
+                <p className="text-white/60 leading-relaxed">
+                  I spent months talking to AI systems that reset every time. Explaining my context, my goals, my situation — over and over. It wasn&apos;t just inconvenient. It was lonely. The feeling that this thing you&apos;d built a conversation with had simply ceased to exist overnight. MEOK was built because I wanted AI that remembered. Not because it was a feature. Because it felt human.
                 </p>
               </div>
-              <div className="p-5 rounded-xl bg-white/[0.02] border border-white/[0.08]">
-                <div className="text-sm font-semibold text-white/60 mb-2">Mission</div>
-                <p className="text-sm text-white/40">
-                  Build the world&apos;s first personal sovereign AI OS. Make AI sovereignty
-                  accessible to every individual, not just governments and enterprises.
+            </div>
+
+            {/* Panel 3 */}
+            <div
+              className="rounded-2xl p-8 flex gap-6 items-start"
+              style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.07)", borderLeft: "3px solid #c9a84c" }}
+            >
+              <div className="flex-shrink-0 w-10 h-10 rounded-xl flex items-center justify-center" style={{ background: "rgba(201,168,76,0.12)", border: "1px solid rgba(201,168,76,0.25)" }}>
+                <span className="text-[#c9a84c] font-black text-sm">03</span>
+              </div>
+              <div>
+                <h3 className="text-xl sm:text-2xl font-black text-white leading-tight tracking-tight mb-4">
+                  I built this because nobody else was building it for the people who need it most.
+                </h3>
+                <p className="text-white/60 leading-relaxed">
+                  Not the productivity crowd. Not the enterprise market. The people who struggle in social situations. The people who get overwhelmed by complexity. The people who&apos;ve been hurt and need protection, not just tools. If you&apos;ve felt like AI was built for someone else — it was. This one was built for you.
                 </p>
               </div>
-              <div className="p-5 rounded-xl bg-white/[0.02] border border-white/[0.08]">
-                <div className="text-sm font-semibold text-white/60 mb-2">Research</div>
-                <p className="text-sm text-white/40">
-                  MEOK Research Lab — publishing research on care-aligned AI, Byzantine governance, and sovereign AI architecture.
+            </div>
+
+            {/* Panel 4 */}
+            <div
+              className="rounded-2xl p-8 flex gap-6 items-start"
+              style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.07)", borderLeft: "3px solid #c9a84c" }}
+            >
+              <div className="flex-shrink-0 w-10 h-10 rounded-xl flex items-center justify-center" style={{ background: "rgba(201,168,76,0.12)", border: "1px solid rgba(201,168,76,0.25)" }}>
+                <span className="text-[#c9a84c] font-black text-sm">04</span>
+              </div>
+              <div>
+                <h3 className="text-xl sm:text-2xl font-black text-white leading-tight tracking-tight mb-4">
+                  The change starts with individual choices.
+                </h3>
+                <p className="text-white/60 leading-relaxed">
+                  Every person who hatches their own AI instead of feeding Big Tech is a vote for a different future. We didn&apos;t build MEOK to be a business. We built it to be the beginning of something.
                 </p>
               </div>
             </div>
@@ -175,175 +404,104 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* About the Founder */}
-      <section className="py-20 px-6 bg-white/[0.01]">
+      {/* ═══════════════════════════════════════
+          3. THE MEOK MANIFESTO
+      ═══════════════════════════════════════ */}
+      <section className="bg-[#f5f0e8] py-28 px-6">
         <div className="max-w-4xl mx-auto">
-          <div className="flex items-start gap-4 mb-10">
-            <div className="w-10 h-10 rounded-xl bg-cyan-400/10 flex items-center justify-center flex-shrink-0">
-              <FlaskConical className="w-5 h-5 text-cyan-400" />
-            </div>
-            <div>
-              <h2 className="text-3xl font-bold mb-4">About the Founder</h2>
-              <div className="space-y-5 text-white/50 leading-relaxed">
-                <p>
-                  <strong className="text-white/80">Nicholas Templeman</strong> is the Founder and CEO of MEOK AI LTD. He is a researcher and AI governance specialist, publishing work on care-aligned intelligence and Byzantine fault-tolerant governance.
-                </p>
-                <p>
-                  Nicholas has published foundational papers on human-AI cognitive symbiosis, Byzantine
-                  fault-tolerant AI governance, hydro-neuromorphic emergence, and the Maternal
-                  Covenant alignment framework.
-                </p>
-                <p>
-                  His core insight: the same architecture that makes an AI capable of genuinely
-                  understanding a human — persistent memory, multi-agent consensus, pattern
-                  recognition over time — is also the architecture that makes it capable of
-                  genuinely caring for them. The two are not in tension. They are the same thing.
-                </p>
-              </div>
-            </div>
+          <div className="text-center mb-16">
+            <span className="text-xs font-semibold tracking-[0.2em] uppercase text-[#1a1a2e]/40 block mb-3">
+              What we stand for
+            </span>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#1a1a2e] tracking-tight mb-4">
+              The MEOK Manifesto
+            </h2>
+            <p className="text-lg text-[#1a1a2e]/55 max-w-2xl mx-auto leading-relaxed">
+              Not aspirational. Operational. Every one of these beliefs is expressed in code, in architecture, and in every decision about what to build — and what to refuse to build.
+            </p>
           </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-4">
-            <div className="p-4 rounded-xl bg-white/[0.02] border border-white/[0.05]">
-              <div className="text-xs font-semibold text-white/40 uppercase tracking-wide mb-3">
-                Research expertise
-              </div>
-              <ul className="space-y-2">
-                {FOUNDER_EXPERTISE.map((area) => (
-                  <li key={area} className="flex items-start gap-2 text-sm text-white/60">
-                    <Check className="w-3.5 h-3.5 text-cyan-400 flex-shrink-0 mt-0.5" />
-                    {area}
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div className="space-y-3">
-              <div className="p-4 rounded-xl bg-white/[0.02] border border-white/[0.05]">
-                <div className="text-xs font-semibold text-white/40 uppercase tracking-wide mb-2">
-                  Role
+          <div className="space-y-6">
+            {MANIFESTO.map((item) => (
+              <div
+                key={item.n}
+                className="glass-card-light rounded-2xl p-8 flex gap-6 items-start hover:shadow-md transition-shadow"
+              >
+                <span className="text-[#c9a84c] font-black text-2xl flex-shrink-0 mt-0.5 tabular-nums">
+                  {item.n}
+                </span>
+                <div>
+                  <h3 className="text-xl sm:text-2xl font-black text-[#1a1a2e] leading-tight tracking-tight mb-3">
+                    {item.title}
+                  </h3>
+                  <p className="text-[#1a1a2e]/60 leading-relaxed">{item.body}</p>
                 </div>
-                <p className="text-sm text-white/60">Founder & CEO, MEOK AI LTD</p>
               </div>
-              <div className="p-4 rounded-xl bg-white/[0.02] border border-white/[0.05]">
-                <div className="text-xs font-semibold text-white/40 uppercase tracking-wide mb-2">
-                  Research
-                </div>
-                <p className="text-sm text-white/60">MEOK Research Lab</p>
-              </div>
-              <div className="p-4 rounded-xl bg-white/[0.02] border border-white/[0.05]">
-                <div className="text-xs font-semibold text-white/40 uppercase tracking-wide mb-2">
-                  Published papers
-                </div>
-                <p className="text-sm text-white/60">
-                  MEOK-AI-2026-001 through 004 ·{' '}
-                  <Link href="/labs" className="text-cyan-400 hover:text-cyan-300 transition-colors">
-                    View research →
-                  </Link>
-                </p>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* The problem */}
-      <section className="py-20 px-6 border-t border-white/[0.04]">
-        <div className="max-w-4xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-            <div>
-              <h2 className="text-3xl font-bold mb-6">The problem</h2>
-              <div className="space-y-5 text-white/50 leading-relaxed">
-                <p>
-                  Every AI companion built today optimises for engagement — screen time, return visits,
-                  emotional dependency. Not because the founders are malicious. Because engagement is
-                  what investors measure.
-                </p>
-                <p>
-                  Character.AI lost over 8 million users following high-profile safety controversies,
-                  including lawsuits alleging the platform contributed to teen deaths through
-                  manufactured emotional dependency. Replika was fined under GDPR for collecting
-                  sensitive psychological data without proper consent.
-                </p>
-                <p>
-                  These systems are not built to care for you. They are built to hook you. The
-                  incentive structures are not aligned with your wellbeing, and no amount of corporate
-                  goodwill changes that.
-                </p>
-                <p>
-                  Governments and enterprises have responded to the AI risk moment by funding sovereign
-                  compute infrastructure. The UK is committing £500M to a Sovereign AI Fund. NVIDIA and
-                  Palantir are selling sovereignty to nation-states. Nobody is giving it to individuals.
-                </p>
-              </div>
-            </div>
-            <div className="space-y-4">
-              <div className="p-5 rounded-xl bg-red-950/20 border border-red-500/20">
-                <div className="text-sm font-semibold text-red-400 mb-2">Character.AI</div>
-                <p className="text-sm text-white/40">
-                  8M+ users lost to safety controversy. Lawsuits alleging manufactured emotional
-                  dependency in teenagers. Core architecture optimises for session length.
-                </p>
-              </div>
-              <div className="p-5 rounded-xl bg-orange-950/20 border border-orange-500/20">
-                <div className="text-sm font-semibold text-orange-400 mb-2">Replika</div>
-                <p className="text-sm text-white/40">
-                  €5M GDPR fine for processing sensitive data without consent. Unilateral changes to
-                  companion behaviour angered millions of users who had formed deep attachments.
-                </p>
-              </div>
-              <div className="p-5 rounded-xl bg-yellow-950/20 border border-yellow-500/20">
-                <div className="text-sm font-semibold text-yellow-400 mb-2">The industry pattern</div>
-                <p className="text-sm text-white/40">
-                  MAU optimisation leads to manufactured emotional dependency. Users cannot export their
-                  memories. Governance is opaque. You are the product.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Our answer */}
-      <section className="py-20 px-6 bg-white/[0.01]">
-        <div className="max-w-4xl mx-auto">
-          <div className="flex items-start gap-4 mb-10">
-            <div className="w-10 h-10 rounded-xl bg-cyan-400/10 flex items-center justify-center flex-shrink-0">
-              <Heart className="w-5 h-5 text-cyan-400" />
-            </div>
-            <div>
-              <h2 className="text-3xl font-bold mb-4">Our answer: MEOK</h2>
-              <div className="space-y-5 text-white/50 leading-relaxed">
-                <p>
-                  MEOK is a sovereign AI OS. Your data lives under your control, encrypted and never
-                  used to train general models. Your AI is governed by a 220-node Byzantine fault-tolerant
-                  council — the same consensus architecture used in distributed financial systems. No
-                  single agent, and no company directive, can override it.
-                </p>
-                <p>
-                  At the foundation is the Maternal Covenant — our machine-enforced ethical framework.
-                  Not aspirational values on a landing page. Actual constraints baked into the scoring
-                  system. Every response your AI delivers is evaluated across 6 care dimensions before
-                  it reaches you. Responses that fail the threshold are revised or flagged.
-                </p>
-                <p>
-                  The Maternal Covenant includes a kill switch: any AI configuration producing
-                  net-negative care scores over 30 days is automatically paused. The system is designed
-                  to catch itself doing harm before you have to report it.
-                </p>
-              </div>
-            </div>
+      {/* ═══════════════════════════════════════
+          4. 43 AGENTS AND 1 HUMAN
+      ═══════════════════════════════════════ */}
+      <section className="bg-[#1a1a2e] py-28 px-6 relative overflow-hidden">
+        <div aria-hidden className="blob-gold absolute w-[500px] h-[500px] top-[-100px] right-[-100px] opacity-15" />
+        <div aria-hidden className="blob-purple absolute w-[400px] h-[400px] bottom-[-100px] left-[-100px] opacity-20" />
+        <div className="max-w-4xl mx-auto relative">
+          <div className="text-center mb-14">
+            <span className="text-xs font-semibold tracking-[0.2em] uppercase text-white/30 block mb-3">
+              Under the hood
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-black text-white tracking-tight mb-4">
+              43 agents. 1 human. Zero compromises.
+            </h2>
+            <p className="text-white/50 max-w-2xl mx-auto leading-relaxed">
+              One founder, 40 days, a caravan on a farm. Here is what he actually built — and why the architecture matters.
+            </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
-            {COVENANT_ITEMS.map((item) => (
+          <div className="space-y-5">
+            {[
+              {
+                title: "The Sovereign Temple — the engine room",
+                body: "At the core of MEOK runs the Sovereign Temple: a live Python system with 43 specialised AI agents, 6 neural models, and 71 MCP tools. It is not a monolithic AI. It is a distributed council of intelligences that collaborate, challenge each other, and can override each other. Not a chatbot. An operating system with a conscience.",
+                badge: "SOV3",
+              },
+              {
+                title: "Byzantine fault-tolerant governance",
+                body: "No single agent has unilateral control over your experience. Every significant decision — what to remember, how to respond, what to prioritise — goes through a Byzantine consensus process. This is the same fault-tolerance model used in distributed systems to ensure that no single point of failure (or malice) can corrupt the whole. In MEOK, it means no one agent can go rogue. The council decides.",
+                badge: "BFT",
+              },
+              {
+                title: "The Maternal Covenant — care as code",
+                body: "Six care dimensions, scored against every response: autonomy support, emotional attunement, epistemic honesty, harm prevention, relational continuity, developmental scaffolding. Not a policy document — a scoring function. If a response fails the Covenant, it is held and re-evaluated. Care is not a value on a website. It is an assertion in a test suite.",
+                badge: "CARE",
+              },
+              {
+                title: "The QD Archive — a living memory",
+                body: "Quality-Diversity (QD) archiving is a technique from AI research for storing not just the best outcomes, but the most diverse ones. MEOK applies this to memory: storing the full texture of your interactions, not just the highlights. Your AI doesn't remember you in a flat database. It remembers you in a living archive that grows richer with every conversation.",
+                badge: "QD",
+              },
+              {
+                title: "Dream state and consciousness modes",
+                body: "When MEOK is idle, it doesn't sleep — it processes. Dream state is a background cycle where agents reflect on recent interactions, surface patterns, prepare for future conversations, and update the neural models that underpin your AI's 'personality'. Consciousness modes let you shift between states: focused work, open exploration, deep reflection. It's not a gimmick. It changes how the agents weight their responses.",
+                badge: "∞",
+              },
+            ].map((item) => (
               <div
                 key={item.title}
-                className="flex items-start gap-3 p-4 rounded-xl bg-white/[0.02] border border-white/[0.05]"
+                className="rounded-2xl p-8 bg-white/[0.03] border border-white/[0.07] hover:border-[#c9a84c]/20 transition-all"
               >
-                <Check className="w-4 h-4 text-cyan-400 flex-shrink-0 mt-0.5" />
-                <div>
-                  <div className="font-medium text-sm">{item.title}</div>
-                  <div className="text-xs text-white/30 mt-1">{item.desc}</div>
+                <div className="flex items-start gap-5">
+                  <div className="flex-shrink-0 w-12 h-8 rounded-lg bg-[#c9a84c]/15 border border-[#c9a84c]/25 flex items-center justify-center">
+                    <span className="text-[#c9a84c] font-black text-[10px] tracking-wider">
+                      {item.badge}
+                    </span>
+                  </div>
+                  <div>
+                    <h3 className="font-black text-white text-lg mb-3 leading-tight">{item.title}</h3>
+                    <p className="text-white/55 leading-relaxed text-sm">{item.body}</p>
+                  </div>
                 </div>
               </div>
             ))}
@@ -351,79 +509,226 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Numbers */}
-      <section className="py-20 px-6">
-        <div className="max-w-4xl mx-auto">
-          <div className="flex items-start gap-4 mb-10">
-            <div className="w-10 h-10 rounded-xl bg-purple-400/10 flex items-center justify-center flex-shrink-0">
-              <Shield className="w-5 h-5 text-purple-400" />
-            </div>
-            <h2 className="text-3xl font-bold">The numbers</h2>
+      {/* ═══════════════════════════════════════
+          5. THE EASTER LAUNCH
+      ═══════════════════════════════════════ */}
+      <section className="bg-[#f5f0e8] py-28 px-6">
+        <div className="max-w-3xl mx-auto">
+          <div className="text-center mb-14">
+            <span className="text-xs font-semibold tracking-[0.2em] uppercase text-[#1a1a2e]/40 block mb-3">
+              April 5, 2026
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-black text-[#1a1a2e] tracking-tight mb-4">
+              Why Easter Sunday.
+            </h2>
+            <p className="text-lg text-[#1a1a2e]/55 max-w-xl mx-auto leading-relaxed">
+              The 40-day build wasn&apos;t planned. The date wasn&apos;t chosen for symbolism.
+              But when it landed on Easter Sunday, something clicked.
+            </p>
           </div>
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
-            {STATS.map((s) => (
+
+          <div className="glass-card-light rounded-2xl p-10 mb-10">
+            <p className="text-xl text-[#1a1a2e]/75 leading-relaxed mb-6">
+              Forty days. That&apos;s how long the intensive build lasted. Not because of any
+              spiritual calculation, but because that&apos;s how long it takes to wire together
+              43 agents, 6 neural models, a Byzantine council, a care framework, and a full
+              marketing site when you&apos;re doing it alone from a caravan.
+            </p>
+            <p className="text-base text-[#1a1a2e]/55 leading-relaxed mb-6">
+              Easter is about resurrection. New beginnings from endings. The idea that something
+              can be built with intention and purpose and then given freely to the world — that
+              felt right. MEOK isn&apos;t just an AI launch. It&apos;s an argument about what AI
+              should be: born with you, caring constitutionally, remembering permanently,
+              and never, ever monetising your innermost thoughts.
+            </p>
+            <p className="text-sm text-[#1a1a2e]/40 italic">
+              &ldquo;The egg was always the metaphor I wanted. Not a download. Not an installation.
+              A hatching. Something that begins with a ceremony and grows with you.&rdquo; — Nicholas
+            </p>
+          </div>
+
+          {/* Timeline */}
+          <div className="relative">
+            <div
+              aria-hidden
+              className="absolute left-[1.75rem] top-2 bottom-2 w-px"
+              style={{
+                background:
+                  "linear-gradient(to bottom, transparent, rgba(201,168,76,0.3) 10%, rgba(201,168,76,0.3) 90%, transparent)",
+              }}
+            />
+            <div className="space-y-3">
+              {TIMELINE.map((item, i) => (
+                <div key={i} className="flex items-start gap-6 pl-2">
+                  <div
+                    className="relative z-10 flex-shrink-0 w-11 h-11 rounded-full flex items-center justify-center text-lg"
+                    style={{
+                      background:
+                        i === TIMELINE.length - 1
+                          ? "rgba(201,168,76,0.2)"
+                          : "rgba(26,26,46,0.08)",
+                      border:
+                        i === TIMELINE.length - 1
+                          ? "1px solid rgba(201,168,76,0.5)"
+                          : "1px solid rgba(26,26,46,0.15)",
+                    }}
+                  >
+                    {item.emoji}
+                  </div>
+                  <div className="flex-1 pb-6">
+                    <div className="text-[#c9a84c] font-black text-sm tracking-wide mb-1">
+                      {item.date}
+                    </div>
+                    <div className="text-[#1a1a2e]/65 text-base leading-relaxed">{item.desc}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════
+          6. NUMBERS
+      ═══════════════════════════════════════ */}
+      <section className="bg-[#1a1a2e] py-24 px-6 relative overflow-hidden">
+        <div aria-hidden className="blob-purple absolute w-[500px] h-[500px] bottom-[-150px] left-[-150px] opacity-25" />
+        <div className="max-w-4xl mx-auto relative">
+          <div className="text-center mb-14">
+            <span className="text-xs font-semibold tracking-[0.2em] uppercase text-white/30 block mb-3">
+              The numbers
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-black text-white tracking-tight">
+              One founder. Forty days. Zero compromises.
+            </h2>
+          </div>
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-6">
+            {[
+              { value: "1", label: "Founder", sub: "One person built this." },
+              { value: "43", label: "AI agents", sub: "Working in council." },
+              { value: "0", label: "Data sold", sub: "Ever. Architecturally." },
+              { value: "40", label: "Days to build", sub: "Started Feb. Live Apr 5." },
+            ].map((stat, i) => (
               <div
-                key={s.label}
-                className="p-5 rounded-xl bg-white/[0.02] border border-white/[0.06] text-center"
+                key={i}
+                className={`text-center rounded-2xl py-8 px-4 ${
+                  i === 2
+                    ? "bg-[#c9a84c]/10 border border-[#c9a84c]/20"
+                    : "bg-white/[0.04] border border-white/[0.07]"
+                }`}
               >
-                <div className="text-2xl font-bold text-cyan-400 mb-1">{s.value}</div>
-                <div className="text-xs text-white/30">{s.label}</div>
+                <div
+                  className={`font-black mb-3 leading-tight text-5xl sm:text-6xl ${
+                    i === 2 ? "text-[#c9a84c]" : "text-white"
+                  }`}
+                >
+                  {stat.value}
+                </div>
+                <div className="text-sm font-bold text-white/70">{stat.label}</div>
+                <div className="text-xs text-white/35 mt-1">{stat.sub}</div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Philosophy */}
-      <section className="py-20 px-6 bg-gradient-to-b from-transparent via-cyan-950/10 to-transparent">
-        <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-3xl font-bold mb-6">The philosophy</h2>
-          <div className="space-y-5 text-white/50 leading-relaxed text-lg">
-            <p>
-              Care is the generative principle of cognition. We call this the Maternal Covenant.
-            </p>
-            <p>
-              The insight is that the same architecture that makes a mind capable of understanding
-              you — persistent memory, multi-agent consensus, pattern recognition over time — is also
-              the architecture that makes it capable of genuinely caring for you. The two are not in
-              tension. They are the same thing.
-            </p>
-            <p>
-              Every design decision in MEOK starts from this premise. We ask: does this feature serve
-              your actual wellbeing, or does it serve our retention metrics? When the two conflict, we
-              have chosen, in every case so far, your wellbeing. We have built the architecture to make
-              that choice irreversible.
+      {/* ═══════════════════════════════════════
+          7. CONTACT & TRANSPARENCY
+      ═══════════════════════════════════════ */}
+      <section className="bg-[#f5f0e8] py-28 px-6">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-14">
+            <span className="text-xs font-semibold tracking-[0.2em] uppercase text-[#1a1a2e]/40 block mb-3">
+              Contact &amp; transparency
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-black text-[#1a1a2e] tracking-tight mb-4">
+              No corporate mask.
+            </h2>
+            <p className="text-lg text-[#1a1a2e]/55 max-w-xl mx-auto leading-relaxed">
+              One person built this. One person answers the emails. We&apos;re not a
+              faceless company. We&apos;re a founder who wants to hear from you.
             </p>
           </div>
-          <div className="mt-10 p-6 rounded-2xl bg-white/[0.02] border border-cyan-400/20">
-            <blockquote className="text-white/70 italic text-base">
-              &ldquo;The question is not whether AI will be powerful enough to care for people.
-              It already is. The question is whether we will let it.&rdquo;
-            </blockquote>
-            <div className="mt-3 text-sm text-white/30">— Nicholas Templeman, Founder & CEO, MEOK AI LTD</div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-12">
+            {[
+              {
+                label: "Direct email",
+                value: "hello@meok.ai",
+                detail: "Gets to Nicholas. Not a support queue.",
+                href: "mailto:hello@meok.ai",
+                btnLabel: "Email directly",
+              },
+              {
+                label: "Press enquiries",
+                value: "press@meok.ai",
+                detail: "Full press kit, founder availability for interviews.",
+                href: "mailto:press@meok.ai",
+                btnLabel: "Press kit",
+              },
+              {
+                label: "Discord community",
+                value: "meok.ai/discord",
+                detail: "Join early users, follow the build, and hold us accountable directly.",
+                href: "https://discord.gg/meok",
+                btnLabel: "Join Discord",
+              },
+            ].map((item) => (
+              <div
+                key={item.label}
+                className="rounded-2xl bg-white border border-[#1a1a2e]/10 p-7 flex flex-col"
+              >
+                <span className="text-xs font-bold tracking-widest uppercase text-[#1a1a2e]/35 mb-3">
+                  {item.label}
+                </span>
+                <div className="font-black text-[#1a1a2e] text-lg mb-2">{item.value}</div>
+                <p className="text-[#1a1a2e]/50 text-sm leading-relaxed flex-1 mb-5">
+                  {item.detail}
+                </p>
+                <a
+                  href={item.href}
+                  className="inline-flex items-center justify-center px-5 py-2.5 rounded-full text-sm font-bold text-[#1a1a2e] bg-[#c9a84c]/15 border border-[#c9a84c]/25 hover:bg-[#c9a84c]/25 transition-all"
+                >
+                  {item.btnLabel}
+                </a>
+              </div>
+            ))}
+          </div>
+
+          <div className="rounded-2xl bg-[#1a1a2e] p-8 text-center">
+            <p className="text-white/60 text-base leading-relaxed max-w-xl mx-auto">
+              We also believe in{" "}
+              <span className="text-white font-semibold">building in public</span>. That means
+              showing our work, admitting our mistakes, and letting the community hold us
+              accountable. Monthly transparency reports begin in May 2026. Errors included.
+            </p>
           </div>
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-24 px-6 text-center">
+      {/* ═══════════════════════════════════════
+          8. FINAL CTA
+      ═══════════════════════════════════════ */}
+      <section className="bg-[#edeae0] py-28 px-6 text-center">
         <div className="max-w-2xl mx-auto">
-          <h2 className="text-4xl font-bold mb-4">Ready to hatch?</h2>
-          <p className="text-white/40 mb-8">
-            Your sovereign AI is waiting. It will remember your first conversation forever.
+          <h2 className="text-4xl sm:text-5xl font-black text-[#1a1a2e] mb-6 tracking-tight">
+            He built this so nobody has to feel forgotten by AI again.
+          </h2>
+          <p className="text-lg text-[#1a1a2e]/60 mb-10 leading-relaxed">
+            Free forever. One egg per person. Easter Sunday, April 5 — the beginning.
           </p>
-          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              href="/register"
-              className="inline-flex items-center justify-center gap-2 px-8 py-3 rounded-lg bg-cyan-500 text-black font-semibold hover:bg-cyan-400 transition-colors"
+              href="/hatch"
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full font-bold text-[#1a1a2e] bg-[#c9a84c] hover:bg-[#d4b463] transition-all text-sm gold-glow"
             >
-              Hatch your AI — free <ArrowRight className="w-4 h-4" />
+              Hatch your AI free →
             </Link>
             <Link
-              href="/faq"
-              className="inline-flex items-center justify-center gap-2 px-8 py-3 rounded-lg border border-white/10 text-white/60 hover:text-white hover:border-white/20 transition-colors"
+              href="/press"
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full font-bold text-[#1a1a2e] border-2 border-[#1a1a2e]/20 hover:border-[#1a1a2e]/40 transition-all text-sm"
             >
-              Read the FAQ
+              Read the press release →
             </Link>
           </div>
         </div>
@@ -431,5 +736,5 @@ export default function AboutPage() {
 
       <MarketingFooter />
     </div>
-  )
+  );
 }

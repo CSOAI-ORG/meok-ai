@@ -146,7 +146,7 @@ export default function TrustFunnelPage() {
 
   if (loading) {
     return (
-      <div className="space-y-4">
+      <div className="min-h-screen bg-[#0d0c18] p-6 md:p-8 space-y-4">
         {[1, 2, 3].map((i) => (
           <div key={i} className="h-32 rounded-xl bg-white/5 animate-pulse" />
         ))}
@@ -159,6 +159,7 @@ export default function TrustFunnelPage() {
   const stageColor = STAGE_COLORS[funnel.formation_stage] || STAGE_COLORS.building;
 
   return (
+    <div className="min-h-screen bg-[#0d0c18] p-6 md:p-8" style={{ color: "white" }}>
     <div className="space-y-6 max-w-3xl">
       <div>
         <h2 className="text-2xl font-bold text-white">Trust Formation</h2>
@@ -301,6 +302,7 @@ export default function TrustFunnelPage() {
       <div className="px-4 py-3 rounded-lg bg-white/3 border border-white/5 text-xs text-white/25 leading-relaxed">
         {funnel.research_note}
       </div>
+    </div>
     </div>
   );
 }

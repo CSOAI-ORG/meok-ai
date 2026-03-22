@@ -1,0 +1,718 @@
+"use client";
+import Link from "next/link";
+import { useState } from "react";
+import { MarketingNav } from "@/components/marketing-nav";
+import { MarketingFooter } from "@/components/marketing-footer";
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "How does MEOK get my post-game data?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "MEOK connects to official game APIs (Riot API for League/Valorant, Steam API for CS2, Blizzard API for OW2) and pulls your match data automatically after every game. For games without public APIs, MEOK reads your end-of-match screen via screen capture. You can also describe the match manually.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "How many games does MEOK need before patterns emerge?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Basic patterns surface after 10 games — things like 'you die most in the first 2 minutes of rounds.' Meaningful trend analysis takes 25+ games. Tilt detection and playstyle profiles need 50+. The longer you play, the more specific the coaching gets.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Does MEOK work for team games where I don't control everything?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Yes. MEOK separates individual performance from team outcomes. It focuses on what you can control: your decisions, positioning, timing, and mechanical execution — not whether your teammates played well. A 16-12 win where you K/D'd 0.8 still gets the same level of honest analysis as a loss.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Can I share my post-game reports with teammates?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Yes. Any report can be exported as a shareable link or PDF. Useful for sending to a coach, reviewing with your team in a Discord call, or keeping a personal match journal.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Does MEOK get smarter the longer I use it?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Yes — this is the core of how it works. After game 10, MEOK spots surface patterns. After game 50, it's tracking tilt cycles, clutch win rates after back-to-back deaths, and your win rate by map across the last 30 days. The analysis compounds the same way your habits compound.",
+      },
+    },
+  ],
+};
+
+const ANALYSIS_FLOW = [
+  {
+    step: "01",
+    icon: "🏁",
+    label: "Match ends",
+    desc: "Win or loss. Ranked or casual. MEOK picks it up automatically via game API or screen read.",
+    color: "#6b7fa3",
+  },
+  {
+    step: "02",
+    icon: "🔬",
+    label: "MEOK analyses",
+    desc: "Every decision point is processed against your personal history. Not just KDA — positioning, timing, economy, rotation.",
+    color: "#c9a84c",
+  },
+  {
+    step: "03",
+    icon: "📋",
+    label: "You get a report",
+    desc: "Specific, honest breakdown: what worked, what cost you rounds, and one pattern MEOK wants you to focus on this week.",
+    color: "#4ade80",
+  },
+];
+
+const ANALYSIS_TYPES = [
+  {
+    title: "Kill / Death Breakdown",
+    icon: "⚔️",
+    accent: "#ef4444",
+    desc: "Where you died, who killed you, and what the situation was. MEOK identifies the mechanics behind each death — not just the count.",
+    tags: ["Death context", "Kill efficiency", "Trade analysis"],
+  },
+  {
+    title: "Decision Moments",
+    icon: "🧠",
+    accent: "#c9a84c",
+    desc: "The 3-5 moments per game that decided the outcome. MEOK flags the exact round or minute, what happened, and what the correct play was.",
+    tags: ["Key turning points", "Alt-play scenarios", "Decision confidence"],
+  },
+  {
+    title: "Positioning Heatmap",
+    icon: "🗺️",
+    accent: "#60a5fa",
+    desc: "Where you were on the map versus where you should have been. Visualised against your known information at that moment in the game.",
+    tags: ["Map control", "Rotation gaps", "Positioning habits"],
+  },
+  {
+    title: "Team Synergy",
+    icon: "👥",
+    accent: "#34d399",
+    desc: "How well your actions supported your team — did your engage land, were you covering the right angles, did your utility create value?",
+    tags: ["Support impact", "Engage timing", "Communication value"],
+  },
+  {
+    title: "vs. Opponent Patterns",
+    icon: "👁",
+    accent: "#a78bfa",
+    desc: "Your tendencies against the specific enemy composition you faced. MEOK identifies if you were countered — or if you countered yourself.",
+    tags: ["Matchup exploitation", "Counter-patterns", "Adaptation grade"],
+  },
+];
+
+const SAMPLE_REPORT = {
+  game: "CS2 — Competitive",
+  map: "Dust2",
+  result: "WIN",
+  score: "16–12",
+  duration: "45 min",
+  date: "Mar 21, 2026",
+  stats: [
+    { label: "K/D", value: "1.4", avg: "1.1", avgLabel: "your avg", positive: true },
+    { label: "HS%", value: "38%", avg: "52%", avgLabel: "your avg", positive: false },
+    { label: "ADR", value: "82.3", avg: "74.1", avgLabel: "your avg", positive: true },
+    { label: "KAST", value: "71%", avg: "68%", avgLabel: "your avg", positive: true },
+  ],
+  keyMoment: {
+    round: "Round 24",
+    desc: "You held A long for 8 seconds then peeked early. The AWP was still live — you knew that from the sound cue. That decision cost the round and broke your team's economy.",
+    verdict: "Incorrect peek",
+  },
+  strengths: [
+    "K/D 1.4 — above your average of 1.1 across last 30 games",
+    "Won 4 of 5 eco rounds — your pistol execution is consistent",
+    "A-site anchor: 6/7 successful defensive holds",
+  ],
+  focusAreas: [
+    "HS% dropped to 38% vs your usual 52% — you were spray-transferring instead of tapping",
+    "Overextended mid in rounds 9, 11, 14 — all three resulted in 4v5 situations",
+    "2 smokes wasted per half — utility carried over from full-buys",
+  ],
+  pattern: {
+    count: 47,
+    text: "Your clutch win rate drops 34% after back-to-back deaths in the same half. You tend to rush the next clutch rather than resetting. Consider calling a fake or delaying for 5 seconds — your clutch rate on delayed setups is 58% vs 24% on immediate ones.",
+  },
+  weekProgress: {
+    label: "This week vs last week",
+    items: [
+      { metric: "Win rate", this: "61%", last: "54%", up: true },
+      { metric: "Avg K/D", this: "1.28", last: "1.11", up: true },
+      { metric: "HS%", this: "44%", last: "51%", up: false },
+    ],
+  },
+  plan: [
+    { title: "Aim training", desc: "15 min deathmatch — focus on tapping at medium range, not spraying. Your spray control is fine. Your first-bullet accuracy isn't." },
+    { title: "Utility discipline", desc: "Commit your utility loadout before buying rifles. Two unused smokes per half is two free rounds gifted." },
+    { title: "Clutch reset", desc: "After back-to-back deaths: before the next clutch, take one breath. Check the clock. Delay by 5 seconds if time allows." },
+  ],
+};
+
+const FAQS = [
+  {
+    q: "How does MEOK get my post-game data?",
+    a: "MEOK connects to official game APIs (Riot API for League/Valorant, Steam API for CS2, Blizzard API for OW2) and pulls your match data automatically after every game. For games without public APIs, MEOK reads your end-of-match screen via screen capture. You can also describe the match manually.",
+  },
+  {
+    q: "How many games does MEOK need before patterns emerge?",
+    a: "Basic patterns surface after 10 games — things like 'you die most in the first 2 minutes of rounds.' Meaningful trend analysis takes 25+ games. Tilt detection and playstyle profiles need 50+. The longer you play, the more specific the coaching gets.",
+  },
+  {
+    q: "Does MEOK work for team games where I don't control everything?",
+    a: "Yes. MEOK separates individual performance from team outcomes. It focuses on what you can control: your decisions, positioning, timing, and mechanical execution — not whether your teammates played well.",
+  },
+  {
+    q: "Can I share my post-game reports with teammates?",
+    a: "Yes. Any report can be exported as a shareable link or PDF. Useful for sending to a coach, reviewing with your team in a Discord call, or keeping a personal match journal.",
+  },
+  {
+    q: "Does MEOK get smarter the longer I use it?",
+    a: "Yes — this is the core of how it works. After game 10, MEOK spots surface patterns. After game 50, it's tracking tilt cycles, clutch win rates after back-to-back deaths, and your win rate by map across the last 30 days.",
+  },
+];
+
+function FAQAccordion({ faqs }: { faqs: typeof FAQS }) {
+  const [open, setOpen] = useState<number | null>(null);
+  return (
+    <div className="space-y-3">
+      {faqs.map((faq, i) => (
+        <div
+          key={i}
+          className="rounded-2xl border border-white/[0.07] overflow-hidden"
+          style={{ background: "rgba(255,255,255,0.03)" }}
+        >
+          <button
+            className="w-full flex items-center justify-between gap-4 px-6 py-5 text-left hover:bg-white/[0.03] transition-colors"
+            onClick={() => setOpen(open === i ? null : i)}
+            aria-expanded={open === i}
+          >
+            <span className="font-bold text-white/80 text-sm sm:text-base">{faq.q}</span>
+            <span
+              className="text-[#c9a84c] text-lg flex-shrink-0 transition-transform duration-200"
+              style={{ transform: open === i ? "rotate(90deg)" : "rotate(0deg)" }}
+            >
+              ›
+            </span>
+          </button>
+          {open === i && (
+            <div className="px-6 pb-5 pt-1">
+              <p className="text-white/50 text-sm leading-relaxed">{faq.a}</p>
+            </div>
+          )}
+        </div>
+      ))}
+    </div>
+  );
+}
+
+export default function PostGamePage() {
+  return (
+    <div className="min-h-screen bg-[#0d0c18] text-white overflow-x-hidden">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <MarketingNav />
+
+      {/* ═══════════════════════════════════════════════
+          HERO
+      ═══════════════════════════════════════════════ */}
+      <section className="relative min-h-[75vh] flex flex-col items-center justify-center px-6 pt-20 pb-24 overflow-hidden">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 opacity-[0.025]"
+          style={{
+            backgroundImage:
+              "repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,1) 2px, rgba(255,255,255,1) 4px)",
+          }}
+        />
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0"
+          style={{
+            background:
+              "radial-gradient(ellipse 70% 50% at 50% 40%, rgba(201,168,76,0.09) 0%, rgba(59,130,246,0.05) 60%, transparent 80%)",
+          }}
+        />
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 opacity-[0.04]"
+          style={{
+            backgroundImage:
+              "linear-gradient(rgba(201,168,76,0.4) 1px, transparent 1px), linear-gradient(90deg, rgba(201,168,76,0.4) 1px, transparent 1px)",
+            backgroundSize: "60px 60px",
+          }}
+        />
+
+        <div className="relative max-w-4xl mx-auto text-center">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#c9a84c]/10 border border-[#c9a84c]/25 text-[#c9a84c] text-xs font-black tracking-[0.25em] uppercase mb-8">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#c9a84c]" />
+            MEOK GAMING OS — POST-GAME ANALYST
+          </div>
+
+          <h1 className="text-5xl sm:text-7xl lg:text-8xl font-black leading-[0.9] tracking-tight mb-6 text-white">
+            You just played 45 minutes.{" "}
+            <br className="hidden sm:block" />
+            <span
+              className="text-[#c9a84c]"
+              style={{ textShadow: "0 0 50px rgba(201,168,76,0.4)" }}
+            >
+              Here&apos;s what cost you.
+            </span>
+          </h1>
+
+          <p className="text-xl sm:text-2xl text-white/55 max-w-2xl mx-auto leading-relaxed mb-4">
+            MEOK analyses every match the moment it ends — the three decisions that flipped rounds,
+            the pattern you haven&apos;t noticed yet, and what to actually work on this week.
+          </p>
+          <p className="text-sm text-white/30 max-w-xl mx-auto mb-10">
+            Not a stats dump. A coaching report that compounds the longer you play.
+          </p>
+
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <Link
+              href="/hatch"
+              className="group flex items-center gap-2 px-8 py-4 rounded-full font-black text-[#1a1a2e] bg-[#c9a84c] hover:bg-[#d4b463] transition-all text-base"
+              style={{ boxShadow: "0 0 24px rgba(201,168,76,0.35), 0 0 48px rgba(201,168,76,0.12)" }}
+            >
+              Hatch your gaming companion
+              <span className="group-hover:translate-x-1 transition-transform">→</span>
+            </Link>
+            <Link
+              href="/gaming"
+              className="text-white/35 hover:text-white/60 text-sm font-medium transition-colors"
+            >
+              ← Back to Gaming OS
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════
+          ANALYSIS FLOW
+      ═══════════════════════════════════════════════ */}
+      <section className="py-24 px-6 bg-[#0d0c18] border-y border-white/[0.05]">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-14">
+            <span className="text-xs font-black tracking-[0.25em] uppercase text-white/30 block mb-4">
+              The flow
+            </span>
+            <h2 className="text-4xl font-black text-white">
+              Match ends.{" "}
+              <span className="text-[#c9a84c]">Report begins.</span>
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 relative">
+            <div
+              className="hidden md:block absolute top-10 left-[35%] right-[35%] h-px"
+              aria-hidden
+              style={{
+                background:
+                  "linear-gradient(90deg, rgba(107,127,163,0.4), rgba(201,168,76,0.5), rgba(74,222,128,0.4))",
+              }}
+            />
+            {ANALYSIS_FLOW.map((step) => (
+              <div
+                key={step.step}
+                className="p-8 rounded-3xl border border-white/[0.07] hover:border-white/15 transition-all text-center"
+                style={{ background: "rgba(255,255,255,0.03)" }}
+              >
+                <div className="text-4xl mb-4">{step.icon}</div>
+                <div className="text-xs font-black tracking-[0.3em] mb-2" style={{ color: `${step.color}70` }}>
+                  {step.step}
+                </div>
+                <h3 className="font-black text-white mb-2" style={{ color: step.color }}>
+                  {step.label}
+                </h3>
+                <p className="text-sm text-white/45 leading-relaxed">{step.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════
+          SAMPLE REPORT — FULL MOCK
+      ═══════════════════════════════════════════════ */}
+      <section className="py-24 px-6 bg-[#1a1a2e]">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-12">
+            <span className="text-xs font-black tracking-[0.25em] uppercase text-white/30 block mb-4">
+              Sample report
+            </span>
+            <h2 className="text-4xl font-black text-white">
+              This is what you get{" "}
+              <span className="text-[#c9a84c]">after every game.</span>
+            </h2>
+            <p className="text-white/35 mt-3 text-sm">
+              Real format. The content below is a realistic example — not what actually happened in your games.
+            </p>
+          </div>
+
+          <div
+            className="rounded-3xl border border-[#c9a84c]/15 overflow-hidden"
+            style={{ background: "rgba(255,255,255,0.03)", backdropFilter: "blur(12px)" }}
+          >
+            {/* Match header */}
+            <div className="flex items-center justify-between px-7 py-5 border-b border-white/[0.07] bg-black/20">
+              <div className="flex items-center gap-4">
+                <span className="text-2xl">💣</span>
+                <div>
+                  <div className="font-black text-white">{SAMPLE_REPORT.game}</div>
+                  <div className="text-xs text-white/30 font-mono">
+                    {SAMPLE_REPORT.map} · {SAMPLE_REPORT.duration} · {SAMPLE_REPORT.date}
+                  </div>
+                </div>
+              </div>
+              <div className="text-right">
+                <div className="text-xl font-black text-green-400">{SAMPLE_REPORT.result}</div>
+                <div className="text-xs text-white/30 font-mono">{SAMPLE_REPORT.score}</div>
+              </div>
+            </div>
+
+            {/* Stats vs average */}
+            <div className="grid grid-cols-2 sm:grid-cols-4 divide-x divide-y sm:divide-y-0 divide-white/[0.07] border-b border-white/[0.07]">
+              {SAMPLE_REPORT.stats.map((stat) => (
+                <div key={stat.label} className="text-center py-5 px-4">
+                  <div className="text-2xl font-black text-white mb-1">{stat.value}</div>
+                  <div className="text-xs text-white/30 font-mono mb-1.5">{stat.label}</div>
+                  <div className={`text-xs font-bold flex items-center justify-center gap-1 ${stat.positive ? "text-green-400" : "text-amber-400"}`}>
+                    <span>{stat.positive ? "✅" : "⚠️"}</span>
+                    <span>{stat.avg} {stat.avgLabel}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Key moment */}
+            <div className="border-b border-white/[0.07] p-7 bg-red-500/[0.04]">
+              <div className="flex items-start gap-4">
+                <span className="text-2xl flex-shrink-0">🔑</span>
+                <div>
+                  <div className="flex items-center gap-3 mb-2">
+                    <span className="font-black text-red-400">{SAMPLE_REPORT.keyMoment.round}</span>
+                    <span className="text-[10px] px-2 py-0.5 rounded-full font-black uppercase tracking-wider bg-red-500/15 border border-red-500/30 text-red-400">
+                      {SAMPLE_REPORT.keyMoment.verdict}
+                    </span>
+                  </div>
+                  <p className="text-sm text-white/60 leading-relaxed">{SAMPLE_REPORT.keyMoment.desc}</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Strengths + Focus */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-0 divide-y md:divide-y-0 md:divide-x divide-white/[0.07] border-b border-white/[0.07]">
+              <div className="p-7">
+                <h3 className="font-black text-green-400 mb-5 text-sm tracking-[0.1em] uppercase">
+                  What you did well
+                </h3>
+                <div className="space-y-3">
+                  {SAMPLE_REPORT.strengths.map((item, i) => (
+                    <div key={i} className="flex items-start gap-3">
+                      <span className="text-green-400 font-black flex-shrink-0 mt-0.5">✓</span>
+                      <p className="text-sm text-white/60 leading-relaxed">{item}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div className="p-7">
+                <h3 className="font-black text-amber-400 mb-5 text-sm tracking-[0.1em] uppercase">
+                  Focus areas
+                </h3>
+                <div className="space-y-3">
+                  {SAMPLE_REPORT.focusAreas.map((item, i) => (
+                    <div key={i} className="flex items-start gap-3">
+                      <span className="text-amber-400 font-black flex-shrink-0 mt-0.5">→</span>
+                      <p className="text-sm text-white/60 leading-relaxed">{item}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Pattern detected */}
+            <div className="border-b border-white/[0.07] p-7 bg-[#c9a84c]/[0.04]">
+              <div className="flex items-start gap-4">
+                <span className="text-2xl flex-shrink-0">🧠</span>
+                <div>
+                  <div className="font-black text-[#c9a84c] mb-2">
+                    Pattern detected across your last {SAMPLE_REPORT.pattern.count} games
+                  </div>
+                  <p className="text-sm text-white/60 leading-relaxed">
+                    {SAMPLE_REPORT.pattern.text}
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Week over week */}
+            <div className="border-b border-white/[0.07] p-7">
+              <div className="flex items-start gap-4">
+                <span className="text-2xl flex-shrink-0">📈</span>
+                <div className="w-full">
+                  <div className="font-black text-blue-400 mb-4">
+                    {SAMPLE_REPORT.weekProgress.label}
+                  </div>
+                  <div className="grid grid-cols-3 gap-3">
+                    {SAMPLE_REPORT.weekProgress.items.map((item) => (
+                      <div
+                        key={item.metric}
+                        className="p-4 rounded-2xl border border-white/[0.06]"
+                        style={{ background: "rgba(255,255,255,0.03)" }}
+                      >
+                        <div className="text-xs text-white/30 font-mono mb-1">{item.metric}</div>
+                        <div className={`text-lg font-black mb-0.5 ${item.up ? "text-green-400" : "text-amber-400"}`}>
+                          {item.this}
+                        </div>
+                        <div className="text-xs text-white/25">
+                          {item.up ? "▲" : "▼"} was {item.last}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Training plan */}
+            <div className="p-7">
+              <div className="flex items-start gap-4">
+                <span className="text-2xl flex-shrink-0">📋</span>
+                <div className="w-full">
+                  <div className="font-black text-blue-400 mb-4">This week&apos;s focus</div>
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                    {SAMPLE_REPORT.plan.map((task) => (
+                      <div
+                        key={task.title}
+                        className="p-4 rounded-2xl border border-blue-400/15"
+                        style={{ background: "rgba(255,255,255,0.04)" }}
+                      >
+                        <div className="font-bold text-white text-sm mb-2">{task.title}</div>
+                        <div className="text-xs text-white/40 leading-relaxed">{task.desc}</div>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Share callout */}
+                  <div className="mt-5 flex items-center gap-3 p-4 rounded-2xl border border-white/[0.06]" style={{ background: "rgba(255,255,255,0.02)" }}>
+                    <span className="text-lg">🔗</span>
+                    <div>
+                      <span className="text-sm font-bold text-white/70">Share with teammates</span>
+                      <span className="text-xs text-white/30 ml-2">Export as link or PDF — useful for team review calls</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <p className="text-center text-xs text-white/20 font-mono mt-4">
+            Illustrative example — not a real match record
+          </p>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════
+          REPORTS THAT COMPOUND
+      ═══════════════════════════════════════════════ */}
+      <section className="py-24 px-6 bg-[#0d0c18] border-y border-white/[0.05]">
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-16">
+            <span className="text-xs font-black tracking-[0.25em] uppercase text-white/30 block mb-4">
+              Long-term value
+            </span>
+            <h2 className="text-4xl font-black text-white">
+              Reports that{" "}
+              <span className="text-[#c9a84c]">compound.</span>
+            </h2>
+            <p className="text-white/40 mt-4 text-sm max-w-lg mx-auto leading-relaxed">
+              A single report shows you one game. Fifty reports show you who you are as a player.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+            {[
+              {
+                games: "After 10 games",
+                icon: "📊",
+                color: "#6b7fa3",
+                insights: [
+                  "Surface patterns: your most common death type",
+                  "Basic K/D and win rate by mode",
+                  "Which maps you're performing above average on",
+                ],
+              },
+              {
+                games: "After 25 games",
+                icon: "🔍",
+                color: "#c9a84c",
+                insights: [
+                  "Tilt detection: win rate before and after loss streaks",
+                  "Time-of-day performance curve",
+                  "Playstyle profile: aggressor, anchor, support",
+                ],
+              },
+              {
+                games: "After 50+ games",
+                icon: "🧠",
+                color: "#34d399",
+                insights: [
+                  "Clutch win rate by round state (post-death, saved rounds, etc.)",
+                  "Champion/agent pool ranked by your actual win conditions",
+                  "Full tilt cycle map — how you respond to adversity over time",
+                ],
+              },
+            ].map((tier) => (
+              <div
+                key={tier.games}
+                className="p-7 rounded-3xl border transition-all"
+                style={{
+                  background: "rgba(255,255,255,0.03)",
+                  backdropFilter: "blur(12px)",
+                  borderColor: `${tier.color}25`,
+                }}
+              >
+                <div className="text-3xl mb-3">{tier.icon}</div>
+                <div className="font-black mb-4" style={{ color: tier.color }}>
+                  {tier.games}
+                </div>
+                <ul className="space-y-2.5">
+                  {tier.insights.map((insight, i) => (
+                    <li key={i} className="flex items-start gap-2.5">
+                      <span className="flex-shrink-0 mt-0.5 text-xs font-black" style={{ color: tier.color }}>✓</span>
+                      <span className="text-sm text-white/55 leading-relaxed">{insight}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════
+          5 ANALYSIS TYPE CARDS
+      ═══════════════════════════════════════════════ */}
+      <section className="py-24 px-6 bg-[#1a1a2e]">
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-16">
+            <span className="text-xs font-black tracking-[0.25em] uppercase text-white/30 block mb-4">
+              What MEOK analyses
+            </span>
+            <h2 className="text-4xl font-black text-white">
+              Five layers of{" "}
+              <span className="text-[#c9a84c]">every match.</span>
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {ANALYSIS_TYPES.map((type, i) => (
+              <div
+                key={type.title}
+                className={`p-7 rounded-3xl border transition-all hover:scale-[1.01] ${
+                  i === 4 ? "sm:col-span-2 lg:col-span-1" : ""
+                }`}
+                style={{
+                  background: "rgba(255,255,255,0.03)",
+                  backdropFilter: "blur(12px)",
+                  borderColor: `${type.accent}20`,
+                }}
+              >
+                <div className="text-3xl mb-4">{type.icon}</div>
+                <h3 className="text-lg font-black mb-3" style={{ color: type.accent }}>
+                  {type.title}
+                </h3>
+                <p className="text-sm text-white/50 leading-relaxed mb-4">{type.desc}</p>
+                <div className="flex flex-wrap gap-2">
+                  {type.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="px-2.5 py-1 rounded-full text-xs font-bold"
+                      style={{
+                        background: `${type.accent}10`,
+                        border: `1px solid ${type.accent}25`,
+                        color: `${type.accent}`,
+                      }}
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════
+          FAQ
+      ═══════════════════════════════════════════════ */}
+      <section className="py-24 px-6 bg-[#0d0c18]">
+        <div className="max-w-3xl mx-auto">
+          <div className="text-center mb-14">
+            <span className="text-xs font-black tracking-[0.25em] uppercase text-white/30 block mb-4">
+              Common questions
+            </span>
+            <h2 className="text-4xl font-black text-white">FAQ</h2>
+          </div>
+          <FAQAccordion faqs={FAQS} />
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════
+          CTA
+      ═══════════════════════════════════════════════ */}
+      <section className="relative py-32 px-6 overflow-hidden bg-[#0d0c18]">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0"
+          style={{
+            background:
+              "radial-gradient(ellipse 60% 50% at 50% 50%, rgba(59,130,246,0.06) 0%, rgba(201,168,76,0.04) 50%, transparent 70%)",
+          }}
+        />
+        <div className="relative max-w-3xl mx-auto text-center">
+          <h2 className="text-4xl sm:text-6xl font-black leading-[0.95] mb-6 text-white tracking-tight">
+            Your personal coach.{" "}
+            <span className="text-[#c9a84c]">After every game.</span>
+          </h2>
+          <p className="text-lg text-white/40 max-w-xl mx-auto mb-10 leading-relaxed">
+            Pattern detection that compounds. Specific coaching that compounds. The longer you play,
+            the sharper the analysis gets.
+          </p>
+          <Link
+            href="/hatch"
+            className="group inline-flex items-center gap-3 px-10 py-4 rounded-full font-black text-[#1a1a2e] bg-[#c9a84c] hover:bg-[#d4b463] transition-all text-base sm:text-lg"
+            style={{ boxShadow: "0 0 24px rgba(201,168,76,0.3), 0 0 48px rgba(201,168,76,0.1)" }}
+          >
+            Hatch your gaming companion
+            <span className="group-hover:translate-x-1 transition-transform">→</span>
+          </Link>
+          <div className="mt-6">
+            <Link
+              href="/gaming"
+              className="text-white/30 hover:text-white/50 text-sm transition-colors"
+            >
+              ← Back to Gaming OS overview
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <MarketingFooter />
+    </div>
+  );
+}

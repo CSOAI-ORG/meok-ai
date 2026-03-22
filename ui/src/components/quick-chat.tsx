@@ -11,20 +11,114 @@
  */
 
 import { useState, useRef, useEffect } from "react";
-import { Send, Sparkles, RotateCcw } from "lucide-react";
+import { Sparkles, RotateCcw } from "lucide-react";
 import { ExamplePrompts } from "@/components/example-prompts";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3100";
+const GOLD = "#c9a84c";
 
 function getToken(): string | null {
   if (typeof window === "undefined") return null;
   return localStorage.getItem("meok_token");
 }
 
-export function QuickChat() {
+// ─── Thinking indicator ───────────────────────────────────────────
+function ThinkingDots() {
+  return (
+    <div className="flex items-center gap-1 py-1" aria-label="MEOK is thinking">
+      {[0, 1, 2].map((i) => (
+        <span
+          key={i}
+          className="w-1.5 h-1.5 rounded-full"
+          style={{
+            background: GOLD,
+            opacity: 0.7,
+            animation: `thinkingPulse 1.2s ease-in-out ${i * 0.2}s infinite`,
+          }}
+        />
+      ))}
+      <style>{`
+        @keyframes thinkingPulse {
+          0%, 80%, 100% { transform: scale(0.6); opacity: 0.35; }
+          40%            { transform: scale(1);   opacity: 0.9;  }
+        }
+      `}</style>
+    </div>
+  );
+}
+
+// ─── Response bubble ──────────────────────────────────────────────
+function ResponseBubble({
+  text,
+  streaming,
+  onClear,
+}: {
+  text: string;
+  streaming: boolean;
+  onClear: () => void;
+}) {
+  return (
+    <div
+      className="rounded-xl px-4 py-3.5 text-sm leading-relaxed"
+      style={{
+        background: "rgba(201,168,76,0.05)",
+        borderLeft: `3px solid ${GOLD}`,
+        color: "#f5f0e8",
+        animation: "fadeInUp 0.3s ease-out both",
+      }}
+    >
+      <style>{`
+        @keyframes fadeInUp {
+          from { opacity: 0; transform: translateY(6px); }
+          to   { opacity: 1; transform: translateY(0);   }
+        }
+      `}</style>
+      <p className="whitespace-pre-wrap">
+        {text}
+        {streaming && (
+          <span
+            className="inline-block w-0.5 h-4 ml-0.5 rounded-sm align-middle"
+            style={{
+              background: GOLD,
+              opacity: 0.8,
+              animation: "cursorBlink 0.8s step-end infinite",
+            }}
+          />
+        )}
+        <style>{`
+          @keyframes cursorBlink {
+            0%, 100% { opacity: 0.8; }
+            50%      { opacity: 0;   }
+          }
+        `}</style>
+      </p>
+      {!streaming && (
+        <button
+          onClick={onClear}
+          className="mt-3 flex items-center gap-1.5 text-xs transition-colors"
+          style={{ color: "rgba(255,255,255,0.3)" }}
+          onMouseEnter={(e) => { (e.currentTarget as HTMLButtonElement).style.color = "rgba(255,255,255,0.6)"; }}
+          onMouseLeave={(e) => { (e.currentTarget as HTMLButtonElement).style.color = "rgba(255,255,255,0.3)"; }}
+        >
+          <RotateCcw className="w-3 h-3" />
+          Ask something else
+        </button>
+      )}
+    </div>
+  );
+}
+
+// ─── Main component ───────────────────────────────────────────────
+
+interface QuickChatProps {
+  placeholder?: string;
+}
+
+export function QuickChat({ placeholder = "What's on your mind?" }: QuickChatProps) {
   const [input, setInput] = useState("");
   const [response, setResponse] = useState("");
   const [streaming, setStreaming] = useState(false);
+  const [thinking, setThinking] = useState(false);
   const [done, setDone] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
@@ -38,7 +132,8 @@ export function QuickChat() {
     setResponse("");
     setDone(false);
     setError(null);
-    setStreaming(true);
+    setThinking(true);
+    setStreaming(false);
 
     try {
       const token = getToken();
@@ -51,8 +146,11 @@ export function QuickChat() {
         body: JSON.stringify({ message: msg }),
       });
 
-      if (!res.ok) throw new Error(`Error ${res.status}`);
+      if (!res.ok) throw new Error(`Server error (${res.status})`);
       if (!res.body) throw new Error("No response body");
+
+      setThinking(false);
+      setStreaming(true);
 
       const reader = res.body.getReader();
       const decoder = new TextDecoder();
@@ -74,15 +172,15 @@ export function QuickChat() {
             if (json.event === "done") {
               setDone(true);
             }
-          } catch {
-            // ignore parse errors
-          }
+          } catch { /* ignore parse errors */ }
         }
       }
       setDone(true);
     } catch (e) {
-      setError(e instanceof Error ? e.message : "Something went wrong");
+      setError("Something went wrong. Try again.");
+      console.error(e);
     } finally {
+      setThinking(false);
       setStreaming(false);
     }
   };
@@ -92,106 +190,136 @@ export function QuickChat() {
     setResponse("");
     setDone(false);
     setError(null);
+    setThinking(false);
     setTimeout(() => textareaRef.current?.focus(), 100);
   };
 
-  // Auto-resize textarea
+  // Auto-resize textarea on input
+  const handleInput = (e: React.FormEvent<HTMLTextAreaElement>) => {
+    const ta = e.currentTarget;
+    ta.style.height = "auto";
+    ta.style.height = `${Math.min(ta.scrollHeight, 140)}px`;
+  };
+
+  // Sync resize when input state changes from external sources (e.g. example prompt click)
   useEffect(() => {
     const ta = textareaRef.current;
     if (!ta) return;
     ta.style.height = "auto";
-    ta.style.height = `${Math.min(ta.scrollHeight, 120)}px`;
+    ta.style.height = `${Math.min(ta.scrollHeight, 140)}px`;
   }, [input]);
 
   // Scroll response into view
   useEffect(() => {
-    if (response) {
+    if (response || thinking) {
       responseRef.current?.scrollIntoView({ behavior: "smooth", block: "nearest" });
     }
-  }, [response]);
+  }, [response, thinking]);
 
-  const showPrompts = !response && !streaming && !error;
+  const hasActivity = response || thinking || streaming || error;
+  const showPrompts = !hasActivity && !done;
 
   return (
     <div className="space-y-4">
-      {/* Response area */}
-      {(response || streaming || error) && (
+      {/* Conversation area */}
+      {hasActivity && (
         <div ref={responseRef} className="space-y-3">
           {/* User message */}
           <div className="flex justify-end">
-            <div className="max-w-[80%] bg-cyan-500/15 border border-cyan-500/20 rounded-2xl rounded-tr-md px-4 py-2.5 text-sm text-white/90">
+            <div
+              className="max-w-[82%] rounded-2xl rounded-tr-md px-4 py-2.5 text-sm text-white/90"
+              style={{ background: "rgba(255,255,255,0.07)", border: "1px solid rgba(255,255,255,0.1)" }}
+            >
               {input}
             </div>
           </div>
 
-          {/* AI response */}
+          {/* AI response area */}
           <div className="flex items-start gap-2.5">
-            <div className="w-7 h-7 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-              <Sparkles className="w-3.5 h-3.5 text-cyan-400" />
+            <div
+              className="w-7 h-7 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5"
+              style={{ background: `${GOLD}18`, border: `1px solid ${GOLD}35` }}
+            >
+              <Sparkles className="w-3.5 h-3.5" style={{ color: GOLD }} />
             </div>
             <div className="flex-1 min-w-0">
               {error ? (
-                <p className="text-orange-400/80 text-sm">{error}</p>
-              ) : (
-                <p className="text-sm text-white/80 leading-relaxed whitespace-pre-wrap">
-                  {response}
-                  {streaming && (
-                    <span className="inline-block w-1 h-4 bg-cyan-400/70 ml-0.5 animate-pulse rounded-sm" />
-                  )}
-                </p>
-              )}
-              {done && (
-                <button
-                  onClick={reset}
-                  className="mt-3 flex items-center gap-1.5 text-xs text-white/30 hover:text-white/60 transition-colors"
+                <p
+                  className="text-sm px-4 py-3 rounded-xl"
+                  style={{
+                    color: "#fbbf24",
+                    background: "rgba(251,191,36,0.06)",
+                    border: "1px solid rgba(251,191,36,0.2)",
+                  }}
                 >
-                  <RotateCcw className="w-3 h-3" />
-                  Ask something else
-                </button>
+                  {error}
+                </p>
+              ) : thinking ? (
+                <ThinkingDots />
+              ) : (
+                <ResponseBubble text={response} streaming={streaming} onClear={reset} />
               )}
             </div>
           </div>
         </div>
       )}
 
-      {/* Example prompts when no conversation */}
+      {/* Example prompts */}
       {showPrompts && (
         <ExamplePrompts onSelect={(text) => submit(text)} compact />
       )}
 
-      {/* Input */}
-      {showPrompts || done ? (
+      {/* Input form — shown when idle or after done */}
+      {(showPrompts || done || error) && (
         <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            submit();
-          }}
+          onSubmit={(e) => { e.preventDefault(); submit(); }}
           className="flex gap-2 items-end"
         >
           <textarea
             ref={textareaRef}
             value={input}
             onChange={(e) => setInput(e.target.value)}
+            onInput={handleInput}
             onKeyDown={(e) => {
               if (e.key === "Enter" && !e.shiftKey) {
                 e.preventDefault();
                 submit();
               }
             }}
-            placeholder="What's on your mind?"
+            placeholder={placeholder}
             rows={1}
-            disabled={streaming}
-            className="flex-1 resize-none bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder:text-white/25 focus:outline-none focus:border-cyan-500/40 transition-colors disabled:opacity-50"
+            disabled={streaming || thinking}
+            className="flex-1 resize-none rounded-xl px-4 py-3 text-sm text-white focus:outline-none transition-colors disabled:opacity-50"
+            style={{
+              background: "rgba(255,255,255,0.05)",
+              border: "1px solid rgba(255,255,255,0.1)",
+              caretColor: GOLD,
+            }}
+            onFocus={(e) => { e.currentTarget.style.borderColor = `${GOLD}50`; }}
+            onBlur={(e) => { e.currentTarget.style.borderColor = "rgba(255,255,255,0.10)"; }}
           />
           <button
             type="submit"
-            disabled={!input.trim() || streaming}
-            className="w-10 h-10 rounded-xl bg-cyan-500/20 hover:bg-cyan-500/30 border border-cyan-500/30 flex items-center justify-center transition-all disabled:opacity-30 disabled:cursor-not-allowed flex-shrink-0"
+            disabled={!input.trim() || streaming || thinking}
+            className="h-10 px-4 rounded-xl text-sm font-semibold flex items-center gap-2 transition-all disabled:opacity-30 disabled:cursor-not-allowed flex-shrink-0"
+            style={{
+              background: `${GOLD}20`,
+              border: `1px solid ${GOLD}40`,
+              color: GOLD,
+            }}
+            onMouseEnter={(e) => {
+              const btn = e.currentTarget as HTMLButtonElement;
+              if (!btn.disabled) btn.style.background = `${GOLD}30`;
+            }}
+            onMouseLeave={(e) => {
+              (e.currentTarget as HTMLButtonElement).style.background = `${GOLD}20`;
+            }}
           >
-            <Send className="w-4 h-4 text-cyan-400" />
+            <Sparkles className="w-3.5 h-3.5" />
+            Ask MEOK
           </button>
         </form>
-      ) : null}
+      )}
     </div>
   );
 }

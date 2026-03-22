@@ -199,7 +199,7 @@ export default function GeneralsPage() {
     : [];
 
   return (
-    <div className="space-y-6">
+    <div className="min-h-screen bg-[#0d0c18] p-6 md:p-8 space-y-6" style={{ color: "white" }}>
       <div>
         <h2 className="text-2xl font-bold text-white">Generals &amp; Activation</h2>
         <p className="text-sm text-white/40 mt-1">
