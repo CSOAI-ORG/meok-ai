@@ -12,7 +12,9 @@ import sys
 import os
 import traceback
 
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
+_tests_dir = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, os.path.join(_tests_dir, "..", ".."))  # clawd/ so `import meok` resolves
+sys.path.insert(1, os.path.join(_tests_dir, ".."))  # meok/ fallback
 
 PASS = "✅"
 FAIL = "❌"

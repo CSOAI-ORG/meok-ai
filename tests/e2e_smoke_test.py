@@ -384,7 +384,7 @@ def test_llm_router(base: str) -> List[TestResult]:
         try:
             import sys
             import os
-            sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
+            sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", ".."))
             from meok.core.llm_router import get_router
             router = get_router()
             providers = router.get_available_providers("reasoning")
@@ -437,7 +437,7 @@ def test_rag_memory(base: str) -> List[TestResult]:
     def check_embedder():
         try:
             import sys, os
-            sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
+            sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", ".."))
             from meok.memory.rag_memory import LocalEmbedder, SentenceTransformerEmbedder, _make_embedder
             embedder = _make_embedder()
             vec = embedder.embed("hello world care alignment memory")
@@ -452,7 +452,7 @@ def test_rag_memory(base: str) -> List[TestResult]:
     def check_semantic_similarity():
         try:
             import sys, os
-            sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
+            sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", ".."))
             from meok.memory.rag_memory import _make_embedder
             import numpy as np
             embedder = _make_embedder()
@@ -549,7 +549,7 @@ def test_ralph_mode_readiness(base: str) -> List[TestResult]:
     def check_cpm_module():
         try:
             import sys, os
-            sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
+            sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", ".."))
             from meok.core.care_preference_model import get_cpm, CarePreferenceModel
             cpm = get_cpm()
             assert isinstance(cpm, CarePreferenceModel)
@@ -625,7 +625,7 @@ def test_vad_memory_fields(base: str) -> List[TestResult]:
         """Unit test the VAD score formula."""
         try:
             import sys, os
-            sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
+            sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", ".."))
             from meok.memory.enhanced_memory import MemoryEpisode
             score = MemoryEpisode.compute_emotional_score(0.8, 0.6, 0.4)
             expected = 50 + (0.8 * 30) + (abs(0.6) * 15) + (0.4 * 5)

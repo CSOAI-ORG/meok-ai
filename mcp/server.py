@@ -1374,4 +1374,6 @@ async def root():
 
 # ── Entrypoint ────────────────────────────────────────────────────
 if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port=3100)
+    import os as _os_entry
+    _port = int(_os_entry.environ.get("MEOK_PORT", _os_entry.environ.get("MEOK_MCP__PORT", 3100)))
+    uvicorn.run(app, host="0.0.0.0", port=_port)

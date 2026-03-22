@@ -49,8 +49,14 @@ async def initialize_system(state: ServiceState):
     for name, model in state.model_registry.models.items():
         if not model.load_model():
             logger.info(f"    Training {name}...")
-            model.train_model()
-            model.save_model()
+            try:
+                model.train_model()
+                model.save_model()
+            except NotImplementedError as _gpu_err:
+                # GPU-trained models (Vast.ai) cannot be retrained locally — skip gracefully
+                logger.warning(f"    Skipping {name} (GPU-only, non-fatal): {_gpu_err}")
+            except Exception as _train_err:
+                logger.warning(f"    Failed to train {name} (non-fatal): {_train_err}")
         else:
             logger.info(f"    Loaded {name}")
 
