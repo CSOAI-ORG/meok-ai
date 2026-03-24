@@ -389,6 +389,18 @@ const POSTS = [
     featured: false,
   },
   {
+    slug: "personal-sovereign-ai",
+    title: "What is Personal Sovereign AI? Own Your AI, Own Your Data",
+    excerpt:
+      "ChatGPT is a tool you rent. MEOK is an AI you own. Personal Sovereign AI is the consumer category we coined — an architecture where your data, memory, and companion belong entirely to you.",
+    date: "March 24, 2026",
+    readTime: "10 min read",
+    tag: "Deep Dive",
+    tagColor: "#c9a84c",
+    category: "deep-dives",
+    featured: false,
+  },
+  {
     slug: "ai-for-burnout",
     title: "AI for Burnout: How an AI Companion Helps You Recover and Rebuild",
     excerpt:
