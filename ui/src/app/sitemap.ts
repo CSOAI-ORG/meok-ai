@@ -299,6 +299,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: 'https://meok.ai/blog/ai-for-exam-stress', lastModified: new Date('2026-03-24'), changeFrequency: 'monthly', priority: 0.85 },
     { url: 'https://meok.ai/blog/ai-companion-for-seniors', lastModified: new Date('2026-03-24'), changeFrequency: 'monthly', priority: 0.9 },
     { url: 'https://meok.ai/blog/ai-for-financial-anxiety', lastModified: new Date('2026-03-24'), changeFrequency: 'monthly', priority: 0.85 },
+    { url: 'https://meok.ai/blog/ai-for-dating-anxiety', lastModified: new Date('2026-03-24'), changeFrequency: 'monthly', priority: 0.85 },
+    { url: 'https://meok.ai/blog/meok-for-night-shift-workers', lastModified: new Date('2026-03-24'), changeFrequency: 'monthly', priority: 0.8 },
+    { url: 'https://meok.ai/blog/ai-for-weight-loss-journey', lastModified: new Date('2026-03-24'), changeFrequency: 'monthly', priority: 0.85 },
+    { url: 'https://meok.ai/blog/ai-for-divorce-separation', lastModified: new Date('2026-03-24'), changeFrequency: 'monthly', priority: 0.85 },
+    { url: 'https://meok.ai/blog/ai-for-men-mental-health', lastModified: new Date('2026-03-24'), changeFrequency: 'monthly', priority: 0.9 },
+    { url: 'https://meok.ai/blog/ai-for-chronic-illness-caregiving', lastModified: new Date('2026-03-24'), changeFrequency: 'monthly', priority: 0.85 },
+    { url: 'https://meok.ai/blog/ai-for-student-mental-health', lastModified: new Date('2026-03-24'), changeFrequency: 'monthly', priority: 0.9 },
+    { url: 'https://meok.ai/blog/meok-vs-replika-2026', lastModified: new Date('2026-03-24'), changeFrequency: 'monthly', priority: 0.9 },
+    { url: 'https://meok.ai/blog/ai-companion-privacy', lastModified: new Date('2026-03-24'), changeFrequency: 'monthly', priority: 0.9 },
 
     // ── Legal ─────────────────────────────────────────────────────────
     { url: 'https://meok.ai/privacy', lastModified: new Date(), changeFrequency: 'yearly', priority: 0.3 },
