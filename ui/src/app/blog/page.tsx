@@ -1634,6 +1634,42 @@ const POSTS = [
     category: "guardian",
     featured: false,
   },
+  {
+    slug: "ai-for-kids",
+    title: "AI for Kids: Safe, Educational AI That Grows With Your Child",
+    excerpt:
+      "Not all AI is safe for children. MEOK Guardian applies the UK Children's Code automatically — school-safe responses, parental controls, and family dashboard included on every plan.",
+    date: "March 24, 2026",
+    readTime: "10 min read",
+    tag: "Guardian",
+    tagColor: "#7BC47F",
+    category: "guardian",
+    featured: false,
+  },
+  {
+    slug: "ai-for-loneliness",
+    title: "AI for Loneliness: Why Your Companion Needs to Actually Remember You",
+    excerpt:
+      "3.3 million adults in the UK report chronic loneliness. Most AI companions make it worse — they forget you every session. Sovereign Memory changes that: your companion builds a continuous picture of who you are.",
+    date: "March 24, 2026",
+    readTime: "10 min read",
+    tag: "Wellbeing",
+    tagColor: "#f97316",
+    category: "wellbeing",
+    featured: false,
+  },
+  {
+    slug: "best-ai-companion-2026",
+    title: "Best AI Companion 2026: The Only Comparison That Covers Memory, Safety, and Cost",
+    excerpt:
+      "We compared MEOK, Replika, Character.AI, ChatGPT, and Pi across memory, privacy, safety, quality, and cost. One platform stood out on every dimension that actually matters.",
+    date: "March 24, 2026",
+    readTime: "14 min read",
+    tag: "Comparison",
+    tagColor: "#a78bfa",
+    category: "comparisons",
+    featured: true,
+  },
 ];
 
 // ── Category filter tabs ──────────────────────────────────────────────────────
