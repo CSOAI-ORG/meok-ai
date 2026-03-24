@@ -1670,6 +1670,30 @@ const POSTS = [
     category: "comparisons",
     featured: true,
   },
+  {
+    slug: "sovereign-ai-explained",
+    title: "Sovereign AI Explained: What It Is, Why It Matters, and How MEOK Does It",
+    excerpt:
+      "Sovereign AI means you own your data, your memory, and your model choices — and no one trains on your conversations. A precise definition, a comparison table, and how MEOK's three sovereignty pillars work in practice.",
+    date: "March 24, 2026",
+    readTime: "12 min read",
+    tag: "Sovereign AI",
+    tagColor: "#c9a84c",
+    category: "sovereign-ai",
+    featured: true,
+  },
+  {
+    slug: "meok-for-seniors",
+    title: "AI for Seniors: How Sovereign Memory Makes AI Companions Actually Useful for Older Adults",
+    excerpt:
+      "Most AI forgets you the moment you close the tab. For older adults navigating health, family, and daily life, that's not just annoying — it's a failure. MEOK's Sovereign Memory changes that.",
+    date: "March 24, 2026",
+    readTime: "11 min read",
+    tag: "Guardian",
+    tagColor: "#7BC47F",
+    category: "guardian",
+    featured: false,
+  },
 ];
 
 // ── Category filter tabs ──────────────────────────────────────────────────────
