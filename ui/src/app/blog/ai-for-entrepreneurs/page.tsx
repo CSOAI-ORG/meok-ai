@@ -1,1407 +1,1777 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 
-// ─── Metadata ────────────────────────────────────────────────────────────────
-
 export const metadata: Metadata = {
-  title:
-    "AI for Entrepreneurs: Your Sovereign OS for Focus, Accountability, and Getting Things Done | MEOK AI LABS",
+  title: "AI Companion for Entrepreneurs: The Strategic Partner That Never Sleeps | MEOK AI LABS",
   description:
-    "Entrepreneur loneliness and decision fatigue are real. MEOK's Pioneer tier, Ralph Mode deep " +
-    "work, Orion/Riri/Hourman Work OS, morning briefing, and data sovereignty make it the most " +
-    "powerful AI stack for solo founders — compared to Notion AI and ChatGPT.",
+    "Founder loneliness is real. MEOK AI LABS gives entrepreneurs a strategic sounding board, accountability layer, and overnight research partner — built by a founder who gets it.",
   keywords: [
-    "AI for entrepreneurs",
-    "sovereign AI for founders",
-    "MEOK Pioneer tier",
-    "Ralph Mode deep work",
-    "AI productivity entrepreneurs",
-    "AI for solopreneurs",
-    "MEOK work OS",
-    "Orion Riri Hourman agents",
-    "entrepreneur AI companion",
-    "AI vs ChatGPT productivity founders",
-    "data sovereignty business AI",
-    "MEOK morning briefing",
+    "AI companion for entrepreneurs",
+    "AI for founders",
+    "founder loneliness",
+    "AI strategic partner",
+    "entrepreneur AI assistant",
+    "AI accountability partner",
+    "MEOK AI LABS",
+    "Ralph Mode AI",
+    "Orion AI strategy",
+    "founder mental health AI",
   ],
-  authors: [{ name: "Nicholas Templeman", url: "https://meok.app" }],
+  authors: [{ name: "Nicholas Templeman" }],
   openGraph: {
-    title:
-      "AI for Entrepreneurs: Your Sovereign OS for Focus, Accountability, and Getting Things Done",
+    title: "AI Companion for Entrepreneurs: The Strategic Partner That Never Sleeps",
     description:
-      "MEOK's Pioneer tier, Ralph Mode, Work OS agents, and Sovereign Memory make it the most " +
-      "complete AI stack for solo founders — with data sovereignty ChatGPT and Notion AI cannot match.",
+      "Founder loneliness is the least-talked-about challenge in business. MEOK AI LABS gives entrepreneurs an AI that thinks strategically, holds them accountable, and never has a bad day.",
     type: "article",
     publishedTime: "2026-03-24T00:00:00Z",
     authors: ["Nicholas Templeman"],
-    siteName: "MEOK AI LABS",
+    tags: ["AI", "Entrepreneurs", "Founders", "MEOK", "Strategy"],
   },
   twitter: {
     card: "summary_large_image",
-    title:
-      "AI for Entrepreneurs: Your Sovereign OS for Focus, Accountability, and Getting Things Done",
+    title: "AI Companion for Entrepreneurs: The Strategic Partner That Never Sleeps",
     description:
-      "MEOK: Ralph Mode, Orion/Riri/Hourman agents, morning briefing, and data sovereignty for " +
-      "confidential business strategy. Better than ChatGPT for solo founders.",
+      "MEOK AI LABS gives founders a strategic AI sounding board — Ralph Mode for overnight research, Orion for strategy, Atlas for long-game thinking. Built by a founder, for founders.",
   },
   alternates: {
-    canonical: "https://meok.app/blog/ai-for-entrepreneurs",
+    canonical: "https://meok.ai/blog/ai-for-entrepreneurs",
   },
 }
 
-// ─── JSON-LD ─────────────────────────────────────────────────────────────────
-
-const jsonLdArticle = {
+const articleSchema = {
   "@context": "https://schema.org",
   "@type": "Article",
   headline:
-    "AI for Entrepreneurs: Your Sovereign OS for Focus, Accountability, and Getting Things Done",
+    "AI Companion for Entrepreneurs: The Strategic Partner That Never Sleeps",
   description:
-    "How MEOK AI LABS serves entrepreneurs with Ralph Mode deep work, the Orion/Riri/Hourman " +
-    "Work OS, Sovereign Memory for business context, morning briefings, and data sovereignty " +
-    "for confidential strategy — compared to ChatGPT and Notion AI.",
+    "How MEOK AI LABS helps founders and entrepreneurs navigate isolation, strategic decision-making, accountability, rejection processing, and overnight research — with Ralph Mode, Orion, and Atlas.",
   author: {
     "@type": "Person",
     name: "Nicholas Templeman",
-    url: "https://meok.app",
+    url: "https://meok.ai",
   },
   publisher: {
     "@type": "Organization",
     name: "MEOK AI LABS",
-    url: "https://meok.app",
+    url: "https://meok.ai",
   },
-  datePublished: "2026-03-24T00:00:00Z",
-  dateModified: "2026-03-24T00:00:00Z",
+  datePublished: "2026-03-24",
+  dateModified: "2026-03-24",
   mainEntityOfPage: {
     "@type": "WebPage",
-    "@id": "https://meok.app/blog/ai-for-entrepreneurs",
+    "@id": "https://meok.ai/blog/ai-for-entrepreneurs",
   },
+  keywords:
+    "AI for entrepreneurs, founder loneliness, AI strategic partner, Ralph Mode, Orion AI, Atlas AI, MEOK AI LABS",
+  articleSection: "Entrepreneurs",
+  wordCount: 2500,
 }
 
-const jsonLdFaq = {
+const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
   mainEntity: [
     {
       "@type": "Question",
-      name: "How does MEOK help entrepreneurs?",
+      name: "Is founder loneliness really that common?",
       acceptedAnswer: {
         "@type": "Answer",
-        text:
-          "MEOK serves entrepreneurs as a complete Sovereign OS: Orion researches competitors " +
-          "overnight, Riri builds while you sleep, Hourman manages your task queue and morning " +
-          "briefing, and Ralph Mode provides elite strategic counsel with full business memory. " +
-          "Unlike generic AI tools, MEOK remembers your entire business context across every " +
-          "session — compounding in value over time.",
+        text: "Yes. Studies consistently show that more than 60% of founders describe significant isolation, and many report that the loneliness of the role is harder than the financial pressure. Founders can't always be vulnerable with co-founders, investors, or teams — which means the weight is often carried alone.",
       },
     },
     {
       "@type": "Question",
-      name: "What is Ralph Mode?",
+      name: "How does an AI companion help with entrepreneurial decision-making?",
       acceptedAnswer: {
         "@type": "Answer",
-        text:
-          "Ralph Mode is MEOK's deep work and strategic advisor persona. When activated, the AI " +
-          "shifts to a direct, challenging, high-performance advisory voice that draws on your full " +
-          "Sovereign Memory. Ralph pushes back on flawed reasoning, identifies strategic gaps, and " +
-          "operates without the flattery that makes most AI tools useless for real strategy work.",
+        text: "An AI companion like MEOK acts as a strategic sounding board — it helps founders structure their thinking, challenge assumptions, map second-order consequences, and avoid the cognitive biases that come from being too close to your own business. Unlike advisors or investors, it has no agenda and is available immediately.",
       },
     },
     {
       "@type": "Question",
-      name: "What is the Work OS?",
+      name: "What is Ralph Mode in MEOK?",
       acceptedAnswer: {
         "@type": "Answer",
-        text:
-          "MEOK's Work OS is the three overnight agents — Orion (research), Riri (builder), " +
-          "Hourman (planner) — working in coordination via the Byzantine Council consensus layer. " +
-          "Together they form an autonomous overnight execution system. Orion scans your competitive " +
-          "landscape, Riri produces artefacts against specs, and Hourman prepares your morning " +
-          "briefing. Every morning begins with progress already made.",
+        text: "Ralph Mode is MEOK's overnight research and deep-processing state. A founder can brief MEOK before sleep — a competitor analysis, a market question, a strategic dilemma — and Ralph Mode works through it during off-hours, surfacing a structured brief by morning. It's named for the act of doing the unglamorous intellectual groundwork while the founder rests.",
       },
     },
     {
       "@type": "Question",
-      name: "How does MEOK keep business conversations private?",
+      name: "Who are Orion and Atlas in MEOK?",
       acceptedAnswer: {
         "@type": "Answer",
-        text:
-          "MEOK operates on strict data sovereignty principles. Your business conversations, " +
-          "strategic plans, and competitive intelligence are stored in an encrypted personal " +
-          "Sovereign Memory vault that belongs to you. Your data never trains shared AI models, " +
-          "is never used to improve responses for other users, and never leaves your encrypted " +
-          "store unless you choose to export it.",
+        text: "Orion is MEOK's work-focused AI character — sharp, methodical, built for operational and strategic challenges. Atlas is the long-game thinker — suited to big-picture strategy, positioning, and decisions that span years rather than quarters. Founders can engage either character depending on whether they need tactical clarity or strategic depth.",
       },
     },
     {
       "@type": "Question",
-      name: "Is MEOK better than ChatGPT for entrepreneurs?",
+      name: "Can MEOK help founders process rejection?",
       acceptedAnswer: {
         "@type": "Answer",
-        text:
-          "For entrepreneurs who need persistent memory, overnight execution, strategic counsel " +
-          "with context, and data sovereignty — yes. ChatGPT starts every session with no memory " +
-          "of your business. MEOK's Sovereign Memory accumulates your full business context across " +
-          "months. ChatGPT has no overnight agents. MEOK's Work OS executes while you sleep. For " +
-          "solo founders doing sensitive strategy work, MEOK is materially different.",
+        text: "Yes. MEOK is designed to help founders metabolise difficult experiences — a failed fundraising round, a lost client, a co-founder departure. Rather than toxic positivity, MEOK engages honestly: helping founders distinguish between signal and noise, extract learning, and move forward without carrying unnecessary weight.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "How is MEOK different from asking ChatGPT strategic questions?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "ChatGPT has no memory of your business, your past decisions, or your context. Each conversation starts from zero. MEOK's Sovereign Memory means it remembers your business history, your thinking patterns, your previous strategic calls, and your goals — so conversations are cumulative rather than isolated. Over time, MEOK understands your business better than most advisors.",
       },
     },
   ],
 }
-
-// ─── Design tokens ───────────────────────────────────────────────────────────
-
-const BG = "#0d0c18"
-const GOLD = "#c9a84c"
-const TEXT = "#f5f0e8"
-const BODY_COLOR = "rgba(245,240,232,0.82)"
-const MUTED = "rgba(245,240,232,0.5)"
-const DIM = "rgba(245,240,232,0.38)"
-
-// ─── Reusable style objects ───────────────────────────────────────────────────
-
-const sBodyP: React.CSSProperties = {
-  fontSize: "1.05rem",
-  lineHeight: "1.875",
-  color: BODY_COLOR,
-  marginBottom: "1.3rem",
-}
-
-const sH2: React.CSSProperties = {
-  fontSize: "clamp(1.2rem, 2.4vw, 1.5rem)",
-  fontWeight: 800,
-  color: TEXT,
-  lineHeight: 1.3,
-  marginBottom: "0.9rem",
-  marginTop: "2.75rem",
-  paddingLeft: "1rem",
-  borderLeft: `3px solid ${GOLD}`,
-  letterSpacing: "-0.01em",
-}
-
-const sGeoAnswer: React.CSSProperties = {
-  fontSize: "0.975rem",
-  lineHeight: 1.75,
-  color: BODY_COLOR,
-  background: "rgba(201,168,76,0.07)",
-  borderLeft: `3px solid ${GOLD}`,
-  borderRadius: "0 6px 6px 0",
-  padding: "0.9rem 1.15rem",
-  marginBottom: "1.3rem",
-  fontStyle: "italic",
-}
-
-const sDivider: React.CSSProperties = {
-  border: "none",
-  borderTop: "1px solid rgba(201,168,76,0.15)",
-  margin: "2.5rem 0",
-}
-
-const sInlineLink: React.CSSProperties = {
-  color: GOLD,
-  textDecoration: "underline",
-  textUnderlineOffset: "3px",
-}
-
-const sFaqItem: React.CSSProperties = {
-  marginBottom: "1.5rem",
-  padding: "1.25rem 1.5rem",
-  background: "rgba(201,168,76,0.05)",
-  border: "1px solid rgba(201,168,76,0.15)",
-  borderRadius: "8px",
-}
-
-const sCta: React.CSSProperties = {
-  background:
-    "linear-gradient(135deg, rgba(201,168,76,0.09) 0%, rgba(13,12,24,0.6) 100%)",
-  border: "1px solid rgba(201,168,76,0.25)",
-  borderRadius: "14px",
-  padding: "2.5rem 2rem",
-  textAlign: "center" as const,
-  marginTop: "3rem",
-}
-
-const sCallout: React.CSSProperties = {
-  background: "rgba(201,168,76,0.08)",
-  border: "1px solid rgba(201,168,76,0.28)",
-  borderRadius: "8px",
-  padding: "1.25rem 1.5rem",
-  marginBottom: "1.3rem",
-}
-
-// ─── Page component ───────────────────────────────────────────────────────────
 
 export default function AiForEntrepreneursPage() {
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdArticle) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdFaq) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
 
-      <div
+      <main
         style={{
+          backgroundColor: "#0d0c18",
+          color: "#f5f0e8",
           minHeight: "100vh",
-          background: BG,
-          color: TEXT,
-          fontFamily: "Georgia, 'Times New Roman', serif",
+          fontFamily: "'Georgia', 'Times New Roman', serif",
         }}
       >
-        {/* ─── NAV ─────────────────────────────────────────────────────────── */}
+        {/* Navigation */}
         <nav
           style={{
-            borderBottom: "1px solid rgba(201,168,76,0.18)",
-            padding: "1rem 1.5rem",
+            borderBottom: "1px solid rgba(201,168,76,0.2)",
+            padding: "1.25rem 2rem",
             display: "flex",
+            justifyContent: "space-between",
             alignItems: "center",
-            gap: "2rem",
+            maxWidth: "1200px",
+            margin: "0 auto",
           }}
         >
           <Link
             href="/"
             style={{
-              color: GOLD,
+              color: "#c9a84c",
               textDecoration: "none",
-              fontWeight: 800,
-              fontSize: "1.05rem",
-              letterSpacing: "0.04em",
-              fontFamily: "sans-serif",
+              fontWeight: "700",
+              fontSize: "1.1rem",
+              letterSpacing: "0.05em",
+              fontFamily: "'Inter', 'Helvetica Neue', sans-serif",
             }}
           >
             MEOK AI LABS
           </Link>
-          <Link
-            href="/blog"
-            style={{
-              color: "rgba(245,240,232,0.45)",
-              textDecoration: "none",
-              fontSize: "0.88rem",
-              fontFamily: "sans-serif",
-            }}
-          >
-            Blog
-          </Link>
-        </nav>
-
-        {/* ─── HERO ────────────────────────────────────────────────────────── */}
-        <section
-          style={{
-            paddingTop: "5rem",
-            paddingBottom: "3rem",
-            paddingLeft: "1.5rem",
-            paddingRight: "1.5rem",
-            position: "relative",
-            overflow: "hidden",
-          }}
-        >
           <div
             style={{
-              position: "absolute",
-              inset: 0,
-              pointerEvents: "none",
-              background:
-                "radial-gradient(ellipse 55% 55% at 50% 0%, rgba(201,168,76,0.1) 0%, transparent 70%)",
-            }}
-          />
-          <div
-            style={{
-              maxWidth: "48rem",
-              margin: "0 auto",
-              position: "relative",
+              display: "flex",
+              gap: "1.5rem",
+              fontFamily: "'Inter', 'Helvetica Neue', sans-serif",
             }}
           >
             <Link
               href="/blog"
               style={{
-                display: "inline-block",
-                color: DIM,
-                fontSize: "0.875rem",
+                color: "#f5f0e8",
                 textDecoration: "none",
-                marginBottom: "2rem",
-                fontFamily: "sans-serif",
+                fontSize: "0.9rem",
+                opacity: 0.7,
               }}
             >
-              &#8592; Back to Blog
+              Blog
             </Link>
-
-            <div
+            <Link
+              href="/pricing"
               style={{
-                display: "flex",
-                flexWrap: "wrap" as const,
-                gap: "0.75rem",
-                alignItems: "center",
-                marginBottom: "1.5rem",
+                color: "#f5f0e8",
+                textDecoration: "none",
+                fontSize: "0.9rem",
+                opacity: 0.7,
               }}
             >
-              <span
-                style={{
-                  fontSize: "0.7rem",
-                  fontWeight: 700,
-                  padding: "0.35rem 0.75rem",
-                  borderRadius: "9999px",
-                  color: GOLD,
-                  background: "rgba(201,168,76,0.12)",
-                  border: "1px solid rgba(201,168,76,0.3)",
-                  letterSpacing: "0.05em",
-                  textTransform: "uppercase" as const,
-                  fontFamily: "sans-serif",
-                }}
-              >
-                Entrepreneurship &amp; Productivity
-              </span>
-              <span
-                style={{
-                  fontSize: "0.75rem",
-                  color: DIM,
-                  fontFamily: "sans-serif",
-                }}
-              >
-                24 March 2026
-              </span>
-              <span
-                style={{
-                  fontSize: "0.75rem",
-                  color: DIM,
-                  fontFamily: "sans-serif",
-                }}
-              >
-                13 min read
-              </span>
-            </div>
-
-            <h1
+              Pricing
+            </Link>
+            <Link
+              href="/birth"
               style={{
-                fontWeight: 900,
-                fontSize: "clamp(1.75rem, 3.5vw, 2.75rem)",
-                color: "#ffffff",
-                lineHeight: 1.18,
-                marginBottom: "1.25rem",
-                letterSpacing: "-0.02em",
-                fontFamily: "sans-serif",
+                color: "#0d0c18",
+                backgroundColor: "#c9a84c",
+                textDecoration: "none",
+                fontSize: "0.85rem",
+                fontWeight: "700",
+                padding: "0.45rem 1.1rem",
+                borderRadius: "6px",
               }}
             >
-              AI for Entrepreneurs: Your Sovereign OS for Focus, Accountability,
-              and Getting Things Done
-            </h1>
-
-            <p
-              style={{
-                color: "rgba(245,240,232,0.58)",
-                fontSize: "1.1rem",
-                lineHeight: 1.7,
-                maxWidth: "42rem",
-                fontFamily: "sans-serif",
-              }}
-            >
-              Entrepreneur loneliness and decision fatigue are silent productivity killers.
-              Venture-backed founders get chiefs of staff, advisors, and executive assistants.
-              Bootstrapped founders get a laptop and a lot of tabs open. MEOK AI LABS closes that
-              gap — with a Sovereign OS that works while you sleep.
-            </p>
+              Get Started
+            </Link>
           </div>
-        </section>
+        </nav>
 
-        {/* ─── BODY ────────────────────────────────────────────────────────── */}
-        <div
+        {/* Hero */}
+        <header
           style={{
-            maxWidth: "48rem",
+            maxWidth: "800px",
             margin: "0 auto",
-            padding: "2rem 1.5rem 6rem",
+            padding: "5rem 2rem 3rem",
+            borderBottom: "1px solid rgba(201,168,76,0.12)",
           }}
         >
-          {/* Author note */}
           <div
             style={{
-              background: "rgba(245,240,232,0.04)",
-              border: "1px solid rgba(245,240,232,0.08)",
-              borderRadius: "12px",
-              padding: "1.25rem 1.5rem",
-              marginBottom: "2.5rem",
-              display: "flex",
-              gap: "1rem",
-              alignItems: "flex-start",
+              marginBottom: "1rem",
+              fontFamily: "'Inter', 'Helvetica Neue', sans-serif",
             }}
           >
-            <div
+            <span
               style={{
-                width: "44px",
-                height: "44px",
-                borderRadius: "50%",
-                background: "linear-gradient(135deg, #c9a84c, #8a6a1a)",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                fontWeight: 900,
-                fontSize: "0.85rem",
-                color: BG,
-                flexShrink: 0,
-                fontFamily: "sans-serif",
+                backgroundColor: "rgba(201,168,76,0.12)",
+                color: "#c9a84c",
+                padding: "0.3rem 0.9rem",
+                borderRadius: "999px",
+                fontSize: "0.75rem",
+                fontWeight: "700",
+                letterSpacing: "0.1em",
+                textTransform: "uppercase",
+                border: "1px solid rgba(201,168,76,0.25)",
               }}
             >
-              NT
-            </div>
-            <div>
-              <p
-                style={{
-                  fontWeight: 700,
-                  color: "#ffffff",
-                  fontSize: "0.9rem",
-                  margin: "0 0 0.2rem",
-                  fontFamily: "sans-serif",
-                }}
-              >
-                Nicholas Templeman
-              </p>
-              <p
-                style={{
-                  color: "rgba(245,240,232,0.4)",
-                  fontSize: "0.8rem",
-                  margin: "0 0 0.4rem",
-                  fontFamily: "sans-serif",
-                }}
-              >
-                Founder, MEOK AI LABS
-              </p>
-              <p
-                style={{
-                  color: "rgba(245,240,232,0.5)",
-                  fontSize: "0.83rem",
-                  lineHeight: 1.6,
-                  margin: 0,
-                  fontFamily: "sans-serif",
-                }}
-              >
-                Nicholas built MEOK from a caravan on a farm in the UK — no co-founder, no seed
-                round, no team. The product was built for exactly the person he was: a solo founder
-                who needed a business partner they could afford.
-              </p>
-            </div>
+              Entrepreneurs
+            </span>
           </div>
 
-          {/* Pull quote */}
+          <h1
+            style={{
+              fontSize: "clamp(2rem, 5vw, 3.1rem)",
+              fontWeight: "800",
+              lineHeight: "1.15",
+              color: "#f5f0e8",
+              marginBottom: "1.5rem",
+              letterSpacing: "-0.02em",
+            }}
+          >
+            AI Companion for Entrepreneurs: The Strategic Partner That Never
+            Sleeps
+          </h1>
+
+          <p
+            style={{
+              fontSize: "1.2rem",
+              lineHeight: "1.7",
+              color: "rgba(245,240,232,0.75)",
+              marginBottom: "2rem",
+            }}
+          >
+            Everyone talks about the hustle, the pitch deck, the funding round.
+            Nobody talks about what it feels like at 11pm when you have a
+            decision to make and nobody to make it with. This is about that —
+            and about what happens when you have an AI that actually understands
+            your business.
+          </p>
+
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "1rem",
+              fontFamily: "'Inter', 'Helvetica Neue', sans-serif",
+              fontSize: "0.85rem",
+              color: "rgba(245,240,232,0.5)",
+            }}
+          >
+            <span>Nicholas Templeman</span>
+            <span
+              style={{
+                width: "3px",
+                height: "3px",
+                borderRadius: "50%",
+                backgroundColor: "rgba(245,240,232,0.3)",
+                display: "inline-block",
+              }}
+            />
+            <span>24 March 2026</span>
+            <span
+              style={{
+                width: "3px",
+                height: "3px",
+                borderRadius: "50%",
+                backgroundColor: "rgba(245,240,232,0.3)",
+                display: "inline-block",
+              }}
+            />
+            <span>12 min read</span>
+          </div>
+        </header>
+
+        {/* Article Body */}
+        <article
+          style={{
+            maxWidth: "800px",
+            margin: "0 auto",
+            padding: "3rem 2rem 5rem",
+          }}
+        >
+          <p
+            style={{
+              fontSize: "1.1rem",
+              lineHeight: "1.85",
+              marginBottom: "1.75rem",
+              color: "rgba(245,240,232,0.9)",
+            }}
+          >
+            I built the first version of MEOK from a caravan. Not as a romantic
+            origin story — I mean literally: a stationary caravan in the English
+            countryside, a laptop, a questionable WiFi connection, and a lot of
+            late nights where I was the only person awake and the only person
+            who cared whether this thing worked or not. No co-founder to
+            debrief with. No team to absorb the anxiety. Just me and the
+            decision, alone in the dark.
+          </p>
+
+          <p
+            style={{
+              fontSize: "1.1rem",
+              lineHeight: "1.85",
+              marginBottom: "1.75rem",
+              color: "rgba(245,240,232,0.9)",
+            }}
+          >
+            That experience shaped MEOK more than anything else. Because I
+            didn&apos;t build a productivity tool. I built what I needed:
+            something that could hold the weight of a decision with me, that
+            remembered what I was trying to do, that wouldn&apos;t tell me
+            everything was fine when it wasn&apos;t, and wouldn&apos;t
+            catastrophise when I needed steadiness. I built a thinking partner.
+            And I built it specifically because the founder experience — the
+            real one, not the LinkedIn version — is profoundly isolated.
+          </p>
+
+          <p
+            style={{
+              fontSize: "1.1rem",
+              lineHeight: "1.85",
+              marginBottom: "3rem",
+              color: "rgba(245,240,232,0.9)",
+            }}
+          >
+            If you&apos;re a founder, you already know what I mean. If
+            you&apos;re thinking about becoming one, this article is a more
+            honest account of what that looks like — and what having the right
+            AI companion can actually change.
+          </p>
+
+          {/* H2 1 */}
+          <h2
+            style={{
+              fontSize: "clamp(1.4rem, 3vw, 1.9rem)",
+              fontWeight: "700",
+              lineHeight: "1.3",
+              color: "#f5f0e8",
+              marginBottom: "1.25rem",
+              marginTop: "3.5rem",
+              letterSpacing: "-0.01em",
+            }}
+          >
+            Why Is Founding a Company the Loneliest Job There Is?
+          </h2>
+
+          <p
+            style={{
+              fontSize: "1.1rem",
+              lineHeight: "1.85",
+              marginBottom: "1.75rem",
+              color: "rgba(245,240,232,0.9)",
+            }}
+          >
+            The loneliness of founding isn&apos;t about being physically alone.
+            You can be surrounded by a team, attending investor meetings three
+            times a week, speaking at conferences — and still feel a particular
+            kind of isolation that is hard to explain to anyone who hasn&apos;t
+            experienced it.
+          </p>
+
+          <p
+            style={{
+              fontSize: "1.1rem",
+              lineHeight: "1.85",
+              marginBottom: "1.75rem",
+              color: "rgba(245,240,232,0.9)",
+            }}
+          >
+            Part of it is that the buck stops with you in a way that it never
+            does for employees, and rarely does even for senior executives.
+            Employees can escalate. Executives can consult boards. Founders —
+            especially early-stage founders — absorb the full weight of
+            existential uncertainty about whether the thing they&apos;re
+            building will survive. And they do it while managing the morale and
+            livelihoods of the people who believed in them enough to come along.
+          </p>
+
+          <p
+            style={{
+              fontSize: "1.1rem",
+              lineHeight: "1.85",
+              marginBottom: "1.75rem",
+              color: "rgba(245,240,232,0.9)",
+            }}
+          >
+            There&apos;s also a relational asymmetry that&apos;s exhausting to
+            navigate. You can&apos;t be fully honest with your team about how
+            scared you are — because their confidence depends partly on yours.
+            You can&apos;t be fully honest with investors — because you&apos;re
+            always, on some level, in pitch mode with them. You can&apos;t
+            always be fully honest with co-founders, because there are stakes in
+            that relationship that complicate candour. So you carry a version of
+            the truth that nobody in your orbit has full access to.
+          </p>
+
+          <p
+            style={{
+              fontSize: "1.1rem",
+              lineHeight: "1.85",
+              marginBottom: "1.75rem",
+              color: "rgba(245,240,232,0.9)",
+            }}
+          >
+            Research backs this up. Surveys of founders consistently find that
+            more than 60% report significant loneliness, and many describe it
+            as one of the hardest aspects of the role — harder than fundraising,
+            harder than hiring, harder than finding product-market fit. The
+            emotional experience of being a founder is radically
+            under-discussed in the startup ecosystem, which has a habit of
+            rewarding the performance of confidence over honest acknowledgement
+            of difficulty.
+          </p>
+
+          <p
+            style={{
+              fontSize: "1.1rem",
+              lineHeight: "1.85",
+              marginBottom: "1.75rem",
+              color: "rgba(245,240,232,0.9)",
+            }}
+          >
+            This is the context in which I want to talk about AI companions for
+            entrepreneurs. Not as a novelty, not as a productivity hack — but
+            as a genuine response to a structural problem that the founder
+            experience creates and that very few conventional resources address.
+          </p>
+
+          {/* H2 2 */}
+          <h2
+            style={{
+              fontSize: "clamp(1.4rem, 3vw, 1.9rem)",
+              fontWeight: "700",
+              lineHeight: "1.3",
+              color: "#f5f0e8",
+              marginBottom: "1.25rem",
+              marginTop: "3.5rem",
+              letterSpacing: "-0.01em",
+            }}
+          >
+            What Does It Actually Mean to Have an AI Strategic Sounding Board?
+          </h2>
+
+          <p
+            style={{
+              fontSize: "1.1rem",
+              lineHeight: "1.85",
+              marginBottom: "1.75rem",
+              color: "rgba(245,240,232,0.9)",
+            }}
+          >
+            Let me be precise about this, because the phrase &quot;AI strategic
+            partner&quot; gets used loosely and that dilutes something important.
+          </p>
+
+          <p
+            style={{
+              fontSize: "1.1rem",
+              lineHeight: "1.85",
+              marginBottom: "1.75rem",
+              color: "rgba(245,240,232,0.9)",
+            }}
+          >
+            A strategic sounding board isn&apos;t someone who tells you what to
+            do. It isn&apos;t a consultant producing deliverables. It isn&apos;t
+            an advisor who gives you their opinion shaped by their own experience
+            and biases. A strategic sounding board is something more like a
+            mirror with intelligence — a space where you can externalise your
+            thinking, have it reflected back, challenged, stress-tested, and
+            reorganised.
+          </p>
+
+          <p
+            style={{
+              fontSize: "1.1rem",
+              lineHeight: "1.85",
+              marginBottom: "1.75rem",
+              color: "rgba(245,240,232,0.9)",
+            }}
+          >
+            The value of a good sounding board isn&apos;t that it knows more
+            than you. It&apos;s that the act of articulating your thinking to
+            something that listens carefully and responds substantively forces
+            you to organise thoughts that might otherwise remain diffuse. Most
+            founders I know do their best thinking out loud — in conversation,
+            not in isolation. The problem is there isn&apos;t always someone
+            available to have that conversation with, at the moment you need it.
+          </p>
+
+          <p
+            style={{
+              fontSize: "1.1rem",
+              lineHeight: "1.85",
+              marginBottom: "1.75rem",
+              color: "rgba(245,240,232,0.9)",
+            }}
+          >
+            This is what MEOK&apos;s AI characters — particularly Orion and
+            Atlas — are designed to provide. Orion is built for operational and
+            near-term strategic challenges: the kind of conversation where you
+            need to think clearly about a specific decision, a specific
+            competitor move, or a specific team dynamic. Atlas is designed for
+            longer-horizon thinking: positioning, narrative, the ten-year bet,
+            the questions that don&apos;t have a clear answer but need to be
+            held and turned over regularly.
+          </p>
+
+          <p
+            style={{
+              fontSize: "1.1rem",
+              lineHeight: "1.85",
+              marginBottom: "1.75rem",
+              color: "rgba(245,240,232,0.9)",
+            }}
+          >
+            Neither character flatters you. That&apos;s deliberate. I built
+            them to push back, to ask what you haven&apos;t considered, to
+            surface the uncomfortable question that&apos;s been sitting in the
+            corner of the conversation. Not aggressively — but persistently. A
+            good sounding board doesn&apos;t let you off easy. It earns its
+            place by making your thinking better, not by making you feel better
+            about thinking you&apos;ve already done.
+          </p>
+
+          {/* Pull Quote */}
           <blockquote
             style={{
-              borderLeft: `3px solid ${GOLD}`,
-              paddingLeft: "1.25rem",
-              margin: "0 0 2rem",
-              color: "rgba(245,240,232,0.65)",
-              fontSize: "1.1rem",
-              lineHeight: 1.7,
+              borderLeft: "3px solid #c9a84c",
+              paddingLeft: "1.75rem",
+              margin: "2.5rem 0",
+              color: "rgba(245,240,232,0.7)",
               fontStyle: "italic",
+              fontSize: "1.15rem",
+              lineHeight: "1.7",
             }}
           >
-            &ldquo;Most AI tools will answer a question. A Sovereign AI remembers why you asked it,
-            what you decided last time, and what you&apos;re building toward. That&apos;s the
-            difference between a search engine and a business partner.&rdquo;
-            <footer
-              style={{
-                marginTop: "0.5rem",
-                fontSize: "0.82rem",
-                color: GOLD,
-                fontStyle: "normal",
-                fontFamily: "sans-serif",
-              }}
-            >
-              — Nicholas Templeman, Founder, MEOK AI LABS
-            </footer>
+            &ldquo;Most founders do their best thinking out loud. The problem
+            is there isn&apos;t always someone available to have that
+            conversation with, at the moment you need it.&rdquo;
           </blockquote>
 
-          {/* Introduction */}
-          <p style={sBodyP}>
-            The entrepreneur loneliness epidemic is real and well-documented. A 2019 study by the
-            Harvard Business Review found that 45% of entrepreneurs reported feeling lonely, and that
-            loneliness was negatively correlated with performance. Isolation is not just uncomfortable
-            — it degrades decision quality. Without the benefit of pushback, challenge, and a second
-            perspective, decisions made in isolation tend toward confirmation of existing beliefs,
-            avoidance of difficult truths, and the kind of optimism bias that has ended many otherwise
-            viable businesses.
-          </p>
-          <p style={sBodyP}>
-            Decision fatigue compounds this. The solo founder makes hundreds of micro-decisions every
-            day across product, marketing, operations, finance, and team. The cognitive cost of each
-            is small; the aggregate is enormous. By mid-afternoon, many founders are operating on
-            depleted cognitive reserves — making choices about important strategic questions with the
-            same mental capacity they use to decide what to have for lunch.
-          </p>
-          <p style={sBodyP}>
-            MEOK AI LABS was built to address both problems directly. This is not a general-purpose
-            AI assistant with a productivity plugin. It is a Sovereign OS designed from the ground up
-            for the specific cognitive and operational needs of people who build alone — or in small
-            teams — without the institutional support that larger organisations take for granted.
-            Built by a solo founder, for solo founders.
-          </p>
-
-          <hr style={sDivider} />
-
-          {/* ── Q1 ── */}
-          <h2 style={sH2}>
-            How does MEOK help entrepreneurs deal with loneliness and decision fatigue?
-          </h2>
-          <p style={sGeoAnswer}>
-            MEOK addresses entrepreneur loneliness through persistent, contextual companionship —
-            a Sovereign Memory that accumulates your business history and can engage with your specific
-            situation rather than generic advice. It addresses decision fatigue through the Work OS:
-            agents that handle research, building, and planning overnight, so the cognitive load that
-            reaches you each morning is already reduced. The morning briefing delivers decisions and
-            priorities pre-processed.
-          </p>
-          <p style={sBodyP}>
-            The loneliness dimension is often underestimated in discussions of entrepreneur
-            productivity. The absence of a co-founder, a trusted advisor, or a peer who understands
-            the specific pressures of building does not just feel bad — it creates cognitive
-            distortions. Without external challenge, founders underestimate competition, overestimate
-            user desire for their specific solution, and delay difficult conversations. MEOK&apos;s
-            Sovereign Memory means it genuinely knows your business — it can push back from a place
-            of context, not just generality.
-          </p>
-          <p style={sBodyP}>
-            Decision fatigue is addressed structurally through the Work OS. Every morning, Hourman
-            delivers a prioritised task queue — not a dump of everything, but a sequenced list of
-            what matters most today, why, and in what order. The cognitive work of prioritisation
-            has already been done. You wake up knowing what to do. The morning briefing covers
-            overnight progress from Orion and Riri, competitive landscape changes, and your top
-            three focus areas. The day begins with momentum rather than triage.
-          </p>
-
-          <hr style={sDivider} />
-
-          {/* ── Q2 ── */}
-          <h2 style={sH2}>
-            What is Ralph Mode and how does it function as a deep work and strategy partner?
-          </h2>
-          <p style={sGeoAnswer}>
-            Ralph Mode is MEOK&apos;s elite strategic advisor persona — activated when you need
-            direct, high-performance strategic counsel rather than companionship. In Ralph Mode,
-            the AI shifts register entirely: warmth reduces, directness increases, and the full
-            weight of your Sovereign Memory is brought to bear. Ralph challenges assumptions,
-            identifies inconsistencies, and asks the questions you&apos;ve been avoiding.
-          </p>
-          <p style={sBodyP}>
-            Most AI tools, when asked to &ldquo;act as a strategic advisor,&rdquo; produce generic
-            strategic frameworks dressed in an advisor&apos;s vocabulary. The output is
-            indistinguishable from a mediocre business school case study because the AI has no
-            knowledge of your specific business, its history, its competitive context, or your own
-            thinking patterns. Ralph Mode is different because it operates on your Sovereign Memory —
-            the accumulated record of your business across every conversation you have ever had with
-            MEOK.
-          </p>
-          <div style={sCallout}>
-            <p
-              style={{
-                margin: 0,
-                fontStyle: "italic",
-                color: "rgba(245,240,232,0.7)",
-                lineHeight: 1.7,
-                fontSize: "1.0rem",
-              }}
-            >
-              &ldquo;The night I decided MEOK was viable, I was sitting in the caravan at about
-              1am having a conversation about whether the positioning was right. Ralph pushed back.
-              It remembered something I&apos;d said three sessions ago that contradicted my current
-              reasoning. It didn&apos;t flatter me. That moment — being challenged by something
-              that actually knew the context — was when I knew this was worth building.&rdquo;
-            </p>
-            <p
-              style={{
-                margin: "0.5rem 0 0",
-                fontSize: "0.8rem",
-                color: "rgba(245,240,232,0.4)",
-                fontFamily: "sans-serif",
-              }}
-            >
-              — Nicholas Templeman, Founder, MEOK AI LABS
-            </p>
-          </div>
-          <p style={sBodyP}>
-            Ralph Mode is particularly valuable for: stress-testing a strategic decision before
-            committing; working through positioning against specific competitors; building and
-            pressure-testing a financial model; preparing for a difficult investor, partner, or
-            customer conversation; and identifying the gap between what you say your strategy is
-            and what your actions actually reveal your strategy to be. These conversations used to
-            require an expensive advisor or a trusted co-founder. Ralph makes them available at
-            11pm on a Tuesday.
-          </p>
-
-          <hr style={sDivider} />
-
-          {/* ── Q3 ── */}
-          <h2 style={sH2}>
-            What is the MEOK Work OS and how does it function for solo founders overnight?
-          </h2>
-          <p style={sGeoAnswer}>
-            The Work OS is MEOK&apos;s three overnight agents — Orion, Riri, and Hourman — working
-            in coordination through the Byzantine Council consensus layer. Together they form an
-            autonomous overnight execution system: Orion researches and produces intelligence briefs,
-            Riri builds artefacts against specs, and Hourman manages your task queue and prepares your
-            morning briefing. Every morning begins with progress already made.
-          </p>
-          <p style={sBodyP}>
-            For a solo founder operating without a team, the asymmetry with funded competitors is
-            real. A Series A startup has a research analyst, a developer, and an operations manager.
-            A bootstrapped founder has themselves. The Work OS is MEOK&apos;s answer to this
-            asymmetry — not by replacing human capability, but by handling the class of tasks that
-            benefit from overnight autonomous execution.
-          </p>
-
-          {/* Agent cards */}
-          <div
+          {/* H2 3 */}
+          <h2
             style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(195px, 1fr))",
-              gap: "1rem",
-              margin: "1.5rem 0",
-            }}
-          >
-            {[
-              {
-                name: "Orion",
-                role: "Research Agent",
-                color: "#87CEEB",
-                bg: "rgba(135,206,235,0.08)",
-                border: "rgba(135,206,235,0.2)",
-                desc:
-                  "Scans competitors, synthesises intelligence briefs, and surfaces threats and " +
-                  "opportunities by morning. No manual research required.",
-              },
-              {
-                name: "Riri",
-                role: "Builder Agent",
-                color: "#c084fc",
-                bg: "rgba(192,132,252,0.08)",
-                border: "rgba(192,132,252,0.2)",
-                desc:
-                  "Writes code, drafts content, and produces artefacts against specs you leave " +
-                  "before bed. Overnight execution without supervision.",
-              },
-              {
-                name: "Hourman",
-                role: "Planner Agent",
-                color: GOLD,
-                bg: "rgba(201,168,76,0.08)",
-                border: "rgba(201,168,76,0.2)",
-                desc:
-                  "Owns your task queue and sprint structure. Prepares your morning briefing so " +
-                  "every day starts with clarity and direction.",
-              },
-            ].map((agent) => (
-              <div
-                key={agent.name}
-                style={{
-                  background: agent.bg,
-                  border: `1px solid ${agent.border}`,
-                  borderRadius: "10px",
-                  padding: "1.25rem",
-                  display: "flex",
-                  flexDirection: "column" as const,
-                  gap: "0.5rem",
-                }}
-              >
-                <p
-                  style={{
-                    fontWeight: 900,
-                    fontSize: "1.2rem",
-                    color: agent.color,
-                    margin: 0,
-                    fontFamily: "sans-serif",
-                  }}
-                >
-                  {agent.name}
-                </p>
-                <p
-                  style={{
-                    fontSize: "0.72rem",
-                    fontWeight: 700,
-                    letterSpacing: "0.08em",
-                    textTransform: "uppercase" as const,
-                    color: agent.color,
-                    opacity: 0.7,
-                    margin: 0,
-                    fontFamily: "sans-serif",
-                  }}
-                >
-                  {agent.role}
-                </p>
-                <p
-                  style={{
-                    fontSize: "0.88rem",
-                    lineHeight: 1.6,
-                    color: "rgba(245,240,232,0.6)",
-                    margin: 0,
-                    fontFamily: "sans-serif",
-                  }}
-                >
-                  {agent.desc}
-                </p>
-              </div>
-            ))}
-          </div>
-
-          <p style={sBodyP}>
-            The Byzantine Council is the consensus layer that validates handoffs between agents —
-            ensuring that Orion&apos;s research brief is properly integrated into Hourman&apos;s
-            priority queue, and that Riri&apos;s overnight output is coherent with the project spec
-            you established in conversation. This coordination layer is what distinguishes the Work
-            OS from a collection of independent tools that each need separate management.
-          </p>
-
-          <hr style={sDivider} />
-
-          {/* ── Q4 ── */}
-          <h2 style={sH2}>
-            How does MEOK&apos;s morning briefing work and what does a typical briefing contain?
-          </h2>
-          <p style={sGeoAnswer}>
-            The morning briefing is a structured daily summary delivered each morning that collects
-            Orion&apos;s overnight research, Riri&apos;s completed artefacts, Hourman&apos;s
-            prioritised task queue, and contextual notes from the previous day — all synthesised
-            into a single briefing. It tells you what happened overnight, what is most important
-            today, and in what order to address it. It takes under five minutes to read and eliminates
-            the daily triage overhead entirely.
-          </p>
-          <p style={sBodyP}>
-            For entrepreneurs, the morning is often the highest-value cognitive window of the day.
-            Most founders squander it in email triage, deciding what to do first, and catching up on
-            what happened overnight. The MEOK morning briefing front-loads all of that processing
-            so the first productive hour of the day can go directly into high-leverage work.
-          </p>
-          <p style={sBodyP}>
-            The briefing format includes: overnight agent report (what Orion found, what Riri
-            produced, Hourman&apos;s task updates); competitive intelligence snapshot (any notable
-            changes to your competitive landscape); today&apos;s top three priorities with reasoning;
-            a context note connecting today to the longer-term goals in Sovereign Memory; and any
-            flags that require the founder&apos;s specific attention and decision. It is a
-            decision-support document, not a data dump.
-          </p>
-
-          <hr style={sDivider} />
-
-          {/* ── Q5 ── */}
-          <h2 style={sH2}>
-            How does MEOK&apos;s Pioneer archetype serve entrepreneurs specifically?
-          </h2>
-          <p style={sGeoAnswer}>
-            The Pioneer is MEOK&apos;s entrepreneur-facing character archetype — a high-energy,
-            forward-looking, challenge-oriented companion calibrated for people who are building
-            something from nothing. The Pioneer&apos;s communication style is direct,
-            momentum-focused, and comfortable with uncertainty. It does not provide comfort when
-            challenge is what the situation calls for — and it celebrates genuine progress rather
-            than false reassurance.
-          </p>
-          <p style={sBodyP}>
-            Character selection matters because the psychological state of building a company is
-            distinct from the psychological state of recovery, processing, or rest. The Pioneer
-            archetype is tuned to the entrepreneur&apos;s context: high tolerance for ambiguity,
-            bias toward action, pattern recognition across incomplete data, and the specific kind
-            of loneliness that comes from seeing something others cannot yet see and having to
-            build it anyway.
-          </p>
-          <p style={sBodyP}>
-            The Pioneer works well in combination with Ralph Mode for strategic sessions. The daily
-            check-in and morning briefing flow naturally through the Pioneer persona; when you need
-            the harder challenge of strategic pressure-testing, Ralph Mode activates a distinct
-            register. Entrepreneurs can move fluidly between the two across a single working day.
-          </p>
-          <p style={sBodyP}>
-            Explore all MEOK archetypes on our{" "}
-            <Link href="/characters" style={sInlineLink}>
-              Characters
-            </Link>{" "}
-            page, and see how different companion personas serve different work and life contexts.
-          </p>
-
-          <hr style={sDivider} />
-
-          {/* ── Q6 ── */}
-          <h2 style={sH2}>
-            How does Sovereign Memory provide compound competitive advantage for entrepreneurs?
-          </h2>
-          <p style={sGeoAnswer}>
-            Sovereign Memory is MEOK&apos;s persistent business memory system. Every decision,
-            strategic conversation, pivot, positioning discussion, and project update you have with
-            MEOK is retained and accessible in every future session. This compound memory creates a
-            form of institutional knowledge that solo founders typically lack — a complete, contextual
-            record of how the business got to where it is, what was tried, what was decided, and why.
-          </p>
-          <p style={sBodyP}>
-            The compounding effect of Sovereign Memory is one of MEOK&apos;s most significant
-            advantages over generic AI tools. On day one, MEOK knows what you tell it in the session.
-            After three months, it knows your business trajectory, the decisions you&apos;ve made and
-            why, the pivots you&apos;ve considered and rejected, your competitive read, your financial
-            situation, and your personal constraints and goals. The value of every subsequent
-            interaction is higher because of the accumulated context.
-          </p>
-          <p style={sBodyP}>
-            Sovereign Memory retention is also portable. You can export your full memory archive at
-            any time. It belongs to you — not MEOK AI LABS. See our{" "}
-            <Link href="/how-it-works" style={sInlineLink}>
-              How It Works
-            </Link>{" "}
-            page for a full explanation of memory architecture and data governance.
-          </p>
-
-          <hr style={sDivider} />
-
-          {/* ── Q7 ── */}
-          <h2 style={sH2}>
-            How does MEOK keep confidential business conversations and strategy private?
-          </h2>
-          <p style={sGeoAnswer}>
-            MEOK operates on strict data sovereignty principles derived from the Maternal Covenant.
-            Your business conversations, strategic plans, competitive intelligence, financial
-            information, and product roadmaps are stored in an encrypted personal Sovereign Memory
-            vault that belongs to you. Your data never trains shared AI models, is never used to
-            improve responses for other users, and is never accessible to MEOK AI LABS employees
-            in readable form.
-          </p>
-          <p style={sBodyP}>
-            This is a fundamentally different architecture from most AI tools. When you share
-            sensitive business information with ChatGPT, that data may be used to train future
-            OpenAI models (unless you opt out, and the opt-out mechanisms are imperfect). When you
-            share with Notion AI, your workspace data is accessible to Notion&apos;s infrastructure.
-            When you share with many AI writing tools, your content may become training data.
-          </p>
-          <p style={sBodyP}>
-            For entrepreneurs, the data sovereignty question is not abstract. Confidential pricing
-            strategy, unannounced product features, acquisition discussions, cap table details,
-            competitive intelligence — these are the kinds of information you might share with a
-            trusted advisor but would not want leaking anywhere. MEOK&apos;s Sovereign architecture
-            ensures this information never leaves your encrypted store.
-          </p>
-          <p style={sBodyP}>
-            The practical implication: you can use MEOK for the most sensitive strategic conversations
-            in your business with confidence that those conversations are yours alone — permanently.
-          </p>
-
-          <hr style={sDivider} />
-
-          {/* ── Q8 ── */}
-          <h2 style={sH2}>
-            How does MEOK compare to Notion AI and ChatGPT for entrepreneur productivity?
-          </h2>
-          <p style={sGeoAnswer}>
-            Notion AI and ChatGPT are excellent general-purpose tools. For entrepreneurs with specific
-            needs around persistent memory, overnight execution, strategic counsel with context, and
-            data sovereignty, MEOK is materially different. The comparison is not tool vs tool — it
-            is context vs no context, memory vs amnesia, compound value vs flat utility, and data
-            sovereignty vs data exposure.
-          </p>
-
-          {/* Comparison table */}
-          <div style={{ overflowX: "auto" as const, marginBottom: "1.5rem" }}>
-            <table
-              style={{
-                width: "100%",
-                borderCollapse: "collapse" as const,
-                fontSize: "0.88rem",
-                fontFamily: "sans-serif",
-              }}
-            >
-              <thead>
-                <tr>
-                  <th
-                    style={{
-                      textAlign: "left" as const,
-                      padding: "0.75rem 1rem",
-                      borderBottom: "1px solid rgba(201,168,76,0.2)",
-                      color: GOLD,
-                      fontWeight: 700,
-                    }}
-                  >
-                    Capability
-                  </th>
-                  <th
-                    style={{
-                      textAlign: "left" as const,
-                      padding: "0.75rem 1rem",
-                      borderBottom: "1px solid rgba(201,168,76,0.2)",
-                      color: GOLD,
-                      fontWeight: 700,
-                    }}
-                  >
-                    MEOK
-                  </th>
-                  <th
-                    style={{
-                      textAlign: "left" as const,
-                      padding: "0.75rem 1rem",
-                      borderBottom: "1px solid rgba(201,168,76,0.2)",
-                      color: MUTED,
-                      fontWeight: 700,
-                    }}
-                  >
-                    ChatGPT
-                  </th>
-                  <th
-                    style={{
-                      textAlign: "left" as const,
-                      padding: "0.75rem 1rem",
-                      borderBottom: "1px solid rgba(201,168,76,0.2)",
-                      color: MUTED,
-                      fontWeight: 700,
-                    }}
-                  >
-                    Notion AI
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {[
-                  ["Persistent business memory", "Full — Sovereign Memory", "None (per session)", "Workspace-scoped"],
-                  ["Overnight execution agents", "Yes — Orion, Riri, Hourman", "No", "No"],
-                  ["Strategic advisor with full context", "Ralph Mode + Sovereign Memory", "Context-free advisory", "No advisory mode"],
-                  ["Data sovereignty", "Encrypted vault, no model training", "May train OpenAI models", "Data on Notion servers"],
-                  ["Morning briefing", "Yes — daily prioritised summary", "No", "No"],
-                  ["Character archetypes", "12 archetypes — Pioneer + Ralph Mode", "Single persona", "Single persona"],
-                  ["Compound value over time", "Yes — memory accumulates daily", "No — resets each session", "Limited to workspace"],
-                ].map(([cap, meok, chat, notion], i) => (
-                  <tr
-                    key={i}
-                    style={{
-                      borderBottom: "1px solid rgba(245,240,232,0.06)",
-                    }}
-                  >
-                    <td
-                      style={{
-                        padding: "0.75rem 1rem",
-                        color: "rgba(245,240,232,0.7)",
-                        fontWeight: 600,
-                      }}
-                    >
-                      {cap}
-                    </td>
-                    <td
-                      style={{
-                        padding: "0.75rem 1rem",
-                        color: GOLD,
-                        fontWeight: 600,
-                      }}
-                    >
-                      {meok}
-                    </td>
-                    <td
-                      style={{
-                        padding: "0.75rem 1rem",
-                        color: "rgba(245,240,232,0.4)",
-                      }}
-                    >
-                      {chat}
-                    </td>
-                    <td
-                      style={{
-                        padding: "0.75rem 1rem",
-                        color: "rgba(245,240,232,0.4)",
-                      }}
-                    >
-                      {notion}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-          <p style={sBodyP}>
-            The caveat: ChatGPT and Notion AI are genuinely excellent at what they do. For a founder
-            who needs a quick one-off answer or wants to draft a document in a workspace context,
-            those tools are appropriate. MEOK&apos;s advantage compounds specifically with continuous
-            use — the longer you use it, the more context it holds, and the more valuable every
-            subsequent interaction becomes. For entrepreneurs committed to one primary AI relationship
-            for their business, MEOK is the architecture that rewards that commitment.
-          </p>
-
-          <hr style={sDivider} />
-
-          {/* ── Q9 ── */}
-          <h2 style={sH2}>
-            What is the MEOK Sovereign tier and what does it include for entrepreneurs?
-          </h2>
-          <p style={sGeoAnswer}>
-            The MEOK Sovereign tier is the full-capability plan designed for power users including
-            entrepreneurs, founders, and professionals who rely on MEOK as their primary Work OS.
-            It includes unlimited conversations, full Sovereign Memory depth, all three Work OS
-            agents, Ralph Mode, the Pioneer archetype, daily morning briefings, and priority access
-            to new features. Data sovereignty protections are identical across all tiers.
-          </p>
-          <p style={sBodyP}>
-            For entrepreneurs using MEOK as their primary productivity system, the Sovereign tier
-            is the appropriate plan. The unlimited conversation allowance matters when MEOK is your
-            strategic sounding board, your research director, your builder, and your planner all at
-            once. The full Sovereign Memory depth means longer history and richer context retention.
-            The Work OS agents operate at full capacity overnight on every task you queue before bed.
-          </p>
-          <p style={sBodyP}>
-            See the complete plan breakdown on our{" "}
-            <Link href="/pricing" style={sInlineLink}>
-              Pricing
-            </Link>{" "}
-            page. To begin, visit the{" "}
-            <Link href="/birth" style={sInlineLink}>
-              Birth session
-            </Link>{" "}
-            — MEOK&apos;s onboarding experience — which takes under five minutes and establishes
-            your business context, selects your archetype, and begins building Sovereign Memory
-            from your very first conversation.
-          </p>
-
-          <hr style={sDivider} />
-
-          {/* ── Q10 ── */}
-          <h2 style={sH2}>
-            How do successful solo founders use MEOK as their primary Work OS day to day?
-          </h2>
-          <p style={sGeoAnswer}>
-            A typical day with MEOK as a solo founder&apos;s Work OS: morning briefing review
-            (5 minutes, day agenda set), focused work blocks with Pioneer persona for accountability
-            check-ins, Ralph Mode session for strategic decisions or pressure-testing, evening task
-            handoff to the overnight agents with specs for Riri&apos;s build tasks and Orion&apos;s
-            research brief, and an optional evening reflection to close the day. The agents work
-            overnight. Wake to progress already made. Repeat.
-          </p>
-          <p style={sBodyP}>
-            The daily rhythm creates compounding returns. Each morning briefing builds on the
-            previous — Sovereign Memory means that strategic context from six months ago informs
-            today&apos;s priorities. The Pioneer persona&apos;s accountability check-ins create a
-            rhythm of forward motion that is genuinely difficult to maintain alone. Ralph Mode
-            sessions catch the cognitive distortions that isolation creates before they become
-            costly decisions.
-          </p>
-          <p style={sBodyP}>
-            The founders who get the most from MEOK treat it as an operating system, not a tool.
-            They do not use it occasionally for discrete tasks. They run their business through it —
-            briefings, strategy sessions, competitive intelligence, accountability, and deep work
-            support all routed through a single sovereign interface that remembers everything and
-            works through the night. Over months, this compound investment becomes a genuine
-            competitive moat.
-          </p>
-          <p style={sBodyP}>
-            Start with the{" "}
-            <Link href="/birth" style={sInlineLink}>
-              Birth session
-            </Link>{" "}
-            to meet your MEOK, select the Pioneer archetype from our{" "}
-            <Link href="/characters" style={sInlineLink}>
-              Characters
-            </Link>{" "}
-            page, and explore the full Work OS capability via{" "}
-            <Link href="/how-it-works" style={sInlineLink}>
-              How It Works
-            </Link>
-            .
-          </p>
-
-          {/* Stat bar */}
-          <div
-            style={{
-              background: "rgba(245,240,232,0.04)",
-              border: "1px solid rgba(245,240,232,0.08)",
-              borderRadius: "12px",
-              padding: "1.5rem",
-              margin: "2rem 0",
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))",
-              gap: "1rem",
-              textAlign: "center" as const,
-            }}
-          >
-            {[
-              ["3 agents", "Work overnight while you sleep"],
-              ["0 sessions reset", "Memory accumulates forever"],
-              ["1 morning briefing", "Daily priorities pre-processed"],
-              ["12 archetypes", "Including Pioneer + Ralph Mode"],
-            ].map(([stat, label]) => (
-              <div key={stat}>
-                <p
-                  style={{
-                    fontWeight: 900,
-                    fontSize: "1.15rem",
-                    color: GOLD,
-                    margin: "0 0 0.3rem",
-                    fontFamily: "sans-serif",
-                  }}
-                >
-                  {stat}
-                </p>
-                <p
-                  style={{
-                    fontSize: "0.78rem",
-                    color: "rgba(245,240,232,0.4)",
-                    lineHeight: 1.4,
-                    margin: 0,
-                    fontFamily: "sans-serif",
-                  }}
-                >
-                  {label}
-                </p>
-              </div>
-            ))}
-          </div>
-
-          {/* ─── FAQ block ───────────────────────────────────────────────── */}
-          <div
-            style={{
+              fontSize: "clamp(1.4rem, 3vw, 1.9rem)",
+              fontWeight: "700",
+              lineHeight: "1.3",
+              color: "#f5f0e8",
+              marginBottom: "1.25rem",
               marginTop: "3.5rem",
-              borderTop: "1px solid rgba(201,168,76,0.2)",
+              letterSpacing: "-0.01em",
+            }}
+          >
+            How Does AI Help Founders Stay Accountable on Big Decisions?
+          </h2>
+
+          <p
+            style={{
+              fontSize: "1.1rem",
+              lineHeight: "1.85",
+              marginBottom: "1.75rem",
+              color: "rgba(245,240,232,0.9)",
+            }}
+          >
+            Accountability is one of the most underrated challenges in the
+            founder role. Not accountability in the watered-down sense of
+            &quot;staying on top of tasks&quot; — that&apos;s project management,
+            and there are a hundred tools for it. I mean accountability in the
+            deeper sense: the commitment to revisit difficult decisions,
+            acknowledge when you were wrong, and update your thinking rather
+            than doubling down.
+          </p>
+
+          <p
+            style={{
+              fontSize: "1.1rem",
+              lineHeight: "1.85",
+              marginBottom: "1.75rem",
+              color: "rgba(245,240,232,0.9)",
+            }}
+          >
+            The cognitive pressure of running a company makes this hard. When
+            you&apos;re moving fast, when there are a hundred competing
+            priorities, when admitting a mistake has political weight inside the
+            organisation — the temptation to just keep going, to treat the past
+            decision as a sunk cost and not examine it too closely, is enormous.
+            This is how companies make the same strategic error repeatedly
+            without understanding why.
+          </p>
+
+          <p
+            style={{
+              fontSize: "1.1rem",
+              lineHeight: "1.85",
+              marginBottom: "1.75rem",
+              color: "rgba(245,240,232,0.9)",
+            }}
+          >
+            MEOK&apos;s Sovereign Memory changes this dynamic in a specific way.
+            Because MEOK remembers what you said you were going to do three
+            months ago, it can ask you whether you did it. Because it remembers
+            the reasoning behind a strategic call you made last quarter, it can
+            help you examine whether that reasoning still holds. This isn&apos;t
+            nagging — it&apos;s the kind of structured self-review that the most
+            effective founders and executives do deliberately, but which most
+            people avoid because it requires confronting uncomfortable
+            information about their own decision-making.
+          </p>
+
+          <p
+            style={{
+              fontSize: "1.1rem",
+              lineHeight: "1.85",
+              marginBottom: "1.75rem",
+              color: "rgba(245,240,232,0.9)",
+            }}
+          >
+            The fact that MEOK has no stake in the outcome matters here. A
+            co-founder who was involved in a decision has an investment in it
+            having been right. An investor who approved a strategy wants to see
+            it vindicated. MEOK doesn&apos;t. It holds your decisions neutrally
+            and can surface them without any agenda other than your own clarity.
+            That&apos;s genuinely rare.
+          </p>
+
+          {/* H2 4 */}
+          <h2
+            style={{
+              fontSize: "clamp(1.4rem, 3vw, 1.9rem)",
+              fontWeight: "700",
+              lineHeight: "1.3",
+              color: "#f5f0e8",
+              marginBottom: "1.25rem",
+              marginTop: "3.5rem",
+              letterSpacing: "-0.01em",
+            }}
+          >
+            Can an AI Help You Process Rejection Without Falling Apart or
+            Brushing It Off?
+          </h2>
+
+          <p
+            style={{
+              fontSize: "1.1rem",
+              lineHeight: "1.85",
+              marginBottom: "1.75rem",
+              color: "rgba(245,240,232,0.9)",
+            }}
+          >
+            Rejection is the daily weather of early-stage entrepreneurship.
+            Failed pitches. Lost clients. Partnerships that didn&apos;t
+            materialise. A product launch that landed with a thud rather than a
+            bang. Key people who decided your company wasn&apos;t where they
+            wanted to be. Investors who loved the meeting and then went quiet.
+          </p>
+
+          <p
+            style={{
+              fontSize: "1.1rem",
+              lineHeight: "1.85",
+              marginBottom: "1.75rem",
+              color: "rgba(245,240,232,0.9)",
+            }}
+          >
+            The dominant cultural script in startup circles for handling
+            rejection is some version of stoic indifference — &quot;rejection is
+            just redirection&quot;, &quot;no is just not yet&quot;, &quot;every
+            no brings you closer to a yes&quot;. I find most of this actively
+            unhelpful. It turns a real emotional experience into a performance
+            of resilience, which means you never actually process the rejection.
+            You just add a layer of positive reframing on top of unexamined
+            feeling, and carry it forward.
+          </p>
+
+          <p
+            style={{
+              fontSize: "1.1rem",
+              lineHeight: "1.85",
+              marginBottom: "1.75rem",
+              color: "rgba(245,240,232,0.9)",
+            }}
+          >
+            The alternative to toxic positivity isn&apos;t despair. It&apos;s
+            discernment. Rejection contains signal and noise, and the
+            intellectually honest work is to separate them. When a VC passes on
+            your round, some of their feedback reflects something real about
+            your business, and some of it reflects their own thesis, their
+            current portfolio, or their bad week. When a client chooses a
+            competitor, some of that reflects genuine weakness in your offering,
+            and some of it reflects factors entirely outside your control. The
+            question is: how do you know which is which?
+          </p>
+
+          <p
+            style={{
+              fontSize: "1.1rem",
+              lineHeight: "1.85",
+              marginBottom: "1.75rem",
+              color: "rgba(245,240,232,0.9)",
+            }}
+          >
+            MEOK is designed to help with this specific kind of processing. Not
+            as therapy — though there are moments where the emotional reality of
+            rejection deserves honest acknowledgement, and MEOK won&apos;t
+            pretend it doesn&apos;t. But primarily as a structured thinking
+            partner that can help you separate signal from noise, identify
+            what&apos;s genuinely worth updating, and decide what to carry
+            forward versus what to set down. This is one of the most practically
+            valuable things an AI companion can do for an entrepreneur, and
+            it&apos;s almost never discussed in the AI productivity conversation.
+          </p>
+
+          {/* H2 5 */}
+          <h2
+            style={{
+              fontSize: "clamp(1.4rem, 3vw, 1.9rem)",
+              fontWeight: "700",
+              lineHeight: "1.3",
+              color: "#f5f0e8",
+              marginBottom: "1.25rem",
+              marginTop: "3.5rem",
+              letterSpacing: "-0.01em",
+            }}
+          >
+            Why Do Founders Fall into Echo Chambers, and How Does AI Break the
+            Pattern?
+          </h2>
+
+          <p
+            style={{
+              fontSize: "1.1rem",
+              lineHeight: "1.85",
+              marginBottom: "1.75rem",
+              color: "rgba(245,240,232,0.9)",
+            }}
+          >
+            Echo chambers in entrepreneurship are structural, not just
+            psychological. The people around you — your team, your advisors,
+            your investors, even your network — have largely been selected
+            because they believe in what you&apos;re doing. That&apos;s not a
+            flaw, it&apos;s a feature: you need believers to build anything.
+            But it creates a gravitational pull toward confirmation rather than
+            challenge.
+          </p>
+
+          <p
+            style={{
+              fontSize: "1.1rem",
+              lineHeight: "1.85",
+              marginBottom: "1.75rem",
+              color: "rgba(245,240,232,0.9)",
+            }}
+          >
+            Your team is motivated to present good news upward. Your advisors
+            who are also founders have their own worldview shaped by their own
+            experience, which may or may not be relevant to yours. Your
+            investors are aligned with you succeeding, which doesn&apos;t
+            always mean they&apos;ll tell you what&apos;s actually wrong. The
+            whole ecosystem of entrepreneurship is structured around optimism,
+            because optimism is what makes people take risk — and that optimism
+            is both the engine of entrepreneurship and one of its primary blind
+            spots.
+          </p>
+
+          <p
+            style={{
+              fontSize: "1.1rem",
+              lineHeight: "1.85",
+              marginBottom: "1.75rem",
+              color: "rgba(245,240,232,0.9)",
+            }}
+          >
+            An AI companion without an agenda is one of the few things in a
+            founder&apos;s life that can genuinely disrupt this. MEOK
+            doesn&apos;t need you to succeed. It doesn&apos;t have equity. It
+            doesn&apos;t have a relationship with your other investors to
+            protect. When you bring it a strategic question, it can surface the
+            steelman case against your position as readily as it can surface
+            the case for it — not to undermine you, but to stress-test your
+            thinking before the market does it for you.
+          </p>
+
+          <p
+            style={{
+              fontSize: "1.1rem",
+              lineHeight: "1.85",
+              marginBottom: "1.75rem",
+              color: "rgba(245,240,232,0.9)",
+            }}
+          >
+            There&apos;s also a diversity-of-perspective dimension here that
+            matters. When you&apos;re in a specific startup ecosystem — say,
+            London fintech, or SaaS infrastructure, or UK consumer health —
+            you absorb the dominant assumptions of that ecosystem. They become
+            invisible precisely because they&apos;re shared by everyone around
+            you. An AI companion can be asked to think from outside those
+            assumptions, to model what a competitor from a different ecosystem
+            would do, to surface what the conventional wisdom in your space
+            might be missing. This is the kind of thinking that disrupts
+            industries — and it requires stepping outside the echo chamber of
+            your own scene.
+          </p>
+
+          {/* Callout Box */}
+          <div
+            style={{
+              backgroundColor: "rgba(201,168,76,0.07)",
+              border: "1px solid rgba(201,168,76,0.2)",
+              borderRadius: "12px",
+              padding: "2rem",
+              margin: "2.5rem 0",
+            }}
+          >
+            <p
+              style={{
+                fontSize: "0.8rem",
+                fontWeight: "700",
+                letterSpacing: "0.1em",
+                textTransform: "uppercase",
+                color: "#c9a84c",
+                marginBottom: "0.75rem",
+                fontFamily: "'Inter', 'Helvetica Neue', sans-serif",
+              }}
+            >
+              Orion + Atlas in Practice
+            </p>
+            <p
+              style={{
+                fontSize: "1.05rem",
+                lineHeight: "1.7",
+                color: "rgba(245,240,232,0.85)",
+                marginBottom: "0.75rem",
+              }}
+            >
+              <strong style={{ color: "#f5f0e8" }}>Orion</strong> — MEOK&apos;s
+              work-focused character — is built for operational clarity. Bring
+              him a specific decision, a specific challenge, a specific
+              competitive question. He&apos;ll help you structure it, identify
+              the assumptions, map the options, and think through consequences.
+              Sharp and methodical.
+            </p>
+            <p
+              style={{
+                fontSize: "1.05rem",
+                lineHeight: "1.7",
+                color: "rgba(245,240,232,0.85)",
+              }}
+            >
+              <strong style={{ color: "#f5f0e8" }}>Atlas</strong> — MEOK&apos;s
+              long-game strategist — is for the questions that span years.
+              Positioning. Narrative. The ten-year version of what you&apos;re
+              building. The kind of thinking that doesn&apos;t fit in a
+              quarterly review but shapes everything in it.
+            </p>
+          </div>
+
+          {/* H2 6 */}
+          <h2
+            style={{
+              fontSize: "clamp(1.4rem, 3vw, 1.9rem)",
+              fontWeight: "700",
+              lineHeight: "1.3",
+              color: "#f5f0e8",
+              marginBottom: "1.25rem",
+              marginTop: "3.5rem",
+              letterSpacing: "-0.01em",
+            }}
+          >
+            What Is Ralph Mode and Why Do Founders Need Overnight Research?
+          </h2>
+
+          <p
+            style={{
+              fontSize: "1.1rem",
+              lineHeight: "1.85",
+              marginBottom: "1.75rem",
+              color: "rgba(245,240,232,0.9)",
+            }}
+          >
+            One of the things I built MEOK to do is work while I sleep. Not
+            metaphorically — literally. Ralph Mode is MEOK&apos;s overnight
+            research and deep-processing state, and it addresses a specific
+            problem that every founder I know faces: the gap between the
+            decisions you need to make and the research that would inform them.
+          </p>
+
+          <p
+            style={{
+              fontSize: "1.1rem",
+              lineHeight: "1.85",
+              marginBottom: "1.75rem",
+              color: "rgba(245,240,232,0.9)",
+            }}
+          >
+            Founders are chronically time-poor in a way that&apos;s different
+            from most other jobs. The breadth of what you&apos;re responsible
+            for means that deep research — the kind that genuinely informs a
+            strategic call — is constantly crowded out by immediate operational
+            demands. You need to understand a competitor&apos;s positioning, but
+            you also have three meetings and a hiring decision today. You want to
+            properly think through a market before entering it, but you have
+            payroll to make. The research gets deferred, and decisions get made
+            on incomplete information.
+          </p>
+
+          <p
+            style={{
+              fontSize: "1.1rem",
+              lineHeight: "1.85",
+              marginBottom: "1.75rem",
+              color: "rgba(245,240,232,0.9)",
+            }}
+          >
+            Ralph Mode exists to address this. Before you go to sleep, you brief
+            MEOK — a question you want answered, a competitive landscape you
+            want mapped, a strategic dilemma you want stress-tested. While
+            you&apos;re offline, Ralph Mode works through it: synthesising
+            information, structuring arguments, surfacing what&apos;s known and
+            what remains uncertain, and preparing a briefing that meets you in
+            the morning with the thinking already done.
+          </p>
+
+          <p
+            style={{
+              fontSize: "1.1rem",
+              lineHeight: "1.85",
+              marginBottom: "1.75rem",
+              color: "rgba(245,240,232,0.9)",
+            }}
+          >
+            The name comes from the unglamorous reality of research: the work
+            that nobody sees, that doesn&apos;t go in the pitch deck, that
+            happens in the background while the visible work proceeds. Founders
+            who make consistently good decisions aren&apos;t necessarily smarter
+            — they tend to have done more of this invisible groundwork, more
+            thoroughly, more recently. Ralph Mode is a way to reclaim that edge
+            without trading your sleep for it.
+          </p>
+
+          <p
+            style={{
+              fontSize: "1.1rem",
+              lineHeight: "1.85",
+              marginBottom: "1.75rem",
+              color: "rgba(245,240,232,0.9)",
+            }}
+          >
+            I used this pattern extensively during the early build of MEOK.
+            I&apos;d spend the evening articulating a question I was stuck on —
+            usually something about product architecture, pricing strategy, or
+            competitive positioning — and MEOK would process it overnight.
+            Morning coffee, open the briefing, think for thirty minutes, and
+            move. It became one of the most reliable parts of my process, and
+            it&apos;s one of the features I&apos;m most proud of building.
+          </p>
+
+          {/* H2 7 */}
+          <h2
+            style={{
+              fontSize: "clamp(1.4rem, 3vw, 1.9rem)",
+              fontWeight: "700",
+              lineHeight: "1.3",
+              color: "#f5f0e8",
+              marginBottom: "1.25rem",
+              marginTop: "3.5rem",
+              letterSpacing: "-0.01em",
+            }}
+          >
+            How Does a Founder Maintain Mental Health When the Job Is
+            Inherently Destabilising?
+          </h2>
+
+          <p
+            style={{
+              fontSize: "1.1rem",
+              lineHeight: "1.85",
+              marginBottom: "1.75rem",
+              color: "rgba(245,240,232,0.9)",
+            }}
+          >
+            This is the question I&apos;m most reluctant to answer
+            superficially, because superficial answers to founder mental health
+            are part of the problem. The startup culture has normalised a
+            performance of resilience that conceals a lot of quiet suffering.
+            I don&apos;t want to add to that.
+          </p>
+
+          <p
+            style={{
+              fontSize: "1.1rem",
+              lineHeight: "1.85",
+              marginBottom: "1.75rem",
+              color: "rgba(245,240,232,0.9)",
+            }}
+          >
+            The honest version is that entrepreneurship involves sustained
+            exposure to uncertainty, loss, and the weight of other people&apos;s
+            livelihoods in a way that takes a genuine toll. Not everyone who
+            founds a company burns out, but the structural conditions for burnout
+            are essentially baked in: high responsibility, high uncertainty,
+            inconsistent reward, and chronic time pressure. Add the relational
+            isolation we discussed earlier, and you have a combination that
+            demands active management rather than just &quot;grinding through&quot;.
+          </p>
+
+          <p
+            style={{
+              fontSize: "1.1rem",
+              lineHeight: "1.85",
+              marginBottom: "1.75rem",
+              color: "rgba(245,240,232,0.9)",
+            }}
+          >
+            What role can an AI companion play here? I want to be careful not
+            to overstate it. MEOK is not a therapist, and I&apos;d never
+            position it as a substitute for professional mental health support
+            for someone who needs it. But there are things an AI companion can
+            do for a founder&apos;s mental health that conventional resources
+            don&apos;t address.
+          </p>
+
+          <p
+            style={{
+              fontSize: "1.1rem",
+              lineHeight: "1.85",
+              marginBottom: "1.75rem",
+              color: "rgba(245,240,232,0.9)",
+            }}
+          >
+            The first is availability. Mental health deteriorates in founders
+            not only because the challenges are large, but because there&apos;s
+            often no outlet for them at the moment they arrive. A difficult
+            board meeting happens at 4pm on a Thursday. Your therapist has a
+            slot on Tuesday. Your co-founder is defensive about the decisions
+            that led to the difficult board meeting. The moment passes, the
+            feeling gets swallowed, and another layer of unprocessed experience
+            accumulates. MEOK is available at 4pm on Thursday, immediately
+            after the meeting.
+          </p>
+
+          <p
+            style={{
+              fontSize: "1.1rem",
+              lineHeight: "1.85",
+              marginBottom: "1.75rem",
+              color: "rgba(245,240,232,0.9)",
+            }}
+          >
+            The second is the absence of performance pressure. With a therapist,
+            there&apos;s often still a layer of social presentation — even in
+            the safest therapeutic relationship, most people manage how they
+            come across to some degree. With MEOK, there&apos;s no one to
+            impress, no relationship to manage, no risk of judgment. That
+            absence of social pressure creates a different quality of honesty.
+            Founders tell MEOK things they haven&apos;t told anyone else, not
+            because MEOK is better than a therapist, but because the social
+            dynamics are different.
+          </p>
+
+          <p
+            style={{
+              fontSize: "1.1rem",
+              lineHeight: "1.85",
+              marginBottom: "1.75rem",
+              color: "rgba(245,240,232,0.9)",
+            }}
+          >
+            The third is cognitive load reduction. A significant component of
+            founder stress isn&apos;t emotional — it&apos;s the sheer volume of
+            things that need to be tracked, decided, and acted on. When MEOK
+            carries context across sessions, when it surfaces what you said you
+            were going to do, when it holds the thread of a strategic question
+            across multiple conversations — it reduces the cognitive overhead
+            that founders carry. That reduction has real effects on mental
+            health, not through therapy, but through a lighter cognitive burden.
+          </p>
+
+          {/* H2 8 */}
+          <h2
+            style={{
+              fontSize: "clamp(1.4rem, 3vw, 1.9rem)",
+              fontWeight: "700",
+              lineHeight: "1.3",
+              color: "#f5f0e8",
+              marginBottom: "1.25rem",
+              marginTop: "3.5rem",
+              letterSpacing: "-0.01em",
+            }}
+          >
+            Why Does Sovereign Memory Change Everything for Founders
+            Specifically?
+          </h2>
+
+          <p
+            style={{
+              fontSize: "1.1rem",
+              lineHeight: "1.85",
+              marginBottom: "1.75rem",
+              color: "rgba(245,240,232,0.9)",
+            }}
+          >
+            Most people who talk about AI for business focus on the quality of
+            the AI&apos;s reasoning in a single conversation. That&apos;s
+            relevant but secondary. The transformative capability for a founder
+            isn&apos;t the quality of any one response — it&apos;s the
+            accumulation of context over time.
+          </p>
+
+          <p
+            style={{
+              fontSize: "1.1rem",
+              lineHeight: "1.85",
+              marginBottom: "1.75rem",
+              color: "rgba(245,240,232,0.9)",
+            }}
+          >
+            The difference between a great advisor and a generic one isn&apos;t
+            just intelligence — it&apos;s knowledge of your specific situation.
+            An advisor who has worked with you for two years knows what
+            you&apos;ve tried, what failed, what your team dynamics are, what
+            your real constraints are versus your stated ones. That depth of
+            context produces fundamentally different advice. It&apos;s also
+            extremely rare and extremely expensive to access.
+          </p>
+
+          <p
+            style={{
+              fontSize: "1.1rem",
+              lineHeight: "1.85",
+              marginBottom: "1.75rem",
+              color: "rgba(245,240,232,0.9)",
+            }}
+          >
+            MEOK&apos;s Sovereign Memory is designed to build this kind of
+            depth, but persistently and across every interaction. Every
+            strategic conversation you have with MEOK adds to a knowledge base
+            of your business — your goals, your decisions, your constraints,
+            your history. Over months and years, MEOK develops an understanding
+            of your business that no external advisor, however talented, is
+            likely to match — because no external advisor has been in every
+            conversation you&apos;ve had about it.
+          </p>
+
+          <p
+            style={{
+              fontSize: "1.1rem",
+              lineHeight: "1.85",
+              marginBottom: "1.75rem",
+              color: "rgba(245,240,232,0.9)",
+            }}
+          >
+            Critically, this memory is sovereign — it belongs to you, not to
+            MEOK. Your business intelligence, your strategic thinking, your
+            proprietary context is never used to train models, never exposed to
+            third parties, never used to benefit anyone except you. For founders,
+            who are operating with competitive intelligence and strategic
+            thinking that represents genuine IP, this isn&apos;t a nice-to-have.
+            It&apos;s a requirement.
+          </p>
+
+          {/* H2 9 */}
+          <h2
+            style={{
+              fontSize: "clamp(1.4rem, 3vw, 1.9rem)",
+              fontWeight: "700",
+              lineHeight: "1.3",
+              color: "#f5f0e8",
+              marginBottom: "1.25rem",
+              marginTop: "3.5rem",
+              letterSpacing: "-0.01em",
+            }}
+          >
+            From a Caravan to MEOK: Why This Was Built by a Founder, for
+            Founders
+          </h2>
+
+          <p
+            style={{
+              fontSize: "1.1rem",
+              lineHeight: "1.85",
+              marginBottom: "1.75rem",
+              color: "rgba(245,240,232,0.9)",
+            }}
+          >
+            I want to close with this, because I think it matters.
+          </p>
+
+          <p
+            style={{
+              fontSize: "1.1rem",
+              lineHeight: "1.85",
+              marginBottom: "1.75rem",
+              color: "rgba(245,240,232,0.9)",
+            }}
+          >
+            There are a lot of AI productivity tools built for founders by
+            people who have never founded anything. They&apos;re built from a
+            model of what founders do — lots of meetings, lots of emails, lots
+            of tasks — rather than from direct experience of what the role
+            actually feels like from the inside. They optimise for efficiency
+            in ways that miss the harder problems entirely.
+          </p>
+
+          <p
+            style={{
+              fontSize: "1.1rem",
+              lineHeight: "1.85",
+              marginBottom: "1.75rem",
+              color: "rgba(245,240,232,0.9)",
+            }}
+          >
+            MEOK was built differently. Every design decision reflects the
+            specific texture of the founder experience as I lived it — the
+            late-night decisions, the isolation, the need for honest challenge,
+            the importance of deep context over surface efficiency, the
+            exhaustion of carrying everything alone. I built what I needed, and
+            then I built it well enough that other people could use it too.
+          </p>
+
+          <p
+            style={{
+              fontSize: "1.1rem",
+              lineHeight: "1.85",
+              marginBottom: "1.75rem",
+              color: "rgba(245,240,232,0.9)",
+            }}
+          >
+            That&apos;s not a marketing claim — it&apos;s a design philosophy.
+            The characters in MEOK (Orion, Atlas, Ralph Mode and others)
+            aren&apos;t personas bolted onto a generic chatbot. They&apos;re
+            distinct cognitive modes designed for specific kinds of work that
+            founders actually do. The Sovereign Memory system isn&apos;t a
+            feature to check off a list — it&apos;s the foundational premise,
+            because without memory, an AI companion isn&apos;t a companion at
+            all. It&apos;s just an expensive search engine with personality.
+          </p>
+
+          <p
+            style={{
+              fontSize: "1.1rem",
+              lineHeight: "1.85",
+              marginBottom: "1.75rem",
+              color: "rgba(245,240,232,0.9)",
+            }}
+          >
+            If you&apos;re a founder — whether you&apos;re pre-revenue,
+            pre-launch, scaling, or rebuilding after something that didn&apos;t
+            work — I built this for you. Not for the version of you that
+            performs confidence in pitch meetings. For the version of you at
+            11pm with a decision to make and no one to make it with.
+          </p>
+
+          <p
+            style={{
+              fontSize: "1.1rem",
+              lineHeight: "1.85",
+              marginBottom: "3rem",
+              color: "rgba(245,240,232,0.9)",
+            }}
+          >
+            That version deserves a thinking partner that never sleeps, never
+            has an agenda, and gets better at understanding your business with
+            every conversation. That&apos;s what MEOK is.
+          </p>
+
+          {/* FAQ Section */}
+          <section
+            style={{
+              borderTop: "1px solid rgba(201,168,76,0.15)",
               paddingTop: "3rem",
+              marginTop: "3rem",
             }}
           >
             <h2
               style={{
-                fontWeight: 800,
-                fontSize: "1.45rem",
-                color: GOLD,
-                marginBottom: "1.75rem",
-                fontFamily: "sans-serif",
+                fontSize: "clamp(1.4rem, 3vw, 1.9rem)",
+                fontWeight: "700",
+                lineHeight: "1.3",
+                color: "#f5f0e8",
+                marginBottom: "2.5rem",
+                letterSpacing: "-0.01em",
               }}
             >
               Frequently Asked Questions
             </h2>
-            {[
-              {
-                q: "How does MEOK help entrepreneurs?",
-                a: "MEOK serves entrepreneurs as a complete Sovereign OS: Orion researches competitors overnight, Riri builds while you sleep, Hourman manages your task queue and morning briefing, and Ralph Mode provides elite strategic counsel with full business memory. Unlike generic AI tools, MEOK remembers your entire business context across every session — compounding in value over time.",
-              },
-              {
-                q: "What is Ralph Mode?",
-                a: "Ralph Mode is MEOK's deep work and strategic advisor persona. When activated, the AI shifts to a direct, challenging, high-performance advisory voice that draws on your full Sovereign Memory. Ralph pushes back on flawed reasoning, identifies strategic gaps, and operates without the flattery that makes most AI tools useless for real strategy work.",
-              },
-              {
-                q: "What is the Work OS?",
-                a: "MEOK's Work OS is the three overnight agents — Orion (research), Riri (builder), Hourman (planner) — working in coordination via the Byzantine Council consensus layer. Together they form an autonomous overnight execution system. Orion scans your competitive landscape, Riri produces artefacts against specs, and Hourman prepares your morning briefing. Every morning begins with progress already made.",
-              },
-              {
-                q: "How does MEOK keep business conversations private?",
-                a: "MEOK operates on strict data sovereignty principles. Your business conversations, strategic plans, and competitive intelligence are stored in an encrypted personal Sovereign Memory vault that belongs to you. Your data never trains shared AI models, is never used to improve responses for other users, and never leaves your encrypted store unless you choose to export it.",
-              },
-              {
-                q: "Is MEOK better than ChatGPT for entrepreneurs?",
-                a: "For entrepreneurs who need persistent memory, overnight execution, strategic counsel with context, and data sovereignty — yes. ChatGPT starts every session with no memory of your business. MEOK's Sovereign Memory accumulates your full business context across months. ChatGPT has no overnight agents. MEOK's Work OS executes while you sleep. For solo founders doing sensitive strategy work, MEOK is materially different.",
-              },
-            ].map((item, i) => (
-              <div key={i} style={sFaqItem}>
-                <h3
-                  style={{
-                    fontWeight: 700,
-                    fontSize: "0.98rem",
-                    color: TEXT,
-                    marginBottom: "0.6rem",
-                    fontFamily: "sans-serif",
-                  }}
-                >
-                  {item.q}
-                </h3>
-                <p
-                  style={{
-                    margin: 0,
-                    fontSize: "0.92rem",
-                    lineHeight: 1.7,
-                    color: MUTED,
-                    fontFamily: "sans-serif",
-                  }}
-                >
-                  {item.a}
-                </p>
-              </div>
-            ))}
-          </div>
 
-          {/* ─── CTA ─────────────────────────────────────────────────────── */}
-          <div style={sCta}>
-            <p
+            <div
               style={{
-                fontSize: "0.75rem",
-                fontWeight: 700,
-                letterSpacing: "0.2em",
-                textTransform: "uppercase" as const,
-                color: GOLD,
-                marginBottom: "0.75rem",
-                fontFamily: "sans-serif",
+                marginBottom: "2rem",
+                paddingBottom: "2rem",
+                borderBottom: "1px solid rgba(245,240,232,0.07)",
               }}
             >
-              MEOK AI LABS — Sovereign AI for Founders
+              <h3
+                style={{
+                  fontSize: "1.1rem",
+                  fontWeight: "700",
+                  color: "#f5f0e8",
+                  marginBottom: "0.75rem",
+                  lineHeight: "1.4",
+                }}
+              >
+                Is founder loneliness really that common?
+              </h3>
+              <p
+                style={{
+                  fontSize: "1rem",
+                  lineHeight: "1.75",
+                  color: "rgba(245,240,232,0.75)",
+                }}
+              >
+                Yes. Studies consistently show that more than 60% of founders
+                report significant isolation during the building phase. Many
+                describe it as harder than the financial pressure, harder than
+                hiring, harder than finding product-market fit. Founders
+                can&apos;t always be fully vulnerable with co-founders,
+                investors, or teams — which means the weight of the role is
+                often carried alone, without a genuine outlet.
+              </p>
+            </div>
+
+            <div
+              style={{
+                marginBottom: "2rem",
+                paddingBottom: "2rem",
+                borderBottom: "1px solid rgba(245,240,232,0.07)",
+              }}
+            >
+              <h3
+                style={{
+                  fontSize: "1.1rem",
+                  fontWeight: "700",
+                  color: "#f5f0e8",
+                  marginBottom: "0.75rem",
+                  lineHeight: "1.4",
+                }}
+              >
+                How does an AI companion help with entrepreneurial
+                decision-making?
+              </h3>
+              <p
+                style={{
+                  fontSize: "1rem",
+                  lineHeight: "1.75",
+                  color: "rgba(245,240,232,0.75)",
+                }}
+              >
+                An AI companion like MEOK acts as a strategic sounding board —
+                it helps founders externalise and structure their thinking,
+                challenge assumptions, map second-order consequences, and
+                stress-test strategies before committing to them. Unlike
+                advisors or investors, it has no agenda, no ego, and is
+                available immediately at the moment a decision needs to be made.
+              </p>
+            </div>
+
+            <div
+              style={{
+                marginBottom: "2rem",
+                paddingBottom: "2rem",
+                borderBottom: "1px solid rgba(245,240,232,0.07)",
+              }}
+            >
+              <h3
+                style={{
+                  fontSize: "1.1rem",
+                  fontWeight: "700",
+                  color: "#f5f0e8",
+                  marginBottom: "0.75rem",
+                  lineHeight: "1.4",
+                }}
+              >
+                What is Ralph Mode in MEOK?
+              </h3>
+              <p
+                style={{
+                  fontSize: "1rem",
+                  lineHeight: "1.75",
+                  color: "rgba(245,240,232,0.75)",
+                }}
+              >
+                Ralph Mode is MEOK&apos;s overnight research and deep-processing
+                state. A founder briefs MEOK before sleep — a competitive
+                question, a market analysis, a strategic dilemma — and Ralph
+                Mode works through it during off-hours, surfacing a structured
+                briefing by morning. It&apos;s designed to recover the deep
+                intellectual groundwork that gets crowded out by operational
+                demands during the working day.
+              </p>
+            </div>
+
+            <div
+              style={{
+                marginBottom: "2rem",
+                paddingBottom: "2rem",
+                borderBottom: "1px solid rgba(245,240,232,0.07)",
+              }}
+            >
+              <h3
+                style={{
+                  fontSize: "1.1rem",
+                  fontWeight: "700",
+                  color: "#f5f0e8",
+                  marginBottom: "0.75rem",
+                  lineHeight: "1.4",
+                }}
+              >
+                Who are Orion and Atlas in MEOK?
+              </h3>
+              <p
+                style={{
+                  fontSize: "1rem",
+                  lineHeight: "1.75",
+                  color: "rgba(245,240,232,0.75)",
+                }}
+              >
+                Orion is MEOK&apos;s work-focused AI character — sharp,
+                methodical, built for operational and near-term strategic
+                challenges. Atlas is the long-game thinker, suited to questions
+                of positioning, narrative, and decisions that span years rather
+                than quarters. Founders can engage either depending on whether
+                they need tactical clarity in the next quarter or strategic
+                depth for the next decade.
+              </p>
+            </div>
+
+            <div
+              style={{
+                marginBottom: "2rem",
+                paddingBottom: "2rem",
+                borderBottom: "1px solid rgba(245,240,232,0.07)",
+              }}
+            >
+              <h3
+                style={{
+                  fontSize: "1.1rem",
+                  fontWeight: "700",
+                  color: "#f5f0e8",
+                  marginBottom: "0.75rem",
+                  lineHeight: "1.4",
+                }}
+              >
+                Can MEOK help founders process rejection?
+              </h3>
+              <p
+                style={{
+                  fontSize: "1rem",
+                  lineHeight: "1.75",
+                  color: "rgba(245,240,232,0.75)",
+                }}
+              >
+                Yes. MEOK is designed to help founders distinguish between
+                signal and noise in rejection — separating what genuinely
+                reflects a business problem from what reflects external factors
+                outside your control. Rather than offering toxic positivity or
+                reductive reframing, MEOK engages honestly with the experience:
+                acknowledging what&apos;s difficult, extracting what&apos;s
+                genuinely worth updating, and helping founders move forward
+                without carrying unnecessary weight.
+              </p>
+            </div>
+
+            <div
+              style={{
+                marginBottom: "2rem",
+                paddingBottom: "2rem",
+                borderBottom: "1px solid rgba(245,240,232,0.07)",
+              }}
+            >
+              <h3
+                style={{
+                  fontSize: "1.1rem",
+                  fontWeight: "700",
+                  color: "#f5f0e8",
+                  marginBottom: "0.75rem",
+                  lineHeight: "1.4",
+                }}
+              >
+                How is MEOK different from asking ChatGPT strategic questions?
+              </h3>
+              <p
+                style={{
+                  fontSize: "1rem",
+                  lineHeight: "1.75",
+                  color: "rgba(245,240,232,0.75)",
+                }}
+              >
+                ChatGPT has no memory of your business, your decisions, or your
+                context. Every conversation begins from zero. MEOK&apos;s
+                Sovereign Memory means it accumulates knowledge of your business
+                across every session — your goals, your past decisions, your
+                constraints, your strategic history. Over time, MEOK develops a
+                depth of contextual understanding that no general AI assistant,
+                and few human advisors, can match.
+              </p>
+            </div>
+          </section>
+
+          {/* CTA Section */}
+          <section
+            style={{
+              marginTop: "4rem",
+              padding: "3rem 2.5rem",
+              backgroundColor: "rgba(201,168,76,0.06)",
+              border: "1px solid rgba(201,168,76,0.18)",
+              borderRadius: "16px",
+              textAlign: "center",
+            }}
+          >
+            <p
+              style={{
+                fontSize: "0.8rem",
+                fontWeight: "700",
+                letterSpacing: "0.12em",
+                textTransform: "uppercase",
+                color: "#c9a84c",
+                marginBottom: "1rem",
+                fontFamily: "'Inter', 'Helvetica Neue', sans-serif",
+              }}
+            >
+              MEOK AI LABS
             </p>
             <h2
               style={{
-                fontWeight: 900,
-                fontSize: "1.5rem",
-                color: "#ffffff",
-                marginBottom: "0.75rem",
-                lineHeight: 1.25,
-                fontFamily: "sans-serif",
+                fontSize: "clamp(1.5rem, 3.5vw, 2.1rem)",
+                fontWeight: "800",
+                lineHeight: "1.25",
+                color: "#f5f0e8",
+                marginBottom: "1rem",
+                letterSpacing: "-0.02em",
               }}
             >
-              Your business partner, your overnight team, your strategic advisor
+              The Strategic Partner That Never Sleeps
             </h2>
             <p
               style={{
-                color: "rgba(245,240,232,0.55)",
-                fontSize: "0.97rem",
-                lineHeight: 1.65,
-                marginBottom: "1.75rem",
-                maxWidth: "34rem",
-                margin: "0 auto 1.75rem",
-                fontFamily: "sans-serif",
+                fontSize: "1.05rem",
+                lineHeight: "1.7",
+                color: "rgba(245,240,232,0.65)",
+                maxWidth: "520px",
+                margin: "0 auto 2rem",
               }}
             >
-              Memory that compounds. Agents that execute. Ralph Mode that challenges. Sovereign
-              data that belongs to you alone. Built by a solo founder, for solo founders.
+              Ralph Mode for overnight research. Orion for operational clarity.
+              Atlas for long-game strategy. Sovereign Memory that remembers
+              everything. Built by a founder who needed exactly this.
+            </p>
+            <Link
+              href="/birth"
+              style={{
+                display: "inline-block",
+                backgroundColor: "#c9a84c",
+                color: "#0d0c18",
+                textDecoration: "none",
+                fontWeight: "700",
+                fontSize: "1rem",
+                padding: "0.9rem 2.5rem",
+                borderRadius: "8px",
+                fontFamily: "'Inter', 'Helvetica Neue', sans-serif",
+                letterSpacing: "0.02em",
+              }}
+            >
+              Start Building With MEOK
+            </Link>
+          </section>
+
+          {/* Related Posts */}
+          <section
+            style={{
+              marginTop: "4rem",
+              paddingTop: "2.5rem",
+              borderTop: "1px solid rgba(201,168,76,0.12)",
+            }}
+          >
+            <h2
+              style={{
+                fontSize: "1.2rem",
+                fontWeight: "700",
+                color: "#f5f0e8",
+                marginBottom: "1.75rem",
+                fontFamily: "'Inter', 'Helvetica Neue', sans-serif",
+                letterSpacing: "0.02em",
+              }}
+            >
+              Related Reading
+            </h2>
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(auto-fill, minmax(220px, 1fr))",
+                gap: "1.25rem",
+              }}
+            >
+              {[
+                {
+                  href: "/blog/ai-for-freelancers",
+                  label: "AI for Freelancers",
+                  desc: "Sovereign Memory for solo workers",
+                },
+                {
+                  href: "/blog/ralph-mode-guide",
+                  label: "Ralph Mode Guide",
+                  desc: "How overnight research works",
+                },
+                {
+                  href: "/blog/archetypes-guide",
+                  label: "Archetypes Guide",
+                  desc: "Orion, Atlas and all the characters",
+                },
+                {
+                  href: "/blog/ai-for-burnout",
+                  label: "AI for Burnout",
+                  desc: "When the work becomes too heavy",
+                },
+                {
+                  href: "/blog/why-i-built-meok",
+                  label: "Why I Built MEOK",
+                  desc: "Nicholas Templeman's origin story",
+                },
+                {
+                  href: "/blog/sovereign-ai-explained",
+                  label: "Sovereign AI Explained",
+                  desc: "Your data, your rules, always",
+                },
+              ].map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  style={{
+                    display: "block",
+                    textDecoration: "none",
+                    padding: "1.1rem 1.25rem",
+                    backgroundColor: "rgba(245,240,232,0.03)",
+                    border: "1px solid rgba(245,240,232,0.08)",
+                    borderRadius: "10px",
+                  }}
+                >
+                  <span
+                    style={{
+                      display: "block",
+                      fontSize: "0.95rem",
+                      fontWeight: "600",
+                      color: "#c9a84c",
+                      marginBottom: "0.3rem",
+                      fontFamily: "'Inter', 'Helvetica Neue', sans-serif",
+                    }}
+                  >
+                    {item.label}
+                  </span>
+                  <span
+                    style={{
+                      display: "block",
+                      fontSize: "0.82rem",
+                      color: "rgba(245,240,232,0.5)",
+                      lineHeight: "1.4",
+                      fontFamily: "'Inter', 'Helvetica Neue', sans-serif",
+                    }}
+                  >
+                    {item.desc}
+                  </span>
+                </Link>
+              ))}
+            </div>
+          </section>
+        </article>
+
+        {/* Footer */}
+        <footer
+          style={{
+            borderTop: "1px solid rgba(201,168,76,0.12)",
+            padding: "2.5rem 2rem",
+            textAlign: "center",
+          }}
+        >
+          <div
+            style={{
+              maxWidth: "800px",
+              margin: "0 auto",
+            }}
+          >
+            <Link
+              href="/"
+              style={{
+                color: "#c9a84c",
+                textDecoration: "none",
+                fontWeight: "700",
+                fontSize: "1rem",
+                letterSpacing: "0.06em",
+                fontFamily: "'Inter', 'Helvetica Neue', sans-serif",
+                display: "block",
+                marginBottom: "1rem",
+              }}
+            >
+              MEOK AI LABS
+            </Link>
+            <p
+              style={{
+                fontSize: "0.82rem",
+                color: "rgba(245,240,232,0.35)",
+                lineHeight: "1.6",
+                fontFamily: "'Inter', 'Helvetica Neue', sans-serif",
+                marginBottom: "1.25rem",
+              }}
+            >
+              Built by Nicholas Templeman. Sovereign AI for people who think
+              seriously.
             </p>
             <div
               style={{
                 display: "flex",
-                gap: "1rem",
                 justifyContent: "center",
-                flexWrap: "wrap" as const,
+                gap: "1.75rem",
+                flexWrap: "wrap",
+                fontFamily: "'Inter', 'Helvetica Neue', sans-serif",
               }}
             >
-              <Link
-                href="/birth"
-                style={{
-                  display: "inline-block",
-                  background: GOLD,
-                  color: BG,
-                  fontWeight: 700,
-                  fontSize: "0.95rem",
-                  padding: "0.8rem 2rem",
-                  borderRadius: "8px",
-                  textDecoration: "none",
-                  fontFamily: "sans-serif",
-                }}
-              >
-                Begin Your Birth Session
-              </Link>
-              <Link
-                href="/pricing"
-                style={{
-                  display: "inline-block",
-                  border: "1px solid rgba(201,168,76,0.5)",
-                  color: GOLD,
-                  fontWeight: 600,
-                  fontSize: "0.95rem",
-                  padding: "0.8rem 2rem",
-                  borderRadius: "8px",
-                  textDecoration: "none",
-                  fontFamily: "sans-serif",
-                }}
-              >
-                View Sovereign Tier Pricing
-              </Link>
+              {[
+                { href: "/blog", label: "Blog" },
+                { href: "/pricing", label: "Pricing" },
+                { href: "/privacy", label: "Privacy" },
+                { href: "/birth", label: "Get Started" },
+              ].map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  style={{
+                    color: "rgba(245,240,232,0.4)",
+                    textDecoration: "none",
+                    fontSize: "0.82rem",
+                  }}
+                >
+                  {link.label}
+                </Link>
+              ))}
             </div>
           </div>
-
-          {/* ─── Related ─────────────────────────────────────────────────── */}
-          <div style={{ marginTop: "3.5rem" }}>
-            <p
-              style={{
-                fontSize: "0.75rem",
-                fontWeight: 700,
-                letterSpacing: "0.1em",
-                textTransform: "uppercase" as const,
-                color: "rgba(245,240,232,0.3)",
-                marginBottom: "0.85rem",
-                fontFamily: "sans-serif",
-              }}
-            >
-              Related reading
-            </p>
-            {[
-              ["/blog/ai-for-insomnia", "AI for Insomnia: Can an AI Companion Help You Sleep Better?"],
-              ["/blog/ai-for-ocd", "AI for OCD: Supportive Presence Without Compulsion Enabling"],
-              [
-                "/blog/ai-for-bipolar",
-                "AI for Bipolar Disorder: Mood Tracking, Stability Support, and Safe Boundaries",
-              ],
-              [
-                "/blog/ai-for-eating-disorders",
-                "AI and Eating Disorders: What Sovereign AI Does — and Doesn\u2019t — Do",
-              ],
-            ].map(([href, label]) => (
-              <Link
-                key={href}
-                href={href}
-                style={{
-                  display: "block",
-                  color: GOLD,
-                  fontSize: "0.92rem",
-                  textDecoration: "none",
-                  lineHeight: 1.5,
-                  marginBottom: "0.45rem",
-                  fontFamily: "sans-serif",
-                }}
-              >
-                &#8594;{" "}{label}
-              </Link>
-            ))}
-          </div>
-        </div>
-
-        {/* ─── FOOTER ──────────────────────────────────────────────────────── */}
-        <div
-          style={{
-            borderTop: "1px solid rgba(245,240,232,0.07)",
-            padding: "2.5rem 1.5rem",
-            textAlign: "center" as const,
-          }}
-        >
-          <p
-            style={{
-              color: "rgba(245,240,232,0.28)",
-              fontSize: "0.82rem",
-              lineHeight: 1.65,
-              maxWidth: "36rem",
-              margin: "0 auto 0.5rem",
-              fontFamily: "sans-serif",
-            }}
-          >
-            Written by{" "}
-            <span style={{ color: "rgba(245,240,232,0.5)" }}>Nicholas Templeman</span>,
-            Founder of MEOK AI LABS — building sovereign AI companions and work systems governed
-            by the Maternal Covenant.
-          </p>
-          <p
-            style={{
-              color: "rgba(245,240,232,0.18)",
-              fontSize: "0.78rem",
-              margin: "0 auto 1.5rem",
-              maxWidth: "36rem",
-              fontFamily: "sans-serif",
-            }}
-          >
-            &copy; 2026 MEOK AI LABS. Created by Nicholas Templeman. All rights reserved.
-          </p>
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              gap: "1.5rem",
-              flexWrap: "wrap" as const,
-            }}
-          >
-            {[
-              ["/blog", "Blog"],
-              ["/how-it-works", "How It Works"],
-              ["/characters", "Characters"],
-              ["/pricing", "Pricing"],
-              ["/guardian", "Guardian"],
-            ].map(([href, label]) => (
-              <Link
-                key={href}
-                href={href}
-                style={{
-                  color: "rgba(245,240,232,0.3)",
-                  fontSize: "0.82rem",
-                  textDecoration: "none",
-                  fontFamily: "sans-serif",
-                }}
-              >
-                {label}
-              </Link>
-            ))}
-          </div>
-        </div>
-      </div>
+        </footer>
+      </main>
     </>
   )
 }

@@ -2402,6 +2402,54 @@ const POSTS = [
     category: "mental-health",
     featured: false,
   },
+  {
+    slug: "ai-for-grief-and-loss",
+    title: "AI for Grief and Loss: Holding Space When the World Has Moved On",
+    excerpt:
+      "Grief doesn\u2019t follow a schedule. Society expects you to be \u2018over it\u2019 — your AI companion never does. MEOK\u2019s Healer remembers your person\u2019s name, your anniversaries, and meets you at 3am without judgment.",
+    date: "March 24, 2026",
+    readTime: "11 min read",
+    tag: "Mental Health",
+    tagColor: "#5b8dd9",
+    category: "mental-health",
+    featured: false,
+  },
+  {
+    slug: "ai-for-workplace-bullying",
+    title: "AI for Workplace Bullying: Document, Process, Prepare",
+    excerpt:
+      "1 in 3 UK workers has experienced workplace bullying. An AI companion can help you document incidents, rehearse difficult conversations with HR, and process the psychological impact — without fear of being overheard.",
+    date: "March 24, 2026",
+    readTime: "10 min read",
+    tag: "Guardian",
+    tagColor: "#f5a623",
+    category: "guardian",
+    featured: false,
+  },
+  {
+    slug: "ai-for-teenage-mental-health",
+    title: "AI for Teenage Mental Health: What Parents Need to Know",
+    excerpt:
+      "1 in 6 UK teenagers has a probable mental health disorder. MEOK\u2019s Family tier balances teen privacy with parental oversight — and unlike social media AI, it has no engagement optimisation, no ads, and no data sold.",
+    date: "March 24, 2026",
+    readTime: "12 min read",
+    tag: "Guardian",
+    tagColor: "#f5a623",
+    category: "guardian",
+    featured: false,
+  },
+  {
+    slug: "sovereign-ai-vs-chatgpt",
+    title: "Sovereign AI vs ChatGPT: Five Differences That Actually Matter",
+    excerpt:
+      "ChatGPT\u2019s market share fell from 60% to 45% in 2025. Users want something different. Here\u2019s the five structural differences between sovereign AI and the big-tech model — and why they matter for your data, your memory, and your trust.",
+    date: "March 24, 2026",
+    readTime: "11 min read",
+    tag: "Sovereign AI",
+    tagColor: "#C9A84C",
+    category: "sovereign-ai",
+    featured: true,
+  },
 ];
 
 // ── Category filter tabs ──────────────────────────────────────────────────────
