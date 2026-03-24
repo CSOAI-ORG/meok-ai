@@ -53,6 +53,18 @@ const POSTS = [
     featured: true,
   },
   {
+    slug: "meok-for-neurodivergent",
+    title: "MEOK for Neurodivergent People: An AI That Takes Different Thinking Seriously",
+    excerpt:
+      "9.5 million people in the UK are neurodivergent. Most AI tools assume neurotypical communication. MEOK was built differently — consistent personality, literal language support, Comfort Settings panel, and genuine patience.",
+    date: "March 28, 2026",
+    readTime: "7 min read",
+    tag: "Accessibility",
+    tagColor: "#87CEEB",
+    category: "product",
+    featured: false,
+  },
+  {
     slug: "what-is-ai-os",
     title: "What is an AI Operating System? MEOK OS Explained",
     excerpt:
