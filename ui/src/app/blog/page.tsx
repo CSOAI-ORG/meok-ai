@@ -41,6 +41,18 @@ const jsonLd = {
 
 const POSTS = [
   {
+    slug: "ai-for-grief-support",
+    title: "AI for Grief Support: Can an AI Companion Help You Through Bereavement?",
+    excerpt:
+      "Grief is not a problem to solve. But at 3am, when the silence is loudest, an AI governed by care ethics — not engagement metrics — can offer something real. MEOK's approach to bereavement, loss, and what care-first AI actually means.",
+    date: "March 24, 2026",
+    readTime: "10 min read",
+    tag: "Mental Health",
+    tagColor: "#8B5CF6",
+    category: "product",
+    featured: false,
+  },
+  {
     slug: "why-meok-never-trains-on-you",
     title: "Why MEOK can never be trained on your conversations — and how we enforce it technically",
     excerpt:
@@ -181,6 +193,18 @@ const POSTS = [
     readTime: "7 min read",
     tag: "Mental Health",
     tagColor: "#A78BFA",
+    category: "product",
+    featured: false,
+  },
+  {
+    slug: "meok-vs-replika",
+    title: "MEOK vs Replika: Which AI Companion Actually Cares About You?",
+    excerpt:
+      "Replika pioneered AI companionship. MEOK was built because the category needed to grow up. A deep comparison on memory ownership, family safety, privacy architecture, and what each platform actually delivers.",
+    date: "March 24, 2026",
+    readTime: "14 min read",
+    tag: "Comparison",
+    tagColor: "#F97316",
     category: "product",
     featured: false,
   },
@@ -592,6 +616,630 @@ const POSTS = [
     category: "research",
     featured: false,
   },
+  {
+    slug: "meok-vs-character-ai",
+    title: "MEOK vs Character.AI: Safety, Memory, and the Lawsuit That Changed Everything",
+    excerpt:
+      "Character.AI processes 20 billion messages a month and faces lawsuits over child safety. MEOK was built to answer the question: what does responsible AI companionship actually look like? A full comparison on safety, memory, privacy, and who each platform is for.",
+    date: "March 24, 2026",
+    readTime: "12 min read",
+    tag: "Comparison",
+    tagColor: "#F97316",
+    category: "product",
+    featured: false,
+  },
+  {
+    slug: "ai-for-autism",
+    title: "AI for Autism: Why MEOK's Predictable, Patient Companion Is Different",
+    excerpt:
+      "700,000 autistic adults in the UK. Most AI tools assume neurotypical communication styles, interrupting, being inconsistent, using ambiguous language. MEOK was built differently — consistent personality, literal language, adjustable sensory settings, and a companion that never tires.",
+    date: "March 24, 2026",
+    readTime: "9 min read",
+    tag: "Accessibility",
+    tagColor: "#87CEEB",
+    category: "product",
+    featured: false,
+  },
+  {
+    slug: "best-ai-productivity-2026",
+    title: "Best AI Productivity Tools in 2026: ChatGPT vs Notion AI vs MEOK — Full Comparison",
+    excerpt:
+      "Users are juggling 3–4 AI tools daily and still feeling overwhelmed. We compared every major AI productivity tool in 2026 — on memory, context, agent capability, and privacy — to find which one actually makes you more productive.",
+    date: "March 24, 2026",
+    readTime: "10 min read",
+    tag: "Comparison",
+    tagColor: "#F97316",
+    category: "product",
+    featured: false,
+  },
+  {
+    slug: "meok-vs-pi-ai",
+    title: "MEOK vs Pi AI: Which AI Companion Actually Remembers You?",
+    excerpt:
+      "Pi AI is warm and conversational. But Inflection was acquired by Microsoft in 2024, and Pi's future is uncertain. MEOK was built with a different promise: your AI belongs to you, not to whoever buys the company next.",
+    date: "March 24, 2026",
+    readTime: "9 min read",
+    tag: "Comparison",
+    tagColor: "#F97316",
+    category: "product",
+    featured: false,
+  },
+  {
+    slug: "ai-for-ptsd",
+    title: "AI for PTSD: How Sovereign AI Support Differs from Generic Chatbots",
+    excerpt:
+      "Generic chatbots forget your history, change personality unexpectedly, and can inadvertently retraumatise. MEOK was designed with consistent personality, encrypted persistent memory, and a Maternal Covenant care floor — here's what responsible AI support for PTSD looks like.",
+    date: "March 24, 2026",
+    readTime: "9 min read",
+    tag: "Mental Health",
+    tagColor: "#8B5CF6",
+    category: "product",
+    featured: false,
+  },
+  {
+    slug: "meok-vs-gemini",
+    title: "MEOK vs Google Gemini: Why a Sovereign AI Companion Beats a General AI Assistant",
+    excerpt:
+      "Gemini is powerful, multimodal, and deeply integrated with Google Workspace. But it doesn't know who you are. Every conversation starts fresh. Your data improves Google's products. Here's the difference between a general AI assistant and a sovereign AI companion.",
+    date: "March 24, 2026",
+    readTime: "9 min read",
+    tag: "Comparison",
+    tagColor: "#F97316",
+    category: "product",
+    featured: false,
+  },
+  {
+    slug: "ai-for-students",
+    title: "AI for Students in 2026: How a Sovereign AI Companion Actually Helps You Learn",
+    excerpt:
+      "Every student now has access to AI. The question is which one makes you smarter versus lazier. MEOK's Sage archetype uses Socratic questioning, remembers your weak areas, and plans your revision overnight — here's what genuinely helpful AI for learning looks like.",
+    date: "March 24, 2026",
+    readTime: "8 min read",
+    tag: "Product",
+    tagColor: "#7BC47F",
+    category: "product",
+    featured: false,
+  },
+  {
+    slug: "what-is-mcp",
+    title: "What is MCP (Model Context Protocol)? And Why It Matters for Your AI",
+    excerpt:
+      "Before MCP, every AI integration was a one-off. Anthropic's Model Context Protocol changed that — it's the USB standard for AI tools. With 10,000+ servers and 97 million monthly SDK downloads in 2026, here's why it matters and how MEOK uses it.",
+    date: "March 24, 2026",
+    readTime: "7 min read",
+    tag: "Technology",
+    tagColor: "#d4af37",
+    category: "research",
+    featured: false,
+  },
+  {
+    slug: "ai-for-seniors-uk",
+    title: "AI Companion for Seniors in the UK: What Families Actually Need to Know in 2026",
+    excerpt:
+      "12 million UK adults over 65. 1.4 million chronically lonely. £3.4 billion lost to scams targeting elderly people annually. Here's what families need to know about AI companions, Senior Mode, and MEOK Guardian protection for older adults.",
+    date: "March 24, 2026",
+    readTime: "9 min read",
+    tag: "Guardian",
+    tagColor: "#7BC47F",
+    category: "guardian",
+    featured: false,
+  },
+  {
+    slug: "sovereign-ai-uk",
+    title: "Sovereign AI in the UK: What the Data Protection Act Means for Your AI Companion",
+    excerpt:
+      "UK GDPR, the Data Protection Act 2018, and the Children's Code are among the strongest data protections in the world — but most AI tools don't comply properly. MEOK was built in the UK, for UK law. Here's what that means in practice.",
+    date: "March 24, 2026",
+    readTime: "8 min read",
+    tag: "Sovereign AI",
+    tagColor: "#87CEEB",
+    category: "sovereign-ai",
+    featured: false,
+  },
+  {
+    slug: "meok-vs-copilot",
+    title: "MEOK vs Microsoft Copilot: Why Sovereign AI Beats Enterprise AI for Personal Use",
+    excerpt:
+      "Copilot is excellent for Word documents. But it doesn't know you exist between sessions — and your IT admin might. Here's the difference between an enterprise AI assistant and a sovereign personal companion.",
+    date: "March 24, 2026",
+    readTime: "8 min read",
+    tag: "Comparison",
+    tagColor: "#F97316",
+    category: "product",
+    featured: false,
+  },
+  {
+    slug: "ai-for-mental-health-2026",
+    title: "AI for Mental Health in 2026: What the Research Actually Says",
+    excerpt:
+      "1 in 4 UK adults experience a mental health problem each year. NHS waiting lists average 18 weeks. AI is filling a gap — but how it fills that gap matters enormously. An honest, evidence-based look at what AI can and cannot do for mental health.",
+    date: "March 24, 2026",
+    readTime: "11 min read",
+    tag: "Mental Health",
+    tagColor: "#8B5CF6",
+    category: "product",
+    featured: false,
+  },
+  {
+    slug: "ai-companion-for-men",
+    title: "AI Companion for Men: Why Male Emotional Wellbeing Needs a Different Approach",
+    excerpt:
+      "3.8 million lonely men in the UK. Men die by suicide at 3× the rate of women. Yet most AI companions feel designed for someone else. MEOK's Scout and Strategist archetypes speak a different language — direct, action-oriented, and still emotionally present.",
+    date: "March 24, 2026",
+    readTime: "8 min read",
+    tag: "Mental Health",
+    tagColor: "#8B5CF6",
+    category: "product",
+    featured: false,
+  },
+  {
+    slug: "personal-data-rights-ai",
+    title: "Your AI Knows Everything About You. Do You Own Any of It?",
+    excerpt:
+      "Everything you've ever told your AI is stored on someone else's server. That company can read it, analyse it, sell insights from it, or lose it in a breach. Here's what your actual data rights are — and how MEOK is architecturally different.",
+    date: "March 24, 2026",
+    readTime: "8 min read",
+    tag: "Sovereign AI",
+    tagColor: "#87CEEB",
+    category: "sovereign-ai",
+    featured: false,
+  },
+  {
+    slug: "ai-for-freelancers",
+    title: "AI for Freelancers: How MEOK Becomes Your Overnight Business Partner",
+    excerpt:
+      "4.9 million freelancers in the UK work alone, juggle everything, and have no admin support. MEOK's Work OS — Orion hunting opportunities overnight, Riri building while you sleep, Hourman planning your sprint — is the business partner you never had.",
+    date: "March 24, 2026",
+    readTime: "8 min read",
+    tag: "Product",
+    tagColor: "#7BC47F",
+    category: "product",
+    featured: false,
+  },
+  {
+    slug: "ai-for-chronic-illness",
+    title: "AI Companion for Chronic Illness: What Persistent Memory Means for Long-Term Health Support",
+    excerpt:
+      "15 million UK adults live with chronic conditions. The NHS can't track your daily symptoms. Most AI resets every session. MEOK's encrypted persistent memory means it actually learns your condition profile — what triggers flares, what helps, what you've already tried.",
+    date: "March 24, 2026",
+    readTime: "8 min read",
+    tag: "Mental Health",
+    tagColor: "#8B5CF6",
+    category: "product",
+    featured: false,
+  },
+  {
+    slug: "what-is-byzantine-consensus",
+    title: "What is Byzantine Consensus and Why Does Your AI Need It?",
+    excerpt:
+      "ChatGPT can confidently tell you something completely wrong. The problem isn't a bug — it's architecture. A single model has no error correction. MEOK's 46-agent Byzantine Council makes false confidence mathematically much harder.",
+    date: "March 24, 2026",
+    readTime: "7 min read",
+    tag: "Research",
+    tagColor: "#10B981",
+    category: "research",
+    featured: false,
+  },
+  {
+    slug: "ai-for-carers",
+    title: "AI for Carers: How MEOK Supports the People Who Support Everyone Else",
+    excerpt:
+      "6.5 million unpaid carers in the UK. Most are invisible, exhausted, and last in line for support. MEOK's Family plan, overnight agents, and consistent companion give carers something they rarely have — something that's just for them.",
+    date: "March 24, 2026",
+    readTime: "8 min read",
+    tag: "Guardian",
+    tagColor: "#7BC47F",
+    category: "guardian",
+    featured: false,
+  },
+  {
+    slug: "meok-vs-woebot",
+    title: "MEOK vs Woebot: Why CBT Scripts Aren't Enough for Long-Term Mental Health Support",
+    excerpt:
+      "Woebot delivers scripted CBT exercises with no memory of who you are. MEOK builds a sovereign relationship that grows with you — remembering context, enforcing a care floor, and never selling your vulnerabilities to advertisers.",
+    date: "March 24, 2026",
+    readTime: "7 min read",
+    tag: "Mental Health",
+    tagColor: "#8B5CF6",
+    category: "product",
+    featured: false,
+  },
+  {
+    slug: "ai-for-small-business",
+    title: "AI for Small Business: How MEOK Replaces Three Tools You're Already Paying For",
+    excerpt:
+      "Notion, Copilot, and a scheduling tool — three monthly subscriptions that don't talk to each other. MEOK's Work OS (Orion, Riri, Hourman) runs overnight so you wake up to finished work, not a to-do list.",
+    date: "March 24, 2026",
+    readTime: "7 min read",
+    tag: "Work OS",
+    tagColor: "#c9a84c",
+    category: "product",
+    featured: false,
+  },
+  {
+    slug: "how-sovereign-ai-works",
+    title: "How Sovereign AI Works: Byzantine Consensus, Encrypted Memory, and Care Floors Explained",
+    excerpt:
+      "Three engineering decisions separate sovereign AI from cloud AI assistants: a 46-agent Byzantine Council, user-owned encrypted memory, and a Maternal Covenant care floor. Here's what each means and why it matters.",
+    date: "March 24, 2026",
+    readTime: "8 min read",
+    tag: "Research",
+    tagColor: "#10B981",
+    category: "research",
+    featured: false,
+  },
+  {
+    slug: "ai-for-anxiety",
+    title: "AI for Anxiety: Can a Sovereign AI Companion Actually Help?",
+    excerpt:
+      "1 in 6 UK adults experience anxiety. Most go unsupported between appointments. MEOK's sovereign companion is available 24/7, remembers your triggers, enforces a care floor, and never dismisses how you feel — while being honest enough not to just validate you.",
+    date: "March 24, 2026",
+    readTime: "7 min read",
+    tag: "Mental Health",
+    tagColor: "#8B5CF6",
+    category: "product",
+    featured: false,
+  },
+  {
+    slug: "what-is-an-ai-companion",
+    title: "What Is an AI Companion? The Honest Guide to Bonded AI (and What Most Apps Get Wrong)",
+    excerpt:
+      "AI companions are not chatbots. They are bonded systems that remember you across sessions, develop a consistent personality, and grow alongside you. Here is what separates a genuine sovereign companion from a dressed-up FAQ bot.",
+    date: "March 24, 2026",
+    readTime: "6 min read",
+    tag: "Sovereign AI",
+    tagColor: "#c9a84c",
+    category: "sovereign-ai",
+    featured: false,
+  },
+  {
+    slug: "ai-for-veterans",
+    title: "AI for Veterans: Persistent Memory, PTSD Support, and Why Data Sovereignty Matters Most",
+    excerpt:
+      "1 in 5 UK veterans experience mental health difficulties. MEOK's sovereign companion remembers your history, never trains on your trauma, and enforces a care floor — with no judgment and no waitlist.",
+    date: "March 24, 2026",
+    readTime: "8 min read",
+    tag: "Guardian",
+    tagColor: "#7BC47F",
+    category: "guardian",
+    featured: false,
+  },
+  {
+    slug: "ai-for-addiction-recovery",
+    title: "AI Support for Addiction Recovery: What Sovereign Memory Can Do That Sponsorship Can't",
+    excerpt:
+      "24/7 availability, zero judgment, and a companion that remembers your sobriety milestones. MEOK is not a replacement for professional treatment — but it can be there at 3am when no one else is.",
+    date: "March 24, 2026",
+    readTime: "7 min read",
+    tag: "Mental Health",
+    tagColor: "#8B5CF6",
+    category: "product",
+    featured: false,
+  },
+  {
+    slug: "ai-companion-uk",
+    title: "Best AI Companion App UK 2026: Tested, Compared, and Ranked for British Users",
+    excerpt:
+      "A fair comparison of Replika, Character.AI, Pi AI, Woebot, and MEOK — scored on UK GDPR compliance, ICO registration, GBP pricing, and whether your data gets sold. One winner for British users who care about their rights.",
+    date: "March 24, 2026",
+    readTime: "9 min read",
+    tag: "Comparison",
+    tagColor: "#6366f1",
+    category: "product",
+    featured: false,
+  },
+  {
+    slug: "ai-companion-vs-therapist",
+    title: "AI Companion vs Therapist: What AI Can and Cannot Do for Your Mental Health",
+    excerpt:
+      "AI companions are available at 3am, never cancel appointments, and remember every session. Therapists provide clinical diagnosis, regulated treatment, and genuine human care. Here is the honest guide to using both.",
+    date: "March 24, 2026",
+    readTime: "8 min read",
+    tag: "Mental Health",
+    tagColor: "#8B5CF6",
+    category: "product",
+    featured: false,
+  },
+  {
+    slug: "ai-memory-explained",
+    title: "AI Memory Explained: Why Most AI Forgets You (and How MEOK Doesn't)",
+    excerpt:
+      "Context windows reset. Stateless APIs forget everything between sessions. Here is why most AI has no memory, how MEOK's 4-layer architecture solves this, and what it means for your relationship with your AI.",
+    date: "March 24, 2026",
+    readTime: "6 min read",
+    tag: "Research",
+    tagColor: "#10B981",
+    category: "research",
+    featured: false,
+  },
+  {
+    slug: "data-sovereignty-ai",
+    title: "Data Sovereignty in AI: Who Really Owns Your Conversations with ChatGPT, Claude, and Replika?",
+    excerpt:
+      "Most AI companies own your data, use it for training, and make it hard to delete. Under UK GDPR Articles 17 and 20, you have the right to erasure and portability. Here is what the major AI tools actually do with your conversations.",
+    date: "March 24, 2026",
+    readTime: "7 min read",
+    tag: "Privacy",
+    tagColor: "#6366f1",
+    category: "sovereign-ai",
+    featured: false,
+  },
+  {
+    slug: "ai-for-insomnia",
+    title: "AI for Insomnia: Can a Sovereign AI Companion Help You Sleep Better?",
+    excerpt:
+      "1 in 3 UK adults has sleep problems. Most are rooted in anxiety and unprocessed thoughts. MEOK's companion as a pre-sleep check-in tool — brain dump, process the day, and know that your work is handled by overnight agents.",
+    date: "March 24, 2026",
+    readTime: "6 min read",
+    tag: "Mental Health",
+    tagColor: "#8B5CF6",
+    category: "product",
+    featured: false,
+  },
+  {
+    slug: "ai-for-teens",
+    title: "AI for Teenagers: Safe Companions, School Support, and Why Sovereignty Matters for Young People",
+    excerpt:
+      "AI companions for teens need stronger safeguards, not weaker ones. MEOK's Guardian mode, UK Children's Code compliance, and parental dashboard put safety first — while giving teenagers a private space to be honest.",
+    date: "March 24, 2026",
+    readTime: "7 min read",
+    tag: "Guardian",
+    tagColor: "#7BC47F",
+    category: "guardian",
+    featured: false,
+  },
+  {
+    slug: "ai-for-parents",
+    title: "AI for Parents: How MEOK's Family Plan Protects Every Generation Under One Roof",
+    excerpt:
+      "MEOK's Family plan (£29/mo) covers up to 6 family members with Guardian 24/7 protection, child-safe filters, scam detection for elderly relatives, and overnight agents that handle admin so you can be present.",
+    date: "March 24, 2026",
+    readTime: "7 min read",
+    tag: "Guardian",
+    tagColor: "#7BC47F",
+    category: "guardian",
+    featured: false,
+  },
+  {
+    slug: "ai-for-relationship-anxiety",
+    title: "AI Companion for Relationship Anxiety: Processing Attachment, Not Replacing Connection",
+    excerpt:
+      "Relationship anxiety affects millions of UK adults. MEOK's sovereign companion helps you process anxious thoughts between therapy sessions — and unlike some chatbots, MEOK's sycophancy detector won't just validate every fear.",
+    date: "March 24, 2026",
+    readTime: "7 min read",
+    tag: "Mental Health",
+    tagColor: "#8B5CF6",
+    category: "product",
+    featured: false,
+  },
+  {
+    slug: "meok-for-remote-workers",
+    title: "MEOK for Remote Workers: The AI That Understands Isolation, Handles Your Admin, and Keeps You Sharp",
+    excerpt:
+      "4.2 million remote workers in the UK. Most miss having a trusted colleague to think with. MEOK's sovereign companion knows your work context, while overnight agents ensure you start each day ahead rather than behind.",
+    date: "March 24, 2026",
+    readTime: "7 min read",
+    tag: "Work OS",
+    tagColor: "#c9a84c",
+    category: "product",
+    featured: false,
+  },
+  {
+    slug: "ai-companion-for-menopause",
+    title: "AI Companion for Menopause: Persistent Support Through the Transition No One Talks About",
+    excerpt:
+      "13 million women in perimenopause or menopause in the UK. Most are navigating it without adequate support. MEOK's companion tracks symptom patterns over months, remembers what you've tried, and never forgets your history.",
+    date: "March 24, 2026",
+    readTime: "7 min read",
+    tag: "Mental Health",
+    tagColor: "#8B5CF6",
+    category: "product",
+    featured: false,
+  },
+  {
+    slug: "sovereignty-explained",
+    title: "Digital Sovereignty Explained: What It Really Means to Own Your AI Data",
+    excerpt:
+      "Sovereignty is not a marketing word. It means AES-256 encryption, exportable JSON, UK GDPR Article 17 erasure rights, and no training on your conversations. Here is what it looks like in practice.",
+    date: "March 24, 2026",
+    readTime: "5 min read",
+    tag: "Privacy",
+    tagColor: "#6366f1",
+    category: "sovereign-ai",
+    featured: false,
+  },
+  {
+    slug: "ai-for-entrepreneurs",
+    title: "AI for Entrepreneurs: How a Sovereign AI Replaces Your EA, Strategist, and Sounding Board",
+    excerpt:
+      "Built from a caravan, MEOK was made for founders who work alone. Orion researches overnight, Riri builds while you sleep, Hourman plans your sprints — and your companion remembers every decision you've made.",
+    date: "March 24, 2026",
+    readTime: "6 min read",
+    tag: "Work OS",
+    tagColor: "#c9a84c",
+    category: "product",
+    featured: false,
+  },
+  {
+    slug: "ai-for-single-parents",
+    title: "AI for Single Parents: When You're Running Two Jobs and Have No Bandwidth Left",
+    excerpt:
+      "1.8 million single parent families in the UK. MEOK's overnight agents handle admin while the kids sleep. The Family plan covers your whole household. And your companion is there after bedtime — for the grown-up hours.",
+    date: "March 24, 2026",
+    readTime: "7 min read",
+    tag: "Guardian",
+    tagColor: "#7BC47F",
+    category: "guardian",
+    featured: false,
+  },
+  {
+    slug: "ai-for-chronic-fatigue",
+    title: "AI Companion for Chronic Fatigue Syndrome: Consistent Support When Energy Is the Scarcest Resource",
+    excerpt:
+      "250,000 people have ME/CFS in the UK. Persistent memory means MEOK remembers your pacing history, what you tried last month, and how you felt — so you never have to explain yourself again from scratch on a bad day.",
+    date: "March 24, 2026",
+    readTime: "7 min read",
+    tag: "Mental Health",
+    tagColor: "#8B5CF6",
+    category: "product",
+    featured: false,
+  },
+  {
+    slug: "ai-for-creative-professionals",
+    title: "AI for Creative Professionals: Feedback That Grows With Your Work, Not Generic Suggestions",
+    excerpt:
+      "Generic AI feedback ignores your style, your history, and what you're actually trying to achieve. MEOK knows your creative brief from six months ago. And its sycophancy detector will push back on weak work, not just validate it.",
+    date: "March 24, 2026",
+    readTime: "6 min read",
+    tag: "Product",
+    tagColor: "#c9a84c",
+    category: "product",
+    featured: false,
+  },
+  {
+    slug: "meok-vs-notion-ai",
+    title: "MEOK vs Notion AI: When Your Productivity Tool Becomes a Sovereign Companion",
+    excerpt:
+      "Notion AI is a smart document tool. MEOK is a sovereign operating system with overnight agents, a bonded companion, and family Guardian protection. They solve different problems — and one of them knows who you are.",
+    date: "March 24, 2026",
+    readTime: "7 min read",
+    tag: "Comparison",
+    tagColor: "#6366f1",
+    category: "product",
+    featured: false,
+  },
+  {
+    slug: "ai-for-bipolar",
+    title: "AI Companion for Bipolar Disorder: Tracking Patterns, Staying Grounded Between Episodes",
+    excerpt:
+      "MEOK's persistent memory tracks mood patterns over months — things you said before a previous episode, how you described feeling, what helped. A stable consistent companion that's there before, during, and after.",
+    date: "March 24, 2026",
+    readTime: "7 min read",
+    tag: "Mental Health",
+    tagColor: "#8B5CF6",
+    category: "product",
+    featured: false,
+  },
+  {
+    slug: "meok-for-students",
+    title: "MEOK for Students: Your Sovereign AI Study Partner, Mental Health Support, and Deadline Manager",
+    excerpt:
+      "1 in 5 UK students has a mental health problem. MEOK's Explorer tier is free (50 messages/day), doesn't sell your data to universities, and guides your thinking with Socratic mode rather than doing the work for you.",
+    date: "March 24, 2026",
+    readTime: "7 min read",
+    tag: "Product",
+    tagColor: "#c9a84c",
+    category: "product",
+    featured: false,
+  },
+  {
+    slug: "what-is-morning-briefing",
+    title: "What is Morning Briefing? How MEOK Starts Your Day Before You Even Open Your Eyes",
+    excerpt:
+      "Every morning, MEOK's overnight agents compile what they found, what's on your calendar, and what your companion knows matters to you. It arrives as a personalised briefing — context and focus before the noise begins.",
+    date: "March 24, 2026",
+    readTime: "5 min read",
+    tag: "Work OS",
+    tagColor: "#c9a84c",
+    category: "product",
+    featured: false,
+  },
+  {
+    slug: "ai-for-grief-counselling",
+    title: "AI for Grief: How Persistent Memory Supports Long-Term Bereavement (Without Replacing Human Connection)",
+    excerpt:
+      "600,000 people are bereaved each year in the UK. Grief is non-linear and can last for years — but most support doesn't. MEOK remembers the person you lost, significant dates, and how you described them, session after session.",
+    date: "March 24, 2026",
+    readTime: "7 min read",
+    tag: "Mental Health",
+    tagColor: "#8B5CF6",
+    category: "product",
+    featured: false,
+  },
+  {
+    slug: "ai-companion-for-autism",
+    title: "AI Companion for Autism: Predictable, Patient, and Always Available",
+    excerpt:
+      "700,000 autistic people in the UK. MEOK's companion behaves consistently, never expresses frustration, and can rehearse social scripts safely. Persistent memory tracks sensory preferences and communication needs across every session.",
+    date: "March 24, 2026",
+    readTime: "7 min read",
+    tag: "Guardian",
+    tagColor: "#7BC47F",
+    category: "product",
+    featured: false,
+  },
+  {
+    slug: "ai-for-home-workers",
+    title: "AI for Home Workers: The Companion That Understands the Kitchen Table Commute",
+    excerpt:
+      "The home office is productive and isolating in equal measure. MEOK's sovereign companion is a thinking partner who knows your work, never reports to your employer, and leaves overnight agents to handle the backlog while you rest.",
+    date: "March 24, 2026",
+    readTime: "6 min read",
+    tag: "Work OS",
+    tagColor: "#c9a84c",
+    category: "product",
+    featured: false,
+  },
+  {
+    slug: "ai-for-ocd",
+    title: "AI Companion for OCD: Consistent Support Between ERP Therapy Sessions",
+    excerpt:
+      "750,000 people in the UK have OCD. MEOK's sycophancy detector will not provide the reassurance that reinforces compulsions. What it will do: journal patterns over months, maintain a stable presence, and never cancel on a bad day.",
+    date: "March 24, 2026",
+    readTime: "7 min read",
+    tag: "Mental Health",
+    tagColor: "#8B5CF6",
+    category: "product",
+    featured: false,
+  },
+  {
+    slug: "ai-for-social-anxiety",
+    title: "AI Companion for Social Anxiety: Practicing Real Conversations in a Low-Stakes Space",
+    excerpt:
+      "Social anxiety affects 1 in 8 people in the UK. MEOK gives you a private space to rehearse difficult conversations — job interviews, awkward family talks, first dates — with a companion that never judges and always remembers.",
+    date: "March 24, 2026",
+    readTime: "6 min read",
+    tag: "Mental Health",
+    tagColor: "#8B5CF6",
+    category: "product",
+    featured: false,
+  },
+  {
+    slug: "ai-for-chronic-pain",
+    title: "AI Companion for Chronic Pain: Memory That Helps When Every Day Is Different",
+    excerpt:
+      "28 million UK adults live with chronic pain. MEOK tracks your pain diary over months, remembers triggers and what helped, and maintains a consistent compassionate presence — without dismissing or minimising how you feel.",
+    date: "March 24, 2026",
+    readTime: "6 min read",
+    tag: "Mental Health",
+    tagColor: "#8B5CF6",
+    category: "product",
+    featured: false,
+  },
+  {
+    slug: "ai-for-eating-disorders",
+    title: "AI Companion for Eating Disorder Recovery: Support Between Appointments, Not a Diet Plan",
+    excerpt:
+      "1.25 million people in the UK are affected by eating disorders. MEOK never discusses food, calories, or weight. What it does: provide consistent, non-judgmental support between clinical appointments, with a care floor that won't enable harm.",
+    date: "March 24, 2026",
+    readTime: "7 min read",
+    tag: "Mental Health",
+    tagColor: "#8B5CF6",
+    category: "product",
+    featured: false,
+  },
+  {
+    slug: "ai-for-older-adults",
+    title: "AI Companion for Older Adults: Combating Isolation, Scam Protection, and Senior Mode Explained",
+    excerpt:
+      "1.4 million older people in the UK are often or always lonely. MEOK's Senior Mode (large text, high contrast, voice-primary) makes it accessible. Guardian's real-time scam detection protects against fraud before the damage is done.",
+    date: "March 24, 2026",
+    readTime: "7 min read",
+    tag: "Guardian",
+    tagColor: "#7BC47F",
+    category: "guardian",
+    featured: false,
+  },
 ];
 
 // ── Category filter tabs ──────────────────────────────────────────────────────
@@ -600,6 +1248,7 @@ const CATEGORIES = [
   { id: "all", label: "All" },
   { id: "sovereign-ai", label: "Sovereign AI" },
   { id: "product", label: "Product" },
+  { id: "guardian", label: "Guardian" },
   { id: "behind-the-build", label: "Behind the Build" },
   { id: "research", label: "Research" },
 ];
@@ -665,9 +1314,19 @@ function PostCard({
 
 // ── Page ──────────────────────────────────────────────────────────────────────
 
-export default function BlogIndex() {
-  const featured = POSTS.find((p) => p.featured)!;
-  const rest = POSTS.filter((p) => !p.featured);
+export default async function BlogIndex({
+  searchParams,
+}: {
+  searchParams?: Promise<{ category?: string }>;
+}) {
+  const params = await searchParams;
+  const activeCategory = params?.category ?? "all";
+  const filteredPosts =
+    activeCategory === "all"
+      ? POSTS
+      : POSTS.filter((p) => p.category === activeCategory);
+  const featured = (filteredPosts.find((p) => p.featured) ?? filteredPosts[0])!;
+  const rest = filteredPosts.filter((p) => p !== featured);
 
   return (
     <div className="min-h-screen" style={{ background: "#0d0c18" }}>
@@ -709,32 +1368,47 @@ export default function BlogIndex() {
       <div className="max-w-5xl mx-auto px-6 py-16">
         {/* Category filter */}
         <div className="flex flex-wrap gap-2 mb-10">
-          {CATEGORIES.map((cat) => (
-            <span
-              key={cat.id}
-              className="px-4 py-2 rounded-full text-sm font-semibold border cursor-default transition-all"
-              style={
-                cat.id === "all"
-                  ? { background: "#c9a84c", color: "#0d0c18", borderColor: "#c9a84c" }
-                  : { background: "transparent", color: "rgba(245,240,232,0.55)", borderColor: "rgba(245,240,232,0.15)" }
-              }
-            >
-              {cat.label}
-            </span>
-          ))}
+          {CATEGORIES.map((cat) => {
+            const isActive = activeCategory === cat.id;
+            return (
+              <Link
+                key={cat.id}
+                href={cat.id === "all" ? "/blog" : `/blog?category=${cat.id}`}
+                className="px-4 py-2 rounded-full text-sm font-semibold border transition-all hover:opacity-90"
+                style={
+                  isActive
+                    ? { background: "#c9a84c", color: "#0d0c18", borderColor: "#c9a84c" }
+                    : { background: "transparent", color: "rgba(245,240,232,0.55)", borderColor: "rgba(245,240,232,0.15)" }
+                }
+              >
+                {cat.label}
+              </Link>
+            );
+          })}
         </div>
 
         {/* Featured post */}
-        <div className="mb-8">
-          <PostCard post={featured} featured />
-        </div>
+        {featured && (
+          <div className="mb-8">
+            <PostCard post={featured} featured />
+          </div>
+        )}
 
         {/* Article grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
-          {rest.map((post) => (
-            <PostCard key={post.slug} post={post} />
-          ))}
-        </div>
+        {rest.length > 0 ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
+            {rest.map((post) => (
+              <PostCard key={post.slug} post={post} />
+            ))}
+          </div>
+        ) : !featured ? (
+          <div className="text-center py-16 mb-16" style={{ color: "rgba(245,240,232,0.4)" }}>
+            <p className="text-lg">No posts in this category yet.</p>
+            <Link href="/blog" className="text-sm mt-2 inline-block" style={{ color: "#c9a84c" }}>View all posts →</Link>
+          </div>
+        ) : (
+          <div className="mb-16" />
+        )}
 
         {/* Newsletter — content-first framing */}
         <div
