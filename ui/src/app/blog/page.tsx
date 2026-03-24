@@ -2714,6 +2714,42 @@ const POSTS = [
     category: "wellbeing",
     featured: false,
   },
+  {
+    slug: "ai-for-midlife-transition",
+    title: "AI for Midlife Transition: Finding Purpose and Direction at 40, 50, and Beyond",
+    excerpt:
+      "Midlife is not a crisis — it is a transition. MEOK's sovereign AI companion helps you navigate identity shifts, career pivots, and the profound question of what you actually want from the second half of your life.",
+    date: "March 24, 2026",
+    readTime: "10 min read",
+    tag: "Wellbeing",
+    tagColor: "#4a9d6f",
+    category: "wellbeing",
+    featured: false,
+  },
+  {
+    slug: "meok-for-teachers",
+    title: "MEOK for Teachers: AI That Understands the Emotional Labour of Education",
+    excerpt:
+      "Teaching is one of the most emotionally demanding professions. MEOK's sovereign AI helps teachers with lesson planning, professional development, and the wellbeing support that no staffroom conversation can provide.",
+    date: "March 24, 2026",
+    readTime: "9 min read",
+    tag: "Professional",
+    tagColor: "#c9a84c",
+    category: "professional",
+    featured: false,
+  },
+  {
+    slug: "cognitive-symbiosis-deep-dive",
+    title: "Cognitive Symbiosis: The Science of Human-AI Memory Fusion",
+    excerpt:
+      "Cognitive symbiosis is not about AI replacing human memory — it is about creating a distributed mind where human intuition and AI recall reinforce each other. MEOK's four-layer sovereign memory makes this real.",
+    date: "March 24, 2026",
+    readTime: "12 min read",
+    tag: "Research",
+    tagColor: "#7c6fcd",
+    category: "research",
+    featured: true,
+  },
 ];
 
 // ── Category filter tabs ──────────────────────────────────────────────────────
