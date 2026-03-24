@@ -298,6 +298,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: 'https://meok.ai/blog/ai-for-empty-nest', lastModified: new Date('2026-03-24'), changeFrequency: 'monthly', priority: 0.8 },
     { url: 'https://meok.ai/blog/ai-for-exam-stress', lastModified: new Date('2026-03-24'), changeFrequency: 'monthly', priority: 0.85 },
     { url: 'https://meok.ai/blog/ai-companion-for-seniors', lastModified: new Date('2026-03-24'), changeFrequency: 'monthly', priority: 0.9 },
+    { url: 'https://meok.ai/blog/ai-for-financial-anxiety', lastModified: new Date('2026-03-24'), changeFrequency: 'monthly', priority: 0.85 },
 
     // ── Legal ─────────────────────────────────────────────────────────
     { url: 'https://meok.ai/privacy', lastModified: new Date(), changeFrequency: 'yearly', priority: 0.3 },

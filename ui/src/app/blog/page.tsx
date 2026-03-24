@@ -2162,6 +2162,18 @@ const POSTS = [
     category: "guardian",
     featured: false,
   },
+  {
+    slug: "ai-for-financial-anxiety",
+    title: "AI for Financial Anxiety: Talk Through Money Stress Without Judgment",
+    excerpt:
+      "Financial anxiety is one of the most stigmatised forms of stress — people suffer in silence, avoid their bank app, and lie awake at 3am doing mental maths. MEOK offers a judgment-free space to talk through money fears and break the avoidance cycle.",
+    date: "March 24, 2026",
+    readTime: "10 min read",
+    tag: "Wellbeing",
+    tagColor: "#C9A84C",
+    category: "mental-health",
+    featured: false,
+  },
 ];
 
 // ── Category filter tabs ──────────────────────────────────────────────────────
