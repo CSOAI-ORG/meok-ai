@@ -2558,6 +2558,18 @@ const POSTS = [
     category: "productivity",
     featured: false,
   },
+  {
+    slug: "ai-for-self-harm-recovery",
+    title: "AI Support for Self-Harm Recovery: Distress Tolerance and Non-Judgment",
+    excerpt:
+      "Self-harm is a distress regulation strategy, not attention-seeking. A sovereign AI companion that remembers your recovery journey, never judges your setbacks, and offers DBT distress-tolerance techniques at 3am can be part of your support system.",
+    date: "March 24, 2026",
+    readTime: "10 min read",
+    tag: "Mental Health",
+    tagColor: "#5b8dd9",
+    category: "mental-health",
+    featured: false,
+  },
 ];
 
 // ── Category filter tabs ──────────────────────────────────────────────────────
