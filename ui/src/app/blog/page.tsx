@@ -329,6 +329,18 @@ const POSTS = [
     featured: false,
   },
   {
+    slug: "ai-companion-for-grief",
+    title: "AI Companion for Grief: Someone There at 3am",
+    excerpt:
+      "600,000 people die in the UK every year. Most human support disappears after the funeral. MEOK is there at 3am, on the anniversary, on the day you find their handwriting on an old note — without judgment, without fatigue.",
+    date: "March 24, 2026",
+    readTime: "10 min read",
+    tag: "Wellbeing",
+    tagColor: "#6366f1",
+    category: "guides",
+    featured: false,
+  },
+  {
     slug: "ai-for-burnout",
     title: "AI for Burnout: How an AI Companion Helps You Recover and Rebuild",
     excerpt:
