@@ -275,6 +275,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: 'https://meok.ai/blog/best-ai-companion-2026', lastModified: new Date('2026-03-24'), changeFrequency: 'monthly', priority: 0.95 },
     { url: 'https://meok.ai/blog/sovereign-ai-explained', lastModified: new Date('2026-03-24'), changeFrequency: 'monthly', priority: 0.95 },
     { url: 'https://meok.ai/blog/meok-for-seniors', lastModified: new Date('2026-03-24'), changeFrequency: 'monthly', priority: 0.9 },
+    { url: 'https://meok.ai/blog/ai-for-nurses', lastModified: new Date('2026-03-24'), changeFrequency: 'monthly', priority: 0.8 },
+    { url: 'https://meok.ai/blog/ai-for-teachers', lastModified: new Date('2026-03-24'), changeFrequency: 'monthly', priority: 0.8 },
+    { url: 'https://meok.ai/blog/ai-for-procrastination', lastModified: new Date('2026-03-24'), changeFrequency: 'monthly', priority: 0.85 },
+    { url: 'https://meok.ai/blog/ai-for-heartbreak', lastModified: new Date('2026-03-24'), changeFrequency: 'monthly', priority: 0.85 },
+    { url: 'https://meok.ai/blog/ai-for-habit-building', lastModified: new Date('2026-03-24'), changeFrequency: 'monthly', priority: 0.85 },
+    { url: 'https://meok.ai/blog/ai-for-midlife-crisis', lastModified: new Date('2026-03-24'), changeFrequency: 'monthly', priority: 0.8 },
+    { url: 'https://meok.ai/blog/ai-for-new-parents', lastModified: new Date('2026-03-24'), changeFrequency: 'monthly', priority: 0.8 },
+    { url: 'https://meok.ai/blog/ai-for-chronic-stress', lastModified: new Date('2026-03-24'), changeFrequency: 'monthly', priority: 0.85 },
+    { url: 'https://meok.ai/blog/meok-for-introverts', lastModified: new Date('2026-03-24'), changeFrequency: 'monthly', priority: 0.8 },
+    { url: 'https://meok.ai/blog/ai-for-anger-management', lastModified: new Date('2026-03-24'), changeFrequency: 'monthly', priority: 0.8 },
 
     // ── Legal ─────────────────────────────────────────────────────────
     { url: 'https://meok.ai/privacy', lastModified: new Date(), changeFrequency: 'yearly', priority: 0.3 },
