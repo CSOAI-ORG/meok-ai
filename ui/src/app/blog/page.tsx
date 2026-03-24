@@ -173,6 +173,30 @@ const POSTS = [
     featured: false,
   },
   {
+    slug: "ai-for-weight-loss",
+    title: "AI for Weight Loss: Can an AI Companion Support Your Health Goals?",
+    excerpt:
+      "Most weight-loss apps have an 85% drop-off within 30 days. An AI companion that remembers your patterns, supports emotional eating without judgment, and checks in daily is a fundamentally different kind of health support.",
+    date: "March 24, 2026",
+    readTime: "11 min read",
+    tag: "Wellbeing",
+    tagColor: "#22c55e",
+    category: "guides",
+    featured: false,
+  },
+  {
+    slug: "ai-productivity-app",
+    title: "The Best AI Productivity App in 2026: Beyond Task Lists",
+    excerpt:
+      "The average knowledge worker uses 9 productivity apps. The problem isn't more tools — it's an AI that knows your work style, works while you sleep, and delivers a morning briefing ready to act on.",
+    date: "March 24, 2026",
+    readTime: "11 min read",
+    tag: "Productivity",
+    tagColor: "#f59e0b",
+    category: "guides",
+    featured: false,
+  },
+  {
     slug: "ai-for-burnout",
     title: "AI for Burnout: How an AI Companion Helps You Recover and Rebuild",
     excerpt:
