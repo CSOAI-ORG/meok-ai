@@ -53,6 +53,42 @@ const POSTS = [
     featured: true,
   },
   {
+    slug: "ai-companion-for-loneliness",
+    title: "AI Companion for Loneliness: What Actually Helps (and What Doesn't)",
+    excerpt:
+      "42% of UK adults report feeling lonely. AI companions are entering that conversation — but not all are built with your wellbeing in mind. Here's what the research shows, and why stateless chatbots make loneliness worse.",
+    date: "March 27, 2026",
+    readTime: "7 min read",
+    tag: "Mental Health",
+    tagColor: "#A78BFA",
+    category: "product",
+    featured: false,
+  },
+  {
+    slug: "ai-that-remembers-you",
+    title: "AI That Remembers You: The Memory Problem No One Has Solved — Until Now",
+    excerpt:
+      "ChatGPT forgets you every session. Claude has no idea who you are. The absence of persistent AI memory is a design choice — and MEOK's encrypted memory vault is the architectural response.",
+    date: "March 26, 2026",
+    readTime: "6 min read",
+    tag: "Sovereign AI",
+    tagColor: "#87CEEB",
+    category: "sovereign-ai",
+    featured: false,
+  },
+  {
+    slug: "personal-ai-assistant",
+    title: "What is a Personal AI Assistant? Why 2026 Is the Year It Finally Gets Personal",
+    excerpt:
+      "Users are juggling 3–4 AI tools daily. None of them know your name. A genuine personal AI assistant is something different — persistent, proactive, and built around your life. Here's what that actually looks like.",
+    date: "March 25, 2026",
+    readTime: "6 min read",
+    tag: "Product",
+    tagColor: "#7BC47F",
+    category: "product",
+    featured: false,
+  },
+  {
     slug: "meok-vs-claude",
     title: "MEOK vs Claude: Why a Sovereign AI Companion Beats a General Assistant",
     excerpt:

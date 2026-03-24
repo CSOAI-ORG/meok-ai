@@ -121,6 +121,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // ── Blog ──────────────────────────────────────────────────────────
     { url: 'https://meok.ai/blog', lastModified: new Date(), changeFrequency: 'weekly', priority: 0.8 },
     { url: 'https://meok.ai/blog/ai-companion-app-2026', lastModified: new Date('2026-03-24'), changeFrequency: 'monthly', priority: 0.9 },
+    { url: 'https://meok.ai/blog/ai-companion-for-loneliness', lastModified: new Date('2026-03-27'), changeFrequency: 'monthly', priority: 0.9 },
+    { url: 'https://meok.ai/blog/ai-that-remembers-you', lastModified: new Date('2026-03-26'), changeFrequency: 'monthly', priority: 0.9 },
+    { url: 'https://meok.ai/blog/personal-ai-assistant', lastModified: new Date('2026-03-25'), changeFrequency: 'monthly', priority: 0.9 },
     { url: 'https://meok.ai/blog/meok-for-anxiety', lastModified: new Date('2026-03-24'), changeFrequency: 'monthly', priority: 0.8 },
     { url: 'https://meok.ai/blog/ai-companion-for-kids', lastModified: new Date('2026-03-25'), changeFrequency: 'monthly', priority: 0.8 },
     { url: 'https://meok.ai/blog/meok-vs-claude', lastModified: new Date('2026-03-26'), changeFrequency: 'monthly', priority: 0.8 },
