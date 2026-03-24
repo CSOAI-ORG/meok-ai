@@ -96,7 +96,7 @@ const FAQ = [
   },
   {
     q: "Which plan includes Family Guardian?",
-    a: "Family Guardian is included in the Elite plan (£29/month). It covers up to 6 family accounts — a combination of adult, teenager, child, and elderly member profiles. You can start a 14-day free trial with no credit card required.",
+    a: "Family Guardian is included in the Family plan (£29/month). It covers up to 6 family accounts — a combination of adult, teenager, child, and elderly member profiles. You can start a 14-day free trial with no credit card required.",
   },
   {
     q: "Is MEOK compliant with children's data regulations?",
@@ -298,7 +298,7 @@ export default function FamilyGuardianPage() {
             </h3>
             <p className="text-[#f5f0e8]/55 text-sm mb-4 max-w-lg mx-auto">
               Family Guardian — covering elderly care, child safety, and family council — is included in the
-              Elite plan at £29/month. Up to 6 family accounts. 14-day free trial.
+              Family plan at £29/month. Up to 6 family accounts. 14-day free trial.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
               <Link

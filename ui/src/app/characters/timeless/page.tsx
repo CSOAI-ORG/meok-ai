@@ -297,7 +297,7 @@ export default function TimelessPage() {
               className="group inline-flex items-center gap-2 px-9 py-4 rounded-full font-black text-[#0d0c18] transition-all shadow-xl text-base"
               style={{ backgroundColor: '#A78BFA' }}
             >
-              Unlock Timeless — Pro plan
+              Unlock Timeless — Sovereign plan
               <span className="group-hover:translate-x-0.5 transition-transform">→</span>
             </Link>
             <Link
@@ -309,7 +309,7 @@ export default function TimelessPage() {
           </div>
 
           <p className="mt-8 text-xs text-white/20 font-mono">
-            Pro plan required for Timeless · Start free with any Legendary companion · Your AI, your data
+            Sovereign plan required for Timeless · Start free with any Legendary companion · Your AI, your data
           </p>
         </div>
       </section>
