@@ -149,6 +149,30 @@ const POSTS = [
     featured: false,
   },
   {
+    slug: "meok-vs-microsoft-copilot",
+    title: "MEOK vs Microsoft Copilot: Personal Sovereignty vs Corporate Productivity",
+    excerpt:
+      "Microsoft Copilot knows your documents. MEOK knows you. Both have their place in 2026 — but for personal life, mental health, and family, only one was built for you.",
+    date: "March 24, 2026",
+    readTime: "9 min read",
+    tag: "Comparison",
+    tagColor: "#3b82f6",
+    category: "comparisons",
+    featured: false,
+  },
+  {
+    slug: "ai-for-menopause",
+    title: "AI for Menopause: Compassionate Support Through Every Stage",
+    excerpt:
+      "13 million UK women are living with menopause symptoms — yet most still manage alone. An AI companion that remembers your patterns, never dismisses your symptoms, and keeps you company between appointments changes that.",
+    date: "March 24, 2026",
+    readTime: "11 min read",
+    tag: "Wellbeing",
+    tagColor: "#f472b6",
+    category: "guides",
+    featured: false,
+  },
+  {
     slug: "ai-for-burnout",
     title: "AI for Burnout: How an AI Companion Helps You Recover and Rebuild",
     excerpt:
