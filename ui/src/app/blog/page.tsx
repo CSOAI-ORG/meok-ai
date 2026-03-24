@@ -2282,6 +2282,54 @@ const POSTS = [
     category: "sovereign-ai",
     featured: false,
   },
+  {
+    slug: "ai-support-after-miscarriage",
+    title: "AI Support After Miscarriage: Finding Words When There Are None",
+    excerpt:
+      "Miscarriage is one of the most isolating losses a person can experience. AI cannot replace human comfort — but a sovereign AI companion can hold space, remember your story, and be there at 3am when no one else is.",
+    date: "March 24, 2026",
+    readTime: "9 min read",
+    tag: "Mental Health",
+    tagColor: "#5b8dd9",
+    category: "mental-health",
+    featured: false,
+  },
+  {
+    slug: "ai-for-remote-workers",
+    title: "AI for Remote Workers: Fighting Isolation, Staying Focused",
+    excerpt:
+      "Remote work promised freedom. For millions it delivered loneliness, blurred boundaries, and productivity guilt. A sovereign AI companion offers the missing layer: presence, accountability, and memory.",
+    date: "March 24, 2026",
+    readTime: "10 min read",
+    tag: "Productivity",
+    tagColor: "#7c6fcd",
+    category: "productivity",
+    featured: false,
+  },
+  {
+    slug: "ai-for-sobriety-support",
+    title: "AI for Sobriety Support: A Companion for the Sober Journey",
+    excerpt:
+      "Recovery is not a destination — it is a daily practice. An AI companion that remembers your story, tracks your milestones, and meets you honestly at 2am can be a meaningful addition to your support system.",
+    date: "March 24, 2026",
+    readTime: "11 min read",
+    tag: "Mental Health",
+    tagColor: "#5b8dd9",
+    category: "mental-health",
+    featured: false,
+  },
+  {
+    slug: "maternal-covenant-explained",
+    title: "The Maternal Covenant Explained: How MEOK Enforces Care in Every Response",
+    excerpt:
+      "Most AI safety is about what AI must not do. The Maternal Covenant is different — it is a machine-enforced framework for what AI must do: score every response across six care dimensions, in real time.",
+    date: "March 24, 2026",
+    readTime: "12 min read",
+    tag: "Research",
+    tagColor: "#C9A84C",
+    category: "research",
+    featured: true,
+  },
 ];
 
 // ── Category filter tabs ──────────────────────────────────────────────────────
