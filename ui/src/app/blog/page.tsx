@@ -2498,6 +2498,18 @@ const POSTS = [
     category: "sovereign-ai",
     featured: false,
   },
+  {
+    slug: "meok-for-healthcare-workers",
+    title: "MEOK for Healthcare Workers: A Confidential Space for Those Who Care for Everyone Else",
+    excerpt:
+      "40% of NHS nurses report burnout. Healthcare workers absorb others\u2019 trauma daily and almost never seek help. MEOK offers a confidential, encrypted off-load — available between shifts, never reported to employers.",
+    date: "March 24, 2026",
+    readTime: "10 min read",
+    tag: "Mental Health",
+    tagColor: "#5b8dd9",
+    category: "mental-health",
+    featured: false,
+  },
 ];
 
 // ── Category filter tabs ──────────────────────────────────────────────────────
