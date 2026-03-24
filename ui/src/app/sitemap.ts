@@ -124,6 +124,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: 'https://meok.ai/blog/meok-for-anxiety', lastModified: new Date('2026-03-24'), changeFrequency: 'monthly', priority: 0.8 },
     { url: 'https://meok.ai/blog/ai-companion-for-kids', lastModified: new Date('2026-03-25'), changeFrequency: 'monthly', priority: 0.8 },
     { url: 'https://meok.ai/blog/meok-vs-claude', lastModified: new Date('2026-03-26'), changeFrequency: 'monthly', priority: 0.8 },
+    { url: 'https://meok.ai/blog/ai-companion-for-kids', lastModified: new Date('2026-03-25'), changeFrequency: 'monthly', priority: 0.8 },
+    { url: 'https://meok.ai/blog/meok-vs-claude', lastModified: new Date('2026-03-26'), changeFrequency: 'monthly', priority: 0.8 },
     { url: 'https://meok.ai/blog/why-meok-never-trains-on-you', lastModified: new Date('2026-03-21'), changeFrequency: 'monthly', priority: 0.8 },
     { url: 'https://meok.ai/blog/the-40-day-build', lastModified: new Date('2026-03-19'), changeFrequency: 'monthly', priority: 0.8 },
     { url: 'https://meok.ai/blog/byzantine-fault-tolerance-your-ai', lastModified: new Date('2026-03-18'), changeFrequency: 'monthly', priority: 0.8 },

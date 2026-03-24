@@ -53,6 +53,42 @@ const POSTS = [
     featured: true,
   },
   {
+    slug: "meok-vs-claude",
+    title: "MEOK vs Claude: Why a Sovereign AI Companion Beats a General Assistant",
+    excerpt:
+      "Claude is one of the most capable AI models ever built. But it doesn't know your name. MEOK does — and that's the difference between a tool and a companion.",
+    date: "March 26, 2026",
+    readTime: "6 min read",
+    tag: "Comparison",
+    tagColor: "#F97316",
+    category: "product",
+    featured: false,
+  },
+  {
+    slug: "ai-companion-for-kids",
+    title: "Safe AI for Kids: How MEOK's Guardian Layer Protects Children Online",
+    excerpt:
+      "Kids are already using ChatGPT, Claude, and Character.AI — tools not built for them. MEOK Guardian puts parents back in control with DistilBERT threat detection, School-Safe Mode, and the Children's Code compliance.",
+    date: "March 25, 2026",
+    readTime: "5 min read",
+    tag: "Guardian",
+    tagColor: "#7BC47F",
+    category: "guardian",
+    featured: false,
+  },
+  {
+    slug: "meok-for-anxiety",
+    title: "AI for Anxiety: How MEOK's Companion Helps Without Replacing Therapy",
+    excerpt:
+      "At 2am when anxiety peaks, there's no therapist available. MEOK is. Here's exactly how a sovereign AI companion supports mental wellbeing — and the clear lines between support and clinical care.",
+    date: "March 24, 2026",
+    readTime: "7 min read",
+    tag: "Mental Health",
+    tagColor: "#A78BFA",
+    category: "product",
+    featured: false,
+  },
+  {
     slug: "ai-companion-app-2026",
     title: "Best AI Companion Apps in 2026: Replika vs Character.AI vs MEOK — Full Comparison",
     excerpt:
