@@ -53,6 +53,18 @@ const POSTS = [
     featured: true,
   },
   {
+    slug: "ai-for-elderly",
+    title: "AI for the Elderly: How MEOK's Senior Mode Protects and Connects Older Adults",
+    excerpt:
+      "1 in 3 adults over 75 reports severe loneliness. 48% have been targeted by a scam. MEOK's Senior Mode and Guardian layer are designed for exactly this — larger text, scam detection, family alerts, and a companion that checks in.",
+    date: "March 29, 2026",
+    readTime: "7 min read",
+    tag: "Guardian",
+    tagColor: "#7BC47F",
+    category: "guardian",
+    featured: false,
+  },
+  {
     slug: "meok-for-neurodivergent",
     title: "MEOK for Neurodivergent People: An AI That Takes Different Thinking Seriously",
     excerpt:
