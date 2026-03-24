@@ -89,7 +89,7 @@ export default function SovereignAIvsCloudAI() {
             className="inline-flex items-center gap-1.5 text-sm mb-8 transition-colors hover:opacity-90"
             style={{ color: "rgba(245,240,232,0.4)" }}
           >
-            <ArrowLeft className="w-4 h-4" />
+            ←
             Back to Blog
           </Link>
 
@@ -109,14 +109,14 @@ export default function SovereignAIvsCloudAI() {
               className="flex items-center gap-1.5 text-xs"
               style={{ color: "rgba(245,240,232,0.4)" }}
             >
-              <Calendar className="w-3.5 h-3.5" />
+              📅
               March 24, 2026
             </span>
             <span
               className="flex items-center gap-1.5 text-xs"
               style={{ color: "rgba(245,240,232,0.4)" }}
             >
-              <Clock className="w-3.5 h-3.5" />
+              ⏱
               7 min read
             </span>
           </div>
@@ -321,7 +321,7 @@ export default function SovereignAIvsCloudAI() {
               style={{ background: "#c9a84c", color: "#1a1a2e" }}
             >
               Hatch your AI free
-              <ArrowRight className="w-4 h-4" />
+              →
             </Link>
           </div>
         </div>
@@ -344,7 +344,7 @@ export default function SovereignAIvsCloudAI() {
                 What Is Sovereign AI?
               </h3>
               <div className="flex items-center gap-1.5 text-xs text-[#1a1a2e]/35 mt-auto">
-                <Clock className="w-3 h-3" />
+                ⏱
                 5 min read
               </div>
             </Link>
@@ -362,7 +362,7 @@ export default function SovereignAIvsCloudAI() {
                 AI Memory Portability: Own Your History, Switch Any Model
               </h3>
               <div className="flex items-center gap-1.5 text-xs text-[#1a1a2e]/35 mt-auto">
-                <Clock className="w-3 h-3" />
+                ⏱
                 6 min read
               </div>
             </Link>
@@ -370,7 +370,7 @@ export default function SovereignAIvsCloudAI() {
         </div>
       </div>
 
-      <MarketingFooter />
+      
     </div>
   );
 }

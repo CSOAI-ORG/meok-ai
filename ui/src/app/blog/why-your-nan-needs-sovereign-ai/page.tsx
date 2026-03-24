@@ -89,7 +89,7 @@ export default function WhyYourNanNeedsSovereignAI() {
             className="inline-flex items-center gap-1.5 text-sm mb-8 transition-colors hover:opacity-90"
             style={{ color: "rgba(245,240,232,0.4)" }}
           >
-            <ArrowLeft className="w-4 h-4" />
+            ←
             Back to Blog
           </Link>
 
@@ -109,14 +109,14 @@ export default function WhyYourNanNeedsSovereignAI() {
               className="flex items-center gap-1.5 text-xs"
               style={{ color: "rgba(245,240,232,0.4)" }}
             >
-              <Calendar className="w-3.5 h-3.5" />
+              📅
               March 22, 2026
             </span>
             <span
               className="flex items-center gap-1.5 text-xs"
               style={{ color: "rgba(245,240,232,0.4)" }}
             >
-              <Clock className="w-3.5 h-3.5" />
+              ⏱
               6 min read
             </span>
           </div>
@@ -389,7 +389,7 @@ export default function WhyYourNanNeedsSovereignAI() {
                 style={{ background: "#7BC47F", color: "#0d0c18" }}
               >
                 Learn about Guardian
-                <ArrowRight className="w-4 h-4" />
+                →
               </Link>
               <Link
                 href="/hatch"
@@ -423,7 +423,7 @@ export default function WhyYourNanNeedsSovereignAI() {
                 Why I Built MEOK
               </h3>
               <div className="flex items-center gap-1.5 text-xs text-[#1a1a2e]/35 mt-auto">
-                <Clock className="w-3 h-3" />
+                ⏱
                 7 min read
               </div>
             </Link>
@@ -441,7 +441,7 @@ export default function WhyYourNanNeedsSovereignAI() {
                 What Is Sovereign AI?
               </h3>
               <div className="flex items-center gap-1.5 text-xs text-[#1a1a2e]/35 mt-auto">
-                <Clock className="w-3 h-3" />
+                ⏱
                 5 min read
               </div>
             </Link>
@@ -449,7 +449,7 @@ export default function WhyYourNanNeedsSovereignAI() {
         </div>
       </div>
 
-      <MarketingFooter />
+      
     </div>
   );
 }

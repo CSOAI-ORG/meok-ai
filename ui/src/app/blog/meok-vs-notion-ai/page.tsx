@@ -245,8 +245,8 @@ const compareRows: CompareRow[] = [
 
 function iconFor(variant: RowVariant) {
   if (variant === "check") return <CheckIcon />;
-  if (variant === "cross") return <CrossIcon />;
-  return <PartialIcon />;
+  if (variant === "cross") return '✗';
+  return ;
 }
 
 // ── Page ──────────────────────────────────────────────────────────────────────

@@ -448,7 +448,7 @@ export default function AiForRelationshipsPage() {
         </div>
       </section>
 
-      <MarketingFooter />
+      
     </div>
   );
 }

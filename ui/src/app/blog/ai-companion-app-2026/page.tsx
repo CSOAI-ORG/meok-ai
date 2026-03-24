@@ -108,7 +108,7 @@ export default function AiCompanionApp2026Page() {
 
           {/* Back */}
           <Link href="/blog" style={{ display: "inline-flex", alignItems: "center", gap: "0.4rem", color: "#888", fontSize: "0.875rem", textDecoration: "none", marginBottom: "2rem" }}>
-            <ArrowLeft size={14} /> Back to Journal
+            ← Back to Journal
           </Link>
 
           {/* Tag + meta */}
@@ -117,10 +117,10 @@ export default function AiCompanionApp2026Page() {
               Product
             </span>
             <span style={{ display: "flex", alignItems: "center", gap: "0.3rem", color: "#888", fontSize: "0.8rem" }}>
-              <Calendar size={13} /> March 24, 2026
+              📅 March 24, 2026
             </span>
             <span style={{ display: "flex", alignItems: "center", gap: "0.3rem", color: "#888", fontSize: "0.8rem" }}>
-              <Clock size={13} /> 7 min read
+              ⏱ 7 min read
             </span>
           </div>
 
@@ -301,15 +301,15 @@ export default function AiCompanionApp2026Page() {
           {/* Nav */}
           <div style={{ display: "flex", justifyContent: "space-between", paddingTop: "2rem", borderTop: "1px solid #e0ddd6", gap: "1rem" }}>
             <Link href="/blog/meok-vs-chatgpt" style={{ display: "flex", alignItems: "center", gap: "0.4rem", color: GOLD, textDecoration: "none", fontSize: "0.875rem" }}>
-              <ArrowLeft size={14} /> MEOK vs ChatGPT
+              ← MEOK vs ChatGPT
             </Link>
             <Link href="/blog/memory-portability" style={{ display: "flex", alignItems: "center", gap: "0.4rem", color: GOLD, textDecoration: "none", fontSize: "0.875rem" }}>
-              Memory portability <ArrowRight size={14} />
+              Memory portability →
             </Link>
           </div>
 
         </div>
-        <MarketingFooter />
+        
       </main>
     </>
   );

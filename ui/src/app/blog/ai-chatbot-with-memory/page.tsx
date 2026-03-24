@@ -244,7 +244,7 @@ export default function AIChatbotWithMemoryPage() {
               fontSize: "0.875rem",
             }}
           >
-            <ArrowLeft size={14} /> All Articles
+            ← All Articles
           </Link>
         </nav>
 
@@ -262,7 +262,7 @@ export default function AIChatbotWithMemoryPage() {
               marginBottom: "1.5rem",
             }}
           >
-            <Lock size={12} style={{ color: "#22c55e" }} />
+            🔒
             <span style={{ color: "#22c55e", fontSize: "0.75rem", fontWeight: 600, letterSpacing: "0.08em" }}>
               AI MEMORY
             </span>
@@ -289,11 +289,11 @@ export default function AIChatbotWithMemoryPage() {
 
           <div style={{ display: "flex", alignItems: "center", gap: "1.5rem", flexWrap: "wrap" }}>
             <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
-              <Calendar size={14} style={{ color: "#9ca3af" }} />
+              📅
               <span style={{ color: "#9ca3af", fontSize: "0.8rem" }}>March 24, 2026</span>
             </div>
             <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
-              <Clock size={14} style={{ color: "#9ca3af" }} />
+              ⏱
               <span style={{ color: "#9ca3af", fontSize: "0.8rem" }}>10 min read</span>
             </div>
             <span style={{ color: "#9ca3af", fontSize: "0.8rem" }}>By Nicholas Templeman</span>
@@ -453,9 +453,7 @@ export default function AIChatbotWithMemoryPage() {
                         )}
                       </td>
                       <td style={{ padding: "0.75rem 1rem", textAlign: "center", borderBottom: "1px solid rgba(255,255,255,0.04)" }}>
-                        {p.userOwns ? (
-                          <CheckCircle size={16} style={{ color: "#22c55e", display: "inline-block" }} />
-                        ) : (
+                        {p.userOwns ? '✓' : (
                           <span style={{ color: "#4b5563" }}>✗</span>
                         )}
                       </td>
@@ -512,19 +510,19 @@ export default function AIChatbotWithMemoryPage() {
             <div style={{ display: "flex", flexDirection: "column", gap: "1rem", marginBottom: "1.5rem" }}>
               {[
                 {
-                  icon: Lock,
+                  icon: '🔒',
                   color: "#c084fc",
                   title: "Encrypted before storage",
                   desc: "Memories are encrypted client-side before they leave your device. MEOK servers hold encrypted blobs, not readable text.",
                 },
                 {
-                  icon: RefreshCw,
+                  icon: '🔄',
                   color: "#22c55e",
                   title: "Never expires",
                   desc: "There is no rolling window. Memories from your first conversation are as accessible as memories from yesterday.",
                 },
                 {
-                  icon: Zap,
+                  icon: '⚡',
                   color: "#f97316",
                   title: "Never used for training",
                   desc: "The Maternal Covenant is a constitutional guarantee: your memories are never used to train MEOK's models, and never shared with third-party AI providers.",
@@ -556,7 +554,7 @@ export default function AIChatbotWithMemoryPage() {
                         flexShrink: 0,
                       }}
                     >
-                      <Icon size={18} style={{ color: item.color }} />
+                      
                     </div>
                     <div>
                       <h3 style={{ fontSize: "0.95rem", fontWeight: 700, color: "#f5f0ff", marginBottom: "0.3rem" }}>
@@ -640,7 +638,7 @@ export default function AIChatbotWithMemoryPage() {
                   gap: "0.5rem",
                 }}
               >
-                Start for Free <ArrowRight size={16} />
+                Start for Free →
               </Link>
               <Link
                 href="/memory"
@@ -689,14 +687,14 @@ export default function AIChatbotWithMemoryPage() {
                     gap: "0.4rem",
                   }}
                 >
-                  {link.label} <ArrowRight size={12} />
+                  {link.label} →
                 </Link>
               ))}
             </div>
           </section>
         </article>
 
-        <MarketingFooter />
+        
       </main>
     </>
   );

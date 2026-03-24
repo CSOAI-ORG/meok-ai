@@ -183,9 +183,9 @@ const rows: ComparisonRow[] = [
 ];
 
 function CellIcon({ value }: { value: TriState | string }) {
-  if (value === "yes") return <CheckCircle2 className="w-5 h-5 mx-auto" style={{ color: "#22c55e" }} />;
-  if (value === "no") return <XCircle className="w-5 h-5 mx-auto" style={{ color: "#ef4444" }} />;
-  if (value === "partial") return <MinusCircle className="w-5 h-5 mx-auto" style={{ color: "#f59e0b" }} />;
+  if (value === "yes") return '✓';
+  if (value === "no") return '✗';
+  if (value === "partial") return '–';
   return <span className="text-sm font-semibold text-[#1a1a2e]">{value}</span>;
 }
 
@@ -222,7 +222,7 @@ export default function MeokVsCopilot() {
             className="inline-flex items-center gap-1.5 text-sm mb-8 transition-colors hover:opacity-90"
             style={{ color: "rgba(245,240,232,0.4)" }}
           >
-            <ArrowLeft className="w-4 h-4" />
+            ←
             Back to Blog
           </Link>
 
@@ -242,14 +242,14 @@ export default function MeokVsCopilot() {
               className="flex items-center gap-1.5 text-xs"
               style={{ color: "rgba(245,240,232,0.4)" }}
             >
-              <Calendar className="w-3.5 h-3.5" />
+              📅
               24 March 2026
             </span>
             <span
               className="flex items-center gap-1.5 text-xs"
               style={{ color: "rgba(245,240,232,0.4)" }}
             >
-              <Clock className="w-3.5 h-3.5" />
+              ⏱
               8 min read
             </span>
           </div>
@@ -502,13 +502,13 @@ export default function MeokVsCopilot() {
                       {row.feature}
                     </td>
                     <td className="px-4 py-3.5 text-center">
-                      <CellIcon value={row.copilotFree} />
+                      
                     </td>
                     <td className="px-4 py-3.5 text-center">
-                      <CellIcon value={row.copilotPro} />
+                      
                     </td>
                     <td className="px-4 py-3.5 text-center">
-                      <CellIcon value={row.meokSovereign} />
+                      
                     </td>
                   </tr>
                 ))}
@@ -638,7 +638,7 @@ export default function MeokVsCopilot() {
           <h2 className="text-xl font-black text-[#1a1a2e] mb-5">Quick verdict</h2>
           <div className="space-y-4">
             <div className="flex items-start gap-3">
-              <CheckCircle2 className="w-5 h-5 mt-0.5 flex-shrink-0" style={{ color: "#c9a84c" }} />
+              ✓
               <p className="text-sm text-[#2a2a3e]/80 leading-relaxed">
                 <strong className="text-[#1a1a2e]">Use Copilot Pro if</strong> you are a heavy
                 Microsoft 365 user and you want AI inside Word, Excel, PowerPoint, and Teams.
@@ -646,7 +646,7 @@ export default function MeokVsCopilot() {
               </p>
             </div>
             <div className="flex items-start gap-3">
-              <CheckCircle2 className="w-5 h-5 mt-0.5 flex-shrink-0" style={{ color: "#c9a84c" }} />
+              ✓
               <p className="text-sm text-[#2a2a3e]/80 leading-relaxed">
                 <strong className="text-[#1a1a2e]">Use MEOK Sovereign if</strong> you want an
                 AI that knows you, works for you overnight, protects your family, keeps your
@@ -654,7 +654,7 @@ export default function MeokVsCopilot() {
               </p>
             </div>
             <div className="flex items-start gap-3">
-              <CheckCircle2 className="w-5 h-5 mt-0.5 flex-shrink-0" style={{ color: "#c9a84c" }} />
+              ✓
               <p className="text-sm text-[#2a2a3e]/80 leading-relaxed">
                 <strong className="text-[#1a1a2e]">Use both</strong> if you live partly in
                 Microsoft&apos;s ecosystem and partly in your personal life. They serve different
@@ -729,7 +729,7 @@ export default function MeokVsCopilot() {
               style={{ background: "#c9a84c", color: "#1a1a2e" }}
             >
               Hatch your AI free
-              <ArrowRight className="w-4 h-4" />
+              →
             </Link>
           </div>
         </div>
@@ -752,7 +752,7 @@ export default function MeokVsCopilot() {
                 MEOK vs ChatGPT: Why Memory Changes Everything
               </h3>
               <div className="flex items-center gap-1.5 text-xs text-[#1a1a2e]/35 mt-auto">
-                <Clock className="w-3 h-3" />
+                ⏱
                 6 min read
               </div>
             </Link>
@@ -770,7 +770,7 @@ export default function MeokVsCopilot() {
                 What Is Sovereign AI? Your AI, Your Rules, Your Data
               </h3>
               <div className="flex items-center gap-1.5 text-xs text-[#1a1a2e]/35 mt-auto">
-                <Clock className="w-3 h-3" />
+                ⏱
                 5 min read
               </div>
             </Link>
@@ -778,7 +778,7 @@ export default function MeokVsCopilot() {
         </div>
       </div>
 
-      <MarketingFooter />
+      
     </div>
   );
 }

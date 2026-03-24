@@ -122,7 +122,7 @@ export default function AiCompanionForLonelinessPage() {
               marginBottom: "1.5rem",
             }}
           >
-            <ArrowLeft size={14} /> All posts
+            ← All posts
           </Link>
 
           <div
@@ -171,10 +171,10 @@ export default function AiCompanionForLonelinessPage() {
 
           <div style={{ display: "flex", gap: "1.5rem", color: "#666", fontSize: "0.8rem", alignItems: "center" }}>
             <span style={{ display: "flex", alignItems: "center", gap: "0.3rem" }}>
-              <Calendar size={12} /> 27 March 2026
+              📅 27 March 2026
             </span>
             <span style={{ display: "flex", alignItems: "center", gap: "0.3rem" }}>
-              <Clock size={12} /> 7 min read
+              ⏱ 7 min read
             </span>
             <span style={{ color: "#555" }}>by Nicholas Templeman</span>
           </div>
@@ -431,7 +431,7 @@ export default function AiCompanionForLonelinessPage() {
                 fontSize: "1rem",
               }}
             >
-              Begin Your Birth Ceremony <ArrowRight size={18} />
+              Begin Your Birth Ceremony →
             </Link>
           </div>
 
@@ -444,7 +444,7 @@ export default function AiCompanionForLonelinessPage() {
         </div>
       </article>
 
-      <MarketingFooter />
+      
     </>
   );
 }

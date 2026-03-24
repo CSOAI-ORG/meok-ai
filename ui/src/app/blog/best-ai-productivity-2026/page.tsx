@@ -208,9 +208,9 @@ const ROWS: CompRow[] = [
 // ── Helpers ────────────────────────────────────────────────────────────────────
 
 function Cell({ value }: { value: CellValue }) {
-  if (value === 'yes') return <CheckCircle2 style={{ width: 16, height: 16, color: '#22c55e', margin: '0 auto', display: 'block' }} />;
-  if (value === 'no') return <XCircle style={{ width: 16, height: 16, color: '#ef4444', margin: '0 auto', display: 'block' }} />;
-  if (value === 'partial') return <MinusCircle style={{ width: 16, height: 16, color: '#f59e0b', margin: '0 auto', display: 'block' }} />;
+  if (value === 'yes') return '✓';
+  if (value === 'no') return '✗';
+  if (value === 'partial') return '–';
   return <span style={{ fontSize: '0.75rem', color: '#555', display: 'block', textAlign: 'center', lineHeight: 1.3 }}>{value}</span>;
 }
 
@@ -281,7 +281,7 @@ export default function BestAiProductivity2026() {
               marginBottom: '1.75rem',
             }}
           >
-            <ArrowLeft size={13} /> All posts
+            ← All posts
           </Link>
 
           {/* Tags */}
@@ -358,10 +358,10 @@ export default function BestAiProductivity2026() {
             }}
           >
             <span style={{ display: 'flex', alignItems: 'center', gap: '0.3rem' }}>
-              <Calendar size={12} /> 24 March 2026
+              📅 24 March 2026
             </span>
             <span style={{ display: 'flex', alignItems: 'center', gap: '0.3rem' }}>
-              <Clock size={12} /> 12 min read
+              ⏱ 12 min read
             </span>
             <span>by Nicholas Templeman</span>
           </div>
@@ -1265,7 +1265,7 @@ export default function BestAiProductivity2026() {
                   letterSpacing: '-0.01em',
                 }}
               >
-                Hatch your AI free <ArrowRight size={16} />
+                Hatch your AI free →
               </Link>
             </div>
           </div>
@@ -1361,7 +1361,7 @@ export default function BestAiProductivity2026() {
                       marginTop: 'auto',
                     }}
                   >
-                    <Clock size={11} />
+                    ⏱
                     {post.time}
                   </span>
                 </Link>
@@ -1381,7 +1381,7 @@ export default function BestAiProductivity2026() {
         </div>
       </article>
 
-      <MarketingFooter />
+      
     </>
   );
 }

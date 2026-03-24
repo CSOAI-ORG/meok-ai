@@ -644,7 +644,7 @@ export default function Page() {
                 className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-bold text-base hover:opacity-90 transition-opacity"
                 style={{ background: '#c9a84c', color: '#0d0c18' }}
               >
-                Begin your story <ArrowRight className="w-5 h-5" />
+                Begin your story →
               </Link>
             </div>
 
@@ -682,7 +682,7 @@ export default function Page() {
         </section>
       </main>
 
-      <MarketingFooter />
+      
     </>
   )
 }

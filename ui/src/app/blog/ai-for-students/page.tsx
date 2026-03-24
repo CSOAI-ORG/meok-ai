@@ -151,11 +151,11 @@ const comparisonRows: CompRow[] = [
 
 function Cell({ value }: { value: CellVal }) {
   if (value === 'yes')
-    return <CheckCircle2 className="w-4 h-4 mx-auto" style={{ color: '#2ea84c' }} />
+    return '✓'
   if (value === 'no')
-    return <XCircle className="w-4 h-4 mx-auto" style={{ color: '#e05c5c' }} />
+    return '✗'
   if (value === 'partial')
-    return <MinusCircle className="w-4 h-4 mx-auto" style={{ color: '#c9a84c' }} />
+    return '–'
   return (
     <span className="text-xs font-semibold" style={{ color: '#1a1a2e' }}>
       {value}
@@ -193,7 +193,7 @@ export default function AiForStudents() {
             className="inline-flex items-center gap-1.5 text-sm mb-8 transition-opacity hover:opacity-70"
             style={{ color: 'rgba(245,240,232,0.4)' }}
           >
-            <ArrowLeft className="w-4 h-4" />
+            ←
             Back to Blog
           </Link>
 
@@ -213,14 +213,14 @@ export default function AiForStudents() {
               className="flex items-center gap-1.5 text-xs"
               style={{ color: 'rgba(245,240,232,0.4)' }}
             >
-              <Calendar className="w-3.5 h-3.5" />
+              📅
               March 24, 2026
             </span>
             <span
               className="flex items-center gap-1.5 text-xs"
               style={{ color: 'rgba(245,240,232,0.4)' }}
             >
-              <Clock className="w-3.5 h-3.5" />
+              ⏱
               11 min read
             </span>
           </div>
@@ -947,7 +947,7 @@ export default function AiForStudents() {
               style={{ background: '#c9a84c', color: '#0d0c18' }}
             >
               Start learning free
-              <ArrowRight className="w-4 h-4" />
+              →
             </Link>
           </div>
         </div>
@@ -970,7 +970,7 @@ export default function AiForStudents() {
                 Best AI for Productivity in 2026: Beyond Chatbots to Personal AI OS
               </h3>
               <div className="flex items-center gap-1.5 text-xs text-[#1a1a2e]/35 mt-auto">
-                <Clock className="w-3 h-3" />
+                ⏱
                 9 min read
               </div>
             </Link>
@@ -988,7 +988,7 @@ export default function AiForStudents() {
                 MEOK for ADHD: An AI That Actually Understands How You Think
               </h3>
               <div className="flex items-center gap-1.5 text-xs text-[#1a1a2e]/35 mt-auto">
-                <Clock className="w-3 h-3" />
+                ⏱
                 7 min read
               </div>
             </Link>
@@ -996,7 +996,7 @@ export default function AiForStudents() {
         </div>
       </div>
 
-      <MarketingFooter />
+      
     </div>
   )
 }

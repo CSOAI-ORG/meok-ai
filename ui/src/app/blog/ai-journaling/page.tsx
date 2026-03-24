@@ -452,7 +452,7 @@ export default function AiJournalingPage() {
         </div>
       </section>
 
-      <MarketingFooter />
+      
     </div>
   );
 }

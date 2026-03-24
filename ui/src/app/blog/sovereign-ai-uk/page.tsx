@@ -201,10 +201,10 @@ const complianceData: ComplianceRow[] = [
 
 function ComplianceIcon({ level }: { level: ComplianceLevel }) {
   if (level === "yes")
-    return <CheckCircle className="w-5 h-5 mx-auto" style={{ color: "#4caf92" }} />;
+    return '✓';
   if (level === "no")
-    return <XCircle className="w-5 h-5 mx-auto" style={{ color: "#e05c7a" }} />;
-  return <AlertCircle className="w-5 h-5 mx-auto" style={{ color: "#c9a84c" }} />;
+    return '✗';
+  return '⚠️';
 }
 
 // ── Page ──────────────────────────────────────────────────────────────────────
@@ -240,7 +240,7 @@ export default function SovereignAIUK() {
             className="inline-flex items-center gap-1.5 text-sm mb-8 transition-colors hover:opacity-90"
             style={{ color: "rgba(245,240,232,0.4)" }}
           >
-            <ArrowLeft className="w-4 h-4" />
+            ←
             Back to Blog
           </Link>
 
@@ -270,14 +270,14 @@ export default function SovereignAIUK() {
               className="flex items-center gap-1.5 text-xs"
               style={{ color: "rgba(245,240,232,0.4)" }}
             >
-              <Calendar className="w-3.5 h-3.5" />
+              📅
               24 March 2026
             </span>
             <span
               className="flex items-center gap-1.5 text-xs"
               style={{ color: "rgba(245,240,232,0.4)" }}
             >
-              <Clock className="w-3.5 h-3.5" />
+              ⏱
               10 min read
             </span>
           </div>
@@ -644,16 +644,16 @@ export default function SovereignAIUK() {
                       )}
                     </td>
                     <td className="py-3.5 px-3 text-center">
-                      <ComplianceIcon level={row.chatgpt} />
+                      ✓
                     </td>
                     <td className="py-3.5 px-3 text-center">
-                      <ComplianceIcon level={row.gemini} />
+                      ✓
                     </td>
                     <td className="py-3.5 px-3 text-center">
-                      <ComplianceIcon level={row.replika} />
+                      ✓
                     </td>
                     <td className="py-3.5 px-3 text-center">
-                      <ComplianceIcon level={row.meok} />
+                      ✓
                     </td>
                   </tr>
                 ))}
@@ -664,15 +664,15 @@ export default function SovereignAIUK() {
           {/* Legend */}
           <div className="flex flex-wrap items-center gap-5 mt-4 text-xs text-[#1a1a2e]/50">
             <span className="flex items-center gap-1.5">
-              <CheckCircle className="w-4 h-4" style={{ color: "#4caf92" }} />
+              ✓
               Compliant
             </span>
             <span className="flex items-center gap-1.5">
-              <AlertCircle className="w-4 h-4" style={{ color: "#c9a84c" }} />
+              ⚠️
               Partial / opt-out only
             </span>
             <span className="flex items-center gap-1.5">
-              <XCircle className="w-4 h-4" style={{ color: "#e05c7a" }} />
+              ✗
               Non-compliant / unclear
             </span>
           </div>
@@ -758,7 +758,7 @@ export default function SovereignAIUK() {
               style={{ background: "#c9a84c", color: "#1a1a2e" }}
             >
               Hatch your sovereign AI free
-              <ArrowRight className="w-4 h-4" />
+              →
             </Link>
           </div>
         </div>
@@ -781,7 +781,7 @@ export default function SovereignAIUK() {
                 Sovereign AI vs Cloud AI: Who Really Controls Your Data?
               </h3>
               <div className="flex items-center gap-1.5 text-xs text-[#1a1a2e]/35 mt-auto">
-                <Clock className="w-3 h-3" />
+                ⏱
                 7 min read
               </div>
             </Link>
@@ -799,7 +799,7 @@ export default function SovereignAIUK() {
                 Why MEOK Never Trains on You
               </h3>
               <div className="flex items-center gap-1.5 text-xs text-[#1a1a2e]/35 mt-auto">
-                <Clock className="w-3 h-3" />
+                ⏱
                 5 min read
               </div>
             </Link>
@@ -807,7 +807,7 @@ export default function SovereignAIUK() {
         </div>
       </div>
 
-      <MarketingFooter />
+      
     </div>
   );
 }

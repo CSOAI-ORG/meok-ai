@@ -214,7 +214,7 @@ export default function FreeAICompanionPage() {
               href="/blog"
               className="inline-flex items-center gap-2 text-[#c9a84c] hover:text-white transition-colors text-sm mb-8"
             >
-              <ArrowLeft className="w-4 h-4" /> Back to Blog
+              ← Back to Blog
             </Link>
             <div className="inline-block px-3 py-1 bg-[#22c55e]/20 text-[#22c55e] text-xs font-semibold rounded-full mb-4 uppercase tracking-wider">
               Guide
@@ -229,10 +229,10 @@ export default function FreeAICompanionPage() {
             </p>
             <div className="flex items-center gap-4 mt-8 text-white/50 text-sm">
               <span className="flex items-center gap-1.5">
-                <Calendar className="w-4 h-4" /> March 24, 2026
+                📅 March 24, 2026
               </span>
               <span className="flex items-center gap-1.5">
-                <Clock className="w-4 h-4" /> 9 min read
+                ⏱ 9 min read
               </span>
               <span>Nicholas Templeman</span>
             </div>
@@ -264,7 +264,7 @@ export default function FreeAICompanionPage() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {EXPLORER_FEATURES.map((f) => (
                 <div key={f} className="flex items-start gap-2 text-sm">
-                  <Check className="w-4 h-4 text-[#22c55e] mt-0.5 flex-shrink-0" />
+                  {'✓'}  
                   <span className="text-white/80">{f}</span>
                 </div>
               ))}
@@ -322,25 +322,25 @@ export default function FreeAICompanionPage() {
                     <td className="p-3 font-medium text-[#1a1a2e]">{row.feature}</td>
                     <td className="p-3">
                       <span className={`flex items-center gap-1.5 ${row.meokGood ? "text-[#22c55e]" : "text-[#ef4444]"}`}>
-                        {row.meokGood ? <Check className="w-3.5 h-3.5 flex-shrink-0" /> : <X className="w-3.5 h-3.5 flex-shrink-0" />}
+                        {row.meokGood ? '✓' : '✗'}
                         {row.meok}
                       </span>
                     </td>
                     <td className="p-3">
                       <span className={`flex items-center gap-1.5 ${row.replikaGood ? "text-[#22c55e]" : "text-[#6b7280]"}`}>
-                        {row.replikaGood ? <Check className="w-3.5 h-3.5 flex-shrink-0" /> : <X className="w-3.5 h-3.5 flex-shrink-0" />}
+                        {row.replikaGood ? '✓' : '✗'}
                         {row.replika}
                       </span>
                     </td>
                     <td className="p-3">
                       <span className={`flex items-center gap-1.5 ${row.characterAIGood ? "text-[#22c55e]" : "text-[#6b7280]"}`}>
-                        {row.characterAIGood ? <Check className="w-3.5 h-3.5 flex-shrink-0" /> : <X className="w-3.5 h-3.5 flex-shrink-0" />}
+                        {row.characterAIGood ? '✓' : '✗'}
                         {row.characterAI}
                       </span>
                     </td>
                     <td className="p-3">
                       <span className={`flex items-center gap-1.5 ${row.chatgptGood ? "text-[#22c55e]" : "text-[#6b7280]"}`}>
-                        {row.chatgptGood ? <Check className="w-3.5 h-3.5 flex-shrink-0" /> : <X className="w-3.5 h-3.5 flex-shrink-0" />}
+                        {row.chatgptGood ? '✓' : '✗'}
                         {row.chatgpt}
                       </span>
                     </td>
@@ -433,7 +433,7 @@ export default function FreeAICompanionPage() {
                 href="/birth"
                 className="inline-flex items-center justify-center gap-2 bg-[#c9a84c] hover:bg-[#b8973b] text-[#1a1a2e] font-bold px-6 py-3 rounded-xl transition-colors"
               >
-                Begin Free <ArrowRight className="w-4 h-4" />
+                Begin Free →
               </Link>
               <Link
                 href="/pricing"
@@ -463,19 +463,19 @@ export default function FreeAICompanionPage() {
               href="/blog/meok-review"
               className="flex items-center gap-2 text-[#c9a84c] hover:text-[#1a1a2e] transition-colors text-sm font-semibold"
             >
-              <ArrowLeft className="w-4 h-4" /> MEOK Review 2026
+              ← MEOK Review 2026
             </Link>
             <Link
               href="/pricing"
               className="flex items-center gap-2 text-[#c9a84c] hover:text-[#1a1a2e] transition-colors text-sm font-semibold"
             >
-              See all tiers <ArrowRight className="w-4 h-4" />
+              See all tiers →
             </Link>
           </div>
         </article>
       </main>
 
-      <MarketingFooter />
+      
     </>
   );
 }

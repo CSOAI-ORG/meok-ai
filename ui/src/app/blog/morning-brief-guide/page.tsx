@@ -95,7 +95,7 @@ export default function MorningBriefGuidePage() {
             className="inline-flex items-center gap-1.5 text-sm mb-8 transition-opacity hover:opacity-90"
             style={{ color: "rgba(255,255,255,0.35)" }}
           >
-            <ArrowLeft className="w-4 h-4" />
+            ←
             Back to Blog
           </Link>
 
@@ -114,14 +114,14 @@ export default function MorningBriefGuidePage() {
               className="flex items-center gap-1.5 text-xs"
               style={{ color: "rgba(255,255,255,0.35)" }}
             >
-              <Calendar className="w-3.5 h-3.5" />
+              📅
               March 23, 2026
             </span>
             <span
               className="flex items-center gap-1.5 text-xs"
               style={{ color: "rgba(255,255,255,0.35)" }}
             >
-              <Clock className="w-3.5 h-3.5" />
+              ⏱
               4 min read
             </span>
           </div>
@@ -412,7 +412,7 @@ export default function MorningBriefGuidePage() {
               style={{ background: "#c9a84c", color: "#0d0c18" }}
             >
               Start your mornings with MEOK
-              <ArrowRight className="w-4 h-4" />
+              →
             </Link>
           </div>
         </div>
@@ -450,7 +450,7 @@ export default function MorningBriefGuidePage() {
                 className="flex items-center gap-1.5 text-xs mt-auto"
                 style={{ color: "rgba(255,255,255,0.3)" }}
               >
-                <Clock className="w-3 h-3" />
+                ⏱
                 4 min read
               </div>
             </Link>
@@ -478,7 +478,7 @@ export default function MorningBriefGuidePage() {
                 className="flex items-center gap-1.5 text-xs mt-auto"
                 style={{ color: "rgba(255,255,255,0.3)" }}
               >
-                <Clock className="w-3 h-3" />
+                ⏱
                 5 min read
               </div>
             </Link>
@@ -486,7 +486,7 @@ export default function MorningBriefGuidePage() {
         </div>
       </div>
 
-      <MarketingFooter />
+      
     </div>
   );
 }

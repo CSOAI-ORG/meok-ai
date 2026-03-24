@@ -86,7 +86,7 @@ export default function MeokForADHD() {
             className="inline-flex items-center gap-1.5 text-sm mb-8 transition-colors hover:opacity-90"
             style={{ color: "rgba(245,240,232,0.4)" }}
           >
-            <ArrowLeft className="w-4 h-4" />
+            ←
             Back to Blog
           </Link>
 
@@ -106,14 +106,14 @@ export default function MeokForADHD() {
               className="flex items-center gap-1.5 text-xs"
               style={{ color: "rgba(245,240,232,0.4)" }}
             >
-              <Calendar className="w-3.5 h-3.5" />
+              📅
               March 24, 2026
             </span>
             <span
               className="flex items-center gap-1.5 text-xs"
               style={{ color: "rgba(245,240,232,0.4)" }}
             >
-              <Clock className="w-3.5 h-3.5" />
+              ⏱
               7 min read
             </span>
           </div>
@@ -415,7 +415,7 @@ export default function MeokForADHD() {
                 style={{ background: "#87CEEB", color: "#0d0c18" }}
               >
                 Hatch your AI free
-                <ArrowRight className="w-4 h-4" />
+                →
               </Link>
               <Link
                 href="/features"
@@ -449,7 +449,7 @@ export default function MeokForADHD() {
                 Why Your Nan Needs Sovereign AI More Than Your CTO Does
               </h3>
               <div className="flex items-center gap-1.5 text-xs text-[#1a1a2e]/35 mt-auto">
-                <Clock className="w-3 h-3" />
+                ⏱
                 6 min read
               </div>
             </Link>
@@ -467,7 +467,7 @@ export default function MeokForADHD() {
                 AI Companion for Elderly Parents: What Families Need to Know
               </h3>
               <div className="flex items-center gap-1.5 text-xs text-[#1a1a2e]/35 mt-auto">
-                <Clock className="w-3 h-3" />
+                ⏱
                 7 min read
               </div>
             </Link>
@@ -475,7 +475,7 @@ export default function MeokForADHD() {
         </div>
       </div>
 
-      <MarketingFooter />
+      
     </div>
   );
 }

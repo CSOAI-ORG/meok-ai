@@ -154,7 +154,7 @@ export default function AIForBurnoutPage() {
               href="/blog"
               className="inline-flex items-center gap-2 text-[#c9a84c] hover:text-white transition-colors text-sm mb-8"
             >
-              <ArrowLeft className="w-4 h-4" /> Back to Blog
+              ← Back to Blog
             </Link>
             <div className="inline-block px-3 py-1 bg-[#f97316]/20 text-[#f97316] text-xs font-semibold rounded-full mb-4 uppercase tracking-wider">
               Wellbeing
@@ -169,10 +169,10 @@ export default function AIForBurnoutPage() {
             </p>
             <div className="flex items-center gap-4 mt-8 text-white/50 text-sm">
               <span className="flex items-center gap-1.5">
-                <Calendar className="w-4 h-4" /> March 24, 2026
+                📅 March 24, 2026
               </span>
               <span className="flex items-center gap-1.5">
-                <Clock className="w-4 h-4" /> 11 min read
+                ⏱ 11 min read
               </span>
               <span>Nicholas Templeman</span>
             </div>
@@ -441,7 +441,7 @@ export default function AIForBurnoutPage() {
                 href="/birth"
                 className="inline-flex items-center justify-center gap-2 bg-[#c9a84c] hover:bg-[#b8973b] text-[#1a1a2e] font-bold px-6 py-3 rounded-xl transition-colors"
               >
-                Begin the Ceremony <ArrowRight className="w-4 h-4" />
+                Begin the Ceremony →
               </Link>
               <Link
                 href="/characters"
@@ -471,19 +471,19 @@ export default function AIForBurnoutPage() {
               href="/blog/meok-for-anxiety"
               className="flex items-center gap-2 text-[#c9a84c] hover:text-[#1a1a2e] transition-colors text-sm font-semibold"
             >
-              <ArrowLeft className="w-4 h-4" /> AI for Anxiety
+              ← AI for Anxiety
             </Link>
             <Link
               href="/blog/ai-for-depression"
               className="flex items-center gap-2 text-[#c9a84c] hover:text-[#1a1a2e] transition-colors text-sm font-semibold"
             >
-              AI for Depression <ArrowRight className="w-4 h-4" />
+              AI for Depression →
             </Link>
           </div>
         </article>
       </main>
 
-      <MarketingFooter />
+      
     </>
   );
 }

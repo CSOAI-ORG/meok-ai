@@ -81,7 +81,7 @@ const jsonLd = {
 
 const COACHING_PILLARS = [
   {
-    icon: Target,
+    icon: '◎',
     title: "Goal Architecture",
     description:
       "A real coach doesn't just write down your goals. They help you examine whether your goals are actually yours — or inherited from someone else's expectations.",
@@ -89,7 +89,7 @@ const COACHING_PILLARS = [
     aiLimit: "AI can't sense the emotional weight behind a goal. A human coach can tell when you're describing a goal with dread in your voice.",
   },
   {
-    icon: TrendingUp,
+    icon: '📈',
     title: "Habit Building",
     description:
       "Habits are built through repetition and identity. The research (Fogg, Clear) is clear: small consistent actions, tied to existing routines, produce lasting change.",
@@ -97,7 +97,7 @@ const COACHING_PILLARS = [
     aiLimit: "Willpower is finite. AI can't physically accompany you to the gym or hold you accountable in the same way a friend can.",
   },
   {
-    icon: Brain,
+    icon: '🧠',
     title: "Reflection & Pattern Recognition",
     description:
       "Most people don't change because they lack information — they change when they finally see their own patterns clearly.",
@@ -105,7 +105,7 @@ const COACHING_PILLARS = [
     aiLimit: "Reflection requires honesty. If you're not honest with your AI, it can't help you — just like a coach.",
   },
   {
-    icon: Heart,
+    icon: '♥',
     title: "Accountability",
     description:
       "Accountability works best when there's a real relationship at stake. The fear of disappointing someone drives action.",
@@ -226,7 +226,7 @@ export default function AILifeCoachPage() {
               fontSize: "0.875rem",
             }}
           >
-            <ArrowLeft size={14} /> All Articles
+            ← All Articles
           </Link>
         </nav>
 
@@ -250,7 +250,7 @@ export default function AILifeCoachPage() {
               marginBottom: "1.5rem",
             }}
           >
-            <Target size={12} style={{ color: "#c084fc" }} />
+            ◎
             <span style={{ color: "#c084fc", fontSize: "0.75rem", fontWeight: 600, letterSpacing: "0.08em" }}>
               COACHING &amp; GROWTH
             </span>
@@ -284,11 +284,11 @@ export default function AILifeCoachPage() {
 
           <div style={{ display: "flex", alignItems: "center", gap: "1.5rem", flexWrap: "wrap" }}>
             <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
-              <Calendar size={14} style={{ color: "#9ca3af" }} />
+              📅
               <span style={{ color: "#9ca3af", fontSize: "0.8rem" }}>March 24, 2026</span>
             </div>
             <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
-              <Clock size={14} style={{ color: "#9ca3af" }} />
+              ⏱
               <span style={{ color: "#9ca3af", fontSize: "0.8rem" }}>12 min read</span>
             </div>
             <span style={{ color: "#9ca3af", fontSize: "0.8rem" }}>By Nicholas Templeman</span>
@@ -356,7 +356,7 @@ export default function AILifeCoachPage() {
                           flexShrink: 0,
                         }}
                       >
-                        <Icon size={18} style={{ color: "#c084fc" }} />
+                        
                       </div>
                       <h3 style={{ fontSize: "1.05rem", fontWeight: 700, color: "#f5f0ff", margin: 0 }}>
                         {pillar.title}
@@ -480,12 +480,7 @@ export default function AILifeCoachPage() {
                             borderBottom: "1px solid rgba(255,255,255,0.04)",
                           }}
                         >
-                          {val ? (
-                            <CheckCircle
-                              size={16}
-                              style={{ color: "#22c55e", display: "inline-block" }}
-                            />
-                          ) : (
+                          {val ? '✓' : (
                             <span style={{ color: "#4b5563", fontSize: "1rem" }}>✗</span>
                           )}
                         </td>
@@ -525,7 +520,7 @@ export default function AILifeCoachPage() {
                         lineHeight: 1.5,
                       }}
                     >
-                      <CheckCircle size={14} style={{ color: "#22c55e", marginTop: 2, flexShrink: 0 }} />
+                      {'✓'}  
                       {item}
                     </li>
                   ))}
@@ -557,7 +552,7 @@ export default function AILifeCoachPage() {
                         lineHeight: 1.5,
                       }}
                     >
-                      <AlertCircle size={14} style={{ color: "#fbbf24", marginTop: 2, flexShrink: 0 }} />
+                      ⚠️
                       {item}
                     </li>
                   ))}
@@ -694,7 +689,7 @@ export default function AILifeCoachPage() {
                   gap: "0.5rem",
                 }}
               >
-                Begin Your Coaching Journey <ArrowRight size={16} />
+                Begin Your Coaching Journey →
               </Link>
               <Link
                 href="/pricing"
@@ -743,14 +738,14 @@ export default function AILifeCoachPage() {
                     gap: "0.4rem",
                   }}
                 >
-                  {link.label} <ArrowRight size={12} />
+                  {link.label} →
                 </Link>
               ))}
             </div>
           </section>
         </article>
 
-        <MarketingFooter />
+        
       </main>
     </>
   );

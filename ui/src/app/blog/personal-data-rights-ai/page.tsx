@@ -203,10 +203,10 @@ const dataRightsTable: DataRightsRow[] = [
 
 function RightsIcon({ level }: { level: DataRightsLevel }) {
   if (level === "yes")
-    return <CheckCircle className="w-5 h-5 mx-auto" style={{ color: "#4caf92" }} />;
+    return '✓';
   if (level === "no")
-    return <XCircle className="w-5 h-5 mx-auto" style={{ color: "#e05c7a" }} />;
-  return <AlertCircle className="w-5 h-5 mx-auto" style={{ color: "#c9a84c" }} />;
+    return '✗';
+  return '⚠️';
 }
 
 // ── Page ──────────────────────────────────────────────────────────────────────
@@ -241,7 +241,7 @@ export default function PersonalDataRightsAI() {
             className="inline-flex items-center gap-1.5 text-sm mb-8 transition-colors hover:opacity-90"
             style={{ color: "rgba(245,240,232,0.4)" }}
           >
-            <ArrowLeft className="w-4 h-4" />
+            ←
             Back to Blog
           </Link>
 
@@ -270,14 +270,14 @@ export default function PersonalDataRightsAI() {
               className="flex items-center gap-1.5 text-xs"
               style={{ color: "rgba(245,240,232,0.4)" }}
             >
-              <Calendar className="w-3.5 h-3.5" />
+              📅
               24 March 2026
             </span>
             <span
               className="flex items-center gap-1.5 text-xs"
               style={{ color: "rgba(245,240,232,0.4)" }}
             >
-              <Clock className="w-3.5 h-3.5" />
+              ⏱
               14 min read
             </span>
           </div>
@@ -767,16 +767,16 @@ export default function PersonalDataRightsAI() {
                       )}
                     </td>
                     <td className="p-4 text-center">
-                      <RightsIcon level={row.chatgpt} />
+                      ⚖
                     </td>
                     <td className="p-4 text-center">
-                      <RightsIcon level={row.claude} />
+                      ⚖
                     </td>
                     <td className="p-4 text-center">
-                      <RightsIcon level={row.gemini} />
+                      ⚖
                     </td>
                     <td className="p-4 text-center">
-                      <RightsIcon level={row.meok} />
+                      ⚖
                     </td>
                   </tr>
                 ))}
@@ -785,13 +785,13 @@ export default function PersonalDataRightsAI() {
           </div>
           <div className="flex items-center gap-6 mt-4 text-xs" style={{ color: "rgba(42,42,62,0.5)" }}>
             <span className="flex items-center gap-1.5">
-              <CheckCircle className="w-4 h-4" style={{ color: "#4caf92" }} /> Yes
+              ✓ Yes
             </span>
             <span className="flex items-center gap-1.5">
-              <AlertCircle className="w-4 h-4" style={{ color: "#c9a84c" }} /> Partial / opt-out required
+              ⚠️ Partial / opt-out required
             </span>
             <span className="flex items-center gap-1.5">
-              <XCircle className="w-4 h-4" style={{ color: "#e05c7a" }} /> No
+              ✗ No
             </span>
           </div>
         </div>
@@ -911,7 +911,7 @@ export default function PersonalDataRightsAI() {
               }}
             >
               Meet your sovereign AI
-              <ArrowRight className="w-5 h-5" />
+              →
             </Link>
           </div>
         </div>
@@ -982,7 +982,7 @@ export default function PersonalDataRightsAI() {
         </div>
       </div>
 
-      <MarketingFooter />
+      
     </div>
   );
 }

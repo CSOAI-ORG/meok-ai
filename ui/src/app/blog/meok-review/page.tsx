@@ -639,7 +639,7 @@ export default function MeokReviewPage() {
         </div>
       </section>
 
-      <MarketingFooter />
+      
     </div>
   );
 }

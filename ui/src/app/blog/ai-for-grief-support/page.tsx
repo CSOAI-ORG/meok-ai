@@ -447,7 +447,7 @@ export default function Page() {
 
         </article>
       </main>
-      <MarketingFooter />
+      
     </>
   )
 }

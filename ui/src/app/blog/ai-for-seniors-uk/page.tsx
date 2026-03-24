@@ -221,7 +221,7 @@ export default function AiForSeniorsUkPage() {
             className="inline-flex items-center gap-1.5 text-sm mb-8 transition-opacity hover:opacity-90"
             style={{ color: "rgba(255,255,255,0.35)" }}
           >
-            <ArrowLeft className="w-4 h-4" />
+            ←
             Back to Blog
           </Link>
 
@@ -240,14 +240,14 @@ export default function AiForSeniorsUkPage() {
               className="flex items-center gap-1.5 text-xs"
               style={{ color: "rgba(255,255,255,0.35)" }}
             >
-              <Calendar className="w-3.5 h-3.5" />
+              📅
               24 March 2026
             </span>
             <span
               className="flex items-center gap-1.5 text-xs"
               style={{ color: "rgba(255,255,255,0.35)" }}
             >
-              <Clock className="w-3.5 h-3.5" />
+              ⏱
               10 min read
             </span>
           </div>
@@ -965,10 +965,7 @@ export default function AiForSeniorsUkPage() {
           <ul className="space-y-3 my-5 pl-1">
             {signsOfLoneliness.map((sign) => (
               <li key={sign} className="flex items-start gap-3">
-                <CheckCircle2
-                  className="w-4 h-4 flex-shrink-0 mt-0.5"
-                  style={{ color: "#87CEEB" }}
-                />
+                ✓
                 <span className="text-sm" style={{ color: "rgba(255,255,255,0.7)" }}>
                   {sign}
                 </span>
@@ -1124,7 +1121,7 @@ export default function AiForSeniorsUkPage() {
                 style={{ background: "#c9a84c", color: "#0d0c18" }}
               >
                 Start free for your parent
-                <ArrowRight className="w-4 h-4" />
+                →
               </Link>
               <Link
                 href="/birth"
@@ -1174,7 +1171,7 @@ export default function AiForSeniorsUkPage() {
                 className="flex items-center gap-1.5 text-xs mt-auto"
                 style={{ color: "rgba(255,255,255,0.3)" }}
               >
-                <Clock className="w-3 h-3" />
+                ⏱
                 7 min read
               </div>
             </Link>
@@ -1202,7 +1199,7 @@ export default function AiForSeniorsUkPage() {
                 className="flex items-center gap-1.5 text-xs mt-auto"
                 style={{ color: "rgba(255,255,255,0.3)" }}
               >
-                <Clock className="w-3 h-3" />
+                ⏱
                 4 min read
               </div>
             </Link>
@@ -1210,7 +1207,7 @@ export default function AiForSeniorsUkPage() {
         </div>
       </div>
 
-      <MarketingFooter />
+      
     </div>
   );
 }
