@@ -341,6 +341,18 @@ const POSTS = [
     featured: false,
   },
   {
+    slug: "ai-journaling-app",
+    title: "The Best AI Journaling App in 2026: Beyond Daily Prompts",
+    excerpt:
+      "The journaling app market is worth £500M. Most apps abandon users within 2 weeks because prompts run out and nothing remembers what you wrote last month. Sovereign Memory changes that.",
+    date: "March 24, 2026",
+    readTime: "10 min read",
+    tag: "Productivity",
+    tagColor: "#10b981",
+    category: "guides",
+    featured: false,
+  },
+  {
     slug: "ai-for-burnout",
     title: "AI for Burnout: How an AI Companion Helps You Recover and Rebuild",
     excerpt:
