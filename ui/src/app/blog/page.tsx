@@ -53,6 +53,18 @@ const POSTS = [
     featured: true,
   },
   {
+    slug: "ai-companion-app-2026",
+    title: "Best AI Companion Apps in 2026: Replika vs Character.AI vs MEOK — Full Comparison",
+    excerpt:
+      "1.5M ChatGPT subscribers cancelled in a single month. Replika removed its most-loved features. Character.AI faces lawsuits. 2026 is the year AI companionship finally gets serious — here's what actually matters.",
+    date: "March 24, 2026",
+    readTime: "7 min read",
+    tag: "Comparison",
+    tagColor: "#F97316",
+    category: "product",
+    featured: false,
+  },
+  {
     slug: "the-40-day-build",
     title: "The 40-day build: how MEOK went from idea to launch",
     excerpt:

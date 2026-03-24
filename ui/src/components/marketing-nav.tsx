@@ -48,6 +48,7 @@ const PRODUCTS: Product[] = [
     name: "Personal OS",
     color: "#c9a84c",
     sub: [
+      { href: "/what-is-meok", icon: "❓", label: "What is MEOK?", desc: "Sovereign AI OS explained — not a chatbot" },
       { href: "/memory", icon: "🧠", label: "Memory", desc: "Lifelong context that remembers you" },
       { href: "/personal/care", icon: "💛", label: "Care Dimensions", desc: "Emotional awareness & wellbeing layers" },
       { href: "/personal/morning-brief", icon: "☀️", label: "Morning Brief", desc: "Start every day with clarity" },
