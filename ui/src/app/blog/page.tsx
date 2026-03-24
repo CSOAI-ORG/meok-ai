@@ -2126,6 +2126,42 @@ const POSTS = [
     category: "productivity",
     featured: false,
   },
+  {
+    slug: "ai-for-empty-nest",
+    title: "AI Companion for Empty Nest Syndrome: Rediscovering Yourself",
+    excerpt:
+      "When the children leave, the silence can be deafening. MEOK helps parents rediscover who they are beyond parenthood — processing the grief of an empty nest while finding excitement for what comes next.",
+    date: "March 24, 2026",
+    readTime: "10 min read",
+    tag: "Wellbeing",
+    tagColor: "#C9A84C",
+    category: "mental-health",
+    featured: false,
+  },
+  {
+    slug: "ai-for-exam-stress",
+    title: "AI Support for Exam Stress: Calm, Focused and Ready to Perform",
+    excerpt:
+      "Exam anxiety is one of the most common forms of stress among students. MEOK provides round-the-clock support — helping you plan revision, manage panic, and build the confidence to walk into that exam hall ready.",
+    date: "March 24, 2026",
+    readTime: "10 min read",
+    tag: "Productivity",
+    tagColor: "#C9A84C",
+    category: "productivity",
+    featured: false,
+  },
+  {
+    slug: "ai-companion-for-seniors",
+    title: "AI Companion for Seniors: Stay Connected, Stay Sharp, Stay Yourself",
+    excerpt:
+      "Over-65s are the fastest-growing group adopting AI companions — and for good reason. MEOK provides daily cognitive stimulation, gentle reminders, scam protection, and genuine companionship for older adults.",
+    date: "March 24, 2026",
+    readTime: "10 min read",
+    tag: "Guardian",
+    tagColor: "#C9A84C",
+    category: "guardian",
+    featured: false,
+  },
 ];
 
 // ── Category filter tabs ──────────────────────────────────────────────────────
