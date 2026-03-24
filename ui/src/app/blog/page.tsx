@@ -2450,6 +2450,54 @@ const POSTS = [
     category: "sovereign-ai",
     featured: true,
   },
+  {
+    slug: "ai-for-life-transitions",
+    title: "AI for Life Transitions: Support When You\u2019re Between Who You Were and Who You\u2019re Becoming",
+    excerpt:
+      "New job, relocation, divorce, retirement, bereavement — major life transitions disrupt identity and routine. A sovereign AI companion that remembers who you were before can help you become who you\u2019re meant to be next.",
+    date: "March 24, 2026",
+    readTime: "10 min read",
+    tag: "Mental Health",
+    tagColor: "#5b8dd9",
+    category: "mental-health",
+    featured: false,
+  },
+  {
+    slug: "ai-for-parenting-stress",
+    title: "AI for Parenting Stress: A Safe Space to Admit It\u2019s Hard",
+    excerpt:
+      "Parental burnout affects 5-8% of parents and is almost never discussed. MEOK\u2019s Family tier gives parents a confidential space to process the invisible load — without judgment, without an appointment.",
+    date: "March 24, 2026",
+    readTime: "11 min read",
+    tag: "Guardian",
+    tagColor: "#f5a623",
+    category: "guardian",
+    featured: false,
+  },
+  {
+    slug: "ai-and-human-connection",
+    title: "AI and Human Connection: Does AI Companionship Help or Harm?",
+    excerpt:
+      "The research is nuanced. AI companionship can reduce loneliness — or it can deepen isolation. The difference lies in design intent. MEOK\u2019s care framework scores every response on autonomy, actively encouraging human connection.",
+    date: "March 24, 2026",
+    readTime: "12 min read",
+    tag: "Research",
+    tagColor: "#C9A84C",
+    category: "research",
+    featured: false,
+  },
+  {
+    slug: "personal-ai-data-sovereignty",
+    title: "Personal AI Data Sovereignty: What It Is and How to Achieve It",
+    excerpt:
+      "GDPR compliance is not data sovereignty. True sovereignty means you own the model, the memory, and the data — and the company cannot access, sell, or train on it. Here\u2019s what that actually looks like in practice.",
+    date: "March 24, 2026",
+    readTime: "10 min read",
+    tag: "Sovereign AI",
+    tagColor: "#C9A84C",
+    category: "sovereign-ai",
+    featured: false,
+  },
 ];
 
 // ── Category filter tabs ──────────────────────────────────────────────────────

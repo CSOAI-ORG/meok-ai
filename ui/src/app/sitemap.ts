@@ -327,6 +327,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: 'https://meok.ai/blog/ai-companion-vs-therapist', lastModified: new Date('2026-03-24'), changeFrequency: 'monthly', priority: 0.9 },
     { url: 'https://meok.ai/blog/ai-memory-explained', lastModified: new Date('2026-03-24'), changeFrequency: 'monthly', priority: 0.9 },
     { url: 'https://meok.ai/blog/ai-for-depression', lastModified: new Date('2026-03-24'), changeFrequency: 'monthly', priority: 0.9 },
+    { url: 'https://meok.ai/blog/ai-for-life-transitions', lastModified: new Date('2026-03-24'), changeFrequency: 'monthly', priority: 0.85 },
+    { url: 'https://meok.ai/blog/ai-for-parenting-stress', lastModified: new Date('2026-03-24'), changeFrequency: 'monthly', priority: 0.85 },
+    { url: 'https://meok.ai/blog/ai-and-human-connection', lastModified: new Date('2026-03-24'), changeFrequency: 'monthly', priority: 0.85 },
+    { url: 'https://meok.ai/blog/personal-ai-data-sovereignty', lastModified: new Date('2026-03-24'), changeFrequency: 'monthly', priority: 0.9 },
+    { url: 'https://meok.ai/blog/ai-for-insomnia', lastModified: new Date('2026-03-24'), changeFrequency: 'monthly', priority: 0.85 },
+    { url: 'https://meok.ai/blog/ai-for-addiction-recovery', lastModified: new Date('2026-03-24'), changeFrequency: 'monthly', priority: 0.85 },
+    { url: 'https://meok.ai/blog/ai-for-procrastination', lastModified: new Date('2026-03-24'), changeFrequency: 'monthly', priority: 0.85 },
 
     // ── Legal ─────────────────────────────────────────────────────────
     { url: 'https://meok.ai/privacy', lastModified: new Date(), changeFrequency: 'yearly', priority: 0.3 },
