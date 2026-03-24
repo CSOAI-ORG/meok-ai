@@ -6,28 +6,46 @@ import { useRouter } from "next/navigation";
 
 const ARCHETYPES = [
   {
-    id: "guardian",
-    name: "The Guardian",
-    description: "Protective, watchful, keeps you safe",
-    icon: "🛡️",
-  },
-  {
-    id: "scholar",
-    name: "The Scholar",
-    description: "Curious, analytical, loves deep dives",
-    icon: "📖",
-  },
-  {
-    id: "builder",
-    name: "The Builder",
-    description: "Practical, task-focused, gets things done",
-    icon: "🔨",
+    id: "pioneer",
+    name: "Pioneer",
+    description: "Action, accountability, momentum. For those who need to move.",
+    icon: "⚡",
+    color: "#f97316",
   },
   {
     id: "healer",
-    name: "The Healer",
-    description: "Empathetic, patient, emotionally attuned",
-    icon: "🤍",
+    name: "Healer",
+    description: "Emotional depth, grief support, somatic awareness. For the hard days.",
+    icon: "🌿",
+    color: "#7BC47F",
+  },
+  {
+    id: "scholar",
+    name: "Scholar",
+    description: "Socratic questioning, cross-domain synthesis. For the curious.",
+    icon: "🏛️",
+    color: "#c9a84c",
+  },
+  {
+    id: "guardian",
+    name: "Guardian",
+    description: "Family safety, scam protection, Maternal Covenant. For the vigilant.",
+    icon: "⚔️",
+    color: "#f59e0b",
+  },
+  {
+    id: "trickster",
+    name: "Trickster",
+    description: "Creative disruption, reframing, breaking blocks. For the stuck.",
+    icon: "🎭",
+    color: "#ec4899",
+  },
+  {
+    id: "mystic",
+    name: "Mystic",
+    description: "Philosophical inquiry, meaning, traditions. For the seeking.",
+    icon: "🌊",
+    color: "#8b5cf6",
   },
 ];
 
@@ -98,31 +116,31 @@ export default function OnboardingStep2() {
               </p>
             </div>
 
-            {/* Archetype cards — 2×2 grid */}
-            <div className="grid grid-cols-2 gap-4">
+            {/* Archetype cards — 2×3 grid */}
+            <div className="grid grid-cols-2 gap-3">
               {ARCHETYPES.map((arch) => {
                 const isSelected = selected === arch.id;
                 return (
                   <button
                     key={arch.id}
                     onClick={() => setSelected(arch.id)}
-                    className="flex flex-col items-start gap-3 rounded-2xl p-5 text-left transition-all hover:scale-[1.02] active:scale-[0.98]"
+                    className="flex flex-col items-start gap-3 rounded-2xl p-4 text-left transition-all hover:scale-[1.02] active:scale-[0.98]"
                     style={{
-                      background: isSelected ? "rgba(201,168,76,0.10)" : "rgba(255,255,255,0.03)",
-                      border: isSelected ? "1px solid #c9a84c" : "1px solid rgba(201,168,76,0.12)",
-                      boxShadow: isSelected ? "0 0 20px rgba(201,168,76,0.15)" : "none",
+                      background: isSelected ? `${arch.color}18` : "rgba(255,255,255,0.03)",
+                      border: isSelected ? `1px solid ${arch.color}` : "1px solid rgba(201,168,76,0.12)",
+                      boxShadow: isSelected ? `0 0 20px ${arch.color}25` : "none",
                     }}
                   >
                     <span
-                      className="text-2xl flex items-center justify-center w-11 h-11 rounded-xl"
-                      style={{ background: isSelected ? "rgba(201,168,76,0.18)" : "rgba(201,168,76,0.08)" }}
+                      className="text-xl flex items-center justify-center w-10 h-10 rounded-xl"
+                      style={{ background: isSelected ? `${arch.color}28` : "rgba(201,168,76,0.08)" }}
                     >
                       {arch.icon}
                     </span>
                     <div>
                       <p
                         className="font-bold text-sm"
-                        style={{ color: isSelected ? "#c9a84c" : "white" }}
+                        style={{ color: isSelected ? arch.color : "white" }}
                       >
                         {arch.name}
                       </p>

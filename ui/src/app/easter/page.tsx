@@ -76,26 +76,12 @@ const AFTER_HATCH_STEPS = [
 ];
 
 const ARCHETYPES = [
-  {
-    name: "Guardian",
-    tagline: "Protects and watches over you — contracts, relationships, safety",
-  },
-  {
-    name: "Scout",
-    tagline: "Explores and discovers — research, curiosity, finding what matters",
-  },
-  {
-    name: "Sage",
-    tagline: "Teaches and guides — learning, wisdom, pattern recognition",
-  },
-  {
-    name: "Creator",
-    tagline: "Builds alongside you — ideas, projects, creative momentum",
-  },
-  {
-    name: "Companion",
-    tagline: "Simply present — conversation, support, emotional continuity",
-  },
+  { name: "Pioneer ⚡", tagline: "Action, accountability, momentum. For those who need to move." },
+  { name: "Healer 🌿", tagline: "Emotional depth, grief support, somatic awareness. For the hard days." },
+  { name: "Scholar 🏛️", tagline: "Socratic questioning, cross-domain synthesis. For the curious." },
+  { name: "Guardian ⚔️", tagline: "Family safety, scam protection, Maternal Covenant. For the vigilant." },
+  { name: "Trickster 🎭", tagline: "Creative disruption, reframing, breaking blocks. For the stuck." },
+  { name: "Mystic 🌊", tagline: "Philosophical inquiry, meaning, traditions. For the seeking." },
 ];
 
 const FORTY_DAY_STEPS = [
@@ -181,13 +167,13 @@ export default function EasterPage() {
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center w-full max-w-sm sm:max-w-none">
             <Link
-              href="/waitlist"
+              href="/register"
               className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full font-black text-base transition-all shadow-lg hover:scale-105 bg-[#c9a84c] text-[#1a1a2e] hover:opacity-90"
             >
               Reserve your founding member spot →
             </Link>
             <Link
-              href="/hatch"
+              href="/birth"
               className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full font-semibold text-base border border-white/20 text-white/70 hover:bg-white/[0.05] hover:text-white transition-colors"
             >
               See the Birth Ceremony
@@ -296,7 +282,7 @@ export default function EasterPage() {
               Choose your archetype
             </span>
             <h2 className="text-3xl sm:text-4xl font-black text-white tracking-tight mb-4">
-              Five characters. One is yours.
+              Six archetypes. One is yours.
             </h2>
             <p className="text-white/40 max-w-xl mx-auto leading-relaxed">
               Each archetype is a different way of relating to your AI. Not a feature set — a personality.
@@ -433,7 +419,7 @@ export default function EasterPage() {
           </p>
 
           <Link
-            href="/waitlist"
+            href="/register"
             className="inline-flex items-center gap-2 px-10 py-4 rounded-full font-black text-base shadow-lg transition-all hover:scale-105 bg-[#c9a84c] text-[#1a1a2e] hover:opacity-90"
           >
             Reserve your founding member spot →
