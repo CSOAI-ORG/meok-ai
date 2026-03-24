@@ -19,8 +19,57 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://meok.ai/work" },
 };
 
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "What is MEOK Work OS?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "MEOK Work OS is a three-agent AI system — Orion, Riri, and Hourman — that works autonomously while you sleep. Orion hunts intelligence and research overnight. Riri builds tools, drafts, and assets from your specifications. Hourman plans your sprint and delivers a morning briefing before you wake.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What does Orion do?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Orion is MEOK's overnight research agent. Activate Orion Mode before bed, set a research target, and wake up to a synthesised brief: leads found, articles summarised, competitor moves flagged, opportunities ranked. Orion works across the web while you sleep.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What does Riri do?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Riri is MEOK's builder agent. Give Riri a spec — a tool, a document, a template, a workflow — and it builds autonomously from 25+ templates. Riri Mode activates during low-activity hours and delivers completed work to your dashboard.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What does Hourman do?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Hourman is MEOK's planner and sprint coordinator. It analyses your task list, energy patterns, and deadlines, then creates a daily sprint plan with time-boxed blocks. Your morning briefing includes Hourman's recommended schedule for the day.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What is Ralph Mode?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Ralph Mode is MEOK's full-autonomy agent framework — available on the Sovereign Family plan. When Ralph Mode is active, your companion coordinates all three agents (Orion, Riri, Hourman) to execute complex multi-day projects without step-by-step instruction. Ralph Mode is named after the principle of autonomous, sovereign work.",
+      },
+    },
+  ],
+};
+
 export default function WorkOSPage() {
   return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
     <div className="min-h-screen bg-[#0d0c18] text-white overflow-x-hidden">
 
       {/* ═══════════════════════════════════════════════
@@ -438,5 +487,6 @@ export default function WorkOSPage() {
 
       <MarketingFooter />
     </div>
+    </>
   );
 }
