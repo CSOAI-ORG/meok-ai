@@ -221,42 +221,6 @@ const POSTS = [
     featured: false,
   },
   {
-    slug: "meok-vs-claude",
-    title: "MEOK vs Claude: Different Animals, Different Purpose",
-    excerpt:
-      "Claude is one of the best AI models ever made. MEOK uses it. Here's why that's not a contradiction — and what an AI operating system actually adds on top of a model.",
-    date: "March 26, 2026",
-    readTime: "5 min read",
-    tag: "Comparisons",
-    tagColor: "#c9a84c",
-    category: "research",
-    featured: false,
-  },
-  {
-    slug: "meok-for-anxiety",
-    title: "MEOK for Anxiety: An AI That Doesn't Make It Worse",
-    excerpt:
-      "Most AI chatbots react to anxiety with hollow reassurance. MEOK was built differently — with a sycophancy detector, a care floor, and a framework that treats honesty as the highest form of support.",
-    date: "March 24, 2026",
-    readTime: "7 min read",
-    tag: "Mental Wellness",
-    tagColor: "#A78BFA",
-    category: "product",
-    featured: false,
-  },
-  {
-    slug: "ai-companion-for-kids",
-    title: "AI Companion for Kids: What Parents Need to Know Before Saying Yes",
-    excerpt:
-      "Not all AI companions are built for children. Here's the framework — Children's Code compliance, Guardian mode, DistilBERT threat detection — that determines whether yours actually is.",
-    date: "March 25, 2026",
-    readTime: "6 min read",
-    tag: "Guardian",
-    tagColor: "#3B82F6",
-    category: "product",
-    featured: false,
-  },
-  {
     slug: "meok-vs-chatgpt",
     title: "MEOK vs ChatGPT: Why Memory Changes Everything",
     excerpt:
