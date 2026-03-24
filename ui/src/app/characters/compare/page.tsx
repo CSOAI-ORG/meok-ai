@@ -55,7 +55,7 @@ function getCellValue(char: (typeof CHARACTERS)[0], key: CompareRow["key"]): str
     case "evolution":
       return char.evolutionStages.map((s) => s.name).join(" → ");
     case "tier":
-      return char.tier === "free" ? "Free" : char.tier === "pro" ? "Pro — £9.99/mo" : "Premium";
+      return char.tier === "free" ? "Explorer — Free" : char.tier === "pro" ? "Sovereign — £12/mo" : "Family — £29/mo";
     case "superpower":
       return char.superpowers[0];
     default:

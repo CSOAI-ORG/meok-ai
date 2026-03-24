@@ -105,7 +105,7 @@ const faqJsonLd = {
       name: "Is it really free forever?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Yes. The free tier includes a sovereign AI companion, basic memory, any LLM routing, and open source access — permanently free. Pro is £9.99/month if you want unlimited memory, voice, and more. No credit card required to start.",
+        text: "Yes. The free tier includes a sovereign AI companion, basic memory, any LLM routing, and open source access — permanently free. Sovereign is £12/month for unlimited memory, Work OS, and more. No credit card required to start.",
       },
     },
   ],
@@ -330,7 +330,7 @@ const FAQS = [
   },
   {
     q: "Is it really free forever?",
-    a: "Yes. The free tier includes a sovereign AI companion, basic memory, any LLM routing, and open source access — permanently. Pro is £9.99/month for unlimited memory, voice, and more. No credit card required to start. If you stop paying Pro, you drop to free — you don't lose your companion.",
+    a: "Yes. The free tier includes a sovereign AI companion, basic memory, any LLM routing, and open source access — permanently. Sovereign is £12/month for unlimited memory, Work OS, and more. No credit card required to start. If you stop paying Pro, you drop to free — you don't lose your companion.",
   },
 ];
 

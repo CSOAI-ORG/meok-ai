@@ -75,7 +75,7 @@ const jsonLd = {
           name: "Which plan includes Ralph Mode?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "Ralph Mode is included in the Pro plan (£9.99/mo) and Elite plan (£19/mo). The free tier does not include overnight autonomous operation.",
+            text: "Ralph Mode is included in the Sovereign plan (£12/mo) and Family plan (£29/mo). The free tier does not include overnight autonomous operation.",
           },
         },
         {
@@ -225,7 +225,7 @@ const FAQ_ITEMS = [
   },
   {
     q: "Which plan includes Ralph Mode?",
-    a: "Ralph Mode is included in the Pro plan (£9.99/mo) and Elite plan (£19/mo). The free tier does not include overnight autonomous operation.",
+    a: "Ralph Mode is included in the Sovereign plan (£12/mo) and Family plan (£29/mo). The free tier does not include overnight autonomous operation.",
   },
   {
     q: "What happens if Ralph can't complete a task?",

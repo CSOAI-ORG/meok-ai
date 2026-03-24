@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Pricing — Start free. Grow when you're ready. | MEOK.AI",
     description:
-      "MEOK is free forever. No credit card. Upgrade to Pro (£9.99/mo), Elite (£19/mo), or Team (£29.99/seat) when you're ready.",
+      "MEOK is free forever. No credit card. Upgrade to Sovereign (£12/mo), Family (£29/mo), or BYOK (£5/mo) when you're ready.",
     type: "website",
     url: "https://meok.ai/pricing",
     siteName: "MEOK.AI",
