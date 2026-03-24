@@ -256,6 +256,13 @@ const s = {
     margin: 0,
   } as React.CSSProperties,
 
+  calloutBody: {
+    fontSize: 'clamp(15px, 1.6vw, 17px)',
+    lineHeight: 1.7,
+    color: 'rgba(245,240,232,0.88)',
+    margin: 0,
+  } as React.CSSProperties,
+
   cycleGrid: {
     display: 'grid',
     gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))',

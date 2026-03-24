@@ -2534,6 +2534,30 @@ const POSTS = [
     category: "product",
     featured: false,
   },
+  {
+    slug: "byzantine-council-governance",
+    title: "The Byzantine Council: How 43 AI Agents Govern MEOK\u2019s Decisions",
+    excerpt:
+      "MEOK\u2019s Byzantine Council uses fault-tolerant consensus (f < n/3) so no single AI agent can override a decision. Original IP by Nicholas Templeman — the governance architecture that makes sovereign AI actually sovereign.",
+    date: "March 24, 2026",
+    readTime: "12 min read",
+    tag: "Research",
+    tagColor: "#C9A84C",
+    category: "research",
+    featured: true,
+  },
+  {
+    slug: "meok-work-os-explained",
+    title: "MEOK Work OS Explained: Orion, Riri, Hourman and Ralph Mode",
+    excerpt:
+      "Most productivity AI forgets your context the moment the session ends. MEOK\u2019s Work OS is different — Orion hunts overnight, Riri builds while you sleep, Hourman plans with full memory of your goals. Ralph Mode locks you in.",
+    date: "March 24, 2026",
+    readTime: "11 min read",
+    tag: "Productivity",
+    tagColor: "#7c6fcd",
+    category: "productivity",
+    featured: false,
+  },
 ];
 
 // ── Category filter tabs ──────────────────────────────────────────────────────
