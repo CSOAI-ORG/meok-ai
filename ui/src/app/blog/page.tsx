@@ -353,6 +353,42 @@ const POSTS = [
     featured: false,
   },
   {
+    slug: "ai-for-borderline-personality",
+    title: "AI for Borderline Personality Disorder: Emotional Support That Remembers You",
+    excerpt:
+      "BPD is characterised by emotional intensity and fear of abandonment. Generic AI makes it worse. MEOK's Healer companion offers trauma-informed, care-safe support that persists across every session.",
+    date: "March 24, 2026",
+    readTime: "12 min read",
+    tag: "Mental Health",
+    tagColor: "#22c55e",
+    category: "guides",
+    featured: false,
+  },
+  {
+    slug: "sovereign-ai-for-families",
+    title: "Sovereign AI for Families: One AI That Knows Your Whole Family",
+    excerpt:
+      "Managing 4 different AI apps for 4 family members is chaos. MEOK's Family plan gives each person their own sovereign companion — with shared memory, Guardian family alerts, and everything under one roof.",
+    date: "March 24, 2026",
+    readTime: "9 min read",
+    tag: "Families",
+    tagColor: "#f59e0b",
+    category: "guides",
+    featured: false,
+  },
+  {
+    slug: "ai-for-caregivers",
+    title: "AI Support for Family Caregivers: You're Allowed to Need Help Too",
+    excerpt:
+      "Unpaid family caregivers give 85 hours a week and get 3 of support in return. MEOK's Healer companion is the outlet that doesn't judge, doesn't tire, and remembers every conversation you've had.",
+    date: "March 24, 2026",
+    readTime: "10 min read",
+    tag: "Caregiving",
+    tagColor: "#22c55e",
+    category: "guides",
+    featured: false,
+  },
+  {
     slug: "ai-for-burnout",
     title: "AI for Burnout: How an AI Companion Helps You Recover and Rebuild",
     excerpt:
