@@ -1286,9 +1286,7 @@ export default function AIForHealthAnxietyPage() {
                   letterSpacing: '0.08em',
                   textTransform: 'uppercase',
                   color: MUTED,
-                  marginBottom: '1rem',
-                  margin: 0,
-                  marginBottom: '1rem',
+                  margin: '0 0 1rem',
                 }}
               >
                 A Scenario
@@ -1682,9 +1680,7 @@ export default function AIForHealthAnxietyPage() {
                       fontSize: '0.95rem',
                       fontWeight: 700,
                       color: GOLD,
-                      marginBottom: '0.375rem',
-                      margin: 0,
-                      marginBottom: '0.375rem',
+                      margin: '0 0 0.375rem',
                     }}
                   >
                     {label}
