@@ -1,4 +1,3 @@
-import { MarketingNav } from "@/components/marketing-nav";
 import { MarketingFooter } from "@/components/marketing-footer";
 
 export const metadata = {
@@ -32,13 +31,12 @@ function Section({ id, title, children }: { id?: string; title: string; children
 export default function PrivacyPage() {
   return (
     <div className="min-h-screen bg-[#0d0c18] text-white">
-      <MarketingNav />
 
       <div className="pt-28 pb-24 px-6 max-w-3xl mx-auto">
         {/* Header */}
         <div className="mb-10">
           <h1 className="text-3xl sm:text-4xl font-black mb-2 text-white">Privacy Policy</h1>
-          <p className="text-white/30 text-sm">Last updated: 21 March 2026 · MEOK AI LTD · Registered in England &amp; Wales</p>
+          <p className="text-white/30 text-sm">Last updated: 21 March 2026 · MEOK AI LABS · Registered in England &amp; Wales</p>
         </div>
 
         {/* TL;DR — the whole point */}
@@ -106,7 +104,7 @@ export default function PrivacyPage() {
         <div className="space-y-10">
           <Section id="who-we-are" title="1. Who we are">
             <p>
-              <Highlight>MEOK AI LTD</Highlight> (&quot;MEOK&quot;, &quot;we&quot;, &quot;us&quot;) is registered in England and Wales. We provide a sovereign AI companion platform at meok.ai.
+              <Highlight>MEOK AI LABS</Highlight> (&quot;MEOK&quot;, &quot;we&quot;, &quot;us&quot;) is registered in England and Wales. We provide a sovereign AI companion platform at meok.ai.
             </p>
             <p>Data controller contact: <a href="mailto:privacy@meok.ai" className="text-[#c9a84c] hover:underline">privacy@meok.ai</a></p>
           </Section>
@@ -204,7 +202,7 @@ export default function PrivacyPage() {
 
           <Section id="contact" title="9. Contact">
             <p>
-              <Highlight>MEOK AI LTD</Highlight> ·{" "}
+              <Highlight>MEOK AI LABS</Highlight> ·{" "}
               <a href="mailto:privacy@meok.ai" className="text-[#c9a84c] hover:underline">privacy@meok.ai</a>
             </p>
             <p className="text-white/30">

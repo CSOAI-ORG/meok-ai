@@ -20,7 +20,6 @@ import {
   AlertTriangle,
   X,
 } from "lucide-react";
-import { MarketingNav } from "@/components/marketing-nav";
 import { MarketingFooter } from "@/components/marketing-footer";
 
 // ─── JSON-LD ──────────────────────────────────────────────────────────────────
@@ -346,8 +345,6 @@ export default function RalphPage() {
           border: 1px solid transparent;
         }
       `}</style>
-
-      <MarketingNav activePage="ralph" />
 
       {/* ═══════════════════════════════════════════════
           1. HERO — USP-FIRST

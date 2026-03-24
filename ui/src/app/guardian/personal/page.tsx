@@ -14,7 +14,6 @@ import {
   ChevronDown,
   ChevronUp,
 } from "lucide-react";
-import { MarketingNav } from "@/components/marketing-nav";
 import { MarketingFooter } from "@/components/marketing-footer";
 
 const FEATURES = [
@@ -200,7 +199,6 @@ export default function GuardianPersonalPage() {
       className="min-h-screen bg-[#0d0c18] text-white overflow-x-hidden"
       style={{ fontFamily: "'DM Sans', sans-serif" }}
     >
-      <MarketingNav />
 
       {/* ─── HERO ─────────────────────────────────────────── */}
       <section className="relative min-h-[90vh] flex flex-col items-center justify-center px-6 pt-20 pb-24 overflow-hidden">

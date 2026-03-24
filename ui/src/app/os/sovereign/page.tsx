@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, Lock, Download, Shield, FileCheck, Eye, Server, ChevronDown } from "lucide-react";
-import { MarketingNav } from "@/components/marketing-nav";
 import { MarketingFooter } from "@/components/marketing-footer";
 
 // ─── Metadata ──────────────────────────────────────────────────────────────
@@ -226,8 +225,6 @@ export default function SovereignPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-
-      <MarketingNav />
 
       {/* ─── HERO ─────────────────────────────────────────────────────────── */}
       <section className="relative pt-32 pb-28 px-6 text-center overflow-hidden">

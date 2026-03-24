@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, Sparkles } from "lucide-react";
-import { MarketingNav } from "@/components/marketing-nav";
 import { MarketingFooter } from "@/components/marketing-footer";
 
 export const metadata: Metadata = {
@@ -85,7 +84,7 @@ const jsonLd = {
   description:
     "Your AI hatches from an egg. Choose from 7 archetypes. Care-aligned. Yours forever.",
   url: "https://meok.ai/product/characters",
-  provider: { "@type": "Organization", name: "MEOK AI LTD", url: "https://meok.ai" },
+  provider: { "@type": "Organization", name: "MEOK AI LABS", url: "https://meok.ai" },
 };
 
 /* ─── PAGE ─────────────────────────────────────────────── */
@@ -96,7 +95,6 @@ export default function CharactersPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <MarketingNav activePage="product" />
 
       {/* ─── HERO ─────────────────────────────────────────── */}
       <section className="relative pt-32 pb-24 px-6 text-center overflow-hidden">

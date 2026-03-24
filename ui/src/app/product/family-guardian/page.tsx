@@ -10,7 +10,6 @@ import {
   Check,
   ChevronRight,
 } from "lucide-react";
-import { MarketingNav } from "@/components/marketing-nav";
 import { MarketingFooter } from "@/components/marketing-footer";
 
 export const metadata: Metadata = {
@@ -112,7 +111,7 @@ const jsonLd = {
   description:
     "Elderly care, child safety, and family council. Care-aligned. COPPA-aware. UK Children's Code compliant.",
   url: "https://meok.ai/product/family-guardian",
-  provider: { "@type": "Organization", name: "MEOK AI LTD", url: "https://meok.ai" },
+  provider: { "@type": "Organization", name: "MEOK AI LABS", url: "https://meok.ai" },
 };
 
 /* ─── PAGE ─────────────────────────────────────────────── */
@@ -123,7 +122,6 @@ export default function FamilyGuardianPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <MarketingNav activePage="product" />
 
       {/* ─── HERO ─────────────────────────────────────────── */}
       <section className="relative pt-32 pb-24 px-6 text-center overflow-hidden">

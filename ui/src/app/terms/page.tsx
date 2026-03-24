@@ -1,4 +1,3 @@
-import { MarketingNav } from "@/components/marketing-nav";
 import { MarketingFooter } from "@/components/marketing-footer";
 
 export const metadata = {
@@ -24,13 +23,12 @@ function Section({ id, title, children }: { id?: string; title: string; children
 export default function TermsPage() {
   return (
     <div className="min-h-screen bg-[#0d0c18] text-white">
-      <MarketingNav />
 
       <div className="pt-28 pb-24 px-6 max-w-3xl mx-auto">
         {/* Header */}
         <div className="mb-10">
           <h1 className="text-3xl sm:text-4xl font-black mb-2 text-white">Terms of Service</h1>
-          <p className="text-white/30 text-sm">Last updated: 21 March 2026 · MEOK AI LTD · Registered in England &amp; Wales</p>
+          <p className="text-white/30 text-sm">Last updated: 21 March 2026 · MEOK AI LABS · Registered in England &amp; Wales</p>
         </div>
 
         {/* TL;DR */}
@@ -190,7 +188,7 @@ export default function TermsPage() {
 
           <Section id="intellectual-property" title="10. Intellectual property">
             <p>
-              MEOK&apos;s software, design, brand, and the Maternal Covenant framework are owned by MEOK AI LTD. You may not copy, modify, or distribute them without written permission. Your content and memories are yours — see <a href="#data-ownership" className="text-[#c9a84c] hover:underline">section 4</a>.
+              MEOK&apos;s software, design, brand, and the Maternal Covenant framework are owned by MEOK AI LABS. You may not copy, modify, or distribute them without written permission. Your content and memories are yours — see <a href="#data-ownership" className="text-[#c9a84c] hover:underline">section 4</a>.
             </p>
           </Section>
 
@@ -214,7 +212,7 @@ export default function TermsPage() {
 
           <div className="pt-6 border-t border-white/10 text-white/30 text-sm space-y-1">
             <p>Questions: <a href="mailto:legal@meok.ai" className="text-[#c9a84c]/60 hover:text-[#c9a84c]">legal@meok.ai</a></p>
-            <p>MEOK AI LTD · Registered in England &amp; Wales</p>
+            <p>MEOK AI LABS · Registered in England &amp; Wales</p>
           </div>
         </div>
       </div>

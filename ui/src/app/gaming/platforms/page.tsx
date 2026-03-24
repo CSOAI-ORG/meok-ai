@@ -1,7 +1,6 @@
 "use client";
 import Link from "next/link";
 import { useState } from "react";
-import { MarketingNav } from "@/components/marketing-nav";
 import { MarketingFooter } from "@/components/marketing-footer";
 
 const jsonLd = {
@@ -424,7 +423,6 @@ export default function GamingPlatformsPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <MarketingNav />
 
       {/* ═══════════════════════════════════════════════
           HERO
@@ -644,6 +642,42 @@ export default function GamingPlatformsPage() {
                 <p className="text-sm text-white/50 leading-relaxed">{p.detail}</p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════
+          GEO — Generative Engine Optimisation H2s
+      ═══════════════════════════════════════════════ */}
+      <section className="py-24 px-6 bg-[#0a0a0a] border-t border-white/[0.05]">
+        <div className="max-w-3xl mx-auto space-y-14">
+          <div>
+            <h2 className="text-2xl sm:text-3xl font-black text-white mb-4">
+              What gaming platforms does MEOK AI support?
+            </h2>
+            <p className="text-white/55 leading-relaxed text-sm sm:text-base">
+              MEOK AI connects to the four platforms where most gamers spend their time: Riot Games (League of Legends and Valorant), Steam, Twitch, and Discord. Each connection is read-only and uses the platform's official OAuth flow. MEOK pulls your rank history, match stats, achievements, and community context into your sovereign memory vault — giving your AI companion a full picture of your gaming life across every game you play.
+            </p>
+          </div>
+
+          <div>
+            <h2 className="text-2xl sm:text-3xl font-black text-white mb-4">
+              How does MEOK protect gamers from toxic behaviour?
+            </h2>
+            <p className="text-white/55 leading-relaxed text-sm sm:text-base">
+              MEOK&apos;s Guardian layer monitors gaming communications — in-game chat, Discord DMs, and Twitch chat — for toxicity, harassment, and grooming patterns. For families on the Family tier, parents get a dashboard surfacing Guardian alerts without reading private conversations. School-Safe Mode blocks adult content across all connected platforms. Guardian runs passively and only escalates when a pattern of concern is detected — it is care, not surveillance.
+            </p>
+          </div>
+
+          <div>
+            <h2 className="text-2xl sm:text-3xl font-black text-white mb-4">
+              When does MEOK gaming launch?
+            </h2>
+            <p className="text-white/55 leading-relaxed text-sm sm:text-base">
+              MEOK&apos;s full gaming suite — including Riot Games and Steam API integration, Twitch co-host mode, and the PixiJS visual environment — launches in Phase 3, targeted for August 2026. Discord integration is already in beta. Join the gaming waitlist at{" "}
+              <a href="/gaming" className="text-[#d4af37] hover:underline font-bold">/gaming</a>{" "}
+              to get early access and shape what MEOK builds next.
+            </p>
           </div>
         </div>
       </section>

@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { MarketingNav } from "@/components/marketing-nav";
 import { MarketingFooter } from "@/components/marketing-footer";
 
 export const metadata: Metadata = {
@@ -101,7 +100,7 @@ const HARD_BLOCKS = [
 const FAQS = [
   {
     q: "Is the Maternal Covenant legally binding?",
-    a: "Yes. MEOK AI LTD is registered in England and Wales. The Covenant terms are incorporated into our terms of service and are legally enforceable. Beyond legal binding, the Covenant is also machine-enforced — the architectural constraints cannot be toggled off by staff.",
+    a: "Yes. MEOK AI LABS is registered in England and Wales. The Covenant terms are incorporated into our terms of service and are legally enforceable. Beyond legal binding, the Covenant is also machine-enforced — the architectural constraints cannot be toggled off by staff.",
   },
   {
     q: "What if MEOK makes a mistake?",
@@ -117,7 +116,7 @@ const FAQS = [
   },
   {
     q: "Can MEOK AI staff override the Covenant?",
-    a: "No. The Byzantine Council override requires a unanimous council vote plus cryptographic audit trail. No individual, including MEOK AI LTD directors, can disable the safety floor. This is a deliberate architectural constraint, not a governance promise.",
+    a: "No. The Byzantine Council override requires a unanimous council vote plus cryptographic audit trail. No individual, including MEOK AI LABS directors, can disable the safety floor. This is a deliberate architectural constraint, not a governance promise.",
   },
   {
     q: "What is the Byzantine Council?",
@@ -139,7 +138,7 @@ export default function MaternalCovenantPage() {
     url: "https://meok.ai/maternal-covenant",
     publisher: {
       "@type": "Organization",
-      name: "MEOK AI LTD",
+      name: "MEOK AI LABS",
       url: "https://meok.ai",
     },
   };
@@ -167,8 +166,6 @@ export default function MaternalCovenantPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
-
-      <MarketingNav />
 
       {/* ═══════════════════════════════════════
           1. HERO — deep dark with gold blobs
@@ -207,7 +204,7 @@ export default function MaternalCovenantPage() {
           </p>
 
           <p className="text-sm text-[#f5f0e8]/30">
-            MEOK AI LTD · Registered in England &amp; Wales · Machine-enforced, not merely published
+            MEOK AI LABS · Registered in England &amp; Wales · Machine-enforced, not merely published
           </p>
         </div>
       </section>
@@ -342,7 +339,7 @@ export default function MaternalCovenantPage() {
               No single point of failure. No single bias. Every AI interaction is voted on by a
               fault-tolerant council of 220 specialist agents — each drawing from a different
               civilizational tradition. A Maternal Covenant Override cannot be disabled by any system
-              operator, including MEOK AI LTD staff.
+              operator, including MEOK AI LABS staff.
             </p>
           </div>
 
@@ -402,7 +399,7 @@ export default function MaternalCovenantPage() {
                   The Covenant is enforced by MEOK&apos;s 220-node Byzantine fault-tolerant council.
                   A Maternal Covenant Override — automatic suspension of any configuration below care
                   alignment threshold 0.7 — cannot be disabled by any system operator, including
-                  MEOK AI LTD staff. The override requires unanimous council vote to lift, providing
+                  MEOK AI LABS staff. The override requires unanimous council vote to lift, providing
                   a cryptographic audit trail of any exception. All council votes are logged
                   immutably to PostgreSQL with full reasoning chains available on request.
                 </p>

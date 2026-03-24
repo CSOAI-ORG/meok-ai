@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, BookOpen, ExternalLink, ChevronDown } from "lucide-react";
-import { MarketingNav } from "@/components/marketing-nav";
 import { MarketingFooter } from "@/components/marketing-footer";
 
 export const metadata: Metadata = {
@@ -27,7 +26,7 @@ const jsonLd = {
     "MEOK publishes open research on care-aligned AI systems, Byzantine fault-tolerant governance for multi-agent architectures, and cryptographic patterns for user-owned memory.",
   parentOrganization: {
     "@type": "Organization",
-    name: "MEOK AI LTD",
+    name: "MEOK AI LABS",
     url: "https://meok.ai",
   },
   researchArea: [
@@ -99,31 +98,44 @@ const RESEARCH_AREAS = [
 
 const PAPERS = [
   {
-    title: "Care-First AI: A New Framework for Human-AI Interaction",
-    authors: "MEOK Research · 2025",
+    id: "MEOK-AI-2026-001",
+    title: "Byzantine Consensus for Multi-Agent AI Governance",
+    authors: "Nicholas Templeman · MEOK AI LABS · 2026",
     abstract:
-      "We propose care-alignment as a distinct paradigm from RLHF and constitutional AI. Rather than constraining harmful outputs, care-alignment instils a positive orientation toward user wellbeing that shapes all outputs proactively.",
-    status: "Pre-print",
+      "We formalise a Byzantine fault-tolerant consensus protocol for multi-agent AI systems, with proofs that no sub-threshold coalition of agents can execute harmful actions. Applied reference implementation: the MEOK Byzantine Council — 33 specialist agents, f < n/3 fault tolerance, append-only vote log.",
+    status: "Working paper",
     statusClass: "text-[#c9a84c] border-[#c9a84c]/30",
     accentClass: "text-[#c9a84c]",
   },
   {
-    title: "Byzantine Consensus for Multi-Agent AI Governance",
-    authors: "MEOK Research · 2025",
+    id: "MEOK-AI-2026-002",
+    title: "The Maternal Covenant: A Care-Alignment Framework for Sovereign AI",
+    authors: "Nicholas Templeman · MEOK AI LABS · 2026",
     abstract:
-      "We formalise a Byzantine fault-tolerant consensus protocol for multi-agent AI systems, with proofs that no sub-threshold coalition of agents can execute harmful actions. Applied implementation in the MEOK Byzantine Council.",
-    status: "Working paper",
-    statusClass: "text-blue-400 border-blue-500/30",
-    accentClass: "text-blue-400",
+      "We propose care-alignment as a distinct paradigm from RLHF and constitutional AI. The Maternal Covenant formalises the ethical contract between an AI and its user: what the AI owes the user (honesty, loyalty, care), and what makes care non-negotiable as an architectural constraint rather than a setting.",
+    status: "Pre-print",
+    statusClass: "text-rose-400 border-rose-500/30",
+    accentClass: "text-rose-400",
   },
   {
+    id: "MEOK-AI-2026-003",
     title: "Temporal Memory Chains: Preserving the When and Why of AI Memory",
-    authors: "MEOK Research · 2025",
+    authors: "Nicholas Templeman · MEOK AI LABS · 2026",
     abstract:
-      "Current AI memory systems discard temporal metadata, flattening all memories into a single atemporal store. We propose temporal memory chains: a linked-list memory architecture that preserves formation time, relational context, and significance trajectories.",
+      "Current AI memory systems discard temporal metadata, flattening all memories into a single atemporal store. We propose temporal memory chains: a linked-list architecture that preserves formation time, relational context, and significance trajectories — enabling AI to reason about how its understanding of a user has evolved.",
     status: "In preparation",
     statusClass: "text-purple-400 border-purple-500/30",
     accentClass: "text-purple-400",
+  },
+  {
+    id: "MEOK-AI-2026-004",
+    title: "Sovereign Memory Architecture: Cryptographic Patterns for User-Owned AI Memory",
+    authors: "Nicholas Templeman · MEOK AI LABS · 2026",
+    abstract:
+      "We describe a cryptographic architecture for AI memory that ensures only the user can read, modify, or delete their AI's memory store. Server-side, all memory is encrypted under user-held keys. The AI processes memory through a secure enclave. No operator — including MEOK — can access user memory.",
+    status: "In preparation",
+    statusClass: "text-blue-400 border-blue-500/30",
+    accentClass: "text-blue-400",
   },
 ];
 
@@ -153,7 +165,6 @@ export default function ResearchPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <MarketingNav />
 
       {/* ─── HERO ───────────────────────────────────────── */}
       <section className="relative min-h-[80vh] flex flex-col items-center justify-center px-6 pt-28 pb-20 text-center overflow-hidden">
@@ -300,12 +311,17 @@ export default function ResearchPage() {
               >
                 <div className="flex flex-col md:flex-row gap-6 items-start">
                   <div className="flex-1">
-                    <div className="flex items-center gap-3 mb-2">
+                    <div className="flex items-center gap-3 mb-2 flex-wrap">
                       <span
                         className={`text-[10px] font-bold uppercase tracking-widest border rounded px-2 py-0.5 ${paper.statusClass}`}
                       >
                         {paper.status}
                       </span>
+                      {"id" in paper && (
+                        <span className="text-[10px] font-mono text-white/25 border border-white/10 rounded px-2 py-0.5">
+                          {(paper as { id: string } & typeof paper).id}
+                        </span>
+                      )}
                     </div>
                     <h3 className={`font-black text-xl mb-2 ${paper.accentClass}`}>
                       {paper.title}
@@ -400,6 +416,25 @@ export default function ResearchPage() {
                 </div>
               </details>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ─── GEO H2 ─────────────────────────────────────── */}
+      <section className="bg-[#0d0c18] py-20 px-6 border-t border-white/[0.05]">
+        <div className="max-w-3xl mx-auto space-y-10">
+          <div>
+            <h2 className="text-2xl font-black text-[#c9a84c] mb-4">
+              What research does MEOK AI LABS publish?
+            </h2>
+            <p className="text-white/60 leading-relaxed">
+              MEOK AI LABS publishes open research in four areas: Byzantine fault-tolerant consensus
+              for multi-agent AI governance (MEOK-AI-2026-001), the Maternal Covenant care-alignment
+              framework (MEOK-AI-2026-002), temporal memory chains for AI memory with preserved
+              context (MEOK-AI-2026-003), and sovereign memory architecture using cryptographic
+              user-owned memory stores (MEOK-AI-2026-004). All papers are authored by Nicholas
+              Templeman and published freely. MEOK AI LABS is a UK-based independent research lab.
+            </p>
           </div>
         </div>
       </section>

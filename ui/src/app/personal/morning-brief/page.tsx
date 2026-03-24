@@ -15,7 +15,6 @@ import {
   MapPin,
   TrendingDown,
 } from "lucide-react";
-import { MarketingNav } from "@/components/marketing-nav";
 import { MarketingFooter } from "@/components/marketing-footer";
 import { useState } from "react";
 
@@ -101,7 +100,7 @@ const jsonLd = {
   description:
     "MEOK's Morning Brief reads your calendar, emails, tasks, and memory overnight — delivered before you wake up.",
   url: "https://meok.ai/personal/morning-brief",
-  provider: { "@type": "Organization", name: "MEOK AI LTD", url: "https://meok.ai" },
+  provider: { "@type": "Organization", name: "MEOK AI LABS", url: "https://meok.ai" },
 };
 
 /* ─── FAQ ITEM ─────────────────────────────────────────── */
@@ -293,7 +292,6 @@ export default function MorningBriefPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <MarketingNav />
 
       {/* ─── HERO ─────────────────────────────────────────── */}
       <section className="relative pt-32 pb-24 px-6 text-center overflow-hidden">

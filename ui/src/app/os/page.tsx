@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, Lock, Zap, Link2, Crown, Brain, Heart } from "lucide-react";
-import { MarketingNav } from "@/components/marketing-nav";
 import { MarketingFooter } from "@/components/marketing-footer";
 
 export const metadata: Metadata = {
@@ -152,7 +151,7 @@ const osJsonLd = {
       url: "https://meok.ai/os",
       creator: {
         "@type": "Organization",
-        name: "MEOK AI LTD",
+        name: "MEOK AI LABS",
         url: "https://meok.ai",
       },
       featureList: [
@@ -222,7 +221,6 @@ export default function OsPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(osJsonLd) }}
       />
-      <MarketingNav activePage="the os" />
 
       {/* ─── HERO ─────────────────────────────────────────── */}
       <section className="relative pt-32 pb-24 px-6 text-center overflow-hidden bg-[#0d0c18]">

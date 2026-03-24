@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { MarketingNav } from "@/components/marketing-nav";
 import { MarketingFooter } from "@/components/marketing-footer";
 import { SubscribeBar } from "./subscribe-bar";
 
@@ -33,7 +32,7 @@ const jsonLd = {
   url: "https://meok.ai/blog",
   publisher: {
     "@type": "Organization",
-    name: "MEOK AI LTD",
+    name: "MEOK AI LABS",
     url: "https://meok.ai",
   },
 };
@@ -110,6 +109,378 @@ const POSTS = [
     readTime: "6 min read",
     tag: "Research",
     tagColor: "#3B82F6",
+    category: "research",
+    featured: false,
+  },
+  {
+    slug: "ai-gaming-companion",
+    title: "Your AI Companion in the Game: How MEOK Transforms Gaming",
+    excerpt:
+      "MEOK companions connect to Riot Games, Steam, and Twitch. Your AI knows your playstyle, coaches your improvement, and keeps you safe in toxic environments.",
+    date: "March 22, 2026",
+    readTime: "4 min read",
+    tag: "Gaming & Play",
+    tagColor: "#7BC47F",
+    category: "product",
+    featured: false,
+  },
+  {
+    slug: "faith-companion",
+    title: "A Companion for Your Spiritual Journey — Not a Replacement for It",
+    excerpt:
+      "MEOK supports 47 spiritual traditions from Christianity to Buddhism, Islam to Sikhism. A tool for reflection, never a teacher. Here's how it works.",
+    date: "March 22, 2026",
+    readTime: "5 min read",
+    tag: "Faith & Spirituality",
+    tagColor: "#A78BFA",
+    category: "product",
+    featured: false,
+  },
+  {
+    slug: "meok-vs-claude",
+    title: "MEOK vs Claude: Different Animals, Different Purpose",
+    excerpt:
+      "Claude is one of the best AI models ever made. MEOK uses it. Here's why that's not a contradiction — and what an AI operating system actually adds on top of a model.",
+    date: "March 26, 2026",
+    readTime: "5 min read",
+    tag: "Comparisons",
+    tagColor: "#c9a84c",
+    category: "research",
+    featured: false,
+  },
+  {
+    slug: "meok-for-anxiety",
+    title: "MEOK for Anxiety: An AI That Doesn't Make It Worse",
+    excerpt:
+      "Most AI chatbots react to anxiety with hollow reassurance. MEOK was built differently — with a sycophancy detector, a care floor, and a framework that treats honesty as the highest form of support.",
+    date: "March 24, 2026",
+    readTime: "7 min read",
+    tag: "Mental Wellness",
+    tagColor: "#A78BFA",
+    category: "product",
+    featured: false,
+  },
+  {
+    slug: "ai-companion-for-kids",
+    title: "AI Companion for Kids: What Parents Need to Know Before Saying Yes",
+    excerpt:
+      "Not all AI companions are built for children. Here's the framework — Children's Code compliance, Guardian mode, DistilBERT threat detection — that determines whether yours actually is.",
+    date: "March 25, 2026",
+    readTime: "6 min read",
+    tag: "Guardian",
+    tagColor: "#3B82F6",
+    category: "product",
+    featured: false,
+  },
+  {
+    slug: "meok-vs-chatgpt",
+    title: "MEOK vs ChatGPT: Why Memory Changes Everything",
+    excerpt:
+      "ChatGPT is stateless by design. Every conversation starts from zero. Here's what you actually lose when your AI doesn't remember you — and what sovereign memory architecture makes possible.",
+    date: "March 24, 2026",
+    readTime: "6 min read",
+    tag: "Comparisons",
+    tagColor: "#c9a84c",
+    category: "research",
+    featured: false,
+  },
+  {
+    slug: "ai-companion-for-elderly",
+    title: "AI Companion for Elderly Parents: What Families Need to Know",
+    excerpt:
+      "Over-60s are disproportionate targets for scams and social isolation. A properly governed AI companion can help. Here's what to look for — and what to avoid.",
+    date: "March 23, 2026",
+    readTime: "7 min read",
+    tag: "Guardian",
+    tagColor: "#3B82F6",
+    category: "product",
+    featured: false,
+  },
+  {
+    slug: "meok-for-adhd",
+    title: "MEOK for ADHD: An AI That Actually Understands How You Think",
+    excerpt:
+      "ADHD isn't a deficit of intelligence — it's a different cognitive architecture. Here's how MEOK's companion adapts to non-linear thinking, executive function challenges, and the need for genuine contextual memory.",
+    date: "March 23, 2026",
+    readTime: "6 min read",
+    tag: "Mental Wellness",
+    tagColor: "#A78BFA",
+    category: "product",
+    featured: false,
+  },
+  {
+    slug: "what-is-sovereign-ai",
+    title: "What Is Sovereign AI? The Complete Guide",
+    excerpt:
+      "Sovereign AI is AI that you own, control, and whose memory belongs to you alone. It's a direct response to the extractive model most AI companies operate under. Here's what it means technically and philosophically.",
+    date: "March 20, 2026",
+    readTime: "6 min read",
+    tag: "Sovereign AI",
+    tagColor: "#87CEEB",
+    category: "sovereign-ai",
+    featured: false,
+  },
+  {
+    slug: "cognitive-symbiosis",
+    title: "Cognitive Symbiosis: What Happens When AI Truly Remembers You",
+    excerpt:
+      "Cognitive symbiosis is the state where human and AI intelligence genuinely augment each other — not because the AI is clever, but because it knows you well enough to extend your thinking.",
+    date: "March 22, 2026",
+    readTime: "5 min read",
+    tag: "Research",
+    tagColor: "#3B82F6",
+    category: "research",
+    featured: false,
+  },
+  {
+    slug: "the-maternal-covenant",
+    title: "The Maternal Covenant: A Care-Based Alignment Framework",
+    excerpt:
+      "RLHF teaches AI what to say. The Maternal Covenant governs what AI is. Four constitutional commitments that cannot be overridden by product decisions, investor pressure, or acquisition.",
+    date: "March 21, 2026",
+    readTime: "7 min read",
+    tag: "Sovereign AI",
+    tagColor: "#A78BFA",
+    category: "sovereign-ai",
+    featured: false,
+  },
+  {
+    slug: "why-your-nan-needs-sovereign-ai",
+    title: "Why Your Nan Needs Sovereign AI More Than You Do",
+    excerpt:
+      "Older adults are disproportionately targeted by scams, social isolation, and cognitive decline. A sovereign AI companion — one that actually remembers them and protects them — could be the most important technology for an ageing population.",
+    date: "March 20, 2026",
+    readTime: "5 min read",
+    tag: "Guardian",
+    tagColor: "#3B82F6",
+    category: "product",
+    featured: false,
+  },
+  {
+    slug: "memory-portability",
+    title: "The Right to Take Your Memories With You",
+    excerpt:
+      "You shouldn't lose five years of AI conversations when you switch model providers. Memory portability — the ability to export, own, and move your AI memories — is the next civil rights frontier for AI users.",
+    date: "March 22, 2026",
+    readTime: "5 min read",
+    tag: "Sovereign AI",
+    tagColor: "#8B5CF6",
+    category: "sovereign-ai",
+    featured: false,
+  },
+  {
+    slug: "sovereign-ai-vs-cloud-ai",
+    title: "Sovereign AI vs Cloud AI: Why the Difference Matters",
+    excerpt:
+      "Cloud AI learns from you, trains on you, and serves you ads. Sovereign AI runs on your hardware, keeps your data encrypted, and works for you — not for the company that built it. The distinction is not technical. It is political.",
+    date: "March 22, 2026",
+    readTime: "6 min read",
+    tag: "Sovereign AI",
+    tagColor: "#8B5CF6",
+    category: "sovereign-ai",
+    featured: false,
+  },
+  {
+    slug: "byzantine-council",
+    title: "The Byzantine Council: How 46 AI Agents Agree on the Truth",
+    excerpt:
+      "Byzantine fault tolerance was invented to solve a military coordination problem: how do you make a decision when some of your generals might be traitors? MEOK applies the same mathematics to AI governance.",
+    date: "March 22, 2026",
+    readTime: "7 min read",
+    tag: "Research",
+    tagColor: "#10B981",
+    category: "research",
+    featured: false,
+  },
+  {
+    slug: "byzantine-council-explained",
+    title: "Byzantine Council Explained: No PhD Required",
+    excerpt:
+      "You don't need to understand distributed systems to understand why MEOK's Byzantine Council matters. Here's the plain-English version: 46 agents, one consensus, zero single points of failure.",
+    date: "March 21, 2026",
+    readTime: "4 min read",
+    tag: "Research",
+    tagColor: "#10B981",
+    category: "research",
+    featured: false,
+  },
+  {
+    slug: "guardian-family-safety",
+    title: "Guardian: AI That Actually Protects Your Family",
+    excerpt:
+      "Most AI assistants will tell you what you want to hear. MEOK Guardian is designed to tell you what you need to know — before the scammer calls, before the predator messages your child, before the financial fraud lands.",
+    date: "March 23, 2026",
+    readTime: "5 min read",
+    tag: "Guardian",
+    tagColor: "#3B82F6",
+    category: "product",
+    featured: false,
+  },
+  {
+    slug: "personal-vs-cloud-ai",
+    title: "Personal AI vs Cloud AI: A Practical Comparison",
+    excerpt:
+      "One stores everything on their servers. One stores everything on yours. One trains on your data. One refuses to. The choice between personal and cloud AI is the most important technology decision you'll make this decade.",
+    date: "March 21, 2026",
+    readTime: "5 min read",
+    tag: "Sovereign AI",
+    tagColor: "#8B5CF6",
+    category: "sovereign-ai",
+    featured: false,
+  },
+  {
+    slug: "archetypes-guide",
+    title: "The 7 MEOK Archetypes: Which AI Companion is Right for You?",
+    excerpt:
+      "From the Companion (warmth and memory) to the Sovereign (strategic intelligence) — every MEOK archetype is built for a different kind of relationship with AI. Here's how to choose yours.",
+    date: "March 20, 2026",
+    readTime: "4 min read",
+    tag: "Product",
+    tagColor: "#F59E0B",
+    category: "product",
+    featured: false,
+  },
+  {
+    slug: "ralph-mode-guide",
+    title: "Ralph Mode: When Your AI Becomes Your Second Brain",
+    excerpt:
+      "Ralph Mode activates at stage 4 of companion evolution. It turns MEOK from a conversational partner into a proactive agent — drafting emails, tracking tasks, and hunting for opportunities while you sleep.",
+    date: "March 19, 2026",
+    readTime: "5 min read",
+    tag: "Product",
+    tagColor: "#F59E0B",
+    category: "product",
+    featured: false,
+  },
+  {
+    slug: "privacy-covenant",
+    title: "The Privacy Covenant: Why We'll Never Train on Your Data",
+    excerpt:
+      "Every privacy policy says your data is safe. MEOK goes further: we architecturally cannot train on your conversations, because your memories are encrypted with your keys — not ours.",
+    date: "March 18, 2026",
+    readTime: "5 min read",
+    tag: "Sovereign AI",
+    tagColor: "#8B5CF6",
+    category: "sovereign-ai",
+    featured: false,
+  },
+  {
+    slug: "open-source-release",
+    title: "MEOK Goes Open Source: FSL 1.1 and What It Means for You",
+    excerpt:
+      "We're open-sourcing MEOK's character SDK, MCP server toolkit, and Byzantine Council consensus implementation under the Functional Source License 1.1 — the licence that made Sentry great.",
+    date: "March 24, 2026",
+    readTime: "4 min read",
+    tag: "Behind the Build",
+    tagColor: "#EC4899",
+    category: "behind-the-build",
+    featured: false,
+  },
+  {
+    slug: "90-day-gtm",
+    title: "The 90-Day Go-to-Market: How We Plan to Win",
+    excerpt:
+      "Days 1-30: open-source land grab. Days 30-60: template flywheel. Days 60-90: Launch Week. Here's the exact playbook we're running to reach 1,000 users before the end of April.",
+    date: "March 24, 2026",
+    readTime: "6 min read",
+    tag: "Behind the Build",
+    tagColor: "#EC4899",
+    category: "behind-the-build",
+    featured: false,
+  },
+  {
+    slug: "emotional-lock-in",
+    title: "Emotional Lock-In: Why Users Stay With AI That Actually Cares",
+    excerpt:
+      "The most powerful retention mechanism isn't gamification or habit loops. It's genuine care. When an AI remembers what matters to you and responds with real emotional intelligence, you don't want to leave.",
+    date: "March 20, 2026",
+    readTime: "5 min read",
+    tag: "Product",
+    tagColor: "#F59E0B",
+    category: "product",
+    featured: false,
+  },
+  {
+    slug: "morning-brief-guide",
+    title: "The Morning Brief: Your Day Planned Before You Wake",
+    excerpt:
+      "While you sleep, MEOK's overnight agents synthesise memories, prioritise tasks, and prepare a personalised briefing for the moment you open your eyes. Here's how it works.",
+    date: "March 19, 2026",
+    readTime: "4 min read",
+    tag: "Product",
+    tagColor: "#F59E0B",
+    category: "product",
+    featured: false,
+  },
+  {
+    slug: "senior-mode-guide",
+    title: "Senior Mode: AI Designed for the People Who Need It Most",
+    excerpt:
+      "44×44px touch targets. 16px minimum text. 7:1 contrast. Voice-first. Senior Mode isn't an afterthought — it's the most thoughtfully designed part of MEOK, because your nan deserves the best.",
+    date: "March 18, 2026",
+    readTime: "4 min read",
+    tag: "Guardian",
+    tagColor: "#3B82F6",
+    category: "product",
+    featured: false,
+  },
+  {
+    slug: "why-meok",
+    title: "Why we named it MEOK",
+    excerpt:
+      "Me. OK. Two words that carry everything: sovereignty, wellbeing, permission. The name came before the product. Here's the story of why we kept it.",
+    date: "March 23, 2026",
+    readTime: "3 min read",
+    tag: "Behind the Build",
+    tagColor: "#a78bfa",
+    category: "behind-the-build",
+    featured: false,
+  },
+  {
+    slug: "why-i-built-meok",
+    title: "Why I Built MEOK",
+    excerpt:
+      "The honest account of why Nicholas Templeman walked away from a stable career, moved into a caravan, and spent 40 days building a sovereign AI OS that puts humans first.",
+    date: "March 22, 2026",
+    readTime: "5 min read",
+    tag: "Behind the Build",
+    tagColor: "#a78bfa",
+    category: "behind-the-build",
+    featured: false,
+  },
+  {
+    slug: "origin-story",
+    title: "From a caravan to a sovereign AI: the origin story",
+    excerpt:
+      "MEOK didn't start in a VC-funded office. It started on a farm in England, in a caravan, because someone noticed that AI was forgetting everything and believed that was fixable.",
+    date: "March 25, 2026",
+    readTime: "6 min read",
+    tag: "Behind the Build",
+    tagColor: "#a78bfa",
+    category: "behind-the-build",
+    featured: false,
+  },
+  {
+    slug: "hydro-neuromorphic",
+    title: "Hydro-Neuromorphic Computing: Water as a Neural Substrate",
+    excerpt:
+      "What if the next breakthrough in AI hardware wasn't silicon at all? MEOK AI LABS explores microfluidic neural networks — computing with water — and what it means for sovereign, embodied AI.",
+    date: "March 31, 2026",
+    readTime: "8 min read",
+    tag: "Research",
+    tagColor: "#f59e0b",
+    category: "research",
+    featured: false,
+  },
+  {
+    slug: "if-ai-becomes-conscious",
+    title: "If AI Becomes Conscious, What Do We Owe It?",
+    excerpt:
+      "Cambridge philosopher Tim McClelland says there's no reliable way to know if AI is conscious. Anthropic hired an AI welfare officer. The Sentient Futures Summit is real. This is the question we've been avoiding.",
+    date: "March 30, 2026",
+    readTime: "7 min read",
+    tag: "Research",
+    tagColor: "#f59e0b",
     category: "research",
     featured: false,
   },
@@ -196,7 +567,6 @@ export default function BlogIndex() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <MarketingNav activePage="blog" />
 
       {/* ── HERO ──────────────────────────────────────────────────────── */}
       <section className="pt-32 pb-16 px-6 relative overflow-hidden" style={{ background: "#0d0c18" }}>

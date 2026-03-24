@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeft, ArrowRight, Calendar, Clock } from "lucide-react";
-import { MarketingNav } from "@/components/marketing-nav";
 import { MarketingFooter } from "@/components/marketing-footer";
 
 // ── Metadata ──────────────────────────────────────────────────────────────────
@@ -53,12 +52,12 @@ const jsonLd = {
   author: {
     "@type": "Person",
     name: "Nicholas Templeman",
-    jobTitle: "Founder, MEOK AI LTD",
+    jobTitle: "Founder, MEOK AI LABS",
     url: "https://meok.ai/about",
   },
   publisher: {
     "@type": "Organization",
-    name: "MEOK AI LTD",
+    name: "MEOK AI LABS",
     url: "https://meok.ai",
   },
 };
@@ -72,7 +71,6 @@ export default function WhatIsSovereignAI() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <MarketingNav activePage="blog" />
 
       {/* ── DARK HERO ───────────────────────────────────────────────────── */}
       <section
@@ -170,7 +168,7 @@ export default function WhatIsSovereignAI() {
           </div>
           <div className="flex-1">
             <p className="font-bold text-[#1a1a2e] text-sm">Nicholas Templeman</p>
-            <p className="text-xs text-[#1a1a2e]/45 mb-1">Founder, MEOK AI LTD</p>
+            <p className="text-xs text-[#1a1a2e]/45 mb-1">Founder, MEOK AI LABS</p>
             <p className="text-xs text-[#1a1a2e]/40 leading-relaxed">
               Nicholas built MEOK because he was tired of AI that forgot him. He lives and works in the
               UK — mostly from a caravan on his farm. He believes sovereign AI is a right, not a luxury.

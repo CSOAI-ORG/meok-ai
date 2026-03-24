@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowRight, Clock, Calendar, Tag } from "lucide-react";
-import { MarketingNav } from "@/components/marketing-nav";
 import { MarketingFooter } from "@/components/marketing-footer";
 
 // ── Types ─────────────────────────────────────────────────────────────────────
@@ -43,7 +42,7 @@ const POSTS: PostData[] = [
     tag: "Sovereign AI",
     tagColor: "#87CEEB",
     author: "Nicholas Templeman",
-    authorTitle: "Founder, MEOK AI LTD",
+    authorTitle: "Founder, MEOK AI LABS",
     body: (
       <div className={proseClass}>
         <p>
@@ -119,7 +118,7 @@ const POSTS: PostData[] = [
     tag: "Founder Story",
     tagColor: "#c9a84c",
     author: "Nicholas Templeman",
-    authorTitle: "Founder, MEOK AI LTD",
+    authorTitle: "Founder, MEOK AI LABS",
     body: (
       <div className={proseClass}>
         <p>
@@ -195,7 +194,7 @@ const POSTS: PostData[] = [
     tag: "Research",
     tagColor: "#3B82F6",
     author: "Nicholas Templeman",
-    authorTitle: "Founder, MEOK AI LTD",
+    authorTitle: "Founder, MEOK AI LABS",
     body: (
       <div className={proseClass}>
         <p>
@@ -263,7 +262,7 @@ const POSTS: PostData[] = [
     tag: "Sovereign AI",
     tagColor: "#A78BFA",
     author: "Nicholas Templeman",
-    authorTitle: "Founder, MEOK AI LTD",
+    authorTitle: "Founder, MEOK AI LABS",
     body: (
       <div className={proseClass}>
         <p>
@@ -340,7 +339,7 @@ const POSTS: PostData[] = [
     tag: "Product",
     tagColor: "#7BC47F",
     author: "Nicholas Templeman",
-    authorTitle: "Founder, MEOK AI LTD",
+    authorTitle: "Founder, MEOK AI LABS",
     body: (
       <div className={proseClass}>
         <p>
@@ -400,7 +399,7 @@ const POSTS: PostData[] = [
     tag: "Research",
     tagColor: "#3B82F6",
     author: "Nicholas Templeman",
-    authorTitle: "Founder, MEOK AI LTD",
+    authorTitle: "Founder, MEOK AI LABS",
     body: (
       <div className={proseClass}>
         <p>
@@ -573,7 +572,7 @@ export default async function BlogPost({ params }: Props) {
     },
     publisher: {
       "@type": "Organization",
-      name: "MEOK AI LTD",
+      name: "MEOK AI LABS",
       url: "https://meok.ai",
       logo: {
         "@type": "ImageObject",
@@ -594,7 +593,6 @@ export default async function BlogPost({ params }: Props) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <MarketingNav activePage="blog" />
 
       {/* ── DARK HERO ───────────────────────────────────────────────────── */}
       <section

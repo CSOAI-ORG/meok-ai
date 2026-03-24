@@ -11,7 +11,7 @@ const PUBLIC_PAGES = [
   '/pricing',
   '/faq',
   '/waitlist',
-  '/hatch',
+  '/birth',
   '/register',
   '/login',
   '/characters',
@@ -24,6 +24,7 @@ const PUBLIC_PAGES = [
   '/characters/trickster',
   '/characters/mystic',
   '/characters/pioneer',
+  '/characters/spiritual',
   '/problems',
   '/problems/ai-amnesia',
   '/problems/data-ownership',
@@ -106,7 +107,7 @@ test.describe('No /register CTAs on conversion pages', () => {
       for (const link of regLinks) {
         const text = (link.text || '').toLowerCase()
         // CTAs like "Start free", "Get started", "Hatch" etc must NOT go to /register
-        const isCTA = text.includes('start') || text.includes('get') || text.includes('hatch') ||
+        const isCTA = text.includes('start') || text.includes('get') || text.includes('birth') ||
                       text.includes('free') || text.includes('join') || text.includes('try')
         expect(isCTA, `Found CTA "${link.text}" pointing to /register on ${path}`).toBeFalsy()
       }
@@ -145,7 +146,7 @@ test.describe('Sitemap and robots', () => {
     const text = await resp.text()
     expect(text).toContain('/pricing')
     expect(text).toContain('/characters')
-    expect(text).toContain('/hatch')
+    expect(text).toContain('/birth')
     expect(text).toContain('/privacy')
   })
 

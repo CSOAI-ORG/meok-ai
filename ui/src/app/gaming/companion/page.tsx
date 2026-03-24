@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, Brain, Mic, Heart, Zap, TrendingUp, Star } from "lucide-react";
-import { MarketingNav } from "@/components/marketing-nav";
 import { MarketingFooter } from "@/components/marketing-footer";
 
 export const metadata: Metadata = {
@@ -64,7 +63,6 @@ const FEATURES = [
 export default function CompanionPage() {
   return (
     <div className="min-h-screen bg-[#0a0a0f] text-white overflow-x-hidden">
-      <MarketingNav />
 
       {/* ═══════════════════════════════════════════════
           HERO

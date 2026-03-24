@@ -13,7 +13,6 @@ import {
   Keyboard,
   Zap,
 } from "lucide-react";
-import { MarketingNav } from "@/components/marketing-nav";
 import { MarketingFooter } from "@/components/marketing-footer";
 
 // ── JSON-LD ───────────────────────────────────────────────────────────────────
@@ -211,7 +210,6 @@ export default function TerminalPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <MarketingNav />
 
       {/* ── HERO ────────────────────────────────────────────────────────── */}
       <section className="relative pt-32 pb-16 px-6 overflow-hidden">

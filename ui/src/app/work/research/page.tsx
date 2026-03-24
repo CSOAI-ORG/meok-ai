@@ -10,7 +10,6 @@ import {
   ChevronDown,
   Database,
 } from "lucide-react";
-import { MarketingNav } from "@/components/marketing-nav";
 import { MarketingFooter } from "@/components/marketing-footer";
 import { useState } from "react";
 
@@ -98,7 +97,7 @@ const jsonLd = {
   description:
     "Web research with memory, citation tracking, knowledge synthesis, and topic mapping. Sovereign.",
   url: "https://meok.ai/work/research",
-  provider: { "@type": "Organization", name: "MEOK AI LTD", url: "https://meok.ai" },
+  provider: { "@type": "Organization", name: "MEOK AI LABS", url: "https://meok.ai" },
 };
 
 /* ─── RESEARCH SESSION WALKTHROUGH ─────────────────────── */
@@ -154,7 +153,6 @@ export default function ResearchPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <MarketingNav activePage="work" />
 
       {/* ─── HERO ─────────────────────────────────────────── */}
       <section className="relative pt-32 pb-24 px-6 text-center overflow-hidden">

@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { ArrowRight, Star, Flame, Eye, ChevronDown, ChevronUp } from "lucide-react";
-import { MarketingNav } from "@/components/marketing-nav";
 import { MarketingFooter } from "@/components/marketing-footer";
 import { useState } from "react";
 
@@ -265,7 +264,6 @@ export default function BirthCeremonyPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <MarketingNav />
 
       {/* ─── HERO ───────────────────────────────────────── */}
       <section className="relative min-h-[90vh] flex flex-col items-center justify-center px-6 pt-28 pb-20 text-center overflow-hidden">

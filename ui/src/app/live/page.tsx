@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, Youtube, Twitch, Radio, CalendarDays, Code2 } from "lucide-react";
-import { MarketingNav } from "@/components/marketing-nav";
+import { ArrowRight, Youtube, Twitch, Radio, CalendarDays, Code2, Brain, Sparkles, Activity } from "lucide-react";
 import { MarketingFooter } from "@/components/marketing-footer";
 
 export const metadata: Metadata = {
@@ -64,7 +63,6 @@ const daysUntilEaster = Math.ceil(
 export default function LivePage() {
   return (
     <div className="min-h-screen bg-[#0d0c18] text-white">
-      <MarketingNav />
 
       {/* ─── HERO ──────────────────────────────────────────────── */}
       <section className="relative pt-36 pb-24 px-6 text-center overflow-hidden">
@@ -116,6 +114,101 @@ export default function LivePage() {
               <Twitch className="w-4 h-4 text-purple-400" />
               Follow on Twitch
             </a>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── SEE MEOK THINK ────────────────────────────────────── */}
+      <section className="py-20 px-6">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-12">
+            <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#c9a84c]/70 mb-3">
+              Sovereign Display — real-time transparency
+            </p>
+            <h2
+              className="font-black text-white text-3xl sm:text-4xl mb-4"
+              style={{ fontFamily: "var(--font-dm-sans)" }}
+            >
+              See MEOK think{" "}
+              <span className="text-[#c9a84c]">in real time.</span>
+            </h2>
+            <p className="text-white/50 max-w-xl mx-auto leading-relaxed">
+              Every MEOK session shows you exactly what your AI is doing — which memory it recalled,
+              how it scored its own care, and why it chose this response over another.
+              No black box. Full thought transparency.
+            </p>
+          </div>
+
+          {/* Mock Sovereign Display panel */}
+          <div className="rounded-2xl bg-[#13122a] border border-[#c9a84c]/20 overflow-hidden shadow-2xl max-w-2xl mx-auto">
+            {/* Panel header */}
+            <div className="flex items-center justify-between px-5 py-3 border-b border-white/[0.06] bg-white/[0.02]">
+              <div className="flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-[#c9a84c] animate-pulse" />
+                <span className="text-xs font-bold tracking-widest uppercase text-[#c9a84c]">Sovereign Display</span>
+              </div>
+              <span className="text-[10px] font-mono text-white/25">claude-sonnet-3-5</span>
+            </div>
+
+            {/* Panel body */}
+            <div className="p-6 space-y-4">
+              {/* Thinking row */}
+              <div className="flex items-start gap-3 rounded-xl bg-white/[0.03] border border-white/[0.06] p-4">
+                <Brain className="w-4 h-4 text-[#c9a84c] mt-0.5 flex-shrink-0" />
+                <div>
+                  <p className="text-[10px] font-bold tracking-widest uppercase text-white/30 mb-1">Thinking</p>
+                  <p className="text-sm text-white/70 leading-relaxed">
+                    Retrieving your preference for morning meetings...
+                  </p>
+                </div>
+              </div>
+
+              {/* Memory hit row */}
+              <div className="flex items-start gap-3 rounded-xl bg-[#c9a84c]/5 border border-[#c9a84c]/20 p-4">
+                <Sparkles className="w-4 h-4 text-[#c9a84c] mt-0.5 flex-shrink-0" />
+                <div>
+                  <p className="text-[10px] font-bold tracking-widest uppercase text-[#c9a84c]/60 mb-1">Memory hit</p>
+                  <p className="text-sm text-white/80 leading-relaxed">
+                    Remembered: You prefer 9am starts — noted 6 sessions ago.
+                  </p>
+                </div>
+              </div>
+
+              {/* Care score row */}
+              <div className="flex items-center justify-between rounded-xl bg-white/[0.03] border border-white/[0.06] p-4">
+                <div className="flex items-center gap-3">
+                  <Activity className="w-4 h-4 text-emerald-400 flex-shrink-0" />
+                  <div>
+                    <p className="text-[10px] font-bold tracking-widest uppercase text-white/30 mb-0.5">Care score</p>
+                    <p className="text-sm text-white/60">Response aligns with your stated values</p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="font-black text-2xl text-emerald-400" style={{ fontFamily: "var(--font-dm-sans)" }}>84</span>
+                  <div className="flex flex-col items-center">
+                    <span className="text-emerald-400 text-xs">↑</span>
+                    <span className="text-white/25 text-[10px]">/100</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Panel footer */}
+            <div className="px-6 py-3 border-t border-white/[0.06] bg-white/[0.01] flex items-center justify-between">
+              <span className="text-[10px] text-white/25 font-mono">Model: Claude Sonnet 3.5</span>
+              <span className="text-[10px] text-white/25 font-mono">Full live companion chat — April 2026</span>
+            </div>
+          </div>
+
+          <div className="text-center mt-8">
+            <Link
+              href="/birth"
+              className="group inline-flex items-center gap-2 px-7 py-3 rounded-full font-bold text-[#0d0c18] bg-[#c9a84c] hover:bg-[#d4b463] transition-all text-sm"
+            >
+              Watch a live session
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </Link>
+            <p className="text-white/30 text-xs mt-4">Full live companion chat coming April 2026</p>
           </div>
         </div>
       </section>

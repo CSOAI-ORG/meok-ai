@@ -4,6 +4,15 @@ import { withSentryConfig } from "@sentry/nextjs";
 const BACKEND = process.env.MEOK_BACKEND_URL || "http://198.53.64.194:40646";
 
 const nextConfig: NextConfig = {
+  async redirects() {
+    return [
+      { source: '/product/companions',      destination: '/characters', permanent: true },
+      { source: '/product/ralph',           destination: '/work',       permanent: true },
+      { source: '/product/family-guardian', destination: '/guardian',   permanent: true },
+      { source: '/product/characters',      destination: '/characters', permanent: true },
+    ];
+  },
+
   async rewrites() {
     return [
       { source: "/api/:path*",  destination: `${BACKEND}/api/:path*` },

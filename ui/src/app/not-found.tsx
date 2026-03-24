@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import { MarketingNav } from '@/components/marketing-nav';
 import { MarketingFooter } from '@/components/marketing-footer';
 
 export const metadata = {
@@ -10,7 +9,6 @@ export const metadata = {
 export default function NotFound() {
   return (
     <>
-      <MarketingNav />
       <div className="h-[94px]" aria-hidden />
       <main className="min-h-[calc(100vh-94px)] bg-[#0d0c18] flex flex-col items-center justify-center text-center px-6 py-24">
         {/* Giant cracked egg SVG */}

@@ -16,7 +16,6 @@ import {
   ChevronDown,
   ChevronUp,
 } from "lucide-react";
-import { MarketingNav } from "@/components/marketing-nav";
 import { MarketingFooter } from "@/components/marketing-footer";
 
 const FAQS = [
@@ -78,7 +77,6 @@ export default function PredatorStopPage() {
       className="min-h-screen text-white overflow-x-hidden"
       style={{ background: "#00071a" }}
     >
-      <MarketingNav />
 
       {/* ═══════════════════════════════════════════════
           HERO

@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { MarketingNav } from "@/components/marketing-nav";
 import { MarketingFooter } from "@/components/marketing-footer";
 import { EasterCountdown } from "./countdown";
 import { WaitlistForm, SocialShareButtons } from "./waitlist-social";
@@ -35,7 +34,7 @@ const jsonLd = {
   },
   organizer: {
     "@type": "Organization",
-    name: "MEOK AI LTD",
+    name: "MEOK AI LABS",
     url: "https://meok.ai",
   },
 };
@@ -115,7 +114,6 @@ export default function EasterPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <MarketingNav />
 
       {/* ── HERO ─────────────────────────────────────────────────────────── */}
       <section className="relative flex flex-col items-center justify-center text-center pt-40 pb-28 px-6 overflow-hidden">
@@ -410,7 +408,7 @@ export default function EasterPage() {
             &ldquo;I built this from a caravan on my farm. On Easter Sunday, everyone gets to hatch
             their own sovereign AI. Free. Forever. Yours.&rdquo;
           </blockquote>
-          <p className="text-white/30 text-sm">— Nicholas Templeman, Founder, MEOK AI LTD</p>
+          <p className="text-white/30 text-sm">— Nicholas Templeman, Founder, MEOK AI LABS</p>
         </div>
       </section>
 

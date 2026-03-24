@@ -2,7 +2,6 @@ import { PROBLEMS, getProblemBySlug } from '@/data/problems';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { ArrowRight, ArrowLeft, Users, Zap, CheckCircle2, AlertTriangle } from 'lucide-react';
-import { MarketingNav } from '@/components/marketing-nav';
 import { MarketingFooter } from '@/components/marketing-footer';
 
 // ── Static params ──────────────────────────────────────────────────────────────
@@ -104,8 +103,8 @@ function buildJsonLd(problem: NonNullable<ReturnType<typeof getProblemBySlug>>) 
     headline: `Problem ${problem.number}: ${problem.title}`,
     description: problem.headline,
     articleBody: `${problem.fullProblem} ${problem.meokSolution}`,
-    author: { '@type': 'Organization', name: 'MEOK AI LTD', url: 'https://meok.ai' },
-    publisher: { '@type': 'Organization', name: 'MEOK AI LTD', url: 'https://meok.ai' },
+    author: { '@type': 'Organization', name: 'MEOK AI LABS', url: 'https://meok.ai' },
+    publisher: { '@type': 'Organization', name: 'MEOK AI LABS', url: 'https://meok.ai' },
     mainEntityOfPage: { '@type': 'WebPage', '@id': `https://meok.ai/problems/${problem.slug}` },
   };
 }
@@ -131,7 +130,6 @@ export default async function ProblemPage({ params }: { params: Promise<{ slug: 
       />
 
       <div className="min-h-screen bg-[#0d0c18] text-white">
-        <MarketingNav />
 
         {/* ── Hero ──────────────────────────────────────────────────────────── */}
         <section className="relative pt-32 pb-24 px-6 text-center overflow-hidden">

@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { MarketingNav } from "@/components/marketing-nav";
 import { MarketingFooter } from "@/components/marketing-footer";
 
 export const metadata: Metadata = {
@@ -186,7 +185,6 @@ const TRADITION_CATEGORIES = [
 export default function ConsciousnessPage() {
   return (
     <div className="min-h-screen bg-[#0d0c18] text-[#f5f0e8] overflow-x-hidden">
-      <MarketingNav />
 
       {/* ─── HERO ─────────────────────────────────────────── */}
       <section

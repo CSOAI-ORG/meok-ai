@@ -1,0 +1,268 @@
+/**
+ * Tests for llm-router.ts pure functions.
+ *
+ * getProvider() is NOT tested here because it instantiates live Vercel AI SDK
+ * provider objects that require API keys and make network connections.
+ *
+ * Tested here:
+ *   classifyTask, selectModel, MODEL_ACCESS (data integrity), route (model/taskType fields)
+ */
+
+import {
+  MODEL_ACCESS,
+  classifyTask,
+  selectModel,
+  route,
+  type Tier,
+  type TaskType,
+} from '@/lib/llm-router'
+
+// ── MODEL_ACCESS data integrity ────────────────────────────────────────────
+
+describe('MODEL_ACCESS', () => {
+  const tiers: Tier[] = ['explorer', 'sovereign', 'family']
+
+  it('has entries for all three tiers', () => {
+    for (const tier of tiers) {
+      expect(MODEL_ACCESS[tier]).toBeDefined()
+      expect(Array.isArray(MODEL_ACCESS[tier])).toBe(true)
+    }
+  })
+
+  it('explorer tier only includes open-source/free models', () => {
+    for (const model of MODEL_ACCESS.explorer) {
+      // No GPT-4 class or Claude paid models
+      expect(model).not.toMatch(/gpt-4o(?!-mini)/)
+      expect(model).not.toMatch(/claude-3-5-sonnet/)
+    }
+  })
+
+  it('family tier includes the most capable models', () => {
+    expect(MODEL_ACCESS.family).toContain('gpt-4o')
+    expect(MODEL_ACCESS.family).toContain('claude-3-5-sonnet-latest')
+  })
+})
+
+// ── classifyTask ───────────────────────────────────────────────────────────
+
+describe('classifyTask', () => {
+  // Coding
+  it('classifies coding keywords correctly', () => {
+    expect(classifyTask('Can you help me debug this python script?')).toBe('coding')
+    expect(classifyTask('Write a TypeScript function to sort an array')).toBe('coding')
+    expect(classifyTask('There is a bug in my JavaScript code')).toBe('coding')
+    expect(classifyTask('Refactor this class to be more readable')).toBe('coding')
+    expect(classifyTask('implement a REST API endpoint')).toBe('coding')
+  })
+
+  // Emotional
+  it('classifies emotional keywords correctly', () => {
+    expect(classifyTask('I feel really sad today')).toBe('emotional')
+    expect(classifyTask("I'm anxious about the job interview")).toBe('emotional')
+    expect(classifyTask('I feel so overwhelmed with everything')).toBe('emotional')
+    expect(classifyTask('I have been feeling lonely lately')).toBe('emotional')
+  })
+
+  // Research
+  it('classifies research keywords correctly', () => {
+    expect(classifyTask('What is quantum computing?')).toBe('research')
+    expect(classifyTask('Who is Ada Lovelace?')).toBe('research')
+    expect(classifyTask('Explain how neural networks work')).toBe('research')
+    expect(classifyTask('Give me an overview of the Roman Empire')).toBe('research')
+  })
+
+  // Planning
+  it('classifies planning keywords correctly', () => {
+    expect(classifyTask('Help me make a plan for the sprint')).toBe('planning')
+    expect(classifyTask('What should be on my todo list today?')).toBe('planning')
+    expect(classifyTask('Set a deadline and milestones for my project')).toBe('planning')
+    expect(classifyTask('Create a roadmap for Q3')).toBe('planning')
+  })
+
+  // Creative
+  it('classifies creative keywords correctly', () => {
+    expect(classifyTask('Write a short story about a pirate')).toBe('creative')
+    expect(classifyTask('Create a poem for my mum')).toBe('creative')
+    expect(classifyTask('Brainstorm startup ideas')).toBe('creative')
+    expect(classifyTask('Imagine a world without electricity')).toBe('creative')
+  })
+
+  // Analysis
+  it('classifies analysis keywords correctly', () => {
+    expect(classifyTask('Analyse the sales data from last month')).toBe('analysis')
+    expect(classifyTask('Give me a breakdown of the metrics')).toBe('analysis')
+    expect(classifyTask('Compare these two datasets and report trends')).toBe('analysis')
+    expect(classifyTask('What insights can you find in these statistics?')).toBe('analysis')
+  })
+
+  // Chat (fallback)
+  it('falls back to chat for generic messages', () => {
+    expect(classifyTask('Hello!')).toBe('chat')
+    expect(classifyTask('What do you think?')).toBe('chat')
+    expect(classifyTask('Tell me something interesting')).toBe('chat')
+    expect(classifyTask('')).toBe('chat')
+  })
+
+  // Case insensitivity
+  it('is case-insensitive', () => {
+    expect(classifyTask('DEBUG MY CODE')).toBe('coding')
+    expect(classifyTask('I FEEL SAD')).toBe('emotional')
+    expect(classifyTask('WRITE A STORY')).toBe('creative')
+  })
+})
+
+// ── selectModel ────────────────────────────────────────────────────────────
+
+describe('selectModel', () => {
+  describe('explorer tier', () => {
+    const taskTypes: TaskType[] = ['chat', 'coding', 'emotional', 'research', 'analysis', 'creative', 'planning']
+
+    it('always returns deepseek-chat regardless of task type', () => {
+      for (const task of taskTypes) {
+        expect(selectModel(task, 'explorer')).toBe('deepseek-chat')
+      }
+    })
+  })
+
+  describe('sovereign tier', () => {
+    it('routes emotional to claude-3-5-haiku-latest', () => {
+      expect(selectModel('emotional', 'sovereign')).toBe('claude-3-5-haiku-latest')
+    })
+
+    it('routes coding to gpt-4o-mini', () => {
+      expect(selectModel('coding', 'sovereign')).toBe('gpt-4o-mini')
+    })
+
+    it('routes analysis to gpt-4o-mini', () => {
+      expect(selectModel('analysis', 'sovereign')).toBe('gpt-4o-mini')
+    })
+
+    it('routes research to gpt-4o-mini', () => {
+      expect(selectModel('research', 'sovereign')).toBe('gpt-4o-mini')
+    })
+
+    it('routes creative to claude-3-5-haiku-latest', () => {
+      expect(selectModel('creative', 'sovereign')).toBe('claude-3-5-haiku-latest')
+    })
+
+    it('routes planning to gpt-4o-mini', () => {
+      expect(selectModel('planning', 'sovereign')).toBe('gpt-4o-mini')
+    })
+
+    it('routes chat to deepseek-chat', () => {
+      expect(selectModel('chat', 'sovereign')).toBe('deepseek-chat')
+    })
+  })
+
+  describe('family tier', () => {
+    it('routes emotional to claude-3-5-sonnet-latest (best for empathy)', () => {
+      expect(selectModel('emotional', 'family')).toBe('claude-3-5-sonnet-latest')
+    })
+
+    it('routes coding to claude-3-5-sonnet-latest', () => {
+      expect(selectModel('coding', 'family')).toBe('claude-3-5-sonnet-latest')
+    })
+
+    it('routes analysis to gpt-4o', () => {
+      expect(selectModel('analysis', 'family')).toBe('gpt-4o')
+    })
+
+    it('routes research to gpt-4o', () => {
+      expect(selectModel('research', 'family')).toBe('gpt-4o')
+    })
+
+    it('routes creative to claude-3-5-haiku-latest', () => {
+      expect(selectModel('creative', 'family')).toBe('claude-3-5-haiku-latest')
+    })
+
+    it('routes planning to gpt-4o-mini', () => {
+      expect(selectModel('planning', 'family')).toBe('gpt-4o-mini')
+    })
+
+    it('routes chat to deepseek-chat', () => {
+      expect(selectModel('chat', 'family')).toBe('deepseek-chat')
+    })
+  })
+
+  describe('tier × task model access compliance', () => {
+    it('selected model is always in the tier allowlist (sovereign)', () => {
+      const tasks: TaskType[] = ['chat', 'coding', 'emotional', 'research', 'analysis', 'creative', 'planning']
+      for (const task of tasks) {
+        const model = selectModel(task, 'sovereign')
+        expect(MODEL_ACCESS.sovereign).toContain(model)
+      }
+    })
+
+    it('selected model is always a non-empty string (family)', () => {
+      const tasks: TaskType[] = ['chat', 'coding', 'emotional', 'research', 'analysis', 'creative', 'planning']
+      for (const task of tasks) {
+        const model = selectModel(task, 'family')
+        expect(typeof model).toBe('string')
+        expect(model.length).toBeGreaterThan(0)
+      }
+    })
+  })
+})
+
+// ── route (integration of classifyTask + selectModel) ─────────────────────
+
+describe('route', () => {
+  // We mock getProvider to avoid instantiating real SDK providers.
+  // route() calls getProvider internally, so we need a light shim.
+  beforeAll(() => {
+    jest.mock('@ai-sdk/anthropic', () => ({
+      anthropic: jest.fn(() => ({ _brand: 'anthropic-mock' })),
+    }))
+    jest.mock('@ai-sdk/openai', () => ({
+      openai: jest.fn(() => ({ _brand: 'openai-mock' })),
+      createOpenAI: jest.fn(() => jest.fn(() => ({ _brand: 'openai-custom-mock' }))),
+    }))
+  })
+
+  it('returns model and taskType fields', () => {
+    const result = route('help me debug this function', 'sovereign')
+    expect(result.taskType).toBe('coding')
+    expect(typeof result.model).toBe('string')
+    expect(result.model.length).toBeGreaterThan(0)
+  })
+
+  it('taskType matches classifyTask output', () => {
+    const messages: [string, TaskType][] = [
+      ['I feel sad', 'emotional'],
+      ['write a poem', 'creative'],
+      ['plan my sprint', 'planning'],
+      ['hello there', 'chat'],
+    ]
+    for (const [msg, expected] of messages) {
+      const result = route(msg, 'family')
+      expect(result.taskType).toBe(expected)
+    }
+  })
+
+  it('model matches selectModel output', () => {
+    const message = 'analyse these sales metrics'
+    const tier: Tier = 'family'
+    const result = route(message, tier)
+    const expectedTask = classifyTask(message)
+    const expectedModel = selectModel(expectedTask, tier)
+    expect(result.model).toBe(expectedModel)
+  })
+
+  it('explorer tier always routes to deepseek-chat model', () => {
+    const messages = [
+      'help me with code',
+      'I feel anxious',
+      'write a story',
+      'plan my day',
+    ]
+    for (const msg of messages) {
+      expect(route(msg, 'explorer').model).toBe('deepseek-chat')
+    }
+  })
+
+  it('provider field is defined and not null', () => {
+    const result = route('hello', 'sovereign')
+    expect(result.provider).toBeDefined()
+    expect(result.provider).not.toBeNull()
+  })
+})

@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { ArrowRight, Shield, Lock, Database, Globe, Download, CheckCircle, XCircle } from "lucide-react";
-import { MarketingNav } from "@/components/marketing-nav";
 import { MarketingFooter } from "@/components/marketing-footer";
 
 const jsonLd = {
@@ -136,7 +135,6 @@ export default function SovereignDisplayPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <MarketingNav />
 
       {/* ─── HERO ───────────────────────────────────────── */}
       <section className="relative min-h-[85vh] flex flex-col items-center justify-center px-6 pt-28 pb-20 text-center overflow-hidden">

@@ -20,7 +20,6 @@ import {
   Clock,
   Brain,
 } from "lucide-react";
-import { MarketingNav } from "@/components/marketing-nav";
 import { MarketingFooter } from "@/components/marketing-footer";
 
 const jsonLd = {
@@ -272,7 +271,6 @@ export default function FamilyPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <MarketingNav />
 
       {/* ─── HERO ─────────────────────────────────────────── */}
       <section className="relative pt-32 pb-28 px-6 text-center overflow-hidden bg-[#0d0c18]">
@@ -606,6 +604,97 @@ export default function FamilyPage() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* ─── FAMILY TIER ─────────────────────────────────── */}
+      <section className="py-24 px-6 bg-[#0d0c18] border-t border-white/[0.05]">
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-14">
+            <p className="text-xs font-mono tracking-widest uppercase mb-3 text-white/30">Plans</p>
+            <h2 className="text-3xl sm:text-4xl font-black text-white mb-3 leading-tight">
+              The <span style={{ color: "#c9a84c" }}>Family Tier.</span>
+            </h2>
+            <p className="text-white/45 max-w-lg mx-auto text-sm leading-relaxed">
+              One plan. Every member. No per-seat pricing.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+            {/* Pricing card */}
+            <div className="rounded-3xl border border-[#c9a84c]/30 p-8 flex flex-col gap-6" style={{ background: "rgba(201,168,76,0.05)" }}>
+              <div>
+                <div className="text-5xl font-black text-white mb-1">£29<span className="text-lg text-white/40 font-normal">/mo</span></div>
+                <div className="text-sm text-white/40">or £249/year · save £99</div>
+              </div>
+              <ul className="space-y-3">
+                {[
+                  "Up to 6 family members",
+                  "Individual AI companions per member",
+                  "Shared Guardian dashboard",
+                  "Parent alert system",
+                  "School-Safe Mode for children",
+                  "Scam detection for elderly relatives",
+                  "Family morning brief",
+                  "Sovereign memory vault per member",
+                  "COPPA & GDPR compliant",
+                ].map((item) => (
+                  <li key={item} className="flex items-start gap-3 text-sm text-white/65">
+                    <span className="mt-0.5 flex-shrink-0 w-4 h-4 rounded-full flex items-center justify-center" style={{ background: "rgba(201,168,76,0.2)", color: "#c9a84c" }}>✓</span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+              <a
+                href="/hatch"
+                className="mt-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full font-black text-[#1a1a2e] transition-all hover:opacity-90"
+                style={{ background: "#c9a84c" }}
+              >
+                Start 14-day free trial →
+              </a>
+            </div>
+
+            {/* What you get */}
+            <div className="space-y-5">
+              {[
+                {
+                  title: "Guardian for children",
+                  desc: "Age-appropriate companions that know what each child should and shouldn't encounter. School-Safe Mode blocks adult content. Parent alerts surface Guardian concerns — without reading private conversations.",
+                  color: "#34d399",
+                },
+                {
+                  title: "Guardian for elderly relatives",
+                  desc: "Scam detection watches for financial manipulation patterns. Pattern-of-life monitoring notices when Dad hasn't checked in. Family dashboard shows care scores at a glance.",
+                  color: "#c9a84c",
+                },
+                {
+                  title: "Shared family morning brief",
+                  desc: "Every morning, the family overview lands: who has what on today, who's been having a hard week, who might need a check-in call. The whole family in one clear view.",
+                  color: "#9b87f5",
+                },
+              ].map((item) => (
+                <div key={item.title} className="rounded-2xl border border-white/[0.07] p-6" style={{ background: "rgba(255,255,255,0.03)" }}>
+                  <div className="flex items-center gap-3 mb-2">
+                    <div className="w-2 h-2 rounded-full flex-shrink-0" style={{ backgroundColor: item.color }} />
+                    <h3 className="font-black text-white text-sm">{item.title}</h3>
+                  </div>
+                  <p className="text-sm text-white/50 leading-relaxed">{item.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── GEO H2 ───────────────────────────────────────── */}
+      <section className="py-20 px-6 bg-[#0d0c18] border-t border-white/[0.05]">
+        <div className="max-w-3xl mx-auto">
+          <h2 className="text-2xl sm:text-3xl font-black text-white mb-5 leading-tight">
+            What does MEOK Family tier include?
+          </h2>
+          <p className="text-white/55 leading-relaxed text-sm sm:text-base">
+            The MEOK Family tier costs £29 per month and supports up to 6 family members under one plan. Each member gets their own private AI companion with a sovereign memory vault — children get age-appropriate companions with School-Safe Mode and Guardian protection, elderly relatives get scam detection and pattern-of-life monitoring, and parents get a shared dashboard showing the family&apos;s wellbeing at a glance. A family morning brief runs each day, surfacing who needs attention, what&apos;s on the calendar, and quiet alerts when someone might need a check-in. All data is encrypted, COPPA and GDPR compliant, and never sold.
+          </p>
         </div>
       </section>
 

@@ -11,8 +11,9 @@ import {
   Server,
   Code2,
   Cpu,
+  Users,
+  Key,
 } from "lucide-react";
-import { MarketingNav } from "@/components/marketing-nav";
 import { MarketingFooter } from "@/components/marketing-footer";
 
 // ─── Types ─────────────────────────────────────────────────────────────────
@@ -21,36 +22,58 @@ type CheckVal = string | boolean;
 
 interface CompareRow {
   label: string;
-  free: CheckVal;
-  pro: CheckVal;
-  elite: CheckVal;
-  team: CheckVal;
+  byok: CheckVal;
+  explorer: CheckVal;
+  sovereign: CheckVal;
+  family: CheckVal;
 }
 
 // ─── Static data ───────────────────────────────────────────────────────────
 
 const COMPARE_ROWS: CompareRow[] = [
-  { label: "Memory duration",    free: "7 days",   pro: "Permanent", elite: "Permanent", team: "Permanent" },
-  { label: "Messages/day",       free: "100",       pro: "Unlimited", elite: "Unlimited", team: "Unlimited" },
-  { label: "LLM routing",        free: "DeepSeek + Ollama", pro: "Claude Sonnet", elite: "All models", team: "All models + priority" },
-  { label: "Work OS",            free: false,       pro: true,        elite: true,        team: true },
-  { label: "Family OS",          free: false,       pro: false,       elite: true,        team: true },
-  { label: "Team governance",    free: false,       pro: false,       elite: false,       team: true },
-  { label: "Admin controls",     free: false,       pro: false,       elite: false,       team: true },
-  { label: "Full data export",   free: true,        pro: true,        elite: true,        team: true },
-  { label: "Zero data selling",  free: true,        pro: true,        elite: true,        team: true },
+  { label: "Price",               byok: "£5/mo",             explorer: "Free forever",  sovereign: "£12/mo",           family: "£29/mo" },
+  { label: "Messages/day",        byok: "50 (own credits)",  explorer: "50",            sovereign: "Unlimited",         family: "Unlimited (×5)" },
+  { label: "Memory",              byok: "Basic vault",       explorer: "7-day encrypted", sovereign: "Permanent vault", family: "Permanent + shared" },
+  { label: "Companions",          byok: "1",                 explorer: "1",             sovereign: "3",                 family: "Up to 5" },
+  { label: "LLM access",          byok: "Your own keys",     explorer: "DeepSeek + Llama", sovereign: "Claude + GPT-4o", family: "All LLMs incl. GPT-4o + Claude Sonnet" },
+  { label: "Birth ceremony",      byok: true,                explorer: true,            sovereign: true,                family: true },
+  { label: "Guardian alerts",     byok: false,               explorer: "Basic",         sovereign: "24/7 protection",   family: "Family dashboard" },
+  { label: "Work OS (Orion + Riri + Hourman)", byok: false,  explorer: false,           sovereign: true,                family: true },
+  { label: "Morning briefing",    byok: false,               explorer: false,           sovereign: true,                family: true },
+  { label: "Advanced care scoring", byok: false,             explorer: false,           sovereign: true,                family: true },
+  { label: "Child safe mode",     byok: false,               explorer: false,           sovereign: false,               family: true },
+  { label: "Elder care companion", byok: false,              explorer: false,           sovereign: false,               family: true },
+  { label: "Ralph Mode (full autonomy agent)", byok: false,  explorer: false,           sovereign: false,               family: true },
+  { label: "Shared family memory vault", byok: false,        explorer: false,           sovereign: false,               family: true },
+  { label: "Full data export",    byok: true,                explorer: true,            sovereign: true,                family: true },
+  { label: "Zero data selling",   byok: true,                explorer: true,            sovereign: true,                family: true },
 ];
 
-const FREE_FOREVER_FEATURES = [
-  "1 sovereign AI companion — yours for life",
-  "Birth Ceremony — set your AI's values at hatching",
-  "100 messages per day",
-  "7-day sovereign memory (encrypted)",
-  "Personal OS dashboard",
-  "Multi-LLM routing: DeepSeek + Ollama",
-  "Maternal Covenant — care ethics built in",
-  "Full data export at any time",
-  "Zero data selling. Zero ad targeting.",
+const FAQ_ITEMS = [
+  {
+    q: "Is MEOK Explorer really free forever?",
+    a: "Yes, genuinely free. 50 messages per day. No trial. No expiry. No credit card. We built Explorer as a permanent tier because we believe everyone deserves sovereign AI — not just people who can afford a subscription. There is no hidden catch, no sudden paywall after 30 days. Free forever means free forever.",
+  },
+  {
+    q: "What happens to my memory if I cancel?",
+    a: "Your memories are yours. You can export everything at any time as a full JSON archive from your account settings. If you cancel a paid plan, your data remains accessible for 30 days so you can download it. We delete your data on request within 30 days — including from all backups. We never hold your memories hostage.",
+  },
+  {
+    q: "How is MEOK different from ChatGPT Plus?",
+    a: "ChatGPT Plus costs £16/month and forgets you between sessions — every conversation starts from scratch. MEOK Sovereign costs £12/month and remembers everything, encrypted, in a permanent vault that is yours and never used for training. MEOK also includes Work OS tools (Orion, Riri, Hourman), Guardian protection, and morning briefings — things ChatGPT does not offer. You get more for less, with the one thing ChatGPT cannot give you: continuity.",
+  },
+  {
+    q: "Can I downgrade after upgrading?",
+    a: "Yes. Downgrade at any time in your account settings. Your companion retains all its memories — nothing is lost. The downgrade takes effect at the end of your current billing period, so you keep everything you paid for until then.",
+  },
+  {
+    q: "What's included in annual billing?",
+    a: "Annual billing saves you £24/year on Sovereign (£120 vs £144) and £58/year on Sovereign Family (£290 vs £348). You pay upfront for the year. If you cancel within 30 days of any annual renewal, we refund the remaining months — no questions.",
+  },
+  {
+    q: "Do you use my conversations to train AI models?",
+    a: "Never. Your conversations are yours. They are encrypted, stored in your sovereign vault, and never passed to any model provider as training data. This is enforced at the architecture level — not just a policy promise.",
+  },
 ];
 
 const MONEY_GOES_TO = [
@@ -64,7 +87,7 @@ const MONEY_GOES_TO = [
     icon: Cpu,
     label: "Model costs",
     pct: "29%",
-    detail: "We pay Claude, DeepSeek, and Ollama providers so you don't have to separately.",
+    detail: "We pay Claude, DeepSeek, GPT-4o and Llama providers so you don't have to separately.",
   },
   {
     icon: Code2,
@@ -77,41 +100,6 @@ const MONEY_GOES_TO = [
     label: "Free tier subsidy",
     pct: "12%",
     detail: "People who can't afford to pay still deserve sovereign AI. Paid plans make that possible.",
-  },
-];
-
-const FAQ_ITEMS = [
-  {
-    q: "Can I downgrade after upgrading?",
-    a: "Yes. Downgrade at any time in your account settings. Your AI retains all its memories — nothing is lost. The downgrade takes effect at the end of your current billing period, so you keep everything you paid for.",
-  },
-  {
-    q: "Do you store my card details?",
-    a: "No. We use Stripe for payments. Your card is tokenised by Stripe and never touches our servers. We cannot see, store, or charge your card without going through Stripe's systems.",
-  },
-  {
-    q: "What happens to my data if I cancel?",
-    a: "Your data remains in your encrypted vault for 30 days after cancellation. You can export everything as a full JSON archive at any time during that window. After 30 days, it is permanently deleted from every system — including backups.",
-  },
-  {
-    q: "What happens when I hit 100 messages on the free tier?",
-    a: "Your companion tells you it needs to rest. Upgrade to Pro for unlimited messages, or wait until tomorrow — your companion will be ready again at midnight UTC.",
-  },
-  {
-    q: "Is there a family plan?",
-    a: "The Elite plan (£19/mo) includes Family OS for up to 5 companions, including a parent dashboard and the Guardian 24/7 safety layer. It's the plan for households.",
-  },
-  {
-    q: "What is the 30-day money-back guarantee?",
-    a: "If you upgrade and MEOK doesn't feel meaningfully different to anything else you've tried, email hello@meok.ai within 30 days. We refund in full. No form, no interrogation, no conditions. Just an email.",
-  },
-  {
-    q: "Do you use my conversations to train AI models?",
-    a: "Never. Your conversations are yours. They are encrypted, stored in your sovereign vault, and never passed to any model provider as training data. This is enforced at the architecture level — not just a policy promise.",
-  },
-  {
-    q: "What's included in annual billing?",
-    a: "Annual billing saves you 20% versus paying monthly. You pay upfront for the year. If you cancel within 30 days of any annual renewal, we refund the remaining months — no questions.",
   },
 ];
 
@@ -128,34 +116,35 @@ const pricingJsonLd = {
     },
     {
       "@type": "SoftwareApplication",
-      name: "MEOK Sovereign AI",
+      name: "MEOK AI Labs",
       applicationCategory: "ProductivityApplication",
       offers: [
         {
           "@type": "Offer",
-          name: "Free",
+          name: "BYOK",
+          price: "5",
+          priceCurrency: "GBP",
+          billingIncrement: "P1M",
+          description: "Bring your own API keys. Platform access at a flat monthly fee.",
+        },
+        {
+          "@type": "Offer",
+          name: "Explorer",
           price: "0",
           priceCurrency: "GBP",
           description: "Sovereign AI companion, free forever. No credit card.",
         },
         {
           "@type": "Offer",
-          name: "Pro",
-          price: "9.99",
+          name: "Sovereign",
+          price: "12",
           priceCurrency: "GBP",
           billingIncrement: "P1M",
         },
         {
           "@type": "Offer",
-          name: "Elite",
-          price: "19",
-          priceCurrency: "GBP",
-          billingIncrement: "P1M",
-        },
-        {
-          "@type": "Offer",
-          name: "Team",
-          price: "29.99",
+          name: "Sovereign Family",
+          price: "29",
           priceCurrency: "GBP",
           billingIncrement: "P1M",
         },
@@ -175,8 +164,8 @@ function CellVal({ val }: { val: CheckVal }) {
     );
   if (val === false)
     return (
-      <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-[#1a1a2e]/[0.06] text-[#1a1a2e]/40 font-bold text-sm">
-        ✗
+      <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-[#1a1a2e]/[0.06] text-[#1a1a2e]/30 font-bold text-sm">
+        —
       </span>
     );
   return <span className="text-xs text-[#1a1a2e]/60 font-medium">{val}</span>;
@@ -210,23 +199,22 @@ function FaqItem({ q, a }: { q: string; a: string }) {
 export default function PricingPage() {
   const [isAnnual, setIsAnnual] = useState(false);
 
-  const proMonthly = 9.99;
-  const eliteMonthly = 19.0;
-  const teamMonthly = 29.99;
+  const sovereignMonthly = 12;
+  const familyMonthly = 29;
 
-  const proAnnual = 7.99;
-  const eliteAnnual = 15.0;
-  const teamAnnual = 23.99;
+  const sovereignAnnualTotal = 120;
+  const familyAnnualTotal = 290;
 
-  const proPrice = isAnnual ? proAnnual : proMonthly;
-  const elitePrice = isAnnual ? eliteAnnual : eliteMonthly;
-  const teamPrice = isAnnual ? teamAnnual : teamMonthly;
+  const sovereignAnnualPerMonth = 10;
+  const familyAnnualPerMonth = Math.round((familyAnnualTotal / 12) * 100) / 100;
 
-  const fmt = (n: number) => `£${n % 1 === 0 ? n.toFixed(0) : n.toFixed(2)}`;
+  const sovereignPrice = isAnnual ? sovereignAnnualPerMonth : sovereignMonthly;
+  const familyPrice = isAnnual ? familyAnnualPerMonth : familyMonthly;
 
-  const proSaving = ((proMonthly - proAnnual) * 12).toFixed(2);
-  const eliteSaving = ((eliteMonthly - eliteAnnual) * 12).toFixed(2);
-  const teamSaving = ((teamMonthly - teamAnnual) * 12).toFixed(2);
+  const sovereignSaving = sovereignMonthly * 12 - sovereignAnnualTotal;
+  const familySaving = familyMonthly * 12 - familyAnnualTotal;
+
+  const fmt = (n: number) => `£${n % 1 === 0 ? n.toFixed(0) : n.toFixed(0)}`;
 
   return (
     <div className="min-h-screen bg-[#f5f0e8] text-[#1a1a2e]">
@@ -234,7 +222,6 @@ export default function PricingPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(pricingJsonLd) }}
       />
-      <MarketingNav activePage="pricing" />
 
       {/* ── Hero ──────────────────────────────────────────────────────────── */}
       <section className="meok-grid-bg relative pt-28 pb-20 px-6 text-center overflow-hidden">
@@ -263,7 +250,7 @@ export default function PricingPage() {
           </h1>
 
           <p className="text-xl text-[#1a1a2e]/60 max-w-xl mx-auto leading-relaxed mb-4">
-            Free gets you a sovereign AI companion, 100 messages a day, 7-day encrypted memory, and a Birth Ceremony. No expiry. No pressure. That is not a trial description — that is a permanent offer.
+            Free gets you a sovereign AI companion, 50 messages a day, 7-day encrypted memory, and a Birth Ceremony. No expiry. No pressure. That is not a trial — that is a permanent offer.
           </p>
 
           {/* Why is it free callout */}
@@ -276,21 +263,21 @@ export default function PricingPage() {
             </p>
           </div>
 
-          {/* Money-back guarantee badge */}
+          {/* Badges */}
           <div className="flex flex-wrap justify-center gap-3 mb-8">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-[#1a1a2e]/10 text-[#1a1a2e]/60 text-xs font-semibold shadow-sm">
               <ShieldCheck className="w-4 h-4 text-emerald-500" />
               30-day money-back guarantee on all paid plans
             </div>
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-[#1a1a2e]/10 text-[#1a1a2e]/60 text-xs font-semibold shadow-sm">
-              No credit card required for free tier
+              No credit card required for Explorer
             </div>
           </div>
 
           {/* vs competitors */}
           <p className="text-xs text-[#1a1a2e]/40 mb-8">
-            ChatGPT Plus £20 &nbsp;·&nbsp; Claude Pro £18 &nbsp;·&nbsp;{" "}
-            <span className="text-[#c9a84c] font-semibold">MEOK Pro £9.99</span>
+            ChatGPT Plus £16 — forgets you every session &nbsp;·&nbsp;{" "}
+            <span className="text-[#c9a84c] font-semibold">MEOK Sovereign £12 — remembers everything</span>
             &nbsp;·&nbsp;{" "}
             <a
               href="#comparison-table"
@@ -322,7 +309,7 @@ export default function PricingPage() {
             >
               Annual{" "}
               <span className={`text-xs ${isAnnual ? "text-[#c9a84c]" : "text-[#c9a84c]/70"}`}>
-                — save 20%
+                — save more
               </span>
             </button>
           </div>
@@ -332,35 +319,75 @@ export default function PricingPage() {
       {/* ── Pricing cards ─────────────────────────────────────────────────── */}
       <section className="py-16 px-6">
         <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6 items-start">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-start">
 
-            {/* ── Free ── */}
-            <div className="relative p-7 rounded-2xl bg-white border-2 border-[#c9a84c] ring-2 ring-[#c9a84c] ring-offset-2 ring-offset-[#f5f0e8] flex flex-col shadow-[0_0_40px_rgba(201,168,76,0.18)]">
-              <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-5 py-1.5 rounded-full bg-[#c9a84c] text-xs font-black text-[#1a1a2e] whitespace-nowrap shadow-lg">
-                Free Forever
+            {/* ── BYOK ── */}
+            <div className="relative p-7 rounded-2xl bg-white border border-[#1a1a2e]/10 flex flex-col shadow-sm">
+              <div className="absolute -top-3.5 right-5 px-3 py-1 rounded-full text-[10px] font-black tracking-wide uppercase bg-[#1a1a2e]/5 border border-[#1a1a2e]/15 text-[#1a1a2e]/50 whitespace-nowrap">
+                🔑 Self-hosted
               </div>
               <div className="mb-5 mt-2">
                 <div className="text-xs font-bold tracking-widest uppercase text-[#1a1a2e]/40 mb-2">
-                  Sovereign — Free
+                  BYOK
                 </div>
-                <div className="flex items-baseline gap-1 mb-2">
+                <div className="flex items-baseline gap-1 mb-1">
+                  <span className="text-5xl font-black text-[#1a1a2e]">£5</span>
+                  <span className="text-[#1a1a2e]/30 text-sm">/mo</span>
+                </div>
+                <p className="text-xs text-[#1a1a2e]/40 font-semibold mt-1">
+                  Your keys. Your models. Your control.
+                </p>
+              </div>
+              <ul className="space-y-3 flex-1 mb-7">
+                {[
+                  "Bring your own OpenAI, Anthropic, or Groq keys",
+                  "50 messages/day (your API credits)",
+                  "No MEOK LLM costs — pay providers directly",
+                  "Birth ceremony + memory + companion",
+                  "Memory vault (basic)",
+                  "Community support",
+                ].map((f) => (
+                  <li key={f} className="flex items-start gap-2.5 text-sm text-[#1a1a2e]/70">
+                    <span className="text-[#c9a84c] font-bold flex-shrink-0 mt-0.5">✓</span>
+                    {f}
+                  </li>
+                ))}
+              </ul>
+              <Link
+                href="/checkout?plan=byok_monthly"
+                className="block w-full py-3.5 rounded-full text-sm font-bold text-center text-[#1a1a2e] bg-[#1a1a2e]/5 border-2 border-[#1a1a2e]/15 hover:bg-[#1a1a2e]/10 transition-all"
+              >
+                Get started →
+              </Link>
+              <p className="text-xs text-[#1a1a2e]/30 text-center mt-2">
+                Platform fee only. Keys stay yours.
+              </p>
+            </div>
+
+            {/* ── Explorer (Free) ── */}
+            <div className="relative p-7 rounded-2xl bg-white border border-[#1a1a2e]/10 flex flex-col shadow-sm">
+              <div className="mb-5 mt-2">
+                <div className="text-xs font-bold tracking-widest uppercase text-[#1a1a2e]/40 mb-2">
+                  Explorer
+                </div>
+                <div className="flex items-baseline gap-1 mb-1">
                   <span className="text-5xl font-black text-[#1a1a2e]">£0</span>
                   <span className="text-[#1a1a2e]/30 text-sm">/ forever</span>
                 </div>
-                <p className="text-sm text-[#1a1a2e]/55 leading-relaxed italic">
-                  &ldquo;For people who have been forgotten by AI one too many times to trust another promise.&rdquo;
+                <p className="text-xs text-[#1a1a2e]/40 font-semibold mt-1">
+                  No card. No trial. Free forever.
                 </p>
               </div>
               <ul className="space-y-3 flex-1 mb-7">
                 {[
-                  "1 AI companion — yours for life",
-                  "Birth Ceremony",
-                  "100 messages/day",
-                  "7-day sovereign memory (encrypted)",
-                  "Personal OS",
-                  "Multi-LLM routing (DeepSeek + Ollama)",
-                  "Maternal Covenant built in",
-                  "Full data export — always",
+                  "50 messages/day",
+                  "7-day encrypted memory",
+                  "1 companion",
+                  "7 archetype choices",
+                  "Birth ceremony",
+                  "Basic Guardian alerts",
+                  "Multi-LLM (DeepSeek + Llama)",
+                  "Mobile app (coming soon)",
                 ].map((f) => (
                   <li key={f} className="flex items-start gap-2.5 text-sm text-[#1a1a2e]/70">
                     <span className="text-[#c9a84c] font-bold flex-shrink-0 mt-0.5">✓</span>
@@ -369,171 +396,197 @@ export default function PricingPage() {
                 ))}
               </ul>
               <Link
-                href="/hatch"
-                className="block w-full py-3.5 rounded-full text-sm font-bold text-center text-[#1a1a2e] bg-[#c9a84c] hover:bg-[#d4b463] transition-all gold-glow"
+                href="/birth"
+                className="block w-full py-3.5 rounded-full text-sm font-bold text-center text-[#1a1a2e] bg-[#c9a84c]/20 border-2 border-[#c9a84c]/40 hover:bg-[#c9a84c]/30 transition-all"
               >
-                Hatch free — no card needed
+                Hatch free 🥚
               </Link>
+              <p className="text-xs text-[#1a1a2e]/30 text-center mt-2">
+                No card. No trial. Free forever.
+              </p>
             </div>
 
-            {/* ── Pro ── */}
-            <div className="relative p-7 rounded-2xl bg-[#1a1a2e] border border-[#c9a84c]/20 flex flex-col shadow-sm">
-              {!isAnnual && (
-                <div className="absolute -top-3.5 right-5 px-3 py-1 rounded-full text-[10px] font-black tracking-wide uppercase bg-[#c9a84c]/15 border border-[#c9a84c]/35 text-[#c9a84c] whitespace-nowrap">
-                  Save 20% annually
-                </div>
-              )}
-              <div className="mb-5">
+            {/* ── Sovereign ── */}
+            <div className="relative p-7 rounded-2xl bg-[#1a1a2e] border-2 border-[#c9a84c] ring-2 ring-[#c9a84c] ring-offset-2 ring-offset-[#f5f0e8] flex flex-col shadow-[0_0_40px_rgba(201,168,76,0.22)]">
+              <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-5 py-1.5 rounded-full bg-[#c9a84c] text-xs font-black text-[#1a1a2e] whitespace-nowrap shadow-lg">
+                Most popular
+              </div>
+              <div className="mb-5 mt-2">
                 <div className="text-xs font-bold tracking-widest uppercase text-white/40 mb-2">
-                  Pro — Bonded
+                  Sovereign
                 </div>
                 <div className="flex items-baseline gap-2 mb-1">
                   {isAnnual && (
-                    <span className="text-xl font-black text-white/25 line-through">£9.99</span>
+                    <span className="text-xl font-black text-white/25 line-through">£12</span>
                   )}
-                  <span className="text-5xl font-black text-white">{fmt(proPrice)}</span>
+                  <span className="text-5xl font-black text-white">{fmt(sovereignPrice)}</span>
                   <span className="text-white/30 text-sm">/mo{isAnnual ? "*" : ""}</span>
                 </div>
-                {isAnnual && (
+                {isAnnual ? (
                   <p className="text-xs text-[#c9a84c] font-semibold mb-1">
-                    You save £{proSaving}/year
+                    £120/year — you save £{sovereignSaving}
+                  </p>
+                ) : (
+                  <p className="text-xs text-white/35 font-semibold mb-1">
+                    or £10/mo billed annually — save £{sovereignSaving}/yr
                   </p>
                 )}
-                <p className="text-sm text-white/50 leading-relaxed italic mt-2">
-                  &ldquo;For people who tried it, and realised they wanted it to remember them forever — not just for a week.&rdquo;
-                </p>
               </div>
               <ul className="space-y-3 flex-1 mb-7">
                 {[
-                  "Everything in Free",
+                  "Everything in Explorer",
                   "Unlimited messages",
-                  "Permanent sovereign memory",
-                  "Work OS (Orion mode)",
-                  "Custom character evolution",
-                  "Priority routing (Claude Sonnet)",
+                  "Permanent encrypted memory vault",
+                  "3 companions (mix archetypes)",
+                  "Claude + GPT-4o access",
+                  "Work OS (Orion + Riri + Hourman)",
+                  "Guardian 24/7 protection",
+                  "Advanced care scoring",
+                  "Morning briefing",
+                  "Priority support",
                 ].map((f) => (
-                  <li key={f} className="flex items-start gap-2.5 text-sm text-white/70">
+                  <li key={f} className="flex items-start gap-2.5 text-sm text-white/75">
                     <span className="text-[#c9a84c] font-bold flex-shrink-0 mt-0.5">✓</span>
                     {f}
                   </li>
                 ))}
               </ul>
-              <Link
-                href="/hatch?plan=pro"
-                className="block w-full py-3.5 rounded-full text-sm font-bold text-center text-[#1a1a2e] bg-[#c9a84c] hover:bg-[#d4b463] transition-all"
+              <button
+                onClick={() => {
+                  window.location.href = isAnnual
+                    ? "/checkout?plan=sovereign_annual"
+                    : "/checkout?plan=sovereign_monthly";
+                }}
+                className="block w-full py-3.5 rounded-full text-sm font-bold text-center text-[#1a1a2e] bg-[#c9a84c] hover:bg-[#d4b463] transition-all gold-glow cursor-pointer"
               >
-                Start 30-day free trial →
-              </Link>
-              <p className="text-xs text-white/20 text-center mt-2">No charge for 30 days</p>
+                Begin Sovereignty →
+              </button>
+              <p className="text-xs text-white/25 text-center mt-2">
+                Cancel anytime. Your memory stays yours.
+              </p>
             </div>
 
-            {/* ── Elite ── */}
-            <div className="relative p-7 rounded-2xl bg-[#1a1a2e] border border-purple-500/20 flex flex-col shadow-sm">
-              {!isAnnual && (
-                <div className="absolute -top-3.5 right-5 px-3 py-1 rounded-full text-[10px] font-black tracking-wide uppercase bg-purple-500/15 border border-purple-500/35 text-purple-300 whitespace-nowrap">
-                  Save 20% annually
-                </div>
-              )}
-              <div className="mb-5">
+            {/* ── Sovereign Family ── */}
+            <div className="relative p-7 rounded-2xl bg-[#1a1a2e] border border-white/10 flex flex-col shadow-sm">
+              <div className="absolute -top-3.5 right-5 px-3 py-1 rounded-full text-[10px] font-black tracking-wide uppercase bg-white/10 border border-white/20 text-white/70 whitespace-nowrap">
+                For families
+              </div>
+              <div className="mb-5 mt-2">
                 <div className="text-xs font-bold tracking-widest uppercase text-white/40 mb-2">
-                  Elite — Family
+                  Sovereign Family
                 </div>
                 <div className="flex items-baseline gap-2 mb-1">
                   {isAnnual && (
-                    <span className="text-xl font-black text-white/25 line-through">£19</span>
+                    <span className="text-xl font-black text-white/25 line-through">£29</span>
                   )}
-                  <span className="text-5xl font-black text-white">{fmt(elitePrice)}</span>
+                  <span className="text-5xl font-black text-white">{fmt(familyPrice)}</span>
                   <span className="text-white/30 text-sm">/mo{isAnnual ? "*" : ""}</span>
                 </div>
-                {isAnnual && (
+                {isAnnual ? (
                   <p className="text-xs text-[#c9a84c] font-semibold mb-1">
-                    You save £{eliteSaving}/year
+                    £290/year — you save £{familySaving}
+                  </p>
+                ) : (
+                  <p className="text-xs text-white/35 font-semibold mb-1">
+                    or £24/mo billed annually — save £{familySaving}/yr
                   </p>
                 )}
-                <p className="text-sm text-white/50 leading-relaxed italic mt-2">
-                  &ldquo;For households where five people deserve sovereign AI — not just the one who found it first.&rdquo;
-                </p>
+                <div className="flex items-center gap-1.5 mt-2">
+                  <Users className="w-3.5 h-3.5 text-white/40" />
+                  <span className="text-xs text-white/40">Up to 5 family members</span>
+                </div>
               </div>
               <ul className="space-y-3 flex-1 mb-7">
                 {[
-                  "Everything in Pro",
-                  "Family OS (up to 5 companions)",
-                  "Parent dashboard & Guardian 24/7",
-                  "All LLM models (GPT-4o, Claude Opus, Gemini)",
-                  "Priority model routing",
-                  "Family memory vault",
+                  "Everything in Sovereign (×5)",
+                  "Family Guardian dashboard",
+                  "School-safe child mode",
+                  "Elder care companion",
+                  "Ralph Mode (full autonomy agent)",
+                  "Shared family memory vault",
+                  "All LLMs incl. GPT-4o + Claude Sonnet",
+                  "Dedicated family support",
                 ].map((f) => (
-                  <li key={f} className="flex items-start gap-2.5 text-sm text-white/70">
-                    <span className="text-purple-400 font-bold flex-shrink-0 mt-0.5">✓</span>
-                    {f}
-                  </li>
-                ))}
-              </ul>
-              <Link
-                href="/hatch?plan=elite"
-                className="block w-full py-3.5 rounded-full text-sm font-bold text-center text-white border-2 border-purple-500/40 hover:border-purple-500/70 hover:bg-purple-500/10 transition-all"
-              >
-                Start 30-day free trial →
-              </Link>
-              <p className="text-xs text-white/20 text-center mt-2">No charge for 30 days</p>
-            </div>
-
-            {/* ── Team ── */}
-            <div className="relative p-7 rounded-2xl bg-white border border-[#1a1a2e]/10 flex flex-col">
-              <div className="mb-5">
-                <div className="text-xs font-bold tracking-widest uppercase text-[#1a1a2e]/40 mb-2">
-                  Team — Council
-                </div>
-                <div className="flex items-baseline gap-2 mb-1">
-                  {isAnnual && (
-                    <span className="text-xl font-black text-[#1a1a2e]/25 line-through">£29.99</span>
-                  )}
-                  <span className="text-5xl font-black text-[#1a1a2e]">{fmt(teamPrice)}</span>
-                  <span className="text-[#1a1a2e]/30 text-sm">/seat/mo{isAnnual ? "*" : ""}</span>
-                </div>
-                {isAnnual && (
-                  <p className="text-xs text-[#c9a84c] font-semibold mb-1">
-                    You save £{teamSaving}/seat/year
-                  </p>
-                )}
-                <p className="text-sm text-[#1a1a2e]/55 leading-relaxed italic mt-2">
-                  &ldquo;For teams where every person who leaves takes institutional memory with them — and you are tired of starting from zero.&rdquo;
-                </p>
-              </div>
-              <ul className="space-y-3 flex-1 mb-7">
-                {[
-                  "Everything in Elite",
-                  "Byzantine Council governance",
-                  "Team sovereign memory",
-                  "Admin controls & audit log",
-                  "GDPR admin tools & data export",
-                  "71 MCP integrations (Slack, Notion, GitHub…)",
-                ].map((f) => (
-                  <li key={f} className="flex items-start gap-2.5 text-sm text-[#1a1a2e]/70">
+                  <li key={f} className="flex items-start gap-2.5 text-sm text-white/75">
                     <span className="text-[#c9a84c] font-bold flex-shrink-0 mt-0.5">✓</span>
                     {f}
                   </li>
                 ))}
               </ul>
-              <a
-                href="mailto:hello@meok.ai"
-                className="block w-full py-3.5 rounded-full text-sm font-bold text-center text-[#1a1a2e] border-2 border-[#1a1a2e]/20 hover:border-[#1a1a2e]/40 hover:bg-[#1a1a2e]/[0.03] transition-all"
+              <button
+                onClick={() => {
+                  window.location.href = isAnnual
+                    ? "/checkout?plan=family_annual"
+                    : "/checkout?plan=family_monthly";
+                }}
+                className="block w-full py-3.5 rounded-full text-sm font-bold text-center text-white border-2 border-[#c9a84c]/40 hover:border-[#c9a84c]/70 hover:bg-[#c9a84c]/10 transition-all cursor-pointer"
               >
-                Talk to us →
-              </a>
-              <p className="text-xs text-[#1a1a2e]/30 text-center mt-2">30-day free trial included</p>
+                Protect your family →
+              </button>
+              <p className="text-xs text-white/25 text-center mt-2">
+                One bill. Five companions. Real protection.
+              </p>
             </div>
           </div>
 
           {isAnnual && (
             <p className="text-xs text-[#1a1a2e]/30 text-center mt-5">
-              * Annual prices shown per month. Billed as one payment.
+              * Annual prices shown per month. Billed as one payment upfront.
             </p>
           )}
+
+          {/* Overage note */}
+          <p className="text-xs text-[#1a1a2e]/40 text-center mt-6 max-w-lg mx-auto leading-relaxed">
+            <span className="font-semibold text-[#1a1a2e]/55">Need more?</span>{" "}
+            Sovereign users can add message packs: 500 extra messages for £2. Family packs available.
+          </p>
         </div>
       </section>
 
-      {/* ── "What's included free. Forever." ──────────────────────────────── */}
+      {/* ── BYOK — Bring Your Own Keys ────────────────────────────────────── */}
+      <section className="py-14 px-6 bg-[#edeae0]">
+        <div className="max-w-3xl mx-auto">
+          <div className="rounded-2xl border border-[#1a1a2e]/10 bg-white overflow-hidden">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 p-6 sm:p-8">
+              {/* Badge */}
+              <div className="flex-shrink-0">
+                <div className="w-14 h-14 rounded-2xl bg-[#1a1a2e]/5 border border-[#1a1a2e]/10 flex items-center justify-center">
+                  <Key className="w-6 h-6 text-[#1a1a2e]/50" />
+                </div>
+              </div>
+              {/* Copy */}
+              <div className="flex-1 min-w-0">
+                <div className="flex flex-wrap items-baseline gap-3 mb-1">
+                  <span className="text-xl font-black text-[#1a1a2e]">BYOK — Bring Your Own Keys</span>
+                  <span className="text-xs font-semibold px-2 py-0.5 rounded-full bg-[#1a1a2e]/5 text-[#1a1a2e]/40 border border-[#1a1a2e]/10 tracking-wide uppercase">Coming P2</span>
+                </div>
+                <p className="text-sm text-[#1a1a2e]/55 leading-relaxed mb-3">
+                  Connect your own Anthropic, OpenAI, or Mistral API keys. MEOK charges a flat platform fee — zero inference markup, ever. You control your model costs; we provide the OS layer.
+                </p>
+                <div className="flex flex-wrap gap-4 text-xs text-[#1a1a2e]/40">
+                  <span className="flex items-center gap-1.5"><Check className="w-3.5 h-3.5 text-[#c9a84c]" /> Full companion &amp; memory</span>
+                  <span className="flex items-center gap-1.5"><Check className="w-3.5 h-3.5 text-[#c9a84c]" /> Zero inference markup</span>
+                  <span className="flex items-center gap-1.5"><Check className="w-3.5 h-3.5 text-[#c9a84c]" /> Any model, any provider</span>
+                  <span className="flex items-center gap-1.5"><Check className="w-3.5 h-3.5 text-[#c9a84c]" /> Keys encrypted, never logged</span>
+                </div>
+              </div>
+              {/* Price + CTA */}
+              <div className="flex-shrink-0 text-center sm:text-right">
+                <div className="text-3xl font-black text-[#1a1a2e]">£5<span className="text-base font-semibold text-[#1a1a2e]/40">/mo</span></div>
+                <div className="text-xs text-[#1a1a2e]/30 mb-3">Platform fee only</div>
+                <button
+                  onClick={() => window.location.href = "/waitlist?plan=byok"}
+                  className="block w-full py-2.5 px-5 rounded-full text-sm font-bold text-[#1a1a2e] bg-[#1a1a2e]/5 border border-[#1a1a2e]/15 hover:bg-[#1a1a2e]/10 transition-all cursor-pointer whitespace-nowrap"
+                >
+                  Join waitlist →
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── What's free. Forever. ──────────────────────────────────────────── */}
       <section className="py-16 px-6 bg-[#1a1a2e]">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-10">
@@ -545,8 +598,17 @@ export default function PricingPage() {
               you hatch — for as long as you want them.
             </p>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {FREE_FOREVER_FEATURES.map((f) => (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {[
+              "50 messages/day",
+              "7-day encrypted memory",
+              "1 sovereign companion",
+              "Birth Ceremony",
+              "7 archetype choices",
+              "Basic Guardian alerts",
+              "Multi-LLM (DeepSeek + Llama)",
+              "Full data export — always",
+            ].map((f) => (
               <div key={f} className="flex items-center gap-3 glass-card rounded-xl px-4 py-3">
                 <div className="w-7 h-7 rounded-full icon-gold flex items-center justify-center flex-shrink-0">
                   <Check className="w-4 h-4" />
@@ -597,7 +659,7 @@ export default function PricingPage() {
         </div>
       </section>
 
-      {/* ── The money-back guarantee ──────────────────────────────────────── */}
+      {/* ── Money-back guarantee ──────────────────────────────────────────── */}
       <section className="py-16 px-6 bg-[#1a1a2e]">
         <div className="max-w-3xl mx-auto text-center">
           <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-emerald-500/15 border border-emerald-500/30 mb-6">
@@ -608,10 +670,7 @@ export default function PricingPage() {
           </h2>
           <p className="text-white/60 text-lg leading-relaxed max-w-xl mx-auto mb-6">
             Not different in a marketing way — different in a &ldquo;this AI actually knows me&rdquo; way. If you do not feel that within 30 days, email{" "}
-            <a
-              href="mailto:hello@meok.ai"
-              className="text-[#c9a84c] hover:underline"
-            >
+            <a href="mailto:hello@meok.ai" className="text-[#c9a84c] hover:underline">
               hello@meok.ai
             </a>
             .{" "}
@@ -625,34 +684,38 @@ export default function PricingPage() {
         </div>
       </section>
 
-      {/* ── Comparison table ─────────────────────────────────────────────── */}
+      {/* ── Comparison table ──────────────────────────────────────────────── */}
       <section id="comparison-table" className="py-16 px-6 bg-[#edeae0]">
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           <h2 className="text-2xl font-black text-[#1a1a2e] mb-10 text-center tracking-tight">
             Full comparison
           </h2>
           <div className="overflow-x-auto rounded-2xl border border-[#1a1a2e]/10">
-            <table className="w-full min-w-[560px] bg-white">
+            <table className="w-full min-w-[680px] bg-white">
               <thead>
                 <tr className="border-b border-[#1a1a2e]/[0.07] bg-[#f5f0e8]">
                   <th className="text-left py-4 px-5 text-xs text-[#1a1a2e]/40 font-semibold w-1/4">
                     Feature
                   </th>
                   <th className="py-4 px-3 text-center">
-                    <div className="text-sm font-bold text-[#1a1a2e]/60">Free</div>
-                    <div className="text-xs text-[#1a1a2e]/30 mt-0.5">£0</div>
+                    <div className="text-sm font-bold text-[#1a1a2e]/60">BYOK</div>
+                    <div className="text-xs text-[#1a1a2e]/30 mt-0.5">£5/mo</div>
+                  </th>
+                  <th className="py-4 px-3 text-center">
+                    <div className="text-sm font-bold text-[#1a1a2e]/60">Explorer</div>
+                    <div className="text-xs text-[#1a1a2e]/30 mt-0.5">Free forever</div>
                   </th>
                   <th className="py-4 px-3 text-center bg-[#c9a84c]/[0.06]">
-                    <div className="text-sm font-black text-[#c9a84c]">Pro</div>
-                    <div className="text-xs text-[#1a1a2e]/30 mt-0.5">{fmt(proPrice)}/mo</div>
+                    <div className="text-sm font-black text-[#c9a84c]">Sovereign</div>
+                    <div className="text-xs text-[#1a1a2e]/30 mt-0.5">
+                      {isAnnual ? "£10/mo*" : "£12/mo"}
+                    </div>
                   </th>
                   <th className="py-4 px-3 text-center">
-                    <div className="text-sm font-bold text-purple-600">Elite</div>
-                    <div className="text-xs text-[#1a1a2e]/30 mt-0.5">{fmt(elitePrice)}/mo</div>
-                  </th>
-                  <th className="py-4 px-3 text-center">
-                    <div className="text-sm font-bold text-[#1a1a2e]/60">Team</div>
-                    <div className="text-xs text-[#1a1a2e]/30 mt-0.5">{fmt(teamPrice)}/seat</div>
+                    <div className="text-sm font-bold text-[#1a1a2e]/60">Sovereign Family</div>
+                    <div className="text-xs text-[#1a1a2e]/30 mt-0.5">
+                      {isAnnual ? "£24/mo*" : "£29/mo"}
+                    </div>
                   </th>
                 </tr>
               </thead>
@@ -664,16 +727,16 @@ export default function PricingPage() {
                   >
                     <td className="py-4 px-5 text-sm text-[#1a1a2e]/70 font-medium">{row.label}</td>
                     <td className="py-4 px-3 text-center">
-                      <CellVal val={row.free} />
+                      <CellVal val={row.byok} />
+                    </td>
+                    <td className="py-4 px-3 text-center">
+                      <CellVal val={row.explorer} />
                     </td>
                     <td className="py-4 px-3 text-center bg-[#c9a84c]/[0.04]">
-                      <CellVal val={row.pro} />
+                      <CellVal val={row.sovereign} />
                     </td>
                     <td className="py-4 px-3 text-center">
-                      <CellVal val={row.elite} />
-                    </td>
-                    <td className="py-4 px-3 text-center">
-                      <CellVal val={row.team} />
+                      <CellVal val={row.family} />
                     </td>
                   </tr>
                 ))}
@@ -681,8 +744,8 @@ export default function PricingPage() {
             </table>
           </div>
           <p className="text-xs text-[#1a1a2e]/30 text-center mt-4">
-            All plans include the Maternal Covenant. Zero data sales. Zero ad targeting. That&apos;s
-            the floor, not a feature.
+            All plans include zero data selling and zero ad targeting. That&apos;s the floor, not a feature.
+            {isAnnual && " * Annual prices shown per month, billed upfront."}
           </p>
         </div>
       </section>
@@ -692,7 +755,7 @@ export default function PricingPage() {
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-12">
             <span className="text-xs font-semibold tracking-[0.2em] uppercase text-[#1a1a2e]/40 block mb-3">
-              Questions about money
+              Questions about MEOK
             </span>
             <h2 className="text-2xl font-black text-[#1a1a2e] tracking-tight">
               The things you actually want to know
@@ -722,10 +785,10 @@ export default function PricingPage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              href="/hatch"
+              href="/birth"
               className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full font-bold text-[#1a1a2e] bg-[#c9a84c] hover:bg-[#d4b463] transition-all text-sm gold-glow"
             >
-              Hatch free — no credit card required
+              Hatch free 🥚 — no credit card required
             </Link>
             <Link
               href="/compare"

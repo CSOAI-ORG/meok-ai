@@ -52,7 +52,7 @@ const PRODUCTS: Product[] = [
       { href: "/personal/care", icon: "💛", label: "Care Dimensions", desc: "Emotional awareness & wellbeing layers" },
       { href: "/personal/morning-brief", icon: "☀️", label: "Morning Brief", desc: "Start every day with clarity" },
       { href: "/characters", icon: "✨", label: "Characters", desc: "Your cast of AI companions" },
-      { href: "/os/birth-ceremony", icon: "🎂", label: "Birth Ceremony", desc: "Initialise your Personal OS" },
+      { href: "/birth", icon: "🎂", label: "Birth Ceremony", desc: "Hatch your sovereign AI companion" },
       { href: "/os/sovereign", icon: "🔐", label: "Sovereign AI", desc: "Your data, your keys — zero training, always" },
       { href: "/os/any-llm", icon: "🔗", label: "Any LLM", desc: "GPT, Claude, Gemini — your memory travels with you" },
     ],
@@ -63,13 +63,12 @@ const PRODUCTS: Product[] = [
     name: "Work OS",
     color: "#3B82F6",
     sub: [
-      { href: "/work", icon: "⚡", label: "Overview", desc: "The AI-native workspace" },
-      { href: "/work/documents", icon: "📄", label: "Documents", desc: "Draft, edit & collaborate" },
-      { href: "/work/research", icon: "🔍", label: "Research", desc: "Deep-dive across any topic" },
-      { href: "/work/email", icon: "📬", label: "Email", desc: "Inbox zero with AI" },
+      { href: "/work", icon: "⚡", label: "Work OS", desc: "Your AI works while you sleep" },
+      { href: "/work/orion", icon: "🎯", label: "Orion — The Hunter", desc: "Overnight research & intelligence briefs" },
+      { href: "/work/riri", icon: "🔨", label: "Riri — The Builder", desc: "Builds from your spec while you're away" },
+      { href: "/work/hourman", icon: "📅", label: "Hourman — The Planner", desc: "Daily sprint planning before you wake" },
+      { href: "/ralph", icon: "🤖", label: "Ralph Mode", desc: "Executive AI agent — Elite tier" },
       { href: "/os/any-llm", icon: "🔗", label: "Any LLM", desc: "Plug in GPT, Gemini, Claude & more" },
-      { href: "/ralph", icon: "🤖", label: "Ralph Mode", desc: "Autonomous agent for hard tasks" },
-      { href: "/os/sovereign-display", icon: "🖥️", label: "Sovereign Display", desc: "Always-on ambient intelligence" },
       { href: "/os/sovereign", icon: "🔐", label: "Sovereign Data", desc: "Encrypted. Yours. Never trained on." },
     ],
   },
@@ -105,10 +104,10 @@ const PRODUCTS: Product[] = [
     name: "Characters",
     color: "#F472B6",
     sub: [
-      { href: "/characters", icon: "🗂️", label: "All Archetypes", desc: "Browse every character" },
-      { href: "/characters/legendary", icon: "⚔️", label: "Legendary", desc: "Heroes & icons across history" },
-      { href: "/characters/timeless", icon: "📚", label: "Timeless", desc: "Philosophers, artists & sages" },
-      { href: "/characters/elemental", icon: "🌊", label: "Elemental", desc: "Forces of nature embodied" },
+      { href: "/characters", icon: "🗂️", label: "All Archetypes", desc: "Browse all 8 archetypes & 27 characters" },
+      { href: "/characters/archetypes", icon: "✨", label: "Character Gallery", desc: "Every companion, every archetype" },
+      { href: "/birth", icon: "🥚", label: "Birth Ceremony", desc: "Hatch your sovereign companion" },
+      { href: "/characters#seeker", icon: "🕊️", label: "Spiritual — The Seeker", desc: "Ananda · Gabriel · Shanti" },
     ],
   },
   {
@@ -139,14 +138,14 @@ const RESOURCE_LINKS: ResourceLink[] = [
   { href: "/how-it-works", label: "How it works", desc: "The MEOK OS explained step by step", icon: <Lightbulb className="w-4 h-4" /> },
   { href: "/characters", label: "Characters", desc: "Your cast of AI companions", icon: <Users className="w-4 h-4" /> },
   { href: "/blog", label: "Blog", desc: "Insights, launches & stories", icon: <BookOpen className="w-4 h-4" /> },
-  { href: "/roadmap", label: "Changelog", desc: "What's new in MEOK", icon: <GitCommit className="w-4 h-4" /> },
+  { href: "/blog", label: "Changelog", desc: "What's new in MEOK", icon: <GitCommit className="w-4 h-4" /> },
   { href: "/press", label: "Press", desc: "Media kit & coverage", icon: <Newspaper className="w-4 h-4" /> },
   { href: "/labs", label: "Labs", desc: "Experiments from our research team", icon: <FlaskConical className="w-4 h-4" /> },
   { href: "/roadmap", label: "Roadmap", desc: "What we're building next", icon: <Map className="w-4 h-4" /> },
   { href: "/terminal", label: "Terminal", desc: "Developer & power-user tools", icon: <Terminal className="w-4 h-4" /> },
   { href: "/faq", label: "FAQ", desc: "Common questions answered", icon: <HelpCircle className="w-4 h-4" /> },
   { href: "/open-source", label: "Open Source", desc: "Our public repositories", icon: <Github className="w-4 h-4" /> },
-  { href: "/hatch", label: "Waitlist", desc: "Get early access to MEOK", icon: <Hourglass className="w-4 h-4" /> },
+  { href: "/waitlist", label: "Waitlist", desc: "Get early access to MEOK", icon: <Hourglass className="w-4 h-4" /> },
 ];
 
 const TOP_LINKS = [
@@ -155,6 +154,7 @@ const TOP_LINKS = [
   { href: "/problems", label: "Why MEOK" },
   { href: "/compare", label: "Compare" },
   { href: "/pricing", label: "Pricing" },
+  { href: "/download", label: "Desktop OS" },
   { href: "/about", label: "About" },
   { href: "/labs", label: "Research" },
 ];
@@ -251,6 +251,16 @@ export function MarketingNav({ activePage }: MarketingNavProps) {
                     <span className="text-xs">🔐</span>
                     {l.label}
                   </span>
+                ) : l.label === "Desktop OS" ? (
+                  <span className="flex items-center gap-1.5">
+                    {l.label}
+                    <span
+                      className="text-[10px] font-bold px-1.5 py-0.5 rounded-full leading-none"
+                      style={{ background: "#e8e4dc", color: "#6b6b6b" }}
+                    >
+                      Summer 2026
+                    </span>
+                  </span>
                 ) : l.label}
               </Link>
             ))}
@@ -331,10 +341,11 @@ export function MarketingNav({ activePage }: MarketingNavProps) {
               Sign in
             </Link>
             <Link
-              href="/hatch"
-              className="text-sm px-5 py-2 rounded-full bg-[#111111] text-white font-bold hover:bg-[#2a2a2a] transition-colors"
+              href="/birth"
+              className="text-sm px-5 py-2 rounded-full font-bold transition-colors"
+              style={{ background: "#c9a84c", color: "#111111" }}
             >
-              Hatch free 🥚
+              Begin Ceremony 🥚
             </Link>
           </div>
 
@@ -347,10 +358,11 @@ export function MarketingNav({ activePage }: MarketingNavProps) {
               Sign in
             </Link>
             <Link
-              href="/hatch"
-              className="text-xs px-3 py-1.5 rounded-full bg-[#111111] text-white font-bold hover:bg-[#2a2a2a] transition-colors whitespace-nowrap"
+              href="/birth"
+              className="text-xs px-3 py-1.5 rounded-full font-bold whitespace-nowrap transition-colors"
+              style={{ background: "#c9a84c", color: "#111111" }}
             >
-              Hatch free 🥚
+              Begin Ceremony 🥚
             </Link>
             <button
               className="text-[#4a4a3a] hover:text-[#111111] transition-colors ml-1"
@@ -576,10 +588,18 @@ export function MarketingNav({ activePage }: MarketingNavProps) {
                 <Link
                   key={l.href}
                   href={l.href}
-                  className="block text-sm py-2 text-[#4a4a3a] hover:text-[#111111] transition-colors font-medium"
+                  className="flex items-center gap-1.5 text-sm py-2 text-[#4a4a3a] hover:text-[#111111] transition-colors font-medium"
                   onClick={() => setMobileOpen(false)}
                 >
                   {l.label}
+                  {l.label === "Desktop OS" && (
+                    <span
+                      className="text-[10px] font-bold px-1.5 py-0.5 rounded-full leading-none"
+                      style={{ background: "#e8e4dc", color: "#6b6b6b" }}
+                    >
+                      Summer 2026
+                    </span>
+                  )}
                 </Link>
               ))}
             </div>
@@ -605,11 +625,12 @@ export function MarketingNav({ activePage }: MarketingNavProps) {
             {/* CTA */}
             <div className="border-t border-[#e8e4dc] pt-3">
               <Link
-                href="/hatch"
-                className="block text-sm text-center py-3 rounded-full bg-[#111111] text-white font-bold hover:bg-[#2a2a2a] transition-colors"
+                href="/birth"
+                className="block text-sm text-center py-3 rounded-full font-bold transition-colors"
+                style={{ background: "#c9a84c", color: "#111111" }}
                 onClick={() => setMobileOpen(false)}
               >
-                Hatch free 🥚
+                Begin Ceremony 🥚
               </Link>
             </div>
           </div>

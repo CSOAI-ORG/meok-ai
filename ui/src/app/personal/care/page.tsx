@@ -13,7 +13,6 @@ import {
   XCircle,
   ChevronDown,
 } from "lucide-react";
-import { MarketingNav } from "@/components/marketing-nav";
 import { MarketingFooter } from "@/components/marketing-footer";
 import { useState } from "react";
 
@@ -126,7 +125,7 @@ const jsonLd = {
   description:
     "MEOK tracks 6 care dimensions and scores every response against the Maternal Covenant care framework.",
   url: "https://meok.ai/personal/care",
-  provider: { "@type": "Organization", name: "MEOK AI LTD", url: "https://meok.ai" },
+  provider: { "@type": "Organization", name: "MEOK AI LABS", url: "https://meok.ai" },
 };
 
 /* ─── FAQ ITEM ─────────────────────────────────────────── */
@@ -158,7 +157,6 @@ export default function CarePage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <MarketingNav />
 
       {/* ─── HERO ─────────────────────────────────────────── */}
       <section className="relative pt-32 pb-24 px-6 text-center overflow-hidden">

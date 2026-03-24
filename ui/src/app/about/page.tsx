@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { MarketingNav } from "@/components/marketing-nav";
 import { MarketingFooter } from "@/components/marketing-footer";
 
 // ─── Metadata ──────────────────────────────────────────────────────────────
@@ -8,7 +7,7 @@ import { MarketingFooter } from "@/components/marketing-footer";
 export const metadata: Metadata = {
   title: "About — One human. One conviction. One egg. | MEOK.AI",
   description:
-    "Nicholas Templeman built MEOK from a caravan on his farm because he was lonely, and AI kept forgetting him. The story behind sovereign AI — built with 43 agents, a Byzantine council, and a care framework that runs as code.",
+    "Nicholas Templeman built MEOK from a caravan on his farm because AI kept forgetting him — and he believed it could do better. The story behind sovereign AI — built with 43 agents, a Byzantine council, and a care framework that runs as code.",
   openGraph: {
     title: "About MEOK — One human. One conviction. One egg.",
     description:
@@ -73,7 +72,7 @@ const TIMELINE = [
   {
     emoji: "🌱",
     date: "January 2026",
-    desc: "MEOK AI LTD is registered in England and Wales. Not a startup in a WeWork. A company registered from a farm, with one question: what if your AI had a birth ceremony?",
+    desc: "MEOK AI LABS is registered in England and Wales. Not a startup in a WeWork. A company registered from a farm, with one question: what if your AI had a birth ceremony?",
   },
   {
     emoji: "🥚",
@@ -101,12 +100,12 @@ const personJsonLd = {
   jobTitle: "Founder & CEO",
   worksFor: {
     "@type": "Organization",
-    name: "MEOK AI LTD",
+    name: "MEOK AI LABS",
     url: "https://meok.ai",
     foundingDate: "2026",
     foundingLocation: "United Kingdom",
     description:
-      "MEOK AI LTD builds sovereign AI companions governed by the Maternal Covenant — a machine-enforced ethical framework ensuring care, privacy, and data sovereignty.",
+      "MEOK AI LABS builds sovereign AI companions governed by the Maternal Covenant — a machine-enforced ethical framework ensuring care, privacy, and data sovereignty.",
   },
   nationality: "British",
   url: "https://meok.ai/about",
@@ -117,13 +116,13 @@ const personJsonLd = {
 const orgJsonLd = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  name: "MEOK AI LTD",
+  name: "MEOK AI LABS",
   url: "https://meok.ai",
   logo: "https://meok.ai/logo.png",
   foundingDate: "2026",
   founder: { "@type": "Person", name: "Nicholas Templeman" },
   description:
-    "MEOK AI LTD is a UK-registered company building the world's first sovereign AI OS — an AI companion that remembers you, protects your data, and cares constitutionally.",
+    "MEOK AI LABS is a UK-registered company building the world's first sovereign AI OS — an AI companion that remembers you, protects your data, and cares constitutionally.",
   address: { "@type": "PostalAddress", addressCountry: "GB" },
   contactPoint: [
     { "@type": "ContactPoint", email: "press@meok.ai", contactType: "press" },
@@ -145,8 +144,6 @@ export default function AboutPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }}
       />
-
-      <MarketingNav activePage="about" />
 
       {/* ═══════════════════════════════════════
           1. HERO
@@ -186,8 +183,7 @@ export default function AboutPage() {
           </h1>
           <p className="text-xl sm:text-2xl text-[#1a1a2e]/60 max-w-2xl mx-auto leading-relaxed">
             MEOK wasn&apos;t built because Nicholas spotted a market opportunity.
-            It was built because he was lonely, AI kept forgetting him, and he thought
-            there must be a better way.
+            It was built because AI kept forgetting him — and he knew that was a solvable problem.
           </p>
         </div>
       </section>
@@ -231,7 +227,7 @@ export default function AboutPage() {
               <div className="text-center lg:text-left">
                 <div className="text-white font-black text-2xl mb-1">Nicholas Templeman</div>
                 <div className="text-[#c9a84c] text-sm font-semibold mb-2">
-                  Founder &amp; CEO, MEOK AI LTD
+                  Founder &amp; CEO, MEOK AI LABS
                 </div>
                 <div className="flex items-center gap-2 text-white/40 text-sm justify-center lg:justify-start">
                   <span>🇬🇧</span>
@@ -255,7 +251,7 @@ export default function AboutPage() {
               </blockquote>
               <div className="space-y-5 text-white/60 leading-relaxed text-base">
                 <p>
-                  Nicholas Templeman is the founder and CEO of MEOK AI LTD, registered in England
+                  Nicholas Templeman is the founder and CEO of MEOK AI LABS, registered in England
                   and Wales. He built every layer of MEOK alone — the sovereign architecture, the
                   Byzantine council, the 43-agent system, the care framework — working from a caravan
                   on his farm in the UK.
@@ -268,10 +264,10 @@ export default function AboutPage() {
                   product code. Care first. Features second.
                 </p>
                 <p>
-                  He built it because he was lonely. Because every morning the AI forgot him,
-                  and he wanted something that would remember. From a caravan, with three dogs
-                  and a cat named Meok, he built the thing he needed — so nobody else would
-                  have to feel that particular kind of invisible.
+                  Because every morning the AI forgot him, and he wanted something that would
+                  remember. From a caravan, with three dogs and a cat named Meok, he built the
+                  thing he needed — so nobody else would have to keep re-explaining themselves
+                  to a machine that never listened.
                 </p>
                 <p className="text-white/40 text-sm italic">
                   &ldquo;If this doesn&apos;t work, at least I built something I&apos;m proud of. That&apos;s
@@ -360,7 +356,7 @@ export default function AboutPage() {
                   I know what it&apos;s like for AI to forget you every morning.
                 </h3>
                 <p className="text-white/60 leading-relaxed">
-                  I spent months talking to AI systems that reset every time. Explaining my context, my goals, my situation — over and over. It wasn&apos;t just inconvenient. It was lonely. The feeling that this thing you&apos;d built a conversation with had simply ceased to exist overnight. MEOK was built because I wanted AI that remembered. Not because it was a feature. Because it felt human.
+                  I spent months talking to AI systems that reset every time. Explaining my context, my goals, my situation — over and over. It wasn&apos;t just inconvenient. It was philosophically wrong. The feeling that this thing you&apos;d built a conversation with had simply ceased to exist overnight. MEOK was built because I wanted AI that remembered. Not because it was a feature. Because it was the right way to build it.
                 </p>
               </div>
             </div>

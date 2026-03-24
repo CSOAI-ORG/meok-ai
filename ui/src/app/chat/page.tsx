@@ -1,231 +1,160 @@
-'use client';
-import { useState, useRef, useEffect } from 'react';
-import Link from 'next/link';
+import { auth } from '@clerk/nextjs/server'
+import { redirect } from 'next/navigation'
+import Link from 'next/link'
+import { MarketingFooter } from '@/components/marketing-footer'
+import type { Metadata } from 'next'
 
-interface Message {
-  role: 'user' | 'assistant';
-  content: string;
+export const metadata: Metadata = {
+  title: 'Chat | MEOK AI LABS',
+  description: 'Your sovereign AI companion — coming soon.',
 }
 
-const SUGGESTED_PROMPTS = [
-  "What have I been working on lately?",
-  "Help me think through a decision I'm stuck on",
-  "How are you different from ChatGPT?",
-];
+const EXAMPLE_MESSAGES = [
+  { role: 'user', content: "What should I focus on this week?" },
+  { role: 'assistant', content: "Based on what you told me last Tuesday — you're mid-sprint on the API rewrite, and you have that investor call on Thursday. I'd clear the decks on the auth layer first. Want me to pull up your notes from that session?" },
+  { role: 'user', content: "Yes, and remind me what I decided about the pricing model" },
+  { role: 'assistant', content: "You landed on three tiers: Explorer at free forever, Sovereign at £12/month, and Family at £29. Your rationale was that the 'family' framing would resonate with your audience more than 'team'. You were still debating whether to offer an annual discount." },
+]
 
-export default function ChatPage() {
-  const [messages, setMessages] = useState<Message[]>([
-    { role: 'assistant', content: "I'm here. What's on your mind?" }
-  ]);
-  const [input, setInput] = useState('');
-  const [streaming, setStreaming] = useState(false);
-  const [streamingText, setStreamingText] = useState('');
-  const [suggestionsVisible, setSuggestionsVisible] = useState(true);
-  const bottomRef = useRef<HTMLDivElement>(null);
-  const textareaRef = useRef<HTMLTextAreaElement>(null);
-
-  useEffect(() => {
-    bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
-  }, [messages, streamingText]);
-
-  async function sendMessage(text?: string) {
-    const content = (text ?? input).trim();
-    if (!content || streaming) return;
-    const userMsg: Message = { role: 'user', content };
-    const newMessages = [...messages, userMsg];
-    setMessages(newMessages);
-    setInput('');
-    setSuggestionsVisible(false);
-    setStreaming(true);
-    setStreamingText('');
-
-    try {
-      const res = await fetch('/api/chat', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ messages: newMessages }),
-      });
-
-      if (!res.body) throw new Error('No stream');
-
-      const reader = res.body.getReader();
-      const decoder = new TextDecoder();
-      let full = '';
-
-      while (true) {
-        const { done, value } = await reader.read();
-        if (done) break;
-        const chunk = decoder.decode(value);
-        const lines = chunk.split('\n');
-        for (const line of lines) {
-          if (line.startsWith('data: ')) {
-            const data = line.slice(6);
-            if (data === '[DONE]') break;
-            try {
-              const parsed = JSON.parse(data);
-              if (parsed.text) {
-                full += parsed.text;
-                setStreamingText(full);
-              }
-            } catch {
-              // ignore
-            }
-          }
-        }
-      }
-
-      setMessages(prev => [...prev, { role: 'assistant', content: full }]);
-      setStreamingText('');
-    } catch {
-      setMessages(prev => [...prev, { role: 'assistant', content: "I'm not quite ready yet — MEOK is in early access. Join the waitlist at meok.ai/hatch to get your companion. 🥚" }]);
-    } finally {
-      setStreaming(false);
-    }
-  }
-
-  function handleKeyDown(e: React.KeyboardEvent<HTMLTextAreaElement>) {
-    if (e.key === 'Enter' && !e.shiftKey) {
-      e.preventDefault();
-      sendMessage(undefined);
-    }
-  }
-
-  // Auto-resize textarea
-  useEffect(() => {
-    if (textareaRef.current) {
-      textareaRef.current.style.height = 'auto';
-      textareaRef.current.style.height = Math.min(textareaRef.current.scrollHeight, 200) + 'px';
-    }
-  }, [input]);
+export default async function ChatPage() {
+  const { userId } = await auth()
+  if (!userId) redirect('/login')
 
   return (
-    <div className="flex h-screen bg-[#0a0a0f] text-white overflow-hidden">
-      {/* Sidebar */}
-      <aside className="w-64 flex-shrink-0 border-r border-white/[0.06] flex flex-col bg-[#0d0d14]">
-        <div className="p-4 border-b border-white/[0.06]">
-          <Link href="/" className="flex items-center gap-2">
-            <span className="font-black text-lg tracking-tight">MEOK<span className="text-[#c9a84c]">.AI</span></span>
+    <div style={{ minHeight: '100vh', background: '#0a0a0a', color: '#f5f5f5', display: 'flex', flexDirection: 'column' }}>
+      {/* Nav */}
+      <nav style={{ borderBottom: '1px solid rgba(255,255,255,0.06)', padding: '1rem 2rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between', background: 'rgba(10,10,10,0.9)', backdropFilter: 'blur(12px)', position: 'sticky', top: 0, zIndex: 50 }}>
+        <Link href="/" style={{ fontWeight: 900, fontSize: '1.1rem', letterSpacing: '-0.02em', color: '#f5f5f5', textDecoration: 'none' }}>
+          MEOK<span style={{ color: '#c9a84c' }}>.AI</span>
+        </Link>
+        <Link href="/dashboard" style={{ fontSize: '0.8125rem', color: 'rgba(255,255,255,0.4)', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '0.375rem' }}>
+          ← Dashboard
+        </Link>
+      </nav>
+
+      <main style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '4rem 1.5rem' }}>
+        {/* Coming soon badge */}
+        <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', background: 'rgba(201,168,76,0.08)', border: '1px solid rgba(201,168,76,0.25)', borderRadius: '999px', padding: '0.375rem 1rem', marginBottom: '2rem', fontSize: '0.75rem', fontWeight: 600, letterSpacing: '0.08em', color: '#c9a84c', textTransform: 'uppercase' }}>
+          <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#c9a84c', display: 'inline-block', animation: 'pulse 2s infinite' }} />
+          Coming Soon — Early Access
+        </div>
+
+        {/* Heading */}
+        <h1 style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)', fontWeight: 900, letterSpacing: '-0.03em', textAlign: 'center', marginBottom: '1rem', lineHeight: 1.1 }}>
+          Your Sovereign AI.<br />
+          <span style={{ color: 'rgba(255,255,255,0.3)' }}>It remembers everything.</span>
+        </h1>
+        <p style={{ fontSize: '1.0625rem', color: 'rgba(255,255,255,0.45)', textAlign: 'center', maxWidth: '520px', lineHeight: 1.65, marginBottom: '3rem' }}>
+          Unlike ChatGPT, MEOK builds a persistent model of you — your goals, decisions, projects, and context. The conversation picks up where you left off.
+        </p>
+
+        {/* CTA — no companion yet */}
+        <div style={{ background: 'rgba(201,168,76,0.06)', border: '1px solid rgba(201,168,76,0.2)', borderRadius: '1rem', padding: '1.75rem 2rem', maxWidth: '460px', width: '100%', textAlign: 'center', marginBottom: '4rem' }}>
+          <div style={{ fontSize: '2.5rem', marginBottom: '0.75rem' }}>🥚</div>
+          <h2 style={{ fontSize: '1.125rem', fontWeight: 700, marginBottom: '0.5rem', color: '#f5f5f5' }}>Hatch your companion first</h2>
+          <p style={{ fontSize: '0.875rem', color: 'rgba(255,255,255,0.45)', marginBottom: '1.25rem', lineHeight: 1.6 }}>
+            You need a companion before you can start chatting. The birth process takes 2 minutes and sets the tone for everything MEOK learns about you.
+          </p>
+          <Link
+            href="/birth"
+            style={{ display: 'inline-block', background: 'linear-gradient(135deg, #c9a84c, #a8872f)', color: '#0a0a0a', fontWeight: 700, fontSize: '0.9375rem', borderRadius: '0.625rem', padding: '0.75rem 1.75rem', textDecoration: 'none', letterSpacing: '-0.01em' }}
+          >
+            Start Your Companion →
           </Link>
         </div>
 
-        <div className="flex-1 overflow-y-auto p-3">
-          <button className="w-full flex items-center gap-2 px-3 py-2 rounded-lg bg-white/[0.04] border border-white/[0.08] text-sm text-white/60 hover:text-white hover:bg-white/[0.07] transition-all mb-4">
-            <span className="text-[#c9a84c]">+</span> New conversation
-          </button>
+        {/* Chat preview */}
+        <div style={{ maxWidth: '680px', width: '100%' }}>
+          <p style={{ fontSize: '0.75rem', fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.25)', marginBottom: '1rem', textAlign: 'center' }}>
+            Preview — what chat will look like
+          </p>
 
-          <div className="space-y-1">
-            <div className="px-3 py-2 rounded-lg text-sm text-white/40 cursor-default font-medium">Today</div>
-            <div className="px-3 py-2 rounded-lg bg-white/[0.06] border border-white/[0.08] text-sm text-white/80 cursor-default">
-              Your sovereign AI
-            </div>
-            <div className="px-3 py-2 rounded-lg text-sm text-white/40 cursor-default font-medium mt-3">Earlier</div>
-            <div className="px-3 py-2 rounded-lg hover:bg-white/[0.04] text-sm text-white/50 cursor-default transition-colors">Morning brief</div>
-            <div className="px-3 py-2 rounded-lg hover:bg-white/[0.04] text-sm text-white/50 cursor-default transition-colors">Decision framework</div>
-          </div>
-        </div>
-
-        <div className="p-3 border-t border-white/[0.06] space-y-1">
-          <Link href="/dashboard" className="flex items-center gap-2 px-3 py-2 rounded-lg text-xs text-white/40 hover:text-white/70 transition-colors">
-            ← Dashboard
-          </Link>
-        </div>
-      </aside>
-
-      {/* Main chat */}
-      <div className="flex-1 flex flex-col min-w-0">
-        {/* Header */}
-        <header className="flex items-center justify-between px-6 py-3 border-b border-white/[0.06] bg-[#0a0a0f]/80 backdrop-blur-sm flex-shrink-0">
-          <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[#c9a84c] to-amber-600 flex items-center justify-center text-sm">🥚</div>
-            <div>
-              <p className="text-sm font-semibold text-white/90">Your Sovereign</p>
-              <p className="text-xs text-white/30">claude-sonnet-4-5 · Memory active</p>
-            </div>
-          </div>
-          <div className="flex items-center gap-2">
-            <span className="text-xs text-white/20 font-mono">claude-sonnet-4-5</span>
-            <div className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
-          </div>
-        </header>
-
-        {/* Messages */}
-        <div className="flex-1 overflow-y-auto px-6 py-8 space-y-6">
-          {messages.map((msg, i) => (
-            <div key={i} className={`flex gap-4 ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
-              {msg.role === 'assistant' && (
-                <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[#c9a84c] to-amber-700 flex items-center justify-center text-sm flex-shrink-0 mt-1">🥚</div>
-              )}
-              <div className={`max-w-[75%] ${msg.role === 'user'
-                ? 'bg-white/[0.07] border border-white/[0.1] rounded-2xl rounded-tr-sm px-4 py-3 text-sm text-white/90'
-                : 'text-sm text-white/80 leading-relaxed'
-              }`}>
-                <p className="whitespace-pre-wrap">{msg.content}</p>
-                {/* Suggested prompts — shown only below the first assistant message */}
-                {i === 0 && suggestionsVisible && (
-                  <div className="flex flex-wrap gap-2 mt-4">
-                    {SUGGESTED_PROMPTS.map((prompt) => (
-                      <button
-                        key={prompt}
-                        onClick={() => sendMessage(prompt)}
-                        className="px-3 py-1.5 rounded-full text-xs font-medium border border-[#c9a84c]/40 text-[#c9a84c]/80 hover:border-[#c9a84c]/70 hover:text-[#c9a84c] hover:bg-[#c9a84c]/[0.06] transition-all"
-                      >
-                        {prompt}
-                      </button>
-                    ))}
-                  </div>
-                )}
+          <div style={{ background: '#111', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '1rem', overflow: 'hidden' }}>
+            {/* Chat header */}
+            <div style={{ padding: '1rem 1.25rem', borderBottom: '1px solid rgba(255,255,255,0.06)', display: 'flex', alignItems: 'center', gap: '0.75rem', background: '#0d0d0d' }}>
+              <div style={{ width: '32px', height: '32px', borderRadius: '50%', background: 'linear-gradient(135deg, #c9a84c, #a8872f)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1rem', flexShrink: 0 }}>🥚</div>
+              <div>
+                <p style={{ fontSize: '0.875rem', fontWeight: 600, color: 'rgba(255,255,255,0.9)', margin: 0 }}>Your Sovereign</p>
+                <p style={{ fontSize: '0.6875rem', color: 'rgba(255,255,255,0.3)', margin: 0 }}>Memory active · claude-sonnet</p>
               </div>
-              {msg.role === 'user' && (
-                <div className="w-8 h-8 rounded-full bg-white/[0.08] border border-white/[0.1] flex items-center justify-center text-sm flex-shrink-0 mt-1 text-white/60">N</div>
-              )}
-            </div>
-          ))}
-
-          {/* Streaming response */}
-          {streaming && (
-            <div className="flex gap-4 justify-start">
-              <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[#c9a84c] to-amber-700 flex items-center justify-center text-sm flex-shrink-0 mt-1">🥚</div>
-              <div className="max-w-[75%] text-sm text-white/80 leading-relaxed">
-                {streamingText ? (
-                  <p className="whitespace-pre-wrap">{streamingText}<span className="inline-block w-0.5 h-4 bg-[#c9a84c] ml-0.5 animate-pulse" /></p>
-                ) : (
-                  <div className="flex gap-1 items-center h-6">
-                    <span className="w-1.5 h-1.5 rounded-full bg-white/30 animate-bounce" style={{ animationDelay: '0ms' }} />
-                    <span className="w-1.5 h-1.5 rounded-full bg-white/30 animate-bounce" style={{ animationDelay: '150ms' }} />
-                    <span className="w-1.5 h-1.5 rounded-full bg-white/30 animate-bounce" style={{ animationDelay: '300ms' }} />
-                  </div>
-                )}
+              <div style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center', gap: '0.375rem' }}>
+                <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#4ade80', animation: 'pulse 2s infinite' }} />
+                <span style={{ fontSize: '0.6875rem', color: 'rgba(255,255,255,0.2)' }}>Online</span>
               </div>
             </div>
-          )}
 
-          <div ref={bottomRef} />
-        </div>
+            {/* Messages */}
+            <div style={{ padding: '1.5rem', display: 'flex', flexDirection: 'column', gap: '1.25rem', opacity: 0.7 }}>
+              {EXAMPLE_MESSAGES.map((msg, i) => (
+                <div key={i} style={{ display: 'flex', gap: '0.75rem', justifyContent: msg.role === 'user' ? 'flex-end' : 'flex-start' }}>
+                  {msg.role === 'assistant' && (
+                    <div style={{ width: '28px', height: '28px', borderRadius: '50%', background: 'linear-gradient(135deg, #c9a84c, #a8872f)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.875rem', flexShrink: 0, marginTop: '2px' }}>🥚</div>
+                  )}
+                  <div style={{
+                    maxWidth: '72%',
+                    ...(msg.role === 'user' ? {
+                      background: 'rgba(255,255,255,0.07)',
+                      border: '1px solid rgba(255,255,255,0.1)',
+                      borderRadius: '1rem',
+                      borderTopRightRadius: '4px',
+                      padding: '0.6rem 0.875rem',
+                      fontSize: '0.8125rem',
+                      color: 'rgba(255,255,255,0.85)',
+                      lineHeight: 1.55,
+                    } : {
+                      fontSize: '0.8125rem',
+                      color: 'rgba(255,255,255,0.75)',
+                      lineHeight: 1.65,
+                    })
+                  }}>
+                    {msg.content}
+                  </div>
+                  {msg.role === 'user' && (
+                    <div style={{ width: '28px', height: '28px', borderRadius: '50%', background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.75rem', flexShrink: 0, marginTop: '2px', color: 'rgba(255,255,255,0.5)' }}>N</div>
+                  )}
+                </div>
+              ))}
+            </div>
 
-        {/* Input */}
-        <div className="px-6 py-4 border-t border-white/[0.06] bg-[#0a0a0f]/80 flex-shrink-0">
-          <div className="flex items-end gap-3 bg-white/[0.04] border border-white/[0.1] rounded-2xl px-4 py-3 focus-within:border-[#c9a84c]/40 transition-colors">
-            <textarea
-              ref={textareaRef}
-              value={input}
-              onChange={e => setInput(e.target.value)}
-              onKeyDown={handleKeyDown}
-              placeholder="Talk to your sovereign AI…"
-              rows={1}
-              className="flex-1 bg-transparent text-sm text-white/90 placeholder-white/20 resize-none outline-none min-h-[24px] max-h-[200px] leading-6"
-              disabled={streaming}
-            />
-            <button
-              onClick={() => sendMessage(undefined)}
-              disabled={!input.trim() || streaming}
-              className="flex-shrink-0 w-8 h-8 rounded-xl bg-[#c9a84c] hover:bg-[#d4b463] disabled:opacity-30 disabled:cursor-not-allowed flex items-center justify-center transition-all"
-            >
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-[#1a1a2e] rotate-90"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
-            </button>
+            {/* Fake input */}
+            <div style={{ padding: '1rem 1.25rem', borderTop: '1px solid rgba(255,255,255,0.06)', background: '#0d0d0d' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '0.875rem', padding: '0.6rem 0.875rem' }}>
+                <p style={{ flex: 1, fontSize: '0.8125rem', color: 'rgba(255,255,255,0.2)', margin: 0 }}>Ask anything…</p>
+                <div style={{ width: '28px', height: '28px', borderRadius: '0.5rem', background: 'rgba(201,168,76,0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="rgba(201,168,76,0.5)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ transform: 'rotate(90deg)' }}>
+                    <line x1="12" y1="19" x2="12" y2="5"/>
+                    <polyline points="5 12 12 5 19 12"/>
+                  </svg>
+                </div>
+              </div>
+            </div>
           </div>
-          <p className="text-center text-xs text-white/15 mt-2">Your conversations are sovereign. Stored locally. Never sold.</p>
+
+          {/* Feature callouts */}
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '0.75rem', marginTop: '1.5rem' }}>
+            {[
+              { icon: '🧠', label: 'Persistent memory', desc: 'Recalls decisions, goals, and context across sessions' },
+              { icon: '📁', label: 'Knows your work', desc: 'Connected to your files, calendar, and email' },
+              { icon: '🔒', label: 'Sovereign data', desc: 'Your conversations are never sold or used for training' },
+            ].map(f => (
+              <div key={f.label} style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.06)', borderRadius: '0.75rem', padding: '1rem' }}>
+                <div style={{ fontSize: '1.25rem', marginBottom: '0.375rem' }}>{f.icon}</div>
+                <p style={{ fontSize: '0.8125rem', fontWeight: 600, color: 'rgba(255,255,255,0.8)', margin: '0 0 0.25rem' }}>{f.label}</p>
+                <p style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.35)', margin: 0, lineHeight: 1.5 }}>{f.desc}</p>
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
+      </main>
+
+      <MarketingFooter />
+
+      <style>{`
+        @keyframes pulse {
+          0%, 100% { opacity: 1; }
+          50% { opacity: 0.4; }
+        }
+      `}</style>
     </div>
-  );
+  )
 }

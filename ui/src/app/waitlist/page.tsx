@@ -19,7 +19,6 @@ import {
   MessageCircle,
   Vote,
 } from 'lucide-react';
-import { MarketingNav } from '@/components/marketing-nav';
 import { MarketingFooter } from '@/components/marketing-footer';
 
 // ── JSON-LD ────────────────────────────────────────────────────────────────────
@@ -39,7 +38,7 @@ const jsonLd = {
   },
   organizer: {
     '@type': 'Organization',
-    name: 'MEOK AI LTD',
+    name: 'MEOK AI LABS',
     url: 'https://meok.ai',
   },
   offers: {
@@ -425,7 +424,6 @@ export default function WaitlistPage() {
       />
 
       <div className="min-h-screen bg-[#0d0c18] text-white">
-        <MarketingNav />
 
         {/* ── Hero ──────────────────────────────────────────────────────── */}
         <section className="relative min-h-screen flex flex-col items-center justify-center text-center px-6 py-32 overflow-hidden">

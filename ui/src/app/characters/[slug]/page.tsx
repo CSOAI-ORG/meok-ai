@@ -1,6 +1,5 @@
 import { CHARACTERS, getCharacterBySlug } from '@/data/characters';
 import { notFound } from 'next/navigation';
-import { MarketingNav } from '@/components/marketing-nav';
 import { MarketingFooter } from '@/components/marketing-footer';
 import Link from 'next/link';
 
@@ -316,7 +315,6 @@ export default async function CharacterDetailPage({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <MarketingNav />
 
       {/* ══════════════════════════════════════════════
           1. HERO — full-bleed with character color radial

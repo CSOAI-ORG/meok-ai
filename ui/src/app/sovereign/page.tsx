@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { MarketingNav } from "@/components/marketing-nav";
 import { MarketingFooter } from "@/components/marketing-footer";
 import {
   ArrowRight,
@@ -142,10 +141,49 @@ const COMPLIANCE_ITEMS = [
   { standard: "ISO 27001-aligned", detail: "Security architecture aligned with international information security standards." },
 ];
 
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is sovereign AI?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sovereign AI is artificial intelligence that runs under your control rather than a corporation's. Your data stays encrypted with your keys, your memories are never used for training, and you can export or delete everything at any time. MEOK is a sovereign AI OS built on this principle."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How is MEOK different from ChatGPT or Claude?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "ChatGPT and Claude are cloud AI assistants — they retain conversation data, may train on it, and serve the company's business model. MEOK is a sovereign AI OS: it wraps any underlying model (including Claude) with persistent memory, a care-based personality, family Guardian protection, and full data portability."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the Byzantine Council in MEOK?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The Byzantine Council is MEOK's 46-agent governance system using Byzantine fault tolerance (f < n/3). No single agent can override the group. Agents vote on care alignment, threat responses, and strategic decisions — ensuring your AI always acts in your interest, not the platform's."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is MEOK compliant with UK GDPR?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. MEOK is architected for UK GDPR compliance: data minimisation by design, user-controlled encryption, full data export (Article 20), right to erasure (Article 17), and ICO registration before any live user data is processed."
+      }
+    }
+  ]
+}
+
 export default function SovereignPage() {
   return (
     <div className="min-h-screen bg-[#0d0c18] text-white">
-      <MarketingNav activePage="sovereign" />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
 
       {/* ── HERO ──────────────────────────────────────────────────────── */}
       <section className="relative flex flex-col items-center justify-center text-center pt-40 pb-28 px-6 overflow-hidden">

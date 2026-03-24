@@ -1,7 +1,6 @@
 'use client';
 
 import Link from 'next/link';
-import { MarketingNav } from '@/components/marketing-nav';
 import { MarketingFooter } from '@/components/marketing-footer';
 import { CHARACTERS } from '@/data/characters';
 
@@ -78,7 +77,6 @@ export default function ElementalPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(JSONLD) }}
       />
-      <MarketingNav />
 
       {/* ═══════════════════════════════════════════════
           1. HERO

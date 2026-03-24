@@ -1,13 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { MarketingNav } from "@/components/marketing-nav";
 import { MarketingFooter } from "@/components/marketing-footer";
 import { MapPin, Globe, Heart, Cpu, Code2, BrainCircuit, Zap, Eye, Clock } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Team — The People (and Agents) Behind MEOK | MEOK.AI",
   description:
-    "Meet the team behind MEOK AI LTD. Nicholas Templeman, founder, built the world's first sovereign AI OS from a caravan on his farm in the UK. Remote-first. Open roles available.",
+    "Meet the team behind MEOK AI LABS. Nicholas Templeman, founder, built the world's first sovereign AI OS from a caravan on his farm in the UK. Remote-first. Open roles available.",
   alternates: { canonical: "https://meok.ai/team" },
 };
 
@@ -44,7 +43,7 @@ const VALUES = [
   {
     icon: MapPin,
     title: "Remote-first, always",
-    desc: "MEOK AI LTD is UK-registered and operates fully remotely. No office, no commute, no theatre. Async by default. Meetings only when genuinely necessary.",
+    desc: "MEOK AI LABS is UK-registered and operates fully remotely. No office, no commute, no theatre. Async by default. Meetings only when genuinely necessary.",
   },
   {
     icon: Cpu,
@@ -88,7 +87,6 @@ const AGENTS_TYPES = [
 export default function TeamPage() {
   return (
     <div className="min-h-screen bg-[#0d0c18] text-white">
-      <MarketingNav />
 
       {/* ─── HERO ──────────────────────────────────────────────── */}
       <section className="relative pt-36 pb-24 px-6 text-center overflow-hidden">
@@ -112,7 +110,7 @@ export default function TeamPage() {
             <span className="text-[#c9a84c]">43 agents who act.</span>
           </h1>
           <p className="text-xl text-white/55 max-w-2xl mx-auto leading-relaxed">
-            MEOK AI LTD is a UK-registered company. Right now it&apos;s one founder, one vision,
+            MEOK AI LABS is a UK-registered company. Right now it&apos;s one founder, one vision,
             and a Byzantine Council of sovereign AI agents doing the heavy lifting.
           </p>
         </div>
@@ -347,7 +345,7 @@ export default function TeamPage() {
             to you, and answers only to you.
           </p>
           <p className="text-white/35 text-base leading-relaxed mb-12">
-            MEOK AI LTD is building the operating system for that future. UK-registered, care-governed,
+            MEOK AI LABS is building the operating system for that future. UK-registered, care-governed,
             open-sourced where it counts.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

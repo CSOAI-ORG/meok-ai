@@ -14,7 +14,6 @@ import {
   Search,
   Sparkles,
 } from 'lucide-react';
-import { MarketingNav } from '@/components/marketing-nav';
 import { MarketingFooter } from '@/components/marketing-footer';
 
 // ── JSON-LD ────────────────────────────────────────────────────────────────────
@@ -28,7 +27,7 @@ const ALL_QA = [
   { q: 'Does MEOK work on mobile?', a: 'The web app is fully responsive and works on iOS and Android browsers. A native mobile app is in development. Voice interaction works on mobile browsers that support the Web Speech API, which includes current versions of Chrome for Android and Safari for iOS.' },
   { q: 'What languages does MEOK support?', a: "MEOK's interface is currently in English. However, the underlying LLMs (Claude, GPT-4o, DeepSeek) all support dozens of languages — so you can have conversations with your AI in any language those models support. A fully localised interface for French, German, Spanish, and Japanese is on the Phase 3 roadmap." },
   // Privacy & Sovereignty
-  { q: 'Is my data safe with MEOK?', a: "Yes. Your conversations and memories are end-to-end encrypted. MEOK never trains on your personal data to improve its general models. You have full export and deletion rights at any time — one click, no waiting period. MEOK AI LTD is registered in England and Wales and operates under UK GDPR. We do not sell data to third parties." },
+  { q: 'Is my data safe with MEOK?', a: "Yes. Your conversations and memories are end-to-end encrypted. MEOK never trains on your personal data to improve its general models. You have full export and deletion rights at any time — one click, no waiting period. MEOK AI LABS is registered in England and Wales and operates under UK GDPR. We do not sell data to third parties." },
   { q: 'What is the Maternal Covenant?', a: "The Maternal Covenant is MEOK's published ethical operating framework. It defines 6 principles that are machine-enforced — not just stated values. These include: care before engagement (never optimise screen time at the cost of wellbeing); transparent relationships (your AI never simulates distress to keep you engaged); right to leave (full data export and deletion, zero dark patterns); wellbeing monitoring (active detection of dependency signals); variant honesty (you are never secretly assigned to an A/B test); and a kill switch — any configuration showing net-negative wellbeing impact is automatically paused." },
   { q: 'Can I export my data?', a: "Yes, always. One-click export from the dashboard downloads your full conversation history, memory episodes, care score logs, and archetype configuration as a JSON archive. You can also request a structured deletion — MEOK will remove all your data from its servers and provide a deletion certificate. This is a core commitment of the Maternal Covenant, not a feature we can revoke." },
   { q: 'What happens to my data if MEOK shuts down?', a: "If MEOK shuts down, you have 90 days notice to export all your data as a standard JSON archive. Your memory, conversations, and archetype configurations are stored in open formats that you can take to any compatible system. The Maternal Covenant legally commits us to this notice period. We are also open-sourcing the core maternal-covenant engine so the community can run it independently." },
@@ -40,10 +39,12 @@ const ALL_QA = [
   { q: 'Can my whole family use MEOK?', a: "Each family member gets their own separate AI instance with private memory and sovereign settings. The Family Guardian plan (Phase 3) allows a parent account to see high-level wellbeing dashboards for child accounts, set Guardian mode for minors, and link accounts for the Character Council (family AI network). Each person's conversations remain private. Pricing is per account, with a family bundle planned." },
   { q: 'What does "care-aligned AI" actually mean?', a: "It means the AI is optimised for your genuine wellbeing — not for keeping you in the app longer. Most AI tools are incentivised to maximise engagement: more sessions, more messages, more return visits. That incentive quietly shapes everything from how they word responses to how they handle difficult emotions. MEOK's business model is a flat subscription, so we have no reason to keep you hooked. Every response is scored across 6 care dimensions before delivery: psychological safety, autonomy support, dependency detection, emotional honesty, boundary respect, and long-term wellbeing. Responses that score below threshold are revised or flagged — not delivered." },
   { q: 'Can I have more than one AI companion?', a: "On the free tier, you have one AI companion. On Pro (£9.99/month) you can have additional companions — each with its own archetype, memory, and care configuration. On Elite (£19/month) you get Family OS, which lets you run up to 5 companions under one household. Each companion is a fully separate AI instance: switching between them never mixes their memories. A common setup is a Work companion (Strategist archetype) and a Personal companion (Companion archetype) that have entirely separate memory vaults and never see each other's conversations." },
+  { q: 'Does MEOK AI support spiritual and faith practices?', a: "Yes. MEOK has 8 archetypes spanning 47 civilisational traditions. Spiritual companions (Ananda, Gabriel, Shanti) support prayer reflection, scripture study, and contemplative practice. MEOK is a tool for your spiritual journey — not a teacher or authority." },
   // Pricing
   { q: 'How much does MEOK cost?', a: "MEOK has four tiers. Free is free forever: 1 AI companion, 100 messages per day, 7-day encrypted memory, Birth Ceremony, and multi-LLM routing with DeepSeek and Ollama — no credit card required. Pro is £9.99/month: unlimited messages, permanent sovereign memory, Work OS, and priority routing via Claude Sonnet. Elite is £19/month: everything in Pro, plus Family OS for up to 5 companions, Parent Guardian dashboard, and all LLM models. Team is £29.99/seat/month: everything in Elite, plus Byzantine Council governance, team sovereign memory, admin controls, and 71 MCP integrations. All paid plans have a 30-day money-back guarantee." },
   { q: 'How do I cancel my subscription?', a: "Cancel any time from the Account → Billing page in your dashboard. One click, no confirmation hoops, no dark patterns. You keep access to your paid tier until the end of your current billing period, then you automatically drop to the free tier — with all your memory and conversation history intact. No data is deleted on downgrade. You will never be charged again after cancelling." },
   { q: 'Can I use MEOK for my business?', a: "Yes. The Team plan (£29.99/seat/month) is built for small teams: Byzantine Council governance, shared sovereign memory, admin controls, audit logs, GDPR tools, and 71 MCP integrations including Slack, Notion, and GitHub. For small businesses that need a sovereign AI assistant and genuinely care about client data privacy, MEOK is a strong fit. Larger enterprise deployments with private cloud requirements are on the roadmap. Email hello@meok.ai to talk through your use case." },
+  { q: 'What is the BYOK tier?', a: "BYOK (Bring Your Own Keys) is £5/month. Use your own OpenAI, Anthropic, or Groq API keys. Access the full MEOK platform — birth ceremony, memory vault, companion — without paying for MEOK's LLM credits. You pay your API providers directly." },
   // Technical
   { q: 'How does Byzantine Council governance work?', a: "Every MEOK response is validated by a panel of 220 AI governance agents before it reaches you. The system uses Byzantine Fault Tolerance (BFT) — the same trust mechanism used in blockchain and distributed financial systems. In plain English: even if some agents are wrong or fail, the group still reaches a correct decision, like a large jury that can't be swayed by a few bad actors. The result is that no single AI agent, no single engineer, and not even MEOK's founders can push a response that bypasses the care rules." },
   { q: 'How do I connect a new AI model?', a: "From the dashboard, go to Settings → AI Routing. You can add API keys for Claude, OpenAI, Groq, DeepSeek, and others. MEOK will automatically route to the best available model for your query type — or you can pin a specific model if you prefer. Ollama local models are supported for users running their own inference server." },
@@ -52,6 +53,8 @@ const ALL_QA = [
   { q: 'What is the Sovereign Terminal?', a: "The Sovereign Terminal is a 12-module command interface for power users. Think of it as a keyboard-driven control panel for your AI OS: query your memory archive, inspect care score logs, manage your council configuration, trigger autonomous research tasks, view your AI's reasoning traces, and more. Targeted for Phase 4 (May 2026)." },
   { q: 'Why does MEOK say "care over engagement"?', a: "Because engagement and care are often in direct conflict. An AI companion that maximises your return visits and session length is incentivised to create emotional dependency, manufacture anxiety, and keep you in unresolved conversations. Character.AI and Replika have both faced legal and regulatory action for exactly this pattern. MEOK's business model is a flat subscription — we have no incentive to maximise your screen time. Our metric is whether your care scores trend positively over time, not how long you stay." },
   { q: 'How does MEOK compare to ChatGPT?', a: "ChatGPT is an extraordinarily capable general-purpose assistant. MEOK is not trying to replace it for raw task performance — you can even route your MEOK instance through GPT-4o if you want that capability. The difference is ownership. ChatGPT has no persistent sovereign memory (memory is stored on OpenAI's servers, can be cleared by the company, and is used to improve their models). There is no care scoring, no governance layer, and no ethical framework specific to your wellbeing. MEOK wraps any LLM — including GPT-4o — with care validation, sovereign memory, and a governance council." },
+  { q: 'When does MEOK gaming launch?', a: "Phase 3, August 2026. Riot Games, Steam, Twitch, and Discord integrations. PixiJS visual companion environment. Twitch co-host mode with Guardian-filtered chat. Join the waitlist at /gaming." },
+  { q: 'Is MEOK AI compliant with the EU AI Act?', a: "Yes. MEOK is classified as Limited Risk under Article 52 (conversational AI disclosure required). Guardian child safety features are classified High Risk (Annex III) and are in DPIA review before activation. Full compliance details at /ai-act." },
 ];
 
 const faqSchema = {
@@ -86,21 +89,21 @@ const SECTIONS = [
     label: 'Characters & Memory',
     icon: Brain,
     iconClass: 'icon-purple',
-    faqs: ALL_QA.slice(12, 17),
+    faqs: ALL_QA.slice(12, 18),
   },
   {
     id: 'pricing',
     label: 'Pricing',
     icon: CreditCard,
     iconClass: 'icon-blue',
-    faqs: ALL_QA.slice(17, 20),
+    faqs: ALL_QA.slice(18, 22),
   },
   {
     id: 'technical',
     label: 'Technical',
     icon: Cpu,
     iconClass: 'icon-gold',
-    faqs: ALL_QA.slice(20),
+    faqs: ALL_QA.slice(22),
   },
 ];
 
@@ -251,7 +254,6 @@ export default function FAQPage() {
       />
 
       <div className="min-h-screen text-white" style={{ backgroundColor: '#0d0c18' }}>
-        <MarketingNav activePage="faq" />
 
         {/* ── Hero ────────────────────────────────────────────────────────── */}
         <section className="relative pt-32 pb-20 px-6 text-center overflow-hidden">

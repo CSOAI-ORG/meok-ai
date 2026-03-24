@@ -12,7 +12,6 @@ import {
   BookOpen,
   Shield,
 } from "lucide-react";
-import { MarketingNav } from "@/components/marketing-nav";
 import { MarketingFooter } from "@/components/marketing-footer";
 import { CHARACTERS } from "@/data/characters";
 
@@ -194,7 +193,6 @@ export default function PersonalPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <MarketingNav />
 
       {/* ─── HERO ─────────────────────────────────────────────── */}
       <section

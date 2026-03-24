@@ -1,257 +1,351 @@
-import Link from "next/link";
-import { MarketingNav } from "@/components/marketing-nav";
-import { MarketingFooter } from "@/components/marketing-footer";
 import type { Metadata } from "next";
+import Link from "next/link";
+import { MarketingFooter } from "@/components/marketing-footer";
+
+// ── Metadata ──────────────────────────────────────────────────────────────────
 
 export const metadata: Metadata = {
-  title: "Accessibility | MEOK",
+  title: "Accessibility | MEOK AI LABS",
   description:
-    "MEOK's accessibility commitment. Built for clarity, neurodivergent-friendly design, WCAG 2.1 AA compliance, and zero manipulative UX.",
+    "WCAG 2.1 AA compliance, Senior Mode, and neurodivergent-first design. MEOK is built for every mind.",
+  keywords: [
+    "MEOK accessibility",
+    "WCAG 2.1 AA",
+    "neurodivergent AI",
+    "senior mode AI",
+    "accessible AI companion",
+    "Age Appropriate Design Code",
+    "AI for elderly",
+  ],
+  alternates: { canonical: "https://meok.ai/accessibility" },
   openGraph: {
-    title: "Accessibility at MEOK",
+    title: "Accessibility | MEOK AI LABS",
     description:
-      "We built this for the people who needed it most. That means everyone.",
+      "WCAG 2.1 AA compliance, Senior Mode, and neurodivergent-first design. MEOK is built for every mind.",
+    type: "website",
     url: "https://meok.ai/accessibility",
+    siteName: "MEOK.AI",
+    images: [
+      {
+        url: "https://meok.ai/api/og?title=Accessibility&desc=Built+for+every+mind.+Every+age.+Every+ability.",
+        width: 1200,
+        height: 630,
+        alt: "MEOK Accessibility — Built for Every Mind",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Accessibility | MEOK AI LABS",
+    description:
+      "WCAG 2.1 AA compliance, Senior Mode, and neurodivergent-first design. MEOK is built for every mind.",
+    images: [
+      "https://meok.ai/api/og?title=Accessibility&desc=Built+for+every+mind.+Every+age.+Every+ability.",
+    ],
   },
 };
 
+// ── Data ──────────────────────────────────────────────────────────────────────
+
+const WCAG_FEATURES = [
+  "Full keyboard navigation — all interactive elements reachable without a mouse",
+  "Screen reader support with comprehensive ARIA labels and roles",
+  "7:1 contrast ratio in Senior Mode (exceeds WCAG AA minimum of 4.5:1)",
+  "Minimum 44×44 px touch targets on all interactive elements",
+  "No auto-playing audio on any page",
+  "Clearly visible focus indicators meeting 3:1 contrast ratio minimum",
+];
+
+const SENIOR_MODE_FEATURES = [
+  {
+    label: "44×44 px touch targets",
+    detail: "Every tappable element meets WCAG 2.5.5 Target Size. No missed taps.",
+  },
+  {
+    label: "16 px minimum text",
+    detail: "Body text never drops below 16 px. Headings scale proportionally.",
+  },
+  {
+    label: "7:1 contrast ratio",
+    detail: "AAA-level contrast so text is readable in any lighting condition.",
+  },
+  {
+    label: "Voice-primary interface",
+    detail: "Voice is the default in Senior Mode. Type if you prefer — but you never have to.",
+  },
+  {
+    label: "Simplified navigation",
+    detail: "One column. Larger spacing. No sidebar clutter. Information you need, without noise.",
+  },
+  {
+    label: "No dark patterns",
+    detail: "No hidden fees, no confusing cancellation flows, no manipulative defaults.",
+  },
+];
+
+const NEURODIVERGENT_FEATURES = [
+  {
+    label: "Literal language mode",
+    detail:
+      "No idioms, no sarcasm, no figurative language when this mode is active. Every message means exactly what it says.",
+  },
+  {
+    label: "Adjustable motion and animation",
+    detail:
+      "Reduce or eliminate all motion. Respects prefers-reduced-motion at the OS level automatically.",
+  },
+  {
+    label: "Customisable layout density",
+    detail:
+      "Compact, standard, or spacious layouts. Control how much visual information appears on screen at once.",
+  },
+  {
+    label: "Font size controls",
+    detail:
+      "Scale text independently from the browser. Your preference is remembered across sessions.",
+  },
+  {
+    label: "Reduced visual noise option",
+    detail:
+      "Hide decorative elements, gradients, and ambient effects. Clean text-first interface available.",
+  },
+];
+
+// ── Page ──────────────────────────────────────────────────────────────────────
+
 export default function AccessibilityPage() {
   return (
-    <div className="min-h-screen bg-[#0d0c18] text-white">
-      <MarketingNav />
+    <div className="min-h-screen bg-[#0d0c18] text-white overflow-x-hidden">
 
-      {/* ═══════════════════════════════════════════════
-          HERO
-      ═══════════════════════════════════════════════ */}
-      <section className="pt-32 pb-20 px-6">
-        <div className="max-w-3xl mx-auto text-center">
-          <span className="text-xs font-black tracking-[0.25em] uppercase text-white/30 block mb-6">
-            Accessibility
-          </span>
-          <h1 className="text-4xl sm:text-6xl font-black leading-tight tracking-tight mb-6">
-            Accessibility{" "}
-            <span
-              style={{
-                background: "linear-gradient(135deg, #c9a84c 0%, #f0d080 60%)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                backgroundClip: "text",
-              }}
-            >
-              at MEOK
-            </span>
-          </h1>
-          <p className="text-lg sm:text-xl text-white/50 leading-relaxed max-w-xl mx-auto">
-            We built this for the people who needed it most.
-            <br />
-            That means everyone.
-          </p>
-        </div>
-      </section>
-
-      {/* ═══════════════════════════════════════════════
-          WCAG COMMITMENT
-      ═══════════════════════════════════════════════ */}
-      <section className="py-16 px-6 border-t border-white/[0.05]">
-        <div className="max-w-3xl mx-auto">
+      {/* ── 1. Hero ──────────────────────────────────────────────────────── */}
+      <section className="relative pt-32 pb-24 px-6 text-center overflow-hidden">
+        <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
           <div
-            className="rounded-2xl p-8 sm:p-10"
+            className="absolute inset-0"
             style={{
               background:
-                "linear-gradient(135deg, rgba(201,168,76,0.07), rgba(201,168,76,0.03))",
-              border: "1.5px solid rgba(201,168,76,0.2)",
+                "radial-gradient(ellipse 70% 50% at 50% 0%, rgba(201,168,76,0.06) 0%, transparent 60%)",
             }}
+          />
+        </div>
+
+        <div className="relative max-w-4xl mx-auto">
+          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#c9a84c]/10 border border-[#c9a84c]/20 text-[#c9a84c] text-xs font-semibold tracking-widest uppercase mb-8">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#c9a84c]" />
+            Accessibility
+          </span>
+
+          <h1
+            className="font-black text-white leading-[1.05] tracking-tight mb-6"
+            style={{ fontSize: "clamp(2rem, 5vw, 3.6rem)" }}
           >
-            <div className="flex items-center gap-3 mb-5">
-              <div className="w-10 h-10 rounded-xl flex items-center justify-center bg-[#c9a84c]/10 flex-shrink-0">
-                <span className="text-lg">♿</span>
-              </div>
-              <h2 className="text-xl font-black text-white">
-                Our WCAG commitment
-              </h2>
-            </div>
-            <p className="text-white/60 leading-relaxed text-sm mb-4">
-              We aim for{" "}
-              <span className="text-[#c9a84c] font-bold">
-                WCAG 2.1 AA compliance
-              </span>{" "}
-              across all MEOK web properties. This is a living standard — we
-              review and improve our conformance with every major release.
-            </p>
-            <p className="text-white/40 text-xs leading-relaxed">
-              WCAG 2.1 AA is the internationally recognised standard for
-              accessible web content. It covers contrast ratios, keyboard
-              navigation, screen reader support, and more.
-            </p>
-          </div>
-        </div>
-      </section>
+            Built for Every Mind
+          </h1>
 
-      {/* ═══════════════════════════════════════════════
-          AVAILABLE NOW
-      ═══════════════════════════════════════════════ */}
-      <section className="py-16 px-6">
-        <div className="max-w-3xl mx-auto">
-          <h2 className="text-2xl font-black text-white mb-8">
-            What&apos;s available now
-          </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {[
-              {
-                icon: "⌨️",
-                title: "Keyboard navigation",
-                desc: "Every interactive element is reachable and operable with a keyboard. No mouse required.",
-              },
-              {
-                icon: "🔊",
-                title: "Screen reader support",
-                desc: "Semantic HTML and ARIA labels are used throughout. Pages are structured for assistive technology.",
-              },
-              {
-                icon: "🌓",
-                title: "High contrast mode",
-                desc: "The interface follows your system-level contrast preference automatically.",
-              },
-              {
-                icon: "🎞️",
-                title: "Reduced motion",
-                desc: "Animations and transitions are suppressed when you have prefers-reduced-motion enabled.",
-              },
-              {
-                icon: "📱",
-                title: "Responsive at all screen sizes",
-                desc: "Every page is fully functional from small mobile screens to large desktop displays.",
-              },
-            ].map((item) => (
-              <div
-                key={item.title}
-                className="p-6 rounded-2xl border border-white/[0.07] bg-white/[0.02] flex gap-4 items-start"
-              >
-                <span className="text-2xl flex-shrink-0">{item.icon}</span>
-                <div>
-                  <h3 className="font-black text-white text-sm mb-1.5">
-                    {item.title}
-                  </h3>
-                  <p className="text-xs text-white/45 leading-relaxed">
-                    {item.desc}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ═══════════════════════════════════════════════
-          NEURODIVERGENT-FRIENDLY DESIGN
-      ═══════════════════════════════════════════════ */}
-      <section className="py-16 px-6 bg-[#1a1a2e] border-y border-white/[0.05]">
-        <div className="max-w-3xl mx-auto">
-          <div className="mb-10">
-            <span className="text-xs font-black tracking-[0.25em] uppercase text-white/30 block mb-3">
-              Intentional design
-            </span>
-            <h2 className="text-2xl font-black text-white">
-              Neurodivergent-friendly by default
-            </h2>
-            <p className="text-white/40 text-sm mt-3 leading-relaxed max-w-lg">
-              MEOK was built in part for people whose brains work differently.
-              That shapes how we write, design, and build every feature.
-            </p>
-          </div>
-          <div className="space-y-3">
-            {[
-              {
-                title: "Plain language first",
-                desc: "We write for clarity, not to sound impressive. Every feature, every setting, every error message is written in plain English.",
-              },
-              {
-                title: "No dark patterns",
-                desc: "We do not use deceptive UI tricks, hidden unsubscribe flows, or interfaces designed to confuse you into doing something you didn't intend.",
-              },
-              {
-                title: "No manipulative UX",
-                desc: "No guilt-based messaging, no shame cycles, no language designed to make you feel bad for not engaging more.",
-              },
-              {
-                title: "No forced timers or urgency pressure",
-                desc: "Countdown timers, artificial scarcity, and \"limited time\" pressure are not used to push decisions.",
-              },
-              {
-                title: "Predictable navigation",
-                desc: "Navigation structure is consistent across all pages. You always know where you are and how to get back.",
-              },
-            ].map((item) => (
-              <div
-                key={item.title}
-                className="flex gap-4 p-5 rounded-xl border border-white/[0.06] bg-white/[0.02]"
-              >
-                <span className="text-[#c9a84c] font-black flex-shrink-0 mt-0.5">
-                  ✓
-                </span>
-                <div>
-                  <h3 className="font-black text-white text-sm mb-1">
-                    {item.title}
-                  </h3>
-                  <p className="text-xs text-white/45 leading-relaxed">
-                    {item.desc}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ═══════════════════════════════════════════════
-          PLAIN LANGUAGE NOTE
-      ═══════════════════════════════════════════════ */}
-      <section className="py-16 px-6">
-        <div className="max-w-3xl mx-auto">
-          <div
-            className="rounded-2xl p-8 text-center"
-            style={{
-              background: "rgba(255,255,255,0.02)",
-              border: "1px solid rgba(255,255,255,0.07)",
-            }}
-          >
-            <span className="text-3xl block mb-5">📖</span>
-            <h2 className="text-xl font-black text-white mb-4">
-              Written for clarity, not complexity
-            </h2>
-            <p className="text-white/50 leading-relaxed text-sm max-w-lg mx-auto mb-6">
-              Every page on MEOK is written to be understood on the first read.
-              If something is confusing — a word choice, an instruction, a
-              label — that&apos;s something we want to fix.
-            </p>
-            <p className="text-white/40 text-sm">
-              Tell us what&apos;s unclear:{" "}
-              <a
-                href="mailto:accessibility@meok.ai"
-                className="text-[#c9a84c] font-bold hover:underline"
-              >
-                accessibility@meok.ai
-              </a>
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* ═══════════════════════════════════════════════
-          CONTACT
-      ═══════════════════════════════════════════════ */}
-      <section className="py-16 px-6 bg-[#0a0a0f] border-t border-white/[0.05]">
-        <div className="max-w-3xl mx-auto">
-          <h2 className="text-2xl font-black text-white mb-4">
-            Found an accessibility issue?
-          </h2>
-          <p className="text-white/50 leading-relaxed text-sm mb-6 max-w-lg">
-            If you encounter a barrier — something that stops you from using
-            MEOK or makes it harder than it should be — please let us know. We
-            treat accessibility reports as high priority.
+          <p className="text-lg text-white/50 max-w-2xl mx-auto leading-relaxed">
+            WCAG 2.1 AA compliance, Senior Mode, and neurodivergent-first design
           </p>
+        </div>
+      </section>
+
+      <div className="border-t border-white/[0.05] max-w-5xl mx-auto" />
+
+      {/* ── 2. Our Commitment ────────────────────────────────────────────── */}
+      <section className="py-20 px-6">
+        <div className="max-w-3xl mx-auto">
+          <h2
+            className="font-black text-white mb-6 leading-tight"
+            style={{ fontSize: "clamp(1.6rem, 4vw, 2.4rem)" }}
+          >
+            Our Commitment
+          </h2>
+
           <div
-            className="inline-flex items-center gap-3 px-5 py-3.5 rounded-xl"
+            className="rounded-2xl border border-white/[0.08] p-8 sm:p-10"
+            style={{ background: "rgba(255,255,255,0.02)" }}
+          >
+            <p className="text-white/60 text-base leading-relaxed mb-5">
+              MEOK is designed for all cognitive abilities. In the UK, 9.5 million people are neurodivergent
+              — and research shows they are{" "}
+              <strong className="text-white/80">50% more likely to be fraud victims</strong>. MEOK Guardian
+              protects them with 24/7 threat detection powered by DistilBERT safety models trained to
+              identify scam language, grooming patterns, and coercive control signals.
+            </p>
+            <p className="text-white/60 text-base leading-relaxed">
+              Senior Mode provides larger text, higher contrast, and voice-first interaction for older adults
+              and anyone who benefits from a calmer, clearer interface. Accessibility is not a compliance
+              checkbox at MEOK — it is a founding design constraint.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <div className="border-t border-white/[0.05] max-w-5xl mx-auto" />
+
+      {/* ── 3. WCAG 2.1 AA Features ──────────────────────────────────────── */}
+      <section className="py-20 px-6">
+        <div className="max-w-3xl mx-auto">
+          <h2
+            className="font-black text-white mb-4 leading-tight"
+            style={{ fontSize: "clamp(1.6rem, 4vw, 2.4rem)" }}
+          >
+            WCAG 2.1 AA Features
+          </h2>
+          <p className="text-white/50 text-base leading-relaxed mb-10">
+            MEOK AI LABS is committed to conforming to the Web Content Accessibility Guidelines (WCAG)
+            2.1 at Level AA and the UK Equality Act 2010.
+          </p>
+
+          <ul className="space-y-3">
+            {WCAG_FEATURES.map((feature) => (
+              <li
+                key={feature}
+                className="flex items-start gap-4 rounded-xl border border-white/[0.07] bg-white/[0.02] px-5 py-4"
+              >
+                <span className="flex-shrink-0 mt-0.5 text-[#c9a84c] font-black text-base">✓</span>
+                <span className="text-sm text-white/65 leading-relaxed">{feature}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <div className="border-t border-white/[0.05] max-w-5xl mx-auto" />
+
+      {/* ── 4. Senior Mode ───────────────────────────────────────────────── */}
+      <section className="py-20 px-6 bg-[#1a1a2e]/40">
+        <div className="max-w-3xl mx-auto">
+          <div className="inline-flex items-center gap-2 rounded-full border border-[#c9a84c]/20 bg-[#c9a84c]/8 px-3 py-1.5 text-xs font-semibold text-[#c9a84c] mb-5">
+            Coming Q2 2026
+          </div>
+
+          <h2
+            className="font-black text-white mb-4 leading-tight"
+            style={{ fontSize: "clamp(1.6rem, 4vw, 2.4rem)" }}
+          >
+            Senior Mode
+          </h2>
+          <p className="text-white/50 text-base leading-relaxed mb-10">
+            Purpose-built for older adults and anyone who benefits from a calmer, clearer interface. Not a
+            simplified version — MEOK with every design decision optimised for age-related usability needs.
+          </p>
+
+          <div className="grid gap-4 sm:grid-cols-2">
+            {SENIOR_MODE_FEATURES.map((item) => (
+              <div
+                key={item.label}
+                className="rounded-2xl border border-white/[0.07] bg-white/[0.03] p-5"
+              >
+                <p className="font-black text-white text-sm mb-1.5">{item.label}</p>
+                <p className="text-xs text-white/45 leading-relaxed">{item.detail}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <div className="border-t border-white/[0.05] max-w-5xl mx-auto" />
+
+      {/* ── 5. Neurodivergent Support ─────────────────────────────────────── */}
+      <section className="py-20 px-6">
+        <div className="max-w-3xl mx-auto">
+          <h2
+            className="font-black text-white mb-4 leading-tight"
+            style={{ fontSize: "clamp(1.6rem, 4vw, 2.4rem)" }}
+          >
+            Neurodivergent Support
+          </h2>
+          <p className="text-white/50 text-base leading-relaxed mb-10">
+            Built with neurodivergent people in mind as a founding design constraint — not added after
+            the fact. These are core features, not accessibility add-ons.
+          </p>
+
+          <div className="space-y-4">
+            {NEURODIVERGENT_FEATURES.map((item) => (
+              <div
+                key={item.label}
+                className="flex gap-4 rounded-2xl border border-white/[0.07] bg-white/[0.02] px-6 py-5"
+              >
+                <span className="flex-shrink-0 w-2 h-2 rounded-full bg-[#c9a84c] mt-2" />
+                <div>
+                  <p className="font-black text-white text-sm mb-1">{item.label}</p>
+                  <p className="text-xs text-white/45 leading-relaxed">{item.detail}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <div className="border-t border-white/[0.05] max-w-5xl mx-auto" />
+
+      {/* ── 6. Children's Code ───────────────────────────────────────────── */}
+      <section className="py-20 px-6 bg-[#1a1a2e]/40">
+        <div className="max-w-3xl mx-auto">
+          <h2
+            className="font-black text-white mb-4 leading-tight"
+            style={{ fontSize: "clamp(1.6rem, 4vw, 2.4rem)" }}
+          >
+            Children&apos;s Code
+          </h2>
+          <p className="text-white/50 text-base leading-relaxed mb-8">
+            Guardian mode complies with the Age Appropriate Design Code (UK Children&apos;s Code). Children&apos;s
+            accounts are architecturally distinct from adult accounts.
+          </p>
+
+          <div className="grid gap-4 sm:grid-cols-3">
+            {[
+              {
+                title: "No targeted suggestions",
+                detail:
+                  "Children's accounts receive no personalised recommendations based on behavioural profiling.",
+              },
+              {
+                title: "Minimal data collection",
+                detail:
+                  "Only data strictly necessary for the service is collected for users under 18.",
+              },
+              {
+                title: "Enhanced safety scanning",
+                detail:
+                  "Guardian's DistilBERT model runs on every message in children's accounts — no threshold required.",
+              },
+            ].map((item) => (
+              <div
+                key={item.title}
+                className="rounded-2xl border border-white/[0.08] bg-white/[0.03] p-5"
+                style={{
+                  background:
+                    "linear-gradient(135deg, rgba(201,168,76,0.05), rgba(255,255,255,0.02))",
+                }}
+              >
+                <p className="font-black text-white text-sm mb-2">{item.title}</p>
+                <p className="text-xs text-white/45 leading-relaxed">{item.detail}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <div className="border-t border-white/[0.05] max-w-5xl mx-auto" />
+
+      {/* ── 7. Report an Issue ───────────────────────────────────────────── */}
+      <section className="py-20 px-6 bg-[#0a0a0f]">
+        <div className="max-w-3xl mx-auto">
+          <h2
+            className="font-black text-white mb-4 leading-tight"
+            style={{ fontSize: "clamp(1.6rem, 4vw, 2.4rem)" }}
+          >
+            Report an Issue
+          </h2>
+          <p className="text-white/50 text-base leading-relaxed mb-8 max-w-xl">
+            If you encounter an accessibility barrier — something that prevents you from using MEOK or
+            makes it harder than it should be — please tell us. We treat accessibility reports as high
+            priority and aim to acknowledge every report within 5 business days.
+          </p>
+
+          <div
+            className="inline-flex items-center gap-3 rounded-xl px-5 py-4 mb-6"
             style={{
               background: "rgba(201,168,76,0.08)",
               border: "1px solid rgba(201,168,76,0.2)",
@@ -265,10 +359,59 @@ export default function AccessibilityPage() {
               accessibility@meok.ai
             </a>
           </div>
-          <p className="text-white/25 text-xs mt-5 leading-relaxed">
-            We aim to acknowledge all accessibility reports within 2 business
-            days. This page was last reviewed March 2026.
+
+          <div className="space-y-2 text-sm text-white/35 leading-relaxed">
+            <p>
+              We acknowledge reports within{" "}
+              <span className="text-white/60">5 business days</span>.
+            </p>
+            <p>
+              If your concern is not resolved to your satisfaction, you may escalate to the{" "}
+              <a
+                href="https://ico.org.uk"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#c9a84c]/70 hover:text-[#c9a84c] hover:underline"
+              >
+                Information Commissioner&apos;s Office (ICO)
+              </a>{" "}
+              or the Equality and Human Rights Commission.
+            </p>
+            <p className="pt-2 text-white/25">
+              This statement was last reviewed March 2026.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* ── 8. Bottom CTA ────────────────────────────────────────────────── */}
+      <section className="py-24 px-6 border-t border-white/[0.05]">
+        <div className="max-w-2xl mx-auto text-center">
+          <h2
+            className="font-black text-white mb-4 leading-tight"
+            style={{ fontSize: "clamp(1.6rem, 4vw, 2.2rem)" }}
+          >
+            Sovereign AI built for everyone.
+          </h2>
+          <p className="text-white/50 text-base leading-relaxed mb-10 max-w-lg mx-auto">
+            Accessibility, safety, and dignity as first-class requirements — at every tier,
+            including free.
           </p>
+          <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+            <Link
+              href="/birth"
+              className="rounded-xl px-8 py-4 text-base font-semibold text-[#0d0c18] transition-opacity hover:opacity-90"
+              style={{ background: "#c9a84c" }}
+            >
+              Start your MEOK
+            </Link>
+            <Link
+              href="/guardian"
+              className="rounded-xl border border-white/20 px-8 py-4 text-base font-semibold text-white/80 transition-colors hover:border-white/40 hover:text-white"
+            >
+              Explore Guardian
+            </Link>
+          </div>
         </div>
       </section>
 

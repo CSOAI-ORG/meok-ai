@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, Brain, Shield, Heart, Check } from "lucide-react";
-import { MarketingNav } from "@/components/marketing-nav";
 import { MarketingFooter } from "@/components/marketing-footer";
 
 // ── Metadata ──────────────────────────────────────────────────────────────────
@@ -348,7 +347,6 @@ export default function HowItWorksPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
-      <MarketingNav />
 
       {/* ── 1. Hero — no BS, skeptic tone ────────────────────────────────── */}
       <section className="relative pt-32 pb-24 px-6 overflow-hidden">
@@ -881,6 +879,40 @@ export default function HowItWorksPage() {
               ))}
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* ── 6-Layer Architecture ─────────────────────────────────────────────── */}
+      <section style={{ padding: '4rem 1.5rem', background: '#0d0d0d', borderTop: '1px solid #1a1a1a' }}>
+        <div style={{ maxWidth: '800px', margin: '0 auto' }}>
+          <h2 style={{ fontSize: '1.5rem', fontWeight: 700, marginBottom: '0.75rem', color: '#f5f5f5', textAlign: 'center' }}>
+            How does MEOK integrate with every AI model and tool?
+          </h2>
+          <p style={{ color: '#888', textAlign: 'center', marginBottom: '3rem', maxWidth: '560px', margin: '0 auto 3rem' }}>
+            MEOK&apos;s 6-layer architecture routes any AI capability through a single sovereign personality.
+            One payment. Every model. Your companion stays the same.
+          </p>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+            {[
+              { num: '1', label: 'Sovereign Shell', desc: 'Tauri 2.0 desktop app or Next.js web — your interface layer', color: '#d4af37' },
+              { num: '2', label: 'Universal Gateway', desc: 'LiteLLM (self-hosted) + OpenRouter (managed fallback) — route to 100+ LLM providers', color: '#a78bfa' },
+              { num: '3', label: 'MCP Tool Layer', desc: 'ElevenLabs voice, DALL-E images, Suno music, Gmail, Calendar — all as MCP tools', color: '#4a9eff' },
+              { num: '4', label: 'Memory Spine', desc: 'Mem0 + LanceDB — head-plus-tail context, 26% better accuracy, 90% token savings', color: '#22c55e' },
+              { num: '5', label: 'Personality Engine', desc: '5-layer companion: backstory, key memories, example messages, directives, group context', color: '#fb923c' },
+              { num: '6', label: 'Experience Renderer', desc: 'Composable blocks UI — not chat bubbles. Notion-like workspace or companion chat', color: '#e879f9' },
+            ].map(layer => (
+              <div key={layer.num} style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem', padding: '1rem 1.25rem', background: '#111', border: '1px solid #1a1a1a', borderRadius: '0.5rem' }}>
+                <div style={{ width: '2rem', height: '2rem', borderRadius: '50%', background: `${layer.color}20`, border: `1px solid ${layer.color}`, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, fontSize: '0.8rem', fontWeight: 700, color: layer.color }}>{layer.num}</div>
+                <div>
+                  <div style={{ fontWeight: 700, color: layer.color, marginBottom: '0.25rem' }}>{layer.label}</div>
+                  <div style={{ color: '#888', fontSize: '0.875rem' }}>{layer.desc}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+          <p style={{ marginTop: '1.5rem', textAlign: 'center', color: '#666', fontSize: '0.875rem' }}>
+            OpenClaw proved the demand for open AI orchestration. MEOK is the safe, governed, human-centred layer it lacks.
+          </p>
         </div>
       </section>
 

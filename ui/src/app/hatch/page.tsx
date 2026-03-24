@@ -2,7 +2,6 @@
 
 import { useReducer, useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { MarketingNav } from "@/components/marketing-nav";
 import { MarketingFooter } from "@/components/marketing-footer";
 
 // ── Types ─────────────────────────────────────────────────────────────────────
@@ -697,7 +696,6 @@ export default function HatchPage() {
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: CSS_ANIMATIONS }} />
-      <MarketingNav />
 
       <main
         style={{

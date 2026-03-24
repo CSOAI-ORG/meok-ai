@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { MarketingNav } from "@/components/marketing-nav";
 import { MarketingFooter } from "@/components/marketing-footer";
 
 export const metadata: Metadata = {
@@ -158,7 +157,6 @@ const FAQS = [
 export default function MemoryPage() {
   return (
     <div className="min-h-screen bg-[#0d0c18] text-white">
-      <MarketingNav />
 
       {/* ─── HERO ─────────────────────────────────────────────────── */}
       <section

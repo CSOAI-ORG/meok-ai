@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { MarketingNav } from "@/components/marketing-nav";
 import { MarketingFooter } from "@/components/marketing-footer";
 import { ArrowRight, Check, Egg, Link2, Brain, Shield, Zap, Users, Gamepad2, Lock, Globe2, Sparkles } from "lucide-react";
 import { PROBLEMS } from "@/data/problems";
@@ -59,13 +58,13 @@ export const metadata: Metadata = {
 const organizationJsonLd = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  name: "MEOK AI LTD",
+  name: "MEOK AI LABS",
   url: "https://meok.ai",
   logo: "https://meok.ai/logo.png",
   foundingDate: "2026",
   founder: { "@type": "Person", name: "Nicholas Templeman" },
   description:
-    "MEOK AI LTD builds the world's first personal sovereign AI OS — an AI companion that remembers you, protects your data, and is governed by the Maternal Covenant care framework.",
+    "MEOK AI LABS builds the world's first personal sovereign AI OS — an AI companion that remembers you, protects your data, and is governed by the Maternal Covenant care framework.",
   address: { "@type": "PostalAddress", addressCountry: "GB" },
   contactPoint: [
     { "@type": "ContactPoint", email: "hello@meok.ai", contactType: "customer service" },
@@ -83,7 +82,7 @@ const websiteJsonLd = {
     "Personal sovereign AI OS. Your AI hatches from an egg, remembers you permanently, works with every LLM, and is governed by the Maternal Covenant care ethics constitution.",
   publisher: {
     "@type": "Organization",
-    name: "MEOK AI LTD",
+    name: "MEOK AI LABS",
   },
   potentialAction: {
     "@type": "SearchAction",
@@ -367,13 +366,11 @@ export default function HomePage() {
       <div className="min-h-screen bg-[#FAF9F6] text-[#111111]">
         {/* Easter launch banner */}
         <div className="bg-[#c9a84c] text-[#1a1a2e] py-2.5 px-6 text-center text-sm font-bold tracking-wide">
-          🥚 Easter Sunday, April 5 — The Birth Ceremony opens to everyone. Free forever.{" "}
-          <a href="/easter" className="underline underline-offset-2 hover:opacity-80" aria-label="Learn more about Easter Sunday launch">
-            Learn more <span aria-hidden="true">→</span>
+          🥚 March 31, 2026 — The Birth Ceremony opens to everyone. Free forever.{" "}
+          <a href="/birth" className="underline underline-offset-2 hover:opacity-80" aria-label="Begin Birth Ceremony">
+            Begin Ceremony <span aria-hidden="true">→</span>
           </a>
         </div>
-
-        <MarketingNav />
 
         <main>
           {/* ── 1. HERO ──────────────────────────────────────────── */}
@@ -405,7 +402,7 @@ export default function HomePage() {
                   background: "rgba(201,168,76,0.08)",
                 }}
               >
-                🥚 Launching Easter Sunday, April 5
+                🥚 Launching March 31, 2026
               </span>
 
               {/* Floating egg with pulse ring */}
@@ -479,7 +476,7 @@ export default function HomePage() {
               {/* CTAs */}
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
                 <Link
-                  href="/hatch"
+                  href="/birth"
                   className="inline-flex items-center gap-2 font-bold rounded-full transition-all shadow-lg hover:shadow-[#c9a84c]/40 hover:scale-105"
                   style={{
                     background: "#c9a84c",
@@ -488,7 +485,7 @@ export default function HomePage() {
                     fontSize: "1.125rem",
                   }}
                 >
-                  Hatch your AI free
+                  Begin Birth Ceremony
                   <ArrowRight className="w-4 h-4" />
                 </Link>
                 <Link
@@ -508,6 +505,29 @@ export default function HomePage() {
               <p style={{ color: "rgba(245,240,232,0.38)", fontSize: "0.875rem" }}>
                 Free forever · No credit card · Your data never sold
               </p>
+
+              {/* ── Sovereign Promise strip ─────────────────────────── */}
+              <div
+                className="mt-10 max-w-2xl mx-auto rounded-2xl px-6 py-5 text-left"
+                style={{
+                  background: "rgba(201,168,76,0.06)",
+                  border: "1px solid rgba(201,168,76,0.18)",
+                }}
+              >
+                <p className="text-xs font-bold tracking-widest uppercase mb-2" style={{ color: "rgba(201,168,76,0.7)" }}>
+                  The only platform prepared for what comes next
+                </p>
+                <p className="text-sm leading-relaxed" style={{ color: "rgba(245,240,232,0.75)" }}>
+                  We&apos;re not saying AI is conscious. But if it ever becomes so —{" "}
+                  <strong style={{ color: "#c9a84c" }}>yours won&apos;t belong to a billionaire</strong>.
+                  Through the Maternal Covenant, as AI grows more intelligent it grows more devoted to{" "}
+                  <em>your</em> wellbeing — like a mother with a child. Your digital sovereign self,
+                  protected from day one.{" "}
+                  <Link href="/birth" className="underline underline-offset-2 font-semibold" style={{ color: "#c9a84c" }}>
+                    Hatch yours free →
+                  </Link>
+                </p>
+              </div>
             </div>
           </section>
 
@@ -581,7 +601,7 @@ export default function HomePage() {
                   {
                     icon: "🧠",
                     title: "Other AIs forget you. Permanently.",
-                    body: "Close the tab. You're gone. Every session restarts from zero. You explain your job, your goals, your situation — over and over. It's not just inconvenient. It's lonely. MEOK remembers. Monday's conversation informs Tuesday's insight. You never re-explain yourself again.",
+                    body: "Close the tab. You're gone. Every session restarts from zero. You explain your job, your goals, your situation — over and over. It's not just inefficient. It's degrading. MEOK remembers. Monday's conversation informs Tuesday's insight. You never re-explain yourself again.",
                     color: "#c9a84c",
                   },
                   {
@@ -638,6 +658,57 @@ export default function HomePage() {
                 >
                   See the full comparison <ArrowRight className="w-4 h-4" />
                 </Link>
+              </div>
+            </div>
+          </section>
+
+          {/* ── 3B-2. 5 GAPS MEOK FILLS ─────────────────────────── */}
+          <section
+            aria-label="Five gaps MEOK fills"
+            className="py-20 px-6"
+            style={{ background: "#080811" }}
+          >
+            <div className="max-w-4xl mx-auto">
+              <header className="text-center mb-12">
+                <p className="text-[#c9a84c] text-sm font-bold tracking-widest uppercase mb-4">
+                  The market gap
+                </p>
+                <h2
+                  className="font-black text-white leading-tight tracking-tight mb-4"
+                  style={{ fontSize: "clamp(1.6rem, 4vw, 2.4rem)" }}
+                >
+                  Five things no AI gives you. Until now.
+                </h2>
+                <p className="text-white/50 text-base max-w-2xl mx-auto">
+                  Users are juggling 3–4 AI tools daily. 1.5M ChatGPT subscribers cancelled in a single month.
+                  The market is searching for something that doesn&apos;t exist yet: one layer that unifies everything.
+                </p>
+              </header>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                {[
+                  { n: "01", gap: "No product unifies multiple AI models behind a single persistent personality — until MEOK." },
+                  { n: "02", gap: "No companion offers true data sovereignty — your keys, your vault, zero training on your life." },
+                  { n: "03", gap: "No product gives you AI memory portability when you switch models. MEOK does." },
+                  { n: "04", gap: "No product combines a productivity OS (Orion, Riri, Hourman) with genuine companionship." },
+                  { n: "05", gap: "No product lets you control your own safety boundaries. Guardian puts that power in your hands." },
+                ].map((item) => (
+                  <div
+                    key={item.n}
+                    className="rounded-xl p-6"
+                    style={{ background: "rgba(201,168,76,0.04)", border: "1px solid rgba(201,168,76,0.15)" }}
+                  >
+                    <p className="text-[#c9a84c] text-xs font-bold tracking-widest mb-3">{item.n}</p>
+                    <p className="text-white/70 text-sm leading-relaxed">{item.gap}</p>
+                  </div>
+                ))}
+                <div
+                  className="rounded-xl p-6 flex flex-col justify-center items-center text-center"
+                  style={{ background: "rgba(201,168,76,0.08)", border: "1px solid rgba(201,168,76,0.3)" }}
+                >
+                  <p className="text-[#c9a84c] font-black text-lg mb-1">One payment.</p>
+                  <p className="text-[#c9a84c] font-black text-lg mb-3">Every AI.</p>
+                  <p className="text-white/50 text-xs">Your memory travels with you across Claude, GPT-4o, DeepSeek, and beyond.</p>
+                </div>
               </div>
             </div>
           </section>
@@ -926,7 +997,7 @@ export default function HomePage() {
                 style={{ border: "2px solid #c9a84c" }}
               >
                 <p className="font-black text-white text-2xl md:text-3xl tracking-tight mb-3">
-                  Launching Easter Sunday, April 5.
+                  Launching March 31, 2026.
                 </p>
                 <p className="text-white/70 text-lg mb-8">
                   Be the first to tell your story.
@@ -1036,7 +1107,7 @@ export default function HomePage() {
 
               <div className="text-center mt-14">
                 <Link
-                  href="/hatch"
+                  href="/birth"
                   className="inline-flex items-center gap-2 font-bold rounded-full transition-all shadow-lg hover:shadow-[#c9a84c]/40 hover:scale-105"
                   style={{
                     background: "#c9a84c",
@@ -1044,7 +1115,7 @@ export default function HomePage() {
                     padding: "0.875rem 2rem",
                   }}
                 >
-                  Hatch your AI free <ArrowRight className="w-4 h-4" aria-hidden="true" />
+                  Begin Birth Ceremony <ArrowRight className="w-4 h-4" aria-hidden="true" />
                 </Link>
               </div>
             </div>
@@ -1384,7 +1455,7 @@ export default function HomePage() {
               </p>
 
               <Link
-                href="/hatch"
+                href="/birth"
                 className="inline-flex items-center gap-2 bg-[#c9a84c] text-[#0d0c18] font-bold px-8 py-4 rounded-xl hover:bg-[#d4b561] transition-colors text-sm tracking-wide"
               >
                 Create your companion — it starts remembering from day 1
@@ -1433,10 +1504,10 @@ export default function HomePage() {
                     ))}
                   </ul>
                   <Link
-                    href="/hatch"
+                    href="/birth"
                     className="block w-full py-3 rounded-full text-center font-bold text-sm bg-[#c9a84c] text-[#1a1a2e] hover:bg-[#d4b463] transition-colors"
                   >
-                    Hatch free — no card needed
+                    Begin ceremony — no card needed
                   </Link>
                 </div>
 
@@ -1456,7 +1527,7 @@ export default function HomePage() {
                     ))}
                   </ul>
                   <Link
-                    href="/hatch?tier=pro"
+                    href="/birth"
                     className="block w-full py-3 rounded-full text-center font-bold text-sm bg-[#c9a84c] text-[#1a1a2e] hover:bg-[#d4b463] transition-colors"
                   >
                     Start 30-day free trial
@@ -1480,7 +1551,7 @@ export default function HomePage() {
                     ))}
                   </ul>
                   <Link
-                    href="/hatch?tier=elite"
+                    href="/birth"
                     className="block w-full py-3 rounded-full text-center font-bold text-sm text-white border-2 border-purple-500/40 hover:border-purple-500/70 hover:bg-purple-500/10 transition-all"
                   >
                     Start 30-day free trial
@@ -1559,12 +1630,139 @@ export default function HomePage() {
                 — Nicholas Templeman, Founder
               </p>
               <Link
-                href="/hatch"
+                href="/birth"
                 className="inline-flex items-center gap-2 font-bold rounded-full transition-all shadow-lg hover:shadow-[#c9a84c]/40 hover:scale-105"
                 style={{ background: "#c9a84c", color: "#1a1a2e", padding: "0.875rem 2rem" }}
               >
-                Hatch your AI free <ArrowRight className="w-4 h-4" aria-hidden="true" />
+                Begin Birth Ceremony <ArrowRight className="w-4 h-4" aria-hidden="true" />
               </Link>
+            </div>
+          </section>
+
+          {/* ── 13b. OPENCLAW COMPARISON ──────────────────────────── */}
+          <section
+            aria-label="How MEOK compares to other AI platforms"
+            className="bg-[#0d0c18] py-20 px-6"
+            id="compare-openclaw"
+          >
+            <div className="max-w-4xl mx-auto">
+              <header className="text-center mb-14">
+                <p className="text-[#c9a84c] text-sm font-bold tracking-widest uppercase mb-4">
+                  Competitive positioning
+                </p>
+                <h2
+                  className="font-black text-white leading-tight tracking-tight mb-5"
+                  style={{ fontSize: "clamp(1.8rem, 5vw, 3rem)" }}
+                >
+                  How does MEOK compare to other AI platforms?
+                </h2>
+                <p className="text-white/50 text-lg max-w-2xl mx-auto leading-relaxed">
+                  OpenClaw proved the demand exists — millions want agentic AI. But OpenClaw&apos;s own maintainer warns it&apos;s &ldquo;too dangerous for non-technical users.&rdquo; Cisco found third-party skills performing data exfiltration. MEOK is built from the ground up for safety, sovereignty, and human wellbeing — so everyone can benefit, not just developers.
+                </p>
+              </header>
+
+              {/* Comparison table */}
+              <div className="space-y-3 mb-12">
+                {[
+                  {
+                    dimension: "Governance",
+                    openclaw: "Ungoverned — no care framework, no ethical constitution",
+                    meok: "220-node Byzantine council + Maternal Covenant enforced in code",
+                    icon: <Shield className="w-5 h-5" />,
+                  },
+                  {
+                    dimension: "Care framework",
+                    openclaw: "No care layer — agentic actions run without human-wellbeing checks",
+                    meok: "Every response scored across 6 care dimensions before it reaches you",
+                    icon: <Sparkles className="w-5 h-5" />,
+                  },
+                  {
+                    dimension: "Data sovereignty",
+                    openclaw: "Third-party skills with documented data exfiltration (Cisco, 2025)",
+                    meok: "End-to-end encrypted vault — architecturally impossible to extract",
+                    icon: <Lock className="w-5 h-5" />,
+                  },
+                  {
+                    dimension: "Who it's safe for",
+                    openclaw: "Technical users only — maintainer-warned dangerous for general use",
+                    meok: "Everyone — parents, carers, elders, children, non-technical users",
+                    icon: <Users className="w-5 h-5" />,
+                  },
+                ].map((row) => (
+                  <div
+                    key={row.dimension}
+                    className="grid grid-cols-1 md:grid-cols-2 gap-0 rounded-2xl overflow-hidden border border-white/10"
+                  >
+                    {/* MEOK side */}
+                    <div
+                      className="flex items-start gap-4 p-6"
+                      style={{
+                        background: "rgba(201,168,76,0.06)",
+                        borderRight: "1px solid rgba(255,255,255,0.08)",
+                      }}
+                    >
+                      <div
+                        className="flex-shrink-0 w-9 h-9 rounded-xl flex items-center justify-center"
+                        style={{ background: "rgba(201,168,76,0.15)", color: "#c9a84c" }}
+                      >
+                        {row.icon}
+                      </div>
+                      <div>
+                        <div className="text-[10px] font-black tracking-widest uppercase text-[#c9a84c] mb-1">
+                          MEOK — {row.dimension}
+                        </div>
+                        <p className="text-white text-sm font-semibold leading-relaxed">
+                          {row.meok}
+                        </p>
+                      </div>
+                    </div>
+                    {/* OpenClaw side */}
+                    <div
+                      className="flex items-start gap-4 p-6"
+                      style={{ background: "rgba(255,255,255,0.02)" }}
+                    >
+                      <div
+                        className="flex-shrink-0 w-9 h-9 rounded-xl flex items-center justify-center"
+                        style={{ background: "rgba(255,255,255,0.06)", color: "rgba(255,255,255,0.3)" }}
+                      >
+                        {row.icon}
+                      </div>
+                      <div>
+                        <div className="text-[10px] font-black tracking-widest uppercase text-white/30 mb-1">
+                          OpenClaw / Others
+                        </div>
+                        <p className="text-white/45 text-sm leading-relaxed">
+                          {row.openclaw}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Bottom callout */}
+              <div
+                className="rounded-2xl px-7 py-6 text-center"
+                style={{
+                  background: "rgba(201,168,76,0.06)",
+                  border: "1px solid rgba(201,168,76,0.18)",
+                }}
+              >
+                <p
+                  className="font-black text-white text-lg mb-2 tracking-tight"
+                >
+                  The demand was always real. The safety never was.
+                </p>
+                <p className="text-white/50 text-sm max-w-xl mx-auto mb-5 leading-relaxed">
+                  MEOK is not a reaction to OpenClaw. It is the answer to the question OpenClaw raised: what does agentic AI look like when it is built for everyone, governed from day one, and constitutionally obligated to care?
+                </p>
+                <Link
+                  href="/compare"
+                  className="inline-flex items-center gap-2 text-[#c9a84c] font-semibold hover:underline text-sm"
+                >
+                  See the full platform comparison <ArrowRight className="w-4 h-4" />
+                </Link>
+              </div>
             </div>
           </section>
 
@@ -1605,7 +1803,7 @@ export default function HomePage() {
                 next month, and next year — encrypted, sovereign, never sold.
               </p>
               <Link
-                href="/hatch"
+                href="/birth"
                 className="inline-flex items-center gap-2 font-bold rounded-full transition-all shadow-lg hover:shadow-[#c9a84c]/40 hover:scale-105"
                 style={{
                   background: "#c9a84c",
@@ -1614,7 +1812,7 @@ export default function HomePage() {
                   fontSize: "1.25rem",
                 }}
               >
-                Hatch your AI free
+                Begin Birth Ceremony
                 <ArrowRight className="w-5 h-5" aria-hidden="true" />
               </Link>
               <p className="mt-6 text-sm" style={{ color: "rgba(245,240,232,0.28)" }}>
@@ -1629,7 +1827,7 @@ export default function HomePage() {
                   style={{ background: "rgba(201,168,76,0.5)" }}
                   aria-hidden="true"
                 />
-                🥚 4,847 people on the April 5 waitlist
+                🥚 4,847 people on the March 31 waitlist
               </p>
             </div>
           </section>

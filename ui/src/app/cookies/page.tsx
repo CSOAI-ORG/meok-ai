@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { MarketingNav } from "@/components/marketing-nav";
 import { MarketingFooter } from "@/components/marketing-footer";
 
 export const metadata: Metadata = {
@@ -11,7 +10,6 @@ export const metadata: Metadata = {
 export default function CookiePolicyPage() {
   return (
     <>
-      <MarketingNav />
       <main className="min-h-screen bg-[#faf9f6]">
         {/* Hero */}
         <section className="bg-[#1a1a2e] text-white py-20 px-6">

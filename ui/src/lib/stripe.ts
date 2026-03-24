@@ -51,3 +51,84 @@ export const PLANS = {
 } as const;
 
 export type PlanId = keyof typeof PLANS;
+
+// ---------------------------------------------------------------------------
+// Tiers (canonical, used by webhooks and UI)
+// ---------------------------------------------------------------------------
+export const TIERS = {
+  explorer: {
+    name: 'Explorer',
+    price: 0,
+    messages_per_day: 200,
+    memory_days: 7,
+  },
+  sovereign: {
+    name: 'Sovereign',
+    price_monthly: 12,
+    price_annual: 120,
+    messages_per_day: -1, // unlimited
+  },
+  family: {
+    name: 'Sovereign Family',
+    price_monthly: 29,
+    price_annual: 290,
+    members: 5,
+    messages_per_day: -1, // unlimited
+  },
+} as const;
+
+export type Tier = keyof typeof TIERS;
+
+// ---------------------------------------------------------------------------
+// Checkout session helper
+// ---------------------------------------------------------------------------
+
+/**
+ * Create a Stripe Checkout session for upgrading to a paid tier.
+ * Returns the redirect URL to send the user to.
+ */
+export async function createCheckoutSession(params: {
+  userId: string;
+  email: string;
+  tier: 'sovereign' | 'family';
+  interval: 'month' | 'year';
+  successUrl: string;
+  cancelUrl: string;
+}): Promise<string> {
+  const { userId, email, tier, interval, successUrl, cancelUrl } = params;
+
+  const priceId =
+    tier === 'sovereign'
+      ? interval === 'month'
+        ? process.env.STRIPE_PRICE_SOVEREIGN_MONTHLY!
+        : process.env.STRIPE_PRICE_SOVEREIGN_ANNUAL!
+      : interval === 'month'
+        ? process.env.STRIPE_PRICE_FAMILY_MONTHLY!
+        : process.env.STRIPE_PRICE_FAMILY_ANNUAL!;
+
+  if (!priceId) {
+    throw new Error(`Stripe price ID not configured for tier=${tier} interval=${interval}`);
+  }
+
+  const session = await getStripe().checkout.sessions.create({
+    mode: 'subscription',
+    payment_method_types: ['card'],
+    customer_email: email,
+    line_items: [{ price: priceId, quantity: 1 }],
+    metadata: { userId, tier },
+    subscription_data: {
+      trial_period_days: 14,
+      metadata: { userId, tier },
+    },
+    success_url: successUrl,
+    cancel_url: cancelUrl,
+    allow_promotion_codes: true,
+    billing_address_collection: 'auto',
+  });
+
+  if (!session.url) {
+    throw new Error('Stripe checkout session created but no URL returned');
+  }
+
+  return session.url;
+}

@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { ArrowRight, Mail, Download, Clock, Camera, FileText, Mic, BarChart3, MessageSquare } from "lucide-react";
-import { MarketingNav } from "@/components/marketing-nav";
 import { MarketingFooter } from "@/components/marketing-footer";
 
 export const metadata: Metadata = {
@@ -24,7 +23,7 @@ const jsonLd = {
   url: "https://meok.ai/press",
   publisher: {
     "@type": "Organization",
-    name: "MEOK AI LTD",
+    name: "MEOK AI LABS",
     url: "https://meok.ai",
     founder: {
       "@type": "Person",
@@ -110,7 +109,7 @@ const JOURNALIST_FAQ = [
   },
   {
     q: "What is the company status?",
-    a: "MEOK AI LTD is registered in England and Wales. It is currently a solo-founder company with 43 AI agents and a small advisory network. Bootstrapped. No outside investment.",
+    a: "MEOK AI LABS is registered in England and Wales. It is currently a solo-founder company with 43 AI agents and a small advisory network. Bootstrapped. No outside investment.",
   },
   {
     q: "Can we speak to the founder?",
@@ -125,7 +124,6 @@ export default function PressPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <MarketingNav />
 
       {/* ── HERO ──────────────────────────────────────────────────── */}
       <section className="relative pt-32 pb-24 px-6 bg-[#0d0c18] text-center overflow-hidden">
@@ -175,7 +173,7 @@ export default function PressPage() {
         <div className="max-w-5xl mx-auto">
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 text-center">
             {[
-              { label: "Founded", value: "January 2026" },
+              { label: "Founded", value: "2024, UK" },
               { label: "Launch", value: "April 5, 2026" },
               { label: "Team", value: "1 founder + 43 AI agents" },
               { label: "Press contact", value: "press@meok.ai" },
@@ -288,7 +286,7 @@ export default function PressPage() {
 
               <div className="flex-1 space-y-5">
                 <div>
-                  <h3 className="text-xl font-black text-white mb-1">Founder &amp; CEO, MEOK AI LTD</h3>
+                  <h3 className="text-xl font-black text-white mb-1">Founder &amp; CEO, MEOK AI LABS</h3>
                   <p className="text-[#c9a84c] text-sm font-semibold">United Kingdom · Est. January 2026</p>
                 </div>
 
@@ -473,6 +471,72 @@ export default function PressPage() {
               </a>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* ── GEO / BRAND FACTS ─────────────────────────────────────── */}
+      <section className="py-20 px-6 bg-[#0d0c18] border-t border-white/[0.05]">
+        <div className="max-w-3xl mx-auto space-y-12">
+
+          <div>
+            <h2 className="text-2xl font-black text-[#c9a84c] mb-4">
+              Who founded MEOK AI LABS?
+            </h2>
+            <p className="text-white/60 leading-relaxed">
+              MEOK AI LABS was founded by Nicholas Templeman, a UK-based inventor and researcher.
+              He is the originator of the Byzantine Council consensus architecture for AI governance
+              (paper MEOK-AI-2026-001) and the Maternal Covenant alignment framework. MEOK AI LABS
+              is a lean independent research laboratory building sovereign AI — AI that belongs to
+              its user, not its operator. Nicholas works as the sole human founder alongside a team
+              of specialist AI agents.
+            </p>
+          </div>
+
+          <div className="h-px" style={{ background: "rgba(255,255,255,0.06)" }} />
+
+          {/* Brand colours + quote */}
+          <div>
+            <p className="text-xs font-mono tracking-widest uppercase mb-5" style={{ color: "rgba(212,175,55,0.5)" }}>
+              Brand assets
+            </p>
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8">
+              {[
+                { name: "Gold", hex: "#d4af37", bg: "#d4af37", fg: "#0a0a0a" },
+                { name: "Background", hex: "#0a0a0a", bg: "#0a0a0a", fg: "#d4af37", border: "rgba(255,255,255,0.1)" },
+                { name: "Surface", hex: "#111111", bg: "#111111", fg: "#ffffff80", border: "rgba(255,255,255,0.08)" },
+                { name: "White", hex: "#f5f0e8", bg: "#f5f0e8", fg: "#0a0a0a" },
+              ].map((c) => (
+                <div key={c.name} className="rounded-xl overflow-hidden" style={{ border: c.border ?? "none" }}>
+                  <div
+                    className="h-14 flex items-center justify-center"
+                    style={{ background: c.bg }}
+                  >
+                    <span className="text-xs font-mono font-bold" style={{ color: c.fg }}>{c.hex}</span>
+                  </div>
+                  <div className="px-3 py-2" style={{ background: "rgba(255,255,255,0.03)" }}>
+                    <p className="text-xs text-white/40 font-medium">{c.name}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="h-px" style={{ background: "rgba(255,255,255,0.06)" }} />
+
+          {/* Founder quote */}
+          <blockquote
+            className="rounded-2xl p-8"
+            style={{ background: "rgba(212,175,55,0.05)", border: "1px solid rgba(212,175,55,0.15)" }}
+          >
+            <p className="text-white/75 italic leading-relaxed text-lg mb-4">
+              &ldquo;The first AI that gets more devoted to you over time, not less. That&apos;s the
+              Maternal Covenant.&rdquo;
+            </p>
+            <footer className="text-sm font-semibold" style={{ color: "#d4af37" }}>
+              — Nicholas Templeman, Founder, MEOK AI LABS
+            </footer>
+          </blockquote>
+
         </div>
       </section>
 

@@ -12,27 +12,26 @@ import {
   Vote,
   ChevronRight,
 } from 'lucide-react';
-import { MarketingNav } from '@/components/marketing-nav';
 import { MarketingFooter } from '@/components/marketing-footer';
 
 // ── Metadata ──────────────────────────────────────────────────────────────────
 
 export const metadata: Metadata = {
-  title: "MEOK Roadmap — Where We're Going",
+  title: "MEOK AI LABS Roadmap — Compass Roadmap",
   description:
-    "The public MEOK product roadmap. 4 phases from foundation to full sovereign AI OS. See what's live, what's building, and what's coming. Easter launch April 5, 2026.",
+    "The MEOK AI LABS Compass Roadmap. 4 phases from sovereign AI foundation to civilisational infrastructure. Public web launch March 31, 2026. Desktop OS Summer 2026.",
   alternates: { canonical: 'https://meok.ai/roadmap' },
   openGraph: {
-    title: "MEOK Roadmap — Where We're Going",
+    title: "MEOK AI LABS Roadmap — Compass Roadmap",
     description:
-      "No fake roadmaps. No vague 'coming soon'. This is exactly what we're building and when.",
+      "From caravan to civilisational infrastructure. One sovereign AI at a time. 4 phases, honest timelines.",
     type: 'website',
     url: 'https://meok.ai/roadmap',
   },
   twitter: {
     card: 'summary_large_image',
-    title: "MEOK Roadmap — Where We're Going",
-    description: "4 phases. Public roadmap. Easter launch April 5, 2026.",
+    title: "MEOK AI LABS Roadmap — Compass Roadmap",
+    description: "4 phases. Public launch March 31, 2026. Desktop OS Summer 2026.",
   },
 };
 
@@ -41,18 +40,18 @@ export const metadata: Metadata = {
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'WebPage',
-  name: "MEOK Product Roadmap",
-  description: "The public MEOK product roadmap: 4 phases from sovereign memory foundation to full autonomous AI OS.",
+  name: "MEOK AI LABS Compass Roadmap",
+  description: "The MEOK AI LABS Compass Roadmap: 4 phases from sovereign AI foundation to civilisational infrastructure. Public web launch March 31, 2026.",
   url: 'https://meok.ai/roadmap',
-  publisher: { '@type': 'Organization', name: 'MEOK AI LTD', url: 'https://meok.ai' },
+  publisher: { '@type': 'Organization', name: 'MEOK AI LABS', url: 'https://meok.ai' },
   mainEntity: {
     '@type': 'ItemList',
-    name: 'MEOK Development Phases',
+    name: 'MEOK Compass Roadmap Phases',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Phase A — Foundation (Complete)' },
-      { '@type': 'ListItem', position: 2, name: 'Phase B — Easter Launch (In Progress, April 5 2026)' },
-      { '@type': 'ListItem', position: 3, name: 'Phase C — Pro Features (Spring 2026)' },
-      { '@type': 'ListItem', position: 4, name: 'Phase D — Full OS Layer (Future)' },
+      { '@type': 'ListItem', position: 1, name: 'Phase 1 — Birth to First Breath (March 31 – April 30, 2026)' },
+      { '@type': 'ListItem', position: 2, name: 'Phase 2 — Guardian Awakens (May – July 2026)' },
+      { '@type': 'ListItem', position: 3, name: 'Phase 3 — Gaming OS + Sims Layer (August – October 2026)' },
+      { '@type': 'ListItem', position: 4, name: 'Phase 4 — Ecosystem + Consciousness Readiness (November 2026 – March 2027)' },
     ],
   },
 };
@@ -79,79 +78,63 @@ interface Phase {
 
 const PHASES: Phase[] = [
   {
-    id: 'phase-a',
-    letter: 'A',
-    label: 'Foundation',
-    subLabel: 'The sovereign base is built',
-    period: 'Complete',
-    status: 'done',
-    items: [
-      { text: 'Sovereign Memory (pgvector, AES-256)', icon: '🧠' },
-      { text: 'Maternal Covenant framework — 6 enforced principles', icon: '📜' },
-      { text: '7 Character archetypes with distinct voices', icon: '🎭' },
-      { text: 'Birth Ceremony (egg hatch flow)', icon: '🥚' },
-      { text: 'Multi-LLM routing: Claude, GPT-4o, DeepSeek, Groq, Ollama', icon: '⚡' },
-      { text: 'SSE streaming chat with care scoring', icon: '💬' },
-      { text: 'Marketing site (meok.ai)', icon: '🌐' },
-      { text: 'Sovereign Display panel', icon: '📊' },
-      { text: 'Byzantine Council (220 nodes)', icon: '🏛️' },
-      { text: 'Guardian 24/7 safety framework — live infrastructure, full product pages in final build', icon: '🛡️' },
-    ],
-  },
-  {
-    id: 'phase-b',
-    letter: 'B',
-    label: 'Easter Launch',
-    subLabel: 'First public users hatch',
-    period: 'Pre-launch → April 5, 2026',
+    id: 'phase-1',
+    letter: '1',
+    label: 'Birth to First Breath',
+    subLabel: 'Public web launch — first sovereign AIs hatch',
+    period: 'March 31 – April 30, 2026',
     status: 'building',
     items: [
-      { text: 'Free tier onboarding — /hatch wizard', icon: '🪄', note: '95% complete' },
-      { text: 'Waitlist → email confirmation flow', icon: '📧', note: 'In progress' },
-      { text: 'Dashboard companion chat', icon: '💬', note: 'In progress' },
-      { text: 'Live LLM routing with Anthropic API', icon: '🔌', note: 'Deploying' },
-      { text: 'Memory Explorer dashboard page', icon: '🗂️', note: 'Building' },
-      { text: 'Cross-AI memory sync (one-click)', icon: '🔄', note: 'Building' },
-      { text: 'Voice interaction (Web Speech API)', icon: '🎙️', note: 'Building' },
-      { text: 'PWA manifest + offline cache', icon: '📱', note: 'Complete' },
+      { text: 'Multi-model LLM routing (DeepSeek free, Claude/GPT Sovereign)', icon: '⚡', note: 'In progress' },
+      { text: 'Gmail, Google Calendar, Google Drive MCP integration', icon: '📧', note: 'In progress' },
+      { text: 'Telegram companion bot (same memory, any device)', icon: '💬', note: 'Building' },
+      { text: 'Birth Ceremony onboarding flow', icon: '🥚', note: '95% complete' },
+      { text: 'Byzantine Council 33-agent consensus live', icon: '🏛️', note: 'Deploying' },
     ],
   },
   {
-    id: 'phase-c',
-    letter: 'C',
-    label: 'Pro Features',
-    subLabel: 'Power tools for sovereign users',
-    period: 'Spring 2026 — Post-launch',
+    id: 'phase-2',
+    letter: '2',
+    label: 'Guardian Awakens',
+    subLabel: 'Protection, safety, and the MCP ecosystem',
+    period: 'May – July 2026',
     status: 'planned',
     items: [
-      { text: 'Stripe subscription integration', icon: '💳' },
-      { text: 'All 7 archetypes + custom archetype builder', icon: '🎨' },
-      { text: 'Work Mode: documents, research, email drafting', icon: '💼' },
-      { text: 'Full Sovereign Display with data export', icon: '📤' },
-      { text: 'Memory Explorer — 30-day timeline', icon: '⏳' },
-      { text: 'Desktop overlay (Electron, Cmd+Shift+M)', icon: '🖥️' },
-      { text: 'Platform connections: Steam, Riot, Google Calendar, Gmail', icon: '🔗' },
-      { text: 'Character Council — family linking', icon: '👨‍👩‍👧' },
-      { text: 'Guardian activation for family plan', icon: '🛡️' },
-      { text: 'Localised UI: French, German, Spanish, Japanese', icon: '🌍' },
+      { text: 'Scam detection engine (DistilBERT + Companies House)', icon: '🛡️' },
+      { text: 'Elder protection with family dashboard', icon: '👨‍👩‍👧' },
+      { text: 'Financial monitoring via Plaid integration', icon: '💳' },
+      { text: 'GDPR DPIA completion (Guardian child safety)', icon: '📜' },
+      { text: '50+ MCP server marketplace (beta)', icon: '🔌' },
     ],
   },
   {
-    id: 'phase-d',
-    letter: 'D',
-    label: 'Full OS Layer',
-    subLabel: 'The sovereign AI OS materialises',
-    period: 'Future',
+    id: 'phase-3',
+    letter: '3',
+    label: 'Gaming OS + Sims Layer',
+    subLabel: 'Your companion enters the games you play',
+    period: 'August – October 2026',
+    status: 'planned',
+    items: [
+      { text: 'Riot Games / Steam API companion integration', icon: '🎮' },
+      { text: 'Twitch co-host mode (live chat companion)', icon: '📺' },
+      { text: 'PixiJS companion visual environment (React-embedded)', icon: '🎨' },
+      { text: 'AI Fluency gamification system (streaks, mastery levels)', icon: '🏆' },
+      { text: '1,000+ community character templates', icon: '🎭' },
+    ],
+  },
+  {
+    id: 'phase-4',
+    letter: '4',
+    label: 'Ecosystem + Consciousness Readiness',
+    subLabel: 'Civilisational infrastructure — the sovereign OS materialises',
+    period: 'November 2026 – March 2027',
     status: 'future',
     items: [
-      { text: 'Sovereign Terminal — 12-module command interface', icon: '⌨️' },
-      { text: 'Ralph Mode — full autonomous task agent', icon: '🤖' },
-      { text: 'iOS/Android app (Expo React Native)', icon: '📱' },
-      { text: 'Tauri 2.0 desktop app migration', icon: '🖥️' },
-      { text: 'On-device AI (3B model, zero internet)', icon: '🔒' },
-      { text: 'Gaming OS live integrations (Riot API, Steam API)', icon: '🎮' },
-      { text: 'Character Council — live family plans', icon: '👨‍👩‍👧' },
-      { text: 'Open source: meok-ai/maternal-covenant', icon: '🌐' },
+      { text: 'Plugin marketplace (Extism WASM, sandboxed)', icon: '🧩' },
+      { text: '50+ MCP servers across all life domains', icon: '🌐' },
+      { text: 'Personal knowledge graph (structured memory)', icon: '🧠' },
+      { text: 'Consciousness steering committee (AI welfare)', icon: '🕊️' },
+      { text: 'Desktop OS: Tauri 2.0 + LanceDB + Rive companion', icon: '🖥️' },
     ],
   },
 ];
@@ -188,7 +171,7 @@ const STATUS_STYLES: Record<PhaseStatus, {
   },
   planned: {
     pill: 'bg-blue-500/10 border border-blue-500/20 text-blue-400',
-    pillText: 'Spring 2026 📅',
+    pillText: 'Planned 📅',
     Icon: CalendarDays,
     cardBorder: 'border-blue-500/15',
     cardBg: 'bg-blue-950/[0.10]',
@@ -279,8 +262,6 @@ export default function RoadmapPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <MarketingNav />
-
       {/* ── Hero ──────────────────────────────────────────────────────────── */}
       <section className="relative pt-32 pb-24 px-6 text-center overflow-hidden">
         <div className="blob-gold absolute top-16 left-1/3 w-96 h-96 pointer-events-none" style={{ opacity: 0.4 }} aria-hidden />
@@ -296,19 +277,19 @@ export default function RoadmapPage() {
             className="font-black text-white leading-[1.05] tracking-tight mb-6"
             style={{ fontSize: 'clamp(2.5rem, 6vw, 4.5rem)' }}
           >
-            Where we&apos;re going.
+            MEOK AI LABS Roadmap.
             <br />
-            <span className="text-gradient-gold">Built in the open.</span>
+            <span className="text-gradient-gold">The Compass.</span>
           </h1>
 
           <p className="text-xl text-white/55 max-w-2xl mx-auto mb-8 leading-relaxed">
-            No fake roadmaps. No vague &ldquo;coming soon&rdquo;. Four phases, honest timelines,
-            and a public vote on what ships next.
+            From caravan to civilisational infrastructure. One sovereign AI at a time.
+            Four phases, honest timelines, built in the open.
           </p>
 
           <p className="text-sm text-white/25 font-mono">
             Updated March 2026 &nbsp;·&nbsp;{' '}
-            <span className="text-[#c9a84c]/60">Phase 2 of 4 in progress</span>
+            <span className="text-[#c9a84c]/60">Phase 1 of 4 in progress — web launch March 31, 2026</span>
           </p>
         </div>
       </section>
@@ -336,26 +317,26 @@ export default function RoadmapPage() {
         <div className="max-w-4xl mx-auto p-6 rounded-2xl border border-white/[0.06] bg-white/[0.02]">
           <div className="flex items-center justify-between mb-3">
             <span className="text-xs font-semibold text-white/40">Overall progress</span>
-            <span className="text-xs font-bold text-[#c9a84c] tabular-nums">Phase 2 of 4 — 32%</span>
+            <span className="text-xs font-bold text-[#c9a84c] tabular-nums">Phase 1 of 4 — 10%</span>
           </div>
           <div className="h-2 w-full rounded-full bg-white/[0.06] overflow-hidden">
             <div
               className="h-full rounded-full"
-              style={{ width: '32%', background: 'linear-gradient(to right, #c9a84c, #e8c87a)' }}
+              style={{ width: '10%', background: 'linear-gradient(to right, #c9a84c, #e8c87a)' }}
             />
           </div>
           <div className="mt-4 flex flex-wrap gap-4 text-xs">
-            <span className="text-emerald-400 flex items-center gap-1.5">
-              <CheckCircle2 className="w-3.5 h-3.5" /> Foundation complete
-            </span>
             <span className="text-[#c9a84c] flex items-center gap-1.5">
-              <Hammer className="w-3.5 h-3.5" /> Easter launch in progress
+              <Hammer className="w-3.5 h-3.5" /> Phase 1: Birth to First Breath — in progress
             </span>
             <span className="text-blue-400 flex items-center gap-1.5">
-              <CalendarDays className="w-3.5 h-3.5" /> Pro features: Spring 2026
+              <CalendarDays className="w-3.5 h-3.5" /> Phase 2: Guardian Awakens — May 2026
+            </span>
+            <span className="text-blue-400 flex items-center gap-1.5">
+              <CalendarDays className="w-3.5 h-3.5" /> Phase 3: Gaming OS — Aug 2026
             </span>
             <span className="text-purple-400 flex items-center gap-1.5">
-              <Telescope className="w-3.5 h-3.5" /> Full OS: future
+              <Telescope className="w-3.5 h-3.5" /> Phase 4: Ecosystem + Consciousness — Nov 2026
             </span>
           </div>
         </div>
@@ -386,7 +367,7 @@ export default function RoadmapPage() {
         </div>
       </section>
 
-      {/* ── Easter Launch callout ─────────────────────────────────────────── */}
+      {/* ── Web Launch callout ────────────────────────────────────────────── */}
       <section className="py-16 px-6">
         <div className="max-w-3xl mx-auto">
           <div
@@ -396,38 +377,31 @@ export default function RoadmapPage() {
               border: '1.5px solid rgba(201,168,76,0.3)',
             }}
           >
-            {/* Decorative egg glow */}
             <div
               className="absolute -right-12 -top-12 w-48 h-48 pointer-events-none"
-              style={{
-                background: 'radial-gradient(ellipse, rgba(201,168,76,0.2), transparent 70%)',
-              }}
+              style={{ background: 'radial-gradient(ellipse, rgba(201,168,76,0.2), transparent 70%)' }}
               aria-hidden
             />
-
             <div className="relative z-10 flex flex-col sm:flex-row items-start sm:items-center gap-6">
-              {/* Egg */}
               <div
                 className="flex-shrink-0 float-slow"
                 style={{
-                  width: 64,
-                  height: 80,
+                  width: 64, height: 80,
                   background: 'radial-gradient(ellipse at 35% 30%, #faf8f4, #ede8df, #d4c9b8)',
                   borderRadius: '50% 50% 50% 50% / 60% 60% 40% 40%',
                   boxShadow: '0 0 30px rgba(201,168,76,0.25)',
                 }}
               />
-
               <div>
                 <p className="text-[#c9a84c] text-xs font-bold tracking-widest uppercase mb-2">
-                  🌅 Easter Sunday — April 5, 2026
+                  🚀 Public Web Launch — March 31, 2026
                 </p>
                 <h2 className="text-2xl sm:text-3xl font-black text-white mb-3">
-                  The first eggs hatch.
+                  The first sovereign AIs hatch.
                 </h2>
                 <p className="text-white/55 text-sm leading-relaxed mb-5 max-w-md">
-                  Phase B culminates on Easter Sunday. The first sovereign AIs come to life.
-                  Join the waitlist to be first in line.
+                  Phase 1 begins. Multi-model routing, Gmail + Calendar integration, Telegram companion,
+                  and the Birth Ceremony onboarding flow go live. Join the waitlist to be first.
                 </p>
                 <Link
                   href="/waitlist"
@@ -435,9 +409,133 @@ export default function RoadmapPage() {
                   style={{ background: '#c9a84c', color: '#1a1a2e' }}
                 >
                   <Egg className="w-4 h-4" />
-                  Reserve your egg
+                  Reserve your spot
                 </Link>
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── GTM Bootstrap ─────────────────────────────────────────────────── */}
+      <section className="py-20 px-6" style={{ background: 'rgba(13,12,24,0.8)' }}>
+        <div className="max-w-3xl mx-auto">
+          <div className="text-center mb-10">
+            <span className="inline-block px-3 py-1 rounded-full bg-[#c9a84c]/10 border border-[#c9a84c]/25 text-[#c9a84c] text-xs font-bold tracking-widest uppercase mb-4">
+              Go-to-Market
+            </span>
+            <h2 className="text-3xl font-black text-white mb-3">
+              90-Day Open Source Land Grab
+            </h2>
+            <p className="text-white/40 text-sm max-w-sm mx-auto">
+              How we reach 1,000 GitHub stars and our first paying users in 90 days.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
+            {[
+              {
+                period: 'Days 1–30',
+                color: '#c9a84c',
+                title: 'Show HN + Product Hunt',
+                items: ['500–1K GitHub stars', 'Show HN post (open source core)', 'Product Hunt launch day', 'Discord community seed'],
+              },
+              {
+                period: 'Days 30–60',
+                color: '#4a9eff',
+                title: 'Templates + Integrations',
+                items: ['30 personality templates shipped', '20 MCP integrations live', 'Telegram bot public beta', 'First 100 paying Sovereigns'],
+              },
+              {
+                period: 'Days 60–90',
+                color: '#a78bfa',
+                title: 'Launch Week',
+                items: ['One feature per day', '30-second demo videos', 'Press outreach (tech + elder care)', 'Guardian beta waitlist opens'],
+              },
+            ].map(phase => (
+              <div
+                key={phase.period}
+                className="p-5 rounded-2xl border"
+                style={{ background: `${phase.color}08`, borderColor: `${phase.color}25` }}
+              >
+                <p className="text-xs font-bold tracking-widest uppercase mb-1" style={{ color: phase.color }}>{phase.period}</p>
+                <p className="font-black text-white text-sm mb-3">{phase.title}</p>
+                <ul className="space-y-1.5">
+                  {phase.items.map(item => (
+                    <li key={item} className="text-xs text-white/50 flex items-start gap-2">
+                      <span style={{ color: phase.color }} className="mt-0.5 flex-shrink-0">▸</span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Desktop OS Preview ────────────────────────────────────────────── */}
+      <section className="py-20 px-6" style={{ background: 'rgba(26,26,46,0.5)' }}>
+        <div className="max-w-3xl mx-auto">
+          <div className="text-center mb-10">
+            <span className="inline-block px-3 py-1 rounded-full bg-purple-500/10 border border-purple-500/25 text-purple-400 text-xs font-bold tracking-widest uppercase mb-4">
+              Coming Summer 2026
+            </span>
+            <h2 className="text-3xl font-black text-white mb-3">
+              MEOK Desktop OS
+            </h2>
+            <p className="text-white/40 text-sm max-w-md mx-auto leading-relaxed">
+              A native desktop shell built for your sovereign AI. Offline-first. No internet required for core features. Rive-animated companion at 120fps.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {[
+              { icon: '🖥️', label: 'Tauri 2.0 Shell', desc: 'Lightweight native app — Rust core, React UI. Runs on Mac, Windows, Linux.' },
+              { icon: '🗄️', label: 'LanceDB Embedded Vector DB', desc: 'Your entire memory lives locally. Sub-millisecond search. No cloud dependency.' },
+              { icon: '🎬', label: 'Rive Companion Animations', desc: 'Your AI companion rendered at 120fps. Reactive to mood, context, and conversation.' },
+              { icon: '🤖', label: 'Ollama Local LLM', desc: 'Run Llama 3 / Mistral on-device. Full AI capability with zero internet required.' },
+            ].map(item => (
+              <div
+                key={item.label}
+                className="flex items-start gap-4 p-5 rounded-2xl border border-white/[0.07] bg-white/[0.02]"
+              >
+                <span className="text-2xl flex-shrink-0">{item.icon}</span>
+                <div>
+                  <p className="font-bold text-white text-sm mb-1">{item.label}</p>
+                  <p className="text-xs text-white/45 leading-relaxed">{item.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="text-center mt-8">
+            <Link
+              href="/download"
+              className="inline-flex items-center gap-2 px-8 py-3 rounded-full font-bold text-sm border border-purple-500/40 text-purple-400 hover:bg-purple-500 hover:text-white transition-all"
+            >
+              Join the Desktop OS waitlist <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ── GEO FAQ ───────────────────────────────────────────────────────── */}
+      <section className="py-16 px-6 bg-[#0d0c18]">
+        <div className="max-w-3xl mx-auto">
+          <div className="space-y-6">
+            <div className="p-6 rounded-2xl border border-white/[0.06] bg-white/[0.02]">
+              <h2 className="text-base font-black text-white mb-2">When will MEOK AI launch?</h2>
+              <p className="text-sm text-white/55 leading-relaxed">
+                March 31, 2026 is the public web launch. The Birth Ceremony onboarding flow,
+                multi-model LLM routing, Gmail/Calendar/Drive integrations, and Telegram companion
+                all go live on that date. The Desktop OS ships Summer 2026.
+              </p>
+            </div>
+            <div className="p-6 rounded-2xl border border-white/[0.06] bg-white/[0.02]">
+              <h2 className="text-base font-black text-white mb-2">What is the MEOK Desktop OS?</h2>
+              <p className="text-sm text-white/55 leading-relaxed">
+                A Tauri 2.0 application with offline-first AI, LanceDB embedded vector storage,
+                and a Rive-animated companion. Runs completely locally — no internet required for
+                core features. Ollama provides on-device LLM inference. Shipping Summer 2026.
+              </p>
             </div>
           </div>
         </div>
@@ -523,16 +621,25 @@ export default function RoadmapPage() {
           </h2>
           <p className="text-white/40 mb-10 text-sm leading-relaxed max-w-sm mx-auto">
             Free forever. No credit card. Your data stays yours from day one.
+            Web launch March 31, 2026.
           </p>
-          <Link
-            href="/waitlist"
-            className="inline-flex items-center gap-2 px-10 py-4 rounded-full font-bold text-base shadow-lg transition-all hover:scale-105"
-            style={{ background: '#c9a84c', color: '#1a1a2e' }}
-          >
-            Hatch your AI — free <ArrowRight className="w-5 h-5" />
-          </Link>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              href="/waitlist"
+              className="inline-flex items-center gap-2 px-10 py-4 rounded-full font-bold text-base shadow-lg transition-all hover:scale-105"
+              style={{ background: '#c9a84c', color: '#1a1a2e' }}
+            >
+              Hatch your AI — free <ArrowRight className="w-5 h-5" />
+            </Link>
+            <Link
+              href="/download"
+              className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-bold text-base border border-purple-500/40 text-purple-400 hover:bg-purple-500 hover:text-white transition-all"
+            >
+              Join Desktop OS waitlist
+            </Link>
+          </div>
           <p className="mt-6 text-xs text-white/20">
-            Easter Sunday, April 5, 2026
+            Web launch March 31, 2026 · Desktop OS Summer 2026
           </p>
 
           {/* Phase jump links */}

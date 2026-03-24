@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, FlaskConical, Github, ExternalLink, Cpu, Brain, Sparkles, Vote } from "lucide-react";
-import { MarketingNav } from "@/components/marketing-nav";
 import { MarketingFooter } from "@/components/marketing-footer";
 
 export const metadata: Metadata = {
@@ -27,7 +26,7 @@ const jsonLd = {
     "MEOK Labs experiments with sovereign AI architecture in public — publishing findings as we go.",
   parentOrganization: {
     "@type": "Organization",
-    name: "MEOK AI LTD",
+    name: "MEOK AI LABS",
     url: "https://meok.ai",
   },
 };
@@ -139,8 +138,6 @@ export default function LabsPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-
-      <MarketingNav />
 
       {/* ── HERO ──────────────────────────────────────────────────── */}
       <section className="relative pt-32 pb-24 px-6 text-center overflow-hidden">

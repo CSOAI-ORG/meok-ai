@@ -42,14 +42,12 @@ test.describe('Homepage', () => {
     expect(href).toBe('/login')
   })
 
-  test('pricing section shows Free/Pro/Elite tiers', async ({ page }) => {
-    await page.goto('/')
-    await page.locator('#pricing').scrollIntoViewIfNeeded()
-    await expect(page.locator('#pricing')).toBeVisible()
-    const pricingText = (await page.locator('#pricing').textContent()) || ''
-    expect(pricingText).toMatch(/Free/i)
-    expect(pricingText).toMatch(/Pro/i)
-    expect(pricingText).toMatch(/Elite/i)
+  test('pricing section shows Explorer/Sovereign/Family tiers', async ({ page }) => {
+    await page.goto('/pricing')
+    const pricingText = (await page.locator('body').textContent()) || ''
+    expect(pricingText).toMatch(/Explorer/i)
+    expect(pricingText).toMatch(/Sovereign/i)
+    expect(pricingText).toMatch(/Family/i)
   })
 
   test('220-node council stat present', async ({ page }) => {
@@ -78,14 +76,14 @@ test.describe('Login + Hatch Pages', () => {
     await expect(page.locator('body')).toBeVisible()
   })
 
-  test('hatch page renders with companion flow', async ({ page }) => {
-    await page.goto('/hatch')
+  test('birth page renders with companion flow', async ({ page }) => {
+    await page.goto('/birth')
     await expect(page).not.toHaveURL(/error/)
     await expect(page.locator('body')).toContainText('MEOK')
     const bodyText = (await page.locator('body').textContent()) || ''
-    const hasFlow = bodyText.includes('companion') || bodyText.includes('Scholar') ||
-                    bodyText.includes('Guardian') || bodyText.includes('path') ||
-                    bodyText.includes('emerge') || bodyText.includes('hatch')
+    const hasFlow = bodyText.includes('companion') || bodyText.includes('ceremony') ||
+                    bodyText.includes('sovereign') || bodyText.includes('birth') ||
+                    bodyText.includes('hatch') || bodyText.includes('covenant')
     expect(hasFlow).toBeTruthy()
   })
 })
@@ -128,7 +126,7 @@ test.describe('API Health', () => {
     const data = await resp.json()
     expect(data).toHaveProperty('plan')
     expect(data).toHaveProperty('status')
-    expect(['explorer', 'pro', 'elite', 'team', 'free']).toContain(data.plan)
+    expect(['explorer', 'sovereign', 'family', 'pro', 'elite', 'team', 'free']).toContain(data.plan)
   })
 
   test('billing status returns upgrade_url for free tier', async ({ request }) => {

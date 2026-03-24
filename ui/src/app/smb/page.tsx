@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { MarketingNav } from "@/components/marketing-nav";
 import { MarketingFooter } from "@/components/marketing-footer";
 import {
   ArrowRight,
@@ -102,7 +101,7 @@ const jsonLd = {
       name: "Is MEOK GDPR compliant?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Yes. MEOK AI LTD is a UK-registered company. Data is encrypted at rest and in transit, stored in EU/UK-based infrastructure, and fully exportable and deletable on request. We provide a Data Processing Agreement (DPA) for team customers.",
+        text: "Yes. MEOK AI LABS is a UK-registered company. Data is encrypted at rest and in transit, stored in EU/UK-based infrastructure, and fully exportable and deletable on request. We provide a Data Processing Agreement (DPA) for team customers.",
       },
     },
       ],
@@ -227,7 +226,7 @@ const FAQS = [
   },
   {
     q: "Is MEOK GDPR compliant?",
-    a: "Yes. MEOK AI LTD is a UK-registered company. Data is stored in EU/UK infrastructure, encrypted, fully exportable and deletable on request. We provide a Data Processing Agreement for team customers.",
+    a: "Yes. MEOK AI LABS is a UK-registered company. Data is stored in EU/UK infrastructure, encrypted, fully exportable and deletable on request. We provide a Data Processing Agreement for team customers.",
   },
   {
     q: "What happens to our data if we cancel?",
@@ -244,7 +243,6 @@ export default function SMBPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <MarketingNav activePage="smb" />
 
       {/* ─── HERO ─────────────────────────────────────────────────────────── */}
       <section className="relative min-h-[90vh] flex flex-col items-center justify-center px-6 pt-28 pb-20 text-center overflow-hidden">

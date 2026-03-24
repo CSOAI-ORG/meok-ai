@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { MarketingNav } from "@/components/marketing-nav";
 import { MarketingFooter } from "@/components/marketing-footer";
 
 export const metadata: Metadata = {
@@ -174,7 +173,6 @@ const FAQS = [
 export default function ConnectPage() {
   return (
     <div className="min-h-screen text-[#f5f0e8]" style={{ background: "#0d0c18" }}>
-      <MarketingNav />
 
       {/* ─── HERO ─────────────────────────────────────────────────── */}
       <section className="relative pt-32 pb-20 px-6 text-center overflow-hidden">

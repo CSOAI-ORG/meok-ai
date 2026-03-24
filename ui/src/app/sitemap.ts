@@ -31,10 +31,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: 'https://meok.ai/product', lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
     { url: 'https://meok.ai/roadmap', lastModified: new Date(), changeFrequency: 'weekly', priority: 0.7 },
     { url: 'https://meok.ai/waitlist', lastModified: new Date(), changeFrequency: 'daily', priority: 0.9 },
-    { url: 'https://meok.ai/hatch', lastModified: new Date(), changeFrequency: 'weekly', priority: 0.9 },
+    { url: 'https://meok.ai/start', lastModified: new Date(), changeFrequency: 'weekly', priority: 0.9 },
     { url: 'https://meok.ai/connect', lastModified: new Date(), changeFrequency: 'weekly', priority: 0.8 },
     { url: 'https://meok.ai/sovereign', lastModified: new Date(), changeFrequency: 'weekly', priority: 0.8 },
     { url: 'https://meok.ai/smb', lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
+    { url: 'https://meok.ai/faith', lastModified: new Date(), changeFrequency: 'weekly', priority: 0.8 },
+    { url: 'https://meok.ai/community', lastModified: new Date(), changeFrequency: 'weekly', priority: 0.7 },
+    { url: 'https://meok.ai/download', lastModified: new Date(), changeFrequency: 'weekly', priority: 0.8 },
+    { url: 'https://meok.ai/accessibility', lastModified: new Date(), changeFrequency: 'monthly', priority: 0.6 },
+    { url: 'https://meok.ai/security', lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
+    { url: 'https://meok.ai/care', lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
+    { url: 'https://meok.ai/ai-act', lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
 
     // ── Live / team / press ───────────────────────────────────────────
     { url: 'https://meok.ai/live', lastModified: new Date(), changeFrequency: 'daily', priority: 0.9 },
@@ -94,15 +101,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
     // ── Dashboard ─────────────────────────────────────────────────────
     { url: 'https://meok.ai/dashboard/chat', lastModified: new Date(), changeFrequency: 'monthly', priority: 0.6 },
+    { url: 'https://meok.ai/dashboard/evolution', lastModified: new Date(), changeFrequency: 'monthly', priority: 0.6 },
+    { url: 'https://meok.ai/dashboard/progress', lastModified: new Date(), changeFrequency: 'monthly', priority: 0.5 },
 
     // ── Labs and research ─────────────────────────────────────────────
     { url: 'https://meok.ai/labs', lastModified: new Date(), changeFrequency: 'monthly', priority: 0.9 },
-    { url: 'https://meok.ai/open-source', lastModified: new Date(), changeFrequency: 'monthly', priority: 0.6 },
+    { url: 'https://meok.ai/open-source', lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
     { url: 'https://meok.ai/research', lastModified: new Date(), changeFrequency: 'monthly', priority: 0.6 },
-    { url: 'https://meok.ai/labs/csga-cai-2026-001', lastModified: new Date('2026-02-15'), changeFrequency: 'yearly', priority: 0.8 },
-    { url: 'https://meok.ai/labs/csga-cai-2026-002', lastModified: new Date('2026-03-15'), changeFrequency: 'yearly', priority: 0.8 },
-    { url: 'https://meok.ai/labs/csga-cai-2026-003', lastModified: new Date('2026-03-19'), changeFrequency: 'yearly', priority: 0.8 },
-    { url: 'https://meok.ai/labs/csga-cai-2026-004', lastModified: new Date('2026-03-20'), changeFrequency: 'yearly', priority: 0.8 },
+
+    // ── What is MEOK / Sovereignty ────────────────────────────────────
+    { url: 'https://meok.ai/what-is-meok', lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
+    { url: 'https://meok.ai/sovereignty', lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
 
     // ── Maternal Covenant / Family / Ralph ────────────────────────────
     { url: 'https://meok.ai/maternal-covenant', lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
@@ -111,6 +120,43 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
     // ── Blog ──────────────────────────────────────────────────────────
     { url: 'https://meok.ai/blog', lastModified: new Date(), changeFrequency: 'weekly', priority: 0.8 },
+    { url: 'https://meok.ai/blog/meok-for-anxiety', lastModified: new Date('2026-03-24'), changeFrequency: 'monthly', priority: 0.8 },
+    { url: 'https://meok.ai/blog/ai-companion-for-kids', lastModified: new Date('2026-03-25'), changeFrequency: 'monthly', priority: 0.8 },
+    { url: 'https://meok.ai/blog/meok-vs-claude', lastModified: new Date('2026-03-26'), changeFrequency: 'monthly', priority: 0.8 },
+    { url: 'https://meok.ai/blog/why-meok-never-trains-on-you', lastModified: new Date('2026-03-21'), changeFrequency: 'monthly', priority: 0.8 },
+    { url: 'https://meok.ai/blog/the-40-day-build', lastModified: new Date('2026-03-19'), changeFrequency: 'monthly', priority: 0.8 },
+    { url: 'https://meok.ai/blog/byzantine-fault-tolerance-your-ai', lastModified: new Date('2026-03-18'), changeFrequency: 'monthly', priority: 0.8 },
+    { url: 'https://meok.ai/blog/building-care-into-ai', lastModified: new Date('2026-03-17'), changeFrequency: 'monthly', priority: 0.8 },
+    { url: 'https://meok.ai/blog/why-your-ai-should-have-states-of-consciousness', lastModified: new Date('2026-03-16'), changeFrequency: 'monthly', priority: 0.8 },
+    { url: 'https://meok.ai/blog/the-memory-problem', lastModified: new Date('2026-03-15'), changeFrequency: 'monthly', priority: 0.8 },
+    { url: 'https://meok.ai/blog/meok-vs-chatgpt', lastModified: new Date('2026-03-24'), changeFrequency: 'monthly', priority: 0.8 },
+    { url: 'https://meok.ai/blog/ai-companion-for-elderly', lastModified: new Date('2026-03-23'), changeFrequency: 'monthly', priority: 0.8 },
+    { url: 'https://meok.ai/blog/meok-for-adhd', lastModified: new Date('2026-03-23'), changeFrequency: 'monthly', priority: 0.8 },
+    { url: 'https://meok.ai/blog/cognitive-symbiosis', lastModified: new Date('2026-03-22'), changeFrequency: 'monthly', priority: 0.8 },
+    { url: 'https://meok.ai/blog/the-maternal-covenant', lastModified: new Date('2026-03-21'), changeFrequency: 'monthly', priority: 0.9 },
+    { url: 'https://meok.ai/blog/what-is-sovereign-ai', lastModified: new Date('2026-03-20'), changeFrequency: 'monthly', priority: 0.8 },
+    { url: 'https://meok.ai/blog/why-your-nan-needs-sovereign-ai', lastModified: new Date('2026-03-20'), changeFrequency: 'monthly', priority: 0.8 },
+    { url: 'https://meok.ai/blog/memory-portability', lastModified: new Date('2026-03-22'), changeFrequency: 'monthly', priority: 0.8 },
+    { url: 'https://meok.ai/blog/sovereign-ai-vs-cloud-ai', lastModified: new Date('2026-03-22'), changeFrequency: 'monthly', priority: 0.8 },
+    { url: 'https://meok.ai/blog/hydro-neuromorphic', lastModified: new Date('2026-03-20'), changeFrequency: 'monthly', priority: 0.7 },
+    { url: 'https://meok.ai/blog/if-ai-becomes-conscious', lastModified: new Date('2026-03-20'), changeFrequency: 'monthly', priority: 0.7 },
+    { url: 'https://meok.ai/blog/origin-story', lastModified: new Date('2026-03-18'), changeFrequency: 'monthly', priority: 0.8 },
+    { url: 'https://meok.ai/blog/why-i-built-meok', lastModified: new Date('2026-03-17'), changeFrequency: 'monthly', priority: 0.8 },
+    { url: 'https://meok.ai/blog/why-meok', lastModified: new Date('2026-03-16'), changeFrequency: 'monthly', priority: 0.8 },
+    { url: 'https://meok.ai/blog/byzantine-council', lastModified: new Date('2026-03-22'), changeFrequency: 'monthly', priority: 0.8 },
+    { url: 'https://meok.ai/blog/byzantine-council-explained', lastModified: new Date('2026-03-21'), changeFrequency: 'monthly', priority: 0.8 },
+    { url: 'https://meok.ai/blog/archetypes-guide', lastModified: new Date('2026-03-20'), changeFrequency: 'monthly', priority: 0.7 },
+    { url: 'https://meok.ai/blog/ralph-mode-guide', lastModified: new Date('2026-03-19'), changeFrequency: 'monthly', priority: 0.7 },
+    { url: 'https://meok.ai/blog/guardian-family-safety', lastModified: new Date('2026-03-23'), changeFrequency: 'monthly', priority: 0.8 },
+    { url: 'https://meok.ai/blog/ai-gaming-companion', lastModified: new Date('2026-03-22'), changeFrequency: 'monthly', priority: 0.7 },
+    { url: 'https://meok.ai/blog/personal-vs-cloud-ai', lastModified: new Date('2026-03-21'), changeFrequency: 'monthly', priority: 0.8 },
+    { url: 'https://meok.ai/blog/emotional-lock-in', lastModified: new Date('2026-03-20'), changeFrequency: 'monthly', priority: 0.7 },
+    { url: 'https://meok.ai/blog/morning-brief-guide', lastModified: new Date('2026-03-19'), changeFrequency: 'monthly', priority: 0.7 },
+    { url: 'https://meok.ai/blog/senior-mode-guide', lastModified: new Date('2026-03-18'), changeFrequency: 'monthly', priority: 0.7 },
+    { url: 'https://meok.ai/blog/faith-companion', lastModified: new Date('2026-03-17'), changeFrequency: 'monthly', priority: 0.6 },
+    { url: 'https://meok.ai/blog/privacy-covenant', lastModified: new Date('2026-03-18'), changeFrequency: 'monthly', priority: 0.7 },
+    { url: 'https://meok.ai/blog/open-source-release', lastModified: new Date('2026-03-24'), changeFrequency: 'monthly', priority: 0.8 },
+    { url: 'https://meok.ai/blog/90-day-gtm', lastModified: new Date('2026-03-24'), changeFrequency: 'monthly', priority: 0.7 },
 
     // ── Legal ─────────────────────────────────────────────────────────
     { url: 'https://meok.ai/privacy', lastModified: new Date(), changeFrequency: 'yearly', priority: 0.3 },

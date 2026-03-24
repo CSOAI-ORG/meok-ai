@@ -6,6 +6,7 @@ import { QuickChat } from "@/components/quick-chat";
 import type { ConsciousnessState, MemoryStats } from "@/lib/types";
 import Link from "next/link";
 import { useAuth } from "@/lib/auth";
+import { EVOLUTION_STAGES, getEvolutionStage, getProgressToNextStage, interactionsUntilNextStage } from "@/lib/evolution";
 import {
   Sunrise,
   ChevronRight,
@@ -351,7 +352,13 @@ export default function DashboardOverview() {
     : null;
 
   const entityLevel = entity?.hatch_level ?? 0;
+  const entityInteractions = entity?.interactions_count ?? 0;
   const daysSinceHatch = daysSince(entity?.created_at);
+
+  // Wire evolution.ts — derive canonical stage data from interaction count
+  const evolutionStage = getEvolutionStage(entityInteractions);
+  const evolutionProgress = getProgressToNextStage(entityInteractions);
+  const interactionsToNext = interactionsUntilNextStage(entityInteractions);
 
   // Care dimension bullets
   const careDimensions = consciousness?.emotional
@@ -710,24 +717,51 @@ export default function DashboardOverview() {
                 <div className="flex items-center gap-4">
                   <div className="relative flex-shrink-0">
                     <ProgressRing
-                      progress={entity?.progress_to_next ?? 0}
-                      color={entity?.color_primary || GOLD}
+                      progress={Math.round(evolutionProgress * 100)}
+                      color={evolutionStage.color || entity?.color_primary || GOLD}
                       size={54}
                     />
                     <span className="absolute inset-0 flex items-center justify-center text-lg">
                       {hatchEmoji[entityLevel] || "👑"}
                     </span>
                   </div>
-                  <div className="min-w-0">
+                  <div className="min-w-0 flex-1">
                     <p className="text-sm font-bold text-white truncate">
                       {entity?.name || "Sovereign"}
                     </p>
-                    <p className="text-xs mt-0.5" style={{ color: `${GOLD}cc` }}>
-                      {entity?.hatch_label || "Egg Stage"}
+                    <p className="text-xs mt-0.5 font-semibold" style={{ color: evolutionStage.color }}>
+                      {evolutionStage.name}
                     </p>
                     <p className="text-xs mt-0.5 capitalize" style={{ color: "rgba(255,255,255,0.3)" }}>
                       {entity?.dominant_trait || "explorer"}
                     </p>
+                    {/* Evolution progress bar */}
+                    {evolutionStage.maxInteractions !== null && (
+                      <div className="mt-2">
+                        <div className="h-1 rounded-full overflow-hidden" style={{ background: "rgba(255,255,255,0.06)" }}>
+                          <div
+                            className="h-full rounded-full transition-all duration-700"
+                            style={{ width: `${Math.round(evolutionProgress * 100)}%`, background: evolutionStage.color }}
+                          />
+                        </div>
+                        <p className="text-[10px] mt-1" style={{ color: "rgba(255,255,255,0.25)" }}>
+                          {interactionsToNext} interactions to next stage
+                        </p>
+                      </div>
+                    )}
+                    {/* Feature unlock badges */}
+                    <div className="flex gap-1 mt-1.5 flex-wrap">
+                      {evolutionStage.unlocksGuardian && (
+                        <span className="text-[9px] px-1.5 py-0.5 rounded-full font-bold" style={{ background: "rgba(74,222,128,0.15)", color: "#4ade80" }}>
+                          🛡 Guardian
+                        </span>
+                      )}
+                      {evolutionStage.unlocksRalphMode && (
+                        <span className="text-[9px] px-1.5 py-0.5 rounded-full font-bold" style={{ background: "rgba(201,168,76,0.15)", color: GOLD }}>
+                          ⚡ Ralph Mode
+                        </span>
+                      )}
+                    </div>
                   </div>
                 </div>
               )}

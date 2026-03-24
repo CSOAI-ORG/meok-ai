@@ -5,6 +5,7 @@ import { Suspense } from "react";
 import { PostHogProvider } from "@/components/posthog-provider";
 import { CookieConsent } from "@/components/cookie-consent";
 import { SovereignWidget } from "@/components/sovereign-widget";
+import { GlobalNav } from "@/components/GlobalNav";
 import "./globals.css";
 
 const dmSans = DM_Sans({
@@ -80,7 +81,7 @@ export const metadata: Metadata = {
 const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  name: "MEOK AI LTD",
+  name: "MEOK AI LABS",
   url: "https://meok.ai",
   logo: "https://meok.ai/logo.png",
   description:
@@ -91,7 +92,15 @@ const organizationSchema = {
     addressCountry: "GB",
     addressRegion: "England and Wales",
   },
-  sameAs: [],
+  founder: {
+    "@type": "Person",
+    name: "Nicholas Templeman",
+    url: "https://meok.ai/about",
+  },
+  sameAs: [
+    "https://instagram.com/meok_ai",
+    "https://tiktok.com/@meok_ai",
+  ],
 };
 
 const softwareSchema = {
@@ -163,6 +172,7 @@ export default function RootLayout({
           />
         </head>
         <body className={`${dmSans.variable} font-sans antialiased bg-[#FAF9F6] text-[#111111] min-h-screen`}>
+          <GlobalNav />
           <Suspense>
             <PostHogProvider>{children}</PostHogProvider>
           </Suspense>

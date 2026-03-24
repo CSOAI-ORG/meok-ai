@@ -35,7 +35,6 @@ import {
   EyeOff,
   Server,
 } from "lucide-react";
-import { MarketingNav } from "@/components/marketing-nav";
 import { MarketingFooter } from "@/components/marketing-footer";
 
 // ─── JSON-LD (static — FAQ data duplicated intentionally for hoisting) ────────
@@ -483,8 +482,6 @@ export default function ConnectPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-
-      <MarketingNav />
 
       {/* ─── HERO ──────────────────────────────────────────── */}
       <section className="relative pt-28 pb-24 px-6 text-center overflow-hidden" style={{ background: "#0d0c18" }}>
