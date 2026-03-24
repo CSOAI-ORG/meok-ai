@@ -65,6 +65,30 @@ const POSTS = [
     featured: false,
   },
   {
+    slug: "ai-life-coach",
+    title: "AI Life Coach: Can AI Actually Help You Reach Your Goals?",
+    excerpt:
+      "The AI coaching market exploded in 2026. But most coaching bots are motivational posters with a chat interface. Here's what genuine AI coaching looks like, where it outperforms human coaches, and where it genuinely falls short.",
+    date: "March 24, 2026",
+    readTime: "12 min read",
+    tag: "Coaching",
+    tagColor: "#c084fc",
+    category: "guides",
+    featured: false,
+  },
+  {
+    slug: "ai-chatbot-with-memory",
+    title: "AI Chatbot With Memory: Why Most AIs Forget You (And What Doesn't)",
+    excerpt:
+      "Every AI company talks about personalisation. Almost none build products that actually remember you across time. Here's the honest breakdown of AI memory types, which products have real persistent memory, and why it matters more than any other AI feature.",
+    date: "March 24, 2026",
+    readTime: "10 min read",
+    tag: "Memory",
+    tagColor: "#22c55e",
+    category: "deep-dives",
+    featured: false,
+  },
+  {
     slug: "ai-for-burnout",
     title: "AI for Burnout: How an AI Companion Helps You Recover and Rebuild",
     excerpt:
