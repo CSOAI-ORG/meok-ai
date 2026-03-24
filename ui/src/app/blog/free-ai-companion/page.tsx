@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowLeft, ArrowRight, Calendar, Clock, Check, X } from "lucide-react";
-import { MarketingFooter } from "@/components/marketing-footer";
 
 export const metadata: Metadata = {
   title: "Free AI Companion: What You Actually Get (And What's Worth Paying For) | MEOK AI LABS",

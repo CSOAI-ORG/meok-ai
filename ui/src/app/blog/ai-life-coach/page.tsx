@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowLeft, ArrowRight, Calendar, Clock, Target, TrendingUp, Heart, Brain, CheckCircle, AlertCircle } from "lucide-react";
-import { MarketingFooter } from "@/components/marketing-footer";
 
 export const metadata: Metadata = {
   title: "AI Life Coach: Can AI Actually Help You Reach Your Goals? | MEOK AI LABS",

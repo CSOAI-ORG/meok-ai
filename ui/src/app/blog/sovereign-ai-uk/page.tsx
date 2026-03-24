@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowLeft, ArrowRight, Calendar, Clock, CheckCircle, XCircle, AlertCircle } from "lucide-react";
-import { MarketingFooter } from "@/components/marketing-footer";
 
 // ── Metadata ──────────────────────────────────────────────────────────────────
 

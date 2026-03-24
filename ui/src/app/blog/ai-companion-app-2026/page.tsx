@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowLeft, ArrowRight, Calendar, Clock } from "lucide-react";
-import { MarketingFooter } from "@/components/marketing-footer";
 
 export const metadata: Metadata = {
   title: "The Best AI Companion App in 2026: What to Look For | MEOK AI LABS",

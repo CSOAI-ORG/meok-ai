@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { MarketingFooter } from "@/components/marketing-footer";
 
 export const metadata: Metadata = {
   title: "AI for Relationships: How Sovereign AI Supports Couples, Families, and Connection | MEOK AI LABS",

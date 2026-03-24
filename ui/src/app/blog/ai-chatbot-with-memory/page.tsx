@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowLeft, ArrowRight, Calendar, Clock, Lock, Zap, RefreshCw, CheckCircle } from "lucide-react";
-import { MarketingFooter } from "@/components/marketing-footer";
 
 export const metadata: Metadata = {
   title: "AI Chatbot With Memory: Why Most AIs Forget You (And What Doesn't) | MEOK AI LABS",

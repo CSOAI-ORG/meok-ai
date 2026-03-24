@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { MarketingFooter } from '@/components/marketing-footer'
 
 export const metadata: Metadata = {
   title: 'MEOK vs Character.AI: which is safer for your family in 2026? | MEOK AI LABS',

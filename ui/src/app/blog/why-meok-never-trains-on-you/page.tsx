@@ -1,7 +1,5 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { ArrowRight } from 'lucide-react'
-import { MarketingFooter } from '@/components/marketing-footer'
 
 export const metadata: Metadata = {
   title: "Why MEOK Can Never Be Trained on Your Conversations — and How We Enforce It Technically | MEOK AI LABS",
