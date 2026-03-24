@@ -2570,6 +2570,78 @@ const POSTS = [
     category: "mental-health",
     featured: false,
   },
+  {
+    slug: "ai-for-relationship-breakdown",
+    title: "AI for Relationship Breakdown: Processing the Aftermath When Everyone Else Has Moved On",
+    excerpt:
+      "Breakups and divorce cause grief, identity disruption, and 3am brain spirals. A sovereign AI companion that remembers your relationship history, tracks your healing, and helps you rehearse difficult co-parenting conversations is a different kind of support.",
+    date: "March 24, 2026",
+    readTime: "11 min read",
+    tag: "Mental Health",
+    tagColor: "#5b8dd9",
+    category: "mental-health",
+    featured: false,
+  },
+  {
+    slug: "meok-guardian-scam-protection",
+    title: "MEOK Guardian Scam Protection: How AI Keeps You and Your Family Safe",
+    excerpt:
+      "UK fraud costs £1.2 billion a year. MEOK\u2019s Guardian detects romance scams, investment fraud, and impersonation attacks using DistilBERT threat detection — and sends family alerts without sharing your private conversations.",
+    date: "March 24, 2026",
+    readTime: "10 min read",
+    tag: "Guardian",
+    tagColor: "#f5a623",
+    category: "guardian",
+    featured: true,
+  },
+  {
+    slug: "ai-for-spiritual-wellbeing",
+    title: "AI for Spiritual Wellbeing: Exploring Meaning Without Dogma",
+    excerpt:
+      "Spirituality is not the same as religion — it\u2019s meaning, transcendence, and connection. MEOK\u2019s Mystic companion holds space for philosophical inquiry across all traditions, without alignment, without judgment, without easy answers.",
+    date: "March 24, 2026",
+    readTime: "11 min read",
+    tag: "Mental Health",
+    tagColor: "#5b8dd9",
+    category: "mental-health",
+    featured: false,
+  },
+  {
+    slug: "ai-for-health-anxiety-symptoms",
+    title: "AI for Somatic Symptom Anxiety: Breaking the Reassurance Cycle",
+    excerpt:
+      "Health anxiety is not imagined — it\u2019s a real cycle of checking, reassurance, relief, and more checking. MEOK\u2019s Maternal Covenant means it won\u2019t search your symptoms or provide false reassurance. It addresses the anxiety beneath.",
+    date: "March 24, 2026",
+    readTime: "10 min read",
+    tag: "Mental Health",
+    tagColor: "#5b8dd9",
+    category: "mental-health",
+    featured: false,
+  },
+  {
+    slug: "ai-for-millennials",
+    title: "AI for Millennials: The Generation That Normalised Therapy Is Ready for Sovereign AI",
+    excerpt:
+      "Millennials are the most therapy-positive and most burned-out generation. Already comfortable with digital tools and already investing in mental health — they\u2019re the natural MEOK user. Here\u2019s why sovereign AI is the next step.",
+    date: "March 24, 2026",
+    readTime: "9 min read",
+    tag: "Mental Health",
+    tagColor: "#5b8dd9",
+    category: "mental-health",
+    featured: false,
+  },
+  {
+    slug: "what-is-meok",
+    title: "What Is MEOK? The Complete Guide to Personal Sovereign AI",
+    excerpt:
+      "MEOK is a Personal Sovereign AI Operating System — one that remembers you, grows with you, and is governed by care-based ethics. Built from a caravan by Nicholas Templeman. Launched Easter Sunday 2026. Here\u2019s everything you need to know.",
+    date: "March 24, 2026",
+    readTime: "12 min read",
+    tag: "Product",
+    tagColor: "#7c6fcd",
+    category: "product",
+    featured: true,
+  },
 ];
 
 // ── Category filter tabs ──────────────────────────────────────────────────────

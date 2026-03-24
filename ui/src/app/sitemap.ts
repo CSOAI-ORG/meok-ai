@@ -346,6 +346,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: 'https://meok.ai/blog/ai-for-self-harm-recovery', lastModified: new Date('2026-03-24'), changeFrequency: 'monthly', priority: 0.9 },
     { url: 'https://meok.ai/blog/ai-for-menopause', lastModified: new Date('2026-03-24'), changeFrequency: 'monthly', priority: 0.85 },
     { url: 'https://meok.ai/blog/ai-for-chronic-fatigue', lastModified: new Date('2026-03-24'), changeFrequency: 'monthly', priority: 0.85 },
+    { url: 'https://meok.ai/blog/ai-for-relationship-breakdown', lastModified: new Date('2026-03-24'), changeFrequency: 'monthly', priority: 0.85 },
+    { url: 'https://meok.ai/blog/meok-guardian-scam-protection', lastModified: new Date('2026-03-24'), changeFrequency: 'monthly', priority: 0.9 },
+    { url: 'https://meok.ai/blog/ai-for-spiritual-wellbeing', lastModified: new Date('2026-03-24'), changeFrequency: 'monthly', priority: 0.85 },
+    { url: 'https://meok.ai/blog/ai-for-health-anxiety-symptoms', lastModified: new Date('2026-03-24'), changeFrequency: 'monthly', priority: 0.85 },
+    { url: 'https://meok.ai/blog/ai-for-millennials', lastModified: new Date('2026-03-24'), changeFrequency: 'monthly', priority: 0.85 },
+    { url: 'https://meok.ai/blog/what-is-meok', lastModified: new Date('2026-03-24'), changeFrequency: 'monthly', priority: 0.95 },
 
     // ── Legal ─────────────────────────────────────────────────────────
     { url: 'https://meok.ai/privacy', lastModified: new Date(), changeFrequency: 'yearly', priority: 0.3 },
