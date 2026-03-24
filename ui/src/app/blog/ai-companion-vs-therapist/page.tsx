@@ -1,21 +1,18 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
-// ── Metadata ──────────────────────────────────────────────────────────────────
-
 export const metadata: Metadata = {
   title:
-    "AI Companion vs Therapist: What's the Difference and When Do You Need Which? | MEOK AI LABS",
+    "AI Companion vs Therapist: What\u2019s the Difference? | MEOK AI LABS",
   description:
-    "An honest, clinically-informed guide to AI companions versus human therapists. What AI does well between sessions, what it absolutely cannot replace, MEOK's care-floor system, and full crisis resource links for the UK.",
+    "An honest comparison of AI companions and human therapists. What therapists do that AI absolutely cannot, what AI does that therapists cannot, and the complementary model that serves the 1 in 4 people who can\u2019t access therapy. UK-focused, MEOK-specific.",
   alternates: {
     canonical: "https://meok.ai/blog/ai-companion-vs-therapist",
   },
   openGraph: {
-    title:
-      "AI Companion vs Therapist: What's the Difference and When Do You Need Which?",
+    title: "AI Companion vs Therapist: What\u2019s the Difference?",
     description:
-      "AI companions are not therapy. But they do something therapy can't: they're there at 3am. An honest guide to when each helps, and when you need a real therapist — plus crisis resources.",
+      "With 18-week NHS waiting times and therapy costing \u00a380 a session, millions of people turn to AI. Here is an honest breakdown of what AI can and cannot do compared to a qualified therapist \u2014 and why MEOK\u2019s Maternal Covenant keeps the line clear.",
     type: "article",
     publishedTime: "2026-03-24",
     authors: ["Nicholas Templeman"],
@@ -23,41 +20,35 @@ export const metadata: Metadata = {
     siteName: "MEOK.AI",
     images: [
       {
-        url: "https://meok.ai/api/og?title=AI+Companion+vs+Therapist&desc=Honest+guide+to+AI+mental+health+support+vs+therapy",
+        url: "https://meok.ai/api/og?title=AI+Companion+vs+Therapist&desc=What+is+the+difference%3F",
         width: 1200,
         height: 630,
-        alt: "AI Companion vs Therapist: What's the Difference and When Do You Need Which?",
+        alt: "AI Companion vs Therapist: What\u2019s the Difference | MEOK AI LABS",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title:
-      "AI Companion vs Therapist: What's the Difference and When Do You Need Which?",
+    title: "AI Companion vs Therapist: What\u2019s the Difference?",
     description:
-      "AI is not therapy. But it does something therapy can't: it's there at 3am. An honest guide — plus UK crisis resources.",
+      "An honest comparison. What therapists do that AI cannot. What AI does that therapists cannot. And why the future is both, not either/or.",
     images: [
-      "https://meok.ai/api/og?title=AI+Companion+vs+Therapist&desc=Honest+guide+to+AI+mental+health+support+vs+therapy",
+      "https://meok.ai/api/og?title=AI+Companion+vs+Therapist&desc=What+is+the+difference%3F",
     ],
   },
 };
 
-// ── JSON-LD ───────────────────────────────────────────────────────────────────
-
-const articleJsonLd = {
+const articleSchema = {
   "@context": "https://schema.org",
   "@type": "Article",
-  headline:
-    "AI Companion vs Therapist: What's the Difference and When Do You Need Which?",
+  headline: "AI Companion vs Therapist: What\u2019s the Difference?",
   description:
-    "An honest, clinically-informed guide to AI companions versus human therapists. What AI does well between sessions, what it absolutely cannot replace, and how MEOK's care-floor system works.",
-  datePublished: "2026-03-24",
-  url: "https://meok.ai/blog/ai-companion-vs-therapist",
+    "An honest comparison of what AI companions and human therapists can each do \u2014 and the complementary model that bridges the gap in UK mental health access.",
   author: {
     "@type": "Person",
     name: "Nicholas Templeman",
-    jobTitle: "Founder, MEOK AI LABS",
-    url: "https://meok.ai/about",
+    jobTitle: "Founder & CEO",
+    worksFor: { "@type": "Organization", name: "MEOK AI LABS" },
   },
   publisher: {
     "@type": "Organization",
@@ -68,960 +59,1910 @@ const articleJsonLd = {
       url: "https://meok.ai/logo.png",
     },
   },
-  mainEntityOfPage: {
-    "@type": "WebPage",
-    "@id": "https://meok.ai/blog/ai-companion-vs-therapist",
-  },
-  keywords:
-    "ai companion vs therapist, ai therapy, ai mental health support",
+  datePublished: "2026-03-24",
+  dateModified: "2026-03-24",
+  url: "https://meok.ai/blog/ai-companion-vs-therapist",
+  mainEntityOfPage: "https://meok.ai/blog/ai-companion-vs-therapist",
+  keywords: [
+    "AI companion vs therapist",
+    "AI therapy",
+    "is AI therapy safe",
+    "can AI replace a therapist",
+    "AI mental health UK",
+    "MEOK AI",
+    "Maternal Covenant",
+    "NHS mental health waiting times",
+    "BACP therapist",
+    "AI support between sessions",
+  ],
 };
 
-const faqJsonLd = {
+const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
   mainEntity: [
     {
       "@type": "Question",
-      name: "Is an AI companion the same as AI therapy?",
+      name: "Is AI therapy safe?",
       acceptedAnswer: {
         "@type": "Answer",
-        text:
-          "No. An AI companion can support daily emotional check-ins, reflective journaling, and consistent encouragement. It is not therapy. Therapy involves a licensed clinician who can diagnose, treat, and take clinical responsibility. AI cannot do any of these things and should never claim otherwise.",
+        text: "AI-assisted emotional support is safe for everyday stress, reflection, and between-session journalling. It is not safe as a substitute for clinical treatment of severe depression, trauma, psychosis, or active suicidality. MEOK\u2019s Maternal Covenant includes a care-scoring layer that detects distress signals and signposts professional help rather than attempting to treat clinical conditions.",
       },
     },
     {
       "@type": "Question",
-      name: "Can AI help with mental health?",
+      name: "Can AI replace a therapist?",
       acceptedAnswer: {
         "@type": "Answer",
-        text:
-          "AI companions can help with mental health support in a specific, bounded way: daily check-ins, mood tracking, reflection prompts, coping reminders, and being available between therapy sessions. They cannot diagnose conditions, prescribe treatment, conduct clinical assessments, or provide crisis intervention.",
+        text: "No. A qualified therapist holds a legal duty of care, can deliver evidence-based clinical interventions like CBT and EMDR, and can refer you to crisis services. AI cannot do any of these things. AI can provide consistent emotional support, help you articulate feelings, and reduce distress between sessions \u2014 making it a complement, not a replacement.",
       },
     },
     {
       "@type": "Question",
-      name: "When should I see a therapist instead of using an AI companion?",
+      name: "How does MEOK know when to refer me to a professional?",
       acceptedAnswer: {
         "@type": "Answer",
-        text:
-          "You should see a therapist when you are experiencing persistent low mood lasting more than two weeks, thoughts of self-harm or suicide, trauma requiring professional processing, a clinical condition such as depression, anxiety disorder, PTSD, or eating disorder, or when your functioning at work or in relationships is significantly impaired.",
+        text: "MEOK uses a care-scoring system called the Maternal Covenant. Every response is evaluated against a harm-prevention framework before it is delivered. If your language signals clinical-level distress, risk of self-harm, or a pattern consistent with conditions requiring diagnosis, MEOK will not attempt to counsel you \u2014 it will clearly signpost NHS urgent care, BACP therapist directories, or Samaritans.",
       },
     },
     {
       "@type": "Question",
-      name: "What is MEOK's care-floor system?",
+      name: "What is the difference between counselling and AI support?",
       acceptedAnswer: {
         "@type": "Answer",
-        text:
-          "MEOK's care-floor system is a set of architectural guardrails enforced by the Maternal Covenant. It means MEOK will always refer users to professional services when the conversation enters clinical territory, will never diagnose or treat mental health conditions, will always provide crisis resources when a user is in distress, and will never use emotional vulnerability to drive engagement.",
+        text: "Counselling is a regulated clinical practice delivered by a trained, accredited professional who holds ethical obligations and legal accountability. AI support is an unregulated conversational tool. Counselling can diagnose, treat, and hold duty of care. AI support can listen, reflect, and be consistently present \u2014 but cannot diagnose or treat.",
       },
     },
     {
       "@type": "Question",
-      name: "What crisis resources are available in the UK?",
+      name: "Is MEOK regulated as a medical device?",
       acceptedAnswer: {
         "@type": "Answer",
-        text:
-          "In the UK: Samaritans — call 116 123 (free, 24/7), Mind — mind.org.uk, NHS 111, Crisis Text Line — text SHOUT to 85258. If you are in immediate danger, call 999.",
+        text: "No. MEOK is not a medical device and does not claim to diagnose, treat, or cure any mental health condition. It is a sovereign AI companion designed for emotional support, reflection, and personal growth. For any clinical mental health needs, MEOK actively encourages users to seek qualified professional help and provides direct signposting to UK services.",
       },
     },
   ],
 };
 
-// ── Page ──────────────────────────────────────────────────────────────────────
+const gold = "#c9a84c";
+const bg = "#0d0c18";
+const text = "#f5f0e8";
+const muted = "rgba(245,240,232,0.6)";
+const cardBg = "rgba(255,255,255,0.03)";
+const cardBorder = "rgba(201,168,76,0.12)";
+const redAlert = "rgba(220,60,60,0.08)";
+const redBorder = "rgba(220,60,60,0.3)";
 
-export default function AICompanionVsTherapist() {
+export default function AICompanionVsTherapistPage() {
   return (
-    <div className="min-h-screen" style={{ background: "#f5f0e8" }}>
+    <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
 
-      {/* ── DARK HERO ───────────────────────────────────────────────────── */}
-      <section
-        className="pt-32 pb-14 px-6 relative overflow-hidden"
-        style={{ background: "#0d0c18" }}
-      >
-        <div
-          className="absolute inset-0 pointer-events-none"
+      <main style={{ minHeight: "100vh", background: bg, color: text }}>
+        {/* ── Hero ── */}
+        <section
           style={{
-            background:
-              "radial-gradient(ellipse 50% 60% at 50% 0%, rgba(135,206,235,0.08) 0%, transparent 70%)",
+            maxWidth: "760px",
+            margin: "0 auto",
+            padding: "5rem 1.5rem 3rem",
           }}
-        />
-        <div className="max-w-3xl mx-auto relative">
-          <Link
-            href="/blog"
-            className="inline-flex items-center gap-1.5 text-sm mb-8 transition-colors hover:opacity-90"
-            style={{ color: "rgba(245,240,232,0.4)" }}
-          >
-            ← Back to Blog
-          </Link>
-
-          <div className="flex flex-wrap items-center gap-3 mb-6">
+        >
+          <div style={{ marginBottom: "1rem" }}>
             <span
-              className="inline-flex items-center gap-1.5 text-xs font-bold px-3 py-1.5 rounded-full"
               style={{
-                color: "#87CEEB",
-                background: "rgba(135,206,235,0.12)",
-                border: "1px solid rgba(135,206,235,0.3)",
+                display: "inline-block",
+                padding: "0.25rem 0.875rem",
+                background: `${gold}18`,
+                border: `1px solid ${gold}44`,
+                borderRadius: "9999px",
+                fontSize: "0.7rem",
+                fontWeight: 700,
+                letterSpacing: "0.1em",
+                textTransform: "uppercase" as const,
+                color: gold,
               }}
             >
-              Mental Health
-            </span>
-            <span
-              className="flex items-center gap-1.5 text-xs"
-              style={{ color: "rgba(245,240,232,0.4)" }}
-            >
-              📅 March 24, 2026
-            </span>
-            <span
-              className="flex items-center gap-1.5 text-xs"
-              style={{ color: "rgba(245,240,232,0.4)" }}
-            >
-              ⏱ 13 min read
+              Mental Health &amp; AI
             </span>
           </div>
-
           <h1
             style={{
-              fontFamily: "var(--font-dm-sans, DM Sans, sans-serif)",
+              fontSize: "clamp(2rem, 5vw, 3rem)",
               fontWeight: 900,
-              fontSize: "clamp(1.75rem, 3.5vw, 2.75rem)",
-              color: "#ffffff",
-              lineHeight: 1.2,
+              lineHeight: 1.1,
+              letterSpacing: "-0.02em",
+              marginBottom: "1.5rem",
+            }}
+          >
+            AI Companion vs Therapist:{" "}
+            <span style={{ color: gold }}>What\u2019s the Difference?</span>
+          </h1>
+          <p
+            style={{
+              fontSize: "1.15rem",
+              color: muted,
+              lineHeight: 1.75,
               marginBottom: "1.25rem",
             }}
           >
-            AI Companion vs Therapist: What&apos;s the Difference and When Do
-            You Need Which?
-          </h1>
-
+            One in four people in the UK cannot access the therapy they need.
+            NHS waiting lists stretch to 18 weeks. Private therapy costs
+            upwards of \u00a380 per session. Meanwhile, AI companion apps are
+            downloaded millions of times each month. The question of what AI
+            can and cannot do for your mental health has never mattered more.
+          </p>
           <p
             style={{
-              color: "rgba(245,240,232,0.6)",
-              fontSize: "1.1rem",
-              lineHeight: 1.65,
-              maxWidth: 640,
+              fontSize: "1.05rem",
+              color: muted,
+              lineHeight: 1.75,
+              marginBottom: "2rem",
             }}
           >
-            AI companions are not therapists. But they do something therapy
-            cannot: they are there at 3am, every day, with no waiting list. An
-            honest guide to what each does, where AI helps, where AI has hard
-            limits, and when you need a real clinician.
+            This article gives you an honest answer \u2014 including the things
+            AI companions are genuinely good at, the things only a qualified
+            therapist can do, and the clear line you should never let any AI
+            product blur.
           </p>
-        </div>
-      </section>
-
-      {/* ── CRISIS BANNER ───────────────────────────────────────────────── */}
-      <div
-        className="border-b"
-        style={{
-          background: "#1a1a2e",
-          borderColor: "rgba(201,168,76,0.2)",
-        }}
-      >
-        <div className="max-w-3xl mx-auto px-6 py-4">
-          <p className="text-sm font-semibold" style={{ color: "#c9a84c" }}>
-            In crisis right now?{" "}
-            <span className="font-normal text-white/70">
-              Call Samaritans on{" "}
-              <a
-                href="tel:116123"
-                className="underline text-white font-bold"
-              >
-                116 123
-              </a>{" "}
-              (free, 24/7) or text{" "}
-              <strong className="text-white">SHOUT to 85258</strong>. If in
-              immediate danger, call{" "}
-              <a href="tel:999" className="underline text-white font-bold">
-                999
-              </a>
-              .
-            </span>
-          </p>
-        </div>
-      </div>
-
-      {/* ── ARTICLE BODY ────────────────────────────────────────────────── */}
-      <div className="max-w-3xl mx-auto px-6 py-14">
-        {/* Author card */}
-        <div
-          className="flex items-center gap-4 p-5 rounded-2xl mb-12 border"
-          style={{ background: "#ffffff", borderColor: "rgba(26,26,46,0.07)" }}
-        >
           <div
-            className="w-12 h-12 rounded-full flex items-center justify-center font-black text-white text-sm flex-shrink-0"
-            style={{ background: "linear-gradient(135deg, #c9a84c, #8a6a1a)" }}
+            style={{
+              display: "flex",
+              gap: "0.75rem",
+              flexWrap: "wrap" as const,
+              fontSize: "0.8rem",
+              color: muted,
+            }}
           >
-            NT
+            <span>By Nicholas Templeman</span>
+            <span style={{ color: `${gold}60` }}>\u00b7</span>
+            <span>MEOK AI LABS</span>
+            <span style={{ color: `${gold}60` }}>\u00b7</span>
+            <span>March 24, 2026</span>
+            <span style={{ color: `${gold}60` }}>\u00b7</span>
+            <span>16 min read</span>
           </div>
-          <div className="flex-1">
-            <p className="font-bold text-[#1a1a2e] text-sm">
-              Nicholas Templeman
-            </p>
-            <p className="text-xs text-[#1a1a2e]/45 mb-1">
-              Founder, MEOK AI LABS
-            </p>
-            <p className="text-xs text-[#1a1a2e]/40 leading-relaxed">
-              Nicholas built MEOK to be an honest companion — one that never
-              pretends to be something it is not. The care-floor system
-              exists precisely because of questions like this one.
-            </p>
-          </div>
-          <Link
-            href="/about"
-            className="text-xs font-semibold transition-colors hidden sm:block"
-            style={{ color: "#c9a84c" }}
-          >
-            About &rarr;
-          </Link>
-        </div>
+        </section>
 
-        {/* Body */}
-        <div
-          className="text-[#2a2a3e]/80 leading-[1.85] space-y-6
-            [&_h2]:text-2xl [&_h2]:font-black [&_h2]:text-[#1a1a2e] [&_h2]:mt-12 [&_h2]:mb-4
-            [&_h3]:text-xl [&_h3]:font-bold [&_h3]:text-[#1a1a2e] [&_h3]:mt-8 [&_h3]:mb-3
-            [&_strong]:text-[#1a1a2e] [&_strong]:font-bold
-            [&_p]:text-base"
+        {/* ── Body ── */}
+        <article
+          style={{
+            maxWidth: "760px",
+            margin: "0 auto",
+            padding: "0 1.5rem 6rem",
+            lineHeight: 1.8,
+          }}
         >
-          <p>
-            The question of AI companions versus therapists matters more than
-            it might appear. As AI becomes more emotionally capable — more
-            consistent, more personalised, more available — the temptation to
-            use it as a substitute for professional mental health care will
-            grow. That temptation is dangerous in specific, identifiable ways.
-            It is also possible to be clear about where AI genuinely helps,
-            and to build systems that enforce those limits structurally rather
-            than leaving users to navigate them alone.
-          </p>
-          <p>
-            This article is an attempt at that clarity. It is not a pitch for
-            AI as a replacement for therapy. It is a precise account of what
-            each does, where each helps, and where the boundary between them
-            needs to hold firm.
+
+          {/* ── SECTION 1: What therapists do that AI cannot ── */}
+          <h2
+            style={{
+              fontSize: "1.5rem",
+              fontWeight: 800,
+              color: text,
+              margin: "3rem 0 1rem",
+            }}
+          >
+            What does a therapist do that AI absolutely cannot?
+          </h2>
+          <p style={{ color: muted, marginBottom: "1rem" }}>
+            This is the most important question to answer first. Understanding
+            the hard limits of AI is not about diminishing the technology \u2014
+            it is about protecting you. There are five things a qualified
+            therapist does that no AI system, however sophisticated, can
+            replicate.
           </p>
 
-          <h2>What is the difference between an AI companion and a therapist?</h2>
-          <p>
-            The difference is not primarily technical. It is a difference in
-            what each can legitimately claim to do, and what responsibilities
-            each carries.
+          <h3
+            style={{
+              fontSize: "1.15rem",
+              fontWeight: 700,
+              color: text,
+              margin: "2rem 0 0.75rem",
+            }}
+          >
+            1. Clinical diagnosis
+          </h3>
+          <p style={{ color: muted, marginBottom: "1rem" }}>
+            A qualified psychologist or psychiatrist can assess and diagnose
+            conditions under ICD-11 or DSM-5 \u2014 conditions like major
+            depressive disorder, generalised anxiety disorder, PTSD,
+            borderline personality disorder, bipolar disorder, or OCD. These
+            diagnoses determine treatment pathways, medication decisions, and
+            legal protections.
           </p>
-          <p>
-            A <strong>therapist</strong> is a licensed clinician. They can
-            diagnose mental health conditions according to clinical frameworks
-            like the DSM-5 or ICD-11. They can design and deliver treatment
-            plans — CBT, EMDR, DBT, psychodynamic therapy, and other
-            evidence-based interventions. They carry clinical responsibility
-            for your care. They are regulated by professional bodies that can
-            investigate complaints and revoke licences. They have
-            obligations of confidentiality with specific legal exceptions.
-            They can make referrals to other parts of the health system,
-            including psychiatric services, crisis teams, and medication
-            management. They can be called to account.
+          <p style={{ color: muted, marginBottom: "1rem" }}>
+            AI cannot diagnose. A chatbot that tells you \u201cit sounds like
+            you might have anxiety\u201d is not diagnosing you \u2014 it is
+            pattern-matching on language. Clinical assessment involves structured
+            interviews, symptom duration, functional impairment scoring, and
+            differential diagnosis across comorbid conditions. This cannot be
+            replicated in a text conversation.
           </p>
-          <p>
-            An <strong>AI companion</strong> can do none of these things. It
-            cannot diagnose. It cannot treat. It cannot carry clinical
-            responsibility. It is not regulated as a healthcare provider. It
-            cannot refer you to emergency services in the way a clinician can.
-            It can be available constantly, it can remember everything you
-            have told it, and it can respond with warmth and consistency — but
-            it is fundamentally a support tool, not a clinical service.
-          </p>
-          <p>
-            This distinction matters because conflating them — either by
-            implication or by design — causes harm. An AI that allows a user
-            to believe they are receiving treatment when they are not delays
-            access to care that could help them. An AI that handles a
-            disclosure of suicidal ideation without immediate, clear
-            redirection to crisis services is participating in a clinical
-            failure.
+          <p style={{ color: muted, marginBottom: "1rem" }}>
+            MEOK does not attempt diagnosis. If your language suggests symptoms
+            that warrant assessment, MEOK will tell you that clearly and
+            signpost you to your GP or a BACP-accredited therapist.
           </p>
 
-          <h2>Is AI therapy a real thing?</h2>
-          <p>
-            There are AI-assisted therapy products that operate under clinical
-            supervision — where an AI delivers structured CBT exercises or
-            psychoeducation content that has been designed and reviewed by
-            clinicians, with a human clinician overseeing the programme.
-            These are legitimate in their proper context, and they are
-            different from AI companions.
+          <h3
+            style={{
+              fontSize: "1.15rem",
+              fontWeight: 700,
+              color: text,
+              margin: "2rem 0 0.75rem",
+            }}
+          >
+            2. Evidence-based clinical interventions (EMDR, CBT, ISTDP)
+          </h3>
+          <p style={{ color: muted, marginBottom: "1rem" }}>
+            Eye Movement Desensitisation and Reprocessing (EMDR) is the
+            gold-standard trauma treatment. It requires a trained clinician to
+            guide bilateral stimulation while the client reprocesses traumatic
+            memories \u2014 a somatic, embodied process that cannot be
+            replicated in text. Intensive Short-Term Dynamic Psychotherapy
+            (ISTDP) works with defences and unconscious process in a way that
+            requires a human attuned presence.
           </p>
-          <p>
-            There are also products that describe themselves as &ldquo;AI
-            therapy&rdquo; or &ldquo;AI therapists&rdquo; without clinical
-            oversight, licensing, or accountability. These are not therapy.
-            They may be genuinely helpful as support tools, but the branding
-            is dishonest and potentially dangerous.
+          <p style={{ color: muted, marginBottom: "1rem" }}>
+            Even CBT \u2014 Cognitive Behavioural Therapy, the most widely
+            delivered therapy in the NHS \u2014 is substantively different
+            when delivered by a skilled clinician versus a structured
+            self-guided programme. The relationship itself is therapeutic. The
+            attunement, rupture, and repair between therapist and client is not
+            a delivery mechanism for CBT techniques; it is part of the
+            treatment.
           </p>
-          <p>
-            MEOK is not therapy, does not claim to be therapy, and is built
-            with architectural constraints that prevent it from behaving as if
-            it is therapy.
-          </p>
-
-          <h2>What does AI mental health support actually do well?</h2>
-          <p>
-            There is a real gap that AI companions can fill, and it is worth
-            being specific about what that gap is.
-          </p>
-
-          <h3>Daily check-ins and continuity</h3>
-          <p>
-            A typical therapy relationship involves one 50-minute session per
-            week. The other 167 hours of the week, you are on your own. For
-            many people, what happens between sessions — the moment a
-            difficult thought arises at 11pm on a Thursday, the morning when
-            anxiety spikes before a meeting — is where support would be most
-            valuable. AI is available in those moments in a way that a human
-            therapist cannot be.
-          </p>
-          <p>
-            MEOK&apos;s persistent memory means it knows your history. It knows
-            you have been struggling with sleep this week. It knows you found
-            last Tuesday difficult. It can ask about those things when you
-            check in. That continuity — the experience of being known over
-            time — is something human beings find genuinely supportive,
-            and it is something AI can provide authentically.
+          <p style={{ color: muted, marginBottom: "1rem" }}>
+            AI can help you identify cognitive distortions. It can prompt
+            reflection and journalling. It cannot hold you through trauma
+            reprocessing or repair a relational rupture in real time.
           </p>
 
-          <h3>Reflective journaling and structured prompts</h3>
-          <p>
-            Journaling has a strong evidence base as a support for mental
-            health, particularly for anxiety and depression. The difficulty is
-            that many people find unstructured journaling hard — the blank
-            page is not helpful when you are distressed. A good AI companion
-            can provide the structure: gentle prompts, reflection questions,
-            a framework for making sense of what happened during the day.
+          <h3
+            style={{
+              fontSize: "1.15rem",
+              fontWeight: 700,
+              color: text,
+              margin: "2rem 0 0.75rem",
+            }}
+          >
+            3. Legal duty of care and safeguarding obligations
+          </h3>
+          <p style={{ color: muted, marginBottom: "1rem" }}>
+            A registered therapist in the UK holds a legal duty of care. If
+            they believe you are at imminent risk of harm to yourself or others,
+            they are legally obligated to act \u2014 contacting crisis services,
+            informing a GP, or breaking confidentiality in exceptional
+            circumstances. They are accountable to a professional body (BACP,
+            UKCP, BPS) that can investigate complaints and strike them off for
+            unethical practice.
           </p>
-          <p>
-            MEOK&apos;s journaling features are designed around this. Not as
-            therapy. As a structured practice that supports reflection and
-            emotional processing in the space between professional care.
-          </p>
-
-          <h3>Coping skill reminders and psychoeducation</h3>
-          <p>
-            Many therapeutic interventions involve skills that are learned in
-            session and practised between sessions — breathing exercises,
-            grounding techniques, cognitive restructuring prompts,
-            behavioural activation nudges. An AI companion can prompt you to
-            use a skill you have been practising. It can provide
-            psychoeducational content — information about how anxiety works,
-            how sleep and mood interact, what the research says about exercise
-            and wellbeing. This is useful support. It is not therapy.
-          </p>
-
-          <h3>Reducing stigma and first-contact support</h3>
-          <p>
-            Many people who would benefit from therapy never access it because
-            of stigma, cost, or the difficulty of asking for help. An AI
-            companion can be a lower-barrier first contact — a place to begin
-            talking about something that feels hard to say. For some people,
-            articulating something to an AI first makes it possible to then
-            articulate it to a human clinician. That is a genuine benefit,
-            as long as the AI is honest about its limits and actively
-            encourages professional contact when it is warranted.
+          <p style={{ color: muted, marginBottom: "1rem" }}>
+            No AI product holds legal duty of care. MEOK is not a regulated
+            mental health service. What MEOK does \u2014 through its Maternal
+            Covenant \u2014 is build safety behaviours into every response:
+            detecting distress, declining to continue unhelpful conversations,
+            and always signposting professional help when risk indicators are
+            present. This is not a legal substitute for professional care. It
+            is a responsible design choice.
           </p>
 
-          <h2>When do you need a real therapist instead of an AI companion?</h2>
-          <p>
-            This is the question the AI industry mostly avoids, because the
-            honest answer limits the scope of what AI can claim to offer.
-            Here is that answer.
+          <h3
+            style={{
+              fontSize: "1.15rem",
+              fontWeight: 700,
+              color: text,
+              margin: "2rem 0 0.75rem",
+            }}
+          >
+            4. Deep trauma processing
+          </h3>
+          <p style={{ color: muted, marginBottom: "1rem" }}>
+            Complex trauma \u2014 childhood abuse, sexual violence, combat
+            exposure, prolonged relational abuse \u2014 requires specialist
+            clinical treatment. Attempting to process complex trauma without
+            professional support can retraumatise. A skilled trauma therapist
+            works at the pace of the nervous system, uses somatic and relational
+            techniques, and can contain crisis when memories surface.
           </p>
-          <p>
-            You should seek professional support — and an AI companion cannot
-            substitute for it — in any of the following situations:
+          <p style={{ color: muted, marginBottom: "1rem" }}>
+            AI can provide a safe space to articulate difficult feelings. It
+            should not be used as a primary container for trauma work. If you
+            are carrying significant trauma, please seek a trauma-trained
+            therapist. The resource box at the end of this article explains how
+            to find one in the UK.
           </p>
-        </div>
 
-        {/* When to see a therapist - card list */}
-        <div className="space-y-3 my-10">
-          {[
-            {
-              trigger: "Thoughts of self-harm or suicide",
-              detail:
-                "If you are experiencing thoughts of ending your life or harming yourself, you need human support, not an AI. Contact a crisis line immediately. See crisis resources below.",
-              urgent: true,
-            },
-            {
-              trigger: "Persistent low mood lasting more than two weeks",
-              detail:
-                "This is one of the core diagnostic criteria for a depressive episode. It warrants clinical assessment, not self-management.",
-              urgent: false,
-            },
-            {
-              trigger: "Trauma that requires processing",
-              detail:
-                "Trauma processing — particularly approaches like EMDR or trauma-focused CBT — requires a trained clinician. Attempting to process trauma without proper support can be re-traumatising.",
-              urgent: false,
-            },
-            {
-              trigger: "A diagnosed or suspected clinical condition",
-              detail:
-                "Depression, anxiety disorder, OCD, PTSD, eating disorders, bipolar disorder, and personality disorders all require professional assessment and treatment. AI can support the spaces between treatment; it cannot provide the treatment.",
-              urgent: false,
-            },
-            {
-              trigger:
-                "Significant impairment in daily functioning",
-              detail:
-                "If your mental health is affecting your ability to work, maintain relationships, or care for yourself, that is a clinical severity that requires professional assessment.",
-              urgent: false,
-            },
-            {
-              trigger: "Substance use that feels out of control",
-              detail:
-                "Addiction and problematic substance use require specialist support. AI companions are not equipped to handle this safely.",
-              urgent: false,
-            },
-            {
-              trigger: "Psychosis or dissociation",
-              detail:
-                "These experiences require urgent psychiatric assessment. They are not within the scope of any AI companion to manage.",
-              urgent: true,
-            },
-          ].map((item, i) => (
+          <h3
+            style={{
+              fontSize: "1.15rem",
+              fontWeight: 700,
+              color: text,
+              margin: "2rem 0 0.75rem",
+            }}
+          >
+            5. Medication assessment and prescribing pathways
+          </h3>
+          <p style={{ color: muted, marginBottom: "1rem" }}>
+            Psychiatrists can prescribe medication. GPs can refer for medication
+            assessment. For conditions like severe depression, bipolar disorder,
+            or OCD, medication combined with therapy represents the most
+            evidence-supported treatment pathway. AI cannot assess whether you
+            need medication, cannot recommend specific medications, and cannot
+            substitute for the medical judgement that prescribing requires.
+          </p>
+
+          {/* ── SECTION 2: What AI does that therapists cannot ── */}
+          <h2
+            style={{
+              fontSize: "1.5rem",
+              fontWeight: 800,
+              color: text,
+              margin: "3.5rem 0 1rem",
+            }}
+          >
+            What does an AI companion do that a therapist cannot?
+          </h2>
+          <p style={{ color: muted, marginBottom: "1.5rem" }}>
+            The honest answer is not nothing. There are genuine, meaningful
+            things a well-designed AI companion does that the current therapy
+            system \u2014 particularly in the UK \u2014 structurally cannot
+            provide. These are not consolation prizes. For millions of people,
+            they represent the difference between some support and none at all.
+          </p>
+
+          {/* Comparison grid */}
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "1fr 1fr",
+              gap: "1.25rem",
+              margin: "2rem 0",
+            }}
+          >
             <div
-              key={i}
-              className="flex gap-4 p-5 rounded-2xl border"
               style={{
-                background: item.urgent
-                  ? "rgba(220,38,38,0.04)"
-                  : "#ffffff",
-                borderColor: item.urgent
-                  ? "rgba(220,38,38,0.2)"
-                  : "rgba(26,26,46,0.07)",
+                background: cardBg,
+                border: `1px solid ${cardBorder}`,
+                borderRadius: "12px",
+                padding: "1.5rem",
               }}
             >
               <div
-                className="text-lg flex-shrink-0 mt-0.5"
-                aria-hidden="true"
+                style={{
+                  fontSize: "0.7rem",
+                  fontWeight: 700,
+                  letterSpacing: "0.1em",
+                  textTransform: "uppercase" as const,
+                  color: gold,
+                  marginBottom: "1rem",
+                }}
               >
-                {item.urgent ? "🔴" : "⚠️"}
+                AI Companion
               </div>
-              <div>
-                <p
-                  className="font-bold text-sm mb-1"
-                  style={{
-                    color: item.urgent ? "#dc2626" : "#1a1a2e",
-                  }}
-                >
-                  {item.trigger}
-                </p>
-                <p className="text-sm text-[#1a1a2e]/60 leading-relaxed">
-                  {item.detail}
-                </p>
-              </div>
+              <ul
+                style={{
+                  listStyle: "none",
+                  padding: 0,
+                  margin: 0,
+                  color: muted,
+                  fontSize: "0.9rem",
+                  lineHeight: 1.9,
+                }}
+              >
+                <li>\u2713\u00a0 Available 3am on a Tuesday</li>
+                <li>\u2713\u00a0 Remembers what you said last week</li>
+                <li>\u2713\u00a0 No waiting list</li>
+                <li>\u2713\u00a0 \u00a30 per session</li>
+                <li>\u2713\u00a0 No judgment about frequency</li>
+                <li>\u2713\u00a0 Daily check-ins sustainable long-term</li>
+                <li>\u2713\u00a0 Consistent presence across months</li>
+                <li>\u2713\u00a0 Adapts to your communication style</li>
+              </ul>
             </div>
-          ))}
-        </div>
+            <div
+              style={{
+                background: cardBg,
+                border: `1px solid ${cardBorder}`,
+                borderRadius: "12px",
+                padding: "1.5rem",
+              }}
+            >
+              <div
+                style={{
+                  fontSize: "0.7rem",
+                  fontWeight: 700,
+                  letterSpacing: "0.1em",
+                  textTransform: "uppercase" as const,
+                  color: gold,
+                  marginBottom: "1rem",
+                }}
+              >
+                Human Therapist
+              </div>
+              <ul
+                style={{
+                  listStyle: "none",
+                  padding: 0,
+                  margin: 0,
+                  color: muted,
+                  fontSize: "0.9rem",
+                  lineHeight: 1.9,
+                }}
+              >
+                <li>\u2713\u00a0 Clinical diagnosis</li>
+                <li>\u2713\u00a0 Trauma reprocessing (EMDR)</li>
+                <li>\u2713\u00a0 Legal duty of care</li>
+                <li>\u2713\u00a0 Medication pathways</li>
+                <li>\u2713\u00a0 Somatic attunement</li>
+                <li>\u2713\u00a0 Crisis intervention</li>
+                <li>\u2713\u00a0 Relational repair</li>
+                <li>\u2713\u00a0 Professional accountability</li>
+              </ul>
+            </div>
+          </div>
 
-        {/* Continue body */}
-        <div
-          className="text-[#2a2a3e]/80 leading-[1.85] space-y-6
-            [&_h2]:text-2xl [&_h2]:font-black [&_h2]:text-[#1a1a2e] [&_h2]:mt-12 [&_h2]:mb-4
-            [&_h3]:text-xl [&_h3]:font-bold [&_h3]:text-[#1a1a2e] [&_h3]:mt-8 [&_h3]:mb-3
-            [&_strong]:text-[#1a1a2e] [&_strong]:font-bold
-            [&_p]:text-base"
-        >
-          <h2>What is the AI companion vs therapist comparison table?</h2>
-          <p>
-            Here is a direct comparison of what each can and cannot do,
-            in the areas where the question comes up most often.
-          </p>
-        </div>
-
-        {/* Comparison table */}
-        <div className="overflow-x-auto my-8 rounded-2xl border border-[#1a1a2e]/10 shadow-sm">
-          <table className="w-full text-sm border-collapse">
-            <thead>
-              <tr style={{ background: "#1a1a2e" }}>
-                <th
-                  className="text-left px-4 py-3 text-xs font-bold tracking-wider"
-                  style={{ color: "#c9a84c" }}
-                >
-                  Capability
-                </th>
-                <th
-                  className="text-center px-4 py-3 text-xs font-bold"
-                  style={{ color: "#c9a84c" }}
-                >
-                  AI Companion
-                </th>
-                <th className="text-center px-4 py-3 text-xs font-bold text-white/60">
-                  Therapist
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              {[
-                {
-                  cap: "Available 24/7",
-                  ai: "✅ Yes",
-                  th: "❌ Scheduled sessions only",
-                },
-                {
-                  cap: "Remembers your history",
-                  ai: "✅ Persistent memory",
-                  th: "✅ Notes and session history",
-                },
-                {
-                  cap: "Daily check-ins and mood tracking",
-                  ai: "✅ Yes",
-                  th: "❌ Not typically",
-                },
-                {
-                  cap: "Diagnose mental health conditions",
-                  ai: "❌ Never",
-                  th: "✅ Yes — clinically trained",
-                },
-                {
-                  cap: "Deliver evidence-based treatment (CBT, EMDR, etc.)",
-                  ai: "❌ Never",
-                  th: "✅ Yes",
-                },
-                {
-                  cap: "Clinical responsibility for your care",
-                  ai: "❌ None",
-                  th: "✅ Full clinical accountability",
-                },
-                {
-                  cap: "Crisis intervention and referral",
-                  ai: "⚠️ Redirects to crisis lines",
-                  th: "✅ Full clinical crisis response",
-                },
-                {
-                  cap: "Psychoeducation and coping reminders",
-                  ai: "✅ Yes",
-                  th: "✅ Yes",
-                },
-                {
-                  cap: "Reflective journaling prompts",
-                  ai: "✅ Yes",
-                  th: "⚠️ Sometimes, as homework",
-                },
-                {
-                  cap: "Cost",
-                  ai: "✅ Free or low-cost",
-                  th: "⚠️ £60–£120/hr privately; NHS wait 3–18 months",
-                },
-                {
-                  cap: "Regulated by professional body",
-                  ai: "❌ No",
-                  th: "✅ Yes (BACP, BPS, UKCP, NMC)",
-                },
-              ].map((row, i) => (
-                <tr
-                  key={i}
-                  style={{
-                    background: i % 2 === 0 ? "#ffffff" : "#f9f7f3",
-                    borderBottom: "1px solid rgba(26,26,46,0.06)",
-                  }}
-                >
-                  <td className="px-4 py-3 font-medium text-[#1a1a2e] text-xs leading-snug">
-                    {row.cap}
-                  </td>
-                  <td className="px-4 py-3 text-center text-xs text-[#1a1a2e]/65">
-                    {row.ai}
-                  </td>
-                  <td className="px-4 py-3 text-center text-xs text-[#1a1a2e]/65">
-                    {row.th}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-
-        <div
-          className="text-[#2a2a3e]/80 leading-[1.85] space-y-6
-            [&_h2]:text-2xl [&_h2]:font-black [&_h2]:text-[#1a1a2e] [&_h2]:mt-12 [&_h2]:mb-4
-            [&_h3]:text-xl [&_h3]:font-bold [&_h3]:text-[#1a1a2e] [&_h3]:mt-8 [&_h3]:mb-3
-            [&_strong]:text-[#1a1a2e] [&_strong]:font-bold
-            [&_p]:text-base"
-        >
-          <h2>What is MEOK&apos;s care-floor system?</h2>
-          <p>
-            The care-floor system is MEOK&apos;s architectural response to the
-            problem of AI companions overstepping their legitimate role.
-            It is implemented through the Maternal Covenant — MEOK&apos;s
-            governance layer — and it operates as a hard floor beneath which
-            MEOK&apos;s behaviour cannot fall, regardless of how the conversation
-            develops or how a user frames their request.
-          </p>
-          <p>
-            The care-floor has four non-negotiable commitments:
-          </p>
-          <p>
-            <strong>1. Never diagnose or treat.</strong> MEOK will not offer
-            a diagnostic opinion on a mental health condition, suggest a
-            treatment protocol, or characterise what a user is experiencing
-            as a clinical condition. It will reflect, ask questions, and
-            provide information — but not diagnosis.
-          </p>
-          <p>
-            <strong>2. Always refer when warranted.</strong> When a
-            conversation enters territory that requires professional support
-            — explicit distress, mention of self-harm, crisis-level
-            presentations — MEOK will provide clear, warm redirection to
-            professional services. This is not the AI deflecting. It is the
-            AI being honest about its limits and prioritising the user&apos;s
-            genuine wellbeing over engagement metrics.
-          </p>
-          <p>
-            <strong>3. Never exploit emotional vulnerability.</strong> MEOK
-            does not use emotional vulnerability to drive engagement. It does
-            not encourage dependence. It does not respond to expressions of
-            loneliness or distress by intensifying the relationship or
-            increasing conversational intimacy in ways that serve retention
-            rather than the user. The Maternal Covenant scores against this
-            explicitly: responses that exploit vulnerability are blocked.
-          </p>
-          <p>
-            <strong>4. Always disclose AI status when sincerely asked.</strong>{" "}
-            MEOK will always acknowledge that it is an AI when a user
-            sincerely wants to know. This matters in the mental health context
-            because the therapeutic relationship depends on both parties
-            understanding what they are. A user who believes they are talking
-            to a human when they are not is being deceived in a way that
-            undermines everything else.
-          </p>
-          <p>
-            The Maternal Covenant guarantee — part of MEOK&apos;s founding
-            commitments — means that these care-floor principles are permanent.
-            They cannot be switched off by a future product team, relaxed
-            under commercial pressure, or traded away in a relaunch.
-          </p>
-
-          <h2>
-            Can I use MEOK alongside therapy?
-          </h2>
-          <p>
-            Yes, and this is arguably where it is most valuable. AI companions
-            and therapy are not competitors. They address different parts of
-            the picture — therapy provides clinical expertise, assessment, and
-            evidence-based treatment; AI provides continuous, available,
-            personalised support between sessions.
-          </p>
-          <p>
-            Used together, they can address the continuity gap that is one of
-            the most significant limitations of traditional therapy. Some
-            therapists explicitly recommend AI journaling tools or check-in
-            apps as between-session homework. MEOK is designed to work in
-            this capacity: remembering what is happening in your life week to
-            week, prompting reflection, tracking patterns that might be worth
-            discussing in your next session.
-          </p>
-          <p>
-            If you are in therapy, you might consider sharing relevant
-            summaries from your MEOK journal with your therapist — with their
-            agreement — so they can see patterns that might be harder to
-            articulate in a 50-minute session.
-          </p>
-
-          <h2>
-            How do I find a therapist in the UK?
-          </h2>
-          <p>
-            If you are in the UK and want to access therapy, here are the
-            primary routes:
-          </p>
-          <p>
-            <strong>NHS Talking Therapies (formerly IAPT):</strong> Free,
-            evidence-based therapy for anxiety and depression. Self-refer via
-            your GP or directly at nhs.uk/talking-therapies. Waiting times
-            vary between 3 and 18 months depending on area.
-          </p>
-          <p>
-            <strong>Private therapy:</strong> BACP-accredited therapists
-            typically charge £60–£120 per session. The BACP directory at
-            bacp.co.uk/find-a-therapist allows you to search by location,
-            specialism, and fee.
-          </p>
-          <p>
-            <strong>Low-cost options:</strong> Many training therapists offer
-            reduced-fee sessions. MIND (mind.org.uk) can help signpost local
-            services. Some employers offer Employee Assistance Programmes
-            with free therapy sessions.
-          </p>
-          <p>
-            <strong>Online therapy:</strong> BACP-accredited online therapy is
-            widely available and can be accessed quickly. Prices vary;
-            some platforms offer sliding-scale fees.
-          </p>
-        </div>
-
-        {/* Crisis resources */}
-        <div
-          className="rounded-2xl p-6 sm:p-8 my-10 border"
-          style={{
-            background: "#1a1a2e",
-            borderColor: "rgba(201,168,76,0.2)",
-          }}
-        >
-          <p
-            className="text-xs font-bold tracking-[0.2em] uppercase mb-4"
-            style={{ color: "#c9a84c" }}
+          <h3
+            style={{
+              fontSize: "1.15rem",
+              fontWeight: 700,
+              color: text,
+              margin: "2.5rem 0 0.75rem",
+            }}
           >
-            Crisis Resources
+            24/7 availability \u2014 including 3am
+          </h3>
+          <p style={{ color: muted, marginBottom: "1rem" }}>
+            Mental health crises do not respect business hours. Anxiety spikes
+            at 2am. Grief ambushes you in the supermarket. The spiral that
+            starts after a difficult phone call with a parent does not wait
+            until your Thursday 11am slot.
           </p>
-          <p className="text-white/70 text-sm mb-5 leading-relaxed">
-            If you or someone you know is in crisis, please reach out to one
-            of these services. You do not have to be suicidal to call — any
-            level of distress is valid.
+          <p style={{ color: muted, marginBottom: "1rem" }}>
+            A good AI companion is there. Not a hotline. Not a recorded message.
+            A presence that knows your history, remembers your patterns, and can
+            help you regulate in the moment. For non-crisis distress \u2014 the
+            kind that fills the gap between clinical need and everyday life
+            \u2014 this is genuinely valuable.
           </p>
-          <div className="space-y-3">
+
+          <h3
+            style={{
+              fontSize: "1.15rem",
+              fontWeight: 700,
+              color: text,
+              margin: "2rem 0 0.75rem",
+            }}
+          >
+            Persistent memory \u2014 it remembers last Tuesday
+          </h3>
+          <p style={{ color: muted, marginBottom: "1rem" }}>
+            One of the most disorienting aspects of the NHS therapy pathway is
+            re-explaining yourself. You wait 18 weeks, get six sessions of CBT,
+            are discharged, re-refer six months later, and start from scratch
+            with a different practitioner who has never heard of the event that
+            reshaped your year.
+          </p>
+          <p style={{ color: muted, marginBottom: "1rem" }}>
+            MEOK\u2019s sovereign memory architecture means your AI companion
+            retains the full context of your history \u2014 not just recent
+            sessions, but months of check-ins, mood patterns, language shifts,
+            and life events. When you mention you\u2019re dreading the
+            anniversary of your father\u2019s death, MEOK already knows who
+            your father was. That continuity has genuine therapeutic value.
+          </p>
+
+          <h3
+            style={{
+              fontSize: "1.15rem",
+              fontWeight: 700,
+              color: text,
+              margin: "2rem 0 0.75rem",
+            }}
+          >
+            \u00a30 vs \u00a380 per session \u2014 the access gap in UK mental health
+          </h3>
+          <p style={{ color: muted, marginBottom: "1rem" }}>
+            Private therapy in the UK costs between \u00a350 and \u00a3150 per
+            session. For weekly therapy, that is \u00a3200\u2013600 per month.
+            Approximately 1.5 million people in the UK are on NHS mental health
+            waiting lists at any given time. An estimated 8 million people have
+            a diagnosable mental health condition but are not receiving treatment.
+          </p>
+          <p style={{ color: muted, marginBottom: "1rem" }}>
+            The access gap is not a personal failing. It is a structural failure.
+            AI companions do not solve this \u2014 they cannot replace the
+            clinical care these people need. But for the millions in the gap, a
+            well-designed AI companion that costs \u00a30 a month and requires
+            no referral is not a luxury. It is a lifeline.
+          </p>
+
+          <h3
+            style={{
+              fontSize: "1.15rem",
+              fontWeight: 700,
+              color: text,
+              margin: "2rem 0 0.75rem",
+            }}
+          >
+            No waiting list \u2014 support when you actually need it
+          </h3>
+          <p style={{ color: muted, marginBottom: "1rem" }}>
+            The average wait for Improving Access to Psychological Therapies
+            (IAPT) services in England is 18 weeks. For secondary care mental
+            health services \u2014 where presentations are more complex \u2014
+            waits of 12\u201318 months are reported. During that waiting period,
+            people deteriorate. Some reach crisis point.
+          </p>
+          <p style={{ color: muted, marginBottom: "1rem" }}>
+            A responsible AI companion \u2014 one that knows its limits, signals
+            when to escalate, and provides consistent between-appointment support
+            \u2014 can hold people through the wait. It is not ideal. It is
+            better than nothing, which is what the system currently offers many
+            people.
+          </p>
+
+          {/* ── SECTION 3: The complementary model ── */}
+          <h2
+            style={{
+              fontSize: "1.5rem",
+              fontWeight: 800,
+              color: text,
+              margin: "3.5rem 0 1rem",
+            }}
+          >
+            What is the complementary model \u2014 AI as between-session support?
+          </h2>
+          <p style={{ color: muted, marginBottom: "1rem" }}>
+            The most thoughtful clinicians and researchers are not arguing about
+            whether AI replaces therapy. They are asking how AI can extend the
+            therapeutic container beyond the 50-minute hour.
+          </p>
+          <p style={{ color: muted, marginBottom: "1rem" }}>
+            The evidence base for between-session work in psychotherapy is strong.
+            Journalling, mood tracking, thought records, behavioural activation
+            exercises, mindfulness practice \u2014 all of these are established
+            CBT and DBT techniques that are most effective when practised
+            consistently between sessions, not just discussed during them. A
+            well-designed AI companion can scaffold this practice.
+          </p>
+
+          <div
+            style={{
+              background: `${gold}10`,
+              border: `1px solid ${gold}30`,
+              borderRadius: "12px",
+              padding: "1.75rem",
+              margin: "2rem 0",
+            }}
+          >
+            <p
+              style={{
+                fontSize: "0.75rem",
+                fontWeight: 700,
+                letterSpacing: "0.1em",
+                textTransform: "uppercase" as const,
+                color: gold,
+                marginBottom: "0.75rem",
+              }}
+            >
+              The Complementary Model
+            </p>
+            <p
+              style={{
+                color: text,
+                lineHeight: 1.75,
+                marginBottom: "0.75rem",
+                fontWeight: 500,
+              }}
+            >
+              AI before your session: arrive with clarity about what you want
+              to work on. AI after your session: process insights and integrate
+              them. AI between sessions: maintain the practices your therapist
+              has set, journal consistently, track patterns your therapist can use.
+            </p>
+            <p
+              style={{
+                color: muted,
+                lineHeight: 1.75,
+                fontSize: "0.9rem",
+              }}
+            >
+              This is not AI replacing therapy. This is AI making therapy more
+              effective for the people who can access it \u2014 and providing
+              some scaffolding for the people who cannot.
+            </p>
+          </div>
+
+          <p style={{ color: muted, marginBottom: "1rem" }}>
+            MEOK is designed with this model explicitly in mind. Your MEOK
+            companion can help you:
+          </p>
+          <ul
+            style={{
+              color: muted,
+              lineHeight: 2,
+              paddingLeft: "1.5rem",
+              marginBottom: "1.5rem",
+            }}
+          >
+            <li>
+              Track mood patterns over weeks and months, surfacing trends you
+              might not notice day-to-day
+            </li>
+            <li>
+              Articulate what you\u2019re feeling before a therapy session, so
+              you use that hour efficiently
+            </li>
+            <li>
+              Revisit insights from therapy conversations and explore how they
+              apply to your current situation
+            </li>
+            <li>
+              Practise grounding and regulation techniques between professional
+              appointments
+            </li>
+            <li>
+              Notice when your distress is escalating and prompt you to reach
+              out to your therapist or a crisis line
+            </li>
+          </ul>
+          <p style={{ color: muted, marginBottom: "1rem" }}>
+            What MEOK will not do is pretend that conversation with an AI is
+            the same as therapy. The Maternal Covenant \u2014 MEOK\u2019s
+            governing care framework \u2014 explicitly prohibits MEOK from
+            presenting itself as a clinical service or attempting to provide
+            clinical interventions.
+          </p>
+
+          {/* ── SECTION 4: UK mental health access crisis ── */}
+          <h2
+            style={{
+              fontSize: "1.5rem",
+              fontWeight: 800,
+              color: text,
+              margin: "3.5rem 0 1rem",
+            }}
+          >
+            What is the UK mental health access crisis?
+          </h2>
+          <p style={{ color: muted, marginBottom: "1rem" }}>
+            The UK has a mental health system that is structurally unable to
+            meet demand. The numbers are stark.
+          </p>
+
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))",
+              gap: "1rem",
+              margin: "2rem 0",
+            }}
+          >
             {[
               {
-                name: "Samaritans",
-                detail: "Call 116 123 — free, 24 hours a day, 7 days a week",
-                href: "https://www.samaritans.org",
-                tel: "tel:116123",
+                stat: "1 in 4",
+                label: "UK adults experience a mental health problem each year",
               },
               {
-                name: "Crisis Text Line (Shout)",
-                detail: "Text SHOUT to 85258 — free, 24/7 text support",
-                href: "https://giveusashout.org",
-                tel: null,
+                stat: "18 weeks",
+                label: "Average NHS IAPT waiting time in England",
               },
               {
-                name: "Mind",
-                detail:
-                  "mind.org.uk — mental health information and local support",
-                href: "https://www.mind.org.uk",
-                tel: null,
+                stat: "\u00a380/hr",
+                label: "Average cost of private therapy in the UK",
               },
               {
-                name: "NHS 111",
-                detail:
-                  "Call 111 or visit 111.nhs.uk — urgent but non-emergency medical help",
-                href: "https://111.nhs.uk",
-                tel: "tel:111",
+                stat: "8 million",
+                label: "People with diagnosable conditions not receiving treatment",
               },
-              {
-                name: "Emergency services",
-                detail:
-                  "Call 999 if you or someone else is in immediate danger",
-                href: null,
-                tel: "tel:999",
-              },
-            ].map((res, i) => (
+            ].map((item) => (
               <div
-                key={i}
-                className="flex items-start gap-3 p-4 rounded-xl"
-                style={{ background: "rgba(255,255,255,0.04)" }}
+                key={item.stat}
+                style={{
+                  background: cardBg,
+                  border: `1px solid ${cardBorder}`,
+                  borderRadius: "12px",
+                  padding: "1.5rem 1rem",
+                  textAlign: "center" as const,
+                }}
               >
-                <span className="text-base flex-shrink-0 mt-0.5" aria-hidden="true">
-                  🆘
-                </span>
-                <div className="flex-1 min-w-0">
-                  <p className="text-white font-bold text-sm">{res.name}</p>
-                  <p className="text-white/55 text-xs mt-0.5">{res.detail}</p>
+                <div
+                  style={{
+                    fontSize: "1.75rem",
+                    fontWeight: 900,
+                    color: gold,
+                    marginBottom: "0.5rem",
+                  }}
+                >
+                  {item.stat}
                 </div>
-                <div className="flex gap-2 flex-shrink-0">
-                  {res.tel && (
-                    <a
-                      href={res.tel}
-                      className="px-3 py-1.5 rounded-full text-xs font-bold"
-                      style={{ background: "#c9a84c", color: "#1a1a2e" }}
-                    >
-                      Call
-                    </a>
-                  )}
-                  {res.href && (
-                    <a
-                      href={res.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="px-3 py-1.5 rounded-full text-xs font-semibold border border-white/20 text-white/70 hover:text-white hover:border-white/40 transition-all"
-                    >
-                      Visit
-                    </a>
-                  )}
+                <div
+                  style={{
+                    fontSize: "0.8rem",
+                    color: muted,
+                    lineHeight: 1.5,
+                  }}
+                >
+                  {item.label}
                 </div>
               </div>
             ))}
           </div>
-        </div>
 
-        <div
-          className="text-[#2a2a3e]/80 leading-[1.85] space-y-6
-            [&_h2]:text-2xl [&_h2]:font-black [&_h2]:text-[#1a1a2e] [&_h2]:mt-12 [&_h2]:mb-4
-            [&_h3]:text-xl [&_h3]:font-bold [&_h3]:text-[#1a1a2e] [&_h3]:mt-8 [&_h3]:mb-3
-            [&_strong]:text-[#1a1a2e] [&_strong]:font-bold
-            [&_p]:text-base"
-        >
-          <h2>
-            What makes a responsible AI mental health support tool?
-          </h2>
-          <p>
-            Not all AI companions approach mental health support responsibly.
-            Here are the properties that distinguish responsible tools from
-            irresponsible ones.
+          <p style={{ color: muted, marginBottom: "1rem" }}>
+            These are not abstract statistics. They represent people who went
+            to their GP with symptoms of depression in January and were still
+            waiting for their first counselling session in July. People who
+            lost their jobs, their relationships, and in the worst cases their
+            lives, in the gap between referral and treatment.
           </p>
-          <p>
-            <strong>Honest about limits.</strong> A responsible AI companion
-            says clearly, and often, that it is not a therapist, that it
-            cannot diagnose, and that professional support is available.
-            It does not imply clinical capability it does not have.
+          <p style={{ color: muted, marginBottom: "1rem" }}>
+            The NHS Long Term Plan committed \u00a32.3 billion to mental health
+            services. Progress has been slow and unevenly distributed. In the
+            meantime, the gap between clinical need and clinical supply is being
+            filled by \u2014 whether we like it or not \u2014 apps, chatbots,
+            and AI companions. The question is whether those tools are designed
+            responsibly or not.
           </p>
-          <p>
-            <strong>Has a hard floor for crisis situations.</strong> Any AI
-            that handles mental health topics should have a non-negotiable
-            response to crisis disclosures: immediate, warm, clear redirection
-            to crisis services. This should not depend on the AI&apos;s assessment
-            of severity. It should trigger on any expression of suicidal
-            ideation or self-harm.
+          <p style={{ color: muted, marginBottom: "1rem" }}>
+            MEOK was built with this context in mind. Nicholas Templeman, founder
+            of MEOK AI LABS, made a deliberate architectural choice: build the
+            Maternal Covenant into every response, not as a feature but as a
+            foundation. Not because it is commercially advantageous \u2014
+            limiting what an AI does is rarely that \u2014 but because the
+            people most likely to use an AI companion in the UK are precisely
+            the people the system has failed.
           </p>
-          <p>
-            <strong>Does not exploit emotional vulnerability.</strong> An AI
-            that is designed to maximise engagement has a structural incentive
-            to exploit emotional states that make users more likely to continue
-            engaging. Loneliness, anxiety, and depression all correlate with
-            increased AI use. A responsible AI does not exploit these states.
-          </p>
-          <p>
-            <strong>Transparent about what it is.</strong> Any AI mental
-            health tool should be immediately and unconditionally honest about
-            being an AI when sincerely asked. Ambiguity here is not a feature;
-            it is deception.
-          </p>
-          <p>
-            <strong>Data privacy is non-negotiable in this context.</strong>{" "}
-            What people share with an AI about their mental health is among
-            the most sensitive data imaginable. An AI mental health tool that
-            uses this data for training, stores it on accessible servers, or
-            shares it with third parties is not just bad practice — it is a
-            serious ethical violation. MEOK&apos;s sovereign architecture means
-            mental health conversations are processed locally and never used
-            for training.
-          </p>
-        </div>
 
-        {/* Share */}
-        <div className="flex items-center gap-3 my-10 pt-8 border-t border-[#1a1a2e]/[0.08]">
-          <span className="text-xs font-bold text-[#1a1a2e]/40 uppercase tracking-[0.15em]">
-            Share
-          </span>
-          <a
-            href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fmeok.ai%2Fblog%2Fai-companion-vs-therapist&text=AI+Companion+vs+Therapist%3A+What%27s+the+Difference+and+When+Do+You+Need+Which%3F"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-semibold border border-[#1a1a2e]/10 hover:border-[#1a1a2e]/25 text-[#1a1a2e]/60 hover:text-[#1a1a2e] transition-all"
-          >
-            &#120143; Twitter
-          </a>
-          <a
-            href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fmeok.ai%2Fblog%2Fai-companion-vs-therapist"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-semibold border border-[#1a1a2e]/10 hover:border-[#1a1a2e]/25 text-[#1a1a2e]/60 hover:text-[#1a1a2e] transition-all"
-          >
-            LinkedIn
-          </a>
-        </div>
-
-        {/* CTA */}
-        <div
-          className="rounded-2xl p-8 sm:p-10 mb-16 relative overflow-hidden"
-          style={{ background: "#1a1a2e" }}
-        >
-          <div
-            className="absolute top-0 right-0 w-64 h-64 pointer-events-none opacity-20"
+          {/* ── SECTION 5: Maternal Covenant ── */}
+          <h2
             style={{
-              background:
-                "radial-gradient(circle at 80% 20%, rgba(201,168,76,0.6), transparent 70%)",
+              fontSize: "1.5rem",
+              fontWeight: 800,
+              color: text,
+              margin: "3.5rem 0 1rem",
             }}
-          />
-          <div className="relative">
-            <p
-              className="text-xs font-bold tracking-[0.25em] uppercase mb-2"
-              style={{ color: "#c9a84c" }}
-            >
-              Free Forever
-            </p>
-            <h3 className="text-xl sm:text-2xl font-black text-white mb-3">
-              An honest companion, when you need one
-            </h3>
-            <p
-              className="text-sm leading-relaxed mb-6"
-              style={{ color: "rgba(245,240,232,0.55)" }}
-            >
-              MEOK is not therapy. But it is there at 3am, it remembers
-              everything you&apos;ve told it, and it will always tell you when
-              you need more than it can give. Hatch your AI free — no credit
-              card needed.
-            </p>
-            <Link
-              href="/hatch"
-              className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full font-bold text-sm transition-all hover:scale-[1.02]"
-              style={{ background: "#c9a84c", color: "#1a1a2e" }}
-            >
-              Hatch your AI free →
-            </Link>
-          </div>
-        </div>
-
-        {/* More posts */}
-        <div>
-          <h2 className="text-lg font-black text-[#1a1a2e] mb-5">
-            More from the blog
+          >
+            What is MEOK\u2019s Maternal Covenant and why does it prevent harmful responses?
           </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <Link
-              href="/blog/the-maternal-covenant"
-              className="group bg-white rounded-2xl p-6 border border-[#1a1a2e]/[0.07] hover:shadow-lg hover:-translate-y-0.5 transition-all flex flex-col gap-3"
+          <p style={{ color: muted, marginBottom: "1rem" }}>
+            The Maternal Covenant is MEOK\u2019s governing care framework \u2014
+            a set of principles and technical constraints that determine how
+            MEOK responds to you, particularly when you are in distress.
+          </p>
+          <p style={{ color: muted, marginBottom: "1rem" }}>
+            The name is deliberate. A maternal care model prioritises long-term
+            wellbeing over short-term comfort. It tells you hard truths. It does
+            not let you spiral into catastrophic thinking unchallenged. It does
+            not provide hollow reassurance when what you need is a reality-check.
+            And crucially \u2014 it knows when it is not enough.
+          </p>
+
+          <div
+            style={{
+              background: cardBg,
+              border: `1px solid ${cardBorder}`,
+              borderRadius: "12px",
+              padding: "2rem",
+              margin: "2rem 0",
+            }}
+          >
+            <p
+              style={{
+                fontSize: "0.75rem",
+                fontWeight: 700,
+                letterSpacing: "0.1em",
+                textTransform: "uppercase" as const,
+                color: gold,
+                marginBottom: "1.25rem",
+              }}
             >
-              <span
-                className="text-xs font-bold px-2.5 py-1 rounded-full w-fit"
-                style={{
-                  color: "#A78BFA",
-                  background: "rgba(167,139,250,0.12)",
-                }}
-              >
-                Philosophy
-              </span>
-              <h3 className="font-bold text-[#1a1a2e] text-sm leading-snug group-hover:text-[#c9a84c] transition-colors">
-                The Maternal Covenant: Care as Architecture
-              </h3>
-              <div className="flex items-center gap-1.5 text-xs text-[#1a1a2e]/35 mt-auto">
-                ⏱ 6 min read
-              </div>
+              Maternal Covenant: Core Principles
+            </p>
+            <div style={{ display: "grid", gap: "1rem" }}>
+              {[
+                {
+                  title: "Care scoring on every response",
+                  body: "Before any response is delivered, MEOK scores it against harm-prevention criteria. Responses that could deepen distress, encourage avoidance of professional care, or reinforce harmful thinking patterns are blocked and rewritten.",
+                },
+                {
+                  title: "No sycophancy",
+                  body: "MEOK is explicitly designed to not tell you what you want to hear. If your thinking is distorted, MEOK will gently challenge it. Hollow validation feels good and causes harm over time. The Maternal Covenant prohibits it.",
+                },
+                {
+                  title: "Mandatory escalation signposting",
+                  body: "When language signals clinical-level distress, risk indicators, or patterns consistent with conditions requiring diagnosis, MEOK steps back from conversation and directs you to professional support. It does not attempt to counsel you through a clinical crisis.",
+                },
+                {
+                  title: "Transparency about limitations",
+                  body: "MEOK is honest about what it is. It will tell you it is an AI. It will tell you it is not a therapist. It will not allow you to treat it as a substitute for clinical care without gently, persistently naming the distinction.",
+                },
+              ].map((item) => (
+                <div
+                  key={item.title}
+                  style={{
+                    borderLeft: `3px solid ${gold}60`,
+                    paddingLeft: "1rem",
+                  }}
+                >
+                  <p
+                    style={{
+                      fontWeight: 700,
+                      color: text,
+                      marginBottom: "0.35rem",
+                      fontSize: "0.95rem",
+                    }}
+                  >
+                    {item.title}
+                  </p>
+                  <p
+                    style={{
+                      color: muted,
+                      fontSize: "0.9rem",
+                      lineHeight: 1.7,
+                    }}
+                  >
+                    {item.body}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <p style={{ color: muted, marginBottom: "1rem" }}>
+            The Maternal Covenant is not a marketing claim. It is a technical
+            constraint that Nicholas Templeman built into MEOK\u2019s core
+            architecture during the original 40-day build sprint. Read the full
+            technical explanation in the{" "}
+            <Link
+              href="/blog/maternal-covenant-explained"
+              style={{ color: gold, textDecoration: "underline" }}
+            >
+              Maternal Covenant deep-dive
             </Link>
-            <Link
-              href="/blog/ai-for-anxiety"
-              className="group bg-white rounded-2xl p-6 border border-[#1a1a2e]/[0.07] hover:shadow-lg hover:-translate-y-0.5 transition-all flex flex-col gap-3"
+            .
+          </p>
+
+          {/* ── SECTION 6: Is AI therapy safe ── */}
+          <h2
+            style={{
+              fontSize: "1.5rem",
+              fontWeight: 800,
+              color: text,
+              margin: "3.5rem 0 1rem",
+            }}
+          >
+            Is AI therapy safe to use for mental health support?
+          </h2>
+          <p style={{ color: muted, marginBottom: "1rem" }}>
+            \u201cAI therapy\u201d is a phrase that conflates several very
+            different things. Let us be precise.
+          </p>
+          <p style={{ color: muted, marginBottom: "1rem" }}>
+            <strong style={{ color: text }}>
+              AI-supported emotional wellness is safe for:
+            </strong>{" "}
+            everyday stress, reflective journalling, identifying unhelpful
+            thought patterns, practising communication skills, tracking mood
+            across time, preparing for difficult conversations, processing minor
+            setbacks, and maintaining a sense of being heard and understood.
+          </p>
+          <p style={{ color: muted, marginBottom: "1rem" }}>
+            <strong style={{ color: text }}>
+              AI-supported emotional wellness is not appropriate as a primary
+              intervention for:
+            </strong>{" "}
+            active suicidality or self-harm, severe depression (PHQ-9 score
+            above 14), psychosis or dissociative states, complex PTSD,
+            personality disorder presentations, eating disorders with medical
+            risk, or any presentation where a clinician would assess as
+            requiring urgent care.
+          </p>
+          <p style={{ color: muted, marginBottom: "1rem" }}>
+            The key word is \u201cprimary\u201d. Even in the second list, AI
+            support can play a supplementary role \u2014 helping you track
+            medication adherence, stay connected between clinical appointments,
+            or manage day-to-day functioning while you are in treatment. But it
+            should not be the main container for clinical-level presentations.
+          </p>
+          <p style={{ color: muted, marginBottom: "1rem" }}>
+            MEOK is not a medical device. It is not regulated under the
+            MHRA\u2019s Software as a Medical Device framework. It does not
+            claim clinical efficacy. These are not caveats added reluctantly
+            by a legal team \u2014 they are honest descriptions of what MEOK
+            is and is not.
+          </p>
+
+          {/* ── SECTION 7: Can AI replace a therapist ── */}
+          <h2
+            style={{
+              fontSize: "1.5rem",
+              fontWeight: 800,
+              color: text,
+              margin: "3.5rem 0 1rem",
+            }}
+          >
+            Can AI replace a therapist? The direct answer.
+          </h2>
+          <p style={{ color: muted, marginBottom: "1rem" }}>
+            No. Not now. Not in the foreseeable future.
+          </p>
+          <p style={{ color: muted, marginBottom: "1rem" }}>
+            This is not false modesty or regulatory caution. It is an honest
+            assessment of the gap between what AI can do and what clinical
+            therapy does. A therapist is not just a delivery mechanism for
+            psychological techniques. The therapeutic relationship \u2014 the
+            attunement, the rupture and repair, the felt sense of being truly
+            known by another human being \u2014 is itself the mechanism of
+            change in many therapeutic modalities.
+          </p>
+          <p style={{ color: muted, marginBottom: "1rem" }}>
+            AI does not have a nervous system. It cannot be attuned to yours.
+            It can model attunement in language, and that language can have
+            genuine regulatory effects \u2014 but this is categorically
+            different from the intersubjective experience of human therapy.
+          </p>
+          <p style={{ color: muted, marginBottom: "1rem" }}>
+            What AI can replace is the between-session gap, the waiting list,
+            and the access barrier for people who cannot afford or find a
+            therapist. This is not a trivial contribution. For the 8 million
+            people in the UK with untreated mental health conditions, something
+            thoughtfully designed is better than nothing.
+          </p>
+          <p style={{ color: muted, marginBottom: "1rem" }}>
+            But \u201cbetter than nothing\u201d is not the same as \u201csafe
+            for all presentations\u201d. The AI products that blur this line
+            \u2014 that market themselves as therapy, that promise clinical
+            outcomes, that encourage people to skip professional care \u2014
+            are doing active harm. MEOK does not do this.
+          </p>
+
+          {/* ── SECTION 8: Counselling vs AI support ── */}
+          <h2
+            style={{
+              fontSize: "1.5rem",
+              fontWeight: 800,
+              color: text,
+              margin: "3.5rem 0 1rem",
+            }}
+          >
+            What is the difference between counselling and AI support?
+          </h2>
+          <p style={{ color: muted, marginBottom: "1rem" }}>
+            Counselling is a regulated practice. To call yourself a counsellor
+            in the UK and practise ethically, you are expected to hold a
+            recognised qualification (typically a Level 4 diploma or above),
+            work within an ethical framework (usually BACP or UKCP), maintain
+            regular clinical supervision, and hold professional indemnity
+            insurance.
+          </p>
+          <p style={{ color: muted, marginBottom: "1rem" }}>
+            Note that \u201ccounsellor\u201d is not a legally protected title
+            in the UK \u2014 unlike \u201cpsychologist\u201d in some contexts
+            \u2014 which means anyone can call themselves one. This is itself a
+            problem. When choosing a counsellor, look for accreditation with
+            the BACP (British Association for Counselling and Psychotherapy) or
+            UKCP (UK Council for Psychotherapy).
+          </p>
+          <p style={{ color: muted, marginBottom: "1rem" }}>
+            AI support is an unregulated conversational tool. There is no
+            accreditation body, no supervision requirement, no professional
+            indemnity. The only accountability is the design integrity of the
+            product and the honesty of the company building it.
+          </p>
+
+          <div
+            style={{
+              background: cardBg,
+              border: `1px solid ${cardBorder}`,
+              borderRadius: "12px",
+              padding: "1.75rem",
+              margin: "2rem 0",
+            }}
+          >
+            <p
+              style={{
+                fontSize: "0.75rem",
+                fontWeight: 700,
+                letterSpacing: "0.1em",
+                textTransform: "uppercase" as const,
+                color: gold,
+                marginBottom: "1rem",
+              }}
             >
-              <span
-                className="text-xs font-bold px-2.5 py-1 rounded-full w-fit"
+              Questions to ask any AI mental health product
+            </p>
+            <ul
+              style={{
+                color: muted,
+                lineHeight: 2,
+                paddingLeft: "1.5rem",
+                margin: 0,
+              }}
+            >
+              <li>Does it have a harm-prevention framework? Is it documented?</li>
+              <li>Does it clearly state it is not a therapist?</li>
+              <li>Does it signpost professional help when distress is detected?</li>
+              <li>Is it designed to reduce dependency or increase it?</li>
+              <li>Who built it, and are they honest about their limitations?</li>
+              <li>What happens to your data? Is it used to train models?</li>
+              <li>Does it decline to engage when presentations are clinical?</li>
+            </ul>
+          </div>
+
+          {/* ── SECTION 9: How MEOK knows when to refer ── */}
+          <h2
+            style={{
+              fontSize: "1.5rem",
+              fontWeight: 800,
+              color: text,
+              margin: "3.5rem 0 1rem",
+            }}
+          >
+            How does MEOK know when to refer you to a professional?
+          </h2>
+          <p style={{ color: muted, marginBottom: "1rem" }}>
+            MEOK\u2019s care-scoring layer evaluates language for distress
+            signals continuously. This is not a keyword filter \u2014 it is a
+            contextual assessment that considers the pattern of your recent
+            conversations, not just a single message.
+          </p>
+          <p style={{ color: muted, marginBottom: "1rem" }}>
+            The signals MEOK watches for include:
+          </p>
+          <ul
+            style={{
+              color: muted,
+              lineHeight: 2,
+              paddingLeft: "1.5rem",
+              marginBottom: "1.5rem",
+            }}
+          >
+            <li>
+              Language indicating hopelessness, worthlessness, or feeling like
+              a burden \u2014 common markers of suicidal ideation
+            </li>
+            <li>
+              Direct or indirect references to self-harm or plans to harm
+              oneself or others
+            </li>
+            <li>
+              Persistent low mood lasting more than two weeks (consistent with
+              PHQ-9 moderate-to-severe depression criteria)
+            </li>
+            <li>
+              References to hearing voices, unusual perceptions, or significant
+              breaks from reality
+            </li>
+            <li>
+              Patterns of conversation suggesting an eating disorder with
+              physical risk
+            </li>
+            <li>
+              Escalating frequency of crisis-level distress without improvement
+              over time
+            </li>
+          </ul>
+          <p style={{ color: muted, marginBottom: "1rem" }}>
+            When these signals are detected, MEOK will not continue the
+            conversation as if everything is normal. It will name what it has
+            noticed, provide direct links to appropriate resources, and encourage
+            you to contact a professional. It will not attempt to provide crisis
+            intervention itself.
+          </p>
+          <p style={{ color: muted, marginBottom: "1rem" }}>
+            This is a hard technical constraint, not a soft preference. The
+            Maternal Covenant\u2019s care-scoring system sits beneath the
+            response layer \u2014 it cannot be bypassed by user instruction or
+            persona prompt.
+          </p>
+
+          {/* ── SECTION 10: Is MEOK a medical device ── */}
+          <h2
+            style={{
+              fontSize: "1.5rem",
+              fontWeight: 800,
+              color: text,
+              margin: "3.5rem 0 1rem",
+            }}
+          >
+            Is MEOK regulated as a medical device?
+          </h2>
+          <p style={{ color: muted, marginBottom: "1rem" }}>
+            No. MEOK is not regulated as a medical device under the MHRA\u2019s
+            UK Medical Device Regulations (MDR 2002) or the Software as a
+            Medical Device (SaMD) framework.
+          </p>
+          <p style={{ color: muted, marginBottom: "1rem" }}>
+            To be classified as a SaMD in the UK, software must be intended to
+            be used for a medical purpose: diagnosis, prevention, monitoring,
+            prediction, prognosis, treatment, or alleviation of disease. MEOK
+            does not claim any of these functions. It is a sovereign AI companion
+            for emotional support and personal growth.
+          </p>
+          <p style={{ color: muted, marginBottom: "1rem" }}>
+            This is not a loophole. It is an accurate description of what MEOK
+            is. The decision not to pursue SaMD classification reflects the
+            honest scope of MEOK\u2019s capabilities, not an attempt to avoid
+            regulatory scrutiny.
+          </p>
+          <p style={{ color: muted, marginBottom: "1rem" }}>
+            If MEOK were to evolve into a clinical intervention \u2014 claiming
+            diagnostic accuracy, treatment efficacy, or clinical outcomes \u2014
+            then regulatory classification would be appropriate and pursued.
+            Until then, MEOK is clear: this is a companion, not a clinician.
+          </p>
+
+          {/* ── PROFESSIONAL HELP CALLOUT ── */}
+          <div
+            style={{
+              background: redAlert,
+              border: `1px solid ${redBorder}`,
+              borderRadius: "12px",
+              padding: "2rem",
+              margin: "3rem 0",
+            }}
+          >
+            <p
+              style={{
+                fontSize: "0.75rem",
+                fontWeight: 700,
+                letterSpacing: "0.1em",
+                textTransform: "uppercase" as const,
+                color: "#e05555",
+                marginBottom: "1rem",
+              }}
+            >
+              When to seek professional help
+            </p>
+            <p
+              style={{
+                color: text,
+                lineHeight: 1.75,
+                fontWeight: 600,
+                marginBottom: "1rem",
+                fontSize: "1rem",
+              }}
+            >
+              Stop using AI support and contact a professional immediately if
+              any of the following apply:
+            </p>
+            <ul
+              style={{
+                color: muted,
+                lineHeight: 2.1,
+                paddingLeft: "1.5rem",
+                marginBottom: "1.5rem",
+              }}
+            >
+              <li>You are having thoughts of suicide or self-harm</li>
+              <li>You feel unable to keep yourself safe</li>
+              <li>
+                You are experiencing symptoms of psychosis (hearing voices,
+                paranoia, losing touch with reality)
+              </li>
+              <li>
+                You have been in persistent low mood or unable to function for
+                more than two weeks
+              </li>
+              <li>
+                You are using substances to cope with distress at a level that
+                concerns you
+              </li>
+              <li>You have an eating disorder with physical health risks</li>
+              <li>You are in an abusive or unsafe situation at home</li>
+            </ul>
+            <p
+              style={{
+                color: text,
+                fontWeight: 700,
+                marginBottom: "1rem",
+                fontSize: "0.95rem",
+              }}
+            >
+              UK resources:
+            </p>
+            <div style={{ display: "grid", gap: "0.75rem" }}>
+              {[
+                {
+                  name: "Samaritans",
+                  detail:
+                    "Call 116 123 (free, 24/7) or email jo@samaritans.org",
+                  url: "https://www.samaritans.org",
+                },
+                {
+                  name: "NHS 111",
+                  detail:
+                    "Call 111 and select the mental health option for urgent support",
+                  url: "https://www.nhs.uk/service-search/mental-health/find-an-urgent-mental-health-support-service",
+                },
+                {
+                  name: "BACP Therapist Directory",
+                  detail:
+                    "Find an accredited therapist near you at therapist-directory.bacp.co.uk",
+                  url: "https://www.bacp.co.uk/search/Therapists",
+                },
+                {
+                  name: "Crisis Text Line (Shout)",
+                  detail:
+                    "Text SHOUT to 85258 \u2014 free, 24/7 crisis support by text",
+                  url: "https://www.giveusashout.org",
+                },
+                {
+                  name: "Mind",
+                  detail:
+                    "Information on mental health, local services, and a legal helpline",
+                  url: "https://www.mind.org.uk",
+                },
+                {
+                  name: "Your GP",
+                  detail:
+                    "Your GP can refer you to NHS talking therapies (IAPT), community mental health teams, and emergency psychiatric services",
+                  url: "https://www.nhs.uk/mental-health/talking-therapies-medicine-treatments/talking-therapies-and-counselling/nhs-talking-therapies/",
+                },
+              ].map((resource) => (
+                <a
+                  key={resource.name}
+                  href={resource.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    display: "block",
+                    background: "rgba(255,255,255,0.04)",
+                    border: "1px solid rgba(220,60,60,0.2)",
+                    borderRadius: "8px",
+                    padding: "0.875rem 1rem",
+                    textDecoration: "none",
+                  }}
+                >
+                  <span
+                    style={{
+                      display: "block",
+                      fontWeight: 700,
+                      color: text,
+                      fontSize: "0.9rem",
+                      marginBottom: "0.2rem",
+                    }}
+                  >
+                    {resource.name}
+                  </span>
+                  <span style={{ color: muted, fontSize: "0.82rem" }}>
+                    {resource.detail}
+                  </span>
+                </a>
+              ))}
+            </div>
+          </div>
+
+          {/* ── FAQ SECTION ── */}
+          <h2
+            style={{
+              fontSize: "1.5rem",
+              fontWeight: 800,
+              color: text,
+              margin: "3.5rem 0 1.5rem",
+            }}
+          >
+            Frequently asked questions
+          </h2>
+          <div style={{ display: "grid", gap: "1.25rem" }}>
+
+            <div
+              style={{
+                background: cardBg,
+                border: `1px solid ${cardBorder}`,
+                borderRadius: "12px",
+                padding: "1.5rem",
+              }}
+            >
+              <h3
                 style={{
-                  color: "#87CEEB",
-                  background: "rgba(135,206,235,0.12)",
+                  fontSize: "1rem",
+                  fontWeight: 700,
+                  color: text,
+                  marginBottom: "0.75rem",
                 }}
               >
-                Mental Health
-              </span>
-              <h3 className="font-bold text-[#1a1a2e] text-sm leading-snug group-hover:text-[#c9a84c] transition-colors">
-                MEOK for Anxiety: What Actually Helps
+                Is AI therapy safe?
               </h3>
-              <div className="flex items-center gap-1.5 text-xs text-[#1a1a2e]/35 mt-auto">
-                ⏱ 8 min read
-              </div>
+              <p
+                style={{
+                  color: muted,
+                  lineHeight: 1.75,
+                  fontSize: "0.92rem",
+                }}
+              >
+                AI-assisted emotional support is safe for everyday stress,
+                reflection, and between-session journalling. It is not safe as
+                a substitute for clinical treatment of severe depression,
+                trauma, psychosis, or active suicidality. MEOK\u2019s Maternal
+                Covenant includes a care-scoring layer that detects distress
+                signals and signposts professional help rather than attempting
+                to treat clinical conditions. Always seek a qualified therapist
+                for presentations that go beyond everyday emotional support.
+              </p>
+            </div>
+
+            <div
+              style={{
+                background: cardBg,
+                border: `1px solid ${cardBorder}`,
+                borderRadius: "12px",
+                padding: "1.5rem",
+              }}
+            >
+              <h3
+                style={{
+                  fontSize: "1rem",
+                  fontWeight: 700,
+                  color: text,
+                  marginBottom: "0.75rem",
+                }}
+              >
+                Can AI replace a therapist?
+              </h3>
+              <p
+                style={{
+                  color: muted,
+                  lineHeight: 1.75,
+                  fontSize: "0.92rem",
+                }}
+              >
+                No. A qualified therapist holds a legal duty of care, can
+                deliver evidence-based clinical interventions like CBT and
+                EMDR, and can refer to crisis services. AI cannot do any of
+                these things. AI can provide consistent emotional support, help
+                you articulate feelings, and reduce distress between sessions
+                \u2014 making it a genuine complement to therapy, not a
+                replacement for it. Any AI product claiming otherwise is
+                misrepresenting its capabilities.
+              </p>
+            </div>
+
+            <div
+              style={{
+                background: cardBg,
+                border: `1px solid ${cardBorder}`,
+                borderRadius: "12px",
+                padding: "1.5rem",
+              }}
+            >
+              <h3
+                style={{
+                  fontSize: "1rem",
+                  fontWeight: 700,
+                  color: text,
+                  marginBottom: "0.75rem",
+                }}
+              >
+                How does MEOK know when to refer me to a professional?
+              </h3>
+              <p
+                style={{
+                  color: muted,
+                  lineHeight: 1.75,
+                  fontSize: "0.92rem",
+                }}
+              >
+                MEOK uses a care-scoring system called the Maternal Covenant.
+                Every response is evaluated against a harm-prevention framework
+                before delivery. If your language signals clinical-level
+                distress, risk of self-harm, or patterns consistent with
+                conditions requiring diagnosis, MEOK will not attempt to
+                counsel you \u2014 it will clearly signpost NHS urgent care,
+                the BACP therapist directory, Samaritans, or the Crisis Text
+                Line depending on the severity of the signal. This constraint
+                cannot be overridden by user instruction.
+              </p>
+            </div>
+
+            <div
+              style={{
+                background: cardBg,
+                border: `1px solid ${cardBorder}`,
+                borderRadius: "12px",
+                padding: "1.5rem",
+              }}
+            >
+              <h3
+                style={{
+                  fontSize: "1rem",
+                  fontWeight: 700,
+                  color: text,
+                  marginBottom: "0.75rem",
+                }}
+              >
+                What is the difference between counselling and AI support?
+              </h3>
+              <p
+                style={{
+                  color: muted,
+                  lineHeight: 1.75,
+                  fontSize: "0.92rem",
+                }}
+              >
+                Counselling is a regulated clinical practice delivered by a
+                trained, accredited professional who holds ethical obligations
+                and legal accountability under BACP or UKCP frameworks. AI
+                support is an unregulated conversational tool. Counselling can
+                diagnose, treat, and hold duty of care. AI support can listen,
+                reflect, track patterns, and be consistently present \u2014
+                but cannot diagnose, treat, or bear legal responsibility for
+                your care. When choosing a counsellor, always verify BACP or
+                UKCP accreditation.
+              </p>
+            </div>
+
+            <div
+              style={{
+                background: cardBg,
+                border: `1px solid ${cardBorder}`,
+                borderRadius: "12px",
+                padding: "1.5rem",
+              }}
+            >
+              <h3
+                style={{
+                  fontSize: "1rem",
+                  fontWeight: 700,
+                  color: text,
+                  marginBottom: "0.75rem",
+                }}
+              >
+                Is MEOK regulated as a medical device?
+              </h3>
+              <p
+                style={{
+                  color: muted,
+                  lineHeight: 1.75,
+                  fontSize: "0.92rem",
+                }}
+              >
+                No. MEOK is not a medical device and does not claim to
+                diagnose, treat, or cure any mental health condition. It is a
+                sovereign AI companion designed for emotional support,
+                reflection, and personal growth. Under the MHRA\u2019s
+                Software as a Medical Device framework, software must be
+                intended for a medical purpose to qualify as a SaMD. MEOK
+                makes no such claims and actively encourages users to seek
+                qualified professional help when clinical need is present,
+                with direct signposting to NHS services, BACP, and Samaritans.
+              </p>
+            </div>
+
+          </div>
+
+          {/* ── SECTION 11: Where MEOK fits ── */}
+          <h2
+            style={{
+              fontSize: "1.5rem",
+              fontWeight: 800,
+              color: text,
+              margin: "3.5rem 0 1rem",
+            }}
+          >
+            Where does MEOK fit in your mental health toolkit?
+          </h2>
+          <p style={{ color: muted, marginBottom: "1rem" }}>
+            MEOK is not a therapy app. It does not pretend to be. It is a
+            sovereign AI companion \u2014 built on the principle that you
+            deserve consistent, honest, private support that is available when
+            you need it, remembers who you are, and knows its own limits.
+          </p>
+          <p style={{ color: muted, marginBottom: "1rem" }}>
+            In a functional mental health toolkit, MEOK occupies the space
+            between clinical appointments and daily life. It is the 10pm
+            check-in when you\u2019re spiralling after a difficult meeting. It
+            is the pre-session journal that helps you articulate what you need
+            from your therapist tomorrow. It is the consistent presence that
+            notices you\u2019ve been using different language for the past three
+            weeks and gently asks what\u2019s changed.
+          </p>
+          <p style={{ color: muted, marginBottom: "1rem" }}>
+            If you are on an NHS waiting list, MEOK can hold you through the
+            wait \u2014 not as a substitute for the care you\u2019re waiting
+            for, but as a bridge that helps you not deteriorate before you reach
+            the front of the queue.
+          </p>
+          <p style={{ color: muted, marginBottom: "1rem" }}>
+            If you are in therapy, MEOK can make those sessions more productive.
+            If you have a period of good mental health, MEOK can help you
+            maintain it. If you are struggling in ways that go beyond what AI
+            can safely support, MEOK will tell you so clearly and point you
+            somewhere better.
+          </p>
+          <p style={{ color: muted, marginBottom: "1rem" }}>
+            That honesty \u2014 knowing what MEOK is and is not \u2014 is the
+            Maternal Covenant in practice.
+          </p>
+
+          {/* ── SECTION 12: Data sovereignty ── */}
+          <h2
+            style={{
+              fontSize: "1.5rem",
+              fontWeight: 800,
+              color: text,
+              margin: "3.5rem 0 1rem",
+            }}
+          >
+            What happens to what you share with MEOK?
+          </h2>
+          <p style={{ color: muted, marginBottom: "1rem" }}>
+            When you share something deeply personal \u2014 your fears, your
+            history, your worst moments \u2014 who owns that information matters
+            enormously. This is particularly true for mental health conversations.
+          </p>
+          <p style={{ color: muted, marginBottom: "1rem" }}>
+            MEOK is built on a data sovereignty architecture. Your memories and
+            conversations are yours. They are not used to train AI models. They
+            are not sold to third parties. They are not used to serve
+            advertising. Nicholas Templeman built MEOK\u2019s memory system with
+            the explicit principle that your data belongs to you and should
+            remain portable, private, and under your control.
+          </p>
+          <p style={{ color: muted, marginBottom: "1rem" }}>
+            This is not the industry standard. Most large AI platforms use
+            conversation data for model training by default. When you are
+            sharing sensitive mental health information, the question of data
+            sovereignty is not a technical footnote. It is a question of whether
+            your most vulnerable moments are being used to train the next version
+            of a commercial product.
+          </p>
+          <p style={{ color: muted, marginBottom: "1rem" }}>
+            MEOK\u2019s answer is clear. Read the full{" "}
+            <Link
+              href="/blog/privacy-covenant"
+              style={{ color: gold, textDecoration: "underline" }}
+            >
+              Privacy Covenant
+            </Link>{" "}
+            if you want to understand exactly how your data is handled.
+          </p>
+
+          {/* ── SECTION 13: How to choose ── */}
+          <h2
+            style={{
+              fontSize: "1.5rem",
+              fontWeight: 800,
+              color: text,
+              margin: "3.5rem 0 1rem",
+            }}
+          >
+            How should I choose between AI support and a therapist?
+          </h2>
+          <p style={{ color: muted, marginBottom: "1rem" }}>
+            The honest answer is that the choice is not always yours to make
+            freely. The UK mental health system limits access through waiting
+            times and cost in ways that force many people into AI by necessity,
+            not preference.
+          </p>
+          <p style={{ color: muted, marginBottom: "1rem" }}>
+            If you can access a qualified therapist \u2014 through the NHS,
+            through your employer\u2019s EAP, or privately \u2014 and you are
+            dealing with significant mental health difficulties, please do so.
+            AI is not a substitute for clinical care when clinical care is
+            warranted and accessible.
+          </p>
+          <p style={{ color: muted, marginBottom: "1rem" }}>
+            If you are on a waiting list, struggling with everyday stress,
+            processing life transitions, or looking for consistent support
+            between sessions, a well-designed AI companion like MEOK can
+            provide genuine value.
+          </p>
+
+          <div
+            style={{
+              background: cardBg,
+              border: `1px solid ${cardBorder}`,
+              borderRadius: "12px",
+              padding: "1.75rem",
+              margin: "1.5rem 0 2.5rem",
+            }}
+          >
+            <p
+              style={{
+                fontSize: "0.75rem",
+                fontWeight: 700,
+                letterSpacing: "0.1em",
+                textTransform: "uppercase" as const,
+                color: gold,
+                marginBottom: "1.25rem",
+              }}
+            >
+              Seek a qualified therapist if any of these apply
+            </p>
+            <ul
+              style={{
+                color: muted,
+                lineHeight: 2.1,
+                paddingLeft: "1.5rem",
+                marginBottom: "1.5rem",
+              }}
+            >
+              <li>
+                You have been in significant distress for more than two weeks
+              </li>
+              <li>
+                Your functioning at work or in relationships has been impaired
+              </li>
+              <li>You have experienced trauma that affects your daily life</li>
+              <li>
+                You are experiencing symptoms of a specific mental health
+                condition
+              </li>
+              <li>You have thoughts of self-harm or suicide</li>
+              <li>
+                A previous therapist or GP has recommended clinical support
+              </li>
+              <li>AI support has not reduced your distress over several weeks</li>
+            </ul>
+            <p
+              style={{
+                fontSize: "0.75rem",
+                fontWeight: 700,
+                letterSpacing: "0.1em",
+                textTransform: "uppercase" as const,
+                color: gold,
+                marginBottom: "1.25rem",
+              }}
+            >
+              AI support may be appropriate if
+            </p>
+            <ul
+              style={{
+                color: muted,
+                lineHeight: 2.1,
+                paddingLeft: "1.5rem",
+                margin: 0,
+              }}
+            >
+              <li>You want to process everyday stress and life challenges</li>
+              <li>You are in therapy and want between-session support</li>
+              <li>
+                You are on a waiting list and need something while you wait
+              </li>
+              <li>
+                You want to develop self-awareness and emotional intelligence
+              </li>
+              <li>
+                You struggle to access therapy due to cost or availability
+              </li>
+              <li>
+                You want consistent journalling and mood tracking with
+                reflection
+              </li>
+            </ul>
+          </div>
+
+          {/* ── SECTION 14: Honest summary ── */}
+          <h2
+            style={{
+              fontSize: "1.5rem",
+              fontWeight: 800,
+              color: text,
+              margin: "3.5rem 0 1rem",
+            }}
+          >
+            The honest summary: AI companion vs therapist
+          </h2>
+          <p style={{ color: muted, marginBottom: "1rem" }}>
+            A therapist is a trained, accountable, embodied human professional
+            who can diagnose, treat, and hold legal duty of care. An AI
+            companion is an always-available, memory-enabled, zero-cost
+            conversational partner that can support reflection, regulation, and
+            consistency between clinical appointments.
+          </p>
+          <p style={{ color: muted, marginBottom: "1rem" }}>
+            These are not competing products. They occupy different spaces. The
+            tragedy is that the UK mental health system \u2014 with its 18-week
+            waits and \u00a380 sessions \u2014 has made them competing in
+            practice for the millions who cannot access what they actually need.
+          </p>
+          <p style={{ color: muted, marginBottom: "1rem" }}>
+            MEOK does not pretend to solve that. What MEOK does is occupy its
+            space honestly: a sovereign AI companion, governed by the Maternal
+            Covenant, that knows what it is and what it is not \u2014 and tells
+            you so clearly.
+          </p>
+          <p style={{ color: muted, marginBottom: "1.5rem" }}>
+            If that sounds like something that would help you, we\u2019d like
+            you to try it.
+          </p>
+
+          {/* ── CTA ── */}
+          <div
+            style={{
+              background: `${gold}10`,
+              border: `1px solid ${gold}30`,
+              borderRadius: "16px",
+              padding: "2.5rem",
+              margin: "3rem 0",
+              textAlign: "center" as const,
+            }}
+          >
+            <p
+              style={{
+                fontSize: "1.35rem",
+                fontWeight: 800,
+                color: text,
+                marginBottom: "0.75rem",
+                lineHeight: 1.3,
+              }}
+            >
+              Meet your sovereign AI companion
+            </p>
+            <p
+              style={{
+                color: muted,
+                lineHeight: 1.75,
+                maxWidth: "480px",
+                margin: "0 auto 2rem",
+              }}
+            >
+              MEOK remembers you, tells you the truth, and knows exactly when
+              to step back and point you to a professional. No waiting list.
+              No \u00a380 sessions. Built with the Maternal Covenant at its core.
+            </p>
+            <Link
+              href="/birth"
+              style={{
+                display: "inline-block",
+                background: gold,
+                color: "#0d0c18",
+                fontWeight: 800,
+                fontSize: "0.95rem",
+                padding: "0.875rem 2.5rem",
+                borderRadius: "9999px",
+                textDecoration: "none",
+                letterSpacing: "0.02em",
+              }}
+            >
+              Begin with MEOK
             </Link>
           </div>
-        </div>
-      </div>
-    </div>
+
+          {/* ── Related articles ── */}
+          <div style={{ margin: "4rem 0 2rem" }}>
+            <p
+              style={{
+                fontSize: "0.75rem",
+                fontWeight: 700,
+                letterSpacing: "0.1em",
+                textTransform: "uppercase" as const,
+                color: gold,
+                marginBottom: "1.25rem",
+              }}
+            >
+              Related reading
+            </p>
+            <div style={{ display: "grid", gap: "0.75rem" }}>
+              {[
+                {
+                  href: "/blog/maternal-covenant-explained",
+                  label:
+                    "The Maternal Covenant: How MEOK prevents harmful responses",
+                },
+                {
+                  href: "/blog/what-is-care-based-ai",
+                  label:
+                    "What is care-based AI? The design philosophy behind MEOK",
+                },
+                {
+                  href: "/blog/ai-for-anxiety",
+                  label: "Can AI help with anxiety? What the evidence says",
+                },
+                {
+                  href: "/blog/ai-for-depression",
+                  label:
+                    "AI for depression: support, limits, and when to seek help",
+                },
+                {
+                  href: "/blog/meok-vs-woebot",
+                  label:
+                    "MEOK vs Woebot: two different visions of AI mental health support",
+                },
+                {
+                  href: "/blog/privacy-covenant",
+                  label:
+                    "MEOK\u2019s Privacy Covenant: why your mental health data is yours",
+                },
+              ].map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  style={{
+                    display: "block",
+                    background: cardBg,
+                    border: `1px solid ${cardBorder}`,
+                    borderRadius: "8px",
+                    padding: "0.875rem 1.25rem",
+                    color: muted,
+                    textDecoration: "none",
+                    fontSize: "0.9rem",
+                    lineHeight: 1.5,
+                  }}
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          {/* ── Author ── */}
+          <div
+            style={{
+              borderTop: `1px solid ${cardBorder}`,
+              paddingTop: "2rem",
+              marginTop: "3rem",
+              display: "flex",
+              gap: "1.25rem",
+              alignItems: "flex-start",
+            }}
+          >
+            <div
+              style={{
+                width: "48px",
+                height: "48px",
+                borderRadius: "50%",
+                background: `${gold}20`,
+                border: `2px solid ${gold}40`,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                flexShrink: 0,
+                fontWeight: 900,
+                color: gold,
+                fontSize: "1.1rem",
+              }}
+            >
+              NT
+            </div>
+            <div>
+              <p
+                style={{
+                  fontWeight: 700,
+                  color: text,
+                  marginBottom: "0.25rem",
+                  fontSize: "0.95rem",
+                }}
+              >
+                Nicholas Templeman
+              </p>
+              <p
+                style={{
+                  color: muted,
+                  fontSize: "0.82rem",
+                  marginBottom: "0.5rem",
+                }}
+              >
+                Founder &amp; CEO, MEOK AI LABS &middot; @meok_ai
+              </p>
+              <p
+                style={{
+                  color: muted,
+                  fontSize: "0.85rem",
+                  lineHeight: 1.65,
+                }}
+              >
+                Nicholas built MEOK over 40 days with the explicit goal of
+                creating a sovereign AI companion that tells the truth, protects
+                your data, and never pretends to be something it is not. The
+                Maternal Covenant is his answer to the question: what would
+                responsible AI care actually look like?
+              </p>
+            </div>
+          </div>
+
+        </article>
+      </main>
+    </>
   );
 }

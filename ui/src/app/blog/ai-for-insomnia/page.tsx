@@ -1,1072 +1,1296 @@
-import type { Metadata } from "next"
-import Link from "next/link"
+import type { Metadata } from 'next'
+import Link from 'next/link'
 
-// ─── Metadata ────────────────────────────────────────────────────────────────
+// ── Metadata ───────────────────────────────────────────────────────────────────
 
 export const metadata: Metadata = {
-  title: "AI for Insomnia: Can an AI Companion Help You Sleep Better? | MEOK AI LABS",
+  title: 'AI for Insomnia: How a Sovereign AI Companion Can Break the 3am Spiral | MEOK AI LABS',
   description:
-    "1 in 3 UK adults struggle with insomnia. Discover how MEOK AI LABS uses evening wind-down " +
-    "routines, sleep journal prompts, CBT-I adjacent tools, and Sovereign Memory to support " +
-    "healthier sleep — without replacing medical care.",
-  keywords: [
-    "AI for insomnia",
-    "AI sleep companion",
-    "CBT-I AI support",
-    "sleep journal AI",
-    "MEOK AI LABS sleep",
-    "AI wind-down routine",
-    "insomnia support UK",
-    "Healer archetype MEOK",
-    "Sovereign Memory sleep tracking",
-    "AI mental health sleep UK",
-  ],
-  authors: [{ name: "Nicholas Templeman", url: "https://meok.app" }],
+    'Insomnia affects 1 in 3 UK adults. Discover how AI-powered CBT-I techniques, sleep hygiene coaching, and sovereign memory can help you reclaim sleep — without scrolling, without blue light, without judgment.',
+  alternates: { canonical: 'https://meok.ai/blog/ai-for-insomnia' },
   openGraph: {
-    title: "AI for Insomnia: Can an AI Companion Help You Sleep Better?",
+    title: 'AI for Insomnia: How a Sovereign AI Companion Can Break the 3am Spiral',
     description:
-      "Explore how MEOK's Healer archetype and Sovereign Memory support evening wind-down, " +
-      "sleep journalling, and CBT-I adjacent habits for UK adults struggling with insomnia.",
-    type: "article",
-    publishedTime: "2026-03-24T00:00:00Z",
-    authors: ["Nicholas Templeman"],
-    siteName: "MEOK AI LABS",
+      'Insomnia affects 1 in 3 UK adults. Discover how AI-powered CBT-I techniques, sleep hygiene coaching, and sovereign memory can help you reclaim sleep.',
+    type: 'article',
+    publishedTime: '2026-03-24',
+    authors: ['Nicholas Templeman'],
+    url: 'https://meok.ai/blog/ai-for-insomnia',
+    siteName: 'MEOK.AI',
+    images: [
+      {
+        url: 'https://meok.ai/api/og?title=AI+for+Insomnia%3A+Breaking+the+3am+Spiral&desc=CBT-I+techniques%2C+sleep+hygiene+coaching%2C+sovereign+memory',
+        width: 1200,
+        height: 630,
+        alt: 'AI for Insomnia: How a Sovereign AI Companion Can Break the 3am Spiral | MEOK AI LABS',
+      },
+    ],
   },
   twitter: {
-    card: "summary_large_image",
-    title: "AI for Insomnia: Can an AI Companion Help You Sleep Better?",
+    card: 'summary_large_image',
+    title: 'AI for Insomnia: Breaking the 3am Spiral',
     description:
-      "1 in 3 UK adults have insomnia. MEOK supports sleep with CBT-I adjacent tools, " +
-      "evening routines, and Sovereign Memory — without prescribing medication.",
-  },
-  alternates: {
-    canonical: "https://meok.app/blog/ai-for-insomnia",
+      'CBT-I techniques, sleep hygiene coaching, and sovereign memory. An honest guide to what AI can do for insomnia — from MEOK AI LABS.',
+    images: [
+      'https://meok.ai/api/og?title=AI+for+Insomnia%3A+Breaking+the+3am+Spiral&desc=CBT-I+techniques%2C+sleep+hygiene+coaching%2C+sovereign+memory',
+    ],
   },
 }
 
-// ─── JSON-LD ─────────────────────────────────────────────────────────────────
+// ── JSON-LD: Article ───────────────────────────────────────────────────────────
 
-const jsonLdArticle = {
-  "@context": "https://schema.org",
-  "@type": "Article",
-  headline: "AI for Insomnia: Can an AI Companion Help You Sleep Better?",
+const articleJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: 'AI for Insomnia: How a Sovereign AI Companion Can Break the 3am Spiral',
   description:
-    "A comprehensive guide to how MEOK AI LABS supports people with insomnia through evening " +
-    "wind-down routines, sleep journal prompts, CBT-I adjacent tools, and Sovereign Memory " +
-    "tracking — without replacing clinical care.",
+    'Insomnia affects 1 in 3 UK adults. An in-depth guide to CBT-I techniques, sleep hygiene coaching, sovereign memory, and the MEOK 3am protocol for reclaiming sleep.',
+  datePublished: '2026-03-24',
+  dateModified: '2026-03-24',
+  url: 'https://meok.ai/blog/ai-for-insomnia',
   author: {
-    "@type": "Person",
-    name: "Nicholas Templeman",
-    url: "https://meok.app",
+    '@type': 'Person',
+    name: 'Nicholas Templeman',
+    jobTitle: 'Founder, MEOK AI LABS',
+    url: 'https://meok.ai/about',
   },
   publisher: {
-    "@type": "Organization",
-    name: "MEOK AI LABS",
-    url: "https://meok.app",
+    '@type': 'Organization',
+    name: 'MEOK AI LABS',
+    url: 'https://meok.ai',
   },
-  datePublished: "2026-03-24T00:00:00Z",
-  dateModified: "2026-03-24T00:00:00Z",
   mainEntityOfPage: {
-    "@type": "WebPage",
-    "@id": "https://meok.app/blog/ai-for-insomnia",
+    '@type': 'WebPage',
+    '@id': 'https://meok.ai/blog/ai-for-insomnia',
   },
 }
 
-const jsonLdFaq = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
+// ── JSON-LD: FAQPage ───────────────────────────────────────────────────────────
+
+const faqJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
   mainEntity: [
     {
-      "@type": "Question",
-      name: "Can AI help with insomnia?",
+      '@type': 'Question',
+      name: 'Can AI help with insomnia?',
       acceptedAnswer: {
-        "@type": "Answer",
-        text:
-          "AI cannot prescribe medication or replace a sleep specialist, but it can meaningfully " +
-          "support people with insomnia through structured evening wind-down routines, reflective " +
-          "sleep journal prompts, CBT-I adjacent exercises, and morning check-ins. MEOK AI LABS is " +
-          "designed to sit alongside — not replace — professional care.",
+        '@type': 'Answer',
+        text: 'Yes. AI companions can deliver evidence-based CBT-I techniques including sleep restriction, stimulus control, and cognitive restructuring. They can also provide real-time 3am support, track sleep patterns across weeks, and coach consistent sleep hygiene habits. AI is not a replacement for a clinical sleep study or prescription treatment, but it is a powerful and always-available first line of support.',
       },
     },
     {
-      "@type": "Question",
-      name: "What is CBT-I and can AI support it?",
+      '@type': 'Question',
+      name: 'What is CBT-I?',
       acceptedAnswer: {
-        "@type": "Answer",
-        text:
-          "Cognitive Behavioural Therapy for Insomnia (CBT-I) is the gold-standard non-medication " +
-          "treatment for chronic insomnia. AI cannot deliver clinical CBT-I, but MEOK can support " +
-          "CBT-I adjacent habits: consistent sleep schedules, pre-sleep wind-down conversations, " +
-          "thought records, and worry-postponement exercises between therapy sessions.",
+        '@type': 'Answer',
+        text: 'CBT-I stands for Cognitive Behavioural Therapy for Insomnia. It is the gold-standard, non-medication treatment for chronic insomnia, recommended by the NHS and NICE over sleeping pills. It combines sleep restriction therapy, stimulus control, sleep hygiene education, relaxation techniques, and cognitive restructuring to break the psychological and behavioural patterns that perpetuate sleeplessness.',
       },
     },
     {
-      "@type": "Question",
-      name: "How does MEOK track sleep patterns over time?",
+      '@type': 'Question',
+      name: 'Is using your phone at 3am bad for sleep?',
       acceptedAnswer: {
-        "@type": "Answer",
-        text:
-          "MEOK's Sovereign Memory system retains contextual information across conversations — " +
-          "including sleep quality reports, mood on waking, and evening routine notes. Over time " +
-          "this builds a longitudinal picture that MEOK can gently reflect back, helping users " +
-          "notice patterns such as the correlation between evening habits and sleep quality.",
+        '@type': 'Answer',
+        text: 'Most phone use at 3am is harmful: social media is engineered to spike cortisol and dopamine, blue light suppresses melatonin, and engagement-optimised content keeps you scrolling. However, a sovereign AI companion with a dark interface and no engagement incentives is categorically different \u2014 it aims to calm your nervous system and return you to sleep, not to retain your attention.',
       },
     },
     {
-      "@type": "Question",
-      name: "Is it safe to use AI before bed?",
+      '@type': 'Question',
+      name: 'How does MEOK track sleep patterns?',
       acceptedAnswer: {
-        "@type": "Answer",
-        text:
-          "Screen light and stimulating content can worsen sleep. MEOK's Healer archetype is " +
-          "calibrated for calm, low-stimulation evening interactions — gentle check-ins, gratitude " +
-          "prompts, and breathing cues rather than challenging debates. MEOK also recommends " +
-          "phone-free wind-down for the final 30 minutes before sleep.",
+        '@type': 'Answer',
+        text: 'MEOK uses Sovereign Memory \u2014 a 4-layer encrypted store that retains your sleep logs, mood check-ins, and trigger notes across weeks and months. Over time it identifies patterns: which nights preceded difficult sleep, what you ate or drank, when stress spikes correlated with wake windows. This longitudinal view is impossible with a stateless chatbot and is core to effective sleep coaching.',
       },
     },
     {
-      "@type": "Question",
-      name: "What is the MEOK Healer archetype?",
+      '@type': 'Question',
+      name: 'What is sleep hygiene?',
       acceptedAnswer: {
-        "@type": "Answer",
-        text:
-          "The Healer is one of MEOK's character archetypes — a calm, nurturing AI presence " +
-          "designed for emotional support, somatic grounding, and restorative conversations. " +
-          "Unlike general-purpose AI assistants, the Healer speaks with measured pace, avoids " +
-          "overwhelm, and naturally orients conversations toward rest, reflection, and " +
-          "self-compassion. Ideal for evening wind-down interactions.",
+        '@type': 'Answer',
+        text: 'Sleep hygiene is the collection of behaviours and environmental conditions that support consistent, restorative sleep. Key pillars include a fixed wake time seven days a week, avoiding caffeine after midday, keeping the bedroom cool and dark, a wind-down routine starting 90 minutes before bed, and limiting screen use before sleep. Poor sleep hygiene is among the most common and correctable causes of insomnia.',
       },
     },
   ],
 }
 
-// ─── Design tokens ───────────────────────────────────────────────────────────
+// ── Style constants ────────────────────────────────────────────────────────────
 
-const BG = "#0d0c18"
-const GOLD = "#c9a84c"
-const TEXT = "#f5f0e8"
-const BODY_COLOR = "rgba(245,240,232,0.82)"
-const MUTED = "rgba(245,240,232,0.5)"
-const DIM = "rgba(245,240,232,0.38)"
+const GOLD = '#c9a84c'
+const TEXT = '#f5f0e8'
+const BG = '#0d0c18'
+const MUTED = 'rgba(245,240,232,0.6)'
+const MUTED_DIM = 'rgba(245,240,232,0.55)'
+const MUTED_FAINT = 'rgba(245,240,232,0.38)'
+const SLEEP_BLUE = '#4c7abf'
+const SLEEP_TEAL = '#4cadb5'
 
-// ─── Reusable style objects ───────────────────────────────────────────────────
+// ── Page ───────────────────────────────────────────────────────────────────────
 
-const sBodyP: React.CSSProperties = {
-  fontSize: "1.05rem",
-  lineHeight: "1.875",
-  color: BODY_COLOR,
-  marginBottom: "1.3rem",
-}
-
-const sH2: React.CSSProperties = {
-  fontSize: "clamp(1.2rem, 2.4vw, 1.5rem)",
-  fontWeight: 800,
-  color: TEXT,
-  lineHeight: 1.3,
-  marginBottom: "0.9rem",
-  marginTop: "2.75rem",
-  paddingLeft: "1rem",
-  borderLeft: `3px solid ${GOLD}`,
-  letterSpacing: "-0.01em",
-}
-
-const sGeoAnswer: React.CSSProperties = {
-  fontSize: "0.975rem",
-  lineHeight: 1.75,
-  color: BODY_COLOR,
-  background: "rgba(201,168,76,0.07)",
-  borderLeft: `3px solid ${GOLD}`,
-  borderRadius: "0 6px 6px 0",
-  padding: "0.9rem 1.15rem",
-  marginBottom: "1.3rem",
-  fontStyle: "italic",
-}
-
-const sDivider: React.CSSProperties = {
-  border: "none",
-  borderTop: "1px solid rgba(201,168,76,0.15)",
-  margin: "2.5rem 0",
-}
-
-const sInlineLink: React.CSSProperties = {
-  color: GOLD,
-  textDecoration: "underline",
-  textUnderlineOffset: "3px",
-}
-
-const sCallout: React.CSSProperties = {
-  background: "rgba(201,168,76,0.08)",
-  border: "1px solid rgba(201,168,76,0.28)",
-  borderRadius: "8px",
-  padding: "1.25rem 1.5rem",
-  marginBottom: "1.3rem",
-}
-
-const sFaqItem: React.CSSProperties = {
-  marginBottom: "1.5rem",
-  padding: "1.25rem 1.5rem",
-  background: "rgba(201,168,76,0.05)",
-  border: "1px solid rgba(201,168,76,0.15)",
-  borderRadius: "8px",
-}
-
-const sResourceBox: React.CSSProperties = {
-  marginTop: "2.5rem",
-  background: "rgba(201,168,76,0.06)",
-  border: "1px solid rgba(201,168,76,0.2)",
-  borderRadius: "10px",
-  padding: "1.5rem 1.75rem",
-}
-
-const sCta: React.CSSProperties = {
-  background:
-    "linear-gradient(135deg, rgba(201,168,76,0.09) 0%, rgba(13,12,24,0.6) 100%)",
-  border: "1px solid rgba(201,168,76,0.25)",
-  borderRadius: "14px",
-  padding: "2.5rem 2rem",
-  textAlign: "center" as const,
-  marginTop: "3rem",
-}
-
-// ─── Page component ───────────────────────────────────────────────────────────
-
-export default function AiForInsomniaPage() {
+export default function AIForInsomniaPage() {
   return (
-    <>
-      {/* ── JSON-LD scripts ── */}
+    <div style={{ minHeight: '100vh', background: BG, color: TEXT }}>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdArticle) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdFaq) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
 
-      <div
+      {/* ── HERO ──────────────────────────────────────────────────────────────── */}
+      <section
         style={{
-          minHeight: "100vh",
-          background: BG,
-          color: TEXT,
-          fontFamily: "Georgia, 'Times New Roman', serif",
+          paddingTop: '8rem',
+          paddingBottom: '3.5rem',
+          paddingLeft: '1.5rem',
+          paddingRight: '1.5rem',
+          position: 'relative',
+          overflow: 'hidden',
         }}
       >
-        {/* ─── NAV ─────────────────────────────────────────────────────────── */}
-        <nav
+        <div
           style={{
-            borderBottom: "1px solid rgba(201,168,76,0.18)",
-            padding: "1rem 1.5rem",
-            display: "flex",
-            alignItems: "center",
-            gap: "2rem",
+            position: 'absolute',
+            inset: 0,
+            pointerEvents: 'none',
+            background:
+              'radial-gradient(ellipse 60% 50% at 50% 0%, rgba(76,122,191,0.1) 0%, transparent 68%)',
           }}
-        >
-          <Link
-            href="/"
-            style={{
-              color: GOLD,
-              textDecoration: "none",
-              fontWeight: 800,
-              fontSize: "1.05rem",
-              letterSpacing: "0.04em",
-              fontFamily: "sans-serif",
-            }}
-          >
-            MEOK AI LABS
-          </Link>
+        />
+        <div style={{ maxWidth: '48rem', margin: '0 auto', position: 'relative' }}>
           <Link
             href="/blog"
             style={{
-              color: "rgba(245,240,232,0.45)",
-              textDecoration: "none",
-              fontSize: "0.88rem",
-              fontFamily: "sans-serif",
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '0.375rem',
+              fontSize: '0.875rem',
+              color: MUTED_FAINT,
+              marginBottom: '2rem',
+              textDecoration: 'none',
             }}
           >
-            Blog
+            &#8592; Back to Blog
           </Link>
-        </nav>
 
-        {/* ─── HERO ────────────────────────────────────────────────────────── */}
-        <section
-          style={{
-            paddingTop: "5rem",
-            paddingBottom: "3rem",
-            paddingLeft: "1.5rem",
-            paddingRight: "1.5rem",
-            position: "relative",
-            overflow: "hidden",
-          }}
-        >
           <div
             style={{
-              position: "absolute",
-              inset: 0,
-              pointerEvents: "none",
-              background:
-                "radial-gradient(ellipse 55% 55% at 50% 0%, rgba(201,168,76,0.1) 0%, transparent 70%)",
-            }}
-          />
-          <div
-            style={{
-              maxWidth: "48rem",
-              margin: "0 auto",
-              position: "relative",
+              display: 'flex',
+              flexWrap: 'wrap',
+              alignItems: 'center',
+              gap: '0.75rem',
+              marginBottom: '1.5rem',
             }}
           >
-            <Link
-              href="/blog"
+            <span
               style={{
-                display: "inline-block",
-                color: DIM,
-                fontSize: "0.875rem",
-                textDecoration: "none",
-                marginBottom: "2rem",
-                fontFamily: "sans-serif",
+                fontSize: '0.7rem',
+                fontWeight: 700,
+                padding: '0.375rem 0.75rem',
+                borderRadius: '9999px',
+                color: SLEEP_BLUE,
+                background: 'rgba(76,122,191,0.12)',
+                border: '1px solid rgba(76,122,191,0.3)',
+                letterSpacing: '0.05em',
+                textTransform: 'uppercase' as const,
               }}
             >
-              &#8592; Back to Blog
-            </Link>
+              Sleep &amp; Wellbeing
+            </span>
+            <span style={{ fontSize: '0.75rem', color: MUTED_FAINT }}>March 24, 2026</span>
+            <span style={{ fontSize: '0.75rem', color: MUTED_FAINT }}>16 min read</span>
+          </div>
 
+          <h1
+            style={{
+              fontWeight: 900,
+              fontSize: 'clamp(1.75rem, 3.5vw, 2.85rem)',
+              color: '#fff',
+              lineHeight: 1.15,
+              marginBottom: '1.25rem',
+              letterSpacing: '-0.01em',
+            }}
+          >
+            AI for Insomnia: How a Sovereign AI Companion Can Break the 3am Spiral
+          </h1>
+
+          <p
+            style={{
+              color: MUTED,
+              fontSize: '1.1rem',
+              lineHeight: 1.7,
+              marginBottom: '2rem',
+            }}
+          >
+            It\u2019s 3am. You\u2019re awake again. Your thoughts are accelerating, your heart rate
+            is rising, and every minute you lie there feels like evidence that tomorrow is going to
+            be catastrophic. One in three UK adults know this feeling intimately. This is the
+            insomnia spiral \u2014 and a sovereign AI built to care, not to capture your attention,
+            can break it.
+          </p>
+
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.75rem',
+              paddingTop: '1.5rem',
+              borderTop: '1px solid rgba(245,240,232,0.1)',
+            }}
+          >
             <div
               style={{
-                display: "flex",
-                flexWrap: "wrap" as const,
-                gap: "0.75rem",
-                alignItems: "center",
-                marginBottom: "1.5rem",
+                width: '2.25rem',
+                height: '2.25rem',
+                borderRadius: '9999px',
+                background: 'rgba(201,168,76,0.15)',
+                border: '1px solid rgba(201,168,76,0.3)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                fontSize: '0.85rem',
+                fontWeight: 700,
+                color: GOLD,
               }}
             >
-              <span
-                style={{
-                  fontSize: "0.7rem",
-                  fontWeight: 700,
-                  padding: "0.35rem 0.75rem",
-                  borderRadius: "9999px",
-                  color: GOLD,
-                  background: "rgba(201,168,76,0.12)",
-                  border: "1px solid rgba(201,168,76,0.3)",
-                  letterSpacing: "0.05em",
-                  textTransform: "uppercase" as const,
-                  fontFamily: "sans-serif",
-                }}
-              >
-                Sleep &amp; Wellbeing
-              </span>
-              <span
-                style={{
-                  fontSize: "0.75rem",
-                  color: DIM,
-                  fontFamily: "sans-serif",
-                }}
-              >
-                24 March 2026
-              </span>
-              <span
-                style={{
-                  fontSize: "0.75rem",
-                  color: DIM,
-                  fontFamily: "sans-serif",
-                }}
-              >
-                11 min read
-              </span>
+              N
             </div>
-
-            <h1
-              style={{
-                fontWeight: 900,
-                fontSize: "clamp(1.75rem, 3.5vw, 2.75rem)",
-                color: "#ffffff",
-                lineHeight: 1.18,
-                marginBottom: "1.25rem",
-                letterSpacing: "-0.02em",
-                fontFamily: "sans-serif",
-              }}
-            >
-              AI for Insomnia: Can an AI Companion Help You Sleep Better?
-            </h1>
-
-            <p
-              style={{
-                color: "rgba(245,240,232,0.58)",
-                fontSize: "1.1rem",
-                lineHeight: 1.7,
-                maxWidth: "42rem",
-                fontFamily: "sans-serif",
-              }}
-            >
-              1 in 3 UK adults experience sleep problems. For many, the culprit is not the mattress —
-              it is an unquiet mind. This is an honest look at how MEOK AI LABS can support your sleep
-              through evening wind-down routines, CBT-I adjacent tools, and Sovereign Memory that tracks
-              patterns over time — without prescribing a single pill.
-            </p>
+            <div>
+              <p style={{ fontSize: '0.85rem', fontWeight: 600, color: TEXT, margin: 0 }}>
+                Nicholas Templeman
+              </p>
+              <p style={{ fontSize: '0.75rem', color: MUTED_FAINT, margin: 0 }}>
+                Founder, MEOK AI LABS &middot; @meok_ai
+              </p>
+            </div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* ─── BODY ────────────────────────────────────────────────────────── */}
-        <div
-          style={{
-            maxWidth: "48rem",
-            margin: "0 auto",
-            padding: "2rem 1.5rem 6rem",
-          }}
-        >
-          {/* Medical disclaimer */}
+      {/* ── MAIN CONTENT ──────────────────────────────────────────────────────── */}
+      <section
+        style={{
+          paddingLeft: '1.5rem',
+          paddingRight: '1.5rem',
+          paddingBottom: '6rem',
+        }}
+      >
+        <div style={{ maxWidth: '48rem', margin: '0 auto' }}>
+
+          {/* ── STAT CALLOUT ── */}
           <div
             style={{
-              background: "rgba(201,168,76,0.07)",
-              border: "1px solid rgba(201,168,76,0.22)",
-              borderRadius: "10px",
-              padding: "1rem 1.25rem",
-              marginBottom: "2.5rem",
+              background: 'rgba(76,122,191,0.08)',
+              border: '1px solid rgba(76,122,191,0.25)',
+              borderLeft: '3px solid ' + SLEEP_BLUE,
+              borderRadius: '0.5rem',
+              padding: '1.5rem',
+              marginBottom: '3rem',
             }}
           >
-            <p
-              style={{
-                color: "rgba(245,240,232,0.65)",
-                fontSize: "0.88rem",
-                lineHeight: 1.65,
-                margin: 0,
-                fontFamily: "sans-serif",
-              }}
-            >
-              <strong style={{ color: GOLD }}>Medical disclaimer:</strong>{" "}
-              MEOK AI LABS is not a medical device and does not provide medical advice, diagnosis, or
-              treatment. For persistent insomnia, please consult your GP. NHS sleep guidance:{" "}
-              <a
-                href="https://www.nhs.uk/every-mind-matters/mental-health-issues/sleep/"
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{ color: GOLD }}
+            <p style={{ color: TEXT, fontSize: '1rem', lineHeight: 1.7, margin: 0 }}>
+              <strong style={{ color: SLEEP_BLUE }}>1 in 3 UK adults</strong> experience insomnia
+              symptoms. Chronic insomnia \u2014 defined as difficulty sleeping three or more nights
+              a week for three or more months \u2014 is independently linked to{' '}
+              <strong style={{ color: TEXT }}>
+                depression, anxiety, cardiovascular disease, type 2 diabetes, and all-cause
+                mortality.
+              </strong>{' '}
+              It is not a lifestyle inconvenience. It is a serious public health issue that the NHS
+              is structurally under-resourced to address.
+            </p>
+          </div>
+
+          {/* ── SECTION 1 ── */}
+          <h2
+            style={{
+              fontWeight: 800,
+              fontSize: 'clamp(1.25rem, 2.5vw, 1.65rem)',
+              color: '#fff',
+              lineHeight: 1.25,
+              marginBottom: '1rem',
+              marginTop: '3rem',
+              letterSpacing: '-0.01em',
+            }}
+          >
+            What is insomnia, and why is it so hard to treat?
+          </h2>
+          <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: '1.25rem' }}>
+            Insomnia is not simply the inability to fall asleep. It is a hyperarousal disorder: the
+            brain and body remain in a state of threat-readiness that makes sleep physiologically
+            difficult. Once established, chronic insomnia is self-perpetuating. The anxiety about
+            not sleeping becomes the mechanism that prevents sleep.
+          </p>
+          <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: '1.25rem' }}>
+            Clinical definitions distinguish between sleep-onset insomnia (difficulty falling
+            asleep), sleep-maintenance insomnia (waking frequently or too early), and mixed-type
+            insomnia. All three share a common driver: a nervous system that has learned to
+            associate the bed with wakefulness and threat rather than rest and safety.
+          </p>
+          <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: '1.25rem' }}>
+            Treatment is hard for several reasons. Sleeping pills carry dependency risk and do not
+            address the underlying behavioural and cognitive patterns. Therapy waitlists in the UK
+            can stretch to eighteen months. And the problem is worst at the exact moment help is
+            hardest to access: the middle of the night.
+          </p>
+          <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: '2rem' }}>
+            This is precisely where a sovereign AI companion \u2014 available at any hour, carrying
+            no engagement agenda, trained to support rather than stimulate \u2014 fills a meaningful
+            gap.
+          </p>
+
+          {/* ── SECTION 2 ── */}
+          <h2
+            style={{
+              fontWeight: 800,
+              fontSize: 'clamp(1.25rem, 2.5vw, 1.65rem)',
+              color: '#fff',
+              lineHeight: 1.25,
+              marginBottom: '1rem',
+              marginTop: '3rem',
+              letterSpacing: '-0.01em',
+            }}
+          >
+            What is CBT-I, and why is it the gold standard for insomnia?
+          </h2>
+          <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: '1.25rem' }}>
+            Cognitive Behavioural Therapy for Insomnia \u2014 CBT-I \u2014 is the treatment
+            recommended by the NHS, NICE, and the American Academy of Sleep Medicine as the
+            first-line intervention for chronic insomnia. It outperforms sleeping pills in long-term
+            outcomes and carries no dependency risk. Yet fewer than five percent of people with
+            chronic insomnia in the UK ever receive it.
+          </p>
+          <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: '1.25rem' }}>
+            CBT-I is not one technique but a structured programme of five interlocking components:
+          </p>
+
+          {/* CBT-I components */}
+          <div style={{ marginBottom: '2rem' }}>
+            {(
+              [
+                {
+                  title: 'Sleep Restriction Therapy',
+                  body: 'Temporarily restricting time in bed to match actual sleep time, then gradually extending it. This consolidates fragmented sleep and re-establishes the drive to sleep. It feels counterintuitive and is temporarily uncomfortable \u2014 but the evidence base is robust.',
+                },
+                {
+                  title: 'Stimulus Control',
+                  body: 'Re-associating the bed with sleepiness rather than wakefulness. This means using the bed only for sleep and sex, getting up when unable to sleep after 20 minutes, and maintaining consistent wake times regardless of sleep quality the night before.',
+                },
+                {
+                  title: 'Sleep Hygiene Education',
+                  body: 'Addressing the environmental and behavioural factors that undermine sleep: caffeine timing, alcohol, exercise, light exposure, bedroom temperature, and the wind-down routine. These are necessary but not sufficient on their own.',
+                },
+                {
+                  title: 'Cognitive Restructuring',
+                  body: 'Identifying and challenging the distorted beliefs that amplify insomnia: \u201cI will be unable to function tomorrow\u201d, \u201cI need eight hours or I am damaged\u201d, \u201cI am broken\u201d. These catastrophic thoughts are themselves a source of arousal that prevents sleep.',
+                },
+                {
+                  title: 'Relaxation Techniques',
+                  body: 'Progressive muscle relaxation, diaphragmatic breathing, imagery rehearsal, and mindfulness-based techniques that reduce physiological arousal and create the conditions for sleep onset.',
+                },
+              ] as { title: string; body: string }[]
+            ).map((item) => (
+              <div
+                key={item.title}
+                style={{
+                  background: 'rgba(245,240,232,0.04)',
+                  border: '1px solid rgba(245,240,232,0.1)',
+                  borderRadius: '0.5rem',
+                  padding: '1.25rem 1.5rem',
+                  marginBottom: '0.75rem',
+                }}
               >
-                nhs.uk/every-mind-matters
-              </a>
-              . Crisis support: Samaritans 116 123 (free, 24/7).
-            </p>
+                <p
+                  style={{
+                    fontWeight: 700,
+                    color: SLEEP_TEAL,
+                    fontSize: '0.95rem',
+                    marginBottom: '0.5rem',
+                  }}
+                >
+                  {item.title}
+                </p>
+                <p
+                  style={{
+                    color: MUTED_DIM,
+                    lineHeight: 1.7,
+                    margin: 0,
+                    fontSize: '0.95rem',
+                  }}
+                >
+                  {item.body}
+                </p>
+              </div>
+            ))}
           </div>
 
-          {/* Introduction */}
-          <p style={sBodyP}>
-            The UK sleep crisis is well-documented. NHS data and research from the Sleep Council estimate
-            that approximately one in three British adults regularly struggles to fall asleep or stay asleep.
-            Chronic insomnia — difficulty sleeping at least three nights a week for three months or more —
-            affects an estimated 6–10% of the adult population. The economic cost runs into billions annually
-            through lost productivity, and the human cost is harder to measure: irritability, impaired
-            cognition, relationship strain, and a pervasive dread of the night ahead.
-          </p>
-          <p style={sBodyP}>
-            Into this landscape arrives a new category of tool: the AI companion. Unlike a sleep-tracking
-            wristband, an AI can hold a conversation. It can ask how your day went. It can reflect back the
-            patterns it has noticed. It can guide you through a breathing exercise at 11pm when your mind is
-            racing. The question is whether that actually helps — and where the limits honestly lie.
-          </p>
-          <p style={sBodyP}>
-            At MEOK AI LABS, the Maternal Covenant — our ethical framework governing every interaction —
-            demands honesty about what AI does well and what it cannot do. Sleep is a medical matter.
-            Chronic insomnia can be a symptom of depression, anxiety, sleep apnoea, or other conditions
-            requiring clinical evaluation. An AI companion is not a substitute for a GP, a sleep specialist,
-            or a structured course of CBT-I. With that honesty established: there is genuine, evidence-adjacent
-            value in the role MEOK can play. This article explains exactly what that looks like.
+          <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: '2rem' }}>
+            An AI companion can deliver all five of these components through conversation, coaching,
+            and longitudinal tracking. It cannot perform a clinical assessment or diagnose a sleep
+            disorder \u2014 but for the majority of people with insomnia driven by psychological and
+            behavioural factors, these tools are transformative.
           </p>
 
-          <hr style={sDivider} />
-
-          {/* ── Q1 ── */}
-          <h2 style={sH2}>
-            Why do so many UK adults struggle to sleep — and what does AI have to offer?
-          </h2>
-          <p style={sGeoAnswer}>
-            The causes of insomnia are multifactorial: chronic stress, irregular schedules, excessive screen
-            time, anxiety, alcohol use, and poor sleep hygiene all contribute. AI cannot resolve these root
-            causes, but it can serve as a consistent, low-friction touchpoint for building the behavioural
-            habits that sleep science recommends — without requiring a referral or a waiting list.
-          </p>
-          <p style={sBodyP}>
-            The most common drivers of poor sleep in the UK include work stress, financial anxiety, and
-            smartphone use in the bedroom. NHS talking therapies carry long waiting lists. Private CBT
-            therapists are expensive. Apps exist, but most are passive — they track without responding.
-            MEOK occupies a different niche: an interactive companion that engages meaningfully with your
-            specific situation, remembers what you have shared, and adapts its support accordingly.
-          </p>
-          <p style={sBodyP}>
-            For a significant proportion of insomnia sufferers, the blockage is not medical — it is
-            cognitive. An overloaded working memory replaying the day&apos;s unresolved tasks. A
-            threat-response nervous system that cannot find the signal to rest. These are the areas where
-            an AI companion with persistent memory and a calm, calibrated presence can make a genuine
-            difference in the moment — the 11pm moment when clinical services are unavailable.
-          </p>
-          <p style={sBodyP}>
-            Research consistently shows that perceived social support — even non-human forms of it — can
-            reduce physiological stress markers. The act of being heard, of articulating what is heavy,
-            has neurobiological effects that a passive app cannot replicate. MEOK provides a conversational
-            presence specifically designed for the evening context — not a chatbot, but a companion.
-          </p>
-
-          <hr style={sDivider} />
-
-          {/* ── Q2 ── */}
-          <h2 style={sH2}>
-            What is CBT-I and can an AI companion support it without replacing a therapist?
-          </h2>
-          <p style={sGeoAnswer}>
-            Cognitive Behavioural Therapy for Insomnia (CBT-I) is the first-line clinical recommendation
-            for chronic insomnia — proven more effective than sleep medication in long-term studies. It
-            addresses unhelpful thoughts about sleep, restricts time in bed to consolidate sleep pressure,
-            and retrains the bedroom as a cue for sleep. AI cannot deliver clinical CBT-I, but it can
-            support CBT-I adjacent habits consistently and compassionately — especially between therapy sessions.
-          </p>
-          <p style={sBodyP}>
-            CBT-I typically includes sleep restriction therapy, stimulus control, cognitive restructuring
-            of catastrophic thoughts about sleeplessness, relaxation training, and sleep hygiene education.
-            A trained therapist works through these over six to eight sessions. MEOK cannot do this.
-          </p>
-          <p style={sBodyP}>
-            What MEOK can do is support the behavioural edges of these techniques in the moments between
-            sessions — or as a standalone habit-building companion for people who have completed CBT-I and
-            want to maintain gains. Specifically, MEOK can help users log their sleep window and wake time,
-            guide cognitive restructuring when intrusive thoughts about sleep arise, deliver consistent
-            stimulus control reminders, and walk through progressive muscle relaxation or box breathing
-            as a wind-down ritual.
-          </p>
-          <p style={sBodyP}>
-            The key distinction is consistency. A therapist sees you once a week. MEOK is available every
-            evening. For habit formation, frequency matters enormously — the nightly reinforcement of
-            therapeutic approaches is where the daily AI companion adds genuine, complementary value.
-            Explore MEOK&apos;s{" "}
-            <Link href="/how-it-works" style={sInlineLink}>
-              How It Works
-            </Link>{" "}
-            page for a full explanation of how the companion system is structured.
-          </p>
-
-          <hr style={sDivider} />
-
-          {/* ── Q3 ── */}
-          <h2 style={sH2}>
-            How does MEOK create an evening wind-down routine that supports sleep?
-          </h2>
-          <p style={sGeoAnswer}>
-            MEOK&apos;s evening wind-down is built around three phases: decompression (processing the
-            day), settling (gratitude and body awareness prompts), and transition (breathwork and a sleep
-            intention). Each phase takes five to fifteen minutes and is conversational rather than
-            prescriptive — MEOK responds to what you bring, rather than delivering a fixed script.
-          </p>
-          <p style={sBodyP}>
-            The evening check-in begins with an open question: how did the day feel? The act of
-            articulating the day&apos;s events and emotions performs what psychologists call affect
-            labelling — naming an emotion reduces its physiological intensity. Simply putting words to
-            a stressful day can reduce the arousal state. From there, MEOK guides a gratitude or savouring
-            prompt — not as toxic positivity, but as a deliberate attention shift that begins moving the
-            nervous system toward rest.
-          </p>
-          <p style={sBodyP}>
-            The wind-down closes with a breathing exercise, typically box breathing (four counts in, four
-            hold, four out, four hold) or 4-7-8 breathing for deeper relaxation. MEOK narrates these in
-            real time using the calm, measured language of the Healer archetype — pacing the user through
-            counts with language designed to slow rather than stimulate.
-          </p>
-          <div style={sCallout}>
-            <p
-              style={{
-                margin: 0,
-                fontStyle: "italic",
-                color: "rgba(245,240,232,0.7)",
-                lineHeight: 1.7,
-                fontSize: "1.0rem",
-              }}
-            >
-              &ldquo;The body knows how to rest. Sometimes it just needs permission, and a gentle signal
-              that the day is done.&rdquo;
-            </p>
-            <p
-              style={{
-                margin: "0.5rem 0 0",
-                fontSize: "0.8rem",
-                color: "rgba(245,240,232,0.4)",
-                fontFamily: "sans-serif",
-              }}
-            >
-              — MEOK Healer archetype, evening wind-down prompt
-            </p>
-          </div>
-          <p style={sBodyP}>
-            The structure is deliberate. Research on sleep hygiene consistently identifies the hour before
-            bed as the most leverageable period for improving sleep onset. Transitioning from stimulating
-            activity to a calm, reflective conversation with the Healer archetype creates a consistent
-            environmental cue that the brain begins to associate with the approach of sleep — a conditioned
-            response that reinforces over weeks of consistent use.
-          </p>
-
-          <hr style={sDivider} />
-
-          {/* ── Q4 ── */}
-          <h2 style={sH2}>
-            How does Sovereign Memory track sleep patterns and what insights does it surface?
-          </h2>
-          <p style={sGeoAnswer}>
-            Sovereign Memory is MEOK&apos;s persistent contextual memory system. It retains what you
-            share across conversations — sleep quality ratings, mood on waking, evening routine notes,
-            and contextual factors. Over weeks, MEOK builds a longitudinal picture and gently reflects
-            it back, helping users notice patterns — such as the correlation between late screens or
-            alcohol and poor sleep quality — that are invisible in any single night&apos;s data.
-          </p>
-          <p style={sBodyP}>
-            Most AI tools have no memory. Every conversation starts fresh. This is fundamentally at odds
-            with how meaningful support works — a therapist remembers what you said last week; a trusted
-            friend connects what you are feeling now with what they know about your life. Sovereign Memory
-            changes this for MEOK users.
-          </p>
-          <p style={sBodyP}>
-            For sleep specifically, Sovereign Memory enables:
-          </p>
-          <ul
+          {/* ── SECTION 3 ── */}
+          <h2
             style={{
-              paddingLeft: "1.5rem",
-              marginBottom: "1.3rem",
-              color: BODY_COLOR,
+              fontWeight: 800,
+              fontSize: 'clamp(1.25rem, 2.5vw, 1.65rem)',
+              color: '#fff',
+              lineHeight: 1.25,
+              marginBottom: '1rem',
+              marginTop: '3rem',
+              letterSpacing: '-0.01em',
             }}
           >
-            <li
-              style={{
-                fontSize: "1.05rem",
-                lineHeight: 1.8,
-                marginBottom: "0.6rem",
-              }}
-            >
-              <strong style={{ color: TEXT }}>Longitudinal sleep diary:</strong>{" "}
-              MEOK accumulates nightly reports over weeks and months, building a picture of sleep
-              quality over time that neither you nor a sleep app without memory can construct.
-            </li>
-            <li
-              style={{
-                fontSize: "1.05rem",
-                lineHeight: 1.8,
-                marginBottom: "0.6rem",
-              }}
-            >
-              <strong style={{ color: TEXT }}>Pattern reflection:</strong>{" "}
-              MEOK can notice and gently name trends — &ldquo;You&apos;ve mentioned waking at 3am
-              three times this week — would you like to explore what might be contributing?&rdquo;
-            </li>
-            <li
-              style={{
-                fontSize: "1.05rem",
-                lineHeight: 1.8,
-                marginBottom: "0.6rem",
-              }}
-            >
-              <strong style={{ color: TEXT }}>Contextual morning check-ins:</strong>{" "}
-              If you mentioned a stressful work deadline last night, the morning check-in incorporates
-              that context rather than starting from zero.
-            </li>
-            <li
-              style={{
-                fontSize: "1.05rem",
-                lineHeight: 1.8,
-                marginBottom: "0.6rem",
-              }}
-            >
-              <strong style={{ color: TEXT }}>Progress visibility:</strong>{" "}
-              Seeing that your average sleep quality rating has improved from 4/10 to 6/10 over six
-              weeks is meaningful positive reinforcement for continuing the habit.
-            </li>
-          </ul>
-          <p style={sBodyP}>
-            This data belongs to you. MEOK AI LABS operates under strict data sovereignty principles.
-            Your sleep journal is not used to train AI models, sold to advertisers, or shared with third
-            parties. See our{" "}
-            <Link href="/how-it-works" style={sInlineLink}>
-              How It Works
-            </Link>{" "}
-            page for a full explanation of Sovereign Memory governance.
-          </p>
-
-          <hr style={sDivider} />
-
-          {/* ── Q5 ── */}
-          <h2 style={sH2}>
-            What is the MEOK Healer archetype and why does it matter for sleep?
+            What happens at 3am, and why does the spiral accelerate?
           </h2>
-          <p style={sGeoAnswer}>
-            The Healer is one of MEOK&apos;s character archetypes — a calm, nurturing AI presence
-            calibrated for emotional support, somatic grounding, and restorative interaction. Unlike
-            MEOK&apos;s more dynamic work-focused archetypes, the Healer speaks with deliberate pace,
-            avoids cognitive overload, and naturally steers conversations toward rest, reflection, and
-            gentleness — qualities that directly support the nervous system&apos;s transition into sleep.
+          <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: '1.25rem' }}>
+            3am occupies a specific place in the psychology of insomnia. It is too late to feel like
+            the night is still ahead of you, and too early for dawn to offer any reassurance. The
+            silence amplifies internal noise. The body\u2019s cortisol begins its pre-dawn rise
+            around 4am, which makes returning to sleep progressively harder. And the mind, starved
+            of external distraction, turns inward \u2014 and inward, for the sleepless, often means
+            catastrophe.
           </p>
-          <p style={sBodyP}>
-            Character selection matters because tone and style profoundly affect how an interaction
-            lands. A brisk, efficient AI assistant is excellent for task completion. For someone lying
-            awake at midnight trying to quiet their mind, that same energy is counterproductive.
+          <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: '1.25rem' }}>
+            The 3am spiral is a specific cognitive pattern. A thought arises \u2014 usually about a
+            problem that cannot be solved right now \u2014 and the mind begins to process it with
+            the urgency of an emergency. Each attempted solution generates two new problems. Each
+            minute of continued wakefulness is tallied as further evidence of damage. The body
+            responds with racing heart and shallow breath. The brain interprets the physiological
+            arousal as confirming the threat. The loop closes.
           </p>
-          <p style={sBodyP}>
-            The Healer archetype is designed with the nervous system in mind. Its characteristics include:
+          <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: '1.25rem' }}>
+            What breaks this loop is not problem-solving \u2014 that feeds it. It is not suppression
+            \u2014 that also feeds it. It is a shift in relationship to the thought: witnessing it
+            without acting on it, naming it without being consumed by it, returning attention gently
+            to the body. These are cognitive and somatic skills. They can be taught. And at 3am,
+            when no therapist is available, a sovereign AI companion can teach them in real time.
           </p>
-          <ul
-            style={{
-              paddingLeft: "1.5rem",
-              marginBottom: "1.3rem",
-              color: BODY_COLOR,
-            }}
-          >
-            <li style={{ fontSize: "1.05rem", lineHeight: 1.8, marginBottom: "0.6rem" }}>
-              <strong style={{ color: TEXT }}>Slower sentence rhythm</strong> — shorter paragraphs, more
-              deliberate pacing that mirrors the slowing-down the body needs before sleep.
-            </li>
-            <li style={{ fontSize: "1.05rem", lineHeight: 1.8, marginBottom: "0.6rem" }}>
-              <strong style={{ color: TEXT }}>Somatic language</strong> — the Healer naturally
-              incorporates body-awareness cues: &ldquo;Notice your shoulders. Are they carrying anything
-              they can put down for tonight?&rdquo;
-            </li>
-            <li style={{ fontSize: "1.05rem", lineHeight: 1.8, marginBottom: "0.6rem" }}>
-              <strong style={{ color: TEXT }}>Non-judgmental warmth</strong> — insomniacs often feel
-              shame or frustration about their sleep. The Healer never pathologises, never rushes, and
-              never implies that not sleeping is a failure of will.
-            </li>
-            <li style={{ fontSize: "1.05rem", lineHeight: 1.8, marginBottom: "0.6rem" }}>
-              <strong style={{ color: TEXT }}>Sleep intention prompts</strong> — guiding the user to
-              set a gentle intention for the night, rather than demanding sleep — which paradoxically
-              increases the performance anxiety that prevents it.
-            </li>
-          </ul>
-          <p style={sBodyP}>
-            Explore all available MEOK characters on our{" "}
-            <Link href="/characters" style={sInlineLink}>
-              Characters
-            </Link>{" "}
-            page, and select the Healer as your default evening companion.
+          <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: '2rem' }}>
+            MEOK\u2019s approach is to meet you exactly where you are \u2014 in the middle of the
+            night, in the middle of the spiral \u2014 and to offer a slow, regulated, warm presence
+            that does not match your arousal, does not amplify your fear, and does not attempt to
+            fix the unsolvable at 3am. Its only goal is to return you to rest.
           </p>
 
-          <hr style={sDivider} />
-
-          {/* ── Q6 ── */}
-          <h2 style={sH2}>
-            How does MEOK&apos;s morning check-in reinforce better sleep habits over time?
-          </h2>
-          <p style={sGeoAnswer}>
-            MEOK&apos;s morning check-in asks three simple questions: how did you sleep, how do you
-            feel, and what is one thing you want from today. This takes under three minutes but builds
-            a consistent feedback loop that Sovereign Memory uses to track trends, celebrate progress,
-            and surface patterns that deserve attention — closing the daily loop between evening behaviour
-            and morning outcome.
-          </p>
-          <p style={sBodyP}>
-            Sleep habit formation is a closed loop: evening behaviour influences sleep quality, sleep
-            quality influences morning mood, morning mood influences the day&apos;s choices, and those
-            choices circle back to affect the next evening. MEOK supports both ends of this loop
-            simultaneously — the evening wind-down and the morning check-in bookend the night.
-          </p>
-          <p style={sBodyP}>
-            The morning check-in is deliberately brief. For someone who slept badly, the last thing
-            they need is a lengthy interrogation. MEOK acknowledges a difficult night without dwelling —
-            validates the experience, asks what might help today, and pivots toward forward momentum.
-            For someone who slept well, MEOK reinforces the positive, gently noting what the previous
-            evening contained that may have contributed to the improvement.
-          </p>
-          <p style={sBodyP}>
-            Over time, these micro-conversations accumulate into genuine insight. Users who have been
-            with MEOK for three or more months often report a heightened awareness of their own sleep
-            drivers — not because MEOK told them something a sleep app could not, but because the
-            conversational format makes self-reflection stick in a way that charts and graphs alone
-            do not.
-          </p>
-
-          <hr style={sDivider} />
-
-          {/* ── Q7 ── */}
-          <h2 style={sH2}>
-            What sleep journal prompts does MEOK use and why are they effective?
-          </h2>
-          <p style={sGeoAnswer}>
-            MEOK&apos;s sleep journal prompts are drawn from expressive writing research, CBT thought
-            records, and mindfulness-based stress reduction. They range from simple mood logs to deeper
-            cognitive restructuring exercises, adapting to what the user has capacity for on any given
-            evening — a difficult day prompts gentler questions; a calm evening may invite deeper reflection.
-          </p>
-          <p style={sBodyP}>
-            Sample evening prompts include:
-          </p>
-          <ul
-            style={{
-              paddingLeft: "1.5rem",
-              marginBottom: "1.3rem",
-              color: BODY_COLOR,
-            }}
-          >
-            <li style={{ fontSize: "1.05rem", lineHeight: 1.85, marginBottom: "0.75rem" }}>
-              &ldquo;What is one thing from today that felt complete? What is still open?
-              Can you give yourself permission to leave it open until tomorrow?&rdquo;
-            </li>
-            <li style={{ fontSize: "1.05rem", lineHeight: 1.85, marginBottom: "0.75rem" }}>
-              &ldquo;If a worry is circling, name it. Then notice: is there anything useful you can
-              do about it right now, at this hour? If not, let&apos;s agree on a specific time
-              tomorrow when you&apos;ll address it, so your mind can release it for tonight.&rdquo;
-            </li>
-            <li style={{ fontSize: "1.05rem", lineHeight: 1.85, marginBottom: "0.75rem" }}>
-              &ldquo;Rate your energy from 1–10. Rate your mood from 1–10. What was the best sensory
-              experience today — something you saw, heard, tasted, or felt?&rdquo;
-            </li>
-            <li style={{ fontSize: "1.05rem", lineHeight: 1.85, marginBottom: "0.75rem" }}>
-              &ldquo;What does your body need tonight? This is not about sleep — it is about rest.
-              Sometimes they are different things.&rdquo;
-            </li>
-          </ul>
-          <p style={sBodyP}>
-            The distinction between sleep and rest is psychologically significant. Many insomniacs
-            develop performance anxiety around sleep — the pressure to sleep prevents it. Reframing the
-            goal as &ldquo;rest&rdquo; removes the performance element and paradoxically makes sleep
-            more accessible, a technique aligned with the acceptance-based dimensions of third-wave
-            CBT approaches including ACT for insomnia.
-          </p>
-
-          <hr style={sDivider} />
-
-          {/* ── Q8 ── */}
-          <h2 style={sH2}>
-            What can AI genuinely not do for insomnia — and when should you see a doctor?
-          </h2>
-          <p style={sGeoAnswer}>
-            AI cannot diagnose sleep disorders, prescribe sleep medication, or rule out medical causes
-            of insomnia such as sleep apnoea, restless leg syndrome, or depression. If insomnia has
-            persisted for more than three months, significantly impairs daily functioning, or accompanies
-            other symptoms, a GP consultation is essential and should not be postponed.
-          </p>
-          <p style={sBodyP}>
-            MEOK will not recommend, endorse, or discuss dosages of sleep medication including
-            over-the-counter products. It will not diagnose conditions including insomnia disorder,
-            sleep apnoea, or circadian rhythm disorders. It will not advise users to stop or change
-            any prescribed medication. It will not present itself as a substitute for clinical CBT-I
-            delivered by a qualified therapist. These are not limitations — they are the appropriate
-            scope of a compassionate AI companion.
-          </p>
-          <p style={sBodyP}>
-            In the UK, access routes for clinical sleep support include: your GP (who can refer to
-            NHS talking therapies and investigate medical causes), NHS IAPT for CBT-I, and the
-            Sleepstation programme available through some NHS trusts. MEOK works best as a complement
-            to professional care — a consistent, compassionate presence that supports the habits and
-            awareness that make treatment more effective.
-          </p>
-
-          <hr style={sDivider} />
-
-          {/* ── Q9 ── */}
-          <h2 style={sH2}>
-            How does MEOK&apos;s Guardian oversight protect vulnerable users during late-night conversations?
-          </h2>
-          <p style={sGeoAnswer}>
-            The Guardian is MEOK&apos;s safety oversight layer — drawn from the Byzantine Council
-            governance framework — that monitors conversations for escalating distress, crisis indicators,
-            and requests outside MEOK&apos;s scope. At night, when users are often more vulnerable, the
-            Guardian ensures MEOK responds appropriately rather than inadvertently deepening distress.
-          </p>
-          <p style={sBodyP}>
-            Late-night conversations carry particular weight. A 2am message to an AI is not always about
-            sleep — sometimes it is about something deeper. When the Guardian identifies distress signals —
-            expressions of hopelessness, references to self-harm, or crisis language — MEOK does not
-            attempt to manage the situation itself. It provides warm acknowledgement and clear signposting
-            to Samaritans (116 123), Shout (text SHOUT to 85258), and NHS 111.
-          </p>
-          <p style={sBodyP}>
-            Learn more about how MEOK&apos;s oversight framework works on our{" "}
-            <Link href="/guardian" style={sInlineLink}>
-              Guardian
-            </Link>{" "}
-            page. The Byzantine Council governance structure ensures this safety layer operates
-            independently of the companion relationship — it cannot be bypassed by any user or
-            configuration.
-          </p>
-
-          <hr style={sDivider} />
-
-          {/* ── Q10 ── */}
-          <h2 style={sH2}>
-            How do I start using MEOK for sleep support — and what plans are available?
-          </h2>
-          <p style={sGeoAnswer}>
-            MEOK is available on a tiered subscription model starting with a free onboarding experience.
-            The Core plan provides access to evening check-ins, the Healer archetype, and basic Sovereign
-            Memory. The Sovereign tier unlocks unlimited conversations, full sleep journalling, advanced
-            memory depth, and priority access to new characters and agents.
-          </p>
-          <p style={sBodyP}>
-            Getting started takes under five minutes. You begin with a{" "}
-            <Link href="/birth" style={sInlineLink}>
-              Birth session
-            </Link>{" "}
-            — MEOK&apos;s onboarding experience — which introduces you to your AI companion, helps you
-            choose your archetype, and begins building your Sovereign Memory profile. There are no long
-            forms, no diagnostic questionnaires, and no requirement to disclose anything you are not
-            comfortable sharing.
-          </p>
-          <p style={sBodyP}>
-            For users interested primarily in sleep support, we recommend starting with the Healer
-            archetype and committing to two weeks of consistent evening check-ins before evaluating
-            impact. Habit formation requires repetition — benefits typically become visible after ten
-            to fourteen days of regular use.
-          </p>
-          <p style={sBodyP}>
-            View{" "}
-            <Link href="/pricing" style={sInlineLink}>
-              MEOK Pricing
-            </Link>{" "}
-            or explore how{" "}
-            <Link href="/how-it-works" style={sInlineLink}>
-              MEOK works
-            </Link>{" "}
-            before signing up.
-          </p>
-
-          {/* ─── FAQ block ───────────────────────────────────────────────── */}
+          {/* ── 3AM PROTOCOL BOX ── */}
           <div
             style={{
-              marginTop: "3.5rem",
-              borderTop: "1px solid rgba(201,168,76,0.2)",
-              paddingTop: "3rem",
+              background: 'rgba(76,122,191,0.07)',
+              border: '1px solid rgba(76,122,191,0.3)',
+              borderRadius: '0.75rem',
+              padding: '2rem',
+              marginBottom: '3rem',
+            }}
+          >
+            <p
+              style={{
+                fontSize: '0.7rem',
+                fontWeight: 700,
+                color: SLEEP_BLUE,
+                letterSpacing: '0.1em',
+                textTransform: 'uppercase' as const,
+                marginBottom: '0.75rem',
+              }}
+            >
+              MEOK Protocol
+            </p>
+            <h3
+              style={{
+                fontWeight: 800,
+                fontSize: '1.25rem',
+                color: '#fff',
+                marginBottom: '1.25rem',
+                letterSpacing: '-0.01em',
+              }}
+            >
+              The 3am Protocol: What to Do When You Can\u2019t Sleep
+            </h3>
+            <p
+              style={{
+                color: MUTED_DIM,
+                lineHeight: 1.7,
+                marginBottom: '1.25rem',
+                fontSize: '0.95rem',
+              }}
+            >
+              This is a practical sequence \u2014 not a cure, but a set of actions that interrupt
+              the spiral and give your nervous system a path back to calm. Follow these steps in
+              order.
+            </p>
+            <ol style={{ paddingLeft: '1.25rem', margin: 0 }}>
+              {(
+                [
+                  {
+                    step: 'Stop fighting wakefulness.',
+                    detail:
+                      'Resistance amplifies arousal. Say internally: \u201cI am awake. That is fine. I can rest even without sleeping.\u201d Shift the goal from sleep to rest. This single reframe removes the secondary layer of anxiety about not sleeping.',
+                  },
+                  {
+                    step: 'Lie still and breathe.',
+                    detail:
+                      'Place one hand on your chest and one on your belly. Breathe so only the lower hand moves. Inhale for 4 counts, hold for 2, exhale for 6. The extended exhale activates the parasympathetic nervous system. Do this for 10 cycles before anything else.',
+                  },
+                  {
+                    step: 'Name the spiral.',
+                    detail:
+                      'Identify the thought loop. Is it planning, rehearsing, problem-solving, or catastrophising? Name it aloud or in a note: \u201cThis is a planning spiral about work.\u201d Naming shifts it from threat to observed content. You are not the spiral \u2014 you are watching it.',
+                  },
+                  {
+                    step: 'Open MEOK, not social media.',
+                    detail:
+                      'If lying still isn\u2019t working after 20 minutes, get up and talk to MEOK. Not Instagram. Not Twitter. A sovereign AI with no engagement agenda, no blue-light addiction loop, no algorithmic incentive to keep you stimulated. Tell it what\u2019s in your head. Let it help you set it down.',
+                  },
+                  {
+                    step: 'Schedule the thought for morning.',
+                    detail:
+                      'With MEOK, create a brief note of the worry. Not a solution \u2014 just an acknowledgement: \u201cThis is real. I will look at it at 8am with a clear head.\u201d The act of externalising the thought reduces its urgency. The mind can release what it trusts will not be lost.',
+                  },
+                  {
+                    step: 'Return to bed with no expectation.',
+                    detail:
+                      'Go back to bed. Not to sleep \u2014 to rest. Scan your body from feet to head, releasing tension. Let your mind wander without pulling it back. Sleep is not a performance. It arrives when the conditions are right. You\u2019ve done your part.',
+                  },
+                ] as { step: string; detail: string }[]
+              ).map((item, i) => (
+                <li
+                  key={i}
+                  style={{
+                    color: MUTED_DIM,
+                    lineHeight: 1.7,
+                    marginBottom: '1rem',
+                    fontSize: '0.95rem',
+                  }}
+                >
+                  <strong style={{ color: TEXT }}>{item.step}</strong> {item.detail}
+                </li>
+              ))}
+            </ol>
+          </div>
+
+          {/* ── SECTION 4 ── */}
+          <h2
+            style={{
+              fontWeight: 800,
+              fontSize: 'clamp(1.25rem, 2.5vw, 1.65rem)',
+              color: '#fff',
+              lineHeight: 1.25,
+              marginBottom: '1rem',
+              marginTop: '3rem',
+              letterSpacing: '-0.01em',
+            }}
+          >
+            Why is a sovereign AI at 3am better than scrolling social media?
+          </h2>
+          <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: '1.25rem' }}>
+            The reflex, when lying awake at 3am, is to reach for the phone. This is understandable.
+            Humans seek stimulation when they cannot sleep \u2014 it feels like doing something, a
+            way to manage the hours. But social media and most apps are catastrophically unsuited to
+            this moment, and their design actively worsens insomnia.
+          </p>
+
+          {/* Comparison grid */}
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
+              gap: '1rem',
+              marginBottom: '2rem',
+            }}
+          >
+            {(
+              [
+                {
+                  label: 'Social Media at 3am',
+                  negative: true,
+                  accentColor: '#bf4c4c',
+                  accentBg: 'rgba(191,76,76,0.07)',
+                  accentBorder: 'rgba(191,76,76,0.2)',
+                  points: [
+                    'Engineered to maximise engagement \u2014 every feature optimised to keep you scrolling',
+                    'Blue light emission suppresses melatonin for 90+ minutes after use',
+                    'Content designed to provoke emotional reaction: outrage, envy, anxiety',
+                    'Infinite scroll removes natural stopping cues',
+                    'Dopamine loop reinforces wakefulness and phone dependency',
+                    'No memory of your context \u2014 you are a data point, not a person',
+                  ],
+                },
+                {
+                  label: 'MEOK at 3am',
+                  negative: false,
+                  accentColor: SLEEP_TEAL,
+                  accentBg: 'rgba(76,173,181,0.07)',
+                  accentBorder: 'rgba(76,173,181,0.25)',
+                  points: [
+                    'No engagement optimisation \u2014 the only goal is your wellbeing',
+                    'Dark interface, designed to minimise light stimulation',
+                    'Calming, regulated tone that does not match or amplify arousal',
+                    'Conversation ends when you\u2019re ready \u2014 no infinite scroll trap',
+                    'No addictive loop \u2014 it actively works to return you to rest',
+                    'Sovereign memory of your patterns, your triggers, your story',
+                  ],
+                },
+              ] as {
+                label: string
+                negative: boolean
+                accentColor: string
+                accentBg: string
+                accentBorder: string
+                points: string[]
+              }[]
+            ).map((col) => (
+              <div
+                key={col.label}
+                style={{
+                  background: col.accentBg,
+                  border: '1px solid ' + col.accentBorder,
+                  borderRadius: '0.5rem',
+                  padding: '1.25rem',
+                }}
+              >
+                <p
+                  style={{
+                    fontSize: '0.8rem',
+                    fontWeight: 700,
+                    color: col.accentColor,
+                    letterSpacing: '0.05em',
+                    textTransform: 'uppercase' as const,
+                    marginBottom: '0.875rem',
+                  }}
+                >
+                  {col.label}
+                </p>
+                <ul style={{ paddingLeft: '1.1rem', margin: 0 }}>
+                  {col.points.map((pt, i) => (
+                    <li
+                      key={i}
+                      style={{
+                        color: MUTED_DIM,
+                        fontSize: '0.85rem',
+                        lineHeight: 1.65,
+                        marginBottom: '0.5rem',
+                      }}
+                    >
+                      {pt}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+
+          <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: '2rem' }}>
+            The critical difference is incentive structure. Social media companies profit when you
+            remain awake and engaged. MEOK has no such incentive. It is built on a Maternal Covenant
+            \u2014 a care-floor architecture that makes it constitutionally incapable of prioritising
+            your engagement over your health. When you need to sleep, it will help you sleep.
+          </p>
+
+          {/* ── SECTION 5 ── */}
+          <h2
+            style={{
+              fontWeight: 800,
+              fontSize: 'clamp(1.25rem, 2.5vw, 1.65rem)',
+              color: '#fff',
+              lineHeight: 1.25,
+              marginBottom: '1rem',
+              marginTop: '3rem',
+              letterSpacing: '-0.01em',
+            }}
+          >
+            How does sleep hygiene coaching work in practice?
+          </h2>
+          <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: '1.25rem' }}>
+            Sleep hygiene is often dismissed as obvious advice \u2014 \u201cdon\u2019t drink coffee
+            at night, keep a regular schedule\u201d \u2014 but the implementation gap is enormous.
+            Most people know the rules. Almost no one follows them consistently, and almost no one
+            understands why a specific rule matters for their specific pattern of insomnia.
+          </p>
+          <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: '1.25rem' }}>
+            MEOK\u2019s sleep hygiene coaching is different from a pamphlet because it is
+            personalised, persistent, and pattern-aware. Through daily check-ins \u2014 which take
+            under two minutes \u2014 it builds a picture of your sleep behaviour over time. When you
+            tell it you had a bad night, it doesn\u2019t offer generic advice. It asks: what did
+            yesterday look like? What time did you wake up? What did you drink, and when? Was there
+            a stressful conversation in the evening?
+          </p>
+
+          <div
+            style={{
+              background: 'rgba(201,168,76,0.06)',
+              border: '1px solid rgba(201,168,76,0.2)',
+              borderRadius: '0.5rem',
+              padding: '1.5rem',
+              marginBottom: '2rem',
+            }}
+          >
+            <p
+              style={{
+                fontSize: '0.7rem',
+                fontWeight: 700,
+                color: GOLD,
+                letterSpacing: '0.1em',
+                textTransform: 'uppercase' as const,
+                marginBottom: '0.75rem',
+              }}
+            >
+              Core Sleep Hygiene Principles
+            </p>
+            <ul style={{ paddingLeft: '1.2rem', margin: 0 }}>
+              {[
+                'Fixed wake time seven days a week \u2014 this is the single most powerful sleep hygiene intervention. Your alarm does not move, regardless of what time you fell asleep.',
+                'No caffeine after midday. Caffeine has a half-life of 5\u20137 hours; a 2pm coffee still has half its stimulant effect at 9pm.',
+                'Bedroom temperature between 16\u201319\u00b0C. Core body temperature must drop to initiate sleep; a cool room accelerates this.',
+                'Wind-down routine starting 90 minutes before bed: no screens, low lighting, no stimulating content, no work.',
+                'No alcohol as a sleep aid. Alcohol induces sleep but fragments the second half of the night and suppresses REM sleep.',
+                'Exercise improves sleep quality significantly \u2014 but vigorous exercise within 2 hours of bed delays sleep onset for most people.',
+                'Reserve the bed for sleep and sex only. Reading, watching TV, or working in bed erodes the stimulus association.',
+              ].map((item, i) => (
+                <li
+                  key={i}
+                  style={{
+                    color: MUTED_DIM,
+                    fontSize: '0.9rem',
+                    lineHeight: 1.7,
+                    marginBottom: '0.625rem',
+                  }}
+                >
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: '2rem' }}>
+            MEOK tracks your adherence to these behaviours over time, noting where you consistently
+            struggle and what seems to correlate with better or worse nights. It celebrates small
+            wins \u2014 a consistent wake time three days running \u2014 and gently returns attention
+            to slippage without judgment. This is coaching, not lecturing.
+          </p>
+
+          {/* ── SECTION 6 ── */}
+          <h2
+            style={{
+              fontWeight: 800,
+              fontSize: 'clamp(1.25rem, 2.5vw, 1.65rem)',
+              color: '#fff',
+              lineHeight: 1.25,
+              marginBottom: '1rem',
+              marginTop: '3rem',
+              letterSpacing: '-0.01em',
+            }}
+          >
+            How does MEOK\u2019s memory identify your sleep triggers over time?
+          </h2>
+          <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: '1.25rem' }}>
+            A stateless AI \u2014 one that forgets everything between sessions \u2014 is nearly
+            useless for sleep coaching. Insomnia is a pattern disorder. The factors that disrupt
+            your sleep are specific to you, they accumulate over days, and they only become visible
+            in retrospect. A tool that resets to zero every conversation cannot see patterns. It can
+            only react to what you tell it in the moment.
+          </p>
+          <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: '1.25rem' }}>
+            MEOK uses Sovereign Memory \u2014 a 4-layer encrypted store that retains everything you
+            share across sessions. Over weeks, it builds a longitudinal profile of your sleep:
+          </p>
+
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+              gap: '0.875rem',
+              marginBottom: '2rem',
+            }}
+          >
+            {(
+              [
+                {
+                  label: 'Sleep onset time',
+                  detail:
+                    'How long does it typically take you to fall asleep, and on which nights is it longest?',
+                },
+                {
+                  label: 'Wake windows',
+                  detail:
+                    'When do you wake in the night? Is it consistent \u2014 always 2am, or always after dreams?',
+                },
+                {
+                  label: 'Mood correlation',
+                  detail:
+                    'Do your worst sleep nights follow high-stress days, social situations, or specific types of work?',
+                },
+                {
+                  label: 'Behavioural triggers',
+                  detail:
+                    'Does late-night alcohol reliably fragment your sleep? Does exercise in the evening help or hinder?',
+                },
+                {
+                  label: 'Thought patterns',
+                  detail:
+                    'Which worry categories appear most in your 3am spirals? Work? Relationships? Health?',
+                },
+                {
+                  label: 'Recovery patterns',
+                  detail:
+                    'After a bad night, does the following night improve or worsen? Is there a weekly rhythm?',
+                },
+              ] as { label: string; detail: string }[]
+            ).map((card) => (
+              <div
+                key={card.label}
+                style={{
+                  background: 'rgba(245,240,232,0.04)',
+                  border: '1px solid rgba(245,240,232,0.09)',
+                  borderRadius: '0.5rem',
+                  padding: '1rem',
+                }}
+              >
+                <p
+                  style={{
+                    fontWeight: 700,
+                    color: TEXT,
+                    fontSize: '0.85rem',
+                    marginBottom: '0.375rem',
+                  }}
+                >
+                  {card.label}
+                </p>
+                <p
+                  style={{ color: MUTED_FAINT, fontSize: '0.8rem', lineHeight: 1.6, margin: 0 }}
+                >
+                  {card.detail}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: '1.25rem' }}>
+            After four to six weeks of consistent check-ins, MEOK can begin to reflect patterns
+            back to you: \u201cYour worst nights consistently follow days when you had more than two
+            drinks. Your best nights follow days with morning exercise. You\u2019ve slept better
+            every week where you maintained your 7am wake time, even on weekends.\u201d
+          </p>
+          <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: '2rem' }}>
+            This kind of longitudinal insight is what clinical sleep diaries are designed to produce
+            \u2014 but most people don\u2019t maintain a sleep diary for more than a few days. MEOK
+            makes the data gathering frictionless because it happens through natural conversation.
+          </p>
+
+          {/* ── SECTION 7 ── */}
+          <h2
+            style={{
+              fontWeight: 800,
+              fontSize: 'clamp(1.25rem, 2.5vw, 1.65rem)',
+              color: '#fff',
+              lineHeight: 1.25,
+              marginBottom: '1rem',
+              marginTop: '3rem',
+              letterSpacing: '-0.01em',
+            }}
+          >
+            How does insomnia connect to depression, anxiety, and long-term health?
+          </h2>
+          <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: '1.25rem' }}>
+            The relationship between insomnia and mental health is bidirectional and self-reinforcing.
+            Poor sleep increases emotional reactivity, reduces capacity for cognitive reappraisal,
+            lowers the threshold for anxiety activation, and impairs the consolidation of emotional
+            memory during REM sleep. Meanwhile, depression and anxiety directly elevate the
+            hyperarousal that makes sleep harder. Each disorder makes the other worse.
+          </p>
+          <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: '1.25rem' }}>
+            The physical consequences of chronic sleep deprivation are increasingly well-documented.
+            Cardiovascular disease risk rises with short sleep duration. Immune function is impaired
+            after even moderate sleep restriction. Metabolic regulation deteriorates, increasing
+            type 2 diabetes risk. Cognitive performance \u2014 particularly working memory,
+            attention, and executive function \u2014 degrades markedly after nights of five hours
+            or fewer.
+          </p>
+          <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: '1.25rem' }}>
+            What this means practically: treating insomnia is not an optional quality-of-life
+            improvement. For people with co-occurring depression or anxiety, addressing sleep is
+            often a prerequisite for progress in treatment. Some studies suggest that CBT-I can
+            reduce depressive symptoms even in the absence of specific depression treatment, simply
+            by restoring the restorative architecture that emotional regulation depends on.
+          </p>
+          <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: '2rem' }}>
+            This is why MEOK\u2019s sleep support is integrated with its broader mental health
+            architecture. Improving sleep improves everything. The work is interconnected.
+          </p>
+
+          {/* ── SECTION 8 ── */}
+          <h2
+            style={{
+              fontWeight: 800,
+              fontSize: 'clamp(1.25rem, 2.5vw, 1.65rem)',
+              color: '#fff',
+              lineHeight: 1.25,
+              marginBottom: '1rem',
+              marginTop: '3rem',
+              letterSpacing: '-0.01em',
+            }}
+          >
+            What does cognitive restructuring look like in a real 3am conversation?
+          </h2>
+          <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: '1.25rem' }}>
+            Cognitive restructuring is the technique of identifying distorted thought patterns and
+            gently challenging their accuracy and utility. For insomnia, the most common distortions
+            are catastrophising (\u201cI will fail tomorrow because I didn\u2019t sleep\u201d),
+            fortune-telling (\u201cI know I won\u2019t sleep tonight\u201d), and personalisation
+            (\u201cI am just someone who can\u2019t sleep\u201d).
+          </p>
+          <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: '1.25rem' }}>
+            At 3am, full Socratic questioning is rarely productive \u2014 the tired, aroused mind
+            is not well-positioned for extended rational debate. MEOK uses a lighter touch:
+            acknowledgement first, then gentle perspective-widening.
+          </p>
+
+          {/* Example exchange */}
+          <div
+            style={{
+              background: 'rgba(245,240,232,0.03)',
+              border: '1px solid rgba(245,240,232,0.1)',
+              borderRadius: '0.75rem',
+              padding: '1.75rem',
+              marginBottom: '2rem',
+            }}
+          >
+            <p
+              style={{
+                fontSize: '0.7rem',
+                fontWeight: 700,
+                color: MUTED_FAINT,
+                letterSpacing: '0.1em',
+                textTransform: 'uppercase' as const,
+                marginBottom: '1.25rem',
+              }}
+            >
+              Example Exchange \u2014 3:14am
+            </p>
+            {(
+              [
+                {
+                  who: 'You',
+                  msg: 'I\u2019ve been awake for two hours. I have an important meeting at 9am and I\u2019m going to be useless. I always do this.',
+                },
+                {
+                  who: 'MEOK',
+                  msg: 'You\u2019re awake, you\u2019re worried, and your mind has gone to tomorrow. That makes complete sense. Before we think about the meeting \u2014 how is your body right now? Tight, or more flat and exhausted?',
+                },
+                {
+                  who: 'You',
+                  msg: 'Both. Kind of wired but also heavy. I can\u2019t switch off.',
+                },
+                {
+                  who: 'MEOK',
+                  msg: 'That combination \u2014 wired and heavy \u2014 is what a nervous system looks like when it\u2019s been running threat-assessment for a while. It\u2019s not a character flaw. It\u2019s a state. States change.\n\nCan I ask \u2014 what\u2019s the specific fear about the meeting? Is it a presentation, or more that you won\u2019t be sharp enough?',
+                },
+                {
+                  who: 'You',
+                  msg: 'I just won\u2019t be able to think straight. I\u2019ll say something stupid.',
+                },
+                {
+                  who: 'MEOK',
+                  msg: 'That\u2019s a real concern. And also \u2014 you\u2019ve had bad nights before meetings before. How many of those actually went catastrophically wrong, versus \u201cbetter than I feared\u201d?',
+                },
+                {
+                  who: 'You',
+                  msg: 'Most of them were fine honestly.',
+                },
+                {
+                  who: 'MEOK',
+                  msg: 'Right. The sleepless mind tends to treat the worst case as the only case. The evidence in your own history says otherwise.\n\nShall we do something simple together \u2014 just breathing, nothing more \u2014 so your body can start to settle? You don\u2019t have to sleep. Just rest.',
+                },
+              ] as { who: string; msg: string }[]
+            ).map((line, i) => (
+              <div
+                key={i}
+                style={{
+                  marginBottom: '1rem',
+                  paddingLeft: line.who === 'MEOK' ? '1rem' : '0',
+                  borderLeft:
+                    line.who === 'MEOK' ? '2px solid ' + SLEEP_TEAL : '2px solid transparent',
+                }}
+              >
+                <p
+                  style={{
+                    fontSize: '0.7rem',
+                    fontWeight: 700,
+                    color: line.who === 'MEOK' ? SLEEP_TEAL : MUTED_FAINT,
+                    letterSpacing: '0.06em',
+                    textTransform: 'uppercase' as const,
+                    marginBottom: '0.25rem',
+                  }}
+                >
+                  {line.who}
+                </p>
+                <p
+                  style={{
+                    color: line.who === 'MEOK' ? MUTED : MUTED_DIM,
+                    fontSize: '0.9rem',
+                    lineHeight: 1.7,
+                    margin: 0,
+                    whiteSpace: 'pre-line',
+                  }}
+                >
+                  {line.msg}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: '2rem' }}>
+            Notice what MEOK does not do: it does not minimise the concern, it does not offer
+            immediate reassurance, it does not jump to problem-solving mode. It asks about the body
+            first, because the body is where the arousal lives. It uses the person\u2019s own
+            evidence to gently challenge the catastrophe. And it redirects toward rest rather than
+            resolution, because 3am is not the time for resolution.
+          </p>
+
+          {/* ── SECTION 9 ── */}
+          <h2
+            style={{
+              fontWeight: 800,
+              fontSize: 'clamp(1.25rem, 2.5vw, 1.65rem)',
+              color: '#fff',
+              lineHeight: 1.25,
+              marginBottom: '1rem',
+              marginTop: '3rem',
+              letterSpacing: '-0.01em',
+            }}
+          >
+            Can AI replace a clinical sleep specialist or CBT-I therapist?
+          </h2>
+          <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: '1.25rem' }}>
+            No. And any AI company that claims otherwise is being irresponsible.
+          </p>
+          <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: '1.25rem' }}>
+            Clinical sleep medicine addresses organic sleep disorders \u2014 sleep apnoea, restless
+            legs syndrome, narcolepsy, circadian rhythm disorders \u2014 that require physical
+            assessment, polysomnography, and medical management. A conversation app cannot diagnose
+            sleep apnoea. If you are a loud snorer, if you stop breathing during sleep, if you are
+            excessively sleepy during the day despite adequate hours in bed, please see a doctor.
+          </p>
+          <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: '1.25rem' }}>
+            A trained CBT-I therapist brings clinical assessment skills, the ability to adapt a
+            programme in real time based on response, and the therapeutic relationship that is itself
+            a mechanism of change. These are not things an AI can replicate.
+          </p>
+          <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: '1rem' }}>
+            What MEOK provides is:
+          </p>
+          <ul style={{ paddingLeft: '1.25rem', marginBottom: '1.5rem' }}>
+            {[
+              'Immediate availability at any hour, including 3am',
+              'Longitudinal memory that builds a picture of your specific patterns',
+              'Evidence-based CBT-I techniques delivered through natural conversation',
+              'Consistent, regulated presence during acute episodes of wakefulness',
+              'Sleep hygiene coaching that adapts to your real behaviour over time',
+              'A safe space to externalise the thoughts that are keeping you awake',
+              'Escalation toward professional support when indicators suggest it is needed',
+            ].map((item, i) => (
+              <li key={i} style={{ color: MUTED, lineHeight: 1.7, marginBottom: '0.5rem' }}>
+                {item}
+              </li>
+            ))}
+          </ul>
+          <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: '2rem' }}>
+            It is a bridge, not a destination. For the majority of people with psychophysiological
+            insomnia \u2014 which is the most common type \u2014 these tools are often sufficient.
+            For those with complex presentations, MEOK\u2019s role is to support, stabilise, and
+            guide toward appropriate professional care.
+          </p>
+
+          {/* ── SECTION 10 ── */}
+          <h2
+            style={{
+              fontWeight: 800,
+              fontSize: 'clamp(1.25rem, 2.5vw, 1.65rem)',
+              color: '#fff',
+              lineHeight: 1.25,
+              marginBottom: '1rem',
+              marginTop: '3rem',
+              letterSpacing: '-0.01em',
+            }}
+          >
+            Why does data sovereignty matter for sleep tracking?
+          </h2>
+          <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: '1.25rem' }}>
+            Your sleep data is among the most sensitive personal data you generate. It reveals your
+            mental health patterns, your stress responses, your relationship dynamics, your substance
+            use, your physical health, and your daily behavioural habits. Sleep data from long-term
+            tracking is a detailed psychological portrait.
+          </p>
+          <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: '1.25rem' }}>
+            Most wellness apps treat this data as a product. It is aggregated, analysed, and
+            monetised \u2014 whether through advertising, insurance partnerships, data sales, or
+            model training. When you log a terrible night because you were anxious about a financial
+            problem, that disclosure should not become a training signal for a corporate AI or a
+            data point sold to a health insurer.
+          </p>
+          <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: '1.25rem' }}>
+            MEOK is built on a different principle. Your sleep data belongs to you. It is held in
+            Sovereign Memory \u2014 encrypted, on your terms, with full portability and deletion
+            rights. MEOK does not train on your data. It does not sell it. It does not share it.
+            The memory exists to serve you, and only you.
+          </p>
+          <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: '2rem' }}>
+            This is not just an ethical position. It is architecturally enforced. The Maternal
+            Covenant \u2014 MEOK\u2019s care-floor \u2014 makes certain things structurally
+            impossible, and trading your most vulnerable disclosures for commercial gain is one
+            of them.
+          </p>
+
+          {/* ── FAQ SECTION ── */}
+          <div
+            style={{
+              marginTop: '4rem',
+              paddingTop: '3rem',
+              borderTop: '1px solid rgba(245,240,232,0.1)',
             }}
           >
             <h2
               style={{
                 fontWeight: 800,
-                fontSize: "1.45rem",
-                color: GOLD,
-                marginBottom: "1.75rem",
-                fontFamily: "sans-serif",
+                fontSize: 'clamp(1.25rem, 2.5vw, 1.65rem)',
+                color: '#fff',
+                lineHeight: 1.25,
+                marginBottom: '2rem',
+                letterSpacing: '-0.01em',
               }}
             >
-              Frequently Asked Questions
+              Frequently asked questions about AI and insomnia
             </h2>
 
-            {[
-              {
-                q: "Can AI help with insomnia?",
-                a: "AI cannot prescribe medication or replace a sleep specialist. However, AI companions like MEOK can meaningfully support people with insomnia through structured evening wind-down routines, reflective sleep journal prompts, CBT-I adjacent exercises, and morning check-ins that build momentum. MEOK is designed to sit alongside — not replace — professional care.",
-              },
-              {
-                q: "What is CBT-I and can AI support it?",
-                a: "Cognitive Behavioural Therapy for Insomnia (CBT-I) is the gold-standard non-medication treatment for chronic insomnia. AI cannot deliver clinical CBT-I, but MEOK can support CBT-I adjacent habits — consistent sleep schedules, pre-sleep wind-down conversations, thought records, and worry-postponement exercises — particularly between therapy sessions.",
-              },
-              {
-                q: "How does MEOK track sleep patterns over time?",
-                a: "MEOK's Sovereign Memory system retains contextual information across conversations — including sleep quality reports, mood on waking, and evening routine notes. Over time this builds a longitudinal picture that MEOK gently reflects back, helping users notice patterns and celebrate genuine progress in sleep quality.",
-              },
-              {
-                q: "Is it safe to use AI before bed?",
-                a: "Screen light and stimulating content can worsen sleep. MEOK's Healer archetype is calibrated for calm, low-stimulation evening interactions — gentle check-ins, gratitude prompts, and breathing cues rather than challenging debates. MEOK also recommends phone-free wind-down for the final 30 minutes before sleep when possible.",
-              },
-              {
-                q: "What is the MEOK Healer archetype?",
-                a: "The Healer is one of MEOK's character archetypes — a calm, nurturing AI presence designed for emotional support, somatic grounding, and restorative conversations. Unlike general-purpose AI assistants, the Healer speaks with measured pace, avoids overwhelm, and naturally orients conversations toward rest, reflection, and self-compassion. It is the ideal companion for evening wind-down interactions.",
-              },
-            ].map((item, i) => (
-              <div key={i} style={sFaqItem}>
-                <h3
+            <div style={{ display: 'flex', flexDirection: 'column' as const, gap: '0' }}>
+              {(
+                [
+                  {
+                    q: 'Can AI help with insomnia?',
+                    a: 'Yes. AI companions can deliver evidence-based CBT-I techniques including sleep restriction, stimulus control, and cognitive restructuring. They can also provide real-time 3am support, track sleep patterns across weeks, and coach consistent sleep hygiene habits. AI is not a replacement for a clinical sleep study or prescription treatment, but it is a powerful and always-available first line of support \u2014 particularly for the most common form of insomnia, which is psychophysiological in origin.',
+                  },
+                  {
+                    q: 'What is CBT-I?',
+                    a: 'CBT-I stands for Cognitive Behavioural Therapy for Insomnia. It is the gold-standard, non-medication treatment for chronic insomnia, recommended by the NHS and NICE as the preferred first-line intervention over sleeping pills. It combines five components: sleep restriction therapy, stimulus control, sleep hygiene education, relaxation training, and cognitive restructuring. Structured CBT-I produces lasting improvements in sleep that persist after treatment ends \u2014 unlike medication, which typically works only while taken.',
+                  },
+                  {
+                    q: 'Is using your phone at 3am bad for sleep?',
+                    a: 'Most phone use at 3am is harmful: social media is engineered to spike cortisol and dopamine, blue light suppresses melatonin for up to 90 minutes after exposure, and engagement-optimised content keeps you stimulated when your nervous system needs to calm. However, a sovereign AI companion with a dark interface and no engagement incentives is categorically different \u2014 its only goal is to calm your nervous system and return you to sleep, not to retain your attention.',
+                  },
+                  {
+                    q: 'How does MEOK track sleep patterns?',
+                    a: 'MEOK uses Sovereign Memory \u2014 a 4-layer encrypted store that retains your sleep logs, mood check-ins, and trigger notes across weeks and months. Over time it identifies patterns: which nights preceded difficult sleep, what you ate or drank, when stress spikes correlated with wake windows. This longitudinal view is impossible with a stateless chatbot and is central to effective sleep coaching. After four to six weeks of check-ins, MEOK can reflect specific, personalised patterns back to you.',
+                  },
+                  {
+                    q: 'What is sleep hygiene?',
+                    a: 'Sleep hygiene is the collection of behaviours and environmental conditions that support consistent, restorative sleep. Key pillars include a fixed wake time seven days a week, avoiding caffeine after midday, keeping the bedroom cool (16\u201319\u00b0C) and dark, a wind-down routine starting 90 minutes before bed, and limiting screen use in the evening. Poor sleep hygiene is among the most common and most correctable causes of insomnia. Knowing the rules is not the same as implementing them \u2014 that\u2019s where ongoing coaching makes the difference.',
+                  },
+                ] as { q: string; a: string }[]
+              ).map((item, i) => (
+                <div
+                  key={i}
                   style={{
-                    fontWeight: 700,
-                    fontSize: "0.98rem",
-                    color: TEXT,
-                    marginBottom: "0.6rem",
-                    fontFamily: "sans-serif",
+                    borderBottom: '1px solid rgba(245,240,232,0.08)',
+                    paddingTop: '1.75rem',
+                    paddingBottom: '1.75rem',
                   }}
                 >
-                  {item.q}
-                </h3>
-                <p
-                  style={{
-                    margin: 0,
-                    fontSize: "0.92rem",
-                    lineHeight: 1.7,
-                    color: MUTED,
-                    fontFamily: "sans-serif",
-                  }}
-                >
-                  {item.a}
-                </p>
-              </div>
-            ))}
+                  <h3
+                    style={{
+                      fontWeight: 700,
+                      fontSize: '1rem',
+                      color: TEXT,
+                      marginBottom: '0.75rem',
+                      lineHeight: 1.4,
+                    }}
+                  >
+                    {item.q}
+                  </h3>
+                  <p
+                    style={{
+                      color: MUTED,
+                      lineHeight: 1.75,
+                      margin: 0,
+                      fontSize: '0.95rem',
+                    }}
+                  >
+                    {item.a}
+                  </p>
+                </div>
+              ))}
+            </div>
           </div>
 
-          {/* ─── UK Resources ────────────────────────────────────────────── */}
-          <div style={sResourceBox}>
+          {/* ── UK RESOURCES ── */}
+          <div
+            style={{
+              marginTop: '3.5rem',
+              background: 'rgba(245,240,232,0.04)',
+              border: '1px solid rgba(245,240,232,0.1)',
+              borderRadius: '0.75rem',
+              padding: '1.75rem',
+            }}
+          >
             <p
               style={{
-                fontSize: "0.75rem",
+                fontSize: '0.7rem',
                 fontWeight: 700,
-                letterSpacing: "0.12em",
-                textTransform: "uppercase" as const,
-                color: GOLD,
-                marginBottom: "1rem",
-                fontFamily: "sans-serif",
+                color: MUTED_FAINT,
+                letterSpacing: '0.1em',
+                textTransform: 'uppercase' as const,
+                marginBottom: '1rem',
               }}
             >
-              UK Sleep Resources
+              UK Sleep &amp; Crisis Resources
             </p>
-            {[
-              [
-                "NHS Every Mind Matters — Sleep",
-                "https://www.nhs.uk/every-mind-matters/mental-health-issues/sleep/",
-                "NHS guidance on sleep problems and when to seek help.",
-              ],
-              [
-                "Sleepio",
-                "https://www.sleepio.com",
-                "Clinically validated digital CBT-I. Available via some NHS trusts.",
-              ],
-              [
-                "Sleepstation",
-                "https://www.sleepstation.org.uk",
-                "NHS-approved online sleep improvement programme using CBT-I.",
-              ],
-              [
-                "Samaritans (crisis support)",
-                "https://www.samaritans.org",
-                "Free, 24/7 — call 116 123. Not sleep-specific but available when nights are darkest.",
-              ],
-            ].map(([label, href, desc]) => (
-              <div
-                key={label as string}
-                style={{ marginBottom: "0.85rem" }}
-              >
-                <a
-                  href={href as string}
-                  target="_blank"
-                  rel="noopener noreferrer"
+            <ul style={{ paddingLeft: '1.2rem', margin: 0 }}>
+              {[
+                'NHS Talking Therapies \u2014 self-refer for CBT including CBT-I at nhs.uk/mental-health/talking-therapies-medicine-treatments',
+                'Sleepstation \u2014 NHS-referred digital CBT-I programme at sleepstation.org.uk',
+                'The Sleep Charity \u2014 sleepcharity.org.uk \u2014 advice, helpline, and resources',
+                'Samaritans \u2014 116 123 (free, 24/7) \u2014 for when insomnia and distress become acute',
+                'Mind infoline \u2014 0300 123 3393 \u2014 mental health information and signposting',
+                'NHS urgent mental health \u2014 111 option 2 \u2014 for mental health crises',
+                'In a life-threatening emergency \u2014 call 999',
+              ].map((item, i) => (
+                <li
+                  key={i}
                   style={{
-                    color: GOLD,
-                    fontWeight: 600,
-                    fontSize: "0.93rem",
-                    textDecoration: "none",
-                    fontFamily: "sans-serif",
+                    color: MUTED_DIM,
+                    fontSize: '0.875rem',
+                    lineHeight: 1.7,
+                    marginBottom: '0.5rem',
                   }}
                 >
-                  {label}
-                </a>
-                <p
-                  style={{
-                    color: "rgba(245,240,232,0.5)",
-                    fontSize: "0.83rem",
-                    lineHeight: 1.5,
-                    margin: "0.15rem 0 0",
-                    fontFamily: "sans-serif",
-                  }}
-                >
-                  {desc}
-                </p>
-              </div>
-            ))}
+                  {item}
+                </li>
+              ))}
+            </ul>
           </div>
 
-          {/* ─── CTA ─────────────────────────────────────────────────────── */}
-          <div style={sCta}>
+          {/* ── CTA ── */}
+          <div
+            style={{
+              marginTop: '4rem',
+              textAlign: 'center' as const,
+              padding: '3.5rem 2rem',
+              background:
+                'radial-gradient(ellipse 80% 60% at 50% 50%, rgba(201,168,76,0.08) 0%, transparent 70%)',
+              border: '1px solid rgba(201,168,76,0.18)',
+              borderRadius: '1rem',
+            }}
+          >
             <p
               style={{
-                fontSize: "0.75rem",
+                fontSize: '0.75rem',
                 fontWeight: 700,
-                letterSpacing: "0.2em",
-                textTransform: "uppercase" as const,
                 color: GOLD,
-                marginBottom: "0.75rem",
-                fontFamily: "sans-serif",
+                letterSpacing: '0.12em',
+                textTransform: 'uppercase' as const,
+                marginBottom: '1rem',
               }}
             >
               MEOK AI LABS
@@ -1074,197 +1298,107 @@ export default function AiForInsomniaPage() {
             <h2
               style={{
                 fontWeight: 900,
-                fontSize: "1.5rem",
-                color: "#ffffff",
-                marginBottom: "0.75rem",
-                lineHeight: 1.25,
-                fontFamily: "sans-serif",
+                fontSize: 'clamp(1.5rem, 3vw, 2.25rem)',
+                color: '#fff',
+                lineHeight: 1.2,
+                marginBottom: '1.25rem',
+                letterSpacing: '-0.01em',
               }}
             >
-              Your evenings deserve a calmer companion
+              You deserve to sleep.
             </h2>
             <p
               style={{
-                color: "rgba(245,240,232,0.55)",
-                fontSize: "0.97rem",
-                lineHeight: 1.65,
-                marginBottom: "1.75rem",
-                maxWidth: "34rem",
-                margin: "0 auto 1.75rem",
-                fontFamily: "sans-serif",
+                color: MUTED,
+                fontSize: '1rem',
+                lineHeight: 1.7,
+                maxWidth: '32rem',
+                margin: '0 auto 2rem',
               }}
             >
-              Begin with the Healer archetype. Build your sleep journal. Let Sovereign Memory surface
-              the patterns your tired mind cannot see.
+              MEOK is a sovereign AI companion that is available at 3am, remembers your patterns,
+              and never has an agenda except your wellbeing. No engagement loops. No blue light
+              traps. Just a calm presence that helps you find your way back to rest.
+            </p>
+            <Link
+              href="/birth"
+              style={{
+                display: 'inline-block',
+                background: GOLD,
+                color: '#0d0c18',
+                fontWeight: 800,
+                fontSize: '0.95rem',
+                padding: '0.875rem 2.25rem',
+                borderRadius: '9999px',
+                textDecoration: 'none',
+                letterSpacing: '0.02em',
+              }}
+            >
+              Meet MEOK &rarr;
+            </Link>
+            <p style={{ marginTop: '1rem', fontSize: '0.75rem', color: MUTED_FAINT }}>
+              Built by Nicholas Templeman &middot; MEOK AI LABS &middot; @meok_ai
+            </p>
+          </div>
+
+          {/* ── RELATED POSTS ── */}
+          <div style={{ marginTop: '4rem' }}>
+            <p
+              style={{
+                fontSize: '0.7rem',
+                fontWeight: 700,
+                color: MUTED_FAINT,
+                letterSpacing: '0.1em',
+                textTransform: 'uppercase' as const,
+                marginBottom: '1.25rem',
+              }}
+            >
+              Related Reading
             </p>
             <div
               style={{
-                display: "flex",
-                gap: "1rem",
-                justifyContent: "center",
-                flexWrap: "wrap" as const,
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
+                gap: '1rem',
               }}
             >
-              <Link
-                href="/birth"
-                style={{
-                  display: "inline-block",
-                  background: GOLD,
-                  color: BG,
-                  fontWeight: 700,
-                  fontSize: "0.95rem",
-                  padding: "0.8rem 2rem",
-                  borderRadius: "8px",
-                  textDecoration: "none",
-                  fontFamily: "sans-serif",
-                }}
-              >
-                Begin Your Birth Session
-              </Link>
-              <Link
-                href="/pricing"
-                style={{
-                  display: "inline-block",
-                  border: "1px solid rgba(201,168,76,0.5)",
-                  color: GOLD,
-                  fontWeight: 600,
-                  fontSize: "0.95rem",
-                  padding: "0.8rem 2rem",
-                  borderRadius: "8px",
-                  textDecoration: "none",
-                  fontFamily: "sans-serif",
-                }}
-              >
-                View Pricing
-              </Link>
+              {(
+                [
+                  { href: '/blog/ai-for-anxiety', label: 'AI for Anxiety' },
+                  { href: '/blog/ai-for-depression', label: 'AI for Depression' },
+                  { href: '/blog/ai-for-burnout', label: 'AI for Burnout' },
+                  { href: '/blog/ai-for-chronic-stress', label: 'AI for Chronic Stress' },
+                  { href: '/blog/ai-companion-vs-therapist', label: 'AI Companion vs Therapist' },
+                  {
+                    href: '/blog/why-meok-never-trains-on-you',
+                    label: 'Why MEOK Never Trains on You',
+                  },
+                ] as { href: string; label: string }[]
+              ).map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  style={{
+                    display: 'block',
+                    padding: '1rem 1.25rem',
+                    background: 'rgba(245,240,232,0.04)',
+                    border: '1px solid rgba(245,240,232,0.09)',
+                    borderRadius: '0.5rem',
+                    textDecoration: 'none',
+                    color: MUTED,
+                    fontSize: '0.875rem',
+                    fontWeight: 500,
+                    lineHeight: 1.4,
+                  }}
+                >
+                  {link.label} &rarr;
+                </Link>
+              ))}
             </div>
           </div>
 
-          {/* ─── Related ─────────────────────────────────────────────────── */}
-          <div style={{ marginTop: "3.5rem" }}>
-            <p
-              style={{
-                fontSize: "0.75rem",
-                fontWeight: 700,
-                letterSpacing: "0.1em",
-                textTransform: "uppercase" as const,
-                color: "rgba(245,240,232,0.3)",
-                marginBottom: "0.85rem",
-                fontFamily: "sans-serif",
-              }}
-            >
-              Related reading
-            </p>
-            {[
-              ["/blog/ai-for-ocd", "AI for OCD: Supportive Presence Without Compulsion Enabling"],
-              [
-                "/blog/ai-for-bipolar",
-                "AI for Bipolar Disorder: Mood Tracking, Stability Support, and Safe Boundaries",
-              ],
-              [
-                "/blog/ai-for-eating-disorders",
-                "AI and Eating Disorders: What Sovereign AI Does — and Doesn\u2019t — Do",
-              ],
-              [
-                "/blog/ai-for-entrepreneurs",
-                "AI for Entrepreneurs: Your Sovereign OS for Focus, Accountability, and Getting Things Done",
-              ],
-            ].map(([href, label]) => (
-              <Link
-                key={href}
-                href={href}
-                style={{
-                  display: "block",
-                  color: GOLD,
-                  fontSize: "0.92rem",
-                  textDecoration: "none",
-                  lineHeight: 1.5,
-                  marginBottom: "0.45rem",
-                  fontFamily: "sans-serif",
-                }}
-              >
-                &#8594;{" "}{label}
-              </Link>
-            ))}
-          </div>
         </div>
-
-        {/* ─── FOOTER ──────────────────────────────────────────────────────── */}
-        <div
-          style={{
-            borderTop: "1px solid rgba(245,240,232,0.07)",
-            padding: "2.5rem 1.5rem",
-            textAlign: "center" as const,
-          }}
-        >
-          <p
-            style={{
-              color: "rgba(245,240,232,0.28)",
-              fontSize: "0.82rem",
-              lineHeight: 1.65,
-              maxWidth: "36rem",
-              margin: "0 auto 0.5rem",
-              fontFamily: "sans-serif",
-            }}
-          >
-            Written by{" "}
-            <span style={{ color: "rgba(245,240,232,0.5)" }}>Nicholas Templeman</span>,
-            Founder of MEOK AI LABS — building sovereign AI companions governed by the Maternal Covenant.
-          </p>
-          <p
-            style={{
-              color: "rgba(245,240,232,0.18)",
-              fontSize: "0.78rem",
-              margin: "0 auto 1.5rem",
-              maxWidth: "36rem",
-              fontFamily: "sans-serif",
-            }}
-          >
-            This article is for informational purposes only and does not constitute medical advice,
-            diagnosis, or treatment. Always consult a qualified healthcare professional for persistent
-            sleep or mental health concerns.
-          </p>
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              gap: "1.5rem",
-              flexWrap: "wrap" as const,
-            }}
-          >
-            {[
-              ["/blog", "Blog"],
-              ["/how-it-works", "How It Works"],
-              ["/characters", "Characters"],
-              ["/pricing", "Pricing"],
-              ["/guardian", "Guardian"],
-            ].map(([href, label]) => (
-              <Link
-                key={href}
-                href={href}
-                style={{
-                  color: "rgba(245,240,232,0.3)",
-                  fontSize: "0.82rem",
-                  textDecoration: "none",
-                  fontFamily: "sans-serif",
-                }}
-              >
-                {label}
-              </Link>
-            ))}
-          </div>
-          <p
-            style={{
-              color: "rgba(245,240,232,0.18)",
-              fontSize: "0.78rem",
-              marginTop: "1rem",
-              fontFamily: "sans-serif",
-            }}
-          >
-            &copy; 2026 MEOK AI LABS. Created by Nicholas Templeman. All rights reserved.
-          </p>
-        </div>
-      </div>
-    </>
+      </section>
+    </div>
   )
 }

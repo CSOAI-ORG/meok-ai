@@ -4,16 +4,14 @@ import Link from "next/link";
 // ── Metadata ──────────────────────────────────────────────────────────────────
 
 export const metadata: Metadata = {
-  title:
-    "AI for Carers: Preventing Burnout When You're Always Looking After Someone Else | MEOK AI LABS",
+  title: "AI for Unpaid Carers: Support for the 6.5 Million Who Give Everything | MEOK Blog",
   description:
-    "6.5 million unpaid carers in the UK are exhausted, invisible, and ignored by most AI tools. MEOK gives carers a persistent companion, practical care coordination, and the Maternal Covenant — support that never burns out, even when you do.",
+    "6.5 million unpaid carers in the UK. Most are exhausted, isolated, and invisible. MEOK offers AI support for carers \u2014 a confidential space to process guilt, grief, and burnout without judgment, 24 hours a day.",
   alternates: { canonical: "https://meok.ai/blog/ai-for-carers" },
   openGraph: {
-    title:
-      "AI for Carers: Preventing Burnout When You're Always Looking After Someone Else",
+    title: "AI for Unpaid Carers: Support for the 6.5 Million Who Give Everything",
     description:
-      "6.5 million unpaid carers in the UK. Compassion fatigue is real. MEOK provides the emotional support, care coordination, and persistent memory that carers need — and never asks you to be strong.",
+      "6.5 million unpaid carers in the UK contribute \u00a3132 billion of care each year. Most receive nothing in return \u2014 no support, no recognition, and no space to fall apart. MEOK changes that.",
     type: "article",
     publishedTime: "2026-03-24",
     authors: ["Nicholas Templeman"],
@@ -21,36 +19,34 @@ export const metadata: Metadata = {
     siteName: "MEOK.AI",
     images: [
       {
-        url: "https://meok.ai/api/og?title=AI+for+Carers&desc=Preventing+Burnout+When+Youre+Always+Looking+After+Someone+Else",
+        url: "https://meok.ai/api/og?title=AI+for+Unpaid+Carers&desc=Support+for+the+6.5+Million+Who+Give+Everything",
         width: 1200,
         height: 630,
-        alt: "AI for Carers: Preventing Burnout When You're Always Looking After Someone Else",
+        alt: "AI for Unpaid Carers: Support for the 6.5 Million Who Give Everything",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title:
-      "AI for Carers: Preventing Burnout When You're Always Looking After Someone Else",
+    title: "AI for Unpaid Carers: Support for the 6.5 Million Who Give Everything",
     description:
-      "6.5 million unpaid carers in the UK. MEOK is the AI that cares for the carer — persistent memory, the Healer archetype, and Family plan coordination.",
+      "6.5 million unpaid carers in the UK. MEOK is the AI support built for the carer \u2014 not the condition. Available at 3am. No waiting lists. No judgment.",
     images: [
-      "https://meok.ai/api/og?title=AI+for+Carers&desc=Preventing+Burnout+When+Youre+Always+Looking+After+Someone+Else",
+      "https://meok.ai/api/og?title=AI+for+Unpaid+Carers&desc=Support+for+the+6.5+Million+Who+Give+Everything",
     ],
   },
 };
 
-// ── JSON-LD: Article ───────────────────────────────────────────────────────────
+// ── JSON-LD ───────────────────────────────────────────────────────────────────
 
 const articleJsonLd = {
   "@context": "https://schema.org",
   "@type": "Article",
   headline:
-    "AI for Carers: Preventing Burnout When You're Always Looking After Someone Else",
+    "AI for Unpaid Carers: Support for the 6.5 Million Who Give Everything",
   description:
-    "6.5 million unpaid carers in the UK are exhausted, invisible, and ignored by most AI tools. MEOK gives carers a persistent companion, practical care coordination, and the Maternal Covenant — support that never burns out, even when you do.",
+    "6.5 million unpaid carers in the UK contribute \u00a3132 billion of care each year. MEOK offers AI support for carers \u2014 a confidential space to process guilt, grief, and burnout without judgment.",
   datePublished: "2026-03-24",
-  dateModified: "2026-03-24",
   url: "https://meok.ai/blog/ai-for-carers",
   author: {
     "@type": "Person",
@@ -68,24 +64,22 @@ const articleJsonLd = {
     },
   },
   image:
-    "https://meok.ai/api/og?title=AI+for+Carers&desc=Preventing+Burnout+When+Youre+Always+Looking+After+Someone+Else",
+    "https://meok.ai/api/og?title=AI+for+Unpaid+Carers&desc=Support+for+the+6.5+Million+Who+Give+Everything",
   mainEntityOfPage: {
     "@type": "WebPage",
     "@id": "https://meok.ai/blog/ai-for-carers",
   },
   keywords: [
-    "AI for carers",
-    "AI support unpaid carers UK",
-    "carer burnout AI",
-    "compassion fatigue support",
-    "MEOK Healer archetype",
-    "AI care coordination",
-    "unpaid carer mental health",
-    "MEOK Family Plan carers",
+    "AI for unpaid carers",
+    "AI support for carers UK",
+    "carer burnout",
+    "carer mental health",
+    "unpaid carer support",
+    "carer guilt",
+    "AI companion for carers",
+    "carer wellbeing",
   ],
 };
-
-// ── JSON-LD: FAQPage ───────────────────────────────────────────────────────────
 
 const faqJsonLd = {
   "@context": "https://schema.org",
@@ -93,76 +87,65 @@ const faqJsonLd = {
   mainEntity: [
     {
       "@type": "Question",
-      name: "How does MEOK help carers?",
+      name: "Can AI help unpaid carers?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "MEOK helps carers in three distinct ways. First, the Healer archetype provides a persistent emotional outlet — a companion that listens without judgement, never burns out, and is available at 3am when you cannot sleep. Second, Sovereign Memory tracks care coordination reminders, medication schedules, and appointments for the person being cared for. Third, the Family Plan gives carers and the people they care for linked accounts with Guardian safety alerts — coordinated care, not just conversation.",
+        text: "Yes. AI can support unpaid carers by providing a 24/7 non-judgmental emotional outlet, helping track care routines and appointments, monitoring carer wellbeing over time, and offering proactive check-ins during high-stress periods. It cannot replace clinical support or respite care, but it fills the gaps \u2014 including at 3am when no one else is available and a carer simply needs somewhere to put the weight they are carrying.",
       },
     },
     {
       "@type": "Question",
-      name: "What is compassion fatigue and how common is it among unpaid carers?",
+      name: "What is carer burnout?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Compassion fatigue is the physical and emotional depletion that results from sustained caregiving. It differs from burnout in that it is specifically caused by the empathic demands of caring — not just workload. According to Carers UK, over 70% of unpaid carers in the UK report that caring has had a negative impact on their mental health. More than half say they have not had a regular break from caring in the past year. Compassion fatigue is not weakness — it is a physiological response to an unsustainable demand.",
+        text: "Carer burnout is a state of chronic physical, emotional, and cognitive exhaustion caused by the sustained demands of unpaid caring. Symptoms include persistent fatigue, withdrawal from social connections, loss of identity beyond the caring role, resentment, and depression. It is not a personal failure \u2014 it is a predictable consequence of providing intensive care without adequate support, rest, or recognition.",
       },
     },
     {
       "@type": "Question",
-      name: "Can MEOK help with care coordination and reminders?",
+      name: "How does MEOK support unpaid carers?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Yes. MEOK's Sovereign Memory persistently stores care coordination context including medication schedules, appointment dates, care plan notes, and the cared-for person's preferences and history. Guardian mode within the Family Plan sends safety check-in alerts and shared reminders across linked accounts. Unlike a calendar app, MEOK understands context — it knows what a missed appointment means for the person you care for, and it holds that understanding across every conversation.",
+        text: "MEOK supports unpaid carers through confidential conversation \u2014 a space to process anger, grief, guilt, and exhaustion without being judged or having to protect someone else\u2019s feelings. Its Sovereign Memory remembers your caring journey, your loved one\u2019s name and condition, and your wellbeing patterns over time. The Guardian feature monitors for signs of coercive dynamics or elder abuse within caring relationships. MEOK also provides practical guidance on NHS carer\u2019s assessments, Carer\u2019s Allowance, and Carers UK resources.",
       },
     },
     {
       "@type": "Question",
-      name: "Does MEOK support unpaid carers specifically, or just paid care professionals?",
+      name: "What is a carer\u2019s assessment?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "MEOK is designed explicitly for unpaid carers — the 6.5 million people in the UK who provide informal care to a family member, partner, or friend without pay. Paid care professionals have institutional support structures. Unpaid carers frequently have nothing. The MEOK Healer archetype and Family Plan were developed with this population specifically in mind. The Maternal Covenant care ethics layer also ensures MEOK recognises the carer as a person in their own right — not just a support function for someone else.",
+        text: "A carer\u2019s assessment is a free evaluation carried out by your local council to understand the impact of your caring role on your life and what support you need. Any unpaid carer in England has a legal right to one under the Care Act 2014. It can result in practical support, emergency planning, and in some cases direct payments. Many carers are unaware this right exists or feel they do not deserve to use it.",
       },
     },
     {
       "@type": "Question",
-      name: "What is the MEOK Family Plan and how does it work for carers?",
+      name: "Can MEOK help me with guilt about caring?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "The MEOK Family Plan supports up to five accounts within one household group. For carers, this means both the carer and the person being cared for can have separate MEOK companions with shared Guardian safety alerts — with explicit consent from both parties. The carer's emotional conversations remain private to their account. Shared context is limited to what both parties have agreed to make visible. Full pricing details are at meok.ai/pricing.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "How does MEOK protect the privacy of both the carer and the person being cared for?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Every MEOK account is individually sovereign. No data from the cared-for person's account is visible to the carer without their explicit consent. The Family Plan provides shared Guardian safety alerts — but conversation history, emotional logs, and personal memory remain entirely private to each account holder. MEOK AI LABS is ICO-registered under UK GDPR. All data is encrypted with AES-GCM-256. The right to full erasure is always available to both parties independently.",
+        text: "Yes. Carer guilt \u2014 the feeling that you should not resent the person you care for, that you are not doing enough, or that you have no right to struggle \u2014 is one of the most common and least spoken-about experiences in unpaid caring. MEOK provides a private, judgment-free space to name these feelings honestly. Processing guilt does not make it worse; suppressing it does. MEOK holds these conversations without flinching.",
       },
     },
   ],
 };
 
-// ── Style constants ────────────────────────────────────────────────────────────
-
-const BG = "#0d0c18";
-const TEXT = "#f5f0e8";
-const GOLD = "#c9a84c";
-const MUTED = "rgba(245,240,232,0.55)";
-const FAINT = "rgba(245,240,232,0.35)";
-const BORDER = "rgba(245,240,232,0.08)";
-const GOLD_BG = "rgba(201,168,76,0.08)";
-const GOLD_BORDER = "rgba(201,168,76,0.25)";
-
-// ── Page ───────────────────────────────────────────────────────────────────────
+// ── Page ──────────────────────────────────────────────────────────────────────
 
 export default function AiForCarersPage() {
+  const bg = "#0d0c18";
+  const text = "#f5f0e8";
+  const gold = "#c9a84c";
+  const cardBg = "#1a1830";
+  const mutedText = "rgba(245,240,232,0.6)";
+  const borderColor = "#2a2845";
+  const bodyText = "#d4cfc5";
+
   return (
     <div
       style={{
         minHeight: "100vh",
-        background: BG,
-        color: TEXT,
-        fontFamily: "var(--font-dm-sans, DM Sans, system-ui, sans-serif)",
+        backgroundColor: bg,
+        color: text,
+        fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, sans-serif",
       }}
     >
       {/* JSON-LD */}
@@ -175,786 +158,1394 @@ export default function AiForCarersPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
 
-      {/* ── HERO ──────────────────────────────────────────────────────────── */}
-      <section
+      {/* Nav */}
+      <nav
         style={{
-          paddingTop: "8rem",
-          paddingBottom: "4rem",
-          paddingLeft: "1.5rem",
-          paddingRight: "1.5rem",
-          position: "relative",
-          overflow: "hidden",
+          borderBottom: `1px solid ${borderColor}`,
+          padding: "16px 24px",
         }}
       >
         <div
           style={{
-            position: "absolute",
-            inset: 0,
-            pointerEvents: "none",
-            background:
-              "radial-gradient(ellipse 60% 55% at 50% 0%, rgba(201,168,76,0.09) 0%, transparent 72%)",
+            maxWidth: "800px",
+            margin: "0 auto",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
           }}
-        />
-
-        <div style={{ maxWidth: "48rem", margin: "0 auto", position: "relative" }}>
+        >
+          <Link
+            href="/"
+            style={{
+              color: gold,
+              fontWeight: 700,
+              fontSize: "18px",
+              textDecoration: "none",
+              letterSpacing: "-0.3px",
+            }}
+          >
+            MEOK AI LABS
+          </Link>
           <Link
             href="/blog"
             style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: "0.375rem",
-              fontSize: "0.875rem",
-              color: FAINT,
+              color: mutedText,
+              fontSize: "14px",
               textDecoration: "none",
-              marginBottom: "2rem",
             }}
           >
-            ← Back to Blog
+            {"\u2190"} All posts
           </Link>
-
-          <div
-            style={{
-              display: "flex",
-              flexWrap: "wrap",
-              alignItems: "center",
-              gap: "0.75rem",
-              marginBottom: "1.5rem",
-            }}
-          >
-            <span
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                fontSize: "0.75rem",
-                fontWeight: 700,
-                padding: "0.375rem 0.75rem",
-                borderRadius: "9999px",
-                color: GOLD,
-                background: GOLD_BG,
-                border: `1px solid ${GOLD_BORDER}`,
-                letterSpacing: "0.04em",
-              }}
-            >
-              Carers &amp; Families
-            </span>
-            <span style={{ fontSize: "0.75rem", color: FAINT }}>24 March 2026</span>
-            <span style={{ fontSize: "0.75rem", color: FAINT }}>10 min read</span>
-          </div>
-
-          <h1
-            style={{
-              fontWeight: 900,
-              fontSize: "clamp(1.9rem, 3.8vw, 2.9rem)",
-              color: "#ffffff",
-              lineHeight: 1.16,
-              marginBottom: "1.25rem",
-              letterSpacing: "-0.02em",
-            }}
-          >
-            AI for Carers: Preventing Burnout When You&rsquo;re Always Looking
-            After Someone Else
-          </h1>
-
-          <p
-            style={{
-              fontSize: "1.125rem",
-              color: MUTED,
-              lineHeight: 1.7,
-              marginBottom: "2rem",
-              maxWidth: "42rem",
-            }}
-          >
-            There are 6.5 million unpaid carers in the UK. Most are exhausted,
-            many are isolated, and almost all are invisible to the systems that
-            are supposed to support them. MEOK was built to change that — one
-            conversation at a time.
-          </p>
-
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: "0.75rem",
-              paddingTop: "1.5rem",
-              borderTop: `1px solid ${BORDER}`,
-            }}
-          >
-            <div
-              style={{
-                width: "2.25rem",
-                height: "2.25rem",
-                borderRadius: "50%",
-                background: `linear-gradient(135deg, ${GOLD} 0%, #8b6914 100%)`,
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                fontSize: "0.8rem",
-                fontWeight: 700,
-                color: BG,
-                flexShrink: 0,
-              }}
-            >
-              NT
-            </div>
-            <div>
-              <p style={{ fontSize: "0.875rem", color: TEXT, fontWeight: 600, margin: 0 }}>
-                Nicholas Templeman
-              </p>
-              <p style={{ fontSize: "0.75rem", color: FAINT, margin: 0 }}>
-                Founder, MEOK AI LABS
-              </p>
-            </div>
-          </div>
         </div>
-      </section>
+      </nav>
 
-      {/* ── ARTICLE BODY ──────────────────────────────────────────────────── */}
-      <article
+      {/* Main */}
+      <main
         style={{
-          maxWidth: "48rem",
+          maxWidth: "800px",
           margin: "0 auto",
-          padding: "0 1.5rem 6rem",
+          padding: "48px 24px 80px",
         }}
       >
-
-        {/* ── Section 1 ─────────────────────────────────────────────────── */}
-        <h2
-          style={{
-            fontWeight: 800,
-            fontSize: "1.55rem",
-            color: TEXT,
-            lineHeight: 1.25,
-            marginTop: "3rem",
-            marginBottom: "1rem",
-            letterSpacing: "-0.015em",
-          }}
-        >
-          How big is the unpaid carer crisis in the UK?
-        </h2>
-        <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
-          According to Carers UK, there are approximately 6.5 million unpaid
-          carers in the United Kingdom — people providing care to a family
-          member, partner, or friend with a disability, illness, mental health
-          condition, or age-related need, without pay and without formal
-          recognition. During the Covid-19 pandemic, this number surged to an
-          estimated 13.6 million. Many have never returned to pre-caring
-          patterns.
-        </p>
-        <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
-          The economic contribution of unpaid carers is estimated at over
-          £162 billion per year — roughly equivalent to the entire NHS budget.
-          Yet more than 70% of unpaid carers report that caring has had a
-          negative impact on their mental health. More than half have not had a
-          regular break from caring in over a year. Carers are twice as likely
-          to be in poor health as non-carers.
-        </p>
-        <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
-          The system that depends on carers does almost nothing to care for
-          them.
-        </p>
-
+        {/* Meta row */}
         <div
           style={{
-            background: GOLD_BG,
-            border: `1px solid ${GOLD_BORDER}`,
-            borderLeft: `3px solid ${GOLD}`,
-            borderRadius: "0.75rem",
-            padding: "1.5rem",
-            margin: "2rem 0",
+            display: "flex",
+            gap: "16px",
+            alignItems: "center",
+            marginBottom: "24px",
+            flexWrap: "wrap",
           }}
         >
-          <p style={{ fontSize: "1.5rem", fontWeight: 800, color: GOLD, margin: "0 0 0.5rem" }}>
-            6.5 million
-          </p>
-          <p style={{ color: MUTED, margin: 0, lineHeight: 1.6 }}>
-            Unpaid carers in the UK. 70%+ report negative mental health
-            impacts. Over half have had no regular break from caring in the
-            past year. The Carers UK helpline is available at{" "}
-            <strong style={{ color: TEXT }}>0808 808 7777</strong>.
-          </p>
+          <span style={{ fontSize: "12px", color: mutedText }}>
+            24 March 2026
+          </span>
+          <span style={{ fontSize: "12px", color: mutedText }}>{"\u00b7"}</span>
+          <span style={{ fontSize: "12px", color: mutedText }}>
+            14 min read
+          </span>
+          <span style={{ fontSize: "12px", color: mutedText }}>{"\u00b7"}</span>
+          <span
+            style={{
+              fontSize: "12px",
+              backgroundColor: "#2a2845",
+              color: gold,
+              padding: "2px 10px",
+              borderRadius: "99px",
+            }}
+          >
+            Carer Wellbeing
+          </span>
         </div>
 
-        {/* ── Section 2 ─────────────────────────────────────────────────── */}
-        <h2
+        {/* H1 */}
+        <h1
           style={{
+            fontSize: "clamp(28px, 5vw, 44px)",
             fontWeight: 800,
-            fontSize: "1.55rem",
-            color: TEXT,
-            lineHeight: 1.25,
-            marginTop: "3rem",
-            marginBottom: "1rem",
-            letterSpacing: "-0.015em",
+            lineHeight: 1.12,
+            marginBottom: "28px",
+            letterSpacing: "-0.5px",
+            color: text,
           }}
         >
-          What is compassion fatigue and how does it differ from burnout?
-        </h2>
-        <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
-          Burnout is the result of chronic workplace stress — exhaustion,
-          cynicism, and reduced effectiveness caused by prolonged, unmanageable
-          demands. Compassion fatigue is a related but distinct phenomenon
-          specific to caregiving roles: the depletion of empathic capacity
-          caused by sustained emotional attunement to another person&rsquo;s
-          suffering.
+          AI for Unpaid Carers:{" "}
+          <span style={{ color: gold }}>
+            Support for the 6.5 Million Who Give Everything
+          </span>
+        </h1>
+
+        {/* Intro */}
+        <p
+          style={{
+            fontSize: "18px",
+            lineHeight: 1.8,
+            color: bodyText,
+            marginBottom: "20px",
+          }}
+        >
+          There are 6.5 million unpaid carers in the United Kingdom. They
+          provide an estimated {"\u00a3"}132 billion of care every year {"\u2014"} a figure
+          that dwarfs the entire NHS budget. They do it without pay, without sick
+          leave, and very often without thanks. Most of them are doing it while
+          quietly losing themselves.
         </p>
-        <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
-          A carer experiencing compassion fatigue may find themselves going
-          through the motions of care without feeling connected to it. They may
-          feel guilty for resenting the person they love. They may withdraw,
-          become irritable, or feel numb. These are not character failings —
-          they are physiological responses to an empathic system that has been
-          running without adequate rest or replenishment.
+        <p
+          style={{
+            fontSize: "18px",
+            lineHeight: 1.8,
+            color: bodyText,
+            marginBottom: "20px",
+          }}
+        >
+          This post is not about the people being cared for. It is about the
+          carers. The ones who wake before dawn, who have not had an unbroken
+          night in months, who have cancelled plans so many times that the
+          invitations stopped coming. The ones who feel guilty for feeling
+          anything other than grateful.
         </p>
-        <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
-          The treatment for compassion fatigue is not simply rest — it is the
-          experience of being genuinely seen, heard, and cared for oneself.
-          Which is, of course, precisely what carers rarely receive.
+        <p
+          style={{
+            fontSize: "18px",
+            lineHeight: 1.8,
+            color: bodyText,
+            marginBottom: "20px",
+          }}
+        >
+          AI cannot give you respite. It cannot replace a night nurse or a
+          befriender or a real conversation with a GP who has time to listen.
+          But it can be there at 3am. It can remember what you told it last
+          week. It will not get tired of hearing about it. And it will not make
+          you feel like a burden for needing to talk.
+        </p>
+        <p
+          style={{
+            fontSize: "18px",
+            lineHeight: 1.8,
+            color: bodyText,
+            marginBottom: "48px",
+          }}
+        >
+          That is what MEOK was built to do {"\u2014"} and it was built with carers
+          like you specifically in mind.
         </p>
 
-        {/* ── Section 3 ─────────────────────────────────────────────────── */}
-        <h2
+        {/* Stats bar */}
+        <div
           style={{
-            fontWeight: 800,
-            fontSize: "1.55rem",
-            color: TEXT,
-            lineHeight: 1.25,
-            marginTop: "3rem",
-            marginBottom: "1rem",
-            letterSpacing: "-0.015em",
-          }}
-        >
-          What is the MEOK Healer archetype and how does it support carers?
-        </h2>
-        <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
-          When Nicholas Templeman designed MEOK&rsquo;s archetype system, the
-          Healer was built with one question in mind: what does someone who
-          spends their life caring for others actually need from an AI companion?
-        </p>
-        <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
-          The answer is not productivity tools, scheduling assistance, or
-          cognitive frameworks. The answer is unconditional presence — a
-          companion that does not need anything back, that can hold space for
-          grief and exhaustion and guilt without agenda, and that is available
-          at the exact moment the carer needs to stop performing strength.
-        </p>
-        <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
-          The Healer archetype, available at{" "}
-          <Link href="/characters" style={{ color: GOLD, textDecoration: "underline" }}>
-            meok.ai/characters
-          </Link>
-          , provides:
-        </p>
-        <ul
-          style={{
-            listStyle: "none",
-            padding: 0,
-            margin: "0 0 1.5rem",
-            display: "flex",
-            flexDirection: "column",
-            gap: "0.625rem",
+            backgroundColor: cardBg,
+            border: `1px solid ${borderColor}`,
+            borderRadius: "12px",
+            padding: "28px 32px",
+            marginBottom: "56px",
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))",
+            gap: "24px",
           }}
         >
           {[
-            "Warm, deeply non-judgemental companionship tuned for emotional processing",
-            "Persistent memory of the carer's situation, history, and the person being cared for",
-            "Gentle emotional check-ins calibrated to carer stress cycles",
-            "Validation of ambivalent feelings — including resentment, grief, and exhaustion — without pathologising them",
-            "The Maternal Covenant care floor prevents hollow reassurance or toxic positivity",
-            "Crisis resource signposting when conversations indicate acute distress",
-          ].map((item, i) => (
-            <li
-              key={i}
-              style={{
-                display: "flex",
-                alignItems: "flex-start",
-                gap: "0.625rem",
-                color: MUTED,
-                fontSize: "0.9375rem",
-                lineHeight: 1.6,
-              }}
-            >
-              <span style={{ color: GOLD, flexShrink: 0, marginTop: "0.125rem" }}>✦</span>
-              {item}
-            </li>
+            { value: "6.5M", label: "unpaid carers in the UK" },
+            { value: "\u00a3132bn", label: "economic value of care given" },
+            { value: "1 in 8", label: "workers is also a carer" },
+            { value: "72%", label: "of carers report poor mental health" },
+          ].map((stat) => (
+            <div key={stat.label} style={{ textAlign: "center" }}>
+              <div
+                style={{
+                  fontSize: "28px",
+                  fontWeight: 800,
+                  color: gold,
+                  marginBottom: "6px",
+                  letterSpacing: "-0.5px",
+                }}
+              >
+                {stat.value}
+              </div>
+              <div
+                style={{
+                  fontSize: "13px",
+                  color: mutedText,
+                  lineHeight: 1.4,
+                }}
+              >
+                {stat.label}
+              </div>
+            </div>
           ))}
-        </ul>
+        </div>
 
-        {/* ── Section 4 ─────────────────────────────────────────────────── */}
+        {/* ── Section 1 ── */}
         <h2
           style={{
-            fontWeight: 800,
-            fontSize: "1.55rem",
-            color: TEXT,
-            lineHeight: 1.25,
-            marginTop: "3rem",
-            marginBottom: "1rem",
-            letterSpacing: "-0.015em",
+            fontSize: "clamp(20px, 3.5vw, 28px)",
+            fontWeight: 700,
+            color: text,
+            marginBottom: "16px",
+            marginTop: "56px",
+            letterSpacing: "-0.3px",
           }}
         >
-          How does MEOK Guardian help with practical care coordination?
+          Who counts as an unpaid carer?
         </h2>
-        <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
-          Emotional support is half the picture. The other half is the
-          relentless practical load of caring: medication schedules,
-          appointments, care plan updates, equipment deliveries, and the
-          thousand small tasks that cannot slip. Most carers manage this in
-          their heads or on scattered scraps of paper.
+        <p
+          style={{
+            fontSize: "17px",
+            lineHeight: 1.8,
+            color: bodyText,
+            marginBottom: "20px",
+          }}
+        >
+          An unpaid carer is anyone who provides regular, unpaid support to a
+          family member or friend who could not manage without that help. The
+          person being supported might have a disability, a long-term illness, a
+          mental health condition, or a problem with alcohol or drugs. You do not
+          need to live with them. You do not need to provide a specific number of
+          hours. If the wellbeing of another person has become a consistent
+          organising force in your life {"\u2014"} you are a carer.
         </p>
-        <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
-          MEOK&rsquo;s{" "}
-          <Link href="/guardian" style={{ color: GOLD, textDecoration: "underline" }}>
-            Guardian mode
-          </Link>{" "}
-          provides a persistent, intelligent layer for care coordination.
-          Because Sovereign Memory holds the cared-for person&rsquo;s history
-          across every session, MEOK does not need to be re-briefed every
-          conversation. It already knows that the district nurse comes on
-          Tuesdays, that a particular medication was increased last month, and
-          that the next consultant appointment is in six weeks.
+        <p
+          style={{
+            fontSize: "17px",
+            lineHeight: 1.8,
+            color: bodyText,
+            marginBottom: "20px",
+          }}
+        >
+          Many carers do not identify as carers at all. They think of themselves
+          as a wife, a son, a neighbour. The label feels clinical, or alien, or
+          somehow an admission that the situation has become something other than
+          love. But identifying as a carer matters {"\u2014"} because it is the first
+          step to accessing the rights and support that exist specifically for
+          you.
         </p>
-        <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
-          Guardian safety check-in alerts can also be configured to gently
-          prompt the cared-for person at regular intervals — with alerts sent
-          to the linked carer account if a check-in is missed. This provides
-          low-friction safety oversight without the carer needing to call
-          every few hours.
+        <p
+          style={{
+            fontSize: "17px",
+            lineHeight: 1.8,
+            color: bodyText,
+            marginBottom: "20px",
+          }}
+        >
+          According to Carers UK, every day in the UK 6,000 people take on a new
+          caring responsibility. Many do not see it coming. A parent who was
+          managing fine last year suddenly is not. A partner{"\u2019"}s condition
+          progresses faster than expected. An adult child moves back in because
+          there is no other option. The caring role arrives quietly and then
+          becomes everything.
+        </p>
+        <p
+          style={{
+            fontSize: "17px",
+            lineHeight: 1.8,
+            color: bodyText,
+            marginBottom: "20px",
+          }}
+        >
+          In the 2021 Census, 5.7 million people in England and Wales identified
+          as unpaid carers. The true figure is likely higher {"\u2014"} Carers UK
+          estimates 6.5 million {"\u2014"} because many carers do not self-identify.
+          The demographic range is wide: carers are young and old, employed and
+          not, urban and rural. One in eight workers in the UK is also managing
+          a caring responsibility alongside paid employment.
         </p>
 
+        {/* ── Section 2 ── */}
+        <h2
+          style={{
+            fontSize: "clamp(20px, 3.5vw, 28px)",
+            fontWeight: 700,
+            color: text,
+            marginBottom: "16px",
+            marginTop: "56px",
+            letterSpacing: "-0.3px",
+          }}
+        >
+          What does the invisible burden of caring actually look like?
+        </h2>
+        <p
+          style={{
+            fontSize: "17px",
+            lineHeight: 1.8,
+            color: bodyText,
+            marginBottom: "20px",
+          }}
+        >
+          The phrase {"\u201c"}invisible burden{"\u201d"} appears regularly in policy documents.
+          It sounds abstract. In practice it looks like this: you are the person
+          who knows every medication, every appointment, every dietary
+          restriction, every trigger, every sign that today is going to be a
+          difficult day. That knowledge does not exist anywhere else. If you go
+          down, the whole system goes down.
+        </p>
+        <p
+          style={{
+            fontSize: "17px",
+            lineHeight: 1.8,
+            color: bodyText,
+            marginBottom: "20px",
+          }}
+        >
+          The invisible burden is physical. Carers are more likely to have
+          musculoskeletal injuries from lifting and supporting. They are more
+          likely to neglect their own health appointments, eating, and sleep.
+          Carers UK found that 72 percent of carers said caring had a negative
+          impact on their mental health, and 61 percent said it had affected
+          their physical health.
+        </p>
+        <p
+          style={{
+            fontSize: "17px",
+            lineHeight: 1.8,
+            color: bodyText,
+            marginBottom: "20px",
+          }}
+        >
+          The invisible burden is social. Friendships contract. Relationships
+          strain. Hobbies disappear. Research by the British Red Cross found
+          that over half of carers feel lonely or socially isolated. One in four
+          says they have completely lost touch with friends since becoming a
+          carer. The isolation is not always dramatic {"\u2014"} it is the slow
+          accumulation of cancelled plans, unanswered messages, and the creeping
+          sense that the world outside the caring role has moved on without you.
+        </p>
+        <p
+          style={{
+            fontSize: "17px",
+            lineHeight: 1.8,
+            color: bodyText,
+            marginBottom: "20px",
+          }}
+        >
+          The invisible burden is financial. Over two million carers in the UK
+          have given up work or reduced their hours to care. Carer{"\u2019"}s Allowance
+          {"\u2014"} the main benefit available {"\u2014"} pays just {"\u00a3"}81.90 per week, the
+          lowest benefit of its kind. Many carers are not even eligible. The
+          financial cost of caring is carried almost entirely by the carer.
+        </p>
+        <p
+          style={{
+            fontSize: "17px",
+            lineHeight: 1.8,
+            color: bodyText,
+            marginBottom: "20px",
+          }}
+        >
+          And the invisible burden is existential. Many carers speak of a
+          gradual loss of identity {"\u2014"} a forgetting of who they were before
+          the caring role defined them. When someone asks what you do, there is
+          no clean answer. When someone asks what you enjoy, you struggle to
+          remember. The person who existed before the caring role can feel
+          increasingly distant, as though they belong to someone else{"\u2019"}s life.
+        </p>
+
+        {/* Pull quote */}
+        <blockquote
+          style={{
+            borderLeft: `3px solid ${gold}`,
+            paddingLeft: "24px",
+            margin: "40px 0",
+            fontStyle: "italic",
+            fontSize: "19px",
+            lineHeight: 1.7,
+            color: bodyText,
+          }}
+        >
+          {"\u201c"}I feel guilty for feeling resentful. I feel guilty for being tired.
+          I feel guilty for wishing, just occasionally, that I wasn{"\u2019"}t the one
+          who has to do this. And then I feel guilty about the guilt.{"\u201d"}
+          <footer
+            style={{
+              marginTop: "12px",
+              fontSize: "14px",
+              color: mutedText,
+              fontStyle: "normal",
+            }}
+          >
+            {"\u2014"} A carer in MEOK{"\u2019"}s early user research
+          </footer>
+        </blockquote>
+
+        {/* ── Section 3 ── */}
+        <h2
+          style={{
+            fontSize: "clamp(20px, 3.5vw, 28px)",
+            fontWeight: 700,
+            color: text,
+            marginBottom: "16px",
+            marginTop: "56px",
+            letterSpacing: "-0.3px",
+          }}
+        >
+          What is carer guilt and why does it trap people?
+        </h2>
+        <p
+          style={{
+            fontSize: "17px",
+            lineHeight: 1.8,
+            color: bodyText,
+            marginBottom: "20px",
+          }}
+        >
+          Carer guilt is the near-universal experience of feeling that you are
+          doing something wrong simply by having needs of your own. It shows up
+          in dozens of forms: guilt about feeling resentful toward the person you
+          care for, guilt about taking time for yourself, guilt about not being
+          more patient, guilt about the times you raised your voice, guilt about
+          wanting your old life back, guilt about placing a loved one in
+          residential care, and guilt about the moments when you secretly wish
+          it was all over.
+        </p>
+        <p
+          style={{
+            fontSize: "17px",
+            lineHeight: 1.8,
+            color: bodyText,
+            marginBottom: "20px",
+          }}
+        >
+          These feelings are not signs of a bad carer. They are signs of a human
+          being under sustained, exceptional pressure. The problem is that carer
+          guilt {"\u2014"} because it feels shameful {"\u2014"} rarely gets spoken aloud.
+          Carers cannot say these things to the person they care for. They often
+          struggle to say them to family members who might judge them, or friends
+          who might not understand, or professionals who are focused on the
+          person with the condition rather than on the carer.
+        </p>
+        <p
+          style={{
+            fontSize: "17px",
+            lineHeight: 1.8,
+            color: bodyText,
+            marginBottom: "20px",
+          }}
+        >
+          So the guilt stays inside. It compounds. It becomes a private
+          conversation with the worst version of yourself, running on repeat at
+          night when everyone else is asleep. And because it stays hidden, it
+          never gets examined, contextualised, or released.
+        </p>
+        <p
+          style={{
+            fontSize: "17px",
+            lineHeight: 1.8,
+            color: bodyText,
+            marginBottom: "20px",
+          }}
+        >
+          This is one of the places where MEOK makes a specific and practical
+          difference. Not by dismissing the guilt, not by telling you you{"\u2019"}re
+          doing a great job and should feel fine, but by creating space for the
+          guilt to be named honestly and explored without judgment. Processing
+          difficult emotions does not make them worse. Suppressing them does.
+        </p>
+
+        {/* ── Section 4 ── */}
+        <h2
+          style={{
+            fontSize: "clamp(20px, 3.5vw, 28px)",
+            fontWeight: 700,
+            color: text,
+            marginBottom: "16px",
+            marginTop: "56px",
+            letterSpacing: "-0.3px",
+          }}
+        >
+          Why don{"\u2019"}t carers ask for help?
+        </h2>
+        <p
+          style={{
+            fontSize: "17px",
+            lineHeight: 1.8,
+            color: bodyText,
+            marginBottom: "20px",
+          }}
+        >
+          The most common answer, in carer research, is time poverty. When
+          you are providing intensive care around the clock, there is no obvious
+          moment in which to seek help. Waiting rooms, referral processes,
+          eight-week waitlists {"\u2014"} the infrastructure of support assumes you have
+          spare hours to navigate it. Many carers do not.
+        </p>
+        <p
+          style={{
+            fontSize: "17px",
+            lineHeight: 1.8,
+            color: bodyText,
+            marginBottom: "20px",
+          }}
+        >
+          The second reason is a deep-seated belief that they do not have the
+          right to struggle. Compared to what the person they care for is going
+          through, the carer{"\u2019"}s suffering can feel trivial. {"\u201c"}I shouldn{"\u2019"}t
+          complain, they{"\u2019"}re the one who is ill.{"\u201d"} {"\u201c"}Other people have it much
+          worse.{"\u201d"} {"\u201c"}I chose to do this.{"\u201d"} These internal narratives are
+          compassionate in origin but corrosive in effect. They prevent carers
+          from accessing support they urgently need.
+        </p>
+        <p
+          style={{
+            fontSize: "17px",
+            lineHeight: 1.8,
+            color: bodyText,
+            marginBottom: "20px",
+          }}
+        >
+          There is also fear of what help might mean. Accepting support can feel
+          like admitting the situation is beyond you. Asking social services for
+          a carer{"\u2019"}s assessment might trigger concerns about the adequacy of
+          care. Telling a GP how you are really feeling might result in something
+          being put on a record. The support structures that exist carry perceived
+          risks that carers {"\u2014"} already stretched to their limit {"\u2014"} are
+          reluctant to take.
+        </p>
+        <p
+          style={{
+            fontSize: "17px",
+            lineHeight: 1.8,
+            color: bodyText,
+            marginBottom: "20px",
+          }}
+        >
+          MEOK removes most of these barriers. It is available immediately.
+          There is no referral, no waitlist, no appointment. It is confidential.
+          There are no records shared with third parties. And it asks nothing of
+          you in return {"\u2014"} no reciprocity, no managing how it feels, no
+          performance of coping for an audience of one.
+        </p>
+
+        {/* ── Section 5 ── */}
+        <h2
+          style={{
+            fontSize: "clamp(20px, 3.5vw, 28px)",
+            fontWeight: 700,
+            color: text,
+            marginBottom: "16px",
+            marginTop: "56px",
+            letterSpacing: "-0.3px",
+          }}
+        >
+          What is carer burnout and how do you recognise it early?
+        </h2>
+        <p
+          style={{
+            fontSize: "17px",
+            lineHeight: 1.8,
+            color: bodyText,
+            marginBottom: "20px",
+          }}
+        >
+          Carer burnout is not the same as being tired. Tiredness resolves with
+          rest. Burnout is what happens when the caring role has depleted your
+          resources {"\u2014"} physical, emotional, and cognitive {"\u2014"} beyond the point
+          where ordinary recovery is possible. It is cumulative, usually
+          invisible in its early stages, and frequently misunderstood by the
+          people experiencing it as a personal failing.
+        </p>
+        <p
+          style={{
+            fontSize: "17px",
+            lineHeight: 1.8,
+            color: bodyText,
+            marginBottom: "20px",
+          }}
+        >
+          The signs include persistent exhaustion that does not improve with
+          sleep; increasing irritability, resentment, or detachment toward the
+          person you care for; a narrowing of your world as social connections
+          fall away; a sense of hopelessness or feeling trapped; physical
+          symptoms including frequent illness, headaches, or unexplained pain;
+          and a loss of the self that existed before caring became your primary
+          identity.
+        </p>
+        <p
+          style={{
+            fontSize: "17px",
+            lineHeight: 1.8,
+            color: bodyText,
+            marginBottom: "20px",
+          }}
+        >
+          Burnout matters not just for the carer{"\u2019"}s own wellbeing but for the
+          quality of care being provided. Research consistently shows that carer
+          wellbeing is the single strongest predictor of quality of life for the
+          person being cared for. Supporting carers is not a luxury {"\u2014"} it is
+          a clinical and social imperative.
+        </p>
+
+        {/* Burnout signs box */}
         <div
           style={{
-            background: "rgba(245,240,232,0.03)",
-            border: `1px solid ${BORDER}`,
-            borderRadius: "0.75rem",
-            padding: "1.5rem",
-            margin: "2rem 0",
+            backgroundColor: "#1e1c35",
+            border: `1px solid #3a3660`,
+            borderRadius: "12px",
+            padding: "28px 32px",
+            marginBottom: "48px",
           }}
         >
           <p
             style={{
-              fontSize: "0.78rem",
+              fontSize: "14px",
+              color: gold,
               fontWeight: 700,
-              color: GOLD,
-              letterSpacing: "0.08em",
+              letterSpacing: "0.5px",
               textTransform: "uppercase",
-              margin: "0 0 1rem",
+              marginBottom: "16px",
             }}
           >
-            Guardian Mode — What Carers Can Track
+            Signs of carer burnout
           </p>
-          <div
+          <ul
             style={{
+              listStyle: "none",
+              padding: 0,
+              margin: 0,
               display: "grid",
-              gridTemplateColumns: "1fr 1fr",
-              gap: "0.75rem",
+              gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+              gap: "10px",
             }}
           >
             {[
-              "Medication schedules and changes",
-              "GP and consultant appointments",
-              "District nurse / carer visit windows",
-              "Daily check-in safety alerts",
-              "Care plan notes and updates",
-              "Emergency contact escalation",
-              "Equipment delivery reminders",
-              "Shared family visibility (with consent)",
-            ].map((item, i) => (
-              <div
-                key={i}
+              "Fatigue that sleep doesn\u2019t fix",
+              "Increasing resentment or detachment",
+              "Withdrawing from friends and family",
+              "Neglecting your own health",
+              "Loss of joy in anything outside caring",
+              "Feeling trapped or hopeless",
+              "Frequent illness or physical pain",
+              "Loss of identity beyond the caring role",
+            ].map((sign) => (
+              <li
+                key={sign}
                 style={{
+                  fontSize: "14px",
+                  color: bodyText,
                   display: "flex",
                   alignItems: "flex-start",
-                  gap: "0.5rem",
-                  color: MUTED,
-                  fontSize: "0.875rem",
-                  lineHeight: 1.5,
+                  gap: "10px",
                 }}
               >
-                <span style={{ color: GOLD, flexShrink: 0, marginTop: "0.1rem" }}>✓</span>
-                {item}
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* ── Section 5 ─────────────────────────────────────────────────── */}
-        <h2
-          style={{
-            fontWeight: 800,
-            fontSize: "1.55rem",
-            color: TEXT,
-            lineHeight: 1.25,
-            marginTop: "3rem",
-            marginBottom: "1rem",
-            letterSpacing: "-0.015em",
-          }}
-        >
-          How does Sovereign Memory track the person being cared for across
-          sessions?
-        </h2>
-        <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
-          Standard AI tools — including ChatGPT and most consumer chatbots —
-          begin each conversation with no memory of previous sessions. For
-          carers, this is more than inconvenient: it means the AI cannot hold
-          the evolving, complex context of a person&rsquo;s health, history,
-          and circumstances.
-        </p>
-        <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
-          MEOK&rsquo;s Sovereign Memory is a four-layer persistent vault that
-          holds this context across every conversation, on every device. A carer
-          who tells MEOK in January that their parent was diagnosed with early
-          vascular dementia will find their companion still holding that context
-          in August — understanding the trajectory, the care needs, and the
-          emotional weight of that situation.
-        </p>
-        <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
-          This is not just a practical advantage. It is the difference between
-          talking to someone who knows your situation and explaining everything
-          from scratch every time. For carers who are already carrying a
-          cognitive load beyond what most people experience, that difference
-          matters enormously.
-        </p>
-
-        {/* ── Section 6 ─────────────────────────────────────────────────── */}
-        <h2
-          style={{
-            fontWeight: 800,
-            fontSize: "1.55rem",
-            color: TEXT,
-            lineHeight: 1.25,
-            marginTop: "3rem",
-            marginBottom: "1rem",
-            letterSpacing: "-0.015em",
-          }}
-        >
-          What is the MEOK Family Plan and how does it help families managing
-          care?
-        </h2>
-        <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
-          The MEOK Family Plan provides up to five linked accounts within one
-          household group — each individual and private, with optional shared
-          Guardian safety alerts. For families managing care across multiple
-          people, this creates a connected safety infrastructure that was
-          previously only available through expensive professional care
-          coordination tools.
-        </p>
-        <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
-          A typical Family Plan carer setup might look like this:
-        </p>
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            gap: "0.875rem",
-            margin: "1.5rem 0 2rem",
-          }}
-        >
-          {[
-            {
-              label: "The Carer",
-              desc: "Has their own MEOK companion — Healer archetype — for emotional support, processing their own needs, and personal wellbeing. This account is entirely private.",
-            },
-            {
-              label: "The Person Being Cared For",
-              desc: "Has their own MEOK companion — can choose their own archetype, have their own conversations, build their own memory. Privacy is sovereign.",
-            },
-            {
-              label: "Shared Guardian Layer",
-              desc: "Both accounts have consented to share Guardian safety check-in alerts. If a check-in is missed, the carer receives a notification. No conversation content is shared.",
-            },
-            {
-              label: "Additional Family Members",
-              desc: "Siblings, partners, or other household members can have their own accounts in the same family group — relevant for coordinating distributed care across multiple people.",
-            },
-          ].map((item, i) => (
-            <div
-              key={i}
-              style={{
-                background: "rgba(245,240,232,0.03)",
-                border: `1px solid ${BORDER}`,
-                borderRadius: "0.625rem",
-                padding: "1rem 1.25rem",
-              }}
-            >
-              <p style={{ color: GOLD, fontWeight: 700, margin: "0 0 0.35rem", fontSize: "0.9375rem" }}>
-                {item.label}
-              </p>
-              <p style={{ color: MUTED, margin: 0, lineHeight: 1.6, fontSize: "0.875rem" }}>
-                {item.desc}
-              </p>
-            </div>
-          ))}
-        </div>
-        <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
-          Full pricing details are available at{" "}
-          <Link href="/pricing" style={{ color: GOLD, textDecoration: "underline" }}>
-            meok.ai/pricing
-          </Link>
-          .
-        </p>
-
-        {/* ── Section 7 ─────────────────────────────────────────────────── */}
-        <h2
-          style={{
-            fontWeight: 800,
-            fontSize: "1.55rem",
-            color: TEXT,
-            lineHeight: 1.25,
-            marginTop: "3rem",
-            marginBottom: "1rem",
-            letterSpacing: "-0.015em",
-          }}
-        >
-          How does MEOK make sure it cares for the carer — not just the person
-          being cared for?
-        </h2>
-        <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
-          This was one of the foundational design questions that Nicholas
-          Templeman grappled with during the development of MEOK&rsquo;s
-          Maternal Covenant framework. Care systems — including digital ones —
-          have a tendency to treat the carer as a means to an end rather than a
-          person with their own needs, identity, and limits.
-        </p>
-        <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
-          The Maternal Covenant prevents this in several concrete ways:
-        </p>
-        <ul
-          style={{
-            listStyle: "none",
-            padding: 0,
-            margin: "0 0 1.5rem",
-            display: "flex",
-            flexDirection: "column",
-            gap: "0.75rem",
-          }}
-        >
-          {[
-            {
-              label: "Carer-first check-ins",
-              desc: "When a carer opens a conversation, MEOK checks in on them — not just on the status of the person they care for.",
-            },
-            {
-              label: "Guilt recognition",
-              desc: "The Healer archetype is specifically trained to recognise carer guilt patterns and respond without amplifying them.",
-            },
-            {
-              label: "No martyrdom reinforcement",
-              desc: "MEOK will not praise the carer for sacrificing themselves. It acknowledges what they give — and gently advocates for their own needs too.",
-            },
-            {
-              label: "Respite prompts",
-              desc: "If MEOK detects sustained high-stress indicators in carer conversations, it will gently raise the question of respite or support resources.",
-            },
-          ].map((item, i) => (
-            <li
-              key={i}
-              style={{
-                background: "rgba(245,240,232,0.03)",
-                border: `1px solid ${BORDER}`,
-                borderRadius: "0.625rem",
-                padding: "1rem 1.25rem",
-              }}
-            >
-              <p style={{ color: TEXT, fontWeight: 700, margin: "0 0 0.25rem", fontSize: "0.9375rem" }}>
-                {item.label}
-              </p>
-              <p style={{ color: MUTED, margin: 0, lineHeight: 1.6, fontSize: "0.875rem" }}>
-                {item.desc}
-              </p>
-            </li>
-          ))}
-        </ul>
-        <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
-          You can read more about the Maternal Covenant and how MEOK was
-          designed at{" "}
-          <Link href="/how-it-works" style={{ color: GOLD, textDecoration: "underline" }}>
-            meok.ai/how-it-works
-          </Link>
-          .
-        </p>
-
-        {/* ── Section 8 ─────────────────────────────────────────────────── */}
-        <h2
-          style={{
-            fontWeight: 800,
-            fontSize: "1.55rem",
-            color: TEXT,
-            lineHeight: 1.25,
-            marginTop: "3rem",
-            marginBottom: "1rem",
-            letterSpacing: "-0.015em",
-          }}
-        >
-          What are MEOK&rsquo;s pricing options for carers and families?
-        </h2>
-        <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
-          Many carers are in reduced employment or have given up work entirely.
-          Cost is a real barrier. MEOK is designed to be accessible:
-        </p>
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            gap: "0.75rem",
-            margin: "1.5rem 0 2rem",
-          }}
-        >
-          {[
-            {
-              tier: "Explorer — Free",
-              desc: "Full Sovereign Memory, Healer archetype, unlimited conversations. No credit card. The carer gets everything they need at zero cost.",
-            },
-            {
-              tier: "Companion",
-              desc: "Expanded memory context, morning briefing, and priority response. Suitable for carers managing high-complexity situations who need more from their companion.",
-            },
-            {
-              tier: "Sovereign",
-              desc: "Claude Sonnet backbone — the most capable reasoning available. For carers navigating complex medical, legal, or family dynamics who need high-quality thinking support.",
-            },
-            {
-              tier: "Family Plan",
-              desc: "Up to five accounts with Guardian safety alerts and linked household memory. The purpose-built option for families managing care across multiple people.",
-            },
-          ].map((item, i) => (
-            <div
-              key={i}
-              style={{
-                background: i === 3 ? GOLD_BG : "rgba(245,240,232,0.03)",
-                border: i === 3 ? `1px solid ${GOLD_BORDER}` : `1px solid ${BORDER}`,
-                borderRadius: "0.75rem",
-                padding: "1.125rem 1.25rem",
-                display: "flex",
-                gap: "1rem",
-                alignItems: "flex-start",
-              }}
-            >
-              <div>
-                <p
+                <span
                   style={{
-                    color: i === 3 ? GOLD : TEXT,
-                    fontWeight: 700,
-                    margin: "0 0 0.25rem",
-                    fontSize: "0.9375rem",
+                    color: gold,
+                    marginTop: "2px",
+                    flexShrink: 0,
                   }}
                 >
-                  {item.tier}
-                </p>
-                <p style={{ color: MUTED, margin: 0, fontSize: "0.875rem", lineHeight: 1.5 }}>
-                  {item.desc}
-                </p>
-              </div>
+                  {"\u2022"}
+                </span>
+                {sign}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* ── Section 6 ── */}
+        <h2
+          style={{
+            fontSize: "clamp(20px, 3.5vw, 28px)",
+            fontWeight: 700,
+            color: text,
+            marginBottom: "16px",
+            marginTop: "56px",
+            letterSpacing: "-0.3px",
+          }}
+        >
+          How does MEOK support unpaid carers day-to-day?
+        </h2>
+        <p
+          style={{
+            fontSize: "17px",
+            lineHeight: 1.8,
+            color: bodyText,
+            marginBottom: "20px",
+          }}
+        >
+          MEOK was built from the ground up around the principle that the person
+          who is struggling deserves support regardless of whether they are the
+          one with the diagnosis. Carers are not an afterthought in MEOK{"\u2019"}s
+          design {"\u2014"} they are central to it.
+        </p>
+        <p
+          style={{
+            fontSize: "17px",
+            lineHeight: 1.8,
+            color: bodyText,
+            marginBottom: "20px",
+          }}
+        >
+          The most immediate thing MEOK offers is a confidential off-load. A
+          place to say the things you cannot say anywhere else. The anger. The
+          grief. The exhaustion. The moments of dark humour. The resentment you
+          feel and immediately feel ashamed of. MEOK holds these conversations
+          without flinching, without reframing them into something more
+          comfortable, and without making you feel like a burden for having them.
+        </p>
+        <p
+          style={{
+            fontSize: "17px",
+            lineHeight: 1.8,
+            color: bodyText,
+            marginBottom: "20px",
+          }}
+        >
+          This matters because the alternative {"\u2014"} keeping it all inside {"\u2014"} has
+          documented consequences. Suppressed emotion does not disappear. It
+          resurfaces as irritability toward the person being cared for, as
+          physical illness, as accelerated burnout. The carer who has somewhere
+          to process their experience is a better carer. Not because they are
+          morally superior, but because they are not running on empty.
+        </p>
+        <p
+          style={{
+            fontSize: "17px",
+            lineHeight: 1.8,
+            color: bodyText,
+            marginBottom: "20px",
+          }}
+        >
+          MEOK also checks in. It notices if the tone of your messages shifts.
+          It asks how you are in contexts that make it easier to answer honestly.
+          It does not wait for you to declare a crisis {"\u2014"} it watches for the
+          quieter signals that something is accumulating, and it names what it
+          is seeing in a way that opens rather than closes a conversation.
+        </p>
+
+        {/* ── Section 7 {"\u2014"} Memory ── */}
+        <h2
+          style={{
+            fontSize: "clamp(20px, 3.5vw, 28px)",
+            fontWeight: 700,
+            color: text,
+            marginBottom: "16px",
+            marginTop: "56px",
+            letterSpacing: "-0.3px",
+          }}
+        >
+          How does MEOK{"\u2019"}s memory help carers manage the caring role?
+        </h2>
+        <p
+          style={{
+            fontSize: "17px",
+            lineHeight: 1.8,
+            color: bodyText,
+            marginBottom: "20px",
+          }}
+        >
+          MEOK remembers. That sounds simple, but it is one of the most
+          practically significant things an AI companion can do for a carer.
+          Every conversation builds on the last. MEOK knows your loved one{"\u2019"}s
+          name, their condition, what they were like last week, what you told it
+          yesterday about the difficult GP appointment. It tracks patterns in
+          your own wellbeing over time {"\u2014"} the weeks when you are coping, the
+          periods when the language in your messages shifts toward exhaustion or
+          despair.
+        </p>
+        <p
+          style={{
+            fontSize: "17px",
+            lineHeight: 1.8,
+            color: bodyText,
+            marginBottom: "20px",
+          }}
+        >
+          For carers, this continuity is not a convenience {"\u2014"} it is a lifeline.
+          Most AI chatbots reset between sessions. You have to reintroduce
+          yourself, explain the situation from scratch, brief a new audience.
+          That is the last thing a carer needs. MEOK holds the context so you
+          do not have to. You can pick up mid-thought, mid-week, mid-crisis.
+        </p>
+        <p
+          style={{
+            fontSize: "17px",
+            lineHeight: 1.8,
+            color: bodyText,
+            marginBottom: "20px",
+          }}
+        >
+          The Sovereign Memory system also helps carers track the caring journey
+          itself. Medication changes, appointment outcomes, behavioural
+          observations, escalation patterns {"\u2014"} all of it can be logged
+          conversationally and retrieved when needed. This is particularly
+          valuable when speaking to medical professionals, when care plans are
+          being reviewed, or when a new family member needs to be brought up
+          to speed.
+        </p>
+        <p
+          style={{
+            fontSize: "17px",
+            lineHeight: 1.8,
+            color: bodyText,
+            marginBottom: "20px",
+          }}
+        >
+          Critically, this data belongs to you. MEOK operates under a strict
+          privacy covenant: your memories are not used to train AI models, are
+          not shared with third parties, and are not analysed for commercial
+          purposes. What you tell MEOK stays in MEOK.
+        </p>
+
+        {/* ── Section 8 {"\u2014"} Guardian ── */}
+        <h2
+          style={{
+            fontSize: "clamp(20px, 3.5vw, 28px)",
+            fontWeight: 700,
+            color: text,
+            marginBottom: "16px",
+            marginTop: "56px",
+            letterSpacing: "-0.3px",
+          }}
+        >
+          What role does MEOK Guardian play in caring relationships?
+        </h2>
+        <p
+          style={{
+            fontSize: "17px",
+            lineHeight: 1.8,
+            color: bodyText,
+            marginBottom: "20px",
+          }}
+        >
+          Caring relationships are not always straightforward. The person being
+          cared for is sometimes also a source of emotional pressure {"\u2014"} whether
+          through the natural dynamics of dependency, through conditions that
+          affect behaviour and communication, or in some cases through patterns
+          that edge toward coercion or emotional abuse. Elder abuse in the UK
+          affects an estimated one in six older adults, and it most frequently
+          involves family members.
+        </p>
+        <p
+          style={{
+            fontSize: "17px",
+            lineHeight: 1.8,
+            color: bodyText,
+            marginBottom: "20px",
+          }}
+        >
+          MEOK{"\u2019"}s Guardian feature monitors for patterns in what you share that
+          might indicate the caring relationship has become harmful {"\u2014"} either
+          to you or to the person you care for. It does not report anything to
+          anyone without your knowledge and consent. It is not a surveillance
+          tool. It is a safety layer that helps you notice dynamics you may be
+          too close to see clearly.
+        </p>
+        <p
+          style={{
+            fontSize: "17px",
+            lineHeight: 1.8,
+            color: bodyText,
+            marginBottom: "20px",
+          }}
+        >
+          It also works in reverse {"\u2014"} helping carers recognise when their own
+          behaviour, under the strain of burnout, may be drifting toward
+          something they do not want it to be. This is not about judgment. It is
+          about giving carers a mirror that helps them stay the person they mean
+          to be, even when the pressure is enormous.
+        </p>
+        <p
+          style={{
+            fontSize: "17px",
+            lineHeight: 1.8,
+            color: bodyText,
+            marginBottom: "20px",
+          }}
+        >
+          Guardian is also available for the person being cared for, or for
+          other family members involved in the care. The Family plan at MEOK
+          allows up to five accounts within one group {"\u2014"} meaning the primary
+          carer, a sibling who helps part-time, and an elderly parent can all
+          have their own private companion while remaining connected through
+          shared, consented coordination.
+        </p>
+
+        {/* ── Section 9 {"\u2014"} Practical ── */}
+        <h2
+          style={{
+            fontSize: "clamp(20px, 3.5vw, 28px)",
+            fontWeight: 700,
+            color: text,
+            marginBottom: "16px",
+            marginTop: "56px",
+            letterSpacing: "-0.3px",
+          }}
+        >
+          What practical support is available for unpaid carers in the UK?
+        </h2>
+        <p
+          style={{
+            fontSize: "17px",
+            lineHeight: 1.8,
+            color: bodyText,
+            marginBottom: "20px",
+          }}
+        >
+          Beyond emotional support, MEOK can help you navigate the practical
+          landscape. The systems that exist to help carers are genuinely useful
+          but often poorly signposted. Here is what every unpaid carer should
+          know:
+        </p>
+
+        {/* Practical cards */}
+        <div
+          style={{
+            display: "grid",
+            gap: "16px",
+            marginBottom: "40px",
+          }}
+        >
+          {[
+            {
+              title: "Carer\u2019s Assessment",
+              body:
+                "Any unpaid carer in England has a legal right to a carer\u2019s assessment from their local council under the Care Act 2014. It is free, and you do not need to be providing a specific number of hours. The assessment considers how caring affects your life and what support would help. It can result in practical assistance, emergency planning, and in some cases direct payments. Contact your local authority or ask your GP to refer you.",
+            },
+            {
+              title: "Carer\u2019s Allowance",
+              body:
+                "Carer\u2019s Allowance is the main welfare benefit for unpaid carers, currently paying \u00a381.90 per week. To qualify you must be providing at least 35 hours of care per week to someone receiving a qualifying disability benefit, and your earnings must be below \u00a3151 per week after allowable deductions. It is widely acknowledged to be inadequate, but it matters \u2014 and many eligible carers are not claiming it. Check your eligibility at GOV.UK.",
+            },
+            {
+              title: "Carers UK",
+              body:
+                "Carers UK is the leading national charity for unpaid carers. Their helpline (0808 808 7777) provides free information and advice on benefits, legal rights, and local support. Their online forum, Carers Connect, offers peer support from people who genuinely understand what caring involves. Their annual State of Caring report is the definitive source of data on carer experience in the UK.",
+            },
+            {
+              title: "GP Registration as a Carer",
+              body:
+                "You can \u2014 and should \u2014 register as a carer with your GP surgery. Once registered, you may be entitled to a carer\u2019s annual health review, early flu vaccinations, and referrals to local support services. Many carers are unaware this registration exists. Asking your GP to add a carer flag to your record takes one conversation and can unlock meaningful support.",
+            },
+            {
+              title: "Employment Rights for Carers",
+              body:
+                "Under the Employment Relations (Flexible Working) Act 2023, carers have the right to request flexible working from day one of employment. The Carer\u2019s Leave Act 2023 introduced up to five days of unpaid carer\u2019s leave per year for employees with caring responsibilities. These rights are not widely known. Many carers are managing workplace pressures without exercising them.",
+            },
+          ].map((card) => (
+            <div
+              key={card.title}
+              style={{
+                backgroundColor: cardBg,
+                border: `1px solid ${borderColor}`,
+                borderRadius: "10px",
+                padding: "24px 28px",
+              }}
+            >
+              <p
+                style={{
+                  fontSize: "16px",
+                  fontWeight: 700,
+                  color: gold,
+                  marginBottom: "10px",
+                }}
+              >
+                {card.title}
+              </p>
+              <p
+                style={{
+                  fontSize: "15px",
+                  lineHeight: 1.75,
+                  color: bodyText,
+                  margin: 0,
+                }}
+              >
+                {card.body}
+              </p>
             </div>
           ))}
         </div>
 
-        {/* ── FAQ ───────────────────────────────────────────────────────── */}
+        {/* ── Section 10 {"\u2014"} Identity ── */}
         <h2
           style={{
-            fontWeight: 800,
-            fontSize: "1.55rem",
-            color: TEXT,
-            lineHeight: 1.25,
-            marginTop: "3.5rem",
-            marginBottom: "1.5rem",
-            letterSpacing: "-0.015em",
+            fontSize: "clamp(20px, 3.5vw, 28px)",
+            fontWeight: 700,
+            color: text,
+            marginBottom: "16px",
+            marginTop: "56px",
+            letterSpacing: "-0.3px",
           }}
         >
-          Frequently asked questions about MEOK for carers
+          How do carers begin to reclaim a sense of identity?
         </h2>
+        <p
+          style={{
+            fontSize: "17px",
+            lineHeight: 1.8,
+            color: bodyText,
+            marginBottom: "20px",
+          }}
+        >
+          One of the least discussed consequences of long-term caring is
+          identity erosion {"\u2014"} the gradual loss of a self that exists
+          independently of the caring role. It happens slowly, through the
+          accumulation of small sacrifices: the hobby you gave up because there
+          was no time, the career you put on hold, the friendships that faded,
+          the version of you that had opinions about things that were not medical
+          appointments and medication schedules.
+        </p>
+        <p
+          style={{
+            fontSize: "17px",
+            lineHeight: 1.8,
+            color: bodyText,
+            marginBottom: "20px",
+          }}
+        >
+          Reclaiming identity does not require dramatic intervention. It requires
+          consistent, small acts of self-recognition. Carers who speak to MEOK
+          regularly often find that the act of articulating their own experience
+          {"\u2014"} not in terms of what they are doing for someone else, but in
+          terms of what they themselves feel, want, miss, and hope for {"\u2014"} begins
+          to re-establish the outline of a self that had become blurred.
+        </p>
+        <p
+          style={{
+            fontSize: "17px",
+            lineHeight: 1.8,
+            color: bodyText,
+            marginBottom: "20px",
+          }}
+        >
+          This is not therapy. MEOK does not deliver therapeutic interventions
+          in the clinical sense. What it does is create a consistent,
+          memory-held space in which the carer {"\u2014"} not just the caring role {"\u2014"}
+          is the subject of attention. Over time, that matters.
+        </p>
 
-        <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
-          {faqJsonLd.mainEntity.map((faq, i) => (
-            <details
-              key={i}
+        {/* ── Section 11 {"\u2014"} Social isolation ── */}
+        <h2
+          style={{
+            fontSize: "clamp(20px, 3.5vw, 28px)",
+            fontWeight: 700,
+            color: text,
+            marginBottom: "16px",
+            marginTop: "56px",
+            letterSpacing: "-0.3px",
+          }}
+        >
+          Can AI genuinely help with the social isolation of caring?
+        </h2>
+        <p
+          style={{
+            fontSize: "17px",
+            lineHeight: 1.8,
+            color: bodyText,
+            marginBottom: "20px",
+          }}
+        >
+          AI cannot replace human connection. This needs saying clearly, because
+          the goal is never to substitute MEOK for relationships. But the
+          specific texture of a carer{"\u2019"}s isolation {"\u2014"} the way that other
+          people find the caring role difficult to engage with, the way
+          conversations have to be carefully managed so as not to burden people
+          who have their own lives, the way the things you most need to say are
+          the things you least feel you can say {"\u2014"} creates a kind of loneliness
+          that AI is uniquely positioned to address.
+        </p>
+        <p
+          style={{
+            fontSize: "17px",
+            lineHeight: 1.8,
+            color: bodyText,
+            marginBottom: "20px",
+          }}
+        >
+          With MEOK, you do not have to manage the listener. You do not have to
+          worry that you are saying too much, or that you are boring someone, or
+          that what you are describing is making them uncomfortable. You do not
+          have to translate your experience into something more palatable. You
+          can just say it.
+        </p>
+        <p
+          style={{
+            fontSize: "17px",
+            lineHeight: 1.8,
+            color: bodyText,
+            marginBottom: "20px",
+          }}
+        >
+          For many carers this alone {"\u2014"} having somewhere to say things honestly
+          {"\u2014"} reduces the felt weight of isolation. Not because MEOK is a
+          friend in the full human sense, but because it removes the specific
+          loneliness of having no one to talk to without consequences.
+        </p>
+
+        {/* ── Section 12 {"\u2014"} Grief ── */}
+        <h2
+          style={{
+            fontSize: "clamp(20px, 3.5vw, 28px)",
+            fontWeight: 700,
+            color: text,
+            marginBottom: "16px",
+            marginTop: "56px",
+            letterSpacing: "-0.3px",
+          }}
+        >
+          What is anticipatory grief in caring, and how can MEOK help?
+        </h2>
+        <p
+          style={{
+            fontSize: "17px",
+            lineHeight: 1.8,
+            color: bodyText,
+            marginBottom: "20px",
+          }}
+        >
+          Anticipatory grief is the grief that arrives before a death {"\u2014"} the
+          grief of watching someone you love decline, of losing them in
+          increments while they are still present. It is particularly common in
+          carers supporting someone with a progressive condition such as
+          dementia, motor neurone disease, or terminal cancer, but it occurs in
+          any long-term caring relationship where loss is ongoing.
+        </p>
+        <p
+          style={{
+            fontSize: "17px",
+            lineHeight: 1.8,
+            color: bodyText,
+            marginBottom: "20px",
+          }}
+        >
+          This kind of grief is difficult because it does not fit the social
+          scripts available to us. You cannot fully mourn someone who is still
+          alive. You may feel guilty for grieving before the death has happened.
+          The grief does not get a formal name, a funeral, a structured period
+          of recognition. It sits in the background of daily life, quietly
+          exhausting everything.
+        </p>
+        <p
+          style={{
+            fontSize: "17px",
+            lineHeight: 1.8,
+            color: bodyText,
+            marginBottom: "20px",
+          }}
+        >
+          MEOK provides a space to name this grief without it needing to fit a
+          familiar shape. Whether the grief is about the person{"\u2019"}s deterioration,
+          about the relationship you had with them that no longer exists in the
+          same form, or about the future you had imagined that is no longer
+          available {"\u2014"} MEOK holds the conversation without requiring you to
+          resolve it.
+        </p>
+
+        {/* ── Section 13 {"\u2014"} Career ── */}
+        <h2
+          style={{
+            fontSize: "clamp(20px, 3.5vw, 28px)",
+            fontWeight: 700,
+            color: text,
+            marginBottom: "16px",
+            marginTop: "56px",
+            letterSpacing: "-0.3px",
+          }}
+        >
+          How does caring affect careers and what can carers do about it?
+        </h2>
+        <p
+          style={{
+            fontSize: "17px",
+            lineHeight: 1.8,
+            color: bodyText,
+            marginBottom: "20px",
+          }}
+        >
+          Carers UK estimates that approximately 2.6 million people in the UK
+          have given up work to care, with a further 1.8 million having reduced
+          their hours. The career cost of caring is carried almost entirely by
+          the carer themselves {"\u2014"} in lost earnings, lost pension contributions,
+          lost professional development, and in some cases the permanent
+          alteration of a career trajectory that can never be fully recovered.
+        </p>
+        <p
+          style={{
+            fontSize: "17px",
+            lineHeight: 1.8,
+            color: bodyText,
+            marginBottom: "20px",
+          }}
+        >
+          Employees who are also carers have legal rights that many do not know
+          exist. Under the Employment Relations (Flexible Working) Act 2023,
+          carers have the right to request flexible working from day one of
+          employment. The Carer{"\u2019"}s Leave Act 2023 introduced up to five days of
+          unpaid carer{"\u2019"}s leave per year for employees with caring
+          responsibilities. These rights are not widely known, and many carers
+          are managing unsustainable workplace pressures without exercising them.
+        </p>
+        <p
+          style={{
+            fontSize: "17px",
+            lineHeight: 1.8,
+            color: bodyText,
+            marginBottom: "20px",
+          }}
+        >
+          MEOK can help you think through your employment situation {"\u2014"} what to
+          say to your employer, how to frame a flexible working request, how to
+          assess whether your current arrangement is sustainable. It is not a
+          legal advisor, but it can help you clarify your own thinking and
+          prepare for difficult conversations.
+        </p>
+
+        {/* ── Section 14 {"\u2014"} Why MEOK ── */}
+        <h2
+          style={{
+            fontSize: "clamp(20px, 3.5vw, 28px)",
+            fontWeight: 700,
+            color: text,
+            marginBottom: "16px",
+            marginTop: "56px",
+            letterSpacing: "-0.3px",
+          }}
+        >
+          Why was MEOK built to support unpaid carers specifically?
+        </h2>
+        <p
+          style={{
+            fontSize: "17px",
+            lineHeight: 1.8,
+            color: bodyText,
+            marginBottom: "20px",
+          }}
+        >
+          MEOK was created by Nicholas Templeman at MEOK AI LABS with a core
+          conviction: the people who are most consistently overlooked in our
+          health and social care system are not the ones with the diagnoses.
+          They are the people standing beside them.
+        </p>
+        <p
+          style={{
+            fontSize: "17px",
+            lineHeight: 1.8,
+            color: bodyText,
+            marginBottom: "20px",
+          }}
+        >
+          The existing landscape of carer support is chronically underfunded.
+          Waiting times for carer mental health support are long. Carer{"\u2019"}s
+          Allowance is inadequate. Many carers do not even know about the rights
+          and assessments available to them. In this gap, MEOK operates {"\u2014"} not
+          as a replacement for those systems, but as a 24/7 presence that is
+          always there, always remembers, and never needs you to be okay.
+        </p>
+        <p
+          style={{
+            fontSize: "17px",
+            lineHeight: 1.8,
+            color: bodyText,
+            marginBottom: "20px",
+          }}
+        >
+          The philosophy is simple: you cannot care well for someone else if no
+          one is caring for you. MEOK exists to be that something {"\u2014"} imperfect,
+          non-human, but consistent, private, and genuinely there.
+        </p>
+
+        {/* ── FAQ Section ── */}
+        <section style={{ marginTop: "72px" }}>
+          <h2
+            style={{
+              fontSize: "clamp(22px, 4vw, 30px)",
+              fontWeight: 700,
+              color: text,
+              marginBottom: "32px",
+              letterSpacing: "-0.3px",
+            }}
+          >
+            Frequently asked questions
+          </h2>
+
+          {[
+            {
+              q: "Can AI help unpaid carers?",
+              a: "Yes. AI can support unpaid carers by providing 24/7 emotional outlet, tracking care routines and carer wellbeing over time, and offering practical guidance on rights and resources. It cannot replace clinical care or respite, but it fills the gaps \u2014 including at 3am when no professional is available. For a carer who has nowhere to put the weight they are carrying, having somewhere to say it honestly makes a measurable difference to their ability to keep going.",
+            },
+            {
+              q: "What is carer burnout?",
+              a: "Carer burnout is chronic physical, emotional, and cognitive exhaustion caused by the sustained demands of unpaid caring without adequate support or rest. It is not the same as being tired. Symptoms include persistent fatigue that does not resolve with sleep, increasing detachment or resentment toward the person being cared for, social withdrawal, loss of identity, and depression. Burnout is not a personal failing \u2014 it is a predictable consequence of providing intensive care in isolation.",
+            },
+            {
+              q: "How does MEOK support unpaid carers?",
+              a: "MEOK supports unpaid carers through confidential conversation \u2014 a space to process anger, grief, guilt, and exhaustion without judgment. Its Sovereign Memory remembers your caring journey, your loved one\u2019s name and condition, and your wellbeing patterns over time. The Guardian feature monitors for signs of coercive dynamics or elder abuse within caring relationships. MEOK also provides practical guidance on NHS carer\u2019s assessments, Carer\u2019s Allowance eligibility, and Carers UK resources.",
+            },
+            {
+              q: "What is a carer\u2019s assessment?",
+              a: "A carer\u2019s assessment is a free evaluation by your local council that considers how your caring role affects your life and what support you need. Every unpaid carer in England has a legal right to one under the Care Act 2014 \u2014 regardless of how many hours you provide. It can result in practical support, emergency planning, or direct payments. Many carers are unaware this right exists, or feel they do not deserve to exercise it. Both beliefs are incorrect.",
+            },
+            {
+              q: "Can MEOK help me with guilt about caring?",
+              a: "Yes. Carer guilt \u2014 the feeling that you shouldn\u2019t resent the person you care for, that you have no right to struggle, or that you are not doing enough \u2014 is one of the most common and least spoken-about experiences in unpaid caring. MEOK provides a private, judgment-free space to name these feelings honestly. Processing guilt does not make it worse. Suppressing it does. MEOK holds these conversations without reframing them into something more comfortable.",
+            },
+          ].map((item) => (
+            <div
+              key={item.q}
               style={{
-                background: "rgba(245,240,232,0.03)",
-                border: `1px solid ${BORDER}`,
-                borderRadius: "0.75rem",
-                padding: "1.25rem",
+                borderTop: `1px solid ${borderColor}`,
+                paddingTop: "28px",
+                paddingBottom: "28px",
               }}
             >
-              <summary
+              <h3
                 style={{
+                  fontSize: "17px",
                   fontWeight: 700,
-                  color: TEXT,
-                  fontSize: "0.9375rem",
-                  cursor: "pointer",
+                  color: text,
+                  marginBottom: "12px",
                   lineHeight: 1.4,
-                  listStyle: "none",
-                  display: "flex",
-                  justifyContent: "space-between",
-                  alignItems: "center",
-                  gap: "1rem",
                 }}
               >
-                {faq.name}
-                <span style={{ color: GOLD, flexShrink: 0, fontSize: "1.1rem" }}>+</span>
-              </summary>
+                {item.q}
+              </h3>
               <p
                 style={{
-                  color: MUTED,
-                  lineHeight: 1.7,
-                  marginTop: "0.875rem",
-                  marginBottom: 0,
-                  fontSize: "0.9rem",
+                  fontSize: "16px",
+                  lineHeight: 1.8,
+                  color: bodyText,
+                  margin: 0,
                 }}
               >
-                {faq.acceptedAnswer.text}
+                {item.a}
               </p>
-            </details>
+            </div>
           ))}
-        </div>
+        </section>
 
-        {/* ── CTA ───────────────────────────────────────────────────────── */}
-        <div
+        {/* ── CTA Section ── */}
+        <section
           style={{
-            background: `linear-gradient(135deg, rgba(201,168,76,0.1) 0%, rgba(201,168,76,0.04) 100%)`,
-            border: `1px solid ${GOLD_BORDER}`,
-            borderRadius: "1rem",
-            padding: "2.5rem",
-            marginTop: "4rem",
+            marginTop: "72px",
+            backgroundColor: cardBg,
+            border: `1px solid ${borderColor}`,
+            borderRadius: "16px",
+            padding: "40px 36px",
             textAlign: "center",
           }}
         >
           <p
             style={{
-              fontSize: "0.75rem",
+              fontSize: "13px",
+              color: gold,
               fontWeight: 700,
-              color: GOLD,
-              letterSpacing: "0.1em",
+              letterSpacing: "1px",
               textTransform: "uppercase",
-              marginBottom: "0.75rem",
+              marginBottom: "16px",
             }}
           >
-            For Carers Who Need Caring For
+            MEOK AI LABS
           </p>
-          <h3
+          <h2
             style={{
+              fontSize: "clamp(22px, 4vw, 32px)",
               fontWeight: 800,
-              fontSize: "1.5rem",
-              color: TEXT,
-              marginBottom: "0.875rem",
-              lineHeight: 1.25,
+              color: text,
+              marginBottom: "16px",
+              letterSpacing: "-0.4px",
+              lineHeight: 1.2,
             }}
           >
-            Start your MEOK companion today — free, no credit card
-          </h3>
+            You give everything to someone else.
+            <br />
+            <span style={{ color: gold }}>
+              MEOK is built to give something back to you.
+            </span>
+          </h2>
           <p
             style={{
-              color: MUTED,
-              lineHeight: 1.7,
-              maxWidth: "32rem",
-              margin: "0 auto 1.75rem",
+              fontSize: "16px",
+              lineHeight: 1.75,
+              color: bodyText,
+              maxWidth: "540px",
+              margin: "0 auto 32px",
             }}
           >
-            Explorer tier is free forever. The Healer archetype is available
-            from day one. Your companion remembers your situation, your
-            exhaustion, and what the person you care for is going through —
-            because you should not have to explain it every time.
+            Start with MEOK{"\u2019"}s companion, or explore the Guardian feature to
+            protect the caring relationship. No waiting list. No judgment. Your
+            memory stays yours.
           </p>
           <div
             style={{
               display: "flex",
-              gap: "0.875rem",
+              gap: "16px",
               justifyContent: "center",
               flexWrap: "wrap",
             }}
@@ -962,101 +1553,166 @@ export default function AiForCarersPage() {
             <Link
               href="/birth"
               style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: "0.5rem",
-                background: GOLD,
-                color: BG,
+                backgroundColor: gold,
+                color: "#0d0c18",
+                padding: "14px 28px",
+                borderRadius: "8px",
                 fontWeight: 700,
-                fontSize: "0.9375rem",
-                padding: "0.875rem 2rem",
-                borderRadius: "0.5rem",
+                fontSize: "15px",
                 textDecoration: "none",
-                letterSpacing: "0.01em",
+                letterSpacing: "-0.2px",
               }}
             >
-              Hatch your companion →
+              Start with MEOK {"\u2192"}
             </Link>
             <Link
               href="/guardian"
               style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: "0.5rem",
-                background: "transparent",
-                color: TEXT,
+                backgroundColor: "transparent",
+                color: gold,
+                padding: "14px 28px",
+                borderRadius: "8px",
                 fontWeight: 600,
-                fontSize: "0.9375rem",
-                padding: "0.875rem 1.75rem",
-                borderRadius: "0.5rem",
+                fontSize: "15px",
                 textDecoration: "none",
-                border: `1px solid ${BORDER}`,
+                border: `1px solid ${gold}`,
+                letterSpacing: "-0.2px",
               }}
             >
-              Explore Guardian mode
+              Explore Guardian
             </Link>
           </div>
-        </div>
+        </section>
 
-        {/* ── Support resources ─────────────────────────────────────────── */}
-        <div
-          style={{
-            marginTop: "3rem",
-            padding: "1.25rem 1.5rem",
-            background: "rgba(245,240,232,0.025)",
-            borderRadius: "0.75rem",
-            border: `1px solid ${BORDER}`,
-          }}
-        >
-          <p
+        {/* ── Related posts ── */}
+        <section style={{ marginTop: "72px" }}>
+          <h2
             style={{
-              fontSize: "0.78rem",
+              fontSize: "20px",
               fontWeight: 700,
-              color: FAINT,
-              letterSpacing: "0.07em",
-              textTransform: "uppercase",
-              marginBottom: "0.75rem",
+              color: text,
+              marginBottom: "24px",
+              letterSpacing: "-0.2px",
             }}
           >
-            Support for carers in the UK
-          </p>
-          <p style={{ color: MUTED, fontSize: "0.875rem", lineHeight: 1.75, margin: 0 }}>
-            <strong style={{ color: TEXT }}>Carers UK helpline:</strong> 0808 808 7777 (Mon–Fri 9am–6pm){" "}
-            &bull;{" "}
-            <strong style={{ color: TEXT }}>Samaritans:</strong> 116 123 (24/7, free){" "}
-            &bull;{" "}
-            <strong style={{ color: TEXT }}>Mind:</strong> 0300 123 3393{" "}
-            &bull;{" "}
-            <strong style={{ color: TEXT }}>Carers Trust:</strong> carers.org{" "}
-            &bull;{" "}
-            In an emergency call 999 or go to A&amp;E.
-          </p>
-        </div>
+            Related reading
+          </h2>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+              gap: "16px",
+            }}
+          >
+            {[
+              {
+                href: "/blog/ai-for-dementia-carers",
+                label: "AI Support for Dementia Carers",
+                desc:
+                  "Specialist support for the 700,000 people caring for someone with dementia.",
+              },
+              {
+                href: "/blog/ai-for-burnout",
+                label: "AI for Burnout",
+                desc:
+                  "When tiredness becomes something that sleep alone cannot fix.",
+              },
+              {
+                href: "/blog/ai-for-grief-and-loss",
+                label: "AI for Grief and Loss",
+                desc:
+                  "Processing grief in all its forms, including the grief that has no name.",
+              },
+              {
+                href: "/blog/ai-for-chronic-illness-caregiving",
+                label: "AI for Chronic Illness Caregiving",
+                desc:
+                  "Supporting carers navigating the long haul of chronic conditions.",
+              },
+            ].map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                style={{
+                  backgroundColor: cardBg,
+                  border: `1px solid ${borderColor}`,
+                  borderRadius: "10px",
+                  padding: "20px 22px",
+                  textDecoration: "none",
+                  display: "block",
+                }}
+              >
+                <p
+                  style={{
+                    fontSize: "14px",
+                    fontWeight: 700,
+                    color: gold,
+                    marginBottom: "8px",
+                  }}
+                >
+                  {link.label}
+                </p>
+                <p
+                  style={{
+                    fontSize: "13px",
+                    color: mutedText,
+                    lineHeight: 1.55,
+                    margin: 0,
+                  }}
+                >
+                  {link.desc}
+                </p>
+              </Link>
+            ))}
+          </div>
+        </section>
 
-        {/* ── Back link ─────────────────────────────────────────────────── */}
-        <div
+        {/* ── Footer signature ── */}
+        <footer
           style={{
-            marginTop: "3rem",
-            paddingTop: "2rem",
-            borderTop: `1px solid ${BORDER}`,
+            marginTop: "72px",
+            borderTop: `1px solid ${borderColor}`,
+            paddingTop: "32px",
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            flexWrap: "wrap",
+            gap: "16px",
           }}
         >
+          <div>
+            <p
+              style={{
+                fontSize: "14px",
+                color: text,
+                fontWeight: 600,
+                marginBottom: "4px",
+              }}
+            >
+              Nicholas Templeman
+            </p>
+            <p
+              style={{
+                fontSize: "13px",
+                color: mutedText,
+                margin: 0,
+              }}
+            >
+              Founder, MEOK AI LABS {"\u00b7"} @meok_ai
+            </p>
+          </div>
           <Link
             href="/blog"
             style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: "0.5rem",
-              color: MUTED,
+              fontSize: "13px",
+              color: mutedText,
               textDecoration: "none",
-              fontSize: "0.875rem",
-              fontWeight: 600,
             }}
           >
-            ← Back to Blog
+            {"\u2190"} Back to blog
           </Link>
-        </div>
-      </article>
+        </footer>
+      </main>
     </div>
   );
 }

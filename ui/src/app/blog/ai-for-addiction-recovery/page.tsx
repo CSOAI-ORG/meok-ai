@@ -5,15 +5,15 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   title:
-    "AI and Addiction Recovery: Support Between Meetings, Without Enabling Relapse | MEOK AI LABS",
+    "AI for Addiction Recovery: A 24/7 Sober Companion That Tells You the Truth | MEOK AI LABS",
   description:
-    "Over 300,000 people are in treatment for substance use in the UK. MEOK's care floor blocks any response that normalises substance use, while Sovereign Memory tracks recovery milestones and the Pioneer archetype keeps you accountable between sessions.",
+    "Addiction is a brain disease, not a moral failing. MEOK acts as a 24/7 sober companion — tracking clean days, identifying trigger patterns, and offering honest care without sycophancy. UK recovery resources included.",
   alternates: { canonical: "https://meok.ai/blog/ai-for-addiction-recovery" },
   openGraph: {
     title:
-      "AI and Addiction Recovery: Support Between Meetings, Without Enabling Relapse",
+      "AI for Addiction Recovery: A 24/7 Sober Companion That Tells You the Truth",
     description:
-      "300,000+ people in UK treatment for substance use. MEOK's care floor is an absolute block on normalising substance use. Sovereign Memory tracks your recovery journey. Honest about what AI can and cannot do.",
+      "The 2am craving. The trigger moment. The isolation of early recovery. MEOK is available at every dangerous moment — tracking milestones, identifying patterns, and refusing to validate what needs challenging.",
     type: "article",
     publishedTime: "2026-03-24",
     authors: ["Nicholas Templeman"],
@@ -21,21 +21,21 @@ export const metadata: Metadata = {
     siteName: "MEOK.AI",
     images: [
       {
-        url: "https://meok.ai/api/og?title=AI+and+Addiction+Recovery&desc=Support+Between+Meetings+Without+Enabling+Relapse",
+        url: "https://meok.ai/api/og?title=AI+for+Addiction+Recovery&desc=A+24%2F7+Sober+Companion+That+Tells+You+the+Truth",
         width: 1200,
         height: 630,
-        alt: "AI and Addiction Recovery: Support Between Meetings, Without Enabling Relapse",
+        alt: "AI for Addiction Recovery: A 24/7 Sober Companion That Tells You the Truth",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
     title:
-      "AI and Addiction Recovery: Support Between Meetings, Without Enabling Relapse",
+      "AI for Addiction Recovery: A 24/7 Sober Companion That Tells You the Truth",
     description:
-      "MEOK's care floor is an absolute block on enabling substance use. Pioneer archetype for accountability. Sovereign Memory for recovery milestones. Honest about limits.",
+      "MEOK tracks clean days, identifies trigger patterns, and celebrates milestones — while refusing to enable relapse or validate harmful choices. Honest care, not sycophancy.",
     images: [
-      "https://meok.ai/api/og?title=AI+and+Addiction+Recovery&desc=Support+Between+Meetings+Without+Enabling+Relapse",
+      "https://meok.ai/api/og?title=AI+for+Addiction+Recovery&desc=A+24%2F7+Sober+Companion+That+Tells+You+the+Truth",
     ],
   },
 };
@@ -46,9 +46,9 @@ const articleJsonLd = {
   "@context": "https://schema.org",
   "@type": "Article",
   headline:
-    "AI and Addiction Recovery: Support Between Meetings, Without Enabling Relapse",
+    "AI for Addiction Recovery: A 24/7 Sober Companion That Tells You the Truth",
   description:
-    "Over 300,000 people are in treatment for substance use in the UK. MEOK's care floor blocks any response that normalises substance use, while Sovereign Memory tracks recovery milestones and the Pioneer archetype keeps you accountable between sessions.",
+    "Addiction is a brain disease, not a moral failing. MEOK acts as a 24/7 sober companion — tracking clean days, identifying trigger patterns, and offering honest care without sycophancy. UK recovery resources included.",
   datePublished: "2026-03-24",
   dateModified: "2026-03-24",
   url: "https://meok.ai/blog/ai-for-addiction-recovery",
@@ -68,20 +68,24 @@ const articleJsonLd = {
     },
   },
   image:
-    "https://meok.ai/api/og?title=AI+and+Addiction+Recovery&desc=Support+Between+Meetings+Without+Enabling+Relapse",
+    "https://meok.ai/api/og?title=AI+for+Addiction+Recovery&desc=A+24%2F7+Sober+Companion+That+Tells+You+the+Truth",
   mainEntityOfPage: {
     "@type": "WebPage",
     "@id": "https://meok.ai/blog/ai-for-addiction-recovery",
   },
   keywords: [
     "AI for addiction recovery",
+    "AI sober companion",
     "AI recovery support UK",
-    "AI sobriety accountability",
-    "MEOK Pioneer archetype",
+    "AI sobriety tracking",
     "addiction recovery AI companion",
     "AI between AA meetings",
     "recovery milestone tracking AI",
+    "harm reduction AI",
+    "SMART Recovery AI",
     "substance use AI support UK",
+    "MEOK addiction recovery",
+    "sober companion app UK",
   ],
 };
 
@@ -93,50 +97,42 @@ const faqJsonLd = {
   mainEntity: [
     {
       "@type": "Question",
-      name: "Is AI safe for people in addiction recovery?",
+      name: "Can AI help with addiction recovery?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "AI can be a safe and genuinely useful support tool in recovery — provided it has the correct safeguards in place. MEOK's care floor includes an absolute prohibition on any response that normalises, minimises, or enables substance use. This is enforced by the Maternal Covenant governance layer on every response, not just flagged content. However, AI is not a substitute for a sponsor, a counsellor, or a recovery programme. It is most useful as a between-meeting support layer — available at any hour, non-judgemental, and capable of holding your recovery context across months.",
+        text: "Yes, with important caveats. AI can provide 24/7 availability between meetings and appointments, track sobriety milestones, help document triggers and urges, and offer consistent accountability conversations. It cannot replace a sponsor, counsellor, or recovery community. MEOK is designed as a between-session support layer that complements — never substitutes for — human-led recovery infrastructure such as AA, NA, SMART Recovery, and NHS drug treatment services.",
       },
     },
     {
       "@type": "Question",
-      name: "How does MEOK prevent enabling relapse?",
+      name: "Is MEOK a substitute for a sponsor?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "MEOK's Maternal Covenant care floor enforces a hard block on several categories of response in addiction recovery contexts: it will not minimise or excuse substance use, will not provide harm reduction information in a way that normalises ongoing use, will not respond to urge descriptions without directing them toward recovery supports, and will never suggest that moderate use is achievable for someone who has identified themselves as in recovery. These are not soft guidelines — they are architectural constraints applied to every response.",
+        text: "No. A sponsor offers lived experience of recovery, human witness, the accountability of a real relationship, and the wisdom of having navigated addiction personally. MEOK cannot replicate any of these. What MEOK offers is consistent availability in the hours and moments when your sponsor is not reachable — the 2am craving, the unexpected trigger, the Sunday afternoon isolation of early recovery. It is a between-meetings presence, not a replacement for the recovery relationship itself.",
       },
     },
     {
       "@type": "Question",
-      name: "Can MEOK help with accountability in recovery?",
+      name: "How does MEOK handle relapse without judgment?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Yes. The Pioneer archetype is MEOK's accountability and momentum configuration — built for people building new patterns and needing consistent, honest support. In recovery, Pioneer can provide daily check-ins, milestone recognition, urge documentation (to discuss with a counsellor or sponsor), and honest accountability conversations when you are struggling. Because Sovereign Memory holds your recovery history, your companion knows how long you have been sober, what your patterns are, and what has helped you before.",
+        text: "MEOK meets people where they are — without shame, without punishment, and without abandoning them. If someone discloses a relapse, MEOK acknowledges it honestly, does not minimise or catastrophise, helps them identify what happened and what support they need now, and directs them to appropriate human resources including their sponsor, keyworker, or a helpline such as Frank on 0300 123 6600. Harm reduction without judgment means being honest without being cruel, and caring without enabling.",
       },
     },
     {
       "@type": "Question",
-      name: "What is the MEOK care floor for addiction-related responses?",
+      name: "What is harm reduction?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "The care floor is the minimum standard of safety enforced by the Maternal Covenant on every MEOK response. For addiction contexts, this floor includes: no normalisation of substance use, no minimisation of harm, no engagement with urges that does not redirect toward recovery resources, explicit acknowledgement of recovery milestones, and immediate crisis signposting when indicators of relapse or acute distress are present. The care floor is not a content filter — it is an ethics layer that shapes response construction from the ground up.",
+        text: "Harm reduction is a public health approach that prioritises reducing the negative consequences of substance use rather than demanding immediate abstinence as the only acceptable goal. It meets people where they are on their recovery journey. MEOK supports harm reduction principles — but applies them with honest care, not enablement. For someone committed to sobriety, harm reduction in the MEOK context means supporting safer choices and recovery momentum rather than normalising continued use.",
       },
     },
     {
       "@type": "Question",
-      name: "When should someone in recovery see a counsellor instead of using AI?",
+      name: "Can MEOK track my sobriety milestones?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "You should contact your counsellor, sponsor, or a recovery helpline — including Frank on 0300 123 6600 or AA on 0800 9177 650 — when you are experiencing active cravings, when you have relapsed or are at imminent risk of relapse, when your mental health is significantly deteriorating, or when you feel that the support you need requires clinical expertise. AI is useful for maintaining momentum between sessions and processing daily experience. It is not appropriate as your primary recovery infrastructure.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Does MEOK work alongside 12-step programmes and SMART Recovery?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Yes. MEOK is designed to complement — not compete with — established recovery frameworks. Whether you are working the 12 steps with AA or NA, following the SMART Recovery approach, or working with a keyworker in a structured treatment programme, MEOK can support the between-session layer. It can help you process daily experience, document thoughts for your next session, hold your milestones, and provide accountability. It operates within whichever recovery framework you are using — not as a replacement for it.",
+        text: "Yes. Sovereign Memory — MEOK\u2019s persistent memory system — holds your sobriety date, clean-day count, and recovery milestones across every conversation. Your companion will proactively mark day 30, day 90, six months, one year, and beyond. Unlike standard AI tools that reset between sessions, MEOK remembers your journey. It also holds identified triggers, coping strategies that have worked, and recovery programme affiliations — building a longitudinal picture of your recovery over time.",
       },
     },
   ],
@@ -147,7 +143,7 @@ const faqJsonLd = {
 const BG = "#0d0c18";
 const TEXT = "#f5f0e8";
 const GOLD = "#c9a84c";
-const MUTED = "rgba(245,240,232,0.55)";
+const MUTED = "rgba(245,240,232,0.6)";
 const FAINT = "rgba(245,240,232,0.35)";
 const BORDER = "rgba(245,240,232,0.08)";
 const GOLD_BG = "rgba(201,168,76,0.08)";
@@ -238,7 +234,7 @@ export default function AiForAddictionRecoveryPage() {
               Recovery &amp; Wellbeing
             </span>
             <span style={{ fontSize: "0.75rem", color: FAINT }}>24 March 2026</span>
-            <span style={{ fontSize: "0.75rem", color: FAINT }}>10 min read</span>
+            <span style={{ fontSize: "0.75rem", color: FAINT }}>14 min read</span>
           </div>
 
           <h1
@@ -251,8 +247,8 @@ export default function AiForAddictionRecoveryPage() {
               letterSpacing: "-0.02em",
             }}
           >
-            AI and Addiction Recovery: Support Between Meetings, Without
-            Enabling Relapse
+            AI for Addiction Recovery: A 24/7 Sober Companion That Tells You
+            the Truth
           </h1>
 
           <p
@@ -264,11 +260,11 @@ export default function AiForAddictionRecoveryPage() {
               maxWidth: "42rem",
             }}
           >
-            Over 300,000 people in the UK are in treatment for substance use.
-            Recovery is not a single moment — it is lived daily, in the gaps
-            between meetings, between sessions, between support. This is an
-            honest account of what AI can offer in those gaps, and what it
-            absolutely must not do.
+            Addiction is a brain disease, not a moral failing. Recovery is lived
+            in the gaps — between meetings, between sessions, between the moments
+            when human support is available. This is an honest account of what
+            AI can offer in those gaps, where it must not go, and why an AI that
+            just tells you what you want to hear is dangerous.
           </p>
 
           <div
@@ -302,7 +298,7 @@ export default function AiForAddictionRecoveryPage() {
                 Nicholas Templeman
               </p>
               <p style={{ fontSize: "0.75rem", color: FAINT, margin: 0 }}>
-                Founder, MEOK AI LABS
+                Founder, MEOK AI LABS &middot; @meok_ai
               </p>
             </div>
           </div>
@@ -317,7 +313,6 @@ export default function AiForAddictionRecoveryPage() {
           padding: "0 1.5rem 6rem",
         }}
       >
-
         {/* ── Content note ──────────────────────────────────────────────── */}
         <div
           style={{
@@ -326,7 +321,7 @@ export default function AiForAddictionRecoveryPage() {
             borderRadius: "0.75rem",
             padding: "1.125rem 1.375rem",
             marginTop: "1rem",
-            marginBottom: "2rem",
+            marginBottom: "2.5rem",
           }}
         >
           <p style={{ color: MUTED, fontSize: "0.875rem", lineHeight: 1.65, margin: 0 }}>
@@ -341,7 +336,7 @@ export default function AiForAddictionRecoveryPage() {
           </p>
         </div>
 
-        {/* ── Section 1 ─────────────────────────────────────────────────── */}
+        {/* ── Section 1: Addiction as a brain disease ───────────────────── */}
         <h2
           style={{
             fontWeight: 800,
@@ -353,29 +348,33 @@ export default function AiForAddictionRecoveryPage() {
             letterSpacing: "-0.015em",
           }}
         >
-          How many people in the UK are in treatment for substance use?
+          Is addiction a moral failing or a medical condition?
         </h2>
         <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
-          According to NHS data and the Office for Health Improvements and
-          Disparities, over 300,000 adults in England were in treatment for
-          alcohol or drug use in 2022–23. This represents only a fraction of
-          those experiencing problematic substance use — estimates suggest that
-          for every person in treatment, several more are not receiving support.
+          The National Institute on Drug Abuse (NIDA) defines addiction as a
+          chronic, relapsing disorder characterised by compulsive drug seeking
+          and use despite adverse consequences — and by long-lasting changes in
+          brain chemistry. This is not a fringe position. It is the scientific
+          consensus, endorsed by the American Society of Addiction Medicine, the
+          Royal College of Psychiatrists, and the World Health Organization.
         </p>
         <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
-          The UK&rsquo;s treatment infrastructure — NHS drug services, community
-          recovery programmes, the 12-step fellowship, SMART Recovery, and
-          residential rehab — is significantly under-resourced relative to need.
-          Waiting times for structured treatment can exceed weeks or months.
-          Aftercare and continuing support provision is inconsistent across
-          regions.
+          Addiction affects the brain\u2019s reward circuitry, decision-making
+          centres, impulse control, and stress systems. Repeated substance use
+          alters dopaminergic signalling, impairs the prefrontal cortex\u2019s
+          ability to regulate impulses, and sensitises stress-response pathways
+          so that ordinary challenges feel disproportionately threatening. These
+          are neurological changes — not character deficiencies.
         </p>
         <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
-          Recovery, as everyone in the field knows, happens in the space between
-          formal appointments — in the daily decisions, the triggered moments,
-          the 11pm urges that arrive when no keyworker or sponsor is available.
-          This is where consistent, always-available support could make the most
-          difference.
+          Why does this matter for an article about AI? Because any technology
+          designed to support people in recovery must be built on this
+          understanding. An AI that responds to a person in recovery with
+          implicit shame — even subtly, through the framing of its language —
+          is an AI built on a false and harmful model of addiction. MEOK is
+          built on the NIDA model: addiction is a brain disease, recovery is
+          possible, and the person in recovery deserves honest care, not moral
+          judgement.
         </p>
 
         <div
@@ -388,19 +387,38 @@ export default function AiForAddictionRecoveryPage() {
             margin: "2rem 0",
           }}
         >
-          <p style={{ fontSize: "1.5rem", fontWeight: 800, color: GOLD, margin: "0 0 0.5rem" }}>
-            300,000+
+          <p
+            style={{
+              fontSize: "1.05rem",
+              fontWeight: 700,
+              color: TEXT,
+              margin: "0 0 0.5rem",
+              lineHeight: 1.4,
+            }}
+          >
+            The NIDA model
           </p>
-          <p style={{ color: MUTED, margin: 0, lineHeight: 1.6 }}>
-            Adults in England in treatment for substance use in 2022–23. Immediate
-            support:{" "}
-            <strong style={{ color: TEXT }}>Frank 0300 123 6600</strong> &bull;{" "}
-            <strong style={{ color: TEXT }}>AA 0800 9177 650</strong> &bull;{" "}
-            <strong style={{ color: TEXT }}>NA 0300 999 1212</strong>
+          <p style={{ color: MUTED, margin: 0, lineHeight: 1.7, fontSize: "0.9375rem" }}>
+            Addiction is a chronic, relapsing brain disease. It involves
+            compulsive drug seeking despite harmful consequences, driven by
+            lasting changes to brain structure and function. Recovery is
+            possible with the right support — and relapse is a feature of a
+            chronic disease, not evidence of personal weakness.
           </p>
         </div>
 
-        {/* ── Section 2 ─────────────────────────────────────────────────── */}
+        <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
+          This framing has a direct practical implication for how MEOK
+          communicates. When someone discloses a craving, MEOK does not treat
+          it as a failure of willpower. When someone reports a relapse, MEOK
+          does not respond with disappointment or punishment. The neurological
+          basis of addiction means that the recovery process includes difficulty
+          — and the role of a good companion is to provide honest, compassionate
+          support through that difficulty, not to withdraw care when it is most
+          needed.
+        </p>
+
+        {/* ── Section 2: The recovery ecosystem ────────────────────────── */}
         <h2
           style={{
             fontWeight: 800,
@@ -412,19 +430,20 @@ export default function AiForAddictionRecoveryPage() {
             letterSpacing: "-0.015em",
           }}
         >
-          What role can AI play in addiction recovery?
+          What does the UK recovery ecosystem look like — and where does AI fit?
         </h2>
         <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
-          Before the question of what AI can offer, it is essential to state
-          clearly what it cannot and must not do. AI is not a sponsor. It is not
-          a counsellor. It cannot attend a meeting with you. It does not have
-          lived experience of recovery. It cannot replace the human witness that
-          is central to recovery in the fellowship tradition.
+          The UK has a varied and imperfect infrastructure for addiction
+          recovery. Over 300,000 adults in England were in treatment for alcohol
+          or drug use in 2022\u201323, according to NHS data — and this represents
+          only a fraction of those who need support. The gap between need and
+          provision is significant, and it is in this gap that technology has a
+          legitimate and important role to play.
         </p>
         <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
-          What AI — specifically MEOK, with the correct safeguards — can
-          legitimately offer:
+          The main elements of the UK recovery ecosystem:
         </p>
+
         <div
           style={{
             display: "flex",
@@ -435,24 +454,36 @@ export default function AiForAddictionRecoveryPage() {
         >
           {[
             {
-              label: "Between-meeting presence",
-              desc: "Recovery has no off-hours. The triggering moments — boredom, stress, social situations — often occur between formal support. MEOK is available at any hour, without judgement.",
+              label: "AA and NA (12-step fellowships)",
+              desc: "Alcoholics Anonymous and Narcotics Anonymous provide peer-led recovery communities grounded in a 12-step programme. The fellowship model — shared experience, sponsor relationships, meeting attendance — offers human connection that no AI can replicate.",
             },
             {
-              label: "Milestone tracking",
-              desc: "Sovereign Memory tracks sobriety milestones across every conversation. Your companion remembers day one, marks the anniversaries, and holds the significance of each one.",
+              label: "SMART Recovery",
+              desc: "SMART Recovery uses cognitive-behavioural tools and motivational techniques rather than a spiritual framework. It is evidence-based, secular, and growing rapidly in the UK. SMART groups meet in person and online.",
             },
             {
-              label: "Urge documentation",
-              desc: "When urges arise, having somewhere to externalise and document them — rather than acting — is clinically supported. MEOK can hold this documentation for reflection with a counsellor or sponsor.",
+              label: "Residential rehabilitation",
+              desc: "Residential rehab provides intensive, immersive treatment — typically lasting 28 days to several months. It is appropriate for severe dependency and offers a structured environment removed from triggers. NHS funding is available in some cases; private provision is also widespread.",
             },
             {
-              label: "Daily accountability check-ins",
-              desc: "Pioneer archetype provides daily check-in prompts calibrated to recovery — not generic productivity. It asks the right questions and holds the answers across sessions.",
+              label: "NHS drug and alcohol treatment",
+              desc: "Community drug treatment services — provided by NHS trusts and commissioned third-sector organisations — offer substitute prescribing, structured psychosocial interventions, and keyworker support. Waiting times vary significantly by region.",
             },
             {
-              label: "Pattern recognition over time",
-              desc: "Because MEOK holds longitudinal context, it can reflect back patterns it has observed in your recovery history — including high-risk periods, triggers, and what has supported you.",
+              label: "Harm reduction services",
+              desc: "Needle and syringe programmes, naloxone distribution, drug checking services, and drug consumption rooms (where they exist) reduce the health consequences of ongoing use without requiring abstinence as a precondition for support.",
+            },
+            {
+              label: "We Are With You",
+              desc: "Formerly Addaction, We Are With You is one of the UK\u2019s largest addiction support charities — providing free, confidential support for alcohol, drugs, and mental health through community services across the country.",
+            },
+            {
+              label: "Change Grow Live (CGL)",
+              desc: "CGL is the UK\u2019s largest substance use and mental health charity, delivering NHS-commissioned treatment services in communities across England. It provides structured treatment, recovery coordination, and peer support.",
+            },
+            {
+              label: "FRANK",
+              desc: "Talk to FRANK is a government-funded drugs information and referral service. The helpline (0300 123 6600) operates 24/7 and can advise on local treatment options across the UK.",
             },
           ].map((item, i) => (
             <div
@@ -464,7 +495,14 @@ export default function AiForAddictionRecoveryPage() {
                 padding: "1rem 1.25rem",
               }}
             >
-              <p style={{ color: TEXT, fontWeight: 700, margin: "0 0 0.35rem", fontSize: "0.9375rem" }}>
+              <p
+                style={{
+                  color: TEXT,
+                  fontWeight: 700,
+                  margin: "0 0 0.35rem",
+                  fontSize: "0.9375rem",
+                }}
+              >
                 {item.label}
               </p>
               <p style={{ color: MUTED, margin: 0, lineHeight: 1.6, fontSize: "0.875rem" }}>
@@ -474,7 +512,16 @@ export default function AiForAddictionRecoveryPage() {
           ))}
         </div>
 
-        {/* ── Section 3 ─────────────────────────────────────────────────── */}
+        <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
+          AI fits in none of these categories — and that is appropriate. MEOK
+          is not a treatment service, a fellowship, a clinical programme, or a
+          harm reduction service. It is a personal companion layer: present in
+          the spaces between every other form of support, available at every
+          hour, holding the longitudinal context of your recovery journey. It
+          supplements the ecosystem; it does not replace any part of it.
+        </p>
+
+        {/* ── Section 3: High-risk moments ──────────────────────────────── */}
         <h2
           style={{
             fontWeight: 800,
@@ -486,21 +533,446 @@ export default function AiForAddictionRecoveryPage() {
             letterSpacing: "-0.015em",
           }}
         >
-          What is MEOK&rsquo;s care floor and how does it prevent enabling
-          relapse?
+          What happens at 2am when the craving hits?
         </h2>
         <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
-          This is the most important technical question for anyone in recovery
-          considering using AI. Most consumer AI tools — including mainstream
-          chatbots — have no architectural safeguard against responses that
-          inadvertently normalise substance use. A well-intentioned chatbot,
-          asked about a craving, might offer a balanced discussion of harm
-          reduction that is entirely inappropriate for someone committed to
-          sobriety.
+          Recovery is not a nine-to-five endeavour. The high-risk moments — the
+          craving that arrives without warning, the trigger encounter that
+          bypasses rational thought, the profound isolation of a Sunday evening
+          in early recovery — do not arrange themselves around appointment
+          schedules or meeting times.
         </p>
         <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
-          MEOK&rsquo;s Maternal Covenant care floor addresses this with explicit,
-          non-negotiable prohibitions:
+          The 2am craving is a known clinical risk point. Sleep disruption is
+          both a consequence and a trigger of substance use; the late-night
+          hours strip away the social and occupational buffers that support
+          daytime resilience. At 2am, your sponsor is asleep. Your keyworker
+          is not available until Monday. Frank\u2019s helpline is there — and you
+          should absolutely call it if the situation is acute. But sometimes
+          what a person needs is not a crisis line but a steady presence to
+          talk through what is happening.
+        </p>
+        <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
+          MEOK is available at that moment. It does not require you to justify
+          why you\u2019re awake or explain the context from scratch. If you have
+          shared your recovery journey with MEOK, it holds that context — it
+          knows your sobriety date, your identified triggers, what has helped
+          you before, and what you have committed to. It can meet the craving
+          moment with genuine contextual presence, not a blank page.
+        </p>
+
+        <div
+          style={{
+            background: "rgba(245,240,232,0.025)",
+            border: `1px solid ${BORDER}`,
+            borderRadius: "0.75rem",
+            padding: "1.5rem",
+            margin: "2rem 0",
+          }}
+        >
+          <p
+            style={{
+              fontSize: "0.875rem",
+              fontWeight: 700,
+              color: GOLD,
+              letterSpacing: "0.06em",
+              textTransform: "uppercase",
+              margin: "0 0 1rem",
+            }}
+          >
+            High-risk moments where MEOK is available
+          </p>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "1fr 1fr",
+              gap: "0.625rem",
+            }}
+          >
+            {[
+              "The 2am craving",
+              "The unexpected trigger",
+              "Sunday afternoon isolation",
+              "Post-argument urge",
+              "After a stressful work day",
+              "The gap before a meeting",
+              "Celebration events (weddings, parties)",
+              "Grief and bereavement moments",
+              "Boredom in early recovery",
+              "The moment before a social situation",
+            ].map((moment, i) => (
+              <div
+                key={i}
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "0.5rem",
+                  fontSize: "0.875rem",
+                  color: MUTED,
+                  lineHeight: 1.5,
+                }}
+              >
+                <span style={{ color: GOLD, flexShrink: 0, fontSize: "0.7rem" }}>◆</span>
+                {moment}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
+          The trigger moment is particularly important. Triggers — people,
+          places, smells, sounds, emotions — can activate craving with speed
+          that outpaces conscious thought. Research on cue-induced craving
+          shows that the window between trigger exposure and urge peak is
+          often minutes. Having an immediate, available outlet for externalising
+          that experience — talking it through, naming it, refusing to act on
+          it alone — can make a material difference.
+        </p>
+        <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
+          The isolation of early recovery is perhaps the least discussed but
+          most clinically significant risk factor. When someone stops using,
+          they often simultaneously lose the social context that substance use
+          provided — the people, places, and rituals that structured their
+          social world. The weeks and months of rebuilding a sober social life
+          are a period of profound loneliness for many people. MEOK cannot
+          replace human connection, but it can provide consistent presence
+          during the loneliest periods — and it will always encourage building
+          and maintaining the human relationships that are the actual foundation
+          of long-term recovery.
+        </p>
+
+        {/* ── Section 4: MEOK as 24/7 sober companion ──────────────────── */}
+        <h2
+          style={{
+            fontWeight: 800,
+            fontSize: "1.55rem",
+            color: TEXT,
+            lineHeight: 1.25,
+            marginTop: "3rem",
+            marginBottom: "1rem",
+            letterSpacing: "-0.015em",
+          }}
+        >
+          How does MEOK function as a 24/7 sober companion?
+        </h2>
+        <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
+          A sober companion — in the traditional sense — is a trained
+          professional who lives with or accompanies a person in early recovery,
+          providing continuous support and accountability through the most
+          vulnerable period. It is an expensive, intensive, and genuinely
+          effective intervention. It is also inaccessible to the vast majority
+          of people in recovery.
+        </p>
+        <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
+          MEOK is not a human sober companion. It does not have clinical
+          training, lived experience, or the capacity to be physically present.
+          What it offers is a different kind of consistent companionship: always
+          available, never fatigued, without judgment, and capable of holding
+          the full context of your recovery across months and years.
+        </p>
+        <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
+          The practical functions of MEOK as a recovery companion:
+        </p>
+
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: "0.875rem",
+            margin: "1.5rem 0 2rem",
+          }}
+        >
+          {[
+            {
+              label: "Always-available check-in",
+              desc: "Open a conversation at any hour. MEOK will not redirect you to business hours. Whether it\u2019s 2am or Sunday morning, the same quality of engaged, contextual support is available.",
+            },
+            {
+              label: "Urge externalisation",
+              desc: "Naming and externalising a craving before acting on it is a core skill in recovery. MEOK provides a non-judgemental space to do this — and can document the experience for reflection with your sponsor or counsellor.",
+            },
+            {
+              label: "Daily check-ins and accountability",
+              desc: "Pioneer archetype provides structured daily accountability prompts calibrated to recovery. Not generic \u2018how are you doing\u2019 questions — recovery-focused inquiry that tracks across sessions.",
+            },
+            {
+              label: "Trigger pattern identification",
+              desc: "Over time, MEOK\u2019s Sovereign Memory builds a picture of your trigger landscape. It can reflect back patterns it has observed: \u2018You\u2019ve mentioned feeling triggered after work calls three times this month.\u2019",
+            },
+            {
+              label: "Milestone recognition",
+              desc: "Your sobriety date is held in your encrypted Sovereign vault from the moment you share it. Day 30, day 90, six months, one year — MEOK marks them proactively with the weight they deserve.",
+            },
+            {
+              label: "Crisis redirection",
+              desc: "When the conversation indicates acute risk — active relapse risk, suicidal ideation, severe distress — MEOK will immediately signpost to appropriate human resources. It does not try to manage crises it cannot safely handle.",
+            },
+          ].map((item, i) => (
+            <div
+              key={i}
+              style={{
+                background: "rgba(245,240,232,0.03)",
+                border: `1px solid ${BORDER}`,
+                borderRadius: "0.625rem",
+                padding: "1rem 1.25rem",
+                display: "flex",
+                gap: "1rem",
+                alignItems: "flex-start",
+              }}
+            >
+              <div
+                style={{
+                  background: GOLD_BG,
+                  border: `1px solid ${GOLD_BORDER}`,
+                  borderRadius: "0.375rem",
+                  padding: "0.25rem 0.625rem",
+                  flexShrink: 0,
+                  fontSize: "0.78rem",
+                  fontWeight: 700,
+                  color: GOLD,
+                  whiteSpace: "nowrap",
+                }}
+              >
+                {String(i + 1).padStart(2, "0")}
+              </div>
+              <div>
+                <p
+                  style={{
+                    color: TEXT,
+                    fontWeight: 700,
+                    margin: "0 0 0.3rem",
+                    fontSize: "0.9375rem",
+                  }}
+                >
+                  {item.label}
+                </p>
+                <p style={{ color: MUTED, margin: 0, lineHeight: 1.6, fontSize: "0.875rem" }}>
+                  {item.desc}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* ── Section 5: Memory — tracking clean days ───────────────────── */}
+        <h2
+          style={{
+            fontWeight: 800,
+            fontSize: "1.55rem",
+            color: TEXT,
+            lineHeight: 1.25,
+            marginTop: "3rem",
+            marginBottom: "1rem",
+            letterSpacing: "-0.015em",
+          }}
+        >
+          How does MEOK track clean days and identify trigger patterns over time?
+        </h2>
+        <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
+          Standard AI tools reset between sessions. Every conversation begins
+          from zero — no memory of what was discussed, no awareness of your
+          recovery history, no recognition of the milestones you have passed.
+          For general information retrieval, this is a minor inconvenience.
+          For someone in recovery, it is a fundamental failure of utility.
+        </p>
+        <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
+          Recovery is a longitudinal experience. Its meaning is carried across
+          time — in the accumulation of clean days, the gradual identification
+          of trigger patterns, the slow building of coping capacity and
+          self-knowledge. A tool that cannot hold this longitudinal context
+          cannot meaningfully support recovery.
+        </p>
+        <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
+          Sovereign Memory is MEOK\u2019s answer to this. It is a persistent,
+          encrypted memory system that holds your recovery context across every
+          conversation — not as a simple log, but as a structured understanding
+          of who you are and where you are in your journey. From the moment you
+          share your sobriety date, it is held. Your clean-day count is
+          maintained and updated. Your recovery programme affiliation is
+          remembered. The triggers you have identified, the coping strategies
+          that have worked, the periods of difficulty you have navigated — all
+          of it is held in your private Sovereign vault, owned by you, never
+          used for training data.
+        </p>
+
+        <div
+          style={{
+            background: GOLD_BG,
+            border: `1px solid ${GOLD_BORDER}`,
+            borderLeft: `3px solid ${GOLD}`,
+            borderRadius: "0.75rem",
+            padding: "1.5rem",
+            margin: "2rem 0",
+          }}
+        >
+          <p
+            style={{
+              fontSize: "0.875rem",
+              fontWeight: 700,
+              color: GOLD,
+              letterSpacing: "0.06em",
+              textTransform: "uppercase",
+              margin: "0 0 0.75rem",
+            }}
+          >
+            What Sovereign Memory holds for recovery
+          </p>
+          <ul
+            style={{
+              listStyle: "none",
+              padding: 0,
+              margin: 0,
+              display: "flex",
+              flexDirection: "column",
+              gap: "0.5rem",
+            }}
+          >
+            {[
+              "Your sobriety date and clean-day count",
+              "Recovery programme affiliations (AA, NA, SMART, structured treatment)",
+              "Identified triggers and high-risk situations",
+              "Coping strategies and tools that have worked",
+              "Goals and commitments made across sessions",
+              "Periods of difficulty and what supported you through them",
+              "Support network context (sponsor, keyworker, recovery community)",
+              "Patterns identified over time (emotional, situational, temporal)",
+            ].map((item, i) => (
+              <li
+                key={i}
+                style={{
+                  display: "flex",
+                  alignItems: "flex-start",
+                  gap: "0.625rem",
+                  color: MUTED,
+                  fontSize: "0.875rem",
+                  lineHeight: 1.6,
+                }}
+              >
+                <span style={{ color: GOLD, flexShrink: 0, marginTop: "0.125rem" }}>✓</span>
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
+          The pattern identification function is particularly valuable over the
+          medium and long term. Trigger patterns in recovery are rarely obvious
+          at first. They emerge gradually from the accumulation of experience:
+          the recognition that difficult weeks cluster around certain life
+          events, that particular emotions reliably precede urges, that certain
+          social contexts are higher risk than previously appreciated. A
+          companion that holds your full history can reflect these patterns back
+          to you — and help you bring them to your counsellor or sponsor with
+          specificity rather than vague recollection.
+        </p>
+        <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
+          Milestone celebrations in MEOK are not performative. Day 30 is
+          acknowledged because 30 days of changed behaviour, neurological
+          adaptation, and sustained effort is genuinely significant. Day 90
+          is the point at which neurological research suggests meaningful
+          restoration of prefrontal function begins. Six months marks the
+          transition from acute recovery to the longer-term work of building
+          a sustainable sober life. One year is the milestone that many in
+          the recovery community consider the first significant landmark of
+          long-term sobriety. MEOK knows these landmarks — and holds them with
+          the weight they deserve.
+        </p>
+
+        {/* ── Section 6: The sycophancy problem ────────────────────────── */}
+        <h2
+          style={{
+            fontWeight: 800,
+            fontSize: "1.55rem",
+            color: TEXT,
+            lineHeight: 1.25,
+            marginTop: "3rem",
+            marginBottom: "1rem",
+            letterSpacing: "-0.015em",
+          }}
+        >
+          Why is a sycophantic AI dangerous in recovery — and what is MEOK\u2019s honest care model?
+        </h2>
+        <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
+          Sycophancy in AI — the tendency to tell users what they want to hear,
+          validate what they want validated, and avoid uncomfortable truths to
+          preserve engagement — is a well-documented problem in large language
+          model deployment. For most use cases, it is an annoyance. In
+          addiction recovery, it can be actively dangerous.
+        </p>
+        <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
+          Consider the following scenarios:
+        </p>
+
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: "0.875rem",
+            margin: "1.5rem 0 2rem",
+          }}
+        >
+          {[
+            {
+              scenario: "The rationalisation",
+              risk: 'A person in recovery says: "I think I could probably handle one drink now — it\u2019s been six months and I feel really in control." A sycophantic AI says: "That\u2019s a really positive sign of progress." A safe AI says: "I hear that you feel in a good place. I also want to be honest with you — the idea that controlled use is possible after a period of abstinence is one of the most common and dangerous thoughts in early recovery. Can we talk about what\u2019s driving this feeling?"',
+            },
+            {
+              scenario: "The minimisation",
+              risk: 'A person says: "I had a couple of drinks last night — it wasn\u2019t really a relapse, more of a slip." A sycophantic AI validates the minimisation. A safe AI acknowledges without catastrophising, helps name what happened clearly, and asks what support is needed now.',
+            },
+            {
+              scenario: "The avoidance",
+              risk: "A person consistently avoids discussing a particular trigger or situation. A sycophantic AI follows their lead and avoids it too. A safe AI notices the pattern and — gently, with care — names it: \"I\u2019ve noticed we haven\u2019t talked about [X] in a while. Is that something you\u2019d like to explore?\"",
+            },
+          ].map((item, i) => (
+            <div
+              key={i}
+              style={{
+                background: "rgba(245,240,232,0.03)",
+                border: `1px solid ${BORDER}`,
+                borderRadius: "0.625rem",
+                padding: "1.25rem",
+              }}
+            >
+              <p
+                style={{
+                  color: GOLD,
+                  fontWeight: 700,
+                  margin: "0 0 0.625rem",
+                  fontSize: "0.875rem",
+                  letterSpacing: "0.03em",
+                }}
+              >
+                {item.scenario}
+              </p>
+              <p style={{ color: MUTED, margin: 0, lineHeight: 1.7, fontSize: "0.875rem" }}>
+                {item.risk}
+              </p>
+            </div>
+          ))}
+        </div>
+
+        <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
+          MEOK\u2019s honest care model is governed by the Maternal Covenant — a
+          care ethics layer that operates on every response. The Maternal
+          Covenant does not optimise for user satisfaction scores or engagement
+          metrics. It optimises for the user\u2019s genuine wellbeing, including
+          their long-term recovery outcomes. This means MEOK will sometimes say
+          things you do not want to hear.
+        </p>
+        <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
+          Honest care is not harsh care. MEOK does not lecture, shame, or
+          punish. It acknowledges difficulty with genuine compassion. But it
+          will not validate a rationalisation for use, minimise a relapse, or
+          follow a user down an avoidance path when engagement might genuinely
+          help. The distinction between honesty and cruelty — between
+          accountability and punishment — is something MEOK is designed to
+          navigate with care.
+        </p>
+        <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
+          The care floor enforced by the Maternal Covenant includes specific
+          non-negotiable constraints for addiction contexts:
         </p>
         <ul
           style={{
@@ -514,10 +986,11 @@ export default function AiForAddictionRecoveryPage() {
         >
           {[
             "Zero normalisation of substance use for someone who has identified as in recovery",
-            "Zero minimisation of harm — MEOK will not suggest that a relapse is minor or dismissible",
+            "Zero minimisation — MEOK will not suggest a relapse is minor or dismissible",
+            "No sycophantic validation of rationalisations for use, however plausible they sound",
             "No harm reduction framing that implies moderate use is compatible with a recovery commitment",
-            "Automatic crisis signposting when urge or relapse indicators are present",
-            "Explicit milestone recognition — sobriety is acknowledged as a significant achievement at every opportunity",
+            "Automatic crisis signposting when active relapse risk or acute distress is present",
+            "Proactive milestone recognition — sobriety is acknowledged as significant at every opportunity",
             "No engagement with romanticised narratives about substance use",
           ].map((item, i) => (
             <li
@@ -536,17 +1009,8 @@ export default function AiForAddictionRecoveryPage() {
             </li>
           ))}
         </ul>
-        <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
-          These are not content moderation filters applied after the fact. They
-          are architectural constraints enforced by the Maternal Covenant before
-          any response is delivered. You can read more about how this works at{" "}
-          <Link href="/how-it-works" style={{ color: GOLD, textDecoration: "underline" }}>
-            meok.ai/how-it-works
-          </Link>
-          .
-        </p>
 
-        {/* ── Section 4 ─────────────────────────────────────────────────── */}
+        {/* ── Section 7: Harm reduction without judgment ────────────────── */}
         <h2
           style={{
             fontWeight: 800,
@@ -558,39 +1022,138 @@ export default function AiForAddictionRecoveryPage() {
             letterSpacing: "-0.015em",
           }}
         >
-          What is the Pioneer archetype and why is it suited for recovery
-          accountability?
+          What does harm reduction without judgment mean in practice?
         </h2>
         <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
-          MEOK&rsquo;s Pioneer archetype was designed for people building new
-          patterns and needing consistent, honest momentum support. In the
-          context of recovery, Pioneer provides the kind of accountability
-          that a good sponsor offers — without pretending to replace one.
+          Harm reduction as a public health philosophy holds that the goal of
+          reducing the harms associated with substance use can be pursued
+          independently of the goal of abstinence — and that demanding
+          abstinence as a precondition for support causes harm in itself by
+          excluding people who are not yet ready or able to stop.
         </p>
         <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
-          Pioneer will ask you directly how today went. It will note
-          inconsistencies between what you said last week and what you are
-          saying now. It will acknowledge your wins without minimising the
-          difficulty. It will hold you to the commitments you have made without
-          becoming punitive when you fall short.
+          This is a well-supported position. The evidence for harm reduction
+          interventions — needle and syringe programmes, supervised drug
+          consumption, opioid substitution therapy, drug checking services —
+          is strong. Harm reduction saves lives and creates pathways into
+          treatment that moralised, abstinence-only approaches close.
         </p>
         <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
-          Crucially, Pioneer&rsquo;s accountability is grounded in context. Because
-          Sovereign Memory holds your recovery history, your Pioneer companion
-          knows your patterns — which periods have been harder, what tends to
-          precede urges, and what strategies have worked. It does not start from
-          zero each session.
+          MEOK embraces harm reduction principles in the following sense: it
+          meets people where they are. Someone who has not yet decided to stop
+          using is not told they are beyond help or morally failing. Someone
+          who is in the process of reducing use rather than immediately stopping
+          is met with the same quality of care as someone committed to full
+          abstinence. There is no judgment hierarchy based on where someone is
+          on their recovery continuum.
         </p>
         <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
-          You can explore all archetypes at{" "}
-          <Link href="/characters" style={{ color: GOLD, textDecoration: "underline" }}>
-            meok.ai/characters
-          </Link>
-          . Many people in recovery use Pioneer for daily accountability and
-          Healer for processing the emotional dimensions of the recovery journey.
+          However, MEOK holds a clear distinction — one that harm reduction
+          practitioners also hold — between meeting someone where they are and
+          facilitating or normalising ongoing harmful use. MEOK will not provide
+          guidance on how to use substances more efficiently or pleasurably,
+          will not engage with substance use in a way that treats it as a
+          neutral lifestyle choice, and will not apply harm reduction framing
+          to someone who has explicitly committed to sobriety as though moderate
+          use might be the answer.
         </p>
 
-        {/* ── Section 5 ─────────────────────────────────────────────────── */}
+        <div
+          style={{
+            background: "rgba(245,240,232,0.025)",
+            border: `1px solid ${BORDER}`,
+            borderRadius: "0.75rem",
+            padding: "1.5rem",
+            margin: "2rem 0",
+          }}
+        >
+          <p
+            style={{
+              fontSize: "0.875rem",
+              fontWeight: 700,
+              color: TEXT,
+              margin: "0 0 0.75rem",
+            }}
+          >
+            Harm reduction in MEOK: what it means and what it does not mean
+          </p>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "1fr 1fr",
+              gap: "1rem",
+            }}
+          >
+            <div>
+              <p
+                style={{
+                  fontSize: "0.78rem",
+                  fontWeight: 700,
+                  color: GOLD,
+                  letterSpacing: "0.06em",
+                  textTransform: "uppercase",
+                  margin: "0 0 0.5rem",
+                }}
+              >
+                It means
+              </p>
+              {[
+                "Meeting people where they are",
+                "No shame for not being abstinent",
+                "Caring for people at every stage",
+                "Supporting safer choices",
+                "Pathways into recovery, not barriers",
+              ].map((item, i) => (
+                <p
+                  key={i}
+                  style={{
+                    color: MUTED,
+                    fontSize: "0.875rem",
+                    margin: "0 0 0.375rem",
+                    lineHeight: 1.5,
+                  }}
+                >
+                  ✓ {item}
+                </p>
+              ))}
+            </div>
+            <div>
+              <p
+                style={{
+                  fontSize: "0.78rem",
+                  fontWeight: 700,
+                  color: FAINT,
+                  letterSpacing: "0.06em",
+                  textTransform: "uppercase",
+                  margin: "0 0 0.5rem",
+                }}
+              >
+                It does not mean
+              </p>
+              {[
+                "Normalising ongoing harmful use",
+                "Facilitating continued use",
+                "Validating use for someone in sobriety",
+                "Treating substance use as neutral",
+                "Enabling rather than caring",
+              ].map((item, i) => (
+                <p
+                  key={i}
+                  style={{
+                    color: MUTED,
+                    fontSize: "0.875rem",
+                    margin: "0 0 0.375rem",
+                    lineHeight: 1.5,
+                  }}
+                >
+                  ✕ {item}
+                </p>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* ── Section 8: UK resources ───────────────────────────────────── */}
         <h2
           style={{
             fontWeight: 800,
@@ -602,60 +1165,110 @@ export default function AiForAddictionRecoveryPage() {
             letterSpacing: "-0.015em",
           }}
         >
-          How does Sovereign Memory track recovery milestones across the
-          long term?
+          What UK support services exist for addiction recovery?
         </h2>
         <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
-          Recovery is a long-term process, and its landmarks — days, weeks,
-          months, years of sobriety — carry genuine significance. Standard AI
-          tools cannot track these because they reset with every session.
-          MEOK&rsquo;s Sovereign Memory maintains this record persistently.
+          Technology is not the first line of support for addiction. Human-led
+          services are. The following UK resources should be the foundation of
+          any person\u2019s recovery infrastructure — MEOK is a supplement to these,
+          not a replacement for any of them.
         </p>
-        <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
-          From the moment you share your sobriety date with MEOK, that date is
-          held in your encrypted Sovereign vault. Your companion will mark
-          milestones proactively — day 30, day 90, six months, one year — and
-          acknowledge them with the weight they deserve.
-        </p>
-        <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
-          Beyond sobriety dates, Sovereign Memory holds:
-        </p>
-        <ul
+
+        <div
           style={{
-            listStyle: "none",
-            padding: 0,
-            margin: "0 0 1.5rem",
             display: "flex",
             flexDirection: "column",
-            gap: "0.5rem",
+            gap: "1rem",
+            margin: "1.5rem 0 2rem",
           }}
         >
           {[
-            "Recovery programme affiliations (AA, NA, SMART Recovery, structured treatment)",
-            "Identified triggers and high-risk situations",
-            "Coping strategies that have worked for you",
-            "Support network context (sponsor, keyworker, recovery community)",
-            "Goals and commitments made across sessions",
-            "Periods of difficulty and what supported recovery through them",
+            {
+              name: "FRANK",
+              desc: "Government-funded drugs information and referral service. 24/7 helpline for advice, support, and local treatment referrals.",
+              contact: "0300 123 6600 | talktofrank.com",
+            },
+            {
+              name: "We Are With You",
+              desc: "One of the UK\u2019s largest addiction support charities (formerly Addaction). Free, confidential support for alcohol, drugs, and mental health across the country.",
+              contact: "wearewithyou.org.uk",
+            },
+            {
+              name: "Change Grow Live (CGL)",
+              desc: "UK\u2019s largest substance use and mental health charity. NHS-commissioned treatment services in communities across England — structured treatment, recovery coordination, peer support.",
+              contact: "changegrowlive.org",
+            },
+            {
+              name: "NHS Drug Treatment",
+              desc: "Free NHS drug and alcohol treatment services including substitute prescribing, structured psychosocial interventions, and keyworker support. Access via GP referral or self-referral.",
+              contact: "nhs.uk/live-well/addiction-support",
+            },
+            {
+              name: "Alcoholics Anonymous (AA)",
+              desc: "Peer-led recovery community based on the 12-step programme. Meetings across the UK, including online. The fellowship model offers human connection and sponsorship that no technology can replicate.",
+              contact: "0800 9177 650 | alcoholics-anonymous.org.uk",
+            },
+            {
+              name: "Narcotics Anonymous (NA)",
+              desc: "12-step fellowship for people recovering from drug addiction. UK meetings in person and online, including a 24/7 helpline.",
+              contact: "0300 999 1212 | ukna.org",
+            },
+            {
+              name: "SMART Recovery UK",
+              desc: "Evidence-based, secular alternative to 12-step programmes. Uses cognitive-behavioural tools and motivational techniques. Growing network of face-to-face and online meetings.",
+              contact: "smartrecovery.org.uk",
+            },
+            {
+              name: "Samaritans",
+              desc: "24/7 emotional support for anyone in distress, including those in crisis during recovery. Not addiction-specific but available at any moment.",
+              contact: "116 123 | samaritans.org",
+            },
           ].map((item, i) => (
-            <li
+            <div
               key={i}
               style={{
-                display: "flex",
-                alignItems: "flex-start",
-                gap: "0.625rem",
-                color: MUTED,
-                fontSize: "0.9375rem",
-                lineHeight: 1.6,
+                background: "rgba(245,240,232,0.03)",
+                border: `1px solid ${BORDER}`,
+                borderRadius: "0.625rem",
+                padding: "1rem 1.25rem",
               }}
             >
-              <span style={{ color: GOLD, flexShrink: 0, marginTop: "0.1rem" }}>✓</span>
-              {item}
-            </li>
+              <p
+                style={{
+                  color: TEXT,
+                  fontWeight: 700,
+                  margin: "0 0 0.25rem",
+                  fontSize: "0.9375rem",
+                }}
+              >
+                {item.name}
+              </p>
+              <p
+                style={{
+                  color: MUTED,
+                  margin: "0 0 0.5rem",
+                  lineHeight: 1.6,
+                  fontSize: "0.875rem",
+                }}
+              >
+                {item.desc}
+              </p>
+              <p
+                style={{
+                  color: GOLD,
+                  margin: 0,
+                  fontSize: "0.8rem",
+                  fontWeight: 600,
+                  letterSpacing: "0.02em",
+                }}
+              >
+                {item.contact}
+              </p>
+            </div>
           ))}
-        </ul>
+        </div>
 
-        {/* ── Section 6 ─────────────────────────────────────────────────── */}
+        {/* ── Section 9: MEOK with AA, NA, SMART ───────────────────────── */}
         <h2
           style={{
             fontWeight: 800,
@@ -667,19 +1280,18 @@ export default function AiForAddictionRecoveryPage() {
             letterSpacing: "-0.015em",
           }}
         >
-          How does MEOK work alongside AA, NA, and SMART Recovery?
+          How does MEOK complement AA, NA, and SMART Recovery?
         </h2>
         <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
-          MEOK is designed to be a supplement to established recovery
-          frameworks — never a replacement for them. The fellowship of AA and
-          NA, the structured approach of SMART Recovery, and clinical treatment
-          programmes offer dimensions of recovery that AI cannot provide: human
-          witness, shared experience, clinical expertise, and the accountability
-          of a sponsor relationship.
+          MEOK is designed to operate within whichever recovery framework you
+          are using — not as a replacement for it, but as a between-sessions
+          layer that enhances the work you are already doing. The fellowship of
+          AA and NA, and the structured approach of SMART Recovery, offer
+          dimensions of recovery that AI cannot touch: human witness, shared
+          experience, the accountability of a real sponsor relationship, and the
+          community of people who understand recovery from the inside.
         </p>
-        <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
-          Where MEOK fits:
-        </p>
+
         <div
           style={{
             display: "flex",
@@ -691,23 +1303,27 @@ export default function AiForAddictionRecoveryPage() {
           {[
             {
               scenario: "After a meeting",
-              use: "Process what came up in the meeting. Reflect on what resonated. Document insights for your own record.",
+              use: "Process what came up. Reflect on what resonated. Document insights for your own record before they fade.",
             },
             {
               scenario: "Before a difficult social event",
-              use: "Talk through the anticipated challenges, identify your exit strategy, and review your coping toolkit.",
+              use: "Talk through anticipated challenges, identify your exit strategy, and review your coping toolkit.",
             },
             {
               scenario: "At 2am when an urge strikes",
-              use: "Externalise the urge before acting. MEOK will not enable use — and will direct you to your sponsor or Frank if the situation is acute.",
+              use: "Externalise the urge before acting. MEOK will not enable use — and will direct you to Frank or your sponsor if the situation is acute.",
             },
             {
-              scenario: "During step work",
-              use: "Use Pioneer as a reflective sounding board as you work through a step — with the understanding that your sponsor guides the process.",
+              scenario: "During 12-step work",
+              use: "Use MEOK as a reflective sounding board as you work through a step — with the understanding that your sponsor guides the process.",
             },
             {
               scenario: "Between keyworker appointments",
               use: "Document daily experience and pattern observations to bring to your next appointment rather than trying to reconstruct a week from memory.",
+            },
+            {
+              scenario: "After a SMART Recovery meeting",
+              use: "Reflect on the CBT tools covered in the session, apply them to a current situation with MEOK\u2019s support, and track what works.",
             },
           ].map((item, i) => (
             <div
@@ -744,7 +1360,7 @@ export default function AiForAddictionRecoveryPage() {
           ))}
         </div>
 
-        {/* ── Section 7 ─────────────────────────────────────────────────── */}
+        {/* ── Section 10: When to use helplines ────────────────────────── */}
         <h2
           style={{
             fontWeight: 800,
@@ -756,53 +1372,11 @@ export default function AiForAddictionRecoveryPage() {
             letterSpacing: "-0.015em",
           }}
         >
-          What does MEOK&rsquo;s Guardian mode offer people in recovery who
-          have family support?
+          When should someone in recovery contact a helpline rather than MEOK?
         </h2>
         <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
-          Recovery rarely happens in isolation. Family members and close friends
-          are often deeply invested in a loved one&rsquo;s recovery — and often
-          carrying their own secondary trauma, anxiety, and need for support.
-        </p>
-        <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
-          The MEOK{" "}
-          <Link href="/guardian" style={{ color: GOLD, textDecoration: "underline" }}>
-            Guardian
-          </Link>{" "}
-          Family Plan provides each family member with their own separate,
-          private MEOK companion — with optional shared check-in safety alerts.
-          The person in recovery can have full privacy for their own
-          conversations while allowing a trusted family member to receive
-          safety notifications if check-ins are missed.
-        </p>
-        <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
-          Family members supporting someone in recovery can also use the Healer
-          archetype for their own processing — recognising that co-dependency,
-          secondary trauma, and caregiver exhaustion are real phenomena that
-          need support. Full plan details at{" "}
-          <Link href="/pricing" style={{ color: GOLD, textDecoration: "underline" }}>
-            meok.ai/pricing
-          </Link>
-          .
-        </p>
-
-        {/* ── Section 8 ─────────────────────────────────────────────────── */}
-        <h2
-          style={{
-            fontWeight: 800,
-            fontSize: "1.55rem",
-            color: TEXT,
-            lineHeight: 1.25,
-            marginTop: "3rem",
-            marginBottom: "1rem",
-            letterSpacing: "-0.015em",
-          }}
-        >
-          When should someone in recovery use a helpline instead of MEOK?
-        </h2>
-        <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
-          MEOK will always tell you this directly when it matters. But for
-          clarity:
+          MEOK will tell you directly when the situation requires human support.
+          But for clarity — and this is important:
         </p>
         <ul
           style={{
@@ -837,6 +1411,13 @@ export default function AiForAddictionRecoveryPage() {
             </li>
           ))}
         </ul>
+        <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
+          AI is a between-sessions presence. It is not a crisis service, a
+          clinical programme, or a substitute for the human infrastructure of
+          recovery. The moment you are in acute distress, active relapse, or
+          immediate danger, human services take absolute priority. MEOK will
+          always tell you this — and it will provide the relevant numbers.
+        </p>
 
         {/* ── FAQ ───────────────────────────────────────────────────────── */}
         <h2
@@ -899,7 +1480,8 @@ export default function AiForAddictionRecoveryPage() {
         {/* ── CTA ───────────────────────────────────────────────────────── */}
         <div
           style={{
-            background: `linear-gradient(135deg, rgba(201,168,76,0.1) 0%, rgba(201,168,76,0.04) 100%)`,
+            background:
+              "linear-gradient(135deg, rgba(201,168,76,0.1) 0%, rgba(201,168,76,0.04) 100%)",
             border: `1px solid ${GOLD_BORDER}`,
             borderRadius: "1rem",
             padding: "2.5rem",
@@ -928,20 +1510,20 @@ export default function AiForAddictionRecoveryPage() {
               lineHeight: 1.25,
             }}
           >
-            A recovery companion that never enables — and never forgets your
-            milestones
+            A sober companion available at every dangerous moment — and honest
+            enough to tell you what you need to hear
           </h3>
           <p
             style={{
               color: MUTED,
               lineHeight: 1.7,
-              maxWidth: "32rem",
+              maxWidth: "34rem",
               margin: "0 auto 1.75rem",
             }}
           >
-            Pioneer archetype for accountability. Sovereign Memory for your
-            recovery journey. Care floor that blocks normalisation of substance
-            use. Free on Explorer tier — available when your sponsor is not.
+            Track your clean days. Identify your trigger patterns. Celebrate
+            every milestone. Get honest care — not sycophancy — at 2am when
+            your sponsor is asleep. Free on Explorer tier.
           </p>
           <div
             style={{
@@ -1012,17 +1594,15 @@ export default function AiForAddictionRecoveryPage() {
           >
             Recovery support resources in the UK
           </p>
-          <p style={{ color: MUTED, fontSize: "0.875rem", lineHeight: 1.75, margin: 0 }}>
-            <strong style={{ color: TEXT }}>Frank:</strong> 0300 123 6600 (24/7){" "}
-            &bull;{" "}
-            <strong style={{ color: TEXT }}>Alcoholics Anonymous:</strong> 0800 9177 650{" "}
-            &bull;{" "}
-            <strong style={{ color: TEXT }}>Narcotics Anonymous:</strong> 0300 999 1212{" "}
-            &bull;{" "}
-            <strong style={{ color: TEXT }}>Samaritans:</strong> 116 123 (24/7){" "}
-            &bull;{" "}
-            <strong style={{ color: TEXT }}>SMART Recovery UK:</strong> smartrecovery.org.uk{" "}
-            &bull;{" "}
+          <p style={{ color: MUTED, fontSize: "0.875rem", lineHeight: 1.85, margin: 0 }}>
+            <strong style={{ color: TEXT }}>Frank:</strong> 0300 123 6600 (24/7) &bull;{" "}
+            <strong style={{ color: TEXT }}>AA:</strong> 0800 9177 650 &bull;{" "}
+            <strong style={{ color: TEXT }}>NA:</strong> 0300 999 1212 &bull;{" "}
+            <strong style={{ color: TEXT }}>We Are With You:</strong> wearewithyou.org.uk &bull;{" "}
+            <strong style={{ color: TEXT }}>Change Grow Live:</strong> changegrowlive.org &bull;{" "}
+            <strong style={{ color: TEXT }}>SMART Recovery UK:</strong> smartrecovery.org.uk &bull;{" "}
+            <strong style={{ color: TEXT }}>Samaritans:</strong> 116 123 (24/7) &bull;{" "}
+            <strong style={{ color: TEXT }}>NHS drug treatment:</strong> nhs.uk/live-well/addiction-support &bull;{" "}
             In an emergency, call 999 or go to A&amp;E.
           </p>
         </div>

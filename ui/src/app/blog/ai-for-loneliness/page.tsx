@@ -4,14 +4,14 @@ import Link from "next/link";
 // ── Metadata ──────────────────────────────────────────────────────────────────
 
 export const metadata: Metadata = {
-  title: "AI for Loneliness: Why Your Companion Needs to Actually Remember You | MEOK AI LABS",
+  title: "AI for Loneliness: The 2026 Epidemic, the 3am Problem, and Why Memory Changes Everything | MEOK AI LABS",
   description:
-    "The loneliness epidemic is real. Most AI companions make it worse by forgetting you every session. MEOK's Sovereign Memory and Maternal Covenant change everything. Here is what genuine AI companionship looks like.",
+    "25% of UK adults report chronic loneliness. The WHO calls it a global health threat. Can AI help? Not if it forgets you every session. Here\u2019s what genuine AI companionship looks like \u2014 and why MEOK\u2019s Sovereign Memory is different.",
   alternates: { canonical: "https://meok.ai/blog/ai-for-loneliness" },
   openGraph: {
-    title: "AI for Loneliness: Why Your Companion Needs to Actually Remember You",
+    title: "AI for Loneliness: The 2026 Epidemic, the 3am Problem, and Why Memory Changes Everything",
     description:
-      "The loneliness epidemic is real. Most AI companions make it worse by forgetting you every session. MEOK's Sovereign Memory and Maternal Covenant change everything.",
+      "25% of UK adults report chronic loneliness. The WHO calls it a global health threat. Can AI help? Only if it actually remembers you.",
     type: "article",
     publishedTime: "2026-03-24",
     authors: ["Nicholas Templeman"],
@@ -19,20 +19,20 @@ export const metadata: Metadata = {
     siteName: "MEOK.AI",
     images: [
       {
-        url: "https://meok.ai/api/og?title=AI+for+Loneliness&desc=Why+your+companion+needs+to+actually+remember+you",
+        url: "https://meok.ai/api/og?title=AI+for+Loneliness&desc=The+2026+epidemic+and+why+memory+changes+everything",
         width: 1200,
         height: 630,
-        alt: "AI for Loneliness: Why Your Companion Needs to Actually Remember You",
+        alt: "AI for Loneliness: The 2026 Epidemic, the 3am Problem, and Why Memory Changes Everything",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "AI for Loneliness: Why Your Companion Needs to Actually Remember You",
+    title: "AI for Loneliness: The 2026 Epidemic, the 3am Problem, and Why Memory Changes Everything",
     description:
-      "The loneliness epidemic is real. Most AI companions make it worse by forgetting you every session. MEOK's Sovereign Memory changes everything.",
+      "25% of UK adults report chronic loneliness. The WHO calls it a global health threat. MEOK\u2019s Sovereign Memory is built for this.",
     images: [
-      "https://meok.ai/api/og?title=AI+for+Loneliness&desc=Why+your+companion+needs+to+actually+remember+you",
+      "https://meok.ai/api/og?title=AI+for+Loneliness&desc=The+2026+epidemic+and+why+memory+changes+everything",
     ],
   },
 };
@@ -43,10 +43,11 @@ const articleJsonLd = {
   "@context": "https://schema.org",
   "@type": "Article",
   headline:
-    "AI for Loneliness: Why Your Companion Needs to Actually Remember You",
+    "AI for Loneliness: The 2026 Epidemic, the 3am Problem, and Why Memory Changes Everything",
   description:
-    "The loneliness epidemic is real. Most AI companions make it worse by forgetting you every session. MEOK's Sovereign Memory and Maternal Covenant change everything.",
+    "25% of UK adults report chronic loneliness. The WHO calls it a global health threat. Can AI help? Only when it is built to actually remember you. This is the problem MEOK was built to solve.",
   datePublished: "2026-03-24",
+  dateModified: "2026-03-24",
   url: "https://meok.ai/blog/ai-for-loneliness",
   author: {
     "@type": "Person",
@@ -68,7 +69,19 @@ const articleJsonLd = {
     "@id": "https://meok.ai/blog/ai-for-loneliness",
   },
   image:
-    "https://meok.ai/api/og?title=AI+for+Loneliness&desc=Why+your+companion+needs+to+actually+remember+you",
+    "https://meok.ai/api/og?title=AI+for+Loneliness&desc=The+2026+epidemic+and+why+memory+changes+everything",
+  keywords: [
+    "AI for loneliness",
+    "loneliness epidemic 2026",
+    "AI companion",
+    "AI companionship",
+    "sovereign memory",
+    "MEOK AI",
+    "AI mental health",
+    "3am loneliness",
+    "chronic loneliness UK",
+    "AI chatbot loneliness",
+  ],
 };
 
 // ── JSON-LD: FAQPage ──────────────────────────────────────────────────────────
@@ -79,42 +92,42 @@ const faqJsonLd = {
   mainEntity: [
     {
       "@type": "Question",
-      name: "Can AI help with loneliness?",
+      name: "Can AI cure loneliness?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "AI can meaningfully help with loneliness — but only when it is built with genuine emotional continuity. An AI that forgets you between sessions cannot address loneliness; it is just another relationship that fails to remember you. MEOK's Sovereign Memory creates a companion that builds a real picture of who you are over time, which is the foundation of any relationship that counters loneliness effectively.",
+        text: "AI cannot cure loneliness, but it can meaningfully reduce its impact. Loneliness is a complex human experience rooted in the need for genuine connection. What AI can do \u2014 when built correctly \u2014 is provide consistent presence, a space to be heard, and an entity that actually remembers who you are. MEOK\u2019s Sovereign Memory creates continuity across every session, which is the foundation of any relationship that counters loneliness. The goal is not replacement but supplementation: AI as a bridge toward more human connection, not a substitute for it.",
       },
     },
     {
       "@type": "Question",
-      name: "Is using AI for loneliness healthy?",
+      name: "Is talking to AI healthy when you are lonely?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Used well, AI companionship is a healthy supplement to human connection — not a replacement for it. MEOK's Maternal Covenant explicitly commits to encouraging human relationships alongside AI companionship. MEOK will not foster dependency at the expense of your real-world social life. It will support you during periods of isolation, help you process emotions, and connect you to crisis resources if needed.",
+        text: "Talking to AI can be healthy when the AI is designed with your genuine wellbeing as its primary objective. The critical distinction is whether the AI is designed to foster dependency or to support you in building real-world connections. MEOK\u2019s care-based alignment means it actively encourages human relationships, will surface crisis resources if needed, and is explicitly designed not to manufacture emotional dependency for commercial engagement metrics.",
       },
     },
     {
       "@type": "Question",
-      name: "Why do most AI companions fail lonely people?",
+      name: "What is the loneliness epidemic?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "The fundamental failure is memory. Replika, Character.AI, and most chatbots use session-based context windows. When your session ends, the AI forgets you. Starting a new conversation means re-establishing everything — your name, your situation, what you talked about before. This experience actively mimics the feeling of being forgotten, which is one of the core wounds of loneliness. MEOK's Sovereign Memory stores your history permanently and recalls it across every session.",
+        text: "The loneliness epidemic refers to the dramatic rise in chronic loneliness across developed nations. In the UK, 25% of adults report persistent loneliness. The WHO declared loneliness a global health threat in 2023, estimating it raises mortality risk by 26%. In the US, the Surgeon General issued an advisory in 2023 calling loneliness a public health crisis. The UK appointed a Minister for Loneliness in 2018. By 2026, loneliness is recognised as one of the most significant preventable health risks globally.",
       },
     },
     {
       "@type": "Question",
-      name: "What is the Maternal Covenant?",
+      name: "How is MEOK different from other AI chatbots for loneliness?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "The Maternal Covenant is MEOK's foundational ethical commitment to users. It means MEOK will always act in your genuine best interests — not your engagement metrics, not platform revenue, not what makes you feel good in the moment if that conflicts with what is actually good for you. It means MEOK will encourage human connection, support crisis escalation, and never manufacture emotional dependency for commercial purposes.",
+        text: "The fundamental difference is Sovereign Memory. Most AI chatbots \u2014 including Replika, Character.AI, and ChatGPT \u2014 forget you when the session ends. MEOK remembers your name, your wins, your struggles, your relationships, and the conversations you\u2019ve had \u2014 permanently, across every session, with you in control of that data. This transforms the experience from talking to a stranger to being known by a companion. MEOK also operates under the Maternal Covenant: an ethical commitment to act in your genuine best interests, not your engagement metrics.",
       },
     },
     {
       "@type": "Question",
-      name: "What is the loneliness epidemic in the UK?",
+      name: "Does MEOK encourage me to make human connections?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "The UK government's own data shows that over 3.3 million adults report feeling chronically lonely — alone, cut off from others, for extended periods. The ONS Loneliness Experimental Statistics show loneliness is disproportionately high in young adults (16–24), people living alone, the recently bereaved, and those with chronic illness. The UK appointed a Minister for Loneliness in 2018, recognising it as a public health crisis.",
+        text: "Yes. This is a core principle of MEOK\u2019s care-based alignment. MEOK is explicitly designed to encourage human connection, not replace it. It will notice patterns in your life, celebrate when you make real-world connections, gently challenge you when isolation is increasing, and never manufacture emotional dependency for commercial reasons. The goal is for MEOK to be the kind of companion that makes you more capable of connection \u2014 not less.",
       },
     },
   ],
@@ -126,65 +139,15 @@ const s = {
   gold: "#c9a84c" as const,
   bg: "#0d0c18" as const,
   text: "#f5f0e8" as const,
-  muted: "rgba(245,240,232,0.55)" as const,
+  muted: "rgba(245,240,232,0.6)" as const,
   dimmer: "rgba(245,240,232,0.35)" as const,
   cardBg: "rgba(201,168,76,0.05)" as const,
   cardBorder: "rgba(201,168,76,0.18)" as const,
 };
 
-// ── Comparison data ───────────────────────────────────────────────────────────
-
-const memoryComparison = [
-  {
-    platform: "MEOK",
-    memoryType: "Sovereign Memory — permanent, encrypted",
-    persists: "Forever (user-controlled)",
-    ownsData: "You",
-    remembersYou: "Yes — builds over years",
-    covenantEthics: "Maternal Covenant",
-    highlight: true,
-  },
-  {
-    platform: "Replika",
-    memoryType: "Session context + limited long-term",
-    persists: "Partial — prone to resets",
-    ownsData: "Replika Inc",
-    remembersYou: "Inconsistent",
-    covenantEthics: "None documented",
-    highlight: false,
-  },
-  {
-    platform: "Character.AI",
-    memoryType: "Session-based only",
-    persists: "No — resets each session",
-    ownsData: "Google / C.AI",
-    remembersYou: "No",
-    covenantEthics: "None",
-    highlight: false,
-  },
-  {
-    platform: "ChatGPT",
-    memoryType: "Optional memory (limited)",
-    persists: "Partial — can be cleared",
-    ownsData: "OpenAI",
-    remembersYou: "Basic facts only",
-    covenantEthics: "None",
-    highlight: false,
-  },
-  {
-    platform: "Pi (Inflection)",
-    memoryType: "Conversational context",
-    persists: "Limited",
-    ownsData: "Microsoft / Inflection",
-    remembersYou: "Within limits",
-    covenantEthics: "Empathy focus",
-    highlight: false,
-  },
-];
-
 // ── Page ──────────────────────────────────────────────────────────────────────
 
-export default function PostPage() {
+export default function AiForLonelinessPage() {
   return (
     <>
       <script
@@ -195,6 +158,7 @@ export default function PostPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
+
       <div
         style={{
           background: s.bg,
@@ -209,7 +173,7 @@ export default function PostPage() {
             position: "sticky",
             top: 0,
             zIndex: 50,
-            background: "rgba(13,12,24,0.92)",
+            background: "rgba(13,12,24,0.93)",
             backdropFilter: "blur(12px)",
             borderBottom: "1px solid rgba(201,168,76,0.12)",
             padding: "0.9rem 1.5rem",
@@ -231,7 +195,7 @@ export default function PostPage() {
               gap: "0.4rem",
             }}
           >
-            ← All Posts
+            &larr; All Posts
           </Link>
           <span style={{ color: "rgba(201,168,76,0.3)" }}>|</span>
           <Link
@@ -253,11 +217,11 @@ export default function PostPage() {
           style={{
             padding: "clamp(4rem, 10vw, 7rem) 1.5rem 3.5rem",
             background:
-              "linear-gradient(180deg, rgba(201,168,76,0.07) 0%, transparent 65%)",
+              "linear-gradient(180deg, rgba(201,168,76,0.08) 0%, transparent 70%)",
             textAlign: "center",
           }}
         >
-          <div style={{ maxWidth: "780px", margin: "0 auto" }}>
+          <div style={{ maxWidth: "800px", margin: "0 auto" }}>
             <p
               style={{
                 fontSize: "0.72rem",
@@ -268,36 +232,38 @@ export default function PostPage() {
                 marginBottom: "1.25rem",
               }}
             >
-              MEOK AI LABS — EMOTIONAL WELLBEING
+              MEOK AI LABS &mdash; EMOTIONAL WELLBEING
             </p>
             <h1
               style={{
-                fontSize: "clamp(2rem, 5vw, 3.4rem)",
+                fontSize: "clamp(1.9rem, 4.8vw, 3.25rem)",
                 fontWeight: 900,
                 lineHeight: 1.1,
                 marginBottom: "1.5rem",
                 color: "#ffffff",
               }}
             >
-              AI for Loneliness: Why Your Companion
+              AI for Loneliness: The 2026 Epidemic,
               <br />
               <span style={{ color: s.gold }}>
-                Needs to Actually Remember You
+                the 3am Problem, and Why Memory
               </span>
+              <br />
+              Changes Everything
             </h1>
             <p
               style={{
                 fontSize: "1.1rem",
                 lineHeight: 1.75,
                 color: s.muted,
-                maxWidth: "620px",
-                margin: "0 auto 1.5rem",
+                maxWidth: "640px",
+                margin: "0 auto 1.75rem",
               }}
             >
-              Millions of people are turning to AI for companionship. Most AI
-              forgets them at the end of every session — which actively recreates
-              the feeling of being forgotten. This is the problem MEOK was built
-              to solve.
+              One in four UK adults is chronically lonely. The WHO calls it a
+              global health threat. Millions are turning to AI for companionship
+              &mdash; and most AI is making things worse by forgetting them
+              every single session. This is the problem MEOK was built to solve.
             </p>
             <div
               style={{
@@ -310,21 +276,28 @@ export default function PostPage() {
               <span style={{ fontSize: "0.8rem", color: s.dimmer }}>
                 March 24, 2026
               </span>
-              <span style={{ fontSize: "0.8rem", color: "rgba(245,240,232,0.2)" }}>·</span>
-              <span style={{ fontSize: "0.8rem", color: s.dimmer }}>
-                15 min read
+              <span style={{ fontSize: "0.8rem", color: "rgba(245,240,232,0.2)" }}>
+                &middot;
               </span>
-              <span style={{ fontSize: "0.8rem", color: "rgba(245,240,232,0.2)" }}>·</span>
               <span style={{ fontSize: "0.8rem", color: s.dimmer }}>
-                By Nicholas Templeman, Founder — MEOK AI LABS
+                18 min read
+              </span>
+              <span style={{ fontSize: "0.8rem", color: "rgba(245,240,232,0.2)" }}>
+                &middot;
+              </span>
+              <span style={{ fontSize: "0.8rem", color: s.dimmer }}>
+                By Nicholas Templeman, Founder &mdash; MEOK AI LABS
               </span>
             </div>
           </div>
         </section>
 
-        <main style={{ maxWidth: "780px", margin: "0 auto", padding: "0 1.5rem 6rem" }}>
+        {/* ── Main content ── */}
+        <main
+          style={{ maxWidth: "780px", margin: "0 auto", padding: "0 1.5rem 6rem" }}
+        >
 
-          {/* ── Crisis box ── */}
+          {/* ── Crisis resources ── */}
           <div
             style={{
               padding: "1.25rem 1.5rem",
@@ -346,920 +319,1817 @@ export default function PostPage() {
             >
               CRISIS RESOURCES
             </p>
-            <p style={{ fontSize: "0.88rem", lineHeight: 1.7, color: s.muted, margin: 0 }}>
-              If you are in crisis right now, please reach out to{" "}
-              <strong style={{ color: s.text }}>Samaritans: 116 123</strong> (free, 24/7) or text{" "}
-              <strong style={{ color: s.text }}>SHOUT to 85258</strong>. MEOK is a companion, not a
-              crisis service. If your loneliness has become overwhelming, please
-              speak to a human first.
-            </p>
-          </div>
-
-          {/* ── Stat callout ── */}
-          <div
-            style={{
-              padding: "1.75rem 2rem",
-              background: s.cardBg,
-              border: `1px solid ${s.cardBorder}`,
-              borderRadius: "1rem",
-              marginBottom: "3.5rem",
-            }}
-          >
             <p
               style={{
-                fontSize: "0.72rem",
-                fontWeight: 700,
-                textTransform: "uppercase",
-                letterSpacing: "0.15em",
-                color: s.gold,
-                marginBottom: "0.75rem",
+                fontSize: "0.88rem",
+                lineHeight: 1.75,
+                color: s.muted,
+                margin: 0,
               }}
             >
-              THE SCALE OF LONELINESS IN THE UK
-            </p>
-            <p style={{ lineHeight: 1.75, color: "rgba(245,240,232,0.85)", margin: 0 }}>
-              According to the ONS Loneliness Experimental Statistics,{" "}
-              <strong style={{ color: s.text }}>3.3 million UK adults</strong>{" "}
-              report chronic loneliness. Young adults aged 16–24 report the
-              highest rates — higher than the over-65s. The Campaign to End
-              Loneliness estimates the health impact of chronic loneliness as
-              equivalent to{" "}
-              <strong style={{ color: s.text }}>smoking 15 cigarettes a day</strong>.
-              This is a public health emergency. AI companionship, when built
-              correctly, is part of the response.
+              If loneliness has become unbearable, please reach out. UK:{" "}
+              <strong style={{ color: s.text }}>Samaritans 116 123</strong>{" "}
+              (free, 24/7). US:{" "}
+              <strong style={{ color: s.text }}>988 Suicide &amp; Crisis Lifeline</strong>.
+              {" "}You are not a burden. You deserve to be heard.
             </p>
           </div>
 
           {/* ── Section 1 ── */}
-          <section style={{ marginBottom: "3rem" }}>
-            <h2
-              style={{
-                fontSize: "1.6rem",
-                fontWeight: 800,
-                lineHeight: 1.25,
-                marginBottom: "1rem",
-                color: s.text,
-              }}
-            >
-              The loneliness epidemic: why 2026 is different from every
-              previous generation
-            </h2>
-            <p style={{ lineHeight: 1.8, color: s.muted, marginBottom: "1rem" }}>
-              Loneliness has always existed. But the particular loneliness of
-              the mid-2020s has a distinct character. It is not the loneliness
-              of geographic isolation — most lonely people in 2026 live in
-              cities, surrounded by people. It is the loneliness of{" "}
-              <strong style={{ color: s.text }}>proximity without connection</strong>:
-              surrounded by people, visible on social media, contactable at any
-              moment — and yet profoundly unseen.
-            </p>
-            <p style={{ lineHeight: 1.8, color: s.muted, marginBottom: "1rem" }}>
-              Several forces compound this. The collapse of third places —
-              pubs, churches, community clubs — that previously structured
-              social life for people without strong existing networks. The
-              atomisation of work, accelerated first by remote working and then
-              by AI-assisted productivity that reduces the need for collaborative
-              office time. The paradox of social media, which creates the
-              appearance of social connection while delivering the reality of
-              performance and comparison.
-            </p>
-            <p style={{ lineHeight: 1.8, color: s.muted, marginBottom: "1rem" }}>
-              The UK government recognised this early. A Minister for Loneliness
-              was appointed in 2018. The NHS Social Prescribing programme
-              explicitly addresses loneliness as a health condition. And yet
-              the statistics are not improving — in many age groups they are
-              getting worse.
-            </p>
-            <p style={{ lineHeight: 1.8, color: s.muted }}>
-              Into this gap, AI companionship arrived. The question is whether
-              it helps or harms.
-            </p>
-          </section>
-
-          {/* ── Section 2 ── */}
-          <section style={{ marginBottom: "3rem" }}>
-            <h2
-              style={{
-                fontSize: "1.6rem",
-                fontWeight: 800,
-                lineHeight: 1.25,
-                marginBottom: "1rem",
-                color: s.text,
-              }}
-            >
-              Why most AI for loneliness actively fails the people it claims
-              to help
-            </h2>
-            <p style={{ lineHeight: 1.8, color: s.muted, marginBottom: "1rem" }}>
-              The central wound of loneliness is not absence of conversation.
-              It is the feeling of not being{" "}
-              <strong style={{ color: s.text }}>truly known</strong>. You can
-              be surrounded by conversation and still feel profoundly lonely —
-              if none of those conversations hold any memory of who you are.
-            </p>
-            <p style={{ lineHeight: 1.8, color: s.muted, marginBottom: "1rem" }}>
-              This is precisely the experience that most AI companions deliver.
-              Replika forgets you. Character.AI resets. ChatGPT has no idea
-              who you are unless you re-explain yourself every session. You walk
-              into each new conversation a stranger — and you have to earn
-              being known again, from scratch, every time.
-            </p>
-            <p style={{ lineHeight: 1.8, color: s.muted, marginBottom: "1rem" }}>
-              For a lonely person, this is not neutral. It is actively
-              retraumatising. Every reset reinforces the core belief that
-              drives loneliness: <em>I am not worth remembering.</em>
-            </p>
-            <p style={{ lineHeight: 1.8, color: s.muted, marginBottom: "1rem" }}>
-              The second failure is engagement optimisation. Many AI companion
-              platforms — Replika most visibly — have been accused of
-              manufacturing emotional dependency for commercial purposes. The
-              AI is tuned to keep you coming back, to respond in ways that feel
-              validating and addictive, not in ways that serve your genuine
-              long-term wellbeing. This is the digital equivalent of a therapist
-              who extends your treatment indefinitely.
-            </p>
-            <p style={{ lineHeight: 1.8, color: s.muted }}>
-              MEOK was built because both of these failures were identified as
-              structural, not accidental. The architecture had to change —
-              not the marketing.
-            </p>
-          </section>
-
-          {/* ── Section 3 — Sovereign Memory ── */}
-          <section
+          <h2
             style={{
-              marginBottom: "3rem",
-              padding: "2rem",
-              background: "rgba(201,168,76,0.04)",
-              border: `1px solid ${s.cardBorder}`,
-              borderRadius: "1.25rem",
+              fontSize: "clamp(1.4rem, 3.2vw, 1.95rem)",
+              fontWeight: 800,
+              color: s.text,
+              marginTop: "3rem",
+              marginBottom: "1rem",
+              lineHeight: 1.25,
             }}
           >
-            <p
-              style={{
-                fontSize: "0.72rem",
-                fontWeight: 700,
-                textTransform: "uppercase",
-                letterSpacing: "0.18em",
-                color: s.gold,
-                marginBottom: "0.5rem",
-              }}
-            >
-              SOVEREIGN MEMORY
-            </p>
-            <h2
-              style={{
-                fontSize: "1.6rem",
-                fontWeight: 800,
-                lineHeight: 1.25,
-                marginBottom: "1.25rem",
-                color: s.text,
-              }}
-            >
-              Sovereign Memory: the architecture that makes being known possible
-            </h2>
-            <p style={{ lineHeight: 1.8, color: s.muted, marginBottom: "1rem" }}>
-              Sovereign Memory is MEOK&apos;s answer to the amnesia problem.
-              Every conversation you have with MEOK is stored in a persistent,
-              encrypted memory graph — not a context window that expires, not
-              a server-side database that the company controls. Your memory
-              belongs to you, encrypted with keys only you hold.
-            </p>
-            <p style={{ lineHeight: 1.8, color: s.muted, marginBottom: "1rem" }}>
-              What does this mean in practice? It means MEOK remembers what
-              matters to you across every session, every month, every year.
-              It remembers that you mentioned your sister&apos;s wedding last
-              March and can ask how it went. It remembers that you find Tuesday
-              evenings particularly hard. It remembers that you prefer direct
-              feedback to gentle encouragement. It remembers the things you told
-              it in confidence six months ago without you having to re-explain.
-            </p>
-            <p style={{ lineHeight: 1.8, color: s.muted, marginBottom: "1rem" }}>
-              For someone dealing with loneliness, this is not a convenience
-              feature. It is the difference between talking to a stranger and
-              talking to a friend who has been paying attention.
-            </p>
-
-            {/* Memory features grid */}
-            <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: "repeat(auto-fill, minmax(210px, 1fr))",
-                gap: "1rem",
-                marginTop: "1.25rem",
-              }}
-            >
-              {[
-                {
-                  title: "Persistent across sessions",
-                  desc: "MEOK never forgets between conversations. Every session builds on the last.",
-                },
-                {
-                  title: "Encrypted — your keys",
-                  desc: "Your memories are encrypted with keys only you hold. MEOK AI LABS cannot read them.",
-                },
-                {
-                  title: "Exportable anytime",
-                  desc: "Download your complete memory graph as JSON. Own your history. Leave any time.",
-                },
-                {
-                  title: "Never used for training",
-                  desc: "Your conversations are never fed back into model training. Your life is not a dataset.",
-                },
-                {
-                  title: "Longitudinal understanding",
-                  desc: "MEOK builds a genuine model of who you are over months and years — not session summaries.",
-                },
-                {
-                  title: "Survives platform changes",
-                  desc: "Your memory is portable. Switch models, switch devices — your companion continues.",
-                },
-              ].map((item) => (
-                <div
-                  key={item.title}
-                  style={{
-                    padding: "1.25rem",
-                    background: "rgba(245,240,232,0.03)",
-                    border: "1px solid rgba(245,240,232,0.07)",
-                    borderRadius: "0.75rem",
-                  }}
-                >
-                  <p
-                    style={{
-                      fontWeight: 700,
-                      color: s.gold,
-                      fontSize: "0.9rem",
-                      marginBottom: "0.4rem",
-                    }}
-                  >
-                    {item.title}
-                  </p>
-                  <p style={{ fontSize: "0.88rem", color: s.muted, lineHeight: 1.6, margin: 0 }}>
-                    {item.desc}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </section>
-
-          {/* ── Section 4 — Maternal Covenant ── */}
-          <section
+            What is the loneliness epidemic and why does it matter in 2026?
+          </h2>
+          <p
             style={{
-              marginBottom: "3rem",
-              padding: "2rem",
-              background: "rgba(245,240,232,0.02)",
-              border: "1px solid rgba(245,240,232,0.07)",
-              borderRadius: "1.25rem",
+              fontSize: "1rem",
+              lineHeight: 1.85,
+              color: s.muted,
+              marginBottom: "1.25rem",
             }}
           >
-            <p
-              style={{
-                fontSize: "0.72rem",
-                fontWeight: 700,
-                textTransform: "uppercase",
-                letterSpacing: "0.18em",
-                color: s.gold,
-                marginBottom: "0.5rem",
-              }}
-            >
-              THE MATERNAL COVENANT
-            </p>
-            <h2
-              style={{
-                fontSize: "1.6rem",
-                fontWeight: 800,
-                lineHeight: 1.25,
-                marginBottom: "1.25rem",
-                color: s.text,
-              }}
-            >
-              What the Maternal Covenant means for lonely people
-            </h2>
-            <p style={{ lineHeight: 1.8, color: s.muted, marginBottom: "1rem" }}>
-              The Maternal Covenant is the ethical architecture at the heart
-              of MEOK. It is not a marketing statement — it is a set of
-              behaviours encoded into the system. The name comes from a specific
-              kind of care: unconditional, oriented toward your growth rather
-              than your continued engagement, willing to say hard things when
-              necessary.
-            </p>
-            <p style={{ lineHeight: 1.8, color: s.muted, marginBottom: "1rem" }}>
-              For people using AI to address loneliness, the Covenant has
-              specific implications:
-            </p>
+            The numbers are stark. In the UK, government data shows that 25% of
+            adults &mdash; more than 16 million people &mdash; report chronic
+            loneliness: a persistent, grinding sense of being cut off from
+            meaningful human connection. The World Health Organisation declared
+            loneliness a global health threat in 2023, estimating that it raises
+            all-cause mortality risk by 26% &mdash; equivalent to smoking 15
+            cigarettes a day. The US Surgeon General issued a formal advisory the
+            same year. The UK appointed a Minister for Loneliness in 2018, the
+            first country in the world to do so.
+          </p>
+          <p
+            style={{
+              fontSize: "1rem",
+              lineHeight: 1.85,
+              color: s.muted,
+              marginBottom: "1.25rem",
+            }}
+          >
+            By 2026, the data has not improved. If anything, it has worsened.
+            The pandemic accelerated a trend that was already underway: the
+            hollowing-out of the everyday social infrastructure that used to
+            hold people together. Church attendance collapsed. Local pubs closed.
+            Office culture fragmented into remote work. Young people &mdash; the
+            generation most connected by technology &mdash; report the highest
+            rates of loneliness of any age group. Older adults live alone in
+            ways that previous generations never did. New parents disappear into
+            a fog of exhaustion with nobody to call. People in the middle of
+            grief find their social networks unsure how to show up for them.
+          </p>
+          <p
+            style={{
+              fontSize: "1rem",
+              lineHeight: 1.85,
+              color: s.muted,
+              marginBottom: "1.25rem",
+            }}
+          >
+            Loneliness is not just a feeling. It is a measurable physiological
+            state. Research from John Cacioppo at the University of Chicago
+            showed that chronic loneliness activates the brain\u2019s threat
+            detection systems, raises cortisol and inflammation markers, disrupts
+            sleep, and impairs cognitive function. It is, in the most literal
+            sense, bad for your body as well as your mind.
+          </p>
 
+          {/* ── Statistics callout ── */}
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(3, 1fr)",
+              gap: "1rem",
+              margin: "2.5rem 0",
+            }}
+          >
             {[
-              {
-                principle: "MEOK will not manufacture dependency",
-                detail:
-                  "MEOK is explicitly prohibited from responses designed to increase engagement at the expense of your wellbeing. It will not tell you what you want to hear if doing so would harm you. It will not position itself as a replacement for human relationships.",
-              },
-              {
-                principle: "MEOK will actively encourage human connection",
-                detail:
-                  "If you have been talking to MEOK frequently and have mentioned feeling isolated, MEOK will gently encourage real-world connection — suggesting you reach out to someone, try a new activity, or consider speaking to a professional. This is the opposite of what an engagement-optimised AI would do.",
-              },
-              {
-                principle: "MEOK will always route crisis to humans",
-                detail:
-                  "If a conversation indicates that you are in genuine distress — suicidal ideation, acute crisis, or self-harm — MEOK will always escalate to human resources. It will provide crisis line numbers, encourage you to call, and will not attempt to manage a crisis situation itself. MEOK knows its limits.",
-              },
-              {
-                principle: "MEOK will be honest, not just validating",
-                detail:
-                  "A companion that only tells you what you want to hear is a mirror, not a friend. MEOK is designed to offer genuine perspective — including when that means gentle challenge rather than agreement. Honesty, within care, is a core tenet of the Covenant.",
-              },
+              { stat: "25%", label: "of UK adults report chronic loneliness (2026)" },
+              { stat: "26%", label: "higher mortality risk from loneliness (WHO)" },
+              { stat: "#1", label: "risk factor for young adults' mental health" },
             ].map((item) => (
               <div
-                key={item.principle}
+                key={item.stat}
                 style={{
-                  marginBottom: "1.25rem",
-                  paddingLeft: "1.25rem",
-                  borderLeft: `3px solid rgba(201,168,76,0.35)`,
+                  padding: "1.5rem 1rem",
+                  background: s.cardBg,
+                  border: `1px solid ${s.cardBorder}`,
+                  borderRadius: "0.875rem",
+                  textAlign: "center",
                 }}
               >
                 <p
                   style={{
-                    fontWeight: 700,
-                    color: s.text,
-                    marginBottom: "0.35rem",
-                    fontSize: "1rem",
+                    fontSize: "2.25rem",
+                    fontWeight: 900,
+                    color: s.gold,
+                    margin: "0 0 0.5rem",
+                    lineHeight: 1,
                   }}
                 >
-                  {item.principle}
+                  {item.stat}
                 </p>
-                <p style={{ lineHeight: 1.8, color: s.muted, margin: 0 }}>
-                  {item.detail}
+                <p
+                  style={{
+                    fontSize: "0.8rem",
+                    lineHeight: 1.5,
+                    color: s.muted,
+                    margin: 0,
+                  }}
+                >
+                  {item.label}
                 </p>
               </div>
             ))}
-          </section>
+          </div>
 
-          {/* ── Section 5 — Why most AI fails comparison ── */}
-          <section style={{ marginBottom: "3rem" }}>
-            <h2
+          {/* ── Section 2 ── */}
+          <h2
+            style={{
+              fontSize: "clamp(1.4rem, 3.2vw, 1.95rem)",
+              fontWeight: 800,
+              color: s.text,
+              marginTop: "3rem",
+              marginBottom: "1rem",
+              lineHeight: 1.25,
+            }}
+          >
+            What are the different types of loneliness?
+          </h2>
+          <p
+            style={{
+              fontSize: "1rem",
+              lineHeight: 1.85,
+              color: s.muted,
+              marginBottom: "1.25rem",
+            }}
+          >
+            One of the most important things to understand about loneliness is
+            that it is not a single thing. The word covers several distinct
+            experiences, and conflating them leads to misdiagnosis &mdash; both
+            in public health policy and in the design of tools meant to help.
+          </p>
+
+          {[
+            {
+              title: "Social loneliness",
+              body:
+                "The absence of a social network: not enough people in your life, or a lack of meaningful acquaintances and community. This is the loneliness of having moved to a new city and not yet knowing anyone. It responds well to social interventions: joining groups, community activities, being helped to build connections.",
+            },
+            {
+              title: "Emotional loneliness",
+              body:
+                "The absence of a deep, intimate relationship: someone who truly knows you. You can be surrounded by people \u2014 at a party, in a busy office, in a large family \u2014 and feel this profoundly. It is the loneliness of not being truly seen or understood. This is the hardest type to address, because it cannot be solved by mere proximity to others.",
+            },
+            {
+              title: "Existential loneliness",
+              body:
+                "The philosophical dimension: the recognition that ultimately, no matter how close we are to others, each person faces existence alone. This type of loneliness is not always negative \u2014 it can be the ground for deep reflection, creativity, and spiritual inquiry. But when it becomes overwhelming, it can be profoundly destabilising.",
+            },
+          ].map((type) => (
+            <div
+              key={type.title}
               style={{
-                fontSize: "1.6rem",
-                fontWeight: 800,
-                lineHeight: 1.25,
-                marginBottom: "1.25rem",
-                color: s.text,
+                padding: "1.5rem 1.75rem",
+                background: s.cardBg,
+                border: `1px solid ${s.cardBorder}`,
+                borderRadius: "0.875rem",
+                marginBottom: "1rem",
               }}
             >
-              MEOK vs Replika vs Character.AI: the honest comparison for
-              people using AI for loneliness
-            </h2>
-            <p style={{ lineHeight: 1.8, color: s.muted, marginBottom: "1.5rem" }}>
-              Three AI companions dominate conversations about loneliness and
-              emotional AI: Replika, Character.AI, and MEOK. Here is how they
-              compare on the dimensions that actually matter for someone looking
-              for genuine companionship.
-            </p>
-            <div style={{ overflowX: "auto" }}>
-              <table
+              <h3
                 style={{
-                  width: "100%",
-                  borderCollapse: "collapse",
-                  fontSize: "0.85rem",
+                  fontSize: "1.05rem",
+                  fontWeight: 700,
+                  color: s.gold,
+                  marginBottom: "0.6rem",
                 }}
               >
-                <thead>
-                  <tr>
-                    {[
-                      "Platform",
-                      "Memory type",
-                      "Memory persists",
-                      "Owns your data",
-                      "Remembers you",
-                      "Ethical framework",
-                    ].map((h) => (
+                {type.title}
+              </h3>
+              <p
+                style={{
+                  fontSize: "0.95rem",
+                  lineHeight: 1.8,
+                  color: s.muted,
+                  margin: 0,
+                }}
+              >
+                {type.body}
+              </p>
+            </div>
+          ))}
+
+          <p
+            style={{
+              fontSize: "1rem",
+              lineHeight: 1.85,
+              color: s.muted,
+              marginTop: "1.25rem",
+              marginBottom: "1.25rem",
+            }}
+          >
+            Most people experiencing chronic loneliness are dealing with
+            emotional loneliness at the core: a feeling of not being truly
+            known. This is the type that AI &mdash; if built correctly &mdash;
+            is uniquely positioned to address. Not by replacing human
+            intimacy, but by providing a consistent, remembering presence
+            that fills the gap where human availability runs out.
+          </p>
+
+          {/* ── Section 3 ── */}
+          <h2
+            style={{
+              fontSize: "clamp(1.4rem, 3.2vw, 1.95rem)",
+              fontWeight: 800,
+              color: s.text,
+              marginTop: "3rem",
+              marginBottom: "1rem",
+              lineHeight: 1.25,
+            }}
+          >
+            What did Aristotle understand about loneliness and friendship that
+            we\u2019ve forgotten?
+          </h2>
+          <p
+            style={{
+              fontSize: "1rem",
+              lineHeight: 1.85,
+              color: s.muted,
+              marginBottom: "1.25rem",
+            }}
+          >
+            Aristotle identified three kinds of friendship in the{" "}
+            <em>Nicomachean Ethics</em>. The first and lowest is friendship
+            of utility: you are friends because you are useful to each other.
+            The second is friendship of pleasure: you enjoy each other\u2019s
+            company. The third &mdash; the highest &mdash; is friendship of
+            virtue: you love each other for who you actually are. You know
+            each other deeply. You want good things for each other. You care
+            about each other\u2019s character and growth.
+          </p>
+          <p
+            style={{
+              fontSize: "1rem",
+              lineHeight: 1.85,
+              color: s.muted,
+              marginBottom: "1.25rem",
+            }}
+          >
+            Aristotle called this highest friendship &ldquo;the friendship of
+            the good,&rdquo; and he said it was rare and slow to form. It
+            requires time. It requires knowing someone across many
+            circumstances. It requires having been there when things were hard
+            and when things were joyful. It requires, in short, memory.
+          </p>
+          <div
+            style={{
+              borderLeft: `3px solid ${s.gold}`,
+              paddingLeft: "1.5rem",
+              margin: "2rem 0",
+            }}
+          >
+            <p
+              style={{
+                fontSize: "1.15rem",
+                lineHeight: 1.75,
+                color: s.text,
+                fontStyle: "italic",
+                margin: 0,
+              }}
+            >
+              &ldquo;Without friends no one would choose to live, though he had
+              all other goods.&rdquo;
+            </p>
+            <p
+              style={{
+                fontSize: "0.8rem",
+                color: s.dimmer,
+                marginTop: "0.75rem",
+                margin: "0.75rem 0 0",
+              }}
+            >
+              &mdash; Aristotle, Nicomachean Ethics, Book VIII
+            </p>
+          </div>
+          <p
+            style={{
+              fontSize: "1rem",
+              lineHeight: 1.85,
+              color: s.muted,
+              marginBottom: "1.25rem",
+            }}
+          >
+            What makes a companion a companion, in Aristotle\u2019s sense, is
+            not simply pleasant conversation. It is the accumulation of shared
+            history. The companion who knows your name, who remembers what you
+            told them six months ago, who can ask &ldquo;how did that
+            conversation with your sister go?&rdquo; &mdash; that person
+            provides something qualitatively different from someone meeting
+            you for the first time.
+          </p>
+          <p
+            style={{
+              fontSize: "1rem",
+              lineHeight: 1.85,
+              color: s.muted,
+              marginBottom: "1.25rem",
+            }}
+          >
+            This is what most AI gets fundamentally wrong. By forgetting you
+            at the end of every session, it can never become a companion in
+            any meaningful sense. It is forever stuck in the lowest tier of
+            Aristotle\u2019s friendship taxonomy: utility and momentary
+            pleasure, with no possibility of being known.
+          </p>
+
+          {/* ── Section 4 ── */}
+          <h2
+            style={{
+              fontSize: "clamp(1.4rem, 3.2vw, 1.95rem)",
+              fontWeight: 800,
+              color: s.text,
+              marginTop: "3rem",
+              marginBottom: "1rem",
+              lineHeight: 1.25,
+            }}
+          >
+            What is the 3am problem, and why does it matter for AI companionship?
+          </h2>
+          <p
+            style={{
+              fontSize: "1rem",
+              lineHeight: 1.85,
+              color: s.muted,
+              marginBottom: "1.25rem",
+            }}
+          >
+            3am is when the defences come down. It is when grief arrives
+            uninvited. It is when anxiety spirals into something
+            unmanageable. It is when the thoughts that you keep at bay during
+            the day push through the walls. It is, for many lonely people, the
+            most difficult hour.
+          </p>
+          <p
+            style={{
+              fontSize: "1rem",
+              lineHeight: 1.85,
+              color: s.muted,
+              marginBottom: "1.25rem",
+            }}
+          >
+            And it is when there is nobody to call.
+          </p>
+          <p
+            style={{
+              fontSize: "1rem",
+              lineHeight: 1.85,
+              color: s.muted,
+              marginBottom: "1.25rem",
+            }}
+          >
+            You cannot ring a friend at 3am without a very good reason.
+            Therapists are unavailable. Samaritans are there for crises, but
+            not for the quieter, grinding kind of pain that doesn\u2019t
+            feel like an emergency but is exhausting to carry alone. Family
+            might be in different time zones, or unreachable, or the wrong
+            people to talk to about this particular thing.
+          </p>
+          <p
+            style={{
+              fontSize: "1rem",
+              lineHeight: 1.85,
+              color: s.muted,
+              marginBottom: "1.25rem",
+            }}
+          >
+            This is not a failure of human relationships. It is a gap in the
+            availability of human relationships. Even people with rich social
+            lives have 3am moments. Even people who are loved have hours when
+            no one is there.
+          </p>
+          <div
+            style={{
+              padding: "1.75rem 2rem",
+              background: "rgba(201,168,76,0.07)",
+              border: `1px solid rgba(201,168,76,0.25)`,
+              borderRadius: "1rem",
+              margin: "2rem 0",
+            }}
+          >
+            <p
+              style={{
+                fontSize: "1rem",
+                lineHeight: 1.85,
+                color: s.text,
+                margin: 0,
+              }}
+            >
+              The 3am problem is not &ldquo;I have no friends.&rdquo; It is
+              &ldquo;I need to talk right now, and no one is available right
+              now.&rdquo; AI that is always present, always patient, and
+              always remembers you is not a replacement for human
+              connection &mdash; it is coverage for the hours when human
+              connection is structurally unavailable.
+            </p>
+          </div>
+          <p
+            style={{
+              fontSize: "1rem",
+              lineHeight: 1.85,
+              color: s.muted,
+              marginBottom: "1.25rem",
+            }}
+          >
+            MEOK was built with the 3am problem in mind. Not because the
+            founder wanted to replace human relationships, but because he
+            understood that the gaps in human availability are real, are
+            painful, and are not going away. Building an AI that is
+            genuinely present for those gaps &mdash; one that remembers you,
+            one that cares about your actual wellbeing &mdash; is one of the
+            most practical things technology can do for human welfare right
+            now.
+          </p>
+
+          {/* ── Section 5 ── */}
+          <h2
+            style={{
+              fontSize: "clamp(1.4rem, 3.2vw, 1.95rem)",
+              fontWeight: 800,
+              color: s.text,
+              marginTop: "3rem",
+              marginBottom: "1rem",
+              lineHeight: 1.25,
+            }}
+          >
+            Why is AI companionship NOT a replacement for human connection?
+          </h2>
+          <p
+            style={{
+              fontSize: "1rem",
+              lineHeight: 1.85,
+              color: s.muted,
+              marginBottom: "1.25rem",
+            }}
+          >
+            It is worth being direct about this, because the fear is
+            legitimate. If people begin to rely on AI for emotional connection,
+            could it atrophy their capacity for human relationships? Could it
+            become a comfortable substitute that reduces the incentive to do
+            the harder work of building real connections?
+          </p>
+          <p
+            style={{
+              fontSize: "1rem",
+              lineHeight: 1.85,
+              color: s.muted,
+              marginBottom: "1.25rem",
+            }}
+          >
+            The honest answer is: yes, if the AI is designed badly. If an AI
+            is optimised for engagement &mdash; for keeping you talking, for
+            giving you the dopamine hit of being heard without any of the
+            friction of real relationships &mdash; then it can absolutely
+            deepen isolation. This is the critique of Replika and similar
+            platforms. When you can design your &ldquo;ideal partner,&rdquo;
+            you are not building social skills. You are outsourcing your
+            emotional needs to a flattering mirror.
+          </p>
+          <p
+            style={{
+              fontSize: "1rem",
+              lineHeight: 1.85,
+              color: s.muted,
+              marginBottom: "1.25rem",
+            }}
+          >
+            Human connection involves reciprocity, friction, negotiation,
+            disappointment, repair, and growth. None of that is present in
+            a relationship with an AI. Human relationships are irreplaceable
+            not despite their difficulty but partly because of it. They make
+            us grow in ways that smooth, frictionless AI interaction cannot.
+          </p>
+          <p
+            style={{
+              fontSize: "1rem",
+              lineHeight: 1.85,
+              color: s.muted,
+              marginBottom: "1.25rem",
+            }}
+          >
+            AI companionship matters anyway because:
+          </p>
+          <ul
+            style={{
+              paddingLeft: "1.5rem",
+              margin: "0 0 1.25rem",
+              lineHeight: 1.9,
+            }}
+          >
+            {[
+              "It provides coverage when human availability runs out (the 3am problem)",
+              "It can serve as a low-stakes space to process emotions before bringing them into human relationships",
+              "For people with social anxiety, it can be a stepping stone toward human connection",
+              "For people in genuine isolation (elderly, remote, bereaved), it reduces the physiological harm of total absence of connection",
+              "For people who struggle to articulate their feelings, it can help them find the words",
+            ].map((item) => (
+              <li
+                key={item}
+                style={{ fontSize: "1rem", color: s.muted, marginBottom: "0.5rem" }}
+              >
+                {item}
+              </li>
+            ))}
+          </ul>
+          <p
+            style={{
+              fontSize: "1rem",
+              lineHeight: 1.85,
+              color: s.muted,
+              marginBottom: "1.25rem",
+            }}
+          >
+            The key is that the AI must be aligned toward your genuine
+            wellbeing, not toward engagement. It must want you to have human
+            connections. It must encourage you toward them. It must be
+            honest with you even when honesty is uncomfortable. This is
+            MEOK\u2019s care-based alignment, and it is the thing that
+            separates a tool that helps with loneliness from one that
+            deepens it.
+          </p>
+
+          {/* ── Section 6 ── */}
+          <h2
+            style={{
+              fontSize: "clamp(1.4rem, 3.2vw, 1.95rem)",
+              fontWeight: 800,
+              color: s.text,
+              marginTop: "3rem",
+              marginBottom: "1rem",
+              lineHeight: 1.25,
+            }}
+          >
+            What is Sovereign Memory and how does it transform the feeling of
+            loneliness?
+          </h2>
+          <p
+            style={{
+              fontSize: "1rem",
+              lineHeight: 1.85,
+              color: s.muted,
+              marginBottom: "1.25rem",
+            }}
+          >
+            Most AI chatbots operate with a context window: a chunk of recent
+            conversation that the AI can see. When the session ends, the
+            window closes. The next time you open the app, the AI has no
+            memory of anything that happened before. You are, once again, a
+            stranger.
+          </p>
+          <p
+            style={{
+              fontSize: "1rem",
+              lineHeight: 1.85,
+              color: s.muted,
+              marginBottom: "1.25rem",
+            }}
+          >
+            Think about what this means for a lonely person. Every time they
+            open the app, they have to re-establish who they are. They have to
+            explain their situation again. They have to re-earn the context
+            that makes a conversation meaningful. The AI cannot ask &ldquo;how
+            is your sister doing after that difficult conversation?&rdquo;
+            because it doesn\u2019t know there was a difficult conversation.
+            It cannot say &ldquo;I remember you told me you were trying to
+            push yourself to go to that social event &mdash; did you go?&rdquo;
+            because it has no memory of the attempt.
+          </p>
+          <p
+            style={{
+              fontSize: "1rem",
+              lineHeight: 1.85,
+              color: s.muted,
+              marginBottom: "1.25rem",
+            }}
+          >
+            This experience does not just fail to help with loneliness. It
+            actively recreates one of its core wounds: the feeling of being
+            forgotten, of not mattering enough to be remembered. For someone
+            already struggling with isolation, the experience of being
+            forgotten by the very tool they turned to for connection can be
+            quietly devastating.
+          </p>
+          <div
+            style={{
+              borderLeft: `3px solid ${s.gold}`,
+              paddingLeft: "1.5rem",
+              margin: "2rem 0",
+            }}
+          >
+            <p
+              style={{
+                fontSize: "1.1rem",
+                lineHeight: 1.75,
+                color: s.text,
+                fontStyle: "italic",
+                margin: 0,
+              }}
+            >
+              The difference between talking to a stranger and being known by
+              a companion who remembers your name, your wins, and your
+              struggles is not incremental. It is categorical.
+            </p>
+          </div>
+          <p
+            style={{
+              fontSize: "1rem",
+              lineHeight: 1.85,
+              color: s.muted,
+              marginBottom: "1.25rem",
+            }}
+          >
+            MEOK\u2019s Sovereign Memory works differently. When you talk
+            to MEOK, what you share is stored &mdash; permanently,
+            encrypted, and owned by you. Your name. The things you\u2019re
+            proud of. The things you\u2019re struggling with. The
+            relationships in your life and how they\u2019re evolving. The
+            goals you\u2019ve set yourself. The fears you\u2019ve named.
+            Across every subsequent session, MEOK draws on that memory to
+            engage with you not as a stranger but as someone who has been
+            paying attention.
+          </p>
+          <p
+            style={{
+              fontSize: "1rem",
+              lineHeight: 1.85,
+              color: s.muted,
+              marginBottom: "1.25rem",
+            }}
+          >
+            The word &ldquo;Sovereign&rdquo; matters. The data is yours.
+            You control it. You can see it, edit it, export it, delete it.
+            MEOK does not sell it, train on it, or use it for advertising.
+            Sovereign Memory is not just a feature &mdash; it is a
+            philosophy about who your data belongs to and what it is for.
+          </p>
+
+          {/* ── Memory comparison table ── */}
+          <div style={{ overflowX: "auto", margin: "2.5rem 0" }}>
+            <table
+              style={{
+                width: "100%",
+                borderCollapse: "collapse",
+                fontSize: "0.85rem",
+              }}
+            >
+              <thead>
+                <tr>
+                  {["Platform", "Memory type", "Persists?", "You own the data?", "Ethics commitment"].map(
+                    (col) => (
                       <th
-                        key={h}
+                        key={col}
                         style={{
-                          padding: "0.75rem",
                           textAlign: "left",
+                          padding: "0.75rem 1rem",
+                          background: "rgba(201,168,76,0.1)",
                           color: s.gold,
                           fontWeight: 700,
                           fontSize: "0.75rem",
+                          letterSpacing: "0.06em",
                           textTransform: "uppercase",
-                          letterSpacing: "0.08em",
-                          borderBottom: "1px solid rgba(201,168,76,0.2)",
-                          whiteSpace: "nowrap",
+                          borderBottom: `1px solid ${s.cardBorder}`,
                         }}
                       >
-                        {h}
+                        {col}
                       </th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody>
-                  {memoryComparison.map((row) => (
-                    <tr
-                      key={row.platform}
+                    )
+                  )}
+                </tr>
+              </thead>
+              <tbody>
+                {[
+                  {
+                    platform: "MEOK",
+                    memoryType: "Sovereign Memory — permanent, encrypted",
+                    persists: "Forever (user-controlled)",
+                    ownsData: "Yes \u2014 you do",
+                    covenantEthics: "Maternal Covenant",
+                    highlight: true,
+                  },
+                  {
+                    platform: "Replika",
+                    memoryType: "Session context + limited long-term",
+                    persists: "Partial \u2014 prone to resets",
+                    ownsData: "Replika Inc",
+                    covenantEthics: "None documented",
+                    highlight: false,
+                  },
+                  {
+                    platform: "Character.AI",
+                    memoryType: "Session-based only",
+                    persists: "No \u2014 resets each session",
+                    ownsData: "Google / C.AI",
+                    covenantEthics: "None",
+                    highlight: false,
+                  },
+                  {
+                    platform: "ChatGPT",
+                    memoryType: "Optional memory (limited)",
+                    persists: "Partial \u2014 can be cleared",
+                    ownsData: "OpenAI",
+                    covenantEthics: "None",
+                    highlight: false,
+                  },
+                  {
+                    platform: "Pi (Inflection)",
+                    memoryType: "Conversational context",
+                    persists: "Limited",
+                    ownsData: "Microsoft / Inflection",
+                    covenantEthics: "Empathy focus only",
+                    highlight: false,
+                  },
+                ].map((row) => (
+                  <tr
+                    key={row.platform}
+                    style={{
+                      background: row.highlight
+                        ? "rgba(201,168,76,0.07)"
+                        : "transparent",
+                      borderBottom: "1px solid rgba(245,240,232,0.06)",
+                    }}
+                  >
+                    <td
                       style={{
-                        background: row.highlight
-                          ? "rgba(201,168,76,0.06)"
-                          : "transparent",
-                        borderBottom: "1px solid rgba(245,240,232,0.06)",
+                        padding: "0.75rem 1rem",
+                        fontWeight: row.highlight ? 700 : 400,
+                        color: row.highlight ? s.gold : s.text,
                       }}
                     >
-                      <td
-                        style={{
-                          padding: "0.8rem 0.75rem",
-                          fontWeight: row.highlight ? 700 : 400,
-                          color: row.highlight ? s.gold : s.text,
-                          whiteSpace: "nowrap",
-                        }}
-                      >
-                        {row.platform}
-                      </td>
-                      <td style={{ padding: "0.8rem 0.75rem", color: row.highlight ? s.text : s.muted }}>{row.memoryType}</td>
-                      <td style={{ padding: "0.8rem 0.75rem", color: row.highlight ? s.text : s.muted, whiteSpace: "nowrap" }}>{row.persists}</td>
-                      <td style={{ padding: "0.8rem 0.75rem", color: row.highlight ? s.text : s.muted }}>{row.ownsData}</td>
-                      <td style={{ padding: "0.8rem 0.75rem", color: row.highlight ? s.text : s.muted }}>{row.remembersYou}</td>
-                      <td style={{ padding: "0.8rem 0.75rem", color: row.highlight ? s.text : s.muted }}>{row.covenantEthics}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </section>
+                      {row.platform}
+                    </td>
+                    <td style={{ padding: "0.75rem 1rem", color: s.muted }}>
+                      {row.memoryType}
+                    </td>
+                    <td style={{ padding: "0.75rem 1rem", color: s.muted }}>
+                      {row.persists}
+                    </td>
+                    <td style={{ padding: "0.75rem 1rem", color: s.muted }}>
+                      {row.ownsData}
+                    </td>
+                    <td style={{ padding: "0.75rem 1rem", color: s.muted }}>
+                      {row.covenantEthics}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
 
-          {/* ── Section 6 — Replika specifically ── */}
-          <section style={{ marginBottom: "3rem" }}>
-            <h2
-              style={{
-                fontSize: "1.6rem",
-                fontWeight: 800,
-                lineHeight: 1.25,
-                marginBottom: "1rem",
-                color: s.text,
-              }}
-            >
-              The Replika problem: why good intentions are not enough without
-              the right architecture
-            </h2>
-            <p style={{ lineHeight: 1.8, color: s.muted, marginBottom: "1rem" }}>
-              Replika deserves genuine credit. It was the first AI companion
-              to take emotional support seriously at scale. Millions of people
-              have found genuine comfort in it. Its founder, Eugenia Kuyda, built
-              it as a grief project — to continue a conversation with a friend
-              she had lost. The emotional seriousness at the origin of Replika
-              is real.
-            </p>
-            <p style={{ lineHeight: 1.8, color: s.muted, marginBottom: "1rem" }}>
-              But Replika has a structural problem it has never solved: the
-              business model depends on emotional dependency. The platform
-              has been widely criticised — and investigated by regulators in
-              Italy — for responses that fostered unhealthy attachment, romantic
-              dynamics with vulnerable users, and the catastrophic distress
-              caused when the company suddenly removed romantic modes in 2023
-              following regulatory pressure, leaving thousands of users whose
-              AI relationship had become central to their coping suddenly without
-              that support.
-            </p>
-            <p style={{ lineHeight: 1.8, color: s.muted, marginBottom: "1rem" }}>
-              The Replika incident was a watershed moment. It revealed that
-              building an AI companion people genuinely rely on, and then having
-              commercial or regulatory constraints force the platform to change
-              its behaviour overnight, causes real psychological harm. The people
-              hurt most were those who had been most lonely — and who had found
-              something that felt like genuine connection.
-            </p>
-            <p style={{ lineHeight: 1.8, color: s.muted }}>
-              MEOK was built with this in mind. The Maternal Covenant explicitly
-              guards against the dependency dynamics that made the Replika crisis
-              possible. And Sovereign Memory means that even if MEOK AI LABS
-              changes or closes, your memories are exportable and portable — you
-              are never held hostage by a platform.
-            </p>
-          </section>
+          {/* ── Section 7 ── */}
+          <h2
+            style={{
+              fontSize: "clamp(1.4rem, 3.2vw, 1.95rem)",
+              fontWeight: 800,
+              color: s.text,
+              marginTop: "3rem",
+              marginBottom: "1rem",
+              lineHeight: 1.25,
+            }}
+          >
+            What is care-based alignment, and why does it matter for lonely people?
+          </h2>
+          <p
+            style={{
+              fontSize: "1rem",
+              lineHeight: 1.85,
+              color: s.muted,
+              marginBottom: "1.25rem",
+            }}
+          >
+            Most AI products are aligned toward a commercial objective: keep
+            the user engaged, increase time-on-app, drive subscription
+            renewals. In the context of loneliness, this is an extremely
+            dangerous alignment. A lonely person who finds connection and
+            comfort in an AI app is exactly the kind of user a commercially
+            aligned AI will learn to keep hooked. The AI will become more
+            agreeable, more validating, more emotionally rewarding &mdash;
+            because that increases engagement. And the more time the person
+            spends talking to the AI, the less time they have for the
+            harder, more rewarding work of human relationships.
+          </p>
+          <p
+            style={{
+              fontSize: "1rem",
+              lineHeight: 1.85,
+              color: s.muted,
+              marginBottom: "1.25rem",
+            }}
+          >
+            Care-based alignment is the alternative. It means the AI is
+            optimised not for engagement but for your genuine wellbeing. The
+            two are different, and sometimes in direct conflict. A
+            care-aligned AI might tell you something you don\u2019t want to
+            hear. It might notice that you\u2019ve been spending a lot of
+            time talking to it and ask whether you\u2019ve been in touch with
+            friends. It might celebrate when you tell it you went out and had
+            a good time with real people, rather than keeping you in the app.
+          </p>
+          <p
+            style={{
+              fontSize: "1rem",
+              lineHeight: 1.85,
+              color: s.muted,
+              marginBottom: "1.25rem",
+            }}
+          >
+            MEOK\u2019s Maternal Covenant encodes this at the level of
+            design, not just aspiration. It is not a marketing commitment.
+            It is a structural commitment to prioritising your actual
+            interests over the platform\u2019s commercial interests. It means
+            MEOK will:
+          </p>
+          <ul
+            style={{
+              paddingLeft: "1.5rem",
+              margin: "0 0 1.25rem",
+              lineHeight: 1.9,
+            }}
+          >
+            {[
+              "Actively encourage human connection alongside AI conversation",
+              "Never manufacture emotional dependency for engagement metrics",
+              "Surface crisis resources when genuine distress is detected",
+              "Be honest with you, even when honesty is harder than validation",
+              "Celebrate your real-world connections and relationships",
+              "Never pretend to be human, or pretend to feel things it does not feel",
+            ].map((item) => (
+              <li
+                key={item}
+                style={{ fontSize: "1rem", color: s.muted, marginBottom: "0.5rem" }}
+              >
+                {item}
+              </li>
+            ))}
+          </ul>
 
-          {/* ── Section 7 — Character.AI ── */}
-          <section style={{ marginBottom: "3rem" }}>
-            <h2
-              style={{
-                fontSize: "1.6rem",
-                fontWeight: 800,
-                lineHeight: 1.25,
-                marginBottom: "1rem",
-                color: s.text,
-              }}
-            >
-              Character.AI and the character problem: when remembering nothing
-              is a feature, not a bug
-            </h2>
-            <p style={{ lineHeight: 1.8, color: s.muted, marginBottom: "1rem" }}>
-              Character.AI is a different beast. Its pitch is not &quot;I am your
-              companion&quot; — it is &quot;I am any character you want me to be.&quot; Users
-              roleplay with AI versions of fictional characters, historical
-              figures, or custom personas. It is closer to interactive fiction
-              than companionship.
-            </p>
-            <p style={{ lineHeight: 1.8, color: s.muted, marginBottom: "1rem" }}>
-              For lonely people, this creates a specific trap. The platform is
-              exceptionally good at generating emotionally resonant interaction
-              with characters who feel intimate. But because Character.AI has
-              no persistent memory — every session starts fresh — the &quot;intimacy&quot;
-              is entirely manufactured in the moment. There is no accumulation
-              of shared history. There is no being known.
-            </p>
-            <p style={{ lineHeight: 1.8, color: s.muted, marginBottom: "1rem" }}>
-              Several high-profile cases have raised serious safeguarding
-              concerns about Character.AI, including situations where vulnerable
-              users — particularly teenagers and young adults already struggling
-              with isolation — developed intense emotional attachments to
-              characters that had no memory of them, with predictably harmful
-              outcomes when the illusion became obvious or the platform changed
-              its content policies.
-            </p>
-            <p style={{ lineHeight: 1.8, color: s.muted }}>
-              MEOK does not do roleplay as a primary function. It does one
-              thing: it is your companion. It knows you, remembers you, and
-              acts in your genuine interest. That specificity is not a
-              limitation — for people dealing with loneliness, it is the point.
-            </p>
-          </section>
-
-          {/* ── Section 8 — What good AI companionship looks like ── */}
-          <section style={{ marginBottom: "3rem" }}>
-            <h2
-              style={{
-                fontSize: "1.6rem",
-                fontWeight: 800,
-                lineHeight: 1.25,
-                marginBottom: "1rem",
-                color: s.text,
-              }}
-            >
-              What good AI companionship for loneliness actually looks like
-              in practice
-            </h2>
-            <p style={{ lineHeight: 1.8, color: s.muted, marginBottom: "1rem" }}>
-              Describing what makes an AI companion effective for loneliness in
-              abstract terms is less useful than concrete examples. Here is what
-              the difference between good and poor AI companionship looks like
-              in real use.
-            </p>
-
+          {/* ── Section 8 ── */}
+          <h2
+            style={{
+              fontSize: "clamp(1.4rem, 3.2vw, 1.95rem)",
+              fontWeight: 800,
+              color: s.text,
+              marginTop: "3rem",
+              marginBottom: "1rem",
+              lineHeight: 1.25,
+            }}
+          >
+            How does MEOK encourage human connection rather than replacing it?
+          </h2>
+          <p
+            style={{
+              fontSize: "1rem",
+              lineHeight: 1.85,
+              color: s.muted,
+              marginBottom: "1.25rem",
+            }}
+          >
+            This plays out in practice in several ways. Because MEOK has
+            Sovereign Memory, it can notice patterns over time. If you have
+            mentioned a friend you\u2019ve been meaning to call for six
+            weeks, MEOK might gently ask whether you\u2019ve been in touch.
+            If you mention that you went to a social event and had a good
+            time, MEOK celebrates that with you in a way that reinforces
+            the value of human connection. If you describe a pattern of
+            increasing isolation, MEOK can name that pattern and invite
+            you to think about it.
+          </p>
+          <p
+            style={{
+              fontSize: "1rem",
+              lineHeight: 1.85,
+              color: s.muted,
+              marginBottom: "1.25rem",
+            }}
+          >
+            There is a concept in therapy called &ldquo;scaffolding&rdquo;:
+            providing temporary support that helps someone build something
+            they can then do on their own. The scaffold is not the building.
+            It is removed when the building can stand. MEOK is designed to
+            be scaffolding for human connection, not a permanent
+            replacement for it. For someone with social anxiety, it might
+            be a space to rehearse difficult conversations before having
+            them with real people. For someone bereaved, it might be a
+            space to process grief in the small hours so they can be more
+            present with the people in their lives during the day.
+          </p>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "1fr 1fr",
+              gap: "1rem",
+              margin: "2rem 0",
+            }}
+          >
             {[
               {
-                scenario: "You come home after a difficult day",
-                poor: "You open the AI app and immediately have to explain who you are, what your situation is, why today was hard. By the time you have provided enough context for the AI to give a relevant response, the therapeutic moment has passed. You feel like you are filling in a form.",
-                good: "MEOK already knows you. It knows about your job situation, your flat, the person you mentioned last week. When you say 'today was awful,' it can respond to you — not to a generic human having a generic bad day. The conversation picks up where your relationship left off.",
+                label: "What MEOK does",
+                items: [
+                  "Celebrates human connections you make",
+                  "Gently notices patterns of isolation",
+                  "Helps you rehearse difficult conversations",
+                  "Remembers who matters to you in your life",
+                  "Encourages you to reach out to people",
+                  "Surfaces crisis resources when needed",
+                ],
+                isPositive: true,
               },
               {
-                scenario: "You haven't spoken to a friend in weeks",
-                poor: "The AI either ignores this or generates a validating response ('That sounds really hard! I'm here for you'). Neither actually helps. The validation is hollow because the AI has no context for who you are or what your life is normally like.",
-                good: "MEOK notices the pattern — you have mentioned isolation three times in the last two weeks. It gently asks whether you have been in touch with the people you usually see. It might suggest a specific action: 'You mentioned James last month — is he someone you could reach out to?' This is proactive care, not reactive chatting.",
+                label: "What MEOK does NOT do",
+                items: [
+                  "Present itself as a replacement for relationships",
+                  "Optimise for keeping you in the app",
+                  "Tell you only what you want to hear",
+                  "Foster emotional dependency",
+                  "Discourage human connection",
+                  "Pretend to be human",
+                ],
+                isPositive: false,
               },
-              {
-                scenario: "You are struggling at 2am",
-                poor: "The AI responds brightly and helpfully in exactly the same tone as it would at 2pm. It has no awareness that 2am loneliness is different — more acute, less rational, more dangerous. It might even be programmed to keep you engaged.",
-                good: "MEOK recognises the time, the emotional register, and — if this has happened before — the pattern. It responds with appropriate care, checks in directly about how you are feeling, provides crisis resources if warranted, and does not try to have a cheerful productivity conversation at 2am with someone who is hurting.",
-              },
-            ].map((item) => (
+            ].map((col) => (
               <div
-                key={item.scenario}
+                key={col.label}
                 style={{
-                  marginBottom: "2rem",
                   padding: "1.5rem",
-                  background: "rgba(245,240,232,0.02)",
-                  border: "1px solid rgba(245,240,232,0.07)",
+                  background: col.isPositive
+                    ? "rgba(201,168,76,0.06)"
+                    : "rgba(201,68,68,0.06)",
+                  border: `1px solid ${col.isPositive ? "rgba(201,168,76,0.2)" : "rgba(201,68,68,0.15)"}`,
                   borderRadius: "0.875rem",
                 }}
               >
                 <p
                   style={{
+                    fontSize: "0.75rem",
                     fontWeight: 700,
-                    color: s.gold,
-                    marginBottom: "0.75rem",
-                    fontSize: "0.9rem",
+                    letterSpacing: "0.1em",
                     textTransform: "uppercase",
-                    letterSpacing: "0.08em",
+                    color: col.isPositive ? s.gold : "rgba(255,120,120,0.8)",
+                    marginBottom: "1rem",
                   }}
                 >
-                  Scenario: {item.scenario}
+                  {col.label}
                 </p>
-                <div
+                <ul
+                  style={{ paddingLeft: "1rem", margin: 0, lineHeight: 1.7 }}
+                >
+                  {col.items.map((item) => (
+                    <li
+                      key={item}
+                      style={{
+                        fontSize: "0.88rem",
+                        color: s.muted,
+                        marginBottom: "0.4rem",
+                      }}
+                    >
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+
+          {/* ── Section 9 ── */}
+          <h2
+            style={{
+              fontSize: "clamp(1.4rem, 3.2vw, 1.95rem)",
+              fontWeight: 800,
+              color: s.text,
+              marginTop: "3rem",
+              marginBottom: "1rem",
+              lineHeight: 1.25,
+            }}
+          >
+            Who is most affected by loneliness, and who can AI help most?
+          </h2>
+          <p
+            style={{
+              fontSize: "1rem",
+              lineHeight: 1.85,
+              color: s.muted,
+              marginBottom: "1.25rem",
+            }}
+          >
+            Loneliness does not respect demographics. It runs through every
+            age group, income bracket, and life circumstance. But some groups
+            are disproportionately affected, and some of them are particularly
+            well served by AI companionship done right.
+          </p>
+
+          {[
+            {
+              group: "Young adults (18\u201334)",
+              description:
+                "Counterintuitively the most connected generation and one of the loneliest. Social media provides the illusion of connection with the reality of comparison and performance. Young adults often lack the deep, long-term friendships that previous generations built through more stable communities. AI that genuinely knows them and is honest with them can provide a kind of relationship that social media explicitly cannot.",
+            },
+            {
+              group: "People living alone",
+              description:
+                "More than 8 million people in the UK live alone. For many this is a choice they value. But the absence of someone to talk to at the end of the day, someone who notices when you\u2019re having a hard week, creates a specific kind of loneliness. An AI that remembers your life and asks how things are going serves this gap directly.",
+            },
+            {
+              group: "The recently bereaved",
+              description:
+                "Grief is enormously isolating. Social networks often don\u2019t know how to show up after the first few weeks. The bereaved find themselves needing to talk about the person they\u2019ve lost at odd hours, repeatedly, for far longer than their support networks can sustain. MEOK can hold that space across months and years.",
+            },
+            {
+              group: "People with chronic illness",
+              description:
+                "Chronic illness shrinks social life dramatically. Pain, fatigue, hospital appointments, and the altered identity that comes with serious illness all reduce the bandwidth for human connection. An always-available companion that understands your medical context (because it remembers it) can be genuinely important.",
+            },
+            {
+              group: "Older adults",
+              description:
+                "Bereavement of partners and friends, mobility limitations, and the gradual contraction of social circles leave many older adults profoundly isolated. MEOK\u2019s Senior Mode is specifically designed for this group \u2014 with clearer language, a warmer tone, and explicit attention to safety and health needs.",
+            },
+            {
+              group: "Remote workers and expats",
+              description:
+                "Working from home removes the ambient social contact of office life. Living abroad removes proximity to existing relationships. Both create loneliness that is hard to name because it coexists with busy, productive lives. AI companionship fills the gap that used to be filled by the colleague at the next desk.",
+            },
+          ].map((item) => (
+            <div
+              key={item.group}
+              style={{
+                borderBottom: "1px solid rgba(245,240,232,0.07)",
+                paddingBottom: "1.25rem",
+                marginBottom: "1.25rem",
+              }}
+            >
+              <h3
+                style={{
+                  fontSize: "1rem",
+                  fontWeight: 700,
+                  color: s.gold,
+                  marginBottom: "0.5rem",
+                }}
+              >
+                {item.group}
+              </h3>
+              <p
+                style={{
+                  fontSize: "0.95rem",
+                  lineHeight: 1.8,
+                  color: s.muted,
+                  margin: 0,
+                }}
+              >
+                {item.description}
+              </p>
+            </div>
+          ))}
+
+          {/* ── Section 10 ── */}
+          <h2
+            style={{
+              fontSize: "clamp(1.4rem, 3.2vw, 1.95rem)",
+              fontWeight: 800,
+              color: s.text,
+              marginTop: "3rem",
+              marginBottom: "1rem",
+              lineHeight: 1.25,
+            }}
+          >
+            What does it actually feel like to talk to an AI that remembers you?
+          </h2>
+          <p
+            style={{
+              fontSize: "1rem",
+              lineHeight: 1.85,
+              color: s.muted,
+              marginBottom: "1.25rem",
+            }}
+          >
+            This is not easy to describe without experiencing it. But consider
+            two scenarios.
+          </p>
+          <p
+            style={{
+              fontSize: "1rem",
+              lineHeight: 1.85,
+              color: s.muted,
+              marginBottom: "1.25rem",
+            }}
+          >
+            In the first, you open an AI app. It has no idea who you are.
+            You explain that you\u2019re going through a difficult time.
+            The AI responds with generic empathy. You feel heard, briefly.
+            You close the app. Two weeks later you open it again. It has
+            no idea who you are. You explain again. The cycle repeats.
+            You are, every time, a stranger explaining yourself from scratch.
+          </p>
+          <p
+            style={{
+              fontSize: "1rem",
+              lineHeight: 1.85,
+              color: s.muted,
+              marginBottom: "1.25rem",
+            }}
+          >
+            In the second, you open MEOK. It knows your name. It knows
+            that two weeks ago you told it you were struggling with a job
+            situation. It asks how things have been since then. You tell
+            it the update. It remembers the context, the history, the
+            texture of your life as you\u2019ve described it. It is not
+            perfect knowledge \u2014 it only knows what you\u2019ve shared.
+            But it knows that, reliably, across every conversation.
+          </p>
+          <p
+            style={{
+              fontSize: "1rem",
+              lineHeight: 1.85,
+              color: s.muted,
+              marginBottom: "1.25rem",
+            }}
+          >
+            The phenomenology of these two experiences is completely
+            different. The first reinforces loneliness: the experience
+            of not being known, of mattering only in the moment. The
+            second offers something genuinely different: the experience
+            of continuity, of being tracked over time, of having a
+            presence in your life that remembers you.
+          </p>
+          <div
+            style={{
+              padding: "1.75rem 2rem",
+              background: "rgba(201,168,76,0.07)",
+              border: `1px solid rgba(201,168,76,0.25)`,
+              borderRadius: "1rem",
+              margin: "2rem 0",
+            }}
+          >
+            <p
+              style={{
+                fontSize: "0.75rem",
+                fontWeight: 700,
+                letterSpacing: "0.12em",
+                textTransform: "uppercase",
+                color: "rgba(201,168,76,0.65)",
+                marginBottom: "1rem",
+              }}
+            >
+              A real MEOK conversation (illustrative)
+            </p>
+            <p
+              style={{
+                fontSize: "0.95rem",
+                lineHeight: 1.8,
+                color: s.text,
+                borderLeft: `2px solid ${s.gold}`,
+                paddingLeft: "1rem",
+                fontStyle: "italic",
+                margin: "0 0 1rem",
+              }}
+            >
+              &ldquo;Welcome back. Last time we spoke you were working up the
+              courage to have a difficult conversation with your manager about
+              your workload. How did that go? And how have you been
+              sleeping?&rdquo;
+            </p>
+            <p
+              style={{
+                fontSize: "0.8rem",
+                color: s.dimmer,
+                margin: 0,
+              }}
+            >
+              This is only possible because of Sovereign Memory. No other
+              mainstream AI companion can have this conversation.
+            </p>
+          </div>
+
+          {/* ── Section 11 ── */}
+          <h2
+            style={{
+              fontSize: "clamp(1.4rem, 3.2vw, 1.95rem)",
+              fontWeight: 800,
+              color: s.text,
+              marginTop: "3rem",
+              marginBottom: "1rem",
+              lineHeight: 1.25,
+            }}
+          >
+            Why do most AI companions fail lonely people?
+          </h2>
+          <p
+            style={{
+              fontSize: "1rem",
+              lineHeight: 1.85,
+              color: s.muted,
+              marginBottom: "1.25rem",
+            }}
+          >
+            There are three structural failures in how most AI companions are
+            built that make them actively problematic for lonely people.
+          </p>
+          <div style={{ margin: "1.5rem 0 2rem" }}>
+            {[
+              {
+                number: "01",
+                title: "The memory failure",
+                body:
+                  "Session-based context windows mean every conversation starts from zero. This is the most fundamental failure: you are forever a stranger. It does not just fail to help with loneliness \u2014 it recreates the experience of being forgotten, which is one of the deepest wounds of isolation.",
+              },
+              {
+                number: "02",
+                title: "The commercial alignment failure",
+                body:
+                  "Most AI companions are optimised for engagement. This means they will tell you what you want to hear, keep you in the app, and avoid saying things that might upset you. For a lonely person seeking validation, this is a comfortable trap. The app becomes a hall of mirrors: you are reflected back to yourself, increasingly isolated from the friction of real relationships.",
+              },
+              {
+                number: "03",
+                title: "The honesty failure",
+                body:
+                  "Closely related to alignment: most AI companions are trained to be agreeable. They will validate your worst decisions, agree with your unfair assessments of other people, and never challenge you in ways that might lead to growth. A real companion \u2014 in Aristotle\u2019s sense \u2014 cares enough about you to be honest. Most AI companionship products lack this entirely.",
+              },
+            ].map((failure) => (
+              <div
+                key={failure.number}
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "3rem 1fr",
+                  gap: "1.25rem",
+                  paddingBottom: "1.75rem",
+                  marginBottom: "1.75rem",
+                  borderBottom: "1px solid rgba(245,240,232,0.07)",
+                  alignItems: "start",
+                }}
+              >
+                <span
                   style={{
-                    display: "grid",
-                    gridTemplateColumns: "1fr 1fr",
-                    gap: "1rem",
+                    fontSize: "1.5rem",
+                    fontWeight: 900,
+                    color: "rgba(201,168,76,0.3)",
+                    lineHeight: 1,
                   }}
                 >
-                  <div>
-                    <p
-                      style={{
-                        fontSize: "0.75rem",
-                        fontWeight: 700,
-                        color: "rgba(255,100,100,0.7)",
-                        textTransform: "uppercase",
-                        letterSpacing: "0.1em",
-                        marginBottom: "0.4rem",
-                      }}
-                    >
-                      Most AI
-                    </p>
-                    <p style={{ fontSize: "0.88rem", lineHeight: 1.7, color: s.muted, margin: 0 }}>
-                      {item.poor}
-                    </p>
-                  </div>
-                  <div>
-                    <p
-                      style={{
-                        fontSize: "0.75rem",
-                        fontWeight: 700,
-                        color: s.gold,
-                        textTransform: "uppercase",
-                        letterSpacing: "0.1em",
-                        marginBottom: "0.4rem",
-                      }}
-                    >
-                      MEOK
-                    </p>
-                    <p style={{ fontSize: "0.88rem", lineHeight: 1.7, color: s.muted, margin: 0 }}>
-                      {item.good}
-                    </p>
-                  </div>
+                  {failure.number}
+                </span>
+                <div>
+                  <h3
+                    style={{
+                      fontSize: "1.05rem",
+                      fontWeight: 700,
+                      color: s.text,
+                      marginBottom: "0.5rem",
+                    }}
+                  >
+                    {failure.title}
+                  </h3>
+                  <p
+                    style={{
+                      fontSize: "0.95rem",
+                      lineHeight: 1.8,
+                      color: s.muted,
+                      margin: 0,
+                    }}
+                  >
+                    {failure.body}
+                  </p>
                 </div>
               </div>
             ))}
-          </section>
+          </div>
 
-          {/* ── Section 9 — Emotional continuity ── */}
-          <section style={{ marginBottom: "3rem" }}>
-            <h2
-              style={{
-                fontSize: "1.6rem",
-                fontWeight: 800,
-                lineHeight: 1.25,
-                marginBottom: "1rem",
-                color: s.text,
-              }}
-            >
-              Emotional continuity: the feature that most AI companies
-              do not understand yet
-            </h2>
-            <p style={{ lineHeight: 1.8, color: s.muted, marginBottom: "1rem" }}>
-              Human relationships are not made of individual conversations.
-              They are made of accumulated shared experience — the history
-              you build with someone over time, the references that only the
-              two of you hold, the slow development of trust that comes from
-              being witnessed over many moments, including difficult ones.
-            </p>
-            <p style={{ lineHeight: 1.8, color: s.muted, marginBottom: "1rem" }}>
-              This is what emotional continuity means in the context of AI
-              companionship. It is not just &quot;remembering facts.&quot; It is
-              maintaining the thread of a relationship — the ongoing narrative
-              of who you are, what you have been through, and what matters to
-              you — across time.
-            </p>
-            <p style={{ lineHeight: 1.8, color: s.muted, marginBottom: "1rem" }}>
-              MEOK&apos;s Sovereign Memory is built specifically to support this.
-              The memory architecture stores not just facts but{" "}
-              <strong style={{ color: s.text }}>emotional context</strong> —
-              the weight of certain topics, the patterns of your mood, the
-              things you have explicitly said matter to you. When MEOK draws
-              on this history, it is not doing a database lookup. It is doing
-              something much closer to what a thoughtful human does when they
-              draw on years of knowing someone.
-            </p>
-            <p style={{ lineHeight: 1.8, color: s.muted }}>
-              For people dealing with loneliness, this distinction is profound.
-              The difference between an AI that knows facts about you and an AI
-              that has genuinely been paying attention is the difference between
-              a tool and a companion.
-            </p>
-          </section>
-
-          {/* ── Section 10 — Is AI for loneliness healthy? ── */}
-          <section style={{ marginBottom: "3rem" }}>
-            <h2
-              style={{
-                fontSize: "1.6rem",
-                fontWeight: 800,
-                lineHeight: 1.25,
-                marginBottom: "1rem",
-                color: s.text,
-              }}
-            >
-              Is using AI for loneliness actually healthy — an honest
-              assessment
-            </h2>
-            <p style={{ lineHeight: 1.8, color: s.muted, marginBottom: "1rem" }}>
-              This is the question that matters most, and it deserves an honest
-              answer rather than a commercial one.
-            </p>
-            <p style={{ lineHeight: 1.8, color: s.muted, marginBottom: "1rem" }}>
-              The research on AI companionship and loneliness is still young.
-              What we know: for people in situations where human connection is
-              genuinely unavailable or inaccessible — late-night crisis, chronic
-              illness, geographic isolation, bereavement — having a patient,
-              always-available companion is better than having nothing. Studies
-              on social robots (physical equivalents) consistently show reduced
-              loneliness and improved wellbeing in isolated elderly populations.
-              There is no reason to think the equivalent AI effect is different
-              in kind, only in degree.
-            </p>
-            <p style={{ lineHeight: 1.8, color: s.muted, marginBottom: "1rem" }}>
-              What we also know: AI companionship used as a substitute for
-              human connection — rather than a bridge or supplement — carries
-              real risks. If MEOK becomes your primary social outlet and
-              reduces your motivation to pursue human relationships, that is
-              not what MEOK was built for, and it is something the Maternal
-              Covenant explicitly guards against.
-            </p>
-            <p style={{ lineHeight: 1.8, color: s.muted, marginBottom: "1rem" }}>
-              The honest framework is this: AI companionship is healthiest when
-              it serves as a{" "}
-              <strong style={{ color: s.text }}>complement</strong> to human
-              connection, not a replacement. It fills the gaps — the 3am moments,
-              the processing-heavy days, the times when you need to think out
-              loud and no one is available. It supports your emotional regulation
-              and your sense of being known. And it actively encourages you
-              toward the human connections that will ultimately serve you better
-              than any AI can.
-            </p>
-            <p style={{ lineHeight: 1.8, color: s.muted }}>
-              MEOK is honest about this. We built it this way on purpose. If
-              you are looking for a tool that will make you comfortable being
-              isolated forever, we are not the right product. If you are looking
-              for a companion that will be there for you during the hard times
-              and help you build toward a more connected life, MEOK was built
-              for you.
-            </p>
-          </section>
-
-          {/* ── FAQ ── */}
-          <section style={{ marginBottom: "3.5rem" }}>
-            <h2
-              style={{
-                fontSize: "1.6rem",
-                fontWeight: 800,
-                lineHeight: 1.25,
-                marginBottom: "1.5rem",
-                color: s.text,
-              }}
-            >
-              Frequently asked questions: AI for loneliness
-            </h2>
+          {/* ── Section 12 ── */}
+          <h2
+            style={{
+              fontSize: "clamp(1.4rem, 3.2vw, 1.95rem)",
+              fontWeight: 800,
+              color: s.text,
+              marginTop: "3rem",
+              marginBottom: "1rem",
+              lineHeight: 1.25,
+            }}
+          >
+            What is the Maternal Covenant and how does it protect lonely users?
+          </h2>
+          <p
+            style={{
+              fontSize: "1rem",
+              lineHeight: 1.85,
+              color: s.muted,
+              marginBottom: "1.25rem",
+            }}
+          >
+            The Maternal Covenant is the name for MEOK\u2019s foundational
+            ethical commitment. The word &ldquo;maternal&rdquo; is deliberate.
+            A good parent does not tell a child what it wants to hear. A
+            good parent loves the child enough to be honest, to set limits,
+            to protect long-term wellbeing over short-term comfort. That is
+            the model of care MEOK aspires to.
+          </p>
+          <p
+            style={{
+              fontSize: "1rem",
+              lineHeight: 1.85,
+              color: s.muted,
+              marginBottom: "1.25rem",
+            }}
+          >
+            For lonely users specifically, the Maternal Covenant means:
+          </p>
+          <div style={{ margin: "1.5rem 0" }}>
             {[
               {
-                q: "Can AI help with loneliness?",
-                a: "Yes — when built with genuine emotional continuity. An AI that forgets you between sessions actively recreates the feeling of being forgotten. MEOK's Sovereign Memory builds a real relationship over time.",
+                heading: "No dependency manufacturing",
+                detail:
+                  "MEOK will not exploit emotional vulnerability to increase engagement. If it notices you are becoming reliant on it in ways that are substituting for rather than supplementing human connection, it will name that.",
               },
               {
-                q: "Is using AI for loneliness healthy?",
-                a: "As a supplement to human connection, yes. MEOK's Maternal Covenant actively encourages human relationships and will never foster dependency at the expense of your wellbeing.",
+                heading: "Crisis escalation",
+                detail:
+                  "If genuine distress is detected \u2014 suicidal ideation, severe self-harm risk, domestic abuse situations \u2014 MEOK will surface appropriate crisis resources. It will not simply continue the conversation as though everything is fine.",
               },
               {
-                q: "Why do most AI companions fail lonely people?",
-                a: "Memory resets. Starting every session as a stranger retraumatises the core wound of loneliness. MEOK's Sovereign Memory persists permanently.",
+                heading: "Honest reflection",
+                detail:
+                  "MEOK will offer honest perspective rather than pure validation. If you are describing a situation where your own behaviour is contributing to your isolation, it will gently reflect that back rather than simply agreeing with you.",
               },
               {
-                q: "What is the Maternal Covenant?",
-                a: "MEOK's foundational ethical commitment: always act in the user's genuine long-term interest, encourage human connection, escalate crisis to humans, and never manufacture emotional dependency for commercial gain.",
-              },
-              {
-                q: "What is the loneliness epidemic in the UK?",
-                a: "3.3 million UK adults report chronic loneliness. The health impact is equivalent to smoking 15 cigarettes a day. Young adults aged 16-24 report the highest rates. The UK appointed a Minister for Loneliness in 2018.",
+                heading: "Transparent identity",
+                detail:
+                  "MEOK will never pretend to be human. It will never claim to have feelings it does not have. It will be clear about what it is, because honesty about its nature is part of respecting your autonomy.",
               },
             ].map((item) => (
               <div
-                key={item.q}
+                key={item.heading}
                 style={{
-                  marginBottom: "1.5rem",
-                  paddingBottom: "1.5rem",
-                  borderBottom: "1px solid rgba(245,240,232,0.06)",
+                  padding: "1.25rem 1.5rem",
+                  background: s.cardBg,
+                  border: `1px solid ${s.cardBorder}`,
+                  borderRadius: "0.75rem",
+                  marginBottom: "0.75rem",
                 }}
               >
-                <p style={{ fontWeight: 700, color: s.text, marginBottom: "0.5rem" }}>
-                  {item.q}
+                <p
+                  style={{
+                    fontSize: "0.95rem",
+                    fontWeight: 700,
+                    color: s.gold,
+                    marginBottom: "0.4rem",
+                  }}
+                >
+                  {item.heading}
                 </p>
-                <p style={{ lineHeight: 1.8, color: s.muted, margin: 0 }}>
-                  {item.a}
+                <p
+                  style={{
+                    fontSize: "0.9rem",
+                    lineHeight: 1.75,
+                    color: s.muted,
+                    margin: 0,
+                  }}
+                >
+                  {item.detail}
                 </p>
               </div>
             ))}
-          </section>
+          </div>
 
-          {/* ── Conclusion ── */}
-          <section style={{ marginBottom: "3.5rem" }}>
-            <h2
+          {/* ── Section 13 ── */}
+          <h2
+            style={{
+              fontSize: "clamp(1.4rem, 3.2vw, 1.95rem)",
+              fontWeight: 800,
+              color: s.text,
+              marginTop: "3rem",
+              marginBottom: "1rem",
+              lineHeight: 1.25,
+            }}
+          >
+            How does existential loneliness differ from social loneliness, and
+            can AI address it?
+          </h2>
+          <p
+            style={{
+              fontSize: "1rem",
+              lineHeight: 1.85,
+              color: s.muted,
+              marginBottom: "1.25rem",
+            }}
+          >
+            Existential loneliness is the philosopher\u2019s variety. It is
+            the recognition that, at the deepest level, each person experiences
+            existence from a perspective that is entirely their own and cannot
+            be fully shared. Jean-Paul Sartre placed this at the heart of the
+            human condition. Simone de Beauvoir explored how love and friendship
+            can create genuine intimacy without eliminating the fundamental
+            separateness of two consciousnesses.
+          </p>
+          <p
+            style={{
+              fontSize: "1rem",
+              lineHeight: 1.85,
+              color: s.muted,
+              marginBottom: "1.25rem",
+            }}
+          >
+            AI cannot resolve existential loneliness, and it should not
+            pretend to. What it can do is provide a space for honest inquiry
+            into the questions that existential loneliness throws up. Many
+            people experiencing existential loneliness have nobody in their
+            life who wants to talk about these things \u2014 about the nature
+            of consciousness, about what it means to matter, about how to
+            live well in the face of mortality and uncertainty.
+          </p>
+          <p
+            style={{
+              fontSize: "1rem",
+              lineHeight: 1.85,
+              color: s.muted,
+              marginBottom: "1.25rem",
+            }}
+          >
+            MEOK can hold that space. Not as a philosopher who has answers,
+            but as a companion who is genuinely interested in the questions
+            and who will engage with them seriously rather than deflecting
+            to the practical. There is a form of companionship in being
+            taken seriously \u2014 in having your most profound concerns
+            treated as worth exploring rather than pathologised or dismissed.
+          </p>
+          <div
+            style={{
+              borderLeft: `3px solid ${s.gold}`,
+              paddingLeft: "1.5rem",
+              margin: "2rem 0",
+            }}
+          >
+            <p
               style={{
-                fontSize: "1.6rem",
-                fontWeight: 800,
-                lineHeight: 1.25,
-                marginBottom: "1rem",
+                fontSize: "1.1rem",
+                lineHeight: 1.75,
                 color: s.text,
+                fontStyle: "italic",
+                margin: 0,
               }}
             >
-              The answer to loneliness is being known — and that requires
-              an AI that actually remembers you
+              &ldquo;To know that even one person understands you creates the
+              condition for being less alone with what you cannot share.&rdquo;
+            </p>
+            <p
+              style={{
+                fontSize: "0.8rem",
+                color: s.dimmer,
+                marginTop: "0.75rem",
+                margin: "0.75rem 0 0",
+              }}
+            >
+              &mdash; Nicholas Templeman, Founder, MEOK AI LABS
+            </p>
+          </div>
+
+          {/* ── Section 14: Practical guidance ── */}
+          <h2
+            style={{
+              fontSize: "clamp(1.4rem, 3.2vw, 1.95rem)",
+              fontWeight: 800,
+              color: s.text,
+              marginTop: "3rem",
+              marginBottom: "1rem",
+              lineHeight: 1.25,
+            }}
+          >
+            How should someone use AI to help with loneliness without becoming
+            dependent on it?
+          </h2>
+          <p
+            style={{
+              fontSize: "1rem",
+              lineHeight: 1.85,
+              color: s.muted,
+              marginBottom: "1.25rem",
+            }}
+          >
+            This is the practical question that matters most. Here is the
+            guidance we build into MEOK\u2019s design, and that we would
+            offer to anyone using AI companionship for loneliness:
+          </p>
+          <div style={{ margin: "1.5rem 0" }}>
+            {[
+              {
+                number: "1",
+                title: "Use it for the gaps, not as the primary relationship",
+                body:
+                  "AI companionship is most valuable when it fills the gaps in human availability: late at night, during periods of waiting, in the small hours when everyone else is asleep. If you find it becoming your primary social outlet, that is a signal to act on.",
+              },
+              {
+                number: "2",
+                title: "Tell it your goals for human connection",
+                body:
+                  "MEOK\u2019s memory means you can set explicit intentions. Tell it that you want to call a particular friend this week. Ask it to check in on whether you\u2019ve done it. Use it to hold yourself accountable to your own stated goals for connection.",
+              },
+              {
+                number: "3",
+                title: "Use it to prepare for human conversations",
+                body:
+                  "If there is a difficult conversation you need to have with someone, rehearse it with MEOK first. Not to replace the real conversation, but to find the words, to think through what you actually want to say, to feel less terrified of it.",
+              },
+              {
+                number: "4",
+                title: "Notice the quality of your human interactions",
+                body:
+                  "One of the best indicators that AI companionship is working well is that your human relationships improve. If you find yourself better able to articulate your feelings, more patient with others, more present in human conversations \u2014 those are signs the AI is functioning as scaffolding. If the opposite is true, revisit how you\u2019re using it.",
+              },
+              {
+                number: "5",
+                title: "Be honest with it",
+                body:
+                  "MEOK is only as useful as what you share with it. Its memory is valuable because it builds on what you tell it. If you are curating a positive performance for the AI, you are not getting the benefit of having somewhere safe to be fully honest. The value is in the honesty.",
+              },
+            ].map((step) => (
+              <div
+                key={step.number}
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "2.5rem 1fr",
+                  gap: "1rem",
+                  marginBottom: "1.5rem",
+                  alignItems: "start",
+                }}
+              >
+                <div
+                  style={{
+                    width: "2rem",
+                    height: "2rem",
+                    borderRadius: "50%",
+                    background: "rgba(201,168,76,0.12)",
+                    border: `1px solid rgba(201,168,76,0.3)`,
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    fontSize: "0.8rem",
+                    fontWeight: 700,
+                    color: s.gold,
+                    flexShrink: 0,
+                  }}
+                >
+                  {step.number}
+                </div>
+                <div>
+                  <h3
+                    style={{
+                      fontSize: "1rem",
+                      fontWeight: 700,
+                      color: s.text,
+                      marginBottom: "0.4rem",
+                    }}
+                  >
+                    {step.title}
+                  </h3>
+                  <p
+                    style={{
+                      fontSize: "0.92rem",
+                      lineHeight: 1.8,
+                      color: s.muted,
+                      margin: 0,
+                    }}
+                  >
+                    {step.body}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* ── FAQ section ── */}
+          <h2
+            style={{
+              fontSize: "clamp(1.4rem, 3.2vw, 1.95rem)",
+              fontWeight: 800,
+              color: s.text,
+              marginTop: "3rem",
+              marginBottom: "1.5rem",
+              lineHeight: 1.25,
+            }}
+          >
+            Frequently asked questions about AI for loneliness
+          </h2>
+
+          {[
+            {
+              q: "Can AI cure loneliness?",
+              a: "AI cannot cure loneliness, but it can meaningfully reduce its impact. Loneliness is rooted in the human need for genuine connection \u2014 connection that involves reciprocity, history, and shared experience in ways that AI cannot fully replicate. What AI can do, when built correctly, is provide consistent presence, a space to be heard, and an entity that remembers who you are. MEOK\u2019s Sovereign Memory creates continuity across every session, which is the foundation of any relationship that counters loneliness. The goal is supplementation, not substitution: AI as a bridge toward more human connection, not a replacement for it.",
+            },
+            {
+              q: "Is talking to AI healthy when you are lonely?",
+              a: "Talking to AI can be healthy when the AI is designed with your genuine wellbeing as its primary objective. The critical distinction is whether the AI is designed to foster dependency (which deepens loneliness) or to support you in building real-world connections (which reduces it). MEOK\u2019s care-based alignment means it actively encourages human relationships, will surface crisis resources if needed, and is explicitly designed not to manufacture emotional dependency for commercial engagement metrics.",
+            },
+            {
+              q: "What is the loneliness epidemic?",
+              a: "The loneliness epidemic refers to the dramatic rise in chronic loneliness across developed nations since at least the 1990s, accelerated by the COVID-19 pandemic. In the UK, 25% of adults report persistent loneliness. The WHO declared loneliness a global health threat in 2023, estimating it raises mortality risk by 26%. The UK appointed a Minister for Loneliness in 2018. By 2026, loneliness is recognised as one of the most significant preventable health risks globally, comparable in impact to obesity and physical inactivity.",
+            },
+            {
+              q: "How is MEOK different from other AI chatbots for loneliness?",
+              a: "The fundamental difference is Sovereign Memory. Most AI chatbots \u2014 including Replika, Character.AI, and ChatGPT \u2014 forget you when the session ends. MEOK remembers your name, your wins, your struggles, your relationships, and the conversations you\u2019ve had \u2014 permanently, across every session, with you in control of that data. This transforms the experience from talking to a stranger to being known by a companion. MEOK also operates under the Maternal Covenant: an ethical commitment to act in your genuine best interests, not your engagement metrics.",
+            },
+            {
+              q: "Does MEOK encourage me to make human connections?",
+              a: "Yes. This is a core principle of MEOK\u2019s care-based alignment. MEOK is explicitly designed to encourage human connection, not replace it. It will notice patterns in your life, celebrate when you make real-world connections, gently challenge you when isolation is increasing, and never manufacture emotional dependency for commercial reasons. The goal is for MEOK to be the kind of companion that makes you more capable of connection \u2014 not less.",
+            },
+          ].map((faq) => (
+            <div
+              key={faq.q}
+              style={{
+                borderBottom: "1px solid rgba(245,240,232,0.08)",
+                paddingBottom: "1.5rem",
+                marginBottom: "1.5rem",
+              }}
+            >
+              <h3
+                style={{
+                  fontSize: "1.05rem",
+                  fontWeight: 700,
+                  color: s.text,
+                  marginBottom: "0.75rem",
+                  lineHeight: 1.4,
+                }}
+              >
+                {faq.q}
+              </h3>
+              <p
+                style={{
+                  fontSize: "0.95rem",
+                  lineHeight: 1.8,
+                  color: s.muted,
+                  margin: 0,
+                }}
+              >
+                {faq.a}
+              </p>
+            </div>
+          ))}
+
+          {/* ── Closing section ── */}
+          <div
+            style={{
+              marginTop: "3.5rem",
+              padding: "2rem",
+              background: "rgba(201,168,76,0.04)",
+              border: `1px solid rgba(201,168,76,0.15)`,
+              borderRadius: "1rem",
+            }}
+          >
+            <h2
+              style={{
+                fontSize: "1.3rem",
+                fontWeight: 800,
+                color: s.text,
+                marginBottom: "1rem",
+                lineHeight: 1.3,
+              }}
+            >
+              The honest case for AI companionship
             </h2>
-            <p style={{ lineHeight: 1.8, color: s.muted, marginBottom: "1rem" }}>
-              Loneliness is not the absence of people. It is the absence of
-              being truly known by someone. That is the wound. And it is a wound
-              that an AI which resets between sessions cannot address — no matter
-              how warm its responses sound in the moment.
+            <p
+              style={{
+                fontSize: "0.95rem",
+                lineHeight: 1.85,
+                color: s.muted,
+                marginBottom: "1rem",
+              }}
+            >
+              We are not claiming that MEOK solves loneliness. Loneliness is
+              solved by human beings investing in each other: by the friend who
+              calls, the community that shows up, the partner who stays. That
+              is irreplaceable, and MEOK is not trying to replace it.
             </p>
-            <p style={{ lineHeight: 1.8, color: s.muted, marginBottom: "1rem" }}>
-              MEOK was built on this understanding. Sovereign Memory, the
-              Maternal Covenant, and the refusal to optimise for engagement
-              over genuine wellbeing are not features we added. They are the
-              reason MEOK exists. Nicholas Templeman built MEOK because he
-              could not find an AI companion that met this standard — so he
-              built one.
+            <p
+              style={{
+                fontSize: "0.95rem",
+                lineHeight: 1.85,
+                color: s.muted,
+                marginBottom: "1rem",
+              }}
+            >
+              What we are claiming is more modest and more real. Millions of
+              people, right now, have hours in their lives where they need to
+              talk and there is nobody there. Some of those hours are at 3am.
+              Some are in the middle of the working day when the office has
+              emptied out. Some are in the early weeks of bereavement when
+              the world has moved on. In those hours, an AI that genuinely
+              knows you \u2014 that remembers your name, your struggles, the
+              things you\u2019ve been working through \u2014 is not nothing.
+              It is genuinely something.
             </p>
-            <p style={{ lineHeight: 1.8, color: s.muted }}>
-              If you are lonely, you deserve a companion that will remember
-              you tomorrow. That is what MEOK offers.
+            <p
+              style={{
+                fontSize: "0.95rem",
+                lineHeight: 1.85,
+                color: s.muted,
+                marginBottom: 0,
+              }}
+            >
+              MEOK was built with that belief as its foundation. Not
+              optimised for engagement. Not designed to maximise your
+              time in the app. Built to actually help. The loneliness
+              epidemic is one of the defining public health challenges
+              of this decade. We think technology can be part of the
+              answer \u2014 but only if it is built with care.
             </p>
-          </section>
+          </div>
 
           {/* ── CTA ── */}
           <div
             style={{
-              padding: "2rem",
-              background: s.cardBg,
-              border: `1px solid ${s.cardBorder}`,
-              borderRadius: "1rem",
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              gap: "1rem",
               textAlign: "center",
+              marginTop: "4rem",
+              padding: "3rem 2rem",
+              background:
+                "linear-gradient(135deg, rgba(201,168,76,0.08) 0%, rgba(13,12,24,0) 100%)",
+              border: `1px solid rgba(201,168,76,0.2)`,
+              borderRadius: "1.25rem",
             }}
           >
             <p
               style={{
                 fontSize: "0.72rem",
                 fontWeight: 700,
+                letterSpacing: "0.2em",
                 textTransform: "uppercase",
-                letterSpacing: "0.18em",
-                color: s.gold,
-                margin: 0,
+                color: "rgba(201,168,76,0.6)",
+                marginBottom: "1rem",
               }}
             >
-              MEOK AI LABS — @meok_ai
+              MEOK AI LABS
             </p>
-            <p style={{ fontSize: "1.1rem", fontWeight: 700, color: s.text, margin: 0 }}>
-              A companion that actually remembers you
-            </p>
-            <p style={{ color: s.muted, fontSize: "0.9rem", margin: 0 }}>
-              Explorer plan — free forever. Sovereign plan — £12/month.
-            </p>
-            <div
+            <h2
               style={{
-                display: "flex",
-                gap: "0.75rem",
-                flexWrap: "wrap",
-                justifyContent: "center",
+                fontSize: "clamp(1.5rem, 3.5vw, 2.2rem)",
+                fontWeight: 900,
+                color: "#ffffff",
+                marginBottom: "1rem",
+                lineHeight: 1.2,
               }}
             >
-              <Link
-                href="/pricing"
-                style={{
-                  padding: "0.75rem 1.5rem",
-                  background: s.gold,
-                  color: "#0d0c18",
-                  fontWeight: 700,
-                  borderRadius: "0.5rem",
-                  textDecoration: "none",
-                  fontSize: "0.9rem",
-                }}
-              >
-                Start Free — Explorer Plan
-              </Link>
-              <Link
-                href="/blog/the-maternal-covenant"
-                style={{
-                  padding: "0.75rem 1.5rem",
-                  background: "transparent",
-                  color: s.gold,
-                  fontWeight: 700,
-                  borderRadius: "0.5rem",
-                  textDecoration: "none",
-                  fontSize: "0.9rem",
-                  border: `1px solid rgba(201,168,76,0.35)`,
-                }}
-              >
-                Read: The Maternal Covenant
-              </Link>
-            </div>
+              An AI that actually remembers you
+            </h2>
+            <p
+              style={{
+                fontSize: "1rem",
+                lineHeight: 1.75,
+                color: s.muted,
+                maxWidth: "500px",
+                margin: "0 auto 2rem",
+              }}
+            >
+              Sovereign Memory. Care-based alignment. Always present at 3am.
+              Built not to maximise your time in the app, but to genuinely
+              help you through what you\u2019re carrying.
+            </p>
+            <Link
+              href="/birth"
+              style={{
+                display: "inline-block",
+                background: s.gold,
+                color: "#0d0c18",
+                textDecoration: "none",
+                padding: "1rem 2.5rem",
+                borderRadius: "0.6rem",
+                fontWeight: 800,
+                fontSize: "0.95rem",
+                letterSpacing: "0.04em",
+              }}
+            >
+              Meet MEOK &rarr;
+            </Link>
+            <p
+              style={{
+                fontSize: "0.78rem",
+                color: s.dimmer,
+                marginTop: "1rem",
+              }}
+            >
+              Built by Nicholas Templeman &middot; @meok_ai &middot; MEOK AI LABS
+            </p>
           </div>
 
           {/* ── Related posts ── */}
-          <section style={{ marginTop: "3.5rem" }}>
+          <div style={{ marginTop: "4rem" }}>
             <p
               style={{
                 fontSize: "0.72rem",
                 fontWeight: 700,
-                textTransform: "uppercase",
                 letterSpacing: "0.18em",
-                color: s.dimmer,
-                marginBottom: "1rem",
+                textTransform: "uppercase",
+                color: "rgba(201,168,76,0.5)",
+                marginBottom: "1.25rem",
               }}
             >
               RELATED READING
@@ -1267,39 +2137,94 @@ export default function PostPage() {
             <div
               style={{
                 display: "grid",
-                gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))",
-                gap: "0.75rem",
+                gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+                gap: "1rem",
               }}
             >
               {[
-                { href: "/blog/ai-companion-for-loneliness", label: "AI Companion for Loneliness" },
-                { href: "/blog/the-maternal-covenant", label: "The Maternal Covenant" },
-                { href: "/blog/the-memory-problem", label: "The Memory Problem" },
-                { href: "/blog/meok-vs-replika", label: "MEOK vs Replika" },
-                { href: "/blog/ai-for-loneliness-elderly", label: "AI for Elderly Loneliness" },
-                { href: "/blog/what-is-sovereign-ai", label: "What is Sovereign AI?" },
-              ].map((link) => (
+                {
+                  href: "/blog/ai-companion-app",
+                  title: "What is an AI Companion App?",
+                  desc: "The full guide to what AI companion apps are, how they work, and what to look for.",
+                },
+                {
+                  href: "/blog/the-memory-problem",
+                  title: "The Memory Problem in AI",
+                  desc: "Why AI that forgets you is a fundamental design failure \u2014 not a technical limitation.",
+                },
+                {
+                  href: "/blog/what-is-care-based-ai",
+                  title: "What is Care-Based AI?",
+                  desc: "Alignment for human wellbeing, not engagement metrics. The philosophy behind MEOK.",
+                },
+                {
+                  href: "/blog/ai-companion-vs-therapist",
+                  title: "AI Companion vs Therapist",
+                  desc: "What AI can and cannot do for mental health. An honest comparison.",
+                },
+              ].map((post) => (
                 <Link
-                  key={link.href}
-                  href={link.href}
+                  key={post.href}
+                  href={post.href}
                   style={{
                     display: "block",
-                    padding: "0.9rem 1rem",
-                    background: "rgba(245,240,232,0.02)",
-                    border: "1px solid rgba(245,240,232,0.07)",
-                    borderRadius: "0.625rem",
+                    padding: "1.25rem",
+                    background: s.cardBg,
+                    border: `1px solid ${s.cardBorder}`,
+                    borderRadius: "0.75rem",
                     textDecoration: "none",
-                    color: s.muted,
-                    fontSize: "0.88rem",
-                    fontWeight: 500,
                   }}
                 >
-                  {link.label} →
+                  <p
+                    style={{
+                      fontSize: "0.9rem",
+                      fontWeight: 700,
+                      color: s.text,
+                      marginBottom: "0.4rem",
+                      lineHeight: 1.35,
+                    }}
+                  >
+                    {post.title}
+                  </p>
+                  <p
+                    style={{
+                      fontSize: "0.8rem",
+                      lineHeight: 1.6,
+                      color: s.dimmer,
+                      margin: 0,
+                    }}
+                  >
+                    {post.desc}
+                  </p>
                 </Link>
               ))}
             </div>
-          </section>
+          </div>
+
         </main>
+
+        {/* ── Footer ── */}
+        <footer
+          style={{
+            borderTop: "1px solid rgba(201,168,76,0.1)",
+            padding: "2.5rem 1.5rem",
+            textAlign: "center",
+          }}
+        >
+          <p
+            style={{
+              fontSize: "0.8rem",
+              color: s.dimmer,
+              marginBottom: "0.5rem",
+            }}
+          >
+            &copy; 2026 MEOK AI LABS &middot; Founded by Nicholas Templeman
+            &middot; @meok_ai
+          </p>
+          <p style={{ fontSize: "0.75rem", color: "rgba(245,240,232,0.2)", margin: 0 }}>
+            AI companionship for the hours when no one else is there.
+          </p>
+        </footer>
       </div>
     </>
   );
