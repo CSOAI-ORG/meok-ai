@@ -233,6 +233,18 @@ const POSTS = [
     featured: false,
   },
   {
+    slug: "ai-for-loneliness-elderly",
+    title: "AI for Loneliness: Can Technology Genuinely Help You Feel Less Alone?",
+    excerpt:
+      "3.8 million older people in the UK are often lonely. An AI that remembers you, checks in daily, and never cancels is not a replacement for human connection — but it might be the bridge that makes it easier to reach.",
+    date: "March 24, 2026",
+    readTime: "11 min read",
+    tag: "Companion",
+    tagColor: "#a78bfa",
+    category: "guides",
+    featured: false,
+  },
+  {
     slug: "ai-for-burnout",
     title: "AI for Burnout: How an AI Companion Helps You Recover and Rebuild",
     excerpt:
