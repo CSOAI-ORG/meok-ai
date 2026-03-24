@@ -293,6 +293,18 @@ const POSTS = [
     featured: false,
   },
   {
+    slug: "ai-for-diabetes",
+    title: "AI for Diabetes: Daily Emotional Support and Pattern Tracking",
+    excerpt:
+      "4.4 million people in the UK have diabetes — and up to 45% experience diabetes distress. An AI that tracks your patterns without judgment and supports you between clinic appointments is a different kind of health companion.",
+    date: "March 24, 2026",
+    readTime: "10 min read",
+    tag: "Wellbeing",
+    tagColor: "#22c55e",
+    category: "guides",
+    featured: false,
+  },
+  {
     slug: "ai-for-burnout",
     title: "AI for Burnout: How an AI Companion Helps You Recover and Rebuild",
     excerpt:
