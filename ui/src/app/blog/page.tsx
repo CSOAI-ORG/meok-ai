@@ -2834,6 +2834,18 @@ const POSTS = [
     category: "professional",
     featured: false,
   },
+  {
+    slug: "ai-memory-vs-no-memory",
+    title: "AI With Memory vs Without: Why Starting Over Every Conversation Breaks the Relationship",
+    excerpt:
+      "Every time you open ChatGPT, you are a stranger. It has forgotten you completely. MEOK's sovereign memory changes the fundamental nature of what an AI relationship can be — from a tool you use to a companion that knows you.",
+    date: "March 24, 2026",
+    readTime: "10 min read",
+    tag: "Research",
+    tagColor: "#7c6fcd",
+    category: "research",
+    featured: false,
+  },
 ];
 
 // ── Category filter tabs ──────────────────────────────────────────────────────
