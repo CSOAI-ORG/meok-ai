@@ -2642,6 +2642,18 @@ const POSTS = [
     category: "product",
     featured: true,
   },
+  {
+    slug: "ralph-mode-explained",
+    title: "Ralph Mode Explained: MEOK\u2019s Deep Focus Protocol",
+    excerpt:
+      "Ralph is the eternal 80s DJ who played through the night and never looked up. Ralph Mode is MEOK\u2019s deep work protocol — you brief it on your goal, set your sprint, and it locks in with you. Available on Sovereign tier.",
+    date: "March 24, 2026",
+    readTime: "9 min read",
+    tag: "Productivity",
+    tagColor: "#7c6fcd",
+    category: "productivity",
+    featured: false,
+  },
 ];
 
 // ── Category filter tabs ──────────────────────────────────────────────────────
