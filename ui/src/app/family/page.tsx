@@ -625,11 +625,11 @@ export default function FamilyPage() {
             <div className="rounded-3xl border border-[#c9a84c]/30 p-8 flex flex-col gap-6" style={{ background: "rgba(201,168,76,0.05)" }}>
               <div>
                 <div className="text-5xl font-black text-white mb-1">£29<span className="text-lg text-white/40 font-normal">/mo</span></div>
-                <div className="text-sm text-white/40">or £249/year · save £99</div>
+                <div className="text-sm text-white/40">or £290/year · save £58</div>
               </div>
               <ul className="space-y-3">
                 {[
-                  "Up to 6 family members",
+                  "Up to 5 family members",
                   "Individual AI companions per member",
                   "Shared Guardian dashboard",
                   "Parent alert system",
@@ -693,7 +693,7 @@ export default function FamilyPage() {
             What does MEOK Family tier include?
           </h2>
           <p className="text-white/55 leading-relaxed text-sm sm:text-base">
-            The MEOK Family tier costs £29 per month and supports up to 6 family members under one plan. Each member gets their own private AI companion with a sovereign memory vault — children get age-appropriate companions with School-Safe Mode and Guardian protection, elderly relatives get scam detection and pattern-of-life monitoring, and parents get a shared dashboard showing the family&apos;s wellbeing at a glance. A family morning brief runs each day, surfacing who needs attention, what&apos;s on the calendar, and quiet alerts when someone might need a check-in. All data is encrypted, COPPA and GDPR compliant, and never sold.
+            The MEOK Family tier costs £29 per month and supports up to 5 family members under one plan. Each member gets their own private AI companion with a sovereign memory vault — children get age-appropriate companions with School-Safe Mode and Guardian protection, elderly relatives get scam detection and pattern-of-life monitoring, and parents get a shared dashboard showing the family&apos;s wellbeing at a glance. A family morning brief runs each day, surfacing who needs attention, what&apos;s on the calendar, and quiet alerts when someone might need a check-in. All data is encrypted, COPPA and GDPR compliant, and never sold.
           </p>
         </div>
       </section>
