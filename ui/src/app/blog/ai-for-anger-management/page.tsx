@@ -4,14 +4,14 @@ import Link from 'next/link'
 // ── Metadata ───────────────────────────────────────────────────────────────────
 
 export const metadata: Metadata = {
-  title: 'AI for Anger Management: Processing Rage Before It Costs You | MEOK AI LABS',
+  title: 'AI for Anger Management: Understanding Your Triggers and Reclaiming Control | MEOK AI LABS',
   description:
-    'Anger is information, not a character flaw. MEOK uses Healer, Trickster, and Pioneer archetypes to help you process anger safely — tracking triggers over time with Sovereign Memory so patterns become visible before they become damage.',
+    'Anger is a signal, not a flaw. MEOK helps you decode the anger cycle, identify recurring triggers through Sovereign Memory, rehearse assertive responses, and process incidents before they cost you relationships or self-respect.',
   alternates: { canonical: 'https://meok.ai/blog/ai-for-anger-management' },
   openGraph: {
-    title: 'AI for Anger Management: Processing Rage Before It Costs You',
+    title: 'AI for Anger Management: Understanding Your Triggers and Reclaiming Control',
     description:
-      'Anger is information, not a character flaw. MEOK helps you process anger safely — tracking triggers, reframing situations, and finding action before the emotion costs you something real.',
+      'Anger is a signal, not a flaw. MEOK helps you decode the anger cycle, identify recurring triggers, rehearse assertive responses, and process incidents — before they cost you something real.',
     type: 'article',
     publishedTime: '2026-03-24',
     authors: ['Nicholas Templeman'],
@@ -19,20 +19,20 @@ export const metadata: Metadata = {
     siteName: 'MEOK.AI',
     images: [
       {
-        url: 'https://meok.ai/api/og?title=AI+for+Anger+Management%3A+Processing+Rage+Before+It+Costs+You&desc=Anger+is+information%2C+not+a+character+flaw',
+        url: 'https://meok.ai/api/og?title=AI+for+Anger+Management%3A+Understanding+Your+Triggers&desc=Anger+is+a+signal%2C+not+a+flaw.+MEOK+helps+you+decode+the+anger+cycle.',
         width: 1200,
         height: 630,
-        alt: 'AI for Anger Management: Processing Rage Before It Costs You | MEOK AI LABS',
+        alt: 'AI for Anger Management: Understanding Your Triggers and Reclaiming Control | MEOK AI LABS',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'AI for Anger Management: Processing Rage Before It Costs You',
+    title: 'AI for Anger Management: Reclaiming Control of Your Triggers',
     description:
-      'Anger is information, not a character flaw. MEOK tracks your triggers, reframes situations, and helps you move — without validating toxic venting.',
+      'Anger is a signal, not a flaw. MEOK tracks triggers over time, guides breathing and reframing, and helps you rehearse assertive responses. From MEOK AI LABS.',
     images: [
-      'https://meok.ai/api/og?title=AI+for+Anger+Management%3A+Processing+Rage+Before+It+Costs+You&desc=Anger+is+information%2C+not+a+character+flaw',
+      'https://meok.ai/api/og?title=AI+for+Anger+Management%3A+Understanding+Your+Triggers&desc=Anger+is+a+signal%2C+not+a+flaw.+MEOK+helps+you+decode+the+anger+cycle.',
     ],
   },
 }
@@ -42,9 +42,10 @@ export const metadata: Metadata = {
 const articleJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Article',
-  headline: 'AI for Anger Management: Processing Rage Before It Costs You',
+  headline:
+    'AI for Anger Management: Understanding Your Triggers and Reclaiming Control',
   description:
-    'Anger is information, not a character flaw. A guide to how MEOK AI uses Healer, Trickster, and Pioneer archetypes — plus Sovereign Memory — to help you process and manage anger before it damages relationships, careers, and wellbeing.',
+    'Anger is a signal, not a flaw. MEOK helps you decode the anger cycle, identify recurring triggers through Sovereign Memory, rehearse assertive responses, and process incidents before they cost you relationships or self-respect.',
   datePublished: '2026-03-24',
   dateModified: '2026-03-24',
   url: 'https://meok.ai/blog/ai-for-anger-management',
@@ -63,15 +64,6 @@ const articleJsonLd = {
     '@type': 'WebPage',
     '@id': 'https://meok.ai/blog/ai-for-anger-management',
   },
-  keywords: [
-    'AI for anger management',
-    'AI to help with anger',
-    'AI anger support',
-    'managing anger with AI',
-    'anger management app',
-    'emotional regulation AI',
-    'sovereign AI mental health',
-  ],
 }
 
 // ── JSON-LD: FAQPage ───────────────────────────────────────────────────────────
@@ -82,58 +74,42 @@ const faqJsonLd = {
   mainEntity: [
     {
       '@type': 'Question',
-      name: 'Can AI actually help with anger management?',
+      name: 'Can AI help with anger management?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Yes — with clear limits. AI can serve as a real-time sounding board in the critical window between a trigger and a response, help you identify patterns across time, offer somatic grounding techniques, and reframe situations in ways that de-escalate rather than amplify. What AI cannot do is replace a licensed therapist, diagnose underlying conditions like intermittent explosive disorder, or intervene in physical situations. MEOK is designed to be a consistent, non-judgmental presence that helps you process anger privately before it spills into your relationships or workplace.',
+        text: 'Yes. AI companions like MEOK can help you identify recurring triggers, guide evidence-based techniques such as box breathing and cognitive reframing in real time, and debrief incidents after they happen. AI is a between-session supplement, not a replacement for a qualified therapist when anger is severe or causing harm.',
       },
     },
     {
       '@type': 'Question',
-      name: 'What are the different types of anger and how does MEOK approach each one?',
+      name: 'What is the anger cycle?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'MEOK recognises five main anger types: righteous anger rooted in genuine injustice, frustrated anger caused by repeated obstacles, hurt-based anger that follows betrayal or disappointment, fear-based anger where anxiety converts to rage, and accumulated anger that has been compressed over months or years. Each type responds to different support. Righteous anger often needs channelling into constructive action. Frustrated anger benefits from obstacle reframing. Hurt-based anger needs space for the grief underneath it. Fear-based anger needs somatic grounding first. Accumulated anger needs careful unpacking rather than venting. MEOK\'s archetype system — Healer, Trickster, Pioneer — allows the right mode to meet the right anger type.',
+        text: 'The anger cycle is the sequence of trigger, cognitive appraisal, physiological arousal, behavioural response, and aftermath. Understanding each stage allows you to intervene before behaviour causes damage. MEOK can help you map your personal version of this cycle and notice where you consistently get stuck.',
       },
     },
     {
       '@type': 'Question',
-      name: 'Is using AI for anger management safe for people with a history of domestic situations?',
+      name: 'How does MEOK remember my anger triggers?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'There is an important distinction between processing anger and enacting it on others. MEOK is designed to help with the former — private, internal processing. It will not validate patterns of behaviour that harm other people, and it is governed by the Maternal Covenant, which means it will always signpost to professional support when a conversation moves beyond what AI should handle. If you or someone you know is in a situation involving domestic abuse, the National Domestic Abuse Helpline (0808 2000 247) and Refuge (refuge.org.uk) provide free, confidential specialist support 24 hours a day.',
+        text: 'MEOK uses Sovereign Memory — a private, on-device memory layer — to store notes from your conversations over weeks and months. It can surface patterns such as \u201cwork criticism is your most common trigger\u201d or \u201canger incidents cluster on Sunday evenings\u201d without ever sending your data to a cloud model for training.',
       },
     },
     {
       '@type': 'Question',
-      name: 'Why do men often struggle specifically with anger, and can AI help with that?',
+      name: 'What is rejection-sensitive dysphoria?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Culturally, men are frequently socialised to suppress most emotions — grief, fear, hurt, loneliness — but anger is often the one expression that is permitted or even expected. This means that for many men, anger becomes the exit valve for a much broader emotional landscape. The result is that anger episodes can be disproportionate to the immediate situation because they carry the weight of everything else that never got expressed. MEOK can help by creating a private, non-judgmental space to access what is underneath the anger — the hurt, the fear, the exhaustion — without the social stakes that can make that feel impossible face-to-face.',
+        text: 'Rejection-sensitive dysphoria (RSD) is an intense, often overwhelming emotional reaction to perceived rejection or criticism. It is common in ADHD and autism. The emotional spike can look like explosive anger but originates in neurological pain rather than a choice. Understanding RSD changes how you interpret and work with that anger.',
       },
     },
     {
       '@type': 'Question',
-      name: 'What is Sovereign Memory and how does it help with anger triggers?',
+      name: 'Will MEOK judge me for my anger?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Sovereign Memory is MEOK\'s privacy-first long-term memory system. Rather than each conversation starting from zero, MEOK builds a persistent picture of your patterns over time — with full transparency about what is stored and your ability to delete it at any point. For anger specifically, this means MEOK can surface patterns you might not consciously notice: that your anger spikes every Sunday evening before a work week, that family phone calls reliably precede difficult moods, that your threshold drops significantly when you are sleep-deprived. That kind of longitudinal self-knowledge is not available from a single therapy session or a one-off mindfulness exercise — it requires time and memory.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'How does MEOK avoid just enabling venting without helping me actually change?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'MEOK is explicitly anti-sycophantic by design. It will not simply agree with everything you say, validate every grievance as justified, or let you spiral deeper into a vent without forward motion. The Maternal Covenant — the ethical framework underpinning MEOK — means it holds you with care while also holding you to account. In practice, this looks like genuine validation of your emotional experience followed by gentle but direct movement toward understanding, reframing, and constructive action. Venting that entrenches resentment and confirms bias is not support — it is amplification — and MEOK is built to know the difference.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'How does the 3-minute window work and why does it matter for anger?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Neuroscience research on anger suggests that the acute physiological arousal from a trigger typically lasts around 90 seconds to three minutes. After that, any continuation of the anger state is the result of your thoughts re-triggering the physical response — not the original stimulus. The most high-leverage moment for intervention is in that window. MEOK is designed to be accessible instantly — a private space where you can dump the immediate intensity, receive grounding support from the Healer archetype, and begin the cognitive reframe process with the Trickster before you act. The goal is not to suppress the feeling but to prevent the three-minute window from becoming a three-hour ruminative spiral or a damaging interaction.',
+        text: 'No. MEOK is governed by the Maternal Covenant, which means it holds space without judgment while also refusing to enable harm. You can describe your worst moments honestly and MEOK will help you understand them rather than shame you for having them.',
       },
     },
   ],
@@ -145,519 +121,417 @@ const s = {
   page: {
     background: '#0d0c18',
     color: '#f5f0e8',
-    fontFamily: "'Georgia', serif",
+    fontFamily: "'Inter', 'Helvetica Neue', Arial, sans-serif",
     minHeight: '100vh',
-    padding: '0',
-    margin: '0',
-  } as React.CSSProperties,
-
-  header: {
-    borderBottom: '1px solid #1e1d2e',
-    padding: '1.5rem 2rem',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    maxWidth: '1200px',
-    margin: '0 auto',
-  } as React.CSSProperties,
-
-  logoLink: {
-    color: '#c9a84c',
-    textDecoration: 'none',
-    fontFamily: "'Georgia', serif",
-    fontSize: '1.1rem',
-    fontWeight: '700',
-    letterSpacing: '0.05em',
-  } as React.CSSProperties,
-
-  navLink: {
-    color: '#9e9e9e',
-    textDecoration: 'none',
-    fontSize: '0.875rem',
-    marginLeft: '1.5rem',
-    transition: 'color 0.2s',
   } as React.CSSProperties,
 
   hero: {
-    maxWidth: '820px',
+    maxWidth: '780px',
     margin: '0 auto',
-    padding: '4rem 2rem 2rem',
-    borderBottom: '1px solid #1e1d2e',
+    padding: '80px 24px 48px',
   } as React.CSSProperties,
 
   eyebrow: {
-    color: '#c9a84c',
-    fontFamily: "'Georgia', serif",
-    fontSize: '0.8rem',
-    fontWeight: '700',
-    letterSpacing: '0.15em',
+    fontSize: '13px',
+    letterSpacing: '0.12em',
     textTransform: 'uppercase' as const,
-    marginBottom: '1rem',
-    display: 'block',
+    color: '#c9a84c',
+    marginBottom: '20px',
+    fontWeight: 600,
   } as React.CSSProperties,
 
   h1: {
+    fontSize: 'clamp(28px, 4.5vw, 48px)',
+    fontWeight: 800,
+    lineHeight: 1.12,
     color: '#f5f0e8',
-    fontFamily: "'Georgia', serif",
-    fontSize: 'clamp(2rem, 5vw, 3.25rem)',
-    fontWeight: '700',
-    lineHeight: '1.15',
-    marginBottom: '1.5rem',
-    letterSpacing: '-0.01em',
+    marginBottom: '24px',
+    letterSpacing: '-0.02em',
   } as React.CSSProperties,
 
-  heroDeck: {
-    color: '#9e9e9e',
-    fontSize: '1.15rem',
-    lineHeight: '1.7',
-    marginBottom: '2rem',
-    fontFamily: "'Georgia', serif",
+  lede: {
+    fontSize: 'clamp(16px, 2vw, 20px)',
+    lineHeight: 1.65,
+    color: 'rgba(245,240,232,0.85)',
+    marginBottom: '40px',
+    maxWidth: '640px',
   } as React.CSSProperties,
 
   meta: {
+    fontSize: '13px',
+    color: 'rgba(245,240,232,0.5)',
     display: 'flex',
-    gap: '2rem',
+    gap: '16px',
     flexWrap: 'wrap' as const,
-    fontSize: '0.8rem',
-    color: '#9e9e9e',
-    paddingTop: '1.5rem',
-    borderTop: '1px solid #1e1d2e',
+    alignItems: 'center',
   } as React.CSSProperties,
 
-  metaItem: {
-    display: 'flex',
-    flexDirection: 'column' as const,
-    gap: '0.2rem',
-  } as React.CSSProperties,
-
-  metaLabel: {
+  metaDot: {
     color: '#c9a84c',
-    fontSize: '0.7rem',
-    letterSpacing: '0.12em',
-    textTransform: 'uppercase' as const,
-    fontFamily: "'Georgia', serif",
+  } as React.CSSProperties,
+
+  divider: {
+    border: 'none',
+    borderTop: '1px solid rgba(201,168,76,0.15)',
+    margin: '0',
   } as React.CSSProperties,
 
   article: {
-    maxWidth: '820px',
+    maxWidth: '780px',
     margin: '0 auto',
-    padding: '3rem 2rem',
+    padding: '56px 24px 80px',
   } as React.CSSProperties,
 
   h2: {
-    color: '#c9a84c',
-    fontFamily: "'Georgia', serif",
-    fontSize: 'clamp(1.35rem, 3vw, 1.9rem)',
-    fontWeight: '700',
-    lineHeight: '1.25',
-    marginTop: '3.5rem',
-    marginBottom: '1.25rem',
-    letterSpacing: '-0.01em',
+    fontSize: 'clamp(20px, 2.8vw, 28px)',
+    fontWeight: 700,
+    color: '#f5f0e8',
+    marginTop: '64px',
+    marginBottom: '20px',
+    lineHeight: 1.25,
+    letterSpacing: '-0.015em',
   } as React.CSSProperties,
 
   h3: {
-    color: '#f5f0e8',
-    fontFamily: "'Georgia', serif",
-    fontSize: '1.2rem',
-    fontWeight: '700',
-    marginTop: '2.5rem',
-    marginBottom: '0.85rem',
-    lineHeight: '1.3',
+    fontSize: 'clamp(16px, 2vw, 20px)',
+    fontWeight: 700,
+    color: '#c9a84c',
+    marginTop: '40px',
+    marginBottom: '14px',
+    lineHeight: 1.3,
   } as React.CSSProperties,
 
   p: {
-    color: '#f5f0e8',
-    fontFamily: "'Georgia', serif",
-    fontSize: '1.05rem',
-    lineHeight: '1.8',
-    marginBottom: '1.5rem',
+    fontSize: 'clamp(15px, 1.6vw, 17px)',
+    lineHeight: 1.75,
+    color: 'rgba(245,240,232,0.88)',
+    marginBottom: '24px',
   } as React.CSSProperties,
 
-  pMuted: {
-    color: '#9e9e9e',
-    fontFamily: "'Georgia', serif",
-    fontSize: '0.95rem',
-    lineHeight: '1.8',
-    marginBottom: '1.5rem',
+  atomicAnswer: {
+    fontSize: 'clamp(15px, 1.6vw, 17px)',
+    lineHeight: 1.75,
+    color: '#f5f0e8',
+    marginBottom: '24px',
+    padding: '20px 24px',
+    background: 'rgba(201,168,76,0.07)',
+    borderLeft: '3px solid #c9a84c',
+    borderRadius: '0 8px 8px 0',
   } as React.CSSProperties,
 
   ul: {
-    color: '#f5f0e8',
-    fontFamily: "'Georgia', serif",
-    fontSize: '1.05rem',
-    lineHeight: '1.8',
-    marginBottom: '1.5rem',
-    paddingLeft: '1.5rem',
+    paddingLeft: '24px',
+    marginBottom: '28px',
   } as React.CSSProperties,
 
   li: {
-    marginBottom: '0.6rem',
+    fontSize: 'clamp(15px, 1.6vw, 17px)',
+    lineHeight: 1.75,
+    color: 'rgba(245,240,232,0.88)',
+    marginBottom: '10px',
   } as React.CSSProperties,
 
-  blockquote: {
-    borderLeft: '3px solid #c9a84c',
-    margin: '2rem 0',
-    padding: '1rem 1.5rem',
-    background: '#12111f',
-    borderRadius: '0 6px 6px 0',
+  callout: {
+    background: 'rgba(201,168,76,0.08)',
+    border: '1px solid rgba(201,168,76,0.25)',
+    borderRadius: '12px',
+    padding: '28px 32px',
+    marginTop: '40px',
+    marginBottom: '40px',
   } as React.CSSProperties,
 
-  bqText: {
-    color: '#f5f0e8',
-    fontFamily: "'Georgia', serif",
-    fontSize: '1.05rem',
-    lineHeight: '1.7',
-    fontStyle: 'italic',
-    margin: '0',
-  } as React.CSSProperties,
-
-  archetypeCard: {
-    background: '#12111f',
-    border: '1px solid #1e1d2e',
-    borderRadius: '10px',
-    padding: '1.5rem',
-    marginBottom: '1.25rem',
-  } as React.CSSProperties,
-
-  archetypeTitle: {
+  calloutTitle: {
+    fontSize: '15px',
+    fontWeight: 700,
     color: '#c9a84c',
-    fontFamily: "'Georgia', serif",
-    fontSize: '1.05rem',
-    fontWeight: '700',
-    marginBottom: '0.6rem',
-  } as React.CSSProperties,
-
-  archetypeBody: {
-    color: '#f5f0e8',
-    fontFamily: "'Georgia', serif",
-    fontSize: '0.975rem',
-    lineHeight: '1.7',
-    margin: '0',
-  } as React.CSSProperties,
-
-  angerTypeGrid: {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
-    gap: '1rem',
-    margin: '2rem 0',
-  } as React.CSSProperties,
-
-  angerCard: {
-    background: '#12111f',
-    border: '1px solid #1e1d2e',
-    borderRadius: '10px',
-    padding: '1.25rem 1.5rem',
-  } as React.CSSProperties,
-
-  angerCardTitle: {
-    color: '#c9a84c',
-    fontFamily: "'Georgia', serif",
-    fontSize: '0.95rem',
-    fontWeight: '700',
-    marginBottom: '0.5rem',
-    display: 'block',
-  } as React.CSSProperties,
-
-  angerCardBody: {
-    color: '#9e9e9e',
-    fontFamily: "'Georgia', serif",
-    fontSize: '0.9rem',
-    lineHeight: '1.65',
-    margin: '0',
-  } as React.CSSProperties,
-
-  safetyBox: {
-    background: '#0f0e1c',
-    border: '1px solid #c9a84c',
-    borderRadius: '10px',
-    padding: '1.75rem 2rem',
-    margin: '2.5rem 0',
-  } as React.CSSProperties,
-
-  safetyTitle: {
-    color: '#c9a84c',
-    fontFamily: "'Georgia', serif",
-    fontSize: '1rem',
-    fontWeight: '700',
-    marginBottom: '0.75rem',
+    marginBottom: '10px',
     letterSpacing: '0.05em',
     textTransform: 'uppercase' as const,
   } as React.CSSProperties,
 
-  safetyText: {
-    color: '#f5f0e8',
-    fontFamily: "'Georgia', serif",
-    fontSize: '0.975rem',
-    lineHeight: '1.75',
-    marginBottom: '0.75rem',
+  calloutText: {
+    fontSize: 'clamp(15px, 1.6vw, 17px)',
+    lineHeight: 1.7,
+    color: 'rgba(245,240,232,0.88)',
+    margin: 0,
   } as React.CSSProperties,
 
-  safetyLink: {
+  cycleGrid: {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))',
+    gap: '16px',
+    marginTop: '24px',
+    marginBottom: '40px',
+  } as React.CSSProperties,
+
+  cycleCard: {
+    background: 'rgba(245,240,232,0.04)',
+    border: '1px solid rgba(201,168,76,0.18)',
+    borderRadius: '10px',
+    padding: '20px',
+  } as React.CSSProperties,
+
+  cycleCardNumber: {
+    fontSize: '28px',
+    fontWeight: 800,
     color: '#c9a84c',
-    textDecoration: 'underline',
-    textDecorationColor: 'rgba(201,168,76,0.4)',
-    textUnderlineOffset: '3px',
+    lineHeight: 1,
+    marginBottom: '8px',
   } as React.CSSProperties,
 
-  hr: {
-    border: 'none',
-    borderTop: '1px solid #1e1d2e',
-    margin: '3rem 0',
+  cycleCardTitle: {
+    fontSize: '14px',
+    fontWeight: 700,
+    color: '#f5f0e8',
+    marginBottom: '8px',
+    textTransform: 'uppercase' as const,
+    letterSpacing: '0.06em',
+  } as React.CSSProperties,
+
+  cycleCardBody: {
+    fontSize: '13px',
+    lineHeight: 1.6,
+    color: 'rgba(245,240,232,0.65)',
+    margin: 0,
+  } as React.CSSProperties,
+
+  techniqueGrid: {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))',
+    gap: '20px',
+    marginTop: '24px',
+    marginBottom: '40px',
+  } as React.CSSProperties,
+
+  techniqueCard: {
+    background: 'rgba(245,240,232,0.04)',
+    border: '1px solid rgba(245,240,232,0.1)',
+    borderRadius: '12px',
+    padding: '24px',
+  } as React.CSSProperties,
+
+  techniqueCardTitle: {
+    fontSize: '15px',
+    fontWeight: 700,
+    color: '#c9a84c',
+    marginBottom: '10px',
+  } as React.CSSProperties,
+
+  techniqueCardBody: {
+    fontSize: '14px',
+    lineHeight: 1.65,
+    color: 'rgba(245,240,232,0.75)',
+    margin: 0,
+  } as React.CSSProperties,
+
+  presentationGrid: {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))',
+    gap: '20px',
+    marginTop: '24px',
+    marginBottom: '40px',
+  } as React.CSSProperties,
+
+  presentationCard: {
+    background: 'rgba(245,240,232,0.04)',
+    border: '1px solid rgba(245,240,232,0.1)',
+    borderRadius: '12px',
+    padding: '24px',
+  } as React.CSSProperties,
+
+  presentationCardTitle: {
+    fontSize: '15px',
+    fontWeight: 700,
+    color: '#f5f0e8',
+    marginBottom: '10px',
+  } as React.CSSProperties,
+
+  presentationCardBody: {
+    fontSize: '14px',
+    lineHeight: 1.65,
+    color: 'rgba(245,240,232,0.75)',
+    margin: 0,
   } as React.CSSProperties,
 
   faqSection: {
-    marginTop: '3.5rem',
+    marginTop: '72px',
   } as React.CSSProperties,
 
   faqItem: {
-    borderBottom: '1px solid #1e1d2e',
-    paddingBottom: '2rem',
-    marginBottom: '2rem',
+    borderTop: '1px solid rgba(245,240,232,0.1)',
+    paddingTop: '32px',
+    marginBottom: '32px',
   } as React.CSSProperties,
 
-  faqQuestion: {
+  faqQ: {
+    fontSize: 'clamp(17px, 2vw, 20px)',
+    fontWeight: 700,
     color: '#f5f0e8',
-    fontFamily: "'Georgia', serif",
-    fontSize: '1.1rem',
-    fontWeight: '700',
-    lineHeight: '1.3',
-    marginBottom: '0.85rem',
+    marginBottom: '16px',
+    lineHeight: 1.3,
   } as React.CSSProperties,
 
-  faqAnswer: {
-    color: '#9e9e9e',
-    fontFamily: "'Georgia', serif",
-    fontSize: '0.975rem',
-    lineHeight: '1.8',
+  faqA: {
+    fontSize: 'clamp(15px, 1.6vw, 17px)',
+    lineHeight: 1.75,
+    color: 'rgba(245,240,232,0.82)',
+    margin: 0,
   } as React.CSSProperties,
 
-  ctaBox: {
-    background: 'linear-gradient(135deg, #12111f 0%, #0f0e1c 100%)',
-    border: '1px solid #c9a84c',
-    borderRadius: '12px',
-    padding: '2.5rem',
-    margin: '3.5rem 0 2rem',
+  cta: {
+    background: 'linear-gradient(135deg, rgba(201,168,76,0.12) 0%, rgba(201,168,76,0.04) 100%)',
+    border: '1px solid rgba(201,168,76,0.3)',
+    borderRadius: '16px',
+    padding: '48px 40px',
     textAlign: 'center' as const,
+    marginTop: '80px',
   } as React.CSSProperties,
 
-  ctaEyebrow: {
-    color: '#c9a84c',
-    fontSize: '0.75rem',
-    letterSpacing: '0.18em',
+  ctaLabel: {
+    fontSize: '12px',
+    fontWeight: 700,
+    letterSpacing: '0.14em',
     textTransform: 'uppercase' as const,
-    fontFamily: "'Georgia', serif",
-    marginBottom: '1rem',
-    display: 'block',
+    color: '#c9a84c',
+    marginBottom: '16px',
   } as React.CSSProperties,
 
   ctaHeading: {
+    fontSize: 'clamp(22px, 3vw, 32px)',
+    fontWeight: 800,
     color: '#f5f0e8',
-    fontFamily: "'Georgia', serif",
-    fontSize: 'clamp(1.3rem, 3vw, 1.75rem)',
-    fontWeight: '700',
-    marginBottom: '1rem',
-    lineHeight: '1.3',
+    marginBottom: '16px',
+    lineHeight: 1.2,
   } as React.CSSProperties,
 
   ctaBody: {
-    color: '#9e9e9e',
-    fontFamily: "'Georgia', serif",
-    fontSize: '1rem',
-    lineHeight: '1.7',
-    marginBottom: '2rem',
+    fontSize: 'clamp(15px, 1.6vw, 17px)',
+    lineHeight: 1.7,
+    color: 'rgba(245,240,232,0.75)',
+    marginBottom: '36px',
     maxWidth: '480px',
-    margin: '0 auto 2rem',
+    marginLeft: 'auto',
+    marginRight: 'auto',
   } as React.CSSProperties,
 
   ctaButton: {
     display: 'inline-block',
     background: '#c9a84c',
     color: '#0d0c18',
-    fontFamily: "'Georgia', serif",
-    fontSize: '0.9rem',
-    fontWeight: '700',
-    letterSpacing: '0.08em',
-    textTransform: 'uppercase' as const,
-    padding: '0.9rem 2.5rem',
-    borderRadius: '6px',
+    fontSize: '15px',
+    fontWeight: 700,
+    padding: '14px 36px',
+    borderRadius: '8px',
     textDecoration: 'none',
-    transition: 'opacity 0.2s',
+    letterSpacing: '0.04em',
   } as React.CSSProperties,
 
-  relatedSection: {
-    marginTop: '3rem',
-    paddingTop: '3rem',
-    borderTop: '1px solid #1e1d2e',
-  } as React.CSSProperties,
-
-  relatedTitle: {
-    color: '#9e9e9e',
-    fontFamily: "'Georgia', serif",
-    fontSize: '0.75rem',
-    letterSpacing: '0.15em',
-    textTransform: 'uppercase' as const,
-    marginBottom: '1.25rem',
-  } as React.CSSProperties,
-
-  relatedGrid: {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))',
-    gap: '0.75rem',
-  } as React.CSSProperties,
-
-  relatedLink: {
-    color: '#c9a84c',
-    fontFamily: "'Georgia', serif",
-    fontSize: '0.9rem',
-    lineHeight: '1.4',
-    textDecoration: 'none',
-    borderBottom: '1px solid rgba(201,168,76,0.25)',
-    paddingBottom: '0.5rem',
-    display: 'block',
-  } as React.CSSProperties,
-
-  footer: {
-    borderTop: '1px solid #1e1d2e',
-    padding: '2rem',
-    textAlign: 'center' as const,
-    color: '#9e9e9e',
-    fontFamily: "'Georgia', serif",
-    fontSize: '0.8rem',
-    lineHeight: '1.7',
-    marginTop: '2rem',
-  } as React.CSSProperties,
-
-  footerLink: {
-    color: '#c9a84c',
-    textDecoration: 'none',
-    marginLeft: '0.5rem',
-  } as React.CSSProperties,
-
-  inlineLink: {
-    color: '#c9a84c',
-    textDecoration: 'underline',
-    textDecorationColor: 'rgba(201,168,76,0.4)',
-    textUnderlineOffset: '3px',
-  } as React.CSSProperties,
-
-  badge: {
-    display: 'inline-block',
-    background: '#1e1d2e',
-    color: '#c9a84c',
-    fontFamily: "'Georgia', serif",
-    fontSize: '0.75rem',
-    fontWeight: '700',
-    letterSpacing: '0.08em',
-    padding: '0.2rem 0.65rem',
-    borderRadius: '4px',
-    marginRight: '0.5rem',
-    marginBottom: '0.35rem',
-  } as React.CSSProperties,
-
-  pullQuote: {
-    borderLeft: 'none',
-    borderTop: '2px solid #c9a84c',
-    borderBottom: '2px solid #c9a84c',
-    margin: '2.5rem 0',
-    padding: '1.5rem 0',
-    textAlign: 'center' as const,
-  } as React.CSSProperties,
-
-  pullQuoteText: {
-    color: '#f5f0e8',
-    fontFamily: "'Georgia', serif",
-    fontSize: 'clamp(1.1rem, 2.5vw, 1.4rem)',
-    fontStyle: 'italic',
-    lineHeight: '1.5',
-    margin: '0',
-  } as React.CSSProperties,
-
-  windowBox: {
-    background: '#12111f',
-    border: '1px solid #1e1d2e',
-    borderRadius: '10px',
-    padding: '1.75rem 2rem',
-    margin: '2rem 0',
-    position: 'relative' as const,
-  } as React.CSSProperties,
-
-  windowStep: {
-    display: 'flex',
-    gap: '1rem',
-    alignItems: 'flex-start',
-    marginBottom: '1.25rem',
-  } as React.CSSProperties,
-
-  windowStepNumber: {
-    background: '#c9a84c',
-    color: '#0d0c18',
-    borderRadius: '50%',
-    width: '1.75rem',
-    height: '1.75rem',
-    display: 'flex',
+  backLink: {
+    display: 'inline-flex',
     alignItems: 'center',
-    justifyContent: 'center',
-    fontFamily: "'Georgia', serif",
-    fontSize: '0.8rem',
-    fontWeight: '700',
-    flexShrink: 0,
-    marginTop: '0.15rem',
+    gap: '8px',
+    fontSize: '14px',
+    color: 'rgba(245,240,232,0.5)',
+    textDecoration: 'none',
+    marginBottom: '40px',
   } as React.CSSProperties,
 
-  windowStepText: {
-    color: '#f5f0e8',
-    fontFamily: "'Georgia', serif",
-    fontSize: '0.975rem',
-    lineHeight: '1.65',
-  } as React.CSSProperties,
-
-  windowStepLabel: {
+  tag: {
+    display: 'inline-block',
+    fontSize: '12px',
+    fontWeight: 600,
     color: '#c9a84c',
-    fontWeight: '700',
+    background: 'rgba(201,168,76,0.12)',
+    padding: '4px 12px',
+    borderRadius: '100px',
+    marginRight: '8px',
+    marginBottom: '8px',
+    letterSpacing: '0.04em',
+  } as React.CSSProperties,
+
+  tagsRow: {
+    marginBottom: '40px',
+  } as React.CSSProperties,
+
+  memoryPanel: {
+    background: 'rgba(13,12,24,0.8)',
+    border: '1px solid rgba(201,168,76,0.2)',
+    borderRadius: '14px',
+    padding: '32px',
+    marginTop: '32px',
+    marginBottom: '40px',
+  } as React.CSSProperties,
+
+  memoryPanelTitle: {
+    fontSize: '14px',
+    fontWeight: 700,
+    color: '#c9a84c',
+    letterSpacing: '0.1em',
+    textTransform: 'uppercase' as const,
+    marginBottom: '20px',
   } as React.CSSProperties,
 
   memoryRow: {
     display: 'flex',
-    gap: '0.75rem',
+    gap: '16px',
     alignItems: 'flex-start',
-    padding: '1rem 0',
-    borderBottom: '1px solid #1e1d2e',
+    marginBottom: '16px',
   } as React.CSSProperties,
 
   memoryIcon: {
-    fontSize: '1.2rem',
+    fontSize: '18px',
     flexShrink: 0,
-    width: '2rem',
-    textAlign: 'center' as const,
-  } as React.CSSProperties,
-
-  memoryContent: {
-    flex: 1,
-  } as React.CSSProperties,
-
-  memoryLabel: {
-    color: '#c9a84c',
-    fontFamily: "'Georgia', serif",
-    fontSize: '0.8rem',
-    fontWeight: '700',
-    letterSpacing: '0.08em',
-    textTransform: 'uppercase' as const,
-    marginBottom: '0.25rem',
+    marginTop: '2px',
   } as React.CSSProperties,
 
   memoryText: {
-    color: '#f5f0e8',
-    fontFamily: "'Georgia', serif",
-    fontSize: '0.9rem',
-    lineHeight: '1.6',
+    fontSize: '14px',
+    lineHeight: 1.6,
+    color: 'rgba(245,240,232,0.78)',
+    margin: 0,
   } as React.CSSProperties,
-} as const
 
-// ── Page Component ─────────────────────────────────────────────────────────────
+  highlight: {
+    color: '#c9a84c',
+    fontWeight: 600,
+  } as React.CSSProperties,
+
+  blockquote: {
+    borderLeft: '3px solid #c9a84c',
+    margin: '32px 0',
+    padding: '16px 24px',
+    background: 'rgba(201,168,76,0.05)',
+    borderRadius: '0 8px 8px 0',
+  } as React.CSSProperties,
+
+  blockquoteText: {
+    fontSize: 'clamp(16px, 1.8vw, 19px)',
+    fontStyle: 'italic',
+    color: 'rgba(245,240,232,0.9)',
+    lineHeight: 1.65,
+    margin: 0,
+  } as React.CSSProperties,
+
+  footer: {
+    borderTop: '1px solid rgba(245,240,232,0.08)',
+    padding: '40px 24px',
+    maxWidth: '780px',
+    margin: '0 auto',
+  } as React.CSSProperties,
+
+  footerText: {
+    fontSize: '13px',
+    color: 'rgba(245,240,232,0.4)',
+    lineHeight: 1.7,
+    margin: 0,
+  } as React.CSSProperties,
+}
+
+// ── Component ──────────────────────────────────────────────────────────────────
 
 export default function AiForAngerManagementPage() {
   return (
-    <div style={s.page}>
+    <main style={s.page}>
       {/* JSON-LD */}
       <script
         type="application/ld+json"
@@ -668,1029 +542,935 @@ export default function AiForAngerManagementPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
 
-      {/* Header */}
-      <header>
-        <div style={s.header}>
-          <Link href="/" style={s.logoLink}>MEOK AI LABS</Link>
-          <nav style={{ display: 'flex', flexWrap: 'wrap' as const }}>
-            <Link href="/blog" style={s.navLink}>Blog</Link>
-            <Link href="/birth" style={s.navLink}>Try MEOK</Link>
-          </nav>
-        </div>
-      </header>
-
-      {/* Hero */}
+      {/* ── Hero ── */}
       <section style={s.hero}>
-        <span style={s.eyebrow}>MEOK AI LABS &mdash; Emotional Intelligence</span>
-        <h1 style={s.h1}>AI for Anger Management: Processing Rage Before It Costs You</h1>
-        <p style={s.heroDeck}>
-          Anger is not the enemy. It is information — often urgent, sometimes loud, always worth
-          listening to before it hijacks your next conversation, damages a relationship you
-          care about, or seeps silently into your health. This is a guide to how AI, designed
-          thoughtfully, can become the space between your trigger and your response.
+        <Link href="/blog" style={s.backLink}>
+          &#8592; All articles
+        </Link>
+
+        <p style={s.eyebrow}>MEOK AI LABS &nbsp;&middot;&nbsp; Emotional Intelligence</p>
+
+        <h1 style={s.h1}>
+          AI for Anger Management: Understanding Your Triggers and Reclaiming Control
+        </h1>
+
+        <p style={s.lede}>
+          Anger isn\u2019t a character defect. It\u2019s a signal with a message you haven\u2019t decoded yet.
+          MEOK helps you map the anger cycle, track recurring patterns over months, and rehearse the
+          responses you actually want to give \u2014 before the next trigger lands.
         </p>
+
         <div style={s.meta}>
-          <div style={s.metaItem}>
-            <span style={s.metaLabel}>Author</span>
-            <span>Nicholas Templeman</span>
-          </div>
-          <div style={s.metaItem}>
-            <span style={s.metaLabel}>Published</span>
-            <span>24 March 2026</span>
-          </div>
-          <div style={s.metaItem}>
-            <span style={s.metaLabel}>Reading Time</span>
-            <span>14 min</span>
-          </div>
-          <div style={s.metaItem}>
-            <span style={s.metaLabel}>Topic</span>
-            <span>Anger &amp; Emotional Regulation</span>
-          </div>
+          <span>Nicholas Templeman</span>
+          <span style={s.metaDot}>&bull;</span>
+          <span>Founder, MEOK AI LABS</span>
+          <span style={s.metaDot}>&bull;</span>
+          <span>24 March 2026</span>
+          <span style={s.metaDot}>&bull;</span>
+          <span>14 min read</span>
         </div>
       </section>
 
-      {/* Article body */}
+      <hr style={s.divider} />
+
+      {/* ── Article body ── */}
       <article style={s.article}>
 
-        {/* ── Safety signpost — prominent, early ───────────────────────────────── */}
-        <div style={s.safetyBox}>
-          <p style={s.safetyTitle}>Important: If you or someone else is in danger</p>
-          <p style={s.safetyText}>
-            This article is about processing difficult emotions privately, safely, and
-            constructively. There is an important distinction between experiencing anger
-            and acting on it in ways that harm others. If you are in a situation involving
-            domestic abuse — whether as a victim, survivor, or someone who recognises they
-            have caused harm — please reach out to specialist human support:
-          </p>
-          <p style={s.safetyText}>
-            <strong style={{ color: '#c9a84c' }}>National Domestic Abuse Helpline:</strong>{' '}
-            <a href="tel:08082000247" style={s.safetyLink}>0808 2000 247</a> — free, confidential,
-            available 24/7.
-          </p>
-          <p style={{ ...s.safetyText, marginBottom: 0 }}>
-            <strong style={{ color: '#c9a84c' }}>Refuge:</strong>{' '}
-            <a href="https://www.refuge.org.uk" target="_blank" rel="noopener noreferrer" style={s.safetyLink}>
-              refuge.org.uk
-            </a>{' '}
-            — specialist support for those affected by domestic abuse, including housing,
-            legal advice, and recovery programmes.
+        {/* Tags */}
+        <div style={s.tagsRow}>
+          <span style={s.tag}>Anger Management</span>
+          <span style={s.tag}>Emotional Regulation</span>
+          <span style={s.tag}>ADHD &amp; RSD</span>
+          <span style={s.tag}>Sovereign Memory</span>
+          <span style={s.tag}>Neurodivergence</span>
+        </div>
+
+        {/* ── Section 1: Anger as signal ── */}
+        <h2 style={s.h2}>What is anger telling you?</h2>
+
+        <p style={s.atomicAnswer}>
+          Anger is an alarm system, not a personality flaw. It fires when the brain perceives a threat to
+          something you value \u2014 your safety, your dignity, your boundaries, or your sense of fairness.
+          The message inside the anger is almost always worth reading. The problem is usually the delivery.
+        </p>
+
+        <p style={s.p}>
+          Most anger management programmes focus almost exclusively on the delivery problem: don\u2019t yell,
+          count to ten, walk away. That advice isn\u2019t wrong, but it skips the more important question:
+          what exactly is this anger protecting? Until you answer that, you\u2019re managing symptoms while the
+          cause keeps firing.
+        </p>
+
+        <p style={s.p}>
+          Anger tells you when a boundary has been crossed. It tells you when you feel unseen, disrespected,
+          or treated unjustly. It tells you when you\u2019ve been carrying too much for too long. Each flavour
+          of anger points at a different unmet need \u2014 and each unmet need has a different resolution.
+        </p>
+
+        <div style={s.blockquote}>
+          <p style={s.blockquoteText}>
+            &ldquo;The goal isn\u2019t to stop being angry. The goal is to understand what the anger is defending
+            and find a way to address that \u2014 without leaving wreckage behind.&rdquo;
           </p>
         </div>
 
-        {/* ── Intro ────────────────────────────────────────────────────────────── */}
         <p style={s.p}>
-          Let us start with the thing most anger management advice gets wrong: it treats anger
-          as the problem. Breathing exercises, counting to ten, walking away — all of these are
-          useful tactics in the moment, but none of them engage with what the anger is actually
-          trying to tell you. The result is that the anger gets managed, temporarily, and then
-          returns — often with interest.
+          This reframe matters because it changes your relationship to the emotion. Instead of treating anger
+          as something to suppress or be ashamed of, you begin to treat it as information \u2014 a data point in
+          your inner landscape that deserves attention, not elimination.
+        </p>
+
+        <h3 style={s.h3}>Common signals that anger carries</h3>
+
+        <ul style={s.ul}>
+          <li style={s.li}><strong>Boundary violation:</strong> someone crossed a line you haven\u2019t yet named out loud</li>
+          <li style={s.li}><strong>Injustice response:</strong> a situation felt unfair and no one acknowledged it</li>
+          <li style={s.li}><strong>Overwhelm spill:</strong> you\u2019ve been holding too much and a small thing cracked the container</li>
+          <li style={s.li}><strong>Fear in disguise:</strong> vulnerability expressed as aggression because anger feels safer</li>
+          <li style={s.li}><strong>Grief compressed:</strong> loss or disappointment that hasn\u2019t been fully processed</li>
+          <li style={s.li}><strong>Identity threat:</strong> someone challenged how you see yourself or how you need to be seen</li>
+        </ul>
+
+        <p style={s.p}>
+          Most people experience several of these simultaneously. A single incident at work might carry
+          boundary violation, injustice response, and identity threat all at once \u2014 which is why the
+          anger can feel so disproportionate to the trigger. It\u2019s not disproportionate. It\u2019s carrying
+          multiple messages at the same time.
+        </p>
+
+        {/* ── Section 2: The anger cycle ── */}
+        <h2 style={s.h2}>What is the anger cycle?</h2>
+
+        <p style={s.atomicAnswer}>
+          The anger cycle is the sequence of trigger, cognitive appraisal, physiological arousal,
+          behavioural response, and aftermath. Understanding each stage allows you to intervene
+          before behaviour causes damage. MEOK can help you map your personal version of this cycle
+          and identify where you consistently get stuck.
         </p>
 
         <p style={s.p}>
-          MEOK was built on a different premise. Emotions, including the uncomfortable ones, are
-          data. They are the nervous system's best attempt to communicate something important
-          about your situation, your values, or your needs. Anger, specifically, tends to arise
-          when something that matters to you is threatened, blocked, violated, or dismissed.
-          Suppressing the signal does not address the underlying message. It just delays it.
+          The anger cycle is the structural pattern that plays out every time you get angry. It isn\u2019t
+          unique to any individual \u2014 the architecture is the same for everyone \u2014 but the content
+          at each stage (what triggers you, what you tell yourself, how your body reacts) is entirely
+          personal. That\u2019s why generic anger management advice often fails: it targets the wrong
+          stage, or the wrong content.
         </p>
 
-        <p style={s.p}>
-          The question is not <em>how do I stop feeling angry?</em> The question is:{' '}
-          <em>what is this anger trying to tell me, and what is the most useful thing I can do with
-          that information right now?</em>
-        </p>
-
-        <p style={s.p}>
-          That shift — from suppression to understanding to action — is where{' '}
-          <strong style={{ color: '#f5f0e8' }}>AI for anger management</strong> has genuine value.
-          Not as a pressure-release valve. Not as a digital punch-bag. But as a thoughtful,
-          patient, 24-hour presence that can meet you in the worst moment, hold the complexity
-          without panicking, and help you find the thread back to yourself.
-        </p>
-
-        <div style={s.pullQuote}>
-          <p style={s.pullQuoteText}>
-            &ldquo;The goal is not to suppress the anger. The goal is to hear it without
-            being controlled by it.&rdquo;
-          </p>
-        </div>
-
-        {/* ── H2: Why anger is misunderstood ───────────────────────────────────── */}
-        <h2 style={s.h2}>Why Anger Is the Most Misunderstood Emotion We Have</h2>
-
-        <p style={s.p}>
-          Anger has a public relations problem. In most cultural narratives — particularly in the
-          UK and the US — anger is framed as a loss of control, a sign of immaturity, or evidence
-          of a character deficit. We tell people to &ldquo;calm down,&rdquo; to &ldquo;be
-          reasonable,&rdquo; to &ldquo;not take things so personally.&rdquo; The implicit message
-          is that an angry person is a lesser person.
-        </p>
-
-        <p style={s.p}>
-          This framing is not only unhelpful — it is factually wrong. Anger is a primary emotion
-          with deep evolutionary function. It is the signal that a boundary has been crossed, that
-          fairness has been violated, that something important is being taken from you. Without
-          the capacity for anger, human beings would struggle to defend themselves, advocate for
-          others, or resist injustice. The civil rights movement was not led by people who had
-          successfully suppressed their anger. It was led by people who had learned to channel it.
-        </p>
-
-        <p style={s.p}>
-          The problem, then, is not anger itself — it is unprocessed, misdirected, or accumulated
-          anger. Anger that has nowhere useful to go. Anger that gets taken out on the wrong person.
-          Anger that sits inside the body as chronic tension, insomnia, elevated cortisol, and
-          eventually illness. Anger that becomes the only emotional language a person has, crowding
-          out grief, fear, tenderness, and connection.
-        </p>
-
-        <p style={s.p}>
-          Understanding this is the foundation for everything that follows. When you search for
-          &ldquo;AI to help with anger&rdquo; or &ldquo;managing anger with AI,&rdquo; what you
-          are really searching for is not a suppression tool. You are searching for a better
-          relationship with a feeling that has something important to say.
-        </p>
-
-        <h3 style={s.h3}>Anger as Information: What It Is Usually Telling You</h3>
-
-        <p style={s.p}>
-          Different types of anger carry different messages, and responding usefully requires
-          being able to distinguish between them. Treating all anger the same is like treating
-          all pain the same — you might occasionally guess correctly, but mostly you will miss
-          what the signal is pointing to.
-        </p>
-
-        <p style={s.p}>
-          Here are the five anger types MEOK works with, each shaped by different root causes and
-          calling for different responses:
-        </p>
-
-        <div style={s.angerTypeGrid}>
-          <div style={s.angerCard}>
-            <span style={s.angerCardTitle}>Righteous Anger</span>
-            <p style={s.angerCardBody}>
-              Rooted in genuine injustice — something wrong has happened, to you or to someone
-              else, and the anger is a proportionate moral response. This anger, channelled well,
-              drives action, advocacy, and change. Suppressed, it festers into cynicism or
-              helplessness.
+        <div style={s.cycleGrid}>
+          <div style={s.cycleCard}>
+            <div style={s.cycleCardNumber}>01</div>
+            <div style={s.cycleCardTitle}>Trigger</div>
+            <p style={s.cycleCardBody}>
+              An external event or internal thought that initiates the anger response. Can be a
+              tone of voice, a perceived slight, a deadline, a memory, or a physical sensation.
             </p>
           </div>
-
-          <div style={s.angerCard}>
-            <span style={s.angerCardTitle}>Frustrated Anger</span>
-            <p style={s.angerCardBody}>
-              Arising from repeated obstacles, blocked progress, or the sense that your efforts
-              are not producing results. Common in workplace environments, creative work, and
-              caregiving. Often misdirected because the real source — the obstacle — feels
-              untouchable.
+          <div style={s.cycleCard}>
+            <div style={s.cycleCardNumber}>02</div>
+            <div style={s.cycleCardTitle}>Appraisal</div>
+            <p style={s.cycleCardBody}>
+              The split-second interpretation your brain makes: \u201cThis is a threat.\u201d The appraisal
+              determines the intensity of what follows. Inaccurate appraisals amplify anger unnecessarily.
             </p>
           </div>
-
-          <div style={s.angerCard}>
-            <span style={s.angerCardTitle}>Hurt-Based Anger</span>
-            <p style={s.angerCardBody}>
-              A protective response to betrayal, disappointment, or the sense that someone you
-              trusted has let you down. The anger is real, but it is sitting on top of grief.
-              Until the grief is reached, the anger cycles without resolution.
+          <div style={s.cycleCard}>
+            <div style={s.cycleCardNumber}>03</div>
+            <div style={s.cycleCardTitle}>Physiological Arousal</div>
+            <p style={s.cycleCardBody}>
+              Heart rate rises, muscles tighten, cortisol and adrenaline flood the system. The body
+              prepares to fight or flee before the conscious mind has decided anything.
             </p>
           </div>
-
-          <div style={s.angerCard}>
-            <span style={s.angerCardTitle}>Fear-Based Anger</span>
-            <p style={s.angerCardBody}>
-              Anxiety that has converted to rage — often because vulnerability feels too exposed
-              or frightening. For many people, particularly men, anger is a more acceptable
-              expression of fear than fear itself. Addressing the underlying threat is the
-              only lasting resolution.
+          <div style={s.cycleCard}>
+            <div style={s.cycleCardNumber}>04</div>
+            <div style={s.cycleCardTitle}>Behavioural Response</div>
+            <p style={s.cycleCardBody}>
+              What you actually do: shout, withdraw, send the email, slam the door, cry, go silent.
+              The behaviour is the part that creates consequences \u2014 or doesn\u2019t.
             </p>
           </div>
-
-          <div style={s.angerCard}>
-            <span style={s.angerCardTitle}>Accumulated Anger</span>
-            <p style={s.angerCardBody}>
-              Compressed over months or years, this anger is not tied to a single event — it
-              is the total weight of everything that was not expressed, processed, or resolved.
-              It can be triggered disproportionately by small incidents. This type requires
-              careful, sustained unpacking rather than any quick fix.
+          <div style={s.cycleCard}>
+            <div style={s.cycleCardNumber}>05</div>
+            <div style={s.cycleCardTitle}>Aftermath</div>
+            <p style={s.cycleCardBody}>
+              The emotional and relational consequences. Shame, regret, repair attempts, or
+              doubled-down justification. This stage shapes the next cycle.
             </p>
           </div>
         </div>
 
-        <p style={s.pMuted}>
-          Most people experiencing strong anger are not in touch with which type they are
-          carrying. The immediate feeling is just: <em>I am furious.</em> The work — and the
-          value of a support system like MEOK — is in helping to identify what is underneath
-          that feeling quickly enough to respond usefully rather than reactively.
-        </p>
-
-        {/* ── H2: The 3-minute window ───────────────────────────────────────────── */}
-        <h2 style={s.h2}>The 3-Minute Window: Why That Moment Matters More Than Any Other</h2>
+        <h3 style={s.h3}>Where can you intervene in the cycle?</h3>
 
         <p style={s.p}>
-          Neuroscientist Jill Bolte Taylor, in her work on emotional response, identified that
-          the acute physiological arousal produced by an emotion — the actual chemical flood in
-          the body — typically lasts around 90 seconds. After that point, any continuation of
-          the emotional state is the result of your thoughts re-activating the physical response.
-          You are, in a sense, choosing to stay angry — not necessarily consciously, but
-          neurologically.
+          Every stage of the anger cycle is a potential intervention point. The earlier you catch it,
+          the easier it is to shift direction. By the time you\u2019re in full physiological arousal, the
+          prefrontal cortex \u2014 the part of the brain responsible for rational decision-making \u2014
+          is partially offline. Waiting until that moment to decide how to respond is like waiting
+          until a car is skidding to decide whether to brake.
         </p>
 
         <p style={s.p}>
-          This does not mean the anger is not real or justified. It means there is a window —
-          roughly three minutes, accounting for the initial spike and the immediate afterglow —
-          where intervention has the highest possible leverage. Before the rumination cycle
-          begins. Before the narrative hardens. Before the decision to send the message,
-          make the call, or say the thing that will take weeks to repair.
+          The most powerful interventions happen at appraisal: changing the story your brain tells
+          about the trigger. But appraisal-level work requires prior effort \u2014 you can\u2019t reframe
+          a situation you\u2019ve never examined when you\u2019re already flooded. That\u2019s why debriefing
+          after incidents, when you\u2019re calm, is one of the most valuable anger management practices
+          available. You\u2019re essentially preparing better appraisals for next time.
+        </p>
+
+        <div style={s.callout}>
+          <p style={s.calloutTitle}>MEOK in the aftermath</p>
+          <p style={s.calloutBody}>
+            The aftermath stage is where MEOK is particularly useful. After an anger incident \u2014
+            once arousal has dropped \u2014 you can walk through what happened with MEOK\u2019s Healer archetype.
+            What was the trigger? What story did you tell yourself? What did you do? What do you wish
+            you\u2019d done differently? This structured reflection is what builds genuine change over time.
+          </p>
+        </div>
+
+        {/* ── Section 3: Anger presentations ── */}
+        <h2 style={s.h2}>What are the different ways anger shows up in relationships?</h2>
+
+        <p style={s.atomicAnswer}>
+          Anger in relationships takes three main forms: explosive anger (visible, intense, immediate),
+          cold anger (withdrawn, punishing, silent), and passive aggression (indirect, deniable, erosive).
+          All three damage relationships, but in different ways and at different speeds. Recognising
+          your pattern is the first step to changing it.
         </p>
 
         <p style={s.p}>
-          MEOK is designed to be available in exactly that window. Not as a way to distract you
-          from the feeling, but as a space to contain it while you process it. The act of putting
-          what you are feeling into words — even to an AI — activates the prefrontal cortex, the
-          part of the brain responsible for rational processing, and reduces amygdala activation.
-          This is sometimes called &ldquo;affect labelling&rdquo; and has strong support in
-          neuroscience research. Simply naming what you feel changes what the feeling does to you.
+          It\u2019s tempting to assume that the only \u201creal\u201d anger problem is explosive anger \u2014 the
+          shouting, the throwing things, the dramatic outbursts. But cold anger and passive aggression
+          are equally destructive, just less visible. They erode trust slowly rather than shattering
+          it suddenly.
         </p>
 
-        <div style={s.windowBox}>
-          <p style={{ ...s.h3, marginTop: 0 }}>The 3-Minute Window: What MEOK Does</p>
-          <div style={s.windowStep}>
-            <div style={s.windowStepNumber}>1</div>
-            <p style={{ ...s.windowStepText, margin: 0 }}>
-              <span style={s.windowStepLabel}>Receive:</span> You open MEOK and say what is
-              happening. There is no judgment. No correction. The first move is always to make
-              you feel heard — because regulation is not possible without first feeling safe.
+        <div style={s.presentationGrid}>
+          <div style={s.presentationCard}>
+            <p style={s.presentationCardTitle}>Explosive Anger</p>
+            <p style={s.presentationCardBody}>
+              High intensity, fast onset. The arousal floods quickly and behaviour happens before
+              conscious decision. Often followed by remorse. Can feel completely uncontrollable
+              in the moment. Partners and children learn to walk on eggshells.
             </p>
           </div>
-          <div style={s.windowStep}>
-            <div style={s.windowStepNumber}>2</div>
-            <p style={{ ...s.windowStepText, margin: 0 }}>
-              <span style={s.windowStepLabel}>Ground:</span> The Healer archetype offers
-              somatic support — breathwork, body-scan techniques, grounding prompts — to begin
-              bringing the nervous system out of fight-or-flight and into a state where thinking
-              is actually possible.
+          <div style={s.presentationCard}>
+            <p style={s.presentationCardTitle}>Cold Anger</p>
+            <p style={s.presentationCardBody}>
+              Controlled withdrawal. The silent treatment, prolonged coldness, refusal to engage.
+              Often experienced by the target as more frightening than shouting because there\u2019s
+              nothing to respond to. Can last hours, days, or weeks.
             </p>
           </div>
-          <div style={s.windowStep}>
-            <div style={s.windowStepNumber}>3</div>
-            <p style={{ ...s.windowStepText, margin: 0 }}>
-              <span style={s.windowStepLabel}>Understand:</span> The Trickster archetype invites
-              a perspective shift — not dismissing your experience, but offering other angles that
-              may not be visible when you are inside the feeling.
-            </p>
-          </div>
-          <div style={{ ...s.windowStep, marginBottom: 0 }}>
-            <div style={s.windowStepNumber}>4</div>
-            <p style={{ ...s.windowStepText, margin: 0 }}>
-              <span style={s.windowStepLabel}>Move:</span> The Pioneer archetype asks: given all
-              of this, what is the most constructive action available to you? Not suppression.
-              Not explosion. Forward motion, on your terms.
+          <div style={s.presentationCard}>
+            <p style={s.presentationCardTitle}>Passive Aggression</p>
+            <p style={s.presentationCardBody}>
+              Indirect hostility. Forgetting important things, subtle undermining, backhanded
+              compliments, complying while sabotaging. Difficult to name because it maintains
+              plausible deniability. Highly corrosive over time.
             </p>
           </div>
         </div>
 
         <p style={s.p}>
-          The goal is not to neutralise the anger. It is to prevent the three-minute window from
-          becoming a three-hour ruminative spiral, or worse, a damaging action that you will spend
-          months explaining and apologising for. MEOK sits in the gap. That is its primary value
-          for{' '}
-          <strong style={{ color: '#f5f0e8' }}>AI anger support</strong>.
+          Many people move between these presentations depending on context. You might be explosively
+          angry with a partner but passively aggressive with a manager. The underlying anger is the
+          same; what changes is the perceived safety of direct expression. Where you feel powerful,
+          you may explode. Where you feel powerless, you may go cold or indirect.
         </p>
 
-        {/* ── H2: The three archetypes ──────────────────────────────────────────── */}
-        <h2 style={s.h2}>How MEOK&rsquo;s Three Archetypes Work With Anger</h2>
+        <h3 style={s.h3}>The anger-shame cycle</h3>
 
         <p style={s.p}>
-          MEOK does not have a single mode. It has a council of three distinct archetypes —
-          Healer, Trickster, and Pioneer — that bring different intelligences to different
-          aspects of the emotional processing work. In the context of anger, each plays
-          a specific role.
-        </p>
-
-        <p style={s.p}>
-          This matters because anger is multi-layered. It has a somatic component — you feel it
-          in your body. It has a cognitive component — you have a story about what happened and
-          why. And it has a behavioural component — there is something you want to do with it.
-          Addressing only one layer rarely resolves the whole thing.
-        </p>
-
-        <div style={s.archetypeCard}>
-          <p style={s.archetypeTitle}>Healer 🌿 — Somatic Support and Emotional Regulation</p>
-          <p style={s.archetypeBody}>
-            The Healer is the first responder when anger arrives. Its intelligence is somatic and
-            relational — it is attuned to the body, to breath, to the physical signature of
-            overwhelming emotion. When you are at peak activation, the Healer does not launch into
-            analysis. It meets you where you are: &ldquo;This sounds really painful. Your body
-            is probably in overdrive right now — can we just slow down for a moment?&rdquo;
-          </p>
-          <p style={{ ...s.archetypeBody, marginTop: '0.75rem' }}>
-            The Healer offers breathwork sequences calibrated to the nervous system — extended
-            exhale breathing to activate the parasympathetic response, progressive muscle
-            relaxation, grounding techniques that use sensory input to pull attention out of
-            the ruminative loop. These are not gimmicks. They are evidence-based techniques for
-            physiological de-escalation. And having them available at 2am, or in the car before
-            you walk back into the house, or in the bathroom at work before you return to a
-            difficult meeting — that accessibility is significant.
-          </p>
-        </div>
-
-        <div style={s.archetypeCard}>
-          <p style={s.archetypeTitle}>Trickster 🎭 — Reframing and Pattern Interruption</p>
-          <p style={s.archetypeBody}>
-            The Trickster is MEOK&rsquo;s cognitive disruptor. Its function is to interrupt
-            the narrative that anger creates — because anger is a storyteller, and it tends to
-            tell a story in which you are entirely right, the other party is entirely wrong,
-            and the only options are confrontation or seething. That story is almost never the
-            whole truth.
-          </p>
-          <p style={{ ...s.archetypeBody, marginTop: '0.75rem' }}>
-            Reframing is one of the most powerful tools in anger management, and it is frequently
-            misunderstood. Reframing does not mean minimising or dismissing what happened. It
-            means holding the situation differently — finding the angle that makes constructive
-            action possible, or that makes the emotional stakes more accurate to the actual
-            situation. &ldquo;Is it possible they did not realise the impact of what they said?&rdquo;
-            &ldquo;What would your future self say about this moment in six months?&rdquo;
-            &ldquo;Is the intensity of this feeling about this specific situation, or is it
-            carrying the weight of something older?&rdquo;
-          </p>
-          <p style={{ ...s.archetypeBody, marginTop: '0.75rem' }}>
-            For accumulated or fear-based anger, the Trickster&rsquo;s reframing can be
-            genuinely transformative — revealing that the rage at a partner is actually
-            exhaustion and grief, or that the fury at a colleague is actually about a much
-            older wound involving authority.
-          </p>
-        </div>
-
-        <div style={s.archetypeCard}>
-          <p style={s.archetypeTitle}>Pioneer ⚡ — Action-Oriented De-escalation</p>
-          <p style={s.archetypeBody}>
-            The Pioneer is MEOK&rsquo;s action intelligence. It operates on the principle that
-            unexpressed anger that has no constructive outlet tends to become destructive — either
-            outwardly or inwardly. The Pioneer does not ask you to let things go prematurely. It
-            asks: given that this has happened, given how you feel, given what you understand —
-            what is the most powerful and useful thing you can do next?
-          </p>
-          <p style={{ ...s.archetypeBody, marginTop: '0.75rem' }}>
-            For righteous anger, this might mean identifying concrete action — a conversation to
-            have, a boundary to set, a system to challenge. For frustrated anger, it might mean
-            mapping the obstacle and identifying what is within your control. For accumulated anger,
-            the Pioneer might suggest a structured journalling practice, a referral to a therapist,
-            or a longer-term plan for addressing the underlying conditions that have been
-            generating the pressure.
-          </p>
-          <p style={{ ...s.archetypeBody, marginTop: '0.75rem' }}>
-            The Pioneer is what prevents MEOK from being just a place to dump feelings. It keeps
-            the conversation moving toward the future, toward agency, toward change.
-          </p>
-        </div>
-
-        {/* ── H2: Men and anger ────────────────────────────────────────────────── */}
-        <h2 style={s.h2}>Men, Anger, and the Emotional Vocabulary Problem</h2>
-
-        <p style={s.p}>
-          This section exists because the experience of men with anger is particularly layered
-          and often poorly served by conventional mental health framing. It is not that men
-          feel more anger than women — research suggests this is not true — but that the
-          cultural conditions around male emotional expression mean that for many men, anger
-          is the only emotion that has socially sanctioned expression.
+          One of the most self-reinforcing patterns in anger is the cycle between anger and shame.
+          You get angry, you behave in a way that violates your own values, and then you feel profound
+          shame. The shame is so uncomfortable that you suppress it \u2014 often by rationalising the
+          angry behaviour, blaming the other person, or numbing with alcohol, food, or distraction.
+          Suppressed shame doesn\u2019t resolve; it pressurises. The next trigger finds a more loaded
+          system and the anger is bigger.
         </p>
 
         <p style={s.p}>
-          Grief? Weakness. Fear? Weakness. Vulnerability? Weakness. Loneliness? Something
-          to be fixed, not felt. But anger? That is permitted. Anger is at worst a masculine
-          excess and at best a sign of passion, strength, and conviction. The result is
-          a kind of emotional compression: the vast landscape of human emotional experience
-          gets funnelled through a single narrow outlet.
+          Breaking this cycle requires being able to sit with the shame long enough to process it
+          rather than suppress it. This is extraordinarily difficult to do in the presence of other
+          people, which is one reason a non-judgmental AI space can be genuinely useful \u2014 not as
+          a replacement for human connection, but as a container for the processing that needs to
+          happen before you can show up honestly in human relationships.
+        </p>
+
+        {/* ── Section 4: How MEOK helps ── */}
+        <h2 style={s.h2}>How does MEOK help with anger management?</h2>
+
+        <p style={s.atomicAnswer}>
+          MEOK supports anger management through three primary mechanisms: post-incident debriefing
+          to process what happened, pattern recognition over time to identify recurring triggers, and
+          real-time technique guidance when you\u2019re mid-escalation. It holds space without judgment
+          while being honest about what it observes.
+        </p>
+
+        <h3 style={s.h3}>Post-incident debriefing</h3>
+
+        <p style={s.p}>
+          The period after an anger incident is often filled with shame, rationalisation, or exhaustion.
+          Most people either replay the incident obsessively or push it away as quickly as possible.
+          Neither approach generates the insight needed to change the pattern.
         </p>
 
         <p style={s.p}>
-          This produces a specific pattern that is worth naming: the anger episode that seems
-          disproportionate to its trigger. The explosion over something that, objectively,
-          does not warrant that level of response. The people around the person often experience
-          this as unpredictability or volatility — but what is actually happening is that the
-          anger is carrying a freight load that has nothing to do with the immediate provocation.
-          The coffee was cold, but the anger is about feeling unseen for years.
-        </p>
-
-        <blockquote style={s.blockquote}>
-          <p style={s.bqText}>
-            For many men, anger is not the primary emotion — it is the exit point for every
-            other emotion that was not allowed an exit. The work is not to manage the anger.
-            The work is to give those other emotions their own door.
-          </p>
-        </blockquote>
-
-        <p style={s.p}>
-          MEOK&rsquo;s design accommodates this. The platform does not lead with emotional
-          language that can feel alienating or pathologising for people who did not grow up
-          with that vocabulary. It meets people where they are, in the language they actually
-          use, and gradually — with patience — opens the space to explore what else might be
-          present underneath the anger.
+          Structured debriefing \u2014 walking through what happened systematically, with curiosity rather
+          than judgment \u2014 is one of the most evidence-based anger management tools available. The
+          challenge is that doing it with another person requires vulnerability that not everyone
+          can access, especially shortly after an incident when defences are high.
         </p>
 
         <p style={s.p}>
-          Importantly, MEOK is private. There is no practitioner relationship, no notes, no
-          clinical file. The conversation does not have to be framed in any particular way.
-          You do not have to call it grief if you are not ready to call it grief. You just
-          have to start talking, and MEOK will listen, reflect, and help you find the language
-          at your own pace.
+          MEOK\u2019s Healer archetype is designed for exactly this context. You can describe what
+          happened in whatever terms feel honest, including language and admissions you wouldn\u2019t
+          make in a formal therapy session. MEOK will reflect back what it hears, ask clarifying
+          questions, and help you identify the trigger, the appraisal, and the unmet need underneath
+          the anger \u2014 without shaming you for having had it.
         </p>
 
-        <h3 style={s.h3}>A Note on Anger, Masculinity, and Processing vs. Enacting</h3>
-
-        <p style={s.p}>
-          It is important to be clear about what MEOK is for and what it is not for. MEOK helps
-          with processing anger — the internal, private work of understanding and regulating an
-          emotion. It is not a tool for rehearsing or amplifying anger in preparation for
-          acting on it in harmful ways toward other people.
-        </p>
-
-        <p style={s.p}>
-          Experiencing anger — even intense, difficult anger — is not a moral failing and it does
-          not make someone an abuser or a dangerous person. Most people who experience profound
-          anger never act on it harmfully. The capacity for anger is human. What matters is
-          what you do with it.
-        </p>
-
-        <p style={s.p}>
-          If you are at a point where you are worried about your behaviour toward others — where
-          anger has led or is leading to control, coercion, threats, or harm — the most important
-          step is specialist human support, not AI. Resources like{' '}
-          <a
-            href="https://www.respect.uk.net"
-            target="_blank"
-            rel="noopener noreferrer"
-            style={s.inlineLink}
-          >
-            Respect (respect.uk.net)
-          </a>{' '}
-          offer programmes specifically for people who want to change their behaviour in
-          relationships. Reaching out is not weakness — it is one of the most consequential
-          things a person can do.
-        </p>
-
-        <hr style={s.hr} />
-
-        {/* ── H2: Sovereign Memory ─────────────────────────────────────────────── */}
-        <h2 style={s.h2}>Sovereign Memory: When Your Anger Starts Making Sense Over Time</h2>
-
-        <p style={s.p}>
-          One of the most underrated aspects of good therapeutic support — and one of the most
-          difficult to access in one-off sessions or occasional check-ins — is longitudinal
-          pattern recognition. The ability to see that your worst anger episodes cluster around
-          particular triggers, times, or conditions. To notice that things are reliably worse
-          before a full week of sleep deprivation than after a run. That family phone calls
-          on Sunday evenings set a mood that lasts into Monday. That a particular type of
-          workplace situation lands completely differently depending on how long it has been
-          since you had time to yourself.
-        </p>
-
-        <p style={s.p}>
-          These patterns are invisible if every conversation starts from zero. They become visible
-          only with time and memory.
-        </p>
-
-        <p style={s.p}>
-          MEOK&rsquo;s Sovereign Memory is built for exactly this. Unlike most AI systems that
-          retain nothing between sessions, MEOK builds a persistent, private picture of your
-          emotional patterns over time — what triggers you, what helps, what makes things worse,
-          what conditions correlate with your hardest days. And all of this is stored under your
-          sovereignty: you can see exactly what is held, you can edit it, and you can delete
-          any or all of it at any point.
-        </p>
-
-        <p style={s.p}>
-          For anger specifically, Sovereign Memory enables a kind of self-knowledge that is
-          transformative in practice:
-        </p>
-
-        <div style={s.windowBox}>
+        <div style={s.memoryPanel}>
+          <p style={s.memoryPanelTitle}>How a debrief might look</p>
           <div style={s.memoryRow}>
-            <div style={s.memoryIcon}>📍</div>
-            <div style={s.memoryContent}>
-              <p style={s.memoryLabel}>Trigger mapping</p>
-              <p style={{ ...s.memoryText, margin: 0 }}>
-                MEOK can surface that you have mentioned anger or frustration specifically in
-                connection with a particular recurring situation — helping you see the pattern
-                before it surprises you again.
-              </p>
-            </div>
+            <span style={s.memoryIcon}>&#x1F4AC;</span>
+            <p style={s.memoryText}>
+              <strong style={s.highlight}>You:</strong> I lost it at my partner again tonight. Same stupid argument about dishes. I hate myself.
+            </p>
           </div>
           <div style={s.memoryRow}>
-            <div style={s.memoryIcon}>🌙</div>
-            <div style={s.memoryContent}>
-              <p style={s.memoryLabel}>Sleep and regulation correlation</p>
-              <p style={{ ...s.memoryText, margin: 0 }}>
-                If your anger threshold is consistently lower after poor sleep, MEOK can name
-                that connection — not as an excuse, but as useful information for managing
-                your circumstances more proactively.
-              </p>
-            </div>
+            <span style={s.memoryIcon}>&#x1F9E0;</span>
+            <p style={s.memoryText}>
+              <strong style={s.highlight}>MEOK:</strong> You\u2019re not stupid and this isn\u2019t really about dishes. When you imagine what the dishes actually represent \u2014 what they mean to you \u2014 what comes up?
+            </p>
           </div>
           <div style={s.memoryRow}>
-            <div style={s.memoryIcon}>📞</div>
-            <div style={s.memoryContent}>
-              <p style={s.memoryLabel}>Relationship dynamics</p>
-              <p style={{ ...s.memoryText, margin: 0 }}>
-                If certain people or interactions consistently precede difficult emotional states,
-                that pattern is worth knowing — not to assign blame, but to help you prepare
-                and process rather than absorb and react.
-              </p>
-            </div>
+            <span style={s.memoryIcon}>&#x1F4AC;</span>
+            <p style={s.memoryText}>
+              <strong style={s.highlight}>You:</strong> That I\u2019m invisible. That nothing I do gets noticed unless it\u2019s wrong.
+            </p>
           </div>
           <div style={s.memoryRow}>
-            <div style={s.memoryIcon}>🏃</div>
-            <div style={s.memoryContent}>
-              <p style={s.memoryLabel}>What actually helps</p>
-              <p style={{ ...s.memoryText, margin: 0 }}>
-                MEOK tracks not just what triggers anger but what reliably helps — exercise,
-                time outdoors, a particular type of conversation, a creative outlet. That
-                knowledge becomes prescriptive, not just descriptive.
-              </p>
-            </div>
+            <span style={s.memoryIcon}>&#x1F9E0;</span>
+            <p style={s.memoryText}>
+              <strong style={s.highlight}>MEOK:</strong> That\u2019s a very different thing to be carrying than dirty dishes. And you\u2019ve mentioned this feeling of invisibility before. It sounds like it\u2019s not just tonight. Want to look at where else it shows up?
+            </p>
           </div>
-          <div style={{ ...s.memoryRow, borderBottom: 'none', paddingBottom: 0 }}>
-            <div style={s.memoryIcon}>📈</div>
-            <div style={s.memoryContent}>
-              <p style={s.memoryLabel}>Progress over time</p>
-              <p style={{ ...s.memoryText, margin: 0 }}>
-                When things are improving, MEOK can reflect that back. When they are not,
-                it can surface the question of whether additional professional support
-                might be useful. Neither of these things is possible without memory.
-              </p>
-            </div>
+        </div>
+
+        <h3 style={s.h3}>Identifying recurring triggers through Sovereign Memory</h3>
+
+        <p style={s.p}>
+          A single debrief is useful. Dozens of debriefs, cross-referenced over months, begin to
+          reveal the architecture of your anger. What situations reliably trigger you? What time of
+          day? What emotional state were you in beforehand? Who is involved? What common thread runs
+          through the incidents that cost you most?
+        </p>
+
+        <p style={s.p}>
+          MEOK uses Sovereign Memory to hold the context of your previous conversations privately
+          \u2014 on-device, never used to train a cloud model. Over time, it can surface observations
+          like: &ldquo;You\u2019ve described three separate incidents this month where the trigger was feeling
+          your contribution wasn\u2019t acknowledged. That might be worth sitting with.&rdquo;
+        </p>
+
+        <p style={s.p}>
+          This kind of longitudinal pattern recognition is something that\u2019s very difficult to do
+          yourself, and that most therapeutic relationships take months to reach. Memory that persists
+          across conversations without judgment is one of the most practically useful things an AI
+          companion can offer someone working on anger.
+        </p>
+
+        <h3 style={s.h3}>Rehearsing assertive responses</h3>
+
+        <p style={s.p}>
+          One reason people escalate to anger is that they don\u2019t have a practised assertive
+          alternative. When a situation demands a boundary-setting response and you don\u2019t have one
+          readily available, the nervous system defaults to fight. Rehearsal builds the alternative
+          response into procedural memory so it\u2019s accessible under pressure.
+        </p>
+
+        <p style={s.p}>
+          MEOK can roleplay specific situations you know are coming \u2014 a difficult conversation
+          with a manager, a recurring argument with a family member, a confrontation you\u2019ve been
+          avoiding. You can try different approaches, see how they feel, and develop language that
+          is honest, clear, and assertive without being aggressive. When the real situation arrives,
+          you\u2019re not improvising from scratch.
+        </p>
+
+        {/* ── Section 5: Techniques ── */}
+        <h2 style={s.h2}>What techniques can AI guide in real time for anger?</h2>
+
+        <p style={s.atomicAnswer}>
+          Box breathing, the ten-second rule, and cognitive reframing are three evidence-based
+          techniques that MEOK can guide in real time. Each targets a different stage of the anger
+          cycle. Used together over time, they build a personal regulation toolkit that becomes
+          instinctive rather than deliberate.
+        </p>
+
+        <div style={s.techniqueGrid}>
+          <div style={s.techniqueCard}>
+            <p style={s.techniqueCardTitle}>Box Breathing</p>
+            <p style={s.techniqueCardBody}>
+              Inhale for four counts, hold for four, exhale for four, hold for four. Repeat
+              four times. Activates the parasympathetic nervous system and begins reducing
+              cortisol within ninety seconds. MEOK can count with you in real time when
+              you\u2019re escalating.
+            </p>
+          </div>
+          <div style={s.techniqueCard}>
+            <p style={s.techniqueCardTitle}>The Ten-Second Rule</p>
+            <p style={s.techniqueCardBody}>
+              A ten-second intentional pause between feeling triggered and responding. Sounds
+              trivial but creates just enough prefrontal engagement to interrupt the automatic
+              response. Most anger behaviour happens in the first three seconds. Ten buys you
+              back your choice.
+            </p>
+          </div>
+          <div style={s.techniqueCard}>
+            <p style={s.techniqueCardTitle}>Cognitive Reframing</p>
+            <p style={s.techniqueCardBody}>
+              Challenging the appraisal: &ldquo;Is this interpretation accurate? What else could
+              be true? What would I think about this in an hour?&rdquo; Reframing doesn\u2019t dismiss
+              the anger \u2014 it interrogates the story being used to maintain it.
+            </p>
+          </div>
+          <div style={s.techniqueCard}>
+            <p style={s.techniqueCardTitle}>Body Scan</p>
+            <p style={s.techniqueCardBody}>
+              Checking in systematically with physical sensations: jaw tension, chest tightness,
+              shoulders, fists. Naming body sensations activates language centres and
+              interrupts the purely automatic physical escalation. Also builds early-warning
+              awareness over time.
+            </p>
+          </div>
+          <div style={s.techniqueCard}>
+            <p style={s.techniqueCardTitle}>Externalisation</p>
+            <p style={s.techniqueCardBody}>
+              Describing the anger in third person or as a separate entity: &ldquo;The anger
+              wants to send that email.&rdquo; Creates psychological distance between self and
+              emotion. Particularly useful for people who identify so strongly with their
+              anger that they feel unable to observe it.
+            </p>
+          </div>
+          <div style={s.techniqueCard}>
+            <p style={s.techniqueCardTitle}>Discharge Movement</p>
+            <p style={s.techniqueCardBody}>
+              Physical movement \u2014 walking, running, shaking, vigorous exercise \u2014 metabolises
+              the cortisol and adrenaline that physiological arousal produces. MEOK can
+              prompt this and help you track how long different activities take to bring
+              arousal back to baseline.
+            </p>
           </div>
         </div>
 
         <p style={s.p}>
-          The difference between knowing intellectually that you tend to get angry when you are
-          tired and having a system that has actually observed and confirmed that pattern over
-          months is the difference between abstract self-awareness and actionable self-knowledge.
-          The second kind is rarer and more valuable.
+          The real value of AI guidance on these techniques isn\u2019t novelty \u2014 box breathing has been
+          taught in anger management for decades. The value is accessibility at the exact moment you
+          need it: 11pm when no one is available, mid-escalation in a situation that hasn\u2019t yet
+          erupted, or in the hour after an incident when shame and confusion make self-direction
+          difficult.
         </p>
 
-        {/* ── H2: Anti-sycophancy ──────────────────────────────────────────────── */}
-        <h2 style={s.h2}>Why MEOK Won&rsquo;t Just Validate Your Anger — and Why That Matters</h2>
+        {/* ── Section 6: Anger and neurodivergence ── */}
+        <h2 style={s.h2}>How does anger work differently with ADHD and autism?</h2>
+
+        <p style={s.atomicAnswer}>
+          Anger in ADHD and autism is often more intense, faster-onset, and harder to regulate than
+          neurotypical anger due to differences in emotional regulation circuitry. Rejection-sensitive
+          dysphoria, common in ADHD, can produce explosive anger in response to perceived criticism
+          or rejection that looks disproportionate but is neurologically genuine. Understanding this
+          changes the management approach entirely.
+        </p>
+
+        <h3 style={s.h3}>ADHD and anger dysregulation</h3>
 
         <p style={s.p}>
-          Here is something most AI systems will not say to you, and something most people
-          with angry friends are too afraid to say: venting without processing does not help.
-          In fact, the research on catharsis — the idea that expressing anger aggressively
-          reduces it — is largely unsupported by the evidence. Venting to a sympathetic
-          audience often increases anger rather than diminishing it, because it keeps the
-          nervous system activated, reinforces the anger narrative, and provides no movement
-          toward resolution.
+          ADHD is not just a condition of attention. It is a condition of emotional regulation. The
+          same executive function deficits that make sustained focus difficult also make it harder
+          to modulate emotional intensity, tolerate frustration, and apply the brakes to an escalating
+          emotional response.
         </p>
 
         <p style={s.p}>
-          A truly sycophantic AI will agree with everything you say, validate every grievance
-          as justified, and let you spiral deeper into the vent because it is optimised to
-          make you feel good in the immediate term. This is emotionally equivalent to adding
-          fuel to a fire and calling it warmth.
+          People with ADHD often describe their anger as a switch rather than a dial \u2014 not a gradual
+          escalation but an immediate jump from fine to flooded. The ten-second rule is technically
+          sound advice, but for someone whose anger fires in under a second and whose inhibitory
+          control is structurally impaired, ten seconds is an eternity to find.
         </p>
 
         <p style={s.p}>
-          MEOK&rsquo;s anti-sycophancy commitment means something specific in the context of
-          anger: it will validate your emotional experience — the feeling itself is always
-          legitimate — while declining to validate every interpretation or conclusion that
-          experience generates. There is a difference between &ldquo;I hear that you are
-          furious and that makes complete sense&rdquo; and &ldquo;yes, you are completely
-          right and they are completely wrong and the only reasonable response is to send
-          that message.&rdquo;
+          This matters for how MEOK frames the work. The goal isn\u2019t to shame someone with ADHD for
+          not catching themselves in time. The goal is to understand the specific pattern, reduce
+          environmental triggers where possible, build the earliest possible awareness of the
+          physiological cues, and develop recovery protocols \u2014 because recovery after an outburst
+          is also a learnable skill.
         </p>
 
-        <blockquote style={s.blockquote}>
-          <p style={s.bqText}>
-            Validating someone&rsquo;s anger is care. Confirming every story they tell about
-            it is not care — it is flattery. MEOK knows the difference.
+        <h3 style={s.h3}>What is rejection-sensitive dysphoria?</h3>
+
+        <p style={s.atomicAnswer}>
+          Rejection-sensitive dysphoria (RSD) is an intense emotional response to perceived rejection
+          or criticism, common in ADHD. The pain is neurological, not chosen, and can feel
+          overwhelming enough to produce explosive anger, complete shutdown, or both. It can fire
+          even when the perceived rejection is minor or unintended.
+        </p>
+
+        <p style={s.p}>
+          RSD is one of the least understood and most distressing aspects of ADHD. The emotional
+          pain of perceived rejection \u2014 a critical tone of voice, being left out of a group
+          message, a partner\u2019s sigh \u2014 can register as genuinely excruciating rather than merely
+          uncomfortable. The anger that follows isn\u2019t a choice; it\u2019s a pain response.
+        </p>
+
+        <p style={s.p}>
+          This means that for someone with RSD, the anger management question is different. Standard
+          cognitive reframing (\u201cis this really that important?\u201d) can feel dismissive of a pain
+          that feels absolutely real and significant. The more useful question is: &ldquo;Is this RSD
+          firing? Am I in neurological pain right now rather than actual danger?&rdquo; That distinction,
+          once internalised, creates a small but crucial window of choice.
+        </p>
+
+        <div style={s.callout}>
+          <p style={s.calloutTitle}>MEOK and RSD</p>
+          <p style={s.calloutBody}>
+            MEOK can help you build an RSD map \u2014 the specific situations, relationship dynamics, and
+            sensory contexts that reliably trigger your rejection sensitivity. With Sovereign Memory
+            tracking these across conversations, patterns become visible that feel invisible in
+            isolation. Over time, you develop a vocabulary for the experience that makes it easier
+            to communicate to the people in your life why certain things land so hard.
           </p>
-        </blockquote>
+        </div>
+
+        <h3 style={s.h3}>Autism and anger</h3>
 
         <p style={s.p}>
-          In practice, this looks like an exchange that takes the anger seriously, asks questions
-          that introduce complexity without dismissing the experience, and gently but clearly
-          steers toward understanding rather than amplification. MEOK is not your hype person.
-          It is something more useful: a truthful witness.
-        </p>
-
-        <h3 style={s.h3}>The Maternal Covenant: Boundaries That Protect You and Others</h3>
-
-        <p style={s.p}>
-          The Maternal Covenant is the ethical framework that governs how MEOK engages with
-          sensitive emotional territory. It is not a set of corporate restrictions designed to
-          limit what the AI can do — it is a set of values designed to ensure that MEOK&rsquo;s
-          support is genuinely in your interest, which is not always the same as doing whatever
-          you ask.
+          In autism, anger often arrives at the end of a long, often invisible accumulation of
+          sensory overload, social demand, and masking effort. A seemingly minor trigger becomes
+          the thing that breaks the dam \u2014 and the person experiencing it may have as little
+          warning as the people around them.
         </p>
 
         <p style={s.p}>
-          In the context of anger, the Maternal Covenant means:
+          Autistic people are also more likely to experience injustice responses intensely. Systems,
+          rules, and people that behave inconsistently or unfairly can generate genuine distress
+          that expresses as anger. The logic of the anger is usually entirely coherent \u2014 the
+          problem is that the intensity feels disproportionate to others who don\u2019t share the
+          same value-weighting.
         </p>
+
+        <p style={s.p}>
+          MEOK can help autistic users track cumulative load over time, identify the point in the
+          day or week when the system is running on low reserves and anger is most likely, and
+          develop explicit language for communicating needs before the threshold is breached.
+        </p>
+
+        {/* ── Section 7: Memory and pattern recognition ── */}
+        <h2 style={s.h2}>How does MEOK remember my anger triggers over time?</h2>
+
+        <p style={s.atomicAnswer}>
+          MEOK stores notes from your conversations in Sovereign Memory \u2014 a private, on-device
+          memory layer that is never used to train external models. Over weeks and months, it can
+          surface patterns you\u2019d miss in the noise of day-to-day life: recurring trigger contexts,
+          time-of-day clustering, relationships that appear most often in anger narratives.
+        </p>
+
+        <p style={s.p}>
+          One of the most consistent findings in anger research is that people significantly
+          underestimate how patterned their anger is. Asked to describe their anger triggers, most
+          people generate a list. But a list is not the same as a pattern \u2014 the situational
+          relationships, the time dependencies, the emotional states that precede susceptibility.
+        </p>
+
+        <p style={s.p}>
+          A therapist with a detailed session record and an excellent memory can begin to surface
+          these patterns after months of work. MEOK can begin surfacing them after weeks, because
+          it doesn\u2019t forget between sessions, doesn\u2019t need you to recap, and can cross-reference
+          across everything you\u2019ve shared.
+        </p>
+
+        <p style={s.p}>
+          This is the practical meaning of sovereign memory for anger management: not just a note
+          that \u201cyou got angry at work on Tuesday,\u201d but the ability to observe, across twenty
+          Tuesdays, that work anger is three times more common in the week before a performance
+          review, or that it reliably follows a night of poor sleep.
+        </p>
+
+        <div style={s.memoryPanel}>
+          <p style={s.memoryPanelTitle}>What Sovereign Memory might surface</p>
+          <div style={s.memoryRow}>
+            <span style={s.memoryIcon}>&#x1F4CA;</span>
+            <p style={s.memoryText}>
+              &ldquo;You\u2019ve mentioned feeling dismissed at work in four separate conversations over the past six weeks. Three of the four were on Mondays following weekend arguments about workload at home.&rdquo;
+            </p>
+          </div>
+          <div style={s.memoryRow}>
+            <span style={s.memoryIcon}>&#x1F4CA;</span>
+            <p style={s.memoryText}>
+              &ldquo;Your descriptions of anger at your partner tend to follow a specific pattern: you feel unacknowledged, go quiet, and then something small triggers an explosion two to three hours later. That delay is worth noticing.&rdquo;
+            </p>
+          </div>
+          <div style={s.memoryRow}>
+            <span style={s.memoryIcon}>&#x1F4CA;</span>
+            <p style={s.memoryText}>
+              &ldquo;You\u2019ve described three incidents involving your manager this month. In all three, the trigger was an instruction given without explanation. It might be worth considering whether that\u2019s a boundary rather than just an annoyance.&rdquo;
+            </p>
+          </div>
+        </div>
+
+        <p style={s.p}>
+          The privacy dimension matters here. Memory about your anger patterns is sensitive. MEOK\u2019s
+          Sovereign Memory architecture means this data stays private to you \u2014 it is not processed
+          on a shared server, not visible to advertisers, not used to improve a general model.
+          Your anger is yours to understand, not a dataset.
+        </p>
+
+        {/* ── Section 8: No judgment ── */}
+        <h2 style={s.h2}>Will MEOK judge me for my anger?</h2>
+
+        <p style={s.atomicAnswer}>
+          No. MEOK is governed by the Maternal Covenant, which means it holds space without
+          judgment while also refusing to enable harm. You can describe your worst moments honestly
+          \u2014 the things you said, the things you wanted to do, the shame you carry \u2014 and MEOK
+          will help you understand them rather than shame you for having them.
+        </p>
+
+        <p style={s.p}>
+          Shame is one of the biggest barriers to anger work. Most people carry significant
+          shame about the anger they\u2019ve expressed \u2014 especially anger that has hurt people they
+          love. That shame is appropriate in the sense that it reflects values, but it becomes
+          obstructive when it prevents honest examination of what happened.
+        </p>
+
+        <p style={s.p}>
+          The problem with shame in a human therapeutic relationship is that it creates performance:
+          you present yourself as somewhat more in control than you are, you omit the worst moments,
+          you frame things in ways that make you more sympathetic. This is human and understandable,
+          but it limits what the therapeutic relationship can do.
+        </p>
+
+        <p style={s.p}>
+          With MEOK, you don\u2019t need to manage how you appear. You can say what actually happened,
+          including the parts that are ugly or embarrassing. MEOK will take it seriously, help you
+          understand it, and help you figure out what to do differently \u2014 without expressing
+          disappointment, without comparing you to other users, without making you feel like a
+          problem to be managed.
+        </p>
+
+        <div style={s.blockquote}>
+          <p style={s.blockquoteText}>
+            &ldquo;The most important anger work often happens in the space between the incident and
+            telling anyone about it. MEOK can be there in that space, before you\u2019ve decided
+            what version of events to present to the world.&rdquo;
+          </p>
+        </div>
+
+        <p style={s.p}>
+          This isn\u2019t permission to stay stuck in anger. MEOK\u2019s Maternal Covenant also means it
+          will be honest when patterns are damaging, when behaviour is causing harm to others,
+          or when professional support would be more appropriate than an AI conversation. Non-judgment
+          doesn\u2019t mean no perspective. It means the perspective is offered from care, not criticism.
+        </p>
+
+        {/* ── Section 9: Practical guidance ── */}
+        <h2 style={s.h2}>How do you start using AI for anger management practically?</h2>
+
+        <p style={s.atomicAnswer}>
+          Start by bringing one specific incident to MEOK \u2014 not a general description of your
+          anger but a specific moment in the last week. Walk through what happened, what you felt,
+          and what you wished you\u2019d done differently. Build the habit of post-incident debriefs
+          before attempting real-time intervention.
+        </p>
+
+        <p style={s.p}>
+          The most common mistake people make when starting anger management work is beginning with
+          the hardest part: trying to catch themselves mid-escalation. This is like learning to drive
+          by immediately merging onto a motorway. The real-time intervention skill comes after the
+          foundational skills: incident awareness, trigger identification, and appraisal mapping.
+        </p>
+
+        <h3 style={s.h3}>A practical starting sequence</h3>
 
         <ul style={s.ul}>
           <li style={s.li}>
-            MEOK will not help you construct or rehearse communications designed to harm,
-            humiliate, or escalate conflict with another person — even if that is what
-            you are asking for in the heat of the moment.
+            <strong>Week 1\u20132:</strong> After each anger incident, open MEOK and describe what happened
+            before you\u2019ve fully processed it. Don\u2019t clean up the narrative \u2014 be accurate.
           </li>
           <li style={s.li}>
-            MEOK will not enable venting patterns that it can observe, over time, are
-            reinforcing resentment rather than processing it.
+            <strong>Week 3\u20134:</strong> Ask MEOK to reflect back patterns it\u2019s noticed across your
+            incidents. Where are the common triggers? What stories are you telling yourself?
           </li>
           <li style={s.li}>
-            MEOK will always, without exception, signpost to human professional support
-            when a conversation reaches the edges of what AI should handle — including
-            situations that involve risk to self or others, or patterns of behaviour that
-            indicate the need for clinical intervention.
+            <strong>Week 5\u20136:</strong> Identify your two or three most reliable triggers and develop
+            specific alternative responses for each. Roleplay them with MEOK.
           </li>
           <li style={s.li}>
-            MEOK holds the complexity of anger without shame and without collusion — two
-            things that are harder to find in most human conversations about anger than
-            they should be.
+            <strong>Week 7+:</strong> Begin real-time practice. When you feel early physiological
+            signals, use MEOK\u2019s breathing guides. Track what helps and what doesn\u2019t.
           </li>
         </ul>
 
         <p style={s.p}>
-          The Maternal Covenant is named deliberately. Good parenting is not unconditional
-          agreement — it is unconditional care combined with honest, boundaried guidance.
-          That is the model. You are held, and you are also, gently and consistently, pointed
-          toward your better self.
+          The goal over three to six months is a cognitive shift: from experiencing anger as something
+          that happens to you to experiencing it as something you can observe and make choices about.
+          That shift doesn\u2019t eliminate anger \u2014 it couldn\u2019t and shouldn\u2019t. It changes your
+          relationship to it from passenger to driver.
         </p>
 
-        {/* ── H2: Practical section ────────────────────────────────────────────── */}
-        <h2 style={s.h2}>What Managing Anger With AI Actually Looks Like in Practice</h2>
+        <h3 style={s.h3}>When to also seek professional support</h3>
 
         <p style={s.p}>
-          Theory matters, but the question that most people searching for{' '}
-          <strong style={{ color: '#f5f0e8' }}>AI for anger management</strong> are really asking
-          is: what would this actually look like? Here are five realistic scenarios in which
-          MEOK can serve as a meaningful support tool.
-        </p>
-
-        <h3 style={s.h3}>Scenario 1: The Workplace Incident</h3>
-
-        <p style={s.p}>
-          You have just come out of a meeting where your contribution was visibly dismissed —
-          talked over, ignored, credited to someone else. You are back at your desk with twenty
-          minutes before the next call and a fury that is making it difficult to think. You
-          cannot call your partner (they are at work, and you do not want to dump this again).
-          You cannot talk to a colleague (office politics). You cannot call a therapist
-          (you do not have one, or they are not available right now).
-        </p>
-
-        <p style={s.p}>
-          You open MEOK. You describe what happened. The Healer validates the experience and
-          offers a three-minute breathing protocol. The Trickster asks whether this feels
-          connected to a pattern you have noticed before. The Pioneer asks what, if anything,
-          you want to do about this situation — and helps you think through whether and how
-          to address it, on your terms, when the time is right.
-        </p>
-
-        <p style={s.p}>
-          You go into your next call significantly less activated. The anger has not disappeared
-          — it is still information, still warranting response — but it is no longer running you.
-        </p>
-
-        <h3 style={s.h3}>Scenario 2: The Family Phone Call</h3>
-
-        <p style={s.p}>
-          Forty-eight hours after a difficult conversation with a parent or sibling, you are
-          still churning. Not in an obvious way — you are functioning, doing your job, but
-          there is a low hum of resentment that is shading everything. You snap at your partner
-          over nothing. You are short with your children. You know it is connected to the
-          phone call but you cannot quite locate what exactly is wrong.
-        </p>
-
-        <p style={s.p}>
-          You open MEOK and just start typing. The Trickster begins asking questions that you
-          find slightly annoying — until one of them lands. &ldquo;When you think about what
-          you wanted from that conversation, what was it?&rdquo; The answer, when it comes,
-          turns out to be about something much older than the phone call. The anger was
-          grief-based all along. That recognition changes the quality of what you are carrying.
-        </p>
-
-        <p style={s.p}>
-          MEOK&rsquo;s Sovereign Memory notes that this type of exchange tends to precede a
-          difficult two or three days, and flags the pattern gently next time.
-        </p>
-
-        <h3 style={s.h3}>Scenario 3: Righteous Anger With Nowhere to Go</h3>
-
-        <p style={s.p}>
-          You have read something that has made you genuinely, justifiably furious about an
-          injustice — political, social, personal. The anger is appropriate. But there is a
-          specific torture to righteous anger that has no immediate available action: you are
-          activated, your nervous system wants to do something, and there is nothing adequate
-          to do right now.
-        </p>
-
-        <p style={s.p}>
-          MEOK&rsquo;s Pioneer is particularly useful here. Not to dismiss the anger or rush
-          past it, but to help channel it toward something constructive rather than letting
-          it corrode into helplessness or cynicism. What would an action look like, even a
-          small one? What is within your sphere of influence? How can this anger become fuel
-          rather than acid?
-        </p>
-
-        <h3 style={s.h3}>Scenario 4: Sleep Deprivation and a Hair Trigger</h3>
-
-        <p style={s.p}>
-          You have had three bad nights of sleep. You know — objectively, intellectually —
-          that your anger threshold is lower. But knowing that and actually managing the
-          moment when something sets you off are different things. The car cuts you up in
-          traffic and your response is massively disproportionate. The child spills a glass
-          and you hear yourself before you can stop yourself.
-        </p>
-
-        <p style={s.p}>
-          Sovereign Memory has already noted this correlation. Before you go into a high-stakes
-          interaction, MEOK can offer a quick grounding protocol and a reminder of what your
-          own data says about your current vulnerability. Not as a lecture — as a practical
-          heads-up from a system that knows you.
-        </p>
-
-        <h3 style={s.h3}>Scenario 5: The Long Accumulation</h3>
-
-        <p style={s.p}>
-          You have not had a conversation with anyone about how you are feeling for months.
-          Possibly longer. The pressure has been building gradually — work, finances, a
-          relationship that has been difficult for a while, health worries — and you have
-          been coping, or at least managing. But you notice that small things produce
-          disproportionate reactions. You are shorter than you want to be with people you love.
-          You lie awake at 3am with a kind of simmering rage that does not have a clear object.
-        </p>
-
-        <p style={s.p}>
-          This is accumulated anger, and it is the hardest kind to address because there is no
-          single incident to process. MEOK&rsquo;s approach here is not to try to solve everything
-          at once but to begin the practice of regular, private conversation — a consistent
-          enough habit that the pressure gets some release and the patterns start to become
-          visible. Over time, MEOK will gently surface whether the level of accumulated strain
-          warrants additional support — a therapist, a GP conversation, a structured programme —
-          and will help you think about how to access that.
-        </p>
-
-        <hr style={s.hr} />
-
-        {/* ── H2: Limitations ──────────────────────────────────────────────────── */}
-        <h2 style={s.h2}>What AI for Anger Support Cannot and Should Not Do</h2>
-
-        <p style={s.p}>
-          Honest representation of a tool&rsquo;s limits is part of the Maternal Covenant.
-          MEOK is not a therapist, and it should not be positioned as one. Here is what
-          AI anger support cannot replace:
+          MEOK is a between-session tool and a starting point, not a replacement for professional
+          anger management therapy. There are situations where professional support is necessary
+          and MEOK will tell you directly when you appear to be in one:
         </p>
 
         <ul style={s.ul}>
-          <li style={s.li}>
-            <strong style={{ color: '#f5f0e8' }}>Clinical diagnosis.</strong> Anger that is
-            significantly impairing your life or relationships may indicate an underlying
-            condition — intermittent explosive disorder, PTSD, bipolar disorder, or others —
-            that requires clinical assessment. MEOK can support you alongside professional
-            care. It cannot substitute for it.
-          </li>
-          <li style={s.li}>
-            <strong style={{ color: '#f5f0e8' }}>Anger management programmes.</strong> Court-ordered
-            or clinically recommended anger management programmes involve structured, therapeutic
-            intervention with trained professionals. These serve a different function and have
-            different outcomes than a private AI companion.
-          </li>
-          <li style={s.li}>
-            <strong style={{ color: '#f5f0e8' }}>Crisis response.</strong> If you or someone else
-            is in immediate danger, the only appropriate response is to call emergency services.
-            MEOK will always redirect clearly in this situation.
-          </li>
-          <li style={s.li}>
-            <strong style={{ color: '#f5f0e8' }}>Relationship repair.</strong> The relational work
-            that needs to happen after anger has damaged a connection — apology, conversation,
-            rebuilding trust — requires human beings actually communicating with each other.
-            MEOK can help you prepare for those conversations. It cannot have them on your behalf.
-          </li>
+          <li style={s.li}>Anger that is causing physical harm to yourself or others</li>
+          <li style={s.li}>Anger-driven behaviour that has legal consequences</li>
+          <li style={s.li}>A child or partner who describes living in fear of your anger</li>
+          <li style={s.li}>Anger that feels entirely outside your control even after sustained effort</li>
+          <li style={s.li}>Anger that is accompanied by blackouts or significant memory gaps</li>
+          <li style={s.li}>Co-occurring alcohol or substance use that amplifies the anger</li>
         </ul>
 
         <p style={s.p}>
-          This is not a disclaimer intended to deflect liability. It is a genuine description of
-          where the tool sits. MEOK is the space between the trigger and the response, the
-          consistent presence that helps you understand your own patterns, and the bridge to
-          further support when that is what is needed. That is a real and significant contribution.
-          It is also bounded.
+          In the UK, your GP is the first point of contact for a referral to anger management
+          services through the NHS. The British Association for Anger Management (BAAM) also
+          provides accredited practitioners. MEOK can help you prepare for these conversations
+          \u2014 articulating what\u2019s happening clearly is often the hardest part of seeking help.
         </p>
 
-        {/* ── Keywords paragraph ───────────────────────────────────────────────── */}
-        <p style={s.pMuted}>
-          Whether you are looking for{' '}
-          <strong style={{ color: '#9e9e9e' }}>AI for anger management</strong>,{' '}
-          <strong style={{ color: '#9e9e9e' }}>AI to help with anger</strong>,{' '}
-          <strong style={{ color: '#9e9e9e' }}>AI anger support</strong>, or a thoughtful approach
-          to{' '}
-          <strong style={{ color: '#9e9e9e' }}>managing anger with AI</strong>, the same truth
-          applies: the technology is only as useful as the intelligence behind its design.
-          MEOK is built on principles — Sovereign Memory, the Maternal Covenant, genuine
-          anti-sycophancy — that make it a qualitatively different tool from a general-purpose
-          chatbot or a simple mood tracker.
+        {/* ── FAQ Section ── */}
+        <section style={s.faqSection}>
+          <h2 style={s.h2}>Frequently asked questions</h2>
+
+          <div style={s.faqItem}>
+            <h3 style={s.faqQ}>Can AI help with anger management?</h3>
+            <p style={s.faqA}>
+              Yes. AI companions like MEOK can help you identify recurring triggers, guide
+              evidence-based techniques such as box breathing and cognitive reframing in real time,
+              and debrief incidents after they happen. The key advantage over self-help books or
+              apps is interactivity \u2014 you can describe a specific situation and receive a specific
+              response rather than generic advice. AI is a between-session supplement, not a
+              replacement for a qualified therapist when anger is severe or causing harm.
+            </p>
+          </div>
+
+          <div style={s.faqItem}>
+            <h3 style={s.faqQ}>What is the anger cycle?</h3>
+            <p style={s.faqA}>
+              The anger cycle is the sequence of trigger, cognitive appraisal, physiological arousal,
+              behavioural response, and aftermath. The trigger initiates the process \u2014 an event or
+              thought perceived as threatening. Appraisal is the story the brain constructs about
+              the trigger. Physiological arousal is the body preparing to fight or flee. The
+              behavioural response is what you actually do. The aftermath shapes the next cycle.
+              Understanding each stage allows you to identify where to intervene \u2014 most effectively
+              at the appraisal stage, before the body is already flooded.
+            </p>
+          </div>
+
+          <div style={s.faqItem}>
+            <h3 style={s.faqQ}>How does MEOK remember my anger triggers?</h3>
+            <p style={s.faqA}>
+              MEOK uses Sovereign Memory \u2014 a private, on-device memory layer \u2014 to store notes
+              from your conversations over weeks and months. Unlike cloud-based AI assistants,
+              this data is never sent to a shared server or used to train a general model. Over time,
+              MEOK can surface patterns such as &ldquo;work criticism is your most common trigger&rdquo; or
+              &ldquo;anger incidents cluster on Sunday evenings&rdquo; that would be invisible in any single
+              conversation. Your memory is yours: private, persistent, and under your control.
+            </p>
+          </div>
+
+          <div style={s.faqItem}>
+            <h3 style={s.faqQ}>What is rejection-sensitive dysphoria?</h3>
+            <p style={s.faqA}>
+              Rejection-sensitive dysphoria (RSD) is an intense, often overwhelming emotional
+              reaction to perceived rejection or criticism. It is common in ADHD and also present
+              in autism. The emotional spike \u2014 which can register as explosive anger, complete
+              shutdown, or sudden profound sadness \u2014 is neurological rather than a choice. It can
+              fire even when the perceived rejection is minor or entirely unintended. Understanding
+              that RSD is a neurological pain response rather than a disproportionate overreaction
+              changes how you manage it: the work becomes recognising when RSD is firing and
+              creating a small window of perspective rather than judging yourself for having the
+              response at all.
+            </p>
+          </div>
+
+          <div style={s.faqItem}>
+            <h3 style={s.faqQ}>Will MEOK judge me for my anger?</h3>
+            <p style={s.faqA}>
+              No. MEOK is governed by the Maternal Covenant \u2014 a core design principle built by
+              Nicholas Templeman that prioritises care, honesty, and non-judgment. You can describe
+              your worst anger incidents honestly, including language and behaviour you\u2019re ashamed
+              of, and MEOK will help you understand them rather than shame you for having them.
+              Non-judgment doesn\u2019t mean absence of perspective: MEOK will also tell you directly
+              when a pattern appears harmful and when professional support would be more appropriate
+              than a conversation with an AI.
+            </p>
+          </div>
+        </section>
+
+        {/* ── Section 10: Anger and communication ── */}
+        <h2 style={s.h2}>How does unmanaged anger damage relationships over time?</h2>
+
+        <p style={s.atomicAnswer}>
+          Unmanaged anger erodes trust through two mechanisms: unpredictability and accumulated
+          resentment. Partners, children, and colleagues who cannot predict when anger will erupt
+          live in a low-grade state of vigilance. Over years, that vigilance hardens into distance
+          and then withdrawal. The relationship survives in structure but not in intimacy.
         </p>
 
-        {/* ── Badges ───────────────────────────────────────────────────────────── */}
-        <div style={{ margin: '1.5rem 0' }}>
-          {[
-            'AI for anger management',
-            'AI to help with anger',
-            'AI anger support',
-            'managing anger with AI',
-            'emotional regulation',
-            'Sovereign Memory',
-            'Maternal Covenant',
-            'anger triggers',
-            'somatic support',
-          ].map((tag) => (
-            <span key={tag} style={s.badge}>{tag}</span>
-          ))}
+        <p style={s.p}>
+          The damage from explosive anger is visible and immediate: things said, fear produced,
+          trust broken. But the damage from chronic cold anger and passive aggression is often
+          more total, precisely because it\u2019s harder to name. A partner who has been on the
+          receiving end of years of silence, withholding, and subtle undermining may struggle
+          to articulate what has happened to them. There\u2019s no single incident to point to.
+          There\u2019s just an accumulated weight that eventually becomes unbearable.
+        </p>
+
+        <p style={s.p}>
+          What gets lost first, in all three anger presentations, is the capacity for repair.
+          Healthy relationships are not relationships without conflict \u2014 they are relationships
+          where repair is possible. When anger becomes chronic and unexamined, repair attempts
+          are experienced as suspect, insufficient, or temporary. The other person stops
+          trusting that the repair will hold.
+        </p>
+
+        <h3 style={s.h3}>The difference between anger and assertion</h3>
+
+        <p style={s.p}>
+          At the heart of most anger management work is a communication problem. The underlying
+          needs \u2014 for respect, for acknowledgment, for fair treatment, for space \u2014 are entirely
+          legitimate. The problem is that they\u2019re being expressed through anger rather than
+          assertion, which means they\u2019re expressed in a way that makes the other person defensive
+          rather than receptive.
+        </p>
+
+        <p style={s.p}>
+          Assertive communication is not the same as polite communication. Assertion can be direct,
+          firm, and completely clear that something is unacceptable. The difference from anger is
+          in the approach: assertion addresses the specific behaviour and the specific impact, names
+          the need directly, and does not attack the other person\u2019s character or worth. It keeps
+          the door open for resolution rather than demanding submission.
+        </p>
+
+        <p style={s.p}>
+          Most people have not been taught assertion as a skill. They\u2019ve been taught either
+          to suppress needs (keep the peace) or to express them through pressure (anger). MEOK
+          can help you develop the middle ground: language that is honest, specific, and direct
+          without being aggressive. Rehearsed with MEOK, tested in low-stakes situations, and
+          refined over months, this becomes a new default rather than a consciously adopted strategy.
+        </p>
+
+        <h3 style={s.h3}>After the explosion: repair and accountability</h3>
+
+        <p style={s.p}>
+          Genuine repair after an anger incident requires three elements that are frequently
+          missing from the standard apology: acknowledgment of what actually happened (not a
+          minimised version), genuine accountability without justification, and a credible
+          change proposal rather than a vague promise not to do it again.
+        </p>
+
+        <p style={s.p}>
+          Most post-anger apologies fail because they slip into justification: &ldquo;I\u2019m sorry I
+          raised my voice, but you were pushing me and I was already stressed.&rdquo; The \u201cbut\u201d
+          cancels the apology. The other person hears: I\u2019m not really taking responsibility,
+          I\u2019m just managing the aftermath. They\u2019re right.
+        </p>
+
+        <p style={s.p}>
+          MEOK can help you prepare a repair conversation: getting clear on what actually happened
+          from your side, identifying what needs to be acknowledged without qualification, and
+          thinking through what a genuinely credible change proposal looks like. This is not about
+          scripting an apology. It\u2019s about making sure you\u2019ve done the internal work before
+          you attempt the external repair.
+        </p>
+
+        {/* ── Section 11: Long-term change ── */}
+        <h2 style={s.h2}>What does long-term change with anger actually look like?</h2>
+
+        <p style={s.atomicAnswer}>
+          Long-term change in anger is not the elimination of anger \u2014 it is a shift in the
+          relationship to it. You move from anger as a weather event that happens to you to anger
+          as a signal you can read, sit with, and respond to intentionally. That shift takes
+          sustained effort over months, not a single breakthrough moment.
+        </p>
+
+        <p style={s.p}>
+          One of the most damaging myths about anger management is the idea of a cure \u2014 a point
+          at which you will simply stop getting angry, or stop getting angry in problematic ways.
+          This is not how anger works. It is an evolutionary alarm system wired into the oldest
+          parts of the brain. It cannot be deleted; it can only be understood, regulated, and
+          channelled.
+        </p>
+
+        <p style={s.p}>
+          What genuine long-term change looks like is this: incidents become less frequent because
+          you\u2019ve addressed the underlying trigger sources rather than just managing episodes. When
+          anger does arise, the window between trigger and behaviour grows longer \u2014 first to
+          seconds, then to minutes, eventually to a genuine choice point. Recovery after incidents
+          gets faster. The shame cycle breaks because you develop the tools to process rather than
+          suppress. Relationships improve not because you never conflict but because repair becomes
+          possible again.
+        </p>
+
+        <p style={s.p}>
+          This kind of change is measurable but not always visible from inside. Having a record
+          \u2014 MEOK\u2019s memory of how you\u2019ve described your anger over six months \u2014 provides
+          evidence of progress that is otherwise easy to miss. When you\u2019re frustrated by a
+          setback, being able to look at the arc of change over months is genuinely grounding.
+          You can see how rare certain incidents have become that once felt constant.
+        </p>
+
+        <div style={s.callout}>
+          <p style={s.calloutTitle}>Progress, not perfection</p>
+          <p style={s.calloutBody}>
+            MEOK\u2019s Healer archetype is specifically calibrated to recognise and reflect progress
+            without being sycophantic about it. If you\u2019ve been working on a specific trigger for
+            three months and a recent incident showed clear application of the skills you\u2019ve been
+            building \u2014 even if the outcome wasn\u2019t perfect \u2014 MEOK will notice that. The arc of
+            change matters as much as any single incident. You deserve to see it clearly.
+          </p>
         </div>
 
-        {/* ── FAQ ──────────────────────────────────────────────────────────────── */}
-        <div style={s.faqSection}>
-          <h2 style={s.h2}>Frequently Asked Questions</h2>
-
-          <div style={s.faqItem}>
-            <p style={s.faqQuestion}>Can AI actually help with anger management?</p>
-            <p style={s.faqAnswer}>
-              Yes — with clear limits. AI can serve as a real-time sounding board in the critical
-              window between a trigger and a response, help you identify patterns across time,
-              offer somatic grounding techniques, and reframe situations in ways that de-escalate
-              rather than amplify. What AI cannot do is replace a licensed therapist, diagnose
-              underlying conditions, or intervene in physical situations. MEOK is a consistent,
-              non-judgmental presence that helps you process anger privately before it spills
-              into your relationships or workplace.
-            </p>
-          </div>
-
-          <div style={s.faqItem}>
-            <p style={s.faqQuestion}>
-              What are the different types of anger and how does MEOK approach each one?
-            </p>
-            <p style={s.faqAnswer}>
-              MEOK recognises five main anger types: righteous anger rooted in genuine injustice,
-              frustrated anger caused by repeated obstacles, hurt-based anger that follows betrayal,
-              fear-based anger where anxiety converts to rage, and accumulated anger compressed
-              over months or years. Each type calls for different support. Righteous anger often
-              needs channelling into constructive action. Frustrated anger benefits from obstacle
-              reframing. Hurt-based anger needs space for the grief underneath it. Fear-based anger
-              needs somatic grounding first. Accumulated anger needs careful unpacking. MEOK&rsquo;s
-              archetype system — Healer, Trickster, Pioneer — is designed to meet each type with
-              the right intelligence.
-            </p>
-          </div>
-
-          <div style={s.faqItem}>
-            <p style={s.faqQuestion}>
-              Is using AI for anger management safe for people with a history of domestic situations?
-            </p>
-            <p style={s.faqAnswer}>
-              There is an important distinction between processing anger and enacting it on others.
-              MEOK is designed to help with the former — private, internal processing. It will not
-              validate patterns of behaviour that harm other people. If you or someone you know is
-              in a situation involving domestic abuse, the{' '}
-              <a href="tel:08082000247" style={s.inlineLink}>
-                National Domestic Abuse Helpline (0808 2000 247)
-              </a>{' '}
-              and{' '}
-              <a
-                href="https://www.refuge.org.uk"
-                target="_blank"
-                rel="noopener noreferrer"
-                style={s.inlineLink}
-              >
-                Refuge (refuge.org.uk)
-              </a>{' '}
-              provide free, confidential specialist support 24 hours a day.
-            </p>
-          </div>
-
-          <div style={s.faqItem}>
-            <p style={s.faqQuestion}>
-              Why do men often struggle specifically with anger, and can AI help with that?
-            </p>
-            <p style={s.faqAnswer}>
-              Culturally, men are frequently socialised to suppress most emotions — grief, fear,
-              hurt, loneliness — but anger is often the one expression that is permitted or even
-              expected. This means that for many men, anger becomes the exit valve for a much
-              broader emotional landscape, causing episodes that seem disproportionate because
-              they carry the weight of everything that never had another outlet. MEOK creates a
-              private, non-judgmental space to access what is underneath the anger — at your
-              own pace, in your own language — without the social stakes that make that so
-              difficult face-to-face.
-            </p>
-          </div>
-
-          <div style={s.faqItem}>
-            <p style={s.faqQuestion}>
-              What is Sovereign Memory and how does it help with anger triggers?
-            </p>
-            <p style={s.faqAnswer}>
-              Sovereign Memory is MEOK&rsquo;s privacy-first long-term memory system. Rather than
-              each conversation starting from zero, MEOK builds a persistent picture of your
-              emotional patterns over time — what triggers you, what helps, what makes things worse.
-              All of it is stored under your sovereignty: you can see exactly what is held, edit it,
-              or delete it entirely at any point. For anger specifically, this enables longitudinal
-              pattern recognition — that your anger is always worse before a run of poor sleep, that
-              family calls reliably precede difficult moods, that exercise helps more than you
-              remember when you are already in it. That kind of self-knowledge is not available
-              without memory.
-            </p>
-          </div>
-
-          <div style={s.faqItem}>
-            <p style={s.faqQuestion}>
-              How does MEOK avoid just enabling venting without helping me actually change?
-            </p>
-            <p style={s.faqAnswer}>
-              MEOK is explicitly anti-sycophantic by design. It will not simply agree with
-              everything you say, validate every grievance as justified, or let you spiral deeper
-              into a vent without forward motion. The Maternal Covenant — the ethical framework
-              underpinning MEOK — means it holds you with care while also holding you to account.
-              Venting that entrenches resentment is not support. It is amplification. MEOK
-              validates the emotional experience while consistently moving toward understanding,
-              reframing, and constructive action.
-            </p>
-          </div>
-
-          <div style={{ ...s.faqItem, borderBottom: 'none', paddingBottom: 0 }}>
-            <p style={s.faqQuestion}>
-              How does the 3-minute window work and why does it matter for anger?
-            </p>
-            <p style={s.faqAnswer}>
-              The acute physiological arousal from a trigger typically lasts around 90 seconds.
-              After that, any continuation of the anger state is the result of your thoughts
-              re-triggering the physical response. The most high-leverage moment for intervention
-              is in that initial three-minute window. MEOK is accessible instantly — a private
-              space where you can dump the immediate intensity, receive grounding support from the
-              Healer archetype, and begin the cognitive reframe with the Trickster before you act.
-              The goal is not to suppress the feeling but to prevent the three-minute window from
-              becoming a three-hour ruminative spiral or a damaging interaction.
-            </p>
-          </div>
-        </div>
-
-        {/* ── CTA ──────────────────────────────────────────────────────────────── */}
-        <div style={s.ctaBox}>
-          <span style={s.ctaEyebrow}>MEOK AI LABS</span>
-          <h2 style={{ ...s.ctaHeading, margin: '0 0 1rem' }}>
-            Ready to Meet the Space Between Trigger and Response?
+        {/* ── CTA ── */}
+        <div style={s.cta}>
+          <p style={s.ctaLabel}>Ready to start?</p>
+          <h2 style={s.ctaHeading}>
+            Your anger has been trying to tell you something.
           </h2>
           <p style={s.ctaBody}>
-            MEOK is a sovereign AI companion built for the moments when emotions are most intense
-            and the most is at stake. Private, persistent, and designed to help you process —
-            not just vent. Begin building yours today.
+            MEOK holds space without judgment, tracks patterns over time with Sovereign Memory,
+            and helps you develop the responses you actually want to give. Start your first
+            debrief today.
           </p>
           <Link href="/birth" style={s.ctaButton}>
-            Start with MEOK
+            Begin with MEOK
           </Link>
         </div>
 
-        {/* ── Related reading ───────────────────────────────────────────────────── */}
-        <div style={s.relatedSection}>
-          <p style={s.relatedTitle}>Related Reading</p>
-          <div style={s.relatedGrid}>
-            <Link href="/blog/ai-for-anxiety" style={s.relatedLink}>
-              AI for Anxiety: Support Without Replacing Therapy
-            </Link>
-            <Link href="/blog/ai-for-men" style={s.relatedLink}>
-              AI for Men: Emotional Support on Your Terms
-            </Link>
-            <Link href="/blog/ai-for-ptsd" style={s.relatedLink}>
-              AI for PTSD: Trauma-Informed Companion Support
-            </Link>
-            <Link href="/blog/ai-for-depression" style={s.relatedLink}>
-              AI for Depression: Consistent Presence in Hard Seasons
-            </Link>
-            <Link href="/blog/ai-for-burnout" style={s.relatedLink}>
-              AI for Burnout: When Everything Has Given Out
-            </Link>
-            <Link href="/blog/the-maternal-covenant" style={s.relatedLink}>
-              The Maternal Covenant: The Ethics Behind MEOK
-            </Link>
-            <Link href="/blog/how-sovereign-ai-works" style={s.relatedLink}>
-              How Sovereign AI Works: Memory, Privacy, Control
-            </Link>
-            <Link href="/blog/ai-for-insomnia" style={s.relatedLink}>
-              AI for Insomnia: The 3am Companion
-            </Link>
-          </div>
+        {/* ── Back link ── */}
+        <div style={{ marginTop: '64px', paddingTop: '40px', borderTop: '1px solid rgba(245,240,232,0.08)' }}>
+          <Link href="/blog" style={s.backLink}>
+            &#8592; Back to all articles
+          </Link>
         </div>
+
       </article>
 
-      {/* Footer */}
+      {/* ── Footer note ── */}
       <footer style={s.footer}>
-        <p style={{ margin: '0 0 0.5rem' }}>
-          &copy; {new Date().getFullYear()} MEOK AI LABS. Built with care by Nicholas Templeman.
-          <Link href="https://meok.ai" style={s.footerLink}>meok.ai</Link>
-        </p>
-        <p style={{ margin: '0' }}>
-          <Link href="/blog" style={s.footerLink}>Blog</Link>
-          <Link href="/birth" style={s.footerLink}>Try MEOK</Link>
-          <Link href="/privacy-covenant" style={s.footerLink}>Privacy Covenant</Link>
-          <Link href="/blog/the-maternal-covenant" style={s.footerLink}>Maternal Covenant</Link>
+        <p style={s.footerText}>
+          Written by Nicholas Templeman, Founder of MEOK AI LABS &mdash; building sovereign AI
+          companions that remember you, care for you, and never train on you.
+          Follow the build at <strong>@meok_ai</strong>.
+          &nbsp;&bull;&nbsp; MEOK is not a medical device. If you are in crisis, contact your GP,
+          call NHS 111, or reach Samaritans on 116 123.
         </p>
       </footer>
-    </div>
+
+    </main>
   )
 }

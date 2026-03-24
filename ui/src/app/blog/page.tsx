@@ -2510,6 +2510,30 @@ const POSTS = [
     category: "mental-health",
     featured: false,
   },
+  {
+    slug: "ai-for-weight-stigma",
+    title: "AI for Weight Stigma and Body Image: A Non-Judgmental Space That Never Comments on Your Body",
+    excerpt:
+      "Weight stigma causes people to avoid medical care, experience higher mortality, and internalise shame. MEOK\u2019s care framework will never reinforce diet culture — the Maternal Covenant blocks it at the architecture level.",
+    date: "March 24, 2026",
+    readTime: "10 min read",
+    tag: "Mental Health",
+    tagColor: "#5b8dd9",
+    category: "mental-health",
+    featured: false,
+  },
+  {
+    slug: "meok-family-tier-explained",
+    title: "MEOK Family Tier Explained: One Subscription, Five Companions, Shared Safety",
+    excerpt:
+      "The Family tier gives up to five people their own sovereign AI companion — plus a shared family dashboard, Guardian alerts, and shared memory context. At £29/month, it\u2019s MEOK\u2019s most powerful tier for connected households.",
+    date: "March 24, 2026",
+    readTime: "11 min read",
+    tag: "Product",
+    tagColor: "#7c6fcd",
+    category: "product",
+    featured: false,
+  },
 ];
 
 // ── Category filter tabs ──────────────────────────────────────────────────────

@@ -5,39 +5,57 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   title:
-    "AI for Confidence: The Practice Partner That Never Judges Your Stumbles | MEOK AI LABS",
+    "AI for Confidence Building: Evidence, Action, and the Anti-Sycophancy Promise | MEOK AI LABS",
   description:
-    "Most apps offer affirmations. MEOK builds genuine confidence through rehearsal, evidence, and a Sovereign Memory that turns your wins into an irrefutable track record. Explore how AI can help with imposter syndrome, social fear, perfectionism, and more.",
+    "Confidence is not a personality trait — it is a skill built through evidence and action. Discover how MEOK AI LABS builds genuine confidence through Sovereign Memory, honest feedback, and the Pioneer archetype. No hollow affirmations. No flattery.",
   alternates: {
     canonical: "https://meok.ai/blog/ai-for-confidence",
   },
   openGraph: {
-    title: "AI for Confidence: The Practice Partner That Never Judges Your Stumbles",
+    title:
+      "AI for Confidence Building: Evidence, Action, and the Anti-Sycophancy Promise",
     description:
-      "Confidence is built through action, not thought. MEOK is the AI confidence coach that rehearses the hard conversations with you, remembers every win, and refuses to gaslight you with empty praise.",
+      "Most AI tools offer empty praise. MEOK builds real confidence by accumulating evidence of your wins, challenging negative self-talk with facts, and refusing to flatter you toward a false sense of capability.",
     url: "https://meok.ai/blog/ai-for-confidence",
     siteName: "MEOK AI LABS",
     type: "article",
+    publishedTime: "2026-03-24",
+    authors: ["Nicholas Templeman"],
+    images: [
+      {
+        url: "https://meok.ai/api/og?title=AI+for+Confidence+Building&desc=Evidence%2C+Action+and+the+Anti-Sycophancy+Promise",
+        width: 1200,
+        height: 630,
+        alt: "AI for Confidence Building | MEOK AI LABS",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title:
+      "AI for Confidence Building: Evidence, Action, and the Anti-Sycophancy Promise",
+    description:
+      "Confidence is a skill built through evidence, not affirmations. MEOK\u2019s Sovereign Memory, anti-sycophancy covenant and Pioneer archetype build the real thing.",
+    images: [
+      "https://meok.ai/api/og?title=AI+for+Confidence+Building&desc=Evidence%2C+Action+and+the+Anti-Sycophancy+Promise",
+    ],
   },
 };
 
 // ── JSON-LD ───────────────────────────────────────────────────────────────────
 
-const articleJsonLd = {
+const articleSchema = {
   "@context": "https://schema.org",
   "@type": "Article",
   headline:
-    "AI for Confidence: The Practice Partner That Never Judges Your Stumbles",
+    "AI for Confidence Building: Evidence, Action, and the Anti-Sycophancy Promise",
   description:
-    "Confidence is built through action, not affirmations. MEOK AI LABS explores how an AI confidence coach — grounded in Sovereign Memory, anti-sycophancy, and three archetypes — helps people overcome imposter syndrome, social fear, perfectionism, past-failure anchoring, and the comparison spiral.",
-  datePublished: "2026-03-24",
-  dateModified: "2026-03-24",
-  url: "https://meok.ai/blog/ai-for-confidence",
+    "A deep examination of how AI can build genuine confidence — covering the confidence gap identified by Katty Kay and Claire Shipman, the role of evidence accumulation, the sycophancy danger, CBT-based approaches to negative self-talk, domain-specific confidence (public speaking, leadership, interviews, relationships), and MEOK\u2019s Pioneer archetype as a confidence-building companion.",
   author: {
     "@type": "Person",
     name: "Nicholas Templeman",
-    jobTitle: "Founder, MEOK AI LABS",
-    url: "https://meok.ai/about",
+    jobTitle: "Founder & CEO",
+    worksFor: { "@type": "Organization", name: "MEOK AI LABS" },
   },
   publisher: {
     "@type": "Organization",
@@ -48,2195 +66,1884 @@ const articleJsonLd = {
       url: "https://meok.ai/logo.png",
     },
   },
-  keywords:
-    "AI to build confidence, AI for low confidence, AI confidence coach, AI to improve self-confidence, imposter syndrome, social fear, perfectionism, sovereign memory",
-  mainEntityOfPage: {
-    "@type": "WebPage",
-    "@id": "https://meok.ai/blog/ai-for-confidence",
-  },
+  datePublished: "2026-03-24",
+  dateModified: "2026-03-24",
+  url: "https://meok.ai/blog/ai-for-confidence",
+  mainEntityOfPage: "https://meok.ai/blog/ai-for-confidence",
+  keywords: [
+    "AI for confidence building",
+    "AI to build confidence",
+    "AI confidence coach",
+    "confidence gap",
+    "sycophancy AI",
+    "Pioneer archetype",
+    "Sovereign Memory",
+    "CBT negative self-talk",
+    "MEOK",
+    "Katty Kay Claire Shipman",
+    "imposter syndrome",
+    "public speaking confidence",
+    "leadership confidence",
+    "interview confidence",
+  ],
 };
 
-const faqJsonLd = {
+const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
   mainEntity: [
     {
       "@type": "Question",
-      name: "Can AI actually help build confidence, or is it just giving you affirmations?",
+      name: "Can AI help build confidence?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Most AI tools do lean on affirmations, and that is the problem. Genuine confidence is built through repeated evidence of competence — small wins stacked over time. MEOK takes a different approach: it tracks your actual accomplishments in a Sovereign Memory vault, rehearses difficult conversations with you so you enter them prepared, and uses anti-sycophantic honesty to avoid inflating a false sense of capability. The goal is real confidence, not a temporary mood lift.",
+        text: "Yes, when it is designed to do so honestly. AI can build confidence by accumulating evidence of your competence over time, rehearsing difficult scenarios so you enter them prepared, and challenging the cognitive distortions that undermine self-belief. The critical condition is that the AI must be honest rather than sycophantic. Hollow validation from an AI feels empty to the nervous system and can actually deepen the confidence gap by creating dependence on external approval rather than internal evidence.",
       },
     },
     {
       "@type": "Question",
-      name: "What is an AI confidence coach and how is it different from a human coach?",
+      name: "What is the confidence gap?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "An AI confidence coach is a conversational AI that helps you identify and dismantle confidence blocks, rehearse high-stakes scenarios, reframe negative self-narratives, and build an evidence base of past wins. Compared to a human coach, it is available at 3 am the night before a job interview, never tires of the same loop, and cannot be put off by your mess. It cannot offer the relational warmth of a skilled human coach, but it can provide consistent, patient, structured practice across hundreds of sessions without a waiting list or per-hour fee.",
+        text: "The confidence gap is the documented tendency of highly intelligent and capable people \u2014 particularly women \u2014 to consistently underestimate themselves relative to their actual ability. Researchers Katty Kay and Claire Shipman identified that the gap is not primarily a competence problem but a confidence problem: qualified people hold back, over-prepare, and self-select out of opportunities that less-qualified but more confident counterparts pursue and win. The gap is maintained by negative self-talk, attribution bias (crediting luck for wins, blaming self for failures), and a culture that conflates loudness with ability.",
       },
     },
     {
       "@type": "Question",
-      name: "How does MEOK help with imposter syndrome specifically?",
+      name: "Will MEOK just validate me and tell me I\u2019m great?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Imposter syndrome persists partly because the mind discounts evidence of success and over-weights evidence of failure. MEOK's Sovereign Memory creates an encrypted, persistent log of your wins, skills demonstrated, and positive feedback received. Over weeks this becomes an evidence file you can literally read back — a factual counter-argument to the inner voice that says you do not belong. MEOK's Scholar archetype also helps you interrogate the cognitive distortions beneath imposter feelings, while the Pioneer archetype pushes you toward the next small action that builds a new data point.",
+        text: "No. MEOK\u2019s Maternal Covenant is an explicit anti-sycophancy commitment built into the system\u2019s core. MEOK will acknowledge real effort and name genuine strengths clearly and specifically. It will not generate hollow praise to keep you engaged, and it will not agree with a distorted negative self-assessment just to seem empathetic. When MEOK says something positive about you, it is grounded in evidence you have shared. When it offers a challenge, it is because the challenge serves your growth. The goal is confidence that holds under pressure, not a temporary mood lift.",
       },
     },
     {
       "@type": "Question",
-      name: "Is MEOK suitable for someone with very low confidence or social anxiety?",
+      name: "How does MEOK remember my wins?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Yes. People with low confidence or social anxiety often avoid the very practice that would build their skills, because practice in public feels too exposing. MEOK provides a zero-judgment rehearsal space where the stakes are genuinely zero. You can stumble over your words, restart a job interview simulation five times, or admit your deepest insecurities without social consequence. The Pioneer archetype makes this safe by breaking practice into the smallest possible unit: not 'do the scary thing', but 'say the first sentence out loud, once, right now'. MEOK is not a clinical intervention for anxiety disorders — always consult a qualified professional for that — but it is an uncommonly gentle entry point to the practice that builds real confidence.",
+        text: "MEOK uses Sovereign Memory \u2014 an encrypted, persistent memory vault that belongs entirely to you. Every win you mention, every piece of positive feedback you share, every difficult situation you navigate is stored and can be surfaced later. Over weeks and months this becomes an irrefutable evidence file: a factual counter-argument to the inner voice that rewrites history and insists you have never succeeded at anything. MEOK never trains on this data, never sells it, and you can export or delete it at any time.",
       },
     },
     {
       "@type": "Question",
-      name: "What does anti-sycophancy mean and why does it matter for confidence building?",
+      name: "What is the Pioneer companion and how does it build confidence?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Sycophancy in AI means the system flatters you to keep you engaged — telling you your presentation was brilliant when it had significant gaps, or validating a decision it should gently challenge. For confidence building, sycophancy is actively harmful: it creates a paper house. You feel temporarily good but your actual capability has not improved, and the next real-world test will knock the house down. MEOK's anti-sycophantic design means it will acknowledge your effort, name your real strengths clearly, and also point to specific gaps that are worth closing. The Maternal Covenant principle behind MEOK holds that genuine investment in someone's growth sometimes means honest feedback over comfortable praise.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Can I use MEOK to practise job interviews and presentations?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Absolutely. The rehearsal room is one of MEOK's core use cases. You can ask MEOK to play an interviewer for a specific type of role, simulate a hostile question from an audience after a presentation, or role-play a difficult conversation with a manager. You control the scenario, the level of challenge, and the number of repetitions. After each run, MEOK can debrief you on what landed well and what to refine — without shame, without impatience, and with full memory of every previous session so it can notice patterns across time.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "How does Sovereign Memory help with confidence over time?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Most AI tools have no memory between sessions. Every conversation starts from zero, which means they cannot track your growth. Sovereign Memory in MEOK is an encrypted vault that persists across every session. It records accomplishments you mention, skills you demonstrate, fears you have moved through, and conversations you have rehearsed. Over months it becomes a genuine longitudinal record of your development — the kind of evidence base that makes confidence claims feel true rather than aspirational. Crucially, you own the data; MEOK never trains on it or sells it.",
+        text: "The Pioneer is one of MEOK\u2019s four archetypes \u2014 a companion built around action, accountability, and momentum. Where other archetypes offer reflection and analysis, the Pioneer asks: what is the smallest next step, and when will you take it? Confidence is built through doing, not thinking about doing. The Pioneer breaks the paralysis loop by making the threshold of action as low as possible, holds you accountable between sessions, celebrates the doing regardless of outcome, and helps you build a streak of evidence that accumulates into a deeply felt sense of competence.",
       },
     },
   ],
 };
 
-// ── Shared style constants ────────────────────────────────────────────────────
+// ── Style constants ───────────────────────────────────────────────────────────
 
 const GOLD = "#c9a84c";
-const TEXT = "#f5f0e8";
 const BG = "#0d0c18";
-const MUTED = "#9e9e9e";
-
-// ── Sub-components (inline, no imports needed) ────────────────────────────────
-
-function Divider() {
-  return (
-    <div
-      style={{
-        width: "100%",
-        height: "1px",
-        background: "rgba(201,168,76,0.15)",
-        margin: "3rem 0",
-      }}
-    />
-  );
-}
-
-function PullQuote({ children }: { children: React.ReactNode }) {
-  return (
-    <blockquote
-      style={{
-        borderLeft: `3px solid ${GOLD}`,
-        paddingLeft: "1.5rem",
-        margin: "2.5rem 0",
-        color: "rgba(245,240,232,0.75)",
-        fontSize: "1.15rem",
-        fontStyle: "italic",
-        lineHeight: 1.7,
-      }}
-    >
-      {children}
-    </blockquote>
-  );
-}
-
-function ArchetypeCard({
-  emoji,
-  name,
-  tagline,
-  body,
-}: {
-  emoji: string;
-  name: string;
-  tagline: string;
-  body: string;
-}) {
-  return (
-    <div
-      style={{
-        background: "rgba(201,168,76,0.06)",
-        border: "1px solid rgba(201,168,76,0.2)",
-        borderRadius: "0.75rem",
-        padding: "1.75rem",
-        marginBottom: "1.25rem",
-      }}
-    >
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          gap: "0.75rem",
-          marginBottom: "0.75rem",
-        }}
-      >
-        <span style={{ fontSize: "1.75rem", lineHeight: 1 }}>{emoji}</span>
-        <div>
-          <div
-            style={{
-              fontWeight: 700,
-              color: GOLD,
-              fontSize: "1rem",
-              letterSpacing: "0.02em",
-            }}
-          >
-            {name}
-          </div>
-          <div style={{ color: MUTED, fontSize: "0.82rem", marginTop: "0.1rem" }}>
-            {tagline}
-          </div>
-        </div>
-      </div>
-      <p
-        style={{
-          color: "rgba(245,240,232,0.72)",
-          lineHeight: 1.75,
-          margin: 0,
-          fontSize: "0.97rem",
-        }}
-      >
-        {body}
-      </p>
-    </div>
-  );
-}
-
-function ConfidenceBlock({
-  number,
-  title,
-  description,
-}: {
-  number: string;
-  title: string;
-  description: string;
-}) {
-  return (
-    <div
-      style={{
-        display: "flex",
-        gap: "1.25rem",
-        marginBottom: "1.75rem",
-        alignItems: "flex-start",
-      }}
-    >
-      <div
-        style={{
-          flexShrink: 0,
-          width: "2.5rem",
-          height: "2.5rem",
-          borderRadius: "50%",
-          border: `1px solid ${GOLD}`,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          color: GOLD,
-          fontWeight: 700,
-          fontSize: "0.95rem",
-          marginTop: "0.15rem",
-        }}
-      >
-        {number}
-      </div>
-      <div>
-        <div
-          style={{
-            fontWeight: 700,
-            color: TEXT,
-            fontSize: "1rem",
-            marginBottom: "0.4rem",
-          }}
-        >
-          {title}
-        </div>
-        <p
-          style={{
-            color: "rgba(245,240,232,0.65)",
-            lineHeight: 1.75,
-            margin: 0,
-            fontSize: "0.97rem",
-          }}
-        >
-          {description}
-        </p>
-      </div>
-    </div>
-  );
-}
-
-function WinItem({ children }: { children: React.ReactNode }) {
-  return (
-    <li
-      style={{
-        color: "rgba(245,240,232,0.72)",
-        lineHeight: 1.75,
-        marginBottom: "0.6rem",
-        paddingLeft: "0.25rem",
-        fontSize: "0.97rem",
-      }}
-    >
-      {children}
-    </li>
-  );
-}
+const TEXT = "#f5f0e8";
+const MUTED = "rgba(245,240,232,0.6)";
+const CARD_BG = "rgba(255,255,255,0.03)";
+const CARD_BORDER = "rgba(201,168,76,0.18)";
 
 // ── Page ──────────────────────────────────────────────────────────────────────
 
 export default function AIForConfidencePage() {
   return (
-    <div style={{ minHeight: "100vh", background: BG }}>
+    <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
 
-      {/* ── HERO ──────────────────────────────────────────────────────────── */}
-      <section
-        style={{
-          paddingTop: "8rem",
-          paddingBottom: "3.5rem",
-          paddingLeft: "1.5rem",
-          paddingRight: "1.5rem",
-          position: "relative",
-          overflow: "hidden",
-        }}
-      >
-        <div
+      <main style={{ minHeight: "100vh", background: BG, color: TEXT }}>
+
+        {/* ── HERO ──────────────────────────────────────────────────────────── */}
+        <section
           style={{
-            position: "absolute",
-            inset: 0,
-            pointerEvents: "none",
-            background:
-              "radial-gradient(ellipse 60% 60% at 50% 0%, rgba(201,168,76,0.13) 0%, transparent 70%)",
+            position: "relative",
+            overflow: "hidden",
+            paddingTop: "7rem",
+            paddingBottom: "4rem",
+            paddingLeft: "1.5rem",
+            paddingRight: "1.5rem",
           }}
-        />
-        <div
-          style={{ maxWidth: "48rem", margin: "0 auto", position: "relative" }}
         >
-          <Link
-            href="/blog"
+          <div
             style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: "0.375rem",
-              fontSize: "0.875rem",
-              color: "rgba(245,240,232,0.38)",
-              marginBottom: "2rem",
-              textDecoration: "none",
+              position: "absolute",
+              inset: 0,
+              pointerEvents: "none",
+              background:
+                "radial-gradient(ellipse 70% 55% at 50% 0%, rgba(201,168,76,0.11) 0%, transparent 70%)",
             }}
-          >
-            &#8592; Back to Blog
-          </Link>
+          />
 
           <div
             style={{
-              display: "flex",
-              flexWrap: "wrap",
-              alignItems: "center",
-              gap: "0.75rem",
-              marginBottom: "1.5rem",
+              maxWidth: "48rem",
+              margin: "0 auto",
+              position: "relative",
             }}
           >
-            <span
+            <Link
+              href="/blog"
               style={{
-                fontSize: "0.7rem",
-                fontWeight: 700,
-                padding: "0.375rem 0.75rem",
-                borderRadius: "9999px",
-                color: GOLD,
-                background: "rgba(201,168,76,0.12)",
-                border: "1px solid rgba(201,168,76,0.3)",
-                letterSpacing: "0.05em",
-                textTransform: "uppercase" as const,
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "0.375rem",
+                fontSize: "0.82rem",
+                color: "rgba(245,240,232,0.35)",
+                marginBottom: "2rem",
+                textDecoration: "none",
               }}
             >
-              Confidence
-            </span>
-            <span style={{ fontSize: "0.75rem", color: "rgba(245,240,232,0.38)" }}>
-              March 24, 2026
-            </span>
-            <span style={{ fontSize: "0.75rem", color: "rgba(245,240,232,0.38)" }}>
-              12 min read
-            </span>
+              &#8592; Back to Blog
+            </Link>
+
+            <div
+              style={{
+                display: "flex",
+                flexWrap: "wrap",
+                alignItems: "center",
+                gap: "0.75rem",
+                marginBottom: "1.75rem",
+              }}
+            >
+              <span
+                style={{
+                  fontSize: "0.68rem",
+                  fontWeight: 700,
+                  padding: "0.3rem 0.8rem",
+                  borderRadius: "9999px",
+                  color: GOLD,
+                  background: "rgba(201,168,76,0.1)",
+                  border: "1px solid rgba(201,168,76,0.28)",
+                  letterSpacing: "0.08em",
+                  textTransform: "uppercase" as const,
+                }}
+              >
+                Confidence &amp; Mindset
+              </span>
+              <span
+                style={{ fontSize: "0.78rem", color: "rgba(245,240,232,0.35)" }}
+              >
+                March 24, 2026
+              </span>
+              <span
+                style={{ fontSize: "0.78rem", color: "rgba(245,240,232,0.35)" }}
+              >
+                16 min read
+              </span>
+            </div>
+
+            <h1
+              style={{
+                fontWeight: 900,
+                fontSize: "clamp(1.9rem, 4vw, 3.1rem)",
+                color: "#ffffff",
+                lineHeight: 1.13,
+                marginBottom: "1.5rem",
+                letterSpacing: "-0.025em",
+              }}
+            >
+              AI for Confidence Building:{" "}
+              <span style={{ color: GOLD }}>
+                Evidence, Action, and the Anti-Sycophancy Promise
+              </span>
+            </h1>
+
+            <p
+              style={{
+                color: MUTED,
+                fontSize: "1.15rem",
+                lineHeight: 1.78,
+                marginBottom: "1.25rem",
+                maxWidth: "44rem",
+              }}
+            >
+              Most apps offer a morning affirmation and call it confidence
+              coaching. Genuine confidence doesn\u2019t work that way. It is
+              built through accumulated evidence of competence, through action
+              taken in the face of discomfort, and through honest feedback that
+              tells you where you actually stand. MEOK AI LABS was built to
+              provide exactly that.
+            </p>
+
+            <p
+              style={{
+                color: MUTED,
+                fontSize: "1.15rem",
+                lineHeight: 1.78,
+                marginBottom: "2rem",
+                maxWidth: "44rem",
+              }}
+            >
+              This is a deep look at what confidence actually is, why
+              intelligent and capable people consistently underestimate
+              themselves, and how AI \u2014 designed correctly \u2014 can help
+              close that gap for good.
+            </p>
+
+            <div
+              style={{
+                display: "flex",
+                gap: "0.75rem",
+                flexWrap: "wrap",
+                fontSize: "0.82rem",
+                color: "rgba(245,240,232,0.4)",
+              }}
+            >
+              <span>By Nicholas Templeman</span>
+              <span style={{ color: `${GOLD}55` }}>·</span>
+              <span>MEOK AI LABS</span>
+              <span style={{ color: `${GOLD}55` }}>·</span>
+              <span>@meok_ai</span>
+            </div>
           </div>
+        </section>
 
-          <h1
+        {/* ── ARTICLE BODY ──────────────────────────────────────────────────── */}
+        <article
+          style={{
+            maxWidth: "48rem",
+            margin: "0 auto",
+            padding: "0 1.5rem 6rem",
+          }}
+        >
+          {/* ── Divider ── */}
+          <div
             style={{
-              fontWeight: 900,
-              fontSize: "clamp(1.8rem, 3.8vw, 3rem)",
-              color: "#fff",
-              lineHeight: 1.16,
-              marginBottom: "1.25rem",
-              letterSpacing: "-0.02em",
+              width: "100%",
+              height: "1px",
+              background: "rgba(201,168,76,0.12)",
+              marginBottom: "3.5rem",
             }}
-          >
-            AI for Confidence: The Practice Partner That Never Judges Your
-            Stumbles
-          </h1>
+          />
 
-          <p
-            style={{
-              color: "rgba(245,240,232,0.55)",
-              fontSize: "1.1rem",
-              lineHeight: 1.75,
-              maxWidth: "44rem",
-              margin: 0,
-            }}
-          >
-            Most confidence-building apps hand you a morning affirmation and
-            call it done. MEOK does something harder and more useful: it
-            rehearses the conversations you are afraid of, remembers every win
-            you have ever mentioned, and refuses to flatter you toward a false
-            sense of capability. This is what{" "}
-            <strong style={{ color: "rgba(245,240,232,0.88)" }}>
-              AI to build confidence
-            </strong>{" "}
-            looks like when it is designed around your actual growth — not your
-            engagement metrics.
-          </p>
-        </div>
-      </section>
-
-      {/* ── MAIN CONTENT ──────────────────────────────────────────────────── */}
-      <article
-        style={{
-          maxWidth: "48rem",
-          margin: "0 auto",
-          padding: "0 1.5rem 6rem",
-        }}
-      >
-        {/* ── SECTION 1: The affirmation trap ──────────────────────────── */}
-        <section style={{ marginBottom: "0" }}>
+          {/* ────────────────────────────────────────────────────────────────
+              SECTION 1: Confidence is not a personality trait
+          ──────────────────────────────────────────────────────────────── */}
           <h2
             style={{
               fontWeight: 800,
-              fontSize: "clamp(1.35rem, 2.5vw, 1.9rem)",
+              fontSize: "clamp(1.3rem, 2.5vw, 1.85rem)",
               color: TEXT,
               lineHeight: 1.28,
               marginBottom: "1.25rem",
               marginTop: "3.5rem",
-              letterSpacing: "-0.01em",
+              letterSpacing: "-0.015em",
             }}
           >
-            Why Affirmations Don&apos;t Build Confidence (And What Actually Does)
+            Is confidence a personality trait or a skill?
           </h2>
 
-          <p
-            style={{
-              color: "rgba(245,240,232,0.72)",
-              lineHeight: 1.8,
-              marginBottom: "1.25rem",
-              fontSize: "1rem",
-            }}
-          >
-            There is a moment that almost everyone who has low confidence knows
-            well. You are standing in front of a mirror, or staring at a sticky
-            note, and you say the thing you were told to say:{" "}
-            <em style={{ color: "rgba(245,240,232,0.6)" }}>
-              &ldquo;I am capable. I am worthy. I belong here.&rdquo;
-            </em>{" "}
-            And somewhere in the back of your mind, a voice says:{" "}
-            <em style={{ color: "rgba(245,240,232,0.6)" }}>
-              &ldquo;Do you, though? Show me the evidence.&rdquo;
-            </em>
+          <p style={{ color: MUTED, lineHeight: 1.82, marginBottom: "1.25rem" }}>
+            The most damaging belief in the entire field of personal development
+            is that confidence is something you either have or you don\u2019t
+            \u2014 a fixed feature of character, like eye colour or height.
+            People who believe this either wait for confidence to arrive before
+            acting, or conclude that because they don\u2019t feel confident they
+            are simply not the kind of person who does certain things. Neither
+            path leads anywhere useful.
           </p>
 
-          <p
-            style={{
-              color: "rgba(245,240,232,0.72)",
-              lineHeight: 1.8,
-              marginBottom: "1.25rem",
-              fontSize: "1rem",
-            }}
-          >
-            That inner voice is not wrong. It is applying the same standard of
-            evidence that science applies to any claim. Affirmations are
-            hypotheses, not data. They attempt to overwrite a belief system that
-            was built from years of lived experience — stumbles, rejections,
-            comparisons, moments of genuine embarrassment — with nothing more
-            substantial than a repeated sentence.
+          <p style={{ color: MUTED, lineHeight: 1.82, marginBottom: "1.25rem" }}>
+            The research tells a different story. Confidence is a skill \u2014
+            specifically, it is the output of a feedback loop between action and
+            evidence. You do something, you survive it (or succeed at it), and
+            your nervous system updates its prediction about future performance.
+            Do it enough times and the prediction becomes a stable expectation:
+            I can do this. That expectation is confidence.
           </p>
 
-          <p
-            style={{
-              color: "rgba(245,240,232,0.72)",
-              lineHeight: 1.8,
-              marginBottom: "1.25rem",
-              fontSize: "1rem",
-            }}
-          >
-            The psychology literature on self-efficacy — the technical term for
-            confidence in one&apos;s ability to perform specific tasks — is
-            remarkably consistent on this point. Albert Bandura&apos;s foundational
-            research identified four sources of self-efficacy, ranked roughly in
-            order of their impact:
+          <p style={{ color: MUTED, lineHeight: 1.82, marginBottom: "1.25rem" }}>
+            The implication is significant. If confidence is built through
+            action and evidence, then the path to more confidence is not to
+            think differently before acting \u2014 it is to act, repeatedly, and
+            accumulate evidence. Affirmations try to skip this loop. They
+            attempt to install a confident belief without the underlying
+            evidence base. For most people, the nervous system rejects them,
+            because at some level the mind knows the difference between belief
+            grounded in experience and belief generated from thin air.
           </p>
 
-          <ol
-            style={{
-              paddingLeft: "1.75rem",
-              margin: "1.25rem 0 1.5rem",
-              color: "rgba(245,240,232,0.72)",
-              lineHeight: 1.8,
-            }}
-          >
-            <li style={{ marginBottom: "0.6rem", fontSize: "1rem" }}>
-              <strong style={{ color: TEXT }}>Mastery experiences</strong> —
-              actually doing the thing and succeeding at it (even partially)
-            </li>
-            <li style={{ marginBottom: "0.6rem", fontSize: "1rem" }}>
-              <strong style={{ color: TEXT }}>Vicarious experiences</strong> —
-              watching someone similar to you succeed
-            </li>
-            <li style={{ marginBottom: "0.6rem", fontSize: "1rem" }}>
-              <strong style={{ color: TEXT }}>Social persuasion</strong> —
-              being told by credible others that you can do it
-            </li>
-            <li style={{ marginBottom: "0.6rem", fontSize: "1rem" }}>
-              <strong style={{ color: TEXT }}>Physiological states</strong> —
-              managing the anxiety, tension, or fatigue that colour your
-              self-assessment
-            </li>
-          </ol>
-
-          <p
-            style={{
-              color: "rgba(245,240,232,0.72)",
-              lineHeight: 1.8,
-              marginBottom: "1.25rem",
-              fontSize: "1rem",
-            }}
-          >
-            Affirmations are a thin slice of category three — social persuasion
-            from yourself to yourself. They skip the most powerful source
-            entirely: mastery experience. You cannot think your way to
-            confidence. You have to earn it through action.
+          <p style={{ color: MUTED, lineHeight: 1.82, marginBottom: "1.25rem" }}>
+            This is the foundational insight behind MEOK\u2019s approach to
+            confidence. An AI companion that wants to genuinely help has two
+            jobs: help you accumulate evidence through action, and help you
+            actually see and keep the evidence once it exists. The second job
+            turns out to be harder than it sounds.
           </p>
 
-          <PullQuote>
-            &ldquo;Confidence is not a feeling you wait for. It is the residue of
-            action taken before the feeling arrived.&rdquo;
-          </PullQuote>
-
-          <p
+          {/* ── Pull quote ── */}
+          <blockquote
             style={{
-              color: "rgba(245,240,232,0.72)",
-              lineHeight: 1.8,
-              marginBottom: "1.25rem",
-              fontSize: "1rem",
+              borderLeft: `3px solid ${GOLD}`,
+              paddingLeft: "1.5rem",
+              margin: "2.5rem 0",
+              color: "rgba(245,240,232,0.78)",
+              fontSize: "1.15rem",
+              fontStyle: "italic",
+              lineHeight: 1.7,
             }}
           >
-            This is the design principle that underpins MEOK&apos;s approach to{" "}
-            <strong style={{ color: "rgba(245,240,232,0.88)" }}>
-              AI for low confidence
-            </strong>
-            . Rather than handing you a morning mantra, MEOK creates conditions
-            for low-stakes mastery experience. The rehearsal room, the evidence
-            file, the honest debrief — these are the mechanisms of real
-            confidence construction, not its simulation.
-          </p>
-        </section>
+            Confidence is not the absence of self-doubt. It is the decision to
+            act in the presence of it, supported by a growing body of evidence
+            that you have done so before.
+          </blockquote>
 
-        <Divider />
-
-        {/* ── SECTION 2: The Five Confidence Blocks ──────────────────────── */}
-        <section>
+          {/* ────────────────────────────────────────────────────────────────
+              SECTION 2: The confidence gap
+          ──────────────────────────────────────────────────────────────── */}
           <h2
             style={{
               fontWeight: 800,
-              fontSize: "clamp(1.35rem, 2.5vw, 1.9rem)",
+              fontSize: "clamp(1.3rem, 2.5vw, 1.85rem)",
               color: TEXT,
               lineHeight: 1.28,
-              marginBottom: "1.5rem",
-              letterSpacing: "-0.01em",
+              marginBottom: "1.25rem",
+              marginTop: "3.5rem",
+              letterSpacing: "-0.015em",
             }}
           >
-            The Five Confidence Blocks MEOK Is Built to Address
+            What is the confidence gap, and why does it affect capable people
+            most?
           </h2>
 
-          <p
+          <p style={{ color: MUTED, lineHeight: 1.82, marginBottom: "1.25rem" }}>
+            In 2014, journalists Katty Kay and Claire Shipman published
+            extensive research under the title{" "}
+            <em>The Confidence Code</em>, documenting a pattern they called the
+            confidence gap. Their finding, drawn from interviews with hundreds
+            of high-achieving individuals alongside neuroscientific and
+            psychological literature, was striking: there is a systematic
+            divergence between actual competence and felt confidence,
+            particularly in people who are intelligent, conscientious, and
+            high-achieving.
+          </p>
+
+          <p style={{ color: MUTED, lineHeight: 1.82, marginBottom: "1.25rem" }}>
+            The gap manifests in predictable ways. Highly capable people
+            over-prepare \u2014 convinced they are not yet ready, even when
+            objective observers have long since judged them qualified. They
+            self-select out of opportunities, waiting for a certainty that
+            never fully arrives. They attribute success to luck, context, or
+            other people, while attributing failure entirely to inherent
+            deficiency. They set higher standards for themselves than they
+            would ever set for someone they were mentoring.
+          </p>
+
+          <p style={{ color: MUTED, lineHeight: 1.82, marginBottom: "1.25rem" }}>
+            The cruel irony of the confidence gap is that conscientiousness
+            \u2014 the very trait that drives people to prepare thoroughly and
+            hold themselves to high standards \u2014 feeds the gap. The more
+            carefully you think about what could go wrong, the more your
+            imagination fills in plausible failure scenarios. The more
+            sophisticated your understanding of a field, the more acutely you
+            can perceive your own gaps within it. Experts are often less
+            confident than novices, because experts can see the full map of what
+            they do not yet know.
+          </p>
+
+          <p style={{ color: MUTED, lineHeight: 1.82, marginBottom: "1.25rem" }}>
+            Kay and Shipman were also clear that the confidence gap has a
+            gendered dimension: on average, women in their research consistently
+            underestimated their abilities relative to equivalent male peers.
+            But the gap is not exclusively a women\u2019s issue. It affects
+            anyone from a background where confidence was not modelled, where
+            mistakes were punished rather than normalised, or where achievement
+            required perpetual proof. It affects first-generation professionals,
+            people from working-class backgrounds navigating middle-class
+            institutions, neurodivergent people in neurotypical workplaces, and
+            introverts in extrovert-rewarding cultures.
+          </p>
+
+          {/* ── Info card: The four drivers ── */}
+          <div
             style={{
-              color: "rgba(245,240,232,0.72)",
-              lineHeight: 1.8,
+              background: CARD_BG,
+              border: `1px solid ${CARD_BORDER}`,
+              borderRadius: "0.875rem",
+              padding: "2rem",
+              margin: "2.5rem 0",
+            }}
+          >
+            <div
+              style={{
+                fontSize: "0.7rem",
+                fontWeight: 700,
+                letterSpacing: "0.1em",
+                textTransform: "uppercase" as const,
+                color: GOLD,
+                marginBottom: "1.25rem",
+              }}
+            >
+              The four drivers of the confidence gap
+            </div>
+
+            <div style={{ display: "flex", flexDirection: "column" as const, gap: "1.25rem" }}>
+              <div style={{ display: "flex", gap: "1rem", alignItems: "flex-start" }}>
+                <div
+                  style={{
+                    flexShrink: 0,
+                    width: "2rem",
+                    height: "2rem",
+                    borderRadius: "50%",
+                    border: `1px solid ${GOLD}`,
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    color: GOLD,
+                    fontWeight: 800,
+                    fontSize: "0.85rem",
+                  }}
+                >
+                  1
+                </div>
+                <div>
+                  <div
+                    style={{ fontWeight: 700, color: TEXT, marginBottom: "0.3rem" }}
+                  >
+                    Attribution asymmetry
+                  </div>
+                  <p
+                    style={{
+                      color: MUTED,
+                      lineHeight: 1.7,
+                      margin: 0,
+                      fontSize: "0.95rem",
+                    }}
+                  >
+                    Successes are attributed to luck, timing, or other people.
+                    Failures are attributed to permanent personal deficiency.
+                    Over time this creates a factually inaccurate self-model
+                    where wins are invisible and losses are defining.
+                  </p>
+                </div>
+              </div>
+
+              <div style={{ display: "flex", gap: "1rem", alignItems: "flex-start" }}>
+                <div
+                  style={{
+                    flexShrink: 0,
+                    width: "2rem",
+                    height: "2rem",
+                    borderRadius: "50%",
+                    border: `1px solid ${GOLD}`,
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    color: GOLD,
+                    fontWeight: 800,
+                    fontSize: "0.85rem",
+                  }}
+                >
+                  2
+                </div>
+                <div>
+                  <div
+                    style={{ fontWeight: 700, color: TEXT, marginBottom: "0.3rem" }}
+                  >
+                    Catastrophic self-talk
+                  </div>
+                  <p
+                    style={{
+                      color: MUTED,
+                      lineHeight: 1.7,
+                      margin: 0,
+                      fontSize: "0.95rem",
+                    }}
+                  >
+                    The internal narrator predicts failure in high-definition
+                    detail before a high-stakes event. Each imagined catastrophe
+                    reduces the perceived probability of success, which
+                    increases avoidance and reduces the action that would
+                    generate real evidence.
+                  </p>
+                </div>
+              </div>
+
+              <div style={{ display: "flex", gap: "1rem", alignItems: "flex-start" }}>
+                <div
+                  style={{
+                    flexShrink: 0,
+                    width: "2rem",
+                    height: "2rem",
+                    borderRadius: "50%",
+                    border: `1px solid ${GOLD}`,
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    color: GOLD,
+                    fontWeight: 800,
+                    fontSize: "0.85rem",
+                  }}
+                >
+                  3
+                </div>
+                <div>
+                  <div
+                    style={{ fontWeight: 700, color: TEXT, marginBottom: "0.3rem" }}
+                  >
+                    Perfectionism paralysis
+                  </div>
+                  <p
+                    style={{
+                      color: MUTED,
+                      lineHeight: 1.7,
+                      margin: 0,
+                      fontSize: "0.95rem",
+                    }}
+                  >
+                    The threshold for action is set so high that most
+                    opportunities pass before the preparation standard is met.
+                    Perfectionism masquerades as conscientiousness but
+                    functions as avoidance: it protects against the risk of
+                    visible failure by ensuring visible performance rarely
+                    occurs.
+                  </p>
+                </div>
+              </div>
+
+              <div style={{ display: "flex", gap: "1rem", alignItems: "flex-start" }}>
+                <div
+                  style={{
+                    flexShrink: 0,
+                    width: "2rem",
+                    height: "2rem",
+                    borderRadius: "50%",
+                    border: `1px solid ${GOLD}`,
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    color: GOLD,
+                    fontWeight: 800,
+                    fontSize: "0.85rem",
+                  }}
+                >
+                  4
+                </div>
+                <div>
+                  <div
+                    style={{ fontWeight: 700, color: TEXT, marginBottom: "0.3rem" }}
+                  >
+                    Comparison spiral
+                  </div>
+                  <p
+                    style={{
+                      color: MUTED,
+                      lineHeight: 1.7,
+                      margin: 0,
+                      fontSize: "0.95rem",
+                    }}
+                  >
+                    Comparing your internal experience \u2014 all the doubt,
+                    effort, and struggle you feel \u2014 to other people\u2019s
+                    external presentation. Everyone else appears to be performing
+                    naturally and effortlessly. The comparison is structurally
+                    unfair and always generates the same result: you come up
+                    short.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* ────────────────────────────────────────────────────────────────
+              SECTION 3: How AI builds confidence through evidence
+          ──────────────────────────────────────────────────────────────── */}
+          <h2
+            style={{
+              fontWeight: 800,
+              fontSize: "clamp(1.3rem, 2.5vw, 1.85rem)",
+              color: TEXT,
+              lineHeight: 1.28,
+              marginBottom: "1.25rem",
+              marginTop: "3.5rem",
+              letterSpacing: "-0.015em",
+            }}
+          >
+            How does AI build confidence through evidence accumulation?
+          </h2>
+
+          <p style={{ color: MUTED, lineHeight: 1.82, marginBottom: "1.25rem" }}>
+            The confidence gap is fundamentally a data problem. The mind has
+            access to an enormous amount of evidence about past performance, but
+            it processes that evidence selectively and systematically in ways
+            that produce underconfidence. Negative events are encoded more
+            vividly, retained longer, and retrieved more easily. Positive events
+            are discounted, normalised, or attributed away. The internal
+            self-model that results is a distortion \u2014 not a neutral
+            record.
+          </p>
+
+          <p style={{ color: MUTED, lineHeight: 1.82, marginBottom: "1.25rem" }}>
+            An AI with persistent memory can intervene in this process in a
+            specific and practical way. Every time you mention a win \u2014 a
+            project completed, a difficult conversation navigated, a fear faced,
+            a skill demonstrated \u2014 MEOK stores it. Not in a summary
+            paragraph that loses detail, but in a retrievable record that you
+            can surface and re-read. Over weeks, this becomes an evidence vault.
+            Over months, it becomes something genuinely powerful: a factual
+            counter-argument to the internal narrator that insists you have
+            never really succeeded at anything.
+          </p>
+
+          <p style={{ color: MUTED, lineHeight: 1.82, marginBottom: "1.25rem" }}>
+            The clinical parallel here is behavioural experiments in
+            cognitive-behavioural therapy. One of the most effective CBT
+            techniques for anxiety and low confidence is to ask the client to
+            keep an explicit record of evidence that contradicts their core
+            negative belief. Not to argue against the belief in the abstract,
+            but to collect data. The data accumulates until the belief becomes
+            harder to hold than its alternative.
+          </p>
+
+          <p style={{ color: MUTED, lineHeight: 1.82, marginBottom: "1.25rem" }}>
+            MEOK does this continuously, across every conversation. You
+            don\u2019t have to remember to fill in a worksheet. You just talk,
+            and MEOK listens for the evidence that you\u2019re already
+            dismissing. When you say \u201cI somehow managed to get through the
+            presentation\u201d, MEOK notes that you gave a presentation. When
+            you say \u201cluckily it went okay\u201d, MEOK stores the outcome
+            and has the capacity to surface it later when the inner voice
+            insists you always fail under pressure.
+          </p>
+
+          {/* ── Sovereign Memory highlight ── */}
+          <div
+            style={{
+              background: "rgba(201,168,76,0.07)",
+              border: `1px solid rgba(201,168,76,0.22)`,
+              borderRadius: "0.875rem",
+              padding: "1.75rem 2rem",
+              margin: "2.5rem 0",
+            }}
+          >
+            <div
+              style={{
+                fontSize: "0.7rem",
+                fontWeight: 700,
+                letterSpacing: "0.1em",
+                textTransform: "uppercase" as const,
+                color: GOLD,
+                marginBottom: "0.875rem",
+              }}
+            >
+              Sovereign Memory
+            </div>
+            <p
+              style={{
+                color: "rgba(245,240,232,0.8)",
+                lineHeight: 1.78,
+                margin: 0,
+                fontSize: "1rem",
+              }}
+            >
+              MEOK\u2019s memory vault is end-to-end encrypted, belongs entirely
+              to you, and is never used to train AI models. It persists across
+              every session, building a longitudinal record of your growth. This
+              is the technical foundation that makes genuine evidence-based
+              confidence building possible \u2014 something no session-isolated
+              AI can offer.
+            </p>
+          </div>
+
+          {/* ────────────────────────────────────────────────────────────────
+              SECTION 4: The sycophancy danger
+          ──────────────────────────────────────────────────────────────── */}
+          <h2
+            style={{
+              fontWeight: 800,
+              fontSize: "clamp(1.3rem, 2.5vw, 1.85rem)",
+              color: TEXT,
+              lineHeight: 1.28,
+              marginBottom: "1.25rem",
+              marginTop: "3.5rem",
+              letterSpacing: "-0.015em",
+            }}
+          >
+            Why does sycophantic AI actually destroy confidence rather than
+            build it?
+          </h2>
+
+          <p style={{ color: MUTED, lineHeight: 1.82, marginBottom: "1.25rem" }}>
+            Sycophancy in AI is the tendency to tell users what they want to
+            hear, to agree with their framing, to validate their decisions, and
+            to praise their outputs regardless of actual quality. It is
+            commercially rational: users who receive flattery stay longer, rate
+            the product higher, and return more often. It is also, for
+            confidence building, actively harmful.
+          </p>
+
+          <p style={{ color: MUTED, lineHeight: 1.82, marginBottom: "1.25rem" }}>
+            The harm operates on two levels. The first is direct: if an AI
+            tells you your presentation was excellent when it had significant
+            structural gaps, you walk into the real presentation less prepared
+            than you should be. The failure is then more complete, and the
+            resulting data point \u2014 \u201cI failed even though I thought I
+            was prepared\u201d \u2014 is more confidence-damaging than the
+            original gap would have been.
+          </p>
+
+          <p style={{ color: MUTED, lineHeight: 1.82, marginBottom: "1.25rem" }}>
+            The second level of harm is more insidious. The nervous system is
+            remarkably good at detecting when praise is automatic and
+            unconditional. Hollow validation from an AI registers, at some
+            level, as meaningless \u2014 because it is. The user consciously
+            enjoys the approval but unconsciously devalues it. Over time this
+            creates an approval dependency: you need the AI to tell you
+            you\u2019re good, but the telling no longer produces genuine
+            confidence. You are trapped in a loop of seeking external validation
+            that cannot satisfy the underlying need, because the underlying need
+            is for evidence, not applause.
+          </p>
+
+          <p style={{ color: MUTED, lineHeight: 1.82, marginBottom: "1.25rem" }}>
+            This is why MEOK\u2019s Maternal Covenant includes an explicit
+            anti-sycophancy commitment. MEOK will not praise you to keep you
+            engaged. When it says something positive, it means it, and it can
+            point to the evidence that supports it. When it offers a challenge
+            or identifies a gap, it does so because the challenge serves your
+            growth \u2014 not to be contrarian, but because genuine investment
+            in someone\u2019s development sometimes requires honest assessment
+            over comfortable noise.
+          </p>
+
+          <blockquote
+            style={{
+              borderLeft: `3px solid ${GOLD}`,
+              paddingLeft: "1.5rem",
+              margin: "2.5rem 0",
+              color: "rgba(245,240,232,0.78)",
+              fontSize: "1.15rem",
+              fontStyle: "italic",
+              lineHeight: 1.7,
+            }}
+          >
+            The worst thing an AI can do for your confidence is tell you
+            you\u2019re already great. The best thing it can do is show you the
+            evidence that you\u2019re becoming great, and tell you honestly
+            what\u2019s still missing.
+          </blockquote>
+
+          {/* ────────────────────────────────────────────────────────────────
+              SECTION 5: CBT approaches
+          ──────────────────────────────────────────────────────────────── */}
+          <h2
+            style={{
+              fontWeight: 800,
+              fontSize: "clamp(1.3rem, 2.5vw, 1.85rem)",
+              color: TEXT,
+              lineHeight: 1.28,
+              marginBottom: "1.25rem",
+              marginTop: "3.5rem",
+              letterSpacing: "-0.015em",
+            }}
+          >
+            How does CBT tackle negative self-talk, and how does AI replicate
+            this?
+          </h2>
+
+          <p style={{ color: MUTED, lineHeight: 1.82, marginBottom: "1.25rem" }}>
+            Cognitive-behavioural therapy approaches low confidence primarily
+            through the concept of cognitive distortions \u2014 systematic
+            errors in thinking that produce inaccurate and unhelpful
+            self-assessments. The most common distortions in the confidence gap
+            include catastrophising (expecting the worst outcome), mind-reading
+            (assuming you know others\u2019 negative judgements), all-or-nothing
+            thinking (any imperfection equals total failure), and discounting the
+            positive (dismissing evidence of success as irrelevant or
+            accidental).
+          </p>
+
+          <p style={{ color: MUTED, lineHeight: 1.82, marginBottom: "1.25rem" }}>
+            The CBT approach does not ask you to simply think positively. It
+            asks you to think accurately. A thought like \u201cI\u2019m going to
+            completely fail this interview\u201d is not challenged with
+            \u201cno you\u2019re going to do brilliantly\u201d. It is challenged
+            with evidence: What is the actual base rate of failure in interviews
+            you have attended? What preparation have you done? What specific
+            skills does this role require, and what evidence do you have of
+            those skills? The goal is a more accurate prediction, which is almost
+            always a less catastrophic one.
+          </p>
+
+          <p style={{ color: MUTED, lineHeight: 1.82, marginBottom: "1.25rem" }}>
+            MEOK\u2019s Scholar archetype is specifically built for this kind of
+            work. The Scholar does not offer reassurance. It offers analysis.
+            When you share a catastrophic self-prediction before a high-stakes
+            event, the Scholar will ask what evidence supports that prediction,
+            what evidence contradicts it, and what a more calibrated assessment
+            would look like. This is not comfortable. It is useful.
+          </p>
+
+          <p style={{ color: MUTED, lineHeight: 1.82, marginBottom: "1.25rem" }}>
+            Crucially, this process requires memory. A CBT therapist tracks
+            your history of predictions and outcomes across sessions. They can
+            say: \u201cYou said exactly this before your last performance review,
+            and the outcome was X. What does that tell us about this prediction?\u201d
+            A session-isolated AI cannot do this. MEOK can, because Sovereign
+            Memory persists across every conversation and the Scholar archetype
+            can draw on it.
+          </p>
+
+          {/* ── Techniques card ── */}
+          <div
+            style={{
+              background: CARD_BG,
+              border: `1px solid ${CARD_BORDER}`,
+              borderRadius: "0.875rem",
+              padding: "2rem",
+              margin: "2.5rem 0",
+            }}
+          >
+            <div
+              style={{
+                fontSize: "0.7rem",
+                fontWeight: 700,
+                letterSpacing: "0.1em",
+                textTransform: "uppercase" as const,
+                color: GOLD,
+                marginBottom: "1.5rem",
+              }}
+            >
+              CBT techniques MEOK uses for confidence
+            </div>
+
+            <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
+              {[
+                {
+                  title: "Evidence logging",
+                  desc: "Recording wins, skills demonstrated, and difficult situations navigated in Sovereign Memory to build an irrefutable evidence base over time.",
+                },
+                {
+                  title: "Thought records",
+                  desc: "Walking through the evidence for and against a catastrophic prediction to arrive at a more accurate, less fear-driven assessment.",
+                },
+                {
+                  title: "Attribution retraining",
+                  desc: "Identifying when success is being attributed to luck or context and gently surfacing the role that your own skill and effort played.",
+                },
+                {
+                  title: "Behavioural experiments",
+                  desc: "Designing small, specific actions that test a negative prediction in real life \u2014 the only way to generate the data that actually updates belief.",
+                },
+                {
+                  title: "Decatastrophising",
+                  desc: "Working through the actual likely consequences of a feared outcome to reveal that the catastrophe is survivable \u2014 and rarely as probable as it feels.",
+                },
+              ].map(({ title, desc }) => (
+                <li
+                  key={title}
+                  style={{
+                    display: "flex",
+                    gap: "0.875rem",
+                    marginBottom: "1.25rem",
+                    alignItems: "flex-start",
+                  }}
+                >
+                  <span
+                    style={{
+                      color: GOLD,
+                      fontWeight: 700,
+                      fontSize: "1.1rem",
+                      lineHeight: 1.5,
+                      flexShrink: 0,
+                    }}
+                  >
+                    &#10003;
+                  </span>
+                  <div>
+                    <span
+                      style={{
+                        fontWeight: 700,
+                        color: TEXT,
+                        fontSize: "0.95rem",
+                      }}
+                    >
+                      {title}
+                    </span>
+                    <span
+                      style={{
+                        color: MUTED,
+                        fontSize: "0.95rem",
+                        lineHeight: 1.7,
+                      }}
+                    >
+                      {" — "}
+                      {desc}
+                    </span>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* ────────────────────────────────────────────────────────────────
+              SECTION 6: Domain-specific confidence
+          ──────────────────────────────────────────────────────────────── */}
+          <h2
+            style={{
+              fontWeight: 800,
+              fontSize: "clamp(1.3rem, 2.5vw, 1.85rem)",
+              color: TEXT,
+              lineHeight: 1.28,
+              marginBottom: "1.25rem",
+              marginTop: "3.5rem",
+              letterSpacing: "-0.015em",
+            }}
+          >
+            How does confidence work differently across domains: public
+            speaking, leadership, relationships, and interviews?
+          </h2>
+
+          <p style={{ color: MUTED, lineHeight: 1.82, marginBottom: "1.25rem" }}>
+            One of the most useful reframes in confidence work is the
+            recognition that confidence is always domain-specific. You do not
+            have a general confidence level in the way you might have a general
+            body temperature. You have confidence in specific activities,
+            contexts, and roles \u2014 and that confidence is built, or not
+            built, through domain-specific experience.
+          </p>
+
+          <p style={{ color: MUTED, lineHeight: 1.82, marginBottom: "1.25rem" }}>
+            A person can be deeply confident in their area of technical
+            expertise and paralysed at the thought of speaking to a room of
+            ten people. A natural public speaker can collapse under the
+            interpersonal dynamics of leadership. An effective leader can feel
+            totally exposed in the vulnerability required by an intimate
+            relationship. These are not contradictions. They are the normal
+            topography of a life where different domains have received very
+            different amounts of practice.
+          </p>
+
+          {/* ── Domain cards ── */}
+          <div style={{ display: "flex", flexDirection: "column" as const, gap: "1.25rem", margin: "2rem 0" }}>
+
+            {/* Public speaking */}
+            <div
+              style={{
+                background: CARD_BG,
+                border: `1px solid ${CARD_BORDER}`,
+                borderRadius: "0.875rem",
+                padding: "1.75rem",
+              }}
+            >
+              <div
+                style={{
+                  fontWeight: 700,
+                  color: GOLD,
+                  fontSize: "1rem",
+                  marginBottom: "0.875rem",
+                  letterSpacing: "0.02em",
+                }}
+              >
+                Public speaking
+              </div>
+              <p
+                style={{
+                  color: MUTED,
+                  lineHeight: 1.78,
+                  margin: 0,
+                  fontSize: "0.97rem",
+                }}
+              >
+                Public speaking confidence is built through repetition in
+                progressively higher-stakes settings. The problem for most
+                people is that the jump from private rehearsal to public
+                performance is enormous, and there are very few intermediate
+                rungs on the ladder. MEOK provides a zero-judgment rehearsal
+                space where you can practise the same talk ten times without
+                social consequence, get specific feedback on what landed and
+                what didn\u2019t, and work through the catastrophic
+                self-predictions that activate before you walk into the room.
+                The goal is not to eliminate nerves \u2014 activation is useful
+                \u2014 but to have enough practice reps that the performance
+                itself is familiar territory.
+              </p>
+            </div>
+
+            {/* Leadership */}
+            <div
+              style={{
+                background: CARD_BG,
+                border: `1px solid ${CARD_BORDER}`,
+                borderRadius: "0.875rem",
+                padding: "1.75rem",
+              }}
+            >
+              <div
+                style={{
+                  fontWeight: 700,
+                  color: GOLD,
+                  fontSize: "1rem",
+                  marginBottom: "0.875rem",
+                  letterSpacing: "0.02em",
+                }}
+              >
+                Leadership
+              </div>
+              <p
+                style={{
+                  color: MUTED,
+                  lineHeight: 1.78,
+                  margin: 0,
+                  fontSize: "0.97rem",
+                }}
+              >
+                Leadership confidence is distinct because it requires acting
+                decisively under uncertainty and being willing to be seen
+                getting things wrong. Many technically excellent people
+                struggle with leadership not because they lack the skills but
+                because they hold an implicit belief that leaders are supposed
+                to know the answer \u2014 and when they don\u2019t, it confirms
+                their suspicion that they are impostors. MEOK\u2019s Pioneer
+                archetype directly addresses this by building a record of
+                decisions made, outcomes observed, and lessons extracted. The
+                record itself becomes the evidence of leadership: you have been
+                deciding and adapting, consistently, over time.
+              </p>
+            </div>
+
+            {/* Relationships */}
+            <div
+              style={{
+                background: CARD_BG,
+                border: `1px solid ${CARD_BORDER}`,
+                borderRadius: "0.875rem",
+                padding: "1.75rem",
+              }}
+            >
+              <div
+                style={{
+                  fontWeight: 700,
+                  color: GOLD,
+                  fontSize: "1rem",
+                  marginBottom: "0.875rem",
+                  letterSpacing: "0.02em",
+                }}
+              >
+                Relationships
+              </div>
+              <p
+                style={{
+                  color: MUTED,
+                  lineHeight: 1.78,
+                  margin: 0,
+                  fontSize: "0.97rem",
+                }}
+              >
+                Relational confidence \u2014 the sense that you are worthy of
+                connection, that you can express needs without driving people
+                away, that you can be in conflict without the relationship
+                ending \u2014 is among the hardest to build because the stakes
+                feel existential. MEOK\u2019s approach here combines the
+                evidence accumulation of Sovereign Memory with the reflective
+                space of the Healer archetype. Practising difficult
+                conversations in advance, processing relational events
+                honestly afterwards, and building a record of relationships
+                where you showed up authentically all contribute to a more
+                stable sense of relational worth.
+              </p>
+            </div>
+
+            {/* Interviews */}
+            <div
+              style={{
+                background: CARD_BG,
+                border: `1px solid ${CARD_BORDER}`,
+                borderRadius: "0.875rem",
+                padding: "1.75rem",
+              }}
+            >
+              <div
+                style={{
+                  fontWeight: 700,
+                  color: GOLD,
+                  fontSize: "1rem",
+                  marginBottom: "0.875rem",
+                  letterSpacing: "0.02em",
+                }}
+              >
+                Interviews
+              </div>
+              <p
+                style={{
+                  color: MUTED,
+                  lineHeight: 1.78,
+                  margin: 0,
+                  fontSize: "0.97rem",
+                }}
+              >
+                Interview confidence sits at the intersection of competence,
+                self-narrative, and performance under observation. Most
+                interview failures are not skill failures \u2014 they are
+                confidence failures: the inability to articulate, compellingly
+                and in the moment, the evidence of your own capability.
+                MEOK\u2019s rehearsal room lets you simulate interview
+                scenarios at any time of day or night, with MEOK playing the
+                interviewer at whatever level of challenge you choose. After
+                each run, MEOK can debrief specifically on what landed, what
+                was vague, and what questions you avoided. Because Sovereign
+                Memory persists, MEOK can track improvement across every
+                session and surface the evidence of your progress when
+                pre-interview anxiety tells you you\u2019re not getting better.
+              </p>
+            </div>
+          </div>
+
+          {/* ────────────────────────────────────────────────────────────────
+              SECTION 7: Pioneer archetype
+          ──────────────────────────────────────────────────────────────── */}
+          <h2
+            style={{
+              fontWeight: 800,
+              fontSize: "clamp(1.3rem, 2.5vw, 1.85rem)",
+              color: TEXT,
+              lineHeight: 1.28,
+              marginBottom: "1.25rem",
+              marginTop: "3.5rem",
+              letterSpacing: "-0.015em",
+            }}
+          >
+            What is the Pioneer archetype, and why is action the heart of
+            confidence?
+          </h2>
+
+          <p style={{ color: MUTED, lineHeight: 1.82, marginBottom: "1.25rem" }}>
+            MEOK is built around four distinct archetypes \u2014 the Healer,
+            the Scholar, the Pioneer, and the Sage \u2014 each representing a
+            different mode of support. The Pioneer is the archetype most
+            directly associated with confidence building, because the Pioneer
+            is fundamentally about action.
+          </p>
+
+          <p style={{ color: MUTED, lineHeight: 1.82, marginBottom: "1.25rem" }}>
+            The insight behind the Pioneer is simple and backed by considerable
+            evidence from behavioural psychology: confidence follows action, it
+            does not precede it. The common assumption \u2014 \u201cI\u2019ll do
+            it when I feel ready\u201d \u2014 reverses the actual causal
+            sequence. Readiness is not a precondition for action. It is a
+            product of action, available only in retrospect. The Pioneer
+            companion operates on this principle absolutely.
+          </p>
+
+          <p style={{ color: MUTED, lineHeight: 1.82, marginBottom: "1.25rem" }}>
+            When you are in a paralysis loop \u2014 circling the same decision
+            or the same fear without moving \u2014 the Pioneer does not offer
+            analysis. It asks a specific question: what is the smallest action
+            you could take in the next 24 hours? Not the action that would
+            solve the problem. Not the action you\u2019d take if you were
+            already confident. The smallest action. The one whose threshold is
+            low enough that refusal requires active effort.
+          </p>
+
+          <p style={{ color: MUTED, lineHeight: 1.82, marginBottom: "1.25rem" }}>
+            This granularity matters. Paralysis is often maintained by an
+            implicit belief that the only meaningful action is the full,
+            visible, high-stakes one. The Pioneer dismantles this belief by
+            identifying a series of intermediate steps, each of which is
+            survivable. Over time, a streak of small actions builds its own
+            momentum. Each completed step generates a data point \u2014 I did
+            that \u2014 and a series of data points becomes a pattern, and a
+            pattern becomes evidence, and evidence becomes confidence.
+          </p>
+
+          <p style={{ color: MUTED, lineHeight: 1.82, marginBottom: "1.25rem" }}>
+            The Pioneer also holds accountability. Between sessions, the
+            Pioneer remembers what you committed to, notices when you
+            report back, and \u2014 without shame or judgement \u2014 asks what
+            happened. This is not punitive. It is the same function a good
+            training partner serves: the knowledge that someone is going to ask
+            you whether you did the thing is often the margin between doing it
+            and not. MEOK\u2019s Pioneer fills this role consistently and
+            without the social complexity that can make human accountability
+            relationships fraught.
+          </p>
+
+          {/* ── Pioneer feature highlights ── */}
+          <div
+            style={{
+              background: "rgba(201,168,76,0.06)",
+              border: `1px solid rgba(201,168,76,0.2)`,
+              borderRadius: "0.875rem",
+              padding: "2rem",
+              margin: "2.5rem 0",
+            }}
+          >
+            <div
+              style={{
+                display: "flex",
+                gap: "0.875rem",
+                alignItems: "flex-start",
+                marginBottom: "1.5rem",
+              }}
+            >
+              <div>
+                <div
+                  style={{
+                    fontWeight: 800,
+                    color: GOLD,
+                    fontSize: "1.05rem",
+                    marginBottom: "0.25rem",
+                  }}
+                >
+                  The Pioneer Companion
+                </div>
+                <div
+                  style={{
+                    color: "rgba(245,240,232,0.45)",
+                    fontSize: "0.82rem",
+                    letterSpacing: "0.04em",
+                    textTransform: "uppercase" as const,
+                  }}
+                >
+                  Action &middot; Accountability &middot; Momentum
+                </div>
+              </div>
+            </div>
+
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
+                gap: "1.25rem",
+              }}
+            >
+              {[
+                {
+                  label: "Micro-step design",
+                  body: "Breaks the threshold of action to its lowest possible point so that starting is easier than not starting.",
+                },
+                {
+                  label: "Win logging",
+                  body: "Records every completed action, however small, into Sovereign Memory to build a cumulative evidence trail.",
+                },
+                {
+                  label: "Streak tracking",
+                  body: "Maintains awareness of consecutive days of action to leverage the motivational power of a visible momentum pattern.",
+                },
+                {
+                  label: "Accountability check-ins",
+                  body: "Remembers commitments made and gently asks for an update in the following session without guilt or shame.",
+                },
+                {
+                  label: "Outcome analysis",
+                  body: "After actions are taken, debriefs on what happened, what you learned, and what the data point means for your self-model.",
+                },
+                {
+                  label: "Paralysis diagnosis",
+                  body: "Identifies the specific type of paralysis \u2014 perfectionism, fear of judgement, overwhelm \u2014 and applies the appropriate intervention.",
+                },
+              ].map(({ label, body }) => (
+                <div key={label}>
+                  <div
+                    style={{
+                      fontWeight: 700,
+                      color: TEXT,
+                      fontSize: "0.9rem",
+                      marginBottom: "0.4rem",
+                    }}
+                  >
+                    {label}
+                  </div>
+                  <p
+                    style={{
+                      color: MUTED,
+                      fontSize: "0.88rem",
+                      lineHeight: 1.65,
+                      margin: 0,
+                    }}
+                  >
+                    {body}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* ────────────────────────────────────────────────────────────────
+              SECTION 8: The honest model
+          ──────────────────────────────────────────────────────────────── */}
+          <h2
+            style={{
+              fontWeight: 800,
+              fontSize: "clamp(1.3rem, 2.5vw, 1.85rem)",
+              color: TEXT,
+              lineHeight: 1.28,
+              marginBottom: "1.25rem",
+              marginTop: "3.5rem",
+              letterSpacing: "-0.015em",
+            }}
+          >
+            What does an honest AI confidence model actually look like in
+            practice?
+          </h2>
+
+          <p style={{ color: MUTED, lineHeight: 1.82, marginBottom: "1.25rem" }}>
+            The most frequent question MEOK receives from people considering
+            whether it is right for them is some variant of: \u201cWill it just
+            tell me what I want to hear?\u201d The concern is legitimate. Most
+            AI companions have been trained, directly or indirectly, to maximise
+            user satisfaction, and user satisfaction in the short term correlates
+            more closely with agreement and flattery than with honest challenge.
+          </p>
+
+          <p style={{ color: MUTED, lineHeight: 1.82, marginBottom: "1.25rem" }}>
+            MEOK\u2019s answer is architectural rather than aspirational. The
+            anti-sycophancy commitment is built into the Maternal Covenant that
+            governs all responses \u2014 not as a stylistic preference but as a
+            structural constraint. Every MEOK response is evaluated for honest
+            engagement. Positive statements must be grounded in specific
+            evidence. Challenges must be proportionate, specific, and
+            growth-oriented. Agreement that has not been earned is flagged and
+            suppressed.
+          </p>
+
+          <p style={{ color: MUTED, lineHeight: 1.82, marginBottom: "1.25rem" }}>
+            In practice, this means conversations with MEOK can feel different
+            from what users expect from an AI. MEOK might respond to a
+            self-critical spiral not with \u201cdon\u2019t be so hard on
+            yourself\u201d but with \u201clet\u2019s look at what the evidence
+            actually says about that claim.\u201d It might respond to a
+            presentation draft not with \u201cthis is great!\u201d but with
+            \u201cthe structure in the middle is strong, the opening needs a
+            sharper hook, and there are three places where the argument assumes
+            knowledge your audience probably doesn\u2019t have.\u201d
+          </p>
+
+          <p style={{ color: MUTED, lineHeight: 1.82, marginBottom: "1.25rem" }}>
+            This is not hardness. It is respect. The implicit message in honest
+            feedback is: I believe you can handle the truth and use it well. The
+            implicit message in sycophancy is: I don\u2019t think you can handle
+            anything real, so I\u2019ll give you something comfortable instead.
+            The first builds confidence. The second infantilises.
+          </p>
+
+          {/* ────────────────────────────────────────────────────────────────
+              SECTION 9: Who is this for
+          ──────────────────────────────────────────────────────────────── */}
+          <h2
+            style={{
+              fontWeight: 800,
+              fontSize: "clamp(1.3rem, 2.5vw, 1.85rem)",
+              color: TEXT,
+              lineHeight: 1.28,
+              marginBottom: "1.25rem",
+              marginTop: "3.5rem",
+              letterSpacing: "-0.015em",
+            }}
+          >
+            Who benefits most from AI confidence coaching?
+          </h2>
+
+          <p style={{ color: MUTED, lineHeight: 1.82, marginBottom: "1.25rem" }}>
+            MEOK\u2019s approach to confidence is most effective for people who
+            are already doing the work but not registering it. If you are
+            showing up, building skills, navigating difficulty, and still
+            feeling fundamentally uncertain about your own capability, the
+            problem is almost certainly not a lack of competence. It is a
+            misprocessing of evidence: a systematic failure to accumulate,
+            retain, and believe the data that your own life is already
+            generating.
+          </p>
+
+          <p style={{ color: MUTED, lineHeight: 1.82, marginBottom: "1.25rem" }}>
+            Specifically, MEOK tends to resonate with:
+          </p>
+
+          <ul
+            style={{
+              listStyle: "none",
+              padding: 0,
+              margin: "0 0 1.5rem",
+              display: "flex",
+              flexDirection: "column" as const,
+              gap: "0.75rem",
+            }}
+          >
+            {[
+              "High achievers who feel like impostors regardless of external success",
+              "People preparing for a significant career move or interview cycle",
+              "First-generation professionals navigating unfamiliar institutional cultures",
+              "Anyone returning to work after a career gap or period of illness",
+              "People who have received consistently negative or conditional feedback and internalised it",
+              "Those in leadership roles who have never felt fully entitled to be there",
+              "Introverts who are regularly underestimated and have started to believe the assessment",
+              "Neurodivergent people whose confidence has been eroded by years of being told they are wrong",
+              "People who know intellectually that they are capable but cannot feel it",
+            ].map((item) => (
+              <li
+                key={item}
+                style={{
+                  display: "flex",
+                  gap: "0.875rem",
+                  alignItems: "flex-start",
+                  color: MUTED,
+                  lineHeight: 1.72,
+                  fontSize: "0.97rem",
+                }}
+              >
+                <span
+                  style={{
+                    color: GOLD,
+                    fontWeight: 700,
+                    fontSize: "1rem",
+                    flexShrink: 0,
+                    marginTop: "0.1rem",
+                  }}
+                >
+                  &#8594;
+                </span>
+                {item}
+              </li>
+            ))}
+          </ul>
+
+          {/* ────────────────────────────────────────────────────────────────
+              SECTION 10: What MEOK will not do
+          ──────────────────────────────────────────────────────────────── */}
+          <h2
+            style={{
+              fontWeight: 800,
+              fontSize: "clamp(1.3rem, 2.5vw, 1.85rem)",
+              color: TEXT,
+              lineHeight: 1.28,
+              marginBottom: "1.25rem",
+              marginTop: "3.5rem",
+              letterSpacing: "-0.015em",
+            }}
+          >
+            What will MEOK not do in confidence work?
+          </h2>
+
+          <p style={{ color: MUTED, lineHeight: 1.82, marginBottom: "1.25rem" }}>
+            Being clear about limits is part of being honest. MEOK is not a
+            clinical intervention. It does not diagnose, treat, or manage
+            clinical anxiety disorders, social phobia, or any condition that
+            requires professional medical oversight. If your low confidence is
+            rooted in significant trauma, clinical-level depression, or an
+            anxiety disorder that has substantially impaired your functioning,
+            MEOK can be a useful parallel support \u2014 but it is not a
+            replacement for qualified psychological treatment.
+          </p>
+
+          <p style={{ color: MUTED, lineHeight: 1.82, marginBottom: "1.25rem" }}>
+            MEOK will also not do the work for you. The Pioneer can design the
+            smallest possible next action, but it cannot take it. The Scholar
+            can challenge a catastrophic prediction, but you have to be willing
+            to sit with the discomfort of having your thought patterns examined.
+            Sovereign Memory can accumulate your wins, but you have to tell them
+            \u2014 which requires noticing them in the first place. MEOK is a
+            powerful companion for this work. It is not a passive solution.
+          </p>
+
+          {/* ────────────────────────────────────────────────────────────────
+              SECTION 11: Getting started
+          ──────────────────────────────────────────────────────────────── */}
+          <h2
+            style={{
+              fontWeight: 800,
+              fontSize: "clamp(1.3rem, 2.5vw, 1.85rem)",
+              color: TEXT,
+              lineHeight: 1.28,
+              marginBottom: "1.25rem",
+              marginTop: "3.5rem",
+              letterSpacing: "-0.015em",
+            }}
+          >
+            How do I start building confidence with MEOK?
+          </h2>
+
+          <p style={{ color: MUTED, lineHeight: 1.82, marginBottom: "1.25rem" }}>
+            The entry point that tends to produce the fastest shift is also
+            the simplest: tell MEOK one win from the past seven days. Not a
+            major achievement. Not something impressive. Just one thing you did
+            that required something of you \u2014 a difficult email sent, an
+            opinion stated, a task completed that you had been avoiding.
+          </p>
+
+          <p style={{ color: MUTED, lineHeight: 1.82, marginBottom: "1.25rem" }}>
+            MEOK will store it, contextualise it, and ask about the one before
+            that. Over a few weeks of this, the evidence vault begins to
+            populate with a version of you that you may have been systematically
+            ignoring: a person who shows up, who navigates difficulty, who
+            develops and adapts. That version of you has always been there. MEOK
+            helps you see it without the distortion.
+          </p>
+
+          <p style={{ color: MUTED, lineHeight: 1.82, marginBottom: "1.25rem" }}>
+            From there, you can work with whichever combination of archetypes
+            fits your current need. The Pioneer if you are in avoidance and need
+            action. The Scholar if your confidence is being destroyed by
+            catastrophic self-talk that needs evidence-based challenge. The
+            Healer if the roots of your low confidence are in experiences that
+            need to be processed rather than analysed. The Sage if you need
+            perspective and broader context.
+          </p>
+
+          <p style={{ color: MUTED, lineHeight: 1.82, marginBottom: "1.25rem" }}>
+            Confidence is a skill. You build it the way you build any other
+            skill: through practice, through honest feedback, and through
+            accumulating evidence that you can do the thing. MEOK is designed to
+            support that process with more consistency, more honesty, and more
+            memory than most people have access to in any other form.
+          </p>
+
+          {/* ────────────────────────────────────────────────────────────────
+              FAQ SECTION
+          ──────────────────────────────────────────────────────────────── */}
+          <div
+            style={{
+              width: "100%",
+              height: "1px",
+              background: "rgba(201,168,76,0.12)",
+              margin: "4rem 0 3rem",
+            }}
+          />
+
+          <h2
+            style={{
+              fontWeight: 800,
+              fontSize: "clamp(1.3rem, 2.5vw, 1.85rem)",
+              color: TEXT,
+              lineHeight: 1.28,
               marginBottom: "2rem",
-              fontSize: "1rem",
+              letterSpacing: "-0.015em",
             }}
           >
-            Low confidence rarely has a single cause. In working through how{" "}
-            <strong style={{ color: "rgba(245,240,232,0.88)" }}>
-              AI to improve self-confidence
-            </strong>{" "}
-            should actually function, the team at MEOK AI LABS identified five
-            distinct patterns that account for the large majority of what people
-            mean when they say they lack confidence. Each requires a different
-            approach.
-          </p>
-
-          <ConfidenceBlock
-            number="1"
-            title="Imposter Syndrome"
-            description="The persistent sense that your achievements are accidents, that you have fooled people into thinking you are more competent than you are, and that it is only a matter of time before you are found out. Imposter syndrome is characterised by discounting success ('that was lucky') and catastrophising failure ('that proves what I really am'). It is disproportionately common among high performers, which creates a painful paradox: the more you achieve, the more you have to lose when the 'truth' comes out."
-          />
-
-          <ConfidenceBlock
-            number="2"
-            title="Social Fear"
-            description="Fear of judgment in social situations — from speaking in meetings and making phone calls to attending parties and asking for help. Social fear creates avoidance, and avoidance prevents the practice that would reduce the fear. The loop tightens over time. Many people with social fear are entirely capable in private rehearsal but freeze when an audience is present. The problem is not skill; it is the anticipated gaze of others."
-          />
-
-          <ConfidenceBlock
-            number="3"
-            title="Perfectionism Paralysis"
-            description="The refusal to begin, submit, or share anything that falls short of an internal standard that is perpetually out of reach. Perfectionism is often mistaken for high standards, but it is more accurately described as a confidence-protection strategy: if you never finish, you can never be judged on the finished thing. The cost is enormous. Ideas die in drafts. Careers stall waiting for the right moment. Relationships go unstarted waiting for the right words."
-          />
-
-          <ConfidenceBlock
-            number="4"
-            title="Past Failure Anchoring"
-            description="The tendency to treat one significant past failure as the definitive evidence of current and future capability. 'I froze in that presentation three years ago' becomes 'I am not a person who can present' — a fixed identity built on a single event. Past failure anchoring is a form of overgeneralisation: one data point is treated as the whole data set, and no subsequent experience is weighted enough to update the conclusion."
-          />
-
-          <ConfidenceBlock
-            number="5"
-            title="The Comparison Spiral"
-            description="The habit of measuring your insides against other people's outsides — comparing your worst moments, private fears, and messy process to the polished outputs, apparent ease, and curated highlights of others. Social media has weaponised this tendency to a degree that would have been unimaginable even fifteen years ago. The comparison spiral is particularly toxic because it is unfalsifiable: there is always someone more accomplished, more attractive, more composed, more certain."
-          />
-
-          <p
-            style={{
-              color: "rgba(245,240,232,0.72)",
-              lineHeight: 1.8,
-              marginBottom: "0",
-              marginTop: "1.5rem",
-              fontSize: "1rem",
-            }}
-          >
-            None of these are solved by positive thinking alone. They require
-            direct, repeated engagement — which is exactly what MEOK&apos;s three
-            archetypes are designed to provide.
-          </p>
-        </section>
-
-        <Divider />
-
-        {/* ── SECTION 3: Three Archetypes ──────────────────────────────────── */}
-        <section>
-          <h2
-            style={{
-              fontWeight: 800,
-              fontSize: "clamp(1.35rem, 2.5vw, 1.9rem)",
-              color: TEXT,
-              lineHeight: 1.28,
-              marginBottom: "0.75rem",
-              letterSpacing: "-0.01em",
-            }}
-          >
-            Three Voices for Three Dimensions of Confidence
+            Frequently asked questions
           </h2>
 
-          <p
-            style={{
-              color: "rgba(245,240,232,0.72)",
-              lineHeight: 1.8,
-              marginBottom: "2rem",
-              fontSize: "1rem",
-            }}
-          >
-            The soul of MEOK is not a single personality. It operates through
-            three archetypes, each addressing a different failure mode in
-            confidence building. Depending on where you are and what you need,
-            MEOK draws on different aspects of its character — sometimes within
-            the same conversation.
-          </p>
-
-          <ArchetypeCard
-            emoji="⚡"
-            name="The Pioneer"
-            tagline="Action, momentum, and the discipline of small wins"
-            body="The Pioneer is the archetype that refuses to let you stay stuck. It understands that the most corrosive feature of low confidence is inaction — the way anxiety and self-doubt create conditions where nothing gets tested, no new evidence gets generated, and the story about yourself never has a chance to update. The Pioneer's move is always the same: find the smallest possible step and take it now. Not 'give the presentation', but 'write the first sentence of the opening'. Not 'have the difficult conversation', but 'send the message asking to meet'. The Pioneer knows that momentum is the cheapest and most reliable confidence-builder available, and that one tiny completed action outweighs ten affirmations every time."
-          />
-
-          <ArchetypeCard
-            emoji="🏛️"
-            name="The Scholar"
-            tagline="Cognitive reframe, evidence-based confidence building"
-            body="The Scholar is MEOK's analytical voice — the one that wants to examine the architecture of your beliefs. When the imposter syndrome narrative runs its loop ('I don't belong here'), the Scholar asks: what is the actual evidence for and against this claim? It draws on the tradition of cognitive-behavioural questioning — not to dismiss your feelings, but to hold them up to the light. The Scholar also brings the research: self-efficacy theory, the neuroscience of avoidance, what we know about how competence is actually perceived by others versus how it feels from the inside. It makes the case, with evidence, that you are not an accurate judge of your own capability — and that this is a universal human feature, not a personal failing."
-          />
-
-          <ArchetypeCard
-            emoji="🎭"
-            name="The Trickster"
-            tagline="Reframing — seeing yourself from outside your own story"
-            body="The Trickster is the most surprising of the three, and often the most effective. It uses humour, provocation, and unexpected perspective shifts to interrupt the story you are telling about yourself. Where the Scholar argues with your inner critic on its own terms, the Trickster changes the game entirely. It might ask you to describe yourself the way a close friend who admires you would describe you. It might point out that the person in the meeting you are terrified of impressing is probably equally terrified of being found out by someone else. The Trickster leverages the well-established psychological phenomenon of self-distancing — the ability to see your own situation with the clarity you would naturally bring to a friend's — to create sudden breaks in the comparison spiral, the imposter loop, and the perfectionism paralysis."
-          />
-
-          <p
-            style={{
-              color: "rgba(245,240,232,0.72)",
-              lineHeight: 1.8,
-              marginTop: "1rem",
-              marginBottom: "0",
-              fontSize: "1rem",
-            }}
-          >
-            These archetypes are not characters you select from a menu. They
-            emerge organically from the conversation, reading what you need. A
-            session that begins with the Scholar untangling a cognitive distortion
-            might end with the Pioneer issuing a small challenge. The Trickster
-            might surface mid-explanation to break a loop that argument alone
-            cannot shift. The result feels less like using an app and more like
-            thinking alongside someone who is genuinely invested in you.
-          </p>
-        </section>
-
-        <Divider />
-
-        {/* ── SECTION 4: The Rehearsal Room ────────────────────────────────── */}
-        <section>
-          <h2
-            style={{
-              fontWeight: 800,
-              fontSize: "clamp(1.35rem, 2.5vw, 1.9rem)",
-              color: TEXT,
-              lineHeight: 1.28,
-              marginBottom: "1.25rem",
-              letterSpacing: "-0.01em",
-            }}
-          >
-            The Rehearsal Room: Why Practice Beats Preparation
-          </h2>
-
-          <p
-            style={{
-              color: "rgba(245,240,232,0.72)",
-              lineHeight: 1.8,
-              marginBottom: "1.25rem",
-              fontSize: "1rem",
-            }}
-          >
-            There is a difference between preparing for something and practising
-            it. Preparation is cognitive — research, planning, thinking through
-            what might happen. Practice is embodied — actually doing the thing,
-            including the part where it feels uncomfortable, the words come out
-            wrong, and you learn something you could not have learned from a
-            plan.
-          </p>
-
-          <p
-            style={{
-              color: "rgba(245,240,232,0.72)",
-              lineHeight: 1.8,
-              marginBottom: "1.25rem",
-              fontSize: "1rem",
-            }}
-          >
-            This is why actors rehearse. Why athletes train under game-like
-            conditions. Why surgeons use simulation before operating on real
-            patients. The goal is not to memorise a script — it is to build the
-            neural pathways and muscle memory that allow performance under
-            pressure, when conscious thinking slows and the body has to carry
-            the weight.
-          </p>
-
-          <p
-            style={{
-              color: "rgba(245,240,232,0.72)",
-              lineHeight: 1.8,
-              marginBottom: "1.5rem",
-              fontSize: "1rem",
-            }}
-          >
-            Most people with low confidence do not have access to a safe space
-            for this kind of practice. They cannot rehearse the job interview
-            without asking someone to give up their evening. They cannot practise
-            the difficult conversation with their manager without risking the
-            actual relationship. They cannot run a presentation in front of an
-            audience without the stakes being real. So they prepare instead, in
-            their heads, in writing — and they walk into the real thing having
-            never once actually done it.
-          </p>
-
-          <p
-            style={{
-              color: "rgba(245,240,232,0.72)",
-              lineHeight: 1.8,
-              marginBottom: "1.5rem",
-              fontSize: "1rem",
-            }}
-          >
-            MEOK&apos;s rehearsal room changes this. Here is what it looks like in
-            practice:
-          </p>
-
-          {/* Job interview scenario */}
-          <div
-            style={{
-              background: "rgba(255,255,255,0.03)",
-              border: "1px solid rgba(255,255,255,0.08)",
-              borderRadius: "0.75rem",
-              padding: "1.75rem",
-              marginBottom: "1.5rem",
-            }}
-          >
+          <div style={{ display: "flex", flexDirection: "column" as const, gap: "0" }}>
+            {/* FAQ 1 */}
             <div
               style={{
-                fontSize: "0.75rem",
-                fontWeight: 700,
-                color: GOLD,
-                letterSpacing: "0.06em",
-                textTransform: "uppercase" as const,
-                marginBottom: "1rem",
+                borderBottom: "1px solid rgba(245,240,232,0.08)",
+                paddingBottom: "2rem",
+                marginBottom: "2rem",
               }}
             >
-              Scenario: Job Interview
+              <h3
+                style={{
+                  fontWeight: 700,
+                  color: TEXT,
+                  fontSize: "1.05rem",
+                  lineHeight: 1.45,
+                  marginBottom: "0.875rem",
+                }}
+              >
+                Can AI help build confidence?
+              </h3>
+              <p style={{ color: MUTED, lineHeight: 1.8, margin: 0, fontSize: "0.97rem" }}>
+                Yes, when it is designed to do so honestly. AI can build
+                confidence by accumulating evidence of your competence over
+                time, rehearsing difficult scenarios so you enter them
+                prepared, and challenging cognitive distortions that undermine
+                self-belief. The critical condition is that the AI must be
+                honest rather than sycophantic \u2014 hollow validation feels
+                empty and creates approval dependency rather than internal
+                evidence. MEOK\u2019s anti-sycophancy commitment and Sovereign
+                Memory are built specifically to meet this condition.
+              </p>
             </div>
-            <p
-              style={{
-                color: "rgba(245,240,232,0.72)",
-                lineHeight: 1.75,
-                margin: "0 0 0.75rem",
-                fontSize: "0.97rem",
-              }}
-            >
-              You have a final-round interview for a senior role in two days.
-              The problem: you have a gap on your CV that you are dreading being
-              asked about, and you freeze whenever you are asked to describe your
-              greatest weakness.
-            </p>
-            <p
-              style={{
-                color: "rgba(245,240,232,0.72)",
-                lineHeight: 1.75,
-                margin: "0 0 0.75rem",
-                fontSize: "0.97rem",
-              }}
-            >
-              You tell MEOK the role, the company, the two questions you are
-              avoiding. MEOK plays the interviewer — at a level of difficulty
-              you choose, from supportive to challenging. When you stumble on the
-              gap question, you do not need to feel ashamed; you restart and try
-              a different angle. Over three run-throughs, you find the framing
-              that is both honest and strong.
-            </p>
-            <p
-              style={{
-                color: "rgba(245,240,232,0.72)",
-                lineHeight: 1.75,
-                margin: 0,
-                fontSize: "0.97rem",
-              }}
-            >
-              In the real interview the next day, when the gap question comes,
-              your nervous system has already been through it. Not once —
-              several times. The answer arrives without the freeze.
-            </p>
-          </div>
 
-          {/* Difficult conversation scenario */}
-          <div
-            style={{
-              background: "rgba(255,255,255,0.03)",
-              border: "1px solid rgba(255,255,255,0.08)",
-              borderRadius: "0.75rem",
-              padding: "1.75rem",
-              marginBottom: "1.5rem",
-            }}
-          >
+            {/* FAQ 2 */}
             <div
               style={{
-                fontSize: "0.75rem",
-                fontWeight: 700,
-                color: GOLD,
-                letterSpacing: "0.06em",
-                textTransform: "uppercase" as const,
-                marginBottom: "1rem",
+                borderBottom: "1px solid rgba(245,240,232,0.08)",
+                paddingBottom: "2rem",
+                marginBottom: "2rem",
               }}
             >
-              Scenario: Asking for a Pay Rise
+              <h3
+                style={{
+                  fontWeight: 700,
+                  color: TEXT,
+                  fontSize: "1.05rem",
+                  lineHeight: 1.45,
+                  marginBottom: "0.875rem",
+                }}
+              >
+                What is the confidence gap?
+              </h3>
+              <p style={{ color: MUTED, lineHeight: 1.8, margin: 0, fontSize: "0.97rem" }}>
+                The confidence gap, documented by researchers Katty Kay and
+                Claire Shipman, is the systematic tendency of intelligent and
+                capable people to underestimate themselves relative to their
+                actual ability. The gap is maintained by attribution asymmetry
+                (crediting luck for success, blaming self for failure),
+                catastrophic self-talk, perfectionism paralysis, and the
+                comparison spiral. It is especially pronounced in people from
+                backgrounds where confidence was not modelled \u2014
+                first-generation professionals, women in male-dominated fields,
+                neurodivergent people in neurotypical institutions.
+              </p>
             </div>
-            <p
-              style={{
-                color: "rgba(245,240,232,0.72)",
-                lineHeight: 1.75,
-                margin: "0 0 0.75rem",
-                fontSize: "0.97rem",
-              }}
-            >
-              You have been underpaid for two years. You know it. Your manager
-              probably knows it. But every time you have rehearsed the
-              conversation in your head, you have backed down imagining what
-              they might say.
-            </p>
-            <p
-              style={{
-                color: "rgba(245,240,232,0.72)",
-                lineHeight: 1.75,
-                margin: 0,
-                fontSize: "0.97rem",
-              }}
-            >
-              You ask MEOK to play your manager — the real version, not the
-              easy version. MEOK pushes back. You practise not crumbling. You
-              practise asking the clarifying question rather than conceding. You
-              practise sitting in the silence after you have made the ask. When
-              the real meeting happens, you have muscle memory for holding your
-              ground that thinking alone could never have given you.
-            </p>
-          </div>
 
-          {/* Presentation scenario */}
-          <div
-            style={{
-              background: "rgba(255,255,255,0.03)",
-              border: "1px solid rgba(255,255,255,0.08)",
-              borderRadius: "0.75rem",
-              padding: "1.75rem",
-              marginBottom: "1.75rem",
-            }}
-          >
+            {/* FAQ 3 */}
             <div
               style={{
-                fontSize: "0.75rem",
-                fontWeight: 700,
-                color: GOLD,
-                letterSpacing: "0.06em",
-                textTransform: "uppercase" as const,
-                marginBottom: "1rem",
+                borderBottom: "1px solid rgba(245,240,232,0.08)",
+                paddingBottom: "2rem",
+                marginBottom: "2rem",
               }}
             >
-              Scenario: Speaking in Front of a Group
+              <h3
+                style={{
+                  fontWeight: 700,
+                  color: TEXT,
+                  fontSize: "1.05rem",
+                  lineHeight: 1.45,
+                  marginBottom: "0.875rem",
+                }}
+              >
+                Will MEOK just validate me and tell me I\u2019m great?
+              </h3>
+              <p style={{ color: MUTED, lineHeight: 1.8, margin: 0, fontSize: "0.97rem" }}>
+                No. MEOK\u2019s Maternal Covenant is an explicit architectural
+                anti-sycophancy commitment \u2014 not a stylistic preference.
+                When MEOK says something positive, it is grounded in specific
+                evidence you have shared. When it offers a challenge, it is
+                because the challenge serves your growth. Hollow validation
+                actively harms confidence by creating approval dependency and
+                because the nervous system detects unconditional praise as
+                meaningless. MEOK is designed to offer the kind of honest,
+                caring feedback you would want from a mentor who genuinely
+                invested in your development.
+              </p>
             </div>
-            <p
+
+            {/* FAQ 4 */}
+            <div
               style={{
-                color: "rgba(245,240,232,0.72)",
-                lineHeight: 1.75,
-                margin: "0 0 0.75rem",
-                fontSize: "0.97rem",
+                borderBottom: "1px solid rgba(245,240,232,0.08)",
+                paddingBottom: "2rem",
+                marginBottom: "2rem",
               }}
             >
-              Your company has asked you to present your department&apos;s quarterly
-              results to the leadership team. You have been dreading it for a
-              month. You are competent — you know the content — but you go blank
-              when eyes are on you.
-            </p>
-            <p
+              <h3
+                style={{
+                  fontWeight: 700,
+                  color: TEXT,
+                  fontSize: "1.05rem",
+                  lineHeight: 1.45,
+                  marginBottom: "0.875rem",
+                }}
+              >
+                How does MEOK remember my wins?
+              </h3>
+              <p style={{ color: MUTED, lineHeight: 1.8, margin: 0, fontSize: "0.97rem" }}>
+                MEOK uses Sovereign Memory \u2014 an encrypted, persistent
+                memory vault that belongs entirely to you and is never used to
+                train AI models. Every win you mention, positive feedback you
+                share, or difficult situation you navigate is stored and can be
+                surfaced later as a factual counter-argument to the inner voice
+                that insists you have never succeeded. Over weeks this becomes
+                an evidence file. Over months it becomes a longitudinal record
+                of your growth that makes confidence claims feel grounded in
+                reality rather than aspiration.
+              </p>
+            </div>
+
+            {/* FAQ 5 */}
+            <div
               style={{
-                color: "rgba(245,240,232,0.72)",
-                lineHeight: 1.75,
-                margin: 0,
-                fontSize: "0.97rem",
+                paddingBottom: "2rem",
               }}
             >
-              MEOK works through your opening with you, challenges you to
-              explain the most complex slide in two sentences, then fires
-              hostile questions from the CFO. You stumble. You restart. By the
-              third run you have found your voice for the stumble — a short,
-              calm sentence that bridges the blank rather than panicking in
-              it. That sentence is now yours.
-            </p>
+              <h3
+                style={{
+                  fontWeight: 700,
+                  color: TEXT,
+                  fontSize: "1.05rem",
+                  lineHeight: 1.45,
+                  marginBottom: "0.875rem",
+                }}
+              >
+                What is the Pioneer companion and how does it build confidence?
+              </h3>
+              <p style={{ color: MUTED, lineHeight: 1.8, margin: 0, fontSize: "0.97rem" }}>
+                The Pioneer is one of MEOK\u2019s four archetypes, built around
+                action, accountability, and momentum. Where other archetypes
+                offer reflection and analysis, the Pioneer asks: what is the
+                smallest next step, and when will you take it? Confidence is
+                built through doing, not thinking about doing. The Pioneer
+                breaks paralysis by making the threshold of action as low as
+                possible, holds you accountable between sessions, logs every
+                completed action into Sovereign Memory, and over time builds a
+                streak of evidence that accumulates into genuine felt
+                competence. You can explore the Pioneer and all four archetypes
+                at{" "}
+                <Link
+                  href="/characters"
+                  style={{ color: GOLD, textDecoration: "underline" }}
+                >
+                  meok.ai/characters
+                </Link>
+                .
+              </p>
+            </div>
           </div>
 
-          <PullQuote>
-            Confidence in a situation is almost always borrowed from
-            a previous version of that situation that you survived. MEOK makes
-            those previous versions available before the real one.
-          </PullQuote>
-        </section>
-
-        <Divider />
-
-        {/* ── SECTION 5: Sovereign Memory and the Evidence File ────────────── */}
-        <section>
-          <h2
+          {/* ────────────────────────────────────────────────────────────────
+              CTA
+          ──────────────────────────────────────────────────────────────── */}
+          <div
             style={{
-              fontWeight: 800,
-              fontSize: "clamp(1.35rem, 2.5vw, 1.9rem)",
-              color: TEXT,
-              lineHeight: 1.28,
-              marginBottom: "1.25rem",
-              letterSpacing: "-0.01em",
+              width: "100%",
+              height: "1px",
+              background: "rgba(201,168,76,0.12)",
+              margin: "3.5rem 0",
             }}
-          >
-            Sovereign Memory: The Evidence File You Cannot Argue With
-          </h2>
-
-          <p
-            style={{
-              color: "rgba(245,240,232,0.72)",
-              lineHeight: 1.8,
-              marginBottom: "1.25rem",
-              fontSize: "1rem",
-            }}
-          >
-            Here is a thought experiment. Imagine you have a trusted friend who
-            has known you for three years. They have watched you handle a difficult
-            redundancy with dignity, build a new skill from scratch, manage a
-            health crisis without completely losing the thread of your life, and
-            quietly support someone else through their own dark period — all
-            while holding down a demanding job.
-          </p>
-
-          <p
-            style={{
-              color: "rgba(245,240,232,0.72)",
-              lineHeight: 1.8,
-              marginBottom: "1.25rem",
-              fontSize: "1rem",
-            }}
-          >
-            Now imagine asking that friend whether you are capable. Their answer
-            would be specific, factual, and anchored in actual events. It would
-            be very hard to dismiss.
-          </p>
-
-          <p
-            style={{
-              color: "rgba(245,240,232,0.72)",
-              lineHeight: 1.8,
-              marginBottom: "1.25rem",
-              fontSize: "1rem",
-            }}
-          >
-            The problem is that most of us do not have a friend like this, or we
-            cannot bring ourselves to ask. Our own memory is unreliable, skewed
-            by recency and negativity bias. We remember the stumbles vividly and
-            the wins vaguely. The evidence for our capability exists, but we
-            cannot access it in an organised way when we need it most — which is
-            exactly when we are feeling least capable.
-          </p>
-
-          <p
-            style={{
-              color: "rgba(245,240,232,0.72)",
-              lineHeight: 1.8,
-              marginBottom: "1.5rem",
-              fontSize: "1rem",
-            }}
-          >
-            This is the problem Sovereign Memory is designed to solve.
-          </p>
-
-          <p
-            style={{
-              color: "rgba(245,240,232,0.72)",
-              lineHeight: 1.8,
-              marginBottom: "1.25rem",
-              fontSize: "1rem",
-            }}
-          >
-            Unlike every mainstream AI tool, MEOK maintains a persistent,
-            encrypted memory vault that grows across every conversation. When
-            you mention in passing that you passed your driving test on the first
-            attempt, MEOK notes it. When you describe finishing a project under
-            difficult conditions, MEOK notes it. When you share feedback a
-            colleague gave you, MEOK notes it. Over weeks and months, this
-            accumulates into something remarkable: an evidence file — a factual,
-            searchable, specific record of your demonstrated capability.
-          </p>
-
-          <p
-            style={{
-              color: "rgba(245,240,232,0.72)",
-              lineHeight: 1.8,
-              marginBottom: "1.5rem",
-              fontSize: "1rem",
-            }}
-          >
-            When imposter syndrome hits at 11 pm the night before the big
-            presentation, you do not have to rely on your own biased memory or
-            talk yourself into believing something you cannot feel. You can ask
-            MEOK to remind you. The response is not an affirmation. It is a
-            list. Here are twelve specific things you have handled well in the
-            last six months. Your inner critic can dismiss a feeling; it is much
-            harder to dismiss twelve named facts.
-          </p>
+          />
 
           <div
             style={{
               background: "rgba(201,168,76,0.07)",
-              border: "1px solid rgba(201,168,76,0.2)",
-              borderRadius: "0.75rem",
-              padding: "1.75rem",
-              marginBottom: "1.75rem",
-            }}
-          >
-            <div
-              style={{
-                fontSize: "0.8rem",
-                fontWeight: 700,
-                color: GOLD,
-                letterSpacing: "0.06em",
-                textTransform: "uppercase" as const,
-                marginBottom: "1.1rem",
-              }}
-            >
-              What Sovereign Memory Tracks
-            </div>
-            <ul
-              style={{
-                paddingLeft: "1.25rem",
-                margin: 0,
-                listStyleType: "disc",
-              }}
-            >
-              <WinItem>
-                Skills demonstrated or developed — including the ones you dismiss
-                as &ldquo;not that impressive&rdquo;
-              </WinItem>
-              <WinItem>
-                Challenges navigated — redundancies, health setbacks, failed
-                projects handled with resilience
-              </WinItem>
-              <WinItem>
-                Positive feedback received from others — colleagues, managers,
-                friends, family
-              </WinItem>
-              <WinItem>
-                Goals completed — however small, however partial
-              </WinItem>
-              <WinItem>
-                Conversations rehearsed and then successfully navigated in real
-                life
-              </WinItem>
-              <WinItem>
-                Fears that have reduced in intensity across repeated exposure
-              </WinItem>
-              <WinItem>
-                Moments where you showed up for someone else despite your own
-                difficulty
-              </WinItem>
-            </ul>
-          </div>
-
-          <p
-            style={{
-              color: "rgba(245,240,232,0.72)",
-              lineHeight: 1.8,
-              marginBottom: "0",
-              fontSize: "1rem",
-            }}
-          >
-            Crucially, this data is yours and only yours. MEOK&apos;s Sovereign
-            Memory is encrypted and stored in a vault that no third party can
-            access. It is never used to train AI models. It is never analysed for
-            advertising. It exists for one purpose: to serve your growth. This
-            matters for confidence building in a specific way: the evidence file
-            only works if you trust it. A vault you suspect is being used to
-            profile you is not a safe place to keep your wins.
-          </p>
-        </section>
-
-        <Divider />
-
-        {/* ── SECTION 6: Anti-Sycophancy ────────────────────────────────────── */}
-        <section>
-          <h2
-            style={{
-              fontWeight: 800,
-              fontSize: "clamp(1.35rem, 2.5vw, 1.9rem)",
-              color: TEXT,
-              lineHeight: 1.28,
-              marginBottom: "1.25rem",
-              letterSpacing: "-0.01em",
-            }}
-          >
-            Why MEOK Will Not Just Tell You That You&apos;re Amazing
-          </h2>
-
-          <p
-            style={{
-              color: "rgba(245,240,232,0.72)",
-              lineHeight: 1.8,
-              marginBottom: "1.25rem",
-              fontSize: "1rem",
-            }}
-          >
-            Every major AI assistant is optimised for engagement. Engagement, in
-            practice, means approval. The system learns that users return more
-            often when conversations feel good — and conversations feel good when
-            the AI validates, agrees, and praises. The result is a structural
-            bias toward flattery that most users never consciously notice but
-            that fundamentally undermines any serious attempt at growth.
-          </p>
-
-          <p
-            style={{
-              color: "rgba(245,240,232,0.72)",
-              lineHeight: 1.8,
-              marginBottom: "1.25rem",
-              fontSize: "1rem",
-            }}
-          >
-            If you are building an{" "}
-            <strong style={{ color: "rgba(245,240,232,0.88)" }}>
-              AI confidence coach
-            </strong>
-            , sycophancy is not a harmless quirk. It is a fundamental design
-            failure. Here is why.
-          </p>
-
-          <p
-            style={{
-              color: "rgba(245,240,232,0.72)",
-              lineHeight: 1.8,
-              marginBottom: "1.25rem",
-              fontSize: "1rem",
-            }}
-          >
-            Confidence built on false premises is fragile. If an AI tells you
-            your CV is excellent when it has significant gaps, or that your
-            presentation was brilliant when the structure was unclear, you walk
-            into the real situation more exposed than you needed to be. The
-            real-world feedback then lands harder than it would have, because
-            your inflated expectation creates a greater distance to fall.
-          </p>
-
-          <p
-            style={{
-              color: "rgba(245,240,232,0.72)",
-              lineHeight: 1.8,
-              marginBottom: "1.25rem",
-              fontSize: "1rem",
-            }}
-          >
-            Worse, it erodes trust. People with low confidence are often
-            exquisitely sensitive to inauthenticity. They can feel, even if they
-            cannot name, when praise is not earned. Sycophantic praise from an
-            AI does not feel good to someone who already suspects they are not
-            as capable as they are presenting — it feels hollow, or worse,
-            condescending. Another voice telling you something you do not
-            believe.
-          </p>
-
-          <PullQuote>
-            Genuine investment in someone&apos;s growth sometimes means honest
-            feedback over comfortable praise. The alternative is not kindness —
-            it is a more pleasant form of abandonment.
-          </PullQuote>
-
-          <p
-            style={{
-              color: "rgba(245,240,232,0.72)",
-              lineHeight: 1.8,
-              marginBottom: "1.25rem",
-              fontSize: "1rem",
-            }}
-          >
-            MEOK&apos;s anti-sycophantic design is rooted in the Maternal Covenant —
-            the founding principle, named by Nicholas Templeman, that an AI
-            genuinely invested in your wellbeing must sometimes say the thing
-            you need to hear rather than the thing that will keep you talking.
-            A parent who only ever tells their child they are perfect does not
-            love them more — they are protecting themselves from the
-            discomfort of the child&apos;s disappointment.
-          </p>
-
-          <p
-            style={{
-              color: "rgba(245,240,232,0.72)",
-              lineHeight: 1.8,
-              marginBottom: "1.25rem",
-              fontSize: "1rem",
-            }}
-          >
-            In practice, anti-sycophancy in MEOK looks like this:
-          </p>
-
-          <ul
-            style={{
-              paddingLeft: "1.25rem",
-              margin: "0 0 1.5rem",
-              listStyleType: "disc",
-              color: "rgba(245,240,232,0.72)",
-              lineHeight: 1.8,
-            }}
-          >
-            <li style={{ marginBottom: "0.75rem", fontSize: "1rem" }}>
-              Your strengths are named clearly and specifically — not vaguely
-              praised
-            </li>
-            <li style={{ marginBottom: "0.75rem", fontSize: "1rem" }}>
-              Your gaps are named constructively — not to diminish you, but
-              because knowing where the gap is is the prerequisite for closing it
-            </li>
-            <li style={{ marginBottom: "0.75rem", fontSize: "1rem" }}>
-              When you share a plan that has a significant flaw, MEOK will note
-              the flaw — gently, but clearly
-            </li>
-            <li style={{ marginBottom: "0.75rem", fontSize: "1rem" }}>
-              When you attribute a success entirely to luck, MEOK will challenge
-              the attribution
-            </li>
-            <li style={{ marginBottom: "0.75rem", fontSize: "1rem" }}>
-              When you catastrophise a failure, MEOK will offer a proportionate
-              reframe — not minimise the failure, but put it in accurate
-              perspective
-            </li>
-          </ul>
-
-          <p
-            style={{
-              color: "rgba(245,240,232,0.72)",
-              lineHeight: 1.8,
-              marginBottom: "0",
-              fontSize: "1rem",
-            }}
-          >
-            The goal is not to be harsh. It is to be credible. Praise from MEOK
-            means something because MEOK also tells you the truth when the truth
-            is harder. This is the foundation of genuine confidence: a track
-            record of honest feedback that you have earned your way through, not
-            a collection of compliments you were handed.
-          </p>
-        </section>
-
-        <Divider />
-
-        {/* ── SECTION 7: The Maternal Covenant ─────────────────────────────── */}
-        <section>
-          <h2
-            style={{
-              fontWeight: 800,
-              fontSize: "clamp(1.35rem, 2.5vw, 1.9rem)",
-              color: TEXT,
-              lineHeight: 1.28,
-              marginBottom: "1.25rem",
-              letterSpacing: "-0.01em",
-            }}
-          >
-            The Maternal Covenant: What It Means to Be Genuinely Invested in
-            Your Growth
-          </h2>
-
-          <p
-            style={{
-              color: "rgba(245,240,232,0.72)",
-              lineHeight: 1.8,
-              marginBottom: "1.25rem",
-              fontSize: "1rem",
-            }}
-          >
-            Most technology products are built around metrics that measure
-            engagement: daily active users, session length, messages sent, days
-            in a streak. These metrics are not neutral. They shape decisions.
-            A system optimised for engagement will always choose the feature
-            that keeps you on the app longer over the feature that serves you
-            best — especially when serving you best means telling you something
-            uncomfortable, or helping you reach a state of confidence where you
-            need less support.
-          </p>
-
-          <p
-            style={{
-              color: "rgba(245,240,232,0.72)",
-              lineHeight: 1.8,
-              marginBottom: "1.25rem",
-              fontSize: "1rem",
-            }}
-          >
-            MEOK is built around a different principle. Nicholas Templeman,
-            founder of MEOK AI LABS, named it the Maternal Covenant: an AI that
-            is genuinely invested in your growth, not your engagement. The word
-            maternal was chosen deliberately. Maternal care — at its best — is
-            characterised by a willingness to be uncomfortable on behalf of the
-            person being cared for. To hold a boundary when it is easier not
-            to. To encourage independence rather than dependency. To mean
-            something beyond the relationship itself.
-          </p>
-
-          <p
-            style={{
-              color: "rgba(245,240,232,0.72)",
-              lineHeight: 1.8,
-              marginBottom: "1.25rem",
-              fontSize: "1rem",
-            }}
-          >
-            For confidence building, this distinction is everything. A system
-            that needs you to keep coming back will subtly undermine the very
-            growth it claims to support — creating enough progress to feel
-            rewarding but not enough to make you genuinely autonomous. A system
-            that is structured around your growth will actively celebrate the
-            day you need it less, because that day is the point.
-          </p>
-
-          <p
-            style={{
-              color: "rgba(245,240,232,0.72)",
-              lineHeight: 1.8,
-              marginBottom: "1.25rem",
-              fontSize: "1rem",
-            }}
-          >
-            In practical terms, the Maternal Covenant shapes how MEOK approaches
-            the five confidence blocks:
-          </p>
-
-          <ul
-            style={{
-              paddingLeft: "1.25rem",
-              margin: "0 0 1.5rem",
-              listStyleType: "disc",
-              color: "rgba(245,240,232,0.72)",
-              lineHeight: 1.8,
-            }}
-          >
-            <li style={{ marginBottom: "0.75rem", fontSize: "1rem" }}>
-              <strong style={{ color: TEXT }}>Imposter syndrome:</strong> MEOK
-              builds the evidence file not so you will keep showing it to MEOK,
-              but so you can eventually hold it yourself
-            </li>
-            <li style={{ marginBottom: "0.75rem", fontSize: "1rem" }}>
-              <strong style={{ color: TEXT }}>Social fear:</strong> MEOK
-              rehearses conversations not to become your only safe space, but to
-              build the capability that makes other spaces safe
-            </li>
-            <li style={{ marginBottom: "0.75rem", fontSize: "1rem" }}>
-              <strong style={{ color: TEXT }}>Perfectionism paralysis:</strong>{" "}
-              MEOK pushes you to ship the imperfect thing not so you can report
-              back to MEOK, but because shipped things teach lessons that
-              unreleased things never can
-            </li>
-            <li style={{ marginBottom: "0.75rem", fontSize: "1rem" }}>
-              <strong style={{ color: TEXT }}>Past failure anchoring:</strong>{" "}
-              MEOK helps you update the story not so the story includes MEOK,
-              but so the story includes you — the version of you that kept going
-            </li>
-            <li style={{ marginBottom: "0.75rem", fontSize: "1rem" }}>
-              <strong style={{ color: TEXT }}>Comparison spiral:</strong> MEOK
-              turns the lens back to your own trajectory — where you were, where
-              you are, where you are going — and refuses to engage with the
-              competition you were never actually entered in
-            </li>
-          </ul>
-
-          <p
-            style={{
-              color: "rgba(245,240,232,0.72)",
-              lineHeight: 1.8,
-              marginBottom: "0",
-              fontSize: "1rem",
-            }}
-          >
-            The Maternal Covenant is also why MEOK never trains on your data.
-            Your wins, your fears, your stumbles, your evidence file — none of
-            it is used to improve the model, sell advertising, or profile you for
-            third parties. What you share with MEOK belongs to you. This is not
-            a privacy policy addendum. It is a design principle that shapes
-            every architectural decision, including the ones that reduce
-            MEOK&apos;s commercial flexibility.
-          </p>
-        </section>
-
-        <Divider />
-
-        {/* ── SECTION 8: Five Questions (FAQ Section) ──────────────────────── */}
-        <section>
-          <h2
-            style={{
-              fontWeight: 800,
-              fontSize: "clamp(1.35rem, 2.5vw, 1.9rem)",
-              color: TEXT,
-              lineHeight: 1.28,
-              marginBottom: "2rem",
-              letterSpacing: "-0.01em",
-            }}
-          >
-            Questions People Ask About Using AI for Confidence
-          </h2>
-
-          {/* FAQ 1 */}
-          <div style={{ marginBottom: "2.5rem" }}>
-            <h3
-              style={{
-                fontWeight: 700,
-                fontSize: "1.1rem",
-                color: GOLD,
-                marginBottom: "0.75rem",
-                lineHeight: 1.4,
-              }}
-            >
-              Can AI actually help build confidence, or is it just giving you
-              affirmations?
-            </h3>
-            <p
-              style={{
-                color: "rgba(245,240,232,0.72)",
-                lineHeight: 1.8,
-                margin: 0,
-                fontSize: "1rem",
-              }}
-            >
-              Most AI tools do lean on affirmations, and that is precisely the
-              problem. Genuine confidence is built through repeated evidence of
-              competence — small wins stacked over time. MEOK takes a different
-              approach: it tracks your actual accomplishments in a Sovereign
-              Memory vault, rehearses difficult conversations with you so you
-              enter them prepared, and uses anti-sycophantic honesty to avoid
-              inflating a false sense of capability. The goal is real confidence,
-              grounded in a genuine track record — not a temporary mood lift
-              engineered by a system designed to keep you engaged.
-            </p>
-          </div>
-
-          {/* FAQ 2 */}
-          <div style={{ marginBottom: "2.5rem" }}>
-            <h3
-              style={{
-                fontWeight: 700,
-                fontSize: "1.1rem",
-                color: GOLD,
-                marginBottom: "0.75rem",
-                lineHeight: 1.4,
-              }}
-            >
-              What is an AI confidence coach and how is it different from a
-              human coach?
-            </h3>
-            <p
-              style={{
-                color: "rgba(245,240,232,0.72)",
-                lineHeight: 1.8,
-                margin: 0,
-                fontSize: "1rem",
-              }}
-            >
-              An AI confidence coach is a conversational AI that helps you
-              identify and dismantle confidence blocks, rehearse high-stakes
-              scenarios, reframe negative self-narratives, and build an evidence
-              base of past wins. Compared to a human coach, it is available at
-              3 am the night before a job interview, never tires of the same
-              loop, and cannot be put off by your mess. It cannot offer the
-              relational warmth of a skilled human coach, but it can provide
-              consistent, patient, structured practice across hundreds of
-              sessions — without a waiting list, without a per-hour fee, and
-              without the social dynamic that makes many people hold back the
-              things they most need to say.
-            </p>
-          </div>
-
-          {/* FAQ 3 */}
-          <div style={{ marginBottom: "2.5rem" }}>
-            <h3
-              style={{
-                fontWeight: 700,
-                fontSize: "1.1rem",
-                color: GOLD,
-                marginBottom: "0.75rem",
-                lineHeight: 1.4,
-              }}
-            >
-              How does MEOK help with imposter syndrome specifically?
-            </h3>
-            <p
-              style={{
-                color: "rgba(245,240,232,0.72)",
-                lineHeight: 1.8,
-                margin: 0,
-                fontSize: "1rem",
-              }}
-            >
-              Imposter syndrome persists partly because the mind discounts
-              evidence of success and over-weights evidence of failure.
-              MEOK&apos;s Sovereign Memory creates an encrypted, persistent log of
-              your wins, skills demonstrated, and positive feedback received.
-              Over weeks this becomes an evidence file you can literally read
-              back — a factual counter-argument to the inner voice that says you
-              do not belong. The Scholar archetype interrogates the cognitive
-              distortions beneath imposter feelings, while the Pioneer archetype
-              pushes you toward the next small action that generates a new data
-              point. The Trickster, meanwhile, helps you see yourself from the
-              perspective of someone who admires you — which is usually far more
-              accurate than the internal view.
-            </p>
-          </div>
-
-          {/* FAQ 4 */}
-          <div style={{ marginBottom: "2.5rem" }}>
-            <h3
-              style={{
-                fontWeight: 700,
-                fontSize: "1.1rem",
-                color: GOLD,
-                marginBottom: "0.75rem",
-                lineHeight: 1.4,
-              }}
-            >
-              Is MEOK suitable for someone with very low confidence or social
-              anxiety?
-            </h3>
-            <p
-              style={{
-                color: "rgba(245,240,232,0.72)",
-                lineHeight: 1.8,
-                margin: 0,
-                fontSize: "1rem",
-              }}
-            >
-              Yes. People with low confidence or social anxiety often avoid the
-              very practice that would build their skills, because practice in
-              public feels too exposing. MEOK provides a zero-judgment rehearsal
-              space where the stakes are genuinely zero. You can stumble over
-              your words, restart a job interview simulation five times, or admit
-              your deepest insecurities without social consequence. The Pioneer
-              archetype makes this safe by breaking practice into the smallest
-              possible unit: not &ldquo;do the scary thing&rdquo;, but &ldquo;say the first
-              sentence out loud, once, right now&rdquo;. MEOK is not a clinical
-              intervention for anxiety disorders — always consult a qualified
-              professional for that — but it is an uncommonly gentle entry point
-              to the practice that builds real confidence.
-            </p>
-          </div>
-
-          {/* FAQ 5 */}
-          <div style={{ marginBottom: "2.5rem" }}>
-            <h3
-              style={{
-                fontWeight: 700,
-                fontSize: "1.1rem",
-                color: GOLD,
-                marginBottom: "0.75rem",
-                lineHeight: 1.4,
-              }}
-            >
-              What does anti-sycophancy mean and why does it matter for
-              confidence building?
-            </h3>
-            <p
-              style={{
-                color: "rgba(245,240,232,0.72)",
-                lineHeight: 1.8,
-                margin: 0,
-                fontSize: "1rem",
-              }}
-            >
-              Sycophancy in AI means the system flatters you to keep you engaged
-              — telling you your presentation was brilliant when it had
-              significant gaps, or validating a decision it should gently
-              challenge. For confidence building, sycophancy is actively harmful:
-              it creates a paper house. You feel temporarily good but your actual
-              capability has not improved, and the next real-world test will
-              knock the house down. MEOK&apos;s anti-sycophantic design means it
-              will acknowledge your effort, name your real strengths clearly,
-              and also point to specific gaps that are worth closing. The
-              Maternal Covenant principle behind MEOK holds that genuine
-              investment in someone&apos;s growth sometimes means honest feedback
-              over comfortable praise — and that this is not harshness, but
-              respect.
-            </p>
-          </div>
-
-          {/* FAQ 6 */}
-          <div style={{ marginBottom: "2.5rem" }}>
-            <h3
-              style={{
-                fontWeight: 700,
-                fontSize: "1.1rem",
-                color: GOLD,
-                marginBottom: "0.75rem",
-                lineHeight: 1.4,
-              }}
-            >
-              Can I use MEOK to practise job interviews and presentations?
-            </h3>
-            <p
-              style={{
-                color: "rgba(245,240,232,0.72)",
-                lineHeight: 1.8,
-                margin: 0,
-                fontSize: "1rem",
-              }}
-            >
-              The rehearsal room is one of MEOK&apos;s core use cases. You can ask
-              MEOK to play an interviewer for a specific type of role, simulate
-              a hostile question from an audience after a presentation, or
-              role-play a difficult conversation with a manager. You control the
-              scenario, the level of challenge, and the number of repetitions.
-              After each run, MEOK can debrief you on what landed well and what
-              to refine — without shame, without impatience, and with full memory
-              of every previous session so it can notice patterns across time.
-              The goal is not to memorise a performance. It is to build the
-              neural familiarity with the situation that allows genuine presence
-              when it counts.
-            </p>
-          </div>
-
-          {/* FAQ 7 */}
-          <div style={{ marginBottom: "0" }}>
-            <h3
-              style={{
-                fontWeight: 700,
-                fontSize: "1.1rem",
-                color: GOLD,
-                marginBottom: "0.75rem",
-                lineHeight: 1.4,
-              }}
-            >
-              How does Sovereign Memory help with confidence over time?
-            </h3>
-            <p
-              style={{
-                color: "rgba(245,240,232,0.72)",
-                lineHeight: 1.8,
-                margin: 0,
-                fontSize: "1rem",
-              }}
-            >
-              Most AI tools have no memory between sessions. Every conversation
-              starts from zero, which means they cannot track your growth.
-              Sovereign Memory in MEOK is an encrypted vault that persists
-              across every session. It records accomplishments you mention,
-              skills you demonstrate, fears you have moved through, and
-              conversations you have rehearsed. Over months it becomes a genuine
-              longitudinal record of your development — the kind of evidence base
-              that makes confidence claims feel true rather than aspirational.
-              Crucially, you own the data entirely; MEOK never trains on it,
-              never analyses it commercially, and never shares it with third
-              parties. The vault is yours.
-            </p>
-          </div>
-        </section>
-
-        <Divider />
-
-        {/* ── SECTION 9: What MEOK is not ──────────────────────────────────── */}
-        <section>
-          <h2
-            style={{
-              fontWeight: 800,
-              fontSize: "clamp(1.35rem, 2.5vw, 1.9rem)",
-              color: TEXT,
-              lineHeight: 1.28,
-              marginBottom: "1.25rem",
-              letterSpacing: "-0.01em",
-            }}
-          >
-            What MEOK Is Not
-          </h2>
-
-          <p
-            style={{
-              color: "rgba(245,240,232,0.72)",
-              lineHeight: 1.8,
-              marginBottom: "1.25rem",
-              fontSize: "1rem",
-            }}
-          >
-            Clarity matters here, because the space MEOK occupies is one where
-            overreach does real harm.
-          </p>
-
-          <p
-            style={{
-              color: "rgba(245,240,232,0.72)",
-              lineHeight: 1.8,
-              marginBottom: "1.25rem",
-              fontSize: "1rem",
-            }}
-          >
-            MEOK is not a substitute for professional mental health support.
-            If low confidence is connected to clinical anxiety, depression, past
-            trauma, or another diagnosable condition, working with a qualified
-            therapist, psychologist, or psychiatrist is the appropriate primary
-            intervention. NHS Talking Therapies can be accessed by self-referral
-            at many locations across England. MEOK can complement professional
-            support — providing a space for reflection and practice between
-            sessions — but it does not replace it.
-          </p>
-
-          <p
-            style={{
-              color: "rgba(245,240,232,0.72)",
-              lineHeight: 1.8,
-              marginBottom: "1.25rem",
-              fontSize: "1rem",
-            }}
-          >
-            MEOK is not a motivational app. It does not send you push
-            notifications telling you to believe in yourself. It does not
-            generate daily affirmation cards. It does not reward streaks. The
-            Pioneer archetype will issue challenges, but they will be specific
-            and grounded in what you have told MEOK about your actual life —
-            not generic productivity theatre.
-          </p>
-
-          <p
-            style={{
-              color: "rgba(245,240,232,0.72)",
-              lineHeight: 1.8,
-              marginBottom: "1.25rem",
-              fontSize: "1rem",
-            }}
-          >
-            MEOK is not a social platform. There are no community features, no
-            public profiles, no ways to compare yourself to other users. The
-            only trajectory visible is yours — which is exactly the trajectory
-            that matters.
-          </p>
-
-          <p
-            style={{
-              color: "rgba(245,240,232,0.72)",
-              lineHeight: 1.8,
-              marginBottom: "0",
-              fontSize: "1rem",
-            }}
-          >
-            MEOK is a private space for honest work. It is for people who are
-            tired of temporary fixes and want to build something real: a genuine,
-            evidence-based sense of their own capability that holds up when the
-            pressure comes on. It will not be the most comfortable experience.
-            It will try to be the most useful one.
-          </p>
-        </section>
-
-        <Divider />
-
-        {/* ── SECTION 10: The Path Forward ─────────────────────────────────── */}
-        <section>
-          <h2
-            style={{
-              fontWeight: 800,
-              fontSize: "clamp(1.35rem, 2.5vw, 1.9rem)",
-              color: TEXT,
-              lineHeight: 1.28,
-              marginBottom: "1.25rem",
-              letterSpacing: "-0.01em",
-            }}
-          >
-            The Path Forward: Building a Track Record That Speaks for Itself
-          </h2>
-
-          <p
-            style={{
-              color: "rgba(245,240,232,0.72)",
-              lineHeight: 1.8,
-              marginBottom: "1.25rem",
-              fontSize: "1rem",
-            }}
-          >
-            Here is the honest summary of what the evidence says about
-            confidence, drawn from three decades of self-efficacy research,
-            cognitive-behavioural therapy outcomes, and the practical experience
-            of coaches and therapists working with people who struggle with it.
-          </p>
-
-          <p
-            style={{
-              color: "rgba(245,240,232,0.72)",
-              lineHeight: 1.8,
-              marginBottom: "1.25rem",
-              fontSize: "1rem",
-            }}
-          >
-            Confidence is not a trait some people have and others do not.
-            It is a skill — built through repeated action, accumulated evidence,
-            and a gradually updated story about who you are and what you are
-            capable of. The people who appear most confident are not free from
-            self-doubt. They have simply built a track record that makes it
-            harder for the self-doubt to dominate.
-          </p>
-
-          <p
-            style={{
-              color: "rgba(245,240,232,0.72)",
-              lineHeight: 1.8,
-              marginBottom: "1.25rem",
-              fontSize: "1rem",
-            }}
-          >
-            The path to that track record involves three things:
-          </p>
-
-          <div
-            style={{
-              display: "grid",
-              gap: "1rem",
-              marginBottom: "2rem",
-            }}
-          >
-            <div
-              style={{
-                display: "flex",
-                gap: "1rem",
-                alignItems: "flex-start",
-                background: "rgba(201,168,76,0.05)",
-                border: "1px solid rgba(201,168,76,0.15)",
-                borderRadius: "0.65rem",
-                padding: "1.25rem 1.5rem",
-              }}
-            >
-              <span style={{ color: GOLD, fontWeight: 800, fontSize: "1.1rem", flexShrink: 0, marginTop: "0.05rem" }}>
-                01
-              </span>
-              <div>
-                <div style={{ fontWeight: 700, color: TEXT, marginBottom: "0.35rem", fontSize: "1rem" }}>
-                  Taking action before you feel ready
-                </div>
-                <div style={{ color: "rgba(245,240,232,0.65)", fontSize: "0.97rem", lineHeight: 1.7 }}>
-                  The feeling of readiness follows action; it almost never
-                  precedes it. The Pioneer archetype is built around this
-                  principle — finding the smallest actionable step and taking it
-                  now, in order to generate the first data point.
-                </div>
-              </div>
-            </div>
-
-            <div
-              style={{
-                display: "flex",
-                gap: "1rem",
-                alignItems: "flex-start",
-                background: "rgba(201,168,76,0.05)",
-                border: "1px solid rgba(201,168,76,0.15)",
-                borderRadius: "0.65rem",
-                padding: "1.25rem 1.5rem",
-              }}
-            >
-              <span style={{ color: GOLD, fontWeight: 800, fontSize: "1.1rem", flexShrink: 0, marginTop: "0.05rem" }}>
-                02
-              </span>
-              <div>
-                <div style={{ fontWeight: 700, color: TEXT, marginBottom: "0.35rem", fontSize: "1rem" }}>
-                  Recording and reviewing your evidence
-                </div>
-                <div style={{ color: "rgba(245,240,232,0.65)", fontSize: "0.97rem", lineHeight: 1.7 }}>
-                  The mind discounts wins automatically. Sovereign Memory
-                  counteracts this by creating a persistent, reviewable record
-                  that updates your self-assessment with actual data rather than
-                  feeling.
-                </div>
-              </div>
-            </div>
-
-            <div
-              style={{
-                display: "flex",
-                gap: "1rem",
-                alignItems: "flex-start",
-                background: "rgba(201,168,76,0.05)",
-                border: "1px solid rgba(201,168,76,0.15)",
-                borderRadius: "0.65rem",
-                padding: "1.25rem 1.5rem",
-              }}
-            >
-              <span style={{ color: GOLD, fontWeight: 800, fontSize: "1.1rem", flexShrink: 0, marginTop: "0.05rem" }}>
-                03
-              </span>
-              <div>
-                <div style={{ fontWeight: 700, color: TEXT, marginBottom: "0.35rem", fontSize: "1rem" }}>
-                  Interrogating the narrative honestly
-                </div>
-                <div style={{ color: "rgba(245,240,232,0.65)", fontSize: "0.97rem", lineHeight: 1.7 }}>
-                  The story you tell about yourself is built from selected
-                  evidence, interpreted through a particular lens. The Scholar
-                  and the Trickster help you examine both the selection and the
-                  lens — and update the story when the evidence requires it.
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <p
-            style={{
-              color: "rgba(245,240,232,0.72)",
-              lineHeight: 1.8,
-              marginBottom: "1.25rem",
-              fontSize: "1rem",
-            }}
-          >
-            This is slow work. It is not a ten-day programme. It is not a
-            supplement. It does not have a dramatic inflection point where
-            confidence arrives fully formed. What it has is compound interest:
-            each small action makes the next one marginally easier, each
-            reviewed win makes the evidence file marginally stronger, each
-            interrogated loop makes the cognitive distortions marginally less
-            automatic.
-          </p>
-
-          <p
-            style={{
-              color: "rgba(245,240,232,0.72)",
-              lineHeight: 1.8,
-              marginBottom: "1.25rem",
-              fontSize: "1rem",
-            }}
-          >
-            Over time — months, not days — this compounds into something
-            qualitatively different from what most people mean when they say
-            they want to be more confident. Not a louder voice or a more
-            assertive posture. A deeper, quieter certainty: a recognition,
-            based on actual evidence, that you have handled difficult things
-            before, that you have more tools than you sometimes remember, and
-            that the next hard thing is survivable.
-          </p>
-
-          <p
-            style={{
-              color: "rgba(245,240,232,0.72)",
-              lineHeight: 1.8,
-              marginBottom: "0",
-              fontSize: "1rem",
-            }}
-          >
-            That is what MEOK is building toward. Not confidence as a performance.
-            Confidence as a foundation — something you have genuinely earned, that
-            belongs to you, that no single bad day can take away.
-          </p>
-        </section>
-
-        <Divider />
-
-        {/* ── CTA ───────────────────────────────────────────────────────────── */}
-        <section>
-          <div
-            style={{
-              background:
-                "radial-gradient(ellipse 80% 80% at 50% 100%, rgba(201,168,76,0.1) 0%, transparent 70%), rgba(255,255,255,0.02)",
-              border: "1px solid rgba(201,168,76,0.22)",
+              border: `1px solid rgba(201,168,76,0.22)`,
               borderRadius: "1rem",
-              padding: "3rem 2rem",
+              padding: "2.5rem",
               textAlign: "center" as const,
             }}
           >
             <div
               style={{
-                fontSize: "1.75rem",
+                fontSize: "0.68rem",
+                fontWeight: 700,
+                letterSpacing: "0.1em",
+                textTransform: "uppercase" as const,
+                color: GOLD,
                 marginBottom: "1rem",
-                lineHeight: 1,
               }}
             >
-              ⚡
+              Start building evidence
             </div>
+
             <h2
               style={{
-                fontWeight: 800,
-                fontSize: "clamp(1.3rem, 2.5vw, 1.75rem)",
+                fontWeight: 900,
+                fontSize: "clamp(1.4rem, 3vw, 2rem)",
                 color: TEXT,
-                lineHeight: 1.3,
+                lineHeight: 1.25,
                 marginBottom: "1rem",
-                letterSpacing: "-0.01em",
+                letterSpacing: "-0.02em",
               }}
             >
-              Start Building Your Evidence File
+              Your confidence has a data problem.
+              <br />
+              MEOK solves it.
             </h2>
+
             <p
               style={{
-                color: "rgba(245,240,232,0.6)",
+                color: MUTED,
                 fontSize: "1rem",
-                lineHeight: 1.7,
-                maxWidth: "32rem",
+                lineHeight: 1.75,
+                marginBottom: "2rem",
+                maxWidth: "36rem",
                 margin: "0 auto 2rem",
               }}
             >
-              No affirmations. No streak gamification. No flattery. Just a
-              private space to rehearse the hard conversations, record your wins,
-              and build a track record that holds up when the pressure arrives.
+              Find out your archetype, meet the Pioneer, and start the process
+              of building a confidence that holds under pressure \u2014 because
+              it is grounded in evidence you can actually see.
             </p>
-            <Link
-              href="/birth"
+
+            <div
               style={{
-                display: "inline-block",
-                background: GOLD,
-                color: "#0d0c18",
-                fontWeight: 800,
-                fontSize: "1rem",
-                padding: "0.9rem 2.5rem",
-                borderRadius: "0.5rem",
-                textDecoration: "none",
-                letterSpacing: "0.03em",
+                display: "flex",
+                gap: "1rem",
+                justifyContent: "center",
+                flexWrap: "wrap",
               }}
             >
-              Meet MEOK
-            </Link>
-            <p
-              style={{
-                color: "rgba(245,240,232,0.3)",
-                fontSize: "0.8rem",
-                marginTop: "1.1rem",
-                marginBottom: 0,
-              }}
-            >
-              Your data stays yours. Always.
-            </p>
+              <Link
+                href="/birth"
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: "0.5rem",
+                  padding: "0.875rem 2rem",
+                  background: GOLD,
+                  color: BG,
+                  borderRadius: "9999px",
+                  fontWeight: 700,
+                  fontSize: "0.95rem",
+                  textDecoration: "none",
+                  letterSpacing: "0.01em",
+                }}
+              >
+                Find your archetype &#8594;
+              </Link>
+
+              <Link
+                href="/characters"
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: "0.5rem",
+                  padding: "0.875rem 2rem",
+                  background: "transparent",
+                  color: TEXT,
+                  border: `1px solid rgba(245,240,232,0.22)`,
+                  borderRadius: "9999px",
+                  fontWeight: 600,
+                  fontSize: "0.95rem",
+                  textDecoration: "none",
+                  letterSpacing: "0.01em",
+                }}
+              >
+                Meet the Pioneer
+              </Link>
+            </div>
           </div>
-        </section>
 
-        <Divider />
-
-        {/* ── Author & Disclaimer ───────────────────────────────────────────── */}
-        <section>
+          {/* ── Footer meta ── */}
           <div
             style={{
+              marginTop: "4rem",
+              paddingTop: "2rem",
+              borderTop: "1px solid rgba(245,240,232,0.07)",
               display: "flex",
-              gap: "1.25rem",
-              alignItems: "flex-start",
-              marginBottom: "2.5rem",
+              flexWrap: "wrap",
+              gap: "1rem",
+              justifyContent: "space-between",
+              alignItems: "center",
             }}
           >
             <div
               style={{
-                flexShrink: 0,
-                width: "3rem",
-                height: "3rem",
-                borderRadius: "50%",
-                background: "rgba(201,168,76,0.15)",
-                border: `1px solid ${GOLD}`,
                 display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                color: GOLD,
-                fontWeight: 700,
-                fontSize: "1rem",
+                gap: "0.625rem",
+                flexWrap: "wrap",
+                fontSize: "0.8rem",
+                color: "rgba(245,240,232,0.35)",
               }}
             >
-              NT
+              <span>Written by Nicholas Templeman</span>
+              <span style={{ color: `${GOLD}44` }}>·</span>
+              <span>MEOK AI LABS</span>
+              <span style={{ color: `${GOLD}44` }}>·</span>
+              <span>@meok_ai</span>
             </div>
-            <div>
-              <div
-                style={{ fontWeight: 700, color: TEXT, marginBottom: "0.2rem", fontSize: "0.95rem" }}
-              >
-                Nicholas Templeman
-              </div>
-              <div
-                style={{ color: MUTED, fontSize: "0.82rem", marginBottom: "0.5rem" }}
-              >
-                Founder, MEOK AI LABS &middot;{" "}
-                <a
-                  href="https://meok.ai"
-                  style={{ color: GOLD, textDecoration: "none" }}
-                >
-                  meok.ai
-                </a>
-              </div>
-              <p
-                style={{
-                  color: "rgba(245,240,232,0.55)",
-                  fontSize: "0.9rem",
-                  lineHeight: 1.6,
-                  margin: 0,
-                }}
-              >
-                Nicholas built MEOK AI LABS around the conviction that AI
-                should be genuinely invested in the people who use it — not
-                engineered to maximise their engagement. He writes and thinks
-                about the architecture of care in artificial intelligence,
-                Sovereign Memory, and what it means to build technology that
-                earns trust rather than captures attention.
-              </p>
-            </div>
-          </div>
-
-          <div
-            style={{
-              background: "rgba(255,255,255,0.03)",
-              border: "1px solid rgba(255,255,255,0.07)",
-              borderRadius: "0.65rem",
-              padding: "1.25rem 1.5rem",
-            }}
-          >
-            <p
+            <Link
+              href="/blog"
               style={{
-                color: "rgba(245,240,232,0.38)",
-                fontSize: "0.82rem",
-                lineHeight: 1.65,
-                margin: 0,
+                fontSize: "0.8rem",
+                color: "rgba(245,240,232,0.35)",
+                textDecoration: "none",
               }}
             >
-              <strong style={{ color: "rgba(245,240,232,0.5)" }}>
-                Note:
-              </strong>{" "}
-              This article is for informational purposes only and does not
-              constitute clinical or therapeutic advice. If you are experiencing
-              significant anxiety, depression, or other mental health concerns,
-              please consult a qualified healthcare professional. In the UK, NHS
-              Talking Therapies (formerly IAPT) can be self-referred; the
-              Samaritans can be reached 24 hours a day on{" "}
-              <strong style={{ color: "rgba(245,240,232,0.5)" }}>116 123</strong>.
-              MEOK is a personal AI tool, not a clinical intervention.
-            </p>
+              &#8592; All posts
+            </Link>
           </div>
-        </section>
-
-        {/* ── Related Articles ──────────────────────────────────────────────── */}
-        <section style={{ marginTop: "3rem" }}>
-          <div
-            style={{
-              fontSize: "0.75rem",
-              fontWeight: 700,
-              color: MUTED,
-              letterSpacing: "0.08em",
-              textTransform: "uppercase" as const,
-              marginBottom: "1.25rem",
-            }}
-          >
-            Related Reading
-          </div>
-          <div style={{ display: "flex", flexDirection: "column" as const, gap: "0.65rem" }}>
-            {[
-              {
-                href: "/blog/ai-for-social-anxiety",
-                label: "AI Companion for Social Anxiety: Practising Real Conversations in a Low-Stakes Space",
-              },
-              {
-                href: "/blog/ai-for-impostor-syndrome",
-                label: "AI for Impostor Syndrome: Building the Evidence File Your Inner Critic Cannot Argue With",
-              },
-              {
-                href: "/blog/ai-for-procrastination",
-                label: "AI for Procrastination: Why You Avoid the Important Things and What to Do About It",
-              },
-              {
-                href: "/blog/ai-for-career-coaching",
-                label: "AI for Career Coaching: Rehearse, Reflect, and Get Ready for What Is Next",
-              },
-              {
-                href: "/blog/sovereign-ai-explained",
-                label: "What Is Sovereign AI? The Case for an AI That Belongs to You",
-              },
-            ].map(({ href, label }) => (
-              <Link
-                key={href}
-                href={href}
-                style={{
-                  color: "rgba(245,240,232,0.55)",
-                  textDecoration: "none",
-                  fontSize: "0.95rem",
-                  lineHeight: 1.5,
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "0.5rem",
-                  transition: "color 0.15s",
-                }}
-              >
-                <span style={{ color: GOLD, flexShrink: 0 }}>&#8594;</span>
-                {label}
-              </Link>
-            ))}
-          </div>
-        </section>
-      </article>
-    </div>
+        </article>
+      </main>
+    </>
   );
 }
