@@ -91,7 +91,7 @@ const jsonLd = {
           name: "Does Ralph cost extra compute?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "No. Ralph's overnight operation is included in your Pro or Elite plan — no per-task charges. Heavy research tasks consume more API tokens, which MEOK absorbs within your plan's fair-use limit.",
+            text: "No. Ralph's overnight operation is included in your Sovereign or Family plan — no per-task charges. Heavy research tasks consume more API tokens, which MEOK absorbs within your plan's fair-use limit.",
           },
         },
       ],
@@ -233,7 +233,7 @@ const FAQ_ITEMS = [
   },
   {
     q: "Does Ralph cost extra compute?",
-    a: "No. Ralph's overnight operation is included in your Pro or Elite plan — no per-task charges. Heavy research tasks consume more API tokens, which MEOK absorbs within your plan's fair-use limit.",
+    a: "No. Ralph's overnight operation is included in your Sovereign or Family plan — no per-task charges. Heavy research tasks consume more API tokens, which MEOK absorbs within your plan's fair-use limit.",
   },
 ];
 
@@ -992,9 +992,9 @@ export default function RalphPage() {
               <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-cyan-500 text-xs font-bold text-black whitespace-nowrap">
                 Includes Ralph
               </div>
-              <p className="text-cyan-400 text-xs font-mono uppercase tracking-wider mb-1">Pro</p>
+              <p className="text-cyan-400 text-xs font-mono uppercase tracking-wider mb-1">Sovereign</p>
               <p className="text-2xl font-black mb-1">
-                £9.99<span className="text-sm text-white/30 font-normal">/mo</span>
+                £12<span className="text-sm text-white/30 font-normal">/mo</span>
               </p>
               <div className="mt-4 flex items-center gap-2 text-sm text-cyan-400">
                 <Zap className="w-4 h-4 flex-shrink-0" />

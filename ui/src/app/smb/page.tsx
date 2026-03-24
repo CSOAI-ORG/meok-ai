@@ -20,7 +20,7 @@ import {
 export const metadata: Metadata = {
   title: "Every Person Who Leaves Takes Knowledge With Them. Unless It's in MEOK. | MEOK SMB",
   description:
-    "Companies lose 30% productivity for 6 months when a key person leaves. MEOK gives small businesses sovereign AI that retains client memory, team knowledge, and decision history — permanently. £29.99/seat.",
+    "Companies lose 30% productivity for 6 months when a key person leaves. MEOK gives small businesses sovereign AI that retains client memory, team knowledge, and decision history — permanently. £29/seat.",
   alternates: { canonical: "https://meok.ai/smb" },
   openGraph: {
     title: "Every Person Who Leaves Takes Knowledge With Them. Unless It's in MEOK.",
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Stop Losing Knowledge When Staff Leave | MEOK SMB",
-    description: "Sovereign AI for small businesses. Retain client memory, team knowledge, and decision history permanently. £29.99/seat.",
+    description: "Sovereign AI for small businesses. Retain client memory, team knowledge, and decision history permanently. £29/seat.",
     images: ["https://meok.ai/api/og?title=MEOK+for+Business&desc=Stop+losing+knowledge+when+staff+leave.+Sovereign+AI+for+small+businesses.+%C2%A329.99%2Fseat."],
   },
 };
@@ -93,7 +93,7 @@ const jsonLd = {
       name: "How much does MEOK Team cost?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "£29.99 per seat per month. No seat minimums, no setup fees, no annual lock-in. A 5-person team pays £149.95/month. 30-day free trial included.",
+        text: "£29 per month (whole team). No seat minimums, no setup fees, no annual lock-in. A 5-person team pays £29/month. 30-day free trial included.",
       },
     },
     {

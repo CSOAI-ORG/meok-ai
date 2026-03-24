@@ -111,7 +111,7 @@ export default function TermsPage() {
               <a href="/blog/byzantine-fault-tolerance-your-ai" className="text-[#c9a84c] hover:underline">Byzantine fault-tolerant council system</a>.
             </p>
             <p>
-              The service is provided for personal, non-commercial use on free plans. Commercial use is permitted on Pro and Elite plans.
+              The service is provided for personal, non-commercial use on the Explorer free plan. Commercial use is permitted on Sovereign and Family plans.
             </p>
           </Section>
 

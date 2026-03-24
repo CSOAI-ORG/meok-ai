@@ -286,7 +286,7 @@ export default function ProductPage() {
               "7 AI archetypes to choose from",
               "Multi-LLM routing (GPT-4o, Claude, Gemini)",
               "Local-first processing where possible",
-              "Family Guardian (from Elite plan)",
+              "Family Guardian (Family plan)",
             ].map((item) => (
               <div key={item} className="flex items-center gap-3 p-4 rounded-xl bg-white/[0.02] border border-white/[0.05]">
                 <Check className="w-4 h-4 text-[#c9a84c] flex-shrink-0" />
