@@ -53,6 +53,18 @@ const POSTS = [
     featured: true,
   },
   {
+    slug: "what-is-ai-os",
+    title: "What is an AI Operating System? MEOK OS Explained",
+    excerpt:
+      "A chatbot forgets you the moment you close the tab. An AI OS remembers everything, runs tools on your behalf, and deepens the relationship over time. Here's the 6-layer architecture behind MEOK OS.",
+    date: "March 29, 2026",
+    readTime: "8 min read",
+    tag: "Technology",
+    tagColor: "#d4af37",
+    category: "research",
+    featured: false,
+  },
+  {
     slug: "ai-for-depression",
     title: "Can AI Help with Depression? What Research Says and What MEOK Actually Offers",
     excerpt:
