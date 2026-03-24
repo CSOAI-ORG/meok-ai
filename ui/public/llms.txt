@@ -47,7 +47,7 @@ MEOK AI LABS (meok.ai) builds the world's first personal sovereign AI companion 
 - MEOK-AI-2026-003: Hydro-Neuromorphic Computing: Water as Neural Substrate — Nicholas Templeman, MEOK AI LABS Research
 - MEOK-AI-2026-004: Personal Sovereign AI: Architecture for Individual Data Sovereignty — Nicholas Templeman, MEOK AI LABS Research
 
-## Blog (219 posts as of March 2026)
+## Blog (222 posts as of March 2026)
 Topics covered: sovereign AI, AI memory, AI chatbots with memory, AI life coach, AI companions, AI for mental health, AI for families, AI for seniors, AI for ADHD, AI for kids, AI for loneliness, best AI companion 2026, sovereign AI explained, AI companion vs therapist, MEOK vs ChatGPT/Claude/Replika, Byzantine Council, Maternal Covenant, Ralph Mode, Guardian family safety, cognitive symbiosis, hydro-neuromorphic computing, and more.
 Index: https://meok.ai/blog
 

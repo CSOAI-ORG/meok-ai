@@ -358,6 +358,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: 'https://meok.ai/blog/ralph-mode-explained', lastModified: new Date('2026-03-24'), changeFrequency: 'monthly', priority: 0.85 },
     { url: 'https://meok.ai/blog/ai-for-social-media-detox', lastModified: new Date('2026-03-24'), changeFrequency: 'monthly', priority: 0.85 },
     { url: 'https://meok.ai/blog/ai-for-perfectionism', lastModified: new Date('2026-03-24'), changeFrequency: 'monthly', priority: 0.85 },
+    { url: 'https://meok.ai/blog/ai-for-financial-stress', lastModified: new Date('2026-03-24'), changeFrequency: 'monthly', priority: 0.9 },
+    { url: 'https://meok.ai/blog/ai-for-sleep-anxiety', lastModified: new Date('2026-03-24'), changeFrequency: 'monthly', priority: 0.85 },
+    { url: 'https://meok.ai/blog/meok-birth-ceremony-explained', lastModified: new Date('2026-03-24'), changeFrequency: 'monthly', priority: 0.95 },
 
     // ── Legal ─────────────────────────────────────────────────────────
     { url: 'https://meok.ai/privacy', lastModified: new Date(), changeFrequency: 'yearly', priority: 0.3 },

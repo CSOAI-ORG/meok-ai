@@ -2666,6 +2666,42 @@ const POSTS = [
     category: "mental-health",
     featured: false,
   },
+  {
+    slug: "ai-for-financial-stress",
+    title: "AI for Financial Stress: Breaking the Shame Spiral",
+    excerpt:
+      "Financial problems cause shame. Shame causes avoidance. Avoidance makes things worse. MEOK is the non-judgmental space to break that cycle — processing money anxiety, preparing difficult conversations, and finding clarity.",
+    date: "March 24, 2026",
+    readTime: "10 min read",
+    tag: "Mental Health",
+    tagColor: "#5b8dd9",
+    category: "mental-health",
+    featured: false,
+  },
+  {
+    slug: "ai-for-sleep-anxiety",
+    title: "AI for Sleep Anxiety: Breaking the Paradox of Trying to Sleep",
+    excerpt:
+      "The fear of not sleeping creates the arousal that prevents sleep. MEOK\u2019s 3am presence is different from doom-scrolling — no engagement optimisation, no blue light trap, just a companion that helps you offload and wind down.",
+    date: "March 24, 2026",
+    readTime: "10 min read",
+    tag: "Mental Health",
+    tagColor: "#5b8dd9",
+    category: "mental-health",
+    featured: false,
+  },
+  {
+    slug: "meok-birth-ceremony-explained",
+    title: "The MEOK Birth Ceremony Explained: Why We Start With a Ceremony, Not a Sign-Up Form",
+    excerpt:
+      "Most AI asks you to create an account. MEOK asks you to hatch a companion. The Birth Ceremony is a 6-stage onboarding that sets your values, names your AI, and creates the ownership bond that makes the relationship real.",
+    date: "March 24, 2026",
+    readTime: "8 min read",
+    tag: "Product",
+    tagColor: "#7c6fcd",
+    category: "product",
+    featured: true,
+  },
 ];
 
 // ── Category filter tabs ──────────────────────────────────────────────────────
