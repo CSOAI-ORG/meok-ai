@@ -41,6 +41,42 @@ const jsonLd = {
 
 const POSTS = [
   {
+    slug: "meok-review",
+    title: "MEOK Review 2026: Honest Assessment of the Sovereign AI Companion",
+    excerpt:
+      "Memory: 9.5/10. Privacy: 9.8/10. Overall: 4.7/5. An honest, detailed review covering what MEOK does well, where it falls short, and who it's really built for — written by the founder.",
+    date: "March 24, 2026",
+    readTime: "12 min read",
+    tag: "Review",
+    tagColor: "#c9a84c",
+    category: "product",
+    featured: true,
+  },
+  {
+    slug: "ai-journaling",
+    title: "AI Journaling: How AI Companions Transform Daily Reflection",
+    excerpt:
+      "Traditional journaling is powerful but often abandoned. AI journaling adds a companion that remembers, questions, and holds your full story over months — changing what daily reflection can actually do.",
+    date: "March 24, 2026",
+    readTime: "10 min read",
+    tag: "Wellbeing",
+    tagColor: "#A78BFA",
+    category: "guides",
+    featured: false,
+  },
+  {
+    slug: "ai-for-relationships",
+    title: "AI for Relationships: How Sovereign AI Supports Couples, Families, and Connection",
+    excerpt:
+      "AI doesn't replace human connection. But an AI that helps you understand yourself, process your patterns, and prepare for hard conversations can make you a meaningfully better partner, parent, and friend.",
+    date: "March 24, 2026",
+    readTime: "12 min read",
+    tag: "Relationships",
+    tagColor: "#F472B6",
+    category: "guides",
+    featured: false,
+  },
+  {
     slug: "ai-for-grief-support",
     title: "AI for Grief Support: Can an AI Companion Help You Through Bereavement?",
     excerpt:
