@@ -224,6 +224,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: 'https://meok.ai/blog/ai-for-chronic-pain', lastModified: new Date('2026-03-24'), changeFrequency: 'monthly', priority: 0.8 },
     { url: 'https://meok.ai/blog/ai-for-eating-disorders', lastModified: new Date('2026-03-24'), changeFrequency: 'monthly', priority: 0.8 },
     { url: 'https://meok.ai/blog/ai-for-older-adults', lastModified: new Date('2026-03-24'), changeFrequency: 'monthly', priority: 0.9 },
+    { url: 'https://meok.ai/blog/ai-for-burnout', lastModified: new Date('2026-03-24'), changeFrequency: 'monthly', priority: 0.9 },
+    { url: 'https://meok.ai/blog/free-ai-companion', lastModified: new Date('2026-03-24'), changeFrequency: 'monthly', priority: 0.9 },
 
     // ── Legal ─────────────────────────────────────────────────────────
     { url: 'https://meok.ai/privacy', lastModified: new Date(), changeFrequency: 'yearly', priority: 0.3 },

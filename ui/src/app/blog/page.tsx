@@ -65,6 +65,30 @@ const POSTS = [
     featured: false,
   },
   {
+    slug: "ai-for-burnout",
+    title: "AI for Burnout: How an AI Companion Helps You Recover and Rebuild",
+    excerpt:
+      "Burnout is not laziness — it's a system failure. An AI companion that notices your patterns, remembers your capacity limits, and checks in without judgment can be the support structure recovery actually needs.",
+    date: "March 24, 2026",
+    readTime: "11 min read",
+    tag: "Wellbeing",
+    tagColor: "#f97316",
+    category: "guides",
+    featured: false,
+  },
+  {
+    slug: "free-ai-companion",
+    title: "Free AI Companion: What You Actually Get (And What's Worth Paying For)",
+    excerpt:
+      "Not all free tiers are equal. Some give you an app. Some build a relationship with you and then charge you to keep it. Here's what MEOK's free Explorer tier includes — and what to watch for everywhere else.",
+    date: "March 24, 2026",
+    readTime: "9 min read",
+    tag: "Guide",
+    tagColor: "#22c55e",
+    category: "product",
+    featured: false,
+  },
+  {
     slug: "ai-for-relationships",
     title: "AI for Relationships: How Sovereign AI Supports Couples, Families, and Connection",
     excerpt:
