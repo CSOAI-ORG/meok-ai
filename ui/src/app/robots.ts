@@ -21,6 +21,6 @@ export default function robots(): MetadataRoute.Robots {
       { userAgent: 'Bytespider', allow: '/' },
       { userAgent: 'cohere-ai', allow: '/' },
     ],
-    sitemap: 'https://www.meok.ai/sitemap.xml',
+    sitemap: 'https://meok.ai/sitemap.xml',
   }
 }

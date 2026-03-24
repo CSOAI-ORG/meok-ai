@@ -2006,6 +2006,66 @@ const POSTS = [
     category: "mental-health",
     featured: false,
   },
+  {
+    slug: "ai-for-confidence",
+    title: "AI for Confidence: The Practice Partner That Never Judges Your Stumbles",
+    excerpt:
+      "Confidence isn't a trait — it's a skill built through action and evidence. MEOK's Pioneer and Scholar archetypes help you build a genuine track record, not just affirmations.",
+    date: "March 24, 2026",
+    readTime: "12 min read",
+    tag: "Pioneer",
+    tagColor: "#E8732A",
+    category: "mental-health",
+    featured: false,
+  },
+  {
+    slug: "ai-for-perfectionism",
+    title: "AI for Perfectionism: When Done Is Never Good Enough",
+    excerpt:
+      "Perfectionism feels like high standards but functions as avoidance. MEOK's Trickster reframes the story; Sovereign Memory tracks when you shipped vs when you spiralled.",
+    date: "March 24, 2026",
+    readTime: "11 min read",
+    tag: "Trickster",
+    tagColor: "#E91E8C",
+    category: "mental-health",
+    featured: false,
+  },
+  {
+    slug: "ai-for-health-anxiety",
+    title: "AI for Health Anxiety: Breaking the Google Spiral at 2am",
+    excerpt:
+      "Health anxiety feeds on reassurance-seeking — googling makes it worse. MEOK helps you process the underlying fear without feeding the cycle, with patterns tracked across weeks.",
+    date: "March 24, 2026",
+    readTime: "11 min read",
+    tag: "Healer",
+    tagColor: "#7BC47F",
+    category: "mental-health",
+    featured: false,
+  },
+  {
+    slug: "ai-for-self-esteem",
+    title: "AI for Self-Esteem: When the Inner Critic Is Louder Than Everything Else",
+    excerpt:
+      "MEOK won't shower you with compliments — that creates fragile, external-dependent self-esteem. It witnesses your actual story and helps you build genuine self-regard.",
+    date: "March 24, 2026",
+    readTime: "11 min read",
+    tag: "Healer",
+    tagColor: "#7BC47F",
+    category: "mental-health",
+    featured: false,
+  },
+  {
+    slug: "ai-for-social-media-anxiety",
+    title: "AI for Social Media Anxiety: Reclaiming Your Mind From the Algorithm",
+    excerpt:
+      "The algorithm is designed to keep you anxious. MEOK is designed the opposite way — no engagement metrics, no outrage loops, no notifications. Just the conversation you actually need.",
+    date: "March 24, 2026",
+    readTime: "10 min read",
+    tag: "Guardian",
+    tagColor: "#C9A84C",
+    category: "mental-health",
+    featured: false,
+  },
 ];
 
 // ── Category filter tabs ──────────────────────────────────────────────────────
