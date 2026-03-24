@@ -434,6 +434,12 @@ export default function LabsPage() {
                 status: "Draft",
                 statusClass: "bg-white/[0.06] text-white/50 border-white/[0.1]",
               },
+              {
+                id: "MEOK-AI-2026-004",
+                title: "Personal Sovereign AI: Architecture for Individual Data Sovereignty",
+                status: "Draft",
+                statusClass: "bg-white/[0.06] text-white/50 border-white/[0.1]",
+              },
             ].map((paper) => (
               <div
                 key={paper.id}
