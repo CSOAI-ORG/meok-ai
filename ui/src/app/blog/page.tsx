@@ -269,6 +269,30 @@ const POSTS = [
     featured: false,
   },
   {
+    slug: "ai-for-workplace-stress",
+    title: "AI for Workplace Stress: Daily Support Between HR and Therapy",
+    excerpt:
+      "17 million working days are lost to stress in the UK each year. Your EAP has a waiting list. Therapy is expensive. MEOK is available 24/7, remembers your patterns, and never judges.",
+    date: "March 24, 2026",
+    readTime: "9 min read",
+    tag: "Wellbeing",
+    tagColor: "#f59e0b",
+    category: "guides",
+    featured: false,
+  },
+  {
+    slug: "ai-for-autism-adults",
+    title: "AI for Autistic Adults: Consistent, Non-Judgmental, Always There",
+    excerpt:
+      "Only 22% of autistic adults in the UK are in full-time employment. An AI that is always consistent, always literal, never misreads social cues, and remembers exactly how you communicate is a different kind of support.",
+    date: "March 24, 2026",
+    readTime: "11 min read",
+    tag: "Neurodivergent",
+    tagColor: "#a78bfa",
+    category: "guides",
+    featured: false,
+  },
+  {
     slug: "ai-for-burnout",
     title: "AI for Burnout: How an AI Companion Helps You Recover and Rebuild",
     excerpt:
