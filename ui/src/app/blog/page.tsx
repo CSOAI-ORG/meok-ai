@@ -89,6 +89,66 @@ const POSTS = [
     featured: false,
   },
   {
+    slug: "best-ai-chatbot-uk",
+    title: "Best AI Chatbot UK 2026: The Complete Comparison",
+    excerpt:
+      "ChatGPT, Claude, Gemini, Replika, Pi, or MEOK — which AI chatbot is actually best for UK users in 2026? We compare all six across memory, UK GDPR compliance, pricing, personality, and privacy.",
+    date: "March 24, 2026",
+    readTime: "13 min read",
+    tag: "Comparison",
+    tagColor: "#3b82f6",
+    category: "comparisons",
+    featured: false,
+  },
+  {
+    slug: "ai-companion-for-women",
+    title: "AI Companion for Women: Support That Actually Gets It",
+    excerpt:
+      "Most AI companions were designed with male users in mind. MEOK was built around care ethics, boundary respect, and privacy-first architecture — because meaningful AI support starts with designing for real needs.",
+    date: "March 24, 2026",
+    readTime: "11 min read",
+    tag: "Companion",
+    tagColor: "#ec4899",
+    category: "guides",
+    featured: false,
+  },
+  {
+    slug: "what-is-care-based-ai",
+    title: "What Is Care-Based AI? The Maternal Covenant Explained",
+    excerpt:
+      "Most AI alignment is built to avoid harm. Care-based AI is built to actively deliver good. The Maternal Covenant scores every MEOK response across 6 care dimensions in real time — and regenerates anything that falls below a 0.3 care floor.",
+    date: "March 24, 2026",
+    readTime: "12 min read",
+    tag: "Ethics",
+    tagColor: "#a855f7",
+    category: "deep-dives",
+    featured: false,
+  },
+  {
+    slug: "ai-for-self-improvement",
+    title: "AI for Self-Improvement: Can an AI Actually Help You Grow?",
+    excerpt:
+      "Self-improvement apps have a 40% abandonment rate within two weeks. An AI companion that remembers your patterns, tracks your evolution, and challenges you without judging you is a fundamentally different proposition.",
+    date: "March 24, 2026",
+    readTime: "12 min read",
+    tag: "Growth",
+    tagColor: "#10b981",
+    category: "guides",
+    featured: false,
+  },
+  {
+    slug: "meok-vs-perplexity",
+    title: "MEOK vs Perplexity: One Answers Questions, One Knows You",
+    excerpt:
+      "Perplexity is brilliant at finding answers. MEOK is built to know you. They solve different problems — but understanding the difference will change how you use AI in 2026.",
+    date: "March 24, 2026",
+    readTime: "9 min read",
+    tag: "Comparison",
+    tagColor: "#3b82f6",
+    category: "comparisons",
+    featured: false,
+  },
+  {
     slug: "ai-for-burnout",
     title: "AI for Burnout: How an AI Companion Helps You Recover and Rebuild",
     excerpt:
