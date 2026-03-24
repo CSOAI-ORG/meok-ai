@@ -2654,6 +2654,18 @@ const POSTS = [
     category: "productivity",
     featured: false,
   },
+  {
+    slug: "ai-for-social-media-detox",
+    title: "AI for Social Media Detox: Breaking the Dopamine Loop",
+    excerpt:
+      "Social media is engineered for addiction. MEOK is the opposite — no engagement optimisation, no ads, no dopamine loops. Just a sovereign AI that wants you to connect with humans, not scroll forever.",
+    date: "March 24, 2026",
+    readTime: "10 min read",
+    tag: "Mental Health",
+    tagColor: "#5b8dd9",
+    category: "mental-health",
+    featured: false,
+  },
 ];
 
 // ── Category filter tabs ──────────────────────────────────────────────────────
