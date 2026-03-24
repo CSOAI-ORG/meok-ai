@@ -44,9 +44,9 @@ export interface GuardianSettings {
 
 /** Per-tier daily message caps and memory retention windows. -1 = unlimited. */
 export const TIER_LIMITS: Record<Tier, { messages_per_day: number; memory_days: number; companions: number }> = {
-  explorer:  { messages_per_day: 200,  memory_days: 7,   companions: 1  },
-  sovereign: { messages_per_day: -1,   memory_days: -1,  companions: 3  }, // unlimited
-  family:    { messages_per_day: -1,   memory_days: -1,  companions: 15 }, // 5 members × 3 each
+  explorer:  { messages_per_day: 50,   memory_days: -1,  companions: 1  }, // sovereign memory is permanent
+  sovereign: { messages_per_day: -1,   memory_days: -1,  companions: 1  }, // unlimited
+  family:    { messages_per_day: -1,   memory_days: -1,  companions: 5  }, // 5 family members, each 1 companion
 };
 
 /** Sensible defaults applied to new Guardian activations. */
