@@ -305,6 +305,18 @@ const POSTS = [
     featured: false,
   },
   {
+    slug: "ai-for-money-anxiety",
+    title: "AI for Money Anxiety: Breaking the Shame Spiral Around Finance",
+    excerpt:
+      "Money is the #1 cause of stress in the UK. 9 million adults have problem debt. And yet most people suffer in silence because financial shame is the hardest kind to talk about — even to a professional.",
+    date: "March 24, 2026",
+    readTime: "9 min read",
+    tag: "Wellbeing",
+    tagColor: "#f59e0b",
+    category: "guides",
+    featured: false,
+  },
+  {
     slug: "ai-for-burnout",
     title: "AI for Burnout: How an AI Companion Helps You Recover and Rebuild",
     excerpt:
