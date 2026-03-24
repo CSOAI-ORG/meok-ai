@@ -33,8 +33,8 @@ interface CompareRow {
 const COMPARE_ROWS: CompareRow[] = [
   { label: "Price",               byok: "£5/mo",             explorer: "Free forever",  sovereign: "£12/mo",           family: "£29/mo" },
   { label: "Messages/day",        byok: "50 (own credits)",  explorer: "50",            sovereign: "Unlimited",         family: "Unlimited (×5)" },
-  { label: "Memory",              byok: "Basic vault",       explorer: "7-day encrypted", sovereign: "Permanent vault", family: "Permanent + shared" },
-  { label: "Companions",          byok: "1",                 explorer: "1",             sovereign: "3",                 family: "Up to 5" },
+  { label: "Memory",              byok: "Basic vault",       explorer: "Permanent encrypted", sovereign: "Permanent vault", family: "Permanent + shared" },
+  { label: "Companions",          byok: "1",                 explorer: "1",             sovereign: "1",                 family: "Up to 5" },
   { label: "LLM access",          byok: "Your own keys",     explorer: "DeepSeek + Llama", sovereign: "Claude + GPT-4o", family: "All LLMs incl. GPT-4o + Claude Sonnet" },
   { label: "Birth ceremony",      byok: true,                explorer: true,            sovereign: true,                family: true },
   { label: "Guardian alerts",     byok: false,               explorer: "Basic",         sovereign: "24/7 protection",   family: "Family dashboard" },
@@ -250,7 +250,7 @@ export default function PricingPage() {
           </h1>
 
           <p className="text-xl text-[#1a1a2e]/60 max-w-xl mx-auto leading-relaxed mb-4">
-            Free gets you a sovereign AI companion, 50 messages a day, 7-day encrypted memory, and a Birth Ceremony. No expiry. No pressure. That is not a trial — that is a permanent offer.
+            Free gets you a sovereign AI companion, 50 messages a day, permanent encrypted Sovereign Memory, and a Birth Ceremony. No expiry. No pressure. That is not a trial — that is a permanent offer.
           </p>
 
           {/* Why is it free callout */}
@@ -381,9 +381,9 @@ export default function PricingPage() {
               <ul className="space-y-3 flex-1 mb-7">
                 {[
                   "50 messages/day",
-                  "7-day encrypted memory",
+                  "Permanent encrypted Sovereign Memory",
                   "1 companion",
-                  "7 archetype choices",
+                  "6 archetype choices",
                   "Birth ceremony",
                   "Basic Guardian alerts",
                   "Multi-LLM (DeepSeek + Llama)",
@@ -437,7 +437,7 @@ export default function PricingPage() {
                   "Everything in Explorer",
                   "Unlimited messages",
                   "Permanent encrypted memory vault",
-                  "3 companions (mix archetypes)",
+                  "1 companion (all archetypes available)",
                   "Claude + GPT-4o access",
                   "Work OS (Orion + Riri + Hourman)",
                   "Guardian 24/7 protection",
@@ -601,10 +601,10 @@ export default function PricingPage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {[
               "50 messages/day",
-              "7-day encrypted memory",
+              "Permanent Sovereign Memory",
               "1 sovereign companion",
               "Birth Ceremony",
-              "7 archetype choices",
+              "6 archetype choices",
               "Basic Guardian alerts",
               "Multi-LLM (DeepSeek + Llama)",
               "Full data export — always",

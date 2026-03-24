@@ -150,7 +150,7 @@ const FAQS = [
   },
   {
     q: "What's the memory limit?",
-    a: "On the free tier: 7-day rolling window (100 memories). Pro: 30-day (1,000 memories). Premium: Unlimited. Family/Team: Unlimited per member.",
+    a: "On the free Explorer tier: Sovereign Memory is permanent — no expiry, no cap on memory count. Sovereign (£12/mo): permanent vault with unlimited memories. Family (£29/mo): permanent vault per member plus shared family context. BYOK (£5/mo): basic vault.",
   },
 ];
 

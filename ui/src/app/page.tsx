@@ -140,7 +140,7 @@ const faqJsonLd = {
       name: "How much does MEOK cost?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "MEOK is free forever at the base tier — you get a sovereign AI companion, 50 messages a day, 7-day encrypted memory, and a Birth Ceremony at no cost. Sovereign is £12/month, Family is £29/month. All paid plans include a 30-day money-back guarantee. Your data is always yours at every tier.",
+        text: "MEOK is free forever at the base tier — you get a sovereign AI companion, 50 messages a day, permanent Sovereign Memory, and a Birth Ceremony at no cost. Sovereign is £12/month, Family is £29/month. All paid plans include a 30-day money-back guarantee. Your data is always yours at every tier.",
       },
     },
   ],
@@ -205,7 +205,7 @@ const FREE_FEATURES = [
   "Sovereign AI companion",
   "Birth Ceremony",
   "50 messages/day",
-  "7-day encrypted memory",
+  "Permanent Sovereign Memory",
   "DeepSeek + Ollama routing",
   "Full data export — always",
 ];

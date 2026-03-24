@@ -118,7 +118,7 @@ const softwareSchema = {
       name: "Explorer",
       price: "0",
       priceCurrency: "GBP",
-      description: "Free tier: 100 messages/day, 7-day encrypted memory, sovereign AI companion",
+      description: "Free tier: 50 messages/day, permanent Sovereign Memory, sovereign AI companion",
     },
     {
       "@type": "Offer",

@@ -198,7 +198,7 @@ const osJsonLd = {
           name: "Is MEOK OS free?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "MEOK OS is free to start and free forever at the base tier. You get a sovereign AI companion, 100 messages per day, 7-day encrypted memory, and a Birth Ceremony — no credit card required. Sovereign (£12/mo), Family (£29/mo), and BYOK (£5/mo) plans unlock additional capabilities.",
+            text: "MEOK OS is free to start and free forever at the base tier. You get a sovereign AI companion, 50 messages per day, permanent Sovereign Memory, and a Birth Ceremony — no credit card required. Sovereign (£12/mo), Family (£29/mo), and BYOK (£5/mo) plans unlock additional capabilities.",
           },
         },
         {
