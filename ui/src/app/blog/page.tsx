@@ -197,6 +197,18 @@ const POSTS = [
     featured: false,
   },
   {
+    slug: "ai-companion-app",
+    title: "AI Companion App 2026: What to Look For (and What to Avoid)",
+    excerpt:
+      "The AI companion market is worth £1.8B — and full of apps that are built to engage you, not to care for you. Here's the honest buyer's guide: 5 green flags, 5 red flags, and what separates a real AI companion from a chatbot with a name.",
+    date: "March 24, 2026",
+    readTime: "13 min read",
+    tag: "Companion",
+    tagColor: "#a78bfa",
+    category: "guides",
+    featured: false,
+  },
+  {
     slug: "ai-for-burnout",
     title: "AI for Burnout: How an AI Companion Helps You Recover and Rebuild",
     excerpt:

@@ -237,6 +237,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: 'https://meok.ai/blog/ai-for-menopause', lastModified: new Date('2026-03-24'), changeFrequency: 'monthly', priority: 0.9 },
     { url: 'https://meok.ai/blog/ai-for-weight-loss', lastModified: new Date('2026-03-24'), changeFrequency: 'monthly', priority: 0.9 },
     { url: 'https://meok.ai/blog/ai-productivity-app', lastModified: new Date('2026-03-24'), changeFrequency: 'monthly', priority: 0.9 },
+    { url: 'https://meok.ai/blog/ai-companion-app', lastModified: new Date('2026-03-24'), changeFrequency: 'monthly', priority: 0.9 },
 
     // ── Legal ─────────────────────────────────────────────────────────
     { url: 'https://meok.ai/privacy', lastModified: new Date(), changeFrequency: 'yearly', priority: 0.3 },
