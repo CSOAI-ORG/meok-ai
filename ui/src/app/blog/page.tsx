@@ -1587,6 +1587,42 @@ const POSTS = [
     featured: false,
   },
   {
+    slug: "ai-for-weight-management",
+    title: "AI for Weight Management: An Accountability Companion That Remembers Your Patterns",
+    excerpt:
+      "Weight management is about habits and emotions, not just information. MEOK's Pioneer and Healer archetypes provide accountability, emotional support, and pattern recognition — without judgment, diets, or medical advice.",
+    date: "March 24, 2026",
+    readTime: "10 min read",
+    tag: "Wellbeing",
+    tagColor: "#4ade80",
+    category: "wellbeing",
+    featured: false,
+  },
+  {
+    slug: "ai-for-creative-block",
+    title: "AI for Creative Block: How MEOK's Trickster Archetype Breaks the Patterns Keeping You Stuck",
+    excerpt:
+      "Creative block is not laziness — it's a pattern. MEOK's Trickster archetype uses reframing, unexpected connections, and pattern disruption to help writers, designers, musicians, and artists break through.",
+    date: "March 24, 2026",
+    readTime: "11 min read",
+    tag: "Creativity",
+    tagColor: "#ec4899",
+    category: "guides",
+    featured: false,
+  },
+  {
+    slug: "ai-for-remote-work",
+    title: "AI for Remote Workers: Accountability, Structure, and Connection When You Work Alone",
+    excerpt:
+      "5 million UK remote workers face isolation, blurred boundaries, and missing accountability. MEOK's Pioneer archetype, morning briefings, and Healer support make remote work sustainable — and less lonely.",
+    date: "March 24, 2026",
+    readTime: "9 min read",
+    tag: "Work OS",
+    tagColor: "#c9a84c",
+    category: "product",
+    featured: false,
+  },
+  {
     slug: "ai-for-entrepreneurs",
     title: "AI for Entrepreneurs: How a Sovereign AI Replaces Your EA, Strategist, and Sounding Board",
     excerpt:
