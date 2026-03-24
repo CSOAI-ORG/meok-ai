@@ -214,6 +214,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: 'https://meok.ai/blog/ai-for-job-seekers', lastModified: new Date('2026-03-24'), changeFrequency: 'monthly', priority: 0.9 },
     { url: 'https://meok.ai/blog/ai-and-religion', lastModified: new Date('2026-03-24'), changeFrequency: 'monthly', priority: 0.8 },
     { url: 'https://meok.ai/blog/meok-for-parents', lastModified: new Date('2026-03-24'), changeFrequency: 'monthly', priority: 0.8 },
+    { url: 'https://meok.ai/blog/ai-for-divorce', lastModified: new Date('2026-03-24'), changeFrequency: 'monthly', priority: 0.9 },
+    { url: 'https://meok.ai/blog/ai-for-fertility', lastModified: new Date('2026-03-24'), changeFrequency: 'monthly', priority: 0.9 },
     { url: 'https://meok.ai/blog/ai-for-night-shift', lastModified: new Date('2026-03-24'), changeFrequency: 'monthly', priority: 0.8 },
     { url: 'https://meok.ai/blog/ai-for-entrepreneurs', lastModified: new Date('2026-03-24'), changeFrequency: 'monthly', priority: 0.8 },
     { url: 'https://meok.ai/blog/ai-for-single-parents', lastModified: new Date('2026-03-24'), changeFrequency: 'monthly', priority: 0.8 },

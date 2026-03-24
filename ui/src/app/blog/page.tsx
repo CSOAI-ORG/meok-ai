@@ -1527,6 +1527,30 @@ const POSTS = [
     featured: false,
   },
   {
+    slug: "ai-for-divorce",
+    title: "AI Support During Divorce: Processing the Hardest Chapter with an AI That Never Judges",
+    excerpt:
+      "Divorce is the second most stressful life event after bereavement. MEOK's Healer and Pioneer archetypes help you process the emotional devastation and plan your next steps — with total privacy guaranteed by the Maternal Covenant.",
+    date: "March 24, 2026",
+    readTime: "12 min read",
+    tag: "Wellbeing",
+    tagColor: "#60a5fa",
+    category: "wellbeing",
+    featured: false,
+  },
+  {
+    slug: "ai-for-fertility",
+    title: "AI Support for Fertility and IVF: A Companion That Remembers Every Round",
+    excerpt:
+      "1 in 7 UK couples face fertility issues. The emotional toll of IVF is enormous. MEOK's Healer archetype provides daily support through the two-week wait, failed rounds, and the grief that comes with infertility — with total privacy.",
+    date: "March 24, 2026",
+    readTime: "11 min read",
+    tag: "Wellbeing",
+    tagColor: "#f9a8d4",
+    category: "wellbeing",
+    featured: false,
+  },
+  {
     slug: "ai-for-night-shift",
     title: "AI for Night Shift Workers: MEOK Is Awake at 3am When No One Else Is",
     excerpt:
