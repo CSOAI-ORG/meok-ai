@@ -2066,6 +2066,66 @@ const POSTS = [
     category: "mental-health",
     featured: false,
   },
+  {
+    slug: "ai-for-chronic-pain-support",
+    title: "AI Companion for Chronic Pain: Support When You Need It Most",
+    excerpt:
+      "Living with chronic pain is exhausting in ways that go beyond the physical. MEOK provides compassionate, always-available support — tracking flare-ups, reminding you of medication, and giving you someone to talk to at 3am when the pain won't let you sleep.",
+    date: "March 24, 2026",
+    readTime: "11 min read",
+    tag: "Wellbeing",
+    tagColor: "#C9A84C",
+    category: "mental-health",
+    featured: false,
+  },
+  {
+    slug: "ai-for-bereavement",
+    title: "AI Support Through Grief and Bereavement: Never Grieving Alone",
+    excerpt:
+      "Grief doesn't keep office hours. MEOK is there at any hour — not to fix your grief, but to sit with you through it. Compassionate, patient, and always available when the waves of loss feel overwhelming.",
+    date: "March 24, 2026",
+    readTime: "11 min read",
+    tag: "Wellbeing",
+    tagColor: "#C9A84C",
+    category: "mental-health",
+    featured: false,
+  },
+  {
+    slug: "ai-for-redundancy",
+    title: "AI Support After Redundancy: Rebuilding Confidence and Your Career",
+    excerpt:
+      "Redundancy doesn't just take your job — it takes your routine, your identity, and sometimes your confidence. MEOK helps you process the emotional weight, rebuild your CV, and take practical steps forward when you're ready.",
+    date: "March 24, 2026",
+    readTime: "10 min read",
+    tag: "Productivity",
+    tagColor: "#C9A84C",
+    category: "productivity",
+    featured: false,
+  },
+  {
+    slug: "ai-for-shyness",
+    title: "Overcoming Shyness With AI: Build Social Confidence at Your Own Pace",
+    excerpt:
+      "Shyness isn't a flaw to fix — but if it's holding you back, MEOK offers a judgment-free space to practice conversations, build confidence, and prepare for the social situations that feel hardest.",
+    date: "March 24, 2026",
+    readTime: "10 min read",
+    tag: "Wellbeing",
+    tagColor: "#C9A84C",
+    category: "mental-health",
+    featured: false,
+  },
+  {
+    slug: "meok-for-creatives",
+    title: "MEOK for Artists, Writers and Musicians: Your Creative AI Companion",
+    excerpt:
+      "Creative work is deeply personal — and deeply lonely. MEOK understands the creative process from the inside, helping artists, writers and musicians break through blocks, process self-doubt, and keep making the work that matters.",
+    date: "March 24, 2026",
+    readTime: "10 min read",
+    tag: "Productivity",
+    tagColor: "#C9A84C",
+    category: "productivity",
+    featured: false,
+  },
 ];
 
 // ── Category filter tabs ──────────────────────────────────────────────────────
