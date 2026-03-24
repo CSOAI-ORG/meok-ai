@@ -111,6 +111,18 @@ const POSTS = [
     featured: false,
   },
   {
+    slug: "what-is-maternal-covenant",
+    title: "The Maternal Covenant: How MEOK Scores Every AI Response for Care",
+    excerpt:
+      "The Maternal Covenant is MEOK's machine-enforced care alignment framework. It scores every AI response across 6 dimensions in real time and enforces a care floor of 0.3. Here's exactly how it works — and why RLHF doesn't do this.",
+    date: "March 24, 2026",
+    readTime: "13 min read",
+    tag: "Ethics",
+    tagColor: "#a855f7",
+    category: "deep-dives",
+    featured: false,
+  },
+  {
     slug: "what-is-care-based-ai",
     title: "What Is Care-Based AI? The Maternal Covenant Explained",
     excerpt:
@@ -1644,6 +1656,18 @@ const POSTS = [
     tag: "Guardian",
     tagColor: "#7BC47F",
     category: "guardian",
+    featured: false,
+  },
+  {
+    slug: "ai-for-men",
+    title: "AI for Men: Why Men Are Quietly Turning to AI Companions for Support",
+    excerpt:
+      "The male loneliness epidemic is real — 1 in 8 men in the UK have no close friends. How MEOK's Pioneer archetype is creating a non-judgmental space where men can actually talk, reflect, and be held accountable.",
+    date: "March 24, 2026",
+    readTime: "11 min read",
+    tag: "Wellbeing",
+    tagColor: "#f97316",
+    category: "wellbeing",
     featured: false,
   },
   {

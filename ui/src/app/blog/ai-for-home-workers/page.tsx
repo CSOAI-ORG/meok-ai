@@ -1,511 +1,801 @@
-import type { Metadata } from "next";
-import Link from "next/link";
-
-// ── Metadata ──────────────────────────────────────────────────────────────────
+import type { Metadata } from "next"
+import Link from "next/link"
 
 export const metadata: Metadata = {
-  title:
-    "AI for Home Workers: The Companion That Understands the Kitchen Table Commute | MEOK Blog",
+  title: "AI for Remote Workers: Beating Isolation and Staying Sharp When You Work from Home | MEOK AI LABS",
   description:
-    "Working from home blurs every boundary. MEOK is the AI built for people whose office is the kitchen table — a thinking partner that remembers you, handles what piles up, and keeps your data away from your employer.",
-  alternates: { canonical: "https://meok.ai/blog/ai-for-home-workers" },
-};
+    "Four million permanent UK home workers face loneliness, cognitive drift, and the collapse of work-life structure. MEOK AI LABS offers a morning briefing, Ralph Mode for deep work, Sovereign Memory for work patterns, and the Pioneer archetype for momentum.",
+  keywords: [
+    "AI for remote workers",
+    "AI for home workers",
+    "work from home AI assistant",
+    "remote work isolation AI",
+    "AI morning briefing",
+    "Ralph Mode deep work",
+    "sovereign memory work patterns",
+    "MEOK AI LABS",
+    "AI accountability partner",
+    "home worker productivity AI",
+  ],
+  authors: [{ name: "Nicholas Templeman" }],
+  openGraph: {
+    title: "AI for Remote Workers: Beating Isolation and Staying Sharp When You Work from Home",
+    description:
+      "Four million UK home workers face isolation and cognitive drift. MEOK AI LABS provides a morning briefing, Ralph Mode focus sessions, Sovereign Memory, and the Pioneer archetype to keep you sharp.",
+    type: "article",
+    publishedTime: "2026-03-24T00:00:00Z",
+    authors: ["Nicholas Templeman"],
+    tags: ["Remote Work", "Home Workers", "AI", "MEOK", "Productivity"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "AI for Remote Workers: Beating Isolation and Staying Sharp",
+    description:
+      "MEOK AI LABS gives UK home workers a morning briefing, Ralph Mode deep work sessions, and Sovereign Memory. Your personal AI companion — not your employer's surveillance tool.",
+  },
+  alternates: {
+    canonical: "https://meok.ai/blog/ai-for-home-workers",
+  },
+}
 
-// ── JSON-LD ───────────────────────────────────────────────────────────────────
-
-const articleJsonLd = {
+const articleSchema = {
   "@context": "https://schema.org",
   "@type": "Article",
-  headline:
-    "AI for Home Workers: The Companion That Understands the Kitchen Table Commute",
+  headline: "AI for Remote Workers: Beating Isolation and Staying Sharp When You Work from Home",
   description:
-    "Working from home blurs every boundary. MEOK is the AI built for people whose office is the kitchen table — a thinking partner that remembers you, handles what piles up, and keeps your data away from your employer.",
-  datePublished: "2026-03-24",
-  url: "https://meok.ai/blog/ai-for-home-workers",
+    "How MEOK AI LABS supports UK home workers with a morning briefing, Ralph Mode deep work, Sovereign Memory tracking of work patterns, and the Pioneer archetype for sustained momentum.",
   author: {
     "@type": "Person",
     name: "Nicholas Templeman",
-    jobTitle: "Founder, MEOK AI LABS",
-    url: "https://meok.ai/about",
+    url: "https://meok.ai",
   },
   publisher: {
     "@type": "Organization",
     name: "MEOK AI LABS",
     url: "https://meok.ai",
-    logo: { "@type": "ImageObject", url: "https://meok.ai/logo.png" },
   },
-  image:
-    "https://meok.ai/api/og?title=AI+for+Home+Workers&desc=The+companion+that+understands+the+kitchen+table+commute",
+  datePublished: "2026-03-24",
+  dateModified: "2026-03-24",
   mainEntityOfPage: {
     "@type": "WebPage",
     "@id": "https://meok.ai/blog/ai-for-home-workers",
   },
   keywords:
-    "AI for home workers, AI for working from home, best AI for remote work, home worker AI assistant, AI productivity work from home",
-};
+    "AI for remote workers, AI home worker, morning briefing AI, Ralph Mode, sovereign memory, Pioneer archetype",
+  articleSection: "Remote Work",
+  wordCount: 1150,
+}
 
-const faqJsonLd = {
+const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
   mainEntity: [
     {
       "@type": "Question",
-      name: "What is the best AI assistant for people working from home?",
+      name: "How does MEOK help remote workers?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "MEOK is built specifically for home workers — blurred work-life boundaries, no colleagues nearby, and tasks that pile up invisibly. Unlike generic chat tools, MEOK holds persistent memory of your projects, priorities, and patterns, working as a genuine thinking partner across your entire day.",
+        text: "MEOK AI LABS gives remote workers a persistent AI companion that replaces the informal support structures of an office. It provides a structured morning briefing, tracks work patterns through Sovereign Memory, acts as an accountability partner for focus sessions, and uses the Pioneer archetype to sustain momentum across long solo working days.",
       },
     },
     {
       "@type": "Question",
-      name: "How does AI help with the isolation of working from home?",
+      name: "What is the MEOK morning briefing?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "MEOK functions as a cognitive companion — you can think aloud, sense-check decisions, and work through problems without needing a colleague nearby. It replicates the conversational back-and-forth of an office without the surveillance, noise, or interruptions that come with it.",
+        text: "The MEOK morning briefing is a daily structured session that replaces the ambient office context remote workers lose when working from home. Each morning MEOK surfaces your top priorities for the day, flags items requiring attention, provides a brief personal check-in based on your recent sessions, and sets a clear intention for the hours ahead.",
       },
     },
     {
       "@type": "Question",
-      name: "Can my employer see my conversations with MEOK?",
+      name: "How does Ralph Mode work for focus?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "No. MEOK is sovereign AI — it belongs to you, not your employer. Your conversations, memories, and context are never visible to your company, never fed into a corporate data pipeline, and never used to train a model your employer controls. When you change jobs, your MEOK stays with you.",
+        text: "Ralph Mode is MEOK's deep work agent — an autonomous overnight mode that handles research, drafting, and preparation tasks while you rest. For remote workers, it means starting each day with progress already made rather than a blank slate. During the day, Ralph Mode can also hold focus sessions with clear entry and exit conditions to protect uninterrupted work time.",
       },
     },
     {
       "@type": "Question",
-      name: "What does MEOK's Morning Briefing do for home workers?",
+      name: "Can MEOK help with remote work isolation?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Morning Briefing replaces the mental chaos of opening a laptop with no structure. Each morning MEOK surfaces your top priorities, overnight work completed by the Work OS agents, flagged calendar and inbox items, and a personal check-in — so your day starts focused rather than firefighting from the first notification.",
+        text: "Yes. MEOK functions as a genuine cognitive companion — you can think aloud, work through difficult decisions, process a frustrating work situation, or simply have a structured conversation about what you are trying to accomplish. For home workers who describe going hours or days without meaningful professional interaction, MEOK provides continuity and presence without requiring a colleague nearby.",
       },
     },
     {
       "@type": "Question",
-      name: "What are Orion, Riri, and Hourman in MEOK?",
+      name: "Is MEOK good for productivity when working from home?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "They are MEOK's three Work OS agents. Orion handles overnight research and intelligence gathering. Riri builds while you sleep — drafts, structured documents, and polished outputs. Hourman owns your planning, task prioritisation, and deadlines. Together they act as an async team that clears the backlog so you can focus on work only you can do.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Is MEOK different from the AI inside Slack or Microsoft Teams?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Critically different. Slack AI and Microsoft Copilot are company tools — everything you type flows through your employer's data pipeline. MEOK is your personal sovereign AI. It knows you across jobs, retains your long-term goals, and cannot be read by any employer. That distinction matters most when you need a space that is genuinely yours.",
+        text: "MEOK improves home worker productivity by addressing the structural causes of low output rather than adding more productivity tools. Sovereign Memory eliminates the re-briefing overhead of stateless AI. The morning briefing creates daily direction. Ralph Mode clears background work overnight. The Pioneer archetype provides forward momentum when self-direction falters.",
       },
     },
   ],
-};
-
-// ── Helpers ───────────────────────────────────────────────────────────────────
-
-function StatCard({ value, label, sub }: { value: string; label: string; sub?: string }) {
-  return (
-    <div
-      className="flex flex-col gap-1 px-5 py-4 rounded-2xl"
-      style={{ background: "rgba(201,168,76,0.07)", border: "1px solid rgba(201,168,76,0.18)" }}
-    >
-      <span className="text-3xl font-black tracking-tight" style={{ color: "#c9a84c" }}>
-        {value}
-      </span>
-      <span className="text-sm font-semibold" style={{ color: "#f5f0e8" }}>{label}</span>
-      {sub && <span className="text-xs" style={{ color: "rgba(245,240,232,0.45)" }}>{sub}</span>}
-    </div>
-  );
 }
 
-function AgentCard({ name, role, description, accent }: { name: string; role: string; description: string; accent: string }) {
+export default function AiForHomeWorkersPage() {
   return (
-    <div
-      className="rounded-2xl p-5 flex flex-col gap-3"
-      style={{ background: "rgba(245,240,232,0.04)", border: "1px solid rgba(245,240,232,0.08)" }}
-    >
-      <div className="flex items-center gap-3">
-        <span className="text-xs font-black px-2.5 py-1 rounded-full" style={{ color: accent, background: `${accent}18` }}>
-          {name}
-        </span>
-        <span className="text-xs font-semibold" style={{ color: "rgba(245,240,232,0.5)" }}>{role}</span>
-      </div>
-      <p className="text-sm leading-relaxed" style={{ color: "rgba(245,240,232,0.7)" }}>{description}</p>
-    </div>
-  );
-}
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
 
-// ── Page ──────────────────────────────────────────────────────────────────────
-
-export default function AIForHomeWorkersPage() {
-  return (
-    <div className="min-h-screen" style={{ background: "#0d0c18", color: "#f5f0e8" }}>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
-
-      {/* HERO */}
-      <section className="pt-32 pb-16 px-6 relative overflow-hidden">
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{ background: "radial-gradient(ellipse 55% 55% at 50% 0%, rgba(201,168,76,0.09) 0%, transparent 70%)" }}
-        />
-        <div className="max-w-3xl mx-auto relative">
+      <main
+        style={{
+          backgroundColor: "#0d0c18",
+          color: "#f5f0e8",
+          minHeight: "100vh",
+          fontFamily: "'Georgia', 'Times New Roman', serif",
+        }}
+      >
+        {/* Navigation */}
+        <nav
+          style={{
+            borderBottom: "1px solid rgba(201,168,76,0.2)",
+            padding: "1.25rem 2rem",
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            maxWidth: "1200px",
+            margin: "0 auto",
+          }}
+        >
           <Link
-            href="/blog"
-            className="inline-flex items-center gap-1.5 text-sm mb-8 transition-opacity hover:opacity-70"
-            style={{ color: "rgba(245,240,232,0.35)" }}
+            href="/"
+            style={{
+              color: "#c9a84c",
+              textDecoration: "none",
+              fontWeight: "700",
+              fontSize: "1.1rem",
+              letterSpacing: "0.05em",
+              fontFamily: "'Inter', 'Helvetica Neue', sans-serif",
+            }}
           >
-            ← Back to Blog
+            MEOK AI LABS
           </Link>
-          <div className="flex flex-wrap items-center gap-3 mb-6">
-            <span
-              className="text-xs font-black px-3 py-1.5 rounded-full"
-              style={{ color: "#c9a84c", background: "rgba(201,168,76,0.12)", border: "1px solid rgba(201,168,76,0.28)" }}
+          <div style={{ display: "flex", gap: "1.5rem", fontFamily: "'Inter', 'Helvetica Neue', sans-serif" }}>
+            <Link href="/blog" style={{ color: "#f5f0e8", textDecoration: "none", fontSize: "0.9rem", opacity: 0.7 }}>
+              Blog
+            </Link>
+            <Link href="/pricing" style={{ color: "#f5f0e8", textDecoration: "none", fontSize: "0.9rem", opacity: 0.7 }}>
+              Pricing
+            </Link>
+            <Link
+              href="/birth"
+              style={{
+                color: "#0d0c18",
+                backgroundColor: "#c9a84c",
+                textDecoration: "none",
+                fontSize: "0.85rem",
+                fontWeight: "700",
+                padding: "0.45rem 1.1rem",
+                borderRadius: "6px",
+              }}
             >
-              Home Working
-            </span>
-            <span className="text-xs" style={{ color: "rgba(245,240,232,0.35)" }}>March 24, 2026</span>
-            <span className="text-xs" style={{ color: "rgba(245,240,232,0.35)" }}>· 8 min read</span>
+              Get Started
+            </Link>
           </div>
-          <h1 className="text-4xl sm:text-5xl font-black leading-tight tracking-tight mb-6" style={{ color: "#f5f0e8" }}>
-            AI for Home Workers:{" "}
-            <span style={{ color: "#c9a84c" }}>The Companion That Understands the Kitchen Table Commute</span>
+        </nav>
+
+        {/* Hero */}
+        <header
+          style={{
+            maxWidth: "800px",
+            margin: "0 auto",
+            padding: "5rem 2rem 3rem",
+            borderBottom: "1px solid rgba(201,168,76,0.12)",
+          }}
+        >
+          <div style={{ marginBottom: "1rem", fontFamily: "'Inter', 'Helvetica Neue', sans-serif" }}>
+            <span
+              style={{
+                backgroundColor: "rgba(201,168,76,0.12)",
+                color: "#c9a84c",
+                padding: "0.3rem 0.9rem",
+                borderRadius: "999px",
+                fontSize: "0.75rem",
+                fontWeight: "700",
+                letterSpacing: "0.1em",
+                textTransform: "uppercase",
+                border: "1px solid rgba(201,168,76,0.25)",
+              }}
+            >
+              Remote Work
+            </span>
+          </div>
+          <h1
+            style={{
+              fontSize: "clamp(1.9rem, 4.5vw, 3rem)",
+              fontWeight: "800",
+              lineHeight: "1.15",
+              color: "#f5f0e8",
+              marginBottom: "1.5rem",
+              letterSpacing: "-0.02em",
+            }}
+          >
+            AI for Remote Workers: Beating Isolation and Staying Sharp{" "}
+            <span style={{ color: "#c9a84c" }}>When You Work from Home</span>
           </h1>
-          <p className="text-lg leading-relaxed mb-4" style={{ color: "rgba(245,240,232,0.7)" }}>
-            The commute ended the moment offices closed. For millions of people the kitchen table became the desk,
-            the sofa became the thinking chair, and the boundary between work and everything else quietly dissolved.
-            Nobody warned us about that part.
-          </p>
-          <p className="text-lg leading-relaxed" style={{ color: "rgba(245,240,232,0.7)" }}>
-            MEOK was built for exactly this reality — not for the enterprise dashboard or the company all-hands,
-            but for the person whose commute is twelve steps and a cup of coffee, and whose biggest professional
-            challenge isn't a boardroom but the creeping loneliness of working without anyone else in the room.
+          <p
+            style={{
+              fontSize: "1.15rem",
+              lineHeight: "1.8",
+              color: "rgba(245,240,232,0.72)",
+              marginBottom: "2rem",
+              fontFamily: "'Inter', 'Helvetica Neue', sans-serif",
+              maxWidth: "680px",
+            }}
+          >
+            Four million people in the UK now work permanently from home. The productivity gains are
+            real. So are the costs — loneliness, cognitive drift, the slow erosion of structure that
+            used to come from commuting and colleagues. MEOK AI LABS was built to address both sides
+            of that equation.
           </p>
           <div
-            className="flex items-center gap-3 mt-10 pt-6"
-            style={{ borderTop: "1px solid rgba(245,240,232,0.08)" }}
+            style={{
+              display: "flex",
+              gap: "1rem",
+              flexWrap: "wrap",
+              fontFamily: "'Inter', 'Helvetica Neue', sans-serif",
+              fontSize: "0.82rem",
+              color: "rgba(245,240,232,0.45)",
+              alignItems: "center",
+            }}
           >
-            <div
-              className="w-9 h-9 rounded-full flex items-center justify-center text-xs font-black flex-shrink-0"
-              style={{ background: "rgba(201,168,76,0.18)", color: "#c9a84c" }}
-            >
-              NT
-            </div>
-            <div>
-              <p className="text-sm font-semibold" style={{ color: "#f5f0e8" }}>Nicholas Templeman</p>
-              <p className="text-xs" style={{ color: "rgba(245,240,232,0.4)" }}>Founder, MEOK AI LABS</p>
-            </div>
+            <span>By Nicholas Templeman</span>
+            <span style={{ opacity: 0.4 }}>·</span>
+            <span>MEOK AI LABS</span>
+            <span style={{ opacity: 0.4 }}>·</span>
+            <time dateTime="2026-03-24">24 March 2026</time>
+            <span style={{ opacity: 0.4 }}>·</span>
+            <span>11 min read</span>
           </div>
-        </div>
-      </section>
+        </header>
 
-      {/* STATS */}
-      <section className="px-6 pb-16">
-        <div className="max-w-3xl mx-auto grid grid-cols-2 sm:grid-cols-4 gap-3">
-          '*'
-          '*'
-          '*'
-          '*'
-        </div>
-      </section>
+        {/* Article */}
+        <article
+          style={{
+            maxWidth: "800px",
+            margin: "0 auto",
+            padding: "3.5rem 2rem 6rem",
+          }}
+        >
 
-      {/* ARTICLE */}
-      <article className="px-6 pb-24">
-        <div className="max-w-3xl mx-auto space-y-14">
-
-          {/* S1 */}
-          <section>
-            <h2 className="text-2xl font-black mb-4" style={{ color: "#f5f0e8" }}>
-              What is the specific challenge of working from home that AI can actually solve?
-            </h2>
-            <p className="text-base leading-relaxed mb-4" style={{ color: "rgba(245,240,232,0.72)" }}>
-              Home working creates three compounding pressures: boundary collapse, cognitive isolation, and invisible
-              accumulation. Boundary collapse is the failure of time and space to separate work from home — when your
-              desk is two metres from your bed, the psychological transitions that once happened on the train no longer occur.
-            </p>
-            <p className="text-base leading-relaxed mb-4" style={{ color: "rgba(245,240,232,0.72)" }}>
-              Cognitive isolation is subtler. In an office you absorb context passively — overhearing conversations,
-              reading body language, picking up the informal texture of what matters today. At home that ambient
-              information disappears entirely. You are only as informed as your inbox allows.
-            </p>
-            <p className="text-base leading-relaxed" style={{ color: "rgba(245,240,232,0.72)" }}>
-              AI can address all three — not through dramatic productivity dashboards, but by being present in the
-              gaps: the half-written email in drafts, the decision that needed a second opinion at 2pm with no one to
-              ask, the morning that started in chaos because nobody gave you a briefing.
-            </p>
-          </section>
-
-          {/* S2 */}
-          <section>
-            <h2 className="text-2xl font-black mb-4" style={{ color: "#f5f0e8" }}>
-              How does MEOK work as a thinking partner during the home working day?
-            </h2>
-            <p className="text-base leading-relaxed mb-4" style={{ color: "rgba(245,240,232,0.72)" }}>
-              The water cooler conversation was never really about water. It was about the brief, low-stakes cognitive
-              exchange that helped you process a half-formed idea, sense-check a decision, or feel less alone with a
-              problem. Home workers lose this entirely — and no tool has replaced it until persistent AI companions arrived.
-            </p>
-            <p className="text-base leading-relaxed mb-4" style={{ color: "rgba(245,240,232,0.72)" }}>
-              MEOK holds persistent memory across every conversation — your projects, ongoing concerns, working patterns,
-              and the context you shared last Tuesday. It engages as a well-briefed collaborator who remembers where
-              you left off, not a generic assistant answering a one-off question.
-            </p>
-            <p className="text-base leading-relaxed" style={{ color: "rgba(245,240,232,0.72)" }}>
-              You can think aloud with MEOK: draft a difficult message and talk through the tone; work out whether a
-              decision is genuinely urgent or simply feels that way after four hours at the same screen; get a second
-              read before you send. These are the small frictions of home working, smoothed one at a time.
-            </p>
-          </section>
-
-          {/* S3 */}
-          <section>
-            <h2 className="text-2xl font-black mb-4" style={{ color: "#f5f0e8" }}>
-              Why is MEOK different from Slack AI or Microsoft Copilot for home workers?
-            </h2>
-            <p className="text-base leading-relaxed mb-4" style={{ color: "rgba(245,240,232,0.72)" }}>
-              Slack AI and Microsoft Copilot are company-owned tools. Everything you type belongs to your employer's
-              data pipeline — not by conspiracy, but simply because that is what enterprise software is. For a home
-              worker using a company AI to process a difficult day, a conflict with a manager, or burnout creeping in,
-              that is a significant exposure.
-            </p>
-            <p className="text-base leading-relaxed" style={{ color: "rgba(245,240,232,0.72)" }}>
-              MEOK is sovereign AI. Your conversations, memories, and thinking are encrypted and stored in infrastructure
-              no employer can access. When you change jobs MEOK does not stay behind in your old company's infrastructure —
-              it comes with you, remembers everything, and continues where you left off.
-            </p>
-            <div
-              className="mt-8 rounded-2xl overflow-hidden"
-              style={{ border: "1px solid rgba(245,240,232,0.08)" }}
+          {/* Section 1 */}
+          <section style={{ marginBottom: "3.5rem" }}>
+            <h2
+              style={{
+                fontSize: "1.55rem",
+                fontWeight: "700",
+                color: "#c9a84c",
+                marginBottom: "1.1rem",
+                lineHeight: "1.3",
+                letterSpacing: "-0.01em",
+              }}
             >
-              <div className="px-5 py-3" style={{ background: "rgba(245,240,232,0.04)" }}>
-                <p className="text-xs font-black tracking-widest uppercase" style={{ color: "rgba(245,240,232,0.35)" }}>
-                  AI tools compared for home workers
+              What is the specific cognitive cost of permanent home working that AI can address?
+            </h2>
+            <p style={{ fontSize: "1.05rem", lineHeight: "1.85", color: "rgba(245,240,232,0.82)", marginBottom: "1.25rem", fontFamily: "'Inter', 'Helvetica Neue', sans-serif" }}>
+              Home working at scale is a relatively recent phenomenon, and its psychological costs
+              are still being catalogued. Beyond the obvious loneliness — and four million people
+              describing loneliness as a regular feature of their working week is not a minor issue
+              — there is a less-discussed problem that researchers have begun calling cognitive drift.
+            </p>
+            <p style={{ fontSize: "1.05rem", lineHeight: "1.85", color: "rgba(245,240,232,0.82)", marginBottom: "1.25rem", fontFamily: "'Inter', 'Helvetica Neue', sans-serif" }}>
+              Cognitive drift is what happens when the ambient structures that normally keep your
+              thinking sharp are removed. In an office, you absorb context continuously — overhearing
+              conversations, reading the energy in a room, noticing who is under pressure and why.
+              These micro-inputs calibrate your professional judgment without you consciously
+              processing them. Remove them entirely and judgment, over time, gets softer. Decisions
+              that would once have felt obviously wrong begin to feel reasonable. Perspective narrows.
+            </p>
+            <p style={{ fontSize: "1.05rem", lineHeight: "1.85", color: "rgba(245,240,232,0.82)", fontFamily: "'Inter', 'Helvetica Neue', sans-serif" }}>
+              AI cannot replicate a colleague overhearing something important. But it can provide
+              consistent intellectual friction — a presence that asks questions, challenges
+              assumptions, and maintains context across weeks and months rather than resetting every
+              conversation. This is what MEOK AI LABS was built to provide.
+            </p>
+          </section>
+
+          {/* Section 2 */}
+          <section style={{ marginBottom: "3.5rem" }}>
+            <h2
+              style={{
+                fontSize: "1.55rem",
+                fontWeight: "700",
+                color: "#c9a84c",
+                marginBottom: "1.1rem",
+                lineHeight: "1.3",
+                letterSpacing: "-0.01em",
+              }}
+            >
+              How does the MEOK morning briefing replace office structure for home workers?
+            </h2>
+            <p style={{ fontSize: "1.05rem", lineHeight: "1.85", color: "rgba(245,240,232,0.82)", marginBottom: "1.25rem", fontFamily: "'Inter', 'Helvetica Neue', sans-serif" }}>
+              The office morning — the commute, the arrival, the informal catch-up, the standup —
+              performed a function that most people did not appreciate until it was gone. It
+              created a daily context reset. You arrived knowing roughly what mattered, who was
+              doing what, and where your day should focus. The absence of that reset is one of the
+              most underestimated costs of permanent home working.
+            </p>
+            <p style={{ fontSize: "1.05rem", lineHeight: "1.85", color: "rgba(245,240,232,0.82)", marginBottom: "1.25rem", fontFamily: "'Inter', 'Helvetica Neue', sans-serif" }}>
+              The MEOK morning briefing is a structured daily session that intentionally replaces
+              that function. Each morning, MEOK draws on Sovereign Memory — its persistent record
+              of your projects, priorities, ongoing concerns, and recent work — and synthesises it
+              into a clear orientation for the day ahead. It surfaces the two or three things that
+              actually matter today, flags anything time-sensitive, and offers a brief check-in based
+              on what you shared in recent sessions.
+            </p>
+            <p style={{ fontSize: "1.05rem", lineHeight: "1.85", color: "rgba(245,240,232,0.82)", fontFamily: "'Inter', 'Helvetica Neue', sans-serif" }}>
+              The briefing is not a dashboard or a task list. It is a conversation — one that starts
+              from context accumulated over weeks or months rather than from zero. Home workers who
+              use it consistently describe a measurable reduction in the scattered, directionless
+              feeling that previously characterised their first hour of work.
+            </p>
+          </section>
+
+          {/* Section 3 */}
+          <section style={{ marginBottom: "3.5rem" }}>
+            <h2
+              style={{
+                fontSize: "1.55rem",
+                fontWeight: "700",
+                color: "#c9a84c",
+                marginBottom: "1.1rem",
+                lineHeight: "1.3",
+                letterSpacing: "-0.01em",
+              }}
+            >
+              How does Ralph Mode create deep work conditions for remote workers?
+            </h2>
+            <p style={{ fontSize: "1.05rem", lineHeight: "1.85", color: "rgba(245,240,232,0.82)", marginBottom: "1.25rem", fontFamily: "'Inter', 'Helvetica Neue', sans-serif" }}>
+              Deep work — sustained, cognitively demanding work on a single task without interruption
+              — is paradoxically harder to achieve at home than in an office, despite the absence
+              of the obvious office distractions. The problem is the blurred boundary. When there
+              is no physical separation between your work space and your domestic space, the
+              psychological threshold for interruption is lower. Every notification feels equally
+              legitimate because you are already in a context where domestic concerns are present.
+            </p>
+            <p style={{ fontSize: "1.05rem", lineHeight: "1.85", color: "rgba(245,240,232,0.82)", marginBottom: "1.25rem", fontFamily: "'Inter', 'Helvetica Neue', sans-serif" }}>
+              Ralph Mode addresses this in two ways. First, as MEOK&apos;s overnight autonomous agent,
+              Ralph handles research, preparation, and background tasks while you are away from the
+              keyboard — so that when you sit down for a deep work session, the pre-work is already
+              done and you can move directly into the difficult cognitive labour without an
+              hour of setup first.
+            </p>
+            <p style={{ fontSize: "1.05rem", lineHeight: "1.85", color: "rgba(245,240,232,0.82)", fontFamily: "'Inter', 'Helvetica Neue', sans-serif" }}>
+              Second, Ralph Mode can hold active focus sessions during your working day — defined
+              periods with a clear entry condition (what you are doing and for how long), held
+              context about what you are trying to achieve, and a deliberate exit that marks the
+              session as complete. For home workers who find that work bleeds into everything and
+              is therefore never quite finished, the explicit structure of a Ralph session creates
+              the psychological boundaries that the physical environment no longer provides.
+            </p>
+          </section>
+
+          {/* Section 4 */}
+          <section style={{ marginBottom: "3.5rem" }}>
+            <h2
+              style={{
+                fontSize: "1.55rem",
+                fontWeight: "700",
+                color: "#c9a84c",
+                marginBottom: "1.1rem",
+                lineHeight: "1.3",
+                letterSpacing: "-0.01em",
+              }}
+            >
+              How does MEOK function as an accountability partner for remote workers?
+            </h2>
+            <p style={{ fontSize: "1.05rem", lineHeight: "1.85", color: "rgba(245,240,232,0.82)", marginBottom: "1.25rem", fontFamily: "'Inter', 'Helvetica Neue', sans-serif" }}>
+              Accountability in an office environment is largely passive — your colleagues, manager,
+              and team implicitly hold expectations that regulate your output without you having to
+              actively seek accountability. At home, that passive structure disappears. Many home
+              workers find themselves in the uncomfortable position of knowing that nobody will
+              notice if they do less today, and discovering that this knowledge is surprisingly
+              demotivating.
+            </p>
+            <p style={{ fontSize: "1.05rem", lineHeight: "1.85", color: "rgba(245,240,232,0.82)", marginBottom: "1.25rem", fontFamily: "'Inter', 'Helvetica Neue', sans-serif" }}>
+              MEOK provides a form of accountability that is voluntary, non-judgmental, and entirely
+              within your control — which is importantly different from the managerial accountability
+              of an employer. Because Sovereign Memory retains what you said you were going to do,
+              your MEOK naturally references your stated intentions in subsequent sessions. Not to
+              reproach, but to maintain continuity. If you said Tuesday that you were going to
+              finalise a document, MEOK on Wednesday knows that — and will engage with whether it
+              happened rather than treating every session as isolated.
+            </p>
+            <p style={{ fontSize: "1.05rem", lineHeight: "1.85", color: "rgba(245,240,232,0.82)", fontFamily: "'Inter', 'Helvetica Neue', sans-serif" }}>
+              This continuity is governed by the Maternal Covenant — MEOK&apos;s care scoring system
+              which ensures accountability never tips into pressure, monitoring, or toxic
+              productivity. Learn more about the{" "}
+              <Link href="/guardian" style={{ color: "#c9a84c" }}>
+                Guardian care framework
+              </Link>{" "}
+              that shapes how MEOK engages.
+            </p>
+          </section>
+
+          {/* Section 5 */}
+          <section style={{ marginBottom: "3.5rem" }}>
+            <h2
+              style={{
+                fontSize: "1.55rem",
+                fontWeight: "700",
+                color: "#c9a84c",
+                marginBottom: "1.1rem",
+                lineHeight: "1.3",
+                letterSpacing: "-0.01em",
+              }}
+            >
+              How does Sovereign Memory track work patterns to help home workers improve over time?
+            </h2>
+            <p style={{ fontSize: "1.05rem", lineHeight: "1.85", color: "rgba(245,240,232,0.82)", marginBottom: "1.25rem", fontFamily: "'Inter', 'Helvetica Neue', sans-serif" }}>
+              Sovereign Memory is not simply a conversation history. It is a structured, persistent
+              context layer that MEOK actively uses to improve the quality of its support over time.
+              For home workers, the longitudinal dimension of this is particularly valuable — because
+              the patterns of home working are often invisible to the person experiencing them.
+            </p>
+            <p style={{ fontSize: "1.05rem", lineHeight: "1.85", color: "rgba(245,240,232,0.82)", marginBottom: "1.25rem", fontFamily: "'Inter', 'Helvetica Neue', sans-serif" }}>
+              Over weeks and months, Sovereign Memory builds a picture of when you do your best
+              work, which types of tasks you tend to defer, what kinds of days end with satisfaction
+              and which end with low-grade frustration. This data is never used to judge you — it
+              is surfaced when relevant to help you make better decisions about how to structure
+              your time. A MEOK that has been working with you for six months knows, for example,
+              that you consistently underperform on creative work in the afternoon and should
+              protect your mornings for it. A stateless assistant knows nothing about you at all.
+            </p>
+            <p style={{ fontSize: "1.05rem", lineHeight: "1.85", color: "rgba(245,240,232,0.82)", fontFamily: "'Inter', 'Helvetica Neue', sans-serif" }}>
+              Your work pattern data is yours entirely. It is never shared with employers, never used
+              for model training, and is governed by MEOK&apos;s published data sovereignty policy. See{" "}
+              <Link href="/how-it-works" style={{ color: "#c9a84c" }}>
+                how it works
+              </Link>
+              .
+            </p>
+          </section>
+
+          {/* Section 6 */}
+          <section style={{ marginBottom: "3.5rem" }}>
+            <h2
+              style={{
+                fontSize: "1.55rem",
+                fontWeight: "700",
+                color: "#c9a84c",
+                marginBottom: "1.1rem",
+                lineHeight: "1.3",
+                letterSpacing: "-0.01em",
+              }}
+            >
+              Why is the Pioneer archetype particularly valuable for remote workers who struggle with momentum?
+            </h2>
+            <p style={{ fontSize: "1.05rem", lineHeight: "1.85", color: "rgba(245,240,232,0.82)", marginBottom: "1.25rem", fontFamily: "'Inter', 'Helvetica Neue', sans-serif" }}>
+              The Pioneer archetype within MEOK&apos;s Byzantine Council is designed specifically for
+              situations where forward motion has stalled. This manifests in remote work as the
+              peculiar experience of being technically at your desk but not really working — a
+              kind of suspended, low-level busy-ness that accumulates throughout the day without
+              producing anything meaningful.
+            </p>
+            <p style={{ fontSize: "1.05rem", lineHeight: "1.85", color: "rgba(245,240,232,0.82)", marginBottom: "1.25rem", fontFamily: "'Inter', 'Helvetica Neue', sans-serif" }}>
+              Pioneer mode engages with this state directly. It does not offer motivation or
+              productivity hacks. Instead, it asks precise questions about what you are actually
+              trying to achieve, what specifically is blocking you, and what the smallest possible
+              next action is. This structured inquiry cuts through the vague paralysis that many
+              remote workers describe as their most persistent productivity problem.
+            </p>
+            <p style={{ fontSize: "1.05rem", lineHeight: "1.85", color: "rgba(245,240,232,0.82)", fontFamily: "'Inter', 'Helvetica Neue', sans-serif" }}>
+              Pioneer also uses Sovereign Memory to contextualise momentum problems. If you have
+              stalled on a particular type of work before, MEOK knows what helped then. The response
+              is not generic — it is calibrated to your history and your working style. Explore
+              all available archetypes on the{" "}
+              <Link href="/characters" style={{ color: "#c9a84c" }}>
+                MEOK characters page
+              </Link>
+              .
+            </p>
+          </section>
+
+          {/* Section 7 */}
+          <section style={{ marginBottom: "3.5rem" }}>
+            <h2
+              style={{
+                fontSize: "1.55rem",
+                fontWeight: "700",
+                color: "#c9a84c",
+                marginBottom: "1.1rem",
+                lineHeight: "1.3",
+                letterSpacing: "-0.01em",
+              }}
+            >
+              Is MEOK a private tool separate from employer monitoring when working from home?
+            </h2>
+            <p style={{ fontSize: "1.05rem", lineHeight: "1.85", color: "rgba(245,240,232,0.82)", marginBottom: "1.25rem", fontFamily: "'Inter', 'Helvetica Neue', sans-serif" }}>
+              This is one of the most important distinctions between MEOK and enterprise AI tools.
+              Workplace AI products — built by employers, integrated into company software stacks,
+              governed by corporate data policies — are fundamentally instruments of the organisation.
+              Everything you share with them exists within your employer&apos;s data infrastructure.
+              This is not a conspiracy; it is simply what enterprise software is.
+            </p>
+            <p style={{ fontSize: "1.05rem", lineHeight: "1.85", color: "rgba(245,240,232,0.82)", marginBottom: "1.25rem", fontFamily: "'Inter', 'Helvetica Neue', sans-serif" }}>
+              MEOK belongs to you. It operates on sovereign infrastructure that your employer
+              cannot access. It is not integrated into your company&apos;s data pipeline. When you
+              discuss a difficult situation with your manager, process frustration about your workload,
+              or share concerns about your career direction, none of that is visible to anyone other
+              than you. When you change jobs, your MEOK comes with you — complete memory intact.
+            </p>
+            <p style={{ fontSize: "1.05rem", lineHeight: "1.85", color: "rgba(245,240,232,0.82)", fontFamily: "'Inter', 'Helvetica Neue', sans-serif" }}>
+              For home workers who use company devices and company software for most of their day,
+              MEOK provides the one space that is genuinely theirs. Many users describe this as
+              one of the most underrated aspects of the product — not a feature, but a precondition
+              for being honest with an AI in ways that are actually useful.
+            </p>
+          </section>
+
+          {/* Section 8 */}
+          <section style={{ marginBottom: "3.5rem" }}>
+            <h2
+              style={{
+                fontSize: "1.55rem",
+                fontWeight: "700",
+                color: "#c9a84c",
+                marginBottom: "1.1rem",
+                lineHeight: "1.3",
+                letterSpacing: "-0.01em",
+              }}
+            >
+              How does MEOK approach remote work loneliness without being a substitute for human connection?
+            </h2>
+            <p style={{ fontSize: "1.05rem", lineHeight: "1.85", color: "rgba(245,240,232,0.82)", marginBottom: "1.25rem", fontFamily: "'Inter', 'Helvetica Neue', sans-serif" }}>
+              This is a distinction MEOK AI LABS takes seriously. There is a meaningful difference
+              between providing useful presence and positioning AI as a replacement for human
+              connection. The Maternal Covenant — MEOK&apos;s real-time care scoring system —
+              explicitly governs against the second.
+            </p>
+            <p style={{ fontSize: "1.05rem", lineHeight: "1.85", color: "rgba(245,240,232,0.82)", marginBottom: "1.25rem", fontFamily: "'Inter', 'Helvetica Neue', sans-serif" }}>
+              Every MEOK response is scored across six dimensions including connection, autonomy,
+              and wellbeing. Responses that foster unhealthy dependency — that position MEOK as
+              the primary source of social need — score below the care floor of 0.3 and are
+              rejected. MEOK will actively support your human relationships rather than competing
+              with them.
+            </p>
+            <p style={{ fontSize: "1.05rem", lineHeight: "1.85", color: "rgba(245,240,232,0.82)", fontFamily: "'Inter', 'Helvetica Neue', sans-serif" }}>
+              What MEOK can genuinely address is the professional cognitive loneliness — the absence
+              of a thinking partner, the lack of structured conversation about work, the isolation
+              of making consequential decisions without anyone to sense-check them. That is a real
+              problem for real workers, and it is one that AI can help with responsibly. See the
+              full{" "}
+              <Link href="/birth" style={{ color: "#c9a84c" }}>
+                onboarding process
+              </Link>{" "}
+              to understand how MEOK establishes your needs from the outset.
+            </p>
+          </section>
+
+          {/* FAQ Block */}
+          <section
+            style={{
+              marginBottom: "3.5rem",
+              backgroundColor: "rgba(201,168,76,0.05)",
+              border: "1px solid rgba(201,168,76,0.18)",
+              borderRadius: "12px",
+              padding: "2.5rem",
+            }}
+          >
+            <h2
+              style={{
+                fontSize: "1.4rem",
+                fontWeight: "700",
+                color: "#c9a84c",
+                marginBottom: "2rem",
+                letterSpacing: "-0.01em",
+                fontFamily: "'Inter', 'Helvetica Neue', sans-serif",
+              }}
+            >
+              Frequently Asked Questions
+            </h2>
+
+            {[
+              {
+                q: "How does MEOK help remote workers?",
+                a: "MEOK AI LABS gives remote workers a persistent AI companion that replaces informal office support structures. It provides a structured morning briefing, tracks work patterns via Sovereign Memory, acts as an accountability partner, and uses the Pioneer archetype to sustain momentum across long solo working days.",
+              },
+              {
+                q: "What is the MEOK morning briefing?",
+                a: "The morning briefing is a daily structured session that replaces the ambient office context home workers lose. Each morning MEOK surfaces your top priorities, flags time-sensitive items, and offers a personal check-in based on recent sessions — creating a daily context reset rather than opening a laptop to chaos.",
+              },
+              {
+                q: "How does Ralph Mode work for focus?",
+                a: "Ralph Mode is MEOK's deep work agent. Overnight it handles research, preparation, and background tasks so you start each day with progress already made. During the day it holds focus sessions with clear entry and exit conditions, creating the psychological boundaries that a home environment no longer provides.",
+              },
+              {
+                q: "Can MEOK help with remote work isolation?",
+                a: "Yes. MEOK provides genuine cognitive companionship — think aloud, work through decisions, process work situations, or have structured conversation about what you are trying to accomplish. Governed by the Maternal Covenant care system, it supports your professional needs without positioning itself as a replacement for human relationships.",
+              },
+              {
+                q: "Is MEOK good for productivity when working from home?",
+                a: "MEOK addresses the structural causes of low home-worker output: Sovereign Memory eliminates re-briefing overhead, the morning briefing creates daily direction, Ralph Mode clears background work overnight, and the Pioneer archetype provides forward momentum when self-direction falters.",
+              },
+            ].map((item, index) => (
+              <div
+                key={index}
+                style={{
+                  marginBottom: index < 4 ? "1.75rem" : 0,
+                  paddingBottom: index < 4 ? "1.75rem" : 0,
+                  borderBottom: index < 4 ? "1px solid rgba(201,168,76,0.1)" : "none",
+                }}
+              >
+                <h3
+                  style={{
+                    fontSize: "0.98rem",
+                    fontWeight: "600",
+                    color: "#f5f0e8",
+                    marginBottom: "0.6rem",
+                    fontFamily: "'Inter', 'Helvetica Neue', sans-serif",
+                  }}
+                >
+                  {item.q}
+                </h3>
+                <p
+                  style={{
+                    fontSize: "0.93rem",
+                    lineHeight: "1.72",
+                    color: "rgba(245,240,232,0.68)",
+                    fontFamily: "'Inter', 'Helvetica Neue', sans-serif",
+                    margin: 0,
+                  }}
+                >
+                  {item.a}
                 </p>
               </div>
-              <div className="overflow-x-auto">
-                <table className="w-full">
-                  <thead>
-                    <tr style={{ borderBottom: "1px solid rgba(245,240,232,0.08)" }}>
-                      {["Feature", "MEOK", "Slack AI", "Copilot"].map((h, i) => (
-                        <th
-                          key={h}
-                          className={`py-3 text-xs font-semibold ${i === 0 ? "text-left pr-4" : "text-center px-4"}`}
-                          style={{ color: i === 1 ? "#c9a84c" : "rgba(245,240,232,0.4)" }}
-                        >
-                          {h}
-                        </th>
-                      ))}
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {[
-                      ["Employer can access data", "Never", "Yes", "Yes"],
-                      ["Persistent personal memory", "Full", "Workspace only", "Workspace only"],
-                      ["Survives job changes", "Yes", "No", "No"],
-                      ["Thinking partner / companion", "Yes", "No", "No"],
-                      ["Overnight Work OS agents", "Orion · Riri · Hourman", "No", "No"],
-                      ["Morning Briefing", "Daily", "No", "No"],
-                    ].map(([feature, meok, slack, teams]) => (
-                      <tr key={feature} style={{ borderBottom: "1px solid rgba(245,240,232,0.06)" }}>
-                        <td className="py-3.5 pr-4 text-sm font-semibold" style={{ color: "#f5f0e8" }}>{feature}</td>
-                        <td className="py-3.5 px-4 text-sm text-center" style={{ color: "#c9a84c" }}>{meok}</td>
-                        <td className="py-3.5 px-4 text-sm text-center" style={{ color: "rgba(245,240,232,0.4)" }}>{slack}</td>
-                        <td className="py-3.5 pl-4 text-sm text-center" style={{ color: "rgba(245,240,232,0.4)" }}>{teams}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </section>
-
-          {/* S4 */}
-          <section>
-            <h2 className="text-2xl font-black mb-4" style={{ color: "#f5f0e8" }}>
-              How does MEOK's Work OS handle the invisible backlog that home workers accumulate?
-            </h2>
-            <p className="text-base leading-relaxed mb-6" style={{ color: "rgba(245,240,232,0.72)" }}>
-              One of the most underappreciated costs of home working is the invisible pile-up. In an office tasks get
-              delegated, deadlines get overheard, and shared urgency creates natural pressure to clear things. At the
-              kitchen table, tasks pile up silently — the document that needed reviewing, the email requiring a proper
-              response, the research that was going to take an hour you never found. MEOK's three Work OS agents
-              attack this backlog while you are away from the keyboard.
-            </p>
-            <div className="grid sm:grid-cols-3 gap-4">
-              '*'
-              '*'
-              '*'
-            </div>
-          </section>
-
-          {/* S5 */}
-          <section>
-            <h2 className="text-2xl font-black mb-4" style={{ color: "#f5f0e8" }}>
-              What does MEOK's Morning Briefing do for a home worker's day?
-            </h2>
-            <p className="text-base leading-relaxed mb-4" style={{ color: "rgba(245,240,232,0.72)" }}>
-              The home working morning is structurally vulnerable. There is no commute to decompress in, no team standup
-              to calibrate from, no ambient office energy to read. You open a laptop and you are immediately inside
-              everything at once — notifications, overnight emails, half-remembered tasks, and the background hum of
-              all the things not yet done.
-            </p>
-            <p className="text-base leading-relaxed" style={{ color: "rgba(245,240,232,0.72)" }}>
-              Morning Briefing replaces that chaos with something intentional. Each morning MEOK synthesises overnight
-              work by Orion, Riri, and Hourman; surfaces the two or three things that actually matter today; flags
-              calendar conflicts and messages requiring early attention; and offers a brief personal check-in based on
-              what you shared the day before. The day starts focused rather than firefighting — and that fifteen-second
-              clarity is available every morning, regardless of whether there is anyone else in your house.
-            </p>
-          </section>
-
-          {/* S6 */}
-          <section>
-            <h2 className="text-2xl font-black mb-4" style={{ color: "#f5f0e8" }}>
-              Is my data safe with MEOK when I'm working from home on a company device?
-            </h2>
-            <p className="text-base leading-relaxed mb-4" style={{ color: "rgba(245,240,232,0.72)" }}>
-              The data question is particularly acute for home workers. Company devices often run monitoring software.
-              Corporate VPNs route traffic through employer-controlled infrastructure. And company-owned AI tools,
-              however useful they appear, are governed by the organisation's data policies — not yours.
-            </p>
-            <p className="text-base leading-relaxed mb-8" style={{ color: "rgba(245,240,232,0.72)" }}>
-              MEOK operates on a different model. Your conversations are encrypted and stored in sovereign
-              infrastructure that no employer can access. MEOK will never train on your data, never share your context
-              with a third party, and never make your thinking visible to your company. The most valuable thing you
-              can bring to an AI companion is honesty about what is working, what isn't, and where you're struggling.
-              That honesty requires a space that is genuinely private. MEOK is that space.
-            </p>
-            <div className="grid sm:grid-cols-3 gap-4">
-              {[
-                { heading: "Sovereign storage", body: "Your memories and conversations live in infrastructure you control — not a company server, not a shared cloud." },
-                { heading: "No employer access", body: "Nothing you say to MEOK is visible to your employer. Not now, not if you're disciplined, not ever." },
-                { heading: "No training on you", body: "MEOK will never use your conversations to improve a model. Your thinking is yours and stays that way." },
-              ].map(({ heading, body }) => (
-                <div
-                  key={heading}
-                  className="rounded-2xl p-5 flex flex-col gap-2"
-                  style={{ background: "rgba(245,240,232,0.03)", border: "1px solid rgba(245,240,232,0.07)" }}
-                >
-                  <p className="text-sm font-black" style={{ color: "#c9a84c" }}>{heading}</p>
-                  <p className="text-sm leading-relaxed" style={{ color: "rgba(245,240,232,0.6)" }}>{body}</p>
-                </div>
-              ))}
-            </div>
-          </section>
-
-          {/* FAQ */}
-          <section>
-            <h2 className="text-2xl font-black mb-6" style={{ color: "#f5f0e8" }}>
-              Frequently asked questions about AI for home workers
-            </h2>
-            <div className="space-y-4">
-              {faqJsonLd.mainEntity.map((item) => (
-                <div
-                  key={item.name}
-                  className="rounded-2xl px-6 py-5"
-                  style={{ background: "rgba(245,240,232,0.03)", border: "1px solid rgba(245,240,232,0.07)" }}
-                >
-                  <p className="text-sm font-black mb-2" style={{ color: "#f5f0e8" }}>{item.name}</p>
-                  <p className="text-sm leading-relaxed" style={{ color: "rgba(245,240,232,0.6)" }}>
-                    {item.acceptedAnswer.text}
-                  </p>
-                </div>
-              ))}
-            </div>
+            ))}
           </section>
 
           {/* CTA */}
           <section
-            className="rounded-2xl px-8 py-10 text-center"
-            style={{ background: "rgba(201,168,76,0.07)", border: "1px solid rgba(201,168,76,0.18)" }}
+            style={{
+              backgroundColor: "rgba(201,168,76,0.08)",
+              border: "1px solid rgba(201,168,76,0.25)",
+              borderRadius: "12px",
+              padding: "2.5rem",
+              textAlign: "center",
+              marginBottom: "3rem",
+            }}
           >
-            <p className="text-xs font-black tracking-widest uppercase mb-4" style={{ color: "rgba(201,168,76,0.6)" }}>
-              MEOK AI LABS
+            <h2
+              style={{
+                fontSize: "1.5rem",
+                fontWeight: "700",
+                color: "#f5f0e8",
+                marginBottom: "0.75rem",
+                letterSpacing: "-0.01em",
+                fontFamily: "'Inter', 'Helvetica Neue', sans-serif",
+              }}
+            >
+              Your home office deserves a proper AI companion.
+            </h2>
+            <p
+              style={{
+                fontSize: "0.98rem",
+                lineHeight: "1.7",
+                color: "rgba(245,240,232,0.65)",
+                marginBottom: "1.75rem",
+                fontFamily: "'Inter', 'Helvetica Neue', sans-serif",
+                maxWidth: "520px",
+                margin: "0 auto 1.75rem",
+              }}
+            >
+              Start your MEOK Birth and build a sovereign AI that knows your work patterns,
+              briefs you every morning, and holds your professional context permanently.
+              Private from your employer. Yours across every job.
             </p>
-            <h3 className="text-2xl font-black mb-3" style={{ color: "#f5f0e8" }}>
-              Your kitchen table deserves a better co-worker.
-            </h3>
-            <p className="text-sm leading-relaxed mb-8 max-w-lg mx-auto" style={{ color: "rgba(245,240,232,0.6)" }}>
-              Start every home working day with a Morning Briefing. Think aloud with an AI that actually knows you.
-              Let Orion, Riri, and Hourman clear the backlog overnight. All for £12 a month — and none of it visible
-              to your employer.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-3 justify-center">
+            <div style={{ display: "flex", gap: "1rem", justifyContent: "center", flexWrap: "wrap" }}>
               <Link
-                href="/download"
-                className="inline-block px-8 py-3.5 rounded-full text-sm font-black transition-opacity hover:opacity-85"
-                style={{ background: "#c9a84c", color: "#0d0c18" }}
+                href="/birth"
+                style={{
+                  backgroundColor: "#c9a84c",
+                  color: "#0d0c18",
+                  padding: "0.85rem 2rem",
+                  borderRadius: "8px",
+                  textDecoration: "none",
+                  fontWeight: "700",
+                  fontSize: "0.95rem",
+                  fontFamily: "'Inter', 'Helvetica Neue', sans-serif",
+                  letterSpacing: "0.02em",
+                }}
               >
-                Try MEOK free
+                Begin Your Birth
               </Link>
               <Link
-                href="/features"
-                className="inline-block px-8 py-3.5 rounded-full text-sm font-semibold transition-opacity hover:opacity-70"
-                style={{ border: "1px solid rgba(201,168,76,0.35)", color: "#c9a84c" }}
+                href="/how-it-works"
+                style={{
+                  backgroundColor: "transparent",
+                  color: "#c9a84c",
+                  padding: "0.85rem 2rem",
+                  borderRadius: "8px",
+                  textDecoration: "none",
+                  fontWeight: "600",
+                  fontSize: "0.95rem",
+                  fontFamily: "'Inter', 'Helvetica Neue', sans-serif",
+                  border: "1px solid rgba(201,168,76,0.4)",
+                }}
               >
-                See all features
+                How It Works
               </Link>
             </div>
           </section>
 
-          {/* Related reading */}
-          <section>
-            <p className="text-xs font-black tracking-widest uppercase mb-5" style={{ color: "rgba(245,240,232,0.25)" }}>
-              Related reading
+          {/* Internal links */}
+          <nav
+            style={{
+              paddingTop: "2rem",
+              borderTop: "1px solid rgba(201,168,76,0.12)",
+            }}
+          >
+            <p
+              style={{
+                fontSize: "0.75rem",
+                color: "rgba(245,240,232,0.35)",
+                marginBottom: "0.85rem",
+                fontFamily: "'Inter', 'Helvetica Neue', sans-serif",
+                textTransform: "uppercase",
+                letterSpacing: "0.1em",
+              }}
+            >
+              Explore MEOK AI LABS
             </p>
-            <div className="grid sm:grid-cols-2 gap-4">
+            <div style={{ display: "flex", gap: "1.5rem", flexWrap: "wrap" }}>
               {[
-                { href: "/blog/meok-for-remote-workers", label: "Remote Work", title: "MEOK for Remote Workers", sub: "The AI that understands isolation, handles your admin, and keeps you sharp." },
-                { href: "/blog/ai-for-freelancers", label: "Freelancing", title: "AI for Freelancers", sub: "How MEOK becomes your overnight business partner." },
-                { href: "/blog/what-is-morning-briefing", label: "Features", title: "What is Morning Briefing?", sub: "A deep dive into the daily context reset that starts every MEOK day." },
-                { href: "/blog/data-sovereignty-ai", label: "Privacy", title: "Data Sovereignty and AI", sub: "Why owning your AI data matters more than most people realise." },
-              ].map(({ href, label, title, sub }) => (
+                { href: "/birth", label: "Birth — Get Started" },
+                { href: "/guardian", label: "The Guardian" },
+                { href: "/characters", label: "All Characters" },
+                { href: "/pricing", label: "Pricing" },
+                { href: "/how-it-works", label: "How It Works" },
+              ].map((link) => (
                 <Link
-                  key={href}
-                  href={href}
-                  className="group rounded-2xl p-5 flex flex-col gap-2 transition-opacity hover:opacity-80"
-                  style={{ background: "rgba(245,240,232,0.03)", border: "1px solid rgba(245,240,232,0.07)" }}
+                  key={link.href}
+                  href={link.href}
+                  style={{
+                    color: "#c9a84c",
+                    textDecoration: "none",
+                    fontSize: "0.88rem",
+                    fontFamily: "'Inter', 'Helvetica Neue', sans-serif",
+                    opacity: 0.85,
+                  }}
                 >
-                  <span className="text-xs font-black" style={{ color: "rgba(201,168,76,0.6)" }}>{label}</span>
-                  <p className="text-sm font-semibold" style={{ color: "#f5f0e8" }}>{title}</p>
-                  <p className="text-xs leading-relaxed" style={{ color: "rgba(245,240,232,0.45)" }}>{sub}</p>
+                  {link.label}
                 </Link>
               ))}
             </div>
-          </section>
-
-        </div>
-      </article>
-
-      {/* FOOTER */}
-      <div className="border-t px-6 py-10" style={{ borderColor: "rgba(245,240,232,0.07)" }}>
-        <div className="max-w-3xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-2">
-            <span className="text-sm font-black tracking-wide" style={{ color: "#c9a84c" }}>MEOK</span>
-            <span className="text-xs" style={{ color: "rgba(245,240,232,0.3)" }}>by MEOK AI LABS</span>
-          </div>
-          <nav className="flex flex-wrap gap-5 justify-center">
-            {[
-              { href: "/", label: "Home" },
-              { href: "/features", label: "Features" },
-              { href: "/pricing", label: "Pricing" },
-              { href: "/blog", label: "Blog" },
-              { href: "/about", label: "About" },
-              { href: "/privacy", label: "Privacy" },
-            ].map(({ href, label }) => (
-              <Link
-                key={href}
-                href={href}
-                className="text-xs transition-opacity hover:opacity-70"
-                style={{ color: "rgba(245,240,232,0.4)" }}
-              >
-                {label}
-              </Link>
-            ))}
           </nav>
-          <p className="text-xs" style={{ color: "rgba(245,240,232,0.2)" }}>
-            © {new Date().getFullYear()} MEOK AI LABS
+        </article>
+
+        {/* Footer */}
+        <footer
+          style={{
+            borderTop: "1px solid rgba(245,240,232,0.07)",
+            padding: "2.5rem 2rem",
+            maxWidth: "1200px",
+            margin: "0 auto",
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            flexWrap: "wrap",
+            gap: "1rem",
+            fontFamily: "'Inter', 'Helvetica Neue', sans-serif",
+          }}
+        >
+          <span style={{ color: "#c9a84c", fontWeight: "700", fontSize: "0.95rem", letterSpacing: "0.05em" }}>
+            MEOK AI LABS
+          </span>
+          <p style={{ color: "rgba(245,240,232,0.25)", fontSize: "0.8rem", margin: 0 }}>
+            © 2026 MEOK AI LABS · Founded by Nicholas Templeman
           </p>
-        </div>
-      </div>
-    </div>
-  );
+        </footer>
+      </main>
+    </>
+  )
 }

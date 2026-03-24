@@ -1,578 +1,813 @@
-import type { Metadata } from "next";
-import Link from "next/link";
-
-// ── Metadata ──────────────────────────────────────────────────────────────────
+import type { Metadata } from "next"
+import Link from "next/link"
 
 export const metadata: Metadata = {
-  title: "AI for Creative Professionals: Feedback That Grows With Your Work | MEOK Blog",
+  title: "AI for Creative Professionals: A Companion That Feeds Your Process, Not a Tool That Replaces It | MEOK AI LABS",
   description:
-    "Generic AI feedback ignores your style, your history, your brief. MEOK's Creator archetype remembers everything — and will push back when your work isn't good enough.",
-  alternates: { canonical: "https://meok.ai/blog/ai-for-creative-professionals" },
+    "Creative block, imposter syndrome, and the fear that AI will flatten your voice. MEOK AI LABS uses the Trickster and Scholar archetypes, Sovereign Memory for creative continuity, and a care system that prevents AI from imposing its aesthetic on yours.",
+  keywords: [
+    "AI for creative professionals",
+    "AI for writers",
+    "AI for artists",
+    "AI creative block",
+    "Trickster archetype AI",
+    "AI creative process",
+    "sovereign memory creative",
+    "MEOK AI LABS",
+    "AI without replacing creativity",
+    "AI imposter syndrome",
+  ],
+  authors: [{ name: "Nicholas Templeman" }],
   openGraph: {
-    title: "AI for Creative Professionals: Feedback That Grows With Your Work, Not Generic Suggestions",
-    description: "Generic AI feedback ignores your style, your history, your brief. MEOK's Creator archetype remembers everything — and will push back when your work isn't good enough.",
+    title: "AI for Creative Professionals: A Companion That Feeds Your Process, Not a Tool That Replaces It",
+    description:
+      "MEOK AI LABS uses the Trickster and Scholar archetypes to support creative work without replacing it. Sovereign Memory holds project continuity. The care system prevents AI from imposing its aesthetic.",
     type: "article",
-    publishedTime: "2026-03-24",
+    publishedTime: "2026-03-24T00:00:00Z",
     authors: ["Nicholas Templeman"],
-    url: "https://meok.ai/blog/ai-for-creative-professionals",
-    siteName: "MEOK.AI",
-    images: [{ url: "https://meok.ai/api/og?title=AI+for+Creative+Professionals&desc=Feedback+That+Grows+With+Your+Work", width: 1200, height: 630, alt: "AI for Creative Professionals: Feedback That Grows With Your Work" }],
+    tags: ["Creative", "AI", "Writers", "Artists", "MEOK"],
   },
   twitter: {
     card: "summary_large_image",
-    title: "AI for Creative Professionals: Feedback That Grows With Your Work",
-    description: "Generic AI feedback ignores your style, your history, your brief. MEOK's Creator archetype remembers everything — and will push back when your work isn't good enough.",
-    images: ["https://meok.ai/api/og?title=AI+for+Creative+Professionals&desc=Feedback+That+Grows+With+Your+Work"],
+    title: "AI for Creative Professionals: A Companion That Feeds Your Process",
+    description:
+      "The Trickster breaks creative block. The Scholar synthesises across domains. Sovereign Memory holds your creative history. MEOK AI LABS is built to enhance your voice, not flatten it.",
   },
-};
+  alternates: {
+    canonical: "https://meok.ai/blog/ai-for-creative-professionals",
+  },
+}
 
-// ── JSON-LD ───────────────────────────────────────────────────────────────────
-
-const jsonLd = {
+const articleSchema = {
   "@context": "https://schema.org",
-  "@graph": [
+  "@type": "Article",
+  headline:
+    "AI for Creative Professionals: A Companion That Feeds Your Process, Not a Tool That Replaces It",
+  description:
+    "How MEOK AI LABS supports creative professionals through the Trickster and Scholar archetypes, Sovereign Memory for creative continuity, and a care system that protects creative voice.",
+  author: {
+    "@type": "Person",
+    name: "Nicholas Templeman",
+    url: "https://meok.ai",
+  },
+  publisher: {
+    "@type": "Organization",
+    name: "MEOK AI LABS",
+    url: "https://meok.ai",
+  },
+  datePublished: "2026-03-24",
+  dateModified: "2026-03-24",
+  mainEntityOfPage: {
+    "@type": "WebPage",
+    "@id": "https://meok.ai/blog/ai-for-creative-professionals",
+  },
+  keywords:
+    "AI for creative professionals, Trickster archetype, AI creative block, sovereign memory, AI for writers, AI for artists",
+  articleSection: "Creative Professionals",
+  wordCount: 1200,
+}
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
     {
-      "@type": "Article",
-      headline: "AI for Creative Professionals: Feedback That Grows With Your Work, Not Generic Suggestions",
-      description: "Generic AI feedback ignores your style, your history, your brief. MEOK's Creator archetype remembers everything — and will push back when your work isn't good enough.",
-      datePublished: "2026-03-24",
-      url: "https://meok.ai/blog/ai-for-creative-professionals",
-      author: { "@type": "Person", name: "Nicholas Templeman", jobTitle: "Founder, MEOK AI LABS", url: "https://meok.ai/about" },
-      publisher: { "@type": "Organization", name: "MEOK AI LABS", url: "https://meok.ai", logo: { "@type": "ImageObject", url: "https://meok.ai/logo.png" } },
-      image: "https://meok.ai/api/og?title=AI+for+Creative+Professionals&desc=Feedback+That+Grows+With+Your+Work",
-      mainEntityOfPage: { "@type": "WebPage", "@id": "https://meok.ai/blog/ai-for-creative-professionals" },
+      "@type": "Question",
+      name: "How does MEOK help creative professionals?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "MEOK AI LABS helps creative professionals through the Trickster archetype for creative disruption and reframing, the Scholar archetype for cross-domain research synthesis, and Sovereign Memory that holds creative project continuity across sessions. The Maternal Covenant care system prevents MEOK from imposing its aesthetic preferences on your work or replacing your creative voice.",
+      },
     },
     {
-      "@type": "FAQPage",
-      mainEntity: [
-        { "@type": "Question", name: "Why is generic AI feedback useless for creative professionals?", acceptedAnswer: { "@type": "Answer", text: "Generic AI feedback is written for everyone, which means it serves no one. It doesn't know your style, your previous work, your brief, or your audience. For writers, designers, musicians, and filmmakers, feedback calibrated to the average actively pulls creative work away from intentional, distinctive choices toward the safe centre." } },
-        { "@type": "Question", name: "What is the Creator archetype in MEOK?", acceptedAnswer: { "@type": "Answer", text: "The Creator is one of MEOK's eight companion archetypes — a persistent AI collaborator built for creative professionals. It retains your style preferences, past briefs, completed projects, and creative voice, giving it the context to offer feedback that is genuinely tailored rather than generic." } },
-        { "@type": "Question", name: "How does MEOK's persistent memory help creative professionals?", acceptedAnswer: { "@type": "Answer", text: "MEOK stores your creative history in an encrypted memory layer that persists across every session. It can recall a brief from six months ago, your aesthetic direction on a past project, or a musical theme you explored and set aside — making every feedback session cumulative rather than cold-start." } },
-        { "@type": "Question", name: "Does MEOK have a sycophancy detector for creative feedback?", acceptedAnswer: { "@type": "Answer", text: "Yes. MEOK's sycophancy detection layer monitors its own response patterns and interrupts sustained validation with honest critique. If your work has structural problems, MEOK will name them. Honest feedback is a care act. Empty praise is a failure of care." } },
-        { "@type": "Question", name: "How does MEOK help with creative block?", acceptedAnswer: { "@type": "Answer", text: "MEOK acts as a thinking partner during creative block rather than a generator that produces work for you. It asks questions, surfaces patterns from your creative history, and helps you find the thread you lost — so you start the next sentence yourself, and the work stays yours." } },
-        { "@type": "Question", name: "What is Ralph Mode and how does it help creative professionals?", acceptedAnswer: { "@type": "Answer", text: "Ralph Mode is MEOK's overnight autonomous agent system. For creative professionals it researches references, synthesises mood-board material, analyses competitor work, and drafts structural outlines overnight. You wake to a brief that extends your thinking, not a blank page." } },
-      ],
+      "@type": "Question",
+      name: "What is the Trickster archetype?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "The Trickster is one of MEOK's Byzantine Council archetypes, designed for creative disruption and reframing. When creative work is stuck in a groove — repeating familiar patterns, avoiding necessary risk, defaulting to what has worked before — the Trickster introduces productive friction: unexpected questions, reframings, and challenges that break habitual thinking and open new directions.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Will MEOK replace my creative work?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "No. MEOK AI LABS is explicitly designed to enhance your creative process rather than substitute for it. The Maternal Covenant care system scores every response for autonomy — responses that diminish your creative agency, impose AI aesthetic preferences, or generate work that should be yours score below the care floor and are rejected. MEOK feeds your process; it does not replace it.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "How does MEOK support creative block?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "MEOK approaches creative block as a thinking partner rather than a generator. The Trickster archetype introduces reframings that break habitual patterns. The Scholar archetype draws connections from adjacent domains that can unlock stalled work. Sovereign Memory surfaces what you were trying to achieve when you last worked on a project, helping you reconnect with your original intention rather than starting from scratch.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Is MEOK good for writers and artists?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Yes. Writers benefit from the Scholar for research synthesis, the Trickster for breaking stylistic ruts, and Sovereign Memory for holding narrative continuity across long projects. Artists benefit from cross-domain reference synthesis, project continuity between sessions, and a companion that asks questions rather than generating work — preserving the artist's voice as the source of all creative decisions.",
+      },
     },
   ],
-};
+}
 
-// ── Shared styles ─────────────────────────────────────────────────────────────
-
-const H2: React.CSSProperties = {
-  fontFamily: "var(--font-dm-sans, DM Sans, sans-serif)",
-  fontWeight: 900,
-  fontSize: "1.45rem",
-  color: "#ffffff",
-  marginTop: "3rem",
-  marginBottom: "1rem",
-  lineHeight: 1.25,
-};
-
-const MUTED: React.CSSProperties = { color: "rgba(245,240,232,0.72)", fontSize: "1.0125rem" };
-
-// ── Page ──────────────────────────────────────────────────────────────────────
-
-export default function AIForCreativeProfessionalsPage() {
+export default function AiForCreativeProfessionalsPage() {
   return (
-    <div className="min-h-screen" style={{ background: "#0d0c18", color: "#f5f0e8" }}>
+    <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
 
-      {/* ── HERO ──────────────────────────────────────────────────────────────── */}
-      <section className="pt-32 pb-14 px-6 relative overflow-hidden">
-        <div
-          className="absolute inset-0 pointer-events-none"
+      <main
+        style={{
+          backgroundColor: "#0d0c18",
+          color: "#f5f0e8",
+          minHeight: "100vh",
+          fontFamily: "'Georgia', 'Times New Roman', serif",
+        }}
+      >
+        {/* Navigation */}
+        <nav
           style={{
-            background:
-              "radial-gradient(ellipse 55% 55% at 50% 0%, rgba(201,168,76,0.09) 0%, transparent 70%)",
+            borderBottom: "1px solid rgba(201,168,76,0.2)",
+            padding: "1.25rem 2rem",
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            maxWidth: "1200px",
+            margin: "0 auto",
           }}
-        />
-        <div className="max-w-3xl mx-auto relative">
+        >
           <Link
-            href="/blog"
-            className="inline-flex items-center gap-1.5 text-sm mb-8 transition-opacity hover:opacity-90"
-            style={{ color: "rgba(245,240,232,0.35)" }}
+            href="/"
+            style={{
+              color: "#c9a84c",
+              textDecoration: "none",
+              fontWeight: "700",
+              fontSize: "1.1rem",
+              letterSpacing: "0.05em",
+              fontFamily: "'Inter', 'Helvetica Neue', sans-serif",
+            }}
           >
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-              <path d="M10 3L5 8l5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-            Back to Blog
+            MEOK AI LABS
           </Link>
-
-          <div className="flex flex-wrap items-center gap-3 mb-6">
-            <span
-              className="inline-flex items-center text-xs font-bold px-3 py-1.5 rounded-full"
+          <div style={{ display: "flex", gap: "1.5rem", fontFamily: "'Inter', 'Helvetica Neue', sans-serif" }}>
+            <Link href="/blog" style={{ color: "#f5f0e8", textDecoration: "none", fontSize: "0.9rem", opacity: 0.7 }}>
+              Blog
+            </Link>
+            <Link href="/pricing" style={{ color: "#f5f0e8", textDecoration: "none", fontSize: "0.9rem", opacity: 0.7 }}>
+              Pricing
+            </Link>
+            <Link
+              href="/birth"
               style={{
+                color: "#0d0c18",
+                backgroundColor: "#c9a84c",
+                textDecoration: "none",
+                fontSize: "0.85rem",
+                fontWeight: "700",
+                padding: "0.45rem 1.1rem",
+                borderRadius: "6px",
+              }}
+            >
+              Get Started
+            </Link>
+          </div>
+        </nav>
+
+        {/* Hero */}
+        <header
+          style={{
+            maxWidth: "800px",
+            margin: "0 auto",
+            padding: "5rem 2rem 3rem",
+            borderBottom: "1px solid rgba(201,168,76,0.12)",
+          }}
+        >
+          <div style={{ marginBottom: "1rem", fontFamily: "'Inter', 'Helvetica Neue', sans-serif" }}>
+            <span
+              style={{
+                backgroundColor: "rgba(201,168,76,0.12)",
                 color: "#c9a84c",
-                background: "rgba(201,168,76,0.12)",
-                border: "1px solid rgba(201,168,76,0.3)",
+                padding: "0.3rem 0.9rem",
+                borderRadius: "999px",
+                fontSize: "0.75rem",
+                fontWeight: "700",
+                letterSpacing: "0.1em",
+                textTransform: "uppercase",
+                border: "1px solid rgba(201,168,76,0.25)",
               }}
             >
               Creative Professionals
             </span>
-            <span className="text-xs" style={{ color: "rgba(245,240,232,0.35)" }}>
-              March 24, 2026
-            </span>
-            <span className="text-xs" style={{ color: "rgba(245,240,232,0.35)" }}>
-              7 min read
-            </span>
           </div>
-
           <h1
             style={{
-              fontFamily: "var(--font-dm-sans, DM Sans, sans-serif)",
-              fontWeight: 900,
-              fontSize: "clamp(1.85rem, 3.5vw, 2.85rem)",
-              color: "#ffffff",
-              lineHeight: 1.18,
-              marginBottom: "1.25rem",
+              fontSize: "clamp(1.9rem, 4.5vw, 3rem)",
+              fontWeight: "800",
+              lineHeight: "1.15",
+              color: "#f5f0e8",
+              marginBottom: "1.5rem",
+              letterSpacing: "-0.02em",
             }}
           >
-            AI for Creative Professionals: Feedback That Grows With Your Work, Not Generic Suggestions
+            AI for Creative Professionals:{" "}
+            <span style={{ color: "#c9a84c" }}>A Companion That Feeds Your Process,</span>{" "}
+            Not a Tool That Replaces It
           </h1>
-
           <p
             style={{
-              color: "rgba(245,240,232,0.55)",
-              fontSize: "1.1rem",
-              lineHeight: 1.7,
-              maxWidth: 640,
+              fontSize: "1.15rem",
+              lineHeight: "1.8",
+              color: "rgba(245,240,232,0.72)",
+              marginBottom: "2rem",
+              fontFamily: "'Inter', 'Helvetica Neue', sans-serif",
+              maxWidth: "680px",
             }}
           >
-            Every writer, designer, musician, and filmmaker has had the same experience: they ask an
-            AI for feedback and get back a paragraph that could have been written for anyone. No
-            knowledge of their style. No memory of the brief. No context at all. MEOK was built to
-            end that.
+            The most common fear among creative professionals encountering AI is not irrelevance —
+            it is homogenisation. That every voice will converge toward the same competent average.
+            MEOK AI LABS was built with the opposite intention: a system that sharpens your
+            distinctive creative voice rather than smoothing it away.
           </p>
-        </div>
-      </section>
+          <div
+            style={{
+              display: "flex",
+              gap: "1rem",
+              flexWrap: "wrap",
+              fontFamily: "'Inter', 'Helvetica Neue', sans-serif",
+              fontSize: "0.82rem",
+              color: "rgba(245,240,232,0.45)",
+              alignItems: "center",
+            }}
+          >
+            <span>By Nicholas Templeman</span>
+            <span style={{ opacity: 0.4 }}>·</span>
+            <span>MEOK AI LABS</span>
+            <span style={{ opacity: 0.4 }}>·</span>
+            <time dateTime="2026-03-24">24 March 2026</time>
+            <span style={{ opacity: 0.4 }}>·</span>
+            <span>12 min read</span>
+          </div>
+        </header>
 
-      {/* ── BODY ──────────────────────────────────────────────────────────────── */}
-      <div
-        className="max-w-3xl mx-auto px-6 py-14"
-        style={{ borderTop: "1px solid rgba(245,240,232,0.06)" }}
-      >
-        {/* Author card */}
-        <div
-          className="flex items-center gap-4 p-5 rounded-2xl mb-12"
-          style={{ background: "rgba(245,240,232,0.03)", border: "1px solid rgba(245,240,232,0.08)" }}
+        {/* Article */}
+        <article
+          style={{
+            maxWidth: "800px",
+            margin: "0 auto",
+            padding: "3.5rem 2rem 6rem",
+          }}
         >
-          <div
-            className="w-12 h-12 rounded-full flex items-center justify-center font-black text-sm flex-shrink-0"
-            style={{ background: "linear-gradient(135deg, #c9a84c, #8a6a1a)", color: "#0d0c18" }}
-          >
-            NT
-          </div>
-          <div className="flex-1">
-            <p className="font-bold text-white text-sm">Nicholas Templeman</p>
-            <p className="text-xs mb-1" style={{ color: "rgba(245,240,232,0.4)" }}>
-              Founder, MEOK AI LABS
-            </p>
-            <p className="text-xs leading-relaxed" style={{ color: "rgba(245,240,232,0.35)" }}>
-              Nicholas built MEOK because he was tired of AI that forgot him. He lives and works in
-              the UK — mostly from a caravan on his farm.
-            </p>
-          </div>
-          <Link
-            href="/about"
-            className="text-xs font-semibold transition-opacity hover:opacity-75 hidden sm:block"
-            style={{ color: "#c9a84c" }}
-          >
-            About &rarr;
-          </Link>
-        </div>
 
-        {/* Article copy */}
-        <div className="leading-[1.9] space-y-6" style={MUTED}>
-
-          <p>
-            The creative industry has a feedback problem. Not a shortage of feedback — an excess of
-            the wrong kind. Feedback that treats your novel like a business report. Feedback that
-            praises the weakest part of your design because it looks bold. Feedback that has never
-            met your work before and shows it. Most AI tools make this worse. They are trained to be
-            helpful in a general sense, which means they flatten everything toward the middle.
-          </p>
-
-          {/* Q1 */}
-          <h2 style={H2}>
-            Why is generic AI feedback useless for creative professionals?
-          </h2>
-          <p>
-            Generic AI feedback is written for everyone, which means it serves no one. It doesn&apos;t
-            know your style, your previous work, your brief, or your intended audience. For writers,
-            designers, musicians, and filmmakers, feedback calibrated to the average actively pulls
-            creative work away from intentional, distinctive choices — toward the safe centre that no
-            serious practitioner is aiming for.
-          </p>
-          <p>
-            The underlying problem is memory. Generic AI tools treat every conversation as the first.
-            They have no record of your creative brief, no knowledge of your previous work, and no
-            way to distinguish intentional choices from unintentional mistakes. Without that context,
-            feedback cannot be genuinely useful. It can only gesture at general principles that may
-            or may not apply to what you are actually making.
-          </p>
-
-          {/* Q2 */}
-          <h2 style={H2}>
-            What is the Creator archetype in MEOK?
-          </h2>
-          <p>
-            MEOK has eight companion archetypes — each shaped by a distinct psychological
-            orientation, a different way of caring, and a different domain of expertise. The Creator
-            is the archetype built for people who make things: writers, designers, visual artists,
-            musicians, filmmakers, game developers, and architects.
-          </p>
-          <p>
-            The Creator archetype is a persistent companion that accumulates understanding of your
-            creative practice over time. It pays attention to the language you use to describe your
-            work, the references you return to, and the directions you pursue and abandon. Over weeks
-            and months, it builds a genuine picture of what you are trying to do — and holds that
-            picture across every session.
-          </p>
-          <ul className="space-y-3 my-5 pl-1" style={MUTED}>
-            {(
-              [
-                ["Writers", "Remembers your narrative voice, structural preferences, and the specific notes from your last draft review. Compares a new chapter against the tone you established three months ago."],
-                ["Designers", "Retains your brand guidelines, colour and typography preferences, aesthetic references, and client constraints. Feedback on new work is always framed against this living context."],
-                ["Musicians", "Holds your production philosophy, your influences, your previous track notes, and the sonic direction you described at project start. Tells the difference between a deliberate rough mix and an accidental one."],
-                ["Filmmakers", "Knows your visual language, tonal references, budget constraints, and the feedback you received on your last cut. Notes on a new edit land in that full context."],
-              ] as [string, string][]
-            ).map(([label, desc]) => (
-              <li key={label} className="flex gap-3">
-                <span
-                  className="mt-[0.45rem] w-1.5 h-1.5 rounded-full flex-shrink-0"
-                  style={{ background: "#c9a84c" }}
-                />
-                <span>
-                  <strong style={{ color: "#ffffff" }}>{label}. </strong>
-                  {desc}
-                </span>
-              </li>
-            ))}
-          </ul>
-
-          {/* Q3 */}
-          <h2 style={H2}>
-            How does MEOK&apos;s persistent memory help creative professionals?
-          </h2>
-          <p>
-            MEOK stores your creative history in an encrypted memory layer that persists across every
-            session. Unlike cloud AI tools that reset on every new conversation, MEOK&apos;s memory is
-            continuous, structured, and entirely private. It is never used to train a shared model.
-            It belongs to you.
-          </p>
-          <ul className="space-y-3 my-5 pl-1" style={MUTED}>
-            {(
-              [
-                ["Brief recall", "MEOK can surface your original creative brief from six months ago — the constraints, the intentions, the stated audience — and hold that against your current work."],
-                ["Style continuity", "Your aesthetic preferences persist across projects. If new work drifts from your established voice, MEOK flags it — whether the drift is intentional or accidental."],
-                ["Feedback history", "MEOK tracks which feedback you acted on. Over time it stops repeating observations you have already resolved and calibrates its approach to what you actually find useful."],
-                ["Reference accumulation", "Every reference you share — a film, a record, a design system, a piece of writing — is retained, building a map of your aesthetic influences over time."],
-                ["Cross-project insight", "MEOK can identify patterns across your body of work: recurring structural problems, habitual avoidances, signature moves that are becoming crutches."],
-              ] as [string, string][]
-            ).map(([label, desc]) => (
-              <li key={label} className="flex gap-3">
-                <span
-                  className="mt-[0.45rem] w-1.5 h-1.5 rounded-full flex-shrink-0"
-                  style={{ background: "#c9a84c" }}
-                />
-                <span>
-                  <strong style={{ color: "#ffffff" }}>{label}. </strong>
-                  {desc}
-                </span>
-              </li>
-            ))}
-          </ul>
-
-          {/* Q4 */}
-          <h2 style={H2}>
-            Does MEOK have a sycophancy detector for creative feedback?
-          </h2>
-          <p>
-            Yes — and it is one of the features we are most deliberate about. The AI industry has a
-            sycophancy problem. Models are trained on human feedback, and humans tend to rate
-            responses more positively when the AI agrees with them or praises their work. Over time,
-            this pushes models toward validation rather than honesty. For creative professionals this
-            is particularly corrosive: you need to know when something is not working.
-          </p>
-          <p>
-            MEOK includes a sycophancy detection layer that monitors its own response patterns. When
-            the system detects sustained positive feedback without substantive critique, it is
-            designed to interrupt that pattern and rebalance toward honest assessment. This is always
-            running — not a mode you switch on.
-          </p>
-          <div
-            className="rounded-xl p-6 my-6"
-            style={{
-              background: "rgba(201,168,76,0.07)",
-              border: "1px solid rgba(201,168,76,0.18)",
-            }}
-          >
-            <p
-              className="text-xs font-bold tracking-[0.2em] uppercase mb-2"
-              style={{ color: "#c9a84c" }}
+          {/* Section 1 */}
+          <section style={{ marginBottom: "3.5rem" }}>
+            <h2
+              style={{
+                fontSize: "1.55rem",
+                fontWeight: "700",
+                color: "#c9a84c",
+                marginBottom: "1.1rem",
+                lineHeight: "1.3",
+                letterSpacing: "-0.01em",
+              }}
             >
-              Core principle
+              What is the core problem with how most AI tools interact with creative work?
+            </h2>
+            <p style={{ fontSize: "1.05rem", lineHeight: "1.85", color: "rgba(245,240,232,0.82)", marginBottom: "1.25rem", fontFamily: "'Inter', 'Helvetica Neue', sans-serif" }}>
+              Most AI tools approach creative work as a generation problem. You describe what you want;
+              the AI produces it. The implicit model is one of substitution — you provide the brief,
+              the AI provides the output. For people whose work is about making something that
+              could not have been made by anyone else, this model is fundamentally wrong.
             </p>
-            <p className="text-sm leading-relaxed" style={{ color: "rgba(245,240,232,0.65)" }}>
-              Honest feedback is a care act. Empty praise is a failure of care. If your work has a
-              structural flaw, MEOK will name it — respectfully, but clearly. An AI that only
-              validates you is not a collaborator. It is a mirror that only flatters.
+            <p style={{ fontSize: "1.05rem", lineHeight: "1.85", color: "rgba(245,240,232,0.82)", marginBottom: "1.25rem", fontFamily: "'Inter', 'Helvetica Neue', sans-serif" }}>
+              The problem goes deeper than the quality of the generated output. When a writer uses AI
+              to draft a paragraph, a designer uses it to generate a layout, or a musician uses it
+              to produce a melody, the creative act has been outsourced. What remains may be
+              competent — it may even be impressive — but it belongs to the average of the training
+              data, not to the distinctive sensibility that makes a creative professional worth hiring.
             </p>
-          </div>
-
-          {/* Q5 */}
-          <h2 style={H2}>
-            How does MEOK help with creative block?
-          </h2>
-          <p>
-            Creative block is not a shortage of ideas. It is almost always a decision you are
-            avoiding, a fear you have not named, or a direction that has become unclear. Generic AI
-            tools respond by generating content — producing opening lines, sketching concepts. That
-            is the wrong instinct. Generation is not thinking.
-          </p>
-          <p>
-            MEOK approaches creative block as a thinking partner, not a generator. It asks questions
-            rather than producing output. It draws on your creative history to identify what has
-            worked when you were stuck before. It surfaces the stated intentions from your brief and
-            asks whether the block might be a signal that those intentions need revisiting. The goal
-            is to get you creating again — not to create for you, which would mean developing
-            MEOK&apos;s idea rather than yours.
-          </p>
-          <p>
-            MEOK also maintains a creative journal layer — a structured record of what you were
-            working on and where your thinking stood. When you return from a gap of weeks or months,
-            MEOK can reconstruct the state of your project so you are not starting from scratch.
-            This is particularly valuable for long-form work: novels, albums, film projects, where
-            gaps between sessions can span months.
-          </p>
-
-          {/* Q6 */}
-          <h2 style={H2}>
-            What is Ralph Mode and how does it help creative professionals?
-          </h2>
-          <p>
-            Ralph Mode is MEOK&apos;s overnight autonomous agent system. You assign a mission before you
-            close your laptop — and your Sovereign AI executes it while you sleep. By morning, a
-            structured brief waits in your dashboard. For creative professionals, Ralph Mode changes
-            the shape of a working day. The pre-production work that used to eat your creative
-            hours can now happen at night.
-          </p>
-          <ul className="space-y-3 my-5 pl-1" style={MUTED}>
-            {(
-              [
-                ["Reference research", "Orion gathers visual, sonic, or narrative references overnight and delivers a structured mood-board brief based on your stated aesthetic direction."],
-                ["Structural analysis", "Ask Ralph to analyse your work against a stated structural standard. Wake to a detailed comparison with specific observations rather than general principles."],
-                ["Competitive scan", "Ralph surveys what other practitioners in your field are producing and flags where your work is genuinely differentiated from the current landscape."],
-                ["Review prep", "Before a feedback session with a collaborator or client, Ralph synthesises your project notes, stated intentions, and any previous feedback into a pre-brief that sharpens the conversation."],
-              ] as [string, string][]
-            ).map(([label, desc]) => (
-              <li key={label} className="flex gap-3">
-                <span
-                  className="mt-[0.45rem] w-1.5 h-1.5 rounded-full flex-shrink-0"
-                  style={{ background: "#c9a84c" }}
-                />
-                <span>
-                  <strong style={{ color: "#ffffff" }}>{label}. </strong>
-                  {desc}
-                </span>
-              </li>
-            ))}
-          </ul>
-          <p>
-            Ralph Mode is available from the{" "}
-            <strong style={{ color: "#c9a84c" }}>Sovereign tier</strong> at{" "}
-            <strong style={{ color: "#ffffff" }}>£12/month</strong>. Most serious practitioners find
-            the overnight research and prep work recoups the cost within the first week.
-          </p>
-
-          {/* Closing */}
-          <div
-            className="mt-12 pt-8"
-            style={{ borderTop: "1px solid rgba(245,240,232,0.07)" }}
-          >
-            <p style={{ color: "rgba(245,240,232,0.5)", fontStyle: "italic" }}>
-              The question is not whether AI belongs in a creative practice. It is whether the AI
-              you are using knows your practice well enough to be useful in it. A tool that meets
-              you fresh every time will never give you what a long-term collaborator gives you.
-              MEOK was built to be that collaborator.
+            <p style={{ fontSize: "1.05rem", lineHeight: "1.85", color: "rgba(245,240,232,0.82)", fontFamily: "'Inter', 'Helvetica Neue', sans-serif" }}>
+              MEOK AI LABS takes a different position. Creative professionals need a thinking
+              partner, not a replacement. They need something that can interrogate their process,
+              unlock stuck work, synthesise research from adjacent domains, and hold the thread of a
+              long project — without ever reaching for the pen. The work should come from you. MEOK
+              should make it more possible to do that work.
             </p>
-          </div>
-        </div>
+          </section>
 
-        {/* Share row */}
-        <div
-          className="flex items-center gap-3 my-10 pt-8"
-          style={{ borderTop: "1px solid rgba(245,240,232,0.07)" }}
-        >
-          <span
-            className="text-xs font-bold uppercase tracking-[0.15em]"
-            style={{ color: "rgba(245,240,232,0.3)" }}
-          >
-            Share
-          </span>
-          <a
-            href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fmeok.ai%2Fblog%2Fai-for-creative-professionals&text=AI+for+Creative+Professionals%3A+Feedback+That+Grows+With+Your+Work"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-semibold transition-all"
-            style={{
-              border: "1px solid rgba(245,240,232,0.12)",
-              color: "rgba(245,240,232,0.5)",
-            }}
-          >
-            &#120143; Twitter
-          </a>
-          <a
-            href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fmeok.ai%2Fblog%2Fai-for-creative-professionals"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-semibold transition-all"
-            style={{
-              border: "1px solid rgba(245,240,232,0.12)",
-              color: "rgba(245,240,232,0.5)",
-            }}
-          >
-            LinkedIn
-          </a>
-        </div>
-
-        {/* CTA */}
-        <div
-          className="rounded-2xl p-8 sm:p-10 mb-16 relative overflow-hidden"
-          style={{ background: "rgba(201,168,76,0.07)", border: "1px solid rgba(201,168,76,0.2)" }}
-        >
-          <div
-            className="absolute top-0 right-0 w-72 h-72 pointer-events-none"
-            style={{
-              background:
-                "radial-gradient(circle at 80% 10%, rgba(201,168,76,0.18), transparent 65%)",
-            }}
-          />
-          <div className="relative">
-            <p
-              className="text-xs font-bold tracking-[0.25em] uppercase mb-2"
-              style={{ color: "#c9a84c" }}
+          {/* Section 2 */}
+          <section style={{ marginBottom: "3.5rem" }}>
+            <h2
+              style={{
+                fontSize: "1.55rem",
+                fontWeight: "700",
+                color: "#c9a84c",
+                marginBottom: "1.1rem",
+                lineHeight: "1.3",
+                letterSpacing: "-0.01em",
+              }}
             >
-              Creator Archetype
+              What is the Trickster archetype and how does it break creative block?
+            </h2>
+            <p style={{ fontSize: "1.05rem", lineHeight: "1.85", color: "rgba(245,240,232,0.82)", marginBottom: "1.25rem", fontFamily: "'Inter', 'Helvetica Neue', sans-serif" }}>
+              The Trickster is one of the most distinctive archetypes in MEOK&apos;s Byzantine Council —
+              the full roster of available characters. Unlike most AI interaction modes, which are
+              optimised for helpfulness and smooth agreement, the Trickster is optimised for
+              productive friction.
             </p>
-            <h3
-              className="text-xl sm:text-2xl font-black text-white mb-3"
-              style={{ fontFamily: "var(--font-dm-sans, DM Sans, sans-serif)" }}
-            >
-              AI that actually knows your work
-            </h3>
-            <p
-              className="text-sm leading-relaxed mb-6"
-              style={{ color: "rgba(245,240,232,0.5)" }}
-            >
-              Hatch your MEOK free in under 3 minutes. Activate the Creator archetype and start
-              building an AI that remembers your style, holds your history, and tells you the truth
-              about your work.
+            <p style={{ fontSize: "1.05rem", lineHeight: "1.85", color: "rgba(245,240,232,0.82)", marginBottom: "1.25rem", fontFamily: "'Inter', 'Helvetica Neue', sans-serif" }}>
+              Creative work stalls in predictable ways. You reach for the familiar. You repeat
+              structural choices that worked before. You avoid the risks that would make the work
+              genuinely interesting because the cost of failure is visible and the reward for boldness
+              is uncertain. The Trickster is designed to interrupt these patterns without being
+              destructive — introducing questions that reframe the work, observations that make the
+              familiar strange, provocations that open directions you had not considered.
             </p>
-            <Link
-              href="/birth"
-              className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full font-bold text-sm transition-all hover:scale-[1.02] active:scale-[0.99]"
-              style={{ background: "#c9a84c", color: "#0d0c18" }}
-            >
-              Hatch your MEOK free
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </Link>
-          </div>
-        </div>
-
-        {/* More posts */}
-        <div className="mb-16">
-          <h2
-            className="font-black text-white text-lg mb-5"
-            style={{ fontFamily: "var(--font-dm-sans, DM Sans, sans-serif)" }}
-          >
-            More from the blog
-          </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <Link
-              href="/blog/archetypes-guide"
-              className="group rounded-2xl p-6 flex flex-col gap-3 transition-all hover:-translate-y-0.5"
-              style={{ background: "rgba(245,240,232,0.03)", border: "1px solid rgba(245,240,232,0.08)" }}
-            >
-              <span
-                className="text-xs font-bold px-2.5 py-1 rounded-full w-fit"
-                style={{ color: "#c9a84c", background: "rgba(201,168,76,0.12)" }}
-              >
-                Archetypes
-              </span>
-              <h3
-                className="font-bold text-white text-sm leading-snug"
-                style={{ fontFamily: "var(--font-dm-sans, DM Sans, sans-serif)" }}
-              >
-                The 8 MEOK archetypes: which AI companion is right for you?
-              </h3>
-              <p className="text-xs mt-auto" style={{ color: "rgba(245,240,232,0.3)" }}>
-                6 min read
-              </p>
-            </Link>
-            <Link
-              href="/blog/ralph-mode-guide"
-              className="group rounded-2xl p-6 flex flex-col gap-3 transition-all hover:-translate-y-0.5"
-              style={{ background: "rgba(245,240,232,0.03)", border: "1px solid rgba(245,240,232,0.08)" }}
-            >
-              <span
-                className="text-xs font-bold px-2.5 py-1 rounded-full w-fit"
-                style={{ color: "#87CEEB", background: "rgba(135,206,235,0.12)" }}
-              >
-                Agents &amp; Automation
-              </span>
-              <h3
-                className="font-bold text-white text-sm leading-snug"
-                style={{ fontFamily: "var(--font-dm-sans, DM Sans, sans-serif)" }}
-              >
-                Ralph Mode: Your AI Agent That Works While You Sleep
-              </h3>
-              <p className="text-xs mt-auto" style={{ color: "rgba(245,240,232,0.3)" }}>
-                5 min read
-              </p>
-            </Link>
-          </div>
-        </div>
-      </div>
-
-      {/* ── FOOTER ───────────────────────────────────────────────────────────── */}
-      <div
-        style={{ borderTop: "1px solid rgba(245,240,232,0.06)", background: "#0d0c18" }}
-      >
-        <div className="max-w-6xl mx-auto px-6 py-12">
-          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
-            <div>
-              <Link
-                href="/"
-                className="text-lg font-black tracking-tight"
-                style={{ fontFamily: "var(--font-dm-sans, DM Sans, sans-serif)", color: "#f5f0e8" }}
-              >
-                MEOK<span style={{ color: "#c9a84c" }}>.</span>AI
-              </Link>
-              <p className="text-xs mt-1" style={{ color: "rgba(245,240,232,0.3)" }}>
-                Sovereign AI. Persistent memory. Genuine care.
-              </p>
-            </div>
+            <p style={{ fontSize: "1.05rem", lineHeight: "1.85", color: "rgba(245,240,232,0.82)", marginBottom: "1.25rem", fontFamily: "'Inter', 'Helvetica Neue', sans-serif" }}>
+              The Trickster does not generate. It asks. It might ask why the second chapter begins
+              where it does rather than where the first chapter ends. It might ask what the design
+              would look like if the constraint you accepted as fixed was actually optional. It might
+              ask what the piece is afraid of. These are not questions with right answers — they are
+              questions that unlock the creative decision-making that was genuinely yours to make.
+            </p>
             <div
-              className="flex flex-wrap items-center gap-6 text-xs"
-              style={{ color: "rgba(245,240,232,0.35)" }}
+              style={{
+                backgroundColor: "rgba(201,168,76,0.07)",
+                borderLeft: "3px solid #c9a84c",
+                padding: "1.25rem 1.5rem",
+                borderRadius: "0 8px 8px 0",
+                marginTop: "1.5rem",
+              }}
             >
-              <Link href="/blog" className="transition-opacity hover:opacity-75">Blog</Link>
-              <Link href="/about" className="transition-opacity hover:opacity-75">About</Link>
-              <Link href="/privacy" className="transition-opacity hover:opacity-75">Privacy</Link>
-              <Link href="/birth" className="transition-opacity hover:opacity-75" style={{ color: "#c9a84c" }}>Hatch free &rarr;</Link>
+              <p
+                style={{
+                  fontSize: "0.95rem",
+                  lineHeight: "1.75",
+                  color: "rgba(245,240,232,0.75)",
+                  fontFamily: "'Inter', 'Helvetica Neue', sans-serif",
+                  margin: 0,
+                  fontStyle: "italic",
+                }}
+              >
+                "The Trickster&apos;s role is not to make you feel good about your work. It is to make
+                you see it differently — and then let you decide what to do with that." — MEOK
+                design principle, MEOK-AI-2026-002
+              </p>
             </div>
-          </div>
-          <p className="text-xs mt-8" style={{ color: "rgba(245,240,232,0.2)" }}>
-            &copy; {new Date().getFullYear()} MEOK AI LABS. All rights reserved.
+          </section>
+
+          {/* Section 3 */}
+          <section style={{ marginBottom: "3.5rem" }}>
+            <h2
+              style={{
+                fontSize: "1.55rem",
+                fontWeight: "700",
+                color: "#c9a84c",
+                marginBottom: "1.1rem",
+                lineHeight: "1.3",
+                letterSpacing: "-0.01em",
+              }}
+            >
+              How does the Scholar archetype support cross-domain synthesis for creative research?
+            </h2>
+            <p style={{ fontSize: "1.05rem", lineHeight: "1.85", color: "rgba(245,240,232,0.82)", marginBottom: "1.25rem", fontFamily: "'Inter', 'Helvetica Neue', sans-serif" }}>
+              The most interesting creative work rarely stays within a single domain. A novelist
+              researching Victorian medicine, a graphic designer drawing on brutalist architecture,
+              a musician exploring the structural principles of Baroque counterpoint — the richest
+              creative work is often the product of deep cross-domain synthesis.
+            </p>
+            <p style={{ fontSize: "1.05rem", lineHeight: "1.85", color: "rgba(245,240,232,0.82)", marginBottom: "1.25rem", fontFamily: "'Inter', 'Helvetica Neue', sans-serif" }}>
+              The Scholar archetype in MEOK&apos;s Byzantine Council is built for exactly this. Where
+              most AI tools retrieve information, the Scholar connects it — finding the structural
+              parallels, unexpected adjacencies, and conceptual bridges between domains that make
+              creative research genuinely generative rather than merely informative.
+            </p>
+            <p style={{ fontSize: "1.05rem", lineHeight: "1.85", color: "rgba(245,240,232,0.82)", fontFamily: "'Inter', 'Helvetica Neue', sans-serif" }}>
+              Combined with Sovereign Memory, the Scholar becomes increasingly valuable over time.
+              It does not simply research what you ask — it holds the context of what you are
+              making, what you have already researched, and what directions you have explored and
+              abandoned. Research sessions become cumulative rather than starting from zero every
+              time. Explore the full character roster at{" "}
+              <Link href="/characters" style={{ color: "#c9a84c" }}>
+                MEOK characters
+              </Link>
+              .
+            </p>
+          </section>
+
+          {/* Section 4 */}
+          <section style={{ marginBottom: "3.5rem" }}>
+            <h2
+              style={{
+                fontSize: "1.55rem",
+                fontWeight: "700",
+                color: "#c9a84c",
+                marginBottom: "1.1rem",
+                lineHeight: "1.3",
+                letterSpacing: "-0.01em",
+              }}
+            >
+              How does MEOK protect creative voice from being overwritten by AI aesthetics?
+            </h2>
+            <p style={{ fontSize: "1.05rem", lineHeight: "1.85", color: "rgba(245,240,232,0.82)", marginBottom: "1.25rem", fontFamily: "'Inter', 'Helvetica Neue', sans-serif" }}>
+              This is a concern that MEOK AI LABS takes seriously at a systemic level rather than
+              as a feature toggle. The Maternal Covenant — MEOK&apos;s real-time response scoring
+              system developed by Nicholas Templeman and documented in MEOK-AI-2026-002 — includes
+              autonomy as one of its six core care dimensions.
+            </p>
+            <p style={{ fontSize: "1.05rem", lineHeight: "1.85", color: "rgba(245,240,232,0.82)", marginBottom: "1.25rem", fontFamily: "'Inter', 'Helvetica Neue', sans-serif" }}>
+              Every MEOK response is scored before it reaches you. Responses that diminish your
+              creative agency — that generate work you should have made yourself, impose aesthetic
+              preferences, or steer creative decisions in directions that serve the AI&apos;s tendencies
+              rather than your intentions — score below the care floor of 0.3 and are rejected.
+              This is not a mode you enable. It is always running.
+            </p>
+            <p style={{ fontSize: "1.05rem", lineHeight: "1.85", color: "rgba(245,240,232,0.82)", fontFamily: "'Inter', 'Helvetica Neue', sans-serif" }}>
+              The practical effect is that MEOK consistently steers toward questions rather than
+              statements, toward opening creative decisions rather than closing them, and toward
+              making it easier for you to access your own creative resources rather than substituting
+              its own. Learn more about the care framework at the{" "}
+              <Link href="/guardian" style={{ color: "#c9a84c" }}>
+                Guardian page
+              </Link>
+              .
+            </p>
+          </section>
+
+          {/* Section 5 */}
+          <section style={{ marginBottom: "3.5rem" }}>
+            <h2
+              style={{
+                fontSize: "1.55rem",
+                fontWeight: "700",
+                color: "#c9a84c",
+                marginBottom: "1.1rem",
+                lineHeight: "1.3",
+                letterSpacing: "-0.01em",
+              }}
+            >
+              How does Sovereign Memory support long creative projects across many sessions?
+            </h2>
+            <p style={{ fontSize: "1.05rem", lineHeight: "1.85", color: "rgba(245,240,232,0.82)", marginBottom: "1.25rem", fontFamily: "'Inter', 'Helvetica Neue', sans-serif" }}>
+              Long creative projects — novels, albums, film scripts, exhibition series — have a
+              particular challenge that shorter work does not: the accumulation of decisions over
+              time creates a vast implicit context that must be held simultaneously. Every new
+              scene must be consistent with every previous one. Every new track must sit within the
+              established sonic world. Every new painting in a series must respond to what came before.
+            </p>
+            <p style={{ fontSize: "1.05rem", lineHeight: "1.85", color: "rgba(245,240,232,0.82)", marginBottom: "1.25rem", fontFamily: "'Inter', 'Helvetica Neue', sans-serif" }}>
+              Sovereign Memory provides a persistent record of creative decisions, stated intentions,
+              aesthetic choices, and the evolution of a project over time. When you return to a
+              project after a gap of weeks, MEOK can reconstruct where you were, what you were
+              trying to achieve, what problems you were wrestling with, and what directions you had
+              provisionally committed to. The context does not need to be rebuilt from scratch —
+              it is simply there.
+            </p>
+            <p style={{ fontSize: "1.05rem", lineHeight: "1.85", color: "rgba(245,240,232,0.82)", fontFamily: "'Inter', 'Helvetica Neue', sans-serif" }}>
+              This is particularly valuable for creative professionals who work across multiple
+              projects simultaneously. Sovereign Memory holds all of them — each with their own
+              context, their own decision history, their own trajectory — without any risk of
+              bleed between them.
+            </p>
+          </section>
+
+          {/* Section 6 */}
+          <section style={{ marginBottom: "3.5rem" }}>
+            <h2
+              style={{
+                fontSize: "1.55rem",
+                fontWeight: "700",
+                color: "#c9a84c",
+                marginBottom: "1.1rem",
+                lineHeight: "1.3",
+                letterSpacing: "-0.01em",
+              }}
+            >
+              How does MEOK help with imposter syndrome in creative work without becoming a cheerleader?
+            </h2>
+            <p style={{ fontSize: "1.05rem", lineHeight: "1.85", color: "rgba(245,240,232,0.82)", marginBottom: "1.25rem", fontFamily: "'Inter', 'Helvetica Neue', sans-serif" }}>
+              Imposter syndrome in creative work has a paradoxical relationship with validation. The
+              short-term relief of reassurance often intensifies the underlying problem — because
+              being told your work is good by something that always tells you your work is good is
+              not reassurance, it is noise. Sycophantic AI is a machine for manufacturing exactly
+              this kind of worthless reassurance.
+            </p>
+            <p style={{ fontSize: "1.05rem", lineHeight: "1.85", color: "rgba(245,240,232,0.82)", marginBottom: "1.25rem", fontFamily: "'Inter', 'Helvetica Neue', sans-serif" }}>
+              The Maternal Covenant&apos;s care floor is designed to prevent MEOK from becoming that
+              machine. Responses that offer empty validation — that agree with you because agreement
+              feels good rather than because agreement is warranted — score poorly on the growth and
+              transparency dimensions and are rejected. MEOK will tell you when something is working.
+              It will also tell you when something is not.
+            </p>
+            <p style={{ fontSize: "1.05rem", lineHeight: "1.85", color: "rgba(245,240,232,0.82)", fontFamily: "'Inter', 'Helvetica Neue', sans-serif" }}>
+              What MEOK can provide that genuinely helps with imposter syndrome is context and
+              continuity. Sovereign Memory holds the record of your creative development over time —
+              the problems you solved, the experiments that worked, the risks that paid off. For
+              creative professionals in a dark period, that record is more valuable than any
+              reassurance: it is evidence.
+            </p>
+          </section>
+
+          {/* Section 7 */}
+          <section style={{ marginBottom: "3.5rem" }}>
+            <h2
+              style={{
+                fontSize: "1.55rem",
+                fontWeight: "700",
+                color: "#c9a84c",
+                marginBottom: "1.1rem",
+                lineHeight: "1.3",
+                letterSpacing: "-0.01em",
+              }}
+            >
+              How is MEOK different from AI writing tools, image generators, and other creative AI?
+            </h2>
+            <p style={{ fontSize: "1.05rem", lineHeight: "1.85", color: "rgba(245,240,232,0.82)", marginBottom: "1.25rem", fontFamily: "'Inter', 'Helvetica Neue', sans-serif" }}>
+              AI writing tools, image generators, and music generation models share a common
+              orientation: they produce. They turn a description into an output. For many use cases
+              this is exactly what is needed. For creative professionals whose work depends on their
+              distinctive voice and vision, it is a trap — a path of least resistance that leads
+              toward work that is technically accomplished but creatively anonymous.
+            </p>
+            <p style={{ fontSize: "1.05rem", lineHeight: "1.85", color: "rgba(245,240,232,0.82)", marginBottom: "1.25rem", fontFamily: "'Inter', 'Helvetica Neue', sans-serif" }}>
+              MEOK does not produce creative work. It does not generate the paragraph, the image,
+              or the melody. It creates the conditions in which you produce better creative work —
+              by unlocking stuck thinking, synthesising relevant research, holding long-term context,
+              asking productive questions, and maintaining continuity across the life of a project.
+            </p>
+            <p style={{ fontSize: "1.05rem", lineHeight: "1.85", color: "rgba(245,240,232,0.82)", fontFamily: "'Inter', 'Helvetica Neue', sans-serif" }}>
+              This is not a restriction — it is the design. MEOK is a companion for your creative
+              process, built to make that process richer, deeper, and more sustained. The work
+              that comes out of it is yours, completely. See{" "}
+              <Link href="/how-it-works" style={{ color: "#c9a84c" }}>
+                how MEOK works
+              </Link>{" "}
+              or start your{" "}
+              <Link href="/birth" style={{ color: "#c9a84c" }}>
+                Birth
+              </Link>{" "}
+              to introduce your practice.
+            </p>
+          </section>
+
+          {/* Section 8 */}
+          <section style={{ marginBottom: "3.5rem" }}>
+            <h2
+              style={{
+                fontSize: "1.55rem",
+                fontWeight: "700",
+                color: "#c9a84c",
+                marginBottom: "1.1rem",
+                lineHeight: "1.3",
+                letterSpacing: "-0.01em",
+              }}
+            >
+              What does onboarding with MEOK look like for a creative professional?
+            </h2>
+            <p style={{ fontSize: "1.05rem", lineHeight: "1.85", color: "rgba(245,240,232,0.82)", marginBottom: "1.25rem", fontFamily: "'Inter', 'Helvetica Neue', sans-serif" }}>
+              Birth — MEOK&apos;s onboarding process — is structured as a creative conversation rather
+              than a form. MEOK will ask about your practice: what you make, what you are working on,
+              how your process typically works, what kinds of support have been valuable in the past,
+              and what kinds of feedback you tend to find useful versus what tends to be counterproductive.
+            </p>
+            <p style={{ fontSize: "1.05rem", lineHeight: "1.85", color: "rgba(245,240,232,0.82)", marginBottom: "1.25rem", fontFamily: "'Inter', 'Helvetica Neue', sans-serif" }}>
+              By the end of Birth, Sovereign Memory contains a rich initial picture of your creative
+              context. You can immediately tell MEOK about the project you are working on, where it
+              stands, and what you are finding difficult — and it will engage with that from context
+              rather than from scratch.
+            </p>
+            <p style={{ fontSize: "1.05rem", lineHeight: "1.85", color: "rgba(245,240,232,0.82)", fontFamily: "'Inter', 'Helvetica Neue', sans-serif" }}>
+              For many creative professionals, the first session after Birth is described as the
+              first time they have had an AI interaction that felt like it was actually about their
+              work — not about demonstrating what AI can do, but about engaging with the specific
+              problems and possibilities of a specific creative practice. That is the experience
+              MEOK AI LABS is designed to create.
+            </p>
+          </section>
+
+          {/* FAQ Block */}
+          <section
+            style={{
+              marginBottom: "3.5rem",
+              backgroundColor: "rgba(201,168,76,0.05)",
+              border: "1px solid rgba(201,168,76,0.18)",
+              borderRadius: "12px",
+              padding: "2.5rem",
+            }}
+          >
+            <h2
+              style={{
+                fontSize: "1.4rem",
+                fontWeight: "700",
+                color: "#c9a84c",
+                marginBottom: "2rem",
+                letterSpacing: "-0.01em",
+                fontFamily: "'Inter', 'Helvetica Neue', sans-serif",
+              }}
+            >
+              Frequently Asked Questions
+            </h2>
+
+            {[
+              {
+                q: "How does MEOK help creative professionals?",
+                a: "MEOK helps through the Trickster archetype for creative disruption, the Scholar for cross-domain synthesis, and Sovereign Memory for creative project continuity. The Maternal Covenant care system prevents MEOK from imposing its aesthetic preferences or replacing your creative voice.",
+              },
+              {
+                q: "What is the Trickster archetype?",
+                a: "The Trickster is a Byzantine Council archetype optimised for productive friction. When creative work is stuck in habitual patterns, the Trickster introduces unexpected questions, reframings, and challenges that break familiar thinking and open new directions — without generating work that should be yours.",
+              },
+              {
+                q: "Will MEOK replace my creative work?",
+                a: "No. MEOK is designed to enhance your process, not substitute for it. The Maternal Covenant scores every response for autonomy — responses that diminish creative agency, impose AI aesthetics, or generate work that should be yours score below the care floor and are rejected. MEOK feeds your process; it does not replace it.",
+              },
+              {
+                q: "How does MEOK support creative block?",
+                a: "The Trickster introduces reframings that break habitual patterns. The Scholar draws connections from adjacent domains that unlock stalled work. Sovereign Memory reconnects you with your original intention when you return to a project after a gap — so you are not starting from scratch every time.",
+              },
+              {
+                q: "Is MEOK good for writers and artists?",
+                a: "Yes. Writers benefit from Scholar research synthesis, Trickster for stylistic disruption, and Sovereign Memory for narrative continuity across long projects. Artists benefit from cross-domain reference synthesis and a companion that asks questions rather than generating work — preserving the artist's voice as the source of all creative decisions.",
+              },
+            ].map((item, index) => (
+              <div
+                key={index}
+                style={{
+                  marginBottom: index < 4 ? "1.75rem" : 0,
+                  paddingBottom: index < 4 ? "1.75rem" : 0,
+                  borderBottom: index < 4 ? "1px solid rgba(201,168,76,0.1)" : "none",
+                }}
+              >
+                <h3
+                  style={{
+                    fontSize: "0.98rem",
+                    fontWeight: "600",
+                    color: "#f5f0e8",
+                    marginBottom: "0.6rem",
+                    fontFamily: "'Inter', 'Helvetica Neue', sans-serif",
+                  }}
+                >
+                  {item.q}
+                </h3>
+                <p
+                  style={{
+                    fontSize: "0.93rem",
+                    lineHeight: "1.72",
+                    color: "rgba(245,240,232,0.68)",
+                    fontFamily: "'Inter', 'Helvetica Neue', sans-serif",
+                    margin: 0,
+                  }}
+                >
+                  {item.a}
+                </p>
+              </div>
+            ))}
+          </section>
+
+          {/* CTA */}
+          <section
+            style={{
+              backgroundColor: "rgba(201,168,76,0.08)",
+              border: "1px solid rgba(201,168,76,0.25)",
+              borderRadius: "12px",
+              padding: "2.5rem",
+              textAlign: "center",
+              marginBottom: "3rem",
+            }}
+          >
+            <h2
+              style={{
+                fontSize: "1.5rem",
+                fontWeight: "700",
+                color: "#f5f0e8",
+                marginBottom: "0.75rem",
+                letterSpacing: "-0.01em",
+                fontFamily: "'Inter', 'Helvetica Neue', sans-serif",
+              }}
+            >
+              Your practice deserves an AI that asks better questions.
+            </h2>
+            <p
+              style={{
+                fontSize: "0.98rem",
+                lineHeight: "1.7",
+                color: "rgba(245,240,232,0.65)",
+                marginBottom: "1.75rem",
+                fontFamily: "'Inter', 'Helvetica Neue', sans-serif",
+                maxWidth: "520px",
+                margin: "0 auto 1.75rem",
+              }}
+            >
+              Start your MEOK Birth and introduce your creative practice. The Trickster and Scholar
+              archetypes are ready. Your work stays yours — always.
+            </p>
+            <div style={{ display: "flex", gap: "1rem", justifyContent: "center", flexWrap: "wrap" }}>
+              <Link
+                href="/birth"
+                style={{
+                  backgroundColor: "#c9a84c",
+                  color: "#0d0c18",
+                  padding: "0.85rem 2rem",
+                  borderRadius: "8px",
+                  textDecoration: "none",
+                  fontWeight: "700",
+                  fontSize: "0.95rem",
+                  fontFamily: "'Inter', 'Helvetica Neue', sans-serif",
+                }}
+              >
+                Begin Your Birth
+              </Link>
+              <Link
+                href="/characters"
+                style={{
+                  backgroundColor: "transparent",
+                  color: "#c9a84c",
+                  padding: "0.85rem 2rem",
+                  borderRadius: "8px",
+                  textDecoration: "none",
+                  fontWeight: "600",
+                  fontSize: "0.95rem",
+                  fontFamily: "'Inter', 'Helvetica Neue', sans-serif",
+                  border: "1px solid rgba(201,168,76,0.4)",
+                }}
+              >
+                Meet the Characters
+              </Link>
+            </div>
+          </section>
+
+          {/* Internal links */}
+          <nav style={{ paddingTop: "2rem", borderTop: "1px solid rgba(201,168,76,0.12)" }}>
+            <p
+              style={{
+                fontSize: "0.75rem",
+                color: "rgba(245,240,232,0.35)",
+                marginBottom: "0.85rem",
+                fontFamily: "'Inter', 'Helvetica Neue', sans-serif",
+                textTransform: "uppercase",
+                letterSpacing: "0.1em",
+              }}
+            >
+              Explore MEOK AI LABS
+            </p>
+            <div style={{ display: "flex", gap: "1.5rem", flexWrap: "wrap" }}>
+              {[
+                { href: "/birth", label: "Birth — Get Started" },
+                { href: "/guardian", label: "The Guardian" },
+                { href: "/characters", label: "All Characters" },
+                { href: "/pricing", label: "Pricing" },
+                { href: "/how-it-works", label: "How It Works" },
+              ].map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  style={{
+                    color: "#c9a84c",
+                    textDecoration: "none",
+                    fontSize: "0.88rem",
+                    fontFamily: "'Inter', 'Helvetica Neue', sans-serif",
+                    opacity: 0.85,
+                  }}
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </div>
+          </nav>
+        </article>
+
+        {/* Footer */}
+        <footer
+          style={{
+            borderTop: "1px solid rgba(245,240,232,0.07)",
+            padding: "2.5rem 2rem",
+            maxWidth: "1200px",
+            margin: "0 auto",
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            flexWrap: "wrap",
+            gap: "1rem",
+            fontFamily: "'Inter', 'Helvetica Neue', sans-serif",
+          }}
+        >
+          <span style={{ color: "#c9a84c", fontWeight: "700", fontSize: "0.95rem", letterSpacing: "0.05em" }}>
+            MEOK AI LABS
+          </span>
+          <p style={{ color: "rgba(245,240,232,0.25)", fontSize: "0.8rem", margin: 0 }}>
+            © 2026 MEOK AI LABS · Founded by Nicholas Templeman
           </p>
-        </div>
-      </div>
-    </div>
-  );
+        </footer>
+      </main>
+    </>
+  )
 }
