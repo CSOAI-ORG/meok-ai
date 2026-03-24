@@ -140,7 +140,7 @@ const faqJsonLd = {
       name: "How much does MEOK cost?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "MEOK is free forever at the base tier — you get a sovereign AI companion, 100 messages a day, 7-day encrypted memory, and a Birth Ceremony at no cost. Pro is £9.99/month, Elite is £19/month, and Team is £29.99/seat/month. All paid plans include a 30-day money-back guarantee. Your data is always yours at every tier.",
+        text: "MEOK is free forever at the base tier — you get a sovereign AI companion, 50 messages a day, 7-day encrypted memory, and a Birth Ceremony at no cost. Sovereign is £12/month, Family is £29/month. All paid plans include a 30-day money-back guarantee. Your data is always yours at every tier.",
       },
     },
   ],
@@ -204,26 +204,27 @@ const DISPLAY_CARDS = [
 const FREE_FEATURES = [
   "Sovereign AI companion",
   "Birth Ceremony",
-  "100 messages/day",
+  "50 messages/day",
   "7-day encrypted memory",
   "DeepSeek + Ollama routing",
   "Full data export — always",
 ];
-const PRO_FEATURES = [
-  "Everything in Free",
+const SOVEREIGN_FEATURES = [
+  "Everything in Explorer",
   "Unlimited messages",
   "Permanent sovereign memory",
-  "Work OS (Orion mode)",
-  "Priority routing (Claude Sonnet)",
-  "Custom character evolution",
+  "Work OS (Orion, Riri, Hourman)",
+  "Claude Sonnet + GPT-4o routing",
+  "Morning briefing",
+  "Guardian 24/7 protection",
 ];
-const ELITE_FEATURES = [
-  "Everything in Pro",
-  "Family OS (up to 5 companions)",
-  "Parent dashboard & Guardian 24/7",
-  "All LLM models (GPT-4o, Opus, Gemini)",
-  "Family memory vault",
-  "Priority model routing",
+const FAMILY_FEATURES = [
+  "Everything in Sovereign",
+  "Up to 5 companions (family plan)",
+  "Family dashboard & shared memory",
+  "All LLM models incl. GPT-4o",
+  "Family Guardian alerts",
+  "Priority support",
 ];
 
 const STATS = [
@@ -1481,7 +1482,7 @@ export default function HomePage() {
               </p>
               <p className="text-xs text-[#a0a0b8]/60 mb-12">
                 ChatGPT Plus £20 &nbsp;·&nbsp; Claude Pro £18 &nbsp;·&nbsp;{" "}
-                <span className="text-[#c9a84c] font-semibold">MEOK Pro £9.99</span>
+                <span className="text-[#c9a84c] font-semibold">MEOK Sovereign £12</span>
               </p>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-5 mb-8">
@@ -1511,15 +1512,15 @@ export default function HomePage() {
                   </Link>
                 </div>
 
-                {/* Pro */}
+                {/* Sovereign */}
                 <div className="border border-[#c9a84c]/20 rounded-2xl p-7 text-left bg-white/[0.03]">
-                  <div className="text-xs font-bold tracking-widest uppercase text-white/40 mb-2">Pro — Bonded</div>
+                  <div className="text-xs font-bold tracking-widest uppercase text-white/40 mb-2">Sovereign</div>
                   <div className="text-4xl font-black text-white mb-1">
-                    £9.99
+                    £12
                     <span className="text-base font-normal text-[#a0a0b8]">/mo</span>
                   </div>
                   <ul className="space-y-2.5 my-5">
-                    {PRO_FEATURES.map((f) => (
+                    {SOVEREIGN_FEATURES.map((f) => (
                       <li key={f} className="flex items-start gap-2 text-sm text-[#a0a0b8]">
                         <Check className="w-4 h-4 text-[#c9a84c] flex-shrink-0 mt-0.5" />
                         {f}
@@ -1527,23 +1528,23 @@ export default function HomePage() {
                     ))}
                   </ul>
                   <Link
-                    href="/birth"
+                    href="/pricing"
                     className="block w-full py-3 rounded-full text-center font-bold text-sm bg-[#c9a84c] text-[#1a1a2e] hover:bg-[#d4b463] transition-colors"
                   >
-                    Start 30-day free trial
+                    Get Sovereign
                   </Link>
-                  <p className="text-xs text-white/20 text-center mt-1.5">No charge for 30 days</p>
+                  <p className="text-xs text-white/20 text-center mt-1.5">30-day money-back guarantee</p>
                 </div>
 
-                {/* Elite */}
+                {/* Family */}
                 <div className="border border-purple-500/20 rounded-2xl p-7 text-left bg-white/[0.03]">
-                  <div className="text-xs font-bold tracking-widest uppercase text-white/40 mb-2">Elite — Family</div>
+                  <div className="text-xs font-bold tracking-widest uppercase text-white/40 mb-2">Family</div>
                   <div className="text-4xl font-black text-white mb-1">
-                    £19
+                    £29
                     <span className="text-base font-normal text-[#a0a0b8]">/mo</span>
                   </div>
                   <ul className="space-y-2.5 my-5">
-                    {ELITE_FEATURES.map((f) => (
+                    {FAMILY_FEATURES.map((f) => (
                       <li key={f} className="flex items-start gap-2 text-sm text-[#a0a0b8]">
                         <Check className="w-4 h-4 text-purple-400 flex-shrink-0 mt-0.5" />
                         {f}
@@ -1551,28 +1552,28 @@ export default function HomePage() {
                     ))}
                   </ul>
                   <Link
-                    href="/birth"
+                    href="/pricing"
                     className="block w-full py-3 rounded-full text-center font-bold text-sm text-white border-2 border-purple-500/40 hover:border-purple-500/70 hover:bg-purple-500/10 transition-all"
                   >
-                    Start 30-day free trial
+                    Get Family Plan
                   </Link>
-                  <p className="text-xs text-white/20 text-center mt-1.5">No charge for 30 days</p>
+                  <p className="text-xs text-white/20 text-center mt-1.5">30-day money-back guarantee</p>
                 </div>
 
-                {/* Team */}
+                {/* BYOK */}
                 <div className="border border-white/10 rounded-2xl p-7 text-left bg-white/[0.03]">
-                  <div className="text-xs font-bold tracking-widest uppercase text-white/40 mb-2">Team — Council</div>
+                  <div className="text-xs font-bold tracking-widest uppercase text-white/40 mb-2">BYOK</div>
                   <div className="text-4xl font-black text-white mb-1">
-                    £29.99
-                    <span className="text-base font-normal text-[#a0a0b8]">/seat/mo</span>
+                    £5
+                    <span className="text-base font-normal text-[#a0a0b8]">/mo</span>
                   </div>
                   <ul className="space-y-2.5 my-5">
                     {[
-                      "Everything in Elite",
-                      "Byzantine Council governance",
-                      "Team sovereign memory",
-                      "Admin controls & audit log",
-                      "71 MCP integrations",
+                      "Bring your own API keys",
+                      "50 messages/day (own credits)",
+                      "Basic memory vault",
+                      "All MEOK features",
+                      "No MEOK compute costs",
                     ].map((f) => (
                       <li key={f} className="flex items-start gap-2 text-sm text-[#a0a0b8]">
                         <Check className="w-4 h-4 text-[#c9a84c] flex-shrink-0 mt-0.5" />
@@ -1580,13 +1581,13 @@ export default function HomePage() {
                       </li>
                     ))}
                   </ul>
-                  <a
-                    href="mailto:hello@meok.ai"
+                  <Link
+                    href="/pricing"
                     className="block w-full py-3 rounded-full text-center font-bold text-sm text-white border-2 border-white/20 hover:border-white/40 transition-all"
                   >
-                    Talk to us
-                  </a>
-                  <p className="text-xs text-white/20 text-center mt-1.5">30-day free trial included</p>
+                    View BYOK details
+                  </Link>
+                  <p className="text-xs text-white/20 text-center mt-1.5">For developers & power users</p>
                 </div>
               </div>
 
