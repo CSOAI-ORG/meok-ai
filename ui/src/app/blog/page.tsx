@@ -245,6 +245,30 @@ const POSTS = [
     featured: false,
   },
   {
+    slug: "ai-for-dementia-carers",
+    title: "AI Support for Dementia Carers: You Cannot Pour From an Empty Cup",
+    excerpt:
+      "700,000 people in the UK are unpaid carers for someone with dementia. The care they give is extraordinary. The care they receive is almost nothing. MEOK is built for the carer, not just the cared for.",
+    date: "March 24, 2026",
+    readTime: "10 min read",
+    tag: "Wellbeing",
+    tagColor: "#60a5fa",
+    category: "guides",
+    featured: false,
+  },
+  {
+    slug: "meok-vs-character-ai-2026",
+    title: "Character AI in 2026: What Changed, and Why MEOK Is the Safe Alternative",
+    excerpt:
+      "Character.AI made safety headlines in 2024-2025. MEOK was built with the Maternal Covenant from day one — care ethics baked in architecturally, not bolted on after an incident.",
+    date: "March 24, 2026",
+    readTime: "10 min read",
+    tag: "Comparison",
+    tagColor: "#3b82f6",
+    category: "comparisons",
+    featured: false,
+  },
+  {
     slug: "ai-for-burnout",
     title: "AI for Burnout: How an AI Companion Helps You Recover and Rebuild",
     excerpt:
