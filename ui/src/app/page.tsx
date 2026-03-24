@@ -1214,7 +1214,7 @@ export default function HomePage() {
                   </div>
                   <h3 className="font-bold text-white text-lg mb-3">Tap the egg.</h3>
                   <p className="text-white/40 text-sm leading-relaxed">
-                    Name your companion. Choose its soul from 7 archetypes. Your AI is born — not
+                    Name your companion. Choose its soul from 6 archetypes. Your AI is born — not
                     downloaded. It already knows you from your 4-question personality quiz.
                   </p>
                 </article>
