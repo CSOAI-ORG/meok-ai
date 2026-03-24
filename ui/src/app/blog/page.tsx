@@ -209,6 +209,30 @@ const POSTS = [
     featured: false,
   },
   {
+    slug: "ai-for-fibromyalgia",
+    title: "AI for Fibromyalgia: Daily Support When Pain Is Unpredictable",
+    excerpt:
+      "Fibromyalgia is invisible, unpredictable, and often dismissed. An AI companion that tracks your flare patterns, remembers your limits, and checks in without judgment is a different kind of daily support.",
+    date: "March 24, 2026",
+    readTime: "10 min read",
+    tag: "Wellbeing",
+    tagColor: "#f472b6",
+    category: "guides",
+    featured: false,
+  },
+  {
+    slug: "what-is-ralph-mode",
+    title: "What Is Ralph Mode? MEOK's Deep Work Protocol Explained",
+    excerpt:
+      "Context switching costs 23 minutes to recover. Ralph Mode is MEOK's deep work protocol — one task, zero distractions, and an AI that tracks your flow state across sessions so you can find it faster every time.",
+    date: "March 24, 2026",
+    readTime: "9 min read",
+    tag: "Productivity",
+    tagColor: "#f59e0b",
+    category: "deep-dives",
+    featured: false,
+  },
+  {
     slug: "ai-for-burnout",
     title: "AI for Burnout: How an AI Companion Helps You Recover and Rebuild",
     excerpt:
