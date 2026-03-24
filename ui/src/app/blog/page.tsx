@@ -2702,6 +2702,18 @@ const POSTS = [
     category: "product",
     featured: true,
   },
+  {
+    slug: "ai-for-job-loss-grief",
+    title: "AI for Job Loss Grief: Processing Redundancy, Identity, and What Comes Next",
+    excerpt:
+      "Losing a job is not just losing income — it is losing identity, routine, and purpose. MEOK's sovereign AI companion helps you process the grief of redundancy, rebuild confidence, and find clarity about what you actually want next.",
+    date: "March 24, 2026",
+    readTime: "9 min read",
+    tag: "Wellbeing",
+    tagColor: "#4a9d6f",
+    category: "wellbeing",
+    featured: false,
+  },
 ];
 
 // ── Category filter tabs ──────────────────────────────────────────────────────
