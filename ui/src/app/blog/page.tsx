@@ -317,6 +317,18 @@ const POSTS = [
     featured: false,
   },
   {
+    slug: "ai-for-adhd-women",
+    title: "AI for Women with ADHD: Support After a Late Diagnosis",
+    excerpt:
+      "Women are diagnosed with ADHD 4.5 years later than men on average. The years of masking, misdiagnosis, and shame leave a mark. MEOK is built to support exactly this kind of complex, late-understood neurodivergence.",
+    date: "March 24, 2026",
+    readTime: "10 min read",
+    tag: "Neurodivergent",
+    tagColor: "#a78bfa",
+    category: "guides",
+    featured: false,
+  },
+  {
     slug: "ai-for-burnout",
     title: "AI for Burnout: How an AI Companion Helps You Recover and Rebuild",
     excerpt:
