@@ -432,7 +432,7 @@ export default function AiForMenopausePage() {
 
         {/* Related Posts */}
         <section style={{ marginBottom: "3rem" }}>
-          <h2 style={{ fontSize: "1.1rem", color: MUTED, marginBottom: "1.25rem", fontFamily: "system-ui, sans-serif", letterSpacing: "0.05em", textTransform: "uppercase", fontSize: "0.85rem" }}>
+          <h2 style={{ fontSize: "0.85rem", color: MUTED, marginBottom: "1.25rem", fontFamily: "system-ui, sans-serif", letterSpacing: "0.05em", textTransform: "uppercase" }}>
             Related Reading
           </h2>
           <div style={{ display: "grid", gap: "0.75rem" }}>
