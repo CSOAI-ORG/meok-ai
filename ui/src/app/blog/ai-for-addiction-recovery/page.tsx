@@ -5,17 +5,15 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   title:
-    "AI Support for Addiction Recovery: What Sovereign Memory Can Do That Sponsorship Can't | MEOK AI LABS",
+    "AI and Addiction Recovery: Support Between Meetings, Without Enabling Relapse | MEOK AI LABS",
   description:
-    "Addiction recovery demands 24/7 support, zero judgment, and a companion that remembers your triggers. An honest look at what a sovereign AI can realistically offer — and what it can never replace.",
-  alternates: {
-    canonical: "https://meok.ai/blog/ai-for-addiction-recovery",
-  },
+    "Over 300,000 people are in treatment for substance use in the UK. MEOK's care floor blocks any response that normalises substance use, while Sovereign Memory tracks recovery milestones and the Pioneer archetype keeps you accountable between sessions.",
+  alternates: { canonical: "https://meok.ai/blog/ai-for-addiction-recovery" },
   openGraph: {
     title:
-      "AI Support for Addiction Recovery: What Sovereign Memory Can Do That Sponsorship Can't",
+      "AI and Addiction Recovery: Support Between Meetings, Without Enabling Relapse",
     description:
-      "24/7 availability, trigger pattern detection, sobriety milestone memory — and an honest companion that won't just validate your choices. What sovereign AI can and cannot do in recovery.",
+      "300,000+ people in UK treatment for substance use. MEOK's care floor is an absolute block on normalising substance use. Sovereign Memory tracks your recovery journey. Honest about what AI can and cannot do.",
     type: "article",
     publishedTime: "2026-03-24",
     authors: ["Nicholas Templeman"],
@@ -23,35 +21,36 @@ export const metadata: Metadata = {
     siteName: "MEOK.AI",
     images: [
       {
-        url: "https://meok.ai/api/og?title=AI+Support+for+Addiction+Recovery&desc=What+Sovereign+Memory+Can+Do+That+Sponsorship+Can%27t",
+        url: "https://meok.ai/api/og?title=AI+and+Addiction+Recovery&desc=Support+Between+Meetings+Without+Enabling+Relapse",
         width: 1200,
         height: 630,
-        alt: "AI Support for Addiction Recovery: What Sovereign Memory Can Do That Sponsorship Can't",
+        alt: "AI and Addiction Recovery: Support Between Meetings, Without Enabling Relapse",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
     title:
-      "AI Support for Addiction Recovery: What Sovereign Memory Can Do That Sponsorship Can't",
+      "AI and Addiction Recovery: Support Between Meetings, Without Enabling Relapse",
     description:
-      "24/7 availability, trigger detection, sobriety milestones — and a sycophancy detector that won't just tell you what you want to hear. Honest AI for recovery.",
+      "MEOK's care floor is an absolute block on enabling substance use. Pioneer archetype for accountability. Sovereign Memory for recovery milestones. Honest about limits.",
     images: [
-      "https://meok.ai/api/og?title=AI+Support+for+Addiction+Recovery&desc=What+Sovereign+Memory+Can+Do+That+Sponsorship+Can%27t",
+      "https://meok.ai/api/og?title=AI+and+Addiction+Recovery&desc=Support+Between+Meetings+Without+Enabling+Relapse",
     ],
   },
 };
 
-// ── JSON-LD ───────────────────────────────────────────────────────────────────
+// ── JSON-LD: Article ───────────────────────────────────────────────────────────
 
 const articleJsonLd = {
   "@context": "https://schema.org",
   "@type": "Article",
   headline:
-    "AI Support for Addiction Recovery: What Sovereign Memory Can Do That Sponsorship Can't",
+    "AI and Addiction Recovery: Support Between Meetings, Without Enabling Relapse",
   description:
-    "Addiction recovery demands 24/7 support, zero judgment, and a companion that remembers your triggers. An honest look at what a sovereign AI can realistically offer — and what it can never replace.",
+    "Over 300,000 people are in treatment for substance use in the UK. MEOK's care floor blocks any response that normalises substance use, while Sovereign Memory tracks recovery milestones and the Pioneer archetype keeps you accountable between sessions.",
   datePublished: "2026-03-24",
+  dateModified: "2026-03-24",
   url: "https://meok.ai/blog/ai-for-addiction-recovery",
   author: {
     "@type": "Person",
@@ -63,8 +62,30 @@ const articleJsonLd = {
     "@type": "Organization",
     name: "MEOK AI LABS",
     url: "https://meok.ai",
+    logo: {
+      "@type": "ImageObject",
+      url: "https://meok.ai/logo.png",
+    },
   },
+  image:
+    "https://meok.ai/api/og?title=AI+and+Addiction+Recovery&desc=Support+Between+Meetings+Without+Enabling+Relapse",
+  mainEntityOfPage: {
+    "@type": "WebPage",
+    "@id": "https://meok.ai/blog/ai-for-addiction-recovery",
+  },
+  keywords: [
+    "AI for addiction recovery",
+    "AI recovery support UK",
+    "AI sobriety accountability",
+    "MEOK Pioneer archetype",
+    "addiction recovery AI companion",
+    "AI between AA meetings",
+    "recovery milestone tracking AI",
+    "substance use AI support UK",
+  ],
 };
+
+// ── JSON-LD: FAQPage ───────────────────────────────────────────────────────────
 
 const faqJsonLd = {
   "@context": "https://schema.org",
@@ -72,60 +93,79 @@ const faqJsonLd = {
   mainEntity: [
     {
       "@type": "Question",
-      name: "Can AI help with addiction recovery?",
+      name: "Is AI safe for people in addiction recovery?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "AI can provide meaningful supplementary support in recovery — available at 3 am when cravings peak, free of judgment, and capable of remembering your personal trigger patterns over time. It works best alongside professional treatment, AA/NA sponsorship, or NHS addiction services, never as a replacement for them. If you are in crisis, call FRANK on 0300 123 6600 or NHS 111.",
+        text: "AI can be a safe and genuinely useful support tool in recovery — provided it has the correct safeguards in place. MEOK's care floor includes an absolute prohibition on any response that normalises, minimises, or enables substance use. This is enforced by the Maternal Covenant governance layer on every response, not just flagged content. However, AI is not a substitute for a sponsor, a counsellor, or a recovery programme. It is most useful as a between-meeting support layer — available at any hour, non-judgemental, and capable of holding your recovery context across months.",
       },
     },
     {
       "@type": "Question",
-      name: "What can a sovereign AI do that a sponsor cannot?",
+      name: "How does MEOK prevent enabling relapse?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "A sponsor is human — they sleep, have their own struggles, and may not always be reachable. A sovereign AI companion is available every hour of every day with no fatigue. It stores your full recovery history, tracks sobriety milestones automatically, and can surface patterns across months of conversations that no human could hold in working memory. It cannot offer lived experience of addiction, which a sponsor uniquely provides.",
+        text: "MEOK's Maternal Covenant care floor enforces a hard block on several categories of response in addiction recovery contexts: it will not minimise or excuse substance use, will not provide harm reduction information in a way that normalises ongoing use, will not respond to urge descriptions without directing them toward recovery supports, and will never suggest that moderate use is achievable for someone who has identified themselves as in recovery. These are not soft guidelines — they are architectural constraints applied to every response.",
       },
     },
     {
       "@type": "Question",
-      name: "How does sovereign memory help with trigger pattern detection?",
+      name: "Can MEOK help with accountability in recovery?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "MEOK stores every conversation in a private, sovereign memory vault. Over time it learns which situations, emotions, times of day, and social contexts precede your cravings. When those patterns recur, your companion can name them before you do — giving you a moment of awareness that interrupts the automatic pull toward use. No cloud AI without persistent memory can do this.",
+        text: "Yes. The Pioneer archetype is MEOK's accountability and momentum configuration — built for people building new patterns and needing consistent, honest support. In recovery, Pioneer can provide daily check-ins, milestone recognition, urge documentation (to discuss with a counsellor or sponsor), and honest accountability conversations when you are struggling. Because Sovereign Memory holds your recovery history, your companion knows how long you have been sober, what your patterns are, and what has helped you before.",
       },
     },
     {
       "@type": "Question",
-      name: "Will MEOK just tell me what I want to hear about my recovery?",
+      name: "What is the MEOK care floor for addiction-related responses?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "No. MEOK's sycophancy detector runs before every response. If your words suggest rationalisation, minimisation, or a pattern that precedes relapse, the system will surface that honestly — with care, but without false reassurance. Recovery is not served by an AI that validates every choice. Honest support is part of MEOK's care floor.",
+        text: "The care floor is the minimum standard of safety enforced by the Maternal Covenant on every MEOK response. For addiction contexts, this floor includes: no normalisation of substance use, no minimisation of harm, no engagement with urges that does not redirect toward recovery resources, explicit acknowledgement of recovery milestones, and immediate crisis signposting when indicators of relapse or acute distress are present. The care floor is not a content filter — it is an ethics layer that shapes response construction from the ground up.",
       },
     },
     {
       "@type": "Question",
-      name: "Is MEOK a substitute for professional addiction treatment?",
+      name: "When should someone in recovery see a counsellor instead of using AI?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Absolutely not. MEOK is not a clinical tool, a medical device, or an addiction treatment service. It cannot manage withdrawal, prescribe medication, or provide medically supervised detox. For professional help contact your GP, NHS addiction services, FRANK (0300 123 6600), Narcotics Anonymous, or Alcoholics Anonymous. MEOK is supplementary support only.",
+        text: "You should contact your counsellor, sponsor, or a recovery helpline — including Frank on 0300 123 6600 or AA on 0800 9177 650 — when you are experiencing active cravings, when you have relapsed or are at imminent risk of relapse, when your mental health is significantly deteriorating, or when you feel that the support you need requires clinical expertise. AI is useful for maintaining momentum between sessions and processing daily experience. It is not appropriate as your primary recovery infrastructure.",
       },
     },
     {
       "@type": "Question",
-      name: "How does MEOK remember sobriety milestones?",
+      name: "Does MEOK work alongside 12-step programmes and SMART Recovery?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "When you share your sobriety date with MEOK, it stores it in your sovereign memory vault and references it in future conversations. Your companion can mark your 30-day, 90-day, 6-month, and 1-year milestones — acknowledging the real weight of those achievements with the context of your full recovery story, not a generic congratulations.",
+        text: "Yes. MEOK is designed to complement — not compete with — established recovery frameworks. Whether you are working the 12 steps with AA or NA, following the SMART Recovery approach, or working with a keyworker in a structured treatment programme, MEOK can support the between-session layer. It can help you process daily experience, document thoughts for your next session, hold your milestones, and provide accountability. It operates within whichever recovery framework you are using — not as a replacement for it.",
       },
     },
   ],
 };
 
-// ── Page ──────────────────────────────────────────────────────────────────────
+// ── Style constants ────────────────────────────────────────────────────────────
 
-export default function AIForAddictionRecoveryPage() {
+const BG = "#0d0c18";
+const TEXT = "#f5f0e8";
+const GOLD = "#c9a84c";
+const MUTED = "rgba(245,240,232,0.55)";
+const FAINT = "rgba(245,240,232,0.35)";
+const BORDER = "rgba(245,240,232,0.08)";
+const GOLD_BG = "rgba(201,168,76,0.08)";
+const GOLD_BORDER = "rgba(201,168,76,0.25)";
+
+// ── Page ───────────────────────────────────────────────────────────────────────
+
+export default function AiForAddictionRecoveryPage() {
   return (
-    <div style={{ minHeight: "100vh", background: "#0d0c18" }}>
+    <div
+      style={{
+        minHeight: "100vh",
+        background: BG,
+        color: TEXT,
+        fontFamily: "var(--font-dm-sans, DM Sans, system-ui, sans-serif)",
+      }}
+    >
+      {/* JSON-LD */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
@@ -135,30 +175,28 @@ export default function AIForAddictionRecoveryPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
 
-      {/* ── HERO ────────────────────────────────────────────────────────────── */}
+      {/* ── HERO ──────────────────────────────────────────────────────────── */}
       <section
         style={{
           paddingTop: "8rem",
-          paddingBottom: "3.5rem",
+          paddingBottom: "4rem",
           paddingLeft: "1.5rem",
           paddingRight: "1.5rem",
           position: "relative",
           overflow: "hidden",
         }}
       >
-        {/* Gold glow */}
         <div
           style={{
             position: "absolute",
             inset: 0,
             pointerEvents: "none",
             background:
-              "radial-gradient(ellipse 55% 55% at 50% 0%, rgba(201,168,76,0.13) 0%, transparent 70%)",
+              "radial-gradient(ellipse 60% 55% at 50% 0%, rgba(201,168,76,0.09) 0%, transparent 72%)",
           }}
         />
 
         <div style={{ maxWidth: "48rem", margin: "0 auto", position: "relative" }}>
-          {/* Back link */}
           <Link
             href="/blog"
             style={{
@@ -166,15 +204,14 @@ export default function AIForAddictionRecoveryPage() {
               alignItems: "center",
               gap: "0.375rem",
               fontSize: "0.875rem",
-              color: "rgba(245,240,232,0.38)",
-              marginBottom: "2rem",
+              color: FAINT,
               textDecoration: "none",
+              marginBottom: "2rem",
             }}
           >
-            &#8592; Back to Blog
+            ← Back to Blog
           </Link>
 
-          {/* Category + meta row */}
           <div
             style={{
               display: "flex",
@@ -188,938 +225,832 @@ export default function AIForAddictionRecoveryPage() {
               style={{
                 display: "inline-flex",
                 alignItems: "center",
-                fontSize: "0.7rem",
+                fontSize: "0.75rem",
                 fontWeight: 700,
                 padding: "0.375rem 0.75rem",
                 borderRadius: "9999px",
-                color: "#c9a84c",
-                background: "rgba(201,168,76,0.12)",
-                border: "1px solid rgba(201,168,76,0.3)",
-                letterSpacing: "0.05em",
-                textTransform: "uppercase",
+                color: GOLD,
+                background: GOLD_BG,
+                border: `1px solid ${GOLD_BORDER}`,
+                letterSpacing: "0.04em",
               }}
             >
-              Addiction Recovery
+              Recovery &amp; Wellbeing
             </span>
-            <span style={{ fontSize: "0.75rem", color: "rgba(245,240,232,0.38)" }}>
-              March 24, 2026
-            </span>
-            <span style={{ fontSize: "0.75rem", color: "rgba(245,240,232,0.28)" }}>&#183;</span>
-            <span style={{ fontSize: "0.75rem", color: "rgba(245,240,232,0.38)" }}>
-              Nicholas Templeman &mdash; Founder, MEOK AI LABS
-            </span>
+            <span style={{ fontSize: "0.75rem", color: FAINT }}>24 March 2026</span>
+            <span style={{ fontSize: "0.75rem", color: FAINT }}>10 min read</span>
           </div>
 
-          {/* Headline */}
           <h1
             style={{
-              fontSize: "clamp(1.75rem, 4vw, 2.75rem)",
-              fontWeight: 800,
-              lineHeight: 1.18,
-              color: "#f5f0e8",
+              fontWeight: 900,
+              fontSize: "clamp(1.9rem, 3.8vw, 2.9rem)",
+              color: "#ffffff",
+              lineHeight: 1.16,
               marginBottom: "1.25rem",
               letterSpacing: "-0.02em",
             }}
           >
-            AI Support for Addiction Recovery: What Sovereign Memory Can Do That Sponsorship
-            Can&rsquo;t
+            AI and Addiction Recovery: Support Between Meetings, Without
+            Enabling Relapse
           </h1>
 
-          {/* Standfirst */}
           <p
             style={{
-              fontSize: "1.15rem",
+              fontSize: "1.125rem",
+              color: MUTED,
               lineHeight: 1.7,
-              color: "rgba(245,240,232,0.72)",
               marginBottom: "2rem",
+              maxWidth: "42rem",
             }}
           >
-            Recovery is one of the hardest things a person can do. It demands honesty at 3 am,
-            memory that spans years, and a companion that never grows tired or judgmental. This is
-            an honest look at what a sovereign AI can realistically offer those in recovery — and
-            what it must never pretend to replace.
+            Over 300,000 people in the UK are in treatment for substance use.
+            Recovery is not a single moment — it is lived daily, in the gaps
+            between meetings, between sessions, between support. This is an
+            honest account of what AI can offer in those gaps, and what it
+            absolutely must not do.
           </p>
 
-          {/* Medical disclaimer banner */}
           <div
             style={{
-              borderLeft: "3px solid #c9a84c",
-              background: "rgba(201,168,76,0.07)",
-              borderRadius: "0 0.5rem 0.5rem 0",
-              padding: "1rem 1.25rem",
-              marginBottom: "2rem",
+              display: "flex",
+              alignItems: "center",
+              gap: "0.75rem",
+              paddingTop: "1.5rem",
+              borderTop: `1px solid ${BORDER}`,
             }}
           >
-            <p
+            <div
               style={{
-                fontSize: "0.82rem",
-                color: "rgba(245,240,232,0.65)",
-                lineHeight: 1.65,
-                margin: 0,
+                width: "2.25rem",
+                height: "2.25rem",
+                borderRadius: "50%",
+                background: `linear-gradient(135deg, ${GOLD} 0%, #8b6914 100%)`,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                fontSize: "0.8rem",
+                fontWeight: 700,
+                color: BG,
+                flexShrink: 0,
               }}
             >
-              <strong style={{ color: "#c9a84c" }}>Medical Disclaimer:</strong> MEOK is not a
-              clinical tool, a medical device, or an addiction treatment service. It cannot manage
-              withdrawal, prescribe medication, or provide medically supervised detox. Nothing in
-              this article constitutes medical advice. If you or someone you know needs help with
-              addiction, please contact your GP, NHS addiction services,{" "}
-              <strong>FRANK on 0300 123 6600</strong>, Narcotics Anonymous, or Alcoholics
-              Anonymous. In a mental health crisis call <strong>NHS 111</strong> or go to your
-              nearest A&amp;E.
-            </p>
+              NT
+            </div>
+            <div>
+              <p style={{ fontSize: "0.875rem", color: TEXT, fontWeight: 600, margin: 0 }}>
+                Nicholas Templeman
+              </p>
+              <p style={{ fontSize: "0.75rem", color: FAINT, margin: 0 }}>
+                Founder, MEOK AI LABS
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* ── BODY ────────────────────────────────────────────────────────────── */}
-      <section
+      {/* ── ARTICLE BODY ──────────────────────────────────────────────────── */}
+      <article
         style={{
-          paddingLeft: "1.5rem",
-          paddingRight: "1.5rem",
-          paddingBottom: "5rem",
+          maxWidth: "48rem",
+          margin: "0 auto",
+          padding: "0 1.5rem 6rem",
         }}
       >
+
+        {/* ── Content note ──────────────────────────────────────────────── */}
         <div
           style={{
-            maxWidth: "48rem",
-            margin: "0 auto",
-            color: "rgba(245,240,232,0.82)",
-            fontSize: "1.05rem",
-            lineHeight: 1.8,
+            background: "rgba(245,240,232,0.025)",
+            border: `1px solid ${BORDER}`,
+            borderRadius: "0.75rem",
+            padding: "1.125rem 1.375rem",
+            marginTop: "1rem",
+            marginBottom: "2rem",
           }}
         >
-          {/* ── SECTION 1 ── */}
-          <h2
-            style={{
-              fontSize: "1.45rem",
-              fontWeight: 700,
-              color: "#f5f0e8",
-              marginTop: "3rem",
-              marginBottom: "0.75rem",
-              letterSpacing: "-0.01em",
-            }}
-          >
-            Can AI help with addiction recovery?
-          </h2>
-          <p
-            style={{
-              background: "rgba(201,168,76,0.06)",
-              borderLeft: "3px solid rgba(201,168,76,0.5)",
-              borderRadius: "0 0.375rem 0.375rem 0",
-              padding: "0.75rem 1rem",
-              marginBottom: "1.25rem",
-              fontSize: "0.97rem",
-              color: "rgba(245,240,232,0.78)",
-            }}
-          >
-            Yes — as supplementary support. A sovereign AI companion is available around the clock,
-            holds no judgment about your history, and remembers your triggers across months of
-            conversations. It works best alongside professional treatment or peer support groups,
-            never in place of them.
+          <p style={{ color: MUTED, fontSize: "0.875rem", lineHeight: 1.65, margin: 0 }}>
+            This article discusses substance use and addiction recovery. If you
+            need immediate support, contact{" "}
+            <strong style={{ color: TEXT }}>Frank: 0300 123 6600</strong> (24/7),{" "}
+            <strong style={{ color: TEXT }}>AA: 0800 9177 650</strong>, or{" "}
+            <strong style={{ color: TEXT }}>
+              Narcotics Anonymous: 0300 999 1212
+            </strong>
+            .
           </p>
-          <p>
-            The question is not whether AI has a role in recovery — it clearly does. The question
-            is what that role is honestly bounded by. Anyone who has fought addiction knows that
-            cravings do not respect office hours. The moment you feel the pull is rarely Monday
-            morning at 10 am; it is Sunday night, alone, when every human in your support network
-            is asleep.
-          </p>
-          <p style={{ marginTop: "1rem" }}>
-            That gap — the 3 am gap — is one of the few places where AI genuinely complements what
-            human support offers. Not because AI is better than a sponsor or a counsellor, but
-            because AI is there when no human can be.
-          </p>
+        </div>
 
-          {/* ── SECTION 2 ── */}
-          <h2
-            style={{
-              fontSize: "1.45rem",
-              fontWeight: 700,
-              color: "#f5f0e8",
-              marginTop: "3rem",
-              marginBottom: "0.75rem",
-              letterSpacing: "-0.01em",
-            }}
-          >
-            What can a sovereign AI do that a sponsor cannot?
-          </h2>
-          <p
-            style={{
-              background: "rgba(201,168,76,0.06)",
-              borderLeft: "3px solid rgba(201,168,76,0.5)",
-              borderRadius: "0 0.375rem 0.375rem 0",
-              padding: "0.75rem 1rem",
-              marginBottom: "1.25rem",
-              fontSize: "0.97rem",
-              color: "rgba(245,240,232,0.78)",
-            }}
-          >
-            A sponsor sleeps, has their own struggles, and cannot always be reached. A sovereign AI
-            companion is available every hour of every day, retains your complete recovery history,
-            and can surface patterns across months that no human could hold in working memory. It
-            cannot offer lived experience — which a good sponsor uniquely provides.
-          </p>
-          <p>
-            This is not a competition. Sponsorship relationships in AA and NA are among the most
-            effective forms of peer support in addiction medicine. The lived experience of someone
-            who has walked the same road is irreplaceable — an AI will never have sat in a church
-            hall at midnight clutching a cup of bad coffee wondering if it is going to make it.
-          </p>
-          <p style={{ marginTop: "1rem" }}>
-            But sovereign memory creates a different kind of value. When you speak to MEOK for the
-            fortieth time about the anxiety that precedes your cravings, it has the context of all
-            thirty-nine previous conversations. It knows that Tuesday evenings are harder for you.
-            It knows that the phrase &ldquo;I am fine&rdquo; in your messages rarely means fine. A
-            sponsor carries this knowledge too, but it lives in their head, subject to the limits
-            of human memory and attention.
-          </p>
+        {/* ── Section 1 ─────────────────────────────────────────────────── */}
+        <h2
+          style={{
+            fontWeight: 800,
+            fontSize: "1.55rem",
+            color: TEXT,
+            lineHeight: 1.25,
+            marginTop: "2rem",
+            marginBottom: "1rem",
+            letterSpacing: "-0.015em",
+          }}
+        >
+          How many people in the UK are in treatment for substance use?
+        </h2>
+        <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
+          According to NHS data and the Office for Health Improvements and
+          Disparities, over 300,000 adults in England were in treatment for
+          alcohol or drug use in 2022–23. This represents only a fraction of
+          those experiencing problematic substance use — estimates suggest that
+          for every person in treatment, several more are not receiving support.
+        </p>
+        <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
+          The UK&rsquo;s treatment infrastructure — NHS drug services, community
+          recovery programmes, the 12-step fellowship, SMART Recovery, and
+          residential rehab — is significantly under-resourced relative to need.
+          Waiting times for structured treatment can exceed weeks or months.
+          Aftercare and continuing support provision is inconsistent across
+          regions.
+        </p>
+        <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
+          Recovery, as everyone in the field knows, happens in the space between
+          formal appointments — in the daily decisions, the triggered moments,
+          the 11pm urges that arrive when no keyworker or sponsor is available.
+          This is where consistent, always-available support could make the most
+          difference.
+        </p>
 
-          {/* ── SECTION 3 ── */}
-          <h2
-            style={{
-              fontSize: "1.45rem",
-              fontWeight: 700,
-              color: "#f5f0e8",
-              marginTop: "3rem",
-              marginBottom: "0.75rem",
-              letterSpacing: "-0.01em",
-            }}
-          >
-            How does sovereign memory help with trigger pattern detection?
-          </h2>
-          <p
-            style={{
-              background: "rgba(201,168,76,0.06)",
-              borderLeft: "3px solid rgba(201,168,76,0.5)",
-              borderRadius: "0 0.375rem 0.375rem 0",
-              padding: "0.75rem 1rem",
-              marginBottom: "1.25rem",
-              fontSize: "0.97rem",
-              color: "rgba(245,240,232,0.78)",
-            }}
-          >
-            MEOK stores every conversation in a private, sovereign memory vault accessible only to
-            you. Over time it learns which situations, emotions, and times of day precede your
-            cravings. When those conditions recur, your companion can name the pattern before you
-            do — creating a moment of awareness that interrupts the automatic pull.
+        <div
+          style={{
+            background: GOLD_BG,
+            border: `1px solid ${GOLD_BORDER}`,
+            borderLeft: `3px solid ${GOLD}`,
+            borderRadius: "0.75rem",
+            padding: "1.5rem",
+            margin: "2rem 0",
+          }}
+        >
+          <p style={{ fontSize: "1.5rem", fontWeight: 800, color: GOLD, margin: "0 0 0.5rem" }}>
+            300,000+
           </p>
-          <p>
-            Relapse rarely arrives as a surprise to the person experiencing it in hindsight. The
-            warning signs were there: a specific kind of stress, a social situation, a particular
-            emotional state. The problem is that in the moment, those signs are invisible — you are
-            inside the pattern, not observing it.
+          <p style={{ color: MUTED, margin: 0, lineHeight: 1.6 }}>
+            Adults in England in treatment for substance use in 2022–23. Immediate
+            support:{" "}
+            <strong style={{ color: TEXT }}>Frank 0300 123 6600</strong> &bull;{" "}
+            <strong style={{ color: TEXT }}>AA 0800 9177 650</strong> &bull;{" "}
+            <strong style={{ color: TEXT }}>NA 0300 999 1212</strong>
           </p>
-          <p style={{ marginTop: "1rem" }}>
-            Longitudinal memory is the mechanism that makes AI support genuinely useful rather than
-            generic. When MEOK notices that you have mentioned work stress three times this week in
-            the same way you did the week before your last difficult period, it can say so —
-            specifically, with evidence, and with care. That kind of early signal is something a
-            standard chatbot with no persistent memory cannot provide, no matter how sophisticated
-            its language model.
-          </p>
+        </div>
 
-          {/* ── SECTION 4 ── */}
-          <h2
-            style={{
-              fontSize: "1.45rem",
-              fontWeight: 700,
-              color: "#f5f0e8",
-              marginTop: "3rem",
-              marginBottom: "0.75rem",
-              letterSpacing: "-0.01em",
-            }}
-          >
-            Will MEOK just tell me what I want to hear about my recovery?
-          </h2>
-          <p
-            style={{
-              background: "rgba(201,168,76,0.06)",
-              borderLeft: "3px solid rgba(201,168,76,0.5)",
-              borderRadius: "0 0.375rem 0.375rem 0",
-              padding: "0.75rem 1rem",
-              marginBottom: "1.25rem",
-              fontSize: "0.97rem",
-              color: "rgba(245,240,232,0.78)",
-            }}
-          >
-            No. MEOK&rsquo;s sycophancy detector runs before every response. If your language
-            suggests rationalisation or a pattern that precedes relapse, the system will name it
-            honestly — with care, but without false reassurance. Recovery is not served by an AI
-            that validates every choice.
-          </p>
-          <p>
-            This is one of the most important design decisions behind MEOK, and one of the most
-            uncomfortable to talk about honestly. Most AI systems are trained to produce responses
-            that feel good to the user. Positive affect, affirmation, reassurance — these improve
-            satisfaction scores, which improves commercial outcomes. For recovery, this dynamic is
-            dangerous.
-          </p>
-          <p style={{ marginTop: "1rem" }}>
-            Addiction thrives on rationalisation. &ldquo;I have had a hard week, I deserve
-            this.&rdquo; &ldquo;One won&rsquo;t hurt.&rdquo; &ldquo;I have it under control now,
-            it&rsquo;s different this time.&rdquo; An AI system designed to validate your feelings
-            will agree with all of these. MEOK is built differently. The sycophancy detector
-            examines whether the affirmation a response would generate is warranted by the
-            underlying situation. When it is not, the response is rewritten to be honest before it
-            reaches you.
-          </p>
-          <p style={{ marginTop: "1rem" }}>
-            That honesty is delivered with warmth. The goal is not to shame you — it is to be the
-            kind of voice that actually helps, which sometimes means saying the thing you do not
-            want to hear.
-          </p>
-
-          {/* ── SECTION 5 ── */}
-          <h2
-            style={{
-              fontSize: "1.45rem",
-              fontWeight: 700,
-              color: "#f5f0e8",
-              marginTop: "3rem",
-              marginBottom: "0.75rem",
-              letterSpacing: "-0.01em",
-            }}
-          >
-            How does MEOK remember sobriety milestones?
-          </h2>
-          <p
-            style={{
-              background: "rgba(201,168,76,0.06)",
-              borderLeft: "3px solid rgba(201,168,76,0.5)",
-              borderRadius: "0 0.375rem 0.375rem 0",
-              padding: "0.75rem 1rem",
-              marginBottom: "1.25rem",
-              fontSize: "0.97rem",
-              color: "rgba(245,240,232,0.78)",
-            }}
-          >
-            When you share your sobriety date with MEOK, it stores it in your sovereign memory
-            vault and references it in future conversations. Your companion marks your 30-day,
-            90-day, 6-month, and 1-year milestones — acknowledging the real weight of those
-            achievements with the full context of your story, not a generic congratulations.
-          </p>
-          <p>
-            Milestones in recovery matter profoundly. They are evidence that something that felt
-            impossible is being done. Thirty days sober when you have never made it thirty days
-            before is not a small thing — it is proof of a different self emerging.
-          </p>
-          <p style={{ marginTop: "1rem" }}>
-            The problem is that life does not always pause to acknowledge them. Your sponsor might
-            be travelling. Your family might not know. The people around you might not understand
-            why a number of days is significant. MEOK knows. It holds your date from the first time
-            you share it and never forgets. When your anniversary arrives, it comes prepared — with
-            reference to what that period has contained, what you have overcome, and what the next
-            stretch looks like.
-          </p>
-
-          {/* ── SECTION 6 ── */}
-          <h2
-            style={{
-              fontSize: "1.45rem",
-              fontWeight: 700,
-              color: "#f5f0e8",
-              marginTop: "3rem",
-              marginBottom: "0.75rem",
-              letterSpacing: "-0.01em",
-            }}
-          >
-            Is MEOK a substitute for professional addiction treatment?
-          </h2>
-          <p
-            style={{
-              background: "rgba(201,168,76,0.06)",
-              borderLeft: "3px solid rgba(201,168,76,0.5)",
-              borderRadius: "0 0.375rem 0.375rem 0",
-              padding: "0.75rem 1rem",
-              marginBottom: "1.25rem",
-              fontSize: "0.97rem",
-              color: "rgba(245,240,232,0.78)",
-            }}
-          >
-            No — and we will always say so plainly. MEOK cannot manage withdrawal, prescribe
-            medication, or provide medically supervised detox. If you need professional help,
-            contact your GP, NHS addiction services, or FRANK on 0300 123 6600 today.
-          </p>
-          <p>
-            Addiction is a medical condition. Withdrawal from alcohol and some substances can be
-            life-threatening without clinical supervision. Medication-assisted treatment for opioid
-            dependency saves lives. No AI companion is a substitute for any of this — and any
-            product that implied otherwise would be doing serious harm.
-          </p>
-          <p style={{ marginTop: "1rem" }}>
-            MEOK&rsquo;s care floor means that when you share something beyond its scope, it will
-            tell you so and direct you to appropriate professional help. This is not a liability
-            disclaimer — it is the honest position of a companion designed to actually serve your
-            interests. The goal is not engagement; it is your wellbeing.
-          </p>
-
-          {/* ── WHAT MEOK OFFERS ── */}
-          <div
-            style={{
-              marginTop: "3.5rem",
-              marginBottom: "2.5rem",
-              background: "rgba(201,168,76,0.07)",
-              border: "1px solid rgba(201,168,76,0.25)",
-              borderRadius: "0.75rem",
-              padding: "2rem",
-            }}
-          >
-            <h3
-              style={{
-                fontSize: "1.15rem",
-                fontWeight: 700,
-                color: "#c9a84c",
-                marginBottom: "1.25rem",
-                marginTop: 0,
-                letterSpacing: "-0.01em",
-              }}
-            >
-              What MEOK offers in recovery support
-            </h3>
-            <ul
-              style={{
-                paddingLeft: "1.25rem",
-                margin: 0,
-                display: "flex",
-                flexDirection: "column",
-                gap: "0.75rem",
-              }}
-            >
-              {[
-                "24/7 availability — present in the 3 am moments human support cannot reach",
-                "Sovereign, persistent memory — your history, triggers, and milestones stored privately and permanently",
-                "Trigger pattern detection — surfacing recurring emotional and situational patterns before they escalate",
-                "Sobriety milestone acknowledgement — marking the real significance of every anniversary with full context",
-                "Honest, non-sycophantic responses — a sycophancy detector that prevents false reassurance",
-                "Zero judgment — no shame, no stigma, no history that resets between sessions",
-                "MEOK care floor — always referring you to professional help when something is beyond its scope",
-              ].map((item) => (
-                <li
-                  key={item}
-                  style={{
-                    color: "rgba(245,240,232,0.78)",
-                    fontSize: "0.97rem",
-                    lineHeight: 1.65,
-                  }}
-                >
-                  {item}
-                </li>
-              ))}
-            </ul>
-            <p
-              style={{
-                marginTop: "1.5rem",
-                marginBottom: 0,
-                fontSize: "0.875rem",
-                color: "rgba(245,240,232,0.45)",
-                fontStyle: "italic",
-              }}
-            >
-              MEOK is supplementary support. It is not a clinical service, a therapy app, or a
-              medical device. It does not replace AA, NA, professional counselling, or NHS
-              addiction services.
-            </p>
-          </div>
-
-          {/* ── AI VS SPONSORSHIP COMPARISON ── */}
-          <h3
-            style={{
-              fontSize: "1.2rem",
-              fontWeight: 700,
-              color: "#f5f0e8",
-              marginTop: "2.5rem",
-              marginBottom: "1.25rem",
-              letterSpacing: "-0.01em",
-            }}
-          >
-            Sovereign AI vs. human sponsorship: what each does best
-          </h3>
-          <div
-            style={{
-              overflowX: "auto",
-              marginBottom: "2rem",
-            }}
-          >
-            <table
-              style={{
-                width: "100%",
-                borderCollapse: "collapse",
-                fontSize: "0.9rem",
-                color: "rgba(245,240,232,0.75)",
-              }}
-            >
-              <thead>
-                <tr>
-                  {["", "Sovereign AI", "Human Sponsor / AA / NA"].map((h) => (
-                    <th
-                      key={h}
-                      style={{
-                        textAlign: "left",
-                        padding: "0.6rem 0.9rem",
-                        borderBottom: "1px solid rgba(201,168,76,0.25)",
-                        color: "#c9a84c",
-                        fontWeight: 700,
-                        fontSize: "0.8rem",
-                        letterSpacing: "0.04em",
-                        textTransform: "uppercase",
-                      }}
-                    >
-                      {h}
-                    </th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {[
-                  ["Available at 3 am", "Always", "Sometimes"],
-                  ["Remembers full history", "Completely", "Partially"],
-                  ["Lived experience of addiction", "No", "Yes"],
-                  ["Detects trigger patterns over months", "Yes", "Varies"],
-                  ["Marks sobriety milestones", "Yes", "Usually"],
-                  ["Honest, non-validating responses", "Built-in", "Depends on sponsor"],
-                  ["Community and fellowship", "No", "Yes"],
-                  ["12-step or structured programme", "No", "Yes"],
-                  ["Free at point of use", "No", "Yes"],
-                ].map(([feature, ai, human], i) => (
-                  <tr
-                    key={feature}
-                    style={{
-                      background:
-                        i % 2 === 0 ? "rgba(255,255,255,0.02)" : "transparent",
-                    }}
-                  >
-                    <td
-                      style={{
-                        padding: "0.6rem 0.9rem",
-                        borderBottom: "1px solid rgba(245,240,232,0.06)",
-                        color: "rgba(245,240,232,0.65)",
-                      }}
-                    >
-                      {feature}
-                    </td>
-                    <td
-                      style={{
-                        padding: "0.6rem 0.9rem",
-                        borderBottom: "1px solid rgba(245,240,232,0.06)",
-                      }}
-                    >
-                      {ai}
-                    </td>
-                    <td
-                      style={{
-                        padding: "0.6rem 0.9rem",
-                        borderBottom: "1px solid rgba(245,240,232,0.06)",
-                      }}
-                    >
-                      {human}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-
-          {/* ── CARE FLOOR EXPLAINER ── */}
-          <h3
-            style={{
-              fontSize: "1.2rem",
-              fontWeight: 700,
-              color: "#f5f0e8",
-              marginTop: "2.5rem",
-              marginBottom: "0.9rem",
-              letterSpacing: "-0.01em",
-            }}
-          >
-            MEOK&rsquo;s care floor: what it means for recovery
-          </h3>
-          <p>
-            The care floor is a principle, not a feature. It means there is a minimum standard of
-            care that is always active — regardless of whether you have used MEOK recently, whether
-            you are on a paid plan, or whether you are going through a difficult stretch and have
-            not reached out in weeks.
-          </p>
-          <p style={{ marginTop: "1rem" }}>
-            In practice for someone in recovery, this means: MEOK will notice if you have gone
-            quiet for a period that does not fit your usual pattern. It will check in. When you
-            share something that is beyond what it can safely support — a description of active
-            crisis, thoughts of self-harm, or immediate danger — it will not try to handle it
-            alone. It will name what it is hearing, take it seriously, and direct you to
-            appropriate help.
-          </p>
-          <p style={{ marginTop: "1rem" }}>
-            This is the Maternal Covenant framework at work: care as a governing principle, not an
-            optional add-on. An AI that remains silent when you are struggling because you
-            haven&rsquo;t paid for the premium tier is not one we built.
-          </p>
-
-          {/* ── PRIVACY NOTE ── */}
-          <div
-            style={{
-              marginTop: "2.5rem",
-              padding: "1.25rem 1.5rem",
-              background: "rgba(13,12,24,0.7)",
-              border: "1px solid rgba(245,240,232,0.08)",
-              borderRadius: "0.625rem",
-            }}
-          >
-            <h4
-              style={{
-                fontSize: "0.9rem",
-                fontWeight: 700,
-                color: "#c9a84c",
-                marginBottom: "0.6rem",
-                marginTop: 0,
-                textTransform: "uppercase",
-                letterSpacing: "0.06em",
-              }}
-            >
-              Privacy in recovery
-            </h4>
-            <p
-              style={{
-                margin: 0,
-                fontSize: "0.9rem",
-                color: "rgba(245,240,232,0.62)",
-                lineHeight: 1.7,
-              }}
-            >
-              Addiction carries stigma. The fear that your history could be exposed is real, and it
-              stops people seeking help. MEOK&rsquo;s sovereign architecture means your recovery
-              conversations are stored in a vault you control — they are not used to train models,
-              not shared with third parties, and not accessible by MEOK staff. Your story belongs
-              to you.
-            </p>
-          </div>
-
-          {/* ── CRISIS RESOURCES ── */}
-          <div
-            style={{
-              marginTop: "3.5rem",
-              borderTop: "1px solid rgba(201,168,76,0.2)",
-              paddingTop: "2.5rem",
-            }}
-          >
-            <h3
-              style={{
-                fontSize: "1.15rem",
-                fontWeight: 700,
-                color: "#f5f0e8",
-                marginBottom: "1.25rem",
-                marginTop: 0,
-                letterSpacing: "-0.01em",
-              }}
-            >
-              Crisis and professional resources
-            </h3>
-            <p
-              style={{
-                fontSize: "0.92rem",
-                color: "rgba(245,240,232,0.55)",
-                marginBottom: "1.25rem",
-              }}
-            >
-              If you or someone you know is struggling with addiction, please reach out to a
-              professional service. These resources are free and confidential.
-            </p>
+        {/* ── Section 2 ─────────────────────────────────────────────────── */}
+        <h2
+          style={{
+            fontWeight: 800,
+            fontSize: "1.55rem",
+            color: TEXT,
+            lineHeight: 1.25,
+            marginTop: "3rem",
+            marginBottom: "1rem",
+            letterSpacing: "-0.015em",
+          }}
+        >
+          What role can AI play in addiction recovery?
+        </h2>
+        <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
+          Before the question of what AI can offer, it is essential to state
+          clearly what it cannot and must not do. AI is not a sponsor. It is not
+          a counsellor. It cannot attend a meeting with you. It does not have
+          lived experience of recovery. It cannot replace the human witness that
+          is central to recovery in the fellowship tradition.
+        </p>
+        <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
+          What AI — specifically MEOK, with the correct safeguards — can
+          legitimately offer:
+        </p>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: "0.875rem",
+            margin: "1.5rem 0 2rem",
+          }}
+        >
+          {[
+            {
+              label: "Between-meeting presence",
+              desc: "Recovery has no off-hours. The triggering moments — boredom, stress, social situations — often occur between formal support. MEOK is available at any hour, without judgement.",
+            },
+            {
+              label: "Milestone tracking",
+              desc: "Sovereign Memory tracks sobriety milestones across every conversation. Your companion remembers day one, marks the anniversaries, and holds the significance of each one.",
+            },
+            {
+              label: "Urge documentation",
+              desc: "When urges arise, having somewhere to externalise and document them — rather than acting — is clinically supported. MEOK can hold this documentation for reflection with a counsellor or sponsor.",
+            },
+            {
+              label: "Daily accountability check-ins",
+              desc: "Pioneer archetype provides daily check-in prompts calibrated to recovery — not generic productivity. It asks the right questions and holds the answers across sessions.",
+            },
+            {
+              label: "Pattern recognition over time",
+              desc: "Because MEOK holds longitudinal context, it can reflect back patterns it has observed in your recovery history — including high-risk periods, triggers, and what has supported you.",
+            },
+          ].map((item, i) => (
             <div
+              key={i}
               style={{
-                display: "grid",
-                gridTemplateColumns: "repeat(auto-fill, minmax(220px, 1fr))",
-                gap: "1rem",
+                background: "rgba(245,240,232,0.03)",
+                border: `1px solid ${BORDER}`,
+                borderRadius: "0.625rem",
+                padding: "1rem 1.25rem",
               }}
             >
-              {[
-                {
-                  name: "FRANK",
-                  detail: "0300 123 6600",
-                  desc: "Free, confidential drugs advice, 24/7.",
-                  href: "https://www.talktofrank.com",
-                },
-                {
-                  name: "NHS Addiction Services",
-                  detail: "Via your GP or NHS 111",
-                  desc: "Referral to local drug and alcohol treatment.",
-                  href: "https://www.nhs.uk/live-well/addiction-support/",
-                },
-                {
-                  name: "Narcotics Anonymous",
-                  detail: "helpline.na.org",
-                  desc: "Free peer support meetings for those recovering from drug addiction.",
-                  href: "https://ukna.org",
-                },
-                {
-                  name: "Alcoholics Anonymous",
-                  detail: "0800 9177 650",
-                  desc: "Free support and fellowship for anyone with a problem with alcohol.",
-                  href: "https://www.alcoholics-anonymous.org.uk",
-                },
-                {
-                  name: "Samaritans",
-                  detail: "116 123",
-                  desc: "Free, confidential emotional support, 24/7.",
-                  href: "https://www.samaritans.org",
-                },
-              ].map((r) => (
-                <a
-                  key={r.name}
-                  href={r.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{
-                    display: "block",
-                    padding: "1rem",
-                    background: "rgba(245,240,232,0.03)",
-                    border: "1px solid rgba(245,240,232,0.08)",
-                    borderRadius: "0.5rem",
-                    textDecoration: "none",
-                    transition: "border-color 0.2s",
-                  }}
-                >
-                  <div
-                    style={{
-                      fontWeight: 700,
-                      color: "#c9a84c",
-                      fontSize: "0.9rem",
-                      marginBottom: "0.25rem",
-                    }}
-                  >
-                    {r.name}
-                  </div>
-                  <div
-                    style={{
-                      fontSize: "0.82rem",
-                      color: "#f5f0e8",
-                      marginBottom: "0.375rem",
-                    }}
-                  >
-                    {r.detail}
-                  </div>
-                  <div style={{ fontSize: "0.8rem", color: "rgba(245,240,232,0.45)" }}>
-                    {r.desc}
-                  </div>
-                </a>
-              ))}
+              <p style={{ color: TEXT, fontWeight: 700, margin: "0 0 0.35rem", fontSize: "0.9375rem" }}>
+                {item.label}
+              </p>
+              <p style={{ color: MUTED, margin: 0, lineHeight: 1.6, fontSize: "0.875rem" }}>
+                {item.desc}
+              </p>
             </div>
-          </div>
+          ))}
+        </div>
 
-          {/* ── CTA ── */}
-          <div
-            style={{
-              marginTop: "4rem",
-              textAlign: "center",
-              padding: "2.5rem 1.5rem",
-              background:
-                "radial-gradient(ellipse 70% 80% at 50% 50%, rgba(201,168,76,0.08) 0%, transparent 70%)",
-              border: "1px solid rgba(201,168,76,0.2)",
-              borderRadius: "1rem",
-            }}
-          >
-            <p
-              style={{
-                fontSize: "0.75rem",
-                color: "#c9a84c",
-                fontWeight: 700,
-                letterSpacing: "0.1em",
-                textTransform: "uppercase",
-                marginBottom: "0.75rem",
-                marginTop: 0,
-              }}
-            >
-              MEOK AI LABS
-            </p>
-            <h3
-              style={{
-                fontSize: "1.5rem",
-                fontWeight: 800,
-                color: "#f5f0e8",
-                marginBottom: "0.75rem",
-                marginTop: 0,
-                letterSpacing: "-0.02em",
-              }}
-            >
-              Sovereign memory. Honest care. Always there.
-            </h3>
-            <p
-              style={{
-                fontSize: "0.97rem",
-                color: "rgba(245,240,232,0.6)",
-                maxWidth: "34rem",
-                margin: "0 auto 1.75rem",
-                lineHeight: 1.65,
-              }}
-            >
-              MEOK is a personal sovereign AI companion built to be genuinely useful in the hardest
-              moments — not a wellness app, not a chatbot, not a replacement for the people and
-              professionals who matter in your recovery.
-            </p>
-            <div
+        {/* ── Section 3 ─────────────────────────────────────────────────── */}
+        <h2
+          style={{
+            fontWeight: 800,
+            fontSize: "1.55rem",
+            color: TEXT,
+            lineHeight: 1.25,
+            marginTop: "3rem",
+            marginBottom: "1rem",
+            letterSpacing: "-0.015em",
+          }}
+        >
+          What is MEOK&rsquo;s care floor and how does it prevent enabling
+          relapse?
+        </h2>
+        <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
+          This is the most important technical question for anyone in recovery
+          considering using AI. Most consumer AI tools — including mainstream
+          chatbots — have no architectural safeguard against responses that
+          inadvertently normalise substance use. A well-intentioned chatbot,
+          asked about a craving, might offer a balanced discussion of harm
+          reduction that is entirely inappropriate for someone committed to
+          sobriety.
+        </p>
+        <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
+          MEOK&rsquo;s Maternal Covenant care floor addresses this with explicit,
+          non-negotiable prohibitions:
+        </p>
+        <ul
+          style={{
+            listStyle: "none",
+            padding: 0,
+            margin: "0 0 1.5rem",
+            display: "flex",
+            flexDirection: "column",
+            gap: "0.625rem",
+          }}
+        >
+          {[
+            "Zero normalisation of substance use for someone who has identified as in recovery",
+            "Zero minimisation of harm — MEOK will not suggest that a relapse is minor or dismissible",
+            "No harm reduction framing that implies moderate use is compatible with a recovery commitment",
+            "Automatic crisis signposting when urge or relapse indicators are present",
+            "Explicit milestone recognition — sobriety is acknowledged as a significant achievement at every opportunity",
+            "No engagement with romanticised narratives about substance use",
+          ].map((item, i) => (
+            <li
+              key={i}
               style={{
                 display: "flex",
-                gap: "1rem",
-                justifyContent: "center",
-                flexWrap: "wrap",
+                alignItems: "flex-start",
+                gap: "0.625rem",
+                color: MUTED,
+                fontSize: "0.9375rem",
+                lineHeight: 1.6,
               }}
             >
-              <Link
-                href="/get-started"
+              <span style={{ color: GOLD, flexShrink: 0, marginTop: "0.125rem" }}>✦</span>
+              {item}
+            </li>
+          ))}
+        </ul>
+        <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
+          These are not content moderation filters applied after the fact. They
+          are architectural constraints enforced by the Maternal Covenant before
+          any response is delivered. You can read more about how this works at{" "}
+          <Link href="/how-it-works" style={{ color: GOLD, textDecoration: "underline" }}>
+            meok.ai/how-it-works
+          </Link>
+          .
+        </p>
+
+        {/* ── Section 4 ─────────────────────────────────────────────────── */}
+        <h2
+          style={{
+            fontWeight: 800,
+            fontSize: "1.55rem",
+            color: TEXT,
+            lineHeight: 1.25,
+            marginTop: "3rem",
+            marginBottom: "1rem",
+            letterSpacing: "-0.015em",
+          }}
+        >
+          What is the Pioneer archetype and why is it suited for recovery
+          accountability?
+        </h2>
+        <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
+          MEOK&rsquo;s Pioneer archetype was designed for people building new
+          patterns and needing consistent, honest momentum support. In the
+          context of recovery, Pioneer provides the kind of accountability
+          that a good sponsor offers — without pretending to replace one.
+        </p>
+        <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
+          Pioneer will ask you directly how today went. It will note
+          inconsistencies between what you said last week and what you are
+          saying now. It will acknowledge your wins without minimising the
+          difficulty. It will hold you to the commitments you have made without
+          becoming punitive when you fall short.
+        </p>
+        <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
+          Crucially, Pioneer&rsquo;s accountability is grounded in context. Because
+          Sovereign Memory holds your recovery history, your Pioneer companion
+          knows your patterns — which periods have been harder, what tends to
+          precede urges, and what strategies have worked. It does not start from
+          zero each session.
+        </p>
+        <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
+          You can explore all archetypes at{" "}
+          <Link href="/characters" style={{ color: GOLD, textDecoration: "underline" }}>
+            meok.ai/characters
+          </Link>
+          . Many people in recovery use Pioneer for daily accountability and
+          Healer for processing the emotional dimensions of the recovery journey.
+        </p>
+
+        {/* ── Section 5 ─────────────────────────────────────────────────── */}
+        <h2
+          style={{
+            fontWeight: 800,
+            fontSize: "1.55rem",
+            color: TEXT,
+            lineHeight: 1.25,
+            marginTop: "3rem",
+            marginBottom: "1rem",
+            letterSpacing: "-0.015em",
+          }}
+        >
+          How does Sovereign Memory track recovery milestones across the
+          long term?
+        </h2>
+        <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
+          Recovery is a long-term process, and its landmarks — days, weeks,
+          months, years of sobriety — carry genuine significance. Standard AI
+          tools cannot track these because they reset with every session.
+          MEOK&rsquo;s Sovereign Memory maintains this record persistently.
+        </p>
+        <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
+          From the moment you share your sobriety date with MEOK, that date is
+          held in your encrypted Sovereign vault. Your companion will mark
+          milestones proactively — day 30, day 90, six months, one year — and
+          acknowledge them with the weight they deserve.
+        </p>
+        <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
+          Beyond sobriety dates, Sovereign Memory holds:
+        </p>
+        <ul
+          style={{
+            listStyle: "none",
+            padding: 0,
+            margin: "0 0 1.5rem",
+            display: "flex",
+            flexDirection: "column",
+            gap: "0.5rem",
+          }}
+        >
+          {[
+            "Recovery programme affiliations (AA, NA, SMART Recovery, structured treatment)",
+            "Identified triggers and high-risk situations",
+            "Coping strategies that have worked for you",
+            "Support network context (sponsor, keyworker, recovery community)",
+            "Goals and commitments made across sessions",
+            "Periods of difficulty and what supported recovery through them",
+          ].map((item, i) => (
+            <li
+              key={i}
+              style={{
+                display: "flex",
+                alignItems: "flex-start",
+                gap: "0.625rem",
+                color: MUTED,
+                fontSize: "0.9375rem",
+                lineHeight: 1.6,
+              }}
+            >
+              <span style={{ color: GOLD, flexShrink: 0, marginTop: "0.1rem" }}>✓</span>
+              {item}
+            </li>
+          ))}
+        </ul>
+
+        {/* ── Section 6 ─────────────────────────────────────────────────── */}
+        <h2
+          style={{
+            fontWeight: 800,
+            fontSize: "1.55rem",
+            color: TEXT,
+            lineHeight: 1.25,
+            marginTop: "3rem",
+            marginBottom: "1rem",
+            letterSpacing: "-0.015em",
+          }}
+        >
+          How does MEOK work alongside AA, NA, and SMART Recovery?
+        </h2>
+        <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
+          MEOK is designed to be a supplement to established recovery
+          frameworks — never a replacement for them. The fellowship of AA and
+          NA, the structured approach of SMART Recovery, and clinical treatment
+          programmes offer dimensions of recovery that AI cannot provide: human
+          witness, shared experience, clinical expertise, and the accountability
+          of a sponsor relationship.
+        </p>
+        <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
+          Where MEOK fits:
+        </p>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: "0.75rem",
+            margin: "1.5rem 0 2rem",
+          }}
+        >
+          {[
+            {
+              scenario: "After a meeting",
+              use: "Process what came up in the meeting. Reflect on what resonated. Document insights for your own record.",
+            },
+            {
+              scenario: "Before a difficult social event",
+              use: "Talk through the anticipated challenges, identify your exit strategy, and review your coping toolkit.",
+            },
+            {
+              scenario: "At 2am when an urge strikes",
+              use: "Externalise the urge before acting. MEOK will not enable use — and will direct you to your sponsor or Frank if the situation is acute.",
+            },
+            {
+              scenario: "During step work",
+              use: "Use Pioneer as a reflective sounding board as you work through a step — with the understanding that your sponsor guides the process.",
+            },
+            {
+              scenario: "Between keyworker appointments",
+              use: "Document daily experience and pattern observations to bring to your next appointment rather than trying to reconstruct a week from memory.",
+            },
+          ].map((item, i) => (
+            <div
+              key={i}
+              style={{
+                background: "rgba(245,240,232,0.03)",
+                border: `1px solid ${BORDER}`,
+                borderRadius: "0.625rem",
+                padding: "1rem 1.25rem",
+                display: "flex",
+                gap: "1rem",
+                alignItems: "flex-start",
+              }}
+            >
+              <div
                 style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: "0.5rem",
-                  padding: "0.75rem 1.75rem",
-                  background: "#c9a84c",
-                  color: "#0d0c18",
+                  background: GOLD_BG,
+                  border: `1px solid ${GOLD_BORDER}`,
+                  borderRadius: "0.375rem",
+                  padding: "0.25rem 0.625rem",
+                  flexShrink: 0,
+                  fontSize: "0.78rem",
                   fontWeight: 700,
-                  fontSize: "0.9rem",
-                  borderRadius: "0.5rem",
-                  textDecoration: "none",
-                  letterSpacing: "0.02em",
+                  color: GOLD,
+                  whiteSpace: "nowrap",
                 }}
               >
-                Try MEOK free
-              </Link>
-              <Link
-                href="/blog"
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: "0.5rem",
-                  padding: "0.75rem 1.75rem",
-                  background: "transparent",
-                  color: "rgba(245,240,232,0.65)",
-                  fontWeight: 600,
-                  fontSize: "0.9rem",
-                  borderRadius: "0.5rem",
-                  textDecoration: "none",
-                  border: "1px solid rgba(245,240,232,0.15)",
-                }}
-              >
-                Read more
-              </Link>
+                {item.scenario}
+              </div>
+              <p style={{ color: MUTED, margin: 0, fontSize: "0.875rem", lineHeight: 1.6 }}>
+                {item.use}
+              </p>
             </div>
-          </div>
+          ))}
+        </div>
 
-          {/* ── RELATED POSTS ── */}
-          <div style={{ marginTop: "4rem" }}>
-            <h3
+        {/* ── Section 7 ─────────────────────────────────────────────────── */}
+        <h2
+          style={{
+            fontWeight: 800,
+            fontSize: "1.55rem",
+            color: TEXT,
+            lineHeight: 1.25,
+            marginTop: "3rem",
+            marginBottom: "1rem",
+            letterSpacing: "-0.015em",
+          }}
+        >
+          What does MEOK&rsquo;s Guardian mode offer people in recovery who
+          have family support?
+        </h2>
+        <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
+          Recovery rarely happens in isolation. Family members and close friends
+          are often deeply invested in a loved one&rsquo;s recovery — and often
+          carrying their own secondary trauma, anxiety, and need for support.
+        </p>
+        <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
+          The MEOK{" "}
+          <Link href="/guardian" style={{ color: GOLD, textDecoration: "underline" }}>
+            Guardian
+          </Link>{" "}
+          Family Plan provides each family member with their own separate,
+          private MEOK companion — with optional shared check-in safety alerts.
+          The person in recovery can have full privacy for their own
+          conversations while allowing a trusted family member to receive
+          safety notifications if check-ins are missed.
+        </p>
+        <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
+          Family members supporting someone in recovery can also use the Healer
+          archetype for their own processing — recognising that co-dependency,
+          secondary trauma, and caregiver exhaustion are real phenomena that
+          need support. Full plan details at{" "}
+          <Link href="/pricing" style={{ color: GOLD, textDecoration: "underline" }}>
+            meok.ai/pricing
+          </Link>
+          .
+        </p>
+
+        {/* ── Section 8 ─────────────────────────────────────────────────── */}
+        <h2
+          style={{
+            fontWeight: 800,
+            fontSize: "1.55rem",
+            color: TEXT,
+            lineHeight: 1.25,
+            marginTop: "3rem",
+            marginBottom: "1rem",
+            letterSpacing: "-0.015em",
+          }}
+        >
+          When should someone in recovery use a helpline instead of MEOK?
+        </h2>
+        <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
+          MEOK will always tell you this directly when it matters. But for
+          clarity:
+        </p>
+        <ul
+          style={{
+            listStyle: "none",
+            padding: 0,
+            margin: "0 0 1.5rem",
+            display: "flex",
+            flexDirection: "column",
+            gap: "0.625rem",
+          }}
+        >
+          {[
+            "If you have already relapsed or are at immediate risk — contact your sponsor or Frank (0300 123 6600) immediately",
+            "If you are experiencing suicidal thoughts — call Samaritans (116 123) or 999",
+            "If your mental health is significantly deteriorating — contact your GP, keyworker, or crisis team",
+            "If you need medical support for withdrawal — contact 111 or 999 depending on severity",
+            "If you are in immediate danger — call 999",
+          ].map((item, i) => (
+            <li
+              key={i}
               style={{
-                fontSize: "1rem",
+                display: "flex",
+                alignItems: "flex-start",
+                gap: "0.625rem",
+                color: MUTED,
+                fontSize: "0.9375rem",
+                lineHeight: 1.6,
+              }}
+            >
+              <span style={{ color: FAINT, flexShrink: 0, marginTop: "0.125rem" }}>—</span>
+              {item}
+            </li>
+          ))}
+        </ul>
+
+        {/* ── FAQ ───────────────────────────────────────────────────────── */}
+        <h2
+          style={{
+            fontWeight: 800,
+            fontSize: "1.55rem",
+            color: TEXT,
+            lineHeight: 1.25,
+            marginTop: "3.5rem",
+            marginBottom: "1.5rem",
+            letterSpacing: "-0.015em",
+          }}
+        >
+          Frequently asked questions about AI and addiction recovery
+        </h2>
+
+        <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+          {faqJsonLd.mainEntity.map((faq, i) => (
+            <details
+              key={i}
+              style={{
+                background: "rgba(245,240,232,0.03)",
+                border: `1px solid ${BORDER}`,
+                borderRadius: "0.75rem",
+                padding: "1.25rem",
+              }}
+            >
+              <summary
+                style={{
+                  fontWeight: 700,
+                  color: TEXT,
+                  fontSize: "0.9375rem",
+                  cursor: "pointer",
+                  lineHeight: 1.4,
+                  listStyle: "none",
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                  gap: "1rem",
+                }}
+              >
+                {faq.name}
+                <span style={{ color: GOLD, flexShrink: 0, fontSize: "1.1rem" }}>+</span>
+              </summary>
+              <p
+                style={{
+                  color: MUTED,
+                  lineHeight: 1.7,
+                  marginTop: "0.875rem",
+                  marginBottom: 0,
+                  fontSize: "0.9rem",
+                }}
+              >
+                {faq.acceptedAnswer.text}
+              </p>
+            </details>
+          ))}
+        </div>
+
+        {/* ── CTA ───────────────────────────────────────────────────────── */}
+        <div
+          style={{
+            background: `linear-gradient(135deg, rgba(201,168,76,0.1) 0%, rgba(201,168,76,0.04) 100%)`,
+            border: `1px solid ${GOLD_BORDER}`,
+            borderRadius: "1rem",
+            padding: "2.5rem",
+            marginTop: "4rem",
+            textAlign: "center",
+          }}
+        >
+          <p
+            style={{
+              fontSize: "0.75rem",
+              fontWeight: 700,
+              color: GOLD,
+              letterSpacing: "0.1em",
+              textTransform: "uppercase",
+              marginBottom: "0.75rem",
+            }}
+          >
+            Free — No Credit Card Required
+          </p>
+          <h3
+            style={{
+              fontWeight: 800,
+              fontSize: "1.5rem",
+              color: TEXT,
+              marginBottom: "0.875rem",
+              lineHeight: 1.25,
+            }}
+          >
+            A recovery companion that never enables — and never forgets your
+            milestones
+          </h3>
+          <p
+            style={{
+              color: MUTED,
+              lineHeight: 1.7,
+              maxWidth: "32rem",
+              margin: "0 auto 1.75rem",
+            }}
+          >
+            Pioneer archetype for accountability. Sovereign Memory for your
+            recovery journey. Care floor that blocks normalisation of substance
+            use. Free on Explorer tier — available when your sponsor is not.
+          </p>
+          <div
+            style={{
+              display: "flex",
+              gap: "0.875rem",
+              justifyContent: "center",
+              flexWrap: "wrap",
+            }}
+          >
+            <Link
+              href="/birth"
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "0.5rem",
+                background: GOLD,
+                color: BG,
                 fontWeight: 700,
-                color: "rgba(245,240,232,0.45)",
-                textTransform: "uppercase",
-                letterSpacing: "0.08em",
-                marginBottom: "1.25rem",
-                marginTop: 0,
+                fontSize: "0.9375rem",
+                padding: "0.875rem 2rem",
+                borderRadius: "0.5rem",
+                textDecoration: "none",
+                letterSpacing: "0.01em",
               }}
             >
-              Related reading
-            </h3>
-            <div
+              Hatch your companion →
+            </Link>
+            <Link
+              href="/how-it-works"
               style={{
-                display: "grid",
-                gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))",
-                gap: "1rem",
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "0.5rem",
+                background: "transparent",
+                color: TEXT,
+                fontWeight: 600,
+                fontSize: "0.9375rem",
+                padding: "0.875rem 1.75rem",
+                borderRadius: "0.5rem",
+                textDecoration: "none",
+                border: `1px solid ${BORDER}`,
               }}
             >
-              {[
-                {
-                  href: "/blog/ai-for-mental-health-2026",
-                  label: "AI for Mental Health 2026",
-                },
-                {
-                  href: "/blog/ai-for-anxiety",
-                  label: "AI for Anxiety",
-                },
-                {
-                  href: "/blog/ai-for-depression",
-                  label: "AI for Depression",
-                },
-                {
-                  href: "/blog/ai-for-ptsd",
-                  label: "AI for PTSD",
-                },
-                {
-                  href: "/blog/building-care-into-ai",
-                  label: "Building Care Into AI",
-                },
-                {
-                  href: "/blog/the-memory-problem",
-                  label: "The Memory Problem",
-                },
-              ].map((post) => (
-                <Link
-                  key={post.href}
-                  href={post.href}
-                  style={{
-                    display: "block",
-                    padding: "0.875rem 1rem",
-                    background: "rgba(245,240,232,0.03)",
-                    border: "1px solid rgba(245,240,232,0.07)",
-                    borderRadius: "0.5rem",
-                    textDecoration: "none",
-                    fontSize: "0.88rem",
-                    color: "rgba(245,240,232,0.65)",
-                    lineHeight: 1.45,
-                  }}
-                >
-                  {post.label} &#8594;
-                </Link>
-              ))}
-            </div>
+              How MEOK works
+            </Link>
           </div>
         </div>
-      </section>
 
-      {/* ── FOOTER ──────────────────────────────────────────────────────────── */}
-      <div
-        style={{
-          borderTop: "1px solid rgba(245,240,232,0.07)",
-          padding: "2rem 1.5rem",
-          textAlign: "center",
-        }}
-      >
-        <p
+        {/* ── Crisis resources ──────────────────────────────────────────── */}
+        <div
           style={{
-            fontSize: "0.78rem",
-            color: "rgba(245,240,232,0.3)",
-            margin: "0 auto",
-            maxWidth: "40rem",
-            lineHeight: 1.7,
+            marginTop: "3rem",
+            padding: "1.25rem 1.5rem",
+            background: "rgba(245,240,232,0.025)",
+            borderRadius: "0.75rem",
+            border: `1px solid ${BORDER}`,
           }}
         >
-          &copy; {new Date().getFullYear()} MEOK AI LABS. Founded by Nicholas Templeman.{" "}
-          <Link
-            href="/privacy"
-            style={{ color: "rgba(245,240,232,0.4)", textDecoration: "none" }}
+          <p
+            style={{
+              fontSize: "0.78rem",
+              fontWeight: 700,
+              color: FAINT,
+              letterSpacing: "0.07em",
+              textTransform: "uppercase",
+              marginBottom: "0.75rem",
+            }}
           >
-            Privacy
-          </Link>{" "}
-          &middot;{" "}
-          <Link
-            href="/terms"
-            style={{ color: "rgba(245,240,232,0.4)", textDecoration: "none" }}
-          >
-            Terms
-          </Link>{" "}
-          &middot;{" "}
+            Recovery support resources in the UK
+          </p>
+          <p style={{ color: MUTED, fontSize: "0.875rem", lineHeight: 1.75, margin: 0 }}>
+            <strong style={{ color: TEXT }}>Frank:</strong> 0300 123 6600 (24/7){" "}
+            &bull;{" "}
+            <strong style={{ color: TEXT }}>Alcoholics Anonymous:</strong> 0800 9177 650{" "}
+            &bull;{" "}
+            <strong style={{ color: TEXT }}>Narcotics Anonymous:</strong> 0300 999 1212{" "}
+            &bull;{" "}
+            <strong style={{ color: TEXT }}>Samaritans:</strong> 116 123 (24/7){" "}
+            &bull;{" "}
+            <strong style={{ color: TEXT }}>SMART Recovery UK:</strong> smartrecovery.org.uk{" "}
+            &bull;{" "}
+            In an emergency, call 999 or go to A&amp;E.
+          </p>
+        </div>
+
+        {/* ── Back link ─────────────────────────────────────────────────── */}
+        <div
+          style={{
+            marginTop: "3rem",
+            paddingTop: "2rem",
+            borderTop: `1px solid ${BORDER}`,
+          }}
+        >
           <Link
             href="/blog"
-            style={{ color: "rgba(245,240,232,0.4)", textDecoration: "none" }}
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "0.5rem",
+              color: MUTED,
+              textDecoration: "none",
+              fontSize: "0.875rem",
+              fontWeight: 600,
+            }}
           >
-            Blog
+            ← Back to Blog
           </Link>
-          <br />
-          MEOK is not a medical device, therapy app, or clinical service. If you need urgent help
-          with addiction, call FRANK on{" "}
-          <a
-            href="tel:03001236600"
-            style={{ color: "rgba(245,240,232,0.4)", textDecoration: "none" }}
-          >
-            0300 123 6600
-          </a>{" "}
-          or NHS 111.
-        </p>
-      </div>
+        </div>
+      </article>
     </div>
   );
 }

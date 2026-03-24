@@ -742,6 +742,22 @@ export default function AIForMenPage() {
             >
               Meet the Archetypes
             </Link>
+            <Link
+              href="/pricing"
+              style={{
+                display: 'inline-block',
+                padding: '0.75rem 1.75rem',
+                borderRadius: '0.5rem',
+                background: 'transparent',
+                color: MUTED_FAINT,
+                fontWeight: 700,
+                fontSize: '0.9375rem',
+                textDecoration: 'none',
+                border: `1px solid rgba(245,240,232,0.12)`,
+              }}
+            >
+              See Pricing
+            </Link>
           </div>
         </div>
 

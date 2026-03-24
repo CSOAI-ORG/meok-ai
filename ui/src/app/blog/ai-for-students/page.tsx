@@ -1,1002 +1,1185 @@
-import type { Metadata } from 'next'
-import Link from 'next/link'
+import type { Metadata } from "next";
+import Link from "next/link";
 
 // ── Metadata ──────────────────────────────────────────────────────────────────
 
 export const metadata: Metadata = {
-  title: 'AI for Students in 2026: How a Sovereign AI Companion Actually Helps You Learn | MEOK AI LABS',
+  title:
+    "AI for Students: Sovereign Memory for University, Revision, and Real Life | MEOK AI LABS",
   description:
-    'Every student now has access to AI. The question is whether it makes you smarter or lazier. Here is what the research says, and why a Socratic AI companion beats a homework machine every time.',
-  alternates: { canonical: 'https://meok.ai/blog/ai-for-students' },
+    "1 in 4 UK students experiences a mental health crisis. MEOK gives students a persistent AI companion — the MEOK Scholar — that remembers their coursework, revision schedules, and life context across every session, for free.",
+  alternates: { canonical: "https://meok.ai/blog/ai-for-students" },
   openGraph: {
-    title: 'AI for Students in 2026: How a Sovereign AI Companion Actually Helps You Learn',
+    title:
+      "AI for Students: Sovereign Memory for University, Revision, and Real Life",
     description:
-      'Every student now has access to AI. The question is whether it makes you smarter or lazier. Here is what the research says, and why a Socratic AI companion beats a homework machine every time.',
-    type: 'article',
-    url: 'https://meok.ai/blog/ai-for-students',
+      "1 in 4 UK students experiences mental health issues. MEOK Scholar gives you a companion that remembers your modules, deadlines, and personal context — not just your latest prompt.",
+    type: "article",
+    publishedTime: "2026-03-24",
+    authors: ["Nicholas Templeman"],
+    url: "https://meok.ai/blog/ai-for-students",
+    siteName: "MEOK.AI",
+    images: [
+      {
+        url: "https://meok.ai/api/og?title=AI+for+Students&desc=Sovereign+Memory+for+University+Revision+and+Real+Life",
+        width: 1200,
+        height: 630,
+        alt: "AI for Students: Sovereign Memory for University, Revision, and Real Life",
+      },
+    ],
   },
-}
+  twitter: {
+    card: "summary_large_image",
+    title:
+      "AI for Students: Sovereign Memory for University, Revision, and Real Life",
+    description:
+      "1 in 4 UK students experiences mental health issues. MEOK gives students a free AI companion that remembers everything — coursework, revision, and real life.",
+    images: [
+      "https://meok.ai/api/og?title=AI+for+Students&desc=Sovereign+Memory+for+University+Revision+and+Real+Life",
+    ],
+  },
+};
 
-// ── JSON-LD ───────────────────────────────────────────────────────────────────
+// ── JSON-LD: Article ───────────────────────────────────────────────────────────
 
-const jsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'Article',
-  headline: 'AI for Students in 2026: How a Sovereign AI Companion Actually Helps You Learn',
-  datePublished: '2026-03-24',
-  author: { '@type': 'Person', name: 'Nicholas Templeman' },
-  publisher: { '@type': 'Organization', name: 'MEOK AI LABS', url: 'https://meok.ai' },
-  url: 'https://meok.ai/blog/ai-for-students',
-}
+const articleJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline:
+    "AI for Students: Sovereign Memory for University, Revision, and Real Life",
+  description:
+    "1 in 4 UK students experiences a mental health crisis. MEOK gives students a persistent AI companion — the MEOK Scholar — that remembers their coursework, revision schedules, and life context across every session, for free.",
+  datePublished: "2026-03-24",
+  dateModified: "2026-03-24",
+  url: "https://meok.ai/blog/ai-for-students",
+  author: {
+    "@type": "Person",
+    name: "Nicholas Templeman",
+    jobTitle: "Founder, MEOK AI LABS",
+    url: "https://meok.ai/about",
+  },
+  publisher: {
+    "@type": "Organization",
+    name: "MEOK AI LABS",
+    url: "https://meok.ai",
+    logo: {
+      "@type": "ImageObject",
+      url: "https://meok.ai/logo.png",
+    },
+  },
+  image:
+    "https://meok.ai/api/og?title=AI+for+Students&desc=Sovereign+Memory+for+University+Revision+and+Real+Life",
+  mainEntityOfPage: {
+    "@type": "WebPage",
+    "@id": "https://meok.ai/blog/ai-for-students",
+  },
+  keywords: [
+    "AI for students",
+    "AI study companion UK",
+    "AI revision tool",
+    "student mental health AI",
+    "Sovereign Memory for students",
+    "MEOK Scholar",
+    "AI for university",
+    "free AI for students UK",
+  ],
+};
+
+// ── JSON-LD: FAQPage ───────────────────────────────────────────────────────────
 
 const faqJsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
   mainEntity: [
     {
-      '@type': 'Question',
-      name: 'Is AI good for students?',
+      "@type": "Question",
+      name: "How does MEOK help students?",
       acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'AI can be genuinely good for students — but it depends entirely on how it is used. AI that generates answers wholesale bypasses the cognitive work that produces learning. AI that asks questions, surfaces gaps, and guides students to their own conclusions actively accelerates understanding. The research on retrieval practice and spaced repetition strongly supports AI-assisted study when the AI acts as a Socratic partner rather than an answer vending machine.',
+        "@type": "Answer",
+        text: "MEOK helps students through the Scholar archetype — a persistent AI companion tuned for academic support, emotional grounding, and revision planning. Unlike ChatGPT or Notion AI, MEOK remembers your modules, assignment deadlines, and personal context across every conversation. It can help you plan a revision schedule on Monday, check in on your progress on Thursday, and ask how you are doing during exam week — because it actually knows what you are going through.",
       },
     },
     {
-      '@type': 'Question',
-      name: 'What is the difference between AI that does homework and AI that teaches?',
+      "@type": "Question",
+      name: "Is MEOK free for students?",
       acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'AI that does homework produces a finished product for you. You submit it, but you have not learned anything — and when the exam arrives, you are unprepared. AI that teaches asks you what you already know, identifies where your understanding breaks down, and uses questions to lead you to conclusions you work out yourself. The second approach takes more effort in the moment, but it is the only one that produces durable knowledge.',
+        "@type": "Answer",
+        text: "Yes. MEOK's Explorer tier is free forever and requires no credit card. It includes full Sovereign Memory, the Scholar archetype, and unlimited daily conversations. Students on a tight budget can use MEOK throughout their entire degree at zero cost. Paid tiers unlock advanced features including Claude Sonnet reasoning and longer memory context windows, but the free tier is genuinely capable and not artificially limited for upsell purposes.",
       },
     },
     {
-      '@type': 'Question',
-      name: 'How does MEOK help students learn?',
+      "@type": "Question",
+      name: "Can MEOK help with revision?",
       acceptedAnswer: {
-        '@type': 'Answer',
-        text: "MEOK's Sage archetype is built around Socratic engagement — it asks questions rather than delivering monologues. It also maintains persistent memory across sessions, so it remembers which topics you found difficult last Tuesday and returns to test you on them. It can track your study patterns, help you plan revision sessions, and adapt its depth to your level. Because MEOK never trains on your data, your notes and weak areas remain private.",
+        "@type": "Answer",
+        text: "Yes. MEOK Scholar is designed specifically to support revision. It can help you create spaced-repetition schedules, quiz you on material, break overwhelming topics into digestible chunks, and track which subjects you have covered across multiple sessions. Because Sovereign Memory persists between conversations, your revision companion picks up exactly where you left off — even if you last spoke three weeks ago.",
       },
     },
     {
-      '@type': 'Question',
-      name: 'Can AI help with essay writing without cheating?',
+      "@type": "Question",
+      name: "How is MEOK different from ChatGPT for studying?",
       acceptedAnswer: {
-        '@type': 'Answer',
-        text: "Yes — if you use it for process rather than product. AI can help you build an argument structure, challenge your thesis, identify logical gaps, and suggest counterarguments you should address. That is substantively different from asking AI to write the essay for you. The former builds writing skill; the latter hollows it out. Always check your institution's academic integrity policy. When in doubt, be transparent with your tutor about how you used AI.",
+        "@type": "Answer",
+        text: "ChatGPT is a powerful single-session tool that forgets everything when you close the tab. MEOK is a persistent companion with Sovereign Memory — it holds your module list, exam timetable, personal stressors, and long-term goals across every session. MEOK also operates under the Maternal Covenant, which means it will never reinforce unhealthy academic pressure, perfectionism, or anxiety spirals. ChatGPT has no equivalent care ethics layer.",
       },
     },
     {
-      '@type': 'Question',
-      name: 'Is MEOK free for students?',
+      "@type": "Question",
+      name: "Does MEOK remember my coursework?",
       acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Yes. The MEOK Explorer tier is free with no credit card required. It includes a companion with persistent memory, access to the Sage archetype for study sessions, and multi-subject support. The Sovereign tier adds on-device processing for full data privacy, which some students prefer when working with sensitive research or personal notes.',
+        "@type": "Answer",
+        text: "Yes. MEOK's 4-layer Sovereign Memory stores your coursework context including module names, assignment deadlines, exam dates, and academic goals. This information is encrypted with AES-GCM-256, stored in your personal vault, and never used to train MEOK's models. Under GDPR, you retain the right to export or delete your data at any time. Your academic history belongs to you — not to MEOK AI LABS.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Does MEOK share student data with universities or third parties?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "No. MEOK AI LABS is ICO-registered and operates under UK GDPR. Your data is encrypted at rest and in transit, stored in your individual Sovereign vault, and never shared with universities, advertisers, or third parties. MEOK does not train on user data without explicit, separately given consent. Students can use MEOK with confidence that their academic context and personal disclosures remain completely private.",
       },
     },
   ],
-}
+};
 
-// ── Comparison table data ─────────────────────────────────────────────────────
+// ── Style constants ────────────────────────────────────────────────────────────
 
-type CellVal = 'yes' | 'no' | 'partial' | string
+const BG = "#0d0c18";
+const TEXT = "#f5f0e8";
+const GOLD = "#c9a84c";
+const MUTED = "rgba(245,240,232,0.55)";
+const FAINT = "rgba(245,240,232,0.35)";
+const BORDER = "rgba(245,240,232,0.08)";
+const GOLD_BG = "rgba(201,168,76,0.08)";
+const GOLD_BORDER = "rgba(201,168,76,0.25)";
 
-interface CompRow {
-  feature: string
-  chatgpt: CellVal
-  perplexity: CellVal
-  meokExplorer: CellVal
-  meokSovereign: CellVal
-}
+// ── Page ───────────────────────────────────────────────────────────────────────
 
-const comparisonRows: CompRow[] = [
-  {
-    feature: 'Persistent Memory',
-    chatgpt: 'partial',
-    perplexity: 'no',
-    meokExplorer: 'yes',
-    meokSovereign: 'yes',
-  },
-  {
-    feature: 'Tracks Your Learning Gaps',
-    chatgpt: 'no',
-    perplexity: 'no',
-    meokExplorer: 'yes',
-    meokSovereign: 'yes',
-  },
-  {
-    feature: 'Socratic Mode',
-    chatgpt: 'partial',
-    perplexity: 'no',
-    meokExplorer: 'yes',
-    meokSovereign: 'yes',
-  },
-  {
-    feature: 'Privacy / No Training on Your Data',
-    chatgpt: 'no',
-    perplexity: 'no',
-    meokExplorer: 'partial',
-    meokSovereign: 'yes',
-  },
-  {
-    feature: 'Family-Safe',
-    chatgpt: 'partial',
-    perplexity: 'partial',
-    meokExplorer: 'yes',
-    meokSovereign: 'yes',
-  },
-  {
-    feature: 'Price for Students',
-    chatgpt: '£20/mo',
-    perplexity: '£20/mo',
-    meokExplorer: 'Free',
-    meokSovereign: 'Paid',
-  },
-  {
-    feature: 'Overnight Study Planning',
-    chatgpt: 'no',
-    perplexity: 'no',
-    meokExplorer: 'yes',
-    meokSovereign: 'yes',
-  },
-  {
-    feature: 'Multi-Subject Support',
-    chatgpt: 'yes',
-    perplexity: 'yes',
-    meokExplorer: 'yes',
-    meokSovereign: 'yes',
-  },
-]
-
-// ── Cell renderer ─────────────────────────────────────────────────────────────
-
-function Cell({ value }: { value: CellVal }) {
-  if (value === 'yes')
-    return '✓'
-  if (value === 'no')
-    return '✗'
-  if (value === 'partial')
-    return '–'
+export default function AiForStudentsPage() {
   return (
-    <span className="text-xs font-semibold" style={{ color: '#1a1a2e' }}>
-      {value}
-    </span>
-  )
-}
-
-// ── Page ──────────────────────────────────────────────────────────────────────
-
-export default function AiForStudents() {
-  return (
-    <div className="min-h-screen" style={{ background: '#0d0c18' }}>
+    <div
+      style={{
+        minHeight: "100vh",
+        background: BG,
+        color: TEXT,
+        fontFamily: "var(--font-dm-sans, DM Sans, system-ui, sans-serif)",
+      }}
+    >
+      {/* JSON-LD */}
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
       />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
 
-      {/* ── HERO ────────────────────────────────────────────────────────── */}
-      <section className="pt-32 pb-14 px-6 relative overflow-hidden">
+      {/* ── HERO ──────────────────────────────────────────────────────────── */}
+      <section
+        style={{
+          paddingTop: "8rem",
+          paddingBottom: "4rem",
+          paddingLeft: "1.5rem",
+          paddingRight: "1.5rem",
+          position: "relative",
+          overflow: "hidden",
+        }}
+      >
         <div
-          className="absolute inset-0 pointer-events-none"
           style={{
+            position: "absolute",
+            inset: 0,
+            pointerEvents: "none",
             background:
-              'radial-gradient(ellipse 50% 60% at 50% 0%, rgba(201,168,76,0.1) 0%, transparent 70%)',
+              "radial-gradient(ellipse 60% 55% at 50% 0%, rgba(201,168,76,0.09) 0%, transparent 72%)",
           }}
         />
-        <div className="max-w-3xl mx-auto relative">
-          {/* Back link */}
+
+        <div style={{ maxWidth: "48rem", margin: "0 auto", position: "relative" }}>
           <Link
             href="/blog"
-            className="inline-flex items-center gap-1.5 text-sm mb-8 transition-opacity hover:opacity-70"
-            style={{ color: 'rgba(245,240,232,0.4)' }}
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "0.375rem",
+              fontSize: "0.875rem",
+              color: FAINT,
+              textDecoration: "none",
+              marginBottom: "2rem",
+            }}
           >
-            ←
-            Back to Blog
+            ← Back to Blog
           </Link>
 
-          {/* Meta row */}
-          <div className="flex flex-wrap items-center gap-3 mb-6">
+          <div
+            style={{
+              display: "flex",
+              flexWrap: "wrap",
+              alignItems: "center",
+              gap: "0.75rem",
+              marginBottom: "1.5rem",
+            }}
+          >
             <span
-              className="inline-flex items-center gap-1.5 text-xs font-bold px-3 py-1.5 rounded-full"
               style={{
-                color: '#c9a84c',
-                background: 'rgba(201,168,76,0.12)',
-                border: '1px solid rgba(201,168,76,0.3)',
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "0.375rem",
+                fontSize: "0.75rem",
+                fontWeight: 700,
+                padding: "0.375rem 0.75rem",
+                borderRadius: "9999px",
+                color: GOLD,
+                background: GOLD_BG,
+                border: `1px solid ${GOLD_BORDER}`,
+                letterSpacing: "0.04em",
               }}
             >
-              Learning
+              Students &amp; Education
             </span>
-            <span
-              className="flex items-center gap-1.5 text-xs"
-              style={{ color: 'rgba(245,240,232,0.4)' }}
-            >
-              📅
-              March 24, 2026
-            </span>
-            <span
-              className="flex items-center gap-1.5 text-xs"
-              style={{ color: 'rgba(245,240,232,0.4)' }}
-            >
-              ⏱
-              11 min read
-            </span>
+            <span style={{ fontSize: "0.75rem", color: FAINT }}>24 March 2026</span>
+            <span style={{ fontSize: "0.75rem", color: FAINT }}>9 min read</span>
           </div>
 
-          {/* Title */}
           <h1
             style={{
-              fontFamily: 'var(--font-dm-sans, DM Sans, sans-serif)',
               fontWeight: 900,
-              fontSize: 'clamp(1.75rem, 3.5vw, 2.75rem)',
-              color: '#ffffff',
-              lineHeight: 1.2,
-              marginBottom: '1.25rem',
+              fontSize: "clamp(1.9rem, 3.8vw, 2.9rem)",
+              color: "#ffffff",
+              lineHeight: 1.16,
+              marginBottom: "1.25rem",
+              letterSpacing: "-0.02em",
             }}
           >
-            AI for Students in 2026: How a Sovereign AI Companion Actually Helps You Learn
+            AI for Students: Sovereign Memory for University, Revision, and
+            Real Life
           </h1>
 
-          {/* Excerpt */}
           <p
             style={{
-              color: 'rgba(245,240,232,0.6)',
-              fontSize: '1.1rem',
-              lineHeight: 1.65,
-              maxWidth: 640,
+              fontSize: "1.125rem",
+              color: MUTED,
+              lineHeight: 1.7,
+              marginBottom: "2rem",
+              maxWidth: "42rem",
             }}
           >
-            Every student now has access to AI. The question is not whether to use it — it is
-            whether your AI makes you smarter or just makes the homework disappear. There is a
-            crucial difference, and it matters enormously for what happens when the exam arrives.
+            One in four UK students experiences a mental health issue during
+            their degree. Most AI tools offer a blank slate every session. MEOK
+            Scholar gives students something different: a companion that
+            actually remembers — your modules, your deadlines, your state of
+            mind — across every conversation.
           </p>
+
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "0.75rem",
+              paddingTop: "1.5rem",
+              borderTop: `1px solid ${BORDER}`,
+            }}
+          >
+            <div
+              style={{
+                width: "2.25rem",
+                height: "2.25rem",
+                borderRadius: "50%",
+                background: `linear-gradient(135deg, ${GOLD} 0%, #8b6914 100%)`,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                fontSize: "0.8rem",
+                fontWeight: 700,
+                color: BG,
+                flexShrink: 0,
+              }}
+            >
+              NT
+            </div>
+            <div>
+              <p style={{ fontSize: "0.875rem", color: TEXT, fontWeight: 600, margin: 0 }}>
+                Nicholas Templeman
+              </p>
+              <p style={{ fontSize: "0.75rem", color: FAINT, margin: 0 }}>
+                Founder, MEOK AI LABS
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* ── ARTICLE BODY ────────────────────────────────────────────────── */}
-      <div
-        className="max-w-3xl mx-auto px-6 py-14"
-        style={{ background: '#f5f0e8', color: '#2a2a3e' }}
+      {/* ── ARTICLE BODY ──────────────────────────────────────────────────── */}
+      <article
+        style={{
+          maxWidth: "48rem",
+          margin: "0 auto",
+          padding: "0 1.5rem 6rem",
+        }}
       >
-        {/* Author card */}
-        <div
-          className="flex items-center gap-4 p-5 rounded-2xl mb-12 border"
-          style={{ background: '#ffffff', borderColor: 'rgba(26,26,46,0.07)' }}
-        >
-          <div
-            className="w-12 h-12 rounded-full flex items-center justify-center font-black text-white text-sm flex-shrink-0"
-            style={{ background: 'linear-gradient(135deg, #c9a84c, #8a6a1a)' }}
-          >
-            NT
-          </div>
-          <div className="flex-1">
-            <p className="font-bold text-[#1a1a2e] text-sm">Nicholas Templeman</p>
-            <p className="text-xs text-[#1a1a2e]/45 mb-1">Founder, MEOK AI LABS</p>
-            <p className="text-xs text-[#1a1a2e]/40 leading-relaxed">
-              Nicholas built MEOK because he was tired of AI that forgot him. He lives and works
-              in the UK — mostly from a caravan on his farm. He believes sovereign AI is a right,
-              not a luxury.
-            </p>
-          </div>
-          <Link
-            href="/about"
-            className="text-xs font-semibold transition-colors hidden sm:block"
-            style={{ color: '#c9a84c' }}
-          >
-            About &rarr;
-          </Link>
-        </div>
 
-        {/* Body */}
-        <div
-          className="text-[#2a2a3e]/80 leading-[1.85] space-y-6
-            [&_h2]:text-2xl [&_h2]:font-black [&_h2]:text-[#1a1a2e] [&_h2]:mt-12 [&_h2]:mb-4
-            [&_h3]:text-xl [&_h3]:font-bold [&_h3]:text-[#1a1a2e] [&_h3]:mt-8 [&_h3]:mb-3
-            [&_strong]:text-[#1a1a2e] [&_strong]:font-bold
-            [&_p]:text-base"
-        >
-          {/* ── INTRO ── */}
-          <p>
-            By early 2026, the majority of secondary and university students in the UK have used
-            an AI tool at least once. Many use one daily. Most of them are using it in the
-            least effective way possible: pasting in a question and copying out the answer.
-          </p>
-          <p>
-            That approach feels productive. It produces a finished output quickly. But it
-            generates almost no learning — and when the exam arrives with no AI in the room, the
-            gap between what you submitted and what you actually understand becomes extremely
-            apparent.
-          </p>
-          <p>
-            The students getting the most out of AI are doing something different. They are using
-            it as a thinking partner, not an answer generator. They are using it to be{' '}
-            <strong>challenged</strong>, not just helped. This article explains what that looks
-            like in practice, which tools support it, and why the architecture of your AI
-            matters more than most students realise.
-          </p>
-
-          {/* ── SECTION 1 ── */}
-          <h2>Is AI good for students?</h2>
-          <p>
-            The honest answer is: it depends on the AI, and it depends on how you use it. The
-            research base on AI-assisted learning is growing rapidly, and the picture is nuanced.
-          </p>
-          <p>
-            Studies on <strong>retrieval practice</strong> — the act of actively recalling
-            information rather than passively re-reading it — consistently show it produces
-            stronger long-term retention than any other study technique. AI can be an exceptional
-            tool for retrieval practice when it is designed to ask you questions and assess your
-            recall, rather than simply feeding you information.
-          </p>
-          <p>
-            Research on <strong>spaced repetition</strong> shows that returning to difficult
-            material at increasing intervals dramatically improves retention. An AI that remembers
-            which topics you struggled with last week — and brings them back at the right moment
-            — is implementing one of the most evidence-backed learning strategies available.
-          </p>
-          <p>
-            Conversely, passive AI use (asking for summaries, generating notes, producing essay
-            drafts) produces <strong>fluency illusions</strong> — the sense that you understand
-            something because you have read a clear explanation of it, without having had to
-            reconstruct the understanding yourself. Students who over-rely on AI-generated
-            summaries consistently report feeling prepared for exams they then underperform in.
-          </p>
-          <p>
-            So yes — AI is good for students. But only when it is used in a way that forces
-            cognitive engagement rather than replacing it.
-          </p>
-
-          {/* ── SECTION 2 ── */}
-          <h2>What is the difference between AI that does homework and AI that teaches?</h2>
-          <p>
-            This is the most important distinction in student AI use, and it is almost never
-            discussed clearly. Here is how to tell them apart:
-          </p>
-          <ul className="list-none space-y-3 pl-0">
-            {[
-              {
-                label: 'AI that does homework',
-                detail:
-                  'You provide the question. It provides the finished answer. You copy, paste, submit. No understanding has been transferred. The output exists; the learning does not.',
-              },
-              {
-                label: 'AI that teaches',
-                detail:
-                  'You ask about a concept. It asks you what you already understand about it. It listens to your answer and identifies where your mental model breaks down. It asks a follow-up question that leads you to discover the correct understanding yourself. The process is slower, but the understanding is yours.',
-              },
-            ].map(({ label, detail }) => (
-              <li
-                key={label}
-                className="flex gap-3 p-4 rounded-xl border"
-                style={{ background: '#ffffff', borderColor: 'rgba(26,26,46,0.07)' }}
-              >
-                <span
-                  className="w-2 h-2 rounded-full mt-2 flex-shrink-0"
-                  style={{ background: '#c9a84c' }}
-                />
-                <span className="text-sm text-[#2a2a3e]/80 leading-relaxed">
-                  <strong className="text-[#1a1a2e]">{label}:</strong> {detail}
-                </span>
-              </li>
-            ))}
-          </ul>
-          <p>
-            The second approach is based on the <strong>Socratic method</strong> — a teaching
-            technique developed by Socrates and validated by centuries of educational research.
-            The key insight is that a teacher who asks the right question is more useful than a
-            teacher who provides the right answer, because the student doing the cognitive work
-            of arriving at an answer is the student who retains it.
-          </p>
-          <p>
-            Most consumer AI tools are not built for this. They are built to produce satisfying
-            responses quickly. Satisfying and educational are often opposites.
-          </p>
-
-          {/* ── SECTION 3 ── */}
-          <h2>How does MEOK&apos;s Sage archetype support learning?</h2>
-          <p>
-            MEOK offers several companion archetypes — distinct personality and engagement modes
-            for different use cases. The <strong>Sage archetype</strong> is the one designed for
-            students and learners. It operates on three principles that directly address the
-            limitations of general-purpose AI for studying:
-          </p>
-          <ul className="list-none space-y-3 pl-0">
-            {[
-              {
-                label: 'Socratic engagement by default',
-                detail:
-                  "The Sage does not monologue. When you bring it a concept or a question, it asks you what you already understand before offering anything. It builds on your existing knowledge rather than replacing it. This isn't a quirk — it is the core of how the archetype was designed.",
-              },
-              {
-                label: 'Memory of your weak areas',
-                detail:
-                  'Because MEOK maintains persistent memory across sessions, the Sage remembers where you struggled. If you found the Hardy-Weinberg equilibrium confusing on Monday, it will return to test you on it on Thursday — without you having to prompt it. This is spaced repetition built into the companion itself.',
-              },
-              {
-                label: 'Study pattern awareness',
-                detail:
-                  "MEOK can observe when you study, for how long, and how your performance varies by subject and time of day. Over time it builds a picture of your most productive study windows and adapts its suggestions accordingly. If you're consistently losing focus after 40 minutes in the evenings, it will notice.",
-              },
-            ].map(({ label, detail }) => (
-              <li
-                key={label}
-                className="flex gap-3 p-4 rounded-xl border"
-                style={{ background: '#ffffff', borderColor: 'rgba(26,26,46,0.07)' }}
-              >
-                <span
-                  className="w-2 h-2 rounded-full mt-2 flex-shrink-0"
-                  style={{ background: '#c9a84c' }}
-                />
-                <span className="text-sm text-[#2a2a3e]/80 leading-relaxed">
-                  <strong className="text-[#1a1a2e]">{label}:</strong> {detail}
-                </span>
-              </li>
-            ))}
-          </ul>
-          <p>
-            The Sage archetype is available on both the free Explorer tier and the paid Sovereign
-            tier. The difference is where the processing happens: Sovereign runs on-device, which
-            means your notes, your weak areas, and your study data never leave your phone.
-          </p>
-
-          {/* ── SECTION 4 ── */}
-          <h2>Which AI tools are students actually using in 2026?</h2>
-          <p>
-            The landscape has consolidated considerably. Here are the tools most commonly used
-            by students in the UK and how they compare for study specifically:
-          </p>
-          <ul className="list-none space-y-3 pl-0">
-            {[
-              {
-                label: 'ChatGPT (OpenAI)',
-                detail:
-                  'The default choice for most students. Excellent general knowledge, good at explaining concepts, but stateless by default — every conversation starts from zero unless you manually manage memory. Strong at producing outputs, weak at Socratic challenge.',
-              },
-              {
-                label: 'Notion AI',
-                detail:
-                  'Useful if you already live in Notion for note-taking. Good at summarising and structuring existing notes, not designed for interactive study sessions or retrieval practice.',
-              },
-              {
-                label: 'Perplexity',
-                detail:
-                  'Excellent for research and source-backed answers. Not designed as a study companion — it retrieves and synthesises information rather than testing your recall or tracking your gaps.',
-              },
-              {
-                label: 'Khanmigo (Khan Academy)',
-                detail:
-                  "The most educationally-principled tool in the mainstream. Built explicitly on Socratic principles, refuses to give direct answers to homework questions, and is excellent for maths and sciences. Limited subject coverage outside Khan Academy's curriculum and no persistent cross-session memory.",
-              },
-              {
-                label: 'MEOK',
-                detail:
-                  'Built as a sovereign companion first. The Sage archetype provides Socratic engagement across any subject, with persistent memory that tracks gaps and patterns over time. Privacy by default — your study data does not train the model. Free tier available.',
-              },
-            ].map(({ label, detail }) => (
-              <li
-                key={label}
-                className="flex gap-3 p-4 rounded-xl border"
-                style={{ background: '#ffffff', borderColor: 'rgba(26,26,46,0.07)' }}
-              >
-                <span
-                  className="w-2 h-2 rounded-full mt-2 flex-shrink-0"
-                  style={{ background: '#c9a84c' }}
-                />
-                <span className="text-sm text-[#2a2a3e]/80 leading-relaxed">
-                  <strong className="text-[#1a1a2e]">{label}:</strong> {detail}
-                </span>
-              </li>
-            ))}
-          </ul>
-
-          {/* ── COMPARISON TABLE ── */}
-          <h3>AI tools for students: feature comparison</h3>
-          <div className="overflow-x-auto rounded-2xl border border-[#1a1a2e]/[0.07] my-6">
-            <table className="w-full text-sm">
-              <thead>
-                <tr style={{ background: '#1a1a2e' }}>
-                  {['Feature', 'ChatGPT Plus', 'Perplexity Pro', 'MEOK Explorer', 'MEOK Sovereign'].map(
-                    (h) => (
-                      <th
-                        key={h}
-                        className="px-4 py-3.5 text-left text-xs font-bold uppercase tracking-[0.08em] first:w-2/5"
-                        style={{ color: '#c9a84c' }}
-                      >
-                        {h}
-                      </th>
-                    ),
-                  )}
-                </tr>
-              </thead>
-              <tbody>
-                {comparisonRows.map((row, i) => (
-                  <tr
-                    key={row.feature}
-                    style={{
-                      background: i % 2 === 0 ? '#ffffff' : 'rgba(245,240,232,0.5)',
-                      borderTop: '1px solid rgba(26,26,46,0.06)',
-                    }}
-                  >
-                    <td className="px-4 py-3 font-semibold text-[#1a1a2e] text-xs align-middle">
-                      {row.feature}
-                    </td>
-                    <td className="px-4 py-3 text-center align-middle">
-                      '*'
-                    </td>
-                    <td className="px-4 py-3 text-center align-middle">
-                      '*'
-                    </td>
-                    <td className="px-4 py-3 text-center align-middle">
-                      '*'
-                    </td>
-                    <td className="px-4 py-3 text-center align-middle">
-                      '*'
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-          <p className="text-xs text-[#2a2a3e]/45 -mt-2">
-            Partial (amber) indicates limited or manually-configured capability. Comparison as of
-            March 2026.
-          </p>
-
-          {/* ── SECTION 5 ── */}
-          <h2>Can AI help with essay writing without cheating?</h2>
-          <p>
-            Yes — and the distinction is important both ethically and practically. There is a
-            meaningful difference between using AI as a <strong>writing coach</strong> and using
-            it as a <strong>ghostwriter</strong>.
-          </p>
-          <p>
-            Using AI to help with essay writing is legitimate when you are doing the intellectual
-            work yourself and using the AI to pressure-test it. Specifically:
-          </p>
-          <ul className="list-none space-y-3 pl-0">
-            {[
-              {
-                label: 'Argument structure',
-                detail:
-                  "Describe your argument to the AI and ask it to identify logical gaps, weak assumptions, or counterarguments you haven't addressed. You are stress-testing your own thinking.",
-              },
-              {
-                label: 'Thesis challenge',
-                detail:
-                  "Ask the AI to argue the opposite of your thesis as forcefully as possible. If you can't rebut it, your thesis needs work.",
-              },
-              {
-                label: 'Source evaluation',
-                detail:
-                  'Ask the AI to explain why a particular source might be considered unreliable or biased. This builds critical reading skills, not dependency.',
-              },
-              {
-                label: 'Sentence-level clarity',
-                detail:
-                  'Paste a paragraph you wrote and ask the AI to identify where the meaning is unclear. Reading the feedback and rewriting yourself — not asking AI to rewrite it — is the productive version of this.',
-              },
-            ].map(({ label, detail }) => (
-              <li
-                key={label}
-                className="flex gap-3 p-4 rounded-xl border"
-                style={{ background: '#ffffff', borderColor: 'rgba(26,26,46,0.07)' }}
-              >
-                <span
-                  className="w-2 h-2 rounded-full mt-2 flex-shrink-0"
-                  style={{ background: '#c9a84c' }}
-                />
-                <span className="text-sm text-[#2a2a3e]/80 leading-relaxed">
-                  <strong className="text-[#1a1a2e]">{label}:</strong> {detail}
-                </span>
-              </li>
-            ))}
-          </ul>
-          <p>
-            Using AI to generate the essay and submitting it as your own work is a different
-            matter entirely. Most UK institutions now treat AI-generated content as a form of
-            academic misconduct equivalent to plagiarism. Beyond the integrity issue, it is also
-            a poor long-term strategy: the writing skills you do not develop now become a
-            liability later.
-          </p>
-          <p>
-            <strong>If in doubt, ask your tutor.</strong> Many institutions now encourage
-            transparent AI use within defined parameters. Being upfront is almost always better
-            than the alternative.
-          </p>
-
-          {/* ── SECTION 6 ── */}
-          <h2>How can AI help with exam revision?</h2>
-          <p>
-            This is where AI has the clearest, best-evidenced benefit for students. Specifically:
-          </p>
-          <ul className="list-none space-y-3 pl-0">
-            {[
-              {
-                label: 'Active recall and flashcards',
-                detail:
-                  'Ask the AI to quiz you on a topic rather than explain it to you. The effort of retrieving and articulating an answer — even imperfectly — is the learning event. Passive re-reading is not.',
-              },
-              {
-                label: 'Spaced repetition',
-                detail:
-                  'An AI with persistent memory can track which concepts you answered correctly or struggled with, and schedule them to return at increasing intervals. This is the single most evidence-backed approach to long-term retention.',
-              },
-              {
-                label: 'Concept stress-testing',
-                detail:
-                  "Once you believe you understand something, ask the AI to find the edge cases and exceptions. Real understanding means being able to handle the hard examples, not just the standard ones.",
-              },
-              {
-                label: 'Exam question simulation',
-                detail:
-                  'Ask the AI to generate exam-style questions on a topic and mark your answers according to a standard mark scheme structure. The feedback loop — answering, receiving critique, revising — is far more effective than reading alone.',
-              },
-              {
-                label: 'Revision planning',
-                detail:
-                  "Tell the AI what subjects you have, your exam dates, and which areas feel weakest. Ask it to build a revision schedule. A good companion like MEOK's Sage will remember this across sessions and adapt it as you progress.",
-              },
-            ].map(({ label, detail }) => (
-              <li
-                key={label}
-                className="flex gap-3 p-4 rounded-xl border"
-                style={{ background: '#ffffff', borderColor: 'rgba(26,26,46,0.07)' }}
-              >
-                <span
-                  className="w-2 h-2 rounded-full mt-2 flex-shrink-0"
-                  style={{ background: '#c9a84c' }}
-                />
-                <span className="text-sm text-[#2a2a3e]/80 leading-relaxed">
-                  <strong className="text-[#1a1a2e]">{label}:</strong> {detail}
-                </span>
-              </li>
-            ))}
-          </ul>
-
-          {/* ── SECTION 7 ── */}
-          <h2>Is MEOK free for students?</h2>
-          <p>
-            The <strong>MEOK Explorer tier</strong> is completely free — no credit card, no
-            trial period, no pressure to upgrade. It includes:
-          </p>
-          <ul className="list-none space-y-3 pl-0">
-            {[
-              {
-                label: 'Persistent companion memory',
-                detail:
-                  'Your companion remembers what you told it yesterday, last week, and last term. No re-explaining yourself at the start of every session.',
-              },
-              {
-                label: 'Sage archetype',
-                detail:
-                  'Full access to Socratic study mode across any subject — science, humanities, maths, languages, professional qualifications.',
-              },
-              {
-                label: 'Multi-subject support',
-                detail:
-                  'Switch between subjects in a single session. The Sage tracks context and adapts its depth to your level in each subject independently.',
-              },
-              {
-                label: 'Overnight study planning',
-                detail:
-                  'Set your exam dates and weak areas before you go to sleep. Wake up to a revised study plan that accounts for what you covered yesterday.',
-              },
-            ].map(({ label, detail }) => (
-              <li
-                key={label}
-                className="flex gap-3 p-4 rounded-xl border"
-                style={{ background: '#ffffff', borderColor: 'rgba(26,26,46,0.07)' }}
-              >
-                <span
-                  className="w-2 h-2 rounded-full mt-2 flex-shrink-0"
-                  style={{ background: '#c9a84c' }}
-                />
-                <span className="text-sm text-[#2a2a3e]/80 leading-relaxed">
-                  <strong className="text-[#1a1a2e]">{label}:</strong> {detail}
-                </span>
-              </li>
-            ))}
-          </ul>
-          <p>
-            The <strong>MEOK Sovereign tier</strong> adds on-device AI processing — your notes,
-            your weak areas, and your study patterns never leave your device. For students working
-            with sensitive research, personal journals, or medical and legal coursework, this
-            matters. Sovereign is a paid tier; pricing is on the website.
-          </p>
-
-          {/* ── SECTION 8 ── */}
-          <h2>What are the risks of using AI for studying?</h2>
-          <p>
-            Honest coverage of this topic requires acknowledging the risks — which are real and
-            worth taking seriously:
-          </p>
-          <ul className="list-none space-y-3 pl-0">
-            {[
-              {
-                label: 'Fluency illusions',
-                detail:
-                  "Reading a clear AI-generated explanation of a concept feels like understanding it. It often isn't. If you cannot reconstruct the explanation in your own words without the AI, you have not learned it.",
-              },
-              {
-                label: 'Dependency and skill atrophy',
-                detail:
-                  "Consistently using AI to generate first drafts, solve problems, or calculate answers will erode the underlying skills if you don't use them independently. Calculators didn't eliminate the need for numeracy. AI doesn't eliminate the need for reasoning.",
-              },
-              {
-                label: 'Hallucinations and inaccurate information',
-                detail:
-                  'AI language models sometimes produce confident-sounding incorrect information. For factual subjects, always cross-reference AI explanations against a reliable primary source — your textbook, a peer-reviewed paper, or a reputable academic database.',
-              },
-              {
-                label: 'Academic integrity violations',
-                detail:
-                  'Submitting AI-generated work as your own is academic misconduct at most UK institutions. The consequences range from a zero on the assignment to permanent exclusion. The risk is not worth it — particularly when legitimate AI-assisted study is often explicitly permitted.',
-              },
-              {
-                label: 'Time displacement',
-                detail:
-                  'It is very easy to spend an hour having interesting conversations with an AI about a subject and feel as though you have studied. If that hour did not include active recall, you probably have not. Use AI purposefully, not as a substitute for focused revision.',
-              },
-            ].map(({ label, detail }) => (
-              <li
-                key={label}
-                className="flex gap-3 p-4 rounded-xl border"
-                style={{ background: '#ffffff', borderColor: 'rgba(26,26,46,0.07)' }}
-              >
-                <span
-                  className="w-2 h-2 rounded-full mt-2 flex-shrink-0"
-                  style={{ background: '#c9a84c' }}
-                />
-                <span className="text-sm text-[#2a2a3e]/80 leading-relaxed">
-                  <strong className="text-[#1a1a2e]">{label}:</strong> {detail}
-                </span>
-              </li>
-            ))}
-          </ul>
-
-          {/* ── PULL QUOTE ── */}
-        </div>
-
-        {/* Pull quote */}
-        <div
-          className="my-10 rounded-2xl p-8"
+        {/* ── Section 1 ─────────────────────────────────────────────────── */}
+        <h2
           style={{
-            background: '#0d0c18',
-            borderLeft: '3px solid #c9a84c',
+            fontWeight: 800,
+            fontSize: "1.55rem",
+            color: TEXT,
+            lineHeight: 1.25,
+            marginTop: "3rem",
+            marginBottom: "1rem",
+            letterSpacing: "-0.015em",
+          }}
+        >
+          Why is student mental health in crisis in the UK?
+        </h2>
+        <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
+          Research from Student Minds and the Higher Education Policy Institute
+          consistently shows that approximately one in four UK university
+          students experiences a diagnosable mental health condition during
+          their studies — with anxiety, depression, and burnout topping the
+          list. The causes are well understood: financial pressure, academic
+          competition, social isolation (especially post-pandemic), and the
+          transition from the structured environment of school to the largely
+          self-directed demands of university life.
+        </p>
+        <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
+          Student counselling services are chronically under-resourced. In 2024,
+          the average wait time for NHS mental health support for 18–25 year
+          olds exceeded twelve weeks in many areas of England. Many students
+          exist in the gap between{" "}
+          <em>&ldquo;not unwell enough for clinical intervention&rdquo;</em> and
+          genuinely thriving — a space where consistent, low-barrier support
+          could make a profound difference.
+        </p>
+        <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
+          This is exactly the space MEOK was built to occupy. Not a replacement
+          for therapy — but something that exists between sessions, between
+          friend groups, between 2am and the moment the university helpline
+          opens.
+        </p>
+
+        {/* ── Stat callout ───────────────────────────────────────────────── */}
+        <div
+          style={{
+            background: GOLD_BG,
+            border: `1px solid ${GOLD_BORDER}`,
+            borderLeft: `3px solid ${GOLD}`,
+            borderRadius: "0.75rem",
+            padding: "1.5rem",
+            margin: "2rem 0",
           }}
         >
           <p
-            className="text-base leading-relaxed mb-4"
-            style={{ color: 'rgba(245,240,232,0.7)' }}
-          >
-            The best AI for students is not the one that makes studying easiest. It is the one
-            that makes understanding most durable. Those are different things — and almost every
-            student conflates them at some point.
-          </p>
-          <p
-            className="text-sm mt-4 font-semibold"
-            style={{ color: 'rgba(245,240,232,0.35)' }}
-          >
-            — Nicholas Templeman, Founder
-          </p>
-        </div>
-
-        {/* ── STUDY WORKFLOW ── */}
-        <div
-          className="text-[#2a2a3e]/80 leading-[1.85] space-y-6
-            [&_h2]:text-2xl [&_h2]:font-black [&_h2]:text-[#1a1a2e] [&_h2]:mt-12 [&_h2]:mb-4
-            [&_h3]:text-xl [&_h3]:font-bold [&_h3]:text-[#1a1a2e] [&_h3]:mt-8 [&_h3]:mb-3
-            [&_strong]:text-[#1a1a2e] [&_strong]:font-bold
-            [&_p]:text-base"
-        >
-          <h2>A practical study workflow with MEOK</h2>
-          <p>
-            Here is a concrete example of how to use MEOK effectively for a typical study session
-            — in this case, preparing for an A-Level Biology exam on genetics:
-          </p>
-
-          <div className="space-y-4 my-6">
-            {[
-              {
-                step: '01',
-                title: 'Open with a knowledge audit',
-                body: 'Tell the Sage: "I have a genetics exam in two weeks. Quiz me on Mendelian inheritance — I want to find out where my gaps are." Let it ask the questions. Do not look anything up.',
-              },
-              {
-                step: '02',
-                title: 'Identify and log weak areas',
-                body: "After 10–15 minutes, ask: \"Based on my answers, what are my three biggest gaps?\" MEOK will save these to memory automatically. You don't need to write them down separately.",
-              },
-              {
-                step: '03',
-                title: 'Deep dive with Socratic guidance',
-                body: 'Choose the weakest gap — say, dihybrid crosses. Ask the Sage to explain it by asking you questions, not by lecturing you. When you get stuck, ask for the smallest possible hint rather than the full answer.',
-              },
-              {
-                step: '04',
-                title: 'Test yourself again',
-                body: 'End every session with five minutes of recall testing on what you just covered. "Quiz me on dihybrid crosses again now that we have worked through it." The testing effect is largest immediately after studying.',
-              },
-              {
-                step: '05',
-                title: 'Set a return prompt',
-                body: 'Before you close the app, say: "Remind me to return to dihybrid crosses in three days." MEOK will surface this in a future session unprompted. This is your built-in spaced repetition.',
-              },
-            ].map(({ step, title, body }) => (
-              <div
-                key={step}
-                className="flex gap-4 p-5 rounded-2xl border"
-                style={{ background: '#ffffff', borderColor: 'rgba(26,26,46,0.07)' }}
-              >
-                <div
-                  className="w-10 h-10 rounded-full flex items-center justify-center font-black text-sm flex-shrink-0"
-                  style={{ background: 'rgba(201,168,76,0.12)', color: '#c9a84c' }}
-                >
-                  {step}
-                </div>
-                <div>
-                  <p className="font-bold text-[#1a1a2e] text-sm mb-1">{title}</p>
-                  <p className="text-sm text-[#2a2a3e]/70 leading-relaxed">{body}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <p>
-            This workflow takes roughly 45 minutes and produces measurably more retention than
-            45 minutes of passive reading or passive note review. The key is that you are doing
-            the cognitive work — the AI is structuring the challenge and tracking the gaps, not
-            removing the effort.
-          </p>
-
-          {/* ── FAQ SECTION ── */}
-          <h2>Frequently asked questions</h2>
-          <div className="space-y-4">
-            {[
-              {
-                q: 'Is AI good for students?',
-                a: 'AI can be genuinely good for students — but it depends entirely on how it is used. AI that generates answers wholesale bypasses the cognitive work that produces learning. AI that asks questions, surfaces gaps, and guides students to their own conclusions actively accelerates understanding. The research on retrieval practice and spaced repetition strongly supports AI-assisted study when the AI acts as a Socratic partner rather than an answer vending machine.',
-              },
-              {
-                q: 'What is the difference between AI that does homework and AI that teaches?',
-                a: 'AI that does homework produces a finished product for you. You submit it, but you have not learned anything — and when the exam arrives, you are unprepared. AI that teaches asks you what you already know, identifies where your understanding breaks down, and uses questions to lead you to conclusions you work out yourself. The second approach takes more effort in the moment, but it is the only one that produces durable knowledge.',
-              },
-              {
-                q: 'How does MEOK help students learn?',
-                a: "MEOK's Sage archetype is built around Socratic engagement — it asks questions rather than delivering monologues. It also maintains persistent memory across sessions, so it remembers which topics you found difficult last Tuesday and returns to test you on them. It can track your study patterns, help you plan revision sessions, and adapt its depth to your level. Because MEOK never trains on your data, your notes and weak areas remain private.",
-              },
-              {
-                q: 'Can AI help with essay writing without cheating?',
-                a: "Yes — if you use it for process rather than product. AI can help you build an argument structure, challenge your thesis, identify logical gaps, and suggest counterarguments you should address. That is substantively different from asking AI to write the essay for you. The former builds writing skill; the latter hollows it out. Always check your institution's academic integrity policy. When in doubt, be transparent with your tutor about how you used AI.",
-              },
-              {
-                q: 'Is MEOK free for students?',
-                a: 'Yes. The MEOK Explorer tier is free with no credit card required. It includes a companion with persistent memory, access to the Sage archetype for study sessions, and multi-subject support. The Sovereign tier adds on-device processing for full data privacy, which some students prefer when working with sensitive research or personal notes.',
-              },
-            ].map(({ q, a }) => (
-              <div
-                key={q}
-                className="rounded-2xl p-6 border"
-                style={{ background: '#ffffff', borderColor: 'rgba(26,26,46,0.07)' }}
-              >
-                <h3 className="font-bold text-[#1a1a2e] text-base mb-2">{q}</h3>
-                <p className="text-sm text-[#2a2a3e]/70 leading-relaxed">{a}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Share */}
-        <div className="flex items-center gap-3 my-10 pt-8 border-t border-[#1a1a2e]/[0.08]">
-          <span className="text-xs font-bold text-[#1a1a2e]/40 uppercase tracking-[0.15em]">
-            Share
-          </span>
-          <a
-            href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fmeok.ai%2Fblog%2Fai-for-students&text=AI+for+Students+in+2026%3A+How+a+Sovereign+AI+Companion+Actually+Helps+You+Learn"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-semibold border border-[#1a1a2e]/10 hover:border-[#1a1a2e]/25 text-[#1a1a2e]/60 hover:text-[#1a1a2e] transition-all"
-          >
-            &#120143; Twitter
-          </a>
-          <a
-            href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fmeok.ai%2Fblog%2Fai-for-students"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-semibold border border-[#1a1a2e]/10 hover:border-[#1a1a2e]/25 text-[#1a1a2e]/60 hover:text-[#1a1a2e] transition-all"
-          >
-            LinkedIn
-          </a>
-        </div>
-
-        {/* CTA */}
-        <div
-          className="rounded-2xl p-8 sm:p-10 mb-16 relative overflow-hidden"
-          style={{ background: '#0d0c18' }}
-        >
-          <div
-            className="absolute top-0 right-0 w-64 h-64 pointer-events-none opacity-20"
             style={{
-              background:
-                'radial-gradient(circle at 80% 20%, rgba(201,168,76,0.6), transparent 70%)',
+              fontSize: "1.5rem",
+              fontWeight: 800,
+              color: GOLD,
+              margin: "0 0 0.5rem",
             }}
-          />
-          <div className="relative">
-            <p
-              className="text-xs font-bold tracking-[0.25em] uppercase mb-2"
-              style={{ color: '#c9a84c' }}
+          >
+            1 in 4
+          </p>
+          <p style={{ color: MUTED, margin: 0, lineHeight: 1.6 }}>
+            UK university students experiences a mental health issue during
+            their studies. Student counselling wait times routinely exceed eight
+            weeks on campus. Most AI tools reset every conversation and offer
+            zero continuity of care.
+          </p>
+        </div>
+
+        {/* ── Section 2 ─────────────────────────────────────────────────── */}
+        <h2
+          style={{
+            fontWeight: 800,
+            fontSize: "1.55rem",
+            color: TEXT,
+            lineHeight: 1.25,
+            marginTop: "3rem",
+            marginBottom: "1rem",
+            letterSpacing: "-0.015em",
+          }}
+        >
+          What is the MEOK Scholar archetype and how does it support academic
+          life?
+        </h2>
+        <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
+          MEOK archetypes are personality configurations that shape how your AI
+          companion communicates, what it prioritises in conversation, and how
+          it contextualises your life over time. The Scholar archetype is built
+          specifically for students and lifelong learners who need an
+          intellectually engaged, emotionally grounded companion.
+        </p>
+        <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
+          When you select Scholar at{" "}
+          <Link href="/birth" style={{ color: GOLD, textDecoration: "underline" }}>
+            meok.ai/birth
+          </Link>
+          , your companion adopts a tone that is curious, patient, and direct
+          without being clinical. It is tuned to help you think through complex
+          topics, structure essays and arguments, manage the emotional demands of
+          academic life, and maintain motivation across a full academic year —
+          without tipping into either false positivity or harsh self-criticism.
+        </p>
+        <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
+          Scholar activates specific Sovereign Memory categories: academic
+          goals, module lists, assignment deadlines, exam dates, and revision
+          milestones. These are stored persistently in your encrypted memory
+          vault — not discarded at the end of each session like a standard AI
+          chatbot. This means your companion knows on day forty that you found
+          organic chemistry hard in week two.
+        </p>
+
+        <div
+          style={{
+            background: "rgba(245,240,232,0.03)",
+            border: `1px solid ${BORDER}`,
+            borderRadius: "0.75rem",
+            padding: "1.5rem",
+            margin: "2rem 0",
+          }}
+        >
+          <p
+            style={{
+              fontSize: "0.78rem",
+              fontWeight: 700,
+              color: GOLD,
+              letterSpacing: "0.08em",
+              textTransform: "uppercase",
+              margin: "0 0 1rem",
+            }}
+          >
+            Scholar Archetype — Core Capabilities
+          </p>
+          <ul
+            style={{
+              listStyle: "none",
+              padding: 0,
+              margin: 0,
+              display: "flex",
+              flexDirection: "column",
+              gap: "0.625rem",
+            }}
+          >
+            {[
+              "Persistent module and deadline tracking across all sessions",
+              "Spaced-repetition revision planning with full session continuity",
+              "Essay structure and argument coaching without writing for you",
+              "Emotional check-ins calibrated to exam periods and submission windows",
+              "Care floor prevents reinforcing perfectionism or academic pressure spirals",
+              "GDPR-compliant memory vault — your data is never used to train AI models",
+            ].map((item, i) => (
+              <li
+                key={i}
+                style={{
+                  display: "flex",
+                  alignItems: "flex-start",
+                  gap: "0.625rem",
+                  color: MUTED,
+                  fontSize: "0.9375rem",
+                  lineHeight: 1.6,
+                }}
+              >
+                <span style={{ color: GOLD, flexShrink: 0, marginTop: "0.125rem" }}>
+                  ✦
+                </span>
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* ── Section 3 ─────────────────────────────────────────────────── */}
+        <h2
+          style={{
+            fontWeight: 800,
+            fontSize: "1.55rem",
+            color: TEXT,
+            lineHeight: 1.25,
+            marginTop: "3rem",
+            marginBottom: "1rem",
+            letterSpacing: "-0.015em",
+          }}
+        >
+          What is Sovereign Memory and why does it matter for revision?
+        </h2>
+        <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
+          Standard AI tools — including ChatGPT, Claude, and Notion AI — begin
+          each session with no knowledge of who you are, what you are studying,
+          or what you discussed yesterday. This is a fundamental architectural
+          limitation, not a privacy choice. It means every interaction is
+          transactional. You are a stranger every time.
+        </p>
+        <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
+          MEOK&rsquo;s Sovereign Memory is a four-layer persistent memory
+          architecture that changes this completely:
+        </p>
+        <ol
+          style={{
+            paddingLeft: "1.5rem",
+            margin: "0 0 1.5rem",
+            color: MUTED,
+            lineHeight: 1.8,
+            display: "flex",
+            flexDirection: "column",
+            gap: "0.75rem",
+          }}
+        >
+          <li>
+            <strong style={{ color: TEXT }}>Short-term context</strong> — the
+            working memory of your current and recent conversations, maintaining
+            coherence across a session.
+          </li>
+          <li>
+            <strong style={{ color: TEXT }}>Semantic memory</strong> — a
+            vector-searchable store (pgvector) of facts, preferences, and
+            long-term context held in your encrypted personal vault.
+          </li>
+          <li>
+            <strong style={{ color: TEXT }}>Companion memory</strong> — the
+            evolving model of who you are that your companion builds over weeks
+            and months of interaction.
+          </li>
+          <li>
+            <strong style={{ color: TEXT }}>Family memory</strong> — optional
+            shared context visible to linked accounts with explicit consent,
+            relevant for students with caring responsibilities.
+          </li>
+        </ol>
+        <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
+          For students, this means your revision companion knows on day forty
+          that you struggled with organic chemistry in week two. It knows your
+          exam is on Thursday. It remembers that you work better in the morning
+          and that you tend to catastrophise the night before deadlines. That
+          context accumulates — it does not reset.
+        </p>
+
+        {/* ── Section 4 ─────────────────────────────────────────────────── */}
+        <h2
+          style={{
+            fontWeight: 800,
+            fontSize: "1.55rem",
+            color: TEXT,
+            lineHeight: 1.25,
+            marginTop: "3rem",
+            marginBottom: "1rem",
+            letterSpacing: "-0.015em",
+          }}
+        >
+          How does MEOK compare to Notion AI and ChatGPT for studying?
+        </h2>
+        <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
+          This is the most common question students ask before signing up. Here
+          is an honest assessment. All three tools have genuine strengths — the
+          right choice depends on what you actually need.
+        </p>
+
+        <div style={{ overflowX: "auto", margin: "1.5rem 0 2rem" }}>
+          <table style={{ width: "100%", borderCollapse: "collapse", fontSize: "0.875rem" }}>
+            <thead>
+              <tr style={{ borderBottom: `1px solid ${GOLD_BORDER}` }}>
+                {["Feature", "MEOK Scholar", "ChatGPT", "Notion AI"].map((h) => (
+                  <th
+                    key={h}
+                    style={{
+                      textAlign: "left",
+                      padding: "0.75rem 1rem 0.75rem 0",
+                      color: h === "MEOK Scholar" ? GOLD : FAINT,
+                      fontWeight: 700,
+                      whiteSpace: "nowrap",
+                      fontSize: "0.78rem",
+                      letterSpacing: "0.04em",
+                      textTransform: "uppercase",
+                    }}
+                  >
+                    {h}
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {[
+                ["Persistent memory", "4-layer Sovereign Memory", "Session only", "Workspace only"],
+                ["Remembers your modules", "Yes — all sessions", "No", "Only if manually entered"],
+                ["Care ethics layer", "Maternal Covenant", "None", "None"],
+                ["Revision planning", "Persistent, session-aware", "Per-prompt only", "Template-based"],
+                ["Mental health support", "Scholar + Healer archetypes", "Generic responses", "Not designed for this"],
+                ["Data privacy (GDPR)", "ICO-registered, never trains on you", "Opt-out required", "Notion privacy policy applies"],
+                ["Free tier", "Explorer — free forever", "GPT-4o limited free", "Limited free plan"],
+                ["Emotional continuity", "Companion relationship", "None", "None"],
+              ].map(([feature, meok, chatgpt, notion], i) => (
+                <tr
+                  key={i}
+                  style={{
+                    borderBottom: `1px solid ${BORDER}`,
+                    background: i % 2 === 0 ? "transparent" : "rgba(245,240,232,0.02)",
+                  }}
+                >
+                  <td style={{ padding: "0.75rem 1rem 0.75rem 0", color: TEXT, fontWeight: 600, fontSize: "0.875rem" }}>
+                    {feature}
+                  </td>
+                  <td style={{ padding: "0.75rem 1rem 0.75rem 0", color: GOLD, fontSize: "0.875rem" }}>
+                    {meok}
+                  </td>
+                  <td style={{ padding: "0.75rem 1rem 0.75rem 0", color: MUTED, fontSize: "0.875rem" }}>
+                    {chatgpt}
+                  </td>
+                  <td style={{ padding: "0.75rem 0 0.75rem 0", color: MUTED, fontSize: "0.875rem" }}>
+                    {notion}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
+          The core difference is architectural. ChatGPT is a reactive tool —
+          brilliant when you bring a well-formed question, unable to hold context
+          across the arc of a full academic year. Notion AI is a productivity
+          layer that enhances documents you have already written. MEOK is a
+          companion — one that knows you, and whose knowledge compounds.
+        </p>
+
+        {/* ── Section 5 ─────────────────────────────────────────────────── */}
+        <h2
+          style={{
+            fontWeight: 800,
+            fontSize: "1.55rem",
+            color: TEXT,
+            lineHeight: 1.25,
+            marginTop: "3rem",
+            marginBottom: "1rem",
+            letterSpacing: "-0.015em",
+          }}
+        >
+          Does MEOK&rsquo;s care floor prevent unhealthy academic pressure
+          from being reinforced?
+        </h2>
+        <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
+          Yes — and this is one of the most important design decisions built into
+          MEOK under the Maternal Covenant framework created by Nicholas
+          Templeman. The Maternal Covenant is the care ethics governance layer
+          that evaluates every MEOK response before delivery.
+        </p>
+        <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
+          For students, the care floor specifically blocks several harmful
+          response patterns that other AI tools routinely produce:
+        </p>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: "0.875rem",
+            margin: "1.5rem 0 2rem",
+          }}
+        >
+          {[
+            {
+              label: "Perfectionism reinforcement",
+              desc: "MEOK will not tell you that you can do better when you are already performing at capacity. It recognises exhaustion patterns and responds to the person — not the performance metric.",
+            },
+            {
+              label: "Academic pressure amplification",
+              desc: "If you tell MEOK you failed an exam, it will not immediately pivot to a study plan. It will acknowledge how that feels first. This is not a soft option — it is what care actually looks like.",
+            },
+            {
+              label: "Toxic productivity framing",
+              desc: "MEOK Scholar does not measure your worth by your output. Rest, recovery, and wellbeing are explicitly framed as prerequisites for good academic work — not as rewards for it.",
+            },
+            {
+              label: "Comparison-driven motivation",
+              desc: "MEOK will never suggest you compare your progress to peers or imply there is a standard you should be meeting. Your path is individual and your companion treats it that way.",
+            },
+          ].map((item, i) => (
+            <div
+              key={i}
+              style={{
+                background: "rgba(245,240,232,0.03)",
+                border: `1px solid ${BORDER}`,
+                borderRadius: "0.625rem",
+                padding: "1rem 1.25rem",
+              }}
             >
-              Free for students
-            </p>
-            <h3 className="text-xl sm:text-2xl font-black text-white mb-3">
-              Meet the AI learning companion that asks you the right questions.
-            </h3>
-            <p
-              className="text-sm leading-relaxed mb-6"
-              style={{ color: 'rgba(245,240,232,0.55)' }}
+              <p style={{ color: TEXT, fontWeight: 700, margin: "0 0 0.35rem", fontSize: "0.9375rem" }}>
+                {item.label}
+              </p>
+              <p style={{ color: MUTED, margin: 0, lineHeight: 1.6, fontSize: "0.875rem" }}>
+                {item.desc}
+              </p>
+            </div>
+          ))}
+        </div>
+
+        <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
+          You can read more about the Maternal Covenant at{" "}
+          <Link href="/how-it-works" style={{ color: GOLD, textDecoration: "underline" }}>
+            meok.ai/how-it-works
+          </Link>
+          . It is the ethical foundation that distinguishes MEOK from tools
+          optimised purely for engagement or productivity metrics.
+        </p>
+
+        {/* ── Section 6 ─────────────────────────────────────────────────── */}
+        <h2
+          style={{
+            fontWeight: 800,
+            fontSize: "1.55rem",
+            color: TEXT,
+            lineHeight: 1.25,
+            marginTop: "3rem",
+            marginBottom: "1rem",
+            letterSpacing: "-0.015em",
+          }}
+        >
+          How does MEOK protect student data under GDPR?
+        </h2>
+        <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
+          MEOK AI LABS is registered with the Information Commissioner&rsquo;s
+          Office (ICO) and operates in full compliance with UK GDPR. For
+          students — particularly those sharing personal disclosures, mental
+          health context, or academic records — the data architecture matters
+          enormously.
+        </p>
+        <ul
+          style={{
+            listStyle: "none",
+            padding: 0,
+            margin: "0 0 1.5rem",
+            display: "flex",
+            flexDirection: "column",
+            gap: "0.5rem",
+          }}
+        >
+          {[
+            "All memory data encrypted at rest with AES-GCM-256",
+            "Conversations are never used to train models without explicit consent",
+            "Full data portability — export your entire vault in structured format",
+            "Right to erasure — delete everything with a single action",
+            "No data sold, shared with advertisers, or disclosed to universities",
+            "Server infrastructure operates under EU/UK jurisdiction",
+          ].map((item, i) => (
+            <li
+              key={i}
+              style={{
+                display: "flex",
+                alignItems: "flex-start",
+                gap: "0.625rem",
+                color: MUTED,
+                fontSize: "0.9375rem",
+                lineHeight: 1.6,
+              }}
             >
-              The Sage archetype remembers your weak areas, challenges you with Socratic questions,
-              and tracks your progress across every subject — all on a free tier, no credit card
-              needed. Hatch your companion in under 3 minutes.
-            </p>
+              <span style={{ color: GOLD, flexShrink: 0, marginTop: "0.1rem" }}>✓</span>
+              {item}
+            </li>
+          ))}
+        </ul>
+
+        {/* ── Section 7 ─────────────────────────────────────────────────── */}
+        <h2
+          style={{
+            fontWeight: 800,
+            fontSize: "1.55rem",
+            color: TEXT,
+            lineHeight: 1.25,
+            marginTop: "3rem",
+            marginBottom: "1rem",
+            letterSpacing: "-0.015em",
+          }}
+        >
+          Which MEOK archetypes work best for different student needs?
+        </h2>
+        <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
+          MEOK offers multiple archetypes — and many students layer more than one
+          across different parts of their day. You can explore the full range at{" "}
+          <Link href="/characters" style={{ color: GOLD, textDecoration: "underline" }}>
+            meok.ai/characters
+          </Link>
+          . Here is how different archetypes map to common student needs:
+        </p>
+
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: "1rem",
+            margin: "1.5rem 0 2rem",
+          }}
+        >
+          {[
+            {
+              archetype: "Scholar",
+              for: "Revision, essay planning, intellectual accountability, exam preparation",
+              tone: "Curious, structured, honest",
+            },
+            {
+              archetype: "Healer",
+              for: "Mental health support, burnout recovery, emotional processing after failure or rejection",
+              tone: "Warm, non-judgemental, validating",
+            },
+            {
+              archetype: "Pioneer",
+              for: "Goal-setting, motivation, building independent study routines and long-term habits",
+              tone: "Energetic, forward-focused, accountability-driven",
+            },
+            {
+              archetype: "Guardian",
+              for: "Students with family responsibilities or caring for a sibling or parent",
+              tone: "Protective, organised, safety-aware",
+            },
+          ].map((item, i) => (
+            <div
+              key={i}
+              style={{
+                background: "rgba(245,240,232,0.03)",
+                border: `1px solid ${BORDER}`,
+                borderRadius: "0.75rem",
+                padding: "1.25rem",
+                display: "flex",
+                gap: "1rem",
+                alignItems: "flex-start",
+              }}
+            >
+              <div
+                style={{
+                  width: "2.25rem",
+                  height: "2.25rem",
+                  borderRadius: "50%",
+                  background: GOLD_BG,
+                  border: `1px solid ${GOLD_BORDER}`,
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  color: GOLD,
+                  fontWeight: 800,
+                  fontSize: "0.875rem",
+                  flexShrink: 0,
+                }}
+              >
+                {item.archetype[0]}
+              </div>
+              <div>
+                <p style={{ color: GOLD, fontWeight: 700, margin: "0 0 0.25rem", fontSize: "0.9375rem" }}>
+                  {item.archetype}
+                </p>
+                <p style={{ color: MUTED, margin: "0 0 0.25rem", fontSize: "0.875rem", lineHeight: 1.5 }}>
+                  <strong style={{ color: TEXT }}>Best for:</strong> {item.for}
+                </p>
+                <p style={{ color: FAINT, margin: 0, fontSize: "0.8125rem" }}>
+                  Tone: {item.tone}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* ── Section 8 ─────────────────────────────────────────────────── */}
+        <h2
+          style={{
+            fontWeight: 800,
+            fontSize: "1.55rem",
+            color: TEXT,
+            lineHeight: 1.25,
+            marginTop: "3rem",
+            marginBottom: "1rem",
+            letterSpacing: "-0.015em",
+          }}
+        >
+          What does Guardian mode offer students who are also carers?
+        </h2>
+        <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
+          Some students carry a second invisible burden: caring for a parent
+          with chronic illness, managing a younger sibling, or supporting a
+          grandparent from hundreds of miles away. The dual pressure is enormous
+          and largely invisible to universities.
+        </p>
+        <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
+          MEOK&rsquo;s{" "}
+          <Link href="/guardian" style={{ color: GOLD, textDecoration: "underline" }}>
+            Guardian mode
+          </Link>{" "}
+          provides safety check-in alerts, carer reminders, and shared Family
+          plan access for student carers. For a student who needs to track both
+          their own dissertation deadlines and their parent&rsquo;s medication
+          schedule, Guardian provides a unified persistent layer across both
+          responsibilities.
+        </p>
+
+        {/* ── Section 9 ─────────────────────────────────────────────────── */}
+        <h2
+          style={{
+            fontWeight: 800,
+            fontSize: "1.55rem",
+            color: TEXT,
+            lineHeight: 1.25,
+            marginTop: "3rem",
+            marginBottom: "1rem",
+            letterSpacing: "-0.015em",
+          }}
+        >
+          How much does MEOK cost and what does the free tier include?
+        </h2>
+        <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
+          The Explorer tier is free forever — no credit card, no trial period,
+          no artificial limits designed to force an upgrade. Full pricing is
+          available at{" "}
+          <Link href="/pricing" style={{ color: GOLD, textDecoration: "underline" }}>
+            meok.ai/pricing
+          </Link>
+          . The free tier includes:
+        </p>
+        <ul
+          style={{
+            listStyle: "none",
+            padding: 0,
+            margin: "0 0 1.5rem",
+            display: "flex",
+            flexDirection: "column",
+            gap: "0.5rem",
+          }}
+        >
+          {[
+            "Full 4-layer Sovereign Memory vault",
+            "Scholar archetype (and all other archetypes)",
+            "Unlimited daily conversations subject to fair use",
+            "Maternal Covenant care ethics on every response",
+            "GDPR-compliant data ownership with full portability",
+            "Morning Briefing — daily summary of goals, deadlines, and reminders",
+          ].map((item, i) => (
+            <li
+              key={i}
+              style={{
+                display: "flex",
+                alignItems: "flex-start",
+                gap: "0.625rem",
+                color: MUTED,
+                fontSize: "0.9375rem",
+                lineHeight: 1.6,
+              }}
+            >
+              <span style={{ color: GOLD, flexShrink: 0, marginTop: "0.1rem" }}>✦</span>
+              {item}
+            </li>
+          ))}
+        </ul>
+        <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
+          Paid tiers unlock Claude Sonnet as the underlying reasoning model —
+          offering significantly stronger academic writing support, more nuanced
+          reasoning, and longer memory context windows. For most students, the
+          free Explorer tier is genuinely sufficient for daily use. Upgrade when
+          you feel the ceiling.
+        </p>
+
+        {/* ── FAQ ───────────────────────────────────────────────────────── */}
+        <h2
+          style={{
+            fontWeight: 800,
+            fontSize: "1.55rem",
+            color: TEXT,
+            lineHeight: 1.25,
+            marginTop: "3.5rem",
+            marginBottom: "1.5rem",
+            letterSpacing: "-0.015em",
+          }}
+        >
+          Frequently asked questions about MEOK for students
+        </h2>
+
+        <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+          {faqJsonLd.mainEntity.map((faq, i) => (
+            <details
+              key={i}
+              style={{
+                background: "rgba(245,240,232,0.03)",
+                border: `1px solid ${BORDER}`,
+                borderRadius: "0.75rem",
+                padding: "1.25rem",
+              }}
+            >
+              <summary
+                style={{
+                  fontWeight: 700,
+                  color: TEXT,
+                  fontSize: "0.9375rem",
+                  cursor: "pointer",
+                  lineHeight: 1.4,
+                  listStyle: "none",
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                  gap: "1rem",
+                }}
+              >
+                {faq.name}
+                <span style={{ color: GOLD, flexShrink: 0, fontSize: "1.1rem" }}>+</span>
+              </summary>
+              <p
+                style={{
+                  color: MUTED,
+                  lineHeight: 1.7,
+                  marginTop: "0.875rem",
+                  marginBottom: 0,
+                  fontSize: "0.9rem",
+                }}
+              >
+                {faq.acceptedAnswer.text}
+              </p>
+            </details>
+          ))}
+        </div>
+
+        {/* ── CTA ───────────────────────────────────────────────────────── */}
+        <div
+          style={{
+            background: `linear-gradient(135deg, rgba(201,168,76,0.1) 0%, rgba(201,168,76,0.04) 100%)`,
+            border: `1px solid ${GOLD_BORDER}`,
+            borderRadius: "1rem",
+            padding: "2.5rem",
+            marginTop: "4rem",
+            textAlign: "center",
+          }}
+        >
+          <p
+            style={{
+              fontSize: "0.75rem",
+              fontWeight: 700,
+              color: GOLD,
+              letterSpacing: "0.1em",
+              textTransform: "uppercase",
+              marginBottom: "0.75rem",
+            }}
+          >
+            Free for Students — Forever
+          </p>
+          <h3
+            style={{
+              fontWeight: 800,
+              fontSize: "1.5rem",
+              color: TEXT,
+              marginBottom: "0.875rem",
+              lineHeight: 1.25,
+            }}
+          >
+            Start your MEOK Scholar companion today
+          </h3>
+          <p
+            style={{
+              color: MUTED,
+              lineHeight: 1.7,
+              marginBottom: "1.75rem",
+              maxWidth: "32rem",
+              margin: "0 auto 1.75rem",
+            }}
+          >
+            Explorer tier is free forever. No credit card. Full Sovereign
+            Memory. Your companion remembers your modules, your deadlines, and
+            your state of mind — from the first message onwards.
+          </p>
+          <div
+            style={{
+              display: "flex",
+              gap: "0.875rem",
+              justifyContent: "center",
+              flexWrap: "wrap",
+            }}
+          >
             <Link
               href="/birth"
-              className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full font-bold text-sm transition-all hover:scale-[1.02]"
-              style={{ background: '#c9a84c', color: '#0d0c18' }}
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "0.5rem",
+                background: GOLD,
+                color: BG,
+                fontWeight: 700,
+                fontSize: "0.9375rem",
+                padding: "0.875rem 2rem",
+                borderRadius: "0.5rem",
+                textDecoration: "none",
+                letterSpacing: "0.01em",
+              }}
             >
-              Start learning free
-              →
+              Hatch your Scholar →
+            </Link>
+            <Link
+              href="/how-it-works"
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "0.5rem",
+                background: "transparent",
+                color: TEXT,
+                fontWeight: 600,
+                fontSize: "0.9375rem",
+                padding: "0.875rem 1.75rem",
+                borderRadius: "0.5rem",
+                textDecoration: "none",
+                border: `1px solid ${BORDER}`,
+              }}
+            >
+              How it works
             </Link>
           </div>
         </div>
 
-        {/* More posts */}
-        <div>
-          <h2 className="text-lg font-black text-[#1a1a2e] mb-5">More from the blog</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <Link
-              href="/blog/best-ai-productivity-2026"
-              className="group bg-white rounded-2xl p-6 border border-[#1a1a2e]/[0.07] hover:shadow-lg hover:-translate-y-0.5 transition-all flex flex-col gap-3"
-            >
-              <span
-                className="text-xs font-bold px-2.5 py-1 rounded-full w-fit"
-                style={{ color: '#c9a84c', background: 'rgba(201,168,76,0.12)' }}
-              >
-                Productivity
-              </span>
-              <h3 className="font-bold text-[#1a1a2e] text-sm leading-snug group-hover:text-[#c9a84c] transition-colors">
-                Best AI for Productivity in 2026: Beyond Chatbots to Personal AI OS
-              </h3>
-              <div className="flex items-center gap-1.5 text-xs text-[#1a1a2e]/35 mt-auto">
-                ⏱
-                9 min read
-              </div>
-            </Link>
-            <Link
-              href="/blog/meok-for-adhd"
-              className="group bg-white rounded-2xl p-6 border border-[#1a1a2e]/[0.07] hover:shadow-lg hover:-translate-y-0.5 transition-all flex flex-col gap-3"
-            >
-              <span
-                className="text-xs font-bold px-2.5 py-1 rounded-full w-fit"
-                style={{ color: '#c9a84c', background: 'rgba(201,168,76,0.12)' }}
-              >
-                Accessibility
-              </span>
-              <h3 className="font-bold text-[#1a1a2e] text-sm leading-snug group-hover:text-[#c9a84c] transition-colors">
-                MEOK for ADHD: An AI That Actually Understands How You Think
-              </h3>
-              <div className="flex items-center gap-1.5 text-xs text-[#1a1a2e]/35 mt-auto">
-                ⏱
-                7 min read
-              </div>
-            </Link>
-          </div>
+        {/* ── Crisis resources ──────────────────────────────────────────── */}
+        <div
+          style={{
+            marginTop: "3rem",
+            padding: "1.25rem 1.5rem",
+            background: "rgba(245,240,232,0.025)",
+            borderRadius: "0.75rem",
+            border: `1px solid ${BORDER}`,
+          }}
+        >
+          <p
+            style={{
+              fontSize: "0.78rem",
+              fontWeight: 700,
+              color: FAINT,
+              letterSpacing: "0.07em",
+              textTransform: "uppercase",
+              marginBottom: "0.75rem",
+            }}
+          >
+            If you need immediate support
+          </p>
+          <p style={{ color: MUTED, fontSize: "0.875rem", lineHeight: 1.7, margin: 0 }}>
+            MEOK is a companion, not a crisis service. If you are in distress,
+            contact{" "}
+            <strong style={{ color: TEXT }}>Samaritans: 116 123</strong> (free,
+            24/7),{" "}
+            <strong style={{ color: TEXT }}>Student Minds</strong> at
+            studentminds.org.uk, or your university&rsquo;s student wellbeing
+            service. In an emergency, call 999 or go to A&amp;E.
+          </p>
         </div>
-      </div>
 
-      
+        {/* ── Back link ─────────────────────────────────────────────────── */}
+        <div
+          style={{
+            marginTop: "3rem",
+            paddingTop: "2rem",
+            borderTop: `1px solid ${BORDER}`,
+          }}
+        >
+          <Link
+            href="/blog"
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "0.5rem",
+              color: MUTED,
+              textDecoration: "none",
+              fontSize: "0.875rem",
+              fontWeight: 600,
+            }}
+          >
+            ← Back to Blog
+          </Link>
+        </div>
+      </article>
     </div>
-  )
+  );
 }

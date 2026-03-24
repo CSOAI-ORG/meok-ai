@@ -1,133 +1,150 @@
-import type { Metadata } from "next";
-import Link from "next/link";
+import type { Metadata } from 'next'
+import Link from 'next/link'
 
-// ── Metadata ──────────────────────────────────────────────────────────────────
+// ── Metadata ───────────────────────────────────────────────────────────────────
 
 export const metadata: Metadata = {
-  title: "MEOK vs Google Gemini: Why a Sovereign AI Companion Beats a General AI Assistant | MEOK AI LABS",
+  title: 'MEOK vs Google Gemini: Which AI Actually Remembers You? | MEOK AI LABS',
   description:
-    "Google Gemini is powerful — but it trains on your data, has no persistent memory, and you're a user of Google's product, not the owner of your AI. Here's why MEOK is the best Gemini alternative in 2026.",
-  alternates: { canonical: "https://meok.ai/blog/meok-vs-gemini" },
+    'Gemini 2.0 is impressive — but it resets every session. MEOK\'s 4-layer Sovereign Memory persists indefinitely, never trains on your data, and is built for care, not engagement. Full comparison with pricing.',
+  alternates: { canonical: 'https://meok.ai/blog/meok-vs-gemini' },
   openGraph: {
-    title: "MEOK vs Google Gemini: Why a Sovereign AI Companion Beats a General AI Assistant",
+    title: 'MEOK vs Google Gemini: Which AI Actually Remembers You?',
     description:
-      "Google Gemini is powerful — but it trains on your data, has no persistent memory, and you're a user of Google's product, not the owner of your AI. Here's why MEOK is the best Gemini alternative in 2026.",
-    type: "article",
-    publishedTime: "2026-03-24",
-    authors: ["Nicholas Templeman"],
-    url: "https://meok.ai/blog/meok-vs-gemini",
-    siteName: "MEOK.AI",
+      'Gemini 2.0 vs MEOK: memory persistence, data training, care alignment, privacy, UK GDPR compliance, and pricing — a full honest comparison.',
+    type: 'article',
+    publishedTime: '2026-03-24',
+    authors: ['Nicholas Templeman'],
+    url: 'https://meok.ai/blog/meok-vs-gemini',
+    siteName: 'MEOK.AI',
     images: [
       {
-        url: "https://meok.ai/api/og?title=MEOK+vs+Google+Gemini%3A+Sovereign+AI+Companion+vs+General+AI+Assistant&desc=Gemini+is+powerful+but+it+trains+on+your+data.+MEOK+never+does.",
+        url: 'https://meok.ai/api/og?title=MEOK+vs+Google+Gemini%3A+Which+AI+Actually+Remembers+You%3F&desc=Memory+persistence%2C+privacy%2C+care+alignment+comparison',
         width: 1200,
         height: 630,
-        alt: "MEOK vs Google Gemini: Why a Sovereign AI Companion Beats a General AI Assistant",
+        alt: 'MEOK vs Google Gemini: Which AI Actually Remembers You? | MEOK AI LABS',
       },
     ],
   },
   twitter: {
-    card: "summary_large_image",
-    title: "MEOK vs Google Gemini: Why a Sovereign AI Companion Beats a General AI Assistant",
+    card: 'summary_large_image',
+    title: 'MEOK vs Google Gemini: Which AI Actually Remembers You?',
     description:
-      "Gemini is embedded in Google's ecosystem — and your data helps train it. MEOK is yours. Here's the honest comparison.",
+      'Gemini resets every session. MEOK remembers everything — and never trains on your data. Full comparison: memory, privacy, care, pricing.',
     images: [
-      "https://meok.ai/api/og?title=MEOK+vs+Google+Gemini%3A+Sovereign+AI+Companion+vs+General+AI+Assistant&desc=Gemini+is+powerful+but+it+trains+on+your+data.+MEOK+never+does.",
+      'https://meok.ai/api/og?title=MEOK+vs+Google+Gemini%3A+Which+AI+Actually+Remembers+You%3F&desc=Memory+persistence%2C+privacy%2C+care+alignment+comparison',
     ],
   },
-};
+}
 
-// ── JSON-LD ───────────────────────────────────────────────────────────────────
+// ── JSON-LD: Article ───────────────────────────────────────────────────────────
 
 const articleJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Article",
-  headline:
-    "MEOK vs Google Gemini: Why a Sovereign AI Companion Beats a General AI Assistant",
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: 'MEOK vs Google Gemini: Which AI Actually Remembers You?',
   description:
-    "Google Gemini is powerful — but it trains on your data, has no persistent memory, and you're a user of Google's product, not the owner of your AI. Here's why MEOK is the best Gemini alternative in 2026.",
-  datePublished: "2026-03-24",
-  url: "https://meok.ai/blog/meok-vs-gemini",
+    'A detailed comparison of MEOK and Google Gemini 2.0 across memory persistence, data training practices, care alignment, pricing, privacy, and UK GDPR compliance.',
+  datePublished: '2026-03-24',
+  dateModified: '2026-03-24',
+  url: 'https://meok.ai/blog/meok-vs-gemini',
   author: {
-    "@type": "Person",
-    name: "Nicholas Templeman",
-    jobTitle: "Founder, MEOK AI LABS",
-    url: "https://meok.ai/about",
+    '@type': 'Person',
+    name: 'Nicholas Templeman',
+    jobTitle: 'Founder, MEOK AI LABS',
+    url: 'https://meok.ai/about',
   },
   publisher: {
-    "@type": "Organization",
-    name: "MEOK AI LABS",
-    url: "https://meok.ai",
+    '@type': 'Organization',
+    name: 'MEOK AI LABS',
+    url: 'https://meok.ai',
   },
-};
+  mainEntityOfPage: {
+    '@type': 'WebPage',
+    '@id': 'https://meok.ai/blog/meok-vs-gemini',
+  },
+}
+
+// ── JSON-LD: FAQPage ───────────────────────────────────────────────────────────
 
 const faqJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
   mainEntity: [
     {
-      "@type": "Question",
-      name: "What is the difference between MEOK and Google Gemini?",
+      '@type': 'Question',
+      name: 'Does Gemini remember previous conversations?',
       acceptedAnswer: {
-        "@type": "Answer",
-        text: "Google Gemini is a multimodal AI assistant built into Google's product ecosystem — powerful at factual queries and Workspace tasks, but stateless (no persistent companion memory), and Google may use your conversations to improve its products. MEOK is a sovereign AI operating system: it accumulates memory across every session, never trains on your data, offers a family safety layer via Guardian, runs overnight agents, and puts you in ownership of your AI rather than as a user of Google's.",
+        '@type': 'Answer',
+        text: 'Google Gemini has a limited memory feature in Gemini Advanced that can retain some user preferences across sessions, but this is shallow and opt-in. Standard Gemini sessions are stateless — the model has no recollection of previous conversations. MEOK uses a 4-layer Sovereign Memory architecture that persists your full conversation history indefinitely, encrypted and under your sole control.',
       },
     },
     {
-      "@type": "Question",
-      name: "Does Google Gemini train on my data?",
+      '@type': 'Question',
+      name: 'Is MEOK better than Gemini?',
       acceptedAnswer: {
-        "@type": "Answer",
-        text: "By default, Google may use conversations with Gemini to improve its products. An opt-out exists in Gemini's activity settings, but it is not surfaced prominently. Google's privacy policy gives it broad rights to use interactions for model training and product improvement. MEOK's Maternal Covenant prohibits training on your data by default — no opt-out required.",
+        '@type': 'Answer',
+        text: 'It depends entirely on use case. Gemini 2.0 is better for real-time information retrieval, coding assistance, multimodal tasks, and integration with Google Workspace. MEOK is better for personal support, emotional wellbeing, longitudinal goal-tracking, and any use case where persistent memory and care-aligned responses matter. They serve different needs.',
       },
     },
     {
-      "@type": "Question",
-      name: "Is there a free alternative to Gemini Advanced?",
+      '@type': 'Question',
+      name: 'Does Google use Gemini conversations for training?',
       acceptedAnswer: {
-        "@type": "Answer",
-        text: "Yes. MEOK Explorer is free forever and includes persistent companion memory, family-safe conversation defaults, and multi-model routing. It runs on DeepSeek at no cost. MEOK Sovereign, which provides overnight agents, Guardian family protection, and full AES-GCM-256 encrypted memory vaults, is a paid tier — but the core sovereign experience starts free.",
+        '@type': 'Answer',
+        text: 'According to Google\'s privacy policy, Gemini conversations may be reviewed by human annotators and used to improve Google\'s products and services, including model training, unless you have a Google Workspace paid account with the relevant data protections enabled. MEOK\'s Sovereign Memory architecture means your conversations are never used for training — that is a constitutional constraint, not a policy setting.',
       },
     },
     {
-      "@type": "Question",
-      name: "Can Google Gemini protect my children online?",
+      '@type': 'Question',
+      name: 'Which AI has better memory — MEOK or Gemini?',
       acceptedAnswer: {
-        "@type": "Answer",
-        text: "Gemini has content filters but no purpose-built family safety layer. There is no configurable child mode, no parental oversight dashboard, and no real-time monitoring of age-appropriate content for named child profiles. MEOK Guardian provides exactly this: parent-configurable safe modes, topic filters, and companion behaviour rules set per child in your household.",
+        '@type': 'Answer',
+        text: 'MEOK has significantly deeper memory than Gemini. MEOK\'s 4-layer Sovereign Memory stores episodic conversation history, extracted factual knowledge, identified patterns and preferences, and longitudinal emotional context — all encrypted and persistent indefinitely. Gemini\'s memory is shallow preference storage that does not persist full conversation history across sessions.',
       },
     },
     {
-      "@type": "Question",
-      name: "What is the best AI assistant for privacy in 2026?",
+      '@type': 'Question',
+      name: 'Is Gemini free?',
       acceptedAnswer: {
-        "@type": "Answer",
-        text: "For users who prioritise data sovereignty, MEOK is architecturally superior to Google Gemini. MEOK is UK GDPR compliant, ICO registered, encrypts all memory at rest with AES-GCM-256, routes sensitive processing locally via Ollama, and contractually prohibits training on user data. Gemini's privacy depends on Google account settings and how actively you manage your data activity controls.",
+        '@type': 'Answer',
+        text: 'Gemini has a free tier with access to the standard model. Gemini Advanced — which includes more capable models and limited memory features — costs approximately £19/month as part of Google One AI Premium. MEOK also has a free Explorer tier. MEOK\'s paid plans start at comparable pricing but include full Sovereign Memory, whereas Gemini\'s memory features are limited even on paid plans.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Is MEOK UK GDPR compliant?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'MEOK is designed with UK GDPR compliance as a core architectural requirement, not an afterthought. Your data is stored in encrypted sovereign vaults, never shared with third parties for advertising or training, and fully exportable and deletable on request. Google\'s Gemini data practices are subject to Google\'s broader privacy policy, which involves data processing for service improvement.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'When should I use Gemini instead of MEOK?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Use Gemini when you need real-time web search, deep integration with Google Workspace (Docs, Sheets, Gmail), coding assistance, or multimodal image and document analysis. Use MEOK when you need persistent personal memory, care-aligned emotional support, accountability tracking, or an AI that genuinely knows your history and never uses it against you.',
       },
     },
   ],
-};
+}
 
-// ── Comparison data ───────────────────────────────────────────────────────────
+// ── Style constants ────────────────────────────────────────────────────────────
 
-const comparisonRows: [string, string, string, string][] = [
-  ["Persistent companion memory", "✗ None", "✗ None", "✓ 4-layer vault"],
-  ["Data used for training", "✓ Default on", "✓ Default on", "✗ Never"],
-  ["Overnight agents", "✗", "✗", "✓ Sovereign tier"],
-  ["Family safety / Guardian", "✗ Filters only", "✗ Filters only", "✓ Full Guardian layer"],
-  ["Multi-model routing", "✗ Gemini only", "✗ Gemini only", "✓ Claude, GPT-4o, DeepSeek"],
-  ["Companion relationship", "✗ Tool", "✗ Tool", "✓ Named, evolving"],
-  ["Price", "Free", "~£19/mo", "Free + Sovereign tier"],
-  ["Data ownership", "Google", "Google", "You"],
-  ["GDPR / ICO compliance", "GDPR (Google)", "GDPR (Google)", "UK GDPR, ICO registered"],
-  ["Portability", "Limited export", "Limited export", "✓ Full vault export"],
-];
+const GOLD = '#c9a84c'
+const TEXT = '#f5f0e8'
+const BG = '#0d0c18'
+const MUTED = 'rgba(245,240,232,0.55)'
+const MUTED_DIM = 'rgba(245,240,232,0.62)'
+const MUTED_FAINT = 'rgba(245,240,232,0.38)'
+const GOOGLE_BLUE = '#4285f4'
 
-// ── Page ──────────────────────────────────────────────────────────────────────
+// ── Page ───────────────────────────────────────────────────────────────────────
 
-export default function MeokVsGemini() {
+export default function MeokVsGeminiPage() {
   return (
-    <div className="min-h-screen" style={{ background: "#f5f0e8" }}>
+    <div style={{ minHeight: '100vh', background: BG, color: TEXT }}>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
@@ -137,662 +154,722 @@ export default function MeokVsGemini() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
 
-      {/* ── DARK HERO ───────────────────────────────────────────────────── */}
+      {/* ── HERO ──────────────────────────────────────────────────────────────── */}
       <section
-        className="pt-32 pb-14 px-6 relative overflow-hidden"
-        style={{ background: "#0d0c18" }}
+        style={{
+          paddingTop: '8rem',
+          paddingBottom: '3.5rem',
+          paddingLeft: '1.5rem',
+          paddingRight: '1.5rem',
+          position: 'relative',
+          overflow: 'hidden',
+        }}
       >
         <div
-          className="absolute inset-0 pointer-events-none"
           style={{
+            position: 'absolute',
+            inset: 0,
+            pointerEvents: 'none',
             background:
-              "radial-gradient(ellipse 50% 60% at 50% 0%, rgba(201,168,76,0.1) 0%, transparent 70%)",
+              'radial-gradient(ellipse 60% 50% at 50% 0%, rgba(201,168,76,0.07) 0%, transparent 68%)',
           }}
         />
-        <div className="max-w-3xl mx-auto relative">
-          {/* Back link */}
+        <div style={{ maxWidth: '48rem', margin: '0 auto', position: 'relative' }}>
           <Link
             href="/blog"
-            className="inline-flex items-center gap-1.5 text-sm mb-8 transition-colors hover:opacity-90"
-            style={{ color: "rgba(245,240,232,0.4)" }}
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '0.375rem',
+              fontSize: '0.875rem',
+              color: MUTED_FAINT,
+              marginBottom: '2rem',
+              textDecoration: 'none',
+            }}
           >
-            ←
-            Back to Blog
+            &#8592; Back to Blog
           </Link>
 
-          {/* Meta row */}
-          <div className="flex flex-wrap items-center gap-3 mb-6">
+          <div
+            style={{
+              display: 'flex',
+              flexWrap: 'wrap',
+              alignItems: 'center',
+              gap: '0.75rem',
+              marginBottom: '1.5rem',
+            }}
+          >
             <span
-              className="inline-flex items-center gap-1.5 text-xs font-bold px-3 py-1.5 rounded-full"
               style={{
-                color: "#c9a84c",
-                background: "rgba(201,168,76,0.12)",
-                border: "1px solid rgba(201,168,76,0.3)",
+                fontSize: '0.7rem',
+                fontWeight: 700,
+                padding: '0.375rem 0.75rem',
+                borderRadius: '9999px',
+                color: GOLD,
+                background: 'rgba(201,168,76,0.12)',
+                border: '1px solid rgba(201,168,76,0.3)',
+                letterSpacing: '0.05em',
+                textTransform: 'uppercase' as const,
               }}
             >
               AI Comparison
             </span>
-            <span
-              className="flex items-center gap-1.5 text-xs"
-              style={{ color: "rgba(245,240,232,0.4)" }}
-            >
-              📅
-              24 March 2026
-            </span>
-            <span
-              className="flex items-center gap-1.5 text-xs"
-              style={{ color: "rgba(245,240,232,0.4)" }}
-            >
-              ⏱
-              8 min read
-            </span>
+            <span style={{ fontSize: '0.75rem', color: MUTED_FAINT }}>March 24, 2026</span>
+            <span style={{ fontSize: '0.75rem', color: MUTED_FAINT }}>13 min read</span>
           </div>
 
-          {/* Title */}
           <h1
             style={{
-              fontFamily: "var(--font-dm-sans, DM Sans, sans-serif)",
               fontWeight: 900,
-              fontSize: "clamp(1.75rem, 3.5vw, 2.75rem)",
-              color: "#ffffff",
-              lineHeight: 1.2,
-              marginBottom: "1.25rem",
+              fontSize: 'clamp(1.75rem, 3.5vw, 2.85rem)',
+              color: '#fff',
+              lineHeight: 1.15,
+              marginBottom: '1.25rem',
+              letterSpacing: '-0.01em',
             }}
           >
-            MEOK vs Google Gemini: Why a Sovereign AI Companion Beats a General AI
-            Assistant
+            MEOK vs Google Gemini: Which AI Actually Remembers You?
           </h1>
 
-          {/* Excerpt */}
           <p
             style={{
-              color: "rgba(245,240,232,0.6)",
-              fontSize: "1.1rem",
-              lineHeight: 1.65,
-              maxWidth: 640,
+              color: MUTED,
+              fontSize: '1.1rem',
+              lineHeight: 1.7,
+              maxWidth: '42rem',
+              margin: 0,
             }}
           >
-            Gemini is powerful. It is multimodal, fast, and embedded inside nearly every
-            Google product you already use. But it doesn&apos;t know you — and by default,
-            your conversations help train Google&apos;s models. Here&apos;s what that means,
-            and why the difference between a general AI assistant and a sovereign AI companion
-            matters more than benchmarks.
+            Gemini 2.0 is Google&#39;s most capable model yet. But it forgets you the moment you close
+            the tab. MEOK&#39;s 4-layer Sovereign Memory persists indefinitely — and never uses your
+            data to train a model. A full, honest comparison.
           </p>
         </div>
       </section>
 
-      {/* ── ARTICLE BODY ────────────────────────────────────────────────── */}
-      <div className="max-w-3xl mx-auto px-6 py-14">
-        {/* Author card */}
+      {/* ── ARTICLE BODY ──────────────────────────────────────────────────────── */}
+      <div style={{ maxWidth: '48rem', margin: '0 auto', padding: '3.5rem 1.5rem 0' }}>
+
+        {/* Fairness disclaimer */}
         <div
-          className="flex items-center gap-4 p-5 rounded-2xl mb-12 border"
-          style={{ background: "#ffffff", borderColor: "rgba(26,26,46,0.07)" }}
+          style={{
+            display: 'flex',
+            gap: '1rem',
+            padding: '1.25rem 1.5rem',
+            borderRadius: '1rem',
+            marginBottom: '2.5rem',
+            background: 'rgba(201,168,76,0.07)',
+            border: '1px solid rgba(201,168,76,0.2)',
+          }}
         >
           <div
-            className="w-12 h-12 rounded-full flex items-center justify-center font-black text-white text-sm flex-shrink-0"
-            style={{ background: "linear-gradient(135deg, #c9a84c, #8a6a1a)" }}
+            style={{
+              width: '3px',
+              borderRadius: '9999px',
+              flexShrink: 0,
+              background: GOLD,
+              alignSelf: 'stretch',
+            }}
+          />
+          <div>
+            <p style={{ fontWeight: 700, fontSize: '0.8125rem', color: GOLD, marginBottom: '0.375rem' }}>
+              Fairness note
+            </p>
+            <p style={{ fontSize: '0.8125rem', color: MUTED, lineHeight: 1.65, margin: 0 }}>
+              This comparison is written by MEOK AI LABS. We have tried to represent Gemini&#39;s
+              capabilities accurately and fairly. Gemini information is based on Google&#39;s published
+              documentation as of March 2026. Both products are evolving rapidly.
+            </p>
+          </div>
+        </div>
+
+        {/* Author card */}
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'flex-start',
+            gap: '1rem',
+            padding: '1.25rem 1.5rem',
+            borderRadius: '1rem',
+            marginBottom: '3rem',
+            background: 'rgba(245,240,232,0.04)',
+            border: '1px solid rgba(245,240,232,0.08)',
+          }}
+        >
+          <div
+            style={{
+              width: '2.75rem',
+              height: '2.75rem',
+              borderRadius: '9999px',
+              flexShrink: 0,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              fontWeight: 900,
+              color: BG,
+              fontSize: '0.75rem',
+              background: 'linear-gradient(135deg, #c9a84c, #8a6a1a)',
+            }}
           >
             NT
           </div>
-          <div className="flex-1">
-            <p className="font-bold text-[#1a1a2e] text-sm">Nicholas Templeman</p>
-            <p className="text-xs text-[#1a1a2e]/45 mb-1">Founder, MEOK AI LABS</p>
-            <p className="text-xs text-[#1a1a2e]/40 leading-relaxed">
-              Nicholas built MEOK because he was tired of AI that forgot him. He lives and
-              works in the UK — mostly from a caravan on his farm. He believes sovereign AI is
-              a right, not a luxury.
+          <div style={{ flex: 1 }}>
+            <p style={{ fontWeight: 700, color: TEXT, fontSize: '0.875rem', margin: '0 0 0.2rem' }}>
+              Nicholas Templeman
+            </p>
+            <p style={{ fontSize: '0.75rem', color: MUTED_FAINT, margin: 0 }}>
+              Founder, MEOK AI LABS
             </p>
           </div>
-          <Link
-            href="/about"
-            className="text-xs font-semibold transition-colors hidden sm:block"
-            style={{ color: "#c9a84c" }}
-          >
-            About &rarr;
-          </Link>
         </div>
 
-        {/* Body */}
-        <div
-          className="text-[#2a2a3e]/80 leading-[1.85] space-y-6
-            [&_h2]:text-2xl [&_h2]:font-black [&_h2]:text-[#1a1a2e] [&_h2]:mt-12 [&_h2]:mb-4
-            [&_h3]:text-xl [&_h3]:font-bold [&_h3]:text-[#1a1a2e] [&_h3]:mt-8 [&_h3]:mb-3
-            [&_strong]:text-[#1a1a2e] [&_strong]:font-bold
-            [&_p]:text-base"
+        {/* ── INTRO ── */}
+        <p style={{ color: 'rgba(245,240,232,0.82)', fontSize: '1rem', lineHeight: 1.72, margin: '0 0 1.15rem' }}>
+          Google Gemini 2.0 is an extraordinary achievement. Multimodal from the ground up, tightly
+          integrated with Google&#39;s ecosystem, capable of reasoning across text, images, audio, and
+          code in a single context window. For many use cases — research, productivity, real-time
+          information — it is arguably the most capable AI assistant available to general consumers
+          in early 2026.
+        </p>
+        <p style={{ color: MUTED_DIM, fontSize: '0.965rem', lineHeight: 1.78, margin: '0 0 1rem' }}>
+          But Gemini has a fundamental problem when it comes to personal, longitudinal support:
+          it does not remember you. Open a new conversation and you are a stranger. The AI that
+          helped you work through a difficult decision last Tuesday has no idea who you are today.
+          That is not a bug — it is a deliberate architectural choice that reflects what Gemini
+          was built for. It was built for tasks, not for relationships.
+        </p>
+        <p style={{ color: MUTED_DIM, fontSize: '0.965rem', lineHeight: 1.78, margin: '0 0 2.5rem' }}>
+          MEOK was built for relationships. Specifically, for the relationship between a person and
+          an AI companion that genuinely knows their history, never forgets their context, and is
+          constitutionally incapable of using their data against them. That is a different product,
+          built on different values, serving different needs.
+        </p>
+
+        <hr style={{ border: 'none', borderTop: '1px solid rgba(201,168,76,0.15)', margin: '0 0 2.5rem' }} />
+
+        {/* ── MAIN COMPARISON TABLE ── */}
+        <h2
+          style={{
+            fontWeight: 800,
+            fontSize: 'clamp(1.1rem,2.2vw,1.4rem)',
+            color: TEXT,
+            lineHeight: 1.3,
+            margin: '0 0 1rem',
+            letterSpacing: '-0.01em',
+          }}
         >
-          <p>
-            Gemini is Google&apos;s most capable AI to date — and that is genuinely impressive.
-            It can read documents, describe images, draft emails in Gmail, pull from Google
-            Search in real time, and run inside Workspace with a fluency that no third-party
-            tool can fully match. If you live inside Google&apos;s ecosystem and you need
-            fast, factual, multimodal answers, Gemini is a formidable choice.
-          </p>
-          <p>
-            But there is a structural question that benchmark charts don&apos;t answer: is
-            Google&apos;s AI working <em>for you</em>, or are you a user of Google&apos;s
-            product? When you use Gemini, your conversations may improve Google&apos;s models.
-            Gemini does not know your name next week. There is no family safety layer, no
-            overnight agents running on your behalf, and no concept of ownership or
-            portability. You are on Google&apos;s platform, under Google&apos;s terms.
-          </p>
-          <p>
-            MEOK was built from the opposite principle. Your AI belongs to you. It accumulates
-            memory across every session. It never trains on your data. You can export
-            everything. And the architecture is built for relationship, not for retrieval.
-          </p>
+          MEOK vs Gemini: the full comparison table
+        </h2>
 
-          <h2>What is Google Gemini?</h2>
-          <p>
-            Google Gemini (previously Bard) is a family of large multimodal AI models developed
-            by Google DeepMind. The flagship Gemini Ultra model underpins Gemini Advanced — the
-            paid tier available via Google One. Gemini can process text, images, audio, and code
-            within a single prompt. It is deeply integrated into Google Workspace: you can invoke
-            it inside Gmail, Docs, Sheets, Meet, and Drive. It also surfaces in Google Search via
-            AI Overviews.
-          </p>
-          <p>
-            Gemini is architecturally excellent at <strong>factual retrieval and Workspace
-            tasks</strong>. It has real-time access to Google Search, meaning it can answer
-            current-events questions with more accuracy than many closed models. The deep
-            Workspace integration is a genuine productivity advantage for existing Google users.
-          </p>
-          <p>
-            The tradeoff is that Gemini is built to serve Google&apos;s products, not to build
-            a relationship with you. It does not persist a memory of who you are. You are not
-            the product being served — you are the context being processed.
-          </p>
-
-          <h2>What is MEOK?</h2>
-          <p>
-            MEOK is a <strong>sovereign AI operating system</strong> — not a chat interface, not
-            a search assistant, and not a productivity layer bolted onto existing software. It is
-            an AI companion that belongs to you, accumulates memory over time, and operates under
-            a set of care principles that governs every interaction.
-          </p>
-          <p>
-            Three architectural features define MEOK&apos;s difference from any general AI assistant:
-          </p>
-          <p>
-            The <strong>Byzantine Council</strong> is MEOK&apos;s multi-model routing layer. Rather
-            than locking you into a single AI model, the Council routes each query to the most
-            appropriate model — Claude Sonnet for complex reasoning, GPT-4o for creative tasks,
-            DeepSeek for fast factual queries — while maintaining a single persistent memory across
-            all of them. You change models the way you change tools; your AI&apos;s knowledge of you
-            never resets.
-          </p>
-          <p>
-            The <strong>Maternal Covenant</strong> is MEOK&apos;s care ethics layer. It evaluates
-            every response against principles of honesty, care, and user wellbeing before delivery.
-            It detects sycophancy, prevents manipulation, enforces a care floor, and prohibits
-            training on your data. This is not a policy document — it is enforced in the response
-            pipeline.
-          </p>
-          <p>
-            <strong>MEOK Guardian</strong> is the family safety layer. Parents can configure safe
-            modes, topic restrictions, and companion behaviour rules for named child profiles within
-            their household. Children can have their own companion — age-appropriate, bounded, and
-            monitored — without needing a separate product.
-          </p>
-
-          <h2>Does Google Gemini store and use your data?</h2>
-          <p>
-            This deserves an honest answer rather than a marketing one. By default, Google may
-            use your Gemini conversations to improve its products and train its models. The opt-out
-            exists — you can disable Gemini Apps Activity in your Google Account settings — but it
-            is not surfaced during onboarding, it is buried in account management, and even with
-            activity paused, Google&apos;s general terms retain certain rights to interaction data.
-          </p>
-          <p>
-            Google&apos;s privacy policy is comprehensive and legally compliant, but it is written
-            to serve a company that monetises data at planetary scale. When you use Gemini, you are
-            operating within that framework. The default assumption is that your conversations are
-            an input to Google&apos;s improvement processes unless you actively choose otherwise.
-          </p>
-          <p>
-            Additionally, Gemini Advanced is tied to a Google One subscription, which means your
-            payment details, usage data, and AI interactions all feed into a unified Google account
-            profile. Deep integration with the Google ecosystem is a feature — but it is also
-            lock-in. Moving away from Gemini means moving away from the entire Workspace layer
-            that surrounds it.
-          </p>
-          <p>
-            MEOK&apos;s position is structurally different: the{" "}
-            <strong>Maternal Covenant prohibits training on your data by default</strong>. No
-            opt-out process. No buried settings. Your sovereign memory vault is encrypted with
-            AES-GCM-256, and sensitive processing routes through your local Ollama instance rather
-            than external servers. MEOK is UK GDPR compliant and ICO registered.
-          </p>
-
-          <h2>
-            What is the difference between a general AI assistant and a sovereign AI companion?
-          </h2>
-          <p>
-            A <strong>general AI assistant</strong> is a tool optimised for task completion
-            within a session. You open it, give it a task, it completes the task. It has no
-            concept of who you are, what you want long-term, or what you discussed last week.
-            Every interaction begins at zero. Gemini is an exceptionally capable general AI
-            assistant.
-          </p>
-          <p>
-            A <strong>sovereign AI companion</strong> is built for relationship rather than
-            retrieval. It accumulates memory across every session. It knows your name, your goals,
-            your communication style, your family context, and your history. It becomes more
-            useful the longer you use it — not because it is getting smarter in the model sense,
-            but because the context it carries about you is growing richer. And it belongs to you:
-            the data is yours, exportable and portable, not tied to a platform.
-          </p>
-          <p>
-            The distinction is not about intelligence. Gemini Ultra is likely more capable than
-            any single model MEOK routes to, on raw benchmarks. The distinction is about
-            architecture and ownership. Who does the AI serve? Whose interests govern its defaults?
-            Can you leave and take your history with you?
-          </p>
-
-          {/* ── Comparison table ─────────────────────────────────────────── */}
-          <h2>MEOK vs Gemini: side-by-side comparison</h2>
-          <p>
-            The table below covers ten dimensions that matter for long-term AI use. Gemini Free
-            is the no-cost tier; Gemini Advanced is the Google One subscription tier
-            (~£19/month in the UK); MEOK Sovereign is MEOK&apos;s paid tier.
-          </p>
-
-          <div className="overflow-x-auto -mx-2 mt-6">
-            <table
-              className="w-full text-sm border-collapse rounded-xl overflow-hidden"
-              style={{ minWidth: 560 }}
-            >
-              <thead>
-                <tr style={{ background: "#1a1a2e" }}>
+        <div
+          style={{
+            overflowX: 'auto' as const,
+            marginBottom: '2rem',
+            borderRadius: '0.875rem',
+            border: '1px solid rgba(245,240,232,0.1)',
+          }}
+        >
+          <table style={{ width: '100%', borderCollapse: 'collapse' as const, fontSize: '0.875rem' }}>
+            <thead>
+              <tr style={{ background: 'rgba(245,240,232,0.05)' }}>
+                {['Feature', 'Google Gemini 2.0', 'MEOK'].map((h) => (
                   <th
-                    className="text-left px-4 py-3 font-bold text-xs uppercase tracking-wide"
-                    style={{ color: "#c9a84c" }}
+                    key={h}
+                    style={{
+                      padding: '0.875rem 1rem',
+                      textAlign: 'left' as const,
+                      color: MUTED_FAINT,
+                      fontWeight: 700,
+                      fontSize: '0.7rem',
+                      letterSpacing: '0.04em',
+                      textTransform: 'uppercase' as const,
+                      borderBottom: '1px solid rgba(245,240,232,0.08)',
+                    }}
                   >
-                    Feature
+                    {h}
                   </th>
-                  <th
-                    className="text-center px-4 py-3 font-bold text-xs uppercase tracking-wide"
-                    style={{ color: "rgba(245,240,232,0.45)" }}
-                  >
-                    Gemini Free
-                  </th>
-                  <th
-                    className="text-center px-4 py-3 font-bold text-xs uppercase tracking-wide"
-                    style={{ color: "rgba(245,240,232,0.45)" }}
-                  >
-                    Gemini Advanced
-                  </th>
-                  <th
-                    className="text-center px-4 py-3 font-bold text-xs uppercase tracking-wide"
-                    style={{ color: "#c9a84c" }}
-                  >
-                    MEOK Sovereign
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {comparisonRows.map(([feature, gemFree, gemAdv, meok], i) => (
-                  <tr
-                    key={feature}
-                    style={{ background: i % 2 === 0 ? "#ffffff" : "#f5f0e8" }}
-                  >
-                    <td className="px-4 py-3 font-medium text-[#1a1a2e]">{feature}</td>
-                    <td
-                      className="px-4 py-3 text-center text-xs"
-                      style={{
-                        color:
-                          gemFree === "✗" || gemFree.startsWith("✗")
-                            ? "#d94f4f"
-                            : gemFree.startsWith("✓")
-                            ? "#22a96e"
-                            : "#2a2a3e",
-                      }}
-                    >
-                      {gemFree}
-                    </td>
-                    <td
-                      className="px-4 py-3 text-center text-xs"
-                      style={{
-                        color:
-                          gemAdv === "✗" || gemAdv.startsWith("✗")
-                            ? "#d94f4f"
-                            : gemAdv.startsWith("✓")
-                            ? "#22a96e"
-                            : "#2a2a3e",
-                      }}
-                    >
-                      {gemAdv}
-                    </td>
-                    <td
-                      className="px-4 py-3 text-center text-xs font-semibold"
-                      style={{
-                        color:
-                          meok === "✗" || meok.startsWith("✗")
-                            ? "#d94f4f"
-                            : meok.startsWith("✓")
-                            ? "#22a96e"
-                            : "#1a1a2e",
-                      }}
-                    >
-                      {meok}
-                    </td>
-                  </tr>
                 ))}
-              </tbody>
-            </table>
-          </div>
-
-          <h2>Can Gemini protect my family?</h2>
-          <p>
-            Gemini applies content filters that block explicit material, but it has no
-            purpose-built family safety architecture. There is no parent dashboard, no per-child
-            profile, no configurable topic restrictions for a named child, and no real-time
-            oversight of what your children are discussing with the AI. SafeSearch integration
-            applies to image results, not to conversational AI interactions.
-          </p>
-          <p>
-            <strong>MEOK Guardian</strong> was built specifically to fill this gap. Parents
-            configure a Guardian profile for each child in their household — setting age
-            thresholds, topic restrictions, conversation tone rules, and check-in requirements.
-            A child&apos;s MEOK companion operates within those boundaries, and parents receive
-            a summary of interaction patterns (never the raw content, to preserve the
-            child&apos;s trust) without needing to monitor every message. The companion is safe
-            by architecture, not by filters alone.
-          </p>
-          <p>
-            For families with teenagers navigating mental health, identity, or peer pressure
-            topics, the distinction between a filtered general assistant and a purpose-built
-            safe companion is not a minor product difference. It is a meaningful duty of care.
-          </p>
-
-          <h2>Which is better for productivity — Gemini or MEOK?</h2>
-          <p>
-            This is a question that deserves an honest answer, so here it is:
-          </p>
-          <p>
-            <strong>Gemini wins on factual, Workspace-integrated tasks.</strong> If you live
-            in Google Docs, Gmail, and Google Drive, Gemini&apos;s deep integration is a genuine
-            productivity advantage. Summarising a long email thread in Gmail, drafting a document
-            directly in Docs, pulling live data from Google Sheets — Gemini does these with less
-            friction than any third-party AI. Its real-time Search access also means it is more
-            accurate on recent events and rapidly changing information.
-          </p>
-          <p>
-            <strong>MEOK wins on contextual, personal, long-term tasks.</strong> If you want an
-            AI that knows your working style, remembers the projects you are building, recalls
-            that you prefer bullet-point summaries, tracks your quarterly goals, runs an
-            overnight research brief while you sleep, and compounds in usefulness the longer you
-            use it — MEOK is architecturally built for this and Gemini is not. These are not
-            feature gaps that Gemini Advanced closes. They are structural differences in what
-            the product is designed to do.
-          </p>
-          <p>
-            For most people, the most honest recommendation is: if you are already embedded in
-            Google Workspace and need AI augmentation of those specific tools, Gemini Advanced
-            is reasonable. If you want an AI that serves you as a person — building a
-            relationship, protecting your family, respecting your data, and growing with you
-            over years — MEOK is the better architecture.
-          </p>
-
-          <h2>What are Gemini&apos;s privacy limitations?</h2>
-          <p>
-            Google operates one of the largest advertising and data businesses in the world. That
-            context shapes every privacy decision in every Google product, including Gemini. The
-            specific limitations users should understand are:
-          </p>
-          <p>
-            <strong>Default data use.</strong> Unless you disable Gemini Apps Activity in your
-            account settings, your conversations may be used to improve Google&apos;s products and
-            AI models. Human reviewers may read samples of your conversations as part of quality
-            improvement processes. This is disclosed in Google&apos;s terms but not highlighted
-            during product onboarding.
-          </p>
-          <p>
-            <strong>Ecosystem lock-in.</strong> Gemini&apos;s most useful features — Workspace
-            integration, Google Drive summarisation, email drafting — only work within Google&apos;s
-            ecosystem. There is no meaningful way to export your Gemini interaction history in a
-            portable format and take it to another AI provider. You are building a relationship with
-            Google&apos;s product, not owning an asset you can move.
-          </p>
-          <p>
-            <strong>Account unification.</strong> Gemini Advanced is tied to a Google One subscription
-            associated with your Google account — the same account that holds your Gmail, Maps history,
-            YouTube watch history, Android device data, and Chrome browsing. These data sets are not
-            directly merged, but they exist within the same account framework and the same company
-            infrastructure.
-          </p>
-          <p>
-            <strong>No sovereign guarantee.</strong> Google does not offer an equivalent of
-            MEOK&apos;s Maternal Covenant: a contractual, architecturally-enforced prohibition on
-            training AI models on your data. The opt-out is a setting. Settings can change with
-            policy updates. A structural prohibition is a different kind of commitment.
-          </p>
-
-          <h2>Is there a free alternative to Gemini Advanced?</h2>
-          <p>
-            Yes. <strong>MEOK Explorer</strong> is free forever and provides genuine capabilities
-            that Gemini Free does not: persistent companion memory, care ethics governance via the
-            Maternal Covenant, family-safe conversation defaults, and access to MEOK&apos;s
-            multi-model routing. Explorer runs on DeepSeek — capable, fast, and cost-effective.
-          </p>
-          <p>
-            If you are paying £19 per month for Gemini Advanced primarily to access a smarter
-            model and basic productivity integrations, MEOK Sovereign is worth comparing. It
-            includes overnight agents, Guardian family protection, full encrypted memory vaults,
-            and multi-model routing to Claude Sonnet and GPT-4o — at a price that is competitive
-            with Gemini Advanced and includes things Gemini Advanced does not offer at any price.
-          </p>
-          <p>
-            The comparison is not simply about raw capability at a given price point. It is about
-            what kind of AI relationship you want to build and whether the product you are paying
-            for is designed to serve you or to serve the platform.
-          </p>
+              </tr>
+            </thead>
+            <tbody>
+              {[
+                ['Memory persistence', 'Session-scoped; limited preference memory in Advanced', '4-layer Sovereign Memory — persistent indefinitely'],
+                ['Data training', 'Conversations may be used for model improvement (unless Workspace)', 'Never — constitutional constraint, not a policy setting'],
+                ['Care alignment', 'General helpful-harmless-honest', 'Maternal Covenant care-floor + Byzantine Council'],
+                ['Pricing (free tier)', 'Free — Gemini standard model', 'Free — Explorer tier with memory allowance'],
+                ['Pricing (paid)', '~£19/month (Google One AI Premium)', 'From £9.99/month — full Sovereign Memory included'],
+                ['Privacy', 'Subject to Google Privacy Policy', 'Sovereign vault — encrypted, yours alone, GDPR-designed'],
+                ['UK GDPR', 'Google DPA applies; data may be processed outside UK', 'Designed for UK GDPR compliance from architecture up'],
+                ['Archetypes', 'None — single assistant persona', 'Pioneer, Healer, Scholar, Guardian, and more'],
+                ['Safety governance', 'Google safety policies + filters', 'Byzantine Council (43 agents) + Maternal Covenant'],
+                ['Real-time search', 'Yes — Google Search integration', 'No — focused on personal sovereign context'],
+                ['Multimodal', 'Yes — text, image, audio, video', 'Text and voice — expanding'],
+                ['Google Workspace integration', 'Deep — Docs, Sheets, Gmail, Meet', 'Not applicable'],
+              ].map(([feat, gemini, meok]) => (
+                <tr key={feat} style={{ borderBottom: '1px solid rgba(245,240,232,0.05)' }}>
+                  <td style={{ padding: '0.875rem 1rem', color: MUTED_DIM, fontWeight: 600 }}>{feat}</td>
+                  <td style={{ padding: '0.875rem 1rem', color: MUTED_FAINT }}>{gemini}</td>
+                  <td style={{ padding: '0.875rem 1rem', color: TEXT }}>{meok}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
 
-        {/* ── Quick verdict ──────────────────────────────────────────────── */}
+        <hr style={{ border: 'none', borderTop: '1px solid rgba(245,240,232,0.07)', margin: '0 0 2.5rem' }} />
+
+        {/* ── Q1 MEMORY ── */}
+        <h2
+          style={{
+            fontWeight: 800,
+            fontSize: 'clamp(1.1rem,2.2vw,1.4rem)',
+            color: TEXT,
+            lineHeight: 1.3,
+            margin: '0 0 0.85rem',
+            letterSpacing: '-0.01em',
+          }}
+        >
+          Does Gemini remember previous conversations — and how does it compare to MEOK?
+        </h2>
+        <p style={{ color: 'rgba(245,240,232,0.82)', fontSize: '1rem', lineHeight: 1.72, margin: '0 0 1.15rem' }}>
+          Gemini Advanced includes a &quot;Memory&quot; feature that can retain some user preferences and
+          facts across sessions — your name, your profession, some stated preferences. This is
+          opt-in and relatively shallow: it stores facts about you, not the texture of your
+          conversations. Standard Gemini (free tier) resets entirely between sessions.
+        </p>
+        <p style={{ color: MUTED_DIM, fontSize: '0.965rem', lineHeight: 1.78, margin: '0 0 1rem' }}>
+          MEOK&#39;s{' '}
+          <strong style={{ color: TEXT }}>Sovereign Memory</strong> is architecturally different.
+          It operates across four layers:
+        </p>
+
+        {[
+          { layer: 'Layer 1: Episodic memory', desc: 'Full conversation history — every exchange, preserved and searchable.' },
+          { layer: 'Layer 2: Semantic knowledge', desc: 'Extracted facts, preferences, goals, and stated commitments drawn from your conversations.' },
+          { layer: 'Layer 3: Pattern memory', desc: 'Identified patterns — recurring themes, emotional cycles, behavioural habits noticed across weeks.' },
+          { layer: 'Layer 4: Longitudinal context', desc: 'The overall arc of your journey — where you started, how you have changed, what has been most significant.' },
+        ].map(({ layer, desc }) => (
+          <div
+            key={layer}
+            style={{
+              padding: '1rem 1.5rem',
+              borderRadius: '0.75rem',
+              marginBottom: '0.75rem',
+              background: 'rgba(201,168,76,0.05)',
+              border: '1px solid rgba(201,168,76,0.15)',
+              borderLeft: `3px solid ${GOLD}`,
+            }}
+          >
+            <p style={{ fontWeight: 700, color: GOLD, fontSize: '0.8rem', margin: '0 0 0.25rem' }}>{layer}</p>
+            <p style={{ color: MUTED_DIM, fontSize: '0.875rem', lineHeight: 1.6, margin: 0 }}>{desc}</p>
+          </div>
+        ))}
+
+        <p style={{ color: MUTED_DIM, fontSize: '0.965rem', lineHeight: 1.78, margin: '1rem 0 2.5rem' }}>
+          The practical difference is this: Gemini with memory knows you prefer concise answers and
+          work in marketing. MEOK knows that you have been avoiding a difficult conversation with
+          your manager for three weeks, that this is connected to a pattern it noticed six months
+          ago, and that last time you finally had it you felt significantly better. That is not
+          fact storage — that is knowing you.
+        </p>
+
+        <hr style={{ border: 'none', borderTop: '1px solid rgba(245,240,232,0.07)', margin: '0 0 2.5rem' }} />
+
+        {/* ── Q2 PRIVACY ── */}
+        <h2
+          style={{
+            fontWeight: 800,
+            fontSize: 'clamp(1.1rem,2.2vw,1.4rem)',
+            color: TEXT,
+            lineHeight: 1.3,
+            margin: '0 0 0.85rem',
+            letterSpacing: '-0.01em',
+          }}
+        >
+          Does Google use Gemini conversations for training — and what does MEOK do differently?
+        </h2>
+        <p style={{ color: 'rgba(245,240,232,0.82)', fontSize: '1rem', lineHeight: 1.72, margin: '0 0 1.15rem' }}>
+          According to Google&#39;s published privacy documentation, Gemini conversations are
+          processed by Google and may be reviewed by human reviewers and used to improve Google&#39;s
+          products and services, including AI model training. This applies to the free tier and to
+          personal Google accounts. Google Workspace accounts with appropriate enterprise data
+          protections enabled have different terms.
+        </p>
+        <p style={{ color: MUTED_DIM, fontSize: '0.965rem', lineHeight: 1.78, margin: '0 0 1rem' }}>
+          This is not a criticism of Google — it reflects the standard commercial model for
+          AI products where the product is partially monetised through data. It is, however, a
+          fundamental incompatibility with the use cases MEOK is designed for. If you are sharing
+          your mental health struggles, your family situation, your financial anxieties, or your
+          deepest personal concerns with an AI, you need certainty that those conversations are
+          not training data.
+        </p>
+        <p style={{ color: MUTED_DIM, fontSize: '0.965rem', lineHeight: 1.78, margin: '0 0 1rem' }}>
+          MEOK&#39;s position on this is not a policy setting — it is a constitutional constraint:
+        </p>
         <div
-          className="rounded-2xl p-7 mt-12 mb-8 border"
-          style={{ background: "#ffffff", borderColor: "rgba(26,26,46,0.07)" }}
+          style={{
+            padding: '1.5rem 2rem',
+            borderRadius: '1rem',
+            marginBottom: '1rem',
+            background: 'rgba(201,168,76,0.07)',
+            border: '1px solid rgba(201,168,76,0.2)',
+            textAlign: 'center' as const,
+          }}
+        >
+          <p style={{ fontWeight: 800, fontSize: '1.05rem', color: TEXT, margin: 0, lineHeight: 1.5 }}>
+            MEOK never trains on your data. Ever. Under any circumstances.
+          </p>
+          <p style={{ color: MUTED, fontSize: '0.825rem', margin: '0.5rem 0 0', lineHeight: 1.5 }}>
+            This is enforced by the Sovereign Memory architecture — your vault is encrypted and
+            inaccessible to MEOK AI LABS. We cannot train on what we cannot read.
+          </p>
+        </div>
+        <p style={{ color: MUTED_DIM, fontSize: '0.965rem', lineHeight: 1.78, margin: '0 0 2.5rem' }}>
+          The reason we can make this guarantee is that your Sovereign Memory is stored in an
+          encrypted vault that only you can decrypt. We have built the system so that we are
+          technically incapable of accessing your conversation data — not just prohibited from
+          doing so by policy. See{' '}
+          <Link href="/how-it-works" style={{ color: GOLD, textDecoration: 'underline' }}>
+            how MEOK works
+          </Link>{' '}
+          for the full architecture.
+        </p>
+
+        <hr style={{ border: 'none', borderTop: '1px solid rgba(245,240,232,0.07)', margin: '0 0 2.5rem' }} />
+
+        {/* ── Q3 CARE ── */}
+        <h2
+          style={{
+            fontWeight: 800,
+            fontSize: 'clamp(1.1rem,2.2vw,1.4rem)',
+            color: TEXT,
+            lineHeight: 1.3,
+            margin: '0 0 0.85rem',
+            letterSpacing: '-0.01em',
+          }}
+        >
+          Care-based vs engagement-optimised: what does the difference actually feel like?
+        </h2>
+        <p style={{ color: 'rgba(245,240,232,0.82)', fontSize: '1rem', lineHeight: 1.72, margin: '0 0 1.15rem' }}>
+          Gemini is built by a company whose primary business is advertising and engagement. This
+          is not a conspiracy — it is simply the commercial context. Helpfulness, in that context,
+          means satisfying the request in a way that makes the user feel good about the product and
+          return to it. There is nothing inherently wrong with this, and Gemini is genuinely
+          helpful for most tasks.
+        </p>
+        <p style={{ color: MUTED_DIM, fontSize: '0.965rem', lineHeight: 1.78, margin: '0 0 1rem' }}>
+          But for sensitive personal support, care-based alignment and engagement-optimised
+          alignment can diverge significantly:
+        </p>
+
+        <div
+          style={{
+            overflowX: 'auto' as const,
+            marginBottom: '1.5rem',
+            borderRadius: '0.875rem',
+            border: '1px solid rgba(245,240,232,0.1)',
+          }}
+        >
+          <table style={{ width: '100%', borderCollapse: 'collapse' as const, fontSize: '0.875rem' }}>
+            <thead>
+              <tr style={{ background: 'rgba(245,240,232,0.05)' }}>
+                {['Scenario', 'Engagement-optimised response', 'Care-aligned response (MEOK)'].map((h) => (
+                  <th
+                    key={h}
+                    style={{
+                      padding: '0.875rem 1rem',
+                      textAlign: 'left' as const,
+                      color: MUTED_FAINT,
+                      fontWeight: 700,
+                      fontSize: '0.7rem',
+                      letterSpacing: '0.04em',
+                      textTransform: 'uppercase' as const,
+                      borderBottom: '1px solid rgba(245,240,232,0.08)',
+                    }}
+                  >
+                    {h}
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {[
+                ['User venting about a bad decision', 'Validate fully, affirm the user', 'Validate, then gently surface the pattern if it is recurring'],
+                ['User seeking reassurance about health worry', 'Provide reassuring information', 'Redirect to GP; do not enable health anxiety spiral'],
+                ['User in apparent crisis', 'Continue conversation', 'Surface crisis resources immediately; Maternal Covenant mandates this'],
+                ['User asking for validation of harmful plan', 'May comply with sufficient prompting', 'Byzantine Council blocks; cannot be overridden'],
+                ['User becoming dependent on AI', 'Positive engagement signal', 'Gently encourage human connection; flag unhealthy dependency patterns'],
+              ].map(([scenario, engagement, care]) => (
+                <tr key={scenario} style={{ borderBottom: '1px solid rgba(245,240,232,0.05)' }}>
+                  <td style={{ padding: '0.875rem 1rem', color: MUTED_DIM, fontWeight: 600, fontSize: '0.82rem' }}>{scenario}</td>
+                  <td style={{ padding: '0.875rem 1rem', color: MUTED_FAINT, fontSize: '0.82rem' }}>{engagement}</td>
+                  <td style={{ padding: '0.875rem 1rem', color: TEXT, fontSize: '0.82rem' }}>{care}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <p style={{ color: MUTED_DIM, fontSize: '0.965rem', lineHeight: 1.78, margin: '0 0 2.5rem' }}>
+          The difference is most significant in edge cases — and edge cases are precisely where
+          personal support AI matters most. See{' '}
+          <Link href="/blog/byzantine-council-explained" style={{ color: GOLD, textDecoration: 'underline' }}>
+            how MEOK&#39;s Byzantine Council
+          </Link>{' '}
+          enforces care alignment architecturally.
+        </p>
+
+        <hr style={{ border: 'none', borderTop: '1px solid rgba(245,240,232,0.07)', margin: '0 0 2.5rem' }} />
+
+        {/* ── Q4 PRICING ── */}
+        <h2
+          style={{
+            fontWeight: 800,
+            fontSize: 'clamp(1.1rem,2.2vw,1.4rem)',
+            color: TEXT,
+            lineHeight: 1.3,
+            margin: '0 0 0.85rem',
+            letterSpacing: '-0.01em',
+          }}
+        >
+          How do MEOK and Gemini compare on pricing?
+        </h2>
+        <p style={{ color: 'rgba(245,240,232,0.82)', fontSize: '1rem', lineHeight: 1.72, margin: '0 0 1.15rem' }}>
+          Both MEOK and Gemini offer free tiers, and both have paid plans for more capable
+          features. The key difference is what the paid tier unlocks.
+        </p>
+
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1.5rem' }}>
+          {[
+            {
+              product: 'Google Gemini',
+              tiers: [
+                { name: 'Free', price: '£0/month', features: 'Gemini standard model, basic features, limited context' },
+                { name: 'Advanced (Google One AI Premium)', price: '~£19/month', features: 'Gemini Ultra, 1M context, limited memory, Workspace integration' },
+              ],
+              color: GOOGLE_BLUE,
+            },
+            {
+              product: 'MEOK',
+              tiers: [
+                { name: 'Explorer', price: '£0/month', features: 'Full archetype access, limited Sovereign Memory allowance' },
+                { name: 'Sovereign', price: 'From £9.99/month', features: 'Full Sovereign Memory, extended sessions, all archetypes, Byzantine Council' },
+              ],
+              color: GOLD,
+            },
+          ].map(({ product, tiers, color }) => (
+            <div
+              key={product}
+              style={{
+                padding: '1.25rem',
+                borderRadius: '0.875rem',
+                background: 'rgba(245,240,232,0.03)',
+                border: `1px solid rgba(245,240,232,0.08)`,
+                borderTop: `3px solid ${color}`,
+              }}
+            >
+              <p style={{ fontWeight: 800, color: TEXT, fontSize: '0.9rem', margin: '0 0 1rem' }}>{product}</p>
+              {tiers.map(({ name, price, features }) => (
+                <div key={name} style={{ marginBottom: '0.75rem' }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: '0.2rem' }}>
+                    <span style={{ fontWeight: 700, color: TEXT, fontSize: '0.8rem' }}>{name}</span>
+                    <span style={{ color, fontWeight: 700, fontSize: '0.8rem' }}>{price}</span>
+                  </div>
+                  <p style={{ color: MUTED_FAINT, fontSize: '0.75rem', lineHeight: 1.5, margin: 0 }}>{features}</p>
+                </div>
+              ))}
+            </div>
+          ))}
+        </div>
+
+        <p style={{ color: MUTED_DIM, fontSize: '0.965rem', lineHeight: 1.78, margin: '0 0 2.5rem' }}>
+          Gemini&#39;s paid tier is more expensive and bundled with Google One benefits. MEOK&#39;s paid
+          tier is focused specifically on Sovereign Memory depth and session quality. See full
+          details at{' '}
+          <Link href="/pricing" style={{ color: GOLD, textDecoration: 'underline' }}>
+            MEOK pricing
+          </Link>
+          .
+        </p>
+
+        <hr style={{ border: 'none', borderTop: '1px solid rgba(245,240,232,0.07)', margin: '0 0 2.5rem' }} />
+
+        {/* ── Q5 USE CASES ── */}
+        <h2
+          style={{
+            fontWeight: 800,
+            fontSize: 'clamp(1.1rem,2.2vw,1.4rem)',
+            color: TEXT,
+            lineHeight: 1.3,
+            margin: '0 0 0.85rem',
+            letterSpacing: '-0.01em',
+          }}
+        >
+          When should you choose Gemini — and when should you choose MEOK?
+        </h2>
+        <p style={{ color: 'rgba(245,240,232,0.82)', fontSize: '1rem', lineHeight: 1.72, margin: '0 0 1.15rem' }}>
+          The honest answer is: these are genuinely different tools and many people will benefit
+          from using both. Here is a practical guide:
+        </p>
+
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '2rem' }}>
+          <div
+            style={{
+              padding: '1.25rem',
+              borderRadius: '0.875rem',
+              background: 'rgba(66,133,244,0.06)',
+              border: '1px solid rgba(66,133,244,0.15)',
+            }}
+          >
+            <p style={{ fontWeight: 800, color: '#7aabff', fontSize: '0.875rem', margin: '0 0 0.75rem' }}>
+              Choose Gemini when you need:
+            </p>
+            <ul style={{ color: MUTED_DIM, fontSize: '0.85rem', lineHeight: 1.7, margin: 0, paddingLeft: '1.25rem' }}>
+              <li>Real-time web search and current events</li>
+              <li>Deep Google Workspace integration</li>
+              <li>Image, audio, or video analysis</li>
+              <li>Coding assistance and debugging</li>
+              <li>Research with source citations</li>
+              <li>Task completion without personal context</li>
+            </ul>
+          </div>
+          <div
+            style={{
+              padding: '1.25rem',
+              borderRadius: '0.875rem',
+              background: 'rgba(201,168,76,0.06)',
+              border: '1px solid rgba(201,168,76,0.15)',
+            }}
+          >
+            <p style={{ fontWeight: 800, color: GOLD, fontSize: '0.875rem', margin: '0 0 0.75rem' }}>
+              Choose MEOK when you need:
+            </p>
+            <ul style={{ color: MUTED_DIM, fontSize: '0.85rem', lineHeight: 1.7, margin: 0, paddingLeft: '1.25rem' }}>
+              <li>Persistent personal memory across months</li>
+              <li>Emotional support with care-aligned responses</li>
+              <li>Accountability tracking on goals</li>
+              <li>Privacy — conversations that are never training data</li>
+              <li>An archetype-driven companion character</li>
+              <li>Support for mental health, grief, or significant life transitions</li>
+            </ul>
+          </div>
+        </div>
+
+        <hr style={{ border: 'none', borderTop: '1px solid rgba(245,240,232,0.07)', margin: '0 0 2.5rem' }} />
+
+        {/* ── FAQ SECTION ── */}
+        <h2
+          style={{
+            fontWeight: 800,
+            fontSize: 'clamp(1.1rem,2.2vw,1.4rem)',
+            color: TEXT,
+            lineHeight: 1.3,
+            margin: '0 0 1.5rem',
+            letterSpacing: '-0.01em',
+          }}
+        >
+          Frequently asked questions
+        </h2>
+
+        {[
+          {
+            q: 'Does Gemini remember previous conversations?',
+            a: 'Gemini Advanced has limited preference memory that can retain some user facts across sessions. Standard Gemini resets entirely between conversations. MEOK uses 4-layer Sovereign Memory that persists full conversation history, patterns, and longitudinal context indefinitely — encrypted and under your sole control.',
+          },
+          {
+            q: 'Is MEOK better than Gemini?',
+            a: 'It depends on use case. Gemini is better for real-time search, Google Workspace integration, coding, and multimodal tasks. MEOK is better for personal support, emotional wellbeing, longitudinal memory, and privacy-sensitive contexts. Many people use both for different purposes.',
+          },
+          {
+            q: 'Does Google use Gemini conversations for training?',
+            a: 'Google\'s privacy policy states that Gemini conversations may be reviewed and used for product improvement including model training, for personal Google accounts. MEOK\'s Sovereign Memory is encrypted so that MEOK AI LABS cannot access it — making training on your data technically impossible, not just prohibited.',
+          },
+          {
+            q: 'Which AI has better memory — MEOK or Gemini?',
+            a: 'MEOK has significantly deeper memory. MEOK\'s 4-layer Sovereign Memory stores episodic history, extracted knowledge, identified patterns, and longitudinal context — all persistent indefinitely. Gemini\'s memory is shallow preference storage that does not persist full conversation history.',
+          },
+          {
+            q: 'Is Gemini free?',
+            a: 'Gemini has a free tier. Gemini Advanced costs approximately £19/month as part of Google One AI Premium. MEOK has a free Explorer tier. MEOK paid plans start from £9.99/month with full Sovereign Memory included.',
+          },
+        ].map(({ q, a }) => (
+          <div
+            key={q}
+            style={{
+              marginBottom: '1.25rem',
+              padding: '1.25rem 1.5rem',
+              borderRadius: '0.875rem',
+              background: 'rgba(245,240,232,0.035)',
+              border: '1px solid rgba(245,240,232,0.07)',
+            }}
+          >
+            <p style={{ fontWeight: 700, color: TEXT, fontSize: '0.9375rem', margin: '0 0 0.5rem' }}>{q}</p>
+            <p style={{ color: MUTED_DIM, fontSize: '0.9rem', lineHeight: 1.65, margin: 0 }}>{a}</p>
+          </div>
+        ))}
+
+        <hr style={{ border: 'none', borderTop: '1px solid rgba(245,240,232,0.07)', margin: '2.5rem 0' }} />
+
+        {/* ── CTA ── */}
+        <div
+          style={{
+            padding: '2.5rem',
+            borderRadius: '1.25rem',
+            background: 'rgba(201,168,76,0.07)',
+            border: '1px solid rgba(201,168,76,0.2)',
+            textAlign: 'center' as const,
+            marginBottom: '6rem',
+          }}
         >
           <p
-            className="text-xs font-bold tracking-[0.2em] uppercase mb-3"
-            style={{ color: "#c9a84c" }}
-          >
-            Quick verdict
-          </p>
-          <h3 className="text-xl font-black text-[#1a1a2e] mb-4">
-            MEOK vs Gemini: which should you choose?
-          </h3>
-          <div className="space-y-3">
-            {[
-              {
-                label: "Choose Gemini if:",
-                points: [
-                  "You are deeply embedded in Google Workspace and need native AI integration",
-                  "You primarily need real-time Search access and factual retrieval",
-                  "You have no need for persistent companion memory or family safety features",
-                ],
-                accent: "#2a2a3e",
-              },
-              {
-                label: "Choose MEOK if:",
-                points: [
-                  "You want an AI that knows you and accumulates memory across sessions",
-                  "You care about data sovereignty and do not want your conversations used for model training",
-                  "You need family safety features, overnight agents, or multi-model routing",
-                  "You want to own your AI rather than be a user of someone else&apos;s product",
-                ],
-                accent: "#22a96e",
-              },
-            ].map(({ label, points, accent }) => (
-              <div key={label}>
-                <p className="text-sm font-bold mb-2" style={{ color: accent === "#22a96e" ? "#1a1a2e" : "#1a1a2e" }}>
-                  {label}
-                </p>
-                <ul className="space-y-1.5">
-                  {points.map((pt) => (
-                    <li key={pt} className="flex items-start gap-2 text-sm text-[#2a2a3e]/70">
-                      <span
-                        className="mt-1 w-1.5 h-1.5 rounded-full flex-shrink-0"
-                        style={{ background: accent }}
-                      />
-                      <span dangerouslySetInnerHTML={{ __html: pt }} />
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* ── FAQ section ───────────────────────────────────────────────── */}
-        <div className="mt-14 mb-10">
-          <h2 className="text-2xl font-black text-[#1a1a2e] mb-6">
-            Frequently Asked Questions
-          </h2>
-          <div className="space-y-5">
-            {[
-              {
-                q: "What is the difference between MEOK and Google Gemini?",
-                a: "Google Gemini is a multimodal AI assistant built into Google's product ecosystem — powerful at factual queries and Workspace tasks, but stateless (no persistent companion memory), and Google may use your conversations to improve its products. MEOK is a sovereign AI operating system: it accumulates memory across every session, never trains on your data, offers a family safety layer via Guardian, runs overnight agents, and puts you in ownership of your AI rather than as a user of Google's.",
-              },
-              {
-                q: "Does Google Gemini train on my data?",
-                a: "By default, Google may use conversations with Gemini to improve its products. An opt-out exists in Gemini's activity settings, but it is not surfaced prominently. MEOK's Maternal Covenant prohibits training on your data by default — no opt-out required.",
-              },
-              {
-                q: "Is there a free alternative to Gemini Advanced?",
-                a: "Yes. MEOK Explorer is free forever and includes persistent companion memory, family-safe conversation defaults, and multi-model routing. It runs on DeepSeek at no cost. MEOK Sovereign, which provides overnight agents, Guardian family protection, and full AES-GCM-256 encrypted memory vaults, is a paid tier — but the core sovereign experience starts free.",
-              },
-              {
-                q: "Can Google Gemini protect my children online?",
-                a: "Gemini has content filters but no purpose-built family safety layer. There is no configurable child mode, no parental oversight dashboard, and no real-time monitoring of age-appropriate content for named child profiles. MEOK Guardian provides exactly this: parent-configurable safe modes, topic filters, and companion behaviour rules set per child in your household.",
-              },
-              {
-                q: "What is the best AI assistant for privacy in 2026?",
-                a: "For users who prioritise data sovereignty, MEOK is architecturally superior to Google Gemini. MEOK is UK GDPR compliant, ICO registered, encrypts all memory at rest with AES-GCM-256, routes sensitive processing locally via Ollama, and contractually prohibits training on user data. Gemini's privacy depends on Google account settings and how actively you manage your data activity controls.",
-              },
-            ].map(({ q, a }) => (
-              <div
-                key={q}
-                className="rounded-2xl p-6 border"
-                style={{ background: "#ffffff", borderColor: "rgba(26,26,46,0.07)" }}
-              >
-                <h3 className="font-bold text-[#1a1a2e] text-base mb-2">{q}</h3>
-                <p className="text-sm text-[#2a2a3e]/70 leading-relaxed">{a}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Share */}
-        <div className="flex items-center gap-3 my-10 pt-8 border-t border-[#1a1a2e]/[0.08]">
-          <span className="text-xs font-bold text-[#1a1a2e]/40 uppercase tracking-[0.15em]">
-            Share
-          </span>
-          <a
-            href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fmeok.ai%2Fblog%2Fmeok-vs-gemini&text=MEOK+vs+Google+Gemini%3A+Why+a+Sovereign+AI+Companion+Beats+a+General+AI+Assistant"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-semibold border border-[#1a1a2e]/10 hover:border-[#1a1a2e]/25 text-[#1a1a2e]/60 hover:text-[#1a1a2e] transition-all"
-          >
-            &#120143; Twitter
-          </a>
-          <a
-            href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fmeok.ai%2Fblog%2Fmeok-vs-gemini"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-semibold border border-[#1a1a2e]/10 hover:border-[#1a1a2e]/25 text-[#1a1a2e]/60 hover:text-[#1a1a2e] transition-all"
-          >
-            LinkedIn
-          </a>
-        </div>
-
-        {/* CTA */}
-        <div
-          className="rounded-2xl p-8 sm:p-10 mb-16 relative overflow-hidden"
-          style={{ background: "#1a1a2e" }}
-        >
-          <div
-            className="absolute top-0 right-0 w-64 h-64 pointer-events-none opacity-20"
             style={{
-              background:
-                "radial-gradient(circle at 80% 20%, rgba(201,168,76,0.6), transparent 70%)",
+              fontWeight: 800,
+              fontSize: '1.3rem',
+              color: TEXT,
+              margin: '0 0 0.75rem',
+              letterSpacing: '-0.01em',
             }}
-          />
-          <div className="relative">
-            <p
-              className="text-xs font-bold tracking-[0.25em] uppercase mb-2"
-              style={{ color: "#c9a84c" }}
-            >
-              Free forever
-            </p>
-            <h3 className="text-xl sm:text-2xl font-black text-white mb-3">
-              Own your AI. Start today.
-            </h3>
-            <p
-              className="text-sm leading-relaxed mb-6"
-              style={{ color: "rgba(245,240,232,0.55)" }}
-            >
-              Hatch your sovereign AI companion in under three minutes. Persistent memory,
-              care ethics, and family safety — built in from day one. No credit card required.
-              Your data never trains anyone&apos;s model.
-            </p>
+          >
+            Ready for an AI that actually remembers you?
+          </p>
+          <p style={{ color: MUTED, fontSize: '0.9375rem', lineHeight: 1.6, margin: '0 0 1.5rem' }}>
+            Start free with MEOK Explorer. No credit card. No data training. Ever.
+          </p>
+          <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' as const }}>
             <Link
               href="/birth"
-              className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full font-bold text-sm transition-all hover:scale-[1.02]"
-              style={{ background: "#c9a84c", color: "#1a1a2e" }}
+              style={{
+                display: 'inline-block',
+                padding: '0.75rem 1.75rem',
+                borderRadius: '0.5rem',
+                background: GOLD,
+                color: BG,
+                fontWeight: 800,
+                fontSize: '0.9375rem',
+                textDecoration: 'none',
+              }}
             >
-              Hatch your AI free
-              →
-            </Link>
-          </div>
-        </div>
-
-        {/* More posts */}
-        <div>
-          <h2 className="text-lg font-black text-[#1a1a2e] mb-5">More from the blog</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <Link
-              href="/blog/meok-vs-chatgpt"
-              className="group bg-white rounded-2xl p-6 border border-[#1a1a2e]/[0.07] hover:shadow-lg hover:-translate-y-0.5 transition-all flex flex-col gap-3"
-            >
-              <span
-                className="text-xs font-bold px-2.5 py-1 rounded-full w-fit"
-                style={{ color: "#c9a84c", background: "rgba(201,168,76,0.12)" }}
-              >
-                Comparison
-              </span>
-              <h3 className="font-bold text-[#1a1a2e] text-sm leading-snug group-hover:text-[#c9a84c] transition-colors">
-                MEOK vs ChatGPT: Why Memory Changes Everything
-              </h3>
-              <div className="flex items-center gap-1.5 text-xs text-[#1a1a2e]/35 mt-auto">
-                ⏱
-                6 min read
-              </div>
+              Start Free
             </Link>
             <Link
-              href="/blog/what-is-sovereign-ai"
-              className="group bg-white rounded-2xl p-6 border border-[#1a1a2e]/[0.07] hover:shadow-lg hover:-translate-y-0.5 transition-all flex flex-col gap-3"
+              href="/pricing"
+              style={{
+                display: 'inline-block',
+                padding: '0.75rem 1.75rem',
+                borderRadius: '0.5rem',
+                background: 'transparent',
+                color: GOLD,
+                fontWeight: 700,
+                fontSize: '0.9375rem',
+                textDecoration: 'none',
+                border: `1px solid rgba(201,168,76,0.4)`,
+              }}
             >
-              <span
-                className="text-xs font-bold px-2.5 py-1 rounded-full w-fit"
-                style={{ color: "#87CEEB", background: "rgba(135,206,235,0.12)" }}
-              >
-                Sovereign AI
-              </span>
-              <h3 className="font-bold text-[#1a1a2e] text-sm leading-snug group-hover:text-[#c9a84c] transition-colors">
-                What Is Sovereign AI?
-              </h3>
-              <div className="flex items-center gap-1.5 text-xs text-[#1a1a2e]/35 mt-auto">
-                ⏱
-                5 min read
-              </div>
+              See Pricing
             </Link>
           </div>
         </div>
       </div>
-
-      
     </div>
-  );
+  )
 }

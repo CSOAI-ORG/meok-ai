@@ -519,6 +519,18 @@ const POSTS = [
     featured: false,
   },
   {
+    slug: "ai-companion-vs-ai-girlfriend",
+    title: "AI Companion vs AI Girlfriend: The Difference That Actually Matters",
+    excerpt:
+      "AI companions and AI girlfriend apps are not the same product. One is built for your growth. The other is built for your dependency. Here's the design difference — and why it determines whether AI makes your life better or worse.",
+    date: "March 24, 2026",
+    readTime: "12 min read",
+    tag: "Product",
+    tagColor: "#F97316",
+    category: "product",
+    featured: false,
+  },
+  {
     slug: "ai-companion-not-ai-girlfriend",
     title: "AI Girlfriend / AI Boyfriend Apps in 2026: Why MEOK Takes a Different Approach",
     excerpt:
@@ -1452,6 +1464,78 @@ const POSTS = [
     tag: "Privacy",
     tagColor: "#6366f1",
     category: "sovereign-ai",
+    featured: false,
+  },
+  {
+    slug: "ai-for-career-coaching",
+    title: "AI Career Coaching: How MEOK Helps You Land the Job, Change Career, and Own Your Path",
+    excerpt:
+      "AI career coaching for job seekers, career changers, and professionals in the UK. MEOK's Scholar archetype helps with CV writing, interview prep, goal-setting, and career pivots — with a companion that remembers your whole journey.",
+    date: "March 24, 2026",
+    readTime: "11 min read",
+    tag: "Productivity",
+    tagColor: "#c9a84c",
+    category: "guides",
+    featured: false,
+  },
+  {
+    slug: "ai-for-couples",
+    title: "AI for Couples: How MEOK Supports Each Partner Independently to Build Better Relationships",
+    excerpt:
+      "AI relationship support for couples — not AI couples therapy. MEOK gives each partner their own sovereign AI for reflection, communication growth, and emotional processing. Your conversations stay private under the Maternal Covenant.",
+    date: "March 24, 2026",
+    readTime: "10 min read",
+    tag: "Wellbeing",
+    tagColor: "#60a5fa",
+    category: "wellbeing",
+    featured: false,
+  },
+  {
+    slug: "ai-for-job-seekers",
+    title: "AI for Job Seekers: Managing the Emotional Rollercoaster of Job Hunting with AI",
+    excerpt:
+      "Job hunting is exhausting. MEOK helps job seekers in the UK track applications, process rejection, stay motivated, and prepare for interviews — with an AI companion that remembers your whole search.",
+    date: "March 24, 2026",
+    readTime: "10 min read",
+    tag: "Productivity",
+    tagColor: "#c9a84c",
+    category: "guides",
+    featured: false,
+  },
+  {
+    slug: "ai-and-religion",
+    title: "AI and Religion: How MEOK's Mystic Archetype Supports Faith, Spirituality, and Meaning",
+    excerpt:
+      "Can AI support religious practice? MEOK's Mystic archetype helps Christians, Muslims, and spiritual seekers with prayer journaling, philosophical inquiry, religious text study, and spiritual reflection — without imposing any viewpoint.",
+    date: "March 24, 2026",
+    readTime: "11 min read",
+    tag: "Philosophy",
+    tagColor: "#8b5cf6",
+    category: "guides",
+    featured: false,
+  },
+  {
+    slug: "meok-for-parents",
+    title: "MEOK for Parents: AI That Helps You Be a Better Parent Without Burning Out",
+    excerpt:
+      "MEOK helps parents track milestones, manage stress, keep their children safe online with the Guardian feature, and maintain their own wellbeing — all with an AI that never forgets a thing your child said.",
+    date: "March 24, 2026",
+    readTime: "10 min read",
+    tag: "Guardian",
+    tagColor: "#7BC47F",
+    category: "guardian",
+    featured: false,
+  },
+  {
+    slug: "ai-for-night-shift",
+    title: "AI for Night Shift Workers: MEOK Is Awake at 3am When No One Else Is",
+    excerpt:
+      "3.2 million night shift workers in the UK face social isolation and elevated depression risk. MEOK is always available — no matter what time it is — with an AI companion that remembers you and supports your wellbeing.",
+    date: "March 24, 2026",
+    readTime: "9 min read",
+    tag: "Wellbeing",
+    tagColor: "#f97316",
+    category: "wellbeing",
     featured: false,
   },
   {

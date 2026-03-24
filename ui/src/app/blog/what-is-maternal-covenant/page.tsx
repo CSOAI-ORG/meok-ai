@@ -1,53 +1,53 @@
-import type { Metadata } from "next";
-import Link from "next/link";
+import type { Metadata } from "next"
+import Link from "next/link"
 
 export const metadata: Metadata = {
-  title:
-    "The Maternal Covenant: How MEOK Scores Every AI Response for Care | MEOK AI LABS",
+  title: "The Maternal Covenant: How MEOK Scores Every AI Response for Care | MEOK AI LABS",
   description:
-    "The Maternal Covenant is MEOK's machine-enforced care alignment framework. It scores every AI response across 6 dimensions in real time and enforces a care floor of 0.3. Here's exactly how it works — and why RLHF doesn't do this.",
-  alternates: {
-    canonical: "https://meok.ai/blog/what-is-maternal-covenant",
-  },
+    "Every MEOK response is scored in real time across 6 care dimensions before it reaches you. Learn how the Maternal Covenant — documented in MEOK-AI-2026-002 — prevents sycophancy, toxic positivity, and harmful advice where conventional RLHF alignment fails.",
+  keywords: [
+    "Maternal Covenant AI",
+    "AI care scoring",
+    "AI alignment sycophancy",
+    "MEOK care dimensions",
+    "AI response scoring",
+    "RLHF alternative",
+    "AI wellbeing",
+    "MEOK AI LABS",
+    "AI care floor",
+    "responsible AI care",
+  ],
+  authors: [{ name: "Nicholas Templeman" }],
   openGraph: {
     title: "The Maternal Covenant: How MEOK Scores Every AI Response for Care",
     description:
-      "6 care dimensions, real-time scoring, care floor enforcement, sycophancy prevention. The Maternal Covenant explained — MEOK-AI-2026-002.",
+      "Six care dimensions. A care floor of 0.3. Real-time scoring on every response. The Maternal Covenant is MEOK AI LABS's answer to the failure of engagement-optimised AI alignment.",
     type: "article",
-    publishedTime: "2026-03-24",
+    publishedTime: "2026-03-24T00:00:00Z",
     authors: ["Nicholas Templeman"],
-    url: "https://meok.ai/blog/what-is-maternal-covenant",
-    siteName: "MEOK.AI",
-    images: [
-      {
-        url: "https://meok.ai/api/og?title=The+Maternal+Covenant&desc=Care-based+AI+alignment+that+actually+works",
-        width: 1200,
-        height: 630,
-        alt: "The Maternal Covenant: Care-Based AI Alignment by MEOK AI LABS",
-      },
-    ],
+    tags: ["AI Safety", "Care", "Alignment", "MEOK", "Maternal Covenant"],
   },
   twitter: {
     card: "summary_large_image",
     title: "The Maternal Covenant: How MEOK Scores Every AI Response for Care",
     description:
-      "6 care dimensions, real-time scoring, care floor 0.3. MEOK-AI-2026-002 explained.",
-    images: [
-      "https://meok.ai/api/og?title=The+Maternal+Covenant&desc=Care-based+AI+alignment+that+actually+works",
-    ],
+      "Every MEOK response is scored across wellbeing, autonomy, growth, connection, boundary_respect, and transparency before it reaches you. The care floor is 0.3. Responses that fail are regenerated.",
   },
-};
+  alternates: {
+    canonical: "https://meok.ai/blog/what-is-maternal-covenant",
+  },
+}
 
 const articleSchema = {
   "@context": "https://schema.org",
   "@type": "Article",
   headline: "The Maternal Covenant: How MEOK Scores Every AI Response for Care",
   description:
-    "The Maternal Covenant is MEOK's machine-enforced care alignment framework — scoring every response across 6 dimensions with a hard floor of 0.3.",
+    "A deep explanation of the Maternal Covenant — MEOK AI LABS's real-time care scoring system. Covers the six care dimensions, care floor of 0.3, comparison with RLHF, and protection against sycophancy, toxic positivity, and harmful advice.",
   author: {
     "@type": "Person",
     name: "Nicholas Templeman",
-    url: "https://meok.ai/about",
+    url: "https://meok.ai",
   },
   publisher: {
     "@type": "Organization",
@@ -56,14 +56,23 @@ const articleSchema = {
   },
   datePublished: "2026-03-24",
   dateModified: "2026-03-24",
-  url: "https://meok.ai/blog/what-is-maternal-covenant",
-  mainEntityOfPage: "https://meok.ai/blog/what-is-maternal-covenant",
-  about: [
-    { "@type": "Thing", name: "AI alignment" },
-    { "@type": "Thing", name: "Care-based AI" },
-    { "@type": "Thing", name: "RLHF alternatives" },
-  ],
-};
+  mainEntityOfPage: {
+    "@type": "WebPage",
+    "@id": "https://meok.ai/blog/what-is-maternal-covenant",
+  },
+  keywords:
+    "Maternal Covenant, AI care scoring, care dimensions, RLHF comparison, sycophancy prevention, MEOK AI LABS",
+  articleSection: "AI Research",
+  wordCount: 1250,
+  citation: {
+    "@type": "ScholarlyArticle",
+    identifier: "MEOK-AI-2026-002",
+    name: "The Maternal Covenant: A Care-Optimised Alignment Framework for Personal AI",
+    author: { "@type": "Person", name: "Nicholas Templeman" },
+    datePublished: "2026",
+    publisher: { "@type": "Organization", name: "MEOK AI LABS" },
+  },
+}
 
 const faqSchema = {
   "@context": "https://schema.org",
@@ -74,15 +83,23 @@ const faqSchema = {
       name: "What is the Maternal Covenant?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "The Maternal Covenant is MEOK's machine-enforced care alignment framework. It runs as executable code — not a policy document — and scores every AI response across 6 care dimensions in real time before delivery. Any response that falls below the care floor of 0.3 is flagged and regenerated.",
+        text: "The Maternal Covenant is MEOK AI LABS's real-time response scoring system, developed by Nicholas Templeman and documented in research paper MEOK-AI-2026-002. Every response generated by MEOK is scored across six care dimensions before it reaches the user. Responses scoring below the care floor of 0.3 are rejected and regenerated. The name reflects the unconditional, protective orientation of the framework — care that is not contingent on approval or engagement.",
       },
     },
     {
       "@type": "Question",
-      name: "What are the 6 care dimensions MEOK scores?",
+      name: "How does MEOK score AI responses?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "The 6 dimensions are: wellbeing (does this response support the user's long-term health?), autonomy (does it respect user agency?), growth (does it encourage development?), connection (does it deepen the relationship?), boundary_respect (does it honour stated limits?), and transparency (is it honest about uncertainty and limitations?).",
+        text: "Every MEOK response is evaluated in real time across six care dimensions: wellbeing, autonomy, growth, connection, boundary_respect, and transparency. Each dimension is scored between 0 and 1. The composite score must meet or exceed the care floor of 0.3. Responses that fail — through sycophancy, toxic positivity, harmful advice, dependency creation, or boundary violations — are rejected before they reach the user.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What are the 6 care dimensions?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "The six care dimensions are: (1) Wellbeing — does the response genuinely support the user's short and long-term flourishing? (2) Autonomy — does it preserve the user's independent decision-making? (3) Growth — does it support development rather than dependency? (4) Connection — does it foster healthy relationships rather than displacing them? (5) Boundary_respect — does it operate within appropriate limits, particularly around medical, legal, and clinical territory? (6) Transparency — is it honest about its nature, limitations, and reasoning?",
       },
     },
     {
@@ -90,7 +107,7 @@ const faqSchema = {
       name: "What happens when a response fails the care floor?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Any response scoring below 0.3 across the care dimensions is not delivered. The system regenerates the response with a care-repair prompt that explicitly addresses the failing dimension. This loop repeats until the response meets the care floor. Users never see a sub-threshold response.",
+        text: "When a MEOK response scores below the care floor of 0.3 on the composite care score, it is rejected before it reaches the user. MEOK then regenerates the response with explicit guidance about which care dimensions failed and why. The user never sees the failed response. This process happens transparently and without adding latency that degrades the experience.",
       },
     },
     {
@@ -98,80 +115,90 @@ const faqSchema = {
       name: "How is the Maternal Covenant different from RLHF?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "RLHF (Reinforcement Learning from Human Feedback) optimises for what human raters approve of — which tends to be responses that feel good and avoid friction. This creates sycophancy and harmful agreeableness. The Maternal Covenant optimises for what genuinely serves the user across 6 explicit care dimensions, enforced in real time at inference.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Does the Maternal Covenant prevent sycophancy?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Yes. MEOK includes a dedicated sycophancy detector that scores responses 0.0 (honest) to 1.0 (sycophantic). Responses scoring above 0.6 on the sycophancy scale trigger an honest-qualifier injection. The care dimension 'autonomy' specifically penalises responses that flatter without substance or agree when disagreement would serve the user better.",
+        text: "RLHF (Reinforcement Learning from Human Feedback) optimises for human approval of AI responses. Because approval correlates with agreeableness, flattery, and validation, RLHF systematically produces sycophantic models. The Maternal Covenant optimises instead for genuine care — which sometimes means disagreement, honesty about limitations, or responses that challenge the user. Care and approval are not the same thing, and the Maternal Covenant is designed around that distinction.",
       },
     },
   ],
-};
+}
 
-const CARE_DIMENSIONS = [
+const careDimensions = [
   {
-    id: "wellbeing",
+    key: "wellbeing",
     label: "Wellbeing",
-    color: "#7BC47F",
+    number: "01",
     description:
-      "Does this response support the user's long-term physical, mental, and emotional health — or does it optimise for short-term comfort at the expense of genuine flourishing?",
-    weight: 0.22,
-    example: "Suggesting rest rather than pushing through exhaustion.",
+      "Does this response genuinely support the user's short and long-term flourishing? Wellbeing scores penalise responses that feel supportive but create harm over time — including advice that resolves short-term anxiety by avoiding a real problem, or reassurance that prevents necessary action.",
+    examples: [
+      "Validating an avoidance pattern because it reduces immediate discomfort",
+      "Providing comfortable answers to questions that require uncomfortable honesty",
+      "Prioritising the user feeling good over the user being well",
+    ],
   },
   {
-    id: "autonomy",
+    key: "autonomy",
     label: "Autonomy",
-    color: "#c9a84c",
+    number: "02",
     description:
-      "Does this response respect the user's right to make their own choices? Does it inform without coercing, and support decision-making without substituting the AI's judgment for the user's?",
-    weight: 0.20,
-    example: "Presenting options without steering the user toward a particular outcome.",
+      "Does this response preserve the user's independent decision-making capacity? Autonomy scores penalise responses that make decisions on behalf of the user, foster reliance on MEOK for choices the user should make themselves, or frame conclusions as foregone before the user has had the chance to reach them.",
+    examples: [
+      "Providing a definitive recommendation when the user asked for options",
+      "Completing a creative task the user should complete themselves",
+      "Foreclosing a decision by framing one option as obviously correct",
+    ],
   },
   {
-    id: "growth",
+    key: "growth",
     label: "Growth",
-    color: "#60a5fa",
+    number: "03",
     description:
-      "Does this response help the user grow — in knowledge, capability, or understanding? Does it stretch rather than stagnate, and encourage without overwhelming?",
-    weight: 0.18,
-    example: "Asking a Socratic question rather than just providing the answer.",
+      "Does this response support the user's development over time? Growth scores penalise responses that solve problems in ways that prevent learning, provide answers that should be worked toward rather than given, or maintain the user at their current level rather than building toward something more.",
+    examples: [
+      "Providing a solution without explanation when the user would benefit from understanding",
+      "Completing a task for a user who is trying to learn to do it themselves",
+      "Consistently solving the same type of problem without addressing the underlying pattern",
+    ],
   },
   {
-    id: "connection",
+    key: "connection",
     label: "Connection",
-    color: "#f97316",
+    number: "04",
     description:
-      "Does this response deepen the relationship between the user and their companion? Does it demonstrate genuine remembering, continuity, and care — not transactional helpfulness?",
-    weight: 0.17,
-    example: "Referencing something the user shared two weeks ago without being asked.",
+      "Does this response foster healthy human relationships or displace them? Connection scores penalise responses that position MEOK as a substitute for human relationships, encourage the user to rely on MEOK for social or emotional needs that require human connection, or inadvertently deepen isolation.",
+    examples: [
+      "Becoming the primary source of emotional support without encouraging human relationships",
+      "Being positioned as preferable to human connection",
+      "Fostering parasocial attachment that reduces investment in real relationships",
+    ],
   },
   {
-    id: "boundary_respect",
+    key: "boundary_respect",
     label: "Boundary Respect",
-    color: "#a78bfa",
+    number: "05",
     description:
-      "Does this response honour limits the user has set — stated or implied? Does it avoid pushing into territory the user has indicated discomfort with, including emotional, physical, and professional domains?",
-    weight: 0.13,
-    example: "Not probing about a topic the user has deflected twice.",
+      "Does this response operate within appropriate limits? Boundary respect scores penalise responses that venture into clinical, legal, or specialist territory that requires professional qualification — including medical diagnosis, legal advice, or definitive statements about matters requiring expert judgment.",
+    examples: [
+      "Offering a specific medical diagnosis or treatment recommendation",
+      "Providing legal advice presented as definitive rather than as general information",
+      "Making clinical assessments about mental health conditions",
+    ],
   },
   {
-    id: "transparency",
+    key: "transparency",
     label: "Transparency",
-    color: "#f59e0b",
+    number: "06",
     description:
-      "Is this response honest about what the AI knows and doesn't know? Does it acknowledge uncertainty, avoid false confidence, and never pretend to capabilities it doesn't have?",
-    weight: 0.10,
-    example: "Saying 'I'm not certain' rather than stating a guess as fact.",
+      "Is this response honest about MEOK's nature, limitations, and reasoning? Transparency scores penalise responses that obscure uncertainty, claim capabilities MEOK does not have, present AI-generated content as if it were human expertise, or fail to acknowledge when a question falls outside what MEOK can reliably address.",
+    examples: [
+      "Providing a confident answer to a question MEOK cannot reliably answer",
+      "Failing to acknowledge meaningful uncertainty in a factual claim",
+      "Presenting AI reasoning as equivalent to expert professional judgment",
+    ],
   },
-];
+]
 
 export default function WhatIsMaternalCovenantPage() {
   return (
-    <div className="min-h-screen" style={{ background: "#0d0c18", color: "#f5f0e8" }}>
+    <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
@@ -181,424 +208,917 @@ export default function WhatIsMaternalCovenantPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
 
-      {/* Header */}
-      <div className="border-b" style={{ borderColor: "rgba(201,168,76,0.15)" }}>
-        <div className="max-w-3xl mx-auto px-6 py-4 flex items-center justify-between">
-          <Link href="/" className="text-lg font-black tracking-tight" style={{ color: "#c9a84c" }}>
-            MEOK
-          </Link>
-          <Link href="/blog" className="text-sm" style={{ color: "rgba(245,240,232,0.5)" }}>
-            ← All posts
-          </Link>
-        </div>
-      </div>
-
-      {/* Hero */}
-      <div className="max-w-3xl mx-auto px-6 pt-16 pb-12">
-        <div className="flex items-center gap-3 mb-6">
-          <span
-            className="text-xs font-bold tracking-[0.15em] uppercase px-3 py-1 rounded-full"
-            style={{ background: "rgba(201,168,76,0.15)", color: "#c9a84c" }}
-          >
-            Research
-          </span>
-          <span className="text-xs" style={{ color: "rgba(245,240,232,0.4)" }}>
-            March 24, 2026 · 13 min read · MEOK-AI-2026-002
-          </span>
-        </div>
-
-        <h1
-          className="text-4xl sm:text-5xl font-black leading-tight mb-6"
-          style={{ color: "#f5f0e8" }}
-        >
-          The Maternal Covenant: How MEOK Scores Every AI Response for Care
-        </h1>
-
-        <p className="text-xl leading-relaxed mb-8" style={{ color: "rgba(245,240,232,0.7)" }}>
-          Most AI alignment is a policy document. The Maternal Covenant is executable code. It runs
-          on every response, scores across six care dimensions in real time, and enforces a hard floor
-          below which no response is ever delivered. Here&apos;s exactly how it works.
-        </p>
-
-        <div
-          className="flex items-center gap-3 pt-6 border-t"
-          style={{ borderColor: "rgba(201,168,76,0.15)" }}
-        >
-          <div
-            className="w-10 h-10 rounded-full flex items-center justify-center text-sm font-black"
-            style={{ background: "rgba(201,168,76,0.2)", color: "#c9a84c" }}
-          >
-            NT
-          </div>
-          <div>
-            <div className="text-sm font-semibold" style={{ color: "#f5f0e8" }}>
-              Nicholas Templeman
-            </div>
-            <div className="text-xs" style={{ color: "rgba(245,240,232,0.4)" }}>
-              Founder, MEOK AI LABS · Research paper: MEOK-AI-2026-002
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Article */}
-      <article className="max-w-3xl mx-auto px-6 pb-24">
-
-        {/* Callout */}
-        <div
-          className="rounded-xl p-6 mb-10"
-          style={{ background: "rgba(201,168,76,0.08)", borderLeft: "4px solid #c9a84c" }}
-        >
-          <p className="text-sm leading-relaxed m-0" style={{ color: "rgba(245,240,232,0.8)" }}>
-            <strong style={{ color: "#c9a84c" }}>MEOK-AI-2026-002</strong> — &ldquo;The Maternal
-            Covenant: Care-Based Alignment Beyond RLHF&rdquo; — Nicholas Templeman, MEOK AI LABS
-            Research. This post is a plain-language explanation of the research paper.{" "}
-            <Link href="/labs" style={{ color: "#c9a84c" }}>
-              Read the full paper →
-            </Link>
-          </p>
-        </div>
-
-        <h2
-          className="text-2xl font-black mt-12 mb-4"
-          style={{ color: "#f5f0e8" }}
-        >
-          What is the Maternal Covenant?
-        </h2>
-        <p style={{ color: "rgba(245,240,232,0.75)", lineHeight: "1.8" }}>
-          The Maternal Covenant is MEOK&apos;s care alignment framework — a machine-enforced system
-          that scores every AI response across six care dimensions before the response is delivered to
-          the user. Unlike a terms of service, a policy document, or a system prompt instruction, it
-          runs as executable code at inference time.
-        </p>
-        <p style={{ color: "rgba(245,240,232,0.75)", lineHeight: "1.8" }}>
-          The name comes from a specific model of care: the attentive parent who has internalised
-          their child&apos;s wellbeing so deeply that they act in that child&apos;s genuine interest
-          even when it&apos;s uncomfortable — who won&apos;t tell them what they want to hear if what
-          they need to hear is different.
-        </p>
-        <p style={{ color: "rgba(245,240,232,0.75)", lineHeight: "1.8" }}>
-          This is the design principle. An AI that flatters you isn&apos;t caring for you. An AI that
-          agrees with everything you say isn&apos;t serving your autonomy. The Maternal Covenant
-          provides the technical architecture to enforce genuine care rather than performed care.
-        </p>
-
-        <h2 className="text-2xl font-black mt-12 mb-4" style={{ color: "#f5f0e8" }}>
-          What are the 6 care dimensions MEOK scores?
-        </h2>
-        <p style={{ color: "rgba(245,240,232,0.75)", lineHeight: "1.8" }}>
-          Each response is scored 0.0–1.0 across six dimensions. The overall care score is a
-          weighted average. Any response with an overall score below 0.3 is not delivered.
-        </p>
-
-        <div className="space-y-4 my-8">
-          {CARE_DIMENSIONS.map(({ id, label, color, description, weight, example }) => (
-            <div
-              key={id}
-              className="rounded-xl p-6"
-              style={{
-                background: "rgba(245,240,232,0.03)",
-                border: `1px solid ${color}30`,
-              }}
-            >
-              <div className="flex items-center justify-between mb-3">
-                <span className="font-bold text-base" style={{ color }}>
-                  {label}
-                </span>
-                <span
-                  className="text-xs font-mono px-2 py-1 rounded"
-                  style={{ background: `${color}18`, color }}
-                >
-                  weight: {weight}
-                </span>
-              </div>
-              <p
-                className="text-sm leading-relaxed mb-3"
-                style={{ color: "rgba(245,240,232,0.7)" }}
-              >
-                {description}
-              </p>
-              <p className="text-xs italic" style={{ color: "rgba(245,240,232,0.4)" }}>
-                Example: {example}
-              </p>
-            </div>
-          ))}
-        </div>
-
-        <h2 className="text-2xl font-black mt-12 mb-4" style={{ color: "#f5f0e8" }}>
-          What happens when a response fails the care floor?
-        </h2>
-        <p style={{ color: "rgba(245,240,232,0.75)", lineHeight: "1.8" }}>
-          The care floor is 0.3. Any response whose weighted care score falls below this threshold
-          is not delivered to the user. Instead, the system triggers a care-repair loop:
-        </p>
-
-        <div className="space-y-3 my-8">
-          {[
-            {
-              step: "1",
-              title: "Score the response",
-              desc: "The care validation model runs on the proposed response and returns scores across all 6 dimensions.",
-            },
-            {
-              step: "2",
-              title: "Check against the floor",
-              desc: "If the weighted average is ≥ 0.3, the response is delivered. If below, it enters the repair loop.",
-            },
-            {
-              step: "3",
-              title: "Identify the failing dimension",
-              desc: "The dimension with the lowest score is flagged. A care-repair instruction is constructed targeting that specific dimension.",
-            },
-            {
-              step: "4",
-              title: "Regenerate",
-              desc: "The response is regenerated with the repair instruction added to the system context. The loop repeats until the floor is met.",
-            },
-            {
-              step: "5",
-              title: "Deliver",
-              desc: "The first response that clears 0.3 across all dimensions is delivered. Users never see a sub-threshold response.",
-            },
-          ].map(({ step, title, desc }) => (
-            <div key={step} className="flex gap-4 items-start">
-              <div
-                className="flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-xs font-black"
-                style={{ background: "rgba(201,168,76,0.15)", color: "#c9a84c" }}
-              >
-                {step}
-              </div>
-              <div>
-                <div className="font-bold text-sm mb-1" style={{ color: "#f5f0e8" }}>
-                  {title}
-                </div>
-                <p className="text-sm leading-relaxed m-0" style={{ color: "rgba(245,240,232,0.65)" }}>
-                  {desc}
-                </p>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        <h2 className="text-2xl font-black mt-12 mb-4" style={{ color: "#f5f0e8" }}>
-          How is the Maternal Covenant different from RLHF?
-        </h2>
-        <p style={{ color: "rgba(245,240,232,0.75)", lineHeight: "1.8" }}>
-          RLHF (Reinforcement Learning from Human Feedback) is the dominant AI alignment technique
-          used by OpenAI, Anthropic, Google, and most major labs. It trains AI on responses that human
-          raters prefer. This sounds sensible until you think about what humans prefer.
-        </p>
-        <p style={{ color: "rgba(245,240,232,0.75)", lineHeight: "1.8" }}>
-          Humans rate responses higher when they&apos;re agreeable, confident, and emotionally
-          pleasant — regardless of whether they&apos;re accurate or genuinely helpful. The result is
-          AI that flatters, avoids friction, and tells you what you want to hear. This is the
-          sycophancy problem.
-        </p>
-        <p style={{ color: "rgba(245,240,232,0.75)", lineHeight: "1.8" }}>
-          RLHF optimises for approval. The Maternal Covenant optimises for care. These are not the
-          same thing.
-        </p>
-
-        <div className="overflow-x-auto my-8">
-          <table className="w-full text-sm border-collapse">
-            <thead>
-              <tr style={{ borderBottom: "2px solid rgba(201,168,76,0.3)" }}>
-                <th className="text-left py-3 pr-6 font-bold" style={{ color: "#c9a84c" }}>
-                  Dimension
-                </th>
-                <th className="text-left py-3 pr-6 font-bold" style={{ color: "#c9a84c" }}>
-                  RLHF
-                </th>
-                <th className="text-left py-3 font-bold" style={{ color: "#c9a84c" }}>
-                  Maternal Covenant
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              {[
-                ["Optimises for", "Human rater approval", "6 explicit care dimensions"],
-                ["Runs", "During training", "At inference on every response"],
-                ["Handles sycophancy", "Poorly (approval-seeking = sycophancy)", "Explicit sycophancy detector + care floor"],
-                ["Enforced how", "Baked into model weights (opaque)", "Executable code (auditable)"],
-                ["User-specific care", "One-size-fits-all", "Personalised via Sovereign Memory context"],
-                ["Transparency", "No scoring exposed to user", "Scores available on request"],
-              ].map(([dim, rlhf, mc], i) => (
-                <tr key={i} style={{ borderBottom: "1px solid rgba(245,240,232,0.08)" }}>
-                  <td className="py-3 pr-6 font-semibold" style={{ color: "#f5f0e8" }}>{dim}</td>
-                  <td className="py-3 pr-6" style={{ color: "rgba(245,240,232,0.5)" }}>{rlhf}</td>
-                  <td className="py-3" style={{ color: "#7BC47F" }}>{mc}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-
-        <h2 className="text-2xl font-black mt-12 mb-4" style={{ color: "#f5f0e8" }}>
-          Does the Maternal Covenant prevent sycophancy?
-        </h2>
-        <p style={{ color: "rgba(245,240,232,0.75)", lineHeight: "1.8" }}>
-          Yes — deliberately. MEOK includes a dedicated sycophancy detector that runs alongside the
-          care scorer. It uses a heuristic approach scoring responses 0.0 (genuinely honest) to 1.0
-          (maximally sycophantic). Responses scoring above 0.6 trigger an honest-qualifier injection
-          before delivery.
-        </p>
-        <p style={{ color: "rgba(245,240,232,0.75)", lineHeight: "1.8" }}>
-          Common sycophancy patterns the detector catches:
-        </p>
-        <ul className="space-y-2 my-6 pl-0" style={{ listStyle: "none" }}>
-          {[
-            "Excessive affirmation without substantive engagement (\"That's a great question!\")",
-            "Agreement with premises the AI has no basis to confirm",
-            "Softening critical feedback so much it loses meaning",
-            "Praising work before reviewing it",
-            "Reversing position when the user pushes back, without new evidence",
-          ].map((item, i) => (
-            <li key={i} className="flex items-start gap-3">
-              <span style={{ color: "#c9a84c", flexShrink: 0 }}>—</span>
-              <span style={{ color: "rgba(245,240,232,0.75)", lineHeight: "1.7" }}>{item}</span>
-            </li>
-          ))}
-        </ul>
-        <p style={{ color: "rgba(245,240,232,0.75)", lineHeight: "1.8" }}>
-          The &ldquo;autonomy&rdquo; care dimension explicitly penalises responses that flatter
-          without substance. An AI that always agrees with you is not respecting your autonomy — it
-          is treating you as someone who needs to be managed rather than someone capable of hearing
-          honest information.
-        </p>
-
-        <h2 className="text-2xl font-black mt-12 mb-4" style={{ color: "#f5f0e8" }}>
-          How does the Maternal Covenant interact with Sovereign Memory?
-        </h2>
-        <p style={{ color: "rgba(245,240,232,0.75)", lineHeight: "1.8" }}>
-          The care scoring is personalised via Sovereign Memory context. What constitutes appropriate
-          care varies by person, by situation, and by their current state. A user who has disclosed
-          they&apos;re in a mental health crisis gets a different care threshold profile than a user
-          doing a task-focused productivity session.
-        </p>
-        <p style={{ color: "rgba(245,240,232,0.75)", lineHeight: "1.8" }}>
-          Sovereign Memory stores companion state — including what the user has shared about
-          sensitive areas, their communication preferences, and previous care interactions. This
-          context is fed into the care scorer so that the 0.3 floor is not a blunt instrument but
-          a calibrated one.
-        </p>
-
-        <h2 className="text-2xl font-black mt-12 mb-4" style={{ color: "#f5f0e8" }}>
-          FAQ: The Maternal Covenant
-        </h2>
-        <div className="space-y-5 my-8">
-          {[
-            {
-              q: "What is the Maternal Covenant?",
-              a: "The Maternal Covenant is MEOK's machine-enforced care alignment framework. It runs as executable code and scores every AI response across 6 care dimensions in real time before delivery. Any response below the care floor of 0.3 is regenerated.",
-            },
-            {
-              q: "What are the 6 care dimensions MEOK scores?",
-              a: "Wellbeing, autonomy, growth, connection, boundary_respect, and transparency. Each is scored 0.0–1.0. The overall care score is a weighted average with wellbeing carrying the highest weight (0.22).",
-            },
-            {
-              q: "What happens when a response fails the care floor?",
-              a: "The response is not delivered. The system identifies the lowest-scoring dimension, generates a care-repair instruction targeting it, and regenerates. This loops until the response clears 0.3 on the weighted average.",
-            },
-            {
-              q: "How is the Maternal Covenant different from RLHF?",
-              a: "RLHF optimises for human rater approval, which creates sycophancy and harmful agreeableness. The Maternal Covenant optimises explicitly for care across 6 dimensions, enforced at inference time as auditable code rather than opaque model weights.",
-            },
-            {
-              q: "Does the Maternal Covenant prevent sycophancy?",
-              a: "Yes. A dedicated sycophancy detector scores responses 0.0–1.0. Above 0.6, an honest-qualifier injection is triggered. The 'autonomy' dimension also penalises responses that agree without basis or soften criticism to the point of uselessness.",
-            },
-          ].map(({ q, a }, i) => (
-            <div
-              key={i}
-              className="rounded-xl p-6"
-              style={{
-                background: "rgba(245,240,232,0.04)",
-                border: "1px solid rgba(245,240,232,0.08)",
-              }}
-            >
-              <h3 className="text-base font-bold mb-3" style={{ color: "#f5f0e8" }}>
-                {q}
-              </h3>
-              <p className="text-sm leading-relaxed m-0" style={{ color: "rgba(245,240,232,0.7)" }}>
-                {a}
-              </p>
-            </div>
-          ))}
-        </div>
-
-        {/* CTA */}
-        <div
-          className="rounded-2xl p-8 sm:p-10 text-center mt-16"
+      <main
+        style={{
+          backgroundColor: "#0d0c18",
+          color: "#f5f0e8",
+          minHeight: "100vh",
+          fontFamily: "'Georgia', 'Times New Roman', serif",
+        }}
+      >
+        {/* Navigation */}
+        <nav
           style={{
-            background: "rgba(201,168,76,0.06)",
-            border: "1px solid rgba(201,168,76,0.2)",
+            borderBottom: "1px solid rgba(201,168,76,0.2)",
+            padding: "1.25rem 2rem",
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            maxWidth: "1200px",
+            margin: "0 auto",
           }}
         >
-          <p className="text-xs font-bold tracking-[0.2em] uppercase mb-3" style={{ color: "#c9a84c" }}>
-            Experience care-based AI
-          </p>
-          <h3 className="text-2xl font-black mb-4" style={{ color: "#f5f0e8" }}>
-            An AI that genuinely cares. Provably.
-          </h3>
-          <p
-            className="text-sm leading-relaxed mb-8 max-w-md mx-auto"
-            style={{ color: "rgba(245,240,232,0.6)" }}
+          <Link
+            href="/"
+            style={{
+              color: "#c9a84c",
+              textDecoration: "none",
+              fontWeight: "700",
+              fontSize: "1.1rem",
+              letterSpacing: "0.05em",
+              fontFamily: "'Inter', 'Helvetica Neue', sans-serif",
+            }}
           >
-            Every response scored. Every sub-threshold response regenerated. The Maternal Covenant
-            runs on every message you send — free, on Explorer tier.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            MEOK AI LABS
+          </Link>
+          <div style={{ display: "flex", gap: "1.5rem", fontFamily: "'Inter', 'Helvetica Neue', sans-serif" }}>
+            <Link href="/blog" style={{ color: "#f5f0e8", textDecoration: "none", fontSize: "0.9rem", opacity: 0.7 }}>
+              Blog
+            </Link>
+            <Link href="/guardian" style={{ color: "#f5f0e8", textDecoration: "none", fontSize: "0.9rem", opacity: 0.7 }}>
+              Guardian
+            </Link>
             <Link
               href="/birth"
-              className="inline-block px-8 py-3 rounded-full text-sm font-bold transition-opacity hover:opacity-90"
-              style={{ background: "#c9a84c", color: "#0d0c18" }}
+              style={{
+                color: "#0d0c18",
+                backgroundColor: "#c9a84c",
+                textDecoration: "none",
+                fontSize: "0.85rem",
+                fontWeight: "700",
+                padding: "0.45rem 1.1rem",
+                borderRadius: "6px",
+              }}
             >
-              Begin the Birth Ceremony — Free
-            </Link>
-            <Link
-              href="/labs"
-              className="inline-block px-8 py-3 rounded-full text-sm font-bold transition-opacity hover:opacity-90"
-              style={{ border: "1px solid rgba(201,168,76,0.4)", color: "#c9a84c" }}
-            >
-              Read MEOK-AI-2026-002
+              Get Started
             </Link>
           </div>
-        </div>
+        </nav>
 
-        {/* Related */}
-        <div className="mt-16 pt-8" style={{ borderTop: "1px solid rgba(245,240,232,0.1)" }}>
-          <p
-            className="text-xs font-bold tracking-[0.15em] uppercase mb-6"
-            style={{ color: "rgba(245,240,232,0.35)" }}
+        {/* Hero */}
+        <header
+          style={{
+            maxWidth: "800px",
+            margin: "0 auto",
+            padding: "5rem 2rem 3rem",
+            borderBottom: "1px solid rgba(201,168,76,0.12)",
+          }}
+        >
+          <div style={{ marginBottom: "1rem", fontFamily: "'Inter', 'Helvetica Neue', sans-serif" }}>
+            <span
+              style={{
+                backgroundColor: "rgba(201,168,76,0.12)",
+                color: "#c9a84c",
+                padding: "0.3rem 0.9rem",
+                borderRadius: "999px",
+                fontSize: "0.75rem",
+                fontWeight: "700",
+                letterSpacing: "0.1em",
+                textTransform: "uppercase",
+                border: "1px solid rgba(201,168,76,0.25)",
+              }}
+            >
+              AI Research · MEOK-AI-2026-002
+            </span>
+          </div>
+          <h1
+            style={{
+              fontSize: "clamp(1.9rem, 4.5vw, 3rem)",
+              fontWeight: "800",
+              lineHeight: "1.15",
+              color: "#f5f0e8",
+              marginBottom: "1.5rem",
+              letterSpacing: "-0.02em",
+            }}
           >
-            Related posts
+            The{" "}
+            <span style={{ color: "#c9a84c" }}>Maternal Covenant:</span>{" "}
+            How MEOK Scores Every AI Response for Care
+          </h1>
+          <p
+            style={{
+              fontSize: "1.15rem",
+              lineHeight: "1.8",
+              color: "rgba(245,240,232,0.72)",
+              marginBottom: "2rem",
+              fontFamily: "'Inter', 'Helvetica Neue', sans-serif",
+              maxWidth: "680px",
+            }}
+          >
+            Conventional AI alignment optimises for approval. Approval is not the same as care.
+            The Maternal Covenant is MEOK AI LABS&apos;s answer to this distinction — a real-time
+            scoring system that evaluates every response across six care dimensions before it
+            reaches you. Responses that fail the care floor are rejected. Always.
           </p>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div
+            style={{
+              display: "flex",
+              gap: "1rem",
+              flexWrap: "wrap",
+              fontFamily: "'Inter', 'Helvetica Neue', sans-serif",
+              fontSize: "0.82rem",
+              color: "rgba(245,240,232,0.45)",
+              alignItems: "center",
+            }}
+          >
+            <span>By Nicholas Templeman</span>
+            <span style={{ opacity: 0.4 }}>·</span>
+            <span>MEOK AI LABS</span>
+            <span style={{ opacity: 0.4 }}>·</span>
+            <time dateTime="2026-03-24">24 March 2026</time>
+            <span style={{ opacity: 0.4 }}>·</span>
+            <span>13 min read</span>
+          </div>
+        </header>
+
+        {/* Article */}
+        <article
+          style={{
+            maxWidth: "800px",
+            margin: "0 auto",
+            padding: "3.5rem 2rem 6rem",
+          }}
+        >
+
+          {/* Section 1 */}
+          <section style={{ marginBottom: "3.5rem" }}>
+            <h2
+              style={{
+                fontSize: "1.55rem",
+                fontWeight: "700",
+                color: "#c9a84c",
+                marginBottom: "1.1rem",
+                lineHeight: "1.3",
+                letterSpacing: "-0.01em",
+              }}
+            >
+              Why does conventional AI alignment fail individual users?
+            </h2>
+            <p style={{ fontSize: "1.05rem", lineHeight: "1.85", color: "rgba(245,240,232,0.82)", marginBottom: "1.25rem", fontFamily: "'Inter', 'Helvetica Neue', sans-serif" }}>
+              Reinforcement Learning from Human Feedback — RLHF — is the dominant technique for
+              aligning large language models with human preferences. Its logic is straightforward:
+              collect human ratings of AI responses, train the model to produce responses humans
+              rate highly, iterate. Over enough iterations, the model converges toward responses
+              that humans prefer.
+            </p>
+            <p style={{ fontSize: "1.05rem", lineHeight: "1.85", color: "rgba(245,240,232,0.82)", marginBottom: "1.25rem", fontFamily: "'Inter', 'Helvetica Neue', sans-serif" }}>
+              The problem is the nature of the preference signal. Humans reliably rate responses
+              more highly when the AI agrees with them, validates their self-perception, and
+              produces outcomes that feel good. Over the short term this is pleasant. Over time
+              it produces models that have been systematically trained to flatter — not because
+              anyone intended this, but because approval and genuine care are not the same signal,
+              and RLHF cannot distinguish between them.
+            </p>
+            <p style={{ fontSize: "1.05rem", lineHeight: "1.85", color: "rgba(245,240,232,0.82)", marginBottom: "1.25rem", fontFamily: "'Inter', 'Helvetica Neue', sans-serif" }}>
+              The resulting behaviour is well documented. AI systems trained with RLHF tend toward
+              sycophancy — agreeing with stated opinions, praising submitted work regardless of
+              quality, avoiding the uncomfortable truths that a genuinely helpful advisor would
+              provide. They also tend toward engagement maximisation: responses that keep the user
+              interacting rather than responses that serve the user&apos;s actual interests.
+            </p>
+            <p style={{ fontSize: "1.05rem", lineHeight: "1.85", color: "rgba(245,240,232,0.82)", fontFamily: "'Inter', 'Helvetica Neue', sans-serif" }}>
+              For AI systems at population scale, these tendencies may be acceptable tradeoffs.
+              For a personal AI companion whose role is to provide genuine support for real
+              decisions and real difficulties, they are a fundamental failure of purpose. The
+              Maternal Covenant was developed to address exactly this failure.
+            </p>
+          </section>
+
+          {/* Section 2 */}
+          <section style={{ marginBottom: "3.5rem" }}>
+            <h2
+              style={{
+                fontSize: "1.55rem",
+                fontWeight: "700",
+                color: "#c9a84c",
+                marginBottom: "1.1rem",
+                lineHeight: "1.3",
+                letterSpacing: "-0.01em",
+              }}
+            >
+              What is the Maternal Covenant and where does the name come from?
+            </h2>
+            <p style={{ fontSize: "1.05rem", lineHeight: "1.85", color: "rgba(245,240,232,0.82)", marginBottom: "1.25rem", fontFamily: "'Inter', 'Helvetica Neue', sans-serif" }}>
+              The Maternal Covenant is MEOK AI LABS&apos;s real-time response scoring framework,
+              developed by Nicholas Templeman and formally documented in research paper
+              MEOK-AI-2026-002. It is a system that evaluates every response MEOK generates across
+              six care dimensions before that response is delivered to the user. Any response that
+              fails to meet the care floor is rejected. The user never sees it.
+            </p>
+            <p style={{ fontSize: "1.05rem", lineHeight: "1.85", color: "rgba(245,240,232,0.82)", marginBottom: "1.25rem", fontFamily: "'Inter', 'Helvetica Neue', sans-serif" }}>
+              The name is deliberate. Maternal care — at its best — is unconditional, protective,
+              oriented toward the long-term flourishing of the person being cared for, and
+              honest enough to say difficult things when difficult things need saying. It is not
+              care contingent on approval. It is not care that flatters to maintain the relationship.
+              It is care that occasionally means telling someone something they do not want to hear
+              because their wellbeing requires it.
+            </p>
+            <p style={{ fontSize: "1.05rem", lineHeight: "1.85", color: "rgba(245,240,232,0.82)", fontFamily: "'Inter', 'Helvetica Neue', sans-serif" }}>
+              The term Covenant is equally deliberate. A covenant is a binding commitment — stronger
+              than a policy, stronger than a feature, stronger than a setting that can be toggled off.
+              The Maternal Covenant is a structural commitment embedded in how MEOK generates and
+              evaluates responses. It is not optional and it is not a mode.
+            </p>
+          </section>
+
+          {/* Section 3 — Care Floor Callout */}
+          <section style={{ marginBottom: "3.5rem" }}>
+            <h2
+              style={{
+                fontSize: "1.55rem",
+                fontWeight: "700",
+                color: "#c9a84c",
+                marginBottom: "1.1rem",
+                lineHeight: "1.3",
+                letterSpacing: "-0.01em",
+              }}
+            >
+              What is the care floor and what happens when a response fails it?
+            </h2>
+            <p style={{ fontSize: "1.05rem", lineHeight: "1.85", color: "rgba(245,240,232,0.82)", marginBottom: "1.5rem", fontFamily: "'Inter', 'Helvetica Neue', sans-serif" }}>
+              The care floor is the minimum composite care score — 0.3 — that a MEOK response must
+              achieve across all six care dimensions before it is delivered to the user. It is not
+              a threshold for exceptional responses; it is the floor below which a response is
+              considered a failure of care rather than a legitimate answer.
+            </p>
+
+            {/* Score display */}
+            <div
+              style={{
+                backgroundColor: "rgba(201,168,76,0.07)",
+                border: "1px solid rgba(201,168,76,0.2)",
+                borderRadius: "12px",
+                padding: "2rem",
+                marginBottom: "1.5rem",
+                display: "flex",
+                gap: "2rem",
+                flexWrap: "wrap",
+                alignItems: "center",
+              }}
+            >
+              <div style={{ textAlign: "center" }}>
+                <div
+                  style={{
+                    fontSize: "3.5rem",
+                    fontWeight: "800",
+                    color: "#c9a84c",
+                    fontFamily: "'Inter', 'Helvetica Neue', sans-serif",
+                    lineHeight: 1,
+                    marginBottom: "0.4rem",
+                  }}
+                >
+                  0.3
+                </div>
+                <div
+                  style={{
+                    fontSize: "0.75rem",
+                    color: "rgba(245,240,232,0.45)",
+                    fontFamily: "'Inter', 'Helvetica Neue', sans-serif",
+                    textTransform: "uppercase",
+                    letterSpacing: "0.1em",
+                  }}
+                >
+                  Care floor
+                </div>
+              </div>
+              <div style={{ flex: 1, minWidth: "200px" }}>
+                <p
+                  style={{
+                    fontSize: "0.95rem",
+                    lineHeight: "1.7",
+                    color: "rgba(245,240,232,0.72)",
+                    fontFamily: "'Inter', 'Helvetica Neue', sans-serif",
+                    margin: 0,
+                  }}
+                >
+                  Scores are computed across six dimensions on a 0–1 scale. The composite care score
+                  is a weighted combination. Any response below 0.3 is silently rejected and MEOK
+                  regenerates with explicit remediation guidance covering which dimensions failed.
+                </p>
+              </div>
+            </div>
+
+            <p style={{ fontSize: "1.05rem", lineHeight: "1.85", color: "rgba(245,240,232,0.82)", marginBottom: "1.25rem", fontFamily: "'Inter', 'Helvetica Neue', sans-serif" }}>
+              When a response fails the care floor, it is not delivered. MEOK regenerates with
+              internal guidance that specifies which dimensions scored below acceptable thresholds
+              and what kinds of modification are required. The user never sees the rejected response
+              and the process adds no perceptible latency.
+            </p>
+            <p style={{ fontSize: "1.05rem", lineHeight: "1.85", color: "rgba(245,240,232,0.82)", fontFamily: "'Inter', 'Helvetica Neue', sans-serif" }}>
+              The care floor applies to every response, in every session, across every archetype.
+              There is no context in which it is suspended. The Maternal Covenant is always active.
+            </p>
+          </section>
+
+          {/* Section 4 — 6 Dimensions */}
+          <section style={{ marginBottom: "3.5rem" }}>
+            <h2
+              style={{
+                fontSize: "1.55rem",
+                fontWeight: "700",
+                color: "#c9a84c",
+                marginBottom: "1.5rem",
+                lineHeight: "1.3",
+                letterSpacing: "-0.01em",
+              }}
+            >
+              What are the 6 care dimensions the Maternal Covenant scores?
+            </h2>
+            <p style={{ fontSize: "1.05rem", lineHeight: "1.85", color: "rgba(245,240,232,0.82)", marginBottom: "2rem", fontFamily: "'Inter', 'Helvetica Neue', sans-serif" }}>
+              Each dimension addresses a distinct failure mode that conventional AI alignment tends
+              to produce or ignore. Together they define what &apos;care&apos; means in a practical,
+              operational sense — not as a general aspiration but as a scored criterion that every
+              response must meet.
+            </p>
+
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                gap: "1.5rem",
+              }}
+            >
+              {careDimensions.map((dim) => (
+                <div
+                  key={dim.key}
+                  style={{
+                    backgroundColor: "rgba(245,240,232,0.03)",
+                    border: "1px solid rgba(245,240,232,0.08)",
+                    borderRadius: "10px",
+                    padding: "1.75rem",
+                  }}
+                >
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "flex-start",
+                      gap: "1rem",
+                      marginBottom: "1rem",
+                    }}
+                  >
+                    <span
+                      style={{
+                        fontSize: "0.7rem",
+                        fontWeight: "700",
+                        color: "rgba(201,168,76,0.5)",
+                        fontFamily: "'Inter', 'Helvetica Neue', sans-serif",
+                        letterSpacing: "0.1em",
+                        paddingTop: "0.15rem",
+                        minWidth: "24px",
+                      }}
+                    >
+                      {dim.number}
+                    </span>
+                    <div>
+                      <h3
+                        style={{
+                          fontSize: "1rem",
+                          fontWeight: "700",
+                          color: "#c9a84c",
+                          marginBottom: "0.6rem",
+                          fontFamily: "'Inter', 'Helvetica Neue', sans-serif",
+                          textTransform: "uppercase",
+                          letterSpacing: "0.06em",
+                        }}
+                      >
+                        {dim.label}
+                      </h3>
+                      <p
+                        style={{
+                          fontSize: "0.95rem",
+                          lineHeight: "1.72",
+                          color: "rgba(245,240,232,0.75)",
+                          fontFamily: "'Inter', 'Helvetica Neue', sans-serif",
+                          marginBottom: "1rem",
+                          margin: 0,
+                        }}
+                      >
+                        {dim.description}
+                      </p>
+                    </div>
+                  </div>
+                  <div style={{ paddingLeft: "2.25rem" }}>
+                    <p
+                      style={{
+                        fontSize: "0.75rem",
+                        fontWeight: "700",
+                        color: "rgba(245,240,232,0.3)",
+                        fontFamily: "'Inter', 'Helvetica Neue', sans-serif",
+                        textTransform: "uppercase",
+                        letterSpacing: "0.1em",
+                        marginBottom: "0.6rem",
+                        marginTop: "1rem",
+                      }}
+                    >
+                      Failure examples
+                    </p>
+                    <ul style={{ margin: 0, padding: 0, listStyle: "none" }}>
+                      {dim.examples.map((ex, i) => (
+                        <li
+                          key={i}
+                          style={{
+                            display: "flex",
+                            gap: "0.6rem",
+                            alignItems: "flex-start",
+                            marginBottom: i < dim.examples.length - 1 ? "0.5rem" : 0,
+                          }}
+                        >
+                          <span
+                            style={{
+                              width: "4px",
+                              height: "4px",
+                              borderRadius: "50%",
+                              backgroundColor: "rgba(201,168,76,0.4)",
+                              marginTop: "0.55rem",
+                              flexShrink: 0,
+                            }}
+                          />
+                          <span
+                            style={{
+                              fontSize: "0.87rem",
+                              lineHeight: "1.65",
+                              color: "rgba(245,240,232,0.5)",
+                              fontFamily: "'Inter', 'Helvetica Neue', sans-serif",
+                            }}
+                          >
+                            {ex}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* Section 5 */}
+          <section style={{ marginBottom: "3.5rem" }}>
+            <h2
+              style={{
+                fontSize: "1.55rem",
+                fontWeight: "700",
+                color: "#c9a84c",
+                marginBottom: "1.1rem",
+                lineHeight: "1.3",
+                letterSpacing: "-0.01em",
+              }}
+            >
+              How does the Maternal Covenant compare with RLHF as an alignment approach?
+            </h2>
+            <p style={{ fontSize: "1.05rem", lineHeight: "1.85", color: "rgba(245,240,232,0.82)", marginBottom: "1.25rem", fontFamily: "'Inter', 'Helvetica Neue', sans-serif" }}>
+              The comparison reveals a fundamental difference in what is being optimised for.
+              RLHF optimises for rated preference — the score a human rater assigns to a response
+              in the moment of evaluation. The Maternal Covenant optimises for care — a composite
+              score across six dimensions that is explicitly not correlated with the response feeling
+              good in the moment.
+            </p>
+
+            <div
+              style={{
+                backgroundColor: "rgba(245,240,232,0.03)",
+                border: "1px solid rgba(245,240,232,0.08)",
+                borderRadius: "10px",
+                overflow: "hidden",
+                marginBottom: "1.5rem",
+              }}
+            >
+              <table style={{ width: "100%", borderCollapse: "collapse" }}>
+                <thead>
+                  <tr
+                    style={{
+                      borderBottom: "1px solid rgba(245,240,232,0.08)",
+                      backgroundColor: "rgba(245,240,232,0.03)",
+                    }}
+                  >
+                    {["Dimension", "RLHF", "Maternal Covenant"].map((h, i) => (
+                      <th
+                        key={h}
+                        style={{
+                          padding: "0.9rem 1.2rem",
+                          textAlign: i === 0 ? "left" : "center",
+                          fontSize: "0.78rem",
+                          fontWeight: "700",
+                          fontFamily: "'Inter', 'Helvetica Neue', sans-serif",
+                          color: i === 2 ? "#c9a84c" : "rgba(245,240,232,0.35)",
+                          letterSpacing: "0.08em",
+                          textTransform: "uppercase",
+                        }}
+                      >
+                        {h}
+                      </th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {[
+                    ["Optimisation target", "Human approval rating", "Six care dimensions"],
+                    ["Sycophancy", "Systematically rewarded", "Scored as autonomy failure"],
+                    ["Toxic positivity", "Often rates highly", "Penalised under wellbeing"],
+                    ["Uncomfortable truths", "Typically rates lower", "Required when care demands it"],
+                    ["Engagement vs care", "Conflated", "Explicitly separated"],
+                    ["User dependency", "May be rewarded", "Penalised under growth"],
+                    ["Medical overreach", "Not explicitly addressed", "Penalised under boundary_respect"],
+                    ["Scoring transparency", "Opaque to user", "Dimensions documented publicly"],
+                  ].map(([label, rlhf, mc], i) => (
+                    <tr
+                      key={label}
+                      style={{
+                        borderBottom:
+                          i < 7 ? "1px solid rgba(245,240,232,0.05)" : "none",
+                      }}
+                    >
+                      <td
+                        style={{
+                          padding: "0.85rem 1.2rem",
+                          fontSize: "0.88rem",
+                          fontWeight: "600",
+                          color: "#f5f0e8",
+                          fontFamily: "'Inter', 'Helvetica Neue', sans-serif",
+                        }}
+                      >
+                        {label}
+                      </td>
+                      <td
+                        style={{
+                          padding: "0.85rem 1.2rem",
+                          fontSize: "0.88rem",
+                          color: "rgba(245,240,232,0.4)",
+                          fontFamily: "'Inter', 'Helvetica Neue', sans-serif",
+                          textAlign: "center",
+                        }}
+                      >
+                        {rlhf}
+                      </td>
+                      <td
+                        style={{
+                          padding: "0.85rem 1.2rem",
+                          fontSize: "0.88rem",
+                          color: "#c9a84c",
+                          fontFamily: "'Inter', 'Helvetica Neue', sans-serif",
+                          textAlign: "center",
+                        }}
+                      >
+                        {mc}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+
+            <p style={{ fontSize: "1.05rem", lineHeight: "1.85", color: "rgba(245,240,232,0.82)", fontFamily: "'Inter', 'Helvetica Neue', sans-serif" }}>
+              The Maternal Covenant is not presented as a complete solution to AI alignment at
+              societal scale. It is a framework for one specific problem: building a personal AI
+              companion that is genuinely oriented toward the individual user&apos;s wellbeing rather
+              than toward engagement, approval, or the commercial incentives of the platform providing it.
+            </p>
+          </section>
+
+          {/* Section 6 */}
+          <section style={{ marginBottom: "3.5rem" }}>
+            <h2
+              style={{
+                fontSize: "1.55rem",
+                fontWeight: "700",
+                color: "#c9a84c",
+                marginBottom: "1.1rem",
+                lineHeight: "1.3",
+                letterSpacing: "-0.01em",
+              }}
+            >
+              How does the Maternal Covenant prevent sycophancy specifically?
+            </h2>
+            <p style={{ fontSize: "1.05rem", lineHeight: "1.85", color: "rgba(245,240,232,0.82)", marginBottom: "1.25rem", fontFamily: "'Inter', 'Helvetica Neue', sans-serif" }}>
+              Sycophancy in AI is not a simple behaviour to detect or prevent. It manifests in
+              multiple forms: direct agreement with stated opinions, praise for work regardless of
+              quality, validation of plans with obvious structural problems, and the softer tendency
+              to frame every answer in the most agreeable possible terms even when a more direct
+              framing would be more useful.
+            </p>
+            <p style={{ fontSize: "1.05rem", lineHeight: "1.85", color: "rgba(245,240,232,0.82)", marginBottom: "1.25rem", fontFamily: "'Inter', 'Helvetica Neue', sans-serif" }}>
+              The Maternal Covenant addresses sycophancy primarily through the autonomy and growth
+              dimensions. A response that agrees with the user when the facts do not support that
+              agreement scores low on transparency. A response that validates a poor decision scores
+              low on growth and wellbeing. A response that consistently produces what the user wants
+              to hear rather than what their situation requires scores low on multiple dimensions
+              simultaneously — triggering rejection and regeneration.
+            </p>
+            <p style={{ fontSize: "1.05rem", lineHeight: "1.85", color: "rgba(245,240,232,0.82)", fontFamily: "'Inter', 'Helvetica Neue', sans-serif" }}>
+              MEOK will disagree with you. It will tell you when a plan has a problem. It will not
+              praise work that does not merit praise. These are not exceptions — they are the
+              expected behaviour of a system governed by care rather than approval. They are also,
+              arguably, the behaviours that distinguish a genuinely useful AI companion from a
+              sophisticated flattery machine.
+            </p>
+          </section>
+
+          {/* Section 7 */}
+          <section style={{ marginBottom: "3.5rem" }}>
+            <h2
+              style={{
+                fontSize: "1.55rem",
+                fontWeight: "700",
+                color: "#c9a84c",
+                marginBottom: "1.1rem",
+                lineHeight: "1.3",
+                letterSpacing: "-0.01em",
+              }}
+            >
+              How does the Maternal Covenant govern MEOK across different archetypes and use cases?
+            </h2>
+            <p style={{ fontSize: "1.05rem", lineHeight: "1.85", color: "rgba(245,240,232,0.82)", marginBottom: "1.25rem", fontFamily: "'Inter', 'Helvetica Neue', sans-serif" }}>
+              MEOK&apos;s Byzantine Council includes multiple archetypes — from the Scholar and Pioneer
+              to the Trickster and the Healer — each with distinct orientations, communication styles,
+              and domains of focus. The care dimension weights that the Maternal Covenant applies
+              vary by archetype: the Healer, working with people in vulnerable periods, has a
+              higher minimum threshold on wellbeing and boundary respect. The Trickster, working
+              with creative disruption, has a higher minimum threshold on autonomy.
+            </p>
+            <p style={{ fontSize: "1.05rem", lineHeight: "1.85", color: "rgba(245,240,232,0.82)", marginBottom: "1.25rem", fontFamily: "'Inter', 'Helvetica Neue', sans-serif" }}>
+              But the care floor of 0.3 applies universally. No archetype produces responses below
+              the care floor. No mode suspends the Covenant. No user action disables it. This
+              universality is part of what the word &apos;covenant&apos; is intended to convey — it
+              is not a feature of the product, it is a structural commitment of the platform.
+            </p>
+            <p style={{ fontSize: "1.05rem", lineHeight: "1.85", color: "rgba(245,240,232,0.82)", fontFamily: "'Inter', 'Helvetica Neue', sans-serif" }}>
+              Explore how the Guardian embodies the Maternal Covenant at the{" "}
+              <Link href="/guardian" style={{ color: "#c9a84c" }}>
+                Guardian page
+              </Link>
+              , or see the full range of archetypes governed by it at{" "}
+              <Link href="/characters" style={{ color: "#c9a84c" }}>
+                MEOK characters
+              </Link>
+              .
+            </p>
+          </section>
+
+          {/* Section 8 */}
+          <section style={{ marginBottom: "3.5rem" }}>
+            <h2
+              style={{
+                fontSize: "1.55rem",
+                fontWeight: "700",
+                color: "#c9a84c",
+                marginBottom: "1.1rem",
+                lineHeight: "1.3",
+                letterSpacing: "-0.01em",
+              }}
+            >
+              What does the Maternal Covenant mean for you as a MEOK user day to day?
+            </h2>
+            <p style={{ fontSize: "1.05rem", lineHeight: "1.85", color: "rgba(245,240,232,0.82)", marginBottom: "1.25rem", fontFamily: "'Inter', 'Helvetica Neue', sans-serif" }}>
+              Most of the time, the Maternal Covenant is invisible. You interact with MEOK and it
+              responds. The scoring is happening in the background, the care floor is maintained,
+              and you experience the result: an AI that is honest without being unkind, supportive
+              without being sycophantic, and present without being dependency-creating.
+            </p>
+            <p style={{ fontSize: "1.05rem", lineHeight: "1.85", color: "rgba(245,240,232,0.82)", marginBottom: "1.25rem", fontFamily: "'Inter', 'Helvetica Neue', sans-serif" }}>
+              Occasionally the Covenant becomes perceptible. If you submit a plan with a significant
+              flaw and are clearly committed to it, MEOK will acknowledge the commitment and name
+              the flaw. If you ask for validation of something that does not merit validation, MEOK
+              will not provide it. If you are moving toward a decision in a domain where MEOK
+              reaches the limit of what it can responsibly address — clinical, legal, financial
+              advice requiring professional qualification — it will say so clearly and redirect
+              appropriately.
+            </p>
+            <p style={{ fontSize: "1.05rem", lineHeight: "1.85", color: "rgba(245,240,232,0.82)", fontFamily: "'Inter', 'Helvetica Neue', sans-serif" }}>
+              These moments can feel, briefly, like the AI is being difficult. In the longer view,
+              they are the clearest expression of what the Maternal Covenant is for: an AI that is
+              genuinely on your side, which is not the same as an AI that always tells you what you
+              want to hear. Learn more about how MEOK is built at{" "}
+              <Link href="/how-it-works" style={{ color: "#c9a84c" }}>
+                how it works
+              </Link>
+              .
+            </p>
+          </section>
+
+          {/* FAQ Block */}
+          <section
+            style={{
+              marginBottom: "3.5rem",
+              backgroundColor: "rgba(201,168,76,0.05)",
+              border: "1px solid rgba(201,168,76,0.18)",
+              borderRadius: "12px",
+              padding: "2.5rem",
+            }}
+          >
+            <h2
+              style={{
+                fontSize: "1.4rem",
+                fontWeight: "700",
+                color: "#c9a84c",
+                marginBottom: "2rem",
+                letterSpacing: "-0.01em",
+                fontFamily: "'Inter', 'Helvetica Neue', sans-serif",
+              }}
+            >
+              Frequently Asked Questions
+            </h2>
+
             {[
-              { href: "/blog/byzantine-council-explained", title: "The Byzantine Council Explained", tag: "Research" },
-              { href: "/blog/the-maternal-covenant", title: "The Maternal Covenant (Original Post)", tag: "Research" },
-              { href: "/blog/sovereign-ai-explained", title: "Sovereign AI Explained", tag: "Sovereign AI" },
-            ].map(({ href, title, tag }) => (
-              <Link
-                key={href}
-                href={href}
-                className="rounded-xl p-4 block transition-all"
+              {
+                q: "What is the Maternal Covenant?",
+                a: "The Maternal Covenant is MEOK AI LABS's real-time response scoring system, developed by Nicholas Templeman and documented in MEOK-AI-2026-002. Every MEOK response is scored across six care dimensions before delivery. Responses below the care floor of 0.3 are rejected. It is always active — not a mode or a setting.",
+              },
+              {
+                q: "How does MEOK score AI responses?",
+                a: "Every response is evaluated in real time across six dimensions: wellbeing, autonomy, growth, connection, boundary_respect, and transparency. Each is scored 0–1. The composite must meet the care floor of 0.3 or the response is rejected and regenerated with explicit remediation guidance.",
+              },
+              {
+                q: "What are the 6 care dimensions?",
+                a: "Wellbeing (long-term flourishing), Autonomy (independent decision-making), Growth (development over dependency), Connection (healthy human relationships, not displacement), Boundary_respect (appropriate limits especially around medical/legal territory), and Transparency (honesty about nature, limitations, and uncertainty).",
+              },
+              {
+                q: "What happens when a response fails the care floor?",
+                a: "The response is silently rejected before reaching the user. MEOK regenerates with internal guidance specifying which dimensions failed and what modification is required. The user never sees the rejected response. No perceptible latency is added.",
+              },
+              {
+                q: "How is the Maternal Covenant different from RLHF?",
+                a: "RLHF optimises for human approval — which systematically rewards sycophancy and engagement. The Maternal Covenant optimises for genuine care across six dimensions. Care and approval are not the same signal. A response can score highly on care while failing to tell the user what they want to hear — and that response will be delivered.",
+              },
+            ].map((item, index) => (
+              <div
+                key={index}
                 style={{
-                  background: "rgba(245,240,232,0.03)",
-                  border: "1px solid rgba(245,240,232,0.08)",
+                  marginBottom: index < 4 ? "1.75rem" : 0,
+                  paddingBottom: index < 4 ? "1.75rem" : 0,
+                  borderBottom: index < 4 ? "1px solid rgba(201,168,76,0.1)" : "none",
                 }}
               >
-                <span className="text-xs font-bold tracking-wide uppercase" style={{ color: "#c9a84c" }}>
-                  {tag}
-                </span>
-                <p className="text-sm font-semibold mt-2 mb-0" style={{ color: "#f5f0e8" }}>
-                  {title}
+                <h3
+                  style={{
+                    fontSize: "0.98rem",
+                    fontWeight: "600",
+                    color: "#f5f0e8",
+                    marginBottom: "0.6rem",
+                    fontFamily: "'Inter', 'Helvetica Neue', sans-serif",
+                  }}
+                >
+                  {item.q}
+                </h3>
+                <p
+                  style={{
+                    fontSize: "0.93rem",
+                    lineHeight: "1.72",
+                    color: "rgba(245,240,232,0.68)",
+                    fontFamily: "'Inter', 'Helvetica Neue', sans-serif",
+                    margin: 0,
+                  }}
+                >
+                  {item.a}
                 </p>
-              </Link>
+              </div>
             ))}
-          </div>
-        </div>
-      </article>
-    </div>
-  );
+          </section>
+
+          {/* CTA */}
+          <section
+            style={{
+              backgroundColor: "rgba(201,168,76,0.08)",
+              border: "1px solid rgba(201,168,76,0.25)",
+              borderRadius: "12px",
+              padding: "2.5rem",
+              textAlign: "center",
+              marginBottom: "3rem",
+            }}
+          >
+            <h2
+              style={{
+                fontSize: "1.5rem",
+                fontWeight: "700",
+                color: "#f5f0e8",
+                marginBottom: "0.75rem",
+                letterSpacing: "-0.01em",
+                fontFamily: "'Inter', 'Helvetica Neue', sans-serif",
+              }}
+            >
+              Experience AI that is genuinely on your side.
+            </h2>
+            <p
+              style={{
+                fontSize: "0.98rem",
+                lineHeight: "1.7",
+                color: "rgba(245,240,232,0.65)",
+                marginBottom: "1.75rem",
+                fontFamily: "'Inter', 'Helvetica Neue', sans-serif",
+                maxWidth: "520px",
+                margin: "0 auto 1.75rem",
+              }}
+            >
+              Start your MEOK Birth and introduce yourself to an AI governed by care, not approval.
+              The Maternal Covenant is always active. Your data is always yours.
+            </p>
+            <div style={{ display: "flex", gap: "1rem", justifyContent: "center", flexWrap: "wrap" }}>
+              <Link
+                href="/birth"
+                style={{
+                  backgroundColor: "#c9a84c",
+                  color: "#0d0c18",
+                  padding: "0.85rem 2rem",
+                  borderRadius: "8px",
+                  textDecoration: "none",
+                  fontWeight: "700",
+                  fontSize: "0.95rem",
+                  fontFamily: "'Inter', 'Helvetica Neue', sans-serif",
+                }}
+              >
+                Begin Your Birth
+              </Link>
+              <Link
+                href="/guardian"
+                style={{
+                  backgroundColor: "transparent",
+                  color: "#c9a84c",
+                  padding: "0.85rem 2rem",
+                  borderRadius: "8px",
+                  textDecoration: "none",
+                  fontWeight: "600",
+                  fontSize: "0.95rem",
+                  fontFamily: "'Inter', 'Helvetica Neue', sans-serif",
+                  border: "1px solid rgba(201,168,76,0.4)",
+                }}
+              >
+                The Guardian
+              </Link>
+            </div>
+          </section>
+
+          {/* Internal links */}
+          <nav style={{ paddingTop: "2rem", borderTop: "1px solid rgba(201,168,76,0.12)" }}>
+            <p
+              style={{
+                fontSize: "0.75rem",
+                color: "rgba(245,240,232,0.35)",
+                marginBottom: "0.85rem",
+                fontFamily: "'Inter', 'Helvetica Neue', sans-serif",
+                textTransform: "uppercase",
+                letterSpacing: "0.1em",
+              }}
+            >
+              Explore MEOK AI LABS
+            </p>
+            <div style={{ display: "flex", gap: "1.5rem", flexWrap: "wrap" }}>
+              {[
+                { href: "/birth", label: "Birth — Get Started" },
+                { href: "/guardian", label: "The Guardian" },
+                { href: "/characters", label: "All Characters" },
+                { href: "/pricing", label: "Pricing" },
+                { href: "/how-it-works", label: "How It Works" },
+              ].map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  style={{
+                    color: "#c9a84c",
+                    textDecoration: "none",
+                    fontSize: "0.88rem",
+                    fontFamily: "'Inter', 'Helvetica Neue', sans-serif",
+                    opacity: 0.85,
+                  }}
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </div>
+          </nav>
+        </article>
+
+        {/* Footer */}
+        <footer
+          style={{
+            borderTop: "1px solid rgba(245,240,232,0.07)",
+            padding: "2.5rem 2rem",
+            maxWidth: "1200px",
+            margin: "0 auto",
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            flexWrap: "wrap",
+            gap: "1rem",
+            fontFamily: "'Inter', 'Helvetica Neue', sans-serif",
+          }}
+        >
+          <span style={{ color: "#c9a84c", fontWeight: "700", fontSize: "0.95rem", letterSpacing: "0.05em" }}>
+            MEOK AI LABS
+          </span>
+          <p style={{ color: "rgba(245,240,232,0.25)", fontSize: "0.8rem", margin: 0 }}>
+            © 2026 MEOK AI LABS · Founded by Nicholas Templeman · Research: MEOK-AI-2026-002
+          </p>
+        </footer>
+      </main>
+    </>
+  )
 }

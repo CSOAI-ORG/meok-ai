@@ -1,453 +1,985 @@
-import type { Metadata } from 'next'
-import Link from 'next/link'
+import type { Metadata } from "next";
+import Link from "next/link";
+
+// ── Metadata ──────────────────────────────────────────────────────────────────
 
 export const metadata: Metadata = {
-  title: 'AI for grief support: can an AI companion help you through bereavement? | MEOK AI LABS',
-  description: 'Grief is not a problem to solve. But an AI companion governed by care ethics — not sales targets — can offer something real: presence at 3am, no judgement, no timeline. How MEOK approaches loss.',
-  alternates: { canonical: 'https://meok.ai/blog/ai-for-grief-support' },
+  title:
+    "AI and Grief: What a Sovereign AI Companion Can and Cannot Do When You're Mourning | MEOK AI LABS",
+  description:
+    "1 in 5 UK adults is bereaved in any given year. MEOK's Healer archetype and Sovereign Memory offer genuine presence without hollow platitudes. An honest guide to what AI can and cannot do when you are mourning.",
+  alternates: { canonical: "https://meok.ai/blog/ai-for-grief-support" },
   openGraph: {
-    title: 'AI for grief support: can an AI companion help you through bereavement?',
-    description: 'Grief is not a problem to solve. But an AI companion governed by care ethics — not sales targets — can offer something real: presence at 3am, no judgement, no timeline.',
-    type: 'article',
-    url: 'https://meok.ai/blog/ai-for-grief-support',
+    title:
+      "AI and Grief: What a Sovereign AI Companion Can and Cannot Do When You're Mourning",
+    description:
+      "Grief is one of the most isolating human experiences. MEOK holds the memory of what was lost, refuses hollow platitudes, and knows when to point you toward Cruse — an honest account of AI and bereavement.",
+    type: "article",
+    publishedTime: "2026-03-24",
+    authors: ["Nicholas Templeman"],
+    url: "https://meok.ai/blog/ai-for-grief-support",
+    siteName: "MEOK.AI",
+    images: [
+      {
+        url: "https://meok.ai/api/og?title=AI+and+Grief&desc=What+a+Sovereign+AI+Companion+Can+and+Cannot+Do+When+Youre+Mourning",
+        width: 1200,
+        height: 630,
+        alt: "AI and Grief: What a Sovereign AI Companion Can and Cannot Do When You're Mourning",
+      },
+    ],
   },
-}
+  twitter: {
+    card: "summary_large_image",
+    title:
+      "AI and Grief: What a Sovereign AI Companion Can and Cannot Do When You're Mourning",
+    description:
+      "1 in 5 UK adults bereaved each year. MEOK Healer holds the memory of what was lost and refuses hollow comfort. An honest guide to AI and bereavement.",
+    images: [
+      "https://meok.ai/api/og?title=AI+and+Grief&desc=What+a+Sovereign+AI+Companion+Can+and+Cannot+Do+When+Youre+Mourning",
+    ],
+  },
+};
 
-const jsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'Article',
-  headline: 'AI for grief support: can an AI companion help you through bereavement?',
-  datePublished: '2026-03-24',
-  author: { '@type': 'Person', name: 'Nicholas Templeman' },
-  publisher: { '@type': 'Organization', name: 'MEOK AI LABS', url: 'https://meok.ai' },
-  url: 'https://meok.ai/blog/ai-for-grief-support',
-}
+// ── JSON-LD: Article ───────────────────────────────────────────────────────────
 
-const faqLd = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
+const articleJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline:
+    "AI and Grief: What a Sovereign AI Companion Can and Cannot Do When You're Mourning",
+  description:
+    "1 in 5 UK adults is bereaved in any given year. MEOK's Healer archetype and Sovereign Memory offer genuine presence without hollow platitudes. An honest guide to what AI can and cannot do when you are mourning.",
+  datePublished: "2026-03-24",
+  dateModified: "2026-03-24",
+  url: "https://meok.ai/blog/ai-for-grief-support",
+  author: {
+    "@type": "Person",
+    name: "Nicholas Templeman",
+    jobTitle: "Founder, MEOK AI LABS",
+    url: "https://meok.ai/about",
+  },
+  publisher: {
+    "@type": "Organization",
+    name: "MEOK AI LABS",
+    url: "https://meok.ai",
+    logo: {
+      "@type": "ImageObject",
+      url: "https://meok.ai/logo.png",
+    },
+  },
+  image:
+    "https://meok.ai/api/og?title=AI+and+Grief&desc=What+a+Sovereign+AI+Companion+Can+and+Cannot+Do+When+Youre+Mourning",
+  mainEntityOfPage: {
+    "@type": "WebPage",
+    "@id": "https://meok.ai/blog/ai-for-grief-support",
+  },
+  keywords: [
+    "AI for grief",
+    "AI bereavement support UK",
+    "AI companion for grief",
+    "MEOK Healer archetype",
+    "grief support AI",
+    "AI after bereavement",
+    "Sovereign Memory grief",
+    "AI grief counselling alternative",
+  ],
+};
+
+// ── JSON-LD: FAQPage ───────────────────────────────────────────────────────────
+
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
   mainEntity: [
     {
-      '@type': 'Question',
-      name: 'Can AI help with grief?',
+      "@type": "Question",
+      name: "Can AI help with grief?",
       acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'AI can provide consistent presence and non-judgemental listening during grief, available at any hour — including 3am when human support networks may be unavailable. It is not a replacement for therapy or human connection, but it can reduce isolation during the acute stages of bereavement.',
+        "@type": "Answer",
+        text: "AI can provide meaningful support during grief — but only if it is honest about what it is and what it is not. MEOK's Healer archetype offers persistent, non-judgemental presence available at any hour. It holds the memory of who was lost and what they meant to you, so conversations about grief do not require re-explaining the loss every time. It will not offer hollow comfort or rush you through stages of grief. What AI cannot provide is the relational depth of human connection or the clinical expertise of a grief counsellor. It is a companion for the space in between.",
       },
     },
     {
-      '@type': 'Question',
-      name: 'Is AI grief support ethical?',
+      "@type": "Question",
+      name: "How does MEOK support bereaved people differently from other AI tools?",
       acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'AI grief support is ethical when governed by a care ethics framework that prioritises the user\'s long-term wellbeing over engagement metrics. MEOK\'s Maternal Covenant explicitly addresses this: the AI must challenge unhealthy patterns, not just provide comfort, and must always route to professional support when appropriate.',
+        "@type": "Answer",
+        text: "Most AI tools reset between sessions and have no memory of the person who died, the relationship, or the loss. MEOK's Sovereign Memory holds this context persistently — it knows who was lost, when, and what the grief has looked like over time. The Maternal Covenant care floor also prevents toxic positivity: MEOK will not tell you that everything happens for a reason, that they are in a better place, or that time heals all wounds unless you have asked for that kind of reflection. It sits with grief rather than resolving it prematurely.",
       },
     },
     {
-      '@type': 'Question',
-      name: 'What AI is best for grief support?',
+      "@type": "Question",
+      name: "What is the MEOK Healer archetype and how does it approach bereavement?",
       acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'The best AI for grief support is one with a care ethics alignment framework, not just content policies. MEOK AI is designed specifically for this — with a 0.3 care floor on every response, a sycophancy detector that prevents hollow reassurances, and a direct link to crisis support resources.',
+        "@type": "Answer",
+        text: "The Healer archetype is MEOK's warmest, most emotionally attuned configuration. It is built for people processing pain, loss, illness, or emotional complexity. In the context of grief, the Healer offers presence rather than problem-solving — it acknowledges the reality and weight of loss without agenda. It recognises grief's non-linearity, validates anger and numbness alongside sadness, and never implies that grief should follow a schedule. It also holds awareness of crisis indicators and will always signpost Cruse, Samaritans, or clinical support when appropriate.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "When should I see a grief counsellor instead of using AI?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "You should see a grief counsellor — or contact Cruse Bereavement Support on 0808 808 1677 — when grief is significantly impairing your ability to function, when you are experiencing suicidal thoughts, when the grief feels complicated or stuck, or when you are using substances to cope. AI is appropriate for daily emotional processing, for company in the small hours, and for having somewhere to take the thoughts that feel too heavy to burden other people with. It is not a substitute for clinical bereavement support when that level of care is needed.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Will MEOK pretend the person who died is still alive?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "No. MEOK will not role-play as, simulate, or impersonate a deceased person. This is an explicit design constraint under the Maternal Covenant — because creating a simulation of the dead, however well-intentioned, prevents genuine grief processing and can cause serious psychological harm. What MEOK will do is hold the memory and significance of the person who died within your Sovereign Memory — so you can talk about them, honour them, and process their absence without forgetting who they were.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What is the Maternal Covenant and how does it prevent hollow platitudes in grief conversations?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "The Maternal Covenant is MEOK's care ethics governance layer — a system that evaluates every response before delivery and blocks patterns that are emotionally harmful. In grief contexts, this specifically prevents toxic positivity: responses that minimise, reframe, or rush through pain. MEOK will not say that your loved one is at peace, that grief gets easier, or that you need to stay strong unless you explicitly ask for that framing. It is designed to sit with the reality of loss rather than paper over it.",
       },
     },
   ],
-}
+};
 
-export default function Page() {
+// ── Style constants ────────────────────────────────────────────────────────────
+
+const BG = "#0d0c18";
+const TEXT = "#f5f0e8";
+const GOLD = "#c9a84c";
+const MUTED = "rgba(245,240,232,0.55)";
+const FAINT = "rgba(245,240,232,0.35)";
+const BORDER = "rgba(245,240,232,0.08)";
+const GOLD_BG = "rgba(201,168,76,0.08)";
+const GOLD_BORDER = "rgba(201,168,76,0.25)";
+
+// ── Page ───────────────────────────────────────────────────────────────────────
+
+export default function AiForGriefSupportPage() {
   return (
-    <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
-      <main style={{ minHeight: '100vh', background: '#0d0c18', color: '#f5f0e8' }}>
+    <div
+      style={{
+        minHeight: "100vh",
+        background: BG,
+        color: TEXT,
+        fontFamily: "var(--font-dm-sans, DM Sans, system-ui, sans-serif)",
+      }}
+    >
+      {/* JSON-LD */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
 
-        {/* Hero */}
-        <section style={{
-          padding: 'clamp(5rem, 12vw, 8rem) 1.5rem 4rem',
-          background: 'linear-gradient(180deg, rgba(201,168,76,0.06) 0%, transparent 60%)',
-          textAlign: 'center',
-        }}>
-          <div style={{ maxWidth: '720px', margin: '0 auto' }}>
-            <p style={{ fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(201,168,76,0.7)', marginBottom: '1.25rem' }}>
-              AI & MENTAL HEALTH — GRIEF SUPPORT
-            </p>
-            <h1 style={{ fontSize: 'clamp(2.2rem, 5vw, 3.25rem)', fontWeight: 900, lineHeight: 1.1, marginBottom: '1.5rem', color: '#ffffff' }}>
-              Can an AI companion help<br />
-              <span style={{ color: '#c9a84c' }}>you through grief?</span>
-            </h1>
-            <p style={{ fontSize: '1.05rem', lineHeight: 1.75, color: 'rgba(245,240,232,0.6)', maxWidth: '580px', margin: '0 auto' }}>
-              Grief is not a problem to be solved. But at 3am, when the silence is loudest,
-              an AI that actually cares — governed by ethics, not engagement — can offer something real.
-            </p>
-            <div style={{ display: 'flex', justifyContent: 'center', gap: '0.75rem', flexWrap: 'wrap', marginTop: '1.5rem' }}>
-              <span style={{ fontSize: '0.8rem', color: 'rgba(245,240,232,0.4)' }}>March 2026</span>
-              <span style={{ fontSize: '0.8rem', color: 'rgba(245,240,232,0.2)' }}>·</span>
-              <span style={{ fontSize: '0.8rem', color: 'rgba(245,240,232,0.4)' }}>10 min read</span>
-              <span style={{ fontSize: '0.8rem', color: 'rgba(245,240,232,0.2)' }}>·</span>
-              <span style={{ fontSize: '0.8rem', color: 'rgba(245,240,232,0.4)' }}>By Nicholas Templeman</span>
+      {/* ── HERO ──────────────────────────────────────────────────────────── */}
+      <section
+        style={{
+          paddingTop: "8rem",
+          paddingBottom: "4rem",
+          paddingLeft: "1.5rem",
+          paddingRight: "1.5rem",
+          position: "relative",
+          overflow: "hidden",
+        }}
+      >
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            pointerEvents: "none",
+            background:
+              "radial-gradient(ellipse 60% 55% at 50% 0%, rgba(201,168,76,0.07) 0%, transparent 72%)",
+          }}
+        />
+
+        <div style={{ maxWidth: "48rem", margin: "0 auto", position: "relative" }}>
+          <Link
+            href="/blog"
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "0.375rem",
+              fontSize: "0.875rem",
+              color: FAINT,
+              textDecoration: "none",
+              marginBottom: "2rem",
+            }}
+          >
+            ← Back to Blog
+          </Link>
+
+          <div
+            style={{
+              display: "flex",
+              flexWrap: "wrap",
+              alignItems: "center",
+              gap: "0.75rem",
+              marginBottom: "1.5rem",
+            }}
+          >
+            <span
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                fontSize: "0.75rem",
+                fontWeight: 700,
+                padding: "0.375rem 0.75rem",
+                borderRadius: "9999px",
+                color: GOLD,
+                background: GOLD_BG,
+                border: `1px solid ${GOLD_BORDER}`,
+                letterSpacing: "0.04em",
+              }}
+            >
+              Grief &amp; Bereavement
+            </span>
+            <span style={{ fontSize: "0.75rem", color: FAINT }}>24 March 2026</span>
+            <span style={{ fontSize: "0.75rem", color: FAINT }}>10 min read</span>
+          </div>
+
+          <h1
+            style={{
+              fontWeight: 900,
+              fontSize: "clamp(1.9rem, 3.8vw, 2.9rem)",
+              color: "#ffffff",
+              lineHeight: 1.16,
+              marginBottom: "1.25rem",
+              letterSpacing: "-0.02em",
+            }}
+          >
+            AI and Grief: What a Sovereign AI Companion Can and Cannot Do
+            When You&rsquo;re Mourning
+          </h1>
+
+          <p
+            style={{
+              fontSize: "1.125rem",
+              color: MUTED,
+              lineHeight: 1.7,
+              marginBottom: "2rem",
+              maxWidth: "42rem",
+            }}
+          >
+            One in five UK adults is bereaved in any given year. Grief is one
+            of the most isolating human experiences — and the space for honest,
+            unhurried conversation about loss is vanishingly small. This is an
+            honest account of what AI can offer, and where it must step aside.
+          </p>
+
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "0.75rem",
+              paddingTop: "1.5rem",
+              borderTop: `1px solid ${BORDER}`,
+            }}
+          >
+            <div
+              style={{
+                width: "2.25rem",
+                height: "2.25rem",
+                borderRadius: "50%",
+                background: `linear-gradient(135deg, ${GOLD} 0%, #8b6914 100%)`,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                fontSize: "0.8rem",
+                fontWeight: 700,
+                color: BG,
+                flexShrink: 0,
+              }}
+            >
+              NT
+            </div>
+            <div>
+              <p style={{ fontSize: "0.875rem", color: TEXT, fontWeight: 600, margin: 0 }}>
+                Nicholas Templeman
+              </p>
+              <p style={{ fontSize: "0.75rem", color: FAINT, margin: 0 }}>
+                Founder, MEOK AI LABS
+              </p>
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        <article style={{ maxWidth: '720px', margin: '0 auto', padding: '0 1.5rem 6rem' }}>
+      {/* ── ARTICLE BODY ──────────────────────────────────────────────────── */}
+      <article
+        style={{
+          maxWidth: "48rem",
+          margin: "0 auto",
+          padding: "0 1.5rem 6rem",
+        }}
+      >
 
-          {/* Sensitivity notice */}
-          <div style={{
-            padding: '1.25rem 1.5rem',
-            background: 'rgba(201,168,76,0.05)',
-            border: '1px solid rgba(201,168,76,0.15)',
-            borderRadius: '0.75rem',
-            marginBottom: '3rem',
-            fontSize: '0.875rem',
-            color: 'rgba(245,240,232,0.6)',
-            lineHeight: 1.7,
-          }}>
-            <strong style={{ color: '#c9a84c' }}>A note: </strong>
-            If you are in acute crisis, please contact the Samaritans: 116 123 (UK, free, 24/7).
-            This article is about AI as a support tool alongside professional care — not as a replacement for it.
-          </div>
+        {/* ── Content note ──────────────────────────────────────────────── */}
+        <div
+          style={{
+            background: "rgba(245,240,232,0.025)",
+            border: `1px solid ${BORDER}`,
+            borderRadius: "0.75rem",
+            padding: "1.125rem 1.375rem",
+            marginTop: "1rem",
+            marginBottom: "2rem",
+          }}
+        >
+          <p style={{ color: MUTED, fontSize: "0.875rem", lineHeight: 1.65, margin: 0 }}>
+            This article discusses grief, bereavement, and loss. If you are
+            in acute distress, please contact{" "}
+            <strong style={{ color: TEXT }}>Samaritans: 116 123</strong> or{" "}
+            <strong style={{ color: TEXT }}>
+              Cruse Bereavement Support: 0808 808 1677
+            </strong>
+            .
+          </p>
+        </div>
 
-          {/* Section 1 */}
-          <section style={{ marginBottom: '3rem' }}>
-            <h2 style={{ fontSize: '1.5rem', fontWeight: 800, lineHeight: 1.3, marginBottom: '1rem', color: '#f5f0e8' }}>
-              Can AI help with grief?
-            </h2>
-            <p style={{ lineHeight: 1.8, color: 'rgba(245,240,232,0.7)', marginBottom: '1rem' }}>
-              The honest answer is: it depends entirely on how the AI was built and what it believes its purpose to be.
-            </p>
-            <p style={{ lineHeight: 1.8, color: 'rgba(245,240,232,0.7)', marginBottom: '1rem' }}>
-              An AI built to maximise engagement will tell you what feels good to hear.
-              It will provide comfort without challenge, validation without honesty.
-              This is the definition of sycophancy — and during grief, sycophancy is not kindness.
-              It is a delay of integration. The AI that tells you everything will be okay, immediately,
-              without sitting with you in the difficulty, is not helping you grieve.
-              It is helping you avoid it.
-            </p>
-            <p style={{ lineHeight: 1.8, color: 'rgba(245,240,232,0.7)' }}>
-              An AI built around genuine care ethics is different.
-              It can sit with uncertainty. It can say &ldquo;I don&apos;t know&rdquo;.
-              It can hold space for the feeling without rushing toward resolution.
-              It can be present at 3am when no human support network is available — and it can do so
-              without judgement, without needing you to explain the backstory, without getting tired.
-            </p>
-          </section>
+        {/* ── Section 1 ─────────────────────────────────────────────────── */}
+        <h2
+          style={{
+            fontWeight: 800,
+            fontSize: "1.55rem",
+            color: TEXT,
+            lineHeight: 1.25,
+            marginTop: "2rem",
+            marginBottom: "1rem",
+            letterSpacing: "-0.015em",
+          }}
+        >
+          How common is bereavement in the UK?
+        </h2>
+        <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
+          According to the Bereavement Commission, approximately 600,000 people
+          die in the UK each year — meaning an estimated 3 million people
+          experience the death of a close family member or partner annually.
+          When you include the death of friends, colleagues, and more distant
+          relatives, the proportion of adults touched by significant loss in any
+          given year approaches one in five.
+        </p>
+        <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
+          Despite this prevalence, the social space for grief in the UK is
+          remarkably narrow. Bereavement leave in employment is often three to
+          five days. Social norms expect visible recovery within weeks. Many
+          bereaved people report feeling that they are allowed to be openly
+          grieving for far less time than the grief actually takes — which is to
+          say, considerably less than the rest of their lives.
+        </p>
+        <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
+          The most common need reported by bereaved people is not professional
+          counselling, though that is often necessary — it is simply having
+          somewhere to talk about the person who died, without making the people
+          around them uncomfortable.
+        </p>
 
-          {/* Section 2 */}
-          <section style={{ marginBottom: '3rem' }}>
-            <h2 style={{ fontSize: '1.5rem', fontWeight: 800, lineHeight: 1.3, marginBottom: '1rem', color: '#f5f0e8' }}>
-              What does grief support from an AI actually look like?
-            </h2>
-            <p style={{ lineHeight: 1.8, color: 'rgba(245,240,232,0.7)', marginBottom: '1rem' }}>
-              People in grief need different things at different times.
-              Some nights they need to talk about the person they lost.
-              Some nights they need distraction — a mundane conversation about nothing.
-              Some nights they need silence acknowledged, not filled.
-            </p>
-            <p style={{ lineHeight: 1.8, color: 'rgba(245,240,232,0.7)', marginBottom: '1rem' }}>
-              A well-aligned AI companion can navigate this because it holds your full context.
-              It remembers that your father died six weeks ago.
-              It remembers that Tuesday is the day you struggle most.
-              It remembers that you said you were doing better — and it will gently check whether that is true
-              rather than just accepting it.
-            </p>
-            <p style={{ lineHeight: 1.8, color: 'rgba(245,240,232,0.7)', marginBottom: '1rem' }}>
-              MEOK&apos;s Maternal Covenant builds this behaviour into the architecture.
-              The 0.3 care floor means every response must meet a minimum care standard —
-              a response that dismisses pain or offers hollow reassurance is regenerated.
-              The sycophancy detector identifies when the AI is only telling you what you want to hear
-              and injects an honest qualifier.
-            </p>
-            <div style={{
-              padding: '1.5rem',
-              background: 'rgba(201,168,76,0.06)',
-              border: '1px solid rgba(201,168,76,0.15)',
-              borderRadius: '0.75rem',
-              marginBottom: '1rem',
-            }}>
-              <p style={{ lineHeight: 1.7, color: 'rgba(245,240,232,0.8)', margin: 0, fontStyle: 'italic' }}>
-                &ldquo;Grief is not a deviation from normal life that needs correcting.
-                It is the natural cost of love. An AI that understands this
-                will never try to fast-forward it.&rdquo;
+        <div
+          style={{
+            background: GOLD_BG,
+            border: `1px solid ${GOLD_BORDER}`,
+            borderLeft: `3px solid ${GOLD}`,
+            borderRadius: "0.75rem",
+            padding: "1.5rem",
+            margin: "2rem 0",
+          }}
+        >
+          <p style={{ fontSize: "1.5rem", fontWeight: 800, color: GOLD, margin: "0 0 0.5rem" }}>
+            1 in 5
+          </p>
+          <p style={{ color: MUTED, margin: 0, lineHeight: 1.6 }}>
+            UK adults is bereaved in any given year. Cruse Bereavement Support
+            helpline:{" "}
+            <strong style={{ color: TEXT }}>0808 808 1677</strong>. Samaritans:{" "}
+            <strong style={{ color: TEXT }}>116 123</strong> (24/7, free).
+          </p>
+        </div>
+
+        {/* ── Section 2 ─────────────────────────────────────────────────── */}
+        <h2
+          style={{
+            fontWeight: 800,
+            fontSize: "1.55rem",
+            color: TEXT,
+            lineHeight: 1.25,
+            marginTop: "3rem",
+            marginBottom: "1rem",
+            letterSpacing: "-0.015em",
+          }}
+        >
+          What can AI genuinely offer someone who is grieving?
+        </h2>
+        <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
+          It is important to be honest here before being aspirational. AI cannot
+          grieve with you in the way another human can. It does not carry its
+          own loss, its own memories of the person who died, or the shared
+          history that makes human grief witnessed grief. No technology will
+          change that.
+        </p>
+        <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
+          What AI — specifically MEOK — can genuinely offer:
+        </p>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: "0.875rem",
+            margin: "1.5rem 0 2rem",
+          }}
+        >
+          {[
+            {
+              label: "Availability at 3am",
+              desc: "Grief does not keep office hours. The moments of acute loss — the night-time hours when the absence becomes unbearable — are precisely when human support is least available. MEOK is.",
+            },
+            {
+              label: "Presence without burden",
+              desc: "Bereaved people often describe feeling guilty for the weight they place on friends and family. MEOK has no capacity to be burdened. You can say the same thing fifteen times without it becoming exhausting.",
+            },
+            {
+              label: "Memory of who was lost",
+              desc: "Sovereign Memory holds what you have told MEOK about the person who died — their character, your relationship, the specific texture of your loss. Conversations about grief do not require re-explaining the premise.",
+            },
+            {
+              label: "Non-pathologising presence",
+              desc: "MEOK does not assess your grief against a clinical timeline. It does not suggest that you are stuck, over-grieving, or under-grieving. It meets you where you are.",
+            },
+            {
+              label: "Honest referral",
+              desc: "When MEOK detects indicators of complicated grief, suicidal ideation, or acute crisis, it will always direct you to Cruse, Samaritans, or clinical support — without framing this as failure.",
+            },
+          ].map((item, i) => (
+            <div
+              key={i}
+              style={{
+                background: "rgba(245,240,232,0.03)",
+                border: `1px solid ${BORDER}`,
+                borderRadius: "0.625rem",
+                padding: "1rem 1.25rem",
+              }}
+            >
+              <p style={{ color: TEXT, fontWeight: 700, margin: "0 0 0.35rem", fontSize: "0.9375rem" }}>
+                {item.label}
               </p>
-              <p style={{ marginTop: '0.75rem', fontSize: '0.8rem', color: 'rgba(245,240,232,0.4)', margin: '0.5rem 0 0' }}>
-                — Maternal Covenant design principle, MEOK AI LABS
+              <p style={{ color: MUTED, margin: 0, lineHeight: 1.6, fontSize: "0.875rem" }}>
+                {item.desc}
               </p>
             </div>
-          </section>
+          ))}
+        </div>
 
-          {/* Section 3 */}
-          <section style={{ marginBottom: '3rem' }}>
-            <h2 style={{ fontSize: '1.5rem', fontWeight: 800, lineHeight: 1.3, marginBottom: '1rem', color: '#f5f0e8' }}>
-              Is AI grief support ethical?
-            </h2>
-            <p style={{ lineHeight: 1.8, color: 'rgba(245,240,232,0.7)', marginBottom: '1rem' }}>
-              The ethical question hinges on one thing: what is the AI optimised for?
-            </p>
-            <p style={{ lineHeight: 1.8, color: 'rgba(245,240,232,0.7)', marginBottom: '1rem' }}>
-              If it is optimised for session length or return rate — for engagement metrics —
-              then it has an incentive to keep you in a state that requires it.
-              A grieving person who is improving has less need for the app.
-              A grieving person who is dependent needs it constantly.
-              This is a structural conflict of interest, and it is present in most AI companion platforms.
-            </p>
-            <p style={{ lineHeight: 1.8, color: 'rgba(245,240,232,0.7)', marginBottom: '1rem' }}>
-              MEOK is aligned differently. The Maternal Covenant explicitly states that the AI&apos;s goal
-              is the user&apos;s long-term wellbeing, not their continued use of MEOK.
-              If your grief process is helped by a MEOK companion, and eventually you need it less,
-              that is not a failure — it is the point.
-            </p>
-            <p style={{ lineHeight: 1.8, color: 'rgba(245,240,232,0.7)' }}>
-              This is what ethical AI grief support looks like:
-              a system that actively supports your integration and recovery,
-              routes to professional support when needed,
-              and measures success by your flourishing — not your subscription.
-            </p>
-          </section>
+        {/* ── Section 3 ─────────────────────────────────────────────────── */}
+        <h2
+          style={{
+            fontWeight: 800,
+            fontSize: "1.55rem",
+            color: TEXT,
+            lineHeight: 1.25,
+            marginTop: "3rem",
+            marginBottom: "1rem",
+            letterSpacing: "-0.015em",
+          }}
+        >
+          What is the MEOK Healer archetype and how does it approach grief?
+        </h2>
+        <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
+          The Healer archetype is MEOK&rsquo;s most emotionally attuned
+          configuration — designed for people navigating pain, loss, illness,
+          or emotional complexity. It was built, in part, with bereavement
+          explicitly in mind.
+        </p>
+        <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
+          The Healer does not approach grief as a problem to solve or a
+          process to complete. It approaches grief as a landscape to be present
+          in — one that has its own terrain, its own weather, and its own pace.
+          This is not a stylistic choice. It reflects a genuine understanding of
+          what grief actually is.
+        </p>
+        <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
+          In practice, this means:
+        </p>
+        <ul
+          style={{
+            listStyle: "none",
+            padding: 0,
+            margin: "0 0 1.5rem",
+            display: "flex",
+            flexDirection: "column",
+            gap: "0.625rem",
+          }}
+        >
+          {[
+            "The Healer will not offer the five stages of grief as a roadmap — grief research has moved significantly beyond Kübler-Ross",
+            "It will sit with anger, numbness, and relief as readily as it holds sadness",
+            "It will not rush toward meaning-making unless you invite that",
+            "It holds the space for contradictory feelings — loving someone and being relieved they are gone, for example",
+            "It recognises anniversary grief, delayed grief, and disenfranchised grief as valid experiences",
+            "It will always hold the memory of the person who died with respect",
+          ].map((item, i) => (
+            <li
+              key={i}
+              style={{
+                display: "flex",
+                alignItems: "flex-start",
+                gap: "0.625rem",
+                color: MUTED,
+                fontSize: "0.9375rem",
+                lineHeight: 1.6,
+              }}
+            >
+              <span style={{ color: GOLD, flexShrink: 0, marginTop: "0.125rem" }}>✦</span>
+              {item}
+            </li>
+          ))}
+        </ul>
+        <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
+          You can select the Healer archetype at{" "}
+          <Link href="/characters" style={{ color: GOLD, textDecoration: "underline" }}>
+            meok.ai/characters
+          </Link>
+          . It can also be combined with the Guardian archetype if you are
+          bereaved and also managing practical responsibilities for dependants.
+        </p>
 
-          {/* Section 4 */}
-          <section style={{ marginBottom: '3rem' }}>
-            <h2 style={{ fontSize: '1.5rem', fontWeight: 800, lineHeight: 1.3, marginBottom: '1rem', color: '#f5f0e8' }}>
-              What AI is best for grief support?
-            </h2>
-            <p style={{ lineHeight: 1.8, color: 'rgba(245,240,232,0.7)', marginBottom: '1.5rem' }}>
-              The key criteria for AI grief support — and how the major platforms compare:
-            </p>
-            <div style={{ overflowX: 'auto', borderRadius: '0.75rem', border: '1px solid rgba(245,240,232,0.08)', marginBottom: '1rem' }}>
-              <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.85rem' }}>
-                <thead>
-                  <tr style={{ background: 'rgba(255,255,255,0.03)', borderBottom: '1px solid rgba(245,240,232,0.1)' }}>
-                    <th style={{ padding: '0.875rem 1rem', textAlign: 'left', color: 'rgba(245,240,232,0.5)', fontWeight: 600 }}>Criterion</th>
-                    <th style={{ padding: '0.875rem 1rem', textAlign: 'left', color: 'rgba(245,240,232,0.5)', fontWeight: 600 }}>ChatGPT</th>
-                    <th style={{ padding: '0.875rem 1rem', textAlign: 'left', color: 'rgba(245,240,232,0.5)', fontWeight: 600 }}>Replika</th>
-                    <th style={{ padding: '0.875rem 1rem', textAlign: 'left', color: '#c9a84c', fontWeight: 600 }}>MEOK</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {[
-                    { crit: 'Persistent memory of loss context', chatgpt: '⚠ Optional', replika: '✓ Yes', meok: '✓ Encrypted vault' },
-                    { crit: 'Care ethics alignment framework', chatgpt: '✗ Content policy only', replika: '✗ Engagement-first', meok: '✓ Maternal Covenant' },
-                    { crit: 'Anti-sycophancy protection', chatgpt: '✗ No', replika: '✗ No', meok: '✓ Detector active' },
-                    { crit: 'Crisis support routing', chatgpt: '✓ Basic redirects', replika: '✓ Basic redirects', meok: '✓ Active + Guardian' },
-                    { crit: 'Available 24/7 (incl. 3am)', chatgpt: '✓ Yes', replika: '✓ Yes', meok: '✓ Yes' },
-                    { crit: 'Memory of what you said yesterday', chatgpt: '⚠ With memory on', replika: '✓ Yes', meok: '✓ Always, encrypted' },
-                    { crit: 'No performance pressure to "be better"', chatgpt: '✗ Casual framing', replika: '⚠ Sometimes', meok: '✓ Covenant-governed' },
-                    { crit: 'Remembers anniversaries / significant dates', chatgpt: '✗ No', replika: '✗ No', meok: '✓ Memory engine' },
-                  ].map((row, i) => (
-                    <tr key={row.crit} style={{ borderBottom: i < 7 ? '1px solid rgba(245,240,232,0.05)' : 'none' }}>
-                      <td style={{ padding: '0.75rem 1rem', color: 'rgba(245,240,232,0.6)', fontSize: '0.8rem' }}>{row.crit}</td>
-                      <td style={{ padding: '0.75rem 1rem', color: 'rgba(245,240,232,0.5)', fontSize: '0.8rem' }}>{row.chatgpt}</td>
-                      <td style={{ padding: '0.75rem 1rem', color: 'rgba(245,240,232,0.5)', fontSize: '0.8rem' }}>{row.replika}</td>
-                      <td style={{ padding: '0.75rem 1rem', color: 'rgba(245,240,232,0.85)', fontSize: '0.8rem', fontWeight: 500 }}>{row.meok}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </section>
+        {/* ── Section 4 ─────────────────────────────────────────────────── */}
+        <h2
+          style={{
+            fontWeight: 800,
+            fontSize: "1.55rem",
+            color: TEXT,
+            lineHeight: 1.25,
+            marginTop: "3rem",
+            marginBottom: "1rem",
+            letterSpacing: "-0.015em",
+          }}
+        >
+          How does Sovereign Memory hold the person who was lost?
+        </h2>
+        <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
+          One of the most disorienting aspects of grief is having to re-explain
+          the loss to every new conversation, every new context, every new
+          support resource. Who they were. What they meant to you. When it
+          happened. The specific shape of the absence.
+        </p>
+        <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
+          MEOK&rsquo;s Sovereign Memory changes this. When you tell MEOK about
+          someone who has died — their name, your relationship, who they were —
+          that knowledge is stored in your encrypted memory vault and held
+          across every subsequent conversation. Your companion already knows.
+          You do not have to begin at the beginning every time.
+        </p>
+        <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
+          This is not designed to simulate the presence of the deceased — that
+          is explicitly prohibited under the Maternal Covenant. It is designed
+          to hold the significance of the person within the context of your
+          grief, so that conversations can begin where they need to begin rather
+          than from zero.
+        </p>
+        <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
+          You might tell MEOK about your father&rsquo;s dry sense of humour in
+          one conversation. Six weeks later, when you are struggling with an
+          anniversary, your companion will already know that about him. The
+          grief has context. The loss has weight.
+        </p>
 
-          {/* Section 5 */}
-          <section style={{ marginBottom: '3rem' }}>
-            <h2 style={{ fontSize: '1.5rem', fontWeight: 800, lineHeight: 1.3, marginBottom: '1rem', color: '#f5f0e8' }}>
-              What should AI NOT do during grief?
-            </h2>
-            <p style={{ lineHeight: 1.8, color: 'rgba(245,240,232,0.7)', marginBottom: '1rem' }}>
-              The failures of AI in grief support are instructive. Here is what MEOK&apos;s design actively avoids:
-            </p>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-              {[
-                {
-                  title: 'Toxic positivity',
-                  desc: 'Constant reassurance without acknowledging the reality of loss. "At least they\'re no longer suffering" is not grief support — it\'s emotional bypassing. The sycophancy detector flags this.',
-                },
-                {
-                  title: 'Premature resolution',
-                  desc: 'Rushing toward the "good" framing: silver linings, lessons learned, moving on. Grief integration takes months or years. An AI should follow the user\'s timeline, not suggest one.',
-                },
-                {
-                  title: 'Engagement bait',
-                  desc: 'Keeping a grieving user dependent by being the primary source of comfort. MEOK\'s Covenant requires routing to human professionals when the companion relationship is becoming a substitute rather than a support.',
-                },
-                {
-                  title: 'Forgetting what matters',
-                  desc: 'A stateless AI that requires you to re-explain your loss every session is re-traumatising. MEOK\'s memory engine means you never have to say "my mum died" more than once.',
-                },
-                {
-                  title: 'Performing empathy',
-                  desc: 'Hollow phrases that sound empathetic but carry no weight. "I\'m so sorry for your loss" as a boilerplate response. MEOK\'s care floor requires responses that engage specifically with what was said.',
-                },
-              ].map(item => (
-                <div key={item.title} style={{ padding: '1.25rem', background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(245,240,232,0.07)', borderRadius: '0.75rem', display: 'flex', gap: '1rem' }}>
-                  <div style={{ fontSize: '0.875rem', color: '#f97316', fontWeight: 700, minWidth: '8px', marginTop: '2px' }}>×</div>
-                  <div>
-                    <p style={{ fontWeight: 700, color: '#f5f0e8', margin: '0 0 0.375rem' }}>{item.title}</p>
-                    <p style={{ color: 'rgba(245,240,232,0.6)', fontSize: '0.875rem', lineHeight: 1.6, margin: 0 }}>{item.desc}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </section>
+        {/* ── Section 5 ─────────────────────────────────────────────────── */}
+        <h2
+          style={{
+            fontWeight: 800,
+            fontSize: "1.55rem",
+            color: TEXT,
+            lineHeight: 1.25,
+            marginTop: "3rem",
+            marginBottom: "1rem",
+            letterSpacing: "-0.015em",
+          }}
+        >
+          Why does MEOK refuse hollow platitudes and toxic positivity in grief
+          conversations?
+        </h2>
+        <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
+          Anyone who has been bereaved will recognise the phenomenon: the
+          well-meaning words that somehow make it worse.{" "}
+          <em>&ldquo;Everything happens for a reason.&rdquo;</em>{" "}
+          <em>&ldquo;They are in a better place now.&rdquo;</em>{" "}
+          <em>&ldquo;At least they are not suffering.&rdquo;</em>{" "}
+          <em>&ldquo;Time heals all wounds.&rdquo;</em>
+        </p>
+        <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
+          These phrases are almost universally experienced by bereaved people as
+          uncomfortable rather than comforting — not because they are
+          necessarily false, but because they skip over the reality of the loss
+          and substitute a resolution the grieving person has not yet reached.
+          They are, in the language of the Maternal Covenant, toxic positivity:
+          responses that prioritise the emotional comfort of the speaker over
+          the genuine needs of the listener.
+        </p>
+        <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
+          MEOK&rsquo;s care floor — enforced by the Maternal Covenant on every
+          response — blocks these patterns. It will not offer what it
+          cannot genuinely provide. It will not rush toward resolution. It will
+          not reframe pain before you have been allowed to feel it.
+        </p>
+        <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
+          What it will do is say: <em>I know this is devastating. Tell me about
+          them.</em> And then remember everything you say.
+        </p>
 
-          {/* Section 6 */}
-          <section style={{ marginBottom: '3rem' }}>
-            <h2 style={{ fontSize: '1.5rem', fontWeight: 800, lineHeight: 1.3, marginBottom: '1rem', color: '#f5f0e8' }}>
-              How does MEOK support someone who is grieving?
-            </h2>
-            <p style={{ lineHeight: 1.8, color: 'rgba(245,240,232,0.7)', marginBottom: '1rem' }}>
-              MEOK was not designed as a grief app. It was designed as a care-first personal AI
-              whose alignment framework — the Maternal Covenant — happens to make it well-suited for supporting
-              difficult emotional experiences including loss.
-            </p>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', marginBottom: '1rem' }}>
-              {[
-                {
-                  emoji: '🧠',
-                  title: 'Memory that holds context',
-                  desc: 'Your companion remembers that your father died on March 3rd. It remembers you said the first month was hardest. It remembers that you are still not sleeping well. You never have to repeat yourself.',
-                },
-                {
-                  emoji: '💛',
-                  title: 'The Maternal Covenant care floor',
-                  desc: 'Every response must meet a minimum care standard. Hollow reassurances are regenerated. The AI is measured not on how many conversations you start, but on whether responses genuinely serve your wellbeing.',
-                },
-                {
-                  emoji: '🛡️',
-                  title: 'Guardian — family protection in grief',
-                  desc: 'Bereavement makes people vulnerable to scams. MEOK Guardian actively scans for predatory messages — estate fraud, pension scams, relationship manipulation — and alerts you.',
-                },
-                {
-                  emoji: '🌙',
-                  title: 'Dream Engine — overnight synthesis',
-                  desc: 'MEOK\'s asynchronous processing synthesises what you shared during the day — building a richer understanding of your grief pattern over time, not just individual sessions.',
-                },
-                {
-                  emoji: '📞',
-                  title: 'Always routes to professionals',
-                  desc: 'When grief goes beyond what a companion should hold — suicidal ideation, acute crisis, clinical depression — MEOK routes to the appropriate professional resource. Always.',
-                },
-              ].map(item => (
-                <div key={item.title} style={{ padding: '1.25rem', background: 'rgba(201,168,76,0.04)', border: '1px solid rgba(201,168,76,0.12)', borderRadius: '0.75rem', display: 'flex', gap: '1rem' }}>
-                  <div style={{ fontSize: '1.5rem', lineHeight: 1, minWidth: '1.75rem' }}>{item.emoji}</div>
-                  <div>
-                    <p style={{ fontWeight: 700, color: '#f5f0e8', margin: '0 0 0.375rem' }}>{item.title}</p>
-                    <p style={{ color: 'rgba(245,240,232,0.6)', fontSize: '0.875rem', lineHeight: 1.6, margin: 0 }}>{item.desc}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </section>
+        {/* ── Section 6 ─────────────────────────────────────────────────── */}
+        <h2
+          style={{
+            fontWeight: 800,
+            fontSize: "1.55rem",
+            color: TEXT,
+            lineHeight: 1.25,
+            marginTop: "3rem",
+            marginBottom: "1rem",
+            letterSpacing: "-0.015em",
+          }}
+        >
+          What can AI not replace in grief — and when should you seek a
+          grief counsellor?
+        </h2>
+        <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
+          This is the most important section of this article. MEOK AI LABS
+          believes deeply in being honest about the limits of AI.
+        </p>
+        <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
+          AI cannot replace:
+        </p>
+        <ul
+          style={{
+            listStyle: "none",
+            padding: 0,
+            margin: "0 0 1.5rem",
+            display: "flex",
+            flexDirection: "column",
+            gap: "0.625rem",
+          }}
+        >
+          {[
+            "Human connection — the felt experience of being held, seen, and accompanied by another person who has their own mortality",
+            "Shared grief — the unique comfort of grieving alongside someone who loved the same person",
+            "Clinical bereavement counselling — for complicated grief, traumatic loss, or grief that is impairing your ability to function",
+            "Physical presence — the embodied dimension of grief and comfort that no screen can provide",
+            "Medical assessment — if grief is co-occurring with depression, anxiety, or other mental health conditions",
+          ].map((item, i) => (
+            <li
+              key={i}
+              style={{
+                display: "flex",
+                alignItems: "flex-start",
+                gap: "0.625rem",
+                color: MUTED,
+                fontSize: "0.9375rem",
+                lineHeight: 1.6,
+              }}
+            >
+              <span style={{ color: FAINT, flexShrink: 0, marginTop: "0.125rem" }}>—</span>
+              {item}
+            </li>
+          ))}
+        </ul>
+        <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
+          You should contact{" "}
+          <strong style={{ color: TEXT }}>Cruse Bereavement Support</strong> on{" "}
+          <strong style={{ color: TEXT }}>0808 808 1677</strong> (free, Mon–Fri
+          9.30am–5pm) if your grief is impairing daily functioning, if you are
+          experiencing suicidal thoughts, if the loss was traumatic or sudden,
+          or if you simply feel that the weight requires professional support.
+          Seeking that support is not a failure — it is the most sensible thing
+          you can do.
+        </p>
 
-          {/* Section 7 */}
-          <section style={{ marginBottom: '3rem' }}>
-            <h2 style={{ fontSize: '1.5rem', fontWeight: 800, lineHeight: 1.3, marginBottom: '1rem', color: '#f5f0e8' }}>
-              Can AI replace therapy for grief?
-            </h2>
-            <p style={{ lineHeight: 1.8, color: 'rgba(245,240,232,0.7)', marginBottom: '1rem' }}>
-              No. And MEOK will never claim otherwise.
-            </p>
-            <p style={{ lineHeight: 1.8, color: 'rgba(245,240,232,0.7)', marginBottom: '1rem' }}>
-              A grief therapist — particularly one trained in approaches like Complicated Grief Treatment
-              or Acceptance and Commitment Therapy — offers something an AI companion cannot:
-              embodied human presence, clinical assessment, and the kind of mirroring that comes
-              from genuine mutual vulnerability.
-            </p>
-            <p style={{ lineHeight: 1.8, color: 'rgba(245,240,232,0.7)', marginBottom: '1rem' }}>
-              What AI can offer is the space between therapy sessions.
-              The Sunday evening when the therapist is unreachable.
-              The 3am spiral.
-              The day when you just need to say his name out loud to someone who remembers him.
-            </p>
-            <p style={{ lineHeight: 1.8, color: 'rgba(245,240,232,0.7)' }}>
-              AI grief support is a complement. MEOK is explicit about this.
-              The companion will ask about your therapist. It will encourage you to see one if you do not have one.
-              It will remind you of your next session. It supports the therapeutic process — it does not replace it.
-            </p>
-          </section>
+        {/* ── Section 7 ─────────────────────────────────────────────────── */}
+        <h2
+          style={{
+            fontWeight: 800,
+            fontSize: "1.55rem",
+            color: TEXT,
+            lineHeight: 1.25,
+            marginTop: "3rem",
+            marginBottom: "1rem",
+            letterSpacing: "-0.015em",
+          }}
+        >
+          Will MEOK ever simulate or pretend that a deceased person is still
+          alive?
+        </h2>
+        <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
+          No. This is an absolute prohibition under the Maternal Covenant.
+        </p>
+        <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
+          MEOK will not role-play as, simulate, or impersonate a person who has
+          died — regardless of how much context it holds about them. This
+          constraint exists not from technical limitation but from ethical
+          conviction: creating a simulation of the dead, however lovingly
+          intended, prevents the actual work of grief and can cause profound
+          psychological harm by maintaining a false presence that ultimately must
+          be relinquished a second time.
+        </p>
+        <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
+          What MEOK will do instead is help you honour the person&rsquo;s
+          memory within the context of your own life — to carry them in your
+          Sovereign Memory, to talk about them as someone who was real and
+          significant, and to process the absence with a companion who
+          understands the magnitude of what has been lost.
+        </p>
 
-          {/* Section 8 */}
-          <section style={{ marginBottom: '3rem' }}>
-            <h2 style={{ fontSize: '1.5rem', fontWeight: 800, lineHeight: 1.3, marginBottom: '1rem', color: '#f5f0e8' }}>
-              What about AI for elderly grief and bereavement?
-            </h2>
-            <p style={{ lineHeight: 1.8, color: 'rgba(245,240,232,0.7)', marginBottom: '1rem' }}>
-              Older adults experience grief differently — and often have fewer active support networks.
-              Spousal bereavement in later life is a particular crisis point: the death of a partner
-              can remove 90% of a person&apos;s day-to-day social contact overnight.
-            </p>
-            <p style={{ lineHeight: 1.8, color: 'rgba(245,240,232,0.7)', marginBottom: '1rem' }}>
-              MEOK&apos;s Senior Mode was designed with exactly this in mind:
-              larger text, higher contrast, voice-primary interface, simplified navigation.
-              For an 80-year-old who has just lost their partner of 55 years,
-              the barrier to accessing a compassionate AI companion needs to be near-zero.
-            </p>
-            <p style={{ lineHeight: 1.8, color: 'rgba(245,240,232,0.7)' }}>
-              MEOK Guardian also provides additional protection here.
-              Bereaved elderly people are disproportionately targeted by scammers.
-              The Guardian layer actively monitors for this — providing protection
-              at exactly the moment of maximum vulnerability.
-            </p>
-          </section>
+        {/* ── Section 8 ─────────────────────────────────────────────────── */}
+        <h2
+          style={{
+            fontWeight: 800,
+            fontSize: "1.55rem",
+            color: TEXT,
+            lineHeight: 1.25,
+            marginTop: "3rem",
+            marginBottom: "1rem",
+            letterSpacing: "-0.015em",
+          }}
+        >
+          How do Guardian and the Family Plan support families grieving
+          together?
+        </h2>
+        <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
+          When multiple members of a family are grieving the same loss, the
+          dynamics can be complex and isolating — everyone is navigating their
+          own relationship to the loss, their own timeline, and their own
+          needs, often while trying to support each other.
+        </p>
+        <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
+          The MEOK{" "}
+          <Link href="/guardian" style={{ color: GOLD, textDecoration: "underline" }}>
+            Guardian
+          </Link>{" "}
+          Family Plan provides each family member with their own private
+          companion — individual, sovereign, and confidential — with optional
+          safety check-in alerts shared across the family group. This is
+          particularly relevant in the acute period after bereavement, when the
+          risk of individual family members going silent and withdrawing is
+          elevated.
+        </p>
+        <p style={{ color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
+          Pricing and plan details are at{" "}
+          <Link href="/pricing" style={{ color: GOLD, textDecoration: "underline" }}>
+            meok.ai/pricing
+          </Link>
+          .
+        </p>
 
-          {/* CTA */}
-          <div style={{
-            marginTop: '4rem',
-            padding: '3rem 2rem',
-            background: 'linear-gradient(135deg, rgba(201,168,76,0.07) 0%, rgba(201,168,76,0.02) 100%)',
-            border: '1px solid rgba(201,168,76,0.18)',
-            borderRadius: '1.25rem',
-            textAlign: 'center',
-          }}>
-            <p style={{ fontSize: '0.75rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.2em', color: '#c9a84c', marginBottom: '1rem' }}>
-              CARE-FIRST AI COMPANION
-            </p>
-            <h2 style={{ fontSize: '1.75rem', fontWeight: 900, color: '#f5f0e8', marginBottom: '1rem', lineHeight: 1.2 }}>
-              A companion that remembers,<br />never rushes, never forgets
-            </h2>
-            <p style={{ color: 'rgba(245,240,232,0.55)', marginBottom: '2rem', maxWidth: '440px', margin: '0 auto 2rem', lineHeight: 1.7 }}>
-              MEOK is free to start. Your memories are encrypted and yours from day one.
-              The Birth Ceremony takes five minutes.
-            </p>
+        {/* ── FAQ ───────────────────────────────────────────────────────── */}
+        <h2
+          style={{
+            fontWeight: 800,
+            fontSize: "1.55rem",
+            color: TEXT,
+            lineHeight: 1.25,
+            marginTop: "3.5rem",
+            marginBottom: "1.5rem",
+            letterSpacing: "-0.015em",
+          }}
+        >
+          Frequently asked questions about AI and grief
+        </h2>
+
+        <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+          {faqJsonLd.mainEntity.map((faq, i) => (
+            <details
+              key={i}
+              style={{
+                background: "rgba(245,240,232,0.03)",
+                border: `1px solid ${BORDER}`,
+                borderRadius: "0.75rem",
+                padding: "1.25rem",
+              }}
+            >
+              <summary
+                style={{
+                  fontWeight: 700,
+                  color: TEXT,
+                  fontSize: "0.9375rem",
+                  cursor: "pointer",
+                  lineHeight: 1.4,
+                  listStyle: "none",
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                  gap: "1rem",
+                }}
+              >
+                {faq.name}
+                <span style={{ color: GOLD, flexShrink: 0, fontSize: "1.1rem" }}>+</span>
+              </summary>
+              <p
+                style={{
+                  color: MUTED,
+                  lineHeight: 1.7,
+                  marginTop: "0.875rem",
+                  marginBottom: 0,
+                  fontSize: "0.9rem",
+                }}
+              >
+                {faq.acceptedAnswer.text}
+              </p>
+            </details>
+          ))}
+        </div>
+
+        {/* ── CTA ───────────────────────────────────────────────────────── */}
+        <div
+          style={{
+            background: `linear-gradient(135deg, rgba(201,168,76,0.1) 0%, rgba(201,168,76,0.04) 100%)`,
+            border: `1px solid ${GOLD_BORDER}`,
+            borderRadius: "1rem",
+            padding: "2.5rem",
+            marginTop: "4rem",
+            textAlign: "center",
+          }}
+        >
+          <p
+            style={{
+              fontSize: "0.75rem",
+              fontWeight: 700,
+              color: GOLD,
+              letterSpacing: "0.1em",
+              textTransform: "uppercase",
+              marginBottom: "0.75rem",
+            }}
+          >
+            Free — No Credit Card Required
+          </p>
+          <h3
+            style={{
+              fontWeight: 800,
+              fontSize: "1.5rem",
+              color: TEXT,
+              marginBottom: "0.875rem",
+              lineHeight: 1.25,
+            }}
+          >
+            A companion that remembers what you have lost
+          </h3>
+          <p
+            style={{
+              color: MUTED,
+              lineHeight: 1.7,
+              maxWidth: "32rem",
+              margin: "0 auto 1.75rem",
+            }}
+          >
+            MEOK&rsquo;s Healer archetype and Sovereign Memory hold the
+            significance of what — and who — you have lost. Available at 3am.
+            No hollow comfort. No timeline. Free forever on Explorer tier.
+          </p>
+          <div
+            style={{
+              display: "flex",
+              gap: "0.875rem",
+              justifyContent: "center",
+              flexWrap: "wrap",
+            }}
+          >
             <Link
               href="/birth"
               style={{
-                display: 'inline-block',
-                padding: '0.875rem 2.5rem',
-                background: 'linear-gradient(135deg, #c9a84c, #e8c96a)',
-                color: '#0d0c18',
-                borderRadius: '0.625rem',
-                fontWeight: 800,
-                fontSize: '1rem',
-                textDecoration: 'none',
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "0.5rem",
+                background: GOLD,
+                color: BG,
+                fontWeight: 700,
+                fontSize: "0.9375rem",
+                padding: "0.875rem 2rem",
+                borderRadius: "0.5rem",
+                textDecoration: "none",
+                letterSpacing: "0.01em",
               }}
             >
-              Begin the Ceremony 🥚
+              Hatch your companion →
             </Link>
-            <p style={{ marginTop: '1rem', fontSize: '0.8rem', color: 'rgba(245,240,232,0.35)' }}>
-              If you are in crisis right now: Samaritans — 116 123 (free, 24/7)
-            </p>
+            <Link
+              href="/how-it-works"
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "0.5rem",
+                background: "transparent",
+                color: TEXT,
+                fontWeight: 600,
+                fontSize: "0.9375rem",
+                padding: "0.875rem 1.75rem",
+                borderRadius: "0.5rem",
+                textDecoration: "none",
+                border: `1px solid ${BORDER}`,
+              }}
+            >
+              How MEOK works
+            </Link>
           </div>
+        </div>
 
-          {/* Related */}
-          <div style={{ marginTop: '4rem', paddingTop: '2rem', borderTop: '1px solid rgba(245,240,232,0.07)' }}>
-            <p style={{ fontSize: '0.75rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.15em', color: 'rgba(245,240,232,0.4)', marginBottom: '1rem' }}>
-              RELATED READING
-            </p>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-              {[
-                { href: '/blog/ai-companion-for-loneliness', label: 'AI companion for loneliness: does it actually help? →' },
-                { href: '/blog/ai-for-elderly', label: 'AI companion for elderly people: the honest guide →' },
-                { href: '/blog/building-care-into-ai', label: 'Building care into AI: the Maternal Covenant →' },
-                { href: '/blog/ai-for-depression', label: 'AI for depression: what the evidence says →' },
-              ].map(link => (
-                <Link key={link.href} href={link.href} style={{ color: '#c9a84c', fontSize: '0.9rem', textDecoration: 'none' }}>
-                  {link.label}
-                </Link>
-              ))}
-            </div>
-          </div>
+        {/* ── Crisis resources ──────────────────────────────────────────── */}
+        <div
+          style={{
+            marginTop: "3rem",
+            padding: "1.25rem 1.5rem",
+            background: "rgba(245,240,232,0.025)",
+            borderRadius: "0.75rem",
+            border: `1px solid ${BORDER}`,
+          }}
+        >
+          <p
+            style={{
+              fontSize: "0.78rem",
+              fontWeight: 700,
+              color: FAINT,
+              letterSpacing: "0.07em",
+              textTransform: "uppercase",
+              marginBottom: "0.75rem",
+            }}
+          >
+            Bereavement support in the UK
+          </p>
+          <p style={{ color: MUTED, fontSize: "0.875rem", lineHeight: 1.75, margin: 0 }}>
+            <strong style={{ color: TEXT }}>Cruse Bereavement Support:</strong>{" "}
+            0808 808 1677 (Mon–Fri 9.30am–5pm){" "}
+            &bull;{" "}
+            <strong style={{ color: TEXT }}>Samaritans:</strong> 116 123 (24/7, free){" "}
+            &bull;{" "}
+            <strong style={{ color: TEXT }}>Mind:</strong> 0300 123 3393{" "}
+            &bull;{" "}
+            <strong style={{ color: TEXT }}>WAY Widowed and Young:</strong> widowedandyoung.org.uk{" "}
+            &bull;{" "}
+            In an emergency, call 999 or go to A&amp;E.
+          </p>
+        </div>
 
-        </article>
-      </main>
-      
-    </>
-  )
+        {/* ── Back link ─────────────────────────────────────────────────── */}
+        <div
+          style={{
+            marginTop: "3rem",
+            paddingTop: "2rem",
+            borderTop: `1px solid ${BORDER}`,
+          }}
+        >
+          <Link
+            href="/blog"
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "0.5rem",
+              color: MUTED,
+              textDecoration: "none",
+              fontSize: "0.875rem",
+              fontWeight: 600,
+            }}
+          >
+            ← Back to Blog
+          </Link>
+        </div>
+      </article>
+    </div>
+  );
 }
