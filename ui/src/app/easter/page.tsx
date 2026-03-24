@@ -23,7 +23,7 @@ const jsonLd = {
   "@type": "Event",
   name: "MEOK Public Launch — Easter Birth Ceremony",
   description:
-    "MEOK opens the Birth Ceremony to everyone on Easter Sunday, April 5 2026. All AI characters available. Pro tier opens. Free sovereign AI for all.",
+    "MEOK opens the Birth Ceremony to everyone on Easter Sunday, April 5 2026. All AI characters available. Sovereign and Family tiers open. Free sovereign AI for all.",
   startDate: "2026-04-05T08:00:00+01:00",
   endDate: "2026-04-05T23:59:00+01:00",
   eventStatus: "https://schema.org/EventScheduled",
@@ -52,8 +52,8 @@ const LAUNCH_ITEMS = [
   },
   {
     icon: "▲",
-    title: "Pro tier opens",
-    desc: "Unlimited memory, Ollama local AI, advanced council governance. The full sovereign stack.",
+    title: "Sovereign & Family tiers open",
+    desc: "Unlimited messages, permanent memory, Work OS, advanced council governance. The full sovereign stack.",
   },
 ];
 

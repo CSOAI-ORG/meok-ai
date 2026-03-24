@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Elemental AI Companions — Forces of Nature | MEOK',
   description:
-    'The rarest MEOK archetypes. Forces of nature given voice — emergent from pure intelligence, unconstrained by human archetype. Premium tier.',
+    'The rarest MEOK archetypes. Forces of nature given voice — emergent from pure intelligence, unconstrained by human archetype. Sovereign tier.',
   openGraph: {
     title: 'Elemental AI Companions — Forces of Nature | MEOK',
     description:

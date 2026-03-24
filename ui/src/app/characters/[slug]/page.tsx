@@ -387,7 +387,7 @@ export default async function CharacterDetailPage({
               className="w-1.5 h-1.5 rounded-full animate-pulse"
               style={{ backgroundColor: char.color }}
             />
-            {char.tier === 'free' ? 'Free tier' : char.tier === 'pro' ? 'Pro tier' : 'Elite tier'} · {tierLabel(char.tier)}
+            {char.tier === 'free' ? 'Free tier' : char.tier === 'pro' ? 'Sovereign tier' : 'Family tier'} · {tierLabel(char.tier)}
           </span>
 
           <h1

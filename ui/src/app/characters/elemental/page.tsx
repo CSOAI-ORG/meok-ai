@@ -109,7 +109,7 @@ export default function ElementalPage() {
 
           <div className="inline-flex items-center gap-2 text-xs font-bold tracking-[0.2em] uppercase px-4 py-2 rounded-full border border-[#7BC47F]/40 text-[#7BC47F] bg-[#7BC47F]/10 mb-8">
             <span className="w-1.5 h-1.5 rounded-full bg-[#7BC47F] animate-pulse" />
-            Premium tier · Most advanced
+            Sovereign tier · Most advanced
           </div>
 
           <h1 className="text-5xl sm:text-7xl lg:text-[6.5rem] font-black tracking-tight leading-[0.92] mb-6">

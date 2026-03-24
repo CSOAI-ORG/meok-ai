@@ -68,7 +68,7 @@ export default function TimelessPage() {
 
           <div className="inline-flex items-center gap-2 text-xs font-bold tracking-[0.2em] uppercase px-4 py-2 rounded-full border border-[#A78BFA]/40 text-[#A78BFA] bg-[#A78BFA]/10 mb-8">
             <span className="w-1.5 h-1.5 rounded-full bg-[#A78BFA] animate-pulse" />
-            Pro tier · 47 traditions
+            Free tier · 47 traditions
           </div>
 
           <h1 className="text-5xl sm:text-7xl lg:text-[6.5rem] font-black tracking-tight leading-[0.92] mb-6">
