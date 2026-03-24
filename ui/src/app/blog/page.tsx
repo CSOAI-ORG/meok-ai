@@ -2750,6 +2750,90 @@ const POSTS = [
     category: "research",
     featured: true,
   },
+  {
+    slug: "ai-for-empty-nesters",
+    title: "AI for Empty Nesters: Rediscovering Yourself After the Kids Leave",
+    excerpt:
+      "When children leave home, many parents face identity loss, loneliness, and a profound sense of purposelessness. MEOK's sovereign AI helps empty nesters rediscover who they are beyond the role of parent.",
+    date: "March 24, 2026",
+    readTime: "9 min read",
+    tag: "Wellbeing",
+    tagColor: "#4a9d6f",
+    category: "wellbeing",
+    featured: false,
+  },
+  {
+    slug: "ai-for-young-adults",
+    title: "AI for Young Adults: Gen Z's Guide to AI That Actually Has Your Back",
+    excerpt:
+      "Gen Z has grown up with AI but never had AI that grows with them, remembers them, and protects their data. MEOK is the first sovereign AI companion built for the generation that understands what data privacy actually means.",
+    date: "March 24, 2026",
+    readTime: "8 min read",
+    tag: "Wellbeing",
+    tagColor: "#4a9d6f",
+    category: "wellbeing",
+    featured: false,
+  },
+  {
+    slug: "sovereign-ai-vs-cloud-ai-deep-dive",
+    title: "Sovereign AI vs Cloud AI: A Deep Technical Comparison",
+    excerpt:
+      "A detailed technical breakdown of the difference between sovereign AI and cloud AI. Your data stays with you, or it feeds the platform. Understanding this distinction is the most important AI decision you will make in 2026.",
+    date: "March 24, 2026",
+    readTime: "11 min read",
+    tag: "Research",
+    tagColor: "#7c6fcd",
+    category: "research",
+    featured: false,
+  },
+  {
+    slug: "ai-for-burnout-recovery",
+    title: "AI for Burnout Recovery: A Companion That Knows When to Push and When to Rest",
+    excerpt:
+      "Burnout recovery is not a linear process. MEOK's sovereign AI tracks your energy patterns, holds you accountable without pushing you over the edge, and remembers the context that caused your burnout in the first place.",
+    date: "March 24, 2026",
+    readTime: "9 min read",
+    tag: "Wellbeing",
+    tagColor: "#4a9d6f",
+    category: "wellbeing",
+    featured: false,
+  },
+  {
+    slug: "ai-for-caregiver-burnout",
+    title: "AI for Caregiver Burnout: Support for the People Who Support Everyone Else",
+    excerpt:
+      "Carers are the invisible backbone of society. They give everything and are given almost nothing in return. MEOK's sovereign AI is built to support carers without adding more tasks to their overwhelming list.",
+    date: "March 24, 2026",
+    readTime: "9 min read",
+    tag: "Wellbeing",
+    tagColor: "#4a9d6f",
+    category: "wellbeing",
+    featured: false,
+  },
+  {
+    slug: "ai-for-immigration",
+    title: "AI for Immigrants: A Companion That Understands Starting Over in a New Country",
+    excerpt:
+      "Moving to a new country is one of the most disorienting experiences a human can face. MEOK's sovereign AI helps immigrants navigate bureaucracy, loneliness, cultural adjustment, and the process of building a new life.",
+    date: "March 24, 2026",
+    readTime: "9 min read",
+    tag: "Wellbeing",
+    tagColor: "#4a9d6f",
+    category: "wellbeing",
+    featured: false,
+  },
+  {
+    slug: "meok-for-startups",
+    title: "MEOK for Startups: Sovereign AI for Founders Who Cannot Afford to Leak Their Edge",
+    excerpt:
+      "Founders who use ChatGPT for strategy are feeding their competitive intelligence to the platform. MEOK gives startup founders sovereign AI that remembers their business, protects their IP, and works overnight.",
+    date: "March 24, 2026",
+    readTime: "10 min read",
+    tag: "Professional",
+    tagColor: "#c9a84c",
+    category: "professional",
+    featured: false,
+  },
 ];
 
 // ── Category filter tabs ──────────────────────────────────────────────────────

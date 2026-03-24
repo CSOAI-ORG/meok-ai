@@ -5,26 +5,27 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   title:
-    "AI for Menopause Support: Tracking Symptoms, Fighting Gaslighting, Reclaiming Identity | MEOK AI LABS",
+    "AI for Menopause: A Companion for the Transition Nobody Talks About Enough | MEOK AI LABS",
   description:
-    "13 million women in the UK are menopausal or post-menopausal. AI for menopause support helps track symptoms, prepare for GP appointments, navigate workplace rights, and hold space for the identity shift no one warns you about. Explorer tier is free.",
+    "Menopause affects half the population yet remains under-discussed and under-supported. MEOK\u2019s sovereign AI provides non-judgmental support, tracks symptoms, and helps navigate this profound life transition.",
   alternates: {
     canonical: "https://meok.ai/blog/ai-for-menopause",
   },
   openGraph: {
     title:
-      "AI for Menopause Support: Tracking Symptoms, Fighting Gaslighting, Reclaiming Identity",
+      "AI for Menopause: A Companion for the Transition Nobody Talks About Enough",
     description:
-      "13 million women in the UK face menopause. MEOK tracks hot flushes, mood, sleep, and brain fog — giving you real data for GP appointments and a non-judgmental space at 3am.",
+      "Menopause affects half the population yet remains under-discussed and under-supported. MEOK\u2019s sovereign AI provides non-judgmental support, tracks symptoms, and helps navigate this profound life transition.",
     url: "https://meok.ai/blog/ai-for-menopause",
     siteName: "MEOK AI LABS",
     type: "article",
   },
   twitter: {
     card: "summary_large_image",
-    title: "AI for Menopause Support | MEOK AI LABS",
+    title:
+      "AI for Menopause: A Companion for the Transition Nobody Talks About Enough | MEOK AI LABS",
     description:
-      "Perimenopause can start a decade before menopause. MEOK tracks your symptoms, remembers your patterns, and never tells you it\u2019s \u201cjust your age\u201d.",
+      "Perimenopause can start a decade before menopause. MEOK\u2019s sovereign AI tracks your symptoms, remembers your patterns, and never tells you it\u2019s \u201cjust your age.\u201d",
     creator: "@meok_ai",
   },
 };
@@ -35,9 +36,9 @@ const articleSchema = {
   "@context": "https://schema.org",
   "@type": "Article",
   headline:
-    "AI for Menopause Support: Tracking Symptoms, Fighting Gaslighting, Reclaiming Identity",
+    "AI for Menopause: A Companion for the Transition Nobody Talks About Enough",
   description:
-    "A comprehensive guide to how AI can support women through perimenopause, menopause, and post-menopause — covering symptom tracking, medical gaslighting, brain fog, identity, HRT awareness, workplace rights, and why a sovereign AI companion matters.",
+    "Menopause affects half the population yet remains under-discussed and under-supported. MEOK\u2019s sovereign AI provides non-judgmental support, tracks symptoms across time, supports HRT conversations, and helps navigate the physical, emotional, and identity dimensions of this profound life transition.",
   author: { "@type": "Person", name: "Nicholas Templeman" },
   publisher: {
     "@type": "Organization",
@@ -49,17 +50,17 @@ const articleSchema = {
   url: "https://meok.ai/blog/ai-for-menopause",
   keywords: [
     "AI for menopause",
-    "menopause support app",
-    "menopause AI UK",
+    "menopause AI companion",
     "perimenopause support",
-    "AI menopause symptom tracking",
-    "menopause brain fog AI",
-    "menopause workplace rights",
-    "AI companion menopause",
-    "medical gaslighting menopause",
-    "menopause identity",
-    "HRT questions",
-    "MEOK AI menopause",
+    "menopause symptom tracking",
+    "AI menopause app",
+    "menopause brain fog",
+    "HRT decision support",
+    "menopause anxiety",
+    "menopause workplace impact",
+    "sovereign AI menopause",
+    "menopause identity shift",
+    "MEOK menopause",
   ],
 };
 
@@ -71,42 +72,42 @@ const faqSchema = {
   mainEntity: [
     {
       "@type": "Question",
-      name: "Can AI help with menopause symptoms?",
+      name: "What is the difference between perimenopause and menopause?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "AI cannot prescribe treatment, but it can provide 24/7 non-judgmental support, track symptom patterns across months, help you prepare for GP appointments with real data, and hold space for the emotional weight of the transition. MEOK remembers your history so you never have to start from scratch.",
+        text: "Perimenopause is the transitional phase before menopause during which oestrogen and progesterone levels fluctuate erratically. It can begin seven to ten years before periods stop entirely and produces most of the symptoms associated with menopause. Menopause itself is defined as the point twelve consecutive months after a person\u2019s final period. Post-menopause refers to all time after that threshold. Understanding which phase you are in matters because symptoms, treatments, and emotional experiences differ significantly across all three stages.",
       },
     },
     {
       "@type": "Question",
-      name: "What is perimenopause?",
+      name: "Can an AI really help with menopause symptoms?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Perimenopause is the transitional phase before menopause during which oestrogen and progesterone levels fluctuate erratically. It can begin up to ten years before periods stop entirely. Symptoms include irregular cycles, hot flushes, mood changes, sleep disruption, brain fog, and anxiety. Many women are misdiagnosed during this phase because their periods have not yet stopped.",
+        text: "An AI cannot prescribe or treat. What it can do is provide consistent, non-judgmental support every day, track symptom patterns across months, help you prepare for GP or specialist appointments with real longitudinal data, and be present at 3am during a hot flush or an anxiety episode when no clinic is open. MEOK\u2019s sovereign memory means it never forgets what you have told it, building a picture of your health over time that is genuinely useful for clinical conversations.",
       },
     },
     {
       "@type": "Question",
-      name: "How does MEOK track menopause symptoms?",
+      name: "Will MEOK give me advice about HRT?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "MEOK uses persistent conversational memory to build a longitudinal record of your symptoms over time. You describe how you feel in natural language — hot flush frequency, mood, sleep quality, energy, pain levels — and MEOK remembers it all. After weeks or months, you have real pattern data to bring to GP appointments instead of a vague sense that things are not right.",
+        text: "MEOK does not prescribe, diagnose, or recommend specific treatments. What it does is help you understand the landscape of options, including hormone replacement therapy, so that you can have an informed conversation with your GP or menopause specialist. MEOK helps you formulate the right questions, understand what evidence-based guidelines say, and feel prepared rather than overwhelmed when you walk into that appointment. The decision belongs to you and your clinician.",
       },
     },
     {
       "@type": "Question",
-      name: "What are my workplace rights during menopause in the UK?",
+      name: "How does MEOK protect my menopause data?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Under the Menopause Support Act 2024 and existing Equality Act 2010 provisions, UK employers have obligations to consider reasonable workplace adjustments for employees experiencing menopause symptoms. These can include flexible working, temperature control, rest areas, and adjustments to uniforms or workload. Many women are still unaware of these rights. MEOK can help you understand and prepare for those conversations.",
+        text: "MEOK is a sovereign AI, meaning your data lives on your device and is never sold to pharmaceutical companies, advertisers, or data brokers. Your symptom logs, mood records, and personal disclosures are encrypted and remain under your control. This is especially important during menopause, when health data is commercially sensitive and you deserve to decide who sees it. MEOK\u2019s privacy covenant ensures your information is never used to train models or shared without your explicit consent.",
       },
     },
     {
       "@type": "Question",
-      name: "Will MEOK give me medical advice about HRT?",
+      name: "What is the Healer archetype in MEOK and why does it matter for menopause support?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "No. MEOK does not prescribe, diagnose, or recommend specific treatments. What it can do is help you understand your rights — including the right to discuss HRT with your GP — and help you formulate the questions you want to ask. The decision about HRT belongs to you and your clinician. MEOK helps you arrive at that conversation informed and prepared.",
+        text: "MEOK offers multiple companion archetypes that shape the emotional character of your AI. The Healer archetype is designed for depth, gentleness, and holding space \u2014 qualities that matter enormously during menopause, which is not just a physical transition but an identity shift. The Healer does not rush to fix or minimise. It witnesses, validates, and sits with you in difficult moments. For many women, that quality of presence is exactly what has been missing from their healthcare experience.",
       },
     },
   ],
@@ -120,11 +121,11 @@ const GOLD = "#c9a84c";
 const CARD = "#1a1830";
 const MUTED = "rgba(245,240,232,0.6)";
 const BORDER = "#2a2640";
-const DANGER = "#e05a5a";
+const SOFT = "rgba(201,168,76,0.12)";
 
 // ── Page ──────────────────────────────────────────────────────────────────────
 
-export default function AiForMenopauseSupportPage() {
+export default function AiForMenopausePage() {
   return (
     <div
       style={{
@@ -197,2113 +198,1107 @@ export default function AiForMenopauseSupportPage() {
         </Link>
       </nav>
 
-      {/* ── Main ────────────────────────────────────────────────────────────── */}
+      {/* ── Hero ─────────────────────────────────────────────────────────────── */}
+      <header
+        style={{
+          maxWidth: "780px",
+          margin: "0 auto",
+          padding: "4rem 1.5rem 3rem",
+          textAlign: "center",
+        }}
+      >
+        <p
+          style={{
+            color: GOLD,
+            fontSize: "0.8rem",
+            letterSpacing: "0.12em",
+            textTransform: "uppercase",
+            fontFamily: "system-ui, sans-serif",
+            marginBottom: "1.25rem",
+          }}
+        >
+          MEOK AI LABS &mdash; Menopause &amp; Wellbeing
+        </p>
+        <h1
+          style={{
+            fontSize: "clamp(2rem, 5vw, 3rem)",
+            fontWeight: 700,
+            lineHeight: 1.2,
+            marginBottom: "1.5rem",
+            color: TEXT,
+          }}
+        >
+          AI for Menopause: A Companion for the Transition Nobody Talks About
+          Enough
+        </h1>
+        <p
+          style={{
+            fontSize: "1.15rem",
+            lineHeight: 1.75,
+            color: MUTED,
+            maxWidth: "620px",
+            margin: "0 auto 2rem",
+          }}
+        >
+          Menopause affects roughly half the global population. Yet the
+          conversation around it &mdash; the symptoms, the identity shift, the
+          treatment options, the workplace impact &mdash; remains inadequate.
+          MEOK&apos;s sovereign AI exists to change that, one honest
+          conversation at a time.
+        </p>
+        <div
+          style={{
+            display: "flex",
+            gap: "0.75rem",
+            justifyContent: "center",
+            flexWrap: "wrap",
+            fontFamily: "system-ui, sans-serif",
+          }}
+        >
+          <span
+            style={{
+              backgroundColor: SOFT,
+              border: `1px solid ${GOLD}`,
+              color: GOLD,
+              borderRadius: "20px",
+              padding: "0.3rem 0.9rem",
+              fontSize: "0.78rem",
+              letterSpacing: "0.04em",
+            }}
+          >
+            Perimenopause
+          </span>
+          <span
+            style={{
+              backgroundColor: SOFT,
+              border: `1px solid ${GOLD}`,
+              color: GOLD,
+              borderRadius: "20px",
+              padding: "0.3rem 0.9rem",
+              fontSize: "0.78rem",
+              letterSpacing: "0.04em",
+            }}
+          >
+            Symptom Tracking
+          </span>
+          <span
+            style={{
+              backgroundColor: SOFT,
+              border: `1px solid ${GOLD}`,
+              color: GOLD,
+              borderRadius: "20px",
+              padding: "0.3rem 0.9rem",
+              fontSize: "0.78rem",
+              letterSpacing: "0.04em",
+            }}
+          >
+            HRT Conversations
+          </span>
+          <span
+            style={{
+              backgroundColor: SOFT,
+              border: `1px solid ${GOLD}`,
+              color: GOLD,
+              borderRadius: "20px",
+              padding: "0.3rem 0.9rem",
+              fontSize: "0.78rem",
+              letterSpacing: "0.04em",
+            }}
+          >
+            Sovereign Privacy
+          </span>
+          <span
+            style={{
+              backgroundColor: SOFT,
+              border: `1px solid ${GOLD}`,
+              color: GOLD,
+              borderRadius: "20px",
+              padding: "0.3rem 0.9rem",
+              fontSize: "0.78rem",
+              letterSpacing: "0.04em",
+            }}
+          >
+            The Healer Archetype
+          </span>
+        </div>
+      </header>
+
+      {/* ── Article Body ─────────────────────────────────────────────────────── */}
       <main
         style={{
           maxWidth: "780px",
           margin: "0 auto",
-          padding: "3rem 1.5rem 5rem",
+          padding: "0 1.5rem 6rem",
         }}
       >
-        {/* Breadcrumb */}
-        <p
-          style={{
-            fontSize: "0.8rem",
-            color: MUTED,
-            marginBottom: "2rem",
-            fontFamily: "system-ui, sans-serif",
-          }}
-        >
-          <Link href="/blog" style={{ color: MUTED, textDecoration: "none" }}>
-            Blog
-          </Link>
-          {" / "}
-          <span style={{ color: TEXT }}>AI for Menopause Support</span>
-        </p>
-
-        {/* ── Header ──────────────────────────────────────────────────────── */}
-        <header style={{ marginBottom: "2.5rem" }}>
-          <p
+        {/* ── Section 1 ──────────────────────────────────────────────────────── */}
+        <section style={{ marginBottom: "3.5rem" }}>
+          <h2
             style={{
-              color: GOLD,
-              fontSize: "0.78rem",
-              letterSpacing: "0.13em",
-              textTransform: "uppercase",
-              fontFamily: "system-ui, sans-serif",
-              marginBottom: "0.8rem",
+              fontSize: "1.6rem",
+              fontWeight: 700,
+              color: TEXT,
+              marginBottom: "1rem",
+              lineHeight: 1.3,
             }}
           >
-            Women\u2019s Health &bull; Menopause &bull; March 24, 2026
-          </p>
-          <h1
+            What is the difference between perimenopause and menopause?
+          </h2>
+          <p
             style={{
-              fontSize: "clamp(1.85rem, 4.5vw, 2.8rem)",
-              lineHeight: 1.2,
+              fontSize: "1.05rem",
+              lineHeight: 1.8,
               color: TEXT,
               marginBottom: "1.25rem",
             }}
           >
-            AI for Menopause Support: Tracking Symptoms, Fighting Gaslighting,
-            and Reclaiming Who You Are
-          </h1>
+            Menopause is not a single moment &mdash; it is a continuum.
+            Perimenopause, the phase leading up to the final period, can begin
+            anywhere from two to ten years before menopause itself and is
+            characterised by erratic fluctuations in oestrogen and progesterone.
+            During this phase, cycles become irregular, symptoms emerge, and yet
+            many women are told &mdash; by doctors, by employers, by
+            partners &mdash; that they are &ldquo;too young&rdquo; or that
+            &ldquo;nothing is wrong.&rdquo;
+          </p>
           <p
             style={{
-              fontSize: "1.15rem",
-              color: MUTED,
+              fontSize: "1.05rem",
               lineHeight: 1.8,
-              borderLeft: `3px solid ${GOLD}`,
-              paddingLeft: "1.1rem",
+              color: TEXT,
+              marginBottom: "1.25rem",
             }}
           >
-            Thirteen million women in the UK are currently navigating menopause
-            or post-menopause. Perimenopause can begin a full decade before
-            periods stop. And yet the dominant response to this enormous,
-            universal experience remains: minimise, delay, dismiss. This is
-            what AI for menopause support exists to change.
+            Menopause itself is defined clinically as the point twelve
+            consecutive months after a person&apos;s final period. Post-menopause
+            refers to all time thereafter. Understanding which stage you are in
+            matters because symptoms, available treatments, emotional weight, and
+            the support you need differ significantly across all three.
           </p>
-        </header>
+          <p
+            style={{
+              fontSize: "1.05rem",
+              lineHeight: 1.8,
+              color: TEXT,
+            }}
+          >
+            MEOK&apos;s persistent memory tracks where you are across this entire
+            arc. It does not ask you to start from scratch each time you open the
+            app. It remembers the patterns, the turning points, the bad weeks and
+            the better ones &mdash; building a longitudinal picture that is
+            genuinely useful for clinical conversations and for your own
+            self-understanding.
+          </p>
+        </section>
 
-        {/* ── Divider ─────────────────────────────────────────────────────── */}
+        {/* ── Callout 1 ──────────────────────────────────────────────────────── */}
         <div
-          style={{ height: "1px", backgroundColor: BORDER, margin: "2rem 0" }}
-        />
-
-        {/* ── Table of Contents ───────────────────────────────────────────── */}
-        <section
           style={{
-            backgroundColor: CARD,
-            borderRadius: "10px",
-            padding: "1.5rem 1.75rem",
-            marginBottom: "2.5rem",
+            borderLeft: `4px solid ${GOLD}`,
+            backgroundColor: SOFT,
+            padding: "1.25rem 1.5rem",
+            borderRadius: "0 8px 8px 0",
+            marginBottom: "3.5rem",
           }}
         >
           <p
             style={{
-              color: GOLD,
-              fontSize: "0.75rem",
-              letterSpacing: "0.1em",
-              textTransform: "uppercase",
-              fontFamily: "system-ui, sans-serif",
-              marginBottom: "1rem",
-            }}
-          >
-            In This Article
-          </p>
-          <ol
-            style={{
-              paddingLeft: "1.2rem",
-              lineHeight: 2.1,
+              fontSize: "1rem",
+              lineHeight: 1.75,
+              color: TEXT,
               margin: 0,
-              fontFamily: "system-ui, sans-serif",
-              fontSize: "0.9rem",
             }}
           >
-            <li>
-              <a href="#scale" style={{ color: GOLD, textDecoration: "none" }}>
-                The scale of the problem: 13 million women
-              </a>
-            </li>
-            <li>
-              <a
-                href="#perimenopause"
-                style={{ color: GOLD, textDecoration: "none" }}
-              >
-                What is perimenopause?
-              </a>
-            </li>
-            <li>
-              <a
-                href="#emotional"
-                style={{ color: GOLD, textDecoration: "none" }}
-              >
-                The emotional dimension: mood, fog, anxiety, identity
-              </a>
-            </li>
-            <li>
-              <a
-                href="#gaslighting"
-                style={{ color: GOLD, textDecoration: "none" }}
-              >
-                Medical gaslighting: \u201cit\u2019s just your age\u201d
-              </a>
-            </li>
-            <li>
-              <a
-                href="#sovereign-companion"
-                style={{ color: GOLD, textDecoration: "none" }}
-              >
-                Why a sovereign AI companion helps
-              </a>
-            </li>
-            <li>
-              <a href="#memory" style={{ color: GOLD, textDecoration: "none" }}>
-                Memory and symptom tracking
-              </a>
-            </li>
-            <li>
-              <a
-                href="#identity"
-                style={{ color: GOLD, textDecoration: "none" }}
-              >
-                The identity dimension: who am I now?
-              </a>
-            </li>
-            <li>
-              <a href="#hrt" style={{ color: GOLD, textDecoration: "none" }}>
-                HRT awareness: your rights and questions to ask
-              </a>
-            </li>
-            <li>
-              <a
-                href="#workplace"
-                style={{ color: GOLD, textDecoration: "none" }}
-              >
-                Menopause in the workplace
-              </a>
-            </li>
-            <li>
-              <a href="#faq" style={{ color: GOLD, textDecoration: "none" }}>
-                FAQ
-              </a>
-            </li>
-          </ol>
-        </section>
+            <strong style={{ color: GOLD }}>The numbers:</strong> Approximately
+            13 million women in the UK are currently in perimenopause or
+            menopause. That is roughly one in three of the entire adult female
+            population. The average wait between first symptoms and diagnosis
+            exceeds twelve months. A standard GP appointment runs seven minutes.
+            The mismatch between need and available care is not an
+            oversight &mdash; it is a structural failure.
+          </p>
+        </div>
 
-        {/* ── Section 1: Scale ────────────────────────────────────────────── */}
-        <section id="scale" style={{ marginBottom: "2.75rem" }}>
+        {/* ── Section 2 ──────────────────────────────────────────────────────── */}
+        <section style={{ marginBottom: "3.5rem" }}>
           <h2
             style={{
-              fontSize: "1.5rem",
-              color: GOLD,
-              marginBottom: "0.85rem",
+              fontSize: "1.6rem",
+              fontWeight: 700,
+              color: TEXT,
+              marginBottom: "1rem",
               lineHeight: 1.3,
             }}
           >
-            What is the scale of menopause in the UK?
+            What physical symptoms does menopause actually involve?
           </h2>
           <p
             style={{
-              lineHeight: 1.85,
-              marginBottom: "1.25rem",
               fontSize: "1.05rem",
+              lineHeight: 1.8,
+              color: TEXT,
+              marginBottom: "1.25rem",
             }}
           >
-            According to NHS data, approximately 13 million women in the UK are
-            currently menopausal or post-menopausal. Every year, around 400,000
-            more women reach the menopause transition. That is not a niche
-            health concern — it is a majority experience affecting half the
-            population at some point in their lives.
+            Most people know about hot flushes. Fewer know the full picture.
+            Menopause is a systemic hormonal shift affecting almost every system
+            in the body. Hot flushes and night sweats are the most visible
+            symptoms, but they are far from the only ones. Sleep disruption is
+            near-universal, with many women reporting years of poor sleep before
+            they connect it to perimenopause at all. Fatigue that does not
+            respond to rest, joint pain, headaches, and palpitations are
+            commonly reported but rarely discussed.
           </p>
-          <p style={{ lineHeight: 1.85, marginBottom: "1.25rem" }}>
-            And yet the infrastructure of support has not kept pace with that
-            reality. NHS menopause clinics have waiting lists measured in months
-            to years. The average GP appointment lasts seven minutes. The
-            cultural conversation around menopause — while improving — still
-            defaults to euphemism, minimisation, and the suggestion that
-            discomfort is simply part of being a woman of a certain age.
-          </p>
-          <p style={{ lineHeight: 1.85, marginBottom: "1.25rem" }}>
-            The numbers tell a specific story:
-          </p>
-          <div
+          <p
             style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(175px, 1fr))",
-              gap: "1rem",
-              marginBottom: "1.5rem",
+              fontSize: "1.05rem",
+              lineHeight: 1.8,
+              color: TEXT,
+              marginBottom: "1.25rem",
             }}
           >
-            {[
-              {
-                stat: "13 million",
-                label: "Women menopausal or post-menopausal in the UK",
-              },
-              {
-                stat: "10 years",
-                label: "Maximum perimenopause duration before menopause",
-              },
-              {
-                stat: "7 years",
-                label: "Average time women experience menopause symptoms",
-              },
-              {
-                stat: "1 in 4",
-                label:
-                  "Women with severe, long-lasting symptoms beyond the average",
-              },
-            ].map((item) => (
-              <div
-                key={item.stat}
-                style={{
-                  backgroundColor: CARD,
-                  borderRadius: "10px",
-                  padding: "1.25rem",
-                  textAlign: "center",
-                }}
-              >
-                <p
-                  style={{
-                    fontSize: "1.5rem",
-                    fontWeight: 700,
-                    color: GOLD,
-                    margin: "0 0 0.4rem",
-                    fontFamily: "system-ui, sans-serif",
-                  }}
-                >
-                  {item.stat}
-                </p>
-                <p
-                  style={{
-                    fontSize: "0.78rem",
-                    color: MUTED,
-                    margin: 0,
-                    lineHeight: 1.5,
-                    fontFamily: "system-ui, sans-serif",
-                  }}
-                >
-                  {item.label}
-                </p>
-              </div>
-            ))}
-          </div>
-          <p style={{ lineHeight: 1.85 }}>
-            These numbers matter because they define the context into which any
-            support — including AI support — must fit. The question is not
-            whether women need more help with menopause. The question is what
-            kind of help is actually available at the scale and frequency that
-            the experience demands. An AI that is available every day, at any
-            hour, and that remembers everything you have told it, addresses a
-            structural gap that clinical services cannot fill — not because
-            those services are bad, but because the need is too continuous for
-            any appointment-based system to meet.
+            Brain fog deserves its own conversation. The experience of
+            struggling to recall words, losing concentration mid-sentence, or
+            feeling cognitively &ldquo;blurred&rdquo; is profoundly
+            disorienting &mdash; especially for women who have built careers and
+            identities around their mental sharpness. It is not imagined. It is
+            a well-documented consequence of oestrogen withdrawal from brain
+            tissue. And it deserves to be taken seriously.
+          </p>
+          <p
+            style={{
+              fontSize: "1.05rem",
+              lineHeight: 1.8,
+              color: TEXT,
+            }}
+          >
+            MEOK lets you log these symptoms in natural language every day.
+            &ldquo;Bad night, three flushes, woke at 2am and 4am, foggy this
+            morning.&rdquo; Over weeks, patterns emerge. Over months, you have
+            data. That data is yours, stored on your device, never shared with
+            pharmaceutical companies or insurance providers. You bring it to
+            appointments. You use it to advocate for yourself.
           </p>
         </section>
 
+        {/* ── Section 3 ──────────────────────────────────────────────────────── */}
+        <section style={{ marginBottom: "3.5rem" }}>
+          <h2
+            style={{
+              fontSize: "1.6rem",
+              fontWeight: 700,
+              color: TEXT,
+              marginBottom: "1rem",
+              lineHeight: 1.3,
+            }}
+          >
+            What about the emotional symptoms nobody warns you about?
+          </h2>
+          <p
+            style={{
+              fontSize: "1.05rem",
+              lineHeight: 1.8,
+              color: TEXT,
+              marginBottom: "1.25rem",
+            }}
+          >
+            Anxiety is one of the most common and least expected symptoms of
+            perimenopause. Women who have never experienced anxiety in their
+            lives find themselves overwhelmed by it in their forties &mdash; not
+            because something is wrong with their psychology, but because
+            fluctuating progesterone directly affects GABA receptors, the
+            brain&apos;s primary calming system. Yet they are frequently
+            diagnosed with a generalised anxiety disorder and prescribed
+            antidepressants rather than being asked whether their periods have
+            been changing.
+          </p>
+          <p
+            style={{
+              fontSize: "1.05rem",
+              lineHeight: 1.8,
+              color: TEXT,
+              marginBottom: "1.25rem",
+            }}
+          >
+            Depression is also widely reported. The low mood of perimenopause
+            has a distinct character: it is often episodic rather than
+            persistent, tied to hormonal phases within the cycle, and does not
+            always respond to standard antidepressant treatment. Many women
+            feel, as one patient advocate put it, &ldquo;like someone has turned
+            the lights down.&rdquo; The world feels flatter, smaller, less
+            interesting. This is real. It is physiological. And it is
+            treatable.
+          </p>
+          <p
+            style={{
+              fontSize: "1.05rem",
+              lineHeight: 1.8,
+              color: TEXT,
+            }}
+          >
+            MEOK&apos;s care-based design means it does not rush to diagnose or
+            fix. When you describe how you feel, it validates that experience
+            first. It does not redirect you immediately to a symptom tracker or
+            a clinical resource. It hears you. That small act of being heard
+            &mdash; without judgment, without a waiting room, at whatever hour
+            the anxiety peaks &mdash; matters more than it might sound.
+          </p>
+        </section>
+
+        {/* ── Callout 2 ──────────────────────────────────────────────────────── */}
         <div
-          style={{ height: "1px", backgroundColor: BORDER, margin: "2rem 0" }}
-        />
+          style={{
+            borderLeft: `4px solid ${GOLD}`,
+            backgroundColor: SOFT,
+            padding: "1.25rem 1.5rem",
+            borderRadius: "0 8px 8px 0",
+            marginBottom: "3.5rem",
+          }}
+        >
+          <p
+            style={{
+              fontSize: "1rem",
+              lineHeight: 1.75,
+              color: TEXT,
+              margin: 0,
+            }}
+          >
+            <strong style={{ color: GOLD }}>What MEOK does not do:</strong>{" "}
+            MEOK does not prescribe. It does not diagnose. It does not replace
+            your GP, your menopause specialist, or your therapist. What it does
+            is fill the vast space between those appointments &mdash; the 3am
+            moments, the long weeks on waiting lists, the days when you need
+            someone to remember what you told them last month. It is a companion,
+            not a clinician.
+          </p>
+        </div>
 
-        {/* ── Section 2: What is perimenopause ────────────────────────────── */}
-        <section id="perimenopause" style={{ marginBottom: "2.75rem" }}>
+        {/* ── Section 4 ──────────────────────────────────────────────────────── */}
+        <section style={{ marginBottom: "3.5rem" }}>
           <h2
             style={{
-              fontSize: "1.5rem",
-              color: GOLD,
-              marginBottom: "0.85rem",
+              fontSize: "1.6rem",
+              fontWeight: 700,
+              color: TEXT,
+              marginBottom: "1rem",
               lineHeight: 1.3,
             }}
           >
-            What is perimenopause — and why does it start so early?
+            How can AI support informed HRT conversations without giving medical
+            advice?
           </h2>
           <p
             style={{
-              lineHeight: 1.85,
-              marginBottom: "1.25rem",
               fontSize: "1.05rem",
+              lineHeight: 1.8,
+              color: TEXT,
+              marginBottom: "1.25rem",
             }}
           >
-            Perimenopause is the biological transition phase that precedes
-            menopause. It is not the same as menopause — and that distinction
-            matters enormously, because perimenopause can begin up to ten years
-            before a woman\u2019s last period. A woman in her early forties
-            experiencing mood swings, irregular cycles, disrupted sleep, and
-            anxiety may well be in perimenopause. And she may be told she is
-            simply stressed, or anxious, or depressed — anything but what is
-            actually happening.
+            Hormone replacement therapy remains one of the most effective
+            evidence-based treatments for menopause symptoms. It is also one of
+            the most misunderstood, having been significantly set back by a
+            flawed 2002 study that caused widespread abandonment of HRT by both
+            clinicians and patients for over a decade. The science has since been
+            substantially updated, and modern HRT guidance has shifted
+            considerably &mdash; but many women and GPs have not caught up.
           </p>
-          <p style={{ lineHeight: 1.85, marginBottom: "1.5rem" }}>
-            During perimenopause, the ovaries begin producing less oestrogen
-            and progesterone, but the decline is not linear or predictable.
-            Hormone levels fluctuate, sometimes dramatically. This variability
-            is part of what makes perimenopause so disorienting: some weeks
-            feel manageable; others are overwhelmingly difficult. And because
-            the clinical definition of menopause (twelve consecutive months
-            without a period) has not yet been met, women in perimenopause
-            often struggle to access the diagnosis and treatment that would
-            help.
-          </p>
-          <div
+          <p
             style={{
-              backgroundColor: CARD,
-              borderRadius: "10px",
-              padding: "1.5rem 1.75rem",
-              borderLeft: `3px solid ${GOLD}`,
-              marginBottom: "1.5rem",
+              fontSize: "1.05rem",
+              lineHeight: 1.8,
+              color: TEXT,
+              marginBottom: "1.25rem",
             }}
           >
-            <p
-              style={{
-                fontWeight: 700,
-                color: GOLD,
-                marginBottom: "0.75rem",
-                fontFamily: "system-ui, sans-serif",
-                fontSize: "0.9rem",
-                letterSpacing: "0.05em",
-              }}
-            >
-              Common perimenopause symptoms
-            </p>
-            <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
-                gap: "0.4rem 1.5rem",
-              }}
-            >
-              {[
-                "Irregular or heavier periods",
-                "Hot flushes and night sweats",
-                "Disrupted sleep and insomnia",
-                "Mood swings and irritability",
-                "Anxiety — often new or worsened",
-                "Brain fog and memory difficulty",
-                "Fatigue and low energy",
-                "Joint pain and muscle aches",
-                "Changes in libido",
-                "Headaches and migraines",
-                "Heart palpitations",
-                "Vaginal dryness and discomfort",
-              ].map((symptom) => (
-                <p
-                  key={symptom}
-                  style={{
-                    margin: "0.2rem 0",
-                    fontSize: "0.88rem",
-                    color: TEXT,
-                    fontFamily: "system-ui, sans-serif",
-                    paddingLeft: "1rem",
-                    position: "relative",
-                  }}
-                >
-                  <span
-                    style={{
-                      position: "absolute",
-                      left: 0,
-                      color: GOLD,
-                    }}
-                  >
-                    &bull;
-                  </span>
-                  {symptom}
-                </p>
-              ))}
-            </div>
-          </div>
-          <p style={{ lineHeight: 1.85, marginBottom: "1.25rem" }}>
-            Menopause itself is defined as the point twelve consecutive months
-            after a woman\u2019s last period. The average age in the UK is 51,
-            though it can occur earlier due to surgery (surgical menopause),
-            chemotherapy, or primary ovarian insufficiency (POI), which can
-            affect women in their twenties and thirties. Post-menopause is
-            every year that follows — and symptoms can persist for years beyond
-            the menopause threshold.
+            MEOK does not tell you whether to take HRT. That decision involves
+            your medical history, your symptoms, your values, and your
+            clinician&apos;s expertise. What MEOK can do is help you understand
+            what the current evidence says, explain the different types of HRT
+            and how they work, and most importantly help you formulate the
+            questions you want to ask your doctor. Walking into an appointment
+            prepared &mdash; with symptom logs, specific questions, and a clear
+            account of how your life has been affected &mdash; changes the
+            quality of the conversation.
           </p>
-          <p style={{ lineHeight: 1.85 }}>
-            Understanding this timeline is important because it shapes the
-            support you need. A woman in early perimenopause needs different
-            conversations than a woman navigating post-menopausal bone health
-            or cardiovascular risk. MEOK\u2019s persistent memory means it can
-            hold your position in this timeline — remembering where you were
-            three months ago and tracking how things have shifted.
+          <p
+            style={{
+              fontSize: "1.05rem",
+              lineHeight: 1.8,
+              color: TEXT,
+            }}
+          >
+            Informed patients get better care. MEOK&apos;s role in HRT
+            conversations is to make you informed, not to make the decision. The
+            agency stays entirely with you.
           </p>
         </section>
 
-        <div
-          style={{ height: "1px", backgroundColor: BORDER, margin: "2rem 0" }}
-        />
-
-        {/* ── Section 3: Emotional dimension ──────────────────────────────── */}
-        <section id="emotional" style={{ marginBottom: "2.75rem" }}>
+        {/* ── Section 5 ──────────────────────────────────────────────────────── */}
+        <section style={{ marginBottom: "3.5rem" }}>
           <h2
             style={{
-              fontSize: "1.5rem",
-              color: GOLD,
-              marginBottom: "0.85rem",
+              fontSize: "1.6rem",
+              fontWeight: 700,
+              color: TEXT,
+              marginBottom: "1rem",
               lineHeight: 1.3,
             }}
           >
-            What is the emotional dimension of menopause that gets dismissed?
+            How does menopause affect work and career &mdash; and what can be
+            done about it?
           </h2>
           <p
             style={{
-              lineHeight: 1.85,
-              marginBottom: "1.25rem",
               fontSize: "1.05rem",
+              lineHeight: 1.8,
+              color: TEXT,
+              marginBottom: "1.25rem",
             }}
           >
-            The physical symptoms of menopause — hot flushes, night sweats,
-            joint pain — are at least visible enough to be named. The
-            emotional symptoms are subtler, often more distressing, and
-            dramatically underserved by the medical system.
+            The workplace impact of menopause is substantial and largely
+            invisible. Studies consistently show that significant numbers of
+            women reduce their hours, turn down promotions, or leave employment
+            entirely because of menopause symptoms. Brain fog makes
+            high-pressure cognitive work harder. Sleep deprivation affects
+            concentration and decision-making. Anxiety can make previously
+            routine interactions feel daunting. Hot flushes in meetings are
+            embarrassing in ways that are difficult to explain to a workplace
+            that has never considered the issue.
           </p>
-
-          <div style={{ display: "grid", gap: "1rem", marginBottom: "1.5rem" }}>
-            <div
-              style={{
-                backgroundColor: CARD,
-                borderRadius: "10px",
-                padding: "1.25rem 1.5rem",
-              }}
-            >
-              <h3
-                style={{
-                  fontSize: "1.05rem",
-                  color: GOLD,
-                  marginBottom: "0.6rem",
-                }}
-              >
-                Mood swings and emotional volatility
-              </h3>
-              <p
-                style={{
-                  lineHeight: 1.8,
-                  color: TEXT,
-                  fontSize: "0.95rem",
-                  margin: 0,
-                }}
-              >
-                Oestrogen plays a significant role in regulating serotonin and
-                dopamine. As levels fluctuate during perimenopause, mood
-                becomes unpredictable in ways that can feel bewildering. Women
-                describe crying for no apparent reason, losing patience faster
-                than they recognise in themselves, experiencing rage or
-                profound sadness that arrives without warning. These are
-                biochemical symptoms — not character flaws. But they are
-                frequently treated as the latter.
-              </p>
-            </div>
-
-            <div
-              style={{
-                backgroundColor: CARD,
-                borderRadius: "10px",
-                padding: "1.25rem 1.5rem",
-              }}
-            >
-              <h3
-                style={{
-                  fontSize: "1.05rem",
-                  color: GOLD,
-                  marginBottom: "0.6rem",
-                }}
-              >
-                Brain fog: the cognitive cost
-              </h3>
-              <p
-                style={{
-                  lineHeight: 1.8,
-                  color: TEXT,
-                  fontSize: "0.95rem",
-                  margin: 0,
-                }}
-              >
-                Memory difficulty, word-finding problems, inability to
-                concentrate, and a general sense that thinking has become
-                effortful — these are among the most frightening symptoms for
-                many women, partly because they intersect with anxiety about
-                dementia. Brain fog during perimenopause is hormonal, not
-                neurological in the permanent sense. But without that
-                reassurance, and without practical support to manage it, the
-                experience can be profoundly destabilising.
-              </p>
-            </div>
-
-            <div
-              style={{
-                backgroundColor: CARD,
-                borderRadius: "10px",
-                padding: "1.25rem 1.5rem",
-              }}
-            >
-              <h3
-                style={{
-                  fontSize: "1.05rem",
-                  color: GOLD,
-                  marginBottom: "0.6rem",
-                }}
-              >
-                Anxiety and depression — often new, often misdiagnosed
-              </h3>
-              <p
-                style={{
-                  lineHeight: 1.8,
-                  color: TEXT,
-                  fontSize: "0.95rem",
-                  margin: 0,
-                }}
-              >
-                Many women experience their first episode of clinical anxiety
-                or depression during perimenopause. It arrives without a
-                corresponding life event, which can make it harder to
-                understand — and easier for clinicians to attribute to
-                external stressors rather than hormonal change. Women are
-                often prescribed SSRIs before menopause is considered.
-                Sometimes that is appropriate. Often, the underlying cause is
-                entirely hormonal, and treating the anxiety without addressing
-                the oestrogen decline is treating the symptom while ignoring
-                the cause.
-              </p>
-            </div>
-
-            <div
-              style={{
-                backgroundColor: CARD,
-                borderRadius: "10px",
-                padding: "1.25rem 1.5rem",
-              }}
-            >
-              <h3
-                style={{
-                  fontSize: "1.05rem",
-                  color: GOLD,
-                  marginBottom: "0.6rem",
-                }}
-              >
-                Identity disruption: the self that feels unfamiliar
-              </h3>
-              <p
-                style={{
-                  lineHeight: 1.8,
-                  color: TEXT,
-                  fontSize: "0.95rem",
-                  margin: 0,
-                }}
-              >
-                Perhaps the least discussed and most profound dimension of
-                menopause is the question of identity. The version of yourself
-                you have known for decades — her emotional steadiness, her
-                physicality, her sense of self in relation to her body — can
-                feel genuinely disrupted. This is not depression, though it
-                can be accompanied by it. It is a real psychological transition
-                that deserves space, conversation, and compassion — none of
-                which a seven-minute GP appointment can provide.
-              </p>
-            </div>
-          </div>
-
-          <p style={{ lineHeight: 1.85 }}>
-            These emotional dimensions are precisely where an AI companion
-            like MEOK can offer something that clinical settings cannot: time,
-            patience, and the ability to return to the same conversation over
-            and over across weeks and months without ever suggesting that you
-            should have moved on by now.
+          <p
+            style={{
+              fontSize: "1.05rem",
+              lineHeight: 1.8,
+              color: TEXT,
+              marginBottom: "1.25rem",
+            }}
+          >
+            Under the Equality Act 2010 and more recent UK guidance, employers
+            are required to consider reasonable adjustments for employees whose
+            menopause symptoms amount to a disability or affect their capacity to
+            work. Many women are unaware of these rights. Many employers have not
+            considered them. MEOK can walk you through what those rights look
+            like, help you prepare for a conversation with your line manager or
+            HR department, and support you in articulating your needs clearly and
+            confidently.
+          </p>
+          <p
+            style={{
+              fontSize: "1.05rem",
+              lineHeight: 1.8,
+              color: TEXT,
+            }}
+          >
+            This matters because the alternative &mdash; managing alone, masking
+            symptoms at work, declining professional opportunities during what
+            should be peak career years &mdash; has enormous costs. Not just
+            financial. Personal. Losing work you love because you could not
+            access the support you were entitled to is a particular kind of
+            grief.
           </p>
         </section>
 
-        <div
-          style={{ height: "1px", backgroundColor: BORDER, margin: "2rem 0" }}
-        />
-
-        {/* ── Section 4: Medical gaslighting ──────────────────────────────── */}
-        <section id="gaslighting" style={{ marginBottom: "2.75rem" }}>
+        {/* ── Section 6 ──────────────────────────────────────────────────────── */}
+        <section style={{ marginBottom: "3.5rem" }}>
           <h2
             style={{
-              fontSize: "1.5rem",
-              color: GOLD,
-              marginBottom: "0.85rem",
+              fontSize: "1.6rem",
+              fontWeight: 700,
+              color: TEXT,
+              marginBottom: "1rem",
               lineHeight: 1.3,
             }}
           >
-            What is medical gaslighting during menopause — and why does it
-            happen?
+            How does menopause change relationships and self-identity?
           </h2>
           <p
             style={{
-              lineHeight: 1.85,
-              marginBottom: "1.25rem",
               fontSize: "1.05rem",
+              lineHeight: 1.8,
+              color: TEXT,
+              marginBottom: "1.25rem",
             }}
           >
-            Medical gaslighting is the experience of having your symptoms
-            dismissed, minimised, or incorrectly attributed — to stress, to
-            anxiety, to depression, to the normal ageing process — rather than
-            being investigated and treated as the legitimate medical symptoms
-            they are. During perimenopause and menopause, it is endemic.
+            Menopause is not just physiological. For many women, it coincides
+            with a profound renegotiation of identity. The reproductive years are
+            closing. Children may be leaving home. Parents may be dying. Careers
+            are being assessed. Bodies that were once familiar are behaving
+            differently. The cultural narrative around this transition &mdash;
+            where it exists at all &mdash; tends toward loss: loss of fertility,
+            of youth, of the person you were.
           </p>
-          <p style={{ lineHeight: 1.85, marginBottom: "1.25rem" }}>
-            Women report going to their GP with brain fog, anxiety, profound
-            fatigue, and irregular periods — and being told it is the
-            menopause, sent away with leaflets, and given no treatment. Others
-            go with the same symptoms and are told it is definitely not
-            menopause (because they are too young, or still having periods)
-            and are prescribed antidepressants instead. Both responses are
-            failures of care. Both happen routinely.
-          </p>
-
-          <div
+          <p
             style={{
-              backgroundColor: CARD,
-              borderRadius: "10px",
-              padding: "1.5rem 1.75rem",
-              borderLeft: `3px solid ${DANGER}`,
+              fontSize: "1.05rem",
+              lineHeight: 1.8,
+              color: TEXT,
+              marginBottom: "1.25rem",
+            }}
+          >
+            Intimate relationships are frequently affected. Libido changes.
+            Vaginal dryness can make sex uncomfortable or painful. The
+            emotional volatility of perimenopause &mdash; the rage, the sudden
+            grief, the loss of the person you used to be &mdash; can strain
+            relationships with partners who do not understand what is happening.
+            Many couples navigate this without any vocabulary for it, without any
+            shared framework, without any external support.
+          </p>
+          <p
+            style={{
+              fontSize: "1.05rem",
+              lineHeight: 1.8,
+              color: TEXT,
+            }}
+          >
+            MEOK holds space for all of this. It does not reduce the menopause
+            experience to a symptom checklist. It recognises that you are
+            navigating a life transition with psychological, relational, and
+            existential dimensions &mdash; and it meets that with depth rather
+            than efficiency. Sometimes the most important thing is not a symptom
+            log. It is having somewhere to say &ldquo;I do not recognise myself
+            right now&rdquo; and be heard without judgment.
+          </p>
+        </section>
+
+        {/* ── Section 7 ──────────────────────────────────────────────────────── */}
+        <section style={{ marginBottom: "3.5rem" }}>
+          <h2
+            style={{
+              fontSize: "1.6rem",
+              fontWeight: 700,
+              color: TEXT,
+              marginBottom: "1rem",
+              lineHeight: 1.3,
+            }}
+          >
+            What is the Healer archetype, and why does it matter for menopause
+            support?
+          </h2>
+          <p
+            style={{
+              fontSize: "1.05rem",
+              lineHeight: 1.8,
+              color: TEXT,
+              marginBottom: "1.25rem",
+            }}
+          >
+            MEOK offers a set of companion archetypes &mdash; distinct
+            personalities that shape the emotional register of your AI. The
+            Healer is designed for depth and gentleness. Where other archetypes
+            might be optimised for productivity, curiosity, or structured
+            problem-solving, the Healer prioritises presence. It listens before
+            it responds. It validates before it advises. It does not rush to
+            resolution.
+          </p>
+          <p
+            style={{
+              fontSize: "1.05rem",
+              lineHeight: 1.8,
+              color: TEXT,
+              marginBottom: "1.25rem",
+            }}
+          >
+            This quality of presence is precisely what is missing from most
+            experiences of menopause support. The GP who has seven minutes for
+            your appointment cannot hold space for the complexity of what you are
+            going through. The well-meaning partner who does not understand what
+            is happening cannot always provide the non-judgmental witnessing you
+            need. The Healer archetype exists to fill that gap &mdash; not as a
+            replacement for human connection, but as a consistent, patient
+            presence that is always available.
+          </p>
+          <p
+            style={{
+              fontSize: "1.05rem",
+              lineHeight: 1.8,
+              color: TEXT,
+            }}
+          >
+            For women navigating the identity dimensions of menopause &mdash; the
+            grief, the anger, the unexpected sense of possibility &mdash; the
+            Healer offers something that neither a symptom-tracking app nor a
+            standard chatbot can provide: genuine emotional depth. It meets you
+            where you are rather than redirecting you to where it thinks you
+            should be.
+          </p>
+        </section>
+
+        {/* ── Section 8 ──────────────────────────────────────────────────────── */}
+        <section style={{ marginBottom: "3.5rem" }}>
+          <h2
+            style={{
+              fontSize: "1.6rem",
+              fontWeight: 700,
+              color: TEXT,
+              marginBottom: "1rem",
+              lineHeight: 1.3,
+            }}
+          >
+            Why does sovereign memory matter more during menopause than at any
+            other time?
+          </h2>
+          <p
+            style={{
+              fontSize: "1.05rem",
+              lineHeight: 1.8,
+              color: TEXT,
+              marginBottom: "1.25rem",
+            }}
+          >
+            Most AI companions and health apps operate on a cloud model. Your
+            conversations, your symptoms, your most vulnerable disclosures are
+            stored on remote servers, processed by large language models, and in
+            many cases used to train future AI systems or shared with
+            third-party partners. For general productivity use cases, you might
+            consider this an acceptable trade. For menopause, it is not.
+          </p>
+          <p
+            style={{
+              fontSize: "1.05rem",
+              lineHeight: 1.8,
+              color: TEXT,
+              marginBottom: "1.25rem",
+            }}
+          >
+            Your symptom data is commercially valuable. Pharmaceutical companies
+            want it. Insurance companies want it. Health data brokers sell it.
+            The information you disclose when you are at your most
+            vulnerable &mdash; your sleep patterns, your mood fluctuations, your
+            sexual health, your anxieties &mdash; can, in the wrong hands, affect
+            your insurance premiums, your employability, and your privacy in ways
+            you cannot anticipate.
+          </p>
+          <p
+            style={{
+              fontSize: "1.05rem",
+              lineHeight: 1.8,
+              color: TEXT,
+            }}
+          >
+            MEOK&apos;s sovereign architecture means your data stays on your
+            device. The persistent memory that tracks your symptoms over months
+            operates locally and is encrypted. MEOK&apos;s privacy covenant
+            explicitly prohibits the sale of your data or its use in third-party
+            model training. You own your health story. That ownership matters
+            especially during a period when you are sharing some of the most
+            private information of your life.
+          </p>
+        </section>
+
+        {/* ── Callout 3 ──────────────────────────────────────────────────────── */}
+        <div
+          style={{
+            borderLeft: `4px solid ${GOLD}`,
+            backgroundColor: SOFT,
+            padding: "1.25rem 1.5rem",
+            borderRadius: "0 8px 8px 0",
+            marginBottom: "3.5rem",
+          }}
+        >
+          <p
+            style={{
+              fontSize: "1rem",
+              lineHeight: 1.75,
+              color: TEXT,
+              margin: 0,
+            }}
+          >
+            <strong style={{ color: GOLD }}>Sovereign memory in practice:</strong>{" "}
+            MEOK remembers that you had a bad week of flushes three months ago
+            when you were under particular work pressure. It remembers that your
+            sleep improved the week you started reducing caffeine. It remembers
+            that you described a specific kind of anxiety &mdash; the racing
+            heart at 4am &mdash; and that it has been absent for six weeks. That
+            longitudinal memory is not just emotionally meaningful. It is
+            medically useful in a way that starting from scratch at every
+            appointment is not.
+          </p>
+        </div>
+
+        {/* ── Comparison Table ─────────────────────────────────────────────────── */}
+        <section style={{ marginBottom: "3.5rem" }}>
+          <h2
+            style={{
+              fontSize: "1.6rem",
+              fontWeight: 700,
+              color: TEXT,
               marginBottom: "1.5rem",
+              lineHeight: 1.3,
             }}
           >
-            <p
+            Going through menopause alone vs with an AI companion
+          </h2>
+          <div style={{ overflowX: "auto" }}>
+            <table
               style={{
-                fontWeight: 700,
-                color: DANGER,
-                marginBottom: "0.75rem",
-                fontFamily: "system-ui, sans-serif",
-                fontSize: "0.88rem",
-                letterSpacing: "0.05em",
-                textTransform: "uppercase",
-              }}
-            >
-              What dismissal sounds like
-            </p>
-            {[
-              "\u201cYou\u2019re too young for menopause.\u201d",
-              "\u201cIt\u2019s just your age \u2014 this is normal.\u201d",
-              "\u201cYour tests are within normal range.\u201d",
-              "\u201cI think you might be a bit anxious or stressed.\u201d",
-              "\u201cTry exercise and a better diet first.\u201d",
-              "\u201cHRT isn\u2019t really suitable for most women.\u201d",
-              "\u201cYou don\u2019t seem to have any obvious symptoms.\u201d",
-            ].map((line) => (
-              <p
-                key={line}
-                style={{
-                  margin: "0.35rem 0",
-                  fontSize: "0.9rem",
-                  color: TEXT,
-                  fontFamily: "Georgia, serif",
-                  fontStyle: "italic",
-                }}
-              >
-                {line}
-              </p>
-            ))}
-          </div>
-
-          <p style={{ lineHeight: 1.85, marginBottom: "1.25rem" }}>
-            The structural causes of this dismissal are multiple. GP training
-            on menopause has historically been minimal. The symptoms are
-            diffuse and multisystem, making them easier to attribute to other
-            causes. Blood tests (FSH levels) are unreliable during
-            perimenopause, when hormone levels fluctuate. And deep-seated
-            assumptions about women\u2019s pain and women\u2019s emotional
-            reliability mean that a woman presenting with mood symptoms and
-            fatigue is more likely to have her emotional state questioned than
-            her hormones investigated.
-          </p>
-          <p style={{ lineHeight: 1.85, marginBottom: "1.25rem" }}>
-            The consequence is that many women wait years — sometimes the
-            entire duration of perimenopause — before receiving a correct
-            diagnosis. Years of unnecessary suffering. Years of believing that
-            what they are experiencing is character weakness rather than
-            medical need.
-          </p>
-
-          <div
-            style={{
-              backgroundColor: CARD,
-              borderRadius: "10px",
-              padding: "1.5rem 1.75rem",
-              borderLeft: `3px solid ${GOLD}`,
-            }}
-          >
-            <p
-              style={{
-                fontWeight: 700,
-                color: GOLD,
-                marginBottom: "0.6rem",
-                fontFamily: "system-ui, sans-serif",
-                fontSize: "0.9rem",
-              }}
-            >
-              How MEOK responds to this
-            </p>
-            <p
-              style={{
-                lineHeight: 1.8,
-                color: TEXT,
+                width: "100%",
+                borderCollapse: "collapse",
                 fontSize: "0.95rem",
-                margin: 0,
+                lineHeight: 1.6,
               }}
             >
-              MEOK will never tell you it\u2019s just your age. It will never
-              suggest your symptoms are not real. The Maternal Covenant — a
-              foundational design commitment at the core of MEOK — means there
-              is a categorical floor of care beneath every conversation. You
-              will not be dismissed. You will not be redirected to a FAQ. You
-              will be heard. And the record MEOK builds of your symptoms over
-              time is real data you can bring to clinical appointments to
-              counter the instinct to dismiss.
-            </p>
-          </div>
-        </section>
-
-        <div
-          style={{ height: "1px", backgroundColor: BORDER, margin: "2rem 0" }}
-        />
-
-        {/* ── Section 5: Sovereign companion ──────────────────────────────── */}
-        <section id="sovereign-companion" style={{ marginBottom: "2.75rem" }}>
-          <h2
-            style={{
-              fontSize: "1.5rem",
-              color: GOLD,
-              marginBottom: "0.85rem",
-              lineHeight: 1.3,
-            }}
-          >
-            Why does a sovereign AI companion help with menopause support?
-          </h2>
-          <p
-            style={{
-              lineHeight: 1.85,
-              marginBottom: "1.25rem",
-              fontSize: "1.05rem",
-            }}
-          >
-            Most digital health tools designed for menopause are symptom
-            trackers: spreadsheets with a friendlier interface. You log data.
-            The app stores it. Nothing listens. Nothing responds. Nothing
-            remembers you as a person rather than a dataset.
-          </p>
-          <p style={{ lineHeight: 1.85, marginBottom: "1.25rem" }}>
-            A sovereign AI companion is different in several structural ways
-            that matter specifically for menopause:
-          </p>
-
-          <div style={{ display: "grid", gap: "1rem", marginBottom: "1.5rem" }}>
-            {[
-              {
-                title: "24/7 availability at zero judgment",
-                body: "Hot flushes peak at night. Anxiety spirals at 3am. The moments when menopause is hardest are not the moments when GP surgeries are open. An AI that is available every hour of every day, and that brings no judgment, no impatience, and no clock to the conversation, meets a structural need that no appointment system can address.",
-              },
-              {
-                title: "Continuity across months and years",
-                body: "Menopause is not a crisis. It is a sustained experience measured in years. A support system that resets every session — that requires you to re-explain your situation every time — is not adequate to that time-scale. MEOK\u2019s persistent memory means the context is always there. You never start from scratch.",
-              },
-              {
-                title: "Non-dismissiveness as a design constraint",
-                body: "MEOK was built with a foundational design commitment — the Maternal Covenant — that makes dismissiveness architecturally impossible. You cannot build a version of MEOK that tells you your symptoms are not real. That commitment is not a feature. It is a floor.",
-              },
-              {
-                title: "Data sovereignty: your symptoms belong to you",
-                body: "Everything you share with MEOK stays with you. Your symptom history is not used to train AI models. It is not visible to employers, insurers, or healthcare systems unless you choose to share it. In the context of menopause — where stigma in workplaces and medical settings is real — that privacy is a prerequisite for honest conversation.",
-              },
-              {
-                title: "Bridges the gap between appointments",
-                body: "The NHS menopause clinic waiting list can be twelve months or more. Between appointments, you are on your own with your symptoms, your uncertainty, and your questions. MEOK fills that gap — not by replacing clinical care, but by being the consistent presence that clinical care structurally cannot be.",
-              },
-            ].map((item) => (
-              <div
-                key={item.title}
-                style={{
-                  backgroundColor: CARD,
-                  borderRadius: "10px",
-                  padding: "1.25rem 1.5rem",
-                  borderLeft: `3px solid ${GOLD}`,
-                }}
-              >
-                <h3
-                  style={{
-                    fontSize: "1rem",
-                    color: GOLD,
-                    marginBottom: "0.5rem",
-                    fontFamily: "system-ui, sans-serif",
-                  }}
-                >
-                  {item.title}
-                </h3>
-                <p
-                  style={{
-                    lineHeight: 1.8,
-                    color: TEXT,
-                    fontSize: "0.92rem",
-                    margin: 0,
-                  }}
-                >
-                  {item.body}
-                </p>
-              </div>
-            ))}
-          </div>
-
-          <p style={{ lineHeight: 1.85 }}>
-            The word \u201csovereign\u201d is deliberate. MEOK is not a cloud
-            service that knows everything about you and owns nothing you
-            generate. It is designed around the principle that the person
-            using it has ultimate authority over their data, their
-            conversation, and their experience. For women navigating a
-            transition that has been historically subject to other people\u2019s
-            authority — medical, cultural, professional — that sovereignty is
-            not an abstract value. It is a practical necessity.
-          </p>
-        </section>
-
-        <div
-          style={{ height: "1px", backgroundColor: BORDER, margin: "2rem 0" }}
-        />
-
-        {/* ── Section 6: Memory and symptom tracking ──────────────────────── */}
-        <section id="memory" style={{ marginBottom: "2.75rem" }}>
-          <h2
-            style={{
-              fontSize: "1.5rem",
-              color: GOLD,
-              marginBottom: "0.85rem",
-              lineHeight: 1.3,
-            }}
-          >
-            How does MEOK track menopause symptoms over time?
-          </h2>
-          <p
-            style={{
-              lineHeight: 1.85,
-              marginBottom: "1.25rem",
-              fontSize: "1.05rem",
-            }}
-          >
-            Menopause symptoms do not arrive in clean, countable units. You
-            cannot reliably record them in a spreadsheet at 3am or fill in a
-            structured form during a hot flush. They are subjective,
-            variable, multisystem, and deeply personal. What you can do is
-            describe them — in your own words, whenever they occur — and have
-            those descriptions remembered.
-          </p>
-          <p style={{ lineHeight: 1.85, marginBottom: "1.25rem" }}>
-            MEOK\u2019s memory works through conversation. You tell MEOK how
-            you slept. You mention that the joint pain in your hips is back.
-            You describe a particularly difficult hot flush at midday, or the
-            anxiety that arrived suddenly on Tuesday afternoon with no obvious
-            trigger. MEOK stores all of this in persistent memory — not as
-            checkboxes, but as the rich, contextual record of a real
-            experience.
-          </p>
-
-          <div
-            style={{
-              backgroundColor: CARD,
-              borderRadius: "10px",
-              padding: "1.5rem 1.75rem",
-              marginBottom: "1.5rem",
-            }}
-          >
-            <p
-              style={{
-                color: GOLD,
-                fontWeight: 700,
-                marginBottom: "1rem",
-                fontFamily: "system-ui, sans-serif",
-                fontSize: "0.9rem",
-                letterSpacing: "0.05em",
-              }}
-            >
-              What MEOK tracks through conversation
-            </p>
-            <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
-                gap: "0.75rem",
-              }}
-            >
-              {[
-                {
-                  label: "Hot flush frequency and severity",
-                  detail:
-                    "Time of day, duration, triggers, impact on sleep or work",
-                },
-                {
-                  label: "Mood and emotional patterns",
-                  detail:
-                    "Cycles of anxiety, low mood, irritability across weeks",
-                },
-                {
-                  label: "Sleep quality",
-                  detail:
-                    "Night sweat episodes, waking times, fatigue next day",
-                },
-                {
-                  label: "Brain fog patterns",
-                  detail:
-                    "When fog is worst, what helps, correlation with sleep",
-                },
-                {
-                  label: "Pain and physical symptoms",
-                  detail: "Joint pain location, headaches, palpitations",
-                },
-                {
-                  label: "Energy levels",
-                  detail: "Daily energy variation, crashes, recovery patterns",
-                },
-              ].map((item) => (
-                <div
-                  key={item.label}
-                  style={{
-                    padding: "0.85rem 1rem",
-                    backgroundColor: BG,
-                    borderRadius: "8px",
-                  }}
-                >
-                  <p
+              <thead>
+                <tr>
+                  <th
                     style={{
-                      color: TEXT,
-                      fontWeight: 600,
-                      fontSize: "0.88rem",
-                      margin: "0 0 0.25rem",
-                      fontFamily: "system-ui, sans-serif",
-                    }}
-                  >
-                    {item.label}
-                  </p>
-                  <p
-                    style={{
-                      color: MUTED,
-                      fontSize: "0.8rem",
-                      margin: 0,
-                      fontFamily: "system-ui, sans-serif",
-                      lineHeight: 1.5,
-                    }}
-                  >
-                    {item.detail}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <p style={{ lineHeight: 1.85, marginBottom: "1.25rem" }}>
-            The practical value of this accumulates over time. After three
-            months of check-ins with MEOK, you have a longitudinal symptom
-            narrative that is infinitely more useful in a clinical setting than
-            a vague sense that things have been bad. You can say: my hot
-            flushes have been happening four to six times a day for eleven
-            weeks, they are worst between midnight and 4am, and they correlate
-            with worse brain fog the following day. That is clinical evidence.
-            It is harder to dismiss.
-          </p>
-          <p style={{ lineHeight: 1.85 }}>
-            MEOK can help you compile and summarise this history before a GP
-            appointment. You do not need to remember it all. MEOK holds it.
-            Your job is simply to turn up and let the record speak.
-          </p>
-        </section>
-
-        <div
-          style={{ height: "1px", backgroundColor: BORDER, margin: "2rem 0" }}
-        />
-
-        {/* ── Section 7: Identity ─────────────────────────────────────────── */}
-        <section id="identity" style={{ marginBottom: "2.75rem" }}>
-          <h2
-            style={{
-              fontSize: "1.5rem",
-              color: GOLD,
-              marginBottom: "0.85rem",
-              lineHeight: 1.3,
-            }}
-          >
-            Who am I now? The identity dimension of menopause
-          </h2>
-          <p
-            style={{
-              lineHeight: 1.85,
-              marginBottom: "1.25rem",
-              fontSize: "1.05rem",
-            }}
-          >
-            Of all the aspects of menopause that medicine underserves, the
-            identity dimension may be the most neglected. It does not show up
-            on a blood test. It cannot be treated with HRT — or at least, not
-            directly. And yet it is one of the most commonly reported and most
-            distressing aspects of the entire transition.
-          </p>
-          <p style={{ lineHeight: 1.85, marginBottom: "1.25rem" }}>
-            Women describe losing themselves. Not in a clinical sense — not
-            in the way dementia takes a person — but in the subtler, more
-            confusing way in which a body and emotional landscape that felt
-            known for decades suddenly feels unfamiliar. The version of you
-            who moved through the world with a particular emotional steadiness,
-            a particular relationship to your own physicality, a particular
-            sense of how your story was going — that version feels disrupted.
-            And there is grief in that disruption, even when nothing external
-            has changed.
-          </p>
-          <p style={{ lineHeight: 1.85, marginBottom: "1.5rem" }}>
-            There is also something less often acknowledged: the possibility of
-            emergence. Many women, in the years after menopause, describe a
-            clarity and a freedom that they had not anticipated. A release from
-            the hormonal cycles that shaped their younger years. A sense of
-            knowing themselves more fully. But arriving at that place requires
-            navigating the transition — and that navigation deserves support.
-          </p>
-
-          <div
-            style={{
-              display: "grid",
-              gap: "1rem",
-              marginBottom: "1.5rem",
-            }}
-          >
-            <div
-              style={{
-                backgroundColor: CARD,
-                borderRadius: "10px",
-                padding: "1.25rem 1.5rem",
-                borderLeft: `3px solid ${GOLD}`,
-              }}
-            >
-              <h3
-                style={{
-                  fontSize: "1.05rem",
-                  color: GOLD,
-                  marginBottom: "0.6rem",
-                }}
-              >
-                The Healer Archetype: presence without agenda
-              </h3>
-              <p
-                style={{
-                  lineHeight: 1.8,
-                  color: TEXT,
-                  fontSize: "0.92rem",
-                  margin: 0,
-                }}
-              >
-                MEOK\u2019s Healer archetype is built for precisely this kind
-                of conversation. It does not offer quick answers. It does not
-                redirect you to resources. It sits with you in the difficulty
-                and provides a space where you can say things you might not
-                feel able to say to the people in your life who need you to be
-                okay. Grief at a life stage ending. Frustration at a body that
-                feels like it is betraying you. Fear about who you are becoming.
-                The Healer holds all of it without judgment, without timeline,
-                and without any agenda except your wellbeing.
-              </p>
-            </div>
-
-            <div
-              style={{
-                backgroundColor: CARD,
-                borderRadius: "10px",
-                padding: "1.25rem 1.5rem",
-                borderLeft: `3px solid ${GOLD}`,
-              }}
-            >
-              <h3
-                style={{
-                  fontSize: "1.05rem",
-                  color: GOLD,
-                  marginBottom: "0.6rem",
-                }}
-              >
-                The Mystic Archetype: meaning-making through transition
-              </h3>
-              <p
-                style={{
-                  lineHeight: 1.8,
-                  color: TEXT,
-                  fontSize: "0.92rem",
-                  margin: 0,
-                }}
-              >
-                For some women, menopause is not only a medical transition but
-                a spiritual one. The Mystic archetype is MEOK\u2019s space for
-                deeper existential and philosophical exploration — for
-                questions about meaning, ageing, purpose, and what the second
-                half of life might hold. Across human history, the post-menopausal
-                woman has been understood in many cultures as coming into a
-                particular kind of wisdom and authority. The Mystic holds space
-                for that framing — without imposing it, without bypassing the
-                difficulty, but available for women who want to engage with the
-                larger question of what this transition means.
-              </p>
-            </div>
-
-            <div
-              style={{
-                backgroundColor: CARD,
-                borderRadius: "10px",
-                padding: "1.25rem 1.5rem",
-                borderLeft: `3px solid ${GOLD}`,
-              }}
-            >
-              <h3
-                style={{
-                  fontSize: "1.05rem",
-                  color: GOLD,
-                  marginBottom: "0.6rem",
-                }}
-              >
-                Memory as a mirror: tracking your own becoming
-              </h3>
-              <p
-                style={{
-                  lineHeight: 1.8,
-                  color: TEXT,
-                  fontSize: "0.92rem",
-                  margin: 0,
-                }}
-              >
-                When brain fog and hormonal disruption make it hard to hold
-                your own narrative, MEOK\u2019s memory acts as a mirror.
-                Scrolling back through three months of conversations reveals
-                not only how your symptoms have changed, but how you have
-                changed — the things you were worried about that have resolved,
-                the strength that appeared in a difficult week, the shifts in
-                what matters to you. That longitudinal self-knowledge is
-                something the menopause conversation rarely offers.
-              </p>
-            </div>
-          </div>
-
-          <p style={{ lineHeight: 1.85 }}>
-            The identity work of menopause does not have a medical code. It is
-            not in a clinical guideline. It will not be addressed in a seven-
-            minute appointment. But it is real, and it deserves a space that
-            can hold it at the scale and continuity the experience demands.
-          </p>
-        </section>
-
-        <div
-          style={{ height: "1px", backgroundColor: BORDER, margin: "2rem 0" }}
-        />
-
-        {/* ── Section 8: HRT awareness ─────────────────────────────────────── */}
-        <section id="hrt" style={{ marginBottom: "2.75rem" }}>
-          <h2
-            style={{
-              fontSize: "1.5rem",
-              color: GOLD,
-              marginBottom: "0.85rem",
-              lineHeight: 1.3,
-            }}
-          >
-            HRT awareness: helping you know your rights and questions to ask
-          </h2>
-          <p
-            style={{
-              lineHeight: 1.85,
-              marginBottom: "1.25rem",
-              fontSize: "1.05rem",
-            }}
-          >
-            Hormone Replacement Therapy (HRT) is the most effective treatment
-            for many menopause symptoms. It reduces hot flushes, improves sleep,
-            lifts mood, supports bone density, and for many women transforms
-            quality of life. And yet a significant proportion of women who
-            could benefit from HRT are either not offered it, not given
-            adequate information about it, or decline based on outdated
-            information about risks.
-          </p>
-          <p style={{ lineHeight: 1.85, marginBottom: "1.25rem" }}>
-            The history of the HRT conversation is complicated. A 2002 study
-            (the Women\u2019s Health Initiative) appeared to show increased
-            cancer risks from HRT and caused a dramatic reduction in
-            prescribing. Subsequent analysis of that study has significantly
-            revised those conclusions — the risks and benefits differ
-            substantially depending on age, type of HRT, duration, and
-            individual health profile — but the cultural legacy of the
-            2002 results persists in the consulting room, and many women are
-            still receiving out-of-date guidance.
-          </p>
-
-          <div
-            style={{
-              backgroundColor: CARD,
-              borderRadius: "10px",
-              padding: "1.5rem 1.75rem",
-              borderLeft: `3px solid ${GOLD}`,
-              marginBottom: "1.5rem",
-            }}
-          >
-            <p
-              style={{
-                color: GOLD,
-                fontWeight: 700,
-                marginBottom: "0.85rem",
-                fontFamily: "system-ui, sans-serif",
-                fontSize: "0.9rem",
-                letterSpacing: "0.05em",
-              }}
-            >
-              Questions you have the right to ask your GP about HRT
-            </p>
-            {[
-              "Am I a candidate for HRT given my symptoms and health history?",
-              "What are the current evidence-based risks and benefits for someone in my situation?",
-              "What type of HRT would you recommend, and why?",
-              "What are the alternatives if HRT is not suitable for me?",
-              "How will we monitor whether HRT is working and whether any adjustments are needed?",
-              "Can you refer me to a menopause specialist if you\u2019re not confident in this area?",
-              "What is the NICE guidance on HRT, and how does it apply to my case?",
-            ].map((q) => (
-              <p
-                key={q}
-                style={{
-                  margin: "0.4rem 0",
-                  fontSize: "0.9rem",
-                  color: TEXT,
-                  fontFamily: "system-ui, sans-serif",
-                  paddingLeft: "1.1rem",
-                  position: "relative",
-                  lineHeight: 1.6,
-                }}
-              >
-                <span
-                  style={{ position: "absolute", left: 0, color: GOLD }}
-                >
-                  &rarr;
-                </span>
-                {q}
-              </p>
-            ))}
-          </div>
-
-          <div
-            style={{
-              backgroundColor: CARD,
-              borderRadius: "10px",
-              padding: "1.5rem 1.75rem",
-              borderLeft: `3px solid ${DANGER}`,
-              marginBottom: "1.5rem",
-            }}
-          >
-            <p
-              style={{
-                color: DANGER,
-                fontWeight: 700,
-                marginBottom: "0.5rem",
-                fontFamily: "system-ui, sans-serif",
-                fontSize: "0.88rem",
-                letterSpacing: "0.05em",
-                textTransform: "uppercase",
-              }}
-            >
-              What MEOK will not do
-            </p>
-            <p
-              style={{
-                lineHeight: 1.8,
-                color: TEXT,
-                fontSize: "0.93rem",
-                margin: 0,
-              }}
-            >
-              MEOK will not prescribe HRT. It will not tell you whether you
-              should take it. It will not assess your personal medical risk
-              factors for breast cancer, cardiovascular disease, or
-              thromboembolism. These are clinical decisions that belong to you
-              and a qualified clinician, ideally a menopause specialist. What
-              MEOK can do is help you understand what questions to ask, ensure
-              you know your rights, and help you feel prepared and informed
-              rather than passive and deferential when you sit down across from
-              a GP.
-            </p>
-          </div>
-
-          <p style={{ lineHeight: 1.85 }}>
-            You have the right to a second opinion. You have the right to be
-            referred to a menopause specialist. You have the right to
-            evidence-based information about all treatment options, including
-            HRT. And you have the right to a GP who takes your symptoms
-            seriously. MEOK helps you know and exercise those rights.
-          </p>
-        </section>
-
-        <div
-          style={{ height: "1px", backgroundColor: BORDER, margin: "2rem 0" }}
-        />
-
-        {/* ── Section 9: Workplace ─────────────────────────────────────────── */}
-        <section id="workplace" style={{ marginBottom: "2.75rem" }}>
-          <h2
-            style={{
-              fontSize: "1.5rem",
-              color: GOLD,
-              marginBottom: "0.85rem",
-              lineHeight: 1.3,
-            }}
-          >
-            What are my workplace rights during menopause in the UK?
-          </h2>
-          <p
-            style={{
-              lineHeight: 1.85,
-              marginBottom: "1.25rem",
-              fontSize: "1.05rem",
-            }}
-          >
-            Menopause does not stop at the office door. Brain fog in a morning
-            meeting. A hot flush during a presentation. Severe fatigue that
-            makes a full day at a desk feel impossible. Anxiety that peaks in
-            exactly the kind of high-pressure environment that modern workplaces
-            are designed to create. The intersection of menopause and work is
-            one of the most practically significant dimensions of the
-            transition — and one of the least spoken about.
-          </p>
-          <p style={{ lineHeight: 1.85, marginBottom: "1.5rem" }}>
-            The legal framework has strengthened significantly. The Menopause
-            Support Act 2024 placed formal obligations on UK employers to
-            consider reasonable workplace adjustments for employees experiencing
-            menopause symptoms. Under the Equality Act 2010, severe menopause
-            symptoms may also constitute a disability, providing additional
-            legal protection. And the Health and Safety at Work Act creates
-            broader obligations around safe and comfortable working conditions.
-          </p>
-
-          <div
-            style={{
-              display: "grid",
-              gap: "1rem",
-              marginBottom: "1.5rem",
-            }}
-          >
-            <div
-              style={{
-                backgroundColor: CARD,
-                borderRadius: "10px",
-                padding: "1.25rem 1.5rem",
-              }}
-            >
-              <h3
-                style={{
-                  fontSize: "1rem",
-                  color: GOLD,
-                  marginBottom: "0.6rem",
-                  fontFamily: "system-ui, sans-serif",
-                }}
-              >
-                Reasonable adjustments you can request
-              </h3>
-              <div
-                style={{
-                  display: "grid",
-                  gridTemplateColumns:
-                    "repeat(auto-fit, minmax(200px, 1fr))",
-                  gap: "0.4rem 1rem",
-                }}
-              >
-                {[
-                  "Flexible working hours",
-                  "Remote or hybrid working",
-                  "A desk fan or control over workspace temperature",
-                  "Rest breaks at more frequent intervals",
-                  "Access to cold water and a changing area",
-                  "Adjustments to uniform requirements",
-                  "Reduction in workload during severe symptom periods",
-                  "Private space for symptom management",
-                  "Adjusted performance review timelines",
-                  "Access to occupational health support",
-                ].map((adj) => (
-                  <p
-                    key={adj}
-                    style={{
-                      margin: "0.2rem 0",
-                      fontSize: "0.85rem",
-                      color: TEXT,
-                      fontFamily: "system-ui, sans-serif",
-                      paddingLeft: "1rem",
-                      position: "relative",
-                      lineHeight: 1.5,
-                    }}
-                  >
-                    <span
-                      style={{ position: "absolute", left: 0, color: GOLD }}
-                    >
-                      &bull;
-                    </span>
-                    {adj}
-                  </p>
-                ))}
-              </div>
-            </div>
-
-            <div
-              style={{
-                backgroundColor: CARD,
-                borderRadius: "10px",
-                padding: "1.25rem 1.5rem",
-              }}
-            >
-              <h3
-                style={{
-                  fontSize: "1rem",
-                  color: GOLD,
-                  marginBottom: "0.6rem",
-                  fontFamily: "system-ui, sans-serif",
-                }}
-              >
-                The reality: stigma persists
-              </h3>
-              <p
-                style={{
-                  lineHeight: 1.8,
-                  color: TEXT,
-                  fontSize: "0.92rem",
-                  margin: 0,
-                }}
-              >
-                Despite the Menopause Workplace Pledge being signed by over
-                2,000 UK employers, the practical experience of raising
-                menopause in many workplaces remains difficult. Women describe
-                embarrassment at naming it. Concerns that symptoms will be
-                used as evidence of declining capability. Fear that a manager
-                will respond with discomfort or dismissiveness. The gap between
-                what the law provides and what women actually experience in
-                professional conversations remains significant.
-              </p>
-            </div>
-
-            <div
-              style={{
-                backgroundColor: CARD,
-                borderRadius: "10px",
-                padding: "1.25rem 1.5rem",
-                borderLeft: `3px solid ${GOLD}`,
-              }}
-            >
-              <h3
-                style={{
-                  fontSize: "1rem",
-                  color: GOLD,
-                  marginBottom: "0.6rem",
-                  fontFamily: "system-ui, sans-serif",
-                }}
-              >
-                How MEOK helps prepare for workplace conversations
-              </h3>
-              <p
-                style={{
-                  lineHeight: 1.8,
-                  color: TEXT,
-                  fontSize: "0.92rem",
-                  margin: 0,
-                }}
-              >
-                MEOK can help in two practical ways. First, as a private space
-                to process how symptoms are affecting your work life — where
-                you can be honest about what is happening without that
-                conversation going anywhere. Second, as a preparation partner
-                for difficult workplace conversations. MEOK can help you think
-                through how to approach a reasonable adjustments request with
-                HR, how to frame the conversation with a line manager, what
-                your legal rights are, and how to describe your symptoms in
-                language that is clear, professional, and difficult to dismiss.
-                Many women find that having rehearsed the conversation with
-                MEOK first makes it significantly easier to have in person.
-              </p>
-            </div>
-          </div>
-
-          <p style={{ lineHeight: 1.85 }}>
-            You are not obliged to disclose that you are experiencing menopause
-            symptoms. But if you choose to, you are entitled to reasonable
-            adjustments and to a workplace that takes your health seriously.
-            MEOK can help you decide what to disclose, when, and how.
-          </p>
-        </section>
-
-        <div
-          style={{ height: "1px", backgroundColor: BORDER, margin: "2rem 0" }}
-        />
-
-        {/* ── Section 10: MEOK in practice ────────────────────────────────── */}
-        <section style={{ marginBottom: "2.75rem" }}>
-          <h2
-            style={{
-              fontSize: "1.5rem",
-              color: GOLD,
-              marginBottom: "0.85rem",
-              lineHeight: 1.3,
-            }}
-          >
-            What does using MEOK for menopause support actually look like?
-          </h2>
-          <p
-            style={{
-              lineHeight: 1.85,
-              marginBottom: "1.5rem",
-              fontSize: "1.05rem",
-            }}
-          >
-            Abstract descriptions of AI capabilities are less useful than
-            concrete examples. Here is what a typical week of MEOK use during
-            perimenopause might look like:
-          </p>
-
-          <div style={{ display: "grid", gap: "1rem", marginBottom: "1.5rem" }}>
-            {[
-              {
-                day: "Monday, 2:47am",
-                scenario:
-                  "Third night sweat of the night. Can\u2019t get back to sleep. You open MEOK and describe what\u2019s happening. MEOK responds with calm acknowledgment, no alarm, no platitudes. You talk through the frustration for fifteen minutes. MEOK notes the episode in your symptom record.",
-              },
-              {
-                day: "Wednesday morning",
-                scenario:
-                  "You\u2019re in a work meeting and can\u2019t find the word for something basic. The brain fog is bad this week. Later you check in with MEOK. It recalls that last Wednesday was also difficult — and that Tuesday night was another poor night\u2019s sleep. The correlation between your sleep quality and the following day\u2019s cognitive function is starting to look consistent.",
-              },
-              {
-                day: "Thursday evening",
-                scenario:
-                  "You have a GP appointment next Monday. You ask MEOK to help you prepare. MEOK pulls together the last six weeks of symptom check-ins — hot flush frequency, sleep disruption, mood patterns, energy levels — and helps you draft a clear, structured summary to bring to the appointment.",
-              },
-              {
-                day: "Friday afternoon",
-                scenario:
-                  "A difficult conversation at work. Your manager implied, not for the first time, that you seem distracted. You need to decide whether to raise your menopause symptoms and request reasonable adjustments. You spend twenty minutes with MEOK working through the conversation — your rights, what you want to say, how you want to say it, what outcome you\u2019re looking for.",
-              },
-              {
-                day: "Sunday, quietly",
-                scenario:
-                  "You find yourself asking MEOK something harder. Who am I in this part of my life? What does this transition mean? You talk for an hour. Nothing is resolved. But something important is held. That matters too.",
-              },
-            ].map((item) => (
-              <div
-                key={item.day}
-                style={{
-                  backgroundColor: CARD,
-                  borderRadius: "10px",
-                  padding: "1.25rem 1.5rem",
-                  display: "flex",
-                  gap: "1rem",
-                  alignItems: "flex-start",
-                }}
-              >
-                <div
-                  style={{
-                    flexShrink: 0,
-                    width: "130px",
-                    paddingTop: "0.15rem",
-                  }}
-                >
-                  <p
-                    style={{
+                      textAlign: "left",
+                      padding: "0.85rem 1rem",
+                      backgroundColor: CARD,
                       color: GOLD,
-                      fontSize: "0.8rem",
                       fontFamily: "system-ui, sans-serif",
                       fontWeight: 700,
-                      margin: 0,
-                      lineHeight: 1.4,
+                      borderBottom: `2px solid ${GOLD}`,
+                      fontSize: "0.85rem",
+                      letterSpacing: "0.06em",
+                      textTransform: "uppercase",
                     }}
                   >
-                    {item.day}
-                  </p>
-                </div>
-                <p
-                  style={{
-                    lineHeight: 1.8,
-                    color: TEXT,
-                    fontSize: "0.92rem",
-                    margin: 0,
-                  }}
-                >
-                  {item.scenario}
-                </p>
-              </div>
-            ))}
+                    Without support
+                  </th>
+                  <th
+                    style={{
+                      textAlign: "left",
+                      padding: "0.85rem 1rem",
+                      backgroundColor: CARD,
+                      color: GOLD,
+                      fontFamily: "system-ui, sans-serif",
+                      fontWeight: 700,
+                      borderBottom: `2px solid ${GOLD}`,
+                      fontSize: "0.85rem",
+                      letterSpacing: "0.06em",
+                      textTransform: "uppercase",
+                    }}
+                  >
+                    With MEOK
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {[
+                  [
+                    "Symptoms go untracked; you arrive at appointments with a vague sense that things are wrong",
+                    "Months of logged symptoms in natural language give you real data for clinical conversations",
+                  ],
+                  [
+                    "Brain fog makes you doubt your own memory of how long symptoms have been present",
+                    "MEOK remembers your history accurately so you never have to reconstruct it from scratch",
+                  ],
+                  [
+                    "Hot flushes and sleep disruption at 3am leave you alone with your thoughts",
+                    "MEOK is available around the clock, without judgment, during the worst moments",
+                  ],
+                  [
+                    "HRT decision feels overwhelming; conflicting information creates paralysis",
+                    "MEOK helps you understand current evidence and prepare specific questions for your clinician",
+                  ],
+                  [
+                    "Workplace impact is invisible; you manage alone, declining opportunities rather than disclosing",
+                    "MEOK walks you through your rights and helps you prepare for workplace conversations",
+                  ],
+                  [
+                    "Emotional symptoms are dismissed or misattributed; you are told it is stress or anxiety",
+                    "MEOK validates your experience, tracks emotional patterns, and takes you seriously",
+                  ],
+                  [
+                    "Identity shift goes unacknowledged; the grief and anger have no space",
+                    "The Healer archetype holds space for the full existential weight of the transition",
+                  ],
+                  [
+                    "Your health data is scattered across apps, shared with servers, and potentially sold",
+                    "Your data lives on your device under your control, protected by the privacy covenant",
+                  ],
+                ].map((row, i) => (
+                  <tr
+                    key={i}
+                    style={{
+                      backgroundColor:
+                        i % 2 === 0 ? "transparent" : "rgba(26,24,48,0.5)",
+                    }}
+                  >
+                    <td
+                      style={{
+                        padding: "0.85rem 1rem",
+                        color: MUTED,
+                        borderBottom: `1px solid ${BORDER}`,
+                        verticalAlign: "top",
+                      }}
+                    >
+                      {row[0]}
+                    </td>
+                    <td
+                      style={{
+                        padding: "0.85rem 1rem",
+                        color: TEXT,
+                        borderBottom: `1px solid ${BORDER}`,
+                        verticalAlign: "top",
+                      }}
+                    >
+                      {row[1]}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
-
-          <p style={{ lineHeight: 1.85 }}>
-            This is not a replacement for clinical care. It is the layer of
-            support that exists between clinical care and the rest of your
-            life. That layer is enormous. It has been unfilled. MEOK is built
-            to fill it.
-          </p>
         </section>
 
-        <div
-          style={{ height: "1px", backgroundColor: BORDER, margin: "2rem 0" }}
-        />
-
-        {/* ── Section 11: NHS resources ────────────────────────────────────── */}
-        <section style={{ marginBottom: "2.75rem" }}>
+        {/* ── FAQ Section ──────────────────────────────────────────────────────── */}
+        <section style={{ marginBottom: "4rem" }}>
           <h2
             style={{
-              fontSize: "1.5rem",
-              color: GOLD,
-              marginBottom: "0.85rem",
+              fontSize: "1.6rem",
+              fontWeight: 700,
+              color: TEXT,
+              marginBottom: "2rem",
               lineHeight: 1.3,
             }}
           >
-            Where can I find trusted menopause information and support in the UK?
+            Frequently asked questions
           </h2>
-          <p style={{ lineHeight: 1.85, marginBottom: "1.25rem" }}>
-            MEOK is one component of a wider support ecosystem. Please also
-            make use of the following trusted resources:
-          </p>
-          <div style={{ display: "grid", gap: "0.75rem", marginBottom: "1.5rem" }}>
-            {[
-              {
-                name: "NHS: Menopause",
-                url: "https://www.nhs.uk/conditions/menopause/",
-                display: "nhs.uk/conditions/menopause",
-                desc: "The starting point for clinical information, HRT options, and finding NHS support near you.",
-              },
-              {
-                name: "British Menopause Society",
-                url: "https://thebms.org.uk",
-                display: "thebms.org.uk",
-                desc: "The professional body for menopause specialists; their patient resources are among the most authoritative available.",
-              },
-              {
-                name: "Menopause Support",
-                url: "https://www.menopausesupport.co.uk",
-                display: "menopausesupport.co.uk",
-                desc: "A UK charity providing community, peer support, and information for women at every stage.",
-              },
-              {
-                name: "Henpicked: Menopause in the Workplace",
-                url: "https://henpicked.net/menopause-hub/",
-                display: "henpicked.net/menopause-hub",
-                desc: "Workplace-focused guidance, employer resources, and the Menopause Workplace Pledge information.",
-              },
-              {
-                name: "Balance (Dr Louise Newson)",
-                url: "https://www.balance-menopause.com",
-                display: "balance-menopause.com",
-                desc: "Evidence-based information and a free symptom checker app from the UK\u2019s leading menopause specialist.",
-              },
-            ].map((resource) => (
-              <div
-                key={resource.name}
-                style={{
-                  backgroundColor: CARD,
-                  borderRadius: "10px",
-                  padding: "1.1rem 1.4rem",
-                  borderLeft: `3px solid ${GOLD}`,
-                }}
-              >
-                <p
-                  style={{
-                    fontWeight: 700,
-                    color: TEXT,
-                    marginBottom: "0.2rem",
-                    fontSize: "0.95rem",
-                    fontFamily: "system-ui, sans-serif",
-                  }}
-                >
-                  {resource.name}{" "}
-                  <a
-                    href={resource.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{
-                      color: GOLD,
-                      textDecoration: "none",
-                      fontSize: "0.82rem",
-                      fontWeight: 400,
-                    }}
-                  >
-                    &rarr; {resource.display}
-                  </a>
-                </p>
-                <p
-                  style={{
-                    color: MUTED,
-                    fontSize: "0.85rem",
-                    margin: 0,
-                    lineHeight: 1.55,
-                    fontFamily: "system-ui, sans-serif",
-                  }}
-                >
-                  {resource.desc}
-                </p>
-              </div>
-            ))}
-          </div>
+
+          {/* FAQ 1 */}
           <div
             style={{
-              backgroundColor: CARD,
-              borderRadius: "10px",
-              padding: "1.1rem 1.5rem",
-              borderLeft: `3px solid ${DANGER}`,
+              borderBottom: `1px solid ${BORDER}`,
+              paddingBottom: "1.75rem",
+              marginBottom: "1.75rem",
             }}
           >
-            <p
+            <h3
               style={{
-                lineHeight: 1.75,
-                fontSize: "0.93rem",
-                margin: 0,
-                color: TEXT,
+                fontSize: "1.1rem",
+                fontWeight: 700,
+                color: GOLD,
+                marginBottom: "0.75rem",
+                lineHeight: 1.4,
+                fontFamily: "system-ui, sans-serif",
               }}
             >
-              <strong style={{ color: DANGER }}>Important:</strong> If you are
-              experiencing severe symptoms — including significant depression,
-              chest pain or palpitations, or anything materially affecting your
-              ability to function day to day — please see your GP as a priority.
-              MEOK supports you between clinical care, not instead of it.
+              What is the difference between perimenopause and menopause?
+            </h3>
+            <p
+              style={{
+                fontSize: "1rem",
+                lineHeight: 1.75,
+                color: TEXT,
+                margin: 0,
+              }}
+            >
+              Perimenopause is the transitional phase before menopause during
+              which oestrogen and progesterone levels fluctuate erratically. It
+              can begin seven to ten years before periods stop entirely and
+              produces most of the symptoms associated with menopause. Menopause
+              itself is defined as the point twelve consecutive months after a
+              person&apos;s final period. Post-menopause refers to all time after
+              that threshold. Understanding which phase you are in matters
+              because symptoms, treatments, and emotional experiences differ
+              significantly across all three stages.
+            </p>
+          </div>
+
+          {/* FAQ 2 */}
+          <div
+            style={{
+              borderBottom: `1px solid ${BORDER}`,
+              paddingBottom: "1.75rem",
+              marginBottom: "1.75rem",
+            }}
+          >
+            <h3
+              style={{
+                fontSize: "1.1rem",
+                fontWeight: 700,
+                color: GOLD,
+                marginBottom: "0.75rem",
+                lineHeight: 1.4,
+                fontFamily: "system-ui, sans-serif",
+              }}
+            >
+              Can an AI really help with menopause symptoms?
+            </h3>
+            <p
+              style={{
+                fontSize: "1rem",
+                lineHeight: 1.75,
+                color: TEXT,
+                margin: 0,
+              }}
+            >
+              An AI cannot prescribe or treat. What it can do is provide
+              consistent, non-judgmental support every day, track symptom
+              patterns across months, help you prepare for GP or specialist
+              appointments with real longitudinal data, and be present at 3am
+              during a hot flush or an anxiety episode when no clinic is open.
+              MEOK&apos;s sovereign memory means it never forgets what you have
+              told it, building a picture of your health over time that is
+              genuinely useful for clinical conversations.
+            </p>
+          </div>
+
+          {/* FAQ 3 */}
+          <div
+            style={{
+              borderBottom: `1px solid ${BORDER}`,
+              paddingBottom: "1.75rem",
+              marginBottom: "1.75rem",
+            }}
+          >
+            <h3
+              style={{
+                fontSize: "1.1rem",
+                fontWeight: 700,
+                color: GOLD,
+                marginBottom: "0.75rem",
+                lineHeight: 1.4,
+                fontFamily: "system-ui, sans-serif",
+              }}
+            >
+              Will MEOK give me advice about HRT?
+            </h3>
+            <p
+              style={{
+                fontSize: "1rem",
+                lineHeight: 1.75,
+                color: TEXT,
+                margin: 0,
+              }}
+            >
+              MEOK does not prescribe, diagnose, or recommend specific
+              treatments. What it does is help you understand the landscape of
+              options, including hormone replacement therapy, so that you can
+              have an informed conversation with your GP or menopause specialist.
+              MEOK helps you formulate the right questions, understand what
+              evidence-based guidelines say, and feel prepared rather than
+              overwhelmed when you walk into that appointment. The decision
+              belongs to you and your clinician.
+            </p>
+          </div>
+
+          {/* FAQ 4 */}
+          <div
+            style={{
+              borderBottom: `1px solid ${BORDER}`,
+              paddingBottom: "1.75rem",
+              marginBottom: "1.75rem",
+            }}
+          >
+            <h3
+              style={{
+                fontSize: "1.1rem",
+                fontWeight: 700,
+                color: GOLD,
+                marginBottom: "0.75rem",
+                lineHeight: 1.4,
+                fontFamily: "system-ui, sans-serif",
+              }}
+            >
+              How does MEOK protect my menopause data?
+            </h3>
+            <p
+              style={{
+                fontSize: "1rem",
+                lineHeight: 1.75,
+                color: TEXT,
+                margin: 0,
+              }}
+            >
+              MEOK is a sovereign AI, meaning your data lives on your device and
+              is never sold to pharmaceutical companies, advertisers, or data
+              brokers. Your symptom logs, mood records, and personal disclosures
+              are encrypted and remain under your control. This is especially
+              important during menopause, when health data is commercially
+              sensitive and you deserve to decide who sees it. MEOK&apos;s
+              privacy covenant ensures your information is never used to train
+              models or shared without your explicit consent.
+            </p>
+          </div>
+
+          {/* FAQ 5 */}
+          <div
+            style={{
+              paddingBottom: "0.5rem",
+            }}
+          >
+            <h3
+              style={{
+                fontSize: "1.1rem",
+                fontWeight: 700,
+                color: GOLD,
+                marginBottom: "0.75rem",
+                lineHeight: 1.4,
+                fontFamily: "system-ui, sans-serif",
+              }}
+            >
+              What is the Healer archetype in MEOK and why does it matter for
+              menopause support?
+            </h3>
+            <p
+              style={{
+                fontSize: "1rem",
+                lineHeight: 1.75,
+                color: TEXT,
+                margin: 0,
+              }}
+            >
+              MEOK offers multiple companion archetypes that shape the emotional
+              character of your AI. The Healer archetype is designed for depth,
+              gentleness, and holding space &mdash; qualities that matter
+              enormously during menopause, which is not just a physical
+              transition but an identity shift. The Healer does not rush to fix
+              or minimise. It witnesses, validates, and sits with you in
+              difficult moments. For many women, that quality of presence is
+              exactly what has been missing from their healthcare experience.
             </p>
           </div>
         </section>
 
-        <div
-          style={{ height: "1px", backgroundColor: BORDER, margin: "2rem 0" }}
-        />
-
-        {/* ── FAQ ─────────────────────────────────────────────────────────── */}
-        <section id="faq" style={{ marginBottom: "2.75rem" }}>
-          <h2
-            style={{
-              fontSize: "1.5rem",
-              color: GOLD,
-              marginBottom: "0.85rem",
-              lineHeight: 1.3,
-            }}
-          >
-            Frequently Asked Questions
-          </h2>
-
-          <div style={{ display: "grid", gap: "1rem" }}>
-            {/* FAQ 1 */}
-            <div
-              style={{
-                backgroundColor: CARD,
-                borderRadius: "10px",
-                padding: "1.4rem 1.6rem",
-                borderLeft: `3px solid ${GOLD}`,
-              }}
-            >
-              <h3
-                style={{
-                  fontSize: "1.05rem",
-                  color: TEXT,
-                  marginBottom: "0.75rem",
-                  lineHeight: 1.4,
-                }}
-              >
-                Can AI help with menopause symptoms?
-              </h3>
-              <p
-                style={{
-                  lineHeight: 1.8,
-                  color: MUTED,
-                  fontSize: "0.93rem",
-                  margin: 0,
-                }}
-              >
-                AI cannot prescribe treatment, but it can provide 24/7
-                non-judgmental support, track symptom patterns across months,
-                help you prepare for GP appointments with real data, and hold
-                space for the emotional weight of the transition. MEOK
-                remembers your history so you never have to start from scratch
-                — and its Maternal Covenant design means you will never be
-                dismissed or minimised.
-              </p>
-            </div>
-
-            {/* FAQ 2 */}
-            <div
-              style={{
-                backgroundColor: CARD,
-                borderRadius: "10px",
-                padding: "1.4rem 1.6rem",
-                borderLeft: `3px solid ${GOLD}`,
-              }}
-            >
-              <h3
-                style={{
-                  fontSize: "1.05rem",
-                  color: TEXT,
-                  marginBottom: "0.75rem",
-                  lineHeight: 1.4,
-                }}
-              >
-                What is perimenopause?
-              </h3>
-              <p
-                style={{
-                  lineHeight: 1.8,
-                  color: MUTED,
-                  fontSize: "0.93rem",
-                  margin: 0,
-                }}
-              >
-                Perimenopause is the transitional phase before menopause during
-                which oestrogen and progesterone levels fluctuate erratically.
-                It can begin up to ten years before periods stop entirely.
-                Symptoms include irregular cycles, hot flushes, mood changes,
-                sleep disruption, brain fog, and anxiety. Many women are
-                misdiagnosed during this phase because their periods have not
-                yet stopped and standard blood tests are unreliable.
-              </p>
-            </div>
-
-            {/* FAQ 3 */}
-            <div
-              style={{
-                backgroundColor: CARD,
-                borderRadius: "10px",
-                padding: "1.4rem 1.6rem",
-                borderLeft: `3px solid ${GOLD}`,
-              }}
-            >
-              <h3
-                style={{
-                  fontSize: "1.05rem",
-                  color: TEXT,
-                  marginBottom: "0.75rem",
-                  lineHeight: 1.4,
-                }}
-              >
-                How does MEOK track menopause symptoms?
-              </h3>
-              <p
-                style={{
-                  lineHeight: 1.8,
-                  color: MUTED,
-                  fontSize: "0.93rem",
-                  margin: 0,
-                }}
-              >
-                MEOK uses persistent conversational memory to build a
-                longitudinal record of your symptoms over time. You describe
-                how you feel in natural language — hot flush frequency, mood,
-                sleep quality, energy, pain levels — and MEOK remembers it all.
-                After weeks or months, you have real pattern data to bring to
-                GP appointments instead of a vague sense that things are not
-                right. MEOK can also help you compile a structured summary
-                before a clinical appointment.
-              </p>
-            </div>
-
-            {/* FAQ 4 */}
-            <div
-              style={{
-                backgroundColor: CARD,
-                borderRadius: "10px",
-                padding: "1.4rem 1.6rem",
-                borderLeft: `3px solid ${GOLD}`,
-              }}
-            >
-              <h3
-                style={{
-                  fontSize: "1.05rem",
-                  color: TEXT,
-                  marginBottom: "0.75rem",
-                  lineHeight: 1.4,
-                }}
-              >
-                What are my workplace rights during menopause in the UK?
-              </h3>
-              <p
-                style={{
-                  lineHeight: 1.8,
-                  color: MUTED,
-                  fontSize: "0.93rem",
-                  margin: 0,
-                }}
-              >
-                Under the Menopause Support Act 2024 and existing Equality Act
-                2010 provisions, UK employers have obligations to consider
-                reasonable workplace adjustments for employees experiencing
-                menopause symptoms. These can include flexible working,
-                temperature control, rest areas, and adjustments to uniforms
-                or workload. If your symptoms are severe, they may also
-                constitute a disability under the Equality Act. MEOK can help
-                you understand your rights and prepare for those conversations.
-              </p>
-            </div>
-
-            {/* FAQ 5 */}
-            <div
-              style={{
-                backgroundColor: CARD,
-                borderRadius: "10px",
-                padding: "1.4rem 1.6rem",
-                borderLeft: `3px solid ${GOLD}`,
-              }}
-            >
-              <h3
-                style={{
-                  fontSize: "1.05rem",
-                  color: TEXT,
-                  marginBottom: "0.75rem",
-                  lineHeight: 1.4,
-                }}
-              >
-                Will MEOK give me medical advice about HRT?
-              </h3>
-              <p
-                style={{
-                  lineHeight: 1.8,
-                  color: MUTED,
-                  fontSize: "0.93rem",
-                  margin: 0,
-                }}
-              >
-                No. MEOK does not prescribe, diagnose, or recommend specific
-                treatments. What it can do is help you understand your rights
-                — including the right to discuss HRT with your GP — and help
-                you formulate the questions you want to ask. MEOK can also
-                help you understand what the current NICE guidelines say, so
-                you arrive at the clinical conversation informed rather than
-                passive. The decision about HRT belongs entirely to you and
-                your clinician.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        <div
-          style={{ height: "1px", backgroundColor: BORDER, margin: "2rem 0" }}
-        />
-
-        {/* ── Pricing ─────────────────────────────────────────────────────── */}
-        <section style={{ marginBottom: "2.75rem" }}>
-          <h2
-            style={{
-              fontSize: "1.5rem",
-              color: GOLD,
-              marginBottom: "0.85rem",
-              lineHeight: 1.3,
-            }}
-          >
-            How much does MEOK cost?
-          </h2>
-          <p style={{ lineHeight: 1.85, marginBottom: "1.5rem" }}>
-            Support during menopause should not sit behind a paywall. MEOK\u2019s
-            Explorer tier is free — no credit card required — and provides 50
-            messages per day with persistent memory. For women who want
-            unlimited access, the Sovereign tier is \u00a312 per month.
-          </p>
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(185px, 1fr))",
-              gap: "1rem",
-              marginBottom: "1.25rem",
-            }}
-          >
-            {[
-              {
-                name: "Explorer",
-                price: "Free",
-                detail: "50 messages/day",
-                sub: "Always free, no card",
-              },
-              {
-                name: "Sovereign",
-                price: "\u00a312/mo",
-                detail: "Unlimited messages",
-                sub: "Full persistent memory",
-              },
-              {
-                name: "Family",
-                price: "\u00a329/mo",
-                detail: "Up to 5 people",
-                sub: "Shared plan",
-              },
-              {
-                name: "BYOK",
-                price: "\u00a35/mo",
-                detail: "Bring your own API key",
-                sub: "Maximum control",
-              },
-            ].map((tier) => (
-              <div
-                key={tier.name}
-                style={{
-                  backgroundColor: CARD,
-                  borderRadius: "10px",
-                  padding: "1.25rem",
-                  textAlign: "center",
-                }}
-              >
-                <p
-                  style={{
-                    color: GOLD,
-                    fontWeight: 700,
-                    fontSize: "0.95rem",
-                    margin: "0 0 0.3rem",
-                    fontFamily: "system-ui, sans-serif",
-                    letterSpacing: "0.04em",
-                  }}
-                >
-                  {tier.name}
-                </p>
-                <p
-                  style={{
-                    fontSize: "1.4rem",
-                    fontWeight: 700,
-                    margin: "0 0 0.3rem",
-                    fontFamily: "system-ui, sans-serif",
-                    color: TEXT,
-                  }}
-                >
-                  {tier.price}
-                </p>
-                <p
-                  style={{
-                    color: TEXT,
-                    fontSize: "0.82rem",
-                    margin: "0 0 0.15rem",
-                    fontFamily: "system-ui, sans-serif",
-                  }}
-                >
-                  {tier.detail}
-                </p>
-                <p
-                  style={{
-                    color: MUTED,
-                    fontSize: "0.76rem",
-                    margin: 0,
-                    fontFamily: "system-ui, sans-serif",
-                  }}
-                >
-                  {tier.sub}
-                </p>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <div
-          style={{ height: "1px", backgroundColor: BORDER, margin: "2rem 0" }}
-        />
-
-        {/* ── CTA ─────────────────────────────────────────────────────────── */}
+        {/* ── CTA Section ──────────────────────────────────────────────────────── */}
         <section
           style={{
             backgroundColor: CARD,
-            borderRadius: "14px",
-            padding: "2.75rem 2rem",
+            border: `1px solid ${BORDER}`,
+            borderRadius: "12px",
+            padding: "3rem 2rem",
             textAlign: "center",
-            marginBottom: "3rem",
           }}
         >
           <p
             style={{
               color: GOLD,
-              fontSize: "0.75rem",
-              letterSpacing: "0.14em",
+              fontSize: "0.8rem",
+              letterSpacing: "0.12em",
               textTransform: "uppercase",
               fontFamily: "system-ui, sans-serif",
-              marginBottom: "0.85rem",
+              marginBottom: "1rem",
             }}
           >
-            Start Today &mdash; No Credit Card Required
+            Start now &mdash; free
           </p>
           <h2
             style={{
-              fontSize: "clamp(1.4rem, 3.5vw, 1.9rem)",
-              lineHeight: 1.3,
+              fontSize: "1.75rem",
+              fontWeight: 700,
+              color: TEXT,
               marginBottom: "1rem",
-              maxWidth: "520px",
-              margin: "0 auto 1rem",
+              lineHeight: 1.3,
             }}
           >
-            You deserve to be heard. Every day. Not just in appointments.
+            You deserve support that remembers you
           </h2>
           <p
             style={{
+              fontSize: "1rem",
+              lineHeight: 1.75,
               color: MUTED,
-              lineHeight: 1.8,
-              maxWidth: "490px",
+              maxWidth: "520px",
               margin: "0 auto 1.75rem",
-              fontFamily: "system-ui, sans-serif",
-              fontSize: "0.95rem",
             }}
           >
-            MEOK remembers your symptom history, holds your patterns across
-            months, and is there at 3am when everything else is closed. Never
-            dismissive. Never resets. Free to start.
+            MEOK&apos;s Explorer tier is free to start. No credit card. No
+            waiting room. A sovereign AI companion that tracks your symptoms,
+            holds space for your experience, and is there at 3am when the rest
+            of the world is asleep.
           </p>
           <Link
             href="/birth"
@@ -2311,206 +1306,163 @@ export default function AiForMenopauseSupportPage() {
               display: "inline-block",
               backgroundColor: GOLD,
               color: "#0d0c18",
-              padding: "0.9rem 2.4rem",
+              padding: "0.85rem 2.25rem",
               borderRadius: "8px",
               textDecoration: "none",
               fontWeight: 700,
               fontSize: "1rem",
               fontFamily: "system-ui, sans-serif",
-              letterSpacing: "0.03em",
+              letterSpacing: "0.02em",
             }}
           >
-            Meet Your MEOK &mdash; Free
+            Meet your companion &rarr;
           </Link>
           <p
             style={{
+              marginTop: "1.25rem",
+              fontSize: "0.8rem",
               color: MUTED,
-              fontSize: "0.77rem",
-              marginTop: "0.9rem",
               fontFamily: "system-ui, sans-serif",
             }}
           >
-            Explorer tier: 50 messages/day, no card needed &bull; @meok_ai
+            Free to start &middot; No data sold &middot; Sovereign by design
           </p>
         </section>
 
-        {/* ── Related Reading ──────────────────────────────────────────────── */}
-        <section style={{ marginBottom: "3rem" }}>
-          <p
-            style={{
-              fontSize: "0.78rem",
-              color: MUTED,
-              marginBottom: "1.25rem",
-              fontFamily: "system-ui, sans-serif",
-              letterSpacing: "0.08em",
-              textTransform: "uppercase",
-            }}
-          >
-            Related Reading
-          </p>
-          <div style={{ display: "grid", gap: "0.75rem" }}>
-            {[
-              {
-                href: "/blog/ai-companion-for-menopause",
-                title:
-                  "AI Companion for Menopause: Persistent Support Through the Transition No One Talks About",
-                desc: "A deeper look at MEOK as a daily companion through menopause — symptom journaling, 3am support, and why persistence changes everything.",
-              },
-              {
-                href: "/blog/ai-companion-for-women",
-                title:
-                  "AI Companion for Women: Support That Understands Your Life",
-                desc: "How MEOK serves women across every life stage — from perimenopause to post-menopause, fertility, grief, and beyond.",
-              },
-              {
-                href: "/blog/ai-for-anxiety",
-                title: "AI for Anxiety: A Non-Judgmental Space When Anxiety Spikes",
-                desc: "Perimenopause anxiety is real, biochemical, and often dismissed. MEOK provides 24/7 support that never minimises what you\u2019re experiencing.",
-              },
-              {
-                href: "/blog/ai-for-insomnia",
-                title: "AI for Insomnia: Support at 3am When Sleep Won\u2019t Come",
-                desc: "Night sweats and sleep disruption are among the most common and most disruptive menopause symptoms. MEOK is always awake.",
-              },
-              {
-                href: "/blog/ai-for-workplace-stress",
-                title: "AI for Workplace Stress: Preparing for Difficult Conversations",
-                desc: "How MEOK helps with the professional dimension of menopause — reasonable adjustments, difficult conversations, and knowing your rights.",
-              },
-            ].map((post) => (
-              <Link
-                key={post.href}
-                href={post.href}
-                style={{
-                  display: "block",
-                  backgroundColor: CARD,
-                  borderRadius: "10px",
-                  padding: "1.1rem 1.3rem",
-                  textDecoration: "none",
-                  borderLeft: `3px solid ${BORDER}`,
-                }}
-              >
-                <p
-                  style={{
-                    color: TEXT,
-                    fontWeight: 600,
-                    marginBottom: "0.25rem",
-                    fontSize: "0.92rem",
-                    fontFamily: "system-ui, sans-serif",
-                  }}
-                >
-                  {post.title}
-                </p>
-                <p
-                  style={{
-                    color: MUTED,
-                    fontSize: "0.82rem",
-                    margin: 0,
-                    lineHeight: 1.6,
-                    fontFamily: "system-ui, sans-serif",
-                  }}
-                >
-                  {post.desc}
-                </p>
-              </Link>
-            ))}
-          </div>
-        </section>
-
-        {/* ── Footer ──────────────────────────────────────────────────────── */}
-        <footer
-          style={{
-            borderTop: `1px solid ${BORDER}`,
-            paddingTop: "2rem",
-            textAlign: "center",
-          }}
+        {/* ── Related Articles ─────────────────────────────────────────────────── */}
+        <nav
+          aria-label="Related articles"
+          style={{ marginTop: "4rem" }}
         >
           <p
             style={{
               color: GOLD,
-              fontWeight: 700,
+              fontSize: "0.78rem",
               letterSpacing: "0.1em",
-              fontFamily: "system-ui, sans-serif",
-              marginBottom: "0.5rem",
-              fontSize: "0.9rem",
-            }}
-          >
-            MEOK AI LABS
-          </p>
-          <p
-            style={{
-              color: MUTED,
-              fontSize: "0.8rem",
-              fontFamily: "system-ui, sans-serif",
-              marginBottom: "0.5rem",
-            }}
-          >
-            Founded by Nicholas Templeman &bull;{" "}
-            <a
-              href="https://twitter.com/meok_ai"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{ color: MUTED, textDecoration: "none" }}
-            >
-              @meok_ai
-            </a>
-          </p>
-          <p
-            style={{
-              color: MUTED,
-              fontSize: "0.74rem",
+              textTransform: "uppercase",
               fontFamily: "system-ui, sans-serif",
               marginBottom: "1.25rem",
-              maxWidth: "520px",
-              margin: "0 auto 1.25rem",
-              lineHeight: 1.65,
             }}
           >
-            MEOK is not a medical device and does not provide clinical advice.
-            Always consult a qualified healthcare professional for medical
-            concerns. If you are in crisis, please contact your GP, call 111,
-            or visit{" "}
-            <a
-              href="https://www.nhs.uk"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{ color: MUTED }}
-            >
-              nhs.uk
-            </a>
-            .
+            Related reading
           </p>
           <div
             style={{
-              display: "flex",
-              gap: "1.5rem",
-              justifyContent: "center",
-              flexWrap: "wrap",
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fill, minmax(220px, 1fr))",
+              gap: "1rem",
             }}
           >
             {[
-              { href: "/", label: "Home" },
-              { href: "/blog", label: "Blog" },
-              { href: "/birth", label: "Get Started" },
-              { href: "/privacy", label: "Privacy" },
-              { href: "/about", label: "About" },
+              {
+                href: "/blog/ai-companion-for-menopause",
+                label: "AI Companion for Menopause",
+              },
+              {
+                href: "/blog/ai-for-adhd-women",
+                label: "AI for ADHD in Women",
+              },
+              {
+                href: "/blog/ai-for-anxiety",
+                label: "AI for Anxiety",
+              },
+              {
+                href: "/blog/ai-for-insomnia",
+                label: "AI for Insomnia",
+              },
+              {
+                href: "/blog/ai-for-midlife-transition",
+                label: "AI for Midlife Transition",
+              },
+              {
+                href: "/blog/data-sovereignty-ai",
+                label: "Data Sovereignty and AI",
+              },
             ].map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 style={{
-                  color: MUTED,
+                  display: "block",
+                  backgroundColor: CARD,
+                  border: `1px solid ${BORDER}`,
+                  borderRadius: "8px",
+                  padding: "0.9rem 1rem",
                   textDecoration: "none",
-                  fontSize: "0.8rem",
+                  color: TEXT,
+                  fontSize: "0.9rem",
                   fontFamily: "system-ui, sans-serif",
+                  lineHeight: 1.4,
+                  transition: "border-color 0.2s",
                 }}
               >
                 {link.label}
               </Link>
             ))}
           </div>
-        </footer>
+        </nav>
       </main>
+
+      {/* ── Footer ───────────────────────────────────────────────────────────── */}
+      <footer
+        style={{
+          borderTop: `1px solid ${BORDER}`,
+          padding: "2.5rem 1.5rem",
+          textAlign: "center",
+          fontFamily: "system-ui, sans-serif",
+        }}
+      >
+        <p
+          style={{
+            fontSize: "0.8rem",
+            color: MUTED,
+            marginBottom: "0.75rem",
+          }}
+        >
+          &copy; {new Date().getFullYear()} MEOK AI LABS &middot; Sovereign AI
+          &middot; Built with care
+        </p>
+        <p
+          style={{
+            fontSize: "0.75rem",
+            color: MUTED,
+            maxWidth: "560px",
+            margin: "0 auto",
+            lineHeight: 1.6,
+          }}
+        >
+          MEOK is not a medical service. Nothing in this article constitutes
+          medical advice. Always consult a qualified healthcare professional for
+          diagnosis and treatment decisions.
+        </p>
+        <div
+          style={{
+            display: "flex",
+            gap: "1.5rem",
+            justifyContent: "center",
+            marginTop: "1.25rem",
+          }}
+        >
+          <Link
+            href="/blog"
+            style={{ color: MUTED, textDecoration: "none", fontSize: "0.8rem" }}
+          >
+            Blog
+          </Link>
+          <Link
+            href="/privacy"
+            style={{ color: MUTED, textDecoration: "none", fontSize: "0.8rem" }}
+          >
+            Privacy
+          </Link>
+          <Link
+            href="/birth"
+            style={{ color: GOLD, textDecoration: "none", fontSize: "0.8rem", fontWeight: 700 }}
+          >
+            Get started free
+          </Link>
+        </div>
+      </footer>
     </div>
   );
 }

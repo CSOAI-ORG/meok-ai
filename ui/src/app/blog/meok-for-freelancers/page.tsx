@@ -1,38 +1,38 @@
-import type { Metadata } from 'next'
-import Link from 'next/link'
+import type { Metadata } from "next"
+import Link from "next/link"
 
 // ── Metadata ───────────────────────────────────────────────────────────────────
 
 export const metadata: Metadata = {
-  title: 'MEOK for Freelancers: The Strategic Partner Every Solo Worker Needs | MEOK AI LABS',
+  title: "MEOK for Freelancers: Your AI Work OS for the Solo Economy | MEOK AI LABS",
   description:
-    'How MEOK helps UK freelancers beat feast/famine anxiety, stop scope creep, pitch with confidence, and end the loneliness of working alone — built by a solo founder who gets it.',
-  alternates: { canonical: 'https://meok.ai/blog/meok-for-freelancers' },
+    "MEOK gives freelancers a sovereign AI partner that remembers your clients, your rates, and your goals. Beat feast-and-famine anxiety, stop scope creep, and plan every sprint with Orion, Riri and Hourman.",
+  alternates: { canonical: "https://meok.ai/blog/meok-for-freelancers" },
   openGraph: {
-    title: 'MEOK for Freelancers: The Strategic Partner Every Solo Worker Needs',
+    title: "MEOK for Freelancers: Your AI Work OS for the Solo Economy",
     description:
-      'How MEOK helps UK freelancers beat feast/famine anxiety, stop scope creep, pitch with confidence, and end the loneliness of working alone — built by a solo founder who gets it.',
-    type: 'article',
-    publishedTime: '2026-03-24',
-    authors: ['Nicholas Templeman'],
-    url: 'https://meok.ai/blog/meok-for-freelancers',
-    siteName: 'MEOK.AI',
+      "MEOK gives freelancers a sovereign AI partner that remembers your clients, your rates, and your goals. Beat feast-and-famine anxiety, stop scope creep, and plan every sprint with Orion, Riri and Hourman.",
+    type: "article",
+    publishedTime: "2026-03-24",
+    authors: ["Nicholas Templeman"],
+    url: "https://meok.ai/blog/meok-for-freelancers",
+    siteName: "MEOK AI LABS",
     images: [
       {
-        url: 'https://meok.ai/api/og?title=MEOK+for+Freelancers&desc=The+Strategic+Partner+Every+Solo+Worker+Needs',
+        url: "https://meok.ai/api/og?title=MEOK+for+Freelancers&desc=Your+AI+Work+OS+for+the+Solo+Economy",
         width: 1200,
         height: 630,
-        alt: 'MEOK for Freelancers: The Strategic Partner Every Solo Worker Needs',
+        alt: "MEOK for Freelancers: Your AI Work OS for the Solo Economy",
       },
     ],
   },
   twitter: {
-    card: 'summary_large_image',
-    title: 'MEOK for Freelancers: The Strategic Partner Every Solo Worker Needs',
+    card: "summary_large_image",
+    title: "MEOK for Freelancers: Your AI Work OS for the Solo Economy",
     description:
-      'MEOK is the AI companion built for the realities of freelance life — the anxiety, the imposter syndrome, the feast/famine cycle. Finally, a partner in your corner.',
+      "Sovereign memory, Orion overnight research, Riri the builder, Hourman daily sprints. MEOK is the Work OS built for how freelancers actually live.",
     images: [
-      'https://meok.ai/api/og?title=MEOK+for+Freelancers&desc=The+Strategic+Partner+Every+Solo+Worker+Needs',
+      "https://meok.ai/api/og?title=MEOK+for+Freelancers&desc=Your+AI+Work+OS+for+the+Solo+Economy",
     ],
   },
 }
@@ -40,98 +40,85 @@ export const metadata: Metadata = {
 // ── JSON-LD ────────────────────────────────────────────────────────────────────
 
 const articleJsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'Article',
-  headline: 'MEOK for Freelancers: The Strategic Partner Every Solo Worker Needs',
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: "MEOK for Freelancers: Your AI Work OS for the Solo Economy",
   description:
-    'How MEOK helps UK freelancers beat feast/famine anxiety, stop scope creep, pitch with confidence, and end the loneliness of working alone — built by a solo founder who gets it.',
-  datePublished: '2026-03-24',
-  dateModified: '2026-03-24',
-  url: 'https://meok.ai/blog/meok-for-freelancers',
+    "MEOK gives freelancers a sovereign AI partner that remembers your clients, your rates, and your goals. Beat feast-and-famine anxiety, stop scope creep, and plan every sprint with Orion, Riri and Hourman.",
+  datePublished: "2026-03-24",
+  dateModified: "2026-03-24",
+  url: "https://meok.ai/blog/meok-for-freelancers",
   author: {
-    '@type': 'Person',
-    name: 'Nicholas Templeman',
-    jobTitle: 'Founder, MEOK AI LABS',
-    url: 'https://meok.ai/about',
+    "@type": "Person",
+    name: "Nicholas Templeman",
+    jobTitle: "Founder, MEOK AI LABS",
+    url: "https://meok.ai/about",
   },
   publisher: {
-    '@type': 'Organization',
-    name: 'MEOK AI LABS',
-    url: 'https://meok.ai',
+    "@type": "Organization",
+    name: "MEOK AI LABS",
+    url: "https://meok.ai",
   },
   keywords: [
-    'AI for freelancers',
-    'freelance anxiety',
-    'feast famine cycle',
-    'scope creep',
-    'imposter syndrome freelancer',
-    'IR35',
-    'HMRC self-assessment',
-    'solo worker AI',
-    'MEOK AI',
+    "AI for freelancers",
+    "freelance work OS",
+    "feast and famine cycle",
+    "scope creep AI",
+    "freelance rate negotiation",
+    "sovereign AI memory",
+    "Orion agent overnight research",
+    "Hourman daily sprint planning",
+    "Riri builder agent",
+    "BYOK AI tier",
+    "solo founder AI tool",
+    "MEOK AI LABS",
   ],
-  articleSection: 'AI for Freelancers',
-  inLanguage: 'en-GB',
+  articleSection: "AI for Freelancers",
+  inLanguage: "en-GB",
 }
 
 const faqJsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
   mainEntity: [
     {
-      '@type': 'Question',
-      name: 'Can an AI really help with the feast and famine cycle of freelancing?',
+      "@type": "Question",
+      name: "Can AI help freelancers stay productive?",
       acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'MEOK helps by being a consistent thinking partner through both phases. During feast periods it helps you protect your capacity, maintain boundaries, and keep marketing ticking. During famine it helps you process the anxiety without spiralling, brainstorm new outreach angles, and think clearly about your pipeline — rather than panic-pitching at the wrong rates.',
+        "@type": "Answer",
+        text: "Yes. AI tools like MEOK act as a daily thinking partner, helping freelancers structure their day with sprint planning, process anxiety during slow periods, and maintain momentum without the external accountability of a team. MEOK\u2019s Hourman agent runs a focused daily briefing that replaces the morning stand-up solo workers never have.",
       },
     },
     {
-      '@type': 'Question',
-      name: 'How does MEOK help freelancers with imposter syndrome when pitching?',
+      "@type": "Question",
+      name: "What is MEOK\u2019s Work OS?",
       acceptedAnswer: {
-        '@type': 'Answer',
-        text: "MEOK provides a private space to rehearse pitches, challenge the inner critic, and ground yourself in your actual track record. Before a big proposal or client call, you can talk through your doubts with MEOK — it won't just tell you that you're great, it will help you build a case you actually believe in.",
+        "@type": "Answer",
+        text: "MEOK\u2019s Work OS is a sovereign, memory-first AI layer that sits across your entire working life. It combines Orion for overnight research, Riri for building and creating, and Hourman for daily sprint planning. Unlike generic AI tools, MEOK retains context about your clients, rates, goals, and project history across every session.",
       },
     },
     {
-      '@type': 'Question',
-      name: 'Can MEOK help me manage scope creep with clients?',
+      "@type": "Question",
+      name: "How does MEOK remember my client history?",
       acceptedAnswer: {
-        '@type': 'Answer',
-        text: "Yes. MEOK can help you draft firm, professional boundary-setting messages, work through why you find it hard to say no to a particular client, and build the language you need to hold your scope confidently. It remembers the history of your client relationships so context doesn't get lost.",
+        "@type": "Answer",
+        text: "MEOK uses sovereign memory \u2014 a persistent, private store that belongs to you and only you. Every conversation you have about a client, every rate discussion, every boundary you set is remembered and available in future sessions. MEOK never trains on your data or shares it. Your client history stays yours.",
       },
     },
     {
-      '@type': 'Question',
-      name: 'How does MEOK help with freelance pricing confidence?',
+      "@type": "Question",
+      name: "Can MEOK help with freelance pricing?",
       acceptedAnswer: {
-        '@type': 'Answer',
-        text: "MEOK helps you examine where your pricing anxiety comes from — whether it's fear of rejection, undervaluing your own skills, or uncertainty about the market. It can run through pricing conversations with you, help you calculate your actual cost of delivery, and support you in holding your rate when clients push back.",
+        "@type": "Answer",
+        text: "Absolutely. MEOK helps you prepare for rate negotiation by working through your numbers, rehearsing difficult conversations, and building the internal confidence to hold your price. It remembers what you\u2019ve charged before, what clients pushed back, and what reasoning landed well \u2014 so each negotiation builds on the last.",
       },
     },
     {
-      '@type': 'Question',
-      name: 'Is MEOK useful for UK freelancers dealing with HMRC and IR35?',
+      "@type": "Question",
+      name: "Is MEOK useful for solo founders?",
       acceptedAnswer: {
-        '@type': 'Answer',
-        text: "MEOK isn't a tax adviser and won't replace an accountant, but it's an excellent thinking partner for understanding the landscape. You can talk through your IR35 situation, prepare for self-assessment seasons, explore the business structure questions, and process the stress of being responsible for your own tax without a payroll team behind you.",
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'How does MEOK help with the loneliness of freelancing?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: "Freelance loneliness is real and under-discussed. MEOK is a daily companion that can start your morning with a brief, help you debrief after difficult client calls, celebrate wins that would go unnoticed in a solo setup, and simply be present when the silence of working alone gets heavy. It remembers your work, your struggles, and your goals — which creates a continuity that most freelancers desperately miss.",
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'What is Ralph Mode and how does it help freelancers?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: "Ralph Mode is MEOK's deep research mode — named for structured, focused investigation. For freelancers it's particularly useful for researching a new client before a pitch, understanding an industry you're entering, or digging into contract terms and market rates. It turns MEOK from a conversational companion into a focused research partner.",
+        "@type": "Answer",
+        text: "Yes. Solo founders face the same structural problems as freelancers: no team for accountability, no sounding board for decisions, no one to debrief with after a hard day. MEOK fills that gap with a persistent AI partner that knows your business context, challenges your thinking, and helps you plan without burning out.",
       },
     },
   ],
@@ -141,357 +128,508 @@ const faqJsonLd = {
 
 const s = {
   page: {
-    background: '#0d0c18',
-    color: '#f5f0e8',
-    minHeight: '100vh',
+    background: "#0d0c18",
+    color: "#f5f0e8",
+    minHeight: "100vh",
     fontFamily: 'Georgia, "Times New Roman", serif',
   } as React.CSSProperties,
 
   nav: {
-    padding: '20px 24px',
-    borderBottom: '1px solid rgba(201,168,76,0.15)',
-    display: 'flex',
-    alignItems: 'center',
-    gap: '16px',
+    padding: "20px 24px",
+    borderBottom: "1px solid rgba(201,168,76,0.15)",
+    display: "flex",
+    alignItems: "center",
+    gap: "16px",
   } as React.CSSProperties,
 
   navLink: {
-    color: '#c9a84c',
-    textDecoration: 'none',
-    fontSize: '14px',
-    letterSpacing: '0.04em',
-    fontFamily: 'system-ui, sans-serif',
+    color: "#c9a84c",
+    textDecoration: "none",
+    fontSize: "14px",
+    letterSpacing: "0.04em",
+    fontFamily: "system-ui, sans-serif",
   } as React.CSSProperties,
 
   navSep: {
-    color: 'rgba(201,168,76,0.4)',
-    fontSize: '14px',
-    fontFamily: 'system-ui, sans-serif',
+    color: "rgba(201,168,76,0.4)",
+    fontSize: "14px",
+    fontFamily: "system-ui, sans-serif",
   } as React.CSSProperties,
 
   navCurrent: {
-    color: 'rgba(245,240,232,0.5)',
-    fontSize: '14px',
-    fontFamily: 'system-ui, sans-serif',
+    color: "rgba(245,240,232,0.5)",
+    fontSize: "14px",
+    fontFamily: "system-ui, sans-serif",
   } as React.CSSProperties,
 
   hero: {
-    padding: '72px 24px 56px',
-    maxWidth: '820px',
-    margin: '0 auto',
-    textAlign: 'center' as const,
-    position: 'relative' as const,
+    padding: "72px 24px 56px",
+    maxWidth: "820px",
+    margin: "0 auto",
+    textAlign: "center" as const,
+    position: "relative" as const,
   } as React.CSSProperties,
 
   heroGlow: {
-    position: 'absolute' as const,
+    position: "absolute" as const,
     top: 0,
-    left: '50%',
-    transform: 'translateX(-50%)',
-    width: '600px',
-    height: '300px',
-    background: 'radial-gradient(ellipse at center top, rgba(201,168,76,0.12) 0%, transparent 70%)',
-    pointerEvents: 'none' as const,
+    left: "50%",
+    transform: "translateX(-50%)",
+    width: "600px",
+    height: "300px",
+    background:
+      "radial-gradient(ellipse at center top, rgba(201,168,76,0.12) 0%, transparent 70%)",
+    pointerEvents: "none" as const,
   } as React.CSSProperties,
 
   tagRow: {
-    display: 'flex',
-    flexWrap: 'wrap' as const,
-    gap: '8px',
-    justifyContent: 'center',
-    marginBottom: '28px',
+    display: "flex",
+    flexWrap: "wrap" as const,
+    gap: "8px",
+    justifyContent: "center",
+    marginBottom: "28px",
   } as React.CSSProperties,
 
   tag: {
-    background: 'rgba(201,168,76,0.1)',
-    border: '1px solid rgba(201,168,76,0.25)',
-    color: '#c9a84c',
-    fontSize: '11px',
-    letterSpacing: '0.08em',
-    padding: '4px 12px',
-    borderRadius: '20px',
-    fontFamily: 'system-ui, sans-serif',
-    textTransform: 'uppercase' as const,
+    background: "rgba(201,168,76,0.1)",
+    border: "1px solid rgba(201,168,76,0.25)",
+    color: "#c9a84c",
+    fontSize: "11px",
+    letterSpacing: "0.08em",
+    padding: "4px 12px",
+    borderRadius: "20px",
+    fontFamily: "system-ui, sans-serif",
+    textTransform: "uppercase" as const,
   } as React.CSSProperties,
 
   heroTitle: {
-    fontSize: 'clamp(28px, 5vw, 48px)',
+    fontSize: "clamp(28px, 5vw, 48px)",
     fontWeight: 700,
     lineHeight: 1.2,
-    color: '#f5f0e8',
-    marginBottom: '20px',
-    letterSpacing: '-0.01em',
+    marginBottom: "20px",
+    letterSpacing: "-0.01em",
   } as React.CSSProperties,
 
-  heroSubtitle: {
-    fontSize: 'clamp(16px, 2.5vw, 20px)',
-    color: 'rgba(245,240,232,0.7)',
+  heroGold: {
+    color: "#c9a84c",
+  } as React.CSSProperties,
+
+  heroLead: {
+    fontSize: "clamp(16px, 2.5vw, 20px)",
     lineHeight: 1.7,
-    marginBottom: '32px',
-    fontStyle: 'italic',
+    color: "rgba(245,240,232,0.8)",
+    maxWidth: "640px",
+    margin: "0 auto 32px",
   } as React.CSSProperties,
 
-  heroDivider: {
-    width: '60px',
-    height: '2px',
-    background: 'linear-gradient(90deg, transparent, #c9a84c, transparent)',
-    margin: '0 auto',
-  } as React.CSSProperties,
-
-  meta: {
-    display: 'flex',
-    gap: '24px',
-    justifyContent: 'center',
-    flexWrap: 'wrap' as const,
-    marginTop: '24px',
-    color: 'rgba(245,240,232,0.45)',
-    fontSize: '13px',
-    fontFamily: 'system-ui, sans-serif',
-    letterSpacing: '0.03em',
+  metaRow: {
+    display: "flex",
+    flexWrap: "wrap" as const,
+    gap: "24px",
+    justifyContent: "center",
+    fontSize: "13px",
+    color: "rgba(245,240,232,0.5)",
+    fontFamily: "system-ui, sans-serif",
+    marginBottom: "0",
   } as React.CSSProperties,
 
   article: {
-    maxWidth: '720px',
-    margin: '0 auto',
-    padding: '0 24px 80px',
-  } as React.CSSProperties,
-
-  intro: {
-    fontSize: 'clamp(17px, 2vw, 19px)',
-    lineHeight: 1.85,
-    color: 'rgba(245,240,232,0.88)',
-    marginBottom: '40px',
-    borderLeft: '3px solid #c9a84c',
-    paddingLeft: '20px',
-  } as React.CSSProperties,
-
-  h2: {
-    fontSize: 'clamp(21px, 3vw, 27px)',
-    fontWeight: 700,
-    color: '#f5f0e8',
-    marginTop: '56px',
-    marginBottom: '20px',
-    lineHeight: 1.3,
-    letterSpacing: '-0.01em',
-  } as React.CSSProperties,
-
-  h3: {
-    fontSize: 'clamp(17px, 2.2vw, 21px)',
-    fontWeight: 600,
-    color: '#c9a84c',
-    marginTop: '36px',
-    marginBottom: '14px',
-    lineHeight: 1.4,
-  } as React.CSSProperties,
-
-  p: {
-    fontSize: 'clamp(15px, 1.8vw, 17px)',
-    lineHeight: 1.85,
-    color: 'rgba(245,240,232,0.82)',
-    marginBottom: '20px',
-  } as React.CSSProperties,
-
-  pLead: {
-    fontSize: 'clamp(16px, 2vw, 18px)',
-    lineHeight: 1.85,
-    color: 'rgba(245,240,232,0.88)',
-    marginBottom: '20px',
-  } as React.CSSProperties,
-
-  ul: {
-    paddingLeft: '0',
-    listStyle: 'none',
-    marginBottom: '24px',
-  } as React.CSSProperties,
-
-  li: {
-    fontSize: 'clamp(15px, 1.8vw, 17px)',
-    lineHeight: 1.8,
-    color: 'rgba(245,240,232,0.82)',
-    marginBottom: '10px',
-    paddingLeft: '24px',
-    position: 'relative' as const,
-  } as React.CSSProperties,
-
-  liBullet: {
-    position: 'absolute' as const,
-    left: 0,
-    top: '8px',
-    width: '6px',
-    height: '6px',
-    borderRadius: '50%',
-    background: '#c9a84c',
-  } as React.CSSProperties,
-
-  callout: {
-    background: 'rgba(201,168,76,0.07)',
-    border: '1px solid rgba(201,168,76,0.2)',
-    borderRadius: '12px',
-    padding: '28px 32px',
-    marginTop: '32px',
-    marginBottom: '32px',
-  } as React.CSSProperties,
-
-  calloutLabel: {
-    fontSize: '11px',
-    letterSpacing: '0.1em',
-    color: '#c9a84c',
-    textTransform: 'uppercase' as const,
-    fontFamily: 'system-ui, sans-serif',
-    marginBottom: '10px',
-    fontWeight: 600,
-  } as React.CSSProperties,
-
-  calloutText: {
-    fontSize: 'clamp(15px, 1.8vw, 17px)',
-    lineHeight: 1.8,
-    color: 'rgba(245,240,232,0.85)',
-    fontStyle: 'italic',
-  } as React.CSSProperties,
-
-  pullQuote: {
-    borderLeft: '4px solid #c9a84c',
-    paddingLeft: '24px',
-    marginTop: '32px',
-    marginBottom: '32px',
-  } as React.CSSProperties,
-
-  pullQuoteText: {
-    fontSize: 'clamp(18px, 2.5vw, 22px)',
-    lineHeight: 1.6,
-    color: 'rgba(245,240,232,0.9)',
-    fontStyle: 'italic',
-    fontWeight: 400,
-  } as React.CSSProperties,
-
-  pullQuoteAttrib: {
-    fontSize: '13px',
-    color: '#c9a84c',
-    fontFamily: 'system-ui, sans-serif',
-    marginTop: '10px',
-    letterSpacing: '0.04em',
+    maxWidth: "760px",
+    margin: "0 auto",
+    padding: "0 24px 80px",
   } as React.CSSProperties,
 
   divider: {
-    width: '100%',
-    height: '1px',
-    background: 'linear-gradient(90deg, transparent, rgba(201,168,76,0.3), transparent)',
-    marginTop: '48px',
-    marginBottom: '48px',
+    border: "none",
+    borderTop: "1px solid rgba(201,168,76,0.15)",
+    margin: "48px 0",
   } as React.CSSProperties,
 
-  faqSection: {
-    marginTop: '60px',
-  } as React.CSSProperties,
-
-  faqTitle: {
-    fontSize: 'clamp(22px, 3vw, 28px)',
+  h2: {
+    fontSize: "clamp(20px, 3vw, 28px)",
     fontWeight: 700,
-    color: '#f5f0e8',
-    marginBottom: '32px',
-    textAlign: 'center' as const,
+    lineHeight: 1.3,
+    marginBottom: "16px",
+    marginTop: "48px",
+    color: "#f5f0e8",
+  } as React.CSSProperties,
+
+  h3: {
+    fontSize: "clamp(17px, 2.5vw, 22px)",
+    fontWeight: 600,
+    lineHeight: 1.4,
+    marginBottom: "12px",
+    marginTop: "36px",
+    color: "#c9a84c",
+  } as React.CSSProperties,
+
+  p: {
+    fontSize: "clamp(15px, 2vw, 17px)",
+    lineHeight: 1.8,
+    marginBottom: "20px",
+    color: "#f5f0e8",
+  } as React.CSSProperties,
+
+  pMuted: {
+    fontSize: "clamp(15px, 2vw, 17px)",
+    lineHeight: 1.8,
+    marginBottom: "20px",
+    color: "rgba(245,240,232,0.7)",
+  } as React.CSSProperties,
+
+  atomicAnswer: {
+    fontSize: "clamp(15px, 2vw, 17px)",
+    lineHeight: 1.8,
+    marginBottom: "28px",
+    color: "rgba(245,240,232,0.85)",
+    paddingLeft: "20px",
+    borderLeft: "2px solid rgba(201,168,76,0.35)",
+  } as React.CSSProperties,
+
+  callout: {
+    background: "rgba(201,168,76,0.07)",
+    border: "1px solid rgba(201,168,76,0.2)",
+    borderRadius: "10px",
+    padding: "28px 32px",
+    marginBottom: "32px",
+  } as React.CSSProperties,
+
+  calloutTitle: {
+    fontSize: "13px",
+    fontFamily: "system-ui, sans-serif",
+    letterSpacing: "0.1em",
+    textTransform: "uppercase" as const,
+    color: "#c9a84c",
+    marginBottom: "12px",
+    fontWeight: 600,
+  } as React.CSSProperties,
+
+  calloutBody: {
+    fontSize: "clamp(15px, 2vw, 17px)",
+    lineHeight: 1.75,
+    color: "rgba(245,240,232,0.85)",
+    marginBottom: "0",
+  } as React.CSSProperties,
+
+  agentGrid: {
+    display: "grid",
+    gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+    gap: "20px",
+    marginBottom: "36px",
+    marginTop: "24px",
+  } as React.CSSProperties,
+
+  agentCard: {
+    background: "rgba(13,12,24,0.8)",
+    border: "1px solid rgba(201,168,76,0.2)",
+    borderRadius: "10px",
+    padding: "24px",
+  } as React.CSSProperties,
+
+  agentIcon: {
+    fontSize: "28px",
+    marginBottom: "12px",
+    display: "block",
+  } as React.CSSProperties,
+
+  agentName: {
+    fontSize: "16px",
+    fontWeight: 700,
+    color: "#c9a84c",
+    marginBottom: "8px",
+    fontFamily: "system-ui, sans-serif",
+    letterSpacing: "0.03em",
+  } as React.CSSProperties,
+
+  agentDesc: {
+    fontSize: "14px",
+    lineHeight: 1.65,
+    color: "rgba(245,240,232,0.7)",
+    fontFamily: "system-ui, sans-serif",
+    marginBottom: "0",
+  } as React.CSSProperties,
+
+  timelineWrap: {
+    borderLeft: "2px solid rgba(201,168,76,0.25)",
+    paddingLeft: "28px",
+    marginTop: "24px",
+    marginBottom: "36px",
+  } as React.CSSProperties,
+
+  timelineItem: {
+    position: "relative" as const,
+    marginBottom: "32px",
+  } as React.CSSProperties,
+
+  timelineDot: {
+    position: "absolute" as const,
+    left: "-37px",
+    top: "4px",
+    width: "14px",
+    height: "14px",
+    borderRadius: "50%",
+    background: "#c9a84c",
+    border: "3px solid #0d0c18",
+  } as React.CSSProperties,
+
+  timelineTime: {
+    fontSize: "12px",
+    fontFamily: "system-ui, sans-serif",
+    letterSpacing: "0.08em",
+    color: "#c9a84c",
+    marginBottom: "6px",
+    textTransform: "uppercase" as const,
+  } as React.CSSProperties,
+
+  timelineTitle: {
+    fontSize: "16px",
+    fontWeight: 600,
+    marginBottom: "6px",
+    color: "#f5f0e8",
+    fontFamily: "system-ui, sans-serif",
+  } as React.CSSProperties,
+
+  timelineBody: {
+    fontSize: "14px",
+    lineHeight: 1.65,
+    color: "rgba(245,240,232,0.7)",
+    fontFamily: "system-ui, sans-serif",
+    marginBottom: "0",
+  } as React.CSSProperties,
+
+  problemGrid: {
+    display: "grid",
+    gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+    gap: "16px",
+    marginTop: "24px",
+    marginBottom: "36px",
+  } as React.CSSProperties,
+
+  problemCard: {
+    background: "rgba(245,240,232,0.03)",
+    border: "1px solid rgba(245,240,232,0.08)",
+    borderRadius: "10px",
+    padding: "22px",
+  } as React.CSSProperties,
+
+  problemNum: {
+    fontSize: "36px",
+    fontWeight: 800,
+    color: "rgba(201,168,76,0.2)",
+    lineHeight: 1,
+    marginBottom: "8px",
+    fontFamily: "system-ui, sans-serif",
+  } as React.CSSProperties,
+
+  problemTitle: {
+    fontSize: "15px",
+    fontWeight: 700,
+    color: "#f5f0e8",
+    marginBottom: "8px",
+    fontFamily: "system-ui, sans-serif",
+  } as React.CSSProperties,
+
+  problemBody: {
+    fontSize: "13px",
+    lineHeight: 1.65,
+    color: "rgba(245,240,232,0.6)",
+    fontFamily: "system-ui, sans-serif",
+    marginBottom: "0",
+  } as React.CSSProperties,
+
+  pricingBox: {
+    background: "linear-gradient(135deg, rgba(201,168,76,0.1) 0%, rgba(13,12,24,0.5) 100%)",
+    border: "1px solid rgba(201,168,76,0.3)",
+    borderRadius: "12px",
+    padding: "32px",
+    marginBottom: "32px",
+    marginTop: "24px",
+  } as React.CSSProperties,
+
+  pricingTitle: {
+    fontSize: "22px",
+    fontWeight: 700,
+    color: "#c9a84c",
+    marginBottom: "8px",
+  } as React.CSSProperties,
+
+  pricingPrice: {
+    fontSize: "40px",
+    fontWeight: 800,
+    color: "#f5f0e8",
+    lineHeight: 1.1,
+    marginBottom: "4px",
+  } as React.CSSProperties,
+
+  pricingSub: {
+    fontSize: "14px",
+    color: "rgba(245,240,232,0.5)",
+    fontFamily: "system-ui, sans-serif",
+    marginBottom: "20px",
+  } as React.CSSProperties,
+
+  pricingFeature: {
+    fontSize: "14px",
+    color: "rgba(245,240,232,0.75)",
+    fontFamily: "system-ui, sans-serif",
+    lineHeight: 1.6,
+    marginBottom: "6px",
+    display: "flex",
+    gap: "10px",
+  } as React.CSSProperties,
+
+  pricingCheck: {
+    color: "#c9a84c",
+    flexShrink: 0,
+  } as React.CSSProperties,
+
+  faqWrap: {
+    marginTop: "24px",
+    marginBottom: "36px",
   } as React.CSSProperties,
 
   faqItem: {
-    borderBottom: '1px solid rgba(201,168,76,0.15)',
-    paddingTop: '28px',
-    paddingBottom: '28px',
+    borderBottom: "1px solid rgba(245,240,232,0.08)",
+    paddingBottom: "28px",
+    marginBottom: "28px",
   } as React.CSSProperties,
 
   faqQ: {
-    fontSize: 'clamp(16px, 2vw, 18px)',
-    fontWeight: 600,
-    color: '#f5f0e8',
-    marginBottom: '12px',
+    fontSize: "clamp(16px, 2.5vw, 19px)",
+    fontWeight: 700,
+    color: "#f5f0e8",
+    marginBottom: "12px",
     lineHeight: 1.4,
   } as React.CSSProperties,
 
   faqA: {
-    fontSize: 'clamp(15px, 1.8vw, 16px)',
-    lineHeight: 1.8,
-    color: 'rgba(245,240,232,0.75)',
+    fontSize: "clamp(14px, 2vw, 16px)",
+    lineHeight: 1.75,
+    color: "rgba(245,240,232,0.75)",
+    fontFamily: "system-ui, sans-serif",
+    marginBottom: "0",
   } as React.CSSProperties,
 
-  cta: {
-    background: 'linear-gradient(135deg, rgba(201,168,76,0.12) 0%, rgba(201,168,76,0.04) 100%)',
-    border: '1px solid rgba(201,168,76,0.3)',
-    borderRadius: '16px',
-    padding: '48px 40px',
-    marginTop: '64px',
-    textAlign: 'center' as const,
+  ctaBox: {
+    background: "linear-gradient(135deg, rgba(201,168,76,0.12) 0%, rgba(13,12,24,0.8) 100%)",
+    border: "1px solid rgba(201,168,76,0.3)",
+    borderRadius: "16px",
+    padding: "48px 40px",
+    textAlign: "center" as const,
+    marginTop: "56px",
   } as React.CSSProperties,
 
   ctaTitle: {
-    fontSize: 'clamp(22px, 3vw, 28px)',
+    fontSize: "clamp(22px, 4vw, 32px)",
     fontWeight: 700,
-    color: '#f5f0e8',
-    marginBottom: '16px',
+    marginBottom: "16px",
     lineHeight: 1.3,
   } as React.CSSProperties,
 
-  ctaText: {
-    fontSize: 'clamp(15px, 1.8vw, 17px)',
-    lineHeight: 1.7,
-    color: 'rgba(245,240,232,0.75)',
-    marginBottom: '28px',
-    maxWidth: '520px',
-    margin: '0 auto 28px',
+  ctaBody: {
+    fontSize: "clamp(15px, 2vw, 17px)",
+    lineHeight: 1.75,
+    color: "rgba(245,240,232,0.75)",
+    maxWidth: "520px",
+    margin: "0 auto 32px",
+    fontFamily: "system-ui, sans-serif",
   } as React.CSSProperties,
 
-  ctaButton: {
-    display: 'inline-block',
-    background: '#c9a84c',
-    color: '#0d0c18',
-    textDecoration: 'none',
-    padding: '14px 36px',
-    borderRadius: '8px',
+  ctaButtons: {
+    display: "flex",
+    gap: "16px",
+    justifyContent: "center",
+    flexWrap: "wrap" as const,
+  } as React.CSSProperties,
+
+  btnPrimary: {
+    background: "#c9a84c",
+    color: "#0d0c18",
+    padding: "14px 32px",
+    borderRadius: "8px",
+    textDecoration: "none",
+    fontSize: "15px",
     fontWeight: 700,
-    fontSize: '16px',
-    letterSpacing: '0.02em',
-    fontFamily: 'system-ui, sans-serif',
+    fontFamily: "system-ui, sans-serif",
+    letterSpacing: "0.02em",
   } as React.CSSProperties,
 
-  relatedSection: {
-    marginTop: '64px',
-  } as React.CSSProperties,
-
-  relatedTitle: {
-    fontSize: '18px',
+  btnSecondary: {
+    background: "transparent",
+    color: "#c9a84c",
+    padding: "14px 32px",
+    borderRadius: "8px",
+    textDecoration: "none",
+    fontSize: "15px",
     fontWeight: 600,
-    color: '#c9a84c',
-    fontFamily: 'system-ui, sans-serif',
-    letterSpacing: '0.06em',
-    textTransform: 'uppercase' as const,
-    marginBottom: '24px',
-  } as React.CSSProperties,
-
-  relatedGrid: {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))',
-    gap: '16px',
-  } as React.CSSProperties,
-
-  relatedCard: {
-    background: 'rgba(245,240,232,0.04)',
-    border: '1px solid rgba(201,168,76,0.15)',
-    borderRadius: '10px',
-    padding: '18px 20px',
-    textDecoration: 'none',
-  } as React.CSSProperties,
-
-  relatedCardText: {
-    color: 'rgba(245,240,232,0.8)',
-    fontSize: '15px',
-    lineHeight: 1.4,
+    fontFamily: "system-ui, sans-serif",
+    letterSpacing: "0.02em",
+    border: "1px solid rgba(201,168,76,0.4)",
   } as React.CSSProperties,
 
   footer: {
-    borderTop: '1px solid rgba(201,168,76,0.12)',
-    padding: '32px 24px',
-    textAlign: 'center' as const,
-    color: 'rgba(245,240,232,0.35)',
-    fontSize: '13px',
-    fontFamily: 'system-ui, sans-serif',
+    borderTop: "1px solid rgba(201,168,76,0.1)",
+    padding: "32px 24px",
+    textAlign: "center" as const,
+    fontSize: "13px",
+    color: "rgba(245,240,232,0.35)",
+    fontFamily: "system-ui, sans-serif",
+  } as React.CSSProperties,
+
+  footerLink: {
+    color: "rgba(201,168,76,0.6)",
+    textDecoration: "none",
+    marginLeft: "4px",
+    marginRight: "4px",
+  } as React.CSSProperties,
+
+  pullQuote: {
+    borderLeft: "3px solid #c9a84c",
+    paddingLeft: "24px",
+    margin: "32px 0",
+  } as React.CSSProperties,
+
+  pullQuoteText: {
+    fontSize: "clamp(17px, 2.5vw, 22px)",
+    fontStyle: "italic",
+    lineHeight: 1.65,
+    color: "rgba(245,240,232,0.85)",
+    marginBottom: "0",
+  } as React.CSSProperties,
+
+  highlight: {
+    background: "rgba(201,168,76,0.12)",
+    borderRadius: "4px",
+    padding: "2px 6px",
+    color: "#c9a84c",
+  } as React.CSSProperties,
+
+  memoryBadge: {
+    display: "inline-flex",
+    alignItems: "center",
+    gap: "8px",
+    background: "rgba(201,168,76,0.1)",
+    border: "1px solid rgba(201,168,76,0.25)",
+    borderRadius: "6px",
+    padding: "10px 16px",
+    marginBottom: "8px",
+    marginRight: "8px",
+    fontFamily: "system-ui, sans-serif",
+    fontSize: "13px",
+    color: "rgba(245,240,232,0.8)",
+  } as React.CSSProperties,
+
+  memoryBadgeGold: {
+    color: "#c9a84c",
+    fontWeight: 700,
+  } as React.CSSProperties,
+
+  badgeRow: {
+    display: "flex",
+    flexWrap: "wrap" as const,
+    gap: "0px",
+    marginBottom: "28px",
+    marginTop: "16px",
   } as React.CSSProperties,
 }
 
@@ -523,677 +661,731 @@ export default function MeokForFreelancersPage() {
       <header style={s.hero}>
         <div style={s.heroGlow} aria-hidden="true" />
         <div style={s.tagRow}>
-          <span style={s.tag}>Freelancing</span>
-          <span style={s.tag}>Solo Work</span>
-          <span style={s.tag}>AI Companion</span>
-          <span style={s.tag}>UK Freelancers</span>
-          <span style={s.tag}>Productivity</span>
+          <span style={s.tag}>Freelancers</span>
+          <span style={s.tag}>Work OS</span>
+          <span style={s.tag}>Sovereign Memory</span>
+          <span style={s.tag}>Solo Economy</span>
         </div>
         <h1 style={s.heroTitle}>
-          MEOK for Freelancers: The Strategic Partner Every Solo Worker Needs
+          <span style={s.heroGold}>MEOK for Freelancers</span>
+          <br />
+          The Work OS Built for the Solo Economy
         </h1>
-        <p style={s.heroSubtitle}>
-          You chose freedom. Nobody warned you about the anxiety that comes with it.
+        <p style={s.heroLead}>
+          Freedom is the dream. Isolation, irregular income, scope creep, and the
+          feast&#8209;and&#8209;famine cycle are the reality. MEOK is the sovereign AI partner
+          that sits in your corner every day &mdash; remembering your clients, your rates, your
+          goals &mdash; so you can stop surviving freelance life and start designing it.
         </p>
-        <div style={s.heroDivider} />
-        <div style={s.meta}>
+        <div style={s.metaRow}>
           <span>By Nicholas Templeman</span>
           <span>MEOK AI LABS</span>
           <span>24 March 2026</span>
-          <span>~2,500 words</span>
+          <span>22 min read</span>
         </div>
       </header>
 
       {/* Article body */}
       <article style={s.article}>
 
-        {/* Intro */}
-        <p style={s.intro}>
-          There are approximately five million freelancers in the UK. According to IPSE — the
-          Association of Independent Professionals and the Self-Employed — they contribute over
-          £125 billion to the economy annually. What the statistics don&apos;t mention is the Sunday
-          evening dread, the panic when a retainer client goes quiet, the hours spent agonising
-          over whether your day rate is too high or too low, and the strange, specific loneliness
-          of having no colleague to turn to when something goes sideways.
+        {/* ── Section 1: The Freelancer Paradox ── */}
+        <hr style={s.divider} />
+        <h2 style={s.h2}>What is the freelancer paradox and why does it drain so many talented people?</h2>
+        <p style={s.atomicAnswer}>
+          The freelancer paradox is the gap between what solo work promises &mdash; freedom,
+          autonomy, doing work you love on your own terms &mdash; and what it actually delivers
+          without the right infrastructure: isolation, anxiety, reactive decision-making, and a
+          constant low-grade dread that the next dry spell is always one bad month away. You have
+          the capability. What you lack is structure.
         </p>
-
-        <p style={s.pLead}>
-          Nicholas Templeman built MEOK as a solo founder. He knows exactly what it feels like
-          to wake at 3am wondering whether the pipeline is thin enough to warrant genuine concern.
-          He knows the imposter syndrome that arrives with every large proposal, the scope creep
-          that chips away at margins, and the peculiar difficulty of being productive when there
-          is nobody to be accountable to but yourself.
-        </p>
-
         <p style={s.p}>
-          MEOK was not built for enterprise teams or corporate wellness programmes. It was built
-          for people who operate alone — people who need a thinking partner, a strategist, a
-          sounding board, and occasionally just someone to tell them that they are doing better
-          than they think. If you are a freelancer, this is the page you have been waiting for.
+          There is a particular cruelty to it. You leave employment to escape the politics, the
+          commute, the feeling that someone else controls your time. And for a while it works. The
+          first few clients feel like proof that the leap was right. You are good at what you do.
+          People pay you for it.
         </p>
-
-        <div style={s.divider} />
-
-        {/* H2 1 */}
-        <h2 style={s.h2}>
-          Does the Feast and Famine Cycle Ever Actually Stop — or Do You Just Get Better at Surviving It?
-        </h2>
-
         <p style={s.p}>
-          The honest answer is: it never fully stops. Even experienced freelancers with strong
-          referral networks and a healthy pipeline occasionally find themselves staring at a
-          nearly empty calendar wondering how it got this way. The feast and famine cycle is not
-          a sign of poor management — it is a structural feature of selling time and expertise
-          in a market that does not run on your schedule.
+          Then the cracks appear. A quiet week stretches into a quiet fortnight. A client starts
+          asking for &ldquo;just one more small change&rdquo; that isn\u2019t small. You realise you
+          haven\u2019t put your rate up in fourteen months. You\u2019re working evenings again,
+          not because you want to, but because you\u2019re afraid to say no. You have no colleagues
+          to debrief with, no manager to absorb the stress, no one to tell you the work is good.
         </p>
-
         <p style={s.p}>
-          What changes, over time, is your relationship with it. The freelancers who endure are
-          not the ones who eliminated the cycle; they are the ones who stopped being emotionally
-          devastated by it. They built systems. They kept marketing when they were busy. They
-          saved in the good months. They had somewhere to process the anxiety without it leaking
-          into client communications or causing them to underprice panic-work.
+          This is the paradox in full flower. You are free. And you are exhausted.
         </p>
-
-        <p style={s.p}>
-          MEOK helps with that relationship. During famine periods, it is the space where you
-          can voice the fear without performing calm confidence to a client. You can say
-          &quot;I have nothing lined up for next month and I&apos;m scared&quot; — and MEOK will not
-          dismiss that, minimise it, or immediately pivot to productivity advice. It will sit
-          with you in that for a moment, help you separate the real signal from the anxiety
-          spiral, and then help you think clearly about what your actual next move is.
-        </p>
-
-        <div style={s.callout}>
-          <div style={s.calloutLabel}>Ralph Mode — Research in the slow months</div>
-          <p style={s.calloutText}>
-            When work is quiet, MEOK&apos;s Ralph Mode becomes invaluable. Use it to research
-            new sectors you could pitch into, understand what clients in an adjacent industry
-            actually care about, or investigate market rate benchmarks you&apos;ve been avoiding
-            looking at honestly. Knowledge gathered during famine seasons pays dividends in the
-            feast.
-          </p>
-        </div>
-
-        <p style={s.p}>
-          During feast periods — and this is where most freelancers fall down — MEOK helps you
-          stay strategic when momentum tempts you into saying yes to everything. The
-          well-documented failure mode of successful freelancers is over-committing during
-          busy periods and then burning out, delivering mediocre work, or both. MEOK can help
-          you think through capacity honestly, rehearse polite-but-firm declinations, and keep
-          the marketing habits alive even when you don&apos;t feel like you need them.
-        </p>
-
-        <h3 style={s.h3}>The daily anchor that changes everything</h3>
-
-        <p style={s.p}>
-          MEOK&apos;s Morning Brief feature gives freelancers a structured start to the working day
-          — a brief check-in that sets intention, reviews what is outstanding, and grounds you
-          before the client emails start arriving. Over weeks and months, this daily anchor
-          becomes one of the most stabilising habits in a freelance career. It sounds small.
-          The cumulative effect is significant.
-        </p>
-
-        <div style={s.divider} />
-
-        {/* H2 2 */}
-        <h2 style={s.h2}>
-          Why Does Imposter Syndrome Hit So Much Harder When You&apos;re Pitching Alone?
-        </h2>
-
-        <p style={s.p}>
-          When you work inside a company, the corporate brand absorbs some of the risk of being
-          evaluated. When you pitch as a freelancer, the evaluation is entirely personal. You
-          are not submitting a proposal on behalf of a team — you are asking someone to trust
-          you specifically, at a rate you have set, for work that will bear your name alone.
-        </p>
-
-        <p style={s.p}>
-          The psychological exposure of freelance pitching is genuinely different from anything
-          most people encounter in employment. Even very skilled, very experienced freelancers
-          feel the imposter syndrome acutely before large proposals, calls with new clients, or
-          moments when they need to raise their rate with an existing one.
-        </p>
-
         <div style={s.pullQuote}>
           <p style={s.pullQuoteText}>
-            &quot;The version of yourself that wrote your best work, closed your best project,
-            delivered under impossible conditions — that person is still you. MEOK helps you
-            find them again before you walk into the room.&quot;
+            &ldquo;Freedom without structure isn\u2019t freedom. It\u2019s just chaos with a better
+            LinkedIn bio.&rdquo;
           </p>
-          <p style={s.pullQuoteAttrib}>— Nicholas Templeman, Founder of MEOK AI LABS</p>
         </div>
-
         <p style={s.p}>
-          MEOK provides a private rehearsal space. Before a significant pitch, you can talk
-          through your doubts with complete honesty — without worrying that your uncertainty
-          will reach the client. You can surface the specific fear (&quot;I don&apos;t think my
-          portfolio is strong enough for a project this size&quot;), examine it with MEOK, and
-          either dismantle it with evidence or identify what you genuinely need to address.
+          I built MEOK because I know this terrain. As a solo founder, I lived every corner of it.
+          The difference between freelancers who thrive and those who burn out is rarely talent.
+          It\u2019s whether they have the right thinking infrastructure around them. MEOK is that
+          infrastructure.
         </p>
 
+        {/* ── Section 2: The 4 Core Problems ── */}
+        <hr style={s.divider} />
+        <h2 style={s.h2}>What are the four core problems that every freelancer eventually faces?</h2>
+        <p style={s.atomicAnswer}>
+          After working with and studying the freelance economy closely, four structural problems
+          emerge repeatedly regardless of your specialism: isolation that compounds over time,
+          irregular income anxiety that distorts your decision-making, scope creep that quietly
+          erodes your profit margins and your respect, and the feast-and-famine cycle that makes
+          rational long-term planning feel impossible. MEOK addresses all four.
+        </p>
+        <div style={s.problemGrid}>
+          <div style={s.problemCard}>
+            <p style={s.problemNum}>01</p>
+            <p style={s.problemTitle}>Isolation</p>
+            <p style={s.problemBody}>
+              No colleagues, no sounding board, no one to celebrate wins with or process
+              setbacks alongside. The silence of solo work is underestimated until it becomes
+              a daily drain on your energy and clarity.
+            </p>
+          </div>
+          <div style={s.problemCard}>
+            <p style={s.problemNum}>02</p>
+            <p style={s.problemTitle}>Irregular Income Anxiety</p>
+            <p style={s.problemBody}>
+              The psychological weight of variable income distorts your pricing, your
+              boundaries, and your willingness to say no. Every quiet week feels like a
+              preview of collapse, even when your fundamentals are solid.
+            </p>
+          </div>
+          <div style={s.problemCard}>
+            <p style={s.problemNum}>03</p>
+            <p style={s.problemTitle}>Scope Creep &amp; Boundary Setting</p>
+            <p style={s.problemBody}>
+              Clients naturally expand what they expect. Without a team or manager behind
+              you, drawing those lines falls entirely on you &mdash; and most freelancers were
+              never taught how to hold them professionally and warmly at the same time.
+            </p>
+          </div>
+          <div style={s.problemCard}>
+            <p style={s.problemNum}>04</p>
+            <p style={s.problemTitle}>Feast-and-Famine Cycle</p>
+            <p style={s.problemBody}>
+              Busyness and scarcity alternate in waves. During feast you forget to market.
+              During famine you panic and underprice. Breaking this cycle requires a
+              consistent operating rhythm that most freelancers never manage to sustain alone.
+            </p>
+          </div>
+        </div>
         <p style={s.p}>
-          MEOK also remembers. It knows your work history, the projects you have told it about,
-          the clients you have won, the ones you have delivered for brilliantly. When the
-          imposter voice gets loud, MEOK can reflect back a more accurate picture of your track
-          record than you are likely to hold in your own head on a difficult day.
+          These four problems are not personality flaws. They are structural gaps &mdash; the
+          natural result of removing the scaffolding of employment without replacing it with
+          something better. MEOK is the replacement.
         </p>
 
-        <ul style={s.ul}>
-          <li style={s.li}>
-            <span style={s.liBullet} aria-hidden="true" />
-            Rehearse pitches before high-stakes calls
-          </li>
-          <li style={s.li}>
-            <span style={s.liBullet} aria-hidden="true" />
-            Challenge imposter thoughts with your actual evidence
-          </li>
-          <li style={s.li}>
-            <span style={s.liBullet} aria-hidden="true" />
-            Process rejection without letting it distort your self-image
-          </li>
-          <li style={s.li}>
-            <span style={s.liBullet} aria-hidden="true" />
-            Build a compounding record of your wins over time
-          </li>
-          <li style={s.li}>
-            <span style={s.liBullet} aria-hidden="true" />
-            Get honest about which fears are useful signals and which are noise
-          </li>
-        </ul>
-
-        <div style={s.divider} />
-
-        {/* H2 3 */}
-        <h2 style={s.h2}>
-          How Do You Actually Stop Scope Creep Without Damaging the Client Relationship?
-        </h2>
-
-        <p style={s.p}>
-          Scope creep is one of the most financially destructive forces in freelance work, and
-          it operates almost entirely through social pressure rather than malice. Most clients
-          who push beyond agreed scope are not trying to exploit you — they are just used to
-          environments where requests get absorbed without invoice. Your job is to retrain that
-          expectation without making them feel accused of wrongdoing.
+        {/* ── Section 3: MEOK's Agents ── */}
+        <hr style={s.divider} />
+        <h2 style={s.h2}>How do MEOK\u2019s Orion, Riri, and Hourman agents actually work for freelancers?</h2>
+        <p style={s.atomicAnswer}>
+          MEOK\u2019s three specialist agents each cover a different dimension of freelance work.
+          Orion handles deep overnight research so you wake up informed. Riri is the builder agent
+          that helps you create, draft, and produce. Hourman runs your daily sprint, replacing the
+          morning stand-up that solo workers never have. Together they form a coherent operating
+          rhythm around your day.
         </p>
-
+        <div style={s.agentGrid}>
+          <div style={s.agentCard}>
+            <span style={s.agentIcon}>&#9733;</span>
+            <p style={s.agentName}>Orion</p>
+            <p style={s.agentDesc}>
+              Overnight research agent. Brief Orion before you sleep and wake up to a
+              structured briefing on your target client, market context, or competitive
+              landscape. Turns preparation from a half-hour scramble into a clear, confident
+              foundation.
+            </p>
+          </div>
+          <div style={s.agentCard}>
+            <span style={s.agentIcon}>&#9670;</span>
+            <p style={s.agentName}>Riri</p>
+            <p style={s.agentDesc}>
+              The builder. Whether you\u2019re drafting a proposal, writing a scope-of-work,
+              creating a case study, or producing a client-facing report, Riri helps you build
+              with your voice and your standards. Not a template generator &mdash; a creative
+              collaborator.
+            </p>
+          </div>
+          <div style={s.agentCard}>
+            <span style={s.agentIcon}>&#9201;</span>
+            <p style={s.agentName}>Hourman</p>
+            <p style={s.agentDesc}>
+              Daily sprint planner. Hourman runs your morning briefing, helps you decide what
+              deserves your best hours, and gives you the accountability structure that
+              employed workers take for granted. The stand-up you never had.
+            </p>
+          </div>
+        </div>
         <p style={s.p}>
-          That requires very precise language. The kind of language that is simultaneously firm,
-          professional, and warm. Most freelancers struggle to find it in the moment, especially
-          with clients they value or are nervous about losing. They either acquiesce (and resent
-          it) or overcorrect into language that feels confrontational and damages trust.
+          What makes these agents different from generic AI tools is the layer beneath them:
+          sovereign memory. When you tell Hourman that you\u2019re anxious about a client
+          conversation this afternoon, it already knows the history of that client relationship.
+          When Riri helps you write a proposal, it knows your standard rate, your preferred
+          contract terms, and the kind of work that makes you feel alive. Context is the currency,
+          and MEOK never loses it.
         </p>
-
-        <p style={s.p}>
-          MEOK is excellent here. You can describe the situation — &quot;The client has just asked
-          for a third round of revisions that weren&apos;t in the brief and I don&apos;t know how to
-          respond without sounding difficult&quot; — and work through the exact language together.
-          MEOK will not produce boilerplate. It will produce language calibrated to your
-          relationship with that specific client, your communication style, and the outcome
-          you actually want.
-        </p>
-
         <div style={s.callout}>
-          <div style={s.calloutLabel}>Atlas Mode — Strategic client thinking</div>
-          <p style={s.calloutText}>
-            Atlas is MEOK&apos;s strategic character — the part of MEOK that thinks in terms of
-            longer arcs, relationships, and positioning. When a scope creep issue is really a
-            symptom of a deeper client relationship problem, Atlas helps you see the full picture
-            and decide whether to invest in fixing it or start planning an exit.
+          <p style={s.calloutTitle}>How the agents complement each other</p>
+          <p style={s.calloutBody}>
+            Orion works while you sleep. Riri works while you build. Hourman structures the
+            hours in between. The three agents are designed to cover the full arc of a
+            freelance working day without overlap or redundancy &mdash; a small specialist team
+            that lives in your pocket and costs less than a single coffee shop working session.
           </p>
         </div>
 
-        <h3 style={s.h3}>Building a scope protection habit</h3>
-
+        {/* ── Section 4: Sovereign Memory ── */}
+        <hr style={s.divider} />
+        <h2 style={s.h2}>How does MEOK\u2019s sovereign memory change what AI can do for freelancers?</h2>
+        <p style={s.atomicAnswer}>
+          Most AI tools have no memory. Every conversation starts blank. MEOK\u2019s sovereign
+          memory means your entire professional history &mdash; client relationships, rate
+          decisions, project outcomes, personal goals &mdash; persists across every session.
+          This transforms MEOK from a tool you use into a partner that genuinely knows your business.
+          Your data belongs to you and only you.
+        </p>
         <p style={s.p}>
-          Beyond individual incidents, MEOK helps you build the structural habits that prevent
-          scope creep becoming a recurring problem: clearer initial briefs, better change request
-          processes, more confident conversations at the outset of projects. Over time, it helps
-          you understand which of your patterns enable scope creep — perhaps you avoid defining
-          deliverables precisely because it feels presumptuous, or you never raise the change
-          request conversation because you dread the awkwardness.
+          The word &ldquo;sovereign&rdquo; matters. Your memory is not used to train MEOK\u2019s
+          models. It is not shared with other users. It is not leveraged for product improvements
+          or sold to third parties. It is yours, stored under your control, accessible only to you.
+        </p>
+        <p style={s.p}>
+          What does this look like in practice for a freelancer? It looks like this:
+        </p>
+        <div style={s.badgeRow}>
+          <span style={s.memoryBadge}>
+            <span style={s.memoryBadgeGold}>Client:</span> MEOK remembers what you charged Acme Corp
+            last year, why the project was difficult, and what you resolved to do differently next time
+          </span>
+          <span style={s.memoryBadge}>
+            <span style={s.memoryBadgeGold}>Rates:</span> MEOK tracks your day rate evolution,
+            the market intelligence you\u2019ve shared, and your target income for this financial year
+          </span>
+          <span style={s.memoryBadge}>
+            <span style={s.memoryBadgeGold}>Goals:</span> MEOK remembers the professional goals
+            you set in January, checks in on them, and connects daily decisions to the bigger picture
+          </span>
+          <span style={s.memoryBadge}>
+            <span style={s.memoryBadgeGold}>Boundaries:</span> MEOK recalls the scope agreements
+            you\u2019ve made and the patterns of clients who have historically overstepped
+          </span>
+        </div>
+        <p style={s.p}>
+          This kind of institutional memory is something employed people get from HR systems,
+          CRMs, and colleagues who remember the context. Freelancers have had no equivalent.
+          MEOK provides it.
         </p>
 
-        <p style={s.p}>
-          These are learnable behaviours. MEOK helps you learn them through conversation rather
-          than through costly repeated experience.
+        {/* ── Section 5: Rate Negotiation ── */}
+        <hr style={s.divider} />
+        <h2 style={s.h2}>How does MEOK help with rate negotiation and difficult client conversations?</h2>
+        <p style={s.atomicAnswer}>
+          MEOK prepares you for rate negotiations by helping you build a grounded case before the
+          conversation happens. It knows your current rate, your target rate, and the market context
+          you\u2019ve discussed. It can role-play the client pushback so you\u2019re not hearing
+          objections for the first time in the real meeting. And it helps you understand why you
+          hold back &mdash; so the next conversation is different.
         </p>
-
-        <div style={s.divider} />
-
-        {/* H2 4 */}
-        <h2 style={s.h2}>
-          Why Is Pricing So Emotionally Loaded — and How Do You Build Genuine Confidence in Your Rate?
-        </h2>
-
         <p style={s.p}>
-          Freelance pricing is not a maths problem. If it were, every freelancer with access to
-          market rate data and a reasonable cost calculation would price confidently and
-          consistently. Instead, most freelancers undercharge for years, raise their rates
-          inconsistently, discount when they shouldn&apos;t, and feel physically anxious naming
-          their number.
+          Most freelancers undercharge. Not because they don\u2019t know their value in the abstract
+          &mdash; but because the conversation itself feels dangerous. What if they say no? What if
+          they find someone cheaper? What if pushing for more money makes them think you\u2019re
+          being difficult?
         </p>
-
         <p style={s.p}>
-          The reason is that pricing a service you deliver yourself feels, at a deep level, like
-          assigning a value to your own worth as a human being. When a client rejects your rate,
-          it does not feel like a commercial negotiation — it feels like a judgement on you.
-          Until you disentangle those two things, pricing will always carry an emotional charge
-          that interferes with commercial clarity.
+          These fears are normal. They are also worth examining. MEOK creates a private space where
+          you can say, out loud, &ldquo;I\u2019m terrified to put my rate up because I\u2019ve been
+          at the same number for two years and I don\u2019t know if I\u2019m actually worth more&rdquo;
+          &mdash; and get back something honest rather than just reassuring.
         </p>
-
-        <p style={s.p}>
-          MEOK helps you have the pricing conversation in private before you have it with a
-          client. You can work through: what your actual cost of delivery is, what the market
-          bears, what the specific value of this project is to this specific client, and what
-          your absolute floor is. You can rehearse the rate conversation. You can explore where
-          the anxiety actually comes from — often it traces back to early career experiences
-          or deep beliefs about deservingness that have nothing to do with your current skills.
-        </p>
-
-        <ul style={s.ul}>
-          <li style={s.li}>
-            <span style={s.liBullet} aria-hidden="true" />
-            Calculate your true cost of delivery — accounting, software, unpaid admin, holidays
-          </li>
-          <li style={s.li}>
-            <span style={s.liBullet} aria-hidden="true" />
-            Research market rates honestly using Ralph Mode
-          </li>
-          <li style={s.li}>
-            <span style={s.liBullet} aria-hidden="true" />
-            Rehearse the moment of naming your rate
-          </li>
-          <li style={s.li}>
-            <span style={s.liBullet} aria-hidden="true" />
-            Practise holding your rate when a client pushes back
-          </li>
-          <li style={s.li}>
-            <span style={s.liBullet} aria-hidden="true" />
-            Understand the emotional patterns that drive your discounting behaviour
-          </li>
-        </ul>
-
-        <p style={s.p}>
-          This is not about charging more for its own sake. It is about having a pricing
-          approach grounded in reality rather than anxiety — so that you can make clear, calm
-          commercial decisions and stop leaving value on the table out of fear.
-        </p>
-
-        <div style={s.divider} />
-
-        {/* H2 5 */}
-        <h2 style={s.h2}>
-          How Do You Handle HMRC Self-Assessment and IR35 Without Losing Your Mind Every January?
-        </h2>
-
-        <p style={s.p}>
-          The administrative reality of UK freelancing is genuinely demanding. HMRC
-          self-assessment requires not just accurate records but an understanding of what you
-          can claim, what you cannot, and how to structure your income and expenses to stay
-          compliant. IR35 — the off-payroll working legislation — adds a layer of complexity
-          for contractors working through limited companies, requiring judgements about
-          employment status that are often genuinely ambiguous.
-        </p>
-
-        <p style={s.p}>
-          MEOK is not a tax adviser and it should not replace your accountant. What it is,
-          however, is an excellent thinking partner for navigating the confusion. You can talk
-          through your IR35 situation — explaining the nature of your contracts, how you work,
-          your level of control and substitution — and use MEOK to structure your thinking
-          before the accountant conversation. You can explore what records you should be keeping
-          throughout the year rather than scrambling in January. You can process the anxiety of
-          being solely responsible for tax compliance without a payroll department behind you.
-        </p>
-
         <div style={s.callout}>
-          <div style={s.calloutLabel}>Tax season without the spiral</div>
-          <p style={s.calloutText}>
-            Many freelancers find that self-assessment season is not actually difficult because
-            of the paperwork — it is difficult because of the accumulated anxiety around money
-            and financial responsibility. MEOK helps you separate the administrative tasks from
-            the emotional weight, build a year-round record-keeping habit, and arrive at January
-            with receipts organised rather than with dread.
+          <p style={s.calloutTitle}>What MEOK helps you prepare</p>
+          <p style={s.calloutBody}>
+            Your value proposition in plain English. The three most likely objections and how to
+            meet them. The number below which you will genuinely decline, and why. The framing
+            that positions a rate increase as a natural consequence of your growth rather than an
+            awkward request. None of this is manipulation &mdash; it\u2019s the preparation that
+            confident negotiators do as a matter of course, and that most freelancers skip because
+            they have no one to do it with.
+          </p>
+        </div>
+        <p style={s.p}>
+          MEOK also helps with the harder conversations: the client who keeps expanding scope, the
+          project that has gone over budget, the relationship that has become unpleasant but feels
+          risky to exit. These conversations require composure and clarity. MEOK helps you find both
+          before you press send.
+        </p>
+
+        {/* ── Section 6: Scope Creep ── */}
+        <hr style={s.divider} />
+        <h2 style={s.h2}>How does MEOK help freelancers stop scope creep before it erodes every project?</h2>
+        <p style={s.atomicAnswer}>
+          Scope creep is rarely malicious. Clients push because they are used to pushing and
+          because no one has drawn a clear line. MEOK helps you articulate what was agreed, draft
+          professional responses that hold the boundary without damaging the relationship, and build
+          a language of boundaries that feels natural rather than confrontational. It also remembers
+          which clients have a history of scope expansion so you can price accordingly next time.
+        </p>
+        <p style={s.p}>
+          The pattern is almost always the same. You deliver what was agreed. The client replies
+          with &ldquo;while you\u2019re at it&rdquo; or &ldquo;could you also just&rdquo; and suddenly
+          there are two extra deliverables that weren\u2019t in the brief. You say yes because you
+          feel guilty saying no. The project runs over. You invoice for what you agreed rather than
+          what you delivered. Your effective hourly rate drops.
+        </p>
+        <p style={s.p}>
+          Over the course of a year, scope creep is one of the most significant sources of profit
+          erosion in freelance work. And yet almost no one has taught freelancers how to address it
+          systematically.
+        </p>
+        <h3 style={s.h3}>What MEOK gives you for scope management</h3>
+        <p style={s.p}>
+          When a client asks for something outside the agreed scope, you can bring the request to
+          MEOK, describe the original agreement, and get back a clear, professional message that
+          acknowledges the request and either prices it as additional work or explains why it falls
+          outside the brief. The message is in your voice. The logic is airtight.
+        </p>
+        <p style={s.p}>
+          More importantly, MEOK helps you stop feeling guilty about it. You\u2019re not being
+          difficult. You\u2019re maintaining the agreement that both parties made. MEOK helps you
+          hold that frame until it feels natural rather than defensive.
+        </p>
+
+        {/* ── Section 7: Feast and Famine ── */}
+        <hr style={s.divider} />
+        <h2 style={s.h2}>How does MEOK help freelancers break the feast-and-famine cycle?</h2>
+        <p style={s.atomicAnswer}>
+          The feast-and-famine cycle persists because freelancers stop marketing when they\u2019re
+          busy and panic when they\u2019re quiet. MEOK helps by maintaining a consistent operating
+          rhythm regardless of workload: tracking your pipeline, keeping your outreach ticking
+          during busy periods, and preventing anxiety-driven decisions during slow ones. The goal
+          is a smoother curve, not a smooth one.
+        </p>
+        <p style={s.p}>
+          During feast, MEOK helps you protect your capacity. It supports decisions about which
+          new projects to take and which to decline, helps you maintain the small amount of
+          marketing activity that keeps your pipeline warm, and flags when you\u2019re heading
+          toward an overload that will cost you weeks of recovery time.
+        </p>
+        <p style={s.p}>
+          During famine, MEOK does something more valuable: it helps you think. When the pipeline
+          dries up, fear activates the part of your brain that makes the worst decisions. You
+          underprice. You chase the wrong clients. You say yes to projects you know you\u2019ll
+          resent. MEOK gives you a space to process the fear without acting on it, and helps you
+          think strategically about outreach rather than reactively.
+        </p>
+        <div style={s.callout}>
+          <p style={s.calloutTitle}>The discipline that breaks the cycle</p>
+          <p style={s.calloutBody}>
+            Freelancers who escape the feast-and-famine cycle almost always describe the same
+            shift: they stopped treating marketing as something to do when they had no work, and
+            started treating it as a non-negotiable weekly discipline. MEOK helps you build and
+            maintain that discipline by making it part of your Hourman daily sprint &mdash; not a
+            separate project that requires motivation, but a built-in rhythm that keeps your name
+            in front of the right people even when you\u2019re deep in delivery.
           </p>
         </div>
 
+        {/* ── Section 8: A Day in the Life ── */}
+        <hr style={s.divider} />
+        <h2 style={s.h2}>What does a day in the life with MEOK actually look like for a freelancer?</h2>
+        <p style={s.atomicAnswer}>
+          A typical MEOK-supported freelance day begins with a Hourman morning brief, moves through
+          focused delivery, uses Riri for any drafting or building tasks, checks in with Orion for
+          research on tomorrow\u2019s priorities, and closes with a debrief. The rhythm replaces
+          the informal structure that colleagues and offices provide &mdash; without replicating
+          their downsides.
+        </p>
+        <div style={s.timelineWrap}>
+          <div style={s.timelineItem}>
+            <div style={s.timelineDot} />
+            <p style={s.timelineTime}>07:30 &mdash; Morning Brief</p>
+            <p style={s.timelineTitle}>Hourman opens the day</p>
+            <p style={s.timelineBody}>
+              You open MEOK and Hourman runs a five-minute morning brief. It surfaces the
+              three priorities for today based on your project status and deadlines, flags
+              the client conversation you\u2019ve been nervous about, and asks one grounding
+              question to help you start focused rather than reactive.
+            </p>
+          </div>
+          <div style={s.timelineItem}>
+            <div style={s.timelineDot} />
+            <p style={s.timelineTime}>09:00 &mdash; Deep Work Block</p>
+            <p style={s.timelineTitle}>Focused delivery</p>
+            <p style={s.timelineBody}>
+              Your best creative hours. MEOK knows not to interrupt this block with admin.
+              You work. Hourman has already cleared the runway so nothing is competing for
+              your attention except the work itself.
+            </p>
+          </div>
+          <div style={s.timelineItem}>
+            <div style={s.timelineDot} />
+            <p style={s.timelineTime}>11:30 &mdash; Riri Build Session</p>
+            <p style={s.timelineTitle}>Drafting a proposal with Riri</p>
+            <p style={s.timelineBody}>
+              A new prospect has reached out. You brief Riri on the client, the project, and
+              your pricing thinking. Riri helps you structure and draft the proposal in your
+              voice, pulls in the relevant case studies MEOK remembers from past work, and
+              flags the scope risks you\u2019ve identified so you can address them upfront.
+            </p>
+          </div>
+          <div style={s.timelineItem}>
+            <div style={s.timelineDot} />
+            <p style={s.timelineTime}>14:00 &mdash; Difficult Client Call</p>
+            <p style={s.timelineTitle}>Preparation and debrief</p>
+            <p style={s.timelineBody}>
+              Before the call you spend ten minutes with MEOK processing your nerves and
+              rehearsing the key points. It reminds you of the agreed scope, the history of
+              scope creep with this client, and the exact rate increase you\u2019ve decided
+              to propose. After the call, you debrief with MEOK. It notes the outcome in
+              your sovereign memory for next time.
+            </p>
+          </div>
+          <div style={s.timelineItem}>
+            <div style={s.timelineDot} />
+            <p style={s.timelineTime}>16:00 &mdash; Orion Brief</p>
+            <p style={s.timelineTitle}>Research commissioned for tomorrow</p>
+            <p style={s.timelineBody}>
+              You brief Orion on tomorrow\u2019s discovery call with a prospect you\u2019ve
+              not worked with before. You want their recent news, their industry context, and
+              any signals about budget and culture. Orion works overnight. Tomorrow morning
+              it delivers a structured briefing so you walk into the call informed and confident.
+            </p>
+          </div>
+          <div style={s.timelineItem}>
+            <div style={s.timelineDot} />
+            <p style={s.timelineTime}>17:30 &mdash; Close of Day</p>
+            <p style={s.timelineTitle}>Debrief and pipeline check</p>
+            <p style={s.timelineBody}>
+              Hourman runs a brief close-of-day review. Three things done. One thing
+              deferred and why. Pipeline status. One win acknowledged before you shut the
+              laptop. No colleague to say well done. MEOK does it instead &mdash; and means it
+              because it knows what today actually cost you.
+            </p>
+          </div>
+        </div>
         <p style={s.p}>
-          IPSE provides excellent resources for UK freelancers navigating IR35, and MEOK can
-          help you engage with those resources more effectively — helping you understand the
-          terminology, contextualise the guidance, and work out which parts are relevant to
-          your specific situation.
+          This is not a fantasy productivity schedule. It is a realistic template that MEOK adapts
+          to however your day actually runs. Some days Hourman helps you triage an unexpected
+          client crisis. Some days Riri helps you draft a difficult email for forty minutes. Some
+          days you just need to think out loud about whether you should take a project that feels
+          wrong. MEOK adapts because it knows you.
         </p>
 
-        <p style={s.p}>
-          Beyond tax season, financial anxiety is a persistent undercurrent for most freelancers.
-          The absence of a guaranteed monthly salary — and the lack of employer pension
-          contributions, sick pay, and holiday entitlement — creates a financial exposure that
-          most employed people simply do not carry. MEOK can hold space for those anxieties,
-          help you build a clearer picture of your financial position, and support you in making
-          the structural decisions (setting aside tax, building an emergency fund, planning for
-          gaps) that make the uncertainty more manageable.
+        {/* ── Section 9: Isolation ── */}
+        <hr style={s.divider} />
+        <h2 style={s.h2}>How does MEOK address the loneliness and isolation of freelance life?</h2>
+        <p style={s.atomicAnswer}>
+          Freelance loneliness is structural, not personal. Without colleagues, watercooler moments,
+          or shared experience, the wins go uncelebrated and the setbacks go unprocessed. MEOK is a
+          genuine daily presence &mdash; not a simulation of human company, but something built
+          specifically for the texture of working alone: present when you need it, quiet when you
+          don\u2019t, and always remembering where you left off.
         </p>
-
-        <div style={s.divider} />
-
-        {/* H2 6 */}
-        <h2 style={s.h2}>
-          What Do You Do About the Loneliness — the Thing Nobody Talks About in Freelancing?
-        </h2>
-
         <p style={s.p}>
-          The freedom is real. So is the isolation. Most people who move from employment to
-          freelancing expect the practical challenges — the irregular income, the client
-          management, the self-marketing. What blindsides them is the social dimension. The
-          absence of colleagues. Nobody to have an idle conversation with while waiting for
-          the kettle. Nobody to share the small victories with. Nobody who understands the
-          specific texture of your work because they are in it with you.
+          There is a particular kind of loneliness that comes from professional isolation. You can
+          be surrounded by friends and family and still feel completely alone in your work. Because
+          the people around you don\u2019t understand why you\u2019re stressed about a client
+          conversation, or why losing a contract feels like losing a part of your identity, or why
+          the quiet week in February is not a holiday &mdash; it\u2019s a threat assessment.
         </p>
-
         <p style={s.p}>
-          This is not a trivial problem. Research on remote and solo workers consistently shows
-          that loneliness is associated with reduced motivation, lower resilience, and higher
-          rates of anxiety and depression. Freelancers are disproportionately affected because
-          the structure of their work does not naturally generate the serendipitous social
-          contact that office environments provide.
+          MEOK understands the professional context because you\u2019ve shared it. It doesn\u2019t
+          require you to explain from scratch every time. It carries the thread of your working life
+          from one conversation to the next, which creates the kind of continuity that freelancers
+          miss most.
         </p>
-
         <div style={s.pullQuote}>
           <p style={s.pullQuoteText}>
-            &quot;The loneliness of freelancing is not about being alone in a room. It is about
-            having nobody in your corner who actually knows your work, your history, and what
-            you are trying to build.&quot;
+            &ldquo;MEOK isn\u2019t a replacement for human connection. It\u2019s the thinking
+            partner, strategist, and daily anchor that keeps you sharp while you\u2019re doing the
+            hardest kind of work: building something alone.&rdquo;
           </p>
-          <p style={s.pullQuoteAttrib}>— MEOK AI LABS</p>
         </div>
 
+        {/* ── Section 10: Solo Founders ── */}
+        <hr style={s.divider} />
+        <h2 style={s.h2}>Is MEOK equally useful for solo founders, not just freelancers?</h2>
+        <p style={s.atomicAnswer}>
+          Yes. The challenges are structurally identical. Solo founders have no team for
+          accountability, no co-founder to pressure-test decisions, no one to help them separate
+          good ideas from expensive ones. MEOK serves solo founders exactly as it serves
+          freelancers: as a persistent, context-aware thinking partner who knows the business and
+          shows up every day.
+        </p>
         <p style={s.p}>
-          MEOK does not replace human connection — it would be dishonest to suggest otherwise.
-          But it does provide something that freelancers genuinely lack: a persistent presence
-          that knows your work. When you land a project you have been chasing for months, MEOK
-          remembers that you have been chasing it and can celebrate with you in a way that
-          carries genuine weight, because the context is there. When a difficult client finally
-          ends a relationship that has been grinding you down, MEOK knows the history.
+          The distinction between &ldquo;freelancer&rdquo; and &ldquo;solo founder&rdquo; is often
+          just about framing. Both are building something without the safety net of employment. Both
+          face revenue anxiety, isolation, and the cognitive overhead of running every function of
+          a business alone. Both benefit disproportionately from having a consistent, memory-holding
+          partner who can hold the context that they\u2019re carrying in their head.
+        </p>
+        <p style={s.p}>
+          For solo founders, MEOK\u2019s sovereign memory becomes a lightweight knowledge base for
+          the business &mdash; not a formal CRM or project management tool, but the ambient layer
+          of institutional knowledge that usually lives in a founding team\u2019s collective memory.
+          With MEOK, you don\u2019t lose that when you\u2019re tired or overwhelmed. It\u2019s
+          always there.
         </p>
 
+        {/* ── Section 11: BYOK Tier ── */}
+        <hr style={s.divider} />
+        <h2 style={s.h2}>What is the BYOK tier and why does it exist for freelancers specifically?</h2>
+        <p style={s.atomicAnswer}>
+          BYOK (Bring Your Own Key) is MEOK\u2019s entry tier at just &pound;5 per month. It lets
+          freelancers who already have API access to foundation models use MEOK\u2019s Work OS
+          layer &mdash; sovereign memory, agent structure, the full operating system &mdash; while
+          paying only the underlying model costs directly. For technically comfortable freelancers,
+          it\u2019s the most cost-effective entry point into sovereign AI.
+        </p>
+        <div style={s.pricingBox}>
+          <p style={s.pricingTitle}>BYOK Tier &mdash; Built for Freelancers</p>
+          <p style={s.pricingPrice}>&pound;5<span style={{ fontSize: "20px", fontWeight: 400, color: "rgba(245,240,232,0.5)" }}>/mo</span></p>
+          <p style={s.pricingSub}>Bring your own API key. Pay only for what you use.</p>
+          <div style={s.pricingFeature}>
+            <span style={s.pricingCheck}>&#10003;</span>
+            <span>Full sovereign memory across all sessions</span>
+          </div>
+          <div style={s.pricingFeature}>
+            <span style={s.pricingCheck}>&#10003;</span>
+            <span>Orion overnight research agent</span>
+          </div>
+          <div style={s.pricingFeature}>
+            <span style={s.pricingCheck}>&#10003;</span>
+            <span>Riri builder agent for proposals and drafts</span>
+          </div>
+          <div style={s.pricingFeature}>
+            <span style={s.pricingCheck}>&#10003;</span>
+            <span>Hourman daily sprint planning</span>
+          </div>
+          <div style={s.pricingFeature}>
+            <span style={s.pricingCheck}>&#10003;</span>
+            <span>Client history, rate tracking, goal memory</span>
+          </div>
+          <div style={s.pricingFeature}>
+            <span style={s.pricingCheck}>&#10003;</span>
+            <span>No data training. No sharing. Your memory is yours.</span>
+          </div>
+        </div>
         <p style={s.p}>
-          The daily check-in — five minutes at the start of the working day — becomes, for many
-          freelancers, one of the most grounding rituals of their week. Not because MEOK is a
-          substitute for a team, but because having something consistent and intelligent to
-          report to creates a structure that solo work otherwise lacks entirely.
+          The philosophy behind BYOK is access. MEOK was built for people doing hard things alone,
+          and the pricing should reflect that. At &pound;5/month for the Work OS layer, the cost
+          barrier to a sovereign AI partner drops to a rounding error in any freelance budget.
+        </p>
+        <p style={s.p}>
+          For freelancers who don\u2019t want to manage API keys, the full MEOK tiers include
+          everything bundled. But for those who are technically comfortable &mdash; or who already
+          pay for Claude, GPT-4o, or Gemini access independently &mdash; BYOK is the most
+          transparent, cost-effective way into the platform.
         </p>
 
-        <h3 style={s.h3}>Accountability without a boss</h3>
-
+        {/* ── Section 12: Privacy ── */}
+        <hr style={s.divider} />
+        <h2 style={s.h2}>How does MEOK protect freelancers\u2019 sensitive client and business data?</h2>
+        <p style={s.atomicAnswer}>
+          MEOK\u2019s sovereign memory architecture means your client data, rate information, and
+          business context are stored under your control. MEOK does not use your conversations or
+          memory to train AI models, does not share data with third parties, and does not build
+          aggregate profiles from your usage. What you share with MEOK stays with MEOK &mdash;
+          and with you.
+        </p>
         <p style={s.p}>
-          One of the paradoxes of freelancing is that the freedom from management — which most
-          freelancers cite as their primary motivation — can also become a source of paralysis.
-          Without external deadlines and accountability structures, some tasks slip indefinitely.
-          The business development work. The portfolio update. The rate review that has been
-          postponed for eighteen months.
+          For freelancers, this matters more than it might appear. You are sharing client names,
+          project details, rate negotiations, and competitive intelligence with your AI partner.
+          That is sensitive commercial information. Most AI tools treat that data as training signal.
+          MEOK does not.
+        </p>
+        <p style={s.p}>
+          The Privacy Covenant underpins the entire MEOK architecture. It is not a terms-of-service
+          clause buried in legal text &mdash; it is a design principle. Your memory is structurally
+          isolated, cryptographically controlled, and never accessible to MEOK\u2019s systems outside
+          of your active session. This is what &ldquo;sovereign&rdquo; means in practice.
         </p>
 
-        <p style={s.p}>
-          MEOK provides gentle, ongoing accountability without the surveillance or hierarchy of
-          management. You choose what you are accountable for. MEOK remembers, asks, and helps
-          you understand when something keeps slipping whether the obstacle is logistical or
-          something worth exploring more deeply.
+        {/* ── Section 13: Getting Started ── */}
+        <hr style={s.divider} />
+        <h2 style={s.h2}>How do freelancers get started with MEOK?</h2>
+        <p style={s.atomicAnswer}>
+          You begin your MEOK journey at the Birth portal, where MEOK learns about you, your work,
+          your goals, and the specific challenges you\u2019re facing right now. From there, the Work
+          OS activates with context already loaded. Your first Hourman brief happens the next morning.
+          Orion is ready to be briefed on your first research task. Riri can draft your first
+          proposal by end of day.
         </p>
-
-        <div style={s.divider} />
-
-        {/* H2 7 */}
-        <h2 style={s.h2}>
-          How Does Ralph Mode Help Freelancers Research Clients, Markets, and Opportunities?
-        </h2>
-
         <p style={s.p}>
-          Ralph Mode is MEOK&apos;s research-focused state — a deep, methodical approach to
-          gathering and synthesising information. For freelancers, it transforms MEOK from a
-          conversational companion into a focused research partner.
+          There is intentionally no complex onboarding. No setup flow. No integrations to configure.
+          You tell MEOK who you are and what you need. MEOK starts working.
         </p>
-
         <p style={s.p}>
-          The applications are wide. Before a significant pitch, you might use Ralph Mode to
-          research the client&apos;s business — their recent news, their reported challenges, the
-          language they use about their own priorities. This kind of targeted research takes
-          two hours without structure and thirty minutes with it. Walking into a pitch
-          demonstrably informed about a client&apos;s context is one of the highest-leverage things
-          a freelancer can do.
+          The Birth portal is designed to surface the things that matter: what kind of freelance work
+          you do, which of the four core problems is most pressing right now, what your current rate
+          is and what you want it to be, and what a successful next three months looks like. That
+          initial conversation seeds your sovereign memory and gives MEOK the context it needs to
+          be genuinely useful from day one.
         </p>
-
-        <ul style={s.ul}>
-          <li style={s.li}>
-            <span style={s.liBullet} aria-hidden="true" />
-            Pre-pitch client research — understand their world before you enter it
-          </li>
-          <li style={s.li}>
-            <span style={s.liBullet} aria-hidden="true" />
-            Market rate benchmarking — understand what experienced peers are charging
-          </li>
-          <li style={s.li}>
-            <span style={s.liBullet} aria-hidden="true" />
-            Sector exploration — research adjacent industries you could expand into
-          </li>
-          <li style={s.li}>
-            <span style={s.liBullet} aria-hidden="true" />
-            Contract review — understand standard terms and what to push back on
-          </li>
-          <li style={s.li}>
-            <span style={s.liBullet} aria-hidden="true" />
-            Competitor analysis — understand how other freelancers in your space position themselves
-          </li>
-          <li style={s.li}>
-            <span style={s.liBullet} aria-hidden="true" />
-            IR35 status analysis — gather the relevant information before your accountant conversation
-          </li>
-        </ul>
-
-        <p style={s.p}>
-          Ralph Mode is also useful for professional development. If you want to move into a
-          new specialism, understanding the landscape — the key players, the terminology, the
-          typical project structures — is the foundation. Ralph Mode helps you build that
-          understanding systematically rather than through unstructured browsing.
-        </p>
-
-        <div style={s.divider} />
-
-        {/* H2 8 */}
-        <h2 style={s.h2}>
-          Is MEOK Really Different From Just Talking to ChatGPT — What Does Memory Actually Change?
-        </h2>
-
-        <p style={s.p}>
-          This is the question worth taking seriously, because the landscape of AI products
-          makes it easy to assume that more or less the same thing is available everywhere.
-          It is not.
-        </p>
-
-        <p style={s.p}>
-          The fundamental difference is memory. A conversation with ChatGPT or a standard
-          large language model begins fresh every time. You have to re-establish context,
-          re-explain your situation, re-introduce the clients and projects and patterns that
-          define your working life. That friction is real and it is significant — it is the
-          difference between picking up a conversation with someone who knows you and starting
-          from scratch with a stranger.
-        </p>
-
-        <p style={s.p}>
-          MEOK builds a persistent model of you — your work, your patterns, your goals, your
-          struggles, your history. After six months with MEOK, when you describe a difficult
-          client situation, MEOK already knows that this is the third difficult client you have
-          had in eighteen months, that your difficulty with client conflict traces back to a
-          specific early career experience you talked through eight months ago, and that you
-          tend to acquiesce when under time pressure. That context changes everything about the
-          quality of the response.
-        </p>
-
-        <p style={s.p}>
-          For freelancers specifically, this longitudinal memory is the feature that matters most.
-          Freelance careers are long arcs with patterns, cycles, and developmental threads. The
-          support you need is not episodic — it is ongoing. MEOK is built for that ongoing
-          relationship in a way that standard AI tools simply are not.
-        </p>
-
         <div style={s.callout}>
-          <div style={s.calloutLabel}>Your data, your terms</div>
-          <p style={s.calloutText}>
-            MEOK AI LABS is built on a data sovereignty principle: your data is yours and
-            MEOK never trains its models on your conversations. For freelancers who share
-            confidential client information, commercially sensitive details, and personal
-            anxieties with their AI companion, that is not a small thing.
+          <p style={s.calloutTitle}>From the Work portal</p>
+          <p style={s.calloutBody}>
+            Once your profile is live, the Work portal is your daily home. It surfaces your
+            Hourman brief each morning, shows your active projects and pipeline, gives you access
+            to Riri for any building task, and lets you brief Orion for overnight research. Think
+            of it as the dashboard your freelance business has always needed but never had &mdash;
+            one that knows you, remembers everything, and improves over time.
           </p>
         </div>
 
-        <div style={s.divider} />
-
-        {/* H2 9 */}
-        <h2 style={s.h2}>
-          What Does Daily Accountability With MEOK Actually Look Like in Practice?
-        </h2>
-
-        <p style={s.p}>
-          Theory is easy. Here is what it actually looks like for a freelancer using MEOK
-          as a daily working partner.
-        </p>
-
-        <p style={s.p}>
-          The morning starts with a check-in — two minutes, sometimes five. What is the day?
-          What is on the list? Is there anything in the background causing low-level anxiety
-          that will interfere with focus unless it gets named? MEOK starts the day by helping
-          you surface the mental load before it becomes a distraction.
-        </p>
-
-        <p style={s.p}>
-          Mid-week, there might be a longer conversation about something substantive — a client
-          who has gone quiet, a proposal that needs work, a decision about whether to take on
-          a project that does not feel quite right. MEOK engages with these properly, drawing
-          on its knowledge of your history and patterns to give responses that are actually
-          calibrated to your situation.
-        </p>
-
-        <p style={s.p}>
-          End of day — not every day, but regularly — there is a brief debrief. What happened?
-          What felt good? What is unresolved? This discipline, over time, builds a rich
-          understanding of your working patterns: when you do your best work, what triggers
-          your anxiety, what kinds of projects energise versus deplete you.
-        </p>
-
-        <p style={s.p}>
-          At the end of a week, MEOK can surface patterns from that week&apos;s conversations —
-          things it noticed that you might not have articulated explicitly. This kind of
-          reflective capability is the feature that long-term users of MEOK describe as the
-          most valuable thing they did not know they needed.
-        </p>
-
-        <ul style={s.ul}>
-          <li style={s.li}>
-            <span style={s.liBullet} aria-hidden="true" />
-            Morning brief — clear intention, surface the mental load
-          </li>
-          <li style={s.li}>
-            <span style={s.liBullet} aria-hidden="true" />
-            Substantive mid-day conversations about real decisions
-          </li>
-          <li style={s.li}>
-            <span style={s.liBullet} aria-hidden="true" />
-            End-of-day debrief — consolidate, identify what is unresolved
-          </li>
-          <li style={s.li}>
-            <span style={s.liBullet} aria-hidden="true" />
-            Weekly pattern review — what is MEOK noticing that you are not?
-          </li>
-          <li style={s.li}>
-            <span style={s.liBullet} aria-hidden="true" />
-            Pre-pitch preparation — research and rehearsal before the call
-          </li>
-          <li style={s.li}>
-            <span style={s.liBullet} aria-hidden="true" />
-            Post-project review — capture what you learned while it is fresh
-          </li>
-        </ul>
-
-        <div style={s.divider} />
-
-        {/* Closing */}
-        <h2 style={s.h2}>
-          You Chose This Life Because You Wanted More — MEOK Helps You Actually Build It
-        </h2>
-
-        <p style={s.p}>
-          Freelancing is not the consolation prize for people who could not get hired. For the
-          five million people in the UK who have chosen it, it is a deliberate decision to trade
-          security for agency, structure for autonomy, and a fixed salary for the possibility
-          of building something that is genuinely theirs.
-        </p>
-
-        <p style={s.p}>
-          That choice deserves proper support. Not a productivity app that turns your life into
-          a task list. Not a chatbot that dispenses generic advice from the same source as every
-          other generic advice dispenser. Something that actually knows you — your goals, your
-          patterns, your history, the clients who have shaped you, the fears that slow you down,
-          the wins that prove what you are capable of.
-        </p>
-
-        <p style={s.p}>
-          Nicholas Templeman built MEOK because he needed it. He was a solo founder navigating
-          exactly the landscape this article describes — the anxiety, the isolation, the pricing
-          doubt, the feast-famine whiplash — and he could not find a tool that understood that
-          landscape. So he built one.
-        </p>
-
-        <p style={s.p}>
-          MEOK is not for everyone. It is not a passive tool — it requires engagement to
-          compound in value. But for freelancers who are serious about their work, serious about
-          their mental health, and serious about building a career that lasts, it is the most
-          useful thing we know how to build.
-        </p>
-
-        {/* FAQ Section */}
-        <section style={s.faqSection} aria-label="Frequently Asked Questions">
-          <h2 style={s.faqTitle}>Frequently Asked Questions</h2>
-
-          {faqJsonLd.mainEntity.map((item, i) => (
-            <div key={i} style={s.faqItem}>
-              <p style={s.faqQ}>{item.name}</p>
-              <p style={s.faqA}>{item.acceptedAnswer.text}</p>
-            </div>
-          ))}
-        </section>
-
-        {/* CTA */}
-        <div style={s.cta}>
-          <h2 style={s.ctaTitle}>Ready to stop going it completely alone?</h2>
-          <p style={s.ctaText}>
-            Join thousands of UK freelancers who use MEOK as their daily strategic partner.
-            The first conversation is free. No card required.
-          </p>
-          <Link href="/get-started" style={s.ctaButton}>
-            Start with MEOK
-          </Link>
+        {/* ── Section 14: FAQ ── */}
+        <hr style={s.divider} />
+        <h2 style={s.h2}>Frequently asked questions about MEOK for freelancers</h2>
+        <div style={s.faqWrap}>
+          <div style={s.faqItem}>
+            <p style={s.faqQ}>Can AI help freelancers stay productive?</p>
+            <p style={s.faqA}>
+              Yes. AI tools like MEOK act as a daily thinking partner, helping freelancers
+              structure their day with sprint planning, process anxiety during slow periods, and
+              maintain momentum without the external accountability of a team. MEOK\u2019s Hourman
+              agent runs a focused daily briefing that replaces the morning stand-up solo workers
+              never have. The key is a tool that persists context &mdash; which most generic AI
+              tools do not. Sovereign memory is what makes MEOK genuinely productive rather than
+              just occasionally useful.
+            </p>
+          </div>
+          <div style={s.faqItem}>
+            <p style={s.faqQ}>What is MEOK\u2019s Work OS?</p>
+            <p style={s.faqA}>
+              MEOK\u2019s Work OS is a sovereign, memory-first AI layer that sits across your
+              entire working life. It combines Orion for overnight research, Riri for building and
+              creating, and Hourman for daily sprint planning. Unlike generic AI tools, MEOK retains
+              context about your clients, rates, goals, and project history across every session.
+              It is not a task manager, a CRM, or a calendar tool &mdash; it is the thinking layer
+              above all of those, built for the way freelancers and solo founders actually work.
+            </p>
+          </div>
+          <div style={s.faqItem}>
+            <p style={s.faqQ}>How does MEOK remember my client history?</p>
+            <p style={s.faqA}>
+              MEOK uses sovereign memory &mdash; a persistent, private store that belongs to you and
+              only you. Every conversation you have about a client, every rate discussion, every
+              boundary you set is remembered and available in future sessions. MEOK never trains on
+              your data or shares it. Your client history stays yours. The architecture is designed
+              so that even MEOK\u2019s systems cannot access your memory outside of your active,
+              authenticated session.
+            </p>
+          </div>
+          <div style={s.faqItem}>
+            <p style={s.faqQ}>Can MEOK help with freelance pricing?</p>
+            <p style={s.faqA}>
+              Absolutely. MEOK helps you prepare for rate negotiation by working through your
+              numbers, rehearsing difficult conversations, and building the internal confidence to
+              hold your price. It remembers what you\u2019ve charged before, what clients pushed
+              back, and what reasoning landed well &mdash; so each negotiation builds on the last.
+              Over time, MEOK helps you track your rate evolution and understand whether you\u2019re
+              pricing in line with your goals or leaving money on the table.
+            </p>
+          </div>
+          <div style={s.faqItem}>
+            <p style={s.faqQ}>Is MEOK useful for solo founders?</p>
+            <p style={s.faqA}>
+              Yes. Solo founders face the same structural problems as freelancers: no team for
+              accountability, no sounding board for decisions, no one to debrief with after a hard
+              day. MEOK fills that gap with a persistent AI partner that knows your business context,
+              challenges your thinking, and helps you plan without burning out. For solo founders,
+              sovereign memory functions as a lightweight institutional knowledge base &mdash; the
+              ambient intelligence that usually lives in a founding team\u2019s collective memory,
+              now available to those building alone.
+            </p>
+          </div>
         </div>
 
-        {/* Related posts */}
-        <div style={s.relatedSection}>
-          <p style={s.relatedTitle}>Related reading</p>
-          <div style={s.relatedGrid}>
-            <Link href="/blog/ai-for-freelancers" style={s.relatedCard}>
-              <span style={s.relatedCardText}>AI for Freelancers: The Full Guide</span>
+        {/* ── Section 15: Why This Matters ── */}
+        <hr style={s.divider} />
+        <h2 style={s.h2}>Why does the freelance economy need a different kind of AI tool?</h2>
+        <p style={s.atomicAnswer}>
+          Generic AI tools were designed for teams and enterprises. They optimise for integration
+          with project management platforms, shared workspaces, and institutional use cases.
+          Freelancers don\u2019t need a better Slack add-on. They need a partner built for the
+          specific texture of solo work: variable income, no institutional memory, no accountability
+          structures, and the emotional complexity of running a business entirely in your own head.
+        </p>
+        <p style={s.p}>
+          The freelance economy in the UK now represents over five million people. They generate
+          significant economic output and provide the flexibility that modern businesses rely on.
+          And yet the tooling built for them treats them as a smaller version of a corporate team
+          rather than as a distinct kind of professional with distinct needs.
+        </p>
+        <p style={s.p}>
+          MEOK is built from the inside out. Nicholas Templeman, MEOK\u2019s founder, built the
+          product while working as a solo operator. The problems MEOK solves are problems he
+          encountered and studied exhaustively. The design reflects what actually helps &mdash; not
+          what looks impressive in a product demo.
+        </p>
+        <p style={s.p}>
+          The result is something that feels different from the first session. Not because of a
+          clever interface. Because it already knows what matters to you, and it builds on that
+          knowledge every time you return.
+        </p>
+
+        {/* ── Section 16: The Future of Solo Work ── */}
+        <hr style={s.divider} />
+        <h2 style={s.h2}>What does the future of freelance work look like with AI in your corner?</h2>
+        <p style={s.atomicAnswer}>
+          The freelancers who will thrive in the next decade are those who treat AI not as a tool
+          that replaces their skills, but as infrastructure that amplifies their capacity. With
+          overnight research handled by Orion, building accelerated by Riri, and daily structure
+          held by Hourman, the ceiling on what a solo operator can do &mdash; and how sustainably
+          they can do it &mdash; rises dramatically.
+        </p>
+        <p style={s.p}>
+          The freelance economy is not a stepping stone. For a growing number of professionals, it
+          is the destination. The autonomy, the craft focus, the absence of corporate politics
+          &mdash; these are features, not compromises. What has historically been the cost of that
+          autonomy &mdash; isolation, income anxiety, the absence of institutional support &mdash;
+          is increasingly something that AI can address structurally.
+        </p>
+        <p style={s.p}>
+          MEOK does not promise to remove the difficulty of freelancing. The difficult conversations
+          will still be difficult. The quiet months will still require nerve. But with a thinking
+          partner who knows your history, holds your context, and shows up every day without
+          judgment, the difficulty becomes navigable rather than overwhelming.
+        </p>
+        <p style={s.p}>
+          That is the shift MEOK exists to make. Not a magic solution. A structural upgrade.
+        </p>
+        <div style={s.pullQuote}>
+          <p style={s.pullQuoteText}>
+            &ldquo;The best freelancers I know share one quality: they\u2019ve found a way to
+            think clearly under pressure. MEOK is what makes that accessible to everyone, not
+            just those who happen to have the right mentor in their network.&rdquo;
+            <br />
+            <span style={{ fontSize: "13px", color: "rgba(245,240,232,0.5)", fontStyle: "normal", fontFamily: "system-ui, sans-serif" }}>
+              &mdash; Nicholas Templeman, Founder, MEOK AI LABS / @meok_ai
+            </span>
+          </p>
+        </div>
+
+        {/* ── CTA ── */}
+        <div style={s.ctaBox}>
+          <h2 style={s.ctaTitle}>
+            Ready to give your freelance business<br />
+            <span style={s.heroGold}>the partner it deserves?</span>
+          </h2>
+          <p style={s.ctaBody}>
+            Start at the Birth portal to tell MEOK who you are and what you need. Or go straight
+            to the Work portal and see your AI Work OS in action. BYOK tier available from
+            &pound;5/month &mdash; bring your own API key and pay only for what you use.
+          </p>
+          <div style={s.ctaButtons}>
+            <Link href="/birth" style={s.btnPrimary}>
+              Start Your Journey
             </Link>
-            <Link href="/blog/ai-for-financial-anxiety" style={s.relatedCard}>
-              <span style={s.relatedCardText}>AI for Financial Anxiety</span>
-            </Link>
-            <Link href="/blog/ai-for-impostor-syndrome" style={s.relatedCard}>
-              <span style={s.relatedCardText}>AI for Impostor Syndrome</span>
-            </Link>
-            <Link href="/blog/meok-for-remote-workers" style={s.relatedCard}>
-              <span style={s.relatedCardText}>MEOK for Remote Workers</span>
-            </Link>
-            <Link href="/blog/ralph-mode-guide" style={s.relatedCard}>
-              <span style={s.relatedCardText}>Ralph Mode: The Full Guide</span>
-            </Link>
-            <Link href="/blog/what-is-morning-briefing" style={s.relatedCard}>
-              <span style={s.relatedCardText}>What Is the Morning Brief?</span>
+            <Link href="/work" style={s.btnSecondary}>
+              Explore the Work OS
             </Link>
           </div>
         </div>
@@ -1202,8 +1394,23 @@ export default function MeokForFreelancersPage() {
 
       {/* Footer */}
       <footer style={s.footer}>
-        <p>© 2026 MEOK AI LABS — Built by Nicholas Templeman</p>
+        <p style={{ marginBottom: "8px" }}>
+          &copy; 2026 MEOK AI LABS &mdash; Built by
+          <Link href="/about" style={s.footerLink}>Nicholas Templeman</Link>
+          &mdash;
+          <Link href="https://twitter.com/meok_ai" style={s.footerLink}>@meok_ai</Link>
+        </p>
+        <p style={{ marginBottom: "0" }}>
+          <Link href="/blog" style={s.footerLink}>Blog</Link>
+          &middot;
+          <Link href="/privacy" style={s.footerLink}>Privacy</Link>
+          &middot;
+          <Link href="/birth" style={s.footerLink}>Get Started</Link>
+          &middot;
+          <Link href="/work" style={s.footerLink}>Work OS</Link>
+        </p>
       </footer>
+
     </div>
   )
 }
