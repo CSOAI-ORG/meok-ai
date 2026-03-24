@@ -96,21 +96,25 @@ export type Tier = keyof typeof TIERS;
 export async function createCheckoutSession(params: {
   userId: string;
   email: string;
-  tier: 'sovereign' | 'family';
+  tier: 'sovereign' | 'family' | 'byok';
   interval: 'month' | 'year';
   successUrl: string;
   cancelUrl: string;
 }): Promise<string> {
   const { userId, email, tier, interval, successUrl, cancelUrl } = params;
 
-  const priceId =
-    tier === 'sovereign'
-      ? interval === 'month'
-        ? process.env.STRIPE_PRICE_SOVEREIGN_MONTHLY!
-        : process.env.STRIPE_PRICE_SOVEREIGN_ANNUAL!
-      : interval === 'month'
-        ? process.env.STRIPE_PRICE_FAMILY_MONTHLY!
-        : process.env.STRIPE_PRICE_FAMILY_ANNUAL!;
+  let priceId: string;
+  if (tier === 'sovereign') {
+    priceId = interval === 'month'
+      ? process.env.STRIPE_PRICE_SOVEREIGN_MONTHLY!
+      : process.env.STRIPE_PRICE_SOVEREIGN_ANNUAL!;
+  } else if (tier === 'byok') {
+    priceId = process.env.STRIPE_PRICE_BYOK_MONTHLY!; // BYOK is monthly-only
+  } else {
+    priceId = interval === 'month'
+      ? process.env.STRIPE_PRICE_FAMILY_MONTHLY!
+      : process.env.STRIPE_PRICE_FAMILY_ANNUAL!;
+  }
 
   if (!priceId) {
     throw new Error(`Stripe price ID not configured for tier=${tier} interval=${interval}`);
