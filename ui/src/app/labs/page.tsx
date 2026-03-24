@@ -31,6 +31,37 @@ const jsonLd = {
   },
 };
 
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "What is MEOK Labs?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "MEOK Labs is the research arm of MEOK AI LABS, where active experiments in sovereign AI architecture are published openly. Current experiments include Byzantine Council fault-tolerant consensus, pgvector HNSW semantic memory, consciousness state machines, and dream-state creativity modes.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What is the Byzantine Council in MEOK?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "The Byzantine Council is MEOK's 43-agent fault-tolerant consensus system (f < n/3). Named after the Byzantine Generals Problem in distributed systems, it ensures that no single AI agent can produce a harmful or incorrect response without being overruled by the consensus of the council. It's original IP developed by Nicholas Templeman.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What research papers has MEOK published?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "MEOK AI LABS has published four working papers: MEOK-AI-2026-001 (Byzantine Council: Fault-Tolerant Consensus for Sovereign AI), MEOK-AI-2026-002 (The Maternal Covenant: Care-Based Alignment Beyond RLHF), MEOK-AI-2026-003 (Hydro-Neuromorphic Computing: Water as Neural Substrate), and MEOK-AI-2026-004 (Personal Sovereign AI: Architecture for Individual Data Sovereignty).",
+      },
+    },
+  ],
+};
+
 type ExperimentStatus = "active" | "complete" | "paused" | "designing";
 
 interface Experiment {
@@ -137,6 +168,10 @@ export default function LabsPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
 
       {/* ── HERO ──────────────────────────────────────────────────── */}

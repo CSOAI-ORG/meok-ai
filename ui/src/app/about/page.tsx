@@ -131,6 +131,53 @@ const orgJsonLd = {
   sameAs: ["https://github.com/meok-ai/meok-ai"],
 };
 
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "Who founded MEOK?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "MEOK was founded by Nicholas Templeman, a UK-based developer and researcher. He built MEOK from a farm caravan because AI kept forgetting him — and he believed that was fixable. He launched it Easter Sunday 2026, 40 days after beginning the build.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What is MEOK AI LABS?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "MEOK AI LABS is a UK-based AI research company building sovereign AI companions governed by the Maternal Covenant — a machine-enforced ethical framework ensuring care, privacy, and data sovereignty. The company was founded in 2026 by Nicholas Templeman.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What is the Maternal Covenant?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "The Maternal Covenant is MEOK's core ethical framework — a machine-enforced constitutional constraint that runs as executable code. It scores every AI response across six care dimensions in real time, mandates data sovereignty, prohibits sycophancy, and ensures your AI never prioritises engagement over your genuine wellbeing.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What is Byzantine Council consensus in MEOK?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "MEOK's Byzantine Council is a 43-agent fault-tolerant consensus system (f < n/3) that governs every decision the sovereign AI makes. Developed by Nicholas Templeman as original IP, it ensures that no single AI agent can produce a harmful or incorrect response without being overruled by the council majority.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Is MEOK a UK company?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Yes. MEOK AI LABS is based in the United Kingdom. The company is ICO registered and operates under UK GDPR. Nicholas Templeman, the founder, is British.",
+      },
+    },
+  ],
+};
+
 // ─── Page ───────────────────────────────────────────────────────────────────
 
 export default function AboutPage() {
@@ -143,6 +190,10 @@ export default function AboutPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
 
       {/* ═══════════════════════════════════════

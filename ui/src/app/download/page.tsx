@@ -77,11 +77,56 @@ const PHASES = [
   },
 ];
 
+// ── Schema ──────────────────────────────────────────────────────────────────
+
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "When is MEOK Desktop OS available to download?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "MEOK Desktop OS is expected Summer 2026. It's built on Tauri 2.0 (Rust), with LanceDB local memory, Ollama for offline inference, and a Rive-animated companion. Join the waitlist at meok.ai/download to be notified on launch day.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What operating systems will MEOK Desktop support?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "MEOK Desktop OS will support macOS, Windows, and Linux via Tauri 2.0. The initial launch targets macOS and Windows. Linux support follows shortly after.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Will MEOK Desktop work offline?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Yes. MEOK Desktop uses Ollama for local LLM inference and LanceDB for offline vector memory — meaning your companion works even without an internet connection. Online mode routes to cloud models (Claude, GPT-4o) when connected.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Is the MEOK web app available now?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Yes. The MEOK web app is available now at meok.ai. It includes all companion archetypes, Sovereign Memory, Work OS, and Guardian features. The Desktop OS is an additional layer coming Summer 2026 — for users who want full offline capability and deeper system integration.",
+      },
+    },
+  ],
+};
+
 // ── Page ────────────────────────────────────────────────────────────────────
 
 export default function DownloadPage() {
   return (
     <main className="min-h-screen bg-[#0d0c18] text-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
       {/* ── Hero ───────────────────────────────────────────────────────────── */}
       <section className="relative overflow-hidden pt-24 pb-20 px-4">
         {/* Background blobs */}
