@@ -53,6 +53,30 @@ const POSTS = [
     featured: true,
   },
   {
+    slug: "ai-for-depression",
+    title: "Can AI Help with Depression? What Research Says and What MEOK Actually Offers",
+    excerpt:
+      "Research shows AI companions can meaningfully reduce isolation. But the hard question is how — and where the boundary is. An honest look at what MEOK can and cannot do for people with depression.",
+    date: "March 28, 2026",
+    readTime: "8 min read",
+    tag: "Mental Health",
+    tagColor: "#A78BFA",
+    category: "product",
+    featured: false,
+  },
+  {
+    slug: "ai-companion-not-ai-girlfriend",
+    title: "AI Girlfriend / AI Boyfriend Apps in 2026: Why MEOK Takes a Different Approach",
+    excerpt:
+      "3 million people use Replika as a romantic AI companion. Character.AI processes 20 billion messages a month. The demand is real. But is the relationship model good for you?",
+    date: "March 27, 2026",
+    readTime: "7 min read",
+    tag: "Product",
+    tagColor: "#F97316",
+    category: "product",
+    featured: false,
+  },
+  {
     slug: "ai-companion-for-loneliness",
     title: "AI Companion for Loneliness: What Actually Helps (and What Doesn't)",
     excerpt:
