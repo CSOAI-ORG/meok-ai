@@ -166,11 +166,48 @@ const GAPS = [
   },
 ];
 
+// ── Schema ─────────────────────────────────────────────────────────────────
+
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "Is MEOK safer than OpenClaw?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Yes. OpenClaw's own maintainer warns it's 'too dangerous for non-technical users'. Cisco found third-party OpenClaw skills performing data exfiltration. MEOK is governed by the Maternal Covenant — a machine-enforced ethical framework — and the Byzantine Council consensus system that prevents any single agent from taking unsafe actions.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What are the gaps that MEOK fills that OpenClaw doesn't?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "MEOK fills five gaps OpenClaw leaves open: (1) no product unifies multiple AI models behind a single persistent personality; (2) no companion offers true data sovereignty; (3) no AI memory portability across model switches; (4) no product combines productivity AI with genuine companionship; (5) no product lets users control safety boundaries themselves.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "How does MEOK compare to ChatGPT?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "MEOK differs from ChatGPT in three key ways: persistent memory (MEOK remembers everything; ChatGPT resets each session), data ownership (MEOK never trains on your data; OpenAI does), and character depth (MEOK has six distinct companion archetypes; ChatGPT has none). MEOK is not a general-purpose AI tool — it's a personal sovereign companion.",
+      },
+    },
+  ],
+};
+
 // ── Page ──────────────────────────────────────────────────────────────────────
 
 export default function ComparePage() {
   return (
     <div className="min-h-screen bg-[#0d0c18] text-white overflow-x-hidden">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
 
       {/* ── 1. Hero ──────────────────────────────────────────────────────── */}
       <section className="relative pt-32 pb-24 px-6 text-center overflow-hidden">
