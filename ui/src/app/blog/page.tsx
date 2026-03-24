@@ -1443,6 +1443,18 @@ const POSTS = [
     featured: false,
   },
   {
+    slug: "ai-for-expats",
+    title: "AI for Expats: A Companion That Knows Your Whole Story, No Matter Where You Are",
+    excerpt:
+      "Moving abroad means starting over — new country, new systems, new loneliness. MEOK is the AI companion that knows your whole story, is available across time zones, and helps you build a new life without losing who you are.",
+    date: "March 24, 2026",
+    readTime: "10 min read",
+    tag: "Wellbeing",
+    tagColor: "#60a5fa",
+    category: "wellbeing",
+    featured: false,
+  },
+  {
     slug: "meok-for-remote-workers",
     title: "MEOK for Remote Workers: The AI That Understands Isolation, Handles Your Admin, and Keeps You Sharp",
     excerpt:
