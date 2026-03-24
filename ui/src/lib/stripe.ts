@@ -59,8 +59,8 @@ export const TIERS = {
   explorer: {
     name: 'Explorer',
     price: 0,
-    messages_per_day: 200,
-    memory_days: 7,
+    messages_per_day: 50,
+    memory_days: 365, // sovereign memory — persistent
   },
   sovereign: {
     name: 'Sovereign',
@@ -69,11 +69,17 @@ export const TIERS = {
     messages_per_day: -1, // unlimited
   },
   family: {
-    name: 'Sovereign Family',
+    name: 'Family',
     price_monthly: 29,
     price_annual: 290,
     members: 5,
     messages_per_day: -1, // unlimited
+  },
+  byok: {
+    name: 'BYOK',
+    price_monthly: 5,
+    price_annual: 50,
+    messages_per_day: -1, // unlimited (uses user's own API keys)
   },
 } as const;
 
