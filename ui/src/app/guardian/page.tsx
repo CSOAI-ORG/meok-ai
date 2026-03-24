@@ -10,7 +10,6 @@ import {
   Lock,
   CheckCircle,
 } from "lucide-react";
-import { MarketingFooter } from "@/components/marketing-footer";
 
 // ─── Metadata ──────────────────────────────────────────────────────────────
 
@@ -356,7 +355,6 @@ export default function GuardianPage() {
         </section>
       </main>
 
-      <MarketingFooter />
     </div>
   );
 }

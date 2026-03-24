@@ -2,7 +2,6 @@ import { PROBLEMS, getProblemBySlug } from '@/data/problems';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { ArrowRight, ArrowLeft, Users, Zap, CheckCircle2, AlertTriangle } from 'lucide-react';
-import { MarketingFooter } from '@/components/marketing-footer';
 
 // ── Static params ──────────────────────────────────────────────────────────────
 
@@ -383,7 +382,6 @@ export default async function ProblemPage({ params }: { params: Promise<{ slug: 
           </div>
         </section>
 
-        <MarketingFooter />
       </div>
     </>
   );

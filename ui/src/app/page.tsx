@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { MarketingFooter } from "@/components/marketing-footer";
 import { ArrowRight, Check, Egg, Link2, Brain, Shield, Zap, Users, Gamepad2, Lock, Globe2, Sparkles } from "lucide-react";
 import { PROBLEMS } from "@/data/problems";
 
@@ -1881,7 +1880,6 @@ export default function HomePage() {
           </section>
         </main>
 
-        <MarketingFooter />
       </div>
     </>
   );

@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { MarketingFooter } from "@/components/marketing-footer";
 
 export const metadata: Metadata = {
   title: "Infinite Memory -- Your AI Never Forgets | MEOK.AI",
@@ -671,7 +670,6 @@ export default function MemoryPage() {
         </div>
       </section>
 
-      <MarketingFooter />
     </div>
   );
 }

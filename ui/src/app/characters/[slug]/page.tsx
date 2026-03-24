@@ -1,6 +1,5 @@
 import { CHARACTERS, getCharacterBySlug } from '@/data/characters';
 import { notFound } from 'next/navigation';
-import { MarketingFooter } from '@/components/marketing-footer';
 import Link from 'next/link';
 
 export async function generateStaticParams() {
@@ -965,7 +964,6 @@ export default async function CharacterDetailPage({
         </div>
       </section>
 
-      <MarketingFooter />
     </div>
   );
 }

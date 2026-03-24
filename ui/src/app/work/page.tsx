@@ -10,7 +10,6 @@ import {
   Hammer,
   Clock,
 } from "lucide-react";
-import { MarketingFooter } from "@/components/marketing-footer";
 
 export const metadata: Metadata = {
   title: "Work OS — Orion, Riri & Hourman | MEOK AI LABS",
@@ -485,7 +484,6 @@ export default function WorkOSPage() {
         </div>
       </section>
 
-      <MarketingFooter />
     </div>
     </>
   );

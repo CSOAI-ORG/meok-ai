@@ -1,7 +1,6 @@
 "use client";
 import Link from "next/link";
 import { useState } from "react";
-import { MarketingFooter } from "@/components/marketing-footer";
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -739,7 +738,6 @@ export default function GamingPlatformsPage() {
         </div>
       </section>
 
-      <MarketingFooter />
     </div>
   );
 }

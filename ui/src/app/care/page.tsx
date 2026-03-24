@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { MarketingFooter } from "@/components/marketing-footer";
 
 export const metadata: Metadata = {
   title: "The Care Framework | MEOK AI LABS",
@@ -429,7 +428,6 @@ export default function CarePage() {
         </div>
       </section>
 
-      <MarketingFooter />
     </div>
   );
 }

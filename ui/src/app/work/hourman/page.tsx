@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { ArrowRight, Calendar, Timer, TrendingUp, Battery, RotateCcw, ListChecks } from "lucide-react";
-import { MarketingFooter } from "@/components/marketing-footer";
 
 /* ─── DATA ─────────────────────────────────────────────── */
 
@@ -217,7 +216,6 @@ export default function HourmanPage() {
         </div>
       </section>
 
-      <MarketingFooter />
     </div>
   );
 }

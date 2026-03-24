@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { MarketingFooter } from '@/components/marketing-footer'
 
 export const metadata: Metadata = {
   title: 'EU AI Act Compliance | MEOK AI LABS',
@@ -112,7 +111,6 @@ export default function AIActPage() {
           </div>
         </div>
       </div>
-      <MarketingFooter />
     </main>
   )
 }

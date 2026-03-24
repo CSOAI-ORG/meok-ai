@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, Lock, Zap, Link2, Crown, Brain, Heart } from "lucide-react";
-import { MarketingFooter } from "@/components/marketing-footer";
 
 export const metadata: Metadata = {
   title: "MEOK OS — Personal Sovereign AI Operating System",
@@ -669,7 +668,6 @@ export default function OsPage() {
         </div>
       </section>
 
-      <MarketingFooter />
     </div>
   );
 }

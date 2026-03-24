@@ -17,7 +17,6 @@ import {
   AlertTriangle,
   Eye,
 } from "lucide-react";
-import { MarketingFooter } from "@/components/marketing-footer";
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -689,7 +688,6 @@ export default function GuardianChildrenPage() {
         </div>
       </section>
 
-      <MarketingFooter />
     </div>
   );
 }

@@ -14,7 +14,6 @@ import {
   Lock,
   Users,
 } from "lucide-react";
-import { MarketingFooter } from "@/components/marketing-footer";
 
 // ─── METADATA ─────────────────────────────────────────────────────────────────
 
@@ -582,7 +581,6 @@ export default function ScamStopPage() {
         </div>
       </section>
 
-      <MarketingFooter />
     </div>
   );
 }

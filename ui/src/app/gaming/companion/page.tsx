@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, Brain, Mic, Heart, Zap, TrendingUp, Star } from "lucide-react";
-import { MarketingFooter } from "@/components/marketing-footer";
 
 export const metadata: Metadata = {
   title: "Gaming Companion — MEOK",
@@ -329,7 +328,6 @@ export default function CompanionPage() {
         </div>
       </section>
 
-      <MarketingFooter />
     </div>
   );
 }

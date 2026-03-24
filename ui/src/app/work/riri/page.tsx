@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { ArrowRight, PenLine, Code2, Palette, Mail, BookOpen, RefreshCw } from "lucide-react";
-import { MarketingFooter } from "@/components/marketing-footer";
 
 /* ─── DATA ─────────────────────────────────────────────── */
 
@@ -215,7 +214,6 @@ export default function RiriPage() {
         </div>
       </section>
 
-      <MarketingFooter />
     </div>
   );
 }

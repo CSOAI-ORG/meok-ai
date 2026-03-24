@@ -1,4 +1,3 @@
-import { MarketingFooter } from "@/components/marketing-footer";
 
 export const metadata = {
   title: "Terms of Service — MEOK AI",
@@ -217,7 +216,6 @@ export default function TermsPage() {
         </div>
       </div>
 
-      <MarketingFooter />
     </div>
   );
 }

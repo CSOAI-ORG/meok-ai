@@ -16,7 +16,6 @@ import {
   Lock,
   Users,
 } from "lucide-react";
-import { MarketingFooter } from "@/components/marketing-footer";
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -705,7 +704,6 @@ export default function GuardianElderlyPage() {
         </div>
       </section>
 
-      <MarketingFooter />
     </div>
   );
 }

@@ -1,7 +1,6 @@
 'use client';
 
 import Link from 'next/link';
-import { MarketingFooter } from '@/components/marketing-footer';
 import { CHARACTERS } from '@/data/characters';
 
 // Timeless = pro-tier companions grounded in philosophical/wisdom traditions
@@ -314,7 +313,6 @@ export default function TimelessPage() {
         </div>
       </section>
 
-      <MarketingFooter />
     </div>
   );
 }

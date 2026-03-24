@@ -12,7 +12,6 @@ import {
   Vote,
   ChevronRight,
 } from 'lucide-react';
-import { MarketingFooter } from '@/components/marketing-footer';
 
 // ── Metadata ──────────────────────────────────────────────────────────────────
 
@@ -658,7 +657,6 @@ export default function RoadmapPage() {
         </div>
       </section>
 
-      <MarketingFooter />
     </div>
   );
 }

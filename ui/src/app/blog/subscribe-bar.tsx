@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { Check } from "lucide-react";
 
 interface SubscribeBarProps {
   dark?: boolean;
@@ -20,7 +19,7 @@ export function SubscribeBar({ dark = false }: SubscribeBarProps) {
     // Compact inline version for dark backgrounds
     return submitted ? (
       <div className="flex items-center gap-2 px-5 py-3 rounded-full text-sm font-semibold" style={{ background: "rgba(201,168,76,0.1)", color: "#c9a84c", border: "1px solid rgba(201,168,76,0.3)" }}>
-        <Check className="w-4 h-4" />
+        ✓
         You&apos;re subscribed!
       </div>
     ) : (
@@ -61,7 +60,7 @@ export function SubscribeBar({ dark = false }: SubscribeBarProps) {
       </div>
       {submitted ? (
         <div className="flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold" style={{ background: "rgba(201,168,76,0.1)", color: "#c9a84c" }}>
-          <Check className="w-4 h-4" />
+          ✓
           Subscribed!
         </div>
       ) : (

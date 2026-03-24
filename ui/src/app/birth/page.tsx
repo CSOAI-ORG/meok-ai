@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { MarketingFooter } from "@/components/marketing-footer";
 
 // ─── METADATA ────────────────────────────────────────────────────────────────
 
@@ -724,7 +723,6 @@ export default function BirthPage() {
 
       </main>
 
-      <MarketingFooter />
     </>
   );
 }

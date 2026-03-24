@@ -215,10 +215,10 @@ export default function AIForSingleParentsPage() {
       <section className="px-6 pb-16">
         <div className="max-w-3xl mx-auto">
           <div className="flex flex-wrap gap-4">
-            <StatPill value="1.8M" label="single-parent families in the UK" />
-            <StatPill value="90%" label="led by women" />
-            <StatPill value="£29" label="family plan per month" />
-            <StatPill value="24/7" label="overnight agents + companion" />
+            '*'
+            '*'
+            '*'
+            '*'
           </div>
         </div>
       </section>
@@ -242,7 +242,7 @@ export default function AIForSingleParentsPage() {
             practical overnight help that shrinks the list before you open your eyes.
           </BodyP>
 
-          <GoldDivider />
+          '*'
 
           {/* Section 2 */}
           <SectionH2>How can AI actually help a single parent who has no spare time?</SectionH2>
@@ -258,7 +258,7 @@ export default function AIForSingleParentsPage() {
             stays yours. The legwork does not.
           </BodyP>
 
-          <GoldDivider />
+          '*'
 
           {/* Section 3 */}
           <SectionH2>Which MEOK agents handle work tasks when you&apos;re also the sole breadwinner?</SectionH2>
@@ -270,24 +270,12 @@ export default function AIForSingleParentsPage() {
           </AtomicAnswer>
 
           <div className="flex flex-col gap-3 mt-6 mb-4">
-            <FeatureRow
-              icon="⏱"
-              title="Hourman — Weekly Planner"
-              body="Sequences your tasks against energy levels and childcare windows so the hardest work lands when you have the most capacity — not when the calendar happens to be free."
-            />
-            <FeatureRow
-              icon="✉️"
-              title="Riri — Email Drafter"
-              body="Reads incoming messages, drafts context-aware replies in your voice, and flags only what genuinely needs your attention. Most of the inbox clears itself overnight."
-            />
-            <FeatureRow
-              icon="🔍"
-              title="Orion — Research Agent"
-              body="Runs background research while you sleep: school catchment areas, Universal Credit rules, nursery Ofsted ratings. Returns a clean summary, not a wall of links."
-            />
+            '*'
+            '*'
+            '*'
           </div>
 
-          <GoldDivider />
+          '*'
 
           {/* Section 4 */}
           <SectionH2>How does MEOK&apos;s Guardian protect children when the parent can&apos;t watch every screen?</SectionH2>
@@ -304,24 +292,12 @@ export default function AIForSingleParentsPage() {
           </BodyP>
 
           <div className="flex flex-col gap-3 mt-6 mb-4">
-            <FeatureRow
-              icon="🛡"
-              title="Real-time threat detection"
-              body="Grooming language patterns, predatory contact indicators, and age-inappropriate content are flagged the moment they appear — not in a weekly digest."
-            />
-            <FeatureRow
-              icon="🔕"
-              title="Silent alerts to parent dashboard"
-              body="Your child does not know an alert was raised. You do. The conversation you choose to have is on your terms and your timing."
-            />
-            <FeatureRow
-              icon="🔒"
-              title="On-device scanning, zero data upload"
-              body="Guardian never sends message content to MEOK servers. GDPR-compliant, ICO-registered — family data belongs to the family."
-            />
+            '*'
+            '*'
+            '*'
           </div>
 
-          <GoldDivider />
+          '*'
 
           {/* Section 5 */}
           <SectionH2>What is the MEOK companion and why does it matter after bedtime?</SectionH2>
@@ -337,7 +313,7 @@ export default function AIForSingleParentsPage() {
             not start from zero every time you need it most.
           </BodyP>
 
-          <GoldDivider />
+          '*'
 
           {/* Section 6 */}
           <SectionH2>Is MEOK&apos;s Family Plan affordable for a single-income household?</SectionH2>
@@ -368,7 +344,7 @@ export default function AIForSingleParentsPage() {
             </ul>
           </div>
 
-          <GoldDivider />
+          '*'
 
           {/* Section 7 */}
           <SectionH2>Does MEOK store or share my family&apos;s private data?</SectionH2>
@@ -383,7 +359,7 @@ export default function AIForSingleParentsPage() {
             completely private. The architecture makes it so — the data never left in the first place.
           </BodyP>
 
-          <GoldDivider />
+          '*'
 
           {/* ── CTA ───────────────────────────────────────────────────────── */}
           <div

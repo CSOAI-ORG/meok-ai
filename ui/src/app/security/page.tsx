@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { MarketingFooter } from "@/components/marketing-footer";
 
 export const metadata: Metadata = {
   title: "Security Architecture | MEOK AI LABS",
@@ -339,7 +338,6 @@ export default function SecurityPage() {
         </div>
       </section>
 
-      <MarketingFooter />
     </main>
   );
 }

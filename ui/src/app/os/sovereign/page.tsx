@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, Lock, Download, Shield, FileCheck, Eye, Server, ChevronDown } from "lucide-react";
-import { MarketingFooter } from "@/components/marketing-footer";
 
 // ─── Metadata ──────────────────────────────────────────────────────────────
 
@@ -669,7 +668,6 @@ export default function SovereignPage() {
         </div>
       </section>
 
-      <MarketingFooter />
     </div>
   );
 }

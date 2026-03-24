@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { MarketingFooter } from "@/components/marketing-footer";
 import { CHARACTERS } from "@/data/characters";
 
 // ── Metadata ──────────────────────────────────────────────────────────────────
@@ -398,7 +397,6 @@ export default function CharactersComparePage() {
         </div>
       </section>
 
-      <MarketingFooter />
     </div>
   );
 }

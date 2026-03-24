@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { MarketingFooter } from '@/components/marketing-footer'
 
 export const metadata: Metadata = {
   title: 'All 8 AI Archetypes Explained | MEOK AI LABS',
@@ -168,7 +167,6 @@ export default function ArchetypesPage() {
           </Link>
         </div>
       </div>
-      <MarketingFooter />
     </main>
   )
 }

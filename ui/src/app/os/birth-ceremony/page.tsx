@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { ArrowRight, Star, Flame, Eye, ChevronDown, ChevronUp } from "lucide-react";
-import { MarketingFooter } from "@/components/marketing-footer";
 import { useState } from "react";
 
 const jsonLd = {
@@ -599,7 +598,6 @@ export default function BirthCeremonyPage() {
         </div>
       </section>
 
-      <MarketingFooter />
     </div>
   );
 }

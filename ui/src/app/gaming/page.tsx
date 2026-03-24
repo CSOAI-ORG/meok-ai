@@ -15,7 +15,6 @@ import {
   Database,
   ShieldCheck,
 } from "lucide-react";
-import { MarketingFooter } from "@/components/marketing-footer";
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -1206,7 +1205,6 @@ export default function GamingPage() {
         </div>
       </section>
 
-      <MarketingFooter />
     </div>
   );
 }

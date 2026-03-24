@@ -1,7 +1,6 @@
 'use client';
 
 import Link from 'next/link';
-import { MarketingFooter } from '@/components/marketing-footer';
 import { CHARACTERS } from '@/data/characters';
 
 // Legendary = the five foundational free-tier archetypes (all non-pro, non-premium)
@@ -338,7 +337,6 @@ export default function LegendaryPage() {
         </div>
       </section>
 
-      <MarketingFooter />
     </div>
   );
 }

@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { MarketingFooter } from "@/components/marketing-footer";
 import {
   ArrowRight,
   Users,
@@ -718,7 +717,6 @@ export default function SMBPage() {
         </div>
       </section>
 
-      <MarketingFooter />
     </div>
   );
 }

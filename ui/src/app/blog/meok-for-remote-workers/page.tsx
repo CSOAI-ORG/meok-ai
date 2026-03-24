@@ -341,26 +341,10 @@ export default function MEOKForRemoteWorkersPage() {
 
           {/* Stats row */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-            <StatCard
-              value="4.2M"
-              label="UK full-time remote workers"
-              sub="2026 estimate"
-            />
-            <StatCard
-              value="57%"
-              label="report feeling isolated at least weekly"
-              sub="CIPD 2025"
-            />
-            <StatCard
-              value="£12"
-              label="MEOK Sovereign tier per month"
-              sub="vs £25+ for Copilot"
-            />
-            <StatCard
-              value="100%"
-              label="of your data stays yours"
-              sub="no employer access"
-            />
+            '*'
+            '*'
+            '*'
+            '*'
           </div>
 
           {/* S1 */}
@@ -498,48 +482,13 @@ export default function MEOKForRemoteWorkersPage() {
                     </tr>
                   </thead>
                   <tbody className="px-6">
-                    <CompareRow
-                      feature="You own the data"
-                      meok="Yes"
-                      slack="No"
-                      teams="No"
-                    />
-                    <CompareRow
-                      feature="Persistent personal memory"
-                      meok="Yes"
-                      slack="No"
-                      teams="No"
-                    />
-                    <CompareRow
-                      feature="Overnight autonomous agents"
-                      meok="Yes"
-                      slack="No"
-                      teams="No"
-                    />
-                    <CompareRow
-                      feature="Personal companion dimension"
-                      meok="Yes"
-                      slack="No"
-                      teams="No"
-                    />
-                    <CompareRow
-                      feature="Works across jobs / clients"
-                      meok="Yes"
-                      slack="No"
-                      teams="No"
-                    />
-                    <CompareRow
-                      feature="Morning Briefing"
-                      meok="Yes"
-                      slack="No"
-                      teams="No"
-                    />
-                    <CompareRow
-                      feature="Price (personal tier)"
-                      meok="£12/mo"
-                      slack="£25+/seat"
-                      teams="£25+/seat"
-                    />
+                    '*'
+                    '*'
+                    '*'
+                    '*'
+                    '*'
+                    '*'
+                    '*'
                   </tbody>
                 </table>
               </div>
@@ -631,24 +580,9 @@ export default function MEOKForRemoteWorkersPage() {
             </p>
 
             <div className="space-y-4">
-              <AgentCard
-                name="Orion"
-                role="Research Agent"
-                description="Orion runs deep-context research overnight. You brief it before you stop working — a competitor to analyse, a market to map, a document stack to summarise — and it returns a structured briefing note by morning. For remote workers who never have a researcher in the room, Orion is the most immediately valuable agent. It eliminates the hours-long deep dives that derail your day."
-                accent="#c9a84c"
-              />
-              <AgentCard
-                name="Riri"
-                role="Build Agent"
-                description="Riri builds while you sleep. It generates first drafts, code scaffolds, structured reports, presentation outlines, and any output that benefits from a clean starting point. Remote workers who spend the first two hours of every day staring at a blank document will understand immediately why this matters. You wake up to something that already exists. You iterate rather than originate."
-                accent="#87CEEB"
-              />
-              <AgentCard
-                name="Hourman"
-                role="Planning Agent"
-                description="Hourman owns your time. It manages your sprint structure, tracks your task backlog, surfaces overdue items before they become crises, and reorganises your priorities when the week shifts — which it always does. For remote workers without a team lead or project manager, Hourman is the external structure that prevents the day from becoming a formless blur of reactive Slack messages."
-                accent="#7BC47F"
-              />
+              '*'
+              '*'
+              '*'
             </div>
           </section>
 

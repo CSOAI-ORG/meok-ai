@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { MarketingFooter } from "@/components/marketing-footer";
 
 export const metadata: Metadata = {
   title: "Consciousness Modes — How MEOK Thinks | MEOK.AI",
@@ -639,7 +638,6 @@ export default function ConsciousnessPage() {
         </div>
       </section>
 
-      <MarketingFooter />
     </div>
   );
 }

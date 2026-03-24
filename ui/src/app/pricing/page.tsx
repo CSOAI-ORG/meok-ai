@@ -14,7 +14,6 @@ import {
   Users,
   Key,
 } from "lucide-react";
-import { MarketingFooter } from "@/components/marketing-footer";
 
 // ─── Types ─────────────────────────────────────────────────────────────────
 
@@ -800,7 +799,6 @@ export default function PricingPage() {
         </div>
       </section>
 
-      <MarketingFooter />
     </div>
   );
 }

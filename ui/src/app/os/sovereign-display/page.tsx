@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { ArrowRight, Shield, Lock, Database, Globe, Download, CheckCircle, XCircle } from "lucide-react";
-import { MarketingFooter } from "@/components/marketing-footer";
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -389,7 +388,6 @@ export default function SovereignDisplayPage() {
         </div>
       </section>
 
-      <MarketingFooter />
     </div>
   );
 }

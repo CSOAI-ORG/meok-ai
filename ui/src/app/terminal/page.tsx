@@ -13,7 +13,6 @@ import {
   Keyboard,
   Zap,
 } from "lucide-react";
-import { MarketingFooter } from "@/components/marketing-footer";
 
 // ── JSON-LD ───────────────────────────────────────────────────────────────────
 
@@ -457,7 +456,6 @@ export default function TerminalPage() {
         </div>
       </section>
 
-      <MarketingFooter />
 
       <style>{`
         @keyframes termCursorBlink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }

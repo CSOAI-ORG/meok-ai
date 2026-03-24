@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, BookOpen, ExternalLink, ChevronDown } from "lucide-react";
-import { MarketingFooter } from "@/components/marketing-footer";
 
 export const metadata: Metadata = {
   title: "The Science Behind Sovereign AI. — Research | MEOK.AI",
@@ -467,7 +466,6 @@ export default function ResearchPage() {
         </div>
       </section>
 
-      <MarketingFooter />
     </div>
   );
 }

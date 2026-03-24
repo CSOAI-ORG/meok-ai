@@ -14,7 +14,6 @@ import {
   ChevronDown,
   ChevronUp,
 } from "lucide-react";
-import { MarketingFooter } from "@/components/marketing-footer";
 
 const FEATURES = [
   {
@@ -683,7 +682,6 @@ export default function GuardianPersonalPage() {
         </div>
       </section>
 
-      <MarketingFooter />
     </div>
   );
 }

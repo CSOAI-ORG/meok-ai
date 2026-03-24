@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { MarketingFooter } from "@/components/marketing-footer";
 
 export default function OnboardingStep3() {
   const router = useRouter();
@@ -144,7 +143,6 @@ export default function OnboardingStep3() {
           </div>
         </div>
 
-        <MarketingFooter />
       </main>
     </>
   );

@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { MarketingFooter } from "@/components/marketing-footer";
 
 export const metadata: Metadata = {
   title: "Connect Your Memory — Import from ChatGPT, Claude & Notion | MEOK.AI",
@@ -459,7 +458,6 @@ export default function ConnectPage() {
         </div>
       </section>
 
-      <MarketingFooter />
     </div>
   );
 }

@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { MarketingFooter } from "@/components/marketing-footer";
 
 export const metadata: Metadata = {
   title: "The Maternal Covenant — The Constitution Your AI Lives By | MEOK.AI",
@@ -493,7 +492,6 @@ export default function MaternalCovenantPage() {
         </div>
       </section>
 
-      <MarketingFooter />
     </div>
   );
 }

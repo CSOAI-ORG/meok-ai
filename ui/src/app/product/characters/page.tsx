@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, Sparkles } from "lucide-react";
-import { MarketingFooter } from "@/components/marketing-footer";
 
 export const metadata: Metadata = {
   title: "Choose Your AI Companion — 7 Archetypes | MEOK.AI",
@@ -278,7 +277,6 @@ export default function CharactersPage() {
         </div>
       </section>
 
-      <MarketingFooter />
     </div>
   );
 }

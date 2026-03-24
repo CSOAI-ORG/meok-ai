@@ -15,7 +15,6 @@ import {
   MapPin,
   TrendingDown,
 } from "lucide-react";
-import { MarketingFooter } from "@/components/marketing-footer";
 import { useState } from "react";
 
 /* ─── DATA ─────────────────────────────────────────────── */
@@ -540,7 +539,6 @@ export default function MorningBriefPage() {
         </div>
       </section>
 
-      <MarketingFooter />
     </div>
   );
 }

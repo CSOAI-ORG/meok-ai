@@ -13,7 +13,6 @@ import {
   XCircle,
   ChevronDown,
 } from "lucide-react";
-import { MarketingFooter } from "@/components/marketing-footer";
 import { useState } from "react";
 
 /* ─── DATA ─────────────────────────────────────────────── */
@@ -528,7 +527,6 @@ export default function CarePage() {
         </div>
       </section>
 
-      <MarketingFooter />
     </div>
   );
 }

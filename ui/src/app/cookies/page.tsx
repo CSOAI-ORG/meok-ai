@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { MarketingFooter } from "@/components/marketing-footer";
 
 export const metadata: Metadata = {
   title: "Cookie Policy | MEOK.AI",
@@ -141,7 +140,6 @@ export default function CookiePolicyPage() {
           </div>
         </section>
       </main>
-      <MarketingFooter />
     </>
   );
 }

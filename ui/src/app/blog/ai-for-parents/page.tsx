@@ -380,10 +380,10 @@ export default function AIForParentsPage() {
 
         {/* Stats row */}
         <div className="flex flex-wrap gap-3 mb-12">
-          <StatPill value="£29" label="per month, Family Plan" />
-          <StatPill value="6" label="family members included" />
-          <StatPill value="24/7" label="Guardian protection, all accounts" />
-          <StatPill value="0" label="extra cost per seat" />
+          '*'
+          '*'
+          '*'
+          '*'
         </div>
 
         {/* Body */}
@@ -448,26 +448,10 @@ export default function AIForParentsPage() {
 
           {/* Feature grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 my-6">
-            <FeatureRow
-              icon="🛡️"
-              title="DistilBERT threat classification"
-              body="Fine-tuned on grooming scripts, predatory language, and coercive contact patterns. Scores every message 0–100."
-            />
-            <FeatureRow
-              icon="🔕"
-              title="Silent parental alerts"
-              body="Parents see HIGH and CRITICAL flags in the dashboard. The child's conversation is not interrupted or disrupted."
-            />
-            <FeatureRow
-              icon="📅"
-              title="School-safe mode"
-              body="Tighter content filters and reduced notifications during school hours. Schedules are fully customisable."
-            />
-            <FeatureRow
-              icon="🔒"
-              title="Age-appropriate filters"
-              body="Content settings applied automatically by profile age. Account-holding parents adjust the thresholds at any time."
-            />
+            '*'
+            '*'
+            '*'
+            '*'
           </div>
 
           {/* ── Q3 ── */}

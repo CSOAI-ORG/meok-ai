@@ -1,7 +1,6 @@
 import { auth } from '@clerk/nextjs/server'
 import { redirect } from 'next/navigation'
 import Link from 'next/link'
-import { MarketingFooter } from '@/components/marketing-footer'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -147,7 +146,6 @@ export default async function ChatPage() {
         </div>
       </main>
 
-      <MarketingFooter />
 
       <style>{`
         @keyframes pulse {

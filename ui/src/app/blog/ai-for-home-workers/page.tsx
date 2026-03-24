@@ -200,10 +200,10 @@ export default function AIForHomeWorkersPage() {
       {/* STATS */}
       <section className="px-6 pb-16">
         <div className="max-w-3xl mx-auto grid grid-cols-2 sm:grid-cols-4 gap-3">
-          <StatCard value="5.6M" label="UK home workers" sub="ONS Labour Force Survey, 2025" />
-          <StatCard value="62%" label="report blurred work-life boundaries" sub="CIPD Flexible Working Survey" />
-          <StatCard value="48%" label="feel professionally isolated" sub="Buffer State of Remote Work" />
-          <StatCard value="£12/mo" label="MEOK Sovereign tier" sub="Full Work OS included" />
+          '*'
+          '*'
+          '*'
+          '*'
         </div>
       </section>
 
@@ -330,24 +330,9 @@ export default function AIForHomeWorkersPage() {
               attack this backlog while you are away from the keyboard.
             </p>
             <div className="grid sm:grid-cols-3 gap-4">
-              <AgentCard
-                name="ORION"
-                role="The Researcher"
-                description="Overnight intelligence gathering. Orion surfaces competitive research, summarises long documents, monitors topics you've flagged, and prepares briefing notes so you arrive informed rather than behind."
-                accent="#c9a84c"
-              />
-              <AgentCard
-                name="RIRI"
-                role="The Builder"
-                description="Riri builds while you sleep — drafts, structured outputs, formatted reports. She takes rough instructions and produces polished work, ready for your review in the morning."
-                accent="#7c9ccc"
-              />
-              <AgentCard
-                name="HOURMAN"
-                role="The Planner"
-                description="Hourman owns your time. Sprint structures, task prioritisation, deadline tracking — he turns the pile of things that need doing into an ordered plan you can actually follow."
-                accent="#8fc49a"
-              />
+              '*'
+              '*'
+              '*'
             </div>
           </section>
 

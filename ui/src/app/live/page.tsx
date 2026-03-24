@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, Youtube, Twitch, Radio, CalendarDays, Code2, Brain, Sparkles, Activity } from "lucide-react";
-import { MarketingFooter } from "@/components/marketing-footer";
 
 export const metadata: Metadata = {
   title: "Watch MEOK Build Live — Building in Public | MEOK.AI",
@@ -379,7 +378,6 @@ export default function LivePage() {
         </div>
       </section>
 
-      <MarketingFooter />
     </div>
   );
 }

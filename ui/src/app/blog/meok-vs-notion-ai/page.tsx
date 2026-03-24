@@ -244,7 +244,7 @@ const compareRows: CompareRow[] = [
 ];
 
 function iconFor(variant: RowVariant) {
-  if (variant === "check") return <CheckIcon />;
+  if (variant === "check") return '*';
   if (variant === "cross") return '✗';
   return ;
 }
@@ -774,7 +774,7 @@ export default function MEOKVsNotionAIPage() {
                     className="flex items-start gap-2 text-xs"
                     style={{ color: "rgba(245,240,232,0.78)" }}
                   >
-                    <CheckIcon />
+                    '*'
                     {item}
                   </li>
                 ))}

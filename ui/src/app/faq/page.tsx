@@ -14,7 +14,6 @@ import {
   Search,
   Sparkles,
 } from 'lucide-react';
-import { MarketingFooter } from '@/components/marketing-footer';
 
 // ── JSON-LD ────────────────────────────────────────────────────────────────────
 
@@ -374,7 +373,6 @@ export default function FAQPage() {
           </div>
         </section>
 
-        <MarketingFooter />
       </div>
     </>
   );

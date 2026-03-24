@@ -11,7 +11,6 @@ import {
   MapPin,
   ExternalLink,
 } from "lucide-react";
-import { MarketingFooter } from "@/components/marketing-footer";
 
 // ─── METADATA ─────────────────────────────────────────────────────────────────
 
@@ -573,7 +572,6 @@ export default function RelationshipShieldPage() {
         </div>
       </section>
 
-      <MarketingFooter />
     </div>
   );
 }

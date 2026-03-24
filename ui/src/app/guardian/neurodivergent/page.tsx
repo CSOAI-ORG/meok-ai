@@ -15,7 +15,6 @@ import {
   ChevronUp,
   Zap,
 } from "lucide-react";
-import { MarketingFooter } from "@/components/marketing-footer";
 
 const FEATURES = [
   {
@@ -576,7 +575,6 @@ export default function GuardianNeurodivergentPage() {
         </div>
       </section>
 
-      <MarketingFooter />
     </div>
   );
 }

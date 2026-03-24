@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, FlaskConical, Github, ExternalLink, Cpu, Brain, Sparkles, Vote } from "lucide-react";
-import { MarketingFooter } from "@/components/marketing-footer";
 
 export const metadata: Metadata = {
   title: "MEOK Labs — Experiments in Public | MEOK.AI",
@@ -536,7 +535,6 @@ export default function LabsPage() {
         </div>
       </section>
 
-      <MarketingFooter />
     </div>
   );
 }

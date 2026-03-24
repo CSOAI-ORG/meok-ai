@@ -11,7 +11,6 @@ import {
   HelpCircle,
   Sun,
 } from "lucide-react";
-import { MarketingFooter } from "@/components/marketing-footer";
 
 // ─── METADATA ─────────────────────────────────────────────────────────────────
 
@@ -541,7 +540,6 @@ export default function SocialGuardianPage() {
         </div>
       </section>
 
-      <MarketingFooter />
     </div>
   );
 }

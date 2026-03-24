@@ -20,7 +20,6 @@ import {
   AlertTriangle,
   X,
 } from "lucide-react";
-import { MarketingFooter } from "@/components/marketing-footer";
 
 // ─── JSON-LD ──────────────────────────────────────────────────────────────────
 
@@ -1099,7 +1098,6 @@ export default function RalphPage() {
         </div>
       </section>
 
-      <MarketingFooter />
     </div>
   );
 }

@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, Brain, Shield, Heart, Check } from "lucide-react";
-import { MarketingFooter } from "@/components/marketing-footer";
 
 // ── Metadata ──────────────────────────────────────────────────────────────────
 
@@ -964,7 +963,6 @@ export default function HowItWorksPage() {
         </div>
       </section>
 
-      <MarketingFooter />
     </div>
   );
 }

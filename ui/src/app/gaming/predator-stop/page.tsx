@@ -16,7 +16,6 @@ import {
   ChevronDown,
   ChevronUp,
 } from "lucide-react";
-import { MarketingFooter } from "@/components/marketing-footer";
 
 const FAQS = [
   {
@@ -677,7 +676,6 @@ export default function PredatorStopPage() {
         </div>
       </section>
 
-      <MarketingFooter />
     </div>
   );
 }

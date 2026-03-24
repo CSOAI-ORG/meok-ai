@@ -750,13 +750,13 @@ export default function BestAiProductivity2026() {
                       {row.feature}
                     </td>
                     <td style={{ padding: '0.625rem 0.625rem', textAlign: 'center' }}>
-                      <Cell value={row.chatgpt} />
+                      '*'
                     </td>
                     <td style={{ padding: '0.625rem 0.625rem', textAlign: 'center' }}>
-                      <Cell value={row.notionai} />
+                      '*'
                     </td>
                     <td style={{ padding: '0.625rem 0.625rem', textAlign: 'center' }}>
-                      <Cell value={row.perplexity} />
+                      '*'
                     </td>
                     <td
                       style={{
@@ -765,7 +765,7 @@ export default function BestAiProductivity2026() {
                         background: 'rgba(201,168,76,0.07)',
                       }}
                     >
-                      <Cell value={row.meok} />
+                      '*'
                     </td>
                   </tr>
                 ))}

@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { MarketingFooter } from "@/components/marketing-footer";
 import { MapPin, Globe, Heart, Cpu, Code2, BrainCircuit, Zap, Eye, Clock } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -378,7 +377,6 @@ export default function TeamPage() {
         </div>
       </section>
 
-      <MarketingFooter />
     </div>
   );
 }

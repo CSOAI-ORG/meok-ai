@@ -15,7 +15,6 @@ import {
   Home,
   UserCheck,
 } from "lucide-react";
-import { MarketingFooter } from "@/components/marketing-footer";
 
 export const metadata: Metadata = {
   title: "Guardian Relationship — MEOK | AI that watches out for you in relationships",
@@ -531,7 +530,6 @@ export default function GuardianRelationshipPage() {
         </div>
       </section>
 
-      <MarketingFooter />
     </div>
   );
 }

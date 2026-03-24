@@ -20,7 +20,6 @@ import {
   Clock,
   Brain,
 } from "lucide-react";
-import { MarketingFooter } from "@/components/marketing-footer";
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -742,7 +741,6 @@ export default function FamilyPage() {
         </div>
       </section>
 
-      <MarketingFooter />
     </div>
   );
 }

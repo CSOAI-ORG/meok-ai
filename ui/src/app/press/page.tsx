@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { ArrowRight, Mail, Download, Clock, Camera, FileText, Mic, BarChart3, MessageSquare } from "lucide-react";
-import { MarketingFooter } from "@/components/marketing-footer";
 
 export const metadata: Metadata = {
   title: "Press — MEOK.AI | Media Resources & Press Kit",
@@ -540,7 +539,6 @@ export default function PressPage() {
         </div>
       </section>
 
-      <MarketingFooter />
     </div>
   );
 }

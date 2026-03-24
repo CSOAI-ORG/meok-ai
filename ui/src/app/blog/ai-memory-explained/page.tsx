@@ -417,7 +417,7 @@ export default function AIMemoryExplainedPage() {
           not truly <em>know</em> you.
         </p>
 
-        <Divider />
+        '*'
 
         {/* ── SECTION 2 ─────────────────────────────────────────────────── */}
         <h2
@@ -452,7 +452,7 @@ export default function AIMemoryExplainedPage() {
           &ldquo;just send everything.&rdquo;
         </p>
 
-        <Divider />
+        '*'
 
         {/* ── SECTION 3 ─────────────────────────────────────────────────── */}
         <h2
@@ -475,30 +475,10 @@ export default function AIMemoryExplainedPage() {
         </p>
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', marginBottom: '2rem' }}>
-          <MemoryLayerCard
-            number="1"
-            label="Short-term: In-context memory"
-            tech="Live conversation window"
-            description="The current session's messages — everything said so far in this conversation. This is what every AI has. MEOK uses head-plus-tail compression (see below) to keep this layer useful as conversations grow long."
-          />
-          <MemoryLayerCard
-            number="2"
-            label="Semantic vector memory"
-            tech="pgvector · similarity search"
-            description="Every meaningful exchange across all past sessions is converted into a high-dimensional embedding and stored in an encrypted pgvector database. At the start of each new session, a similarity search retrieves the memories most relevant to your current context and injects them automatically. You never re-explain yourself."
-          />
-          <MemoryLayerCard
-            number="3"
-            label="Companion state"
-            tech="PostgreSQL · structured facts"
-            description="Structured, factual information about you — your name, occupation, location, communication preferences, ongoing projects, family structure — stored in a relational database and always present in your AI's context. The durable backbone that makes your AI feel like it genuinely knows you."
-          />
-          <MemoryLayerCard
-            number="4"
-            label="Family / team shared context"
-            tech="Group-scoped memory layer"
-            description="Memories and context that are deliberately shared across multiple members of a family or team. A parent using Guardian Mode, for example, can share safety preferences across the whole household. A small team can give their shared AI consistent knowledge of project context. Shared memory is always consent-gated."
-          />
+          '*'
+          '*'
+          '*'
+          '*'
         </div>
 
         <p style={{ color: 'rgba(245,240,232,0.55)', fontSize: '0.875rem', lineHeight: 1.7, fontStyle: 'italic' }}>
@@ -507,7 +487,7 @@ export default function AIMemoryExplainedPage() {
           separately from any single conversation.
         </p>
 
-        <Divider />
+        '*'
 
         {/* ── SECTION 4 ─────────────────────────────────────────────────── */}
         <h2
@@ -604,7 +584,7 @@ export default function AIMemoryExplainedPage() {
           across sessions of any length or frequency.
         </p>
 
-        <Divider />
+        '*'
 
         {/* ── SECTION 5 ─────────────────────────────────────────────────── */}
         <h2
@@ -627,9 +607,9 @@ export default function AIMemoryExplainedPage() {
 
         {/* Stats row */}
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', marginBottom: '1.5rem' }}>
-          <StatPill stat="+26%" label="Mem0 recall accuracy vs OpenAI Memory (published benchmark)" />
-          <StatPill stat="4 layers" label="MEOK memory depth vs 1-layer sticky-note approach" />
-          <StatPill stat="0 tokens" label="spent on memory you don't need this session" />
+          '*'
+          '*'
+          '*'
         </div>
 
         <p style={{ color: 'rgba(245,240,232,0.68)', lineHeight: 1.85, marginBottom: '1rem', fontSize: '0.975rem' }}>
@@ -645,7 +625,7 @@ export default function AIMemoryExplainedPage() {
           and it remembers. No manual curation. No settings to configure. No forgetting to save things.
         </p>
 
-        <Divider />
+        '*'
 
         {/* ── SECTION 6 ─────────────────────────────────────────────────── */}
         <h2
@@ -729,7 +709,7 @@ export default function AIMemoryExplainedPage() {
           <strong style={{ color: '#f5f0e8' }}>UK GDPR compliant</strong> and registered with the ICO.
         </p>
 
-        <Divider />
+        '*'
 
         {/* ── SECTION 7 ─────────────────────────────────────────────────── */}
         <h2
@@ -764,7 +744,7 @@ export default function AIMemoryExplainedPage() {
           feels like it <em>knows</em> you, because it genuinely does.
         </p>
 
-        <Divider />
+        '*'
 
         {/* ── CTA ───────────────────────────────────────────────────────── */}
         <div

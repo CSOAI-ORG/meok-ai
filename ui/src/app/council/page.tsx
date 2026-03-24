@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { MarketingFooter } from "@/components/marketing-footer";
 
 export const metadata: Metadata = {
   title: "The Byzantine Council — 33 AI Agents, Fault-Tolerant Consensus | MEOK AI",
@@ -474,7 +473,6 @@ export default function CouncilPage() {
         </div>
       </section>
 
-      <MarketingFooter />
     </div>
   );
 }

@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { MarketingFooter } from "@/components/marketing-footer";
 
 const SUGGESTIONS = ["Atlas", "Mira", "Sol", "Sage", "Nova", "Echo", "Lumen", "Wren"];
 
@@ -137,7 +136,6 @@ export default function OnboardingStep1() {
           </div>
         </div>
 
-        <MarketingFooter />
       </main>
     </>
   );

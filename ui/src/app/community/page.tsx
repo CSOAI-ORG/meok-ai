@@ -7,7 +7,6 @@
 
 import Link from 'next/link';
 import type { Metadata } from 'next';
-import { MarketingFooter } from '@/components/marketing-footer';
 
 // ── Metadata ───────────────────────────────────────────────────────────────
 
@@ -491,7 +490,6 @@ export default function CommunityPage() {
         </div>
       </section>
 
-      <MarketingFooter />
     </div>
   );
 }

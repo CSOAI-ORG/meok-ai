@@ -2,7 +2,6 @@
 
 import { useReducer, useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { MarketingFooter } from "@/components/marketing-footer";
 
 // ── Types ─────────────────────────────────────────────────────────────────────
 
@@ -1199,7 +1198,6 @@ export default function HatchPage() {
         `
       }} />
 
-      <MarketingFooter />
     </>
   );
 }

@@ -3,7 +3,6 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { ArrowRight, Zap } from 'lucide-react';
-import { MarketingFooter } from '@/components/marketing-footer';
 import { PROBLEMS } from '@/data/problems';
 
 // ── JSON-LD ────────────────────────────────────────────────────────────────────
@@ -427,7 +426,6 @@ export default function ProblemsPage() {
         </div>
       </section>
 
-      <MarketingFooter />
     </div>
   );
 }

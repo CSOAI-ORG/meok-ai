@@ -523,16 +523,16 @@ export default function AiForStudents() {
                       {row.feature}
                     </td>
                     <td className="px-4 py-3 text-center align-middle">
-                      <Cell value={row.chatgpt} />
+                      '*'
                     </td>
                     <td className="px-4 py-3 text-center align-middle">
-                      <Cell value={row.perplexity} />
+                      '*'
                     </td>
                     <td className="px-4 py-3 text-center align-middle">
-                      <Cell value={row.meokExplorer} />
+                      '*'
                     </td>
                     <td className="px-4 py-3 text-center align-middle">
-                      <Cell value={row.meokSovereign} />
+                      '*'
                     </td>
                   </tr>
                 ))}

@@ -10,7 +10,6 @@ import {
   Check,
   ChevronRight,
 } from "lucide-react";
-import { MarketingFooter } from "@/components/marketing-footer";
 
 export const metadata: Metadata = {
   title: "Family Guardian — Protection Without Surveillance | MEOK.AI",
@@ -318,7 +317,6 @@ export default function FamilyGuardianPage() {
         </div>
       </section>
 
-      <MarketingFooter />
     </div>
   );
 }

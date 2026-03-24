@@ -19,7 +19,6 @@ import {
   MessageCircle,
   Vote,
 } from 'lucide-react';
-import { MarketingFooter } from '@/components/marketing-footer';
 
 // ── JSON-LD ────────────────────────────────────────────────────────────────────
 
@@ -916,7 +915,6 @@ export default function WaitlistPage() {
           </div>
         </section>
 
-        <MarketingFooter />
       </div>
 
       <style>{`

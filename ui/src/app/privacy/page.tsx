@@ -1,4 +1,3 @@
-import { MarketingFooter } from "@/components/marketing-footer";
 
 export const metadata = {
   title: "Privacy Policy — MEOK AI",
@@ -212,7 +211,6 @@ export default function PrivacyPage() {
         </div>
       </div>
 
-      <MarketingFooter />
     </div>
   );
 }

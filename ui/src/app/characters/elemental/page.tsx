@@ -1,7 +1,6 @@
 'use client';
 
 import Link from 'next/link';
-import { MarketingFooter } from '@/components/marketing-footer';
 import { CHARACTERS } from '@/data/characters';
 
 // Elemental = premium tier. Currently none in data — show the Healer as a bridge
@@ -366,7 +365,6 @@ export default function ElementalPage() {
         </div>
       </section>
 
-      <MarketingFooter />
     </div>
   );
 }

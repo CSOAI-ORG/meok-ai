@@ -13,7 +13,6 @@ import {
   User,
   History,
 } from "lucide-react";
-import { MarketingFooter } from "@/components/marketing-footer";
 import { useState } from "react";
 
 /* ─── DATA ─────────────────────────────────────────────── */
@@ -348,7 +347,6 @@ export default function EmailPage() {
         </div>
       </section>
 
-      <MarketingFooter />
     </div>
   );
 }

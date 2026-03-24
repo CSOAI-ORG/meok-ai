@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import { MarketingFooter } from '@/components/marketing-footer';
 
 export const metadata = {
   title: '404 — Page Not Found · MEOK AI',
@@ -72,7 +71,6 @@ export default function NotFound() {
           </ul>
         </div>
       </main>
-      <MarketingFooter />
     </>
   );
 }

@@ -12,7 +12,6 @@ import {
   Lock,
   Heart,
 } from "lucide-react";
-import { MarketingFooter } from "@/components/marketing-footer";
 
 export const metadata: Metadata = {
   title: "Product — Everything MEOK Can Do. In One Place. | MEOK.AI",
@@ -323,7 +322,6 @@ export default function ProductPage() {
         </div>
       </section>
 
-      <MarketingFooter />
     </div>
   );
 }

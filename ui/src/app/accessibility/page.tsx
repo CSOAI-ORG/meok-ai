@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { MarketingFooter } from "@/components/marketing-footer";
 
 // ── Metadata ──────────────────────────────────────────────────────────────────
 
@@ -415,7 +414,6 @@ export default function AccessibilityPage() {
         </div>
       </section>
 
-      <MarketingFooter />
     </div>
   );
 }

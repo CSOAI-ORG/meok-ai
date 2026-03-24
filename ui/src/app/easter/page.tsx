@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { MarketingFooter } from "@/components/marketing-footer";
 import { EasterCountdown } from "./countdown";
 import { WaitlistForm, SocialShareButtons } from "./waitlist-social";
 
@@ -446,7 +445,6 @@ export default function EasterPage() {
         </div>
       </section>
 
-      <MarketingFooter />
 
       <style>{`
         @keyframes easterEggPulse {

@@ -12,7 +12,6 @@ import {
   Shuffle,
   Lock,
 } from "lucide-react";
-import { MarketingFooter } from "@/components/marketing-footer";
 import { useState } from "react";
 
 const jsonLd = {
@@ -661,7 +660,6 @@ export default function AnyLlmPage() {
         </div>
       </section>
 
-      <MarketingFooter />
     </div>
   );
 }

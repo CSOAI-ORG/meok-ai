@@ -35,7 +35,6 @@ import {
   EyeOff,
   Server,
 } from "lucide-react";
-import { MarketingFooter } from "@/components/marketing-footer";
 
 // ─── JSON-LD (static — FAQ data duplicated intentionally for hoisting) ────────
 
@@ -1173,7 +1172,6 @@ export default function ConnectPage() {
         </div>
       </section>
 
-      <MarketingFooter />
     </div>
   );
 }

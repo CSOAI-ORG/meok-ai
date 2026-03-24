@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { MarketingFooter } from '@/components/marketing-footer'
 
 export const metadata: Metadata = {
   title: 'Changelog | MEOK AI LABS',
@@ -202,7 +201,6 @@ export default function ChangelogPage() {
           </div>
         </div>
       </main>
-      <MarketingFooter />
     </>
   )
 }

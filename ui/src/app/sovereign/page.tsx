@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { MarketingFooter } from "@/components/marketing-footer";
 import {
   ArrowRight,
   Shield,
@@ -855,7 +854,6 @@ export default function SovereignPage() {
         </div>
       </section>
 
-      <MarketingFooter />
     </div>
   );
 }

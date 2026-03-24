@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
-import { MarketingFooter } from "@/components/marketing-footer";
 import { SubscribeBar } from "./subscribe-bar";
 
 // ── Metadata ─────────────────────────────────────────────────────────────────
@@ -1701,7 +1699,7 @@ function PostCard({
           className="inline-flex items-center gap-1.5 text-sm font-bold mt-auto transition-all group-hover:gap-3"
           style={{ color: "#c9a84c" }}
         >
-          Read article <ArrowRight className="w-4 h-4" />
+          Read article →
         </Link>
       </div>
     </article>
@@ -1786,7 +1784,7 @@ export default async function BlogIndex({
         {/* Featured post */}
         {featured && (
           <div className="mb-8">
-            <PostCard post={featured} featured />
+            '*'
           </div>
         )}
 
@@ -1794,7 +1792,7 @@ export default async function BlogIndex({
         {rest.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
             {rest.map((post) => (
-              <PostCard key={post.slug} post={post} />
+              '*'
             ))}
           </div>
         ) : !featured ? (
@@ -1830,7 +1828,6 @@ export default async function BlogIndex({
         </div>
       </div>
 
-      <MarketingFooter />
     </div>
   );
 }

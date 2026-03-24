@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { ArrowRight, Search, FileText, Target, BarChart2, Newspaper, Map } from "lucide-react";
-import { MarketingFooter } from "@/components/marketing-footer";
 
 /* ─── DATA ─────────────────────────────────────────────── */
 
@@ -251,7 +250,6 @@ export default function OrionPage() {
         </div>
       </section>
 
-      <MarketingFooter />
     </div>
   );
 }

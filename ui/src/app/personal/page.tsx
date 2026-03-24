@@ -12,7 +12,6 @@ import {
   BookOpen,
   Shield,
 } from "lucide-react";
-import { MarketingFooter } from "@/components/marketing-footer";
 import { CHARACTERS } from "@/data/characters";
 
 const jsonLd = {
@@ -706,7 +705,6 @@ export default function PersonalPage() {
         </div>
       </section>
 
-      <MarketingFooter />
     </div>
   );
 }
