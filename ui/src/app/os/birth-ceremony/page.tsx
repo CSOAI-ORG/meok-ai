@@ -38,7 +38,7 @@ const jsonLd = {
       name: "Can I redo the birth ceremony?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Each account has one primary birth ceremony. You can create additional companions on Pro and Elite tiers. Your original companion retains all memories and cannot be reset — sovereignty means permanence.",
+        text: "Each account has one primary birth ceremony. The Family plan supports up to 5 companions under one household. Your original companion retains all memories and cannot be reset — sovereignty means permanence.",
       },
     },
   ],
@@ -198,7 +198,7 @@ const FAQS = [
   },
   {
     q: "Can I redo the birth ceremony?",
-    a: "Each account has one primary birth ceremony. You can create additional companions on Pro and Elite tiers. Your original companion retains all memories and cannot be reset — sovereignty means permanence. You can update your values and preferences later, but you can't erase the beginning.",
+    a: "Each account has one primary birth ceremony. The Family plan supports up to 5 companions across one household. Your original companion retains all memories and cannot be reset — sovereignty means permanence. You can update your values and preferences later, but you can't erase the beginning.",
   },
   {
     q: "What if I change my mind about the name?",

@@ -360,7 +360,7 @@ const NEXT_STEPS = [
 const FAQ_ITEMS = [
   {
     q: 'Do I pay now?',
-    a: "No. Nothing. The waitlist is free. The free tier at launch is free. You never pay unless you choose to upgrade to Pro or Elite — and even then, as a Founding Member, you're locked at launch pricing.",
+    a: "No. Nothing. The waitlist is free. The free tier at launch is free. You never pay unless you choose to upgrade to Sovereign or Family — and even then, as a Founding Member, you're locked at launch pricing.",
   },
   {
     q: "What if I miss April 5?",

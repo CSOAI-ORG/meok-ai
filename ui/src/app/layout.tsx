@@ -130,11 +130,11 @@ const softwareSchema = {
     },
     {
       "@type": "Offer",
-      name: "Elite",
-      price: "19",
+      name: "Family",
+      price: "29",
       priceCurrency: "GBP",
       billingIncrement: "month",
-      description: "Family OS for 5 companions, Guardian 24/7, all LLM models, family memory vault",
+      description: "Family OS for up to 5 companions, Guardian 24/7, all LLM models, shared family memory vault",
     },
   ],
   featureList: [

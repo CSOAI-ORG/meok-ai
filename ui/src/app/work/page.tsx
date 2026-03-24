@@ -115,7 +115,7 @@ export default function WorkOSPage() {
           </div>
 
           <p className="text-xs text-white/25 font-mono">
-            Available on all tiers. Ralph Mode requires Elite.
+            Available on all tiers. Ralph Mode requires Family plan.
           </p>
         </div>
       </section>
@@ -252,7 +252,7 @@ export default function WorkOSPage() {
                   <div className="flex items-start gap-3 p-4 rounded-2xl bg-cyan-500/[0.06] border border-cyan-500/15">
                     <Zap className="w-5 h-5 text-cyan-400/70 flex-shrink-0 mt-0.5" />
                     <p className="text-xs text-white/40 leading-relaxed">
-                      <span className="text-white/60 font-semibold">Full autonomy on Sovereign tier.</span> Elite unlocks Ralph Mode — Riri with executive function.
+                      <span className="text-white/60 font-semibold">Full autonomy on Sovereign tier.</span> Family plan unlocks Ralph Mode — Riri with executive function.
                     </p>
                   </div>
                 </div>
@@ -368,7 +368,7 @@ export default function WorkOSPage() {
               </div>
               <div>
                 <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#c9a84c]/20 border border-[#c9a84c]/35 text-[#c9a84c] text-[10px] font-black tracking-[0.2em] uppercase mb-2">
-                  Available on Elite tier
+                  Available on Family plan
                 </div>
                 <h2 className="text-3xl sm:text-4xl font-black text-white leading-tight">
                   What is Ralph Mode?
@@ -377,14 +377,14 @@ export default function WorkOSPage() {
             </div>
 
             <p className="text-white/55 leading-relaxed text-base mb-8 max-w-2xl">
-              Ralph Mode is MEOK&apos;s highest-autonomy agent configuration, available on Elite tier. Ralph combines Orion&apos;s research, Riri&apos;s building, and Hourman&apos;s planning into a single executive agent that can manage complex multi-day projects with minimal check-ins.
+              Ralph Mode is MEOK&apos;s highest-autonomy agent configuration, available on the Family plan. Ralph combines Orion&apos;s research, Riri&apos;s building, and Hourman&apos;s planning into a single executive agent that can manage complex multi-day projects with minimal check-ins.
             </p>
 
             <Link
               href="/pricing"
               className="group inline-flex items-center gap-2 px-7 py-3 rounded-full font-black text-[#1a1a2e] bg-[#c9a84c] hover:bg-[#d4b463] transition-all text-sm gold-glow"
             >
-              See Elite pricing
+              See Family plan pricing
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>
@@ -480,7 +480,7 @@ export default function WorkOSPage() {
           </div>
 
           <p className="mt-8 text-xs text-white/20 font-mono">
-            Available on all tiers · Ralph Mode requires Elite · MEOK AI LABS
+            Available on all tiers · Ralph Mode requires Family plan · MEOK AI LABS
           </p>
         </div>
       </section>

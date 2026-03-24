@@ -964,7 +964,7 @@ export default function RalphPage() {
             <h2 className="text-4xl sm:text-5xl font-black mb-4">
               Ralph is a{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400">
-                Pro &amp; Elite feature
+                Family plan feature
               </span>
             </h2>
           </div>
@@ -1012,22 +1012,22 @@ export default function RalphPage() {
             </div>
 
             <div className="p-6 rounded-2xl bg-purple-950/10 border border-purple-500/20">
-              <p className="text-purple-400 text-xs font-mono uppercase tracking-wider mb-1">Elite</p>
+              <p className="text-purple-400 text-xs font-mono uppercase tracking-wider mb-1">Family</p>
               <p className="text-2xl font-black mb-1">
-                £19<span className="text-sm text-white/30 font-normal">/mo</span>
+                £29<span className="text-sm text-white/30 font-normal">/mo</span>
               </p>
               <div className="mt-4 flex items-center gap-2 text-sm text-purple-400">
                 <ShieldCheck className="w-4 h-4 flex-shrink-0" />
                 <span className="font-semibold">Ralph + Family OS + all LLM models</span>
               </div>
               <p className="mt-3 text-xs text-white/40 leading-relaxed">
-                Everything in Pro, plus Family OS for up to 5 companions and all LLM models.
+                Everything in Sovereign, plus Family OS for up to 5 companions, Ralph Mode, and all LLM models.
               </p>
               <Link
-                href="/hatch?plan=elite"
+                href="/birth?plan=family"
                 className="mt-5 block w-full py-2.5 rounded-xl text-sm font-semibold text-center bg-white/[0.06] text-white/60 hover:bg-purple-500/20 hover:text-purple-300 transition-colors border border-purple-500/20"
               >
-                Go Elite
+                Go Family
               </Link>
             </div>
           </div>
