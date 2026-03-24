@@ -411,6 +411,18 @@ const POSTS = [
     featured: false,
   },
   {
+    slug: "ai-for-impostor-syndrome",
+    title: "AI for Impostor Syndrome: When the Smartest People Feel Like the Biggest Frauds",
+    excerpt:
+      "70% of people experience impostor syndrome. MEOK's Healer and Scholar archetypes help break the pattern — with honest feedback, pattern recognition across sessions, and sovereign memory that holds your real track record.",
+    date: "March 24, 2026",
+    readTime: "11 min read",
+    tag: "Wellbeing",
+    tagColor: "#8b5cf6",
+    category: "wellbeing",
+    featured: false,
+  },
+  {
     slug: "ai-for-burnout",
     title: "AI for Burnout: How an AI Companion Helps You Recover and Rebuild",
     excerpt:
