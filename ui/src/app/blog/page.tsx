@@ -2330,6 +2330,78 @@ const POSTS = [
     category: "research",
     featured: true,
   },
+  {
+    slug: "ai-for-social-anxiety-disorder",
+    title: "AI for Social Anxiety Disorder: A Low-Stakes Space to Practise",
+    excerpt:
+      "Social anxiety disorder affects 12% of people at some point in their lives. An AI companion provides a non-judgmental space to rehearse social situations, challenge cognitive distortions, and build confidence — at your own pace.",
+    date: "March 24, 2026",
+    readTime: "11 min read",
+    tag: "Mental Health",
+    tagColor: "#5b8dd9",
+    category: "mental-health",
+    featured: false,
+  },
+  {
+    slug: "ai-for-ocd-support",
+    title: "AI for OCD Support: A Companion Between Therapy Sessions",
+    excerpt:
+      "OCD is not about tidiness — it is a cycle of intrusive thoughts and compulsions that can be debilitating. A sovereign AI companion can support your ERP journey between sessions, without reinforcing avoidance.",
+    date: "March 24, 2026",
+    readTime: "10 min read",
+    tag: "Mental Health",
+    tagColor: "#5b8dd9",
+    category: "mental-health",
+    featured: false,
+  },
+  {
+    slug: "ai-for-ptsd-support",
+    title: "AI for PTSD Support: Trauma-Informed Companionship at Any Hour",
+    excerpt:
+      "PTSD affects far more people than just veterans. A trauma-informed AI companion — one that remembers your triggers, supports grounding techniques, and never pressures disclosure — can be a meaningful addition to your recovery.",
+    date: "March 24, 2026",
+    readTime: "12 min read",
+    tag: "Mental Health",
+    tagColor: "#5b8dd9",
+    category: "mental-health",
+    featured: false,
+  },
+  {
+    slug: "meok-for-freelancers",
+    title: "MEOK for Freelancers: Structure, Accountability, and a Companion Who Remembers Your Clients",
+    excerpt:
+      "Freelancing is freedom and loneliness in equal measure. MEOK\u2019s Work OS — Orion, Riri, Hourman — gives freelancers the structure of a team without the overhead. Plus a companion that remembers your rate history, your goals, your clients.",
+    date: "March 24, 2026",
+    readTime: "10 min read",
+    tag: "Productivity",
+    tagColor: "#7c6fcd",
+    category: "productivity",
+    featured: false,
+  },
+  {
+    slug: "ai-for-phobias",
+    title: "AI for Phobias: Building Your Fear Ladder With a Companion Who Remembers",
+    excerpt:
+      "Phobias are conditioned fear responses that grow stronger through avoidance. An AI companion can help you build a graduated exposure hierarchy, track your progress across weeks, and be there for every step — from imaginal exposure to real-world challenge.",
+    date: "March 24, 2026",
+    readTime: "11 min read",
+    tag: "Mental Health",
+    tagColor: "#5b8dd9",
+    category: "mental-health",
+    featured: false,
+  },
+  {
+    slug: "ai-for-loneliness",
+    title: "AI for Loneliness: What an AI Companion Can and Cannot Do",
+    excerpt:
+      "25% of UK adults report chronic loneliness. A sovereign AI companion — one that remembers your name, your story, your 3am moments — is not a replacement for human connection. But it can be the bridge that holds you until you find it.",
+    date: "March 24, 2026",
+    readTime: "10 min read",
+    tag: "Mental Health",
+    tagColor: "#5b8dd9",
+    category: "mental-health",
+    featured: false,
+  },
 ];
 
 // ── Category filter tabs ──────────────────────────────────────────────────────
