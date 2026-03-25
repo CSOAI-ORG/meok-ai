@@ -4742,6 +4742,66 @@ const POSTS = [
     category: "family",
     featured: false,
   },
+  {
+    slug: "what-is-the-byzantine-council",
+    title: "What Is the Byzantine Council? MEOK's 43-Agent AI Governance System Explained",
+    excerpt:
+      "The Byzantine Council is MEOK's fault-tolerant AI governance system — 43 agents that reach consensus without any single point of failure. No one agent can override a decision. Original IP by Nicholas Templeman.",
+    date: "April 20, 2026",
+    readTime: "9 min read",
+    tag: "Technology",
+    tagColor: "#7b6fcf",
+    category: "technology",
+    featured: true,
+  },
+  {
+    slug: "ai-for-work-life-balance",
+    title: "AI for Work-Life Balance: Can a Companion Help You Actually Switch Off?",
+    excerpt:
+      "Work-life balance isn't a schedule problem — it's a cognitive one. MEOK's AI companion helps you genuinely transition out of work mode, hold your boundaries, and protect the parts of life that matter most.",
+    date: "April 21, 2026",
+    readTime: "7 min read",
+    tag: "Productivity",
+    tagColor: "#c9a84c",
+    category: "productivity",
+    featured: false,
+  },
+  {
+    slug: "ai-for-autism-diagnosis",
+    title: "AI Support After an Autism Diagnosis: Processing, Planning, and Not Doing It Alone",
+    excerpt:
+      "An autism diagnosis — whether at 7 or 47 — changes everything. MEOK provides a non-judgmental space to process what it means, research what comes next, and build a life that works for your actual brain.",
+    date: "April 21, 2026",
+    readTime: "8 min read",
+    tag: "Mental Health",
+    tagColor: "#6aaa64",
+    category: "mental-health",
+    featured: false,
+  },
+  {
+    slug: "meok-for-remote-work",
+    title: "MEOK for Remote Workers: The AI Companion Built for People Who Work Alone",
+    excerpt:
+      "Remote work offers freedom but removes the informal social infrastructure of an office. MEOK gives remote workers a persistent companion for thought partnership, accountability, and the human connection that video calls can't provide.",
+    date: "April 22, 2026",
+    readTime: "7 min read",
+    tag: "Productivity",
+    tagColor: "#c9a84c",
+    category: "productivity",
+    featured: false,
+  },
+  {
+    slug: "sovereign-ai-vs-cloud-ai-explained",
+    title: "Sovereign AI vs Cloud AI: What's the Difference and Why Does It Matter?",
+    excerpt:
+      "Cloud AI stores your data on their servers, trains on your conversations, and can delete your history without warning. Sovereign AI puts you in control. Here's the full breakdown of what that means for your privacy, your memory, and your rights.",
+    date: "April 22, 2026",
+    readTime: "9 min read",
+    tag: "Technology",
+    tagColor: "#7b6fcf",
+    category: "technology",
+    featured: true,
+  },
 ];
 
 // ── Category filter tabs ──────────────────────────────────────────────────────
