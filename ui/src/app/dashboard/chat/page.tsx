@@ -380,7 +380,7 @@ export default function DashboardChatPage() {
           </header>
 
           {/* Messages area */}
-          <div className="flex-1 overflow-y-auto px-4 py-6" style={{ background: DEEP }}>
+          <div className="flex-1 overflow-y-auto px-4 py-6" role="log" aria-live="polite" aria-label="Chat messages" style={{ background: DEEP }}>
             {!hasUserMessages && (
               <div className="flex flex-col items-center justify-center h-full text-center px-8" style={{ animation: 'fadeSlideUp 0.5s ease both' }}>
                 <div className="text-4xl mb-5 w-20 h-20 rounded-full flex items-center justify-center" style={{ background: `radial-gradient(circle at 35% 35%, ${GOLD}30, ${GOLD}08)`, border: `2px solid ${GOLD}40`, boxShadow: `0 0 40px ${GOLD}15` }}>✨</div>
@@ -398,7 +398,7 @@ export default function DashboardChatPage() {
                   <div key={msg.id} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`} style={{ animation: 'messageIn 0.25s ease both' }}>
                     {msg.role === 'user' ? (
                       <div className="max-w-[75%]">
-                        <div className="rounded-2xl rounded-tr-sm px-4 py-3" style={{ background: GOLD, color: NAVY }}>
+                        <div className="rounded-2xl rounded-tr-sm px-4 py-3" tabIndex={0} role="article" aria-label={`Your message: ${text.slice(0, 80)}`} style={{ background: GOLD, color: NAVY }}>
                           <p className="text-sm font-medium whitespace-pre-wrap leading-relaxed">{text}</p>
                         </div>
                         <p className="text-[10px] mt-1 text-right" style={{ color: 'rgba(255,255,255,0.25)' }}>{formatTime((msg as unknown as { createdAt?: Date }).createdAt ?? new Date())}</p>
@@ -406,7 +406,7 @@ export default function DashboardChatPage() {
                     ) : (
                       <div className="max-w-[75%]">
                         <SovereignBadge model={selectedModelConfig.label} latency={isStreamingMsg ? undefined : sovereignMeta?.latency} care_score={85} streaming={isStreamingMsg} />
-                        <div className="rounded-2xl rounded-tl-sm px-4 py-3" style={{ background: SURFACE, border: '1px solid rgba(255,255,255,0.07)' }}>
+                        <div className="rounded-2xl rounded-tl-sm px-4 py-3" tabIndex={0} role="article" aria-label={`Aura's response: ${text.slice(0, 80)}`} style={{ background: SURFACE, border: '1px solid rgba(255,255,255,0.07)' }}>
                           {text ? (
                             <p className="text-sm whitespace-pre-wrap leading-relaxed" style={{ color: `${CREAM}dd` }}>
                               {text}
@@ -442,6 +442,7 @@ export default function DashboardChatPage() {
                                     setSpeakingMsgId(null);
                                   }
                                 }}
+                                aria-label={speakingMsgId === msg.id ? 'Stop reading aloud' : 'Read message aloud'}
                                 className="mt-1 text-[11px] px-2 py-0.5 rounded-full border transition-colors"
                                 style={{
                                   background: speakingMsgId === msg.id ? `${GOLD}20` : 'rgba(255,255,255,0.03)',
@@ -510,6 +511,7 @@ export default function DashboardChatPage() {
                 placeholder="Talk to Aura…"
                 rows={1}
                 disabled={isStreaming}
+                aria-label="Type a message to Aura"
                 className="flex-1 text-sm rounded-xl px-4 py-3 pr-24 resize-none outline-none transition-colors leading-6 min-h-[44px] max-h-[120px] disabled:opacity-50"
                 style={{ background: NAVY, color: CREAM, border: '1px solid rgba(255,255,255,0.08)', caretColor: GOLD }}
                 onFocus={e => (e.currentTarget.style.borderColor = `${GOLD}50`)}
@@ -518,9 +520,9 @@ export default function DashboardChatPage() {
               <div className="absolute right-2 bottom-2 flex items-center gap-1">
                 <span className="text-[10px] hidden sm:inline" style={{ color: 'rgba(255,255,255,0.2)' }}>⌘↵</span>
                 {isStreaming ? (
-                  <button onClick={() => stop()} className="h-8 px-3 rounded-lg text-xs font-semibold transition-all flex-shrink-0" style={{ background: '#ef4444', color: '#fff' }}>Stop</button>
+                  <button onClick={() => stop()} aria-label="Stop generating response" className="h-8 px-3 rounded-lg text-xs font-semibold transition-all flex-shrink-0" style={{ background: '#ef4444', color: '#fff' }}>Stop</button>
                 ) : (
-                  <button onClick={handleSend} disabled={!input.trim() || input.length > MAX_MESSAGE_LENGTH} className="h-8 px-3 rounded-lg text-xs font-semibold transition-all flex-shrink-0 disabled:opacity-30 disabled:cursor-not-allowed" style={{ background: GOLD, color: NAVY }}>Send</button>
+                  <button onClick={handleSend} disabled={!input.trim() || input.length > MAX_MESSAGE_LENGTH} aria-label="Send message" className="h-8 px-3 rounded-lg text-xs font-semibold transition-all flex-shrink-0 disabled:opacity-30 disabled:cursor-not-allowed" style={{ background: GOLD, color: NAVY }}>Send</button>
                 )}
               </div>
             </div>

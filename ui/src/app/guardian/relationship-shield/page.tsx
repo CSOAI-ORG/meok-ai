@@ -365,6 +365,189 @@ export default function RelationshipShieldPage() {
         </div>
       </section>
 
+      {/* Red Flags to Watch For */}
+      <section
+        style={{
+          maxWidth: 960,
+          margin: "0 auto",
+          padding: "0 24px 96px",
+        }}
+      >
+        <h2
+          style={{
+            fontSize: "clamp(24px, 3vw, 32px)",
+            fontWeight: 700,
+            color: "#ffffff",
+            marginBottom: 16,
+            textAlign: "center",
+          }}
+        >
+          Red Flags to Watch For
+        </h2>
+        <p
+          style={{
+            fontSize: 16,
+            color: "rgba(226,224,232,0.55)",
+            textAlign: "center",
+            marginBottom: 40,
+            maxWidth: 560,
+            margin: "0 auto 40px",
+          }}
+        >
+          These patterns are often invisible to the person experiencing them.
+          Your companion watches for all of them.
+        </p>
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
+            gap: 16,
+          }}
+        >
+          {[
+            { icon: "\u2764\uFE0F\u200D\uD83D\uDD25", title: "Love bombing", description: "Overwhelming affection early on designed to create emotional dependency before boundaries are established." },
+            { icon: "\uD83D\uDEA7", title: "Isolation tactics", description: "Gradually cutting you off from friends, family, or support networks so they become your only source of validation." },
+            { icon: "\uD83D\uDCB3", title: "Financial control", description: "Restricting access to money, monitoring spending, or creating financial dependency to limit your freedom." },
+            { icon: "\uD83E\uDE9E", title: "Gaslighting", description: "Making you doubt your own memory, perception, or sanity so you rely on their version of reality." },
+            { icon: "\u26A1", title: "Moving too fast", description: "Pushing for commitment, cohabitation, or major life decisions before the relationship has had time to develop naturally." },
+            { icon: "\uD83D\uDD17", title: "Breaking promises", description: "A pattern of commitments made and broken, with excuses that always sound reasonable in the moment." },
+          ].map((flag) => (
+            <div
+              key={flag.title}
+              style={{
+                backgroundColor: SURFACE,
+                border: `1px solid ${BORDER}`,
+                borderRadius: 12,
+                padding: "24px 22px",
+              }}
+            >
+              <div style={{ fontSize: 24, marginBottom: 10 }}>{flag.icon}</div>
+              <h3
+                style={{
+                  fontSize: 16,
+                  fontWeight: 600,
+                  color: "#ffffff",
+                  marginBottom: 6,
+                }}
+              >
+                {flag.title}
+              </h3>
+              <p
+                style={{
+                  fontSize: 14,
+                  lineHeight: 1.6,
+                  color: "rgba(226,224,232,0.55)",
+                }}
+              >
+                {flag.description}
+              </p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Resources */}
+      <section
+        style={{
+          maxWidth: 760,
+          margin: "0 auto",
+          padding: "0 24px 80px",
+        }}
+      >
+        <div
+          style={{
+            backgroundColor: SURFACE,
+            border: `1px solid ${BORDER}`,
+            borderRadius: 14,
+            padding: "32px 32px",
+            textAlign: "center",
+          }}
+        >
+          <h3
+            style={{
+              fontSize: 18,
+              fontWeight: 700,
+              color: "#ffffff",
+              marginBottom: 8,
+            }}
+          >
+            If you or someone you know needs help
+          </h3>
+          <p
+            style={{
+              fontSize: 14,
+              color: "rgba(226,224,232,0.5)",
+              marginBottom: 24,
+            }}
+          >
+            These organisations provide free, confidential support.
+          </p>
+          <div
+            style={{
+              display: "flex",
+              flexWrap: "wrap",
+              justifyContent: "center",
+              gap: 16,
+            }}
+          >
+            <a
+              href="https://www.thehotline.org"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                display: "inline-block",
+                padding: "10px 22px",
+                borderRadius: 8,
+                backgroundColor: "rgba(201,168,76,0.12)",
+                border: "1px solid rgba(201,168,76,0.25)",
+                color: GOLD,
+                fontSize: 14,
+                fontWeight: 600,
+                textDecoration: "none",
+              }}
+            >
+              National Domestic Violence Hotline (US)
+            </a>
+            <a
+              href="https://www.womensaid.org.uk"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                display: "inline-block",
+                padding: "10px 22px",
+                borderRadius: 8,
+                backgroundColor: "rgba(201,168,76,0.12)",
+                border: "1px solid rgba(201,168,76,0.25)",
+                color: GOLD,
+                fontSize: 14,
+                fontWeight: 600,
+                textDecoration: "none",
+              }}
+            >
+              Women{"'"}s Aid (UK)
+            </a>
+            <a
+              href="https://www.1800respect.org.au"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                display: "inline-block",
+                padding: "10px 22px",
+                borderRadius: 8,
+                backgroundColor: "rgba(201,168,76,0.12)",
+                border: "1px solid rgba(201,168,76,0.25)",
+                color: GOLD,
+                fontSize: 14,
+                fontWeight: 600,
+                textDecoration: "none",
+              }}
+            >
+              1800RESPECT (AU)
+            </a>
+          </div>
+        </div>
+      </section>
+
       {/* CTA */}
       <section
         style={{

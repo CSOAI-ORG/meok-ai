@@ -38,12 +38,54 @@ function saveSettings(s: SensorySettings): void {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(s));
 }
 
-/** Hook to read sensory settings from any component. */
+/** Apply settings to the DOM — CSS custom property + body classes. */
+function applySettingsToDOM(s: SensorySettings): void {
+  if (typeof document === 'undefined') return;
+  const root = document.documentElement;
+  const body = document.body;
+
+  // Font size via CSS custom property
+  root.style.setProperty('--meok-font-size', `${s.fontSize}px`);
+
+  // Reduce animations: add class that CSS can target, also set media-query override
+  if (s.reduceAnimations) {
+    body.classList.add('reduce-motion');
+  } else {
+    body.classList.remove('reduce-motion');
+  }
+
+  // High contrast
+  if (s.highContrast) {
+    body.classList.add('high-contrast');
+  } else {
+    body.classList.remove('high-contrast');
+  }
+
+  // Dyslexia font
+  if (s.dyslexiaFont) {
+    body.classList.add('dyslexia-font');
+  } else {
+    body.classList.remove('dyslexia-font');
+  }
+}
+
+/** Hook to read sensory settings from any component. Also applies them to DOM. */
 export function useSensorySettings(): SensorySettings {
   const [settings, setSettings] = useState<SensorySettings>(DEFAULTS);
 
   useEffect(() => {
-    setSettings(loadSettings());
+    const loaded = loadSettings();
+    setSettings(loaded);
+    applySettingsToDOM(loaded);
+
+    // Listen for changes from the settings panel
+    function handleChange(e: Event) {
+      const detail = (e as CustomEvent<SensorySettings>).detail;
+      setSettings(detail);
+      applySettingsToDOM(detail);
+    }
+    window.addEventListener('meok-sensory-change', handleChange);
+    return () => window.removeEventListener('meok-sensory-change', handleChange);
   }, []);
 
   return settings;
@@ -55,7 +97,9 @@ export function SensorySettingsPanel() {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    setSettings(loadSettings());
+    const loaded = loadSettings();
+    setSettings(loaded);
+    applySettingsToDOM(loaded);
     setMounted(true);
   }, []);
 
@@ -63,6 +107,7 @@ export function SensorySettingsPanel() {
     setSettings((prev) => {
       const next = { ...prev, ...patch };
       saveSettings(next);
+      applySettingsToDOM(next);
       window.dispatchEvent(new CustomEvent('meok-sensory-change', { detail: next }));
       return next;
     });
@@ -153,6 +198,28 @@ export function SensorySettingsPanel() {
         >
           <span>14px</span>
           <span>24px</span>
+        </div>
+        <div style={{ display: 'flex', gap: 4, marginTop: 4 }}>
+          {[14, 16, 18, 20, 24].map((size) => (
+            <button
+              key={size}
+              onClick={() => update({ fontSize: size })}
+              aria-label={`Set font size to ${size}px`}
+              style={{
+                flex: 1,
+                padding: '4px 0',
+                fontSize: 10,
+                fontWeight: settings.fontSize === size ? 700 : 500,
+                background: settings.fontSize === size ? `${GOLD}25` : 'rgba(255,255,255,0.04)',
+                color: settings.fontSize === size ? GOLD : 'rgba(255,255,255,0.4)',
+                border: `1px solid ${settings.fontSize === size ? `${GOLD}40` : 'rgba(255,255,255,0.08)'}`,
+                borderRadius: 6,
+                cursor: 'pointer',
+              }}
+            >
+              {size}
+            </button>
+          ))}
         </div>
       </div>
     </div>

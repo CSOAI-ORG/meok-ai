@@ -623,6 +623,98 @@ export default function GuardianChildrenPage() {
         </div>
       </section>
 
+      {/* ─── CORE FEATURES ──────────────────────────────── */}
+      <section className="py-24 px-6" style={{ background: "#0d0c18" }}>
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-14">
+            <p className="text-xs font-mono tracking-widest uppercase mb-3" style={{ color: "rgba(96,165,250,0.60)" }}>
+              Age-appropriate AI
+            </p>
+            <h2 className="text-3xl sm:text-4xl font-black mb-4 text-white" style={{ fontWeight: 900 }}>
+              Features that grow with your child.
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            {[
+              {
+                icon: Shield,
+                title: "Content Filtering",
+                desc: "Multi-layer filtering that adapts to your child's age. Hard blocks on harmful content at the model layer, plus configurable sensitivity for topics like news, social issues, and mature themes.",
+              },
+              {
+                icon: Clock,
+                title: "Time Limits",
+                desc: "Set daily and weekly interaction windows. Bedtime cutoffs, school-hour restrictions, and weekend flexibility. Your child sees a gentle countdown, not a hard wall.",
+              },
+              {
+                icon: BarChart2,
+                title: "Activity Reports",
+                desc: "Weekly summaries of how your child uses their companion: conversation frequency, emotional trends, topics explored, and session timing. Signal, not noise.",
+              },
+              {
+                icon: Brain,
+                title: "Age-Appropriate Personality",
+                desc: "MEOK adapts its vocabulary, humour, and complexity to your child's age. A 7-year-old gets a playful friend. A 16-year-old gets a thoughtful peer. Same care, different voice.",
+              },
+            ].map((feature) => {
+              const Icon = feature.icon;
+              return (
+                <div
+                  key={feature.title}
+                  className="flex gap-5 p-6 rounded-2xl border border-white/[0.07]"
+                  style={{ background: "rgba(255,255,255,0.03)" }}
+                >
+                  <div
+                    className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0"
+                    style={{ background: "rgba(59,130,246,0.10)", border: "1px solid rgba(59,130,246,0.25)" }}
+                  >
+                    <Icon size={20} color="#60a5fa" />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-white mb-2">{feature.title}</h3>
+                    <p className="text-sm leading-relaxed" style={{ color: "rgba(245,240,232,0.55)" }}>{feature.desc}</p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* ─── PARENT CONTROLS ──────────────────────────── */}
+      <section className="py-20 px-6 bg-[#1a1a2e]">
+        <div className="max-w-3xl mx-auto text-center">
+          <div
+            className="w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-6"
+            style={{ background: "rgba(59,130,246,0.12)", border: "1px solid rgba(59,130,246,0.3)" }}
+          >
+            <Lock size={24} color="#60a5fa" />
+          </div>
+          <h2 className="text-3xl sm:text-4xl font-black mb-4 text-white" style={{ fontWeight: 900 }}>
+            You control what your child{"'"}s companion can discuss.
+          </h2>
+          <p className="text-base leading-relaxed mb-6" style={{ color: "rgba(245,240,232,0.55)" }}>
+            Every family is different. Set topic boundaries, conversation tone, and sensitivity levels that match your values. Hard safety blocks are always on — everything else is yours to configure.
+          </p>
+          <p className="text-sm leading-relaxed mb-8" style={{ color: "rgba(245,240,232,0.40)" }}>
+            As your child grows, you can gradually open up what their companion can talk about. Guardian makes it easy to adjust without starting over.
+          </p>
+          <Link
+            href="/hatch"
+            className="group inline-flex items-center gap-2 px-8 py-4 rounded-full font-bold transition-all text-base"
+            style={{
+              background: "#3b82f6",
+              color: "#ffffff",
+              boxShadow: "0 0 24px rgba(59,130,246,0.3)",
+            }}
+          >
+            Set up a safe companion
+            <span className="group-hover:translate-x-1 transition-transform" aria-hidden="true">&rarr;</span>
+          </Link>
+        </div>
+      </section>
+
       {/* ─── FAQ ─────────────────────────────────────────── */}
       <section className="py-24 px-6 bg-[#0d0c18] border-t border-white/[0.05]">
         <div className="max-w-3xl mx-auto">

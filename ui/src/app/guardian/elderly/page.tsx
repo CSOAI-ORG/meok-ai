@@ -15,6 +15,8 @@ import {
   BarChart2,
   Lock,
   Users,
+  Brain,
+  Clock,
 } from "lucide-react";
 
 const jsonLd = {
@@ -661,6 +663,98 @@ export default function GuardianElderlyPage() {
             <p className="text-white/45 text-sm">The questions we hear most — answered honestly.</p>
           </div>
           <FAQAccordion />
+        </div>
+      </section>
+
+      {/* ─── CORE GUARDIAN FEATURES ──────────────────────── */}
+      <section className="py-24 px-6 bg-[#0d0c18] border-t border-white/[0.05]">
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-14">
+            <p className="text-xs font-mono tracking-widest uppercase mb-3" style={{ color: "rgba(245,158,11,0.50)" }}>
+              Intelligent care
+            </p>
+            <h2 className="text-3xl sm:text-4xl font-black mb-4 text-white" style={{ fontWeight: 900 }}>
+              Built around what matters most.
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            {[
+              {
+                icon: Brain,
+                title: "Cognitive Pattern Tracking",
+                desc: "Guardian gently tracks conversational patterns over time — word recall, topic repetition, confusion frequency. Not to diagnose, but to notice when something shifts so you can act early.",
+              },
+              {
+                icon: Clock,
+                title: "Transaction Delay Suggestions",
+                desc: "If your parent mentions a large purchase or unusual financial request, Guardian can suggest they pause and talk it through with family first. A gentle safeguard against scams and pressure tactics.",
+              },
+              {
+                icon: Users,
+                title: "Caregiver Dashboard",
+                desc: "A calm, readable overview for family members and professional carers. Medication adherence, activity trends, mood patterns, and upcoming appointments — all in one place.",
+              },
+              {
+                icon: MessageCircle,
+                title: "Daily Check-in Reminders",
+                desc: "Warm, personalised check-ins at times that suit your parent. Not clinical pings — genuine conversations that happen to surface how they are really doing.",
+              },
+            ].map((feature) => {
+              const Icon = feature.icon;
+              return (
+                <div
+                  key={feature.title}
+                  className="flex gap-5 p-6 rounded-2xl border border-white/[0.07]"
+                  style={{ background: "rgba(255,255,255,0.03)" }}
+                >
+                  <div
+                    className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0"
+                    style={{ background: "rgba(245,158,11,0.10)", border: "1px solid rgba(245,158,11,0.25)" }}
+                  >
+                    <Icon size={20} color="#F59E0B" />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-white mb-2">{feature.title}</h3>
+                    <p className="text-sm leading-relaxed" style={{ color: "rgba(245,240,232,0.55)" }}>{feature.desc}</p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* ─── EMERGENCY CONTACTS ────────────────────────── */}
+      <section className="py-20 px-6 bg-[#1a1a2e]">
+        <div className="max-w-3xl mx-auto text-center">
+          <div
+            className="w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-6"
+            style={{ background: "rgba(245,158,11,0.12)", border: "1px solid rgba(245,158,11,0.3)" }}
+          >
+            <Users size={24} color="#F59E0B" />
+          </div>
+          <h2 className="text-3xl sm:text-4xl font-black mb-4 text-white" style={{ fontWeight: 900 }}>
+            Set up trusted contacts who receive alerts
+          </h2>
+          <p className="text-base leading-relaxed mb-6" style={{ color: "rgba(245,240,232,0.55)" }}>
+            Choose family members, neighbours, or carers who should be notified when Guardian detects something that needs attention. Soft alerts go to your inner circle. Emergencies go to everyone on the list — instantly.
+          </p>
+          <p className="text-sm leading-relaxed mb-8" style={{ color: "rgba(245,240,232,0.40)" }}>
+            Your parent approves each contact. No one is added without their knowledge. They can review and change the list at any time.
+          </p>
+          <Link
+            href="/hatch"
+            className="group inline-flex items-center gap-2 px-8 py-4 rounded-full font-bold transition-all text-base"
+            style={{
+              background: "#F59E0B",
+              color: "#1a0800",
+              boxShadow: "0 0 24px rgba(245,158,11,0.3)",
+            }}
+          >
+            Protect someone you love
+            <span className="group-hover:translate-x-1 transition-transform" aria-hidden="true">&rarr;</span>
+          </Link>
         </div>
       </section>
 

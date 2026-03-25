@@ -281,3 +281,43 @@ body {
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover { background: rgba(0, 0, 0, 0.2); }
+
+/* ═══════════════════════════════════════════════════════════
+   SENSORY / ACCESSIBILITY SETTINGS
+   Applied via body classes from sensory-settings.tsx
+   ═══════════════════════════════════════════════════════════ */
+
+/* Font size — driven by CSS custom property */
+:root { --meok-font-size: 16px; }
+body { font-size: var(--meok-font-size); }
+
+/* Reduce animations — suppress motion globally */
+body.reduce-motion *,
+body.reduce-motion *::before,
+body.reduce-motion *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+  scroll-behavior: auto !important;
+}
+
+/* High contrast — boost text/border visibility */
+body.high-contrast {
+  --text-body: #000000;
+  --text-muted: #333333;
+  --border-light: #888888;
+  --foreground: #ffffff;
+}
+body.high-contrast * {
+  border-color: rgba(255,255,255,0.35) !important;
+}
+body.high-contrast p,
+body.high-contrast span,
+body.high-contrast div {
+  color: inherit;
+}
+
+/* Dyslexia-friendly font */
+body.dyslexia-font {
+  font-family: 'OpenDyslexic', 'Comic Sans MS', sans-serif !important;
+}

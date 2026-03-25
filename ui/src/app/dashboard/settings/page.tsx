@@ -596,20 +596,36 @@ export default function SettingsPage() {
               </Link>
             </p>
 
-            <a
-              href="/api/user/export"
-              className="w-full flex items-center gap-2.5 px-4 py-2.5 rounded-lg text-sm font-medium transition-all text-left mt-3"
-              style={{
-                border: `1px solid ${GOLD}35`,
-                color: GOLD,
-                background: "transparent",
-              }}
-              onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.background = `${GOLD}08`; }}
-              onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.background = "transparent"; }}
-            >
-              <Download className="w-4 h-4 shrink-0" />
-              Download my data
-            </a>
+            <div className="flex gap-2 mt-3">
+              <a
+                href="/api/user/export?format=json"
+                className="flex-1 flex items-center gap-2.5 px-4 py-2.5 rounded-lg text-sm font-medium transition-all text-left"
+                style={{
+                  border: `1px solid ${GOLD}35`,
+                  color: GOLD,
+                  background: "transparent",
+                }}
+                onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.background = `${GOLD}08`; }}
+                onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.background = "transparent"; }}
+              >
+                <Download className="w-4 h-4 shrink-0" />
+                Download as JSON
+              </a>
+              <a
+                href="/api/user/export?format=markdown"
+                className="flex-1 flex items-center gap-2.5 px-4 py-2.5 rounded-lg text-sm font-medium transition-all text-left"
+                style={{
+                  border: `1px solid ${GOLD}35`,
+                  color: GOLD,
+                  background: "transparent",
+                }}
+                onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.background = `${GOLD}08`; }}
+                onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.background = "transparent"; }}
+              >
+                <Download className="w-4 h-4 shrink-0" />
+                Download as Markdown
+              </a>
+            </div>
 
             {!showDeleteMemoriesConfirm ? (
               <button
@@ -811,14 +827,14 @@ export default function SettingsPage() {
                   This cannot be undone.
                 </p>
                 <p className="text-xs text-red-400/60 mb-4">
-                  Type <strong className="text-red-300">delete my account</strong> to confirm.
+                  Type <strong className="text-red-300">DELETE</strong> to confirm.
                 </p>
                 <input
                   type="text"
                   value={deleteConfirmText}
                   onChange={(e) => setDeleteConfirmText(e.target.value)}
-                  placeholder="delete my account"
-                  className="w-full px-3 py-2 rounded-lg bg-black/30 border border-red-500/30 text-red-300 placeholder-red-900/60 text-sm focus:outline-none mb-3"
+                  placeholder="DELETE"
+                  className="w-full px-3 py-2 rounded-lg bg-black/30 border border-red-500/30 text-red-300 placeholder-red-900/60 text-sm focus:outline-none mb-3 font-mono tracking-widest"
                 />
                 <div className="flex gap-2">
                   <button
@@ -833,7 +849,7 @@ export default function SettingsPage() {
                   </button>
                   <button
                     type="button"
-                    disabled={deleteConfirmText.toLowerCase() !== "delete my account"}
+                    disabled={deleteConfirmText !== "DELETE"}
                     className="flex-1 px-4 py-2 rounded-lg text-sm font-bold text-red-200 border border-red-500/50 bg-red-500/15 hover:bg-red-500/25 transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
                   >
                     Delete everything

@@ -1,6 +1,7 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
+import { formatCost } from '@/lib/cost-tracker';
 
 // ── Brand tokens ─────────────────────────────────────────────────────────────
 const DEEP = '#0d0c18';
@@ -20,6 +21,8 @@ export interface SovereignDisplayProps {
   latencyMs?: number;
   processingLocation?: string;
   memoryCount?: number;
+  estimatedCost?: number;       // USD cost estimate for the message
+  memoriesRetrieved?: number;   // number of memory sources retrieved
 }
 
 // ── Metadata row ─────────────────────────────────────────────────────────────
@@ -52,11 +55,32 @@ export function SovereignDisplay({
   latencyMs,
   processingLocation,
   memoryCount,
+  estimatedCost,
+  memoriesRetrieved,
 }: SovereignDisplayProps) {
   const [expanded, setExpanded] = useState(false);
+  const [copied, setCopied] = useState(false);
 
   // Nothing to show if there is no metadata at all
   if (!model && !taskType) return null;
+
+  const costDisplay = estimatedCost !== undefined ? formatCost(estimatedCost) : undefined;
+  const memRetrievedDisplay = memoriesRetrieved !== undefined ? `${memoriesRetrieved} retrieved` : undefined;
+  const guardianDisplay = guardianPassed !== undefined
+    ? (guardianPassed ? '\u{1F6E1}\uFE0F Passed' : '\u{1F6E1}\uFE0F Flagged')
+    : undefined;
+
+  const handleCopyMetadata = useCallback(() => {
+    const metadata = {
+      model, taskType, effortLevel, emotion, language,
+      guardianPassed, latencyMs, processingLocation,
+      memoryCount, estimatedCost, memoriesRetrieved,
+    };
+    navigator.clipboard.writeText(JSON.stringify(metadata, null, 2)).then(() => {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 1500);
+    });
+  }, [model, taskType, effortLevel, emotion, language, guardianPassed, latencyMs, processingLocation, memoryCount, estimatedCost, memoriesRetrieved]);
 
   return (
     <div
@@ -89,6 +113,12 @@ export function SovereignDisplay({
               <span>{latencyMs}ms</span>
             </>
           )}
+          {costDisplay && (
+            <>
+              <span style={{ color: 'rgba(255,255,255,0.15)' }}>|</span>
+              <span>{costDisplay}</span>
+            </>
+          )}
         </span>
         <span
           className="transition-transform duration-200"
@@ -109,27 +139,38 @@ export function SovereignDisplay({
           className="px-3 pb-3 space-y-1"
           style={{ borderTop: `1px solid ${BORDER}` }}
         >
-          <div className="pt-2 pb-1">
+          <div className="pt-2 pb-1 flex items-center justify-between">
             <span
               className="text-[9px] font-semibold tracking-[0.15em] uppercase"
               style={{ color: GOLD }}
             >
               Sovereign Transparency
             </span>
+            <button
+              onClick={handleCopyMetadata}
+              className="text-[9px] font-mono px-2 py-0.5 rounded border transition-colors"
+              style={{
+                background: copied ? `${GOLD}20` : 'rgba(255,255,255,0.04)',
+                borderColor: copied ? `${GOLD}40` : 'rgba(255,255,255,0.1)',
+                color: copied ? GOLD : 'rgba(255,255,255,0.4)',
+                cursor: 'pointer',
+              }}
+              aria-label="Copy metadata as JSON"
+            >
+              {copied ? 'Copied!' : 'Copy'}
+            </button>
           </div>
           <MetaRow icon={'\u2699'} label="Model" value={model} />
           <MetaRow icon={'\u2692'} label="Task Type" value={taskType} />
           <MetaRow icon={'\u26A1'} label="Effort" value={effortLevel} />
           <MetaRow icon={'\u2764'} label="Emotion" value={emotion} />
           <MetaRow icon={'\u2709'} label="Language" value={language} />
-          <MetaRow
-            icon={guardianPassed ? '\u2713' : '\u2717'}
-            label="Guardian"
-            value={guardianPassed}
-          />
+          <MetaRow icon={'\u{1F6E1}'} label="Guardian" value={guardianDisplay} />
+          <MetaRow icon={'\u{1F4B0}'} label="Cost" value={costDisplay} />
+          <MetaRow icon={'\u{1F9E0}'} label="Memories" value={memRetrievedDisplay} />
           <MetaRow icon={'\u23F1'} label="Latency" value={latencyMs !== undefined ? `${latencyMs}ms` : undefined} />
           <MetaRow icon={'\u2601'} label="Location" value={processingLocation} />
-          <MetaRow icon={'\u2630'} label="Memories" value={memoryCount} />
+          <MetaRow icon={'\u2630'} label="Memory Count" value={memoryCount} />
         </div>
       )}
     </div>

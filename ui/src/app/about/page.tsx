@@ -488,6 +488,67 @@ export default function AboutPage() {
       </section>
 
       {/* ═══════════════════════════════════════
+          3B. MISSION + TEAM
+      ═══════════════════════════════════════ */}
+      <section className="bg-[#0d0c18] py-28 px-6 relative overflow-hidden">
+        <div className="max-w-4xl mx-auto relative">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+            {/* Mission */}
+            <div
+              className="rounded-2xl p-8"
+              style={{ background: "rgba(201,168,76,0.06)", border: "1px solid rgba(201,168,76,0.2)" }}
+            >
+              <span className="text-xs font-semibold tracking-[0.2em] uppercase text-[#c9a84c]/60 block mb-4">
+                Our mission
+              </span>
+              <h3 className="text-2xl font-black text-white tracking-tight mb-4">
+                Building AI that cares about you, not your data.
+              </h3>
+              <p className="text-white/50 leading-relaxed text-sm">
+                Every decision at MEOK starts with one question: does this serve the person using it?
+                Not the ad model. Not the data pipeline. Not the quarterly earnings call. The human.
+              </p>
+              <div className="mt-6 flex items-center gap-2 text-white/30 text-xs">
+                <span>🇬🇧</span>
+                <span>Built from a farm in the UK</span>
+              </div>
+            </div>
+
+            {/* Team */}
+            <div
+              className="rounded-2xl p-8"
+              style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)" }}
+            >
+              <span className="text-xs font-semibold tracking-[0.2em] uppercase text-white/30 block mb-4">
+                The team
+              </span>
+              <h3 className="text-2xl font-black text-white tracking-tight mb-4">
+                Growing team of AI researchers and engineers.
+              </h3>
+              <p className="text-white/50 leading-relaxed text-sm">
+                MEOK was built by one founder working alone from a caravan. As we grow, we are
+                assembling a team of people who believe AI should serve humans — not the other way
+                around. If that sounds like you,{" "}
+                <a href="mailto:hello@meok.ai" className="text-[#c9a84c] hover:underline">
+                  get in touch
+                </a>.
+              </p>
+              <div className="mt-6 grid grid-cols-2 gap-3">
+                <div className="rounded-xl px-4 py-3" style={{ background: "rgba(201,168,76,0.08)" }}>
+                  <p className="text-[#c9a84c] font-black text-lg">1</p>
+                  <p className="text-white/40 text-xs">Founder</p>
+                </div>
+                <div className="rounded-xl px-4 py-3" style={{ background: "rgba(139,92,246,0.08)" }}>
+                  <p className="text-purple-400 font-black text-lg">43</p>
+                  <p className="text-white/40 text-xs">AI Agents</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════
           4. 43 AGENTS AND 1 HUMAN
       ═══════════════════════════════════════ */}
       <section className="bg-[#1a1a2e] py-28 px-6 relative overflow-hidden">

@@ -237,6 +237,54 @@ export default function SocialGuardianPage() {
           </div>
         </section>
 
+        {/* ── SCRIPTS LIBRARY PREVIEW ──────────────────────────────────── */}
+        <section className="mx-auto max-w-5xl px-6 py-20">
+          <h2 className="mb-4 text-center text-3xl font-bold md:text-4xl">
+            Scripts <span className="text-[#c9a84c]">Library</span> Preview
+          </h2>
+          <p className="mx-auto mb-12 max-w-xl text-center text-white/50">
+            Ready-made scripts you can practise with your companion until they feel natural.
+          </p>
+
+          <div className="grid gap-5 sm:grid-cols-2">
+            {[
+              {
+                title: "Saying no to a social invitation",
+                opening: "\"Thanks so much for thinking of me. I'm going to sit this one out, but I hope you all have a great time.\"",
+              },
+              {
+                title: "Asking for help at work",
+                opening: "\"I want to make sure I get this right. Could I get your input on something? It would really help me move forward.\"",
+              },
+              {
+                title: "Setting a boundary with family",
+                opening: "\"I love you and I need to be honest. When that happens, it's hard for me. Can we find a way that works for both of us?\"",
+              },
+              {
+                title: "Starting a conversation at an event",
+                opening: "\"How do you know the host? I'm still figuring out who everyone is — figured I'd start with the friendliest face.\"",
+              },
+            ].map((script) => (
+              <div
+                key={script.title}
+                className="group rounded-2xl border border-white/[0.07] bg-[#13121f] p-7 transition-colors hover:border-[#c9a84c]/30"
+              >
+                <h3 className="mb-3 text-lg font-semibold text-white">{script.title}</h3>
+                <p className="mb-5 text-sm italic leading-relaxed text-white/45">
+                  {script.opening}
+                </p>
+                <Link
+                  href="/hatch"
+                  className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#c9a84c] transition-opacity hover:opacity-80"
+                >
+                  Practice with your companion
+                  <span aria-hidden="true">&rarr;</span>
+                </Link>
+              </div>
+            ))}
+          </div>
+        </section>
+
         {/* ── CTA ──────────────────────────────────────────────────────── */}
         <section className="mx-auto max-w-3xl px-6 pb-28 pt-10 text-center">
           <h2 className="mb-4 text-3xl font-bold md:text-4xl">
