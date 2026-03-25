@@ -271,6 +271,37 @@ export default function HomePage() {
             </div>
           </section>
 
+          {/* ── 1b. SOCIAL PROOF ────────────────────────────────── */}
+          <section
+            aria-label="Social proof"
+            className="py-16 px-6"
+            style={{ background: "#0d0c18", borderTop: "1px solid rgba(201,168,76,0.08)" }}
+          >
+            <div className="max-w-4xl mx-auto text-center">
+              <p className="text-white/40 text-sm mb-8">
+                Trusted by early adopters building sovereign AI
+              </p>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
+                {[
+                  { stat: "469+", label: "AI Models" },
+                  { stat: "30+", label: "Companions" },
+                  { stat: "22-Module", label: "Pipeline" },
+                ].map((item) => (
+                  <div
+                    key={item.label}
+                    className="rounded-xl py-6 px-4"
+                    style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(201,168,76,0.12)" }}
+                  >
+                    <div className="text-3xl md:text-4xl font-black mb-1" style={{ color: "#c9a84c" }}>
+                      {item.stat}
+                    </div>
+                    <div className="text-sm text-white/40 font-medium">{item.label}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+
           {/* ── 2. VALUE PROPOSITION ──────────────────────────────── */}
           <section
             aria-label="Why MEOK is different"

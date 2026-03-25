@@ -9,18 +9,35 @@ const SURFACE = "#13121f";
 const BORDER = "rgba(255,255,255,0.07)";
 const GOLD = "#c9a84c";
 
-const TONES = ["Professional", "Casual", "Friendly", "Formal"] as const;
+const TONES = ["Casual", "Friendly", "Professional", "Business", "Formal"] as const;
 type Tone = (typeof TONES)[number];
 
 const TONE_INSTRUCTIONS: Record<Tone, string> = {
-  Professional:
-    "Write in a professional, business-appropriate tone. Be clear, concise, and courteous.",
   Casual:
     "Write in a casual, relaxed tone. Keep it conversational but still coherent.",
   Friendly:
     "Write in a warm, friendly tone. Be approachable, positive, and personable.",
+  Professional:
+    "Write in a professional, business-appropriate tone. Be clear, concise, and courteous.",
+  Business:
+    "Write in a polished business tone. Confident and direct, suitable for stakeholders.",
   Formal:
     "Write in a formal, respectful tone. Use proper grammar, avoid contractions, and maintain decorum.",
+};
+
+const EMAIL_TEMPLATES: Record<string, { label: string; body: string }> = {
+  followup: {
+    label: "Follow-up",
+    body: `Hi [Name],\n\nI wanted to follow up on our previous conversation regarding [topic]. Have you had a chance to review the details?\n\nPlease let me know if you have any questions or if there's anything else I can help with.\n\nBest regards,\n[Your Name]`,
+  },
+  introduction: {
+    label: "Introduction",
+    body: `Hi [Name],\n\nI hope this message finds you well. My name is [Your Name] and I'm reaching out because [reason for reaching out].\n\nI'd love to connect and discuss how we might [value proposition]. Would you be open to a brief call this week?\n\nLooking forward to hearing from you.\n\nBest,\n[Your Name]`,
+  },
+  thankyou: {
+    label: "Thank You",
+    body: `Hi [Name],\n\nThank you so much for [what you're thanking them for]. I really appreciate your time and effort.\n\n[Any next steps or additional thoughts]\n\nThanks again, and please don't hesitate to reach out if there's anything I can do in return.\n\nWarm regards,\n[Your Name]`,
+  },
 };
 
 export default function EmailPage() {
@@ -133,24 +150,56 @@ export default function EmailPage() {
             />
           </div>
 
-          {/* Tone selector */}
+          {/* Tone slider */}
           <div>
             <label className="block text-sm font-medium text-white/60 mb-2">
               Tone
             </label>
+            <div className="space-y-2">
+              <input
+                type="range"
+                min={0}
+                max={4}
+                value={TONES.indexOf(tone)}
+                onChange={(e) => setTone(TONES[Number(e.target.value)])}
+                className="w-full h-1.5 rounded-full appearance-none cursor-pointer"
+                style={{
+                  background: `linear-gradient(to right, rgba(255,255,255,0.15), ${GOLD})`,
+                  accentColor: GOLD,
+                }}
+              />
+              <div className="flex justify-between text-xs text-white/40">
+                {TONES.map((t) => (
+                  <span
+                    key={t}
+                    className="transition-colors"
+                    style={{ color: tone === t ? GOLD : undefined, fontWeight: tone === t ? 600 : 400 }}
+                  >
+                    {t}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Template buttons */}
+          <div>
+            <label className="block text-sm font-medium text-white/60 mb-2">
+              Templates
+            </label>
             <div className="flex flex-wrap gap-2">
-              {TONES.map((t) => (
+              {Object.entries(EMAIL_TEMPLATES).map(([key, { label }]) => (
                 <button
-                  key={t}
-                  onClick={() => setTone(t)}
-                  className="px-4 py-2 rounded-lg text-sm font-medium transition-all"
+                  key={key}
+                  onClick={() => setContext(EMAIL_TEMPLATES[key].body)}
+                  className="px-4 py-2 rounded-lg text-sm font-medium transition-all hover:scale-[1.02]"
                   style={{
-                    background: tone === t ? `${GOLD}20` : SURFACE,
-                    color: tone === t ? GOLD : "rgba(255,255,255,0.5)",
-                    border: `1px solid ${tone === t ? `${GOLD}50` : BORDER}`,
+                    background: `${GOLD}10`,
+                    color: GOLD,
+                    border: `1px solid ${GOLD}30`,
                   }}
                 >
-                  {t}
+                  {label}
                 </button>
               ))}
             </div>

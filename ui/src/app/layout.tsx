@@ -108,6 +108,7 @@ const organizationSchema = {
     url: "https://meok.ai/about",
   },
   sameAs: [
+    "https://twitter.com/meok_ai",
     "https://instagram.com/meok_ai",
     "https://tiktok.com/@meok_ai",
   ],

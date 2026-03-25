@@ -8,6 +8,11 @@ import {
   Maximize2,
   Save,
   Check,
+  Download,
+  Bold,
+  Italic,
+  Heading1,
+  List,
 } from "lucide-react";
 
 // ── Brand tokens ────────────────────────────────────────────────────────────
@@ -89,6 +94,43 @@ export default function DocumentsPage() {
     },
     [getTargetText, replaceTargetText],
   );
+
+  // Markdown toolbar: wrap selected text or insert at cursor
+  const insertMarkdown = useCallback(
+    (prefix: string, suffix: string = "") => {
+      const ta = textareaRef.current;
+      if (!ta) return;
+      const start = ta.selectionStart;
+      const end = ta.selectionEnd;
+      const selected = content.slice(start, end);
+      const before = content.slice(0, start);
+      const after = content.slice(end);
+      const insertion = selected
+        ? `${prefix}${selected}${suffix}`
+        : `${prefix}text${suffix}`;
+      setContent(before + insertion + after);
+      // Restore focus after state update
+      requestAnimationFrame(() => {
+        ta.focus();
+        const cursorPos = selected
+          ? start + insertion.length
+          : start + prefix.length;
+        ta.setSelectionRange(cursorPos, cursorPos + (selected ? 0 : 4));
+      });
+    },
+    [content],
+  );
+
+  const handleExport = useCallback(() => {
+    const filename = (title.trim() || "untitled") + ".md";
+    const blob = new Blob([content], { type: "text/markdown;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = filename;
+    a.click();
+    URL.revokeObjectURL(url);
+  }, [title, content]);
 
   const handleSave = useCallback(() => {
     const key = `meok-doc-${Date.now()}`;
@@ -172,6 +214,50 @@ export default function DocumentsPage() {
         >
           {saved ? <Check className="w-3.5 h-3.5" /> : <Save className="w-3.5 h-3.5" />}
           {saved ? "Saved" : "Save"}
+        </button>
+      </div>
+
+      {/* Markdown Toolbar */}
+      <div
+        className="flex items-center gap-1 mb-4 p-2 rounded-lg"
+        style={{ background: SURFACE, border: `1px solid ${BORDER}` }}
+      >
+        <span className="text-xs text-white/40 mr-2 hidden sm:inline">
+          Format:
+        </span>
+        {[
+          { label: "Bold", icon: Bold, action: () => insertMarkdown("**", "**") },
+          { label: "Italic", icon: Italic, action: () => insertMarkdown("*", "*") },
+          { label: "Heading", icon: Heading1, action: () => insertMarkdown("# ", "") },
+          { label: "List", icon: List, action: () => insertMarkdown("- ", "") },
+        ].map(({ label, icon: Icon, action }) => (
+          <button
+            key={label}
+            onClick={action}
+            title={label}
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-md text-sm font-medium transition-all hover:scale-105 hover:bg-white/5"
+            style={{ color: "rgba(255,255,255,0.6)" }}
+          >
+            <Icon className="w-3.5 h-3.5" />
+            <span className="hidden sm:inline">{label}</span>
+          </button>
+        ))}
+
+        <div className="flex-1" />
+
+        {/* Export button */}
+        <button
+          onClick={handleExport}
+          disabled={!content.trim()}
+          className="flex items-center gap-1.5 px-3 py-1.5 rounded-md text-sm font-medium transition-all hover:scale-105 disabled:opacity-30"
+          style={{
+            color: GOLD,
+            background: `${GOLD}10`,
+            border: `1px solid ${GOLD}30`,
+          }}
+        >
+          <Download className="w-3.5 h-3.5" />
+          Export .md
         </button>
       </div>
 

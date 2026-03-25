@@ -270,40 +270,60 @@ export default function OrchestratorPage() {
       )}
 
       {/* Recent Dispatches */}
-      {orch && orch.recent_dispatches.length > 0 && (
-        <Card>
-          <CardHeader>
-            <CardTitle className="text-sm font-medium">Recent Dispatches</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="space-y-2">
-              {orch.recent_dispatches.map((d) => (
-                <div
-                  key={d.proposal_id}
-                  className="flex items-start gap-3 p-2.5 rounded-lg bg-white/3 hover:bg-white/5 transition-colors"
-                >
-                  <div className="flex-1 min-w-0">
-                    <div className="flex items-center gap-2 flex-wrap">
-                      <ActionTypePill type={d.action_type} />
-                      <span className="text-xs text-white/30 truncate">{d.proposal_id}</span>
-                      {d.dispatched ? (
-                        <Badge variant="outline" className="text-green-400 border-green-400/30 text-xs h-4">ok</Badge>
-                      ) : (
-                        <Badge variant="outline" className="text-red-400 border-red-400/30 text-xs h-4">fail</Badge>
-                      )}
+      {orch && orch.recent_dispatches.length > 0 && (() => {
+        const completed = orch.recent_dispatches.filter((d) => d.dispatched).length;
+        const total = orch.recent_dispatches.length;
+        return (
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-sm font-medium flex items-center justify-between">
+                <span>Recent Dispatches</span>
+                <span className="text-xs font-normal text-white/40">
+                  <span className="text-green-400 font-semibold">{completed}</span>/{total} tasks complete
+                </span>
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-2">
+                {orch.recent_dispatches.map((d) => (
+                  <div
+                    key={d.proposal_id}
+                    className="flex items-start gap-3 p-2.5 rounded-lg bg-white/3 hover:bg-white/5 transition-colors"
+                  >
+                    {/* Status dot */}
+                    <span
+                      className="mt-1.5 w-2.5 h-2.5 rounded-full flex-shrink-0"
+                      style={{
+                        background: d.dispatched
+                          ? "#22c55e"        /* green = complete */
+                          : d.duration_ms > 0
+                            ? "#c9a84c"      /* gold = in-progress */
+                            : "#6b7280",     /* gray = pending/failed */
+                      }}
+                    />
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center gap-2 flex-wrap">
+                        <ActionTypePill type={d.action_type} />
+                        <span className="text-xs text-white/30 truncate">{d.proposal_id}</span>
+                        {d.dispatched ? (
+                          <Badge variant="outline" className="text-green-400 border-green-400/30 text-xs h-4">ok</Badge>
+                        ) : (
+                          <Badge variant="outline" className="text-red-400 border-red-400/30 text-xs h-4">fail</Badge>
+                        )}
+                      </div>
+                      <p className="text-xs text-white/30 mt-0.5">
+                        {d.dispatched_at ? new Date(d.dispatched_at).toLocaleTimeString() : "\u2014"}
+                        {" \u00b7 "}
+                        {d.duration_ms}ms
+                      </p>
                     </div>
-                    <p className="text-xs text-white/30 mt-0.5">
-                      {d.dispatched_at ? new Date(d.dispatched_at).toLocaleTimeString() : "—"}
-                      {" · "}
-                      {d.duration_ms}ms
-                    </p>
                   </div>
-                </div>
-              ))}
-            </div>
-          </CardContent>
-        </Card>
-      )}
+                ))}
+              </div>
+            </CardContent>
+          </Card>
+        );
+      })()}
 
       {/* z_self Meta-Cognitive Observer */}
       <section>
