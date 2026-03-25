@@ -13,6 +13,7 @@ import { Suspense } from "react";
 import { PostHogProvider } from "@/components/posthog-provider";
 import { CookieConsent } from "@/components/cookie-consent";
 import { SovereignWidget } from "@/components/sovereign-widget";
+import { FloatingCTA } from "@/components/floating-cta";
 import { GlobalNav } from "@/components/GlobalNav";
 import "./globals.css";
 
@@ -186,6 +187,7 @@ export default function RootLayout({
           </Suspense>
           <CookieConsent />
           <SovereignWidget />
+          <FloatingCTA />
         </body>
       </html>
     </MaybeClerk>

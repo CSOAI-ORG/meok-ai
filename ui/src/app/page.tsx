@@ -310,6 +310,39 @@ export default function HomePage() {
             </div>
           </section>
 
+          {/* ── 2b. GUARDIAN SHOWCASE ─────────────────────────────── */}
+          <section aria-label="Guardian protection" className="py-20 px-6" style={{ background: "#080811" }}>
+            <div className="max-w-5xl mx-auto text-center">
+              <p className="text-[#2d9b8a] text-sm font-bold tracking-widest uppercase mb-4">Protect Your People</p>
+              <h2 className="font-black text-white text-3xl md:text-4xl tracking-tight mb-4">
+                MEOK Guardian watches over the people you love.
+              </h2>
+              <p className="text-white/50 mb-12 max-w-2xl mx-auto">
+                Scam detection, relationship safety, and social protection \u2014 built into every conversation.
+              </p>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-10">
+                {[
+                  { title: "Scam Stop", desc: "Catches phishing, romance scams, and financial fraud before they reach your family.", color: "#2d9b8a" },
+                  { title: "Relationship Shield", desc: "Detects manipulation patterns, gaslighting, and coercive control in conversations.", color: "#A78BFA" },
+                  { title: "Social Guardian", desc: "Helps neurodivergent users navigate social situations with confidence.", color: "#F59E0B" },
+                ].map((card) => (
+                  <div key={card.title} className="rounded-2xl p-6 text-left" style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.08)", borderLeft: `3px solid ${card.color}` }}>
+                    <h3 className="font-bold text-white text-base mb-2">{card.title}</h3>
+                    <p className="text-white/45 text-sm leading-relaxed">{card.desc}</p>
+                  </div>
+                ))}
+              </div>
+              <div className="flex flex-wrap justify-center gap-8 text-xs text-white/30 mb-8">
+                <span>50% of neurodivergent people are scam victims</span>
+                <span>96% think they can spot scams \u2014 they can&apos;t</span>
+                <span>44% of victims get retargeted</span>
+              </div>
+              <Link href="/guardian" className="inline-flex items-center gap-2 text-[#2d9b8a] font-semibold hover:underline text-sm">
+                Learn about Guardian <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
+          </section>
+
           {/* ── 3. HOW IT WORKS ──────────────────────────────────── */}
           <section
             aria-label="How MEOK works"
@@ -362,9 +395,16 @@ export default function HomePage() {
               <h2 className="font-black text-white text-3xl md:text-4xl tracking-tight mb-4">
                 Free forever. Pay when it earns it.
               </h2>
-              <p className="text-white/50 mb-12">
+              <p className="text-white/50 mb-4">
                 Sovereign architecture at every tier. Your data stays yours whether you pay or not.
               </p>
+              <div className="inline-flex items-center gap-3 px-5 py-2 rounded-full text-sm mb-12" style={{ background: "rgba(201,168,76,0.08)", border: "1px solid rgba(201,168,76,0.2)" }}>
+                <span className="text-white/40">ChatGPT Plus \u00a320</span>
+                <span className="text-white/20">\u00b7</span>
+                <span className="text-white/40">Claude Pro \u00a318</span>
+                <span className="text-white/20">\u00b7</span>
+                <span className="text-[#c9a84c] font-bold">MEOK Sovereign \u00a312</span>
+              </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 mb-8">
                 {/* Explorer \u2014 Free */}
@@ -435,6 +475,31 @@ export default function HomePage() {
                 <span>\u2713 Zero data selling at every tier</span>
                 <span>\u2713 Maternal Covenant built in</span>
               </div>
+            </div>
+          </section>
+
+          {/* ── 4b. HONESTY SECTION ──────────────────────────────── */}
+          <section aria-label="What we don't do yet" className="py-16 px-6" style={{ background: "#1a1a2e" }}>
+            <div className="max-w-3xl mx-auto text-center">
+              <p className="text-white/30 text-sm font-bold tracking-widest uppercase mb-4">Honest about the gaps</p>
+              <h2 className="font-black text-white text-2xl mb-8">What you don&apos;t get with MEOK. Yet.</h2>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-left mb-8">
+                {[
+                  { feature: "Image generation", status: "On the roadmap" },
+                  { feature: "Code execution sandbox", status: "Security-sensitive \u2014 taking our time" },
+                  { feature: "Live web browsing", status: "Using Perplexity Sonar meanwhile" },
+                  { feature: "Mobile app", status: "Web-first launch, native apps follow" },
+                  { feature: "Voice interaction", status: "Coming \u2014 prioritising memory quality first" },
+                ].map((item) => (
+                  <div key={item.feature} className="flex items-start gap-3 px-4 py-3 rounded-lg" style={{ background: "rgba(255,255,255,0.03)" }}>
+                    <span className="text-white/50 text-sm font-medium shrink-0">{item.feature}</span>
+                    <span className="text-white/25 text-sm ml-auto">{item.status}</span>
+                  </div>
+                ))}
+              </div>
+              <p className="text-white/25 text-xs italic">
+                We think transparency about limitations builds more trust than pretending they don&apos;t exist.
+              </p>
             </div>
           </section>
 
