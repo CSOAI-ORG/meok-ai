@@ -4,17 +4,29 @@
  * POST /api/chat  — Streams a response from the routed LLM.
  * GET  /api/chat  — Health check endpoint.
  *
- * Pipeline:
- *   Auth → validate → rate-limit → build system prompt → route model → stream
+ * Pipeline (Phase 9):
+ *   Auth → validate → detect language → analyze emotion → guardian scan →
+ *   rate-limit → retrieve memory → procedural patterns → build system prompt →
+ *   route model → compress → stream → fire-and-forget storage
  */
 
 import { type NextRequest, NextResponse } from 'next/server';
 import { streamText } from 'ai';
 import { auth } from '@clerk/nextjs/server';
-import { route, type Tier } from '@/lib/llm-router';
+import { route, type Tier, getEffortLevel, getThinkingBudget } from '@/lib/llm-router';
 import { compressContext } from '@/lib/context-compressor';
 import { getUserById, incrementMessageCount, TIER_LIMITS } from '@/lib/db/user';
 import { getCharacter } from '@/lib/characters';
+import { analyzeEmotion, formatEmotionContext } from '@/lib/emotion';
+import {
+  retrieveMemory, buildMemoryContext, storeMemory,
+  extractImportance, pushShortTerm,
+  analyzeProceduralPatterns, formatProceduralContext,
+} from '@/lib/memory';
+import { getCrisisResources, formatCrisisResponse } from '@/lib/crisis';
+import { detectLanguage, getLanguageDirective } from '@/lib/language';
+import { analyzeOCEAN, formatProfileContext } from '@/lib/user-profile';
+import { computeStyleDirective, formatStyleDirective } from '@/lib/adaptive-dialogue';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -35,15 +47,38 @@ You are governed by the Maternal Covenant. User wellbeing ALWAYS takes priority 
 
 // ── System prompt builder ──────────────────────────────────────────────────
 
+interface PromptContextBlocks {
+  emotion?: string;
+  memory?: string;
+  procedural?: string;
+  language?: string;
+  style?: string;
+}
+
 /**
  * Builds the full system prompt for a given companion, including the
- * Maternal Covenant constraint. Falls back to Aria for unknown companions.
+ * Maternal Covenant, plus optional context blocks for emotion, memory,
+ * procedural patterns, language, and adaptive style.
  */
-function buildSystemPrompt(companionId: string): string {
+function buildSystemPrompt(companionId: string, contexts: PromptContextBlocks = {}): string {
   const character = getCharacter(companionId);
   const prompt = character?.systemPrompt ?? getCharacter('aria')!.systemPrompt;
   const name = character?.name ?? 'Aria';
-  return `${prompt}\n\nYour name in this conversation is ${name}.${MATERNAL_COVENANT}`;
+
+  const parts = [
+    prompt,
+    `\nYour name in this conversation is ${name}.`,
+    MATERNAL_COVENANT,
+  ];
+
+  // Append context blocks (only non-empty ones)
+  if (contexts.language) parts.push(`\n${contexts.language}`);
+  if (contexts.emotion) parts.push(`\n${contexts.emotion}`);
+  if (contexts.memory) parts.push(`\n${contexts.memory}`);
+  if (contexts.procedural) parts.push(`\n${contexts.procedural}`);
+  if (contexts.style) parts.push(`\n${contexts.style}`);
+
+  return parts.join('');
 }
 
 // ── Request body type ──────────────────────────────────────────────────────
@@ -93,6 +128,14 @@ export async function POST(req: NextRequest): Promise<Response> {
     return errorResponse(`Message exceeds ${MAX_MESSAGE_LENGTH} character limit`, 400);
   }
 
+  // 3a. Detect language (fast — in-process trigram analysis)
+  const langDetection = detectLanguage(trimmed);
+  const languageDirective = getLanguageDirective(langDetection);
+
+  // 3b. Analyze emotion (fast — in-process lexicon scoring)
+  const emotionState = analyzeEmotion(trimmed);
+  const emotionCtx = formatEmotionContext(emotionState);
+
   // 4. Guardian scan — block dangerous messages before they reach the LLM
   try {
     const guardianRes = await fetch(new URL('/api/guardian/scan-message', req.url), {
@@ -111,15 +154,14 @@ export async function POST(req: NextRequest): Promise<Response> {
         recommended_action?: string;
       };
       if (scan.safe_to_deliver === false) {
+        // Use localized crisis resources based on Accept-Language header + detected language
+        const acceptLang = req.headers.get('accept-language');
+        const crisisResources = getCrisisResources(acceptLang ?? undefined);
+        const crisisMessage = formatCrisisResponse(crisisResources);
         return NextResponse.json(
           {
-            error:
-              'Your message was flagged by our safety system. If you are in distress, please reach out to a trusted person or contact a crisis service:\n\n' +
-              '• UK: Samaritans — call 116 123 (free, 24/7)\n' +
-              '• UK: SHOUT — text 85258\n' +
-              '• US: 988 Suicide & Crisis Lifeline — call or text 988\n' +
-              '• International: befrienders.org\n\n' +
-              'You are not alone.',
+            error: `Your message was flagged by our safety system.\n\n${crisisMessage}`,
+            crisis_resources: crisisResources,
             guardian_severity: scan.severity,
             guardian_action: scan.recommended_action,
           },
@@ -169,15 +211,79 @@ export async function POST(req: NextRequest): Promise<Response> {
     console.error('[api/chat] Failed to fetch user or increment message count:', err);
   }
 
-  // 6. Build system prompt
-  const systemPrompt = buildSystemPrompt(companionId ?? 'aria');
+  // 6. Retrieve memory context + analyze patterns (all non-fatal)
+  const cid = companionId ?? 'aria';
+  let memoryCtx = '';
+  let proceduralCtx = '';
+  let profileCtx = '';
+  let styleCtx = '';
+  let sessionPatterns: import('@/lib/memory').ProceduralPattern[] = [];
+  let sessionProfile: import('@/lib/user-profile').UserProfile | null = null;
 
-  // 7. Route to model
+  try {
+    const memory = await retrieveMemory(userId, cid, trimmed);
+    memoryCtx = buildMemoryContext(memory);
+  } catch (err) {
+    console.error('[api/chat] Memory retrieval failed:', err);
+  }
+
+  try {
+    sessionPatterns = analyzeProceduralPatterns(
+      incomingMessages as Array<{ role: string; content: string }>,
+      [],
+    );
+    proceduralCtx = formatProceduralContext(sessionPatterns);
+  } catch (err) {
+    console.error('[api/chat] Procedural pattern analysis failed:', err);
+  }
+
+  try {
+    sessionProfile = analyzeOCEAN(incomingMessages as Array<{ role: string; content: string }>);
+    sessionProfile.detectedLanguage = langDetection.language;
+    profileCtx = formatProfileContext(sessionProfile);
+  } catch (err) {
+    console.error('[api/chat] Profile analysis failed:', err);
+  }
+
+  // 6a. Route to model (needed for adaptive style)
   const { model, taskType, provider } = route(trimmed, userTier);
 
+  // 6b. Compute adaptive style directive
+  try {
+    const character = getCharacter(cid);
+    const styleDirective = computeStyleDirective({
+      emotion: emotionState,
+      proceduralPatterns: sessionPatterns,
+      userProfile: sessionProfile,
+      language: langDetection,
+      taskType,
+      companionArchetype: character?.archetype ?? 'nurturer',
+      conversationLength: incomingMessages.length,
+    });
+    styleCtx = formatStyleDirective(styleDirective);
+  } catch (err) {
+    console.error('[api/chat] Adaptive style computation failed:', err);
+  }
+
+  // 6c. Build system prompt with all context blocks
+  const systemPrompt = buildSystemPrompt(cid, {
+    emotion: emotionCtx,
+    memory: memoryCtx,
+    procedural: proceduralCtx,
+    language: languageDirective,
+    style: [profileCtx, styleCtx].filter(Boolean).join('\n') || undefined,
+  });
+
+  // 7a. Compute effort level for adaptive thinking
+  const effortLevel = getEffortLevel(taskType);
+  const thinkingBudget = getThinkingBudget(effortLevel);
+  const isAnthropic = model.startsWith('claude-');
+
   console.log(
-    `[api/chat] userId=${userId} tier=${userTier} companion=${companionId ?? 'aria'} ` +
-    `taskType=${taskType} model=${model}`,
+    `[api/chat] userId=${userId} tier=${userTier} companion=${cid} ` +
+    `taskType=${taskType} model=${model} effort=${effortLevel} budget=${thinkingBudget} ` +
+    `lang=${langDetection.language}(${(langDetection.confidence * 100).toFixed(0)}%) ` +
+    `emotion=${emotionState.primary}(v=${emotionState.valence.toFixed(2)})`,
   );
 
   // 7b. Compress context if conversation is long (>20 messages)
@@ -207,8 +313,29 @@ export async function POST(req: NextRequest): Promise<Response> {
       model: provider,
       system: systemPrompt,
       messages: messagesForLLM,
-      maxOutputTokens: 2048,
+      maxOutputTokens: Math.max(2048, thinkingBudget),
       temperature: 0.7,
+      providerOptions: isAnthropic ? {
+        anthropic: {
+          cacheControl: { type: "ephemeral" },
+        },
+      } : undefined,
+    });
+
+    // Fire-and-forget: store memory episode for this interaction
+    const importance = extractImportance(trimmed);
+    void storeMemory(userId, trimmed, importance, [taskType]).catch(err =>
+      console.error('[api/chat] Memory storage failed (non-fatal):', err),
+    );
+    void pushShortTerm(userId, cid, {
+      id: crypto.randomUUID(),
+      content: trimmed,
+      timestamp: new Date().toISOString(),
+      importance_score: importance,
+      memory_type: 'short_term',
+      source_agent: 'chat',
+      tags: [taskType, emotionState.primary],
+      care_weight: emotionState.valence < -0.3 ? 0.8 : 0.5,
     });
 
     return result.toTextStreamResponse();

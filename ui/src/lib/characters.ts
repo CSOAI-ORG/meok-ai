@@ -31,7 +31,7 @@ export interface Character {
   personality: string[];
   tier: Tier;
   tags: string[];
-  license: 'CC0' | 'original';
+  license: 'CC0' | 'original' | 'user-created';
   voiceStyle: string;
 }
 

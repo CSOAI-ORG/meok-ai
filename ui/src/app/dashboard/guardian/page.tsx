@@ -3,7 +3,7 @@
 // Protected route — auth is enforced by the dashboard layout (AuthProvider + useAuth).
 // This page is only reachable when the user is authenticated.
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { callTool } from "@/lib/api";
 import Link from "next/link";
 import {
@@ -63,39 +63,39 @@ function SeverityBadge({ severity }: { severity: Severity }) {
 
 const FALLBACK_ALERTS: AlertRow[] = [];
 
-const PROTECTIONS: {
+const PROTECTION_META: {
+  key: "scan_messages" | "relationship_shield" | "social_guardian" | "child_safe_mode";
   icon: React.ElementType;
   label: string;
   description: string;
-  active: boolean;
   iconColor: string;
 }[] = [
   {
+    key: "scan_messages",
     icon: Shield,
     label: "ScamStop",
     description: "Real-time fraud detection across 15 scam pattern categories.",
-    active: true,
     iconColor: GOLD,
   },
   {
+    key: "relationship_shield",
     icon: AlertTriangle,
     label: "Relationship Shield",
     description: "Coercive control and manipulation pattern detection.",
-    active: true,
     iconColor: "#f87171",
   },
   {
+    key: "social_guardian",
     icon: Brain,
     label: "Social Guardian",
     description: "Literal language mode and social support for neurodivergent users.",
-    active: true,
     iconColor: "#a78bfa",
   },
   {
+    key: "child_safe_mode",
     icon: Baby,
     label: "School-Safe Mode",
     description: "Children's Code compliant content controls. No adult content.",
-    active: false,
     iconColor: "#60a5fa",
   },
 ];
@@ -106,6 +106,84 @@ export default function GuardianDashboardPage() {
   const [alerts, setAlerts] = useState<AlertRow[]>(FALLBACK_ALERTS);
   const [loading, setLoading] = useState(true);
 
+  // ── Guardian state ──────────────────────────────────────────────────────────
+  const [protections, setProtections] = useState({
+    scan_messages: true,
+    relationship_shield: true,
+    social_guardian: true,
+    child_safe_mode: false,
+  });
+  const [notifications, setNotifications] = useState({
+    email: true,
+    push: true,
+    in_app_only: false,
+  });
+  const [saving, setSaving] = useState(false);
+
+  // ── Save helper ─────────────────────────────────────────────────────────────
+  const saveSettings = useCallback(
+    async (
+      newProtections: typeof protections,
+      newNotifications: typeof notifications,
+    ) => {
+      setSaving(true);
+      try {
+        await fetch("/api/user/guardian", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            guardian_enabled: true,
+            settings: { ...newProtections, notifications: newNotifications },
+          }),
+        });
+      } catch (e) {
+        console.error("Failed to save guardian settings:", e);
+      } finally {
+        setSaving(false);
+      }
+    },
+    [],
+  );
+
+  // ── Toggle a protection ─────────────────────────────────────────────────────
+  function toggleProtection(key: keyof typeof protections) {
+    const next = { ...protections, [key]: !protections[key] };
+    setProtections(next);
+    saveSettings(next, notifications);
+  }
+
+  // ── Toggle a notification channel ───────────────────────────────────────────
+  function toggleNotification(key: keyof typeof notifications) {
+    const next = { ...notifications, [key]: !notifications[key] };
+    setNotifications(next);
+    saveSettings(protections, next);
+  }
+
+  // ── Fetch guardian settings on mount ────────────────────────────────────────
+  useEffect(() => {
+    fetch("/api/user/guardian")
+      .then((r) => r.json())
+      .then((data) => {
+        if (data.settings) {
+          setProtections({
+            scan_messages: data.settings.scan_messages ?? true,
+            relationship_shield: data.settings.relationship_shield ?? true,
+            social_guardian: data.settings.social_guardian ?? true,
+            child_safe_mode: data.settings.child_safe_mode ?? false,
+          });
+          if (data.settings.notifications) {
+            setNotifications({
+              email: data.settings.notifications.email ?? true,
+              push: data.settings.notifications.push ?? true,
+              in_app_only: data.settings.notifications.in_app_only ?? false,
+            });
+          }
+        }
+      })
+      .catch((e) => console.error("Failed to load guardian settings:", e));
+  }, []);
+
+  // ── Fetch alerts on mount ───────────────────────────────────────────────────
   useEffect(() => {
     callTool<{ alerts?: Array<{ id?: string; time?: string; severity?: string; type?: string; action?: string; message?: string; level?: string }> }>("get_active_alerts")
       .then((res) => {
@@ -257,30 +335,35 @@ export default function GuardianDashboardPage() {
             <span className="text-sm font-black text-white">
               Active Protections
             </span>
+            {saving && (
+              <span className="text-[10px] text-white/30 ml-auto">Saving...</span>
+            )}
           </div>
 
           <div className="p-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {PROTECTIONS.map((p) => {
+            {PROTECTION_META.map((p) => {
               const Icon = p.icon;
+              const active = protections[p.key];
               return (
                 <div
                   key={p.label}
-                  className="flex items-start gap-4 p-5 rounded-2xl"
+                  className="flex items-start gap-4 p-5 rounded-2xl cursor-pointer select-none transition-all"
                   style={{
-                    background: p.active
+                    background: active
                       ? `${p.iconColor}0d`
                       : "rgba(255,255,255,0.02)",
-                    border: `1px solid ${p.active ? `${p.iconColor}25` : BORDER}`,
+                    border: `1px solid ${active ? `${p.iconColor}25` : BORDER}`,
                   }}
+                  onClick={() => toggleProtection(p.key)}
                 >
                   {/* Status dot */}
                   <div className="flex-shrink-0 mt-1">
                     <span
                       className={`block w-2.5 h-2.5 rounded-full ${
-                        p.active ? "animate-pulse" : ""
+                        active ? "animate-pulse" : ""
                       }`}
                       style={{
-                        background: p.active ? "#4ade80" : "#52525b",
+                        background: active ? "#4ade80" : "#52525b",
                       }}
                     />
                   </div>
@@ -288,15 +371,15 @@ export default function GuardianDashboardPage() {
                   <div
                     className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0"
                     style={{
-                      background: p.active
+                      background: active
                         ? `${p.iconColor}18`
                         : "rgba(255,255,255,0.04)",
-                      border: `1px solid ${p.active ? `${p.iconColor}30` : BORDER}`,
+                      border: `1px solid ${active ? `${p.iconColor}30` : BORDER}`,
                     }}
                   >
                     <Icon
                       size={16}
-                      style={{ color: p.active ? p.iconColor : "#52525b" }}
+                      style={{ color: active ? p.iconColor : "#52525b" }}
                     />
                   </div>
 
@@ -307,9 +390,9 @@ export default function GuardianDashboardPage() {
                       </p>
                       <span
                         className="text-[10px] font-black uppercase tracking-wide"
-                        style={{ color: p.active ? "#4ade80" : "#52525b" }}
+                        style={{ color: active ? "#4ade80" : "#52525b" }}
                       >
-                        {p.active ? "Active" : "Inactive"}
+                        {active ? "Active" : "Inactive"}
                       </span>
                     </div>
                     <p className="text-xs text-white/40 leading-snug">
@@ -350,6 +433,7 @@ export default function GuardianDashboardPage() {
                 border: "1px solid rgba(201,168,76,0.25)",
                 color: GOLD,
               }}
+              onClick={() => alert('Family Circle members — coming soon!')}
             >
               <UserPlus size={15} />
               Add Member
@@ -383,29 +467,33 @@ export default function GuardianDashboardPage() {
                 icon: Mail,
                 label: "Email alerts",
                 desc: "Receive alert summaries by email",
-                checked: true,
+                key: "email" as const,
+                locked: false,
               },
               {
                 icon: Smartphone,
                 label: "SMS alerts",
                 desc: "Text message for HIGH and CRITICAL only",
-                checked: false,
+                key: null,
                 locked: true,
               },
               {
                 icon: Bell,
                 label: "Push notifications",
                 desc: "Browser and mobile push for all alerts",
-                checked: true,
+                key: "push" as const,
+                locked: false,
               },
               {
                 icon: MessageSquare,
                 label: "In-app only",
                 desc: "Alerts visible only inside the MEOK dashboard",
-                checked: false,
+                key: "in_app_only" as const,
+                locked: false,
               },
             ].map((item) => {
               const Icon = item.icon;
+              const checked = item.key ? notifications[item.key] : false;
               return (
                 <label
                   key={item.label}
@@ -413,8 +501,11 @@ export default function GuardianDashboardPage() {
                 >
                   <input
                     type="checkbox"
-                    defaultChecked={item.checked}
+                    checked={checked}
                     disabled={item.locked}
+                    onChange={() => {
+                      if (item.key) toggleNotification(item.key);
+                    }}
                     className="mt-0.5 w-4 h-4 rounded accent-[#c9a84c] flex-shrink-0"
                   />
                   <div

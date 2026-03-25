@@ -255,7 +255,40 @@ export interface RouterResult {
   provider: LanguageModel;
 }
 
-// ── Main route function ────────────────────────────────────────────────────
+// ── Effort levels ───────────────────────────────────────────────────────
+
+export type EffortLevel = 'low' | 'medium' | 'high' | 'max';
+
+export function getEffortLevel(taskType: TaskType): EffortLevel {
+  switch (taskType) {
+    case 'chat':
+    case 'gaming':
+      return 'low';
+    case 'research':
+    case 'analysis':
+    case 'planning':
+      return 'medium';
+    case 'emotional':
+    case 'creative':
+      return 'high';
+    case 'coding':
+    case 'reasoning':
+      return 'max';
+    default:
+      return 'medium';
+  }
+}
+
+export function getThinkingBudget(effort: EffortLevel): number {
+  switch (effort) {
+    case 'low': return 1024;
+    case 'medium': return 4096;
+    case 'high': return 16384;
+    case 'max': return 32768;
+  }
+}
+
+// ── Main route function ────────────────────────────────────────────────
 
 /**
  * Primary entry point. Classifies the message, selects the best model for

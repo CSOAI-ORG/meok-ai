@@ -2,6 +2,7 @@ import { auth } from '@clerk/nextjs/server'
 import { NextResponse } from 'next/server'
 import { getEvolutionStage, getProgressToNextStage, interactionsUntilNextStage, isFeatureUnlocked } from '@/lib/evolution'
 import { getMasteryLevel, getLevelProgress } from '@/lib/gamification'
+import { getUserById } from '@/lib/db/user'
 
 export async function GET() {
   const { userId } = await auth()
@@ -9,9 +10,9 @@ export async function GET() {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
   }
 
-  // TODO: load real interactions from DB. For now return demo data.
-  const interactions = 0
-  const streakDays = 0
+  const user = await getUserById(userId)
+  const interactions = user?.messages_total ?? user?.companion_stage ?? 0
+  const streakDays = user?.streak_days ?? 0
 
   const stage = getEvolutionStage(interactions)
   const mastery = getMasteryLevel(interactions)

@@ -496,3 +496,156 @@ export function clearShortTerm(userId: string, companionId: string): void {
   _shortTermCache.delete(_cacheKey(userId, companionId));
   console.log(`[memory] clearShortTerm user=${userId} companion=${companionId}`);
 }
+
+// ---------------------------------------------------------------------------
+// Procedural Memory — learned user interaction patterns
+// ---------------------------------------------------------------------------
+
+/** A single behavioural pattern observed over time. */
+export interface ProceduralPattern {
+  /** Machine-readable identifier, e.g. "prefers_detailed_explanations". */
+  pattern: string;
+  /** Human-readable label, e.g. "Prefers detailed explanations". */
+  label: string;
+  /** 0–1 confidence score; increases with repeated observations. */
+  confidence: number;
+  /** ISO-8601 date of last observation. */
+  last_observed: string;
+  /** How many times this pattern has been observed. */
+  observation_count: number;
+}
+
+/** Aggregated procedural memory state for a user session. */
+export interface ProceduralMemory {
+  /** Learned behavioural patterns. */
+  patterns: ProceduralPattern[];
+  /** ISO-8601 date of the last analysis pass. */
+  last_analysis: string;
+}
+
+// ---------------------------------------------------------------------------
+// Procedural Memory — pattern analysis
+// ---------------------------------------------------------------------------
+
+/**
+ * Upserts a pattern into the working map: bumps confidence and observation
+ * count if it already exists, otherwise creates a new entry with a baseline
+ * confidence of 0.3.
+ */
+function upsertPattern(
+  patterns: Map<string, ProceduralPattern>,
+  id: string,
+  label: string,
+  now: string,
+): void {
+  const existing = patterns.get(id);
+  if (existing) {
+    existing.confidence = Math.min(1, existing.confidence + 0.1);
+    existing.observation_count++;
+    existing.last_observed = now;
+  } else {
+    patterns.set(id, {
+      pattern: id,
+      label,
+      confidence: 0.3,
+      last_observed: now,
+      observation_count: 1,
+    });
+  }
+}
+
+/**
+ * Analyse recent messages to extract procedural memory patterns.
+ * Called periodically (every 10 messages) to learn user preferences.
+ *
+ * Runs client-side on the messages array — no DB calls needed.
+ */
+export function analyzeProceduralPatterns(
+  messages: Array<{ role: string; content: string }>,
+  existing: ProceduralPattern[],
+): ProceduralPattern[] {
+  const patterns = new Map<string, ProceduralPattern>();
+
+  // Copy existing patterns
+  for (const p of existing) {
+    patterns.set(p.pattern, { ...p });
+  }
+
+  const userMessages = messages.filter(m => m.role === 'user');
+  if (userMessages.length < 3) return existing;
+
+  const now = new Date().toISOString();
+
+  // --- Analyse message length preference ---
+  const avgLength = userMessages.reduce((sum, m) => sum + m.content.length, 0) / userMessages.length;
+  if (avgLength > 200) {
+    upsertPattern(patterns, 'writes_detailed_messages', 'Writes detailed, thorough messages', now);
+  } else if (avgLength < 50) {
+    upsertPattern(patterns, 'writes_brief_messages', 'Prefers brief, concise messages', now);
+  }
+
+  // --- Analyse question style ---
+  const questionMessages = userMessages.filter(m => m.content.includes('?'));
+  if (questionMessages.length > userMessages.length * 0.6) {
+    upsertPattern(patterns, 'asks_many_questions', 'Frequently asks questions', now);
+  }
+
+  // --- Analyse formality (casual vs formal language) ---
+  const casualIndicators = ['lol', 'haha', 'omg', 'tbh', 'imo', 'btw', 'gonna', 'wanna', 'kinda'];
+  const formalIndicators = ['therefore', 'furthermore', 'consequently', 'regarding', 'please', 'would you'];
+  let casualCount = 0;
+  let formalCount = 0;
+  for (const m of userMessages) {
+    const lower = m.content.toLowerCase();
+    for (const c of casualIndicators) { if (lower.includes(c)) casualCount++; }
+    for (const f of formalIndicators) { if (lower.includes(f)) formalCount++; }
+  }
+  if (casualCount > formalCount + 2) {
+    upsertPattern(patterns, 'casual_communication', 'Uses casual, informal communication style', now);
+  } else if (formalCount > casualCount + 2) {
+    upsertPattern(patterns, 'formal_communication', 'Uses formal, professional communication style', now);
+  }
+
+  // --- Analyse emoji / emoticon usage ---
+  const emojiRegex = /[\u{1F600}-\u{1F64F}\u{1F300}-\u{1F5FF}\u{1F680}-\u{1F6FF}\u{2600}-\u{26FF}]/u;
+  const emojiUsers = userMessages.filter(m => emojiRegex.test(m.content));
+  if (emojiUsers.length > userMessages.length * 0.3) {
+    upsertPattern(patterns, 'uses_emojis', 'Frequently uses emojis in messages', now);
+  }
+
+  // --- Analyse technical vs creative language ---
+  const techWords = ['code', 'api', 'function', 'debug', 'error', 'deploy', 'database', 'server', 'git'];
+  const creativeWords = ['story', 'imagine', 'create', 'design', 'art', 'music', 'write', 'poem', 'paint'];
+  let techHits = 0;
+  let creativeHits = 0;
+  for (const m of userMessages) {
+    const lower = m.content.toLowerCase();
+    for (const t of techWords) { if (lower.includes(t)) techHits++; }
+    for (const c of creativeWords) { if (lower.includes(c)) creativeHits++; }
+  }
+  if (techHits > 3) {
+    upsertPattern(patterns, 'technical_focus', 'Frequently discusses technical topics', now);
+  }
+  if (creativeHits > 3) {
+    upsertPattern(patterns, 'creative_focus', 'Frequently engages in creative activities', now);
+  }
+
+  return Array.from(patterns.values())
+    .sort((a, b) => b.confidence - a.confidence)
+    .slice(0, 10); // Keep top 10 patterns
+}
+
+/**
+ * Format procedural patterns for system prompt injection.
+ *
+ * Only includes patterns with confidence >= 0.3, capped at the 5 most
+ * confident. Returns an empty string when there are no relevant patterns.
+ */
+export function formatProceduralContext(patterns: ProceduralPattern[]): string {
+  const relevant = patterns.filter(p => p.confidence >= 0.3);
+  if (relevant.length === 0) return '';
+  const lines = relevant.slice(0, 5).map(
+    p => `- ${p.label} (confidence: ${(p.confidence * 100).toFixed(0)}%)`,
+  );
+  return `[Learned user patterns:\n${lines.join('\n')}]`;
+}

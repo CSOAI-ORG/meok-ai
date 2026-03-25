@@ -27,6 +27,9 @@ export interface User {
   stripe_subscription_id: string | null;
   messages_today: number;
   messages_today_reset: string;  // ISO date string — date when the counter next resets
+  messages_total: number;
+  streak_days: number;
+  last_active_date: string | null;
   created_at: string;            // ISO datetime
   updated_at: string;            // ISO datetime
   deleted_at: string | null;     // ISO datetime — set on GDPR deletion request
@@ -38,6 +41,9 @@ export interface GuardianSettings {
   alert_phone: string | null;
   child_safe_mode: boolean;
   threat_threshold: number;  // 0.0–1.0, default 0.85 — higher = less sensitive
+  relationship_shield?: boolean;
+  social_guardian?: boolean;
+  notifications?: { email: boolean; push: boolean; in_app_only: boolean };
 }
 
 // ── Constants ──────────────────────────────────────────────────────────────
@@ -98,6 +104,9 @@ function buildNewUser(clerkUserId: string, email: string, name: string | null): 
     stripe_subscription_id: null,
     messages_today:         0,
     messages_today_reset:   todayISO(),
+    messages_total:         0,
+    streak_days:            0,
+    last_active_date:       null,
     created_at:             now,
     updated_at:             now,
     deleted_at:             null,
@@ -133,12 +142,15 @@ export async function createUser(
     INSERT INTO users (id, email, name, tier, companion_id, companion_name, companion_stage,
                        guardian_enabled, guardian_settings, family_group_id,
                        stripe_customer_id, stripe_subscription_id,
-                       messages_today, messages_today_reset, created_at, updated_at, deleted_at)
+                       messages_today, messages_today_reset,
+                       messages_total, streak_days, last_active_date,
+                       created_at, updated_at, deleted_at)
     VALUES (${user.id}, ${user.email}, ${user.name}, ${user.tier},
             ${user.companion_id}, ${user.companion_name}, ${user.companion_stage},
             ${user.guardian_enabled}, ${user.guardian_settings ? JSON.stringify(user.guardian_settings) : null},
             ${user.family_group_id}, ${user.stripe_customer_id}, ${user.stripe_subscription_id},
             ${user.messages_today}, ${user.messages_today_reset},
+            ${user.messages_total}, ${user.streak_days}, ${user.last_active_date},
             ${user.created_at}, ${user.updated_at}, ${user.deleted_at})
     ON CONFLICT (id) DO NOTHING
   `;
@@ -250,6 +262,7 @@ export async function incrementMessageCount(
   }
 
   const today = todayISO();
+  const yesterday = new Date(Date.now() - 86400000).toISOString().split('T')[0];
   const rows = await sql`
     UPDATE users
     SET messages_today       = CASE WHEN messages_today_reset < ${today}
@@ -257,6 +270,13 @@ export async function incrementMessageCount(
                                     ELSE messages_today + 1
                                END,
         messages_today_reset = ${today},
+        messages_total       = COALESCE(messages_total, 0) + 1,
+        streak_days          = CASE
+                                 WHEN last_active_date = ${today} THEN COALESCE(streak_days, 0)
+                                 WHEN last_active_date = ${yesterday} THEN COALESCE(streak_days, 0) + 1
+                                 ELSE 1
+                               END,
+        last_active_date     = ${today},
         updated_at           = NOW()
     WHERE id         = ${id}
       AND deleted_at IS NULL
@@ -328,4 +348,113 @@ export async function getGuardianSettings(id: string): Promise<GuardianSettings 
   `;
 
   return (rows[0]?.guardian_settings as GuardianSettings) ?? null;
+}
+
+/**
+ * Merges partial Guardian settings into the user's existing JSONB column.
+ * Optionally toggles the top-level `guardian_enabled` flag.
+ *
+ * @param id        Clerk user ID.
+ * @param settings  Partial settings object to merge (JSONB ||).
+ * @param enabled   If provided, also sets `guardian_enabled`.
+ */
+export async function updateGuardianSettings(
+  id: string,
+  settings: Partial<GuardianSettings>,
+  enabled?: boolean,
+): Promise<void> {
+  if (!sql) {
+    console.warn('[db/user] updateGuardianSettings — no database connection');
+    return;
+  }
+  // Merge new settings into existing JSONB
+  if (enabled !== undefined) {
+    await sql`
+      UPDATE users
+      SET guardian_enabled = ${enabled},
+          guardian_settings = COALESCE(guardian_settings, '{}') || ${JSON.stringify(settings)}::jsonb,
+          updated_at = NOW()
+      WHERE id = ${id} AND deleted_at IS NULL
+    `;
+  } else {
+    await sql`
+      UPDATE users
+      SET guardian_settings = COALESCE(guardian_settings, '{}') || ${JSON.stringify(settings)}::jsonb,
+          updated_at = NOW()
+      WHERE id = ${id} AND deleted_at IS NULL
+    `;
+  }
+}
+
+// ── Custom Characters ─────────────────────────────────────────────────────
+
+/** Per-tier limits for how many custom characters a user can create. */
+export const CUSTOM_CHARACTER_LIMITS: Record<Tier, number> = {
+  explorer:  1,
+  sovereign: 5,
+  family:    10,
+};
+
+/**
+ * Retrieves the user's custom characters array from the `custom_characters`
+ * JSONB column. Returns an empty array if the column doesn't exist yet or
+ * the user has no custom characters.
+ */
+export async function getCustomCharacters(userId: string): Promise<unknown[]> {
+  console.log(`[db/user] getCustomCharacters — userId=${userId}`);
+
+  if (!sql) {
+    console.warn('[db/user] getCustomCharacters — no database connection');
+    return [];
+  }
+
+  try {
+    const rows = await sql`
+      SELECT custom_characters
+      FROM users
+      WHERE id = ${userId} AND deleted_at IS NULL
+    `;
+    const raw = rows[0]?.custom_characters;
+    if (Array.isArray(raw)) return raw;
+    if (typeof raw === 'string') {
+      try { return JSON.parse(raw); } catch { return []; }
+    }
+    return [];
+  } catch (err: unknown) {
+    // Column may not exist yet — gracefully return empty
+    const msg = err instanceof Error ? err.message : String(err);
+    if (msg.includes('custom_characters') || msg.includes('column')) {
+      console.warn('[db/user] getCustomCharacters — column may not exist yet, returning []');
+      return [];
+    }
+    throw err;
+  }
+}
+
+/**
+ * Appends a new custom character object to the user's `custom_characters`
+ * JSONB array column. Creates the column value if it doesn't exist yet.
+ */
+export async function saveCustomCharacter(userId: string, character: Record<string, unknown>): Promise<void> {
+  console.log(`[db/user] saveCustomCharacter — userId=${userId} characterId=${character.id}`);
+
+  if (!sql) {
+    console.warn('[db/user] saveCustomCharacter — no database connection');
+    return;
+  }
+
+  try {
+    await sql`
+      UPDATE users
+      SET custom_characters = COALESCE(custom_characters, '[]'::jsonb) || ${JSON.stringify([character])}::jsonb,
+          updated_at = NOW()
+      WHERE id = ${userId} AND deleted_at IS NULL
+    `;
+  } catch (err: unknown) {
+    const msg = err instanceof Error ? err.message : String(err);
+    if (msg.includes('custom_characters') || msg.includes('column')) {
+      console.warn('[db/user] saveCustomCharacter — column may not exist yet. Run migration to add custom_characters JSONB column.');
+    }
+    throw err;
+  }
 }
