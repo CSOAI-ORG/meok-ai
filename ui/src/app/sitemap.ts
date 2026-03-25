@@ -397,6 +397,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: 'https://meok.ai/blog/meok-companion-archetypes-guide', lastModified: new Date('2026-03-25'), changeFrequency: 'monthly', priority: 0.92 },
     { url: 'https://meok.ai/blog/ai-for-loneliness-epidemic', lastModified: new Date('2026-03-25'), changeFrequency: 'monthly', priority: 0.90 },
     { url: 'https://meok.ai/blog/ai-life-planning', lastModified: new Date('2026-03-25'), changeFrequency: 'monthly', priority: 0.89 },
+    { url: 'https://meok.ai/blog/ai-for-grief-of-parent', lastModified: new Date('2026-03-25'), changeFrequency: 'monthly', priority: 0.88 },
+    { url: 'https://meok.ai/blog/meok-vs-chatgpt-deep-dive', lastModified: new Date('2026-03-25'), changeFrequency: 'monthly', priority: 0.93 },
+    { url: 'https://meok.ai/blog/ai-for-perimenopause', lastModified: new Date('2026-03-25'), changeFrequency: 'monthly', priority: 0.88 },
+    { url: 'https://meok.ai/blog/ai-productivity-tips', lastModified: new Date('2026-03-25'), changeFrequency: 'monthly', priority: 0.90 },
 
     // ── Legal ─────────────────────────────────────────────────────────
     { url: 'https://meok.ai/privacy', lastModified: new Date(), changeFrequency: 'yearly', priority: 0.3 },

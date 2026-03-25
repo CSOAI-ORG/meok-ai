@@ -3134,6 +3134,54 @@ const POSTS = [
     category: "professional",
     featured: false,
   },
+  {
+    slug: "ai-for-grief-of-parent",
+    title: "AI for Losing a Parent: When the Person Who Made You Is Gone",
+    excerpt:
+      "Losing a parent is one of the most profound experiences in a human life. It changes your place in the world. MEOK's sovereign AI provides consistent companionship through grief that cannot be rushed.",
+    date: "March 25, 2026",
+    readTime: "10 min read",
+    tag: "Wellbeing",
+    tagColor: "#4a9d6f",
+    category: "wellbeing",
+    featured: false,
+  },
+  {
+    slug: "meok-vs-chatgpt-deep-dive",
+    title: "MEOK vs ChatGPT: Why a Sovereign Companion Is Not a Better Chatbot",
+    excerpt:
+      "ChatGPT is a tool you use. MEOK is a companion that knows you. This is not a feature comparison — it is a fundamental difference in what AI is for. The honest, fair breakdown.",
+    date: "March 25, 2026",
+    readTime: "11 min read",
+    tag: "Research",
+    tagColor: "#7c6fcd",
+    category: "research",
+    featured: true,
+  },
+  {
+    slug: "ai-for-perimenopause",
+    title: "AI for Perimenopause: Support for the Transition That Can Last a Decade",
+    excerpt:
+      "Perimenopause can begin in your late 30s and last 10 years. Yet many reach it with no preparation and little support. MEOK's sovereign AI tracks symptoms over months and never loses the thread.",
+    date: "March 25, 2026",
+    readTime: "9 min read",
+    tag: "Wellbeing",
+    tagColor: "#4a9d6f",
+    category: "wellbeing",
+    featured: false,
+  },
+  {
+    slug: "ai-productivity-tips",
+    title: "AI Productivity Tips: How Sovereign AI Makes You Genuinely More Productive",
+    excerpt:
+      "Most AI productivity tools make you busier, not smarter. MEOK's sovereign approach — persistent memory, overnight agents, and honest feedback — creates lasting productivity gains rather than just more tasks.",
+    date: "March 25, 2026",
+    readTime: "9 min read",
+    tag: "Professional",
+    tagColor: "#c9a84c",
+    category: "professional",
+    featured: false,
+  },
 ];
 
 // ── Category filter tabs ──────────────────────────────────────────────────────
