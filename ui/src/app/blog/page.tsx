@@ -2990,6 +2990,42 @@ const POSTS = [
     category: "privacy",
     featured: false,
   },
+  {
+    slug: "ai-for-domestic-abuse-survivors",
+    title: "AI for Domestic Abuse Survivors: A Safe Space When Safety Itself Has Been Violated",
+    excerpt:
+      "Recovering from domestic abuse requires rebuilding trust, identity, and safety from the ground up. MEOK's sovereign AI provides a confidential, non-judgmental space — with data sovereignty that means your abuser cannot reach your conversations.",
+    date: "March 25, 2026",
+    readTime: "10 min read",
+    tag: "Wellbeing",
+    tagColor: "#4a9d6f",
+    category: "wellbeing",
+    featured: false,
+  },
+  {
+    slug: "meok-for-lawyers",
+    title: "MEOK for Lawyers: Sovereign AI for the Profession That Knows What Confidentiality Means",
+    excerpt:
+      "Lawyers understand confidentiality better than anyone — which is why they should be most sceptical of cloud AI. MEOK's sovereign architecture gives legal professionals AI they can actually trust with sensitive work.",
+    date: "March 25, 2026",
+    readTime: "10 min read",
+    tag: "Professional",
+    tagColor: "#c9a84c",
+    category: "professional",
+    featured: false,
+  },
+  {
+    slug: "ai-for-conflict-resolution",
+    title: "AI for Conflict Resolution: A Thinking Partner for the Conversations You Are Dreading",
+    excerpt:
+      "Whether it is a difficult conversation with a boss, a family member, or a partner, MEOK's sovereign AI helps you prepare and navigate conflict with clarity — not just reassurance. Sycophancy detection ensures honest support.",
+    date: "March 25, 2026",
+    readTime: "9 min read",
+    tag: "Wellbeing",
+    tagColor: "#4a9d6f",
+    category: "wellbeing",
+    featured: false,
+  },
 ];
 
 // ── Category filter tabs ──────────────────────────────────────────────────────
