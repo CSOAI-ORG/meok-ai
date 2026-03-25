@@ -431,6 +431,48 @@ function CompanionPanel({
           )}
         </div>
 
+        {/* ── Switch companion ── */}
+        <div>
+          <p className="text-[10px] uppercase tracking-widest mb-2" style={{ color: 'rgba(255,255,255,0.3)' }}>
+            Switch companion
+          </p>
+          <div className="flex flex-wrap gap-1.5">
+            {getAllCharacters().slice(0, 12).map((c) => {
+              const isCurrent = c.id === characterSlug;
+              const isLocked = c.tier === 'family'; // family-tier characters locked for non-family users
+              return (
+                <a
+                  key={c.id}
+                  href={isLocked ? undefined : `?character=${c.id}`}
+                  title={`${c.emoji} ${c.name}${isLocked ? ' (locked)' : ''}`}
+                  className="relative w-9 h-9 rounded-xl flex items-center justify-center text-base transition-all"
+                  style={{
+                    background: isCurrent ? `${GOLD}25` : 'rgba(255,255,255,0.04)',
+                    border: isCurrent ? `2px solid ${GOLD}` : '1px solid rgba(255,255,255,0.08)',
+                    boxShadow: isCurrent ? `0 0 12px ${GOLD}30` : 'none',
+                    opacity: isLocked ? 0.4 : 1,
+                    cursor: isLocked ? 'not-allowed' : 'pointer',
+                  }}
+                >
+                  {c.emoji}
+                  {isLocked && (
+                    <span className="absolute -top-1 -right-1 text-[8px]">&#x1F512;</span>
+                  )}
+                </a>
+              );
+            })}
+          </div>
+          <a
+            href="/characters"
+            className="inline-flex items-center gap-1 mt-2.5 text-[11px] font-medium transition-colors"
+            style={{ color: `${GOLD}99` }}
+            onMouseEnter={(e) => (e.currentTarget.style.color = GOLD)}
+            onMouseLeave={(e) => (e.currentTarget.style.color = `${GOLD}99`)}
+          >
+            Browse all characters &#x2192;
+          </a>
+        </div>
+
         {/* Tagline */}
         <div
           className="rounded-xl px-4 py-3"
@@ -454,7 +496,7 @@ function CompanionPanel({
           onMouseLeave={(e) => (e.currentTarget.style.background = `${character.color}18`)}
         >
           Talk to {character.name}
-          <span style={{ opacity: 0.7 }}>→</span>
+          <span style={{ opacity: 0.7 }}>&#x2192;</span>
         </a>
       </div>
     </aside>

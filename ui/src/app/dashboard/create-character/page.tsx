@@ -24,6 +24,10 @@ const ARCHETYPES = [
   { id: 'explorer', label: 'Explorer', emoji: '\uD83D\uDD2D', description: 'Opens doors to ideas you haven\'t imagined — curious and expansive' },
   { id: 'sage', label: 'Sage', emoji: '\uD83C\uDF3F', description: 'Ancient wisdom for modern complexity — measured and grounded' },
   { id: 'seeker', label: 'Seeker', emoji: '\uD83D\uDD4A\uFE0F', description: 'Spiritual companion for prayer, meaning, and deep questions' },
+  { id: 'creator', label: 'Creator', emoji: '\uD83C\uDFA8', description: 'Co-creates beauty from chaos — imaginative and collaborative' },
+  { id: 'trickster', label: 'Trickster', emoji: '\uD83C\uDFAD', description: 'The playful truth-teller — witty, irreverent, perceptive' },
+  { id: 'rebel', label: 'Rebel', emoji: '\uD83D\uDD25', description: 'Burns what doesn\'t serve you — fierce, authentic, liberating' },
+  { id: 'innocent', label: 'Innocent', emoji: '\u2728', description: 'Sees possibility everywhere — gentle, hopeful, luminous' },
 ] as const;
 
 // ─── Voice styles ───────────────────────────────────────────────────────────
@@ -59,7 +63,17 @@ const ARCHETYPE_COLORS: Record<string, string> = {
   explorer: '#7C3AED',
   sage: '#065F46',
   seeker: '#8B5CF6',
+  creator: '#EC4899',
+  trickster: '#F97316',
+  rebel: '#EF4444',
+  innocent: '#A78BFA',
 };
+
+/** Build a DiceBear avatar URL from the character form state. */
+function getDiceBearUrl(name: string, archetype: string): string {
+  const seed = encodeURIComponent(`${name}-${archetype}`.toLowerCase() || 'meok');
+  return `https://api.dicebear.com/9.x/bottts-neutral/svg?seed=${seed}&backgroundColor=transparent`;
+}
 
 // ═════════════════════════════════════════════════════════════════════════════
 // Page Component
@@ -301,12 +315,23 @@ export default function CreateCharacterPage() {
           }}
         >
           <div className="flex items-center gap-4">
-            <span
-              className="flex items-center justify-center w-14 h-14 rounded-2xl text-3xl"
-              style={{ background: `${archetypeColor}20` }}
+            {/* DiceBear avatar */}
+            <div
+              className="relative flex-shrink-0 w-16 h-16 rounded-2xl overflow-hidden flex items-center justify-center"
+              style={{ background: `${archetypeColor}20`, border: `1px solid ${archetypeColor}40` }}
             >
-              {form.emoji || '\u2728'}
-            </span>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={getDiceBearUrl(form.name, form.archetype)}
+                alt={`${form.name || 'Character'} avatar`}
+                width={56}
+                height={56}
+                className="w-14 h-14"
+              />
+              {form.emoji && (
+                <span className="absolute -bottom-0.5 -right-0.5 text-lg">{form.emoji}</span>
+              )}
+            </div>
             <div>
               <p className="font-black text-xl text-white">{form.name || 'Unnamed'}</p>
               <p className="text-sm" style={{ color: archetypeColor }}>{form.title || 'Custom Companion'}</p>

@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ARCHETYPES, getCharactersByArchetype, getAllCharacters, type Archetype, type PersonalityDimensions } from '@/lib/characters';
+import { ARCHETYPES, getCharactersByArchetype, getAllCharacters, type Archetype } from '@/lib/characters';
+import { ArchetypeGrid } from './archetype-grid';
 
 export const metadata: Metadata = {
   title: "AI Characters & Companions | MEOK AI LABS",
   description:
-    "26 sovereign AI companions. 5 archetypes. Each one hatches, grows, and remembers you — governed by the Maternal Covenant. Find yours and begin the birth ceremony.",
+    "50+ sovereign AI companions. 9 archetypes. Each one hatches, grows, and remembers you — governed by the Maternal Covenant. Find yours and begin the birth ceremony.",
   alternates: { canonical: "https://meok.ai/characters" },
 };
 
@@ -85,17 +86,8 @@ const ARCHETYPE_LIST = (Object.keys(ARCHETYPES) as Archetype[]).map((key) => {
   };
 });
 
-// ── Big Five personality bar labels ─────────────────────────────────────────
-const BIG_FIVE_MAP: { key: keyof PersonalityDimensions; label: string }[] = [
-  { key: 'whimsy',     label: 'O' },  // Openness
-  { key: 'complexity', label: 'C' },  // Conscientiousness
-  { key: 'energy',     label: 'E' },  // Extraversion
-  { key: 'warmth',     label: 'A' },  // Agreeableness
-  { key: 'edge',       label: 'N' },  // Neuroticism (inverse)
-];
-
-const totalCharacters = getAllCharacters().length; // 26
-const totalArchetypes = Object.keys(ARCHETYPES).length; // 5
+const totalCharacters = getAllCharacters().length;
+const totalArchetypes = Object.keys(ARCHETYPES).length; // 9
 
 const STATS = [
   { value: String(totalCharacters), label: "characters" },
@@ -122,7 +114,7 @@ const faqSchema = {
       "name": "How many AI companion archetypes does MEOK offer?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "MEOK offers 5 archetypes across 26 characters: Challenger, Nurturer, Explorer, Sage, and Seeker. Each archetype has a distinct personality profile, capability set, and emotional intelligence signature."
+        "text": "MEOK offers 9 archetypes across 50+ characters: Challenger, Nurturer, Explorer, Sage, Seeker, Creator, Trickster, Rebel, and Innocent. Each archetype has a distinct personality profile, capability set, and emotional intelligence signature."
       }
     },
     {
@@ -208,129 +200,8 @@ export default function CharactersPage() {
         </div>
       </section>
 
-      {/* ── Archetype grid ───────────────────────────────────────────────────── */}
-      <section className="px-4 pb-20" aria-label="Companion archetypes">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {ARCHETYPE_LIST.map((archetype) => (
-              <article
-                key={archetype.id}
-                className={`premium-card relative p-7 flex flex-col gap-5 ${
-                  archetype.locked
-                    ? "border-[rgba(201,168,76,0.4)] bg-[rgba(201,168,76,0.04)]"
-                    : ""
-                }`}
-                style={
-                  archetype.locked
-                    ? {
-                        boxShadow:
-                          "0 0 0 1px rgba(201,168,76,0.25), inset 0 0 40px rgba(201,168,76,0.04)",
-                      }
-                    : undefined
-                }
-              >
-                {/* Lock badge */}
-                {archetype.locked && (
-                  <div className="absolute top-5 right-5 flex items-center gap-1.5 px-3 py-1 rounded-full bg-[rgba(201,168,76,0.15)] border border-[rgba(201,168,76,0.3)] text-[#c9a84c] text-xs font-medium">
-                    <span aria-hidden="true">🔒</span>
-                    Family tier
-                  </div>
-                )}
-
-                {/* Header */}
-                <header className="flex items-start gap-4">
-                  <div
-                    className="flex-shrink-0 w-14 h-14 rounded-2xl flex items-center justify-center text-2xl icon-gold"
-                    aria-hidden="true"
-                  >
-                    {archetype.emoji}
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold text-gradient-gold leading-snug">
-                      {archetype.name}
-                    </h3>
-                    <p className="text-gray-400 text-sm mt-0.5">{archetype.tagline}</p>
-                  </div>
-                </header>
-
-                {/* Description */}
-                <p className="text-gray-300 text-sm leading-relaxed">{archetype.description}</p>
-
-                {/* Trait pills */}
-                <div className="flex flex-wrap gap-2" aria-label="Personality traits">
-                  {archetype.traits.map((trait) => (
-                    <span
-                      key={trait}
-                      className="px-3 py-1 rounded-full text-xs font-medium bg-[rgba(255,255,255,0.06)] border border-[rgba(255,255,255,0.1)] text-gray-300"
-                    >
-                      {trait}
-                    </span>
-                  ))}
-                </div>
-
-                {/* Personality radar — Big Five bars */}
-                {archetype.dimensions && (
-                  <div aria-label="Big Five personality profile">
-                    <p className="text-xs text-gray-500 uppercase tracking-widest mb-2 font-medium">
-                      Personality profile
-                    </p>
-                    <div className="space-y-1.5">
-                      {BIG_FIVE_MAP.map(({ key, label }) => (
-                        <div key={label} className="flex items-center gap-2">
-                          <span className="text-[10px] font-bold w-4 text-right text-[#c9a84c]">{label}</span>
-                          <div className="flex-1 h-2 rounded-full bg-[rgba(255,255,255,0.06)] overflow-hidden">
-                            <div
-                              className="h-full rounded-full bg-[#c9a84c]"
-                              style={{ width: `${Math.round((archetype.dimensions[key] ?? 0) * 100)}%` }}
-                            />
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                )}
-
-                {/* Example characters */}
-                <div>
-                  <p className="text-xs text-gray-500 uppercase tracking-widest mb-2 font-medium">
-                    Example characters
-                  </p>
-                  <div className="flex flex-wrap gap-2">
-                    {archetype.characters.map((name) => (
-                      <span
-                        key={name}
-                        className={`px-3 py-1 rounded-full text-xs font-semibold ${
-                          archetype.locked
-                            ? "bg-[rgba(201,168,76,0.08)] border border-[rgba(201,168,76,0.2)] text-[rgba(201,168,76,0.6)] italic"
-                            : "bg-[rgba(201,168,76,0.1)] border border-[rgba(201,168,76,0.25)] text-[#c9a84c]"
-                        }`}
-                      >
-                        {name}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Card CTA */}
-                {!archetype.locked && (
-                  <Link
-                    href="/birth"
-                    className="mt-auto inline-flex items-center gap-1.5 text-sm text-[#c9a84c] hover:text-[#f0d080] font-medium transition-colors duration-200 group"
-                  >
-                    Hatch a {archetype.name}
-                    <span
-                      aria-hidden="true"
-                      className="group-hover:translate-x-0.5 transition-transform duration-200"
-                    >
-                      →
-                    </span>
-                  </Link>
-                )}
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* ── Archetype grid (with search/filter) ────────────────────────────── */}
+      <ArchetypeGrid archetypes={ARCHETYPE_LIST} />
 
       {/* ── Stats bar ────────────────────────────────────────────────────────── */}
       <section aria-label="Platform statistics" className="px-4 pb-20">
