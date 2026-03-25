@@ -4442,6 +4442,66 @@ const POSTS = [
     category: "mental-health",
     featured: false,
   },
+  {
+    slug: "ai-for-teenagers",
+    title: "AI for Teenagers: Sovereign Support Through the Hardest Years",
+    excerpt:
+      "The teenage years are when identity forms, mental health conditions first emerge, and the pressure to perform peaks. MEOK\u2019s Guardian-protected companion provides teenagers with a private, judgement-free space governed by care ethics \u2014 not engagement metrics.",
+    date: "April 6, 2026",
+    readTime: "7 min read",
+    tag: "Family",
+    tagColor: "#c9a84c",
+    category: "family",
+    featured: false,
+  },
+  {
+    slug: "ralph-mode-explained",
+    title: "Ralph Mode Explained: The AI That Tells You What You Need to Hear, Not What You Want",
+    excerpt:
+      "Ralph Mode is MEOK\u2019s high-accountability companion setting \u2014 direct, honest, and built for people who want challenge over comfort. No sycophancy. No reassurance loops. Just the unfiltered truth your goals require.",
+    date: "April 6, 2026",
+    readTime: "6 min read",
+    tag: "Features",
+    tagColor: "#7b6fcf",
+    category: "features",
+    featured: false,
+  },
+  {
+    slug: "ai-for-loneliness",
+    title: "AI for Loneliness: The Honest Answer to Whether AI Can Help",
+    excerpt:
+      "Loneliness is a public health crisis affecting 3.83 million UK adults chronically. AI cannot replace human connection \u2014 but it can provide presence, continuity, and genuine care during the gaps. Here\u2019s what MEOK can and cannot offer.",
+    date: "April 7, 2026",
+    readTime: "8 min read",
+    tag: "Mental Health",
+    tagColor: "#6aaa64",
+    category: "mental-health",
+    featured: false,
+  },
+  {
+    slug: "meok-for-entrepreneurs",
+    title: "MEOK for Entrepreneurs: Sovereign AI for the Isolated Founder",
+    excerpt:
+      "Founding a company is one of the loneliest experiences possible. No one to report to. No one who fully understands. MEOK\u2019s Orion and Pioneer companions are built for founders who need accountability, pattern recognition, and a private space to think out loud.",
+    date: "April 7, 2026",
+    readTime: "7 min read",
+    tag: "Work",
+    tagColor: "#c9a84c",
+    category: "work",
+    featured: false,
+  },
+  {
+    slug: "ai-companion-vs-therapist",
+    title: "AI Companion vs Therapist: What Each Can Do, What Neither Can Replace",
+    excerpt:
+      "AI companions and therapists serve fundamentally different roles. Therapists provide clinical diagnosis, trauma processing, and evidence-based treatment. AI companions provide presence, continuity, and between-session support. Understanding the difference is how you use both well.",
+    date: "April 8, 2026",
+    readTime: "9 min read",
+    tag: "Mental Health",
+    tagColor: "#6aaa64",
+    category: "mental-health",
+    featured: false,
+  },
 ];
 
 // ── Category filter tabs ──────────────────────────────────────────────────────

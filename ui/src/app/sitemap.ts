@@ -506,6 +506,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: 'https://meok.ai/blog/ai-for-social-anxiety', lastModified: new Date('2026-04-04'), changeFrequency: 'monthly', priority: 0.89 },
     { url: 'https://meok.ai/blog/meok-vs-replika', lastModified: new Date('2026-04-04'), changeFrequency: 'monthly', priority: 0.92 },
     { url: 'https://meok.ai/blog/ai-for-ptsd', lastModified: new Date('2026-04-05'), changeFrequency: 'monthly', priority: 0.90 },
+    { url: 'https://meok.ai/blog/ai-for-teenagers', lastModified: new Date('2026-04-06'), changeFrequency: 'monthly', priority: 0.90 },
+    { url: 'https://meok.ai/blog/ralph-mode-explained', lastModified: new Date('2026-04-06'), changeFrequency: 'monthly', priority: 0.91 },
+    { url: 'https://meok.ai/blog/ai-for-loneliness', lastModified: new Date('2026-04-07'), changeFrequency: 'monthly', priority: 0.92 },
+    { url: 'https://meok.ai/blog/meok-for-entrepreneurs', lastModified: new Date('2026-04-07'), changeFrequency: 'monthly', priority: 0.89 },
+    { url: 'https://meok.ai/blog/ai-companion-vs-therapist', lastModified: new Date('2026-04-08'), changeFrequency: 'monthly', priority: 0.93 },
 
     // ── Legal ─────────────────────────────────────────────────────────
     { url: 'https://meok.ai/privacy', lastModified: new Date(), changeFrequency: 'yearly', priority: 0.3 },
