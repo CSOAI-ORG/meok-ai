@@ -4622,6 +4622,66 @@ const POSTS = [
     category: "compare",
     featured: false,
   },
+  {
+    slug: "ai-for-perfectionism",
+    title: "AI for Perfectionism: When the Standard You Set Becomes the Cage You Live In",
+    excerpt:
+      "Perfectionism is not about high standards \u2014 it\u2019s about self-worth contingent on performance. MEOK\u2019s anti-sycophancy framework and Scholar companion help perfectionist thinkers distinguish between excellence and self-punishment.",
+    date: "April 15, 2026",
+    readTime: "7 min read",
+    tag: "Mental Health",
+    tagColor: "#6aaa64",
+    category: "mental-health",
+    featured: false,
+  },
+  {
+    slug: "meok-vs-chatgpt",
+    title: "MEOK vs ChatGPT: Two Different Answers to the Same Problem",
+    excerpt:
+      "ChatGPT is the best general-purpose AI assistant ever built. MEOK is the best personal sovereign companion ever built. They solve different problems. Here\u2019s how to decide which you need.",
+    date: "April 15, 2026",
+    readTime: "9 min read",
+    tag: "Compare",
+    tagColor: "#c9a84c",
+    category: "compare",
+    featured: false,
+  },
+  {
+    slug: "ai-for-financial-anxiety",
+    title: "AI for Financial Anxiety: When Money Worries Feel Too Shameful to Talk About",
+    excerpt:
+      "Financial anxiety is the most common anxiety people won\u2019t name. The shame of debt, the dread of checking your balance, the paralysis that prevents action \u2014 MEOK provides a private, judgement-free space to start thinking clearly about money.",
+    date: "April 16, 2026",
+    readTime: "7 min read",
+    tag: "Mental Health",
+    tagColor: "#6aaa64",
+    category: "mental-health",
+    featured: false,
+  },
+  {
+    slug: "morning-briefing-explained",
+    title: "Morning Briefing Explained: How MEOK Prepares You for the Day Before It Starts",
+    excerpt:
+      "MEOK\u2019s morning briefing is a sovereign daily summary: what Orion found overnight, what matters most today, what\u2019s been on your mind across the week. Not news. Not notifications. Context for your actual life.",
+    date: "April 16, 2026",
+    readTime: "6 min read",
+    tag: "Features",
+    tagColor: "#7b6fcf",
+    category: "features",
+    featured: false,
+  },
+  {
+    slug: "ai-for-disability",
+    title: "AI for Disability: Sovereign Support When the World Wasn\u2019t Built for You",
+    excerpt:
+      "Disability \u2014 physical, cognitive, sensory, invisible \u2014 often means navigating systems designed for other people. MEOK\u2019s sovereign companion provides a private, adaptive space built around your needs, not the median user\u2019s.",
+    date: "April 17, 2026",
+    readTime: "8 min read",
+    tag: "Accessibility",
+    tagColor: "#6aaa64",
+    category: "accessibility",
+    featured: false,
+  },
 ];
 
 // ── Category filter tabs ──────────────────────────────────────────────────────
