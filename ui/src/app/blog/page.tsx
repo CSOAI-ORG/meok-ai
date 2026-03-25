@@ -3662,6 +3662,66 @@ const POSTS = [
     category: "mental-health",
     featured: false,
   },
+  {
+    slug: "ai-for-ocd",
+    title: "AI for OCD: How MEOK Supports People Living with Obsessive-Compulsive Disorder",
+    excerpt:
+      "OCD affects 750,000 UK adults. MEOK complements ERP therapy by providing a space to externalise obsessive thoughts, understand the OCD cycle, and build distress tolerance — without providing the reassurance that worsens compulsions.",
+    date: "March 26, 2026",
+    readTime: "8 min read",
+    tag: "Mental Health",
+    tagColor: "#c9a84c",
+    category: "mental-health",
+    featured: false,
+  },
+  {
+    slug: "ai-for-ptsd-support",
+    title: "AI for PTSD Support: How MEOK Provides a Safe Space Between Therapy Sessions",
+    excerpt:
+      "PTSD affects 4% of UK adults. MEOK supports the between-session experience — grounding when triggered, daily-life processing, the Healer archetype\u2019s patient presence — without encouraging trauma retelling that risks retraumatisation.",
+    date: "March 26, 2026",
+    readTime: "8 min read",
+    tag: "Mental Health",
+    tagColor: "#c9a84c",
+    category: "mental-health",
+    featured: false,
+  },
+  {
+    slug: "sovereign-ai-explained",
+    title: "What is Sovereign AI? The Complete Guide (2026)",
+    excerpt:
+      "Personal Sovereign AI is a consumer category MEOK coined: AI where the individual maintains complete ownership of data, models, memory, and interactions. This guide explains the five pillars of sovereignty and why they matter.",
+    date: "March 26, 2026",
+    readTime: "10 min read",
+    tag: "Explainer",
+    tagColor: "#c9a84c",
+    category: "explainer",
+    featured: true,
+  },
+  {
+    slug: "byzantine-council-explained",
+    title: "Byzantine Council: How MEOK Makes AI Governance Unhackable",
+    excerpt:
+      "MEOK\u2019s Byzantine Council is a 43-agent fault-tolerant governance system where f < n/3. No single AI agent can override a council decision. Original IP by Nicholas Templeman — here\u2019s how it works and why it matters for AI safety.",
+    date: "March 26, 2026",
+    readTime: "9 min read",
+    tag: "Research",
+    tagColor: "#c9a84c",
+    category: "research",
+    featured: false,
+  },
+  {
+    slug: "ai-companion-for-widows",
+    title: "AI Companion for Widows and Widowers: When Grief Comes Home",
+    excerpt:
+      "There are 3.1 million widows and widowers in the UK. MEOK\u2019s Healer archetype remembers your partner by name, honours anniversaries, and provides patient, consistent presence through the years that grief takes — alongside Guardian support for the practical overwhelm.",
+    date: "March 26, 2026",
+    readTime: "8 min read",
+    tag: "Connection",
+    tagColor: "#6aaa64",
+    category: "connection",
+    featured: false,
+  },
 ];
 
 // ── Category filter tabs ──────────────────────────────────────────────────────

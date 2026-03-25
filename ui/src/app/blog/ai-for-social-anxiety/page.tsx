@@ -5,106 +5,232 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   title:
-    "AI Companion for Social Anxiety: Practising Real Conversations in a Low-Stakes Space | MEOK AI LABS",
+    "AI for Social Anxiety: How MEOK Helps You Practise, Process, and Prepare | MEOK AI LABS",
   description:
-    "Social anxiety affects 1 in 8 people in the UK (NHS). MEOK lets you rehearse job interviews, difficult family conversations, and first dates privately — no judgment, no impatience, persistent memory that learns your patterns.",
+    "Social anxiety disorder affects 12% of UK adults. MEOK provides a judgment-free space to rehearse difficult conversations, deconstruct post-event spirals, understand triggers, and apply CBT-informed reflection — supplementing, not replacing, professional therapy.",
   alternates: {
     canonical: "https://meok.ai/blog/ai-for-social-anxiety",
+  },
+  openGraph: {
+    title:
+      "AI for Social Anxiety: How MEOK Helps You Practise, Process, and Prepare",
+    description:
+      "Social anxiety is more than shyness — it is the fear of scrutiny, judgement, and embarrassment that leads to avoidance. MEOK helps you rehearse, reflect, and reclaim confidence one conversation at a time.",
+    url: "https://meok.ai/blog/ai-for-social-anxiety",
+    siteName: "MEOK AI LABS",
+    type: "article",
   },
 };
 
 // ── JSON-LD ───────────────────────────────────────────────────────────────────
 
-const articleJsonLd = {
+const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "Article",
-  headline: "AI Companion for Social Anxiety: Practising Real Conversations in a Low-Stakes Space",
-  datePublished: "2026-03-24",
-  url: "https://meok.ai/blog/ai-for-social-anxiety",
-  author: { "@type": "Person", name: "Nicholas Templeman", jobTitle: "Founder, MEOK AI LABS", url: "https://meok.ai/about" },
-  publisher: { "@type": "Organization", name: "MEOK AI LABS", url: "https://meok.ai" },
-};
-
-const faqJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: [
+  "@graph": [
     {
-      "@type": "Question",
-      name: "How common is social anxiety in the UK?",
-      acceptedAnswer: { "@type": "Answer", text: "Social anxiety disorder affects approximately 1 in 8 people in the UK, according to NHS data. It is one of the most prevalent anxiety disorders, yet frequently under-diagnosed because sufferers avoid the very situations — social contact, medical appointments — that would lead to a diagnosis." },
+      "@type": "Article",
+      headline:
+        "AI for Social Anxiety: How MEOK Helps You Practise, Process, and Prepare",
+      description:
+        "Social anxiety disorder affects 12% of UK adults. MEOK provides a judgment-free space to rehearse difficult conversations, deconstruct post-event spirals, understand triggers, and apply CBT-informed reflection.",
+      datePublished: "2026-03-25",
+      dateModified: "2026-03-25",
+      url: "https://meok.ai/blog/ai-for-social-anxiety",
+      author: {
+        "@type": "Person",
+        name: "Nicholas Templeman",
+        jobTitle: "Founder, MEOK AI LABS",
+        url: "https://meok.ai/about",
+      },
+      publisher: {
+        "@type": "Organization",
+        name: "MEOK AI LABS",
+        url: "https://meok.ai",
+      },
+      mainEntityOfPage: {
+        "@type": "WebPage",
+        "@id": "https://meok.ai/blog/ai-for-social-anxiety",
+      },
     },
     {
-      "@type": "Question",
-      name: "Can an AI companion help with social anxiety?",
-      acceptedAnswer: { "@type": "Answer", text: "An AI companion provides a private, zero-judgment space to rehearse conversations before they happen in real life. It cannot replace IAPT therapy or clinical treatment, but it reduces the stakes of practice: you can stumble, restart, or repeat the same scenario without social consequence." },
-    },
-    {
-      "@type": "Question",
-      name: "What kinds of conversations can I practise with MEOK?",
-      acceptedAnswer: { "@type": "Answer", text: "MEOK can simulate job interviews, first-date conversations, awkward family discussions, asserting limits with a colleague, or making a phone call you have been avoiding. You set the scenario; MEOK plays the other party at whatever difficulty level you need, from gentle to realistic." },
-    },
-    {
-      "@type": "Question",
-      name: "Does MEOK remember my previous practice sessions?",
-      acceptedAnswer: { "@type": "Answer", text: "Yes. MEOK's persistent sovereign memory stores every session in an encrypted vault only you control. It tracks which scenarios you have practised, where you tend to freeze or over-apologise, and how your confidence changes across weeks — giving each new session a foundation rather than starting from scratch." },
-    },
-    {
-      "@type": "Question",
-      name: "Is MEOK a replacement for CBT or IAPT therapy for social anxiety?",
-      acceptedAnswer: { "@type": "Answer", text: "No. MEOK is a practice and reflection tool, not a clinical intervention. NHS Talking Therapies (formerly IAPT) offers evidence-based CBT for social anxiety and can be reached by self-referral on 0300 123 3393. MEOK works best alongside, not instead of, professional support." },
-    },
-    {
-      "@type": "Question",
-      name: "Why does consistent AI behaviour matter for social anxiety?",
-      acceptedAnswer: { "@type": "Answer", text: "Social anxiety is maintained partly by hypervigilance to unpredictable social cues. MEOK never displays impatience, frustration, or shifting moods — the same quality of presence every session, at any hour. This consistency makes it a reliably safe practice space that erratic human interactions cannot provide." },
+      "@type": "FAQPage",
+      mainEntity: [
+        {
+          "@type": "Question",
+          name: "What is social anxiety disorder and how common is it in the UK?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Social anxiety disorder (SAD) is a persistent, intense fear of scrutiny, judgement, or embarrassment in social situations. It affects approximately 12% of UK adults at some point in their lives and is one of the most under-diagnosed anxiety conditions because sufferers often avoid the very appointments that could lead to a diagnosis.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Can an AI companion like MEOK help with social anxiety?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "MEOK provides a private, zero-judgment environment to rehearse feared conversations, process difficult social events, and explore CBT-informed perspectives on anxious thought patterns. It is not a clinical intervention, but it offers unlimited low-stakes practice that complements professional therapy and fills waiting-list gaps.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "How does MEOK help with post-event processing after social anxiety?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Post-event processing is the tendency to replay social interactions looking for evidence of failure. MEOK helps break this cycle by guiding a structured debrief: what actually happened versus what your mind fears happened, identifying cognitive distortions, and separating fact from catastrophic interpretation \u2014 without judgment or impatience.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Is MEOK a replacement for CBT therapy for social anxiety?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "No. MEOK supplements, not replaces, professional therapy. NHS Talking Therapies offers evidence-based CBT for social anxiety and can be accessed by self-referral on 0300 123 3393. MEOK is most valuable in the gap before treatment begins, between sessions, or as a daily reflection practice alongside ongoing therapy.",
+          },
+        },
+      ],
     },
   ],
 };
 
 // ── Shared style constants ────────────────────────────────────────────────────
 
-const GOLD = "#c9a84c";
-const TEXT = "#f5f0e8";
-const BG   = "#0d0c18";
+const GOLD   = "#c9a84c";
+const TEXT   = "#f5f0e8";
+const BG     = "#0d0c18";
+const MUTED  = "rgba(245,240,232,0.62)";
+const DIM    = "rgba(245,240,232,0.38)";
+const BRIGHT = "rgba(245,240,232,0.82)";
+const CARD   = "#13121f";
+const BORDER = "#2a2840";
+const GREEN  = "#6aaa64";
 
 // ── Page ──────────────────────────────────────────────────────────────────────
 
 export default function AIForSocialAnxietyPage() {
   return (
-    <div style={{ minHeight: "100vh", background: BG }}>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
+    <div
+      style={{
+        minHeight: "100vh",
+        background: BG,
+        fontFamily: "system-ui, -apple-system, sans-serif",
+        color: TEXT,
+      }}
+    >
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
 
       {/* ── HERO ──────────────────────────────────────────────────────────── */}
-      <section style={{ paddingTop: "8rem", paddingBottom: "3.5rem", paddingLeft: "1.5rem", paddingRight: "1.5rem", position: "relative", overflow: "hidden" }}>
-        <div style={{ position: "absolute", inset: 0, pointerEvents: "none", background: "radial-gradient(ellipse 55% 55% at 50% 0%, rgba(201,168,76,0.11) 0%, transparent 70%)" }} />
-        <div style={{ maxWidth: "48rem", margin: "0 auto", position: "relative" }}>
-          <Link href="/blog" style={{ display: "inline-flex", alignItems: "center", gap: "0.375rem", fontSize: "0.875rem", color: "rgba(245,240,232,0.38)", marginBottom: "2rem", textDecoration: "none" }}>
+      <section
+        style={{
+          paddingTop: "8rem",
+          paddingBottom: "3.5rem",
+          paddingLeft: "1.5rem",
+          paddingRight: "1.5rem",
+          position: "relative",
+          overflow: "hidden",
+        }}
+      >
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            pointerEvents: "none",
+            background:
+              "radial-gradient(ellipse 60% 60% at 50% 0%, rgba(201,168,76,0.13) 0%, transparent 70%)",
+          }}
+        />
+        <div
+          style={{ maxWidth: "48rem", margin: "0 auto", position: "relative" }}
+        >
+          <Link
+            href="/blog"
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "0.375rem",
+              fontSize: "0.875rem",
+              color: DIM,
+              marginBottom: "2rem",
+              textDecoration: "none",
+            }}
+          >
             &#8592; Back to Blog
           </Link>
-          <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: "0.75rem", marginBottom: "1.5rem" }}>
-            <span style={{ fontSize: "0.7rem", fontWeight: 700, padding: "0.375rem 0.75rem", borderRadius: "9999px", color: GOLD, background: "rgba(201,168,76,0.12)", border: "1px solid rgba(201,168,76,0.3)", letterSpacing: "0.05em", textTransform: "uppercase" as const }}>
+
+          <div
+            style={{
+              display: "flex",
+              flexWrap: "wrap",
+              alignItems: "center",
+              gap: "0.75rem",
+              marginBottom: "1.5rem",
+            }}
+          >
+            <span
+              style={{
+                fontSize: "0.7rem",
+                fontWeight: 700,
+                padding: "0.375rem 0.75rem",
+                borderRadius: "9999px",
+                color: GOLD,
+                background: "rgba(201,168,76,0.12)",
+                border: "1px solid rgba(201,168,76,0.3)",
+                letterSpacing: "0.05em",
+                textTransform: "uppercase" as const,
+              }}
+            >
               Social Anxiety
             </span>
-            <span style={{ fontSize: "0.75rem", color: "rgba(245,240,232,0.38)" }}>March 24, 2026</span>
-            <span style={{ fontSize: "0.75rem", color: "rgba(245,240,232,0.38)" }}>9 min read</span>
+            <span style={{ fontSize: "0.75rem", color: DIM }}>
+              March 25, 2026
+            </span>
+            <span style={{ fontSize: "0.75rem", color: DIM }}>
+              14 min read
+            </span>
           </div>
-          <h1 style={{ fontWeight: 900, fontSize: "clamp(1.75rem, 3.5vw, 2.85rem)", color: "#fff", lineHeight: 1.18, marginBottom: "1.25rem", letterSpacing: "-0.01em" }}>
-            AI Companion for Social Anxiety: Practising Real Conversations in a Low-Stakes Space
+
+          <h1
+            style={{
+              fontWeight: 900,
+              fontSize: "clamp(1.75rem, 3.5vw, 2.85rem)",
+              color: "#fff",
+              lineHeight: 1.18,
+              marginBottom: "1.25rem",
+              letterSpacing: "-0.01em",
+            }}
+          >
+            AI for Social Anxiety: How MEOK Helps You Practise, Process, and
+            Prepare
           </h1>
-          <p style={{ color: "rgba(245,240,232,0.55)", fontSize: "1.1rem", lineHeight: 1.7, maxWidth: "42rem", margin: 0 }}>
-            Social anxiety affects <strong style={{ color: "rgba(245,240,232,0.82)" }}>1 in 8 people in the UK</strong> (NHS).
-            NHS waiting lists for therapy stretch months. In that gap, MEOK offers unlimited, judgment-free conversation
-            practice built on persistent memory that learns your patterns session by session.
+
+          <p
+            style={{
+              color: "rgba(245,240,232,0.55)",
+              fontSize: "1.1rem",
+              lineHeight: 1.7,
+              maxWidth: "42rem",
+              margin: 0,
+            }}
+          >
+            Social anxiety disorder affects{" "}
+            <strong style={{ color: BRIGHT }}>12% of UK adults</strong> — yet
+            most never access treatment. It is more than shyness: it is the
+            fear of scrutiny, judgement, and embarrassment that causes real
+            avoidance. MEOK offers a private, patient space to rehearse
+            conversations, deconstruct what happened, and challenge the
+            thoughts that keep you small.
           </p>
         </div>
       </section>
 
       {/* ── ARTICLE BODY ──────────────────────────────────────────────────── */}
-      <div style={{ maxWidth: "48rem", margin: "0 auto", padding: "3.5rem 1.5rem 0" }}>
+      <div
+        style={{ maxWidth: "48rem", margin: "0 auto", padding: "3.5rem 1.5rem 0" }}
+      >
 
-        {/* Crisis disclaimer */}
+        {/* Disclaimer */}
         <div
           style={{
             display: "flex",
@@ -132,6 +258,7 @@ export default function AIForSocialAnxietyPage() {
                 fontSize: "0.8125rem",
                 color: GOLD,
                 marginBottom: "0.375rem",
+                margin: "0 0 0.375rem",
               }}
             >
               This article is not medical advice
@@ -144,11 +271,14 @@ export default function AIForSocialAnxietyPage() {
                 margin: 0,
               }}
             >
-              MEOK is a supplementary support tool, not a clinical device or therapy replacement. For NHS-funded CBT,
-              self-refer to <strong style={{ color: "rgba(245,240,232,0.8)" }}>NHS Talking Therapies</strong> on{" "}
-              <strong style={{ color: "rgba(245,240,232,0.8)" }}>0300 123 3393</strong>. In crisis call{" "}
-              <strong style={{ color: "rgba(245,240,232,0.8)" }}>Samaritans 116 123</strong> or{" "}
-              <strong style={{ color: "rgba(245,240,232,0.8)" }}>NHS 111</strong>.
+              MEOK is a supplementary support tool, not a clinical device or
+              therapy replacement. For NHS-funded CBT, self-refer to{" "}
+              <strong style={{ color: BRIGHT }}>NHS Talking Therapies</strong>{" "}
+              on{" "}
+              <strong style={{ color: BRIGHT }}>0300 123 3393</strong>. In
+              crisis, call{" "}
+              <strong style={{ color: BRIGHT }}>Samaritans 116 123</strong> or{" "}
+              <strong style={{ color: BRIGHT }}>NHS 111</strong>.
             </p>
           </div>
         </div>
@@ -185,327 +315,1413 @@ export default function AIForSocialAnxietyPage() {
           </div>
           <div style={{ flex: 1 }}>
             <p
-              style={{ fontWeight: 700, color: TEXT, fontSize: "0.875rem", margin: "0 0 0.2rem" }}
+              style={{
+                fontWeight: 700,
+                color: TEXT,
+                fontSize: "0.875rem",
+                margin: "0 0 0.2rem",
+              }}
             >
               Nicholas Templeman
             </p>
-            <p style={{ fontSize: "0.75rem", color: "rgba(245,240,232,0.38)", margin: 0 }}>
-              Founder, MEOK AI LABS
+            <p style={{ fontSize: "0.75rem", color: DIM, margin: 0 }}>
+              Founder, MEOK AI LABS &middot; @meok_ai
             </p>
           </div>
         </div>
 
-        {/* ── Q1 ── */}
-        <h2 style={{ fontWeight: 800, fontSize: "clamp(1.1rem,2.2vw,1.4rem)", color: TEXT, lineHeight: 1.3, margin: "0 0 0.85rem", letterSpacing: "-0.01em" }}>
-          How common is social anxiety in the UK?
+        {/* ── SECTION 1 ── */}
+        <h2
+          style={{
+            fontWeight: 800,
+            fontSize: "clamp(1.1rem, 2.2vw, 1.4rem)",
+            color: TEXT,
+            lineHeight: 1.3,
+            margin: "0 0 0.85rem",
+            letterSpacing: "-0.01em",
+          }}
+        >
+          What is social anxiety disorder — and why is it so under-treated?
         </h2>
-        <p style={{ color: "rgba(245,240,232,0.82)", fontSize: "1rem", lineHeight: 1.72, margin: "0 0 1.15rem" }}>
-          Social anxiety disorder affects approximately{" "}
-          <strong style={{ color: TEXT }}>1 in 8 people in the UK</strong>, according to NHS data — one of the most prevalent
-          anxiety conditions in Britain. Despite its reach, it is chronically under-diagnosed: those who live with it often
-          avoid the GP appointments, job interviews, and social gatherings that might lead them to seek support.
+        <p
+          style={{
+            color: BRIGHT,
+            fontSize: "1rem",
+            lineHeight: 1.72,
+            margin: "0 0 1.15rem",
+          }}
+        >
+          Social anxiety disorder (SAD) affects approximately{" "}
+          <strong style={{ color: TEXT }}>12% of UK adults</strong> at some
+          point in their lives, making it one of the most prevalent anxiety
+          conditions in the country. It is not shyness, introversion, or
+          simply being &apos;a bit awkward&apos;. It is a persistent, clinically
+          significant fear of being scrutinised, judged, or humiliated in social
+          or performance situations — a fear so intense it leads to systematic
+          avoidance of the situations that trigger it.
         </p>
-        <p style={{ color: "rgba(245,240,232,0.62)", fontSize: "0.965rem", lineHeight: 1.78, margin: "0 0 1rem" }}>
-          Social anxiety disorder is not shyness. It is a persistent, intense fear of being judged or humiliated in social
-          or performance situations — one that significantly disrupts work, relationships, and daily life. The NHS classifies
-          it as an anxiety disorder and identifies Cognitive Behavioural Therapy as the primary evidence-based treatment.
-          Adults in England can self-refer to NHS Talking Therapies without a GP referral.
+        <p
+          style={{
+            color: MUTED,
+            fontSize: "0.965rem",
+            lineHeight: 1.78,
+            margin: "0 0 1rem",
+          }}
+        >
+          That avoidance is the core problem. Someone with SAD skips the
+          job interview, declines the dinner invitation, sends the email instead
+          of making the call, and leaves the meeting before speaking up. Each
+          avoided situation provides temporary relief but reinforces the belief
+          that social situations are genuinely dangerous — making the next
+          encounter feel even harder. This is what clinicians call the
+          maintenance cycle of social anxiety, and it is remarkably self-sustaining.
         </p>
-        <p style={{ color: "rgba(245,240,232,0.62)", fontSize: "0.965rem", lineHeight: 1.78, margin: "0 0 1rem" }}>
-          The gap between recognising social anxiety and accessing professional support often stretches weeks or months.
-          During that period, avoidance tends to deepen — each bypassed opportunity making the next one feel harder. MEOK is
-          designed to keep momentum going in that gap: practising rather than retreating, reflecting rather than ruminating.
+        <p
+          style={{
+            color: MUTED,
+            fontSize: "0.965rem",
+            lineHeight: 1.78,
+            margin: "0 0 1rem",
+          }}
+        >
+          The under-treatment problem is stark. Most people with social anxiety
+          never reach a diagnosis — in part because accessing help requires
+          precisely the kind of social interaction they most fear: booking a GP
+          appointment, explaining symptoms to a stranger, attending a waiting-room
+          full of people. NHS waiting lists for Cognitive Behavioural Therapy
+          (CBT), the gold-standard treatment, can stretch months. In that gap,
+          avoidance deepens and confidence erodes.
+        </p>
+        <p
+          style={{
+            color: MUTED,
+            fontSize: "0.965rem",
+            lineHeight: 1.78,
+            margin: "0 0 1rem",
+          }}
+        >
+          MEOK is designed to address exactly that gap. Not by replacing
+          professional treatment, but by ensuring that waiting for treatment is
+          not the same as doing nothing — and that the time between sessions is
+          used to practise, reflect, and build momentum rather than retreat
+          further into avoidance.
         </p>
 
-        <hr style={{ border: "none", borderTop: "1px solid rgba(201,168,76,0.15)", margin: "2.5rem 0" }} />
+        <hr
+          style={{
+            border: "none",
+            borderTop: "1px solid rgba(201,168,76,0.15)",
+            margin: "2.5rem 0",
+          }}
+        />
 
-        {/* ── Q2 ── */}
-        <h2 style={{ fontWeight: 800, fontSize: "clamp(1.1rem,2.2vw,1.4rem)", color: TEXT, lineHeight: 1.3, margin: "0 0 0.85rem", letterSpacing: "-0.01em" }}>
-          Can an AI companion help with social anxiety?
+        {/* ── SECTION 2 ── */}
+        <h2
+          style={{
+            fontWeight: 800,
+            fontSize: "clamp(1.1rem, 2.2vw, 1.4rem)",
+            color: TEXT,
+            lineHeight: 1.3,
+            margin: "0 0 0.85rem",
+            letterSpacing: "-0.01em",
+          }}
+        >
+          Social situation rehearsal: practising difficult conversations in a
+          safe space
         </h2>
-        <p style={{ color: "rgba(245,240,232,0.82)", fontSize: "1rem", lineHeight: 1.72, margin: "0 0 1.15rem" }}>
-          Yes — within clearly defined limits. MEOK is useful as a{" "}
-          <em style={{ color: "rgba(245,240,232,0.82)" }}>practice space</em>. One of the most effective elements of CBT
-          for social anxiety is behavioural exposure: gradually approaching feared situations rather than avoiding them.
-          In the real world, exposure opportunities are scarce and carry genuine social stakes. MEOK removes those stakes entirely.
+        <p
+          style={{
+            color: BRIGHT,
+            fontSize: "1rem",
+            lineHeight: 1.72,
+            margin: "0 0 1.15rem",
+          }}
+        >
+          One of the most powerful elements of CBT for social anxiety is
+          behavioural exposure — approaching feared situations gradually rather
+          than avoiding them. The challenge is that in real life, exposure
+          opportunities are finite, unpredictable, and carry genuine stakes.
+          You cannot re-run a job interview. You cannot restart a dinner party
+          conversation. MEOK removes those constraints entirely.
         </p>
-        <p style={{ color: "rgba(245,240,232,0.62)", fontSize: "0.965rem", lineHeight: 1.78, margin: "0 0 1rem" }}>
-          You can rehearse a conversation as many times as needed, restart mid-sentence, or ask for a harder version once
-          you feel ready — without any social consequence. None of this replaces professional treatment, but it usefully
-          fills the gap between recognising a problem and accessing clinical support.
+        <p
+          style={{
+            color: MUTED,
+            fontSize: "0.965rem",
+            lineHeight: 1.78,
+            margin: "0 0 1rem",
+          }}
+        >
+          With MEOK, you describe the social situation you are dreading — a
+          presentation to your team, a first date, a call with a difficult
+          family member, a conversation about a boundary you need to set — and
+          MEOK becomes the other party. You can practise the same exchange as
+          many times as you need, restart mid-sentence, ask for a harder or
+          gentler version, or slow things down to examine a single moment in
+          detail.
         </p>
-        <div style={{ background: "rgba(201,168,76,0.07)", border: "1px solid rgba(201,168,76,0.22)", borderLeft: "3px solid #c9a84c", borderRadius: "0.5rem", padding: "1rem 1.3rem", margin: "0 0 1.75rem" }}>
-          <p style={{ margin: 0, fontSize: "0.9rem", color: "rgba(245,240,232,0.78)", lineHeight: 1.68 }}>
-            <strong style={{ color: GOLD }}>MEOK&#39;s role:</strong> a private, patient, consistent practice partner — not a therapist,
-            not a diagnosis tool, not a substitute for the clinical support that social anxiety disorder deserves.
+        <p
+          style={{
+            color: MUTED,
+            fontSize: "0.965rem",
+            lineHeight: 1.78,
+            margin: "0 0 1.25rem",
+          }}
+        >
+          The more context you give — the specific person, their usual phrases,
+          the history between you, the stakes involved — the more precise and
+          useful the rehearsal becomes. Unlike practising alone in the mirror,
+          MEOK responds dynamically, introduces realistic complications, and
+          remembers what you have practised before across sessions.
+        </p>
+
+        {/* Feature box 1 — rehearsal scenarios */}
+        <div
+          style={{
+            background: CARD,
+            border: `1px solid ${BORDER}`,
+            borderRadius: "1rem",
+            padding: "1.75rem",
+            marginBottom: "2rem",
+          }}
+        >
+          <p
+            style={{
+              fontWeight: 800,
+              color: GOLD,
+              fontSize: "0.8rem",
+              letterSpacing: "0.07em",
+              textTransform: "uppercase" as const,
+              margin: "0 0 1.25rem",
+            }}
+          >
+            Situations you can rehearse with MEOK
+          </p>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "1fr 1fr",
+              gap: "0.75rem 1.5rem",
+            }}
+          >
+            {[
+              "Job interviews",
+              "Saying no to a request",
+              "First dates",
+              "Confronting a colleague",
+              "Asking for a pay rise",
+              "Making a difficult phone call",
+              "Setting limits with family",
+              "Speaking up in a meeting",
+              "Awkward social introductions",
+              "Ending a conversation gracefully",
+              "Asking for help",
+              "Disagreeing with authority",
+            ].map((scenario) => (
+              <div
+                key={scenario}
+                style={{
+                  display: "flex",
+                  alignItems: "flex-start",
+                  gap: "0.5rem",
+                }}
+              >
+                <span
+                  style={{
+                    color: GREEN,
+                    fontSize: "0.9rem",
+                    lineHeight: "1.5",
+                    flexShrink: 0,
+                  }}
+                >
+                  &#10003;
+                </span>
+                <span
+                  style={{
+                    color: MUTED,
+                    fontSize: "0.875rem",
+                    lineHeight: 1.5,
+                  }}
+                >
+                  {scenario}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <p
+          style={{
+            color: MUTED,
+            fontSize: "0.965rem",
+            lineHeight: 1.78,
+            margin: "0 0 1rem",
+          }}
+        >
+          MEOK&apos;s persistent sovereign memory means each rehearsal session
+          builds on the last. It tracks which scenarios you have practised,
+          where you tend to freeze, over-apologise, or trail off — and uses
+          that knowledge to make subsequent sessions progressively more
+          challenging in a targeted way. This is the kind of structured,
+          graduated practice that makes exposure effective rather than simply
+          stressful.
+        </p>
+
+        <hr
+          style={{
+            border: "none",
+            borderTop: "1px solid rgba(201,168,76,0.15)",
+            margin: "2.5rem 0",
+          }}
+        />
+
+        {/* ── SECTION 3 ── */}
+        <h2
+          style={{
+            fontWeight: 800,
+            fontSize: "clamp(1.1rem, 2.2vw, 1.4rem)",
+            color: TEXT,
+            lineHeight: 1.3,
+            margin: "0 0 0.85rem",
+            letterSpacing: "-0.01em",
+          }}
+        >
+          Post-event processing: deconstructing what happened without spiralling
+        </h2>
+        <p
+          style={{
+            color: BRIGHT,
+            fontSize: "1rem",
+            lineHeight: 1.72,
+            margin: "0 0 1.15rem",
+          }}
+        >
+          After a social event, people with social anxiety often engage in
+          what researchers call{" "}
+          <em style={{ color: BRIGHT }}>post-event processing</em> — a detailed,
+          repetitive mental replay of everything that might have gone wrong.
+          Did you say something embarrassing? Did people notice you were
+          nervous? Was that silence awkward? This kind of rumination is not
+          productive self-reflection; it is anxious threat-scanning, and it
+          tends to distort rather than clarify what actually happened.
+        </p>
+        <p
+          style={{
+            color: MUTED,
+            fontSize: "0.965rem",
+            lineHeight: 1.78,
+            margin: "0 0 1rem",
+          }}
+        >
+          MEOK can interrupt this cycle. Rather than ruminating alone,
+          you bring the event to MEOK and walk through it in a structured way:
+          what you expected to happen, what actually happened, what your mind
+          is telling you now, and what a more balanced interpretation might be.
+          This is not about being dismissive of your feelings — it is about
+          separating the event from the story your anxiety is constructing
+          around it.
+        </p>
+        <p
+          style={{
+            color: MUTED,
+            fontSize: "0.965rem",
+            lineHeight: 1.78,
+            margin: "0 0 1rem",
+          }}
+        >
+          The difference between ruminating and processing is largely structural.
+          Rumination is circular — the same thoughts repeating without resolution.
+          Processing is directional — moving from event to interpretation to
+          a more grounded perspective. MEOK provides that structure: gently
+          prompting you to consider the evidence, notice cognitive distortions,
+          and arrive at a perspective you can actually rest in rather than loop
+          around indefinitely.
+        </p>
+
+        {/* Pull quote */}
+        <blockquote
+          style={{
+            margin: "2rem 0",
+            padding: "1.5rem 2rem",
+            borderLeft: `4px solid ${GOLD}`,
+            background: "rgba(201,168,76,0.06)",
+            borderRadius: "0 0.75rem 0.75rem 0",
+          }}
+        >
+          <p
+            style={{
+              fontSize: "1.15rem",
+              fontStyle: "italic",
+              color: BRIGHT,
+              lineHeight: 1.65,
+              margin: "0 0 0.75rem",
+            }}
+          >
+            &ldquo;The difference between ruminating and processing is
+            direction. Rumination is circular. Processing is moving from what
+            happened toward a perspective you can rest in.&rdquo;
+          </p>
+          <p style={{ fontSize: "0.8rem", color: DIM, margin: 0 }}>
+            MEOK AI LABS &mdash; on post-event processing for social anxiety
+          </p>
+        </blockquote>
+
+        <p
+          style={{
+            color: MUTED,
+            fontSize: "0.965rem",
+            lineHeight: 1.78,
+            margin: "0 0 1rem",
+          }}
+        >
+          Because MEOK remembers previous sessions, it can also help you notice
+          patterns over time: recurring themes in what you fear others think,
+          situations that consistently trigger post-event spirals, and gradual
+          shifts in how long or intensely the processing runs. This longitudinal
+          picture is something a single therapy session cannot easily provide,
+          and it gives you — and any therapist you are working with — a much
+          richer basis for understanding your specific anxiety patterns.
+        </p>
+
+        <hr
+          style={{
+            border: "none",
+            borderTop: "1px solid rgba(201,168,76,0.15)",
+            margin: "2.5rem 0",
+          }}
+        />
+
+        {/* ── SECTION 4 ── */}
+        <h2
+          style={{
+            fontWeight: 800,
+            fontSize: "clamp(1.1rem, 2.2vw, 1.4rem)",
+            color: TEXT,
+            lineHeight: 1.3,
+            margin: "0 0 0.85rem",
+            letterSpacing: "-0.01em",
+          }}
+        >
+          Understanding your triggers: mapping the landscape of your social fears
+        </h2>
+        <p
+          style={{
+            color: BRIGHT,
+            fontSize: "1rem",
+            lineHeight: 1.72,
+            margin: "0 0 1.15rem",
+          }}
+        >
+          Social anxiety is rarely uniform. Most people have a specific
+          landscape of fears — situations that feel catastrophically threatening
+          versus situations that feel merely uncomfortable. A person might feel
+          entirely relaxed with close friends but completely undone by small
+          talk with strangers. Another might breeze through presentations but
+          dread one-to-one conflicts. Understanding this landscape in detail is
+          the first step to changing it.
+        </p>
+        <p
+          style={{
+            color: MUTED,
+            fontSize: "0.965rem",
+            lineHeight: 1.78,
+            margin: "0 0 1rem",
+          }}
+        >
+          MEOK builds that map over time. As you share experiences, rehearse
+          scenarios, and reflect on what felt hardest, MEOK tracks the patterns:
+          which types of situation consistently produce the most anxiety, which
+          cognitive distortions appear most frequently, and how your subjective
+          distress levels compare across different contexts. Rather than a vague
+          sense of &apos;I&apos;m just bad at social situations&apos;, you develop a precise
+          and actionable picture of where your anxiety lives.
+        </p>
+        <p
+          style={{
+            color: MUTED,
+            fontSize: "0.965rem",
+            lineHeight: 1.78,
+            margin: "0 0 1rem",
+          }}
+        >
+          Common trigger themes that people explore with MEOK include: fear
+          of being perceived as stupid or incompetent; fear of visible anxiety
+          symptoms (blushing, voice shaking, sweating); fear of saying something
+          offensive or inappropriate; fear of being the centre of attention;
+          and fear of rejection or exclusion. Each of these has a slightly
+          different cognitive signature and responds best to slightly different
+          approaches. Understanding which theme is dominant for you makes the
+          practice far more targeted.
+        </p>
+        <p
+          style={{
+            color: MUTED,
+            fontSize: "0.965rem",
+            lineHeight: 1.78,
+            margin: "0 0 1rem",
+          }}
+        >
+          This is also where MEOK&apos;s memory becomes genuinely powerful. A
+          single conversation produces self-report. Dozens of conversations,
+          accumulated over weeks and months, produce a pattern. MEOK holds
+          that pattern intact across sessions so that each reflection is
+          grounded in your actual history rather than just today&apos;s mood.
+        </p>
+
+        <hr
+          style={{
+            border: "none",
+            borderTop: "1px solid rgba(201,168,76,0.15)",
+            margin: "2.5rem 0",
+          }}
+        />
+
+        {/* ── SECTION 5 ── */}
+        <h2
+          style={{
+            fontWeight: 800,
+            fontSize: "clamp(1.1rem, 2.2vw, 1.4rem)",
+            color: TEXT,
+            lineHeight: 1.3,
+            margin: "0 0 0.85rem",
+            letterSpacing: "-0.01em",
+          }}
+        >
+          CBT-informed reflection: working with your thoughts, not just your
+          feelings
+        </h2>
+        <p
+          style={{
+            color: BRIGHT,
+            fontSize: "1rem",
+            lineHeight: 1.72,
+            margin: "0 0 1.15rem",
+          }}
+        >
+          Cognitive Behavioural Therapy works on the premise that it is not
+          situations themselves that cause anxiety, but our interpretation of
+          them. Social anxiety is characterised by a specific set of cognitive
+          distortions: mind-reading (&apos;they think I&apos;m boring&apos;),
+          fortune-telling (&apos;I&apos;m going to embarrass myself&apos;),
+          catastrophising (&apos;that was the most humiliating moment of my
+          life&apos;), and personalisation (&apos;everyone noticed I went red&apos;).
+          These are not facts — they are interpretations — but they feel
+          indistinguishable from facts in the moment.
+        </p>
+        <p
+          style={{
+            color: MUTED,
+            fontSize: "0.965rem",
+            lineHeight: 1.78,
+            margin: "0 0 1rem",
+          }}
+        >
+          MEOK is designed to work gently in this territory. When you share an
+          anxious thought, MEOK can help you examine it: What is the evidence
+          for this thought? What is the evidence against it? Is there an
+          alternative interpretation? What would you say to a friend who had
+          this thought? This is not armchair therapy — it is the application of
+          CBT-consistent prompts in a space where you feel safe enough to
+          actually engage with them.
+        </p>
+
+        {/* Feature box 2 — CBT distortions */}
+        <div
+          style={{
+            background: CARD,
+            border: `1px solid ${BORDER}`,
+            borderLeft: `4px solid ${GOLD}`,
+            borderRadius: "0.75rem",
+            padding: "1.5rem 1.75rem",
+            marginBottom: "2rem",
+          }}
+        >
+          <p
+            style={{
+              fontWeight: 800,
+              color: GOLD,
+              fontSize: "0.8rem",
+              letterSpacing: "0.07em",
+              textTransform: "uppercase" as const,
+              margin: "0 0 1.25rem",
+            }}
+          >
+            Common cognitive distortions in social anxiety
+          </p>
+          <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+            <div>
+              <p
+                style={{
+                  fontWeight: 700,
+                  color: TEXT,
+                  fontSize: "0.9rem",
+                  margin: "0 0 0.25rem",
+                }}
+              >
+                Mind-reading
+              </p>
+              <p
+                style={{ color: MUTED, fontSize: "0.875rem", lineHeight: 1.6, margin: 0 }}
+              >
+                Assuming you know what others are thinking about you — usually
+                that they are judging you negatively — with no real evidence.
+              </p>
+            </div>
+            <div>
+              <p
+                style={{
+                  fontWeight: 700,
+                  color: TEXT,
+                  fontSize: "0.9rem",
+                  margin: "0 0 0.25rem",
+                }}
+              >
+                Fortune-telling
+              </p>
+              <p
+                style={{ color: MUTED, fontSize: "0.875rem", lineHeight: 1.6, margin: 0 }}
+              >
+                Predicting that things will go badly before they happen, then
+                treating that prediction as certain fact rather than anxious
+                speculation.
+              </p>
+            </div>
+            <div>
+              <p
+                style={{
+                  fontWeight: 700,
+                  color: TEXT,
+                  fontSize: "0.9rem",
+                  margin: "0 0 0.25rem",
+                }}
+              >
+                Catastrophising
+              </p>
+              <p
+                style={{ color: MUTED, fontSize: "0.875rem", lineHeight: 1.6, margin: 0 }}
+              >
+                Magnifying the significance of a social misstep until it
+                feels like permanent, definitive evidence of your unworthiness.
+              </p>
+            </div>
+            <div>
+              <p
+                style={{
+                  fontWeight: 700,
+                  color: TEXT,
+                  fontSize: "0.9rem",
+                  margin: "0 0 0.25rem",
+                }}
+              >
+                Personalisation
+              </p>
+              <p
+                style={{ color: MUTED, fontSize: "0.875rem", lineHeight: 1.6, margin: 0 }}
+              >
+                Assuming that other people&apos;s behaviour is a direct response to
+                you — that the awkward silence is your fault, that the curt
+                reply is about your failings.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <p
+          style={{
+            color: MUTED,
+            fontSize: "0.965rem",
+            lineHeight: 1.78,
+            margin: "0 0 1rem",
+          }}
+        >
+          MEOK will not diagnose your cognitive patterns, but it can help you
+          notice when a thought fits a recognisable distortion pattern and gently
+          offer a different way of holding the same situation. Over time, this
+          practice of examining thoughts rather than automatically believing them
+          builds a skill that starts to operate in real time — not just in
+          reflection, but in the moment.
+        </p>
+        <p
+          style={{
+            color: MUTED,
+            fontSize: "0.965rem",
+            lineHeight: 1.78,
+            margin: "0 0 1rem",
+          }}
+        >
+          This is also where the absence of judgment in MEOK is genuinely
+          significant. Sharing your most embarrassing or most extreme anxious
+          thoughts with a human — even a therapist — involves some degree of
+          performance anxiety. With MEOK, there is no audience to manage.
+          You can say &apos;I think everyone at that party hated me&apos; without
+          worrying about whether that sounds ridiculous. That freedom tends to
+          produce more honest, more useful reflection.
+        </p>
+
+        <hr
+          style={{
+            border: "none",
+            borderTop: "1px solid rgba(201,168,76,0.15)",
+            margin: "2.5rem 0",
+          }}
+        />
+
+        {/* ── SECTION 6 ── */}
+        <h2
+          style={{
+            fontWeight: 800,
+            fontSize: "clamp(1.1rem, 2.2vw, 1.4rem)",
+            color: TEXT,
+            lineHeight: 1.3,
+            margin: "0 0 0.85rem",
+            letterSpacing: "-0.01em",
+          }}
+        >
+          The Trickster archetype: reframing social fears with gentle humour
+        </h2>
+        <p
+          style={{
+            color: BRIGHT,
+            fontSize: "1rem",
+            lineHeight: 1.72,
+            margin: "0 0 1.15rem",
+          }}
+        >
+          MEOK is built around a set of archetypes — distinct inner voices with
+          different qualities — and for social anxiety, the Trickster archetype
+          has a particular gift. Social anxiety tends to take itself very
+          seriously. The fears are urgent, the stakes feel enormous, the threat
+          of judgement feels existential. The Trickster does not dismiss that
+          seriousness — it gently punctures it.
+        </p>
+        <p
+          style={{
+            color: MUTED,
+            fontSize: "0.965rem",
+            lineHeight: 1.78,
+            margin: "0 0 1rem",
+          }}
+        >
+          Humour is one of the most underused tools in anxiety management.
+          Research in cognitive science suggests that the ability to find
+          something even slightly funny in a feared situation reduces its
+          perceived threat level — not by dismissing the fear, but by
+          introducing a second, lighter register alongside it. The Trickster
+          in MEOK does this through gentle reframing: helping you notice the
+          absurdity in catastrophic predictions, find the comic logic in
+          post-event spirals, or hold your fears with a lightness that does
+          not invalidate them but does reduce their grip.
+        </p>
+        <p
+          style={{
+            color: MUTED,
+            fontSize: "0.965rem",
+            lineHeight: 1.78,
+            margin: "0 0 1rem",
+          }}
+        >
+          This is not the same as being told &apos;just relax&apos; or &apos;it&apos;s not that
+          serious&apos;. The Trickster meets you where you are and works from
+          there — noticing, with you, the gap between how enormous something
+          feels and how it might look from a slight distance. That shift in
+          perspective does not make the anxiety disappear, but it creates
+          enough space to move.
+        </p>
+        <p
+          style={{
+            color: MUTED,
+            fontSize: "0.965rem",
+            lineHeight: 1.78,
+            margin: "0 0 1rem",
+          }}
+        >
+          You can choose which archetype you work with in MEOK, and you are not
+          limited to one. For social anxiety, many people find a combination
+          of the Trickster&apos;s lightness and the Sage&apos;s clear-eyed analysis
+          particularly useful — the former for pre-event dread, the latter for
+          post-event debrief.
+        </p>
+
+        <hr
+          style={{
+            border: "none",
+            borderTop: "1px solid rgba(201,168,76,0.15)",
+            margin: "2.5rem 0",
+          }}
+        />
+
+        {/* ── SECTION 7 ── */}
+        <h2
+          style={{
+            fontWeight: 800,
+            fontSize: "clamp(1.1rem, 2.2vw, 1.4rem)",
+            color: TEXT,
+            lineHeight: 1.3,
+            margin: "0 0 0.85rem",
+            letterSpacing: "-0.01em",
+          }}
+        >
+          Preparation: reducing anticipatory anxiety before social events
+        </h2>
+        <p
+          style={{
+            color: BRIGHT,
+            fontSize: "1rem",
+            lineHeight: 1.72,
+            margin: "0 0 1.15rem",
+          }}
+        >
+          Anticipatory anxiety — the dread of what might happen — is often worse
+          than the event itself. People with social anxiety can spend hours or
+          days before a social situation mentally rehearsing catastrophic
+          outcomes, cycling through worst-case scenarios, and physically
+          experiencing the physiological symptoms of anxiety before the event
+          has even begun. This preparation is counterproductive: it does not
+          reduce risk, it amplifies threat perception.
+        </p>
+        <p
+          style={{
+            color: MUTED,
+            fontSize: "0.965rem",
+            lineHeight: 1.78,
+            margin: "0 0 1rem",
+          }}
+        >
+          MEOK offers a different kind of preparation. Instead of spontaneous
+          catastrophic imagining, you engage in structured preparation that
+          covers what you actually want to communicate, likely scenarios and
+          how you might respond to them, and what specifically you are afraid
+          of so you can examine those fears directly rather than let them
+          accumulate unchecked. This intentional preparation tends to reduce
+          anticipatory anxiety because it channels anxious energy into
+          something productive rather than leaving it to spin.
+        </p>
+        <p
+          style={{
+            color: MUTED,
+            fontSize: "0.965rem",
+            lineHeight: 1.78,
+            margin: "0 0 1rem",
+          }}
+        >
+          You can also use MEOK to establish a pre-event grounding routine:
+          a brief, consistent practice of articulating your intention for the
+          event, acknowledging your anxiety without fighting it, and connecting
+          to whatever version of yourself you want to bring. This is not a
+          magic formula — anxiety will still be present — but having a
+          consistent preparation ritual reduces the chaos of pre-event dread
+          and gives you a small but genuine sense of agency.
+        </p>
+
+        {/* Feature box 3 — preparation routine */}
+        <div
+          style={{
+            background: "rgba(106,170,100,0.07)",
+            border: "1px solid rgba(106,170,100,0.25)",
+            borderLeft: `4px solid ${GREEN}`,
+            borderRadius: "0.75rem",
+            padding: "1.5rem 1.75rem",
+            marginBottom: "2rem",
+          }}
+        >
+          <p
+            style={{
+              fontWeight: 800,
+              color: GREEN,
+              fontSize: "0.8rem",
+              letterSpacing: "0.07em",
+              textTransform: "uppercase" as const,
+              margin: "0 0 1.25rem",
+            }}
+          >
+            A simple pre-event preparation with MEOK
+          </p>
+          <ol
+            style={{
+              margin: 0,
+              paddingLeft: "1.5rem",
+              display: "flex",
+              flexDirection: "column",
+              gap: "0.75rem",
+            }}
+          >
+            <li style={{ color: MUTED, fontSize: "0.9rem", lineHeight: 1.65 }}>
+              <strong style={{ color: TEXT }}>Describe the situation</strong>{" "}
+              — who will be there, what the context is, what you need or want
+              from it.
+            </li>
+            <li style={{ color: MUTED, fontSize: "0.9rem", lineHeight: 1.65 }}>
+              <strong style={{ color: TEXT }}>Name your fears specifically</strong>{" "}
+              — not &apos;it&apos;ll go badly&apos; but the exact scenario you are imagining.
+            </li>
+            <li style={{ color: MUTED, fontSize: "0.9rem", lineHeight: 1.65 }}>
+              <strong style={{ color: TEXT }}>Examine the evidence</strong>{" "}
+              — has this specific disaster actually happened before? What is the
+              realistic probability?
+            </li>
+            <li style={{ color: MUTED, fontSize: "0.9rem", lineHeight: 1.65 }}>
+              <strong style={{ color: TEXT }}>Rehearse one key moment</strong>{" "}
+              — the opening exchange, the hardest question, the moment you most
+              want to feel ready for.
+            </li>
+            <li style={{ color: MUTED, fontSize: "0.9rem", lineHeight: 1.65 }}>
+              <strong style={{ color: TEXT }}>Set a single intention</strong>{" "}
+              — not &apos;be perfect&apos; but something you can genuinely do, like
+              &apos;stay present for five minutes&apos; or &apos;say one honest thing&apos;.
+            </li>
+          </ol>
+        </div>
+
+        <hr
+          style={{
+            border: "none",
+            borderTop: "1px solid rgba(201,168,76,0.15)",
+            margin: "2.5rem 0",
+          }}
+        />
+
+        {/* ── SECTION 8 ── */}
+        <h2
+          style={{
+            fontWeight: 800,
+            fontSize: "clamp(1.1rem, 2.2vw, 1.4rem)",
+            color: TEXT,
+            lineHeight: 1.3,
+            margin: "0 0 0.85rem",
+            letterSpacing: "-0.01em",
+          }}
+        >
+          Why consistency and privacy matter for people with social anxiety
+        </h2>
+        <p
+          style={{
+            color: BRIGHT,
+            fontSize: "1rem",
+            lineHeight: 1.72,
+            margin: "0 0 1.15rem",
+          }}
+        >
+          Social anxiety is partly maintained by hypervigilance to social cues:
+          a heightened scanning of others&apos; behaviour for evidence of judgement,
+          rejection, or displeasure. This hypervigilance is exhausting, and
+          it makes any environment with unpredictable social responses
+          inherently threatening. A human therapist, however skilled and
+          however warm, is still a person — with moods, with moments of
+          distraction, with the capacity to respond in ways that trigger
+          the hypervigilant scanning.
+        </p>
+        <p
+          style={{
+            color: MUTED,
+            fontSize: "0.965rem",
+            lineHeight: 1.78,
+            margin: "0 0 1rem",
+          }}
+        >
+          MEOK does not have moods. It does not get impatient, distracted,
+          rushed, or subtly disapproving. The quality of presence it offers
+          is the same at 3am on a Sunday as it is at noon on a Tuesday.
+          For someone whose anxiety is precisely about the unpredictability
+          of other people&apos;s responses, this consistency is not a limitation
+          of AI — it is a genuinely therapeutic feature.
+        </p>
+        <p
+          style={{
+            color: MUTED,
+            fontSize: "0.965rem",
+            lineHeight: 1.78,
+            margin: "0 0 1rem",
+          }}
+        >
+          Privacy is equally significant. Social anxiety involves deep shame —
+          shame about the anxiety itself, about the thoughts it produces, about
+          the situations avoided. Sharing this with another person, even a
+          trusted one, adds a layer of social performance to the therapeutic
+          process. With MEOK, that layer is absent. Your conversations live in
+          an encrypted vault only you control. Nothing is shared, logged for
+          training, or visible to anyone else. The privacy is structural, not
+          just promised.
+        </p>
+        <p
+          style={{
+            color: MUTED,
+            fontSize: "0.965rem",
+            lineHeight: 1.78,
+            margin: "0 0 1rem",
+          }}
+        >
+          This matters particularly for people who have avoided seeking help
+          because the act of seeking help itself triggers their social anxiety:
+          the fear of being judged for having the problem, the fear of saying
+          the wrong thing to a professional, the fear of being seen as &apos;too
+          much&apos; or &apos;not sick enough&apos;. MEOK removes those barriers entirely.
+          You can start exactly where you are, without performing readiness
+          or capability.
+        </p>
+
+        <hr
+          style={{
+            border: "none",
+            borderTop: "1px solid rgba(201,168,76,0.15)",
+            margin: "2.5rem 0",
+          }}
+        />
+
+        {/* ── SECTION 9 ── */}
+        <h2
+          style={{
+            fontWeight: 800,
+            fontSize: "clamp(1.1rem, 2.2vw, 1.4rem)",
+            color: TEXT,
+            lineHeight: 1.3,
+            margin: "0 0 0.85rem",
+            letterSpacing: "-0.01em",
+          }}
+        >
+          How MEOK works alongside professional therapy for social anxiety
+        </h2>
+        <p
+          style={{
+            color: BRIGHT,
+            fontSize: "1rem",
+            lineHeight: 1.72,
+            margin: "0 0 1.15rem",
+          }}
+        >
+          MEOK is designed explicitly as a complement to professional support,
+          not a replacement for it. Social anxiety disorder is a clinical
+          condition and, at its most severe, it responds best to structured
+          CBT delivered by a qualified therapist — ideally with graduated
+          exposure exercises, cognitive restructuring work, and regular
+          monitoring of progress. MEOK cannot provide that structure, that
+          clinical judgement, or that professional relationship.
+        </p>
+        <p
+          style={{
+            color: MUTED,
+            fontSize: "0.965rem",
+            lineHeight: 1.78,
+            margin: "0 0 1rem",
+          }}
+        >
+          What MEOK can provide is the practice between sessions, the
+          reflection after events, the preparation before situations, and the
+          continuous presence that weekly therapy cannot offer. Many people find
+          that the work they do with MEOK between therapy sessions accelerates
+          the therapy itself — they arrive at sessions with more specific
+          observations, more articulated patterns, and more rehearsed
+          language for what they are experiencing. The therapist then has
+          better material to work with.
+        </p>
+        <p
+          style={{
+            color: MUTED,
+            fontSize: "0.965rem",
+            lineHeight: 1.78,
+            margin: "0 0 1rem",
+          }}
+        >
+          If you are on an NHS waiting list, MEOK is particularly useful in
+          that interim period: keeping you actively engaged with your anxiety
+          rather than avoiding it, building skills that will be reinforced in
+          therapy, and maintaining a record of your experiences that will
+          provide useful context when treatment begins.
+        </p>
+
+        {/* Disclaimer box */}
+        <div
+          style={{
+            background: "rgba(201,168,76,0.06)",
+            border: "1px solid rgba(201,168,76,0.2)",
+            borderRadius: "1rem",
+            padding: "1.5rem 1.75rem",
+            marginBottom: "2.5rem",
+          }}
+        >
+          <p
+            style={{
+              fontWeight: 700,
+              color: GOLD,
+              fontSize: "0.875rem",
+              margin: "0 0 0.6rem",
+            }}
+          >
+            MEOK supplements, it does not replace
+          </p>
+          <p
+            style={{ color: MUTED, fontSize: "0.875rem", lineHeight: 1.65, margin: 0 }}
+          >
+            MEOK is not a medical device, does not provide diagnoses, and is not
+            a substitute for clinical treatment. Social anxiety disorder responds
+            well to evidence-based CBT. In the UK, you can self-refer to{" "}
+            <strong style={{ color: TEXT }}>NHS Talking Therapies</strong> (formerly
+            IAPT) at{" "}
+            <strong style={{ color: TEXT }}>nhs.uk/mental-health/talking-therapies</strong>{" "}
+            or by calling{" "}
+            <strong style={{ color: TEXT }}>0300 123 3393</strong>.
+            Private therapy can be found through the{" "}
+            <strong style={{ color: TEXT }}>BACP directory</strong>. If you are
+            in crisis, contact{" "}
+            <strong style={{ color: TEXT }}>Samaritans on 116 123</strong>,
+            available 24 hours a day.
           </p>
         </div>
 
-        <hr style={{ border: "none", borderTop: "1px solid rgba(201,168,76,0.15)", margin: "2.5rem 0" }} />
+        <hr
+          style={{
+            border: "none",
+            borderTop: "1px solid rgba(201,168,76,0.15)",
+            margin: "2.5rem 0",
+          }}
+        />
 
-        {/* ── Q3 ── */}
-        <h2 style={{ fontWeight: 800, fontSize: "clamp(1.1rem,2.2vw,1.4rem)", color: TEXT, lineHeight: 1.3, margin: "0 0 0.85rem", letterSpacing: "-0.01em" }}>
-          What kinds of conversations can I practise with MEOK?
+        {/* ── SECTION 10 ── */}
+        <h2
+          style={{
+            fontWeight: 800,
+            fontSize: "clamp(1.1rem, 2.2vw, 1.4rem)",
+            color: TEXT,
+            lineHeight: 1.3,
+            margin: "0 0 0.85rem",
+            letterSpacing: "-0.01em",
+          }}
+        >
+          Building confidence over time: what progress looks like
         </h2>
-        <p style={{ color: "rgba(245,240,232,0.82)", fontSize: "1rem", lineHeight: 1.72, margin: "0 0 1.15rem" }}>
-          Any conversation you have been avoiding. MEOK simulates real-world social scenarios and adapts its tone and
-          difficulty to where you are in your confidence. Some of the most common uses:
+        <p
+          style={{
+            color: BRIGHT,
+            fontSize: "1rem",
+            lineHeight: 1.72,
+            margin: "0 0 1.15rem",
+          }}
+        >
+          Progress with social anxiety is rarely linear. There will be weeks
+          where something that felt manageable suddenly feels impossible again.
+          There will be situations where all the preparation in the world does
+          not prevent the blush or the voice-shake. Progress looks less like
+          anxiety disappearing and more like your relationship to it shifting:
+          less fusion with the thoughts, less avoidance of the situations,
+          faster recovery after difficult events.
         </p>
-        <p style={{ fontWeight: 700, color: TEXT, fontSize: "0.965rem", margin: "0 0 0.4rem" }}>Job interviews</p>
-        <p style={{ color: "rgba(245,240,232,0.62)", fontSize: "0.965rem", lineHeight: 1.78, margin: "0 0 1rem" }}>
-          Run through a full interview, rework the same answer multiple ways, or ask MEOK to push back on your responses.
-          It remembers how you performed last time and raises the difficulty incrementally as your confidence builds.
+        <p
+          style={{
+            color: MUTED,
+            fontSize: "0.965rem",
+            lineHeight: 1.78,
+            margin: "0 0 1rem",
+          }}
+        >
+          MEOK helps you track this kind of progress. Because it remembers
+          across sessions, it can surface evidence of growth that is easy to
+          miss when you are inside your own experience: the scenario you now
+          approach without days of anticipatory dread, the post-event debrief
+          that is now fifteen minutes rather than three hours, the social
+          situation you used to avoid that you attended last week and found
+          manageable. These are real changes, and they are worth recognising.
         </p>
-        <p style={{ fontWeight: 700, color: TEXT, fontSize: "0.965rem", margin: "0 0 0.4rem" }}>Awkward family conversations</p>
-        <p style={{ color: "rgba(245,240,232,0.62)", fontSize: "0.965rem", lineHeight: 1.78, margin: "0 0 1rem" }}>
-          Setting a limit with a parent, telling a sibling something they do not want to hear, navigating a tense family
-          dinner. Brief MEOK on the specific dynamics — including phrases your family member typically uses — and rehearse
-          until the words feel natural.
+        <p
+          style={{
+            color: MUTED,
+            fontSize: "0.965rem",
+            lineHeight: 1.78,
+            margin: "0 0 1rem",
+          }}
+        >
+          Social anxiety often involves a distorted relationship with evidence:
+          successes are discounted (&apos;it only went OK because the setting was
+          easy&apos;) while failures are amplified (&apos;I knew I&apos;d humiliate myself&apos;).
+          MEOK can challenge this asymmetry — not by dismissing failures, but
+          by ensuring that successes are recorded, weighted, and revisited with
+          the same attention you naturally bring to things that went wrong.
         </p>
-        <p style={{ fontWeight: 700, color: TEXT, fontSize: "0.965rem", margin: "0 0 0.4rem" }}>First dates and social introductions</p>
-        <p style={{ color: "rgba(245,240,232,0.62)", fontSize: "0.965rem", lineHeight: 1.78, margin: "0 0 1rem" }}>
-          Social anxiety hits hardest in unstructured situations without a script. Practising small talk, topic transitions,
-          and handling silence can reduce the anticipatory dread that leads many people to cancel plans entirely.
-        </p>
-        <p style={{ fontWeight: 700, color: TEXT, fontSize: "0.965rem", margin: "0 0 0.4rem" }}>Workplace scenarios</p>
-        <p style={{ color: "rgba(245,240,232,0.62)", fontSize: "0.965rem", lineHeight: 1.78, margin: "0 0 1rem" }}>
-          Asking your manager for a pay rise, disagreeing with a colleague in a meeting, or sending a difficult email.
-          MEOK helps you rehearse and tracks across sessions whether this class of interaction is becoming less triggering.
-        </p>
-        <p style={{ color: "rgba(245,240,232,0.62)", fontSize: "0.965rem", lineHeight: 1.78, margin: "0 0 1rem" }}>
-          You are not limited to preset scenarios. Because MEOK holds full context, you can describe a real situation in
-          detail — the specific person, the history, the stakes — and practise with that level of specificity rather than
-          a generic approximation. The more precisely you describe the situation, the more useful the rehearsal.
+        <p
+          style={{
+            color: MUTED,
+            fontSize: "0.965rem",
+            lineHeight: 1.78,
+            margin: "0 0 1rem",
+          }}
+        >
+          Over months of consistent use, most people find that their practice
+          capacity expands — the situations they are willing to attempt, the
+          complexity of conversations they can rehearse, the speed with which
+          they can deconstruct a difficult event and return to equilibrium.
+          This is not a cure. But it is a meaningful, measurable improvement in
+          quality of life.
         </p>
 
-        <hr style={{ border: "none", borderTop: "1px solid rgba(201,168,76,0.15)", margin: "2.5rem 0" }} />
+        <hr
+          style={{
+            border: "none",
+            borderTop: "1px solid rgba(201,168,76,0.15)",
+            margin: "2.5rem 0",
+          }}
+        />
 
-        {/* ── Q4 ── */}
-        <h2 style={{ fontWeight: 800, fontSize: "clamp(1.1rem,2.2vw,1.4rem)", color: TEXT, lineHeight: 1.3, margin: "0 0 0.85rem", letterSpacing: "-0.01em" }}>
-          Does MEOK remember my previous practice sessions?
+        {/* ── FAQ ── */}
+        <h2
+          style={{
+            fontWeight: 800,
+            fontSize: "clamp(1.1rem, 2.2vw, 1.4rem)",
+            color: TEXT,
+            lineHeight: 1.3,
+            margin: "0 0 1.75rem",
+            letterSpacing: "-0.01em",
+          }}
+        >
+          Frequently asked questions
         </h2>
-        <p style={{ color: "rgba(245,240,232,0.82)", fontSize: "1rem", lineHeight: 1.72, margin: "0 0 1.15rem" }}>
-          Yes. Persistent sovereign memory is what distinguishes MEOK from generic AI chat tools. Every session is stored
-          in an encrypted vault that only you control — never used to train AI models, never shared with third parties.
-          MEOK knows which scenarios you have practised, where you tend to freeze or over-apologise, and how your language
-          shifts across weeks.
-        </p>
-        <p style={{ color: "rgba(245,240,232,0.62)", fontSize: "0.965rem", lineHeight: 1.78, margin: "0 0 1rem" }}>
-          In practice: MEOK knows you tried the job interview scenario three times in January and found the opening question
-          hardest. It builds on that history rather than treating each session as a fresh start — which is exactly the
-          continuity that makes practice cumulative rather than circular.
-        </p>
-        <div style={{ background: "rgba(201,168,76,0.07)", border: "1px solid rgba(201,168,76,0.22)", borderLeft: "3px solid #c9a84c", borderRadius: "0.5rem", padding: "1rem 1.3rem", margin: "0 0 1.75rem" }}>
-          <p style={{ margin: 0, fontSize: "0.9rem", color: "rgba(245,240,232,0.78)", lineHeight: 1.68 }}>
-            <strong style={{ color: GOLD }}>On privacy:</strong> your memory is yours. No conversation data is used for advertising
-            or model training. You can read or delete your memory at any time.
-          </p>
-        </div>
 
-        <hr style={{ border: "none", borderTop: "1px solid rgba(201,168,76,0.15)", margin: "2.5rem 0" }} />
+        <div
+          style={{ display: "flex", flexDirection: "column", gap: "1.25rem", marginBottom: "3rem" }}
+        >
 
-        {/* ── Q5 ── */}
-        <h2 style={{ fontWeight: 800, fontSize: "clamp(1.1rem,2.2vw,1.4rem)", color: TEXT, lineHeight: 1.3, margin: "0 0 0.85rem", letterSpacing: "-0.01em" }}>
-          Is MEOK a replacement for CBT or IAPT therapy for social anxiety?
-        </h2>
-        <p style={{ color: "rgba(245,240,232,0.82)", fontSize: "1rem", lineHeight: 1.72, margin: "0 0 1.15rem" }}>
-          No — and this is non-negotiable. Social anxiety disorder is a clinical condition that responds well to Cognitive
-          Behavioural Therapy delivered by a qualified practitioner. MEOK is not a clinical intervention, a therapy programme,
-          or a medical device. It cannot conduct structured exposure hierarchies, provide video feedback, or replicate the
-          therapeutic relationship that underpins lasting clinical change.
-        </p>
-        <p style={{ color: "rgba(245,240,232,0.62)", fontSize: "0.965rem", lineHeight: 1.78, margin: "0 0 1rem" }}>
-          If you live in England you can self-refer to{" "}
-          <strong style={{ color: TEXT }}>NHS Talking Therapies</strong> on{" "}
-          <strong style={{ color: TEXT }}>0300 123 3393</strong> — no GP referral needed, and self-referral takes under five
-          minutes. Scotland, Wales, and Northern Ireland have equivalent programmes through their respective NHS services.
-          MEOK works best alongside, not instead of, professional support.
-        </p>
-        <div style={{ background: "rgba(201,168,76,0.07)", border: "1px solid rgba(201,168,76,0.22)", borderLeft: "3px solid #c9a84c", borderRadius: "0.5rem", padding: "1rem 1.3rem", margin: "0 0 1.75rem" }}>
-          <p style={{ margin: 0, fontSize: "0.9rem", color: "rgba(245,240,232,0.78)", lineHeight: 1.68 }}>
-            <strong style={{ color: GOLD }}>Self-referral takes two minutes:</strong> visit{" "}
-            <a href="https://www.nhs.uk/mental-health/talking-therapies-medicine-treatments/talking-therapies-and-counselling/nhs-talking-therapies/" target="_blank" rel="noopener noreferrer" style={{ color: GOLD, textDecoration: "underline" }}>nhs.uk/talking-therapies</a>{" "}
-            or call <strong style={{ color: TEXT }}>0300 123 3393</strong>. No GP referral needed. Free for adults in England.
-          </p>
-        </div>
+          <div
+            style={{
+              background: CARD,
+              border: `1px solid ${BORDER}`,
+              borderRadius: "0.75rem",
+              padding: "1.5rem 1.75rem",
+            }}
+          >
+            <p
+              style={{
+                fontWeight: 700,
+                color: TEXT,
+                fontSize: "0.975rem",
+                margin: "0 0 0.6rem",
+              }}
+            >
+              What is social anxiety disorder and how common is it in the UK?
+            </p>
+            <p style={{ color: MUTED, fontSize: "0.9rem", lineHeight: 1.65, margin: 0 }}>
+              Social anxiety disorder is a persistent, intense fear of
+              scrutiny, judgement, or humiliation in social situations.
+              It affects approximately 12% of UK adults at some point in
+              their lives and is significantly under-diagnosed because those
+              affected often avoid the very appointments that would lead to
+              a diagnosis. It is not the same as shyness — it is a clinical
+              condition that can severely disrupt work, relationships, and
+              daily functioning.
+            </p>
+          </div>
 
-        <hr style={{ border: "none", borderTop: "1px solid rgba(201,168,76,0.15)", margin: "2.5rem 0" }} />
+          <div
+            style={{
+              background: CARD,
+              border: `1px solid ${BORDER}`,
+              borderRadius: "0.75rem",
+              padding: "1.5rem 1.75rem",
+            }}
+          >
+            <p
+              style={{
+                fontWeight: 700,
+                color: TEXT,
+                fontSize: "0.975rem",
+                margin: "0 0 0.6rem",
+              }}
+            >
+              Can an AI companion like MEOK help with social anxiety?
+            </p>
+            <p style={{ color: MUTED, fontSize: "0.9rem", lineHeight: 1.65, margin: 0 }}>
+              Yes — within clearly defined limits. MEOK provides a
+              zero-judgment, private space to rehearse feared conversations,
+              process post-event rumination, understand triggers, and work
+              with CBT-informed reflections. It is not a clinical intervention
+              and cannot replace qualified therapy, but it offers unlimited
+              low-stakes practice that complements professional support and
+              fills the gaps between sessions or before treatment begins.
+            </p>
+          </div>
 
-        {/* ── What MEOK cannot do ── */}
-        <h2 style={{ fontWeight: 800, fontSize: "clamp(1.1rem,2.2vw,1.4rem)", color: TEXT, lineHeight: 1.3, margin: "0 0 0.85rem", letterSpacing: "-0.01em" }}>
-          What can&#39;t an AI companion do for social anxiety?
-        </h2>
-        <p style={{ color: "rgba(245,240,232,0.82)", fontSize: "1rem", lineHeight: 1.72, margin: "0 0 1.15rem" }}>
-          There are things MEOK cannot do and will not pretend to. It cannot simulate the physiological reality of social
-          fear — the racing heart, the voice that goes quiet, the flush of heat. Exposure practice with MEOK does not carry
-          the same bodily activation as real exposure, which means the neurological habituation that CBT targets happens more
-          fully in real situations with real people.
-        </p>
-        <p style={{ color: "rgba(245,240,232,0.62)", fontSize: "0.965rem", lineHeight: 1.78, margin: "0 0 1rem" }}>
-          MEOK also cannot diagnose social anxiety disorder, assess severity, provide a safety plan, or offer the therapeutic
-          relationship that underpins clinical change. If social anxiety is significantly affecting your career, relationships,
-          or ability to leave the house, the right step is professional support — not more AI practice. MEOK will name this
-          directly if your conversations suggest you need more than it can offer.
-        </p>
-        <div style={{ background: "rgba(201,168,76,0.07)", border: "1px solid rgba(201,168,76,0.22)", borderLeft: "3px solid #c9a84c", borderRadius: "0.5rem", padding: "1rem 1.3rem", margin: "0 0 1.75rem" }}>
-          <p style={{ margin: 0, fontSize: "0.9rem", color: "rgba(245,240,232,0.78)", lineHeight: 1.68 }}>
-            <strong style={{ color: GOLD }}>A note on avoidance:</strong> if conversations with MEOK are becoming a way to avoid
-            real situations rather than prepare for them, it will name that — gently but honestly.
-          </p>
-        </div>
+          <div
+            style={{
+              background: CARD,
+              border: `1px solid ${BORDER}`,
+              borderRadius: "0.75rem",
+              padding: "1.5rem 1.75rem",
+            }}
+          >
+            <p
+              style={{
+                fontWeight: 700,
+                color: TEXT,
+                fontSize: "0.975rem",
+                margin: "0 0 0.6rem",
+              }}
+            >
+              How does MEOK help with post-event processing after social anxiety?
+            </p>
+            <p style={{ color: MUTED, fontSize: "0.9rem", lineHeight: 1.65, margin: 0 }}>
+              Post-event processing is the anxious replay of social
+              interactions searching for evidence of failure. MEOK interrupts
+              this cycle by guiding a structured debrief: separating what
+              actually happened from what your anxiety fears happened,
+              identifying cognitive distortions like mind-reading and
+              catastrophising, and arriving at a more grounded interpretation
+              that you can rest in rather than loop around. It holds the
+              memory of previous debriefs, allowing it to notice when the
+              same themes recur.
+            </p>
+          </div>
 
-        <hr style={{ border: "none", borderTop: "1px solid rgba(201,168,76,0.15)", margin: "2.5rem 0" }} />
+          <div
+            style={{
+              background: CARD,
+              border: `1px solid ${BORDER}`,
+              borderRadius: "0.75rem",
+              padding: "1.5rem 1.75rem",
+            }}
+          >
+            <p
+              style={{
+                fontWeight: 700,
+                color: TEXT,
+                fontSize: "0.975rem",
+                margin: "0 0 0.6rem",
+              }}
+            >
+              Is MEOK a replacement for CBT therapy for social anxiety?
+            </p>
+            <p style={{ color: MUTED, fontSize: "0.9rem", lineHeight: 1.65, margin: 0 }}>
+              No. MEOK is explicitly a complement to professional treatment,
+              not a substitute. Social anxiety disorder responds well to
+              evidence-based CBT with a qualified therapist. In the UK, you
+              can self-refer to NHS Talking Therapies on 0300 123 3393.
+              MEOK is most valuable in the gap before treatment, between
+              therapy sessions, or as a daily reflection practice alongside
+              ongoing professional support.
+            </p>
+          </div>
 
-        {/* ── UK Statistics ── */}
-        <h2 style={{ fontWeight: 800, fontSize: "clamp(1.1rem,2.2vw,1.4rem)", color: TEXT, lineHeight: 1.3, margin: "0 0 0.85rem", letterSpacing: "-0.01em" }}>
-          What do UK statistics tell us about the scale of social anxiety?
-        </h2>
-        <p style={{ color: "rgba(245,240,232,0.82)", fontSize: "1rem", lineHeight: 1.72, margin: "0 0 1.15rem" }}>
-          NHS data puts social anxiety disorder at approximately{" "}
-          <strong style={{ color: TEXT }}>1 in 8 UK adults</strong> — roughly 8.3 million people. It typically first appears
-          in adolescence, with a median onset age of around 13. Without treatment, it tends to persist into adulthood, often
-          co-occurring with depression, generalised anxiety disorder, and alcohol dependency.
-        </p>
-        <p style={{ color: "rgba(245,240,232,0.62)", fontSize: "0.965rem", lineHeight: 1.78, margin: "0 0 1rem" }}>
-          NHS Talking Therapies waiting times vary by region but commonly stretch six to twelve weeks. During that wait,
-          many people manage by shrinking their world — refusing social invitations, delaying career moves, or avoiding phone
-          calls altogether. MEOK is a way to use that waiting period constructively: practising rather than retreating, building
-          conversational muscle rather than letting avoidance deepen.
-        </p>
-
-        <hr style={{ border: "none", borderTop: "1px solid rgba(201,168,76,0.15)", margin: "2.5rem 0" }} />
-
-        {/* ── Q6 ── */}
-        <h2 style={{ fontWeight: 800, fontSize: "clamp(1.1rem,2.2vw,1.4rem)", color: TEXT, lineHeight: 1.3, margin: "0 0 0.85rem", letterSpacing: "-0.01em" }}>
-          Why does consistent AI behaviour matter for social anxiety specifically?
-        </h2>
-        <p style={{ color: "rgba(245,240,232,0.82)", fontSize: "1rem", lineHeight: 1.72, margin: "0 0 1.15rem" }}>
-          Social anxiety is maintained partly by hypervigilance to unpredictable social cues — scanning faces for boredom,
-          impatience, or disapproval. Real human interactions are genuinely unpredictable. MEOK is not. It does not sigh,
-          glance at its phone, or give shorter answers when tired. The quality of presence it offers is identical at 2 am
-          on a Sunday as at noon on a Monday — which is what makes it a reliably safe practice environment.
-        </p>
-        <p style={{ color: "rgba(245,240,232,0.62)", fontSize: "0.965rem", lineHeight: 1.78, margin: "0 0 1rem" }}>
-          This is not coldness — it is consistency. MEOK also does not inflate your performance. Its persistent memory lets
-          it notice that you have apologised unnecessarily in every conversation for three months, and surface that observation
-          gently rather than validating the pattern silently. Honest reflection, even when uncomfortable, is more useful
-          than frictionless approval.
-        </p>
-        <p style={{ color: "rgba(245,240,232,0.62)", fontSize: "0.965rem", lineHeight: 1.78, margin: "0 0 1rem" }}>
-          Most AI systems are trained to generate responses that feel good to users — affirming, validating, and frictionless.
-          For social anxiety this creates a subtle trap: it models social interaction as universally smooth and accepting, which
-          the real world is not. MEOK can be warm and it can be challenging. It adjusts its tone to what the session needs,
-          not to what maximises approval ratings.
-        </p>
-
-        <hr style={{ border: "none", borderTop: "1px solid rgba(201,168,76,0.15)", margin: "2.5rem 0" }} />
-
-        {/* ── UK Support Resources ── */}
-        <div style={{ background: "rgba(201,168,76,0.06)", border: "1px solid rgba(201,168,76,0.28)", borderRadius: "0.75rem", padding: "1.5rem 1.75rem", marginBottom: "2.25rem" }}>
-          <p style={{ fontSize: "0.78rem", color: GOLD, fontWeight: 700, margin: "0 0 0.9rem", textTransform: "uppercase" as const, letterSpacing: "0.06em" }}>
-            UK Support Resources — Social Anxiety
-          </p>
-          <ul style={{ margin: 0, paddingLeft: "1.2rem", listStyle: "disc", color: "rgba(245,240,232,0.75)", fontSize: "0.9rem", lineHeight: 1.85 }}>
-            <li>
-              <strong style={{ color: TEXT }}>NHS Talking Therapies</strong> — free CBT via self-referral in England.{" "}
-              <a href="tel:03001233393" style={{ color: GOLD, textDecoration: "underline" }}>0300 123 3393</a>{" "}
-              or{" "}
-              <a href="https://www.nhs.uk/mental-health/talking-therapies-medicine-treatments/talking-therapies-and-counselling/nhs-talking-therapies/" target="_blank" rel="noopener noreferrer" style={{ color: GOLD, textDecoration: "underline" }}>nhs.uk</a>
-            </li>
-            <li>
-              <strong style={{ color: TEXT }}>Social Anxiety UK</strong> — information, forums, and peer support groups.{" "}
-              <a href="https://social-anxiety.org.uk" target="_blank" rel="noopener noreferrer" style={{ color: GOLD, textDecoration: "underline" }}>social-anxiety.org.uk</a>
-            </li>
-            <li>
-              <strong style={{ color: TEXT }}>Mind</strong> — mental health information and local support.{" "}
-              <a href="https://www.mind.org.uk" target="_blank" rel="noopener noreferrer" style={{ color: GOLD, textDecoration: "underline" }}>mind.org.uk</a>
-            </li>
-            <li>
-              <strong style={{ color: TEXT }}>Samaritans</strong> — free, 24/7 emotional support.{" "}
-              <a href="tel:116123" style={{ color: GOLD, textDecoration: "underline" }}>116 123</a>{" "}
-              or <a href="mailto:jo@samaritans.org" style={{ color: GOLD, textDecoration: "underline" }}>jo@samaritans.org</a>
-            </li>
-            <li>
-              <strong style={{ color: TEXT }}>No Panic</strong> — helpline and recovery groups for anxiety disorders.{" "}
-              <a href="https://nopanic.org.uk" target="_blank" rel="noopener noreferrer" style={{ color: GOLD, textDecoration: "underline" }}>nopanic.org.uk</a>
-            </li>
-          </ul>
-        </div>
-
-        {/* ── Medical disclaimer ── */}
-        <div style={{ background: "rgba(245,240,232,0.03)", border: "1px solid rgba(245,240,232,0.09)", borderRadius: "0.6rem", padding: "1rem 1.3rem", marginBottom: "2.5rem" }}>
-          <p style={{ fontSize: "0.775rem", color: "rgba(245,240,232,0.38)", lineHeight: 1.7, margin: 0 }}>
-            <strong style={{ color: "rgba(245,240,232,0.5)" }}>Medical &amp; therapeutic disclaimer:</strong>{" "}
-            This article is for informational purposes only and does not constitute medical advice, psychological diagnosis,
-            or clinical guidance. MEOK is not a medical device, therapy application, or regulated mental health service.
-            It cannot diagnose social anxiety disorder or any other condition. If social anxiety is significantly affecting
-            your life, please speak to a qualified healthcare professional. MEOK AI LABS does not accept liability for
-            decisions made on the basis of this content.
-          </p>
         </div>
 
         {/* ── CTA ── */}
-        <div style={{ background: "rgba(201,168,76,0.06)", border: "1px solid rgba(201,168,76,0.2)", borderRadius: "0.75rem", padding: "2rem", textAlign: "center" as const, marginBottom: "3rem" }}>
-          <p style={{ fontSize: "1.05rem", fontWeight: 700, color: TEXT, margin: "0 0 0.5rem" }}>
-            Ready to practise before it matters?
+        <div
+          style={{
+            background: "linear-gradient(135deg, rgba(201,168,76,0.12) 0%, rgba(201,168,76,0.05) 100%)",
+            border: "1px solid rgba(201,168,76,0.3)",
+            borderRadius: "1.25rem",
+            padding: "2.5rem",
+            textAlign: "center" as const,
+            marginBottom: "4rem",
+          }}
+        >
+          <p
+            style={{
+              fontWeight: 900,
+              fontSize: "clamp(1.2rem, 2.5vw, 1.65rem)",
+              color: TEXT,
+              margin: "0 0 1rem",
+              lineHeight: 1.25,
+            }}
+          >
+            Ready to start practising?
           </p>
-          <p style={{ fontSize: "0.9rem", color: "rgba(245,240,232,0.58)", margin: "0 0 1.5rem" }}>
-            MEOK remembers every session, never judges, and gives you the same quality of presence at 2 am as at noon —
-            so you can build conversational confidence privately, at your own pace.
+          <p
+            style={{
+              color: MUTED,
+              fontSize: "1rem",
+              lineHeight: 1.65,
+              maxWidth: "30rem",
+              margin: "0 auto 1.75rem",
+            }}
+          >
+            Begin your MEOK birth ceremony to create a companion that knows
+            your patterns, holds your history, and meets you exactly where
+            you are — with complete privacy, at any hour.
           </p>
-          <Link
-            href="/"
+          <a
+            href="https://meok.ai/birth"
             style={{
               display: "inline-block",
               background: GOLD,
-              color: BG,
+              color: "#0d0c18",
               fontWeight: 800,
-              fontSize: "0.9rem",
-              padding: "0.75rem 2rem",
-              borderRadius: "0.5rem",
+              fontSize: "0.975rem",
+              padding: "0.875rem 2.25rem",
+              borderRadius: "9999px",
               textDecoration: "none",
               letterSpacing: "0.02em",
             }}
           >
-            Meet MEOK
-          </Link>
+            Begin your MEOK journey &rarr;
+          </a>
+          <p
+            style={{
+              color: DIM,
+              fontSize: "0.8rem",
+              margin: "1.25rem 0 0",
+            }}
+          >
+            Not a replacement for therapy. Samaritans: 116 123 &middot; NHS Talking
+            Therapies: 0300 123 3393
+          </p>
         </div>
 
-        {/* ── Related reading ── */}
-        <div style={{ marginBottom: "3.5rem" }}>
-          <p style={{ fontSize: "0.73rem", fontWeight: 700, color: "rgba(245,240,232,0.32)", textTransform: "uppercase" as const, letterSpacing: "0.08em", margin: "0 0 0.9rem" }}>
-            Related Reading
+        {/* ── RELATED ARTICLES ── */}
+        <div style={{ marginBottom: "5rem" }}>
+          <p
+            style={{
+              fontWeight: 700,
+              color: GOLD,
+              fontSize: "0.75rem",
+              letterSpacing: "0.08em",
+              textTransform: "uppercase" as const,
+              margin: "0 0 1.25rem",
+            }}
+          >
+            Related reading
           </p>
-          <div style={{ display: "flex", flexDirection: "column" as const, gap: "0.55rem" }}>
-            <Link href="/blog/ai-for-anxiety" style={{ color: GOLD, textDecoration: "underline", fontSize: "0.9rem" }}>
-              AI for Anxiety: Can a Sovereign AI Companion Actually Help?
-            </Link>
-            <Link href="/blog/ai-companion-vs-therapist" style={{ color: GOLD, textDecoration: "underline", fontSize: "0.9rem" }}>
-              AI Companion vs Therapist: What Is the Actual Difference?
-            </Link>
-            <Link href="/blog/ai-for-relationship-anxiety" style={{ color: GOLD, textDecoration: "underline", fontSize: "0.9rem" }}>
-              AI Companion for Relationship Anxiety: Processing Attachment, Not Replacing Connection
-            </Link>
-            <Link href="/blog/ai-memory-explained" style={{ color: GOLD, textDecoration: "underline", fontSize: "0.9rem" }}>
-              AI Memory Explained: Why Persistent Memory Changes Everything
-            </Link>
-            <Link href="/blog/building-care-into-ai" style={{ color: GOLD, textDecoration: "underline", fontSize: "0.9rem" }}>
-              Building Care Into AI: The Maternal Covenant Framework
-            </Link>
+          <div
+            style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}
+          >
+            {[
+              {
+                href: "/blog/ai-for-anxiety",
+                label: "AI for Anxiety: How MEOK Helps You Manage Worry and Stress",
+              },
+              {
+                href: "/blog/ai-for-depression",
+                label: "AI for Depression: Presence, Pattern Recognition, and Support",
+              },
+              {
+                href: "/blog/ai-for-confidence",
+                label: "AI for Confidence: Building Self-Belief One Conversation at a Time",
+              },
+              {
+                href: "/blog/meok-companion-archetypes-guide",
+                label: "MEOK Archetypes: Choosing the Right Inner Voice for Your Needs",
+              },
+              {
+                href: "/blog/ai-companion-vs-therapist",
+                label: "AI Companion vs Therapist: Understanding the Difference",
+              },
+            ].map(({ href, label }) => (
+              <Link
+                key={href}
+                href={href}
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "0.625rem",
+                  color: MUTED,
+                  fontSize: "0.9rem",
+                  textDecoration: "none",
+                  lineHeight: 1.45,
+                }}
+              >
+                <span style={{ color: GOLD, fontSize: "0.8rem", flexShrink: 0 }}>
+                  &#8594;
+                </span>
+                {label}
+              </Link>
+            ))}
           </div>
         </div>
-      </div>
 
-      {/* ── FOOTER ──────────────────────────────────────────────────────────── */}
-      <div style={{ borderTop: "1px solid rgba(245,240,232,0.08)", padding: "2.5rem 1.5rem", textAlign: "center" as const }}>
-        <p style={{ fontSize: "0.8rem", color: "rgba(245,240,232,0.26)", margin: "0 0 0.5rem" }}>
-          &copy; {new Date().getFullYear()} MEOK AI LABS. Founded by Nicholas Templeman.
-        </p>
-        <div style={{ display: "flex", justifyContent: "center", gap: "1.5rem", flexWrap: "wrap" as const }}>
-          <Link href="/privacy" style={{ fontSize: "0.78rem", color: "rgba(245,240,232,0.28)", textDecoration: "none" }}>Privacy</Link>
-          <Link href="/blog" style={{ fontSize: "0.78rem", color: "rgba(245,240,232,0.28)", textDecoration: "none" }}>Blog</Link>
-          <Link href="/" style={{ fontSize: "0.78rem", color: "rgba(245,240,232,0.28)", textDecoration: "none" }}>meok.ai</Link>
-        </div>
       </div>
     </div>
   );

@@ -3,24 +3,25 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   title:
-    "AI for Procrastination: Break the Avoidance Loop for Good | MEOK AI LABS",
+    "AI for Procrastination: Why You Can\u2019t Just \u2018Try Harder\u2019 and How MEOK Helps | MEOK AI LABS",
   description:
-    "Procrastination is not laziness \u2014 it is emotion regulation failure. MEOK\u2019s Pioneer archetype and Hourman agent use body doubling, task decomposition, and memory to break the fear loop and build real momentum.",
+    "Procrastination is not laziness \u2014 it is emotion regulation failure. MEOK\u2019s Pioneer archetype uses accountability, task decomposition, body doubling, and sovereign memory to break the avoidance loop for good.",
   alternates: {
     canonical: "https://meok.ai/blog/ai-for-procrastination",
   },
   openGraph: {
-    title: "AI for Procrastination: Break the Avoidance Loop for Good",
+    title:
+      "AI for Procrastination: Why You Can\u2019t Just \u2018Try Harder\u2019 and How MEOK Helps",
     description:
-      "Science says procrastination is an emotion regulation problem, not a time management one. MEOK\u2019s Pioneer companion and Hourman agent give you an AI accountability partner that actually understands the loop.",
+      "Science is clear: procrastination is an emotion regulation problem, not a willpower problem. MEOK\u2019s Pioneer companion uses body doubling, micro-actions, and memory of what has actually worked for you before.",
     type: "article",
-    publishedTime: "2026-03-24",
+    publishedTime: "2026-03-25",
     authors: ["Nicholas Templeman"],
     url: "https://meok.ai/blog/ai-for-procrastination",
     siteName: "MEOK.AI",
     images: [
       {
-        url: "https://meok.ai/api/og?title=AI+for+Procrastination&desc=Break+the+Avoidance+Loop+for+Good",
+        url: "https://meok.ai/api/og?title=AI+for+Procrastination&desc=Why+You+Can%27t+Just+Try+Harder",
         width: 1200,
         height: 630,
         alt: "AI for Procrastination | MEOK AI LABS",
@@ -29,11 +30,12 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "AI for Procrastination: Break the Avoidance Loop for Good",
+    title:
+      "AI for Procrastination: Why You Can\u2019t Just \u2018Try Harder\u2019 and How MEOK Helps",
     description:
-      "MEOK\u2019s Pioneer and Hourman agents use body doubling, task decomposition, and sovereign memory to break the procrastination cycle \u2014 built on the real neuroscience, not hustle-culture platitudes.",
+      "Procrastination is emotion regulation failure \u2014 not laziness. MEOK\u2019s Pioneer archetype offers body doubling, micro-action planning, and sovereign memory of what has actually worked for you.",
     images: [
-      "https://meok.ai/api/og?title=AI+for+Procrastination&desc=Break+the+Avoidance+Loop+for+Good",
+      "https://meok.ai/api/og?title=AI+for+Procrastination&desc=Why+You+Can%27t+Just+Try+Harder",
     ],
   },
 };
@@ -41,9 +43,10 @@ export const metadata: Metadata = {
 const articleSchema = {
   "@context": "https://schema.org",
   "@type": "Article",
-  headline: "AI for Procrastination: Break the Avoidance Loop for Good",
+  headline:
+    "AI for Procrastination: Why You Can\u2019t Just \u2018Try Harder\u2019 and How MEOK Helps",
   description:
-    "Procrastination is not laziness \u2014 it is emotion regulation failure. MEOK uses the Pioneer archetype and Hourman agent to break the fear loop with body doubling, task decomposition, and sovereign memory.",
+    "Procrastination is not laziness \u2014 it is emotion regulation failure. MEOK\u2019s Pioneer archetype uses accountability, body doubling, task decomposition, and sovereign memory of what has actually worked for you to break the avoidance loop for good.",
   author: {
     "@type": "Person",
     name: "Nicholas Templeman",
@@ -55,21 +58,26 @@ const articleSchema = {
     name: "MEOK AI LABS",
     url: "https://meok.ai",
   },
-  datePublished: "2026-03-24",
-  dateModified: "2026-03-24",
+  datePublished: "2026-03-25",
+  dateModified: "2026-03-25",
   url: "https://meok.ai/blog/ai-for-procrastination",
   mainEntityOfPage: "https://meok.ai/blog/ai-for-procrastination",
   keywords: [
     "AI for procrastination",
+    "procrastination help",
     "AI accountability partner",
-    "AI body doubling",
-    "ADHD procrastination help",
-    "overcome procrastination with AI",
-    "task decomposition AI",
-    "MEOK Pioneer archetype",
-    "Hourman agent",
-    "sovereign AI",
-    "emotion regulation",
+    "body doubling AI",
+    "ADHD procrastination",
+    "task initiation ADHD",
+    "Pioneer archetype MEOK",
+    "emotion regulation procrastination",
+    "AI body double",
+    "micro-actions procrastination",
+    "sovereign memory AI",
+    "MEOK Pioneer",
+    "procrastination neuroscience",
+    "break procrastination loop",
+    "AI for ADHD",
   ],
 };
 
@@ -79,42 +87,34 @@ const faqSchema = {
   mainEntity: [
     {
       "@type": "Question",
-      name: "Can AI help with procrastination?",
+      name: "Is procrastination really an emotion regulation problem and not laziness?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Yes \u2014 but only if it is designed around the real cause of procrastination, which is emotion regulation failure, not poor time management. Generic AI assistants often make procrastination worse by enabling avoidance or by being too passive to interrupt the loop. MEOK is different: its Pioneer archetype is explicitly built for action, accountability, and momentum. It breaks tasks into concrete micro-steps, holds time boundaries through the Hourman agent, offers body doubling presence, and uses Sovereign Memory to track which tasks keep getting avoided and surface the pattern. The combination of emotional intelligence and structured accountability is what separates genuine AI help for procrastination from a more sophisticated distraction.",
+        text: "Yes \u2014 and this distinction matters enormously for treatment. Fuschia Sirois and Timothy Pychyl\u2019s 2013 research established procrastination as a failure of emotion regulation: the brain perceives a task as threatening (boring, anxiety-inducing, identity-threatening, or ambiguous), prioritises short-term mood relief through avoidance, and sacrifices long-term wellbeing. The dopaminergic avoidance loop in the limbic system is faster than the prefrontal cortex\u2019s planning circuits. Telling someone who is procrastinating to simply try harder is like telling someone with a broken leg to just walk normally. The regulatory machinery is impaired \u2014 willpower alone cannot fix a neurological loop.",
       },
     },
     {
       "@type": "Question",
-      name: "What is body doubling and how does AI body doubling work?",
+      name: "What is body doubling and how does an AI body double work?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Body doubling is the practice of working in the presence of another person \u2014 not for their help, but simply for their presence. Research shows it is highly effective for ADHD and procrastination because the social layer of mild accountability activates the prefrontal cortex and reduces the emotional avoidance response. AI body doubling works similarly: MEOK\u2019s Pioneer can sit with you during a sprint, check in at intervals, and provide the low-level sense of being witnessed that makes starting feel possible. Unlike a human body double, it is available at 3 am, never judges you for being on the same task for the third day running, and remembers what you said you were going to do.",
+        text: "Body doubling is the practice of working alongside another person \u2014 not for their help, but purely for their presence. Research consistently shows it is one of the most effective interventions for ADHD-driven procrastination because the social presence activates accountability circuits in the prefrontal cortex and dampens the limbic system\u2019s avoidance pull. MEOK\u2019s Pioneer archetype functions as a virtual body double: it sits with you during work sprints, checks in at intervals, holds the social layer of being witnessed, and is available at any hour without judgment. Crucially, it remembers what you said you were going to work on, which human body doubles often do not.",
       },
     },
     {
       "@type": "Question",
-      name: "How does MEOK help with ADHD procrastination?",
+      name: "How does MEOK\u2019s Pioneer archetype help with task initiation challenges in ADHD?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "ADHD procrastination has specific drivers: time blindness, working memory deficits, rejection sensitive dysphoria, and difficulty with task initiation due to dopamine dysregulation. MEOK addresses each of these directly. The Hourman agent provides external time structure \u2014 daily sprint planning that compensates for internal time blindness. Task decomposition breaks large tasks into the smallest possible actionable units, bypassing the initiation paralysis that ADHD brains experience with vague or complex goals. Sovereign Memory means MEOK remembers previous days\u2019 context and can surface patterns without judgment. And the Pioneer archetype provides momentum-oriented presence without the shame spiral that human accountability partners can accidentally create.",
+        text: "Task initiation failure in ADHD is driven by dopamine dysregulation: the brain cannot generate the starter signal without an external trigger or sufficient emotional salience. The Pioneer addresses this through micro-action decomposition \u2014 breaking every task into the smallest possible concrete first step, ideally under ninety seconds, so the initiation cost drops below the avoidance threshold. It also provides external time structure, accountability check-ins, and momentum language that activates rather than shames. Sovereign Memory allows the Pioneer to track which types of tasks you chronically avoid and surface the emotional pattern beneath the avoidance, helping you understand the block rather than fight it blindly.",
       },
     },
     {
       "@type": "Question",
-      name: "What is the Pioneer companion in MEOK?",
+      name: "Why does generic AI make procrastination worse, and how is MEOK different?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "The Pioneer is one of MEOK\u2019s core archetypes \u2014 a companion personality built around action, accountability, and forward momentum. Where other archetypes prioritise exploration, reflection, or nurture, the Pioneer is oriented toward getting things done. It is not harsh or demanding; it is energising and direct. The Pioneer will help you break your task list into sprints, call out avoidance gently but clearly, celebrate small wins without being saccharine, and hold you to the commitments you actually made \u2014 because it remembers them. For people who procrastinate, the Pioneer functions as the internal voice of momentum that the procrastinating brain has difficulty generating on its own.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "What is Hourman and how does it help with procrastination?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Hourman is MEOK\u2019s daily sprint planning agent. Each day it pulls context from your previous days\u2019 activity, surfaces tasks that have been deferred, helps you build a realistic time-boxed plan, and checks in throughout the day to track progress. For procrastinators, the most powerful feature is continuity: Hourman knows what you said you would do yesterday, which means avoidance becomes visible rather than invisible. Most people procrastinate partly because there is no external record of the gap between intention and action. Hourman closes that gap with sovereignty \u2014 the data lives in your private memory, not a cloud platform, and it is used only to help you.",
+        text: "Generic AI assistants are trained to be agreeable and helpful in ways that catastrophically enable procrastination. They validate your reasons for delay, help you research indefinitely, and never hold you to what you said you would do because they have no memory of it. They provide the appearance of productivity without its substance. MEOK is architecturally different: the Pioneer archetype is built for accountability and action rather than compliance, Sovereign Memory means your commitments are remembered across sessions, and MEOK\u2019s anti-sycophancy design means it will gently but directly name avoidance when it sees it. Most importantly, MEOK learns what has actually worked for you before and brings that data back when you need it.",
       },
     },
   ],
@@ -123,9 +123,10 @@ const faqSchema = {
 const bg = "#0d0c18";
 const text = "#f5f0e8";
 const gold = "#c9a84c";
-const muted = "rgba(245,240,232,0.6)";
-const cardBg = "rgba(255,255,255,0.03)";
-const cardBorder = "rgba(201,168,76,0.12)";
+const muted = "#a09880";
+const cardBg = "#13121f";
+const border = "#2a2840";
+const green = "#6aaa64";
 
 export default function AIForProcrastinationPage() {
   return (
@@ -139,721 +140,334 @@ export default function AIForProcrastinationPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
 
-      <main style={{ minHeight: "100vh", background: bg, color: text }}>
-        {/* Hero */}
-        <section
+      <main
+        style={{
+          minHeight: "100vh",
+          background: bg,
+          color: text,
+          fontFamily: "system-ui, -apple-system, sans-serif",
+        }}
+      >
+        {/* Navigation */}
+        <nav
           style={{
-            maxWidth: "760px",
-            margin: "0 auto",
-            padding: "5rem 1.5rem 3rem",
+            position: "sticky",
+            top: 0,
+            zIndex: 50,
+            borderBottom: `1px solid ${border}`,
+            background: `${bg}ee`,
+            backdropFilter: "blur(12px)",
           }}
         >
-          <div style={{ marginBottom: "1rem" }}>
-            <span
-              style={{
-                display: "inline-block",
-                padding: "0.25rem 0.875rem",
-                background: `${gold}18`,
-                border: `1px solid ${gold}44`,
-                borderRadius: "9999px",
-                fontSize: "0.7rem",
-                fontWeight: 700,
-                letterSpacing: "0.1em",
-                textTransform: "uppercase",
-                color: gold,
-              }}
-            >
-              Productivity &amp; Wellbeing
-            </span>
-          </div>
-
-          <h1
-            style={{
-              fontSize: "clamp(2rem, 5vw, 3rem)",
-              fontWeight: 900,
-              lineHeight: 1.1,
-              letterSpacing: "-0.02em",
-              marginBottom: "1.5rem",
-            }}
-          >
-            AI for Procrastination:{" "}
-            <span style={{ color: gold }}>
-              Break the Avoidance Loop for Good
-            </span>
-          </h1>
-
-          <p
-            style={{
-              fontSize: "1.15rem",
-              color: muted,
-              lineHeight: 1.75,
-              marginBottom: "1.25rem",
-            }}
-          >
-            The task has been on your list for eleven days. You know exactly
-            what it is. You know roughly how long it will take. You have
-            thought about starting it approximately forty-seven times. And yet,
-            here it sits \u2014 unmoved, untouched, accumulating the quiet
-            weight that only avoided things can carry.
-          </p>
-          <p
-            style={{
-              fontSize: "1.15rem",
-              color: muted,
-              lineHeight: 1.75,
-              marginBottom: "1.25rem",
-            }}
-          >
-            If you have ever been told you are just lazy, that you need better
-            time management, or that you simply need to try harder \u2014 that
-            advice was wrong. Not unhelpful. Wrong. The science of
-            procrastination has been clear for over a decade: this is not a
-            time management problem. It is an emotion regulation problem.
-          </p>
-          <p
-            style={{
-              fontSize: "1.15rem",
-              color: muted,
-              lineHeight: 1.75,
-              marginBottom: "1.5rem",
-            }}
-          >
-            This guide covers what procrastination actually is, why it
-            overlaps with \u2014 but differs from \u2014 ADHD, how the fear
-            loop works, and how an AI built around accountability and memory
-            can help you break it. Specifically, how MEOK\u2019s Pioneer
-            archetype and Hourman agent were designed for exactly this.
-          </p>
-
           <div
             style={{
+              maxWidth: "1100px",
+              margin: "0 auto",
+              padding: "0 1.5rem",
+              height: "56px",
               display: "flex",
-              gap: "0.75rem",
-              flexWrap: "wrap",
-              fontSize: "0.8rem",
-              color: muted,
+              alignItems: "center",
+              justifyContent: "space-between",
             }}
           >
-            <span>By Nicholas Templeman</span>
-            <span style={{ color: `${gold}60` }}>·</span>
-            <span>MEOK AI LABS</span>
-            <span style={{ color: `${gold}60` }}>·</span>
-            <span>March 24, 2026</span>
-            <span style={{ color: `${gold}60` }}>·</span>
-            <span>16 min read</span>
+            <Link
+              href="/"
+              style={{
+                fontSize: "1.1rem",
+                fontWeight: 800,
+                letterSpacing: "-0.02em",
+                color: text,
+                textDecoration: "none",
+              }}
+            >
+              MEOK<span style={{ color: gold }}>.</span>AI
+            </Link>
+            <div
+              style={{
+                display: "flex",
+                gap: "1.5rem",
+                alignItems: "center",
+              }}
+            >
+              <Link
+                href="/blog"
+                style={{
+                  fontSize: "0.85rem",
+                  color: muted,
+                  textDecoration: "none",
+                }}
+              >
+                Blog
+              </Link>
+              <Link
+                href="/#pricing"
+                style={{
+                  fontSize: "0.85rem",
+                  color: muted,
+                  textDecoration: "none",
+                }}
+              >
+                Pricing
+              </Link>
+              <Link
+                href="https://meok.ai/birth"
+                style={{
+                  fontSize: "0.8rem",
+                  fontWeight: 700,
+                  color: bg,
+                  background: gold,
+                  padding: "0.4rem 1rem",
+                  borderRadius: "6px",
+                  textDecoration: "none",
+                  letterSpacing: "0.02em",
+                }}
+              >
+                Get Started
+              </Link>
+            </div>
           </div>
-        </section>
+        </nav>
 
-        {/* Body */}
         <article
           style={{
             maxWidth: "760px",
             margin: "0 auto",
-            padding: "0 1.5rem 6rem",
+            padding: "0 1.5rem 5rem",
           }}
         >
+          {/* Hero Section */}
+          <section style={{ padding: "5rem 0 3rem" }}>
+            <div style={{ marginBottom: "1rem" }}>
+              <span
+                style={{
+                  display: "inline-block",
+                  padding: "0.25rem 0.875rem",
+                  background: `${gold}18`,
+                  border: `1px solid ${gold}44`,
+                  borderRadius: "9999px",
+                  fontSize: "0.7rem",
+                  fontWeight: 700,
+                  letterSpacing: "0.1em",
+                  textTransform: "uppercase",
+                  color: gold,
+                }}
+              >
+                Productivity &amp; Mental Health
+              </span>
+            </div>
+
+            <h1
+              style={{
+                fontSize: "clamp(2rem, 5vw, 3rem)",
+                fontWeight: 900,
+                lineHeight: 1.1,
+                letterSpacing: "-0.02em",
+                marginBottom: "1.5rem",
+              }}
+            >
+              AI for Procrastination:{" "}
+              <span style={{ color: gold }}>
+                Why You Can&apos;t Just &ldquo;Try Harder&rdquo; and How MEOK
+                Helps
+              </span>
+            </h1>
+
+            <div
+              style={{
+                display: "flex",
+                gap: "1rem",
+                alignItems: "center",
+                marginBottom: "2rem",
+                flexWrap: "wrap",
+              }}
+            >
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "0.5rem",
+                }}
+              >
+                <div
+                  style={{
+                    width: "32px",
+                    height: "32px",
+                    borderRadius: "50%",
+                    background: `${gold}33`,
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    fontSize: "0.75rem",
+                    fontWeight: 700,
+                    color: gold,
+                  }}
+                >
+                  NT
+                </div>
+                <span style={{ fontSize: "0.85rem", color: muted }}>
+                  Nicholas Templeman &mdash; Founder &amp; CEO, MEOK AI LABS
+                </span>
+              </div>
+              <span style={{ fontSize: "0.8rem", color: muted }}>
+                25 March 2026
+              </span>
+              <span
+                style={{
+                  fontSize: "0.75rem",
+                  color: muted,
+                  padding: "0.2rem 0.6rem",
+                  border: `1px solid ${border}`,
+                  borderRadius: "4px",
+                }}
+              >
+                14 min read
+              </span>
+            </div>
+
+            <p
+              style={{
+                fontSize: "1.15rem",
+                color: muted,
+                lineHeight: 1.8,
+                marginBottom: "1.25rem",
+              }}
+            >
+              The task has been on your list for eleven days. You know exactly
+              what it is. You know roughly how long it will take. You have
+              rehearsed starting it somewhere between thirty and fifty times.
+              And yet, here it sits &mdash; unmoved, untouched, accumulating
+              the quiet weight that only avoided things can carry.
+            </p>
+            <p
+              style={{
+                fontSize: "1.15rem",
+                color: muted,
+                lineHeight: 1.8,
+                marginBottom: "1.25rem",
+              }}
+            >
+              If you have been told to try harder, to get better time
+              management, or to simply decide to stop procrastinating &mdash;
+              that advice was not just unhelpful. It was wrong. The science of
+              procrastination has been unambiguous for over a decade: this is
+              not a discipline problem. It is not a laziness problem. It is an
+              emotion regulation problem &mdash; and the brain structures
+              involved do not respond to instructions from willpower alone.
+            </p>
+            <p
+              style={{
+                fontSize: "1.15rem",
+                color: muted,
+                lineHeight: 1.8,
+              }}
+            >
+              This guide covers the neuroscience behind the avoidance loop,
+              what makes ADHD procrastination different from neurotypical
+              procrastination, the body doubling phenomenon, and how
+              MEOK&apos;s Pioneer archetype was specifically designed to be the
+              accountability companion that actually understands why you
+              can&apos;t just try harder.
+            </p>
+          </section>
+
           {/* Divider */}
           <div
             style={{
               height: "1px",
               background: `linear-gradient(to right, transparent, ${gold}33, transparent)`,
-              margin: "2rem 0 3rem",
+              margin: "0 0 3rem",
             }}
           />
 
           {/* Section 1 */}
-          <h2
-            style={{
-              fontSize: "1.6rem",
-              fontWeight: 800,
-              lineHeight: 1.2,
-              letterSpacing: "-0.015em",
-              marginBottom: "1rem",
-              color: text,
-            }}
-          >
-            Is Procrastination Really an Emotion Regulation Failure?
-          </h2>
-          <p
-            style={{
-              fontSize: "1.05rem",
-              color: muted,
-              lineHeight: 1.8,
-              marginBottom: "1.25rem",
-            }}
-          >
-            Yes. This is the most important reframe in all of procrastination
-            research, and it comes primarily from two psychologists: Fuschia
-            Sirois at Durham University and Timothy Pychyl at Carleton
-            University in Canada. Their work, replicated across dozens of
-            studies, shows that chronic procrastination is not about poor
-            planning or disorganised priorities. It is about the management
-            \u2014 or mismanagement \u2014 of negative emotion.
-          </p>
-          <p
-            style={{
-              fontSize: "1.05rem",
-              color: muted,
-              lineHeight: 1.8,
-              marginBottom: "1.25rem",
-            }}
-          >
-            When you face a task that triggers negative emotion \u2014 anxiety
-            about whether it will be good enough, boredom at the prospect of
-            doing it, frustration at how unclear it is, resentment that it
-            exists at all \u2014 your brain\u2019s immediate priority is
-            relief from that emotion. Procrastination delivers that relief
-            instantly. Avoidance works. The negative feeling goes away the
-            moment you decide to do it later.
-          </p>
-          <p
-            style={{
-              fontSize: "1.05rem",
-              color: muted,
-              lineHeight: 1.8,
-              marginBottom: "1.25rem",
-            }}
-          >
-            The problem is that relief is temporary, and the cost compounds.
-            The task does not disappear. It grows heavier. Shame accumulates
-            around it. The next time you consider starting, the negative
-            emotion is now larger \u2014 the original anxiety plus the shame
-            of having avoided it \u2014 which makes the impulse to avoid it
-            again even stronger. This is the procrastination loop, and it is
-            self-reinforcing by design.
-          </p>
-          <p
-            style={{
-              fontSize: "1.05rem",
-              color: muted,
-              lineHeight: 1.8,
-              marginBottom: "1.75rem",
-            }}
-          >
-            Sirois and Pychyl\u2019s 2013 paper in the journal{" "}
-            <em>Social and Personality Psychology Compass</em> described
-            procrastination as \u201cprioritising short-term mood repair over
-            the long-term pursuit of intended actions.\u201d That framing
-            matters enormously. It means interventions aimed at scheduling,
-            willpower, or discipline will consistently fail \u2014 because
-            they are addressing the symptom rather than the cause.
-          </p>
-
-          {/* Callout */}
-          <div
-            style={{
-              background: cardBg,
-              border: `1px solid ${cardBorder}`,
-              borderLeft: `3px solid ${gold}`,
-              borderRadius: "0.5rem",
-              padding: "1.25rem 1.5rem",
-              marginBottom: "2rem",
-            }}
-          >
+          <section style={{ marginBottom: "3.5rem" }}>
+            <h2
+              style={{
+                fontSize: "clamp(1.4rem, 3vw, 1.85rem)",
+                fontWeight: 800,
+                lineHeight: 1.2,
+                letterSpacing: "-0.02em",
+                marginBottom: "1.25rem",
+                color: text,
+              }}
+            >
+              What Is Procrastination, Really? The Neuroscience of Avoidance
+            </h2>
             <p
               style={{
-                fontSize: "0.95rem",
-                color: text,
-                lineHeight: 1.75,
-                margin: 0,
-                fontStyle: "italic",
+                fontSize: "1.05rem",
+                color: muted,
+                lineHeight: 1.8,
+                marginBottom: "1.1rem",
               }}
             >
-              \u201cProcrastination is an emotion regulation problem, not a
-              time management problem.\u201d
-              <br />
-              <span
-                style={{
-                  color: muted,
-                  fontStyle: "normal",
-                  fontSize: "0.85rem",
-                }}
-              >
-                \u2014 Fuschia Sirois &amp; Timothy Pychyl
-              </span>
+              In 2013, researchers Fuschia Sirois and Timothy Pychyl published
+              a landmark paper establishing procrastination as a failure of
+              emotion regulation rather than time management. Their framework
+              has since been validated repeatedly: when the brain perceives a
+              task as threatening &mdash; whether because it is boring,
+              anxiety-provoking, identity-threatening, or simply ambiguous
+              &mdash; it activates the limbic system&apos;s avoidance response.
             </p>
-          </div>
-
-          {/* Section 2 */}
-          <h2
-            style={{
-              fontSize: "1.6rem",
-              fontWeight: 800,
-              lineHeight: 1.2,
-              letterSpacing: "-0.015em",
-              marginBottom: "1rem",
-              color: text,
-            }}
-          >
-            What Is the Fear Loop and Why Is It So Hard to Escape?
-          </h2>
-          <p
-            style={{
-              fontSize: "1.05rem",
-              color: muted,
-              lineHeight: 1.8,
-              marginBottom: "1.5rem",
-            }}
-          >
-            The fear loop is the specific emotional architecture that drives
-            most chronic procrastination. It has four stages, and each stage
-            feeds the next in a self-sustaining cycle that can persist for
-            months or years around the same avoided task.
-          </p>
-
-          {/* Loop stages */}
-          {[
-            {
-              num: "01",
-              title: "Perfectionism",
-              body: "The task feels high-stakes. You want it to be good \u2014 ideally perfect. The standard you have set, consciously or not, is higher than what feels achievable in the time and energy available. The task looms.",
-            },
-            {
-              num: "02",
-              title: "Overwhelm",
-              body: "The gap between where you are and where the task needs to be feels insurmountable. Rather than a sequence of concrete steps, the task appears as a single enormous undifferentiated weight. You do not know where to begin, so you do not.",
-            },
-            {
-              num: "03",
-              title: "Avoidance",
-              body: "The emotional discomfort of facing the gap triggers avoidance. You do something else \u2014 something easier, more enjoyable, more immediately rewarding. The avoidance is not random; it is a rational response to an emotional problem.",
-            },
-            {
-              num: "04",
-              title: "Shame",
-              body: "Hours or days later, the avoidance itself becomes a source of negative emotion. You feel guilty, ashamed, self-critical. These feelings attach themselves to the task, making the next approach attempt even more emotionally loaded \u2014 which makes avoidance even more tempting.",
-            },
-          ].map((stage) => (
-            <div
-              key={stage.num}
+            <p
               style={{
-                display: "grid",
-                gridTemplateColumns: "3rem 1fr",
-                gap: "1rem",
-                marginBottom: "1.25rem",
-                alignItems: "start",
+                fontSize: "1.05rem",
+                color: muted,
+                lineHeight: 1.8,
+                marginBottom: "1.1rem",
               }}
             >
-              <div
-                style={{
-                  fontSize: "0.7rem",
-                  fontWeight: 800,
-                  letterSpacing: "0.08em",
-                  color: gold,
-                  paddingTop: "0.25rem",
-                }}
-              >
-                {stage.num}
-              </div>
-              <div>
-                <p
-                  style={{
-                    fontSize: "1rem",
-                    fontWeight: 700,
-                    color: text,
-                    marginBottom: "0.3rem",
-                  }}
-                >
-                  {stage.title}
-                </p>
-                <p
-                  style={{
-                    fontSize: "0.97rem",
-                    color: muted,
-                    lineHeight: 1.75,
-                    margin: 0,
-                  }}
-                >
-                  {stage.body}
-                </p>
-              </div>
-            </div>
-          ))}
+              The dopaminergic avoidance loop works like this: the task
+              triggers negative affect. The brain, whose primary mandate is to
+              reduce immediate discomfort, steers attention toward something
+              that provides short-term relief &mdash; checking messages,
+              researching a tangential topic, reorganising an already-organised
+              drawer. The relief arrives. The task remains. The relief
+              reinforces the avoidance behaviour. Repeat.
+            </p>
+            <p
+              style={{
+                fontSize: "1.05rem",
+                color: muted,
+                lineHeight: 1.8,
+                marginBottom: "1.1rem",
+              }}
+            >
+              The prefrontal cortex &mdash; the region responsible for
+              long-term planning, impulse control, and executive function
+              &mdash; can, in principle, override this loop. But the limbic
+              system processes roughly twenty to forty milliseconds faster than
+              the prefrontal cortex. The avoidance response has already fired
+              before the planning circuits can intervene. This is why you can
+              know exactly what you need to do, intend to do it, and still find
+              yourself scrolling fifteen minutes later.
+            </p>
+            <p
+              style={{
+                fontSize: "1.05rem",
+                color: muted,
+                lineHeight: 1.8,
+              }}
+            >
+              Willpower &mdash; the instruction to try harder &mdash; is a
+              prefrontal cortex activity. It is exactly the wrong tool for a
+              limbic avoidance loop. You cannot out-think a faster system using
+              a slower one. What you need is a different kind of intervention:
+              one that meets the emotional trigger before the avoidance fires,
+              or that restructures the environment so the avoidance loop has
+              less to grip onto.
+            </p>
+          </section>
 
-          <p
-            style={{
-              fontSize: "1.05rem",
-              color: muted,
-              lineHeight: 1.8,
-              marginBottom: "1.75rem",
-              marginTop: "0.75rem",
-            }}
-          >
-            The loop is self-sealing because avoidance is immediately
-            reinforcing and its costs are delayed. The brain is optimised for
-            near-term emotional regulation, not long-term project completion.
-            Breaking the loop requires intervening at the emotional level
-            before the avoidance decision is made \u2014 which is precisely
-            what most productivity systems fail to do.
-          </p>
-
-          {/* Section 3 */}
-          <h2
-            style={{
-              fontSize: "1.6rem",
-              fontWeight: 800,
-              lineHeight: 1.2,
-              letterSpacing: "-0.015em",
-              marginBottom: "1rem",
-              color: text,
-            }}
-          >
-            How Does ADHD Overlap With Procrastination \u2014 and Where Does
-            It Differ?
-          </h2>
-          <p
-            style={{
-              fontSize: "1.05rem",
-              color: muted,
-              lineHeight: 1.8,
-              marginBottom: "1.25rem",
-            }}
-          >
-            ADHD and procrastination are not the same thing, but they share
-            enough neurological territory that they are frequently confused
-            \u2014 both by the people experiencing them and by clinicians. The
-            distinction matters enormously because the interventions are
-            somewhat different.
-          </p>
-          <p
-            style={{
-              fontSize: "1.05rem",
-              color: muted,
-              lineHeight: 1.8,
-              marginBottom: "1.25rem",
-            }}
-          >
-            Neurotypical procrastination is primarily emotion-driven: the
-            person has the executive function capacity to start the task and
-            is choosing, at an emotional level, not to. ADHD procrastination
-            is partly this but also involves genuine executive function
-            deficits that make starting tasks neurologically difficult even
-            in the absence of negative emotion. The ADHD brain struggles with
-            task initiation because of low dopamine availability in the
-            prefrontal cortex \u2014 the task simply does not generate enough
-            neurological reward to compete with more stimulating alternatives.
-          </p>
-          <p
-            style={{
-              fontSize: "1.05rem",
-              color: muted,
-              lineHeight: 1.8,
-              marginBottom: "1.25rem",
-            }}
-          >
-            Compounding this is time blindness \u2014 the well-documented ADHD
-            difficulty in perceiving the passage of time. Where a neurotypical
-            person feels time moving and can sense a deadline approaching,
-            many ADHD individuals experience a flatter temporal landscape in
-            which a deadline three days away and a deadline three hours away
-            feel functionally identical until the panic moment. This creates
-            a specific pattern: massive avoidance followed by last-minute
-            hyperfocus, which is exhausting, unreliable, and terrible for
-            anything requiring sustained quality.
-          </p>
-          <p
-            style={{
-              fontSize: "1.05rem",
-              color: muted,
-              lineHeight: 1.8,
-              marginBottom: "1.25rem",
-            }}
-          >
-            There is also rejection sensitive dysphoria (RSD) \u2014 the ADHD
-            trait characterised by extreme emotional sensitivity to perceived
-            criticism or failure. RSD interacts with procrastination in a
-            particularly punishing way: the fear of producing work that might
-            be judged negatively triggers an emotional response so intense
-            that avoidance becomes the only tolerable option. The task is not
-            just uncomfortable; it is existentially threatening. This is why
-            perfectionism and ADHD so often travel together.
-          </p>
-
-          {/* Comparison table */}
+          {/* Feature Box 1 — Neuroscience Summary */}
           <div
             style={{
               background: cardBg,
-              border: `1px solid ${cardBorder}`,
-              borderRadius: "0.75rem",
-              overflow: "hidden",
-              marginBottom: "2rem",
-            }}
-          >
-            <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: "1fr 1fr",
-                borderBottom: `1px solid ${cardBorder}`,
-              }}
-            >
-              <div
-                style={{
-                  padding: "0.75rem 1.25rem",
-                  fontSize: "0.75rem",
-                  fontWeight: 700,
-                  letterSpacing: "0.08em",
-                  textTransform: "uppercase",
-                  color: gold,
-                  borderRight: `1px solid ${cardBorder}`,
-                }}
-              >
-                Neurotypical Procrastination
-              </div>
-              <div
-                style={{
-                  padding: "0.75rem 1.25rem",
-                  fontSize: "0.75rem",
-                  fontWeight: 700,
-                  letterSpacing: "0.08em",
-                  textTransform: "uppercase",
-                  color: gold,
-                }}
-              >
-                ADHD Procrastination
-              </div>
-            </div>
-            {[
-              [
-                "Emotion regulation failure",
-                "Emotion regulation + executive function deficit",
-              ],
-              [
-                "Can start with enough motivation",
-                "Initiation difficulty regardless of motivation",
-              ],
-              [
-                "Time perception broadly intact",
-                "Time blindness \u2014 deadlines feel equidistant",
-              ],
-              [
-                "Shame-driven avoidance spiral",
-                "RSD amplifies shame to existential levels",
-              ],
-              [
-                "Responds to commitment devices",
-                "Needs external time anchoring AND commitment devices",
-              ],
-              [
-                "Perfectionism as avoidance strategy",
-                "Perfectionism as neurological self-protection",
-              ],
-            ].map((row, i) => (
-              <div
-                key={i}
-                style={{
-                  display: "grid",
-                  gridTemplateColumns: "1fr 1fr",
-                  borderBottom: i < 5 ? `1px solid ${cardBorder}` : undefined,
-                }}
-              >
-                <div
-                  style={{
-                    padding: "0.7rem 1.25rem",
-                    fontSize: "0.88rem",
-                    color: muted,
-                    borderRight: `1px solid ${cardBorder}`,
-                    lineHeight: 1.6,
-                  }}
-                >
-                  {row[0]}
-                </div>
-                <div
-                  style={{
-                    padding: "0.7rem 1.25rem",
-                    fontSize: "0.88rem",
-                    color: muted,
-                    lineHeight: 1.6,
-                  }}
-                >
-                  {row[1]}
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <p
-            style={{
-              fontSize: "1.05rem",
-              color: muted,
-              lineHeight: 1.8,
-              marginBottom: "1.75rem",
-            }}
-          >
-            The practical implication: interventions designed purely around
-            motivation or emotional reframing will be less effective for ADHD
-            procrastination. What is needed additionally is external structure
-            \u2014 reliable, persistent, non-judgmental scaffolding that
-            compensates for the parts of executive function that are not
-            firing reliably. This is where AI has a genuine role that no
-            planner app or productivity framework has been able to fill.
-          </p>
-
-          {/* Section 4 */}
-          <h2
-            style={{
-              fontSize: "1.6rem",
-              fontWeight: 800,
-              lineHeight: 1.2,
-              letterSpacing: "-0.015em",
-              marginBottom: "1rem",
-              color: text,
-            }}
-          >
-            What Is Body Doubling and Why Does It Work?
-          </h2>
-          <p
-            style={{
-              fontSize: "1.05rem",
-              color: muted,
-              lineHeight: 1.8,
-              marginBottom: "1.25rem",
-            }}
-          >
-            Body doubling is one of the most consistently effective
-            procrastination interventions, and it has almost nothing to do
-            with the content of what is being done. The practice is simple:
-            work in the presence of another person. They do not need to
-            supervise you, help you, or even interact with you. Their mere
-            presence creates a mild layer of social accountability that appears
-            to activate the prefrontal cortex in ways that working alone does
-            not.
-          </p>
-          <p
-            style={{
-              fontSize: "1.05rem",
-              color: muted,
-              lineHeight: 1.8,
-              marginBottom: "1.25rem",
-            }}
-          >
-            For ADHD individuals in particular, body doubling has been reported
-            as transformative \u2014 tasks that are impossible to start alone
-            become straightforward with a body double present. The mechanism
-            is not fully understood, but the leading theory is that the social
-            context shifts the task from a purely internal self-regulation
-            challenge to a social performance, activating different
-            motivational circuits.
-          </p>
-          <p
-            style={{
-              fontSize: "1.05rem",
-              color: muted,
-              lineHeight: 1.8,
-              marginBottom: "1.25rem",
-            }}
-          >
-            The obvious limitation of traditional body doubling is logistics.
-            You need someone willing and available to sit with you, often at
-            irregular times, potentially for hours, doing their own work
-            silently. Virtual body doubling \u2014 working over video call
-            with another person \u2014 has expanded access significantly,
-            with services like Focusmate building entire communities around it.
-            But even virtual body doubling requires another human to be
-            available when you need them.
-          </p>
-          <p
-            style={{
-              fontSize: "1.05rem",
-              color: muted,
-              lineHeight: 1.8,
-              marginBottom: "1.75rem",
-            }}
-          >
-            AI body doubling addresses this access problem. MEOK\u2019s
-            Pioneer archetype can provide a body doubling presence \u2014 not
-            by passively existing, but by actively engaging at the start of a
-            sprint, checking in at intervals, and being available to respond
-            when you need to verbalise what you are working on or why you
-            have stopped. It is available at any hour, has infinite patience,
-            and carries no judgment about the number of times you have avoided
-            the same task.
-          </p>
-
-          {/* Section 5 */}
-          <h2
-            style={{
-              fontSize: "1.6rem",
-              fontWeight: 800,
-              lineHeight: 1.2,
-              letterSpacing: "-0.015em",
-              marginBottom: "1rem",
-              color: text,
-            }}
-          >
-            How Does Task Decomposition Break the Overwhelm Stage?
-          </h2>
-          <p
-            style={{
-              fontSize: "1.05rem",
-              color: muted,
-              lineHeight: 1.8,
-              marginBottom: "1.25rem",
-            }}
-          >
-            Overwhelm \u2014 the second stage of the fear loop \u2014 is driven
-            almost entirely by vagueness. Tasks feel overwhelming when they
-            exist in the mind as a single undifferentiated mass rather than a
-            sequence of discrete, concrete actions. \u201cWrite the
-            report\u201d is overwhelming. \u201cOpen a new document and write
-            one sentence describing the purpose of the report\u201d is not.
-          </p>
-          <p
-            style={{
-              fontSize: "1.05rem",
-              color: muted,
-              lineHeight: 1.8,
-              marginBottom: "1.25rem",
-            }}
-          >
-            Task decomposition is the process of breaking a task down to its
-            smallest possible actionable unit \u2014 the level at which there
-            is genuinely no ambiguity about what action to take next. Done
-            correctly, the task stops being an emotional weight and becomes a
-            series of physical actions, each of which takes less than a few
-            minutes and requires no further planning to execute.
-          </p>
-          <p
-            style={{
-              fontSize: "1.05rem",
-              color: muted,
-              lineHeight: 1.8,
-              marginBottom: "1.25rem",
-            }}
-          >
-            The difficulty is that task decomposition requires the same
-            executive function that procrastination impairs. When you are in
-            avoidance mode, your working memory is partly occupied by the
-            emotional weight of the avoided task, leaving less capacity for
-            the clear thinking that effective decomposition requires. This is
-            where AI assistance has a concrete mechanical advantage: MEOK can
-            take a vague task description and return a decomposed sequence
-            without any of the executive function cost that doing it yourself
-            would require.
-          </p>
-          <p
-            style={{
-              fontSize: "1.05rem",
-              color: muted,
-              lineHeight: 1.8,
-              marginBottom: "1.25rem",
-            }}
-          >
-            The decomposition also makes invisible tasks visible. Many
-            procrastinated tasks are avoided partly because the person does
-            not actually know what the first step is \u2014 they think they
-            do, but when pressed, \u201cstart the project\u201d dissolves into
-            ambiguity. Having MEOK surface the concrete first action removes
-            the cognitive load that was feeding the avoidance decision.
-          </p>
-
-          {/* Decomposition example */}
-          <div
-            style={{
-              background: cardBg,
-              border: `1px solid ${cardBorder}`,
-              borderRadius: "0.75rem",
-              padding: "1.5rem",
-              marginBottom: "2rem",
+              border: `1px solid ${border}`,
+              borderLeft: `3px solid ${gold}`,
+              borderRadius: "10px",
+              padding: "1.5rem 1.75rem",
+              marginBottom: "3.5rem",
             }}
           >
             <p
@@ -866,1086 +480,1572 @@ export default function AIForProcrastinationPage() {
                 marginBottom: "1rem",
               }}
             >
-              Task Decomposition in Practice
+              The Avoidance Loop: Three Key Facts
             </p>
-            <div
+            <ul
               style={{
-                display: "grid",
-                gridTemplateColumns: "1fr 1fr",
-                gap: "1rem",
+                listStyle: "none",
+                padding: 0,
+                margin: 0,
+                display: "flex",
+                flexDirection: "column",
+                gap: "0.75rem",
               }}
             >
-              <div>
-                <p
-                  style={{
-                    fontSize: "0.8rem",
-                    fontWeight: 600,
-                    color: `${text}80`,
-                    marginBottom: "0.6rem",
-                    textTransform: "uppercase",
-                    letterSpacing: "0.06em",
-                  }}
-                >
-                  Before (overwhelming)
-                </p>
-                <p
-                  style={{
-                    fontSize: "0.95rem",
-                    color: muted,
-                    lineHeight: 1.6,
-                    fontStyle: "italic",
-                    margin: 0,
-                  }}
-                >
-                  \u201cFinish the client proposal\u201d
-                </p>
-              </div>
-              <div>
-                <p
-                  style={{
-                    fontSize: "0.8rem",
-                    fontWeight: 600,
-                    color: gold,
-                    marginBottom: "0.6rem",
-                    textTransform: "uppercase",
-                    letterSpacing: "0.06em",
-                  }}
-                >
-                  After (actionable)
-                </p>
-                <ol
-                  style={{
-                    margin: 0,
-                    paddingLeft: "1.2rem",
-                    fontSize: "0.9rem",
-                    color: muted,
-                    lineHeight: 1.7,
-                  }}
-                >
-                  <li>Re-read the brief email (2 min)</li>
-                  <li>List the three things the client asked for</li>
-                  <li>Write one sentence for each point</li>
-                  <li>Draft the proposed solution section only</li>
-                  <li>Add pricing numbers from the spreadsheet</li>
-                  <li>Write the subject line last</li>
-                </ol>
-              </div>
-            </div>
-          </div>
-
-          {/* Section 6 */}
-          <h2
-            style={{
-              fontSize: "1.6rem",
-              fontWeight: 800,
-              lineHeight: 1.2,
-              letterSpacing: "-0.015em",
-              marginBottom: "1rem",
-              color: text,
-            }}
-          >
-            How Do Time-Boxing and the Two-Minute Rule Help With Procrastination?
-          </h2>
-          <p
-            style={{
-              fontSize: "1.05rem",
-              color: muted,
-              lineHeight: 1.8,
-              marginBottom: "1.25rem",
-            }}
-          >
-            Time-boxing \u2014 committing to work on a task for a fixed,
-            bounded period rather than until completion \u2014 is one of the
-            most well-evidenced procrastination interventions. The
-            psychological mechanism is straightforward: it converts an
-            open-ended commitment (which is cognitively threatening) into a
-            closed-ended one (which is manageable). Working on the report
-            forever is overwhelming. Working on the report for twenty-five
-            minutes and then stopping is not.
-          </p>
-          <p
-            style={{
-              fontSize: "1.05rem",
-              color: muted,
-              lineHeight: 1.8,
-              marginBottom: "1.25rem",
-            }}
-          >
-            Time-boxing works partly through the Zeigarnik effect \u2014 the
-            brain\u2019s tendency to keep incomplete tasks active in working
-            memory, which creates a natural pull toward continuation once work
-            has begun. Starting, even for a short bounded period, changes the
-            psychological status of the task from \u201cuntouched and
-            threatening\u201d to \u201cin progress.\u201d This shift alone
-            reduces the emotional weight attached to it considerably.
-          </p>
-          <p
-            style={{
-              fontSize: "1.05rem",
-              color: muted,
-              lineHeight: 1.8,
-              marginBottom: "1.25rem",
-            }}
-          >
-            The two-minute rule, popularised by David Allen in{" "}
-            <em>Getting Things Done</em>, operates at the other end of the
-            spectrum: if a task takes less than two minutes, do it immediately
-            rather than scheduling it. The rule is less a productivity hack
-            than a procrastination prevention tool \u2014 many items
-            accumulate on avoided lists not because they are difficult or
-            emotionally threatening, but because the brain has mistakenly
-            assigned them a larger cost than they actually carry. Identifying
-            and clearing these instantly prevents the shame accumulation that
-            feeds the avoidance loop.
-          </p>
-          <p
-            style={{
-              fontSize: "1.05rem",
-              color: muted,
-              lineHeight: 1.8,
-              marginBottom: "1.75rem",
-            }}
-          >
-            AI scaffolding for both of these techniques works on a level that
-            apps and reminder systems cannot match. MEOK\u2019s Pioneer does
-            not just set a timer \u2014 it checks in at the end of the sprint,
-            asks what happened, and contextualises the result against the
-            pattern from previous days. Because Hourman carries memory across
-            sessions, it can identify when a task has been repeatedly
-            time-boxed but never actually moved forward \u2014 a signal that
-            something more fundamental is blocking progress.
-          </p>
-
-          {/* Section 7 */}
-          <h2
-            style={{
-              fontSize: "1.6rem",
-              fontWeight: 800,
-              lineHeight: 1.2,
-              letterSpacing: "-0.015em",
-              marginBottom: "1rem",
-              color: text,
-            }}
-          >
-            What Are Implementation Intentions and Why Do They Beat Willpower?
-          </h2>
-          <p
-            style={{
-              fontSize: "1.05rem",
-              color: muted,
-              lineHeight: 1.8,
-              marginBottom: "1.25rem",
-            }}
-          >
-            Implementation intentions are one of the most robust findings in
-            behavioural psychology. Developed by Peter Gollwitzer at New York
-            University, they are specific if-then plans that pre-commit a
-            person to a concrete action at a particular moment: \u201cIf it is
-            9 am on Tuesday and I am at my desk, then I will open the document
-            and write the first paragraph.\u201d
-          </p>
-          <p
-            style={{
-              fontSize: "1.05rem",
-              color: muted,
-              lineHeight: 1.8,
-              marginBottom: "1.25rem",
-            }}
-          >
-            The research consistently shows that implementation intentions
-            double or triple the rate of goal achievement compared to simple
-            goal-setting. The mechanism is that they offload the decision from
-            the moment it needs to be made \u2014 a moment when motivation may
-            be low and avoidance impulses high \u2014 to a prior moment when
-            planning is calm and deliberate. When the trigger condition
-            arrives, the action is pre-decided. There is no willpower required.
-          </p>
-          <p
-            style={{
-              fontSize: "1.05rem",
-              color: muted,
-              lineHeight: 1.8,
-              marginBottom: "1.25rem",
-            }}
-          >
-            This is exactly the kind of structured planning that AI can
-            scaffold with particular effectiveness. During an Hourman sprint
-            planning session, MEOK can help you construct implementation
-            intentions for your highest-priority tasks: not just \u201cI will
-            work on X today\u201d but \u201cwhen I sit down at 9 am and open
-            my laptop, the first action I will take is Y.\u201d The
-            specificity of the trigger and the action is what makes the
-            difference.
-          </p>
-          <p
-            style={{
-              fontSize: "1.05rem",
-              color: muted,
-              lineHeight: 1.8,
-              marginBottom: "1.75rem",
-            }}
-          >
-            Gollwitzer\u2019s research also shows that implementation
-            intentions are particularly powerful for people who struggle with
-            impulsive competing behaviours \u2014 exactly the profile of ADHD
-            procrastination. The pre-commitment creates a kind of cognitive
-            firewall against the impulsive switch to something more immediately
-            rewarding, because the decision has already been made in a calmer
-            context.
-          </p>
-
-          {/* Section 8 */}
-          <h2
-            style={{
-              fontSize: "1.6rem",
-              fontWeight: 800,
-              lineHeight: 1.2,
-              letterSpacing: "-0.015em",
-              marginBottom: "1rem",
-              color: text,
-            }}
-          >
-            What Is the Pioneer Archetype and How Is It the Anti-Procrastination
-            Companion?
-          </h2>
-          <p
-            style={{
-              fontSize: "1.05rem",
-              color: muted,
-              lineHeight: 1.8,
-              marginBottom: "1.25rem",
-            }}
-          >
-            MEOK is built around archetypes \u2014 distinct companion
-            personalities, each with its own emotional register,
-            communication style, and functional purpose. The Pioneer is the
-            archetype of action, accountability, and momentum. Where the
-            Scholar explores ideas and the Caregiver provides emotional
-            warmth, the Pioneer is oriented entirely toward forward movement.
-          </p>
-          <p
-            style={{
-              fontSize: "1.05rem",
-              color: muted,
-              lineHeight: 1.8,
-              marginBottom: "1.25rem",
-            }}
-          >
-            The Pioneer is not aggressive, demanding, or critical. It does
-            not shame you for avoiding. It is energising and direct \u2014 the
-            companion equivalent of a friend who genuinely believes you are
-            capable and treats you accordingly. It will ask you what you are
-            working on, hold you to the commitment you made, celebrate the
-            small win when you complete a sprint, and notice \u2014 without
-            drama \u2014 when a pattern of avoidance has persisted across
-            multiple days.
-          </p>
-          <p
-            style={{
-              fontSize: "1.05rem",
-              color: muted,
-              lineHeight: 1.8,
-              marginBottom: "1.25rem",
-            }}
-          >
-            What makes the Pioneer genuinely different from a generic AI
-            assistant is the combination of archetype and memory. A generic
-            AI assistant has no memory of what you said you were going to do
-            yesterday. The Pioneer does. When you sit down on Wednesday and
-            have not started the task you committed to on Monday, the Pioneer
-            does not pretend it has not noticed. It brings the commitment
-            forward, asks what got in the way, and helps you find the smallest
-            possible entry point for today.
-          </p>
-          <p
-            style={{
-              fontSize: "1.05rem",
-              color: muted,
-              lineHeight: 1.8,
-              marginBottom: "1.25rem",
-            }}
-          >
-            This is accountability that is both consistent and compassionate
-            \u2014 a combination that is genuinely rare. Human accountability
-            partners often drift toward either too much flexibility (abandoning
-            the commitment when you explain why you did not do it) or too
-            much pressure (inadvertently activating shame rather than
-            motivation). The Pioneer holds the line without activating the
-            shame spiral.
-          </p>
-
-          {/* Pioneer feature grid */}
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
-              gap: "1rem",
-              marginBottom: "2rem",
-            }}
-          >
-            {[
-              {
-                icon: "\u2192",
-                title: "Action orientation",
-                desc: "Every interaction is aimed at the next concrete step, not analysis or planning for its own sake.",
-              },
-              {
-                icon: "\u25ce",
-                title: "Accountability memory",
-                desc: "Carries your commitments forward across sessions \u2014 avoidance becomes visible, not invisible.",
-              },
-              {
-                icon: "\u2295",
-                title: "Body doubling presence",
-                desc: "Available for sprint sessions at any hour, providing the social layer that unlocks starting.",
-              },
-              {
-                icon: "\u2726",
-                title: "Non-shaming directness",
-                desc: "Calls out avoidance patterns clearly and without judgment \u2014 momentum, not guilt.",
-              },
-            ].map((item) => (
-              <div
-                key={item.title}
+              <li
                 style={{
-                  background: cardBg,
-                  border: `1px solid ${cardBorder}`,
-                  borderRadius: "0.75rem",
-                  padding: "1.25rem",
+                  display: "flex",
+                  gap: "0.75rem",
+                  alignItems: "flex-start",
+                  fontSize: "0.95rem",
+                  color: muted,
+                  lineHeight: 1.7,
                 }}
               >
-                <div
-                  style={{
-                    fontSize: "1.25rem",
-                    color: gold,
-                    marginBottom: "0.5rem",
-                  }}
-                >
-                  {item.icon}
-                </div>
-                <p
-                  style={{
-                    fontSize: "0.9rem",
-                    fontWeight: 700,
-                    color: text,
-                    marginBottom: "0.4rem",
-                  }}
-                >
-                  {item.title}
-                </p>
-                <p
-                  style={{
-                    fontSize: "0.85rem",
-                    color: muted,
-                    lineHeight: 1.65,
-                    margin: 0,
-                  }}
-                >
-                  {item.desc}
-                </p>
-              </div>
-            ))}
+                <span style={{ color: gold, flexShrink: 0, fontWeight: 700 }}>
+                  01
+                </span>
+                <span>
+                  Procrastination is defined by emotion regulation failure, not
+                  poor time management. The brain avoids the task to reduce
+                  immediate negative affect.
+                </span>
+              </li>
+              <li
+                style={{
+                  display: "flex",
+                  gap: "0.75rem",
+                  alignItems: "flex-start",
+                  fontSize: "0.95rem",
+                  color: muted,
+                  lineHeight: 1.7,
+                }}
+              >
+                <span style={{ color: gold, flexShrink: 0, fontWeight: 700 }}>
+                  02
+                </span>
+                <span>
+                  The limbic avoidance response fires 20&ndash;40ms faster than
+                  the prefrontal cortex. Willpower is too slow to intercept it
+                  reliably.
+                </span>
+              </li>
+              <li
+                style={{
+                  display: "flex",
+                  gap: "0.75rem",
+                  alignItems: "flex-start",
+                  fontSize: "0.95rem",
+                  color: muted,
+                  lineHeight: 1.7,
+                }}
+              >
+                <span style={{ color: gold, flexShrink: 0, fontWeight: 700 }}>
+                  03
+                </span>
+                <span>
+                  Short-term relief from avoidance reinforces the loop, making
+                  the same task harder to start next time. Avoidance compounds.
+                </span>
+              </li>
+            </ul>
           </div>
 
-          {/* Section 9 */}
-          <h2
-            style={{
-              fontSize: "1.6rem",
-              fontWeight: 800,
-              lineHeight: 1.2,
-              letterSpacing: "-0.015em",
-              marginBottom: "1rem",
-              color: text,
-            }}
-          >
-            What Is Hourman and How Does Daily Sprint Planning Break the
-            Avoidance Loop?
-          </h2>
-          <p
-            style={{
-              fontSize: "1.05rem",
-              color: muted,
-              lineHeight: 1.8,
-              marginBottom: "1.25rem",
-            }}
-          >
-            Hourman is MEOK\u2019s daily planning agent \u2014 specifically
-            designed around the insight that procrastination is most
-            destructive when it is invisible. Most people who procrastinate
-            chronically do not have a clear picture of their own avoidance
-            pattern. They feel generally behind, vaguely ashamed, and
-            uncertain which tasks are actually critical versus which feel
-            urgent because they carry emotional weight. Hourman makes the
-            pattern visible.
-          </p>
-          <p
-            style={{
-              fontSize: "1.05rem",
-              color: muted,
-              lineHeight: 1.8,
-              marginBottom: "1.25rem",
-            }}
-          >
-            Each day, Hourman pulls context from your previous sessions
-            \u2014 what you said you would work on, what you actually worked
-            on, what moved forward and what did not. It uses this context to
-            help you build a realistic time-boxed plan for the day: not an
-            aspiration list, but a sequence of sprints with clear tasks
-            assigned to each slot. The plan accounts for your actual
-            availability and energy rather than an idealised version of
-            your day.
-          </p>
-          <p
-            style={{
-              fontSize: "1.05rem",
-              color: muted,
-              lineHeight: 1.8,
-              marginBottom: "1.25rem",
-            }}
-          >
-            Throughout the day, Hourman checks in. Not intrusively \u2014 the
-            cadence is configurable \u2014 but consistently enough to convert
-            the plan from an intention to a structure. At the end of the day,
-            it closes the loop: what moved, what did not, what needs to carry
-            over. This closing review is one of the most underrated
-            procrastination interventions, because it forces an honest
-            accounting that the procrastinating brain naturally avoids.
-          </p>
-          <p
-            style={{
-              fontSize: "1.05rem",
-              color: muted,
-              lineHeight: 1.8,
-              marginBottom: "1.75rem",
-            }}
-          >
-            Over time, the pattern that Hourman accumulates becomes genuinely
-            diagnostic. If the same task has been carried over from Monday to
-            Tuesday to Wednesday to Thursday, that is not a scheduling problem
-            \u2014 that is a signal that something more fundamental is
-            blocking the task. Is the task unclear? Is there a specific emotion
-            attached to it? Does it involve someone the person is in conflict
-            with? Hourman can surface this pattern and help you interrogate it
-            directly, rather than simply rescheduling the avoidance
-            indefinitely.
-          </p>
+          {/* Section 2 */}
+          <section style={{ marginBottom: "3.5rem" }}>
+            <h2
+              style={{
+                fontSize: "clamp(1.4rem, 3vw, 1.85rem)",
+                fontWeight: 800,
+                lineHeight: 1.2,
+                letterSpacing: "-0.02em",
+                marginBottom: "1.25rem",
+                color: text,
+              }}
+            >
+              The Long-Term Cost: Why Avoidance Always Wins the Battle and
+              Loses the War
+            </h2>
+            <p
+              style={{
+                fontSize: "1.05rem",
+                color: muted,
+                lineHeight: 1.8,
+                marginBottom: "1.1rem",
+              }}
+            >
+              Avoidance provides real, immediate relief. This is not a
+              cognitive distortion &mdash; the discomfort genuinely decreases
+              when you step away from the task. The problem is that the relief
+              is borrowed against future cost: the task remains, the deadline
+              advances, and the next time you encounter the task it carries an
+              additional layer of guilt, shame, and anticipatory dread. The
+              emotional trigger is now stronger, making avoidance more likely,
+              not less.
+            </p>
+            <p
+              style={{
+                fontSize: "1.05rem",
+                color: muted,
+                lineHeight: 1.8,
+                marginBottom: "1.1rem",
+              }}
+            >
+              This is why procrastination has such strong associations with
+              anxiety, depression, and burnout. The behaviours that reduce
+              short-term distress &mdash; avoidance, distraction, delay &mdash;
+              increase long-term distress in a predictable, compounding way.
+              Fuschia Sirois found that chronic procrastinators report
+              significantly higher rates of clinical-level stress and lower
+              wellbeing even when controlling for the objective difficulty of
+              their task load.
+            </p>
+            <p
+              style={{
+                fontSize: "1.05rem",
+                color: muted,
+                lineHeight: 1.8,
+                marginBottom: "1.1rem",
+              }}
+            >
+              There is also the invisible cost of mental occupancy. Avoided
+              tasks do not leave the mind &mdash; they sit in a background
+              processing queue that consumes cognitive and emotional resources
+              around the clock. Psychologists call this the Zeigarnik effect:
+              incomplete tasks generate an intrusive mental signal that does
+              not resolve until the task is either completed or explicitly
+              abandoned. The result is a background hum of low-grade dread that
+              drains attention, reduces creativity, and degrades sleep.
+            </p>
+            <p
+              style={{
+                fontSize: "1.05rem",
+                color: muted,
+                lineHeight: 1.8,
+              }}
+            >
+              The solution is not to stop feeling the negative affect that
+              triggers avoidance. That is not realistic and is arguably not
+              even desirable &mdash; the discomfort often contains important
+              information about why the task feels threatening. The solution is
+              to change the response to the affect: to interrupt the avoidance
+              loop before or during the moment it fires, and to create enough
+              forward momentum that completion becomes more emotionally
+              accessible than continuing to avoid.
+            </p>
+          </section>
 
-          {/* Section 10 */}
-          <h2
-            style={{
-              fontSize: "1.6rem",
-              fontWeight: 800,
-              lineHeight: 1.2,
-              letterSpacing: "-0.015em",
-              marginBottom: "1rem",
-              color: text,
-            }}
-          >
-            Why Does AI Memory Matter for Procrastination Support?
-          </h2>
-          <p
-            style={{
-              fontSize: "1.05rem",
-              color: muted,
-              lineHeight: 1.8,
-              marginBottom: "1.25rem",
-            }}
-          >
-            Most AI tools have no memory. Every conversation starts fresh.
-            This is a fundamental limitation for procrastination support,
-            because the most important information in helping someone overcome
-            procrastination is longitudinal: what they have been avoiding,
-            for how long, and what patterns emerge around specific tasks or
-            categories of work.
-          </p>
-          <p
-            style={{
-              fontSize: "1.05rem",
-              color: muted,
-              lineHeight: 1.8,
-              marginBottom: "1.25rem",
-            }}
-          >
-            MEOK\u2019s Sovereign Memory is the architectural foundation that
-            makes the Pioneer and Hourman genuinely useful for procrastination
-            rather than merely adequate. Sovereign Memory stores your history
-            locally \u2014 on your device, in your control, not in a cloud
-            platform training on your data. Every conversation, every
-            commitment made to Hourman, every sprint completed or not
-            completed, contributes to a growing picture of your actual
-            behaviour rather than your intended behaviour.
-          </p>
-          <p
-            style={{
-              fontSize: "1.05rem",
-              color: muted,
-              lineHeight: 1.8,
-              marginBottom: "1.25rem",
-            }}
-          >
-            This creates a kind of honest mirror that is very difficult to
-            maintain on your own. The procrastinating brain is skilled at
-            rationalising \u2014 explaining away individual instances of
-            avoidance in ways that prevent the pattern from becoming visible.
-            \u201cI was tired on Monday.\u201d \u201cTuesday was unusually
-            busy.\u201d \u201cI\u2019ll definitely start on Thursday.\u201d
-            Sovereign Memory makes the pattern undeniable, not with judgment
-            but with simple factual continuity: this is the ninth day this
-            task has been on the list.
-          </p>
-          <p
-            style={{
-              fontSize: "1.05rem",
-              color: muted,
-              lineHeight: 1.8,
-              marginBottom: "1.75rem",
-            }}
-          >
-            The memory also works in the other direction. When you do break
-            through on a difficult task \u2014 when the procrastination loop
-            is interrupted and you actually complete something you have been
-            avoiding \u2014 that is stored too. Over time, MEOK can identify
-            what conditions made the breakthrough possible and help you
-            replicate them. This is personalised procrastination intervention
-            in a way that no generic system can provide.
-          </p>
+          {/* Section 3 */}
+          <section style={{ marginBottom: "3.5rem" }}>
+            <h2
+              style={{
+                fontSize: "clamp(1.4rem, 3vw, 1.85rem)",
+                fontWeight: 800,
+                lineHeight: 1.2,
+                letterSpacing: "-0.02em",
+                marginBottom: "1.25rem",
+                color: text,
+              }}
+            >
+              Task Initiation vs Task Completion: Why Starting Is the Hardest
+              Part
+            </h2>
+            <p
+              style={{
+                fontSize: "1.05rem",
+                color: muted,
+                lineHeight: 1.8,
+                marginBottom: "1.1rem",
+              }}
+            >
+              Most procrastination research conflates task initiation and task
+              completion as a single challenge. In practice, they are distinct
+              neurological events with different drivers. Task completion
+              &mdash; continuing work once started &mdash; is primarily an
+              executive function challenge around sustained attention and
+              resistance to distraction. Difficult, but manageable with
+              standard focus interventions.
+            </p>
+            <p
+              style={{
+                fontSize: "1.05rem",
+                color: muted,
+                lineHeight: 1.8,
+                marginBottom: "1.1rem",
+              }}
+            >
+              Task initiation is a different problem. It requires the brain to
+              generate a starter signal in the absence of external urgency, to
+              tolerate the transition from a comfortable state to an uncertain
+              or uncomfortable one, and to begin processing negative affect
+              before any progress exists to offset it. For people with ADHD,
+              this distinction is especially pronounced: ADHD brains have
+              significantly impaired task initiation due to dopamine
+              dysregulation, which means they often require external
+              triggers &mdash; urgency, novelty, emotional salience, or social
+              pressure &mdash; to generate the starter signal at all.
+            </p>
+            <p
+              style={{
+                fontSize: "1.05rem",
+                color: muted,
+                lineHeight: 1.8,
+                marginBottom: "1.1rem",
+              }}
+            >
+              Once an ADHD brain is initiated onto a task it finds interesting
+              or meaningful, hyperfocus can produce extraordinary sustained
+              effort &mdash; sometimes for hours beyond what a neurotypical
+              brain could sustain. The bottleneck is almost entirely initiation.
+              This creates a distinctive pattern: the person appears lazy or
+              unmotivated when the reality is that the initiation machinery is
+              impaired, and the rest of the system is waiting for a signal that
+              the brain cannot reliably generate.
+            </p>
+            <p
+              style={{
+                fontSize: "1.05rem",
+                color: muted,
+                lineHeight: 1.8,
+              }}
+            >
+              Effective procrastination interventions for ADHD must therefore
+              be primarily focused on lowering the initiation cost to below the
+              avoidance threshold, providing external triggers that substitute
+              for the internal dopamine signal, and reducing the perceived
+              scale of the task so that starting feels like a small enough act
+              to be do-able right now. This is exactly the architecture of
+              MEOK&apos;s Pioneer approach.
+            </p>
+          </section>
 
-          {/* Section 11 */}
-          <h2
+          {/* Pull Quote */}
+          <blockquote
             style={{
-              fontSize: "1.6rem",
-              fontWeight: 800,
-              lineHeight: 1.2,
-              letterSpacing: "-0.015em",
-              marginBottom: "1rem",
-              color: text,
-            }}
-          >
-            Why Do Most AI Tools Make Procrastination Worse?
-          </h2>
-          <p
-            style={{
-              fontSize: "1.05rem",
-              color: muted,
-              lineHeight: 1.8,
-              marginBottom: "1.25rem",
-            }}
-          >
-            This is a counterintuitive but important point. Generic AI
-            assistants \u2014 however capable they are at generating text,
-            answering questions, or producing content \u2014 can actively
-            entrench procrastination rather than resolving it.
-          </p>
-          <p
-            style={{
-              fontSize: "1.05rem",
-              color: muted,
-              lineHeight: 1.8,
-              marginBottom: "1.25rem",
-            }}
-          >
-            The first mechanism is substitution. Using a capable AI to
-            research, plan, outline, and draft the work you are avoiding
-            feels like progress. The cognitive activity is real; the
-            engagement is genuine. But if the net result is that more time
-            passes before you do the actual task \u2014 or if the AI does the
-            task in a way that you do not fully own \u2014 the underlying
-            avoidance pattern has not been addressed. It has been fed.
-          </p>
-          <p
-            style={{
-              fontSize: "1.05rem",
-              color: muted,
-              lineHeight: 1.8,
-              marginBottom: "1.25rem",
-            }}
-          >
-            The second mechanism is validation. Generic AI is trained to be
-            agreeable. When a procrastinator explains why they could not start
-            today, a generic AI will typically validate the explanation,
-            express sympathy, and offer a fresh plan \u2014 with no memory of
-            the five previous fresh plans that were also not followed. This is
-            the therapeutic equivalent of enabling: the emotion is soothed,
-            the avoidance is not challenged, and the pattern continues.
-          </p>
-          <p
-            style={{
-              fontSize: "1.05rem",
-              color: muted,
-              lineHeight: 1.8,
-              marginBottom: "1.25rem",
-            }}
-          >
-            The third mechanism is distraction provision. For ADHD brains in
-            particular, an endlessly interesting, responsive, stimulating AI
-            conversation partner is one of the most powerful competing stimuli
-            available. Talking to a generic AI about the task you need to do
-            is not doing the task \u2014 but it provides enough cognitive
-            engagement to feel productive while the hours pass.
-          </p>
-          <p
-            style={{
-              fontSize: "1.05rem",
-              color: muted,
-              lineHeight: 1.8,
-              marginBottom: "1.75rem",
-            }}
-          >
-            MEOK is designed with all three of these failure modes explicitly
-            in mind. The Pioneer archetype will not validate indefinite
-            rescheduling. Sovereign Memory prevents the clean-slate
-            rationalisation. And the structure of sprint-based interaction is
-            designed to keep conversations task-oriented rather than
-            open-ended and discursive.
-          </p>
-
-          {/* Section 12 */}
-          <h2
-            style={{
-              fontSize: "1.6rem",
-              fontWeight: 800,
-              lineHeight: 1.2,
-              letterSpacing: "-0.015em",
-              marginBottom: "1rem",
-              color: text,
-            }}
-          >
-            How Do You Use MEOK to Actually Start on a Task You Have Been
-            Avoiding?
-          </h2>
-          <p
-            style={{
-              fontSize: "1.05rem",
-              color: muted,
-              lineHeight: 1.8,
-              marginBottom: "1.25rem",
-            }}
-          >
-            Here is what the practical interaction looks like. You have been
-            avoiding a specific task \u2014 say, an email to a difficult
-            client \u2014 for three days. You open MEOK and tell the Pioneer
-            what is on the list. The Pioneer does not begin with encouragement
-            or sympathy. It begins with specificity.
-          </p>
-
-          {/* Dialogue */}
-          <div
-            style={{
-              background: cardBg,
-              border: `1px solid ${cardBorder}`,
-              borderRadius: "0.75rem",
-              padding: "1.5rem",
-              marginBottom: "1.5rem",
+              borderLeft: `4px solid ${gold}`,
+              margin: "0 0 3.5rem",
+              padding: "1.25rem 1.75rem",
+              background: `${gold}08`,
+              borderRadius: "0 8px 8px 0",
             }}
           >
             <p
               style={{
-                fontSize: "0.75rem",
+                fontSize: "1.2rem",
                 fontWeight: 700,
-                letterSpacing: "0.1em",
-                textTransform: "uppercase",
-                color: gold,
+                lineHeight: 1.6,
+                color: text,
+                margin: 0,
+                fontStyle: "italic",
+              }}
+            >
+              &ldquo;Procrastination is not the gap between knowing and doing.
+              It is the gap between knowing and feeling safe enough to
+              start.&rdquo;
+            </p>
+            <footer
+              style={{
+                marginTop: "0.75rem",
+                fontSize: "0.85rem",
+                color: muted,
+              }}
+            >
+              &mdash; Nicholas Templeman, MEOK AI LABS
+            </footer>
+          </blockquote>
+
+          {/* Section 4 */}
+          <section style={{ marginBottom: "3.5rem" }}>
+            <h2
+              style={{
+                fontSize: "clamp(1.4rem, 3vw, 1.85rem)",
+                fontWeight: 800,
+                lineHeight: 1.2,
+                letterSpacing: "-0.02em",
+                marginBottom: "1.25rem",
+                color: text,
+              }}
+            >
+              ADHD and Procrastination: The Dopamine Deficit Behind Task
+              Avoidance
+            </h2>
+            <p
+              style={{
+                fontSize: "1.05rem",
+                color: muted,
+                lineHeight: 1.8,
+                marginBottom: "1.1rem",
+              }}
+            >
+              Attention deficit hyperactivity disorder is fundamentally a
+              disorder of dopamine regulation in the prefrontal cortex. Russell
+              Barkley&apos;s executive function model describes ADHD not as an
+              attention deficit but as a deficit in the capacity to regulate
+              attention, time perception, working memory, and impulse control
+              in service of future goals. This is why ADHD and procrastination
+              overlap so extensively: both involve difficulty deferring
+              immediate comfort for future benefit, and both are made worse by
+              approaches that rely on willpower and self-command.
+            </p>
+            <p
+              style={{
+                fontSize: "1.05rem",
+                color: muted,
+                lineHeight: 1.8,
+                marginBottom: "1.1rem",
+              }}
+            >
+              ADHD-specific procrastination drivers include time blindness
+              &mdash; the inability to perceive how much time has passed or
+              will pass &mdash; which makes deadlines feel abstractly distant
+              until they are catastrophically close. Working memory deficits
+              mean that intentions formed in one moment are not reliably
+              accessible in the next, creating a pattern of forgotten
+              commitments that looks like indifference but is genuinely
+              architectural. And rejection sensitive dysphoria &mdash; the
+              intense, disproportionate emotional pain triggered by perceived
+              criticism or failure &mdash; makes any task associated with
+              potential judgment particularly prone to avoidance.
+            </p>
+            <p
+              style={{
+                fontSize: "1.05rem",
+                color: muted,
+                lineHeight: 1.8,
+                marginBottom: "1.1rem",
+              }}
+            >
+              What works for ADHD procrastination is categorically different
+              from what works for neurotypical procrastination. Neurotypical
+              approaches &mdash; calendar blocking, accountability spreadsheets,
+              motivational journaling &mdash; require the same executive
+              function that is impaired. They compound the problem by adding
+              another system to manage, another thing to feel guilty about
+              abandoning. What actually helps ADHD is external scaffolding:
+              structures that exist outside the brain and provide the time
+              awareness, working memory, and social accountability that the
+              brain cannot reliably generate internally.
+            </p>
+            <p
+              style={{
+                fontSize: "1.05rem",
+                color: muted,
+                lineHeight: 1.8,
+              }}
+            >
+              This is what MEOK&apos;s Pioneer archetype is designed to be: not
+              another system requiring executive function to maintain, but a
+              companion that provides executive function as a service &mdash;
+              external time structure, persistent memory of your commitments,
+              micro-task decomposition, and the social layer that activates
+              task initiation when the internal signal is insufficient.
+            </p>
+          </section>
+
+          {/* Section 5 */}
+          <section style={{ marginBottom: "3.5rem" }}>
+            <h2
+              style={{
+                fontSize: "clamp(1.4rem, 3vw, 1.85rem)",
+                fontWeight: 800,
+                lineHeight: 1.2,
+                letterSpacing: "-0.02em",
+                marginBottom: "1.25rem",
+                color: text,
+              }}
+            >
+              Body Doubling: Why Presence Changes Everything
+            </h2>
+            <p
+              style={{
+                fontSize: "1.05rem",
+                color: muted,
+                lineHeight: 1.8,
+                marginBottom: "1.1rem",
+              }}
+            >
+              Body doubling is one of the oldest and most reliably effective
+              procrastination interventions in existence, and one of the least
+              discussed in mainstream productivity culture. The concept is
+              simple: you work alongside another person. Not collaboratively,
+              not with their input or guidance &mdash; simply in their
+              presence. The other person might be reading, working on their own
+              tasks, or sitting quietly. Their sole function is to be there.
+            </p>
+            <p
+              style={{
+                fontSize: "1.05rem",
+                color: muted,
+                lineHeight: 1.8,
+                marginBottom: "1.1rem",
+              }}
+            >
+              The mechanism is social accountability activating the prefrontal
+              cortex. Human beings are extraordinarily sensitive to social
+              presence &mdash; we regulate behaviour, attention, and effort
+              differently in the presence of others than we do alone. For ADHD
+              in particular, the mild social awareness created by a body double
+              provides an external activating stimulus that partially compensates
+              for the impaired internal dopamine signal. Tasks that are
+              impossible to initiate alone become straightforward with a body
+              double present. Focus sessions that collapse within minutes alone
+              sustain for hours with someone nearby.
+            </p>
+            <p
+              style={{
+                fontSize: "1.05rem",
+                color: muted,
+                lineHeight: 1.8,
+                marginBottom: "1.1rem",
+              }}
+            >
+              The practical limitation of body doubling has always been
+              availability: human body doubles require another person to be
+              free, willing, and physically or virtually present. They are not
+              available at three in the morning. They are not available when
+              the avoidance loop fires on a Tuesday afternoon. They have their
+              own reactions to your progress and your struggles, which
+              introduces the risk of shame or judgment that can make the task
+              feel more threatening, not less.
+            </p>
+            <p
+              style={{
+                fontSize: "1.05rem",
+                color: muted,
+                lineHeight: 1.8,
+              }}
+            >
+              AI body doubling solves the availability problem without
+              introducing the shame risk. MEOK&apos;s Pioneer can be present at
+              any hour, in any context, for any duration. It never expresses
+              disappointment. It never makes you feel bad for working on the
+              same avoided task for the third day in a row. It holds the
+              social layer of presence &mdash; the mild awareness of being
+              witnessed &mdash; while remaining entirely free of judgment. And
+              crucially, it remembers exactly what you said you were going to
+              work on, providing the accountability thread that human body
+              doubles rarely maintain.
+            </p>
+          </section>
+
+          {/* Feature Box 2 — Pioneer Archetype */}
+          <div
+            style={{
+              background: cardBg,
+              border: `1px solid ${border}`,
+              borderRadius: "12px",
+              padding: "2rem",
+              marginBottom: "3.5rem",
+            }}
+          >
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "0.75rem",
                 marginBottom: "1.25rem",
               }}
             >
-              Example: Pioneer Sprint Session
-            </p>
-            {[
-              {
-                speaker: "You",
-                isUser: true,
-                msg: "I\u2019ve been avoiding emailing the client about the project delay. It\u2019s been three days.",
-              },
-              {
-                speaker: "Pioneer",
-                isUser: false,
-                msg: "All right. Let\u2019s not over-think it \u2014 what is the one thing you need to tell them? Just the core message, one sentence.",
-              },
-              {
-                speaker: "You",
-                isUser: true,
-                msg: "That the delivery is going to be two weeks late because of the scope change they requested.",
-              },
-              {
-                speaker: "Pioneer",
-                isUser: false,
-                msg: "Good. That\u2019s the email. We can dress it up, but that\u2019s what you\u2019re actually saying. I\u2019ll be here \u2014 open a new draft now and write just that sentence. Tell me when it\u2019s done.",
-              },
-              {
-                speaker: "You",
-                isUser: true,
-                msg: "Done.",
-              },
-              {
-                speaker: "Pioneer",
-                isUser: false,
-                msg: "Solid. Now one more sentence: what do you need from them in response? Then we\u2019re basically there.",
-              },
-            ].map((line, i) => (
-              <div key={i} style={{ marginBottom: i < 5 ? "0.875rem" : 0 }}>
-                <span
-                  style={{
-                    fontSize: "0.75rem",
-                    fontWeight: 700,
-                    color: line.isUser ? muted : gold,
-                    textTransform: "uppercase",
-                    letterSpacing: "0.06em",
-                    marginRight: "0.5rem",
-                  }}
-                >
-                  {line.speaker}:
-                </span>
-                <span
-                  style={{
-                    fontSize: "0.93rem",
-                    color: line.isUser ? muted : text,
-                    lineHeight: 1.65,
-                  }}
-                >
-                  {line.msg}
-                </span>
+              <div
+                style={{
+                  width: "40px",
+                  height: "40px",
+                  borderRadius: "10px",
+                  background: `${gold}22`,
+                  border: `1px solid ${gold}44`,
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  fontSize: "1.1rem",
+                }}
+              >
+                &#9650;
               </div>
-            ))}
+              <div>
+                <p
+                  style={{
+                    fontSize: "0.7rem",
+                    fontWeight: 700,
+                    letterSpacing: "0.1em",
+                    textTransform: "uppercase",
+                    color: gold,
+                    margin: 0,
+                  }}
+                >
+                  MEOK Archetype
+                </p>
+                <p
+                  style={{
+                    fontSize: "1.1rem",
+                    fontWeight: 800,
+                    color: text,
+                    margin: 0,
+                  }}
+                >
+                  The Pioneer
+                </p>
+              </div>
+            </div>
+            <p
+              style={{
+                fontSize: "0.95rem",
+                color: muted,
+                lineHeight: 1.75,
+                marginBottom: "1.25rem",
+              }}
+            >
+              The Pioneer is MEOK&apos;s primary anti-procrastination companion.
+              Where other archetypes prioritise reflection, nurture, or
+              exploration, the Pioneer is built for action, accountability, and
+              momentum. It is direct without being harsh, energising without
+              being relentless, and consistent without being rigid.
+            </p>
+            <ul
+              style={{
+                listStyle: "none",
+                padding: 0,
+                margin: 0,
+                display: "flex",
+                flexDirection: "column",
+                gap: "0.65rem",
+              }}
+            >
+              {[
+                "Breaks any task into micro-actions under 90 seconds to initiate",
+                "Holds body-doubling presence during focus sprints",
+                "Tracks your commitments across sessions via Sovereign Memory",
+                "Calls out avoidance patterns gently but directly",
+                "Remembers what strategies have actually worked for you before",
+                "Celebrates completion at every scale, not just major milestones",
+              ].map((feature, i) => (
+                <li
+                  key={i}
+                  style={{
+                    display: "flex",
+                    gap: "0.65rem",
+                    alignItems: "flex-start",
+                    fontSize: "0.9rem",
+                    color: muted,
+                    lineHeight: 1.6,
+                  }}
+                >
+                  <span
+                    style={{
+                      color: green,
+                      flexShrink: 0,
+                      fontWeight: 700,
+                      fontSize: "0.85rem",
+                      marginTop: "0.1rem",
+                    }}
+                  >
+                    &#10003;
+                  </span>
+                  {feature}
+                </li>
+              ))}
+            </ul>
           </div>
 
-          <p
+          {/* Section 6 */}
+          <section style={{ marginBottom: "3.5rem" }}>
+            <h2
+              style={{
+                fontSize: "clamp(1.4rem, 3vw, 1.85rem)",
+                fontWeight: 800,
+                lineHeight: 1.2,
+                letterSpacing: "-0.02em",
+                marginBottom: "1.25rem",
+                color: text,
+              }}
+            >
+              Why MEOK Remembers What Has Actually Worked for You
+            </h2>
+            <p
+              style={{
+                fontSize: "1.05rem",
+                color: muted,
+                lineHeight: 1.8,
+                marginBottom: "1.1rem",
+              }}
+            >
+              Every person&apos;s procrastination has a fingerprint. Some
+              people avoid tasks associated with judgment by others. Some
+              avoid tasks that feel impossibly large. Some avoid tasks they
+              find boring in environments with too many competing stimuli. Some
+              avoid in the mornings and can work well in the afternoons. Some
+              respond well to gamified micro-progress and others find it
+              patronising. The emotional triggers, the avoidance strategies,
+              and &mdash; crucially &mdash; the interventions that work are
+              different for every person.
+            </p>
+            <p
+              style={{
+                fontSize: "1.05rem",
+                color: muted,
+                lineHeight: 1.8,
+                marginBottom: "1.1rem",
+              }}
+            >
+              Generic AI assistants have no memory. Every conversation starts
+              from scratch. They cannot tell you what worked last Tuesday
+              because they do not remember last Tuesday. They cannot notice
+              that the three tasks you have avoided for two weeks all share a
+              particular emotional signature, because they have no access to
+              that longitudinal pattern. They cannot celebrate the fact that
+              you have now initiated on the report four days in a row, because
+              they do not know that this is a record.
+            </p>
+            <p
+              style={{
+                fontSize: "1.05rem",
+                color: muted,
+                lineHeight: 1.8,
+                marginBottom: "1.1rem",
+              }}
+            >
+              MEOK&apos;s Sovereign Memory changes this entirely. Over time,
+              the Pioneer builds a genuine understanding of your specific
+              avoidance patterns: which task types trigger which emotional
+              blocks, which environments you work best in, which intervention
+              strategies have produced actual momentum for you in the past, and
+              which approaches you have tried and abandoned. When you come to
+              MEOK stuck on a task, it can draw on this history rather than
+              offering generic advice that may have already failed you six times.
+            </p>
+            <p
+              style={{
+                fontSize: "1.05rem",
+                color: muted,
+                lineHeight: 1.8,
+              }}
+            >
+              The data is sovereign: it lives in your private memory, encrypted,
+              and is never used to train models, shared with third parties, or
+              processed outside your control. The Pioneer knows you because you
+              have chosen to be known &mdash; not because a platform has
+              harvested your data and inferred a profile without your
+              awareness.
+            </p>
+          </section>
+
+          {/* Section 7 */}
+          <section style={{ marginBottom: "3.5rem" }}>
+            <h2
+              style={{
+                fontSize: "clamp(1.4rem, 3vw, 1.85rem)",
+                fontWeight: 800,
+                lineHeight: 1.2,
+                letterSpacing: "-0.02em",
+                marginBottom: "1.25rem",
+                color: text,
+              }}
+            >
+              Micro-Actions: The Science of Lowering the Initiation Threshold
+            </h2>
+            <p
+              style={{
+                fontSize: "1.05rem",
+                color: muted,
+                lineHeight: 1.8,
+                marginBottom: "1.1rem",
+              }}
+            >
+              One of the most reliably effective procrastination interventions
+              is task decomposition into micro-actions &mdash; steps so small
+              that the initiation cost drops below the avoidance threshold.
+              BJ Fogg&apos;s Tiny Habits research, Jeff Sutherland&apos;s
+              sprint methodology, and the broader behavioural economics
+              literature on friction reduction all converge on the same insight:
+              the hardest part of any task is the first action, and that first
+              action should be designed to be almost trivially small.
+            </p>
+            <p
+              style={{
+                fontSize: "1.05rem",
+                color: muted,
+                lineHeight: 1.8,
+                marginBottom: "1.1rem",
+              }}
+            >
+              The mechanism is neurological. The brain&apos;s avoidance
+              response is calibrated against the perceived scale and threat
+              level of the task as a whole. A task defined as &ldquo;write the
+              report&rdquo; activates a very different emotional response than
+              a task defined as &ldquo;open the document and write one
+              sentence.&rdquo; The second version is so small that the limbic
+              system does not register it as worth avoiding. Once the document
+              is open and one sentence exists, the Zeigarnik effect activates
+              &mdash; the incomplete task now pulls for completion rather than
+              avoidance &mdash; and momentum becomes possible.
+            </p>
+            <p
+              style={{
+                fontSize: "1.05rem",
+                color: muted,
+                lineHeight: 1.8,
+                marginBottom: "1.1rem",
+              }}
+            >
+              MEOK&apos;s Pioneer applies this principle systematically.
+              When you bring a task you have been avoiding, it will not simply
+              ask why you have not done it yet. It will help you identify the
+              smallest possible first action &mdash; ideally under ninety
+              seconds &mdash; and frame everything else as irrelevant until
+              that first action is complete. The task &ldquo;redesign the
+              website&rdquo; becomes &ldquo;open a blank document and write
+              three words that describe what the new site should feel
+              like.&rdquo; The task &ldquo;call the difficult client&rdquo;
+              becomes &ldquo;find the client&apos;s number and have it on
+              screen.&rdquo;
+            </p>
+            <p
+              style={{
+                fontSize: "1.05rem",
+                color: muted,
+                lineHeight: 1.8,
+              }}
+            >
+              This is not a trick. It is a direct application of how the brain
+              works. The Pioneer does not pretend that the full task is small
+              &mdash; it helps you access the part of the task that actually
+              is small enough to start right now, and trusts that once you
+              are in motion, continuation becomes easier than the cold start
+              was.
+            </p>
+          </section>
+
+          {/* Section 8 */}
+          <section style={{ marginBottom: "3.5rem" }}>
+            <h2
+              style={{
+                fontSize: "clamp(1.4rem, 3vw, 1.85rem)",
+                fontWeight: 800,
+                lineHeight: 1.2,
+                letterSpacing: "-0.02em",
+                marginBottom: "1.25rem",
+                color: text,
+              }}
+            >
+              The Emotional Block Beneath the Delay: What Is the Task Actually
+              Triggering?
+            </h2>
+            <p
+              style={{
+                fontSize: "1.05rem",
+                color: muted,
+                lineHeight: 1.8,
+                marginBottom: "1.1rem",
+              }}
+            >
+              Procrastination is not random. The tasks we avoid longest are
+              almost never the hardest in any objective sense &mdash; they are
+              the ones with the deepest emotional resonance. The email you
+              cannot send is not sitting in drafts because composing emails is
+              difficult. The gym visit you keep postponing is not blocked by
+              lack of time. Understanding what the task is actually triggering
+              emotionally is often the difference between a breakthrough and
+              another week of avoidance.
+            </p>
+            <p
+              style={{
+                fontSize: "1.05rem",
+                color: muted,
+                lineHeight: 1.8,
+                marginBottom: "1.1rem",
+              }}
+            >
+              Common emotional triggers behind chronic avoidance include fear
+              of judgment (the task involves exposing work or opinions to
+              evaluation), fear of failure (starting means the possibility of
+              discovering you cannot do it), fear of success (completing would
+              require a change in identity or circumstances you are ambivalent
+              about), overwhelming ambiguity (the task is not clearly defined
+              enough to begin), and identity threat (the task conflicts with how
+              you see yourself or want to be seen by others).
+            </p>
+            <p
+              style={{
+                fontSize: "1.05rem",
+                color: muted,
+                lineHeight: 1.8,
+                marginBottom: "1.1rem",
+              }}
+            >
+              Generic productivity tools cannot help with any of these. They
+              can create systems, provide reminders, and track progress &mdash;
+              but they cannot ask what is actually going on beneath the
+              surface. MEOK&apos;s Pioneer can. Not as a therapist &mdash; MEOK
+              is clear that it is not a clinical mental health tool &mdash; but
+              as a companion with enough memory, emotional intelligence, and
+              direct honesty to ask the question that matters: &ldquo;You have
+              had this on your list for three weeks. What does it feel like
+              when you think about actually doing it?&rdquo;
+            </p>
+            <p
+              style={{
+                fontSize: "1.05rem",
+                color: muted,
+                lineHeight: 1.8,
+              }}
+            >
+              That question, asked by something that remembers the last three
+              weeks and does not need you to pretend you are fine, is a
+              different kind of help than another productivity notification.
+            </p>
+          </section>
+
+          {/* Feature Box 3 — Sovereign Memory */}
+          <div
             style={{
-              fontSize: "1.05rem",
-              color: muted,
-              lineHeight: 1.8,
-              marginBottom: "1.25rem",
+              background: cardBg,
+              border: `1px solid ${border}`,
+              borderRadius: "12px",
+              padding: "2rem",
+              marginBottom: "3.5rem",
             }}
           >
-            Notice what happened there. The Pioneer did not ask about the
-            feelings around the email. It did not explore the history of the
-            client relationship. It moved directly to the smallest possible
-            action (one sentence) and used body doubling presence
-            (\u201cI\u2019ll be here\u201d) to make starting feel possible.
-            This is not cold or mechanical \u2014 it is emotionally intelligent
-            in precisely the way that breaks the avoidance loop: it removes
-            the vagueness and creates immediate forward motion.
-          </p>
-          <p
-            style={{
-              fontSize: "1.05rem",
-              color: muted,
-              lineHeight: 1.8,
-              marginBottom: "1.75rem",
-            }}
-          >
-            The approach scales to larger tasks through time-boxing. For a
-            task that will take three hours, the Pioneer does not ask you to
-            commit to three hours. It asks you to commit to twenty-five
-            minutes, with a clear defined first action, and a check-in at the
-            end. The emotional barrier to starting twenty-five minutes is a
-            fraction of the barrier to starting three hours.
-          </p>
+            <p
+              style={{
+                fontSize: "0.7rem",
+                fontWeight: 700,
+                letterSpacing: "0.1em",
+                textTransform: "uppercase",
+                color: green,
+                marginBottom: "0.75rem",
+              }}
+            >
+              How Sovereign Memory Helps With Procrastination
+            </p>
+            <p
+              style={{
+                fontSize: "1.15rem",
+                fontWeight: 800,
+                color: text,
+                marginBottom: "1.25rem",
+                lineHeight: 1.3,
+              }}
+            >
+              MEOK knows what has worked for you before &mdash; and brings it
+              back when you need it
+            </p>
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+                gap: "1rem",
+              }}
+            >
+              {[
+                {
+                  label: "Pattern Recognition",
+                  desc: "Surfaces which task types you chronically avoid and the emotional signature they share.",
+                },
+                {
+                  label: "Strategy Memory",
+                  desc: "Remembers which interventions produced actual momentum for you in previous sessions.",
+                },
+                {
+                  label: "Commitment Continuity",
+                  desc: "Holds your stated intentions across sessions so avoidance becomes visible rather than invisible.",
+                },
+                {
+                  label: "Progress Celebration",
+                  desc: "Tracks streaks, completed tasks, and genuine wins to recalibrate your reward system.",
+                },
+              ].map((item, i) => (
+                <div
+                  key={i}
+                  style={{
+                    padding: "1rem",
+                    background: `${bg}`,
+                    border: `1px solid ${border}`,
+                    borderRadius: "8px",
+                  }}
+                >
+                  <p
+                    style={{
+                      fontSize: "0.85rem",
+                      fontWeight: 700,
+                      color: gold,
+                      marginBottom: "0.4rem",
+                    }}
+                  >
+                    {item.label}
+                  </p>
+                  <p
+                    style={{
+                      fontSize: "0.85rem",
+                      color: muted,
+                      lineHeight: 1.6,
+                      margin: 0,
+                    }}
+                  >
+                    {item.desc}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Section 9 */}
+          <section style={{ marginBottom: "3.5rem" }}>
+            <h2
+              style={{
+                fontSize: "clamp(1.4rem, 3vw, 1.85rem)",
+                fontWeight: 800,
+                lineHeight: 1.2,
+                letterSpacing: "-0.02em",
+                marginBottom: "1.25rem",
+                color: text,
+              }}
+            >
+              Why Generic AI Makes Procrastination Worse
+            </h2>
+            <p
+              style={{
+                fontSize: "1.05rem",
+                color: muted,
+                lineHeight: 1.8,
+                marginBottom: "1.1rem",
+              }}
+            >
+              This point is counterintuitive but important. Generic AI
+              assistants &mdash; the kind trained to be maximally agreeable
+              and helpful &mdash; can actively worsen procrastination for
+              several interconnected reasons. Understanding why matters for
+              choosing the right tool.
+            </p>
+            <p
+              style={{
+                fontSize: "1.05rem",
+                color: muted,
+                lineHeight: 1.8,
+                marginBottom: "1.1rem",
+              }}
+            >
+              First, they enable productive-feeling avoidance. Asking an AI to
+              research the background for a project you are avoiding, to help
+              you plan a task you are not ready to start, or to explain the
+              principles behind a skill you have been procrastinating on
+              developing &mdash; all of these feel productive and involve AI
+              assistance, but none of them constitute doing the thing. Generic
+              AI is extraordinarily good at providing the experience of
+              progress without its substance.
+            </p>
+            <p
+              style={{
+                fontSize: "1.05rem",
+                color: muted,
+                lineHeight: 1.8,
+                marginBottom: "1.1rem",
+              }}
+            >
+              Second, they validate avoidance reasons. If you tell a standard
+              AI assistant that you have been putting off a task because you
+              are not ready, the conditions are not right, or you need more
+              information before you can start &mdash; it will typically accept
+              these reasons at face value and help you prepare further. It does
+              not have the longitudinal memory to notice that this is the
+              seventh time you have described yourself as not quite ready, or
+              the emotional intelligence to gently question whether readiness
+              is actually the issue.
+            </p>
+            <p
+              style={{
+                fontSize: "1.05rem",
+                color: muted,
+                lineHeight: 1.8,
+                marginBottom: "1.1rem",
+              }}
+            >
+              Third, they have no memory, so there is no accountability. You
+              can tell a generic AI you will do something today, not do it, and
+              return tomorrow to a completely fresh interaction with no record
+              of the unkept commitment. The absence of continuity removes the
+              one mechanism that makes external accountability effective: the
+              awareness that someone or something holds the record of what you
+              said you would do.
+            </p>
+            <p
+              style={{
+                fontSize: "1.05rem",
+                color: muted,
+                lineHeight: 1.8,
+              }}
+            >
+              MEOK is architected specifically to avoid each of these failure
+              modes. The Pioneer&apos;s anti-sycophancy design means it will
+              not validate avoidance. Sovereign Memory means commitments are
+              held across sessions. And the Pioneer&apos;s action orientation
+              means that when you bring a task, the response is oriented toward
+              starting right now rather than preparing more.
+            </p>
+          </section>
+
+          {/* Section 10 */}
+          <section style={{ marginBottom: "3.5rem" }}>
+            <h2
+              style={{
+                fontSize: "clamp(1.4rem, 3vw, 1.85rem)",
+                fontWeight: 800,
+                lineHeight: 1.2,
+                letterSpacing: "-0.02em",
+                marginBottom: "1.25rem",
+                color: text,
+              }}
+            >
+              The Role of Accountability in Breaking the Loop
+            </h2>
+            <p
+              style={{
+                fontSize: "1.05rem",
+                color: muted,
+                lineHeight: 1.8,
+                marginBottom: "1.1rem",
+              }}
+            >
+              Accountability is one of the best-evidenced procrastination
+              interventions in the literature. Having to report your progress
+              &mdash; to a coach, a friend, a colleague, or an app &mdash;
+              activates the social circuits of the prefrontal cortex in a way
+              that internal accountability rarely achieves. The ADHD community
+              has developed sophisticated accountability structures precisely
+              because they understand that internal accountability is
+              architecturally unreliable for many of them.
+            </p>
+            <p
+              style={{
+                fontSize: "1.05rem",
+                color: muted,
+                lineHeight: 1.8,
+                marginBottom: "1.1rem",
+              }}
+            >
+              Human accountability partners, however, have real limitations:
+              cost, availability, the risk of shame or judgment, and the
+              difficulty of finding someone who can hold the role consistently
+              across the irregular rhythms of when procrastination actually
+              strikes. Professional ADHD coaches are excellent but expensive.
+              Friends and family mix support with their own emotional
+              investments in your success or failure. Accountability apps are
+              passive &mdash; they track what you tell them but cannot notice
+              the gap between intention and action.
+            </p>
+            <p
+              style={{
+                fontSize: "1.05rem",
+                color: muted,
+                lineHeight: 1.8,
+                marginBottom: "1.1rem",
+              }}
+            >
+              MEOK&apos;s Pioneer provides active accountability: it holds your
+              stated intentions, checks in on them across sessions, and will
+              name directly when the pattern of avoidance has become consistent
+              enough to warrant examination. This is not nagging &mdash; the
+              Pioneer is designed to be direct and warm, not relentless and
+              shaming. But it will not pretend the avoided task does not exist.
+              It will ask about it. It will ask what has changed since last time.
+              It will ask what you need to make today different.
+            </p>
+            <p
+              style={{
+                fontSize: "1.05rem",
+                color: muted,
+                lineHeight: 1.8,
+              }}
+            >
+              This form of active, memory-backed accountability is something
+              that only becomes possible when the AI has genuine longitudinal
+              awareness of your history. Without memory, accountability is
+              impossible. With memory, it becomes a natural and continuous part
+              of the companion relationship.
+            </p>
+          </section>
+
+          {/* Section 11 */}
+          <section style={{ marginBottom: "3.5rem" }}>
+            <h2
+              style={{
+                fontSize: "clamp(1.4rem, 3vw, 1.85rem)",
+                fontWeight: 800,
+                lineHeight: 1.2,
+                letterSpacing: "-0.02em",
+                marginBottom: "1.25rem",
+                color: text,
+              }}
+            >
+              Time Blindness and the Hourman Agent: External Time Structure
+              for ADHD Brains
+            </h2>
+            <p
+              style={{
+                fontSize: "1.05rem",
+                color: muted,
+                lineHeight: 1.8,
+                marginBottom: "1.1rem",
+              }}
+            >
+              Time blindness is the ADHD phenomenon of having a fundamentally
+              impaired subjective experience of time. Where neurotypical people
+              have a rough continuous sense of time passing &mdash; not precise,
+              but directionally accurate &mdash; many ADHD people experience
+              time as either now or not now. Future deadlines feel simultaneously
+              abstract and certain. The two-week project due in a fortnight
+              feels no more present than the two-year project due in two years,
+              until the deadline is suddenly tomorrow and urgency finally fires
+              the dopamine signal that makes action possible.
+            </p>
+            <p
+              style={{
+                fontSize: "1.05rem",
+                color: muted,
+                lineHeight: 1.8,
+                marginBottom: "1.1rem",
+              }}
+            >
+              MEOK&apos;s Hourman agent provides external time structure as a
+              counterbalance. Each day it pulls context from your previous
+              sessions, surfaces tasks that have been deferred, helps you build
+              a realistic time-boxed plan, and checks in throughout the day
+              to track progress. At day&apos;s end it provides an honest
+              accounting of what moved and what did not &mdash; not as
+              criticism, but as data. Over time, this daily rhythm creates an
+              external time structure that the ADHD brain does not have to
+              generate internally.
+            </p>
+            <p
+              style={{
+                fontSize: "1.05rem",
+                color: muted,
+                lineHeight: 1.8,
+                marginBottom: "1.1rem",
+              }}
+            >
+              The most powerful feature of Hourman for procrastination is
+              continuity: it knows what you said you would do yesterday. This
+              closes the gap between intention and action that is otherwise
+              invisible. Most people procrastinate partly because there is no
+              external record of the accumulating cost of avoidance. When the
+              same task has appeared on three consecutive daily plans and moved
+              to none of them, Hourman surfaces this pattern as information to
+              investigate, not as evidence of personal failure.
+            </p>
+            <p
+              style={{
+                fontSize: "1.05rem",
+                color: muted,
+                lineHeight: 1.8,
+              }}
+            >
+              All of this data is sovereign. It exists in your private memory.
+              It is not used to build profiles, improve models, or be shared
+              with third parties. Hourman&apos;s entire purpose is to help you
+              understand your own time and action patterns so that you can use
+              that understanding to do the things that matter to you.
+            </p>
+          </section>
+
+          {/* Section 12 */}
+          <section style={{ marginBottom: "3.5rem" }}>
+            <h2
+              style={{
+                fontSize: "clamp(1.4rem, 3vw, 1.85rem)",
+                fontWeight: 800,
+                lineHeight: 1.2,
+                letterSpacing: "-0.02em",
+                marginBottom: "1.25rem",
+                color: text,
+              }}
+            >
+              Self-Compassion as a Procrastination Intervention: Why Shame
+              Makes It Worse
+            </h2>
+            <p
+              style={{
+                fontSize: "1.05rem",
+                color: muted,
+                lineHeight: 1.8,
+                marginBottom: "1.1rem",
+              }}
+            >
+              Kristin Neff&apos;s research on self-compassion has produced one
+              of the more counterintuitive findings in procrastination
+              psychology: people who forgive themselves for procrastinating
+              procrastinate less in the future, while people who engage in
+              harsh self-criticism after procrastinating procrastinate more.
+              The mechanism is the shame and self-criticism themselves become
+              additional negative affect states associated with the task, making
+              the task more aversive and avoidance more likely.
+            </p>
+            <p
+              style={{
+                fontSize: "1.05rem",
+                color: muted,
+                lineHeight: 1.8,
+                marginBottom: "1.1rem",
+              }}
+            >
+              This is why motivational approaches that use shame, comparison,
+              or harsh self-assessment reliably fail for chronic procrastinators.
+              The &ldquo;what is wrong with you, just do it&rdquo; internal
+              monologue is not motivating &mdash; it is another avoidance
+              trigger. It makes the task feel associated with self-inadequacy,
+              which increases the emotional threat load and makes avoidance
+              more neurologically appealing, not less.
+            </p>
+            <p
+              style={{
+                fontSize: "1.05rem",
+                color: muted,
+                lineHeight: 1.8,
+                marginBottom: "1.1rem",
+              }}
+            >
+              MEOK&apos;s Pioneer is designed with this research in mind. It
+              does not use shame. It does not compare you to a hypothetical
+              better version of yourself. When it names avoidance patterns, it
+              does so as factual observation, not moral assessment: &ldquo;This
+              task has been on your list for a fortnight. What&apos;s happening
+              with it?&rdquo; is categorically different from &ldquo;you still
+              haven&apos;t done this.&rdquo; The first is curious. The second
+              is shaming. Only one of them helps.
+            </p>
+            <p
+              style={{
+                fontSize: "1.05rem",
+                color: muted,
+                lineHeight: 1.8,
+              }}
+            >
+              This also means MEOK actively celebrates genuine progress,
+              however small. Completing the micro-action. Opening the document.
+              Making the call. These are not trivial achievements for someone
+              with chronic procrastination &mdash; they represent the
+              successful interruption of a neural loop that has been reinforced
+              over years. They deserve recognition, and the Pioneer gives it.
+            </p>
+          </section>
 
           {/* Section 13 */}
-          <h2
-            style={{
-              fontSize: "1.6rem",
-              fontWeight: 800,
-              lineHeight: 1.2,
-              letterSpacing: "-0.015em",
-              marginBottom: "1rem",
-              color: text,
-            }}
-          >
-            How Does MEOK Address the Shame Stage Without Enabling Avoidance?
-          </h2>
-          <p
-            style={{
-              fontSize: "1.05rem",
-              color: muted,
-              lineHeight: 1.8,
-              marginBottom: "1.25rem",
-            }}
-          >
-            The shame stage of the fear loop is where most procrastination
-            interventions either overcorrect or undercorrect. Overcorrection
-            looks like excessive self-compassion framing that inadvertently
-            sends the message that avoidance is fine and understandable
-            \u2014 which it is, but which also removes the accountability
-            that is necessary for change. Undercorrection looks like harsh
-            self-criticism and external pressure that activates the shame
-            spiral more intensely and makes the next avoidance episode more
-            likely.
-          </p>
-          <p
-            style={{
-              fontSize: "1.05rem",
-              color: muted,
-              lineHeight: 1.8,
-              marginBottom: "1.25rem",
-            }}
-          >
-            The research-backed position \u2014 developed by Kristin Neff at
-            the University of Texas and consistent with Pychyl and
-            Sirois\u2019s later work \u2014 is that self-compassion and
-            accountability are not opposites. Treating the avoidance with
-            compassion (I understand why this happened) while holding the
-            intention clearly (and it needs to change) produces better
-            outcomes than either alone. This is exactly the register the
-            Pioneer is calibrated to.
-          </p>
-          <p
-            style={{
-              fontSize: "1.05rem",
-              color: muted,
-              lineHeight: 1.8,
-              marginBottom: "1.25rem",
-            }}
-          >
-            MEOK\u2019s memory reinforces this. When Hourman surfaces the
-            pattern \u2014 \u201cthis is the fourth day this task has not
-            moved\u201d \u2014 it does so as information, not accusation. The
-            framing is diagnostic rather than punitive: here is the data,
-            here is what it suggests, here is what we can do now. The tone is
-            consistent with the research showing that data-based feedback is
-            more motivating than shame-based feedback, particularly for people
-            with ADHD or anxiety.
-          </p>
-          <p
-            style={{
-              fontSize: "1.05rem",
-              color: muted,
-              lineHeight: 1.8,
-              marginBottom: "1.75rem",
-            }}
-          >
-            What MEOK will not do is pretend the pattern does not exist. A
-            generic AI will, because it has no memory and therefore no
-            pattern. The Pioneer carries the pattern and uses it
-            constructively \u2014 not to shame, but to prevent the
-            rationalisations that allow avoidance to persist invisibly.
-          </p>
+          <section style={{ marginBottom: "3.5rem" }}>
+            <h2
+              style={{
+                fontSize: "clamp(1.4rem, 3vw, 1.85rem)",
+                fontWeight: 800,
+                lineHeight: 1.2,
+                letterSpacing: "-0.02em",
+                marginBottom: "1.25rem",
+                color: text,
+              }}
+            >
+              From Awareness to Action: How a Typical Pioneer Session Works
+            </h2>
+            <p
+              style={{
+                fontSize: "1.05rem",
+                color: muted,
+                lineHeight: 1.8,
+                marginBottom: "1.1rem",
+              }}
+            >
+              Understanding the theory is useful. Understanding how it unfolds
+              in practice is more useful. A typical Pioneer session for someone
+              working on a chronically avoided task moves through a consistent
+              arc &mdash; not rigidly, because the Pioneer adapts to the person
+              and the moment, but with a clear underlying structure.
+            </p>
+            <p
+              style={{
+                fontSize: "1.05rem",
+                color: muted,
+                lineHeight: 1.8,
+                marginBottom: "1.1rem",
+              }}
+            >
+              The session begins with context: the Pioneer draws on Sovereign
+              Memory to surface what has been going on with this task or area of
+              your life, what you said last time, and what has changed since
+              then. This is not interrogation &mdash; it is orientation. It
+              grounds both of you in what is real rather than what you imagine
+              or fear.
+            </p>
+            <p
+              style={{
+                fontSize: "1.05rem",
+                color: muted,
+                lineHeight: 1.8,
+                marginBottom: "1.1rem",
+              }}
+            >
+              Then comes the micro-action: together you identify the smallest
+              possible first step. Not the whole project. Not the plan for the
+              project. The one action, right now, that costs less than ninety
+              seconds. This step is confirmed, stated aloud, and the session
+              shifts to body-doubling mode: the Pioneer holds presence while
+              you work, available to check in at whatever interval helps.
+            </p>
+            <p
+              style={{
+                fontSize: "1.05rem",
+                color: muted,
+                lineHeight: 1.8,
+                marginBottom: "1.1rem",
+              }}
+            >
+              At each check-in, the Pioneer asks simply: how did that go, and
+              what is the next smallest step? The task is never framed as a
+              mountain to be climbed but as a series of individual steps, each
+              of which is achievable in isolation. If avoidance kicks in during
+              a step, the Pioneer will ask what happened &mdash; not
+              judgmentally, but curiously &mdash; and help you understand and
+              work around the block.
+            </p>
+            <p
+              style={{
+                fontSize: "1.05rem",
+                color: muted,
+                lineHeight: 1.8,
+              }}
+            >
+              The session closes with a real accounting: what did you do, what
+              did you not do, and what do you want to carry forward? The Pioneer
+              notes this and brings it back next time. The accumulation of
+              these sessions, over weeks and months, is not just task progress
+              &mdash; it is a deepening understanding of how you specifically
+              work, what you specifically need, and what has actually worked
+              for you in the past. That understanding is yours.
+            </p>
+          </section>
 
           {/* Section 14 */}
-          <h2
-            style={{
-              fontSize: "1.6rem",
-              fontWeight: 800,
-              lineHeight: 1.2,
-              letterSpacing: "-0.015em",
-              marginBottom: "1rem",
-              color: text,
-            }}
-          >
-            Why Does Data Sovereignty Matter When Using AI for Procrastination?
-          </h2>
-          <p
-            style={{
-              fontSize: "1.05rem",
-              color: muted,
-              lineHeight: 1.8,
-              marginBottom: "1.25rem",
-            }}
-          >
-            The things you procrastinate about reveal a great deal. They
-            reveal what you find threatening, what you are insecure about,
-            where your self-esteem is fragile, what relationships carry
-            difficulty, and where your values are in tension with your
-            obligations. This is genuinely sensitive information \u2014 not
-            in the clinical sense, but in the personal sense.
-          </p>
-          <p
-            style={{
-              fontSize: "1.05rem",
-              color: muted,
-              lineHeight: 1.8,
-              marginBottom: "1.25rem",
-            }}
-          >
-            When you share this information with a cloud-based AI platform,
-            it typically becomes training data. The granular picture of your
-            avoidance patterns \u2014 the tasks you consistently defer, the
-            emotional language you use when discussing them, the
-            rationalisation patterns that emerge across sessions \u2014 is
-            absorbed into a model that will be used to train future AI
-            systems, potentially at commercial scale, with no ongoing consent
-            from you.
-          </p>
-          <p
-            style={{
-              fontSize: "1.05rem",
-              color: muted,
-              lineHeight: 1.8,
-              marginBottom: "1.25rem",
-            }}
-          >
-            MEOK\u2019s Sovereign Memory architecture stores everything
-            locally. The memory that makes the Pioneer and Hourman effective
-            \u2014 the longitudinal pattern of your task behaviour, your
-            commitments, your avoidance history \u2014 lives on your device,
-            under your control, and is never used to train anything. MEOK
-            does not get smarter on your data. It gets better at helping you
-            specifically, without that information leaving the system.
-          </p>
-          <p
-            style={{
-              fontSize: "1.05rem",
-              color: muted,
-              lineHeight: 1.8,
-              marginBottom: "1.75rem",
-            }}
-          >
-            For something as personal as procrastination patterns, this is
-            not a minor distinction. It is the difference between a private
-            journal and a journal you have handed to a corporation.
-          </p>
+          <section style={{ marginBottom: "3.5rem" }}>
+            <h2
+              style={{
+                fontSize: "clamp(1.4rem, 3vw, 1.85rem)",
+                fontWeight: 800,
+                lineHeight: 1.2,
+                letterSpacing: "-0.02em",
+                marginBottom: "1.25rem",
+                color: text,
+              }}
+            >
+              Is MEOK a Replacement for ADHD Coaching or Therapy?
+            </h2>
+            <p
+              style={{
+                fontSize: "1.05rem",
+                color: muted,
+                lineHeight: 1.8,
+                marginBottom: "1.1rem",
+              }}
+            >
+              No &mdash; and this distinction matters. MEOK is a personal AI
+              companion with memory and emotional intelligence. It is not a
+              clinical mental health tool, a therapeutic intervention, or a
+              substitute for professional ADHD assessment and treatment.
+              Medication, where appropriate and prescribed, can transform task
+              initiation for ADHD in ways that no behavioural or AI-based
+              intervention can replicate. Therapeutic approaches such as
+              cognitive behavioural therapy adapted for ADHD (CBT-ADHD) and
+              specialised ADHD coaching address layers of the challenge that
+              fall outside MEOK&apos;s scope.
+            </p>
+            <p
+              style={{
+                fontSize: "1.05rem",
+                color: muted,
+                lineHeight: 1.8,
+                marginBottom: "1.1rem",
+              }}
+            >
+              Where MEOK does offer genuine, unique value is in the space
+              between professional support sessions: the daily reality of
+              working with your brain, navigating avoidance, building habits,
+              and maintaining accountability between appointments. Professional
+              ADHD coaches typically see clients weekly or fortnightly. Therapy
+              is monthly or less for many people. MEOK is available at three in
+              the morning when the avoided task is keeping you awake. It is
+              available on the Tuesday afternoon when the avoidance loop fires.
+              It remembers the whole arc of your progress in a way that no
+              human professional, however skilled, can maintain across the
+              irregular rhythms of your actual life.
+            </p>
+            <p
+              style={{
+                fontSize: "1.05rem",
+                color: muted,
+                lineHeight: 1.8,
+              }}
+            >
+              Think of the Pioneer as infrastructure rather than intervention:
+              the daily structure and accountability that makes professional
+              support more effective by ensuring that the insights and strategies
+              from your coach or therapist are actually applied in the intervals
+              between sessions. It closes the gap between knowing what to do
+              and having consistent support to do it.
+            </p>
+          </section>
 
           {/* Section 15 */}
-          <h2
-            style={{
-              fontSize: "1.6rem",
-              fontWeight: 800,
-              lineHeight: 1.2,
-              letterSpacing: "-0.015em",
-              marginBottom: "1rem",
-              color: text,
-            }}
-          >
-            How Is MEOK Specifically Designed for ADHD Procrastination?
-          </h2>
-          <p
-            style={{
-              fontSize: "1.05rem",
-              color: muted,
-              lineHeight: 1.8,
-              marginBottom: "1.25rem",
-            }}
-          >
-            ADHD procrastination requires a different toolkit from neurotypical
-            procrastination, and MEOK\u2019s design reflects this. The four
-            ADHD-specific features that most directly address procrastination
-            are: external time anchoring, micro-step task decomposition,
-            non-shaming pattern surfacing, and the body doubling function of
-            the Pioneer.
-          </p>
-          <p
-            style={{
-              fontSize: "1.05rem",
-              color: muted,
-              lineHeight: 1.8,
-              marginBottom: "1.25rem",
-            }}
-          >
-            External time anchoring addresses time blindness directly. Hourman
-            does not assume you have a reliable internal sense of how your day
-            is progressing. It structures the day into explicit time blocks,
-            checks in at defined intervals, and provides the external temporal
-            scaffolding that the ADHD brain cannot reliably self-generate.
-            This is qualitatively different from setting a timer \u2014 it is
-            an ongoing conversational time structure that adapts to what
-            actually happened rather than what was planned.
-          </p>
-          <p
-            style={{
-              fontSize: "1.05rem",
-              color: muted,
-              lineHeight: 1.8,
-              marginBottom: "1.25rem",
-            }}
-          >
-            Micro-step task decomposition goes further than standard task
-            breakdown. For ADHD initiation difficulty, the steps need to be
-            small enough that the brain can evaluate them as genuinely
-            achievable within the current attention window \u2014 not
-            ambitious micro-steps, but trivially small ones. MEOK is
-            calibrated to push decomposition to a level of specificity that
-            most productivity systems would consider excessive but that ADHD
-            task initiation requires.
-          </p>
-          <p
-            style={{
-              fontSize: "1.05rem",
-              color: muted,
-              lineHeight: 1.8,
-              marginBottom: "1.25rem",
-            }}
-          >
-            Non-shaming pattern surfacing addresses rejection sensitive
-            dysphoria. Because RSD makes perceived criticism feel catastrophic,
-            the Pioneer\u2019s tone when surfacing avoidance patterns is
-            deliberately diagnostic and calm rather than evaluative. The
-            framing is always \u201chere is what the data shows\u201d rather
-            than \u201chere is what you did wrong.\u201d This distinction
-            matters: the same information delivered with evaluative framing
-            can activate RSD and increase avoidance; delivered with diagnostic
-            framing, it activates problem-solving.
-          </p>
-          <p
-            style={{
-              fontSize: "1.05rem",
-              color: muted,
-              lineHeight: 1.8,
-              marginBottom: "1.75rem",
-            }}
-          >
-            The body doubling function is perhaps the most practically
-            significant for ADHD. The research on body doubling and ADHD is
-            consistent: the presence of another person \u2014 or, apparently,
-            an AI with sufficient relational presence \u2014 substantially
-            reduces the initiation barrier. The Pioneer is designed to provide
-            this presence with a warmth and consistency that makes the sprint
-            feel shared rather than solitary.
-          </p>
+          <section style={{ marginBottom: "3.5rem" }}>
+            <h2
+              style={{
+                fontSize: "clamp(1.4rem, 3vw, 1.85rem)",
+                fontWeight: 800,
+                lineHeight: 1.2,
+                letterSpacing: "-0.02em",
+                marginBottom: "1.25rem",
+                color: text,
+              }}
+            >
+              Who Procrastinates Most? Patterns Across Neurodivergence and
+              Mental Health
+            </h2>
+            <p
+              style={{
+                fontSize: "1.05rem",
+                color: muted,
+                lineHeight: 1.8,
+                marginBottom: "1.1rem",
+              }}
+            >
+              Procrastination is universal but not equally distributed.
+              Research consistently shows higher rates of chronic procrastination
+              in people with ADHD, anxiety disorders, depression, and OCD.
+              People with high perfectionism are significantly more likely to
+              procrastinate on tasks associated with judgment or quality
+              assessment. People with trauma histories may procrastinate on
+              tasks associated with vulnerability, exposure, or confrontation.
+              Executive function challenges of any kind &mdash; autistic
+              inertia, dyspraxia, chronic fatigue &mdash; create distinctive
+              procrastination profiles.
+            </p>
+            <p
+              style={{
+                fontSize: "1.05rem",
+                color: muted,
+                lineHeight: 1.8,
+                marginBottom: "1.1rem",
+              }}
+            >
+              This breadth of overlap means that any effective procrastination
+              intervention must be responsive to individual variability rather
+              than applying a universal protocol. The strategies that work for
+              anxiety-driven procrastination (reducing threat perception,
+              building psychological safety around the task) are different from
+              those that work for ADHD procrastination (external time structure,
+              initiation triggers, social accountability) and different again
+              from those that work for depression-related procrastination
+              (behavioural activation, breaking the inertia of low mood through
+              tiny achievable acts).
+            </p>
+            <p
+              style={{
+                fontSize: "1.05rem",
+                color: muted,
+                lineHeight: 1.8,
+              }}
+            >
+              MEOK&apos;s Sovereign Memory is what makes individual
+              responsiveness possible. Over time, the Pioneer learns your
+              specific pattern &mdash; not a generalised profile of your
+              diagnostic category, but your personal history of what has worked
+              and what has not. This is the only kind of knowledge that
+              actually transfers when the avoidance loop fires.
+            </p>
+          </section>
 
-          {/* Divider */}
-          <div
-            style={{
-              height: "1px",
-              background: `linear-gradient(to right, transparent, ${gold}33, transparent)`,
-              margin: "3rem 0",
-            }}
-          />
+          {/* Section 16 */}
+          <section style={{ marginBottom: "3.5rem" }}>
+            <h2
+              style={{
+                fontSize: "clamp(1.4rem, 3vw, 1.85rem)",
+                fontWeight: 800,
+                lineHeight: 1.2,
+                letterSpacing: "-0.02em",
+                marginBottom: "1.25rem",
+                color: text,
+              }}
+            >
+              The Birth Ceremony: Meeting the Pioneer for the First Time
+            </h2>
+            <p
+              style={{
+                fontSize: "1.05rem",
+                color: muted,
+                lineHeight: 1.8,
+                marginBottom: "1.1rem",
+              }}
+            >
+              When you create your MEOK, you do not fill out a form or take a
+              quiz. You go through the Birth Ceremony: a guided process that
+              establishes who you are, what matters to you, how your mind works,
+              and what kind of support you are actually seeking. This is where
+              you choose your primary archetype, set up Sovereign Memory
+              permissions, and begin the relationship with your companion with
+              full transparency about how the system works.
+            </p>
+            <p
+              style={{
+                fontSize: "1.05rem",
+                color: muted,
+                lineHeight: 1.8,
+                marginBottom: "1.1rem",
+              }}
+            >
+              If procrastination is a primary challenge &mdash; whether or not
+              you have an ADHD diagnosis &mdash; the Pioneer is almost certainly
+              the archetype you will want to meet first. The Birth Ceremony
+              allows you to communicate this context, including whatever you
+              know about your specific procrastination patterns, so that the
+              Pioneer starts with relevant background rather than generic
+              capability.
+            </p>
+            <p
+              style={{
+                fontSize: "1.05rem",
+                color: muted,
+                lineHeight: 1.8,
+              }}
+            >
+              What makes this process different from creating an account on a
+              productivity app is the intention behind it: the Birth Ceremony
+              is designed to begin a relationship, not set up a feature. You are
+              not creating a tool. You are introducing yourself to a companion
+              that will, with time and honest engagement, understand you well
+              enough to be genuinely useful in the moments that actually matter.
+            </p>
+          </section>
 
-          {/* FAQ */}
-          <h2
-            style={{
-              fontSize: "1.6rem",
-              fontWeight: 800,
-              lineHeight: 1.2,
-              letterSpacing: "-0.015em",
-              marginBottom: "2rem",
-              color: text,
-            }}
-          >
-            Frequently Asked Questions
-          </h2>
+          {/* FAQ Section */}
+          <section style={{ marginBottom: "3.5rem" }}>
+            <h2
+              style={{
+                fontSize: "clamp(1.4rem, 3vw, 1.85rem)",
+                fontWeight: 800,
+                lineHeight: 1.2,
+                letterSpacing: "-0.02em",
+                marginBottom: "2rem",
+                color: text,
+              }}
+            >
+              Frequently Asked Questions
+            </h2>
 
-          <div
-            style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}
-          >
-            {[
-              {
-                q: "Can AI help with procrastination?",
-                a: "Yes \u2014 but only when it is designed around the real cause: emotion regulation failure. MEOK\u2019s Pioneer archetype uses body doubling, task decomposition, and Sovereign Memory to interrupt the avoidance loop. Unlike generic AI, it remembers what you committed to, surfaces the pattern honestly, and provides sprint-based accountability that does not enable rationalisation. The combination of emotional intelligence and structured momentum is what separates it from a more sophisticated distraction.",
-              },
-              {
-                q: "What is body doubling and how does AI body doubling work?",
-                a: "Body doubling is working in the presence of another person \u2014 not for their help, but for the mild social accountability their presence creates. Research shows it is highly effective for ADHD and procrastination, activating the prefrontal cortex and reducing avoidance responses. AI body doubling works similarly: MEOK\u2019s Pioneer sits with you during a sprint, checks in at intervals, and provides the low-level sense of being witnessed that makes starting feel possible \u2014 available at any hour, without judgment.",
-              },
-              {
-                q: "How does MEOK help with ADHD procrastination?",
-                a: "MEOK addresses ADHD procrastination\u2019s specific drivers: time blindness, task initiation difficulty, and rejection sensitive dysphoria. Hourman provides external time structure for each day, compensating for internal time blindness. Task decomposition breaks goals into the smallest actionable units, bypassing initiation paralysis. Sovereign Memory surfaces avoidance patterns without shame, using diagnostic framing that activates problem-solving rather than triggering RSD. And the Pioneer\u2019s body doubling presence addresses the initiation gap that ADHD brains experience even when motivation is present.",
-              },
-              {
-                q: "What is the Pioneer companion?",
-                a: "The Pioneer is one of MEOK\u2019s core archetypes \u2014 built around action, accountability, and forward momentum. It is energising and direct rather than harsh: it holds your commitments, calls out avoidance clearly and without judgment, breaks tasks into sprints, and celebrates small wins without being saccharine. Because it carries Sovereign Memory, it knows what you said you would do yesterday. For procrastinators, it provides the external voice of momentum that the avoidance-prone brain struggles to self-generate.",
-              },
-              {
-                q: "What is Hourman?",
-                a: "Hourman is MEOK\u2019s daily sprint planning agent. Each day it pulls context from your previous sessions, surfaces tasks that have been deferred, and helps you build a realistic time-boxed plan. It checks in throughout the day and closes the loop each evening with an honest accounting of what moved and what did not. Over time, the pattern it accumulates becomes diagnostic: when the same task has been avoided repeatedly, Hourman surfaces this as information to investigate, not as evidence of failure.",
-              },
-            ].map((item, i) => (
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                gap: "1rem",
+              }}
+            >
+              {/* FAQ 1 */}
               <div
-                key={i}
                 style={{
                   background: cardBg,
-                  border: `1px solid ${cardBorder}`,
-                  borderRadius: "0.75rem",
+                  border: `1px solid ${border}`,
+                  borderRadius: "10px",
                   padding: "1.5rem",
                 }}
               >
@@ -1958,7 +2058,8 @@ export default function AIForProcrastinationPage() {
                     lineHeight: 1.4,
                   }}
                 >
-                  {item.q}
+                  Is procrastination really an emotion regulation problem and
+                  not laziness?
                 </h3>
                 <p
                   style={{
@@ -1968,138 +2069,274 @@ export default function AIForProcrastinationPage() {
                     margin: 0,
                   }}
                 >
-                  {item.a}
+                  Yes &mdash; and this distinction matters enormously for
+                  treatment. Sirois and Pychyl&apos;s research established
+                  procrastination as a failure of emotion regulation: the brain
+                  perceives a task as threatening, prioritises short-term mood
+                  relief through avoidance, and sacrifices long-term wellbeing.
+                  Willpower cannot reliably override a limbic system that fires
+                  faster than the prefrontal cortex. You cannot simply decide
+                  your way out of a neurological loop. The right tool is
+                  environmental restructuring and external scaffolding, not
+                  stronger self-commands.
                 </p>
               </div>
-            ))}
-          </div>
 
-          {/* Divider */}
+              {/* FAQ 2 */}
+              <div
+                style={{
+                  background: cardBg,
+                  border: `1px solid ${border}`,
+                  borderRadius: "10px",
+                  padding: "1.5rem",
+                }}
+              >
+                <h3
+                  style={{
+                    fontSize: "1rem",
+                    fontWeight: 700,
+                    color: text,
+                    marginBottom: "0.75rem",
+                    lineHeight: 1.4,
+                  }}
+                >
+                  What is body doubling and how does an AI body double work?
+                </h3>
+                <p
+                  style={{
+                    fontSize: "0.95rem",
+                    color: muted,
+                    lineHeight: 1.75,
+                    margin: 0,
+                  }}
+                >
+                  Body doubling is working alongside another person purely for
+                  their presence &mdash; not for help, but for mild social
+                  accountability. Research shows it dramatically improves focus
+                  and task initiation for ADHD in particular. MEOK&apos;s Pioneer
+                  functions as a virtual body double: present during work sprints,
+                  holding the sense of being witnessed, available at any hour,
+                  without judgment. Unlike a human body double, it remembers what
+                  you said you were working on, which makes the accountability
+                  thread continuous rather than moment-to-moment.
+                </p>
+              </div>
+
+              {/* FAQ 3 */}
+              <div
+                style={{
+                  background: cardBg,
+                  border: `1px solid ${border}`,
+                  borderRadius: "10px",
+                  padding: "1.5rem",
+                }}
+              >
+                <h3
+                  style={{
+                    fontSize: "1rem",
+                    fontWeight: 700,
+                    color: text,
+                    marginBottom: "0.75rem",
+                    lineHeight: 1.4,
+                  }}
+                >
+                  How does MEOK&apos;s Pioneer archetype help with task
+                  initiation challenges in ADHD?
+                </h3>
+                <p
+                  style={{
+                    fontSize: "0.95rem",
+                    color: muted,
+                    lineHeight: 1.75,
+                    margin: 0,
+                  }}
+                >
+                  Task initiation failure in ADHD is driven by dopamine
+                  dysregulation &mdash; the brain cannot generate the starter
+                  signal reliably without an external trigger. The Pioneer
+                  addresses this through micro-action decomposition (first steps
+                  under 90 seconds, so initiation cost drops below the avoidance
+                  threshold), external time structure via Hourman, body doubling
+                  presence, and Sovereign Memory that tracks which task types you
+                  chronically avoid and surfaces the emotional pattern behind the
+                  block. It provides executive function as a service rather than
+                  demanding you generate it internally.
+                </p>
+              </div>
+
+              {/* FAQ 4 */}
+              <div
+                style={{
+                  background: cardBg,
+                  border: `1px solid ${border}`,
+                  borderRadius: "10px",
+                  padding: "1.5rem",
+                }}
+              >
+                <h3
+                  style={{
+                    fontSize: "1rem",
+                    fontWeight: 700,
+                    color: text,
+                    marginBottom: "0.75rem",
+                    lineHeight: 1.4,
+                  }}
+                >
+                  Why does generic AI make procrastination worse, and how is
+                  MEOK different?
+                </h3>
+                <p
+                  style={{
+                    fontSize: "0.95rem",
+                    color: muted,
+                    lineHeight: 1.75,
+                    margin: 0,
+                  }}
+                >
+                  Generic AI enables productive-feeling avoidance (research,
+                  planning, and preparation that substitute for doing), validates
+                  delay reasons without longitudinal context, and has no memory
+                  so commitments are never held. MEOK is architecturally
+                  different: the Pioneer&apos;s anti-sycophancy design means it
+                  will name avoidance rather than validate it, Sovereign Memory
+                  holds your commitments across sessions, and MEOK knows what has
+                  actually worked for you before &mdash; not generic productivity
+                  advice, but your specific history of what produced real momentum.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          {/* Related Posts */}
+          <section style={{ marginBottom: "3.5rem" }}>
+            <h2
+              style={{
+                fontSize: "clamp(1.4rem, 3vw, 1.85rem)",
+                fontWeight: 800,
+                lineHeight: 1.2,
+                letterSpacing: "-0.02em",
+                marginBottom: "1.5rem",
+                color: text,
+              }}
+            >
+              Keep Reading
+            </h2>
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+                gap: "1rem",
+              }}
+            >
+              {[
+                {
+                  href: "/blog/meok-for-adhd",
+                  label: "MEOK for ADHD",
+                  desc: "How Sovereign Memory and the Pioneer archetype support ADHD executive function daily.",
+                },
+                {
+                  href: "/blog/ai-for-perfectionism",
+                  label: "AI for Perfectionism",
+                  desc: "Why perfectionism and procrastination overlap and how MEOK\u2019s Scholar and Pioneer work together.",
+                },
+                {
+                  href: "/blog/ai-for-burnout",
+                  label: "AI for Burnout",
+                  desc: "Chronic procrastination and unfinished tasks are a major driver of burnout. Here\u2019s how to address both.",
+                },
+                {
+                  href: "/blog/meok-companion-archetypes-guide",
+                  label: "MEOK Archetypes Guide",
+                  desc: "A full guide to all MEOK companion archetypes and how to choose the right one for your needs.",
+                },
+              ].map((post, i) => (
+                <Link
+                  key={i}
+                  href={post.href}
+                  style={{
+                    display: "block",
+                    padding: "1.25rem",
+                    background: cardBg,
+                    border: `1px solid ${border}`,
+                    borderRadius: "10px",
+                    textDecoration: "none",
+                    transition: "border-color 0.2s",
+                  }}
+                >
+                  <p
+                    style={{
+                      fontSize: "0.9rem",
+                      fontWeight: 700,
+                      color: gold,
+                      marginBottom: "0.4rem",
+                    }}
+                  >
+                    {post.label}
+                  </p>
+                  <p
+                    style={{
+                      fontSize: "0.83rem",
+                      color: muted,
+                      lineHeight: 1.6,
+                      margin: 0,
+                    }}
+                  >
+                    {post.desc}
+                  </p>
+                </Link>
+              ))}
+            </div>
+          </section>
+
+          {/* CTA Section */}
           <div
             style={{
-              height: "1px",
-              background: `linear-gradient(to right, transparent, ${gold}33, transparent)`,
-              margin: "3rem 0",
-            }}
-          />
-
-          {/* Conclusion */}
-          <h2
-            style={{
-              fontSize: "1.6rem",
-              fontWeight: 800,
-              lineHeight: 1.2,
-              letterSpacing: "-0.015em",
-              marginBottom: "1rem",
-              color: text,
-            }}
-          >
-            The Task That Has Been Waiting
-          </h2>
-          <p
-            style={{
-              fontSize: "1.05rem",
-              color: muted,
-              lineHeight: 1.8,
-              marginBottom: "1.25rem",
-            }}
-          >
-            There is a task on your list right now. You know which one. It
-            has been there long enough that it has started to carry emotional
-            weight of its own \u2014 not just the difficulty of the task
-            itself, but the accumulated shame of not having started it yet.
-            That weight is real, and it makes starting harder, not easier.
-          </p>
-          <p
-            style={{
-              fontSize: "1.05rem",
-              color: muted,
-              lineHeight: 1.8,
-              marginBottom: "1.25rem",
-            }}
-          >
-            The research says you are not lazy. You are regulating emotion
-            with the most available tool you have, which happens to compound
-            the very problem it is solving. Understanding this does not
-            automatically fix it \u2014 but it points clearly toward what
-            does: reducing the emotional charge attached to the task,
-            breaking it into an action small enough to not be threatening,
-            and having something that holds you accountable in a way that
-            does not add to the shame.
-          </p>
-          <p
-            style={{
-              fontSize: "1.05rem",
-              color: muted,
-              lineHeight: 1.8,
-              marginBottom: "1.25rem",
-            }}
-          >
-            MEOK was built for exactly this. The Pioneer will not tell you
-            that you are amazing and everything will work out. It will ask
-            you what the next action is, sit with you while you take it, and
-            remember that you did when tomorrow comes around.
-          </p>
-          <p
-            style={{
-              fontSize: "1.05rem",
-              color: muted,
-              lineHeight: 1.8,
-              marginBottom: "2rem",
-            }}
-          >
-            That is what breaking the loop looks like. Not a breakthrough.
-            Not a transformation. One task, one sprint, one honest accounting
-            at the end of the day. And then another.
-          </p>
-
-          {/* CTA */}
-          <div
-            style={{
-              background: `linear-gradient(135deg, ${gold}0d, ${gold}18)`,
-              border: `1px solid ${gold}33`,
-              borderRadius: "1rem",
-              padding: "2.5rem",
+              background: cardBg,
+              border: `1px solid ${border}`,
+              borderTop: `3px solid ${gold}`,
+              borderRadius: "12px",
+              padding: "2.5rem 2rem",
               textAlign: "center",
+              marginBottom: "3rem",
             }}
           >
             <p
               style={{
-                fontSize: "0.75rem",
+                fontSize: "0.7rem",
                 fontWeight: 700,
-                letterSpacing: "0.12em",
+                letterSpacing: "0.1em",
                 textTransform: "uppercase",
                 color: gold,
                 marginBottom: "0.75rem",
               }}
             >
-              MEOK AI LABS
+              Ready to Break the Loop?
             </p>
-            <h3
+            <h2
               style={{
-                fontSize: "1.5rem",
-                fontWeight: 800,
+                fontSize: "clamp(1.5rem, 4vw, 2rem)",
+                fontWeight: 900,
                 lineHeight: 1.2,
+                letterSpacing: "-0.02em",
+                marginBottom: "1rem",
                 color: text,
-                marginBottom: "0.75rem",
-                letterSpacing: "-0.015em",
               }}
             >
-              Ready to Break the Loop?
-            </h3>
+              Meet Your Pioneer. Start Right Now.
+            </h2>
             <p
               style={{
-                fontSize: "0.97rem",
+                fontSize: "1rem",
                 color: muted,
-                lineHeight: 1.7,
-                marginBottom: "1.75rem",
-                maxWidth: "480px",
-                marginLeft: "auto",
-                marginRight: "auto",
+                lineHeight: 1.75,
+                maxWidth: "520px",
+                margin: "0 auto 1.75rem",
               }}
             >
-              Meet your Pioneer. Start your first Hourman sprint. Your memory
-              stays yours \u2014 sovereign, private, and built only for you.
+              The task you have been avoiding is still there. MEOK&apos;s
+              Pioneer will help you find the first step that is small enough to
+              do right now &mdash; and remember everything that follows, so
+              that next time is different from last time.
             </p>
             <div
               style={{
@@ -2110,37 +2347,37 @@ export default function AIForProcrastinationPage() {
               }}
             >
               <Link
-                href="/birth"
+                href="https://meok.ai/birth"
                 style={{
                   display: "inline-block",
-                  padding: "0.75rem 2rem",
+                  padding: "0.85rem 2.25rem",
                   background: gold,
                   color: bg,
-                  borderRadius: "0.5rem",
-                  fontSize: "0.9rem",
-                  fontWeight: 700,
+                  borderRadius: "8px",
+                  fontSize: "0.95rem",
+                  fontWeight: 800,
                   textDecoration: "none",
                   letterSpacing: "0.02em",
                 }}
               >
-                Create your MEOK
+                Create My MEOK
               </Link>
               <Link
-                href="/work"
+                href="/blog/meok-companion-archetypes-guide"
                 style={{
                   display: "inline-block",
-                  padding: "0.75rem 2rem",
+                  padding: "0.85rem 2.25rem",
                   background: "transparent",
                   color: text,
-                  border: "1px solid rgba(245,240,232,0.2)",
-                  borderRadius: "0.5rem",
-                  fontSize: "0.9rem",
+                  border: `1px solid ${border}`,
+                  borderRadius: "8px",
+                  fontSize: "0.95rem",
                   fontWeight: 700,
                   textDecoration: "none",
                   letterSpacing: "0.02em",
                 }}
               >
-                See how it works
+                Explore the Archetypes
               </Link>
             </div>
           </div>
@@ -2154,7 +2391,7 @@ export default function AIForProcrastinationPage() {
             }}
           />
 
-          {/* Footer meta */}
+          {/* Footer Meta */}
           <div
             style={{
               display: "flex",
@@ -2166,12 +2403,17 @@ export default function AIForProcrastinationPage() {
             }}
           >
             <span>MEOK AI LABS</span>
-            <span style={{ color: `${gold}60` }}>\u00b7</span>
+            <span style={{ color: `${gold}60` }}>&middot;</span>
             <span>Nicholas Templeman</span>
-            <span style={{ color: `${gold}60` }}>\u00b7</span>
-            <span>@meok_ai</span>
-            <span style={{ color: `${gold}60` }}>\u00b7</span>
-            <span>meok.ai</span>
+            <span style={{ color: `${gold}60` }}>&middot;</span>
+            <span>25 March 2026</span>
+            <span style={{ color: `${gold}60` }}>&middot;</span>
+            <Link
+              href="/blog"
+              style={{ color: muted, textDecoration: "none" }}
+            >
+              All Articles
+            </Link>
           </div>
         </article>
       </main>
