@@ -1,51 +1,55 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
-// ── Metadata ──────────────────────────────────────────────────────────────────
+// ── Metadata ───────────────────────────────────────────────────────────────────
 
 export const metadata: Metadata = {
-  title: "AI for Financial Anxiety: Talk Through Money Stress Without Judgment | MEOK AI LABS",
+  title:
+    "AI for Financial Anxiety: Separating Money Stress From Money Shame | MEOK AI LABS",
   description:
-    "Financial anxiety affects millions in the UK cost-of-living crisis. MEOK offers a non-judgmental space to process money shame, budgeting dread, and debt stress — no advice, just honest support.",
+    "Financial anxiety affects 3 in 4 UK adults. But financial stress and financial shame are different problems requiring different support. MEOK\u2019s sovereign AI helps you face both \u2014 without judgment.",
   alternates: { canonical: "https://meok.ai/blog/ai-for-financial-anxiety" },
   openGraph: {
-    title: "AI for Financial Anxiety: Talk Through Money Stress Without Judgment",
+    title:
+      "AI for Financial Anxiety: Separating Money Stress From Money Shame",
     description:
-      "Shame, avoidance, and catastrophising keep financial anxiety locked in place. Here is how an AI companion can help you face money stress — and where to go for real debt help.",
+      "Financial anxiety affects 3 in 4 UK adults. Money stress and money shame require different support. MEOK\u2019s care-based sovereign AI helps you face both \u2014 privately, without judgment.",
     type: "article",
-    publishedTime: "2026-03-24",
+    publishedTime: "2026-03-25",
     authors: ["Nicholas Templeman"],
     url: "https://meok.ai/blog/ai-for-financial-anxiety",
     siteName: "MEOK.AI",
     images: [
       {
-        url: "https://meok.ai/api/og?title=AI+for+Financial+Anxiety%3A+Talk+Through+Money+Stress&desc=Non-judgmental+support+for+the+cost-of-living+crisis",
+        url: "https://meok.ai/api/og?title=AI+for+Financial+Anxiety%3A+Separating+Money+Stress+From+Money+Shame&desc=Sovereign+AI+that+never+judges+your+spending+or+debt",
         width: 1200,
         height: 630,
-        alt: "AI for Financial Anxiety: Talk Through Money Stress Without Judgment",
+        alt: "AI for Financial Anxiety: Separating Money Stress From Money Shame | MEOK AI LABS",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "AI for Financial Anxiety: Talk Through Money Stress Without Judgment",
+    title: "AI for Financial Anxiety: Separating Money Stress From Money Shame",
     description:
-      "Shame, avoidance, energy bills, mortgage stress — MEOK offers a space to process financial anxiety without judgment. Here is what that actually looks like.",
+      "3 in 4 UK adults have financial anxiety. Money stress and money shame are different problems. MEOK\u2019s sovereign AI helps you face both \u2014 without judgment.",
     images: [
-      "https://meok.ai/api/og?title=AI+for+Financial+Anxiety%3A+Talk+Through+Money+Stress&desc=Non-judgmental+support+for+the+cost-of-living+crisis",
+      "https://meok.ai/api/og?title=AI+for+Financial+Anxiety%3A+Separating+Money+Stress+From+Money+Shame&desc=Sovereign+AI+that+never+judges+your+spending+or+debt",
     ],
   },
 };
 
-// ── JSON-LD ───────────────────────────────────────────────────────────────────
+// ── JSON-LD: Article ───────────────────────────────────────────────────────────
 
 const articleJsonLd = {
   "@context": "https://schema.org",
   "@type": "Article",
-  headline: "AI for Financial Anxiety: Talk Through Money Stress Without Judgment",
+  headline:
+    "AI for Financial Anxiety: Separating Money Stress From Money Shame",
   description:
-    "Financial anxiety affects millions in the UK cost-of-living crisis. MEOK offers a non-judgmental space to process money shame, budgeting dread, and debt stress — no advice, just honest support.",
-  datePublished: "2026-03-24",
+    "Financial anxiety affects 3 in 4 UK adults. Financial stress and financial shame are different problems requiring different support. MEOK\u2019s sovereign AI helps you face both \u2014 without judgment.",
+  datePublished: "2026-03-25",
+  dateModified: "2026-03-25",
   url: "https://meok.ai/blog/ai-for-financial-anxiety",
   author: {
     "@type": "Person",
@@ -58,7 +62,13 @@ const articleJsonLd = {
     name: "MEOK AI LABS",
     url: "https://meok.ai",
   },
+  mainEntityOfPage: {
+    "@type": "WebPage",
+    "@id": "https://meok.ai/blog/ai-for-financial-anxiety",
+  },
 };
+
+// ── JSON-LD: FAQPage ───────────────────────────────────────────────────────────
 
 const faqJsonLd = {
   "@context": "https://schema.org",
@@ -69,73 +79,61 @@ const faqJsonLd = {
       name: "Can AI really help with financial anxiety?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "AI companions can help with the emotional dimension of financial anxiety — processing shame, identifying avoidance patterns, reframing catastrophic thoughts, and preparing for difficult money conversations. They are not financial advisors and cannot provide debt, investment, or budgeting advice. For practical financial help, contact StepChange (stepchange.org) or MoneyHelper (moneyhelper.org.uk). For crisis support, call Samaritans on 116 123.",
+        text: "AI companions can help with the emotional dimension of financial anxiety \u2014 processing shame, interrupting avoidance cycles, reframing catastrophic money thoughts, and building courage to seek practical help. They are not financial advisors. For regulated debt help in the UK, contact StepChange (0800 138 1111) or MoneyHelper (0800 138 7777). For crisis support, call Samaritans on 116 123.",
       },
     },
     {
       "@type": "Question",
-      name: "What is financial anxiety and how does it differ from having money problems?",
+      name: "What is the difference between financial stress and financial shame?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Financial anxiety is the emotional and psychological distress triggered by money — including worry, avoidance, shame, and catastrophic thinking. It is distinct from actual financial difficulty, though they often overlap. You can experience severe financial anxiety while being objectively stable, and you can be in genuine financial difficulty without significant anxiety. The emotional burden is often what prevents people from getting practical help.",
+        text: "Financial stress is a rational response to genuine pressure \u2014 bills exceeding income, unexpected expenses, uncertain employment. Financial shame is a moral self-judgment: the belief that struggling financially means you have failed as a person. Stress responds to practical interventions. Shame responds to emotional processing and compassion. Conflating the two leads to treating shame with budgeting tools, which does not work.",
       },
     },
     {
       "@type": "Question",
-      name: "Why do so many people in the UK have financial anxiety right now?",
+      name: "What are money scripts and why do they matter?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "The UK cost-of-living crisis — driven by energy bill increases, rising mortgage rates, food inflation, and wage stagnation — has created genuine financial pressure for millions. The Money and Mental Health Policy Institute reports that money is the number one cause of stress in the UK. When external financial pressure combines with cultural shame around money and limited access to support, anxiety becomes widespread and entrenched.",
+        text: "Money scripts are the unconscious beliefs about money formed in childhood \u2014 through what you saw, heard, and experienced in your family. Common examples include: money is the root of all evil, rich people are greedy, if you have money you should spend it, there is never enough. These beliefs operate beneath conscious reasoning and drive financial avoidance, overspending, and anxiety regardless of your actual financial situation.",
       },
     },
     {
       "@type": "Question",
-      name: "How does shame make financial anxiety worse?",
+      name: "Is MEOK a financial advisor?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Shame activates avoidance — the impulse to escape a painful feeling by not engaging with its source. When money problems trigger shame, people stop opening bank apps, stop reading letters, stop talking to partners or employers. Avoidance provides short-term relief but allows the actual situation to worsen, which deepens the shame. The cycle can run for months or years, with the silence itself becoming part of the problem.",
+        text: "No. MEOK AI LABS is not a financial advisor, mortgage broker, debt counsellor, or therapist. MEOK provides emotional support, reflection, and information \u2014 not regulated financial or clinical advice. For debt help: StepChange (stepchange.org), MoneyHelper (moneyhelper.org.uk), Citizens Advice (citizensadvice.org.uk). For mental health: Mind (mind.org.uk) or your GP.",
       },
     },
     {
       "@type": "Question",
-      name: "Is MEOK a financial advisor or therapist?",
+      name: "How does MEOK protect my financial conversations from being shared?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "No. MEOK AI LABS is not a financial advisor, mortgage broker, debt counsellor, or therapist. MEOK does not provide financial, investment, legal, or clinical advice. It offers emotional support, pattern reflection, and a non-judgmental space to process stress. For regulated financial help, contact StepChange, MoneyHelper, or Citizens Advice. For clinical mental health support, contact Mind or your GP.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Where can I get free debt help in the UK?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "StepChange Debt Charity (stepchange.org, 0800 138 1111) offers free, confidential debt advice and solutions. MoneyHelper (moneyhelper.org.uk, 0800 138 7777) provides government-backed financial guidance. Citizens Advice (citizensadvice.org.uk, 0800 144 8848) covers debt, benefits, and housing. All are free. If financial stress is causing a mental health crisis, contact Samaritans on 116 123 (free, 24/7).",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Can talking to MEOK help me stop avoiding my finances?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "MEOK can help reduce the emotional charge that makes avoidance feel necessary. By processing shame and fear without judgment, and by working through small, specific steps together, many people find the threshold for engagement lowers over time. MEOK does not force action, but it can help you understand your avoidance patterns and identify what the smallest manageable step might be.",
+        text: "MEOK operates on a sovereign data architecture: your conversations are stored in a 4-layer encrypted memory system that belongs to you, not to MEOK AI LABS. MEOK never trains on your data. Your financial disclosures are never shared with banks, insurers, employers, data brokers, or any third party. This is not a policy preference \u2014 it is a structural guarantee built into the platform architecture.",
       },
     },
   ],
 };
 
-// ── Page ──────────────────────────────────────────────────────────────────────
+// ── Style constants ────────────────────────────────────────────────────────────
+
+const BG = "#0d0c18";
+const TEXT = "#f5f0e8";
+const GOLD = "#c9a84c";
+const MUTED = "rgba(245,240,232,0.55)";
+const MUTED_DIM = "rgba(245,240,232,0.62)";
+const MUTED_FAINT = "rgba(245,240,232,0.38)";
+const CARD = "rgba(255,255,255,0.03)";
+const CARD_BORDER = "rgba(201,168,76,0.18)";
+const AMBER_GLOW = "rgba(201,168,76,0.09)";
+
+// ── Page ───────────────────────────────────────────────────────────────────────
 
 export default function AiForFinancialAnxietyPage() {
-  const bg = "#0d0c18";
-  const text = "#f5f0e8";
-  const gold = "#c9a84c";
-  const cardBg = "#1a1830";
-  const mutedText = "#a09880";
-  const borderColor = "#2a2845";
-
   return (
-    <div style={{ backgroundColor: bg, color: text, minHeight: "100vh", fontFamily: "'Georgia', serif" }}>
-      {/* JSON-LD */}
+    <div style={{ minHeight: "100vh", background: BG, color: TEXT }}>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
@@ -145,510 +143,1693 @@ export default function AiForFinancialAnxietyPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
 
-      {/* Nav */}
-      <nav style={{ borderBottom: `1px solid ${borderColor}`, padding: "1rem 2rem", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-        <Link href="/" style={{ color: gold, textDecoration: "none", fontWeight: 700, fontSize: "1.1rem", letterSpacing: "0.05em" }}>
-          MEOK AI LABS
-        </Link>
-        <Link href="/blog" style={{ color: mutedText, textDecoration: "none", fontSize: "0.9rem" }}>
-          ← All posts
-        </Link>
-      </nav>
+      {/* ── HERO ────────────────────────────────────────────────────────────── */}
+      <section
+        style={{
+          paddingTop: "8rem",
+          paddingBottom: "3.5rem",
+          paddingLeft: "1.5rem",
+          paddingRight: "1.5rem",
+          position: "relative",
+          overflow: "hidden",
+        }}
+      >
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            pointerEvents: "none",
+            background:
+              "radial-gradient(ellipse 60% 50% at 50% 0%, rgba(201,168,76,0.08) 0%, transparent 68%)",
+          }}
+        />
+        <div
+          style={{ maxWidth: "48rem", margin: "0 auto", position: "relative" }}
+        >
+          <Link
+            href="/blog"
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "0.375rem",
+              fontSize: "0.875rem",
+              color: MUTED_FAINT,
+              marginBottom: "2rem",
+              textDecoration: "none",
+            }}
+          >
+            &#8592; Back to Blog
+          </Link>
 
-      {/* Hero */}
-      <header style={{ maxWidth: "800px", margin: "0 auto", padding: "4rem 2rem 2rem" }}>
-        <p style={{ color: gold, fontSize: "0.85rem", letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: "1rem" }}>
-          Financial Anxiety & Mental Health · March 24, 2026
-        </p>
-        <h1 style={{ fontSize: "clamp(2rem, 5vw, 3rem)", lineHeight: 1.2, fontWeight: 700, marginBottom: "1.5rem", color: text }}>
-          AI for Financial Anxiety: Talk Through Money Stress Without Judgment
-        </h1>
-        <p style={{ fontSize: "1.2rem", lineHeight: 1.7, color: mutedText, marginBottom: "2rem" }}>
-          Millions of people in the UK are silently carrying financial anxiety — not just worry about money, but the shame, the avoidance, the dread of opening the bank app. In a cost-of-living crisis that has stretched household budgets to breaking point, the emotional burden of money has never been heavier. This is an honest look at what AI can and cannot do for financial anxiety, and where to go when you need real help.
-        </p>
+          <div
+            style={{
+              display: "flex",
+              flexWrap: "wrap",
+              alignItems: "center",
+              gap: "0.75rem",
+              marginBottom: "1.5rem",
+            }}
+          >
+            <span
+              style={{
+                fontSize: "0.7rem",
+                fontWeight: 700,
+                padding: "0.375rem 0.75rem",
+                borderRadius: "9999px",
+                color: GOLD,
+                background: AMBER_GLOW,
+                border: `1px solid rgba(201,168,76,0.3)`,
+                letterSpacing: "0.05em",
+                textTransform: "uppercase" as const,
+              }}
+            >
+              Financial Anxiety &amp; Mental Wellbeing
+            </span>
+            <span style={{ fontSize: "0.75rem", color: MUTED_FAINT }}>
+              March 25, 2026
+            </span>
+            <span style={{ fontSize: "0.75rem", color: MUTED_FAINT }}>
+              16 min read
+            </span>
+          </div>
 
-        {/* Disclaimer */}
-        <div style={{ backgroundColor: cardBg, border: `1px solid ${borderColor}`, borderLeft: `3px solid ${gold}`, borderRadius: "6px", padding: "1rem 1.25rem", marginBottom: "2rem" }}>
-          <p style={{ fontSize: "0.85rem", color: mutedText, margin: 0, lineHeight: 1.6 }}>
-            <strong style={{ color: text }}>Important:</strong> MEOK AI LABS is not a financial advisor and MEOK does not provide financial, investment, debt, legal, or clinical advice. This article is for informational and emotional-support purposes only. For practical financial help in the UK, please contact{" "}
-            <a href="https://www.stepchange.org" target="_blank" rel="noopener noreferrer" style={{ color: gold }}>StepChange</a>,{" "}
-            <a href="https://www.moneyhelper.org.uk" target="_blank" rel="noopener noreferrer" style={{ color: gold }}>MoneyHelper</a>, or{" "}
-            <a href="https://www.citizensadvice.org.uk" target="_blank" rel="noopener noreferrer" style={{ color: gold }}>Citizens Advice</a>.
-            For mental health crisis support, call Samaritans on{" "}
-            <a href="tel:116123" style={{ color: gold }}>116 123</a>.
-          </p>
-        </div>
+          <h1
+            style={{
+              fontWeight: 900,
+              fontSize: "clamp(1.85rem, 3.8vw, 3rem)",
+              color: "#fff",
+              lineHeight: 1.13,
+              marginBottom: "1.25rem",
+              letterSpacing: "-0.01em",
+            }}
+          >
+            AI for Financial Anxiety: Separating Money Stress From Money Shame
+          </h1>
 
-        {/* Stats bar */}
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: "1rem", marginBottom: "3rem" }}>
-          {[
-            { stat: "#1", label: "Money is the top cause of stress in the UK" },
-            { stat: "9 million", label: "UK adults living with problem debt" },
-            { stat: "46%", label: "Problem debt linked to mental health difficulties" },
-          ].map(({ stat, label }) => (
-            <div key={stat} style={{ backgroundColor: cardBg, border: `1px solid ${borderColor}`, borderRadius: "8px", padding: "1.25rem", textAlign: "center" }}>
-              <p style={{ fontSize: "1.8rem", fontWeight: 700, color: gold, margin: "0 0 0.4rem" }}>{stat}</p>
-              <p style={{ fontSize: "0.8rem", color: mutedText, margin: 0, lineHeight: 1.4 }}>{label}</p>
-            </div>
-          ))}
-        </div>
-      </header>
-
-      {/* Body */}
-      <main style={{ maxWidth: "800px", margin: "0 auto", padding: "0 2rem 4rem" }}>
-
-        {/* Opening */}
-        <section style={{ marginBottom: "3rem" }}>
-          <p style={{ fontSize: "1.1rem", lineHeight: 1.8, marginBottom: "1.25rem" }}>
-            There is a particular kind of dread that arrives with a bank notification. A physical contraction, a held breath, the impulse to close the app before the number loads. For millions of people across the UK, this is not an occasional feeling — it is a daily, sometimes hourly, companion.
-          </p>
-          <p style={{ fontSize: "1.1rem", lineHeight: 1.8, marginBottom: "1.25rem" }}>
-            The cost-of-living crisis has made this worse. Energy bills that doubled overnight. Mortgage rates that crept upward for two years straight. Food shopping that costs noticeably more every month. The weight of these realities is not just financial — it is psychological. And the psychological weight is often the harder part to address, because there is no spreadsheet for shame.
-          </p>
-          <p style={{ fontSize: "1.1rem", lineHeight: 1.8 }}>
-            Financial anxiety is not the same as having money problems, though the two frequently travel together. It is the cluster of emotional responses that money triggers — dread, shame, avoidance, catastrophic thinking, comparing yourself to others and coming up short. These responses can be just as debilitating as the underlying financial reality. They can, in fact, make the financial reality significantly worse.
-          </p>
-        </section>
-
-        {/* H2 1 */}
-        <section style={{ marginBottom: "3rem" }}>
-          <h2 style={{ fontSize: "1.7rem", fontWeight: 700, color: gold, marginBottom: "1rem", lineHeight: 1.3 }}>
-            Why is financial anxiety so hard to talk about?
-          </h2>
-          <p style={{ fontSize: "1rem", lineHeight: 1.7, color: mutedText, marginBottom: "1.25rem", fontStyle: "italic" }}>
-            Money is one of the last great social taboos. The silence around it is not accidental — it is actively maintained by shame, by cultural norms, and by the mistaken belief that struggling financially means you have failed as a person.
-          </p>
-          <p style={{ fontSize: "1.1rem", lineHeight: 1.8, marginBottom: "1.25rem" }}>
-            In the UK, talking openly about money — about what you earn, what you owe, whether you are struggling — remains deeply uncomfortable in a way that other subjects are not. We will discuss health, relationships, and even mental health with greater ease than we will admit to financial difficulty. The cultural messaging is unambiguous: money problems are a moral failing, not a circumstantial one.
-          </p>
-          <p style={{ fontSize: "1.1rem", lineHeight: 1.8, marginBottom: "1.25rem" }}>
-            This silence has consequences. Research from the Money and Mental Health Policy Institute consistently shows that people in financial difficulty are less likely to seek help — both financial and psychological — precisely because the shame makes disclosure feel impossible. The very act of admitting the problem feels like confirming the worst thing about yourself.
-          </p>
-          <p style={{ fontSize: "1.1rem", lineHeight: 1.8, marginBottom: "1.25rem" }}>
-            The result is a particular kind of isolation. You cannot tell your partner how bad it has got because you are ashamed. You cannot tell a friend because they seem to be managing fine. You cannot call StepChange because picking up the phone would make it real. So the anxiety lives entirely inside your head, growing in the absence of any external reality check.
-          </p>
-          <p style={{ fontSize: "1.1rem", lineHeight: 1.8 }}>
-            This is one place where an AI companion offers something genuinely different. There is no social risk in telling MEOK that you have not opened your bank app in six weeks. There is no expression to manage, no relationship to protect, no imagined reaction to brace against. The conversation can begin wherever you actually are — not where you feel you ought to be.
-          </p>
-        </section>
-
-        {/* H2 2 */}
-        <section style={{ marginBottom: "3rem" }}>
-          <h2 style={{ fontSize: "1.7rem", fontWeight: 700, color: gold, marginBottom: "1rem", lineHeight: 1.3 }}>
-            What does the UK cost-of-living crisis actually feel like emotionally?
-          </h2>
-          <p style={{ fontSize: "1rem", lineHeight: 1.7, color: mutedText, marginBottom: "1.25rem", fontStyle: "italic" }}>
-            The economic facts of the cost-of-living crisis are well-documented. The emotional experience is less often described honestly — and that gap matters.
-          </p>
-          <p style={{ fontSize: "1.1rem", lineHeight: 1.8, marginBottom: "1.25rem" }}>
-            For renters, the anxiety often arrives in the form of chronic insecurity. Rents in many UK cities increased by twenty to thirty percent over two years. The prospect of a tenancy ending — which once felt manageable — became genuinely frightening for people who could no longer afford to move. The emotional register of this is not just worry. It is a background hum of existential uncertainty that is present in nearly every financial decision.
-          </p>
-          <p style={{ fontSize: "1.1rem", lineHeight: 1.8, marginBottom: "1.25rem" }}>
-            For mortgage holders, the trauma was often compressed into a single moment: the renewal letter arriving with a new rate. A payment that had been £800 a month becoming £1,300. The shock of that figure, the recalculation of what it meant for everything else, the realisation that the financial model you had built your life on no longer worked. This kind of acute shock is distinct from chronic worry — it has a before and an after.
-          </p>
-          <p style={{ fontSize: "1.1rem", lineHeight: 1.8, marginBottom: "1.25rem" }}>
-            Energy bills introduced a new kind of financial vigilance for many households — a hyperawareness of consumption that is exhausting to maintain. Checking the smart meter, turning off standby, not putting the heating on until a certain time, feeling guilty when children are cold. This is financial anxiety in the body, not just in the mind. It shows up as irritability, as constant low-level tension, as a kind of vigilance that never fully relaxes.
-          </p>
-          <p style={{ fontSize: "1.1rem", lineHeight: 1.8 }}>
-            And then there is the comparison problem. Social media continues to present curated versions of other people's financial lives — the holiday, the renovation, the restaurant. When your own situation feels precarious, this contrast is not neutral background noise. It is a daily provocation. Research on social comparison consistently shows that upward comparisons worsen financial anxiety even when they have no bearing on a person's actual situation.
-          </p>
-        </section>
-
-        {/* H2 3 */}
-        <section style={{ marginBottom: "3rem" }}>
-          <h2 style={{ fontSize: "1.7rem", fontWeight: 700, color: gold, marginBottom: "1rem", lineHeight: 1.3 }}>
-            How does the avoidance cycle make financial anxiety worse?
-          </h2>
-          <p style={{ fontSize: "1rem", lineHeight: 1.7, color: mutedText, marginBottom: "1.25rem", fontStyle: "italic" }}>
-            Avoidance is the most common response to financial anxiety — and the response most likely to make the situation worse. Understanding how it works is the first step to interrupting it.
-          </p>
-          <p style={{ fontSize: "1.1rem", lineHeight: 1.8, marginBottom: "1.25rem" }}>
-            The avoidance cycle begins with a trigger — an unread notification, a letter on the mat, a friend mentioning their savings. The trigger activates a threat response: the brain registers something uncomfortable and immediately looks for a way to reduce that discomfort. The most available option is to not engage. Close the app. Leave the letter. Change the subject. Relief is immediate and genuine.
-          </p>
-          <p style={{ fontSize: "1.1rem", lineHeight: 1.8, marginBottom: "1.25rem" }}>
-            But the relief has a cost. The avoided thing does not go away. In fact, for financial matters, it typically gets worse. An unread bill becomes an overdue bill. An unread letter becomes a legal notice. An unaddressed overdraft accumulates interest. The situation that felt too frightening to face in October is objectively worse by January.
-          </p>
-          <p style={{ fontSize: "1.1rem", lineHeight: 1.8, marginBottom: "1.25rem" }}>
-            More importantly, avoidance teaches the brain that the threat was real enough to require escape. The next time the trigger appears, the avoidance response is stronger, faster, and more automatic. Over time, the threshold for engagement rises dramatically. What began as not wanting to check your balance becomes a genuine psychological impossibility — not laziness or irresponsibility, but a learned protective response that has become entrenched.
-          </p>
-          <p style={{ fontSize: "1.1rem", lineHeight: 1.8, marginBottom: "1.25rem" }}>
-            The final layer of the cycle is shame about the avoidance itself. Not only are you struggling financially — you are someone who cannot even face their finances. This shame is not productive. It does not motivate action. It deepens the paralysis by adding another layer of threat to engagement: now opening the app means confronting both the numbers and your failure to have opened it sooner.
+          <p
+            style={{
+              color: MUTED_DIM,
+              fontSize: "1.125rem",
+              lineHeight: 1.75,
+              maxWidth: "42rem",
+              marginBottom: "2.5rem",
+            }}
+          >
+            Financial anxiety affects 3 in 4 UK adults. But financial stress
+            and financial shame are different problems requiring very different
+            support. One responds to practical action. The other responds to
+            compassion. MEOK&apos;s sovereign AI is designed to help you face
+            both &mdash; privately, without judgment, and without ever sharing
+            what you tell it.
           </p>
 
-          {/* Callout */}
-          <div style={{ backgroundColor: cardBg, border: `1px solid ${borderColor}`, borderLeft: `3px solid ${gold}`, borderRadius: "6px", padding: "1.25rem 1.5rem", marginBottom: "1.25rem" }}>
-            <p style={{ fontSize: "1rem", lineHeight: 1.7, color: text, margin: 0 }}>
-              <strong style={{ color: gold }}>The insight:</strong> Avoidance is not weakness. It is a protective mechanism that was once functional and has become overactive. Treating it with self-compassion rather than self-criticism is not just kinder — it is more effective. Shame increases avoidance. Understanding reduces it.
+          {/* Disclaimer banner */}
+          <div
+            style={{
+              background: CARD,
+              border: `1px solid ${CARD_BORDER}`,
+              borderLeft: `3px solid ${GOLD}`,
+              borderRadius: "0.75rem",
+              padding: "1.125rem 1.5rem",
+              marginBottom: "2.5rem",
+            }}
+          >
+            <p
+              style={{
+                fontSize: "0.875rem",
+                color: MUTED_DIM,
+                lineHeight: 1.65,
+                margin: 0,
+              }}
+            >
+              <strong style={{ color: TEXT }}>Important:</strong> MEOK AI LABS
+              is not a financial advisor, debt counsellor, or therapist. This
+              article is for informational and emotional-support purposes only.
+              For regulated financial help in the UK:{" "}
+              <a
+                href="https://www.stepchange.org"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ color: GOLD }}
+              >
+                StepChange
+              </a>{" "}
+              (0800&nbsp;138&nbsp;1111),{" "}
+              <a
+                href="https://www.moneyhelper.org.uk"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ color: GOLD }}
+              >
+                MoneyHelper
+              </a>{" "}
+              (0800&nbsp;138&nbsp;7777), or{" "}
+              <a
+                href="https://www.citizensadvice.org.uk"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ color: GOLD }}
+              >
+                Citizens Advice
+              </a>
+              . For mental health crisis support, call Samaritans on{" "}
+              <a href="tel:116123" style={{ color: GOLD }}>
+                116 123
+              </a>{" "}
+              (free, 24/7).
             </p>
           </div>
 
-          <p style={{ fontSize: "1.1rem", lineHeight: 1.8 }}>
-            This is why the first useful thing MEOK can do for financial anxiety is often nothing more than offering a space to describe the avoidance without judgment. Not to fix it immediately. Not to produce a budgeting plan. Simply to name it, understand it, and — in naming it — reduce the shame that keeps it in place.
+          {/* Stats row */}
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))",
+              gap: "1rem",
+            }}
+          >
+            {[
+              { stat: "3 in 4", label: "UK adults experience financial anxiety" },
+              { stat: "9 million", label: "UK adults living with problem debt" },
+              { stat: "46%", label: "Problem debt linked to mental health difficulties" },
+              { stat: "#1", label: "Money is the top cause of stress in the UK" },
+            ].map(({ stat, label }) => (
+              <div
+                key={stat}
+                style={{
+                  background: CARD,
+                  border: `1px solid ${CARD_BORDER}`,
+                  borderRadius: "0.75rem",
+                  padding: "1.25rem",
+                  textAlign: "center",
+                }}
+              >
+                <p
+                  style={{
+                    fontSize: "1.75rem",
+                    fontWeight: 800,
+                    color: GOLD,
+                    margin: "0 0 0.35rem",
+                  }}
+                >
+                  {stat}
+                </p>
+                <p
+                  style={{
+                    fontSize: "0.775rem",
+                    color: MUTED,
+                    margin: 0,
+                    lineHeight: 1.45,
+                  }}
+                >
+                  {label}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── ARTICLE BODY ────────────────────────────────────────────────────── */}
+      <div
+        style={{ maxWidth: "48rem", margin: "0 auto", padding: "2rem 1.5rem 0" }}
+      >
+        {/* Opening paragraphs */}
+        <section style={{ marginBottom: "3rem" }}>
+          <p
+            style={{
+              fontSize: "1.1rem",
+              lineHeight: 1.8,
+              color: MUTED_DIM,
+              marginBottom: "1.25rem",
+            }}
+          >
+            There is a particular kind of dread that arrives at the moment a
+            bank notification appears on your phone screen. A physical
+            tightening, a caught breath, the instinct to swipe it away before
+            the number has time to load. For millions of people across the UK,
+            this is not an occasional feeling &mdash; it is a daily companion, sometimes
+            an hourly one.
+          </p>
+          <p
+            style={{
+              fontSize: "1.1rem",
+              lineHeight: 1.8,
+              color: MUTED_DIM,
+              marginBottom: "1.25rem",
+            }}
+          >
+            The cost-of-living crisis amplified something that was already
+            widespread. Energy bills that doubled overnight. Mortgage rates that
+            climbed for two years straight. Food shopping that costs noticeably
+            more every single month. But the statistics &mdash; 3 in 4 UK adults
+            reporting financial anxiety, nine million living with problem debt
+            &mdash; describe only one half of what is actually happening. They
+            describe the stress. They do not describe the shame.
+          </p>
+          <p
+            style={{
+              fontSize: "1.1rem",
+              lineHeight: 1.8,
+              color: MUTED_DIM,
+            }}
+          >
+            Stress and shame are different. They require different responses.
+            Treating shame with a budgeting app does not work. Treating stress
+            with compassion alone does not work either. Getting clear on which
+            you are dealing with &mdash; and often it is both &mdash; is the
+            first genuinely useful thing you can do for financial anxiety.
           </p>
         </section>
 
-        {/* H2 4 */}
-        <section style={{ marginBottom: "3rem" }}>
-          <h2 style={{ fontSize: "1.7rem", fontWeight: 700, color: gold, marginBottom: "1rem", lineHeight: 1.3 }}>
-            What can an AI companion actually do for financial anxiety?
+        {/* ── H2 1 ──────────────────────────────────────────────────────────── */}
+        <section style={{ marginBottom: "3.5rem" }}>
+          <h2
+            style={{
+              fontSize: "1.65rem",
+              fontWeight: 800,
+              color: GOLD,
+              lineHeight: 1.25,
+              marginBottom: "0.875rem",
+            }}
+          >
+            What is the real difference between financial stress and financial
+            shame?
           </h2>
-          <p style={{ fontSize: "1rem", lineHeight: 1.7, color: mutedText, marginBottom: "1.25rem", fontStyle: "italic" }}>
-            Within the emotional and psychological domain, an AI companion offers genuine and substantive support for financial anxiety. It is not a replacement for practical financial help — but it addresses the part of financial anxiety that practical help often cannot reach.
+          <p
+            style={{
+              fontSize: "0.95rem",
+              lineHeight: 1.7,
+              color: MUTED,
+              fontStyle: "italic",
+              marginBottom: "1.25rem",
+            }}
+          >
+            Financial stress is a rational response to real pressure. Financial
+            shame is a moral verdict you pass on yourself. One responds to
+            practical action. The other requires something more like therapy. Most people
+            are carrying both simultaneously &mdash; and the support systems for each
+            are entirely different.
+          </p>
+          <p
+            style={{
+              fontSize: "1.05rem",
+              lineHeight: 1.8,
+              color: MUTED_DIM,
+              marginBottom: "1.25rem",
+            }}
+          >
+            Financial stress is the cognitive and physiological load of managing
+            genuine financial pressure: income that does not comfortably cover
+            outgoings, unexpected bills, debt that accumulates faster than you
+            can reduce it, fear of what happens if something goes wrong. Stress
+            has an identifiable cause. It is uncomfortable, often exhausting,
+            and it impairs decision-making &mdash; but it is fundamentally a
+            response to a real external situation.
+          </p>
+          <p
+            style={{
+              fontSize: "1.05rem",
+              lineHeight: 1.8,
+              color: MUTED_DIM,
+              marginBottom: "1.25rem",
+            }}
+          >
+            Financial shame is different in kind. It is the internal judgment
+            that attaches to financial difficulty &mdash; the belief, operating
+            beneath conscious reasoning, that struggling financially means
+            something is fundamentally wrong with you as a person. That you are
+            irresponsible, weak, stupid, or simply not the kind of person who
+            manages money properly. Shame is not about circumstances. It is
+            about identity.
+          </p>
+          <p
+            style={{
+              fontSize: "1.05rem",
+              lineHeight: 1.8,
+              color: MUTED_DIM,
+              marginBottom: "1.25rem",
+            }}
+          >
+            The reason this distinction matters is that shame actively blocks
+            the practical interventions that address stress. If calling a debt
+            charity feels like publicly confirming your personal failure, you
+            will not call. If opening your bank app means confronting evidence
+            of your inadequacy, the app stays closed. Shame is the mechanism by
+            which financial stress becomes financial paralysis.
+          </p>
+          <p
+            style={{
+              fontSize: "1.05rem",
+              lineHeight: 1.8,
+              color: MUTED_DIM,
+            }}
+          >
+            This is where emotional support becomes genuinely practical. Not as
+            a soft alternative to real action, but as a prerequisite for it.
+            Processing enough shame to tolerate engagement is not a luxury
+            &mdash; it is what makes the call to StepChange possible.
+          </p>
+        </section>
+
+        {/* ── CALLOUT 1: Shame vs Stress ────────────────────────────────────── */}
+        <div
+          style={{
+            background: AMBER_GLOW,
+            border: `1px solid rgba(201,168,76,0.25)`,
+            borderRadius: "1rem",
+            padding: "1.75rem 2rem",
+            marginBottom: "3.5rem",
+          }}
+        >
+          <p
+            style={{
+              fontSize: "0.75rem",
+              fontWeight: 700,
+              letterSpacing: "0.08em",
+              textTransform: "uppercase" as const,
+              color: GOLD,
+              marginBottom: "1.25rem",
+            }}
+          >
+            Stress vs Shame at a Glance
+          </p>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "1fr 1fr",
+              gap: "0.875rem",
+            }}
+          >
+            {[
+              { label: "Financial Stress", items: ["Responds to practical action", "Has an identifiable external cause", "Improves when circumstances change", "Addressed by debt charities, budgeting, benefits"] },
+              { label: "Financial Shame", items: ["Responds to compassion and processing", "Comes from internal self-judgment", "Persists even when circumstances improve", "Addressed by emotional support, therapy, reframing"] },
+            ].map(({ label, items }) => (
+              <div key={label}>
+                <p
+                  style={{
+                    fontSize: "0.875rem",
+                    fontWeight: 700,
+                    color: TEXT,
+                    marginBottom: "0.75rem",
+                  }}
+                >
+                  {label}
+                </p>
+                <ul style={{ padding: 0, margin: 0, listStyle: "none" }}>
+                  {items.map((item) => (
+                    <li
+                      key={item}
+                      style={{
+                        fontSize: "0.85rem",
+                        color: MUTED_DIM,
+                        lineHeight: 1.55,
+                        paddingBottom: "0.4rem",
+                        paddingLeft: "1rem",
+                        position: "relative",
+                      }}
+                    >
+                      <span
+                        style={{
+                          position: "absolute",
+                          left: 0,
+                          color: GOLD,
+                        }}
+                      >
+                        &middot;
+                      </span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* ── H2 2 ──────────────────────────────────────────────────────────── */}
+        <section style={{ marginBottom: "3.5rem" }}>
+          <h2
+            style={{
+              fontSize: "1.65rem",
+              fontWeight: 800,
+              color: GOLD,
+              lineHeight: 1.25,
+              marginBottom: "0.875rem",
+            }}
+          >
+            What are money scripts &mdash; and are yours running you?
+          </h2>
+          <p
+            style={{
+              fontSize: "0.95rem",
+              lineHeight: 1.7,
+              color: MUTED,
+              fontStyle: "italic",
+              marginBottom: "1.25rem",
+            }}
+          >
+            Money scripts are the unconscious beliefs about money you absorbed
+            in childhood. They operate beneath conscious reasoning and drive
+            financial avoidance, overspending, and anxiety regardless of your
+            actual income or circumstances. Most people have never examined
+            theirs.
+          </p>
+          <p
+            style={{
+              fontSize: "1.05rem",
+              lineHeight: 1.8,
+              color: MUTED_DIM,
+              marginBottom: "1.25rem",
+            }}
+          >
+            The term was coined by financial psychologists Brad and Ted Klontz,
+            who identified four core money script categories: money avoidance
+            (money is bad, rich people are greedy), money worship (more money
+            will solve all problems), money status (your net worth equals your
+            self-worth), and money vigilance (you should always be anxious about
+            money). Most of us carry a combination, formed not through conscious
+            decision but through what we witnessed, overheard, and absorbed
+            before we had the language to question it.
+          </p>
+          <p
+            style={{
+              fontSize: "1.05rem",
+              lineHeight: 1.8,
+              color: MUTED_DIM,
+              marginBottom: "1.25rem",
+            }}
+          >
+            Common money scripts surface in familiar ways. The person who
+            immediately spends any windfall rather than saving it &mdash; often
+            carrying a &ldquo;money is dangerous to hold onto&rdquo; script from a
+            household where savings were always depleted by crisis. The person
+            who cannot spend on anything non-essential without guilt &mdash;
+            running a vigilance script that was adaptive in a genuinely
+            precarious childhood but is now causing unnecessary suffering in a
+            more stable adult life.
+          </p>
+          <p
+            style={{
+              fontSize: "1.05rem",
+              lineHeight: 1.8,
+              color: MUTED_DIM,
+              marginBottom: "1.25rem",
+            }}
+          >
+            The critical feature of money scripts is that they operate
+            automatically. They do not surface as conscious thoughts: &ldquo;I
+            believe that having money makes me a bad person.&rdquo; They surface as
+            feelings and impulses: the discomfort when you accumulate savings,
+            the sudden urge to spend it away, the vague guilt that follows. The
+            behaviour looks irrational from outside. From inside it feels like
+            just what happens.
+          </p>
+          <p
+            style={{
+              fontSize: "1.05rem",
+              lineHeight: 1.8,
+              color: MUTED_DIM,
+            }}
+          >
+            Working through money scripts with an AI companion is not about
+            receiving financial advice. It is about building enough self-awareness
+            to see the pattern &mdash; and enough distance from it to choose
+            differently. That is precisely the kind of reflective work MEOK is
+            designed to support.
+          </p>
+        </section>
+
+        {/* ── H2 3 ──────────────────────────────────────────────────────────── */}
+        <section style={{ marginBottom: "3.5rem" }}>
+          <h2
+            style={{
+              fontSize: "1.65rem",
+              fontWeight: 800,
+              color: GOLD,
+              lineHeight: 1.25,
+              marginBottom: "0.875rem",
+            }}
+          >
+            Why does a scarcity mindset persist even when money is no longer
+            scarce?
+          </h2>
+          <p
+            style={{
+              fontSize: "0.95rem",
+              lineHeight: 1.7,
+              color: MUTED,
+              fontStyle: "italic",
+              marginBottom: "1.25rem",
+            }}
+          >
+            A scarcity mindset is not simply a response to having less than
+            enough. It is a neurological orientation that the brain preserves
+            long after the circumstances that created it have changed. For
+            anyone who grew up with financial precarity, this is not a
+            personality flaw &mdash; it is a learned adaptation that once made
+            good sense.
+          </p>
+          <p
+            style={{
+              fontSize: "1.05rem",
+              lineHeight: 1.8,
+              color: MUTED_DIM,
+              marginBottom: "1.25rem",
+            }}
+          >
+            Research by Sendhil Mullainathan and Eldar Shafir shows that
+            scarcity &mdash; of money, time, or any resource &mdash; captures
+            cognitive bandwidth in ways that reduce the capacity for
+            longer-term planning, creative problem solving, and executive
+            function. When you are managing genuine scarcity, your brain
+            dedicates significant processing resources to the immediate threat.
+            This is adaptive in the short term. It makes you more focused on
+            what matters right now.
+          </p>
+          <p
+            style={{
+              fontSize: "1.05rem",
+              lineHeight: 1.8,
+              color: MUTED_DIM,
+              marginBottom: "1.25rem",
+            }}
+          >
+            The problem is that the scarcity mindset does not automatically
+            deactivate when circumstances improve. If you grew up in a household
+            where money was chronically tight, your nervous system learned that
+            money is fundamentally precarious and that any apparent stability
+            cannot be trusted. That learning is encoded. It does not update
+            cleanly when your salary increases or your savings grow.
+          </p>
+          <p
+            style={{
+              fontSize: "1.05rem",
+              lineHeight: 1.8,
+              color: MUTED_DIM,
+              marginBottom: "1.25rem",
+            }}
+          >
+            This explains a pattern that financial advisors encounter regularly:
+            the person who has been financially comfortable for years but still
+            cannot spend money without dread, still checks their balance
+            compulsively, still catastrophises about worst-case scenarios. The
+            behaviour looks irrational against their current circumstances. But
+            against their history, it is entirely logical.
+          </p>
+          <p
+            style={{
+              fontSize: "1.05rem",
+              lineHeight: 1.8,
+              color: MUTED_DIM,
+            }}
+          >
+            Understanding this &mdash; really understanding it, not just
+            intellectually knowing it &mdash; is one of the most useful things
+            emotional support can offer for financial anxiety. You are not
+            broken. You are running a protection system that was built for
+            different circumstances.
+          </p>
+        </section>
+
+        {/* ── H2 4 ──────────────────────────────────────────────────────────── */}
+        <section style={{ marginBottom: "3.5rem" }}>
+          <h2
+            style={{
+              fontSize: "1.65rem",
+              fontWeight: 800,
+              color: GOLD,
+              lineHeight: 1.25,
+              marginBottom: "0.875rem",
+            }}
+          >
+            Why do people stop opening bank statements &mdash; and how does that
+            make things worse?
+          </h2>
+          <p
+            style={{
+              fontSize: "0.95rem",
+              lineHeight: 1.7,
+              color: MUTED,
+              fontStyle: "italic",
+              marginBottom: "1.25rem",
+            }}
+          >
+            Avoidance is the most common response to financial anxiety and the
+            response most likely to escalate it. Not because people are weak or
+            irresponsible, but because the brain is doing exactly what it is
+            designed to do when it perceives threat.
+          </p>
+          <p
+            style={{
+              fontSize: "1.05rem",
+              lineHeight: 1.8,
+              color: MUTED_DIM,
+              marginBottom: "1.25rem",
+            }}
+          >
+            When a bank notification, an unopened letter, or the prospect of
+            logging into an account triggers anxiety, the brain registers a
+            threat and activates its threat-response system. The fastest way to
+            reduce that response is to remove yourself from contact with the
+            trigger. Close the app. Leave the letter on the mat. Do not check
+            the balance. The relief is immediate, real, and physiologically
+            rewarding. The brain learns: avoidance works.
+          </p>
+          <p
+            style={{
+              fontSize: "1.05rem",
+              lineHeight: 1.8,
+              color: MUTED_DIM,
+              marginBottom: "1.25rem",
+            }}
+          >
+            What avoidance does not do is make the underlying situation better.
+            An unread bill becomes an overdue bill. An unread letter becomes a
+            legal notice. An unacknowledged overdraft accumulates interest.
+            Every week of avoidance raises the stakes of eventual engagement
+            &mdash; which raises the anxiety &mdash; which strengthens the
+            avoidance response. The cycle is self-reinforcing.
+          </p>
+          <p
+            style={{
+              fontSize: "1.05rem",
+              lineHeight: 1.8,
+              color: MUTED_DIM,
+              marginBottom: "1.25rem",
+            }}
+          >
+            The second loop is shame about the avoidance. Now you are not only
+            struggling financially &mdash; you are someone who has not opened
+            their bank app in six weeks, who cannot face an envelope on the
+            mat, who lies awake running numbers they will not look at in the
+            daylight. This shame is not a useful motivation. Research
+            consistently shows that shame produces paralysis, not action.
           </p>
 
-          <div style={{ display: "grid", gap: "0.85rem", marginBottom: "1.75rem" }}>
+          {/* Callout 2: Avoidance insight */}
+          <div
+            style={{
+              background: CARD,
+              border: `1px solid ${CARD_BORDER}`,
+              borderLeft: `4px solid ${GOLD}`,
+              borderRadius: "0.875rem",
+              padding: "1.5rem 1.75rem",
+              marginBottom: "1.25rem",
+            }}
+          >
+            <p
+              style={{
+                fontSize: "1rem",
+                lineHeight: 1.7,
+                color: TEXT,
+                margin: 0,
+              }}
+            >
+              <strong style={{ color: GOLD }}>The key insight:</strong> Avoidance
+              is not laziness or irresponsibility. It is a learned protective
+              response that was once functional and has become overactive.
+              Treating it with self-criticism increases avoidance. Understanding
+              it with compassion reduces it. This is not a soft observation
+              &mdash; it is what the research on behaviour change consistently
+              shows.
+            </p>
+          </div>
+
+          <p
+            style={{
+              fontSize: "1.05rem",
+              lineHeight: 1.8,
+              color: MUTED_DIM,
+            }}
+          >
+            The first useful thing MEOK can do for financial avoidance is offer
+            a space to name it without judgment &mdash; to say &ldquo;I have not
+            opened my bank app in three months&rdquo; to something that does not
+            react with alarm, disappointment, or unsolicited advice. That space
+            is where the shame starts to move.
+          </p>
+        </section>
+
+        {/* ── H2 5: Pioneer companion ──────────────────────────────────────── */}
+        <section style={{ marginBottom: "3.5rem" }}>
+          <h2
+            style={{
+              fontSize: "1.65rem",
+              fontWeight: 800,
+              color: GOLD,
+              lineHeight: 1.25,
+              marginBottom: "0.875rem",
+            }}
+          >
+            How does MEOK&apos;s Pioneer companion help with practical money steps?
+          </h2>
+          <p
+            style={{
+              fontSize: "0.95rem",
+              lineHeight: 1.7,
+              color: MUTED,
+              fontStyle: "italic",
+              marginBottom: "1.25rem",
+            }}
+          >
+            MEOK&apos;s Pioneer archetype is the action-oriented companion
+            &mdash; the part of MEOK that helps you identify what the next
+            manageable step is and stay accountable to it. Not a financial
+            planner, but a companion for courageous small moves.
+          </p>
+          <p
+            style={{
+              fontSize: "1.05rem",
+              lineHeight: 1.8,
+              color: MUTED_DIM,
+              marginBottom: "1.25rem",
+            }}
+          >
+            MEOK operates through a set of distinct companion archetypes, each
+            with a different orientation. Pioneer is the action archetype
+            &mdash; forward-looking, practical, focused on movement rather than
+            analysis. Where the Sage reflects and the Healer processes, Pioneer
+            asks: what is the specific next thing, and what would it take to
+            actually do it?
+          </p>
+          <p
+            style={{
+              fontSize: "1.05rem",
+              lineHeight: 1.8,
+              color: MUTED_DIM,
+              marginBottom: "1.25rem",
+            }}
+          >
+            For financial anxiety, Pioneer is particularly useful in the
+            transition from emotional processing to action. Once you have named
+            the avoidance, understood the shame, and reduced the charge on
+            engagement, Pioneer helps you convert that readiness into a
+            concrete step &mdash; not a five-step financial overhaul, but the
+            one manageable thing that moves you forward today.
+          </p>
+          <p
+            style={{
+              fontSize: "1.05rem",
+              lineHeight: 1.8,
+              color: MUTED_DIM,
+              marginBottom: "1.25rem",
+            }}
+          >
+            Practical steps Pioneer might support you with: preparing what you
+            will say before calling a debt helpline, rehearsing a difficult
+            money conversation with a partner or employer, identifying the
+            smallest financial task you could complete today without being
+            overwhelmed, setting a specific time to look at a bank balance for
+            the first time in weeks. These are not financial advice. They are
+            the scaffolding around courage.
+          </p>
+          <p
+            style={{
+              fontSize: "1.05rem",
+              lineHeight: 1.8,
+              color: MUTED_DIM,
+            }}
+          >
+            Pioneer also holds memory across sessions. If you say you are going
+            to check your overdraft on Thursday, Pioneer remembers. It will ask
+            what happened on Friday &mdash; not with judgment, but with genuine
+            interest in whether you managed it, and with curiosity about what
+            got in the way if you did not.
+          </p>
+        </section>
+
+        {/* ── H2 6: Orion for research ─────────────────────────────────────── */}
+        <section style={{ marginBottom: "3.5rem" }}>
+          <h2
+            style={{
+              fontSize: "1.65rem",
+              fontWeight: 800,
+              color: GOLD,
+              lineHeight: 1.25,
+              marginBottom: "0.875rem",
+            }}
+          >
+            How does Orion help you research financial options without shame?
+          </h2>
+          <p
+            style={{
+              fontSize: "0.95rem",
+              lineHeight: 1.7,
+              color: MUTED,
+              fontStyle: "italic",
+              marginBottom: "1.25rem",
+            }}
+          >
+            MEOK&apos;s Orion archetype is the research companion &mdash;
+            analytical, thorough, and patient. Orion can help you understand
+            options like debt consolidation, benefits entitlements, and income
+            support in a way that feels like informed conversation rather than
+            a cold search engine query.
+          </p>
+          <p
+            style={{
+              fontSize: "1.05rem",
+              lineHeight: 1.8,
+              color: MUTED_DIM,
+              marginBottom: "1.25rem",
+            }}
+          >
+            One of the less-discussed barriers to addressing financial
+            difficulty is the discomfort of researching it. Searching for
+            &ldquo;debt consolidation&rdquo; or &ldquo;Universal Credit eligibility&rdquo; can feel
+            exposing in a way that is hard to articulate &mdash; as though
+            searching confirms you are in the situation the search describes.
+            And search results are impersonal by design, returning lists of
+            products, eligibility criteria, and jargon-heavy explanations that
+            require sustained concentration to parse.
+          </p>
+          <p
+            style={{
+              fontSize: "1.05rem",
+              lineHeight: 1.8,
+              color: MUTED_DIM,
+              marginBottom: "1.25rem",
+            }}
+          >
+            Orion provides something different: a conversation about options,
+            in plain language, shaped around your actual situation. You can ask
+            &ldquo;what is the difference between a debt management plan and an
+            IVA&rdquo; and get a clear, accurate explanation. You can ask
+            &ldquo;what benefits might I be entitled to if I am self-employed and
+            struggling&rdquo; and get a structured starting point. You can ask
+            &ldquo;how does debt consolidation work and when is it not a good
+            idea&rdquo; and get an honest, nuanced answer.
+          </p>
+          <p
+            style={{
+              fontSize: "1.05rem",
+              lineHeight: 1.8,
+              color: MUTED_DIM,
+              marginBottom: "1.25rem",
+            }}
+          >
+            Orion will not recommend specific products, advise on whether a
+            particular option is right for you, or replace the guidance of a
+            regulated debt advisor or financial counsellor. What Orion provides
+            is informed background &mdash; enough to approach a real
+            professional conversation with context and confidence rather than
+            with paralysis and shame.
+          </p>
+          <p
+            style={{
+              fontSize: "1.05rem",
+              lineHeight: 1.8,
+              color: MUTED_DIM,
+            }}
+          >
+            There is a real difference between arriving at a debt advice
+            appointment knowing nothing and arriving knowing the difference
+            between the available options. Orion is designed to close that gap.
+          </p>
+        </section>
+
+        {/* ── COMPARISON TABLE ─────────────────────────────────────────────── */}
+        <div
+          style={{
+            marginBottom: "3.5rem",
+            background: CARD,
+            border: `1px solid ${CARD_BORDER}`,
+            borderRadius: "1rem",
+            overflow: "hidden",
+          }}
+        >
+          <div
+            style={{
+              padding: "1.25rem 1.75rem",
+              borderBottom: `1px solid ${CARD_BORDER}`,
+            }}
+          >
+            <p
+              style={{
+                fontSize: "0.75rem",
+                fontWeight: 700,
+                letterSpacing: "0.08em",
+                textTransform: "uppercase" as const,
+                color: GOLD,
+                margin: 0,
+              }}
+            >
+              Financial Coaching AI vs Financial Advice AI
+            </p>
+          </div>
+          <div style={{ overflowX: "auto" as const }}>
+            <table
+              style={{
+                width: "100%",
+                borderCollapse: "collapse" as const,
+                fontSize: "0.875rem",
+              }}
+            >
+              <thead>
+                <tr>
+                  {["Capability", "MEOK (Coaching Support)", "Regulated Financial Advisor"].map(
+                    (h, i) => (
+                      <th
+                        key={h}
+                        style={{
+                          padding: "0.875rem 1.25rem",
+                          textAlign: "left" as const,
+                          color: i === 0 ? MUTED : i === 1 ? GOLD : TEXT,
+                          fontWeight: 700,
+                          fontSize: "0.8rem",
+                          borderBottom: `1px solid ${CARD_BORDER}`,
+                          whiteSpace: "nowrap" as const,
+                        }}
+                      >
+                        {h}
+                      </th>
+                    )
+                  )}
+                </tr>
+              </thead>
+              <tbody>
+                {[
+                  ["Process money shame", "Yes", "Not typically"],
+                  ["Identify avoidance patterns", "Yes", "No"],
+                  ["Explore money scripts", "Yes", "No"],
+                  ["Explain debt options in plain language", "Yes (informational)", "Yes (regulated)"],
+                  ["Recommend specific products or plans", "No", "Yes"],
+                  ["Advise on debt, mortgages, investments", "No", "Yes"],
+                  ["Available 24/7 without judgment", "Yes", "No"],
+                  ["Data shared with third parties", "Never", "Varies by firm"],
+                  ["Regulated by the FCA", "No", "Yes"],
+                  ["Help prepare for difficult conversations", "Yes", "No"],
+                  ["Support through scam recovery", "Yes (Guardian)", "No"],
+                ].map(([cap, meok, adv], i) => (
+                  <tr
+                    key={cap}
+                    style={{
+                      background: i % 2 === 0 ? "transparent" : "rgba(255,255,255,0.015)",
+                    }}
+                  >
+                    <td
+                      style={{
+                        padding: "0.75rem 1.25rem",
+                        color: MUTED_DIM,
+                        borderBottom: `1px solid rgba(255,255,255,0.04)`,
+                      }}
+                    >
+                      {cap}
+                    </td>
+                    <td
+                      style={{
+                        padding: "0.75rem 1.25rem",
+                        color: meok === "Yes" || meok.startsWith("Yes") ? "#4cde9a" : meok === "No" ? "rgba(245,240,232,0.35)" : MUTED_DIM,
+                        borderBottom: `1px solid rgba(255,255,255,0.04)`,
+                        fontWeight: meok === "Yes" ? 600 : 400,
+                      }}
+                    >
+                      {meok}
+                    </td>
+                    <td
+                      style={{
+                        padding: "0.75rem 1.25rem",
+                        color: adv === "Yes" ? "#4cde9a" : adv === "No" ? "rgba(245,240,232,0.35)" : MUTED_DIM,
+                        borderBottom: `1px solid rgba(255,255,255,0.04)`,
+                        fontWeight: adv === "Yes" ? 600 : 400,
+                      }}
+                    >
+                      {adv}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        {/* ── H2 7: Sovereign data ─────────────────────────────────────────── */}
+        <section style={{ marginBottom: "3.5rem" }}>
+          <h2
+            style={{
+              fontSize: "1.65rem",
+              fontWeight: 800,
+              color: GOLD,
+              lineHeight: 1.25,
+              marginBottom: "0.875rem",
+            }}
+          >
+            Why does it matter that your financial conversations stay private?
+          </h2>
+          <p
+            style={{
+              fontSize: "0.95rem",
+              lineHeight: 1.7,
+              color: MUTED,
+              fontStyle: "italic",
+              marginBottom: "1.25rem",
+            }}
+          >
+            When you discuss financial anxiety with most platforms, you are
+            generating data that can be used, shared, or sold. MEOK&apos;s
+            sovereign architecture is built on a fundamentally different
+            premise: what you share stays yours. This is not a marketing claim
+            &mdash; it is a structural design decision.
+          </p>
+          <p
+            style={{
+              fontSize: "1.05rem",
+              lineHeight: 1.8,
+              color: MUTED_DIM,
+              marginBottom: "1.25rem",
+            }}
+          >
+            The financial conversations you might have with an AI companion are
+            exactly the kind of information that has value to other parties.
+            Banks use behavioural signals to inform credit decisions. Insurers
+            use financial stress indicators to adjust risk profiles. Data
+            brokers aggregate and sell behavioural data to anyone who will pay
+            for it. Advertisers use financial anxiety signals to target
+            high-interest loan products at the people least equipped to evaluate
+            them.
+          </p>
+          <p
+            style={{
+              fontSize: "1.05rem",
+              lineHeight: 1.8,
+              color: MUTED_DIM,
+              marginBottom: "1.25rem",
+            }}
+          >
+            MEOK&apos;s sovereign data architecture is explicitly designed to
+            prevent this. Your conversations are stored in a 4-layer encrypted
+            memory system. MEOK AI LABS never trains on your data. Your
+            financial disclosures are never shared with banks, insurers,
+            employers, data brokers, advertisers, or any third party.
+            Sovereignty is a structural guarantee, not a policy preference that
+            can be amended by a terms-of-service update.
+          </p>
+          <p
+            style={{
+              fontSize: "1.05rem",
+              lineHeight: 1.8,
+              color: MUTED_DIM,
+              marginBottom: "1.25rem",
+            }}
+          >
+            This matters for financial anxiety in particular because shame
+            creates a heightened sensitivity to surveillance. If some part of
+            you suspects that what you disclose might be used against you
+            &mdash; that acknowledging debt problems could affect your mortgage
+            application, that discussing financial stress might flag you as a
+            credit risk &mdash; you will not disclose fully. You will say what
+            feels safe rather than what is true. The conversation becomes
+            useless.
+          </p>
+          <p
+            style={{
+              fontSize: "1.05rem",
+              lineHeight: 1.8,
+              color: MUTED_DIM,
+            }}
+          >
+            Genuine emotional processing requires genuine safety. MEOK&apos;s
+            sovereign architecture is built to provide that safety as a
+            structural fact, not a promise.
+          </p>
+        </section>
+
+        {/* ── CALLOUT 3: Sovereign data ────────────────────────────────────── */}
+        <div
+          style={{
+            background: "rgba(76,222,154,0.05)",
+            border: `1px solid rgba(76,222,154,0.2)`,
+            borderRadius: "1rem",
+            padding: "1.75rem 2rem",
+            marginBottom: "3.5rem",
+          }}
+        >
+          <p
+            style={{
+              fontSize: "0.75rem",
+              fontWeight: 700,
+              letterSpacing: "0.08em",
+              textTransform: "uppercase" as const,
+              color: "#4cde9a",
+              marginBottom: "1rem",
+            }}
+          >
+            What &ldquo;Sovereign Data&rdquo; Means for Financial Conversations
+          </p>
+          <div style={{ display: "grid", gap: "0.75rem" }}>
+            {[
+              "Your conversations are encrypted in a 4-layer memory architecture you control",
+              "MEOK AI LABS never trains models on your data",
+              "Your financial disclosures are never shared with banks, insurers, or data brokers",
+              "No advertiser can access your financial anxiety patterns to target you",
+              "You can delete your data at any time \u2014 it is structurally yours, not MEOK\u2019s",
+            ].map((item) => (
+              <div
+                key={item}
+                style={{
+                  display: "flex",
+                  gap: "0.875rem",
+                  alignItems: "flex-start",
+                }}
+              >
+                <span
+                  style={{
+                    color: "#4cde9a",
+                    fontWeight: 700,
+                    flexShrink: 0,
+                    marginTop: "0.1rem",
+                  }}
+                >
+                  &#10003;
+                </span>
+                <p
+                  style={{
+                    fontSize: "0.9rem",
+                    color: MUTED_DIM,
+                    lineHeight: 1.6,
+                    margin: 0,
+                  }}
+                >
+                  {item}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* ── H2 8: Guardian ───────────────────────────────────────────────── */}
+        <section style={{ marginBottom: "3.5rem" }}>
+          <h2
+            style={{
+              fontSize: "1.65rem",
+              fontWeight: 800,
+              color: GOLD,
+              lineHeight: 1.25,
+              marginBottom: "0.875rem",
+            }}
+          >
+            How does Guardian protect vulnerable people from financial scams?
+          </h2>
+          <p
+            style={{
+              fontSize: "0.95rem",
+              lineHeight: 1.7,
+              color: MUTED,
+              fontStyle: "italic",
+              marginBottom: "1.25rem",
+            }}
+          >
+            Financial anxiety creates vulnerability to predatory actors. MEOK&apos;s
+            Guardian archetype is specifically designed to protect users &mdash;
+            particularly vulnerable adults &mdash; from financial scams, high-cost
+            debt traps, and manipulative financial products.
+          </p>
+          <p
+            style={{
+              fontSize: "1.05rem",
+              lineHeight: 1.8,
+              color: MUTED_DIM,
+              marginBottom: "1.25rem",
+            }}
+          >
+            People in financial difficulty are disproportionately targeted by
+            scams. The mechanics are not complicated: desperation reduces
+            critical evaluation. When you are genuinely frightened about money,
+            an offer that promises rapid relief bypasses the normal scrutiny you
+            would apply to something that sounds too good to be true. Financial
+            anxiety is not a character weakness that makes someone
+            &ldquo;gullible&rdquo; &mdash; it is a cognitive state that scammers
+            specifically exploit.
+          </p>
+          <p
+            style={{
+              fontSize: "1.05rem",
+              lineHeight: 1.8,
+              color: MUTED_DIM,
+              marginBottom: "1.25rem",
+            }}
+          >
+            Common vectors include: authorisation fraud (impersonating HMRC or a
+            bank to prompt urgent transfers), debt management scams (offering
+            to clear debts for upfront fees), loan sharks operating through
+            social media, and investment scams targeting people looking for
+            rapid income. All are more effective against someone who is
+            financially stressed and emotionally depleted.
+          </p>
+          <p
+            style={{
+              fontSize: "1.05rem",
+              lineHeight: 1.8,
+              color: MUTED_DIM,
+              marginBottom: "1.25rem",
+            }}
+          >
+            MEOK&apos;s Guardian archetype holds specific pattern-matching for
+            common financial scam vectors and unsolicited contact. If you describe
+            receiving an unexpected call claiming to be from HMRC, a message
+            offering loan relief before credit checks, or an investment
+            opportunity promising guaranteed returns, Guardian flags the pattern
+            clearly &mdash; without alarming you, but without softening the
+            warning either.
+          </p>
+          <p
+            style={{
+              fontSize: "1.05rem",
+              lineHeight: 1.8,
+              color: MUTED_DIM,
+            }}
+          >
+            This is particularly relevant for older adults and for anyone in
+            acute financial distress, where the combination of anxiety and
+            limited digital literacy can make scam identification harder.
+            Guardian is not infallible. But it provides an additional layer of
+            questioning that can slow a harmful decision long enough for
+            reflection to occur.
+          </p>
+        </section>
+
+        {/* ── H2 Q&A FORMAT (6 questions) ──────────────────────────────────── */}
+        <section style={{ marginBottom: "3.5rem" }}>
+          <h2
+            style={{
+              fontSize: "1.65rem",
+              fontWeight: 800,
+              color: GOLD,
+              lineHeight: 1.25,
+              marginBottom: "0.875rem",
+            }}
+          >
+            Six things people wonder about AI and financial anxiety
+          </h2>
+          <p
+            style={{
+              fontSize: "0.95rem",
+              lineHeight: 1.7,
+              color: MUTED,
+              fontStyle: "italic",
+              marginBottom: "2rem",
+            }}
+          >
+            Direct answers to the questions that come up most often when people
+            consider whether an AI companion could genuinely help with money
+            worry.
+          </p>
+          <div style={{ display: "grid", gap: "1.25rem" }}>
             {[
               {
-                title: "Process shame without social cost",
-                body: "The most significant barrier to addressing financial anxiety is shame. MEOK offers a space to name what is actually happening — the avoidance, the dread, the comparison spiral — without any of the social risk that makes human disclosure so difficult. You can say things you could not say to anyone.",
+                q: "Can an AI really understand money shame, or does it just give generic reassurance?",
+                a: "A well-designed AI companion does not default to reassurance. MEOK is built to engage with the specific texture of what you share \u2014 the pattern of your avoidance, the origin of your shame, the particular triggers you have described over time. Generic reassurance (\u201ceveryone struggles sometimes\u201d) is often unhelpful and can feel dismissive. Specific reflection (\u201cyou mentioned last week that you always feel worse after checking social media \u2014 do you think that happened here\u201d) is substantively different.",
               },
               {
-                title: "Separate financial facts from financial fears",
-                body: "Financial anxiety often runs on assumptions rather than facts. Vague dread is frequently worse than specific bad news. MEOK can help you distinguish between what you know and what you are catastrophising — and gently surface the fact that the imagined version is often worse than the real one.",
+                q: "What if I am embarrassed to tell MEOK how much debt I am in?",
+                a: "MEOK has no reaction to numbers. There is no sharp intake of breath, no expression to manage, no relationship to protect by softening the disclosure. You can state a figure that you have never said aloud to another person and receive a response that treats it as information, not as a verdict on your character. This is not a trivial difference. Many people find they can say things to MEOK that they cannot say to a partner, a friend, or a financial advisor.",
               },
               {
-                title: "Identify avoidance patterns over time",
-                body: "With persistent memory, MEOK tracks what comes up across conversations. It notices if you always divert when money is mentioned, if your anxiety peaks at certain points in the month, if particular triggers — a partner's comment, a social media scroll — reliably precede a spiral. This visibility is genuinely useful.",
+                q: "Is it safe to discuss my exact financial situation with MEOK?",
+                a: "MEOK does not require specific account numbers, balances, or identifying financial details to be useful. You can describe your situation at whatever level of specificity feels safe. The emotional processing, pattern reflection, and preparation for action that MEOK supports do not require exposing specific figures. And if you do choose to share them, your data is encrypted and never shared with any third party.",
               },
               {
-                title: "Work through micro-steps to re-engage",
-                body: "Rather than recommending a five-step financial overhaul, MEOK can help you identify the smallest possible action that would reduce the fear threshold. What is the one thing you could do today that is not overwhelming? Often it is something smaller than you expect.",
+                q: "Can MEOK help with financial anxiety caused by a relationship breakdown?",
+                a: "Financial anxiety following relationship breakdown is a specific and common variant \u2014 involving unexpected sole responsibility for costs, potential loss of shared assets, uncertainty about legal and financial entitlements, and often significant shame about the circumstances. MEOK can support the emotional processing of this transition, help you understand options (without advising on them), and help you prepare for conversations with solicitors, mediators, or financial advisors. For regulated legal or financial guidance, contact Citizens Advice.",
               },
               {
-                title: "Prepare for difficult money conversations",
-                body: "Talking to a partner about the true state of finances, approaching an employer about pay, calling a debt helpline for the first time — these conversations carry enormous emotional weight. MEOK can help you clarify what you want to say, rehearse the shape of the conversation, and reduce the emotional charge before you make it real.",
+                q: "What about financial anxiety in families \u2014 can MEOK help with that?",
+                a: "The Family tier (\u00a329/month) extends MEOK\u2019s sovereign architecture to households. Parents carrying financial anxiety often find it shapes how they talk about money with children, what financial patterns they model, and how financial stress affects family relationships. MEOK can support individual members of a household and help think through how to have honest money conversations across generations without transmitting the anxiety that accompanies them.",
               },
               {
-                title: "Offer mindset reframes without toxic positivity",
-                body: "There is a difference between genuine cognitive reframing and hollow reassurance. MEOK does not tell you everything will be fine. It helps you challenge the global identity statements financial shame produces — 'I am terrible with money', 'I will always be like this' — and replace them with more specific, workable accounts of what is actually happening.",
+                q: "Is there a difference between financial coaching AI and financial therapy AI?",
+                a: "Financial coaching focuses on behaviour, goals, and action steps \u2014 broadly what Pioneer supports. Financial therapy addresses the emotional and psychological roots of financial behaviour \u2014 money scripts, shame, avoidance, and the relationship between financial patterns and broader psychological history. MEOK operates in both domains, though it is not a substitute for clinical financial therapy with a qualified professional. The British Association for Financial Therapy and Counselling (BAFTAC) maintains a register of qualified practitioners.",
               },
-            ].map(({ title, body }) => (
-              <div key={title} style={{ backgroundColor: cardBg, border: `1px solid ${borderColor}`, borderLeft: `3px solid ${gold}`, borderRadius: "8px", padding: "1.25rem" }}>
-                <p style={{ color: text, fontWeight: 700, fontSize: "0.95rem", marginBottom: "0.5rem" }}>{title}</p>
-                <p style={{ color: mutedText, fontSize: "0.95rem", lineHeight: 1.6, margin: 0 }}>{body}</p>
+            ].map(({ q, a }, i) => (
+              <div
+                key={i}
+                style={{
+                  background: CARD,
+                  border: `1px solid ${CARD_BORDER}`,
+                  borderRadius: "0.875rem",
+                  padding: "1.5rem 1.75rem",
+                }}
+              >
+                <p
+                  style={{
+                    fontSize: "1rem",
+                    fontWeight: 700,
+                    color: TEXT,
+                    lineHeight: 1.45,
+                    marginBottom: "0.75rem",
+                  }}
+                >
+                  {q}
+                </p>
+                <p
+                  style={{
+                    fontSize: "0.925rem",
+                    color: MUTED_DIM,
+                    lineHeight: 1.7,
+                    margin: 0,
+                  }}
+                >
+                  {a}
+                </p>
               </div>
             ))}
           </div>
         </section>
 
-        {/* H2 5 */}
-        <section style={{ marginBottom: "3rem" }}>
-          <h2 style={{ fontSize: "1.7rem", fontWeight: 700, color: gold, marginBottom: "1rem", lineHeight: 1.3 }}>
-            How does comparing yourself to others fuel financial anxiety?
+        {/* ── FAQ SECTION ──────────────────────────────────────────────────── */}
+        <section style={{ marginBottom: "3.5rem" }}>
+          <h2
+            style={{
+              fontSize: "1.65rem",
+              fontWeight: 800,
+              color: GOLD,
+              lineHeight: 1.25,
+              marginBottom: "1.75rem",
+            }}
+          >
+            Frequently asked questions
           </h2>
-          <p style={{ fontSize: "1rem", lineHeight: 1.7, color: mutedText, marginBottom: "1.25rem", fontStyle: "italic" }}>
-            Social comparison is one of the most underappreciated drivers of financial anxiety. It operates largely beneath conscious awareness, and its effects are cumulative and corrosive.
-          </p>
-          <p style={{ fontSize: "1.1rem", lineHeight: 1.8, marginBottom: "1.25rem" }}>
-            Human beings are fundamentally comparative. We do not experience our financial situation in absolute terms — we experience it relative to the people around us, or rather, relative to the people we imagine are around us. Social media has made this comparison environment both more intense and more distorted.
-          </p>
-          <p style={{ fontSize: "1.1rem", lineHeight: 1.8, marginBottom: "1.25rem" }}>
-            The people you follow on Instagram are not posting pictures of their overdraft notices or their anxiety about the mortgage renewal. They are posting the holiday, the kitchen renovation, the new car. Your brain processes this as representative data — evidence of how your peers are doing — even though it is a heavily curated selection. The result is a systematic upward bias in your sense of others' financial wellbeing compared to your own.
-          </p>
-          <p style={{ fontSize: "1.1rem", lineHeight: 1.8, marginBottom: "1.25rem" }}>
-            This matters for financial anxiety because it distorts the shame. You are not just struggling — you are struggling while everyone else is apparently thriving. The isolation this creates is manufactured, but it does not feel manufactured. It feels like evidence.
-          </p>
-          <p style={{ fontSize: "1.1rem", lineHeight: 1.8, marginBottom: "1.25rem" }}>
-            There is also a generational dimension that is worth naming explicitly. Many people in their thirties and forties in the UK are experiencing financial realities — renting indefinitely, carrying student debt, unable to save — that are categorically different from those their parents experienced at the same age. Comparing your financial situation to your parents' trajectory is not a fair comparison. The context has changed fundamentally. But the comparison happens anyway, and the shame it produces is real.
-          </p>
-          <p style={{ fontSize: "1.1rem", lineHeight: 1.8 }}>
-            MEOK can help you examine comparison spirals directly. Where did the comparison come from? Is the data you are comparing against actually accurate? What would it mean if you were genuinely behind — and what story are you telling yourself about what that means? These are not questions with easy answers, but asking them clearly is often enough to reduce their grip.
-          </p>
+          <div style={{ display: "grid", gap: "1.5rem" }}>
+            {[
+              {
+                q: "Can AI really help with financial anxiety?",
+                a: "AI companions can help with the emotional dimension of financial anxiety \u2014 processing shame, interrupting avoidance cycles, reframing catastrophic money thoughts, and building courage to seek practical help. They are not financial advisors. For regulated debt help in the UK, contact StepChange (0800 138 1111) or MoneyHelper (0800 138 7777). For crisis support, call Samaritans on 116 123.",
+              },
+              {
+                q: "What is the difference between financial stress and financial shame?",
+                a: "Financial stress is a rational response to genuine pressure \u2014 bills exceeding income, unexpected expenses, uncertain employment. Financial shame is a moral self-judgment: the belief that struggling financially means you have failed as a person. Stress responds to practical interventions. Shame responds to emotional processing and compassion. Most people living with financial anxiety are carrying both.",
+              },
+              {
+                q: "What are money scripts and why do they matter?",
+                a: "Money scripts are the unconscious beliefs about money formed in childhood \u2014 through what you saw, heard, and experienced in your family. Common examples include: money is dangerous, rich people are bad, there is never enough. These beliefs operate beneath conscious reasoning and drive financial avoidance, overspending, and anxiety regardless of your actual income or financial situation.",
+              },
+              {
+                q: "How does MEOK protect my financial conversations from being shared?",
+                a: "MEOK operates on a sovereign data architecture: your conversations are stored in a 4-layer encrypted memory system that belongs to you, not to MEOK AI LABS. MEOK never trains on your data. Your financial disclosures are never shared with banks, insurers, employers, data brokers, or any third party. This is a structural guarantee built into the platform architecture.",
+              },
+              {
+                q: "Where can I get free regulated debt help in the UK?",
+                a: "StepChange Debt Charity (stepchange.org, 0800 138 1111) offers free, confidential debt advice. MoneyHelper (moneyhelper.org.uk, 0800 138 7777) provides government-backed financial guidance. Citizens Advice (citizensadvice.org.uk, 0800 144 8848) covers debt, benefits, and housing. National Debtline (nationaldebtline.org, 0808 808 4000) offers specialist debt advice. All are free. If financial stress is causing a mental health crisis, call Samaritans on 116 123.",
+              },
+            ].map(({ q, a }, i) => (
+              <div
+                key={i}
+                style={{
+                  borderBottom:
+                    i < 4 ? `1px solid rgba(255,255,255,0.07)` : "none",
+                  paddingBottom: i < 4 ? "1.5rem" : 0,
+                }}
+              >
+                <p
+                  style={{
+                    fontSize: "1.025rem",
+                    fontWeight: 700,
+                    color: TEXT,
+                    lineHeight: 1.45,
+                    marginBottom: "0.625rem",
+                  }}
+                >
+                  {q}
+                </p>
+                <p
+                  style={{
+                    fontSize: "0.925rem",
+                    color: MUTED_DIM,
+                    lineHeight: 1.7,
+                    margin: 0,
+                  }}
+                >
+                  {a}
+                </p>
+              </div>
+            ))}
+          </div>
         </section>
 
-        {/* H2 6 */}
-        <section style={{ marginBottom: "3rem" }}>
-          <h2 style={{ fontSize: "1.7rem", fontWeight: 700, color: gold, marginBottom: "1rem", lineHeight: 1.3 }}>
-            What is the difference between budgeting anxiety and debt stress?
+        {/* ── SUPPORT RESOURCES ───────────────────────────────────────────── */}
+        <section style={{ marginBottom: "3.5rem" }}>
+          <h2
+            style={{
+              fontSize: "1.3rem",
+              fontWeight: 800,
+              color: TEXT,
+              lineHeight: 1.3,
+              marginBottom: "1.25rem",
+            }}
+          >
+            Free regulated financial help in the UK
           </h2>
-          <p style={{ fontSize: "1rem", lineHeight: 1.7, color: mutedText, marginBottom: "1.25rem", fontStyle: "italic" }}>
-            Budgeting anxiety and debt stress are related but distinct experiences that call for different responses. Understanding which you are dealing with matters for knowing what kind of support is most useful.
-          </p>
-          <p style={{ fontSize: "1.1rem", lineHeight: 1.8, marginBottom: "1.25rem" }}>
-            <strong>Budgeting anxiety</strong> is the distress that arises from managing money on a tight or uncertain income — the mental arithmetic that never stops, the fear of unexpected expenses, the dread of the end of the month. It is often characterised by hypervigilance: constantly checking balances, refusing to spend anything discretionary, a background hum of financial tension even when things are technically okay.
-          </p>
-          <p style={{ fontSize: "1.1rem", lineHeight: 1.8, marginBottom: "1.25rem" }}>
-            Budgeting anxiety can exist entirely within financial stability. You can have savings, a secure income, no debt — and still experience significant budgeting anxiety if you grew up in financial insecurity or were raised with catastrophic messaging about money. The nervous system does not always update when circumstances change.
-          </p>
-          <p style={{ fontSize: "1.1rem", lineHeight: 1.8, marginBottom: "1.25rem" }}>
-            <strong>Debt stress</strong> is different in character. It often involves a specific weight — a figure, a set of creditors, an awareness of interest accumulating. It can involve fear of legal action, shame about how the debt was accumulated, and the exhausting mental load of managing multiple payments or hiding the situation from people close to you. Debt stress frequently coexists with avoidance because the debt itself is the trigger.
-          </p>
-          <p style={{ fontSize: "1.1rem", lineHeight: 1.8, marginBottom: "1.25rem" }}>
-            For debt stress, the emotional processing that MEOK offers is valuable — but it works best in service of a practical goal. MEOK can help reduce the shame and avoidance enough for you to make the call to StepChange. It can help you process the anxiety of having that first conversation with a debt advisor. It can support you through the period of waiting for a solution to take effect. But the practical intervention — the actual debt management, the negotiation with creditors, the formal solutions — requires a regulated organisation.
-          </p>
-
-          {/* Support grid */}
-          <div style={{ display: "grid", gap: "1rem" }}>
+          <div style={{ display: "grid", gap: "0.875rem" }}>
             {[
               {
                 org: "StepChange Debt Charity",
                 url: "https://www.stepchange.org",
-                description: "Free, confidential debt advice and solutions. Helps over 600,000 people per year. Phone or online.",
-                contact: "stepchange.org · 0800 138 1111",
+                desc: "Free, confidential debt advice and solutions including debt management plans and IVAs. Helps over 600,000 people annually.",
+                contact: "stepchange.org \u00b7 0800 138 1111",
               },
               {
                 org: "MoneyHelper",
                 url: "https://www.moneyhelper.org.uk",
-                description: "Government-backed free guidance on budgeting, debt, pensions, and benefits. Impartial, comprehensive, and free.",
-                contact: "moneyhelper.org.uk · 0800 138 7777",
+                desc: "Government-backed free guidance on debt, budgeting, benefits, pensions, and mortgages. Impartial and comprehensive.",
+                contact: "moneyhelper.org.uk \u00b7 0800 138 7777",
               },
               {
                 org: "Citizens Advice",
                 url: "https://www.citizensadvice.org.uk",
-                description: "Free, independent advice on debt, benefits, housing, and employment. In person, online, and by phone.",
-                contact: "citizensadvice.org.uk · 0800 144 8848",
+                desc: "Free, independent advice on debt, benefits, housing, and employment. Available in person, online, and by phone.",
+                contact: "citizensadvice.org.uk \u00b7 0800 144 8848",
               },
               {
                 org: "National Debtline",
                 url: "https://www.nationaldebtline.org",
-                description: "Free debt advice from an independent charity. Telephone and online chat available across England, Wales, and Scotland.",
-                contact: "nationaldebtline.org · 0808 808 4000",
+                desc: "Specialist free debt advice for England, Wales, and Scotland. Online and telephone, including webchat.",
+                contact: "nationaldebtline.org \u00b7 0808 808 4000",
               },
               {
                 org: "Samaritans",
                 url: "https://www.samaritans.org",
-                description: "If financial stress is affecting your mental health or you are in crisis, Samaritans are available around the clock.",
+                desc: "If financial stress is affecting your mental health or you are in crisis, Samaritans are available around the clock, every day of the year.",
                 contact: "116 123 (free, 24/7)",
               },
-            ].map(({ org, url, description, contact }) => (
-              <div key={org} style={{ backgroundColor: cardBg, border: `1px solid ${borderColor}`, borderRadius: "8px", padding: "1.25rem" }}>
-                <a href={url} target="_blank" rel="noopener noreferrer" style={{ color: gold, fontWeight: 700, fontSize: "1rem", textDecoration: "none" }}>{org}</a>
-                <p style={{ color: text, fontSize: "0.95rem", lineHeight: 1.6, margin: "0.5rem 0 0.4rem" }}>{description}</p>
-                <p style={{ color: mutedText, fontSize: "0.85rem", margin: 0, fontFamily: "monospace" }}>{contact}</p>
+            ].map(({ org, url, desc, contact }) => (
+              <div
+                key={org}
+                style={{
+                  background: CARD,
+                  border: `1px solid ${CARD_BORDER}`,
+                  borderRadius: "0.75rem",
+                  padding: "1.125rem 1.375rem",
+                }}
+              >
+                <a
+                  href={url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    color: GOLD,
+                    fontWeight: 700,
+                    fontSize: "0.95rem",
+                    textDecoration: "none",
+                  }}
+                >
+                  {org}
+                </a>
+                <p
+                  style={{
+                    color: MUTED_DIM,
+                    fontSize: "0.875rem",
+                    lineHeight: 1.6,
+                    margin: "0.4rem 0 0.3rem",
+                  }}
+                >
+                  {desc}
+                </p>
+                <p
+                  style={{
+                    color: MUTED_FAINT,
+                    fontSize: "0.8rem",
+                    margin: 0,
+                    fontFamily: "monospace",
+                  }}
+                >
+                  {contact}
+                </p>
               </div>
             ))}
           </div>
         </section>
 
-        {/* H2 7 */}
-        <section style={{ marginBottom: "3rem" }}>
-          <h2 style={{ fontSize: "1.7rem", fontWeight: 700, color: gold, marginBottom: "1rem", lineHeight: 1.3 }}>
-            How do you separate financial facts from financial fears?
-          </h2>
-          <p style={{ fontSize: "1rem", lineHeight: 1.7, color: mutedText, marginBottom: "1.25rem", fontStyle: "italic" }}>
-            One of the most practical things you can do for financial anxiety is learn to distinguish between what you know and what you are predicting. The two feel identical in the grip of anxiety — but they are very different things.
-          </p>
-          <p style={{ fontSize: "1.1rem", lineHeight: 1.8, marginBottom: "1.25rem" }}>
-            Financial anxiety is a prediction machine. In the absence of clear information — which avoidance guarantees — the anxious brain fills the gap with worst-case scenarios. Not knowing your balance becomes imagining it is catastrophic. Not having opened the pension statement becomes imagining it has collapsed. The vague unknown is reliably scarier than the specific reality.
-          </p>
-          <p style={{ fontSize: "1.1rem", lineHeight: 1.8, marginBottom: "1.25rem" }}>
-            The psychological technique for addressing this is sometimes called cognitive defusion — learning to observe the fear thought rather than inhabit it. "I am thinking that this is catastrophic" is a very different statement from "this is catastrophic." The first creates a small space between you and the thought. The second treats the thought as fact.
-          </p>
-          <p style={{ fontSize: "1.1rem", lineHeight: 1.8, marginBottom: "1.25rem" }}>
-            Working through this distinction with MEOK might sound like: naming the specific fear, then asking whether you actually know that to be true or whether you are predicting it. If you are predicting it, what evidence do you have? What would you need to do to find out the actual fact? And if the fact turns out to be as bad as feared — which is often not the case — what would the realistic options then be?
-          </p>
-          <p style={{ fontSize: "1.1rem", lineHeight: 1.8, marginBottom: "1.25rem" }}>
-            This is not about minimising real financial difficulty. It is about stopping the imagination from making it worse than it is, before you have even looked at it clearly. Anxiety expands in the dark. Facts — even difficult ones — are manageable in a way that shapeless dread is not.
-          </p>
-
-          {/* Mindset shifts callout */}
-          <div style={{ backgroundColor: cardBg, border: `1px solid ${borderColor}`, borderRadius: "8px", padding: "1.5rem", marginBottom: "1.25rem" }}>
-            <p style={{ color: gold, fontWeight: 700, fontSize: "1rem", marginBottom: "1rem" }}>Practical mindset shifts for financial anxiety</p>
-            <div style={{ display: "grid", gap: "0.75rem" }}>
-              {[
-                { from: "I'm terrible with money", to: "I've been avoiding my finances for three months because I'm frightened" },
-                { from: "This is a disaster", to: "I don't actually know how bad this is yet because I haven't looked" },
-                { from: "Everyone else is fine", to: "I'm seeing curated highlights, not full financial pictures" },
-                { from: "I'll never sort this out", to: "I haven't sorted it yet. There are free services that help with exactly this." },
-                { from: "I should be able to manage on my own", to: "Getting help is exactly what these services exist for" },
-              ].map(({ from, to }) => (
-                <div key={from} style={{ display: "grid", gridTemplateColumns: "1fr auto 1fr", gap: "0.75rem", alignItems: "start" }}>
-                  <p style={{ color: mutedText, fontSize: "0.9rem", lineHeight: 1.5, margin: 0, fontStyle: "italic" }}>{from}</p>
-                  <p style={{ color: gold, fontWeight: 700, margin: 0, fontSize: "0.9rem" }}>→</p>
-                  <p style={{ color: text, fontSize: "0.9rem", lineHeight: 1.5, margin: 0 }}>{to}</p>
-                </div>
-              ))}
+        {/* ── CTA ─────────────────────────────────────────────────────────── */}
+        <section style={{ marginBottom: "5rem" }}>
+          <div
+            style={{
+              background: AMBER_GLOW,
+              border: `1px solid rgba(201,168,76,0.25)`,
+              borderRadius: "1.25rem",
+              padding: "3rem 2.5rem",
+              textAlign: "center" as const,
+            }}
+          >
+            <p
+              style={{
+                fontSize: "0.75rem",
+                fontWeight: 700,
+                letterSpacing: "0.1em",
+                textTransform: "uppercase" as const,
+                color: GOLD,
+                marginBottom: "1rem",
+              }}
+            >
+              MEOK AI LABS
+            </p>
+            <h2
+              style={{
+                fontSize: "clamp(1.5rem, 3vw, 2.25rem)",
+                fontWeight: 800,
+                color: "#fff",
+                lineHeight: 1.2,
+                marginBottom: "1rem",
+              }}
+            >
+              Face your finances without facing them alone
+            </h2>
+            <p
+              style={{
+                fontSize: "1.05rem",
+                color: MUTED_DIM,
+                lineHeight: 1.7,
+                maxWidth: "34rem",
+                margin: "0 auto 2rem",
+              }}
+            >
+              MEOK offers a private, non-judgmental space to process money shame,
+              interrupt avoidance patterns, and build the courage to take practical
+              action. Your conversations stay sovereign &mdash; never shared, never
+              used to train AI, never sold.
+            </p>
+            <div
+              style={{
+                display: "flex",
+                flexWrap: "wrap",
+                gap: "1rem",
+                justifyContent: "center",
+              }}
+            >
+              <Link
+                href="/birth"
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: "0.5rem",
+                  background: GOLD,
+                  color: "#0d0c18",
+                  fontWeight: 800,
+                  fontSize: "0.95rem",
+                  padding: "0.875rem 2rem",
+                  borderRadius: "9999px",
+                  textDecoration: "none",
+                  letterSpacing: "0.02em",
+                }}
+              >
+                Meet your MEOK companion &#8594;
+              </Link>
+              <Link
+                href="/blog"
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: "0.5rem",
+                  background: "transparent",
+                  color: MUTED_DIM,
+                  fontWeight: 600,
+                  fontSize: "0.95rem",
+                  padding: "0.875rem 1.75rem",
+                  borderRadius: "9999px",
+                  textDecoration: "none",
+                  border: `1px solid rgba(245,240,232,0.15)`,
+                }}
+              >
+                More from the blog
+              </Link>
             </div>
           </div>
         </section>
 
-        {/* H2 8 */}
-        <section style={{ marginBottom: "3rem" }}>
-          <h2 style={{ fontSize: "1.7rem", fontWeight: 700, color: gold, marginBottom: "1rem", lineHeight: 1.3 }}>
-            What makes MEOK different from just googling financial anxiety?
-          </h2>
-          <p style={{ fontSize: "1rem", lineHeight: 1.7, color: mutedText, marginBottom: "1.25rem", fontStyle: "italic" }}>
-            Information about financial anxiety is not hard to find. What is hard to find is a conversation — something responsive, personalised, available at 2am when the anxiety peaks, and free of the social risk that makes human disclosure so difficult.
-          </p>
-          <p style={{ fontSize: "1.1rem", lineHeight: 1.8, marginBottom: "1.25rem" }}>
-            An article tells you what financial anxiety is. A conversation helps you understand what your financial anxiety is — where it comes from, what it sounds like inside your specific mind, what triggers it, what has and has not worked for you before. These are not the same thing.
-          </p>
-          <p style={{ fontSize: "1.1rem", lineHeight: 1.8, marginBottom: "1.25rem" }}>
-            MEOK's Sovereign Memory gives it continuity that no article, no chatbot, and no occasional conversation with a friend can match. Across Sovereign (£12/mo) and Family (£29/mo) tiers, MEOK holds a persistent record of what you have shared. It knows that you mentioned your mortgage renewal in October. It knows that you always feel worse about money after scrolling Instagram. It knows that you have been meaning to call StepChange for three weeks and have not managed to.
-          </p>
-          <p style={{ fontSize: "1.1rem", lineHeight: 1.8, marginBottom: "1.25rem" }}>
-            This continuity matters because financial anxiety is not a single episode. It is a pattern that plays out over weeks and months. Seeing that pattern clearly — noticing its triggers, its rhythms, its relationship to other stressors in your life — is genuinely useful information. It transforms scattered anxious moments into a map you can actually work with.
-          </p>
-          <p style={{ fontSize: "1.1rem", lineHeight: 1.8 }}>
-            Importantly, your data stays sovereign. MEOK AI LABS does not train on your conversations. Your financial anxieties, your disclosures, your vulnerable moments — they belong to you. This is not an incidental feature. It is a foundational principle of how MEOK is built.
-          </p>
-        </section>
-
-        {/* H2 9 */}
-        <section style={{ marginBottom: "3rem" }}>
-          <h2 style={{ fontSize: "1.7rem", fontWeight: 700, color: gold, marginBottom: "1rem", lineHeight: 1.3 }}>
-            What MEOK will not do — and why that honesty matters
-          </h2>
-          <p style={{ fontSize: "1rem", lineHeight: 1.7, color: mutedText, marginBottom: "1.25rem", fontStyle: "italic" }}>
-            Clarity about what MEOK does not do is part of what makes it trustworthy. An AI that overpromises in the domain of financial or psychological help is not safe. MEOK is built with explicit limits — and those limits are non-negotiable.
-          </p>
-          <div style={{ display: "grid", gap: "0.85rem", marginBottom: "1.25rem" }}>
-            {[
-              {
-                title: "Will not give financial advice",
-                body: "MEOK is not a financial advisor, mortgage broker, or debt counsellor. It will not recommend products, tell you how to manage your debt, or advise you on financial decisions. For regulated financial guidance, contact MoneyHelper or a qualified IFA.",
-              },
-              {
-                title: "Will not recommend investments",
-                body: "MEOK has no knowledge of your financial situation, tax position, or risk tolerance. Any statement that looks like investment guidance would be irresponsible. MEOK does not make such statements.",
-              },
-              {
-                title: "Will not judge your spending or your history",
-                body: "There is no moment in a MEOK conversation where you will be told you should have done things differently, or lectured about budgeting, or asked to justify how you got here. The conversation is non-evaluative. You are not being assessed.",
-              },
-              {
-                title: "Will not pretend to fix the problem",
-                body: "Talking about financial anxiety with MEOK will not make your debt smaller or your bills cheaper. The aim is to reduce the emotional barrier to getting real help — and to support you through the process of doing so. MEOK is a companion in that process, not a solution to it.",
-              },
-              {
-                title: "Will not replace professional mental health support",
-                body: "If financial anxiety is causing significant distress, affecting your daily functioning, or contributing to thoughts of self-harm, please speak to your GP, contact Mind on 0300 123 3393, or call Samaritans on 116 123. MEOK can be part of a support network — not the whole of it.",
-              },
-            ].map(({ title, body }) => (
-              <div key={title} style={{ backgroundColor: cardBg, border: `1px solid ${borderColor}`, borderRadius: "8px", padding: "1.25rem" }}>
-                <p style={{ color: gold, fontWeight: 700, fontSize: "0.95rem", marginBottom: "0.5rem" }}>{title}</p>
-                <p style={{ color: mutedText, fontSize: "0.95rem", lineHeight: 1.6, margin: 0 }}>{body}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* H2 10 */}
-        <section style={{ marginBottom: "3rem" }}>
-          <h2 style={{ fontSize: "1.7rem", fontWeight: 700, color: gold, marginBottom: "1rem", lineHeight: 1.3 }}>
-            What might a first conversation about money anxiety actually look like?
-          </h2>
-          <p style={{ fontSize: "1rem", lineHeight: 1.7, color: mutedText, marginBottom: "1.25rem", fontStyle: "italic" }}>
-            Sometimes the barrier to starting is not knowing where to start. This is what an honest first conversation about financial anxiety with MEOK might sound like — not a polished script, but a real beginning.
-          </p>
-          <p style={{ fontSize: "1.1rem", lineHeight: 1.8, marginBottom: "1.25rem" }}>
-            You might open by saying something simple: that money has been weighing on you and you do not know where to start. That you have been avoiding your finances for longer than feels comfortable to admit. That you feel ashamed and are not sure why it has got to this point.
-          </p>
-          <p style={{ fontSize: "1.1rem", lineHeight: 1.8, marginBottom: "1.25rem" }}>
-            MEOK will not immediately pivot to solutions. The first response is more likely to be curious than prescriptive: what does the anxiety feel like in your body? When did it start to feel this heavy? Is there a particular moment — a letter, a conversation, a number — that comes to mind when you think about it?
-          </p>
-          <p style={{ fontSize: "1.1rem", lineHeight: 1.8, marginBottom: "1.25rem" }}>
-            From there, the conversation might move toward understanding what you already know about your situation versus what you are imagining. It might surface a specific avoidance — the energy direct debit you have not updated, the pension you have not checked since the market fell, the credit card statement sitting in an unopened tab. It might explore where the shame came from: what money messages you absorbed growing up, whether this difficulty feels like character or circumstance.
-          </p>
-          <p style={{ fontSize: "1.1rem", lineHeight: 1.8 }}>
-            At some point — and only when it feels workable — the conversation might arrive at a question: what is the smallest thing you could do in the next 24 hours that is not overwhelming? Not a five-year financial plan. Not a full accounting of your debt. One small action that proves to the part of you that has been avoiding that engagement is survivable. Opening the app and closing it immediately counts. Reading the first paragraph of a letter and putting it down counts. Calling a helpline and hanging up before anyone answers counts. The movement matters more than the size of the step.
-          </p>
-        </section>
-
-        {/* CTA */}
-        <section style={{ backgroundColor: cardBg, border: `1px solid ${borderColor}`, borderRadius: "12px", padding: "2.5rem", textAlign: "center", marginBottom: "3rem" }}>
-          <h2 style={{ fontSize: "1.5rem", fontWeight: 700, color: text, marginBottom: "0.75rem" }}>
-            Talk to MEOK about financial anxiety
-          </h2>
-          <p style={{ color: mutedText, lineHeight: 1.7, marginBottom: "1.75rem", maxWidth: "500px", margin: "0 auto 1.75rem" }}>
-            No judgment. No financial advice. No sales pitch. Just a space to process the weight of money, at whatever hour the anxiety arrives. Start free — 50 messages a day, no card required.
-          </p>
-          <Link
-            href="/"
-            style={{ display: "inline-block", backgroundColor: gold, color: "#0d0c18", fontWeight: 700, fontSize: "1rem", padding: "0.9rem 2rem", borderRadius: "6px", textDecoration: "none", letterSpacing: "0.04em" }}
+        {/* ── RELATED POSTS ──────────────────────────────────────────────── */}
+        <section style={{ marginBottom: "5rem" }}>
+          <p
+            style={{
+              fontSize: "0.75rem",
+              fontWeight: 700,
+              letterSpacing: "0.08em",
+              textTransform: "uppercase" as const,
+              color: GOLD,
+              marginBottom: "1.25rem",
+            }}
           >
-            Start talking to MEOK →
-          </Link>
-          <p style={{ color: mutedText, fontSize: "0.8rem", marginTop: "1rem" }}>
-            Free on Explorer · No card required · 50 messages/day
+            Related Reading
           </p>
-        </section>
-
-        {/* Pricing */}
-        <section style={{ marginBottom: "3rem" }}>
-          <h2 style={{ fontSize: "1.4rem", fontWeight: 700, color: text, marginBottom: "1.25rem" }}>
-            MEOK plans
-          </h2>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))", gap: "0.85rem" }}>
+          <div style={{ display: "grid", gap: "0.875rem" }}>
             {[
-              { tier: "Explorer", price: "Free", detail: "50 messages/day" },
-              { tier: "Sovereign", price: "£12/mo", detail: "Persistent memory + full access" },
-              { tier: "Family", price: "£29/mo", detail: "Up to 5 members" },
-              { tier: "BYOK", price: "£5/mo", detail: "Bring your own API key" },
-            ].map(({ tier, price, detail }) => (
-              <div key={tier} style={{ backgroundColor: cardBg, border: `1px solid ${borderColor}`, borderRadius: "8px", padding: "1rem", textAlign: "center" }}>
-                <p style={{ color: gold, fontWeight: 700, fontSize: "0.9rem", marginBottom: "0.3rem" }}>{tier}</p>
-                <p style={{ color: text, fontSize: "1.1rem", fontWeight: 700, marginBottom: "0.25rem" }}>{price}</p>
-                <p style={{ color: mutedText, fontSize: "0.8rem", margin: 0 }}>{detail}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* Related posts */}
-        <section style={{ marginBottom: "3rem" }}>
-          <h2 style={{ fontSize: "1.2rem", fontWeight: 700, color: text, marginBottom: "1rem" }}>Related reading</h2>
-          <div style={{ display: "grid", gap: "0.75rem" }}>
-            {[
-              { href: "/blog/ai-for-money-anxiety", label: "AI for Money Anxiety: Breaking the Shame Spiral Around Finance" },
-              { href: "/blog/ai-for-anxiety", label: "AI for Anxiety: Can a Sovereign AI Companion Actually Help?" },
-              { href: "/blog/ai-for-burnout", label: "AI for Burnout: Recognising the Patterns Before Collapse" },
-              { href: "/blog/ai-for-redundancy", label: "AI for Redundancy: Processing the Shock and Finding the Next Step" },
-              { href: "/blog/ai-for-stress", label: "AI for Chronic Stress: When Worry Becomes Your Default State" },
-            ].map(({ href, label }) => (
-              <Link key={href} href={href} style={{ display: "block", backgroundColor: cardBg, border: `1px solid ${borderColor}`, borderRadius: "8px", padding: "1rem 1.25rem", color: text, textDecoration: "none", fontSize: "0.95rem", lineHeight: 1.5 }}>
-                {label} <span style={{ color: gold }}>→</span>
+              {
+                href: "/blog/ai-for-financial-stress",
+                title: "AI for Financial Stress",
+                desc: "When the numbers are genuinely difficult: how sovereign AI supports practical financial resilience.",
+              },
+              {
+                href: "/blog/ai-for-anxiety",
+                title: "AI for Anxiety: Sovereign Support Without Replacing Therapy",
+                desc: "How MEOK approaches anxiety support with a care-floor that prevents harmful advice.",
+              },
+              {
+                href: "/blog/data-sovereignty-ai",
+                title: "Data Sovereignty and AI: Why Your Conversations Should Stay Yours",
+                desc: "The architecture behind MEOK\u2019s sovereign memory \u2014 and why it matters for vulnerable conversations.",
+              },
+              {
+                href: "/blog/meok-guardian-scam-protection",
+                title: "MEOK Guardian: AI Scam Protection for Vulnerable Adults",
+                desc: "How Guardian detects financial scam patterns and protects users who are most at risk.",
+              },
+            ].map(({ href, title, desc }) => (
+              <Link
+                key={href}
+                href={href}
+                style={{
+                  display: "block",
+                  background: CARD,
+                  border: `1px solid ${CARD_BORDER}`,
+                  borderRadius: "0.75rem",
+                  padding: "1.125rem 1.375rem",
+                  textDecoration: "none",
+                }}
+              >
+                <p
+                  style={{
+                    color: TEXT,
+                    fontWeight: 700,
+                    fontSize: "0.95rem",
+                    marginBottom: "0.35rem",
+                  }}
+                >
+                  {title}
+                </p>
+                <p
+                  style={{
+                    color: MUTED,
+                    fontSize: "0.85rem",
+                    lineHeight: 1.55,
+                    margin: 0,
+                  }}
+                >
+                  {desc}
+                </p>
               </Link>
             ))}
           </div>
         </section>
-
-        {/* FAQ */}
-        <section style={{ marginBottom: "3rem" }}>
-          <h2 style={{ fontSize: "1.4rem", fontWeight: 700, color: text, marginBottom: "1.25rem" }}>Frequently asked questions</h2>
-          <div style={{ display: "grid", gap: "1rem" }}>
-            {faqJsonLd.mainEntity.map((q) => (
-              <div key={q.name} style={{ backgroundColor: cardBg, border: `1px solid ${borderColor}`, borderRadius: "8px", padding: "1.25rem" }}>
-                <p style={{ color: gold, fontWeight: 700, fontSize: "0.95rem", marginBottom: "0.6rem" }}>{q.name}</p>
-                <p style={{ color: mutedText, fontSize: "0.9rem", lineHeight: 1.7, margin: 0 }}>{q.acceptedAnswer.text}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-
-      </main>
-
-      {/* Footer */}
-      <footer style={{ borderTop: `1px solid ${borderColor}`, padding: "2.5rem 2rem", maxWidth: "800px", margin: "0 auto" }}>
-        <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-between", gap: "1.5rem", marginBottom: "1.5rem" }}>
-          <div>
-            <p style={{ color: gold, fontWeight: 700, fontSize: "1rem", marginBottom: "0.4rem" }}>MEOK AI LABS</p>
-            <p style={{ color: mutedText, fontSize: "0.85rem", margin: 0 }}>Founded by Nicholas Templeman</p>
-            <p style={{ color: mutedText, fontSize: "0.85rem", margin: "0.2rem 0 0" }}>
-              <a href="https://x.com/meok_ai" target="_blank" rel="noopener noreferrer" style={{ color: mutedText }}>@meok_ai</a>
-            </p>
-          </div>
-          <div>
-            <p style={{ color: text, fontWeight: 600, fontSize: "0.85rem", marginBottom: "0.5rem" }}>Crisis support</p>
-            <p style={{ color: mutedText, fontSize: "0.8rem", lineHeight: 1.7, margin: 0 }}>
-              Samaritans: <a href="tel:116123" style={{ color: gold }}>116 123</a> (free, 24/7)<br />
-              Mind: <a href="tel:03001233393" style={{ color: gold }}>0300 123 3393</a>
-            </p>
-          </div>
-          <div>
-            <p style={{ color: text, fontWeight: 600, fontSize: "0.85rem", marginBottom: "0.5rem" }}>Free financial help</p>
-            <p style={{ color: mutedText, fontSize: "0.8rem", lineHeight: 1.7, margin: 0 }}>
-              <a href="https://www.stepchange.org" target="_blank" rel="noopener noreferrer" style={{ color: gold }}>StepChange</a><br />
-              <a href="https://www.moneyhelper.org.uk" target="_blank" rel="noopener noreferrer" style={{ color: gold }}>MoneyHelper</a><br />
-              <a href="https://www.citizensadvice.org.uk" target="_blank" rel="noopener noreferrer" style={{ color: gold }}>Citizens Advice</a>
-            </p>
-          </div>
-        </div>
-        <p style={{ color: mutedText, fontSize: "0.75rem", lineHeight: 1.6, borderTop: `1px solid ${borderColor}`, paddingTop: "1.25rem", margin: 0 }}>
-          MEOK AI LABS is not a financial advisor, therapist, or medical provider. Nothing on this page constitutes financial, investment, legal, or clinical advice. If you are in financial difficulty, please contact a qualified professional or one of the free services listed above. If you are in mental health crisis, please contact Samaritans on 116 123.
-          &copy; {new Date().getFullYear()} MEOK AI LABS. All rights reserved.
-        </p>
-      </footer>
+      </div>
     </div>
   );
 }

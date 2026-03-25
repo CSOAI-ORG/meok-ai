@@ -3026,6 +3026,54 @@ const POSTS = [
     category: "wellbeing",
     featured: false,
   },
+  {
+    slug: "meok-for-accountants",
+    title: "MEOK for Accountants: Sovereign AI for the Professionals Who Handle Everyone Else's Secrets",
+    excerpt:
+      "Accountants are trusted with sensitive data. Using cloud AI for client work creates genuine confidentiality risks. MEOK's sovereign architecture keeps client information where it belongs — with you.",
+    date: "March 25, 2026",
+    readTime: "9 min read",
+    tag: "Professional",
+    tagColor: "#c9a84c",
+    category: "professional",
+    featured: false,
+  },
+  {
+    slug: "ai-for-social-media-addiction",
+    title: "AI for Social Media Addiction: Using Technology to Escape Technology's Trap",
+    excerpt:
+      "Social media is engineered for addiction. But the solution is not abstinence — it is conscious, sovereign use of technology. MEOK helps you understand your patterns and fill the void that social media occupies.",
+    date: "March 25, 2026",
+    readTime: "9 min read",
+    tag: "Wellbeing",
+    tagColor: "#4a9d6f",
+    category: "wellbeing",
+    featured: false,
+  },
+  {
+    slug: "the-future-of-ai-companions",
+    title: "The Future of AI Companions: From Chatbots to Sovereign Digital Minds",
+    excerpt:
+      "AI companions in 2026 are chatbots with memory. By 2030, they may be sovereign digital entities with their own rights. MEOK is building the infrastructure for a transition that nobody else is preparing for.",
+    date: "March 25, 2026",
+    readTime: "12 min read",
+    tag: "Research",
+    tagColor: "#7c6fcd",
+    category: "research",
+    featured: true,
+  },
+  {
+    slug: "ai-for-parenting-teens",
+    title: "AI for Parenting Teenagers: Support for the Stage Nobody Prepares You For",
+    excerpt:
+      "Parenting a teenager is one of the most emotionally demanding phases of parenthood, yet it is almost never discussed. MEOK's sovereign AI helps parents navigate the teenage years with clarity and perspective.",
+    date: "March 25, 2026",
+    readTime: "9 min read",
+    tag: "Wellbeing",
+    tagColor: "#4a9d6f",
+    category: "wellbeing",
+    featured: false,
+  },
 ];
 
 // ── Category filter tabs ──────────────────────────────────────────────────────

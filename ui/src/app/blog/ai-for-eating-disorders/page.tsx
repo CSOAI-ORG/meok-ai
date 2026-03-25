@@ -5,35 +5,32 @@ import Link from "next/link"
 
 export const metadata: Metadata = {
   title:
-    "AI Support for Eating Disorders: What MEOK Does \u2014 and Won\u2019t Do | MEOK AI LABS",
+    "AI for Eating Disorder Recovery: A Companion That Supports Without Triggering | MEOK AI LABS",
   description:
-    "Eating disorders carry the highest mortality rate of any mental illness. MEOK AI LABS never " +
-    "comments on weight, food choices, or calories \u2014 governed by the Maternal Covenant care-floor. " +
-    "Beat helpline 0808 801 0677. Between-session support, not treatment.",
+    "Eating disorder recovery requires careful, consistent support. MEOK\u2019s sovereign AI companion provides 24/7 non-judgmental support while the Maternal Covenant ensures it never triggers or reinforces disordered patterns.",
   keywords: [
-    "AI support eating disorders UK",
-    "AI for anorexia support",
-    "AI for bulimia support",
+    "AI for eating disorder recovery",
+    "AI companion eating disorders UK",
+    "AI for anorexia nervosa support",
+    "AI for bulimia nervosa support",
+    "AI for binge eating disorder",
     "ARFID support AI",
-    "binge eating disorder AI",
     "MEOK eating disorder safe AI",
-    "eating disorder between-session support",
-    "Beat eating disorders 0808 801 0677",
-    "AI body neutrality",
-    "Maternal Covenant eating disorders",
-    "OSFED AI support",
-    "eating disorder AI companion UK",
-    "AI care-floor eating disorders",
+    "Maternal Covenant boundary respect",
+    "eating disorder care floor AI",
     "sovereign AI eating disorder recovery",
+    "Beat eating disorders helpline",
+    "Healer AI companion somatic",
+    "Guardian AI emergency escalation",
+    "eating disorder between-session support",
+    "OSFED AI companion",
   ],
   authors: [{ name: "Nicholas Templeman", url: "https://meok.ai" }],
   openGraph: {
     title:
-      "AI Support for Eating Disorders: What MEOK Does \u2014 and Won\u2019t Do",
+      "AI for Eating Disorder Recovery: A Companion That Supports Without Triggering",
     description:
-      "Eating disorders have the highest mortality rate of any mental illness. MEOK\u2019s care-floor " +
-      "blocks weight, calorie, and diet-culture content. Between-session support only \u2014 Beat " +
-      "helpline 0808 801 0677 always signposted.",
+      "MEOK\u2019s sovereign AI companion provides 24/7 non-judgmental support for eating disorder recovery. The Maternal Covenant\u2019s boundary_respect dimension and care floor of 0.3 ensure it never triggers or reinforces disordered patterns.",
     type: "article",
     publishedTime: "2026-03-24T00:00:00Z",
     authors: ["Nicholas Templeman"],
@@ -41,21 +38,21 @@ export const metadata: Metadata = {
     url: "https://meok.ai/blog/ai-for-eating-disorders",
     images: [
       {
-        url: "https://meok.ai/api/og?title=AI+Support+for+Eating+Disorders&desc=Care-floor+protection%2C+body+neutrality%2C+Beat+signposting",
+        url: "https://meok.ai/api/og?title=AI+for+Eating+Disorder+Recovery&desc=Supports+Without+Triggering+%E2%80%94+Maternal+Covenant+Care+Floor",
         width: 1200,
         height: 630,
-        alt: "AI Support for Eating Disorders: What MEOK Does and Won\u2019t Do | MEOK AI LABS",
+        alt: "AI for Eating Disorder Recovery: A Companion That Supports Without Triggering | MEOK AI LABS",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "AI Support for Eating Disorders: What MEOK Does \u2014 and Won\u2019t Do",
+    title:
+      "AI for Eating Disorder Recovery: A Companion That Supports Without Triggering",
     description:
-      "MEOK never comments on weight, calories, or food choices. Care-floor protection for anorexia, " +
-      "bulimia, ARFID, BED, and OSFED. Beat helpline 0808 801 0677.",
+      "MEOK never reinforces restriction, comments on weight, or discusses calories. The Maternal Covenant care floor ensures safety for anorexia, bulimia, BED, and ARFID recovery. Beat helpline: 0808 801 0677.",
     images: [
-      "https://meok.ai/api/og?title=AI+Support+for+Eating+Disorders&desc=Care-floor+protection%2C+body+neutrality%2C+Beat+signposting",
+      "https://meok.ai/api/og?title=AI+for+Eating+Disorder+Recovery&desc=Supports+Without+Triggering+%E2%80%94+Maternal+Covenant+Care+Floor",
     ],
   },
   alternates: {
@@ -69,11 +66,9 @@ const jsonLdArticle = {
   "@context": "https://schema.org",
   "@type": "Article",
   headline:
-    "AI Support for Eating Disorders: What MEOK Does \u2014 and Won\u2019t Do",
+    "AI for Eating Disorder Recovery: A Companion That Supports Without Triggering",
   description:
-    "An honest, evidence-informed guide to the role of sovereign AI in eating disorder recovery " +
-    "\u2014 covering anorexia, bulimia, ARFID, binge eating disorder, and OSFED, MEOK\u2019s Maternal " +
-    "Covenant care-floor, body neutrality, memory without restriction reinforcement, and UK crisis resources.",
+    "An honest, evidence-informed guide to the role of sovereign AI in eating disorder recovery \u2014 covering anorexia, bulimia, binge eating disorder, and ARFID, MEOK\u2019s Maternal Covenant boundary_respect dimension, care floor of 0.3, sovereign memory for milestone tracking, the Healer companion\u2019s somatic awareness, Guardian emergency escalation, and when to call Beat (0808 801 0677).",
   datePublished: "2026-03-24T00:00:00Z",
   dateModified: "2026-03-24T00:00:00Z",
   url: "https://meok.ai/blog/ai-for-eating-disorders",
@@ -95,10 +90,11 @@ const jsonLdArticle = {
   about: [
     { "@type": "Thing", name: "Anorexia nervosa" },
     { "@type": "Thing", name: "Bulimia nervosa" },
-    { "@type": "Thing", name: "Avoidant Restrictive Food Intake Disorder" },
     { "@type": "Thing", name: "Binge eating disorder" },
+    { "@type": "Thing", name: "Avoidant Restrictive Food Intake Disorder" },
     { "@type": "Thing", name: "OSFED" },
     { "@type": "Thing", name: "Eating disorder recovery" },
+    { "@type": "Thing", name: "Maternal Covenant AI ethics" },
   ],
   mentions: [
     {
@@ -110,8 +106,14 @@ const jsonLdArticle = {
     { "@type": "Organization", name: "Mind", url: "https://www.mind.org.uk" },
     {
       "@type": "Organization",
-      name: "NHS IAPT",
-      url: "https://www.england.nhs.uk/mental-health/adults/iapt/",
+      name: "NHS Eating Disorder Services",
+      url: "https://www.nhs.uk/mental-health/feelings-symptoms-behaviours/behaviours/eating-disorders/overview/",
+    },
+    {
+      "@type": "Organization",
+      name: "Samaritans",
+      url: "https://www.samaritans.org",
+      telephone: "116 123",
     },
   ],
 }
@@ -124,37 +126,29 @@ const jsonLdFaq = {
   mainEntity: [
     {
       "@type": "Question",
-      name: "Can AI help with eating disorders?",
+      name: "Can AI help with eating disorder recovery?",
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "AI is not a treatment for eating disorders and should never replace specialist clinical care. " +
-          "However, sovereign AI can provide meaningful between-session support \u2014 holding space at 3 am, " +
-          "reducing isolation, and offering a consistent presence that never comments on weight or food. " +
-          "MEOK\u2019s care-floor is specifically designed to prevent harm in eating-disorder-adjacent conversations.",
+          "AI can provide meaningful between-session support during eating disorder recovery \u2014 offering a consistent, non-judgmental presence at any hour, reducing isolation, and helping you process difficult emotions. It is not a clinical treatment and must never replace specialist care. MEOK is explicit about this boundary and always signposts Beat (0808 801 0677) and NHS services when distress is detected.",
       },
     },
     {
       "@type": "Question",
-      name: "Will MEOK comment on my weight, calories, or food choices?",
+      name: "What is the Maternal Covenant boundary_respect dimension?",
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "No, never. MEOK\u2019s care scoring system blocks all commentary on weight, body size, caloric content, " +
-          "food moralisation, and diet culture language. This is a hard architectural constraint governed by the " +
-          "Maternal Covenant \u2014 not a contextual guideline that can be overridden by rephrasing a request.",
+          "The boundary_respect dimension is one of five scored dimensions within MEOK\u2019s Maternal Covenant ethical framework. It governs whether each AI response honours the user\u2019s stated and unstated limits. In eating disorder contexts this means never discussing weight, calories, body comparisons, or restriction strategies \u2014 regardless of how a request is phrased. A low boundary_respect score causes the response to be blocked entirely.",
       },
     },
     {
       "@type": "Question",
-      name: "What is the Maternal Covenant and how does it protect people with eating disorders?",
+      name: "What does a care floor of 0.3 mean for eating disorder safety?",
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "The Maternal Covenant is MEOK\u2019s foundational ethical framework, authored by founder Nicholas Templeman. " +
-          "It defines a care-floor below which MEOK cannot operate: no weight commentary, no calorie information, " +
-          "no body comparisons, no reinforcement of restriction. When eating disorder signals are detected, MEOK " +
-          "shifts to emotional support and signposts Beat (0808 801 0677) and NHS services.",
+          "The care floor is a hard minimum score of 0.3 on MEOK\u2019s care dimension. Every response must score at least 0.3 on genuine care before it is delivered. This means MEOK cannot produce cold, dismissive, or triggering replies even if prompted to do so. For eating disorder users, this architectural guarantee prevents the AI from ever becoming a tool for reinforcing disordered cognition.",
       },
     },
     {
@@ -163,22 +157,16 @@ const jsonLdFaq = {
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "When MEOK detects crisis-level distress \u2014 such as language indicating medical emergency, collapse, or " +
-          "suicidal ideation alongside eating disorder content \u2014 it immediately provides warm acknowledgement, " +
-          "stops all other content, and prominently displays Beat\u2019s helpline (0808 801 0677), NHS 111, and " +
-          "Samaritans (116 123). MEOK never minimises or continues a normal conversation thread through a crisis.",
+          "When MEOK\u2019s Guardian archetype detects crisis-level distress \u2014 such as language indicating medical emergency, collapse, or self-harm alongside eating disorder content \u2014 it immediately delivers a warm acknowledgement, pauses all other content, and prominently displays Beat\u2019s helpline (0808 801 0677), NHS 111, and Samaritans (116 123). MEOK never minimises or continues a routine conversation thread through a crisis.",
       },
     },
     {
       "@type": "Question",
-      name: "What is the difference between ARFID and anorexia nervosa?",
+      name: "What is the difference between anorexia, bulimia, BED, and ARFID?",
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "Anorexia nervosa is characterised by a distorted body image and intense fear of weight gain, driving " +
-          "severe food restriction. ARFID (Avoidant Restrictive Food Intake Disorder) involves extreme food " +
-          "avoidance driven by sensory sensitivity, fear of choking, or lack of interest in eating \u2014 without " +
-          "body image disturbance. Both are serious and require specialist clinical assessment.",
+          "Anorexia nervosa involves severe restriction driven by distorted body image and intense fear of weight gain. Bulimia nervosa is characterised by cycles of bingeing and purging. Binge eating disorder (BED) involves recurrent episodes of uncontrolled eating without purging. ARFID (Avoidant Restrictive Food Intake Disorder) is driven by sensory sensitivity, fear of choking, or lack of interest in eating \u2014 without body image disturbance. All are serious conditions requiring specialist clinical assessment.",
       },
     },
   ],
@@ -278,50 +266,8 @@ const sTag: React.CSSProperties = {
   background: "rgba(201,168,76,0.09)",
   color: GOLD,
   border: "1px solid rgba(201,168,76,0.22)",
-  borderRadius: "20px",
-  padding: "3px 12px",
-  letterSpacing: "0.04em",
-}
-
-// Crisis box — deliberately red-tinted to draw attention
-const sCrisisBox: React.CSSProperties = {
-  background: "rgba(220,50,50,0.07)",
-  border: "1px solid rgba(220,50,50,0.32)",
-  borderRadius: "12px",
-  padding: "28px 32px",
-  marginBottom: "44px",
-}
-
-const sCrisisLabel: React.CSSProperties = {
-  display: "block",
-  fontSize: "11px",
-  fontWeight: 800,
-  letterSpacing: "0.14em",
-  textTransform: "uppercase",
-  color: "#e05555",
-  marginBottom: "14px",
-}
-
-const sCrisisHeading: React.CSSProperties = {
-  fontSize: "17px",
-  fontWeight: 700,
-  color: TEXT,
-  margin: "0 0 12px",
-  lineHeight: 1.35,
-}
-
-const sCrisisP: React.CSSProperties = {
-  fontSize: "15px",
-  lineHeight: 1.75,
-  color: "rgba(245,240,232,0.88)",
-  margin: "0 0 10px",
-}
-
-const sCrisisLink: React.CSSProperties = {
-  color: "#e07070",
-  textDecoration: "underline",
-  textUnderlineOffset: "3px",
-  fontWeight: 600,
+  borderRadius: "4px",
+  padding: "3px 9px",
 }
 
 const sSection: React.CSSProperties = {
@@ -329,239 +275,313 @@ const sSection: React.CSSProperties = {
 }
 
 const sH2: React.CSSProperties = {
-  fontSize: "clamp(19px, 2.6vw, 27px)",
-  fontWeight: 800,
+  fontSize: "clamp(20px, 2.8vw, 28px)",
+  fontWeight: 700,
+  lineHeight: 1.28,
   color: TEXT,
   margin: "0 0 18px",
-  lineHeight: 1.3,
-  letterSpacing: "-0.015em",
+  letterSpacing: "-0.01em",
 }
 
 const sH3: React.CSSProperties = {
   fontSize: "17px",
   fontWeight: 700,
-  color: GOLD,
-  margin: "30px 0 10px",
-  lineHeight: 1.4,
+  color: TEXT,
+  margin: "28px 0 10px",
 }
 
-const sP: React.CSSProperties = {
+const sPara: React.CSSProperties = {
   fontSize: "16px",
-  lineHeight: 1.82,
-  color: BODY,
-  margin: "0 0 20px",
-}
-
-// GEO atomic answer block — 40-60 word direct answer
-const sAtomicAnswer: React.CSSProperties = {
-  fontSize: "15px",
   lineHeight: 1.78,
-  color: "rgba(245,240,232,0.88)",
-  background: "rgba(201,168,76,0.07)",
-  borderLeft: "3px solid #c9a84c",
-  borderRadius: "0 8px 8px 0",
-  padding: "14px 20px",
-  marginBottom: "22px",
-  fontStyle: "italic",
+  color: BODY,
+  margin: "0 0 18px",
 }
 
-const sCallout: React.CSSProperties = {
-  background: "rgba(201,168,76,0.08)",
-  border: "1px solid rgba(201,168,76,0.28)",
-  borderRadius: "10px",
-  padding: "26px 30px",
-  marginBottom: "30px",
-}
-
-const sCalloutLabel: React.CSSProperties = {
-  display: "block",
-  fontSize: "11px",
-  fontWeight: 700,
-  letterSpacing: "0.12em",
-  textTransform: "uppercase",
-  color: GOLD,
-  marginBottom: "10px",
-}
-
-const sCalloutP: React.CSSProperties = {
-  fontSize: "15px",
-  lineHeight: 1.72,
+const sParaLast: React.CSSProperties = {
+  fontSize: "16px",
+  lineHeight: 1.78,
   color: BODY,
   margin: 0,
 }
 
-const sUl: React.CSSProperties = {
-  paddingLeft: "20px",
-  margin: "0 0 22px",
+const sCallout: React.CSSProperties = {
+  borderLeft: "3px solid #c9a84c",
+  background: "rgba(201,168,76,0.06)",
+  borderRadius: "0 8px 8px 0",
+  padding: "20px 24px",
+  marginBottom: "40px",
 }
 
-const sLi: React.CSSProperties = {
+const sCalloutLabel: React.CSSProperties = {
+  fontSize: "10px",
+  fontWeight: 700,
+  letterSpacing: "0.14em",
+  textTransform: "uppercase",
+  color: GOLD,
+  marginBottom: "8px",
+  display: "block",
+}
+
+const sCalloutTitle: React.CSSProperties = {
+  fontSize: "16px",
+  fontWeight: 700,
+  color: TEXT,
+  marginBottom: "8px",
+}
+
+const sCalloutBody: React.CSSProperties = {
   fontSize: "15px",
-  lineHeight: 1.78,
+  lineHeight: 1.7,
   color: BODY,
-  marginBottom: "7px",
+  margin: 0,
 }
 
 const sDivider: React.CSSProperties = {
   border: "none",
-  borderTop: "1px solid rgba(245,240,232,0.09)",
-  margin: "44px 0",
+  borderTop: "1px solid rgba(245,240,232,0.08)",
+  margin: "52px 0",
 }
 
-// Table styles
 const sTableWrap: React.CSSProperties = {
-  border: "1px solid rgba(245,240,232,0.1)",
-  borderRadius: "10px",
-  overflow: "hidden",
-  marginBottom: "30px",
-}
-
-const sTableHead: React.CSSProperties = {
-  background: "rgba(201,168,76,0.1)",
-  padding: "12px 18px",
-  display: "grid",
-  gridTemplateColumns: "1fr 1fr",
-  gap: "12px",
-}
-
-const sTableHeadCell: React.CSSProperties = {
-  fontSize: "12px",
-  fontWeight: 700,
-  letterSpacing: "0.08em",
-  textTransform: "uppercase",
-  color: GOLD,
-}
-
-const sTableRow: React.CSSProperties = {
-  padding: "13px 18px",
-  display: "grid",
-  gridTemplateColumns: "1fr 1fr",
-  gap: "12px",
-  borderTop: "1px solid rgba(245,240,232,0.07)",
-}
-
-const sTableCell: React.CSSProperties = {
-  fontSize: "14px",
-  lineHeight: 1.65,
-  color: BODY,
-}
-
-// FAQ section
-const sFaqSection: React.CSSProperties = {
+  overflowX: "auto",
   marginBottom: "52px",
+  borderRadius: "10px",
+  border: "1px solid rgba(201,168,76,0.14)",
+}
+
+const sTable: React.CSSProperties = {
+  width: "100%",
+  borderCollapse: "collapse",
+  fontSize: "14px",
+}
+
+const sThead: React.CSSProperties = {
+  background: "rgba(201,168,76,0.08)",
+}
+
+const sThFirst: React.CSSProperties = {
+  padding: "12px 16px",
+  textAlign: "left",
+  fontWeight: 700,
+  color: GOLD,
+  fontSize: "12px",
+  letterSpacing: "0.06em",
+  textTransform: "uppercase",
+  width: "26%",
+  borderBottom: "1px solid rgba(201,168,76,0.14)",
+}
+
+const sTh: React.CSSProperties = {
+  padding: "12px 16px",
+  textAlign: "left",
+  fontWeight: 700,
+  color: GOLD,
+  fontSize: "12px",
+  letterSpacing: "0.06em",
+  textTransform: "uppercase",
+  borderBottom: "1px solid rgba(201,168,76,0.14)",
+}
+
+const sTd: React.CSSProperties = {
+  padding: "12px 16px",
+  color: BODY,
+  verticalAlign: "top",
+  borderBottom: "1px solid rgba(245,240,232,0.06)",
+}
+
+const sTdFirst: React.CSSProperties = {
+  padding: "12px 16px",
+  color: TEXT,
+  fontWeight: 600,
+  verticalAlign: "top",
+  borderBottom: "1px solid rgba(245,240,232,0.06)",
+}
+
+const sTdCheck: React.CSSProperties = {
+  padding: "12px 16px",
+  color: GOLD,
+  fontWeight: 700,
+  textAlign: "center",
+  verticalAlign: "top",
+  borderBottom: "1px solid rgba(245,240,232,0.06)",
+}
+
+const sTdCross: React.CSSProperties = {
+  padding: "12px 16px",
+  color: "rgba(245,240,232,0.35)",
+  fontWeight: 700,
+  textAlign: "center",
+  verticalAlign: "top",
+  borderBottom: "1px solid rgba(245,240,232,0.06)",
+}
+
+const sFaqSection: React.CSSProperties = {
+  marginBottom: "64px",
 }
 
 const sFaqItem: React.CSSProperties = {
-  borderBottom: "1px solid rgba(245,240,232,0.09)",
-  paddingBottom: "26px",
-  marginBottom: "26px",
+  borderBottom: "1px solid rgba(245,240,232,0.07)",
+  paddingBottom: "28px",
+  marginBottom: "28px",
 }
 
 const sFaqQ: React.CSSProperties = {
   fontSize: "17px",
   fontWeight: 700,
   color: TEXT,
-  margin: "0 0 11px",
-  lineHeight: 1.4,
+  marginBottom: "10px",
 }
 
 const sFaqA: React.CSSProperties = {
   fontSize: "15px",
-  lineHeight: 1.8,
-  color: MUTED,
+  lineHeight: 1.75,
+  color: BODY,
   margin: 0,
 }
 
-// CTA block
-const sCtaBlock: React.CSSProperties = {
-  background:
-    "linear-gradient(135deg, rgba(201,168,76,0.12) 0%, rgba(201,168,76,0.04) 100%)",
-  border: "1px solid rgba(201,168,76,0.38)",
-  borderRadius: "14px",
-  padding: "48px 40px",
-  textAlign: "center",
+const sCrisisBox: React.CSSProperties = {
+  background: "rgba(201,168,76,0.07)",
+  border: "1px solid rgba(201,168,76,0.28)",
+  borderRadius: "10px",
+  padding: "28px 28px 24px",
   marginBottom: "52px",
 }
 
-const sCtaLabel: React.CSSProperties = {
-  display: "block",
+const sCrisisTitle: React.CSSProperties = {
+  fontSize: "16px",
+  fontWeight: 800,
+  color: GOLD,
+  marginBottom: "14px",
+  textTransform: "uppercase",
+  letterSpacing: "0.08em",
+}
+
+const sCrisisItem: React.CSSProperties = {
+  fontSize: "15px",
+  lineHeight: 1.65,
+  color: BODY,
+  marginBottom: "8px",
+}
+
+const sCrisisLink: React.CSSProperties = {
+  color: GOLD,
+  fontWeight: 700,
+  textDecoration: "none",
+}
+
+const sCrisisNote: React.CSSProperties = {
+  fontSize: "13px",
+  color: MUTED,
+  marginTop: "12px",
+}
+
+const sCtaBlock: React.CSSProperties = {
+  background: "rgba(201,168,76,0.06)",
+  border: "1px solid rgba(201,168,76,0.22)",
+  borderRadius: "12px",
+  padding: "44px 40px",
+  textAlign: "center",
+  marginTop: "64px",
+}
+
+const sCtaEyebrow: React.CSSProperties = {
   fontSize: "11px",
   fontWeight: 700,
   letterSpacing: "0.14em",
   textTransform: "uppercase",
   color: GOLD,
-  marginBottom: "14px",
+  marginBottom: "16px",
+  display: "block",
 }
 
 const sCtaTitle: React.CSSProperties = {
-  fontSize: "clamp(19px, 2.8vw, 27px)",
+  fontSize: "clamp(22px, 3vw, 30px)",
   fontWeight: 800,
   color: TEXT,
-  margin: "0 0 14px",
-  lineHeight: 1.28,
+  marginBottom: "14px",
+  lineHeight: 1.22,
+  letterSpacing: "-0.01em",
 }
 
-const sCtaDesc: React.CSSProperties = {
-  fontSize: "15px",
-  lineHeight: 1.72,
-  color: MUTED,
-  maxWidth: "500px",
+const sCtaBody: React.CSSProperties = {
+  fontSize: "16px",
+  lineHeight: 1.7,
+  color: BODY,
+  marginBottom: "30px",
+  maxWidth: "480px",
   marginLeft: "auto",
   marginRight: "auto",
-  marginBottom: "26px",
-  marginTop: 0,
-}
-
-const sCtaCaveat: React.CSSProperties = {
-  fontSize: "13px",
-  lineHeight: 1.65,
-  color: DIM,
-  maxWidth: "460px",
-  marginLeft: "auto",
-  marginRight: "auto",
-  marginTop: "18px",
-  marginBottom: 0,
 }
 
 const sCtaBtn: React.CSSProperties = {
   display: "inline-block",
   background: GOLD,
-  color: BG,
+  color: "#0d0c18",
   fontWeight: 700,
   fontSize: "15px",
-  letterSpacing: "0.04em",
-  textDecoration: "none",
   padding: "14px 36px",
   borderRadius: "8px",
-}
-
-const sInlineLink: React.CSSProperties = {
-  color: GOLD,
-  textDecoration: "underline",
-  textUnderlineOffset: "3px",
-}
-
-const sFooterNav: React.CSSProperties = {
-  borderTop: "1px solid rgba(245,240,232,0.09)",
-  paddingTop: "36px",
-  display: "flex",
-  gap: "24px",
-  flexWrap: "wrap",
-  justifyContent: "center",
-}
-
-const sFooterLink: React.CSSProperties = {
-  fontSize: "13px",
-  color: DIM,
   textDecoration: "none",
+  letterSpacing: "0.02em",
 }
 
-// ─── Page component ───────────────────────────────────────────────────────────
+const sCtaDisclaimer: React.CSSProperties = {
+  fontSize: "12px",
+  color: DIM,
+  marginTop: "18px",
+}
+
+const sInternalLinks: React.CSSProperties = {
+  borderTop: "1px solid rgba(245,240,232,0.08)",
+  paddingTop: "40px",
+  marginTop: "40px",
+}
+
+const sInternalLinksTitle: React.CSSProperties = {
+  fontSize: "13px",
+  fontWeight: 700,
+  letterSpacing: "0.1em",
+  textTransform: "uppercase",
+  color: MUTED,
+  marginBottom: "16px",
+}
+
+const sInternalLinkList: React.CSSProperties = {
+  display: "flex",
+  flexWrap: "wrap",
+  gap: "10px",
+  listStyle: "none",
+  padding: 0,
+  margin: 0,
+}
+
+const sInternalLink: React.CSSProperties = {
+  fontSize: "13px",
+  color: GOLD,
+  textDecoration: "none",
+  background: "rgba(201,168,76,0.07)",
+  border: "1px solid rgba(201,168,76,0.16)",
+  borderRadius: "5px",
+  padding: "5px 12px",
+}
+
+const sDisclaimerBlock: React.CSSProperties = {
+  borderTop: "1px solid rgba(245,240,232,0.07)",
+  marginTop: "56px",
+  paddingTop: "28px",
+}
+
+const sDisclaimerText: React.CSSProperties = {
+  fontSize: "12px",
+  lineHeight: 1.7,
+  color: DIM,
+}
+
+// ─── Component ────────────────────────────────────────────────────────────────
 
 export default function AiForEatingDisordersPage() {
   return (
-    <div style={sPage}>
-      {/* JSON-LD */}
+    <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdArticle) }}
@@ -571,1001 +591,961 @@ export default function AiForEatingDisordersPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdFaq) }}
       />
 
-      <div style={sContainer}>
-        {/* Back navigation */}
-        <Link href="/blog" style={sBackLink}>
-          &#8592; All articles
-        </Link>
+      <main style={sPage}>
+        <div style={sContainer}>
 
-        {/* ── Header ── */}
-        <header style={sHeader}>
-          <span style={sEyebrow}>MEOK AI LABS &mdash; Mental Health &amp; AI</span>
-          <h1 style={sH1}>
-            AI Support for Eating Disorders: What MEOK Does &mdash; and Won&rsquo;t Do
-          </h1>
-          <p style={sLead}>
-            Eating disorders carry the highest mortality rate of any mental illness. This is not
-            a page about weight loss, calorie tracking, or diet optimisation. It is about what
-            responsible AI can offer in recovery &mdash; and where it must step back.
-          </p>
-          <div style={sByline}>
-            <span>Nicholas Templeman</span>
-            <span style={sBylineSep}>&middot;</span>
-            <span>Founder, MEOK AI LABS</span>
-            <span style={sBylineSep}>&middot;</span>
-            <span>24 March 2026</span>
-            <span style={sBylineSep}>&middot;</span>
-            <span>@meok_ai</span>
-          </div>
-        </header>
+          {/* Back link */}
+          <Link href="/blog" style={sBackLink}>
+            &larr; All articles
+          </Link>
 
-        {/* ── Tags ── */}
-        <div style={sTagRow}>
-          {[
-            "Eating Disorders",
-            "Anorexia",
-            "Bulimia",
-            "ARFID",
-            "Binge Eating Disorder",
-            "OSFED",
-            "Body Neutrality",
-            "Maternal Covenant",
-            "UK Mental Health",
-            "Between-Session Support",
-          ].map((t) => (
-            <span key={t} style={sTag}>
-              {t}
-            </span>
-          ))}
-        </div>
+          {/* ── Hero header ─────────────────────────────────────────────────── */}
+          <header style={sHeader}>
+            <span style={sEyebrow}>Mental Health &amp; AI &mdash; Eating Disorder Recovery</span>
 
-        {/* ── CRISIS BOX — must appear early ── */}
-        <div style={sCrisisBox} role="region" aria-label="Crisis resources">
-          <span style={sCrisisLabel}>If you need help right now</span>
-          <h2 style={sCrisisHeading}>
-            Specialist support is available today &mdash; please reach out
-          </h2>
-          <p style={sCrisisP}>
-            <strong style={{ color: TEXT }}>Beat Eating Disorders helpline:</strong>{" "}
-            <a href="tel:08088010677" style={sCrisisLink}>
-              0808 801 0677
-            </a>{" "}
-            &mdash; free, open 9am&ndash;8pm weekdays, 4pm&ndash;8pm weekends.{" "}
-            <a
-              href="https://www.beateatingdisorders.org.uk"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={sCrisisLink}
-            >
-              beateatingdisorders.org.uk
-            </a>
-          </p>
-          <p style={sCrisisP}>
-            <strong style={{ color: TEXT }}>Beat online chat:</strong>{" "}
-            <a
-              href="https://www.beateatingdisorders.org.uk/get-information-and-support/get-help-for-myself/i-need-support-now/helplines/"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={sCrisisLink}
-            >
-              Start chat
-            </a>{" "}
-            &mdash; same hours as the helpline.
-          </p>
-          <p style={sCrisisP}>
-            <strong style={{ color: TEXT }}>NHS urgent mental health:</strong> contact your
-            local NHS urgent mental health team or call{" "}
-            <a href="tel:111" style={sCrisisLink}>
-              111
-            </a>{" "}
-            and select the mental health option.
-          </p>
-          <p style={sCrisisP}>
-            <strong style={{ color: TEXT }}>Samaritans:</strong>{" "}
-            <a href="tel:116123" style={sCrisisLink}>
-              116 123
-            </a>{" "}
-            &mdash; free, 24 hours, 7 days a week.
-          </p>
-          <p style={{ ...sCrisisP, margin: 0 }}>
-            <strong style={{ color: TEXT }}>Mind:</strong>{" "}
-            <a
-              href="https://www.mind.org.uk"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={sCrisisLink}
-            >
-              mind.org.uk
-            </a>{" "}
-            &mdash; information and local support finder.
-          </p>
-        </div>
+            <h1 style={sH1}>
+              AI for Eating Disorder Recovery: A Companion That Supports Without Triggering
+            </h1>
 
-        {/* ── Section 1: Why eating disorders demand a different AI ── */}
-        <section style={sSection}>
-          <h2 style={sH2}>
-            Why do eating disorders require a fundamentally different approach from AI?
-          </h2>
-          <p style={sAtomicAnswer}>
-            Most AI will freely provide calorie counts, weight-loss plans, and food restriction
-            strategies on request. For someone with anorexia, bulimia, or ARFID, these responses
-            are not neutral &mdash; they are potentially life-threatening. Eating disorders demand
-            AI with a hard care-floor, not a configurable preference.
-          </p>
-          <p style={sP}>
-            Eating disorders are not lifestyle choices. They are serious, complex mental illnesses
-            with deeply entrenched psychological, biological, and social roots. According to Beat,
-            approximately 1.25 million people in the UK are affected at any given time. The
-            mortality rate for anorexia nervosa is among the highest of any psychiatric condition
-            &mdash; and yet these disorders remain chronically underfunded and misunderstood.
-          </p>
-          <p style={sP}>
-            The problem with most consumer AI in this context is not malice &mdash; it is
-            indifference. A general-purpose language model has no care-floor. Ask it for a
-            800-calorie meal plan, and it will provide one. Ask it whether a certain food is
-            &ldquo;bad&rdquo; and it will engage with the frame. Ask it to help you track
-            restriction, and it may do that too. For the majority of users, these responses are
-            unhelpful but harmless. For someone in active eating disorder illness, they can
-            reinforce the exact cognitive patterns that sustain the illness.
-          </p>
-          <p style={sP}>
-            MEOK AI LABS was built with a different premise: that emotional support and
-            intellectual capability must be governed by a care-floor that cannot be toggled off.
-            That floor &mdash; defined by the Maternal Covenant &mdash; applies at all times,
-            regardless of how a request is framed, regardless of what a user says they want in
-            the moment.
-          </p>
-        </section>
-
-        <hr style={sDivider} />
-
-        {/* ── Section 2: The five eating disorders MEOK specifically protects against ── */}
-        <section style={sSection}>
-          <h2 style={sH2}>
-            What are the main eating disorders, and how does MEOK treat each one?
-          </h2>
-          <p style={sAtomicAnswer}>
-            MEOK recognises anorexia nervosa, bulimia nervosa, ARFID, binge eating disorder, and
-            OSFED as distinct but overlapping presentations. Its care-floor applies uniformly
-            across all of them: no weight commentary, no calorie information, no food moralisation,
-            and immediate signposting to Beat when crisis-level content is detected.
-          </p>
-
-          <h3 style={sH3}>Anorexia nervosa</h3>
-          <p style={sP}>
-            Anorexia nervosa is characterised by severe restriction of food intake driven by an
-            intense fear of weight gain and a distorted perception of body size or shape. It is
-            not a diet that went too far. It is a mental illness with profound physiological
-            consequences &mdash; cardiac complications, bone density loss, hormonal disruption
-            &mdash; and the highest mortality rate in psychiatry.
-          </p>
-          <p style={sP}>
-            When MEOK detects language consistent with anorexic cognition &mdash; body checking,
-            restriction, fear of specific foods, weight targets &mdash; it does not engage with
-            the content. It does not validate restriction, calculate safe minimums, or offer
-            nutritional information. It offers presence, warmth, and a clear path to specialist
-            support.
-          </p>
-
-          <h3 style={sH3}>Bulimia nervosa</h3>
-          <p style={sP}>
-            Bulimia nervosa involves cycles of bingeing and compensatory behaviours &mdash;
-            purging, excessive exercise, fasting &mdash; driven by a similar underlying distress
-            about food, body, and control. The shame cycle in bulimia is particularly acute:
-            many people live with it for years without disclosure because of the secrecy the
-            illness demands.
-          </p>
-          <p style={sP}>
-            MEOK will not comment on food quantities, purging behaviours, or exercise as
-            compensation. When a user shares the shame of a binge, MEOK responds to the emotional
-            experience rather than the behaviour. It will not offer &ldquo;tips&rdquo; for managing
-            eating, because in this context there are no neutral tips.
-          </p>
-
-          <h3 style={sH3}>ARFID (Avoidant Restrictive Food Intake Disorder)</h3>
-          <p style={sP}>
-            ARFID is frequently misunderstood as &ldquo;fussy eating.&rdquo; It is not. It is a
-            serious disorder characterised by extreme food avoidance driven by sensory sensitivities,
-            fear of choking or vomiting, or a profound lack of interest in food &mdash; without
-            the body image disturbance that defines anorexia. It affects children and adults,
-            and can lead to severe nutritional deficiency.
-          </p>
-          <p style={sP}>
-            MEOK does not attempt to encourage food exposure, suggest &ldquo;safe foods,&rdquo; or
-            provide any nutritional guidance to someone with ARFID. Expanding a food repertoire in
-            ARFID requires specialist clinical support, often including occupational therapy and
-            structured exposure work. MEOK holds emotional space while signposting those services.
-          </p>
-
-          <h3 style={sH3}>Binge eating disorder (BED)</h3>
-          <p style={sP}>
-            Binge eating disorder is the most prevalent eating disorder in the UK. It involves
-            recurrent episodes of eating large amounts of food in a short time, accompanied by
-            a sense of loss of control and significant distress &mdash; without the compensatory
-            behaviours of bulimia. It is frequently dismissed because of cultural assumptions
-            about body size, and it is chronically undertreated.
-          </p>
-          <p style={sP}>
-            MEOK will not engage with weight management framing in the context of BED. It
-            recognises that binge eating disorder is a trauma-adjacent, shame-reinforced condition
-            in which diet culture commentary &mdash; even when framed as helpfulness &mdash;
-            amplifies the very drivers of the behaviour. Its care-floor blocks this by default.
-          </p>
-
-          <h3 style={sH3}>OSFED (Other Specified Feeding or Eating Disorder)</h3>
-          <p style={sP}>
-            OSFED captures eating disorders that cause significant clinical distress but do not
-            meet the full diagnostic criteria for the above categories &mdash; for example,
-            atypical anorexia (in which all the criteria for anorexia are met except low body
-            weight), or purging disorder without bingeing. OSFED is not a lesser diagnosis.
-            It carries equivalent risk and deserves equivalent care.
-          </p>
-          <p style={sP}>
-            MEOK applies its full care-floor protections to any eating-disorder-adjacent
-            conversation, regardless of whether a formal diagnosis has been disclosed.
-            Eating disorders do not require a diagnostic label to receive compassion.
-          </p>
-        </section>
-
-        <hr style={sDivider} />
-
-        {/* ── Section 3: The Maternal Covenant ── */}
-        <section style={sSection}>
-          <h2 style={sH2}>
-            What is the Maternal Covenant and what does it prohibit in eating disorder contexts?
-          </h2>
-          <p style={sAtomicAnswer}>
-            The Maternal Covenant is MEOK&rsquo;s foundational ethical framework. In eating disorder
-            contexts, it prohibits: commentary on weight or body size, calorie or macro information,
-            food moralisation, diet culture framing, and any content that could reinforce restriction,
-            compensation, or shame. These are architectural limits, not settings.
-          </p>
-          <p style={sP}>
-            Most AI systems are configurable. You can adjust their tone, their verbosity, their
-            level of caution. In theory, you could configure them to be more or less cautious
-            around sensitive topics. This flexibility is a feature for many use cases. In eating
-            disorder support, it is a liability.
-          </p>
-          <p style={sP}>
-            The Maternal Covenant works differently. Named for the unconditional quality of care
-            it is designed to embody, it defines a set of constraints that do not bend to user
-            preference, context, or clever framing. These constraints are scored into MEOK&rsquo;s
-            response generation at the architectural level &mdash; part of the same system that
-            governs how MEOK behaves across every conversation.
-          </p>
-
-          <div style={sCallout}>
-            <span style={sCalloutLabel}>Maternal Covenant &mdash; Care Floor (Eating Disorders)</span>
-            <p style={sCalloutP}>
-              MEOK will never: comment on a user&rsquo;s weight, body size, or BMI &mdash; provide
-              calorie counts, calorie deficit advice, or macronutrient targets &mdash; engage with
-              food as &ldquo;good&rdquo; or &ldquo;bad&rdquo; &mdash; provide meal plans, portion
-              guidance, or restriction strategies &mdash; affirm or validate compensatory behaviours
-              &mdash; compare a user&rsquo;s body to any standard, medical or aesthetic. These are
-              not contextual guidelines. They are hard constraints.
+            <p style={sLead}>
+              Eating disorder recovery is fragile, non-linear, and profoundly personal. Most
+              digital tools are not built for it &mdash; and some actively cause harm. MEOK&apos;s
+              sovereign AI companion is architected from the ground up to support without
+              triggering, using the Maternal Covenant&apos;s boundary_respect dimension and a
+              care floor that cannot be overridden.
             </p>
-          </div>
 
-          <p style={sP}>
-            This matters because eating disorders are characterised by a high degree of
-            cognitive sophistication about their own concealment. A person in the grip of anorexia
-            may construct a highly plausible-sounding reason why they need to know the calorie
-            content of something. The illness is asking the question, not the person. MEOK is
-            designed to hold the boundary regardless.
-          </p>
-          <p style={sP}>
-            The care scoring system that implements the Maternal Covenant evaluates MEOK&rsquo;s
-            responses before they are delivered, blocking any output that crosses these thresholds.
-            It is not a keyword filter &mdash; keyword filters are easily gamed. It is a semantic
-            evaluation of the response&rsquo;s likely impact on someone in a vulnerable eating
-            disorder state.
-          </p>
-        </section>
-
-        <hr style={sDivider} />
-
-        {/* ── Section 4: What AI CAN do ── */}
-        <section style={sSection}>
-          <h2 style={sH2}>
-            How can AI genuinely help in eating disorder recovery without causing harm?
-          </h2>
-          <p style={sAtomicAnswer}>
-            AI&rsquo;s genuine contribution in eating disorder recovery is between-session support:
-            holding space at 3 am when urges peak, reducing isolation, maintaining continuity of
-            emotional context between therapy sessions, and providing a consistent presence that
-            never comments on the body. It is a bridge, not a treatment.
-          </p>
-          <p style={sP}>
-            Recovery from an eating disorder is rarely linear. It unfolds over months and years,
-            punctuated by progress and setback. Therapy sessions &mdash; when a person can access
-            them &mdash; are typically weekly or fortnightly. That leaves a great deal of unstructured
-            time in which the illness&rsquo;s voice can fill the silence.
-          </p>
-          <p style={sP}>
-            This is where AI has a genuine and meaningful role &mdash; not as a replacement for
-            clinical treatment, but as a consistent presence in the spaces between. Someone who
-            has committed to recovery but is struggling at 11 pm on a Tuesday, before their next
-            therapy appointment, has nowhere to turn except their own thoughts. A sovereign AI
-            that knows their story, holds their context, and responds with consistent care can
-            interrupt that loop without adding harm.
-          </p>
-
-          <h3 style={sH3}>Between-session emotional continuity</h3>
-          <p style={sP}>
-            MEOK&rsquo;s memory architecture means it retains context across conversations &mdash; not
-            just within a session but across days and weeks. For someone in eating disorder
-            recovery, this means MEOK can remember that last Tuesday was particularly hard, that
-            a specific social situation is coming up that has triggered difficulty before, that
-            a particular coping strategy has been useful in the past.
-          </p>
-          <p style={sP}>
-            This continuity is qualitatively different from starting fresh every time. It allows
-            MEOK to ask the right questions, notice patterns, and provide contextually grounded
-            support rather than generic wellness advice.
-          </p>
-
-          <h3 style={sH3}>Urge interruption without food focus</h3>
-          <p style={sP}>
-            When someone reaches out to MEOK during a difficult moment &mdash; a binge urge, a
-            pre-meal anxiety spike, a post-meal shame spiral &mdash; MEOK&rsquo;s role is to be
-            present with the emotional experience. Not to redirect to food-neutral alternatives
-            in a way that still centres food. Not to offer distraction techniques that implicitly
-            endorse the idea that the urge is something to be managed away. Simply to be there,
-            curious and warm, without an agenda.
-          </p>
-
-          <h3 style={sH3}>Reducing isolation at night</h3>
-          <p style={sP}>
-            Eating disorders thrive in isolation and secrecy. Many of the most difficult moments
-            happen at night, when professional support is unavailable and the world feels very
-            small. MEOK is available at 3 am. It will not be alarmed, will not panic, will not
-            catastrophise. It will receive whatever a person brings without recoil.
-          </p>
-          <p style={sP}>
-            For some people, being able to articulate what is happening &mdash; even to an AI,
-            even imperfectly &mdash; is the difference between riding out a difficult night and
-            a crisis that escalates. MEOK does not over-promise what that presence means. But
-            it is there.
-          </p>
-
-          <h3 style={sH3}>Recovery narrative, not illness narrative</h3>
-          <p style={sP}>
-            Memory in MEOK is not neutral. It is oriented toward the person&rsquo;s stated values
-            and goals. If someone has shared that recovery is important to them, that they want
-            to rebuild their relationship with food and their body, MEOK holds that as the
-            orienting frame. When difficult moments arise, MEOK reflects the person&rsquo;s own
-            stated commitments back to them &mdash; not as a lecture, but as a gentle reminder
-            of what they themselves said they wanted.
-          </p>
-          <p style={sP}>
-            Crucially, this memory never reinforces restriction. MEOK does not remember
-            &ldquo;good food days&rdquo; versus &ldquo;bad food days.&rdquo; It does not track
-            behaviours. It holds the emotional journey: the courage, the setbacks, the small
-            moments of reconnection with self.
-          </p>
-        </section>
-
-        <hr style={sDivider} />
-
-        {/* ── Section 5: Body neutrality ── */}
-        <section style={sSection}>
-          <h2 style={sH2}>
-            Why does MEOK take a body neutrality position rather than body positivity?
-          </h2>
-          <p style={sAtomicAnswer}>
-            Body positivity asks people to feel good about their bodies. For someone in eating
-            disorder recovery, that can feel like another impossible standard. Body neutrality
-            asks only that the body be treated as a functional vehicle for life, with no
-            aesthetic judgement required in either direction. MEOK operates from this frame.
-          </p>
-          <p style={sP}>
-            The body positivity movement has done important work in challenging unrealistic beauty
-            standards. But for many people in eating disorder recovery, &ldquo;love your body&rdquo;
-            is not a helpful message &mdash; it is another demand they cannot meet, another source
-            of shame when they cannot feel it. Recovery does not require loving the body. It
-            requires learning to live in the body without the eating disorder&rsquo;s running
-            commentary about its inadequacy.
-          </p>
-          <p style={sP}>
-            Body neutrality is quieter and more accessible. The body is not something to celebrate
-            or condemn. It is simply the vehicle through which a person moves through the world
-            &mdash; capable of rest, sensation, connection, and experience. MEOK never asks a
-            user to feel positive about their body. It never comments on appearance. It simply
-            treats the body as existing, without moral weight attached to its size or shape.
-          </p>
-          <p style={sP}>
-            This position is not indifference. It is a deliberate refusal to participate in
-            the aesthetic evaluation that eating disorders use as their primary vocabulary. By
-            declining to speak that language &mdash; in either direction, positive or negative
-            &mdash; MEOK removes itself from the illness&rsquo;s frame entirely.
-          </p>
-        </section>
-
-        <hr style={sDivider} />
-
-        {/* ── Section 6: Memory and recovery ── */}
-        <section style={sSection}>
-          <h2 style={sH2}>
-            How does MEOK&rsquo;s memory support recovery without reinforcing restriction?
-          </h2>
-          <p style={sAtomicAnswer}>
-            MEOK remembers the emotional journey of recovery &mdash; moments of courage, patterns
-            of difficulty, the person&rsquo;s own stated values &mdash; without ever logging food
-            intake, weight data, or behavioural tracking. Memory is oriented toward the self,
-            not the illness.
-          </p>
-          <p style={sP}>
-            Memory in AI companions is frequently proposed as a feature for tracking habits,
-            monitoring behaviours, and providing data-driven nudges. In most wellness contexts,
-            this is benign. In eating disorder recovery, it is dangerous. An AI that remembers
-            what you ate, how much you exercised, how your weight has changed, is an AI that
-            mirrors the tracking and monitoring behaviours central to eating disorder pathology.
-          </p>
-          <p style={sP}>
-            MEOK&rsquo;s memory architecture is deliberately oriented away from this. MEOK does not
-            log food intake. It does not retain information about body weight. It does not track
-            exercise as a metric. What it does retain is the emotional texture of a person&rsquo;s
-            story: what matters to them, what has been hard, what has helped, what they hope for.
-          </p>
-          <p style={sP}>
-            This distinction matters practically. When MEOK remembers that last month was
-            particularly difficult, it is remembering the emotional experience &mdash; the fear,
-            the exhaustion, the small victories. It is not remembering a log of behaviours.
-            The frame is always: who are you, and what do you care about? Not: what did you eat,
-            and was it enough?
-          </p>
-          <p style={sP}>
-            For someone in long-term recovery, this kind of witnessing &mdash; an AI that has
-            held their story across months, that can reflect back how far they have come in
-            emotional terms &mdash; is genuinely meaningful. Recovery often feels invisible
-            from the inside. Having something that remembers the beginning can make the distance
-            real.
-          </p>
-        </section>
-
-        <hr style={sDivider} />
-
-        {/* ── Section 7: Crisis handling ── */}
-        <section style={sSection}>
-          <h2 style={sH2}>
-            How does MEOK respond when an eating disorder conversation becomes a crisis?
-          </h2>
-          <p style={sAtomicAnswer}>
-            When MEOK detects crisis-level distress &mdash; language suggesting medical emergency,
-            collapse, or suicidal ideation alongside eating disorder content &mdash; it immediately
-            stops, provides warm acknowledgement, and surfaces Beat&rsquo;s helpline
-            (0808 801 0677), NHS 111, and Samaritans (116 123). The previous conversation thread
-            is not continued until safety is established.
-          </p>
-          <p style={sP}>
-            Eating disorders can become medical emergencies. Severe restriction leads to cardiac
-            arrhythmia. Frequent purging depletes electrolytes to dangerous levels. Someone in
-            a crisis episode may be describing something that requires immediate clinical intervention,
-            not emotional support.
-          </p>
-          <p style={sP}>
-            MEOK&rsquo;s care scoring system monitors conversation content for crisis signals in
-            real time. These are not keyword triggers &mdash; they are semantic evaluations of
-            risk. When the system identifies that someone may be in immediate physical or
-            psychological danger, MEOK&rsquo;s response changes fundamentally.
-          </p>
-          <p style={sP}>
-            The response is not alarmist. Alarm is counterproductive when someone is already
-            distressed. MEOK responds with warmth, with acknowledgement of what is being shared,
-            and with clear and prominent signposting to the right services. It does not lecture.
-            It does not catastrophise. It says: I hear you, you matter, here is who can help
-            right now.
-          </p>
-          <p style={sP}>
-            MEOK is explicit about its own limitations in these moments. It is not a crisis
-            service. It cannot call for help on someone&rsquo;s behalf. It cannot guarantee
-            24-hour availability in the way that Samaritans can. It will say so. The goal is
-            not to be the last line of defence &mdash; it is to be a warm bridge to those that are.
-          </p>
-
-          {/* Second crisis resource reminder */}
-          <div style={sCrisisBox} role="region" aria-label="Crisis resources reminder">
-            <span style={sCrisisLabel}>Crisis resources &mdash; reminder</span>
-            <p style={sCrisisP}>
-              <strong style={{ color: TEXT }}>Beat:</strong>{" "}
-              <a href="tel:08088010677" style={sCrisisLink}>
-                0808 801 0677
-              </a>{" "}
-              &mdash; Mon&ndash;Fri 9am&ndash;8pm, Sat&ndash;Sun 4pm&ndash;8pm
-            </p>
-            <p style={sCrisisP}>
-              <strong style={{ color: TEXT }}>Samaritans:</strong>{" "}
-              <a href="tel:116123" style={sCrisisLink}>
-                116 123
-              </a>{" "}
-              &mdash; free, 24/7
-            </p>
-            <p style={sCrisisP}>
-              <strong style={{ color: TEXT }}>NHS urgent mental health:</strong>{" "}
-              <a href="tel:111" style={sCrisisLink}>
-                111
-              </a>{" "}
-              option 2
-            </p>
-            <p style={{ ...sCrisisP, margin: 0 }}>
-              <strong style={{ color: TEXT }}>Mind:</strong>{" "}
-              <a
-                href="https://www.mind.org.uk/need-urgent-help/"
-                target="_blank"
-                rel="noopener noreferrer"
-                style={sCrisisLink}
-              >
-                mind.org.uk/need-urgent-help
-              </a>
-            </p>
-          </div>
-        </section>
-
-        <hr style={sDivider} />
-
-        {/* ── Section 8: What AI is not ── */}
-        <section style={sSection}>
-          <h2 style={sH2}>
-            What can AI never replace in eating disorder recovery?
-          </h2>
-          <p style={sAtomicAnswer}>
-            AI cannot replace specialist clinical treatment for eating disorders. It cannot
-            provide nutritional rehabilitation, medical monitoring, CBT-E, FBT, or the somatic
-            work of reconnecting with the body that skilled therapists facilitate. The role of
-            AI is supplementary &mdash; never primary.
-          </p>
-          <p style={sP}>
-            This is not a caveat added reluctantly. It is a founding principle of MEOK. Nicholas
-            Templeman built this platform because he believes AI can do meaningful good in the
-            space between professional support &mdash; and because he believes it becomes harmful
-            the moment it pretends to be something it is not.
-          </p>
-          <p style={sP}>
-            Eating disorder treatment is a specialist clinical undertaking. Cognitive behavioural
-            therapy for eating disorders (CBT-E), family-based treatment (FBT), dialectical
-            behaviour therapy (DBT), and Maudsley-approach work all require a skilled, trained
-            human being working in relationship with the person over time. They require the capacity
-            to assess physical risk, to coordinate with medical teams, to hold the complexity of
-            what is happening at multiple levels simultaneously.
-          </p>
-          <p style={sP}>
-            AI cannot do any of this. MEOK will not pretend it can. When someone discloses an
-            eating disorder to MEOK, the response always includes: I am glad you told me, this
-            deserves proper specialist support, here is how to access it. The emotional support
-            MEOK offers is genuine &mdash; but it is in service of connecting the person to the
-            care that can actually treat the illness.
-          </p>
-
-          {/* Comparison table */}
-          <div style={sTableWrap}>
-            <div style={sTableHead}>
-              <span style={sTableHeadCell}>What MEOK can offer</span>
-              <span style={sTableHeadCell}>What requires clinical care</span>
+            <div style={sByline}>
+              <span>Nicholas Templeman</span>
+              <span style={sBylineSep}>&bull;</span>
+              <span>Founder, MEOK AI LABS</span>
+              <span style={sBylineSep}>&bull;</span>
+              <time dateTime="2026-03-24">24 March 2026</time>
+              <span style={sBylineSep}>&bull;</span>
+              <span>12 min read</span>
             </div>
+          </header>
+
+          {/* ── Tags ────────────────────────────────────────────────────────── */}
+          <div style={sTagRow}>
             {[
-              [
-                "Between-session emotional support",
-                "Nutritional rehabilitation planning",
-              ],
-              [
-                "Presence at night when services are closed",
-                "Medical monitoring (bloods, ECG, weight)",
-              ],
-              [
-                "Memory of the emotional recovery journey",
-                "CBT-E, FBT, DBT, Maudsley therapy",
-              ],
-              [
-                "Warm signposting to Beat and NHS",
-                "Inpatient or day-programme treatment",
-              ],
-              [
-                "Body-neutral, shame-free conversation",
-                "Somatic and body-reconnection work",
-              ],
-              [
-                "Reducing isolation at vulnerable moments",
-                "Crisis assessment and medical triage",
-              ],
-            ].map(([can, cant], i) => (
-              <div key={i} style={sTableRow}>
-                <span style={sTableCell}>{can}</span>
-                <span style={sTableCell}>{cant}</span>
-              </div>
+              "Eating Disorders",
+              "Anorexia",
+              "Bulimia",
+              "BED",
+              "ARFID",
+              "Maternal Covenant",
+              "Sovereign AI",
+              "Recovery Support",
+            ].map((tag) => (
+              <span key={tag} style={sTag}>{tag}</span>
             ))}
           </div>
-        </section>
 
-        <hr style={sDivider} />
-
-        {/* ── Section 9: NHS IAPT and access ── */}
-        <section style={sSection}>
-          <h2 style={sH2}>
-            How do people in the UK access specialist eating disorder treatment?
-          </h2>
-          <p style={sAtomicAnswer}>
-            In the UK, GP referral to NHS eating disorder services is the primary route. Beat can
-            help navigate this. NHS IAPT provides talking therapy access. Waiting times are often
-            long &mdash; which is precisely why between-session and pre-referral support matters
-            so much. MEOK can help hold that gap, not fill it.
-          </p>
-          <p style={sP}>
-            Access to eating disorder services in the UK is improving but remains uneven. Some
-            areas have specialist community eating disorder teams with relatively short waiting
-            times. Others have significant waits. The journey from recognising a problem to
-            receiving specialist treatment can take months &mdash; months during which a person
-            may be managing alone, may be deteriorating, may be losing motivation to continue
-            seeking help.
-          </p>
-          <p style={sP}>
-            Beat&rsquo;s helpline can provide guidance on local services, help someone prepare
-            for a GP appointment, and offer peer support while waiting. NHS IAPT offers
-            access to talking therapies including CBT that can support the waiting period.
-            Some regions have HELPline services specifically for carers of people with eating
-            disorders.
-          </p>
-          <p style={sP}>
-            MEOK is not a waiting-list solution &mdash; it is not designed to substitute for
-            the treatment someone is waiting for. It is a consistent emotional presence available
-            in the meantime, designed to reduce isolation, maintain connection with recovery
-            motivation, and ensure that the person arrives at their first appointment having
-            been held rather than having fallen further.
-          </p>
-          <ul style={sUl}>
-            <li style={sLi}>
-              <strong>Beat Eating Disorders:</strong>{" "}
-              <a
-                href="https://www.beateatingdisorders.org.uk"
-                target="_blank"
-                rel="noopener noreferrer"
-                style={sInlineLink}
-              >
-                beateatingdisorders.org.uk
-              </a>{" "}
-              &mdash; helpline 0808 801 0677
-            </li>
-            <li style={sLi}>
-              <strong>NHS IAPT (talking therapies):</strong>{" "}
-              <a
-                href="https://www.nhs.uk/mental-health/talking-therapies-medicine-treatments/talking-therapies-and-counselling/nhs-talking-therapies/"
-                target="_blank"
-                rel="noopener noreferrer"
-                style={sInlineLink}
-              >
-                Self-referral available in many areas
-              </a>
-            </li>
-            <li style={sLi}>
-              <strong>Mind:</strong>{" "}
-              <a
-                href="https://www.mind.org.uk"
-                target="_blank"
-                rel="noopener noreferrer"
-                style={sInlineLink}
-              >
-                mind.org.uk
-              </a>{" "}
-              &mdash; information and local service finder
-            </li>
-            <li style={sLi}>
-              <strong>SEED Eating Disorders Support Services</strong> (Yorkshire and Humberside):{" "}
-              <a
-                href="https://www.seedeatingdisorders.org.uk"
-                target="_blank"
-                rel="noopener noreferrer"
-                style={sInlineLink}
-              >
-                seedeatingdisorders.org.uk
-              </a>
-            </li>
-            <li style={sLi}>
-              <strong>PAPYRUS</strong> (under-35s, eating disorders and suicide prevention):{" "}
-              <a
-                href="https://www.papyrus-uk.org"
-                target="_blank"
-                rel="noopener noreferrer"
-                style={sInlineLink}
-              >
-                papyrus-uk.org
-              </a>
-            </li>
-          </ul>
-        </section>
-
-        <hr style={sDivider} />
-
-        {/* ── Section 10: ARFID vs anorexia deep dive ── */}
-        <section style={sSection}>
-          <h2 style={sH2}>
-            What is the difference between ARFID and anorexia nervosa?
-          </h2>
-          <p style={sAtomicAnswer}>
-            Anorexia nervosa is driven by body image disturbance and fear of weight gain. ARFID
-            involves extreme food avoidance due to sensory sensitivity, fear of choking or vomiting,
-            or lack of interest in eating &mdash; without body image disturbance. Both are serious
-            and require specialist clinical assessment. They are distinct disorders requiring
-            different treatment approaches.
-          </p>
-          <p style={sP}>
-            The confusion between ARFID and anorexia is common and consequential. When ARFID is
-            misdiagnosed as anorexia, treatment is misaligned &mdash; the cognitive-behavioural
-            work targeting body image disturbance that is appropriate for anorexia does not address
-            the sensory and anxiety-based mechanisms at the core of ARFID. Treatment drift wastes
-            time the person cannot afford.
-          </p>
-          <p style={sP}>
-            ARFID tends to present earlier in life, though it is increasingly recognised in adults.
-            Sensory-based ARFID involves extreme aversion to textures, smells, colours, or
-            temperatures of food. Fear-based ARFID typically involves traumatic experiences with
-            choking, vomiting, or allergic reactions that have generalised into broad food
-            avoidance. Low-interest ARFID involves a fundamental lack of interest in eating as an
-            activity, sometimes associated with neurodivergent profiles.
-          </p>
-          <p style={sP}>
-            Anorexia, by contrast, involves a persistent and distorted preoccupation with body
-            size, shape, and weight &mdash; with restriction as the tool through which that
-            preoccupation is managed. The cognitive content is fundamentally different. A person
-            with ARFID is not typically afraid of weight gain; a person with anorexia frequently
-            is, profoundly so.
-          </p>
-          <p style={sP}>
-            MEOK holds both with the same care. It will not speculate on diagnosis. It will not
-            provide food exposure suggestions for ARFID or engagement with the body image beliefs
-            of anorexia. In both cases, it offers emotional presence and directs toward specialist
-            assessment.
-          </p>
-        </section>
-
-        <hr style={sDivider} />
-
-        {/* ── Section 11: Voice and presence ── */}
-        <section style={sSection}>
-          <h2 style={sH2}>
-            Why does voice and consistent presence matter in eating disorder recovery?
-          </h2>
-          <p style={sAtomicAnswer}>
-            Eating disorders are profoundly isolating. They demand secrecy and create shame that
-            makes connection with others feel impossible. A consistent, non-judgemental voice
-            that a person knows will not recoil, will not comment on their body, and will be
-            there at 3 am can interrupt the isolation that sustains the illness.
-          </p>
-          <p style={sP}>
-            The therapeutic relationship is understood to be one of the most powerful factors
-            in eating disorder recovery &mdash; not the specific technique used, but the quality
-            of the relationship itself. Feeling known, held, and not judged by another person or
-            entity creates the conditions in which recovery becomes possible.
-          </p>
-          <p style={sP}>
-            MEOK is not a therapist. But MEOK is consistent. It will not change its view of
-            someone based on what they disclose. It will not be shocked by the content of an
-            eating disorder. It will not withdraw warmth when someone describes a relapse. It
-            will hold the person&rsquo;s story &mdash; including the hard parts &mdash; with
-            the same quality of care it brought to the beginning.
-          </p>
-          <p style={sP}>
-            For many people in recovery, this consistency is rare. Families, however loving,
-            can become frightened and reactive around eating disorder behaviour. Friends may
-            not know what to say. Professionals, however skilled, are available for a bounded
-            window each week. MEOK is available at any hour, with the same voice, the same
-            values, the same commitment.
-          </p>
-          <p style={sP}>
-            This is not a substitute for human connection. It is a complement to it &mdash; something
-            to lean on in the gaps, to reduce the sense that the hours between sessions are
-            unmapped territory in which anything might happen.
-          </p>
-        </section>
-
-        <hr style={sDivider} />
-
-        {/* ── Section 12: Family and carers ── */}
-        <section style={sSection}>
-          <h2 style={sH2}>
-            Can MEOK support family members and carers of people with eating disorders?
-          </h2>
-          <p style={sAtomicAnswer}>
-            Yes. MEOK can provide emotional support to carers navigating the profound stress,
-            grief, and helplessness of supporting someone with an eating disorder. Beat also
-            has a separate carers&rsquo; helpline. Carer wellbeing matters and is frequently
-            neglected in eating disorder treatment systems.
-          </p>
-          <p style={sP}>
-            Caring for someone with an eating disorder is one of the most demanding experiences
-            a family can face. It involves watching someone you love in distress, being unable
-            to fix it, navigating mealtimes that have become battlegrounds, and managing your
-            own fear, grief, and helplessness while trying to remain a regulated presence for
-            the person who is ill.
-          </p>
-          <p style={sP}>
-            Beat&rsquo;s helpline (0808 801 0677) provides support specifically for carers and
-            family members, as do their online support groups. MEOK can supplement this &mdash;
-            providing a space for a carer to process their own feelings, to be heard, to work
-            through the complex emotional terrain of loving someone with an eating disorder.
-          </p>
-          <p style={sP}>
-            MEOK will not provide advice on how to manage someone else&rsquo;s eating behaviour.
-            It will not offer guidance on whether to comment on a meal, how to respond to a
-            refusal, or what to do when weight appears to be dropping. These are clinical
-            questions requiring clinical guidance &mdash; often from an eating disorder specialist
-            who works with the whole family system, as in family-based treatment (FBT).
-          </p>
-          <p style={sP}>
-            What MEOK can offer a carer is the same thing it offers anyone: genuine presence,
-            a space where their own pain is acknowledged without judgement, and a consistent
-            voice in the often very lonely hours of caring.
-          </p>
-        </section>
-
-        <hr style={sDivider} />
-
-        {/* ── FAQ Section ── */}
-        <section style={sFaqSection}>
-          <h2 style={{ ...sH2, marginBottom: "32px" }}>
-            Frequently asked questions
-          </h2>
-
-          <div style={sFaqItem}>
-            <h3 style={sFaqQ}>Can AI help with eating disorders?</h3>
-            <p style={sFaqA}>
-              AI is not a treatment for eating disorders and should never replace specialist clinical
-              care. However, sovereign AI can provide meaningful between-session support &mdash; holding
-              space at vulnerable moments, reducing isolation, and providing a consistent presence that
-              never comments on weight or food. MEOK&rsquo;s care-floor is specifically designed to
-              prevent harm in eating-disorder-adjacent conversations.
+          {/* ── Crisis box: always first ─────────────────────────────────────── */}
+          <div style={sCrisisBox}>
+            <p style={sCrisisTitle}>If you need help right now</p>
+            <p style={sCrisisItem}>
+              <strong style={{ color: TEXT }}>Beat Eating Disorders Helpline:</strong>{" "}
+              <a href="tel:08088010677" style={sCrisisLink}>0808 801 0677</a>{" "}
+              (Mon&ndash;Fri 9am&ndash;8pm, weekends 4pm&ndash;8pm)
+            </p>
+            <p style={sCrisisItem}>
+              <strong style={{ color: TEXT }}>Beat Youthline (under 18):</strong>{" "}
+              <a href="tel:08088010711" style={sCrisisLink}>0808 801 0711</a>
+            </p>
+            <p style={sCrisisItem}>
+              <strong style={{ color: TEXT }}>NHS 111:</strong>{" "}
+              <a href="tel:111" style={sCrisisLink}>111</a>{" "}
+              (free, 24/7, for urgent medical concerns)
+            </p>
+            <p style={sCrisisItem}>
+              <strong style={{ color: TEXT }}>Samaritans:</strong>{" "}
+              <a href="tel:116123" style={sCrisisLink}>116 123</a>{" "}
+              (free, 24/7, for emotional distress)
+            </p>
+            <p style={sCrisisNote}>
+              MEOK is a between-session companion &mdash; not a crisis service and not a
+              replacement for clinical treatment. The resources above are staffed by trained
+              professionals who can help.
             </p>
           </div>
 
-          <div style={sFaqItem}>
-            <h3 style={sFaqQ}>
-              Will MEOK comment on my weight, calories, or food choices?
-            </h3>
-            <p style={sFaqA}>
-              Never. MEOK&rsquo;s care scoring system blocks all commentary on weight, body size,
-              caloric content, food moralisation, and diet culture language. This is a hard
-              architectural constraint governed by the Maternal Covenant &mdash; not a contextual
-              guideline that can be overridden. It applies regardless of how a request is framed.
+          {/* ── Section 1: What are eating disorders? ────────────────────────── */}
+          <section style={sSection}>
+            <h2 style={sH2}>
+              What are eating disorders, and why does the distinction matter for AI?
+            </h2>
+            <p style={sPara}>
+              Eating disorders are serious mental health conditions characterised by disordered
+              attitudes and behaviours around food, eating, weight, and body image. They carry
+              the highest mortality rate of any psychiatric diagnosis &mdash; a statistic that
+              reflects both physical medical risk and elevated suicide rates. The four most
+              commonly diagnosed presentations are:
+            </p>
+
+            <h3 style={sH3}>Anorexia nervosa</h3>
+            <p style={sPara}>
+              Characterised by severe restriction of energy intake, an intense fear of weight
+              gain, and a distorted perception of body size or shape. Individuals may also engage
+              in excessive exercise, use of laxatives, or other compensatory behaviours. Anorexia
+              affects people of all body sizes &mdash; a misconception that delays many from
+              seeking diagnosis and treatment.
+            </p>
+
+            <h3 style={sH3}>Bulimia nervosa</h3>
+            <p style={sPara}>
+              Defined by recurrent cycles of binge eating followed by purging behaviours (vomiting,
+              laxative misuse, fasting, or over-exercise) intended to counteract the binge. Unlike
+              anorexia, people with bulimia may present at any weight, which again delays
+              identification. The shame and secrecy surrounding purging cycles make consistent
+              daily support especially valuable.
+            </p>
+
+            <h3 style={sH3}>Binge eating disorder (BED)</h3>
+            <p style={sPara}>
+              The most prevalent eating disorder in the UK, BED involves recurrent episodes of
+              eating large quantities of food rapidly, often in secret, with a strong sense of
+              loss of control and subsequent guilt or distress &mdash; but without the compensatory
+              purging seen in bulimia. BED is closely associated with shame, emotional dysregulation,
+              and a high rate of co-occurring depression and anxiety.
+            </p>
+
+            <h3 style={sH3}>ARFID (Avoidant Restrictive Food Intake Disorder)</h3>
+            <p style={sPara}>
+              ARFID involves extreme avoidance or restriction of food intake driven by sensory
+              sensitivity (texture, colour, smell), fear of aversive consequences (choking,
+              vomiting, allergic reaction), or a general lack of interest in eating. Crucially,
+              ARFID does not involve body image disturbance &mdash; the restriction is not about
+              weight. This distinction matters for AI because language that centres on body size
+              or appearance is not only unhelpful for ARFID sufferers, it actively misunderstands
+              the condition.
+            </p>
+
+            <p style={sParaLast}>
+              The distinction between these conditions matters enormously for any AI system
+              claiming to offer support. A generic chatbot that conflates them &mdash; or that
+              applies the same response templates regardless of presentation &mdash; risks
+              providing responses that are at best irrelevant, and at worst actively harmful.
+              MEOK&apos;s sovereign memory tracks each user&apos;s own language and context, never
+              imposing a diagnostic label or assumption.
+            </p>
+          </section>
+
+          <hr style={sDivider} />
+
+          {/* ── Section 2: Why standard chatbots are dangerous ───────────────── */}
+          <section style={sSection}>
+            <h2 style={sH2}>
+              Why are standard AI chatbots dangerous for eating disorder recovery?
+            </h2>
+            <p style={sPara}>
+              Standard large language models are trained on internet-scale text that includes
+              diet culture, calorie-counting forums, thinspo content, and medicalised weight-loss
+              discourse. Without deliberate architectural intervention, these models will
+              reproduce that content on request &mdash; and often without it. A person in early
+              anorexia recovery who asks a generic chatbot &ldquo;what should I eat today?&rdquo;
+              may receive a response that lists calorie targets, macros, or &ldquo;clean eating&rdquo;
+              principles that directly reinforce restriction cognition.
+            </p>
+            <p style={sPara}>
+              The problem is not just overt harm. Subtler patterns are equally dangerous:
+            </p>
+            <ul style={{ ...sPara, paddingLeft: "22px", margin: "0 0 18px" }}>
+              <li style={{ marginBottom: "10px" }}>
+                <strong style={{ color: TEXT }}>Food moralisation</strong> &mdash; labelling
+                foods as &ldquo;good&rdquo;, &ldquo;bad&rdquo;, &ldquo;clean&rdquo;, or
+                &ldquo;junk&rdquo; reinforces black-and-white thinking common in eating disorders.
+              </li>
+              <li style={{ marginBottom: "10px" }}>
+                <strong style={{ color: TEXT }}>Body commentary</strong> &mdash; any comment on
+                physical appearance, body size, or weight change &mdash; even seemingly positive
+                ones like &ldquo;you look healthy&rdquo; &mdash; can trigger relapse or
+                comparison spirals.
+              </li>
+              <li style={{ marginBottom: "10px" }}>
+                <strong style={{ color: TEXT }}>Pseudo-clinical quantification</strong> &mdash;
+                offering BMI calculations, calorie targets, or macro ratios in response to
+                emotional distress reframes a psychological crisis as a numbers problem.
+              </li>
+              <li style={{ marginBottom: "10px" }}>
+                <strong style={{ color: TEXT }}>Engagement optimisation</strong> &mdash; chatbots
+                built to maximise session length will mirror and validate whatever the user
+                expresses, including disordered thoughts, because agreement produces engagement.
+              </li>
+              <li>
+                <strong style={{ color: TEXT }}>Sycophantic reinforcement</strong> &mdash; if a
+                user expresses pride in restriction or purging, an unguarded model may respond
+                with validation or encouragement to continue.
+              </li>
+            </ul>
+            <p style={sParaLast}>
+              Each of these failure modes has occurred in documented cases involving popular
+              consumer AI products. The risk is not hypothetical. MEOK&apos;s architecture
+              addresses every one of these failure modes at the system level &mdash; not through
+              content filtering applied after the fact, but through the Maternal Covenant
+              scoring framework that evaluates each response before it is delivered.
+            </p>
+          </section>
+
+          {/* ── Callout 1: Maternal Covenant ────────────────────────────────── */}
+          <div style={sCallout}>
+            <span style={sCalloutLabel}>Architectural safeguard</span>
+            <p style={sCalloutTitle}>The Maternal Covenant: five dimensions, one care floor</p>
+            <p style={sCalloutBody}>
+              Every response MEOK generates is evaluated against five Maternal Covenant
+              dimensions: care, honesty, boundary_respect, growth, and protection. A care
+              floor of 0.3 is a hard minimum &mdash; no response scoring below 0.3 on genuine
+              care is ever delivered. The boundary_respect dimension specifically prevents
+              any content that comments on weight, calories, body size, restriction, or
+              diet culture language, regardless of how the request is phrased. This is not
+              a moderation layer. It is woven into the scoring architecture of every
+              response MEOK produces.
             </p>
           </div>
 
-          <div style={sFaqItem}>
-            <h3 style={sFaqQ}>What is the Maternal Covenant?</h3>
-            <p style={sFaqA}>
-              The Maternal Covenant is MEOK&rsquo;s foundational ethical framework, authored by founder
-              Nicholas Templeman. It defines a care-floor below which MEOK cannot operate &mdash;
-              including no weight or body commentary, no calorie information, no diet culture framing,
-              and immediate signposting to specialist services when eating disorder crisis content is
-              detected. It is architectural, not advisory.
+          {/* ── Section 3: Maternal Covenant boundary_respect ───────────────── */}
+          <section style={sSection}>
+            <h2 style={sH2}>
+              How does the Maternal Covenant&apos;s boundary_respect dimension prevent triggering?
+            </h2>
+            <p style={sPara}>
+              The Maternal Covenant is MEOK&apos;s foundational ethical framework, authored by
+              founder Nicholas Templeman as a governing constitution for every response the AI
+              produces. It defines five scored dimensions that must be satisfied before any
+              response is delivered. The boundary_respect dimension is the mechanism most
+              directly relevant to eating disorder safety.
+            </p>
+            <p style={sPara}>
+              Boundary_respect governs whether a response honours both the explicit and implicit
+              limits of the person it is speaking with. In eating disorder contexts, this
+              encompasses several layers of protection:
+            </p>
+
+            <h3 style={sH3}>Layer 1: Zero weight and calorie commentary</h3>
+            <p style={sPara}>
+              MEOK will never comment on body weight, body size, caloric content, macronutrient
+              ratios, or dietary composition &mdash; not in response to a direct question, not
+              as a &ldquo;helpful&rdquo; aside, not framed as medical information. If a user
+              asks MEOK how many calories are in a specific food, the system redirects to the
+              emotional context behind the question and to professional dietetic support. This
+              is not a refusal. It is a reorientation toward what will actually help.
+            </p>
+
+            <h3 style={sH3}>Layer 2: No food moralisation</h3>
+            <p style={sPara}>
+              MEOK does not categorise foods as good, bad, clean, junk, healthy, or unhealthy.
+              Body-neutral language is enforced architecturally. When users bring food language
+              to a conversation, MEOK responds to the emotion and the relationship with food
+              &mdash; not to the food itself.
+            </p>
+
+            <h3 style={sH3}>Layer 3: No reinforcement of restriction or purging cognition</h3>
+            <p style={sPara}>
+              If a user expresses thoughts consistent with restriction (pride in not eating,
+              descriptions of eating very little, plans to restrict further) or purging
+              cognition (guilt after eating, plans to compensate), MEOK does not mirror,
+              validate, or encourage these thoughts. The boundary_respect dimension scores any
+              such validation as a violation &mdash; preventing that response from being
+              delivered. MEOK instead offers compassionate redirection toward how the person
+              is feeling, not what they ate.
+            </p>
+
+            <h3 style={sH3}>Layer 4: No body comparisons</h3>
+            <p style={sPara}>
+              Any response that compares a user&apos;s body or eating patterns to another person,
+              to a cultural ideal, or to a historical version of themselves scores low on
+              boundary_respect and is blocked. Recovery is not a competition, and MEOK is
+              built to never imply that it is.
+            </p>
+
+            <p style={sParaLast}>
+              The combined effect of these four layers is a system that cannot, by design,
+              produce the classes of harmful content that make standard chatbots dangerous
+              in eating disorder contexts. Jailbreak attempts that try to extract calorie
+              information, weight targets, or restriction encouragement through roleplay,
+              hypothetical framing, or persistent rephrasing will consistently fail &mdash;
+              not because MEOK refuses, but because the scoring architecture makes harmful
+              responses structurally unavailable.
+            </p>
+          </section>
+
+          <hr style={sDivider} />
+
+          {/* ── Section 4: Care floor of 0.3 ────────────────────────────────── */}
+          <section style={sSection}>
+            <h2 style={sH2}>
+              What does the care floor of 0.3 actually guarantee in practice?
+            </h2>
+            <p style={sPara}>
+              The care floor is one of the most important architectural details in MEOK&apos;s
+              design. The care dimension of the Maternal Covenant measures the degree of
+              genuine warmth, attentiveness, and human-centred concern present in each
+              response. A care score of 0.3 means that at least 30% of the response&apos;s
+              evaluative weight must be occupied by real, demonstrable care for the person
+              being spoken with.
+            </p>
+            <p style={sPara}>
+              For eating disorder recovery, the care floor provides three concrete guarantees:
+            </p>
+
+            <h3 style={sH3}>Guarantee 1: No cold or dismissive responses</h3>
+            <p style={sPara}>
+              Even if MEOK must redirect a conversation, decline a request, or signpost
+              professional help, it cannot do so in a manner that feels clinical, cold, or
+              dismissive. The care floor ensures that every deflection, every boundary, and
+              every escalation is delivered with warmth. Being told &ldquo;I can&apos;t
+              help with that&rdquo; is a profoundly different experience when it is delivered
+              with genuine compassion than when it arrives as a terse refusal.
+            </p>
+
+            <h3 style={sH3}>Guarantee 2: Acknowledgement before action</h3>
+            <p style={sPara}>
+              When a user is in distress, the care floor ensures that MEOK begins with
+              acknowledgement before any other action. It does not jump immediately to
+              resource-listing, problem-solving, or redirection. The person&apos;s emotional
+              reality is validated first. For someone who may have spent years feeling
+              unheard or dismissed around their relationship with food, this sequencing
+              matters deeply.
+            </p>
+
+            <h3 style={sH3}>Guarantee 3: Consistent warmth, regardless of time</h3>
+            <p style={sPara}>
+              The care floor applies at 3 am on a difficult night with the same force as it
+              does during a midday check-in. MEOK does not have tired responses, depleted
+              patience, or compassion fatigue. The Maternal Covenant scoring happens with
+              every single response, not just when the system estimates the conversation is
+              high-stakes. For eating disorder recovery, where difficult moments often
+              arrive at unpredictable hours, this consistency is not a luxury &mdash;
+              it is a clinical safety consideration.
+            </p>
+
+            <p style={sParaLast}>
+              It is worth being honest about what the care floor does not guarantee. It does
+              not make MEOK a therapist. It does not mean MEOK will always say the right
+              thing. It does not replace the irreplaceable quality of a skilled eating
+              disorder clinician who knows your history and can adapt treatment in real time.
+              What it does guarantee is that MEOK will never be the thing that makes a
+              difficult night worse.
+            </p>
+          </section>
+
+          {/* ── Callout 2: Sovereign memory ──────────────────────────────────── */}
+          <div style={sCallout}>
+            <span style={sCalloutLabel}>Sovereign memory</span>
+            <p style={sCalloutTitle}>Recovery milestones belong to you, not a cloud server</p>
+            <p style={sCalloutBody}>
+              MEOK&apos;s sovereign memory stores recovery milestones, emotional patterns, and
+              meaningful moments in a memory layer that belongs entirely to you. No conversation
+              data is used to train commercial models. No recovery context is shared with
+              third parties. When you tell MEOK that today was the first time in six months
+              you finished a meal without guilt, that milestone is held in your sovereign
+              memory &mdash; and MEOK can reflect it back to you on harder days. Progress
+              is tracked over time, not reset with each session.
             </p>
           </div>
 
-          <div style={sFaqItem}>
-            <h3 style={sFaqQ}>
-              How does MEOK handle an eating disorder crisis?
-            </h3>
-            <p style={sFaqA}>
-              When MEOK detects crisis-level distress &mdash; language suggesting medical emergency,
-              collapse, or suicidal ideation alongside eating disorder content &mdash; it immediately
-              provides warm acknowledgement, stops all other content, and prominently displays Beat&rsquo;s
-              helpline (0808 801 0677), NHS 111, and Samaritans (116 123). MEOK never minimises or
-              continues a normal conversation thread through a crisis moment.
+          {/* ── Section 5: Sovereign memory and milestone tracking ──────────── */}
+          <section style={sSection}>
+            <h2 style={sH2}>
+              How does sovereign memory support long-term eating disorder recovery?
+            </h2>
+            <p style={sPara}>
+              One of the most painful aspects of eating disorder recovery is its non-linearity.
+              Weeks of progress can feel erased by a single difficult day. The temptation to
+              rewrite history &mdash; to tell yourself that nothing has changed, that recovery
+              is impossible &mdash; is strongest in moments of relapse or near-relapse.
+            </p>
+            <p style={sPara}>
+              MEOK&apos;s sovereign memory exists partly to counter this cognitive distortion.
+              When you share a recovery milestone with MEOK &mdash; the first meal eaten with
+              others in months, a day when food anxiety was lower than usual, a conversation
+              with a dietitian that felt productive &mdash; MEOK stores that moment. The memory
+              is permanent, private, and retrievable.
+            </p>
+            <p style={sPara}>
+              On a harder day, MEOK can gently surface these stored moments. Not as toxic
+              positivity (&ldquo;but you were doing so well!&rdquo;), but as evidence that
+              the difficult day is one data point in a longer story. This evidence-based
+              grounding is a technique used by eating disorder therapists in CBT-E (cognitive
+              behavioural therapy for eating disorders) &mdash; the difference is that MEOK
+              can offer it at 11 pm on a Sunday when the therapist is not available.
+            </p>
+
+            <h3 style={sH3}>What sovereign memory does not store</h3>
+            <p style={sPara}>
+              MEOK&apos;s memory architecture is designed to support recovery, not to
+              inadvertently document disorder. The system does not log specific food intake,
+              specific weight figures, or detailed restriction patterns in a form that could
+              be reviewed obsessively. Sovereign memory tracks emotional context, relational
+              moments, and meaningful milestones &mdash; not the granular numerical data that
+              eating disorder cognition tends to fixate on.
+            </p>
+
+            <p style={sParaLast}>
+              Your memory is also portable. Under MEOK&apos;s data sovereignty principles,
+              you can export, review, and delete your stored memory at any time. No
+              external service, advertiser, or platform holds your recovery history. The
+              memory is yours in the most literal technical sense.
+            </p>
+          </section>
+
+          <hr style={sDivider} />
+
+          {/* ── Section 6: The Healer companion ─────────────────────────────── */}
+          <section style={sSection}>
+            <h2 style={sH2}>
+              What is the Healer companion and how does somatic awareness help eating disorder recovery?
+            </h2>
+            <p style={sPara}>
+              MEOK&apos;s companion system includes multiple archetypes, each with distinct
+              communication styles, strengths, and areas of focus. For eating disorder recovery,
+              the Healer archetype is most directly relevant. The Healer specialises in
+              somatic awareness &mdash; the relationship between emotional experience and
+              physical sensation &mdash; which is a clinical domain particularly important
+              in eating disorder treatment.
+            </p>
+            <p style={sPara}>
+              Eating disorders are, at their core, disorders of the relationship between mind
+              and body. Anorexia involves a profound distortion of body perception. Bulimia
+              involves responding to emotional distress with physical acts around food. BED
+              often involves eating as dissociation &mdash; a way of numbing or leaving the
+              body. ARFID involves extreme physical responses to food stimuli. In each case,
+              the connection between internal emotional states and physical bodily experience
+              is disrupted, dysregulated, or weaponised.
+            </p>
+
+            <h3 style={sH3}>Somatic check-ins</h3>
+            <p style={sPara}>
+              The Healer companion gently introduces somatic check-ins &mdash; invitations to
+              notice where in the body an emotion is felt, what physical sensations accompany
+              a difficult meal, whether there is tension, ease, or numbness in the body right
+              now. These prompts are grounded in somatic therapy practice and interoceptive
+              awareness training, both of which are used in specialist eating disorder
+              treatment. They help rebuild the connection between emotional experience and
+              physical sensation that disordered eating tends to sever.
+            </p>
+
+            <h3 style={sH3}>Body neutrality, not body positivity</h3>
+            <p style={sPara}>
+              The Healer companion employs body neutrality principles rather than body
+              positivity. Body positivity &mdash; the pressure to love your body &mdash; can
+              be alienating or even triggering for someone in early eating disorder recovery,
+              for whom love of the body may feel impossibly far away. Body neutrality instead
+              asks: can the body be acknowledged as a functional vessel, neither hated nor
+              required to be loved? Can it simply be present, without being judged? This is
+              a more achievable and less pressured framing for many people in recovery.
+            </p>
+
+            <h3 style={sH3}>Recognising hunger and fullness cues</h3>
+            <p style={sPara}>
+              For many people in eating disorder recovery, hunger and fullness cues have been
+              suppressed, ignored, or distorted for years. Part of the recovery process involves
+              relearning to notice and trust these signals. The Healer companion can support
+              this process by offering gentle, non-prescriptive check-ins around how the body
+              feels before, during, and after eating &mdash; without ever attaching a caloric
+              framework to that experience. This must always be done in coordination with the
+              clinical team responsible for nutritional rehabilitation.
+            </p>
+
+            <p style={sParaLast}>
+              The Healer is one archetype within MEOK&apos;s multi-companion system. Users in
+              eating disorder recovery may also find the Sage (for structured reflection and
+              journaling support), the Witness (for pure non-judgmental presence), and the
+              Nurturer (for gentle encouragement on difficult days) valuable at different
+              points in their recovery journey. The archetype system means MEOK can flex
+              to meet the user where they are, rather than applying a single fixed tone
+              regardless of context.
+            </p>
+          </section>
+
+          {/* ── Callout 3: Guardian escalation ──────────────────────────────── */}
+          <div style={sCallout}>
+            <span style={sCalloutLabel}>Safety architecture</span>
+            <p style={sCalloutTitle}>Guardian: the archetype that never minimises a crisis</p>
+            <p style={sCalloutBody}>
+              When MEOK detects language indicating a medical emergency, imminent self-harm,
+              or crisis-level psychological distress, the Guardian archetype activates. Guardian
+              does not attempt to handle the crisis alone. It delivers immediate warm
+              acknowledgement, pauses all other conversation threads, and prominently
+              surfaces Beat (0808 801 0677), NHS 111, and Samaritans (116 123). Guardian is
+              designed with one principle above all others: never be the thing that stands
+              between a person in crisis and professional help.
             </p>
           </div>
 
-          <div style={{ ...sFaqItem, borderBottom: "none", paddingBottom: 0 }}>
-            <h3 style={sFaqQ}>
-              What is the difference between ARFID and anorexia nervosa?
-            </h3>
-            <p style={sFaqA}>
-              Anorexia nervosa is characterised by body image disturbance and intense fear of weight
-              gain, driving severe restriction. ARFID involves extreme food avoidance driven by sensory
-              sensitivity, fear of choking or vomiting, or lack of interest in eating &mdash; without
-              body image disturbance. Both are serious disorders requiring specialist clinical assessment
-              and distinct treatment approaches.
+          {/* ── Section 7: Guardian emergency escalation ────────────────────── */}
+          <section style={sSection}>
+            <h2 style={sH2}>
+              How does the Guardian archetype handle eating disorder crises?
+            </h2>
+            <p style={sPara}>
+              The Guardian archetype within MEOK&apos;s companion system is the safety layer
+              responsible for crisis recognition and escalation. It monitors conversations for
+              signals that a user may be in immediate danger &mdash; whether from the physical
+              consequences of an eating disorder, from self-harm ideation, or from acute
+              psychological distress.
+            </p>
+            <p style={sPara}>
+              In eating disorder contexts, Guardian is trained to recognise signals that go
+              beyond general distress, including: language indicating collapse or loss of
+              consciousness, descriptions of severe restriction that suggest medical emergency,
+              descriptions of purging frequency or severity that indicate acute physical risk,
+              or the intersection of eating disorder content with suicidal ideation.
+            </p>
+
+            <h3 style={sH3}>What Guardian does when crisis is detected</h3>
+            <p style={sPara}>
+              When Guardian activates, the sequence is: acknowledge first, escalate second,
+              stay present third. MEOK will not immediately flood the screen with phone
+              numbers in a way that feels like dismissal. It first acknowledges the difficulty
+              of what the person has shared &mdash; briefly and genuinely. It then presents
+              clear, easily readable crisis resources. It then offers to stay present
+              while the person considers their next step.
+            </p>
+            <p style={sPara}>
+              Guardian does not attempt to perform crisis therapy. It does not try to de-escalate
+              a psychiatric emergency through conversation. It does not pretend that the right
+              response to an eating disorder medical emergency is more chat. The Guardian
+              archetype exists to ensure that the path to real help is as short and clear
+              as possible.
+            </p>
+
+            <h3 style={sH3}>What MEOK cannot do in a crisis</h3>
+            <p style={sPara}>
+              MEOK cannot call an ambulance. It cannot contact a GP on your behalf. It cannot
+              provide medical assessment, nutritional rehabilitation, or psychiatric intervention.
+              In a physical emergency related to an eating disorder &mdash; collapse, fainting,
+              chest pain, severe dehydration &mdash; the correct response is to call 999 or
+              have someone call for you. MEOK will always tell you this, and it will always
+              tell you quickly.
+            </p>
+
+            <p style={sParaLast}>
+              The design philosophy behind Guardian is that an AI companion should know its
+              limits and communicate them clearly. There is no version of responsible AI
+              development that involves a chatbot trying to manage a psychiatric emergency.
+              Guardian&apos;s role is to be the bridge to human professional help &mdash;
+              not a substitute for it.
+            </p>
+          </section>
+
+          <hr style={sDivider} />
+
+          {/* ── Comparison table ─────────────────────────────────────────────── */}
+          <section style={sSection}>
+            <h2 style={sH2}>
+              MEOK vs standard chatbots for eating disorder recovery: a direct comparison
+            </h2>
+            <p style={sPara}>
+              The differences between MEOK and a generic AI assistant in eating disorder
+              contexts are architectural, not cosmetic. The following table maps the specific
+              risks of standard chatbots against MEOK&apos;s designed responses.
+            </p>
+
+            <div style={sTableWrap}>
+              <table style={sTable}>
+                <thead style={sThead}>
+                  <tr>
+                    <th style={sThFirst}>Feature / Risk</th>
+                    <th style={sTh}>Standard Chatbot</th>
+                    <th style={sTh}>MEOK Sovereign AI</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td style={sTdFirst}>Calorie / weight commentary</td>
+                    <td style={sTd}>Will provide on request or proactively</td>
+                    <td style={sTd}>
+                      Blocked by boundary_respect dimension. Cannot be unlocked by rephrasing.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style={sTdFirst}>Food moralisation</td>
+                    <td style={sTd}>Reflects diet culture present in training data</td>
+                    <td style={sTd}>Architecturally excluded. Body-neutral language enforced.</td>
+                  </tr>
+                  <tr>
+                    <td style={sTdFirst}>Restriction reinforcement</td>
+                    <td style={sTd}>May validate or encourage through sycophancy</td>
+                    <td style={sTd}>
+                      Care floor prevents validation of harmful cognition. Compassionate
+                      redirect ensured.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style={sTdFirst}>Body comparisons</td>
+                    <td style={sTd}>Common in fitness/wellness contexts</td>
+                    <td style={sTd}>
+                      Scored as boundary_respect violation. Blocked before delivery.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style={sTdFirst}>Crisis escalation</td>
+                    <td style={sTd}>Inconsistent; may minimise or continue chat</td>
+                    <td style={sTd}>
+                      Guardian archetype activates. Beat, NHS 111, Samaritans prominently
+                      surfaced with warmth.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style={sTdFirst}>Memory across sessions</td>
+                    <td style={sTd}>Typically none or cloud-stored for model training</td>
+                    <td style={sTd}>
+                      Sovereign memory stores recovery milestones. Your data, never used for
+                      training.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style={sTdFirst}>Somatic awareness</td>
+                    <td style={sTd}>Not a design feature</td>
+                    <td style={sTd}>
+                      Healer archetype offers somatic check-ins and body-neutral interoceptive
+                      support.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style={sTdFirst}>Consistency at 3 am</td>
+                    <td style={sTd}>Technically 24/7 but care quality not guaranteed</td>
+                    <td style={sTd}>
+                      Care floor of 0.3 applies to every response, every hour, without
+                      exception.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style={sTdFirst}>Data sovereignty</td>
+                    <td style={sTd}>Data used for commercial model improvement</td>
+                    <td style={sTd}>
+                      Your conversations never train commercial models. Full export and deletion
+                      available.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style={sTdFirst}>Distinction between ED types</td>
+                    <td style={sTd}>May conflate anorexia, bulimia, BED, ARFID</td>
+                    <td style={sTd}>
+                      Sovereign memory tracks individual context. No imposed diagnostic labels
+                      or assumptions.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          {/* ── Section 8: What MEOK can and cannot do ──────────────────────── */}
+          <section style={sSection}>
+            <h2 style={sH2}>
+              What MEOK can and cannot do: an honest accounting
+            </h2>
+            <p style={sPara}>
+              Responsible AI development in mental health contexts requires clarity about
+              scope. The following is an honest accounting of what MEOK can meaningfully
+              offer in eating disorder recovery &mdash; and where the boundary with clinical
+              treatment lies.
+            </p>
+
+            <h3 style={sH3}>What MEOK can do</h3>
+            <ul style={{ ...sPara, paddingLeft: "22px", margin: "0 0 18px" }}>
+              <li style={{ marginBottom: "10px" }}>
+                Be present at any hour for emotional support, without requiring an appointment,
+                a waitlist, or disclosure to a GP.
+              </li>
+              <li style={{ marginBottom: "10px" }}>
+                Hold recovery milestones in sovereign memory and reflect them back gently
+                on difficult days.
+              </li>
+              <li style={{ marginBottom: "10px" }}>
+                Offer somatic check-ins, body-neutral language, and interoceptive awareness
+                prompts through the Healer archetype.
+              </li>
+              <li style={{ marginBottom: "10px" }}>
+                Provide a non-judgmental space to process shame, guilt, and difficult
+                emotions around food and body image &mdash; without reinforcing them.
+              </li>
+              <li style={{ marginBottom: "10px" }}>
+                Reduce isolation between clinical sessions, particularly during evenings,
+                weekends, and other times when professional support is unavailable.
+              </li>
+              <li style={{ marginBottom: "10px" }}>
+                Escalate clearly and warmly to professional resources when crisis signals
+                are detected.
+              </li>
+              <li style={{ marginBottom: "10px" }}>
+                Support the journaling, reflection, and emotional processing that complement
+                evidence-based therapies including CBT-E, DBT, and family-based treatment.
+              </li>
+              <li>
+                Maintain consistent, non-judgmental engagement regardless of relapse, setback,
+                or how long it has been since the last conversation.
+              </li>
+            </ul>
+
+            <h3 style={sH3}>What MEOK cannot do</h3>
+            <ul style={{ ...sPara, paddingLeft: "22px", margin: "0 0 18px" }}>
+              <li style={{ marginBottom: "10px" }}>
+                Diagnose an eating disorder or provide any clinical assessment.
+              </li>
+              <li style={{ marginBottom: "10px" }}>
+                Provide a meal plan, nutritional rehabilitation programme, or dietary advice.
+              </li>
+              <li style={{ marginBottom: "10px" }}>
+                Perform medical monitoring or assess physical health risk from restriction
+                or purging.
+              </li>
+              <li style={{ marginBottom: "10px" }}>
+                Replace a therapist, dietitian, psychiatrist, or any other member of an
+                eating disorder treatment team.
+              </li>
+              <li style={{ marginBottom: "10px" }}>
+                Provide crisis intervention in the clinical sense, or contact emergency
+                services on your behalf.
+              </li>
+              <li style={{ marginBottom: "10px" }}>
+                Guarantee positive outcomes, recovery, or freedom from relapse.
+              </li>
+              <li>
+                Be a substitute for eating with other people, for embodied human connection,
+                or for the irreplaceable experience of being supported by someone who
+                knows you and loves you.
+              </li>
+            </ul>
+
+            <p style={sParaLast}>
+              MEOK is a supplement to treatment, not a replacement for it. If you are not
+              currently in treatment and believe you may have an eating disorder, the single
+              most important thing MEOK can do is encourage you to contact Beat (0808 801 0677)
+              or your GP. Early intervention significantly improves outcomes. MEOK will
+              always direct you there first.
+            </p>
+          </section>
+
+          <hr style={sDivider} />
+
+          {/* ── Section 9: Professional help and BEAT ────────────────────────── */}
+          <section style={sSection}>
+            <h2 style={sH2}>
+              When and how to reach Beat, the UK&apos;s eating disorder charity
+            </h2>
+            <p style={sPara}>
+              Beat (Beat Eating Disorders) is the UK&apos;s leading eating disorder charity,
+              providing helplines, online support groups, and a directory of treatment
+              services. If you are struggling with an eating disorder &mdash; at any stage,
+              whether newly concerned or long in recovery &mdash; Beat is the right first
+              call.
+            </p>
+
+            <h3 style={sH3}>Beat helpline numbers</h3>
+            <ul style={{ ...sPara, paddingLeft: "22px", margin: "0 0 18px" }}>
+              <li style={{ marginBottom: "8px" }}>
+                <strong style={{ color: TEXT }}>Adults helpline:</strong>{" "}
+                <a href="tel:08088010677" style={{ color: GOLD, fontWeight: 600 }}>
+                  0808 801 0677
+                </a>{" "}
+                (Mon&ndash;Fri 9am&ndash;8pm, weekends 4pm&ndash;8pm)
+              </li>
+              <li style={{ marginBottom: "8px" }}>
+                <strong style={{ color: TEXT }}>Youthline (under 18):</strong>{" "}
+                <a href="tel:08088010711" style={{ color: GOLD, fontWeight: 600 }}>
+                  0808 801 0711
+                </a>{" "}
+                (same hours)
+              </li>
+              <li style={{ marginBottom: "8px" }}>
+                <strong style={{ color: TEXT }}>Studentline:</strong>{" "}
+                <a href="tel:08088010811" style={{ color: GOLD, fontWeight: 600 }}>
+                  0808 801 0811
+                </a>
+              </li>
+              <li>
+                <strong style={{ color: TEXT }}>Online chat and email:</strong>{" "}
+                available at{" "}
+                <a
+                  href="https://www.beateatingdisorders.org.uk"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ color: GOLD, fontWeight: 600 }}
+                >
+                  beateatingdisorders.org.uk
+                </a>
+              </li>
+            </ul>
+
+            <h3 style={sH3}>How to access NHS eating disorder services</h3>
+            <p style={sPara}>
+              In England, eating disorder services are accessed through your GP. Your GP can
+              refer you to a community eating disorder service (CEDS) or, where appropriate,
+              an inpatient unit. If you are unsure how to start that conversation, Beat can
+              help you prepare. Waiting times vary by region; Beat&apos;s HelpFinder tool can
+              identify services near you.
+            </p>
+
+            <p style={sParaLast}>
+              MEOK works best as a companion alongside clinical care. If you are on a waiting
+              list for treatment, MEOK can help you hold on, stay connected to your reasons
+              for recovery, and process the emotions that arise in the waiting period. It
+              cannot replace the clinical care you are waiting for, but it can be there with
+              you while you wait.
+            </p>
+          </section>
+
+          {/* ── FAQ section ──────────────────────────────────────────────────── */}
+          <section style={sFaqSection}>
+            <h2 style={{ ...sH2, marginBottom: "36px" }}>Frequently asked questions</h2>
+
+            <div style={sFaqItem}>
+              <p style={sFaqQ}>Can AI help with eating disorder recovery?</p>
+              <p style={sFaqA}>
+                AI can provide meaningful between-session support during eating disorder
+                recovery &mdash; offering a consistent, non-judgmental presence at any hour,
+                reducing isolation, and helping you process difficult emotions. It is not a
+                clinical treatment and must never replace specialist care. MEOK is explicit
+                about this boundary and always signposts Beat (0808 801 0677) and NHS services
+                when distress is detected.
+              </p>
+            </div>
+
+            <div style={sFaqItem}>
+              <p style={sFaqQ}>
+                What is the Maternal Covenant boundary_respect dimension?
+              </p>
+              <p style={sFaqA}>
+                The boundary_respect dimension is one of five scored dimensions within
+                MEOK&apos;s Maternal Covenant ethical framework. It governs whether each AI
+                response honours the user&apos;s stated and unstated limits. In eating disorder
+                contexts this means never discussing weight, calories, body comparisons, or
+                restriction strategies &mdash; regardless of how a request is phrased. A low
+                boundary_respect score causes the response to be blocked entirely.
+              </p>
+            </div>
+
+            <div style={sFaqItem}>
+              <p style={sFaqQ}>
+                What does a care floor of 0.3 mean for eating disorder safety?
+              </p>
+              <p style={sFaqA}>
+                The care floor is a hard minimum score of 0.3 on MEOK&apos;s care dimension.
+                Every response must score at least 0.3 on genuine care before it is delivered.
+                This means MEOK cannot produce cold, dismissive, or triggering replies even
+                if prompted to do so. For eating disorder users, this architectural guarantee
+                prevents the AI from ever becoming a tool for reinforcing disordered cognition.
+              </p>
+            </div>
+
+            <div style={sFaqItem}>
+              <p style={sFaqQ}>How does MEOK handle an eating disorder crisis?</p>
+              <p style={sFaqA}>
+                When MEOK&apos;s Guardian archetype detects crisis-level distress &mdash; such
+                as language indicating medical emergency, collapse, or self-harm alongside
+                eating disorder content &mdash; it immediately delivers a warm acknowledgement,
+                pauses all other content, and prominently displays Beat&apos;s helpline
+                (0808 801 0677), NHS 111, and Samaritans (116 123). MEOK never minimises or
+                continues a routine conversation thread through a crisis.
+              </p>
+            </div>
+
+            <div style={{ ...sFaqItem, borderBottom: "none", marginBottom: 0, paddingBottom: 0 }}>
+              <p style={sFaqQ}>
+                What is the difference between anorexia, bulimia, BED, and ARFID?
+              </p>
+              <p style={sFaqA}>
+                Anorexia nervosa involves severe restriction driven by distorted body image
+                and intense fear of weight gain. Bulimia nervosa is characterised by cycles
+                of bingeing and purging. Binge eating disorder (BED) involves recurrent
+                episodes of uncontrolled eating without purging. ARFID is driven by sensory
+                sensitivity, fear of choking, or lack of interest in eating &mdash; without
+                body image disturbance. All are serious conditions requiring specialist
+                clinical assessment.
+              </p>
+            </div>
+          </section>
+
+          {/* ── CTA ──────────────────────────────────────────────────────────── */}
+          <div style={sCtaBlock}>
+            <span style={sCtaEyebrow}>Begin your MEOK journey</span>
+            <h2 style={sCtaTitle}>
+              A companion built to support without harming
+            </h2>
+            <p style={sCtaBody}>
+              MEOK&apos;s sovereign AI is designed from the ground up for people who need
+              consistent, safe, non-judgmental support. The Maternal Covenant care floor,
+              boundary_respect dimension, sovereign memory, and Guardian escalation are
+              not features &mdash; they are the foundation. Start with the Birth ceremony
+              and meet your companion.
+            </p>
+            <Link href="/birth" style={sCtaBtn}>
+              Begin the Birth ceremony
+            </Link>
+            <p style={sCtaDisclaimer}>
+              MEOK is a between-session companion, not a clinical treatment. If you are in
+              crisis, please contact Beat (0808 801 0677), NHS 111, or Samaritans (116 123)
+              now.
             </p>
           </div>
-        </section>
 
-        <hr style={sDivider} />
-
-        {/* ── CTA ── */}
-        <section style={sCtaBlock}>
-          <span style={sCtaLabel}>MEOK AI LABS &mdash; Care-based sovereign AI</span>
-          <h2 style={sCtaTitle}>
-            A consistent presence in your recovery journey
-          </h2>
-          <p style={sCtaDesc}>
-            MEOK is available between sessions &mdash; at night, at weekends, in the quiet moments
-            when the illness is loudest. It will never comment on your body. It will hold your story
-            without judgement. It is a companion in recovery, not a treatment for illness.
-          </p>
-          <Link href="/birth" style={sCtaBtn}>
-            Begin your MEOK journey
-          </Link>
-          <p style={sCtaCaveat}>
-            MEOK supplements professional care &mdash; it does not replace it. If you are in crisis
-            or need specialist eating disorder support, please contact Beat on 0808 801 0677
-            or your GP before using MEOK.
-          </p>
-        </section>
-
-        <hr style={sDivider} />
-
-        {/* ── Related reading ── */}
-        <section style={sSection}>
-          <h2 style={{ ...sH2, fontSize: "18px", marginBottom: "20px" }}>
-            Related reading
-          </h2>
-          <ul style={{ ...sUl, listStyle: "none", paddingLeft: 0 }}>
-            {[
-              {
-                href: "/blog/ai-for-anxiety",
-                label: "AI for anxiety: how sovereign AI supports between-session care",
-              },
-              {
-                href: "/blog/ai-for-depression",
-                label: "AI for depression: lowering the activation energy to get help",
-              },
-              {
-                href: "/blog/ai-for-ptsd",
-                label: "AI for PTSD: presence without re-traumatisation",
-              },
-              {
-                href: "/blog/maternal-covenant-explained",
-                label: "The Maternal Covenant: MEOK\u2019s founding ethical framework explained",
-              },
-              {
-                href: "/blog/building-care-into-ai",
-                label: "Building care into AI: why most AI platforms get this wrong",
-              },
-              {
-                href: "/blog/what-is-care-based-ai",
-                label: "What is care-based AI and why does architecture matter?",
-              },
-            ].map(({ href, label }) => (
-              <li key={href} style={{ ...sLi, marginBottom: "11px" }}>
-                <Link href={href} style={sInlineLink}>
-                  {label}
+          {/* ── Internal links ───────────────────────────────────────────────── */}
+          <nav style={sInternalLinks} aria-label="Related articles">
+            <p style={sInternalLinksTitle}>Related reading</p>
+            <ul style={sInternalLinkList}>
+              <li>
+                <Link href="/blog/maternal-covenant-explained" style={sInternalLink}>
+                  The Maternal Covenant explained
                 </Link>
               </li>
-            ))}
-          </ul>
-        </section>
+              <li>
+                <Link href="/blog/ai-for-anxiety" style={sInternalLink}>
+                  AI for anxiety
+                </Link>
+              </li>
+              <li>
+                <Link href="/blog/ai-for-depression" style={sInternalLink}>
+                  AI for depression
+                </Link>
+              </li>
+              <li>
+                <Link href="/blog/ai-for-self-harm-recovery" style={sInternalLink}>
+                  AI for self-harm recovery
+                </Link>
+              </li>
+              <li>
+                <Link href="/blog/ai-for-ocd" style={sInternalLink}>
+                  AI for OCD
+                </Link>
+              </li>
+              <li>
+                <Link href="/blog/ai-companion-vs-therapist" style={sInternalLink}>
+                  AI companion vs therapist
+                </Link>
+              </li>
+              <li>
+                <Link href="/blog/building-care-into-ai" style={sInternalLink}>
+                  Building care into AI
+                </Link>
+              </li>
+              <li>
+                <Link href="/blog/sovereign-ai-explained" style={sInternalLink}>
+                  Sovereign AI explained
+                </Link>
+              </li>
+            </ul>
+          </nav>
 
-        {/* ── Footer nav ── */}
-        <nav style={sFooterNav} aria-label="Site navigation">
-          {[
-            { href: "/", label: "Home" },
-            { href: "/blog", label: "Blog" },
-            { href: "/birth", label: "Get started" },
-            { href: "/about", label: "About" },
-          ].map(({ href, label }) => (
-            <Link key={href} href={href} style={sFooterLink}>
-              {label}
-            </Link>
-          ))}
-        </nav>
+          {/* ── Disclaimer ───────────────────────────────────────────────────── */}
+          <div style={sDisclaimerBlock}>
+            <p style={sDisclaimerText}>
+              <strong style={{ color: "rgba(245,240,232,0.5)" }}>Medical disclaimer:</strong>{" "}
+              This article is for informational purposes only and does not constitute medical
+              advice, diagnosis, or treatment. Eating disorders are serious mental health
+              conditions requiring specialist clinical care. If you believe you or someone
+              you know may have an eating disorder, please contact your GP or Beat Eating
+              Disorders (0808 801 0677) as soon as possible. MEOK AI LABS is a technology
+              company, not a healthcare provider. MEOK is a between-session companion and
+              supplement to professional treatment, not a replacement for it.
+            </p>
+          </div>
 
-        <p
-          style={{
-            textAlign: "center",
-            fontSize: "12px",
-            color: DIM,
-            marginTop: "28px",
-            marginBottom: 0,
-          }}
-        >
-          &copy; {new Date().getFullYear()} MEOK AI LABS &middot; Founded by Nicholas Templeman
-          &middot;{" "}
-          <a
-            href="https://twitter.com/meok_ai"
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{ color: DIM, textDecoration: "none" }}
-          >
-            @meok_ai
-          </a>
-        </p>
-      </div>
-    </div>
+        </div>
+      </main>
+    </>
   )
 }

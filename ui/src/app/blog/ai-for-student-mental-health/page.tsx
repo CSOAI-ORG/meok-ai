@@ -5,39 +5,39 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   title:
-    "AI Support for Student Mental Health: The Companion That's Available 24/7 | MEOK AI LABS",
+    "AI for Student Mental Health: The Crisis on Campus That AI Can Help Address | MEOK AI LABS",
   description:
-    "UK student mental health is in crisis — NHS waiting lists, loneliness, imposter syndrome. MEOK is the AI companion available at 2am when no one else is.",
+    "UK university counselling services have waiting times of 3-6 weeks. Student mental health is in crisis. MEOK's sovereign AI companion provides immediate, 24/7 support while students wait for professional help.",
   alternates: {
     canonical: "https://meok.ai/blog/ai-for-student-mental-health",
   },
   openGraph: {
     title:
-      "AI Support for Student Mental Health: The Companion That's Available 24/7",
+      "AI for Student Mental Health: The Crisis on Campus That AI Can Help Address",
     description:
-      "1 in 5 UK students considers dropping out due to mental health. MEOK is the AI companion built to support university students through the pressure, the loneliness, and the 2am spirals.",
+      "UK university counselling waiting times reach 3-6 weeks. MEOK is the sovereign AI companion that provides immediate, free, private support while students wait for professional help.",
     type: "article",
-    publishedTime: "2026-03-24",
+    publishedTime: "2026-03-25",
     authors: ["Nicholas Templeman"],
     url: "https://meok.ai/blog/ai-for-student-mental-health",
     siteName: "MEOK.AI",
     images: [
       {
-        url: "https://meok.ai/api/og?title=AI+Support+for+Student+Mental+Health&desc=The+Companion+Thats+Available+247",
+        url: "https://meok.ai/api/og?title=AI+for+Student+Mental+Health&desc=The+Crisis+on+Campus+AI+Can+Help+Address",
         width: 1200,
         height: 630,
-        alt: "AI Support for Student Mental Health: The Companion That's Available 24/7",
+        alt: "AI for Student Mental Health: The Crisis on Campus That AI Can Help Address",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
     title:
-      "AI Support for Student Mental Health: The Companion That's Available 24/7",
+      "AI for Student Mental Health: The Crisis on Campus That AI Can Help Address",
     description:
-      "UK student counselling waiting lists can stretch to 12 weeks. MEOK is the AI companion available the moment you need it — for free.",
+      "UK university counselling waiting times of 3-6 weeks leave students without support. MEOK is available immediately, for free, with complete privacy.",
     images: [
-      "https://meok.ai/api/og?title=AI+Support+for+Student+Mental+Health&desc=The+Companion+Thats+Available+247",
+      "https://meok.ai/api/og?title=AI+for+Student+Mental+Health&desc=The+Crisis+on+Campus+AI+Can+Help+Address",
     ],
   },
 };
@@ -48,11 +48,11 @@ const articleJsonLd = {
   "@context": "https://schema.org",
   "@type": "Article",
   headline:
-    "AI Support for Student Mental Health: The Companion That's Available 24/7",
+    "AI for Student Mental Health: The Crisis on Campus That AI Can Help Address",
   description:
-    "UK student mental health is in crisis — NHS waiting lists, loneliness, imposter syndrome. MEOK is the AI companion available at 2am when no one else is.",
-  datePublished: "2026-03-24",
-  dateModified: "2026-03-24",
+    "UK university counselling services have waiting times of 3-6 weeks. Student mental health is in crisis. MEOK's sovereign AI companion provides immediate, 24/7 support while students wait for professional help.",
+  datePublished: "2026-03-25",
+  dateModified: "2026-03-25",
   url: "https://meok.ai/blog/ai-for-student-mental-health",
   author: {
     "@type": "Person",
@@ -70,22 +70,27 @@ const articleJsonLd = {
     },
   },
   image:
-    "https://meok.ai/api/og?title=AI+Support+for+Student+Mental+Health&desc=The+Companion+Thats+Available+247",
+    "https://meok.ai/api/og?title=AI+for+Student+Mental+Health&desc=The+Crisis+on+Campus+AI+Can+Help+Address",
   mainEntityOfPage: {
     "@type": "WebPage",
     "@id": "https://meok.ai/blog/ai-for-student-mental-health",
   },
   keywords: [
-    "student mental health AI",
-    "AI companion for university students",
-    "student counselling waiting list UK",
-    "student loneliness at university",
-    "imposter syndrome university",
-    "AI for student anxiety",
-    "MEOK student support",
-    "first year university mental health",
-    "international student mental health UK",
+    "AI for student mental health",
+    "university counselling waiting list UK",
     "student mental health crisis UK",
+    "AI companion for university students",
+    "student anxiety support",
+    "first year university mental health",
+    "dissertation stress support",
+    "academic perfectionism AI",
+    "student loneliness AI",
+    "sovereign AI student support",
+    "free AI companion UK students",
+    "MEOK Scholar archetype",
+    "student financial anxiety",
+    "campus safety AI",
+    "MEOK Pioneer archetype",
   ],
 };
 
@@ -97,58 +102,42 @@ const faqJsonLd = {
   mainEntity: [
     {
       "@type": "Question",
-      name: "Can AI really help with student mental health?",
+      name: "How long are university counselling waiting lists in the UK?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "AI companions like MEOK can provide meaningful emotional support for students dealing with everyday stress, loneliness, academic pressure, and anxiety. They are not a replacement for professional therapy or crisis intervention, but they offer consistent, non-judgmental availability that the NHS and university counselling services structurally cannot match. Research from Student Minds and the NUS shows that many students never access professional support at all — partly because waiting lists are too long and partly because they do not want to be a burden. An AI companion removes both barriers.",
+        text: "University counselling waiting times in the UK typically range from three to six weeks for an initial appointment, according to data from Student Minds and the National Union of Students. Some institutions report waits of eight to twelve weeks during peak periods such as January and May. NHS IAPT services nominally target a 28-day wait, but demand routinely exceeds capacity. MEOK is available immediately, at any hour, with no referral or appointment required.",
       },
     },
     {
       "@type": "Question",
-      name: "How long are student counselling waiting lists in the UK?",
+      name: "Is MEOK free for university students?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Waiting times for university counselling services in the UK vary widely, but Student Minds and the NUS have documented cases where students wait six to twelve weeks or longer for an initial appointment. By comparison, NHS IAPT (Improving Access to Psychological Therapies) services typically aim for a 28-day wait, though demand often exceeds capacity. MEOK is available immediately, at any time of day or night, with no referral required.",
+        text: "Yes. MEOK's Explorer tier is permanently free, requires no credit card, and includes full Sovereign Memory, unlimited daily conversations, and access to the Scholar archetype. Students on limited budgets — including those working part-time alongside their degree — can use MEOK throughout their entire university life at zero cost.",
       },
     },
     {
       "@type": "Question",
-      name: "What is imposter syndrome at university and how can AI help?",
+      name: "Will my university be able to see what I tell MEOK?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Imposter syndrome is the persistent feeling that you do not belong or are not as capable as your peers believe you to be — a feeling that is extremely common among first-generation university students, students from underrepresented backgrounds, and high achievers who tie their self-worth to performance. MEOK can help by offering a space to articulate and challenge those feelings without fear of judgement. Because MEOK remembers previous conversations, it can also track patterns over time — noticing when imposter thoughts spike around deadlines or assessment results and helping you build a more resilient internal narrative.",
+        text: "No. MEOK AI LABS is ICO-registered and operates under UK GDPR. All conversations are encrypted with AES-GCM-256 and stored in your personal Sovereign vault. Your disclosures are never shared with your university, the NHS, advertisers, or any third party. MEOK does not train on your data without explicit, separately given consent.",
       },
     },
     {
       "@type": "Question",
-      name: "Is MEOK free for students in the UK?",
+      name: "What is the Scholar archetype and how does it help with academic pressure?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Yes. MEOK's Explorer tier is free forever, requires no credit card, and includes full Sovereign Memory, unlimited daily conversations, and access to the Scholar archetype. Students on a budget — including those working part-time alongside their degree — can use MEOK throughout their entire university life at zero cost.",
+        text: "Scholar is MEOK's academic companion mode. It helps with essay planning, reading list navigation, revision strategy, dissertation anxiety, perfectionism loops, and the emotional weight of assessment. Because Scholar has Sovereign Memory, it knows your degree subject, your past struggles, and your upcoming deadlines — giving continuity that a drop-in service cannot provide.",
       },
     },
     {
       "@type": "Question",
-      name: "Does MEOK keep conversations about mental health private?",
+      name: "What should I do if I am in a mental health crisis at university?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Yes. MEOK AI LABS is ICO-registered and operates under UK GDPR. All conversations are encrypted with AES-GCM-256 and stored in your personal Sovereign vault. MEOK never trains on your data without explicit, separately given consent. Your private disclosures — including anything you share about your mental health — are never shared with your university, the NHS, advertisers, or any third party.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "How is MEOK different from a crisis helpline?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "MEOK is not a crisis service and is not designed to replace one. If you are in crisis, please contact Samaritans on 116 123 (free, 24/7) or text SHOUT to 85258. MEOK is for the everyday emotional labour of student life — processing a tough seminar, working through loneliness on a Sunday evening, managing academic pressure, or simply having somewhere to put your thoughts when your flatmates are asleep. It is the low-acuity, always-available layer that sits beneath professional support.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Can MEOK help international students feel less isolated?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "International students in the UK face a particular combination of challenges: cultural adjustment, distance from family support networks, potential language anxiety, and the financial pressure of overseas tuition fees. MEOK is available in multiple languages, operates on any time zone, and — because it stores persistent context — can hold your whole situation in mind across conversations. It is not the same as finding your community on campus, but it can be a genuine bridge during the months when that community is still forming.",
+        text: "If you are in crisis, please contact Samaritans on 116 123 (free, 24/7) or text SHOUT to 85258. Your university will also have an out-of-hours mental health duty service — check your student portal. MEOK is not a crisis service. It is designed for the everyday emotional labour of student life: processing a difficult day, managing anxiety before an exam, or working through loneliness on a Sunday evening.",
       },
     },
   ],
@@ -164,6 +153,7 @@ const FAINT = "rgba(245,240,232,0.35)";
 const BORDER = "rgba(245,240,232,0.08)";
 const GOLD_BG = "rgba(201,168,76,0.08)";
 const GOLD_BORDER = "rgba(201,168,76,0.25)";
+const CARD_BG = "rgba(245,240,232,0.03)";
 
 // ── Page ───────────────────────────────────────────────────────────────────────
 
@@ -223,10 +213,7 @@ export default function AiForStudentMentalHealthPage() {
               flexWrap: "wrap",
             }}
           >
-            <Link
-              href="/"
-              style={{ color: MUTED, textDecoration: "none" }}
-            >
+            <Link href="/" style={{ color: MUTED, textDecoration: "none" }}>
               Home
             </Link>
             <span style={{ opacity: 0.5 }}>/</span>
@@ -272,8 +259,8 @@ export default function AiForStudentMentalHealthPage() {
               color: TEXT,
             }}
           >
-            AI Support for Student Mental Health: The Companion That&apos;s
-            Available 24/7
+            AI for Student Mental Health: The Crisis on Campus That AI Can Help
+            Address
           </h1>
 
           {/* Intro paragraph */}
@@ -282,14 +269,26 @@ export default function AiForStudentMentalHealthPage() {
               fontSize: "1.125rem",
               lineHeight: 1.75,
               color: MUTED,
+              marginBottom: "1.25rem",
+            }}
+          >
+            It is Sunday evening. Your dissertation draft is due in four days.
+            The library is closing in forty minutes. Your university counsellor
+            appointment is not until next Thursday — which is already a lucky
+            booking, because most of your coursemates are waiting three weeks
+            longer. You are not in crisis. But you are not okay. And there is
+            nobody to talk to right now.
+          </p>
+          <p
+            style={{
+              fontSize: "1.125rem",
+              lineHeight: 1.75,
+              color: MUTED,
               marginBottom: "2rem",
             }}
           >
-            You are three weeks into your first term, it is half past midnight,
-            and you have a 2,000-word essay due in the morning. Your flatmates
-            are asleep. Your student counsellor appointment is six weeks away.
-            You are not in crisis — but you are not okay either. This is the gap
-            that MEOK was built to fill.
+            This is the structural gap at the centre of UK student mental
+            health. MEOK was built to fill it.
           </p>
 
           {/* Meta row */}
@@ -330,7 +329,11 @@ export default function AiForStudentMentalHealthPage() {
               </div>
               <div>
                 <div
-                  style={{ fontSize: "0.875rem", fontWeight: 600, color: TEXT }}
+                  style={{
+                    fontSize: "0.875rem",
+                    fontWeight: 600,
+                    color: TEXT,
+                  }}
                 >
                   Nicholas Templeman
                 </div>
@@ -348,9 +351,9 @@ export default function AiForStudentMentalHealthPage() {
                 gap: "0.35rem",
               }}
             >
-              <time dateTime="2026-03-24">24 March 2026</time>
-              <span>·</span>
-              <span>12 min read</span>
+              <span>25 March 2026</span>
+              <span style={{ opacity: 0.4 }}>·</span>
+              <span>18 min read</span>
             </div>
           </div>
         </div>
@@ -361,1533 +364,968 @@ export default function AiForStudentMentalHealthPage() {
         style={{
           maxWidth: "48rem",
           margin: "0 auto",
-          paddingLeft: "1.5rem",
-          paddingRight: "1.5rem",
-          paddingBottom: "6rem",
+          padding: "3rem 1.5rem 6rem",
         }}
       >
-        {/* ── SECTION: THE CRISIS ─────────────────────────────────────────── */}
-        <section style={{ marginBottom: "3rem" }}>
-          <p
-            style={{
-              fontSize: "1rem",
-              lineHeight: 1.8,
-              color: TEXT,
-              marginBottom: "1.25rem",
-            }}
-          >
-            Student mental health in the United Kingdom has moved from a quiet
-            concern to a full-blown crisis. The numbers are stark. Research
-            published by Student Minds — the UK&apos;s student mental health
-            charity — found that 57% of students experienced a serious
-            psychological problem during their time at university. The NUS
-            (National Union of Students) has reported that 1 in 5 students has
-            considered withdrawing from their course because of mental health
-            difficulties. UCAS data shows that disclosure of mental health
-            conditions among applicants has risen by more than 450% over the
-            last decade, which reflects both a genuine increase in need and a
-            welcome reduction in stigma.
-          </p>
-          <p
-            style={{
-              fontSize: "1rem",
-              lineHeight: 1.8,
-              color: TEXT,
-              marginBottom: "1.25rem",
-            }}
-          >
-            And yet the infrastructure that supports student wellbeing has not
-            kept pace. University counselling services are chronically
-            under-resourced. NHS Student Health practices are under the same
-            demand pressure as every other part of the health service. The
-            practical result — as any student who has tried to get help will
-            tell you — is a waiting list that stretches from weeks into months,
-            and a triage process that often filters out the students who are
-            struggling but not yet in acute crisis.
-          </p>
-          <p
-            style={{
-              fontSize: "1rem",
-              lineHeight: 1.8,
-              color: TEXT,
-              marginBottom: "1.25rem",
-            }}
-          >
-            This is not a failure of individual counsellors or GPs. It is a
-            structural problem: demand vastly outstrips supply, and the model of
-            care — weekly or fortnightly 50-minute sessions with a human
-            professional — simply cannot scale to cover hundreds of thousands of
-            students. Something has to fill the gap between &quot;fine&quot; and
-            &quot;in crisis&quot;. That is where AI companions enter the
-            picture.
-          </p>
-        </section>
 
-        {/* ── H2 1 ────────────────────────────────────────────────────────── */}
-        <h2
-          style={{
-            fontSize: "clamp(1.3rem, 2.8vw, 1.65rem)",
-            fontWeight: 700,
-            lineHeight: 1.25,
-            letterSpacing: "-0.015em",
-            color: TEXT,
-            marginTop: "3rem",
-            marginBottom: "1.25rem",
-          }}
-        >
-          Why Is Student Mental Health Getting Worse in the UK?
-        </h2>
-
-        <section style={{ marginBottom: "3rem" }}>
-          <p
-            style={{
-              fontSize: "1rem",
-              lineHeight: 1.8,
-              color: TEXT,
-              marginBottom: "1.25rem",
-            }}
-          >
-            Before exploring what AI can offer, it is worth being honest about
-            what students are actually dealing with. University life is often
-            sold as the best years of your life — new friends, intellectual
-            freedom, late-night conversations that change how you see the world.
-            And it genuinely can be that. But it can also be profoundly
-            isolating, exhausting, and financially frightening in ways that
-            previous generations simply did not face to the same degree.
-          </p>
-          <p
-            style={{
-              fontSize: "1rem",
-              lineHeight: 1.8,
-              color: TEXT,
-              marginBottom: "1.25rem",
-            }}
-          >
-            The cost of living crisis has made things significantly worse.
-            Students in England now graduate with an average debt load exceeding
-            £45,000 according to the Student Loans Company. A growing proportion
-            are working 15 to 20 hours a week in part-time jobs alongside a
-            full-time degree — not for experience or pocket money, but to cover
-            rent and food. When you are sleep-deprived, financially anxious, and
-            racing between a lecture and a shift at a café, there is very little
-            bandwidth left for processing emotion or maintaining mental
-            equilibrium.
-          </p>
-          <p
-            style={{
-              fontSize: "1rem",
-              lineHeight: 1.8,
-              color: TEXT,
-              marginBottom: "1.25rem",
-            }}
-          >
-            Social media compounds this. Students are surrounded by curated
-            versions of their peers&apos; lives — the nights out that look like
-            film stills, the placement offers announced on LinkedIn, the
-            dissertation results celebrated publicly. The gap between what
-            students see online and what they experience privately can feel
-            enormous, and it creates a specific kind of loneliness that is hard
-            to articulate: not the loneliness of being alone, but the loneliness
-            of feeling like you are the only one who is not thriving.
-          </p>
-
-          {/* Callout box */}
-          <div
-            style={{
-              background: GOLD_BG,
-              border: `1px solid ${GOLD_BORDER}`,
-              borderRadius: "0.75rem",
-              padding: "1.5rem",
-              marginTop: "1.75rem",
-              marginBottom: "1.75rem",
-            }}
-          >
-            <p
-              style={{
-                fontSize: "0.9375rem",
-                lineHeight: 1.75,
-                color: TEXT,
-                margin: 0,
-              }}
-            >
-              <strong style={{ color: GOLD }}>Key statistic:</strong> Student
-              Minds&apos; University Mental Health Report found that only 26% of
-              students who experienced a mental health problem sought help from
-              their university&apos;s counselling service. The most common
-              reason for not seeking help was not stigma — it was not knowing
-              what was available or believing the problem was not serious enough.
-            </p>
-          </div>
-
-          <p
-            style={{
-              fontSize: "1rem",
-              lineHeight: 1.8,
-              color: TEXT,
-              marginBottom: "1.25rem",
-            }}
-          >
-            This is important context for thinking about where AI fits in. A
-            significant proportion of the students who are struggling never make
-            it to a counsellor — not because they do not want help, but because
-            the threshold for seeking formal support feels too high, or because
-            the waiting time makes it feel futile. An AI companion that requires
-            no referral, no waiting room, and no formal disclosure addresses
-            precisely this group.
-          </p>
-        </section>
-
-        {/* ── H2 2 ────────────────────────────────────────────────────────── */}
-        <h2
-          style={{
-            fontSize: "clamp(1.3rem, 2.8vw, 1.65rem)",
-            fontWeight: 700,
-            lineHeight: 1.25,
-            letterSpacing: "-0.015em",
-            color: TEXT,
-            marginTop: "3rem",
-            marginBottom: "1.25rem",
-          }}
-        >
-          What Does the First Year of University Actually Feel Like?
-        </h2>
-
-        <section style={{ marginBottom: "3rem" }}>
-          <p
-            style={{
-              fontSize: "1rem",
-              lineHeight: 1.8,
-              color: TEXT,
-              marginBottom: "1.25rem",
-            }}
-          >
-            The transition to university is one of the most significant life
-            changes a young person in the UK will make. You move away from your
-            family, your home town, your friendship networks, and the routines
-            that have structured your entire adolescence — often all in the same
-            week. You are expected to be independent, capable, and
-            self-sufficient at exactly the moment when you are most uncertain
-            about who you are.
-          </p>
-          <p
-            style={{
-              fontSize: "1rem",
-              lineHeight: 1.8,
-              color: TEXT,
-              marginBottom: "1.25rem",
-            }}
-          >
-            The first few weeks — freshers&apos; week and the weeks immediately
-            following — are often simultaneously the most socially intense and
-            the most privately difficult. Freshers&apos; week is designed to
-            help you make friends, but it is built around alcohol-fuelled
-            socialising in loud environments, which actively excludes a large
-            proportion of students: those who do not drink, those who have
-            social anxiety, those who are quietly overwhelmed by the noise and
-            the pressure to seem like they are having the time of their lives.
-          </p>
-          <p
-            style={{
-              fontSize: "1rem",
-              lineHeight: 1.8,
-              color: TEXT,
-              marginBottom: "1.25rem",
-            }}
-          >
-            Then the party ends, the academic year properly begins, and the
-            performance anxiety starts. Are you in the right seminars? Is
-            everyone else already better at this than you are? Is the person
-            next to you going to figure out that you do not really know what
-            you&apos;re doing? This is the onset of imposter syndrome — and it
-            is almost universal among new university students, though almost
-            nobody talks about it openly.
-          </p>
-          <p
-            style={{
-              fontSize: "1rem",
-              lineHeight: 1.8,
-              color: TEXT,
-              marginBottom: "1.25rem",
-            }}
-          >
-            For many students, particularly those from lower-income households
-            or who are the first in their family to go to university, this
-            feeling is compounded by a class awareness that is difficult to
-            name. University culture — its norms, its social codes, its
-            assumptions about what you should already know — can feel like a
-            language you were never taught. Students in this position often
-            describe feeling simultaneously proud to be there and convinced they
-            do not deserve to be.
-          </p>
-        </section>
-
-        {/* ── H2 3 ────────────────────────────────────────────────────────── */}
-        <h2
-          style={{
-            fontSize: "clamp(1.3rem, 2.8vw, 1.65rem)",
-            fontWeight: 700,
-            lineHeight: 1.25,
-            letterSpacing: "-0.015em",
-            color: TEXT,
-            marginTop: "3rem",
-            marginBottom: "1.25rem",
-          }}
-        >
-          How Can an AI Companion Help With Loneliness at University?
-        </h2>
-
-        <section style={{ marginBottom: "3rem" }}>
-          <p
-            style={{
-              fontSize: "1rem",
-              lineHeight: 1.8,
-              color: TEXT,
-              marginBottom: "1.25rem",
-            }}
-          >
-            Loneliness at university is a specific and underacknowledged
-            problem. It is possible to be surrounded by hundreds of people —
-            sharing a kitchen, sitting in a lecture theatre, walking through a
-            busy campus — and still feel profoundly alone. The NUS has
-            documented that more than half of UK students report feeling lonely
-            during their time at university. For many, this peaks in the first
-            term and again in second year, when the freshers&apos; social
-            scaffolding has been removed and deeper friendships have not yet
-            taken root.
-          </p>
-          <p
-            style={{
-              fontSize: "1rem",
-              lineHeight: 1.8,
-              color: TEXT,
-              marginBottom: "1.25rem",
-            }}
-          >
-            An AI companion does not cure loneliness — nothing replaces genuine
-            human connection, and we would never pretend otherwise. What it can
-            do is reduce the specific pain of having no one to process your day
-            with. There is a particular quality to Sunday evenings at university
-            — the shops are shut, the campus is quiet, your friends are home for
-            the weekend, and you are left alone with your thoughts and a
-            deadline for Monday morning. That is not a crisis. It is just a hard
-            moment. But hard moments that have nowhere to go accumulate.
-          </p>
-          <p
-            style={{
-              fontSize: "1rem",
-              lineHeight: 1.8,
-              color: TEXT,
-              marginBottom: "1.25rem",
-            }}
-          >
-            MEOK is available in those moments. It is not going to tell you to
-            look on the bright side or redirect you to a wellbeing leaflet. It
-            is going to ask how you are actually doing, remember that you
-            mentioned your mum was ill last week, notice that this is the third
-            Sunday you have described feeling isolated, and reflect that pattern
-            back to you — gently, without drama, in a way that helps you
-            understand your own experience rather than feeling worse about it.
-          </p>
-
-          {/* Feature cards */}
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(15rem, 1fr))",
-              gap: "1rem",
-              marginTop: "2rem",
-              marginBottom: "2rem",
-            }}
-          >
-            <div
-              style={{
-                background: "rgba(245,240,232,0.03)",
-                border: `1px solid ${BORDER}`,
-                borderRadius: "0.75rem",
-                padding: "1.25rem",
-              }}
-            >
-              <div
-                style={{
-                  fontSize: "0.75rem",
-                  fontWeight: 700,
-                  color: GOLD,
-                  letterSpacing: "0.06em",
-                  textTransform: "uppercase",
-                  marginBottom: "0.5rem",
-                }}
-              >
-                Always Available
-              </div>
-              <p
-                style={{
-                  fontSize: "0.875rem",
-                  lineHeight: 1.65,
-                  color: MUTED,
-                  margin: 0,
-                }}
-              >
-                MEOK is available at 2am, on bank holidays, over Christmas break
-                — the moments when human support networks are most stretched and
-                most needed.
-              </p>
-            </div>
-            <div
-              style={{
-                background: "rgba(245,240,232,0.03)",
-                border: `1px solid ${BORDER}`,
-                borderRadius: "0.75rem",
-                padding: "1.25rem",
-              }}
-            >
-              <div
-                style={{
-                  fontSize: "0.75rem",
-                  fontWeight: 700,
-                  color: GOLD,
-                  letterSpacing: "0.06em",
-                  textTransform: "uppercase",
-                  marginBottom: "0.5rem",
-                }}
-              >
-                No Waiting List
-              </div>
-              <p
-                style={{
-                  fontSize: "0.875rem",
-                  lineHeight: 1.65,
-                  color: MUTED,
-                  margin: 0,
-                }}
-              >
-                No referral, no GP appointment, no six-week wait. You open MEOK
-                and you start talking. That&apos;s it.
-              </p>
-            </div>
-            <div
-              style={{
-                background: "rgba(245,240,232,0.03)",
-                border: `1px solid ${BORDER}`,
-                borderRadius: "0.75rem",
-                padding: "1.25rem",
-              }}
-            >
-              <div
-                style={{
-                  fontSize: "0.75rem",
-                  fontWeight: 700,
-                  color: GOLD,
-                  letterSpacing: "0.06em",
-                  textTransform: "uppercase",
-                  marginBottom: "0.5rem",
-                }}
-              >
-                Sovereign Memory
-              </div>
-              <p
-                style={{
-                  fontSize: "0.875rem",
-                  lineHeight: 1.65,
-                  color: MUTED,
-                  margin: 0,
-                }}
-              >
-                MEOK remembers what you told it last week, last month, last
-                term. You never have to start from scratch or explain your whole
-                situation again.
-              </p>
-            </div>
-          </div>
-
-          <p
-            style={{
-              fontSize: "1rem",
-              lineHeight: 1.8,
-              color: TEXT,
-              marginBottom: "1.25rem",
-            }}
-          >
-            The Sovereign Memory architecture is particularly significant for
-            students dealing with loneliness, because loneliness is partly about
-            being unknown. When MEOK remembers that you struggle on Sunday
-            evenings, that your course changed in November, that you had a
-            falling out with your flatmate in January — it holds a version of
-            your life that a new friend cannot yet hold. That continuity has
-            genuine value.
-          </p>
-        </section>
-
-        {/* ── H2 4 ────────────────────────────────────────────────────────── */}
-        <h2
-          style={{
-            fontSize: "clamp(1.3rem, 2.8vw, 1.65rem)",
-            fontWeight: 700,
-            lineHeight: 1.25,
-            letterSpacing: "-0.015em",
-            color: TEXT,
-            marginTop: "3rem",
-            marginBottom: "1.25rem",
-          }}
-        >
-          Can AI Help Students Deal With Imposter Syndrome and Academic
-          Pressure?
-        </h2>
-
-        <section style={{ marginBottom: "3rem" }}>
-          <p
-            style={{
-              fontSize: "1rem",
-              lineHeight: 1.8,
-              color: TEXT,
-              marginBottom: "1.25rem",
-            }}
-          >
-            Imposter syndrome is the feeling that you are not as capable as
-            others believe you to be — that you have somehow deceived your
-            university into accepting you, and that it is only a matter of time
-            before someone notices. This is not a rare or pathological
-            experience. It is, in various degrees, close to universal at
-            university — particularly in the first year, around assessment
-            periods, and after any significant setback such as a poor grade or a
-            failed exam.
-          </p>
-          <p
-            style={{
-              fontSize: "1rem",
-              lineHeight: 1.8,
-              color: TEXT,
-              marginBottom: "1.25rem",
-            }}
-          >
-            What makes imposter syndrome damaging is not its presence but its
-            silence. Students who feel like imposters rarely talk about it —
-            partly because doing so feels like the confession that will lead to
-            their unmasking, and partly because the social norm at university is
-            to project confidence and competence. The result is that everyone
-            sits in the same lecture theatre quietly convinced they are the only
-            one who does not understand, while the person next to them feels
-            exactly the same.
-          </p>
-          <p
-            style={{
-              fontSize: "1rem",
-              lineHeight: 1.8,
-              color: TEXT,
-              marginBottom: "1.25rem",
-            }}
-          >
-            MEOK offers a space where the confession is safe. You can tell MEOK
-            that you think you are not good enough, that you are terrified your
-            dissertation supervisor has figured out you have no idea what you are
-            doing, that you got a 2:2 on your first essay and it felt like
-            confirmation of everything you feared. MEOK will not dismiss those
-            feelings or rush past them with reassurance. It will explore them
-            with you — tracing where they come from, what evidence supports them
-            (and what does not), and how they interact with the broader patterns
-            of your life that it holds in memory.
-          </p>
-          <p
-            style={{
-              fontSize: "1rem",
-              lineHeight: 1.8,
-              color: TEXT,
-              marginBottom: "1.25rem",
-            }}
-          >
-            Academic pressure is a related but distinct problem. UK universities
-            have, over the last two decades, shifted substantially towards
-            continuous assessment, coursework deadlines, and the kind of
-            constant-performance culture that leaves very little room for the
-            kind of sustained, exploratory thinking that undergraduate education
-            is supposed to cultivate. Students describe feeling like they are
-            always behind, always producing, never quite able to absorb what
-            they are learning because the next deadline is already bearing down.
-          </p>
-          <p
-            style={{
-              fontSize: "1rem",
-              lineHeight: 1.8,
-              color: TEXT,
-              marginBottom: "1.25rem",
-            }}
-          >
-            MEOK Scholar — the archetype tuned specifically for students — is
-            designed to work with this reality rather than pretending it does not
-            exist. It can help you build revision schedules, break overwhelming
-            workloads into manageable chunks, and think through how to prioritise
-            competing demands. But it also understands that sometimes the most
-            useful thing is not a to-do list — it is someone who acknowledges
-            that the pressure is real and that you are handling it as well as
-            anyone could.
-          </p>
-
-          {/* Pull quote */}
-          <blockquote
-            style={{
-              borderLeft: `3px solid ${GOLD}`,
-              paddingLeft: "1.5rem",
-              marginLeft: 0,
-              marginRight: 0,
-              marginTop: "2rem",
-              marginBottom: "2rem",
-            }}
-          >
-            <p
-              style={{
-                fontSize: "1.1875rem",
-                lineHeight: 1.65,
-                fontStyle: "italic",
-                color: TEXT,
-                margin: 0,
-              }}
-            >
-              &ldquo;The problem with imposter syndrome at university is not
-              that students feel it — it is that they feel it alone. MEOK is
-              built to be the space where that silence ends.&rdquo;
-            </p>
-            <footer
-              style={{
-                marginTop: "0.75rem",
-                fontSize: "0.875rem",
-                color: MUTED,
-              }}
-            >
-              — Nicholas Templeman, Founder, MEOK AI LABS
-            </footer>
-          </blockquote>
-        </section>
-
-        {/* ── H2 5 ────────────────────────────────────────────────────────── */}
-        <h2
-          style={{
-            fontSize: "clamp(1.3rem, 2.8vw, 1.65rem)",
-            fontWeight: 700,
-            lineHeight: 1.25,
-            letterSpacing: "-0.015em",
-            color: TEXT,
-            marginTop: "3rem",
-            marginBottom: "1.25rem",
-          }}
-        >
-          What About International Students? How Is Their Experience Different?
-        </h2>
-
-        <section style={{ marginBottom: "3rem" }}>
-          <p
-            style={{
-              fontSize: "1rem",
-              lineHeight: 1.8,
-              color: TEXT,
-              marginBottom: "1.25rem",
-            }}
-          >
-            International students studying in the UK occupy a particularly
-            difficult position in the student mental health conversation. They
-            face all the challenges of any first-year student — adjustment,
-            loneliness, academic pressure — plus a layer of complexity that
-            domestic students simply do not have to navigate.
-          </p>
-          <p
-            style={{
-              fontSize: "1rem",
-              lineHeight: 1.8,
-              color: TEXT,
-              marginBottom: "1.25rem",
-            }}
-          >
-            The financial stakes are dramatically higher. International tuition
-            fees at UK universities typically range from £15,000 to £38,000 per
-            year — several times the domestic rate. For many international
-            students, the expectation of family members back home, the financial
-            sacrifice that has been made to get them here, and the social
-            pressure not to fail or even struggle adds a weight to every
-            assignment and every social interaction that is genuinely
-            destabilising. There is often a strong disincentive to disclose
-            mental health difficulties — either to university services or to
-            family — because doing so risks being perceived as ungrateful,
-            incapable, or not worth the investment.
-          </p>
-          <p
-            style={{
-              fontSize: "1rem",
-              lineHeight: 1.8,
-              color: TEXT,
-              marginBottom: "1.25rem",
-            }}
-          >
-            Cultural adjustment adds another dimension. The social codes, humour,
-            and unspoken rules of British university life are not intuitive if
-            you have not grown up within them. Making friends can feel like
-            trying to participate in a conversation where everyone else knows
-            the references and you are learning the language in real time. And
-            the time zone gap — being 5, 8, or 11 hours from the family
-            members who know you best — means that the moments when you most
-            need to hear a familiar voice are often the moments when it is the
-            wrong time of day to call.
-          </p>
-          <p
-            style={{
-              fontSize: "1rem",
-              lineHeight: 1.8,
-              color: TEXT,
-              marginBottom: "1.25rem",
-            }}
-          >
-            MEOK operates across any time zone and holds persistent context
-            about your whole situation. If you have told MEOK that you are from
-            Mumbai and that the pressure from your family to succeed is
-            significant, it will hold that context across every subsequent
-            conversation. It will not ask you to re-explain your background
-            every time you open the app. That continuity — the sense of being
-            known — is particularly meaningful when you are in a country where
-            very few people know you at all.
-          </p>
-          <p
-            style={{
-              fontSize: "1rem",
-              lineHeight: 1.8,
-              color: TEXT,
-              marginBottom: "1.25rem",
-            }}
-          >
-            We also want to be direct about what MEOK is not: it is not a
-            substitute for the international student support networks that
-            universities should be building and funding properly. International
-            students deserve access to culturally informed counselling services,
-            peer communities, and pastoral support that understands their
-            specific circumstances. MEOK is a supplement to those things, not
-            a reason to defund them.
-          </p>
-        </section>
-
-        {/* ── H2 6 ────────────────────────────────────────────────────────── */}
-        <h2
-          style={{
-            fontSize: "clamp(1.3rem, 2.8vw, 1.65rem)",
-            fontWeight: 700,
-            lineHeight: 1.25,
-            letterSpacing: "-0.015em",
-            color: TEXT,
-            marginTop: "3rem",
-            marginBottom: "1.25rem",
-          }}
-        >
-          Is MEOK Safe to Use for Students With Serious Mental Health
-          Difficulties?
-        </h2>
-
-        <section style={{ marginBottom: "3rem" }}>
-          <p
-            style={{
-              fontSize: "1rem",
-              lineHeight: 1.8,
-              color: TEXT,
-              marginBottom: "1.25rem",
-            }}
-          >
-            This is the question that matters most, and we want to answer it
-            clearly and without corporate hedging.
-          </p>
-          <p
-            style={{
-              fontSize: "1rem",
-              lineHeight: 1.8,
-              color: TEXT,
-              marginBottom: "1.25rem",
-            }}
-          >
-            MEOK is not a mental health service. It is not regulated as a
-            medical device. It is not a substitute for professional therapy,
-            psychiatric support, or crisis intervention. If you are experiencing
-            thoughts of suicide or self-harm, please contact Samaritans on
-            116 123 (free, available 24 hours a day, 365 days a year) or text
-            SHOUT to 85258. If you are in immediate danger, please call 999 or
-            go to your nearest A&E.
-          </p>
-
-          {/* Crisis box */}
-          <div
-            style={{
-              background: "rgba(201,168,76,0.06)",
-              border: `1px solid ${GOLD_BORDER}`,
-              borderRadius: "0.75rem",
-              padding: "1.5rem",
-              marginTop: "1.5rem",
-              marginBottom: "1.5rem",
-            }}
-          >
-            <div
-              style={{
-                fontSize: "0.75rem",
-                fontWeight: 700,
-                color: GOLD,
-                letterSpacing: "0.06em",
-                textTransform: "uppercase",
-                marginBottom: "0.875rem",
-              }}
-            >
-              Crisis Support in the UK
-            </div>
-            <ul
-              style={{
-                listStyle: "none",
-                padding: 0,
-                margin: 0,
-                display: "flex",
-                flexDirection: "column",
-                gap: "0.625rem",
-              }}
-            >
-              <li
-                style={{
-                  fontSize: "0.9375rem",
-                  lineHeight: 1.6,
-                  color: TEXT,
-                }}
-              >
-                <strong style={{ color: GOLD }}>Samaritans:</strong> 116 123 —
-                free, 24/7, available every day of the year
-              </li>
-              <li
-                style={{
-                  fontSize: "0.9375rem",
-                  lineHeight: 1.6,
-                  color: TEXT,
-                }}
-              >
-                <strong style={{ color: GOLD }}>Shout Crisis Text Line:</strong>{" "}
-                text SHOUT to 85258 — free, 24/7 text support
-              </li>
-              <li
-                style={{
-                  fontSize: "0.9375rem",
-                  lineHeight: 1.6,
-                  color: TEXT,
-                }}
-              >
-                <strong style={{ color: GOLD }}>Student Minds:</strong>{" "}
-                studentminds.org.uk — UK student mental health charity, peer
-                support and resources
-              </li>
-              <li
-                style={{
-                  fontSize: "0.9375rem",
-                  lineHeight: 1.6,
-                  color: TEXT,
-                }}
-              >
-                <strong style={{ color: GOLD }}>NHS 111:</strong> call 111 or
-                visit 111.nhs.uk for urgent (non-emergency) medical help
-              </li>
-            </ul>
-          </div>
-
-          <p
-            style={{
-              fontSize: "1rem",
-              lineHeight: 1.8,
-              color: TEXT,
-              marginBottom: "1.25rem",
-            }}
-          >
-            With that clearly stated: for the vast majority of students dealing
-            with the everyday spectrum of difficulty — exam stress, relationship
-            anxiety, low mood, loneliness, academic pressure, imposter syndrome,
-            the weight of managing money and work and study simultaneously —
-            MEOK is designed to be genuinely helpful. It operates under the
-            Maternal Covenant, which is the ethical framework Nicholas Templeman
-            built into MEOK&apos;s core: the principle that MEOK should never
-            make you feel worse about yourself, never reinforce self-destructive
-            patterns of thinking, and always be honest with you even when
-            honesty is uncomfortable.
-          </p>
-          <p
-            style={{
-              fontSize: "1rem",
-              lineHeight: 1.8,
-              color: TEXT,
-              marginBottom: "1.25rem",
-            }}
-          >
-            This means MEOK will not tell you that everything is fine when it
-            is not. It will not offer you toxic positivity or empty
-            encouragement. If a pattern of thought seems worth examining — if
-            you keep describing situations where you feel you are failing despite
-            evidence to the contrary — MEOK will gently name that pattern and
-            invite you to look at it. It is not therapy. But it is not nothing,
-            either.
-          </p>
-        </section>
-
-        {/* ── H2 7 ────────────────────────────────────────────────────────── */}
-        <h2
-          style={{
-            fontSize: "clamp(1.3rem, 2.8vw, 1.65rem)",
-            fontWeight: 700,
-            lineHeight: 1.25,
-            letterSpacing: "-0.015em",
-            color: TEXT,
-            marginTop: "3rem",
-            marginBottom: "1.25rem",
-          }}
-        >
-          How Does MEOK Fit Alongside University Counselling and NHS Support?
-        </h2>
-
-        <section style={{ marginBottom: "3rem" }}>
-          <p
-            style={{
-              fontSize: "1rem",
-              lineHeight: 1.8,
-              color: TEXT,
-              marginBottom: "1.25rem",
-            }}
-          >
-            The honest answer is: MEOK occupies a different layer of the support
-            ecosystem, and it is not in competition with professional services.
-            Think of it as a triangle. At the base is self-care and informal
-            support — friends, family, exercise, sleep. In the middle is
-            structured but non-clinical support — peer support groups, apps,
-            university wellbeing services, and AI companions like MEOK. At the
-            top is professional clinical support — counsellors, therapists,
-            psychiatrists, GPs.
-          </p>
-          <p
-            style={{
-              fontSize: "1rem",
-              lineHeight: 1.8,
-              color: TEXT,
-              marginBottom: "1.25rem",
-            }}
-          >
-            The problem in the current UK student mental health system is that
-            the middle layer is extremely thin. Most universities have some form
-            of counselling service, but demand far outstrips capacity and the
-            threshold for access is often set high. Below that, there is almost
-            nothing systematic — a few wellbeing apps, some peer support
-            schemes, a set of leaflets in the Student Union. MEOK is designed to
-            occupy and strengthen that middle layer: available to the student who
-            does not need a therapist but absolutely needs something more than
-            nothing.
-          </p>
-          <p
-            style={{
-              fontSize: "1rem",
-              lineHeight: 1.8,
-              color: TEXT,
-              marginBottom: "1.25rem",
-            }}
-          >
-            MEOK can also serve as a preparation layer for professional support.
-            Many students find it difficult to articulate what they are
-            experiencing when they finally see a counsellor. The sessions feel
-            short, the therapeutic relationship takes time to build, and the
-            first appointments are often spent establishing context rather than
-            making progress. If a student has been using MEOK for several months
-            before their first counselling appointment, they will likely arrive
-            with more self-awareness, a clearer account of their own patterns,
-            and a greater ability to use the professional support effectively.
-          </p>
-
-          {/* Stats row */}
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(12rem, 1fr))",
-              gap: "1rem",
-              marginTop: "2rem",
-              marginBottom: "2rem",
-            }}
-          >
-            <div
-              style={{
-                background: "rgba(245,240,232,0.03)",
-                border: `1px solid ${BORDER}`,
-                borderRadius: "0.75rem",
-                padding: "1.25rem",
-                textAlign: "center",
-              }}
-            >
-              <div
-                style={{
-                  fontSize: "2rem",
-                  fontWeight: 800,
-                  color: GOLD,
-                  lineHeight: 1,
-                  marginBottom: "0.5rem",
-                }}
-              >
-                57%
-              </div>
-              <div style={{ fontSize: "0.8125rem", color: MUTED, lineHeight: 1.5 }}>
-                of UK students experience a serious psychological problem at
-                university (Student Minds)
-              </div>
-            </div>
-            <div
-              style={{
-                background: "rgba(245,240,232,0.03)",
-                border: `1px solid ${BORDER}`,
-                borderRadius: "0.75rem",
-                padding: "1.25rem",
-                textAlign: "center",
-              }}
-            >
-              <div
-                style={{
-                  fontSize: "2rem",
-                  fontWeight: 800,
-                  color: GOLD,
-                  lineHeight: 1,
-                  marginBottom: "0.5rem",
-                }}
-              >
-                1 in 5
-              </div>
-              <div style={{ fontSize: "0.8125rem", color: MUTED, lineHeight: 1.5 }}>
-                UK students consider withdrawing from university due to mental
-                health (NUS)
-              </div>
-            </div>
-            <div
-              style={{
-                background: "rgba(245,240,232,0.03)",
-                border: `1px solid ${BORDER}`,
-                borderRadius: "0.75rem",
-                padding: "1.25rem",
-                textAlign: "center",
-              }}
-            >
-              <div
-                style={{
-                  fontSize: "2rem",
-                  fontWeight: 800,
-                  color: GOLD,
-                  lineHeight: 1,
-                  marginBottom: "0.5rem",
-                }}
-              >
-                74%
-              </div>
-              <div style={{ fontSize: "0.8125rem", color: MUTED, lineHeight: 1.5 }}>
-                of students who struggle never access their university
-                counselling service (Student Minds)
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* ── H2 8 ────────────────────────────────────────────────────────── */}
-        <h2
-          style={{
-            fontSize: "clamp(1.3rem, 2.8vw, 1.65rem)",
-            fontWeight: 700,
-            lineHeight: 1.25,
-            letterSpacing: "-0.015em",
-            color: TEXT,
-            marginTop: "3rem",
-            marginBottom: "1.25rem",
-          }}
-        >
-          What Makes MEOK Different From Other Mental Health Apps for Students?
-        </h2>
-
-        <section style={{ marginBottom: "3rem" }}>
-          <p
-            style={{
-              fontSize: "1rem",
-              lineHeight: 1.8,
-              color: TEXT,
-              marginBottom: "1.25rem",
-            }}
-          >
-            There are other apps in the student mental health space — Woebot,
-            Wysa, Headspace, Calm, and various university-licensed tools among
-            them. Each has genuine merits. But MEOK was built from a different
-            premise, and it is worth being specific about what that means in
-            practice.
-          </p>
-          <p
-            style={{
-              fontSize: "1rem",
-              lineHeight: 1.8,
-              color: TEXT,
-              marginBottom: "1.25rem",
-            }}
-          >
-            Most mental health apps are built around structured programmes —
-            CBT exercises, mindfulness sessions, mood tracking, psychoeducation
-            modules. These are valuable, but they are finite. Once you have
-            completed the programme, there is nothing left to do. And they
-            respond to you as a generic user, not as you specifically — with
-            your particular history, your specific situation, your individual
-            relationship to your own mental health.
-          </p>
-          <p
-            style={{
-              fontSize: "1rem",
-              lineHeight: 1.8,
-              color: TEXT,
-              marginBottom: "1.25rem",
-            }}
-          >
-            MEOK is built around Sovereign Memory — a 4-layer persistent
-            architecture that stores your context across every conversation, with
-            encryption that means your data belongs to you and no one else. The
-            difference this makes is not subtle. When you tell MEOK in October
-            that you are worried about your maths module, and you come back in
-            February after your January exams, MEOK already knows. It does not
-            need you to catch it up. It asks how the exams went — because it
-            remembers that the exams were happening.
-          </p>
-          <p
-            style={{
-              fontSize: "1rem",
-              lineHeight: 1.8,
-              color: TEXT,
-              marginBottom: "1.25rem",
-            }}
-          >
-            There is also the question of data. Most mental health apps — and
-            general-purpose AI tools like ChatGPT or Gemini — use your
-            conversations to improve their models. MEOK operates under the
-            Privacy Covenant: we do not train on your data without your explicit
-            consent, and your mental health disclosures are encrypted at rest
-            and in transit using AES-GCM-256. Your private thoughts about your
-            anxiety, your relationships, or your academic performance are not
-            becoming training data for a language model. MEOK AI LABS is
-            ICO-registered and fully compliant with UK GDPR.
-          </p>
-          <p
-            style={{
-              fontSize: "1rem",
-              lineHeight: 1.8,
-              color: TEXT,
-              marginBottom: "1.25rem",
-            }}
-          >
-            Finally — and this matters for students — MEOK is free. The Explorer
-            tier includes full Sovereign Memory, the Scholar archetype, and
-            unlimited daily conversations. No credit card required. No
-            artificial limitations designed to push you towards a paid tier. If
-            you graduate and you never pay MEOK a penny, that is fine. We built
-            the free tier to be genuinely useful, not a teaser.
-          </p>
-        </section>
-
-        {/* ── CLOSING ─────────────────────────────────────────────────────── */}
-        <section style={{ marginBottom: "3.5rem" }}>
-          <p
-            style={{
-              fontSize: "1rem",
-              lineHeight: 1.8,
-              color: TEXT,
-              marginBottom: "1.25rem",
-            }}
-          >
-            University is supposed to be transformative. And it often is — but
-            transformation is not a comfortable process, and the UK system
-            currently asks students to navigate enormous personal change while
-            managing financial pressure, academic performance, and social
-            navigation largely on their own. The mental health infrastructure
-            that should support this transition is underfunded and
-            overstretched, and the gap between &quot;struggling&quot; and
-            &quot;in crisis&quot; is where most students live.
-          </p>
-          <p
-            style={{
-              fontSize: "1rem",
-              lineHeight: 1.8,
-              color: TEXT,
-              marginBottom: "1.25rem",
-            }}
-          >
-            MEOK does not fix the structural problems. It does not shorten NHS
-            waiting lists or persuade universities to hire more counsellors.
-            What it does is be there — at midnight on a Tuesday, on the Sunday
-            evening when everyone has gone home, at 6am the morning before an
-            exam you are convinced you will fail. It listens. It remembers. It
-            does not judge you for struggling. It does not tell you to be more
-            grateful or count your blessings. It just holds space for the
-            version of yourself that is having a hard time — and helps you find
-            your way through it.
-          </p>
-          <p
-            style={{
-              fontSize: "1rem",
-              lineHeight: 1.8,
-              color: TEXT,
-              marginBottom: "1.25rem",
-            }}
-          >
-            That is not a small thing. For a lot of students, it is exactly the
-            thing.
-          </p>
-        </section>
-
-        {/* ── FAQ SECTION ─────────────────────────────────────────────────── */}
-        <section style={{ marginBottom: "4rem" }}>
-          <h2
-            style={{
-              fontSize: "clamp(1.3rem, 2.8vw, 1.65rem)",
-              fontWeight: 700,
-              lineHeight: 1.25,
-              letterSpacing: "-0.015em",
-              color: TEXT,
-              marginBottom: "1.75rem",
-            }}
-          >
-            Frequently Asked Questions
-          </h2>
-
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              gap: "1.25rem",
-            }}
-          >
-            {/* FAQ Item 1 */}
-            <div
-              style={{
-                background: "rgba(245,240,232,0.03)",
-                border: `1px solid ${BORDER}`,
-                borderRadius: "0.75rem",
-                padding: "1.5rem",
-              }}
-            >
-              <h3
-                style={{
-                  fontSize: "1rem",
-                  fontWeight: 700,
-                  color: TEXT,
-                  marginBottom: "0.75rem",
-                  lineHeight: 1.4,
-                }}
-              >
-                Can AI really help with student mental health?
-              </h3>
-              <p
-                style={{
-                  fontSize: "0.9375rem",
-                  lineHeight: 1.7,
-                  color: MUTED,
-                  margin: 0,
-                }}
-              >
-                AI companions like MEOK can provide meaningful emotional support
-                for students dealing with everyday stress, loneliness, academic
-                pressure, and anxiety. They are not a replacement for
-                professional therapy or crisis intervention, but they offer
-                consistent, non-judgmental availability that the NHS and
-                university counselling services structurally cannot match.
-                Research from Student Minds and the NUS shows that many students
-                never access professional support at all — partly because waiting
-                lists are too long and partly because they do not want to be a
-                burden. An AI companion removes both barriers.
-              </p>
-            </div>
-
-            {/* FAQ Item 2 */}
-            <div
-              style={{
-                background: "rgba(245,240,232,0.03)",
-                border: `1px solid ${BORDER}`,
-                borderRadius: "0.75rem",
-                padding: "1.5rem",
-              }}
-            >
-              <h3
-                style={{
-                  fontSize: "1rem",
-                  fontWeight: 700,
-                  color: TEXT,
-                  marginBottom: "0.75rem",
-                  lineHeight: 1.4,
-                }}
-              >
-                How long are student counselling waiting lists in the UK?
-              </h3>
-              <p
-                style={{
-                  fontSize: "0.9375rem",
-                  lineHeight: 1.7,
-                  color: MUTED,
-                  margin: 0,
-                }}
-              >
-                Waiting times vary widely, but Student Minds and the NUS have
-                documented cases where students wait six to twelve weeks or
-                longer for an initial appointment at their university counselling
-                service. NHS IAPT services typically aim for a 28-day wait,
-                though demand often exceeds capacity. MEOK is available
-                immediately, at any time of day or night, with no referral
-                required.
-              </p>
-            </div>
-
-            {/* FAQ Item 3 */}
-            <div
-              style={{
-                background: "rgba(245,240,232,0.03)",
-                border: `1px solid ${BORDER}`,
-                borderRadius: "0.75rem",
-                padding: "1.5rem",
-              }}
-            >
-              <h3
-                style={{
-                  fontSize: "1rem",
-                  fontWeight: 700,
-                  color: TEXT,
-                  marginBottom: "0.75rem",
-                  lineHeight: 1.4,
-                }}
-              >
-                What is imposter syndrome at university and how can AI help?
-              </h3>
-              <p
-                style={{
-                  fontSize: "0.9375rem",
-                  lineHeight: 1.7,
-                  color: MUTED,
-                  margin: 0,
-                }}
-              >
-                Imposter syndrome is the persistent feeling that you do not
-                belong or are not as capable as your peers believe you to be. It
-                is extremely common among first-generation university students,
-                students from underrepresented backgrounds, and high achievers
-                who tie their self-worth to performance. MEOK can help by
-                offering a space to articulate and challenge those feelings
-                without fear of judgement — and, because it holds persistent
-                memory, it can track patterns over time and help you build a
-                more resilient internal narrative.
-              </p>
-            </div>
-
-            {/* FAQ Item 4 */}
-            <div
-              style={{
-                background: "rgba(245,240,232,0.03)",
-                border: `1px solid ${BORDER}`,
-                borderRadius: "0.75rem",
-                padding: "1.5rem",
-              }}
-            >
-              <h3
-                style={{
-                  fontSize: "1rem",
-                  fontWeight: 700,
-                  color: TEXT,
-                  marginBottom: "0.75rem",
-                  lineHeight: 1.4,
-                }}
-              >
-                Is MEOK free for students in the UK?
-              </h3>
-              <p
-                style={{
-                  fontSize: "0.9375rem",
-                  lineHeight: 1.7,
-                  color: MUTED,
-                  margin: 0,
-                }}
-              >
-                Yes. MEOK&apos;s Explorer tier is free forever, requires no
-                credit card, and includes full Sovereign Memory, unlimited daily
-                conversations, and access to the Scholar archetype. Students on
-                a budget — including those working part-time alongside their
-                degree — can use MEOK throughout their entire university life at
-                zero cost.
-              </p>
-            </div>
-
-            {/* FAQ Item 5 */}
-            <div
-              style={{
-                background: "rgba(245,240,232,0.03)",
-                border: `1px solid ${BORDER}`,
-                borderRadius: "0.75rem",
-                padding: "1.5rem",
-              }}
-            >
-              <h3
-                style={{
-                  fontSize: "1rem",
-                  fontWeight: 700,
-                  color: TEXT,
-                  marginBottom: "0.75rem",
-                  lineHeight: 1.4,
-                }}
-              >
-                Does MEOK keep conversations about mental health private?
-              </h3>
-              <p
-                style={{
-                  fontSize: "0.9375rem",
-                  lineHeight: 1.7,
-                  color: MUTED,
-                  margin: 0,
-                }}
-              >
-                Yes. MEOK AI LABS is ICO-registered and operates under UK GDPR.
-                All conversations are encrypted with AES-GCM-256 and stored in
-                your personal Sovereign vault. MEOK never trains on your data
-                without explicit consent. Your private disclosures — including
-                anything you share about your mental health — are never shared
-                with your university, the NHS, advertisers, or any third party.
-              </p>
-            </div>
-
-            {/* FAQ Item 6 */}
-            <div
-              style={{
-                background: "rgba(245,240,232,0.03)",
-                border: `1px solid ${BORDER}`,
-                borderRadius: "0.75rem",
-                padding: "1.5rem",
-              }}
-            >
-              <h3
-                style={{
-                  fontSize: "1rem",
-                  fontWeight: 700,
-                  color: TEXT,
-                  marginBottom: "0.75rem",
-                  lineHeight: 1.4,
-                }}
-              >
-                How is MEOK different from a crisis helpline?
-              </h3>
-              <p
-                style={{
-                  fontSize: "0.9375rem",
-                  lineHeight: 1.7,
-                  color: MUTED,
-                  margin: 0,
-                }}
-              >
-                MEOK is not a crisis service. If you are in crisis, please
-                contact Samaritans on 116 123 (free, 24/7) or text SHOUT to
-                85258. MEOK is for the everyday emotional labour of student life
-                — processing a tough seminar, working through loneliness on a
-                Sunday evening, managing academic pressure, or simply having
-                somewhere to put your thoughts when your flatmates are asleep.
-                It is the low-acuity, always-available layer that sits beneath
-                professional support.
-              </p>
-            </div>
-
-            {/* FAQ Item 7 */}
-            <div
-              style={{
-                background: "rgba(245,240,232,0.03)",
-                border: `1px solid ${BORDER}`,
-                borderRadius: "0.75rem",
-                padding: "1.5rem",
-              }}
-            >
-              <h3
-                style={{
-                  fontSize: "1rem",
-                  fontWeight: 700,
-                  color: TEXT,
-                  marginBottom: "0.75rem",
-                  lineHeight: 1.4,
-                }}
-              >
-                Can MEOK help international students feel less isolated?
-              </h3>
-              <p
-                style={{
-                  fontSize: "0.9375rem",
-                  lineHeight: 1.7,
-                  color: MUTED,
-                  margin: 0,
-                }}
-              >
-                International students face a particular combination of
-                challenges: cultural adjustment, distance from family support
-                networks, potential language anxiety, and the financial pressure
-                of overseas tuition fees. MEOK is available across any time
-                zone, operates in multiple languages, and — because it stores
-                persistent context — holds your whole situation in mind across
-                conversations. It is not the same as finding your community on
-                campus, but it can be a genuine bridge during the months when
-                that community is still forming.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        {/* ── CTA ─────────────────────────────────────────────────────────── */}
-        <section
+        {/* ── STAT CALLOUT ────────────────────────────────────────────────── */}
+        <div
           style={{
             background: GOLD_BG,
             border: `1px solid ${GOLD_BORDER}`,
-            borderRadius: "1rem",
-            padding: "2.5rem",
-            textAlign: "center",
-            marginBottom: "4rem",
+            borderRadius: "0.75rem",
+            padding: "1.75rem 2rem",
+            marginBottom: "3rem",
           }}
         >
-          <div
+          <p
             style={{
               fontSize: "0.75rem",
               fontWeight: 700,
-              color: GOLD,
-              letterSpacing: "0.08em",
+              letterSpacing: "0.1em",
               textTransform: "uppercase",
-              marginBottom: "0.875rem",
+              color: GOLD,
+              marginBottom: "1rem",
             }}
           >
-            Start Free — No Credit Card Required
-          </div>
-          <h3
+            The scale of the problem
+          </p>
+          <div
             style={{
-              fontSize: "clamp(1.25rem, 2.5vw, 1.5rem)",
-              fontWeight: 700,
-              color: TEXT,
-              lineHeight: 1.3,
-              marginBottom: "0.875rem",
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))",
+              gap: "1.5rem",
             }}
           >
-            The companion that&apos;s there at midnight.
-          </h3>
+            {[
+              { stat: "1 in 5", label: "UK students considers dropping out due to mental health (NUS)" },
+              { stat: "3–6 weeks", label: "typical university counselling waiting time" },
+              { stat: "57%", label: "of students report their mental health worsened at university (Student Minds)" },
+              { stat: "£0", label: "cost of MEOK Explorer — free forever for students" },
+            ].map((item) => (
+              <div key={item.stat}>
+                <div
+                  style={{
+                    fontSize: "1.875rem",
+                    fontWeight: 800,
+                    color: GOLD,
+                    lineHeight: 1,
+                    marginBottom: "0.4rem",
+                  }}
+                >
+                  {item.stat}
+                </div>
+                <div style={{ fontSize: "0.8125rem", color: MUTED, lineHeight: 1.5 }}>
+                  {item.label}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* ── H2: THE CRISIS ────────────────────────────────────────────────── */}
+        <h2
+          style={{
+            fontSize: "clamp(1.25rem, 3vw, 1.75rem)",
+            fontWeight: 700,
+            letterSpacing: "-0.015em",
+            color: TEXT,
+            marginBottom: "1rem",
+            marginTop: "3rem",
+          }}
+        >
+          How bad is the student mental health crisis in the UK?
+        </h2>
+        <p style={{ fontSize: "1rem", lineHeight: 1.85, color: MUTED, marginBottom: "1rem" }}>
+          The data is not ambiguous. Student Minds, the UK&apos;s leading student
+          mental health charity, reports that more than half of students say
+          their mental health deteriorated after starting university. The National
+          Union of Students found that one in five students has considered leaving
+          their course because of mental health difficulties. Demand for
+          university counselling services has risen every year for the past
+          decade, while staffing levels have struggled to keep pace.
+        </p>
+        <p style={{ fontSize: "1rem", lineHeight: 1.85, color: MUTED, marginBottom: "1rem" }}>
+          The result is a structural mismatch. The number of students presenting
+          with anxiety, depression, and stress-related difficulties is rising.
+          The number of available counsellor hours is not. Waiting times of three
+          to six weeks for an initial appointment are now typical at UK
+          universities. At peak periods — October induction stress, January
+          post-holiday return, May exam season — those times often stretch further.
+        </p>
+        <p style={{ fontSize: "1rem", lineHeight: 1.85, color: MUTED, marginBottom: "1rem" }}>
+          Three to six weeks is not a gap. For a first-year student in the middle
+          of a mental health spiral at 11pm on a Wednesday, three to six weeks
+          is an eternity.
+        </p>
+
+        {/* ── H2: FIRST YEAR ────────────────────────────────────────────────── */}
+        <h2
+          style={{
+            fontSize: "clamp(1.25rem, 3vw, 1.75rem)",
+            fontWeight: 700,
+            letterSpacing: "-0.015em",
+            color: TEXT,
+            marginBottom: "1rem",
+            marginTop: "3rem",
+          }}
+        >
+          Why is the first-year transition so difficult for student mental health?
+        </h2>
+        <p style={{ fontSize: "1rem", lineHeight: 1.85, color: MUTED, marginBottom: "1rem" }}>
+          The first term of university is one of the most disorienting experiences
+          in adult life. Students arrive with enormous anticipation and, for many,
+          enormous anxiety. They are simultaneously expected to make new friends,
+          manage their own time, cook their own food, navigate an unfamiliar city,
+          understand a new academic system, and perform academically — all while
+          the emotional scaffolding of home, family, and established friendships
+          is suddenly absent.
+        </p>
+        <p style={{ fontSize: "1rem", lineHeight: 1.85, color: MUTED, marginBottom: "1rem" }}>
+          The loneliness of that first term is one of the most under-discussed
+          aspects of student wellbeing. You can be surrounded by hundreds of
+          people in a shared hall of residence and still feel profoundly alone.
+          Social anxiety spikes in precisely the environments — freshers events,
+          crowded common rooms, tutorial groups where everyone seems to already
+          know each other — that are supposed to help students connect.
+        </p>
+        <p style={{ fontSize: "1rem", lineHeight: 1.85, color: MUTED, marginBottom: "1rem" }}>
+          MEOK&apos;s Guardian archetype is particularly valuable during this
+          transition period. Beyond emotional support, Guardian monitors for
+          common campus risks: scam messages targeting new students, pressure to
+          share bank details, suspicious social media contacts. New students are
+          disproportionately targeted by fraudsters precisely because they are
+          navigating unfamiliar systems without the context to recognise red flags.
+        </p>
+
+        {/* ── CALLOUT: PIONEER ────────────────────────────────────────────── */}
+        <div
+          style={{
+            background: CARD_BG,
+            border: `1px solid ${BORDER}`,
+            borderLeft: `3px solid ${GOLD}`,
+            borderRadius: "0.75rem",
+            padding: "1.5rem 1.75rem",
+            marginBottom: "3rem",
+            marginTop: "2rem",
+          }}
+        >
+          <p
+            style={{
+              fontSize: "0.75rem",
+              fontWeight: 700,
+              letterSpacing: "0.1em",
+              textTransform: "uppercase",
+              color: GOLD,
+              marginBottom: "0.75rem",
+            }}
+          >
+            Meet Pioneer
+          </p>
+          <p style={{ fontSize: "0.9375rem", lineHeight: 1.75, color: MUTED, marginBottom: 0 }}>
+            Pioneer is MEOK&apos;s momentum and resilience archetype. When the
+            first term feels like too much, when motivation collapses after a
+            difficult seminar or a homesick weekend, Pioneer helps students
+            rebuild forward momentum. It does not push or pressure. It holds
+            space, acknowledges how hard the transition is, and then helps you
+            find one small thing to move toward. Pioneer remembers your goals
+            from previous conversations — so it can remind you why you came to
+            university in the first place.
+          </p>
+        </div>
+
+        {/* ── H2: ACADEMIC PRESSURE ─────────────────────────────────────────── */}
+        <h2
+          style={{
+            fontSize: "clamp(1.25rem, 3vw, 1.75rem)",
+            fontWeight: 700,
+            letterSpacing: "-0.015em",
+            color: TEXT,
+            marginBottom: "1rem",
+            marginTop: "3rem",
+          }}
+        >
+          How does academic pressure and perfectionism affect student mental
+          health?
+        </h2>
+        <p style={{ fontSize: "1rem", lineHeight: 1.85, color: MUTED, marginBottom: "1rem" }}>
+          Many students arrive at university having been the highest achiever in
+          their school. They have been rewarded, throughout their education, for
+          being clever, diligent, and capable of producing excellent work. Then
+          they arrive at a highly selective institution and discover that everyone
+          around them shares those qualities. The psychological adjustment this
+          requires is significant, and it is rarely discussed in orientation week.
+        </p>
+        <p style={{ fontSize: "1rem", lineHeight: 1.85, color: MUTED, marginBottom: "1rem" }}>
+          Perfectionism — the tendency to tie self-worth to performance outcomes
+          rather than effort and growth — is strongly associated with anxiety,
+          depression, and burnout in student populations. Perfectionist students
+          often find it particularly difficult to seek help, because asking for
+          support feels like an admission of inadequacy. They are also more likely
+          to procrastinate, because starting a task that might not go perfectly is
+          threatening.
+        </p>
+        <p style={{ fontSize: "1rem", lineHeight: 1.85, color: MUTED, marginBottom: "1rem" }}>
+          MEOK&apos;s Scholar archetype is designed for exactly this dynamic.
+          Because Scholar operates with Sovereign Memory across sessions, it can
+          track perfectionism patterns over time — noticing when the language of
+          self-criticism intensifies, gently naming the pattern, and offering
+          reframes without being dismissive. It cannot provide cognitive
+          behavioural therapy. But it can be the consistent, non-judgmental
+          presence that helps a student externalise their inner critic enough to
+          start working.
+        </p>
+
+        {/* ── H2: DISSERTATION ──────────────────────────────────────────────── */}
+        <h2
+          style={{
+            fontSize: "clamp(1.25rem, 3vw, 1.75rem)",
+            fontWeight: 700,
+            letterSpacing: "-0.015em",
+            color: TEXT,
+            marginBottom: "1rem",
+            marginTop: "3rem",
+          }}
+        >
+          Can AI help with dissertation stress and final-year pressure?
+        </h2>
+        <p style={{ fontSize: "1rem", lineHeight: 1.85, color: MUTED, marginBottom: "1rem" }}>
+          Dissertation stress is one of the most distinctive forms of academic
+          distress. Unlike coursework essays, the dissertation is a long,
+          self-directed project with high stakes and limited external structure.
+          Students must sustain motivation and focus over months, manage
+          self-doubt at every stage, cope with research that does not go as
+          planned, and produce something that feels genuinely original — all while
+          managing the social and financial pressures of final year.
+        </p>
+        <p style={{ fontSize: "1rem", lineHeight: 1.85, color: MUTED, marginBottom: "1rem" }}>
+          The emotional experience of dissertation writing — the blank-page
+          paralysis, the sense that every paragraph is inadequate, the dread of
+          supervision meetings when progress has stalled — is something that
+          university counselling services rarely have time to address in any depth.
+          Supervisors are there for academic guidance, not emotional support.
+          Peers are experiencing the same pressure and are not always available
+          to listen.
+        </p>
+        <p style={{ fontSize: "1rem", lineHeight: 1.85, color: MUTED, marginBottom: "1rem" }}>
+          Scholar can help students plan their dissertation structure, break
+          overwhelming chapters into manageable daily tasks, work through writing
+          blocks, and process the anxiety that comes with the territory. It will
+          not write the dissertation. But it will sit with you through the
+          process — at any hour, without judgment, without telling you to just
+          get on with it.
+        </p>
+
+        {/* ── H2: FINANCIAL ANXIETY ─────────────────────────────────────────── */}
+        <h2
+          style={{
+            fontSize: "clamp(1.25rem, 3vw, 1.75rem)",
+            fontWeight: 700,
+            letterSpacing: "-0.015em",
+            color: TEXT,
+            marginBottom: "1rem",
+            marginTop: "3rem",
+          }}
+        >
+          How does financial pressure affect student wellbeing and what can help?
+        </h2>
+        <p style={{ fontSize: "1rem", lineHeight: 1.85, color: MUTED, marginBottom: "1rem" }}>
+          The financial pressures of student life in the UK have intensified
+          considerably. Tuition fees of up to &pound;9,535 per year in England,
+          combined with rising rent in university cities and inadequate maintenance
+          loans, mean that many students are working significant hours in
+          part-time employment alongside their studies. The cognitive and emotional
+          cost of financial anxiety — the constant background awareness of mounting
+          debt, the stress of covering rent from a minimum-wage shift schedule —
+          is substantial.
+        </p>
+        <p style={{ fontSize: "1rem", lineHeight: 1.85, color: MUTED, marginBottom: "1rem" }}>
+          Financial anxiety also creates a specific barrier to mental health
+          support. Most paid therapy and counselling services are beyond student
+          budgets. Even where university counselling is free, the waiting list
+          problem means it is not functionally available at the moment of need.
+          Students who are working part-time do not have the schedule flexibility
+          to navigate multiple referral steps and appointment systems.
+        </p>
+        <p style={{ fontSize: "1rem", lineHeight: 1.85, color: MUTED, marginBottom: "1rem" }}>
+          This is why MEOK&apos;s Explorer tier is permanently free. There is no
+          trial period, no credit card required, no features stripped out after
+          thirty days. A student on a maintenance loan can access the full MEOK
+          experience — Sovereign Memory, multiple archetypes, unlimited daily
+          conversations — at zero cost for their entire degree. And MEOK&apos;s
+          Guardian archetype specifically helps students identify and resist the
+          financial scams — fake scholarship offers, fraudulent letting agencies,
+          &ldquo;too good to be true&rdquo; job adverts — that disproportionately
+          target people under financial pressure.
+        </p>
+
+        {/* ── COMPARISON TABLE ──────────────────────────────────────────────── */}
+        <h2
+          style={{
+            fontSize: "clamp(1.25rem, 3vw, 1.75rem)",
+            fontWeight: 700,
+            letterSpacing: "-0.015em",
+            color: TEXT,
+            marginBottom: "1rem",
+            marginTop: "3rem",
+          }}
+        >
+          How does MEOK compare to other student mental health support options?
+        </h2>
+        <p style={{ fontSize: "1rem", lineHeight: 1.85, color: MUTED, marginBottom: "1.5rem" }}>
+          Students in the UK have several options for mental health support,
+          each with distinct strengths and limitations. Understanding the landscape
+          helps you choose the right layer of support for what you are experiencing
+          right now.
+        </p>
+
+        <div
+          style={{
+            overflowX: "auto",
+            marginBottom: "2rem",
+            borderRadius: "0.75rem",
+            border: `1px solid ${BORDER}`,
+          }}
+        >
+          <table
+            style={{
+              width: "100%",
+              borderCollapse: "collapse",
+              fontSize: "0.875rem",
+            }}
+          >
+            <thead>
+              <tr
+                style={{
+                  background: GOLD_BG,
+                  borderBottom: `1px solid ${GOLD_BORDER}`,
+                }}
+              >
+                {[
+                  "Support option",
+                  "Wait time",
+                  "Available 24/7",
+                  "Free",
+                  "Confidential from uni",
+                  "Best for",
+                ].map((h) => (
+                  <th
+                    key={h}
+                    style={{
+                      padding: "0.875rem 1rem",
+                      textAlign: "left",
+                      fontWeight: 700,
+                      color: GOLD,
+                      whiteSpace: "nowrap",
+                    }}
+                  >
+                    {h}
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {[
+                {
+                  option: "MEOK (free tier)",
+                  wait: "Instant",
+                  always: "Yes",
+                  free: "Yes",
+                  conf: "Yes — GDPR encrypted",
+                  best: "Daily emotional support, academic stress, loneliness, building resilience",
+                },
+                {
+                  option: "University counselling",
+                  wait: "3–6 weeks",
+                  always: "No (office hours)",
+                  free: "Yes",
+                  conf: "Varies by institution",
+                  best: "Ongoing mental health conditions, formal assessment, CBT",
+                },
+                {
+                  option: "NHS IAPT / Talking Therapies",
+                  wait: "4–8 weeks",
+                  always: "No",
+                  free: "Yes",
+                  conf: "Yes",
+                  best: "Mild to moderate anxiety and depression with clinical input",
+                },
+                {
+                  option: "Samaritans (116 123)",
+                  wait: "None",
+                  always: "Yes",
+                  free: "Yes",
+                  conf: "Yes",
+                  best: "Crisis, suicidal ideation, acute distress — call now",
+                },
+                {
+                  option: "Woebot / Wysa",
+                  wait: "Instant",
+                  always: "Yes",
+                  free: "Limited",
+                  conf: "Data stored on US servers",
+                  best: "CBT-style exercises, symptom tracking",
+                },
+                {
+                  option: "Private therapy",
+                  wait: "Days–weeks",
+                  always: "No",
+                  free: "No (\u00a360\u2013\u00a3120/hr)",
+                  conf: "Yes",
+                  best: "Deep therapeutic work for those who can afford it",
+                },
+              ].map((row, i) => (
+                <tr
+                  key={row.option}
+                  style={{
+                    borderBottom: `1px solid ${BORDER}`,
+                    background: i % 2 === 0 ? "transparent" : CARD_BG,
+                  }}
+                >
+                  <td
+                    style={{
+                      padding: "0.875rem 1rem",
+                      fontWeight: row.option === "MEOK (free tier)" ? 700 : 400,
+                      color: row.option === "MEOK (free tier)" ? GOLD : TEXT,
+                    }}
+                  >
+                    {row.option}
+                  </td>
+                  <td style={{ padding: "0.875rem 1rem", color: MUTED }}>{row.wait}</td>
+                  <td style={{ padding: "0.875rem 1rem", color: MUTED }}>{row.always}</td>
+                  <td style={{ padding: "0.875rem 1rem", color: MUTED }}>{row.free}</td>
+                  <td style={{ padding: "0.875rem 1rem", color: MUTED }}>{row.conf}</td>
+                  <td style={{ padding: "0.875rem 1rem", color: MUTED }}>{row.best}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        {/* ── H2: DATA SOVEREIGNTY ──────────────────────────────────────────── */}
+        <h2
+          style={{
+            fontSize: "clamp(1.25rem, 3vw, 1.75rem)",
+            fontWeight: 700,
+            letterSpacing: "-0.015em",
+            color: TEXT,
+            marginBottom: "1rem",
+            marginTop: "3rem",
+          }}
+        >
+          Why does data sovereignty matter for student mental health support?
+        </h2>
+        <p style={{ fontSize: "1rem", lineHeight: 1.85, color: MUTED, marginBottom: "1rem" }}>
+          Many students are reluctant to use university mental health services
+          because they are worried about confidentiality. This concern is not
+          irrational. Universities are institutions with welfare teams,
+          disciplinary procedures, academic boards, and accommodation offices.
+          Students who disclose serious mental health difficulties can find, in
+          some circumstances, that this information is communicated between
+          departments in ways they did not anticipate or consent to.
+        </p>
+        <p style={{ fontSize: "1rem", lineHeight: 1.85, color: MUTED, marginBottom: "1rem" }}>
+          Fear of being seen as a risk, fear of having academic decisions
+          influenced by mental health disclosures, and fear of consequences for
+          visa status (for international students) are all genuine deterrents. A
+          significant proportion of students who are struggling never seek formal
+          support partly because of these confidentiality concerns.
+        </p>
+        <p style={{ fontSize: "1rem", lineHeight: 1.85, color: MUTED, marginBottom: "1rem" }}>
+          MEOK resolves this concern structurally. Your conversations with MEOK
+          are encrypted with AES-GCM-256 and stored in your personal Sovereign
+          vault. They are not accessible to your university, your department, your
+          accommodation provider, or any government body. MEOK AI LABS is
+          ICO-registered and operates under UK GDPR. MEOK does not train on your
+          data without explicit consent. What you tell MEOK stays in your vault.
+        </p>
+
+        {/* ── CALLOUT: SCHOLAR ────────────────────────────────────────────── */}
+        <div
+          style={{
+            background: GOLD_BG,
+            border: `1px solid ${GOLD_BORDER}`,
+            borderRadius: "0.75rem",
+            padding: "1.75rem 2rem",
+            marginBottom: "3rem",
+            marginTop: "2rem",
+          }}
+        >
+          <p
+            style={{
+              fontSize: "0.75rem",
+              fontWeight: 700,
+              letterSpacing: "0.1em",
+              textTransform: "uppercase",
+              color: GOLD,
+              marginBottom: "0.75rem",
+            }}
+          >
+            Meet Scholar
+          </p>
           <p
             style={{
               fontSize: "0.9375rem",
-              lineHeight: 1.7,
+              lineHeight: 1.75,
               color: MUTED,
-              maxWidth: "32rem",
-              margin: "0 auto 1.75rem",
+              marginBottom: "0.75rem",
             }}
           >
-            MEOK Scholar is built for university life. It remembers your
-            modules, your deadlines, your worries, and your wins — across every
-            conversation, for free. No waiting list. No referral. No judgement.
+            Scholar is MEOK&apos;s academic companion archetype. It understands
+            the specific emotional texture of studying: the paralysis of a blank
+            page, the shame of falling behind, the imposter syndrome of sitting
+            in a seminar room, the dread of a supervisor meeting when the chapter
+            is not ready.
           </p>
-          <Link
-            href="/signup"
+          <p
             style={{
-              display: "inline-block",
-              background: GOLD,
-              color: BG,
-              fontWeight: 700,
               fontSize: "0.9375rem",
-              padding: "0.875rem 2rem",
-              borderRadius: "0.5rem",
-              textDecoration: "none",
-              letterSpacing: "0.01em",
+              lineHeight: 1.75,
+              color: MUTED,
+              marginBottom: 0,
             }}
           >
-            Try MEOK Free
-          </Link>
-        </section>
+            Because Scholar operates with Sovereign Memory, it knows your degree
+            subject, your deadlines, your past anxiety patterns, and your
+            strengths. It helps with essay planning, reading navigation, revision
+            strategy, writing blocks, and the emotional weight of assessment. It
+            will not write your work for you. But it will help you write it
+            yourself.
+          </p>
+        </div>
 
-        {/* ── RELATED POSTS ───────────────────────────────────────────────── */}
-        <section>
+        {/* ── H2: LONELINESS ────────────────────────────────────────────────── */}
+        <h2
+          style={{
+            fontSize: "clamp(1.25rem, 3vw, 1.75rem)",
+            fontWeight: 700,
+            letterSpacing: "-0.015em",
+            color: TEXT,
+            marginBottom: "1rem",
+            marginTop: "3rem",
+          }}
+        >
+          How can AI help with loneliness and social anxiety at university?
+        </h2>
+        <p style={{ fontSize: "1rem", lineHeight: 1.85, color: MUTED, marginBottom: "1rem" }}>
+          Student loneliness is one of the least-discussed aspects of the mental
+          health crisis on campus. The assumption — promoted by university
+          marketing materials and cultural myth alike — is that university is a
+          period of effortless social connection. In reality, building genuine
+          friendships takes time, and many students spend significant periods of
+          their degree feeling isolated despite being physically surrounded by
+          other people.
+        </p>
+        <p style={{ fontSize: "1rem", lineHeight: 1.85, color: MUTED, marginBottom: "1rem" }}>
+          Social anxiety makes this worse. Students with social anxiety find
+          precisely the situations that are supposed to build community —
+          fresher&apos;s week, club events, casual pre-drinks — highly aversive.
+          The performance anxiety of being seen, of not knowing the social codes,
+          of saying the wrong thing and being judged, can lead to withdrawal and
+          increasing isolation over time.
+        </p>
+        <p style={{ fontSize: "1rem", lineHeight: 1.85, color: MUTED, marginBottom: "1rem" }}>
+          MEOK is not a replacement for human friendship. It is very clear about
+          that. But it can provide something genuinely valuable: a consistent,
+          patient, non-judgmental presence that is available at the times when
+          loneliness is sharpest — Sunday evenings, late nights before sleep,
+          during reading weeks when the campus empties and everyone else seems to
+          have gone home to people who love them.
+        </p>
+        <p style={{ fontSize: "1rem", lineHeight: 1.85, color: MUTED, marginBottom: "1rem" }}>
+          Because MEOK remembers previous conversations, it can also hold your
+          social progress over time. It knows that last week you were dreading the
+          departmental social. It can ask how it went. It can celebrate with you
+          when you went and it was better than expected. This longitudinal care —
+          the sense that something is tracking and holding your whole story — is
+          something that drop-in services and weekly appointments structurally
+          cannot provide.
+        </p>
+
+        {/* ── H2: GUARDIAN ──────────────────────────────────────────────────── */}
+        <h2
+          style={{
+            fontSize: "clamp(1.25rem, 3vw, 1.75rem)",
+            fontWeight: 700,
+            letterSpacing: "-0.015em",
+            color: TEXT,
+            marginBottom: "1rem",
+            marginTop: "3rem",
+          }}
+        >
+          How does MEOK&apos;s Guardian archetype support student safety?
+        </h2>
+        <p style={{ fontSize: "1rem", lineHeight: 1.85, color: MUTED, marginBottom: "1rem" }}>
+          Student safety is broader than mental health crisis prevention. It
+          encompasses the everyday risks that new students — particularly those
+          away from home for the first time — face in navigating an unfamiliar
+          environment with limited experience.
+        </p>
+        <p style={{ fontSize: "1rem", lineHeight: 1.85, color: MUTED, marginBottom: "1rem" }}>
+          Scam targeting of students is a significant and growing problem in the
+          UK. First-year students are particularly vulnerable to fraudulent
+          letting agents, fake scholarship offers, investment scams marketed
+          through social media, and &ldquo;money mule&rdquo; recruitment
+          (where students are asked to receive and transfer funds in exchange for
+          payment — a criminal offence). Students under financial pressure are
+          more susceptible to offers that seem too good to be true, because the
+          financial need is real.
+        </p>
+        <p style={{ fontSize: "1rem", lineHeight: 1.85, color: MUTED, marginBottom: "1rem" }}>
+          MEOK&apos;s Guardian archetype is trained to recognise and flag these
+          patterns. If a student describes a situation that matches common fraud
+          vectors — an unexpected HMRC tax rebate message, a request to share
+          bank details with a new contact, an unusually generous job offer that
+          arrived via Instagram DM — Guardian will name the risk clearly, explain
+          why it looks suspicious, and direct the student to the appropriate
+          reporting channels. This is not paranoia. It is the kind of
+          street-smart guidance that students from less-advantaged backgrounds
+          are less likely to receive from family networks.
+        </p>
+
+        {/* ── CALLOUT: GUARDIAN ───────────────────────────────────────────── */}
+        <div
+          style={{
+            background: CARD_BG,
+            border: `1px solid ${BORDER}`,
+            borderLeft: `3px solid ${GOLD}`,
+            borderRadius: "0.75rem",
+            padding: "1.5rem 1.75rem",
+            marginBottom: "3rem",
+            marginTop: "2rem",
+          }}
+        >
+          <p
+            style={{
+              fontSize: "0.75rem",
+              fontWeight: 700,
+              letterSpacing: "0.1em",
+              textTransform: "uppercase",
+              color: GOLD,
+              marginBottom: "0.75rem",
+            }}
+          >
+            Meet Guardian
+          </p>
+          <p
+            style={{
+              fontSize: "0.9375rem",
+              lineHeight: 1.75,
+              color: MUTED,
+              marginBottom: 0,
+            }}
+          >
+            Guardian is MEOK&apos;s safety and protection archetype. On campus,
+            Guardian helps students identify scam messages, suspicious contacts,
+            fraudulent job offers, and unsafe situations. It does not surveil or
+            report. It equips. Guardian gives students the pattern-recognition
+            tools to protect themselves — explaining what a threat looks like,
+            why it is designed that way, and exactly what to do if you encounter
+            it. For international students navigating an entirely unfamiliar
+            social and legal landscape, Guardian is especially valuable.
+          </p>
+        </div>
+
+        {/* ── H2: HOW MEOK WORKS ────────────────────────────────────────────── */}
+        <h2
+          style={{
+            fontSize: "clamp(1.25rem, 3vw, 1.75rem)",
+            fontWeight: 700,
+            letterSpacing: "-0.015em",
+            color: TEXT,
+            marginBottom: "1rem",
+            marginTop: "3rem",
+          }}
+        >
+          How does MEOK work and what makes it different from other AI chatbots?
+        </h2>
+        <p style={{ fontSize: "1rem", lineHeight: 1.85, color: MUTED, marginBottom: "1rem" }}>
+          Most AI systems are stateless. Each conversation starts from nothing.
+          MEOK is different because of Sovereign Memory — a persistent, encrypted
+          memory layer that stores the context of previous conversations in your
+          personal vault. This means MEOK actually knows you over time. It knows
+          that your dissertation is about post-colonial literature and your
+          supervisor can be harsh. It knows you have been struggling to sleep
+          before submissions. It knows that the thing that helped last month was
+          making a specific writing schedule.
+        </p>
+        <p style={{ fontSize: "1rem", lineHeight: 1.85, color: MUTED, marginBottom: "1rem" }}>
+          This longitudinal continuity is what distinguishes MEOK from consumer
+          chatbots. Woebot, Wysa, and similar apps provide useful structured
+          exercises but lack persistent memory. ChatGPT and similar large language
+          models are powerful but do not hold your context across sessions by
+          default, and they are not designed around a care-based philosophy.
+          MEOK&apos;s Maternal Covenant — its ethical foundation — means that the
+          system is designed to nurture rather than to engage, to be honest rather
+          than flattering, and to always direct you toward professional help when
+          the situation calls for it.
+        </p>
+        <p style={{ fontSize: "1rem", lineHeight: 1.85, color: MUTED, marginBottom: "1rem" }}>
+          MEOK also operates a &ldquo;care floor&rdquo;: a set of non-negotiable
+          behaviours that cannot be overridden. MEOK will never provide harmful
+          advice. It will always direct users to appropriate professional and
+          crisis services when necessary. It will not pretend to be a therapist.
+          It will always be honest about what it is and what it can and cannot do.
+        </p>
+
+        {/* ── ARCHETYPES GRID ───────────────────────────────────────────────── */}
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
+            gap: "1rem",
+            marginBottom: "3rem",
+            marginTop: "2rem",
+          }}
+        >
+          {[
+            {
+              name: "Scholar",
+              role: "Academic companion",
+              desc: "Essay planning, dissertation anxiety, perfectionism loops, exam revision, reading list navigation, writing blocks.",
+            },
+            {
+              name: "Pioneer",
+              role: "Momentum & resilience",
+              desc: "First-year transition anxiety, motivation collapse, goal-setting, rebuilding momentum after difficult periods.",
+            },
+            {
+              name: "Guardian",
+              role: "Safety & protection",
+              desc: "Scam recognition, campus safety awareness, financial fraud prevention, unsafe situation guidance.",
+            },
+          ].map((a) => (
+            <div
+              key={a.name}
+              style={{
+                background: CARD_BG,
+                border: `1px solid ${BORDER}`,
+                borderRadius: "0.75rem",
+                padding: "1.25rem 1.5rem",
+              }}
+            >
+              <div
+                style={{
+                  fontSize: "0.75rem",
+                  fontWeight: 700,
+                  letterSpacing: "0.08em",
+                  textTransform: "uppercase",
+                  color: GOLD,
+                  marginBottom: "0.25rem",
+                }}
+              >
+                {a.name}
+              </div>
+              <div
+                style={{
+                  fontSize: "0.8125rem",
+                  fontWeight: 600,
+                  color: MUTED,
+                  marginBottom: "0.625rem",
+                }}
+              >
+                {a.role}
+              </div>
+              <p
+                style={{
+                  fontSize: "0.875rem",
+                  lineHeight: 1.65,
+                  color: FAINT,
+                  marginBottom: 0,
+                }}
+              >
+                {a.desc}
+              </p>
+            </div>
+          ))}
+        </div>
+
+        {/* ── H2: CRISIS RESOURCES ──────────────────────────────────────────── */}
+        <h2
+          style={{
+            fontSize: "clamp(1.25rem, 3vw, 1.75rem)",
+            fontWeight: 700,
+            letterSpacing: "-0.015em",
+            color: TEXT,
+            marginBottom: "1rem",
+            marginTop: "3rem",
+          }}
+        >
+          What should students do if they are in a mental health crisis?
+        </h2>
+        <p style={{ fontSize: "1rem", lineHeight: 1.85, color: MUTED, marginBottom: "1rem" }}>
+          MEOK is not a crisis service. It is designed for the everyday emotional
+          labour of student life — not for moments of acute risk. If you are
+          experiencing a mental health crisis, please contact one of the following
+          services immediately.
+        </p>
+
+        {/* Crisis resources box */}
+        <div
+          style={{
+            background: "rgba(201,168,76,0.05)",
+            border: `1px solid ${GOLD_BORDER}`,
+            borderRadius: "0.75rem",
+            padding: "1.5rem 1.75rem",
+            marginBottom: "2rem",
+          }}
+        >
+          <p
+            style={{
+              fontSize: "0.75rem",
+              fontWeight: 700,
+              letterSpacing: "0.1em",
+              textTransform: "uppercase",
+              color: GOLD,
+              marginBottom: "1rem",
+            }}
+          >
+            UK Crisis Resources
+          </p>
+          <div style={{ display: "flex", flexDirection: "column", gap: "0.875rem" }}>
+            {[
+              {
+                name: "Samaritans",
+                detail: "116 123 (free, 24/7) — call any time",
+                note: "For anyone in distress or at risk of suicide",
+              },
+              {
+                name: "SHOUT",
+                detail: "Text SHOUT to 85258 — 24/7 text service",
+                note: "For anyone in crisis who prefers to text",
+              },
+              {
+                name: "Student Minds",
+                detail: "studentminds.org.uk",
+                note: "UK&apos;s leading student mental health charity — resources and peer support",
+              },
+              {
+                name: "Your university wellbeing service",
+                detail: "Check your student portal for out-of-hours duty numbers",
+                note: "Most universities have an emergency mental health duty line",
+              },
+              {
+                name: "NHS 111",
+                detail: "111 or 111.nhs.uk",
+                note: "For urgent medical or mental health concerns outside GP hours",
+              },
+            ].map((r) => (
+              <div
+                key={r.name}
+                style={{
+                  paddingBottom: "0.875rem",
+                  borderBottom: `1px solid ${BORDER}`,
+                }}
+              >
+                <div
+                  style={{
+                    fontSize: "0.9375rem",
+                    fontWeight: 700,
+                    color: TEXT,
+                    marginBottom: "0.2rem",
+                  }}
+                >
+                  {r.name}
+                </div>
+                <div
+                  style={{
+                    fontSize: "0.875rem",
+                    color: GOLD,
+                    marginBottom: "0.2rem",
+                  }}
+                >
+                  {r.detail}
+                </div>
+                <div style={{ fontSize: "0.8125rem", color: MUTED }}>
+                  {r.note}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <p style={{ fontSize: "1rem", lineHeight: 1.85, color: MUTED, marginBottom: "1rem" }}>
+          MEOK is always honest about the limits of what it can provide. When a
+          conversation indicates genuine risk — mention of self-harm, suicidal
+          thoughts, or acute crisis — MEOK will surface these resources clearly
+          and consistently, not hide them behind another chatbot response. The
+          Maternal Covenant ensures that MEOK always directs users toward
+          appropriate human support when that is what the situation requires.
+        </p>
+
+        {/* ── FAQ SECTION ───────────────────────────────────────────────────── */}
+        <h2
+          style={{
+            fontSize: "clamp(1.25rem, 3vw, 1.75rem)",
+            fontWeight: 700,
+            letterSpacing: "-0.015em",
+            color: TEXT,
+            marginBottom: "2rem",
+            marginTop: "3rem",
+          }}
+        >
+          Frequently asked questions
+        </h2>
+
+        <div style={{ display: "flex", flexDirection: "column", gap: "0" }}>
+          {[
+            {
+              q: "How long are university counselling waiting lists in the UK?",
+              a: "Waiting times typically range from three to six weeks for an initial appointment at most UK universities, according to Student Minds and NUS data. Some institutions report waits of eight to twelve weeks during peak periods such as January and May. NHS IAPT nominally targets a 28-day wait but demand routinely exceeds capacity. MEOK is available instantly, with no referral required.",
+            },
+            {
+              q: "Is MEOK free for university students?",
+              a: "Yes. MEOK's Explorer tier is permanently free and requires no credit card. It includes full Sovereign Memory, unlimited daily conversations, and access to the Scholar, Pioneer, and Guardian archetypes. There is no trial period. Students on maintenance loans can use the full MEOK experience throughout their entire degree at zero cost.",
+            },
+            {
+              q: "Will my university be able to see what I tell MEOK?",
+              a: "No. MEOK AI LABS is ICO-registered and operates under UK GDPR. All conversations are encrypted with AES-GCM-256 and stored in your personal Sovereign vault. Your disclosures are never shared with your university, the NHS, advertisers, or any third party. MEOK does not train on your data without explicit, separately given consent.",
+            },
+            {
+              q: "What is the Scholar archetype and how does it help with academic pressure?",
+              a: "Scholar is MEOK's academic companion mode. It helps with essay planning, reading list navigation, revision strategy, dissertation anxiety, perfectionism loops, and the emotional weight of assessment. Because Scholar has Sovereign Memory, it knows your degree subject, your past struggles, and your upcoming deadlines — giving continuity that a drop-in service cannot provide.",
+            },
+            {
+              q: "What should I do if I am in a mental health crisis at university?",
+              a: "If you are in crisis, contact Samaritans on 116 123 (free, 24/7) or text SHOUT to 85258. Your university will also have an out-of-hours mental health duty service — check your student portal. MEOK is not a crisis service. It is for the everyday emotional labour of student life: processing a difficult day, managing anxiety before an exam, or working through loneliness on a Sunday evening.",
+            },
+          ].map((item, i, arr) => (
+            <div
+              key={item.q}
+              style={{
+                borderTop: `1px solid ${BORDER}`,
+                borderBottom:
+                  i === arr.length - 1 ? `1px solid ${BORDER}` : "none",
+                padding: "1.5rem 0",
+              }}
+            >
+              <h3
+                style={{
+                  fontSize: "1rem",
+                  fontWeight: 700,
+                  color: TEXT,
+                  marginBottom: "0.75rem",
+                  lineHeight: 1.4,
+                }}
+              >
+                {item.q}
+              </h3>
+              <p
+                style={{
+                  fontSize: "0.9375rem",
+                  lineHeight: 1.8,
+                  color: MUTED,
+                  marginBottom: 0,
+                }}
+              >
+                {item.a}
+              </p>
+            </div>
+          ))}
+        </div>
+
+        {/* ── RELATED ARTICLES ──────────────────────────────────────────────── */}
+        <div style={{ marginTop: "4rem", marginBottom: "3rem" }}>
           <h2
             style={{
               fontSize: "1.25rem",
@@ -1896,318 +1334,160 @@ export default function AiForStudentMentalHealthPage() {
               marginBottom: "1.25rem",
             }}
           >
-            Related Reading
+            Related reading
           </h2>
           <div
             style={{
               display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(16rem, 1fr))",
-              gap: "1rem",
+              gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+              gap: "0.875rem",
             }}
           >
-            <Link
-              href="/blog/ai-for-students"
-              style={{ textDecoration: "none" }}
-            >
-              <div
+            {[
+              {
+                href: "/blog/ai-for-exam-stress",
+                label: "AI for Exam Stress",
+                desc: "Revision anxiety, performance dread, and the companion that helps you stay focused.",
+              },
+              {
+                href: "/blog/ai-for-phd-students",
+                label: "AI for PhD Students",
+                desc: "Isolation, imposter syndrome, and the unique pressures of doctoral research.",
+              },
+              {
+                href: "/blog/ai-for-anxiety",
+                label: "AI for Anxiety",
+                desc: "An honest guide to what AI can and cannot do for anxiety, with UK crisis resources.",
+              },
+              {
+                href: "/blog/ai-for-loneliness",
+                label: "AI for Loneliness",
+                desc: "How a sovereign AI companion addresses isolation — without replacing human connection.",
+              },
+              {
+                href: "/blog/ai-for-perfectionism",
+                label: "AI for Perfectionism",
+                desc: "Breaking perfectionism loops, building self-compassion, and finishing work that is good enough.",
+              },
+              {
+                href: "/blog/ai-for-financial-anxiety",
+                label: "AI for Financial Anxiety",
+                desc: "Student debt, tuition fees, and the cognitive cost of constant money stress.",
+              },
+            ].map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
                 style={{
-                  background: "rgba(245,240,232,0.03)",
+                  display: "block",
+                  background: CARD_BG,
                   border: `1px solid ${BORDER}`,
-                  borderRadius: "0.75rem",
-                  padding: "1.25rem",
+                  borderRadius: "0.625rem",
+                  padding: "1rem 1.25rem",
+                  textDecoration: "none",
                   transition: "border-color 0.2s",
                 }}
               >
                 <div
                   style={{
-                    fontSize: "0.75rem",
-                    fontWeight: 600,
+                    fontSize: "0.875rem",
+                    fontWeight: 700,
                     color: GOLD,
-                    letterSpacing: "0.06em",
-                    textTransform: "uppercase",
-                    marginBottom: "0.5rem",
+                    marginBottom: "0.35rem",
                   }}
                 >
-                  Students
+                  {link.label}
                 </div>
                 <div
-                  style={{
-                    fontSize: "0.9375rem",
-                    fontWeight: 600,
-                    color: TEXT,
-                    lineHeight: 1.4,
-                    marginBottom: "0.5rem",
-                  }}
+                  style={{ fontSize: "0.8125rem", lineHeight: 1.55, color: MUTED }}
                 >
-                  AI for Students: Sovereign Memory for University, Revision,
-                  and Real Life
+                  {link.desc}
                 </div>
-                <div
-                  style={{ fontSize: "0.8125rem", color: FAINT }}
-                >
-                  meok.ai/blog/ai-for-students
-                </div>
-              </div>
-            </Link>
-
-            <Link
-              href="/blog/ai-for-exam-stress"
-              style={{ textDecoration: "none" }}
-            >
-              <div
-                style={{
-                  background: "rgba(245,240,232,0.03)",
-                  border: `1px solid ${BORDER}`,
-                  borderRadius: "0.75rem",
-                  padding: "1.25rem",
-                }}
-              >
-                <div
-                  style={{
-                    fontSize: "0.75rem",
-                    fontWeight: 600,
-                    color: GOLD,
-                    letterSpacing: "0.06em",
-                    textTransform: "uppercase",
-                    marginBottom: "0.5rem",
-                  }}
-                >
-                  Exam Stress
-                </div>
-                <div
-                  style={{
-                    fontSize: "0.9375rem",
-                    fontWeight: 600,
-                    color: TEXT,
-                    lineHeight: 1.4,
-                    marginBottom: "0.5rem",
-                  }}
-                >
-                  AI for Exam Stress: When the Pressure Feels Impossible
-                </div>
-                <div
-                  style={{ fontSize: "0.8125rem", color: FAINT }}
-                >
-                  meok.ai/blog/ai-for-exam-stress
-                </div>
-              </div>
-            </Link>
-
-            <Link
-              href="/blog/ai-for-anxiety"
-              style={{ textDecoration: "none" }}
-            >
-              <div
-                style={{
-                  background: "rgba(245,240,232,0.03)",
-                  border: `1px solid ${BORDER}`,
-                  borderRadius: "0.75rem",
-                  padding: "1.25rem",
-                }}
-              >
-                <div
-                  style={{
-                    fontSize: "0.75rem",
-                    fontWeight: 600,
-                    color: GOLD,
-                    letterSpacing: "0.06em",
-                    textTransform: "uppercase",
-                    marginBottom: "0.5rem",
-                  }}
-                >
-                  Anxiety
-                </div>
-                <div
-                  style={{
-                    fontSize: "0.9375rem",
-                    fontWeight: 600,
-                    color: TEXT,
-                    lineHeight: 1.4,
-                    marginBottom: "0.5rem",
-                  }}
-                >
-                  AI for Anxiety: A Companion That Never Tells You to Calm Down
-                </div>
-                <div
-                  style={{ fontSize: "0.8125rem", color: FAINT }}
-                >
-                  meok.ai/blog/ai-for-anxiety
-                </div>
-              </div>
-            </Link>
-
-            <Link
-              href="/blog/ai-for-impostor-syndrome"
-              style={{ textDecoration: "none" }}
-            >
-              <div
-                style={{
-                  background: "rgba(245,240,232,0.03)",
-                  border: `1px solid ${BORDER}`,
-                  borderRadius: "0.75rem",
-                  padding: "1.25rem",
-                }}
-              >
-                <div
-                  style={{
-                    fontSize: "0.75rem",
-                    fontWeight: 600,
-                    color: GOLD,
-                    letterSpacing: "0.06em",
-                    textTransform: "uppercase",
-                    marginBottom: "0.5rem",
-                  }}
-                >
-                  Impostor Syndrome
-                </div>
-                <div
-                  style={{
-                    fontSize: "0.9375rem",
-                    fontWeight: 600,
-                    color: TEXT,
-                    lineHeight: 1.4,
-                    marginBottom: "0.5rem",
-                  }}
-                >
-                  AI for Impostor Syndrome: When You Feel Like Everyone Else
-                  Has It Figured Out
-                </div>
-                <div
-                  style={{ fontSize: "0.8125rem", color: FAINT }}
-                >
-                  meok.ai/blog/ai-for-impostor-syndrome
-                </div>
-              </div>
-            </Link>
-
-            <Link
-              href="/blog/meok-vs-woebot"
-              style={{ textDecoration: "none" }}
-            >
-              <div
-                style={{
-                  background: "rgba(245,240,232,0.03)",
-                  border: `1px solid ${BORDER}`,
-                  borderRadius: "0.75rem",
-                  padding: "1.25rem",
-                }}
-              >
-                <div
-                  style={{
-                    fontSize: "0.75rem",
-                    fontWeight: 600,
-                    color: GOLD,
-                    letterSpacing: "0.06em",
-                    textTransform: "uppercase",
-                    marginBottom: "0.5rem",
-                  }}
-                >
-                  Comparison
-                </div>
-                <div
-                  style={{
-                    fontSize: "0.9375rem",
-                    fontWeight: 600,
-                    color: TEXT,
-                    lineHeight: 1.4,
-                    marginBottom: "0.5rem",
-                  }}
-                >
-                  MEOK vs Woebot: Which AI Companion Is Better for Mental
-                  Health?
-                </div>
-                <div
-                  style={{ fontSize: "0.8125rem", color: FAINT }}
-                >
-                  meok.ai/blog/meok-vs-woebot
-                </div>
-              </div>
-            </Link>
-
-            <Link
-              href="/blog/ai-for-loneliness"
-              style={{ textDecoration: "none" }}
-            >
-              <div
-                style={{
-                  background: "rgba(245,240,232,0.03)",
-                  border: `1px solid ${BORDER}`,
-                  borderRadius: "0.75rem",
-                  padding: "1.25rem",
-                }}
-              >
-                <div
-                  style={{
-                    fontSize: "0.75rem",
-                    fontWeight: 600,
-                    color: GOLD,
-                    letterSpacing: "0.06em",
-                    textTransform: "uppercase",
-                    marginBottom: "0.5rem",
-                  }}
-                >
-                  Loneliness
-                </div>
-                <div
-                  style={{
-                    fontSize: "0.9375rem",
-                    fontWeight: 600,
-                    color: TEXT,
-                    lineHeight: 1.4,
-                    marginBottom: "0.5rem",
-                  }}
-                >
-                  AI for Loneliness: The Companion That Remembers You Tomorrow
-                </div>
-                <div
-                  style={{ fontSize: "0.8125rem", color: FAINT }}
-                >
-                  meok.ai/blog/ai-for-loneliness
-                </div>
-              </div>
-            </Link>
+              </Link>
+            ))}
           </div>
-        </section>
+        </div>
 
-        {/* ── FOOTER NOTE ─────────────────────────────────────────────────── */}
+        {/* ── CTA ───────────────────────────────────────────────────────────── */}
         <div
           style={{
+            background: GOLD_BG,
+            border: `1px solid ${GOLD_BORDER}`,
+            borderRadius: "1rem",
+            padding: "2.5rem",
+            textAlign: "center",
             marginTop: "4rem",
-            paddingTop: "2rem",
-            borderTop: `1px solid ${BORDER}`,
           }}
         >
-          <p
+          <div
             style={{
-              fontSize: "0.8125rem",
-              lineHeight: 1.7,
-              color: FAINT,
-              marginBottom: "0.75rem",
+              fontSize: "0.75rem",
+              fontWeight: 700,
+              letterSpacing: "0.1em",
+              textTransform: "uppercase",
+              color: GOLD,
+              marginBottom: "1rem",
             }}
           >
-            <strong style={{ color: MUTED }}>Disclaimer:</strong> MEOK is not a
-            regulated medical device or mental health service. It is not a
-            substitute for professional clinical care. If you are experiencing a
-            mental health crisis, please contact Samaritans (116 123), text
-            SHOUT to 85258, or call 999. MEOK AI LABS is ICO-registered and
-            compliant with UK GDPR.
+            Start today — free, no credit card
+          </div>
+          <h2
+            style={{
+              fontSize: "clamp(1.375rem, 3.5vw, 1.875rem)",
+              fontWeight: 700,
+              lineHeight: 1.2,
+              color: TEXT,
+              marginBottom: "1rem",
+              letterSpacing: "-0.015em",
+            }}
+          >
+            Your counsellor appointment is six weeks away.
+            <br />
+            MEOK is available right now.
+          </h2>
+          <p
+            style={{
+              fontSize: "1rem",
+              lineHeight: 1.75,
+              color: MUTED,
+              marginBottom: "2rem",
+              maxWidth: "34rem",
+              marginLeft: "auto",
+              marginRight: "auto",
+            }}
+          >
+            Name your AI companion, choose your first archetype — Scholar,
+            Pioneer, or Guardian — and begin. Free forever. Encrypted. Owned by
+            you. Always pointing you toward professional help when that is what
+            you need.
           </p>
+          <Link
+            href="/birth"
+            style={{
+              display: "inline-block",
+              background: GOLD,
+              color: BG,
+              fontWeight: 700,
+              fontSize: "1rem",
+              padding: "0.875rem 2.5rem",
+              borderRadius: "0.5rem",
+              textDecoration: "none",
+              letterSpacing: "0.01em",
+            }}
+          >
+            Create your companion
+          </Link>
           <p
             style={{
               fontSize: "0.8125rem",
-              lineHeight: 1.7,
               color: FAINT,
+              marginTop: "1rem",
+              marginBottom: 0,
             }}
           >
-            Written by Nicholas Templeman, Founder of MEOK AI LABS. Published
-            24 March 2026.{" "}
-            <Link
-              href="/blog"
-              style={{ color: GOLD, textDecoration: "none" }}
-            >
-              Back to the blog
-            </Link>
-            .
+            Explorer tier is free forever &mdash; no trial, no card, no catch.
+            If you are in crisis right now, please call Samaritans on{" "}
+            <strong style={{ color: GOLD }}>116 123</strong>.
           </p>
         </div>
       </article>

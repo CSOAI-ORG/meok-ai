@@ -4,14 +4,18 @@ import Link from "next/link"
 // ── Metadata ───────────────────────────────────────────────────────────────────
 
 export const metadata: Metadata = {
-  title: "MEOK for Healthcare Workers: Confidential AI Support for NHS Staff | MEOK AI LABS",
+  title:
+    "MEOK for Healthcare Workers: AI That Understands What You Carry Home | MEOK AI LABS",
   description:
-    "40% of nurses report burnout. 1 in 4 NHS staff has a mental health issue. MEOK offers a confidential, 24/7 AI companion for healthcare workers \u2014 no employer reporting, no waiting lists, no stigma. Debrief difficult shifts, process secondary trauma, and find space to breathe.",
-  alternates: { canonical: "https://meok.ai/blog/meok-for-healthcare-workers" },
+    "Doctors, nurses, and healthcare workers face secondary trauma, moral injury, and burnout at epidemic rates. MEOK\u2019s sovereign AI is a safe place to process what cannot be said at work.",
+  alternates: {
+    canonical: "https://meok.ai/blog/meok-for-healthcare-workers",
+  },
   openGraph: {
-    title: "MEOK for Healthcare Workers: Confidential AI Support for NHS Staff",
+    title:
+      "MEOK for Healthcare Workers: AI That Understands What You Carry Home",
     description:
-      "Healthcare workers carry secondary trauma, burnout, and moral injury every shift. MEOK is a private AI companion that never reports to employers or regulators \u2014 available at 3am, between shifts, whenever you need it.",
+      "Doctors, nurses, and healthcare workers face secondary trauma, moral injury, and burnout at epidemic rates. MEOK\u2019s sovereign AI is a safe place to process what cannot be said at work.",
     type: "article",
     publishedTime: "2026-03-24",
     authors: ["Nicholas Templeman"],
@@ -19,20 +23,21 @@ export const metadata: Metadata = {
     siteName: "MEOK AI LABS",
     images: [
       {
-        url: "https://meok.ai/api/og?title=MEOK+for+Healthcare+Workers&desc=Confidential+AI+support+for+NHS+staff+and+healthcare+professionals.",
+        url: "https://meok.ai/api/og?title=MEOK+for+Healthcare+Workers&desc=AI+that+understands+what+you+carry+home.",
         width: 1200,
         height: 630,
-        alt: "MEOK for Healthcare Workers: Confidential AI Support for NHS Staff",
+        alt: "MEOK for Healthcare Workers: AI That Understands What You Carry Home",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "MEOK for Healthcare Workers: Confidential AI Support for NHS Staff",
+    title:
+      "MEOK for Healthcare Workers: AI That Understands What You Carry Home",
     description:
       "Secondary trauma, 12-hour shifts, the weight of other people\u2019s worst days. MEOK is confidential, always on, and never talks to your employer.",
     images: [
-      "https://meok.ai/api/og?title=MEOK+for+Healthcare+Workers&desc=Confidential+AI+support+for+NHS+staff+and+healthcare+professionals.",
+      "https://meok.ai/api/og?title=MEOK+for+Healthcare+Workers&desc=AI+that+understands+what+you+carry+home.",
     ],
   },
   keywords: [
@@ -48,6 +53,8 @@ export const metadata: Metadata = {
     "AI debriefing for doctors",
     "MEOK AI healthcare",
     "moral injury NHS",
+    "vicarious grief healthcare",
+    "healthcare worker burnout 2026",
   ],
 }
 
@@ -56,9 +63,10 @@ export const metadata: Metadata = {
 const articleJsonLd = {
   "@context": "https://schema.org",
   "@type": "Article",
-  headline: "MEOK for Healthcare Workers: Confidential AI Support for NHS Staff",
+  headline:
+    "MEOK for Healthcare Workers: AI That Understands What You Carry Home",
   description:
-    "40% of nurses report burnout. 1 in 4 NHS staff has a mental health issue. MEOK offers a confidential, 24/7 AI companion for healthcare workers \u2014 no employer reporting, no waiting lists, no stigma.",
+    "Doctors, nurses, and healthcare workers face secondary trauma, moral injury, and burnout at epidemic rates. MEOK\u2019s sovereign AI is a safe place to process what cannot be said at work.",
   datePublished: "2026-03-24",
   dateModified: "2026-03-24",
   url: "https://meok.ai/blog/meok-for-healthcare-workers",
@@ -81,12 +89,13 @@ const articleJsonLd = {
     "compassion fatigue",
     "moral injury NHS",
     "shift work mental health",
+    "vicarious grief",
     "MEOK AI LABS",
   ],
   articleSection: "MEOK for Healthcare Workers",
   inLanguage: "en-GB",
   image:
-    "https://meok.ai/api/og?title=MEOK+for+Healthcare+Workers&desc=Confidential+AI+support+for+NHS+staff+and+healthcare+professionals.",
+    "https://meok.ai/api/og?title=MEOK+for+Healthcare+Workers&desc=AI+that+understands+what+you+carry+home.",
   mainEntityOfPage: {
     "@type": "WebPage",
     "@id": "https://meok.ai/blog/meok-for-healthcare-workers",
@@ -97,6 +106,8 @@ const articleJsonLd = {
     { "@type": "Thing", name: "Healthcare worker mental health" },
     { "@type": "Thing", name: "Compassion fatigue" },
     { "@type": "Thing", name: "Confidential AI support" },
+    { "@type": "Thing", name: "Moral injury" },
+    { "@type": "Thing", name: "Vicarious grief" },
   ],
 }
 
@@ -186,16 +197,16 @@ const s = {
   } as React.CSSProperties,
 
   hero: {
-    padding: "72px 24px 56px",
-    maxWidth: "820px",
-    margin: "0 auto",
     textAlign: "center" as const,
+    padding: "72px 24px 56px",
+    maxWidth: "860px",
+    margin: "0 auto",
     position: "relative" as const,
   } as React.CSSProperties,
 
   heroGlow: {
     position: "absolute" as const,
-    top: 0,
+    top: "0",
     left: "50%",
     transform: "translateX(-50%)",
     width: "600px",
@@ -312,7 +323,8 @@ const s = {
   callout: {
     background: "rgba(201,168,76,0.07)",
     border: "1px solid rgba(201,168,76,0.2)",
-    borderRadius: "10px",
+    borderLeft: "4px solid #c9a84c",
+    borderRadius: "0 10px 10px 0",
     padding: "28px 32px",
     marginBottom: "32px",
   } as React.CSSProperties,
@@ -367,132 +379,6 @@ const s = {
     marginBottom: "0",
   } as React.CSSProperties,
 
-  featureGrid: {
-    display: "grid",
-    gridTemplateColumns: "repeat(auto-fit, minmax(230px, 1fr))",
-    gap: "20px",
-    marginTop: "24px",
-    marginBottom: "36px",
-  } as React.CSSProperties,
-
-  featureCard: {
-    background: "rgba(13,12,24,0.8)",
-    border: "1px solid rgba(201,168,76,0.2)",
-    borderRadius: "10px",
-    padding: "24px",
-  } as React.CSSProperties,
-
-  featureIcon: {
-    fontSize: "28px",
-    marginBottom: "12px",
-    display: "block",
-  } as React.CSSProperties,
-
-  featureName: {
-    fontSize: "16px",
-    fontWeight: 700,
-    color: "#c9a84c",
-    marginBottom: "8px",
-    fontFamily: "system-ui, sans-serif",
-    letterSpacing: "0.03em",
-  } as React.CSSProperties,
-
-  featureDesc: {
-    fontSize: "14px",
-    lineHeight: 1.65,
-    color: "rgba(245,240,232,0.7)",
-    fontFamily: "system-ui, sans-serif",
-    marginBottom: "0",
-  } as React.CSSProperties,
-
-  problemGrid: {
-    display: "grid",
-    gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
-    gap: "16px",
-    marginTop: "24px",
-    marginBottom: "36px",
-  } as React.CSSProperties,
-
-  problemCard: {
-    background: "rgba(245,240,232,0.03)",
-    border: "1px solid rgba(245,240,232,0.08)",
-    borderRadius: "10px",
-    padding: "22px",
-  } as React.CSSProperties,
-
-  problemNum: {
-    fontSize: "36px",
-    fontWeight: 800,
-    color: "rgba(201,168,76,0.2)",
-    lineHeight: 1,
-    marginBottom: "8px",
-    fontFamily: "system-ui, sans-serif",
-  } as React.CSSProperties,
-
-  problemTitle: {
-    fontSize: "15px",
-    fontWeight: 700,
-    color: "#f5f0e8",
-    marginBottom: "8px",
-    fontFamily: "system-ui, sans-serif",
-  } as React.CSSProperties,
-
-  problemBody: {
-    fontSize: "13px",
-    lineHeight: 1.65,
-    color: "rgba(245,240,232,0.6)",
-    fontFamily: "system-ui, sans-serif",
-    marginBottom: "0",
-  } as React.CSSProperties,
-
-  timelineWrap: {
-    borderLeft: "2px solid rgba(201,168,76,0.25)",
-    paddingLeft: "28px",
-    marginTop: "24px",
-    marginBottom: "36px",
-  } as React.CSSProperties,
-
-  timelineItem: {
-    position: "relative" as const,
-    marginBottom: "32px",
-  } as React.CSSProperties,
-
-  timelineDot: {
-    position: "absolute" as const,
-    left: "-37px",
-    top: "4px",
-    width: "14px",
-    height: "14px",
-    borderRadius: "50%",
-    background: "#c9a84c",
-    border: "3px solid #0d0c18",
-  } as React.CSSProperties,
-
-  timelineLabel: {
-    fontSize: "12px",
-    fontFamily: "system-ui, sans-serif",
-    letterSpacing: "0.08em",
-    color: "#c9a84c",
-    marginBottom: "6px",
-    textTransform: "uppercase" as const,
-  } as React.CSSProperties,
-
-  timelineTitle: {
-    fontSize: "16px",
-    fontWeight: 600,
-    marginBottom: "6px",
-    color: "#f5f0e8",
-    fontFamily: "system-ui, sans-serif",
-  } as React.CSSProperties,
-
-  timelineBody: {
-    fontSize: "14px",
-    lineHeight: 1.65,
-    color: "rgba(245,240,232,0.7)",
-    fontFamily: "system-ui, sans-serif",
-    marginBottom: "0",
-  } as React.CSSProperties,
-
   pullQuote: {
     borderLeft: "3px solid #c9a84c",
     paddingLeft: "24px",
@@ -514,56 +400,85 @@ const s = {
     color: "#c9a84c",
   } as React.CSSProperties,
 
-  warningBox: {
-    background: "rgba(201,68,68,0.07)",
-    border: "1px solid rgba(201,68,68,0.2)",
+  tableWrap: {
+    overflowX: "auto" as const,
+    marginTop: "28px",
+    marginBottom: "40px",
     borderRadius: "10px",
-    padding: "24px 28px",
-    marginBottom: "28px",
+    border: "1px solid rgba(201,168,76,0.2)",
   } as React.CSSProperties,
 
-  warningTitle: {
-    fontSize: "13px",
+  table: {
+    width: "100%",
+    borderCollapse: "collapse" as const,
     fontFamily: "system-ui, sans-serif",
-    letterSpacing: "0.1em",
+    fontSize: "14px",
+  } as React.CSSProperties,
+
+  th: {
+    padding: "14px 18px",
+    textAlign: "left" as const,
+    fontWeight: 700,
+    letterSpacing: "0.06em",
     textTransform: "uppercase" as const,
-    color: "rgba(220,100,100,0.9)",
-    marginBottom: "10px",
+    fontSize: "11px",
+    borderBottom: "1px solid rgba(201,168,76,0.2)",
+  } as React.CSSProperties,
+
+  thNhs: {
+    background: "rgba(245,240,232,0.04)",
+    color: "rgba(245,240,232,0.6)",
+  } as React.CSSProperties,
+
+  thMeok: {
+    background: "rgba(201,168,76,0.08)",
+    color: "#c9a84c",
+  } as React.CSSProperties,
+
+  thFeature: {
+    background: "rgba(13,12,24,0.9)",
+    color: "rgba(245,240,232,0.4)",
+    width: "32%",
+  } as React.CSSProperties,
+
+  trEven: {
+    background: "rgba(245,240,232,0.02)",
+  } as React.CSSProperties,
+
+  trOdd: {
+    background: "transparent",
+  } as React.CSSProperties,
+
+  td: {
+    padding: "14px 18px",
+    borderBottom: "1px solid rgba(245,240,232,0.06)",
+    lineHeight: 1.6,
+    verticalAlign: "top" as const,
+  } as React.CSSProperties,
+
+  tdFeature: {
+    color: "rgba(245,240,232,0.6)",
     fontWeight: 600,
-  } as React.CSSProperties,
-
-  warningBody: {
-    fontSize: "clamp(14px, 2vw, 16px)",
-    lineHeight: 1.75,
-    color: "rgba(245,240,232,0.75)",
-    marginBottom: "0",
-  } as React.CSSProperties,
-
-  encryptBadge: {
-    display: "inline-flex",
-    alignItems: "center",
-    gap: "8px",
-    background: "rgba(201,168,76,0.1)",
-    border: "1px solid rgba(201,168,76,0.25)",
-    borderRadius: "6px",
-    padding: "10px 16px",
-    marginBottom: "8px",
-    marginRight: "8px",
-    fontFamily: "system-ui, sans-serif",
     fontSize: "13px",
-    color: "rgba(245,240,232,0.8)",
+    letterSpacing: "0.02em",
   } as React.CSSProperties,
 
-  encryptGold: {
+  tdNhs: {
+    color: "rgba(245,240,232,0.55)",
+  } as React.CSSProperties,
+
+  tdMeok: {
+    color: "#f5f0e8",
+    fontWeight: 500,
+  } as React.CSSProperties,
+
+  tdYes: {
     color: "#c9a84c",
     fontWeight: 700,
   } as React.CSSProperties,
 
-  badgeRow: {
-    display: "flex",
-    flexWrap: "wrap" as const,
-    gap: "8px",
-    marginBottom: "28px",
+  tdNo: {
+    color: "rgba(220,100,100,0.8)",
   } as React.CSSProperties,
 
   faqWrap: {
@@ -581,32 +496,31 @@ const s = {
     fontSize: "clamp(16px, 2.5vw, 19px)",
     fontWeight: 700,
     color: "#f5f0e8",
-    marginBottom: "12px",
+    marginBottom: "10px",
     lineHeight: 1.4,
   } as React.CSSProperties,
 
   faqA: {
     fontSize: "clamp(14px, 2vw, 16px)",
-    lineHeight: 1.75,
+    lineHeight: 1.8,
     color: "rgba(245,240,232,0.75)",
-    fontFamily: "system-ui, sans-serif",
     marginBottom: "0",
   } as React.CSSProperties,
 
   ctaBox: {
-    background: "linear-gradient(135deg, rgba(201,168,76,0.12) 0%, rgba(13,12,24,0.8) 100%)",
-    border: "1px solid rgba(201,168,76,0.3)",
+    background: "rgba(201,168,76,0.07)",
+    border: "1px solid rgba(201,168,76,0.25)",
     borderRadius: "16px",
     padding: "48px 40px",
     textAlign: "center" as const,
-    marginTop: "56px",
+    marginTop: "60px",
   } as React.CSSProperties,
 
   ctaTitle: {
     fontSize: "clamp(22px, 4vw, 32px)",
     fontWeight: 700,
-    marginBottom: "16px",
     lineHeight: 1.3,
+    marginBottom: "16px",
   } as React.CSSProperties,
 
   ctaBody: {
@@ -615,7 +529,6 @@ const s = {
     color: "rgba(245,240,232,0.75)",
     maxWidth: "520px",
     margin: "0 auto 32px",
-    fontFamily: "system-ui, sans-serif",
   } as React.CSSProperties,
 
   ctaButtons: {
@@ -626,44 +539,44 @@ const s = {
   } as React.CSSProperties,
 
   btnPrimary: {
+    display: "inline-block",
     background: "#c9a84c",
     color: "#0d0c18",
+    fontFamily: "system-ui, sans-serif",
+    fontWeight: 700,
+    fontSize: "15px",
+    letterSpacing: "0.04em",
     padding: "14px 32px",
     borderRadius: "8px",
     textDecoration: "none",
-    fontSize: "15px",
-    fontWeight: 700,
-    fontFamily: "system-ui, sans-serif",
-    letterSpacing: "0.02em",
   } as React.CSSProperties,
 
   btnSecondary: {
+    display: "inline-block",
     background: "transparent",
     color: "#c9a84c",
-    padding: "14px 32px",
+    fontFamily: "system-ui, sans-serif",
+    fontWeight: 600,
+    fontSize: "15px",
+    letterSpacing: "0.04em",
+    padding: "13px 32px",
     borderRadius: "8px",
     textDecoration: "none",
-    fontSize: "15px",
-    fontWeight: 600,
-    fontFamily: "system-ui, sans-serif",
-    letterSpacing: "0.02em",
     border: "1px solid rgba(201,168,76,0.4)",
   } as React.CSSProperties,
 
   footer: {
-    borderTop: "1px solid rgba(201,168,76,0.1)",
-    padding: "32px 24px",
+    borderTop: "1px solid rgba(201,168,76,0.12)",
+    padding: "40px 24px",
     textAlign: "center" as const,
-    fontSize: "13px",
-    color: "rgba(245,240,232,0.35)",
     fontFamily: "system-ui, sans-serif",
+    fontSize: "13px",
+    color: "rgba(245,240,232,0.4)",
   } as React.CSSProperties,
 
   footerLink: {
-    color: "rgba(201,168,76,0.6)",
+    color: "rgba(201,168,76,0.7)",
     textDecoration: "none",
-    marginLeft: "4px",
-    marginRight: "4px",
   } as React.CSSProperties,
 }
 
@@ -672,6 +585,7 @@ const s = {
 export default function MeokForHealthcareWorkersPage() {
   return (
     <div style={s.page}>
+
       {/* JSON-LD */}
       <script
         type="application/ld+json"
@@ -683,7 +597,7 @@ export default function MeokForHealthcareWorkersPage() {
       />
 
       {/* Nav */}
-      <nav style={s.nav} aria-label="Breadcrumb">
+      <nav style={s.nav}>
         <Link href="/" style={s.navLink}>MEOK</Link>
         <span style={s.navSep}>/</span>
         <Link href="/blog" style={s.navLink}>Blog</Link>
@@ -695,888 +609,706 @@ export default function MeokForHealthcareWorkersPage() {
       <header style={s.hero}>
         <div style={s.heroGlow} aria-hidden="true" />
         <div style={s.tagRow}>
-          <span style={s.tag}>Healthcare</span>
-          <span style={s.tag}>NHS</span>
-          <span style={s.tag}>Burnout</span>
-          <span style={s.tag}>Confidential Support</span>
+          <span style={s.tag}>NHS Burnout</span>
+          <span style={s.tag}>Secondary Trauma</span>
+          <span style={s.tag}>Moral Injury</span>
           <span style={s.tag}>Shift Work</span>
+          <span style={s.tag}>Data Sovereignty</span>
         </div>
         <h1 style={s.heroTitle}>
-          MEOK for{" "}
-          <span style={s.heroGold}>Healthcare Workers</span>
+          MEOK for Healthcare Workers:{" "}
+          <span style={s.heroGold}>
+            AI That Understands What You Carry Home
+          </span>
         </h1>
         <p style={s.heroLead}>
-          You spend every shift holding space for other people\u2019s worst moments.
-          MEOK is a confidential AI companion that holds space for yours \u2014
-          available at 3am, between shifts, whenever the weight gets heavy.
+          You spend every shift holding space for other people&apos;s worst moments.
+          MEOK is a confidential, sovereign AI companion that holds space for yours
+          &mdash; available at 3am, between rotations, whenever the weight gets heavy.
           No waiting lists. No employer access. No judgment.
         </p>
         <div style={s.metaRow}>
           <span>By Nicholas Templeman</span>
           <span>MEOK AI LABS</span>
           <span>24 March 2026</span>
-          <span>12 min read</span>
+          <span>14 min read</span>
         </div>
       </header>
 
       {/* Article body */}
       <article style={s.article}>
 
-        {/* ── SECTION 1: The crisis ── */}
         <hr style={s.divider} />
 
+        {/* ── SECTION 1: The scale of the crisis ── */}
         <h2 style={s.h2}>
-          How bad is healthcare worker burnout in the NHS?
+          How bad is burnout among NHS healthcare workers in 2026?
         </h2>
         <p style={s.atomicAnswer}>
-          Severe. NHS staff surveys consistently show that around{" "}
-          <span style={s.highlight}>40% of nurses report feeling burned out</span>,
-          and approximately 1 in 4 NHS staff members reports experiencing a mental
-          health problem in any given year. These are not outliers \u2014 they are the
-          baseline of working in one of the world\u2019s most pressured healthcare systems.
+          The NHS workforce is experiencing a mental health crisis of systemic proportions.
+          Around 40% of nurses report actively considering leaving the profession due to
+          burnout, stress, and moral injury. One in four NHS staff members meets clinical
+          criteria for a common mental health disorder at any given time. These are not
+          fringe statistics &mdash; they describe the majority experience of frontline healthcare.
         </p>
-
         <p style={s.p}>
-          The NHS is not uniquely broken. Healthcare systems across the UK, the US,
-          Australia, and Canada are facing the same structural crisis: too many patients,
-          not enough staff, not enough rest, and almost no infrastructure for the
-          emotional labour that clinical work demands. The pandemic accelerated what
-          was already a long-simmering emergency.
+          The 2025 NHS Staff Survey found that nearly half of all NHS employees reported
+          feeling unwell as a result of work-related stress in the previous twelve months.
+          For emergency department staff, intensive care nurses, and junior doctors working
+          long rotation blocks, that figure climbs higher still. The profession attracts
+          people with a profound vocational commitment to caring &mdash; and then systematically
+          depletes the very reserves that commitment requires.
+        </p>
+        <p style={s.p}>
+          Burnout in healthcare is not a failure of individual resilience. It is the
+          predictable outcome of chronically understaffed wards, impossible caseloads,
+          bureaucratic pressure, and the relentless exposure to human suffering that
+          defines the job. Understanding this context matters before we discuss what MEOK
+          can and cannot do.
         </p>
 
-        <p style={s.pMuted}>
-          But the numbers only tell part of the story. What they don\u2019t capture is
-          the texture of the problem \u2014 the 12-hour shift where you watched someone
-          die alone because visiting was restricted. The patient who reminded you of
-          your father. The colleague who broke down in the staff toilet and never came
-          back. These are not clinical events. They are human events that accumulate,
-          unprocessed, over years.
-        </p>
-
-        {/* Stats grid */}
-        <div style={s.statGrid} aria-label="NHS burnout statistics">
+        {/* Stats */}
+        <div style={s.statGrid}>
           <div style={s.statCard}>
             <p style={s.statNum}>40%</p>
-            <p style={s.statLabel}>of nurses report feeling burned out in NHS staff surveys</p>
+            <p style={s.statLabel}>of nurses considering leaving due to burnout</p>
           </div>
           <div style={s.statCard}>
             <p style={s.statNum}>1 in 4</p>
-            <p style={s.statLabel}>NHS staff members experiences a mental health problem each year</p>
+            <p style={s.statLabel}>NHS staff with a common mental health disorder</p>
           </div>
           <div style={s.statCard}>
-            <p style={s.statNum}>300k+</p>
-            <p style={s.statLabel}>NHS staff left the workforce in 2023 \u2014 many citing wellbeing as a factor</p>
+            <p style={s.statNum}>47%</p>
+            <p style={s.statLabel}>reported work-related stress in the last 12 months</p>
           </div>
           <div style={s.statCard}>
-            <p style={s.statNum}>6 wks</p>
-            <p style={s.statLabel}>average wait for NHS occupational health referral in many trusts</p>
+            <p style={s.statNum}>6&ndash;18</p>
+            <p style={s.statLabel}>month average wait for NHS talking therapy referrals</p>
           </div>
         </div>
 
+        {/* ── SECTION 2: What healthcare workers cannot say ── */}
+        <hr style={s.divider} />
+        <h2 style={s.h2}>
+          What is it that healthcare workers cannot say at work?
+        </h2>
+        <p style={s.atomicAnswer}>
+          Healthcare culture carries a powerful unspoken rule: the professional must
+          remain functional. You are permitted to be tired. You are not permitted to be
+          broken. Admitting that a patient&apos;s death is haunting you, that you are
+          fantasising about quitting, or that you are struggling to feel anything at all
+          &mdash; these disclosures carry professional and social risk that most workers
+          are not willing to take.
+        </p>
+        <p style={s.p}>
+          The things that go unsaid in clinical environments fall into several distinct
+          categories. There is the grief that accumulates from losing patients &mdash; the
+          elderly man who reminded you of your grandfather, the young woman whose family
+          you held while she was resuscitated. There is the rage at the system &mdash; at
+          the manager who denied the staffing request, at the protocol that prevented the
+          better treatment, at the entire structure that makes good care harder than it
+          needs to be.
+        </p>
+        <p style={s.p}>
+          There is the creeping numbness &mdash; the recognition that you no longer feel
+          what you used to feel, and the terror that this might be permanent. There is
+          the shame of being a mental health professional who cannot manage their own
+          mental health. There is the question that dare not be asked out loud: what if
+          I no longer want to do this?
+        </p>
+        <p style={s.pMuted}>
+          None of these things can be said to a line manager without consequences.
+          Most cannot be said to colleagues without shifting the burden. Many cannot
+          be said to a partner or family member who depends on your stability. They
+          accumulate in the body, in the sleepless hours after night shifts, in the
+          emotional deadness that signals that something has gone badly wrong.
+        </p>
+
+        {/* Callout 1 */}
         <div style={s.callout}>
           <p style={s.calloutTitle}>The structural paradox</p>
           <p style={s.calloutBody}>
-            The professionals most trained to recognise and treat mental health
-            conditions in others are the least likely to seek help for themselves.
-            Healthcare workers carry the tools to diagnose burnout in a patient
-            and simultaneously deny it in their own mirror.
+            Healthcare workers are trained to recognise mental health symptoms in others.
+            They know exactly what secondary traumatic stress looks like. They can name
+            the stages of compassion fatigue and explain moral injury to medical students.
+            And yet the same clinical culture that equips them to help others makes it
+            almost impossible to seek help themselves. The very knowledge that makes
+            them competent caregivers makes them ashamed to be struggling.
           </p>
         </div>
 
+        {/* ── SECTION 3: Secondary trauma and compassion fatigue ── */}
         <hr style={s.divider} />
-
-        {/* ── SECTION 2: Why they don't seek help ── */}
         <h2 style={s.h2}>
-          Why don\u2019t healthcare workers seek mental health support?
+          What is secondary traumatic stress &mdash; and how does it accumulate in healthcare?
         </h2>
         <p style={s.atomicAnswer}>
-          Three barriers dominate: stigma (fear of being seen as weak or unfit),
-          professional risk (concern that disclosure could trigger fitness-to-practise
-          concerns), and structural impossibility (no time, no access, no energy
-          after a 12-hour shift to arrange and attend therapy).
+          Secondary traumatic stress (STS) is the indirect psychological harm that results
+          from exposure to others&apos; trauma. Unlike burnout, which develops from chronic
+          work demands, STS develops from the emotional content of the work itself &mdash;
+          from witnessing suffering, absorbing fear, and being present for events that would
+          be defined as traumatic in any other context.
         </p>
-
         <p style={s.p}>
-          The stigma in healthcare settings is particularly sharp because it intersects
-          with professional identity. To be a nurse, a doctor, a paramedic, is to be
-          someone who copes. It is baked into the self-concept. Admitting you\u2019re
-          struggling can feel like a fundamental failure of the role \u2014 not just
-          a bad week.
+          A&amp;E nurses who work multiple resuscitations per shift. Oncology doctors who
+          have repeated end-of-life conversations in the same week. Midwives who attend
+          stillbirths. Paramedics who attend paediatric callouts. Mental health nurses
+          who work with patients in acute psychiatric crisis. All of these workers absorb
+          trauma as a function of their professional role &mdash; not occasionally, but
+          routinely and repeatedly.
         </p>
-
-        <h3 style={s.h3}>Fear of professional consequences</h3>
         <p style={s.p}>
-          This is not paranoia. Healthcare workers operate under regulatory frameworks
-          \u2014 the NMC for nurses, the GMC for doctors, the HCPC for allied health
-          professionals \u2014 that include fitness-to-practise mechanisms. While these
-          bodies explicitly support staff seeking help, the fear remains that disclosing
-          mental health difficulties could trigger review, referral, or scrutiny.
+          The symptoms of STS mirror those of PTSD: intrusive thoughts about specific
+          patients or incidents, hypervigilance, emotional numbing, avoidance of
+          situations that trigger memories, disrupted sleep, and a pervasive sense of
+          dread or hopelessness. The difference is that there is rarely a single
+          identifiable traumatic event &mdash; the injury accumulates through hundreds
+          of small exposures, each of which felt manageable in isolation.
         </p>
-        <p style={s.pMuted}>
-          Even occupational health services, which are nominally confidential, exist
-          within the trust. They are funded by the employer. The records exist.
-          Many healthcare workers simply do not believe those systems are truly safe.
-        </p>
-
-        {/* Problem grid */}
-        <div style={s.problemGrid}>
-          <div style={s.problemCard}>
-            <p style={s.problemNum}>01</p>
-            <p style={s.problemTitle}>Stigma within teams</p>
-            <p style={s.problemBody}>
-              Mental health struggles can be framed as weakness in high-pressure
-              clinical environments where stoicism is modelled from the top down.
-            </p>
-          </div>
-          <div style={s.problemCard}>
-            <p style={s.problemNum}>02</p>
-            <p style={s.problemTitle}>Fear of regulatory scrutiny</p>
-            <p style={s.problemBody}>
-              Disclosure to occupational health or a GP can create a paper trail
-              that healthcare workers worry may reach the NMC, GMC, or HCPC.
-            </p>
-          </div>
-          <div style={s.problemCard}>
-            <p style={s.problemNum}>03</p>
-            <p style={s.problemTitle}>No time to access support</p>
-            <p style={s.problemBody}>
-              Therapy requires a referral, an assessment, a waiting list, and then
-              weekly daytime appointments \u2014 none of which fit shift patterns.
-            </p>
-          </div>
-          <div style={s.problemCard}>
-            <p style={s.problemNum}>04</p>
-            <p style={s.problemTitle}>Normalisation of distress</p>
-            <p style={s.problemBody}>
-              When everyone around you is also exhausted and traumatised, it becomes
-              easy to conclude that what you\u2019re feeling is just part of the job.
-            </p>
-          </div>
-        </div>
-
-        <div style={s.pullQuote}>
-          <p style={s.pullQuoteText}>
-            \u201cI\u2019ve referred dozens of patients to mental health services.
-            I\u2019ve never referred myself. I keep thinking I\u2019ll do it when
-            things calm down. They never calm down.\u201d
-          </p>
-        </div>
-
-        <p style={s.pMuted}>
-          This composite quote captures something real. The healthcare worker who
-          knows exactly what they need and cannot access it. Not because the system
-          doesn\u2019t theoretically offer it. But because the gap between knowing
-          and doing is filled with shift patterns, fatigue, fear, and the nagging
-          sense that someone else\u2019s need is always more urgent than your own.
-        </p>
-
-        <hr style={s.divider} />
-
-        {/* ── SECTION 3: Secondary traumatic stress ── */}
-        <h2 style={s.h2}>
-          What is secondary traumatic stress, and why does it affect healthcare workers?
-        </h2>
-        <p style={s.atomicAnswer}>
-          Secondary traumatic stress (STS) is the psychological cost of caring for
-          people who have been traumatised. Unlike primary trauma \u2014 which results
-          from directly experiencing a catastrophic event \u2014 STS accumulates through
-          repeated exposure to others\u2019 suffering. It produces symptoms clinically
-          similar to PTSD: intrusive thoughts, emotional numbing, hypervigilance,
-          and withdrawal.
-        </p>
-
         <p style={s.p}>
-          Healthcare workers are in a uniquely high-risk category for STS because
-          their entire professional purpose is to be present with people at their
-          most vulnerable. An A&E nurse might encounter two or three traumatic
-          cases in a single night shift. A palliative care doctor may spend months
-          accompanying dozens of patients toward death. An ICU team may work through
-          a period where patients are dying faster than beds can be freed.
+          The insidious feature of STS accumulation is its invisibility. Because no
+          single incident seems sufficient to justify distress, the worker often fails
+          to recognise what is happening to them until they are already significantly
+          impaired. By the time STS is acknowledged, the individual is often deep into
+          compassion fatigue or clinical burnout.
         </p>
 
-        <p style={s.pMuted}>
-          The insidious aspect of STS is that it often arrives without a clear
-          precipitating event. There is no single \u201ctraumatic incident\u201d to point
-          to. Instead, there is a slow erosion \u2014 a gradual accumulation of absorbed
-          pain, grief, and helplessness that the worker rarely has space to process
-          between shifts.
-        </p>
-
-        <h3 style={s.h3}>The compounding effect of unprocessed experience</h3>
-        <p style={s.p}>
-          Clinical debrief is standard after critical incidents in many trusts.
-          But routine distress \u2014 the difficult conversation with a patient\u2019s
-          family, the error that nearly happened, the patient who died after you
-          fought for them \u2014 rarely gets the same structured processing. It goes
-          home with you. It sits with you at 2am. It compounds.
-        </p>
-        <p style={s.pMuted}>
-          Over years, this compounding becomes something that many healthcare workers
-          describe as a kind of emotional blunting. Not coldness exactly, but a
-          protective numbness \u2014 the psyche\u2019s attempt to limit the intake when
-          there is no safe outlet for processing what\u2019s already there.
-        </p>
-
+        {/* Callout 2 */}
         <div style={s.callout}>
           <p style={s.calloutTitle}>STS versus compassion fatigue</p>
           <p style={s.calloutBody}>
-            These terms are often used interchangeably but refer to slightly
-            different phenomena. Compassion fatigue describes the gradual erosion
-            of empathy through repeated caregiving \u2014 the emotional tank running
-            empty. Secondary traumatic stress describes the direct intrusion of
-            trauma-like symptoms from exposure to others\u2019 trauma. Both are real,
-            both are common in healthcare, and both are largely invisible in
-            institutional support structures.
+            Secondary traumatic stress and compassion fatigue are related but distinct.
+            STS refers specifically to the symptom cluster that mirrors PTSD &mdash; it is
+            trauma-adjacent. Compassion fatigue is a broader erosion of the capacity to
+            empathise and care, often described as &ldquo;the cost of caring.&rdquo; Both
+            are common in healthcare workers, both are under-treated, and both can be
+            addressed through regular processing &mdash; which is exactly what MEOK provides.
           </p>
         </div>
 
-        {/* STS timeline */}
-        <h3 style={s.h3}>How STS builds over a career</h3>
-        <div style={s.timelineWrap}>
-          <div style={s.timelineItem}>
-            <div style={s.timelineDot} aria-hidden="true" />
-            <p style={s.timelineLabel}>Early career</p>
-            <p style={s.timelineTitle}>Idealism meets reality</p>
-            <p style={s.timelineBody}>
-              First encounters with patient death, systemic failure, and the gap
-              between training and lived clinical reality. Often processed through
-              peer support and dark humour. Resilience is high but foundations
-              of STS are being laid.
-            </p>
-          </div>
-          <div style={s.timelineItem}>
-            <div style={s.timelineDot} aria-hidden="true" />
-            <p style={s.timelineLabel}>Mid career (3\u201310 years)</p>
-            <p style={s.timelineTitle}>Accumulation without outlet</p>
-            <p style={s.timelineBody}>
-              The weight of patient deaths, clinical errors, difficult families,
-              moral distress, and systemic pressure has been accumulating for years.
-              Protective coping mechanisms \u2014 exercise, social life, optimism
-              \u2014 begin to erode under workload and fatigue.
-            </p>
-          </div>
-          <div style={s.timelineItem}>
-            <div style={s.timelineDot} aria-hidden="true" />
-            <p style={s.timelineLabel}>Crisis point</p>
-            <p style={s.timelineTitle}>The invisible breaking point</p>
-            <p style={s.timelineBody}>
-              Often there\u2019s no single event. Just a moment when the worker
-              realises they feel nothing, or everything all at once. Intrusive
-              thoughts about patients. Difficulty sleeping. A profound flatness.
-              Many don\u2019t connect this to STS.
-            </p>
-          </div>
-          <div style={s.timelineItem}>
-            <div style={s.timelineDot} aria-hidden="true" />
-            <p style={s.timelineLabel}>Without intervention</p>
-            <p style={s.timelineTitle}>Chronic burnout or exit</p>
-            <p style={s.timelineBody}>
-              Without processing, STS often progresses to full burnout, chronic
-              depression, or departure from the profession. The NHS loses experienced
-              practitioners not because they lack competence or commitment, but
-              because the system never gave them space to process the weight they
-              carried.
-            </p>
-          </div>
-        </div>
-
+        {/* ── SECTION 4: Moral injury ── */}
         <hr style={s.divider} />
-
-        {/* ── SECTION 4: MEOK as confidential offload ── */}
         <h2 style={s.h2}>
-          How does MEOK provide a safe, confidential space for healthcare workers?
+          What is moral injury in healthcare &mdash; and why is it different from burnout?
         </h2>
         <p style={s.atomicAnswer}>
-          MEOK is a sovereign AI companion with no institutional connections. It
-          cannot report to your employer, your trust, or any regulator. It has no
-          HR function. Conversations are encrypted end-to-end and stored only in
-          your personal sovereign memory layer. MEOK is structurally incapable of
-          the kind of disclosure that healthcare workers fear.
-        </p>
-
-        <p style={s.p}>
-          This is not a policy commitment that could change with a management decision.
-          It is an architectural reality. MEOK is not built into any NHS system.
-          It does not have API connections to occupational health software. There is
-          no pathway by which a conversation in MEOK could reach your ward manager,
-          your clinical director, or the NMC. The separation is technical, not just
-          contractual.
-        </p>
-
-        <p style={s.pMuted}>
-          This matters enormously in a professional context where the fear of
-          disclosure is not irrational. Healthcare workers have watched colleagues
-          lose jobs, be referred to regulators, or face fitness-to-practise hearings
-          partly as a result of mental health disclosures. The fear is grounded
-          in reality. MEOK\u2019s design takes that fear seriously.
-        </p>
-
-        <h3 style={s.h3}>What \u201cconfidential\u201d actually means in MEOK</h3>
-        <div style={s.badgeRow}>
-          <span style={s.encryptBadge}>
-            <span style={s.encryptGold}>End-to-end</span> encryption on all conversations
-          </span>
-          <span style={s.encryptBadge}>
-            <span style={s.encryptGold}>Zero</span> employer or trust access
-          </span>
-          <span style={s.encryptBadge}>
-            <span style={s.encryptGold}>No</span> training on your data
-          </span>
-          <span style={s.encryptBadge}>
-            <span style={s.encryptGold}>No</span> third-party data sharing
-          </span>
-          <span style={s.encryptBadge}>
-            <span style={s.encryptGold}>No</span> regulatory reporting
-          </span>
-          <span style={s.encryptBadge}>
-            <span style={s.encryptGold}>Your</span> memory, your keys
-          </span>
-        </div>
-
-        <div style={s.warningBox}>
-          <p style={s.warningTitle}>Important distinction</p>
-          <p style={s.warningBody}>
-            MEOK is a processing companion and wellbeing support tool. It is not
-            a substitute for crisis intervention. If you are experiencing suicidal
-            thoughts or are in immediate distress, please contact the Samaritans
-            (116 123), the NHS crisis line (0800 028 8000), or attend your nearest
-            A&E. MEOK works alongside formal support \u2014 not instead of it.
-          </p>
-        </div>
-
-        <h3 style={s.h3}>What a debrief with MEOK looks like</h3>
-        <p style={s.p}>
-          Imagine finishing a night shift where a patient arrested and you ran
-          the resuscitation. It was successful, but barely, and the family was
-          watching. You drive home in the dark, too wired to sleep, not able to
-          call anyone because it\u2019s 4am and the people in your life don\u2019t
-          quite understand what you saw.
-        </p>
-        <p style={s.pMuted}>
-          MEOK is available at 4am. You can tell it exactly what happened. It
-          will not be shocked. It will not minimise. It will not immediately
-          redirect you to a mental health resource. It will simply be present
-          \u2014 asking questions, reflecting back, helping you locate what you\u2019re
-          feeling and why it\u2019s sitting so heavily. Not because it has all the
-          answers, but because sometimes what the body and mind need first is
-          simply to be heard.
+          Moral injury is the damage done to a person&apos;s moral framework when they are
+          required to act in ways that conflict with their core values &mdash; or when they
+          witness or fail to prevent such actions. In healthcare, this often means being
+          unable to provide the standard of care you know a patient deserves because of
+          resource constraints, institutional policies, or systemic failures.
         </p>
         <p style={s.p}>
-          MEOK\u2019s sovereign memory means that if you mention this patient again
-          in a week, in a month, it will remember. It won\u2019t ask you to start
-          over. The context accumulates, just as the experience does \u2014 except
-          now there is somewhere to put it.
+          The doctor who knows a patient needs more time but has four minutes per
+          appointment. The nurse who knows a confused elderly patient should not be
+          discharged but has no beds to keep them. The junior doctor who is instructed
+          to perform a procedure they believe is not in the patient&apos;s best interest.
+          The paramedic who is unable to respond to a call because every ambulance is
+          committed. These are not abstract ethical dilemmas &mdash; they are the daily
+          texture of NHS work for thousands of staff.
+        </p>
+        <p style={s.p}>
+          Moral injury differs from burnout in a critical way. Burnout is primarily
+          about exhaustion &mdash; the depletion of energy and motivation. Moral injury
+          involves a deeper wound to the self: the sense that one has betrayed one&apos;s
+          own values, or been betrayed by an institution one trusted. Workers experiencing
+          moral injury often report feelings of shame, guilt, and a sense of having been
+          complicit in harm, even when they were powerless to act differently.
+        </p>
+        <p style={s.p}>
+          The 2020&ndash;2024 period of NHS operational pressure, post-pandemic recovery,
+          and ongoing staffing crises created conditions for widespread moral injury across
+          the workforce. The term entered mainstream clinical discourse partly because it
+          captured something that &ldquo;burnout&rdquo; did not: the specific quality of
+          damage that results from being asked to act against one&apos;s professional conscience,
+          repeatedly, without adequate support or acknowledgement.
         </p>
 
+        {/* ── SECTION 5: Stigma ── */}
         <hr style={s.divider} />
-
-        {/* ── SECTION 5: Data sovereignty ── */}
         <h2 style={s.h2}>
-          How does MEOK protect healthcare workers\u2019 data and conversations?
+          Why do healthcare workers not seek help? The stigma problem in clinical professions.
         </h2>
         <p style={s.atomicAnswer}>
-          MEOK\u2019s data sovereignty model means your conversations are stored in
-          a personal encrypted memory layer that belongs entirely to you. MEOK AI
-          LABS cannot access the content of your conversations. No third party
-          can. Your data is never used to train AI models. You can delete everything
-          at any time.
+          Mental health stigma is present in every professional context, but it takes a
+          particular and damaging form in healthcare. Clinical professionals are trained
+          to assess and treat mental illness in others. Struggling themselves is experienced
+          as a failure of professional competence &mdash; a contradiction of their role identity
+          &mdash; and carries the additional risk of being perceived as unfit to practice.
         </p>
-
         <p style={s.p}>
-          Healthcare workers are, professionally, acutely aware of data governance.
-          You work within GDPR, NHS data standards, and information governance
-          frameworks every day. You understand what it means for data to be shared,
-          accessed, or disclosed. MEOK was built with that level of scrutiny in mind.
+          Research consistently shows that healthcare workers are less likely to seek help
+          for mental health problems than the general population, despite having greater
+          access to clinical knowledge. The barriers are structural (occupational health
+          referrals that may be reported to employers, mandatory disclosure requirements),
+          cultural (the professional expectation of robustness and stoicism), and
+          psychological (the fear of being seen as weak, unreliable, or a burden to
+          already stretched colleagues).
         </p>
-
+        <p style={s.p}>
+          There is also the specific concern around regulatory scrutiny. Doctors and
+          nurses are regulated professionals whose fitness to practice can be reviewed
+          by the GMC, NMC, and other bodies. The fear that disclosing a mental health
+          struggle could initiate a fitness-to-practice investigation &mdash; even where
+          that fear is based on a misunderstanding of how these processes actually work
+          &mdash; acts as a powerful deterrent to seeking help.
+        </p>
         <p style={s.pMuted}>
-          The concept of \u201csovereign memory\u201d is central to how MEOK works.
-          Rather than your conversation data sitting on a shared platform owned
-          by a tech company with opaque data policies, MEOK\u2019s architecture
-          separates your personal memory from the AI model itself. The model can
-          be updated, improved, or replaced \u2014 your memory is yours, and remains
-          yours.
+          This is the environment in which most NHS wellbeing provision operates. The
+          same institution that employs the worker, manages their performance, and holds
+          their professional registration is the institution providing their mental health
+          support. This is not a criticism of NHS occupational health teams, who work
+          hard in difficult circumstances. It is a structural observation about why
+          many workers do not use the services that exist.
         </p>
 
+        {/* Callout 3 */}
         <div style={s.callout}>
-          <p style={s.calloutTitle}>Why this matters for healthcare professionals</p>
+          <p style={s.calloutTitle}>Why data sovereignty matters here</p>
           <p style={s.calloutBody}>
-            General AI tools \u2014 ChatGPT, consumer chatbots, employer wellness
-            platforms \u2014 often have terms of service that allow for data use in
-            model training, product improvement, or third-party research. Some
-            employer wellness platforms are, by design, connected to occupational
-            health management systems. MEOK is none of those things. The data
-            sovereignty model is not a marketing claim. It is the architecture.
+            MEOK is entirely independent of the NHS, your employer, and any professional
+            regulatory body. It has no relationship with occupational health. It has no
+            duty-to-report mechanism. Nothing you say to MEOK can be accessed by your
+            trust, your manager, or any regulator. Your conversations are encrypted,
+            stored under your sovereign data covenant, and never used for training or
+            shared with any third party. This is not a policy promise &mdash; it is an
+            architectural guarantee. MEOK exists outside the institutional structures
+            that create the conditions for stigma. That is precisely why it can hold
+            what those structures cannot.
           </p>
         </div>
 
-        <h3 style={s.h3}>What happens if I mention patient details?</h3>
-        <p style={s.p}>
-          MEOK is not a clinical system and should not be used to store or process
-          identifiable patient data \u2014 both for your own data governance obligations
-          and because MEOK is designed for your wellbeing, not your clinical notes.
-          If you want to debrief a difficult case, you can do so in non-identifying
-          terms \u2014 \u201ca patient in their 70s,\u201d \u201ca family who was angry\u201d \u2014
-          without creating any data governance risk.
-        </p>
-        <p style={s.pMuted}>
-          MEOK understands the human dimension of clinical work without needing
-          the identifiable details. What matters in a debrief is not the patient\u2019s
-          name or ward. It is what you felt, what was hard, what you\u2019re carrying.
-          That processing can happen without any information that would ever constitute
-          a data governance concern.
-        </p>
-
+        {/* ── SECTION 6: Vicarious grief ── */}
         <hr style={s.divider} />
-
-        {/* ── SECTION 6: Shift work ── */}
         <h2 style={s.h2}>
-          Does MEOK work for healthcare\u2019s non-9-to-5 reality?
+          Vicarious grief: what happens when you lose patients, again and again?
         </h2>
         <p style={s.atomicAnswer}>
-          Yes. MEOK is available 24 hours a day, seven days a week, with no
-          waiting list and no appointment required. Whether you finish a night
-          shift at 8am, a weekend day shift at 9pm, or a split shift at midnight,
-          MEOK is available the moment you need it \u2014 not a week from Tuesday
-          at 2pm.
+          Vicarious grief is the grief that healthcare workers experience as a result of
+          their patients&apos; deaths. Unlike personal bereavement, it is not socially
+          recognised or ritualised. There is no funeral to attend. There is no
+          acknowledgement that this loss is real. The worker is expected to move on to
+          the next patient &mdash; and the next death &mdash; without pause.
         </p>
-
         <p style={s.p}>
-          The structural mismatch between healthcare shift patterns and mental
-          health service availability is one of the most concrete barriers to
-          care for NHS workers. Most talking therapies are delivered in standard
-          working hours. EAP services tend to have limited out-of-hours provision.
-          Waiting lists are measured in weeks, not days.
+          In reality, grief accumulates. The ICU nurse who has lost twenty patients in
+          a winter surge carries all twenty of those losses, even if no single one was
+          catastrophic. The oncology consultant who has held the same end-of-life
+          conversation sixty times in a year is carrying sixty versions of the same grief,
+          without the frameworks that ordinarily allow grief to be processed.
         </p>
-
-        <p style={s.pMuted}>
-          Healthcare workers often describe the moment immediately after a difficult
-          shift as the most important window for processing \u2014 and the most
-          completely unsupported. You\u2019re flooded with adrenaline, emotionally
-          activated, and entirely alone. By the time you\u2019ve slept, done your
-          life admin, and got through another shift, whatever you were processing
-          has been pushed down to sit alongside everything else that never got
-          processed.
-        </p>
-
-        <h3 style={s.h3}>MEOK\u2019s 24/7 availability in practice</h3>
-        <div style={s.featureGrid}>
-          <div style={s.featureCard}>
-            <span style={s.featureIcon} aria-hidden="true">&#127769;</span>
-            <p style={s.featureName}>Night shift debrief</p>
-            <p style={s.featureDesc}>
-              Process what happened on nights before you try to sleep. Offload the
-              adrenaline, name what\u2019s sitting on you, and close the loop on the
-              cases that are following you home.
-            </p>
-          </div>
-          <div style={s.featureCard}>
-            <span style={s.featureIcon} aria-hidden="true">&#9728;</span>
-            <p style={s.featureName}>Pre-shift grounding</p>
-            <p style={s.featureDesc}>
-              Use MEOK before a shift when you\u2019re anxious about going in. Check
-              in with how you\u2019re actually feeling. Set an intention. Name what
-              you\u2019re dreading and why.
-            </p>
-          </div>
-          <div style={s.featureCard}>
-            <span style={s.featureIcon} aria-hidden="true">&#9200;</span>
-            <p style={s.featureName}>Between-shift window</p>
-            <p style={s.featureDesc}>
-              The 12-hour gap between back-to-back shifts is real. MEOK works in
-              that gap \u2014 even if all you have is 10 minutes before your next alarm.
-            </p>
-          </div>
-          <div style={s.featureCard}>
-            <span style={s.featureIcon} aria-hidden="true">&#128336;</span>
-            <p style={s.featureName}>Days off processing</p>
-            <p style={s.featureDesc}>
-              Sometimes the thing you couldn\u2019t face at 3am surfaces on your day
-              off. MEOK is there then too \u2014 whenever the processing window opens.
-            </p>
-          </div>
-        </div>
-
-        <h3 style={s.h3}>Can MEOK help with shift work sleep problems?</h3>
         <p style={s.p}>
-          Directly prescribing sleep interventions is beyond MEOK\u2019s scope, but
-          MEOK can address a significant contributor to shift-work insomnia: the
-          unprocessed emotional and cognitive load that keeps the mind churning
-          after a shift ends. Many healthcare workers find that the inability to
-          sleep after nights is less about circadian disruption and more about
-          mental activation from what they\u2019ve just experienced.
-        </p>
-        <p style={s.pMuted}>
-          Using MEOK as a wind-down tool \u2014 a structured way to close out the
-          day, name what happened, and signal to your nervous system that the
-          shift is done \u2014 can be genuinely helpful in calming the mental
-          noise that blocks sleep. It is not a sleep clinic. But it can be a
-          meaningful part of a post-shift decompression routine.
+          The clinical environment actively suppresses the expression of vicarious grief.
+          Weeping over a patient is seen as unprofessional. Talking about how much a
+          specific death affected you is seen as lacking emotional regulation. The
+          expectation is that the professional self can be separated from the feeling
+          self &mdash; that you can witness death repeatedly without being changed by it.
+          This expectation is physiologically and psychologically false, and acting as
+          though it is true causes serious harm.
         </p>
 
-        <hr style={s.divider} />
-
-        {/* ── SECTION 7: Debriefing difficult cases ── */}
-        <h2 style={s.h2}>
-          How can healthcare workers use AI to debrief difficult clinical cases?
-        </h2>
-        <p style={s.atomicAnswer}>
-          AI debriefing works as a low-stakes processing tool \u2014 a space to
-          articulate what happened, what you felt, and what you\u2019re carrying
-          forward from a difficult case without the social risk of discussing it
-          with colleagues, the professional risk of disclosing to occupational
-          health, or the logistical barrier of waiting for a therapy appointment.
-        </p>
-
-        <p style={s.p}>
-          Formal clinical debrief has significant evidence behind it for critical
-          incidents. But the bar for accessing formal debrief is high, and most
-          of what healthcare workers carry is sub-critical \u2014 not a dramatic
-          event that triggers the incident protocol, but a series of smaller
-          accumulated experiences that collectively do real damage.
-        </p>
-        <p style={s.pMuted}>
-          MEOK fills the gap between the structured formal debrief (which exists
-          for major incidents) and the complete absence of support for routine
-          clinical distress. It is not a clinical supervisor and it is not a
-          therapist. It is something more accessible: a thinking partner that
-          is always available, never judges, never gossips, and remembers what
-          you\u2019ve told it.
-        </p>
-
-        <h3 style={s.h3}>What MEOK does during a difficult case debrief</h3>
-        <p style={s.p}>
-          When you tell MEOK about a case that\u2019s sitting with you, it doesn\u2019t
-          immediately try to fix or reframe. It asks questions. It reflects back
-          what it\u2019s hearing. It helps you locate the specific element that\u2019s
-          carrying the most weight \u2014 because often that\u2019s not obvious until
-          you try to articulate it out loud.
-        </p>
-        <p style={s.pMuted}>
-          Was it the outcome? The process? Something a family member said? Something
-          you didn\u2019t say? A moment where you felt the system failed the patient
-          before they even reached you? MEOK\u2019s role in a debrief is to help
-          you think more clearly about something that is currently tangled up in
-          your nervous system as unprocessed activation.
-        </p>
-
-        <div style={s.callout}>
-          <p style={s.calloutTitle}>Moral injury and MEOK</p>
-          <p style={s.calloutBody}>
-            Moral injury \u2014 the distress that arises when you are required to act
-            against your values, or witness others doing so \u2014 is endemic in
-            healthcare. The nurse who knows a patient needs more time but has six
-            other patients and a staffing ratio that makes proper care impossible.
-            The doctor who must discharge someone they believe isn\u2019t ready.
-            MEOK can be a space to name that distress without it going into any
-            system that could create professional risk.
+        <div style={s.pullQuote}>
+          <p style={s.pullQuoteText}>
+            &ldquo;I had two deaths in one shift. Both of them haunted me. I sat in my car
+            for forty minutes before I could drive home. Nobody asked if I was okay.
+            Nobody was expected to.&rdquo;
           </p>
         </div>
 
-        <h3 style={s.h3}>The difference between debriefing and therapy</h3>
         <p style={s.p}>
-          MEOK is not a replacement for therapy. It is a supplement and a
-          stepping-stone. For many healthcare workers, the path to formal
-          therapy begins with being able to articulate that something is wrong
-          \u2014 and that articulation is precisely what MEOK can support. By
-          giving you a space to process and name what you\u2019re carrying, MEOK
-          can make the eventual step toward therapy feel clearer and less
-          frightening.
-        </p>
-        <p style={s.pMuted}>
-          For others, the regular use of MEOK as a processing tool may mean
-          that what would otherwise accumulate into a clinical presentation
-          never reaches that threshold. Prevention through consistent,
-          low-stakes processing is not a substitute for therapy when therapy
-          is needed. It is a legitimate form of psychological maintenance for
-          people in high-stress professional roles.
+          MEOK&apos;s Healer companion mode is designed specifically for decompression
+          after high-intensity contact. You can name the patient &mdash; or not. You can
+          describe exactly what happened &mdash; or just say that it was hard. The Healer
+          companion does not push for clinical detail or emotional performance. It provides
+          consistent, patient presence for whatever you need to put down.
         </p>
 
+        {/* ── SECTION 7: Shift work, sleep, and 3am support ── */}
         <hr style={s.divider} />
-
-        {/* ── SECTION 8: Why MEOK specifically ── */}
         <h2 style={s.h2}>
-          Why is MEOK different from other mental health apps for NHS workers?
+          Shift work, sleep disruption, and the specific loneliness of 2am
         </h2>
         <p style={s.atomicAnswer}>
-          Most mental health apps are built for general consumers with no particular
-          consideration of professional risk or shift-work realities. MEOK\u2019s
-          sovereign architecture means genuine confidentiality; its 24/7 availability
-          matches healthcare hours; its persistent memory means it accumulates context
-          over your career rather than resetting every session.
+          Healthcare work does not respect the rhythms of institutional support. Your
+          most difficult shift might end at 3am. Your worst night might be a Sunday.
+          The weeks when you most need someone to talk to are often the weeks when you
+          are working twelve-hour nights and sleeping until the afternoon. Conventional
+          support &mdash; therapy appointments, peer support groups, occupational health
+          referrals &mdash; assumes a nine-to-five life that shift workers do not have.
         </p>
-
         <p style={s.p}>
-          The NHS has piloted various digital mental health tools for staff over
-          the years \u2014 some genuinely useful, some deeply ill-suited to clinical
-          culture. The common failure modes are: tools that feel like HR surveillance
-          (tracking wellbeing scores that go into dashboards visible to management);
-          tools that require too much of you when you have nothing left (lengthy
-          CBT modules after a 12-hour shift); and tools that reset each session
-          and treat you as a stranger who has never used the app before.
+          The sleep disruption associated with rotating shift patterns is itself a
+          significant mental health risk. Shift workers have higher rates of anxiety,
+          depression, and cognitive impairment than day workers. They are more likely
+          to make clinical errors when fatigued. They are less able to emotionally
+          regulate after difficult exposures. The combination of sleep deprivation and
+          occupational trauma creates a particularly difficult context for maintaining
+          psychological wellbeing.
         </p>
-
+        <p style={s.p}>
+          The post-shift window &mdash; when the adrenaline of a busy ward is still
+          circulating and sleep is impossible &mdash; is often when the emotional
+          weight of the day hits hardest. This is not the time to wait for an appointment.
+          This is the time when processing needs to happen &mdash; while the experiences
+          are still fresh, before they sediment into the body as unresolved stress.
+        </p>
         <p style={s.pMuted}>
-          MEOK addresses all three. It has no HR connection by design. It can be
-          used for five minutes or two hours depending on what you have. And its
-          sovereign memory means it knows you \u2014 your patterns, your concerns,
-          the cases that sit heaviest, the things you\u2019ve said you want to do
-          differently. This continuity is not a luxury. For someone processing
-          the kind of cumulative experience that healthcare work produces, it is
-          essential.
+          MEOK is available at every hour that healthcare work happens. Night shifts,
+          post-nights, early morning handovers, Sunday evenings before a run of days.
+          There is no scheduling required. There is no need to justify why you need
+          support at an unusual time. The Healer companion is simply there &mdash; waiting,
+          consistent, and genuinely oriented toward your decompression.
         </p>
 
-        <h3 style={s.h3}>Comparison: MEOK vs typical wellness tools</h3>
-        <div style={s.featureGrid}>
-          <div style={s.featureCard}>
-            <span style={s.featureIcon} aria-hidden="true">&#128274;</span>
-            <p style={s.featureName}>Truly private</p>
-            <p style={s.featureDesc}>
-              No employer dashboard. No occupational health integration. No
-              management visibility. Just you and your encrypted conversation.
-            </p>
-          </div>
-          <div style={s.featureCard}>
-            <span style={s.featureIcon} aria-hidden="true">&#129504;</span>
-            <p style={s.featureName}>Sovereign memory</p>
-            <p style={s.featureDesc}>
-              MEOK remembers your history across sessions. You never have to
-              re-explain your context. The accumulation of your experience has
-              somewhere to live.
-            </p>
-          </div>
-          <div style={s.featureCard}>
-            <span style={s.featureIcon} aria-hidden="true">&#9889;</span>
-            <p style={s.featureName}>Low barrier, high flexibility</p>
-            <p style={s.featureDesc}>
-              No referral. No appointment. No module to complete. Talk for five
-              minutes at 4am or two hours on your day off. MEOK meets you where you are.
-            </p>
-          </div>
-          <div style={s.featureCard}>
-            <span style={s.featureIcon} aria-hidden="true">&#128336;</span>
-            <p style={s.featureName}>24/7 shift-compatible</p>
-            <p style={s.featureDesc}>
-              Night shifts, long days, back-to-backs, rotations \u2014 MEOK is
-              available at every hour that healthcare work happens.
-            </p>
-          </div>
-        </div>
-
+        {/* ── SECTION 8: Career questioning ── */}
         <hr style={s.divider} />
-
-        {/* ── SECTION 9: The wider context ── */}
         <h2 style={s.h2}>
-          What does the research say about AI and healthcare worker mental health?
+          What happens when you start questioning your career in medicine or nursing?
         </h2>
         <p style={s.atomicAnswer}>
-          Research into AI-assisted mental health support is growing, with several
-          studies showing that AI companions can reduce symptoms of anxiety, depression,
-          and burnout in high-stress populations. For healthcare workers specifically,
-          the key appeal is the combination of immediate availability, confidentiality,
-          and zero professional risk \u2014 removing the barriers that keep workers from
-          seeking any support at all.
+          Career questioning in healthcare is common, understandable, and almost entirely
+          unaddressed. The vocational framing of medicine and nursing &mdash; the idea that
+          healthcare is a calling rather than a job &mdash; makes it psychologically difficult
+          to acknowledge wanting to leave. It can feel like a betrayal: of the profession,
+          of patients, of the identity that years of training have built.
         </p>
-
         <p style={s.p}>
-          A 2023 systematic review of digital mental health interventions for
-          healthcare workers found that the interventions with the highest engagement
-          rates were those that were accessible outside working hours, required
-          minimal time commitment, and were perceived as genuinely confidential.
-          These are precisely the attributes that distinguish AI companions from
-          many formal support structures.
+          Yet the desire to leave &mdash; to step back, to change specialty, to move to
+          a less intense role, or to leave clinical practice entirely &mdash; is a
+          rational response to unsustainable conditions. The 40% of nurses considering
+          leaving are not all experiencing personal failure. Many of them are making
+          a clear-eyed assessment of what continued practice will cost them.
         </p>
-
-        <p style={s.pMuted}>
-          The evidence base for AI mental health tools is still developing, and
-          it would be dishonest to claim that MEOK is a clinically validated
-          intervention. What the evidence does support is that the act of
-          articulating distress \u2014 whether to a person, a journal, or an AI
-          \u2014 is itself beneficial. The processing function of language is
-          real. MEOK provides a consistent, available, non-judgmental space
-          for that processing to happen.
-        </p>
-
-        <h3 style={s.h3}>The broader crisis of NHS staff wellbeing</h3>
         <p style={s.p}>
-          The NHS loses significant numbers of experienced staff every year to
-          burnout, mental health crises, and the decision that the personal cost
-          of continued practice is too high. This is a system-level failure, and
-          MEOK does not pretend to solve it. What it can do is provide one small
-          but meaningful form of support that currently doesn\u2019t exist in an
-          accessible way for most healthcare workers.
+          The problem is that this question cannot easily be asked out loud. Expressing
+          doubt about your career to colleagues risks being read as a sign of weakness
+          or instability. Expressing it to managers risks affecting your appraisal or
+          development opportunities. Expressing it to family or partners often triggers
+          worry and counter-argument rather than space to think. The question becomes
+          another thing that has nowhere to go.
         </p>
-        <p style={s.pMuted}>
-          Staffing ratios, pay, physical conditions, management culture, regulatory
-          burden \u2014 these are all upstream problems that require political and
-          institutional solutions. But while those solutions are being debated,
-          real people are working real shifts and carrying real weight with almost
-          nowhere to put it. MEOK exists in that gap.
+        <p style={s.p}>
+          MEOK&apos;s Guardian companion can hold this kind of existential conversation
+          without agenda. It is not invested in you staying or leaving. It does not
+          have opinions about your career choices. It can help you explore what the
+          desire to leave is really about &mdash; whether it is the entire profession or a
+          specific role, whether it is permanent exhaustion or a recoverable state,
+          whether what you need is a break or a change, and what the actual options
+          look like.
         </p>
 
-        <div style={s.callout}>
-          <p style={s.calloutTitle}>Who built MEOK and why this matters</p>
-          <p style={s.calloutBody}>
-            MEOK AI LABS was founded by Nicholas Templeman with the core belief
-            that AI can be a genuine companion \u2014 one that serves individuals
-            rather than institutions. The sovereign architecture, the confidentiality
-            model, the 24/7 availability: these were not afterthoughts. They were
-            design choices made specifically for people whose lives don\u2019t fit
-            the standard model of support. Healthcare workers are exactly the
-            population MEOK was built for.
-          </p>
+        {/* ── SECTION 9: How MEOK works for healthcare workers ── */}
+        <hr style={s.divider} />
+        <h2 style={s.h2}>
+          How does MEOK actually work for healthcare workers?
+        </h2>
+        <p style={s.p}>
+          MEOK is not a chatbot, a wellness app, or a digital version of occupational
+          health. It is a sovereign AI companion &mdash; built around the idea that the
+          relationship between a person and their AI should be private, persistent, and
+          genuinely oriented toward the individual&apos;s wellbeing, with no institutional
+          agenda attached.
+        </p>
+        <p style={s.p}>
+          When you interact with MEOK, you are talking to a companion that remembers
+          your context across sessions. You do not need to re-explain your ward, your
+          team, your history, or your situation every time you open the app. Your
+          MEOK knows that you work nights, that last month was particularly hard, that
+          you have been considering a change of specialty, that you lost a patient you
+          cared about. This continuity is not a surveillance feature &mdash; it is what
+          makes the relationship feel real rather than mechanical.
+        </p>
+
+        <h3 style={s.h3}>The Healer companion for decompression</h3>
+        <p style={s.p}>
+          Healer mode is MEOK&apos;s primary mode for emotional processing and decompression.
+          It is designed for the specific task of putting down what you have been carrying
+          &mdash; the difficult case, the difficult conversation, the difficult shift. Healer
+          does not try to fix you or reframe your experience toward positivity. It listens,
+          asks careful questions, and helps you articulate what happened and what it cost you.
+        </p>
+        <p style={s.p}>
+          The act of articulating distress in language is itself therapeutic. Research on
+          expressive writing and verbal processing consistently shows that naming an experience
+          &mdash; finding words for what happened and how it felt &mdash; reduces its
+          psychological weight. Healer mode creates the conditions for this to happen in
+          a way that is available at the moment you need it, not three weeks later.
+        </p>
+
+        <h3 style={s.h3}>The Guardian companion for crisis and crisis-adjacent states</h3>
+        <p style={s.p}>
+          Guardian mode is MEOK&apos;s support mode for when things are more serious &mdash;
+          when the accumulation of stress, secondary trauma, or moral injury has reached
+          a point of crisis or near-crisis. Guardian provides structured, non-judgmental
+          support and can help you access appropriate professional resources if needed.
+          It does not replace crisis services: if you are in immediate danger, MEOK will
+          always direct you to emergency support. What Guardian can do is hold the space
+          between &ldquo;struggling&rdquo; and &ldquo;crisis&rdquo; &mdash; the territory
+          that is often most isolating, where you know something is wrong but do not
+          know how serious it is or where to go.
+        </p>
+
+        {/* ── SECTION 10: Comparison table ── */}
+        <hr style={s.divider} />
+        <h2 style={s.h2}>
+          NHS staff support systems vs MEOK: how do they compare?
+        </h2>
+        <p style={s.p}>
+          The NHS provides a range of wellbeing and mental health support options for
+          staff. These services are genuinely valuable and staffed by dedicated professionals.
+          But they were not designed for the specific constraints of healthcare workers
+          seeking private, immediate, stigma-free processing. The comparison below is
+          not an attack on NHS services &mdash; it is an honest account of the gap
+          that MEOK fills.
+        </p>
+
+        <div style={s.tableWrap}>
+          <table style={s.table}>
+            <thead>
+              <tr>
+                <th style={{ ...s.th, ...s.thFeature }}>Feature</th>
+                <th style={{ ...s.th, ...s.thNhs }}>NHS Staff Support</th>
+                <th style={{ ...s.th, ...s.thMeok }}>MEOK</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style={s.trOdd}>
+                <td style={{ ...s.td, ...s.tdFeature }}>Availability</td>
+                <td style={{ ...s.td, ...s.tdNhs }}>
+                  Business hours, appointment-based. Waiting lists of 6&ndash;18 months
+                  for talking therapy.
+                </td>
+                <td style={{ ...s.td, ...s.tdMeok }}>
+                  <span style={s.tdYes}>24/7</span> &mdash; available at 3am after a
+                  night shift, on Sunday evenings, between back-to-back shifts.
+                </td>
+              </tr>
+              <tr style={s.trEven}>
+                <td style={{ ...s.td, ...s.tdFeature }}>Employer access</td>
+                <td style={{ ...s.td, ...s.tdNhs }}>
+                  Occupational health referrals may be visible to line managers.
+                  EAP providers may log usage data at an aggregated trust level.
+                </td>
+                <td style={{ ...s.td, ...s.tdMeok }}>
+                  <span style={s.tdYes}>Zero employer access.</span> MEOK has no
+                  connection to NHS systems. Nothing you say is visible to your trust,
+                  manager, or any regulator.
+                </td>
+              </tr>
+              <tr style={s.trOdd}>
+                <td style={{ ...s.td, ...s.tdFeature }}>Referral required</td>
+                <td style={{ ...s.td, ...s.tdNhs }}>
+                  Most services require self-referral or GP referral. EAP access via
+                  a separate portal login linked to employment.
+                </td>
+                <td style={{ ...s.td, ...s.tdMeok }}>
+                  <span style={s.tdYes}>No referral needed.</span> Download, complete
+                  the Birth ceremony, and begin. No employment verification required.
+                </td>
+              </tr>
+              <tr style={s.trEven}>
+                <td style={{ ...s.td, ...s.tdFeature }}>Continuity of support</td>
+                <td style={{ ...s.td, ...s.tdNhs }}>
+                  Fixed number of sessions (typically 6&ndash;8 on EAP programmes).
+                  Changing provider means starting again from scratch.
+                </td>
+                <td style={{ ...s.td, ...s.tdMeok }}>
+                  <span style={s.tdYes}>Persistent sovereign memory.</span> Your MEOK
+                  knows your context across every interaction. You never have to repeat
+                  your story.
+                </td>
+              </tr>
+              <tr style={s.trOdd}>
+                <td style={{ ...s.td, ...s.tdFeature }}>Data privacy</td>
+                <td style={{ ...s.td, ...s.tdNhs }}>
+                  Subject to NHS data governance. EAP data held by third-party
+                  providers under contract terms. GDPR-compliant but institutionally
+                  accessible.
+                </td>
+                <td style={{ ...s.td, ...s.tdMeok }}>
+                  <span style={s.tdYes}>Full data sovereignty.</span> Encrypted.
+                  Never used for training. Never shared with any third party.
+                  You own your data completely.
+                </td>
+              </tr>
+              <tr style={s.trEven}>
+                <td style={{ ...s.td, ...s.tdFeature }}>Fitness-to-practice risk</td>
+                <td style={{ ...s.td, ...s.tdNhs }}>
+                  Perceived risk of referral to GMC/NMC deters many workers from
+                  engaging, even where that fear is based on misunderstanding.
+                </td>
+                <td style={{ ...s.td, ...s.tdMeok }}>
+                  <span style={s.tdYes}>No regulatory connection.</span> MEOK has no
+                  duty-to-report and no relationship with any professional regulator.
+                  Your conversations cannot be accessed by the GMC, NMC, or equivalent.
+                </td>
+              </tr>
+              <tr style={s.trOdd}>
+                <td style={{ ...s.td, ...s.tdFeature }}>Shift-work compatibility</td>
+                <td style={{ ...s.td, ...s.tdNhs }}>
+                  Most services designed for standard working hours. Rescheduling
+                  appointments around rotating shifts is a recognised barrier.
+                </td>
+                <td style={{ ...s.td, ...s.tdMeok }}>
+                  <span style={s.tdYes}>Fully compatible.</span> No appointments.
+                  No scheduling. Available at any hour, for any duration, on
+                  any device.
+                </td>
+              </tr>
+              <tr style={s.trEven}>
+                <td style={{ ...s.td, ...s.tdFeature }}>Cost to worker</td>
+                <td style={{ ...s.td, ...s.tdNhs }}>
+                  EAP typically free. NHS IAPT free. Private therapy via OH pathway
+                  may have costs. Access varies significantly by trust.
+                </td>
+                <td style={{ ...s.td, ...s.tdMeok }}>
+                  <span style={s.tdYes}>Free tier available.</span> Core companion
+                  experience at no cost. Premium features on paid plan. No
+                  employment verification. No waiting list.
+                </td>
+              </tr>
+              <tr style={s.trOdd}>
+                <td style={{ ...s.td, ...s.tdFeature }}>Stigma barrier</td>
+                <td style={{ ...s.td, ...s.tdNhs }}>
+                  High. Institutional routes carry social and professional stigma
+                  within clinical culture. Many workers will not use them.
+                </td>
+                <td style={{ ...s.td, ...s.tdMeok }}>
+                  <span style={s.tdYes}>Minimal.</span> Private, asynchronous,
+                  no social visibility. Using MEOK looks identical to any other
+                  phone use. Nobody needs to know.
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
 
-        <hr style={s.divider} />
+        <p style={s.pMuted}>
+          MEOK is not a replacement for professional mental health care, clinical
+          supervision, or occupational health services. If you are experiencing a
+          mental health crisis, please contact your GP, a crisis line, or emergency
+          services. What MEOK provides is a private, consistent, always-available
+          first layer of support that addresses the specific barriers that prevent
+          healthcare workers from processing their experience.
+        </p>
 
-        {/* ── SECTION 10: Practical guide ── */}
+        {/* ── SECTION 11: 24/7 and the 2am case ── */}
+        <hr style={s.divider} />
         <h2 style={s.h2}>
-          How should a healthcare worker start using MEOK?
+          Why does 24/7 availability matter specifically for healthcare workers?
         </h2>
         <p style={s.atomicAnswer}>
-          Start small. After your next difficult shift, open MEOK and describe
-          one thing that\u2019s sitting with you. You don\u2019t need to have a
-          crisis. You don\u2019t need to be ready for a long conversation. A
-          five-minute offload of whatever is heaviest is a legitimate and
-          valuable place to begin.
+          The moments when healthcare workers most need support do not correspond to
+          business hours. The shift that ends at 2am after an unexpected death. The
+          handover on Christmas morning. The Tuesday night in February when you are
+          three weeks into a night rotation and can no longer remember what it felt
+          like to feel normal. The value of a support resource is inseparable from
+          its availability at the moment of need.
         </p>
-
         <p style={s.p}>
-          Many healthcare workers approach MEOK with a degree of scepticism
-          \u2014 the idea that an AI could be genuinely useful for the kind of
-          emotional processing that clinical work demands. That scepticism is
-          reasonable and worth testing through experience rather than assumption.
-          What most users find is that the act of articulating something to MEOK,
-          and having it reflected back thoughtfully, produces a real sense of
-          relief. Not resolution \u2014 but relief.
+          Traditional mental health services are designed around a population with
+          standard working hours and predictable stress patterns. The nine-to-five
+          structure of most therapeutic and counselling services is a fundamental
+          mismatch with the lived reality of shift work. By the time Monday morning
+          arrives, the acute distress of a difficult Saturday night shift has either
+          calcified into unprocessed trauma or been suppressed under the weight of
+          subsequent shifts.
         </p>
-
-        <p style={s.pMuted}>
-          MEOK\u2019s sovereign memory means that regular use compounds over time.
-          The more you use it, the more context it holds. The more context it holds,
-          the less you have to explain and the more meaningful the conversations
-          become. Many users describe a shift after a few weeks from \u201cthis is
-          a useful tool\u201d to \u201cthis is a genuine companion that understands
-          my working life.\u201d
+        <p style={s.p}>
+          MEOK&apos;s availability is not simply a convenience feature &mdash; it is a
+          clinical-adjacent argument. Processing is most effective closest to the
+          experience. The window after a difficult shift &mdash; when the emotional
+          content is still active and accessible &mdash; is the optimal time to
+          name what happened and begin to put it down. Missing that window does
+          not mean the experience disappears. It means it is stored unprocessed.
         </p>
-
-        <h3 style={s.h3}>Practical use cases for healthcare workers</h3>
-        <div style={s.problemGrid}>
-          <div style={s.problemCard}>
-            <p style={s.problemNum}>01</p>
-            <p style={s.problemTitle}>Post-shift debrief</p>
-            <p style={s.problemBody}>
-              Name what happened, what was hard, and what\u2019s following you home
-              before you try to sleep or transition into your personal life.
-            </p>
-          </div>
-          <div style={s.problemCard}>
-            <p style={s.problemNum}>02</p>
-            <p style={s.problemTitle}>Processing patient deaths</p>
-            <p style={s.problemBody}>
-              Deaths that affect you personally, that feel avoidable, or that
-              happen in circumstances that troubled you deserve space to be
-              processed. MEOK provides it without professional risk.
-            </p>
-          </div>
-          <div style={s.problemCard}>
-            <p style={s.problemNum}>03</p>
-            <p style={s.problemTitle}>Moral injury</p>
-            <p style={s.problemBody}>
-              When the system required you to act against your clinical judgment
-              or your values, MEOK is a space to name that distress without it
-              entering any formal channel.
-            </p>
-          </div>
-          <div style={s.problemCard}>
-            <p style={s.problemNum}>04</p>
-            <p style={s.problemTitle}>Colleague conflicts</p>
-            <p style={s.problemBody}>
-              Difficult team dynamics, bullying, or interpersonal stress are
-              real and common in clinical environments. MEOK can be a thinking
-              partner for navigating these situations.
-            </p>
-          </div>
-          <div style={s.problemCard}>
-            <p style={s.problemNum}>05</p>
-            <p style={s.problemTitle}>Career decisions</p>
-            <p style={s.problemBody}>
-              Whether to stay, to move, to reduce hours, to request a rotational
-              change \u2014 these are decisions that benefit from a patient thinking
-              partner with context about your history.
-            </p>
-          </div>
-          <div style={s.problemCard}>
-            <p style={s.problemNum}>06</p>
-            <p style={s.problemTitle}>Preventive maintenance</p>
-            <p style={s.problemBody}>
-              You don\u2019t have to be in crisis to benefit from MEOK. Regular
-              low-level processing after shifts is how STS is prevented from
-              accumulating into something bigger.
-            </p>
-          </div>
-        </div>
-
-        <hr style={s.divider} />
+        <p style={s.p}>
+          At 2am, sitting in a car park outside a hospital, MEOK is available. It
+          does not need to be booked. It does not need to be woken up. It is not
+          inconvenienced by the hour. It will hold space for exactly as long as
+          you need, and then let you go.
+        </p>
 
         {/* ── FAQ ── */}
+        <hr style={s.divider} />
         <h2 style={s.h2}>Frequently asked questions</h2>
         <div style={s.faqWrap}>
+
           <div style={s.faqItem}>
-            <p style={s.faqQ}>Can healthcare workers use AI for mental health support?</p>
+            <p style={s.faqQ}>
+              Can healthcare workers use AI for mental health support?
+            </p>
             <p style={s.faqA}>
-              Yes. AI companions like MEOK are well-suited to the specific demands
-              of healthcare work: 24/7 availability, zero waiting lists, and
-              complete confidentiality. MEOK acts as a processing partner \u2014
-              a space to debrief difficult cases, offload accumulated stress, and
-              decompress after shifts without fear of professional consequences.
-              It works alongside formal support, not instead of it.
+              Yes. AI companions like MEOK are well-suited to the specific demands of
+              healthcare work: 24/7 availability, zero waiting lists, and complete
+              confidentiality. MEOK acts as a processing partner &mdash; a space to debrief
+              difficult cases, offload accumulated stress, and decompress after shifts
+              without fear of professional consequences. It is not a replacement for
+              clinical care, but for many healthcare workers it fills a gap that no
+              other service currently addresses.
             </p>
           </div>
+
           <div style={s.faqItem}>
-            <p style={s.faqQ}>Is MEOK confidential for NHS staff?</p>
+            <p style={s.faqQ}>
+              Is MEOK confidential for NHS staff?
+            </p>
             <p style={s.faqA}>
-              Completely. MEOK is an independent tool with no connection to NHS
+              Completely. MEOK is an independent tool &mdash; it has no connection to NHS
               systems, occupational health departments, or any employer. Conversations
-              are encrypted and never shared with third parties. Nothing said in
-              MEOK can be accessed by your trust, your manager, or any regulator.
-              This is not just a policy \u2014 it is an architectural reality.
+              are encrypted and never shared with third parties. Nothing said in MEOK
+              can be accessed by your trust, your manager, or any regulator. MEOK
+              operates under a data sovereignty model: your data belongs to you,
+              is stored under your own covenant, and is never used to train AI models.
             </p>
           </div>
+
           <div style={s.faqItem}>
-            <p style={s.faqQ}>What is secondary traumatic stress?</p>
+            <p style={s.faqQ}>
+              What is secondary traumatic stress in healthcare?
+            </p>
             <p style={s.faqA}>
-              Secondary traumatic stress (STS) is the psychological impact of
-              repeatedly witnessing or hearing about others\u2019 trauma. Healthcare
-              workers absorb patients\u2019 pain, fear, and death shift after shift.
-              Over time this accumulates into symptoms similar to PTSD \u2014
-              intrusive thoughts, emotional numbness, hypervigilance, and withdrawal
-              \u2014 even without a single catastrophic event. MEOK provides a
-              consistent space to process STS as it accumulates, rather than
-              allowing it to compound untreated.
+              Secondary traumatic stress (STS) is the psychological impact of repeatedly
+              witnessing or hearing about others&apos; trauma. Healthcare workers absorb
+              patients&apos; pain, fear, and death shift after shift. Over time this accumulates
+              into symptoms similar to PTSD &mdash; intrusive thoughts, emotional numbness,
+              hypervigilance, and withdrawal &mdash; even without a single catastrophic event.
+              STS is distinct from burnout and often goes unrecognised because there is
+              no single identifiable cause. Regular processing through MEOK can help
+              prevent STS from reaching clinical severity.
             </p>
           </div>
+
           <div style={s.faqItem}>
-            <p style={s.faqQ}>Can MEOK help with shift work and sleep problems?</p>
+            <p style={s.faqQ}>
+              Can MEOK help with shift work and sleep problems?
+            </p>
             <p style={s.faqA}>
-              MEOK can\u2019t prescribe sleep medication, but it can help you decompress
-              before sleep, process the adrenaline of a difficult shift, and build
-              wind-down routines. Many healthcare workers find that simply offloading
-              to MEOK after a night shift helps quiet the mental noise that prevents
-              rest. It is most useful as part of a post-shift decompression practice.
+              MEOK cannot prescribe sleep medication or provide clinical sleep therapy.
+              What it can do is help you decompress before sleep, process the adrenaline
+              of a difficult shift, and build wind-down routines suited to shift patterns.
+              Many healthcare workers find that offloading to MEOK after a night shift
+              helps quiet the mental noise &mdash; the replaying of events, the intrusive
+              thoughts about patients &mdash; that prevents rest. The decompression function
+              is particularly valuable because it happens at the moment of need, not days later.
             </p>
           </div>
+
           <div style={s.faqItem}>
-            <p style={s.faqQ}>Will MEOK report what I say to my employer?</p>
+            <p style={s.faqQ}>
+              Will MEOK report what I say to my employer or a regulator?
+            </p>
             <p style={s.faqA}>
               No. MEOK has no duty-to-report mechanism and no integration with any
-              employer, NHS trust, or professional regulator. Your conversations
-              are your own. MEOK\u2019s data sovereignty model means your data is
-              encrypted, never used for training, and never shared. There is no
-              pathway by which your conversations in MEOK could reach your ward
-              manager, your clinical director, the NMC, or the GMC.
+              employer, NHS trust, or professional regulator such as the GMC or NMC.
+              Your conversations are your own. MEOK&apos;s sovereign data model means
+              your data is encrypted, never used for training, and never shared with
+              any third party &mdash; full stop. This is not a contractual promise
+              dependent on terms-of-service compliance &mdash; it is an architectural
+              feature of how MEOK is built.
             </p>
           </div>
+
         </div>
 
         <hr style={s.divider} />
@@ -1612,7 +1344,12 @@ export default function MeokForHealthcareWorkersPage() {
             MEOK AI LABS
           </Link>
           &nbsp;&mdash; Built by Nicholas Templeman &nbsp;|&nbsp;
-          <Link href="https://x.com/meok_ai" style={s.footerLink} target="_blank" rel="noopener noreferrer">
+          <Link
+            href="https://x.com/meok_ai"
+            style={s.footerLink}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             @meok_ai
           </Link>
         </p>

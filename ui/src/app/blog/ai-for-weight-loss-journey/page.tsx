@@ -5,39 +5,37 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   title:
-    "AI Support on Your Weight Loss Journey: Motivation Without the Shame | MEOK AI LABS",
+    "AI for Your Weight Loss Journey: Support Without the Shame | MEOK AI LABS",
   description:
-    "How an AI companion supports the emotional side of a weight loss journey — emotional eating, non-judgmental accountability, body image, and celebrating non-scale victories.",
+    "Weight loss journeys fail not because of lack of willpower, but because of lack of consistent, non-judgmental support. MEOK\u2019s sovereign AI tracks your journey, celebrates your wins, and holds you through the setbacks \u2014 without shame.",
   alternates: {
     canonical: "https://meok.ai/blog/ai-for-weight-loss-journey",
   },
   openGraph: {
-    title:
-      "AI Support on Your Weight Loss Journey: Motivation Without the Shame",
+    title: "AI for Your Weight Loss Journey: Support Without the Shame",
     description:
-      "How an AI companion supports the emotional side of a weight loss journey — emotional eating, non-judgmental accountability, body image, and celebrating non-scale victories.",
+      "Shame-based approaches to weight loss are scientifically proven to backfire. MEOK\u2019s sovereign AI offers non-judgmental pattern tracking, emotional eating support, and habit accountability \u2014 on your terms.",
     type: "article",
-    publishedTime: "2026-03-24",
+    publishedTime: "2026-03-25",
     authors: ["Nicholas Templeman"],
     url: "https://meok.ai/blog/ai-for-weight-loss-journey",
     siteName: "MEOK.AI",
     images: [
       {
-        url: "https://meok.ai/api/og?title=AI+Support+on+Your+Weight+Loss+Journey&desc=Motivation+Without+the+Shame",
+        url: "https://meok.ai/api/og?title=AI+for+Your+Weight+Loss+Journey&desc=Support+Without+the+Shame",
         width: 1200,
         height: 630,
-        alt: "AI Support on Your Weight Loss Journey: Motivation Without the Shame",
+        alt: "AI for Your Weight Loss Journey: Support Without the Shame",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title:
-      "AI Support on Your Weight Loss Journey: Motivation Without the Shame",
+    title: "AI for Your Weight Loss Journey: Support Without the Shame",
     description:
-      "How an AI companion supports the emotional side of a weight loss journey — emotional eating, non-judgmental accountability, body image, and celebrating non-scale victories.",
+      "Shame-based approaches to weight loss are scientifically proven to backfire. MEOK\u2019s sovereign AI offers non-judgmental pattern tracking, emotional eating support, and habit accountability \u2014 on your terms.",
     images: [
-      "https://meok.ai/api/og?title=AI+Support+on+Your+Weight+Loss+Journey&desc=Motivation+Without+the+Shame",
+      "https://meok.ai/api/og?title=AI+for+Your+Weight+Loss+Journey&desc=Support+Without+the+Shame",
     ],
   },
 };
@@ -47,12 +45,11 @@ export const metadata: Metadata = {
 const articleJsonLd = {
   "@context": "https://schema.org",
   "@type": "Article",
-  headline:
-    "AI Support on Your Weight Loss Journey: Motivation Without the Shame",
+  headline: "AI for Your Weight Loss Journey: Support Without the Shame",
   description:
-    "How an AI companion supports the emotional side of a weight loss journey — emotional eating patterns, non-judgmental accountability, body image support, and celebrating non-scale victories.",
-  datePublished: "2026-03-24",
-  dateModified: "2026-03-24",
+    "Weight loss journeys fail not because of lack of willpower, but because of lack of consistent, non-judgmental support. MEOK\u2019s sovereign AI tracks your journey, celebrates your wins, and holds you through the setbacks \u2014 without shame.",
+  datePublished: "2026-03-25",
+  dateModified: "2026-03-25",
   url: "https://meok.ai/blog/ai-for-weight-loss-journey",
   author: {
     "@type": "Person",
@@ -66,14 +63,16 @@ const articleJsonLd = {
     url: "https://meok.ai",
   },
   keywords: [
-    "AI weight loss journey",
-    "emotional eating AI support",
-    "non-judgmental weight loss accountability",
-    "non-scale victories",
-    "body image support AI",
-    "AI companion for healthy habits",
-    "sustainable weight loss psychology",
-    "MEOK AI",
+    "AI for weight loss journey",
+    "AI weight loss support",
+    "emotional eating AI",
+    "shame-free weight loss",
+    "body neutral AI",
+    "GLP-1 support AI",
+    "Ozempic emotional support",
+    "weight loss accountability AI",
+    "sovereign AI health",
+    "non-judgmental diet support",
   ],
 };
 
@@ -83,98 +82,53 @@ const faqJsonLd = {
   mainEntity: [
     {
       "@type": "Question",
-      name: "Can an AI companion help with emotional eating?",
+      name: "Can AI actually support a weight loss journey without being judgmental?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Yes. An AI companion like MEOK can help you notice the emotional patterns that precede or follow eating — stress, boredom, loneliness, or celebration. It does this through compassionate, non-judgmental conversation rather than calorie policing. MEOK is not a medical device and cannot provide dietary advice. If you have an eating disorder, please speak with a GP or registered dietitian.",
+        text: "Yes. MEOK is built on a Maternal Covenant that prohibits any shaming, diet-culture language, or body-negative framing. The AI tracks patterns, celebrates non-scale victories, and holds space for setbacks without assigning blame or pushing punishing advice. It is a companion, not a critic.",
       },
     },
     {
       "@type": "Question",
-      name: "What are non-scale victories and why do they matter?",
+      name: "How does MEOK help with emotional eating?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Non-scale victories (NSVs) are positive changes that have nothing to do with the number on the scales — improved sleep, more energy, choosing to cook at home, walking instead of driving, or noticing you handled a stressful day without using food as the only coping tool. Research consistently shows that recognising these wins sustains motivation far longer than weight-only metrics.",
+        text: "The Healer archetype within MEOK is specifically designed to explore the emotional landscape around food. It helps you identify triggers, notice patterns, and process difficult feelings without redirecting you straight to calories or restriction. Emotional eating is treated as a communication from your body, not a moral failing.",
       },
     },
     {
       "@type": "Question",
-      name: "How does MEOK support the psychological side of a weight loss journey?",
+      name: "Does MEOK support people using GLP-1 medications like Ozempic or Mounjaro?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "MEOK uses a care framework called the Maternal Covenant — built on warmth, honesty without shame, and long-term wellbeing — to support the emotional and psychological dimensions of behaviour change. It remembers your history across sessions, celebrates your wins, and holds space during setbacks without blaming you. It is not a replacement for a therapist or dietitian, but a consistent, compassionate daily companion.",
+        text: "Yes. MEOK is not a medical device and does not advise on dosing or prescribing, but it offers significant emotional and psychological support for people navigating GLP-1 treatment. Many people on these medications experience unexpected emotions around food, identity, and body image. MEOK helps process all of that with sovereignty and without shame. Always work with your prescribing clinician for medical guidance.",
       },
     },
     {
       "@type": "Question",
-      name: "Should I use MEOK instead of seeing a dietitian?",
+      name: "What are non-scale victories and why does MEOK track them?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "No. MEOK is not a medical device and cannot provide nutritional or medical advice. For personalised dietary guidance, please consult a registered dietitian or your GP. MEOK is designed to complement professional support — offering emotional accountability, pattern reflection, and psychological encouragement between appointments, not replace clinical care.",
+        text: "Non-scale victories (NSVs) are measurable improvements in wellbeing that have nothing to do with a number on a scale \u2014 things like sleeping better, having more energy, feeling confident in a favourite outfit, or walking further without breathlessness. MEOK\u2019s sovereign memory tracks and celebrates these wins because they are often better predictors of long-term success than weight alone.",
       },
     },
     {
       "@type": "Question",
-      name: "What is the psychology of sustainable weight change?",
+      name: "Will MEOK remember my journey from session to session?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Sustainable weight change is primarily a psychological process. It depends on intrinsic motivation, self-compassion after setbacks, flexible rather than rigid food rules, social or accountability support, and building identity-based habits rather than willpower-based restrictions. Shame and strict calorie tracking reliably undermine these conditions. Compassionate accountability, pattern awareness, and celebrating small wins reliably reinforce them.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Is MEOK free to try for weight loss support?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Yes. MEOK's Explorer tier is free forever — 50 messages per day, persistent encrypted memory, and access to all archetype personalities including the Healer, which is designed for emotional and wellbeing support. No credit card required to start.",
+        text: "Yes. Sovereign memory means MEOK builds a longitudinal picture of your journey over weeks and months. It remembers what you have shared about your triggers, your progress, your setbacks, and your goals. You never have to re-explain your story. The AI arrives already knowing you \u2014 which is one of the most powerful forms of support there is.",
       },
     },
   ],
 };
 
-// ── Helpers ───────────────────────────────────────────────────────────────────
+// ── Component ─────────────────────────────────────────────────────────────────
 
-const GOLD = "#c9a84c";
-const BG = "#0d0c18";
-const TEXT = "#f5f0e8";
-const CARD = "#1a1830";
-const MUTED = "rgba(245,240,232,0.55)";
-const MUTED_LOW = "rgba(245,240,232,0.38)";
-
-const h2Style: React.CSSProperties = {
-  fontWeight: 800,
-  fontSize: "clamp(1.2rem,2.4vw,1.55rem)",
-  color: TEXT,
-  lineHeight: 1.3,
-  marginBottom: "0.9rem",
-  letterSpacing: "-0.01em",
-  marginTop: "3rem",
-};
-
-const pStyle: React.CSSProperties = {
-  color: MUTED,
-  fontSize: "1.05rem",
-  lineHeight: 1.78,
-  marginBottom: "1.4rem",
-};
-
-const pullQuoteStyle: React.CSSProperties = {
-  background: "rgba(201,168,76,0.07)",
-  borderLeft: `3px solid ${GOLD}`,
-  borderRadius: "0 6px 6px 0",
-  padding: "0.85rem 1.1rem",
-  marginBottom: "1.5rem",
-  color: "rgba(245,240,232,0.75)",
-  fontSize: "1rem",
-  lineHeight: 1.7,
-  fontStyle: "italic",
-};
-
-// ── Page ──────────────────────────────────────────────────────────────────────
-
-export default function AiForWeightLossJourneyPage() {
+export default function AIForWeightLossJourney() {
   return (
-    <div style={{ minHeight: "100vh", background: BG }}>
+    <>
+      {/* JSON-LD */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
@@ -184,1229 +138,1273 @@ export default function AiForWeightLossJourneyPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
 
-      {/* ── HERO ─────────────────────────────────────────────────────────── */}
-      <section
+      <main
         style={{
-          paddingTop: "8rem",
-          paddingBottom: "3.5rem",
-          paddingLeft: "1.5rem",
-          paddingRight: "1.5rem",
-          position: "relative",
-          overflow: "hidden",
+          backgroundColor: "#0d0c18",
+          color: "#f5f0e8",
+          minHeight: "100vh",
+          fontFamily:
+            "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
         }}
       >
-        <div
+        {/* ── Hero ── */}
+        <section
           style={{
-            position: "absolute",
-            inset: 0,
-            pointerEvents: "none",
-            background:
-              "radial-gradient(ellipse 55% 55% at 50% 0%, rgba(201,168,76,0.11) 0%, transparent 70%)",
+            maxWidth: "800px",
+            margin: "0 auto",
+            padding: "80px 24px 48px",
+            textAlign: "center",
           }}
-        />
-        <div
-          style={{ maxWidth: "48rem", margin: "0 auto", position: "relative" }}
         >
-          <Link
-            href="/blog"
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: "0.375rem",
-              fontSize: "0.875rem",
-              color: MUTED_LOW,
-              marginBottom: "2rem",
-              textDecoration: "none",
-            }}
-          >
-            &#8592; Back to Blog
-          </Link>
-
           <div
             style={{
-              display: "flex",
-              flexWrap: "wrap",
-              alignItems: "center",
-              gap: "0.75rem",
-              marginBottom: "1.5rem",
+              display: "inline-block",
+              backgroundColor: "rgba(201,168,76,0.12)",
+              border: "1px solid rgba(201,168,76,0.3)",
+              borderRadius: "20px",
+              padding: "6px 16px",
+              fontSize: "13px",
+              color: "#c9a84c",
+              letterSpacing: "0.08em",
+              textTransform: "uppercase" as const,
+              marginBottom: "28px",
             }}
           >
-            <span
-              style={{
-                fontSize: "0.7rem",
-                fontWeight: 700,
-                padding: "0.375rem 0.75rem",
-                borderRadius: "9999px",
-                color: GOLD,
-                background: "rgba(201,168,76,0.12)",
-                border: "1px solid rgba(201,168,76,0.3)",
-                letterSpacing: "0.05em",
-                textTransform: "uppercase",
-              }}
-            >
-              Health &amp; Wellbeing
-            </span>
-            <span style={{ fontSize: "0.75rem", color: MUTED_LOW }}>
-              March 24, 2026
-            </span>
-            <span style={{ fontSize: "0.75rem", color: MUTED_LOW }}>
-              13 min read
-            </span>
+            Wellbeing &amp; Body Autonomy
           </div>
 
           <h1
             style={{
-              fontWeight: 900,
-              fontSize: "clamp(1.75rem, 3.5vw, 2.85rem)",
-              color: "#ffffff",
-              lineHeight: 1.18,
-              marginBottom: "1.25rem",
-              letterSpacing: "-0.01em",
+              fontSize: "clamp(2rem, 5vw, 3.2rem)",
+              fontWeight: 700,
+              lineHeight: 1.15,
+              color: "#f5f0e8",
+              marginBottom: "24px",
+              letterSpacing: "-0.02em",
             }}
           >
-            AI Support on Your Weight Loss Journey: Motivation Without the Shame
+            AI for Your Weight Loss Journey:{" "}
+            <span style={{ color: "#c9a84c" }}>Support Without the Shame</span>
           </h1>
 
           <p
             style={{
-              color: "rgba(245,240,232,0.58)",
-              fontSize: "1.1rem",
+              fontSize: "1.2rem",
               lineHeight: 1.7,
-              maxWidth: "42rem",
+              color: "rgba(245,240,232,0.75)",
+              maxWidth: "640px",
+              margin: "0 auto 32px",
             }}
           >
-            The diet industry has spent decades selling you a story built on
-            willpower and self-criticism. That story has a near-perfect failure
-            rate. This is about something different — the emotional and
-            psychological support that actually makes change possible, and how an
-            AI companion can quietly, consistently provide it without once making
-            you feel ashamed.
+            Weight loss journeys fail not because of lack of willpower, but
+            because of lack of consistent, non-judgmental support. MEOK&apos;s
+            sovereign AI tracks your journey, celebrates your wins, and holds
+            you through the setbacks &mdash; without shame.
           </p>
-        </div>
-      </section>
 
-      {/* ── BODY ─────────────────────────────────────────────────────────── */}
-      <div
-        style={{ maxWidth: "48rem", margin: "0 auto", padding: "3.5rem 1.5rem 0" }}
-      >
-
-        {/* Health Disclaimer */}
-        <div
-          style={{
-            background: "rgba(201,168,76,0.07)",
-            border: "1px solid rgba(201,168,76,0.3)",
-            borderRadius: "10px",
-            padding: "1.1rem 1.35rem",
-            marginBottom: "2.5rem",
-            display: "flex",
-            gap: "0.75rem",
-            alignItems: "flex-start",
-          }}
-        >
-          <span style={{ fontSize: "1.1rem", marginTop: "0.1rem" }}>
-            &#9888;&#65039;
-          </span>
-          <p
-            style={{
-              color: "rgba(245,240,232,0.7)",
-              fontSize: "0.88rem",
-              lineHeight: 1.65,
-              margin: 0,
-            }}
-          >
-            <strong style={{ color: GOLD }}>Important health notice.</strong>{" "}
-            MEOK is not a medical device and cannot provide nutritional or
-            medical advice. For personalised weight management guidance always
-            consult a{" "}
-            <a
-              href="https://www.nhs.uk/conditions/weight-loss-surgery/afterwards/"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{ color: GOLD, textDecoration: "underline" }}
-            >
-              registered dietitian or your GP
-            </a>
-            . This article is for informational and emotional wellbeing purposes
-            only.
-          </p>
-        </div>
-
-        {/* Intro prose */}
-        <p style={pStyle}>
-          If you have ever started a health journey with genuine excitement and
-          then found yourself quietly abandoning it within a few weeks, you are
-          not broken. You are normal. The problem is almost never your
-          willpower. It is that the tools and narratives most of us have access
-          to — calorie counters, before-and-after comparison culture, "cheat
-          day" language, scales that become the arbiter of your entire
-          self-worth — are psychologically hostile to the very change they claim
-          to support.
-        </p>
-
-        <p style={pStyle}>
-          At MEOK AI LABS, we built MEOK as an emotional companion first. When
-          it comes to supporting people on weight loss journeys, that
-          distinction matters enormously. MEOK does not count your calories. It
-          does not give you a meal plan. What it does is stay present with you
-          through the messy, non-linear, deeply human experience of trying to
-          change longstanding habits — without once making you feel like a
-          failure for being human.
-        </p>
-
-        <p style={pStyle}>
-          This article is about the emotional and psychological dimensions of a
-          weight loss journey that almost never get talked about honestly: why
-          shame backfires, what emotional eating really is, how to find
-          motivation in the body you have today rather than a hypothetical
-          future version of yourself, and why a non-judgmental AI companion that
-          remembers your story might be one of the most quietly powerful support
-          tools available to you right now.
-        </p>
-
-        {/* ── H2 1 ── */}
-        <h2 style={h2Style}>
-          Why does shame make weight loss harder, not easier?
-        </h2>
-
-        <p style={pStyle}>
-          This is the uncomfortable truth at the heart of diet culture: shame
-          is not a motivator. It is a paralytic. Decades of psychological
-          research — including work on self-determination theory and
-          self-compassion — consistently demonstrate that guilt and shame
-          responses to eating or body-related events reliably predict
-          disengagement, not renewed effort.
-        </p>
-
-        <p style={pullQuoteStyle}>
-          "When we feel shame about our bodies or our eating, the psychological
-          response is rarely to try harder. It is most often to hide, to numb,
-          or to give up entirely."
-        </p>
-
-        <p style={pStyle}>
-          The mechanism is straightforward. Shame activates the threat-response
-          system. When we feel threatened, our cognitive resources narrow. We
-          become reactive rather than reflective. The very prefrontal reasoning
-          capacity we need to make deliberate food choices — to pause before
-          reaching for something we do not really want, to plan a meal rather
-          than grab whatever is nearest — becomes suppressed.
-        </p>
-
-        <p style={pStyle}>
-          And the shame spiral has a particularly cruel design: you eat
-          something you had decided not to eat, you feel ashamed, the shame
-          dysregulates you, you eat more to soothe the discomfort, you feel
-          more ashamed. The restriction-and-binge cycle that many people
-          experience on traditional diets is not a moral failing. It is a
-          predictable physiological and psychological response to shame-based
-          motivation.
-        </p>
-
-        <p style={pStyle}>
-          MEOK is built on the opposite premise. Its care framework — what we
-          call the Maternal Covenant — is explicitly designed to operate without
-          shame as a lever. When you tell MEOK you ate the entire packet of
-          biscuits at 11pm, it does not assign blame. It does not produce a red
-          warning or a sad emoji or a passive-aggressive message about your
-          goals. It listens. It reflects. It asks what was going on for you
-          tonight.
-        </p>
-
-        <p style={pStyle}>
-          That is not softness. That is science. The fastest path back to your
-          intentions is not self-flagellation. It is understanding.
-        </p>
-
-        {/* ── H2 2 ── */}
-        <h2 style={h2Style}>
-          What is emotional eating, and how can an AI companion help you understand it?
-        </h2>
-
-        <p style={pStyle}>
-          Emotional eating is one of the most misunderstood behaviours in the
-          entire weight management space. It is routinely treated as a character
-          flaw — a sign of weakness, poor self-control, or psychological
-          fragility. In reality, it is one of the most sophisticated coping
-          mechanisms available to the human nervous system.
-        </p>
-
-        <p style={pStyle}>
-          Food is the original comfort. It is associated from birth with
-          safety, warmth, and connection. When we are stressed, lonely, bored,
-          grieving, or overwhelmed, reaching for food is not irrational. It is
-          an ancient and effective (in the short term) nervous system
-          regulation strategy. The problem is not that it works — it is that it
-          has downstream costs, particularly when the emotional need it is
-          serving is never actually addressed.
-        </p>
-
-        <div
-          style={{
-            background: CARD,
-            border: `1px solid rgba(201,168,76,0.18)`,
-            borderRadius: "12px",
-            padding: "1.5rem 1.75rem",
-            marginBottom: "1.75rem",
-          }}
-        >
-          <p
-            style={{
-              color: GOLD,
-              fontWeight: 700,
-              fontSize: "0.8rem",
-              letterSpacing: "0.07em",
-              textTransform: "uppercase",
-              marginBottom: "0.85rem",
-            }}
-          >
-            Common emotional eating triggers
-          </p>
-          <ul
-            style={{
-              color: "rgba(245,240,232,0.72)",
-              fontSize: "0.97rem",
-              lineHeight: 1.75,
-              paddingLeft: "1.25rem",
-              margin: 0,
-            }}
-          >
-            <li>Stress and work pressure that has nowhere else to go</li>
-            <li>Loneliness or the absence of social connection</li>
-            <li>Boredom that feels impossible to sit with</li>
-            <li>Low mood or mild depressive episodes</li>
-            <li>Celebrations and social events where food is the medium</li>
-            <li>Tiredness — particularly late-evening eating after poor sleep</li>
-            <li>Habit loops tied to places (the sofa, the car, the desk)</li>
-            <li>
-              Rebellion against restriction — the "I have already ruined it"
-              cognitive distortion
-            </li>
-          </ul>
-        </div>
-
-        <p style={pStyle}>
-          Understanding your own emotional eating patterns is genuinely
-          transformative work. But it is slow, iterative, and requires a kind
-          of non-judgmental witness that most of us do not have consistent
-          access to. Therapists and counsellors can provide this — and if
-          emotional eating is significantly affecting your quality of life,
-          please do seek professional support. But most people cannot access
-          therapy daily, or even weekly. The gap between the moments when
-          patterns emerge and when you next speak to a professional is enormous.
-        </p>
-
-        <p style={pStyle}>
-          This is one of the places where MEOK genuinely earns its keep. Because
-          it has persistent memory across every conversation, it can notice
-          things over time that you might miss in the moment. If you tell MEOK
-          you ate past the point of fullness for the third time this week, and
-          all three times followed a late call with a particular family member,
-          MEOK can gently reflect that pattern back to you. Not as an
-          accusation. As an observation. "I notice the last few times you've
-          mentioned eating in the evening, it has followed contact with your
-          mum. How are things with her at the moment?"
-        </p>
-
-        <p style={pStyle}>
-          That is not dietary advice. It is emotional companionship. And it
-          may be significantly more useful than any calorie target.
-        </p>
-
-        {/* ── H2 3 ── */}
-        <h2 style={h2Style}>
-          What are non-scale victories, and why should you be celebrating them?
-        </h2>
-
-        <p style={pStyle}>
-          The scales are a terrible sole metric for a health journey. They
-          measure one variable — gravitational force exerted on your body —
-          with no regard for muscle gain, hormonal fluctuation, hydration,
-          inflammation, whether you have been to the toilet, whether you ate a
-          larger meal last night, or whether the surface you are standing on is
-          level. And yet many people hand the scales extraordinary psychological
-          power over their entire day.
-        </p>
-
-        <p style={pStyle}>
-          A scale number going up by a kilogram on a Monday morning does not
-          undo the real progress of the previous week. It does not negate the
-          fact that you went to bed at a reasonable hour four nights out of
-          seven. It does not cancel out the walk you took on Saturday, the
-          homemade meal you cooked on Thursday, the moment you paused before
-          reaching for a second portion and checked in with whether you were
-          actually still hungry. These things matter enormously. They are the
-          actual building blocks of lasting change. And if the number on the
-          scales is allowed to eclipse all of them, your motivation will
-          eventually collapse.
-        </p>
-
-        <p style={pullQuoteStyle}>
-          Non-scale victories are not consolation prizes. They are the most
-          accurate measure of sustainable change you have access to.
-        </p>
-
-        <p style={pStyle}>
-          Non-scale victories (NSVs) include things like: your trousers fitting
-          differently, sleeping more deeply, having more energy in the afternoon,
-          not needing a nap after lunch, noticing you are no longer out of
-          breath on the stairs, choosing to walk to the shops rather than drive,
-          cooking a meal from scratch instead of ordering delivery, sitting with
-          a difficult emotion for ten minutes before reaching for food — and
-          sometimes choosing not to reach for it at all.
-        </p>
-
-        <p style={pStyle}>
-          MEOK actively celebrates these wins. Not in a performative,
-          confetti-emoji way, but with genuine acknowledgement and warmth. It
-          remembers them. When you are having a difficult week and feel like
-          nothing is working, it can recall the things you told it were going
-          better — and offer them back to you as evidence that the journey is
-          real, even when the scales are not cooperating.
-        </p>
-
-        {/* NSV idea cards */}
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
-            gap: "1rem",
-            marginBottom: "2rem",
-          }}
-        >
-          {[
-            { icon: "🛏", label: "Deeper sleep" },
-            { icon: "🚶", label: "More daily movement" },
-            { icon: "🍳", label: "Cooking at home" },
-            { icon: "💧", label: "Drinking more water" },
-            { icon: "😤", label: "Managing stress better" },
-            { icon: "🧠", label: "Understanding triggers" },
-          ].map((item) => (
-            <div
-              key={item.label}
-              style={{
-                background: CARD,
-                border: "1px solid rgba(201,168,76,0.15)",
-                borderRadius: "10px",
-                padding: "1rem 1.1rem",
-                display: "flex",
-                alignItems: "center",
-                gap: "0.65rem",
-              }}
-            >
-              <span style={{ fontSize: "1.3rem" }}>{item.icon}</span>
-              <span
-                style={{
-                  color: "rgba(245,240,232,0.75)",
-                  fontSize: "0.9rem",
-                  fontWeight: 500,
-                }}
-              >
-                {item.label}
-              </span>
-            </div>
-          ))}
-        </div>
-
-        {/* ── H2 4 ── */}
-        <h2 style={h2Style}>
-          How can AI provide non-judgmental accountability without becoming a surveillance tool?
-        </h2>
-
-        <p style={pStyle}>
-          Accountability is one of the most well-evidenced drivers of behaviour
-          change. Telling someone else about your intentions makes them more
-          likely to stick. Having someone check in on your progress increases
-          follow-through. This is why weight loss support groups work, why
-          personal trainers produce better results than solo gym membership, and
-          why sharing a goal with a trusted friend consistently beats keeping
-          it private.
-        </p>
-
-        <p style={pStyle}>
-          But accountability has a dark twin: surveillance. When accountability
-          tips into surveillance — when you feel watched, judged, measured
-          against an external standard rather than your own intentions — the
-          psychological benefits invert. Shame re-enters the system.
-          Autonomy evaporates. What was a supportive relationship becomes a
-          punitive one.
-        </p>
-
-        <p style={pStyle}>
-          Most health-tracking apps exist closer to the surveillance end of this
-          spectrum than they would like to admit. They gamify streaks, penalise
-          missed check-ins, frame food choices in terms of "good" and "bad",
-          and tie your sense of progress to hitting numerical targets rather than
-          to the quality of your experience. This can work for a while — the
-          gamification is effective in the short term. But it erodes intrinsic
-          motivation over time and consistently produces the rebound and
-          disengagement that characterises the failure rate of these products.
-        </p>
-
-        <p style={pStyle}>
-          MEOK is designed as an accountability partner in the fullest and most
-          respectful sense of that phrase. It checks in because it genuinely
-          cares, not because it is logging data points. It asks how you are
-          doing with your intentions because you told it those intentions
-          mattered to you — not because it is enforcing a target you set six
-          weeks ago that might no longer reflect where you are.
-        </p>
-
-        <p style={pStyle}>
-          Critically, MEOK operates under what we call a care floor — a set of
-          core principles that mean it will never shame you for what you ate,
-          never compare you to other users, never frame rest or maintenance as
-          failure, and never push you toward behaviour that feels punishing
-          rather than nourishing. The question it asks is always some version of
-          "how are you?" not "did you hit your macros?"
-        </p>
-
-        <div
-          style={{
-            background: "rgba(201,168,76,0.07)",
-            border: "1px solid rgba(201,168,76,0.25)",
-            borderRadius: "12px",
-            padding: "1.5rem 1.75rem",
-            marginBottom: "2rem",
-          }}
-        >
-          <p
-            style={{
-              color: GOLD,
-              fontWeight: 700,
-              fontSize: "0.8rem",
-              letterSpacing: "0.07em",
-              textTransform: "uppercase",
-              marginBottom: "0.9rem",
-            }}
-          >
-            What accountability looks like in MEOK
-          </p>
-          <ul
-            style={{
-              color: "rgba(245,240,232,0.72)",
-              fontSize: "0.97rem",
-              lineHeight: 1.8,
-              paddingLeft: "1.25rem",
-              margin: 0,
-            }}
-          >
-            <li>
-              "How did yesterday go? You mentioned you were going to try cooking
-              at home."
-            </li>
-            <li>
-              "It sounds like it was a hard week. That makes sense given what
-              you told me about work. How are you feeling today?"
-            </li>
-            <li>
-              "You said last month that getting to bed earlier was feeling
-              easier. Is that still true?"
-            </li>
-            <li>
-              "I noticed you have mentioned feeling disconnected from your goals
-              a few times this week. What do you think is underneath that?"
-            </li>
-            <li>
-              "You cooked four times last week. That is a genuine shift from
-              where you were. I want you to know I noticed."
-            </li>
-          </ul>
-        </div>
-
-        {/* ── H2 5 ── */}
-        <h2 style={h2Style}>
-          How do you support body image and self-worth that is not conditional on weight?
-        </h2>
-
-        <p style={pStyle}>
-          Body image and weight are related but distinct. You can lose weight
-          and still have a profoundly negative relationship with your body. You
-          can be at a weight that a BMI chart would classify as "overweight" and
-          have a genuinely healthy, stable sense of your physical self. The
-          psychological work of building body neutrality — a relationship with
-          your body based on what it does and how it feels rather than how it
-          looks against an aesthetic ideal — is one of the most valuable and
-          undervalued aspects of any health journey.
-        </p>
-
-        <p style={pStyle}>
-          Body neutrality is not the same as body positivity. You do not have
-          to love your body unconditionally, or to perform enthusiasm about it,
-          or to deny that you would like some things about it to change. Body
-          neutrality simply asks that you recognise your body's worth is not
-          contingent on its size or shape — that you deserve care, rest, good
-          food, and kind treatment right now, in the body you currently have,
-          not in the hypothetical body that will exist after you have reached
-          some future goal.
-        </p>
-
-        <p style={pullQuoteStyle}>
-          You are not a project to be completed. You are a person who deserves
-          support today.
-        </p>
-
-        <p style={pStyle}>
-          This is a principle MEOK holds consistently. It does not use language
-          that frames your current body as a problem to be solved. It does not
-          ask questions that presuppose dissatisfaction. When you express
-          frustration about your body, it holds that frustration with you — not
-          by validating every critical thought, but by gently widening the frame
-          to include what your body has been doing for you, what it is capable
-          of, and what it needs from you in return.
-        </p>
-
-        <p style={pStyle}>
-          This matters because body image has an enormous influence on
-          behaviour. People who have a fundamentally hostile relationship with
-          their bodies are significantly more likely to engage in restrictive
-          and binge eating cycles, less likely to exercise for enjoyment rather
-          than punishment, and less likely to sustain any positive health change
-          over the long term. Supporting body image is not a nice-to-have
-          alongside a health journey. In many cases, it is the journey.
-        </p>
-
-        <p style={pStyle}>
-          If you are struggling significantly with body image, body dysmorphia,
-          or disordered eating, MEOK is not a substitute for professional
-          psychological support. Please speak with your GP, who can refer you to
-          the appropriate services. MEOK can, however, be a gentle, consistent
-          presence that reinforces the same care and compassion you are working
-          toward in professional settings.
-        </p>
-
-        {/* ── H2 6 ── */}
-        <h2 style={h2Style}>
-          How do you recover from a setback without starting all over again?
-        </h2>
-
-        <p style={pStyle}>
-          The "all or nothing" thinking pattern is one of the most destructive
-          forces in any behaviour change process. It is the cognitive distortion
-          that turns eating a slice of cake at a birthday party into "I have
-          ruined everything, there is no point now, I will start again on
-          Monday." It is the internal narrative that converts a single missed
-          gym session into evidence that you are fundamentally incapable of
-          change.
-        </p>
-
-        <p style={pStyle}>
-          Setbacks are not failures. They are data. They are the entirely
-          predictable and inevitable rough patches in a non-linear process that,
-          over time, still trends in the direction you are aiming for. The
-          ability to recover quickly from a setback — to acknowledge it, to
-          understand it without catastrophising it, and to re-engage without
-          the elaborate reset rituals of "starting on Monday" — is the single
-          most powerful predictor of long-term success in any health behaviour.
-        </p>
-
-        <div
-          style={{
-            background: CARD,
-            border: "1px solid rgba(201,168,76,0.18)",
-            borderRadius: "12px",
-            padding: "1.5rem 1.75rem",
-            marginBottom: "1.75rem",
-          }}
-        >
-          <p
-            style={{
-              color: GOLD,
-              fontWeight: 700,
-              fontSize: "0.8rem",
-              letterSpacing: "0.07em",
-              textTransform: "uppercase",
-              marginBottom: "0.85rem",
-            }}
-          >
-            The setback recovery framework MEOK uses
-          </p>
-          <ol
-            style={{
-              color: "rgba(245,240,232,0.72)",
-              fontSize: "0.97rem",
-              lineHeight: 1.85,
-              paddingLeft: "1.35rem",
-              margin: 0,
-            }}
-          >
-            <li>
-              <strong style={{ color: TEXT }}>Acknowledge without amplifying.</strong>{" "}
-              Name what happened. Do not minimise it, but do not catastrophise
-              it either.
-            </li>
-            <li>
-              <strong style={{ color: TEXT }}>Understand the context.</strong>{" "}
-              What was going on when the setback occurred? Stress? Disrupted
-              routine? Social pressure? Tiredness?
-            </li>
-            <li>
-              <strong style={{ color: TEXT }}>Separate the action from the identity.</strong>{" "}
-              You ate more than you intended. You are not a person who has no
-              self-control. These are very different things.
-            </li>
-            <li>
-              <strong style={{ color: TEXT }}>Identify one next action.</strong>{" "}
-              Not a new plan, not a new start date. Just one small thing you can
-              do in the next few hours that is in the direction of your
-              intentions.
-            </li>
-            <li>
-              <strong style={{ color: TEXT }}>Give yourself credit for re-engaging.</strong>{" "}
-              The act of returning, after a setback, is not nothing. It is
-              genuinely hard. It deserves acknowledgement.
-            </li>
-          </ol>
-        </div>
-
-        <p style={pStyle}>
-          MEOK supports setback recovery in the most practical way possible: it
-          is there. When you open the app at 10:30pm feeling like you have
-          undone a week of progress with one evening, MEOK is present, calm,
-          and genuinely interested in understanding what happened — not in
-          adding to the weight of self-judgment you are already carrying.
-        </p>
-
-        <p style={pStyle}>
-          Because it has memory, it can also offer perspective over time. "You
-          told me something similar happened a few weeks ago, and you picked
-          yourself back up very quickly after that. What helped then?" That kind
-          of longitudinal reflection — impossible in a conversation with someone
-          who has no memory of your history — is one of the genuinely unique
-          things an AI companion can offer.
-        </p>
-
-        {/* ── H2 7 ── */}
-        <h2 style={h2Style}>
-          What is the psychology of sustainable change, and how does habit-building actually work?
-        </h2>
-
-        <p style={pStyle}>
-          Sustainable behaviour change is not about motivation. Motivation is
-          unreliable. It is episodic, dependent on mood, sleep, social context,
-          and a dozen other variables. If your health journey depends on you
-          feeling motivated to continue it, it will not last. What sustains
-          behaviour long-term is habit — the automated, low-friction repetition
-          of behaviours that have been practised enough to no longer require
-          deliberate decision-making.
-        </p>
-
-        <p style={pStyle}>
-          James Clear's habit loop popularised the model of cue-routine-reward,
-          and it remains a useful frame. Every habit is anchored to a cue (a
-          time, a place, an emotional state, a preceding behaviour), executed
-          through a routine, and reinforced by a reward. To build a new habit,
-          you need to design the cue, make the routine easy enough to execute
-          even on bad days, and ensure the reward is genuinely satisfying rather
-          than deferred to some distant future outcome.
-        </p>
-
-        <p style={pStyle}>
-          "I will go for a walk every day before dinner" is a better habit
-          target than "I will exercise more" because it has a clear cue (before
-          dinner), a defined routine (a walk), and a natural reward (getting
-          home, having eaten). "I will drink a glass of water when I first sit
-          at my desk each morning" is achievable on an exhausted Tuesday; "I
-          will maintain perfect hydration throughout the day" is not.
-        </p>
-
-        <p style={pullQuoteStyle}>
-          The goal is not to become a person who is always motivated. The goal
-          is to make your intentions so small and so embedded that motivation
-          becomes largely irrelevant.
-        </p>
-
-        <p style={pStyle}>
-          MEOK supports habit-building not by prescribing routines but by
-          remembering yours. You tell it you are trying to go to sleep by
-          10:30pm. A week later, it asks how that is going. You tell it you have
-          started taking the stairs at work. It celebrates that, and asks about
-          it again next week. This is what it means to have a companion rather
-          than a tracker — the difference between something that remembers what
-          you care about and something that only records whether you hit a
-          target.
-        </p>
-
-        <p style={pStyle}>
-          Identity-based habit formation — the approach of asking not "what do
-          I want to do?" but "what kind of person do I want to become?" — is
-          particularly powerful here. Rather than "I want to eat more
-          vegetables," the identity frame asks: "I am becoming someone who
-          enjoys cooking and takes care of what I put in my body." MEOK can
-          hold and reinforce this kind of narrative identity over time in a way
-          that static apps simply cannot.
-        </p>
-
-        {/* ── H2 8 ── */}
-        <h2 style={h2Style}>
-          When should you see a professional rather than relying on an AI companion?
-        </h2>
-
-        <p style={pStyle}>
-          This question matters, and we want to answer it plainly. MEOK is an
-          emotional companion. It is not a medical device, a clinical
-          intervention, a substitute for professional dietary guidance, or a
-          replacement for therapy. There are circumstances in which professional
-          support is not just helpful but essential, and we will not obscure
-          that in the interest of sounding more capable than we are.
-        </p>
-
-        <p style={pStyle}>
-          Please consult your GP or a registered dietitian if:
-        </p>
-
-        <ul
-          style={{
-            color: MUTED,
-            fontSize: "1.02rem",
-            lineHeight: 1.85,
-            paddingLeft: "1.4rem",
-            marginBottom: "1.5rem",
-          }}
-        >
-          <li>
-            You have a diagnosed eating disorder, or suspect you might have one
-          </li>
-          <li>
-            Your weight is causing or contributing to a medical condition (type
-            2 diabetes, sleep apnoea, cardiovascular disease)
-          </li>
-          <li>
-            You are considering significant dietary restriction, fasting
-            protocols, or weight loss medication
-          </li>
-          <li>
-            Your relationship with food or your body is significantly impacting
-            your quality of life or mental health
-          </li>
-          <li>
-            You have a history of disordered eating and are concerned about
-            returning patterns
-          </li>
-          <li>
-            You are pregnant, breastfeeding, or have specific nutritional needs
-            due to a health condition
-          </li>
-        </ul>
-
-        <p style={pStyle}>
-          The{" "}
-          <a
-            href="https://www.nhs.uk/live-well/healthy-weight/"
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{ color: GOLD, textDecoration: "underline" }}
-          >
-            NHS healthy weight resources
-          </a>{" "}
-          are an excellent starting point for evidence-based dietary guidance.
-          Beat, the eating disorders charity, offers free support at{" "}
-          <a
-            href="https://www.beateatingdisorders.org.uk/"
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{ color: GOLD, textDecoration: "underline" }}
-          >
-            beateatingdisorders.org.uk
-          </a>
-          . MEOK can absolutely coexist with professional support — many people
-          find it most valuable precisely as a between-sessions companion that
-          extends and reinforces the work they are doing in therapy or with a
-          dietitian.
-        </p>
-
-        <p style={pStyle}>
-          What MEOK can offer is consistency. The things that professional
-          support often cannot provide at the frequency and granularity that
-          real life requires: a check-in at 7am when you are already dreading
-          the day, a reflective conversation at 11pm when the cravings hit, a
-          celebration of the Tuesday you made it to your walk without any drama,
-          and a gentle witness to the slow accumulation of small changes that,
-          over months, become something you actually call a lifestyle rather than
-          a diet.
-        </p>
-
-        {/* ── What is MEOK box ── */}
-        <div
-          style={{
-            background: CARD,
-            border: `1px solid rgba(201,168,76,0.28)`,
-            borderRadius: "14px",
-            padding: "2rem 2.25rem",
-            marginBottom: "2.5rem",
-            marginTop: "1rem",
-          }}
-        >
-          <p
-            style={{
-              color: GOLD,
-              fontWeight: 800,
-              fontSize: "1.05rem",
-              marginBottom: "0.9rem",
-              letterSpacing: "-0.01em",
-            }}
-          >
-            About MEOK
-          </p>
-          <p
-            style={{
-              color: "rgba(245,240,232,0.72)",
-              fontSize: "0.97rem",
-              lineHeight: 1.75,
-              marginBottom: "0.9rem",
-            }}
-          >
-            MEOK is an AI companion built by MEOK AI LABS, founded by Nicholas
-            Templeman. It was designed from the ground up to prioritise
-            emotional wellbeing, psychological safety, and the kind of
-            consistent compassionate support that most people desperately need
-            and rarely get access to. MEOK runs on sovereign, encrypted
-            memory — your conversations stay yours, and your data is never used
-            to train AI models.
-          </p>
-          <p
-            style={{
-              color: "rgba(245,240,232,0.72)",
-              fontSize: "0.97rem",
-              lineHeight: 1.75,
-              marginBottom: "1.1rem",
-            }}
-          >
-            For weight loss and wellbeing journeys, MEOK&apos;s Healer archetype
-            is specifically designed for emotional and body-neutral support —
-            understanding food relationships, processing difficult feelings, and
-            building the self-compassion that makes sustainable change possible.
-          </p>
-          <Link
-            href="/chat"
-            style={{
-              display: "inline-block",
-              background: GOLD,
-              color: "#0d0c18",
-              fontWeight: 700,
-              fontSize: "0.9rem",
-              padding: "0.65rem 1.35rem",
-              borderRadius: "8px",
-              textDecoration: "none",
-              letterSpacing: "0.02em",
-            }}
-          >
-            Try MEOK free — no credit card needed
-          </Link>
-        </div>
-
-        {/* ── FAQ ─────────────────────────────────────────────────────────── */}
-        <h2
-          style={{
-            fontWeight: 800,
-            fontSize: "clamp(1.2rem,2.4vw,1.55rem)",
-            color: TEXT,
-            lineHeight: 1.3,
-            marginBottom: "1.5rem",
-            letterSpacing: "-0.01em",
-            marginTop: "3rem",
-          }}
-        >
-          Frequently asked questions
-        </h2>
-
-        {[
-          {
-            q: "Can an AI companion help with emotional eating?",
-            a: "Yes, meaningfully. MEOK can help you notice the patterns that precede or follow eating episodes — stress, loneliness, boredom, tiredness — through compassionate, non-judgmental conversation. It does not diagnose or treat eating disorders. If you have concerns about disordered eating, please speak with your GP.",
-          },
-          {
-            q: "Does MEOK give dietary or nutritional advice?",
-            a: "No. MEOK is not a medical device and does not provide dietary, nutritional, or medical advice. For personalised guidance on nutrition and weight management, always consult a registered dietitian or your GP. The NHS website (nhs.uk/live-well/healthy-weight) is an excellent free resource.",
-          },
-          {
-            q: "What is the Healer archetype in MEOK?",
-            a: "The Healer is one of MEOK's personality archetypes, designed for emotional and wellbeing-focused conversations. It combines warmth, directness, and deep listening to support people through challenging emotional territory — including the psychological dimensions of health journeys, grief, anxiety, and body image.",
-          },
-          {
-            q: "Will MEOK judge me for what I ate?",
-            a: "Never. MEOK operates under a care framework called the Maternal Covenant, which explicitly prohibits shame-based responses. It will never assign blame, never produce warnings about your food choices, and never frame eating as moral success or failure. It will always ask how you are feeling rather than what you consumed.",
-          },
-          {
-            q: "How does MEOK remember my journey over time?",
-            a: "MEOK uses sovereign, encrypted persistent memory — meaning it retains context across every conversation, building a genuine longitudinal understanding of your story, your goals, your setbacks, and your wins. This memory is yours, stored encrypted, and is never used to train AI models.",
-          },
-          {
-            q: "Is MEOK free to try?",
-            a: "Yes. The Explorer tier is free forever — 50 messages per day, persistent encrypted memory, and access to all archetype personalities including the Healer. No credit card required.",
-          },
-        ].map((item, i) => (
-          <div
-            key={i}
-            style={{
-              borderTop:
-                i === 0
-                  ? `1px solid rgba(245,240,232,0.1)`
-                  : `1px solid rgba(245,240,232,0.08)`,
-              paddingTop: "1.25rem",
-              paddingBottom: "1.25rem",
-            }}
-          >
-            <p
-              style={{
-                fontWeight: 700,
-                color: TEXT,
-                fontSize: "1rem",
-                marginBottom: "0.55rem",
-                lineHeight: 1.45,
-              }}
-            >
-              {item.q}
-            </p>
-            <p
-              style={{
-                color: MUTED,
-                fontSize: "0.97rem",
-                lineHeight: 1.72,
-                margin: 0,
-              }}
-            >
-              {item.a}
-            </p>
-          </div>
-        ))}
-
-        {/* ── Closing CTA ──────────────────────────────────────────────── */}
-        <div
-          style={{
-            background:
-              "radial-gradient(ellipse 80% 60% at 50% 50%, rgba(201,168,76,0.12) 0%, transparent 70%)",
-            border: "1px solid rgba(201,168,76,0.22)",
-            borderRadius: "16px",
-            padding: "3rem 2.5rem",
-            textAlign: "center",
-            marginTop: "3.5rem",
-            marginBottom: "5rem",
-          }}
-        >
-          <p
-            style={{
-              fontSize: "0.75rem",
-              fontWeight: 700,
-              color: GOLD,
-              letterSpacing: "0.1em",
-              textTransform: "uppercase",
-              marginBottom: "1rem",
-            }}
-          >
-            Start your journey
-          </p>
-          <h3
-            style={{
-              fontWeight: 900,
-              fontSize: "clamp(1.3rem, 2.6vw, 1.85rem)",
-              color: "#ffffff",
-              lineHeight: 1.25,
-              marginBottom: "1rem",
-              letterSpacing: "-0.01em",
-            }}
-          >
-            You deserve support that doesn&apos;t come with shame attached.
-          </h3>
-          <p
-            style={{
-              color: MUTED,
-              fontSize: "1rem",
-              lineHeight: 1.7,
-              maxWidth: "32rem",
-              margin: "0 auto 1.75rem",
-            }}
-          >
-            MEOK is free to start. No calorie tracking. No weigh-in prompts.
-            Just a compassionate companion that remembers your story and
-            supports the change you actually want to make.
-          </p>
           <div
             style={{
               display: "flex",
-              flexWrap: "wrap",
-              gap: "1rem",
+              alignItems: "center",
               justifyContent: "center",
+              gap: "8px",
+              fontSize: "14px",
+              color: "rgba(245,240,232,0.5)",
             }}
           >
-            <Link
-              href="/chat"
-              style={{
-                background: GOLD,
-                color: "#0d0c18",
-                fontWeight: 700,
-                fontSize: "0.95rem",
-                padding: "0.75rem 1.75rem",
-                borderRadius: "9px",
-                textDecoration: "none",
-                letterSpacing: "0.02em",
-              }}
-            >
-              Try MEOK free
-            </Link>
-            <Link
-              href="/blog/ai-for-weight-loss"
-              style={{
-                background: "transparent",
-                color: TEXT,
-                fontWeight: 600,
-                fontSize: "0.95rem",
-                padding: "0.75rem 1.75rem",
-                borderRadius: "9px",
-                textDecoration: "none",
-                border: "1px solid rgba(245,240,232,0.2)",
-              }}
-            >
-              Read: AI for weight loss
-            </Link>
+            <span>Nicholas Templeman</span>
+            <span>&bull;</span>
+            <span>MEOK AI LABS</span>
+            <span>&bull;</span>
+            <time dateTime="2026-03-25">25 March 2026</time>
+            <span>&bull;</span>
+            <span>14 min read</span>
           </div>
-        </div>
+        </section>
 
-        {/* ── Related articles ─────────────────────────────────────────── */}
-        <div style={{ marginBottom: "5rem" }}>
+        {/* ── Intro pull-quote ── */}
+        <section
+          style={{
+            maxWidth: "720px",
+            margin: "0 auto",
+            padding: "0 24px 56px",
+          }}
+        >
           <p
             style={{
-              color: MUTED_LOW,
-              fontSize: "0.75rem",
-              fontWeight: 700,
-              letterSpacing: "0.08em",
-              textTransform: "uppercase",
-              marginBottom: "1.25rem",
+              fontSize: "1.1rem",
+              lineHeight: 1.85,
+              color: "rgba(245,240,232,0.82)",
+              borderLeft: "3px solid #c9a84c",
+              paddingLeft: "20px",
             }}
           >
-            Related reading
+            Every year, millions of people set out to change their relationship
+            with food and their bodies. Most are not short of information
+            &mdash; the internet is saturated with meal plans, macro trackers,
+            and transformation programmes. What they are short of is something
+            far more human: someone who notices, who remembers, who does not
+            flinch when things go sideways, and who never once makes them feel
+            broken for struggling. This is what AI, done properly, can offer.
+            Not a calorie counter. A companion.
           </p>
+        </section>
+
+        {/* ── Article body ── */}
+        <article
+          style={{
+            maxWidth: "720px",
+            margin: "0 auto",
+            padding: "0 24px",
+          }}
+        >
+
+          {/* ── Section 1: Why journeys fail ── */}
+          <h2
+            style={{
+              fontSize: "clamp(1.4rem, 3vw, 1.9rem)",
+              fontWeight: 700,
+              color: "#f5f0e8",
+              marginTop: "60px",
+              marginBottom: "20px",
+              lineHeight: 1.3,
+              letterSpacing: "-0.01em",
+            }}
+          >
+            Why Do Most Weight Loss Attempts Fail?
+          </h2>
+          <p
+            style={{
+              fontSize: "1.05rem",
+              lineHeight: 1.8,
+              color: "rgba(245,240,232,0.82)",
+              marginBottom: "20px",
+            }}
+          >
+            The dominant cultural narrative is that weight loss is a matter of
+            discipline. Eat less, move more, want it badly enough. When someone
+            regains weight or abandons a programme, the story becomes: they
+            lacked willpower. This narrative is not only unkind &mdash; it is
+            scientifically wrong.
+          </p>
+          <p
+            style={{
+              fontSize: "1.05rem",
+              lineHeight: 1.8,
+              color: "rgba(245,240,232,0.82)",
+              marginBottom: "20px",
+            }}
+          >
+            Research consistently shows that restrictive diets trigger hormonal
+            responses that increase hunger and reduce metabolic rate. The body
+            treats caloric restriction as a survival threat and fights back with
+            measurable physiological force. Leptin, the satiety hormone, drops.
+            Ghrelin, the hunger hormone, rises. Cortisol, the stress hormone,
+            spikes. This is not weakness. This is biology working exactly as
+            evolution designed it.
+          </p>
+          <p
+            style={{
+              fontSize: "1.05rem",
+              lineHeight: 1.8,
+              color: "rgba(245,240,232,0.82)",
+              marginBottom: "20px",
+            }}
+          >
+            Beyond physiology, the psychological barriers are equally
+            significant. Stress, loneliness, grief, boredom, and unprocessed
+            trauma all activate eating as a coping mechanism. Without addressing
+            the emotional layer, any purely calorie-focused approach is building
+            on sand. Sustainable change requires consistent support, not
+            repeated punishment. Yet the wellness industry has been selling
+            punishment for decades and calling it motivation.
+          </p>
+
+          {/* Callout box 1: shame science */}
           <div
             style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
-              gap: "1rem",
+              backgroundColor: "rgba(201,168,76,0.08)",
+              border: "1px solid rgba(201,168,76,0.25)",
+              borderRadius: "12px",
+              padding: "28px 32px",
+              margin: "40px 0",
+            }}
+          >
+            <p
+              style={{
+                fontSize: "1.1rem",
+                fontWeight: 600,
+                color: "#c9a84c",
+                marginBottom: "12px",
+                lineHeight: 1.4,
+              }}
+            >
+              The science is clear: shame does not motivate lasting change.
+            </p>
+            <p
+              style={{
+                fontSize: "1rem",
+                lineHeight: 1.75,
+                color: "rgba(245,240,232,0.8)",
+                margin: 0,
+              }}
+            >
+              A 2017 study published in <em>Obesity</em> found that individuals
+              who experienced weight stigma were{" "}
+              <strong style={{ color: "#f5f0e8" }}>
+                2.5 times more likely to become obese over the following decade
+              </strong>{" "}
+              compared to those who did not. Separate research from the
+              University of California found that people who felt judged about
+              their weight ate significantly more in stressful situations than
+              those who did not. Shame does not shrink bodies. It shrinks
+              willingness to try. Any tool that uses guilt as fuel is working
+              against the person it claims to help.
+            </p>
+          </div>
+
+          {/* ── Section 2: Emotional eating ── */}
+          <h2
+            style={{
+              fontSize: "clamp(1.4rem, 3vw, 1.9rem)",
+              fontWeight: 700,
+              color: "#f5f0e8",
+              marginTop: "60px",
+              marginBottom: "20px",
+              lineHeight: 1.3,
+              letterSpacing: "-0.01em",
+            }}
+          >
+            What Is Emotional Eating &mdash; and Why Does It Happen?
+          </h2>
+          <p
+            style={{
+              fontSize: "1.05rem",
+              lineHeight: 1.8,
+              color: "rgba(245,240,232,0.82)",
+              marginBottom: "20px",
+            }}
+          >
+            Emotional eating is eating in response to feelings rather than
+            physical hunger. It is extraordinarily common. Estimates suggest
+            that between 30 and 50 percent of adults engage in emotionally
+            driven eating at some point, and for those navigating weight loss
+            goals, it is often the central challenge that no app ever addresses.
+          </p>
+          <p
+            style={{
+              fontSize: "1.05rem",
+              lineHeight: 1.8,
+              color: "rgba(245,240,232,0.82)",
+              marginBottom: "20px",
+            }}
+          >
+            The triggers are varied and deeply personal. Stress at work. A
+            difficult conversation. Loneliness on a Sunday evening. Childhood
+            associations between food and comfort or love. Boredom that has no
+            name. For many people, food has served as the most reliable
+            emotional regulation tool available to them &mdash; often since
+            childhood, long before any &ldquo;diet&rdquo; mindset was formed.
+          </p>
+          <p
+            style={{
+              fontSize: "1.05rem",
+              lineHeight: 1.8,
+              color: "rgba(245,240,232,0.82)",
+              marginBottom: "20px",
+            }}
+          >
+            Neurologically, this makes sense. Eating activates the
+            reward circuitry. Palatable foods trigger dopamine release. The
+            brain learns that food resolves distress, at least temporarily, and
+            that association becomes deeply encoded. Treating this as a failure
+            of discipline is a profound misunderstanding. It is an adaptive
+            behaviour that evolved to serve a real need. The path through it is
+            not willpower &mdash; it is awareness, compassion, and the gradual
+            building of alternative regulation strategies. That takes time.
+            It takes support. And it almost never happens in a ten-minute
+            session with a calorie-tracking app.
+          </p>
+
+          {/* ── Section 3: Psychology of sustainable change ── */}
+          <h2
+            style={{
+              fontSize: "clamp(1.4rem, 3vw, 1.9rem)",
+              fontWeight: 700,
+              color: "#f5f0e8",
+              marginTop: "60px",
+              marginBottom: "20px",
+              lineHeight: 1.3,
+              letterSpacing: "-0.01em",
+            }}
+          >
+            The Psychology of Sustainable Change vs. Crash Diets
+          </h2>
+          <p
+            style={{
+              fontSize: "1.05rem",
+              lineHeight: 1.8,
+              color: "rgba(245,240,232,0.82)",
+              marginBottom: "20px",
+            }}
+          >
+            Crash diets work in the short term because dramatic restriction
+            produces dramatic results. This creates a powerful psychological
+            feedback loop: suffering delivers results, therefore more suffering
+            should deliver more results. But this framework cannot be sustained
+            indefinitely, and the inevitable setback &mdash; a birthday dinner,
+            a stressful week, a plateau &mdash; is experienced as catastrophic
+            failure rather than normal variation.
+          </p>
+          <p
+            style={{
+              fontSize: "1.05rem",
+              lineHeight: 1.8,
+              color: "rgba(245,240,232,0.82)",
+              marginBottom: "20px",
+            }}
+          >
+            Sustainable change looks different. It is slower. It tolerates
+            imperfection. It prioritises consistency over intensity. It
+            celebrates the walk you did take over the gym session you missed.
+            Psychologically, this requires a fundamentally different
+            relationship with the process &mdash; one built on self-compassion
+            rather than self-punishment. Dr Kristin Neff&apos;s research on
+            self-compassion consistently shows that people who treat themselves
+            kindly after setbacks are more likely to try again, not less. The
+            cruel inner voice is not a motivator. It is a demotivator wearing
+            motivator clothing.
+          </p>
+          <p
+            style={{
+              fontSize: "1.05rem",
+              lineHeight: 1.8,
+              color: "rgba(245,240,232,0.82)",
+              marginBottom: "20px",
+            }}
+          >
+            Research on behaviour change &mdash; including Prochaska and
+            DiClemente&apos;s Transtheoretical Model &mdash; shows that people
+            move through stages of change non-linearly. Relapse is part of the
+            model, not an exception to it. Pre-contemplation, contemplation,
+            preparation, action, maintenance, and yes, relapse &mdash; all of
+            these are expected phases. Any support system that treats a single
+            setback as the end of the story is inadequate for the reality of
+            how human change actually works.
+          </p>
+
+          {/* ── Section 4: How MEOK tracks patterns ── */}
+          <h2
+            style={{
+              fontSize: "clamp(1.4rem, 3vw, 1.9rem)",
+              fontWeight: 700,
+              color: "#f5f0e8",
+              marginTop: "60px",
+              marginBottom: "20px",
+              lineHeight: 1.3,
+              letterSpacing: "-0.01em",
+            }}
+          >
+            How MEOK Tracks Your Patterns Over Time &mdash; Without Judgment
+          </h2>
+          <p
+            style={{
+              fontSize: "1.05rem",
+              lineHeight: 1.8,
+              color: "rgba(245,240,232,0.82)",
+              marginBottom: "20px",
+            }}
+          >
+            Most health apps operate session by session. Each conversation
+            starts from zero. You re-explain your goals, re-describe your
+            week, re-justify your choices. The emotional cost of this constant
+            re-onboarding is invisible but real &mdash; it erodes the sense of
+            being known, which is itself a source of resilience and motivation.
+          </p>
+          <p
+            style={{
+              fontSize: "1.05rem",
+              lineHeight: 1.8,
+              color: "rgba(245,240,232,0.82)",
+              marginBottom: "20px",
+            }}
+          >
+            MEOK&apos;s sovereign memory changes this entirely. Across weeks
+            and months, MEOK builds a longitudinal picture of your journey
+            &mdash; the patterns, the triggers, the victories, the difficult
+            periods. When you arrive after a hard week, MEOK already knows what
+            the last few months looked like. It can contextualise. It can hold
+            the bigger picture while you are in the middle of the difficult
+            moment.
+          </p>
+          <p
+            style={{
+              fontSize: "1.05rem",
+              lineHeight: 1.8,
+              color: "rgba(245,240,232,0.82)",
+              marginBottom: "20px",
+            }}
+          >
+            Critically, this pattern recognition is delivered without judgment.
+            MEOK does not say: &ldquo;You seem to struggle every Sunday
+            &mdash; you need to be more careful.&rdquo; It might say:
+            &ldquo;I notice Sunday evenings have been difficult lately. What
+            is happening for you on Sundays?&rdquo; The same information,
+            delivered with curiosity instead of critique, opens possibility
+            rather than closing it down. The question invites reflection. The
+            critique invites shame.
+          </p>
+
+          {/* Callout box 2: what sovereign memory looks like */}
+          <div
+            style={{
+              backgroundColor: "rgba(245,240,232,0.04)",
+              border: "1px solid rgba(245,240,232,0.12)",
+              borderRadius: "12px",
+              padding: "28px 32px",
+              margin: "40px 0",
+            }}
+          >
+            <p
+              style={{
+                fontSize: "1rem",
+                fontWeight: 600,
+                color: "#f5f0e8",
+                marginBottom: "16px",
+                lineHeight: 1.4,
+              }}
+            >
+              What sovereign memory looks like in practice:
+            </p>
+            <ul
+              style={{
+                listStyle: "none",
+                padding: 0,
+                margin: 0,
+              }}
+            >
+              {[
+                "Remembers your goals, your history, and your stated triggers without being re-told",
+                "Tracks mood-eating patterns across weeks, not just within today",
+                "Notes when you mention sleeping badly, feeling stressed, or navigating difficult life events",
+                "Connects the dots between life circumstances and eating behaviour over time",
+                "Recalls and builds on previous breakthroughs, commitments, and insights",
+                "Reflects progress back when you cannot see it yourself",
+              ].map((item, i) => (
+                <li
+                  key={i}
+                  style={{
+                    display: "flex",
+                    alignItems: "flex-start",
+                    gap: "12px",
+                    marginBottom: "12px",
+                    fontSize: "0.97rem",
+                    lineHeight: 1.7,
+                    color: "rgba(245,240,232,0.78)",
+                  }}
+                >
+                  <span
+                    style={{
+                      color: "#c9a84c",
+                      fontSize: "1.1rem",
+                      flexShrink: 0,
+                      marginTop: "1px",
+                    }}
+                  >
+                    &rarr;
+                  </span>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* ── Section 5: Healer and Pioneer ── */}
+          <h2
+            style={{
+              fontSize: "clamp(1.4rem, 3vw, 1.9rem)",
+              fontWeight: 700,
+              color: "#f5f0e8",
+              marginTop: "60px",
+              marginBottom: "20px",
+              lineHeight: 1.3,
+              letterSpacing: "-0.01em",
+            }}
+          >
+            The Healer and the Pioneer: Two Archetypes for Your Journey
+          </h2>
+          <p
+            style={{
+              fontSize: "1.05rem",
+              lineHeight: 1.8,
+              color: "rgba(245,240,232,0.82)",
+              marginBottom: "20px",
+            }}
+          >
+            MEOK operates through distinct archetypes &mdash; each with a
+            different emotional register and purpose. For a weight loss journey,
+            two archetypes are particularly central: the Healer and the Pioneer.
+          </p>
+          <p
+            style={{
+              fontSize: "1.05rem",
+              lineHeight: 1.8,
+              color: "rgba(245,240,232,0.82)",
+              marginBottom: "20px",
+            }}
+          >
+            <strong style={{ color: "#c9a84c" }}>The Healer</strong> holds the
+            emotional dimension of your journey. When you come to MEOK after a
+            difficult episode around food, feeling ashamed or defeated, the
+            Healer does not redirect you to tomorrow&apos;s meal plan. It sits
+            with you in the feeling. It helps you understand what was happening
+            emotionally before, during, and after. It treats the moment as
+            information, not evidence of failure. This is the archetype for
+            processing grief around body image, unpacking the stories you carry
+            about food and worthiness, and recovering from the shame spirals
+            that derail so many journeys before they have a chance to compound.
+          </p>
+          <p
+            style={{
+              fontSize: "1.05rem",
+              lineHeight: 1.8,
+              color: "rgba(245,240,232,0.82)",
+              marginBottom: "20px",
+            }}
+          >
+            <strong style={{ color: "#c9a84c" }}>The Pioneer</strong> holds the
+            forward momentum. When you are ready to build &mdash; to establish
+            new routines, track small wins, identify the habits that compound
+            quietly over time &mdash; the Pioneer is your accountability
+            partner. It celebrates the walk you took. It notices the streak of
+            three good nights of sleep. It asks what you want to do differently
+            next week, not what you did wrong this week. The Pioneer understands
+            that identity change (&ldquo;I am someone who moves their
+            body&rdquo;) precedes and sustains behavioural change far more
+            reliably than willpower alone ever could.
+          </p>
+          <p
+            style={{
+              fontSize: "1.05rem",
+              lineHeight: 1.8,
+              color: "rgba(245,240,232,0.82)",
+              marginBottom: "20px",
+            }}
+          >
+            Most health tools offer only the Pioneer energy &mdash; goal
+            setting, tracking, optimising. MEOK offers both, and crucially, it
+            knows which one you need in any given moment based on what you
+            share. Arriving exhausted and ashamed, you get the Healer. Arriving
+            energised and ready to plan, you get the Pioneer. The AI reads the
+            room, because it has been in the room with you long enough to know
+            the difference.
+          </p>
+
+          {/* ── Section 6: Maternal Covenant ── */}
+          <h2
+            style={{
+              fontSize: "clamp(1.4rem, 3vw, 1.9rem)",
+              fontWeight: 700,
+              color: "#f5f0e8",
+              marginTop: "60px",
+              marginBottom: "20px",
+              lineHeight: 1.3,
+              letterSpacing: "-0.01em",
+            }}
+          >
+            The Maternal Covenant: Why MEOK Can Never Shame You
+          </h2>
+          <p
+            style={{
+              fontSize: "1.05rem",
+              lineHeight: 1.8,
+              color: "rgba(245,240,232,0.82)",
+              marginBottom: "20px",
+            }}
+          >
+            At the architectural level of MEOK sits the Maternal Covenant
+            &mdash; a set of inviolable principles that govern how the AI may
+            and may not engage with you. It is not a content filter bolted on
+            after the fact. It is the foundational intention from which the
+            entire system was built.
+          </p>
+          <p
+            style={{
+              fontSize: "1.05rem",
+              lineHeight: 1.8,
+              color: "rgba(245,240,232,0.82)",
+              marginBottom: "20px",
+            }}
+          >
+            Under the Maternal Covenant, MEOK is explicitly prohibited from
+            moralising about food choices, applying diet-culture framing, using
+            language that implies your body is a problem to be solved, or
+            responding to setbacks with disappointment or implied judgment. It
+            cannot label foods &ldquo;bad&rdquo; or &ldquo;clean.&rdquo; It
+            cannot imply that your worth correlates with your progress. It
+            cannot make you feel surveilled, evaluated, or found wanting.
+          </p>
+          <p
+            style={{
+              fontSize: "1.05rem",
+              lineHeight: 1.8,
+              color: "rgba(245,240,232,0.82)",
+              marginBottom: "20px",
+            }}
+          >
+            This matters more than it might initially seem. Many people have
+            deeply internalised the voice of diet culture &mdash; the constant
+            internal commentary about what they &ldquo;should&rdquo; be doing,
+            how much willpower they lack, how disappointing their body is. When
+            an AI even subtly echoes that voice, it reinforces the neural
+            pathways of shame. The Maternal Covenant ensures MEOK is never that
+            voice. It is always the other one &mdash; the one that says you are
+            doing your best, your journey is valid, and one difficult day
+            changes nothing about who you are or the trajectory you are on.
+          </p>
+
+          {/* ── Section 7: Non-scale victories ── */}
+          <h2
+            style={{
+              fontSize: "clamp(1.4rem, 3vw, 1.9rem)",
+              fontWeight: 700,
+              color: "#f5f0e8",
+              marginTop: "60px",
+              marginBottom: "20px",
+              lineHeight: 1.3,
+              letterSpacing: "-0.01em",
+            }}
+          >
+            Celebrating Non-Scale Victories: What Real Progress Looks Like
+          </h2>
+          <p
+            style={{
+              fontSize: "1.05rem",
+              lineHeight: 1.8,
+              color: "rgba(245,240,232,0.82)",
+              marginBottom: "20px",
+            }}
+          >
+            Weight is one data point. It is affected by hydration, hormonal
+            cycles, time of day, sodium intake, and dozens of other variables
+            that have nothing to do with the choices you made this week. Yet it
+            dominates the entire narrative of &ldquo;success&rdquo; in most
+            health programmes to a degree that is genuinely counterproductive.
+            People abandon efforts that are working because the scale did not
+            move this Tuesday.
+          </p>
+          <p
+            style={{
+              fontSize: "1.05rem",
+              lineHeight: 1.8,
+              color: "rgba(245,240,232,0.82)",
+              marginBottom: "20px",
+            }}
+          >
+            Non-scale victories tell a richer, more accurate story. The stairs
+            you climbed without getting breathless. The first morning in months
+            you woke up genuinely rested. Choosing a meal that felt nourishing
+            rather than punishing. Pausing before eating when you were not
+            physically hungry, even if you ate anyway. Wearing something you
+            had been avoiding. Completing a week without a binge. These are the
+            milestones that compound into lasting change &mdash; and they are
+            almost entirely invisible to apps that only track calories and
+            kilograms.
+          </p>
+          <p
+            style={{
+              fontSize: "1.05rem",
+              lineHeight: 1.8,
+              color: "rgba(245,240,232,0.82)",
+              marginBottom: "20px",
+            }}
+          >
+            MEOK&apos;s sovereign memory notices these moments. When you
+            mention offhand that you chose a walk instead of the sofa, that
+            registers. It gets held. And when you come back the following week
+            feeling like nothing has changed, MEOK can reflect the actual
+            picture back to you &mdash; the one that shows movement, even when
+            you cannot see it from inside the experience. Being witnessed
+            accurately is itself therapeutic. It interrupts the distortion
+            that shame produces.
+          </p>
+
+          {/* Comparison table */}
+          <div
+            style={{
+              margin: "56px 0",
+              overflowX: "auto",
+            }}
+          >
+            <p
+              style={{
+                fontSize: "0.85rem",
+                letterSpacing: "0.07em",
+                textTransform: "uppercase" as const,
+                color: "#c9a84c",
+                marginBottom: "16px",
+                fontWeight: 600,
+              }}
+            >
+              Shame-Based vs. Support-Based Approaches
+            </p>
+            <table
+              style={{
+                width: "100%",
+                borderCollapse: "collapse" as const,
+                fontSize: "0.95rem",
+              }}
+            >
+              <thead>
+                <tr>
+                  {["Dimension", "Shame-Based Approach", "MEOK Support-Based Approach"].map((h) => (
+                    <th
+                      key={h}
+                      style={{
+                        textAlign: "left" as const,
+                        padding: "14px 16px",
+                        borderBottom: "2px solid rgba(201,168,76,0.4)",
+                        color: "#c9a84c",
+                        fontWeight: 600,
+                        fontSize: "0.9rem",
+                        letterSpacing: "0.04em",
+                      }}
+                    >
+                      {h}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {[
+                  [
+                    "Response to setback",
+                    "Guilt, punishment, restart from zero",
+                    "Curiosity, context, compassion",
+                  ],
+                  [
+                    "Primary metric",
+                    "Scale weight, calories in/out",
+                    "Patterns, energy, mood, non-scale wins",
+                  ],
+                  [
+                    "Memory",
+                    "Amnesiac \u2014 every session starts fresh",
+                    "Longitudinal \u2014 knows your full story",
+                  ],
+                  [
+                    "Emotional eating",
+                    "Identified as a failure of discipline",
+                    "Explored as a communication from the body",
+                  ],
+                  [
+                    "Language around food",
+                    "Good/bad, clean/dirty, cheating",
+                    "Neutral, curious, non-moralising",
+                  ],
+                  [
+                    "Body image",
+                    "Improvement project, before/after framing",
+                    "Body neutrality, worth not contingent on change",
+                  ],
+                  [
+                    "Sustainability",
+                    "Exhausting \u2014 relies on constant vigilance",
+                    "Durable \u2014 built on identity and self-compassion",
+                  ],
+                  [
+                    "GLP-1 support",
+                    "Absent or medically transactional",
+                    "Emotional and psychological alongside medical",
+                  ],
+                ].map(([dim, shame, support], i) => (
+                  <tr
+                    key={i}
+                    style={{
+                      backgroundColor:
+                        i % 2 === 0
+                          ? "rgba(245,240,232,0.03)"
+                          : "transparent",
+                    }}
+                  >
+                    <td
+                      style={{
+                        padding: "13px 16px",
+                        borderBottom: "1px solid rgba(245,240,232,0.07)",
+                        color: "#f5f0e8",
+                        fontWeight: 500,
+                      }}
+                    >
+                      {dim}
+                    </td>
+                    <td
+                      style={{
+                        padding: "13px 16px",
+                        borderBottom: "1px solid rgba(245,240,232,0.07)",
+                        color: "rgba(245,240,232,0.5)",
+                      }}
+                    >
+                      {shame}
+                    </td>
+                    <td
+                      style={{
+                        padding: "13px 16px",
+                        borderBottom: "1px solid rgba(245,240,232,0.07)",
+                        color: "rgba(245,240,232,0.82)",
+                      }}
+                    >
+                      {support}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          {/* ── Section 8: GLP-1 ── */}
+          <h2
+            style={{
+              fontSize: "clamp(1.4rem, 3vw, 1.9rem)",
+              fontWeight: 700,
+              color: "#f5f0e8",
+              marginTop: "60px",
+              marginBottom: "20px",
+              lineHeight: 1.3,
+              letterSpacing: "-0.01em",
+            }}
+          >
+            GLP-1 Medications: The Emotional Journey Nobody Talks About
+          </h2>
+          <p
+            style={{
+              fontSize: "1.05rem",
+              lineHeight: 1.8,
+              color: "rgba(245,240,232,0.82)",
+              marginBottom: "20px",
+            }}
+          >
+            Ozempic, Mounjaro, Wegovy, and other GLP-1 receptor agonists have
+            transformed the medical landscape of weight management. For many
+            people, they represent the first time their biology has been working
+            with them rather than against them. The results can be profound
+            &mdash; and so can the unexpected emotional terrain that comes
+            alongside them.
+          </p>
+          <p
+            style={{
+              fontSize: "1.05rem",
+              lineHeight: 1.8,
+              color: "rgba(245,240,232,0.82)",
+              marginBottom: "20px",
+            }}
+          >
+            Many people on GLP-1 medications describe a strange grief when
+            food loses its emotional charge. If eating has been your primary
+            source of comfort for decades, and that comfort is suddenly muted
+            by medication, what fills the space? The absence can feel
+            disorienting or even frightening. Others describe identity
+            confusion as their body changes more rapidly than their internal
+            self-image can accommodate. Some face external judgment &mdash;
+            the implication that medication is &ldquo;cheating,&rdquo; that
+            their success does not really count, that they took the easy way
+            out. These are not trivial feelings. They are significant
+            psychological experiences that sit entirely outside the medical
+            consultation, which is rarely resourced to hold them.
+          </p>
+          <p
+            style={{
+              fontSize: "1.05rem",
+              lineHeight: 1.8,
+              color: "rgba(245,240,232,0.82)",
+              marginBottom: "20px",
+            }}
+          >
+            MEOK is not a medical device. It cannot advise on dosing, side
+            effects, or prescribing decisions &mdash; for all of that, your
+            prescribing clinician is the right and necessary person. But MEOK
+            can hold the emotional and psychological dimension of your GLP-1
+            journey with the depth and continuity it deserves. The grief. The
+            identity shift. The new relationship with hunger. The complicated
+            feelings when people comment on your changing body, sometimes
+            warmly and sometimes not. These conversations matter, and they often
+            have nowhere else to go.
+          </p>
+
+          {/* Callout box 3: GLP-1 support */}
+          <div
+            style={{
+              backgroundColor: "rgba(201,168,76,0.08)",
+              border: "1px solid rgba(201,168,76,0.25)",
+              borderRadius: "12px",
+              padding: "28px 32px",
+              margin: "40px 0",
+            }}
+          >
+            <p
+              style={{
+                fontSize: "1rem",
+                fontWeight: 700,
+                color: "#c9a84c",
+                marginBottom: "16px",
+                lineHeight: 1.4,
+              }}
+            >
+              MEOK for GLP-1 journeys can help you:
+            </p>
+            <ul
+              style={{
+                listStyle: "none",
+                padding: 0,
+                margin: 0,
+              }}
+            >
+              {[
+                "Process the emotional adjustment when food stops feeling like a comfort",
+                "Navigate identity changes as your body shifts faster than your self-image",
+                "Work through guilt or shame around using medication to support your health",
+                "Respond to external judgment or commentary without internalising it",
+                "Build sustainable habits alongside the medical treatment, not instead of it",
+                "Celebrate the non-scale victories that your prescriber does not have time to hear",
+                "Sit with the grief of a changed relationship with food, without being rushed past it",
+              ].map((item, i) => (
+                <li
+                  key={i}
+                  style={{
+                    display: "flex",
+                    alignItems: "flex-start",
+                    gap: "12px",
+                    marginBottom: "10px",
+                    fontSize: "0.97rem",
+                    lineHeight: 1.7,
+                    color: "rgba(245,240,232,0.78)",
+                  }}
+                >
+                  <span
+                    style={{
+                      color: "#c9a84c",
+                      flexShrink: 0,
+                      marginTop: "2px",
+                    }}
+                  >
+                    &bull;
+                  </span>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* ── Section 9: Data sovereignty ── */}
+          <h2
+            style={{
+              fontSize: "clamp(1.4rem, 3vw, 1.9rem)",
+              fontWeight: 700,
+              color: "#f5f0e8",
+              marginTop: "60px",
+              marginBottom: "20px",
+              lineHeight: 1.3,
+              letterSpacing: "-0.01em",
+            }}
+          >
+            Your Journey Data Belongs to You &mdash; Not an Algorithm
+          </h2>
+          <p
+            style={{
+              fontSize: "1.05rem",
+              lineHeight: 1.8,
+              color: "rgba(245,240,232,0.82)",
+              marginBottom: "20px",
+            }}
+          >
+            There is a category of harm in the health-tech industry that rarely
+            gets discussed: what happens to the intimate data you share about
+            your body, your eating, and your emotional life. When you disclose
+            to a free app that you overate last night because you were lonely,
+            that information enters a commercial data infrastructure. It may
+            influence the advertisements you see. It may be used to train future
+            models. At minimum, it sits on servers you do not control, governed
+            by terms of service you almost certainly have not read and cannot
+            meaningfully negotiate.
+          </p>
+          <p
+            style={{
+              fontSize: "1.05rem",
+              lineHeight: 1.8,
+              color: "rgba(245,240,232,0.82)",
+              marginBottom: "20px",
+            }}
+          >
+            MEOK operates on a data sovereignty model. Your memory is yours.
+            MEOK does not train on your conversations. Your disclosures about
+            your body, your struggles, and your relationship with food do not
+            feed a commercial pipeline. They serve only you.
+          </p>
+          <p
+            style={{
+              fontSize: "1.05rem",
+              lineHeight: 1.8,
+              color: "rgba(245,240,232,0.82)",
+              marginBottom: "20px",
+            }}
+          >
+            For people navigating something as intimate as their relationship
+            with food and their body, this is not a minor detail. Being truly
+            honest requires feeling truly safe. And feeling truly safe requires
+            knowing that what you share will not be commodified. Sovereignty
+            &mdash; the knowledge that your story belongs to you and no one
+            else &mdash; is the foundation of that safety.
+          </p>
+
+          {/* ── FAQ Section ── */}
+          <h2
+            style={{
+              fontSize: "clamp(1.4rem, 3vw, 1.9rem)",
+              fontWeight: 700,
+              color: "#f5f0e8",
+              marginTop: "72px",
+              marginBottom: "32px",
+              lineHeight: 1.3,
+              letterSpacing: "-0.01em",
+            }}
+          >
+            Frequently Asked Questions
+          </h2>
+
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column" as const,
+              gap: "24px",
+              marginBottom: "64px",
             }}
           >
             {[
               {
-                href: "/blog/ai-for-eating-disorders",
-                label: "AI for eating disorders",
-                desc: "Body-neutral support for complex food relationships",
+                q: "Can AI actually support a weight loss journey without being judgmental?",
+                a: "Yes. MEOK is built on a Maternal Covenant that prohibits any shaming, diet-culture language, or body-negative framing. The AI tracks patterns, celebrates non-scale victories, and holds space for setbacks without assigning blame or pushing punishing advice. It is a companion, not a critic.",
               },
               {
-                href: "/blog/ai-for-habit-building",
-                label: "AI for habit building",
-                desc: "How persistent memory turns intentions into identity",
+                q: "How does MEOK help with emotional eating?",
+                a: "The Healer archetype within MEOK is designed to explore the emotional landscape around food. It helps you identify triggers, notice patterns, and process difficult feelings without redirecting you straight to calories or restriction. Emotional eating is treated as a communication from your body, not a moral failing.",
               },
               {
-                href: "/blog/ai-for-self-esteem",
-                label: "AI for self-esteem",
-                desc: "Building a kinder internal voice with AI support",
+                q: "Does MEOK support people using GLP-1 medications like Ozempic or Mounjaro?",
+                a: "Yes. MEOK is not a medical device and does not advise on dosing or prescribing, but it offers significant emotional and psychological support for people navigating GLP-1 treatment. Many people on these medications experience unexpected emotions around food, identity, and body image. MEOK helps process all of that with sovereignty and without shame. Always work with your prescribing clinician for medical guidance.",
               },
               {
-                href: "/blog/ai-for-mental-health-2026",
-                label: "AI for mental health 2026",
-                desc: "The state of emotional AI and what it can offer",
+                q: "What are non-scale victories and why does MEOK track them?",
+                a: "Non-scale victories are measurable improvements in wellbeing that have nothing to do with a number on a scale \u2014 things like sleeping better, having more energy, feeling confident in a favourite outfit, or walking further without breathlessness. MEOK\u2019s sovereign memory tracks and celebrates these wins because they are often better predictors of long-term success than weight alone.",
               },
-            ].map((rel) => (
-              <Link
-                key={rel.href}
-                href={rel.href}
+              {
+                q: "Will MEOK remember my journey from session to session?",
+                a: "Yes. Sovereign memory means MEOK builds a longitudinal picture of your journey over weeks and months. It remembers what you have shared about your triggers, your progress, your setbacks, and your goals. You never have to re-explain your story. The AI arrives already knowing you \u2014 which is one of the most powerful forms of support there is.",
+              },
+            ].map((faq, i) => (
+              <div
+                key={i}
                 style={{
-                  background: CARD,
-                  border: "1px solid rgba(245,240,232,0.08)",
-                  borderRadius: "10px",
-                  padding: "1.1rem 1.25rem",
-                  textDecoration: "none",
-                  display: "block",
+                  borderBottom: "1px solid rgba(245,240,232,0.1)",
+                  paddingBottom: "24px",
                 }}
               >
-                <p
+                <h3
                   style={{
-                    color: GOLD,
-                    fontWeight: 700,
-                    fontSize: "0.88rem",
-                    marginBottom: "0.35rem",
+                    fontSize: "1.1rem",
+                    fontWeight: 600,
+                    color: "#f5f0e8",
+                    marginBottom: "12px",
                     lineHeight: 1.4,
                   }}
                 >
-                  {rel.label}
-                </p>
+                  {faq.q}
+                </h3>
                 <p
                   style={{
-                    color: MUTED_LOW,
-                    fontSize: "0.82rem",
-                    lineHeight: 1.55,
+                    fontSize: "1rem",
+                    lineHeight: 1.75,
+                    color: "rgba(245,240,232,0.75)",
                     margin: 0,
                   }}
                 >
-                  {rel.desc}
+                  {faq.a}
                 </p>
-              </Link>
+              </div>
             ))}
           </div>
-        </div>
 
-        {/* ── Author ───────────────────────────────────────────────────── */}
-        <div
-          style={{
-            borderTop: "1px solid rgba(245,240,232,0.1)",
-            paddingTop: "2rem",
-            marginBottom: "4rem",
-            display: "flex",
-            gap: "1rem",
-            alignItems: "flex-start",
-          }}
-        >
+          {/* ── CTA ── */}
           <div
             style={{
-              width: "44px",
-              height: "44px",
-              borderRadius: "50%",
-              background: "rgba(201,168,76,0.15)",
-              border: "1px solid rgba(201,168,76,0.3)",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              flexShrink: 0,
-              fontSize: "1.1rem",
+              backgroundColor: "rgba(201,168,76,0.07)",
+              border: "1px solid rgba(201,168,76,0.2)",
+              borderRadius: "16px",
+              padding: "48px 40px",
+              textAlign: "center" as const,
+              margin: "0 0 80px",
             }}
           >
-            NT
-          </div>
-          <div>
             <p
               style={{
-                color: TEXT,
+                fontSize: "0.85rem",
+                letterSpacing: "0.1em",
+                textTransform: "uppercase" as const,
+                color: "#c9a84c",
+                marginBottom: "16px",
+                fontWeight: 600,
+              }}
+            >
+              Begin Your Journey
+            </p>
+            <h2
+              style={{
+                fontSize: "clamp(1.5rem, 3.5vw, 2.2rem)",
                 fontWeight: 700,
-                fontSize: "0.9rem",
-                marginBottom: "0.2rem",
+                color: "#f5f0e8",
+                marginBottom: "20px",
+                lineHeight: 1.25,
+                letterSpacing: "-0.01em",
               }}
             >
-              Nicholas Templeman
-            </p>
+              You Deserve Support That Does Not Come With Conditions
+            </h2>
             <p
               style={{
-                color: MUTED_LOW,
+                fontSize: "1.05rem",
+                lineHeight: 1.7,
+                color: "rgba(245,240,232,0.72)",
+                maxWidth: "520px",
+                margin: "0 auto 36px",
+              }}
+            >
+              MEOK meets you where you are &mdash; not where a diet industry
+              thinks you should be. No shame. No judgment. Just consistent,
+              sovereign support for the journey you are actually on. Begin with
+              the Birth Ceremony and introduce yourself to an AI that will
+              remember everything you share, and never once use it against you.
+            </p>
+            <Link
+              href="/birth"
+              style={{
+                display: "inline-block",
+                backgroundColor: "#c9a84c",
+                color: "#0d0c18",
+                padding: "16px 40px",
+                borderRadius: "8px",
+                fontWeight: 700,
+                fontSize: "1rem",
+                letterSpacing: "0.03em",
+                textDecoration: "none",
+              }}
+            >
+              Begin Your Birth Ceremony &rarr;
+            </Link>
+            <p
+              style={{
                 fontSize: "0.82rem",
-                marginBottom: "0.5rem",
+                color: "rgba(245,240,232,0.38)",
+                marginTop: "20px",
+                marginBottom: 0,
               }}
             >
-              Founder, MEOK AI LABS
-            </p>
-            <p
-              style={{
-                color: MUTED,
-                fontSize: "0.88rem",
-                lineHeight: 1.65,
-                maxWidth: "36rem",
-              }}
-            >
-              Nicholas built MEOK to provide the kind of compassionate,
-              consistent emotional support that most people need and very few
-              can access. MEOK AI LABS is focused on building AI that genuinely
-              cares — not AI that performs caring while optimising for
-              engagement.
+              MEOK is not a medical device. It does not replace your GP,
+              dietitian, or prescribing clinician. For medical weight management
+              advice, please consult a qualified healthcare professional.
             </p>
           </div>
-        </div>
 
-      </div>
-    </div>
+          {/* ── Related posts ── */}
+          <div style={{ marginBottom: "80px" }}>
+            <p
+              style={{
+                fontSize: "0.8rem",
+                letterSpacing: "0.1em",
+                textTransform: "uppercase" as const,
+                color: "rgba(245,240,232,0.4)",
+                marginBottom: "20px",
+                fontWeight: 600,
+              }}
+            >
+              Related Reading
+            </p>
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(auto-fill, minmax(240px, 1fr))",
+                gap: "16px",
+              }}
+            >
+              {[
+                {
+                  href: "/blog/ai-for-eating-disorders",
+                  title: "AI for Eating Disorders",
+                  desc: "Compassionate AI support for complex relationships with food",
+                },
+                {
+                  href: "/blog/ai-for-weight-loss",
+                  title: "AI for Weight Loss",
+                  desc: "Can an AI companion support your health goals?",
+                },
+                {
+                  href: "/blog/ai-for-weight-stigma",
+                  title: "AI for Weight Stigma",
+                  desc: "Processing the emotional weight of weight stigma",
+                },
+                {
+                  href: "/blog/ai-for-weight-management",
+                  title: "AI for Weight Management",
+                  desc: "Sustainable approaches to long-term weight management",
+                },
+                {
+                  href: "/blog/maternal-covenant-explained",
+                  title: "The Maternal Covenant Explained",
+                  desc: "The values architecture that makes MEOK different",
+                },
+                {
+                  href: "/blog/ai-for-habit-building",
+                  title: "AI for Habit Building",
+                  desc: "How sovereign AI supports the habits that actually stick",
+                },
+              ].map((post) => (
+                <Link
+                  key={post.href}
+                  href={post.href}
+                  style={{
+                    display: "block",
+                    backgroundColor: "rgba(245,240,232,0.04)",
+                    border: "1px solid rgba(245,240,232,0.09)",
+                    borderRadius: "10px",
+                    padding: "20px",
+                    textDecoration: "none",
+                  }}
+                >
+                  <p
+                    style={{
+                      fontSize: "0.95rem",
+                      fontWeight: 600,
+                      color: "#f5f0e8",
+                      marginBottom: "6px",
+                      lineHeight: 1.4,
+                    }}
+                  >
+                    {post.title}
+                  </p>
+                  <p
+                    style={{
+                      fontSize: "0.85rem",
+                      color: "rgba(245,240,232,0.5)",
+                      margin: 0,
+                      lineHeight: 1.5,
+                    }}
+                  >
+                    {post.desc}
+                  </p>
+                </Link>
+              ))}
+            </div>
+          </div>
+
+        </article>
+      </main>
+    </>
   );
 }
