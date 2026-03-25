@@ -3482,6 +3482,66 @@ const POSTS = [
     category: "professional",
     featured: false,
   },
+  {
+    slug: "ai-for-social-media-detox",
+    title: "AI for Social Media Detox: How MEOK Helps You Break the Scroll",
+    excerpt:
+      "Compulsive scrolling is engineered addiction. MEOK provides a sovereign AI companion that replaces the dopamine loop of social media with meaningful conversation, intentional reflection, and genuine connection — without selling your attention.",
+    date: "March 26, 2026",
+    readTime: "7 min read",
+    tag: "Wellbeing",
+    tagColor: "#6aaa64",
+    category: "wellbeing",
+    featured: false,
+  },
+  {
+    slug: "ai-for-perfectionism",
+    title: "AI for Perfectionism: Breaking the Paralysis Loop with MEOK",
+    excerpt:
+      "Perfectionism isn\u2019t a high standard — it\u2019s fear in disguise. MEOK\u2019s AI companion helps perfectionists recognise the pattern, separate self-worth from output, and take action despite imperfection — with care-based responses that never shame.",
+    date: "March 26, 2026",
+    readTime: "8 min read",
+    tag: "Mental Health",
+    tagColor: "#c9a84c",
+    category: "mental-health",
+    featured: false,
+  },
+  {
+    slug: "ai-for-burnout-prevention",
+    title: "AI for Burnout Prevention: How MEOK Catches the Warning Signs Early",
+    excerpt:
+      "Burnout doesn\u2019t arrive suddenly — it accumulates in silence. MEOK\u2019s sovereign AI monitors your emotional patterns over time, flags early warning signs, and provides personalised recovery strategies before you reach breaking point.",
+    date: "March 26, 2026",
+    readTime: "9 min read",
+    tag: "Wellbeing",
+    tagColor: "#6aaa64",
+    category: "wellbeing",
+    featured: false,
+  },
+  {
+    slug: "meok-for-lawyers-deep-dive",
+    title: "MEOK for Lawyers: Sovereign AI in a Profession Built on Confidentiality",
+    excerpt:
+      "Lawyers can\u2019t use ChatGPT for client work — the data sovereignty problem is existential. MEOK\u2019s encrypted, sovereign AI architecture is built for exactly this: private reflection, case research, and wellbeing support without confidentiality risk.",
+    date: "March 26, 2026",
+    readTime: "9 min read",
+    tag: "Professional",
+    tagColor: "#c9a84c",
+    category: "professional",
+    featured: false,
+  },
+  {
+    slug: "ai-for-expat-loneliness",
+    title: "AI for Expat Loneliness: Why Living Abroad Needs a Different Kind of Support",
+    excerpt:
+      "Expats face a unique emotional gap — too far from home to lean on old friends, too new to have built deep connections locally. MEOK provides a sovereign AI companion that remembers your story, bridges the gap, and grows with you wherever you are.",
+    date: "March 26, 2026",
+    readTime: "7 min read",
+    tag: "Connection",
+    tagColor: "#6aaa64",
+    category: "connection",
+    featured: false,
+  },
 ];
 
 // ── Category filter tabs ──────────────────────────────────────────────────────
