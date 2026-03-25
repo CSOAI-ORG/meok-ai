@@ -474,6 +474,52 @@ export default function TeamDashboard() {
             })}
           </div>
         </div>
+
+        {/* Recent team activity */}
+        <div
+          style={{
+            background: SURFACE,
+            border: `1px solid ${BORDER}`,
+            borderRadius: "16px",
+          }}
+          className="p-6"
+        >
+          <h2
+            className="text-lg font-semibold mb-4"
+            style={{ color: "#f5f0e8" }}
+          >
+            Recent team activity
+          </h2>
+          <div className="space-y-3">
+            {[
+              { name: "Alex", action: "sent a message", time: "2 minutes ago", color: GOLD },
+              { name: "Jordan", action: "shared a document", time: "15 minutes ago", color: "#8b8fa3" },
+              { name: "Sam", action: "sent a message", time: "1 hour ago", color: "#5a5e73" },
+            ].map((item) => (
+              <div
+                key={`${item.name}-${item.time}`}
+                className="flex items-center gap-3 p-3 rounded-lg"
+                style={{ background: `${DEEP}80` }}
+              >
+                <div
+                  className="w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0"
+                  style={{ background: `${item.color}20`, color: item.color }}
+                >
+                  {item.name[0]}
+                </div>
+                <div className="flex-1 min-w-0">
+                  <p className="text-sm" style={{ color: "#f5f0e8" }}>
+                    <span className="font-medium">{item.name}</span>{" "}
+                    <span style={{ color: "rgba(255,255,255,0.4)" }}>{item.action}</span>
+                  </p>
+                </div>
+                <span className="text-xs flex-shrink-0" style={{ color: "rgba(255,255,255,0.25)" }}>
+                  {item.time}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   );

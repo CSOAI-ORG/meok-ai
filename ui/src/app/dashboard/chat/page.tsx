@@ -220,6 +220,9 @@ export default function DashboardChatPage() {
   const [companionId] = useState('aria');
   const [speakingMsgId, setSpeakingMsgId] = useState<string | null>(null);
   const [input, setInput] = useState('');
+  const [selectedImage, setSelectedImage] = useState<File | null>(null);
+  const [imagePreview, setImagePreview] = useState<string | null>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   // Streaming telemetry
   const [streamStart, setStreamStart] = useState(0);
@@ -347,6 +350,21 @@ export default function DashboardChatPage() {
     }
   }
 
+  function handleImageSelect(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    setSelectedImage(file);
+    const url = URL.createObjectURL(file);
+    setImagePreview(url);
+  }
+
+  function clearImage() {
+    setSelectedImage(null);
+    if (imagePreview) URL.revokeObjectURL(imagePreview);
+    setImagePreview(null);
+    if (fileInputRef.current) fileInputRef.current.value = '';
+  }
+
   return (
     <>
       <style>{`
@@ -380,7 +398,31 @@ export default function DashboardChatPage() {
           </header>
 
           {/* Messages area */}
-          <div className="flex-1 overflow-y-auto px-4 py-6" role="log" aria-live="polite" aria-label="Chat messages" style={{ background: DEEP }}>
+          <div className="flex-1 overflow-y-auto relative" role="log" aria-live="polite" aria-label="Chat messages" style={{ background: DEEP }}>
+            {/* Context window indicator */}
+            {(() => {
+              const estimatedTokens = messages.length * 100;
+              const maxContext = 128000;
+              const pct = Math.min((estimatedTokens / maxContext) * 100, 100);
+              return (
+                <div className="sticky top-0 z-10">
+                  <div className="w-full h-[2px]" style={{ background: 'rgba(255,255,255,0.05)' }}>
+                    <div className="h-full transition-all duration-300" style={{ width: `${pct}%`, background: GOLD }} />
+                  </div>
+                  {pct > 90 && (
+                    <div className="text-[10px] px-4 py-1 text-center" style={{ color: '#ef4444', background: `${DEEP}ee` }}>
+                      Context nearly full — consider starting a new conversation
+                    </div>
+                  )}
+                  {pct > 75 && pct <= 90 && (
+                    <div className="text-[10px] px-4 py-1 text-center" style={{ color: GOLD, background: `${DEEP}ee` }}>
+                      Context: {Math.round(pct)}% used
+                    </div>
+                  )}
+                </div>
+              );
+            })()}
+          <div className="px-4 py-6">
             {!hasUserMessages && (
               <div className="flex flex-col items-center justify-center h-full text-center px-8" style={{ animation: 'fadeSlideUp 0.5s ease both' }}>
                 <div className="text-4xl mb-5 w-20 h-20 rounded-full flex items-center justify-center" style={{ background: `radial-gradient(circle at 35% 35%, ${GOLD}30, ${GOLD}08)`, border: `2px solid ${GOLD}40`, boxShadow: `0 0 40px ${GOLD}15` }}>✨</div>
@@ -475,6 +517,7 @@ export default function DashboardChatPage() {
               <div ref={bottomRef} />
             </div>
           </div>
+          </div>
 
           {/* Input area */}
           <div className="flex-shrink-0 px-4 py-3" style={{ borderTop: '1px solid rgba(255,255,255,0.08)', background: SURFACE }}>
@@ -502,6 +545,17 @@ export default function DashboardChatPage() {
                 ))}
               </div>
             )}
+            {/* Image preview thumbnail */}
+            {imagePreview && selectedImage && (
+              <div className="flex items-center gap-2 max-w-3xl mx-auto mb-2 px-1">
+                <div className="relative group">
+                  <img src={imagePreview} alt="Selected" className="w-12 h-12 rounded-lg object-cover border" style={{ borderColor: `${GOLD}40` }} />
+                  <button onClick={clearImage} className="absolute -top-1.5 -right-1.5 w-5 h-5 rounded-full flex items-center justify-center text-[10px] leading-none" style={{ background: '#ef4444', color: '#fff' }} aria-label="Remove image">x</button>
+                </div>
+                <span className="text-[10px] italic" style={{ color: 'rgba(255,255,255,0.3)' }}>{selectedImage.name}</span>
+              </div>
+            )}
+            <input ref={fileInputRef} type="file" accept="image/*" className="hidden" onChange={handleImageSelect} />
             <div className="relative flex items-end gap-2 max-w-3xl mx-auto">
               <textarea
                 ref={textareaRef}
@@ -519,6 +573,18 @@ export default function DashboardChatPage() {
               />
               <div className="absolute right-2 bottom-2 flex items-center gap-1">
                 <span className="text-[10px] hidden sm:inline" style={{ color: 'rgba(255,255,255,0.2)' }}>⌘↵</span>
+                <button
+                  onClick={() => fileInputRef.current?.click()}
+                  disabled={isStreaming}
+                  aria-label="Attach image"
+                  title="Image support coming soon"
+                  className="h-8 w-8 rounded-lg flex items-center justify-center transition-colors disabled:opacity-30"
+                  style={{ color: 'rgba(255,255,255,0.4)' }}
+                  onMouseEnter={e => (e.currentTarget.style.background = 'rgba(255,255,255,0.08)')}
+                  onMouseLeave={e => (e.currentTarget.style.background = 'transparent')}
+                >
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+                </button>
                 {isStreaming ? (
                   <button onClick={() => stop()} aria-label="Stop generating response" className="h-8 px-3 rounded-lg text-xs font-semibold transition-all flex-shrink-0" style={{ background: '#ef4444', color: '#fff' }}>Stop</button>
                 ) : (
