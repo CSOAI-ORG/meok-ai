@@ -3,7 +3,7 @@
 import { useState, useRef, useEffect, useCallback, useMemo } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { useUser } from '@clerk/nextjs';
-import { CHARACTERS, getCharacterBySlug } from '@/data/characters';
+import { getCharacter, getAllCharacters, CHARACTERS } from '@/lib/characters';
 import { callTool } from '@/lib/api';
 import type { MemoryEpisode } from '@/lib/types';
 
@@ -162,11 +162,19 @@ function CompanionPanel({
   careScore,
   conversationCount,
 }: CompanionPanelProps) {
-  const character = getCharacterBySlug(characterSlug) ?? CHARACTERS[0];
+  const character = getCharacter(characterSlug) ?? getCharacter('aria')!;
   const mood = getMood(messages, careScore);
+
+  // Evolution stages — derived from conversation count (not stored on character)
+  const DEFAULT_STAGES = [
+    { stage: 1, name: 'Prying Pulse', description: 'First encounters — learning your rhythms', unlockedAt: 0, traits: ['attentive', 'curious'] },
+    { stage: 2, name: 'Bonded Flame', description: 'Deeper understanding — adapting to your style', unlockedAt: 10, traits: ['adaptive', 'empathic'] },
+    { stage: 3, name: 'Trusted Core', description: 'True partnership — anticipating your needs', unlockedAt: 30, traits: ['proactive', 'insightful'] },
+    { stage: 4, name: 'Your Sovereign', description: 'Full sovereignty — acting on your behalf', unlockedAt: 50, traits: ['autonomous', 'loyal'] },
+  ];
   const { current: currentStage, next: nextStage, progressToNext } = getEvolutionStage(
     conversationCount,
-    character.evolutionStages
+    DEFAULT_STAGES
   );
 
   const daysSince = Math.max(1, Math.ceil(conversationCount / 3));
@@ -424,8 +432,8 @@ function CompanionPanel({
 export default function CompanionPage() {
   const searchParams = useSearchParams();
   const { user } = useUser();
-  const characterSlug = searchParams.get('character') ?? 'scholar';
-  const character = getCharacterBySlug(characterSlug) ?? CHARACTERS[0];
+  const characterSlug = searchParams.get('character') ?? 'aria';
+  const character = getCharacter(characterSlug) ?? getCharacter('aria')!;
 
   const greeting = getGreeting();
   const userName = user?.firstName ?? user?.emailAddresses[0]?.emailAddress?.split('@')[0] ?? 'friend';
@@ -518,7 +526,7 @@ export default function CompanionPage() {
         body: JSON.stringify({
           messages: newMessages,
           model: selectedModel,
-          system: `You are ${character.name}, a ${character.archetype} companion. ${character.longDescription} Tone: ${character.tone}. Speaking style: ${character.speakingStyle}`,
+          system: `You are ${character.name}, a ${character.archetype} companion. ${character.systemPrompt} Voice style: ${character.voiceStyle}.`,
         }),
       });
 
@@ -701,30 +709,45 @@ export default function CompanionPage() {
                 <p className="text-sm mb-4" style={{ color: 'rgba(255,255,255,0.35)' }}>
                   What&apos;s on your mind?
                 </p>
-                {/* Example prompt suggestions */}
+                {/* Example prompt suggestions derived from character tags */}
                 <div className="flex flex-wrap gap-2 justify-center max-w-lg">
-                  {character.exampleConversations.slice(0, 2).map((ex, i) => (
-                    <button
-                      key={i}
-                      onClick={() => setInput(ex.user)}
-                      className="text-xs border rounded-full px-4 py-2 transition-all text-left"
-                      style={{
-                        color: 'rgba(255,255,255,0.4)',
-                        background: 'rgba(255,255,255,0.04)',
-                        borderColor: 'rgba(255,255,255,0.08)',
-                      }}
-                      onMouseEnter={(e) => {
-                        e.currentTarget.style.background = 'rgba(255,255,255,0.08)';
-                        e.currentTarget.style.color = 'rgba(255,255,255,0.7)';
-                      }}
-                      onMouseLeave={(e) => {
-                        e.currentTarget.style.background = 'rgba(255,255,255,0.04)';
-                        e.currentTarget.style.color = 'rgba(255,255,255,0.4)';
-                      }}
-                    >
-                      {ex.user.length > 60 ? ex.user.slice(0, 60) + '…' : ex.user}
-                    </button>
-                  ))}
+                  {character.tags.slice(0, 2).map((tag, i) => {
+                    const prompts: Record<string, string> = {
+                      care: 'How are you feeling today?',
+                      emotional: 'I need someone to talk to.',
+                      strategy: 'Help me plan my next move.',
+                      philosophy: 'What does a good life look like?',
+                      coding: 'Help me debug this problem.',
+                      creative: 'I want to write something beautiful.',
+                      spiritual: 'I have been thinking about meaning.',
+                      gaming: 'What should I play next?',
+                      security: 'How can I protect my data?',
+                      productivity: 'Help me focus today.',
+                    };
+                    const prompt = prompts[tag] ?? `Tell me about ${tag}.`;
+                    return (
+                      <button
+                        key={i}
+                        onClick={() => setInput(prompt)}
+                        className="text-xs border rounded-full px-4 py-2 transition-all text-left"
+                        style={{
+                          color: 'rgba(255,255,255,0.4)',
+                          background: 'rgba(255,255,255,0.04)',
+                          borderColor: 'rgba(255,255,255,0.08)',
+                        }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.background = 'rgba(255,255,255,0.08)';
+                          e.currentTarget.style.color = 'rgba(255,255,255,0.7)';
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.background = 'rgba(255,255,255,0.04)';
+                          e.currentTarget.style.color = 'rgba(255,255,255,0.4)';
+                        }}
+                      >
+                        {prompt.length > 60 ? prompt.slice(0, 60) + '...' : prompt}
+                      </button>
+                    );
+                  })}
                 </div>
               </div>
             )}

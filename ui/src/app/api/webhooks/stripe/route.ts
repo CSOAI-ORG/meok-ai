@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import Stripe from 'stripe';
 import { getStripe } from '@/lib/stripe';
+import { updateUserTier, type Tier } from '@/lib/db/user';
 
 // Next.js 15: disable body parsing so Stripe can verify the raw bytes
 export const dynamic = 'force-dynamic';
@@ -106,10 +107,16 @@ async function handleCheckoutCompleted(session: Stripe.Checkout.Session): Promis
     return;
   }
 
-  // TODO: Update user tier in database via Clerk user metadata or your DB
-  // e.g. await clerkClient.users.updateUserMetadata(userId, {
-  //   publicMetadata: { tier, stripeCustomerId: session.customer },
-  // });
+  const resolvedTier = (tier ?? 'sovereign') as Tier;
+  const customerId = typeof session.customer === 'string' ? session.customer : session.customer?.id ?? undefined;
+  const subscriptionId = typeof session.subscription === 'string' ? session.subscription : undefined;
+
+  await updateUserTier(userId, resolvedTier, {
+    customerId,
+    subscriptionId,
+  });
+
+  console.log(`[Stripe] Updated user ${userId} to tier=${resolvedTier}`);
 }
 
 async function handleSubscriptionUpdated(subscription: Stripe.Subscription): Promise<void> {
@@ -131,10 +138,17 @@ async function handleSubscriptionUpdated(subscription: Stripe.Subscription): Pro
     return;
   }
 
-  // TODO: Update user tier in database
-  // e.g. await clerkClient.users.updateUserMetadata(userId, {
-  //   publicMetadata: { tier, subscriptionStatus: status },
-  // });
+  if (status === 'active' || status === 'trialing') {
+    const resolvedTier = (tier !== 'unknown' ? tier : 'sovereign') as Tier;
+    const customerId = typeof subscription.customer === 'string' ? subscription.customer : undefined;
+
+    await updateUserTier(userId, resolvedTier, {
+      customerId,
+      subscriptionId: subscription.id,
+    });
+
+    console.log(`[Stripe] Updated user ${userId} to tier=${resolvedTier} (subscription ${status})`);
+  }
 }
 
 async function handleSubscriptionDeleted(subscription: Stripe.Subscription): Promise<void> {
@@ -154,11 +168,8 @@ async function handleSubscriptionDeleted(subscription: Stripe.Subscription): Pro
     return;
   }
 
-  // TODO: Downgrade user to Explorer tier in database
-  // e.g. await clerkClient.users.updateUserMetadata(userId, {
-  //   publicMetadata: { tier: downgradedTier, subscriptionStatus: 'cancelled' },
-  // });
-  void downgradedTier; // referenced above, satisfies linter until TODO is implemented
+  await updateUserTier(userId, downgradedTier as Tier);
+  console.log(`[Stripe] Downgraded user ${userId} to tier=${downgradedTier}`);
 }
 
 async function handlePaymentFailed(invoice: Stripe.Invoice): Promise<void> {

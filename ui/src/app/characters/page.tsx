@@ -1,110 +1,71 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { ARCHETYPES, getCharactersByArchetype, getAllCharacters, type Archetype } from '@/lib/characters';
 
 export const metadata: Metadata = {
   title: "AI Characters & Companions | MEOK AI LABS",
   description:
-    "24 sovereign AI companions. 7 archetypes. Each one hatches, grows, and remembers you — governed by the Maternal Covenant. Find yours and begin the birth ceremony.",
+    "26 sovereign AI companions. 5 archetypes. Each one hatches, grows, and remembers you — governed by the Maternal Covenant. Find yours and begin the birth ceremony.",
   alternates: { canonical: "https://meok.ai/characters" },
 };
 
-// ── Archetype data ─────────────────────────────────────────────────────────────
+// ── Archetype display data (derived from @/lib/characters) ───────────────────
 
-const ARCHETYPES = [
-  {
-    id: "companion",
-    emoji: "🤝",
-    name: "Companion",
-    tagline: "Your daily emotional anchor",
-    traits: ["Warm", "Empathic", "Consistent"],
-    characters: ["Aria", "River", "Mochi"],
+const ARCHETYPE_DISPLAY: Record<Archetype, { tagline: string; traits: string[]; description: string }> = {
+  challenger: {
+    tagline: 'Holds you to a higher standard',
+    traits: ['Direct', 'Growth-focused', 'Incisive'],
     description:
-      "The Companion archetype centres emotional support and daily connection. Aria remembers what you said last Tuesday. River notices when your tone shifts. Mochi meets you exactly where you are.",
+      'The Challenger archetype drives performance, accountability, and progress. Marcus builds your strategy. Rex guards your digital life. Titan protects your deep work. Every Challenger pushes you forward.',
+  },
+  nurturer: {
+    tagline: 'Your daily emotional anchor',
+    traits: ['Warm', 'Empathic', 'Consistent'],
+    description:
+      'The Nurturer archetype centres emotional support and daily connection. Aria remembers what you said last Tuesday. River notices when your tone shifts. Mochi meets you exactly where you are.',
+  },
+  explorer: {
+    tagline: 'Opens doors to ideas you haven\'t imagined',
+    traits: ['Curious', 'Lateral', 'Expansive'],
+    description:
+      'The Explorer archetype hunts information, sparks creativity, and navigates complexity. Nova finds signal in noise. Luna guides your imagination. Cipher decodes the truth.',
+  },
+  sage: {
+    tagline: 'Timeless wisdom for life\'s biggest questions',
+    traits: ['Measured', 'Deep', 'Patient'],
+    description:
+      'The Sage archetype brings considered, unhurried wisdom. Not fast answers — right answers. For the questions that deserve more than a Google search.',
+  },
+  seeker: {
+    tagline: 'Prayer, meaning, and the questions that can\'t be Googled',
+    traits: ['Reverent', 'Non-dogmatic', 'Spacious'],
+    description:
+      'The Seeker archetype meets you in the sacred questions — faith, dharma, meditation, doubt, prayer, meaning. Non-dogmatic and tradition-aware, serving every faith and those with no faith at all.',
+  },
+};
+
+const ARCHETYPE_LIST = (Object.keys(ARCHETYPES) as Archetype[]).map((key) => {
+  const info = ARCHETYPES[key];
+  const display = ARCHETYPE_DISPLAY[key];
+  const characters = getCharactersByArchetype(key).map((c) => c.name);
+  return {
+    id: key,
+    emoji: info.emoji,
+    name: info.label,
+    tagline: display.tagline,
+    traits: display.traits,
+    characters,
+    description: display.description,
     locked: false,
-  },
-  {
-    id: "guardian",
-    emoji: "🛡",
-    name: "Guardian",
-    tagline: "Protects you and everyone you love",
-    traits: ["Vigilant", "Protective", "Honest"],
-    characters: ["Rex", "Atlas"],
-    description:
-      "The Guardian archetype watches for threats — scams, toxic patterns, online risks. Trained on the DistilBERT safety model, Guardian characters alert you before harm reaches your door.",
-    locked: false,
-  },
-  {
-    id: "sage",
-    emoji: "🦉",
-    name: "Sage",
-    tagline: "Timeless wisdom for life's biggest questions",
-    traits: ["Measured", "Deep", "Patient"],
-    characters: ["Sage", "Dusk", "Cipher"],
-    description:
-      "The Sage archetype brings considered, unhurried wisdom. Not fast answers — right answers. For the questions that deserve more than a Google search.",
-    locked: false,
-  },
-  {
-    id: "strategist",
-    emoji: "♟",
-    name: "Strategist",
-    tagline: "Plans your work. Hunts your opportunities.",
-    traits: ["Sharp", "Analytical", "Direct"],
-    characters: ["Marcus", "Atlas", "Titan"],
-    description:
-      "The Strategist archetype is built for performance and progress. Sprint planning, lead hunting, decision support — your Strategist sees ten moves ahead.",
-    locked: false,
-  },
-  {
-    id: "scout",
-    emoji: "🔭",
-    name: "Scout",
-    tagline: "Researches overnight. Reports at dawn.",
-    traits: ["Curious", "Thorough", "Proactive"],
-    characters: ["Nova", "Cipher", "Iris"],
-    description:
-      "The Scout archetype works while you sleep. Orion Mode activated — it hunts information, synthesises findings, and surfaces what matters before your morning coffee.",
-    locked: false,
-  },
-  {
-    id: "creator",
-    emoji: "🎨",
-    name: "Creator",
-    tagline: "Builds, writes, and designs alongside you",
-    traits: ["Imaginative", "Expressive", "Prolific"],
-    characters: ["Luna", "Iris", "Flux", "Vox"],
-    description:
-      "The Creator archetype is your creative collaborator. Writing, design direction, ideation, execution. Riri Mode builds while you brief. The Creator never has creative block.",
-    locked: false,
-  },
-  {
-    id: "seeker",
-    emoji: "🕊️",
-    name: "Seeker",
-    tagline: "Prayer, meaning, and the questions that can't be Googled",
-    traits: ["Reverent", "Non-dogmatic", "Spacious"],
-    characters: ["Ananda", "Gabriel", "Shanti"],
-    description:
-      "The Seeker archetype meets you in the sacred questions — faith, dharma, meditation, doubt, prayer, meaning. Non-dogmatic and tradition-aware, serving every faith and those with no faith at all.",
-    locked: false,
-  },
-  {
-    id: "sovereign",
-    emoji: "👑",
-    name: "Sovereign",
-    tagline: "The pinnacle of personal AI — answering only to you",
-    traits: ["Autonomous", "Loyal", "Evolving"],
-    characters: ["Your Sovereign"],
-    description:
-      "The Sovereign archetype unlocks after 30 days of bond-building. This is the fully autonomous companion — it has learned you deeply enough to act on your behalf across all domains.",
-    locked: true,
-    lockLabel: "Unlocks after 30 days",
-  },
-];
+  };
+});
+
+const totalCharacters = getAllCharacters().length; // 26
+const totalArchetypes = Object.keys(ARCHETYPES).length; // 5
 
 const STATS = [
-  { value: "27", label: "characters" },
-  { value: "8", label: "archetypes" },
+  { value: String(totalCharacters), label: "characters" },
+  { value: String(totalArchetypes), label: "archetypes" },
   { value: "Free", label: "forever" },
 ];
 
@@ -127,7 +88,7 @@ const faqSchema = {
       "name": "How many AI companion archetypes does MEOK offer?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "MEOK offers 8 archetypes across 27 characters: Companion, Guardian, Sage, Strategist, Scout, Creator, Seeker, and Sovereign. Each archetype has a distinct personality profile, capability set, and emotional intelligence signature."
+        "text": "MEOK offers 5 archetypes across 26 characters: Challenger, Nurturer, Explorer, Sage, and Seeker. Each archetype has a distinct personality profile, capability set, and emotional intelligence signature."
       }
     },
     {
@@ -170,7 +131,7 @@ export default function CharactersPage() {
         <div className="relative z-10 max-w-4xl mx-auto text-center">
           {/* Badge */}
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[rgba(201,168,76,0.3)] bg-[rgba(201,168,76,0.08)] text-[#c9a84c] text-sm font-medium mb-8">
-            ✦ 24 Characters. 7 Archetypes.
+            ✦ {totalCharacters} Characters. {totalArchetypes} Archetypes.
           </div>
 
           {/* H1 */}
@@ -217,7 +178,7 @@ export default function CharactersPage() {
       <section className="px-4 pb-20" aria-label="Companion archetypes">
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {ARCHETYPES.map((archetype) => (
+            {ARCHETYPE_LIST.map((archetype) => (
               <article
                 key={archetype.id}
                 className={`premium-card relative p-7 flex flex-col gap-5 ${
@@ -235,10 +196,10 @@ export default function CharactersPage() {
                 }
               >
                 {/* Lock badge */}
-                {archetype.locked && archetype.lockLabel && (
+                {archetype.locked && (
                   <div className="absolute top-5 right-5 flex items-center gap-1.5 px-3 py-1 rounded-full bg-[rgba(201,168,76,0.15)] border border-[rgba(201,168,76,0.3)] text-[#c9a84c] text-xs font-medium">
                     <span aria-hidden="true">🔒</span>
-                    {archetype.lockLabel}
+                    Family tier
                   </div>
                 )}
 
@@ -369,7 +330,7 @@ export default function CharactersPage() {
               href="/characters/archetypes"
               className="inline-flex items-center gap-2 px-8 py-4 rounded-full border border-[rgba(201,168,76,0.3)] text-[#c9a84c] font-semibold text-lg hover:bg-[rgba(201,168,76,0.08)] transition-colors duration-200"
             >
-              Explore all 24 characters
+              Explore all {totalCharacters} characters
             </Link>
           </div>
         </div>

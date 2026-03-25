@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { stripe } from "@/lib/stripe";
 import Stripe from "stripe";
+import { updateUserTier, type Tier } from "@/lib/db/user";
 
 // Disable body parsing — Stripe needs raw body for signature verification
 export const dynamic = "force-dynamic";
@@ -38,11 +39,14 @@ export async function POST(req: NextRequest) {
   switch (event.type) {
     case "checkout.session.completed": {
       const session = event.data.object as Stripe.Checkout.Session;
-      const { userId, planId } = session.metadata || {};
-      if (userId && planId) {
-        // TODO: Update user tier in DB / Clerk metadata
-        console.log(`[Stripe] User ${userId} activated ${planId} plan`);
-        // await clerkClient.users.updateUserMetadata(userId, { publicMetadata: { plan: planId } });
+      const { userId, planId, tier } = session.metadata || {};
+      if (userId) {
+        const resolvedTier = (tier ?? planId ?? "sovereign") as Tier;
+        const customerId = typeof session.customer === "string" ? session.customer : undefined;
+        const subscriptionId = typeof session.subscription === "string" ? session.subscription : undefined;
+
+        await updateUserTier(userId, resolvedTier, { customerId, subscriptionId });
+        console.log(`[Stripe] User ${userId} activated ${resolvedTier} plan`);
       }
       break;
     }
@@ -67,8 +71,8 @@ export async function POST(req: NextRequest) {
       const sub = event.data.object as Stripe.Subscription;
       const userId = sub.metadata?.userId;
       if (userId) {
-        console.log(`[Stripe] Subscription cancelled for user ${userId}`);
-        // TODO: Downgrade to free tier
+        await updateUserTier(userId, "explorer");
+        console.log(`[Stripe] Subscription cancelled — downgraded user ${userId} to explorer`);
       }
       break;
     }

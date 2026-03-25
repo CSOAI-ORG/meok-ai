@@ -114,7 +114,12 @@ export async function POST(req: NextRequest): Promise<Response> {
         return NextResponse.json(
           {
             error:
-              'Your message was flagged by our safety system. If you are in distress, please reach out to a trusted person or call your local crisis helpline.',
+              'Your message was flagged by our safety system. If you are in distress, please reach out to a trusted person or contact a crisis service:\n\n' +
+              '• UK: Samaritans — call 116 123 (free, 24/7)\n' +
+              '• UK: SHOUT — text 85258\n' +
+              '• US: 988 Suicide & Crisis Lifeline — call or text 988\n' +
+              '• International: befrienders.org\n\n' +
+              'You are not alone.',
             guardian_severity: scan.severity,
             guardian_action: scan.recommended_action,
           },
