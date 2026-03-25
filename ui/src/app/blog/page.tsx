@@ -4322,6 +4322,66 @@ const POSTS = [
     category: "wellbeing",
     featured: false,
   },
+  {
+    slug: "ai-for-parenting-stress",
+    title: "AI for Parenting Stress: When You Love Your Children and Are Overwhelmed by Them",
+    excerpt:
+      "Parenting is one of the most demanding roles in human life \u2014 and one of the least supported. MEOK provides a private space to voice the parts of parenting that feel unspeakable, track patterns in family dynamics, and decompress from the weight of being responsible for another person\u2019s entire world.",
+    date: "April 2, 2026",
+    readTime: "8 min read",
+    tag: "Family",
+    tagColor: "#7b61ff",
+    category: "family",
+    featured: false,
+  },
+  {
+    slug: "meok-vs-pi-ai",
+    title: "MEOK vs Pi AI: Which AI Companion Actually Remembers You?",
+    excerpt:
+      "Pi AI from Inflection was the first major AI companion product. MEOK compares on the dimensions that matter: persistent memory ownership, care-based alignment, data sovereignty, governance architecture, and whether the AI is genuinely aligned to you or to its investor returns.",
+    date: "April 2, 2026",
+    readTime: "7 min read",
+    tag: "Comparison",
+    tagColor: "#c9a84c",
+    category: "comparison",
+    featured: false,
+  },
+  {
+    slug: "ai-for-grief-and-loss",
+    title: "AI for Grief and Loss: Sovereign Support Through the Unscheduled Pain",
+    excerpt:
+      "Grief doesn\u2019t follow office hours. It arrives at 2am, on otherwise ordinary Tuesdays, years after the loss. MEOK provides a companion that holds the full timeline of your grief \u2014 remembering who you lost, how long it\u2019s been, what you\u2019re still carrying \u2014 without a session limit.",
+    date: "April 2, 2026",
+    readTime: "8 min read",
+    tag: "Wellbeing",
+    tagColor: "#6aaa64",
+    category: "wellbeing",
+    featured: false,
+  },
+  {
+    slug: "why-ai-companionship-is-not-a-red-flag",
+    title: "Why AI Companionship Is Not a Red Flag (And When It Might Be)",
+    excerpt:
+      "Mainstream media treats AI companions as a sign of social failure. The research says otherwise: AI companionship can reduce loneliness, support recovery, and bridge gaps in human connection. MEOK explains the evidence, the genuine risks to watch for, and what healthy AI companionship actually looks like.",
+    date: "April 2, 2026",
+    readTime: "8 min read",
+    tag: "Explainer",
+    tagColor: "#c9a84c",
+    category: "explainer",
+    featured: false,
+  },
+  {
+    slug: "ai-for-work-anxiety",
+    title: "AI for Work Anxiety: When the Job You Needed Becomes the Source of Dread",
+    excerpt:
+      "Workplace anxiety is the UK\u2019s most common mental health presentation at work \u2014 affecting 1 in 5 workers. MEOK provides a private space separate from HR, separate from colleagues, where work anxiety can be named honestly and patterns tracked across the working week.",
+    date: "April 2, 2026",
+    readTime: "7 min read",
+    tag: "Work",
+    tagColor: "#c9a84c",
+    category: "work",
+    featured: false,
+  },
 ];
 
 // ── Category filter tabs ──────────────────────────────────────────────────────
