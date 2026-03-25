@@ -3842,6 +3842,66 @@ const POSTS = [
     category: "creativity",
     featured: false,
   },
+  {
+    slug: "ai-for-loneliness-in-cities",
+    title: "AI for Loneliness in Cities: Why London is the Loneliest City in the World",
+    excerpt:
+      "London is the loneliest major city globally. Surrounded by millions but structurally isolated — transience, privacy culture, the death of third places. MEOK provides consistent, memory-rich companionship that bridges the gap between acquaintances and deep friends.",
+    date: "March 26, 2026",
+    readTime: "7 min read",
+    tag: "Connection",
+    tagColor: "#6aaa64",
+    category: "connection",
+    featured: false,
+  },
+  {
+    slug: "meok-vs-character-ai",
+    title: "MEOK vs Character.AI: Why Your AI Companion Needs to Be Sovereign (2026)",
+    excerpt:
+      "Character.AI is popular — but it owns your data, has no Maternal Covenant safety floor, and its limited memory means it never truly knows you. MEOK provides sovereign, memory-rich companionship with the Guardian 24/7 safety layer Character.AI lacks.",
+    date: "March 26, 2026",
+    readTime: "9 min read",
+    tag: "Comparison",
+    tagColor: "#c9a84c",
+    category: "comparison",
+    featured: false,
+  },
+  {
+    slug: "ai-for-grief-of-miscarriage",
+    title: "AI for the Grief of Miscarriage: How MEOK Holds What Others Often Can\u2019t",
+    excerpt:
+      "1 in 4 pregnancies ends in miscarriage. Yet this grief is profoundly disenfranchised — invisible, minimised, rushed past. MEOK\u2019s Healer archetype holds space for this specific loss without timeline pressure. Your grief is held privately and permanently.",
+    date: "March 26, 2026",
+    readTime: "8 min read",
+    tag: "Mental Health",
+    tagColor: "#c9a84c",
+    category: "mental-health",
+    featured: false,
+  },
+  {
+    slug: "ai-for-retirement-transition",
+    title: "AI for Retirement Transition: How MEOK Helps You Build the Third Act",
+    excerpt:
+      "Retirement isn\u2019t just leaving a job — it\u2019s leaving a role, a community, a daily structure, a sense of purpose. Depression rates in the first year are high. MEOK\u2019s sovereign AI supports the multi-year identity transition of building what comes next.",
+    date: "March 26, 2026",
+    readTime: "8 min read",
+    tag: "Wellbeing",
+    tagColor: "#6aaa64",
+    category: "wellbeing",
+    featured: false,
+  },
+  {
+    slug: "ai-for-long-covid",
+    title: "AI for Long COVID: How MEOK Supports the Invisible Illness",
+    excerpt:
+      "2 million UK people have Long COVID — fluctuating symptoms, medical gaslighting, grief for a former self. MEOK tracks patterns across sessions, holds space for the uncertainty, and helps you articulate your experience to a medical system that often doesn\u2019t listen.",
+    date: "March 26, 2026",
+    readTime: "8 min read",
+    tag: "Wellbeing",
+    tagColor: "#6aaa64",
+    category: "wellbeing",
+    featured: false,
+  },
 ];
 
 // ── Category filter tabs ──────────────────────────────────────────────────────

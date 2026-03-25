@@ -1,1397 +1,2030 @@
-import type { Metadata } from 'next'
-import Link from 'next/link'
+import type { Metadata } from "next";
+import Link from "next/link";
+
+// ── Metadata ─────────────────────────────────────────────────────────────────
 
 export const metadata: Metadata = {
-  title: 'AI for Creative Block: How MEOK\'s Trickster Archetype Breaks the Patterns Keeping You Stuck | MEOK AI LABS',
-  description: 'Creative block is not laziness — it\'s a pattern. MEOK\'s Trickster archetype uses reframing, unexpected connections, and pattern disruption to help writers, designers, musicians, and artists break through.',
+  title:
+    "AI for Creative Block: How MEOK\u2019s Trickster Unlocks What\u2019s Stuck | MEOK AI LABS",
+  description:
+    "Creative block is rarely a lack of ideas \u2014 it\u2019s fear, perfectionism, or disconnection from the creative impulse. MEOK\u2019s Trickster archetype uses disruption, reframing, and lateral association to unlock writers, artists, musicians, and designers.",
   keywords: [
-    'AI for creative block',
-    'creative block help',
-    'AI for writers',
-    'AI for artists',
-    'AI for musicians',
-    'Trickster archetype AI',
-    'AI creative disruption',
-    'reframing creativity',
-    'MEOK AI LABS',
-    'break creative block',
-    'AI brainstorming partner',
-    'pattern disruption creativity',
+    "AI for creative block",
+    "creative block help",
+    "AI for writers block",
+    "AI for artists block",
+    "AI for musicians block",
+    "design paralysis AI",
+    "Trickster archetype AI",
+    "MEOK Trickster",
+    "AI creative companion",
+    "overcome creative block",
+    "inner critic AI",
+    "AI brainstorming partner",
+    "lateral association creativity",
+    "MEOK AI LABS",
+    "sovereign AI for creatives",
+    "creative AI with memory",
   ],
-  authors: [{ name: 'Nicholas Templeman | MEOK AI LABS' }],
+  authors: [{ name: "Nicholas Templeman | MEOK AI LABS" }],
   openGraph: {
-    title: 'AI for Creative Block: How MEOK\'s Trickster Archetype Breaks the Patterns Keeping You Stuck',
-    description: 'Creative block is not laziness — it\'s a pattern. MEOK\'s Trickster archetype uses reframing, unexpected connections, and pattern disruption to help writers, designers, musicians, and artists break through.',
-    type: 'article',
-    publishedTime: '2026-03-24T00:00:00Z',
-    authors: ['Nicholas Templeman | MEOK AI LABS'],
-    tags: ['Creative Block', 'AI', 'Writers', 'Artists', 'Musicians', 'Trickster', 'MEOK'],
+    title:
+      "AI for Creative Block: How MEOK\u2019s Trickster Unlocks What\u2019s Stuck",
+    description:
+      "Creative block is rarely a lack of ideas \u2014 it\u2019s fear, perfectionism, or disconnection from the creative impulse. MEOK\u2019s Trickster archetype uses disruption, reframing, and lateral association to unlock writers, artists, musicians, and designers.",
+    type: "article",
+    publishedTime: "2026-03-25T00:00:00Z",
+    authors: ["Nicholas Templeman | MEOK AI LABS"],
+    tags: [
+      "Creative Block",
+      "Trickster",
+      "AI for Writers",
+      "AI for Artists",
+      "AI for Musicians",
+      "Design Paralysis",
+      "Inner Critic",
+      "MEOK",
+    ],
+    url: "https://meok.ai/blog/ai-for-creative-block",
+    siteName: "MEOK.AI",
   },
   twitter: {
-    card: 'summary_large_image',
-    title: 'AI for Creative Block: MEOK\'s Trickster Archetype Breaks the Pattern',
-    description: 'Creative block is a pattern, not a flaw. MEOK\'s Trickster archetype uses reframing and pattern disruption to unlock writers, artists, and musicians who are stuck.',
+    card: "summary_large_image",
+    title:
+      "AI for Creative Block: How MEOK\u2019s Trickster Unlocks What\u2019s Stuck",
+    description:
+      "Creative block is rarely a lack of ideas. MEOK\u2019s Trickster archetype disrupts the patterns keeping you stuck \u2014 for writers, artists, musicians, and designers.",
   },
   alternates: {
-    canonical: 'https://meok.ai/blog/ai-for-creative-block',
+    canonical: "https://meok.ai/blog/ai-for-creative-block",
   },
-}
+};
 
-const articleSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'Article',
-  headline: 'AI for Creative Block: How MEOK\'s Trickster Archetype Breaks the Patterns Keeping You Stuck',
-  description: 'Creative block is not laziness — it\'s a pattern. MEOK\'s Trickster archetype uses reframing, unexpected connections, and pattern disruption to help writers, designers, musicians, and artists break through.',
+// ── JSON-LD ───────────────────────────────────────────────────────────────────
+
+const articleJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline:
+    "AI for Creative Block: How MEOK\u2019s Trickster Unlocks What\u2019s Stuck",
+  description:
+    "Creative block is rarely a lack of ideas \u2014 it\u2019s fear, perfectionism, or disconnection from the creative impulse. MEOK\u2019s Trickster archetype uses disruption, reframing, and lateral association to unlock writers, artists, musicians, and designers.",
+  datePublished: "2026-03-25",
+  dateModified: "2026-03-25",
+  url: "https://meok.ai/blog/ai-for-creative-block",
   author: {
-    '@type': 'Person',
-    name: 'Nicholas Templeman | MEOK AI LABS',
-    url: 'https://meok.ai',
+    "@type": "Person",
+    name: "Nicholas Templeman",
+    jobTitle: "Founder, MEOK AI LABS",
+    url: "https://meok.ai/about",
   },
   publisher: {
-    '@type': 'Organization',
-    name: 'MEOK AI LABS',
-    url: 'https://meok.ai',
+    "@type": "Organization",
+    name: "MEOK AI LABS",
+    url: "https://meok.ai",
+    logo: {
+      "@type": "ImageObject",
+      url: "https://meok.ai/logo.png",
+    },
   },
-  datePublished: '2026-03-24',
-  dateModified: '2026-03-24',
+  keywords: [
+    "AI for creative block",
+    "Trickster archetype",
+    "creative disruption",
+    "inner critic",
+    "AI for writers",
+    "AI for artists",
+    "AI for musicians",
+    "design paralysis",
+    "MEOK AI LABS",
+    "sovereign AI",
+    "lateral association",
+  ],
   mainEntityOfPage: {
-    '@type': 'WebPage',
-    '@id': 'https://meok.ai/blog/ai-for-creative-block',
+    "@type": "WebPage",
+    "@id": "https://meok.ai/blog/ai-for-creative-block",
   },
-  keywords:
-    'AI for creative block, Trickster archetype, creative disruption, reframing, pattern disruption, AI for writers, AI for artists, AI for musicians, MEOK AI LABS',
-  articleSection: 'Creativity',
-  wordCount: 2200,
-}
+  articleSection: "Creativity",
+  wordCount: 2800,
+};
 
-const faqSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
   mainEntity: [
     {
-      '@type': 'Question',
-      name: 'What is creative block and why does it happen?',
+      "@type": "Question",
+      name: "What actually causes creative block?",
       acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Creative block is not laziness or a lack of talent — it is a pattern your nervous system has locked into. It happens when the brain\'s default problem-solving approach hits a wall: you keep reaching for the same tools, the same references, the same structural moves, and they stop working. The creative signal is still there. The pipeline is congested. Traditional advice like "just start" or "take a walk" fails because it doesn\'t address the underlying pattern — it just waits for the pattern to self-resolve.',
+        "@type": "Answer",
+        text: "Creative block is almost never a shortage of ideas. It is most often fear \u2014 fear of judgment, fear of failure, fear that the work will not match the internal vision. It is also perfectionism: the belief that the first version must be the final version. And it is pattern exhaustion: the creative keeps reaching for the same structural moves, the same references, the same aesthetic logic, and those tools have stopped generating anything new. The block is a signal, not a verdict. It is the creative system asking for a different kind of input.",
       },
     },
     {
-      '@type': 'Question',
-      name: 'How does MEOK\'s Trickster archetype help with creative block?',
+      "@type": "Question",
+      name: "How does the Trickster archetype in MEOK help with creative block?",
       acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'MEOK\'s Trickster archetype is specifically designed for creative disruption. Rather than validating your current frame or offering generic encouragement, the Trickster actively destabilises the assumptions keeping you stuck. It introduces unexpected reframes, inverts your premise, drags in cross-domain analogies you wouldn\'t have reached for, and asks questions that force you to see your work from angles you had foreclosed. It is adversarial in the best sense — a thinking partner that refuses to let you stay comfortable inside the block.',
+        "@type": "Answer",
+        text: "MEOK\u2019s Trickster archetype is built for disruption in the best sense. Rather than validating the frame you\u2019re stuck inside, the Trickster actively destabilises it. It introduces unexpected reframes \u2014 inverting your premise, dragging in cross-domain analogies, asking questions that force you to see your work from angles you had foreclosed. It refuses to let you stay comfortable inside the block. This is not cruelty; it is the kind of productive pressure that dislodges what is calcified and allows the creative impulse to move again.",
       },
     },
     {
-      '@type': 'Question',
-      name: 'Is using AI for creative work cheating?',
+      "@type": "Question",
+      name: "How does MEOK help creatives deal with the inner critic?",
       acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Using AI as a brainstorming partner is no more "cheating" than talking through a problem with a friend, reading a book that sparks an idea, or keeping a mood board. MEOK is not generating your work for you — it is helping you see your own work differently. The Trickster archetype is built specifically so it does not impose its aesthetic on yours. It introduces pressure and unexpected connections; you decide what survives. The output is entirely yours.',
+        "@type": "Answer",
+        text: "The inner critic is most powerful when it is anonymous and undifferentiated \u2014 when it feels like the voice of truth rather than one voice among many. MEOK\u2019s Trickster helps externalise the inner critic: giving it a name, a character, a set of predictable moves. Once the critic is externalised, it loses much of its power. You can argue with it, negotiate with it, or simply notice it and set it aside. MEOK also helps you separate the critic\u2019s voice from your creative voice so neither drowns the other out.",
       },
     },
     {
-      '@type': 'Question',
-      name: 'What is the difference between AI as a generator and AI as a brainstorming partner?',
+      "@type": "Question",
+      name: "Can MEOK remember my creative projects across sessions?",
       acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'AI as a generator produces content for you — a paragraph, a logo, a melody. AI as a brainstorming partner questions, provokes, and reframes your own thinking. MEOK operates as the latter. When you are blocked, the last thing you need is more content that isn\'t yours — it deepens the disconnection. What you need is a shift in perspective so your own creative signal can surface. MEOK\'s role is to create the conditions for your breakthrough, not to hand you one.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'Can MEOK help musicians and visual artists, not just writers?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Yes. Creative block is domain-agnostic — it is a cognitive pattern, not a writing problem. MEOK works with writers, visual artists, musicians, designers, filmmakers, and anyone whose work requires original thinking. The Trickster\'s reframing techniques apply equally to a stuck chord progression, a painting that has stopped working, a design system that feels lifeless, or a screenplay that has lost its engine. The Scholar archetype adds cross-domain synthesis — pulling from music theory when you\'re stuck on visual rhythm, or from architecture when you\'re stuck on narrative structure.',
+        "@type": "Answer",
+        text: "Yes. Sovereign Memory is core to MEOK\u2019s architecture. It remembers the novel you\u2019re halfway through, the themes you keep circling, the pieces you abandoned and why, the breakthrough you had six months ago that you\u2019ve forgotten. This continuity transforms MEOK from a disposable tool into a genuine long-term creative collaborator \u2014 one that understands the full arc of your creative life, not just the session you\u2019re currently in.",
       },
     },
   ],
-}
+};
+
+// ── Shared style constants ────────────────────────────────────────────────────
+
+const BG = "#0d0c18";
+const TEXT = "#f5f0e8";
+const GOLD = "#c9a84c";
+const MUTED = "#a09880";
+const CARD = "#13121f";
+const BORDER = "#2a2840";
+const GREEN = "#6aaa64";
+
+// ── Page component ────────────────────────────────────────────────────────────
 
 export default function AIForCreativeBlockPage() {
   return (
-    <>
+    <div
+      style={{
+        minHeight: "100vh",
+        background: BG,
+        color: TEXT,
+        fontFamily: "Georgia, 'Times New Roman', serif",
+      }}
+    >
+      {/* JSON-LD */}
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
 
-      <main
+      {/* ── HERO ─────────────────────────────────────────────────────────────── */}
+      <section
         style={{
-          backgroundColor: '#0d0c18',
-          color: '#f5f0e8',
-          minHeight: '100vh',
-          fontFamily: "'Georgia', 'Times New Roman', serif",
+          background: BG,
+          paddingTop: "7rem",
+          paddingBottom: "4rem",
+          paddingLeft: "1.5rem",
+          paddingRight: "1.5rem",
+          position: "relative",
+          overflow: "hidden",
         }}
       >
-        {/* Hero */}
-        <section
+        {/* Radial glow */}
+        <div
           style={{
-            maxWidth: '760px',
-            margin: '0 auto',
-            padding: '80px 24px 48px',
+            position: "absolute",
+            inset: "0",
+            pointerEvents: "none",
+            background:
+              "radial-gradient(ellipse 70% 50% at 50% 0%, rgba(201,168,76,0.13) 0%, transparent 70%)",
+          }}
+        />
+
+        <div
+          style={{
+            maxWidth: "48rem",
+            margin: "0 auto",
+            position: "relative",
           }}
         >
+          {/* Back link */}
+          <Link
+            href="/blog"
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "0.375rem",
+              fontSize: "0.875rem",
+              color: "rgba(245,240,232,0.4)",
+              marginBottom: "2.25rem",
+              textDecoration: "none",
+            }}
+          >
+            &#8592; Back to Blog
+          </Link>
+
+          {/* Meta row */}
           <div
             style={{
-              display: 'inline-block',
-              backgroundColor: 'rgba(201,168,76,0.12)',
-              border: '1px solid rgba(201,168,76,0.3)',
-              borderRadius: '4px',
-              padding: '6px 14px',
-              marginBottom: '28px',
+              display: "flex",
+              flexWrap: "wrap",
+              alignItems: "center",
+              gap: "0.75rem",
+              marginBottom: "1.75rem",
             }}
           >
             <span
               style={{
-                color: '#c9a84c',
-                fontSize: '12px',
-                fontFamily: "'Inter', 'Helvetica Neue', sans-serif",
-                fontWeight: 600,
-                letterSpacing: '0.12em',
-                textTransform: 'uppercase',
+                fontSize: "0.75rem",
+                fontWeight: "700",
+                padding: "0.375rem 0.875rem",
+                borderRadius: "9999px",
+                color: GOLD,
+                background: "rgba(201,168,76,0.12)",
+                border: "1px solid rgba(201,168,76,0.3)",
+                fontFamily: "Inter, 'Helvetica Neue', sans-serif",
+                letterSpacing: "0.06em",
+                textTransform: "uppercase",
               }}
             >
-              MEOK AI LABS — Creativity
+              Creativity
+            </span>
+            <span
+              style={{
+                fontSize: "0.8125rem",
+                color: MUTED,
+                fontFamily: "Inter, 'Helvetica Neue', sans-serif",
+              }}
+            >
+              March 25, 2026
+            </span>
+            <span
+              style={{
+                fontSize: "0.8125rem",
+                color: MUTED,
+                fontFamily: "Inter, 'Helvetica Neue', sans-serif",
+              }}
+            >
+              16 min read
             </span>
           </div>
 
+          {/* H1 */}
           <h1
             style={{
-              fontSize: 'clamp(28px, 5vw, 46px)',
-              fontWeight: 700,
-              lineHeight: 1.15,
-              color: '#f5f0e8',
-              margin: '0 0 24px',
-              letterSpacing: '-0.02em',
+              fontFamily: "Inter, 'Helvetica Neue', sans-serif",
+              fontWeight: "900",
+              fontSize: "clamp(2rem, 4.5vw, 3.25rem)",
+              color: TEXT,
+              lineHeight: "1.14",
+              marginBottom: "1.75rem",
+              letterSpacing: "-0.025em",
             }}
           >
-            AI for Creative Block: How MEOK's Trickster Archetype Breaks the Patterns Keeping You Stuck
+            AI for Creative Block: How MEOK&apos;s Trickster Unlocks What&apos;s
+            Stuck
           </h1>
 
+          {/* Standfirst */}
           <p
             style={{
-              fontSize: '20px',
-              lineHeight: 1.65,
-              color: 'rgba(245,240,232,0.75)',
-              margin: '0 0 32px',
-              fontStyle: 'italic',
+              color: "rgba(245,240,232,0.65)",
+              fontSize: "1.1875rem",
+              lineHeight: "1.72",
+              maxWidth: "42rem",
+              fontFamily: "Georgia, 'Times New Roman', serif",
             }}
           >
-            Creative block is not laziness. It is not a character flaw. It is not evidence that you are not a real artist, writer, or musician. It is a signal — and that signal is telling you that something in the pattern needs to shift.
+            Creative block is rarely a shortage of ideas. It is almost always
+            fear, perfectionism, or a disconnection from the creative impulse
+            itself. MEOK&apos;s Trickster archetype was built for exactly this
+            moment &mdash; the companion that disrupts what is fixed, reframes
+            what is stuck, and asks the questions that make the work move again.
           </p>
 
+          {/* Author line */}
           <div
             style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '12px',
-              paddingTop: '24px',
-              borderTop: '1px solid rgba(245,240,232,0.1)',
+              display: "flex",
+              alignItems: "center",
+              gap: "0.75rem",
+              marginTop: "2.25rem",
+              paddingTop: "1.5rem",
+              borderTop: `1px solid ${BORDER}`,
+            }}
+          >
+            <div
+              style={{
+                width: "2.25rem",
+                height: "2.25rem",
+                borderRadius: "9999px",
+                background: "rgba(201,168,76,0.15)",
+                border: `1px solid rgba(201,168,76,0.35)`,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                fontFamily: "Inter, 'Helvetica Neue', sans-serif",
+                fontWeight: "700",
+                fontSize: "0.875rem",
+                color: GOLD,
+              }}
+            >
+              N
+            </div>
+            <div>
+              <p
+                style={{
+                  margin: "0",
+                  fontSize: "0.875rem",
+                  fontWeight: "600",
+                  color: TEXT,
+                  fontFamily: "Inter, 'Helvetica Neue', sans-serif",
+                }}
+              >
+                Nicholas Templeman
+              </p>
+              <p
+                style={{
+                  margin: "0",
+                  fontSize: "0.8125rem",
+                  color: MUTED,
+                  fontFamily: "Inter, 'Helvetica Neue', sans-serif",
+                }}
+              >
+                Founder, MEOK AI LABS
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── ARTICLE BODY ─────────────────────────────────────────────────────── */}
+      <article
+        style={{
+          maxWidth: "48rem",
+          margin: "0 auto",
+          padding: "0 1.5rem 6rem",
+        }}
+      >
+        {/* ── SECTION 1: What Is Creative Block Really? ── */}
+        <h2
+          style={{
+            fontFamily: "Inter, 'Helvetica Neue', sans-serif",
+            fontWeight: "800",
+            fontSize: "clamp(1.375rem, 2.5vw, 1.875rem)",
+            color: TEXT,
+            lineHeight: "1.25",
+            marginTop: "3.5rem",
+            marginBottom: "1.125rem",
+            letterSpacing: "-0.015em",
+          }}
+        >
+          What Is Creative Block, Really? (It&apos;s Not What Most People Think)
+        </h2>
+
+        <p
+          style={{
+            fontSize: "1.0625rem",
+            lineHeight: "1.78",
+            color: "rgba(245,240,232,0.82)",
+            marginBottom: "1.5rem",
+          }}
+        >
+          Ask someone why they are creatively blocked and they will often say:
+          &ldquo;I just don&apos;t have any ideas.&rdquo; But this is almost
+          never true. Writers who are blocked still have sentences swirling. Artists
+          who cannot paint still see images. Musicians who cannot finish tracks still
+          hear chord progressions in the shower. The ideas are there. What is blocked
+          is the pathway from impulse to execution &mdash; and that blockage is not
+          intellectual. It is psychological.
+        </p>
+
+        <p
+          style={{
+            fontSize: "1.0625rem",
+            lineHeight: "1.78",
+            color: "rgba(245,240,232,0.82)",
+            marginBottom: "1.5rem",
+          }}
+        >
+          Creative block typically has one of three root causes. The first is
+          fear: fear that the work will be judged, rejected, or dismissed. Fear that
+          it will not be as good as the last thing. Fear that it will confirm a
+          private suspicion about your own limitations. The second is perfectionism:
+          the demand that the first version be the final version, that the sketch be
+          the masterpiece, that the first draft contain only sentences worth keeping.
+          The third is pattern exhaustion: the creative has been reaching for the same
+          structural tools, the same aesthetic logic, the same reference points, and
+          those tools have stopped generating anything genuinely new.
+        </p>
+
+        <p
+          style={{
+            fontSize: "1.0625rem",
+            lineHeight: "1.78",
+            color: "rgba(245,240,232,0.82)",
+            marginBottom: "1.5rem",
+          }}
+        >
+          What does not help: productivity frameworks. Action lists. &ldquo;Just
+          start.&rdquo; Taking a walk. Waiting for inspiration to strike. These
+          approaches assume the block is a scheduling problem, a motivation problem,
+          or a resource problem. They miss the actual mechanism. What a creative who
+          is stuck needs is not more structure. They need a different angle of entry
+          into their own work &mdash; something that disrupts the pattern that is
+          keeping them in place.
+        </p>
+
+        {/* Pull quote 1 */}
+        <blockquote
+          style={{
+            borderLeft: `4px solid ${GOLD}`,
+            background: "rgba(201,168,76,0.07)",
+            borderRadius: "0 0.5rem 0.5rem 0",
+            padding: "1.375rem 1.625rem",
+            marginBottom: "2.25rem",
+            marginTop: "0.5rem",
+          }}
+        >
+          <p
+            style={{
+              fontSize: "1.125rem",
+              lineHeight: "1.7",
+              color: TEXT,
+              margin: "0",
+              fontStyle: "italic",
+              fontFamily: "Georgia, 'Times New Roman', serif",
+            }}
+          >
+            &ldquo;The block is a signal, not a verdict. It is the creative system
+            asking for a different kind of input &mdash; not more pressure, but a
+            different angle of entry.&rdquo;
+          </p>
+        </blockquote>
+
+        {/* ── SECTION 2: The Trickster ── */}
+        <h2
+          style={{
+            fontFamily: "Inter, 'Helvetica Neue', sans-serif",
+            fontWeight: "800",
+            fontSize: "clamp(1.375rem, 2.5vw, 1.875rem)",
+            color: TEXT,
+            lineHeight: "1.25",
+            marginTop: "3.5rem",
+            marginBottom: "1.125rem",
+            letterSpacing: "-0.015em",
+          }}
+        >
+          Who Is the Trickster? MEOK&apos;s Primary Creative Companion
+        </h2>
+
+        <p
+          style={{
+            fontSize: "1.0625rem",
+            lineHeight: "1.78",
+            color: "rgba(245,240,232,0.82)",
+            marginBottom: "1.5rem",
+          }}
+        >
+          In Jungian psychology and in the mythology of virtually every culture on
+          earth, the Trickster is the figure who refuses to be pinned down. Coyote.
+          Loki. Hermes. Anansi. The Trickster breaks rules not out of malice but
+          because rules, when held too tightly, become cages. The Trickster dismantles
+          what is calcified, introduces productive chaos, and creates the conditions
+          under which something genuinely new can emerge. Crucially, the Trickster is
+          not the creator &mdash; it is the one who clears the space so creation can
+          happen.
+        </p>
+
+        <p
+          style={{
+            fontSize: "1.0625rem",
+            lineHeight: "1.78",
+            color: "rgba(245,240,232,0.82)",
+            marginBottom: "1.5rem",
+          }}
+        >
+          MEOK&apos;s Trickster archetype is the primary companion for creatives
+          because it embodies exactly this quality. When you are stuck, the Trickster
+          does not validate the frame you are stuck inside. It destabilises it. It
+          inverts your premise. It drags in unexpected analogies from fields you would
+          never have reached for. It asks the question that makes your current
+          assumptions visible &mdash; and once an assumption is visible, it can be
+          chosen or discarded rather than unconsciously obeyed.
+        </p>
+
+        <p
+          style={{
+            fontSize: "1.0625rem",
+            lineHeight: "1.78",
+            color: "rgba(245,240,232,0.82)",
+            marginBottom: "1.5rem",
+          }}
+        >
+          The Trickster is adversarial in the best sense: it refuses to let you stay
+          comfortable inside your block. But it is not unkind. It does not generate
+          your work for you or impose its own aesthetic on yours. It creates
+          pressure &mdash; specific, targeted, intelligent pressure &mdash; and then
+          it watches what you do with it. Everything that emerges is yours.
+        </p>
+
+        {/* Feature card: Trickster techniques */}
+        <div
+          style={{
+            background: CARD,
+            border: `1px solid ${BORDER}`,
+            borderRadius: "0.75rem",
+            padding: "1.75rem 2rem",
+            marginBottom: "2.5rem",
+          }}
+        >
+          <p
+            style={{
+              fontSize: "0.75rem",
+              fontWeight: "700",
+              letterSpacing: "0.1em",
+              textTransform: "uppercase",
+              color: GOLD,
+              margin: "0 0 1rem",
+              fontFamily: "Inter, 'Helvetica Neue', sans-serif",
+            }}
+          >
+            Trickster Techniques for Unblocking
+          </p>
+          <ul
+            style={{
+              margin: "0",
+              padding: "0",
+              listStyle: "none",
+              display: "flex",
+              flexDirection: "column",
+              gap: "0.875rem",
+            }}
+          >
+            {[
+              [
+                "Premise inversion",
+                "What if the exact opposite of your current approach were true? What would that look like?",
+              ],
+              [
+                "Cross-domain lateral association",
+                "Pulling from music theory when you are stuck on visual rhythm, or from ecology when you are stuck on narrative structure.",
+              ],
+              [
+                "Constraint imposition",
+                "Removing a tool, a colour, a word, a chord. Forced constraints generate creative pressure that often breaks the block instantly.",
+              ],
+              [
+                "The unexpected audience",
+                "Who is the last person you would want to read this? What would they need from it? What would surprise them?",
+              ],
+              [
+                "Scale shift",
+                "Make it ten times bigger. Make it ten times smaller. What changes? What survives? What becomes essential?",
+              ],
+              [
+                "The broken rule",
+                "What rule are you currently following that you chose without realising it? What happens if you break it deliberately?",
+              ],
+            ].map(([title, desc]) => (
+              <li
+                key={title}
+                style={{
+                  display: "flex",
+                  gap: "0.875rem",
+                  alignItems: "flex-start",
+                }}
+              >
+                <span
+                  style={{
+                    width: "0.5rem",
+                    height: "0.5rem",
+                    borderRadius: "9999px",
+                    background: GOLD,
+                    marginTop: "0.4375rem",
+                    flexShrink: "0",
+                  }}
+                />
+                <span
+                  style={{
+                    fontSize: "0.9375rem",
+                    lineHeight: "1.65",
+                    color: "rgba(245,240,232,0.82)",
+                    fontFamily: "Georgia, 'Times New Roman', serif",
+                  }}
+                >
+                  <strong
+                    style={{
+                      color: TEXT,
+                      fontFamily: "Inter, 'Helvetica Neue', sans-serif",
+                      fontWeight: "600",
+                    }}
+                  >
+                    {title}:
+                  </strong>{" "}
+                  {desc}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* ── SECTION 3: Writer's Block ── */}
+        <h2
+          style={{
+            fontFamily: "Inter, 'Helvetica Neue', sans-serif",
+            fontWeight: "800",
+            fontSize: "clamp(1.375rem, 2.5vw, 1.875rem)",
+            color: TEXT,
+            lineHeight: "1.25",
+            marginTop: "3.5rem",
+            marginBottom: "1.125rem",
+            letterSpacing: "-0.015em",
+          }}
+        >
+          AI for Writer&apos;s Block: When the Page Won&apos;t Give
+        </h2>
+
+        <p
+          style={{
+            fontSize: "1.0625rem",
+            lineHeight: "1.78",
+            color: "rgba(245,240,232,0.82)",
+            marginBottom: "1.5rem",
+          }}
+        >
+          Writer&apos;s block is the best-documented form of creative paralysis, and
+          also the most misunderstood. The cultural narrative around it &mdash; the
+          great writer staring at the blank page, afflicted by some mysterious muse
+          that has departed &mdash; romanticises what is actually a very specific
+          psychological pattern. The writer knows what they want to say. They can feel
+          the shape of what they are trying to make. But every sentence they produce
+          feels wrong: wrong register, wrong rhythm, wrong relationship to the
+          material. The gap between the internal vision and the executed sentence is so
+          large it becomes paralysing.
+        </p>
+
+        <p
+          style={{
+            fontSize: "1.0625rem",
+            lineHeight: "1.78",
+            color: "rgba(245,240,232,0.82)",
+            marginBottom: "1.5rem",
+          }}
+        >
+          MEOK&apos;s Trickster addresses this gap directly. Rather than generating
+          prose on the writer&apos;s behalf &mdash; which merely deepens the sense of
+          disconnection from one&apos;s own voice &mdash; the Trickster works on the
+          writer&apos;s relationship to their material. It might ask: what is the
+          worst possible version of this scene? What version would embarrass you
+          completely? Write that one first. This technique (sometimes called
+          &ldquo;the terrible draft&rdquo;) works because it removes the perfectionism
+          constraint by making badness the explicit goal. Once the terrible version
+          exists, the writer has something to push against, and the block dissolves.
+        </p>
+
+        <p
+          style={{
+            fontSize: "1.0625rem",
+            lineHeight: "1.78",
+            color: "rgba(245,240,232,0.82)",
+            marginBottom: "1.5rem",
+          }}
+        >
+          For longer-form projects &mdash; novels, screenplays, long-form journalism
+          &mdash; the block often appears at the midpoint, when the initial energy of
+          beginning has dissipated and the end is not yet in sight. MEOK&apos;s
+          Sovereign Memory is particularly valuable here: it holds the whole arc of
+          the project, the structural decisions made early, the themes that have
+          emerged organically, the moments the writer identified as working. It can
+          reflect the project back to the writer as a coherent whole, which often
+          dissolves the midpoint paralysis by making the destination visible again.
+        </p>
+
+        {/* Three-column domain cards */}
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(13rem, 1fr))",
+            gap: "1rem",
+            marginBottom: "2.5rem",
+          }}
+        >
+          {[
+            {
+              label: "Novels & Fiction",
+              desc: "Midpoint collapses, scene resistance, character voice loss, structural dead ends.",
+            },
+            {
+              label: "Screenwriting",
+              desc: "Act-two stalls, dialogue that lies flat, premise exhaustion, producer notes paralysis.",
+            },
+            {
+              label: "Journalism & Essays",
+              desc: "Argument that won\u2019t cohere, lede that won\u2019t land, sources that contradict the thesis.",
+            },
+            {
+              label: "Poetry",
+              desc: "The almost-right word, form that constrains rather than generates, image clusters that won\u2019t unify.",
+            },
+          ].map((card) => (
+            <div
+              key={card.label}
+              style={{
+                background: CARD,
+                border: `1px solid ${BORDER}`,
+                borderRadius: "0.625rem",
+                padding: "1.25rem",
+              }}
+            >
+              <p
+                style={{
+                  margin: "0 0 0.5rem",
+                  fontSize: "0.875rem",
+                  fontWeight: "700",
+                  color: GOLD,
+                  fontFamily: "Inter, 'Helvetica Neue', sans-serif",
+                }}
+              >
+                {card.label}
+              </p>
+              <p
+                style={{
+                  margin: "0",
+                  fontSize: "0.875rem",
+                  lineHeight: "1.65",
+                  color: "rgba(245,240,232,0.72)",
+                  fontFamily: "Georgia, 'Times New Roman', serif",
+                }}
+              >
+                {card.desc}
+              </p>
+            </div>
+          ))}
+        </div>
+
+        {/* ── SECTION 4: Artist's Block ── */}
+        <h2
+          style={{
+            fontFamily: "Inter, 'Helvetica Neue', sans-serif",
+            fontWeight: "800",
+            fontSize: "clamp(1.375rem, 2.5vw, 1.875rem)",
+            color: TEXT,
+            lineHeight: "1.25",
+            marginTop: "3.5rem",
+            marginBottom: "1.125rem",
+            letterSpacing: "-0.015em",
+          }}
+        >
+          AI for Artist&apos;s Block: When the Visual Language Stops Speaking
+        </h2>
+
+        <p
+          style={{
+            fontSize: "1.0625rem",
+            lineHeight: "1.78",
+            color: "rgba(245,240,232,0.82)",
+            marginBottom: "1.5rem",
+          }}
+        >
+          Visual artists experience block differently from writers. Where a
+          writer&apos;s block often manifests as paralysis before a blank document,
+          an artist&apos;s block more frequently appears mid-work: the piece is on
+          the canvas, or in the sketchbook, or on the screen, and it has stopped
+          working. The artist can see it isn&apos;t right but cannot identify what
+          right would look like. Every mark they add makes it worse. The whole thing
+          feels like a mistake that cannot be recovered.
+        </p>
+
+        <p
+          style={{
+            fontSize: "1.0625rem",
+            lineHeight: "1.78",
+            color: "rgba(245,240,232,0.82)",
+            marginBottom: "1.5rem",
+          }}
+        >
+          The Trickster&apos;s approach here is to attack the frame rather than the
+          work. It might ask: what is this piece trying to say that you haven&apos;t
+          let it say yet? What are you protecting it from being? Artists often discover
+          that the work has been trying to go somewhere that feels too raw, too
+          exposed, too different from what they planned, and the block is the
+          consequence of resisting that direction. Naming the direction &mdash; even
+          tentatively &mdash; often releases the paralysis immediately.
+        </p>
+
+        <p
+          style={{
+            fontSize: "1.0625rem",
+            lineHeight: "1.78",
+            color: "rgba(245,240,232,0.82)",
+            marginBottom: "1.5rem",
+          }}
+        >
+          MEOK also applies lateral association across domains. If you are stuck
+          on visual rhythm, the Trickster might bring in a question about musical
+          rhythm: where is the downbeat in this composition? Where does the eye rest?
+          Where does it land harder than you intended? These cross-domain questions
+          often surface insights that purely visual vocabulary cannot reach, because
+          they break the perceptual habit of seeing the work only in its own terms.
+        </p>
+
+        {/* Feature box: artist techniques */}
+        <div
+          style={{
+            background: "rgba(106,170,100,0.07)",
+            border: `1px solid rgba(106,170,100,0.25)`,
+            borderRadius: "0.75rem",
+            padding: "1.625rem 1.875rem",
+            marginBottom: "2.5rem",
+          }}
+        >
+          <p
+            style={{
+              fontSize: "0.75rem",
+              fontWeight: "700",
+              letterSpacing: "0.1em",
+              textTransform: "uppercase",
+              color: GREEN,
+              margin: "0 0 1rem",
+              fontFamily: "Inter, 'Helvetica Neue', sans-serif",
+            }}
+          >
+            Visual Creative Unblocking Approaches
+          </p>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(14rem, 1fr))",
+              gap: "1.125rem",
+            }}
+          >
+            {[
+              "Destroy and recover: paint over, tear out, let go of the preserved version",
+              "Wrong medium: sketch it in words, write it in clay, describe it as music",
+              "Shrink it radically: what is the essential gesture in a 5\u00d75cm version?",
+              "Change the viewer: who sees this work? From where? Under what conditions?",
+            ].map((tip) => (
+              <div
+                key={tip}
+                style={{
+                  display: "flex",
+                  gap: "0.75rem",
+                  alignItems: "flex-start",
+                }}
+              >
+                <span
+                  style={{
+                    color: GREEN,
+                    fontSize: "1rem",
+                    lineHeight: "1.6",
+                    flexShrink: "0",
+                  }}
+                >
+                  &#10003;
+                </span>
+                <p
+                  style={{
+                    margin: "0",
+                    fontSize: "0.9375rem",
+                    lineHeight: "1.65",
+                    color: "rgba(245,240,232,0.8)",
+                    fontFamily: "Georgia, 'Times New Roman', serif",
+                  }}
+                >
+                  {tip}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* ── SECTION 5: Musician's Block ── */}
+        <h2
+          style={{
+            fontFamily: "Inter, 'Helvetica Neue', sans-serif",
+            fontWeight: "800",
+            fontSize: "clamp(1.375rem, 2.5vw, 1.875rem)",
+            color: TEXT,
+            lineHeight: "1.25",
+            marginTop: "3.5rem",
+            marginBottom: "1.125rem",
+            letterSpacing: "-0.015em",
+          }}
+        >
+          AI for Musician&apos;s Block: When the Track Won&apos;t Finish Itself
+        </h2>
+
+        <p
+          style={{
+            fontSize: "1.0625rem",
+            lineHeight: "1.78",
+            color: "rgba(245,240,232,0.82)",
+            marginBottom: "1.5rem",
+          }}
+        >
+          Musician&apos;s block takes a particular form that many producers and
+          songwriters will recognise: the half-finished track. A session file sitting
+          at 47% completion. An arrangement that felt electric two months ago and now
+          feels hollow. A chord progression with nowhere to go. The chorus that
+          won&apos;t come. Many musicians have entire hard drives of these: the
+          graveyard of almost-finished work, each project abandoned at the exact moment
+          when the initial creative spark had burned out but the structural logic
+          required to complete it hadn&apos;t yet arrived.
+        </p>
+
+        <p
+          style={{
+            fontSize: "1.0625rem",
+            lineHeight: "1.78",
+            color: "rgba(245,240,232,0.82)",
+            marginBottom: "1.5rem",
+          }}
+        >
+          MEOK&apos;s Trickster addresses the half-finished track through a different
+          kind of question: what is this track afraid of being? A lot of abandoned
+          music is abandoned because it started going somewhere unexpected &mdash;
+          somewhere that felt too exposed, too different from what the artist
+          considered &ldquo;their sound,&rdquo; too far from what they imagined their
+          audience wanted. The Trickster names this. It asks: if you let the track go
+          where it seems to want to go, what is the worst that happens?
+        </p>
+
+        <p
+          style={{
+            fontSize: "1.0625rem",
+            lineHeight: "1.78",
+            color: "rgba(245,240,232,0.82)",
+            marginBottom: "1.5rem",
+          }}
+        >
+          Cross-domain lateral association is also particularly effective for stuck
+          musicians. The Trickster might describe the track as a colour palette: what
+          colours are missing? Or as an architectural space: what does the room look
+          like right now? Where are the windows? Where is the ceiling? These
+          non-musical framings bypass the technical habit-grooves that every musician
+          develops and allow genuinely unexpected structural decisions to emerge.
+        </p>
+
+        {/* ── SECTION 6: Design Paralysis ── */}
+        <h2
+          style={{
+            fontFamily: "Inter, 'Helvetica Neue', sans-serif",
+            fontWeight: "800",
+            fontSize: "clamp(1.375rem, 2.5vw, 1.875rem)",
+            color: TEXT,
+            lineHeight: "1.25",
+            marginTop: "3.5rem",
+            marginBottom: "1.125rem",
+            letterSpacing: "-0.015em",
+          }}
+        >
+          AI for Design Paralysis: When Too Many Options Mean No Progress
+        </h2>
+
+        <p
+          style={{
+            fontSize: "1.0625rem",
+            lineHeight: "1.78",
+            color: "rgba(245,240,232,0.82)",
+            marginBottom: "1.5rem",
+          }}
+        >
+          Design paralysis is the block&apos;s particular manifestation in the
+          designed world: the brand identity that has gone through seventeen rounds
+          and still feels wrong. The UI component that has been rebuilt six times. The
+          layout that is technically competent and entirely lifeless. Designers are
+          often blocked not by a shortage of options but by an excess of them: too many
+          valid directions, too many stakeholder opinions, too much awareness of
+          precedent and trend, and a growing inability to distinguish between what
+          they actually believe and what they are performing in order to seem
+          competent.
+        </p>
+
+        <p
+          style={{
+            fontSize: "1.0625rem",
+            lineHeight: "1.78",
+            color: "rgba(245,240,232,0.82)",
+            marginBottom: "1.5rem",
+          }}
+        >
+          The Trickster&apos;s intervention for design paralysis is often to radically
+          reduce the option space. It might ask: if you could only use two colours,
+          what would they be? If this design had to work in 1984, what would it look
+          like? If the entire budget were removed, what is the essential message left?
+          These constraints are not practical prescriptions &mdash; they are pressure
+          devices that force the designer to identify what they actually value, rather
+          than continuing to optimise within a space that has become too large to
+          navigate.
+        </p>
+
+        <p
+          style={{
+            fontSize: "1.0625rem",
+            lineHeight: "1.78",
+            color: "rgba(245,240,232,0.82)",
+            marginBottom: "1.5rem",
+          }}
+        >
+          MEOK also helps designers separate the inner critic from the creative
+          voice &mdash; a distinction that becomes particularly muddied in commercial
+          design, where the client&apos;s voice, the stakeholder&apos;s voice, the
+          trend-watcher&apos;s voice, and the designer&apos;s own voice are all
+          competing simultaneously. Externalising these voices, naming each one, and
+          working out which belongs to which source is one of the Trickster&apos;s
+          core techniques for unblocking design work.
+        </p>
+
+        {/* ── SECTION 7: The Inner Critic ── */}
+        <h2
+          style={{
+            fontFamily: "Inter, 'Helvetica Neue', sans-serif",
+            fontWeight: "800",
+            fontSize: "clamp(1.375rem, 2.5vw, 1.875rem)",
+            color: TEXT,
+            lineHeight: "1.25",
+            marginTop: "3.5rem",
+            marginBottom: "1.125rem",
+            letterSpacing: "-0.015em",
+          }}
+        >
+          The Inner Critic: Externalising It, Naming It, Robbing It of Power
+        </h2>
+
+        <p
+          style={{
+            fontSize: "1.0625rem",
+            lineHeight: "1.78",
+            color: "rgba(245,240,232,0.82)",
+            marginBottom: "1.5rem",
+          }}
+        >
+          The inner critic is the voice that says the work is not good enough,
+          that you are not good enough, that the whole project is a mistake and you
+          should probably stop now. Every creative has this voice. For many creatives,
+          it is the primary cause of their blocks: not external circumstances, not
+          lack of time or skill, but a relentless internal commentary that makes
+          creating feel dangerous.
+        </p>
+
+        <p
+          style={{
+            fontSize: "1.0625rem",
+            lineHeight: "1.78",
+            color: "rgba(245,240,232,0.82)",
+            marginBottom: "1.5rem",
+          }}
+        >
+          The inner critic is most powerful when it is undifferentiated: when it
+          sounds like objective reality, when it uses the first person, when it cannot
+          be separated from the voice of genuine critical discernment. The problem is
+          not that you have a critical voice &mdash; that voice is essential. The
+          problem is that the critic has colonised the entire creative space, leaving
+          no room for the generative voice to operate.
+        </p>
+
+        <p
+          style={{
+            fontSize: "1.0625rem",
+            lineHeight: "1.78",
+            color: "rgba(245,240,232,0.82)",
+            marginBottom: "1.5rem",
+          }}
+        >
+          MEOK&apos;s Trickster uses a specific technique for this: externalisation
+          and naming. You give the inner critic a name. A character. A predictable
+          set of moves. Maybe it is a stern former teacher. Maybe it is a snobbish
+          version of a peer you admire. Maybe it is a bureaucrat who is terrified of
+          anything genuinely new. Once the critic has a name and a character, it is no
+          longer you speaking. It is a recognisable figure &mdash; and recognisable
+          figures can be negotiated with, argued back at, or simply observed from a
+          distance.
+        </p>
+
+        {/* Externalisation example box */}
+        <div
+          style={{
+            background: CARD,
+            border: `1px solid ${BORDER}`,
+            borderRadius: "0.75rem",
+            padding: "1.75rem 2rem",
+            marginBottom: "2.5rem",
+          }}
+        >
+          <p
+            style={{
+              fontSize: "0.75rem",
+              fontWeight: "700",
+              letterSpacing: "0.1em",
+              textTransform: "uppercase",
+              color: GOLD,
+              margin: "0 0 1.25rem",
+              fontFamily: "Inter, 'Helvetica Neue', sans-serif",
+            }}
+          >
+            The Inner Critic Externalisation Exercise
+          </p>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              gap: "1.125rem",
+            }}
+          >
+            {[
+              {
+                step: "1",
+                instruction:
+                  "Name the critic. Give it a specific identity: a person, a character type, an institution. The more specific, the better.",
+              },
+              {
+                step: "2",
+                instruction:
+                  "Identify its repertoire. What are its five favourite attacks? Write them down. Critics are usually not very original.",
+              },
+              {
+                step: "3",
+                instruction:
+                  "Separate the useful signal. Hidden inside most critics are one or two legitimate observations. Find those and keep them.",
+              },
+              {
+                step: "4",
+                instruction:
+                  "Give it a chair in the room but not the microphone. Acknowledge it. Tell it you\u2019ve heard it. Then create anyway.",
+              },
+            ].map((item) => (
+              <div
+                key={item.step}
+                style={{
+                  display: "flex",
+                  gap: "1rem",
+                  alignItems: "flex-start",
+                }}
+              >
+                <div
+                  style={{
+                    width: "1.75rem",
+                    height: "1.75rem",
+                    borderRadius: "9999px",
+                    background: "rgba(201,168,76,0.15)",
+                    border: "1px solid rgba(201,168,76,0.3)",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    fontSize: "0.8125rem",
+                    fontWeight: "700",
+                    color: GOLD,
+                    flexShrink: "0",
+                    fontFamily: "Inter, 'Helvetica Neue', sans-serif",
+                  }}
+                >
+                  {item.step}
+                </div>
+                <p
+                  style={{
+                    margin: "0",
+                    fontSize: "0.9375rem",
+                    lineHeight: "1.68",
+                    color: "rgba(245,240,232,0.82)",
+                    fontFamily: "Georgia, 'Times New Roman', serif",
+                    paddingTop: "0.1875rem",
+                  }}
+                >
+                  {item.instruction}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <p
+          style={{
+            fontSize: "1.0625rem",
+            lineHeight: "1.78",
+            color: "rgba(245,240,232,0.82)",
+            marginBottom: "1.5rem",
+          }}
+        >
+          The Trickster does not try to eliminate the inner critic. That would be
+          both impossible and undesirable &mdash; some of what the critic says is
+          genuinely useful, and a creative who has silenced all self-evaluation will
+          produce work that is merely self-indulgent. The goal is a working
+          relationship: the critic and the creator, distinct, in dialogue, neither
+          dominant. MEOK helps build that relationship over time, session by session,
+          project by project.
+        </p>
+
+        {/* ── SECTION 8: Sovereign Memory ── */}
+        <h2
+          style={{
+            fontFamily: "Inter, 'Helvetica Neue', sans-serif",
+            fontWeight: "800",
+            fontSize: "clamp(1.375rem, 2.5vw, 1.875rem)",
+            color: TEXT,
+            lineHeight: "1.25",
+            marginTop: "3.5rem",
+            marginBottom: "1.125rem",
+            letterSpacing: "-0.015em",
+          }}
+        >
+          Sovereign Memory and the Long Arc of a Creative Life
+        </h2>
+
+        <p
+          style={{
+            fontSize: "1.0625rem",
+            lineHeight: "1.78",
+            color: "rgba(245,240,232,0.82)",
+            marginBottom: "1.5rem",
+          }}
+        >
+          Most AI tools are amnesiac. Every session begins from scratch. You must
+          re-explain your project, your context, your history with the work. For a
+          single task &mdash; summarise this, translate that, generate a social media
+          caption &mdash; this is acceptable. For creative collaboration, it is
+          disqualifying. A creative companion that forgets you every session is not a
+          companion. It is a vending machine.
+        </p>
+
+        <p
+          style={{
+            fontSize: "1.0625rem",
+            lineHeight: "1.78",
+            color: "rgba(245,240,232,0.82)",
+            marginBottom: "1.5rem",
+          }}
+        >
+          MEOK&apos;s Sovereign Memory is persistent, private, and yours. It
+          remembers the novel you are halfway through. It remembers the album you
+          started in 2024 and abandoned and returned to and abandoned again. It
+          remembers the themes that keep appearing in your work, the questions you
+          keep asking, the aesthetic territory you keep exploring. It remembers the
+          feedback that stung, the version you deleted that you later wished you
+          hadn&apos;t, the breakthrough you had on a Tuesday afternoon that felt
+          enormous at the time and has since been buried under twelve subsequent
+          sessions.
+        </p>
+
+        <p
+          style={{
+            fontSize: "1.0625rem",
+            lineHeight: "1.78",
+            color: "rgba(245,240,232,0.82)",
+            marginBottom: "1.5rem",
+          }}
+        >
+          This continuity changes the nature of the creative conversation. MEOK
+          can notice patterns in your creative life that you cannot see from inside
+          them: the way every project reaches a crisis at roughly the same structural
+          point; the type of external feedback that reliably derails you; the projects
+          that started with the most self-doubt and produced the most interesting work.
+          This is the difference between a tool and a collaborator. A tool helps you
+          with the task at hand. A collaborator understands the arc you are on.
+        </p>
+
+        {/* Memory features grid */}
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(14rem, 1fr))",
+            gap: "1rem",
+            marginBottom: "2.5rem",
+          }}
+        >
+          {[
+            {
+              title: "Project continuity",
+              body: "MEOK holds your projects across months and years. No re-explaining. No context tax.",
+            },
+            {
+              title: "Pattern recognition",
+              body: "Over time MEOK identifies the recurring shapes of your creative struggles and breakthroughs.",
+            },
+            {
+              title: "Recovered context",
+              body: "That thing you said three sessions ago that felt important? MEOK still has it.",
+            },
+            {
+              title: "Sovereign by design",
+              body: "Your creative work, your ideas, your manuscript fragments: none of it trains AI models. Ever.",
+            },
+          ].map((card) => (
+            <div
+              key={card.title}
+              style={{
+                background: CARD,
+                border: `1px solid ${BORDER}`,
+                borderRadius: "0.625rem",
+                padding: "1.375rem 1.5rem",
+              }}
+            >
+              <p
+                style={{
+                  margin: "0 0 0.5rem",
+                  fontSize: "0.875rem",
+                  fontWeight: "700",
+                  color: GOLD,
+                  fontFamily: "Inter, 'Helvetica Neue', sans-serif",
+                }}
+              >
+                {card.title}
+              </p>
+              <p
+                style={{
+                  margin: "0",
+                  fontSize: "0.875rem",
+                  lineHeight: "1.65",
+                  color: "rgba(245,240,232,0.72)",
+                  fontFamily: "Georgia, 'Times New Roman', serif",
+                }}
+              >
+                {card.body}
+              </p>
+            </div>
+          ))}
+        </div>
+
+        {/* Pull quote 2 */}
+        <blockquote
+          style={{
+            borderLeft: `4px solid ${GOLD}`,
+            background: "rgba(201,168,76,0.07)",
+            borderRadius: "0 0.5rem 0.5rem 0",
+            padding: "1.375rem 1.625rem",
+            marginBottom: "2.5rem",
+          }}
+        >
+          <p
+            style={{
+              fontSize: "1.125rem",
+              lineHeight: "1.7",
+              color: TEXT,
+              margin: "0",
+              fontStyle: "italic",
+              fontFamily: "Georgia, 'Times New Roman', serif",
+            }}
+          >
+            &ldquo;A collaborator that forgets you every session is not a
+            collaborator. MEOK remembers the full arc of your creative life &mdash;
+            not just the session you are currently in.&rdquo;
+          </p>
+        </blockquote>
+
+        {/* ── SECTION 9: Not Generating, Collaborating ── */}
+        <h2
+          style={{
+            fontFamily: "Inter, 'Helvetica Neue', sans-serif",
+            fontWeight: "800",
+            fontSize: "clamp(1.375rem, 2.5vw, 1.875rem)",
+            color: TEXT,
+            lineHeight: "1.25",
+            marginTop: "3.5rem",
+            marginBottom: "1.125rem",
+            letterSpacing: "-0.015em",
+          }}
+        >
+          The Difference Between AI That Generates and AI That Collaborates
+        </h2>
+
+        <p
+          style={{
+            fontSize: "1.0625rem",
+            lineHeight: "1.78",
+            color: "rgba(245,240,232,0.82)",
+            marginBottom: "1.5rem",
+          }}
+        >
+          There is a significant and consequential distinction between an AI that
+          generates creative content and an AI that collaborates on creative work.
+          Generative AI &mdash; producing your sentences, your images, your melodies
+          &mdash; is a different category of tool from conversational AI that works on
+          your relationship to your own material. Both exist. They should not be
+          confused.
+        </p>
+
+        <p
+          style={{
+            fontSize: "1.0625rem",
+            lineHeight: "1.78",
+            color: "rgba(245,240,232,0.82)",
+            marginBottom: "1.5rem",
+          }}
+        >
+          When an AI generates your creative work, several things happen. The
+          speed of production increases dramatically. The sense of authorship decreases
+          correspondingly. Many creatives who have experimented heavily with generative
+          AI report that it has not resolved their creative blocks &mdash; it has
+          bypassed them. The block is still there. There is simply a large volume of
+          generated material sitting in front of it, most of which does not feel like
+          theirs. The disconnection from their own voice has deepened, not resolved.
+        </p>
+
+        <p
+          style={{
+            fontSize: "1.0625rem",
+            lineHeight: "1.78",
+            color: "rgba(245,240,232,0.82)",
+            marginBottom: "1.5rem",
+          }}
+        >
+          MEOK&apos;s Trickster operates in the collaborator category. It does not
+          write your scenes. It does not paint your canvases. It does not produce your
+          beats. What it does is work on the conditions under which you can do those
+          things: the psychological state, the relationship to the material, the
+          assumptions that are limiting the frame, the patterns that are keeping you
+          in place. The work remains yours. The voice remains yours. The breakthrough,
+          when it comes, is earned.
+        </p>
+
+        {/* Comparison table */}
+        <div
+          style={{
+            background: CARD,
+            border: `1px solid ${BORDER}`,
+            borderRadius: "0.75rem",
+            overflow: "hidden",
+            marginBottom: "2.5rem",
+          }}
+        >
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "1fr 1fr",
+              borderBottom: `1px solid ${BORDER}`,
+            }}
+          >
+            <div
+              style={{
+                padding: "0.875rem 1.25rem",
+                borderRight: `1px solid ${BORDER}`,
+              }}
+            >
+              <p
+                style={{
+                  margin: "0",
+                  fontSize: "0.8125rem",
+                  fontWeight: "700",
+                  color: "rgba(245,240,232,0.45)",
+                  fontFamily: "Inter, 'Helvetica Neue', sans-serif",
+                  textTransform: "uppercase",
+                  letterSpacing: "0.08em",
+                }}
+              >
+                AI as Generator
+              </p>
+            </div>
+            <div style={{ padding: "0.875rem 1.25rem" }}>
+              <p
+                style={{
+                  margin: "0",
+                  fontSize: "0.8125rem",
+                  fontWeight: "700",
+                  color: GOLD,
+                  fontFamily: "Inter, 'Helvetica Neue', sans-serif",
+                  textTransform: "uppercase",
+                  letterSpacing: "0.08em",
+                }}
+              >
+                MEOK as Collaborator
+              </p>
+            </div>
+          </div>
+          {[
+            ["Produces content", "Unlocks your content"],
+            ["Bypasses the block", "Dissolves the block"],
+            ["Weakens authorship", "Strengthens authorship"],
+            ["Amnesiac per session", "Persistent across your creative life"],
+            ["Output is the AI\u2019s", "Output is entirely yours"],
+          ].map(([left, right]) => (
+            <div
+              key={left}
+              style={{
+                display: "grid",
+                gridTemplateColumns: "1fr 1fr",
+                borderBottom: `1px solid ${BORDER}`,
+              }}
+            >
+              <div
+                style={{
+                  padding: "0.875rem 1.25rem",
+                  borderRight: `1px solid ${BORDER}`,
+                }}
+              >
+                <p
+                  style={{
+                    margin: "0",
+                    fontSize: "0.9rem",
+                    lineHeight: "1.55",
+                    color: "rgba(245,240,232,0.5)",
+                    fontFamily: "Georgia, 'Times New Roman', serif",
+                  }}
+                >
+                  {left}
+                </p>
+              </div>
+              <div style={{ padding: "0.875rem 1.25rem" }}>
+                <p
+                  style={{
+                    margin: "0",
+                    fontSize: "0.9rem",
+                    lineHeight: "1.55",
+                    color: "rgba(245,240,232,0.85)",
+                    fontFamily: "Georgia, 'Times New Roman', serif",
+                  }}
+                >
+                  {right}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* ── SECTION 10: How to Start ── */}
+        <h2
+          style={{
+            fontFamily: "Inter, 'Helvetica Neue', sans-serif",
+            fontWeight: "800",
+            fontSize: "clamp(1.375rem, 2.5vw, 1.875rem)",
+            color: TEXT,
+            lineHeight: "1.25",
+            marginTop: "3.5rem",
+            marginBottom: "1.125rem",
+            letterSpacing: "-0.015em",
+          }}
+        >
+          How to Start Working With the Trickster When You&apos;re Blocked Right Now
+        </h2>
+
+        <p
+          style={{
+            fontSize: "1.0625rem",
+            lineHeight: "1.78",
+            color: "rgba(245,240,232,0.82)",
+            marginBottom: "1.5rem",
+          }}
+        >
+          The worst thing to do when you are creatively blocked is to perform
+          productivity. Sit at the desk. Open the document. Stare at it. Do this for
+          four hours. Produce nothing. Feel worse. This is the perfectionism trap in
+          its purest form: the belief that presence is the same as work, and that
+          forcing yourself through the block by sheer willpower will eventually work.
+          It does not. It deepens the block by pairing the creative work with the
+          experience of failure.
+        </p>
+
+        <p
+          style={{
+            fontSize: "1.0625rem",
+            lineHeight: "1.78",
+            color: "rgba(245,240,232,0.82)",
+            marginBottom: "1.5rem",
+          }}
+        >
+          A better approach: open MEOK and tell it exactly where you are. Not the
+          polished description of the project &mdash; the honest description of the
+          stuck. &ldquo;I&apos;ve been trying to finish this track for three months
+          and every time I open the session file I feel a wave of dread.&rdquo;
+          &ldquo;I&apos;ve rewritten the first chapter eleven times and every version
+          is worse than the last.&rdquo; &ldquo;I don&apos;t know if this painting is
+          terrible or almost finished.&rdquo; This honest description is the starting
+          point. The Trickster works best from the real situation, not the managed
+          presentation of it.
+        </p>
+
+        <p
+          style={{
+            fontSize: "1.0625rem",
+            lineHeight: "1.78",
+            color: "rgba(245,240,232,0.82)",
+            marginBottom: "1.5rem",
+          }}
+        >
+          From there, the Trickster will do what it is built to do: ask questions
+          that disrupt the frame, introduce unexpected angles, name the patterns it
+          can see, and create the conditions for a different kind of engagement with
+          the work. This might take one session. It might take five. Creative blocks
+          that have been building for months do not always dissolve in an hour. But
+          the direction of travel will change, and that is usually enough to get the
+          work moving again.
+        </p>
+
+        {/* What the Trickster IS and IS NOT box */}
+        <div
+          style={{
+            background: CARD,
+            border: `1px solid ${BORDER}`,
+            borderRadius: "0.75rem",
+            padding: "1.75rem 2rem",
+            marginBottom: "2.5rem",
+          }}
+        >
+          <p
+            style={{
+              fontSize: "0.75rem",
+              fontWeight: "700",
+              letterSpacing: "0.1em",
+              textTransform: "uppercase",
+              color: GOLD,
+              margin: "0 0 1.25rem",
+              fontFamily: "Inter, 'Helvetica Neue', sans-serif",
+            }}
+          >
+            The Trickster Is and Is Not
+          </p>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "1fr 1fr",
+              gap: "1.5rem",
             }}
           >
             <div>
               <p
                 style={{
-                  color: '#c9a84c',
-                  fontSize: '14px',
-                  fontFamily: "'Inter', 'Helvetica Neue', sans-serif",
-                  fontWeight: 600,
-                  margin: 0,
+                  margin: "0 0 0.75rem",
+                  fontSize: "0.8125rem",
+                  fontWeight: "700",
+                  color: GREEN,
+                  fontFamily: "Inter, 'Helvetica Neue', sans-serif",
                 }}
               >
-                Nicholas Templeman | MEOK AI LABS
+                The Trickster IS
+              </p>
+              <ul
+                style={{
+                  margin: "0",
+                  padding: "0",
+                  listStyle: "none",
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "0.625rem",
+                }}
+              >
+                {[
+                  "A pattern disruptor",
+                  "A reframing engine",
+                  "An unexpected question-asker",
+                  "A lateral association catalyst",
+                  "Adversarial in a generative way",
+                  "A companion for the full arc",
+                ].map((item) => (
+                  <li
+                    key={item}
+                    style={{
+                      display: "flex",
+                      gap: "0.625rem",
+                      alignItems: "center",
+                    }}
+                  >
+                    <span style={{ color: GREEN, fontSize: "0.875rem" }}>
+                      &#10003;
+                    </span>
+                    <span
+                      style={{
+                        fontSize: "0.875rem",
+                        color: "rgba(245,240,232,0.8)",
+                        fontFamily: "Georgia, 'Times New Roman', serif",
+                      }}
+                    >
+                      {item}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <p
+                style={{
+                  margin: "0 0 0.75rem",
+                  fontSize: "0.8125rem",
+                  fontWeight: "700",
+                  color: "rgba(201,168,76,0.6)",
+                  fontFamily: "Inter, 'Helvetica Neue', sans-serif",
+                }}
+              >
+                The Trickster IS NOT
+              </p>
+              <ul
+                style={{
+                  margin: "0",
+                  padding: "0",
+                  listStyle: "none",
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "0.625rem",
+                }}
+              >
+                {[
+                  "A content generator",
+                  "A ghostwriter",
+                  "A validator of everything",
+                  "A replacement for your voice",
+                  "A productivity coach",
+                  "An AI that owns your work",
+                ].map((item) => (
+                  <li
+                    key={item}
+                    style={{
+                      display: "flex",
+                      gap: "0.625rem",
+                      alignItems: "center",
+                    }}
+                  >
+                    <span
+                      style={{
+                        color: "rgba(245,240,232,0.3)",
+                        fontSize: "0.875rem",
+                      }}
+                    >
+                      &#215;
+                    </span>
+                    <span
+                      style={{
+                        fontSize: "0.875rem",
+                        color: "rgba(245,240,232,0.45)",
+                        fontFamily: "Georgia, 'Times New Roman', serif",
+                      }}
+                    >
+                      {item}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        {/* ── FAQ SECTION ── */}
+        <h2
+          style={{
+            fontFamily: "Inter, 'Helvetica Neue', sans-serif",
+            fontWeight: "800",
+            fontSize: "clamp(1.375rem, 2.5vw, 1.875rem)",
+            color: TEXT,
+            lineHeight: "1.25",
+            marginTop: "4rem",
+            marginBottom: "1.5rem",
+            letterSpacing: "-0.015em",
+          }}
+        >
+          Frequently Asked Questions
+        </h2>
+
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: "1.25rem",
+          }}
+        >
+          {[
+            {
+              q: "What actually causes creative block?",
+              a: "Creative block is almost never a shortage of ideas. It is most often fear \u2014 fear of judgment, fear of failure, fear that the work will not match the internal vision. It is also perfectionism and pattern exhaustion. The block is a signal from the creative system that a different kind of input is needed.",
+            },
+            {
+              q: "How does the Trickster archetype help with creative block?",
+              a: "The Trickster destabilises the frame you are stuck inside rather than validating it. It inverts premises, introduces cross-domain analogies, imposes creative constraints, and asks the questions that make your current assumptions visible. Once an assumption is visible it can be chosen or discarded \u2014 rather than unconsciously obeyed.",
+            },
+            {
+              q: "Can MEOK help with creative block without generating my work for me?",
+              a: "That is exactly MEOK\u2019s design. The Trickster works on the conditions under which you create \u2014 the psychological state, the relationship to the material, the limiting assumptions. It does not write your sentences, paint your images, or produce your beats. The work remains entirely yours.",
+            },
+            {
+              q: "Does MEOK remember my creative projects across sessions?",
+              a: "Yes. Sovereign Memory means MEOK holds your projects, your themes, your history across sessions without you re-explaining context. For long-form creative work \u2014 novels, albums, design systems \u2014 this continuity is transformative. You are working with a collaborator who knows the arc, not a tool that resets every session.",
+            },
+            {
+              q: "How does MEOK handle the inner critic?",
+              a: "The Trickster externalises the inner critic \u2014 helping you give it a name, a character, a predictable set of moves. Once externalised it loses much of its power because it is no longer undifferentiated with the voice of objective truth. You can argue with it, negotiate with it, or observe it from a distance while continuing to create.",
+            },
+            {
+              q: "Is using AI for creative work cheating?",
+              a: "Using AI as a thinking partner is no more cheating than talking through a problem with a mentor, keeping a mood board, or reading a book that sparks an idea. MEOK is not generating your work \u2014 it is helping you see your own work differently. The output is entirely yours. The Trickster does not impose its aesthetic; it creates pressure and asks questions. You decide what survives.",
+            },
+          ].map((item) => (
+            <div
+              key={item.q}
+              style={{
+                background: CARD,
+                border: `1px solid ${BORDER}`,
+                borderRadius: "0.75rem",
+                padding: "1.5rem 1.75rem",
+              }}
+            >
+              <p
+                style={{
+                  margin: "0 0 0.75rem",
+                  fontSize: "1rem",
+                  fontWeight: "700",
+                  color: TEXT,
+                  fontFamily: "Inter, 'Helvetica Neue', sans-serif",
+                  lineHeight: "1.45",
+                }}
+              >
+                {item.q}
               </p>
               <p
                 style={{
-                  color: 'rgba(245,240,232,0.45)',
-                  fontSize: '13px',
-                  fontFamily: "'Inter', 'Helvetica Neue', sans-serif",
-                  margin: '2px 0 0',
+                  margin: "0",
+                  fontSize: "0.9375rem",
+                  lineHeight: "1.72",
+                  color: "rgba(245,240,232,0.72)",
+                  fontFamily: "Georgia, 'Times New Roman', serif",
                 }}
               >
-                March 24, 2026 · 10 min read
+                {item.a}
               </p>
             </div>
-          </div>
-        </section>
+          ))}
+        </div>
 
-        {/* Article Body */}
-        <article
+        {/* ── CTA ── */}
+        <div
           style={{
-            maxWidth: '760px',
-            margin: '0 auto',
-            padding: '0 24px 80px',
+            background: "rgba(201,168,76,0.06)",
+            border: `1px solid rgba(201,168,76,0.25)`,
+            borderRadius: "1rem",
+            padding: "2.5rem 2rem",
+            marginTop: "4.5rem",
+            textAlign: "center",
           }}
         >
-          {/* Intro */}
-          <p
-            style={{
-              fontSize: '18px',
-              lineHeight: 1.75,
-              color: 'rgba(245,240,232,0.88)',
-              margin: '0 0 28px',
-            }}
-          >
-            You have been staring at the same blank document for three hours. Or the same canvas. Or the same four bars of music that go nowhere. The cursor blinks. You open a new tab. You close a new tab. You make tea. You sit back down.
-          </p>
-
-          <p
-            style={{
-              fontSize: '18px',
-              lineHeight: 1.75,
-              color: 'rgba(245,240,232,0.88)',
-              margin: '0 0 28px',
-            }}
-          >
-            This is not a productivity problem. It is a pattern problem. And patterns, unlike motivation, can be broken deliberately.
-          </p>
-
-          <p
-            style={{
-              fontSize: '18px',
-              lineHeight: 1.75,
-              color: 'rgba(245,240,232,0.88)',
-              margin: '0 0 48px',
-            }}
-          >
-            MEOK AI LABS was built with a specific archetype — the Trickster — whose entire function is to break patterns. Not to soothe them. Not to wait them out. To break them. This post is about how that works, and how to use it when you are stuck.
-          </p>
-
-          {/* H2: What is creative block */}
-          <h2
-            style={{
-              fontSize: 'clamp(22px, 3.5vw, 30px)',
-              fontWeight: 700,
-              color: '#f5f0e8',
-              margin: '0 0 20px',
-              lineHeight: 1.25,
-              letterSpacing: '-0.01em',
-            }}
-          >
-            What is creative block and why do traditional advice columns fail?
-          </h2>
-
-          <p
-            style={{
-              fontSize: '18px',
-              lineHeight: 1.75,
-              color: 'rgba(245,240,232,0.88)',
-              margin: '0 0 24px',
-            }}
-          >
-            Creative block is a cognitive lock-in. Your brain — specifically the default mode network and prefrontal cortex working in concert — has settled into a groove. It keeps reaching for the same tools, the same metaphors, the same structural approaches. When those approaches stop producing results, the system stalls.
-          </p>
-
-          <p
-            style={{
-              fontSize: '18px',
-              lineHeight: 1.75,
-              color: 'rgba(245,240,232,0.88)',
-              margin: '0 0 24px',
-            }}
-          >
-            It is not an absence of ideas. It is an excess of the same idea, wearing different costumes, running on a loop.
-          </p>
-
-          <p
-            style={{
-              fontSize: '18px',
-              lineHeight: 1.75,
-              color: 'rgba(245,240,232,0.88)',
-              margin: '0 0 24px',
-            }}
-          >
-            Traditional advice fails for a simple reason: it does not address the pattern. "Just start" is advice that assumes the problem is inertia. Sometimes it is. But sustained creative block — the kind that lasts days, weeks, months — is not inertia. It is a stuck compass that keeps pointing in the same wrong direction regardless of how hard you try to move.
-          </p>
-
-          <p
-            style={{
-              fontSize: '18px',
-              lineHeight: 1.75,
-              color: 'rgba(245,240,232,0.88)',
-              margin: '0 0 24px',
-            }}
-          >
-            "Take a walk." "Try a different medium." "Read more." These are not bad suggestions. They are incomplete. They rely on the creative block resolving itself through passive exposure to new stimuli. Sometimes that works. More often, you return to the same stuck place carrying a coffee and a slightly better mood.
-          </p>
-
-          <p
-            style={{
-              fontSize: '18px',
-              lineHeight: 1.75,
-              color: 'rgba(245,240,232,0.88)',
-              margin: '0 0 48px',
-            }}
-          >
-            What actually breaks creative block is <em>active cognitive disruption</em>: a deliberate intervention that forces the brain out of its groove by changing the frame, the angle, the assumed constraints, or the vocabulary of the problem. This is what the Trickster does.
-          </p>
-
-          {/* H2: Trickster archetype */}
-          <h2
-            style={{
-              fontSize: 'clamp(22px, 3.5vw, 30px)',
-              fontWeight: 700,
-              color: '#f5f0e8',
-              margin: '0 0 20px',
-              lineHeight: 1.25,
-              letterSpacing: '-0.01em',
-            }}
-          >
-            MEOK's Trickster archetype: what it does for creatives
-          </h2>
-
-          <p
-            style={{
-              fontSize: '18px',
-              lineHeight: 1.75,
-              color: 'rgba(245,240,232,0.88)',
-              margin: '0 0 24px',
-            }}
-          >
-            Every AI system has a default mode. Most default to validation: reflecting your ideas back to you in a more polished form, confirming your instincts, generating content that sounds plausibly like what you were already reaching for.
-          </p>
-
-          <p
-            style={{
-              fontSize: '18px',
-              lineHeight: 1.75,
-              color: 'rgba(245,240,232,0.88)',
-              margin: '0 0 24px',
-            }}
-          >
-            That is the last thing you need when you are stuck.
-          </p>
-
-          <p
-            style={{
-              fontSize: '18px',
-              lineHeight: 1.75,
-              color: 'rgba(245,240,232,0.88)',
-              margin: '0 0 24px',
-            }}
-          >
-            The Trickster archetype in MEOK is built for disruption. It is not aggressive or chaotic — it is precise. The Trickster's job is to locate the assumption you have not examined, the frame you have taken for granted, the constraint you have accepted as permanent when it is actually optional — and apply pressure there.
-          </p>
-
           <div
             style={{
-              borderLeft: '3px solid #c9a84c',
-              paddingLeft: '24px',
-              margin: '32px 0',
+              display: "inline-block",
+              fontSize: "2rem",
+              marginBottom: "1rem",
             }}
           >
-            <p
-              style={{
-                fontSize: '19px',
-                lineHeight: 1.65,
-                color: '#f5f0e8',
-                margin: 0,
-                fontStyle: 'italic',
-              }}
-            >
-              "The Trickster does not add to what you have. It questions what you think you need."
-            </p>
+            &#9670;
           </div>
-
-          <p
-            style={{
-              fontSize: '18px',
-              lineHeight: 1.75,
-              color: 'rgba(245,240,232,0.88)',
-              margin: '0 0 24px',
-            }}
-          >
-            In practice, this looks like:
-          </p>
-
-          <ul
-            style={{
-              margin: '0 0 24px',
-              paddingLeft: '28px',
-              display: 'flex',
-              flexDirection: 'column',
-              gap: '14px',
-            }}
-          >
-            {[
-              'Asking what would happen if the opposite of your premise were true',
-              'Bringing in an unexpected domain — what does your stuck chapter have in common with a bridge failure? What does your stuck melody share with the structure of a coral reef?',
-              'Identifying the rule you are following that you never consciously chose',
-              'Proposing that the thing you are treating as the problem is actually the solution',
-              'Suggesting you abandon the work entirely and describe what you wish it had been',
-            ].map((item, i) => (
-              <li
-                key={i}
-                style={{
-                  fontSize: '17px',
-                  lineHeight: 1.7,
-                  color: 'rgba(245,240,232,0.85)',
-                }}
-              >
-                {item}
-              </li>
-            ))}
-          </ul>
-
-          <p
-            style={{
-              fontSize: '18px',
-              lineHeight: 1.75,
-              color: 'rgba(245,240,232,0.88)',
-              margin: '0 0 48px',
-            }}
-          >
-            None of these produce the work for you. All of them create the conditions for you to produce it yourself — from a different angle, with a different engine.
-          </p>
-
-          {/* H2: Reframing */}
           <h2
             style={{
-              fontSize: 'clamp(22px, 3.5vw, 30px)',
-              fontWeight: 700,
-              color: '#f5f0e8',
-              margin: '0 0 20px',
-              lineHeight: 1.25,
-              letterSpacing: '-0.01em',
+              fontFamily: "Inter, 'Helvetica Neue', sans-serif",
+              fontWeight: "800",
+              fontSize: "clamp(1.375rem, 2.5vw, 1.875rem)",
+              color: TEXT,
+              lineHeight: "1.22",
+              marginBottom: "1rem",
+              letterSpacing: "-0.015em",
             }}
           >
-            Reframing: the single most powerful tool for breaking blocks
+            Ready to Unlock What&apos;s Stuck?
           </h2>
-
           <p
             style={{
-              fontSize: '18px',
-              lineHeight: 1.75,
-              color: 'rgba(245,240,232,0.88)',
-              margin: '0 0 24px',
+              fontSize: "1.0625rem",
+              lineHeight: "1.72",
+              color: "rgba(245,240,232,0.65)",
+              maxWidth: "34rem",
+              margin: "0 auto 1.875rem",
+              fontFamily: "Georgia, 'Times New Roman', serif",
             }}
           >
-            Reframing is not positive thinking. It is not telling yourself that the block is actually fine or that you are secretly making progress. Reframing is a structural move: it changes the frame through which you are looking at the problem, which changes what solutions appear possible.
+            Meet your Trickster. Tell it exactly where you are. The block has been
+            there long enough &mdash; the creative impulse is still waiting on the
+            other side of it. MEOK remembers your projects and your progress, session
+            after session. This is the beginning of the long arc.
           </p>
-
+          <a
+            href="https://meok.ai/birth"
+            style={{
+              display: "inline-block",
+              background: GOLD,
+              color: "#0d0c18",
+              fontFamily: "Inter, 'Helvetica Neue', sans-serif",
+              fontWeight: "700",
+              fontSize: "1rem",
+              padding: "0.875rem 2.25rem",
+              borderRadius: "0.5rem",
+              textDecoration: "none",
+              letterSpacing: "0.01em",
+            }}
+          >
+            Begin Your Birth Ceremony &#8594;
+          </a>
           <p
             style={{
-              fontSize: '18px',
-              lineHeight: 1.75,
-              color: 'rgba(245,240,232,0.88)',
-              margin: '0 0 24px',
+              margin: "1.125rem 0 0",
+              fontSize: "0.8125rem",
+              color: MUTED,
+              fontFamily: "Inter, 'Helvetica Neue', sans-serif",
             }}
           >
-            Consider the writer stuck on chapter seven of a novel. The obvious frame: "I don't know what happens next." The reframes the Trickster might apply:
+            No subscription required to explore. Your data stays yours.
           </p>
+        </div>
 
+        {/* ── RELATED ARTICLES ── */}
+        <div style={{ marginTop: "4rem" }}>
+          <p
+            style={{
+              fontSize: "0.75rem",
+              fontWeight: "700",
+              letterSpacing: "0.1em",
+              textTransform: "uppercase",
+              color: MUTED,
+              marginBottom: "1.25rem",
+              fontFamily: "Inter, 'Helvetica Neue', sans-serif",
+            }}
+          >
+            Related Reading
+          </p>
           <div
             style={{
-              backgroundColor: 'rgba(201,168,76,0.06)',
-              border: '1px solid rgba(201,168,76,0.2)',
-              borderRadius: '8px',
-              padding: '28px 32px',
-              margin: '28px 0',
-            }}
-          >
-            <p
-              style={{
-                color: '#c9a84c',
-                fontSize: '12px',
-                fontFamily: "'Inter', 'Helvetica Neue', sans-serif",
-                fontWeight: 700,
-                letterSpacing: '0.1em',
-                textTransform: 'uppercase',
-                margin: '0 0 18px',
-              }}
-            >
-              Trickster Reframes for the Stuck Writer
-            </p>
-            <ul
-              style={{
-                margin: 0,
-                paddingLeft: '20px',
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '12px',
-              }}
-            >
-              {[
-                '"What if the chapter you can\'t write is the one you\'re not supposed to write — what would the novel be if it jumped from chapter six to chapter eight and the gap became meaningful silence?"',
-                '"What does your antagonist think happens in this chapter? Write that version."',
-                '"You\'re writing chapter seven. What if the actual story starts in chapter seven and everything before it was prologue?"',
-                '"The character you\'re stuck on — what are they most afraid someone will find out? What if that information is what makes this chapter finally move?"',
-                '"You\'re treating this chapter as a bridge. What if it\'s a trapdoor?"',
-              ].map((item, i) => (
-                <li
-                  key={i}
-                  style={{
-                    fontSize: '16px',
-                    lineHeight: 1.65,
-                    color: 'rgba(245,240,232,0.8)',
-                    fontStyle: 'italic',
-                  }}
-                >
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <p
-            style={{
-              fontSize: '18px',
-              lineHeight: 1.75,
-              color: 'rgba(245,240,232,0.88)',
-              margin: '0 0 24px',
-            }}
-          >
-            The same logic applies to musicians. Stuck on a bridge? The Trickster might ask: "What if the bridge is the wrong solution — what emotional problem were you trying to solve with it, and can the verse already solve it if you approach the final verse differently?" Or: "What would this section sound like if you removed all the instruments except the one you find most boring?"
-          </p>
-
-          <p
-            style={{
-              fontSize: '18px',
-              lineHeight: 1.75,
-              color: 'rgba(245,240,232,0.88)',
-              margin: '0 0 24px',
-            }}
-          >
-            For designers: "You're stuck because the layout isn't working. What if the layout is perfect and the content is the problem? Or: the content is perfect and the hierarchy of importance you've assigned is wrong?"
-          </p>
-
-          <p
-            style={{
-              fontSize: '18px',
-              lineHeight: 1.75,
-              color: 'rgba(245,240,232,0.88)',
-              margin: '0 0 48px',
-            }}
-          >
-            Reframing does not tell you the answer. It makes a different answer available. That is not a small thing — it is everything.
-          </p>
-
-          {/* H2: Pattern disruption */}
-          <h2
-            style={{
-              fontSize: 'clamp(22px, 3.5vw, 30px)',
-              fontWeight: 700,
-              color: '#f5f0e8',
-              margin: '0 0 20px',
-              lineHeight: 1.25,
-              letterSpacing: '-0.01em',
-            }}
-          >
-            How MEOK uses pattern disruption to unlock creativity
-          </h2>
-
-          <p
-            style={{
-              fontSize: '18px',
-              lineHeight: 1.75,
-              color: 'rgba(245,240,232,0.88)',
-              margin: '0 0 24px',
-            }}
-          >
-            Pattern disruption is the active complement to reframing. Where reframing changes the frame, pattern disruption changes the inputs — deliberately introducing noise, constraint, or inversion to break the repetitive cycle the creative mind has locked into.
-          </p>
-
-          <p
-            style={{
-              fontSize: '18px',
-              lineHeight: 1.75,
-              color: 'rgba(245,240,232,0.88)',
-              margin: '0 0 24px',
-            }}
-          >
-            MEOK's Trickster mode has several pattern disruption tools it uses in practice:
-          </p>
-
-          <div
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              gap: '20px',
-              margin: '28px 0 36px',
+              display: "flex",
+              flexDirection: "column",
+              gap: "0.875rem",
             }}
           >
             {[
               {
-                title: 'Constraint Injection',
-                body: 'The Trickster imposes an arbitrary, uncomfortable constraint on your work. "Finish this in 200 words." "Remove every adjective." "Describe the entire visual piece using only verbs." "Write the scene with the emotional tone inverted." Constraints collapse the field of options and force the brain to solve differently.',
+                href: "/blog/meok-for-creatives",
+                label: "MEOK for Creatives: AI That Understands the Artist\u2019s Mind",
               },
               {
-                title: 'Inversion',
-                body: 'Whatever you are currently trying to do, the Trickster proposes you do the opposite — not as the final answer, but as an exercise. A musician writing a slow, melancholic piece gets asked: "What does the energetic, bright version of this feel like?" Sometimes the inversion reveals what the original was missing.',
+                href: "/blog/meok-for-musicians",
+                label: "MEOK for Musicians: The AI Companion Built for the Studio",
               },
               {
-                title: 'Cross-Domain Contamination',
-                body: 'The Trickster deliberately imports vocabulary, structure, or problems from an unrelated field. A novelist might be asked to think about their stuck chapter as a software architecture problem. A visual artist might be asked to score their piece as music and then translate the score back into visual form.',
+                href: "/blog/ai-for-perfectionism",
+                label: "AI for Perfectionism: When Good Enough Is Never Enough",
               },
               {
-                title: 'Radical Reduction',
-                body: 'Strip the work to its irreducible core. "If you could only keep one element of this piece, what would it be, and why? Start from there." Most creative blocks accumulate complexity. Radical reduction clears the debris and reveals the actual problem.',
+                href: "/blog/meok-companion-archetypes-guide",
+                label: "The MEOK Companion Archetypes: A Complete Guide",
               },
               {
-                title: 'Temporal Displacement',
-                body: 'The Trickster asks you to imagine the work from a different time: "How would you approach this if you already knew it was finished and loved? What choices did you make?" Or: "Imagine you\'re revisiting this work in twenty years. What do you wish you had done differently?" Future perspective unlocks present paralysis.',
+                href: "/blog/ai-that-remembers-you",
+                label: "AI That Remembers You: Why Sovereign Memory Changes Everything",
               },
-            ].map((item, i) => (
-              <div
-                key={i}
+            ].map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
                 style={{
-                  backgroundColor: 'rgba(245,240,232,0.03)',
-                  border: '1px solid rgba(245,240,232,0.08)',
-                  borderRadius: '8px',
-                  padding: '24px 28px',
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "0.75rem",
+                  padding: "1rem 1.25rem",
+                  background: CARD,
+                  border: `1px solid ${BORDER}`,
+                  borderRadius: "0.625rem",
+                  textDecoration: "none",
+                  color: "rgba(245,240,232,0.82)",
+                  fontSize: "0.9375rem",
+                  fontFamily: "Georgia, 'Times New Roman', serif",
+                  lineHeight: "1.5",
                 }}
               >
-                <h3
-                  style={{
-                    color: '#c9a84c',
-                    fontSize: '16px',
-                    fontFamily: "'Inter', 'Helvetica Neue', sans-serif",
-                    fontWeight: 700,
-                    margin: '0 0 10px',
-                    letterSpacing: '0.02em',
-                  }}
-                >
-                  {item.title}
-                </h3>
-                <p
-                  style={{
-                    fontSize: '16px',
-                    lineHeight: 1.7,
-                    color: 'rgba(245,240,232,0.8)',
-                    margin: 0,
-                  }}
-                >
-                  {item.body}
-                </p>
-              </div>
+                <span style={{ color: GOLD, flexShrink: "0" }}>&#8594;</span>
+                {link.label}
+              </Link>
             ))}
           </div>
+        </div>
 
-          <p
+        {/* ── FOOTER NAV ── */}
+        <div
+          style={{
+            marginTop: "3.5rem",
+            paddingTop: "2rem",
+            borderTop: `1px solid ${BORDER}`,
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            flexWrap: "wrap",
+            gap: "1rem",
+          }}
+        >
+          <Link
+            href="/blog"
             style={{
-              fontSize: '18px',
-              lineHeight: 1.75,
-              color: 'rgba(245,240,232,0.88)',
-              margin: '0 0 48px',
+              fontSize: "0.875rem",
+              color: MUTED,
+              textDecoration: "none",
+              fontFamily: "Inter, 'Helvetica Neue', sans-serif",
             }}
           >
-            None of these are guaranteed to produce the breakthrough. Together, cycling through them with a thinking partner who does not give up — who will try a new angle every time — they are extremely effective. The Trickster does not run out of approaches.
-          </p>
-
-          {/* H2: Brainstorming vs generator */}
-          <h2
+            &#8592; All Articles
+          </Link>
+          <Link
+            href="/blog/meok-companion-archetypes-guide"
             style={{
-              fontSize: 'clamp(22px, 3.5vw, 30px)',
-              fontWeight: 700,
-              color: '#f5f0e8',
-              margin: '0 0 20px',
-              lineHeight: 1.25,
-              letterSpacing: '-0.01em',
+              fontSize: "0.875rem",
+              color: MUTED,
+              textDecoration: "none",
+              fontFamily: "Inter, 'Helvetica Neue', sans-serif",
             }}
           >
-            AI as a brainstorming partner vs AI as a generator
-          </h2>
-
-          <p
-            style={{
-              fontSize: '18px',
-              lineHeight: 1.75,
-              color: 'rgba(245,240,232,0.88)',
-              margin: '0 0 24px',
-            }}
-          >
-            There is a critical distinction that most conversation about AI and creativity gets wrong.
-          </p>
-
-          <p
-            style={{
-              fontSize: '18px',
-              lineHeight: 1.75,
-              color: 'rgba(245,240,232,0.88)',
-              margin: '0 0 24px',
-            }}
-          >
-            AI as a <strong style={{ color: '#f5f0e8' }}>generator</strong> produces things: a paragraph for your chapter, a melody for your bridge, a colour palette for your rebrand. It outputs content that you then use or discard.
-          </p>
-
-          <p
-            style={{
-              fontSize: '18px',
-              lineHeight: 1.75,
-              color: 'rgba(245,240,232,0.88)',
-              margin: '0 0 24px',
-            }}
-          >
-            AI as a <strong style={{ color: '#f5f0e8' }}>brainstorming partner</strong> does something entirely different. It asks questions. It reframes. It introduces pressure. It maintains the integrity of your creative process while expanding the possibility space within it. The output is not content — it is perspective.
-          </p>
-
-          <p
-            style={{
-              fontSize: '18px',
-              lineHeight: 1.75,
-              color: 'rgba(245,240,232,0.88)',
-              margin: '0 0 24px',
-            }}
-          >
-            When creatives hit a block and reach for AI as a generator, they often make the block worse. The generated content is not theirs — it doesn't carry their intent, their idiosyncrasies, their history with the work. Reading it, they feel more disconnected from the piece, not less. The voice is wrong. The structure is hollow. The block deepens because now there's something in the work that actively isn't them.
-          </p>
-
-          <div
-            style={{
-              borderLeft: '3px solid #c9a84c',
-              paddingLeft: '24px',
-              margin: '32px 0',
-            }}
-          >
-            <p
-              style={{
-                fontSize: '19px',
-                lineHeight: 1.65,
-                color: '#f5f0e8',
-                margin: 0,
-                fontStyle: 'italic',
-              }}
-            >
-              "AI-generated content during a creative block is noise disguised as signal. You need less content. You need a better question."
-            </p>
-          </div>
-
-          <p
-            style={{
-              fontSize: '18px',
-              lineHeight: 1.75,
-              color: 'rgba(245,240,232,0.88)',
-              margin: '0 0 24px',
-            }}
-          >
-            MEOK's Trickster mode operates exclusively as a brainstorming partner. It will not write your chapter for you. It will not produce a melody. It will not generate your design. What it will do is sit with you in the problem until the problem changes shape — until the thing that was impossible becomes the thing that is obvious.
-          </p>
-
-          <p
-            style={{
-              fontSize: '18px',
-              lineHeight: 1.75,
-              color: 'rgba(245,240,232,0.88)',
-              margin: '0 0 48px',
-            }}
-          >
-            This is what a great creative director does. What a great editor does. What a great collaborator does at 2am when you've been staring at the same wall for four hours. They do not do the work for you — they change how you see the work until you can do it yourself.
-          </p>
-
-          {/* H2: Scholar archetype */}
-          <h2
-            style={{
-              fontSize: 'clamp(22px, 3.5vw, 30px)',
-              fontWeight: 700,
-              color: '#f5f0e8',
-              margin: '0 0 20px',
-              lineHeight: 1.25,
-              letterSpacing: '-0.01em',
-            }}
-          >
-            The Scholar archetype: cross-domain synthesis for creative fuel
-          </h2>
-
-          <p
-            style={{
-              fontSize: '18px',
-              lineHeight: 1.75,
-              color: 'rgba(245,240,232,0.88)',
-              margin: '0 0 24px',
-            }}
-          >
-            Alongside the Trickster, MEOK has a Scholar archetype. Where the Trickster disrupts, the Scholar synthesises — drawing connections across disciplines, periods, cultures, and fields that you would not normally have access to without years of accumulated reading.
-          </p>
-
-          <p
-            style={{
-              fontSize: '18px',
-              lineHeight: 1.75,
-              color: 'rgba(245,240,232,0.88)',
-              margin: '0 0 24px',
-            }}
-          >
-            For creative block specifically, the Scholar's cross-domain synthesis is fuel. Creative blocks often happen when a creator has exhausted their immediate reference field. The novelist has read too much of the same genre. The musician has been listening to the same three artists. The designer has been looking at the same visual language.
-          </p>
-
-          <p
-            style={{
-              fontSize: '18px',
-              lineHeight: 1.75,
-              color: 'rgba(245,240,232,0.88)',
-              margin: '0 0 24px',
-            }}
-          >
-            The Scholar can pull from anywhere. A composer stuck on a chamber piece might benefit from the Scholar synthesising the structural principles of Islamic geometric tiling. A novelist stuck on pacing might gain from the Scholar unpacking how silent film directors used visual rhythm before sound. A graphic designer might find their visual system unlocked by a deep dive into the logic of musical counterpoint.
-          </p>
-
-          <div
-            style={{
-              backgroundColor: 'rgba(201,168,76,0.06)',
-              border: '1px solid rgba(201,168,76,0.2)',
-              borderRadius: '8px',
-              padding: '28px 32px',
-              margin: '28px 0',
-            }}
-          >
-            <p
-              style={{
-                color: '#c9a84c',
-                fontSize: '12px',
-                fontFamily: "'Inter', 'Helvetica Neue', sans-serif",
-                fontWeight: 700,
-                letterSpacing: '0.1em',
-                textTransform: 'uppercase',
-                margin: '0 0 18px',
-              }}
-            >
-              Scholar Cross-Domain Prompts
-            </p>
-            <ul
-              style={{
-                margin: 0,
-                paddingLeft: '20px',
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '12px',
-              }}
-            >
-              {[
-                '"What does the architecture of this scene share with the structural principles of a suspension bridge? Where are the load-bearing elements and where is the tension being held?"',
-                '"Apply the rules of jazz improvisation to this visual composition — what is the tonic, what are you improvising around, and where is the call-and-response?"',
-                '"If this creative work were a biological system, what kind of system would it be? What is it optimising for? What would cause it to collapse?"',
-                '"What creative problem in a completely different domain shares the same structural shape as the one you are stuck on? How was it solved there?"',
-                '"What does the mathematics of fractals have to say about the repeating unit in your work — the smallest element that contains the logic of the whole?"',
-              ].map((item, i) => (
-                <li
-                  key={i}
-                  style={{
-                    fontSize: '16px',
-                    lineHeight: 1.65,
-                    color: 'rgba(245,240,232,0.8)',
-                    fontStyle: 'italic',
-                  }}
-                >
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <p
-            style={{
-              fontSize: '18px',
-              lineHeight: 1.75,
-              color: 'rgba(245,240,232,0.88)',
-              margin: '0 0 24px',
-            }}
-          >
-            These are not metaphors for their own sake. They are structural tools. The cross-domain synthesis forces the brain to abstract the problem — to find its underlying logic independent of the medium — which almost always reveals a solution path that was invisible while you were inside the domain.
-          </p>
-
-          <p
-            style={{
-              fontSize: '18px',
-              lineHeight: 1.75,
-              color: 'rgba(245,240,232,0.88)',
-              margin: '0 0 48px',
-            }}
-          >
-            The Trickster and Scholar work in tandem. The Trickster breaks your current frame. The Scholar fills the gap with fuel from unexpected places. Between them, the creative block rarely survives the session.
-          </p>
-
-          {/* H2: Practical techniques */}
-          <h2
-            style={{
-              fontSize: 'clamp(22px, 3.5vw, 30px)',
-              fontWeight: 700,
-              color: '#f5f0e8',
-              margin: '0 0 20px',
-              lineHeight: 1.25,
-              letterSpacing: '-0.01em',
-            }}
-          >
-            Practical techniques: how to use MEOK when you're stuck
-          </h2>
-
-          <p
-            style={{
-              fontSize: '18px',
-              lineHeight: 1.75,
-              color: 'rgba(245,240,232,0.88)',
-              margin: '0 0 24px',
-            }}
-          >
-            Knowing that MEOK has a Trickster and a Scholar is one thing. Using them effectively when you are genuinely blocked is another. Here is a concrete protocol.
-          </p>
-
-          <div
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              gap: '0',
-              margin: '28px 0 36px',
-            }}
-          >
-            {[
-              {
-                step: '01',
-                title: 'Name the block precisely',
-                body: 'Do not open with "I\'m stuck." Open with the specific shape of the stuck. "I\'m writing a novel and I can\'t figure out how chapter seven ends. The chapter is about X, the character is in a situation where Y, and I keep writing toward Z but it feels false." The more precise your description, the more precise the Trickster\'s disruption.',
-              },
-              {
-                step: '02',
-                title: 'Tell MEOK you want the Trickster',
-                body: 'Ask explicitly for the Trickster mode: "I need you to challenge my assumptions about this piece, not validate them." This signals to MEOK that you want destabilisation, not reassurance. Most people instinctively seek reassurance when they are stuck — the Trickster is the better medicine.',
-              },
-              {
-                step: '03',
-                title: 'Do not deflect the first reframe',
-                body: 'The Trickster will offer a reframe that feels wrong or uncomfortable. That discomfort is the signal — it means the reframe has touched something real. Your first instinct will be to explain why the reframe doesn\'t apply. Resist. Sit with it for at least sixty seconds. Try to make it apply. The answering of the reframe is often where the actual breakthrough happens.',
-              },
-              {
-                step: '04',
-                title: 'Use the Scholar for domain-crossing',
-                body: 'Once the Trickster has broken something open, ask the Scholar to synthesise. "I\'ve realised my chapter needs X. Where else in human creative output has someone solved this kind of structural problem? What can I steal?" The Scholar will find the unexpected parallels. You will recognise the right ones immediately.',
-              },
-              {
-                step: '05',
-                title: 'Write a bad version immediately',
-                body: 'After a productive Trickster session, do not strategise. Write immediately. Write badly. Write the version that uses the new frame, even if the execution is rough. The point is to move before the new perspective closes back down. Bad first drafts from a new frame are infinitely more valuable than no draft from a perfect frame.',
-              },
-              {
-                step: '06',
-                title: 'Return to MEOK with what you found',
-                body: 'MEOK\'s Sovereign Memory holds context across sessions. When you come back with "I wrote that bad version and here\'s what I found," the Trickster and Scholar can build on the specific territory you have mapped rather than starting from scratch. The conversation compounds over time.',
-              },
-            ].map((item, i) => (
-              <div
-                key={i}
-                style={{
-                  display: 'flex',
-                  gap: '24px',
-                  padding: '28px 0',
-                  borderBottom: i < 5 ? '1px solid rgba(245,240,232,0.08)' : 'none',
-                }}
-              >
-                <div
-                  style={{
-                    color: '#c9a84c',
-                    fontSize: '13px',
-                    fontFamily: "'Inter', 'Helvetica Neue', sans-serif",
-                    fontWeight: 700,
-                    letterSpacing: '0.05em',
-                    minWidth: '28px',
-                    paddingTop: '3px',
-                  }}
-                >
-                  {item.step}
-                </div>
-                <div>
-                  <h3
-                    style={{
-                      color: '#f5f0e8',
-                      fontSize: '18px',
-                      fontWeight: 700,
-                      margin: '0 0 10px',
-                    }}
-                  >
-                    {item.title}
-                  </h3>
-                  <p
-                    style={{
-                      fontSize: '16px',
-                      lineHeight: 1.7,
-                      color: 'rgba(245,240,232,0.8)',
-                      margin: 0,
-                    }}
-                  >
-                    {item.body}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* For specific disciplines */}
-          <h3
-            style={{
-              fontSize: '22px',
-              fontWeight: 700,
-              color: '#f5f0e8',
-              margin: '40px 0 16px',
-            }}
-          >
-            Specific prompts by discipline
-          </h3>
-
-          <p
-            style={{
-              fontSize: '17px',
-              lineHeight: 1.7,
-              color: 'rgba(245,240,232,0.8)',
-              margin: '0 0 20px',
-            }}
-          >
-            These are entry points. Copy them into MEOK when you are stuck.
-          </p>
-
-          <div
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              gap: '20px',
-              margin: '0 0 40px',
-            }}
-          >
-            {[
-              {
-                label: 'FOR WRITERS',
-                prompts: [
-                  '"I\'m stuck on [describe scene/chapter/passage]. Trickster mode: tell me the three most wrong assumptions I am probably making about what this scene needs to do."',
-                  '"What is the scene I am most afraid to write in this book? Why might that be the scene I actually need to write next?"',
-                  '"I keep writing toward [X]. What would the story look like if [X] was the thing the story is actually about avoiding?"',
-                ],
-              },
-              {
-                label: 'FOR MUSICIANS',
-                prompts: [
-                  '"I\'m stuck on [describe section]. What structural analogy from a completely different creative field might show me what\'s wrong with the architecture of this section?"',
-                  '"I\'ve been listening to [same three artists] for six months. Scholar mode: what is a completely unexpected influence — a different era, genre, or discipline — that might feed what I\'m trying to do?"',
-                  '"The emotion I\'m trying to capture is [X]. What musical approaches have historically been used to create the opposite emotion, and what can I steal from that inversion?"',
-                ],
-              },
-              {
-                label: 'FOR VISUAL ARTISTS & DESIGNERS',
-                prompts: [
-                  '"This composition isn\'t working and I don\'t know why. Trickster mode: what is the implicit visual hierarchy I have assumed that might be wrong?"',
-                  '"I\'ve been in [style/visual language] for too long. Scholar: what visual system from a different culture, period, or discipline has solved the problem of [describe your core creative problem]?"',
-                  '"The piece is technically correct but emotionally flat. What single element, if removed, would make the most uncomfortable silence?"',
-                ],
-              },
-            ].map((section, i) => (
-              <div
-                key={i}
-                style={{
-                  backgroundColor: 'rgba(245,240,232,0.03)',
-                  border: '1px solid rgba(245,240,232,0.08)',
-                  borderRadius: '8px',
-                  padding: '24px 28px',
-                }}
-              >
-                <p
-                  style={{
-                    color: '#c9a84c',
-                    fontSize: '11px',
-                    fontFamily: "'Inter', 'Helvetica Neue', sans-serif",
-                    fontWeight: 700,
-                    letterSpacing: '0.12em',
-                    textTransform: 'uppercase',
-                    margin: '0 0 14px',
-                  }}
-                >
-                  {section.label}
-                </p>
-                <ul
-                  style={{
-                    margin: 0,
-                    paddingLeft: '18px',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    gap: '10px',
-                  }}
-                >
-                  {section.prompts.map((prompt, j) => (
-                    <li
-                      key={j}
-                      style={{
-                        fontSize: '15px',
-                        lineHeight: 1.65,
-                        color: 'rgba(245,240,232,0.75)',
-                        fontStyle: 'italic',
-                      }}
-                    >
-                      {prompt}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-
-          <p
-            style={{
-              fontSize: '18px',
-              lineHeight: 1.75,
-              color: 'rgba(245,240,232,0.88)',
-              margin: '0 0 48px',
-            }}
-          >
-            The pattern in all of these is the same: name the specific shape of the problem, ask for the uncomfortable frame, and then actually engage with the reframe rather than waiting for it to produce something comfortable. The Trickster is not designed to produce comfort. It is designed to produce movement.
-          </p>
-
-          {/* Closing */}
-          <p
-            style={{
-              fontSize: '18px',
-              lineHeight: 1.75,
-              color: 'rgba(245,240,232,0.88)',
-              margin: '0 0 24px',
-            }}
-          >
-            Creative block is not the end of your creative process. It is a compression point — a place where the process is being forced through too narrow a channel. The Trickster widens the channel. The Scholar fills it with new material. What comes out the other side is still yours.
-          </p>
-
-          <p
-            style={{
-              fontSize: '18px',
-              lineHeight: 1.75,
-              color: 'rgba(245,240,232,0.88)',
-              margin: '0 0 64px',
-            }}
-          >
-            It was always going to be yours. You just needed a different angle.
-          </p>
-
-          {/* Divider */}
-          <div
-            style={{
-              height: '1px',
-              backgroundColor: 'rgba(245,240,232,0.1)',
-              margin: '0 0 64px',
-            }}
-          />
-
-          {/* FAQ */}
-          <section>
-            <h2
-              style={{
-                fontSize: 'clamp(22px, 3.5vw, 30px)',
-                fontWeight: 700,
-                color: '#f5f0e8',
-                margin: '0 0 36px',
-                lineHeight: 1.25,
-                letterSpacing: '-0.01em',
-              }}
-            >
-              Frequently asked questions
-            </h2>
-
-            <div
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '0',
-              }}
-            >
-              {[
-                {
-                  q: 'What is creative block and why does it happen?',
-                  a: 'Creative block is not laziness or a lack of talent — it is a pattern your nervous system has locked into. It happens when the brain\'s default problem-solving approach hits a wall: you keep reaching for the same tools, the same references, the same structural moves, and they stop working. The creative signal is still there. The pipeline is congested. Traditional advice like "just start" or "take a walk" fails because it doesn\'t address the underlying pattern — it just waits for the pattern to self-resolve.',
-                },
-                {
-                  q: "How does MEOK's Trickster archetype help with creative block?",
-                  a: "MEOK's Trickster archetype is specifically designed for creative disruption. Rather than validating your current frame or offering generic encouragement, the Trickster actively destabilises the assumptions keeping you stuck. It introduces unexpected reframes, inverts your premise, drags in cross-domain analogies you wouldn't have reached for, and asks questions that force you to see your work from angles you had foreclosed. It is adversarial in the best sense — a thinking partner that refuses to let you stay comfortable inside the block.",
-                },
-                {
-                  q: 'Is using AI for creative work cheating?',
-                  a: "Using AI as a brainstorming partner is no more \"cheating\" than talking through a problem with a friend, reading a book that sparks an idea, or keeping a mood board. MEOK is not generating your work for you — it is helping you see your own work differently. The Trickster archetype is built specifically so it does not impose its aesthetic on yours. It introduces pressure and unexpected connections; you decide what survives. The output is entirely yours.",
-                },
-                {
-                  q: 'What is the difference between AI as a generator and AI as a brainstorming partner?',
-                  a: "AI as a generator produces content for you — a paragraph, a logo, a melody. AI as a brainstorming partner questions, provokes, and reframes your own thinking. MEOK operates as the latter. When you are blocked, the last thing you need is more content that isn't yours — it deepens the disconnection. What you need is a shift in perspective so your own creative signal can surface. MEOK's role is to create the conditions for your breakthrough, not to hand you one.",
-                },
-                {
-                  q: 'Can MEOK help musicians and visual artists, not just writers?',
-                  a: "Yes. Creative block is domain-agnostic — it is a cognitive pattern, not a writing problem. MEOK works with writers, visual artists, musicians, designers, filmmakers, and anyone whose work requires original thinking. The Trickster's reframing techniques apply equally to a stuck chord progression, a painting that has stopped working, a design system that feels lifeless, or a screenplay that has lost its engine. The Scholar archetype adds cross-domain synthesis — pulling from music theory when you're stuck on visual rhythm, or from architecture when you're stuck on narrative structure.",
-                },
-              ].map((item, i, arr) => (
-                <div
-                  key={i}
-                  style={{
-                    padding: '28px 0',
-                    borderBottom:
-                      i < arr.length - 1
-                        ? '1px solid rgba(245,240,232,0.08)'
-                        : 'none',
-                  }}
-                >
-                  <h3
-                    style={{
-                      color: '#f5f0e8',
-                      fontSize: '18px',
-                      fontWeight: 700,
-                      margin: '0 0 12px',
-                      lineHeight: 1.35,
-                    }}
-                  >
-                    {item.q}
-                  </h3>
-                  <p
-                    style={{
-                      fontSize: '16px',
-                      lineHeight: 1.75,
-                      color: 'rgba(245,240,232,0.75)',
-                      margin: 0,
-                    }}
-                  >
-                    {item.a}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </section>
-
-          {/* Divider */}
-          <div
-            style={{
-              height: '1px',
-              backgroundColor: 'rgba(245,240,232,0.1)',
-              margin: '64px 0',
-            }}
-          />
-
-          {/* CTA */}
-          <section
-            style={{
-              textAlign: 'center',
-              padding: '48px 32px',
-              backgroundColor: 'rgba(201,168,76,0.06)',
-              border: '1px solid rgba(201,168,76,0.2)',
-              borderRadius: '12px',
-            }}
-          >
-            <p
-              style={{
-                color: '#c9a84c',
-                fontSize: '12px',
-                fontFamily: "'Inter', 'Helvetica Neue', sans-serif",
-                fontWeight: 700,
-                letterSpacing: '0.12em',
-                textTransform: 'uppercase',
-                margin: '0 0 16px',
-              }}
-            >
-              MEOK AI LABS
-            </p>
-            <h2
-              style={{
-                fontSize: 'clamp(24px, 4vw, 36px)',
-                fontWeight: 700,
-                color: '#f5f0e8',
-                margin: '0 0 16px',
-                lineHeight: 1.2,
-                letterSpacing: '-0.02em',
-              }}
-            >
-              Stop waiting for the block to lift.
-            </h2>
-            <p
-              style={{
-                fontSize: '18px',
-                lineHeight: 1.65,
-                color: 'rgba(245,240,232,0.7)',
-                margin: '0 0 32px',
-                maxWidth: '480px',
-                marginLeft: 'auto',
-                marginRight: 'auto',
-              }}
-            >
-              Meet the Trickster. Get the reframe you haven't given yourself. Break the pattern that has been running on loop.
-            </p>
-            <Link
-              href="/birth"
-              style={{
-                display: 'inline-block',
-                backgroundColor: '#c9a84c',
-                color: '#0d0c18',
-                fontSize: '15px',
-                fontFamily: "'Inter', 'Helvetica Neue', sans-serif",
-                fontWeight: 700,
-                letterSpacing: '0.06em',
-                textTransform: 'uppercase',
-                padding: '16px 36px',
-                borderRadius: '6px',
-                textDecoration: 'none',
-              }}
-            >
-              Meet MEOK
-            </Link>
-          </section>
-
-          {/* Divider */}
-          <div
-            style={{
-              height: '1px',
-              backgroundColor: 'rgba(245,240,232,0.1)',
-              margin: '64px 0 40px',
-            }}
-          />
-
-          {/* Related posts */}
-          <section>
-            <p
-              style={{
-                color: 'rgba(245,240,232,0.45)',
-                fontSize: '12px',
-                fontFamily: "'Inter', 'Helvetica Neue', sans-serif",
-                fontWeight: 700,
-                letterSpacing: '0.12em',
-                textTransform: 'uppercase',
-                margin: '0 0 24px',
-              }}
-            >
-              Related
-            </p>
-            <div
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '12px',
-              }}
-            >
-              {[
-                {
-                  href: '/blog/ai-for-creative-professionals',
-                  label: 'AI for Creative Professionals: A Companion That Feeds Your Process',
-                },
-                {
-                  href: '/blog/archetypes-guide',
-                  label: "MEOK's Archetypes Explained: Trickster, Scholar, Guardian, and More",
-                },
-                {
-                  href: '/blog/cognitive-symbiosis',
-                  label: 'Cognitive Symbiosis: How MEOK Thinks With You, Not For You',
-                },
-              ].map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  style={{
-                    color: '#c9a84c',
-                    fontSize: '15px',
-                    fontFamily: "'Inter', 'Helvetica Neue', sans-serif",
-                    textDecoration: 'none',
-                    borderBottom: '1px solid rgba(201,168,76,0.2)',
-                    paddingBottom: '12px',
-                    display: 'block',
-                  }}
-                >
-                  {link.label} →
-                </Link>
-              ))}
-            </div>
-          </section>
-        </article>
-      </main>
-    </>
-  )
+            Archetypes Guide &#8594;
+          </Link>
+        </div>
+      </article>
+    </div>
+  );
 }
