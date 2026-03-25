@@ -3422,6 +3422,66 @@ const POSTS = [
     category: "mental-health",
     featured: false,
   },
+  {
+    slug: "ai-for-seasonal-affective-disorder",
+    title: "AI for Seasonal Affective Disorder: Getting Through the Dark Months",
+    excerpt:
+      "SAD affects 2 million people in the UK every winter. MEOK tracks seasonal mood patterns, provides daily light-therapy reminders, and offers consistent emotional support through the months when darkness takes hold.",
+    date: "March 26, 2026",
+    readTime: "7 min read",
+    tag: "Mental Health",
+    tagColor: "#7ec8a0",
+    category: "mental-health",
+    featured: false,
+  },
+  {
+    slug: "ai-for-interview-anxiety",
+    title: "AI for Interview Anxiety: Preparing Your Mind, Not Just Your Answers",
+    excerpt:
+      "Job interview anxiety affects 92% of candidates. MEOK's Pioneer and Scholar archetypes provide mock interview practice, anxiety reframing, and Sovereign Memory that tracks your preparation journey and builds genuine confidence.",
+    date: "March 26, 2026",
+    readTime: "7 min read",
+    tag: "Professional",
+    tagColor: "#c9a84c",
+    category: "professional",
+    featured: false,
+  },
+  {
+    slug: "ai-for-midlife-crisis",
+    title: "AI Support Through Midlife Crisis: Meaning, Identity, and What Comes Next",
+    excerpt:
+      "Midlife crisis isn't a cliché — it's a genuine identity rupture affecting millions at 40-55. MEOK's Mystic and Healer companions help you navigate existential questioning and rebuild with purpose rather than panic.",
+    date: "March 26, 2026",
+    readTime: "8 min read",
+    tag: "Life Transitions",
+    tagColor: "#c9a84c",
+    category: "mental-health",
+    featured: false,
+  },
+  {
+    slug: "ai-for-health-anxiety",
+    title: "AI for Health Anxiety: Breaking the Symptom-Checking Cycle",
+    excerpt:
+      "Health anxiety (cyberchondria) affects 4-5% of the population and is worsened by internet symptom-checking. MEOK's Healer provides a healthier outlet — processing the underlying fear rather than feeding the search loop.",
+    date: "March 26, 2026",
+    readTime: "8 min read",
+    tag: "Mental Health",
+    tagColor: "#7ec8a0",
+    category: "mental-health",
+    featured: false,
+  },
+  {
+    slug: "meok-for-therapists",
+    title: "MEOK for Therapists: How AI Supports Mental Health Professionals",
+    excerpt:
+      "Therapists carry the emotional weight of their clients all day. MEOK provides sovereign AI support for therapists' own wellbeing, clinical note reflection, and CPD research — with data sovereignty that protects client confidentiality.",
+    date: "March 26, 2026",
+    readTime: "8 min read",
+    tag: "Professional",
+    tagColor: "#c9a84c",
+    category: "professional",
+    featured: false,
+  },
 ];
 
 // ── Category filter tabs ──────────────────────────────────────────────────────
