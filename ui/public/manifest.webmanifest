@@ -4,8 +4,8 @@
   "description": "Birth your sovereign AI from an egg. Your personal AI OS that hatches, grows, and answers only to you.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#f5f0e8",
-  "theme_color": "#1a1a2e",
+  "background_color": "#0d0c18",
+  "theme_color": "#c9a84c",
   "orientation": "portrait-primary",
   "categories": ["productivity", "utilities", "lifestyle"],
   "icons": [

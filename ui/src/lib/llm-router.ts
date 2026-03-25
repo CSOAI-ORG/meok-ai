@@ -32,7 +32,11 @@ export type TaskType =
   | 'gaming'
   | 'research'
   | 'planning'
-  | 'reasoning';
+  | 'reasoning'
+  | 'document_editing'
+  | 'email_drafting'
+  | 'code_review'
+  | 'meeting_prep';
 
 // ── Task classification ────────────────────────────────────────────────────
 
@@ -48,6 +52,18 @@ export function classifyTask(message: string): TaskType {
 
   if (lower.match(/\b(game|gaming|ranked|match|valorant|league|cs2|fortnite|apex|overwatch|esports|strategy game|build order|team comp|loadout)\b/))
     return 'gaming';
+
+  if (lower.match(/\b(document|edit|draft|write|report|memo|letter|article)\b/) && !lower.match(/\b(email|reply|forward|inbox)\b/))
+    return 'document_editing';
+
+  if (lower.match(/\b(email|reply|forward|inbox|sender|subject line)\b/))
+    return 'email_drafting';
+
+  if (lower.match(/\b(review code|pull request|PR|diff|merge|lint)\b/))
+    return 'code_review';
+
+  if (lower.match(/\b(meeting|agenda|minutes|attendees|calendar|schedule)\b/))
+    return 'meeting_prep';
 
   if (lower.match(/\b(reason|logic|deduce|prove|theorem|why does|solve|calculate|math|equation|step by step|think through|figure out)\b/))
     return 'reasoning';
@@ -92,6 +108,10 @@ export function selectModel(taskType: TaskType, tier: Tier): string {
     if (taskType === 'gaming') return 'groq-llama';
     if (taskType === 'emotional') return 'groq-llama'; // Free tier gets Groq for emotional (better than DeepSeek)
     if (taskType === 'research') return 'groq-llama';
+    if (taskType === 'document_editing') return 'claude-3-5-haiku-latest';
+    if (taskType === 'email_drafting') return 'deepseek-chat';
+    if (taskType === 'code_review') return 'nemotron-nano';
+    if (taskType === 'meeting_prep') return 'groq-llama';
     return 'cerebras-llama'; // Simple chat → fastest free provider
   }
 
@@ -123,6 +143,18 @@ export function selectModel(taskType: TaskType, tier: Tier): string {
 
     case 'planning':
       return tier === 'family' ? 'nemotron-super' : 'gpt-4o-mini';
+
+    case 'document_editing':
+      return 'claude-3-5-haiku-latest';
+
+    case 'email_drafting':
+      return tier === 'family' ? 'claude-3-5-haiku-latest' : 'deepseek-chat';
+
+    case 'code_review':
+      return 'nemotron-super';
+
+    case 'meeting_prep':
+      return 'groq-llama';
 
     case 'chat':
     default:
@@ -293,7 +325,12 @@ export function getEffortLevel(taskType: TaskType): EffortLevel {
       return 'high';
     case 'coding':
     case 'reasoning':
+    case 'code_review':
       return 'max';
+    case 'document_editing':
+    case 'email_drafting':
+    case 'meeting_prep':
+      return 'medium';
     default:
       return 'medium';
   }

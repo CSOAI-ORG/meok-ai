@@ -149,15 +149,26 @@ const RESOURCE_LINKS: ResourceLink[] = [
   { href: "/waitlist", label: "Waitlist", desc: "Get early access to MEOK", icon: <Hourglass className="w-4 h-4" /> },
 ];
 
-const TOP_LINKS = [
-  { href: "/os", label: "The OS" },
-  { href: "/os/sovereign", label: "Sovereign AI" },
-  { href: "/problems", label: "Why MEOK" },
-  { href: "/compare", label: "Compare" },
+const PRIMARY_LINKS = [
+  { href: "/personal", label: "Personal" },
+  { href: "/work", label: "Work" },
+  { href: "/family", label: "Family" },
+  { href: "/guardian", label: "Guardian" },
   { href: "/pricing", label: "Pricing" },
-  { href: "/download", label: "Desktop OS" },
-  { href: "/about", label: "About" },
-  { href: "/labs", label: "Research" },
+];
+
+const MORE_LINKS = [
+  { href: "/gaming", label: "Gaming", icon: "🎮" },
+  { href: "/team", label: "Team", icon: "👥" },
+  { href: "/labs", label: "Labs", icon: "🧪" },
+  { href: "/blog", label: "Blog", icon: "📝" },
+  { href: "/roadmap", label: "Roadmap", icon: "🗺️" },
+  { href: "/about", label: "About", icon: "💡" },
+];
+
+const ALL_NAV_LINKS = [
+  ...PRIMARY_LINKS,
+  ...MORE_LINKS.map(({ href, label }) => ({ href, label })),
 ];
 
 // ─── COMPONENT ────────────────────────────────────────────────────────────────
@@ -235,38 +246,23 @@ export function MarketingNav({ activePage }: MarketingNavProps) {
             MEOK<span className="text-[#c9a84c]">.AI</span>
           </Link>
 
-          {/* Desktop top links + Resources dropdown */}
+          {/* Desktop primary links + More dropdown */}
           <nav aria-label="Primary navigation" className="hidden md:flex items-center gap-7 text-sm text-[#4a4a3a]">
-            {TOP_LINKS.map((l) => (
+            {PRIMARY_LINKS.map((l) => (
               <Link
                 key={l.href}
                 href={l.href}
                 className={`hover:text-[#111111] transition-colors font-medium ${
-                  pathname === l.href || activePage === l.label.toLowerCase()
+                  pathname === l.href || pathname.startsWith(l.href + "/") || activePage === l.label.toLowerCase()
                     ? "text-[#111111] font-semibold"
                     : ""
-                } ${l.label === "Sovereign AI" ? "text-[#c9a84c] font-semibold hover:text-[#a8892e]" : ""}`}
+                }`}
               >
-                {l.label === "Sovereign AI" ? (
-                  <span className="flex items-center gap-1">
-                    <span className="text-xs">🔐</span>
-                    {l.label}
-                  </span>
-                ) : l.label === "Desktop OS" ? (
-                  <span className="flex items-center gap-1.5">
-                    {l.label}
-                    <span
-                      className="text-[10px] font-bold px-1.5 py-0.5 rounded-full leading-none"
-                      style={{ background: "#e8e4dc", color: "#6b6b6b" }}
-                    >
-                      Summer 2026
-                    </span>
-                  </span>
-                ) : l.label}
+                {l.label}
               </Link>
             ))}
 
-            {/* Resources dropdown trigger */}
+            {/* More dropdown trigger */}
             <div ref={resourcesRef} className="relative">
               <button
                 className="flex items-center gap-1 font-medium hover:text-[#111111] transition-colors"
@@ -274,21 +270,21 @@ export function MarketingNav({ activePage }: MarketingNavProps) {
                 onMouseEnter={() => setResourcesOpen(true)}
                 aria-haspopup="true"
                 aria-expanded={resourcesOpen}
-                aria-controls="resources-dropdown"
+                aria-controls="more-dropdown"
               >
-                Resources
+                More
                 <ChevronDown
                   className={`w-3.5 h-3.5 transition-transform duration-200 ${resourcesOpen ? "rotate-180" : ""}`}
                   aria-hidden="true"
                 />
               </button>
 
-              {/* Resources panel */}
+              {/* More panel */}
               <nav
-                id="resources-dropdown"
+                id="more-dropdown"
                 role="navigation"
-                aria-label="Resources"
-                className="absolute top-full right-0 mt-2 w-72 rounded-2xl overflow-hidden"
+                aria-label="More pages"
+                className="absolute top-full right-0 mt-2 w-56 rounded-2xl overflow-hidden"
                 style={{
                   background: "rgba(26,26,46,0.97)",
                   backdropFilter: "blur(20px)",
@@ -303,11 +299,11 @@ export function MarketingNav({ activePage }: MarketingNavProps) {
                 onMouseLeave={() => setResourcesOpen(false)}
               >
                 <div className="p-2">
-                  {RESOURCE_LINKS.map((r) => (
+                  {MORE_LINKS.map((m) => (
                     <Link
-                      key={r.label}
-                      href={r.href}
-                      className="flex items-start gap-3 px-3 py-2.5 rounded-xl transition-colors group"
+                      key={m.label}
+                      href={m.href}
+                      className="flex items-center gap-3 px-3 py-2.5 rounded-xl transition-colors"
                       style={{ color: "rgba(255,255,255,0.75)" }}
                       onClick={() => setResourcesOpen(false)}
                       onMouseEnter={(e) => {
@@ -319,13 +315,8 @@ export function MarketingNav({ activePage }: MarketingNavProps) {
                         (e.currentTarget as HTMLAnchorElement).style.color = "rgba(255,255,255,0.75)";
                       }}
                     >
-                      <span className="mt-0.5 flex-shrink-0 opacity-70 group-hover:opacity-100 transition-opacity">
-                        {r.icon}
-                      </span>
-                      <span>
-                        <span className="block text-sm font-semibold leading-tight">{r.label}</span>
-                        <span className="block text-xs mt-0.5 opacity-60">{r.desc}</span>
-                      </span>
+                      <span className="text-base leading-none flex-shrink-0">{m.icon}</span>
+                      <span className="text-sm font-semibold leading-tight">{m.label}</span>
                     </Link>
                   ))}
                 </div>
@@ -550,77 +541,26 @@ export function MarketingNav({ activePage }: MarketingNavProps) {
         {/* ─── MOBILE MENU ─── */}
         {mobileOpen && (
           <div className="md:hidden border-t border-[#e8e4dc] bg-[#FAF9F6] px-6 py-4 max-h-[85vh] overflow-y-auto">
-            {/* Products */}
-            <div className="mb-4">
-              <p className="text-[10px] font-bold tracking-widest uppercase text-[#9a9a8a] mb-2">
-                Products
-              </p>
-              <div className="grid grid-cols-2 gap-1.5">
-                {PRODUCTS.map((p) => (
-                  <Link
-                    key={p.href}
-                    href={p.href}
-                    className="flex items-center gap-2 px-3 py-2 rounded-xl text-sm font-semibold transition-colors"
-                    style={{
-                      background:
-                        pathname === p.href || pathname.startsWith(p.href + "/")
-                          ? `${p.color}15`
-                          : "#f5f0e8",
-                      color:
-                        pathname === p.href || pathname.startsWith(p.href + "/")
-                          ? p.color
-                          : "#4a4a3a",
-                    }}
-                    onClick={() => setMobileOpen(false)}
-                  >
-                    <span className="text-base">{p.icon}</span>
-                    <span className="text-xs">{p.name}</span>
-                  </Link>
-                ))}
-              </div>
-            </div>
-
-            {/* Top links */}
-            <div className="border-t border-[#e8e4dc] pt-3 mb-3 space-y-0.5">
+            {/* All navigation links — flat list */}
+            <div className="mb-4 space-y-0.5">
               <p className="text-[10px] font-bold tracking-widest uppercase text-[#9a9a8a] mb-2">
                 Navigate
               </p>
-              {TOP_LINKS.map((l) => (
-                <Link
-                  key={l.href}
-                  href={l.href}
-                  className="flex items-center gap-1.5 text-sm py-2 text-[#4a4a3a] hover:text-[#111111] transition-colors font-medium"
-                  onClick={() => setMobileOpen(false)}
-                >
-                  {l.label}
-                  {l.label === "Desktop OS" && (
-                    <span
-                      className="text-[10px] font-bold px-1.5 py-0.5 rounded-full leading-none"
-                      style={{ background: "#e8e4dc", color: "#6b6b6b" }}
-                    >
-                      Summer 2026
-                    </span>
-                  )}
-                </Link>
-              ))}
-            </div>
-
-            {/* Explore section */}
-            <div className="border-t border-[#e8e4dc] pt-3 mb-3 space-y-0.5">
-              <p className="text-[10px] font-bold tracking-widest uppercase text-[#9a9a8a] mb-2">
-                Explore
-              </p>
-              {RESOURCE_LINKS.map((r) => (
-                <Link
-                  key={r.label}
-                  href={r.href}
-                  className="flex items-center gap-2.5 text-sm py-2 text-[#4a4a3a] hover:text-[#111111] transition-colors font-medium"
-                  onClick={() => setMobileOpen(false)}
-                >
-                  <span className="text-[#9a9a8a]">{r.icon}</span>
-                  {r.label}
-                </Link>
-              ))}
+              {ALL_NAV_LINKS.map((l) => {
+                const isActive = pathname === l.href || pathname.startsWith(l.href + "/");
+                return (
+                  <Link
+                    key={l.href}
+                    href={l.href}
+                    className={`flex items-center text-sm py-2.5 transition-colors font-medium ${
+                      isActive ? "text-[#111111] font-semibold" : "text-[#4a4a3a] hover:text-[#111111]"
+                    }`}
+                    onClick={() => setMobileOpen(false)}
+                  >
+                    {l.label}
+                  </Link>
+                );
+              })}
             </div>
 
             {/* CTA */}

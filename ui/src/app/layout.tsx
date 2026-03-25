@@ -171,7 +171,7 @@ export default function RootLayout({
           <meta name="mobile-web-app-capable" content="yes" />
           <meta name="apple-mobile-web-app-capable" content="yes" />
           <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-          <meta name="theme-color" content="#1a1a2e" />
+          <meta name="theme-color" content="#c9a84c" />
           <script
             type="application/ld+json"
             dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
