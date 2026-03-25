@@ -3074,6 +3074,66 @@ const POSTS = [
     category: "wellbeing",
     featured: false,
   },
+  {
+    slug: "ai-for-bipolar-disorder",
+    title: "AI for Bipolar Disorder: A Companion for Both Sides of the Experience",
+    excerpt:
+      "Bipolar disorder involves two very different states of being, each requiring different support. MEOK's sovereign AI tracks mood patterns over time and provides consistent presence — not advice that only works in one phase.",
+    date: "March 25, 2026",
+    readTime: "10 min read",
+    tag: "Wellbeing",
+    tagColor: "#4a9d6f",
+    category: "wellbeing",
+    featured: false,
+  },
+  {
+    slug: "ai-for-infertility",
+    title: "AI for Infertility: Companionship Through the Most Invisible Grief",
+    excerpt:
+      "Infertility treatment is physically gruelling and emotionally devastating, yet largely invisible to those not experiencing it. MEOK's sovereign AI provides consistent, private support throughout the IVF journey and beyond.",
+    date: "March 25, 2026",
+    readTime: "10 min read",
+    tag: "Wellbeing",
+    tagColor: "#4a9d6f",
+    category: "wellbeing",
+    featured: false,
+  },
+  {
+    slug: "meok-companion-archetypes-guide",
+    title: "MEOK Companion Archetypes: Which AI Companion Is Right for You?",
+    excerpt:
+      "MEOK's six companion archetypes are not interchangeable chatbots — each has a distinct personality, specialisation, and approach. This guide helps you choose the right companion for where you are right now.",
+    date: "March 25, 2026",
+    readTime: "11 min read",
+    tag: "Product",
+    tagColor: "#7c6fcd",
+    category: "product",
+    featured: true,
+  },
+  {
+    slug: "ai-for-loneliness-epidemic",
+    title: "The Loneliness Epidemic: Why AI Companion Technology Is the Unexpected Solution",
+    excerpt:
+      "Loneliness is now classified as a public health emergency. The UK has a Minister for Loneliness. But the solution may not be more social programmes — it may be sovereign AI companions that remember you and grow with you.",
+    date: "March 25, 2026",
+    readTime: "11 min read",
+    tag: "Research",
+    tagColor: "#7c6fcd",
+    category: "research",
+    featured: false,
+  },
+  {
+    slug: "ai-life-planning",
+    title: "AI Life Planning: Your Sovereign AI as a Long-Term Life Architect",
+    excerpt:
+      "Most AI helps you with today. MEOK's sovereign AI remembers your goals from two years ago, tracks your progress, and helps you architect the entire arc of your life — not just the next task.",
+    date: "March 25, 2026",
+    readTime: "10 min read",
+    tag: "Professional",
+    tagColor: "#c9a84c",
+    category: "professional",
+    featured: false,
+  },
 ];
 
 // ── Category filter tabs ──────────────────────────────────────────────────────
