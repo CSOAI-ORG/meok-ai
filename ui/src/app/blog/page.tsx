@@ -4982,6 +4982,66 @@ const POSTS = [
     category: "features",
     featured: false,
   },
+  {
+    slug: "ai-for-debt-stress",
+    title: "AI for Debt Stress: When the Financial Anxiety Keeps You Up at Night",
+    excerpt:
+      "Debt is one of the most shame-laden stresses a person can carry. MEOK provides a judgment-free space to process the anxiety, organise what you know, and take small steps when the whole thing feels too big to face.",
+    date: "April 30, 2026",
+    readTime: "7 min read",
+    tag: "Mental Health",
+    tagColor: "#6aaa64",
+    category: "mental-health",
+    featured: false,
+  },
+  {
+    slug: "meok-for-single-people",
+    title: "MEOK for Single People: AI Companionship Without the Pressure",
+    excerpt:
+      "Being single doesn\u2019t mean being lonely \u2014 but sometimes it does. MEOK gives single people a consistent, caring companion that remembers them, supports their growth, and never makes them feel like they need to be in a relationship to deserve attention.",
+    date: "May 1, 2026",
+    readTime: "7 min read",
+    tag: "Mental Health",
+    tagColor: "#6aaa64",
+    category: "mental-health",
+    featured: false,
+  },
+  {
+    slug: "ai-for-health-anxiety-explained",
+    title: "AI for Health Anxiety: Managing the Spiral Before It Starts",
+    excerpt:
+      "Health anxiety turns every headache into a tumour and every missed heartbeat into a crisis. MEOK helps you notice the spiral early, question the catastrophic thinking, and decide when a symptom actually needs a doctor.",
+    date: "May 1, 2026",
+    readTime: "8 min read",
+    tag: "Mental Health",
+    tagColor: "#6aaa64",
+    category: "mental-health",
+    featured: false,
+  },
+  {
+    slug: "what-is-the-trickster-companion",
+    title: "What Is the Trickster Companion? MEOK\u2019s Creative Disruption Archetype Explained",
+    excerpt:
+      "The Trickster breaks patterns. When you\u2019re stuck in the same thinking loop, the Trickster reframes, disrupts, and finds the angle you\u2019d never consider. Not malicious \u2014 playfully irreverent in service of your growth.",
+    date: "May 2, 2026",
+    readTime: "6 min read",
+    tag: "Features",
+    tagColor: "#7b6fcf",
+    category: "features",
+    featured: false,
+  },
+  {
+    slug: "ai-for-creative-burnout",
+    title: "AI for Creative Burnout: When the Well Runs Dry",
+    excerpt:
+      "Creative burnout isn\u2019t laziness \u2014 it\u2019s depletion. Writers, designers, musicians, and artists who have given everything and have nothing left. MEOK helps you understand why the well is dry, and how to let it fill again without forcing it.",
+    date: "May 2, 2026",
+    readTime: "8 min read",
+    tag: "Productivity",
+    tagColor: "#c9a84c",
+    category: "productivity",
+    featured: false,
+  },
 ];
 
 // ── Category filter tabs ──────────────────────────────────────────────────────
