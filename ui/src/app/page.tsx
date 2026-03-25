@@ -264,7 +264,7 @@ export default function HomePage() {
               {/* Powered by strip */}
               <div className="flex items-center gap-4 md:gap-6 flex-wrap justify-center text-sm font-semibold mt-6" style={{ color: "rgba(255,255,255,0.35)" }}>
                 <span>Powered by</span>
-                {["Anthropic", "OpenAI", "DeepSeek", "Groq", "Mistral"].map((name) => (
+                {["Anthropic", "OpenAI", "NVIDIA", "DeepSeek", "Groq", "Mistral"].map((name) => (
                   <span key={name} className="tracking-wide">{name}</span>
                 ))}
               </div>
