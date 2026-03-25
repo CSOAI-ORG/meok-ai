@@ -85,13 +85,13 @@ export default function TrustDashboardPage() {
   ];
 
   return (
-    <div className="min-h-screen px-6 py-8" style={{ background: '#0d0c18' }}>
+    <div className="min-h-screen px-4 md:px-6 py-6 md:py-8" style={{ background: '#0d0c18' }}>
       <div className="max-w-5xl mx-auto">
         {/* Header */}
         <div className="mb-8">
           <div className="flex items-center gap-3 mb-2">
             <Sparkles className="w-5 h-5 text-[#c9a84c]" />
-            <h1 className="text-white font-black text-2xl">Trust Dashboard</h1>
+            <h1 className="text-white font-black text-xl md:text-2xl">Trust Dashboard</h1>
           </div>
           <p className="text-white/40 text-sm">
             See exactly what your companion knows, how it&apos;s learning, and proof that care is real.
@@ -99,12 +99,12 @@ export default function TrustDashboardPage() {
         </div>
 
         {/* Tab bar */}
-        <div className="flex gap-1 p-1 rounded-xl mb-8" style={{ background: 'rgba(255,255,255,0.04)' }}>
+        <div className="flex gap-1 p-1 rounded-xl mb-6 md:mb-8 overflow-x-auto" style={{ background: 'rgba(255,255,255,0.04)' }}>
           {tabs.map((tab) => (
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className="flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-medium transition-all flex-1 justify-center"
+              className="flex items-center gap-1.5 md:gap-2 px-2.5 md:px-4 py-2 md:py-2.5 rounded-lg text-xs md:text-sm font-medium transition-all flex-1 justify-center whitespace-nowrap"
               style={{
                 background: activeTab === tab.id ? 'rgba(201,168,76,0.15)' : 'transparent',
                 color: activeTab === tab.id ? '#c9a84c' : 'rgba(255,255,255,0.35)',
@@ -118,7 +118,7 @@ export default function TrustDashboardPage() {
 
         {/* ── Memory Garden ──────────────────────────────── */}
         {activeTab === 'garden' && (
-          <div className="rounded-2xl p-6" style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.08)' }}>
+          <div className="rounded-2xl p-4 md:p-6" style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.08)' }}>
             <h2 className="text-white font-bold text-lg mb-2">Memory Garden</h2>
             <p className="text-white/30 text-xs mb-6">Topics grow as your companion learns more. Lines show connections between ideas.</p>
 
@@ -171,7 +171,7 @@ export default function TrustDashboardPage() {
 
         {/* ── Relationship Timeline ──────────────────────── */}
         {activeTab === 'timeline' && (
-          <div className="rounded-2xl p-6" style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.08)' }}>
+          <div className="rounded-2xl p-4 md:p-6" style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.08)' }}>
             <h2 className="text-white font-bold text-lg mb-2">Relationship Timeline</h2>
             <p className="text-white/30 text-xs mb-6">Key moments in your journey together.</p>
 
@@ -207,7 +207,7 @@ export default function TrustDashboardPage() {
 
         {/* ── Learning Indicators ────────────────────────── */}
         {activeTab === 'learning' && (
-          <div className="rounded-2xl p-6" style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.08)' }}>
+          <div className="rounded-2xl p-4 md:p-6" style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.08)' }}>
             <h2 className="text-white font-bold text-lg mb-2">Learning Progress</h2>
             <p className="text-white/30 text-xs mb-6">Topics your companion understands well vs still learning.</p>
 
@@ -239,7 +239,7 @@ export default function TrustDashboardPage() {
 
         {/* ── Care Proof ─────────────────────────────────── */}
         {activeTab === 'care' && (
-          <div className="rounded-2xl p-6" style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.08)' }}>
+          <div className="rounded-2xl p-4 md:p-6" style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.08)' }}>
             <h2 className="text-white font-bold text-lg mb-2">Care Proof</h2>
             <p className="text-white/30 text-xs mb-6">
               Specific examples of how your companion adapted to you. This is proof that care is real, not marketing.

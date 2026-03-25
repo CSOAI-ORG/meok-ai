@@ -73,7 +73,7 @@ function SectionCard({
 }) {
   return (
     <div
-      className="rounded-xl p-6 space-y-4"
+      className="rounded-xl p-4 md:p-6 space-y-4"
       style={{
         background: danger ? "rgba(239,68,68,0.03)" : "rgba(255,255,255,0.04)",
         border: `1px solid ${danger ? "rgba(239,68,68,0.25)" : "rgba(255,255,255,0.08)"}`,
@@ -311,12 +311,12 @@ export default function SettingsPage() {
   const planInfo = PLAN_FEATURES[currentPlan] ?? PLAN_FEATURES.explorer;
 
   return (
-    <div className="min-h-screen bg-[#0d0c18] py-10" style={{ color: "white" }}>
-      <div className="max-w-2xl mx-auto px-6 space-y-6">
+    <div className="min-h-screen bg-[#0d0c18] py-6 md:py-10" style={{ color: "white" }}>
+      <div className="max-w-2xl mx-auto px-4 md:px-6 space-y-5 md:space-y-6">
 
         {/* Page header */}
         <div className="mb-2">
-          <h1 className="text-2xl font-bold text-white">Settings</h1>
+          <h1 className="text-xl md:text-2xl font-bold text-white">Settings</h1>
           <p className="text-sm text-white/35 mt-1">
             Profile, companion, billing, privacy, and API keys
           </p>
@@ -421,7 +421,7 @@ export default function SettingsPage() {
             </div>
           ) : (
             <div className="space-y-4">
-              <div className="flex items-start justify-between gap-4">
+              <div className="flex flex-col sm:flex-row items-start justify-between gap-4">
                 <div>
                   <p className="text-lg font-bold" style={{ color: GOLD }}>
                     {planInfo.label}
@@ -502,7 +502,7 @@ export default function SettingsPage() {
               <label className="block text-xs text-white/35 uppercase tracking-wider mb-3">
                 Archetype
               </label>
-              <div className="grid grid-cols-3 gap-2">
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
                 {ARCHETYPES.map((arch) => {
                   const selected = selectedArchetype === arch.id;
                   return (
@@ -596,7 +596,7 @@ export default function SettingsPage() {
               </Link>
             </p>
 
-            <div className="flex gap-2 mt-3">
+            <div className="flex flex-col sm:flex-row gap-2 mt-3">
               <a
                 href="/api/user/export?format=json"
                 className="flex-1 flex items-center gap-2.5 px-4 py-2.5 rounded-lg text-sm font-medium transition-all text-left"

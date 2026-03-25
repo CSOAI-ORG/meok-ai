@@ -4,6 +4,9 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useUser } from "@clerk/nextjs";
 import { Sidebar } from "@/components/sidebar";
+import NotificationCenter from "@/components/notification-center";
+import { TrialBanner } from "@/components/trial-banner";
+import { ErrorBoundary } from "@/components/error-boundary";
 
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
   const { user, isLoaded, isSignedIn } = useUser();
@@ -46,12 +49,23 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   if (!isSignedIn) return null;
 
   return (
-    <div className="flex min-h-screen bg-[#0d0c18]">
-      <Sidebar consciousnessMode={mode} />
-      {/* Main content — offset by sidebar width on desktop, no offset on mobile */}
-      <main className="flex-1 ml-0 md:ml-60 min-h-screen bg-[#0d0c18]">
-        {children}
-      </main>
+    <div className="flex flex-col min-h-screen bg-[#0d0c18]">
+      <TrialBanner
+        tier={(user?.publicMetadata?.tier as string) ?? "explorer"}
+        createdAt={user?.createdAt?.toISOString() ?? new Date().toISOString()}
+      />
+      <div className="flex flex-1 min-h-0">
+        <Sidebar consciousnessMode={mode} />
+        {/* Main content — offset by sidebar width on desktop, no offset on mobile */}
+        <main className="flex-1 ml-0 md:ml-60 min-h-screen bg-[#0d0c18]">
+          <div className="absolute top-3 right-4 z-50 md:right-6">
+            <NotificationCenter />
+          </div>
+          <ErrorBoundary companionId={(user?.publicMetadata?.companionId as string) ?? undefined}>
+            {children}
+          </ErrorBoundary>
+        </main>
+      </div>
     </div>
   );
 }

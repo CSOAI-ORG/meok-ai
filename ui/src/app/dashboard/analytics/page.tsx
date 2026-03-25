@@ -89,15 +89,11 @@ function StatCard({
 }) {
   return (
     <div
+      className="flex flex-col gap-1.5 p-4 md:p-5"
       style={{
-        flex: '1 1 200px',
         background: SURFACE,
         border: `1px solid ${BORDER}`,
         borderRadius: 14,
-        padding: '24px 20px',
-        display: 'flex',
-        flexDirection: 'column',
-        gap: 6,
       }}
     >
       {loading ? (
@@ -107,8 +103,8 @@ function StatCard({
         </>
       ) : (
         <>
-          <span style={{ fontSize: 13, color: TEXT_DIM, letterSpacing: '0.04em' }}>{label}</span>
-          <span style={{ fontSize: 32, fontWeight: 700, color: TEXT, lineHeight: 1.1 }}>
+          <span className="text-xs md:text-[13px]" style={{ color: TEXT_DIM, letterSpacing: '0.04em' }}>{label}</span>
+          <span className="text-2xl md:text-[32px]" style={{ fontWeight: 700, color: TEXT, lineHeight: 1.1 }}>
             {value}
           </span>
         </>
@@ -173,20 +169,17 @@ export default function AnalyticsPage() {
       <style>{pulseKeyframes}</style>
 
       <div
+        className="min-h-screen px-4 md:px-6 lg:px-8 pt-6 md:pt-10 pb-20 max-w-[960px] mx-auto"
         style={{
-          minHeight: '100vh',
           background: DEEP,
           color: TEXT,
           fontFamily:
             "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
-          padding: '40px 24px 80px',
-          maxWidth: 960,
-          margin: '0 auto',
         }}
       >
         {/* ── 1. Header ── */}
         <header style={{ marginBottom: 36 }}>
-          <h1 style={{ fontSize: 28, fontWeight: 700, margin: 0, color: TEXT }}>
+          <h1 className="text-xl md:text-2xl lg:text-[28px]" style={{ fontWeight: 700, margin: 0, color: TEXT }}>
             Your Journey
           </h1>
           <p style={{ fontSize: 14, color: TEXT_DIM, marginTop: 6 }}>{getWeekRange()}</p>
@@ -194,12 +187,7 @@ export default function AnalyticsPage() {
 
         {/* ── 2. Quick Stats Row ── */}
         <section
-          style={{
-            display: 'flex',
-            gap: 14,
-            flexWrap: 'wrap',
-            marginBottom: 36,
-          }}
+          className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-3.5 mb-9"
         >
           <StatCard
             label="Messages This Week"
@@ -225,15 +213,14 @@ export default function AnalyticsPage() {
 
         {/* ── 3. Companion Insights ── */}
         <section
+          className="p-4 md:p-6 mb-6"
           style={{
             background: SURFACE,
             border: `1px solid ${BORDER}`,
             borderRadius: 14,
-            padding: '24px 24px 20px',
-            marginBottom: 24,
           }}
         >
-          <h2 style={{ fontSize: 17, fontWeight: 600, margin: '0 0 16px', color: TEXT }}>
+          <h2 className="text-base md:text-[17px]" style={{ fontWeight: 600, margin: '0 0 16px', color: TEXT }}>
             Companion Insights
           </h2>
           <div
@@ -286,15 +273,14 @@ export default function AnalyticsPage() {
 
         {/* ── 4. Emotion Distribution ── */}
         <section
+          className="p-4 md:p-6 mb-6"
           style={{
             background: SURFACE,
             border: `1px solid ${BORDER}`,
             borderRadius: 14,
-            padding: '24px 24px 20px',
-            marginBottom: 24,
           }}
         >
-          <h2 style={{ fontSize: 17, fontWeight: 600, margin: '0 0 20px', color: TEXT }}>
+          <h2 className="text-base md:text-[17px]" style={{ fontWeight: 600, margin: '0 0 20px', color: TEXT }}>
             Emotion Distribution
           </h2>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
@@ -343,15 +329,14 @@ export default function AnalyticsPage() {
 
         {/* ── 5. Cost Transparency ── */}
         <section
+          className="p-4 md:p-6 mb-6"
           style={{
             background: SURFACE,
             border: `1px solid ${BORDER}`,
             borderRadius: 14,
-            padding: '24px 24px 20px',
-            marginBottom: 24,
           }}
         >
-          <h2 style={{ fontSize: 17, fontWeight: 600, margin: '0 0 12px', color: TEXT }}>
+          <h2 className="text-base md:text-[17px]" style={{ fontWeight: 600, margin: '0 0 12px', color: TEXT }}>
             Your AI Usage This Month
           </h2>
           {loading ? (
@@ -370,15 +355,14 @@ export default function AnalyticsPage() {
 
         {/* ── 6. Care Timeline ── */}
         <section
+          className="p-4 md:p-6 mb-6"
           style={{
             background: SURFACE,
             border: `1px solid ${BORDER}`,
             borderRadius: 14,
-            padding: '24px 24px 20px',
-            marginBottom: 24,
           }}
         >
-          <h2 style={{ fontSize: 17, fontWeight: 600, margin: '0 0 16px', color: TEXT }}>
+          <h2 className="text-base md:text-[17px]" style={{ fontWeight: 600, margin: '0 0 16px', color: TEXT }}>
             Care Timeline
           </h2>
           <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: 'column', gap: 0 }}>
@@ -418,14 +402,14 @@ export default function AnalyticsPage() {
 
         {/* ── 7. Memory Highlights ── */}
         <section
+          className="p-4 md:p-6"
           style={{
             background: SURFACE,
             border: `1px solid ${BORDER}`,
             borderRadius: 14,
-            padding: '24px 24px 20px',
           }}
         >
-          <h2 style={{ fontSize: 17, fontWeight: 600, margin: '0 0 16px', color: TEXT }}>
+          <h2 className="text-base md:text-[17px]" style={{ fontWeight: 600, margin: '0 0 16px', color: TEXT }}>
             Your Companion Remembers...
           </h2>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>

@@ -39,13 +39,13 @@ export default function ProgressPage() {
   const pointsToNext = nextLevel ? nextLevel.threshold - points : 0;
 
   return (
-    <div className="min-h-screen p-6 md:p-8" style={{ background: DEEP, color: "white" }}>
-      <div className="max-w-2xl space-y-6">
+    <div className="min-h-screen px-4 py-6 md:p-8" style={{ background: DEEP, color: "white" }}>
+      <div className="max-w-2xl mx-auto space-y-5 md:space-y-6">
         {/* ── Header ── */}
         <div>
           <div className="flex items-center gap-2 mb-1">
             <TrendingUp className="w-5 h-5" style={{ color: GOLD }} />
-            <h2 className="text-2xl font-bold text-white">Bond Progress</h2>
+            <h2 className="text-xl md:text-2xl font-bold text-white">Bond Progress</h2>
           </div>
           <p className="text-sm" style={{ color: "rgba(255,255,255,0.35)" }}>
             Your companion bond grows stronger with every interaction
@@ -54,7 +54,7 @@ export default function ProgressPage() {
 
         {/* ── Current level card ── */}
         <div
-          className="rounded-2xl p-6"
+          className="rounded-2xl p-4 md:p-6"
           style={{
             background: SURFACE,
             border: `1px solid ${GOLD}28`,
@@ -120,7 +120,7 @@ export default function ProgressPage() {
 
         {/* ── All bond levels ── */}
         <div
-          className="rounded-2xl p-5"
+          className="rounded-2xl p-4 md:p-5"
           style={{ background: SURFACE, border: "1px solid rgba(255,255,255,0.05)" }}
         >
           <h3 className="text-sm font-semibold text-white mb-4">Bond levels</h3>
@@ -167,7 +167,7 @@ export default function ProgressPage() {
 
         {/* ── Recent bond actions ── */}
         <div
-          className="rounded-2xl p-5"
+          className="rounded-2xl p-4 md:p-5"
           style={{ background: SURFACE, border: "1px solid rgba(255,255,255,0.05)" }}
         >
           <h3 className="text-sm font-semibold text-white mb-4">Recent bond actions</h3>

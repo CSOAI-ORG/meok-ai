@@ -122,7 +122,7 @@ export default function EmailPage() {
           <Mail className="w-5 h-5" style={{ color: GOLD }} />
         </div>
         <div>
-          <h1 className="text-xl font-bold text-white">Email Drafter</h1>
+          <h1 className="text-lg md:text-xl font-bold text-white">Email Drafter</h1>
           <p className="text-sm text-white/40">AI-powered email composition</p>
         </div>
       </div>

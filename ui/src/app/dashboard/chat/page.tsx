@@ -4,11 +4,13 @@ import { useState, useRef, useEffect, useCallback } from 'react';
 import { useChat } from '@ai-sdk/react';
 import { TextStreamChatTransport } from 'ai';
 import type { UIMessage } from 'ai';
+import Link from 'next/link';
 import { PlanModeToggle, type ChatMode } from '@/components/plan-mode-toggle';
 import { generateAvatar } from '@/lib/avatar';
 import { SovereignDisplay, type SovereignDisplayProps } from '@/components/sovereign-display';
 import { playSound } from '@/lib/sound';
 import { speakAsCharacter, stopSpeaking, isTTSSupported } from '@/lib/voice-synthesis';
+import { copyToClipboard } from '@/lib/chat-actions';
 
 // ─── Brand tokens ─────────────────────────────────────────────────────────────
 const GOLD = '#c9a84c';
@@ -219,10 +221,12 @@ export default function DashboardChatPage() {
   const [powerMode, setPowerMode] = useState(false);
   const [companionId] = useState('aria');
   const [speakingMsgId, setSpeakingMsgId] = useState<string | null>(null);
+  const [copiedMsgId, setCopiedMsgId] = useState<string | null>(null);
   const [input, setInput] = useState('');
   const [selectedImage, setSelectedImage] = useState<File | null>(null);
   const [imagePreview, setImagePreview] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const [rateLimited, setRateLimited] = useState(false);
 
   // Streaming telemetry
   const [streamStart, setStreamStart] = useState(0);
@@ -237,6 +241,10 @@ export default function DashboardChatPage() {
   const sovereignFetchRef = useRef<typeof fetch>(
     async (input: RequestInfo | URL, init?: RequestInit) => {
       const res = await fetch(input, init);
+      // Detect rate limit
+      if (res.status === 429) {
+        setRateLimited(true);
+      }
       // Extract sovereign metadata headers from the streaming response
       const meokModel = res.headers.get('X-MEOK-Model');
       const meokTaskType = res.headers.get('X-MEOK-TaskType');
@@ -496,6 +504,27 @@ export default function DashboardChatPage() {
                                 {speakingMsgId === msg.id ? 'Stop' : 'Read aloud'}
                               </button>
                             )}
+                            {text && (
+                              <button
+                                onClick={async () => {
+                                  const ok = await copyToClipboard(text);
+                                  if (ok) {
+                                    setCopiedMsgId(msg.id);
+                                    setTimeout(() => setCopiedMsgId((prev) => prev === msg.id ? null : prev), 1500);
+                                  }
+                                }}
+                                aria-label="Copy message"
+                                className="mt-1 ml-1 text-[11px] px-2 py-0.5 rounded-full border transition-colors"
+                                style={{
+                                  background: copiedMsgId === msg.id ? `${GOLD}20` : 'rgba(255,255,255,0.03)',
+                                  borderColor: copiedMsgId === msg.id ? `${GOLD}40` : 'rgba(255,255,255,0.07)',
+                                  color: copiedMsgId === msg.id ? GOLD : 'rgba(255,255,255,0.35)',
+                                  cursor: 'pointer',
+                                }}
+                              >
+                                {copiedMsgId === msg.id ? 'Copied!' : 'Copy'}
+                              </button>
+                            )}
                           </>
                         )}
                         <p className="text-[10px] mt-1" style={{ color: 'rgba(255,255,255,0.25)' }}>{formatTime((msg as unknown as { createdAt?: Date }).createdAt ?? new Date())}</p>
@@ -518,6 +547,35 @@ export default function DashboardChatPage() {
             </div>
           </div>
           </div>
+
+          {/* Rate limit banner */}
+          {rateLimited && (
+            <div
+              className="flex-shrink-0 mx-4 mt-2 rounded-xl px-5 py-4 text-sm"
+              style={{
+                background: 'rgba(13,12,24,0.95)',
+                border: `1px solid ${GOLD}40`,
+                boxShadow: `0 0 20px ${GOLD}10`,
+              }}
+            >
+              <div className="flex items-center justify-between gap-3 flex-wrap">
+                <p style={{ color: '#f5f0e8' }}>
+                  You&apos;ve reached your message limit.{' '}
+                  <Link href="/pricing" className="font-semibold underline underline-offset-2 transition-colors hover:opacity-80" style={{ color: GOLD }}>
+                    Upgrade for unlimited messages
+                  </Link>
+                </p>
+                <button
+                  onClick={() => setRateLimited(false)}
+                  className="text-xs px-2 py-1 rounded-lg transition-colors"
+                  style={{ color: 'rgba(255,255,255,0.4)' }}
+                  aria-label="Dismiss rate limit message"
+                >
+                  Dismiss
+                </button>
+              </div>
+            </div>
+          )}
 
           {/* Input area */}
           <div className="flex-shrink-0 px-4 py-3" style={{ borderTop: '1px solid rgba(255,255,255,0.08)', background: SURFACE }}>

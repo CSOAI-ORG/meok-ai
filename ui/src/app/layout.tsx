@@ -14,6 +14,7 @@ import { PostHogProvider } from "@/components/posthog-provider";
 import { CookieConsent } from "@/components/cookie-consent";
 import { SovereignWidget } from "@/components/sovereign-widget";
 import { FloatingCTA } from "@/components/floating-cta";
+import { SessionTimeout } from "@/components/session-timeout";
 import { ExperienceModeProvider } from "@/components/experience-mode";
 import { GlobalNav } from "@/components/GlobalNav";
 import "./globals.css";
@@ -189,6 +190,7 @@ export default function RootLayout({
             <PostHogProvider>{children}</PostHogProvider>
           </Suspense>
           <CookieConsent />
+          <SessionTimeout />
           <SovereignWidget />
           <FloatingCTA />
           </ExperienceModeProvider>

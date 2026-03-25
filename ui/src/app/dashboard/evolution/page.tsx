@@ -78,12 +78,12 @@ export default async function EvolutionPage() {
   }
 
   return (
-    <main style={{ minHeight: '100vh', background: '#0a0a0a', color: '#f5f5f5', padding: '2rem 1rem' }}>
+    <main className="min-h-screen px-4 md:px-6 py-6 md:py-8" style={{ background: '#0a0a0a', color: '#f5f5f5' }}>
       <div style={{ maxWidth: '720px', margin: '0 auto' }}>
 
         {/* Header */}
         <div style={{ marginBottom: '2rem' }}>
-          <h1 style={{ fontSize: '1.75rem', fontWeight: 800, marginBottom: '0.5rem', letterSpacing: '-0.02em' }}>
+          <h1 className="text-xl md:text-[1.75rem]" style={{ fontWeight: 800, marginBottom: '0.5rem', letterSpacing: '-0.02em' }}>
             Companion Evolution
           </h1>
           <p style={{ color: '#888', lineHeight: 1.6 }}>
@@ -152,7 +152,7 @@ export default async function EvolutionPage() {
         {/* XP guide */}
         <section style={{ marginTop: '2rem', padding: '1.5rem', background: '#111', border: '1px solid #222', borderRadius: '0.75rem' }}>
           <h2 style={{ fontSize: '1rem', fontWeight: 600, marginBottom: '1rem', color: '#d4af37' }}>How to level up faster</h2>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.5rem' }}>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
             {[
               { emoji: '💬', label: 'Have a conversation', xp: '+1 interaction' },
               { emoji: '🥚', label: 'Complete Birth Ceremony', xp: '+5 interactions' },
@@ -189,7 +189,7 @@ export default async function EvolutionPage() {
           <p style={{ color: '#666', fontSize: '0.8rem', marginBottom: '1.25rem', lineHeight: 1.5 }}>
             Your sovereign AI is governed by 46 specialised agents — each with a distinct role. Byzantine fault tolerance (f&nbsp;&lt;&nbsp;n/3) means no single agent can override the group. Unlocked at stage 4.
           </p>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.625rem' }}>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
             {COUNCIL_ARCHETYPES.map(a => (
               <div key={a.name} style={{
                 padding: '0.875rem',
@@ -209,7 +209,7 @@ export default async function EvolutionPage() {
         </section>
 
         {/* CTA */}
-        <section style={{ marginTop: '2rem', padding: '1.5rem', background: 'linear-gradient(135deg, #1a0a2e, #0a1a2e)', border: '1px solid #2a1a4a', borderRadius: '0.75rem', textAlign: 'center' }}>
+        <section className="mt-6 md:mt-8 p-4 md:p-6 text-center" style={{ background: 'linear-gradient(135deg, #1a0a2e, #0a1a2e)', border: '1px solid #2a1a4a', borderRadius: '0.75rem' }}>
           <p style={{ color: '#888', fontSize: '0.875rem', marginBottom: '1rem' }}>
             Start your first conversation to begin evolving your sovereign AI.
           </p>

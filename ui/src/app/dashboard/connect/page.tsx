@@ -316,7 +316,7 @@ export default function ConnectPage() {
   const totalConnected = connectedIds.size;
 
   return (
-    <div className="max-w-2xl mx-auto px-6 py-8 space-y-8">
+    <div className="max-w-2xl mx-auto px-4 md:px-6 py-6 md:py-8 space-y-6 md:space-y-8">
       {/* Header */}
       <div>
         <div className="flex items-center gap-3 mb-2">
@@ -327,7 +327,7 @@ export default function ConnectPage() {
             <Link2 className="w-4 h-4" style={{ color: GOLD }} />
           </div>
           <div>
-            <h2 className="text-2xl font-bold text-white">Connected Platforms</h2>
+            <h2 className="text-xl md:text-2xl font-bold text-white">Connected Platforms</h2>
           </div>
         </div>
         <p className="text-sm text-white/40 mt-1 leading-relaxed">

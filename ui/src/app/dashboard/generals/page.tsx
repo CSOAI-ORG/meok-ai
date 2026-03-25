@@ -248,9 +248,9 @@ export default function GeneralsPage() {
     : [];
 
   return (
-    <div className="min-h-screen bg-[#0d0c18] p-6 md:p-8 space-y-6" style={{ color: "white" }}>
+    <div className="min-h-screen bg-[#0d0c18] px-4 py-6 md:p-8 space-y-5 md:space-y-6" style={{ color: "white" }}>
       <div>
-        <h2 className="text-2xl font-bold text-white">Generals &amp; Activation</h2>
+        <h2 className="text-xl md:text-2xl font-bold text-white">Generals &amp; Activation</h2>
         <p className="text-sm text-white/40 mt-1">
           Mongol decimal hierarchy · Contract Net routing · Shapley attribution
         </p>
