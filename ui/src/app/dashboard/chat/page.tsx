@@ -6,6 +6,7 @@ import { TextStreamChatTransport } from 'ai';
 import type { UIMessage } from 'ai';
 import { PlanModeToggle, type ChatMode } from '@/components/plan-mode-toggle';
 import { generateAvatar } from '@/lib/avatar';
+import { SovereignDisplay, type SovereignDisplayProps } from '@/components/sovereign-display';
 
 // ─── Brand tokens ─────────────────────────────────────────────────────────────
 const GOLD = '#c9a84c';
@@ -200,6 +201,33 @@ export default function DashboardChatPage() {
   const [sovereignMeta, setSovereignMeta] = useState<SovereignMeta | null>(null);
   const latencyIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
+  // Sovereign Display metadata (from response headers)
+  const [sovereignDisplay, setSovereignDisplay] = useState<SovereignDisplayProps>({});
+  const sovereignFetchRef = useRef<typeof fetch>(
+    async (input: RequestInfo | URL, init?: RequestInit) => {
+      const res = await fetch(input, init);
+      // Extract sovereign metadata headers from the streaming response
+      const meokModel = res.headers.get('X-MEOK-Model');
+      const meokTaskType = res.headers.get('X-MEOK-TaskType');
+      const meokEffort = res.headers.get('X-MEOK-Effort');
+      const meokEmotion = res.headers.get('X-MEOK-Emotion');
+      const meokLanguage = res.headers.get('X-MEOK-Language');
+      const meokLocation = res.headers.get('X-MEOK-Location');
+      if (meokModel || meokTaskType) {
+        setSovereignDisplay({
+          model: meokModel ?? undefined,
+          taskType: meokTaskType ?? undefined,
+          effortLevel: meokEffort ?? undefined,
+          emotion: meokEmotion ?? undefined,
+          language: meokLanguage ?? undefined,
+          guardianPassed: true, // reached here means guardian passed
+          processingLocation: meokLocation ?? undefined,
+        });
+      }
+      return res;
+    },
+  );
+
   const [chatMode, setChatMode] = useState<ChatMode>('act');
   const selectedModelConfig = MODELS.find(m => m.id === selectedModel) ?? MODELS[0];
   const bottomRef = useRef<HTMLDivElement>(null);
@@ -215,6 +243,7 @@ export default function DashboardChatPage() {
     transport: new TextStreamChatTransport({
       api: '/api/chat',
       body: { companionId },
+      fetch: sovereignFetchRef.current,
     }),
     onFinish: ({ message }: { message: UIMessage }) => {
       const text = getMessageText(message);
@@ -349,6 +378,12 @@ export default function DashboardChatPage() {
                             </p>
                           ) : isStreamingMsg ? <ThreeDots /> : null}
                         </div>
+                        {!isStreamingMsg && (
+                          <SovereignDisplay
+                            {...sovereignDisplay}
+                            latencyMs={sovereignMeta?.latency}
+                          />
+                        )}
                       </div>
                     )}
                   </div>

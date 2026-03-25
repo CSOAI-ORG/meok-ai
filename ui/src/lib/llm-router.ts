@@ -10,12 +10,15 @@ import { anthropic } from '@ai-sdk/anthropic';
 import { openai, createOpenAI } from '@ai-sdk/openai';
 import type { LanguageModel } from 'ai';
 
+/** Local Ollama endpoint — set OLLAMA_ENDPOINT env var to enable local model routing */
+const OLLAMA_ENDPOINT = process.env.OLLAMA_ENDPOINT || 'http://localhost:11434/v1';
+
 // ── Tier-based model access ────────────────────────────────────────────────
 
 export const MODEL_ACCESS = {
-  explorer:  ['cerebras-llama', 'groq-llama', 'deepseek-chat', 'nemotron-nano', 'llama-3.1-8b'],
-  sovereign: ['cerebras-llama', 'groq-llama', 'deepseek-chat', 'nemotron-nano', 'nemotron-super', 'gpt-4o-mini', 'claude-3-5-haiku-latest'],
-  family:    ['cerebras-llama', 'groq-llama', 'deepseek-chat', 'nemotron-nano', 'nemotron-super', 'nemotron-ultra', 'gpt-4o', 'claude-3-5-sonnet-latest'],
+  explorer:  ['cerebras-llama', 'groq-llama', 'deepseek-chat', 'nemotron-nano', 'llama-3.1-8b', 'ollama:nemotron-nano'],
+  sovereign: ['cerebras-llama', 'groq-llama', 'deepseek-chat', 'nemotron-nano', 'nemotron-super', 'gpt-4o-mini', 'claude-3-5-haiku-latest', 'ollama:nemotron-nano'],
+  family:    ['cerebras-llama', 'groq-llama', 'deepseek-chat', 'nemotron-nano', 'nemotron-super', 'nemotron-ultra', 'gpt-4o', 'claude-3-5-sonnet-latest', 'ollama:nemotron-nano'],
 } as const;
 
 export type Tier = keyof typeof MODEL_ACCESS;
@@ -148,22 +151,32 @@ export function getProvider(modelId: string): LanguageModel {
   // NVIDIA Nemotron models via NIM (OpenAI-compatible API)
   if (modelId.startsWith('nemotron-')) {
     const nvidiaApiKey = process.env.NVIDIA_API_KEY;
-    if (!nvidiaApiKey) {
-      console.warn('[llm-router] NVIDIA_API_KEY not set — falling back to DeepSeek');
-      return getProvider('deepseek-chat');
+    if (nvidiaApiKey) {
+      // Cloud NVIDIA NIM
+      const nvidia = createOpenAI({
+        baseURL: 'https://integrate.api.nvidia.com/v1',
+        apiKey: nvidiaApiKey,
+      });
+      const nemotronModels: Record<string, string> = {
+        'nemotron-nano':  'nvidia/nemotron-3-nano-30b-a3b-bf16',
+        'nemotron-super': 'nvidia/nemotron-3-super-120b-a12b-bf16',
+        'nemotron-ultra': 'nvidia/llama-nemotron-ultra-253b-v1',
+      };
+      return nvidia(nemotronModels[modelId] ?? nemotronModels['nemotron-nano']);
     }
-    const nvidia = createOpenAI({
-      baseURL: 'https://integrate.api.nvidia.com/v1',
-      apiKey: nvidiaApiKey,
-    });
-    // Map friendly names to NVIDIA model IDs
-    const nemotronModels: Record<string, string> = {
-      'nemotron-nano':  'nvidia/nemotron-3-nano-30b-a3b-bf16',
-      'nemotron-super': 'nvidia/nemotron-3-super-120b-a12b-bf16',
-      'nemotron-ultra': 'nvidia/llama-nemotron-ultra-253b-v1',
-    };
-    const resolvedModel = nemotronModels[modelId] ?? nemotronModels['nemotron-nano'];
-    return nvidia(resolvedModel);
+    // Fallback: local Ollama Nemotron if available
+    if (process.env.OLLAMA_ENDPOINT || process.env.OLLAMA_ENABLED === 'true') {
+      console.info(`[llm-router] NVIDIA_API_KEY not set — routing ${modelId} to local Ollama`);
+      const ollama = createOpenAI({ baseURL: OLLAMA_ENDPOINT, apiKey: 'ollama' });
+      const localNemotronModels: Record<string, string> = {
+        'nemotron-nano': 'nemotron-nano',
+        'nemotron-super': 'nemotron-nano', // 30B+ won't fit 16GB — map to nano
+        'nemotron-ultra': 'nemotron-nano',
+      };
+      return ollama(localNemotronModels[modelId] ?? 'nemotron-nano');
+    }
+    console.warn('[llm-router] NVIDIA_API_KEY not set, no Ollama — falling back to DeepSeek');
+    return getProvider('deepseek-chat');
   }
 
   // OpenRouter — universal fallback, 100+ models with one key
@@ -228,6 +241,13 @@ export function getProvider(modelId: string): LanguageModel {
       apiKey: deepseekApiKey,
     });
     return deepseek('deepseek-chat');
+  }
+
+  // Local Ollama models — explicit routing via 'ollama:' prefix
+  if (modelId.startsWith('ollama:')) {
+    const ollamaModel = modelId.replace('ollama:', '');
+    const ollama = createOpenAI({ baseURL: OLLAMA_ENDPOINT, apiKey: 'ollama' });
+    return ollama(ollamaModel);
   }
 
   // Unknown model — try OpenRouter if key is set, otherwise fall back to local Ollama
@@ -298,9 +318,21 @@ export function getThinkingBudget(effort: EffortLevel): number {
  * const { model, taskType, provider } = route(message, 'sovereign');
  * const result = streamText({ model: provider, messages, system });
  */
-export function route(message: string, tier: Tier): RouterResult {
+export function route(message: string, tier: Tier, options?: { sensitivity?: 'low' | 'medium' | 'high' }): RouterResult {
   const taskType = classifyTask(message);
-  const model = selectModel(taskType, tier);
+  let model = selectModel(taskType, tier);
+
+  // Sensitivity-based routing override
+  if (options?.sensitivity === 'high' && (process.env.OLLAMA_ENDPOINT || process.env.OLLAMA_ENABLED === 'true')) {
+    // High sensitivity = always local, never cloud
+    model = 'ollama:nemotron-nano';
+  } else if (options?.sensitivity === 'medium' && (process.env.OLLAMA_ENDPOINT || process.env.OLLAMA_ENABLED === 'true')) {
+    // Medium = prefer local for non-critical tasks
+    if (['chat', 'planning', 'research'].includes(taskType)) {
+      model = 'ollama:nemotron-nano';
+    }
+  }
+
   const provider = getProvider(model);
   return { model, taskType, provider };
 }

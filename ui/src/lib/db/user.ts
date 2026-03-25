@@ -525,6 +525,192 @@ export async function updateUserProfile(userId: string, profile: Record<string, 
   }
 }
 
+// ── Bond Points ───────────────────────────────────────────────────────────
+
+/**
+ * Adds bond points to a user's running total.
+ * The `bond_points` column is an integer default 0.
+ */
+export async function addBondPoints(userId: string, points: number): Promise<void> {
+  console.log(`[db/user] addBondPoints — userId=${userId} points=${points}`);
+
+  if (!sql) {
+    console.warn('[db/user] addBondPoints — no database connection');
+    return;
+  }
+
+  try {
+    await sql`
+      UPDATE users
+      SET bond_points = COALESCE(bond_points, 0) + ${points},
+          updated_at  = NOW()
+      WHERE id = ${userId} AND deleted_at IS NULL
+    `;
+  } catch (err: unknown) {
+    const msg = err instanceof Error ? err.message : String(err);
+    if (msg.includes('bond_points') || msg.includes('column')) {
+      console.warn('[db/user] addBondPoints — column may not exist yet. Run migration to add bond_points INTEGER DEFAULT 0.');
+    } else {
+      throw err;
+    }
+  }
+}
+
+// ── Diary Entries ─────────────────────────────────────────────────────────
+
+/**
+ * Stores a companion diary entry in the `diary_entries` table.
+ * Falls back gracefully if the table does not exist yet.
+ */
+export async function storeDiaryEntry(
+  userId: string,
+  companionId: string,
+  entry: Record<string, unknown>,
+): Promise<void> {
+  console.log(`[db/user] storeDiaryEntry — userId=${userId} companionId=${companionId} entryId=${entry.id}`);
+
+  if (!sql) {
+    console.warn('[db/user] storeDiaryEntry — no database connection');
+    return;
+  }
+
+  try {
+    await sql`
+      INSERT INTO diary_entries (id, user_id, companion_id, entry_type, content, topics, mood, bond_value, created_at)
+      VALUES (
+        ${(entry.id as string) ?? crypto.randomUUID()},
+        ${userId},
+        ${companionId},
+        ${(entry.type as string) ?? 'reflection'},
+        ${(entry.content as string) ?? ''},
+        ${JSON.stringify((entry.topics as string[]) ?? [])},
+        ${(entry.mood as string) ?? 'thoughtful'},
+        ${(entry.bondValue as number) ?? 0},
+        ${(entry.timestamp as string) ?? new Date().toISOString()}
+      )
+      ON CONFLICT (id) DO NOTHING
+    `;
+  } catch (err: unknown) {
+    const msg = err instanceof Error ? err.message : String(err);
+    if (msg.includes('diary_entries') || msg.includes('relation') || msg.includes('does not exist')) {
+      console.warn('[db/user] storeDiaryEntry — table may not exist yet. Run migration to create diary_entries table.');
+    } else {
+      throw err;
+    }
+  }
+}
+
+// ── Care Signals ──────────────────────────────────────────────────────────
+
+/**
+ * Returns the number of care signals sent to a user in the current
+ * calendar week (Monday–Sunday).
+ */
+export async function getSignalsSentThisWeek(userId: string): Promise<number> {
+  console.log(`[db/user] getSignalsSentThisWeek — userId=${userId}`);
+
+  if (!sql) {
+    console.warn('[db/user] getSignalsSentThisWeek — no database connection');
+    return 0;
+  }
+
+  try {
+    const rows = await sql`
+      SELECT COUNT(*)::int AS count
+      FROM care_signals
+      WHERE user_id = ${userId}
+        AND created_at >= date_trunc('week', CURRENT_DATE)
+    `;
+    return (rows[0]?.count as number) ?? 0;
+  } catch (err: unknown) {
+    const msg = err instanceof Error ? err.message : String(err);
+    if (msg.includes('care_signals') || msg.includes('relation') || msg.includes('does not exist')) {
+      console.warn('[db/user] getSignalsSentThisWeek — table may not exist yet, returning 0');
+      return 0;
+    }
+    throw err;
+  }
+}
+
+/**
+ * Queues a care signal for later delivery by inserting into `care_signals`.
+ */
+export async function queueCareSignal(
+  userId: string,
+  signal: { type: string; message: string; priority: string; deliverAt: string; friendTest: boolean },
+): Promise<void> {
+  console.log(`[db/user] queueCareSignal — userId=${userId} type=${signal.type}`);
+
+  if (!sql) {
+    console.warn('[db/user] queueCareSignal — no database connection');
+    return;
+  }
+
+  try {
+    await sql`
+      INSERT INTO care_signals (id, user_id, signal_type, message, priority, deliver_at, friend_test, delivered, created_at)
+      VALUES (
+        ${crypto.randomUUID()},
+        ${userId},
+        ${signal.type},
+        ${signal.message},
+        ${signal.priority},
+        ${signal.deliverAt},
+        ${signal.friendTest},
+        false,
+        NOW()
+      )
+    `;
+  } catch (err: unknown) {
+    const msg = err instanceof Error ? err.message : String(err);
+    if (msg.includes('care_signals') || msg.includes('relation') || msg.includes('does not exist')) {
+      console.warn('[db/user] queueCareSignal — table may not exist yet. Run migration to create care_signals table.');
+    } else {
+      throw err;
+    }
+  }
+}
+
+/**
+ * Retrieves pending (undelivered) care signals for a user, ordered by creation date.
+ */
+export async function getPendingCareSignals(
+  userId: string,
+): Promise<Array<{ id: string; type: string; message: string; priority: string; deliverAt: string; createdAt: string }>> {
+  console.log(`[db/user] getPendingCareSignals — userId=${userId}`);
+
+  if (!sql) {
+    console.warn('[db/user] getPendingCareSignals — no database connection');
+    return [];
+  }
+
+  try {
+    const rows = await sql`
+      SELECT id, signal_type, message, priority, deliver_at, created_at
+      FROM care_signals
+      WHERE user_id = ${userId}
+        AND delivered = false
+        AND deliver_at <= NOW()
+      ORDER BY created_at ASC
+    `;
+    return rows.map((r: Record<string, unknown>) => ({
+      id: r.id as string,
+      type: r.signal_type as string,
+      message: r.message as string,
+      priority: r.priority as string,
+      deliverAt: r.deliver_at as string,
+      createdAt: r.created_at as string,
+    }));
+  } catch (err: unknown) {
+    const msg = err instanceof Error ? err.message : String(err);
+    if (msg.includes('care_signals') || msg.includes('relation') || msg.includes('does not exist')) {
+      console.warn('[db/user] getPendingCareSignals — table may not exist yet, returning []');
+      return [];
+    }
+    throw err;
+  }
+}
+
 /**
  * Downgrades a user to explorer tier. Called when a Stripe subscription
  * is cancelled or a payment permanently fails after grace period.

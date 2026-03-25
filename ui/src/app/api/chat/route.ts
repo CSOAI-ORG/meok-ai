@@ -15,7 +15,7 @@ import { streamText } from 'ai';
 import { auth } from '@clerk/nextjs/server';
 import { route, type Tier, getEffortLevel, getThinkingBudget } from '@/lib/llm-router';
 import { compressContext } from '@/lib/context-compressor';
-import { getUserById, incrementMessageCount, getUserProfile, updateUserProfile, TIER_LIMITS } from '@/lib/db/user';
+import { getUserById, incrementMessageCount, getUserProfile, updateUserProfile, TIER_LIMITS, addBondPoints, storeDiaryEntry, getSignalsSentThisWeek, queueCareSignal } from '@/lib/db/user';
 import { getCharacter } from '@/lib/characters';
 import { analyzeEmotion, formatEmotionContext } from '@/lib/emotion';
 import {
@@ -362,14 +362,16 @@ export async function POST(req: NextRequest): Promise<Response> {
 
     // Award bond points for daily chat interaction
     // (pointsForAction is pure — no DB call, just returns the number)
-    const _bondPoints = pointsForAction('daily_chat'); // 5 pts per message
-    // TODO: accumulate in user record when bond_points column is added
+    const bondPoints = pointsForAction('daily_chat'); // 5 pts per message
+    void addBondPoints(userId, bondPoints).catch(err =>
+      console.error('[api/chat] Bond points persistence failed (non-fatal):', err),
+    );
 
     // Generate personality diary entry every 25 messages
     if (user && (user.messages_total ?? 0) % 25 === 0 && (user.messages_total ?? 0) > 0) {
       try {
         const character = getCharacter(cid);
-        const _diaryEntry = generateDiaryEntry({
+        const diaryEntry = generateDiaryEntry({
           userName: user.name ?? 'there',
           companionName: character?.name ?? 'Aria',
           archetype: character?.archetype ?? 'nurturer',
@@ -378,7 +380,9 @@ export async function POST(req: NextRequest): Promise<Response> {
           daysSinceFirst: Math.floor((Date.now() - new Date(user.created_at).getTime()) / 86400000),
           lastEmotionalState: emotionState.primary,
         });
-        // TODO: store diary entry in memory when diary table is added
+        void storeDiaryEntry(userId, cid, diaryEntry as unknown as Record<string, unknown>).catch(err =>
+          console.error('[api/chat] Diary storage failed (non-fatal):', err),
+        );
       } catch (err) {
         console.error('[api/chat] Diary generation failed (non-fatal):', err);
       }
@@ -387,15 +391,20 @@ export async function POST(req: NextRequest): Promise<Response> {
     // Evaluate proactive care signal (checks rate limits internally)
     if (user) {
       try {
-        const _careSignal = evaluateCareSignal({
+        const signalsSentThisWeek = await getSignalsSentThisWeek(userId);
+        const careSignal = evaluateCareSignal({
           lastInteraction: user.last_active_date ?? new Date().toISOString(),
           interactionCount: user.messages_total ?? 0,
           recentTopics: [taskType],
           companionName: getCharacter(cid)?.name ?? 'Aria',
           userName: user.name ?? undefined,
-          signalsSentThisWeek: 0, // TODO: track in DB
+          signalsSentThisWeek,
         });
-        // TODO: queue signal for delivery if non-null
+        if (careSignal) {
+          void queueCareSignal(userId, careSignal).catch(err =>
+            console.error('[api/chat] Care signal queueing failed (non-fatal):', err),
+          );
+        }
       } catch (err) {
         console.error('[api/chat] Care signal evaluation failed (non-fatal):', err);
       }
@@ -412,7 +421,21 @@ export async function POST(req: NextRequest): Promise<Response> {
       care_weight: emotionState.valence < -0.3 ? 0.8 : 0.5,
     });
 
-    return result.toTextStreamResponse();
+    // Inject sovereign metadata headers into the streaming response
+    const streamResponse = result.toTextStreamResponse();
+    const location = model.startsWith('local-') || model.startsWith('ollama-') ? 'local' : 'cloud';
+    const sovereignHeaders = new Headers(streamResponse.headers);
+    sovereignHeaders.set('X-MEOK-Model', model);
+    sovereignHeaders.set('X-MEOK-TaskType', taskType);
+    sovereignHeaders.set('X-MEOK-Effort', effortLevel);
+    sovereignHeaders.set('X-MEOK-Emotion', emotionState.primary);
+    sovereignHeaders.set('X-MEOK-Language', langDetection.language);
+    sovereignHeaders.set('X-MEOK-Location', location);
+
+    return new Response(streamResponse.body, {
+      status: streamResponse.status,
+      headers: sovereignHeaders,
+    });
   } catch (err) {
     // Log the real error server-side; never expose internals to the client
     console.error('[api/chat] streamText error:', err);

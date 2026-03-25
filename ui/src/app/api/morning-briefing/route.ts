@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server'
 import { auth, currentUser } from '@clerk/nextjs/server'
+import { processDreamCycle, formatMorningInsight } from '@/lib/dream'
 
 // GET /api/morning-briefing
 // Returns the user's morning briefing built from live SOV3 data
@@ -152,6 +153,23 @@ export async function GET() {
     sovereign_insight = 'SOV3 is offline — running with cached defaults. Check sovereign-temple status.'
   }
 
+  // Process dream cycle from recent memory episodes (if available)
+  let dream_insight: string | null = null
+  try {
+    const recentMessages = await callSov3Tool('get_recent_messages', { limit: 50 })
+    const msgs = Array.isArray(recentMessages) ? recentMessages : []
+    const dreamMessages = msgs.map((m: Record<string, unknown>) => ({
+      content: (m.content as string) ?? '',
+      timestamp: (m.timestamp as string) ?? new Date().toISOString(),
+    }))
+    if (dreamMessages.length > 0) {
+      const insights = processDreamCycle(dreamMessages)
+      dream_insight = formatMorningInsight(insights)
+    }
+  } catch {
+    // Non-fatal — dream cycle is a nice-to-have
+  }
+
   const now = new Date()
   const briefing = {
     generated_at: now.toISOString(),
@@ -161,6 +179,7 @@ export async function GET() {
     calendar_events: [] as Array<{ time: string; title: string; location?: string }>,
     overnight_work,
     sovereign_insight,
+    dream_insight,
     next_action: priorities[0]
       ? `Focus on: ${priorities[0].text}`
       : 'All clear — use this time for deep work.',
