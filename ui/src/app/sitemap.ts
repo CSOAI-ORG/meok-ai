@@ -466,6 +466,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: 'https://meok.ai/blog/ai-for-teen-mental-health', lastModified: new Date('2026-03-26'), changeFrequency: 'monthly', priority: 0.90 },
     { url: 'https://meok.ai/blog/ai-memory-portability', lastModified: new Date('2026-03-26'), changeFrequency: 'monthly', priority: 0.90 },
     { url: 'https://meok.ai/blog/ai-for-single-parents', lastModified: new Date('2026-03-26'), changeFrequency: 'monthly', priority: 0.88 },
+    { url: 'https://meok.ai/blog/ai-for-compassion-fatigue', lastModified: new Date('2026-03-27'), changeFrequency: 'monthly', priority: 0.87 },
+    { url: 'https://meok.ai/blog/meok-for-doctors', lastModified: new Date('2026-03-27'), changeFrequency: 'monthly', priority: 0.88 },
+    { url: 'https://meok.ai/blog/ai-for-gender-identity', lastModified: new Date('2026-03-27'), changeFrequency: 'monthly', priority: 0.88 },
+    { url: 'https://meok.ai/blog/ai-for-chronic-illness', lastModified: new Date('2026-03-27'), changeFrequency: 'monthly', priority: 0.89 },
+    { url: 'https://meok.ai/blog/what-is-the-maternal-covenant', lastModified: new Date('2026-03-27'), changeFrequency: 'monthly', priority: 0.93 },
+    { url: 'https://meok.ai/blog/ai-for-fertility-journey', lastModified: new Date('2026-03-28'), changeFrequency: 'monthly', priority: 0.88 },
+    { url: 'https://meok.ai/blog/ai-for-new-parents', lastModified: new Date('2026-03-28'), changeFrequency: 'monthly', priority: 0.88 },
+    { url: 'https://meok.ai/blog/meok-for-remote-workers', lastModified: new Date('2026-03-28'), changeFrequency: 'monthly', priority: 0.87 },
+    { url: 'https://meok.ai/blog/ai-for-cptsd', lastModified: new Date('2026-03-28'), changeFrequency: 'monthly', priority: 0.90 },
+    { url: 'https://meok.ai/blog/sovereign-ai-vs-assistant-ai', lastModified: new Date('2026-03-28'), changeFrequency: 'monthly', priority: 0.91 },
 
     // ── Legal ─────────────────────────────────────────────────────────
     { url: 'https://meok.ai/privacy', lastModified: new Date(), changeFrequency: 'yearly', priority: 0.3 },

@@ -1534,7 +1534,7 @@ export default function AiForChronicIllnessPage() {
             </p>
 
             <Link
-              href="/birth"
+              href="https://meok.ai/birth"
               style={{
                 display: "inline-block",
                 background: GOLD,
