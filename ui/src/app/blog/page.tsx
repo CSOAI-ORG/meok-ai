@@ -4922,6 +4922,66 @@ const POSTS = [
     category: "technology",
     featured: true,
   },
+  {
+    slug: "how-meok-uses-ai-routing",
+    title: "How MEOK Routes Across AI Models: LLM Routing, BYOK, and Why It Matters",
+    excerpt:
+      "MEOK doesn\u2019t lock you to one AI model. It routes your conversation to the best model for the task \u2014 or to your own API keys if you want full control. Here\u2019s how the routing layer works and why this changes everything.",
+    date: "April 28, 2026",
+    readTime: "8 min read",
+    tag: "Technology",
+    tagColor: "#7b6fcf",
+    category: "technology",
+    featured: false,
+  },
+  {
+    slug: "ai-for-addiction-support",
+    title: "AI for Addiction Support: How a Companion Can Help You Stay on Track",
+    excerpt:
+      "Recovery is not linear. There are days when you need to talk and no one is available. MEOK provides consistent, non-judgmental support through the difficult days \u2014 without replacing the professional and peer support that makes recovery possible.",
+    date: "April 28, 2026",
+    readTime: "8 min read",
+    tag: "Mental Health",
+    tagColor: "#6aaa64",
+    category: "mental-health",
+    featured: false,
+  },
+  {
+    slug: "ai-for-night-workers",
+    title: "AI for Night Workers: Support When Everyone Else Is Asleep",
+    excerpt:
+      "Night shifts are isolating. Your friends are asleep. Your family is asleep. The world runs on a schedule that doesn\u2019t fit yours. MEOK is the companion that\u2019s always awake, always available, and always remembers you.",
+    date: "April 29, 2026",
+    readTime: "6 min read",
+    tag: "Productivity",
+    tagColor: "#c9a84c",
+    category: "productivity",
+    featured: false,
+  },
+  {
+    slug: "meok-for-small-business",
+    title: "MEOK for Small Business Owners: The AI That Thinks Like a Co-Founder",
+    excerpt:
+      "Running a small business alone means making every decision yourself. MEOK is the always-on thought partner that helps you think through strategy, process the stress, and stay focused on what matters \u2014 without a £500/hour consultant.",
+    date: "April 29, 2026",
+    readTime: "8 min read",
+    tag: "Productivity",
+    tagColor: "#c9a84c",
+    category: "productivity",
+    featured: false,
+  },
+  {
+    slug: "what-is-the-healer-companion",
+    title: "What Is the Healer Companion? MEOK\u2019s Emotional Support Archetype Explained",
+    excerpt:
+      "The Healer is MEOK\u2019s archetype for emotional depth, grief, and somatic support. If you need someone to sit with you in difficulty without rushing you to feel better, the Healer is who you want.",
+    date: "April 30, 2026",
+    readTime: "6 min read",
+    tag: "Features",
+    tagColor: "#6aaa64",
+    category: "features",
+    featured: false,
+  },
 ];
 
 // ── Category filter tabs ──────────────────────────────────────────────────────
