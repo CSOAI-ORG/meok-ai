@@ -3362,6 +3362,66 @@ const POSTS = [
     category: "mental-health",
     featured: false,
   },
+  {
+    slug: "ai-for-addiction-recovery-support",
+    title: "AI for Addiction Recovery: Support in the Gaps Between Meetings",
+    excerpt:
+      "3 million people in the UK are dependent on drugs or alcohol, yet 80% never access treatment. MEOK provides between-meeting support for recovery — tracking sobriety milestones, processing underlying shame, and holding accountability.",
+    date: "March 25, 2026",
+    readTime: "8 min read",
+    tag: "Mental Health",
+    tagColor: "#7ec8a0",
+    category: "mental-health",
+    featured: false,
+  },
+  {
+    slug: "ai-for-gender-dysphoria",
+    title: "AI Support for Gender Dysphoria: A Safe Space When the World Isn't",
+    excerpt:
+      "UK GIC waiting lists now stretch 5-7 years. MEOK provides an affirming, private space to explore and express identity — using your correct pronouns and name from day one, with data sovereignty that's architecturally guaranteed.",
+    date: "March 25, 2026",
+    readTime: "8 min read",
+    tag: "Mental Health",
+    tagColor: "#7ec8a0",
+    category: "mental-health",
+    featured: false,
+  },
+  {
+    slug: "ai-companion-for-dementia-caregivers",
+    title: "AI Companion for Dementia Caregivers: Support for Those Who Support Everyone Else",
+    excerpt:
+      "700,000 unpaid dementia caregivers in the UK; 40% experience clinical depression. MEOK is the space where caregivers can finally express exhaustion and grief — without guilt, without burdening the person they care for.",
+    date: "March 25, 2026",
+    readTime: "9 min read",
+    tag: "Caregiving",
+    tagColor: "#7ec8a0",
+    category: "mental-health",
+    featured: false,
+  },
+  {
+    slug: "sovereign-ai-for-privacy-conscious",
+    title: "Sovereign AI for Privacy-Conscious People: Own Your Data or Lose It",
+    excerpt:
+      "ChatGPT and Claude use your conversations to train their models. Your therapy topics become training data. MEOK's Personal Sovereign AI architecture means your data is encrypted, never sold, and always yours to export or delete.",
+    date: "March 25, 2026",
+    readTime: "9 min read",
+    tag: "Sovereign AI",
+    tagColor: "#c9a84c",
+    category: "sovereign-ai",
+    featured: false,
+  },
+  {
+    slug: "ai-for-relationship-anxiety",
+    title: "AI for Relationship Anxiety: Breaking the Reassurance-Seeking Cycle",
+    excerpt:
+      "Anxious attachment affects 20% of adults. The reassurance-seeking cycle damages relationships and deepens anxiety. MEOK's Healer provides a healthier outlet — processing fear without burdening your partner or reinforcing the cycle.",
+    date: "March 25, 2026",
+    readTime: "8 min read",
+    tag: "Mental Health",
+    tagColor: "#7ec8a0",
+    category: "mental-health",
+    featured: false,
+  },
 ];
 
 // ── Category filter tabs ──────────────────────────────────────────────────────
