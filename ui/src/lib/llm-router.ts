@@ -9,6 +9,7 @@
 import { anthropic } from '@ai-sdk/anthropic';
 import { openai, createOpenAI } from '@ai-sdk/openai';
 import type { LanguageModel } from 'ai';
+import { logInfo, logWarn, logError } from './logger';
 
 /** Local Ollama endpoint — set OLLAMA_ENDPOINT env var to enable local model routing */
 const OLLAMA_ENDPOINT = process.env.OLLAMA_ENDPOINT || 'http://localhost:11434/v1';
@@ -372,4 +373,80 @@ export function route(message: string, tier: Tier, options?: { sensitivity?: 'lo
 
   const provider = getProvider(model);
   return { model, taskType, provider };
+}
+
+// ── Fallback chain logic ────────────────────────────────────────────────
+
+/**
+ * Fallback chains: requested model → free cloud alternative → local Ollama.
+ * Each model maps to an ordered list of fallbacks to try on failure.
+ */
+const FALLBACK_CHAINS: Record<string, string[]> = {
+  'claude-3-5-sonnet-latest':  ['deepseek-chat', 'groq-llama', 'ollama:nemotron-nano'],
+  'claude-3-5-haiku-latest':   ['deepseek-chat', 'groq-llama', 'ollama:nemotron-nano'],
+  'gpt-4o':                    ['deepseek-chat', 'groq-llama', 'ollama:nemotron-nano'],
+  'gpt-4o-mini':               ['deepseek-chat', 'cerebras-llama', 'ollama:nemotron-nano'],
+  'nemotron-ultra':            ['nemotron-super', 'groq-llama', 'ollama:nemotron-nano'],
+  'nemotron-super':            ['groq-llama', 'cerebras-llama', 'ollama:nemotron-nano'],
+  'nemotron-nano':             ['cerebras-llama', 'ollama:nemotron-nano'],
+  'deepseek-chat':             ['groq-llama', 'cerebras-llama', 'ollama:nemotron-nano'],
+  'groq-llama':                ['cerebras-llama', 'deepseek-chat', 'ollama:nemotron-nano'],
+  'cerebras-llama':            ['groq-llama', 'deepseek-chat', 'ollama:nemotron-nano'],
+};
+
+export interface FallbackResult {
+  provider: LanguageModel;
+  model: string;
+  wasFallback: boolean;
+}
+
+/**
+ * Attempts to resolve a provider for the given model, falling back through
+ * the chain on errors (timeout, 429 rate limit, provider down, etc.).
+ *
+ * This does NOT make an actual LLM call — it validates that the provider
+ * can be constructed (API key present, endpoint reachable conceptually).
+ * For runtime fallback during streaming, wrap your streamText call with
+ * try/catch and call this again with the next model in the chain.
+ *
+ * @param modelId - The primary model to attempt
+ * @returns FallbackResult with the resolved provider and whether fallback was used
+ */
+export function getProviderWithFallback(modelId: string): FallbackResult {
+  // Try the primary model
+  try {
+    const provider = getProvider(modelId);
+    return { provider, model: modelId, wasFallback: false };
+  } catch (err) {
+    logWarn('provider_fallback_triggered', {
+      model: modelId,
+      metadata: { error: err instanceof Error ? err.message : String(err) },
+    });
+  }
+
+  // Walk the fallback chain
+  const chain = FALLBACK_CHAINS[modelId] ?? ['groq-llama', 'ollama:nemotron-nano'];
+  for (const fallbackModel of chain) {
+    try {
+      const provider = getProvider(fallbackModel);
+      logInfo('provider_fallback_resolved', {
+        model: fallbackModel,
+        metadata: { originalModel: modelId },
+      });
+      return { provider, model: fallbackModel, wasFallback: true };
+    } catch (err) {
+      logWarn('provider_fallback_failed', {
+        model: fallbackModel,
+        metadata: { error: err instanceof Error ? err.message : String(err) },
+      });
+    }
+  }
+
+  // Last resort: local Ollama (should never throw on construction)
+  logError('provider_fallback_exhausted', {
+    model: modelId,
+    metadata: { fallbackChain: chain },
+  });
+  const ollama = createOpenAI({ baseURL: OLLAMA_ENDPOINT, apiKey: 'ollama' });
+  return { provider: ollama('nemotron-nano'), model: 'ollama:nemotron-nano', wasFallback: true };
 }

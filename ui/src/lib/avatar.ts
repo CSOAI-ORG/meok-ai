@@ -22,6 +22,10 @@ const ARCHETYPE_STYLES: Record<Archetype, keyof typeof collection> = {
   explorer:   'adventurer',     // curious, varied, playful
   sage:       'personas',       // measured, classic, grounded
   seeker:     'notionists',     // abstract, spiritual, minimal
+  creator:    'lorelei',        // flowing, artistic, organic
+  trickster:  'funEmoji',       // playful, expressive, irreverent
+  rebel:      'bottts',         // edgy, mechanical, bold
+  innocent:   'adventurer',     // gentle, warm, wonder-filled
 };
 
 // ── Avatar Generation ────────────────────────────────────────────────────

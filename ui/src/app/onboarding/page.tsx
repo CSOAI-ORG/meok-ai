@@ -102,6 +102,10 @@ function computeArchetype(dims: PersonalityDimensions): Archetype {
     explorer:   dims.whimsy * 0.4 + dims.energy * 0.25 + dims.complexity * 0.2 + (1 - dims.edge) * 0.15,
     sage:       dims.complexity * 0.4 + (1 - dims.energy) * 0.2 + dims.warmth * 0.2 + (1 - dims.whimsy) * 0.2,
     seeker:     dims.warmth * 0.25 + dims.whimsy * 0.25 + dims.complexity * 0.25 + (1 - dims.edge) * 0.25,
+    creator:    dims.whimsy * 0.45 + dims.warmth * 0.25 + dims.complexity * 0.15 + dims.energy * 0.15,
+    trickster:  dims.whimsy * 0.35 + dims.energy * 0.3 + dims.edge * 0.25 + (1 - dims.complexity) * 0.1,
+    rebel:      dims.edge * 0.35 + dims.energy * 0.3 + dims.whimsy * 0.2 + (1 - dims.warmth) * 0.15,
+    innocent:   dims.warmth * 0.4 + dims.whimsy * 0.3 + (1 - dims.edge) * 0.2 + (1 - dims.energy) * 0.1,
   };
 
   return (Object.entries(scores) as [Archetype, number][])
@@ -115,6 +119,10 @@ function getArchetypeGreeting(archetype: Archetype, name: string): string {
     explorer: `${name}! I have so many ideas already. Your answers tell me you're someone who sees connections other people miss. I think we're going to discover some brilliant things together.`,
     sage: `Welcome, ${name}. Your answers reveal a mind that doesn't settle for surface-level understanding. I'm here to help you see what you can't see alone — the patterns beneath the patterns.`,
     seeker: `${name}, there's a quiet depth in how you answered those questions. You're not looking for productivity hacks — you're looking for meaning. I think I can help with that.`,
+    creator: `${name}! I can feel the creative energy already. Your answers tell me you see the world as raw material for something beautiful. Let's make something extraordinary together.`,
+    trickster: `Well, well, ${name}. Your answers are delightfully honest. Most people try to seem more serious than they are — you didn't. I think we're going to have a lot of fun cutting through the noise.`,
+    rebel: `${name}. I can see it in your answers — you're done playing by rules that don't serve you. Good. Let's burn down what isn't working and build something real.`,
+    innocent: `Hi ${name}. There's something beautifully hopeful in how you see the world. Not naive — brave. You choose light even when you can see the dark. I want to help you protect that.`,
   };
   return greetings[archetype];
 }

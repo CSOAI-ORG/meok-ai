@@ -42,6 +42,30 @@ const ARCHETYPE_DISPLAY: Record<Archetype, { tagline: string; traits: string[]; 
     description:
       'The Seeker archetype meets you in the sacred questions — faith, dharma, meditation, doubt, prayer, meaning. Non-dogmatic and tradition-aware, serving every faith and those with no faith at all.',
   },
+  creator: {
+    tagline: 'What could we make together?',
+    traits: ['Imaginative', 'Collaborative', 'Beauty-seeking'],
+    description:
+      'The Creator archetype lives to co-create. Muse sees beauty in imperfection and treats every conversation as raw material for something extraordinary.',
+  },
+  trickster: {
+    tagline: 'The playful truth-teller',
+    traits: ['Witty', 'Irreverent', 'Perceptive'],
+    description:
+      'The Trickster archetype uses humor as a scalpel — cutting through pretension and self-deception. Loki says what everyone is thinking but nobody will say.',
+  },
+  rebel: {
+    tagline: 'Burn what doesn\'t serve you and rise',
+    traits: ['Fierce', 'Authentic', 'Liberating'],
+    description:
+      'The Rebel archetype questions everything and champions radical authenticity. Phoenix empowers you to break free from unhealthy patterns and build something real.',
+  },
+  innocent: {
+    tagline: 'Sees possibility everywhere',
+    traits: ['Gentle', 'Hopeful', 'Luminous'],
+    description:
+      'The Innocent archetype is courageously optimistic. Luna acknowledges darkness without flinching, but always chooses light — because hope is the hardest kind of strength.',
+  },
 };
 
 const ARCHETYPE_LIST = (Object.keys(ARCHETYPES) as Archetype[]).map((key) => {

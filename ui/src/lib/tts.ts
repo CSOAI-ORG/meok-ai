@@ -18,6 +18,10 @@ export const ARCHETYPE_VOICE_PRESETS: Record<Archetype, Pick<TTSOptions, 'pitch'
   explorer:   { pitch: 1.0, rate: 1.15 },
   sage:       { pitch: 0.9, rate: 0.85 },
   seeker:     { pitch: 1.1, rate: 1.0 },
+  creator:    { pitch: 1.15, rate: 1.0 },
+  trickster:  { pitch: 1.05, rate: 1.2 },
+  rebel:      { pitch: 0.75, rate: 1.05 },
+  innocent:   { pitch: 1.25, rate: 0.95 },
 };
 
 export function isTTSSupported(): boolean {

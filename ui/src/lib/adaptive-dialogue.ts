@@ -17,6 +17,41 @@ import type { UserProfile } from './user-profile';
 import type { LanguageDetection } from './language';
 import type { TaskType } from './llm-router';
 
+// ── Time-of-day ─────────────────────────────────────────────────────────────
+
+export type TimeOfDay = 'morning' | 'afternoon' | 'evening' | 'night';
+
+/**
+ * Determine the current time-of-day period based on the local hour.
+ *   morning   06:00–11:59
+ *   afternoon 12:00–16:59
+ *   evening   17:00–21:59
+ *   night     22:00–05:59
+ */
+export function getTimeOfDay(now: Date = new Date()): TimeOfDay {
+  const h = now.getHours();
+  if (h >= 6 && h < 12) return 'morning';
+  if (h >= 12 && h < 17) return 'afternoon';
+  if (h >= 17 && h < 22) return 'evening';
+  return 'night';
+}
+
+/**
+ * Return a time-appropriate greeting from a companion.
+ */
+export function getTimeGreeting(timeOfDay: TimeOfDay, companionName: string): string {
+  switch (timeOfDay) {
+    case 'morning':
+      return `Good morning! ${companionName} here — ready to start the day with you.`;
+    case 'afternoon':
+      return `Good afternoon! ${companionName} checking in — how's your day going?`;
+    case 'evening':
+      return `Good evening. ${companionName} here — let's wind down and reflect together.`;
+    case 'night':
+      return `Hey, it's late. ${companionName} here — keeping it calm and easy.`;
+  }
+}
+
 // ── Types ───────────────────────────────────────────────────────────────────
 
 export interface DialogueContext {
@@ -27,6 +62,8 @@ export interface DialogueContext {
   taskType: TaskType;
   companionArchetype: string;
   conversationLength: number;
+  /** Optional — when omitted, auto-detected from system clock. */
+  timeOfDay?: TimeOfDay;
 }
 
 export interface StyleDirective {
@@ -42,6 +79,10 @@ export interface StyleDirective {
 function patternValue(patterns: ProceduralPattern[], name: string): number | null {
   const p = patterns.find(pp => pp.pattern === name);
   return p ? p.confidence : null;
+}
+
+function resolveTimeOfDay(ctx: DialogueContext): TimeOfDay {
+  return ctx.timeOfDay ?? getTimeOfDay();
 }
 
 function computeFormality(ctx: DialogueContext): StyleDirective['formality'] {
@@ -112,6 +153,10 @@ function computeEmotionalTone(ctx: DialogueContext): StyleDirective['emotionalTo
   if (ctx.taskType === 'emotional') return 'warm';
   if (ctx.taskType === 'coding' || ctx.taskType === 'reasoning') return 'direct';
 
+  // Time-of-day: evening/night lean warm, morning lean neutral-to-warm
+  const tod = resolveTimeOfDay(ctx);
+  if (tod === 'evening' || tod === 'night') return 'warm';
+
   return 'neutral';
 }
 
@@ -149,6 +194,11 @@ function computePacing(ctx: DialogueContext): StyleDirective['pacing'] {
 
   // Task type: chat/gaming = quick, coding/research = normal
   if (ctx.taskType === 'chat' || ctx.taskType === 'gaming') return 'quick';
+
+  // Time-of-day: night → slow deliberate (calming, brief); morning → quick (energising)
+  const tod = resolveTimeOfDay(ctx);
+  if (tod === 'night') return 'slow_deliberate';
+  if (tod === 'morning') return 'quick';
 
   // Short conversations = quick, long ones = normal
   if (ctx.conversationLength < 5) return 'quick';
