@@ -16,6 +16,20 @@ const DEEP = '#0d0c18';
 const SURFACE = '#13121f';
 const NAVY = '#1a1a2e';
 const CREAM = '#f5f0e8';
+const MAX_MESSAGE_LENGTH = 4000;
+
+// ─── Quick prompts ───────────────────────────────────────────────────────────
+const QUICK_PROMPTS = [
+  'How are you today?',
+  'Tell me something interesting',
+  'Help me think through a problem',
+  'I need someone to talk to',
+];
+
+/** Format a Date to HH:MM */
+function formatTime(d: Date): string {
+  return d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false });
+}
 
 // ─── Models config ────────────────────────────────────────────────────────────
 
@@ -78,6 +92,16 @@ function ThreeDots() {
       <span className="w-2 h-2 rounded-full animate-bounce" style={{ background: GOLD, animationDelay: '0ms' }} />
       <span className="w-2 h-2 rounded-full animate-bounce" style={{ background: GOLD, opacity: 0.7, animationDelay: '150ms' }} />
       <span className="w-2 h-2 rounded-full animate-bounce" style={{ background: GOLD, opacity: 0.4, animationDelay: '300ms' }} />
+    </div>
+  );
+}
+
+function ThinkingIndicator({ messageLength }: { messageLength: number }) {
+  const label = messageLength > 200 ? 'Deep thinking' : 'Thinking';
+  return (
+    <div className="flex items-center gap-2 px-1 py-1" style={{ animation: 'fadeSlideUp 0.3s ease both' }}>
+      <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: GOLD }} />
+      <span className="text-xs font-medium" style={{ color: `${GOLD}90` }}>{label}...</span>
     </div>
   );
 }
@@ -377,6 +401,7 @@ export default function DashboardChatPage() {
                         <div className="rounded-2xl rounded-tr-sm px-4 py-3" style={{ background: GOLD, color: NAVY }}>
                           <p className="text-sm font-medium whitespace-pre-wrap leading-relaxed">{text}</p>
                         </div>
+                        <p className="text-[10px] mt-1 text-right" style={{ color: 'rgba(255,255,255,0.25)' }}>{formatTime((msg as unknown as { createdAt?: Date }).createdAt ?? new Date())}</p>
                       </div>
                     ) : (
                       <div className="max-w-[75%]">
@@ -430,6 +455,7 @@ export default function DashboardChatPage() {
                             )}
                           </>
                         )}
+                        <p className="text-[10px] mt-1" style={{ color: 'rgba(255,255,255,0.25)' }}>{formatTime((msg as unknown as { createdAt?: Date }).createdAt ?? new Date())}</p>
                       </div>
                     )}
                   </div>
@@ -441,6 +467,7 @@ export default function DashboardChatPage() {
                   <div className="max-w-[75%]">
                     <SovereignBadge streaming />
                     <div className="rounded-2xl rounded-tl-sm px-4 py-3" style={{ background: SURFACE, border: '1px solid rgba(255,255,255,0.07)' }}><ThreeDots /></div>
+                    <ThinkingIndicator messageLength={getMessageText(messages[messages.length - 1]).length} />
                   </div>
                 </div>
               )}
@@ -459,6 +486,21 @@ export default function DashboardChatPage() {
                 <span className="text-[10px] px-2 py-0.5 rounded-full border font-mono" style={{ background: `${GOLD}05`, color: `${GOLD}60`, borderColor: `${GOLD}15` }}>{latencyTick}ms</span>
               )}
             </div>
+            {/* Quick prompts when conversation is empty */}
+            {!hasUserMessages && (
+              <div className="flex flex-wrap gap-2 max-w-3xl mx-auto mb-3">
+                {QUICK_PROMPTS.map(prompt => (
+                  <button
+                    key={prompt}
+                    onClick={() => { setInput(prompt); }}
+                    className="text-xs px-3 py-1.5 rounded-full border transition-all hover:scale-[1.03]"
+                    style={{ background: `${GOLD}08`, borderColor: `${GOLD}30`, color: `${GOLD}cc` }}
+                  >
+                    {prompt}
+                  </button>
+                ))}
+              </div>
+            )}
             <div className="relative flex items-end gap-2 max-w-3xl mx-auto">
               <textarea
                 ref={textareaRef}
@@ -478,10 +520,19 @@ export default function DashboardChatPage() {
                 {isStreaming ? (
                   <button onClick={() => stop()} className="h-8 px-3 rounded-lg text-xs font-semibold transition-all flex-shrink-0" style={{ background: '#ef4444', color: '#fff' }}>Stop</button>
                 ) : (
-                  <button onClick={handleSend} disabled={!input.trim()} className="h-8 px-3 rounded-lg text-xs font-semibold transition-all flex-shrink-0 disabled:opacity-30 disabled:cursor-not-allowed" style={{ background: GOLD, color: NAVY }}>Send</button>
+                  <button onClick={handleSend} disabled={!input.trim() || input.length > MAX_MESSAGE_LENGTH} className="h-8 px-3 rounded-lg text-xs font-semibold transition-all flex-shrink-0 disabled:opacity-30 disabled:cursor-not-allowed" style={{ background: GOLD, color: NAVY }}>Send</button>
                 )}
               </div>
             </div>
+            {input.length > MAX_MESSAGE_LENGTH * 0.5 && (
+              <p className="text-[10px] text-right mt-1 max-w-3xl mx-auto font-mono" style={{
+                color: input.length > MAX_MESSAGE_LENGTH * 0.95 ? '#ef4444'
+                     : input.length > MAX_MESSAGE_LENGTH * 0.8 ? GOLD
+                     : 'rgba(255,255,255,0.3)',
+              }}>
+                {input.length}/{MAX_MESSAGE_LENGTH}
+              </p>
+            )}
           </div>
         </div>
 
