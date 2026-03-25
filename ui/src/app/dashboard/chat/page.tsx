@@ -4,6 +4,8 @@ import { useState, useRef, useEffect, useCallback } from 'react';
 import { useChat } from '@ai-sdk/react';
 import { TextStreamChatTransport } from 'ai';
 import type { UIMessage } from 'ai';
+import { PlanModeToggle, type ChatMode } from '@/components/plan-mode-toggle';
+import { generateAvatar } from '@/lib/avatar';
 
 // ─── Brand tokens ─────────────────────────────────────────────────────────────
 const GOLD = '#c9a84c';
@@ -198,6 +200,7 @@ export default function DashboardChatPage() {
   const [sovereignMeta, setSovereignMeta] = useState<SovereignMeta | null>(null);
   const latencyIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
+  const [chatMode, setChatMode] = useState<ChatMode>('act');
   const selectedModelConfig = MODELS.find(m => m.id === selectedModel) ?? MODELS[0];
   const bottomRef = useRef<HTMLDivElement>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
@@ -367,6 +370,7 @@ export default function DashboardChatPage() {
           {/* Input area */}
           <div className="flex-shrink-0 px-4 py-3" style={{ borderTop: '1px solid rgba(255,255,255,0.08)', background: SURFACE }}>
             <div className="flex items-center gap-1.5 mb-2">
+              <PlanModeToggle mode={chatMode} onModeChange={setChatMode} />
               <span className="text-[10px] px-2 py-0.5 rounded-full border font-mono" style={{ background: 'rgba(255,255,255,0.04)', color: 'rgba(255,255,255,0.25)', borderColor: 'rgba(255,255,255,0.07)' }}>
                 {selectedModelConfig.privacy === 'cloud' ? '☁️ Cloud' : '🏠 Local'}
               </span>

@@ -6,6 +6,7 @@
 import { useEffect, useState, useCallback } from "react";
 import { callTool } from "@/lib/api";
 import Link from "next/link";
+import { GuardianAlerts } from "@/components/guardian-alerts";
 import {
   Shield,
   AlertTriangle,
@@ -224,6 +225,9 @@ export default function GuardianDashboardPage() {
             </p>
           </div>
         </div>
+
+        {/* ─── GUARDIAN ACTIVITY FEED ─────────────────────────────────────── */}
+        <GuardianAlerts />
 
         {/* ─── 1. ALERT HISTORY ────────────────────────────────────────────── */}
         <div

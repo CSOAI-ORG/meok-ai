@@ -16,6 +16,7 @@ import { useState, useCallback, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { ArrowRight, ArrowLeft } from 'lucide-react';
 import type { Archetype, PersonalityDimensions } from '@/lib/characters';
+import { generateAvatar } from '@/lib/avatar';
 import { ARCHETYPES } from '@/lib/characters';
 
 // ── Quiz Configuration ───────────────────────────────────────────────────
@@ -415,15 +416,10 @@ export default function OnboardingPage() {
       {/* ── Greeting Step ──────────────────────────────────── */}
       {step === 'greeting' && (
         <div className="max-w-lg w-full text-center">
-          <div
-            className="w-20 h-20 rounded-full mx-auto mb-6 flex items-center justify-center text-4xl"
-            style={{
-              background: `radial-gradient(circle at 40% 35%, ${palette[1]}30, ${palette[0]}20)`,
-              border: `2px solid ${palette[0]}50`,
-              boxShadow: `0 0 30px ${palette[0]}20`,
-            }}
-          >
-            {archetypeInfo.emoji}
+          {/* DiceBear procedural avatar */}
+          <div className="w-24 h-24 rounded-full mx-auto mb-6 overflow-hidden" style={{ border: `2px solid ${palette[0]}50`, boxShadow: `0 0 30px ${palette[0]}20` }}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={generateAvatar(dimensions, archetype)} alt="Your companion" width={96} height={96} />
           </div>
 
           <p

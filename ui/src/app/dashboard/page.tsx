@@ -8,6 +8,8 @@ import type { ConsciousnessState, MemoryStats } from "@/lib/types";
 import Link from "next/link";
 import { useUser } from "@clerk/nextjs";
 import { EVOLUTION_STAGES, getEvolutionStage, getProgressToNextStage, interactionsUntilNextStage } from "@/lib/evolution";
+import { OnboardingChecklist } from "@/components/onboarding-checklist";
+import { GuardianAlerts } from "@/components/guardian-alerts";
 import {
   Sunrise,
   ChevronRight,
@@ -547,6 +549,9 @@ export default function DashboardOverview() {
             </span>
           </div>
         </div>
+
+        {/* ── Onboarding Checklist (shows until dismissed) ── */}
+        <OnboardingChecklist />
 
         {/* ── Quick Chat — star of the show ── */}
         <div

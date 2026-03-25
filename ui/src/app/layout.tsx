@@ -14,6 +14,7 @@ import { PostHogProvider } from "@/components/posthog-provider";
 import { CookieConsent } from "@/components/cookie-consent";
 import { SovereignWidget } from "@/components/sovereign-widget";
 import { FloatingCTA } from "@/components/floating-cta";
+import { ExperienceModeProvider } from "@/components/experience-mode";
 import { GlobalNav } from "@/components/GlobalNav";
 import "./globals.css";
 
@@ -181,6 +182,7 @@ export default function RootLayout({
           />
         </head>
         <body className={`${dmSans.variable} font-sans antialiased bg-[#FAF9F6] text-[#111111] min-h-screen`}>
+          <ExperienceModeProvider>
           <GlobalNav />
           <Suspense>
             <PostHogProvider>{children}</PostHogProvider>
@@ -188,6 +190,7 @@ export default function RootLayout({
           <CookieConsent />
           <SovereignWidget />
           <FloatingCTA />
+          </ExperienceModeProvider>
         </body>
       </html>
     </MaybeClerk>
