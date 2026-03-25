@@ -89,12 +89,16 @@ export async function POST(req: NextRequest) {
   try {
     await updateCompanion(userId, companionId, companionName)
 
-    // TODO: persist dimensions to a companion_dimensions table when schema is ready
+    // Persist dimensions to user_profile JSONB column (companion_dimensions key)
     if (dimensions) {
-      console.log(
-        `[api/user/companion] Dimensions received for ${userId}:`,
-        JSON.stringify(dimensions),
-      )
+      try {
+        const { updateUserProfile } = await import('@/lib/db/user');
+        await updateUserProfile(userId, { companion_dimensions: dimensions });
+        console.log(`[api/user/companion] Dimensions persisted for ${userId}`);
+      } catch (dimErr) {
+        // Non-fatal: dimensions are still returned in the response
+        console.warn(`[api/user/companion] Failed to persist dimensions for ${userId} (non-fatal):`, dimErr);
+      }
     }
 
     return NextResponse.json({

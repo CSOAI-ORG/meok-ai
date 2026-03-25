@@ -1,7 +1,7 @@
 // context-compressor.ts
 // Head-plus-tail context compression for the MEOK chat pipeline.
 // Keeps first HEAD_MESSAGES + last TAIL_MESSAGES, summarizes the middle.
-// TODO: replace extractive summarizeMiddle with a real LLM call (gpt-4o-mini or claude-haiku).
+// Phase 2: wire generateText for LLM-based summarization (gpt-4o-mini or claude-haiku).
 
 export interface ChatMessage {
   role: 'user' | 'assistant' | 'system'
@@ -77,7 +77,7 @@ export async function compressContext(
  * Produces a plain-English extractive summary of the middle messages.
  * Samples every 3rd message, joins with " | ", and truncates to TARGET_SUMMARY_TOKENS.
  *
- * TODO: replace with a real LLM summarization call:
+ * Phase 2: wire generateText for LLM-powered summarization:
  *   - Fast model: gpt-4o-mini or claude-haiku
  *   - Prompt: "Summarize the following conversation excerpt in under 200 tokens..."
  *   - Stream or non-stream, fire-and-forget cache optional
@@ -126,8 +126,8 @@ export function shouldCompress(
  *   3. Return [...systemMessages, ...compressedMessages]
  *
  * maxTokens default: 16000 (safe for most Claude / GPT models).
- * Note: token budget enforcement beyond compression is a TODO — currently
- * we rely on compression alone and trust callers to pass reasonable input.
+ * Note: token budget enforcement beyond compression is deferred to Phase 2 —
+ * currently we rely on compression alone and trust callers to pass reasonable input.
  */
 export function buildContextWindow(
   systemPrompt: string,

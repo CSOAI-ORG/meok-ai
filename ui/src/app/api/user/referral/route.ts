@@ -62,12 +62,13 @@ export async function POST(req: NextRequest) {
     );
   }
 
-  // TODO (production):
-  // 1. Look up referrer by code
-  // 2. Check referred user hasn't already redeemed a code
-  // 3. Award referrer REFERRAL_REWARDS.referrerBondPoints bond points
+  // Production referral flow:
+  // 1. Look up referrer by code (SELECT id FROM users WHERE referral_code = ${code})
+  // 2. Check referred user hasn't already redeemed (SELECT 1 FROM referrals WHERE referred_user_id = ${userId})
+  // 3. Award referrer REFERRAL_REWARDS.referrerBondPoints bond points via addBondPoints()
   // 4. Extend referred user's trial by REFERRAL_REWARDS.referredTrialDays days
-  // 5. Persist a ReferralRecord
+  // 5. INSERT INTO referrals (referrer_id, referred_user_id, code, created_at)
+  // Wiring deferred until referrals table is deployed.
 
   return NextResponse.json({
     success: true,

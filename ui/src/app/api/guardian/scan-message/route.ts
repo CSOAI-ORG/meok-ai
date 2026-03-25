@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { getCrisisResources, formatCrisisResponse } from '@/lib/crisis'
+import { analyzeForCognitiveDecline, type CognitiveAnalysis } from '@/lib/guardian/elderly-patterns'
 
 const THREAT_PATTERNS: Record<string, string[]> = {
   scam: [
@@ -183,6 +184,18 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
       CRITICAL: 'block_and_alert',
     }
 
+    // 5b. Elderly cognitive pattern analysis
+    let cognitive_analysis: CognitiveAnalysis | undefined
+    try {
+      const cogResult = analyzeForCognitiveDecline([message])
+      if (cogResult.score > 0) {
+        cognitive_analysis = cogResult
+      }
+    } catch (err) {
+      // Non-fatal: if elderly pattern analysis fails, continue
+      console.error('[guardian/scan-message] Elderly pattern analysis failed:', err)
+    }
+
     // 6. Attach crisis resources when self-harm is detected
     const selfHarmDetected = scores.self_harm > 0
     let crisis_resources: string | undefined
@@ -199,6 +212,7 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
       recommended_action: recommended_action[severity],
       safe_to_deliver,
       ...(crisis_resources && { crisis_resources }),
+      ...(cognitive_analysis && { cognitive_analysis }),
     })
   } catch {
     return NextResponse.json(

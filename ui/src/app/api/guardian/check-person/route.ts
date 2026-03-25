@@ -69,17 +69,37 @@ function assessPhone(phone: string): string | null {
   return null
 }
 
-function assessCompanyName(company: string): {
+async function assessCompanyName(company: string): Promise<{
   signal: string | null
   url: string | null
-} {
-  // TODO: Companies House API GET https://api.company-information.service.gov.uk/search/companies?q={name}
+}> {
+  // Companies House API: live lookup when API key is available, otherwise manual search link
   const encodedName = encodeURIComponent(company)
   const url = `https://find-and-update.company-information.service.gov.uk/search?q=${encodedName}`
+  const apiKey = process.env.COMPANIES_HOUSE_API_KEY
 
-  // Stub: always return unverified until Companies House integration is live
+  if (apiKey) {
+    try {
+      const apiUrl = `https://api.company-information.service.gov.uk/search/companies?q=${encodedName}&items_per_page=1`
+      const res = await fetch(apiUrl, {
+        headers: { Authorization: `Basic ${Buffer.from(`${apiKey}:`).toString('base64')}` },
+        signal: AbortSignal.timeout(5_000),
+      })
+      if (res.ok) {
+        const data = await res.json() as { total_results?: number }
+        if ((data.total_results ?? 0) > 0) {
+          return { signal: null, url }
+        }
+        return { signal: 'Company name not found on Companies House', url }
+      }
+    } catch (e) {
+      console.warn('[guardian/check-person] Companies House API failed (falling back):', e)
+    }
+  }
+
+  // Fallback: return manual search link with unverified status
   return {
-    signal: 'Unverified company name — Companies House check pending',
+    signal: 'Unverified company name — verify via Companies House link',
     url,
   }
 }
@@ -145,7 +165,7 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
 
     // Company name check (stub)
     if (company && typeof company === 'string' && company.trim().length > 0) {
-      const { signal, url } = assessCompanyName(company.trim())
+      const { signal, url } = await assessCompanyName(company.trim())
       if (signal) signals.push(signal)
       if (url) companiesHouseUrl = url
     }

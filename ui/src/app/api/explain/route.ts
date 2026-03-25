@@ -15,6 +15,7 @@
 import { type NextRequest, NextResponse } from 'next/server';
 import { generateText } from 'ai';
 import { createOpenAI } from '@ai-sdk/openai';
+import { checkRateLimit } from '@/lib/rate-limit';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -39,7 +40,7 @@ const rateLimits = new Map<string, { count: number; resetAt: number }>();
 const MAX_REQUESTS = 10;
 const WINDOW_MS = 60_000;
 
-function checkRateLimit(ip: string): boolean {
+function checkRateLimitLocal(ip: string): boolean {
   const now = Date.now();
   const entry = rateLimits.get(ip);
 
@@ -56,13 +57,27 @@ function checkRateLimit(ip: string): boolean {
 // ── Route Handler ──────────────────────────────────────────────────────────
 
 export async function POST(req: NextRequest): Promise<NextResponse> {
-  // Rate limit by IP
+  // Rate limit by IP (local per-minute check)
   const ip = req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ?? 'unknown';
-  if (!checkRateLimit(ip)) {
+  if (!checkRateLimitLocal(ip)) {
     return NextResponse.json(
       { error: 'Too many requests. Try again in a minute.' },
       { status: 429 },
     );
+  }
+
+  // Rate limit by IP (daily token bucket)
+  try {
+    const dailyRl = checkRateLimit(ip, 'explorer');
+    if (!dailyRl.allowed) {
+      return NextResponse.json(
+        { error: 'Daily request limit reached. Try again tomorrow.', resetAt: dailyRl.resetAt },
+        { status: 429, headers: { 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': String(dailyRl.resetAt) } },
+      );
+    }
+  } catch (err) {
+    // Non-fatal: if token bucket fails, continue with existing IP rate limit
+    console.error('[api/explain] Daily rate limit check failed:', err);
   }
 
   // Parse body

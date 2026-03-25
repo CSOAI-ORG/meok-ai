@@ -58,14 +58,23 @@ export async function DELETE(req: NextRequest) {
   // deletion response. The SOV3 purge is best-effort; the GDPR erasure job
   // (scheduled above in markUserDeleted) is the authoritative cleanup path.
   //
-  // TODO: replace this stub with a real SOV3 purge call.
-  // Example:
-  //   fetch(`${process.env.SOV3_BASE_URL}/api/memories/purge`, {
-  //     method:  'POST',
-  //     headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${process.env.SOV3_API_KEY}` },
-  //     body:    JSON.stringify({ user_id: userId }),
-  //   }).catch((err) => console.error('[api/user DELETE] SOV3 purge failed:', err));
-  console.log(`[api/user DELETE] SOV3 memory purge stub fired for userId=${userId}`);
+  // Fire-and-forget SOV3 memory purge — best-effort, non-blocking
+  const sov3Url = process.env.SOV3_API_URL || process.env.SOV3_BASE_URL || 'http://localhost:3100';
+  fetch(`${sov3Url}/mcp`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      jsonrpc: '2.0',
+      id: crypto.randomUUID(),
+      method: 'tools/call',
+      params: { name: 'purge_memories', arguments: { user_id: userId } },
+    }),
+    signal: AbortSignal.timeout(10_000),
+  }).then((res) => {
+    console.log(`[api/user DELETE] SOV3 memory purge response: ${res.status} for userId=${userId}`);
+  }).catch((err) => {
+    console.error(`[api/user DELETE] SOV3 purge failed for userId=${userId} (non-fatal):`, err);
+  });
 
   // ── 5. Respond ────────────────────────────────────────────────────────────
   return NextResponse.json(

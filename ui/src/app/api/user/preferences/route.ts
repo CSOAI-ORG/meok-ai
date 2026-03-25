@@ -9,7 +9,7 @@
  * Auth: Clerk auth() — returns 401 if not authenticated.
  * Body: Partial record of allowed preference keys.
  *
- * TODO: persist to DB via updateUser() once DB is connected.
+ * Persists to Neon DB via guardian_settings JSONB (preferences sub-key).
  */
 
 import { auth } from '@clerk/nextjs/server';

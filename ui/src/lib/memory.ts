@@ -199,7 +199,7 @@ export async function retrieveMemory(
   let companion_state: Record<string, unknown> = {};
 
   try {
-    // TODO: replace with real DB/SOV3 call
+    // SOV3 semantic + companion state retrieval (falls back gracefully if SOV3 is offline)
     const [semanticRaw, stateRaw] = await Promise.allSettled([
       _callSOV3Tool('query_memories', { user_id: userId, query, top_k: MEMORY_CONFIG.SEMANTIC_TOP_K }, sov3Url),
       _callSOV3Tool('list_memories', { user_id: userId }, sov3Url),
@@ -238,8 +238,8 @@ export async function retrieveMemory(
     console.log(`[memory] unexpected error in retrieveMemory: ${(err as Error).message}`);
   }
 
-  // TODO: replace with real DB/SOV3 call — family_context gated on group membership
-  const family_context: MemoryEpisode[] = []; // P3 stub
+  // Family context: gated on group membership, scheduled for Phase 3
+  const family_context: MemoryEpisode[] = []; // Phase 3: query family_group members' shared memories
 
   return {
     user_id: userId,
@@ -285,7 +285,7 @@ export async function storeMemory(
       }
     }
 
-    // TODO: replace with real DB/SOV3 call
+    // Persist to SOV3 semantic memory layer via JSON-RPC
     await _callSOV3Tool(
       'record_memory',
       {

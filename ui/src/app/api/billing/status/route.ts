@@ -50,7 +50,23 @@ export async function GET() {
             stage: user.companion_stage,
           }
         : null,
-      next_billing: null, // TODO: fetch from Stripe when needed
+      // Stripe billing period: fetched on-demand when subscription is active
+      next_billing: await (async () => {
+        try {
+          if (user.stripe_subscription_id && process.env.STRIPE_SECRET_KEY) {
+            const Stripe = (await import('stripe')).default;
+            const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+            const sub = await stripe.subscriptions.retrieve(user.stripe_subscription_id);
+            const periodEnd = (sub as unknown as { current_period_end?: number }).current_period_end;
+            return periodEnd
+              ? new Date(periodEnd * 1000).toISOString()
+              : null;
+          }
+        } catch (e) {
+          console.warn('[billing/status] Stripe billing lookup failed (non-fatal):', e);
+        }
+        return null;
+      })(),
       upgrade_url: isPaid ? null : '/#pricing',
     })
   } catch (err) {

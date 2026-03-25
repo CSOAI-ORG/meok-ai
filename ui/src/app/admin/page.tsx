@@ -3,6 +3,7 @@
 import { useUser } from '@clerk/nextjs';
 import { useState, useEffect } from 'react';
 import NotificationCenter from '@/components/notification-center';
+import { SCHEDULED_TASKS, formatSchedule } from '@/lib/scheduler';
 
 // ---------------------------------------------------------------------------
 // Brand tokens
@@ -229,6 +230,39 @@ export default function AdminDashboard() {
             </ul>
           </section>
         </div>
+
+        {/* ---- Scheduled Tasks ---- */}
+        <section style={{
+          background: SURFACE, borderRadius: 12, border: `1px solid ${BORDER}`,
+          padding: '24px', marginTop: 24,
+        }}>
+          <h2 style={{ margin: 0, fontSize: 16, fontWeight: 600, marginBottom: 20 }}>Scheduled Tasks</h2>
+          <ul style={{ listStyle: 'none', margin: 0, padding: 0 }}>
+            {SCHEDULED_TASKS.map((task) => (
+              <li key={task.name} style={{
+                display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+                padding: '14px 0', borderBottom: `1px solid ${BORDER}`,
+              }}>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
+                  <span style={{ fontSize: 14, fontWeight: 500 }}>{task.name}</span>
+                  <span style={{ fontSize: 12, color: TEXT_SECONDARY }}>{task.description}</span>
+                </div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 12, flexShrink: 0, marginLeft: 16 }}>
+                  <span style={{ fontSize: 12, color: TEXT_SECONDARY, fontFamily: 'monospace' }}>
+                    {formatSchedule(task.schedule)}
+                  </span>
+                  <span style={{
+                    fontSize: 11, fontWeight: 500, padding: '2px 8px', borderRadius: 9999,
+                    background: task.enabled ? 'rgba(52,211,153,0.15)' : 'rgba(248,113,113,0.15)',
+                    color: task.enabled ? GREEN : RED,
+                  }}>
+                    {task.enabled ? 'Active' : 'Disabled'}
+                  </span>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </section>
 
         {/* ---- Footer note ---- */}
         <p style={{ marginTop: 48, textAlign: 'center', fontSize: 12, color: TEXT_SECONDARY }}>

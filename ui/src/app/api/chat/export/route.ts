@@ -61,16 +61,25 @@ export async function GET(req: NextRequest) {
       messages_total: user.messages_total,
       last_active_date: user.last_active_date,
     },
-    // TODO: fetch OCEAN personality scores from personality/assessment table
-    ocean_scores: null,
+    // OCEAN personality scores from user_profile JSONB column
+    ocean_scores: await (async () => {
+      try {
+        const { getUserProfile } = await import('@/lib/db/user');
+        const profile = await getUserProfile(userId);
+        return profile?.ocean_scores ?? null;
+      } catch (e) {
+        console.warn('[chat/export] OCEAN scores lookup failed (non-fatal):', e);
+        return null;
+      }
+    })(),
     preferences: {
       guardian_enabled: user.guardian_enabled,
       guardian_settings: guardianSettings ?? null,
     },
-    // TODO: query messages table when schema is finalized
-    // Example:
-    //   const messages = await sql`SELECT id, role, content, created_at FROM messages WHERE user_id = ${userId} ORDER BY created_at ASC`;
+    // Messages: messages table not yet finalized; export total count as metadata
+    // Full message export will be available once the messages schema is deployed.
     messages: [] as unknown[],
+    messages_note: `Total messages exchanged: ${user.messages_total ?? 0}. Full conversation export pending messages table deployment.`,
   };
 
   // ── JSON format ─────────────────────────────────────────────────────────────

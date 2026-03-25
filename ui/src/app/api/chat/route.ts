@@ -39,6 +39,8 @@ import { analyzeVoicePattern, formatConsistencyDirective } from '@/lib/voice-fin
 import { detectCulturalVariant, getCulturalVariant, formatCulturalContext } from '@/lib/cultural-variants';
 import { analyzeForScams } from '@/lib/guardian/scam-detection';
 import { generateGentleWarning } from '@/lib/guardian/gentle-warnings';
+import { draftWithLocal } from '@/lib/draft-refine';
+import { checkRateLimit, type RateLimitTier } from '@/lib/rate-limit';
 import { logInfo } from '@/lib/logger';
 import { estimateCost, formatCost } from '@/lib/cost-tracker';
 import { getTimeOfDay, getTimeGreeting } from '@/lib/adaptive-dialogue';
@@ -136,6 +138,21 @@ export async function POST(req: NextRequest): Promise<Response> {
   const { userId } = await auth();
   if (!userId) {
     return errorResponse('Unauthorised', 401);
+  }
+
+  // 1b. Rate limit check (in-memory token bucket)
+  try {
+    const rlTier: RateLimitTier = 'explorer'; // Will be refined after user lookup; early guard
+    const rlResult = checkRateLimit(userId, rlTier);
+    if (!rlResult.allowed) {
+      return NextResponse.json(
+        { error: 'Rate limit exceeded. Please try again later.', remaining: 0, resetAt: rlResult.resetAt },
+        { status: 429, headers: { 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': String(rlResult.resetAt) } },
+      );
+    }
+  } catch (err) {
+    // Non-fatal: if rate limiter fails, continue
+    console.error('[api/chat] Rate limit check failed:', err);
   }
 
   // 2. Parse body
@@ -283,6 +300,19 @@ export async function POST(req: NextRequest): Promise<Response> {
 
   // 6a. Route to model (needed for adaptive style)
   const { model, taskType, provider } = route(trimmed, userTier);
+
+  // 6a2. Draft-refine: if explorer tier and simple task, try local draft first
+  let draftRefineText: string | null = null;
+  if (userTier === 'explorer' && taskType === 'chat') {
+    try {
+      const draft = await draftWithLocal(trimmed, { systemPrompt: undefined, draftMaxTokens: 1024 });
+      draftRefineText = draft.text;
+      console.log(`[api/chat] Draft-refine: local draft via ${draft.model} in ${draft.durationMs}ms`);
+    } catch (err) {
+      // Non-fatal: fall back to normal cloud routing
+      console.error('[api/chat] Draft-refine local draft failed — falling back to cloud:', err);
+    }
+  }
 
   // 6b. Compute adaptive style directive
   try {
@@ -443,6 +473,15 @@ export async function POST(req: NextRequest): Promise<Response> {
       // Non-fatal: if compression fails, use original messages
       console.error('[api/chat] Context compression failed — using full history:', err);
     }
+  }
+
+  // 7c. If draft-refine produced a result, return it directly (no streaming needed)
+  if (draftRefineText) {
+    logInfo('chat.draft_refine', { userId, model: 'local-draft', taskType });
+    return NextResponse.json(
+      { text: draftRefineText, model: 'local-draft', taskType },
+      { headers: { 'X-MEOK-Model': 'local-draft', 'X-MEOK-TaskType': taskType, 'X-MEOK-Location': 'local' } },
+    );
   }
 
   // 8. Stream response

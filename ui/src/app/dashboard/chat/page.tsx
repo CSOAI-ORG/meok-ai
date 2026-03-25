@@ -7,6 +7,8 @@ import type { UIMessage } from 'ai';
 import { PlanModeToggle, type ChatMode } from '@/components/plan-mode-toggle';
 import { generateAvatar } from '@/lib/avatar';
 import { SovereignDisplay, type SovereignDisplayProps } from '@/components/sovereign-display';
+import { playSound } from '@/lib/sound';
+import { speakAsCharacter, stopSpeaking, isTTSSupported } from '@/lib/voice-synthesis';
 
 // ─── Brand tokens ─────────────────────────────────────────────────────────────
 const GOLD = '#c9a84c';
@@ -192,6 +194,7 @@ export default function DashboardChatPage() {
   const [privacyMode, setPrivacyMode] = useState(false);
   const [powerMode, setPowerMode] = useState(false);
   const [companionId] = useState('aria');
+  const [speakingMsgId, setSpeakingMsgId] = useState<string | null>(null);
   const [input, setInput] = useState('');
 
   // Streaming telemetry
@@ -200,6 +203,7 @@ export default function DashboardChatPage() {
   const [streamingTokens, setStreamingTokens] = useState(0);
   const [sovereignMeta, setSovereignMeta] = useState<SovereignMeta | null>(null);
   const latencyIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const firstTokenSoundPlayed = useRef(false);
 
   // Sovereign Display metadata (from response headers)
   const [sovereignDisplay, setSovereignDisplay] = useState<SovereignDisplayProps>({});
@@ -276,7 +280,12 @@ export default function DashboardChatPage() {
         setLatencyTick(Date.now() - streamStart);
         const lastMsg = messages[messages.length - 1];
         if (lastMsg?.role === 'assistant') {
-          setStreamingTokens(Math.ceil(getMessageText(lastMsg).length / 4));
+          const msgText = getMessageText(lastMsg);
+          if (msgText.length > 0 && !firstTokenSoundPlayed.current) {
+            firstTokenSoundPlayed.current = true;
+            try { playSound('response-arriving'); } catch { /* non-critical */ }
+          }
+          setStreamingTokens(Math.ceil(msgText.length / 4));
         }
       }, 100);
     } else {
@@ -294,6 +303,7 @@ export default function DashboardChatPage() {
     setStreamStart(Date.now());
     setStreamingTokens(0);
     setLatencyTick(0);
+    firstTokenSoundPlayed.current = false;
     setSovereignMeta({
       model: selectedModelConfig.label,
       provider: 'cloud',
@@ -301,6 +311,7 @@ export default function DashboardChatPage() {
       care_score: 85,
       tokens: 0,
     });
+    try { playSound('message-sent'); } catch { /* non-critical */ }
     sendMessage({ text });
     setInput('');
   }, [input, isStreaming, selectedModelConfig.label, sendMessage]);
@@ -379,10 +390,45 @@ export default function DashboardChatPage() {
                           ) : isStreamingMsg ? <ThreeDots /> : null}
                         </div>
                         {!isStreamingMsg && (
-                          <SovereignDisplay
-                            {...sovereignDisplay}
-                            latencyMs={sovereignMeta?.latency}
-                          />
+                          <>
+                            <SovereignDisplay
+                              {...sovereignDisplay}
+                              latencyMs={sovereignMeta?.latency}
+                            />
+                            {isTTSSupported() && text && (
+                              <button
+                                onClick={async () => {
+                                  try {
+                                    if (speakingMsgId === msg.id) {
+                                      stopSpeaking();
+                                      setSpeakingMsgId(null);
+                                    } else {
+                                      stopSpeaking();
+                                      setSpeakingMsgId(msg.id);
+                                      const utterance = await speakAsCharacter(text, companionId);
+                                      if (utterance) {
+                                        utterance.onend = () => setSpeakingMsgId(null);
+                                        utterance.onerror = () => setSpeakingMsgId(null);
+                                      } else {
+                                        setSpeakingMsgId(null);
+                                      }
+                                    }
+                                  } catch {
+                                    setSpeakingMsgId(null);
+                                  }
+                                }}
+                                className="mt-1 text-[11px] px-2 py-0.5 rounded-full border transition-colors"
+                                style={{
+                                  background: speakingMsgId === msg.id ? `${GOLD}20` : 'rgba(255,255,255,0.03)',
+                                  borderColor: speakingMsgId === msg.id ? `${GOLD}40` : 'rgba(255,255,255,0.07)',
+                                  color: speakingMsgId === msg.id ? GOLD : 'rgba(255,255,255,0.35)',
+                                  cursor: 'pointer',
+                                }}
+                              >
+                                {speakingMsgId === msg.id ? 'Stop' : 'Read aloud'}
+                              </button>
+                            )}
+                          </>
                         )}
                       </div>
                     )}

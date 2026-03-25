@@ -6,6 +6,12 @@ import { useUser } from '@clerk/nextjs';
 import { getCharacter, getAllCharacters, CHARACTERS } from '@/lib/characters';
 import { callTool } from '@/lib/api';
 import type { MemoryEpisode } from '@/lib/types';
+import {
+  type AnimationState,
+  type Mood,
+  injectAnimationStyles,
+  getAvatarOverlayStyles,
+} from '@/lib/animation-state';
 
 // ─── Brand tokens ───────────────────────────────────────────────────────────
 const GOLD = '#c9a84c';
@@ -165,6 +171,33 @@ function CompanionPanel({
   const character = getCharacter(characterSlug) ?? getCharacter('aria')!;
   const mood = getMood(messages, careScore);
 
+  // Animation state — inject keyframes and compute overlay styles
+  const animationState: AnimationState = messages.length === 0
+    ? 'idle'
+    : messages[messages.length - 1]?.role === 'assistant'
+      ? 'speaking'
+      : 'cognitive';
+  const animationMood: Mood = mood.label === 'Aligned' ? 'happy'
+    : mood.label === 'Engaged' ? 'excited'
+    : mood.label === 'Reflective' ? 'calm'
+    : 'neutral';
+
+  useEffect(() => {
+    try {
+      injectAnimationStyles(animationMood);
+    } catch (err) {
+      console.error('[CompanionPanel] Failed to inject animation styles:', err);
+    }
+  }, [animationMood]);
+
+  const avatarAnimStyles = useMemo(() => {
+    try {
+      return getAvatarOverlayStyles(animationState, animationMood);
+    } catch {
+      return {};
+    }
+  }, [animationState, animationMood]);
+
   // Evolution stages — derived from conversation count (not stored on character)
   const DEFAULT_STAGES = [
     { stage: 1, name: 'Prying Pulse', description: 'First encounters — learning your rhythms', unlockedAt: 0, traits: ['attentive', 'curious'] },
@@ -212,6 +245,7 @@ function CompanionPanel({
               background: `radial-gradient(circle at 35% 35%, ${character.color}40, ${character.color}10)`,
               border: `2px solid ${character.color}50`,
               boxShadow: `0 0 30px ${character.color}20`,
+              ...avatarAnimStyles,
             }}
           >
             {character.emoji}

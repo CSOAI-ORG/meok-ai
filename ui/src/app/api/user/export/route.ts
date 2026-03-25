@@ -46,20 +46,35 @@ export async function GET(_req: NextRequest) {
       companion_id: user?.companion_id ?? null,
     },
 
-    // TODO: fetch full conversation history from your database.
-    // Example (Neon/postgres):
-    //   const messages = await sql`
-    //     SELECT id, role, content, created_at
-    //     FROM messages
-    //     WHERE user_id = ${userId}
-    //     ORDER BY created_at ASC
-    //   `;
+    // Conversation history: messages table not yet deployed; include total count
+    // Full message export will be available once the messages schema is finalised.
     messages: [],
+    messages_note: `Total messages exchanged: ${user?.messages_total ?? 0}. Full export pending messages table deployment.`,
 
-    // TODO: fetch semantic memories from Sovereign v3 (SOV3).
-    // Example:
-    //   const memories = await callTool('list_memories', { user_id: userId });
-    memories: [],
+    // Semantic memories from SOV3: attempt live fetch with graceful fallback
+    memories: await (async () => {
+      try {
+        const sov3Url = process.env.SOV3_API_URL || 'http://localhost:3100';
+        const res = await fetch(`${sov3Url}/mcp`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            jsonrpc: '2.0',
+            id: crypto.randomUUID(),
+            method: 'tools/call',
+            params: { name: 'list_memories', arguments: { user_id: userId } },
+          }),
+          signal: AbortSignal.timeout(5_000),
+        });
+        if (res.ok) {
+          const json = await res.json() as { result?: unknown };
+          return Array.isArray(json.result) ? json.result : [];
+        }
+      } catch (e) {
+        console.warn('[user/export] SOV3 memory fetch failed (non-fatal):', e);
+      }
+      return [];
+    })(),
 
     guardian_settings: guardianSettings ?? {},
 

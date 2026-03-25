@@ -11,6 +11,7 @@ import { generateText } from 'ai';
 import { auth } from '@clerk/nextjs/server';
 import { route, type Tier } from '@/lib/llm-router';
 import { getUserById } from '@/lib/db/user';
+import { checkRateLimit, type RateLimitTier } from '@/lib/rate-limit';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -20,6 +21,21 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
   const { userId } = await auth();
   if (!userId) {
     return NextResponse.json({ error: 'Unauthorised' }, { status: 401 });
+  }
+
+  // 1b. Rate limit check (in-memory token bucket)
+  try {
+    const rlTier: RateLimitTier = 'explorer'; // Refined after user lookup if needed
+    const rlResult = checkRateLimit(userId, rlTier);
+    if (!rlResult.allowed) {
+      return NextResponse.json(
+        { error: 'Rate limit exceeded. Please try again later.', remaining: 0, resetAt: rlResult.resetAt },
+        { status: 429, headers: { 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': String(rlResult.resetAt) } },
+      );
+    }
+  } catch (err) {
+    // Non-fatal: if rate limiter fails, continue
+    console.error('[api/research] Rate limit check failed:', err);
   }
 
   // 2. Parse body

@@ -194,14 +194,25 @@ async function handlePaymentFailed(invoice: Stripe.Invoice): Promise<void> {
   // Stripe will automatically retry the charge. If all retries are exhausted,
   // `customer.subscription.deleted` will fire, which handles the actual downgrade.
 
-  // TODO: Send payment failure email via Resend (or similar)
-  // e.g. await resend.emails.send({
-  //   from: 'billing@meok.ai',
-  //   to: invoice.customer_email ?? '',
-  //   subject: 'Action required: payment failed for your MEOK subscription',
-  //   react: PaymentFailedEmail({ attemptCount, dueDate: new Date(invoice.next_payment_attempt! * 1000) }),
-  // });
+  // Payment failure notification: logged for monitoring; email integration pending Resend setup
+  console.error(`[Stripe] Payment failure alert — customerId=${customerId} subscriptionId=${subscriptionId} attempt=${attemptCount} amount=${inv.amount_due} ${inv.currency}`);
 
-  // TODO: If attemptCount >= 3, consider proactively flagging the account
-  // (but do not remove access until subscription is actually cancelled)
+  // Flag account on 3rd+ failure: set grace period so user retains access temporarily
+  if (attemptCount >= 3) {
+    console.error(`[Stripe] Payment failed ${attemptCount} times for customerId=${customerId} — setting grace period`);
+    try {
+      // Attempt to find userId from subscription metadata and set grace period
+      if (subscriptionId && process.env.STRIPE_SECRET_KEY) {
+        const sub = await getStripe().subscriptions.retrieve(subscriptionId);
+        const subUserId = sub.metadata?.userId;
+        if (subUserId) {
+          const { setGracePeriod } = await import('@/lib/db/user');
+          await setGracePeriod(subUserId, 7);
+          console.warn(`[Stripe] Grace period set for userId=${subUserId} (7 days)`);
+        }
+      }
+    } catch (graceErr) {
+      console.error('[Stripe] Failed to set grace period (non-fatal):', graceErr);
+    }
+  }
 }

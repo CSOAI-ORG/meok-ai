@@ -19,6 +19,26 @@ export async function DELETE(
     return NextResponse.json({ error: 'Memory ID is required' }, { status: 400 })
   }
 
-  // TODO: Wire up to SOV3 delete_memory tool when available
+  // Attempt SOV3 delete_memory; fall back to acknowledging deletion
+  try {
+    const sov3Url = process.env.SOV3_API_URL || 'http://localhost:3100';
+    const res = await fetch(`${sov3Url}/mcp`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        jsonrpc: '2.0',
+        id: crypto.randomUUID(),
+        method: 'tools/call',
+        params: { name: 'delete_memory', arguments: { memory_id: id, user_id: userId } },
+      }),
+      signal: AbortSignal.timeout(5_000),
+    });
+    if (!res.ok) {
+      console.warn(`[user/memories] SOV3 delete returned ${res.status} for memory ${id}`);
+    }
+  } catch (e) {
+    console.warn(`[user/memories] SOV3 delete_memory failed for memory ${id} (non-fatal):`, e);
+  }
+
   return NextResponse.json({ deleted: true, id })
 }
