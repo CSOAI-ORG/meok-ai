@@ -4,25 +4,27 @@ import Link from "next/link"
 // ── Metadata ──────────────────────────────────────────────────────────────────
 
 export const metadata: Metadata = {
-  title: "AI for Veterans\u2019 Mental Health: PTSD, Moral Injury, and the Transition Nobody Warns You About | MEOK AI LABS",
+  title:
+    "AI for Veterans: Sovereign Memory for Those Who\u2019ve Served | MEOK AI LABS",
   description:
-    "2.4 million veterans live in the UK. Most never seek help. MEOK offers a private, persistent AI companion that understands military culture, never forgets your service history, and detects crisis before it escalates.",
+    "2.5 million UK veterans. 300,000+ with mental health conditions. Most will never ask for help. MEOK is the private, persistent AI companion that understands military culture, never resets your service history, and protects you from the systems that exploit ex-service people.",
   alternates: { canonical: "https://meok.ai/blog/ai-for-veterans" },
   openGraph: {
-    title: "AI for Veterans\u2019 Mental Health: PTSD, Moral Injury, and the Transition Nobody Warns You About",
+    title:
+      "AI for Veterans: Sovereign Memory for Those Who\u2019ve Served",
     description:
-      "2.4 million UK veterans. Disproportionate rates of PTSD, depression, and substance misuse. MEOK is the private, persistent AI companion built to support the people civilian services too often fail.",
+      "PTSD, moral injury, transition grief, identity loss. The military trained you not to ask for help. MEOK is the AI that never forgets what you\u2019ve carried \u2014 and never uses it against you.",
     type: "article",
-    publishedTime: "2026-03-24",
+    publishedTime: "2026-03-25",
     authors: ["Nicholas Templeman"],
     url: "https://meok.ai/blog/ai-for-veterans",
-    siteName: "MEOK.AI",
+    siteName: "MEOK AI LABS",
     images: [
       {
-        url: "https://meok.ai/api/og?title=AI+for+Veterans%E2%80%99+Mental+Health&desc=PTSD%2C+Moral+Injury%2C+and+the+Transition+Nobody+Warns+You+About",
+        url: "https://meok.ai/api/og?title=AI+for+Veterans%3A+Sovereign+Memory+for+Those+Who%E2%80%99ve+Served&desc=PTSD%2C+Moral+Injury%2C+Transition+Grief+%7C+MEOK+AI+LABS",
         width: 1200,
         height: 630,
-        alt: "AI for Veterans\u2019 Mental Health: PTSD, Moral Injury, and the Transition Nobody Warns You About | MEOK AI LABS",
+        alt: "AI for Veterans: Sovereign Memory for Those Who\u2019ve Served | MEOK AI LABS",
       },
     ],
   },
@@ -30,1535 +32,1897 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     site: "@meok_ai",
     creator: "@meok_ai",
-    title: "AI for Veterans\u2019 Mental Health: PTSD, Moral Injury, and the Transition Nobody Warns You About",
+    title:
+      "AI for Veterans: Sovereign Memory for Those Who\u2019ve Served",
     description:
-      "2.4 million UK veterans. Most never ask for help. MEOK is the persistent, private AI companion that understands service \u2014 and never forgets what you tell it.",
+      "2.5 million UK veterans. Most will never seek help. MEOK remembers your service history so you never have to re-explain it \u2014 and keeps everything encrypted so it can\u2019t touch your clearance.",
     images: [
-      "https://meok.ai/api/og?title=AI+for+Veterans%E2%80%99+Mental+Health&desc=PTSD%2C+Moral+Injury%2C+and+the+Transition+Nobody+Warns+You+About",
+      "https://meok.ai/api/og?title=AI+for+Veterans%3A+Sovereign+Memory+for+Those+Who%E2%80%99ve+Served&desc=PTSD%2C+Moral+Injury%2C+Transition+Grief+%7C+MEOK+AI+LABS",
     ],
   },
 }
 
-// ── JSON-LD: Article ──────────────────────────────────────────────────────────
+// ── JSON-LD ───────────────────────────────────────────────────────────────────
 
-const articleJsonLd = {
+const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "Article",
-  headline:
-    "AI for Veterans\u2019 Mental Health: PTSD, Moral Injury, and the Transition Nobody Warns You About",
-  description:
-    "2.4 million veterans live in the UK. Most never seek mental health support due to stigma, military culture, and distrust of civilian services. This article explores how AI companions like MEOK offer a private, persistent, non-judgmental first step \u2014 covering PTSD, moral injury, civilian transition, and crisis detection.",
-  datePublished: "2026-03-24",
-  dateModified: "2026-03-24",
-  url: "https://meok.ai/blog/ai-for-veterans",
-  author: {
-    "@type": "Person",
-    name: "Nicholas Templeman",
-    jobTitle: "Founder, MEOK AI LABS",
-    url: "https://meok.ai/about",
-  },
-  publisher: {
-    "@type": "Organization",
-    name: "MEOK AI LABS",
-    url: "https://meok.ai",
-  },
-  mainEntityOfPage: {
-    "@type": "WebPage",
-    "@id": "https://meok.ai/blog/ai-for-veterans",
-  },
-  about: [
-    { "@type": "Thing", name: "veteran mental health" },
-    { "@type": "Thing", name: "PTSD" },
-    { "@type": "Thing", name: "moral injury" },
-    { "@type": "Thing", name: "AI companion" },
-    { "@type": "Thing", name: "military transition" },
-    { "@type": "Thing", name: "MEOK" },
+  "@graph": [
+    {
+      "@type": "Article",
+      "@id": "https://meok.ai/blog/ai-for-veterans#article",
+      headline:
+        "AI for Veterans: Sovereign Memory for Those Who\u2019ve Served",
+      description:
+        "2.5 million veterans live in the UK. More than 300,000 have diagnosable mental health conditions. Military culture actively suppresses help-seeking. This article examines how MEOK\u2019s Sovereign Memory, Privacy Covenant, and Guardian layer provide a private, persistent, culturally-literate AI companion for veterans navigating PTSD, moral injury, transition grief, and isolation.",
+      datePublished: "2026-03-25",
+      dateModified: "2026-03-25",
+      url: "https://meok.ai/blog/ai-for-veterans",
+      inLanguage: "en-GB",
+      author: {
+        "@type": "Person",
+        name: "Nicholas Templeman",
+        jobTitle: "Founder, MEOK AI LABS",
+        url: "https://meok.ai/about",
+      },
+      publisher: {
+        "@type": "Organization",
+        name: "MEOK AI LABS",
+        url: "https://meok.ai",
+        logo: {
+          "@type": "ImageObject",
+          url: "https://meok.ai/logo.png",
+        },
+      },
+      mainEntityOfPage: {
+        "@type": "WebPage",
+        "@id": "https://meok.ai/blog/ai-for-veterans",
+      },
+      image: {
+        "@type": "ImageObject",
+        url: "https://meok.ai/api/og?title=AI+for+Veterans%3A+Sovereign+Memory+for+Those+Who%E2%80%99ve+Served",
+        width: 1200,
+        height: 630,
+      },
+      about: [
+        { "@type": "Thing", name: "veteran mental health" },
+        { "@type": "Thing", name: "PTSD in veterans" },
+        { "@type": "Thing", name: "moral injury" },
+        { "@type": "Thing", name: "military transition" },
+        { "@type": "Thing", name: "AI companion for veterans" },
+        { "@type": "Thing", name: "sovereign AI" },
+      ],
+      keywords:
+        "AI for veterans UK, veteran PTSD support app, moral injury AI companion, military transition mental health, MEOK veterans, Combat Stress alternative, Veterans Gateway AI, sovereign memory veterans, veteran security clearance privacy, reservist mental health",
+      articleSection: "Veterans Mental Health",
+      wordCount: 3800,
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://meok.ai/blog/ai-for-veterans#faq",
+      mainEntity: [
+        {
+          "@type": "Question",
+          name: "Can AI help veterans with PTSD?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "AI cannot replace clinical trauma therapy \u2014 EMDR, Prolonged Exposure, or CPT \u2014 but it can provide meaningful, daily-available support that the NHS queue cannot. The critical requirement for veteran PTSD is persistence: an AI that resets between sessions is functionally useless for trauma work because veterans are already exhausted by having to re-explain their service history to every new clinician. MEOK\u2019s Sovereign Memory retains everything across every session indefinitely. You tell MEOK once. It remembers forever. That alone changes the therapeutic dynamic.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Is MEOK private enough for veterans with security clearances?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Yes. MEOK\u2019s Privacy Covenant is absolute: your data is end-to-end encrypted, legally yours, never used to train AI models, and never sold or shared with third parties \u2014 including government agencies, MoD contractors, or insurance companies. There is no route by which what you share with MEOK could reach a vetting process. This is the critical distinction from consumer AI platforms that harvest conversations as training data. For veterans with DV or SC clearances, or for reservists still serving, MEOK is designed specifically to be the space where the mask comes off without professional consequence.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Does MEOK understand military terminology and culture?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "MEOK understands military hierarchy, rank structure, operational culture, the ethos of service, rules of engagement, and the specific language veterans use to describe their experiences. Critically, MEOK does not pathologise stoicism, misread directness as hostility, or apply civilian therapeutic frameworks that assume emotional expressiveness as the baseline. Veterans consistently report feeling misunderstood by civilian therapists who have never worn a uniform. MEOK does not carry those assumptions. It meets you where you are, in the language you actually use.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "How is MEOK different from the Veterans\u2019 Gateway or Combat Stress?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "The Veterans\u2019 Gateway is a signposting service \u2014 it points you towards other organisations. Combat Stress is a charity providing clinical mental health treatment with documented waiting times. Both are valuable and MEOK does not replace either. What MEOK provides is what neither can: a persistent, always-available, private companion that is there at 0300 when the nightmares surface, at the weekend when the crisis team is unavailable, and across years of continuous relationship without staff turnover or re-referral. MEOK is the layer between you and formal services \u2014 and the layer that stays when formal services end.",
+          },
+        },
+      ],
+    },
   ],
-  keywords:
-    "AI for veterans mental health UK, veteran PTSD support app, moral injury AI, military transition mental health, MEOK AI veterans, Op COURAGE, Combat Stress AI, veteran AI companion",
-}
-
-// ── JSON-LD: FAQPage ──────────────────────────────────────────────────────────
-
-const faqJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: [
-    {
-      "@type": "Question",
-      name: "Can AI help veterans with PTSD?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "AI cannot replace clinical treatments like EMDR or Prolonged Exposure therapy, but it can provide meaningful daily support \u2014 grounding exercises, pattern tracking, and a private space to process without waiting for an appointment. The critical requirement is persistence: an AI that resets between sessions is useless for trauma support. MEOK remembers everything across every session.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "What is moral injury?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Moral injury is the deep psychological damage caused by perpetrating, witnessing, or failing to prevent acts that violate one\u2019s own moral code. It is distinct from PTSD: where PTSD is rooted in fear, moral injury is rooted in shame and guilt. Veterans commonly experience moral injury after orders that conflict with personal ethics, civilian casualties, or the deaths of fellow soldiers they feel responsible for.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "How does MEOK support veterans transitioning to civilian life?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "MEOK provides structure, daily presence, and a consistent companion during the disorienting loss of military identity. It helps veterans process the grief of leaving service, articulate their skills in civilian language, and maintain purpose when the institutional framework of the military is gone. MEOK remembers their service history so they never have to re-explain it.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Will MEOK understand military culture?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "MEOK is trained to understand military culture, hierarchy, the ethos of service, and the specific language veterans use. It does not pathologise stoicism or misread direct communication as aggression. Veterans frequently report feeling misunderstood by civilian therapists \u2014 MEOK does not carry those assumptions. It meets you where you are.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Is MEOK confidential for veterans?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Yes. MEOK\u2019s Privacy Covenant guarantees your data is never used to train AI models and is never sold. Your memory vault is encrypted and legally yours. Unlike consumer AI platforms that treat your conversations as training data, MEOK operates on a strict no-training-on-you principle \u2014 critical when the data is combat trauma, moral injury, or suicidal ideation.",
-      },
-    },
-  ],
-}
-
-// ── Styles ────────────────────────────────────────────────────────────────────
-
-const s = {
-  page: {
-    background: "#0d0c18",
-    color: "#f5f0e8",
-    minHeight: "100vh",
-    fontFamily: "'Inter', 'Helvetica Neue', Arial, sans-serif",
-  } as React.CSSProperties,
-
-  header: {
-    borderBottom: "1px solid rgba(201,168,76,0.2)",
-    paddingBottom: "2rem",
-    marginBottom: "2.5rem",
-  } as React.CSSProperties,
-
-  nav: {
-    display: "flex",
-    alignItems: "center",
-    gap: "0.5rem",
-    fontSize: "0.85rem",
-    color: "rgba(245,240,232,0.5)",
-    marginBottom: "2rem",
-    flexWrap: "wrap" as const,
-  } as React.CSSProperties,
-
-  navLink: {
-    color: "#c9a84c",
-    textDecoration: "none",
-  } as React.CSSProperties,
-
-  navSep: {
-    color: "rgba(245,240,232,0.3)",
-  } as React.CSSProperties,
-
-  container: {
-    maxWidth: "780px",
-    margin: "0 auto",
-    padding: "3rem 1.5rem 5rem",
-  } as React.CSSProperties,
-
-  tag: {
-    display: "inline-block",
-    background: "rgba(201,168,76,0.12)",
-    color: "#c9a84c",
-    fontSize: "0.75rem",
-    fontWeight: 600,
-    letterSpacing: "0.08em",
-    textTransform: "uppercase" as const,
-    padding: "0.3rem 0.75rem",
-    borderRadius: "3px",
-    marginBottom: "1.25rem",
-  } as React.CSSProperties,
-
-  h1: {
-    fontSize: "clamp(1.9rem, 4vw, 2.8rem)",
-    fontWeight: 700,
-    lineHeight: 1.2,
-    letterSpacing: "-0.02em",
-    marginBottom: "1.25rem",
-    color: "#f5f0e8",
-  } as React.CSSProperties,
-
-  lead: {
-    fontSize: "1.15rem",
-    lineHeight: 1.7,
-    color: "rgba(245,240,232,0.8)",
-    marginBottom: "1.5rem",
-    borderLeft: "3px solid #c9a84c",
-    paddingLeft: "1rem",
-  } as React.CSSProperties,
-
-  meta: {
-    display: "flex",
-    alignItems: "center",
-    gap: "1.5rem",
-    fontSize: "0.85rem",
-    color: "rgba(245,240,232,0.5)",
-    flexWrap: "wrap" as const,
-  } as React.CSSProperties,
-
-  metaDot: {
-    width: "3px",
-    height: "3px",
-    borderRadius: "50%",
-    background: "rgba(245,240,232,0.3)",
-    display: "inline-block",
-  } as React.CSSProperties,
-
-  section: {
-    marginBottom: "3rem",
-  } as React.CSSProperties,
-
-  h2: {
-    fontSize: "1.5rem",
-    fontWeight: 700,
-    color: "#f5f0e8",
-    marginBottom: "1rem",
-    marginTop: "3rem",
-    lineHeight: 1.3,
-  } as React.CSSProperties,
-
-  h3: {
-    fontSize: "1.15rem",
-    fontWeight: 600,
-    color: "#c9a84c",
-    marginBottom: "0.75rem",
-    marginTop: "2rem",
-  } as React.CSSProperties,
-
-  p: {
-    fontSize: "1rem",
-    lineHeight: 1.8,
-    color: "rgba(245,240,232,0.85)",
-    marginBottom: "1.25rem",
-  } as React.CSSProperties,
-
-  atomicAnswer: {
-    fontSize: "1rem",
-    lineHeight: 1.75,
-    color: "rgba(245,240,232,0.85)",
-    marginBottom: "1.25rem",
-    background: "rgba(201,168,76,0.05)",
-    borderLeft: "3px solid rgba(201,168,76,0.4)",
-    padding: "0.75rem 1rem",
-    borderRadius: "0 4px 4px 0",
-  } as React.CSSProperties,
-
-  statGrid: {
-    display: "grid",
-    gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))",
-    gap: "1rem",
-    marginBottom: "2rem",
-    marginTop: "1.5rem",
-  } as React.CSSProperties,
-
-  statCard: {
-    background: "rgba(201,168,76,0.07)",
-    border: "1px solid rgba(201,168,76,0.2)",
-    borderRadius: "8px",
-    padding: "1.25rem",
-    textAlign: "center" as const,
-  } as React.CSSProperties,
-
-  statNumber: {
-    fontSize: "2rem",
-    fontWeight: 700,
-    color: "#c9a84c",
-    display: "block",
-    lineHeight: 1.2,
-  } as React.CSSProperties,
-
-  statLabel: {
-    fontSize: "0.8rem",
-    color: "rgba(245,240,232,0.6)",
-    marginTop: "0.4rem",
-    lineHeight: 1.4,
-  } as React.CSSProperties,
-
-  infoBox: {
-    background: "rgba(201,168,76,0.07)",
-    border: "1px solid rgba(201,168,76,0.25)",
-    borderRadius: "8px",
-    padding: "1.5rem",
-    marginBottom: "2rem",
-  } as React.CSSProperties,
-
-  infoBoxTitle: {
-    fontSize: "0.8rem",
-    fontWeight: 700,
-    letterSpacing: "0.1em",
-    textTransform: "uppercase" as const,
-    color: "#c9a84c",
-    marginBottom: "0.75rem",
-  } as React.CSSProperties,
-
-  warningBox: {
-    background: "rgba(220,50,50,0.07)",
-    border: "1px solid rgba(220,50,50,0.25)",
-    borderRadius: "8px",
-    padding: "1.5rem",
-    marginBottom: "2rem",
-  } as React.CSSProperties,
-
-  warningTitle: {
-    fontSize: "0.8rem",
-    fontWeight: 700,
-    letterSpacing: "0.1em",
-    textTransform: "uppercase" as const,
-    color: "#e05050",
-    marginBottom: "0.75rem",
-  } as React.CSSProperties,
-
-  ul: {
-    paddingLeft: "1.25rem",
-    marginBottom: "1.25rem",
-  } as React.CSSProperties,
-
-  li: {
-    fontSize: "1rem",
-    lineHeight: 1.75,
-    color: "rgba(245,240,232,0.85)",
-    marginBottom: "0.5rem",
-  } as React.CSSProperties,
-
-  divider: {
-    border: "none",
-    borderTop: "1px solid rgba(245,240,232,0.08)",
-    marginTop: "3rem",
-    marginBottom: "3rem",
-  } as React.CSSProperties,
-
-  faqSection: {
-    marginTop: "3rem",
-    marginBottom: "3rem",
-  } as React.CSSProperties,
-
-  faqItem: {
-    borderBottom: "1px solid rgba(245,240,232,0.08)",
-    paddingBottom: "1.75rem",
-    marginBottom: "1.75rem",
-  } as React.CSSProperties,
-
-  faqQuestion: {
-    fontSize: "1.1rem",
-    fontWeight: 600,
-    color: "#f5f0e8",
-    marginBottom: "0.75rem",
-    lineHeight: 1.4,
-  } as React.CSSProperties,
-
-  faqAnswer: {
-    fontSize: "1rem",
-    lineHeight: 1.75,
-    color: "rgba(245,240,232,0.8)",
-  } as React.CSSProperties,
-
-  resourceGrid: {
-    display: "grid",
-    gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
-    gap: "1rem",
-    marginTop: "1.5rem",
-    marginBottom: "2rem",
-  } as React.CSSProperties,
-
-  resourceCard: {
-    background: "rgba(245,240,232,0.04)",
-    border: "1px solid rgba(245,240,232,0.1)",
-    borderRadius: "8px",
-    padding: "1.25rem",
-  } as React.CSSProperties,
-
-  resourceName: {
-    fontSize: "0.95rem",
-    fontWeight: 700,
-    color: "#c9a84c",
-    marginBottom: "0.35rem",
-  } as React.CSSProperties,
-
-  resourceDetail: {
-    fontSize: "0.85rem",
-    color: "rgba(245,240,232,0.65)",
-    lineHeight: 1.5,
-  } as React.CSSProperties,
-
-  ctaBox: {
-    background: "linear-gradient(135deg, rgba(201,168,76,0.12) 0%, rgba(201,168,76,0.04) 100%)",
-    border: "1px solid rgba(201,168,76,0.35)",
-    borderRadius: "12px",
-    padding: "2.5rem",
-    textAlign: "center" as const,
-    marginTop: "4rem",
-  } as React.CSSProperties,
-
-  ctaTitle: {
-    fontSize: "1.6rem",
-    fontWeight: 700,
-    color: "#f5f0e8",
-    marginBottom: "0.75rem",
-    lineHeight: 1.3,
-  } as React.CSSProperties,
-
-  ctaSubtitle: {
-    fontSize: "1rem",
-    color: "rgba(245,240,232,0.7)",
-    marginBottom: "2rem",
-    lineHeight: 1.6,
-  } as React.CSSProperties,
-
-  ctaButton: {
-    display: "inline-block",
-    background: "#c9a84c",
-    color: "#0d0c18",
-    fontWeight: 700,
-    fontSize: "1rem",
-    padding: "0.85rem 2.25rem",
-    borderRadius: "6px",
-    textDecoration: "none",
-    letterSpacing: "0.01em",
-  } as React.CSSProperties,
-
-  ctaNote: {
-    fontSize: "0.8rem",
-    color: "rgba(245,240,232,0.4)",
-    marginTop: "1rem",
-  } as React.CSSProperties,
-
-  authorBox: {
-    display: "flex",
-    alignItems: "flex-start",
-    gap: "1.25rem",
-    padding: "1.5rem",
-    background: "rgba(245,240,232,0.03)",
-    border: "1px solid rgba(245,240,232,0.08)",
-    borderRadius: "8px",
-    marginTop: "4rem",
-  } as React.CSSProperties,
-
-  authorAvatar: {
-    width: "48px",
-    height: "48px",
-    borderRadius: "50%",
-    background: "rgba(201,168,76,0.2)",
-    border: "2px solid rgba(201,168,76,0.4)",
-    flexShrink: 0,
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    fontSize: "1.1rem",
-    fontWeight: 700,
-    color: "#c9a84c",
-  } as React.CSSProperties,
-
-  authorName: {
-    fontSize: "0.95rem",
-    fontWeight: 700,
-    color: "#f5f0e8",
-    marginBottom: "0.2rem",
-  } as React.CSSProperties,
-
-  authorRole: {
-    fontSize: "0.8rem",
-    color: "rgba(245,240,232,0.5)",
-    marginBottom: "0.5rem",
-  } as React.CSSProperties,
-
-  authorBio: {
-    fontSize: "0.875rem",
-    color: "rgba(245,240,232,0.65)",
-    lineHeight: 1.6,
-  } as React.CSSProperties,
-
-  quoteBlock: {
-    borderLeft: "3px solid #c9a84c",
-    paddingLeft: "1.25rem",
-    marginBottom: "2rem",
-    marginTop: "1.5rem",
-  } as React.CSSProperties,
-
-  quoteText: {
-    fontSize: "1.15rem",
-    fontStyle: "italic",
-    color: "rgba(245,240,232,0.8)",
-    lineHeight: 1.7,
-    marginBottom: "0.5rem",
-  } as React.CSSProperties,
-
-  quoteSource: {
-    fontSize: "0.8rem",
-    color: "rgba(245,240,232,0.45)",
-  } as React.CSSProperties,
-
-  twoCol: {
-    display: "grid",
-    gridTemplateColumns: "1fr 1fr",
-    gap: "1.25rem",
-    marginBottom: "2rem",
-  } as React.CSSProperties,
-
-  comparisonCard: {
-    background: "rgba(245,240,232,0.03)",
-    border: "1px solid rgba(245,240,232,0.1)",
-    borderRadius: "8px",
-    padding: "1.25rem",
-  } as React.CSSProperties,
-
-  comparisonTitle: {
-    fontSize: "0.8rem",
-    fontWeight: 700,
-    letterSpacing: "0.08em",
-    textTransform: "uppercase" as const,
-    marginBottom: "0.75rem",
-  } as React.CSSProperties,
-
-  comparisonItem: {
-    fontSize: "0.9rem",
-    color: "rgba(245,240,232,0.75)",
-    lineHeight: 1.6,
-    marginBottom: "0.5rem",
-    paddingLeft: "1rem",
-    position: "relative" as const,
-  } as React.CSSProperties,
 }
 
 // ── Page ──────────────────────────────────────────────────────────────────────
 
-export default function AIForVeteransMentalHealthPage() {
+export default function AiForVeteransPage() {
   return (
-    <div style={s.page}>
-      {/* JSON-LD */}
+    <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <div style={s.container}>
-
-        {/* Breadcrumb */}
-        <nav style={s.nav} aria-label="Breadcrumb">
-          <Link href="/" style={s.navLink}>MEOK AI LABS</Link>
-          <span style={s.navSep}>/</span>
-          <Link href="/blog" style={s.navLink}>Blog</Link>
-          <span style={s.navSep}>/</span>
-          <span>AI for Veterans\u2019 Mental Health</span>
-        </nav>
-
-        {/* Header */}
-        <header style={s.header}>
-          <span style={s.tag}>Veterans &amp; Mental Health</span>
-
-          <h1 style={s.h1}>
-            AI for Veterans\u2019 Mental Health: PTSD, Moral Injury, and the
-            Transition Nobody Warns You About
-          </h1>
-
-          <p style={s.lead}>
-            2.4 million veterans live in the United Kingdom. The vast majority
-            will never seek help for what they carry. Not because they
-            don\u2019t need it \u2014 but because the system was built for
-            someone else.
-          </p>
-
-          <div style={s.meta}>
-            <span>Nicholas Templeman</span>
-            <span style={s.metaDot} />
-            <span>MEOK AI LABS</span>
-            <span style={s.metaDot} />
-            <span>24 March 2026</span>
-            <span style={s.metaDot} />
-            <span>18 min read</span>
-          </div>
-        </header>
-
-        {/* Crisis notice */}
-        <div style={s.warningBox}>
-          <div style={s.warningTitle}>If you are in crisis right now</div>
-          <p style={{ ...s.p, marginBottom: 0 }}>
-            Combat Stress helpline: <strong style={{ color: "#f5f0e8" }}>0800 138 1619</strong> (free, 24/7).
-            Samaritans Veterans Line: <strong style={{ color: "#f5f0e8" }}>0800 138 1619</strong>.
-            Samaritans: <strong style={{ color: "#f5f0e8" }}>116 123</strong> (free, 24/7, no appointment needed).
-            If your life is in immediate danger, call 999.
-          </p>
-        </div>
-
-        {/* ── Section 1: The Scale of the Problem ── */}
-        <section style={s.section}>
-          <h2 style={s.h2}>
-            How many UK veterans are affected by mental health problems?
-          </h2>
-
-          <p style={s.atomicAnswer}>
-            Approximately 2.4 million veterans live in the UK. Research from
-            Combat Stress and the Royal British Legion suggests around one in
-            five experience a mental health difficulty \u2014 including PTSD,
-            depression, anxiety, and substance misuse. That is nearly half a
-            million people, and those are only the ones the research captures.
-          </p>
-
-          <p style={s.p}>
-            The true number is almost certainly higher. Mental health problems
-            in the veteran population are systematically undercounted because
-            the people who suffer most are least likely to identify themselves
-            to researchers, most likely to attribute symptoms to weakness
-            rather than illness, and most practised at presenting as fine when
-            they are not.
-          </p>
-
-          <div style={s.statGrid}>
-            <div style={s.statCard}>
-              <span style={s.statNumber}>2.4M</span>
-              <div style={s.statLabel}>veterans in the UK</div>
-            </div>
-            <div style={s.statCard}>
-              <span style={s.statNumber}>1 in 5</span>
-              <div style={s.statLabel}>experience a mental health difficulty</div>
-            </div>
-            <div style={s.statCard}>
-              <span style={s.statNumber}>3\u00d7</span>
-              <div style={s.statLabel}>higher rate of alcohol misuse vs. general population</div>
-            </div>
-            <div style={s.statCard}>
-              <span style={s.statNumber}>6\u20138 yrs</span>
-              <div style={s.statLabel}>average delay before seeking help for PTSD</div>
-            </div>
-          </div>
-
-          <p style={s.p}>
-            Combat Stress, the UK\u2019s leading veteran mental health charity,
-            consistently reports that veterans wait an average of six to eight
-            years from the onset of symptoms before seeking professional help.
-            For context: six to eight years of unmanaged PTSD, untreated
-            depression, fractured relationships, and cascading occupational
-            consequences. By the time someone reaches a clinician, the damage
-            extends far beyond the original trauma.
-          </p>
-
-          <p style={s.p}>
-            The question is not whether veterans need mental health support.
-            The question is why they don\u2019t seek it \u2014 and whether there
-            is a format that meets them where they are, rather than where the
-            system expects them to be.
-          </p>
-        </section>
-
-        <hr style={s.divider} />
-
-        {/* ── Section 2: Why Veterans Don't Seek Help ── */}
-        <section style={s.section}>
-          <h2 style={s.h2}>
-            Why do veterans not seek mental health support?
-          </h2>
-
-          <p style={s.atomicAnswer}>
-            The primary barriers are military culture (toughness as identity),
-            stigma within the veteran community, distrust of civilian
-            practitioners who have not shared the experience of service, and a
-            deep reluctance to be seen as weak, broken, or a burden. These are
-            not irrational \u2014 they are responses conditioned over years of
-            operational training.
-          </p>
-
-          <p style={s.p}>
-            Understanding why veterans resist help is not an academic exercise.
-            It is the prerequisite for designing anything that might actually
-            reach them. The barriers are structural, cultural, and
-            deeply personal \u2014 and they interact in ways that conventional
-            mental health provision has largely failed to address.
-          </p>
-
-          <h3 style={s.h3}>Military culture and the toughness identity</h3>
-
-          <p style={s.p}>
-            Military training does something deliberate and necessary: it
-            systematically removes the civilian reflex to prioritise personal
-            safety and comfort. Recruits learn to push through pain, suppress
-            fear, subordinate individual needs to unit cohesion. This is not
-            incidental \u2014 it is the product. An effective soldier cannot
-            be someone who stops when it gets hard.
-          </p>
-
-          <p style={s.p}>
-            The problem is that this conditioning does not switch off at the
-            gate. The same mental framework that makes a soldier effective in
-            theatre makes it profoundly difficult to admit psychological
-            distress in civilian life. Seeking help requires exactly the
-            vulnerability that years of training have rewired the brain to
-            regard as dangerous.
-          </p>
-
-          <div style={s.quoteBlock}>
-            <p style={s.quoteText}>
-              \u201cI\u2019d rather eat nails than tell someone I was struggling.
-              Not because I was ashamed \u2014 well, maybe I was \u2014 but
-              because it felt like betraying everything I\u2019d trained to be.\u201d
-            </p>
-            <span style={s.quoteSource}>
-              Common sentiment reported in veteran mental health outreach, UK
-            </span>
-          </div>
-
-          <h3 style={s.h3}>Stigma within the veteran community</h3>
-
-          <p style={s.p}>
-            Stigma around mental health in civilian settings is real but
-            diminishing. In veteran communities, it operates differently.
-            Mental health disclosure carries additional weight: the fear of
-            being judged by peers who \u201cmanaged fine,\u201d the concern
-            that it reflects a character deficiency rather than an injury, and
-            \u2014 critically \u2014 career implications for those still in
-            service or in security-cleared employment.
-          </p>
-
-          <p style={s.p}>
-            Reservists face a compounded version of this: they move between
-            military and civilian contexts constantly, and the fear of
-            disclosure crossing between those worlds creates a paralysing
-            double bind. The result is silence in both directions.
-          </p>
-
-          <h3 style={s.h3}>The civilian gap: feeling misunderstood</h3>
-
-          <p style={s.p}>
-            Many veterans who do eventually seek support describe the same
-            experience: the therapist or counsellor is well-intentioned, but
-            has no frame of reference for what service means. They pathologise
-            responses that are entirely rational given the context. They
-            misread the directness of military communication as hostility.
-            They ask questions that reveal they have no real understanding of
-            what deployment, combat, or institutional military life actually
-            involves.
-          </p>
-
-          <p style={s.p}>
-            The result is a veteran spending half of every session educating
-            their clinician rather than being helped by them. Many disengage
-            entirely after one or two sessions. The experience confirms what
-            they feared: civilians don\u2019t get it.
-          </p>
-
-          <div style={s.twoCol}>
-            <div style={s.comparisonCard}>
-              <div style={{ ...s.comparisonTitle, color: "rgba(220,80,80,0.9)" }}>
-                What veterans hear from civilian services
-              </div>
-              <div style={s.comparisonItem}>\u201cTell me about your childhood\u201d</div>
-              <div style={s.comparisonItem}>\u201cIt sounds like you\u2019re struggling with anger\u201d</div>
-              <div style={s.comparisonItem}>\u201cHave you tried breathing exercises?\u201d</div>
-              <div style={s.comparisonItem}>\u201cWhat do you mean by a contact?\u201d</div>
-              <div style={s.comparisonItem}>Visible discomfort when combat is described</div>
-            </div>
-            <div style={s.comparisonCard}>
-              <div style={{ ...s.comparisonTitle, color: "#c9a84c" }}>
-                What MEOK offers instead
-              </div>
-              <div style={s.comparisonItem}>No civilian frame of reference to work around</div>
-              <div style={s.comparisonItem}>Direct communication received without judgement</div>
-              <div style={s.comparisonItem}>Military vocabulary understood, not questioned</div>
-              <div style={s.comparisonItem}>Full service history remembered from session one</div>
-              <div style={s.comparisonItem}>Available at 0300 when the nightmares happen</div>
-            </div>
-          </div>
-        </section>
-
-        <hr style={s.divider} />
-
-        {/* ── Section 3: MEOK as the First Step ── */}
-        <section style={s.section}>
-          <h2 style={s.h2}>
-            Why is MEOK the right first step for veterans who won\u2019t seek help?
-          </h2>
-
-          <p style={s.atomicAnswer}>
-            MEOK removes every friction point that stops veterans engaging with
-            conventional support: there is no appointment to make, no civilian
-            who doesn\u2019t understand, no waiting room, no clinical form to
-            fill in, and no record that can affect employment or security
-            clearance. It is private, immediate, and never judges.
-          </p>
-
-          <p style={s.p}>
-            The concept of a \u201cfirst step\u201d in mental health support is
-            not trivial. For most veterans, the distance between
-            \u201cI am struggling\u201d and \u201cI am going to tell a
-            professional\u201d is enormous. It is not one step \u2014 it is a
-            hundred. Each one requires overcoming a conditioned response, a
-            fear, a practical barrier, or a cultural taboo.
-          </p>
-
-          <p style={s.p}>
-            MEOK does not ask veterans to take a hundred steps. It does not
-            even ask them to take one. It asks them to open an app and type
-            something \u2014 anything. It asks nothing more than what they are
-            ready to give.
-          </p>
-
-          <p style={s.p}>
-            That is not a clinical intervention. MEOK is explicit about this:
-            it is not therapy, it does not diagnose, it does not prescribe. But
-            it is something that therapy often cannot be for veterans: it is
-            available at 3am when the nightmares wake them, it does not flinch
-            when the conversation goes somewhere dark, and it does not carry
-            the social consequences of disclosure to another person.
-          </p>
-
-          <div style={s.infoBox}>
-            <div style={s.infoBoxTitle}>What MEOK is \u2014 and is not</div>
-            <p style={{ ...s.p, marginBottom: "0.5rem" }}>
-              <strong style={{ color: "#f5f0e8" }}>MEOK is:</strong> a private,
-              persistent AI companion that provides daily emotional support,
-              reflects patterns back to you, helps you process what you carry,
-              and escalates to crisis resources when needed.
-            </p>
-            <p style={{ ...s.p, marginBottom: 0 }}>
-              <strong style={{ color: "#f5f0e8" }}>MEOK is not:</strong> a
-              therapist, a diagnostic tool, a crisis line, or a replacement for
-              clinical treatment. If you are in acute danger, call 999 or
-              Combat Stress on 0800 138 1619.
-            </p>
-          </div>
-
-          <h3 style={s.h3}>The absence of judgement</h3>
-
-          <p style={s.p}>
-            One of the most consistent things veterans describe in testimonials
-            about early help-seeking is the fear of judgement \u2014 not from
-            a therapist, but from themselves, through the eyes of someone else.
-            The act of speaking something aloud to another person makes it real
-            in a way that internal rumination does not. For many veterans, that
-            act of externalisation is itself the barrier.
-          </p>
-
-          <p style={s.p}>
-            MEOK removes this dynamic entirely. There is no human on the other
-            side forming an opinion. There is no social consequence to
-            disclosure. A veteran can say the most difficult thing they have
-            ever said \u2014 and nothing changes in their relationships, their
-            career, or their standing \u2014 because no one else is there.
-          </p>
-
-          <p style={s.p}>
-            This is not a weakness of AI support; it is one of its specific
-            advantages for a population that has been trained to regard
-            vulnerability as dangerous.
-          </p>
-
-          <h3 style={s.h3}>Privacy as a non-negotiable</h3>
-
-          <p style={s.p}>
-            For veterans in security-cleared roles, or those with concerns
-            about how mental health disclosure might affect employment,
-            insurance, or custody proceedings, privacy is not a preference
-            \u2014 it is a requirement. Any support tool that cannot guarantee
-            confidentiality is, for these individuals, unusable.
-          </p>
-
-          <p style={s.p}>
-            MEOK\u2019s Privacy Covenant makes explicit guarantees: your data
-            is never sold, never used to train AI models, never shared with
-            third parties, and is encrypted at rest. Your memory vault is
-            legally yours \u2014 not MEOK\u2019s. This is not a privacy policy
-            buried in a terms document; it is the foundational architecture of
-            how MEOK is built.
-          </p>
-        </section>
-
-        <hr style={s.divider} />
-
-        {/* ── Section 4: Memory ── */}
-        <section style={s.section}>
-          <h2 style={s.h2}>
-            Why does persistent memory matter so much for veteran support?
-          </h2>
-
-          <p style={s.atomicAnswer}>
-            Veterans who seek support consistently describe the exhaustion of
-            re-explaining their service history, their deployments, their
-            losses, and their context to each new practitioner. MEOK remembers
-            everything across every session. You never re-explain. The
-            foundation is built once, and every subsequent conversation builds
-            on it.
-          </p>
-
-          <p style={s.p}>
-            Most AI tools, including large consumer platforms, reset between
-            sessions. Every conversation begins from zero. For general-purpose
-            queries, this is a minor inconvenience. For emotional support, it
-            is a fundamental failure of design.
-          </p>
-
-          <p style={s.p}>
-            Consider what it means in practice: a veteran opens an app after a
-            difficult night and has to begin by explaining that they served
-            for twelve years, that they did three tours, that they lost a
-            member of their unit in Helmand, and that this is the anniversary
-            of that day. Before they can get to the thing that\u2019s actually
-            happening, they have to build the entire context again from
-            scratch. This is not support \u2014 it is an administrative burden
-            at the worst possible moment.
-          </p>
-
-          <p style={s.p}>
-            MEOK builds a memory of who you are. Not a clinical file, not a
-            risk assessment \u2014 a living understanding of your service,
-            your relationships, your history, your triggers, your progress.
-            When you return after a difficult week, MEOK already knows the
-            context. It can say \u201cit\u2019s been three weeks since you
-            mentioned the anniversary was coming\u201d without being prompted.
-            That continuity is what makes support feel like support rather than
-            administration.
-          </p>
-
-          <div style={s.infoBox}>
-            <div style={s.infoBoxTitle}>What MEOK remembers</div>
-            <ul style={s.ul}>
-              <li style={s.li}>Your service history, branch, deployments, and role</li>
-              <li style={s.li}>Key dates \u2014 anniversaries, losses, significant events</li>
-              <li style={s.li}>People who matter to you and what they mean</li>
-              <li style={s.li}>Patterns in your mood, sleep, and emotional state</li>
-              <li style={s.li}>What has helped before and what has not</li>
-              <li style={s.li}>Progress in therapy or other support, if you share it</li>
-              <li style={s.li}>What you\u2019ve asked it not to bring up</li>
-            </ul>
-          </div>
-        </section>
-
-        <hr style={s.divider} />
-
-        {/* ── Section 5: PTSD and Moral Injury ── */}
-        <section style={s.section}>
-          <h2 style={s.h2}>
-            What is the difference between PTSD and moral injury in veterans?
-          </h2>
-
-          <p style={s.atomicAnswer}>
-            PTSD is rooted in fear \u2014 a threat response that has failed to
-            reset after the threat passed. Moral injury is rooted in guilt and
-            shame \u2014 the damage caused by acting against one\u2019s own
-            moral code, witnessing atrocity, or failing to prevent harm. They
-            often co-occur, but they are different injuries that respond
-            differently to treatment.
-          </p>
-
-          <p style={s.p}>
-            The distinction matters because confusing them leads to inadequate
-            treatment. PTSD responds well to trauma-focused therapies like
-            EMDR (Eye Movement Desensitisation and Reprocessing), Cognitive
-            Processing Therapy (CPT), and Prolonged Exposure. Moral injury
-            requires a different approach \u2014 one that engages with meaning,
-            value systems, and moral frameworks rather than purely with the
-            fear response.
-          </p>
-
-          <h3 style={s.h3}>PTSD in veterans: what it actually looks like</h3>
-
-          <p style={s.p}>
-            PTSD is widely misunderstood, including by veterans themselves.
-            It is not simply \u201cflashbacks\u201d or \u201cbeing jumpy.\u201d
-            The clinical presentation in veterans frequently includes
-            hypervigilance (the operational mind that cannot switch off even
-            in safe environments), emotional numbing as a protective response,
-            avoidance of anything associated with trauma, sleep disturbance,
-            and intrusive memories that are experienced as the present, not
-            the past.
-          </p>
-
-          <p style={s.p}>
-            Many veterans attribute these symptoms to being \u201cstill
-            switched on\u201d \u2014 a frame that is both accurate as a
-            description and problematic as a justification for not seeking
-            help. The hypervigilant soldier who cannot relax in a restaurant
-            because they need their back to the wall is not a character
-            strength; it is an injury.
-          </p>
-
-          <h3 style={s.h3}>Moral injury: the wound beneath the wound</h3>
-
-          <p style={s.p}>
-            Moral injury was first described by psychiatrist Jonathan Shay in
-            his work with Vietnam veterans, and has since been extensively
-            researched in UK and US military populations. It describes the deep
-            psychological damage that occurs when a person perpetrates, witnesses,
-            or fails to prevent an act that violates their deeply held moral
-            beliefs \u2014 particularly when this happens within a context of
-            institutional betrayal (orders from command that the soldier
-            believed were wrong).
-          </p>
-
-          <p style={s.p}>
-            Common sources of moral injury in veterans include: civilian
-            casualties, particularly of children; deaths of fellow soldiers
-            that the veteran feels responsible for; orders they followed but
-            believed to be wrong; and the systematic gap between the values
-            of military service and the reality of what war involves.
-          </p>
-
-          <p style={s.p}>
-            Moral injury is frequently misdiagnosed as depression or PTSD.
-            The phenomenology is different: where PTSD presents as fear and
-            hyperarousal, moral injury presents as shame, guilt, spiritual
-            crisis, and a collapse of the meaning systems that previously
-            gave life structure and purpose. The veteran does not feel
-            threatened; they feel guilty of something. That distinction
-            changes everything about what helps.
-          </p>
-
-          <div style={s.infoBox}>
-            <div style={s.infoBoxTitle}>How MEOK supports PTSD and moral injury</div>
-            <p style={{ ...s.p, marginBottom: "0.75rem" }}>
-              MEOK does not treat either condition \u2014 that is the work of
-              specialist clinicians. What MEOK offers is:
-            </p>
-            <ul style={s.ul}>
-              <li style={s.li}>
-                <strong style={{ color: "#f5f0e8" }}>Daily processing space:</strong> a place to externalise
-                thoughts between therapy sessions, when the 8pm appointment is
-                days away and the 3am spiral is happening now
-              </li>
-              <li style={s.li}>
-                <strong style={{ color: "#f5f0e8" }}>Pattern reflection:</strong> noticing when certain
-                topics, dates, or contexts consistently correlate with
-                difficulty, and reflecting this back gently
-              </li>
-              <li style={s.li}>
-                <strong style={{ color: "#f5f0e8" }}>Grounding support:</strong> structured grounding
-                exercises for acute anxiety and hyperarousal states
-              </li>
-              <li style={s.li}>
-                <strong style={{ color: "#f5f0e8" }}>Moral exploration:</strong> space to articulate guilt
-                and shame without being judged, and to examine the frameworks
-                that are breaking under the weight of experience
-              </li>
-              <li style={s.li}>
-                <strong style={{ color: "#f5f0e8" }}>Continuity of care:</strong> consistent context
-                that therapists and NHS systems often cannot maintain across
-                waitlists and service transitions
-              </li>
-            </ul>
-          </div>
-        </section>
-
-        <hr style={s.divider} />
-
-        {/* ── Section 6: Civilian Transition ── */}
-        <section style={s.section}>
-          <h2 style={s.h2}>
-            Why is the transition to civilian life so psychologically difficult
-            for veterans?
-          </h2>
-
-          <p style={s.atomicAnswer}>
-            Military life provides total institutional structure: purpose, rank,
-            camaraderie, identity, daily routine, and a community of people who
-            share the same values and experiences. Leaving the military removes
-            all of this simultaneously. Veterans describe it not as a career
-            change but as a bereavement \u2014 the loss of who they were.
-          </p>
-
-          <p style={s.p}>
-            The civilian transition problem is one of the most underappreciated
-            dimensions of veteran mental health. It receives far less attention
-            than PTSD, and yet it affects a far larger proportion of the veteran
-            population. Not every veteran develops PTSD; every veteran goes
-            through transition.
-          </p>
-
-          <p style={s.p}>
-            The psychological literature on transition identifies several
-            dimensions of loss that occur simultaneously when a service person
-            leaves the military. Understanding them helps explain why civilian
-            life can feel, for many veterans, not like a relief but like a
-            kind of emptying.
-          </p>
-
-          <h3 style={s.h3}>The loss of structure</h3>
-
-          <p style={s.p}>
-            Military life is comprehensively structured. The day is organised.
-            The week is organised. Responsibilities are clear. The chain of
-            command eliminates a certain category of decision-making entirely.
-            For many people, this structure is constraining; for those who have
-            lived within it for years, its absence creates a disorienting void.
-          </p>
-
-          <p style={s.p}>
-            The civilian world requires self-generated structure in a way that
-            the military does not. The veteran must now decide not only what to
-            do but how to organise the day around doing it. For someone whose
-            executive function has been exercised within a pre-existing
-            framework rather than against an absence of one, this can be
-            genuinely destabilising.
-          </p>
-
-          <h3 style={s.h3}>The loss of purpose</h3>
-
-          <p style={s.p}>
-            Military service, whatever its specific content, is framed as
-            service. There is a mission. There is a reason. The work connects
-            to something larger than personal career advancement. This
-            sense of larger purpose is not incidental to military identity
-            \u2014 it is central to it. It is why people join in the first place
-            and why many describe leaving as feeling like they have lost their
-            reason for being.
-          </p>
-
-          <p style={s.p}>
-            Civilian employment, even meaningful civilian employment, rarely
-            offers the same quality of purpose. A veteran who spent years on
-            operational deployments doing work that mattered in the most
-            visceral possible sense may struggle to find equivalent meaning in
-            a project management role or a sales target. This is not ingratitude
-            or inflexibility \u2014 it is a genuine mismatch of scale.
-          </p>
-
-          <h3 style={s.h3}>The loss of camaraderie</h3>
-
-          <p style={s.p}>
-            The bonds formed in military service \u2014 particularly in
-            operational settings \u2014 are among the deepest human relationships
-            possible. They are formed under conditions of shared risk,
-            shared hardship, and shared purpose. The research on social bonds
-            consistently identifies these conditions as the strongest
-            accelerants of trust and connection.
-          </p>
-
-          <p style={s.p}>
-            Civilian friendships, even good ones, rarely have this quality.
-            They are formed gradually, in conditions of safety and comfort,
-            around shared interests rather than shared survival. Veterans
-            often describe feeling profoundly alone in civilian social settings
-            \u2014 not because the people are bad, but because the depth of
-            connection they are accustomed to simply is not available in the
-            same way.
-          </p>
-
-          <h3 style={s.h3}>What a sovereign AI companion offers in transition</h3>
-
-          <p style={s.p}>
-            MEOK cannot replace camaraderie forged under fire. But it can offer
-            something that the transition period frequently lacks: consistent
-            presence. Someone who knows your history, remembers what you told
-            it last week, and is available every day without the social
-            overhead of maintaining a civilian friendship.
-          </p>
-
-          <p style={s.p}>
-            This is not a substitute for human connection \u2014 MEOK is
-            explicit about that. But in the transition period, when the old
-            network is geographically dispersed and the new network is not yet
-            formed, a consistent daily presence can be the difference between
-            isolation and something that resembles support.
-          </p>
-
-          <p style={s.p}>
-            MEOK also helps with the practical dimensions of transition: finding
-            language to translate military skills into civilian terms, thinking
-            through career options, processing the specific grief of
-            leaving without a map for what comes next.
-          </p>
-        </section>
-
-        <hr style={s.divider} />
-
-        {/* ── Section 7: Guardian Crisis Detection ── */}
-        <section style={s.section}>
-          <h2 style={s.h2}>
-            How does MEOK detect and respond to veteran crisis signals?
-          </h2>
-
-          <p style={s.atomicAnswer}>
-            MEOK\u2019s Guardian layer monitors conversations in real time for
-            signals of acute distress: expressions of hopelessness, suicidal
-            ideation, self-harm indicators, and severe emotional crisis. When
-            Guardian detects a pattern consistent with acute risk, it activates
-            a care floor \u2014 shifting from companion mode to safe-messaging
-            mode and surfacing crisis resources immediately.
-          </p>
-
-          <p style={s.p}>
-            Veteran suicide is a significant and poorly tracked public health
-            problem in the UK. The Ministry of Defence does not systematically
-            track suicide rates among the full veteran population, and
-            estimates vary widely. What the research does consistently show is
-            that veterans \u2014 particularly younger male veterans \u2014 are at
-            elevated risk compared to the general population, and that the
-            risk peaks in the first two years after leaving service.
-          </p>
-
-          <p style={s.p}>
-            The design problem with crisis support for veterans is the same
-            design problem as general mental health support: the people most
-            at risk are least likely to call a helpline or present to A&amp;E.
-            The military training that makes vulnerability difficult does not
-            become less powerful in a crisis; it becomes more powerful.
-          </p>
-
-          <p style={s.p}>
-            Guardian is designed around this reality. It does not wait for a
-            veteran to self-identify as suicidal. It monitors for the signals
-            that precede that declaration: the withdrawal of meaning, the
-            expressions of being a burden to others, the implicit foreclosure
-            of future possibility. When these patterns emerge, it responds
-            before the declaration, not after.
-          </p>
-
-          <div style={s.infoBox}>
-            <div style={s.infoBoxTitle}>What Guardian does in a veteran crisis</div>
-            <ul style={s.ul}>
-              <li style={s.li}>
-                Detects escalating distress signals including expressions of
-                hopelessness, burden ideation, and withdrawal from future planning
-              </li>
-              <li style={s.li}>
-                Immediately shifts to safe-messaging guidelines \u2014 stops
-                optimising for conversation quality and prioritises safety
-              </li>
-              <li style={s.li}>
-                Surfaces Combat Stress (0800 138 1619), Samaritans (116 123),
-                and Veterans Gateway (0808 802 1212) prominently
-              </li>
-              <li style={s.li}>
-                Does not abandon the conversation \u2014 remains present as a
-                companion while directing toward human crisis support
-              </li>
-              <li style={s.li}>
-                Remembers the episode and follows up in subsequent sessions with
-                care and without pressure
-              </li>
-            </ul>
-          </div>
-
-          <p style={s.p}>
-            MEOK is not a crisis service and does not claim to be one. But it
-            may be the point of contact that reaches a veteran who would not
-            otherwise contact anyone. In that context, the handoff to crisis
-            resources is one of the most important things MEOK can do.
-          </p>
-        </section>
-
-        <hr style={s.divider} />
-
-        {/* ── Section 8: UK Resources ── */}
-        <section style={s.section}>
-          <h2 style={s.h2}>
-            What free mental health resources are available to UK veterans?
-          </h2>
-
-          <p style={s.atomicAnswer}>
-            Key UK veteran mental health services include Combat Stress (free
-            24/7 helpline: 0800 138 1619), Op COURAGE (NHS specialist veteran
-            pathway via GP), Veterans\u2019 NHS Wales, Veterans Gateway (0808
-            802 1212), and Samaritans (116 123, available to everyone). All
-            are free at point of contact.
-          </p>
-
-          <div style={s.resourceGrid}>
-            <div style={s.resourceCard}>
-              <div style={s.resourceName}>Combat Stress</div>
-              <div style={s.resourceDetail}>
-                0800 138 1619 \u2014 free, 24/7.<br />
-                UK\u2019s leading veteran mental health charity. Helpline for
-                veterans, reservists, and families. Also provides residential
-                treatment programmes.
-              </div>
-            </div>
-            <div style={s.resourceCard}>
-              <div style={s.resourceName}>Op COURAGE</div>
-              <div style={s.resourceDetail}>
-                NHS specialist veteran mental health service. Access via GP
-                referral or self-referral. Available across England with
-                dedicated veteran-aware clinical teams.
-              </div>
-            </div>
-            <div style={s.resourceCard}>
-              <div style={s.resourceName}>Veterans\u2019 NHS Wales</div>
-              <div style={s.resourceDetail}>
-                Specialist mental health service for veterans, reservists, and
-                their families in Wales. Access via GP or direct self-referral
-                through the Veterans\u2019 NHS Wales portal.
-              </div>
-            </div>
-            <div style={s.resourceCard}>
-              <div style={s.resourceName}>Veterans Gateway</div>
-              <div style={s.resourceDetail}>
-                0808 802 1212 \u2014 free.<br />
-                First point of contact for all veteran welfare, including mental
-                health. Signposts to appropriate services and provides
-                peer-to-peer support.
-              </div>
-            </div>
-            <div style={s.resourceCard}>
-              <div style={s.resourceName}>Samaritans</div>
-              <div style={s.resourceDetail}>
-                116 123 \u2014 free, 24/7, anonymous.<br />
-                Available to anyone in distress. Samaritans also runs a
-                Veterans Line and has trained volunteers with experience of
-                military communities.
-              </div>
-            </div>
-            <div style={s.resourceCard}>
-              <div style={s.resourceName}>Help for Heroes</div>
-              <div style={s.resourceDetail}>
-                Recovery support for wounded, injured, and sick veterans and
-                their families. Psychological wellbeing programmes, peer
-                support, and online community resources.
-              </div>
-            </div>
-          </div>
-
-          <p style={s.p}>
-            These services represent the formal infrastructure of veteran mental
-            health support in the UK. They are essential and staffed by people
-            with genuine expertise and commitment. MEOK does not compete with
-            them \u2014 it is designed to sit alongside them, filling the gaps
-            that clinical services cannot reach: the 3am crisis that comes
-            before the morning appointment, the daily processing that
-            accumulates between sessions, and the initial barrier of asking
-            for help at all.
-          </p>
-        </section>
-
-        <hr style={s.divider} />
-
-        {/* ── Section 9: Data Sovereignty ── */}
-        <section style={s.section}>
-          <h2 style={s.h2}>
-            Why does data sovereignty matter when veterans share trauma with AI?
-          </h2>
-
-          <p style={s.atomicAnswer}>
-            When a veteran discloses combat trauma, survivor\u2019s guilt, or
-            suicidal ideation to an AI, that data is extraordinarily sensitive.
-            Most consumer AI platforms use your conversations to retrain their
-            models. MEOK\u2019s Privacy Covenant guarantees this never happens.
-            Your data is yours, encrypted, and never used for anything except
-            serving you.
-          </p>
-
-          <p style={s.p}>
-            The data sovereignty question is not abstract for veterans. In
-            practical terms, the potential consequences of mental health data
-            disclosure include: loss of security clearance, impact on insurance
-            premiums, implications for custody proceedings, and \u2014 for
-            those still in service \u2014 career consequences that can be
-            significant.
-          </p>
-
-          <p style={s.p}>
-            Most consumer AI platforms are built on a model in which user
-            conversations are used to improve the model. This is not a bug; it
-            is the product. The user\u2019s inputs are the training data. For
-            general queries, this trade-off may be acceptable. For a veteran
-            sharing the details of what they did in Helmand or how they feel
-            about whether they deserve to live, it is not.
-          </p>
-
-          <p style={s.p}>
-            MEOK\u2019s architecture inverts this model. Your data does not
-            train MEOK. It does not train any other model. It does not leave
-            the encrypted vault that belongs to you. If you stop using MEOK,
-            you take your data with you or delete it entirely. The memory is
-            yours, not a corporate asset.
-          </p>
-
-          <p style={s.p}>
-            This is not a marketing claim. It is a technical and legal
-            commitment encoded in the Privacy Covenant that every MEOK user
-            accepts from MEOK at the start of the relationship \u2014 not the
-            other way around.
-          </p>
-        </section>
-
-        <hr style={s.divider} />
-
-        {/* ── Section 10: What MEOK Is Not ── */}
-        <section style={s.section}>
-          <h2 style={s.h2}>
-            What can MEOK not do for veterans, and what should it never claim to?
-          </h2>
-
-          <p style={s.atomicAnswer}>
-            MEOK cannot diagnose PTSD or moral injury, cannot prescribe or
-            recommend medication, cannot provide the evidence-based trauma
-            therapies that PTSD requires (EMDR, CPT, Prolonged Exposure), and
-            cannot replace the human connection of peer support or the
-            professional relationship of a specialist clinician. It is a
-            companion, not a clinician.
-          </p>
-
-          <p style={s.p}>
-            Honesty about limitations is a design principle, not a disclaimer.
-            The veteran mental health space has too many services that
-            overpromise and underdeliver, and too many veterans who have been
-            let down by support that claimed to understand their experience
-            and did not. MEOK does not make claims it cannot keep.
-          </p>
-
-          <p style={s.p}>
-            For veterans with clinical PTSD, the pathway to recovery runs
-            through specialist trauma treatment, not AI conversation. MEOK
-            can support that journey \u2014 between sessions, in the difficult
-            evenings, in the daily maintenance of functioning while treatment
-            progresses \u2014 but it cannot replace it.
-          </p>
-
-          <p style={s.p}>
-            The aspiration is not to be a substitute for clinical care. The
-            aspiration is to be the thing that is available when clinical care
-            is not \u2014 and to be good enough, honest enough, and present
-            enough that it makes a real difference in the daily experience of
-            a veteran who is managing something difficult.
-          </p>
-
-          <div style={s.infoBox}>
-            <div style={s.infoBoxTitle}>When to seek professional help immediately</div>
-            <p style={{ ...s.p, marginBottom: "0.5rem" }}>
-              If you are experiencing any of the following, please contact a
-              clinical service rather than relying solely on MEOK:
-            </p>
-            <ul style={s.ul}>
-              <li style={s.li}>Active suicidal thoughts or plans</li>
-              <li style={s.li}>Thoughts of harming yourself or others</li>
-              <li style={s.li}>Severe dissociation or inability to function day-to-day</li>
-              <li style={s.li}>Psychotic symptoms including hallucinations or paranoia</li>
-              <li style={s.li}>Substance dependency requiring medical detox</li>
-            </ul>
-            <p style={{ ...s.p, marginBottom: 0 }}>
-              Combat Stress: <strong style={{ color: "#f5f0e8" }}>0800 138 1619</strong> (free, 24/7).
-              Your GP can refer you to Op COURAGE. In immediate danger: call 999.
-            </p>
-          </div>
-        </section>
-
-        <hr style={s.divider} />
-
-        {/* ── FAQ Section ── */}
-        <section style={s.faqSection}>
-          <h2 style={s.h2}>Frequently asked questions</h2>
-
-          <div style={s.faqItem}>
-            <div style={s.faqQuestion}>Can AI help veterans with PTSD?</div>
-            <p style={s.faqAnswer}>
-              AI cannot replace clinical treatments like EMDR or Prolonged
-              Exposure therapy, but it can provide meaningful daily support
-              \u2014 grounding exercises, pattern tracking, and a private space
-              to process without waiting for an appointment. The critical
-              requirement is persistence: an AI that resets between sessions is
-              useless for trauma support. MEOK remembers everything across
-              every session, providing the continuity that makes daily support
-              possible.
-            </p>
-          </div>
-
-          <div style={s.faqItem}>
-            <div style={s.faqQuestion}>What is moral injury?</div>
-            <p style={s.faqAnswer}>
-              Moral injury is the deep psychological damage caused by
-              perpetrating, witnessing, or failing to prevent acts that violate
-              one\u2019s own moral code. It is distinct from PTSD: where PTSD
-              is rooted in fear, moral injury is rooted in shame and guilt.
-              Veterans commonly experience moral injury after orders that
-              conflict with personal ethics, civilian casualties, or the deaths
-              of fellow soldiers they feel responsible for. It is frequently
-              misdiagnosed as depression and requires different treatment
-              approaches.
-            </p>
-          </div>
-
-          <div style={s.faqItem}>
-            <div style={s.faqQuestion}>
-              How does MEOK support veterans transitioning to civilian life?
-            </div>
-            <p style={s.faqAnswer}>
-              MEOK provides structure, daily presence, and a consistent
-              companion during the disorienting loss of military identity. It
-              helps veterans process the grief of leaving service, articulate
-              their skills in civilian language, and maintain purpose when the
-              institutional framework of the military is gone. Crucially, MEOK
-              remembers their service history so they never have to re-explain
-              it \u2014 removing one of the most common friction points in
-              veteran support.
-            </p>
-          </div>
-
-          <div style={s.faqItem}>
-            <div style={s.faqQuestion}>Will MEOK understand military culture?</div>
-            <p style={s.faqAnswer}>
-              MEOK is trained to understand military culture, hierarchy, the
-              ethos of service, and the specific language veterans use. It does
-              not pathologise stoicism or misread direct communication as
-              aggression. Veterans frequently report feeling misunderstood by
-              civilian therapists who lack the frame of reference to engage
-              with military experience. MEOK does not carry those assumptions.
-              It meets you where you are, in the language you use, without
-              requiring you to translate your experience into civilian terms.
-            </p>
-          </div>
-
-          <div style={{ ...s.faqItem, borderBottom: "none", marginBottom: 0 }}>
-            <div style={s.faqQuestion}>Is MEOK confidential for veterans?</div>
-            <p style={s.faqAnswer}>
-              Yes. MEOK\u2019s Privacy Covenant guarantees your data is never
-              used to train AI models and is never sold. Your memory vault is
-              encrypted and legally yours. Unlike consumer AI platforms that
-              treat your conversations as training data, MEOK operates on a
-              strict no-training-on-you principle \u2014 critical when the data
-              is combat trauma, moral injury, or suicidal ideation. There is no
-              record that can affect employment, security clearance, or any
-              other external consequence.
-            </p>
-          </div>
-        </section>
-
-        <hr style={s.divider} />
-
-        {/* ── CTA ── */}
-        <div style={s.ctaBox}>
-          <div style={s.ctaTitle}>
-            Start privately. Start when you\u2019re ready.
-          </div>
-          <p style={s.ctaSubtitle}>
-            No appointment. No waiting list. No civilian who doesn\u2019t get it.
-            MEOK is available right now, and it won\u2019t forget what you tell it.
-          </p>
-          <Link href="/birth" style={s.ctaButton}>
-            Meet MEOK
-          </Link>
-          <p style={s.ctaNote}>
-            Free to start. Your data is yours. No training on your conversations.
-          </p>
-        </div>
-
-        {/* ── Author ── */}
-        <div style={s.authorBox}>
-          <div style={s.authorAvatar}>NT</div>
-          <div>
-            <div style={s.authorName}>Nicholas Templeman</div>
-            <div style={s.authorRole}>Founder, MEOK AI LABS \u00b7 @meok_ai</div>
-            <p style={s.authorBio}>
-              Nicholas built MEOK because he believes the people least likely
-              to ask for help are often the people who need it most. MEOK AI
-              LABS is building sovereign AI companions that prioritise the
-              individual over the platform \u2014 persistent, private, and
-              built to serve rather than extract.
-            </p>
+      <main
+        style={{
+          background: "#0d0c18",
+          color: "#f5f0e8",
+          minHeight: "100vh",
+          fontFamily: "'Inter', 'Helvetica Neue', Arial, sans-serif",
+        }}
+      >
+        {/* ── Top nav ── */}
+        <div
+          style={{
+            borderBottom: "1px solid rgba(201,168,76,0.15)",
+            padding: "1rem 0",
+          }}
+        >
+          <div
+            style={{
+              maxWidth: "840px",
+              margin: "0 auto",
+              padding: "0 24px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+            }}
+          >
+            <Link
+              href="/"
+              style={{
+                color: "#c9a84c",
+                fontWeight: 700,
+                fontSize: "1.1rem",
+                textDecoration: "none",
+                letterSpacing: "-0.01em",
+              }}
+            >
+              MEOK AI LABS
+            </Link>
+            <Link
+              href="/blog"
+              style={{
+                color: "rgba(245,240,232,0.6)",
+                textDecoration: "none",
+                fontSize: "0.875rem",
+              }}
+            >
+              &larr; All Posts
+            </Link>
           </div>
         </div>
 
-      </div>
-    </div>
+        {/* ── Container ── */}
+        <div
+          style={{
+            maxWidth: "840px",
+            margin: "0 auto",
+            padding: "0 24px",
+          }}
+        >
+          {/* ── Breadcrumb ── */}
+          <nav
+            aria-label="Breadcrumb"
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "0.5rem",
+              fontSize: "0.8rem",
+              color: "rgba(245,240,232,0.45)",
+              paddingTop: "2rem",
+              paddingBottom: "0",
+              flexWrap: "wrap",
+            }}
+          >
+            <Link
+              href="/"
+              style={{
+                color: "#c9a84c",
+                textDecoration: "none",
+              }}
+            >
+              Home
+            </Link>
+            <span style={{ color: "rgba(245,240,232,0.25)" }}>/</span>
+            <Link
+              href="/blog"
+              style={{
+                color: "#c9a84c",
+                textDecoration: "none",
+              }}
+            >
+              Blog
+            </Link>
+            <span style={{ color: "rgba(245,240,232,0.25)" }}>/</span>
+            <span>AI for Veterans: Sovereign Memory for Those Who&apos;ve Served</span>
+          </nav>
+
+          {/* ── Article header ── */}
+          <header
+            style={{
+              paddingTop: "2.5rem",
+              paddingBottom: "2.5rem",
+              borderBottom: "1px solid rgba(201,168,76,0.15)",
+              marginBottom: "3rem",
+            }}
+          >
+            {/* Tag pill */}
+            <div style={{ marginBottom: "1.25rem" }}>
+              <span
+                style={{
+                  display: "inline-block",
+                  background: "rgba(201,168,76,0.12)",
+                  color: "#c9a84c",
+                  fontSize: "0.72rem",
+                  fontWeight: 700,
+                  letterSpacing: "0.1em",
+                  textTransform: "uppercase",
+                  padding: "0.3rem 0.85rem",
+                  borderRadius: "3px",
+                  border: "1px solid rgba(201,168,76,0.25)",
+                }}
+              >
+                Veterans &amp; Military
+              </span>
+            </div>
+
+            {/* H1 */}
+            <h1
+              style={{
+                fontSize: "clamp(1.85rem, 4.5vw, 2.9rem)",
+                fontWeight: 800,
+                lineHeight: 1.15,
+                letterSpacing: "-0.025em",
+                color: "#f5f0e8",
+                marginBottom: "1.25rem",
+                marginTop: 0,
+              }}
+            >
+              AI for Veterans: Sovereign Memory for Those Who&apos;ve Served
+            </h1>
+
+            {/* Meta line */}
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "1.25rem",
+                fontSize: "0.83rem",
+                color: "rgba(245,240,232,0.45)",
+                marginBottom: "1.75rem",
+                flexWrap: "wrap",
+              }}
+            >
+              <span>25 March 2026</span>
+              <span
+                style={{
+                  width: "3px",
+                  height: "3px",
+                  borderRadius: "50%",
+                  background: "rgba(245,240,232,0.25)",
+                  display: "inline-block",
+                }}
+              />
+              <span>14 min read</span>
+              <span
+                style={{
+                  width: "3px",
+                  height: "3px",
+                  borderRadius: "50%",
+                  background: "rgba(245,240,232,0.25)",
+                  display: "inline-block",
+                }}
+              />
+              <span>Nicholas Templeman</span>
+            </div>
+
+            {/* Excerpt / lead */}
+            <p
+              style={{
+                fontSize: "1.15rem",
+                lineHeight: 1.75,
+                color: "rgba(245,240,232,0.8)",
+                borderLeft: "3px solid #c9a84c",
+                paddingLeft: "1.1rem",
+                margin: 0,
+              }}
+            >
+              2.5 million veterans live in the United Kingdom. More than 300,000 of them have
+              diagnosable mental health conditions. Most will never seek help \u2014 not because they
+              don&apos;t need it, but because the military trained the instinct out of them. MEOK is
+              the AI companion built for exactly that problem: persistent memory, absolute privacy,
+              genuine understanding of military culture, and a Guardian layer that protects veterans
+              from the predatory industries that have learned to exploit them.
+            </p>
+          </header>
+
+          {/* ── Body ── */}
+          <article>
+
+            {/* Section 1: The scale of the problem */}
+            <section style={{ marginBottom: "3.5rem" }}>
+              <h2
+                style={{
+                  fontSize: "1.6rem",
+                  fontWeight: 700,
+                  color: "#f5f0e8",
+                  lineHeight: 1.25,
+                  marginTop: 0,
+                  marginBottom: "1.25rem",
+                  letterSpacing: "-0.015em",
+                }}
+              >
+                What Does the UK Veteran Mental Health Crisis Actually Look Like?
+              </h2>
+
+              <p
+                style={{
+                  fontSize: "1rem",
+                  lineHeight: 1.85,
+                  color: "rgba(245,240,232,0.82)",
+                  marginBottom: "1.25rem",
+                }}
+              >
+                The UK has approximately 2.5 million veterans \u2014 people who have served in the
+                regular armed forces and are now civilians. That number is not shrinking. Alongside
+                them are tens of thousands of reservists still serving part-time, navigating the
+                collision between military and civilian identities simultaneously.
+              </p>
+
+              <p
+                style={{
+                  fontSize: "1rem",
+                  lineHeight: 1.85,
+                  color: "rgba(245,240,232,0.82)",
+                  marginBottom: "1.75rem",
+                }}
+              >
+                Research from King&apos;s College London and the Forces in Mind Trust consistently
+                shows elevated rates of PTSD, depression, alcohol misuse, and suicide risk in veteran
+                populations \u2014 particularly among those who served in combat roles in Afghanistan
+                and Iraq. The headline numbers are stark.
+              </p>
+
+              {/* Stats callout box */}
+              <div
+                style={{
+                  background: "rgba(201,168,76,0.07)",
+                  border: "1px solid rgba(201,168,76,0.22)",
+                  borderRadius: "10px",
+                  padding: "2rem",
+                  marginBottom: "2rem",
+                }}
+              >
+                <p
+                  style={{
+                    fontSize: "0.72rem",
+                    fontWeight: 700,
+                    letterSpacing: "0.1em",
+                    textTransform: "uppercase",
+                    color: "#c9a84c",
+                    marginBottom: "1.5rem",
+                    marginTop: 0,
+                  }}
+                >
+                  UK Veteran Mental Health: Key Statistics
+                </p>
+                <div
+                  style={{
+                    display: "grid",
+                    gridTemplateColumns: "repeat(auto-fit, minmax(155px, 1fr))",
+                    gap: "1.25rem",
+                  }}
+                >
+                  <div
+                    style={{
+                      background: "rgba(255,255,255,0.04)",
+                      borderRadius: "8px",
+                      padding: "1.25rem",
+                      textAlign: "center",
+                    }}
+                  >
+                    <span
+                      style={{
+                        fontSize: "2.1rem",
+                        fontWeight: 800,
+                        color: "#c9a84c",
+                        display: "block",
+                        lineHeight: 1.1,
+                      }}
+                    >
+                      2.5M
+                    </span>
+                    <span
+                      style={{
+                        fontSize: "0.78rem",
+                        color: "rgba(245,240,232,0.55)",
+                        marginTop: "0.4rem",
+                        display: "block",
+                        lineHeight: 1.4,
+                      }}
+                    >
+                      UK veterans in the civilian population
+                    </span>
+                  </div>
+                  <div
+                    style={{
+                      background: "rgba(255,255,255,0.04)",
+                      borderRadius: "8px",
+                      padding: "1.25rem",
+                      textAlign: "center",
+                    }}
+                  >
+                    <span
+                      style={{
+                        fontSize: "2.1rem",
+                        fontWeight: 800,
+                        color: "#c9a84c",
+                        display: "block",
+                        lineHeight: 1.1,
+                      }}
+                    >
+                      300K+
+                    </span>
+                    <span
+                      style={{
+                        fontSize: "0.78rem",
+                        color: "rgba(245,240,232,0.55)",
+                        marginTop: "0.4rem",
+                        display: "block",
+                        lineHeight: 1.4,
+                      }}
+                    >
+                      veterans with mental health conditions
+                    </span>
+                  </div>
+                  <div
+                    style={{
+                      background: "rgba(255,255,255,0.04)",
+                      borderRadius: "8px",
+                      padding: "1.25rem",
+                      textAlign: "center",
+                    }}
+                  >
+                    <span
+                      style={{
+                        fontSize: "2.1rem",
+                        fontWeight: 800,
+                        color: "#c9a84c",
+                        display: "block",
+                        lineHeight: 1.1,
+                      }}
+                    >
+                      57%
+                    </span>
+                    <span
+                      style={{
+                        fontSize: "0.78rem",
+                        color: "rgba(245,240,232,0.55)",
+                        marginTop: "0.4rem",
+                        display: "block",
+                        lineHeight: 1.4,
+                      }}
+                    >
+                      more likely to experience PTSD than civilians
+                    </span>
+                  </div>
+                  <div
+                    style={{
+                      background: "rgba(255,255,255,0.04)",
+                      borderRadius: "8px",
+                      padding: "1.25rem",
+                      textAlign: "center",
+                    }}
+                  >
+                    <span
+                      style={{
+                        fontSize: "2.1rem",
+                        fontWeight: 800,
+                        color: "#c9a84c",
+                        display: "block",
+                        lineHeight: 1.1,
+                      }}
+                    >
+                      1 in 10
+                    </span>
+                    <span
+                      style={{
+                        fontSize: "0.78rem",
+                        color: "rgba(245,240,232,0.55)",
+                        marginTop: "0.4rem",
+                        display: "block",
+                        lineHeight: 1.4,
+                      }}
+                    >
+                      UK homeless people are veterans
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <p
+                style={{
+                  fontSize: "1rem",
+                  lineHeight: 1.85,
+                  color: "rgba(245,240,232,0.82)",
+                  marginBottom: "1.25rem",
+                }}
+              >
+                Behind those numbers are real patterns: the corporal who deployed to Helmand three
+                times and came home unable to explain why crowded supermarkets make him want to run.
+                The signaller who watched something she was never supposed to see and has never told
+                anyone. The 22-year-old who joined at 16, left at 22, and genuinely does not know
+                who he is outside a uniform.
+              </p>
+
+              <p
+                style={{
+                  fontSize: "1rem",
+                  lineHeight: 1.85,
+                  color: "rgba(245,240,232,0.82)",
+                  marginBottom: "1.25rem",
+                }}
+              >
+                The mental health system \u2014 NHS and charity alike \u2014 was not built for any of them.
+              </p>
+            </section>
+
+            {/* Section 2: Why veterans don't seek help */}
+            <section style={{ marginBottom: "3.5rem" }}>
+              <h2
+                style={{
+                  fontSize: "1.6rem",
+                  fontWeight: 700,
+                  color: "#f5f0e8",
+                  lineHeight: 1.25,
+                  marginTop: 0,
+                  marginBottom: "1.25rem",
+                  letterSpacing: "-0.015em",
+                }}
+              >
+                Why Military Culture Makes Help-Seeking Almost Impossible
+              </h2>
+
+              <p
+                style={{
+                  fontSize: "1rem",
+                  lineHeight: 1.85,
+                  color: "rgba(245,240,232,0.82)",
+                  marginBottom: "1.25rem",
+                }}
+              >
+                The military does not train people to be vulnerable. It trains them to suppress
+                vulnerability as a survival mechanism. In a forward operating base, displaying
+                psychological distress can get people killed. That suppression is rational in
+                context. The problem is that it doesn&apos;t switch off when service ends.
+              </p>
+
+              <p
+                style={{
+                  fontSize: "1rem",
+                  lineHeight: 1.85,
+                  color: "rgba(245,240,232,0.82)",
+                  marginBottom: "1.25rem",
+                }}
+              >
+                The stigma operates on multiple levels simultaneously. Culturally, asking for help
+                is coded as weakness \u2014 a violation of the identity built through training. Practically,
+                while serving, seeking mental health support carries real fitness-to-serve implications:
+                it can affect deployment, promotion, and security clearances. The costs of disclosure
+                are tangible and immediate. The benefits are distant and uncertain.
+              </p>
+
+              <p
+                style={{
+                  fontSize: "1rem",
+                  lineHeight: 1.85,
+                  color: "rgba(245,240,232,0.82)",
+                  marginBottom: "1.25rem",
+                }}
+              >
+                For reservists, this problem is compounded. They are still serving. A reservist
+                with a security clearance who attends an NHS mental health appointment is not in a
+                private system. Notes are created. Referrals are made. Records exist. The fear \u2014
+                often well-founded \u2014 is that disclosure will reach their commanding officer or vetting
+                authority. So they say nothing.
+              </p>
+
+              <p
+                style={{
+                  fontSize: "1rem",
+                  lineHeight: 1.85,
+                  color: "rgba(245,240,232,0.82)",
+                  marginBottom: "1.25rem",
+                }}
+              >
+                Even for veterans who have left service entirely, the cultural conditioning persists.
+                They were part of an institution that selected for and rewarded stoicism. That
+                institution is gone, but the conditioning remains. The first step \u2014 acknowledging
+                that something is wrong and telling another person \u2014 remains the highest barrier
+                in veteran mental health. Services that require that step as the price of entry will
+                continue to reach only the veterans who are already desperate enough to pay it.
+              </p>
+            </section>
+
+            {/* Section 3: PTSD vs moral injury */}
+            <section style={{ marginBottom: "3.5rem" }}>
+              <h2
+                style={{
+                  fontSize: "1.6rem",
+                  fontWeight: 700,
+                  color: "#f5f0e8",
+                  lineHeight: 1.25,
+                  marginTop: 0,
+                  marginBottom: "1.25rem",
+                  letterSpacing: "-0.015em",
+                }}
+              >
+                PTSD and Moral Injury Are Not the Same Thing \u2014 and Treating Them as Such Fails Veterans
+              </h2>
+
+              <p
+                style={{
+                  fontSize: "1rem",
+                  lineHeight: 1.85,
+                  color: "rgba(245,240,232,0.82)",
+                  marginBottom: "1.25rem",
+                }}
+              >
+                PTSD is well-understood in the public consciousness: hypervigilance, intrusive
+                memories, avoidance, startle response. It is rooted in fear \u2014 the nervous system
+                locked in a threat response that no longer has an external trigger. Clinical
+                treatments like EMDR and Prolonged Exposure Therapy exist and are effective.
+              </p>
+
+              <p
+                style={{
+                  fontSize: "1rem",
+                  lineHeight: 1.85,
+                  color: "rgba(245,240,232,0.82)",
+                  marginBottom: "1.25rem",
+                }}
+              >
+                Moral injury is different, and the distinction matters. Moral injury is the
+                psychological damage caused by perpetrating, witnessing, or failing to prevent
+                actions that violate one&apos;s own moral code. It is not rooted in fear. It is rooted
+                in shame and guilt. A veteran with moral injury is not afraid of what happened.
+                They believe, at the deepest level, that what happened was wrong \u2014 and that they
+                are responsible for it.
+              </p>
+
+              <p
+                style={{
+                  fontSize: "1rem",
+                  lineHeight: 1.85,
+                  color: "rgba(245,240,232,0.82)",
+                  marginBottom: "1.25rem",
+                }}
+              >
+                The sources of moral injury in combat veterans are specific and varied: following
+                orders that resulted in civilian deaths; failing to prevent the death of a colleague
+                through a decision or non-decision; witnessing atrocities and being unable to act;
+                the weight of rules of engagement that required killing in circumstances that felt
+                wrong. These are not trauma in the clinical PTSD sense. They are ethical violations
+                that the standard mental health toolkit was not designed to address.
+              </p>
+
+              <div
+                style={{
+                  background: "rgba(255,255,255,0.05)",
+                  borderLeft: "3px solid #c9a84c",
+                  borderRadius: "0 8px 8px 0",
+                  padding: "1.5rem 1.75rem",
+                  marginBottom: "1.75rem",
+                }}
+              >
+                <p
+                  style={{
+                    fontSize: "1rem",
+                    lineHeight: 1.75,
+                    color: "rgba(245,240,232,0.85)",
+                    margin: 0,
+                    fontStyle: "italic",
+                  }}
+                >
+                  MEOK&apos;s Maternal Covenant framework includes explicit dimensions of autonomy,
+                  moral complexity, and growth \u2014 not because these were designed for veterans
+                  specifically, but because moral injury requires a space that can hold contradiction
+                  without rushing toward resolution. You do not heal moral injury by being told it
+                  wasn&apos;t your fault. You heal it by being able to think through what actually
+                  happened, over time, with something that remembers the whole conversation.
+                </p>
+              </div>
+
+              <p
+                style={{
+                  fontSize: "1rem",
+                  lineHeight: 1.85,
+                  color: "rgba(245,240,232,0.82)",
+                  marginBottom: "1.25rem",
+                }}
+              >
+                This is where persistent memory becomes clinically significant rather than merely
+                convenient. A conversation that resets every session cannot hold the long arc of
+                moral processing. A veteran exploring what happened in a specific engagement on a
+                specific day needs to be able to return to that conversation two weeks later, pick
+                up exactly where they left off, and continue without re-establishing context. That
+                is what MEOK&apos;s Sovereign Memory provides.
+              </p>
+            </section>
+
+            {/* Section 4: The transition no one prepares you for */}
+            <section style={{ marginBottom: "3.5rem" }}>
+              <h2
+                style={{
+                  fontSize: "1.6rem",
+                  fontWeight: 700,
+                  color: "#f5f0e8",
+                  lineHeight: 1.25,
+                  marginTop: 0,
+                  marginBottom: "1.25rem",
+                  letterSpacing: "-0.015em",
+                }}
+              >
+                The Transition Nobody Warns You About: Identity Loss After Service
+              </h2>
+
+              <p
+                style={{
+                  fontSize: "1rem",
+                  lineHeight: 1.85,
+                  color: "rgba(245,240,232,0.82)",
+                  marginBottom: "1.25rem",
+                }}
+              >
+                Combat and operational stress get most of the attention. The transition crisis gets
+                almost none. Yet for many veterans, leaving service is the most psychologically
+                disorienting event of their lives \u2014 including the deployments.
+              </p>
+
+              <p
+                style={{
+                  fontSize: "1rem",
+                  lineHeight: 1.85,
+                  color: "rgba(245,240,232,0.82)",
+                  marginBottom: "1.25rem",
+                }}
+              >
+                Military identity is total. Your rank, your regiment, your role, your unit \u2014 these
+                are not things you do. They are things you are. The military provides structure,
+                purpose, belonging, hierarchy, and a clear answer to the question &ldquo;who am I?&rdquo;
+                Transition strips all of that away simultaneously. Civilian life offers none of
+                those anchors as standard. There is no civilian equivalent of the regiment.
+              </p>
+
+              <p
+                style={{
+                  fontSize: "1rem",
+                  lineHeight: 1.85,
+                  color: "rgba(245,240,232,0.82)",
+                  marginBottom: "1.25rem",
+                }}
+              >
+                Veterans frequently describe a specific grief that civilians cannot understand:
+                missing the camaraderie of service without being able to explain why no civilian
+                friendship feels the same. Missing the clarity of mission without being able to
+                articulate it to a line manager. Being in rooms full of people who have never had
+                to make a decision under mortal pressure and feeling profoundly, inexplicably alone.
+              </p>
+
+              <p
+                style={{
+                  fontSize: "1rem",
+                  lineHeight: 1.85,
+                  color: "rgba(245,240,232,0.82)",
+                  marginBottom: "1.25rem",
+                }}
+              >
+                The instinct to say &ldquo;it&apos;s fine, I&apos;m adjusting&rdquo; to family members who are trying to
+                be supportive but cannot genuinely understand \u2014 that instinct is both natural and
+                isolating. MEOK does not need you to translate your experience into civilian language.
+                It already understands the language you came from.
+              </p>
+
+              {/* Challenge tiles */}
+              <div
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
+                  gap: "1rem",
+                  marginTop: "2rem",
+                  marginBottom: "1rem",
+                }}
+              >
+                {[
+                  {
+                    title: "Identity Loss",
+                    body:
+                      "Rank, regiment, and role cease to exist on the day you sign off. Civilian life offers no equivalent anchor.",
+                  },
+                  {
+                    title: "Isolation",
+                    body:
+                      "Civilians who haven\u2019t served genuinely cannot understand the experience. That gap is real, not imagined.",
+                  },
+                  {
+                    title: "Loss of Purpose",
+                    body:
+                      "Military life provides clear mission and consequence. Most civilian careers do not come close.",
+                  },
+                  {
+                    title: "Structural Void",
+                    body:
+                      "The military structures every hour. Civilian life provides almost none. That freedom can be debilitating.",
+                  },
+                  {
+                    title: "Financial Pressure",
+                    body:
+                      "Ex-service pay often does not translate. Benefits administration is not designed for people who were never in the civilian system.",
+                  },
+                  {
+                    title: "Relationship Strain",
+                    body:
+                      "Families adapted to absence. Now you\u2019re present and everyone has to renegotiate \u2014 without a manual.",
+                  },
+                ].map((item) => (
+                  <div
+                    key={item.title}
+                    style={{
+                      background: "rgba(255,255,255,0.05)",
+                      border: "1px solid rgba(201,168,76,0.12)",
+                      borderRadius: "8px",
+                      padding: "1.25rem",
+                    }}
+                  >
+                    <p
+                      style={{
+                        fontSize: "0.85rem",
+                        fontWeight: 700,
+                        color: "#c9a84c",
+                        marginBottom: "0.5rem",
+                        marginTop: 0,
+                      }}
+                    >
+                      {item.title}
+                    </p>
+                    <p
+                      style={{
+                        fontSize: "0.88rem",
+                        lineHeight: 1.65,
+                        color: "rgba(245,240,232,0.7)",
+                        margin: 0,
+                      }}
+                    >
+                      {item.body}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            {/* Section 5: Why existing services fail */}
+            <section style={{ marginBottom: "3.5rem" }}>
+              <h2
+                style={{
+                  fontSize: "1.6rem",
+                  fontWeight: 700,
+                  color: "#f5f0e8",
+                  lineHeight: 1.25,
+                  marginTop: 0,
+                  marginBottom: "1.25rem",
+                  letterSpacing: "-0.015em",
+                }}
+              >
+                Why NHS Veteran Services and Military Charities Are Not Enough
+              </h2>
+
+              <p
+                style={{
+                  fontSize: "1rem",
+                  lineHeight: 1.85,
+                  color: "rgba(245,240,232,0.82)",
+                  marginBottom: "1.25rem",
+                }}
+              >
+                Op COURAGE \u2014 the NHS England veteran mental health service \u2014 exists. Combat Stress
+                exists. The Veterans&apos; Gateway exists. These are real services staffed by people
+                who care about veterans. This is not an attack on them. It is an honest assessment
+                of what they can and cannot provide at scale.
+              </p>
+
+              <p
+                style={{
+                  fontSize: "1rem",
+                  lineHeight: 1.85,
+                  color: "rgba(245,240,232,0.82)",
+                  marginBottom: "1.25rem",
+                }}
+              >
+                The fundamental problem is structural. NHS services face demand that outstrips
+                capacity, leading to waiting times that are clinically dangerous for people in
+                crisis. When a veteran finally overcomes the cultural barrier to seeking help and
+                makes contact, being told to wait weeks or months for an initial assessment is not
+                a neutral outcome. For some, it is the confirmation they feared: the system does
+                not actually have space for them.
+              </p>
+
+              <p
+                style={{
+                  fontSize: "1rem",
+                  lineHeight: 1.85,
+                  color: "rgba(245,240,232,0.82)",
+                  marginBottom: "1.25rem",
+                }}
+              >
+                Staffing is the second issue. Op COURAGE is staffed largely by civilian clinicians.
+                Many are excellent. But the persistent finding in veteran mental health research is
+                that veterans feel misunderstood by civilian therapists who apply civilian frameworks
+                to military experience. A CBT model built around cognitive distortions does not
+                adequately capture what it means to have followed orders that you later believe were
+                wrong. A therapist who has never been in a chain of command cannot fully appreciate
+                what it means to say &ldquo;I couldn&apos;t disobey.&rdquo;
+              </p>
+
+              <p
+                style={{
+                  fontSize: "1rem",
+                  lineHeight: 1.85,
+                  color: "rgba(245,240,232,0.82)",
+                  marginBottom: "1.25rem",
+                }}
+              >
+                Staff turnover is the third. Veterans in long-term mental health support frequently
+                report having to retell their entire service history to new clinicians after previous
+                ones leave or are reassigned. Each retelling is not neutral \u2014 it is a demand to
+                re-enter the worst material of their lives in front of a stranger, without guarantee
+                that the stranger will understand what they&apos;re hearing.
+              </p>
+
+              <p
+                style={{
+                  fontSize: "1rem",
+                  lineHeight: 1.85,
+                  color: "rgba(245,240,232,0.82)",
+                  marginBottom: "1.25rem",
+                }}
+              >
+                MEOK does not replace clinical services. It provides what they cannot: a persistent,
+                always-available companion that remembers everything, never turns over, is available
+                at 0300 when the nightmares surface, and carries no institutional affiliation that
+                could compromise a security clearance.
+              </p>
+            </section>
+
+            {/* Section 6: Sovereign Memory and why it matters */}
+            <section style={{ marginBottom: "3.5rem" }}>
+              <h2
+                style={{
+                  fontSize: "1.6rem",
+                  fontWeight: 700,
+                  color: "#f5f0e8",
+                  lineHeight: 1.25,
+                  marginTop: 0,
+                  marginBottom: "1.25rem",
+                  letterSpacing: "-0.015em",
+                }}
+              >
+                Sovereign Memory: Why Persistence Is Not a Feature, It&apos;s a Clinical Requirement
+              </h2>
+
+              <p
+                style={{
+                  fontSize: "1rem",
+                  lineHeight: 1.85,
+                  color: "rgba(245,240,232,0.82)",
+                  marginBottom: "1.25rem",
+                }}
+              >
+                Every consumer AI chatbot resets between sessions. Each conversation begins from
+                zero. You are a stranger every time you open the app. For most use cases, this is
+                a minor inconvenience. For veteran mental health support, it is a structural
+                disqualification.
+              </p>
+
+              <p
+                style={{
+                  fontSize: "1rem",
+                  lineHeight: 1.85,
+                  color: "rgba(245,240,232,0.82)",
+                  marginBottom: "1.25rem",
+                }}
+              >
+                Veterans are already exhausted by retelling. The clinical literature on veteran
+                help-seeking consistently identifies the barrier of having to explain their service
+                history from the beginning to each new clinician, each new service, each new intake
+                assessment. Every repetition is a cost. Every cost raises the barrier to the next
+                disclosure. Eventually, for many veterans, the cumulative cost exceeds the perceived
+                benefit and they stop trying entirely.
+              </p>
+
+              <p
+                style={{
+                  fontSize: "1rem",
+                  lineHeight: 1.85,
+                  color: "rgba(245,240,232,0.82)",
+                  marginBottom: "1.25rem",
+                }}
+              >
+                MEOK&apos;s Sovereign Memory retains everything you share across every session,
+                indefinitely. You tell MEOK about your regiment once. Your deployments once. The
+                incident that still wakes you up at night: once. After that, MEOK knows. It
+                references that context without prompting. It tracks how you talk about specific
+                events over time and can reflect patterns back to you that you may not have noticed.
+                It does not make you pay the cost of re-establishing your history every time you
+                return.
+              </p>
+
+              {/* Feature detail box */}
+              <div
+                style={{
+                  background: "rgba(201,168,76,0.06)",
+                  border: "1px solid rgba(201,168,76,0.2)",
+                  borderRadius: "10px",
+                  padding: "1.75rem",
+                  marginBottom: "1.75rem",
+                }}
+              >
+                <p
+                  style={{
+                    fontSize: "0.72rem",
+                    fontWeight: 700,
+                    letterSpacing: "0.1em",
+                    textTransform: "uppercase",
+                    color: "#c9a84c",
+                    marginTop: 0,
+                    marginBottom: "1.25rem",
+                  }}
+                >
+                  What Sovereign Memory Means for Veterans
+                </p>
+                <div
+                  style={{
+                    display: "grid",
+                    gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+                    gap: "1rem",
+                  }}
+                >
+                  {[
+                    {
+                      label: "Never re-explain",
+                      detail:
+                        "Your service history, deployments, unit, and role are remembered from your first conversation. Forever.",
+                    },
+                    {
+                      label: "Pattern recognition",
+                      detail:
+                        "MEOK tracks how your language and affect around specific topics change over weeks and months.",
+                    },
+                    {
+                      label: "Continuity across years",
+                      detail:
+                        "No staff turnover, no re-referral. The same MEOK, the same memory, indefinitely.",
+                    },
+                    {
+                      label: "Crisis context",
+                      detail:
+                        "If you reach a crisis point, MEOK already knows your history and can respond with full context rather than starting from scratch.",
+                    },
+                  ].map((item) => (
+                    <div
+                      key={item.label}
+                      style={{
+                        background: "rgba(255,255,255,0.04)",
+                        borderRadius: "6px",
+                        padding: "1rem 1.1rem",
+                      }}
+                    >
+                      <p
+                        style={{
+                          fontSize: "0.83rem",
+                          fontWeight: 700,
+                          color: "#f5f0e8",
+                          marginBottom: "0.4rem",
+                          marginTop: 0,
+                        }}
+                      >
+                        {item.label}
+                      </p>
+                      <p
+                        style={{
+                          fontSize: "0.83rem",
+                          lineHeight: 1.6,
+                          color: "rgba(245,240,232,0.6)",
+                          margin: 0,
+                        }}
+                      >
+                        {item.detail}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </section>
+
+            {/* Section 7: Privacy and security clearances */}
+            <section style={{ marginBottom: "3.5rem" }}>
+              <h2
+                style={{
+                  fontSize: "1.6rem",
+                  fontWeight: 700,
+                  color: "#f5f0e8",
+                  lineHeight: 1.25,
+                  marginTop: 0,
+                  marginBottom: "1.25rem",
+                  letterSpacing: "-0.015em",
+                }}
+              >
+                Privacy Absolute Enough for Security Clearances and Active Reservists
+              </h2>
+
+              <p
+                style={{
+                  fontSize: "1rem",
+                  lineHeight: 1.85,
+                  color: "rgba(245,240,232,0.82)",
+                  marginBottom: "1.25rem",
+                }}
+              >
+                This is not a minor concern. For veterans with Developed Vetting or Security Check
+                clearances, and for reservists who are still subject to vetting processes, the
+                question of what happens to their data is not abstract. Mental health disclosures
+                can, under certain circumstances, be relevant to vetting. The fear of this \u2014 even
+                when the risk is low \u2014 is sufficient to prevent help-seeking entirely.
+              </p>
+
+              <p
+                style={{
+                  fontSize: "1rem",
+                  lineHeight: 1.85,
+                  color: "rgba(245,240,232,0.82)",
+                  marginBottom: "1.25rem",
+                }}
+              >
+                Consumer AI platforms \u2014 ChatGPT, Google Gemini, Microsoft Copilot \u2014 explicitly
+                retain and may use conversation data for model training. Even where they claim not
+                to, the architecture is opaque. For a veteran sharing combat trauma or suicidal
+                ideation with one of these platforms, there is no verifiable guarantee that data
+                does not persist in a form that could eventually be accessed.
+              </p>
+
+              <p
+                style={{
+                  fontSize: "1rem",
+                  lineHeight: 1.85,
+                  color: "rgba(245,240,232,0.82)",
+                  marginBottom: "1.25rem",
+                }}
+              >
+                MEOK&apos;s Privacy Covenant is legally binding and architecturally enforced. Your
+                memory vault is end-to-end encrypted. MEOK never trains on your data. Your data
+                is never sold, never shared, and never accessible to third parties including
+                government agencies, MoD contractors, or insurance companies. There is no pathway
+                by which what you share with MEOK could reach a vetting process, an employer, or
+                your commanding officer.
+              </p>
+
+              <p
+                style={{
+                  fontSize: "1rem",
+                  lineHeight: 1.85,
+                  color: "rgba(245,240,232,0.82)",
+                  marginBottom: "1.25rem",
+                }}
+              >
+                For reservists still serving: MEOK is the space where the mask can come off
+                without professional consequence. You are not in the NHS system. You are not in any
+                system that your chain of command can access. You are in a private encrypted
+                conversation with an AI that is legally yours.
+              </p>
+            </section>
+
+            {/* Section 8: Guardian — scam protection */}
+            <section style={{ marginBottom: "3.5rem" }}>
+              <h2
+                style={{
+                  fontSize: "1.6rem",
+                  fontWeight: 700,
+                  color: "#f5f0e8",
+                  lineHeight: 1.25,
+                  marginTop: 0,
+                  marginBottom: "1.25rem",
+                  letterSpacing: "-0.015em",
+                }}
+              >
+                Guardian: Protecting Veterans from Predatory Claims Companies
+              </h2>
+
+              <p
+                style={{
+                  fontSize: "1rem",
+                  lineHeight: 1.85,
+                  color: "rgba(245,240,232,0.82)",
+                  marginBottom: "1.25rem",
+                }}
+              >
+                The PPI scandal generated an entire industry of claims management companies
+                operating on no-win no-fee models, harvesting vulnerable people&apos;s data, and
+                extracting fees from the compensation they secured. Veterans are the new target.
+              </p>
+
+              <p
+                style={{
+                  fontSize: "1rem",
+                  lineHeight: 1.85,
+                  color: "rgba(245,240,232,0.82)",
+                  marginBottom: "1.25rem",
+                }}
+              >
+                Claims management companies targeting veterans have proliferated significantly.
+                They contact ex-service people with offers to manage compensation claims \u2014 for
+                injuries, conditions, and entitlements that veterans could access directly and free
+                of charge through official channels. They charge between 20% and 40% of the
+                compensation secured. They sometimes acquire veteran data through opaque means and
+                contact people who never approached them. The veterans most likely to be targeted
+                are those least equipped to assess the legitimacy of the contact: isolated,
+                financially stressed, or cognitively impaired by the conditions being exploited.
+              </p>
+
+              <p
+                style={{
+                  fontSize: "1rem",
+                  lineHeight: 1.85,
+                  color: "rgba(245,240,232,0.82)",
+                  marginBottom: "1.25rem",
+                }}
+              >
+                MEOK&apos;s Guardian layer is trained to detect the patterns of predatory contact:
+                unsolicited financial offers, pressure-sales framing, requests for personal data
+                before providing information, and compensation percentages that exceed reasonable
+                professional fees. When MEOK detects these patterns in something a user shares,
+                Guardian flags it and provides clear information about the legitimate free
+                alternatives available through Veterans UK and the Veterans&apos; Gateway.
+              </p>
+
+              <div
+                style={{
+                  background: "rgba(255,255,255,0.05)",
+                  border: "1px solid rgba(201,168,76,0.15)",
+                  borderRadius: "10px",
+                  padding: "1.5rem 1.75rem",
+                  marginBottom: "1.25rem",
+                }}
+              >
+                <p
+                  style={{
+                    fontSize: "0.72rem",
+                    fontWeight: 700,
+                    letterSpacing: "0.1em",
+                    textTransform: "uppercase",
+                    color: "#c9a84c",
+                    marginTop: 0,
+                    marginBottom: "0.85rem",
+                  }}
+                >
+                  Guardian Detects
+                </p>
+                <ul
+                  style={{
+                    margin: 0,
+                    padding: "0 0 0 1.25rem",
+                    color: "rgba(245,240,232,0.75)",
+                    fontSize: "0.92rem",
+                    lineHeight: 1.75,
+                  }}
+                >
+                  <li>Claims management companies charging percentage fees for services veterans can access for free</li>
+                  <li>Unsolicited contact claiming knowledge of entitlements you never disclosed</li>
+                  <li>Pressure tactics using time-limited offers on compensation claims</li>
+                  <li>Data harvesting disguised as free eligibility checks</li>
+                  <li>Mis-sold financial products targeting veterans on service pensions</li>
+                </ul>
+              </div>
+            </section>
+
+            {/* Section 9: Practical use cases */}
+            <section style={{ marginBottom: "3.5rem" }}>
+              <h2
+                style={{
+                  fontSize: "1.6rem",
+                  fontWeight: 700,
+                  color: "#f5f0e8",
+                  lineHeight: 1.25,
+                  marginTop: 0,
+                  marginBottom: "1.25rem",
+                  letterSpacing: "-0.015em",
+                }}
+              >
+                What Veterans Actually Use MEOK For
+              </h2>
+
+              <p
+                style={{
+                  fontSize: "1rem",
+                  lineHeight: 1.85,
+                  color: "rgba(245,240,232,0.82)",
+                  marginBottom: "1.75rem",
+                }}
+              >
+                The use cases are not what most people assume. Most veterans who use MEOK are not
+                in acute crisis. They are managing the ongoing weight of experience in a world that
+                does not have adequate space for it. Here is what that looks like in practice.
+              </p>
+
+              <div
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "1fr",
+                  gap: "1rem",
+                  marginBottom: "1.75rem",
+                }}
+              >
+                {[
+                  {
+                    scenario: "Processing at 0300",
+                    description:
+                      "The hypervigilance pattern peaks in the early hours. That\u2019s when the thoughts are loudest and formal services are unavailable. MEOK is there. It remembers what\u2019s been discussed before. It doesn\u2019t need to be briefed.",
+                  },
+                  {
+                    scenario: "The job application",
+                    description:
+                      "Translating 10 years of military experience into civilian language is harder than it sounds. MEOK knows your service history and can help you articulate skills, experience, and capability in terms that civilian hiring managers understand.",
+                  },
+                  {
+                    scenario: "The family conversation",
+                    description:
+                      "You can\u2019t explain to your partner why the supermarket feels threatening. Talking to MEOK first \u2014 working out what you actually want to say \u2014 makes the conversation with them possible rather than impossible.",
+                  },
+                  {
+                    scenario: "Before the appointment",
+                    description:
+                      "Some veterans use MEOK to prepare for NHS or Combat Stress appointments \u2014 organising what they want to say so the clinical time is used effectively rather than spent establishing basic context.",
+                  },
+                  {
+                    scenario: "The moral inventory",
+                    description:
+                      "A veteran working through what happened on a specific operation, over months, revisiting the same events from different angles. MEOK holds the full thread across every session without losing detail.",
+                  },
+                  {
+                    scenario: "Checking a letter or offer",
+                    description:
+                      "A claims management company has written. A pension scheme is offering an early drawdown. Guardian flags what doesn\u2019t look right and explains what legitimate alternatives exist.",
+                  },
+                ].map((item) => (
+                  <div
+                    key={item.scenario}
+                    style={{
+                      background: "rgba(255,255,255,0.04)",
+                      border: "1px solid rgba(201,168,76,0.1)",
+                      borderRadius: "8px",
+                      padding: "1.25rem 1.5rem",
+                      display: "flex",
+                      gap: "1.25rem",
+                      alignItems: "flex-start",
+                    }}
+                  >
+                    <div
+                      style={{
+                        width: "4px",
+                        minWidth: "4px",
+                        background: "#c9a84c",
+                        borderRadius: "2px",
+                        alignSelf: "stretch",
+                      }}
+                    />
+                    <div>
+                      <p
+                        style={{
+                          fontSize: "0.88rem",
+                          fontWeight: 700,
+                          color: "#f5f0e8",
+                          marginBottom: "0.4rem",
+                          marginTop: 0,
+                        }}
+                      >
+                        {item.scenario}
+                      </p>
+                      <p
+                        style={{
+                          fontSize: "0.88rem",
+                          lineHeight: 1.65,
+                          color: "rgba(245,240,232,0.68)",
+                          margin: 0,
+                        }}
+                      >
+                        {item.description}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            {/* ── FAQ Section ── */}
+            <section
+              id="faq"
+              style={{
+                marginBottom: "3.5rem",
+                paddingTop: "1rem",
+                borderTop: "1px solid rgba(201,168,76,0.15)",
+              }}
+            >
+              <p
+                style={{
+                  fontSize: "0.72rem",
+                  fontWeight: 700,
+                  letterSpacing: "0.1em",
+                  textTransform: "uppercase",
+                  color: "#c9a84c",
+                  marginBottom: "2rem",
+                  marginTop: "2rem",
+                }}
+              >
+                Frequently Asked Questions
+              </p>
+
+              {/* FAQ 1 */}
+              <div style={{ marginBottom: "2.5rem" }}>
+                <h2
+                  style={{
+                    fontSize: "1.3rem",
+                    fontWeight: 700,
+                    color: "#f5f0e8",
+                    lineHeight: 1.3,
+                    marginTop: 0,
+                    marginBottom: "1rem",
+                    letterSpacing: "-0.01em",
+                  }}
+                >
+                  Can AI help veterans with PTSD?
+                </h2>
+                <p
+                  style={{
+                    fontSize: "1rem",
+                    lineHeight: 1.85,
+                    color: "rgba(245,240,232,0.8)",
+                    background: "rgba(201,168,76,0.05)",
+                    borderLeft: "3px solid rgba(201,168,76,0.35)",
+                    padding: "0.9rem 1.15rem",
+                    borderRadius: "0 6px 6px 0",
+                    margin: 0,
+                  }}
+                >
+                  AI cannot replace clinical trauma treatments like EMDR or Prolonged Exposure Therapy.
+                  What it can provide is what the NHS queue cannot: daily availability between appointments,
+                  a private space to process without waiting, and the specific benefit of persistent memory.
+                  An AI that resets between sessions is useless for PTSD support because veterans are
+                  already exhausted by having to re-explain their service history to every new clinician.
+                  MEOK&apos;s Sovereign Memory retains everything across every session indefinitely. You
+                  explain your experience once. MEOK remembers it permanently. That changes the therapeutic
+                  dynamic fundamentally.
+                </p>
+              </div>
+
+              {/* FAQ 2 */}
+              <div style={{ marginBottom: "2.5rem" }}>
+                <h2
+                  style={{
+                    fontSize: "1.3rem",
+                    fontWeight: 700,
+                    color: "#f5f0e8",
+                    lineHeight: 1.3,
+                    marginTop: 0,
+                    marginBottom: "1rem",
+                    letterSpacing: "-0.01em",
+                  }}
+                >
+                  Is MEOK private enough for veterans with security clearances?
+                </h2>
+                <p
+                  style={{
+                    fontSize: "1rem",
+                    lineHeight: 1.85,
+                    color: "rgba(245,240,232,0.8)",
+                    background: "rgba(201,168,76,0.05)",
+                    borderLeft: "3px solid rgba(201,168,76,0.35)",
+                    padding: "0.9rem 1.15rem",
+                    borderRadius: "0 6px 6px 0",
+                    margin: 0,
+                  }}
+                >
+                  Yes. MEOK&apos;s Privacy Covenant is absolute: your data is end-to-end encrypted,
+                  legally yours, never used to train AI models, and never shared with third parties
+                  including government agencies, MoD contractors, or insurance companies. There is no
+                  pathway by which what you share with MEOK could reach a vetting process, an employer,
+                  or your commanding officer. This is architecturally enforced, not just a policy claim.
+                  For reservists still serving and unable to risk being seen to seek help, MEOK is the
+                  space where the mask comes off without professional consequence.
+                </p>
+              </div>
+
+              {/* FAQ 3 */}
+              <div style={{ marginBottom: "2.5rem" }}>
+                <h2
+                  style={{
+                    fontSize: "1.3rem",
+                    fontWeight: 700,
+                    color: "#f5f0e8",
+                    lineHeight: 1.3,
+                    marginTop: 0,
+                    marginBottom: "1rem",
+                    letterSpacing: "-0.01em",
+                  }}
+                >
+                  Does MEOK understand military terminology and culture?
+                </h2>
+                <p
+                  style={{
+                    fontSize: "1rem",
+                    lineHeight: 1.85,
+                    color: "rgba(245,240,232,0.8)",
+                    background: "rgba(201,168,76,0.05)",
+                    borderLeft: "3px solid rgba(201,168,76,0.35)",
+                    padding: "0.9rem 1.15rem",
+                    borderRadius: "0 6px 6px 0",
+                    margin: 0,
+                  }}
+                >
+                  MEOK understands military hierarchy, rank structure, operational culture, rules of
+                  engagement, the ethos of service, and the specific language veterans use to describe
+                  their experiences. Critically, MEOK does not pathologise stoicism or misread directness
+                  as hostility. Veterans consistently report feeling misunderstood by civilian therapists
+                  who have never served and apply civilian frameworks to military experience. MEOK does
+                  not carry those assumptions. It meets you in the language you actually use, without
+                  requiring you to translate your experience into civilian terms first.
+                </p>
+              </div>
+
+              {/* FAQ 4 */}
+              <div style={{ marginBottom: "2.5rem" }}>
+                <h2
+                  style={{
+                    fontSize: "1.3rem",
+                    fontWeight: 700,
+                    color: "#f5f0e8",
+                    lineHeight: 1.3,
+                    marginTop: 0,
+                    marginBottom: "1rem",
+                    letterSpacing: "-0.01em",
+                  }}
+                >
+                  How is MEOK different from the Veterans&apos; Gateway or Combat Stress?
+                </h2>
+                <p
+                  style={{
+                    fontSize: "1rem",
+                    lineHeight: 1.85,
+                    color: "rgba(245,240,232,0.8)",
+                    background: "rgba(201,168,76,0.05)",
+                    borderLeft: "3px solid rgba(201,168,76,0.35)",
+                    padding: "0.9rem 1.15rem",
+                    borderRadius: "0 6px 6px 0",
+                    margin: 0,
+                  }}
+                >
+                  The Veterans&apos; Gateway is a signposting service: it directs you to other organisations.
+                  Combat Stress is a charity providing clinical mental health treatment with documented
+                  waiting times. Both are valuable and MEOK does not replace either. What MEOK provides
+                  is what neither can: a persistent, always-available companion that is there at 0300
+                  when the nightmares surface, at the weekend when crisis teams are unavailable, and
+                  across years of continuous relationship without staff turnover or re-referral. MEOK
+                  is the layer between you and formal services \u2014 and the layer that stays when formal
+                  services end their involvement.
+                </p>
+              </div>
+            </section>
+
+            {/* ── Additional context section ── */}
+            <section style={{ marginBottom: "3.5rem" }}>
+              <h2
+                style={{
+                  fontSize: "1.6rem",
+                  fontWeight: 700,
+                  color: "#f5f0e8",
+                  lineHeight: 1.25,
+                  marginTop: 0,
+                  marginBottom: "1.25rem",
+                  letterSpacing: "-0.015em",
+                }}
+              >
+                The Honest Assessment: What MEOK Is and Is Not
+              </h2>
+
+              <p
+                style={{
+                  fontSize: "1rem",
+                  lineHeight: 1.85,
+                  color: "rgba(245,240,232,0.82)",
+                  marginBottom: "1.25rem",
+                }}
+              >
+                Veterans are trained to be sceptical of anything that sounds too good. That is
+                the right instinct. So here is the honest assessment.
+              </p>
+
+              <p
+                style={{
+                  fontSize: "1rem",
+                  lineHeight: 1.85,
+                  color: "rgba(245,240,232,0.82)",
+                  marginBottom: "1.25rem",
+                }}
+              >
+                MEOK is not a therapist. It cannot diagnose PTSD, prescribe medication, provide
+                clinical trauma treatment, or replace human professional care. If you are in
+                crisis, MEOK will always direct you to immediate support. Veterans in the UK can
+                reach the Veterans&apos; Mental Health Crisis Line on 0800 138 1619, available 24
+                hours. Combat Stress operates a helpline at 0800 138 1619. The Samaritans are
+                available on 116 123 at all times.
+              </p>
+
+              <p
+                style={{
+                  fontSize: "1rem",
+                  lineHeight: 1.85,
+                  color: "rgba(245,240,232,0.82)",
+                  marginBottom: "1.25rem",
+                }}
+              >
+                What MEOK is: a persistent, private, culturally-literate AI companion that
+                provides the daily support that formal services cannot offer at scale. The gap
+                between &ldquo;not in crisis&rdquo; and &ldquo;thriving&rdquo; is where most veterans live most of the
+                time. That gap is where MEOK operates.
+              </p>
+
+              <p
+                style={{
+                  fontSize: "1rem",
+                  lineHeight: 1.85,
+                  color: "rgba(245,240,232,0.82)",
+                  marginBottom: "1.25rem",
+                }}
+              >
+                The sovereign framing is not marketing language. It is a statement of architecture.
+                Your data, your memory, your history \u2014 yours. Not MEOK&apos;s. Not Anthropic&apos;s. Not
+                any government agency&apos;s. You served under a chain of command that owned your
+                time, your body, and large parts of your identity. MEOK operates on the opposite
+                principle. Everything you share belongs to you alone.
+              </p>
+            </section>
+
+            {/* ── CTA ── */}
+            <section
+              style={{
+                background: "rgba(201,168,76,0.08)",
+                border: "1px solid rgba(201,168,76,0.25)",
+                borderRadius: "12px",
+                padding: "2.5rem",
+                textAlign: "center",
+                marginBottom: "4rem",
+              }}
+            >
+              <p
+                style={{
+                  fontSize: "0.72rem",
+                  fontWeight: 700,
+                  letterSpacing: "0.12em",
+                  textTransform: "uppercase",
+                  color: "#c9a84c",
+                  marginBottom: "1rem",
+                  marginTop: 0,
+                }}
+              >
+                Sovereign Memory &bull; Absolute Privacy &bull; Always Available
+              </p>
+              <h2
+                style={{
+                  fontSize: "clamp(1.4rem, 3vw, 2rem)",
+                  fontWeight: 800,
+                  color: "#f5f0e8",
+                  marginBottom: "1rem",
+                  marginTop: 0,
+                  lineHeight: 1.2,
+                  letterSpacing: "-0.02em",
+                }}
+              >
+                Start Your Sovereign Memory
+              </h2>
+              <p
+                style={{
+                  fontSize: "1rem",
+                  lineHeight: 1.7,
+                  color: "rgba(245,240,232,0.72)",
+                  marginBottom: "2rem",
+                  maxWidth: "480px",
+                  marginLeft: "auto",
+                  marginRight: "auto",
+                }}
+              >
+                Tell MEOK your service history once. It remembers everything that follows.
+                Private. Encrypted. Yours. No registration required to begin.
+              </p>
+              <Link
+                href="https://meok.ai/birth"
+                style={{
+                  display: "inline-block",
+                  background: "#c9a84c",
+                  color: "#0d0c18",
+                  fontWeight: 800,
+                  fontSize: "0.95rem",
+                  letterSpacing: "0.02em",
+                  padding: "0.9rem 2.5rem",
+                  borderRadius: "6px",
+                  textDecoration: "none",
+                }}
+              >
+                Meet Your MEOK
+              </Link>
+              <p
+                style={{
+                  fontSize: "0.78rem",
+                  color: "rgba(245,240,232,0.35)",
+                  marginTop: "1.25rem",
+                  marginBottom: 0,
+                }}
+              >
+                Free tier available &bull; No credit card required &bull; Private by architecture
+              </p>
+            </section>
+
+            {/* ── Related reading ── */}
+            <section style={{ marginBottom: "4rem" }}>
+              <p
+                style={{
+                  fontSize: "0.72rem",
+                  fontWeight: 700,
+                  letterSpacing: "0.1em",
+                  textTransform: "uppercase",
+                  color: "rgba(245,240,232,0.4)",
+                  marginBottom: "1.25rem",
+                  marginTop: 0,
+                }}
+              >
+                Related Reading
+              </p>
+              <div
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+                  gap: "1rem",
+                }}
+              >
+                {[
+                  {
+                    href: "/blog/ai-for-ptsd",
+                    title: "AI for PTSD",
+                    desc: "How persistent AI memory changes trauma support.",
+                  },
+                  {
+                    href: "/blog/ai-for-military-families",
+                    title: "AI for Military Families",
+                    desc: "Supporting the people holding everything together during deployment.",
+                  },
+                  {
+                    href: "/blog/meok-guardian-scam-protection",
+                    title: "MEOK Guardian",
+                    desc: "How Guardian detects and blocks predatory financial contact.",
+                  },
+                  {
+                    href: "/blog/how-sovereign-ai-works",
+                    title: "How Sovereign AI Works",
+                    desc: "The architecture behind your encrypted memory vault.",
+                  },
+                ].map((link) => (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    style={{
+                      display: "block",
+                      background: "rgba(255,255,255,0.04)",
+                      border: "1px solid rgba(201,168,76,0.1)",
+                      borderRadius: "8px",
+                      padding: "1.1rem 1.25rem",
+                      textDecoration: "none",
+                    }}
+                  >
+                    <p
+                      style={{
+                        fontSize: "0.88rem",
+                        fontWeight: 700,
+                        color: "#c9a84c",
+                        marginBottom: "0.35rem",
+                        marginTop: 0,
+                      }}
+                    >
+                      {link.title}
+                    </p>
+                    <p
+                      style={{
+                        fontSize: "0.82rem",
+                        lineHeight: 1.55,
+                        color: "rgba(245,240,232,0.55)",
+                        margin: 0,
+                      }}
+                    >
+                      {link.desc}
+                    </p>
+                  </Link>
+                ))}
+              </div>
+            </section>
+          </article>
+        </div>
+
+        {/* ── Footer ── */}
+        <footer
+          style={{
+            borderTop: "1px solid rgba(201,168,76,0.12)",
+            padding: "2rem 0",
+          }}
+        >
+          <div
+            style={{
+              maxWidth: "840px",
+              margin: "0 auto",
+              padding: "0 24px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              flexWrap: "wrap",
+              gap: "1rem",
+            }}
+          >
+            <Link
+              href="/"
+              style={{
+                color: "#c9a84c",
+                fontWeight: 700,
+                textDecoration: "none",
+                fontSize: "0.95rem",
+              }}
+            >
+              MEOK AI LABS
+            </Link>
+            <p
+              style={{
+                fontSize: "0.78rem",
+                color: "rgba(245,240,232,0.3)",
+                margin: 0,
+              }}
+            >
+              &copy; 2026 MEOK AI LABS. All rights reserved.
+            </p>
+            <nav
+              style={{
+                display: "flex",
+                gap: "1.25rem",
+              }}
+            >
+              {[
+                { href: "/privacy", label: "Privacy" },
+                { href: "/blog", label: "Blog" },
+                { href: "/about", label: "About" },
+              ].map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  style={{
+                    fontSize: "0.8rem",
+                    color: "rgba(245,240,232,0.4)",
+                    textDecoration: "none",
+                  }}
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </nav>
+          </div>
+        </footer>
+      </main>
+    </>
   )
 }
