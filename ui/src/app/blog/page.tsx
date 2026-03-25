@@ -4202,6 +4202,66 @@ const POSTS = [
     category: "mental-health",
     featured: false,
   },
+  {
+    slug: "ai-for-bipolar-disorder",
+    title: "AI for Bipolar Disorder: Mood Tracking and Sovereign Support Across Episodes",
+    excerpt:
+      "Bipolar disorder requires vigilant mood monitoring \u2014 catching the early signs of hypomania or depression before they escalate. MEOK\u2019s persistent memory tracks patterns across months, helping identify triggers and build longitudinal insight that supports both self-management and clinical appointments.",
+    date: "March 31, 2026",
+    readTime: "9 min read",
+    tag: "Mental Health",
+    tagColor: "#6aaa64",
+    category: "mental-health",
+    featured: false,
+  },
+  {
+    slug: "what-is-ai-memory-and-why-it-matters",
+    title: "What Is AI Memory and Why Does It Matter for Your Wellbeing?",
+    excerpt:
+      "Most AI forgets you the moment the conversation ends. MEOK remembers you across sessions, devices, and model switches. This explainer covers how AI memory works, why it matters, and how MEOK\u2019s Sovereign Memory architecture is fundamentally different from every other AI product.",
+    date: "March 31, 2026",
+    readTime: "7 min read",
+    tag: "Explainer",
+    tagColor: "#c9a84c",
+    category: "explainer",
+    featured: false,
+  },
+  {
+    slug: "ai-for-social-isolation",
+    title: "AI for Social Isolation: When Loneliness Becomes a Health Crisis",
+    excerpt:
+      "Social isolation is a public health emergency: as harmful as smoking 15 cigarettes a day. MEOK provides genuine, persistent companionship \u2014 not as a substitute for human connection, but as a bridge toward it, with Sovereign Memory that makes every conversation feel like a continuation.",
+    date: "March 31, 2026",
+    readTime: "8 min read",
+    tag: "Wellbeing",
+    tagColor: "#6aaa64",
+    category: "wellbeing",
+    featured: false,
+  },
+  {
+    slug: "meok-for-hse-professionals",
+    title: "MEOK for HSE and Mental Health Professionals: Sovereign AI for Those Who Hold Others",
+    excerpt:
+      "Therapists, counsellors, social workers, and mental health nurses carry enormous emotional weight. Secondary traumatic stress affects 60% of mental health professionals. MEOK provides the private, sovereign space to process what they hold for others \u2014 without professional risk.",
+    date: "March 31, 2026",
+    readTime: "8 min read",
+    tag: "Professional",
+    tagColor: "#c9a84c",
+    category: "professional",
+    featured: false,
+  },
+  {
+    slug: "ai-for-night-shift-workers",
+    title: "AI for Night Shift Workers: Sovereign Support When Everyone Else Is Asleep",
+    excerpt:
+      "Night shift work disrupts circadian rhythm, increases isolation, and makes standard mental health services inaccessible. MEOK is available at 3am on a Tuesday without judgment \u2014 the colleague, companion, and support system that exists on your schedule, not the 9-to-5.",
+    date: "March 31, 2026",
+    readTime: "7 min read",
+    tag: "Wellbeing",
+    tagColor: "#6aaa64",
+    category: "wellbeing",
+    featured: false,
+  },
 ];
 
 // ── Category filter tabs ──────────────────────────────────────────────────────
