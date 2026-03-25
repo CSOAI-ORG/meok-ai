@@ -3302,6 +3302,66 @@ const POSTS = [
     category: "mental-health",
     featured: false,
   },
+  {
+    slug: "ai-for-grief-in-men",
+    title: "AI for Grief in Men: Breaking the Silence Around Male Bereavement",
+    excerpt:
+      "Men are 3x more likely to die by suicide when bereaved, yet 50% less likely to seek therapy. MEOK provides a private, non-judgmental space where men can process grief without performing strength.",
+    date: "March 25, 2026",
+    readTime: "8 min read",
+    tag: "Mental Health",
+    tagColor: "#7ec8a0",
+    category: "mental-health",
+    featured: false,
+  },
+  {
+    slug: "ai-for-postpartum-depression",
+    title: "AI Support for Postpartum Depression: Companionship When New Parenthood Feels Dark",
+    excerpt:
+      "Postpartum depression affects 1 in 10 new mothers — and many fathers too. At 3am during a difficult feed, MEOK's Healer provides non-judgmental support without the shame spiral of 'I should be happy.'",
+    date: "March 25, 2026",
+    readTime: "9 min read",
+    tag: "Mental Health",
+    tagColor: "#7ec8a0",
+    category: "mental-health",
+    featured: false,
+  },
+  {
+    slug: "meok-for-remote-workers",
+    title: "MEOK for Remote Workers: Your AI Colleague, Coach, and Companion",
+    excerpt:
+      "70% of remote workers report loneliness affecting productivity. MEOK provides an AI colleague for accountability, a thinking partner for deep work, and genuine companionship for the isolation of working from home.",
+    date: "March 25, 2026",
+    readTime: "8 min read",
+    tag: "Professional",
+    tagColor: "#c9a84c",
+    category: "professional",
+    featured: false,
+  },
+  {
+    slug: "ai-for-eating-disorder-recovery",
+    title: "AI Support in Eating Disorder Recovery: Compassion at Every Stage",
+    excerpt:
+      "Eating disorders carry the highest mortality rate of any mental illness. MEOK provides between-session support during recovery — never commenting on food choices, never calculating calories, always holding care.",
+    date: "March 25, 2026",
+    readTime: "9 min read",
+    tag: "Mental Health",
+    tagColor: "#7ec8a0",
+    category: "mental-health",
+    featured: false,
+  },
+  {
+    slug: "ai-for-chronic-pain-management",
+    title: "AI for Chronic Pain Management: Support Beyond the Pain Clinic",
+    excerpt:
+      "15.5 million UK adults live with chronic pain. MEOK tracks pain patterns, processes the grief of the pre-pain self, and provides 24/7 support during flares — when the pain clinic is closed and 3am is long.",
+    date: "March 25, 2026",
+    readTime: "9 min read",
+    tag: "Health",
+    tagColor: "#7ec8a0",
+    category: "mental-health",
+    featured: false,
+  },
 ];
 
 // ── Category filter tabs ──────────────────────────────────────────────────────
