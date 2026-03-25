@@ -1148,6 +1148,302 @@ export default function GamingPage() {
       </section>
 
       {/* ═══════════════════════════════════════════════
+          GAMING COMPANION — GENRE SPECIALISTS
+      ═══════════════════════════════════════════════ */}
+      <section className="py-28 px-6 bg-[#0d0c18]">
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-16">
+            <span className="text-xs font-black tracking-[0.25em] uppercase text-white/30 block mb-4">
+              Gaming Companion
+            </span>
+            <h2 className="text-4xl sm:text-5xl font-black tracking-tight mb-4">
+              Your AI that{" "}
+              <span
+                style={{
+                  background: "linear-gradient(135deg, #c9a84c 0%, #f0d080 60%)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
+                }}
+              >
+                levels up with you
+              </span>
+            </h2>
+            <p className="text-base text-white/40 max-w-xl mx-auto leading-relaxed">
+              Four specialist AI companions — each built for a different kind of game.
+              Pick the one that matches your play style.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            {[
+              {
+                emoji: "\uD83C\uDFAF",
+                title: "FPS Coach",
+                name: "Commander",
+                description: "Tactical callouts, aim training feedback, and real-time positioning advice. Direct. No fluff. Just the information that wins rounds.",
+                features: [
+                  "Real-time tactical callouts and positioning",
+                  "Aim training analysis and drill recommendations",
+                  "Economy management and buy-round strategy",
+                ],
+                color: "#F59E0B",
+                borderColor: "border-amber-400/20",
+                bgColor: "rgba(245,158,11,0.04)",
+                accentText: "text-amber-400",
+              },
+              {
+                emoji: "\u2694\uFE0F",
+                title: "RPG Strategist",
+                name: "Sage",
+                description: "Build optimisation, lore context, and strategic planning. Knows the meta, remembers your progression, and weaves narrative into every decision.",
+                features: [
+                  "Build and stat optimisation per class/role",
+                  "Deep lore context and narrative guidance",
+                  "Boss strategy and encounter preparation",
+                ],
+                color: "#065F46",
+                borderColor: "border-emerald-400/20",
+                bgColor: "rgba(6,95,70,0.06)",
+                accentText: "text-emerald-400",
+              },
+              {
+                emoji: "\uD83E\udDE9",
+                title: "Puzzle Helper",
+                name: "Cipher",
+                description: "Hints, not answers. Socratic questioning that guides you to the solution yourself. Because the satisfaction of solving it matters more than the answer.",
+                features: [
+                  "Graduated hint system — nudge before reveal",
+                  "Socratic questioning to guide your thinking",
+                  "Pattern recognition coaching across puzzles",
+                ],
+                color: "#7C3AED",
+                borderColor: "border-purple-400/20",
+                bgColor: "rgba(124,58,237,0.05)",
+                accentText: "text-purple-400",
+              },
+              {
+                emoji: "\uD83C\uDFC6",
+                title: "Sports Analyst",
+                name: "Rally",
+                description: "Stats, predictions, and motivation. Whether it's FIFA, Madden, or NBA 2K — Rally brings the data and the energy to keep you competing at your ceiling.",
+                features: [
+                  "Live stats tracking and performance trends",
+                  "Opponent scouting and prediction models",
+                  "Motivational coaching and mental game support",
+                ],
+                color: "#EF4444",
+                borderColor: "border-red-400/20",
+                bgColor: "rgba(239,68,68,0.04)",
+                accentText: "text-red-400",
+              },
+            ].map((card) => (
+              <div
+                key={card.title}
+                className={`rounded-2xl p-8 border ${card.borderColor} transition-all hover:scale-[1.01]`}
+                style={{ background: card.bgColor }}
+              >
+                <div className="flex items-center gap-3 mb-4">
+                  <span className="text-3xl">{card.emoji}</span>
+                  <div>
+                    <h3 className="font-black text-white text-lg">{card.title}</h3>
+                    <span className={`text-xs font-mono ${card.accentText} opacity-60`}>
+                      powered by {card.name}
+                    </span>
+                  </div>
+                </div>
+                <p className="text-sm text-white/50 leading-relaxed mb-5">
+                  {card.description}
+                </p>
+                <ul className="space-y-2">
+                  {card.features.map((feat) => (
+                    <li key={feat} className="flex items-start gap-2.5 text-xs text-white/40">
+                      <span
+                        className="w-1.5 h-1.5 rounded-full mt-1.5 flex-shrink-0"
+                        style={{ background: card.color }}
+                      />
+                      {feat}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════
+          STREAMING OVERLAY — COMING SOON
+      ═══════════════════════════════════════════════ */}
+      <section className="py-20 px-6 bg-[#13121f]">
+        <div className="max-w-4xl mx-auto">
+          <div
+            className="rounded-3xl p-10 sm:p-14 text-center relative overflow-hidden"
+            style={{
+              background: "linear-gradient(135deg, rgba(124,58,237,0.08), rgba(201,168,76,0.06))",
+              border: "1.5px solid rgba(124,58,237,0.2)",
+            }}
+          >
+            <div
+              aria-hidden
+              className="absolute inset-0 opacity-[0.03]"
+              style={{
+                backgroundImage:
+                  "repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,1) 2px, rgba(255,255,255,1) 4px)",
+              }}
+            />
+            <div className="relative">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-500/15 border border-purple-500/30 text-purple-300 text-xs font-black tracking-[0.2em] uppercase mb-6">
+                <span className="w-1.5 h-1.5 rounded-full bg-purple-400 animate-pulse" />
+                Coming Soon
+              </div>
+              <h2 className="text-3xl sm:text-4xl font-black tracking-tight mb-4">
+                AI overlay for{" "}
+                <span
+                  style={{
+                    background: "linear-gradient(135deg, #c9a84c 0%, #f0d080 60%)",
+                    WebkitBackgroundClip: "text",
+                    WebkitTextFillColor: "transparent",
+                    backgroundClip: "text",
+                  }}
+                >
+                  your stream
+                </span>
+              </h2>
+              <p className="text-white/40 leading-relaxed text-sm max-w-lg mx-auto mb-8">
+                MEOK as a live streaming overlay. Your audience sees the AI coaching in real time — callouts,
+                strategy shifts, and pattern alerts rendered as an OBS-compatible overlay. Entertainment
+                meets performance.
+              </p>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-2xl mx-auto">
+                {[
+                  { icon: "\uD83C\uDFA5", label: "OBS / Streamlabs compatible" },
+                  { icon: "\uD83D\uDCAC", label: "Chat-reactive AI commentary" },
+                  { icon: "\uD83D\uDCCA", label: "Live stats widget for viewers" },
+                ].map((item) => (
+                  <div
+                    key={item.label}
+                    className="flex items-center gap-3 p-4 rounded-xl"
+                    style={{
+                      background: "rgba(255,255,255,0.03)",
+                      border: "1px solid rgba(255,255,255,0.07)",
+                    }}
+                  >
+                    <span className="text-lg">{item.icon}</span>
+                    <span className="text-xs text-white/50 font-medium">{item.label}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════
+          STATS INTEGRATION — CONNECT YOUR PROFILE
+      ═══════════════════════════════════════════════ */}
+      <section className="py-20 px-6 bg-[#0d0c18] border-t border-white/[0.05]">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-12">
+            <span className="text-xs font-black tracking-[0.25em] uppercase text-white/30 block mb-4">
+              Stats integration
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-black tracking-tight mb-3">
+              Connect your{" "}
+              <span className="text-[#c9a84c]">gaming profile</span>
+            </h2>
+            <p className="text-white/40 text-sm max-w-lg mx-auto leading-relaxed">
+              Link your accounts once. MEOK pulls your history, builds your player model,
+              and starts coaching from session one.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-3xl mx-auto mb-8">
+            {[
+              { platform: "Steam", icon: "\uD83D\uDFE6", status: "Launch" },
+              { platform: "Riot Games", icon: "\u2694\uFE0F", status: "Launch" },
+              { platform: "Battle.net", icon: "\uD83D\uDD35", status: "Wave 2" },
+              { platform: "Epic Games", icon: "\uD83D\uDFE3", status: "Wave 2" },
+            ].map((p) => (
+              <div
+                key={p.platform}
+                className="rounded-2xl p-5 text-center transition-all hover:scale-[1.02]"
+                style={{
+                  background: "rgba(255,255,255,0.03)",
+                  border: "1px solid rgba(255,255,255,0.07)",
+                }}
+              >
+                <span className="text-2xl block mb-2">{p.icon}</span>
+                <div className="font-black text-white text-sm mb-1">{p.platform}</div>
+                <div
+                  className={`text-[10px] font-mono uppercase tracking-wide ${
+                    p.status === "Launch" ? "text-[#c9a84c]" : "text-white/25"
+                  }`}
+                >
+                  {p.status}
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div
+            className="rounded-2xl p-6 max-w-2xl mx-auto"
+            style={{
+              background: "rgba(201,168,76,0.04)",
+              border: "1px solid rgba(201,168,76,0.15)",
+            }}
+          >
+            <div className="flex items-start gap-4">
+              <span className="text-xl flex-shrink-0">{"\uD83D\uDD12"}</span>
+              <div>
+                <div className="font-black text-white text-sm mb-1">Your data stays yours</div>
+                <p className="text-xs text-white/40 leading-relaxed">
+                  MEOK reads your stats through official APIs only. We never store raw match data
+                  on our servers — your player model lives on your device. Delete it anytime.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════
+          TESTIMONIAL
+      ═══════════════════════════════════════════════ */}
+      <section className="py-20 px-6 bg-[#13121f]">
+        <div className="max-w-3xl mx-auto text-center">
+          <div
+            className="rounded-3xl p-10 sm:p-14"
+            style={{
+              background: "rgba(201,168,76,0.04)",
+              border: "1.5px solid rgba(201,168,76,0.15)",
+            }}
+          >
+            <span className="text-4xl block mb-6">{"\uD83C\uDFAE"}</span>
+            <blockquote className="text-2xl sm:text-3xl font-black text-white/80 leading-snug mb-6">
+              &ldquo;2,000 hours of gameplay data,{" "}
+              <span className="text-[#c9a84c]">understood.</span>&rdquo;
+            </blockquote>
+            <p className="text-sm text-white/40 leading-relaxed max-w-md mx-auto mb-6">
+              MEOK doesn&apos;t just see your stats. It understands the story behind them —
+              the sessions where you were tired, the patches where you adapted,
+              the habits you formed without noticing. Two thousand hours of context,
+              coaching every future decision.
+            </p>
+            <div className="flex items-center justify-center gap-3">
+              <div className="w-10 h-10 rounded-full bg-[#c9a84c]/20 flex items-center justify-center">
+                <span className="text-sm">{"\uD83D\uDC64"}</span>
+              </div>
+              <div className="text-left">
+                <div className="text-sm font-black text-white/70">Founding Member</div>
+                <div className="text-xs text-white/30 font-mono">CS2 / Valorant / League</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════
           END CTA
       ═══════════════════════════════════════════════ */}
       <section className="relative py-32 px-6 overflow-hidden bg-[#0a0a0f]">
@@ -1168,7 +1464,7 @@ export default function GamingPage() {
           </div>
 
           <h2 className="text-4xl sm:text-6xl font-black leading-[0.95] mb-6 tracking-tight">
-            Your next session
+            Get your gaming
             <br />
             <span
               style={{
@@ -1179,7 +1475,7 @@ export default function GamingPage() {
                 backgroundClip: "text",
               }}
             >
-              starts with MEOK.
+              co-pilot.
             </span>
           </h2>
 
@@ -1195,7 +1491,7 @@ export default function GamingPage() {
               boxShadow: "0 0 40px rgba(201,168,76,0.25)",
             }}
           >
-            Get early access
+            Get your gaming co-pilot
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </Link>
 
