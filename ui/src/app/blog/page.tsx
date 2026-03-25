@@ -4682,6 +4682,66 @@ const POSTS = [
     category: "accessibility",
     featured: false,
   },
+  {
+    slug: "ai-for-self-harm-recovery",
+    title: "AI for Self-Harm Recovery: Support Between Professional Sessions",
+    excerpt:
+      "Self-harm recovery is rarely linear. MEOK provides a safe, non-judgmental space between therapy sessions \u2014 with Maternal Covenant boundaries that ensure the companion never enables, minimises, or over-reacts to disclosure.",
+    date: "April 18, 2026",
+    readTime: "8 min read",
+    tag: "Mental Health",
+    tagColor: "#6aaa64",
+    category: "mental-health",
+    featured: false,
+  },
+  {
+    slug: "what-is-the-pioneer-companion",
+    title: "What Is the Pioneer Companion? MEOK\u2019s Accountability Archetype Explained",
+    excerpt:
+      "The Pioneer is MEOK\u2019s action and accountability companion \u2014 built for people who need momentum, structure, and someone who will hold them to what they said they\u2019d do. No excuses. No let-offs. Honest and warm.",
+    date: "April 18, 2026",
+    readTime: "6 min read",
+    tag: "Features",
+    tagColor: "#7b6fcf",
+    category: "features",
+    featured: false,
+  },
+  {
+    slug: "ai-for-immigration-stress",
+    title: "AI for Immigration Stress: Navigating the System When You\u2019re Already Exhausted",
+    excerpt:
+      "Immigration processes are among the most stressful experiences a person can go through. MEOK provides emotional support, practical research via Orion, and a private space free from the judgment that immigration status sometimes attracts.",
+    date: "April 19, 2026",
+    readTime: "7 min read",
+    tag: "Mental Health",
+    tagColor: "#6aaa64",
+    category: "mental-health",
+    featured: false,
+  },
+  {
+    slug: "cognitive-symbiosis-explained",
+    title: "Cognitive Symbiosis: What It Means When AI and Human Mind Work Together",
+    excerpt:
+      "Cognitive symbiosis is the state where human intelligence and AI intelligence complement each other so well that the combined output exceeds what either can produce alone. MEOK is designed for this relationship \u2014 not dependency, not replacement.",
+    date: "April 19, 2026",
+    readTime: "9 min read",
+    tag: "Technology",
+    tagColor: "#7b6fcf",
+    category: "technology",
+    featured: true,
+  },
+  {
+    slug: "meok-for-parents-of-children-with-sen",
+    title: "MEOK for Parents of Children with SEN: When Every Day Requires Expert-Level Advocacy",
+    excerpt:
+      "Parenting a child with Special Educational Needs means becoming an expert in law, medicine, and bureaucracy while still doing the impossible daily work of parenting. MEOK provides research, processing space, and the sustained companionship that marathon caring requires.",
+    date: "April 20, 2026",
+    readTime: "8 min read",
+    tag: "Family",
+    tagColor: "#c9a84c",
+    category: "family",
+    featured: false,
+  },
 ];
 
 // ── Category filter tabs ──────────────────────────────────────────────────────
