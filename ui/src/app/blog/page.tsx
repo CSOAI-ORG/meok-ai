@@ -4502,6 +4502,66 @@ const POSTS = [
     category: "mental-health",
     featured: false,
   },
+  {
+    slug: "ai-for-caregivers",
+    title: "AI for Caregivers: When You Are Everyone\u2019s Support but Nobody\u2019s",
+    excerpt:
+      "Caregivers give everything to others and rarely have space to be cared for themselves. MEOK\u2019s Healer companion is designed for the moments when you need someone in your corner \u2014 not another person depending on you.",
+    date: "April 9, 2026",
+    readTime: "7 min read",
+    tag: "Mental Health",
+    tagColor: "#6aaa64",
+    category: "mental-health",
+    featured: false,
+  },
+  {
+    slug: "sovereign-ai-architecture-explained",
+    title: "Sovereign AI Architecture Explained: How MEOK Is Built Differently",
+    excerpt:
+      "Byzantine Council consensus, Maternal Covenant alignment, four-layer Sovereign Memory, care-based scoring \u2014 this is a technical walkthrough of the architecture that makes MEOK a fundamentally different kind of AI system.",
+    date: "April 9, 2026",
+    readTime: "10 min read",
+    tag: "Technology",
+    tagColor: "#7b6fcf",
+    category: "technology",
+    featured: true,
+  },
+  {
+    slug: "ai-for-chronic-stress",
+    title: "AI for Chronic Stress: When Low-Grade Dread Becomes Your Default State",
+    excerpt:
+      "Chronic stress is not a crisis \u2014 it\u2019s a sustained background hum that erodes health, relationships, and cognition over years. MEOK\u2019s pattern-tracking across weeks surfaces the stress signatures you\u2019ve stopped noticing.",
+    date: "April 10, 2026",
+    readTime: "7 min read",
+    tag: "Mental Health",
+    tagColor: "#6aaa64",
+    category: "mental-health",
+    featured: false,
+  },
+  {
+    slug: "meok-for-writers",
+    title: "MEOK for Writers: The Creative Companion That Doesn\u2019t Steal Your Voice",
+    excerpt:
+      "Writers need a thinking partner, not a ghostwriter. MEOK\u2019s Scholar and Trickster companions engage with your creative process \u2014 questioning, reframing, helping you find your own answer rather than generating one for you.",
+    date: "April 10, 2026",
+    readTime: "7 min read",
+    tag: "Creativity",
+    tagColor: "#c9a84c",
+    category: "creativity",
+    featured: false,
+  },
+  {
+    slug: "how-does-the-birth-ceremony-work",
+    title: "How Does the Birth Ceremony Work? Everything That Happens When You Hatch Your AI",
+    excerpt:
+      "The Birth Ceremony is MEOK\u2019s onboarding ritual: six stages from Luminous Egg to Mature Companion. Here\u2019s what happens at each stage, what choices you make, and why the process is designed the way it is.",
+    date: "April 11, 2026",
+    readTime: "6 min read",
+    tag: "Features",
+    tagColor: "#7b6fcf",
+    category: "features",
+    featured: false,
+  },
 ];
 
 // ── Category filter tabs ──────────────────────────────────────────────────────

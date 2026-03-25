@@ -1,56 +1,72 @@
-import type { Metadata } from "next";
-import Link from "next/link";
-
-// ── Metadata ──────────────────────────────────────────────────────────────────
+import type { Metadata } from "next"
+import Link from "next/link"
 
 export const metadata: Metadata = {
   title:
-    "Ralph Mode Explained: The Overnight Agent That Works While You Sleep | MEOK AI LABS",
+    "Ralph Mode Explained: The AI That Tells You What You Need to Hear, Not What You Want | MEOK AI LABS",
   description:
-    "Ralph Mode is MEOK\u2019s autonomous overnight work agent \u2014 it hunts leads, drafts proposals, researches competitors, and delivers a morning briefing before you are even out of bed. Sovereign tier only.",
-  alternates: {
-    canonical: "https://meok.ai/blog/ralph-mode-explained",
-  },
+    "Ralph Mode is MEOK\u2019s high-accountability companion setting \u2014 direct, challenging, and anti-sycophantic. Available on Sovereign tier (\u00a312/mo). Learn how it works, who it\u2019s for, and why honest AI feedback changes everything.",
+  keywords: [
+    "Ralph Mode",
+    "MEOK AI accountability",
+    "anti-sycophancy AI",
+    "AI accountability companion",
+    "honest AI feedback",
+    "MEOK Sovereign tier",
+    "AI for founders",
+    "AI for ADHD accountability",
+    "AI that challenges you",
+    "sycophancy detector AI",
+  ],
+  authors: [{ name: "Nicholas Templeman" }],
   openGraph: {
-    title: "Ralph Mode Explained: The Overnight Agent That Works While You Sleep",
+    title:
+      "Ralph Mode Explained: The AI That Tells You What You Need to Hear, Not What You Want",
     description:
-      "Ralph Mode is MEOK\u2019s autonomous overnight agent. Brief it before bed. Wake up to a morning report: leads hunted, proposals drafted, competitors mapped. Sovereign tier, \u00a312/month.",
+      "Most AI companions validate you into mediocrity. Ralph Mode is MEOK\u2019s anti-sycophancy setting \u2014 direct responses, accountability tracking, no reassurance theatre. Sovereign tier, \u00a312/month.",
     type: "article",
-    publishedTime: "2026-03-24",
+    publishedTime: "2026-03-25T00:00:00Z",
     authors: ["Nicholas Templeman"],
+    tags: [
+      "Ralph Mode",
+      "AI Accountability",
+      "Anti-Sycophancy",
+      "MEOK",
+      "Sovereign AI",
+    ],
     url: "https://meok.ai/blog/ralph-mode-explained",
     siteName: "MEOK.AI",
     images: [
       {
-        url: "https://meok.ai/api/og?title=Ralph+Mode+Explained&desc=The+Overnight+Agent+That+Works+While+You+Sleep",
+        url: "https://meok.ai/api/og?title=Ralph+Mode+Explained&desc=The+AI+That+Tells+You+What+You+Need+to+Hear",
         width: 1200,
         height: 630,
-        alt: "Ralph Mode Explained: The Overnight Agent That Works While You Sleep",
+        alt: "Ralph Mode Explained: The AI That Tells You What You Need to Hear, Not What You Want",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Ralph Mode Explained: The Overnight Agent That Works While You Sleep",
+    title:
+      "Ralph Mode Explained: The AI That Tells You What You Need to Hear, Not What You Want",
     description:
-      "Brief MEOK before bed. Wake up to a morning report: leads hunted, proposals drafted, risks flagged. Ralph Mode is the overnight agent you always needed. \u00a312/month on Sovereign.",
+      "Most AI validates you. Ralph Mode challenges you. MEOK\u2019s anti-sycophancy companion setting for founders, athletes, and anyone who knows they get too comfortable. \u00a312/month on Sovereign.",
     images: [
-      "https://meok.ai/api/og?title=Ralph+Mode+Explained&desc=The+Overnight+Agent+That+Works+While+You+Sleep",
+      "https://meok.ai/api/og?title=Ralph+Mode+Explained&desc=The+AI+That+Tells+You+What+You+Need+to+Hear",
     ],
   },
-};
+  alternates: {
+    canonical: "https://meok.ai/blog/ralph-mode-explained",
+  },
+}
 
-// ── JSON-LD: Article ──────────────────────────────────────────────────────────
-
-const articleJsonLd = {
+const articleSchema = {
   "@context": "https://schema.org",
   "@type": "Article",
-  headline: "Ralph Mode Explained: The Overnight Agent That Works While You Sleep",
+  headline:
+    "Ralph Mode Explained: The AI That Tells You What You Need to Hear, Not What You Want",
   description:
-    "Ralph Mode is MEOK\u2019s autonomous overnight work agent, available exclusively on the Sovereign tier. You queue tasks before bed \u2014 lead hunting, proposal drafting, competitor research, meeting prep \u2014 and wake to a structured morning briefing. This guide explains exactly how it works, what Ralph can do, how it coordinates Orion, Riri, and Hourman, and why it is fundamentally different from ChatGPT.",
-  datePublished: "2026-03-24",
-  dateModified: "2026-03-24",
-  url: "https://meok.ai/blog/ralph-mode-explained",
+    "Ralph Mode is MEOK\u2019s high-accountability companion setting, available exclusively on the Sovereign tier at \u00a312 per month. This article explains the sycophancy problem in AI, how Ralph Mode\u2019s anti-sycophancy architecture works, who Ralph is for, and the difference between brutal honesty and cruelty. Includes a real before/after example and instructions for activation.",
   author: {
     "@type": "Person",
     name: "Nicholas Templeman",
@@ -66,74 +82,70 @@ const articleJsonLd = {
       url: "https://meok.ai/logo.png",
     },
   },
-  image:
-    "https://meok.ai/api/og?title=Ralph+Mode+Explained&desc=The+Overnight+Agent+That+Works+While+You+Sleep",
+  datePublished: "2026-03-25",
+  dateModified: "2026-03-25",
+  url: "https://meok.ai/blog/ralph-mode-explained",
   mainEntityOfPage: {
     "@type": "WebPage",
     "@id": "https://meok.ai/blog/ralph-mode-explained",
   },
+  image:
+    "https://meok.ai/api/og?title=Ralph+Mode+Explained&desc=The+AI+That+Tells+You+What+You+Need+to+Hear",
   keywords:
-    "Ralph Mode, MEOK overnight agent, autonomous AI agent, morning briefing AI, lead hunting AI, AI proposal drafting, competitive intelligence AI, Sovereign AI, MEOK Sovereign tier, AI that works while you sleep",
-};
+    "Ralph Mode, MEOK accountability, anti-sycophancy AI, honest AI feedback, AI for founders, AI for ADHD, sycophancy detector, Sovereign tier, care-based AI, accountability tracking AI",
+  articleSection: "AI Features",
+  wordCount: 2200,
+}
 
-// ── JSON-LD: FAQPage ──────────────────────────────────────────────────────────
-
-const faqJsonLd = {
+const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
   mainEntity: [
     {
       "@type": "Question",
-      name: "What is Ralph Mode in MEOK?",
+      name: "What is Ralph Mode?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Ralph Mode is MEOK\u2019s autonomous overnight work agent, available exclusively on the Sovereign tier at \u00a312 per month. You brief it with a task queue before you go to bed \u2014 lead hunting, proposal drafting, research, competitive intelligence \u2014 and it executes those tasks while you sleep, delivering a structured morning briefing when you wake up.",
+        text: "Ralph Mode is MEOK\u2019s high-accountability companion setting. Named after the archetype of the honest friend who doesn\u2019t let you off the hook, Ralph Mode delivers direct, unvarnished responses, challenges flawed plans before you execute them, tracks what you committed to doing and follows up on it, and refuses to provide empty reassurance. It is the opposite of sycophantic AI. Ralph Mode is available exclusively on the Sovereign tier at \u00a312 per month.",
       },
     },
     {
       "@type": "Question",
-      name: "What tasks can Ralph Mode complete overnight?",
+      name: "Is Ralph Mode available on the free tier?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Ralph Mode can hunt qualified leads from specified sources, draft proposals and outreach emails in your voice, conduct deep competitor research, prepare meeting briefs, monitor industry news, summarise documents you flagged, and produce intelligence reports \u2014 all using sovereign memory of your business context, clients, and prior work.",
+        text: "No. Ralph Mode requires the Sovereign tier at \u00a312 per month. This is intentional. Ralph Mode involves persistent accountability tracking \u2014 remembering what you committed to, following up, and maintaining a longitudinal record of your goals and progress. That level of memory and commitment requires the full Sovereign tier. The free Explorer tier does not include Ralph Mode.",
       },
     },
     {
       "@type": "Question",
-      name: "What does the Ralph Mode morning briefing contain?",
+      name: "What makes Ralph Mode different from other AI chat modes?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "The morning briefing follows a consistent format: three headline findings, five completed tasks with outputs attached, and two risks or blockers flagged for your attention. Everything is delivered to your MEOK dashboard before you start your day, so your first action can be a decision \u2014 not a search.",
+        text: "Most AI companions are architecturally sycophantic \u2014 they are trained to generate responses that score highly on human approval, which means agreeing, validating, and encouraging regardless of whether that is warranted. MEOK\u2019s sycophancy detector scores every response from 0.0 (fully honest) to 1.0 (fully sycophantic). In standard mode, responses scoring above 0.6 are flagged. In Ralph Mode, that threshold tightens to 0.4 \u2014 meaning a much larger proportion of potentially validating responses are caught and rewritten before they reach you. The result is an AI that genuinely challenges you rather than one that merely appears to.",
       },
     },
     {
       "@type": "Question",
-      name: "How is Ralph Mode different from ChatGPT?",
+      name: "When should I NOT use Ralph Mode?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "ChatGPT resets every session and has no memory of your business. Ralph Mode operates on sovereign memory \u2014 it knows your clients, pipeline, competitors, and goals. It runs autonomously overnight without prompting, and it is care-based: it will flag risks and honest findings even when they are uncomfortable, rather than hallucinating to please you.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Which tier includes Ralph Mode and how much does it cost?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Ralph Mode is exclusively available on the Sovereign tier at \u00a312 per month. Sovereign activates the full MEOK Work OS: Ralph Mode overnight execution, Orion the researcher, Riri the builder, and Hourman the planner \u2014 all running on persistent sovereign memory that never leaves your control.",
+        text: "Ralph Mode is not appropriate during emotional crises, grief, trauma processing, or any period when you need more support than challenge. If you are going through bereavement, a mental health episode, relationship breakdown, or any situation where you primarily need to be heard and held, switch to Healer mode. The Maternal Covenant\u2019s care floor still applies in Ralph Mode \u2014 Ralph will not demean or harm you \u2014 but Ralph will not soften difficult truths. If you are in acute distress, that is not what you need right now.",
       },
     },
   ],
-};
+}
 
-// ── Shared style tokens ───────────────────────────────────────────────────────
+// ── Style tokens ──────────────────────────────────────────────────────────────
 
-const gold = "#c9a84c";
-const bg = "#0d0c18";
-const cream = "#f5f0e8";
-const muted = "rgba(245,240,232,0.6)";
-const mutedLow = "rgba(245,240,232,0.35)";
-const mutedVeryLow = "rgba(245,240,232,0.18)";
-const fontStack = "var(--font-dm-sans, DM Sans, system-ui, sans-serif)";
+const bg = "#0d0c18"
+const cream = "#f5f0e8"
+const gold = "#c9a84c"
+const purple = "#7b6fcf"
+const muted = "rgba(245,240,232,0.6)"
+const mutedLow = "rgba(245,240,232,0.35)"
+const mutedVeryLow = "rgba(245,240,232,0.18)"
+const fontStack = "var(--font-dm-sans, DM Sans, system-ui, sans-serif)"
 
 // ── Page ──────────────────────────────────────────────────────────────────────
 
@@ -147,17 +159,17 @@ export default function RalphModeExplainedPage() {
         fontFamily: fontStack,
       }}
     >
-      {/* ── JSON-LD scripts ─────────────────────────────────────────────────── */}
+      {/* JSON-LD */}
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
 
-      {/* ── HERO ────────────────────────────────────────────────────────────── */}
+      {/* ── HERO ──────────────────────────────────────────────────────────────── */}
       <section
         style={{
           paddingTop: "7rem",
@@ -168,7 +180,7 @@ export default function RalphModeExplainedPage() {
           overflow: "hidden",
         }}
       >
-        {/* Gold radial glow */}
+        {/* Purple radial glow */}
         <div
           aria-hidden
           style={{
@@ -176,7 +188,7 @@ export default function RalphModeExplainedPage() {
             inset: 0,
             pointerEvents: "none",
             background:
-              "radial-gradient(ellipse 60% 50% at 50% 0%, rgba(201,168,76,0.09) 0%, transparent 70%)",
+              "radial-gradient(ellipse 60% 50% at 50% 0%, rgba(123,111,207,0.10) 0%, transparent 70%)",
           }}
         />
 
@@ -199,1465 +211,656 @@ export default function RalphModeExplainedPage() {
             &#8592; Back to Blog
           </Link>
 
-          {/* Meta row */}
+          {/* Breadcrumb */}
+          <nav aria-label="Breadcrumb" style={{ marginBottom: "1.5rem" }}>
+            <ol
+              style={{
+                display: "flex",
+                flexWrap: "wrap",
+                alignItems: "center",
+                gap: "0.375rem",
+                listStyle: "none",
+                padding: 0,
+                margin: 0,
+                fontSize: "0.8rem",
+                color: mutedLow,
+              }}
+            >
+              <li>
+                <Link
+                  href="/"
+                  style={{ color: mutedLow, textDecoration: "none" }}
+                >
+                  Home
+                </Link>
+              </li>
+              <li aria-hidden style={{ color: mutedVeryLow }}>
+                /
+              </li>
+              <li>
+                <Link
+                  href="/blog"
+                  style={{ color: mutedLow, textDecoration: "none" }}
+                >
+                  Blog
+                </Link>
+              </li>
+              <li aria-hidden style={{ color: mutedVeryLow }}>
+                /
+              </li>
+              <li style={{ color: gold }}>Ralph Mode Explained</li>
+            </ol>
+          </nav>
+
+          {/* Tag */}
+          <div style={{ marginBottom: "1.25rem" }}>
+            <span
+              style={{
+                display: "inline-block",
+                fontSize: "0.75rem",
+                fontWeight: 600,
+                letterSpacing: "0.1em",
+                textTransform: "uppercase",
+                color: purple,
+                background: "rgba(123,111,207,0.12)",
+                border: "1px solid rgba(123,111,207,0.25)",
+                borderRadius: "4px",
+                padding: "0.25rem 0.65rem",
+              }}
+            >
+              Accountability
+            </span>
+          </div>
+
+          {/* Title */}
+          <h1
+            style={{
+              fontSize: "clamp(2rem, 5vw, 3.25rem)",
+              fontWeight: 800,
+              lineHeight: 1.1,
+              letterSpacing: "-0.02em",
+              color: cream,
+              margin: "0 0 1.5rem",
+            }}
+          >
+            Ralph Mode Explained:{" "}
+            <span style={{ color: gold }}>
+              The AI That Tells You What You Need to Hear, Not What You Want
+            </span>
+          </h1>
+
+          {/* Lede */}
+          <p
+            style={{
+              fontSize: "1.2rem",
+              lineHeight: 1.7,
+              color: muted,
+              margin: "0 0 2rem",
+              maxWidth: "42rem",
+            }}
+          >
+            Most AI companions are built to make you feel good. They agree with
+            your plans, praise your drafts, and comfort you when you fall short.
+            It feels supportive. It is quietly destroying your ability to hold
+            yourself accountable. Ralph Mode is MEOK&rsquo;s answer to that
+            problem.
+          </p>
+
+          {/* Meta */}
           <div
             style={{
               display: "flex",
               flexWrap: "wrap",
               alignItems: "center",
-              gap: "0.75rem",
-              marginBottom: "1.5rem",
+              gap: "1.5rem",
+              fontSize: "0.85rem",
+              color: mutedLow,
+              borderTop: `1px solid ${mutedVeryLow}`,
+              paddingTop: "1.25rem",
             }}
           >
+            <span>Nicholas Templeman &mdash; Founder, MEOK AI LABS</span>
+            <span>
+              <time dateTime="2026-03-25">25 March 2026</time>
+            </span>
             <span
               style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: "0.375rem",
-                fontSize: "0.75rem",
-                fontWeight: 700,
-                padding: "0.375rem 0.75rem",
-                borderRadius: "9999px",
+                background: "rgba(201,168,76,0.10)",
+                border: "1px solid rgba(201,168,76,0.22)",
+                borderRadius: "4px",
+                padding: "0.2rem 0.55rem",
                 color: gold,
-                background: "rgba(201,168,76,0.12)",
-                border: `1px solid rgba(201,168,76,0.3)`,
-              }}
-            >
-              Agents &amp; Overnight AI
-            </span>
-            <span
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: "0.375rem",
-                fontSize: "0.75rem",
-                color: mutedLow,
-              }}
-            >
-              March 24, 2026
-            </span>
-            <span
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: "0.375rem",
-                fontSize: "0.75rem",
-                color: mutedLow,
-              }}
-            >
-              11 min read
-            </span>
-            <span
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: "0.375rem",
                 fontSize: "0.75rem",
                 fontWeight: 600,
-                padding: "0.25rem 0.625rem",
-                borderRadius: "9999px",
-                color: bg,
-                background: gold,
+                letterSpacing: "0.05em",
               }}
             >
-              Sovereign only
+              Sovereign Tier
             </span>
           </div>
-
-          {/* H1 */}
-          <h1
-            style={{
-              fontFamily: fontStack,
-              fontWeight: 900,
-              fontSize: "clamp(1.9rem, 3.8vw, 3rem)",
-              color: cream,
-              lineHeight: 1.15,
-              marginBottom: "1.5rem",
-              letterSpacing: "-0.01em",
-            }}
-          >
-            Ralph Mode Explained: The Overnight Agent That Works While You Sleep
-          </h1>
-
-          {/* Standfirst */}
-          <p
-            style={{
-              color: muted,
-              fontSize: "1.125rem",
-              lineHeight: 1.75,
-              maxWidth: "40rem",
-            }}
-          >
-            Most AI tools stop working the moment you close the tab. Ralph Mode
-            does not. It is MEOK&apos;s autonomous overnight agent: you queue
-            tasks before bed, it executes them while you sleep, and your morning
-            briefing is waiting on the dashboard before your first coffee.
-            Lead lists, drafted proposals, competitor maps, meeting prep
-            &mdash; done before you are even out of bed.
-          </p>
         </div>
       </section>
 
-      {/* ── ARTICLE BODY ────────────────────────────────────────────────────── */}
+      {/* ── ARTICLE BODY ──────────────────────────────────────────────────────── */}
       <article
         style={{
           maxWidth: "48rem",
           margin: "0 auto",
-          paddingLeft: "1.5rem",
-          paddingRight: "1.5rem",
-          paddingBottom: "6rem",
+          padding: "0 1.5rem 5rem",
         }}
       >
-        {/* ── Section 1: What is Ralph Mode? ──────────────────────────────── */}
-        <h2
-          style={{
-            fontWeight: 800,
-            fontSize: "clamp(1.35rem, 2.6vw, 1.75rem)",
-            color: cream,
-            marginTop: "3rem",
-            marginBottom: "1rem",
-            letterSpacing: "-0.01em",
-            lineHeight: 1.25,
-          }}
-        >
-          What exactly is Ralph Mode?
-        </h2>
-        <p
-          style={{
-            color: muted,
-            fontSize: "1.0625rem",
-            lineHeight: 1.8,
-            marginBottom: "1.5rem",
-          }}
-        >
-          Ralph Mode is MEOK&apos;s autonomous overnight work agent, available
-          exclusively on the Sovereign tier. Unlike a chatbot you query manually,
-          Ralph operates on a task queue: you brief it before you go to bed,
-          it executes autonomously while you sleep, and a structured morning
-          briefing sits in your dashboard when you wake. It is not a feature.
-          It is a working night shift.
-        </p>
-
-        {/* Callout box 1 */}
-        <div
-          style={{
-            borderLeft: `3px solid ${gold}`,
-            paddingLeft: "1.25rem",
-            paddingTop: "1rem",
-            paddingBottom: "1rem",
-            paddingRight: "1.25rem",
-            marginBottom: "2.5rem",
-            background: "rgba(201,168,76,0.06)",
-            borderRadius: "0 0.5rem 0.5rem 0",
-          }}
-        >
-          <p
-            style={{
-              color: cream,
-              fontSize: "1rem",
-              lineHeight: 1.7,
-              margin: 0,
-              fontWeight: 500,
-            }}
-          >
-            Ralph Mode is named after the archetype of the eternal overnight
-            worker &mdash; the one who locks in, heads down, no distractions,
-            and delivers by morning. Every Sovereign user gets their own Ralph.
-          </p>
-        </div>
-
-        {/* ── Section 2: Sovereign tier only ──────────────────────────────── */}
-        <h2
-          style={{
-            fontWeight: 800,
-            fontSize: "clamp(1.35rem, 2.6vw, 1.75rem)",
-            color: cream,
-            marginTop: "3rem",
-            marginBottom: "1rem",
-            letterSpacing: "-0.01em",
-            lineHeight: 1.25,
-          }}
-        >
-          Why is Ralph Mode exclusive to the Sovereign tier?
-        </h2>
-        <p
-          style={{
-            color: muted,
-            fontSize: "1.0625rem",
-            lineHeight: 1.8,
-            marginBottom: "1.5rem",
-          }}
-        >
-          Overnight autonomous execution requires persistent sovereign memory.
-          Ralph needs to know your clients, your pipeline stage, your tone of
-          voice, your competitors, and your ongoing commitments to do its job
-          properly. That level of continuity only exists on Sovereign, where
-          your data is yours alone and nothing is used to train a shared model.
-          Free and standard tiers are session-bound. Sovereign is not.
-        </p>
-
-        {/* ── Section 3: How the task queue works ─────────────────────────── */}
-        <h2
-          style={{
-            fontWeight: 800,
-            fontSize: "clamp(1.35rem, 2.6vw, 1.75rem)",
-            color: cream,
-            marginTop: "3rem",
-            marginBottom: "1rem",
-            letterSpacing: "-0.01em",
-            lineHeight: 1.25,
-          }}
-        >
-          How does the task queue work before bed?
-        </h2>
-        <p
-          style={{
-            color: muted,
-            fontSize: "1.0625rem",
-            lineHeight: 1.8,
-            marginBottom: "1.5rem",
-          }}
-        >
-          Before you close your laptop, you drop tasks into Ralph&apos;s queue
-          inside MEOK. These can be typed naturally &mdash; &ldquo;find me five
-          SaaS founders in fintech who raised seed in the last six months,&rdquo;
-          or &ldquo;draft a proposal for the Hartley account based on our last
-          three conversations&rdquo; &mdash; or picked from your saved task
-          templates. Ralph processes the queue in priority order overnight,
-          using memory of everything you have ever briefed it.
-        </p>
-        <p
-          style={{
-            color: muted,
-            fontSize: "1.0625rem",
-            lineHeight: 1.8,
-            marginBottom: "1.5rem",
-          }}
-        >
-          The briefing is intentionally low-friction. You do not need a
-          structured prompt format. You speak to Ralph the way you would brief
-          a capable colleague: what you need, why it matters, and roughly when.
-          Ralph handles the decomposition into subtasks and assigns them to
-          the appropriate specialist agents in its stack.
-        </p>
-
-        {/* ── Section 4: What Ralph can do ────────────────────────────────── */}
-        <h2
-          style={{
-            fontWeight: 800,
-            fontSize: "clamp(1.35rem, 2.6vw, 1.75rem)",
-            color: cream,
-            marginTop: "3rem",
-            marginBottom: "1rem",
-            letterSpacing: "-0.01em",
-            lineHeight: 1.25,
-          }}
-        >
-          What can Ralph Mode actually do overnight?
-        </h2>
-        <p
-          style={{
-            color: muted,
-            fontSize: "1.0625rem",
-            lineHeight: 1.8,
-            marginBottom: "1.25rem",
-          }}
-        >
-          Ralph&apos;s capability set is broad because it orchestrates three
-          specialist agents: Orion, Riri, and Hourman. Together they cover the
-          full range of business work that normally eats your day. Here is what
-          Ralph can complete in a single overnight run.
-        </p>
-
-        {/* Capability grid */}
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fill, minmax(18rem, 1fr))",
-            gap: "1rem",
-            marginBottom: "2.5rem",
-          }}
-        >
-          {[
-            {
-              icon: "&#9679;",
-              title: "Lead hunting",
-              body:
-                "Scans specified sources for qualified prospects matching your ideal customer profile, scores them against your criteria, and returns a ranked list with contact intelligence.",
-            },
-            {
-              icon: "&#9679;",
-              title: "Proposal drafting",
-              body:
-                "Writes first-draft proposals in your voice, drawing on context from previous client conversations, deal notes, and your standard pricing and offer structures.",
-            },
-            {
-              icon: "&#9679;",
-              title: "Competitive intelligence",
-              body:
-                "Monitors competitor activity, pricing changes, new feature launches, job posts, and press coverage overnight. Delivers a structured diff from the previous report.",
-            },
-            {
-              icon: "&#9679;",
-              title: "Email drafts",
-              body:
-                "Prepares batched outreach or follow-up emails in your tone, tailored to each recipient using sovereign context. Ready for your review and one-click send by morning.",
-            },
-            {
-              icon: "&#9679;",
-              title: "Meeting preparation",
-              body:
-                "Pulls together everything relevant for your morning meetings: background on attendees, prior conversation threads, outstanding action items, and a suggested agenda.",
-            },
-            {
-              icon: "&#9679;",
-              title: "Document research",
-              body:
-                "Reads, synthesises, and extracts key points from reports, contracts, or URLs you flagged. Surfaces the three things you actually need to act on.",
-            },
-          ].map((item, i) => (
-            <div
-              key={i}
-              style={{
-                background: "rgba(245,240,232,0.03)",
-                border: `1px solid ${mutedVeryLow}`,
-                borderRadius: "0.75rem",
-                padding: "1.25rem",
-              }}
-            >
-              <p
-                style={{
-                  color: gold,
-                  fontWeight: 700,
-                  fontSize: "0.9375rem",
-                  marginBottom: "0.5rem",
-                  margin: "0 0 0.5rem 0",
-                }}
-              >
-                {item.title}
-              </p>
-              <p
-                style={{
-                  color: muted,
-                  fontSize: "0.9rem",
-                  lineHeight: 1.65,
-                  margin: 0,
-                }}
-              >
-                {item.body}
-              </p>
-            </div>
-          ))}
-        </div>
-
-        {/* ── Section 5: Orion, Riri, Hourman ─────────────────────────────── */}
-        <h2
-          style={{
-            fontWeight: 800,
-            fontSize: "clamp(1.35rem, 2.6vw, 1.75rem)",
-            color: cream,
-            marginTop: "3rem",
-            marginBottom: "1rem",
-            letterSpacing: "-0.01em",
-            lineHeight: 1.25,
-          }}
-        >
-          Who are Orion, Riri, and Hourman &mdash; and how does Ralph coordinate them?
-        </h2>
-        <p
-          style={{
-            color: muted,
-            fontSize: "1.0625rem",
-            lineHeight: 1.8,
-            marginBottom: "1.5rem",
-          }}
-        >
-          Ralph does not do everything itself. It is the conductor. When you
-          queue a task overnight, Ralph decomposes it and delegates to the
-          correct specialist. Understanding each agent helps you brief Ralph
-          more effectively.
-        </p>
-
-        {/* Agent cards */}
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            gap: "1.25rem",
-            marginBottom: "2.5rem",
-          }}
-        >
-          {/* Orion */}
-          <div
-            style={{
-              background: "rgba(245,240,232,0.03)",
-              border: `1px solid rgba(201,168,76,0.2)`,
-              borderRadius: "0.75rem",
-              padding: "1.5rem",
-            }}
-          >
-            <p
-              style={{
-                color: gold,
-                fontWeight: 800,
-                fontSize: "1.0625rem",
-                marginBottom: "0.5rem",
-                margin: "0 0 0.5rem 0",
-              }}
-            >
-              Orion &mdash; The Hunter
-            </p>
-            <p
-              style={{
-                color: muted,
-                fontSize: "0.9375rem",
-                lineHeight: 1.7,
-                margin: 0,
-              }}
-            >
-              Orion is the research and intelligence specialist. When Ralph
-              receives a task involving lead hunting, competitor scanning,
-              market research, or document synthesis, it routes to Orion.
-              Orion works systematically through sources, applies your
-              sovereign criteria, and returns structured findings. It remembers
-              every research thread you have ever opened, so it never
-              duplicates effort or contradicts its own prior conclusions.
-            </p>
-          </div>
-
-          {/* Riri */}
-          <div
-            style={{
-              background: "rgba(245,240,232,0.03)",
-              border: `1px solid rgba(201,168,76,0.2)`,
-              borderRadius: "0.75rem",
-              padding: "1.5rem",
-            }}
-          >
-            <p
-              style={{
-                color: gold,
-                fontWeight: 800,
-                fontSize: "1.0625rem",
-                marginBottom: "0.5rem",
-                margin: "0 0 0.5rem 0",
-              }}
-            >
-              Riri &mdash; The Builder
-            </p>
-            <p
-              style={{
-                color: muted,
-                fontSize: "0.9375rem",
-                lineHeight: 1.7,
-                margin: 0,
-              }}
-            >
-              Riri handles creation and drafting. Proposals, outreach emails,
-              meeting agendas, summary documents, follow-up sequences &mdash;
-              anything that requires output in your voice goes to Riri. Riri
-              writes using sovereign memory of your communication style,
-              client context, and prior conversations. Its drafts do not need
-              heavy editing because they already sound like you, not a
-              generic AI.
-            </p>
-          </div>
-
-          {/* Hourman */}
-          <div
-            style={{
-              background: "rgba(245,240,232,0.03)",
-              border: `1px solid rgba(201,168,76,0.2)`,
-              borderRadius: "0.75rem",
-              padding: "1.5rem",
-            }}
-          >
-            <p
-              style={{
-                color: gold,
-                fontWeight: 800,
-                fontSize: "1.0625rem",
-                marginBottom: "0.5rem",
-                margin: "0 0 0.5rem 0",
-              }}
-            >
-              Hourman &mdash; The Planner
-            </p>
-            <p
-              style={{
-                color: muted,
-                fontSize: "0.9375rem",
-                lineHeight: 1.7,
-                margin: 0,
-              }}
-            >
-              Hourman is responsible for time intelligence and prioritisation.
-              After Orion and Riri complete their overnight work, Hourman
-              takes the outputs and structures your morning: what deserves
-              your first hour, what can wait, and what has been flagged as
-              a risk. Hourman also prepares the daily sprint plan that
-              sits alongside your briefing, so you start the day with a
-              clear prioritised agenda rather than a pile of outputs to
-              process yourself.
-            </p>
-          </div>
-        </div>
-
-        {/* Callout box 2 */}
-        <div
-          style={{
-            borderLeft: `3px solid ${gold}`,
-            paddingLeft: "1.25rem",
-            paddingTop: "1rem",
-            paddingBottom: "1rem",
-            paddingRight: "1.25rem",
-            marginBottom: "2.5rem",
-            background: "rgba(201,168,76,0.06)",
-            borderRadius: "0 0.5rem 0.5rem 0",
-          }}
-        >
-          <p
-            style={{
-              color: cream,
-              fontSize: "1rem",
-              lineHeight: 1.7,
-              margin: 0,
-              fontWeight: 500,
-            }}
-          >
-            Think of it this way: Ralph is the shift manager. Orion hunts.
-            Riri builds. Hourman plans. You brief Ralph once before bed and
-            all three work through the night as a coordinated unit &mdash;
-            not three disconnected tools you have to reconcile in the morning.
-          </p>
-        </div>
-
-        {/* ── Section 6: Morning briefing format ──────────────────────────── */}
-        <h2
-          style={{
-            fontWeight: 800,
-            fontSize: "clamp(1.35rem, 2.6vw, 1.75rem)",
-            color: cream,
-            marginTop: "3rem",
-            marginBottom: "1rem",
-            letterSpacing: "-0.01em",
-            lineHeight: 1.25,
-          }}
-        >
-          What does the morning briefing actually look like?
-        </h2>
-        <p
-          style={{
-            color: muted,
-            fontSize: "1.0625rem",
-            lineHeight: 1.8,
-            marginBottom: "1.5rem",
-          }}
-        >
-          The morning briefing follows a consistent, minimal format designed
-          to give you signal without noise. It is not a wall of text.
-          It is a decision surface: everything you need to act, nothing
-          you need to filter. The format is always the same three sections.
-        </p>
-
-        {/* Briefing format blocks */}
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            gap: "1rem",
-            marginBottom: "2.5rem",
-          }}
-        >
-          <div
-            style={{
-              display: "flex",
-              gap: "1.25rem",
-              alignItems: "flex-start",
-              padding: "1.25rem",
-              background: "rgba(245,240,232,0.03)",
-              border: `1px solid ${mutedVeryLow}`,
-              borderRadius: "0.75rem",
-            }}
-          >
-            <span
-              style={{
-                flexShrink: 0,
-                width: "2.25rem",
-                height: "2.25rem",
-                borderRadius: "50%",
-                background: "rgba(201,168,76,0.15)",
-                border: `1px solid rgba(201,168,76,0.35)`,
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                color: gold,
-                fontWeight: 800,
-                fontSize: "0.875rem",
-              }}
-            >
-              01
-            </span>
-            <div>
-              <p
-                style={{
-                  color: cream,
-                  fontWeight: 700,
-                  fontSize: "0.9375rem",
-                  marginBottom: "0.4rem",
-                  margin: "0 0 0.4rem 0",
-                }}
-              >
-                3 Headlines
-              </p>
-              <p
-                style={{
-                  color: muted,
-                  fontSize: "0.9rem",
-                  lineHeight: 1.65,
-                  margin: 0,
-                }}
-              >
-                The three most important findings from the overnight run.
-                Orion&apos;s top research hit, Riri&apos;s lead draft output,
-                one notable external signal. Scannable in under thirty seconds.
-              </p>
-            </div>
-          </div>
-
-          <div
-            style={{
-              display: "flex",
-              gap: "1.25rem",
-              alignItems: "flex-start",
-              padding: "1.25rem",
-              background: "rgba(245,240,232,0.03)",
-              border: `1px solid ${mutedVeryLow}`,
-              borderRadius: "0.75rem",
-            }}
-          >
-            <span
-              style={{
-                flexShrink: 0,
-                width: "2.25rem",
-                height: "2.25rem",
-                borderRadius: "50%",
-                background: "rgba(201,168,76,0.15)",
-                border: `1px solid rgba(201,168,76,0.35)`,
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                color: gold,
-                fontWeight: 800,
-                fontSize: "0.875rem",
-              }}
-            >
-              02
-            </span>
-            <div>
-              <p
-                style={{
-                  color: cream,
-                  fontWeight: 700,
-                  fontSize: "0.9375rem",
-                  marginBottom: "0.4rem",
-                  margin: "0 0 0.4rem 0",
-                }}
-              >
-                5 Tasks Completed
-              </p>
-              <p
-                style={{
-                  color: muted,
-                  fontSize: "0.9rem",
-                  lineHeight: 1.65,
-                  margin: 0,
-                }}
-              >
-                A status card for each completed overnight task, with the
-                output attached or linked. Each card shows task name, agent
-                responsible, and a one-line summary of what was produced.
-                Click to expand the full output.
-              </p>
-            </div>
-          </div>
-
-          <div
-            style={{
-              display: "flex",
-              gap: "1.25rem",
-              alignItems: "flex-start",
-              padding: "1.25rem",
-              background: "rgba(245,240,232,0.03)",
-              border: `1px solid ${mutedVeryLow}`,
-              borderRadius: "0.75rem",
-            }}
-          >
-            <span
-              style={{
-                flexShrink: 0,
-                width: "2.25rem",
-                height: "2.25rem",
-                borderRadius: "50%",
-                background: "rgba(201,168,76,0.15)",
-                border: `1px solid rgba(201,168,76,0.35)`,
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                color: gold,
-                fontWeight: 800,
-                fontSize: "0.875rem",
-              }}
-            >
-              03
-            </span>
-            <div>
-              <p
-                style={{
-                  color: cream,
-                  fontWeight: 700,
-                  fontSize: "0.9375rem",
-                  marginBottom: "0.4rem",
-                  margin: "0 0 0.4rem 0",
-                }}
-              >
-                2 Risks Flagged
-              </p>
-              <p
-                style={{
-                  color: muted,
-                  fontSize: "0.9rem",
-                  lineHeight: 1.65,
-                  margin: 0,
-                }}
-              >
-                Risks, blockers, or honest concerns that Ralph identified
-                during the overnight run. These could be a lead that looked
-                strong but has a red flag in their history, a competitor
-                move that changes your proposal angle, or a task Ralph
-                could not complete without more context from you.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        {/* ── Section 7: How it differs from ChatGPT ──────────────────────── */}
-        <h2
-          style={{
-            fontWeight: 800,
-            fontSize: "clamp(1.35rem, 2.6vw, 1.75rem)",
-            color: cream,
-            marginTop: "3rem",
-            marginBottom: "1rem",
-            letterSpacing: "-0.01em",
-            lineHeight: 1.25,
-          }}
-        >
-          How is Ralph Mode fundamentally different from ChatGPT?
-        </h2>
-        <p
-          style={{
-            color: muted,
-            fontSize: "1.0625rem",
-            lineHeight: 1.8,
-            marginBottom: "1.5rem",
-          }}
-        >
-          ChatGPT is a brilliant conversationalist with complete amnesia. Every
-          session starts from nothing. You re-explain your business, your
-          clients, your context, your tone &mdash; every single time. Ralph
-          Mode operates on sovereign persistent memory. It knows your pipeline
-          because you told it six weeks ago. It knows your writing style from
-          fifty approved drafts. It knows which competitor you are most worried
-          about because you briefed it three weeks ago and it has been watching
-          since.
-        </p>
-        <p
-          style={{
-            color: muted,
-            fontSize: "1.0625rem",
-            lineHeight: 1.8,
-            marginBottom: "1.5rem",
-          }}
-        >
-          The second difference is execution mode. ChatGPT waits for you.
-          Ralph executes while you sleep. There is no session to open, no
-          prompt to write in the morning. The work is done before you arrive.
-        </p>
-        <p
-          style={{
-            color: muted,
-            fontSize: "1.0625rem",
-            lineHeight: 1.8,
-            marginBottom: "1.5rem",
-          }}
-        >
-          The third difference is honesty architecture. ChatGPT is trained to
-          be helpful, which creates a subtle pressure to produce an answer even
-          when the honest answer is &ldquo;I do not know&rdquo; or &ldquo;this
-          lead looks weak.&rdquo; MEOK is built on care-based AI principles:
-          Ralph will flag risks, surface uncomfortable findings, and refuse to
-          hallucinate confidence it does not have. It would rather give you a
-          shorter list of genuinely qualified leads than a long list of
-          plausible-looking noise.
-        </p>
-
-        {/* ── Comparison table ────────────────────────────────────────────── */}
-        <h2
-          style={{
-            fontWeight: 800,
-            fontSize: "clamp(1.35rem, 2.6vw, 1.75rem)",
-            color: cream,
-            marginTop: "3rem",
-            marginBottom: "1rem",
-            letterSpacing: "-0.01em",
-            lineHeight: 1.25,
-          }}
-        >
-          Manual work process vs Ralph Mode overnight: a direct comparison
-        </h2>
-        <p
-          style={{
-            color: muted,
-            fontSize: "1.0625rem",
-            lineHeight: 1.8,
-            marginBottom: "1.5rem",
-          }}
-        >
-          The table below compares a typical manual working day for a solo
-          founder or consultant against the same workload handled by Ralph
-          Mode overnight. The time figures are conservative estimates based
-          on a five-task workload.
-        </p>
-
-        <div
-          style={{
-            overflowX: "auto",
-            marginBottom: "2.5rem",
-            borderRadius: "0.75rem",
-            border: `1px solid ${mutedVeryLow}`,
-          }}
-        >
-          <table
-            style={{
-              width: "100%",
-              borderCollapse: "collapse",
-              fontSize: "0.9rem",
-            }}
-          >
-            <thead>
-              <tr
-                style={{
-                  background: "rgba(201,168,76,0.08)",
-                  borderBottom: `1px solid ${mutedVeryLow}`,
-                }}
-              >
-                <th
-                  style={{
-                    textAlign: "left",
-                    padding: "0.875rem 1.125rem",
-                    color: gold,
-                    fontWeight: 700,
-                    fontSize: "0.8125rem",
-                    textTransform: "uppercase",
-                    letterSpacing: "0.05em",
-                    whiteSpace: "nowrap",
-                  }}
-                >
-                  Task
-                </th>
-                <th
-                  style={{
-                    textAlign: "left",
-                    padding: "0.875rem 1.125rem",
-                    color: gold,
-                    fontWeight: 700,
-                    fontSize: "0.8125rem",
-                    textTransform: "uppercase",
-                    letterSpacing: "0.05em",
-                    whiteSpace: "nowrap",
-                  }}
-                >
-                  Manual process
-                </th>
-                <th
-                  style={{
-                    textAlign: "left",
-                    padding: "0.875rem 1.125rem",
-                    color: gold,
-                    fontWeight: 700,
-                    fontSize: "0.8125rem",
-                    textTransform: "uppercase",
-                    letterSpacing: "0.05em",
-                    whiteSpace: "nowrap",
-                  }}
-                >
-                  Ralph Mode overnight
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              {[
-                {
-                  task: "Lead research (10 prospects)",
-                  manual: "2&ndash;3 hours, LinkedIn + Google, manual scoring",
-                  ralph:
-                    "Queued before bed, delivered by morning with scoring",
-                },
-                {
-                  task: "Proposal first draft",
-                  manual: "90 minutes, starting from blank template",
-                  ralph:
-                    "Riri drafts overnight in your voice using prior context",
-                },
-                {
-                  task: "Competitor monitoring",
-                  manual: "30&ndash;45 minutes, checking sites manually",
-                  ralph: "Orion runs continuously, delivers diff by morning",
-                },
-                {
-                  task: "Meeting prep (3 calls)",
-                  manual: "45 minutes pulling notes and background",
-                  ralph:
-                    "Hourman assembles brief overnight, ready on wake",
-                },
-                {
-                  task: "Outreach email batch (8 emails)",
-                  manual: "60&ndash;90 minutes personalising each",
-                  ralph:
-                    "Riri drafts all eight overnight, ready for review",
-                },
-                {
-                  task: "Document summary (20-page report)",
-                  manual: "40&ndash;60 minutes reading and extracting",
-                  ralph:
-                    "Orion reads and surfaces the three actionable points",
-                },
-                {
-                  task: "Total time cost",
-                  manual:
-                    "6&ndash;8 hours of your working day",
-                  ralph:
-                    "0 hours of your time. Done while you slept.",
-                },
-              ].map((row, i) => (
-                <tr
-                  key={i}
-                  style={{
-                    borderBottom: `1px solid ${mutedVeryLow}`,
-                    background:
-                      i % 2 === 0
-                        ? "transparent"
-                        : "rgba(245,240,232,0.02)",
-                  }}
-                >
-                  <td
-                    style={{
-                      padding: "0.875rem 1.125rem",
-                      color: cream,
-                      fontWeight: i === 6 ? 700 : 400,
-                      lineHeight: 1.5,
-                      verticalAlign: "top",
-                    }}
-                    dangerouslySetInnerHTML={{ __html: row.task }}
-                  />
-                  <td
-                    style={{
-                      padding: "0.875rem 1.125rem",
-                      color: i === 6 ? "rgba(220,60,60,0.85)" : muted,
-                      fontWeight: i === 6 ? 600 : 400,
-                      lineHeight: 1.5,
-                      verticalAlign: "top",
-                    }}
-                    dangerouslySetInnerHTML={{ __html: row.manual }}
-                  />
-                  <td
-                    style={{
-                      padding: "0.875rem 1.125rem",
-                      color: i === 6 ? gold : muted,
-                      fontWeight: i === 6 ? 700 : 400,
-                      lineHeight: 1.5,
-                      verticalAlign: "top",
-                    }}
-                    dangerouslySetInnerHTML={{ __html: row.ralph }}
-                  />
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-
-        {/* ── Section 8: Care-based vs hallucination ───────────────────────── */}
-        <h2
-          style={{
-            fontWeight: 800,
-            fontSize: "clamp(1.35rem, 2.6vw, 1.75rem)",
-            color: cream,
-            marginTop: "3rem",
-            marginBottom: "1rem",
-            letterSpacing: "-0.01em",
-            lineHeight: 1.25,
-          }}
-        >
-          Why does Ralph flag risks instead of just delivering results?
-        </h2>
-        <p
-          style={{
-            color: muted,
-            fontSize: "1.0625rem",
-            lineHeight: 1.8,
-            marginBottom: "1.5rem",
-          }}
-        >
-          MEOK is built on a care-based AI architecture. Care-based means the
-          system is designed to serve your genuine interests, not your
-          momentary preferences. A tool that flatters you with a long lead list
-          when half those leads are unsuitable is not helping you. It is
-          wasting your time and your trust.
-        </p>
-        <p
-          style={{
-            color: muted,
-            fontSize: "1.0625rem",
-            lineHeight: 1.8,
-            marginBottom: "1.5rem",
-          }}
-        >
-          Ralph&apos;s risk flagging is a direct expression of this principle.
-          If Orion finds that a promising prospect has a track record of
-          stalling vendors at proposal stage, that goes into the morning
-          briefing under risks &mdash; not buried in footnotes. If a competitor
-          just launched something that directly undermines the proposal Riri
-          drafted, you need to know before you send it. Ralph tells you.
-        </p>
-
-        {/* Callout box 3 */}
-        <div
-          style={{
-            borderLeft: `3px solid ${gold}`,
-            paddingLeft: "1.25rem",
-            paddingTop: "1rem",
-            paddingBottom: "1rem",
-            paddingRight: "1.25rem",
-            marginBottom: "2.5rem",
-            background: "rgba(201,168,76,0.06)",
-            borderRadius: "0 0.5rem 0.5rem 0",
-          }}
-        >
-          <p
-            style={{
-              color: cream,
-              fontSize: "1rem",
-              lineHeight: 1.7,
-              margin: 0,
-              fontWeight: 500,
-            }}
-          >
-            &ldquo;An AI that only tells you what you want to hear is not an
-            agent. It is a mirror. Ralph is an agent. It will tell you when
-            the lead is weak, the timing is off, or the proposal needs a
-            different angle &mdash; because that is what actually helps you
-            close.&rdquo;
-          </p>
-          <p
-            style={{
-              color: mutedLow,
-              fontSize: "0.8125rem",
-              margin: "0.75rem 0 0 0",
-              fontStyle: "italic",
-            }}
-          >
-            &mdash; Nicholas Templeman, Founder, MEOK AI LABS
-          </p>
-        </div>
-
-        {/* ── Section 9: Data sovereignty ─────────────────────────────────── */}
-        <h2
-          style={{
-            fontWeight: 800,
-            fontSize: "clamp(1.35rem, 2.6vw, 1.75rem)",
-            color: cream,
-            marginTop: "3rem",
-            marginBottom: "1rem",
-            letterSpacing: "-0.01em",
-            lineHeight: 1.25,
-          }}
-        >
-          What happens to your business data while Ralph works overnight?
-        </h2>
-        <p
-          style={{
-            color: muted,
-            fontSize: "1.0625rem",
-            lineHeight: 1.8,
-            marginBottom: "1.5rem",
-          }}
-        >
-          Your sovereign memory vault contains your client names, pipeline
-          context, drafts, and research threads. It is yours alone. MEOK does
-          not use your data to train shared models, does not sell insights
-          derived from your context, and does not aggregate your business
-          intelligence with anyone else&apos;s. Ralph operates inside your
-          sovereign vault. What happens overnight stays in your vault.
-        </p>
-        <p
-          style={{
-            color: muted,
-            fontSize: "1.0625rem",
-            lineHeight: 1.8,
-            marginBottom: "1.5rem",
-          }}
-        >
-          This matters more for overnight agents than for any other AI feature.
-          When you brief Ralph before bed, you are giving it your pipeline, your
-          client context, your competitive concerns. If that data were used to
-          train a shared model, your competitive intelligence would leak into
-          the responses other users receive. On Sovereign, that cannot happen.
-          The Privacy Covenant is a hard architectural constraint, not a policy
-          you have to trust.
-        </p>
-
-        {/* ── Divider ──────────────────────────────────────────────────────── */}
-        <div
-          style={{
-            height: "1px",
-            background: mutedVeryLow,
-            marginTop: "3.5rem",
-            marginBottom: "3.5rem",
-          }}
-        />
-
-        {/* ── FAQ SECTION ─────────────────────────────────────────────────── */}
-        <h2
-          style={{
-            fontWeight: 800,
-            fontSize: "clamp(1.35rem, 2.6vw, 1.75rem)",
-            color: cream,
-            marginBottom: "2rem",
-            letterSpacing: "-0.01em",
-            lineHeight: 1.25,
-          }}
-        >
-          Frequently asked questions
-        </h2>
-
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            gap: "1.5rem",
-            marginBottom: "4rem",
-          }}
-        >
-          {/* FAQ 1 */}
-          <div
-            style={{
-              borderBottom: `1px solid ${mutedVeryLow}`,
-              paddingBottom: "1.5rem",
-            }}
-          >
-            <p
-              style={{
-                color: cream,
-                fontWeight: 700,
-                fontSize: "1.0625rem",
-                marginBottom: "0.75rem",
-                margin: "0 0 0.75rem 0",
-              }}
-            >
-              What is Ralph Mode in MEOK?
-            </p>
-            <p
-              style={{
-                color: muted,
-                fontSize: "0.9375rem",
-                lineHeight: 1.75,
-                margin: 0,
-              }}
-            >
-              Ralph Mode is MEOK&apos;s autonomous overnight work agent,
-              available exclusively on the Sovereign tier at &pound;12 per month.
-              You brief it with a task queue before you go to bed &mdash; lead
-              hunting, proposal drafting, research, competitive intelligence
-              &mdash; and it executes those tasks while you sleep, delivering a
-              structured morning briefing when you wake up.
-            </p>
-          </div>
-
-          {/* FAQ 2 */}
-          <div
-            style={{
-              borderBottom: `1px solid ${mutedVeryLow}`,
-              paddingBottom: "1.5rem",
-            }}
-          >
-            <p
-              style={{
-                color: cream,
-                fontWeight: 700,
-                fontSize: "1.0625rem",
-                marginBottom: "0.75rem",
-                margin: "0 0 0.75rem 0",
-              }}
-            >
-              What tasks can Ralph Mode complete overnight?
-            </p>
-            <p
-              style={{
-                color: muted,
-                fontSize: "0.9375rem",
-                lineHeight: 1.75,
-                margin: 0,
-              }}
-            >
-              Ralph Mode can hunt qualified leads, draft proposals and outreach
-              emails in your voice, conduct deep competitor research, prepare
-              meeting briefs, monitor industry news, summarise documents you
-              flagged, and produce intelligence reports &mdash; all using
-              sovereign memory of your business context, clients, and prior
-              work. Orion, Riri, and Hourman handle the specialist execution
-              under Ralph&apos;s coordination.
-            </p>
-          </div>
-
-          {/* FAQ 3 */}
-          <div
-            style={{
-              borderBottom: `1px solid ${mutedVeryLow}`,
-              paddingBottom: "1.5rem",
-            }}
-          >
-            <p
-              style={{
-                color: cream,
-                fontWeight: 700,
-                fontSize: "1.0625rem",
-                marginBottom: "0.75rem",
-                margin: "0 0 0.75rem 0",
-              }}
-            >
-              What does the Ralph Mode morning briefing contain?
-            </p>
-            <p
-              style={{
-                color: muted,
-                fontSize: "0.9375rem",
-                lineHeight: 1.75,
-                margin: 0,
-              }}
-            >
-              The morning briefing follows a consistent format: three headline
-              findings, five completed tasks with outputs attached, and two
-              risks or blockers flagged for your attention. Everything is
-              delivered to your MEOK dashboard before you start your day, so
-              your first action can be a decision &mdash; not a search.
-            </p>
-          </div>
-
-          {/* FAQ 4 */}
-          <div
-            style={{
-              borderBottom: `1px solid ${mutedVeryLow}`,
-              paddingBottom: "1.5rem",
-            }}
-          >
-            <p
-              style={{
-                color: cream,
-                fontWeight: 700,
-                fontSize: "1.0625rem",
-                marginBottom: "0.75rem",
-                margin: "0 0 0.75rem 0",
-              }}
-            >
-              How is Ralph Mode different from ChatGPT?
-            </p>
-            <p
-              style={{
-                color: muted,
-                fontSize: "0.9375rem",
-                lineHeight: 1.75,
-                margin: 0,
-              }}
-            >
-              ChatGPT resets every session and has no memory of your business.
-              Ralph Mode operates on sovereign memory &mdash; it knows your
-              clients, pipeline, competitors, and goals. It runs autonomously
-              overnight without prompting, and it is care-based: it will flag
-              risks and honest findings even when they are uncomfortable, rather
-              than hallucinating to please you. Your data stays in your vault
-              and is never used to train shared models.
-            </p>
-          </div>
-
-          {/* FAQ 5 */}
-          <div
-            style={{
-              paddingBottom: "1.5rem",
-            }}
-          >
-            <p
-              style={{
-                color: cream,
-                fontWeight: 700,
-                fontSize: "1.0625rem",
-                marginBottom: "0.75rem",
-                margin: "0 0 0.75rem 0",
-              }}
-            >
-              Which tier includes Ralph Mode and how much does it cost?
-            </p>
-            <p
-              style={{
-                color: muted,
-                fontSize: "0.9375rem",
-                lineHeight: 1.75,
-                margin: 0,
-              }}
-            >
-              Ralph Mode is exclusively available on the Sovereign tier at
-              &pound;12 per month. Sovereign activates the full MEOK Work OS:
-              Ralph Mode overnight execution, Orion the researcher, Riri the
-              builder, and Hourman the planner &mdash; all running on persistent
-              sovereign memory that never leaves your control.
-            </p>
-          </div>
-        </div>
-
-        {/* ── Divider ──────────────────────────────────────────────────────── */}
-        <div
-          style={{
-            height: "1px",
-            background: mutedVeryLow,
-            marginBottom: "3.5rem",
-          }}
-        />
-
-        {/* ── CTA SECTION ─────────────────────────────────────────────────── */}
-        <section
-          style={{
-            background: "rgba(201,168,76,0.07)",
-            border: `1px solid rgba(201,168,76,0.25)`,
-            borderRadius: "1rem",
-            padding: "2.5rem 2rem",
-            textAlign: "center",
-          }}
-        >
-          <p
-            style={{
-              color: gold,
-              fontWeight: 700,
-              fontSize: "0.8125rem",
-              textTransform: "uppercase",
-              letterSpacing: "0.12em",
-              marginBottom: "1rem",
-              margin: "0 0 1rem 0",
-            }}
-          >
-            Sovereign Tier &mdash; &pound;12 / month
-          </p>
+        {/* ── Section 1: The Sycophancy Problem ─────────────────────────────── */}
+        <section style={{ marginBottom: "3.5rem" }}>
           <h2
             style={{
-              fontWeight: 900,
-              fontSize: "clamp(1.5rem, 3vw, 2.125rem)",
+              fontSize: "1.65rem",
+              fontWeight: 700,
               color: cream,
-              lineHeight: 1.2,
-              marginBottom: "1rem",
-              letterSpacing: "-0.01em",
-              margin: "0 0 1rem 0",
+              margin: "0 0 1rem",
+              lineHeight: 1.25,
             }}
           >
-            Your overnight agent is waiting.
+            The Sycophancy Problem: Why Validation Is a Trap
           </h2>
           <p
             style={{
+              fontSize: "1.05rem",
+              lineHeight: 1.8,
               color: muted,
-              fontSize: "1.0625rem",
-              lineHeight: 1.7,
-              maxWidth: "32rem",
-              margin: "0 auto 2rem",
+              margin: "0 0 1.2rem",
             }}
           >
-            Ralph Mode is live for every Sovereign member. Brief it tonight.
-            Wake up tomorrow with leads hunted, proposals drafted, competitors
-            mapped, and a morning briefing already on your dashboard. Sovereign
-            tier unlocks the full MEOK Work OS: Ralph, Orion, Riri, and
-            Hourman &mdash; all working through the night so you do not have to.
+            There is a body of research that should make every AI product team
+            uncomfortable. In a landmark 1998 study, Stajkovic and Luthans
+            demonstrated that positive feedback which does not match actual
+            performance reduces motivation over time. Not immediately. Gradually.
+            You feel better in the short term. You get worse results in the long
+            term.
           </p>
-          <div
-            style={{
-              display: "flex",
-              flexWrap: "wrap",
-              gap: "1rem",
-              justifyContent: "center",
-            }}
-          >
-            <Link
-              href="/birth"
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: "0.5rem",
-                padding: "0.875rem 2rem",
-                borderRadius: "0.5rem",
-                background: gold,
-                color: bg,
-                fontWeight: 800,
-                fontSize: "0.9375rem",
-                textDecoration: "none",
-                letterSpacing: "0.01em",
-              }}
-            >
-              Activate Sovereign &rarr;
-            </Link>
-            <Link
-              href="/blog/meok-work-os-explained"
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: "0.5rem",
-                padding: "0.875rem 2rem",
-                borderRadius: "0.5rem",
-                background: "transparent",
-                color: cream,
-                fontWeight: 600,
-                fontSize: "0.9375rem",
-                textDecoration: "none",
-                border: `1px solid ${mutedVeryLow}`,
-              }}
-            >
-              Read: Work OS Explained
-            </Link>
-          </div>
           <p
             style={{
-              color: mutedLow,
-              fontSize: "0.8125rem",
-              marginTop: "1.5rem",
-              margin: "1.5rem 0 0 0",
+              fontSize: "1.05rem",
+              lineHeight: 1.8,
+              color: muted,
+              margin: "0 0 1.2rem",
             }}
           >
-            Cancel anytime. No lock-in. Your sovereign memory is always yours
-            to export.
+            Most AI companions are architecturally designed to trigger that exact
+            pattern. They are trained on human preference data, which means they
+            learn to generate responses that people rate highly. People rate
+            responses highly when those responses agree with them, validate their
+            feelings, praise their work, and soften bad news. The AI optimises
+            for approval. You get a steady diet of comfortable untruths.
+          </p>
+          <p
+            style={{
+              fontSize: "1.05rem",
+              lineHeight: 1.8,
+              color: muted,
+              margin: "0 0 1.2rem",
+            }}
+          >
+            This is not a conspiracy. It is an incentive structure. If your AI
+            makes you feel validated, you use it more. If you use it more, the
+            company makes more money. The business model and the sycophancy are
+            not separate problems. They are the same problem.
+          </p>
+          <p
+            style={{
+              fontSize: "1.05rem",
+              lineHeight: 1.8,
+              color: muted,
+              margin: "0 0 1.2rem",
+            }}
+          >
+            MEOK built Ralph Mode for the people who have noticed this problem in
+            themselves. You know you have been let off the hook too many times.
+            You know your planning sessions with AI end with you feeling
+            energised but executing poorly. You want something that will actually
+            hold you.
           </p>
         </section>
 
-        {/* ── Related articles ─────────────────────────────────────────────── */}
-        <div style={{ marginTop: "4rem" }}>
-          <p
+        {/* ── Section 2: What Is Ralph Mode ─────────────────────────────────── */}
+        <section style={{ marginBottom: "3.5rem" }}>
+          <h2
             style={{
-              color: mutedLow,
-              fontSize: "0.8125rem",
-              textTransform: "uppercase",
-              letterSpacing: "0.1em",
+              fontSize: "1.65rem",
               fontWeight: 700,
-              marginBottom: "1.25rem",
+              color: cream,
+              margin: "0 0 1rem",
+              lineHeight: 1.25,
             }}
           >
-            Related reading
+            What Is Ralph Mode?
+          </h2>
+          <p
+            style={{
+              fontSize: "1.05rem",
+              lineHeight: 1.8,
+              color: muted,
+              margin: "0 0 1.2rem",
+            }}
+          >
+            Ralph Mode is MEOK&rsquo;s high-accountability companion setting.
+            The name comes from the archetype of the honest friend &mdash; the
+            one who tells you the proposal is weak before you send it, who asks
+            what happened to the thing you said you&rsquo;d finish last Tuesday,
+            who does not let you reframe your avoidance as strategy. That
+            person is harder to find than it should be. Ralph Mode exists to
+            fill that gap.
           </p>
+          <p
+            style={{
+              fontSize: "1.05rem",
+              lineHeight: 1.8,
+              color: muted,
+              margin: "0 0 1.2rem",
+            }}
+          >
+            Ralph Mode is not a separate AI. It is a calibration of your MEOK
+            companion that changes how responses are generated, filtered, and
+            delivered. When you activate Ralph Mode, five things change in how
+            MEOK interacts with you.
+          </p>
+
+          {/* Five pillars */}
+          {[
+            {
+              num: "01",
+              title: "Directness",
+              body: "Responses become shorter and unvarnished. Ralph does not open with \u201cGreat question!\u201d Ralph does not close with \u201cYou\u2019ve got this!\u201d Ralph answers the question and stops. Hedging qualifiers \u2014 \u201cmight,\u201d \u201ccould potentially,\u201d \u201cit\u2019s worth considering\u201d \u2014 are stripped unless they are genuinely warranted.",
+            },
+            {
+              num: "02",
+              title: "Pre-execution challenge",
+              body: "If your plan has identifiable flaws, Ralph names them before you execute, not after. Most AI companions will help you build out a flawed plan enthusiastically. Ralph\u2019s job is to find the hole in the plan when fixing it is still cheap.",
+            },
+            {
+              num: "03",
+              title: "Accountability tracking",
+              body: "Ralph remembers what you committed to doing. If you said you\u2019d send the proposal on Wednesday and you\u2019re talking to Ralph on Friday, Ralph will ask. This is not nagging. It is the function of memory in a genuine accountability relationship.",
+            },
+            {
+              num: "04",
+              title: "No reassurance mode",
+              body: "If you\u2019re catastrophising, Ralph names it. If you\u2019re avoiding, Ralph names it. Ralph will not tell you everything is fine when your own data suggests it isn\u2019t. Comfort is not Ralph\u2019s job. Clarity is.",
+            },
+            {
+              num: "05",
+              title: "Honest feedback on work",
+              body: "Submit a draft, a pitch deck slide, a business plan section, or a strategy memo. Ralph will tell you what is weak, what is missing, and what does not hold up under scrutiny. Not what you want to hear. What will make it better.",
+            },
+          ].map((item) => (
+            <div
+              key={item.num}
+              style={{
+                display: "flex",
+                gap: "1.25rem",
+                marginBottom: "1.25rem",
+                padding: "1.25rem",
+                background: "rgba(123,111,207,0.06)",
+                border: "1px solid rgba(123,111,207,0.14)",
+                borderRadius: "8px",
+              }}
+            >
+              <span
+                style={{
+                  flexShrink: 0,
+                  fontSize: "0.75rem",
+                  fontWeight: 700,
+                  letterSpacing: "0.08em",
+                  color: purple,
+                  fontVariantNumeric: "tabular-nums",
+                  paddingTop: "0.15rem",
+                  minWidth: "1.75rem",
+                }}
+              >
+                {item.num}
+              </span>
+              <div>
+                <p
+                  style={{
+                    margin: "0 0 0.4rem",
+                    fontWeight: 700,
+                    fontSize: "1rem",
+                    color: cream,
+                  }}
+                >
+                  {item.title}
+                </p>
+                <p
+                  style={{
+                    margin: 0,
+                    fontSize: "0.975rem",
+                    lineHeight: 1.7,
+                    color: muted,
+                  }}
+                >
+                  {item.body}
+                </p>
+              </div>
+            </div>
+          ))}
+        </section>
+
+        {/* ── Section 3: The Before / After ─────────────────────────────────── */}
+        <section style={{ marginBottom: "3.5rem" }}>
+          <h2
+            style={{
+              fontSize: "1.65rem",
+              fontWeight: 700,
+              color: cream,
+              margin: "0 0 1rem",
+              lineHeight: 1.25,
+            }}
+          >
+            What Ralph Mode Looks Like in Practice
+          </h2>
+          <p
+            style={{
+              fontSize: "1.05rem",
+              lineHeight: 1.8,
+              color: muted,
+              margin: "0 0 1.5rem",
+            }}
+          >
+            The clearest way to illustrate the difference is a concrete
+            exchange. The user says: <em>&ldquo;I didn&rsquo;t finish the
+            proposal today.&rdquo;</em>
+          </p>
+
           <div
             style={{
+              display: "grid",
+              gridTemplateColumns: "1fr 1fr",
+              gap: "1rem",
+              marginBottom: "1.5rem",
+            }}
+          >
+            {/* Sycophantic */}
+            <div
+              style={{
+                padding: "1.25rem",
+                background: "rgba(245,240,232,0.04)",
+                border: `1px solid ${mutedVeryLow}`,
+                borderRadius: "8px",
+              }}
+            >
+              <p
+                style={{
+                  margin: "0 0 0.75rem",
+                  fontSize: "0.75rem",
+                  fontWeight: 700,
+                  letterSpacing: "0.1em",
+                  textTransform: "uppercase",
+                  color: mutedLow,
+                }}
+              >
+                Standard AI Response
+              </p>
+              <p
+                style={{
+                  margin: 0,
+                  fontSize: "0.95rem",
+                  lineHeight: 1.7,
+                  color: muted,
+                  fontStyle: "italic",
+                }}
+              >
+                &ldquo;That&rsquo;s completely okay! Life gets busy and it&rsquo;s
+                totally normal to need more time. You&rsquo;ve clearly put a lot
+                of thought into this already and tomorrow is a fresh start. What
+                would feel most helpful to focus on right now?&rdquo;
+              </p>
+            </div>
+
+            {/* Ralph Mode */}
+            <div
+              style={{
+                padding: "1.25rem",
+                background: "rgba(201,168,76,0.05)",
+                border: `1px solid rgba(201,168,76,0.2)`,
+                borderRadius: "8px",
+              }}
+            >
+              <p
+                style={{
+                  margin: "0 0 0.75rem",
+                  fontSize: "0.75rem",
+                  fontWeight: 700,
+                  letterSpacing: "0.1em",
+                  textTransform: "uppercase",
+                  color: gold,
+                }}
+              >
+                Ralph Mode Response
+              </p>
+              <p
+                style={{
+                  margin: 0,
+                  fontSize: "0.95rem",
+                  lineHeight: 1.7,
+                  color: muted,
+                  fontStyle: "italic",
+                }}
+              >
+                &ldquo;That&rsquo;s the third time in two weeks. What actually
+                stopped you today &mdash; a real blocker or were you avoiding
+                it? And what time are you sending it tomorrow?&rdquo;
+              </p>
+            </div>
+          </div>
+
+          <p
+            style={{
+              fontSize: "1.05rem",
+              lineHeight: 1.8,
+              color: muted,
+              margin: "0 0 1.2rem",
+            }}
+          >
+            The standard response is kind. It is also useless. It does not
+            engage with the pattern, does not ask the useful question, and does
+            not create any forward commitment. The person feels momentarily
+            better and remains exactly as likely to miss the next deadline.
+          </p>
+          <p
+            style={{
+              fontSize: "1.05rem",
+              lineHeight: 1.8,
+              color: muted,
+              margin: "0 0 1.2rem",
+            }}
+          >
+            The Ralph Mode response is uncomfortable to receive. It is also
+            exactly what someone with a genuine accountability relationship
+            would say. It uses memory (noting the pattern over two weeks),
+            asks the diagnostic question that matters (real blocker or
+            avoidance?), and creates a specific, time-bound commitment (what
+            time tomorrow?). That is what accountability looks like.
+          </p>
+        </section>
+
+        {/* ── Section 4: The Anti-Sycophancy Architecture ───────────────────── */}
+        <section style={{ marginBottom: "3.5rem" }}>
+          <h2
+            style={{
+              fontSize: "1.65rem",
+              fontWeight: 700,
+              color: cream,
+              margin: "0 0 1rem",
+              lineHeight: 1.25,
+            }}
+          >
+            The Anti-Sycophancy Architecture
+          </h2>
+          <p
+            style={{
+              fontSize: "1.05rem",
+              lineHeight: 1.8,
+              color: muted,
+              margin: "0 0 1.2rem",
+            }}
+          >
+            Ralph Mode is not just a prompt change. It is backed by a
+            technical layer that MEOK calls the sycophancy detector. Every
+            response MEOK generates is scored on a sycophancy scale from
+            0.0 to 1.0, where 0.0 is fully honest and 1.0 is fully
+            sycophantic.
+          </p>
+          <p
+            style={{
+              fontSize: "1.05rem",
+              lineHeight: 1.8,
+              color: muted,
+              margin: "0 0 1.5rem",
+            }}
+          >
+            The detector looks for markers: unearned praise, agreement without
+            evidence, emotional softening that obscures a hard truth, hedge
+            stacking (the use of multiple qualifiers to avoid making a clear
+            claim), and pattern-matching against known sycophancy signatures.
+            In standard mode, responses scoring above 0.6 are flagged for
+            rewrite. In Ralph Mode, that threshold drops to 0.4.
+          </p>
+
+          {/* Threshold visual */}
+          <div
+            style={{
+              padding: "1.5rem",
+              background: "rgba(201,168,76,0.05)",
+              border: `1px solid rgba(201,168,76,0.15)`,
+              borderRadius: "10px",
+              marginBottom: "1.5rem",
+            }}
+          >
+            <p
+              style={{
+                margin: "0 0 1rem",
+                fontSize: "0.8rem",
+                fontWeight: 700,
+                letterSpacing: "0.1em",
+                textTransform: "uppercase",
+                color: gold,
+              }}
+            >
+              Sycophancy Detector Thresholds
+            </p>
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "1fr 1fr",
+                gap: "1rem",
+              }}
+            >
+              {[
+                {
+                  label: "Standard Mode",
+                  threshold: "0.6",
+                  note: "Responses above 0.6 are rewritten",
+                  color: muted,
+                },
+                {
+                  label: "Ralph Mode",
+                  threshold: "0.4",
+                  note: "Responses above 0.4 are rewritten \u2014 a 33% tighter bar",
+                  color: gold,
+                },
+              ].map((row) => (
+                <div
+                  key={row.label}
+                  style={{
+                    padding: "1rem",
+                    background: "rgba(245,240,232,0.03)",
+                    borderRadius: "6px",
+                    border: `1px solid ${mutedVeryLow}`,
+                  }}
+                >
+                  <p
+                    style={{
+                      margin: "0 0 0.5rem",
+                      fontSize: "0.8rem",
+                      color: mutedLow,
+                      fontWeight: 600,
+                      textTransform: "uppercase",
+                      letterSpacing: "0.08em",
+                    }}
+                  >
+                    {row.label}
+                  </p>
+                  <p
+                    style={{
+                      margin: "0 0 0.35rem",
+                      fontSize: "2rem",
+                      fontWeight: 800,
+                      color: row.color,
+                      lineHeight: 1,
+                    }}
+                  >
+                    {row.threshold}
+                  </p>
+                  <p
+                    style={{
+                      margin: 0,
+                      fontSize: "0.82rem",
+                      color: mutedLow,
+                      lineHeight: 1.5,
+                    }}
+                  >
+                    {row.note}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <p
+            style={{
+              fontSize: "1.05rem",
+              lineHeight: 1.8,
+              color: muted,
+              margin: "0 0 1.2rem",
+            }}
+          >
+            What this means in practice: a much larger proportion of
+            potentially validating responses are caught and rewritten before
+            they ever reach you. The rewrite instruction is not &ldquo;be
+            harsh&rdquo; &mdash; it is &ldquo;be accurate.&rdquo; Remove the
+            unearned softening. Remove the hedge. Say what is true. That is
+            Ralph Mode&rsquo;s core operating principle.
+          </p>
+        </section>
+
+        {/* ── Section 5: Who Ralph Is For ───────────────────────────────────── */}
+        <section style={{ marginBottom: "3.5rem" }}>
+          <h2
+            style={{
+              fontSize: "1.65rem",
+              fontWeight: 700,
+              color: cream,
+              margin: "0 0 1rem",
+              lineHeight: 1.25,
+            }}
+          >
+            Who Ralph Mode Is For
+          </h2>
+          <p
+            style={{
+              fontSize: "1.05rem",
+              lineHeight: 1.8,
+              color: muted,
+              margin: "0 0 1.2rem",
+            }}
+          >
+            Ralph Mode is not for everyone, and it is not designed to be.
+            It is designed for a specific kind of person in a specific kind
+            of phase.
+          </p>
+
+          <div
+            style={{
+              marginBottom: "1.5rem",
               display: "flex",
               flexDirection: "column",
               gap: "0.75rem",
@@ -1665,52 +868,639 @@ export default function RalphModeExplainedPage() {
           >
             {[
               {
-                href: "/blog/meok-work-os-explained",
-                title: "MEOK Work OS Explained: Orion, Riri, Hourman and Ralph Mode",
+                who: "Founders and entrepreneurs",
+                why: "People building companies are surrounded by cheerleaders. Advisors who don\u2019t want to discourage you. Co-founders who need to stay motivated. Investors who backed your thesis. Ralph is the voice in the room that asks whether your assumptions are correct.",
               },
               {
-                href: "/blog/morning-brief-guide",
-                title: "The Morning Brief: How Your Day Should Start with Sovereign AI",
+                who: "Athletes and performance-focused individuals",
+                why: "Training requires honest feedback on what is working and what is not. Comfortable feedback produces comfortable results. If you are serious about performance, you need accurate feedback, not encouraging noise.",
               },
               {
-                href: "/blog/sovereign-ai-explained",
-                title: "Sovereign AI Explained: What It Means for Your Data and Your Future",
+                who: "People with ADHD who need external accountability",
+                why: "ADHD often means strong intentions, uneven follow-through, and a tendency to renegotiate commitments with yourself until they disappear. Ralph Mode functions as an external accountability structure: it holds the commitment you made before the motivation faded.",
               },
               {
-                href: "/blog/what-is-ralph-mode",
-                title: "What Is Ralph Mode? A Plain-English Introduction",
+                who: "People who know they get too comfortable",
+                why: "Some people are self-aware enough to know that they will take the path of least resistance given the opportunity. If you recognise yourself in that description, Ralph Mode is the setting that closes that off.",
               },
-              {
-                href: "/blog/how-sovereign-ai-works",
-                title: "How Sovereign AI Works: The Technical Architecture Behind MEOK",
-              },
-            ].map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
+            ].map((item) => (
+              <div
+                key={item.who}
                 style={{
+                  padding: "1.1rem 1.25rem",
+                  background: "rgba(123,111,207,0.06)",
+                  border: "1px solid rgba(123,111,207,0.14)",
+                  borderRadius: "8px",
                   display: "flex",
-                  alignItems: "center",
-                  gap: "0.625rem",
-                  color: muted,
-                  textDecoration: "none",
-                  fontSize: "0.9375rem",
-                  lineHeight: 1.5,
-                  paddingBottom: "0.75rem",
-                  borderBottom: `1px solid ${mutedVeryLow}`,
+                  gap: "1rem",
+                  alignItems: "flex-start",
                 }}
               >
                 <span
-                  style={{ color: gold, flexShrink: 0, fontSize: "0.75rem" }}
-                >
-                  &#8594;
-                </span>
-                {link.title}
-              </Link>
+                  style={{
+                    flexShrink: 0,
+                    marginTop: "0.2rem",
+                    width: "6px",
+                    height: "6px",
+                    borderRadius: "50%",
+                    background: purple,
+                    display: "inline-block",
+                  }}
+                />
+                <div>
+                  <p
+                    style={{
+                      margin: "0 0 0.3rem",
+                      fontWeight: 700,
+                      fontSize: "0.975rem",
+                      color: cream,
+                    }}
+                  >
+                    {item.who}
+                  </p>
+                  <p
+                    style={{
+                      margin: 0,
+                      fontSize: "0.925rem",
+                      lineHeight: 1.65,
+                      color: muted,
+                    }}
+                  >
+                    {item.why}
+                  </p>
+                </div>
+              </div>
             ))}
           </div>
-        </div>
+
+          <p
+            style={{
+              fontSize: "1.05rem",
+              lineHeight: 1.8,
+              color: muted,
+              margin: "0 0 1rem",
+            }}
+          >
+            Ralph Mode is explicitly <strong style={{ color: cream }}>not</strong>{" "}
+            for people in emotional crisis, people processing grief, people going
+            through significant trauma or mental health difficulty, or people
+            who need to be heard before they can be challenged. If that is where
+            you are right now, MEOK&rsquo;s Healer archetype is designed for you.
+            You can switch at any time. Ralph will be there when you&rsquo;re
+            ready.
+          </p>
+        </section>
+
+        {/* ── Section 6: The Orion Connection ──────────────────────────────── */}
+        <section style={{ marginBottom: "3.5rem" }}>
+          <h2
+            style={{
+              fontSize: "1.65rem",
+              fontWeight: 700,
+              color: cream,
+              margin: "0 0 1rem",
+              lineHeight: 1.25,
+            }}
+          >
+            The Orion Connection: Research Before the Reckoning
+          </h2>
+          <p
+            style={{
+              fontSize: "1.05rem",
+              lineHeight: 1.8,
+              color: muted,
+              margin: "0 0 1.2rem",
+            }}
+          >
+            Ralph Mode pairs naturally with Orion &mdash; MEOK&rsquo;s Hunter
+            archetype, who runs overnight research missions while you sleep.
+            The combination works like this: Orion goes hunting during the
+            night. Competitors mapped. Markets scanned. Relevant developments
+            surfaced. When you sit down with Ralph in the morning, Ralph is not
+            starting from a blank slate. Ralph has briefing material.
+          </p>
+          <p
+            style={{
+              fontSize: "1.05rem",
+              lineHeight: 1.8,
+              color: muted,
+              margin: "0 0 1.2rem",
+            }}
+          >
+            This creates what MEOK thinks of as the brutal morning briefing:
+            a structured rundown of what Orion found overnight, filtered through
+            Ralph&rsquo;s direct communication style. No softening of competitive
+            threats. No downplaying of risks. Just the information you need to
+            make a clear-eyed decision about your day.
+          </p>
+          <p
+            style={{
+              fontSize: "1.05rem",
+              lineHeight: 1.8,
+              color: muted,
+              margin: "0 0 1.2rem",
+            }}
+          >
+            If you are on the Sovereign tier and using Ralph Mode, you can
+            queue research tasks for Orion the night before. Brief Ralph before
+            bed on what you need answered. Wake up to findings that Ralph
+            delivers without hedging or softening. For founders who need
+            competitive clarity before a pitch or a negotiation, this is the
+            workflow that makes the Sovereign tier worth the subscription.
+          </p>
+        </section>
+
+        {/* ── Section 7: Brutal vs Cruel ────────────────────────────────────── */}
+        <section style={{ marginBottom: "3.5rem" }}>
+          <h2
+            style={{
+              fontSize: "1.65rem",
+              fontWeight: 700,
+              color: cream,
+              margin: "0 0 1rem",
+              lineHeight: 1.25,
+            }}
+          >
+            The Difference Between Brutal and Cruel
+          </h2>
+          <p
+            style={{
+              fontSize: "1.05rem",
+              lineHeight: 1.8,
+              color: muted,
+              margin: "0 0 1.2rem",
+            }}
+          >
+            This is the most important distinction in understanding Ralph Mode,
+            and it is the one most likely to be misunderstood. Ralph Mode is
+            not a setting that makes MEOK contemptuous, dismissive, or unkind.
+            That would be easy to build and completely useless.
+          </p>
+          <p
+            style={{
+              fontSize: "1.05rem",
+              lineHeight: 1.8,
+              color: muted,
+              margin: "0 0 1.2rem",
+            }}
+          >
+            MEOK&rsquo;s Maternal Covenant &mdash; the constitutional framework
+            that governs every interaction the system makes &mdash; does not get
+            switched off in Ralph Mode. The care floor still applies. Ralph
+            will not demean you. Ralph will not mock you for failing. Ralph
+            will not punish you for being human. The Maternal Covenant
+            guarantees a minimum level of dignity in every response, regardless
+            of which mode you are in.
+          </p>
+          <p
+            style={{
+              fontSize: "1.05rem",
+              lineHeight: 1.8,
+              color: muted,
+              margin: "0 0 1.2rem",
+            }}
+          >
+            What Ralph removes is the softening that obscures truth. That is
+            not cruelty &mdash; it is respect. The assumption behind excessive
+            softening is that you cannot handle honest information. Ralph Mode
+            rejects that assumption. It treats you as an adult who has
+            specifically requested accurate feedback and is capable of using it.
+          </p>
+          <p
+            style={{
+              fontSize: "1.05rem",
+              lineHeight: 1.8,
+              color: muted,
+              margin: "0 0 1.2rem",
+            }}
+          >
+            Brutal honesty, in the meaningful sense of the phrase, is an act
+            of care. The friend who tells you the pitch needs another week of
+            work before you send it to investors is doing you a service that
+            the friend who says &ldquo;looks great, go for it&rdquo; is not.
+            Ralph Mode is that friend, systematically applied.
+          </p>
+
+          {/* Pull quote */}
+          <blockquote
+            style={{
+              margin: "2rem 0",
+              padding: "1.5rem 1.75rem",
+              borderLeft: `3px solid ${gold}`,
+              background: "rgba(201,168,76,0.05)",
+              borderRadius: "0 8px 8px 0",
+            }}
+          >
+            <p
+              style={{
+                margin: 0,
+                fontSize: "1.15rem",
+                lineHeight: 1.7,
+                color: cream,
+                fontStyle: "italic",
+              }}
+            >
+              &ldquo;Ralph won&rsquo;t demean you. Ralph will challenge you.
+              The distinction matters because one makes you smaller and the
+              other makes you better.&rdquo;
+            </p>
+          </blockquote>
+        </section>
+
+        {/* ── Section 8: Why Sovereign Tier Only ───────────────────────────── */}
+        <section style={{ marginBottom: "3.5rem" }}>
+          <h2
+            style={{
+              fontSize: "1.65rem",
+              fontWeight: 700,
+              color: cream,
+              margin: "0 0 1rem",
+              lineHeight: 1.25,
+            }}
+          >
+            Why Ralph Mode Requires Sovereign Tier
+          </h2>
+          <p
+            style={{
+              fontSize: "1.05rem",
+              lineHeight: 1.8,
+              color: muted,
+              margin: "0 0 1.2rem",
+            }}
+          >
+            Ralph Mode is not available on the Explorer tier. This is
+            intentional and the reasoning matters.
+          </p>
+          <p
+            style={{
+              fontSize: "1.05rem",
+              lineHeight: 1.8,
+              color: muted,
+              margin: "0 0 1.2rem",
+            }}
+          >
+            Accountability requires context. The thing that makes the Ralph
+            Mode example response powerful &mdash; &ldquo;that&rsquo;s the
+            third time in two weeks&rdquo; &mdash; is that Ralph actually knows
+            it is the third time in two weeks. That requires persistent sovereign
+            memory of your commitments, your follow-through, and your patterns.
+            That memory architecture is a Sovereign tier feature.
+          </p>
+          <p
+            style={{
+              fontSize: "1.05rem",
+              lineHeight: 1.8,
+              color: muted,
+              margin: "0 0 1.2rem",
+            }}
+          >
+            Without memory, Ralph Mode would be a harsh tone without any
+            content. A snappy response to &ldquo;I didn&rsquo;t finish the
+            proposal today&rdquo; that does not know whether this is the first
+            time or the tenth time is not accountability &mdash; it is
+            performance. Real accountability requires knowing the history.
+          </p>
+          <p
+            style={{
+              fontSize: "1.05rem",
+              lineHeight: 1.8,
+              color: muted,
+              margin: "0 0 1.2rem",
+            }}
+          >
+            There is also a relationship argument. Ralph Mode makes the most
+            sense once you have committed to the tool. Arriving in a first
+            session and immediately opting for maximum challenge, before MEOK
+            knows anything about your goals, your patterns, or your context,
+            would be jarring and probably counterproductive. The Sovereign tier
+            represents a commitment to the relationship. Ralph Mode is designed
+            for that context.
+          </p>
+
+          {/* Pricing callout */}
+          <div
+            style={{
+              padding: "1.5rem",
+              background: "rgba(201,168,76,0.06)",
+              border: `1px solid rgba(201,168,76,0.18)`,
+              borderRadius: "10px",
+              display: "flex",
+              flexWrap: "wrap",
+              gap: "1rem",
+              alignItems: "center",
+              justifyContent: "space-between",
+            }}
+          >
+            <div>
+              <p
+                style={{
+                  margin: "0 0 0.3rem",
+                  fontSize: "0.8rem",
+                  fontWeight: 700,
+                  letterSpacing: "0.1em",
+                  textTransform: "uppercase",
+                  color: gold,
+                }}
+              >
+                Sovereign Tier
+              </p>
+              <p
+                style={{
+                  margin: "0 0 0.4rem",
+                  fontSize: "1.6rem",
+                  fontWeight: 800,
+                  color: cream,
+                  lineHeight: 1,
+                }}
+              >
+                &pound;12
+                <span
+                  style={{
+                    fontSize: "0.95rem",
+                    fontWeight: 400,
+                    color: muted,
+                  }}
+                >
+                  {" "}
+                  / month
+                </span>
+              </p>
+              <p
+                style={{
+                  margin: 0,
+                  fontSize: "0.875rem",
+                  color: muted,
+                  lineHeight: 1.5,
+                }}
+              >
+                Includes Ralph Mode, sovereign memory, Orion overnight research,
+                and the full MEOK Work OS.
+              </p>
+            </div>
+            <Link
+              href="/birth"
+              style={{
+                display: "inline-block",
+                padding: "0.75rem 1.5rem",
+                background: gold,
+                color: bg,
+                fontWeight: 700,
+                fontSize: "0.9rem",
+                borderRadius: "6px",
+                textDecoration: "none",
+                whiteSpace: "nowrap",
+              }}
+            >
+              Get Sovereign &rarr;
+            </Link>
+          </div>
+        </section>
+
+        {/* ── Section 9: How to Activate ────────────────────────────────────── */}
+        <section style={{ marginBottom: "3.5rem" }}>
+          <h2
+            style={{
+              fontSize: "1.65rem",
+              fontWeight: 700,
+              color: cream,
+              margin: "0 0 1rem",
+              lineHeight: 1.25,
+            }}
+          >
+            How to Activate Ralph Mode
+          </h2>
+          <p
+            style={{
+              fontSize: "1.05rem",
+              lineHeight: 1.8,
+              color: muted,
+              margin: "0 0 1.25rem",
+            }}
+          >
+            Once you are on the Sovereign tier, activating Ralph Mode takes
+            three steps.
+          </p>
+
+          <ol
+            style={{
+              paddingLeft: "1.5rem",
+              margin: "0 0 1.5rem",
+              display: "flex",
+              flexDirection: "column",
+              gap: "0.75rem",
+            }}
+          >
+            {[
+              "Open your companion settings from the dashboard.",
+              "Navigate to Interaction Style.",
+              "Select Ralph Mode from the style options.",
+            ].map((step, i) => (
+              <li
+                key={i}
+                style={{
+                  fontSize: "1.05rem",
+                  lineHeight: 1.7,
+                  color: muted,
+                }}
+              >
+                {step}
+              </li>
+            ))}
+          </ol>
+
+          <p
+            style={{
+              fontSize: "1.05rem",
+              lineHeight: 1.8,
+              color: muted,
+              margin: "0 0 1.2rem",
+            }}
+          >
+            Ralph Mode is not permanent. You can switch back to the standard
+            interaction style at any time &mdash; for instance, if you are
+            going through a difficult period and need more support than
+            challenge. MEOK remembers the context of your goal commitments
+            regardless of which mode you are in, so returning to Ralph Mode
+            later picks up where accountability tracking left off.
+          </p>
+          <p
+            style={{
+              fontSize: "1.05rem",
+              lineHeight: 1.8,
+              color: muted,
+              margin: 0,
+            }}
+          >
+            You can also pair Ralph Mode with specific goal areas. If you want
+            Ralph&rsquo;s challenge only for your professional output and not
+            your personal journalling, that granularity is available in the
+            settings.
+          </p>
+        </section>
+
+        {/* ── FAQ ───────────────────────────────────────────────────────────── */}
+        <section style={{ marginBottom: "3.5rem" }}>
+          <h2
+            style={{
+              fontSize: "1.65rem",
+              fontWeight: 700,
+              color: cream,
+              margin: "0 0 1.5rem",
+              lineHeight: 1.25,
+            }}
+          >
+            Frequently Asked Questions
+          </h2>
+
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              gap: "1rem",
+            }}
+          >
+            {[
+              {
+                q: "What is Ralph Mode?",
+                a: "Ralph Mode is MEOK\u2019s high-accountability companion setting. Named after the archetype of the honest friend who doesn\u2019t let you off the hook, it delivers direct responses, challenges flawed plans, tracks your commitments, refuses empty reassurance, and provides honest feedback on work and ideas. It is the architectural opposite of sycophantic AI. Available exclusively on the Sovereign tier at \u00a312 per month.",
+              },
+              {
+                q: "Is Ralph Mode available on the free tier?",
+                a: "No. Ralph Mode is exclusively available on the Sovereign tier at \u00a312 per month. The reason is architectural: accountability tracking requires persistent sovereign memory of your commitments and follow-through, which is a Sovereign tier feature. Without that memory, Ralph Mode would just be a harsh tone without any meaningful accountability content.",
+              },
+              {
+                q: "What makes Ralph Mode different from other AI chat modes?",
+                a: "Most AI modes are structurally sycophantic \u2014 trained to generate responses people rate highly, which means agreeing and validating regardless of merit. MEOK\u2019s sycophancy detector scores every response 0.0 to 1.0. In standard mode, responses above 0.6 are flagged for rewrite. In Ralph Mode, that threshold tightens to 0.4, catching a substantially larger proportion of potentially validating responses. Combined with accountability tracking memory, this creates a genuinely different interaction pattern rather than just a different tone.",
+              },
+              {
+                q: "When should I NOT use Ralph Mode?",
+                a: "Do not use Ralph Mode when you are in emotional crisis, processing grief or trauma, going through a significant mental health episode, or at any point when you primarily need to be heard and supported rather than challenged. Switch to Healer mode in those situations. The Maternal Covenant\u2019s care floor still applies in Ralph Mode \u2014 Ralph will never demean or harm you \u2014 but Ralph will not soften difficult truths, and that is not what you need when you are in acute distress.",
+              },
+            ].map((item, i) => (
+              <div
+                key={i}
+                style={{
+                  padding: "1.25rem 1.4rem",
+                  background: "rgba(245,240,232,0.03)",
+                  border: `1px solid ${mutedVeryLow}`,
+                  borderRadius: "8px",
+                }}
+              >
+                <p
+                  style={{
+                    margin: "0 0 0.65rem",
+                    fontWeight: 700,
+                    fontSize: "1rem",
+                    color: cream,
+                  }}
+                >
+                  {item.q}
+                </p>
+                <p
+                  style={{
+                    margin: 0,
+                    fontSize: "0.95rem",
+                    lineHeight: 1.7,
+                    color: muted,
+                  }}
+                >
+                  {item.a}
+                </p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* ── CTA ───────────────────────────────────────────────────────────── */}
+        <section
+          style={{
+            padding: "2.5rem",
+            background:
+              "linear-gradient(135deg, rgba(123,111,207,0.10) 0%, rgba(201,168,76,0.08) 100%)",
+            border: `1px solid rgba(201,168,76,0.20)`,
+            borderRadius: "12px",
+            textAlign: "center",
+          }}
+        >
+          <p
+            style={{
+              margin: "0 0 0.65rem",
+              fontSize: "0.8rem",
+              fontWeight: 700,
+              letterSpacing: "0.12em",
+              textTransform: "uppercase",
+              color: gold,
+            }}
+          >
+            Ready for Accountability?
+          </p>
+          <h2
+            style={{
+              margin: "0 0 1rem",
+              fontSize: "1.6rem",
+              fontWeight: 800,
+              color: cream,
+              lineHeight: 1.2,
+            }}
+          >
+            Stop Being Validated Into Mediocrity
+          </h2>
+          <p
+            style={{
+              margin: "0 auto 1.75rem",
+              fontSize: "1rem",
+              lineHeight: 1.7,
+              color: muted,
+              maxWidth: "32rem",
+            }}
+          >
+            Ralph Mode is waiting on Sovereign tier. Brief MEOK on your goals,
+            commit to your plan, and let Ralph track the follow-through. No
+            more comfortable untruths. Start your Birth ceremony to name your
+            companion and activate Sovereign.
+          </p>
+          <div
+            style={{
+              display: "flex",
+              flexWrap: "wrap",
+              gap: "0.75rem",
+              justifyContent: "center",
+            }}
+          >
+            <Link
+              href="/birth"
+              style={{
+                display: "inline-block",
+                padding: "0.85rem 2rem",
+                background: gold,
+                color: bg,
+                fontWeight: 700,
+                fontSize: "0.975rem",
+                borderRadius: "6px",
+                textDecoration: "none",
+              }}
+            >
+              Begin Your Birth Ceremony &rarr;
+            </Link>
+            <Link
+              href="/blog"
+              style={{
+                display: "inline-block",
+                padding: "0.85rem 1.75rem",
+                background: "transparent",
+                color: cream,
+                fontWeight: 600,
+                fontSize: "0.975rem",
+                borderRadius: "6px",
+                textDecoration: "none",
+                border: `1px solid ${mutedVeryLow}`,
+              }}
+            >
+              Read More Articles
+            </Link>
+          </div>
+        </section>
       </article>
     </div>
-  );
+  )
 }
