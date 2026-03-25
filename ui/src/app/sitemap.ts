@@ -476,6 +476,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: 'https://meok.ai/blog/meok-for-remote-workers', lastModified: new Date('2026-03-28'), changeFrequency: 'monthly', priority: 0.87 },
     { url: 'https://meok.ai/blog/ai-for-cptsd', lastModified: new Date('2026-03-28'), changeFrequency: 'monthly', priority: 0.90 },
     { url: 'https://meok.ai/blog/sovereign-ai-vs-assistant-ai', lastModified: new Date('2026-03-28'), changeFrequency: 'monthly', priority: 0.91 },
+    { url: 'https://meok.ai/blog/ai-for-eating-disorders', lastModified: new Date('2026-03-29'), changeFrequency: 'monthly', priority: 0.90 },
+    { url: 'https://meok.ai/blog/ai-for-veterans', lastModified: new Date('2026-03-29'), changeFrequency: 'monthly', priority: 0.88 },
+    { url: 'https://meok.ai/blog/meok-for-coaches', lastModified: new Date('2026-03-29'), changeFrequency: 'monthly', priority: 0.87 },
+    { url: 'https://meok.ai/blog/ai-for-addiction-recovery', lastModified: new Date('2026-03-29'), changeFrequency: 'monthly', priority: 0.89 },
+    { url: 'https://meok.ai/blog/ai-for-chronic-pain', lastModified: new Date('2026-03-29'), changeFrequency: 'monthly', priority: 0.88 },
+    { url: 'https://meok.ai/blog/ai-for-menopause', lastModified: new Date('2026-03-30'), changeFrequency: 'monthly', priority: 0.90 },
+    { url: 'https://meok.ai/blog/ai-for-job-loss', lastModified: new Date('2026-03-30'), changeFrequency: 'monthly', priority: 0.88 },
+    { url: 'https://meok.ai/blog/meok-for-students-mental-health', lastModified: new Date('2026-03-30'), changeFrequency: 'monthly', priority: 0.88 },
+    { url: 'https://meok.ai/blog/ai-for-domestic-abuse-recovery', lastModified: new Date('2026-03-30'), changeFrequency: 'monthly', priority: 0.92 },
+    { url: 'https://meok.ai/blog/ai-for-anger-management', lastModified: new Date('2026-03-30'), changeFrequency: 'monthly', priority: 0.87 },
 
     // ── Legal ─────────────────────────────────────────────────────────
     { url: 'https://meok.ai/privacy', lastModified: new Date(), changeFrequency: 'yearly', priority: 0.3 },
