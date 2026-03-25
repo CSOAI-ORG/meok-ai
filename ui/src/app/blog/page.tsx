@@ -2846,6 +2846,54 @@ const POSTS = [
     category: "research",
     featured: false,
   },
+  {
+    slug: "ai-for-social-isolation",
+    title: "AI for Social Isolation: When There Is Nobody to Call at 2am",
+    excerpt:
+      "Social isolation is one of the most dangerous health risks of our time — equivalent to smoking 15 cigarettes a day. MEOK's sovereign AI is there when nobody else is, without judgment and without forgetting you.",
+    date: "March 25, 2026",
+    readTime: "9 min read",
+    tag: "Wellbeing",
+    tagColor: "#4a9d6f",
+    category: "wellbeing",
+    featured: false,
+  },
+  {
+    slug: "personal-sovereign-ai-explained",
+    title: "Personal Sovereign AI Explained: What It Means to Own Your AI",
+    excerpt:
+      "Personal Sovereign AI is the first new consumer AI category since the chatbot. It means you own the AI, the memories, and the relationship — not the platform. MEOK coined this category. Here is what it means.",
+    date: "March 25, 2026",
+    readTime: "11 min read",
+    tag: "Research",
+    tagColor: "#7c6fcd",
+    category: "research",
+    featured: true,
+  },
+  {
+    slug: "ai-for-dyscalculia",
+    title: "AI for Dyscalculia: Maths Support That Does Not Make You Feel Stupid",
+    excerpt:
+      "Dyscalculia affects 1 in 20 people yet is far less understood than dyslexia. MEOK's sovereign AI provides patient, non-judgmental maths support and life skills assistance for people with numerical processing difficulties.",
+    date: "March 25, 2026",
+    readTime: "8 min read",
+    tag: "Accessibility",
+    tagColor: "#c9a84c",
+    category: "accessibility",
+    featured: false,
+  },
+  {
+    slug: "ai-for-dyslexia",
+    title: "AI for Dyslexia: A Reading and Writing Companion That Gets It",
+    excerpt:
+      "Dyslexia affects 10% of the UK population. Most AI is designed by and for neurotypical readers. MEOK adapts its communication style to support dyslexic users — shorter sentences, clearer structure, patient repetition.",
+    date: "March 25, 2026",
+    readTime: "8 min read",
+    tag: "Accessibility",
+    tagColor: "#c9a84c",
+    category: "accessibility",
+    featured: false,
+  },
 ];
 
 // ── Category filter tabs ──────────────────────────────────────────────────────

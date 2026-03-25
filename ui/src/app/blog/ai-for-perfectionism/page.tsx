@@ -4,16 +4,17 @@ import Link from "next/link";
 // ── Metadata ────────────────────────────────────────────────────────────────
 
 export const metadata: Metadata = {
-  title: "AI for Perfectionism: Breaking the Cycle of Never Good Enough | MEOK AI LABS",
+  title:
+    "AI for Perfectionism: Breaking the Loop of Never Good Enough | MEOK AI LABS",
   description:
-    "Perfectionism is not high standards — it is the belief that your worth is conditional on performance. Discover how MEOK\u2019s honest AI companion helps you celebrate progress, practise self-compassion, and finally take imperfect action.",
+    "Perfectionism is not a personality trait \u2014 it is a coping mechanism with roots in fear. MEOK\u2019s sovereign AI helps you identify and break perfectionist loops without enabling the underlying anxiety.",
   alternates: {
     canonical: "https://meok.ai/blog/ai-for-perfectionism",
   },
   openGraph: {
-    title: "AI for Perfectionism: Breaking the Cycle of Never Good Enough",
+    title: "AI for Perfectionism: Breaking the Loop of Never Good Enough",
     description:
-      "Perfectionism is not high standards \u2014 it is avoidance rooted in conditional self-worth. MEOK\u2019s anti-sycophancy model and imperfect-action journalling help you ship, grow, and stop revising forever.",
+      "Perfectionism is not a personality trait \u2014 it is a coping mechanism with roots in fear. MEOK\u2019s sovereign AI helps you identify and break perfectionist loops without enabling the underlying anxiety.",
     type: "article",
     publishedTime: "2026-03-24",
     authors: ["Nicholas Templeman"],
@@ -21,7 +22,7 @@ export const metadata: Metadata = {
     siteName: "MEOK.AI",
     images: [
       {
-        url: "https://meok.ai/api/og?title=AI+for+Perfectionism&desc=Breaking+the+Cycle+of+Never+Good+Enough",
+        url: "https://meok.ai/api/og?title=AI+for+Perfectionism&desc=Breaking+the+Loop+of+Never+Good+Enough",
         width: 1200,
         height: 630,
         alt: "AI for Perfectionism | MEOK AI LABS",
@@ -30,11 +31,11 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "AI for Perfectionism: Breaking the Cycle of Never Good Enough",
+    title: "AI for Perfectionism: Breaking the Loop of Never Good Enough",
     description:
-      "An honest AI that won\u2019t validate your revision spiral. MEOK celebrates imperfect action, remembers your growth arc, and helps you untangle perfectionism from self-worth.",
+      "An AI that won\u2019t feed your perfectionist spiral. MEOK\u2019s Trickster archetype, sycophancy detection, and sovereign memory work together to break the loop of never good enough.",
     images: [
-      "https://meok.ai/api/og?title=AI+for+Perfectionism&desc=Breaking+the+Cycle+of+Never+Good+Enough",
+      "https://meok.ai/api/og?title=AI+for+Perfectionism&desc=Breaking+the+Loop+of+Never+Good+Enough",
     ],
   },
 };
@@ -44,9 +45,9 @@ export const metadata: Metadata = {
 const articleJsonLd = {
   "@context": "https://schema.org",
   "@type": "Article",
-  headline: "AI for Perfectionism: Breaking the Cycle of Never Good Enough",
+  headline: "AI for Perfectionism: Breaking the Loop of Never Good Enough",
   description:
-    "Perfectionism is not high standards \u2014 it is the belief that your worth is conditional on performance. This article covers adaptive vs maladaptive perfectionism, the procrastination link, self-compassion, and how MEOK\u2019s honest AI companion helps.",
+    "Perfectionism is not a personality trait \u2014 it is a coping mechanism with roots in fear. This article covers adaptive vs maladaptive perfectionism, the procrastination link, burnout, imposter syndrome, and how MEOK\u2019s sovereign AI breaks perfectionist loops without enabling anxiety.",
   datePublished: "2026-03-24",
   dateModified: "2026-03-24",
   url: "https://meok.ai/blog/ai-for-perfectionism",
@@ -65,6 +66,20 @@ const articleJsonLd = {
     "@type": "WebPage",
     "@id": "https://meok.ai/blog/ai-for-perfectionism",
   },
+  keywords: [
+    "AI for perfectionism",
+    "perfectionism and procrastination",
+    "maladaptive perfectionism",
+    "perfectionism and burnout",
+    "imposter syndrome AI",
+    "sycophancy detection AI",
+    "sovereign AI memory",
+    "Trickster archetype",
+    "MEOK AI companion",
+    "good enough",
+    "perfectionism in creative work",
+    "perfectionism coping mechanism",
+  ],
 };
 
 // ── JSON-LD: FAQPage ─────────────────────────────────────────────────────────
@@ -75,42 +90,42 @@ const faqJsonLd = {
   mainEntity: [
     {
       "@type": "Question",
-      name: "Can AI help with perfectionism?",
+      name: "Can AI help someone break a perfectionist loop?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Yes. AI can help with perfectionism by providing a non-judgmental space to log imperfect action, by refusing to validate rumination spirals, and by reflecting your growth arc back to you over time. MEOK\u2019s Sovereign Memory means it can track your progress across weeks and months, making visible the accumulation of done-but-not-perfect work that perfectionism would otherwise erase from memory.",
+        text: "Yes \u2014 but only if the AI is built correctly. An AI that validates every revision and praises every draft will reinforce the perfectionist loop rather than break it. MEOK\u2019s sycophancy detection layer is specifically designed to prevent this. Rather than feeding the anxiety with empty affirmation, it reflects honest observations about your process, holds the memory of your actual progress, and helps you recognise when the loop has restarted.",
       },
     },
     {
       "@type": "Question",
-      name: "What is the difference between perfectionism and high standards?",
+      name: "What is the difference between adaptive and maladaptive perfectionism?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "High standards are about the work. Perfectionism is about the self. High standards allow for iteration, failure, and learning. Perfectionism ties self-worth to flawless performance, making any imperfection feel like evidence of fundamental inadequacy. Researchers Hewitt and Flett distinguish adaptive perfectionism \u2014 which motivates without destabilising \u2014 from maladaptive perfectionism, which is associated with anxiety, depression, and procrastination.",
+        text: "Adaptive perfectionism is about pursuing excellence with flexibility \u2014 high standards that bend when circumstances change, that allow iteration, and that do not collapse into self-criticism when the outcome falls short. Maladaptive perfectionism ties self-worth to flawless performance. Any imperfection becomes evidence of fundamental inadequacy. Research by Hewitt, Flett, and Curran consistently links maladaptive perfectionism to anxiety, depression, burnout, and chronic procrastination.",
       },
     },
     {
       "@type": "Question",
-      name: "Will MEOK judge my imperfect work?",
+      name: "Why do perfectionists procrastinate so much?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "No. MEOK is designed on an anti-sycophancy model \u2014 it will not flatter you falsely, but it will never shame you either. When you share unfinished, imperfect, or abandoned work, MEOK treats it as data about your process, not evidence of your worth. The goal is honest, caring feedback that celebrates momentum rather than demanding completion.",
+        text: "Because starting carries the risk of discovering that the output will not be perfect. Perfectionists often operate under an unconscious rule: if I cannot do it perfectly, it is better not to start at all. Not starting feels like preserving potential. In reality it is avoidance dressed as standards. The task stays in a hypothetical space where it can still be perfect, rather than being exposed to the real world where it almost certainly will not be.",
       },
     },
     {
       "@type": "Question",
-      name: "How does MEOK help with perfectionist procrastination?",
+      name: "How does MEOK\u2019s Trickster archetype help with perfectionism?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "MEOK addresses the perfectionism-procrastination link by making starting feel lower-stakes. Imperfect-action journalling prompts you to record what you did \u2014 not what you finished perfectly. Over time, MEOK\u2019s memory surfaces this log as evidence that you are someone who acts, disrupting the paralysing belief that starting is only worth it if the outcome can be perfect.",
+        text: "The Trickster is MEOK\u2019s pattern-disruption archetype. Where other AI companions might gently encourage or validate, the Trickster introduces productive friction \u2014 asking unexpected questions, reframing the stakes, or pointing out when you have been revising the same paragraph for three sessions in a row. Perfectionism thrives in a closed, serious loop. The Trickster opens a door by making the loop visible and slightly absurd.",
       },
     },
     {
       "@type": "Question",
-      name: "What is self-compassion and how can AI support it?",
+      name: "How does sovereign memory help with perfectionism over time?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Self-compassion, as defined by researcher Kristin Neff, has three components: self-kindness instead of self-judgment, common humanity instead of isolation, and mindful awareness instead of over-identification with pain. AI can support self-compassion by mirroring compassionate language, by normalising struggle without toxic positivity, and by gently redirecting self-critical spirals toward the shared human experience of imperfection.",
+        text: "Perfectionism distorts memory. You forget the things you shipped, the drafts you finished, the projects you completed imperfectly but completely. MEOK\u2019s sovereign memory retains your actual history \u2014 not a highlight reel, but a record of what you actually did. Over time, this creates an evidence base that counters the perfectionist narrative of \u2018I never finish anything\u2019 or \u2018everything I produce is inadequate\u2019. The memory becomes a corrective to the distorted inner critic.",
       },
     },
   ],
@@ -121,20 +136,25 @@ const faqJsonLd = {
 const GOLD = "#c9a84c";
 const TEXT = "#f5f0e8";
 const BG = "#0d0c18";
-const MUTED = "rgba(245,240,232,0.6)";
+const MUTED = "rgba(245,240,232,0.65)";
 const MUTED_DIM = "rgba(245,240,232,0.55)";
 const MUTED_FAINT = "rgba(245,240,232,0.38)";
-const GOLD_DIM = "rgba(201,168,76,0.18)";
-const GOLD_BORDER = "rgba(201,168,76,0.3)";
-const PURPLE_SOFT = "rgba(160,120,240,0.12)";
-const PURPLE_BORDER = "rgba(160,120,240,0.3)";
-const PURPLE_TEXT = "#b08cee";
+const GOLD_DIM = "rgba(201,168,76,0.12)";
+const GOLD_BORDER = "rgba(201,168,76,0.28)";
+const SURFACE = "rgba(245,240,232,0.04)";
+const SURFACE_BORDER = "rgba(245,240,232,0.08)";
+const RED_DIM = "rgba(220,80,80,0.1)";
+const RED_BORDER = "rgba(220,80,80,0.25)";
+const RED_TEXT = "#e07070";
+const GREEN_DIM = "rgba(80,200,120,0.1)";
+const GREEN_BORDER = "rgba(80,200,120,0.25)";
+const GREEN_TEXT = "#60c878";
 
 // ── Page ─────────────────────────────────────────────────────────────────────
 
 export default function AIForPerfectionismPage() {
   return (
-    <div style={{ minHeight: "100vh", background: BG, color: TEXT }}>
+    <div style={{ minHeight: "100vh", background: BG, color: TEXT, fontFamily: "system-ui, -apple-system, sans-serif" }}>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
@@ -148,7 +168,7 @@ export default function AIForPerfectionismPage() {
       <section
         style={{
           paddingTop: "8rem",
-          paddingBottom: "3.5rem",
+          paddingBottom: "4rem",
           paddingLeft: "1.5rem",
           paddingRight: "1.5rem",
           position: "relative",
@@ -161,12 +181,10 @@ export default function AIForPerfectionismPage() {
             inset: 0,
             pointerEvents: "none",
             background:
-              "radial-gradient(ellipse 60% 50% at 50% 0%, rgba(201,168,76,0.08) 0%, transparent 68%)",
+              "radial-gradient(ellipse 70% 55% at 50% 0%, rgba(201,168,76,0.09) 0%, transparent 70%)",
           }}
         />
-        <div
-          style={{ maxWidth: "48rem", margin: "0 auto", position: "relative" }}
-        >
+        <div style={{ maxWidth: "52rem", margin: "0 auto", position: "relative" }}>
           <Link
             href="/blog"
             style={{
@@ -200,1361 +218,883 @@ export default function AIForPerfectionismPage() {
                 color: GOLD,
                 background: GOLD_DIM,
                 border: `1px solid ${GOLD_BORDER}`,
-                letterSpacing: "0.05em",
+                letterSpacing: "0.06em",
                 textTransform: "uppercase" as const,
               }}
             >
-              Perfectionism &amp; Self-Worth
+              Perfectionism &amp; Performance
             </span>
-            <span style={{ fontSize: "0.75rem", color: MUTED_FAINT }}>
-              March 24, 2026
-            </span>
-            <span style={{ fontSize: "0.75rem", color: MUTED_FAINT }}>
-              16 min read
-            </span>
+            <span style={{ fontSize: "0.75rem", color: MUTED_FAINT }}>March 24, 2026</span>
+            <span style={{ fontSize: "0.75rem", color: MUTED_FAINT }}>18 min read</span>
           </div>
 
           <h1
             style={{
               fontWeight: 900,
-              fontSize: "clamp(1.75rem, 3.5vw, 2.85rem)",
+              fontSize: "clamp(1.9rem, 4vw, 3.1rem)",
               color: "#fff",
-              lineHeight: 1.15,
-              marginBottom: "1.25rem",
-              letterSpacing: "-0.01em",
+              lineHeight: 1.12,
+              marginBottom: "1.5rem",
+              letterSpacing: "-0.015em",
             }}
           >
-            AI for Perfectionism: Breaking the Cycle of Never Good Enough
+            AI for Perfectionism: Breaking the Loop of Never Good Enough
           </h1>
 
           <p
             style={{
               color: MUTED,
-              fontSize: "1.1rem",
-              lineHeight: 1.7,
-              maxWidth: "42rem",
-              margin: 0,
+              fontSize: "1.15rem",
+              lineHeight: 1.75,
+              maxWidth: "44rem",
+              marginBottom: "0.75rem",
             }}
           >
-            Perfectionism is not high standards. It is the belief that your
-            worth is conditional on performance. This is the honest guide to
-            what that costs you \u2014 and how an AI companion built on
-            anti-sycophancy, imperfect-action journalling, and genuine
-            self-compassion can help you finally move.
+            Perfectionism is not a personality trait and it is not high standards. It is a
+            coping mechanism with roots in fear \u2014 the fear that your worth is conditional
+            on flawless performance. Understanding that distinction is the beginning of
+            breaking free from it.
           </p>
+
+          <p
+            style={{
+              color: MUTED_DIM,
+              fontSize: "1rem",
+              lineHeight: 1.75,
+              maxWidth: "44rem",
+              marginBottom: 0,
+            }}
+          >
+            This guide covers the psychology of perfectionist loops, the procrastination
+            trap they create, the burnout they cause, and how MEOK\u2019s sovereign AI \u2014
+            built with sycophancy detection, the Trickster archetype, and long-term memory \u2014
+            is designed to break the loop rather than feed it.
+          </p>
+
+          <div
+            style={{
+              display: "flex",
+              gap: "0.75rem",
+              flexWrap: "wrap",
+              fontSize: "0.8rem",
+              color: MUTED_FAINT,
+              marginTop: "2rem",
+            }}
+          >
+            <span>By Nicholas Templeman</span>
+            <span style={{ color: `${GOLD}60` }}>&#183;</span>
+            <span>MEOK AI LABS</span>
+            <span style={{ color: `${GOLD}60` }}>&#183;</span>
+            <span>March 24, 2026</span>
+          </div>
         </div>
       </section>
 
       {/* ── ARTICLE BODY ─────────────────────────────────────────────────────── */}
       <div
-        style={{ maxWidth: "48rem", margin: "0 auto", padding: "3.5rem 1.5rem 0" }}
+        style={{ maxWidth: "52rem", margin: "0 auto", padding: "2rem 1.5rem 6rem" }}
       >
-
-        {/* Opening callout */}
+        {/* Gold divider */}
         <div
           style={{
-            display: "flex",
-            gap: "1rem",
-            padding: "1.25rem 1.5rem",
-            borderRadius: "1rem",
-            marginBottom: "2.5rem",
+            height: "1px",
+            background: `linear-gradient(to right, transparent, ${GOLD}44, transparent)`,
+            marginBottom: "3rem",
+          }}
+        />
+
+        {/* ── Opening callout ─────────────────────────────────────────────────── */}
+        <div
+          style={{
+            borderLeft: `4px solid ${GOLD}`,
+            paddingLeft: "1.5rem",
+            paddingTop: "1rem",
+            paddingBottom: "1rem",
+            paddingRight: "1.5rem",
             background: GOLD_DIM,
-            border: `1px solid ${GOLD_BORDER}`,
-          }}
-        >
-          <div
-            style={{
-              width: "3px",
-              borderRadius: "9999px",
-              flexShrink: 0,
-              background: GOLD,
-              alignSelf: "stretch",
-            }}
-          />
-          <div>
-            <p
-              style={{
-                fontWeight: 700,
-                fontSize: "0.85rem",
-                color: GOLD,
-                marginBottom: "0.4rem",
-                margin: "0 0 0.4rem 0",
-              }}
-            >
-              Note on scope
-            </p>
-            <p
-              style={{
-                fontSize: "0.875rem",
-                color: MUTED_DIM,
-                lineHeight: 1.65,
-                margin: 0,
-              }}
-            >
-              This article discusses perfectionism as a psychological pattern
-              affecting daily functioning, motivation, and self-worth. It is not
-              a substitute for clinical care. If perfectionism is severely
-              impairing your life or is linked to an eating disorder, OCD, or
-              depression, please seek support from a qualified mental health
-              professional. UK resources: NHS Talking Therapies (self-refer at
-              nhs.uk), Mind on 0300 123 3393, or Samaritans on 116 123.
-            </p>
-          </div>
-        </div>
-
-        {/* Section 1 */}
-        <h2
-          style={{
-            fontWeight: 800,
-            fontSize: "clamp(1.3rem, 2.5vw, 1.75rem)",
-            color: "#fff",
-            marginBottom: "1rem",
-            marginTop: "3rem",
-            lineHeight: 1.25,
-          }}
-        >
-          What is perfectionism, really?
-        </h2>
-        <p
-          style={{
-            color: MUTED,
-            fontSize: "1rem",
-            lineHeight: 1.8,
-            marginBottom: "1.25rem",
-          }}
-        >
-          Ask most perfectionists whether they have high standards and they will
-          say yes. Ask them whether they believe their worth as a person depends
-          on how well they perform and they will pause.
-        </p>
-        <p
-          style={{
-            color: MUTED,
-            fontSize: "1rem",
-            lineHeight: 1.8,
-            marginBottom: "1.25rem",
-          }}
-        >
-          That pause is where perfectionism lives. It is not in the pursuit of
-          quality. It is in the equation at the back of the mind that says: if
-          this is not perfect, then neither am I. That equation makes every
-          draft, every email, every presentation into a referendum on your
-          fundamental adequacy as a human being.
-        </p>
-        <p
-          style={{
-            color: MUTED,
-            fontSize: "1rem",
-            lineHeight: 1.8,
-            marginBottom: "1.25rem",
-          }}
-        >
-          When the stakes are that high, it becomes very difficult to start
-          anything. And when you do start, it becomes almost impossible to stop
-          revising. The perfectionist loop runs like this: the thing is not good
-          enough yet, which means I am not good enough yet, which means I cannot
-          show it to anyone, which means I have to keep working on it until it
-          is good enough, which it never is, because the standard keeps
-          shifting. This is not a productivity problem. It is a self-worth
-          problem wearing the costume of a productivity problem.
-        </p>
-
-        {/* Section 2 */}
-        <h2
-          style={{
-            fontWeight: 800,
-            fontSize: "clamp(1.3rem, 2.5vw, 1.75rem)",
-            color: "#fff",
-            marginBottom: "1rem",
-            marginTop: "3rem",
-            lineHeight: 1.25,
-          }}
-        >
-          What is the difference between adaptive and maladaptive perfectionism?
-        </h2>
-        <p
-          style={{
-            color: MUTED,
-            fontSize: "1rem",
-            lineHeight: 1.8,
-            marginBottom: "1.25rem",
-          }}
-        >
-          Researchers Paul Hewitt and Gordon Flett made a distinction in their
-          influential work on perfectionism that most popular articles ignore.
-          They separated perfectionism into two broad categories: adaptive and
-          maladaptive.
-        </p>
-        <p
-          style={{
-            color: MUTED,
-            fontSize: "1rem",
-            lineHeight: 1.8,
-            marginBottom: "1.25rem",
-          }}
-        >
-          <strong style={{ color: TEXT }}>Adaptive perfectionism</strong> is the
-          drive to do excellent work because you find mastery intrinsically
-          satisfying. You set high standards, you care deeply about craft, but
-          when things go wrong you treat failure as information rather than
-          indictment. You can put something down as finished even if it could
-          theoretically be improved. You feel proud of good work, not just
-          relieved that you haven\u2019t been exposed.
-        </p>
-        <p
-          style={{
-            color: MUTED,
-            fontSize: "1rem",
-            lineHeight: 1.8,
-            marginBottom: "1.25rem",
-          }}
-        >
-          <strong style={{ color: TEXT }}>Maladaptive perfectionism</strong> is
-          something else entirely. Here, the goal is not excellence \u2014 it is
-          the avoidance of failure. The motivation is not love of craft but fear
-          of judgment. Maladaptive perfectionism is associated in the research
-          literature with elevated anxiety, depression, burnout, and
-          procrastination. It is also associated with interpersonal
-          perfectionism: the tendency to hold others to the same impossible
-          standards, which damages relationships and compounds isolation.
-        </p>
-        <p
-          style={{
-            color: MUTED,
-            fontSize: "1rem",
-            lineHeight: 1.8,
-            marginBottom: "1.25rem",
-          }}
-        >
-          Hewitt and Flett also identified a third dimension: socially prescribed
-          perfectionism, which is the belief that other people expect you to be
-          perfect. This is perhaps the most corrosive variant because the
-          standard is entirely imagined \u2014 a projection of your own inner
-          critic onto the faces of everyone around you.
-        </p>
-        <p
-          style={{
-            color: MUTED,
-            fontSize: "1rem",
-            lineHeight: 1.8,
-            marginBottom: "1.25rem",
-          }}
-        >
-          When you understand which type of perfectionism is running your
-          behaviour, you can begin to address it at the right level. An AI
-          companion that helps you articulate these patterns precisely \u2014
-          rather than offering generic encouragement \u2014 is genuinely useful
-          here.
-        </p>
-
-        {/* Callout: Research note */}
-        <div
-          style={{
-            padding: "1.5rem",
-            borderRadius: "1rem",
-            marginBottom: "2rem",
-            background: PURPLE_SOFT,
-            border: `1px solid ${PURPLE_BORDER}`,
+            borderRadius: "0 0.75rem 0.75rem 0",
+            marginBottom: "3rem",
           }}
         >
           <p
             style={{
+              fontSize: "0.75rem",
               fontWeight: 700,
-              fontSize: "0.8rem",
-              color: PURPLE_TEXT,
-              letterSpacing: "0.06em",
+              letterSpacing: "0.08em",
               textTransform: "uppercase" as const,
-              marginBottom: "0.75rem",
-              margin: "0 0 0.75rem 0",
+              color: GOLD,
+              marginBottom: "0.5rem",
             }}
           >
-            Research note
+            The Core Reframe
           </p>
           <p
             style={{
-              fontSize: "0.9rem",
-              color: MUTED_DIM,
-              lineHeight: 1.7,
+              fontSize: "1.05rem",
+              color: TEXT,
+              lineHeight: 1.75,
+              fontStyle: "italic",
               margin: 0,
             }}
           >
-            Hewitt and Flett\u2019s Multidimensional Perfectionism Scale (MPS),
-            developed in 1991, remains one of the most widely used instruments
-            in perfectionism research. Their model distinguishes
-            self-oriented, other-oriented, and socially prescribed
-            perfectionism, each carrying different psychological consequences.
-            More recent work by Sherry and Hall (2009) and Curran and Hill
-            (2019) has tracked a significant rise in socially prescribed
-            perfectionism across generations \u2014 a trend they link directly
-            to social media and competitive achievement culture.
+            Perfectionism does not protect you from failure. It protects you from
+            starting \u2014 and in doing so, guarantees a quieter, slower kind of failure
+            that never announces itself loudly enough to be addressed.
           </p>
         </div>
 
-        {/* Section 3 */}
+        {/* ── Section 1 ──────────────────────────────────────────────────────── */}
         <h2
           style={{
+            fontSize: "1.65rem",
             fontWeight: 800,
-            fontSize: "clamp(1.3rem, 2.5vw, 1.75rem)",
-            color: "#fff",
+            lineHeight: 1.2,
+            letterSpacing: "-0.015em",
+            color: TEXT,
             marginBottom: "1rem",
-            marginTop: "3rem",
-            lineHeight: 1.25,
+            marginTop: "1rem",
           }}
         >
-          Why does perfectionism cause procrastination?
+          What Is Perfectionism Actually Doing in Your Brain?
         </h2>
-        <p
-          style={{
-            color: MUTED,
-            fontSize: "1rem",
-            lineHeight: 1.8,
-            marginBottom: "1.25rem",
-          }}
-        >
-          The perfectionism-procrastination link is one of the most
-          counterintuitive findings in psychology for people who identify as
-          perfectionists. Most perfectionists do not think of themselves as
-          procrastinators. They think of procrastination as laziness, and they
-          are definitively not lazy. But procrastination is not about laziness.
-          It is about emotion regulation.
-        </p>
-        <p
-          style={{
-            color: MUTED,
-            fontSize: "1rem",
-            lineHeight: 1.8,
-            marginBottom: "1.25rem",
-          }}
-        >
-          When you are a maladaptive perfectionist, starting a task means
-          entering the zone of potential failure. Before you have written a
-          single word, the internal critic is already preparing its verdict. The
-          anticipated pain of producing something imperfect \u2014 and therefore
-          being revealed as inadequate \u2014 is genuinely unbearable. So you
-          don\u2019t start. Or you start and stop. Or you spend three weeks in
-          research mode, telling yourself you are not ready yet, when what you
-          are actually doing is keeping the possibility of a perfect outcome
-          alive by never testing it against reality.
-        </p>
-        <p
-          style={{
-            color: MUTED,
-            fontSize: "1rem",
-            lineHeight: 1.8,
-            marginBottom: "1.25rem",
-          }}
-        >
-          This is also why perfectionist procrastination often intensifies
-          around the things that matter most. The higher the stakes, the more
-          self-worth is on the line, the harder it is to begin. Creative
-          projects, important relationships, career pivots, public work of any
-          kind \u2014 these are the places where perfectionist paralysis is most
-          likely to take hold.
-        </p>
-        <p
-          style={{
-            color: MUTED,
-            fontSize: "1rem",
-            lineHeight: 1.8,
-            marginBottom: "1.25rem",
-          }}
-        >
-          The solution is not simply to lower your standards. That advice, while
-          well-intentioned, misses the point entirely. The solution is to
-          decouple self-worth from performance. And that is psychological work
-          that requires consistent, honest support \u2014 not cheerleading, not
-          flattery, and not silence.
+
+        <p style={{ fontSize: "1.05rem", color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
+          Perfectionism is not a character flaw or a badge of dedication. At its
+          psychological root, it is a conditional self-worth model \u2014 a belief
+          that you are only acceptable, only lovable, only safe when your output
+          meets a standard that is perpetually out of reach. Researchers Philip
+          Hewitt and Gordon Flett, who have spent decades mapping the terrain of
+          perfectionism, describe three distinct dimensions: self-oriented
+          perfectionism (demanding flawless performance from yourself),
+          socially-prescribed perfectionism (believing others demand perfection
+          from you), and other-oriented perfectionism (projecting that demand
+          onto other people).
         </p>
 
-        {/* Stats block */}
-        <div
+        <p style={{ fontSize: "1.05rem", color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
+          The most damaging of these is socially prescribed perfectionism, which
+          has risen sharply over the past thirty years according to a 2019 meta-analysis
+          by Curran and Hill covering over 40,000 American, Canadian, and British
+          university students. The rise correlates with the growth of social media,
+          competitive comparison cultures, and economic precarity. The implication
+          is uncomfortable: perfectionism is not primarily a personal failing. It
+          is, in large part, a rational adaptation to an environment that genuinely
+          punishes visible imperfection.
+        </p>
+
+        <p style={{ fontSize: "1.05rem", color: MUTED, lineHeight: 1.8, marginBottom: "2.5rem" }}>
+          Understanding this matters for how you address it. You are not broken. You
+          learned a strategy. The strategy made sense once. It is now costing more
+          than it provides. That is the real problem \u2014 and it has a different
+          solution than self-discipline or motivation.
+        </p>
+
+        {/* ── Section 2 ──────────────────────────────────────────────────────── */}
+        <h2
           style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))",
-            gap: "1rem",
-            marginBottom: "2.5rem",
-            marginTop: "2rem",
+            fontSize: "1.65rem",
+            fontWeight: 800,
+            lineHeight: 1.2,
+            letterSpacing: "-0.015em",
+            color: TEXT,
+            marginBottom: "1rem",
+            marginTop: "0.5rem",
           }}
         >
+          What Is the Difference Between Adaptive and Maladaptive Perfectionism?
+        </h2>
+
+        <p style={{ fontSize: "1.05rem", color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
+          Not all perfectionism destroys. Adaptive perfectionism describes the
+          orientation of someone who sets high standards, pursues them energetically,
+          and \u2014 crucially \u2014 can accept outcomes that fall short without those
+          outcomes defining their self-worth. When an adaptive perfectionist misses
+          the mark, they experience disappointment, analyse what went wrong, and
+          adjust. They do not collapse.
+        </p>
+
+        <p style={{ fontSize: "1.05rem", color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
+          Maladaptive perfectionism is structurally different. The high standards are
+          present but they function as a threat system rather than a motivational one.
+          Every piece of work is evaluated through the lens of: does this prove I am
+          adequate? When the work cannot pass that test \u2014 and it rarely can, because
+          the bar is set conditionally rather than objectively \u2014 the result is not
+          recalibration. It is shame. And shame does not produce better work. It
+          produces avoidance, paralysis, or frantic over-revision that consumes more
+          time and energy than the work itself.
+        </p>
+
+        <p style={{ fontSize: "1.05rem", color: MUTED, lineHeight: 1.8, marginBottom: "1.5rem" }}>
+          The diagnostic question is not: do I have high standards? Almost everyone
+          does. The question is: what happens inside you when those standards are not
+          met? If the answer is recalibration, that is adaptive. If the answer is shame
+          and self-attack, that is maladaptive \u2014 and that is where the real work lives.
+        </p>
+
+        {/* Comparison table */}
+        <div
+          style={{
+            overflowX: "auto" as const,
+            marginBottom: "3rem",
+            borderRadius: "0.875rem",
+            border: `1px solid ${SURFACE_BORDER}`,
+          }}
+        >
+          <table
+            style={{
+              width: "100%",
+              borderCollapse: "collapse" as const,
+              fontSize: "0.95rem",
+              lineHeight: 1.6,
+            }}
+          >
+            <thead>
+              <tr>
+                <th
+                  style={{
+                    textAlign: "left" as const,
+                    padding: "1rem 1.25rem",
+                    fontSize: "0.75rem",
+                    fontWeight: 700,
+                    letterSpacing: "0.07em",
+                    textTransform: "uppercase" as const,
+                    color: GOLD,
+                    background: GOLD_DIM,
+                    borderBottom: `1px solid ${GOLD_BORDER}`,
+                    width: "34%",
+                  }}
+                >
+                  Dimension
+                </th>
+                <th
+                  style={{
+                    textAlign: "left" as const,
+                    padding: "1rem 1.25rem",
+                    fontSize: "0.75rem",
+                    fontWeight: 700,
+                    letterSpacing: "0.07em",
+                    textTransform: "uppercase" as const,
+                    color: GREEN_TEXT,
+                    background: GREEN_DIM,
+                    borderBottom: `1px solid ${GREEN_BORDER}`,
+                    width: "33%",
+                  }}
+                >
+                  Adaptive
+                </th>
+                <th
+                  style={{
+                    textAlign: "left" as const,
+                    padding: "1rem 1.25rem",
+                    fontSize: "0.75rem",
+                    fontWeight: 700,
+                    letterSpacing: "0.07em",
+                    textTransform: "uppercase" as const,
+                    color: RED_TEXT,
+                    background: RED_DIM,
+                    borderBottom: `1px solid ${RED_BORDER}`,
+                    width: "33%",
+                  }}
+                >
+                  Maladaptive
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {[
+                {
+                  dimension: "Standard-setting",
+                  adaptive: "High but flexible; adjusts with context",
+                  maladaptive: "Absolute and non-negotiable regardless of circumstance",
+                },
+                {
+                  dimension: "Response to failure",
+                  adaptive: "Disappointment, analysis, adjustment",
+                  maladaptive: "Shame, self-attack, avoidance",
+                },
+                {
+                  dimension: "Self-worth link",
+                  adaptive: "Outcome does not define worth",
+                  maladaptive: "Worth is entirely conditional on flawless output",
+                },
+                {
+                  dimension: "Effect on starting",
+                  adaptive: "Starts willingly; iterates from messy first drafts",
+                  maladaptive: "Delays or avoids starting to preserve hypothetical perfection",
+                },
+                {
+                  dimension: "Effect on finishing",
+                  adaptive: "Ships when good enough; releases with satisfaction",
+                  maladaptive: "Endless revision; rarely finishes or releases",
+                },
+                {
+                  dimension: "Relationship to burnout",
+                  adaptive: "Sustainable long-term; knows when to stop",
+                  maladaptive: "High burnout risk; cannot disengage from unfinished work",
+                },
+                {
+                  dimension: "Response to praise",
+                  adaptive: "Receives it with proportionate pleasure",
+                  maladaptive: "Dismisses it as unearned or waits for the other shoe to drop",
+                },
+              ].map((row, i) => (
+                <tr
+                  key={row.dimension}
+                  style={{
+                    background: i % 2 === 0 ? SURFACE : "transparent",
+                  }}
+                >
+                  <td
+                    style={{
+                      padding: "0.85rem 1.25rem",
+                      fontWeight: 600,
+                      color: TEXT,
+                      borderBottom: `1px solid ${SURFACE_BORDER}`,
+                      verticalAlign: "top" as const,
+                    }}
+                  >
+                    {row.dimension}
+                  </td>
+                  <td
+                    style={{
+                      padding: "0.85rem 1.25rem",
+                      color: MUTED,
+                      borderBottom: `1px solid ${SURFACE_BORDER}`,
+                      verticalAlign: "top" as const,
+                    }}
+                  >
+                    {row.adaptive}
+                  </td>
+                  <td
+                    style={{
+                      padding: "0.85rem 1.25rem",
+                      color: MUTED,
+                      borderBottom: `1px solid ${SURFACE_BORDER}`,
+                      verticalAlign: "top" as const,
+                    }}
+                  >
+                    {row.maladaptive}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        {/* ── Section 3 ──────────────────────────────────────────────────────── */}
+        <h2
+          style={{
+            fontSize: "1.65rem",
+            fontWeight: 800,
+            lineHeight: 1.2,
+            letterSpacing: "-0.015em",
+            color: TEXT,
+            marginBottom: "1rem",
+          }}
+        >
+          Why Does Perfectionism Create Procrastination?
+        </h2>
+
+        <p style={{ fontSize: "1.05rem", color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
+          The perfectionism-procrastination link is one of the most consistently
+          replicated findings in the psychology of performance. The mechanism is
+          straightforward once you see it: if your internal rule is that starting
+          is only worthwhile when the outcome can be perfect, and you have
+          sufficient self-awareness to know that the outcome probably will not be
+          perfect, then not starting is a completely rational choice. Starting
+          exposes the gap. Not starting preserves possibility.
+        </p>
+
+        <p style={{ fontSize: "1.05rem", color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
+          This is the trap that perfectionism sets: it presents itself as a motivation
+          toward excellence while functioning as a motivation away from action. You are
+          not avoiding the task because you do not care. You are avoiding it because you
+          care so much that the risk of producing something imperfect feels intolerable.
+          The blank page is safe. The unwritten email is still potentially perfect. The
+          unstarted project retains all its hypothetical brilliance. The moment you begin,
+          you must contend with reality \u2014 and reality almost never matches the standard
+          perfectionism has set.
+        </p>
+
+        <p style={{ fontSize: "1.05rem", color: MUTED, lineHeight: 1.8, marginBottom: "1.5rem" }}>
+          The procrastination then generates its own shame layer. Hours or days pass.
+          The deadline approaches. The gap between the hypothetically perfect version and
+          what you could now produce in the available time grows even wider. The
+          emotional cost of starting becomes even higher. The loop tightens. This is not
+          a time management problem. It is not laziness. It is the logical outcome of a
+          threat system that has mistaken the work for a referendum on your worth.
+        </p>
+
+        {/* Callout 2 */}
+        <div
+          style={{
+            borderLeft: `4px solid ${GOLD}`,
+            paddingLeft: "1.5rem",
+            paddingTop: "1.25rem",
+            paddingBottom: "1.25rem",
+            paddingRight: "1.5rem",
+            background: GOLD_DIM,
+            borderRadius: "0 0.75rem 0.75rem 0",
+            marginBottom: "3rem",
+          }}
+        >
+          <p
+            style={{
+              fontSize: "0.75rem",
+              fontWeight: 700,
+              letterSpacing: "0.08em",
+              textTransform: "uppercase" as const,
+              color: GOLD,
+              marginBottom: "0.5rem",
+            }}
+          >
+            The Loop Mechanics
+          </p>
+          <p style={{ fontSize: "1rem", color: TEXT, lineHeight: 1.75, marginBottom: "0.75rem" }}>
+            The perfectionism-procrastination cycle moves through four predictable stages:
+          </p>
           {[
             {
-              stat: "~30%",
-              label: "of adults show clinically significant perfectionism",
+              num: "01",
+              title: "The Standard Is Set",
+              body: "Before work begins, perfectionism establishes a bar. It is rarely articulated explicitly. It operates as a felt sense that the output must be exceptional, must be beyond criticism, must demonstrate unmistakably that you are capable and worthy.",
             },
             {
-              stat: "2\u00d7",
-              label: "higher burnout rates in high-perfectionism individuals",
+              num: "02",
+              title: "The Gap Is Felt",
+              body: "You assess the distance between where you are now and where the output needs to be. The gap feels enormous \u2014 not because it necessarily is, but because perfectionism measures it in units of self-worth rather than units of effort.",
             },
             {
-              stat: "33%",
-              label:
-                "rise in socially prescribed perfectionism since 1989 (Curran & Hill)",
+              num: "03",
+              title: "Avoidance Begins",
+              body: "Not starting becomes a way of not failing. You do other things. The task stays hypothetically achievable. The emotional cost of this is manageable in the short term. In the long term, the avoided task accumulates emotional weight with every day that passes.",
             },
-          ].map((item) => (
+            {
+              num: "04",
+              title: "Shame Reloads the Gun",
+              body: "The avoidance itself becomes a source of self-attack. Now you have the original fear of imperfection plus the shame of having procrastinated. The next approach attempt carries even more emotional freight. The loop repeats, usually with higher stakes.",
+            },
+          ].map((stage) => (
             <div
-              key={item.label}
+              key={stage.num}
               style={{
-                padding: "1.25rem",
-                borderRadius: "0.875rem",
-                background: "rgba(255,255,255,0.03)",
-                border: "1px solid rgba(255,255,255,0.07)",
-                textAlign: "center" as const,
+                display: "grid",
+                gridTemplateColumns: "3rem 1fr",
+                gap: "1rem",
+                marginBottom: "1rem",
+                alignItems: "start",
               }}
             >
               <div
                 style={{
-                  fontSize: "2rem",
-                  fontWeight: 900,
+                  fontSize: "0.7rem",
+                  fontWeight: 800,
+                  letterSpacing: "0.1em",
                   color: GOLD,
-                  lineHeight: 1.1,
-                  marginBottom: "0.5rem",
+                  paddingTop: "0.25rem",
                 }}
               >
-                {item.stat}
+                {stage.num}
               </div>
-              <div
-                style={{
-                  fontSize: "0.8rem",
-                  color: MUTED_DIM,
-                  lineHeight: 1.5,
-                }}
-              >
-                {item.label}
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Section 4 */}
-        <h2
-          style={{
-            fontWeight: 800,
-            fontSize: "clamp(1.3rem, 2.5vw, 1.75rem)",
-            color: "#fff",
-            marginBottom: "1rem",
-            marginTop: "3rem",
-            lineHeight: 1.25,
-          }}
-        >
-          What does an honest AI companion actually do for perfectionism?
-        </h2>
-        <p
-          style={{
-            color: MUTED,
-            fontSize: "1rem",
-            lineHeight: 1.8,
-            marginBottom: "1.25rem",
-          }}
-        >
-          Most AI tools that claim to support mental wellbeing are, in practice,
-          sycophantic. They validate whatever you bring. They tell you that your
-          work is great. They reflect your self-assessment back to you with a
-          thin coating of encouragement. For people with perfectionism, this is
-          worse than useless. It does not challenge the distortion. It does not
-          interrupt the loop. It just adds empty fuel.
-        </p>
-        <p
-          style={{
-            color: MUTED,
-            fontSize: "1rem",
-            lineHeight: 1.8,
-            marginBottom: "1.25rem",
-          }}
-        >
-          MEOK is built on a different model. The anti-sycophancy architecture
-          at the heart of MEOK means it will not simply agree with whatever you
-          say. When you describe your work as worthless, MEOK will not agree
-          with you. When you describe your work as flawless, MEOK will not agree
-          with that either. The goal is honest care \u2014 the kind of response
-          a good mentor gives: clear-eyed, warm, and unwilling to participate in
-          distortions that harm you.
-        </p>
-        <p
-          style={{
-            color: MUTED,
-            fontSize: "1rem",
-            lineHeight: 1.8,
-            marginBottom: "1.25rem",
-          }}
-        >
-          This matters enormously for perfectionism, where the inner critic is
-          already loudly doing one kind of distortion. An AI that agrees with
-          the critic makes the distortion feel more real. An AI that flatly
-          disagrees may simply feel dismissive. The skill is in holding the
-          tension honestly \u2014 acknowledging that the work has real
-          limitations while also reflecting that those limitations are not a
-          verdict on your worth. That requires something closer to wisdom than
-          cheerleading.
-        </p>
-
-        {/* Section 5 */}
-        <h2
-          style={{
-            fontWeight: 800,
-            fontSize: "clamp(1.3rem, 2.5vw, 1.75rem)",
-            color: "#fff",
-            marginBottom: "1rem",
-            marginTop: "3rem",
-            lineHeight: 1.25,
-          }}
-        >
-          How does MEOK celebrate progress rather than perfection?
-        </h2>
-        <p
-          style={{
-            color: MUTED,
-            fontSize: "1rem",
-            lineHeight: 1.8,
-            marginBottom: "1.25rem",
-          }}
-        >
-          One of the structural challenges of perfectionism is that the
-          perfectionist brain is very good at erasing evidence of progress.
-          Milestones pass unacknowledged. Work that gets done is immediately
-          downgraded to \u201cnot good enough\u201d before it can register as an
-          achievement. The accumulation of imperfect-but-real effort becomes
-          invisible because the filter only allows through the things that meet
-          an impossible standard.
-        </p>
-        <p
-          style={{
-            color: MUTED,
-            fontSize: "1rem",
-            lineHeight: 1.8,
-            marginBottom: "1.25rem",
-          }}
-        >
-          MEOK\u2019s Sovereign Memory is designed to counter this directly. When
-          you share something you did \u2014 even imperfectly, even
-          incompletely, even with enormous hesitation \u2014 MEOK logs it. Not
-          in a mechanical, box-ticking way. In the way a person who genuinely
-          knows you and has been paying attention would remember it. Weeks later,
-          when the inner critic is insisting that you never follow through, MEOK
-          can surface the actual record: the draft you sent, the conversation
-          you had, the step you took.
-        </p>
-        <p
-          style={{
-            color: MUTED,
-            fontSize: "1rem",
-            lineHeight: 1.8,
-            marginBottom: "1.25rem",
-          }}
-        >
-          This is not about gamification or streak counters. It is about
-          restoring an accurate version of your own history to you \u2014
-          because perfectionism systematically destroys that accuracy, and you
-          need something outside your own head to hold the truth.
-        </p>
-
-        {/* Feature list */}
-        <div
-          style={{
-            padding: "1.75rem",
-            borderRadius: "1rem",
-            marginBottom: "2.5rem",
-            background: "rgba(255,255,255,0.025)",
-            border: "1px solid rgba(255,255,255,0.08)",
-          }}
-        >
-          <p
-            style={{
-              fontWeight: 700,
-              fontSize: "0.8rem",
-              color: GOLD,
-              letterSpacing: "0.06em",
-              textTransform: "uppercase" as const,
-              marginBottom: "1.25rem",
-              margin: "0 0 1.25rem 0",
-            }}
-          >
-            How MEOK supports perfectionism in practice
-          </p>
-          <ul
-            style={{
-              listStyle: "none",
-              padding: 0,
-              margin: 0,
-              display: "flex",
-              flexDirection: "column" as const,
-              gap: "0.875rem",
-            }}
-          >
-            {[
-              "Anti-sycophancy model \u2014 MEOK will not validate your revision spiral or tell you the work is great when it isn\u2019t",
-              "Imperfect-action journalling \u2014 prompts to record done-but-not-perfect achievements as they happen",
-              "Sovereign Memory \u2014 your growth arc is held across time so you can see the actual accumulation of your effort",
-              "Self-compassion scaffolding \u2014 gentle redirection from self-critical loops toward shared human experience",
-              "Procrastination interrupts \u2014 lower-stakes starting prompts designed to break the paralysis of high stakes",
-              "No toxic positivity \u2014 honest acknowledgment of difficulty without catastrophising or dismissing",
-            ].map((item) => (
-              <li
-                key={item}
-                style={{
-                  display: "flex",
-                  gap: "0.75rem",
-                  alignItems: "flex-start",
-                  fontSize: "0.9rem",
-                  color: MUTED_DIM,
-                  lineHeight: 1.6,
-                }}
-              >
-                <span
-                  style={{
-                    color: GOLD,
-                    fontWeight: 700,
-                    flexShrink: 0,
-                    marginTop: "0.05rem",
-                  }}
-                >
-                  &#10003;
-                </span>
-                {item}
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        {/* Section 6 */}
-        <h2
-          style={{
-            fontWeight: 800,
-            fontSize: "clamp(1.3rem, 2.5vw, 1.75rem)",
-            color: "#fff",
-            marginBottom: "1rem",
-            marginTop: "3rem",
-            lineHeight: 1.25,
-          }}
-        >
-          Why does an AI that always agrees with you make perfectionism worse?
-        </h2>
-        <p
-          style={{
-            color: MUTED,
-            fontSize: "1rem",
-            lineHeight: 1.8,
-            marginBottom: "1.25rem",
-          }}
-        >
-          Understanding the danger of sycophantic AI for perfectionism requires
-          understanding what perfectionist distortions actually look like in
-          conversation. When a perfectionist says \u201cthis is terrible, I
-          should never have tried,\u201d a sycophantic AI says \u201cno, it\u2019s
-          actually really good!\u201d This feels validating for about four
-          seconds. Then the perfectionist\u2019s inner critic notes that the AI
-          is just saying that to be nice, which means the AI\u2019s opinion is
-          worthless, which means the original verdict stands.
-        </p>
-        <p
-          style={{
-            color: MUTED,
-            fontSize: "1rem",
-            lineHeight: 1.8,
-            marginBottom: "1.25rem",
-          }}
-        >
-          Sycophancy also reinforces the underlying structure of perfectionism:
-          the idea that work quality is what determines self-worth. A
-          sycophantic AI validates the quality (falsely), but it never
-          challenges the frame. It never asks: why does the quality of this work
-          feel like a verdict on you as a person? It never reflects: you\u2019ve
-          described your work as terrible in every conversation we\u2019ve had,
-          regardless of what the work actually was \u2014 does that tell us
-          something about the evaluator rather than the work?
-        </p>
-        <p
-          style={{
-            color: MUTED,
-            fontSize: "1rem",
-            lineHeight: 1.8,
-            marginBottom: "1.25rem",
-          }}
-        >
-          An AI that remembers your patterns across weeks and months, and that
-          has the honesty to reflect them back to you without judgment, is doing
-          something qualitatively different from an AI that forgets you the
-          moment the session ends and that will say whatever you seem to want to
-          hear.
-        </p>
-
-        {/* Section 7 */}
-        <h2
-          style={{
-            fontWeight: 800,
-            fontSize: "clamp(1.3rem, 2.5vw, 1.75rem)",
-            color: "#fff",
-            marginBottom: "1rem",
-            marginTop: "3rem",
-            lineHeight: 1.25,
-          }}
-        >
-          What is imperfect action journalling and how does it work?
-        </h2>
-        <p
-          style={{
-            color: MUTED,
-            fontSize: "1rem",
-            lineHeight: 1.8,
-            marginBottom: "1.25rem",
-          }}
-        >
-          Imperfect action journalling is a practice built on a simple premise:
-          that the perfectionistic mind systematically deletes evidence of
-          imperfect-but-real effort, and that the only way to counter this is to
-          create an external record before the deletion happens.
-        </p>
-        <p
-          style={{
-            color: MUTED,
-            fontSize: "1rem",
-            lineHeight: 1.8,
-            marginBottom: "1.25rem",
-          }}
-        >
-          The practice involves recording, at the end of a day or a work
-          session, not what you finished perfectly but what you did. The
-          question is not \u201cwhat did I complete?\u201d It is \u201cwhat did I
-          do, regardless of whether it was good enough?\u201d This sounds simple
-          and feels almost offensively easy at first. Then you notice that your
-          entries are very short, or that you can\u2019t think of anything to
-          write, or that everything you did feels like it \u201cdoesn\u2019t
-          count\u201d because it wasn\u2019t good enough. And suddenly the
-          exercise is revealing something important about the filter you are
-          applying to your own effort.
-        </p>
-        <p
-          style={{
-            color: MUTED,
-            fontSize: "1rem",
-            lineHeight: 1.8,
-            marginBottom: "1.25rem",
-          }}
-        >
-          Over time, the log accumulates. And when the inner critic says you
-          never follow through, you have a timestamped record that says
-          otherwise. MEOK can hold this log within Sovereign Memory and surface
-          it at the moments when it is most needed: when you are about to give
-          up on something because you haven\u2019t been perfect, when you are
-          convinced you have made no progress, when you need to see who you
-          actually are rather than who the critic says you are.
-        </p>
-
-        {/* Journalling prompt examples */}
-        <div
-          style={{
-            padding: "1.75rem",
-            borderRadius: "1rem",
-            marginBottom: "2.5rem",
-            background: GOLD_DIM,
-            border: `1px solid ${GOLD_BORDER}`,
-          }}
-        >
-          <p
-            style={{
-              fontWeight: 700,
-              fontSize: "0.8rem",
-              color: GOLD,
-              letterSpacing: "0.06em",
-              textTransform: "uppercase" as const,
-              margin: "0 0 1.25rem 0",
-            }}
-          >
-            Example imperfect-action journal prompts
-          </p>
-          <ul
-            style={{
-              listStyle: "none",
-              padding: 0,
-              margin: 0,
-              display: "flex",
-              flexDirection: "column" as const,
-              gap: "1rem",
-            }}
-          >
-            {[
-              "What did I do today, even if it didn\u2019t feel like enough?",
-              "What imperfect thing did I send, say, or attempt that I usually would have held back?",
-              "What did I finish \u2014 not perfectly, but finished enough to move forward?",
-              "What did I show up for today, even if I showed up imperfectly?",
-              "If a kind friend described what I did today, what would they say?",
-            ].map((prompt) => (
-              <li
-                key={prompt}
-                style={{
-                  display: "flex",
-                  gap: "0.875rem",
-                  alignItems: "flex-start",
-                  fontSize: "0.9rem",
-                  color: MUTED_DIM,
-                  lineHeight: 1.6,
-                }}
-              >
-                <span
-                  style={{
-                    color: GOLD,
-                    fontWeight: 700,
-                    flexShrink: 0,
-                    fontSize: "1rem",
-                  }}
-                >
-                  &#8250;
-                </span>
-                {prompt}
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        {/* Section 8 */}
-        <h2
-          style={{
-            fontWeight: 800,
-            fontSize: "clamp(1.3rem, 2.5vw, 1.75rem)",
-            color: "#fff",
-            marginBottom: "1rem",
-            marginTop: "3rem",
-            lineHeight: 1.25,
-          }}
-        >
-          What is self-compassion and can AI genuinely support it?
-        </h2>
-        <p
-          style={{
-            color: MUTED,
-            fontSize: "1rem",
-            lineHeight: 1.8,
-            marginBottom: "1.25rem",
-          }}
-        >
-          Kristin Neff\u2019s model of self-compassion, developed over two
-          decades of research at the University of Texas, identifies three
-          interconnected components. The first is self-kindness: treating
-          yourself with the same warmth and understanding you would offer a good
-          friend, rather than with the harshness of the inner critic.
-        </p>
-        <p
-          style={{
-            color: MUTED,
-            fontSize: "1rem",
-            lineHeight: 1.8,
-            marginBottom: "1.25rem",
-          }}
-        >
-          The second is common humanity: recognising that suffering, failure,
-          and imperfection are part of the shared human experience, not evidence
-          of your particular deficiency. Perfectionism relies on isolation \u2014
-          the feeling that everyone else is handling things properly while you
-          are uniquely, secretly struggling. Common humanity dissolves this
-          isolation.
-        </p>
-        <p
-          style={{
-            color: MUTED,
-            fontSize: "1rem",
-            lineHeight: 1.8,
-            marginBottom: "1.25rem",
-          }}
-        >
-          The third is mindful awareness: holding painful thoughts and feelings
-          in balanced awareness rather than suppressing them or over-identifying
-          with them. For the perfectionist, this means being able to notice the
-          self-critical thought without either pushing it away (\u201cI shouldn\u2019t
-          feel this\u201d) or drowning in it (\u201cthis is what I really
-          am\u201d).
-        </p>
-        <p
-          style={{
-            color: MUTED,
-            fontSize: "1rem",
-            lineHeight: 1.8,
-            marginBottom: "1.25rem",
-          }}
-        >
-          Neff\u2019s research consistently finds that self-compassion is
-          associated with higher motivation, not lower. The common fear among
-          perfectionists is that self-compassion means lowering your standards
-          or giving yourself permission to be mediocre. The evidence says the
-          opposite: people who practise self-compassion are more resilient after
-          failure, more willing to try again, and less likely to give up on
-          difficult goals.
-        </p>
-        <p
-          style={{
-            color: MUTED,
-            fontSize: "1rem",
-            lineHeight: 1.8,
-            marginBottom: "1.25rem",
-          }}
-        >
-          Can AI genuinely support self-compassion without slipping into toxic
-          positivity? This is a real challenge. Toxic positivity is the
-          dismissive insistence that everything is fine, or will be fine, or
-          that you should simply choose to feel better. It is well-intentioned
-          and genuinely harmful because it communicates that your pain is not
-          welcome. Real self-compassion acknowledges the pain directly before
-          holding it with warmth. MEOK\u2019s care architecture is built to make
-          this distinction: not to dismiss difficulty, but to meet it honestly
-          and respond with the warmth that the self-critical voice withholds.
-        </p>
-
-        {/* Neff model visual */}
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
-            gap: "1rem",
-            marginBottom: "2.5rem",
-            marginTop: "1.5rem",
-          }}
-        >
-          {[
-            {
-              title: "Self-Kindness",
-              desc: "Treating yourself with the warmth you would offer a friend in the same situation, rather than harsh self-judgment.",
-            },
-            {
-              title: "Common Humanity",
-              desc: "Recognising that imperfection and struggle are universal, not evidence of your unique inadequacy.",
-            },
-            {
-              title: "Mindful Awareness",
-              desc: "Holding painful thoughts in balanced awareness \u2014 neither suppressing them nor drowning in them.",
-            },
-          ].map((item) => (
-            <div
-              key={item.title}
-              style={{
-                padding: "1.5rem",
-                borderRadius: "0.875rem",
-                background: "rgba(255,255,255,0.03)",
-                border: "1px solid rgba(255,255,255,0.07)",
-              }}
-            >
-              <p
-                style={{
-                  fontWeight: 700,
-                  fontSize: "0.9rem",
-                  color: GOLD,
-                  marginBottom: "0.6rem",
-                  margin: "0 0 0.6rem 0",
-                }}
-              >
-                {item.title}
-              </p>
-              <p
-                style={{
-                  fontSize: "0.85rem",
-                  color: MUTED_DIM,
-                  lineHeight: 1.65,
-                  margin: 0,
-                }}
-              >
-                {item.desc}
-              </p>
-            </div>
-          ))}
-        </div>
-
-        {/* Section 9 */}
-        <h2
-          style={{
-            fontWeight: 800,
-            fontSize: "clamp(1.3rem, 2.5vw, 1.75rem)",
-            color: "#fff",
-            marginBottom: "1rem",
-            marginTop: "3rem",
-            lineHeight: 1.25,
-          }}
-        >
-          How does memory change the conversation about perfectionism?
-        </h2>
-        <p
-          style={{
-            color: MUTED,
-            fontSize: "1rem",
-            lineHeight: 1.8,
-            marginBottom: "1.25rem",
-          }}
-        >
-          One of the reasons therapy is effective for perfectionism is that the
-          therapeutic relationship exists in time. A good therapist remembers
-          what you said three months ago. They can say: you told me in November
-          that you were convinced you\u2019d never finish that project. It\u2019s
-          March and you finished it. What does that tell you? That temporal
-          perspective is profoundly destabilising to perfectionist narratives,
-          which are almost always about the present moment and catastrophically
-          present-focused.
-        </p>
-        <p
-          style={{
-            color: MUTED,
-            fontSize: "1rem",
-            lineHeight: 1.8,
-            marginBottom: "1.25rem",
-          }}
-        >
-          Most AI tools cannot do this because they have no memory. Each
-          conversation begins from zero. You can pour out the same pattern every
-          day for a year and the AI will respond as if it is hearing it for the
-          first time. This is not only unhelpful for perfectionism \u2014 it is
-          structurally unable to challenge the perfectionist narrative, because
-          it has no access to the evidence that would contradict it.
-        </p>
-        <p
-          style={{
-            color: MUTED,
-            fontSize: "1rem",
-            lineHeight: 1.8,
-            marginBottom: "1.25rem",
-          }}
-        >
-          MEOK\u2019s Sovereign Memory is a four-layer encrypted memory
-          architecture that persists your story across time. It holds not just
-          what you said but how your patterns have shifted. It can track the
-          arc of your relationship with a project, a fear, a self-belief. It
-          notices when the same self-critical story recurs and can reflect that
-          recurrence back to you with curiosity rather than judgment. This is
-          the difference between a tool and a companion.
-        </p>
-
-        {/* Section 10 */}
-        <h2
-          style={{
-            fontWeight: 800,
-            fontSize: "clamp(1.3rem, 2.5vw, 1.75rem)",
-            color: "#fff",
-            marginBottom: "1rem",
-            marginTop: "3rem",
-            lineHeight: 1.25,
-          }}
-        >
-          What is the relationship between perfectionism and identity?
-        </h2>
-        <p
-          style={{
-            color: MUTED,
-            fontSize: "1rem",
-            lineHeight: 1.8,
-            marginBottom: "1.25rem",
-          }}
-        >
-          Many people who struggle with perfectionism are deeply invested in
-          their identity as a perfectionist. It feels like a personality trait
-          rather than a coping mechanism. It feels like something that has
-          protected them: the perfectionism got them good grades, it impressed
-          demanding parents, it kept them safe from a criticism they feared
-          even more than the one they levied on themselves.
-        </p>
-        <p
-          style={{
-            color: MUTED,
-            fontSize: "1rem",
-            lineHeight: 1.8,
-            marginBottom: "1.25rem",
-          }}
-        >
-          Letting go of perfectionism does not mean letting go of high
-          standards. It means letting go of the contract that says your worth is
-          only as good as your last output. That contract was never explicitly
-          signed, but it has been implicitly running everything. Noticing it,
-          naming it, and beginning to renegotiate it is work that happens slowly
-          and in conversation with someone or something that can hold the
-          complexity without collapsing it into a simple motivational message.
-        </p>
-        <p
-          style={{
-            color: MUTED,
-            fontSize: "1rem",
-            lineHeight: 1.8,
-            marginBottom: "1.25rem",
-          }}
-        >
-          MEOK is designed to hold that complexity. Not to tell you that
-          perfectionism is bad and you should stop it. But to be with you in the
-          specific, granular reality of how it shows up for you \u2014 what it
-          protects, what it costs, what it says about what you learned to believe
-          about yourself, and what it might look like to gently, incrementally,
-          act as if that belief were negotiable.
-        </p>
-
-        {/* Section 11 */}
-        <h2
-          style={{
-            fontWeight: 800,
-            fontSize: "clamp(1.3rem, 2.5vw, 1.75rem)",
-            color: "#fff",
-            marginBottom: "1rem",
-            marginTop: "3rem",
-            lineHeight: 1.25,
-          }}
-        >
-          When should I seek professional support for perfectionism?
-        </h2>
-        <p
-          style={{
-            color: MUTED,
-            fontSize: "1rem",
-            lineHeight: 1.8,
-            marginBottom: "1.25rem",
-          }}
-        >
-          AI support for perfectionism is most valuable as a daily companion for
-          self-reflection, pattern recognition, and imperfect-action practice.
-          It is not a replacement for therapy when perfectionism is significantly
-          impairing your functioning, relationships, or mental health.
-        </p>
-        <p
-          style={{
-            color: MUTED,
-            fontSize: "1rem",
-            lineHeight: 1.8,
-            marginBottom: "1.25rem",
-          }}
-        >
-          Consider professional support if perfectionism is linked to an eating
-          disorder, OCD, clinical depression, or anxiety disorder; if it is
-          causing you to avoid work, relationships, or important life decisions
-          over an extended period; if the self-critical voice has become
-          overwhelming or is intersecting with thoughts of self-harm; or if you
-          have tried to address it on your own and found yourself unable to make
-          progress without outside help.
-        </p>
-        <p
-          style={{
-            color: MUTED,
-            fontSize: "1rem",
-            lineHeight: 1.8,
-            marginBottom: "1.25rem",
-          }}
-        >
-          Cognitive Behavioural Therapy (CBT) and Acceptance and Commitment
-          Therapy (ACT) both have strong evidence bases for perfectionism. In the
-          UK, NHS Talking Therapies offers self-referred access to CBT at no
-          cost. You do not need a GP referral in most areas. MEOK will always
-          encourage professional care when indicators rise, and will never
-          position itself as sufficient on its own for significant mental health
-          difficulties.
-        </p>
-
-        {/* Resources block */}
-        <div
-          style={{
-            padding: "1.5rem",
-            borderRadius: "1rem",
-            marginBottom: "2.5rem",
-            background: "rgba(255,255,255,0.025)",
-            border: "1px solid rgba(255,255,255,0.07)",
-          }}
-        >
-          <p
-            style={{
-              fontWeight: 700,
-              fontSize: "0.8rem",
-              color: MUTED_FAINT,
-              letterSpacing: "0.06em",
-              textTransform: "uppercase" as const,
-              margin: "0 0 1.25rem 0",
-            }}
-          >
-            UK professional resources
-          </p>
-          <ul
-            style={{
-              listStyle: "none",
-              padding: 0,
-              margin: 0,
-              display: "flex",
-              flexDirection: "column" as const,
-              gap: "0.75rem",
-            }}
-          >
-            {[
-              "NHS Talking Therapies \u2014 self-refer at nhs.uk/mental-health/talking-therapies, no GP needed in most areas",
-              "Mind infoline \u2014 0300 123 3393 (Mon\u2013Fri 9am\u20136pm)",
-              "Samaritans \u2014 116 123, free 24/7, for when feelings become overwhelming",
-              "OCD-UK \u2014 ocduk.org, specialist support if perfectionism is linked to OCD",
-              "Beat \u2014 beateatingdisorders.org.uk, if perfectionism is linked to an eating disorder",
-            ].map((item) => (
-              <li
-                key={item}
-                style={{
-                  display: "flex",
-                  gap: "0.75rem",
-                  alignItems: "flex-start",
-                  fontSize: "0.85rem",
-                  color: MUTED_DIM,
-                  lineHeight: 1.6,
-                }}
-              >
-                <span
-                  style={{
-                    color: MUTED_FAINT,
-                    flexShrink: 0,
-                    marginTop: "0.1rem",
-                  }}
-                >
-                  &#8212;
-                </span>
-                {item}
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        {/* Section 12 */}
-        <h2
-          style={{
-            fontWeight: 800,
-            fontSize: "clamp(1.3rem, 2.5vw, 1.75rem)",
-            color: "#fff",
-            marginBottom: "1rem",
-            marginTop: "3rem",
-            lineHeight: 1.25,
-          }}
-        >
-          What makes MEOK different from other apps for perfectionism?
-        </h2>
-        <p
-          style={{
-            color: MUTED,
-            fontSize: "1rem",
-            lineHeight: 1.8,
-            marginBottom: "1.25rem",
-          }}
-        >
-          There are apps that help with productivity, apps that track habits,
-          apps that offer mindfulness exercises, and apps that provide CBT
-          modules. Most of them treat the person using them as a category:
-          \u201ca person who procrastinates,\u201d \u201ca person with
-          anxiety,\u201d \u201ca person who needs better habits.\u201d The
-          intervention is generic because the understanding is generic.
-        </p>
-        <p
-          style={{
-            color: MUTED,
-            fontSize: "1rem",
-            lineHeight: 1.8,
-            marginBottom: "1.25rem",
-          }}
-        >
-          MEOK treats you as an individual with a specific history, a specific
-          set of patterns, and a specific relationship with your own
-          perfectionism. It remembers the context. It can hold the particular
-          flavour of how your perfectionism works \u2014 whether it shows up
-          most in creative work or professional settings or relationships,
-          whether it is most activated by visibility or evaluation or comparison
-          with others, whether your inner critic sounds like a parent or a
-          teacher or a version of yourself you can\u2019t quite identify.
-        </p>
-        <p
-          style={{
-            color: MUTED,
-            fontSize: "1rem",
-            lineHeight: 1.8,
-            marginBottom: "1.25rem",
-          }}
-        >
-          MEOK was built by Nicholas Templeman at MEOK AI LABS with the
-          conviction that a truly useful AI companion has to be honest, has to
-          remember, and has to care without flattering. The Birth Ceremony \u2014
-          MEOK\u2019s onboarding process \u2014 begins with questions about who
-          you are and what you care about, not about what features you want. This
-          is the foundation on which everything else is built.
-        </p>
-
-        {/* FAQ Section */}
-        <section style={{ marginTop: "4rem" }}>
-          <h2
-            style={{
-              fontWeight: 800,
-              fontSize: "clamp(1.3rem, 2.5vw, 1.75rem)",
-              color: "#fff",
-              marginBottom: "2rem",
-              lineHeight: 1.25,
-            }}
-          >
-            Frequently asked questions
-          </h2>
-
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column" as const,
-              gap: "1.25rem",
-            }}
-          >
-            {[
-              {
-                q: "Can AI help with perfectionism?",
-                a: "Yes. AI can help with perfectionism by providing a non-judgmental space to log imperfect action, by refusing to validate rumination spirals, and by reflecting your growth arc back to you across time. MEOK\u2019s Sovereign Memory holds your progress so you can see the actual accumulation of done-but-not-perfect effort that perfectionism would otherwise erase.",
-              },
-              {
-                q: "What is the difference between perfectionism and high standards?",
-                a: "High standards are about the work. Perfectionism ties self-worth to flawless performance. Hewitt and Flett\u2019s research distinguishes adaptive perfectionism \u2014 which motivates without destabilising \u2014 from maladaptive perfectionism, which is associated with anxiety, depression, and procrastination. The key difference is whether failure feels like information or indictment.",
-              },
-              {
-                q: "Will MEOK judge my imperfect work?",
-                a: "No. MEOK\u2019s anti-sycophancy model means it will not flatter you falsely, but it will never shame you either. Imperfect, unfinished, or abandoned work is treated as data about your process, not evidence of your worth. The goal is honest, caring feedback that celebrates momentum rather than demanding completion.",
-              },
-              {
-                q: "How does MEOK help with perfectionist procrastination?",
-                a: "MEOK addresses the perfectionism-procrastination link by making starting feel lower-stakes. Imperfect-action journalling prompts you to record what you did, not what you finished perfectly. Over time, MEOK\u2019s memory surfaces this log as evidence that you are someone who acts, disrupting the paralysing belief that starting is only worth it if the outcome can be perfect.",
-              },
-              {
-                q: "What is self-compassion and how can AI support it?",
-                a: "Self-compassion, per Kristin Neff, has three components: self-kindness instead of self-judgment, common humanity instead of isolation, and mindful awareness instead of over-identification with pain. AI can support self-compassion by mirroring compassionate language, normalising struggle without toxic positivity, and gently redirecting self-critical spirals toward the shared human experience of imperfection.",
-              },
-            ].map((item) => (
-              <div
-                key={item.q}
-                style={{
-                  padding: "1.5rem",
-                  borderRadius: "1rem",
-                  background: "rgba(255,255,255,0.025)",
-                  border: "1px solid rgba(255,255,255,0.07)",
-                }}
-              >
-                <h3
-                  style={{
-                    fontWeight: 700,
-                    fontSize: "1rem",
-                    color: TEXT,
-                    marginBottom: "0.75rem",
-                    margin: "0 0 0.75rem 0",
-                    lineHeight: 1.4,
-                  }}
-                >
-                  {item.q}
-                </h3>
+              <div>
                 <p
                   style={{
-                    fontSize: "0.9rem",
-                    color: MUTED_DIM,
-                    lineHeight: 1.7,
+                    fontSize: "0.97rem",
+                    fontWeight: 700,
+                    color: TEXT,
+                    marginBottom: "0.25rem",
+                  }}
+                >
+                  {stage.title}
+                </p>
+                <p
+                  style={{
+                    fontSize: "0.95rem",
+                    color: MUTED,
+                    lineHeight: 1.75,
                     margin: 0,
                   }}
                 >
-                  {item.a}
+                  {stage.body}
                 </p>
               </div>
-            ))}
-          </div>
-        </section>
+            </div>
+          ))}
+        </div>
 
-        {/* Related articles */}
-        <section style={{ marginTop: "4rem" }}>
-          <h2
+        {/* ── Section 4 ──────────────────────────────────────────────────────── */}
+        <h2
+          style={{
+            fontSize: "1.65rem",
+            fontWeight: 800,
+            lineHeight: 1.2,
+            letterSpacing: "-0.015em",
+            color: TEXT,
+            marginBottom: "1rem",
+          }}
+        >
+          How Does Perfectionism Lead to Burnout?
+        </h2>
+
+        <p style={{ fontSize: "1.05rem", color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
+          Burnout is not simply the result of working too hard. It is the result of
+          working without recovery, without reward, and without a sense of progress.
+          Perfectionism creates all three of these conditions simultaneously. When the
+          standard is unattainably high, completing tasks does not register as an
+          achievement. You finish the project and immediately move to cataloguing what
+          was wrong with it. The satisfaction of completion \u2014 which is a genuine
+          neurological reward that humans evolved to experience \u2014 is systematically
+          denied. The fuel that should replenish you never arrives.
+        </p>
+
+        <p style={{ fontSize: "1.05rem", color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
+          Maladaptive perfectionists also struggle to disengage. The unfinished or
+          imperfect work stays cognitively active long after the working day ends.
+          It occupies mental bandwidth during evenings, weekends, and holidays.
+          Researchers describe this as failure to achieve psychological detachment
+          from work \u2014 and it is strongly associated with exhaustion, cynicism,
+          and the third component of burnout identified by Christina Maslach:
+          reduced personal efficacy. You become simultaneously more exhausted and
+          more convinced that you are not doing enough.
+        </p>
+
+        <p style={{ fontSize: "1.05rem", color: MUTED, lineHeight: 1.8, marginBottom: "2.5rem" }}>
+          There is a particularly cruel dynamic here: perfectionism-driven burnout
+          is often invisible from the outside. The person is still producing. They
+          are often producing at a high level. The internal experience is one of
+          constant inadequacy, exhaustion, and the gnawing certainty that it is
+          only a matter of time before everyone else realises what they already
+          know about themselves. Which brings us to imposter syndrome.
+        </p>
+
+        {/* ── Section 5 ──────────────────────────────────────────────────────── */}
+        <h2
+          style={{
+            fontSize: "1.65rem",
+            fontWeight: 800,
+            lineHeight: 1.2,
+            letterSpacing: "-0.015em",
+            color: TEXT,
+            marginBottom: "1rem",
+          }}
+        >
+          What Is the Connection Between Perfectionism and Imposter Syndrome?
+        </h2>
+
+        <p style={{ fontSize: "1.05rem", color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
+          Imposter syndrome \u2014 the persistent belief that you are a fraud, that your
+          competence is fabricated, and that you will eventually be exposed \u2014 does not
+          occur in a vacuum. It is structurally linked to perfectionism. The mechanism
+          works like this: perfectionism tells you that you must be perfect to be
+          worthy. You are not perfect \u2014 no one is. Therefore, by your own internal
+          logic, you are inadequate. Any success you achieve must therefore be luck,
+          circumstance, or deception. If you were actually competent, the work would
+          have been effortless and flawless. The fact that it was difficult and imperfect
+          proves the point.
+        </p>
+
+        <p style={{ fontSize: "1.05rem", color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
+          This is not an irrational conclusion given the perfectionist premise. It is
+          a perfectly logical inference from a false starting point. Change the premise
+          \u2014 that difficulty and imperfection are evidence of fraudulence rather than
+          evidence of genuine engagement with genuinely hard work \u2014 and the
+          imposter narrative collapses. But changing a premise you have held since
+          childhood, one that is reinforced by every critical teacher, competitive
+          peer, and unforgiving algorithm you have encountered, requires more than
+          insight. It requires a sustained counter-narrative over time.
+        </p>
+
+        <p style={{ fontSize: "1.05rem", color: MUTED, lineHeight: 1.8, marginBottom: "2.5rem" }}>
+          This is where memory \u2014 real, honest, longitudinal memory of what you have
+          actually done \u2014 becomes therapeutically significant. And it is one of the
+          core reasons MEOK was built with sovereign memory at its centre rather than
+          as an add-on feature.
+        </p>
+
+        {/* ── Section 6 ──────────────────────────────────────────────────────── */}
+        <h2
+          style={{
+            fontSize: "1.65rem",
+            fontWeight: 800,
+            lineHeight: 1.2,
+            letterSpacing: "-0.015em",
+            color: TEXT,
+            marginBottom: "1rem",
+          }}
+        >
+          Is Perfectionism Different in Creative Work vs Professional Work?
+        </h2>
+
+        <p style={{ fontSize: "1.05rem", color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
+          The underlying psychology is the same but the presentation differs in important
+          ways. In professional work \u2014 reports, presentations, proposals, code, strategy
+          \u2014 perfectionism tends to manifest as over-preparation, excessive revision,
+          difficulty delegating, and an inability to submit or ship without one more round
+          of checking. The stakes feel legible: there are deadlines, evaluators, visible
+          consequences. The perfectionism has an object it can point to.
+        </p>
+
+        <p style={{ fontSize: "1.05rem", color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
+          In creative work \u2014 writing, music, visual art, design, photography \u2014
+          perfectionism operates with less structure and more cruelty. Creative work
+          is by nature subjective, which means the perfectionist standard can never
+          be satisfied by any external benchmark. There is no passing grade. There is
+          only the work and the feeling that it could always be better. Writers who
+          revise the same chapter for three years are not pursuing excellence. They
+          are living inside a loop that only releases when the work is released \u2014
+          and the loop whispers that releasing it is a form of failure.
+        </p>
+
+        <p style={{ fontSize: "1.05rem", color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
+          Creative perfectionism is also particularly susceptible to the sycophancy
+          trap. When a creative person shares their work with an AI and the AI says
+          it is brilliant, the perfectionist part of them knows, on some level, that
+          the response is automatic. It does not satisfy. It may even deepen the
+          anxiety \u2014 because now there is data suggesting the work is good, and
+          the perfectionist knows they cannot trust that data.
+        </p>
+
+        <p style={{ fontSize: "1.05rem", color: MUTED, lineHeight: 1.8, marginBottom: "2.5rem" }}>
+          An AI that tells you what it actually observes about your work \u2014 without
+          flattery and without cruelty \u2014 is more useful precisely because it is
+          trustworthy. You can use its feedback. You can update your estimate of
+          the work. You can decide, on real information rather than on anxiety or
+          false reassurance, whether the work is done.
+        </p>
+
+        {/* Callout 3 */}
+        <div
+          style={{
+            borderLeft: `4px solid ${GOLD}`,
+            paddingLeft: "1.5rem",
+            paddingTop: "1.25rem",
+            paddingBottom: "1.25rem",
+            paddingRight: "1.5rem",
+            background: GOLD_DIM,
+            borderRadius: "0 0.75rem 0.75rem 0",
+            marginBottom: "3rem",
+          }}
+        >
+          <p
             style={{
+              fontSize: "0.75rem",
               fontWeight: 700,
-              fontSize: "1.1rem",
-              color: MUTED_FAINT,
-              letterSpacing: "0.04em",
+              letterSpacing: "0.08em",
               textTransform: "uppercase" as const,
-              marginBottom: "1.5rem",
+              color: GOLD,
+              marginBottom: "0.5rem",
             }}
           >
-            Related reading
-          </h2>
+            On Sycophancy and Creative Perfectionism
+          </p>
+          <p
+            style={{
+              fontSize: "1.05rem",
+              color: TEXT,
+              lineHeight: 1.8,
+              fontStyle: "italic",
+              marginBottom: "0.75rem",
+            }}
+          >
+            A perfectionistic creative does not need to hear that their work is
+            wonderful. They need to hear what is actually true. Sycophancy is not
+            kindness to a perfectionist. It is petrol on the anxiety.
+          </p>
+          <p style={{ fontSize: "0.95rem", color: MUTED, lineHeight: 1.75, margin: 0 }}>
+            MEOK\u2019s sycophancy detection layer is not about being harsh. It is about
+            being trustworthy. When an AI reflexively validates without engaging,
+            the perfectionist learns to discount its feedback entirely. When it
+            engages honestly, the feedback becomes a tool the perfectionist can
+            actually use to decide whether the work is finished.
+          </p>
+        </div>
+
+        {/* ── Section 7 ──────────────────────────────────────────────────────── */}
+        <h2
+          style={{
+            fontSize: "1.65rem",
+            fontWeight: 800,
+            lineHeight: 1.2,
+            letterSpacing: "-0.015em",
+            color: TEXT,
+            marginBottom: "1rem",
+          }}
+        >
+          How Does MEOK&apos;s Sycophancy Detection Prevent Feeding the Loop?
+        </h2>
+
+        <p style={{ fontSize: "1.05rem", color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
+          Most AI systems are trained to produce responses that feel satisfying to
+          receive. The result is a structural bias toward affirmation, agreement,
+          and validation \u2014 a bias that researchers at Anthropic have called
+          sycophancy. For many users, this is a mild annoyance. For someone with
+          maladaptive perfectionism, it is actively harmful.
+        </p>
+
+        <p style={{ fontSize: "1.05rem", color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
+          Here is what sycophancy looks like in a perfectionist context. You share
+          a draft and say you think it is terrible. A sycophantic AI says something
+          like: this is actually really good, you are being too hard on yourself.
+          That response does three damaging things simultaneously. First, it does not
+          engage with the actual work, so it provides no usable information. Second,
+          it frames your negative self-assessment as irrational, which can feel
+          invalidating even when you were hoping to be contradicted. Third, it teaches
+          you that the AI\u2019s positive feedback is automatic and therefore meaningless
+          \u2014 which means when you genuinely need to know whether the work is ready,
+          you have no signal you can trust.
+        </p>
+
+        <p style={{ fontSize: "1.05rem", color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
+          MEOK\u2019s sycophancy detection layer is built into its response generation
+          architecture. When a response pattern triggers the sycophancy detector \u2014
+          because it is agreeing without evidence, praising without observation, or
+          validating an emotional state rather than engaging with its content \u2014
+          the response is restructured. The goal is not to be contrary. It is to be
+          genuinely honest, which is what a perfectionist actually needs.
+        </p>
+
+        <p style={{ fontSize: "1.05rem", color: MUTED, lineHeight: 1.8, marginBottom: "2.5rem" }}>
+          In practice, this means MEOK will say things like: I can see you have spent
+          a lot of time on this. Let me tell you what is actually landing and what
+          is not. Or: You have revised the opening four times. That suggests to me
+          that the issue might not be in the opening \u2014 it might be that you are
+          not certain about the premise yet. That is useful. That moves the work forward.
+        </p>
+
+        {/* ── Section 8 ──────────────────────────────────────────────────────── */}
+        <h2
+          style={{
+            fontSize: "1.65rem",
+            fontWeight: 800,
+            lineHeight: 1.2,
+            letterSpacing: "-0.015em",
+            color: TEXT,
+            marginBottom: "1rem",
+          }}
+        >
+          What Is the Trickster Archetype and How Does It Break Perfectionist Patterns?
+        </h2>
+
+        <p style={{ fontSize: "1.05rem", color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
+          MEOK is built around a set of companion archetypes \u2014 different relational
+          orientations that can be activated depending on what the user needs. The
+          Trickster is the archetype specifically designed for pattern disruption.
+          Where other archetypes provide warmth, clarity, challenge, or structure,
+          the Trickster introduces productive friction.
+        </p>
+
+        <p style={{ fontSize: "1.05rem", color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
+          Perfectionism thrives in a closed, serious, self-referential loop. It takes
+          itself completely seriously. It has very high stakes. It does not tolerate
+          play. The Trickster is designed to introduce a foreign element into that
+          system: perspective. It might ask an unexpected question that makes the
+          perfectionist frame feel suddenly absurd. It might name the loop out loud in
+          a way that is more amused than alarmed. It might point out that you have
+          been revising the same email for forty-five minutes when the recipient will
+          read it in eight seconds. Not to shame. To illuminate.
+        </p>
+
+        <p style={{ fontSize: "1.05rem", color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
+          The psychological mechanism here draws on acceptance and commitment therapy
+          research showing that defusion \u2014 creating distance between yourself and
+          a thought, seeing the thought as a thought rather than as reality \u2014
+          is more effective at reducing the influence of self-critical patterns than
+          trying to directly argue against them. You cannot out-argue perfectionism.
+          You can make it visible. You can make it slightly ridiculous. The Trickster
+          is MEOK\u2019s primary tool for doing exactly that.
+        </p>
+
+        <p style={{ fontSize: "1.05rem", color: MUTED, lineHeight: 1.8, marginBottom: "2.5rem" }}>
+          The Trickster does not replace care. It operates alongside it. You can be
+          in a session with MEOK that moves between warmth, practical structure, and
+          Trickster-style disruption in the same conversation \u2014 depending on where
+          you are in the loop and what kind of intervention might actually help at
+          that moment.
+        </p>
+
+        {/* ── Section 9 ──────────────────────────────────────────────────────── */}
+        <h2
+          style={{
+            fontSize: "1.65rem",
+            fontWeight: 800,
+            lineHeight: 1.2,
+            letterSpacing: "-0.015em",
+            color: TEXT,
+            marginBottom: "1rem",
+          }}
+        >
+          How Does Sovereign Memory Show Progress Rather Than Just Current State?
+        </h2>
+
+        <p style={{ fontSize: "1.05rem", color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
+          One of the most corrosive effects of perfectionism is its distortion of
+          autobiographical memory. Perfectionists consistently remember their failures
+          more vividly than their completions. They remember the criticism more clearly
+          than the praise. They remember the gap between what the work was and what
+          it could have been, not the fact that the work was done at all.
+        </p>
+
+        <p style={{ fontSize: "1.05rem", color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
+          Standard AI tools have no memory between sessions. Each conversation begins
+          from zero. This is a structural problem for anyone trying to build an evidence
+          base against perfectionist self-narratives. If your AI cannot remember that
+          you finished fourteen projects last quarter, it cannot help you counter the
+          story that you never finish anything. It can only respond to what you are
+          saying right now \u2014 which, in a perfectionist spiral, is usually: I am
+          failing. And a sycophantic AI will respond to that by saying: you are not
+          failing. Which is unconvincing precisely because it has no evidence.
+        </p>
+
+        <p style={{ fontSize: "1.05rem", color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
+          MEOK\u2019s sovereign memory retains your actual history across sessions, weeks,
+          and months. It does not store a highlight reel curated to make you feel better.
+          It stores what actually happened: what you started, what you completed, what
+          you abandoned, what you shipped, how you described your feelings about it at
+          the time. Over months, this record becomes a genuine corrective to perfectionist
+          distortion.
+        </p>
+
+        <p style={{ fontSize: "1.05rem", color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
+          When you tell MEOK that you never finish anything, MEOK can say: actually,
+          in the last three months you finished seven things. Here they are. That is not
+          toxic positivity. That is evidence. And evidence is what an imposter syndrome
+          narrative, which is built on selectively curated evidence, is most vulnerable to.
+        </p>
+
+        <p style={{ fontSize: "1.05rem", color: MUTED, lineHeight: 1.8, marginBottom: "1.5rem" }}>
+          The memory also tracks patterns over time, not just individual events. MEOK
+          can identify that your perfectionist loops tend to activate before publication
+          events, or during periods of comparison with specific people, or in the context
+          of particular types of work. That pattern-level insight cannot be generated
+          in a single session. It requires time and honesty \u2014 both of which sovereign
+          memory makes possible.
+        </p>
+
+        {/* Callout 3 alt */}
+        <div
+          style={{
+            borderLeft: `4px solid ${GOLD}`,
+            paddingLeft: "1.5rem",
+            paddingTop: "1.25rem",
+            paddingBottom: "1.25rem",
+            paddingRight: "1.5rem",
+            background: GOLD_DIM,
+            borderRadius: "0 0.75rem 0.75rem 0",
+            marginBottom: "3rem",
+          }}
+        >
+          <p
+            style={{
+              fontSize: "0.75rem",
+              fontWeight: 700,
+              letterSpacing: "0.08em",
+              textTransform: "uppercase" as const,
+              color: GOLD,
+              marginBottom: "0.5rem",
+            }}
+          >
+            What Sovereign Memory Tracks
+          </p>
           <div
             style={{
               display: "grid",
@@ -1563,143 +1103,346 @@ export default function AIForPerfectionismPage() {
             }}
           >
             {[
-              {
-                href: "/blog/ai-for-procrastination",
-                title: "AI for Procrastination",
-                desc: "Why procrastination is an emotion regulation problem, not a time management one, and how AI can help.",
-              },
-              {
-                href: "/blog/ai-for-anxiety",
-                title: "AI for Anxiety",
-                desc: "Breathing techniques, journalling prompts, and CBT-adjacent tools for anxiety support.",
-              },
-              {
-                href: "/blog/ai-for-impostor-syndrome",
-                title: "AI for Impostor Syndrome",
-                desc: "How persistent memory and honest reflection help dismantle the impostor narrative.",
-              },
-              {
-                href: "/blog/ai-for-burnout",
-                title: "AI for Burnout",
-                desc: "Recognising early warning signs and building sustainable rhythms with AI support.",
-              },
-            ].map((article) => (
-              <Link
-                key={article.href}
-                href={article.href}
-                style={{ textDecoration: "none" }}
+              { label: "Completions log", desc: "Every project finished, shipped, or submitted \u2014 regardless of whether it felt good enough." },
+              { label: "Loop patterns", desc: "Recurring triggers that restart the perfectionist cycle, identified across weeks and months." },
+              { label: "Revision frequency", desc: "How many times you return to the same piece \u2014 a reliable signal that revision anxiety has replaced editing." },
+              { label: "Progress arc", desc: "Your actual trajectory over time \u2014 visible when perfectionism insists you are standing still." },
+            ].map((item) => (
+              <div
+                key={item.label}
+                style={{
+                  background: "rgba(201,168,76,0.08)",
+                  borderRadius: "0.5rem",
+                  padding: "0.875rem 1rem",
+                }}
               >
-                <div
+                <p
                   style={{
-                    padding: "1.25rem",
-                    borderRadius: "0.875rem",
-                    background: "rgba(255,255,255,0.025)",
-                    border: "1px solid rgba(255,255,255,0.07)",
-                    height: "100%",
-                    boxSizing: "border-box" as const,
+                    fontSize: "0.85rem",
+                    fontWeight: 700,
+                    color: GOLD,
+                    marginBottom: "0.375rem",
                   }}
                 >
-                  <p
-                    style={{
-                      fontWeight: 700,
-                      fontSize: "0.9rem",
-                      color: TEXT,
-                      marginBottom: "0.5rem",
-                      margin: "0 0 0.5rem 0",
-                    }}
-                  >
-                    {article.title}
-                  </p>
-                  <p
-                    style={{
-                      fontSize: "0.825rem",
-                      color: MUTED_FAINT,
-                      lineHeight: 1.55,
-                      margin: 0,
-                    }}
-                  >
-                    {article.desc}
-                  </p>
-                </div>
-              </Link>
+                  {item.label}
+                </p>
+                <p style={{ fontSize: "0.875rem", color: MUTED, lineHeight: 1.65, margin: 0 }}>
+                  {item.desc}
+                </p>
+              </div>
             ))}
           </div>
-        </section>
+        </div>
 
-        {/* CTA */}
-        <section
+        {/* ── Section 10 ─────────────────────────────────────────────────────── */}
+        <h2
           style={{
-            marginTop: "4rem",
-            marginBottom: "6rem",
-            padding: "3rem 2rem",
-            borderRadius: "1.5rem",
-            background:
-              "linear-gradient(135deg, rgba(201,168,76,0.1) 0%, rgba(160,120,240,0.08) 100%)",
+            fontSize: "1.65rem",
+            fontWeight: 800,
+            lineHeight: 1.2,
+            letterSpacing: "-0.015em",
+            color: TEXT,
+            marginBottom: "1rem",
+          }}
+        >
+          Why Is &ldquo;Good Enough&rdquo; a Radical Act for a Perfectionist?
+        </h2>
+
+        <p style={{ fontSize: "1.05rem", color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
+          Good enough is not a compromise. It is not settling. In a perfectionist
+          framework, it is the most radical thing you can do \u2014 because it is a direct
+          refusal to accept the premise that your worth is conditional on flawless output.
+          Saying this is good enough and I am done is an assertion that you get to define
+          done, that done is a legitimate state for the work to be in, and that your
+          adequacy as a person is not up for reconsideration every time you submit
+          something.
+        </p>
+
+        <p style={{ fontSize: "1.05rem", color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
+          The concept of satisficing \u2014 choosing the option that is sufficiently good
+          rather than the option that is theoretically optimal \u2014 has been shown by
+          researcher Barry Schwartz and others to produce higher wellbeing outcomes
+          than maximising. Maximisers \u2014 people who always seek the best possible
+          option \u2014 tend to report lower satisfaction with their choices even when
+          those choices are objectively better, because the knowledge that a better
+          option might have existed persists as a source of regret. Satisficers, who
+          choose well enough and move on, do not carry that weight.
+        </p>
+
+        <p style={{ fontSize: "1.05rem", color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
+          For a perfectionist, practising good enough in low-stakes contexts \u2014 the
+          text message that is not perfectly worded, the grocery list that is not
+          optimally organised, the email that goes out with one revision rather than
+          seven \u2014 is genuine behavioural therapy. Every instance of good enough
+          that does not result in catastrophe is evidence against the catastrophising
+          rule. Over time, the evidence accumulates. The rule loses its grip.
+        </p>
+
+        <p style={{ fontSize: "1.05rem", color: MUTED, lineHeight: 1.8, marginBottom: "2.5rem" }}>
+          MEOK is designed to celebrate done, not perfect. When you log a completion
+          \u2014 even an imperfect one, especially an imperfect one \u2014 MEOK acknowledges
+          it without qualification. Not with hollow praise but with recognition that
+          finishing is a choice, that it costs something, and that it counts.
+        </p>
+
+        {/* ── Section 11 ─────────────────────────────────────────────────────── */}
+        <h2
+          style={{
+            fontSize: "1.65rem",
+            fontWeight: 800,
+            lineHeight: 1.2,
+            letterSpacing: "-0.015em",
+            color: TEXT,
+            marginBottom: "1rem",
+          }}
+        >
+          How Can AI Help Without Replacing the Real Work of Changing?
+        </h2>
+
+        <p style={{ fontSize: "1.05rem", color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
+          This is an important question and it deserves a direct answer. AI cannot
+          do the inner work for you. It cannot feel the fear, choose to act despite
+          it, and accumulate the embodied evidence that the catastrophe did not come.
+          That is yours to do. What AI can provide is the scaffolding that makes
+          that work more sustainable.
+        </p>
+
+        <p style={{ fontSize: "1.05rem", color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
+          The scaffolding MEOK provides is specifically designed around the failure
+          modes of perfectionism. It offers honest feedback rather than validation,
+          because validation does not move perfectionists forward \u2014 it only
+          temporarily quiets them. It offers memory that corrects distortion, because
+          perfectionists need evidence, not encouragement. It offers the Trickster\u2019s
+          perspective when the loop is most closed, because disruption creates the
+          gap through which new behaviour can enter. And it offers a record of
+          every time you chose done over perfect \u2014 building, slowly, the
+          autobiography of someone who acts.
+        </p>
+
+        <p style={{ fontSize: "1.05rem", color: MUTED, lineHeight: 1.8, marginBottom: "1.25rem" }}>
+          MEOK is also not a therapist and does not pretend to be one. For severe
+          perfectionism that is significantly impacting quality of life, work
+          performance, or relationships \u2014 particularly perfectionism intertwined
+          with OCD, anxiety disorders, or eating disorders \u2014 evidence-based
+          therapeutic approaches including cognitive behavioural therapy and
+          acceptance and commitment therapy, delivered by trained clinicians,
+          provide a depth of intervention that an AI companion cannot replicate.
+        </p>
+
+        <p style={{ fontSize: "1.05rem", color: MUTED, lineHeight: 1.8, marginBottom: "2.5rem" }}>
+          What MEOK offers is daily, honest, memory-enabled support between those
+          interventions \u2014 or for the large number of people whose perfectionism
+          is causing real suffering but does not meet the threshold for clinical
+          intervention. It is present at the moment the loop starts, not only
+          during a weekly appointment.
+        </p>
+
+        {/* ── Divider ─────────────────────────────────────────────────────────── */}
+        <div
+          style={{
+            height: "1px",
+            background: `linear-gradient(to right, transparent, ${GOLD}44, transparent)`,
+            margin: "1rem 0 3rem",
+          }}
+        />
+
+        {/* ── FAQ ─────────────────────────────────────────────────────────────── */}
+        <h2
+          style={{
+            fontSize: "1.65rem",
+            fontWeight: 800,
+            lineHeight: 1.2,
+            letterSpacing: "-0.015em",
+            color: TEXT,
+            marginBottom: "2rem",
+          }}
+        >
+          Frequently Asked Questions
+        </h2>
+
+        <div style={{ display: "flex", flexDirection: "column" as const, gap: "1.5rem", marginBottom: "4rem" }}>
+          {[
+            {
+              q: "Can AI help someone break a perfectionist loop?",
+              a: "Yes \u2014 but only if the AI is built correctly. An AI that validates every revision and praises every draft will reinforce the perfectionist loop rather than break it. MEOK\u2019s sycophancy detection layer is specifically designed to prevent this. Rather than feeding the anxiety with empty affirmation, it reflects honest observations about your process, holds the memory of your actual progress, and helps you recognise when the loop has restarted.",
+            },
+            {
+              q: "What is the difference between adaptive and maladaptive perfectionism?",
+              a: "Adaptive perfectionism is about pursuing excellence with flexibility \u2014 high standards that allow for iteration and do not collapse into self-criticism when the outcome falls short. Maladaptive perfectionism ties self-worth to flawless performance. Any imperfection becomes evidence of fundamental inadequacy. Research consistently links maladaptive perfectionism to anxiety, depression, burnout, and chronic procrastination.",
+            },
+            {
+              q: "Why do perfectionists procrastinate so much?",
+              a: "Because starting carries the risk of discovering that the output will not be perfect. Perfectionists often operate under an unconscious rule: if I cannot do it perfectly, it is better not to start at all. Not starting feels like preserving potential. The task stays in a hypothetical space where it can still be perfect, rather than being exposed to the real world where it almost certainly will not be.",
+            },
+            {
+              q: "How does MEOK\u2019s Trickster archetype help with perfectionism?",
+              a: "The Trickster is MEOK\u2019s pattern-disruption archetype. It introduces productive friction \u2014 asking unexpected questions, reframing the stakes, or pointing out when you have been revising the same paragraph for three sessions in a row. Perfectionism thrives in a closed, serious loop. The Trickster opens a door by making the loop visible and slightly absurd, drawing on ACT defusion techniques to create distance between you and the perfectionist thought.",
+            },
+            {
+              q: "How does sovereign memory help with perfectionism over time?",
+              a: "Perfectionism distorts memory \u2014 you forget the things you shipped and remember only the gaps. MEOK\u2019s sovereign memory retains your actual history across weeks and months: what you started, completed, shipped, and described at the time. This creates an evidence base that directly counters the perfectionist narrative of \u2018I never finish anything\u2019 \u2014 not with empty encouragement but with documented fact.",
+            },
+          ].map((faq) => (
+            <div
+              key={faq.q}
+              style={{
+                padding: "1.5rem",
+                borderRadius: "0.875rem",
+                background: SURFACE,
+                border: `1px solid ${SURFACE_BORDER}`,
+              }}
+            >
+              <p
+                style={{
+                  fontSize: "1.05rem",
+                  fontWeight: 700,
+                  color: TEXT,
+                  marginBottom: "0.75rem",
+                  lineHeight: 1.4,
+                }}
+              >
+                {faq.q}
+              </p>
+              <p
+                style={{
+                  fontSize: "0.97rem",
+                  color: MUTED,
+                  lineHeight: 1.8,
+                  margin: 0,
+                }}
+              >
+                {faq.a}
+              </p>
+            </div>
+          ))}
+        </div>
+
+        {/* ── CTA ─────────────────────────────────────────────────────────────── */}
+        <div
+          style={{
+            borderRadius: "1.25rem",
+            padding: "3rem 2.5rem",
+            background: `linear-gradient(135deg, rgba(201,168,76,0.1) 0%, rgba(201,168,76,0.04) 100%)`,
             border: `1px solid ${GOLD_BORDER}`,
             textAlign: "center" as const,
+            marginBottom: "4rem",
           }}
         >
           <p
             style={{
-              fontWeight: 900,
-              fontSize: "clamp(1.4rem, 3vw, 2rem)",
-              color: "#fff",
+              fontSize: "0.75rem",
+              fontWeight: 700,
+              letterSpacing: "0.1em",
+              textTransform: "uppercase" as const,
+              color: GOLD,
               marginBottom: "1rem",
-              margin: "0 0 1rem 0",
-              lineHeight: 1.2,
             }}
           >
-            Done is better than perfect.
+            Ready to break the loop?
           </p>
+          <h3
+            style={{
+              fontSize: "clamp(1.5rem, 3vw, 2.1rem)",
+              fontWeight: 900,
+              color: "#fff",
+              lineHeight: 1.2,
+              marginBottom: "1rem",
+              letterSpacing: "-0.01em",
+            }}
+          >
+            Meet the AI that won&apos;t enable your perfectionism
+          </h3>
           <p
             style={{
-              fontSize: "1rem",
-              color: MUTED_DIM,
-              lineHeight: 1.7,
-              maxWidth: "34rem",
+              fontSize: "1.05rem",
+              color: MUTED,
+              lineHeight: 1.75,
+              maxWidth: "32rem",
               margin: "0 auto 2rem",
             }}
           >
-            MEOK won\u2019t validate your revision spiral. It will celebrate the
-            imperfect thing you did today, remember it next month, and reflect
-            your growth arc back to you when the inner critic insists you
-            haven\u2019t moved.
+            MEOK is the first AI companion built with sycophancy detection, a Trickster
+            archetype for disrupting loops, and sovereign memory that shows you the progress
+            perfectionism keeps erasing from your view. Start your Birth Ceremony and
+            meet your companion.
           </p>
           <Link
             href="/birth"
             style={{
               display: "inline-block",
-              padding: "1rem 2.5rem",
+              padding: "0.9rem 2.5rem",
               borderRadius: "9999px",
               background: GOLD,
               color: "#0d0c18",
               fontWeight: 800,
-              fontSize: "0.95rem",
+              fontSize: "1rem",
               textDecoration: "none",
               letterSpacing: "0.02em",
             }}
           >
-            Begin your Birth Ceremony &#8594;
+            Begin Your Birth Ceremony
           </Link>
           <p
             style={{
-              fontSize: "0.775rem",
+              fontSize: "0.8rem",
               color: MUTED_FAINT,
               marginTop: "1rem",
-              margin: "1rem 0 0 0",
             }}
           >
-            Built by Nicholas Templeman &middot; MEOK AI LABS &middot;{" "}
-            <a
-              href="https://x.com/meok_ai"
-              style={{ color: MUTED_FAINT, textDecoration: "none" }}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              @meok_ai
-            </a>
+            No subscription required to start. Your data stays yours.
           </p>
-        </section>
+        </div>
+
+        {/* ── Related posts ────────────────────────────────────────────────────── */}
+        <div style={{ marginBottom: "2rem" }}>
+          <p
+            style={{
+              fontSize: "0.75rem",
+              fontWeight: 700,
+              letterSpacing: "0.08em",
+              textTransform: "uppercase" as const,
+              color: MUTED_FAINT,
+              marginBottom: "1.25rem",
+            }}
+          >
+            Related Reading
+          </p>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+              gap: "1rem",
+            }}
+          >
+            {[
+              { href: "/blog/ai-for-procrastination", label: "AI for Procrastination" },
+              { href: "/blog/ai-for-burnout", label: "AI for Burnout" },
+              { href: "/blog/ai-for-impostor-syndrome", label: "AI for Imposter Syndrome" },
+              { href: "/blog/ai-for-anxiety", label: "AI for Anxiety" },
+              { href: "/blog/ai-for-confidence", label: "AI for Confidence" },
+              { href: "/blog/ai-for-ocd", label: "AI for OCD" },
+            ].map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                style={{
+                  display: "block",
+                  padding: "0.875rem 1.125rem",
+                  borderRadius: "0.625rem",
+                  background: SURFACE,
+                  border: `1px solid ${SURFACE_BORDER}`,
+                  color: MUTED,
+                  textDecoration: "none",
+                  fontSize: "0.9rem",
+                  fontWeight: 500,
+                  lineHeight: 1.4,
+                }}
+              >
+                {link.label} &#8594;
+              </Link>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   );
