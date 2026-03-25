@@ -4562,6 +4562,66 @@ const POSTS = [
     category: "features",
     featured: false,
   },
+  {
+    slug: "ai-for-insomnia",
+    title: "AI for Insomnia: When the Mind Won\u2019t Let You Rest",
+    excerpt:
+      "Insomnia affects 1 in 3 UK adults. The 3am spiral — racing thoughts, mounting dread about tomorrow\u2019s exhaustion — is one of the loneliest experiences there is. MEOK is there when nothing else is open.",
+    date: "April 12, 2026",
+    readTime: "7 min read",
+    tag: "Mental Health",
+    tagColor: "#6aaa64",
+    category: "mental-health",
+    featured: false,
+  },
+  {
+    slug: "care-based-ai-alignment",
+    title: "Care-Based AI Alignment: Why MEOK Scores Responses Instead of Restricting Them",
+    excerpt:
+      "Standard AI safety is prohibitive: don\u2019t say X, don\u2019t do Y. The Maternal Covenant is generative: actively score every response across 6 care dimensions and ensure a minimum floor of genuine care. Here\u2019s why the difference matters.",
+    date: "April 12, 2026",
+    readTime: "8 min read",
+    tag: "Technology",
+    tagColor: "#7b6fcf",
+    category: "technology",
+    featured: false,
+  },
+  {
+    slug: "meok-for-seniors",
+    title: "MEOK for Seniors: Sovereign AI for the People Who Built Everything We Have",
+    excerpt:
+      "Older adults face a convergence of risks: cognitive decline, social isolation, scam vulnerability, and digital exclusion. MEOK\u2019s Guardian 24/7 was designed with seniors specifically in mind \u2014 protection without condescension.",
+    date: "April 13, 2026",
+    readTime: "8 min read",
+    tag: "Family",
+    tagColor: "#c9a84c",
+    category: "family",
+    featured: false,
+  },
+  {
+    slug: "ai-for-relationship-breakdown",
+    title: "AI for Relationship Breakdown: Processing What You Can\u2019t Yet Say Out Loud",
+    excerpt:
+      "The end of a relationship \u2014 separation, divorce, the slow erosion of something that mattered \u2014 is one of the most disorienting experiences a person can go through. MEOK provides a private space to process what you\u2019re not ready to say to anyone who knows you.",
+    date: "April 13, 2026",
+    readTime: "7 min read",
+    tag: "Mental Health",
+    tagColor: "#6aaa64",
+    category: "mental-health",
+    featured: false,
+  },
+  {
+    slug: "what-makes-a-good-ai-companion",
+    title: "What Makes a Good AI Companion? The 7 Criteria That Actually Matter",
+    excerpt:
+      "Memory, honesty, care ethics, privacy, model quality, availability, and the absence of engagement manipulation. A framework for evaluating any AI companion \u2014 including MEOK.",
+    date: "April 14, 2026",
+    readTime: "8 min read",
+    tag: "Compare",
+    tagColor: "#c9a84c",
+    category: "compare",
+    featured: false,
+  },
 ];
 
 // ── Category filter tabs ──────────────────────────────────────────────────────

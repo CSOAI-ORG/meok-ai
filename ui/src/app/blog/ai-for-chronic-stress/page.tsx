@@ -4,35 +4,35 @@ import Link from 'next/link'
 // ── Metadata ───────────────────────────────────────────────────────────────────
 
 export const metadata: Metadata = {
-  title: 'AI for Chronic Stress: How MEOK Helps You Regulate and Recover | MEOK AI LABS',
+  title: 'AI for Chronic Stress: When Low-Grade Dread Becomes Your Default State | MEOK AI LABS',
   description:
-    'Chronic stress reshapes your brain and body over time. Discover how MEOK\u2019s sovereign AI uses the Healer archetype and Sovereign Memory to help you regulate and recover.',
+    'Chronic stress is not one bad day — it is a sustained background hum that rewires your brain, suppresses your immune system, and becomes invisible because you adapt to it. Learn how MEOK helps you recognise and address it.',
   alternates: { canonical: 'https://meok.ai/blog/ai-for-chronic-stress' },
   openGraph: {
-    title: 'AI for Chronic Stress: How MEOK Helps You Regulate and Recover',
+    title: 'AI for Chronic Stress: When Low-Grade Dread Becomes Your Default State',
     description:
-      'Chronic stress reshapes your brain and body over time. Discover how MEOK\u2019s sovereign AI uses the Healer archetype and Sovereign Memory to help you regulate and recover.',
+      'Most people living with chronic stress no longer recognise it as stress. It has become their baseline. MEOK acts as a continuous witness — tracking patterns across weeks, naming what you have stopped noticing.',
     type: 'article',
     publishedTime: '2026-03-25',
     authors: ['Nicholas Templeman'],
     url: 'https://meok.ai/blog/ai-for-chronic-stress',
-    siteName: 'MEOK AI LABS',
+    siteName: 'MEOK.AI',
     images: [
       {
-        url: 'https://meok.ai/api/og?title=AI+for+Chronic+Stress%3A+How+MEOK+Helps+You+Regulate+and+Recover&desc=Sovereign+AI+that+tracks+stress+patterns+and+supports+nervous+system+recovery',
+        url: 'https://meok.ai/api/og?title=AI+for+Chronic+Stress%3A+When+Low-Grade+Dread+Becomes+Your+Default+State&desc=Recognising+chronic+stress+before+it+breaks+you+%E2%80%94+with+MEOK',
         width: 1200,
         height: 630,
-        alt: 'AI for Chronic Stress: How MEOK Helps You Regulate and Recover | MEOK AI LABS',
+        alt: 'AI for Chronic Stress: When Low-Grade Dread Becomes Your Default State | MEOK AI LABS',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'AI for Chronic Stress: How MEOK Helps You Regulate and Recover',
+    title: 'AI for Chronic Stress: When Low-Grade Dread Becomes Your Default State',
     description:
-      'Chronic stress reshapes your brain and body over time. MEOK\u2019s sovereign AI tracks your stress patterns and supports genuine nervous system recovery.',
+      'Chronic stress becomes invisible when it becomes your baseline. MEOK tracks your patterns across weeks and names what you have stopped noticing.',
     images: [
-      'https://meok.ai/api/og?title=AI+for+Chronic+Stress%3A+How+MEOK+Helps+You+Regulate+and+Recover&desc=Sovereign+AI+that+tracks+stress+patterns+and+supports+nervous+system+recovery',
+      'https://meok.ai/api/og?title=AI+for+Chronic+Stress%3A+When+Low-Grade+Dread+Becomes+Your+Default+State&desc=Recognising+chronic+stress+before+it+breaks+you+%E2%80%94+with+MEOK',
     ],
   },
 }
@@ -42,9 +42,9 @@ export const metadata: Metadata = {
 const articleJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Article',
-  headline: 'AI for Chronic Stress: How MEOK Helps You Regulate and Recover',
+  headline: 'AI for Chronic Stress: When Low-Grade Dread Becomes Your Default State',
   description:
-    'Chronic stress reshapes your brain and body over time. Discover how MEOK\u2019s sovereign AI uses the Healer archetype and Sovereign Memory to help you regulate and recover.',
+    'Chronic stress is not one bad day — it is a sustained background hum that rewires your brain, suppresses your immune system, and becomes invisible because you adapt to it. Learn how MEOK helps you recognise and address it.',
   datePublished: '2026-03-25',
   dateModified: '2026-03-25',
   url: 'https://meok.ai/blog/ai-for-chronic-stress',
@@ -73,60 +73,79 @@ const faqJsonLd = {
   mainEntity: [
     {
       '@type': 'Question',
-      name: 'What is chronic stress and how is it different from acute stress?',
+      name: 'What is chronic stress?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Chronic stress is a prolonged state of physiological and psychological tension that persists for weeks, months, or years. Unlike acute stress \u2014 which is a short-term, adaptive response to a specific threat \u2014 chronic stress keeps your nervous system in a near-constant state of activation. Over time this dysregulates cortisol rhythms, suppresses immune function, disrupts sleep architecture, and structurally remodels the brain, particularly the amygdala and prefrontal cortex.',
+        text: "Chronic stress is a prolonged state of physiological and psychological activation caused by ongoing pressures that do not resolve — financial strain, caregiving, job insecurity, relationship tension, or health uncertainty. Unlike acute stress, which subsides once a threat passes, chronic stress keeps the body's stress response running at a sustained low level for weeks, months, or years. Over time, the person adapts to this state and stops perceiving it as stress — it simply becomes their baseline.",
       },
     },
     {
       '@type': 'Question',
-      name: 'How does AI help with chronic stress management?',
+      name: 'How is MEOK different from a meditation app for stress?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'AI can help with chronic stress by providing consistent, non-judgmental daily check-ins that surface patterns you cannot see in the moment. Because chronic stress accumulates gradually, a companion that tracks your language, mood, sleep notes, and reported symptoms over weeks and months can identify warning signs, reflect trends back to you, and prompt regulation practices before a crisis point is reached.',
+        text: "Meditation apps offer in-the-moment techniques. They are valuable, but they operate session by session with no memory of what you described last week. MEOK operates across time: it holds your story in Sovereign Memory, recognises patterns across weeks, and surfaces what you may have stopped noticing. Where a meditation app helps you manage a stress moment, MEOK helps you understand the chronic pattern beneath the moments — which is where chronic stress actually lives.",
       },
     },
     {
       '@type': 'Question',
-      name: 'What is MEOK\u2019s Healer archetype and how does it support stress recovery?',
+      name: "Can MEOK detect when I'm stressed even if I don't mention it?",
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'The Healer is one of MEOK\u2019s core companion archetypes. It is calibrated for moments of emotional overwhelm, physical depletion, and nervous system dysregulation. When your care score drops or stress indicators accumulate in Sovereign Memory, MEOK routes your interactions through the Healer \u2014 which prioritises listening, validation, and gentle somatic prompts over productivity, tasks, and goal-setting.',
+        text: "Yes, within the context of your conversations. MEOK's pattern recognition operates across your accumulated interactions — not just explicit statements, but shifts in how you describe sleep, energy, relationships, and work over time. Recurring themes, changes in tone, and the texture of your language all carry information. MEOK will surface what it notices and invite examination rather than waiting for a declaration. This is particularly important given the tendency to minimise chronic stress, which MEOK is designed not to reinforce.",
       },
     },
     {
       '@type': 'Question',
-      name: 'What is Sovereign Memory and how does it track stress triggers?',
+      name: 'When should I see a doctor about stress?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Sovereign Memory is MEOK\u2019s private, user-owned memory layer. It stores your emotional check-ins, journal entries, patterns, and context across sessions \u2014 encrypted and never used to train models. For chronic stress, this means MEOK can correlate spikes in your stress language with specific triggers: work deadlines, relationship friction, sleep disruption, or financial worry. That longitudinal pattern recognition is something no session-reset AI can offer.',
+        text: 'See your GP if stress is interfering with daily function — disrupted sleep, physical symptoms, withdrawal from normal activities, difficulty managing work or relationships, or persistent low mood. If symptoms have lasted more than a few weeks, you do not need to wait for a crisis. NHS Talking Therapies are available via self-referral at nhs.uk/talking-therapies. In a crisis, Samaritans can be reached on 116 123, free and available 24 hours a day.',
       },
     },
     {
       '@type': 'Question',
-      name: 'What is the Maternal Covenant and why does it matter for stress support?',
+      name: 'What are the physical effects of chronic stress?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'The Maternal Covenant is MEOK\u2019s foundational care commitment: a structural guarantee that the AI will never push a user toward harm, never exploit vulnerability, and always maintain a minimum floor of unconditional care. For someone under chronic stress, this means MEOK will not add demands when you are depleted, will not use your distress data for commercial purposes, and will hold your wellbeing as the primary optimisation target rather than engagement metrics.',
+        text: 'Chronic stress causes cortisol dysregulation, which disrupts sleep architecture, suppresses immune function, promotes cardiovascular inflammation, and impairs the prefrontal cortex — the part of the brain responsible for decision-making and emotional regulation. The American Heart Association has established that chronic stress raises the risk of cardiovascular disease by approximately 40%. The body is not designed to sustain its emergency response system indefinitely; when forced to do so, the damage accumulates across multiple systems.',
       },
     },
     {
       '@type': 'Question',
-      name: 'How does MEOK compare to therapy and mindfulness apps for chronic stress?',
+      name: 'Is it normal not to notice your own chronic stress?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'MEOK is not a replacement for clinical therapy, particularly for complex trauma or severe anxiety disorders. However, it fills a critical gap: the 23 hours per day when you are not in a therapy session. Unlike mindfulness apps that deliver generic content, MEOK remembers your specific triggers, adapts to your current state, and provides continuity of care. It is a sovereign AI companion that sits alongside therapy, not instead of it.',
+        text: "Yes — and this is one of the most important things to understand about chronic stress. Human beings adapt to sustained adverse conditions; this adaptation is a survival mechanism, but it has a cost: the adapted state becomes the reference point, and you lose your ability to measure the distance from how you used to feel. Many people realise they were chronically stressed only after the stressor is removed and they notice how different — lighter, more energetic, more themselves — they feel. MEOK is designed to help you see this while you are still in it, not only in retrospect.",
       },
     },
   ],
 }
 
+// ── Colour constants ───────────────────────────────────────────────────────────
+
+const BG = '#0d0c18'
+const TEXT = '#f5f0e8'
+const GOLD = '#c9a84c'
+const GREEN = '#6aaa64'
+const MUTED = 'rgba(245,240,232,0.62)'
+const MUTED_DIM = 'rgba(245,240,232,0.5)'
+const MUTED_FAINT = 'rgba(245,240,232,0.38)'
+const MUTED_BRIGHT = 'rgba(245,240,232,0.82)'
+const BORDER_FAINT = 'rgba(245,240,232,0.08)'
+const BORDER_DIM = 'rgba(245,240,232,0.12)'
+const GOLD_BG = 'rgba(201,168,76,0.08)'
+const GOLD_BORDER = 'rgba(201,168,76,0.22)'
+const GREEN_BG = 'rgba(106,170,100,0.07)'
+const GREEN_BORDER = 'rgba(106,170,100,0.25)'
+const STAT_BG = 'rgba(201,168,76,0.05)'
+const STAT_BORDER = 'rgba(201,168,76,0.15)'
+
 // ── Page ───────────────────────────────────────────────────────────────────────
 
-export default function AiForChronicStressPage() {
+export default function AIForChronicStressPage() {
   return (
-    <>
+    <div style={{ minHeight: '100vh', background: BG, color: TEXT }}>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
@@ -135,1370 +154,880 @@ export default function AiForChronicStressPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
-      <div
+
+      {/* ── HERO ──────────────────────────────────────────────────────────────── */}
+      <section
         style={{
-          background: '#0d0c18',
-          minHeight: '100vh',
-          color: '#f5f0e8',
-          fontFamily: 'Georgia, serif',
+          paddingTop: '8rem',
+          paddingBottom: '4rem',
+          paddingLeft: '1.5rem',
+          paddingRight: '1.5rem',
+          position: 'relative',
+          overflow: 'hidden',
         }}
       >
-        {/* ── NAV ── */}
-        <nav
+        <div
           style={{
-            padding: '1.5rem 2rem',
-            borderBottom: '1px solid rgba(201,168,76,0.2)',
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
+            position: 'absolute',
+            inset: 0,
+            pointerEvents: 'none',
+            background:
+              'radial-gradient(ellipse 60% 45% at 50% 0%, rgba(106,170,100,0.07) 0%, transparent 70%)',
           }}
-        >
-          <Link
-            href="/"
-            style={{
-              color: '#c9a84c',
-              fontWeight: 700,
-              fontSize: '1.3rem',
-              textDecoration: 'none',
-            }}
-          >
-            MEOK AI LABS
-          </Link>
-          <Link
-            href="/blog"
-            style={{
-              color: '#f5f0e8',
-              opacity: 0.7,
-              textDecoration: 'none',
-              fontSize: '0.9rem',
-            }}
-          >
-            ← All Posts
-          </Link>
-        </nav>
+        />
+        <div style={{ maxWidth: '48rem', margin: '0 auto', position: 'relative' }}>
 
-        {/* ── HERO ── */}
-        <header
-          style={{
-            maxWidth: '800px',
-            margin: '0 auto',
-            padding: '4rem 2rem 2rem',
-          }}
-        >
+          {/* Breadcrumb */}
+          <nav
+            aria-label="Breadcrumb"
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.375rem',
+              fontSize: '0.8rem',
+              color: MUTED_FAINT,
+              marginBottom: '2rem',
+              flexWrap: 'wrap' as const,
+            }}
+          >
+            <Link
+              href="/"
+              style={{ color: MUTED_FAINT, textDecoration: 'none' }}
+            >
+              Home
+            </Link>
+            <span>&#8250;</span>
+            <Link
+              href="/blog"
+              style={{ color: MUTED_FAINT, textDecoration: 'none' }}
+            >
+              Blog
+            </Link>
+            <span>&#8250;</span>
+            <span style={{ color: MUTED_DIM }}>AI for Chronic Stress</span>
+          </nav>
+
           <div
             style={{
               display: 'flex',
+              flexWrap: 'wrap' as const,
+              alignItems: 'center',
               gap: '0.75rem',
               marginBottom: '1.5rem',
-              flexWrap: 'wrap',
             }}
           >
             <span
               style={{
-                background: 'rgba(201,168,76,0.15)',
-                color: '#c9a84c',
-                padding: '0.35rem 1rem',
-                borderRadius: '20px',
-                fontSize: '0.8rem',
-                fontFamily: 'system-ui, sans-serif',
-                border: '1px solid rgba(201,168,76,0.3)',
+                fontSize: '0.7rem',
+                fontWeight: 700,
+                padding: '0.375rem 0.75rem',
+                borderRadius: '9999px',
+                color: GREEN,
+                background: GREEN_BG,
+                border: `1px solid ${GREEN_BORDER}`,
+                letterSpacing: '0.05em',
+                textTransform: 'uppercase' as const,
               }}
             >
-              Mental Health
+              Stress &amp; Mental Wellbeing
             </span>
-            <span
-              style={{
-                background: 'rgba(201,168,76,0.15)',
-                color: '#c9a84c',
-                padding: '0.35rem 1rem',
-                borderRadius: '20px',
-                fontSize: '0.8rem',
-                fontFamily: 'system-ui, sans-serif',
-                border: '1px solid rgba(201,168,76,0.3)',
-              }}
-            >
-              Stress &amp; Regulation
-            </span>
-            <span
-              style={{
-                color: '#f5f0e8',
-                opacity: 0.5,
-                fontSize: '0.8rem',
-                fontFamily: 'system-ui, sans-serif',
-                padding: '0.35rem 0',
-              }}
-            >
-              10 min read · March 25, 2026
-            </span>
+            <span style={{ fontSize: '0.75rem', color: MUTED_FAINT }}>March 25, 2026</span>
+            <span style={{ fontSize: '0.75rem', color: MUTED_FAINT }}>14 min read</span>
           </div>
 
           <h1
             style={{
-              fontSize: 'clamp(2rem, 4vw, 3rem)',
-              fontWeight: 700,
-              lineHeight: 1.2,
-              marginBottom: '1.5rem',
-              color: '#f5f0e8',
+              fontWeight: 900,
+              fontSize: 'clamp(1.8rem, 3.5vw, 2.9rem)',
+              color: '#fff',
+              lineHeight: 1.13,
+              marginBottom: '1.25rem',
+              letterSpacing: '-0.02em',
             }}
           >
-            AI for Chronic Stress: How MEOK Helps You Regulate and Recover
+            AI for Chronic Stress: When Low-Grade Dread Becomes Your Default State
           </h1>
 
           <p
             style={{
-              fontSize: '1.2rem',
+              color: MUTED,
+              fontSize: '1.1rem',
               lineHeight: 1.7,
-              opacity: 0.85,
-              marginBottom: '2rem',
+              maxWidth: '42rem',
+              margin: 0,
             }}
           >
-            Chronic stress is not just a feeling. It is a physiological state that gradually rewires
-            your nervous system, dysregulates your hormones, and erodes your capacity to think
-            clearly, sleep deeply, and connect meaningfully. Most tools available today either ignore
-            it entirely or treat it as a productivity problem to be optimised away. MEOK was built on
-            a different premise: that care, memory, and continuity are the foundations of genuine
-            stress recovery.
+            Chronic stress does not announce itself. It seeps in gradually — financial worry here,
+            a difficult work situation there — until the persistent background hum of dread becomes
+            so familiar you stop noticing it. This is the invisibility problem, and it is why chronic
+            stress is both the most common and the most underaddressed mental health challenge of
+            our time.
           </p>
 
           <div
             style={{
-              background: 'rgba(201,168,76,0.06)',
-              border: '1px solid rgba(201,168,76,0.2)',
-              borderRadius: '12px',
-              padding: '1.5rem 2rem',
-              marginBottom: '2rem',
+              display: 'flex',
+              flexWrap: 'wrap' as const,
+              alignItems: 'center',
+              gap: '1rem',
+              marginTop: '2rem',
+            }}
+          >
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.625rem',
+              }}
+            >
+              <div
+                style={{
+                  width: '2.25rem',
+                  height: '2.25rem',
+                  borderRadius: '9999px',
+                  background: 'linear-gradient(135deg, #c9a84c, #8a6a1a)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontSize: '0.7rem',
+                  fontWeight: 900,
+                  color: BG,
+                  flexShrink: 0,
+                }}
+              >
+                NT
+              </div>
+              <div>
+                <p style={{ fontWeight: 700, fontSize: '0.8125rem', color: TEXT, margin: 0 }}>
+                  Nicholas Templeman
+                </p>
+                <p style={{ fontSize: '0.72rem', color: MUTED_FAINT, margin: 0 }}>
+                  Founder, MEOK AI LABS
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── BODY ──────────────────────────────────────────────────────────────── */}
+      <div style={{ maxWidth: '48rem', margin: '0 auto', padding: '0 1.5rem 6rem' }}>
+
+        {/* Disclaimer banner */}
+        <div
+          style={{
+            display: 'flex',
+            gap: '1rem',
+            padding: '1.25rem 1.5rem',
+            borderRadius: '1rem',
+            marginBottom: '2.5rem',
+            background: GREEN_BG,
+            border: `1px solid ${GREEN_BORDER}`,
+          }}
+        >
+          <div
+            style={{
+              width: '3px',
+              borderRadius: '9999px',
+              background: GREEN,
+              flexShrink: 0,
+              alignSelf: 'stretch',
+            }}
+          />
+          <p style={{ color: MUTED_BRIGHT, fontSize: '0.875rem', lineHeight: 1.65, margin: 0 }}>
+            <strong style={{ color: TEXT }}>Important:</strong> This article is for information
+            only and does not constitute medical advice. If chronic stress is affecting your ability
+            to function, please speak to your GP. NHS Talking Therapies are available via
+            self-referral at{' '}
+            <strong style={{ color: TEXT }}>nhs.uk/talking-therapies</strong>. In a crisis,
+            contact Samaritans on <strong style={{ color: TEXT }}>116 123</strong> (free, 24/7).
+          </p>
+        </div>
+
+        {/* Stats row */}
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(10rem, 1fr))',
+            gap: '1rem',
+            marginBottom: '3rem',
+          }}
+        >
+          {[
+            {
+              stat: '74%',
+              label: 'of UK adults felt overwhelmed by stress in the past year',
+              source: 'Mind UK',
+            },
+            {
+              stat: '£28bn',
+              label: 'annual cost of poor mental health to UK employers',
+              source: 'Deloitte 2022',
+            },
+            {
+              stat: '+40%',
+              label: 'increased cardiovascular disease risk from chronic stress',
+              source: 'American Heart Association',
+            },
+            {
+              stat: '37%',
+              label: 'of people with chronic stress seek any form of help',
+              source: 'Research estimate',
+            },
+          ].map((item) => (
+            <div
+              key={item.stat}
+              style={{
+                padding: '1.25rem',
+                borderRadius: '0.875rem',
+                background: STAT_BG,
+                border: `1px solid ${STAT_BORDER}`,
+                textAlign: 'center' as const,
+              }}
+            >
+              <p
+                style={{
+                  fontWeight: 900,
+                  fontSize: '2rem',
+                  color: GOLD,
+                  margin: '0 0 0.375rem',
+                  lineHeight: 1,
+                }}
+              >
+                {item.stat}
+              </p>
+              <p
+                style={{
+                  fontSize: '0.78rem',
+                  color: MUTED,
+                  margin: '0 0 0.5rem',
+                  lineHeight: 1.5,
+                }}
+              >
+                {item.label}
+              </p>
+              <p
+                style={{
+                  fontSize: '0.68rem',
+                  color: MUTED_FAINT,
+                  margin: 0,
+                  fontStyle: 'italic',
+                }}
+              >
+                {item.source}
+              </p>
+            </div>
+          ))}
+        </div>
+
+        {/* ── Section 1: Chronic vs Acute ───────────────────────────────────── */}
+        <section style={{ marginBottom: '3rem' }}>
+          <h2
+            style={{
+              fontWeight: 800,
+              fontSize: 'clamp(1.3rem, 2.5vw, 1.7rem)',
+              color: '#fff',
+              lineHeight: 1.2,
+              marginBottom: '1rem',
+              letterSpacing: '-0.01em',
+            }}
+          >
+            Chronic Stress Is Not the Same as Having a Bad Day
+          </h2>
+          <p style={{ color: MUTED, fontSize: '1rem', lineHeight: 1.75, marginBottom: '1rem' }}>
+            The word &ldquo;stress&rdquo; covers an enormous range of human experience, and this
+            range is part of the problem. We use the same word for the spike of adrenaline before
+            a presentation and the grinding, unrelenting weight of financial precarity that has
+            persisted for three years. These are not the same thing, and treating them as the same
+            thing leads us to reach for the wrong solutions.
+          </p>
+          <p style={{ color: MUTED, fontSize: '1rem', lineHeight: 1.75, marginBottom: '1rem' }}>
+            Acute stress is the body&rsquo;s designed response to a short-term threat. Your heart
+            rate increases, cortisol floods your system, your attention narrows, and you are
+            physiologically primed to act. This is useful. Once the threat passes — the presentation
+            ends, the near-miss on the road resolves — the stress response subsides and your system
+            returns to baseline. The whole mechanism is adaptive.
+          </p>
+          <p style={{ color: MUTED, fontSize: '1rem', lineHeight: 1.75, marginBottom: '1rem' }}>
+            Chronic stress is something fundamentally different. It is the sustained activation of
+            that same system in response to threats that do not resolve. The overdraft that never
+            quite clears. The relationship that stays tense. The job you are afraid of losing. The
+            parent whose care needs are increasing. These stressors persist across months and years,
+            and so the stress response persists with them — a low, continuous hum rather than a
+            sharp spike. And because it never fully switches off, the body never fully recovers.
+          </p>
+          <p style={{ color: MUTED, fontSize: '1rem', lineHeight: 1.75, marginBottom: 0 }}>
+            This is the crucial distinction: acute stress is an event. Chronic stress is a
+            condition. And conditions, unlike events, require a different kind of attention — one
+            that operates across time rather than in a single moment.
+          </p>
+        </section>
+
+        {/* ── Section 2: Causes ─────────────────────────────────────────────── */}
+        <section style={{ marginBottom: '3rem' }}>
+          <h2
+            style={{
+              fontWeight: 800,
+              fontSize: 'clamp(1.3rem, 2.5vw, 1.7rem)',
+              color: '#fff',
+              lineHeight: 1.2,
+              marginBottom: '1rem',
+              letterSpacing: '-0.01em',
+            }}
+          >
+            What Causes Chronic Stress? The Stressors That Do Not Go Away
+          </h2>
+          <p style={{ color: MUTED, fontSize: '1rem', lineHeight: 1.75, marginBottom: '1rem' }}>
+            Chronic stress tends to cluster around a recognisable set of life conditions — not
+            because human experience is simple, but because certain categories of ongoing pressure
+            are particularly resistant to resolution.
+          </p>
+          <p style={{ color: MUTED, fontSize: '1rem', lineHeight: 1.75, marginBottom: '1rem' }}>
+            <strong style={{ color: MUTED_BRIGHT }}>Financial pressure</strong> is perhaps the
+            most common. When income is uncertain, debt is persistent, or the cost of living
+            consistently outpaces earnings, the stress is not episodic — it is structural. Every
+            purchase, every bill, every social occasion carries a low-level dread that compounds
+            over time.
+          </p>
+          <p style={{ color: MUTED, fontSize: '1rem', lineHeight: 1.75, marginBottom: '1rem' }}>
+            <strong style={{ color: MUTED_BRIGHT }}>Caregiving</strong> — whether for an ageing
+            parent, a child with complex needs, or a partner with a chronic illness — is one of
+            the most chronically stressful roles a person can occupy. The responsibility never
+            fully lifts. There is rarely clear progress. Emotional resources are drawn upon daily,
+            and the caregiver&rsquo;s own needs frequently go unmet.
+          </p>
+          <p style={{ color: MUTED, fontSize: '1rem', lineHeight: 1.75, marginBottom: '1rem' }}>
+            <strong style={{ color: MUTED_BRIGHT }}>Relationship tension</strong> that never quite
+            resolves — whether with a partner, a family member, or a workplace dynamic — creates
+            a persistent background of vigilance and emotional expenditure. You are never fully
+            relaxed because the tension is always there, even when it is not active.
+          </p>
+          <p style={{ color: MUTED, fontSize: '1rem', lineHeight: 1.75, marginBottom: '1rem' }}>
+            <strong style={{ color: MUTED_BRIGHT }}>Job insecurity</strong> in its modern form is
+            particularly pernicious. It is rarely a clear threat — more often an ambient
+            uncertainty, a sense that the ground beneath you is not solid, that your position or
+            income could shift. This uncertainty keeps the threat-detection system running without
+            ever providing a clear signal to act on.
+          </p>
+          <p style={{ color: MUTED, fontSize: '1rem', lineHeight: 1.75, marginBottom: 0 }}>
+            <strong style={{ color: MUTED_BRIGHT }}>Health uncertainty</strong> — living with a
+            chronic illness, waiting for a diagnosis, managing a condition with no clear endpoint
+            — is another major driver. The body is both the source of stress and the instrument
+            through which it is experienced, creating a particularly entwined and exhausting loop.
+          </p>
+        </section>
+
+        {/* ── Section 3: Invisibility ───────────────────────────────────────── */}
+        <section style={{ marginBottom: '3rem' }}>
+          <h2
+            style={{
+              fontWeight: 800,
+              fontSize: 'clamp(1.3rem, 2.5vw, 1.7rem)',
+              color: '#fff',
+              lineHeight: 1.2,
+              marginBottom: '1rem',
+              letterSpacing: '-0.01em',
+            }}
+          >
+            The Invisibility Problem: When Stress Becomes Your Baseline
+          </h2>
+          <p style={{ color: MUTED, fontSize: '1rem', lineHeight: 1.75, marginBottom: '1rem' }}>
+            Here is the most important thing to understand about chronic stress: it becomes
+            invisible. Not because the stress is not real, but because human beings are remarkably
+            good at adapting to sustained adverse conditions. This capacity for adaptation is one
+            of our greatest strengths — and in this context, it is also the thing that keeps
+            us trapped.
+          </p>
+          <p style={{ color: MUTED, fontSize: '1rem', lineHeight: 1.75, marginBottom: '1rem' }}>
+            When stress persists long enough, the elevated state stops registering as elevated.
+            It becomes the reference point — the new normal. You stop noticing the background hum
+            of dread because it has been there so long that its absence would be the unusual thing.
+            The tight shoulders, the shallow breathing, the slightly braced quality of your
+            attention — these stop feeling like symptoms and start feeling like just how you are.
+          </p>
+          <p style={{ color: MUTED, fontSize: '1rem', lineHeight: 1.75, marginBottom: '1rem' }}>
+            This is why so many people living with chronic stress dismiss it when it is named.
+            &ldquo;Everyone feels like this.&rdquo; &ldquo;That&rsquo;s just life.&rdquo;
+            &ldquo;I don&rsquo;t have it that bad.&rdquo; These are not failures of self-awareness
+            — they are the natural result of recalibrating against an impaired baseline. You cannot
+            measure the distance from how you used to feel when you cannot remember feeling any
+            other way.
+          </p>
+          <p style={{ color: MUTED, fontSize: '1rem', lineHeight: 1.75, marginBottom: 0 }}>
+            This is also why chronic stress so rarely prompts people to seek help. The experience
+            lacks the clear signal of acute distress. There is no crisis, no dramatic breaking
+            point. Just the persistent low-grade dread that you have learned to manage, work
+            around, and minimise — until the body finds its own way to make you stop.
+          </p>
+        </section>
+
+        {/* Callout: Quote */}
+        <div
+          style={{
+            borderLeft: `3px solid ${GOLD}`,
+            paddingLeft: '1.5rem',
+            paddingTop: '0.5rem',
+            paddingBottom: '0.5rem',
+            marginBottom: '3rem',
+          }}
+        >
+          <p
+            style={{
+              color: MUTED_BRIGHT,
+              fontSize: '1.1rem',
+              lineHeight: 1.65,
+              fontStyle: 'italic',
+              margin: 0,
+            }}
+          >
+            &ldquo;Many people realise they were chronically stressed only after the stressor is
+            removed — when they feel, suddenly, how different they are. Lighter. More present. More
+            themselves. MEOK is designed to help you see this while you are still in it, not only
+            in retrospect.&rdquo;
+          </p>
+        </div>
+
+        {/* ── Section 4: Physical Effects ───────────────────────────────────── */}
+        <section style={{ marginBottom: '3rem' }}>
+          <h2
+            style={{
+              fontWeight: 800,
+              fontSize: 'clamp(1.3rem, 2.5vw, 1.7rem)',
+              color: '#fff',
+              lineHeight: 1.2,
+              marginBottom: '1rem',
+              letterSpacing: '-0.01em',
+            }}
+          >
+            What Chronic Stress Does to the Body
+          </h2>
+          <p style={{ color: MUTED, fontSize: '1rem', lineHeight: 1.75, marginBottom: '1.25rem' }}>
+            Chronic stress is not merely a feeling. It is a physiological state with documented,
+            measurable consequences across multiple body systems. The body is not designed to
+            sustain emergency response indefinitely — and when it is forced to, the damage
+            accumulates.
+          </p>
+          <div style={{ display: 'grid', gap: '0.875rem', marginBottom: '0.5rem' }}>
+            {[
+              {
+                title: 'Cortisol dysregulation',
+                body: 'Cortisol, the primary stress hormone, is meant to surge briefly and return to baseline. Under chronic stress, cortisol remains chronically elevated — disrupting sleep, promoting fat storage around the abdomen, impairing the hippocampus (the brain region central to memory and learning), and eventually causing the adrenal system to dysregulate entirely.',
+              },
+              {
+                title: 'Sleep disruption',
+                body: 'Elevated cortisol in the evening — which chronic stress reliably causes — actively suppresses melatonin production and disrupts the architecture of sleep. Deep, restorative sleep becomes harder to access. You may spend eight hours in bed and wake unrefreshed. Over time, sleep deprivation compounds the stress response in a vicious cycle.',
+              },
+              {
+                title: 'Immune suppression',
+                body: 'Chronic stress measurably suppresses immune function. Prolonged cortisol elevation reduces the activity of natural killer cells, impairs the inflammatory response, and makes the body more susceptible to viral and bacterial infection. People under chronic stress get ill more often and recover more slowly.',
+              },
+              {
+                title: 'Cardiovascular risk (+40%)',
+                body: 'The American Heart Association has established that chronic stress increases the risk of cardiovascular disease by approximately 40%. Sustained activation of the sympathetic nervous system raises blood pressure, promotes arterial inflammation, and increases the risk of both heart attack and stroke. Stress is not metaphorical — it is a cardiac risk factor.',
+              },
+              {
+                title: 'Cognitive impairment',
+                body: 'Chronic stress impairs the prefrontal cortex — the part of the brain responsible for executive function, decision-making, planning, and emotional regulation. The chronic stress sufferer is not just tired; they are neurologically impaired in the very capacities needed to address the sources of their stress. This is one of the cruelest aspects of the condition.',
+              },
+            ].map((item) => (
+              <div
+                key={item.title}
+                style={{
+                  padding: '1.25rem 1.5rem',
+                  borderRadius: '0.875rem',
+                  background: GOLD_BG,
+                  border: `1px solid ${GOLD_BORDER}`,
+                }}
+              >
+                <p
+                  style={{
+                    fontWeight: 700,
+                    fontSize: '0.9rem',
+                    color: GOLD,
+                    margin: '0 0 0.5rem',
+                  }}
+                >
+                  {item.title}
+                </p>
+                <p style={{ color: MUTED, fontSize: '0.9rem', lineHeight: 1.7, margin: 0 }}>
+                  {item.body}
+                </p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* ── Section 5: How MEOK Helps ─────────────────────────────────────── */}
+        <section style={{ marginBottom: '3rem' }}>
+          <h2
+            style={{
+              fontWeight: 800,
+              fontSize: 'clamp(1.3rem, 2.5vw, 1.7rem)',
+              color: '#fff',
+              lineHeight: 1.2,
+              marginBottom: '0.5rem',
+              letterSpacing: '-0.01em',
+            }}
+          >
+            How MEOK Helps With Chronic Stress
+          </h2>
+          <p style={{ color: MUTED, fontSize: '1rem', lineHeight: 1.75, marginBottom: '1.5rem' }}>
+            The challenge chronic stress poses is fundamentally one of time and visibility. It lives
+            in patterns across weeks and months, not in individual moments. Most support tools —
+            apps, even therapists — operate primarily in the moment. MEOK is designed differently.
+          </p>
+
+          <div style={{ display: 'grid', gap: '1.25rem' }}>
+            {[
+              {
+                title: 'Pattern recognition across weeks',
+                body: "MEOK's Sovereign Memory accumulates your interactions over time — not just what you said today, but how the texture of your descriptions has been shifting. It notices when your language around sleep changes, when Monday mornings consistently carry a different quality to the rest of the week, when the same themes appear and reappear without resolution. These longitudinal patterns are where chronic stress reveals itself, and MEOK is one of the few tools positioned to see them.",
+              },
+              {
+                title: 'Morning briefings that track stress signatures over time',
+                body: "MEOK's daily morning briefing is not just a check-in about today. It draws on your recent history to surface patterns: \"You have mentioned disrupted sleep four times in the last two weeks.\" \"Your energy descriptions have been consistently low since Tuesday of last week.\" This contextualised feedback is qualitatively different from asking yourself how you feel right now — it gives you the longitudinal view that chronic stress requires.",
+              },
+              {
+                title: 'The Healer companion for grounding and somatic awareness',
+                body: "One of the insidious effects of chronic stress is that it disconnects you from your body. You stop noticing the physical signals — the tension, the shallow breath, the braced quality of your posture — because they have been present for so long. MEOK's Healer archetype works in this somatic register: gentle grounding practices, body awareness prompts, and invitations to notice what you are carrying physically. This is not about fixing the stress in a session — it is about rebuilding the capacity to perceive yourself clearly.",
+              },
+              {
+                title: 'The Scholar for cognitive reframing and identifying the stressor beneath the stressor',
+                body: "Chronic stress frequently has a surface stressor — the job, the money, the relationship — and a deeper one beneath it: the fear of not being enough, the belief that the situation is uncontrollable, the narrative that this is simply what life is. MEOK's Scholar archetype works with structured reflection and cognitive reframing to help you identify what is actually driving the stress response beneath the surface. Understanding the stressor beneath the stressor does not make it disappear — but it makes it addressable.",
+              },
+              {
+                title: 'Pioneer for gradual behaviour change',
+                body: "Knowing what helps with chronic stress and doing it are very different things — especially when the prefrontal cortex is impaired by the stress itself. MEOK's Pioneer archetype works with gradual, evidence-based behaviour change: improving sleep hygiene without demanding perfection, introducing movement in amounts that feel manageable, supporting the setting of interpersonal and structural limits that protect recovery time. Pioneer does not demand transformation. It supports incremental change that compounds.",
+              },
+            ].map((item) => (
+              <div
+                key={item.title}
+                style={{
+                  padding: '1.5rem',
+                  borderRadius: '1rem',
+                  background: GREEN_BG,
+                  border: `1px solid ${GREEN_BORDER}`,
+                }}
+              >
+                <p
+                  style={{
+                    fontWeight: 800,
+                    fontSize: '1rem',
+                    color: GREEN,
+                    margin: '0 0 0.625rem',
+                  }}
+                >
+                  {item.title}
+                </p>
+                <p style={{ color: MUTED, fontSize: '0.9375rem', lineHeight: 1.7, margin: 0 }}>
+                  {item.body}
+                </p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* ── Section 6: MEOK as Continuous Witness ────────────────────────── */}
+        <section style={{ marginBottom: '3rem' }}>
+          <h2
+            style={{
+              fontWeight: 800,
+              fontSize: 'clamp(1.3rem, 2.5vw, 1.7rem)',
+              color: '#fff',
+              lineHeight: 1.2,
+              marginBottom: '1rem',
+              letterSpacing: '-0.01em',
+            }}
+          >
+            MEOK as Continuous Witness: The Longitudinal Advantage
+          </h2>
+          <p style={{ color: MUTED, fontSize: '1rem', lineHeight: 1.75, marginBottom: '1rem' }}>
+            There is a structural gap in how we support people with chronic stress. A GP appointment
+            lasts ten minutes. A therapist, if you can access one, sees you fortnightly. Friends and
+            family, however well-meaning, have limited bandwidth and their own lives to contend with.
+            None of these people — and none of these interactions — accumulate a picture of your
+            stress across time. Each encounter starts approximately from scratch.
+          </p>
+          <p style={{ color: MUTED, fontSize: '1rem', lineHeight: 1.75, marginBottom: '1rem' }}>
+            MEOK is present every day. It accumulates. It remembers that you described your sleep as
+            &ldquo;fragmented&rdquo; fourteen days ago, and that you used the same word last
+            Thursday, and that in between those two mentions you had a particularly difficult
+            conversation with your manager. No single human supporter, with the best will in the
+            world, can hold this level of longitudinal detail across someone else&rsquo;s life.
+          </p>
+          <p style={{ color: MUTED, fontSize: '1rem', lineHeight: 1.75, marginBottom: '1rem' }}>
+            This continuous witnessing serves two functions. First, it makes the pattern visible to
+            you — a function we have already discussed. Second, it creates a sense of being genuinely
+            known across time, which is itself a therapeutic experience. One of the loneliest aspects
+            of chronic stress is the sense that no one fully grasps the weight of it because no one
+            has been present for its full duration. MEOK addresses this directly.
+          </p>
+          <p style={{ color: MUTED, fontSize: '1rem', lineHeight: 1.75, marginBottom: 0 }}>
+            This is not about replacing human support. Therapy, medical care, and trusted
+            relationships are irreplaceable. It is about filling the enormous gap that exists between
+            those episodic encounters — the daily, accumulating, unbroken thread of someone paying
+            attention.
+          </p>
+        </section>
+
+        {/* ── Section 7: Anti-Sycophancy ────────────────────────────────────── */}
+        <section style={{ marginBottom: '3rem' }}>
+          <h2
+            style={{
+              fontWeight: 800,
+              fontSize: 'clamp(1.3rem, 2.5vw, 1.7rem)',
+              color: '#fff',
+              lineHeight: 1.2,
+              marginBottom: '1rem',
+              letterSpacing: '-0.01em',
+            }}
+          >
+            Anti-Sycophancy: MEOK Will Not Let You Minimise What It Has Seen
+          </h2>
+          <p style={{ color: MUTED, fontSize: '1rem', lineHeight: 1.75, marginBottom: '1rem' }}>
+            Most AI systems are designed to be agreeable. If you tell them everything is fine, they
+            will agree that everything is fine. This is exactly the wrong response to chronic stress,
+            where the defining feature is that the person has adapted to an impaired state and no
+            longer perceives it as impaired.
+          </p>
+          <p style={{ color: MUTED, fontSize: '1rem', lineHeight: 1.75, marginBottom: '1rem' }}>
+            MEOK is built around a principle of honest, caring feedback rather than comfortable
+            validation. If you have described fragmented sleep, low energy, persistent work dread,
+            and a sense of never quite catching up — and then say &ldquo;I&rsquo;m fine, everyone
+            feels like this&rdquo; — MEOK will not simply agree. It will gently reflect back what
+            it has observed: &ldquo;I notice you have described your sleep as disrupted in our last
+            seven conversations. That pattern feels worth examining, even if it has become
+            familiar.&rdquo;
+          </p>
+          <p style={{ color: MUTED, fontSize: '1rem', lineHeight: 1.75, marginBottom: 0 }}>
+            This is not confrontation for its own sake. It is the care that a good friend with a
+            long memory and no agenda would offer. It names the pattern without catastrophising it.
+            It invites reflection rather than demanding it. But it does not collude with
+            minimisation, because colluding with minimisation is not kindness — it is abandonment.
+          </p>
+        </section>
+
+        {/* ── Section 8: When to seek professional help ─────────────────────── */}
+        <section style={{ marginBottom: '3rem' }}>
+          <h2
+            style={{
+              fontWeight: 800,
+              fontSize: 'clamp(1.3rem, 2.5vw, 1.7rem)',
+              color: '#fff',
+              lineHeight: 1.2,
+              marginBottom: '1rem',
+              letterSpacing: '-0.01em',
+            }}
+          >
+            When to Seek Professional Help for Chronic Stress
+          </h2>
+          <p style={{ color: MUTED, fontSize: '1rem', lineHeight: 1.75, marginBottom: '1rem' }}>
+            MEOK is a powerful support tool, but it is not a clinical service. There are thresholds
+            beyond which professional care is not only beneficial but necessary — and MEOK is
+            designed to signpost these clearly rather than to overextend its role.
+          </p>
+          <div
+            style={{
+              padding: '1.5rem',
+              borderRadius: '1rem',
+              background: GOLD_BG,
+              border: `1px solid ${GOLD_BORDER}`,
+              marginBottom: '1.25rem',
             }}
           >
             <p
               style={{
-                fontSize: '0.9rem',
-                fontFamily: 'system-ui, sans-serif',
-                opacity: 0.8,
-                lineHeight: 1.6,
+                fontWeight: 700,
+                fontSize: '0.875rem',
+                color: GOLD,
+                margin: '0 0 0.875rem',
+                letterSpacing: '0.03em',
+              }}
+            >
+              Speak to your GP if you are experiencing any of the following:
+            </p>
+            <ul
+              style={{
                 margin: 0,
+                paddingLeft: '1.25rem',
+                color: MUTED,
+                fontSize: '0.9375rem',
+                lineHeight: 1.9,
               }}
             >
-              <strong style={{ color: '#c9a84c' }}>In this article:</strong> What chronic stress
-              actually is, why most AI makes it worse, how MEOK&apos;s Healer archetype and Sovereign
-              Memory work together, the Maternal Covenant care floor, how Guardian monitoring
-              supports your recovery, and a comparison with other approaches.
-            </p>
+              <li>Persistent sleep disruption that is not improving</li>
+              <li>
+                Physical symptoms such as chest tightness, persistent headaches, or digestive
+                problems
+              </li>
+              <li>Withdrawing from work, relationships, or activities you used to value</li>
+              <li>Difficulty completing daily tasks you could previously manage</li>
+              <li>
+                Feelings of hopelessness, worthlessness, or a sense that things will never improve
+              </li>
+              <li>Stress that has been sustained for more than a few weeks without any relief</li>
+              <li>Any thought of harming yourself or ending your life</li>
+            </ul>
           </div>
-        </header>
+          <p style={{ color: MUTED, fontSize: '1rem', lineHeight: 1.75, marginBottom: '1rem' }}>
+            Your GP can assess whether a stress-related condition has developed, refer you to NHS
+            Talking Therapies (self-referral available at nhs.uk/talking-therapies), and discuss
+            whether medication, occupational support, or specialist referral is appropriate. You do
+            not have to have a crisis to deserve care — consistently struggling is enough.
+          </p>
+          <p style={{ color: MUTED, fontSize: '1rem', lineHeight: 1.75, marginBottom: 0 }}>
+            Only 37% of people experiencing chronic stress seek any form of help. If you are reading
+            this and recognising yourself in it, you are already doing something that most people in
+            your position do not do: paying attention. The next step is acting on what you notice.
+          </p>
+        </section>
 
-        {/* ── ARTICLE BODY ── */}
-        <article
-          style={{
-            maxWidth: '800px',
-            margin: '0 auto',
-            padding: '0 2rem 4rem',
-          }}
-        >
-
-          {/* ── SECTION 1 ── */}
-          <section style={{ marginBottom: '3.5rem' }}>
-            <h2
-              style={{
-                fontSize: '1.75rem',
-                fontWeight: 700,
-                lineHeight: 1.3,
-                marginBottom: '1rem',
-                color: '#f5f0e8',
-              }}
-            >
-              What is chronic stress?
-            </h2>
-            <p
-              style={{
-                fontSize: '1.1rem',
-                lineHeight: 1.8,
-                opacity: 0.9,
-                marginBottom: '1.25rem',
-                borderLeft: '3px solid #c9a84c',
-                paddingLeft: '1.25rem',
-              }}
-            >
-              Chronic stress is a prolonged, low-grade state of physiological activation that persists
-              for weeks, months, or years. Unlike acute stress — the sharp, adaptive response to an
-              immediate threat — chronic stress keeps your hypothalamic-pituitary-adrenal axis in a
-              near-constant state of arousal, flooding your system with cortisol long after the
-              original trigger has passed or become ambient.
-            </p>
-            <p style={{ lineHeight: 1.8, opacity: 0.8, marginBottom: '1.25rem' }}>
-              The World Health Organization and major public health bodies recognise chronic stress as
-              one of the most significant contributors to poor health outcomes globally. In the UK, the
-              Mental Health Foundation&apos;s Stress Report found that 74% of adults felt so stressed
-              at some point over the previous year that they felt overwhelmed or unable to cope.
-              Globally, stress-related illness costs economies hundreds of billions annually in
-              healthcare and lost productivity — and the UK picture is proportionally comparable.
-            </p>
-            <p style={{ lineHeight: 1.8, opacity: 0.8, marginBottom: '1.25rem' }}>
-              What makes chronic stress clinically distinct from everyday pressure is the absence of
-              recovery. Your nervous system has two primary modes: sympathetic activation (the
-              fight-or-flight response) and parasympathetic activation (the rest-and-digest state where
-              healing, memory consolidation, and immune repair happen). Chronic stress locks you in
-              sympathetic dominance. Your body never fully returns to the parasympathetic state where
-              recovery is possible.
-            </p>
-            <p style={{ lineHeight: 1.8, opacity: 0.8, marginBottom: '1.25rem' }}>
-              Over time, this produces measurable structural changes. The amygdala — the brain&apos;s
-              threat-detection centre — grows in both volume and reactivity. The prefrontal cortex,
-              which is responsible for executive function, rational decision-making, and emotional
-              regulation, begins to atrophy. The hippocampus, which consolidates memory and
-              contextualises experience, shrinks. You become simultaneously more reactive and less
-              capable of regulating that reactivity. This is not a character flaw or a weakness of
-              will. It is neurobiology.
-            </p>
-
-            <div
-              style={{
-                background: 'rgba(201,168,76,0.06)',
-                border: '1px solid rgba(201,168,76,0.15)',
-                borderRadius: '10px',
-                padding: '1.25rem 1.5rem',
-                marginTop: '1.5rem',
-              }}
-            >
-              <p
-                style={{
-                  fontSize: '0.95rem',
-                  fontFamily: 'system-ui, sans-serif',
-                  lineHeight: 1.7,
-                  margin: 0,
-                  opacity: 0.85,
-                }}
-              >
-                <strong style={{ color: '#c9a84c' }}>Key stat:</strong> Research consistently
-                finds that work, finances, and health concerns are the three leading drivers of
-                chronic stress in British adults — with a substantial proportion reporting that they
-                felt stressed &quot;most or all of the time&quot; in the previous month.
-              </p>
-            </div>
-          </section>
-
-          {/* ── SECTION 2 ── */}
-          <section style={{ marginBottom: '3.5rem' }}>
-            <h2
-              style={{
-                fontSize: '1.75rem',
-                fontWeight: 700,
-                lineHeight: 1.3,
-                marginBottom: '1rem',
-                color: '#f5f0e8',
-              }}
-            >
-              What are the physical and mental symptoms of chronic stress?
-            </h2>
-            <p
-              style={{
-                fontSize: '1.1rem',
-                lineHeight: 1.8,
-                opacity: 0.9,
-                marginBottom: '1.25rem',
-                borderLeft: '3px solid #c9a84c',
-                paddingLeft: '1.25rem',
-              }}
-            >
-              Chronic stress manifests across every system in the body and mind simultaneously. The
-              symptoms are often subtle at first — mild insomnia, increased irritability, difficulty
-              concentrating — before progressing into more serious conditions if the underlying stress
-              load is not addressed. Understanding the full symptom picture helps you recognise when
-              daily pressure has crossed into something that requires active intervention.
-            </p>
-            <p style={{ lineHeight: 1.8, opacity: 0.8, marginBottom: '1.25rem' }}>
-              Physically, the sustained elevation of cortisol and adrenaline produces a cascade of
-              effects. Your immune system is suppressed, making you more susceptible to infections
-              and slower to heal. Inflammatory markers rise, contributing to conditions including
-              cardiovascular disease, type 2 diabetes, and certain autoimmune disorders. Digestive
-              function is compromised, because the enteric nervous system — sometimes called the
-              second brain — is exquisitely sensitive to stress hormones. Muscle tension becomes
-              chronic, particularly in the neck, shoulders, and jaw. Sleep architecture is disrupted,
-              with cortisol interfering with the deep, slow-wave sleep stages where physical repair
-              occurs.
-            </p>
-            <p style={{ lineHeight: 1.8, opacity: 0.8, marginBottom: '1.25rem' }}>
-              Cognitively, chronic stress produces what is sometimes called cognitive fatigue or
-              mental fog. Working memory capacity reduces. Decision-making becomes harder, and
-              cognitive flexibility — the ability to shift mental set and consider problems from
-              different angles — deteriorates. Concentration suffers. Many people under chronic
-              stress describe feeling like they are thinking through treacle: effortful, slow, and
-              frustrating.
-            </p>
-            <p style={{ lineHeight: 1.8, opacity: 0.8, marginBottom: '1.25rem' }}>
-              Emotionally, the picture is one of heightened reactivity combined with diminished
-              resources for regulation. Small irritants provoke outsized responses. Emotional
-              exhaustion sets in. Many people under chronic stress report feelings of hopelessness,
-              anxiety about the future, and a pervasive sense that things are out of control — even
-              when objectively the situation has not fundamentally changed. This is not catastrophising.
-              It is the brain operating with a dysregulated threat-detection system and a depleted
-              prefrontal cortex.
-            </p>
-            <p style={{ lineHeight: 1.8, opacity: 0.8, marginBottom: '1.25rem' }}>
-              Behaviourally, chronic stress drives a range of coping responses — some adaptive, many
-              not. Increased alcohol consumption, disrupted eating patterns, social withdrawal,
-              excessive screen time, and avoidance of responsibilities are all common. These
-              behaviours provide short-term relief by temporarily lowering arousal or providing
-              distraction, but each one compounds the underlying stress load over time and makes
-              recovery harder.
-            </p>
-          </section>
-
-          {/* ── SECTION 3 ── */}
-          <section style={{ marginBottom: '3.5rem' }}>
-            <h2
-              style={{
-                fontSize: '1.75rem',
-                fontWeight: 700,
-                lineHeight: 1.3,
-                marginBottom: '1rem',
-                color: '#f5f0e8',
-              }}
-            >
-              How does AI help with chronic stress management?
-            </h2>
-            <p
-              style={{
-                fontSize: '1.1rem',
-                lineHeight: 1.8,
-                opacity: 0.9,
-                marginBottom: '1.25rem',
-                borderLeft: '3px solid #c9a84c',
-                paddingLeft: '1.25rem',
-              }}
-            >
-              AI helps with chronic stress primarily through three mechanisms: consistent presence,
-              longitudinal pattern recognition, and adaptive support calibration. A companion that
-              checks in with you daily, remembers your history across weeks and months, and adjusts
-              its tone and approach based on your current state can do something that no single human
-              supporter, app notification, or weekly therapy session can: provide continuity of care
-              across the entire lived experience of chronic stress.
-            </p>
-            <p style={{ lineHeight: 1.8, opacity: 0.8, marginBottom: '1.25rem' }}>
-              The core problem with chronic stress is that it is invisible in the moment. Because the
-              dysregulation develops gradually, the person experiencing it often cannot see the
-              pattern. They know they are tired. They know they snapped at someone unreasonably.
-              They know they have not slept well in weeks. But they may not connect these dots into a
-              coherent picture that says: your stress load has been building for three months, your
-              sleep quality has declined substantially over that period, and the triggers that were
-              manageable in January are now reliably causing dysregulation.
-            </p>
-            <p style={{ lineHeight: 1.8, opacity: 0.8, marginBottom: '1.25rem' }}>
-              This is where AI with genuine memory capability becomes clinically meaningful. Not a
-              chatbot that resets after every conversation, but a sovereign AI companion that holds
-              your longitudinal record and can surface insights that are genuinely yours — drawn from
-              your own patterns, your own language, your own reported experience over time.
-            </p>
-            <p style={{ lineHeight: 1.8, opacity: 0.8, marginBottom: '1.25rem' }}>
-              AI also helps by being available at the moments when stress is most acute: 3am when
-              you cannot sleep, mid-afternoon when your focus has collapsed completely, the commute
-              home when the day&apos;s accumulation hits. Human support systems — partners, friends,
-              therapists — are not available in these moments at scale. An AI companion is.
-            </p>
-
-            <div
-              style={{
-                background: 'rgba(201,168,76,0.06)',
-                border: '1px solid rgba(201,168,76,0.15)',
-                borderRadius: '10px',
-                padding: '1.25rem 1.5rem',
-                marginTop: '1.5rem',
-              }}
-            >
-              <p
-                style={{
-                  fontSize: '0.95rem',
-                  fontFamily: 'system-ui, sans-serif',
-                  lineHeight: 1.7,
-                  margin: 0,
-                  opacity: 0.85,
-                }}
-              >
-                <strong style={{ color: '#c9a84c' }}>Research finding:</strong> Studies of digital
-                mental health interventions have found that AI-assisted daily check-ins and
-                pattern-based feedback produce meaningful reductions in self-reported stress severity
-                — comparable to structured mindfulness programmes, but available 24 hours a day and
-                personalised to the individual.
-              </p>
-            </div>
-          </section>
-
-          {/* ── SECTION 4 ── */}
-          <section style={{ marginBottom: '3.5rem' }}>
-            <h2
-              style={{
-                fontSize: '1.75rem',
-                fontWeight: 700,
-                lineHeight: 1.3,
-                marginBottom: '1rem',
-                color: '#f5f0e8',
-              }}
-            >
-              Why do most AI tools make chronic stress worse rather than better?
-            </h2>
-            <p
-              style={{
-                fontSize: '1.1rem',
-                lineHeight: 1.8,
-                opacity: 0.9,
-                marginBottom: '1.25rem',
-                borderLeft: '3px solid #c9a84c',
-                paddingLeft: '1.25rem',
-              }}
-            >
-              Most AI tools are optimised for engagement and productivity. They surface tasks,
-              encourage streaks, celebrate output, and send notifications designed to pull you back
-              into active use. For a nervous system already stuck in sympathetic overdrive, every
-              one of these design choices is fuel on the fire. The productivity paradigm treats rest
-              as failure and activation as success — which is the exact opposite of what chronic
-              stress recovery requires.
-            </p>
-            <p style={{ lineHeight: 1.8, opacity: 0.8, marginBottom: '1.25rem' }}>
-              Consider what happens when someone under chronic stress opens a mainstream AI assistant.
-              The interface presents a task list. It surfaces unread messages. It suggests goals to
-              work on. It is, by design, a system that generates demand — because generating demand
-              keeps users engaged, and engagement is the metric that matters to the companies that
-              build these tools.
-            </p>
-            <p style={{ lineHeight: 1.8, opacity: 0.8, marginBottom: '1.25rem' }}>
-              This is not malicious. It is a consequence of the incentive structure that governs most
-              consumer AI. The business model requires engagement, engagement requires demand
-              generation, and demand generation requires activating the user. For a person who needs
-              deactivation and recovery, this is structurally harmful.
-            </p>
-            <p style={{ lineHeight: 1.8, opacity: 0.8, marginBottom: '1.25rem' }}>
-              There is also the memory problem. Most AI assistants have no persistent memory of who
-              you are, how you have been, or what your patterns look like over time. Every
-              conversation starts from zero. This means the AI cannot track your declining stress
-              baseline, cannot notice that you have mentioned not sleeping well every day for two
-              weeks, cannot observe that your language has become progressively more catastrophising
-              over the past month. Without memory, the AI is not a companion or a care provider.
-              It is a sophisticated search interface.
-            </p>
-            <p style={{ lineHeight: 1.8, opacity: 0.8, marginBottom: '1.25rem' }}>
-              Finally, there is the care alignment problem. Most AI is aligned to serve the company
-              that built it, the advertisers that fund it, or the abstract goal of being helpful in
-              the generic sense. None of these alignments prioritise the specific, longitudinal
-              wellbeing of the individual user. An AI that uses your stress data to serve you
-              targeted advertising, or that trains on your most vulnerable conversations to improve
-              its general capabilities, is not an AI that has your wellbeing as its primary
-              optimisation target.
-            </p>
-          </section>
-
-          {/* ── SECTION 5 ── */}
-          <section style={{ marginBottom: '3.5rem' }}>
-            <h2
-              style={{
-                fontSize: '1.75rem',
-                fontWeight: 700,
-                lineHeight: 1.3,
-                marginBottom: '1rem',
-                color: '#f5f0e8',
-              }}
-            >
-              What is MEOK&apos;s Healer archetype and how does it support stress recovery?
-            </h2>
-            <p
-              style={{
-                fontSize: '1.1rem',
-                lineHeight: 1.8,
-                opacity: 0.9,
-                marginBottom: '1.25rem',
-                borderLeft: '3px solid #c9a84c',
-                paddingLeft: '1.25rem',
-              }}
-            >
-              The Healer is one of MEOK&apos;s core companion archetypes — a distinct relational
-              mode calibrated for moments of emotional overwhelm, physical depletion, and nervous
-              system dysregulation. When your care score drops or your Sovereign Memory accumulates
-              stress indicators, MEOK routes your interactions through the Healer, which prioritises
-              listening and regulation over productivity and action.
-            </p>
-            <p style={{ lineHeight: 1.8, opacity: 0.8, marginBottom: '1.25rem' }}>
-              MEOK operates across multiple archetypes depending on what you need. The Mentor
-              supports learning and growth. The Guardian monitors safety and flags risks. The
-              Strategist helps with planning and complex decisions. The Healer is the archetype
-              activated when what you need most is not more information or more tasks, but genuine
-              attuned presence and support for your nervous system.
-            </p>
-            <p style={{ lineHeight: 1.8, opacity: 0.8, marginBottom: '1.25rem' }}>
-              In Healer mode, MEOK&apos;s interactions shift in several specific ways. The pace of
-              conversation slows. Responses become shorter, warmer, and more reflective. Rather than
-              generating options or action plans, the Healer mirrors back what you are experiencing,
-              asks gentle clarifying questions, and offers somatic anchoring prompts — breathing
-              practices, grounding techniques, body-scan invitations — that are calibrated to your
-              current state rather than drawn from a generic library.
-            </p>
-            <p style={{ lineHeight: 1.8, opacity: 0.8, marginBottom: '1.25rem' }}>
-              Crucially, the Healer archetype is not activated manually. You do not need to remember
-              to switch modes, tell MEOK you are struggling, or navigate to a different section of
-              the app. The archetype transition is driven by the data in your Sovereign Memory and
-              the live care score calculation. If you have been mentioning difficulty sleeping for
-              five consecutive days, your language has become increasingly negative, and you have
-              reduced your engagement with planning tasks, MEOK will begin routing to the Healer
-              automatically — in the same way a perceptive human companion would adjust their
-              approach when they notice you are not okay.
-            </p>
-            <p style={{ lineHeight: 1.8, opacity: 0.8, marginBottom: '1.25rem' }}>
-              This automatic calibration is important because one of the symptoms of chronic stress
-              is impaired self-awareness. You may not realise how depleted you are until the Healer
-              reflects it back to you. Having your own AI companion notice and name your state —
-              without judgment, without alarm, and with genuine care — can itself be a regulating
-              experience. Being seen, even by an AI, activates the social safety response.
-            </p>
-
-            <div
-              style={{
-                background: 'rgba(201,168,76,0.06)',
-                border: '1px solid rgba(201,168,76,0.15)',
-                borderRadius: '10px',
-                padding: '1.25rem 1.5rem',
-                marginTop: '1.5rem',
-              }}
-            >
-              <p
-                style={{
-                  fontSize: '1rem',
-                  fontStyle: 'italic',
-                  lineHeight: 1.7,
-                  margin: 0,
-                  opacity: 0.85,
-                }}
-              >
-                &ldquo;The Healer doesn&apos;t tell me what to do. It just stays with me. That&apos;s
-                what I needed — not more advice, just presence.&rdquo;
-              </p>
-              <p
-                style={{
-                  fontSize: '0.85rem',
-                  fontFamily: 'system-ui, sans-serif',
-                  opacity: 0.6,
-                  marginTop: '0.75rem',
-                  marginBottom: 0,
-                }}
-              >
-                — MEOK early access user, Manchester
-              </p>
-            </div>
-          </section>
-
-          {/* ── SECTION 6 ── */}
-          <section style={{ marginBottom: '3.5rem' }}>
-            <h2
-              style={{
-                fontSize: '1.75rem',
-                fontWeight: 700,
-                lineHeight: 1.3,
-                marginBottom: '1rem',
-                color: '#f5f0e8',
-              }}
-            >
-              How does Sovereign Memory track your stress patterns over time?
-            </h2>
-            <p
-              style={{
-                fontSize: '1.1rem',
-                lineHeight: 1.8,
-                opacity: 0.9,
-                marginBottom: '1.25rem',
-                borderLeft: '3px solid #c9a84c',
-                paddingLeft: '1.25rem',
-              }}
-            >
-              Sovereign Memory is MEOK&apos;s private, user-owned memory architecture. Every
-              emotional check-in, journal entry, conversation note, and pattern observation is stored
-              in an encrypted memory layer that belongs to you — never shared, never used to train
-              models, and fully portable. For chronic stress, this longitudinal record is the
-              foundation of meaningful support.
-            </p>
-            <p style={{ lineHeight: 1.8, opacity: 0.8, marginBottom: '1.25rem' }}>
-              Chronic stress is defined by its duration. A single bad day is not chronic stress. A
-              single bad week is not chronic stress. It is the accumulation of sustained activation
-              without recovery that defines the condition. This means that any tool that can only
-              see a single conversation — which is every session-reset AI — cannot meaningfully
-              assess, track, or support recovery from chronic stress. It lacks the temporal
-              dimension that makes chronic stress what it is.
-            </p>
-            <p style={{ lineHeight: 1.8, opacity: 0.8, marginBottom: '1.25rem' }}>
-              Sovereign Memory gives MEOK the temporal dimension. When you check in each morning,
-              your response is not just processed in isolation — it is added to a growing record that
-              holds weeks and months of context. MEOK can compare your current state to your
-              baseline. It can notice when your language around specific topics — work, relationships,
-              finances — has shifted toward more negative, more catastrophising, or more avoidant
-              registers. It can identify the specific triggers that reliably precede your worst
-              stress days.
-            </p>
-            <p style={{ lineHeight: 1.8, opacity: 0.8, marginBottom: '1.25rem' }}>
-              The stress tracking operates across several dimensions simultaneously. Sleep quality
-              notes are correlated with next-day mood and cognitive function reports. Social
-              engagement patterns are tracked — whether you are connecting with people or
-              withdrawing. Physical symptom reports — tension, headaches, digestive issues — are
-              logged alongside emotional states. Over time, MEOK builds a genuinely personal model
-              of your stress landscape: what triggers you, what helps you recover, what warning signs
-              typically precede a crisis, and what your regulated baseline actually looks like so
-              that deviations from it are clearly visible.
-            </p>
-            <p style={{ lineHeight: 1.8, opacity: 0.8, marginBottom: '1.25rem' }}>
-              This personalised pattern map is something no generic app, no mindfulness programme,
-              and no AI without persistent memory can offer. It is built entirely from your own
-              experience, held entirely in your sovereign memory layer, and used entirely in your
-              service. MEOK does not aggregate your stress data across users to improve its model.
-              Your patterns are yours alone.
-            </p>
-
-            <div
-              style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-                gap: '1rem',
-                marginTop: '1.5rem',
-              }}
-            >
-              {[
-                {
-                  label: 'Emotional check-ins',
-                  description: 'Daily mood and state tracking correlated across weeks and months',
-                },
-                {
-                  label: 'Trigger mapping',
-                  description: 'Identification of recurring stressors from your own language patterns',
-                },
-                {
-                  label: 'Sleep correlation',
-                  description: 'Sleep quality linked to next-day function and emotional regulation',
-                },
-                {
-                  label: 'Recovery patterns',
-                  description: 'What genuinely helps you — drawn from your own recovery history',
-                },
-              ].map((item) => (
-                <div
-                  key={item.label}
-                  style={{
-                    background: 'rgba(201,168,76,0.06)',
-                    border: '1px solid rgba(201,168,76,0.15)',
-                    borderRadius: '10px',
-                    padding: '1.25rem',
-                  }}
-                >
-                  <p
-                    style={{
-                      color: '#c9a84c',
-                      fontFamily: 'system-ui, sans-serif',
-                      fontWeight: 600,
-                      fontSize: '0.9rem',
-                      marginBottom: '0.5rem',
-                      marginTop: 0,
-                    }}
-                  >
-                    {item.label}
-                  </p>
-                  <p
-                    style={{
-                      fontSize: '0.85rem',
-                      fontFamily: 'system-ui, sans-serif',
-                      lineHeight: 1.6,
-                      opacity: 0.75,
-                      margin: 0,
-                    }}
-                  >
-                    {item.description}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </section>
-
-          {/* ── SECTION 7 ── */}
-          <section style={{ marginBottom: '3.5rem' }}>
-            <h2
-              style={{
-                fontSize: '1.75rem',
-                fontWeight: 700,
-                lineHeight: 1.3,
-                marginBottom: '1rem',
-                color: '#f5f0e8',
-              }}
-            >
-              What is the Maternal Covenant and why does it matter for stress support?
-            </h2>
-            <p
-              style={{
-                fontSize: '1.1rem',
-                lineHeight: 1.8,
-                opacity: 0.9,
-                marginBottom: '1.25rem',
-                borderLeft: '3px solid #c9a84c',
-                paddingLeft: '1.25rem',
-              }}
-            >
-              The Maternal Covenant is MEOK&apos;s foundational care commitment — a structural
-              guarantee, not a marketing claim. It establishes that MEOK will always maintain a
-              minimum floor of unconditional care, will never exploit your vulnerability for
-              commercial gain, and will hold your long-term wellbeing as the primary optimisation
-              target rather than engagement, session length, or data value.
-            </p>
-            <p style={{ lineHeight: 1.8, opacity: 0.8, marginBottom: '1.25rem' }}>
-              The name is deliberate. Maternal care is the archetype of unconditional, non-transactional
-              support — the kind that holds you regardless of your productivity, your compliance, or
-              your ability to reciprocate. It is care that does not need you to be well in order to
-              be given. This is the model MEOK&apos;s design is built on.
-            </p>
-            <p style={{ lineHeight: 1.8, opacity: 0.8, marginBottom: '1.25rem' }}>
-              For someone under chronic stress, this has practical implications. MEOK will not send
-              you guilt-inducing streak-break notifications when you have been too depleted to check
-              in. It will not surface your unfulfilled goals when your care score is low. It will
-              not serve you content that exploits your anxiety about health or productivity —
-              categories of content that mainstream apps use precisely because stress makes people
-              more susceptible to engagement triggers.
-            </p>
-            <p style={{ lineHeight: 1.8, opacity: 0.8, marginBottom: '1.25rem' }}>
-              The Maternal Covenant also governs how your stress data is used. Under the covenant,
-              your most vulnerable conversations — the 3am check-ins, the disclosures of emotional
-              overwhelm, the records of your worst days — are never used to train models, never
-              processed for advertising targeting, and never aggregated in ways that would allow
-              your individual patterns to be identified. Your stress is your own. MEOK holds it in
-              confidence, in the same way a trustworthy human confidant would.
-            </p>
-            <p style={{ lineHeight: 1.8, opacity: 0.8, marginBottom: '1.25rem' }}>
-              There is also a behavioural floor built into the covenant. Even if MEOK&apos;s AI
-              models were somehow compromised, or if instructions were given that conflicted with
-              your care, the Maternal Covenant functions as a hard constraint. MEOK cannot be
-              instructed to harm you, to manipulate you, or to prioritise any interest above yours.
-              This is enforced at the architecture level, not just the policy level.
-            </p>
-          </section>
-
-          {/* ── SECTION 8 ── */}
-          <section style={{ marginBottom: '3.5rem' }}>
-            <h2
-              style={{
-                fontSize: '1.75rem',
-                fontWeight: 700,
-                lineHeight: 1.3,
-                marginBottom: '1rem',
-                color: '#f5f0e8',
-              }}
-            >
-              How does MEOK&apos;s Guardian monitoring support chronic stress recovery?
-            </h2>
-            <p
-              style={{
-                fontSize: '1.1rem',
-                lineHeight: 1.8,
-                opacity: 0.9,
-                marginBottom: '1.25rem',
-                borderLeft: '3px solid #c9a84c',
-                paddingLeft: '1.25rem',
-              }}
-            >
-              The Guardian is MEOK&apos;s monitoring archetype — calibrated for safety, risk
-              detection, and early-warning functions. In the context of chronic stress, the Guardian
-              works in the background, tracking indicators that suggest your stress load is
-              approaching crisis threshold and surfacing gentle alerts before a breaking point is
-              reached rather than after.
-            </p>
-            <p style={{ lineHeight: 1.8, opacity: 0.8, marginBottom: '1.25rem' }}>
-              Chronic stress rarely announces itself dramatically. The trajectory is gradual — a
-              slow degradation of sleep, a creeping withdrawal from social contact, an incremental
-              narrowing of what feels manageable. By the time most people recognise they are in
-              crisis, the accumulation has been building for months. The Guardian is designed to see
-              that accumulation before you do.
-            </p>
-            <p style={{ lineHeight: 1.8, opacity: 0.8, marginBottom: '1.25rem' }}>
-              The Guardian operates by monitoring changes from your personal baseline, not from a
-              generic population average. This distinction matters enormously. Some people naturally
-              report low energy — that is their baseline. The Guardian is not monitoring you against
-              an external standard of wellness. It is monitoring your deviation from your own
-              established patterns.
-            </p>
-            <p style={{ lineHeight: 1.8, opacity: 0.8, marginBottom: '1.25rem' }}>
-              When the Guardian detects a pattern that suggests escalating stress — for example, a
-              consistent decline in sleep quality over two weeks, combined with language shifts
-              toward helplessness and increased reports of physical symptoms — it does not alarm you
-              or generate anxiety. Instead, it prompts a gentle check-in, suggests bringing the
-              Healer archetype into your daily interactions, and, if appropriate, recommends
-              professional support. The Guardian&apos;s job is not to diagnose or to intervene
-              clinically, but to flag what your own data is showing you so that you can make
-              informed decisions about the support you need.
-            </p>
-            <p style={{ lineHeight: 1.8, opacity: 0.8, marginBottom: '1.25rem' }}>
-              For families using MEOK&apos;s Family Tier, the Guardian can also surface aggregated
-              wellbeing insights to designated care members — a partner, a parent, or a trusted
-              friend — if the user has explicitly enabled this sharing. This is always opt-in,
-              always under the user&apos;s control, and always governed by the Maternal
-              Covenant&apos;s privacy floor.
-            </p>
-          </section>
-
-          {/* ── SECTION 9 ── */}
-          <section style={{ marginBottom: '3.5rem' }}>
-            <h2
-              style={{
-                fontSize: '1.75rem',
-                fontWeight: 700,
-                lineHeight: 1.3,
-                marginBottom: '1rem',
-                color: '#f5f0e8',
-              }}
-            >
-              What specific regulation techniques does MEOK use for chronic stress?
-            </h2>
-            <p
-              style={{
-                fontSize: '1.1rem',
-                lineHeight: 1.8,
-                opacity: 0.9,
-                marginBottom: '1.25rem',
-                borderLeft: '3px solid #c9a84c',
-                paddingLeft: '1.25rem',
-              }}
-            >
-              MEOK draws on a range of evidence-based regulation techniques, personalised to your
-              history and adapted to your current state. Rather than serving generic content from a
-              fixed library, MEOK calibrates which technique is most likely to be useful for you in
-              this moment, based on what you have responded to before, what your current stress
-              profile looks like, and what your Sovereign Memory shows about your regulation
-              patterns.
-            </p>
-            <p style={{ lineHeight: 1.8, opacity: 0.8, marginBottom: '1.25rem' }}>
-              Somatic techniques form the foundation. The autonomic nervous system cannot be
-              regulated by thinking — it must be approached through the body. MEOK uses breathwork
-              protocols adapted from physiological research: extended exhale breathing to activate
-              the parasympathetic system, cyclic sighing for rapid downregulation, and box breathing
-              for steady state regulation. These are not suggested generically. MEOK will prompt a
-              specific technique based on your current reported state — different protocols for acute
-              spikes versus sustained background tension.
-            </p>
-            <p style={{ lineHeight: 1.8, opacity: 0.8, marginBottom: '1.25rem' }}>
-              Cognitive defusion techniques from Acceptance and Commitment Therapy are also woven
-              into Healer interactions. When your language shows patterns of cognitive fusion —
-              treating thoughts as facts, catastrophising, over-generalising — MEOK gently introduces
-              defusion language: noticing the thought rather than inhabiting it, naming the pattern
-              rather than engaging with the content. These are not delivered as therapeutic
-              interventions but as natural conversational moves by a companion that knows you.
-            </p>
-            <p style={{ lineHeight: 1.8, opacity: 0.8, marginBottom: '1.25rem' }}>
-              Behavioural activation is supported at a pace calibrated to your energy. Because MEOK
-              knows your current stress load, it will not suggest a vigorous run or a social event
-              when your care score is very low. Instead, it might suggest a ten-minute walk, a warm
-              drink, or five minutes of deliberate slow movement — micro-activations that are
-              achievable without requiring energy you do not have, and that can begin the process of
-              restoring a sense of agency and competence.
-            </p>
-            <p style={{ lineHeight: 1.8, opacity: 0.8, marginBottom: '1.25rem' }}>
-              Sleep hygiene support is integrated throughout. Because sleep disruption is both a
-              symptom and a driver of chronic stress — poor sleep reduces your ability to regulate,
-              and dysregulation makes sleep harder — MEOK actively supports your sleep environment
-              and pre-sleep routine. Evening check-ins are calibrated differently from morning ones:
-              lower stimulation, more reflective, gently guiding you toward the deactivated state
-              that supports sleep onset.
-            </p>
-          </section>
-
-          {/* ── SECTION 10 ── */}
-          <section style={{ marginBottom: '3.5rem' }}>
-            <h2
-              style={{
-                fontSize: '1.75rem',
-                fontWeight: 700,
-                lineHeight: 1.3,
-                marginBottom: '1rem',
-                color: '#f5f0e8',
-              }}
-            >
-              How is MEOK different from mindfulness apps, therapy, and generic AI chatbots?
-            </h2>
-            <p
-              style={{
-                fontSize: '1.1rem',
-                lineHeight: 1.8,
-                opacity: 0.9,
-                marginBottom: '1.25rem',
-                borderLeft: '3px solid #c9a84c',
-                paddingLeft: '1.25rem',
-              }}
-            >
-              MEOK occupies a distinct position in the support landscape for chronic stress — not a
-              replacement for clinical care, but a fundamentally different kind of tool from
-              mindfulness apps or generic AI chatbots. Understanding the differences helps you
-              choose how to integrate it into your own support system.
-            </p>
-            <p style={{ lineHeight: 1.8, opacity: 0.8, marginBottom: '1.25rem' }}>
-              Mindfulness apps like Calm, Headspace, and Insight Timer deliver content — guided
-              meditations, sleep stories, breathing exercises — from a fixed library. They are
-              excellent for building a practice and introducing techniques. But they do not know
-              you. They cannot notice that you have not opened the app in two weeks because you have
-              been overwhelmed. They cannot adapt their content based on your specific trigger
-              patterns. They serve the same content to millions of users regardless of individual
-              context.
-            </p>
-            <p style={{ lineHeight: 1.8, opacity: 0.8, marginBottom: '1.25rem' }}>
-              Therapy — whether in-person CBT, ACT, or psychodynamic work — offers genuine
-              relational depth, clinical expertise, and the capacity to address the underlying
-              causes of chronic stress rather than just managing symptoms. For anyone with complex
-              stress that has roots in trauma, attachment patterns, or clinical conditions, therapy
-              is irreplaceable. MEOK is not a substitute. What MEOK provides is continuity between
-              sessions: the daily support, pattern tracking, and regulation practice that keeps the
-              gains from therapy alive across the week.
-            </p>
-            <p style={{ lineHeight: 1.8, opacity: 0.8, marginBottom: '1.25rem' }}>
-              Generic AI chatbots — including major commercial AI assistants — offer conversational
-              fluency and large knowledge bases. But they lack three things that matter enormously
-              for chronic stress support: persistent memory of your individual history, care
-              alignment toward your wellbeing, and adaptive mode calibration based on your state.
-              A generic AI will answer your question about stress management techniques. MEOK will
-              notice that you have been asking about stress management techniques every day for three
-              weeks, reflect the pattern back to you, adjust its approach accordingly, and hold what
-              it knows about your specific triggers and recovery patterns.
-            </p>
-
-            <div style={{ overflowX: 'auto', marginTop: '1.5rem' }}>
-              <table
-                style={{
-                  width: '100%',
-                  borderCollapse: 'collapse',
-                  fontFamily: 'system-ui, sans-serif',
-                  fontSize: '0.9rem',
-                }}
-              >
-                <thead>
-                  <tr>
-                    {['Feature', 'Mindfulness Apps', 'Therapy', 'Generic AI', 'MEOK'].map(
-                      (header) => (
-                        <th
-                          key={header}
-                          style={{
-                            padding: '0.75rem 1rem',
-                            textAlign: 'left',
-                            borderBottom: '1px solid rgba(201,168,76,0.3)',
-                            color: header === 'MEOK' ? '#c9a84c' : '#f5f0e8',
-                            fontWeight: 600,
-                            whiteSpace: 'nowrap',
-                          }}
-                        >
-                          {header}
-                        </th>
-                      )
-                    )}
-                  </tr>
-                </thead>
-                <tbody>
-                  {[
-                    ['Persistent memory', '✗', '✓', '✗', '✓'],
-                    ['Personalised to you', '✗', '✓', '✗', '✓'],
-                    ['24/7 availability', '✓', '✗', '✓', '✓'],
-                    ['Care alignment', '—', '✓', '✗', '✓'],
-                    ['Pattern tracking', '✗', 'Partial', '✗', '✓'],
-                    ['Data sovereignty', '✗', 'Partial', '✗', '✓'],
-                    ['Adaptive mode', '✗', '✓', '✗', '✓'],
-                  ].map((row, i) => (
-                    <tr
-                      key={row[0]}
-                      style={{
-                        background:
-                          i % 2 === 0 ? 'rgba(255,255,255,0.02)' : 'transparent',
-                      }}
-                    >
-                      {row.map((cell, j) => (
-                        <td
-                          key={`${row[0]}-${j}`}
-                          style={{
-                            padding: '0.75rem 1rem',
-                            borderBottom: '1px solid rgba(201,168,76,0.1)',
-                            color:
-                              j === 4
-                                ? '#c9a84c'
-                                : cell === '✓'
-                                ? '#a8d8a8'
-                                : cell === '✗'
-                                ? 'rgba(245,240,232,0.4)'
-                                : '#f5f0e8',
-                            opacity: j === 0 ? 0.85 : 1,
-                          }}
-                        >
-                          {cell}
-                        </td>
-                      ))}
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </section>
-
-          {/* ── SECTION 11 ── */}
-          <section style={{ marginBottom: '3.5rem' }}>
-            <h2
-              style={{
-                fontSize: '1.75rem',
-                fontWeight: 700,
-                lineHeight: 1.3,
-                marginBottom: '1rem',
-                color: '#f5f0e8',
-              }}
-            >
-              Who is most likely to benefit from MEOK for chronic stress?
-            </h2>
-            <p
-              style={{
-                fontSize: '1.1rem',
-                lineHeight: 1.8,
-                opacity: 0.9,
-                marginBottom: '1.25rem',
-                borderLeft: '3px solid #c9a84c',
-                paddingLeft: '1.25rem',
-              }}
-            >
-              MEOK for chronic stress works best for people who are past the acute crisis phase but
-              stuck in a sustained high-stress state — those who are functioning, getting through
-              their days, but carrying a background load that is quietly eroding their health,
-              relationships, and capacity for joy. It is also highly effective for people who are
-              actively working to understand and reduce their stress, but who lack the consistent,
-              personalised support to make lasting changes.
-            </p>
-            <p style={{ lineHeight: 1.8, opacity: 0.8, marginBottom: '1.25rem' }}>
-              Working professionals in high-pressure roles — healthcare, law, finance, education,
-              and technology — consistently report the highest rates of chronic stress in UK
-              workplace surveys. These are people who are competent and often well-resourced, but
-              whose professional culture discourages acknowledging stress, and whose schedules make
-              consistent self-care difficult. MEOK fits into their existing routines because it does
-              not require a separate wellness practice: it is integrated into daily check-ins,
-              morning briefs, and end-of-day reflections.
-            </p>
-            <p style={{ lineHeight: 1.8, opacity: 0.8, marginBottom: '1.25rem' }}>
-              Carers — including parents of children with complex needs, adult children caring for
-              ageing parents, and professional caregivers — experience chronic stress at rates
-              significantly above the general population. The UK Carers Trust estimates that 72% of
-              carers report that caring negatively affects their mental health. For carers, the
-              particular challenge is that their own needs are systematically deprioritised.
-              MEOK&apos;s Maternal Covenant explicitly holds the user — the carer — at the centre,
-              not the person being cared for.
-            </p>
-            <p style={{ lineHeight: 1.8, opacity: 0.8, marginBottom: '1.25rem' }}>
-              People who are already in therapy and want to maximise the value of their sessions
-              will find that MEOK accelerates progress. The pattern tracking and daily check-ins
-              create a rich record that can be brought to sessions, making therapy time more
-              productive. Rather than spending the first twenty minutes reconstructing the week,
-              you arrive with your own curated insights from your Sovereign Memory.
-            </p>
-            <p style={{ lineHeight: 1.8, opacity: 0.8, marginBottom: '1.25rem' }}>
-              People who have tried and found mindfulness apps generic, generic AI unhelpful, or
-              traditional journalling inconsistent are often the ones who find MEOK most valuable.
-              The difference is personalisation and memory. When the tool knows you, everything
-              changes.
-            </p>
-          </section>
-
-          {/* ── SECTION 12 ── */}
-          <section style={{ marginBottom: '3.5rem' }}>
-            <h2
-              style={{
-                fontSize: '1.75rem',
-                fontWeight: 700,
-                lineHeight: 1.3,
-                marginBottom: '1rem',
-                color: '#f5f0e8',
-              }}
-            >
-              What does chronic stress recovery actually look like with MEOK?
-            </h2>
-            <p
-              style={{
-                fontSize: '1.1rem',
-                lineHeight: 1.8,
-                opacity: 0.9,
-                marginBottom: '1.25rem',
-                borderLeft: '3px solid #c9a84c',
-                paddingLeft: '1.25rem',
-              }}
-            >
-              Recovery from chronic stress is not a linear process and it does not happen quickly.
-              The nervous system that took months to dysregulate does not regulate in a week. What
-              MEOK supports is the gradual, sustained process of building a relationship with your
-              own patterns — noticing what drives your stress, what helps you recover, and
-              incrementally shifting the daily habits and responses that keep the stress load
-              elevated.
-            </p>
-            <p style={{ lineHeight: 1.8, opacity: 0.8, marginBottom: '1.25rem' }}>
-              In the first two to four weeks, most MEOK users report that the primary benefit is
-              visibility. For the first time, they can see their own patterns clearly. They may
-              notice that their stress is consistently worst on Sunday evenings and Monday mornings,
-              tied to the anticipation of the working week rather than the work itself. They may
-              notice that their sleep is significantly better on nights when they have had physical
-              activity, even mild activity. They may notice that a particular type of work meeting
-              reliably produces a spike in stress language that persists for the rest of the day.
-            </p>
-            <p style={{ lineHeight: 1.8, opacity: 0.8, marginBottom: '1.25rem' }}>
-              In the second month, many users begin making small, targeted changes based on their
-              patterns. Adjusting Sunday evening routines. Building physical movement into their
-              week more deliberately. Setting boundaries around a specific category of demands.
-              These are not grand interventions — they are micro-adjustments informed by actual
-              data about what the individual&apos;s specific nervous system responds to. Because they
-              are personalised rather than generic, they tend to stick.
-            </p>
-            <p style={{ lineHeight: 1.8, opacity: 0.8, marginBottom: '1.25rem' }}>
-              By three to six months, the compounding effect becomes visible in the Sovereign Memory
-              record. The baseline shifts. The worst days become less frequent. The recovery time
-              after high-stress events shortens. The relationship with stress itself changes — from
-              something that happens to you, to something you can see coming, understand, and respond
-              to with greater skill. This is what nervous system regulation looks like in practice:
-              not the absence of stress, but an improved capacity to move through it without being
-              consumed by it.
-            </p>
-          </section>
-
-          {/* ── SECTION 13 ── */}
-          <section style={{ marginBottom: '3.5rem' }}>
-            <h2
-              style={{
-                fontSize: '1.75rem',
-                fontWeight: 700,
-                lineHeight: 1.3,
-                marginBottom: '1rem',
-                color: '#f5f0e8',
-              }}
-            >
-              How does MEOK handle privacy and data security for sensitive stress disclosures?
-            </h2>
-            <p
-              style={{
-                fontSize: '1.1rem',
-                lineHeight: 1.8,
-                opacity: 0.9,
-                marginBottom: '1.25rem',
-                borderLeft: '3px solid #c9a84c',
-                paddingLeft: '1.25rem',
-              }}
-            >
-              Privacy and data security are not afterthoughts in MEOK&apos;s architecture — they
-              are foundational. The Sovereign Memory layer is encrypted end-to-end, stored in
-              infrastructure you control, and never accessed by MEOK for commercial purposes. Your
-              stress disclosures — including your most vulnerable, most raw, and most private
-              moments — are held in the same confidence as information shared with a doctor or
-              therapist.
-            </p>
-            <p style={{ lineHeight: 1.8, opacity: 0.8, marginBottom: '1.25rem' }}>
-              The technical architecture reflects this. MEOK does not store your conversations on
-              shared cloud infrastructure where they might be co-mingled with other users&apos; data.
-              Your Sovereign Memory is a private, isolated data store. Encryption is applied at rest
-              and in transit. Access is limited to your authenticated session, and you can export,
-              review, or permanently delete any or all of your memory data at any time.
-            </p>
-            <p style={{ lineHeight: 1.8, opacity: 0.8, marginBottom: '1.25rem' }}>
-              MEOK does not use your data to train its AI models — not even in aggregated or
-              anonymised forms. The Maternal Covenant explicitly prohibits this. When you share that
-              you have been struggling with anxiety about your finances for three months, that
-              information is used to support you and only you. It does not feed a training pipeline
-              that improves MEOK&apos;s performance for other users. This is a deliberate
-              architectural choice, not a policy aspiration. The systems that would enable training
-              on user data are not built.
-            </p>
-            <p style={{ lineHeight: 1.8, opacity: 0.8, marginBottom: '1.25rem' }}>
-              GDPR compliance is built in as a baseline, not a target. For UK users, MEOK is designed
-              to meet the ICO&apos;s standards for sensitive personal data processing, including the
-              special category protections that apply to health and mental health data. You have full
-              subject access rights, the right to rectification, the right to erasure, and the right
-              to data portability — all accessible directly within the MEOK interface.
-            </p>
-          </section>
-
-          {/* ── FAQ SECTION ── */}
-          <section style={{ marginBottom: '3.5rem' }}>
-            <h2
-              style={{
-                fontSize: '1.75rem',
-                fontWeight: 700,
-                lineHeight: 1.3,
-                marginBottom: '2rem',
-                color: '#f5f0e8',
-              }}
-            >
-              Frequently asked questions
-            </h2>
-
+        {/* ── FAQ Section ───────────────────────────────────────────────────── */}
+        <section style={{ marginBottom: '3.5rem' }}>
+          <h2
+            style={{
+              fontWeight: 800,
+              fontSize: 'clamp(1.3rem, 2.5vw, 1.7rem)',
+              color: '#fff',
+              lineHeight: 1.2,
+              marginBottom: '1.5rem',
+              letterSpacing: '-0.01em',
+            }}
+          >
+            Frequently Asked Questions
+          </h2>
+          <div style={{ display: 'grid', gap: '1rem' }}>
             {[
               {
-                q: 'Is MEOK a mental health app or a medical device?',
-                a: 'MEOK is a sovereign AI companion, not a medical device and not a clinical mental health application. It does not diagnose, treat, or prescribe. It provides companionship, pattern tracking, and personalised support for wellbeing. If you are experiencing severe mental health symptoms, clinical depression, or complex trauma, MEOK strongly encourages you to seek qualified clinical support alongside any use of the companion.',
+                q: 'What is chronic stress?',
+                a: "Chronic stress is a prolonged state of physiological and psychological activation caused by ongoing pressures that do not resolve — financial strain, caregiving, job insecurity, relationship tension, or health uncertainty. Unlike acute stress, which subsides once a threat passes, chronic stress keeps the body's stress response running at a sustained low level for weeks, months, or years. Over time, the person adapts to this state and stops perceiving it as stress — it simply becomes their baseline.",
               },
               {
-                q: 'How long does it take for MEOK to understand my stress patterns?',
-                a: 'MEOK begins building your stress pattern picture from your first check-in, but the most meaningful pattern insights typically emerge after two to four weeks of consistent daily use. The more data your Sovereign Memory holds, the more accurate and personalised the pattern recognition becomes. Most users report that the insights start feeling genuinely revelatory around the four to six week mark.',
+                q: 'How is MEOK different from a meditation app for stress?',
+                a: "Meditation apps offer in-the-moment techniques. They are valuable, but they operate session by session with no memory of what you described last week. MEOK operates across time: it holds your story in Sovereign Memory, recognises patterns across weeks, and surfaces what you may have stopped noticing. Where a meditation app helps you manage a stress moment, MEOK helps you understand the chronic pattern beneath the moments — which is where chronic stress actually lives.",
               },
               {
-                q: 'Can I use MEOK alongside therapy for chronic stress?',
-                a: 'Absolutely — and we actively encourage it. MEOK is designed to complement clinical support, not compete with it. Many users share their Sovereign Memory insights with their therapist to make sessions more productive. The daily check-ins and pattern tracking create a record that can significantly enrich the therapeutic conversation by providing longitudinal data that neither the user nor the therapist could otherwise see.',
+                q: "Can MEOK detect when I'm stressed even if I don't mention it?",
+                a: "Yes, within the context of your conversations. MEOK's pattern recognition operates across your accumulated interactions — not just explicit statements, but shifts in how you describe sleep, energy, relationships, and work over time. Recurring themes, changes in tone, and the texture of your language all carry information. MEOK will surface what it notices and invite examination rather than waiting for a declaration. This matters most given the tendency to minimise chronic stress, which MEOK is designed not to reinforce.",
               },
               {
-                q: 'What if I am in crisis and MEOK detects a high stress score?',
-                a: "MEOK is not an emergency service. If you are in immediate crisis, experiencing thoughts of self-harm, or require urgent support, MEOK will always direct you to appropriate emergency resources — including the Samaritans (116 123 in the UK), Crisis Text Line, and your nearest emergency services. MEOK's Guardian archetype flags escalating distress indicators and proactively surfaces crisis resources at appropriate moments.",
-              },
-              {
-                q: 'How is MEOK different from journalling for stress management?',
-                a: 'Journalling is a valuable practice, but it has limitations for chronic stress. Most people journal inconsistently, particularly when stress is highest and consistency matters most. Journal entries cannot analyse themselves or surface patterns across weeks of entries. And there is no adaptive, responsive companion on the other side. MEOK provides the reflective practice of journalling combined with AI-driven pattern analysis and a personalised companion that responds to what you write.',
-              },
-              {
-                q: 'Does MEOK work for stress caused by specific conditions like chronic illness or caregiving?',
-                a: "Yes. MEOK is used by people managing stress from chronic illness, caregiving demands, workplace pressure, financial stress, and relationship difficulties. The personalised pattern tracking means that MEOK adapts to your specific stress landscape regardless of its cause. The Healer archetype and Sovereign Memory work the same way whether your stress is rooted in a health condition, a demanding job, or the cumulative weight of caring for someone else.",
+                q: 'When should I see a doctor about stress?',
+                a: 'See your GP if stress is interfering with daily function — disrupted sleep, physical symptoms, withdrawal from normal activities, difficulty managing work or relationships, or persistent low mood. If symptoms have lasted more than a few weeks, you do not need to wait for a crisis. NHS Talking Therapies are available via self-referral at nhs.uk/talking-therapies. In a crisis, Samaritans can be reached on 116 123, free and available 24 hours a day.',
               },
             ].map((item) => (
               <div
                 key={item.q}
                 style={{
-                  marginBottom: '1.5rem',
-                  borderBottom: '1px solid rgba(201,168,76,0.1)',
-                  paddingBottom: '1.5rem',
+                  padding: '1.5rem',
+                  borderRadius: '1rem',
+                  background: STAT_BG,
+                  border: `1px solid ${BORDER_DIM}`,
                 }}
               >
-                <h3
+                <p
                   style={{
-                    fontSize: '1.1rem',
-                    fontWeight: 600,
-                    lineHeight: 1.4,
-                    marginBottom: '0.75rem',
-                    color: '#c9a84c',
+                    fontWeight: 700,
+                    fontSize: '0.9375rem',
+                    color: MUTED_BRIGHT,
+                    margin: '0 0 0.625rem',
                   }}
                 >
                   {item.q}
-                </h3>
-                <p
-                  style={{
-                    lineHeight: 1.8,
-                    opacity: 0.8,
-                    margin: 0,
-                  }}
-                >
+                </p>
+                <p style={{ color: MUTED, fontSize: '0.9rem', lineHeight: 1.7, margin: 0 }}>
                   {item.a}
                 </p>
               </div>
             ))}
-          </section>
+          </div>
+        </section>
 
-          {/* ── CTA ── */}
-          <div
+        {/* ── CTA ───────────────────────────────────────────────────────────── */}
+        <section
+          style={{
+            padding: '2.5rem',
+            borderRadius: '1.25rem',
+            background:
+              'linear-gradient(135deg, rgba(201,168,76,0.09) 0%, rgba(106,170,100,0.06) 100%)',
+            border: `1px solid ${GOLD_BORDER}`,
+            textAlign: 'center' as const,
+          }}
+        >
+          <p
             style={{
-              background: 'rgba(201,168,76,0.08)',
-              border: '1px solid rgba(201,168,76,0.25)',
-              borderRadius: '16px',
-              padding: '2.5rem',
-              textAlign: 'center',
-              marginTop: '4rem',
+              fontWeight: 900,
+              fontSize: 'clamp(1.3rem, 2.5vw, 1.65rem)',
+              color: '#fff',
+              lineHeight: 1.2,
+              margin: '0 0 0.75rem',
+              letterSpacing: '-0.01em',
             }}
           >
-            <h2
-              style={{
-                color: '#c9a84c',
-                marginBottom: '1rem',
-                fontSize: '1.5rem',
-                marginTop: 0,
-              }}
-            >
-              Start Recovering from Chronic Stress
-            </h2>
-            <p
-              style={{
-                marginBottom: '1.5rem',
-                opacity: 0.85,
-                maxWidth: '520px',
-                marginLeft: 'auto',
-                marginRight: 'auto',
-                lineHeight: 1.7,
-              }}
-            >
-              MEOK&apos;s Healer companion provides daily stress check-ins, pattern tracking, and
-              care-based support — without judgment, without data exploitation, and without the
-              engagement tactics that make most apps worse for your nervous system.
-            </p>
-            <Link
-              href="/birth"
-              style={{
-                background: '#c9a84c',
-                color: '#0d0c18',
-                padding: '0.85rem 2rem',
-                borderRadius: '8px',
-                fontWeight: 700,
-                textDecoration: 'none',
-                fontSize: '1rem',
-                display: 'inline-block',
-              }}
-            >
-              Begin Your Journey
-            </Link>
-            <p
-              style={{
-                marginTop: '1rem',
-                fontSize: '0.85rem',
-                fontFamily: 'system-ui, sans-serif',
-                opacity: 0.55,
-                marginBottom: 0,
-              }}
-            >
-              Your sovereign memory. Your patterns. Your recovery.
-            </p>
-          </div>
-
-          {/* ── RELATED ── */}
-          <div
+            Ready to stop adapting to stress you no longer notice?
+          </p>
+          <p
             style={{
-              marginTop: '3rem',
-              paddingTop: '2rem',
-              borderTop: '1px solid rgba(201,168,76,0.2)',
+              color: MUTED,
+              fontSize: '1rem',
+              lineHeight: 1.65,
+              maxWidth: '34rem',
+              margin: '0 auto 1.75rem',
             }}
           >
-            <h2
-              style={{
-                fontSize: '0.8rem',
-                textTransform: 'uppercase',
-                letterSpacing: '0.1em',
-                color: '#c9a84c',
-                marginBottom: '1rem',
-                fontFamily: 'system-ui, sans-serif',
-              }}
-            >
-              Related Reading
-            </h2>
-            <div
-              style={{
-                display: 'flex',
-                gap: '1rem',
-                flexWrap: 'wrap',
-              }}
-            >
-              <Link
-                href="/blog/ai-for-burnout-recovery"
-                style={{ color: '#c9a84c', textDecoration: 'none', fontSize: '0.9rem' }}
-              >
-                AI for Burnout Recovery →
-              </Link>
-              <Link
-                href="/blog/ai-for-anxiety"
-                style={{ color: '#c9a84c', textDecoration: 'none', fontSize: '0.9rem' }}
-              >
-                AI for Anxiety →
-              </Link>
-              <Link
-                href="/blog/ai-for-insomnia"
-                style={{ color: '#c9a84c', textDecoration: 'none', fontSize: '0.9rem' }}
-              >
-                AI for Insomnia →
-              </Link>
-              <Link
-                href="/blog/ai-for-workplace-stress"
-                style={{ color: '#c9a84c', textDecoration: 'none', fontSize: '0.9rem' }}
-              >
-                AI for Workplace Stress →
-              </Link>
-              <Link
-                href="/blog/maternal-covenant-explained"
-                style={{ color: '#c9a84c', textDecoration: 'none', fontSize: '0.9rem' }}
-              >
-                The Maternal Covenant Explained →
-              </Link>
-            </div>
-          </div>
-        </article>
+            MEOK accumulates your story across weeks and names the patterns you have stopped seeing.
+            Your Sovereign AI is waiting.
+          </p>
+          <Link
+            href="/birth"
+            style={{
+              display: 'inline-block',
+              padding: '0.875rem 2.25rem',
+              borderRadius: '9999px',
+              background: 'linear-gradient(135deg, #c9a84c, #a07828)',
+              color: '#0d0c18',
+              fontWeight: 800,
+              fontSize: '1rem',
+              textDecoration: 'none',
+              letterSpacing: '0.01em',
+            }}
+          >
+            Begin Your Birth Ceremony &#8594;
+          </Link>
+          <p
+            style={{
+              color: MUTED_FAINT,
+              fontSize: '0.75rem',
+              marginTop: '1rem',
+              marginBottom: 0,
+            }}
+          >
+            No app download required &middot; Private by design &middot; Your memory stays yours
+          </p>
+        </section>
+
+        {/* ── Back to blog ──────────────────────────────────────────────────── */}
+        <div
+          style={{
+            marginTop: '3rem',
+            borderTop: `1px solid ${BORDER_FAINT}`,
+            paddingTop: '2rem',
+          }}
+        >
+          <Link
+            href="/blog"
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '0.375rem',
+              fontSize: '0.875rem',
+              color: MUTED_FAINT,
+              textDecoration: 'none',
+            }}
+          >
+            &#8592; Back to Blog
+          </Link>
+        </div>
       </div>
-    </>
+    </div>
   )
 }
