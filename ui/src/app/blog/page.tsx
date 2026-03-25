@@ -4802,6 +4802,66 @@ const POSTS = [
     category: "technology",
     featured: true,
   },
+  {
+    slug: "ai-life-coach-vs-human-coach",
+    title: "AI Life Coach vs Human Life Coach: Which One Is Right for You?",
+    excerpt:
+      "Both AI and human life coaches can help you grow, set goals, and overcome blocks. But they do very different things in very different ways. Here's an honest comparison — including when MEOK is the right choice, and when it isn't.",
+    date: "April 23, 2026",
+    readTime: "9 min read",
+    tag: "Features",
+    tagColor: "#7b6fcf",
+    category: "features",
+    featured: true,
+  },
+  {
+    slug: "best-ai-companion-app-uk",
+    title: "Best AI Companion App in the UK 2026: A Ranked Comparison",
+    excerpt:
+      "From ChatGPT to Replika to MEOK — the AI companion market is crowded. This UK-focused guide compares the top apps on memory, safety, price, and data sovereignty. Updated March 2026.",
+    date: "April 23, 2026",
+    readTime: "10 min read",
+    tag: "Comparisons",
+    tagColor: "#c9a84c",
+    category: "comparisons",
+    featured: true,
+  },
+  {
+    slug: "ai-for-interview-prep",
+    title: "AI for Interview Prep: How to Use a Companion to Ace Your Next Interview",
+    excerpt:
+      "Job interviews are stressful, high-stakes, and deeply personal. MEOK helps you prepare with mock interviews, pattern recognition from your past attempts, and the kind of honest feedback a friend might not give you.",
+    date: "April 24, 2026",
+    readTime: "7 min read",
+    tag: "Productivity",
+    tagColor: "#c9a84c",
+    category: "productivity",
+    featured: false,
+  },
+  {
+    slug: "meok-for-carers",
+    title: "MEOK for Carers: When You're Too Busy Looking After Others to Look After Yourself",
+    excerpt:
+      "Unpaid carers are the invisible backbone of the UK's care system — and among the most emotionally depleted people in the country. MEOK is the companion that shows up for you, even when everyone else needs you first.",
+    date: "April 24, 2026",
+    readTime: "8 min read",
+    tag: "Mental Health",
+    tagColor: "#6aaa64",
+    category: "mental-health",
+    featured: false,
+  },
+  {
+    slug: "what-is-sovereign-memory-explained",
+    title: "What Is Sovereign Memory? MEOK's Four-Layer AI Memory Architecture Explained",
+    excerpt:
+      "Sovereign Memory is the architecture that makes MEOK remember you — across sessions, across devices, across AI model switches. Here's exactly how the four layers work and why this changes everything about AI companionship.",
+    date: "April 25, 2026",
+    readTime: "8 min read",
+    tag: "Technology",
+    tagColor: "#7b6fcf",
+    category: "technology",
+    featured: true,
+  },
 ];
 
 // ── Category filter tabs ──────────────────────────────────────────────────────
