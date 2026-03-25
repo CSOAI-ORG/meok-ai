@@ -3902,6 +3902,66 @@ const POSTS = [
     category: "wellbeing",
     featured: false,
   },
+  {
+    slug: "ai-for-adhd-adults",
+    title: "AI for ADHD Adults: How MEOK Helps When Your Brain Works Differently",
+    excerpt:
+      "1.5 million diagnosed ADHD adults in the UK face executive dysfunction, time blindness, and rejection sensitive dysphoria daily. MEOK\u2019s Pioneer archetype acts as a virtual body double, remembers your preferred working style, and never shames — only supports.",
+    date: "March 26, 2026",
+    readTime: "9 min read",
+    tag: "Neurodivergent",
+    tagColor: "#6aaa64",
+    category: "neurodivergent",
+    featured: false,
+  },
+  {
+    slug: "best-ai-companion-2026",
+    title: "Best AI Companion 2026: The Complete Comparison Guide",
+    excerpt:
+      "MEOK vs Replika vs Character.AI vs Pi AI vs ChatGPT vs Claude — compared across memory, data sovereignty, safety, emotional depth, cost, and companion depth. The definitive buying guide for anyone looking for an AI companion in 2026.",
+    date: "March 26, 2026",
+    readTime: "10 min read",
+    tag: "Comparison",
+    tagColor: "#c9a84c",
+    category: "comparison",
+    featured: true,
+  },
+  {
+    slug: "ai-for-teen-mental-health",
+    title: "AI for Teen Mental Health: What Parents Need to Know About MEOK (2026)",
+    excerpt:
+      "1 in 6 UK children has a mental health disorder. NHS CAMHS waiting lists average 18 months. MEOK\u2019s Guardian mode for under-18s includes school-safe filters, automatic crisis routing, and parental oversight — the safest consumer AI companion for families.",
+    date: "March 26, 2026",
+    readTime: "8 min read",
+    tag: "Family",
+    tagColor: "#6aaa64",
+    category: "family",
+    featured: false,
+  },
+  {
+    slug: "ai-memory-portability",
+    title: "AI Memory Portability: Why Being Locked into One AI Is Costing You More Than You Think",
+    excerpt:
+      "Switch AI tools and lose everything. MEOK pioneered AI memory portability: sovereign memory that persists across Claude, GPT-4o, DeepSeek, and any future model. Your story belongs to you, not to the AI company. Export it. Take it anywhere.",
+    date: "March 26, 2026",
+    readTime: "7 min read",
+    tag: "Explainer",
+    tagColor: "#c9a84c",
+    category: "explainer",
+    featured: false,
+  },
+  {
+    slug: "ai-for-single-parents",
+    title: "AI for Single Parents: How MEOK Supports the Person Who Does Everything Alone",
+    excerpt:
+      "2.9 million single parents in the UK carry every decision, every worry, every load alone. MEOK provides a private adult space to express frustration and fear without worrying about the children — with practical support, Guardian scam protection, and Family tier memory.",
+    date: "March 26, 2026",
+    readTime: "8 min read",
+    tag: "Family",
+    tagColor: "#6aaa64",
+    category: "family",
+    featured: false,
+  },
 ];
 
 // ── Category filter tabs ──────────────────────────────────────────────────────
