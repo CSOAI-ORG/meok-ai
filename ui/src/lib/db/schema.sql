@@ -21,6 +21,11 @@ CREATE TABLE IF NOT EXISTS users (
   stripe_subscription_id  TEXT,
   messages_today          INTEGER NOT NULL DEFAULT 0,
   messages_today_reset    TEXT NOT NULL DEFAULT TO_CHAR(NOW() AT TIME ZONE 'UTC', 'YYYY-MM-DD'),
+  messages_total          INTEGER NOT NULL DEFAULT 0,
+  streak_days             INTEGER NOT NULL DEFAULT 0,
+  last_active_date        TEXT,
+  custom_characters       JSONB DEFAULT '[]'::jsonb,
+  user_profile            JSONB DEFAULT '{}'::jsonb,
   created_at              TIMESTAMPTZ NOT NULL DEFAULT NOW(),
   updated_at              TIMESTAMPTZ NOT NULL DEFAULT NOW(),
   deleted_at              TIMESTAMPTZ

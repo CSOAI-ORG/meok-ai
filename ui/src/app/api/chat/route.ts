@@ -15,7 +15,7 @@ import { streamText } from 'ai';
 import { auth } from '@clerk/nextjs/server';
 import { route, type Tier, getEffortLevel, getThinkingBudget } from '@/lib/llm-router';
 import { compressContext } from '@/lib/context-compressor';
-import { getUserById, incrementMessageCount, TIER_LIMITS } from '@/lib/db/user';
+import { getUserById, incrementMessageCount, getUserProfile, updateUserProfile, TIER_LIMITS } from '@/lib/db/user';
 import { getCharacter } from '@/lib/characters';
 import { analyzeEmotion, formatEmotionContext } from '@/lib/emotion';
 import {
@@ -77,6 +77,10 @@ function buildSystemPrompt(companionId: string, contexts: PromptContextBlocks = 
   if (contexts.memory) parts.push(`\n${contexts.memory}`);
   if (contexts.procedural) parts.push(`\n${contexts.procedural}`);
   if (contexts.style) parts.push(`\n${contexts.style}`);
+
+  // Dynamism parameter — controlled unpredictability (Kindroid pattern)
+  const dynamism = character?.dynamism ?? 0.95;
+  parts.push(`\n[DYNAMISM: ${dynamism.toFixed(2)} — vary your expression and style slightly each response. Be predictable in care and values, unpredictable in how you express them. Surprise the user occasionally with unexpected angles, metaphors, or observations.]`);
 
   return parts.join('');
 }
@@ -180,8 +184,9 @@ export async function POST(req: NextRequest): Promise<Response> {
   //    in that case we default to 'explorer' so the product keeps working
   //    in development without a live DB.
   let userTier: Tier = 'explorer';
+  let user: Awaited<ReturnType<typeof getUserById>> = null;
   try {
-    const user = await getUserById(userId);
+    user = await getUserById(userId);
     if (user) {
       userTier = user.tier as Tier;
 
@@ -322,11 +327,19 @@ export async function POST(req: NextRequest): Promise<Response> {
       } : undefined,
     });
 
-    // Fire-and-forget: store memory episode for this interaction
+    // Fire-and-forget: store memory episode + periodically persist OCEAN profile
     const importance = extractImportance(trimmed);
     void storeMemory(userId, trimmed, importance, [taskType]).catch(err =>
       console.error('[api/chat] Memory storage failed (non-fatal):', err),
     );
+
+    // Persist OCEAN profile every 10 messages
+    if (sessionProfile && user && (user.messages_total ?? 0) % 10 === 0) {
+      void updateUserProfile(userId, sessionProfile as unknown as Record<string, unknown>).catch(err =>
+        console.error('[api/chat] Profile persistence failed (non-fatal):', err),
+      );
+    }
+
     void pushShortTerm(userId, cid, {
       id: crypto.randomUUID(),
       content: trimmed,

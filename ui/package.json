@@ -16,6 +16,8 @@
     "@ai-sdk/react": "^3.0.140",
     "@anthropic-ai/sdk": "^0.80.0",
     "@clerk/nextjs": "^7.0.5",
+    "@dicebear/collection": "^9.4.2",
+    "@dicebear/core": "^9.4.2",
     "@neondatabase/serverless": "^1.0.2",
     "@sentry/nextjs": "^10.45.0",
     "@stripe/react-stripe-js": "^5.6.1",

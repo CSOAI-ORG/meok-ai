@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { stripe } from "@/lib/stripe";
 import Stripe from "stripe";
-import { updateUserTier, type Tier } from "@/lib/db/user";
+import { updateUserTier, downgradeTier, setGracePeriod, type Tier } from "@/lib/db/user";
 
 // Disable body parsing — Stripe needs raw body for signature verification
 export const dynamic = "force-dynamic";
@@ -53,17 +53,40 @@ export async function POST(req: NextRequest) {
 
     case "invoice.paid": {
       const invoice = event.data.object as Stripe.Invoice;
-      const sub = (invoice as Stripe.Invoice & { subscription?: string }).subscription as string;
-      console.log(`[Stripe] Invoice paid — subscription ${sub}`);
-      // TODO: Extend access, log payment
+      const rawSub = (invoice as unknown as Record<string, unknown>).subscription;
+      const subId = typeof rawSub === "string" ? rawSub : undefined;
+
+      if (subId) {
+        // Fetch the subscription to get userId from metadata
+        const subscription = await stripe.subscriptions.retrieve(subId);
+        const userId = subscription.metadata?.userId;
+        if (userId) {
+          // Extend access — tier stays the same, update timestamp
+          const tier = (subscription.metadata?.tier ?? "sovereign") as Tier;
+          await updateUserTier(userId, tier, {
+            customerId: typeof invoice.customer === "string" ? invoice.customer : undefined,
+            subscriptionId: subId,
+          });
+          console.log(`[Stripe] Invoice paid — extended ${tier} access for user ${userId}`);
+        }
+      }
       break;
     }
 
     case "invoice.payment_failed": {
       const invoice = event.data.object as Stripe.Invoice;
-      const customerId = invoice.customer as string;
-      console.warn(`[Stripe] Payment failed for customer ${customerId}`);
-      // TODO: Email user, restrict access after grace period
+      const rawSub2 = (invoice as unknown as Record<string, unknown>).subscription;
+      const subId = typeof rawSub2 === "string" ? rawSub2 : undefined;
+
+      if (subId) {
+        const subscription = await stripe.subscriptions.retrieve(subId);
+        const userId = subscription.metadata?.userId;
+        if (userId) {
+          // Set 7-day grace period before downgrade
+          await setGracePeriod(userId, 7);
+          console.warn(`[Stripe] Payment failed for user ${userId} — 7-day grace period set`);
+        }
+      }
       break;
     }
 
@@ -71,7 +94,7 @@ export async function POST(req: NextRequest) {
       const sub = event.data.object as Stripe.Subscription;
       const userId = sub.metadata?.userId;
       if (userId) {
-        await updateUserTier(userId, "explorer");
+        await downgradeTier(userId);
         console.log(`[Stripe] Subscription cancelled — downgraded user ${userId} to explorer`);
       }
       break;

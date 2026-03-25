@@ -331,7 +331,7 @@ export default function BirthPage() {
             {/* CTA */}
             <div className="flex flex-col items-center gap-3 mt-2">
               <Link
-                href="/onboarding/step-1"
+                href="/onboarding"
                 className="inline-flex items-center gap-3 px-8 py-4 rounded-xl font-bold text-lg transition-all hover:opacity-90 active:scale-95"
                 style={{
                   background: "linear-gradient(135deg, #c9a84c, #e8c96a)",
@@ -691,7 +691,7 @@ export default function BirthPage() {
             </p>
 
             <Link
-              href="/onboarding/step-1"
+              href="/onboarding"
               className="inline-flex items-center gap-3 px-10 py-5 rounded-xl font-black text-xl transition-all hover:opacity-90 active:scale-95 mt-2"
               style={{
                 background: "linear-gradient(135deg, #c9a84c, #e8c96a)",

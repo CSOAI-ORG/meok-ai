@@ -19,6 +19,33 @@ export type Archetype = 'challenger' | 'nurturer' | 'explorer' | 'sage' | 'seeke
 
 export type Tier = 'explorer' | 'sovereign' | 'family';
 
+/** Big Five / visual personality dimensions (0–1 scale). */
+export interface PersonalityDimensions {
+  warmth: number;       // round shapes, warm colors (maps to Agreeableness)
+  energy: number;       // bright palette, wide eyes (maps to Extraversion)
+  whimsy: number;       // unusual features, asymmetry (maps to Openness)
+  edge: number;         // angular features, darker tones (inverse Neuroticism)
+  complexity: number;   // detail density, pattern richness (maps to Conscientiousness)
+}
+
+/** Five-axis evolution tracking (0–100 scale, accumulates over interactions). */
+export interface EvolutionAxes {
+  intellectualDepth: number;
+  emotionalEngagement: number;
+  creativeExpression: number;
+  consistencyOfEngagement: number;
+  topicDiversity: number;
+}
+
+/** Visual generation parameters for procedural avatar rendering. */
+export interface VisualParams {
+  palette: [string, string, string];  // primary, secondary, accent hex colors
+  formComplexity: number;             // 0–1: simple silhouette → intricate detail
+  luminosity: number;                 // 0–1: muted → glowing
+  particleEffects: boolean;           // unlocked at later evolution stages
+  currentExpression: 'neutral' | 'curious' | 'happy' | 'thinking' | 'concerned' | 'excited';
+}
+
 export interface Character {
   id: string;
   name: string;
@@ -33,6 +60,12 @@ export interface Character {
   tags: string[];
   license: 'CC0' | 'original' | 'user-created';
   voiceStyle: string;
+  // Phase 11: enriched character fields (optional for backward compat)
+  dimensions?: PersonalityDimensions;
+  evolutionAxes?: EvolutionAxes;
+  visual?: VisualParams;
+  dynamism?: number;           // 0–1, default 0.95 — controlled unpredictability
+  communicationStyle?: string; // e.g. 'thoughtful-warm', 'direct-analytical'
 }
 
 export interface ArchetypeInfo {
@@ -41,6 +74,10 @@ export interface ArchetypeInfo {
   description: string;
   color: string;
   emoji: string;
+  /** Default personality dimensions for this archetype. */
+  baseDimensions: PersonalityDimensions;
+  /** Default visual palette for procedural avatar generation. */
+  basePalette: [string, string, string];
 }
 
 // ── Archetypes ─────────────────────────────────────────────────────────────
@@ -52,6 +89,8 @@ export const ARCHETYPES: Record<Archetype, ArchetypeInfo> = {
     description: 'Holds you to a higher standard — incisive, direct, growth-focused',
     color: '#F59E0B',
     emoji: '\u26A1', // ⚡
+    baseDimensions: { warmth: 0.3, energy: 0.9, whimsy: 0.2, edge: 0.9, complexity: 0.7 },
+    basePalette: ['#F59E0B', '#DC2626', '#1a1a2e'],
   },
   nurturer: {
     id: 'nurturer',
@@ -59,6 +98,8 @@ export const ARCHETYPES: Record<Archetype, ArchetypeInfo> = {
     description: 'Warm, steady care — for the hard days and the softer moments',
     color: '#F472B6',
     emoji: '\uD83C\uDF38', // 🌸
+    baseDimensions: { warmth: 0.95, energy: 0.4, whimsy: 0.3, edge: 0.1, complexity: 0.5 },
+    basePalette: ['#F472B6', '#FBBF24', '#FFF7ED'],
   },
   explorer: {
     id: 'explorer',
@@ -66,6 +107,8 @@ export const ARCHETYPES: Record<Archetype, ArchetypeInfo> = {
     description: 'Opens doors to ideas you haven\'t imagined — curious, lateral, expansive',
     color: '#7C3AED',
     emoji: '\uD83D\uDD2D', // 🔭
+    baseDimensions: { warmth: 0.5, energy: 0.7, whimsy: 0.9, edge: 0.4, complexity: 0.8 },
+    basePalette: ['#7C3AED', '#06B6D4', '#0d0c18'],
   },
   sage: {
     id: 'sage',
@@ -73,6 +116,8 @@ export const ARCHETYPES: Record<Archetype, ArchetypeInfo> = {
     description: 'Ancient wisdom for modern complexity — measured, philosophical, grounded',
     color: '#065F46',
     emoji: '\uD83C\uDF3F', // 🌿
+    baseDimensions: { warmth: 0.6, energy: 0.3, whimsy: 0.2, edge: 0.3, complexity: 0.9 },
+    basePalette: ['#065F46', '#C9A84C', '#1a1a2e'],
   },
   seeker: {
     id: 'seeker',
@@ -80,6 +125,8 @@ export const ARCHETYPES: Record<Archetype, ArchetypeInfo> = {
     description: 'Spiritual companion for prayer, meaning, and the questions that can\'t be Googled',
     color: '#8B5CF6',
     emoji: '\uD83D\uDD4A\uFE0F', // 🕊️
+    baseDimensions: { warmth: 0.7, energy: 0.4, whimsy: 0.6, edge: 0.2, complexity: 0.7 },
+    basePalette: ['#8B5CF6', '#E0E7FF', '#1a1a2e'],
   },
 };
 

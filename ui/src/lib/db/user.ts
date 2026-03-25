@@ -458,3 +458,103 @@ export async function saveCustomCharacter(userId: string, character: Record<stri
     throw err;
   }
 }
+
+// ── OCEAN Profile Persistence ────────────────────────────────────────────
+
+/**
+ * Retrieves the user's persisted OCEAN (Big Five) personality profile.
+ * Returns null if no profile has been computed yet.
+ */
+export async function getUserProfile(userId: string): Promise<Record<string, unknown> | null> {
+  console.log(`[db/user] getUserProfile — userId=${userId}`);
+
+  if (!sql) {
+    console.warn('[db/user] getUserProfile — no database connection');
+    return null;
+  }
+
+  try {
+    const rows = await sql`
+      SELECT user_profile
+      FROM users
+      WHERE id = ${userId} AND deleted_at IS NULL
+    `;
+    const raw = rows[0]?.user_profile;
+    if (!raw || (typeof raw === 'object' && Object.keys(raw as object).length === 0)) return null;
+    if (typeof raw === 'string') {
+      try { return JSON.parse(raw); } catch { return null; }
+    }
+    return raw as Record<string, unknown>;
+  } catch (err: unknown) {
+    const msg = err instanceof Error ? err.message : String(err);
+    if (msg.includes('user_profile') || msg.includes('column')) {
+      console.warn('[db/user] getUserProfile — column may not exist yet, returning null');
+      return null;
+    }
+    throw err;
+  }
+}
+
+/**
+ * Persists the user's OCEAN personality profile to the database.
+ * Merges the new profile into the existing JSONB column so partial
+ * updates are supported.
+ */
+export async function updateUserProfile(userId: string, profile: Record<string, unknown>): Promise<void> {
+  console.log(`[db/user] updateUserProfile — userId=${userId}`);
+
+  if (!sql) {
+    console.warn('[db/user] updateUserProfile — no database connection');
+    return;
+  }
+
+  try {
+    await sql`
+      UPDATE users
+      SET user_profile = COALESCE(user_profile, '{}'::jsonb) || ${JSON.stringify(profile)}::jsonb,
+          updated_at = NOW()
+      WHERE id = ${userId} AND deleted_at IS NULL
+    `;
+  } catch (err: unknown) {
+    const msg = err instanceof Error ? err.message : String(err);
+    if (msg.includes('user_profile') || msg.includes('column')) {
+      console.warn('[db/user] updateUserProfile — column may not exist yet. Run migrate-v2.sql.');
+    } else {
+      throw err;
+    }
+  }
+}
+
+/**
+ * Downgrades a user to explorer tier. Called when a Stripe subscription
+ * is cancelled or a payment permanently fails after grace period.
+ */
+export async function downgradeTier(userId: string): Promise<void> {
+  console.log(`[db/user] downgradeTier — userId=${userId}`);
+  await updateUserTier(userId, 'explorer');
+}
+
+/**
+ * Sets a grace period flag on the user after a failed payment.
+ * The user retains their current tier until `grace_expires`, after which
+ * they should be downgraded to explorer.
+ *
+ * Note: grace period is stored as metadata in guardian_settings JSONB
+ * to avoid another column. A scheduled job should check and enforce.
+ */
+export async function setGracePeriod(userId: string, days: number = 7): Promise<void> {
+  console.log(`[db/user] setGracePeriod — userId=${userId} days=${days}`);
+
+  if (!sql) {
+    console.warn('[db/user] setGracePeriod — no database connection');
+    return;
+  }
+
+  const graceExpires = new Date(Date.now() + days * 86400000).toISOString();
+  await sql`
+    UPDATE users
+    SET guardian_settings = COALESCE(guardian_settings, '{}'::jsonb) || ${JSON.stringify({ payment_grace_expires: graceExpires })}::jsonb,
+        updated_at = NOW()
+    WHERE id = ${userId} AND deleted_at IS NULL
+  `;
+}
