@@ -1,139 +1,149 @@
-import type { Metadata } from 'next'
-import Link from 'next/link'
+import type { Metadata } from "next"
+import Link from "next/link"
 
-// ── Metadata ───────────────────────────────────────────────────────────────────
+// ── Metadata ────────────────────────────────────────────────────────────────
 
 export const metadata: Metadata = {
-  title: 'AI for Phobias: How an AI Companion Supports the Graduated Exposure Process | MEOK AI LABS',
+  title:
+    "AI for Phobias: Can MEOK Help You Manage Fear and Avoidance? | MEOK AI LABS",
   description:
-    'Phobias are conditioned fear responses \u2014 not character flaws. Discover how AI supports the graduated exposure process, helps you build a fear ladder, and tracks your progress across weeks. Honest guidance from MEOK AI LABS.',
-  alternates: { canonical: 'https://meok.ai/blog/ai-for-phobias' },
+    "Specific phobias affect 12.5% of UK adults. MEOK AI isn\u2019t a replacement for CBT or exposure therapy \u2014 but it can help you understand your phobia, prepare for exposures, and stay grounded between sessions. Honest guidance from MEOK AI LABS.",
+  alternates: { canonical: "https://meok.ai/blog/ai-for-phobias" },
   openGraph: {
-    title: 'AI for Phobias: How an AI Companion Supports the Graduated Exposure Process',
+    title:
+      "AI for Phobias: Can MEOK Help You Manage Fear and Avoidance?",
     description:
-      'Phobias are conditioned fear responses \u2014 not character flaws. Discover how AI supports graduated exposure, builds fear ladders, and tracks your progress across weeks.',
-    type: 'article',
-    publishedTime: '2026-03-24',
-    authors: ['Nicholas Templeman'],
-    url: 'https://meok.ai/blog/ai-for-phobias',
-    siteName: 'MEOK.AI',
+      "Specific phobias affect 12.5% of UK adults. Discover how AI-assisted journalling and reflection can complement professional therapy for phobia management.",
+    type: "article",
+    publishedTime: "2026-03-25",
+    authors: ["Nicholas Templeman"],
+    url: "https://meok.ai/blog/ai-for-phobias",
+    siteName: "MEOK.AI",
     images: [
       {
-        url: 'https://meok.ai/api/og?title=AI+for+Phobias%3A+Graduated+Exposure+%26+Fear+Ladders&desc=How+AI+supports+the+exposure+process+without+replacing+a+therapist',
+        url: "https://meok.ai/api/og?title=AI+for+Phobias%3A+Can+MEOK+Help+You+Manage+Fear%3F&desc=12.5%25+of+UK+adults+have+a+specific+phobia.+How+AI+can+help.",
         width: 1200,
         height: 630,
-        alt: 'AI for Phobias: How an AI Companion Supports the Graduated Exposure Process | MEOK AI LABS',
+        alt: "AI for Phobias: Can MEOK Help You Manage Fear and Avoidance? | MEOK AI LABS",
       },
     ],
   },
   twitter: {
-    card: 'summary_large_image',
-    title: 'AI for Phobias: Graduated Exposure & Fear Ladders',
+    card: "summary_large_image",
+    title: "AI for Phobias: Can MEOK Help You Manage Fear?",
     description:
-      'Phobias are conditioned fear responses. Discover how AI supports graduated exposure, builds fear ladders, and tracks your progress across weeks. From MEOK AI LABS.',
+      "12.5% of UK adults have a specific phobia. AI isn\u2019t a replacement for therapy \u2014 but MEOK can help you prepare, reflect, and stay grounded. Honest guidance from MEOK AI LABS.",
     images: [
-      'https://meok.ai/api/og?title=AI+for+Phobias%3A+Graduated+Exposure+%26+Fear+Ladders&desc=How+AI+supports+the+exposure+process+without+replacing+a+therapist',
+      "https://meok.ai/api/og?title=AI+for+Phobias%3A+Can+MEOK+Help+You+Manage+Fear%3F&desc=12.5%25+of+UK+adults+have+a+specific+phobia.+How+AI+can+help.",
     ],
   },
 }
 
-// ── JSON-LD: Article ───────────────────────────────────────────────────────────
+// ── JSON-LD: Article ────────────────────────────────────────────────────────
 
 const articleJsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'Article',
+  "@context": "https://schema.org",
+  "@type": "Article",
   headline:
-    'AI for Phobias: How an AI Companion Supports the Graduated Exposure Process',
+    "AI for Phobias: Can MEOK Help You Manage Fear and Avoidance?",
   description:
-    'An honest guide to phobia mechanics, graduated exposure therapy, fear ladders, and how MEOK\u2019s persistent memory tracks your progress across weeks without replacing a clinical therapist.',
-  datePublished: '2026-03-24',
-  dateModified: '2026-03-24',
-  url: 'https://meok.ai/blog/ai-for-phobias',
+    "Specific phobias affect 12.5% of UK adults. This guide explains what MEOK can and cannot do for phobia management \u2014 from understanding the fear cycle to preparing for exposure exercises and processing anxiety between therapy sessions.",
+  datePublished: "2026-03-25",
+  dateModified: "2026-03-25",
+  url: "https://meok.ai/blog/ai-for-phobias",
   author: {
-    '@type': 'Person',
-    name: 'Nicholas Templeman',
-    jobTitle: 'Founder, MEOK AI LABS',
-    url: 'https://meok.ai/about',
+    "@type": "Person",
+    name: "Nicholas Templeman",
+    jobTitle: "Founder, MEOK AI LABS",
+    url: "https://meok.ai/about",
   },
   publisher: {
-    '@type': 'Organization',
-    name: 'MEOK AI LABS',
-    url: 'https://meok.ai',
+    "@type": "Organization",
+    name: "MEOK AI LABS",
+    url: "https://meok.ai",
   },
   mainEntityOfPage: {
-    '@type': 'WebPage',
-    '@id': 'https://meok.ai/blog/ai-for-phobias',
+    "@type": "WebPage",
+    "@id": "https://meok.ai/blog/ai-for-phobias",
   },
 }
 
-// ── JSON-LD: FAQPage ───────────────────────────────────────────────────────────
+// ── JSON-LD: FAQPage ────────────────────────────────────────────────────────
 
 const faqJsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
   mainEntity: [
     {
-      '@type': 'Question',
-      name: 'Can AI cure a phobia?',
+      "@type": "Question",
+      name: "Can MEOK AI help me overcome a phobia?",
       acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'No. AI cannot cure a phobia. Phobias are clinical anxiety disorders best treated by qualified therapists using evidence-based exposure therapy. An AI companion can support the process between sessions \u2014 tracking your fear hierarchy progress, coaching breathing before exposures, and holding your context across weeks \u2014 but it is a complement to professional care, never a replacement.',
+        "@type": "Answer",
+        text: "MEOK is not a clinical tool and cannot treat or cure a phobia. However, it can meaningfully support the process \u2014 helping you understand the fear cycle, prepare mentally for exposure exercises your therapist has assigned, journal your anxiety before and after sessions, and stay grounded during day-to-day avoidance urges. It is a complement to professional CBT or exposure therapy, never a replacement.",
       },
     },
     {
-      '@type': 'Question',
-      name: 'What is a fear ladder?',
+      "@type": "Question",
+      name: "What is the Healer archetype in MEOK and why is it suited to phobia support?",
       acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'A fear ladder (also called an exposure hierarchy) is a structured list of feared situations ranked from least to most anxiety-provoking, each assigned a distress score from 0\u2013100. You work through the rungs from the bottom up, building tolerance at each level before moving higher. The ladder is the core tool of graduated exposure therapy.',
+        "@type": "Answer",
+        text: "The Healer archetype in MEOK is designed for emotional processing, gentle accountability, and patient reflection. Rather than problem-solving or coaching with intensity, the Healer holds space, asks grounding questions, and tracks your emotional state across sessions using Sovereign Memory. This makes it well-suited to the slow, incremental emotional work that phobia management requires between therapy appointments.",
       },
     },
     {
-      '@type': 'Question',
-      name: 'What is exposure therapy for phobias?',
+      "@type": "Question",
+      name: "Can AI help with needle phobia before a medical appointment?",
       acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Exposure therapy is the gold-standard psychological treatment for phobias. It works by deliberately and repeatedly confronting feared stimuli \u2014 in imagination or in real life \u2014 in a controlled, graded way. Repeated exposure breaks the avoidance cycle, teaches the brain that danger signals are false alarms, and reduces the conditioned fear response over time.',
+        "@type": "Answer",
+        text: "Yes, within appropriate limits. MEOK can help you work through anticipatory anxiety before a needle appointment \u2014 practising slow breathing techniques, exploring the specific thoughts driving your fear, identifying grounding strategies, and processing the experience afterwards. It cannot replace the clinical supervision of a therapist delivering structured exposure therapy, but it can reduce the friction of everyday medical avoidance.",
       },
     },
     {
-      '@type': 'Question',
-      name: 'How does MEOK remember my phobia progress?',
+      "@type": "Question",
+      name: "How does MEOK\u2019s persistent memory help with phobia management?",
       acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'MEOK uses Sovereign Memory \u2014 a 4-layer encrypted memory store \u2014 to retain your fear hierarchy, exposure attempts, distress scores, and reflections across every session. When you return after a week, MEOK knows exactly which rung you reached, how you felt, and what your next step is. Nothing is lost between conversations.',
+        "@type": "Answer",
+        text: "MEOK uses Sovereign Memory \u2014 a 4-layer encrypted memory architecture \u2014 to retain your phobia history, the specific fears you have named, the exposures you have attempted, and how you felt before and after each one. When you return days or weeks later, MEOK already knows your context. It can notice patterns, celebrate genuine progress, and gently surface when avoidance has been increasing. This continuity is rare in any support tool.",
       },
     },
     {
-      '@type': 'Question',
-      name: 'Can AI help with driving anxiety?',
+      "@type": "Question",
+      name: "What phobias can AI support most effectively?",
       acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Yes, within limits. AI can help you build a driving anxiety fear ladder (from sitting in a parked car through to motorway driving), coach pre-drive breathing routines, debrief after practice sessions, and track distress scores over time. For severe vehophobia \u2014 especially after a road accident \u2014 professional support from a trauma-informed therapist is strongly recommended alongside any AI use.',
+        "@type": "Answer",
+        text: "AI support is most useful for phobias where the primary barrier is anticipatory anxiety, avoidance cognition, and lack of between-session support rather than the need for live clinical supervision. Common examples include social anxiety, flying phobia, health anxiety about medical procedures, needle phobia, and driving anxiety. For phobias involving acute physical danger responses \u2014 such as severe emetophobia or complex PTSD-linked fears \u2014 professional clinical care is essential.",
       },
     },
   ],
 }
 
-// ── Style constants ────────────────────────────────────────────────────────────
+// ── Style constants ─────────────────────────────────────────────────────────
 
-const GOLD = '#c9a84c'
-const TEXT = '#f5f0e8'
-const BG = '#0d0c18'
-const MUTED = 'rgba(245,240,232,0.6)'
-const MUTED_FAINT = 'rgba(245,240,232,0.38)'
-const MUTED_STRONG = 'rgba(245,240,232,0.75)'
-const BORDER = 'rgba(201,168,76,0.18)'
-const BORDER_FAINT = 'rgba(245,240,232,0.1)'
-const CARD_BG = 'rgba(255,255,255,0.03)'
-const CARD_BG_GOLD = 'rgba(201,168,76,0.06)'
-const AMBER_WARN = '#e8a838'
+const GOLD = "#c9a84c"
+const TEXT = "#f5f0e8"
+const BG = "#0d0c18"
+const MUTED = "rgba(245,240,232,0.6)"
+const MUTED_STRONG = "rgba(245,240,232,0.78)"
+const MUTED_FAINT = "rgba(245,240,232,0.38)"
+const CARD_BG = "rgba(255,255,255,0.03)"
+const CARD_BG_GOLD = "rgba(201,168,76,0.06)"
+const BORDER_FAINT = "rgba(245,240,232,0.1)"
+const BORDER_GOLD = "rgba(201,168,76,0.28)"
+const GREEN = "#6aaa64"
+const AMBER = "#e8a838"
 
-// ── Page ───────────────────────────────────────────────────────────────────────
+// ── Page ────────────────────────────────────────────────────────────────────
 
 export default function AIForPhobiasPage() {
   return (
-    <div style={{ minHeight: '100vh', background: BG, color: TEXT }}>
+    <div
+      style={{
+        minHeight: "100vh",
+        background: BG,
+        color: TEXT,
+        fontFamily: "system-ui, -apple-system, sans-serif",
+      }}
+    >
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
@@ -143,37 +153,44 @@ export default function AIForPhobiasPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
 
-      {/* ── HERO ──────────────────────────────────────────────────────────────── */}
+      {/* ── HERO ──────────────────────────────────────────────────────────── */}
       <section
         style={{
-          paddingTop: '8rem',
-          paddingBottom: '3.5rem',
-          paddingLeft: '1.5rem',
-          paddingRight: '1.5rem',
-          position: 'relative',
-          overflow: 'hidden',
+          paddingTop: "8rem",
+          paddingBottom: "3.5rem",
+          paddingLeft: "1.5rem",
+          paddingRight: "1.5rem",
+          position: "relative",
+          overflow: "hidden",
         }}
       >
         <div
           style={{
-            position: 'absolute',
+            position: "absolute",
             inset: 0,
-            pointerEvents: 'none',
+            pointerEvents: "none",
             background:
-              'radial-gradient(ellipse 60% 50% at 50% 0%, rgba(201,168,76,0.08) 0%, transparent 70%)',
+              "radial-gradient(ellipse 65% 55% at 50% 0%, rgba(106,170,100,0.08) 0%, transparent 70%)",
           }}
         />
-        <div style={{ maxWidth: '48rem', margin: '0 auto', position: 'relative' }}>
+
+        <div
+          style={{
+            maxWidth: "48rem",
+            margin: "0 auto",
+            position: "relative",
+          }}
+        >
           <Link
             href="/blog"
             style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '0.375rem',
-              fontSize: '0.875rem',
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "0.375rem",
+              fontSize: "0.875rem",
               color: MUTED_FAINT,
-              marginBottom: '2rem',
-              textDecoration: 'none',
+              marginBottom: "2rem",
+              textDecoration: "none",
             }}
           >
             &#8592; Back to Blog
@@ -182,26 +199,32 @@ export default function AIForPhobiasPage() {
           {/* Tags row */}
           <div
             style={{
-              display: 'flex',
-              flexWrap: 'wrap',
-              alignItems: 'center',
-              gap: '0.75rem',
-              marginBottom: '1.5rem',
+              display: "flex",
+              flexWrap: "wrap",
+              alignItems: "center",
+              gap: "0.75rem",
+              marginBottom: "1.5rem",
             }}
           >
-            {['Phobias', 'Exposure Therapy', 'Mental Health', 'AI Companion'].map((tag) => (
+            {[
+              "Phobias",
+              "Mental Health",
+              "Anxiety",
+              "CBT Support",
+              "Healer Archetype",
+            ].map((tag) => (
               <span
                 key={tag}
                 style={{
-                  fontSize: '0.75rem',
-                  fontWeight: 600,
-                  letterSpacing: '0.08em',
-                  textTransform: 'uppercase' as const,
-                  color: GOLD,
-                  background: CARD_BG_GOLD,
-                  border: `1px solid ${BORDER}`,
-                  borderRadius: '999px',
-                  padding: '0.25rem 0.75rem',
+                  fontSize: "0.7rem",
+                  fontWeight: 700,
+                  letterSpacing: "0.08em",
+                  textTransform: "uppercase" as const,
+                  color: GREEN,
+                  background: "rgba(106,170,100,0.1)",
+                  border: "1px solid rgba(106,170,100,0.28)",
+                  borderRadius: "999px",
+                  padding: "0.25rem 0.75rem",
                 }}
               >
                 {tag}
@@ -211,53 +234,58 @@ export default function AIForPhobiasPage() {
 
           <h1
             style={{
-              fontSize: 'clamp(2rem, 5vw, 3rem)',
-              fontWeight: 800,
-              lineHeight: 1.15,
-              letterSpacing: '-0.02em',
-              marginBottom: '1.25rem',
+              fontSize: "clamp(1.875rem, 5vw, 3.125rem)",
+              fontWeight: 900,
+              lineHeight: 1.12,
+              letterSpacing: "-0.02em",
+              marginBottom: "1.25rem",
+              color: "#ffffff",
             }}
           >
-            AI for Phobias: How an AI Companion{' '}
-            <span style={{ color: GOLD }}>Supports the Graduated Exposure Process</span>
+            AI for Phobias: Can MEOK Help You{" "}
+            <span style={{ color: GOLD }}>
+              Manage Fear and Avoidance?
+            </span>
           </h1>
 
           <p
             style={{
-              fontSize: '1.125rem',
-              lineHeight: 1.75,
+              fontSize: "1.125rem",
+              lineHeight: 1.8,
               color: MUTED_STRONG,
-              marginBottom: '2rem',
+              marginBottom: "2rem",
             }}
           >
-            Phobias aren\u2019t weakness. They\u2019re a misfiring alarm system baked into your
-            nervous system by experience, memory, and biology. This guide explains what phobias
-            actually are, how exposure therapy works, and how an AI companion with persistent
-            memory can walk alongside you through the graduated exposure process \u2014 without
-            pretending to be your therapist.
+            Specific phobias affect around 12.5% of UK adults \u2014 that&apos;s more
+            than eight million people living with a persistent, irrational fear they
+            cannot simply think their way out of. Spiders. Heights. Flying. Needles.
+            Social situations. The fear is real, the avoidance is exhausting, and most
+            people never seek help. This guide explores what MEOK can honestly do to
+            support phobia management \u2014 and where it must defer to professional
+            clinical care.
           </p>
 
           {/* Byline */}
           <div
             style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '1rem',
-              paddingTop: '1.5rem',
+              display: "flex",
+              alignItems: "center",
+              gap: "1rem",
+              paddingTop: "1.5rem",
               borderTop: `1px solid ${BORDER_FAINT}`,
             }}
           >
             <div
               style={{
-                width: '2.5rem',
-                height: '2.5rem',
-                borderRadius: '50%',
-                background: 'linear-gradient(135deg, #c9a84c 0%, #8b6914 100%)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
+                width: "2.5rem",
+                height: "2.5rem",
+                borderRadius: "50%",
+                background: "linear-gradient(135deg, #c9a84c 0%, #8b6914 100%)",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
                 fontWeight: 700,
-                fontSize: '1rem',
+                fontSize: "1rem",
                 color: BG,
                 flexShrink: 0,
               }}
@@ -265,332 +293,606 @@ export default function AIForPhobiasPage() {
               N
             </div>
             <div>
-              <div style={{ fontSize: '0.875rem', fontWeight: 600 }}>Nicholas Templeman</div>
-              <div style={{ fontSize: '0.8rem', color: MUTED }}>
-                Founder, MEOK AI LABS &middot; @meok_ai &middot; 24 March 2026
+              <div style={{ fontSize: "0.875rem", fontWeight: 600 }}>
+                Nicholas Templeman
+              </div>
+              <div style={{ fontSize: "0.8rem", color: MUTED }}>
+                Founder, MEOK AI LABS &middot; @meok_ai &middot; 25 March 2026
+                &middot; 16 min read
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ── DISCLAIMER BANNER ─────────────────────────────────────────────────── */}
+      {/* ── CLINICAL DISCLAIMER ───────────────────────────────────────────── */}
       <div
         style={{
-          paddingLeft: '1.5rem',
-          paddingRight: '1.5rem',
-          paddingTop: '0',
-          paddingBottom: '2rem',
+          paddingLeft: "1.5rem",
+          paddingRight: "1.5rem",
+          paddingBottom: "2.5rem",
         }}
       >
         <div
           style={{
-            maxWidth: '48rem',
-            margin: '0 auto',
-            background: 'rgba(232,168,56,0.07)',
-            border: '1px solid rgba(232,168,56,0.25)',
-            borderRadius: '0.75rem',
-            padding: '1rem 1.25rem',
-            fontSize: '0.875rem',
+            maxWidth: "48rem",
+            margin: "0 auto",
+            background: "rgba(232,168,56,0.07)",
+            border: "1px solid rgba(232,168,56,0.3)",
+            borderRadius: "0.75rem",
+            padding: "1.125rem 1.375rem",
+            fontSize: "0.875rem",
             color: MUTED_STRONG,
-            lineHeight: 1.7,
+            lineHeight: 1.75,
           }}
         >
-          <strong style={{ color: AMBER_WARN }}>Important: </strong>
-          Phobias are diagnosed anxiety disorders. This article is educational, not clinical
-          advice. For severe or debilitating phobias, please work with a licensed psychologist or
-          CBT therapist. AI companions are a supplement to professional care \u2014 never a
-          replacement. If you are in crisis, contact{' '}
-          <strong style={{ color: TEXT }}>Samaritans: 116 123</strong> (UK, free, 24/7).
+          <strong style={{ color: AMBER }}>Clinical disclaimer: </strong>
+          Phobias are recognised anxiety disorders. This article is educational
+          content, not clinical advice. MEOK is not a medical device and does not
+          diagnose or treat any condition. For severe, debilitating, or complex
+          phobias, please work with a licensed psychologist, CBT therapist, or
+          psychiatrist. AI is a support tool \u2014 never a substitute for
+          professional care. UK crisis line:{" "}
+          <strong style={{ color: TEXT }}>Samaritans 116 123</strong> (free,
+          24/7).
         </div>
       </div>
 
-      {/* ── MAIN CONTENT ──────────────────────────────────────────────────────── */}
+      {/* ── MAIN CONTENT ──────────────────────────────────────────────────── */}
       <main
         style={{
-          maxWidth: '48rem',
-          margin: '0 auto',
-          paddingLeft: '1.5rem',
-          paddingRight: '1.5rem',
-          paddingBottom: '6rem',
+          maxWidth: "48rem",
+          margin: "0 auto",
+          paddingLeft: "1.5rem",
+          paddingRight: "1.5rem",
+          paddingBottom: "6rem",
         }}
       >
-
-        {/* ── SECTION 1: What phobias actually are ──────────────────────────── */}
-        <section style={{ marginBottom: '3.5rem' }}>
+        {/* ── SECTION 1: What is a specific phobia? ─────────────────────── */}
+        <section style={{ marginBottom: "3.5rem" }}>
           <h2
             style={{
-              fontSize: '1.625rem',
+              fontSize: "1.625rem",
               fontWeight: 700,
               lineHeight: 1.3,
               color: TEXT,
-              marginBottom: '1rem',
-              paddingBottom: '0.625rem',
+              marginBottom: "1rem",
+              paddingBottom: "0.625rem",
               borderBottom: `1px solid ${BORDER_FAINT}`,
             }}
           >
-            What is a phobia, and why can\u2019t you just think your way out of it?
+            What is a specific phobia, and why do 12.5% of UK adults have one?
           </h2>
 
-          <p style={{ fontSize: '1.0625rem', lineHeight: 1.8, color: MUTED_STRONG, marginBottom: '1.125rem' }}>
-            A phobia is not irrational. From the nervous system\u2019s perspective, it is
-            entirely logical \u2014 the brain has learned, through direct experience or vicarious
-            conditioning, that a specific stimulus signals danger. The response is automatic,
-            fast, and feels completely real. Telling yourself \u201cit\u2019s fine\u201d does almost nothing
-            because the fear circuit bypasses the reasoning centres entirely. Reason arrives
-            after the alarm has already sounded.
-          </p>
-
-          <p style={{ fontSize: '1.0625rem', lineHeight: 1.8, color: MUTED_STRONG, marginBottom: '1.125rem' }}>
-            The technical term for what happens is an <strong style={{ color: TEXT }}>amygdala hijack</strong>.
-            The amygdala \u2014 the brain\u2019s threat-detection structure \u2014 detects a pattern
-            matching the feared stimulus and fires a survival response before the prefrontal cortex
-            has even been consulted. Heart rate spikes. Breathing shallows. Muscles tense. The
-            full physiological signature of mortal danger arrives even though no objective danger
-            exists. This is not melodrama. This is neuroscience.
-          </p>
-
-          <p style={{ fontSize: '1.0625rem', lineHeight: 1.8, color: MUTED_STRONG, marginBottom: '1.125rem' }}>
-            What keeps phobias locked in place is the <strong style={{ color: TEXT }}>avoidance cycle</strong>.
-            Every time you avoid the feared stimulus \u2014 rerouting around the spider, declining the
-            flight, choosing the stairs over the lift \u2014 you get immediate, powerful relief.
-            That relief feels like a victory. The brain is learning the opposite lesson: avoidance
-            is the solution to the threat. The amygdala\u2019s fear memory is never updated, never
-            challenged. The phobia is maintained and, with each avoidance, often strengthened.
-          </p>
-
-          <p style={{ fontSize: '1.0625rem', lineHeight: 1.8, color: MUTED_STRONG, marginBottom: '1.125rem' }}>
-            Over time the avoidance generalises. What started as a specific fear of spiders
-            becomes a fear of certain rooms, certain seasons, certain conversations. What started
-            as a fear of flying becomes a restructured life built around not flying. Phobias do
-            not stay small. They grow to fill whatever space avoidance allows them.
-          </p>
-
-          <p style={{ fontSize: '1.0625rem', lineHeight: 1.8, color: MUTED_STRONG, marginBottom: '1.5rem' }}>
-            This is why the only proven route through a phobia is exposure \u2014 deliberate,
-            graduated contact with the feared stimulus, controlled enough to be survived
-            repeatedly until the amygdala updates its threat register. There is no shortcut.
-            But there are tools that make the process more manageable.
-          </p>
-
-          {/* Phobia mechanics callout */}
-          <div
+          <p
             style={{
-              background: CARD_BG,
-              border: `1px solid ${BORDER_FAINT}`,
-              borderRadius: '0.75rem',
-              padding: '1.25rem 1.5rem',
+              fontSize: "1.0625rem",
+              lineHeight: 1.8,
+              color: MUTED_STRONG,
+              marginBottom: "1.125rem",
             }}
           >
-            <div
-              style={{
-                fontSize: '0.75rem',
-                fontWeight: 700,
-                letterSpacing: '0.1em',
-                textTransform: 'uppercase' as const,
-                color: GOLD,
-                marginBottom: '0.875rem',
-              }}
-            >
-              The Phobia Maintenance Loop
-            </div>
-            <div style={{ display: 'flex', flexDirection: 'column' as const, gap: '0.5rem' }}>
-              {[
-                ['Trigger', 'Encounter with feared stimulus (real or imagined)'],
-                ['Amygdala hijack', 'Threat signal fires before the rational brain can respond'],
-                ['Fear response', 'Heart rate, breathing, muscle tension, urge to flee'],
-                ['Avoidance', 'Escape or avoid the stimulus \u2014 immediate relief'],
-                ['Reinforcement', 'Brain learns: avoidance = safety. Threat belief strengthened.'],
-                ['Generalisation', 'Avoidance threshold lowers. Fear spreads to adjacent situations.'],
-              ].map(([label, desc]) => (
-                <div key={label} style={{ display: 'flex', gap: '0.75rem', alignItems: 'flex-start' }}>
-                  <span
-                    style={{
-                      minWidth: '9.5rem',
-                      fontSize: '0.8125rem',
-                      fontWeight: 700,
-                      color: GOLD,
-                    }}
-                  >
-                    {label}
-                  </span>
-                  <span style={{ fontSize: '0.9rem', color: MUTED_STRONG, lineHeight: 1.6 }}>
-                    {desc}
-                  </span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
+            A specific phobia is not a quirk or an overreaction. It is a clinically
+            recognised anxiety disorder characterised by a persistent, intense, and
+            disproportionate fear of a specific object or situation. The fear triggers
+            an immediate anxiety response \u2014 sometimes a full panic attack \u2014
+            and drives significant avoidance behaviour that constrains how a person
+            lives. According to NHS and Mental Health Foundation data, specific phobias
+            affect approximately 12.5% of UK adults across their lifetime, making them
+            one of the most common mental health conditions in the country.
+          </p>
 
-        {/* ── SECTION 2: Common phobias ─────────────────────────────────────── */}
-        <section style={{ marginBottom: '3.5rem' }}>
-          <h2
+          <p
             style={{
-              fontSize: '1.625rem',
-              fontWeight: 700,
-              lineHeight: 1.3,
-              color: TEXT,
-              marginBottom: '1rem',
-              paddingBottom: '0.625rem',
-              borderBottom: `1px solid ${BORDER_FAINT}`,
+              fontSize: "1.0625rem",
+              lineHeight: 1.8,
+              color: MUTED_STRONG,
+              marginBottom: "1.125rem",
             }}
           >
-            Which phobias are most common, and who do they affect?
-          </h2>
-
-          <p style={{ fontSize: '1.0625rem', lineHeight: 1.8, color: MUTED_STRONG, marginBottom: '1.125rem' }}>
-            Specific phobias affect approximately 10\u201311% of the population across a lifetime,
-            making them one of the most prevalent anxiety disorders. Social phobia affects another
-            12\u201313%. The majority of people with phobias never seek treatment, primarily because
-            avoidance is so effective at short-term symptom relief that the problem never feels
-            urgent enough to confront \u2014 until it starts shrinking their world.
+            The disorder is categorised into five main subtypes by the DSM-5: animal
+            type (spiders, dogs, insects), natural environment type (heights, storms,
+            water), blood-injection-injury type (needles, medical procedures, blood),
+            situational type (flying, enclosed spaces, driving), and other type
+            (choking, vomiting, illness). Social anxiety disorder \u2014 the fear of
+            humiliation or negative evaluation in social situations \u2014 is a related
+            but distinct condition that affects a further 12\u201313% of adults.
           </p>
 
-          <p style={{ fontSize: '1.0625rem', lineHeight: 1.8, color: MUTED_STRONG, marginBottom: '1.5rem' }}>
-            What unites all these very different fears is the same underlying architecture:
-            a conditioned threat association, maintained by avoidance, treatable through
-            graduated exposure. The content of the fear is almost secondary to the mechanics.
+          <p
+            style={{
+              fontSize: "1.0625rem",
+              lineHeight: 1.8,
+              color: MUTED_STRONG,
+              marginBottom: "1.125rem",
+            }}
+          >
+            Despite high prevalence, fewer than one in four people with a specific phobia
+            ever seek treatment. The reason is both counterintuitive and entirely logical:
+            avoidance works. Not crossing bridges, not booking flights, not accepting
+            invitations that involve needles \u2014 avoidance produces immediate, powerful
+            relief. The problem is that each successful avoidance deepens the fear,
+            narrows the world further, and raises the stakes of every future encounter
+            with the feared stimulus.
           </p>
 
-          {/* Phobia grid */}
+          <p
+            style={{
+              fontSize: "1.0625rem",
+              lineHeight: 1.8,
+              color: MUTED_STRONG,
+              marginBottom: "1.5rem",
+            }}
+          >
+            The avoidance trap is not a character flaw. It is a neurological feedback
+            loop. Understanding that is the first step toward doing anything about it
+            \u2014 and it is exactly the kind of understanding that a patient, persistent
+            AI companion can help you build, in your own words, at your own pace.
+          </p>
+
+          {/* Phobia types grid */}
           <div
             style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fill, minmax(14rem, 1fr))',
-              gap: '1rem',
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fill, minmax(13.5rem, 1fr))",
+              gap: "0.875rem",
+              marginTop: "1.5rem",
             }}
           >
             {[
-              { name: 'Aviophobia', label: 'Fear of flying', note: 'Affects ~25% of flyers to some degree' },
-              { name: 'Acrophobia', label: 'Fear of heights', note: 'Very common; often onset in childhood' },
-              { name: 'Arachnophobia', label: 'Fear of spiders', note: 'More prevalent in Western cultures' },
-              { name: 'Social phobia', label: 'Fear of social situations', note: 'Linked to shame and anticipated judgment' },
-              { name: 'Emetophobia', label: 'Fear of vomiting', note: 'Often drives severe food restriction' },
-              { name: 'Trypanophobia', label: 'Fear of needles', note: 'Leads to avoided medical care' },
-              { name: 'Vehophobia', label: 'Fear of driving', note: 'Often post-accident or gradual onset' },
-              { name: 'Claustrophobia', label: 'Fear of enclosed spaces', note: 'Avoidance compounds over time' },
-            ].map((p) => (
+              {
+                type: "Animal",
+                examples: "Spiders, dogs, insects, snakes",
+                colour: "#6aaa64",
+              },
+              {
+                type: "Natural environment",
+                examples: "Heights, storms, water, darkness",
+                colour: "#4ea8de",
+              },
+              {
+                type: "Blood-injection-injury",
+                examples: "Needles, medical procedures, blood",
+                colour: "#e87070",
+              },
+              {
+                type: "Situational",
+                examples: "Flying, enclosed spaces, driving, lifts",
+                colour: "#c9a84c",
+              },
+              {
+                type: "Social",
+                examples: "Humiliation, negative evaluation, embarrassment",
+                colour: "#a78bfa",
+              },
+              {
+                type: "Other",
+                examples: "Vomiting, choking, illness, loud sounds",
+                colour: "#f0a84a",
+              },
+            ].map((item) => (
               <div
-                key={p.name}
+                key={item.type}
                 style={{
                   background: CARD_BG,
                   border: `1px solid ${BORDER_FAINT}`,
-                  borderRadius: '0.625rem',
-                  padding: '1rem',
+                  borderRadius: "0.625rem",
+                  padding: "1rem",
                 }}
               >
-                <div style={{ fontSize: '0.875rem', fontWeight: 700, color: GOLD, marginBottom: '0.25rem' }}>
-                  {p.name}
+                <div
+                  style={{
+                    fontSize: "0.75rem",
+                    fontWeight: 700,
+                    letterSpacing: "0.06em",
+                    textTransform: "uppercase" as const,
+                    color: item.colour,
+                    marginBottom: "0.375rem",
+                  }}
+                >
+                  {item.type}
                 </div>
-                <div style={{ fontSize: '0.9375rem', color: TEXT, fontWeight: 600, marginBottom: '0.25rem' }}>
-                  {p.label}
-                </div>
-                <div style={{ fontSize: '0.8125rem', color: MUTED }}>
-                  {p.note}
+                <div
+                  style={{
+                    fontSize: "0.875rem",
+                    color: MUTED_STRONG,
+                    lineHeight: 1.6,
+                  }}
+                >
+                  {item.examples}
                 </div>
               </div>
             ))}
           </div>
         </section>
 
-        {/* ── SECTION 3: How exposure therapy works ─────────────────────────── */}
-        <section style={{ marginBottom: '3.5rem' }}>
+        {/* ── SECTION 2: Why can't you just think your way out? ─────────── */}
+        <section style={{ marginBottom: "3.5rem" }}>
           <h2
             style={{
-              fontSize: '1.625rem',
+              fontSize: "1.625rem",
               fontWeight: 700,
               lineHeight: 1.3,
               color: TEXT,
-              marginBottom: '1rem',
-              paddingBottom: '0.625rem',
+              marginBottom: "1rem",
+              paddingBottom: "0.625rem",
               borderBottom: `1px solid ${BORDER_FAINT}`,
             }}
           >
-            How does exposure therapy for phobias actually work?
+            Why can&apos;t you just reason your way out of a phobia?
           </h2>
 
-          <p style={{ fontSize: '1.0625rem', lineHeight: 1.8, color: MUTED_STRONG, marginBottom: '1.125rem' }}>
-            Exposure therapy \u2014 specifically <em>graduated exposure</em> or <em>systematic
-            desensitisation</em> \u2014 is the first-line, evidence-based treatment for specific
-            phobias. Success rates are high: multiple meta-analyses show clinically significant
-            improvement in 80\u201390% of cases when the protocol is followed correctly. It is
-            not comfortable. It is not quick. But it works in a way that no other approach
-            consistently replicates.
+          <p
+            style={{
+              fontSize: "1.0625rem",
+              lineHeight: 1.8,
+              color: MUTED_STRONG,
+              marginBottom: "1.125rem",
+            }}
+          >
+            Almost everyone with a phobia knows, rationally, that their fear is
+            disproportionate. The spider is not going to kill you. The plane is
+            statistically safer than the car journey to the airport. The blood test
+            is over in seconds. This rational knowledge is entirely useless when the
+            amygdala fires. The fear circuit operates faster than conscious thought
+            \u2014 the alarm has already sounded before your prefrontal cortex has
+            even been consulted.
           </p>
 
-          <p style={{ fontSize: '1.0625rem', lineHeight: 1.8, color: MUTED_STRONG, marginBottom: '1.125rem' }}>
-            The core mechanism is <strong style={{ color: TEXT }}>inhibitory learning</strong>.
-            When you face a feared stimulus and remain in contact with it long enough for anxiety
-            to peak and then subside naturally \u2014 without fleeing, neutralising, or seeking
-            reassurance \u2014 you create a new competing memory. The amygdala does not erase
-            the fear memory; it learns that in this context, with this stimulus, the danger
-            prediction is wrong. The new memory competes with the old one. With repetition,
-            it wins.
+          <p
+            style={{
+              fontSize: "1.0625rem",
+              lineHeight: 1.8,
+              color: MUTED_STRONG,
+              marginBottom: "1.125rem",
+            }}
+          >
+            Neuroscientists call this the <strong style={{ color: TEXT }}>
+              amygdala hijack
+            </strong>. Joseph LeDoux\u2019s landmark research identified a \u201clow road\u201d
+            in the brain \u2014 a rapid neural pathway from sensory input directly to the
+            amygdala \u2014 that triggers a survival response in milliseconds. The
+            \u201chigh road\u201d through the cortex, which allows rational appraisal, arrives
+            up to a quarter-second later. By that point, your heart is already racing.
+            You are already scanning for the exit. Telling yourself to calm down is
+            addressing the wrong part of the brain at the wrong time.
           </p>
 
-          <p style={{ fontSize: '1.0625rem', lineHeight: 1.8, color: MUTED_STRONG, marginBottom: '1.5rem' }}>
-            The \u201cgraduated\u201d part is critical. Throwing someone with a flying phobia straight
-            onto a transatlantic flight is not therapy \u2014 it is flooding, and it risks
-            retraumatisation. The graded approach starts at the lowest tolerable level of distress
-            and climbs carefully, building a foundation of tolerated exposure at each rung before
-            advancing. This is where the <strong style={{ color: TEXT }}>fear ladder</strong> becomes
-            the central clinical tool.
+          <p
+            style={{
+              fontSize: "1.0625rem",
+              lineHeight: 1.8,
+              color: MUTED_STRONG,
+              marginBottom: "1.125rem",
+            }}
+          >
+            What does work is <strong style={{ color: TEXT }}>inhibitory learning</strong>
+            \u2014 the mechanism behind exposure therapy. The amygdala does not erase fear
+            memories. But it can learn competing predictions. When you face a feared
+            stimulus and stay in contact with it long enough for anxiety to peak and
+            then naturally subside, without fleeing or seeking reassurance, you create
+            a new neural memory that competes with the old one. Repeat this enough
+            times, across enough contexts, and the new memory begins to win.
           </p>
 
-          {/* Process steps */}
-          <div style={{ display: 'flex', flexDirection: 'column' as const, gap: '1rem' }}>
+          <p
+            style={{
+              fontSize: "1.0625rem",
+              lineHeight: 1.8,
+              color: MUTED_STRONG,
+              marginBottom: "1.5rem",
+            }}
+          >
+            This is the science behind why exposure therapy achieves clinically
+            significant improvement in 80\u201390% of specific phobia cases when
+            correctly administered. It is also why what happens between therapy
+            sessions matters enormously. The therapeutic window is narrow. The
+            reflection, the preparation, the processing \u2014 that work continues
+            outside the consulting room. This is where AI can play a legitimate,
+            useful role.
+          </p>
+
+          {/* Pull quote */}
+          <blockquote
+            style={{
+              margin: "2rem 0",
+              padding: "1.5rem 2rem",
+              borderLeft: `4px solid ${GOLD}`,
+              background: CARD_BG_GOLD,
+              borderRadius: "0 0.75rem 0.75rem 0",
+            }}
+          >
+            <p
+              style={{
+                fontSize: "1.125rem",
+                fontStyle: "italic",
+                lineHeight: 1.75,
+                color: TEXT,
+                marginBottom: "0.75rem",
+              }}
+            >
+              &ldquo;Reasoning tells you the fear is irrational. Exposure teaches
+              your nervous system that the fear is survivable. AI can help you
+              prepare for that teaching, process it afterwards, and keep showing
+              up for it between sessions.&rdquo;
+            </p>
+            <cite
+              style={{
+                fontSize: "0.8125rem",
+                color: GOLD,
+                fontStyle: "normal",
+                fontWeight: 600,
+              }}
+            >
+              Nicholas Templeman, Founder \u2014 MEOK AI LABS
+            </cite>
+          </blockquote>
+        </section>
+
+        {/* ── SECTION 3: What CBT and exposure therapy actually involve ───── */}
+        <section style={{ marginBottom: "3.5rem" }}>
+          <h2
+            style={{
+              fontSize: "1.625rem",
+              fontWeight: 700,
+              lineHeight: 1.3,
+              color: TEXT,
+              marginBottom: "1rem",
+              paddingBottom: "0.625rem",
+              borderBottom: `1px solid ${BORDER_FAINT}`,
+            }}
+          >
+            What do CBT and exposure therapy involve, and why is professional
+            guidance essential?
+          </h2>
+
+          <p
+            style={{
+              fontSize: "1.0625rem",
+              lineHeight: 1.8,
+              color: MUTED_STRONG,
+              marginBottom: "1.125rem",
+            }}
+          >
+            Cognitive Behavioural Therapy (CBT) and its more specific derivative,
+            Exposure and Response Prevention (ERP), are the gold-standard, NICE-
+            recommended treatments for specific phobias in the UK. CBT addresses the
+            thought patterns that maintain fear \u2014 catastrophic predictions,
+            overestimation of danger, underestimation of coping ability. Exposure
+            therapy addresses the behavioural component: the avoidance that keeps
+            the fear alive by preventing the amygdala from ever receiving corrective
+            information.
+          </p>
+
+          <p
+            style={{
+              fontSize: "1.0625rem",
+              lineHeight: 1.8,
+              color: MUTED_STRONG,
+              marginBottom: "1.125rem",
+            }}
+          >
+            In practice, a phobia treatment programme typically involves: psychoeducation
+            about the nature of fear; construction of a fear hierarchy (also called a fear
+            ladder) ranking feared situations from least to most distressing; systematic
+            exposure starting at the lowest tolerable rung; staying in contact with the
+            feared stimulus until distress peaks and naturally reduces; and advancing up
+            the hierarchy over multiple sessions. For some phobias \u2014 flying, for
+            example \u2014 a single-session intensive protocol can achieve significant
+            results in one day.
+          </p>
+
+          <p
+            style={{
+              fontSize: "1.0625rem",
+              lineHeight: 1.8,
+              color: MUTED_STRONG,
+              marginBottom: "1.125rem",
+            }}
+          >
+            The reason professional guidance is essential, not optional, is that poorly
+            managed exposure can retraumatise. Flooding \u2014 exposing someone to a high-
+            intensity feared stimulus without adequate preparation, grounding, or coping
+            skills \u2014 can entrench rather than extinguish fear. A trained therapist
+            calibrates the pace, monitors dissociation risk, adjusts the hierarchy, and
+            provides the relational safety that makes extreme anxiety tolerable. An AI
+            companion cannot do any of that safely.
+          </p>
+
+          <p
+            style={{
+              fontSize: "1.0625rem",
+              lineHeight: 1.8,
+              color: MUTED_STRONG,
+              marginBottom: "1.5rem",
+            }}
+          >
+            What AI can do is fill the considerable space between therapy sessions
+            \u2014 the hours, days, and weeks when you are carrying the work forward
+            alone, making small daily choices about avoidance and approach, and
+            trying to hold onto the understanding your therapist helped you build.
+          </p>
+
+          {/* Feature highlight box: MEOK Healer */}
+          <div
+            style={{
+              background: "rgba(201,168,76,0.05)",
+              border: `1px solid ${BORDER_GOLD}`,
+              borderRadius: "0.875rem",
+              padding: "1.5rem",
+              marginTop: "1.5rem",
+            }}
+          >
+            <div
+              style={{
+                fontSize: "0.75rem",
+                fontWeight: 700,
+                letterSpacing: "0.1em",
+                textTransform: "uppercase" as const,
+                color: GOLD,
+                marginBottom: "0.75rem",
+              }}
+            >
+              The MEOK Healer Archetype
+            </div>
+            <p
+              style={{
+                fontSize: "0.9375rem",
+                lineHeight: 1.75,
+                color: MUTED_STRONG,
+                marginBottom: "0.875rem",
+              }}
+            >
+              When it comes to phobia support, MEOK&apos;s <strong style={{ color: TEXT }}>
+                Healer archetype
+              </strong> is the recommended configuration. The Healer is designed for
+              emotional processing, patient reflection, and gentle accountability
+              \u2014 not for intense coaching or problem-solving. It holds space,
+              asks grounding questions, and paces conversations at the speed of
+              your nervous system rather than pushing for progress.
+            </p>
+            <p
+              style={{
+                fontSize: "0.9375rem",
+                lineHeight: 1.75,
+                color: MUTED_STRONG,
+              }}
+            >
+              Critically, the Healer is configured to avoid reinforcing avoidance.
+              It will not validate the decision to skip a medical appointment without
+              exploring what that avoidance costs you. It will not tell you that your
+              fear is completely reasonable if doing so would keep you stuck. Care
+              with honesty \u2014 not comfort with false reassurance.
+            </p>
+          </div>
+        </section>
+
+        {/* ── SECTION 4: How MEOK can help between therapy sessions ──────── */}
+        <section style={{ marginBottom: "3.5rem" }}>
+          <h2
+            style={{
+              fontSize: "1.625rem",
+              fontWeight: 700,
+              lineHeight: 1.3,
+              color: TEXT,
+              marginBottom: "1rem",
+              paddingBottom: "0.625rem",
+              borderBottom: `1px solid ${BORDER_FAINT}`,
+            }}
+          >
+            How can MEOK help you prepare for exposure exercises between therapy
+            sessions?
+          </h2>
+
+          <p
+            style={{
+              fontSize: "1.0625rem",
+              lineHeight: 1.8,
+              color: MUTED_STRONG,
+              marginBottom: "1.125rem",
+            }}
+          >
+            The period between therapy appointments is where most exposure work either
+            succeeds or collapses. Your therapist may have assigned a homework exposure
+            \u2014 taking the lift instead of the stairs, sitting in an airport departure
+            lounge, watching a video of a spider at close range. The assignment exists
+            on paper. Whether you approach it or avoid it depends entirely on what
+            happens inside your own mind between now and then.
+          </p>
+
+          <p
+            style={{
+              fontSize: "1.0625rem",
+              lineHeight: 1.8,
+              color: MUTED_STRONG,
+              marginBottom: "1.125rem",
+            }}
+          >
+            MEOK can provide structured support around those between-session assignments.
+            You can describe the upcoming exposure to MEOK in detail, voice the
+            catastrophic predictions circling in your mind, and have the AI help you
+            examine those predictions more carefully \u2014 not to dismiss them, but to
+            hold them lightly. You can practise the breathing technique your therapist
+            taught you, with MEOK guiding the pace. You can articulate what a
+            successful exposure would feel like, building a cognitive scaffold for
+            the attempt.
+          </p>
+
+          <p
+            style={{
+              fontSize: "1.0625rem",
+              lineHeight: 1.8,
+              color: MUTED_STRONG,
+              marginBottom: "1.5rem",
+            }}
+          >
+            After the exposure \u2014 whether it went well or you found yourself unable
+            to complete it \u2014 MEOK can help you debrief without shame. What happened?
+            What was harder than you expected? What surprised you? What does this tell
+            you about the hierarchy? That reflective processing consolidates learning
+            in a way that simply moving on does not. MEOK remembers the conversation
+            and can surface it when you return.
+          </p>
+
+          {/* Steps list */}
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column" as const,
+              gap: "1rem",
+            }}
+          >
             {[
               {
-                step: '1',
-                title: 'Build the fear ladder',
-                body: 'List all feared situations related to the phobia and rate each from 0\u2013100 using the Subjective Units of Distress Scale (SUDS). Rank them from lowest to highest. The ladder becomes your roadmap.',
+                step: "1",
+                title: "Describe the exposure assignment",
+                body: "Tell MEOK exactly what your therapist has asked you to do, how you feel about it, and what you are afraid will happen. Articulating the catastrophic prediction out loud is the first step in examining it.",
               },
               {
-                step: '2',
-                title: 'Learn your relaxation toolkit',
-                body: 'Diaphragmatic breathing, progressive muscle relaxation, and grounding techniques give you tools to manage arousal during exposure \u2014 not to avoid the feeling, but to stay present within it.',
+                step: "2",
+                title: "Examine the predictions",
+                body: "MEOK asks questions that help you evaluate your predictions \u2014 not to dismiss the fear, but to distinguish between what feels certain and what is actually probable. This mirrors the Socratic questioning technique used in CBT.",
               },
               {
-                step: '3',
-                title: 'Start at the bottom rung',
-                body: 'Choose the first exposure step (typically rated 20\u201330 SUDS). Face it deliberately. Stay in contact. Do not flee. Notice anxiety peak, then naturally subside. Repeat until distress drops by at least 50%.',
+                step: "3",
+                title: "Practise grounding and breathing",
+                body: "Before the exposure, practise your agreed coping techniques with MEOK. Box breathing (4-4-4-4), the 5-4-3-2-1 sensory grounding technique, or paced breathing. Rehearsal reduces friction in the moment.",
               },
               {
-                step: '4',
-                title: 'Move up when ready',
-                body: 'Once a rung consistently produces low distress, advance to the next. Progress is not linear \u2014 some rungs need more repetitions than others. Setbacks are normal and not failure.',
+                step: "4",
+                title: "Set your intent",
+                body: "Describe to MEOK what you are going to do, when, and what you will do if the urge to avoid becomes strong. Verbal commitment increases follow-through. MEOK holds the commitment and asks about it next session.",
               },
               {
-                step: '5',
-                title: 'Consolidate and generalise',
-                body: 'Work toward the top of the ladder. Practise across different contexts to prevent the learning from being too narrowly tied to one situation. Review and update the hierarchy as you progress.',
+                step: "5",
+                title: "Debrief after the exposure",
+                body: "Return to MEOK after the attempt. What happened? What was the peak distress? Did it subside? What did you learn about your prediction? This consolidation is as important as the exposure itself.",
               },
             ].map((item) => (
               <div
                 key={item.step}
                 style={{
-                  display: 'flex',
-                  gap: '1.125rem',
-                  alignItems: 'flex-start',
+                  display: "flex",
+                  gap: "1.125rem",
+                  alignItems: "flex-start",
                   background: CARD_BG,
                   border: `1px solid ${BORDER_FAINT}`,
-                  borderRadius: '0.625rem',
-                  padding: '1.125rem 1.25rem',
+                  borderRadius: "0.625rem",
+                  padding: "1.125rem 1.25rem",
                 }}
               >
                 <div
                   style={{
-                    minWidth: '2rem',
-                    height: '2rem',
-                    borderRadius: '50%',
+                    minWidth: "2rem",
+                    height: "2rem",
+                    borderRadius: "50%",
                     background: CARD_BG_GOLD,
-                    border: `1px solid ${BORDER}`,
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
+                    border: `1px solid ${BORDER_GOLD}`,
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
                     fontWeight: 700,
-                    fontSize: '0.875rem',
+                    fontSize: "0.875rem",
                     color: GOLD,
                     flexShrink: 0,
                   }}
@@ -598,10 +900,23 @@ export default function AIForPhobiasPage() {
                   {item.step}
                 </div>
                 <div>
-                  <div style={{ fontSize: '0.9375rem', fontWeight: 700, color: TEXT, marginBottom: '0.3rem' }}>
+                  <div
+                    style={{
+                      fontSize: "0.9375rem",
+                      fontWeight: 700,
+                      color: TEXT,
+                      marginBottom: "0.3rem",
+                    }}
+                  >
                     {item.title}
                   </div>
-                  <div style={{ fontSize: '0.9rem', color: MUTED_STRONG, lineHeight: 1.7 }}>
+                  <div
+                    style={{
+                      fontSize: "0.9rem",
+                      color: MUTED_STRONG,
+                      lineHeight: 1.7,
+                    }}
+                  >
                     {item.body}
                   </div>
                 </div>
@@ -610,735 +925,893 @@ export default function AIForPhobiasPage() {
           </div>
         </section>
 
-        {/* ── SECTION 4: Sample flying phobia fear hierarchy ────────────────── */}
-        <section style={{ marginBottom: '3.5rem' }}>
+        {/* ── SECTION 5: AI-assisted journalling for phobia management ────── */}
+        <section style={{ marginBottom: "3.5rem" }}>
           <h2
             style={{
-              fontSize: '1.625rem',
+              fontSize: "1.625rem",
               fontWeight: 700,
               lineHeight: 1.3,
               color: TEXT,
-              marginBottom: '1rem',
-              paddingBottom: '0.625rem',
+              marginBottom: "1rem",
+              paddingBottom: "0.625rem",
               borderBottom: `1px solid ${BORDER_FAINT}`,
             }}
           >
-            How do you build a fear ladder? A sample hierarchy for flying phobia
+            How does AI-assisted journalling help with phobia management and fear
+            processing?
           </h2>
 
-          <p style={{ fontSize: '1.0625rem', lineHeight: 1.8, color: MUTED_STRONG, marginBottom: '1.5rem' }}>
-            A well-constructed fear ladder is specific, personalised, and covers the full range
-            from mildly challenging to the most feared scenario. Below is a representative
-            hierarchy for aviophobia. Your own ladder will differ based on which aspects of
-            flying drive the most distress \u2014 turbulence, take-off, enclosed space, loss of
-            control, or height itself.
+          <p
+            style={{
+              fontSize: "1.0625rem",
+              lineHeight: 1.8,
+              color: MUTED_STRONG,
+              marginBottom: "1.125rem",
+            }}
+          >
+            Journalling has a substantial evidence base in emotional regulation. Writing
+            about a feared experience engages the prefrontal cortex \u2014 the rational,
+            language-based part of the brain \u2014 and creates some distance between
+            the raw fear response and the reflective interpretation of it. This is
+            sometimes called <strong style={{ color: TEXT }}>affect labelling</strong>:
+            putting feelings into words demonstrably reduces amygdala activation. The
+            journal is not just a diary. It is a neural regulation tool.
           </p>
 
-          {/* Fear ladder table */}
+          <p
+            style={{
+              fontSize: "1.0625rem",
+              lineHeight: 1.8,
+              color: MUTED_STRONG,
+              marginBottom: "1.125rem",
+            }}
+          >
+            The limitation of traditional journalling is that it is one-directional.
+            You write into a void. There is no questioning of assumptions, no gentle
+            challenge of avoidance reasoning, no pattern recognition across weeks of
+            entries. AI-assisted journalling with MEOK changes this dynamic. You write
+            \u2014 or speak \u2014 and MEOK responds. It asks clarifying questions. It
+            reflects back what it has heard. It surfaces connections: "You mentioned
+            two weeks ago that the fear was worst in the morning. Is that still true?"
+          </p>
+
+          <p
+            style={{
+              fontSize: "1.0625rem",
+              lineHeight: 1.8,
+              color: MUTED_STRONG,
+              marginBottom: "1.125rem",
+            }}
+          >
+            Sovereign Memory makes this possible in a way that standard AI cannot
+            replicate. MEOK remembers your phobia history \u2014 the specific fear object,
+            the situations you have been avoiding, the exposures you have attempted, the
+            distress you reported, the breakthrough moments and the setbacks. Each
+            conversation is not a blank slate. It is a chapter in a continuous story
+            that MEOK is actively tracking on your behalf.
+          </p>
+
+          <p
+            style={{
+              fontSize: "1.0625rem",
+              lineHeight: 1.8,
+              color: MUTED_STRONG,
+              marginBottom: "1.5rem",
+            }}
+          >
+            For phobia management specifically, the most useful journalling prompts
+            involve anticipatory anxiety (before an encounter), real-time processing
+            (during or immediately after), and retrospective reflection (several days
+            later, when the emotional temperature has dropped). MEOK can provide all
+            three, timed to when you actually need them.
+          </p>
+
+          {/* Feature highlight box: journalling prompts */}
           <div
             style={{
-              background: CARD_BG,
-              border: `1px solid ${BORDER_FAINT}`,
-              borderRadius: '0.75rem',
-              overflow: 'hidden',
-              marginBottom: '1.25rem',
+              background: "rgba(106,170,100,0.05)",
+              border: "1px solid rgba(106,170,100,0.22)",
+              borderRadius: "0.875rem",
+              padding: "1.5rem",
             }}
           >
             <div
               style={{
-                display: 'grid',
-                gridTemplateColumns: '3.25rem 1fr 4.5rem',
-                background: CARD_BG_GOLD,
-                borderBottom: `1px solid ${BORDER}`,
-                padding: '0.75rem 1.25rem',
-                gap: '0.75rem',
-              }}
-            >
-              <div style={{ fontSize: '0.75rem', fontWeight: 700, color: GOLD, letterSpacing: '0.08em', textTransform: 'uppercase' as const }}>Rung</div>
-              <div style={{ fontSize: '0.75rem', fontWeight: 700, color: GOLD, letterSpacing: '0.08em', textTransform: 'uppercase' as const }}>Exposure Step</div>
-              <div style={{ fontSize: '0.75rem', fontWeight: 700, color: GOLD, letterSpacing: '0.08em', textTransform: 'uppercase' as const, textAlign: 'right' as const }}>SUDS</div>
-            </div>
-            {[
-              { rung: '1', step: 'Look at photographs of aircraft in a magazine or online', suds: 15 },
-              { rung: '2', step: 'Watch a 5-minute documentary about how commercial aviation works', suds: 20 },
-              { rung: '3', step: 'Watch a full flight-experience video (cockpit view, take-off and landing)', suds: 28 },
-              { rung: '4', step: 'Visit an airport without flying: observe departures, sit in the terminal', suds: 35 },
-              { rung: '5', step: 'Sit inside a stationary aircraft (some airlines offer cabin familiarisation tours)', suds: 45 },
-              { rung: '6', step: 'Use a flight simulator in imaginal exposure with your therapist or companion', suds: 55 },
-              { rung: '7', step: 'Book a short domestic flight (under 45 minutes) with a trusted companion', suds: 65 },
-              { rung: '8', step: 'Take the short domestic flight alone, using your breathing tools throughout', suds: 75 },
-              { rung: '9', step: 'Take a 2-hour European flight alone, requesting a window seat', suds: 83 },
-              { rung: '10', step: 'Take a long-haul flight (6+ hours) alone, including a period of turbulence', suds: 92 },
-            ].map((row, i) => (
-              <div
-                key={row.rung}
-                style={{
-                  display: 'grid',
-                  gridTemplateColumns: '3.25rem 1fr 4.5rem',
-                  padding: '0.8rem 1.25rem',
-                  gap: '0.75rem',
-                  borderBottom: i < 9 ? `1px solid ${BORDER_FAINT}` : 'none',
-                  alignItems: 'center',
-                }}
-              >
-                <div style={{ fontSize: '0.9rem', fontWeight: 700, color: GOLD }}>
-                  {row.rung}
-                </div>
-                <div style={{ fontSize: '0.9rem', color: MUTED_STRONG, lineHeight: 1.6 }}>
-                  {row.step}
-                </div>
-                <div
-                  style={{
-                    fontSize: '0.9rem',
-                    fontWeight: 700,
-                    color: row.suds >= 70 ? AMBER_WARN : row.suds >= 45 ? TEXT : MUTED_STRONG,
-                    textAlign: 'right' as const,
-                  }}
-                >
-                  {row.suds}
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <p style={{ fontSize: '0.9rem', lineHeight: 1.7, color: MUTED, fontStyle: 'italic', marginBottom: '1.25rem' }}>
-            SUDS scores are approximate and will vary between individuals. Your personal hierarchy
-            should be built with a therapist or AI companion \u2014 what matters is that each rung
-            is genuinely challenging but reachable from the one below it.
-          </p>
-
-          <p style={{ fontSize: '1.0625rem', lineHeight: 1.8, color: MUTED_STRONG }}>
-            Notice the structure: the ladder does not jump from photographs to long-haul. Each
-            step is meaningfully harder than the last, but each is reachable from the previous
-            rung. A good fear ladder has no enormous gaps. If two adjacent rungs have a SUDS
-            difference of more than 20 points, you need an intermediate step between them.
-          </p>
-        </section>
-
-        {/* ── SECTION 5: How AI supports the process ────────────────────────── */}
-        <section style={{ marginBottom: '3.5rem' }}>
-          <h2
-            style={{
-              fontSize: '1.625rem',
-              fontWeight: 700,
-              lineHeight: 1.3,
-              color: TEXT,
-              marginBottom: '1rem',
-              paddingBottom: '0.625rem',
-              borderBottom: `1px solid ${BORDER_FAINT}`,
-            }}
-          >
-            How does AI support the graduated exposure process without replacing a therapist?
-          </h2>
-
-          <p style={{ fontSize: '1.0625rem', lineHeight: 1.8, color: MUTED_STRONG, marginBottom: '1.125rem' }}>
-            The honest answer: AI is not a therapist. It cannot diagnose, it cannot run a proper
-            clinical exposure protocol, and it cannot handle the complexity of a phobia
-            entangled with trauma, OCD, or other comorbidities. A licensed psychologist or
-            BABCP-accredited CBT therapist should lead the clinical work wherever the phobia is
-            significantly impairing your life.
-          </p>
-
-          <p style={{ fontSize: '1.0625rem', lineHeight: 1.8, color: MUTED_STRONG, marginBottom: '1.125rem' }}>
-            What AI can do, particularly an AI companion with persistent memory, is fill the
-            enormous gap that exists between clinical sessions. Therapy is typically once a week
-            for fifty minutes. Exposure practice \u2014 to be effective \u2014 needs to happen
-            multiple times between those sessions. The AI companion becomes a presence in the
-            space between: a preparation partner before each exposure attempt, a debrief
-            companion after, and a tracker of the progress your therapist may not see.
-          </p>
-
-          {/* AI roles */}
-          <div style={{ display: 'flex', flexDirection: 'column' as const, gap: '1.125rem', marginTop: '1.5rem' }}>
-            {[
-              {
-                role: 'Fear ladder co-builder',
-                detail: 'A good AI companion helps you articulate your fear hierarchy by asking precise questions: not just \u201cwhat scares you about spiders\u201d but \u201cwhat specifically \u2014 the movement, the legs, the unpredictability, the proximity? At what distance does the SUDS hit 50?\u201d This granularity makes a much more actionable ladder than the generic version most people create alone.',
-              },
-              {
-                role: 'Pre-exposure coach',
-                detail: 'Before each exposure attempt, the AI can run a 4-7-8 breathing sequence, guide progressive muscle relaxation, review the upcoming rung with you, and help you set a clear intention: \u201cI will stay in contact with this for five minutes regardless of what I feel, and I will not flee.\u201d That pre-commitment ritual measurably improves inhibitory learning outcomes.',
-              },
-              {
-                role: 'During-exposure anchor',
-                detail: 'For imaginal exposures and some behavioural ones, the AI can be present via text \u2014 offering grounding prompts, SUDS check-ins, and the steady reminder that anxiety cannot harm you and will peak and pass. Its calm, consistent presence during the window of distress can be meaningfully regulating.',
-              },
-              {
-                role: 'Post-exposure debrief',
-                detail: 'After each exposure: what was the peak SUDS? When did it start to fall? What did you learn from the fact that the feared outcome did not occur? This debrief conversation reinforces inhibitory learning by consciously integrating the new information into your narrative about the feared stimulus.',
-              },
-              {
-                role: 'Progress tracker across weeks',
-                detail: 'This is where AI with persistent memory becomes genuinely different from a generic chatbot. The companion remembers your ladder, your SUDS scores, your streak, your setbacks, and the reflections you shared after each rung. When you return after a week, it can say: \u201clast Tuesday you rated rung 4 at 38 \u2014 down from 55 two weeks ago. You\u2019re ready for rung 5.\u201d That continuity is irreplaceable.',
-              },
-              {
-                role: 'Accountability partner',
-                detail: 'Exposure work requires consistent practice. The AI can set a weekly rhythm, notice if you have gone more than five days without an exposure attempt, and hold you gently accountable without shame. It knows your history, so it knows whether this is a natural recovery week or avoidance creeping back in.',
-              },
-            ].map((item) => (
-              <div
-                key={item.role}
-                style={{
-                  background: CARD_BG,
-                  border: `1px solid ${BORDER_FAINT}`,
-                  borderLeft: `3px solid ${GOLD}`,
-                  borderRadius: '0 0.625rem 0.625rem 0',
-                  padding: '1.125rem 1.25rem',
-                }}
-              >
-                <div style={{ fontSize: '0.9375rem', fontWeight: 700, color: GOLD, marginBottom: '0.5rem' }}>
-                  {item.role}
-                </div>
-                <div style={{ fontSize: '0.9375rem', color: MUTED_STRONG, lineHeight: 1.75 }}>
-                  {item.detail}
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* ── SECTION 6: MEOK's memory ──────────────────────────────────────── */}
-        <section style={{ marginBottom: '3.5rem' }}>
-          <h2
-            style={{
-              fontSize: '1.625rem',
-              fontWeight: 700,
-              lineHeight: 1.3,
-              color: TEXT,
-              marginBottom: '1rem',
-              paddingBottom: '0.625rem',
-              borderBottom: `1px solid ${BORDER_FAINT}`,
-            }}
-          >
-            How does MEOK\u2019s memory track exposure hierarchy progress across weeks?
-          </h2>
-
-          <p style={{ fontSize: '1.0625rem', lineHeight: 1.8, color: MUTED_STRONG, marginBottom: '1.125rem' }}>
-            Most AI tools have no memory at all. Every conversation begins from zero. For casual
-            uses this is tolerable; for phobia work it is nearly useless. A fear ladder needs
-            continuity. Your SUDS scores from three weeks ago are data. The moment last Tuesday
-            when your anxiety peaked at 72 and then dropped to 28 without you fleeing \u2014
-            that is a piece of evidence your nervous system needs to see reflected back, and
-            your AI companion needs to hold.
-          </p>
-
-          <p style={{ fontSize: '1.0625rem', lineHeight: 1.8, color: MUTED_STRONG, marginBottom: '1.125rem' }}>
-            MEOK uses <strong style={{ color: TEXT }}>Sovereign Memory</strong> \u2014 a
-            four-layer encrypted memory architecture that stores your experiences at different
-            levels of resolution and relevance. At the episodic layer, individual exposure
-            sessions are captured with context, emotion, and outcome. At the semantic layer,
-            patterns are distilled: which rung you\u2019re on, your typical peak SUDS for each
-            feared situation, your recovery trajectory, and your stated goals for the coming week.
-          </p>
-
-          <p style={{ fontSize: '1.0625rem', lineHeight: 1.8, color: MUTED_STRONG, marginBottom: '1.125rem' }}>
-            Because MEOK\u2019s memory is sovereign \u2014 stored on infrastructure you control,
-            never used to train external models, never shared with third parties \u2014 you can
-            be genuinely honest in your sessions. You can say \u201cI avoided again\u201d or
-            \u201cI haven\u2019t done a single exposure this week\u201d without fear of judgment or data
-            exposure. Privacy is a prerequisite for honesty, and honesty is a prerequisite
-            for effective exposure work.
-          </p>
-
-          {/* Memory checklist */}
-          <div
-            style={{
-              background: CARD_BG_GOLD,
-              border: `1px solid ${BORDER}`,
-              borderRadius: '0.75rem',
-              padding: '1.375rem 1.5rem',
-              marginTop: '1.5rem',
-            }}
-          >
-            <div
-              style={{
-                fontSize: '0.75rem',
+                fontSize: "0.75rem",
                 fontWeight: 700,
-                letterSpacing: '0.1em',
-                textTransform: 'uppercase' as const,
-                color: GOLD,
-                marginBottom: '1rem',
+                letterSpacing: "0.1em",
+                textTransform: "uppercase" as const,
+                color: GREEN,
+                marginBottom: "0.875rem",
               }}
             >
-              What MEOK Sovereign Memory Holds for Phobia Work
+              Example Journalling Prompts MEOK Uses for Phobia Processing
             </div>
-            <div style={{ display: 'flex', flexDirection: 'column' as const, gap: '0.625rem' }}>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column" as const,
+                gap: "0.75rem",
+              }}
+            >
               {[
-                'Your complete fear hierarchy with current rung position',
-                'SUDS scores from every logged exposure attempt',
-                'Dates and streaks of consistent practice',
-                'Post-exposure debrief notes and emotional reflections',
-                'Breathing and relaxation tools you find most effective',
-                'Setback moments and the context surrounding them',
-                'Your stated goals, timelines, and motivations',
-                'Patterns the AI has noticed across weeks of sessions',
+                {
+                  phase: "Before the exposure",
+                  prompt:
+                    "What is the worst thing you believe could happen? On a scale of 0\u2013100, how likely is that, really? What would you tell a close friend who had the same prediction?",
+                },
+                {
+                  phase: "During high anxiety",
+                  prompt:
+                    "Name five things you can see right now. What is your feet feeling on the floor? You are safe. The anxiety is uncomfortable, not dangerous. What is happening in your body at this exact moment?",
+                },
+                {
+                  phase: "Immediately after",
+                  prompt:
+                    "What was the peak distress? Did it peak and then come down? What did the feared thing actually do? Was the prediction accurate?",
+                },
+                {
+                  phase: "Reflective (days later)",
+                  prompt:
+                    "Looking back, what does this exposure tell you about your fear? Did the anxiety go as high as you predicted? Did anything unexpected happen that is worth noting?",
+                },
+                {
+                  phase: "Tracking avoidance",
+                  prompt:
+                    "This week, were there moments you chose avoidance? What was the immediate pull? What did avoidance cost you? Is there a smaller version of the avoided thing you could have approached instead?",
+                },
               ].map((item) => (
-                <div key={item} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.625rem' }}>
-                  <span style={{ color: GOLD, marginTop: '0.15rem', flexShrink: 0 }}>&#10003;</span>
-                  <span style={{ fontSize: '0.9375rem', color: MUTED_STRONG, lineHeight: 1.65 }}>{item}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <p style={{ fontSize: '1.0625rem', lineHeight: 1.8, color: MUTED_STRONG, marginTop: '1.375rem' }}>
-            The practical effect: MEOK does not treat every session as a first appointment. It
-            knows you. It knows your fear history. It can spot when your language around a
-            certain phobia has shifted \u2014 from catastrophic predictions to something more
-            measured \u2014 and name that change back to you. That mirroring of your own progress
-            is one of the most motivating forces in sustained exposure work.
-          </p>
-        </section>
-
-        {/* ── SECTION 7: Building your fear ladder with AI companion ───────── */}
-        <section style={{ marginBottom: '3.5rem' }}>
-          <h2
-            style={{
-              fontSize: '1.625rem',
-              fontWeight: 700,
-              lineHeight: 1.3,
-              color: TEXT,
-              marginBottom: '1rem',
-              paddingBottom: '0.625rem',
-              borderBottom: `1px solid ${BORDER_FAINT}`,
-            }}
-          >
-            How do you build a fear ladder with your AI companion?
-          </h2>
-
-          <p style={{ fontSize: '1.0625rem', lineHeight: 1.8, color: MUTED_STRONG, marginBottom: '1.125rem' }}>
-            Building a fear ladder with an AI companion works through structured conversation.
-            The AI asks, you answer, and together you construct a hierarchy that is genuinely
-            specific to your phobia rather than a generic template downloaded from a worksheet.
-            Here is how that conversation typically unfolds.
-          </p>
-
-          {/* Conversation example */}
-          <div
-            style={{
-              background: CARD_BG,
-              border: `1px solid ${BORDER_FAINT}`,
-              borderRadius: '0.75rem',
-              overflow: 'hidden',
-              marginBottom: '1.5rem',
-            }}
-          >
-            <div
-              style={{
-                padding: '0.75rem 1.25rem',
-                background: CARD_BG_GOLD,
-                borderBottom: `1px solid ${BORDER}`,
-                fontSize: '0.75rem',
-                fontWeight: 700,
-                letterSpacing: '0.08em',
-                textTransform: 'uppercase' as const,
-                color: GOLD,
-              }}
-            >
-              Example: Building a Spider Phobia Ladder with MEOK
-            </div>
-            <div style={{ padding: '1.25rem', display: 'flex', flexDirection: 'column' as const, gap: '1rem' }}>
-              {[
-                {
-                  speaker: 'MEOK',
-                  text: 'Let\u2019s build your fear hierarchy for spiders. Before we list situations, I want to understand what specifically drives your fear. Is it mainly how they move, how they look, the thought of being touched by one, the unpredictability of where they go, or something else?',
-                  isAI: true,
-                },
-                {
-                  speaker: 'You',
-                  text: 'Definitely the movement \u2014 that scuttling. And not knowing where it is once I\u2019ve seen it.',
-                  isAI: false,
-                },
-                {
-                  speaker: 'MEOK',
-                  text: 'That\u2019s really useful. So the peak fear is probably: a spider moving unpredictably in the room, possibly out of sight. On your 0\u2013100 scale, what would that feel like right now, just imagining it?',
-                  isAI: true,
-                },
-                {
-                  speaker: 'You',
-                  text: 'Honestly about 95. I\u2019d leave the room immediately.',
-                  isAI: false,
-                },
-                {
-                  speaker: 'MEOK',
-                  text: 'Good \u2014 that\u2019s our top rung. Now I want to find something at the other end. What\u2019s the least frightening spider-related thing you can imagine? Maybe a still photograph of a small spider in a book?',
-                  isAI: true,
-                },
-                {
-                  speaker: 'You',
-                  text: 'A drawing of a spider in a children\u2019s book would probably be a 10.',
-                  isAI: false,
-                },
-                {
-                  speaker: 'MEOK',
-                  text: 'Perfect. We have a bottom and a top. Let\u2019s fill in the rungs between. I\u2019m going to suggest eight intermediate steps and you tell me if any feel like too large a jump, or if any feel easier than the one below...',
-                  isAI: true,
-                },
-              ].map((msg, i) => (
                 <div
-                  key={i}
+                  key={item.phase}
                   style={{
-                    display: 'flex',
-                    flexDirection: msg.isAI ? 'row' : 'row-reverse',
-                    gap: '0.75rem',
-                    alignItems: 'flex-start',
+                    display: "flex",
+                    flexDirection: "column" as const,
+                    gap: "0.25rem",
                   }}
                 >
                   <div
                     style={{
-                      minWidth: '1.875rem',
-                      height: '1.875rem',
-                      borderRadius: '50%',
-                      background: msg.isAI ? CARD_BG_GOLD : 'rgba(245,240,232,0.08)',
-                      border: `1px solid ${msg.isAI ? BORDER : BORDER_FAINT}`,
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      fontSize: '0.6875rem',
+                      fontSize: "0.8rem",
                       fontWeight: 700,
-                      color: msg.isAI ? GOLD : MUTED_STRONG,
-                      flexShrink: 0,
+                      color: GREEN,
+                      letterSpacing: "0.04em",
                     }}
                   >
-                    {msg.isAI ? 'M' : 'Y'}
+                    {item.phase}
                   </div>
                   <div
                     style={{
-                      background: msg.isAI ? CARD_BG_GOLD : 'rgba(245,240,232,0.05)',
-                      border: `1px solid ${msg.isAI ? BORDER : BORDER_FAINT}`,
-                      borderRadius: msg.isAI ? '0 0.625rem 0.625rem 0.625rem' : '0.625rem 0 0.625rem 0.625rem',
-                      padding: '0.75rem 1rem',
-                      maxWidth: '88%',
+                      fontSize: "0.9rem",
+                      color: MUTED_STRONG,
+                      lineHeight: 1.7,
                     }}
                   >
-                    <div
-                      style={{
-                        fontSize: '0.7rem',
-                        fontWeight: 700,
-                        letterSpacing: '0.06em',
-                        textTransform: 'uppercase' as const,
-                        color: msg.isAI ? GOLD : MUTED,
-                        marginBottom: '0.375rem',
-                      }}
-                    >
-                      {msg.speaker}
-                    </div>
-                    <div style={{ fontSize: '0.9rem', color: MUTED_STRONG, lineHeight: 1.7 }}>
-                      {msg.text}
-                    </div>
+                    {item.prompt}
                   </div>
                 </div>
               ))}
             </div>
           </div>
-
-          <p style={{ fontSize: '1.0625rem', lineHeight: 1.8, color: MUTED_STRONG, marginBottom: '1.125rem' }}>
-            This conversational approach produces a ladder that reflects your specific fear
-            profile \u2014 not a generic arachnophobia template. The AI\u2019s ability to ask
-            follow-up questions, notice gaps in the hierarchy, and propose intermediate steps
-            makes it a meaningfully better co-builder than a static worksheet.
-          </p>
-
-          <p style={{ fontSize: '1.0625rem', lineHeight: 1.8, color: MUTED_STRONG }}>
-            Once the ladder exists in the memory system, it is available in every future session.
-            You never need to re-explain your phobia. You never start from zero. MEOK picks up
-            exactly where you left off \u2014 which rung, which SUDS baseline, which coping tools
-            work best for you at peak distress.
-          </p>
         </section>
 
-        {/* ── SECTION 8: Specific phobias deep dive ─────────────────────────── */}
-        <section style={{ marginBottom: '3.5rem' }}>
+        {/* ── SECTION 6: Specific phobias MEOK can support ──────────────── */}
+        <section style={{ marginBottom: "3.5rem" }}>
           <h2
             style={{
-              fontSize: '1.625rem',
+              fontSize: "1.625rem",
               fontWeight: 700,
               lineHeight: 1.3,
               color: TEXT,
-              marginBottom: '1rem',
-              paddingBottom: '0.625rem',
+              marginBottom: "1rem",
+              paddingBottom: "0.625rem",
               borderBottom: `1px solid ${BORDER_FAINT}`,
             }}
           >
-            Can AI help with social phobia, emetophobia, and other complex fears?
+            Which specific phobias can MEOK support most effectively?
           </h2>
 
-          <p style={{ fontSize: '1.0625rem', lineHeight: 1.8, color: MUTED_STRONG, marginBottom: '1.5rem' }}>
-            Specific phobias like flying, spiders, and heights are relatively straightforward to
-            address with standard graduated exposure. Some phobias carry additional layers of
-            complexity that warrant particular care \u2014 and honest acknowledgement of where
-            AI\u2019s role becomes more limited.
+          <p
+            style={{
+              fontSize: "1.0625rem",
+              lineHeight: 1.8,
+              color: MUTED_STRONG,
+              marginBottom: "1.5rem",
+            }}
+          >
+            MEOK is not designed or marketed for any specific phobia type. However,
+            its strengths \u2014 persistent memory, grounding support, non-judgmental
+            reflection, and between-session continuity \u2014 are particularly useful
+            for phobias where anticipatory anxiety and avoidance cognition are the
+            primary barriers, rather than situations requiring live clinical supervision
+            to manage safely. Below is an honest assessment of where AI support adds
+            genuine value.
           </p>
 
-          <div style={{ display: 'flex', flexDirection: 'column' as const, gap: '1.25rem' }}>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column" as const,
+              gap: "1.25rem",
+            }}
+          >
             {[
               {
-                title: 'Social phobia (social anxiety disorder)',
-                content: 'Social phobia is characterised not just by the fear of situations but by the fear of negative evaluation \u2014 shame, judgment, humiliation. The avoidance tends to be subtler (staying silent rather than leaving the room) and the safety behaviours more numerous. AI can support social exposure work \u2014 helping rehearse conversations, reviewing post-event processing, challenging the post-mortem spiral that follows social situations \u2014 but the relational dimension of social phobia makes human therapeutic contact especially valuable here.',
+                phobia: "Social anxiety",
+                how: "MEOK can help you prepare for feared social events \u2014 examining catastrophic predictions, practising what you want to say, debriefing after the event without shame. Because social anxiety often involves endless post-event rumination, MEOK can interrupt the loop with grounding questions and perspective checks.",
+                note: "Significant social phobia benefits greatly from professional CBT alongside AI support.",
               },
               {
-                title: 'Emetophobia (fear of vomiting)',
-                content: 'Emetophobia is one of the more debilitating specific phobias because avoidance penetrates every domain of life: food choices, travel, alcohol, social events, medical settings. The fear of losing bodily control often drives significant food restriction. AI can help with the educational component, the anxiety management toolkit, and tracking exposure to increasingly challenging food-related situations. The dietary restriction component often needs dietitian and therapist involvement alongside any AI use.',
+                phobia: "Flying phobia (aviophobia)",
+                how: "MEOK supports the cognitive work between flights: examining the statistics, processing anticipatory anxiety in the weeks before travel, coaching breathing and grounding during the lead-up, and debriefing after landing. The Healer archetype is particularly effective for the weeks of dread that precede a booked flight.",
+                note: "Single-session intensive flying phobia programmes run by qualified psychologists remain highly effective.",
               },
               {
-                title: 'Trypanophobia (fear of needles)',
-                content: 'Needle phobia has a physiological peculiarity: unlike most phobias where heart rate stays elevated throughout the feared stimulus, some people with trypanophobia experience a vasovagal response \u2014 a rapid drop in heart rate and blood pressure that can cause fainting. The standard exposure protocol is modified to include applied tension technique (tensing large muscle groups to elevate blood pressure) rather than relaxation alone. An AI companion can coach applied tension as part of the pre-exposure toolkit.',
+                phobia: "Needle phobia (trypanophobia)",
+                how: "Needle phobia is one of the most medically consequential phobias, causing delayed cancer screenings, avoided vaccinations, and untreated conditions. MEOK can help you reduce anticipatory anxiety before appointments, explore what specifically drives the fear (pain, loss of control, illness associations), and build a step-by-step plan to approach medical care incrementally.",
+                note: "Applied tension technique for vasovagal needle phobia should be taught by a trained clinician.",
               },
               {
-                title: 'Driving anxiety (vehophobia)',
-                content: 'Driving anxiety often develops after an accident or near-miss and may have a PTSD component requiring trauma-informed treatment before standard exposure begins. The exposure hierarchy for driving is highly practical and gradual: from sitting in a stationary car, to driving an empty car park, to quiet roads, to dual carriageways, to motorways. MEOK can track which routes you\u2019ve driven, log your SUDS scores, and support the debrief after each practice drive.',
+                phobia: "Height phobia (acrophobia)",
+                how: "For acrophobia not triggered by genuinely dangerous situations, MEOK can support imaginal exposure \u2014 walking through feared height scenarios in detail \u2014 and help you debrief after real-world exposure attempts. It can also help you identify which height situations you are avoiding unnecessarily and which require more care.",
+                note: "Physical safety must always take precedence. MEOK does not assess situational risk.",
               },
               {
-                title: 'Acrophobia (fear of heights)',
-                content: 'Fear of heights is extremely common and often develops without a specific traumatic incident. The fear hierarchy can be practised in the real world \u2014 gradually ascending buildings, gradually increasing the distance from a balcony railing \u2014 or via virtual reality exposure. An AI companion helps plan the exposure schedule, tracks progress, and provides breathing coaching before each rung. For most cases of acrophobia without comorbidities, self-guided exposure with AI support is highly viable.',
+                phobia: "Driving anxiety (vehophobia)",
+                how: "MEOK can help build a graduated driving anxiety hierarchy, from sitting in a parked car through to driving unfamiliar routes. It tracks your distress ratings across attempts, notices patterns, and supports the cognitive work of separating past accident associations from present-day assessments of risk.",
+                note: "Post-accident driving anxiety with PTSD features requires trauma-informed clinical support.",
               },
             ].map((item) => (
               <div
-                key={item.title}
+                key={item.phobia}
                 style={{
                   background: CARD_BG,
                   border: `1px solid ${BORDER_FAINT}`,
-                  borderRadius: '0.75rem',
-                  padding: '1.25rem 1.375rem',
+                  borderRadius: "0.75rem",
+                  padding: "1.25rem 1.375rem",
                 }}
               >
-                <div style={{ fontSize: '1rem', fontWeight: 700, color: TEXT, marginBottom: '0.625rem' }}>
-                  {item.title}
+                <div
+                  style={{
+                    fontSize: "1rem",
+                    fontWeight: 700,
+                    color: GOLD,
+                    marginBottom: "0.5rem",
+                  }}
+                >
+                  {item.phobia}
                 </div>
-                <div style={{ fontSize: '0.9375rem', color: MUTED_STRONG, lineHeight: 1.75 }}>
-                  {item.content}
+                <p
+                  style={{
+                    fontSize: "0.9375rem",
+                    lineHeight: 1.75,
+                    color: MUTED_STRONG,
+                    marginBottom: "0.75rem",
+                  }}
+                >
+                  {item.how}
+                </p>
+                <div
+                  style={{
+                    fontSize: "0.8125rem",
+                    color: AMBER,
+                    fontStyle: "italic",
+                    lineHeight: 1.6,
+                  }}
+                >
+                  Note: {item.note}
                 </div>
               </div>
             ))}
           </div>
         </section>
 
-        {/* ── SECTION 9: Honest limits of AI ────────────────────────────────── */}
-        <section style={{ marginBottom: '3.5rem' }}>
+        {/* ── SECTION 7: Staying grounded during daily avoidance urges ───── */}
+        <section style={{ marginBottom: "3.5rem" }}>
           <h2
             style={{
-              fontSize: '1.625rem',
+              fontSize: "1.625rem",
               fontWeight: 700,
               lineHeight: 1.3,
               color: TEXT,
-              marginBottom: '1rem',
-              paddingBottom: '0.625rem',
+              marginBottom: "1rem",
+              paddingBottom: "0.625rem",
               borderBottom: `1px solid ${BORDER_FAINT}`,
             }}
           >
-            What are the honest limits of AI in phobia support?
+            How can MEOK help you stay grounded when avoidance urges hit in
+            daily life?
           </h2>
 
-          <p style={{ fontSize: '1.0625rem', lineHeight: 1.8, color: MUTED_STRONG, marginBottom: '1.25rem' }}>
-            Honesty about limits is not a disclaimer. It is a design principle. A responsible AI
-            companion should be explicit about what it cannot do, because the illusion of clinical
-            competence is more dangerous than acknowledged limitation.
-          </p>
-
-          <div
+          <p
             style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fill, minmax(20rem, 1fr))',
-              gap: '1rem',
+              fontSize: "1.0625rem",
+              lineHeight: 1.8,
+              color: MUTED_STRONG,
+              marginBottom: "1.125rem",
             }}
           >
-            {[
-              {
-                label: 'Cannot diagnose',
-                detail: 'Only a qualified clinician can diagnose a specific phobia, assess severity, and rule out comorbidities like OCD, PTSD, or panic disorder that require different treatment approaches entirely.',
-              },
-              {
-                label: 'Cannot conduct clinical exposure',
-                detail: 'Proper exposure therapy requires a trained therapist to calibrate the protocol, monitor for avoidance and safety behaviours, and adjust in real-time. AI supports between sessions \u2014 it does not replace them.',
-              },
-              {
-                label: 'Cannot handle acute crisis',
-                detail: 'If an exposure triggers a panic attack or dissociative episode, AI is not sufficient. Have a human support contact available during early exposure work, particularly for trauma-adjacent phobias.',
-              },
-              {
-                label: 'Cannot provide EMDR or somatic work',
-                detail: 'For phobias rooted in specific traumatic incidents, EMDR or somatic therapy may be more appropriate than standard exposure. These are embodied, relational modalities that AI cannot replicate.',
-              },
-              {
-                label: 'Cannot always detect when more help is needed',
-                detail: 'MEOK\u2019s care-floor includes escalation triggers, but an AI may miss nuances that an experienced clinician would notice immediately. Your therapist\u2019s clinical judgment always supersedes AI guidance.',
-              },
-              {
-                label: 'Cannot replace human therapeutic relationship',
-                detail: 'The felt sense of being seen, understood, and held by another person is itself a healing mechanism. AI provides consistency and availability across time. It does not provide human warmth.',
-              },
-            ].map((item) => (
-              <div
-                key={item.label}
-                style={{
-                  background: 'rgba(255,80,80,0.04)',
-                  border: '1px solid rgba(255,80,80,0.15)',
-                  borderRadius: '0.625rem',
-                  padding: '1rem 1.125rem',
-                }}
-              >
-                <div style={{ fontSize: '0.875rem', fontWeight: 700, color: '#e88080', marginBottom: '0.4rem' }}>
-                  {item.label}
-                </div>
-                <div style={{ fontSize: '0.875rem', color: MUTED_STRONG, lineHeight: 1.7 }}>
-                  {item.detail}
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
+            The majority of phobia management does not happen in a therapist&apos;s office
+            or at the top of a fear ladder. It happens in the small, ordinary moments
+            \u2014 the email that says the team meeting will be at height; the appointment
+            reminder for a blood test; the friend group organising a flight. The avoidance
+            urge arrives fast, it feels urgent, and the relief of declining is immediate.
+            By the time you have thought it through properly, the window has often closed.
+          </p>
 
-        {/* ── SECTION 10: MEOK's specific approach ──────────────────────────── */}
-        <section style={{ marginBottom: '3.5rem' }}>
-          <h2
+          <p
             style={{
-              fontSize: '1.625rem',
-              fontWeight: 700,
-              lineHeight: 1.3,
-              color: TEXT,
-              marginBottom: '1rem',
-              paddingBottom: '0.625rem',
-              borderBottom: `1px solid ${BORDER_FAINT}`,
+              fontSize: "1.0625rem",
+              lineHeight: 1.8,
+              color: MUTED_STRONG,
+              marginBottom: "1.125rem",
             }}
           >
-            What is MEOK\u2019s specific approach to phobia support?
-          </h2>
-
-          <p style={{ fontSize: '1.0625rem', lineHeight: 1.8, color: MUTED_STRONG, marginBottom: '1.125rem' }}>
-            MEOK was built on the premise that the most important thing an AI can do for someone
-            in psychological distress is not to dispense information, but to remember. To be
-            present across time. To know the difference between what you said last Tuesday and
-            what you\u2019re saying now, and to hold that difference as meaningful.
+            MEOK&apos;s role in these moments is not to push you toward confrontation.
+            It is to create a brief, reflective pause between the avoidance urge and
+            the avoidance action. Even thirty seconds of grounded reflection \u2014
+            naming the fear, acknowledging the urge, identifying what avoidance costs
+            \u2014 can interrupt the automatic pattern. It will not always result in
+            approach. But approach becomes more possible when the decision is conscious
+            rather than reflexive.
           </p>
 
-          <p style={{ fontSize: '1.0625rem', lineHeight: 1.8, color: MUTED_STRONG, marginBottom: '1.125rem' }}>
-            For phobia support specifically, this means MEOK operates as a companion on a
-            journey rather than a resource you consult once. It holds your fear ladder. It
-            remembers your setbacks without judgment. It celebrates your progress without
-            minimising what it cost you to get there. It asks, two weeks after you mentioned
-            wanting to book a flight, whether you\u2019ve looked at routes yet.
+          <p
+            style={{
+              fontSize: "1.0625rem",
+              lineHeight: 1.8,
+              color: MUTED_STRONG,
+              marginBottom: "1.5rem",
+            }}
+          >
+            MEOK can also track these moments across time. When you have logged six
+            avoidance decisions in two weeks, the pattern becomes visible to both you
+            and MEOK. That visibility is valuable \u2014 not for inducing shame, but for
+            giving you and your therapist accurate information about where the work
+            currently needs to happen.
           </p>
 
-          <p style={{ fontSize: '1.0625rem', lineHeight: 1.8, color: MUTED_STRONG, marginBottom: '1.5rem' }}>
-            MEOK\u2019s <strong style={{ color: TEXT }}>Maternal Covenant</strong> care-floor
-            \u2014 the inviolable set of governing constraints that shape every response \u2014
-            has specific protections relevant to phobia work. It cannot endorse avoidance
-            behaviours. It cannot provide false reassurance that validates the threat belief.
-            It cannot become a reassurance-seeking outlet that inadvertently maintains the
-            phobia by reducing anxiety through information rather than through exposure. These
-            constraints are architectural, not advisory.
-          </p>
-
+          {/* Grounding techniques box */}
           <div
             style={{
-              background: CARD_BG_GOLD,
-              border: `1px solid ${BORDER}`,
-              borderRadius: '0.75rem',
-              padding: '1.375rem 1.5rem',
+              background: "rgba(201,168,76,0.05)",
+              border: `1px solid ${BORDER_GOLD}`,
+              borderRadius: "0.875rem",
+              padding: "1.5rem",
             }}
           >
             <div
               style={{
-                fontSize: '0.75rem',
+                fontSize: "0.75rem",
                 fontWeight: 700,
-                letterSpacing: '0.1em',
-                textTransform: 'uppercase' as const,
+                letterSpacing: "0.1em",
+                textTransform: "uppercase" as const,
                 color: GOLD,
-                marginBottom: '0.875rem',
+                marginBottom: "0.875rem",
               }}
             >
-              MEOK Phobia Support: At a Glance
+              Grounding Techniques MEOK Supports
             </div>
-            <div style={{ display: 'flex', flexDirection: 'column' as const, gap: '0.75rem' }}>
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(auto-fill, minmax(14rem, 1fr))",
+                gap: "0.875rem",
+              }}
+            >
               {[
-                { label: 'Memory', value: 'Persistent fear hierarchy, SUDS tracking, progress across weeks' },
-                { label: 'Privacy', value: 'Sovereign architecture \u2014 no data training, full encryption' },
-                { label: 'Toolkit', value: 'Breathing, progressive muscle relaxation, grounding, debrief protocols' },
-                { label: 'Guardrails', value: 'Maternal Covenant prevents validation of avoidance or harmful reassurance' },
-                { label: 'Escalation', value: 'Always directs to professional care when distress indicators rise' },
-                { label: 'Role', value: 'Companion and coach between sessions \u2014 never a clinical replacement' },
-              ].map((row) => (
-                <div key={row.label} style={{ display: 'flex', gap: '1rem', alignItems: 'flex-start' }}>
-                  <span style={{ minWidth: '6.5rem', fontSize: '0.8125rem', fontWeight: 700, color: GOLD }}>
-                    {row.label}
-                  </span>
-                  <span style={{ fontSize: '0.9rem', color: MUTED_STRONG, lineHeight: 1.6 }}>
-                    {row.value}
-                  </span>
+                {
+                  name: "Box breathing",
+                  desc: "Inhale 4 counts, hold 4, exhale 4, hold 4. Activates the parasympathetic nervous system and reduces physiological arousal within 60\u201390 seconds.",
+                },
+                {
+                  name: "5-4-3-2-1",
+                  desc: "Name 5 things you see, 4 you can touch, 3 you hear, 2 you smell, 1 you taste. Pulls attention to the present sensory environment and out of the fear spiral.",
+                },
+                {
+                  name: "Feet on the floor",
+                  desc: "Press both feet firmly into the floor. Notice the pressure and texture. This proprioceptive technique grounds you in your body when the mind is racing.",
+                },
+                {
+                  name: "Cold water technique",
+                  desc: "Cold water on wrists or face activates the dive reflex, rapidly reducing heart rate. Simple and effective for acute fear responses.",
+                },
+                {
+                  name: "Affect labelling",
+                  desc: "Simply naming the emotion \u2014 \u201cI am feeling anxious right now\u201d \u2014 activates the prefrontal cortex and reduces amygdala reactivity. Write it to MEOK.",
+                },
+                {
+                  name: "Acceptance statement",
+                  desc: "\"This is anxiety. It is uncomfortable but not dangerous. It will peak and subside. I do not need to escape it.\" Reduces the secondary fear of the fear response itself.",
+                },
+              ].map((item) => (
+                <div
+                  key={item.name}
+                  style={{
+                    background: CARD_BG,
+                    borderRadius: "0.5rem",
+                    padding: "0.875rem",
+                  }}
+                >
+                  <div
+                    style={{
+                      fontSize: "0.8125rem",
+                      fontWeight: 700,
+                      color: GOLD,
+                      marginBottom: "0.375rem",
+                    }}
+                  >
+                    {item.name}
+                  </div>
+                  <div
+                    style={{
+                      fontSize: "0.8125rem",
+                      color: MUTED_STRONG,
+                      lineHeight: 1.65,
+                    }}
+                  >
+                    {item.desc}
+                  </div>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* ── FAQ SECTION ───────────────────────────────────────────────────── */}
-        <section style={{ marginBottom: '3.5rem' }}>
+        {/* ── SECTION 8: What MEOK cannot do ────────────────────────────── */}
+        <section style={{ marginBottom: "3.5rem" }}>
           <h2
             style={{
-              fontSize: '1.625rem',
+              fontSize: "1.625rem",
               fontWeight: 700,
               lineHeight: 1.3,
               color: TEXT,
-              marginBottom: '1.5rem',
-              paddingBottom: '0.625rem',
+              marginBottom: "1rem",
+              paddingBottom: "0.625rem",
               borderBottom: `1px solid ${BORDER_FAINT}`,
             }}
           >
-            Frequently Asked Questions
+            What can&apos;t MEOK do, and when must you seek professional clinical help?
           </h2>
 
-          <div style={{ display: 'flex', flexDirection: 'column' as const, gap: '1.125rem' }}>
+          <p
+            style={{
+              fontSize: "1.0625rem",
+              lineHeight: 1.8,
+              color: MUTED_STRONG,
+              marginBottom: "1.125rem",
+            }}
+          >
+            Honesty about limitations is not a disclaimer buried in the small print.
+            It is central to what makes MEOK trustworthy. There are things an AI
+            companion simply cannot do for phobia management, and understanding those
+            limits clearly is part of using the tool responsibly.
+          </p>
+
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column" as const,
+              gap: "0.875rem",
+              marginBottom: "1.5rem",
+            }}
+          >
             {[
               {
-                q: 'Can AI cure a phobia?',
-                a: 'No. AI cannot cure a phobia. Phobias are clinical anxiety disorders best treated by qualified therapists using evidence-based exposure therapy. An AI companion can support the process between sessions \u2014 tracking your fear hierarchy progress, coaching breathing before exposures, and holding your context across weeks \u2014 but it is a complement to professional care, never a replacement.',
+                cannot:
+                  "Diagnose a phobia or any other mental health condition",
+                why: "Clinical diagnosis requires a qualified mental health professional. MEOK will never tell you that you have a phobia, OCD, PTSD, or any other condition.",
               },
               {
-                q: 'What is a fear ladder?',
-                a: 'A fear ladder (also called an exposure hierarchy) is a structured list of feared situations ranked from least to most anxiety-provoking, each assigned a distress score from 0\u2013100 using the Subjective Units of Distress Scale (SUDS). You work through the rungs from the bottom up, building tolerance at each level before moving higher. The ladder is the core clinical tool of graduated exposure therapy.',
+                cannot: "Conduct or supervise exposure therapy",
+                why: "Live clinical supervision during exposure is necessary for safety. MEOK can support preparation and reflection, but it cannot be present in the way a therapist is during a live exposure exercise.",
               },
               {
-                q: 'What is exposure therapy for phobias?',
-                a: 'Exposure therapy is the gold-standard psychological treatment for specific phobias. It works by deliberately and repeatedly confronting feared stimuli \u2014 in imagination or in real life \u2014 in a controlled, graded way. Repeated exposure breaks the avoidance cycle, teaches the brain that danger signals are false alarms, and reduces the conditioned fear response through inhibitory learning. Success rates of 80\u201390% are consistently reported in meta-analyses.',
+                cannot: "Replace the relational dimension of therapy",
+                why: "The therapeutic relationship itself has therapeutic value. The felt sense of being witnessed by another human being who is professionally trained to help is not replicable by an AI.",
               },
               {
-                q: 'How does MEOK remember my phobia progress?',
-                a: 'MEOK uses Sovereign Memory \u2014 a 4-layer encrypted memory store \u2014 to retain your fear hierarchy, exposure attempts, SUDS scores, and reflections across every session. When you return after a week, MEOK knows exactly which rung you reached, how you felt, and what your next step is. Your data is stored on sovereign infrastructure, never used to train external models, and never shared with third parties.',
+                cannot: "Assess physical safety",
+                why: "MEOK cannot determine whether a specific height situation is actually dangerous, whether your driving anxiety is rationally founded on a genuine mechanical concern, or whether a physical symptom you have attributed to anxiety requires medical investigation.",
               },
               {
-                q: 'Can AI help with driving anxiety?',
-                a: 'Yes, within limits. AI can help you build a driving anxiety fear ladder (from sitting in a parked car through to motorway driving), coach pre-drive breathing routines, debrief after practice sessions, and track SUDS scores over time. For severe vehophobia \u2014 especially after a road accident with a possible trauma component \u2014 professional support from a trauma-informed therapist is strongly recommended alongside any AI use.',
+                cannot:
+                  "Manage complex comorbidities \u2014 PTSD, OCD, eating disorders linked to phobia",
+                why: "Phobias that co-occur with trauma, obsessive-compulsive patterns, or disordered eating require specialised clinical treatment. AI support in these contexts requires careful professional oversight.",
               },
-            ].map((item, i) => (
+              {
+                cannot: "Respond to psychiatric emergencies",
+                why: "If phobia-related anxiety triggers a panic attack severe enough to feel like a medical emergency, or if you are experiencing a mental health crisis, please contact 999 (emergency), 111 option 2 (NHS urgent mental health), or Samaritans 116 123.",
+              },
+            ].map((item) => (
               <div
-                key={i}
+                key={item.cannot}
                 style={{
-                  background: CARD_BG,
-                  border: `1px solid ${BORDER_FAINT}`,
-                  borderRadius: '0.75rem',
-                  padding: '1.25rem 1.375rem',
+                  display: "flex",
+                  flexDirection: "column" as const,
+                  gap: "0.375rem",
+                  background: "rgba(232,168,56,0.05)",
+                  border: "1px solid rgba(232,168,56,0.18)",
+                  borderRadius: "0.625rem",
+                  padding: "1rem 1.25rem",
                 }}
               >
                 <div
                   style={{
-                    fontSize: '1rem',
+                    fontSize: "0.9375rem",
                     fontWeight: 700,
-                    color: TEXT,
-                    marginBottom: '0.625rem',
-                    display: 'flex',
-                    alignItems: 'flex-start',
-                    gap: '0.625rem',
+                    color: AMBER,
                   }}
                 >
-                  <span style={{ color: GOLD, flexShrink: 0, fontWeight: 700 }}>Q</span>
-                  <span>{item.q}</span>
+                  MEOK cannot: {item.cannot}
                 </div>
                 <div
                   style={{
-                    fontSize: '0.9375rem',
+                    fontSize: "0.875rem",
+                    color: MUTED_STRONG,
+                    lineHeight: 1.7,
+                  }}
+                >
+                  {item.why}
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <p
+            style={{
+              fontSize: "1.0625rem",
+              lineHeight: 1.8,
+              color: MUTED_STRONG,
+            }}
+          >
+            The general rule: if your phobia is causing clinically significant
+            impairment to daily functioning, relationships, work, or health \u2014 and
+            especially if it has persisted for more than six months without improvement
+            \u2014 please seek professional support. NHS Talking Therapies (formerly IAPT)
+            offers free CBT via self-referral in most areas. You do not need a GP
+            referral in most parts of England. Visit{" "}
+            <strong style={{ color: TEXT }}>nhs.uk/talkingtherapies</strong> to find
+            your local service.
+          </p>
+        </section>
+
+        {/* ── SECTION 9: Sovereign Memory and persistent context ─────────── */}
+        <section style={{ marginBottom: "3.5rem" }}>
+          <h2
+            style={{
+              fontSize: "1.625rem",
+              fontWeight: 700,
+              lineHeight: 1.3,
+              color: TEXT,
+              marginBottom: "1rem",
+              paddingBottom: "0.625rem",
+              borderBottom: `1px solid ${BORDER_FAINT}`,
+            }}
+          >
+            How does Sovereign Memory make MEOK different from other AI tools for
+            phobia support?
+          </h2>
+
+          <p
+            style={{
+              fontSize: "1.0625rem",
+              lineHeight: 1.8,
+              color: MUTED_STRONG,
+              marginBottom: "1.125rem",
+            }}
+          >
+            Every other AI tool you might use for phobia support \u2014 ChatGPT,
+            Claude, Woebot, Wysa \u2014 starts each conversation from zero. They have
+            no knowledge of what you told them last week. They cannot observe the arc
+            of your progress over months. They cannot notice that three weeks ago your
+            anticipatory anxiety about needles was a 7/10 and now, after two GP
+            appointments, it has come down to a 4. This statelessness is not just an
+            inconvenience. For mental health support, it is a fundamental limitation.
+          </p>
+
+          <p
+            style={{
+              fontSize: "1.0625rem",
+              lineHeight: 1.8,
+              color: MUTED_STRONG,
+              marginBottom: "1.125rem",
+            }}
+          >
+            MEOK&apos;s Sovereign Memory is a four-layer encrypted memory architecture
+            that retains your personal context indefinitely, stored in encrypted form
+            that only you control. Fleeting memory captures in-session context. Working
+            memory holds your current active concerns and exposures. Episodic memory
+            retains specific meaningful events \u2014 the first time you completed a
+            feared exposure, the appointment you almost cancelled but attended. Semantic
+            memory holds your persistent beliefs, fears, and patterns across the entire
+            relationship.
+          </p>
+
+          <p
+            style={{
+              fontSize: "1.0625rem",
+              lineHeight: 1.8,
+              color: MUTED_STRONG,
+              marginBottom: "1.125rem",
+            }}
+          >
+            For phobia management specifically, this means MEOK knows: the specific
+            feared stimulus and its variations; the hierarchy of feared situations you
+            have described; which exposures you have attempted and when; your reported
+            distress levels before and after; the avoidance patterns across weeks; and
+            the language you use to describe your fear. When you return after a difficult
+            week, MEOK does not need the full backstory again. It is already inside
+            your story. It asks about what happened, not about who you are.
+          </p>
+
+          <p
+            style={{
+              fontSize: "1.0625rem",
+              lineHeight: 1.8,
+              color: MUTED_STRONG,
+              marginBottom: "1.5rem",
+            }}
+          >
+            Privacy is a first principle, not an afterthought. Your memory data is
+            encrypted at rest and in transit. MEOK does not train on your personal
+            data. You own your data and can export or delete it at any time. This
+            matters for mental health data in particular \u2014 the contents of your
+            fear history are sensitive, and they deserve to be held with the same
+            care as any medical record.
+          </p>
+
+          {/* Feature highlight: memory architecture */}
+          <div
+            style={{
+              background: "rgba(201,168,76,0.05)",
+              border: `1px solid ${BORDER_GOLD}`,
+              borderRadius: "0.875rem",
+              padding: "1.5rem",
+            }}
+          >
+            <div
+              style={{
+                fontSize: "0.75rem",
+                fontWeight: 700,
+                letterSpacing: "0.1em",
+                textTransform: "uppercase" as const,
+                color: GOLD,
+                marginBottom: "0.875rem",
+              }}
+            >
+              Sovereign Memory: Four Layers for Phobia Context
+            </div>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column" as const,
+                gap: "0.75rem",
+              }}
+            >
+              {[
+                {
+                  layer: "Fleeting",
+                  colour: "#6aaa64",
+                  desc: "Current session context \u2014 what you are talking about right now, the tone of the conversation, the emotional state you have expressed today.",
+                },
+                {
+                  layer: "Working",
+                  colour: "#4ea8de",
+                  desc: "Active concerns and current goals \u2014 the exposure assignment your therapist set, the upcoming appointment you are dreading, the avoidance pattern you are trying to break.",
+                },
+                {
+                  layer: "Episodic",
+                  colour: "#c9a84c",
+                  desc: "Specific meaningful events \u2014 the first time you sat in the car without having a panic attack, the blood test you finally completed, the flight you took last summer.",
+                },
+                {
+                  layer: "Semantic",
+                  colour: "#a78bfa",
+                  desc: "Persistent patterns and beliefs \u2014 your core feared outcomes, your avoidance architecture, the language and metaphors you use for your fear across years.",
+                },
+              ].map((item) => (
+                <div
+                  key={item.layer}
+                  style={{
+                    display: "flex",
+                    gap: "0.875rem",
+                    alignItems: "flex-start",
+                  }}
+                >
+                  <div
+                    style={{
+                      minWidth: "5.5rem",
+                      fontSize: "0.8rem",
+                      fontWeight: 700,
+                      color: item.colour,
+                    }}
+                  >
+                    {item.layer}
+                  </div>
+                  <div
+                    style={{
+                      fontSize: "0.875rem",
+                      color: MUTED_STRONG,
+                      lineHeight: 1.7,
+                    }}
+                  >
+                    {item.desc}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── SECTION 10: Real-world use pattern ────────────────────────── */}
+        <section style={{ marginBottom: "3.5rem" }}>
+          <h2
+            style={{
+              fontSize: "1.625rem",
+              fontWeight: 700,
+              lineHeight: 1.3,
+              color: TEXT,
+              marginBottom: "1rem",
+              paddingBottom: "0.625rem",
+              borderBottom: `1px solid ${BORDER_FAINT}`,
+            }}
+          >
+            What does a realistic week of using MEOK alongside phobia therapy look
+            like?
+          </h2>
+
+          <p
+            style={{
+              fontSize: "1.0625rem",
+              lineHeight: 1.8,
+              color: MUTED_STRONG,
+              marginBottom: "1.5rem",
+            }}
+          >
+            Abstract descriptions of AI support are less useful than a concrete picture
+            of how the tool integrates into a real working week. The following is a
+            representative example for someone managing a needle phobia while also
+            seeing a CBT therapist fortnightly. The schedule is illustrative, not
+            prescriptive. Your therapist&apos;s recommendations always take precedence.
+          </p>
+
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column" as const,
+              gap: "0.875rem",
+            }}
+          >
+            {[
+              {
+                day: "Monday (post-therapy session)",
+                desc: "You have just come from your CBT appointment. Your therapist has assigned homework: make a GP appointment for a routine blood test you have been avoiding for eight months. You describe the assignment to MEOK, voice the catastrophic thoughts, and write out your fear hierarchy for blood tests. MEOK stores all of it and confirms the homework.",
+              },
+              {
+                day: "Tuesday (avoidance urge arrives)",
+                desc: "You go to book the appointment and your anxiety spikes. You message MEOK instead of closing the browser. MEOK asks you to name exactly what you are afraid will happen. You write it out. MEOK asks: is that prediction accurate? You stay in the conversation for seven minutes. You book the appointment.",
+              },
+              {
+                day: "Thursday (anticipatory processing)",
+                desc: "The appointment is in three days and the dread is building. You journal with MEOK about what specifically you are afraid of \u2014 the sight of the needle, the loss of control, the fear of fainting. MEOK introduces the applied tension awareness concept your therapist discussed and helps you practise the breathing sequence.",
+              },
+              {
+                day: "Saturday (day before appointment)",
+                desc: "You do a five-minute grounding exercise with MEOK. 5-4-3-2-1. Box breathing. You write an acceptance statement. MEOK reflects it back and asks what you want to remind yourself of when you are in the waiting room tomorrow.",
+              },
+              {
+                day: "Sunday (post-appointment debrief)",
+                desc: "You went. The distress peaked at around 65/100 and came down by the time you left the building. You debrief with MEOK. It notices that the peak was lower than your prediction of 80+. It stores the episode. Next session it will surface this as evidence against the catastrophic prediction.",
+              },
+              {
+                day: "Following week (pattern tracking)",
+                desc: "You come to MEOK for your regular Sunday evening check-in. It recalls the blood test episode, notes that you rated the avoidance urge before booking as a 9/10 and the actual experience as a 65/100, and asks how that comparison sits with you. You bring this data to your therapist on Monday.",
+              },
+            ].map((item) => (
+              <div
+                key={item.day}
+                style={{
+                  background: CARD_BG,
+                  border: `1px solid ${BORDER_FAINT}`,
+                  borderRadius: "0.625rem",
+                  padding: "1.125rem 1.375rem",
+                }}
+              >
+                <div
+                  style={{
+                    fontSize: "0.875rem",
+                    fontWeight: 700,
+                    color: GOLD,
+                    marginBottom: "0.5rem",
+                  }}
+                >
+                  {item.day}
+                </div>
+                <div
+                  style={{
+                    fontSize: "0.9375rem",
                     color: MUTED_STRONG,
                     lineHeight: 1.75,
-                    paddingLeft: '1.375rem',
+                  }}
+                >
+                  {item.desc}
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* ── SECTION 11: FAQ ────────────────────────────────────────────── */}
+        <section style={{ marginBottom: "3.5rem" }}>
+          <h2
+            style={{
+              fontSize: "1.625rem",
+              fontWeight: 700,
+              lineHeight: 1.3,
+              color: TEXT,
+              marginBottom: "1.5rem",
+              paddingBottom: "0.625rem",
+              borderBottom: `1px solid ${BORDER_FAINT}`,
+            }}
+          >
+            Frequently asked questions about AI and phobia management
+          </h2>
+
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column" as const,
+              gap: "1.25rem",
+            }}
+          >
+            {[
+              {
+                q: "Can MEOK AI help me overcome a phobia?",
+                a: "MEOK is not a clinical tool and cannot treat or cure a phobia. However, it can meaningfully support the process \u2014 helping you understand the fear cycle, prepare mentally for exposure exercises your therapist has assigned, journal your anxiety before and after sessions, and stay grounded during day-to-day avoidance urges. It is a complement to professional CBT, not a replacement.",
+              },
+              {
+                q: "What is the Healer archetype and why is it good for phobia support?",
+                a: "The Healer archetype in MEOK is designed for emotional processing, patient reflection, and gentle accountability rather than intense coaching or problem-solving. It holds space, asks grounding questions, and paces conversations at the speed of your nervous system. For phobia management, this patient quality is more valuable than a productivity-oriented archetype that might push too hard.",
+              },
+              {
+                q: "How is MEOK different from Woebot or Wysa for phobia support?",
+                a: "Woebot and Wysa use scripted CBT modules without persistent memory across sessions. MEOK uses Sovereign Memory \u2014 a 4-layer encrypted memory store \u2014 that retains your specific fear history, exposure attempts, distress ratings, and avoidance patterns across weeks and months. This continuity allows MEOK to notice patterns, track genuine progress, and respond from within your story rather than from zero each session.",
+              },
+              {
+                q: "Can AI replace exposure therapy for phobias?",
+                a: "No. AI cannot replace exposure therapy. The core mechanism of phobia treatment \u2014 staying in contact with a feared stimulus long enough for anxiety to peak and naturally subside, under appropriate clinical supervision \u2014 cannot be safely conducted by an AI. MEOK supports the between-session work, the preparation, the processing, and the daily pattern tracking. Exposure therapy itself requires a trained clinician.",
+              },
+              {
+                q: "Is it safe to use MEOK if I have a severe phobia?",
+                a: "MEOK is designed to be safe as a supplementary tool. Its Maternal Covenant care-floor prevents the AI from providing harmful advice, validating avoidance in ways that deepen impairment, or becoming a substitute for urgent professional care. For severe phobias causing significant daily impairment, please work with a qualified therapist. MEOK encourages this and will always prompt professional referral when indicators warrant it.",
+              },
+            ].map((item) => (
+              <div
+                key={item.q}
+                style={{
+                  background: CARD_BG,
+                  border: `1px solid ${BORDER_FAINT}`,
+                  borderRadius: "0.75rem",
+                  padding: "1.25rem 1.375rem",
+                }}
+              >
+                <div
+                  style={{
+                    fontSize: "1rem",
+                    fontWeight: 700,
+                    color: TEXT,
+                    marginBottom: "0.625rem",
+                    lineHeight: 1.4,
+                  }}
+                >
+                  {item.q}
+                </div>
+                <div
+                  style={{
+                    fontSize: "0.9375rem",
+                    color: MUTED_STRONG,
+                    lineHeight: 1.75,
                   }}
                 >
                   {item.a}
@@ -1348,43 +1821,318 @@ export default function AIForPhobiasPage() {
           </div>
         </section>
 
-        {/* ── CRISIS RESOURCES ──────────────────────────────────────────────── */}
-        <section style={{ marginBottom: '3.5rem' }}>
+        {/* ── SECTION 12: UK Resources ───────────────────────────────────── */}
+        <section style={{ marginBottom: "3.5rem" }}>
+          <h2
+            style={{
+              fontSize: "1.625rem",
+              fontWeight: 700,
+              lineHeight: 1.3,
+              color: TEXT,
+              marginBottom: "1rem",
+              paddingBottom: "0.625rem",
+              borderBottom: `1px solid ${BORDER_FAINT}`,
+            }}
+          >
+            What UK resources exist for phobia treatment and mental health support?
+          </h2>
+
+          <p
+            style={{
+              fontSize: "1.0625rem",
+              lineHeight: 1.8,
+              color: MUTED_STRONG,
+              marginBottom: "1.5rem",
+            }}
+          >
+            If you are in the UK and your phobia is causing significant distress or
+            impairment, you have access to free, evidence-based treatment through
+            the NHS. The following resources are available right now without a
+            GP referral in most areas of England.
+          </p>
+
           <div
             style={{
-              background: 'rgba(76,130,175,0.06)',
-              border: '1px solid rgba(76,130,175,0.2)',
-              borderRadius: '0.75rem',
-              padding: '1.375rem 1.5rem',
+              display: "flex",
+              flexDirection: "column" as const,
+              gap: "0.875rem",
+            }}
+          >
+            {[
+              {
+                name: "NHS Talking Therapies (formerly IAPT)",
+                detail:
+                  "Free CBT and other psychological therapies for anxiety disorders including phobias. Self-referral available in most English areas. Visit nhs.uk/talkingtherapies.",
+                tag: "Free CBT",
+                tagColour: GREEN,
+              },
+              {
+                name: "Samaritans",
+                detail:
+                  "116 123 \u2014 free, 24 hours a day, 7 days a week. Not only for crisis \u2014 also for anyone struggling and needing to talk without judgment.",
+                tag: "Free 24/7",
+                tagColour: GREEN,
+              },
+              {
+                name: "Mind Infoline",
+                detail:
+                  "0300 123 3393 \u2014 information and support for mental health, including finding local services. Monday to Friday, 9am\u20136pm.",
+                tag: "Information & referral",
+                tagColour: "#4ea8de",
+              },
+              {
+                name: "No Panic",
+                detail:
+                  "0300 772 9844 \u2014 UK charity specifically for anxiety disorders, phobias, OCD, and panic. Runs a helpline and recovery programmes.",
+                tag: "Phobia-specific",
+                tagColour: GOLD,
+              },
+              {
+                name: "NHS urgent mental health support",
+                detail:
+                  "Call 111, option 2 \u2014 24/7 urgent mental health support from NHS clinicians. For urgent but non-emergency mental health situations.",
+                tag: "Urgent",
+                tagColour: AMBER,
+              },
+              {
+                name: "British Psychological Society \u2014 Find a Psychologist",
+                detail:
+                  "bps.org.uk \u2014 for finding accredited private CBT therapists with specialist phobia experience if you prefer not to wait for NHS therapy.",
+                tag: "Private",
+                tagColour: MUTED,
+              },
+            ].map((item) => (
+              <div
+                key={item.name}
+                style={{
+                  display: "flex",
+                  gap: "1rem",
+                  alignItems: "flex-start",
+                  background: CARD_BG,
+                  border: `1px solid ${BORDER_FAINT}`,
+                  borderRadius: "0.625rem",
+                  padding: "1rem 1.25rem",
+                }}
+              >
+                <div style={{ flex: 1 }}>
+                  <div
+                    style={{
+                      display: "flex",
+                      flexWrap: "wrap",
+                      alignItems: "center",
+                      gap: "0.625rem",
+                      marginBottom: "0.375rem",
+                    }}
+                  >
+                    <div
+                      style={{
+                        fontSize: "0.9375rem",
+                        fontWeight: 700,
+                        color: TEXT,
+                      }}
+                    >
+                      {item.name}
+                    </div>
+                    <span
+                      style={{
+                        fontSize: "0.65rem",
+                        fontWeight: 700,
+                        letterSpacing: "0.06em",
+                        textTransform: "uppercase" as const,
+                        color: item.tagColour,
+                        border: `1px solid ${item.tagColour}44`,
+                        borderRadius: "999px",
+                        padding: "0.15rem 0.5rem",
+                      }}
+                    >
+                      {item.tag}
+                    </span>
+                  </div>
+                  <div
+                    style={{
+                      fontSize: "0.875rem",
+                      color: MUTED_STRONG,
+                      lineHeight: 1.7,
+                    }}
+                  >
+                    {item.detail}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* ── SECOND PULL QUOTE ──────────────────────────────────────────── */}
+        <blockquote
+          style={{
+            margin: "2.5rem 0",
+            padding: "1.75rem 2rem",
+            borderLeft: `4px solid ${GREEN}`,
+            background: "rgba(106,170,100,0.05)",
+            borderRadius: "0 0.75rem 0.75rem 0",
+          }}
+        >
+          <p
+            style={{
+              fontSize: "1.125rem",
+              fontStyle: "italic",
+              lineHeight: 1.75,
+              color: TEXT,
+              marginBottom: "0.75rem",
+            }}
+          >
+            &ldquo;The hardest thing about a phobia is not the feared thing itself.
+            It&apos;s the exhausting vigilance of building a life around not encountering
+            it. MEOK is for the moments between therapy \u2014 the small daily choices
+            where avoidance or approach is decided, quietly, before anyone else
+            is watching.&rdquo;
+          </p>
+          <cite
+            style={{
+              fontSize: "0.8125rem",
+              color: GREEN,
+              fontStyle: "normal",
+              fontWeight: 600,
+            }}
+          >
+            Nicholas Templeman, Founder \u2014 MEOK AI LABS
+          </cite>
+        </blockquote>
+
+        {/* ── SECTION 13: The Maternal Covenant and safety architecture ───── */}
+        <section style={{ marginBottom: "3.5rem" }}>
+          <h2
+            style={{
+              fontSize: "1.625rem",
+              fontWeight: 700,
+              lineHeight: 1.3,
+              color: TEXT,
+              marginBottom: "1rem",
+              paddingBottom: "0.625rem",
+              borderBottom: `1px solid ${BORDER_FAINT}`,
+            }}
+          >
+            How does MEOK&apos;s safety architecture protect users managing a phobia?
+          </h2>
+
+          <p
+            style={{
+              fontSize: "1.0625rem",
+              lineHeight: 1.8,
+              color: MUTED_STRONG,
+              marginBottom: "1.125rem",
+            }}
+          >
+            AI tools used for mental health support carry genuine risks if poorly
+            designed. An AI that validates avoidance as a reasonable long-term
+            strategy, that provides false reassurance to reduce distress in the moment,
+            or that fails to escalate when a user is in genuine crisis, is not a
+            mental health support tool. It is a comfort machine that makes the
+            underlying condition worse. MEOK is designed differently.
+          </p>
+
+          <p
+            style={{
+              fontSize: "1.0625rem",
+              lineHeight: 1.8,
+              color: MUTED_STRONG,
+              marginBottom: "1.125rem",
+            }}
+          >
+            The <strong style={{ color: TEXT }}>Maternal Covenant</strong> is MEOK&apos;s
+            care-floor architecture \u2014 a set of inviolable constraints, governed
+            by the Byzantine Council of forty-three distributed AI agents, that define
+            what MEOK will never do regardless of what a user asks. For phobia management
+            specifically, these constraints include: never validating avoidance as a
+            sufficient long-term solution; never pretending to be capable of delivering
+            clinical exposure therapy; always escalating when language suggests a user
+            is in crisis; and always being explicit about the distinction between AI
+            support and professional clinical treatment.
+          </p>
+
+          <p
+            style={{
+              fontSize: "1.0625rem",
+              lineHeight: 1.8,
+              color: MUTED_STRONG,
+              marginBottom: "1.5rem",
+            }}
+          >
+            The Byzantine Council is MEOK&apos;s distributed governance layer. Rather than
+            a single AI model making all decisions, a council of forty-three specialised
+            agents must reach consensus before certain response types are approved. This
+            architecture prevents any single point of failure in safety-critical
+            decisions \u2014 including those that arise in sensitive mental health
+            conversations. It is named after the Byzantine Fault Tolerance problem in
+            computer science: a system that can reach correct consensus even when some
+            nodes fail or behave unexpectedly.
+          </p>
+
+          {/* Safety architecture callout */}
+          <div
+            style={{
+              background: "rgba(232,168,56,0.05)",
+              border: "1px solid rgba(232,168,56,0.22)",
+              borderRadius: "0.875rem",
+              padding: "1.5rem",
             }}
           >
             <div
               style={{
-                fontSize: '0.75rem',
+                fontSize: "0.75rem",
                 fontWeight: 700,
-                letterSpacing: '0.1em',
-                textTransform: 'uppercase' as const,
-                color: '#7ab0d4',
-                marginBottom: '0.875rem',
+                letterSpacing: "0.1em",
+                textTransform: "uppercase" as const,
+                color: AMBER,
+                marginBottom: "0.875rem",
               }}
             >
-              UK Professional Support &amp; Crisis Resources
+              Maternal Covenant Constraints Relevant to Phobia Support
             </div>
-            <div style={{ display: 'flex', flexDirection: 'column' as const, gap: '0.5rem' }}>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column" as const,
+                gap: "0.625rem",
+              }}
+            >
               {[
-                { label: 'Samaritans', detail: '116 123 \u2014 free, 24/7, for any emotional distress' },
-                { label: 'Mind infoline', detail: '0300 123 3393 \u2014 Mon\u2013Fri 9am\u20136pm' },
-                { label: 'NHS Talking Therapies', detail: 'Self-refer for free CBT (includes exposure therapy for phobias) at nhs.uk/mental-health/talking-therapies' },
-                { label: 'BABCP finder', detail: 'Find an accredited CBT therapist at babcp.com/find-a-therapist' },
-                { label: 'NHS urgent mental health', detail: '111 option 2 \u2014 for urgent mental health support' },
-                { label: 'Emergency', detail: '999 \u2014 if you or someone else is in immediate danger' },
-              ].map((r) => (
-                <div key={r.label} style={{ display: 'flex', gap: '0.75rem', alignItems: 'flex-start' }}>
-                  <span style={{ minWidth: '10rem', fontSize: '0.8125rem', fontWeight: 700, color: '#7ab0d4' }}>
-                    {r.label}
+                "Never validate avoidance as a sufficient long-term strategy for phobia management",
+                "Never simulate or supervise live exposure therapy",
+                "Always distinguish between AI support and clinical treatment",
+                "Always escalate language indicating a mental health crisis to professional resources",
+                "Never provide false reassurance that reduces appropriate help-seeking",
+                "Never become a comfort dependency that replaces rather than supports professional care",
+                "Always hold the user\u2019s long-term wellbeing above immediate emotional comfort",
+              ].map((constraint) => (
+                <div
+                  key={constraint}
+                  style={{
+                    display: "flex",
+                    gap: "0.75rem",
+                    alignItems: "flex-start",
+                  }}
+                >
+                  <span
+                    style={{
+                      color: GREEN,
+                      fontWeight: 700,
+                      fontSize: "0.9rem",
+                      flexShrink: 0,
+                      marginTop: "0.1rem",
+                    }}
+                  >
+                    &#10003;
                   </span>
-                  <span style={{ fontSize: '0.875rem', color: MUTED_STRONG, lineHeight: 1.6 }}>
-                    {r.detail}
+                  <span
+                    style={{
+                      fontSize: "0.875rem",
+                      color: MUTED_STRONG,
+                      lineHeight: 1.65,
+                    }}
+                  >
+                    {constraint}
                   </span>
                 </div>
               ))}
@@ -1392,181 +2140,358 @@ export default function AIForPhobiasPage() {
           </div>
         </section>
 
-        {/* ── CTA ───────────────────────────────────────────────────────────── */}
-        <section>
-          <div
+        {/* ── SUMMARY SECTION ────────────────────────────────────────────── */}
+        <section style={{ marginBottom: "3.5rem" }}>
+          <h2
             style={{
-              background: 'linear-gradient(135deg, rgba(201,168,76,0.1) 0%, rgba(201,168,76,0.04) 100%)',
-              border: `1px solid ${BORDER}`,
-              borderRadius: '1rem',
-              padding: '2.5rem 2rem',
-              textAlign: 'center' as const,
+              fontSize: "1.625rem",
+              fontWeight: 700,
+              lineHeight: 1.3,
+              color: TEXT,
+              marginBottom: "1rem",
+              paddingBottom: "0.625rem",
+              borderBottom: `1px solid ${BORDER_FAINT}`,
             }}
           >
-            <div
-              style={{
-                fontSize: '0.75rem',
-                fontWeight: 700,
-                letterSpacing: '0.12em',
-                textTransform: 'uppercase' as const,
-                color: GOLD,
-                marginBottom: '1rem',
-              }}
-            >
-              MEOK AI LABS
-            </div>
-            <h3
-              style={{
-                fontSize: 'clamp(1.375rem, 3.5vw, 1.875rem)',
-                fontWeight: 800,
-                lineHeight: 1.25,
-                color: TEXT,
-                marginBottom: '1rem',
-              }}
-            >
-              Start building your fear ladder today
-            </h3>
-            <p
-              style={{
-                fontSize: '1rem',
-                lineHeight: 1.75,
-                color: MUTED_STRONG,
-                maxWidth: '32rem',
-                margin: '0 auto 1.75rem',
-              }}
-            >
-              MEOK remembers your exposure hierarchy, tracks your SUDS scores across weeks, and
-              walks with you through every rung \u2014 with a care-floor that never loses sight of
-              your safety. A companion for the space between sessions.
-            </p>
-            <Link
-              href="/birth"
-              style={{
-                display: 'inline-block',
-                background: GOLD,
-                color: BG,
-                fontWeight: 700,
-                fontSize: '0.9375rem',
-                letterSpacing: '0.04em',
-                padding: '0.875rem 2.25rem',
-                borderRadius: '0.5rem',
-                textDecoration: 'none',
-              }}
-            >
-              Meet your MEOK companion
-            </Link>
-            <p style={{ marginTop: '1rem', fontSize: '0.8125rem', color: MUTED_FAINT }}>
-              Sovereign memory. No training on your data. Your fear ladder stays private.
-            </p>
-          </div>
-        </section>
+            Can MEOK help you manage fear and avoidance? An honest summary
+          </h2>
 
-        {/* ── RELATED READING ───────────────────────────────────────────────── */}
-        <section style={{ marginTop: '4rem' }}>
+          <p
+            style={{
+              fontSize: "1.0625rem",
+              lineHeight: 1.8,
+              color: MUTED_STRONG,
+              marginBottom: "1.125rem",
+            }}
+          >
+            Yes \u2014 with clear limits. MEOK is not a replacement for CBT or exposure
+            therapy. It cannot diagnose a phobia, conduct supervised exposures, or manage
+            psychiatric emergencies. If your phobia is causing clinically significant
+            impairment, please pursue professional care through NHS Talking Therapies
+            or a private CBT therapist.
+          </p>
+
+          <p
+            style={{
+              fontSize: "1.0625rem",
+              lineHeight: 1.8,
+              color: MUTED_STRONG,
+              marginBottom: "1.125rem",
+            }}
+          >
+            What MEOK can do is fill the significant gap between therapy sessions.
+            It can help you understand the phobia cycle. It can hold the context of
+            your fears across weeks and months. It can support preparation before
+            exposures and processing after them. It can interrupt avoidance urges
+            in the moment with grounding techniques and reflective questioning. And
+            it can track your progress in a way that gives you and your therapist
+            useful, accurate information about where you actually are in the work.
+          </p>
+
+          <p
+            style={{
+              fontSize: "1.0625rem",
+              lineHeight: 1.8,
+              color: MUTED_STRONG,
+              marginBottom: "1.5rem",
+            }}
+          >
+            Eight million UK adults live with a specific phobia. The majority will
+            never seek treatment. For many of them, the barrier is not lack of
+            knowledge about what helps \u2014 it is the gap between knowing and doing,
+            the daily avoidance decisions made in private, the absence of anything
+            that can hold their context across the long, incremental work of facing
+            what frightens them. MEOK was built for that gap.
+          </p>
+
+          {/* Summary table */}
           <div
             style={{
-              paddingTop: '2rem',
-              borderTop: `1px solid ${BORDER_FAINT}`,
+              background: CARD_BG,
+              border: `1px solid ${BORDER_FAINT}`,
+              borderRadius: "0.75rem",
+              overflow: "hidden",
             }}
           >
             <div
               style={{
-                fontSize: '0.75rem',
-                fontWeight: 700,
-                letterSpacing: '0.1em',
-                textTransform: 'uppercase' as const,
-                color: MUTED,
-                marginBottom: '1.25rem',
+                padding: "0.875rem 1.25rem",
+                borderBottom: `1px solid ${BORDER_FAINT}`,
+                background: CARD_BG_GOLD,
               }}
             >
-              Related Reading
+              <div
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "1fr 1fr",
+                  gap: "1rem",
+                  fontSize: "0.75rem",
+                  fontWeight: 700,
+                  letterSpacing: "0.06em",
+                  textTransform: "uppercase" as const,
+                  color: GOLD,
+                }}
+              >
+                <span>MEOK can help with</span>
+                <span>MEOK cannot replace</span>
+              </div>
             </div>
-            <div
-              style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fill, minmax(15rem, 1fr))',
-                gap: '0.875rem',
-              }}
-            >
-              {[
-                { href: '/blog/ai-for-anxiety', label: 'AI for Anxiety' },
-                { href: '/blog/ai-for-ocd', label: 'AI for OCD' },
-                { href: '/blog/ai-for-social-anxiety', label: 'AI for Social Anxiety' },
-                { href: '/blog/ai-for-ptsd', label: 'AI for PTSD' },
-                { href: '/blog/ai-companion-vs-therapist', label: 'AI Companion vs Therapist' },
-                { href: '/blog/ai-memory-explained', label: 'How MEOK Memory Works' },
-              ].map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
+            {[
+              [
+                "Understanding the phobia cycle and avoidance mechanism",
+                "Clinical diagnosis of a specific phobia",
+              ],
+              [
+                "Preparing mentally for exposure exercises",
+                "Supervised exposure therapy with a trained clinician",
+              ],
+              [
+                "Processing anxiety before and after exposures",
+                "The relational dimension of therapeutic alliance",
+              ],
+              [
+                "Grounding techniques during acute avoidance urges",
+                "Assessment of physical safety in feared situations",
+              ],
+              [
+                "Tracking distress patterns across weeks and months",
+                "Management of complex comorbidities (PTSD, OCD)",
+              ],
+              [
+                "Holding your fear history across sessions via Sovereign Memory",
+                "Psychiatric emergency response",
+              ],
+              [
+                "Gentle accountability for exposure homework",
+                "GP or psychiatric medication management",
+              ],
+            ].map(([can, cannot]) => (
+              <div
+                key={can}
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "1fr 1fr",
+                  gap: "1rem",
+                  padding: "0.875rem 1.25rem",
+                  borderBottom: `1px solid ${BORDER_FAINT}`,
+                }}
+              >
+                <div
                   style={{
-                    display: 'block',
-                    padding: '0.875rem 1rem',
-                    background: CARD_BG,
-                    border: `1px solid ${BORDER_FAINT}`,
-                    borderRadius: '0.5rem',
-                    fontSize: '0.9rem',
-                    color: MUTED_STRONG,
-                    textDecoration: 'none',
-                    fontWeight: 500,
+                    display: "flex",
+                    gap: "0.5rem",
+                    alignItems: "flex-start",
                   }}
                 >
-                  {link.label} &#8594;
-                </Link>
-              ))}
-            </div>
+                  <span
+                    style={{
+                      color: GREEN,
+                      fontWeight: 700,
+                      fontSize: "0.875rem",
+                      flexShrink: 0,
+                    }}
+                  >
+                    &#10003;
+                  </span>
+                  <span
+                    style={{
+                      fontSize: "0.8125rem",
+                      color: MUTED_STRONG,
+                      lineHeight: 1.6,
+                    }}
+                  >
+                    {can}
+                  </span>
+                </div>
+                <div
+                  style={{
+                    display: "flex",
+                    gap: "0.5rem",
+                    alignItems: "flex-start",
+                  }}
+                >
+                  <span
+                    style={{
+                      color: AMBER,
+                      fontWeight: 700,
+                      fontSize: "0.875rem",
+                      flexShrink: 0,
+                    }}
+                  >
+                    &#10005;
+                  </span>
+                  <span
+                    style={{
+                      fontSize: "0.8125rem",
+                      color: MUTED_STRONG,
+                      lineHeight: 1.6,
+                    }}
+                  >
+                    {cannot}
+                  </span>
+                </div>
+              </div>
+            ))}
           </div>
         </section>
-      </main>
 
-      {/* ── FOOTER ────────────────────────────────────────────────────────────── */}
-      <footer
-        style={{
-          borderTop: `1px solid ${BORDER_FAINT}`,
-          padding: '2.5rem 1.5rem',
-          textAlign: 'center' as const,
-        }}
-      >
-        <div style={{ maxWidth: '48rem', margin: '0 auto' }}>
-          <div style={{ fontSize: '0.875rem', fontWeight: 700, color: GOLD, marginBottom: '0.375rem' }}>
-            MEOK AI LABS
-          </div>
-          <div style={{ fontSize: '0.8125rem', color: MUTED }}>
-            Built by Nicholas Templeman &middot;{' '}
-            <a
-              href="https://x.com/meok_ai"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{ color: MUTED, textDecoration: 'none' }}
-            >
-              @meok_ai
-            </a>
-            {' '}&middot;{' '}
-            <Link href="/blog" style={{ color: MUTED, textDecoration: 'none' }}>
-              Blog
-            </Link>
-            {' '}&middot;{' '}
-            <Link href="/birth" style={{ color: MUTED, textDecoration: 'none' }}>
-              Get Started
-            </Link>
-          </div>
+        {/* ── CTA ───────────────────────────────────────────────────────── */}
+        <section
+          style={{
+            background: "rgba(201,168,76,0.07)",
+            border: `1px solid ${BORDER_GOLD}`,
+            borderRadius: "1rem",
+            padding: "2.5rem",
+            textAlign: "center" as const,
+          }}
+        >
           <div
             style={{
-              marginTop: '1rem',
-              fontSize: '0.75rem',
-              color: MUTED_FAINT,
-              lineHeight: 1.7,
-              maxWidth: '36rem',
-              marginLeft: 'auto',
-              marginRight: 'auto',
+              fontSize: "0.75rem",
+              fontWeight: 700,
+              letterSpacing: "0.12em",
+              textTransform: "uppercase" as const,
+              color: GOLD,
+              marginBottom: "0.875rem",
             }}
           >
-            This article is for educational purposes only and does not constitute medical or
-            psychological advice. Phobias are clinical conditions \u2014 please seek professional
-            support for diagnosis and treatment. MEOK AI is a companion tool, not a therapist.
+            Ready to try MEOK?
+          </div>
+          <h3
+            style={{
+              fontSize: "clamp(1.375rem, 3vw, 1.875rem)",
+              fontWeight: 800,
+              lineHeight: 1.25,
+              color: TEXT,
+              marginBottom: "0.875rem",
+              letterSpacing: "-0.01em",
+            }}
+          >
+            Start your sovereign AI companion
+          </h3>
+          <p
+            style={{
+              fontSize: "1rem",
+              lineHeight: 1.75,
+              color: MUTED_STRONG,
+              marginBottom: "1.75rem",
+              maxWidth: "30rem",
+              margin: "0 auto 1.75rem",
+            }}
+          >
+            Choose your archetype, including the Healer for emotional processing and
+            phobia support. Your memory is encrypted, yours to own, and carries
+            everything between sessions.
+          </p>
+          <Link
+            href="https://meok.ai/birth"
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "0.5rem",
+              background: GOLD,
+              color: "#0d0c18",
+              fontWeight: 800,
+              fontSize: "1rem",
+              padding: "0.875rem 2.25rem",
+              borderRadius: "9999px",
+              textDecoration: "none",
+              letterSpacing: "0.01em",
+            }}
+          >
+            Meet your MEOK companion &#8594;
+          </Link>
+          <div
+            style={{
+              marginTop: "1.125rem",
+              fontSize: "0.8rem",
+              color: MUTED_FAINT,
+            }}
+          >
+            Healer archetype available &middot; Sovereign Memory &middot; Encrypted
+            &middot; No data training
+          </div>
+        </section>
+
+        {/* ── FOOTER NOTE ───────────────────────────────────────────────── */}
+        <div
+          style={{
+            marginTop: "3rem",
+            paddingTop: "2rem",
+            borderTop: `1px solid ${BORDER_FAINT}`,
+          }}
+        >
+          <div
+            style={{
+              background: "rgba(232,168,56,0.06)",
+              border: "1px solid rgba(232,168,56,0.2)",
+              borderRadius: "0.75rem",
+              padding: "1.25rem 1.5rem",
+              fontSize: "0.8125rem",
+              color: MUTED_STRONG,
+              lineHeight: 1.8,
+              marginBottom: "1.5rem",
+            }}
+          >
+            <strong style={{ color: AMBER }}>Reminder: </strong>
+            MEOK is not a medical device, does not diagnose conditions, and does not
+            provide clinical treatment. Information in this article is educational and
+            does not constitute medical or psychological advice. If your phobia is
+            causing significant distress or impairment, please consult a qualified
+            mental health professional. For free NHS therapy, visit{" "}
+            <strong style={{ color: TEXT }}>nhs.uk/talkingtherapies</strong>. For
+            urgent support: Samaritans{" "}
+            <strong style={{ color: TEXT }}>116 123</strong> (free, 24/7).
+          </div>
+
+          <div
+            style={{
+              display: "flex",
+              flexWrap: "wrap",
+              gap: "1.5rem",
+              fontSize: "0.875rem",
+              color: MUTED_FAINT,
+            }}
+          >
+            <Link
+              href="/blog"
+              style={{ color: MUTED_FAINT, textDecoration: "none" }}
+            >
+              &#8592; All articles
+            </Link>
+            <Link
+              href="/blog/ai-for-anxiety"
+              style={{ color: MUTED_FAINT, textDecoration: "none" }}
+            >
+              AI for Anxiety
+            </Link>
+            <Link
+              href="/blog/ai-for-social-anxiety"
+              style={{ color: MUTED_FAINT, textDecoration: "none" }}
+            >
+              AI for Social Anxiety
+            </Link>
+            <Link
+              href="/blog/ai-for-health-anxiety"
+              style={{ color: MUTED_FAINT, textDecoration: "none" }}
+            >
+              AI for Health Anxiety
+            </Link>
+            <Link
+              href="/blog/meok-companion-archetypes-guide"
+              style={{ color: MUTED_FAINT, textDecoration: "none" }}
+            >
+              Archetypes Guide
+            </Link>
+            <Link
+              href="/blog/ai-companion-vs-therapist"
+              style={{ color: MUTED_FAINT, textDecoration: "none" }}
+            >
+              AI vs Therapist
+            </Link>
           </div>
         </div>
-      </footer>
+      </main>
     </div>
   )
 }

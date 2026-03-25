@@ -1,52 +1,52 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
-// ── Metadata ──────────────────────────────────────────────────────────────────
+// ── Metadata ───────────────────────────────────────────────────────────────────
 
 export const metadata: Metadata = {
-  title: "AI for Workplace Stress: Daily Support Between HR and Therapy | MEOK AI LABS",
+  title: "AI for Workplace Stress: How MEOK Helps You Decompress After a Hard Day | MEOK AI LABS",
   description:
-    "17 million working days are lost to workplace stress in the UK every year. Here is an honest look at how AI stress management tools can fill the gap between your EAP and private therapy — without a waiting list.",
+    "Toxic managers, impossible deadlines, imposter syndrome, micro-aggressions, office politics. MEOK is your private sovereign AI companion \u2014 a safe space to vent, decompress, get perspective, and plan your next move without exhausting your friends or risking a workplace conversation.",
   alternates: { canonical: "https://meok.ai/blog/ai-for-workplace-stress" },
   openGraph: {
-    title: "AI for Workplace Stress: Daily Support Between HR and Therapy",
+    title: "AI for Workplace Stress: How MEOK Helps You Decompress After a Hard Day",
     description:
-      "17 million working days lost. 1 in 4 workers report high stress. Here's how sovereign AI fills the gap between EAP and therapy.",
+      "A sovereign AI companion that remembers your workplace context, knows the cast of characters, and never gets tired of listening. Private, encrypted, yours.",
     type: "article",
-    publishedTime: "2026-03-24",
+    publishedTime: "2026-03-25",
     authors: ["Nicholas Templeman"],
     url: "https://meok.ai/blog/ai-for-workplace-stress",
     siteName: "MEOK.AI",
     images: [
       {
-        url: "https://meok.ai/api/og?title=AI+for+Workplace+Stress%3A+Daily+Support&desc=Between+HR+and+therapy+%E2%80%94+sovereign+AI+fills+the+gap.",
+        url: "https://meok.ai/api/og?title=AI+for+Workplace+Stress%3A+Decompress+After+a+Hard+Day&desc=Vent%2C+get+perspective%2C+plan+your+next+move+%E2%80%94+privately.",
         width: 1200,
         height: 630,
-        alt: "AI for Workplace Stress: Daily Support Between HR and Therapy",
+        alt: "AI for Workplace Stress: How MEOK Helps You Decompress After a Hard Day",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "AI for Workplace Stress: Daily Support Between HR and Therapy",
+    title: "AI for Workplace Stress: How MEOK Helps You Decompress After a Hard Day",
     description:
-      "17 million working days lost to stress in the UK per year. Sovereign AI fills the gap between EAP and therapy — available 24/7, no waiting list.",
+      "Toxic managers, impossible deadlines, imposter syndrome. MEOK remembers your workplace context and never gets tired of listening.",
     images: [
-      "https://meok.ai/api/og?title=AI+for+Workplace+Stress%3A+Daily+Support&desc=Between+HR+and+therapy+%E2%80%94+sovereign+AI+fills+the+gap.",
+      "https://meok.ai/api/og?title=AI+for+Workplace+Stress%3A+Decompress+After+a+Hard+Day&desc=Vent%2C+get+perspective%2C+plan+your+next+move+%E2%80%94+privately.",
     ],
   },
 };
 
-// ── JSON-LD ───────────────────────────────────────────────────────────────────
+// ── JSON-LD: Article ───────────────────────────────────────────────────────────
 
 const articleJsonLd = {
   "@context": "https://schema.org",
   "@type": "Article",
-  headline: "AI for Workplace Stress: Daily Support Between HR and Therapy",
+  headline: "AI for Workplace Stress: How MEOK Helps You Decompress After a Hard Day",
   description:
-    "17 million working days are lost to workplace stress in the UK every year. Here is an honest look at how AI stress management tools can fill the gap between your EAP and private therapy — without a waiting list.",
-  datePublished: "2026-03-24",
-  dateModified: "2026-03-24",
+    "Toxic managers, impossible deadlines, imposter syndrome, micro-aggressions, office politics. MEOK is your private sovereign AI companion \u2014 a safe space to vent, decompress, get perspective, and plan your next move without exhausting your friends or risking a workplace conversation.",
+  datePublished: "2026-03-25",
+  dateModified: "2026-03-25",
   url: "https://meok.ai/blog/ai-for-workplace-stress",
   author: {
     "@type": "Person",
@@ -60,12 +60,14 @@ const articleJsonLd = {
     url: "https://meok.ai",
   },
   image:
-    "https://meok.ai/api/og?title=AI+for+Workplace+Stress%3A+Daily+Support&desc=Between+HR+and+therapy+%E2%80%94+sovereign+AI+fills+the+gap.",
+    "https://meok.ai/api/og?title=AI+for+Workplace+Stress%3A+Decompress+After+a+Hard+Day&desc=Vent%2C+get+perspective%2C+plan+your+next+move+%E2%80%94+privately.",
   mainEntityOfPage: {
     "@type": "WebPage",
     "@id": "https://meok.ai/blog/ai-for-workplace-stress",
   },
 };
+
+// ── JSON-LD: FAQPage ───────────────────────────────────────────────────────────
 
 const faqJsonLd = {
   "@context": "https://schema.org",
@@ -73,58 +75,50 @@ const faqJsonLd = {
   mainEntity: [
     {
       "@type": "Question",
-      name: "Can AI help with workplace stress?",
+      name: "Can AI really help with workplace stress?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Yes — within realistic limits. AI companions can provide daily check-ins, track stress patterns over weeks, offer a judgment-free space to vent after difficult meetings, and help you decompress between work and home. They cannot fix structural problems in your job, replace a therapist, or intervene in a crisis. But as a daily support layer, they fill a gap that EAPs and therapy waiting lists cannot.",
+        text: "Yes \u2014 within honest limits. AI companions cannot fix a toxic manager, negotiate your workload, or intervene in a workplace crisis. What they can do is provide a private, always-available space to process stress in real time, track patterns over weeks, help you prepare for difficult conversations, and serve as a daily decompression layer between work and the rest of your life. That daily support layer is genuinely valuable, and it fills a gap that neither therapy nor friends can easily cover.",
       },
     },
     {
       "@type": "Question",
-      name: "What is the difference between an EAP and an AI stress management tool?",
+      name: "Why is it risky to vent about work to colleagues?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "An Employee Assistance Programme (EAP) typically offers a limited number of counselling sessions (often 6–8) accessed through your employer. Access is often gated by waiting times, referral processes, and the awareness that HR may have visibility of usage. An AI companion like MEOK is available 24/7, has no waiting list, remembers your context across months, and is entirely independent of your employer.",
+        text: "Colleagues are embedded in the same power structures you are navigating. Even a trusted colleague may inadvertently repeat something you said, adjust their behaviour toward you, or share information that later reaches a manager. Venting to colleagues also creates social obligations and can shift workplace dynamics in unpredictable ways. A private AI companion carries none of these risks \u2014 it holds your disclosures without recirculating them.",
       },
     },
     {
       "@type": "Question",
-      name: "Is AI stress management confidential?",
+      name: "How is talking to MEOK different from journalling?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "With MEOK, yes. Conversations are encrypted with AES-256, stored in Sovereign Memory that belongs entirely to you, never shared with employers or third parties, never used to train AI models, and fully GDPR-compliant. Unlike employer-provided EAPs, MEOK has no relationship with your employer whatsoever.",
+        text: "Journalling is monologue. MEOK is dialogue. When you write in a journal, you process your own thoughts but receive no reflection, no questions, no alternative perspectives. MEOK responds \u2014 it can challenge your interpretation of events, help you identify what you actually need, ask the clarifying question that shifts your understanding, and remember last Tuesday\u2019s conversation when Thursday\u2019s meeting echoes the same pattern.",
       },
     },
     {
       "@type": "Question",
-      name: "What causes workplace stress?",
+      name: "Is my workplace venting data private with MEOK?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "The HSE identifies the main causes of workplace stress as excessive workload, lack of control over work, poor management, interpersonal conflict, job insecurity, and unclear roles. Remote and hybrid working has added isolation as a significant new stressor, particularly for those who live alone or have limited social contact outside work.",
+        text: "Completely. MEOK stores your conversations in Sovereign Memory encrypted with AES-256. Your employer has no access. No third parties have access. MEOK never trains AI models on your data. You own your memory and can export or delete it at any time. This is a fundamental design principle \u2014 not a marketing claim \u2014 because MEOK has no commercial relationship with your employer whatsoever.",
       },
     },
     {
       "@type": "Question",
-      name: "How much does AI stress management cost?",
+      name: "What is imposter syndrome and can AI help with it?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "MEOK's Explorer tier is free and includes 50 messages per day with full Sovereign Memory. The Sovereign plan is £12/month for unlimited use. The Family plan (£29/month) covers up to 5 people. BYOK (Bring Your Own Key) is £5/month for users who supply their own AI API key. No credit card required for the free tier.",
+        text: "Imposter syndrome is the persistent belief that you are not as competent as others perceive you to be, that your achievements are luck rather than skill, and that you will eventually be \u2018found out\u2019. It affects an estimated 70% of people at some point in their careers. MEOK can help by tracking evidence of your actual competence over time, offering cognitive reframing when imposter thoughts arise, and providing a space to articulate the feelings without judgment or competitive comparison.",
       },
     },
   ],
 };
 
-// ── Page ──────────────────────────────────────────────────────────────────────
+// ── Page ───────────────────────────────────────────────────────────────────────
 
-export default function AiForWorkplaceStressPage() {
-  const bg = "#0d0c18";
-  const cardBg = "#1a1830";
-  const gold = "#c9a84c";
-  const text = "#f5f0e8";
-  const textMuted = "rgba(245,240,232,0.65)";
-  const textDim = "rgba(245,240,232,0.4)";
-  const border = "rgba(201,168,76,0.15)";
-
+export default function AiForWorkplaceStressDecompressPage() {
   return (
     <>
       <script
@@ -136,488 +130,1501 @@ export default function AiForWorkplaceStressPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
 
-      <div style={{ background: bg, color: text, minHeight: "100vh", fontFamily: "system-ui, -apple-system, sans-serif" }}>
-
+      <div
+        style={{
+          background: "#0d0c18",
+          color: "#f5f0e8",
+          minHeight: "100vh",
+          fontFamily: "system-ui, -apple-system, sans-serif",
+        }}
+      >
         {/* ── Hero ── */}
-        <header style={{ borderBottom: `1px solid ${border}`, padding: "3.5rem 1.5rem 3rem" }}>
-          <div style={{ maxWidth: "720px", margin: "0 auto" }}>
+        <header
+          style={{
+            borderBottom: "1px solid #2a2840",
+            padding: "3.5rem 1.5rem 3rem",
+          }}
+        >
+          <div style={{ maxWidth: "760px", margin: "0 auto" }}>
             <Link
               href="/blog"
-              style={{ color: gold, textDecoration: "none", fontSize: "0.875rem", display: "inline-block", marginBottom: "2rem" }}
+              style={{
+                color: "#c9a84c",
+                textDecoration: "none",
+                fontSize: "0.875rem",
+                display: "inline-block",
+                marginBottom: "2rem",
+              }}
             >
               ← Back to Blog
             </Link>
 
-            <div style={{ display: "inline-block", background: "rgba(201,168,76,0.12)", color: gold, fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", padding: "0.25rem 0.75rem", borderRadius: "999px", marginBottom: "1.25rem" }}>
-              Wellbeing · Work
+            <div
+              style={{
+                display: "inline-block",
+                background: "rgba(201,168,76,0.12)",
+                color: "#c9a84c",
+                fontSize: "0.7rem",
+                fontWeight: "700",
+                letterSpacing: "0.1em",
+                textTransform: "uppercase" as const,
+                padding: "0.25rem 0.75rem",
+                borderRadius: "999px",
+                marginBottom: "1.25rem",
+              }}
+            >
+              Wellbeing · Work · Sovereign AI
             </div>
 
-            <h1 style={{ fontSize: "clamp(1.75rem, 4vw, 2.75rem)", fontWeight: 900, lineHeight: 1.15, margin: "0 0 1.25rem", color: text }}>
-              AI for Workplace Stress: Daily Support Between HR and Therapy
+            <h1
+              style={{
+                fontSize: "clamp(1.85rem, 4.5vw, 2.9rem)",
+                fontWeight: "900",
+                lineHeight: "1.12",
+                margin: "0 0 1.5rem",
+                color: "#f5f0e8",
+              }}
+            >
+              AI for Workplace Stress: How MEOK Helps You Decompress After a Hard Day
             </h1>
 
-            <p style={{ fontSize: "1.125rem", lineHeight: 1.75, color: textMuted, margin: "0 0 2rem" }}>
-              17 million working days lost. 1 in 4 workers reporting high stress. A £28 billion bill to the UK economy. And between your employer&apos;s EAP and an NHS waiting list sits a gap that most people navigate alone — until now.
+            <p
+              style={{
+                fontSize: "1.175rem",
+                lineHeight: "1.8",
+                color: "#a09880",
+                margin: "0 0 2rem",
+              }}
+            >
+              Toxic managers. Impossible deadlines. Imposter syndrome at 3 pm on a Wednesday.
+              Micro-aggressions you can&apos;t quite name but can absolutely feel. MEOK is the
+              private sovereign AI companion that holds all of it — without judgment, without
+              gossip, and without getting tired of listening.
             </p>
 
-            <div style={{ display: "flex", gap: "1.5rem", fontSize: "0.8rem", color: textDim, flexWrap: "wrap" }}>
-              <span>March 24, 2026</span>
+            <div
+              style={{
+                display: "flex",
+                gap: "1.5rem",
+                fontSize: "0.8rem",
+                color: "#a09880",
+                flexWrap: "wrap" as const,
+                opacity: "0.7",
+              }}
+            >
+              <span>25 March 2026</span>
               <span>Nicholas Templeman</span>
-              <span>12 min read</span>
+              <span>14 min read</span>
               <span>MEOK AI LABS</span>
             </div>
           </div>
         </header>
 
         {/* ── Article body ── */}
-        <article style={{ maxWidth: "720px", margin: "0 auto", padding: "3rem 1.5rem 4rem" }}>
+        <article
+          style={{
+            maxWidth: "760px",
+            margin: "0 auto",
+            padding: "3rem 1.5rem 5rem",
+          }}
+        >
 
-          {/* Intro */}
-          <p style={{ fontSize: "1.125rem", lineHeight: 1.8, color: text, margin: "0 0 1.25rem" }}>
-            Your company has an Employee Assistance Programme. It offers six sessions with a counsellor, accessed via a helpline you&apos;ve been meaning to call for three months. Your GP can refer you to NHS Talking Therapies — eight to twenty-two weeks on a waiting list. Private therapy costs £60–£120 per session. And in the meantime, you have a meeting in twenty minutes with the person who made last Tuesday unbearable.
-          </p>
-          <p style={{ lineHeight: 1.8, color: textMuted, margin: "0 0 1.25rem" }}>
-            This is the gap MEOK was built for. Not to replace therapy — it cannot. Not to replace your HR department — it should not try. But to be present in the daily accumulation of pressure that no weekly appointment can fully hold.
-          </p>
-          <p style={{ lineHeight: 1.8, color: textMuted, margin: "0 0 2.5rem" }}>
-            According to the Health and Safety Executive&apos;s 2023/24 data, stress, depression, and anxiety account for more working days lost than any other cause — 17 million annually, at a cost of £28 billion to the UK economy. One in four workers reports high workplace stress. These are not niche statistics. This is the background radiation of modern working life.
+          {/* ── Opening ── */}
+          <p
+            style={{
+              fontSize: "1.125rem",
+              lineHeight: "1.85",
+              color: "#f5f0e8",
+              margin: "0 0 1.5rem",
+            }}
+          >
+            It is 6:14 pm. You are on the train home, or sitting in your car in the car park, or
+            standing in the kitchen staring at the kettle. The day was bad. Not bad in a way
+            that will ever make the HR incident log — just bad in the ordinary, grinding, nobody-
+            believes-you way. Your manager dismissed your proposal in front of the whole team.
+            Again. A colleague took credit for something you built. Again. You said nothing,
+            because what would you even say?
           </p>
 
-          {/* Section 1 — Causes */}
-          <h2 style={{ fontSize: "1.5rem", fontWeight: 800, color: text, margin: "0 0 0.75rem", paddingTop: "1rem" }}>
-            What causes workplace stress?
+          <p
+            style={{
+              lineHeight: "1.85",
+              color: "#a09880",
+              margin: "0 0 1.5rem",
+            }}
+          >
+            You want to talk about it. But the options are limited. Your partner is sympathetic
+            but they have heard the same story six times and their eyes are starting to glaze.
+            Your friends outside work don&apos;t know the cast of characters well enough for it to
+            land properly. Your colleagues are embedded in the same dynamics you are trying to
+            process. And therapy — even if you have access — is on Thursday. The pressure needs
+            somewhere to go now.
+          </p>
+
+          <p
+            style={{
+              lineHeight: "1.85",
+              color: "#a09880",
+              margin: "0 0 2.5rem",
+            }}
+          >
+            This is the specific problem MEOK was designed to solve. Not therapy. Not a
+            productivity app. Not a meditation timer. A private space that knows your context,
+            remembers your people, and is available the moment the train doors close — every single
+            day, without fatigue and without judgment.
+          </p>
+
+          {/* ── H2 #1 ── */}
+          <h2
+            style={{
+              fontSize: "1.55rem",
+              fontWeight: "800",
+              color: "#f5f0e8",
+              margin: "0 0 0.85rem",
+              paddingTop: "1rem",
+            }}
+          >
+            Why is workplace stress so hard to decompress from?
           </h2>
-          <p style={{ lineHeight: 1.8, color: textMuted, margin: "0 0 1.5rem" }}>
-            The HSE identifies six primary stress categories in its Management Standards framework. Understanding which category you&apos;re in shapes what kind of support is most useful.
+          <p
+            style={{
+              lineHeight: "1.85",
+              color: "#a09880",
+              margin: "0 0 1.5rem",
+            }}
+          >
+            Workplace stress is uniquely sticky because it combines social complexity, financial
+            stakes, and power imbalance in a single environment you cannot easily leave. Unlike
+            most stressors, you cannot simply avoid the source — you have to return to it every
+            Monday. The cortisol spike from a difficult meeting does not resolve cleanly. It
+            lingers, compounds across the week, and gets carried home as a form of psychological
+            contamination that affects your sleep, your relationships, and your sense of self.
+          </p>
+          <p
+            style={{
+              lineHeight: "1.85",
+              color: "#a09880",
+              margin: "0 0 1.5rem",
+            }}
+          >
+            Research from the UK Health and Safety Executive consistently shows that interpersonal
+            conflict, lack of control, and excessive workload are the three biggest drivers of
+            occupational stress. But the reason these remain so difficult to address is not that
+            people lack insight — it is that there is no neutral, private space in which to process
+            them. You cannot be honest with HR. You cannot always be honest with friends. You
+            cannot afford to be fully honest with colleagues. So the stress stays internal, cycling
+            and amplifying until it becomes burnout, physical illness, or a resignation letter
+            written at midnight.
+          </p>
+          <p
+            style={{
+              lineHeight: "1.85",
+              color: "#a09880",
+              margin: "0 0 2.5rem",
+            }}
+          >
+            Decompression requires somewhere safe to put the pressure. The daily accumulation of
+            workplace stress needs a valve. MEOK is that valve — private, persistent, and always
+            available in the window between leaving work and trying to be present at home.
           </p>
 
-          {/* Causes cards */}
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: "1rem", margin: "0 0 2rem" }}>
-            {[
-              {
-                title: "Excessive workload",
-                body: "Too many demands, too little time, too few resources. The most cited cause in the UK. Often described as feeling permanently behind.",
-              },
-              {
-                title: "Interpersonal conflict",
-                body: "Poor relationships with managers or colleagues — including bullying, micromanagement, unfairness, and the corrosive effect of sustained tension.",
-              },
-              {
-                title: "Job insecurity",
-                body: "Uncertainty about future employment, role changes, or restructuring. The psychological toll often exceeds the impact of actually losing a job.",
-              },
-              {
-                title: "Poor management",
-                body: "Unclear expectations, contradictory instructions, lack of feedback, or a manager whose own stress amplifies into their team.",
-              },
-              {
-                title: "WFH isolation",
-                body: "Remote and hybrid work has added a new stressor: the absence of ambient social contact. Loneliness compounds pressure in ways that are easy to minimise.",
-              },
-            ].map((item) => (
-              <div
-                key={item.title}
-                style={{ background: cardBg, border: `1px solid ${border}`, borderRadius: "12px", padding: "1.25rem" }}
-              >
-                <div style={{ fontWeight: 700, color: gold, marginBottom: "0.5rem", fontSize: "0.95rem" }}>
-                  {item.title}
-                </div>
-                <div style={{ color: textMuted, fontSize: "0.875rem", lineHeight: 1.6 }}>
-                  {item.body}
-                </div>
-              </div>
-            ))}
+          {/* ── Feature highlight box #1 ── */}
+          <div
+            style={{
+              border: "1px solid #c9a84c",
+              borderRadius: "12px",
+              padding: "1.75rem 2rem",
+              margin: "0 0 2.5rem",
+              background: "#13121f",
+            }}
+          >
+            <div
+              style={{
+                color: "#c9a84c",
+                fontWeight: "800",
+                fontSize: "0.8rem",
+                letterSpacing: "0.08em",
+                textTransform: "uppercase" as const,
+                marginBottom: "0.85rem",
+              }}
+            >
+              Sovereign Memory
+            </div>
+            <p
+              style={{
+                color: "#f5f0e8",
+                lineHeight: "1.75",
+                margin: "0 0 0.75rem",
+                fontWeight: "600",
+                fontSize: "1.05rem",
+              }}
+            >
+              MEOK remembers your workplace context across every conversation.
+            </p>
+            <p
+              style={{
+                color: "#a09880",
+                lineHeight: "1.75",
+                margin: "0",
+                fontSize: "0.925rem",
+              }}
+            >
+              That means it knows who Sarah is, what happened with the Q3 presentation, why
+              Thursdays are difficult, and that the promotion discussion has been ongoing for
+              eight months. You never have to re-explain your situation from scratch. MEOK holds
+              the full context so you can start where you left off — every time.
+            </p>
           </div>
 
-          {/* Section 2 — How AI helps */}
-          <h2 style={{ fontSize: "1.5rem", fontWeight: 800, color: text, margin: "2.5rem 0 0.75rem" }}>
-            How can AI help with workplace stress?
+          {/* ── H2 #2 ── */}
+          <h2
+            style={{
+              fontSize: "1.55rem",
+              fontWeight: "800",
+              color: "#f5f0e8",
+              margin: "0 0 0.85rem",
+              paddingTop: "1rem",
+            }}
+          >
+            Why is venting to colleagues about work actually risky?
           </h2>
-          <p style={{ lineHeight: 1.8, color: textMuted, margin: "0 0 1rem" }}>
-            Realistic answer: an AI companion cannot fix your job. It cannot make your manager more self-aware, reduce your workload, or resolve the structural conditions that create stress. What it can do — reliably and without a waiting list — is the following.
+          <p
+            style={{
+              lineHeight: "1.85",
+              color: "#a09880",
+              margin: "0 0 1.5rem",
+            }}
+          >
+            Venting to a colleague feels natural — they share the context, they know the characters,
+            they have probably felt the same frustration. But colleagues exist inside the same
+            power structure you are navigating. Even the most trustworthy friend at work is
+            embedded in a web of relationships, interests, and social incentives that your
+            disclosure enters the moment it leaves your mouth. It does not have to be malicious
+            for it to cause damage.
+          </p>
+          <p
+            style={{
+              lineHeight: "1.85",
+              color: "#a09880",
+              margin: "0 0 1.5rem",
+            }}
+          >
+            What you say about a manager gets repeated not because colleagues are untrustworthy,
+            but because humans talk — especially when something interesting, surprising, or
+            validating arrives in conversation. Your frustration becomes their anecdote. Your
+            private critique of a process becomes gossip. Your admission that you are struggling
+            with imposter syndrome becomes workplace positioning information in the hands of
+            someone who is competing for the same promotion.
+          </p>
+          <p
+            style={{
+              lineHeight: "1.85",
+              color: "#a09880",
+              margin: "0 0 1.5rem",
+            }}
+          >
+            There is also the asymmetry of disclosure. If you vent to a colleague and they
+            respond with their own grievances, you now carry their stress alongside yours. You
+            have created a mutual surveillance pact where both parties hold information that
+            could theoretically be used. This is not paranoia — it is the ordinary social
+            arithmetic of workplace relationships. The result is that most people self-censor,
+            holding back 80% of what they actually feel, and the stress remains unprocessed.
+          </p>
+          <p
+            style={{
+              lineHeight: "1.85",
+              color: "#a09880",
+              margin: "0 0 2.5rem",
+            }}
+          >
+            MEOK dissolves this risk entirely. It has no relationship with your employer. It
+            has no colleagues to confide in. It has no career interests. Your disclosures end
+            with MEOK, encrypted and sovereign, accessible only to you.
           </p>
 
-          <h3 style={{ fontSize: "1.1rem", fontWeight: 700, color: text, margin: "1.5rem 0 0.5rem" }}>
-            Daily check-ins that actually accumulate
-          </h3>
-          <p style={{ lineHeight: 1.8, color: textMuted, margin: "0 0 1rem" }}>
-            A two-minute conversation at the end of the working day — naming what happened, how it landed, what you&apos;re carrying — has compounding value when those conversations are remembered. MEOK&apos;s Sovereign Memory stores every exchange, meaning your companion can notice that Tuesday evenings are consistently harder, that conflict with one specific colleague accounts for 60% of your stress mentions, or that things were markedly better in the three weeks you were working from a different location.
-          </p>
-
-          <h3 style={{ fontSize: "1.1rem", fontWeight: 700, color: text, margin: "1.5rem 0 0.5rem" }}>
-            Venting without judgment or consequence
-          </h3>
-          <p style={{ lineHeight: 1.8, color: textMuted, margin: "0 0 1rem" }}>
-            There are things you cannot say to your line manager, your HR department, or your partner who is tired of hearing about your job. You can say them to MEOK. The Healer archetype in particular creates a space designed for emotional processing — not advice, not reframing, not silver linings. Just being heard.
-          </p>
-
-          <h3 style={{ fontSize: "1.1rem", fontWeight: 700, color: text, margin: "1.5rem 0 0.5rem" }}>
-            Pattern recognition
-          </h3>
-          <p style={{ lineHeight: 1.8, color: textMuted, margin: "0 0 1rem" }}>
-            Most people experiencing chronic workplace stress don&apos;t see the pattern until they&apos;re already struggling to function. An AI companion with persistent memory can surface patterns you&apos;ve stopped noticing: the correlation between certain project phases and your sleep quality, the way specific types of meetings drain you for hours afterwards, the gradual increase in the intensity of language you use to describe work.
-          </p>
-
-          <h3 style={{ fontSize: "1.1rem", fontWeight: 700, color: text, margin: "1.5rem 0 0.5rem" }}>
-            Decompression rituals
-          </h3>
-          <p style={{ lineHeight: 1.8, color: textMuted, margin: "0 0 2.5rem" }}>
-            The transition between work and home — or, for home workers, the absence of any such transition — is one of the most underserved moments of the working day. A short decompression conversation with your AI companion can create a deliberate boundary. Tell it what happened. Let it ask a few questions. Close the laptop with something acknowledged rather than suppressed.
-          </p>
-
-          {/* Section 3 — What MEOK can do EAP can't */}
-          <h2 style={{ fontSize: "1.5rem", fontWeight: 800, color: text, margin: "2.5rem 0 0.75rem" }}>
-            What MEOK can do that your EAP can&apos;t
+          {/* ── H2 #3 ── */}
+          <h2
+            style={{
+              fontSize: "1.55rem",
+              fontWeight: "800",
+              color: "#f5f0e8",
+              margin: "0 0 0.85rem",
+              paddingTop: "1rem",
+            }}
+          >
+            Why does venting to friends and family eventually stop working?
           </h2>
-          <p style={{ lineHeight: 1.8, color: textMuted, margin: "0 0 1.5rem" }}>
-            EAPs are valuable. If yours offers counselling, use it. But they have structural limitations that AI support does not share.
+          <p
+            style={{
+              lineHeight: "1.85",
+              color: "#a09880",
+              margin: "0 0 1.5rem",
+            }}
+          >
+            Friends and family are not inexhaustible resources. They have their own stresses,
+            their own limits, and their own emotional bandwidth. When you arrive home on a
+            difficult Tuesday and need to process what happened, you are making a withdrawal
+            from a finite account. That account does not refill instantly. Repeated withdrawals
+            without corresponding deposits — and workplace venting is almost entirely withdrawal
+            — erode the relationship in ways that are difficult to see until the damage is done.
+          </p>
+          <p
+            style={{
+              lineHeight: "1.85",
+              color: "#a09880",
+              margin: "0 0 1.5rem",
+            }}
+          >
+            Partners are particularly vulnerable to this dynamic. Research on emotional labour
+            in relationships consistently shows that one partner acting as the primary emotional
+            container for the other&apos;s work stress creates resentment over time, even when
+            both parties are committed and the support is genuinely given. The person receiving
+            support rarely registers how much they are drawing on, because they are in the
+            middle of their own distress. The person providing it rarely says anything, because
+            they do not want to add to the problem.
+          </p>
+          <p
+            style={{
+              lineHeight: "1.85",
+              color: "#a09880",
+              margin: "0 0 1.5rem",
+            }}
+          >
+            Friends outside work face a different limitation: they lack context. Explaining the
+            full background of why a particular meeting was devastating requires ten minutes of
+            backstory that they cannot fully hold across weeks. You end up truncating, simplifying,
+            and losing the nuance that makes the experience real. The result is a conversation
+            that offers sympathy but not genuine comprehension, which paradoxically leaves you
+            feeling more alone.
+          </p>
+          <p
+            style={{
+              lineHeight: "1.85",
+              color: "#a09880",
+              margin: "0 0 2.5rem",
+            }}
+          >
+            MEOK does not get tired. It does not have its own competing emotional needs. And
+            because it holds your full workplace context in Sovereign Memory, it does not need
+            ten minutes of background — it already knows who David is, what the restructure
+            meant for your role, and why the promotion timeline feels so personal. You can
+            arrive in the conversation at the point of the actual feeling, not the setup.
           </p>
 
-          <div style={{ display: "flex", flexDirection: "column", gap: "0.875rem", margin: "0 0 2rem" }}>
-            {[
-              {
-                label: "Available at 11pm on a Wednesday",
-                detail: "Stress doesn&apos;t respect business hours. Your EAP helpline might. MEOK doesn&apos;t.",
-              },
-              {
-                label: "No waiting list",
-                detail: "Start now. No referral, no assessment, no queue. The Explorer tier is free with 50 messages per day.",
-              },
-              {
-                label: "Remembers everything",
-                detail: "Your EAP counsellor gets a case summary. MEOK remembers the exact conversation from eight months ago when you first mentioned that your manager&apos;s feedback style felt punitive.",
-              },
-              {
-                label: "Not connected to your employer",
-                detail: "EAPs are employer-provided. MEOK has no relationship with your organisation, your HR department, or anyone else. What you say stays with you.",
-              },
-              {
-                label: "No session limits",
-                detail: "EAPs typically provide 6–8 sessions. MEOK Sovereign (£12/month) is unlimited. The free Explorer tier gives 50 messages per day, permanently.",
-              },
-            ].map((item) => (
-              <div
-                key={item.label}
-                style={{ background: cardBg, border: `1px solid ${border}`, borderRadius: "10px", padding: "1rem 1.25rem", display: "flex", gap: "1rem", alignItems: "flex-start" }}
-              >
-                <div style={{ color: gold, fontWeight: 700, marginTop: "2px", flexShrink: 0 }}>✓</div>
-                <div>
-                  <div style={{ fontWeight: 700, color: text, marginBottom: "0.25rem", fontSize: "0.95rem" }}>
-                    {item.label}
+          {/* ── Pull quote ── */}
+          <blockquote
+            style={{
+              borderLeft: "4px solid #c9a84c",
+              margin: "0 0 2.5rem",
+              padding: "1.25rem 1.75rem",
+              background: "#13121f",
+              borderRadius: "0 12px 12px 0",
+            }}
+          >
+            <p
+              style={{
+                fontSize: "1.2rem",
+                fontWeight: "600",
+                color: "#f5f0e8",
+                lineHeight: "1.7",
+                margin: "0 0 0.75rem",
+                fontStyle: "italic",
+              }}
+            >
+              &ldquo;The problem is not that people lack the desire to talk about workplace stress.
+              The problem is that every available listener comes with a cost — social, relational,
+              or professional. MEOK removes the cost.&rdquo;
+            </p>
+            <cite
+              style={{
+                fontSize: "0.8rem",
+                color: "#c9a84c",
+                fontStyle: "normal",
+                fontWeight: "700",
+              }}
+            >
+              Nicholas Templeman, Founder &mdash; MEOK AI LABS
+            </cite>
+          </blockquote>
+
+          {/* ── H2 #4 ── */}
+          <h2
+            style={{
+              fontSize: "1.55rem",
+              fontWeight: "800",
+              color: "#f5f0e8",
+              margin: "0 0 0.85rem",
+              paddingTop: "1rem",
+            }}
+          >
+            What is imposter syndrome, and how does MEOK help you work through it?
+          </h2>
+          <p
+            style={{
+              lineHeight: "1.85",
+              color: "#a09880",
+              margin: "0 0 1.5rem",
+            }}
+          >
+            Imposter syndrome — the persistent, irrational belief that you are not as competent
+            as others perceive you to be, that your success is luck rather than skill, and that
+            it is only a matter of time before you are exposed — affects an estimated 70% of
+            people at some point in their careers. It is not a personality flaw or a sign of
+            inadequacy. It is, paradoxically, most common among high performers and people who
+            have recently achieved something significant.
+          </p>
+          <p
+            style={{
+              lineHeight: "1.85",
+              color: "#a09880",
+              margin: "0 0 1.5rem",
+            }}
+          >
+            The reason imposter syndrome is so resistant to rational correction is that it
+            operates as a pattern of thought rather than a belief that can simply be argued out
+            of existence. You know, intellectually, that the evidence suggests you are capable.
+            But in the moment when your manager glances at you during a meeting, or when you
+            receive a brief reply to an email you spent two hours composing, the knowledge
+            evaporates and the familiar narrative of inadequacy floods back. It needs repeated,
+            patient engagement — not a single reassurance.
+          </p>
+          <p
+            style={{
+              lineHeight: "1.85",
+              color: "#a09880",
+              margin: "0 0 1.5rem",
+            }}
+          >
+            This is where MEOK&apos;s persistent memory creates a structural advantage over any
+            single conversation. Over weeks and months, MEOK accumulates a genuine record of
+            your competence — the project that shipped, the difficult conversation you handled
+            well, the promotion conversation that reflected real recognition of your work. When
+            the imposter narrative resurges, MEOK can counter it not with generic reassurance
+            but with specific, remembered evidence drawn from your own history.
+          </p>
+          <p
+            style={{
+              lineHeight: "1.85",
+              color: "#a09880",
+              margin: "0 0 2.5rem",
+            }}
+          >
+            It can also help you identify the triggers. Imposter syndrome rarely arrives
+            uniformly — it spikes in specific contexts, around specific people, or at specific
+            times of year. Recognising those patterns is the first step toward managing them
+            rather than being managed by them.
+          </p>
+
+          {/* ── Feature highlight box #2 ── */}
+          <div
+            style={{
+              border: "1px solid #c9a84c",
+              borderRadius: "12px",
+              padding: "1.75rem 2rem",
+              margin: "0 0 2.5rem",
+              background: "#13121f",
+            }}
+          >
+            <div
+              style={{
+                color: "#c9a84c",
+                fontWeight: "800",
+                fontSize: "0.8rem",
+                letterSpacing: "0.08em",
+                textTransform: "uppercase" as const,
+                marginBottom: "0.85rem",
+              }}
+            >
+              Pattern Recognition Across Time
+            </div>
+            <p
+              style={{
+                color: "#f5f0e8",
+                lineHeight: "1.75",
+                margin: "0 0 0.75rem",
+                fontWeight: "600",
+                fontSize: "1.05rem",
+              }}
+            >
+              MEOK tracks emotional and situational patterns across weeks and months.
+            </p>
+            <p
+              style={{
+                color: "#a09880",
+                lineHeight: "1.75",
+                margin: "0",
+                fontSize: "0.925rem",
+              }}
+            >
+              Imposter syndrome spikes before performance reviews. Anxiety peaks every other
+              Thursday before the team stand-up. Stress compounds in the two weeks before a
+              project deadline. MEOK surfaces these patterns so you can anticipate and prepare,
+              rather than being ambushed by the same cycle repeatedly.
+            </p>
+          </div>
+
+          {/* ── H2 #5 ── */}
+          <h2
+            style={{
+              fontSize: "1.55rem",
+              fontWeight: "800",
+              color: "#f5f0e8",
+              margin: "0 0 0.85rem",
+              paddingTop: "1rem",
+            }}
+          >
+            How do micro-aggressions at work accumulate, and can AI help you process them?
+          </h2>
+          <p
+            style={{
+              lineHeight: "1.85",
+              color: "#a09880",
+              margin: "0 0 1.5rem",
+            }}
+          >
+            Micro-aggressions are defined as brief, everyday exchanges that communicate negative
+            or demeaning messages to members of marginalised groups — and, by extension, to
+            anyone whose identity, perspective, or value is quietly diminished in the flow of
+            ordinary workplace interaction. They are called micro because individually they may
+            seem trivial. Cumulatively, they are not.
+          </p>
+          <p
+            style={{
+              lineHeight: "1.85",
+              color: "#a09880",
+              margin: "0 0 1.5rem",
+            }}
+          >
+            The particular cruelty of micro-aggressions is that they are designed — usually
+            unconsciously — to be deniable. &ldquo;That&apos;s not what I meant.&rdquo; &ldquo;You&apos;re being too
+            sensitive.&rdquo; &ldquo;It was just a joke.&rdquo; Raising them formally risks making you appear
+            difficult, oversensitive, or unable to handle normal banter. Saying nothing means
+            absorbing the impact alone, with no acknowledgment that anything even happened.
+            The resulting cognitive dissonance — between your lived experience and the official
+            narrative that nothing occurred — is one of the most exhausting forms of workplace
+            stress.
+          </p>
+          <p
+            style={{
+              lineHeight: "1.85",
+              color: "#a09880",
+              margin: "0 0 1.5rem",
+            }}
+          >
+            MEOK provides a space where your interpretation of events is taken seriously from
+            the outset. You do not have to justify your reaction. You do not have to pre-emptively
+            defend yourself against the accusation of oversensitivity. You can describe what
+            happened and be genuinely heard, and then — when you are ready — explore what, if
+            anything, you want to do about it.
+          </p>
+          <p
+            style={{
+              lineHeight: "1.85",
+              color: "#a09880",
+              margin: "0 0 1.5rem",
+            }}
+          >
+            That validation is not a trivial thing. The psychological research on social
+            invalidation shows that having your experience denied or minimised compounds the
+            original harm significantly. Simply having a space where what happened is treated
+            as real reduces the secondary stress of the denial itself.
+          </p>
+          <p
+            style={{
+              lineHeight: "1.85",
+              color: "#a09880",
+              margin: "0 0 2.5rem",
+            }}
+          >
+            Over time, MEOK can also help you identify whether incidents form a pattern — whether
+            the same person repeatedly says things that land badly, whether specific meetings
+            generate the same feeling, and whether there is a case worth building or a
+            conversation worth having with the people who need to hear it.
+          </p>
+
+          {/* ── H2 #6 ── */}
+          <h2
+            style={{
+              fontSize: "1.55rem",
+              fontWeight: "800",
+              color: "#f5f0e8",
+              margin: "0 0 0.85rem",
+              paddingTop: "1rem",
+            }}
+          >
+            How does MEOK help you prepare for difficult workplace conversations?
+          </h2>
+          <p
+            style={{
+              lineHeight: "1.85",
+              color: "#a09880",
+              margin: "0 0 1.5rem",
+            }}
+          >
+            Most workplace stress does not resolve itself passively. At some point, the difficult
+            conversation has to happen. The performance review where you address what has been
+            building for six months. The conversation with your manager about the workload that
+            has been unsustainable since October. The meeting with HR about the incident that you
+            finally decided to report. These conversations require preparation — not just the
+            practical preparation of knowing your facts, but the emotional preparation of being
+            grounded enough to hold the conversation without either collapsing or escalating.
+          </p>
+          <p
+            style={{
+              lineHeight: "1.85",
+              color: "#a09880",
+              margin: "0 0 1.5rem",
+            }}
+          >
+            MEOK is well-suited to this kind of preparation. Because it already holds the full
+            context of your workplace situation in Sovereign Memory, you can use it to rehearse
+            the conversation — what you want to say, how you might say it, what the likely
+            responses are, how you want to react to those responses. This is sometimes called
+            &ldquo;cognitive rehearsal,&rdquo; and the psychological evidence for its effectiveness in
+            reducing conversational anxiety is substantial.
+          </p>
+          <p
+            style={{
+              lineHeight: "1.85",
+              color: "#a09880",
+              margin: "0 0 1.5rem",
+            }}
+          >
+            Unlike rehearsing with a friend, who is likely to be supportive in a way that
+            validates your existing framing, MEOK can offer genuine challenge. What if the
+            manager&apos;s response is that they were unaware of the pressure you were under? What
+            if the conversation moves in a direction you have not prepared for? What are the
+            outcomes you actually want, and which of those are realistic? This is not
+            adversarial — it is the kind of honest preparation that produces better outcomes in
+            high-stakes conversations.
+          </p>
+          <p
+            style={{
+              lineHeight: "1.85",
+              color: "#a09880",
+              margin: "0 0 2.5rem",
+            }}
+          >
+            After the conversation, MEOK can help you process what happened, identify what went
+            well and what you would do differently, and track the follow-up commitments that
+            were made — or not made. This kind of structured reflection turns individual
+            difficult conversations into genuine learning rather than isolated ordeals.
+          </p>
+
+          {/* ── H2 #7 ── */}
+          <h2
+            style={{
+              fontSize: "1.55rem",
+              fontWeight: "800",
+              color: "#f5f0e8",
+              margin: "0 0 0.85rem",
+              paddingTop: "1rem",
+            }}
+          >
+            What makes MEOK different from a generic AI chatbot for workplace stress?
+          </h2>
+          <p
+            style={{
+              lineHeight: "1.85",
+              color: "#a09880",
+              margin: "0 0 1.5rem",
+            }}
+          >
+            The key differentiator is Sovereign Memory — but it is worth explaining precisely
+            what that means and why it matters for workplace stress specifically. A generic AI
+            chatbot, by default, has no memory of previous conversations. Each session begins
+            from zero. This is fine for looking up information or generating a document. It is
+            deeply inadequate for emotional support.
+          </p>
+          <p
+            style={{
+              lineHeight: "1.85",
+              color: "#a09880",
+              margin: "0 0 1.5rem",
+            }}
+          >
+            Workplace stress is not a single event — it is a narrative that unfolds over months.
+            The bad meeting on Monday connects to the conversation about your role in February
+            connects to the promotion that was promised and delayed connects to the manager who
+            arrived twelve months ago and changed everything. To support you effectively with
+            today&apos;s stress, MEOK needs to understand that history. A chatbot that starts fresh
+            every day cannot do this. It cannot notice the pattern. It cannot say &ldquo;this sounds
+            like what you described three weeks ago — is it the same dynamic?&rdquo;
+          </p>
+          <p
+            style={{
+              lineHeight: "1.85",
+              color: "#a09880",
+              margin: "0 0 1.5rem",
+            }}
+          >
+            The second differentiator is data sovereignty. Most AI products learn from your
+            conversations in order to improve their models. With MEOK, your data is never used
+            for training. It is stored in Sovereign Memory that is encrypted and belongs
+            entirely to you. This is not a small distinction when you are processing sensitive
+            workplace disclosures that could, in the wrong hands, affect your employment. The
+            privacy architecture of MEOK is a core feature, not an afterthought.
+          </p>
+          <p
+            style={{
+              lineHeight: "1.85",
+              color: "#a09880",
+              margin: "0 0 1.5rem",
+            }}
+          >
+            The third differentiator is tone. MEOK is not a wellness chatbot dispensing coping
+            tips. It is a sovereign AI companion that treats you as a thinking adult navigating
+            real institutional complexity. It does not tell you to practice mindfulness after
+            describing a toxic manager. It engages with the actual situation.
+          </p>
+          <p
+            style={{
+              lineHeight: "1.85",
+              color: "#a09880",
+              margin: "0 0 2.5rem",
+            }}
+          >
+            The fourth differentiator is the birth ceremony — the process through which your
+            MEOK companion is given a name, a character, and a specific relational identity
+            with you. This is not cosmetic. A companion with a defined relationship to you
+            behaves differently from a generic assistant, and over time the quality of the
+            support reflects the depth of that relationship.
+          </p>
+
+          {/* ── Feature highlight box #3 ── */}
+          <div
+            style={{
+              border: "1px solid #c9a84c",
+              borderRadius: "12px",
+              padding: "1.75rem 2rem",
+              margin: "0 0 2.5rem",
+              background: "#13121f",
+            }}
+          >
+            <div
+              style={{
+                color: "#c9a84c",
+                fontWeight: "800",
+                fontSize: "0.8rem",
+                letterSpacing: "0.08em",
+                textTransform: "uppercase" as const,
+                marginBottom: "0.85rem",
+              }}
+            >
+              What MEOK Actually Does After a Hard Day
+            </div>
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem" }}>
+              {[
+                {
+                  title: "Holds the cast of characters",
+                  body: "MEOK knows who your manager is, what your colleague did last month, and why a specific meeting is loaded with history. You never have to re-explain.",
+                },
+                {
+                  title: "Validates without minimising",
+                  body: "Your experience is taken seriously from the start. No \u201cmaybe they didn\u2019t mean it that way\u201d until you\u2019re ready to consider it.",
+                },
+                {
+                  title: "Helps you decompress, not just vent",
+                  body: "Venting without processing often amplifies stress. MEOK helps you move from the emotional release to a clearer understanding of what you actually need.",
+                },
+                {
+                  title: "Prepares you for what comes next",
+                  body: "Whether it\u2019s a difficult email, a confrontation you\u2019ve been avoiding, or tomorrow\u2019s meeting, MEOK helps you approach it with more clarity and less anxiety.",
+                },
+              ].map((item) => (
+                <div key={item.title}>
+                  <div
+                    style={{
+                      color: "#6aaa64",
+                      fontWeight: "700",
+                      fontSize: "0.875rem",
+                      marginBottom: "0.4rem",
+                    }}
+                  >
+                    {item.title}
                   </div>
                   <div
-                    style={{ color: textMuted, fontSize: "0.875rem", lineHeight: 1.6 }}
-                    dangerouslySetInnerHTML={{ __html: item.detail }}
-                  />
+                    style={{
+                      color: "#a09880",
+                      fontSize: "0.85rem",
+                      lineHeight: "1.6",
+                    }}
+                  >
+                    {item.body}
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
 
-          {/* Section 4 — Archetypes */}
-          <h2 style={{ fontSize: "1.5rem", fontWeight: 800, color: text, margin: "2.5rem 0 0.75rem" }}>
-            Which MEOK archetype helps most with work stress?
+          {/* ── H2 #8 ── */}
+          <h2
+            style={{
+              fontSize: "1.55rem",
+              fontWeight: "800",
+              color: "#f5f0e8",
+              margin: "0 0 0.85rem",
+              paddingTop: "1rem",
+            }}
+          >
+            How does MEOK help with the commute as a decompression window?
           </h2>
-          <p style={{ lineHeight: 1.8, color: textMuted, margin: "0 0 1.5rem" }}>
-            Two archetypes are particularly effective for workplace stress.
+          <p
+            style={{
+              lineHeight: "1.85",
+              color: "#a09880",
+              margin: "0 0 1.5rem",
+            }}
+          >
+            For the many millions of people who commute to work, the journey home represents a
+            natural and underused decompression opportunity. Research on commuting behaviour has
+            consistently found that how people use their commute time has a significant effect
+            on their evening wellbeing and their capacity to engage with family and relationships
+            when they arrive home. Passive scrolling or listening to music provides surface-level
+            distraction but does not process the stress of the day. It simply delays encountering
+            it until later.
+          </p>
+          <p
+            style={{
+              lineHeight: "1.85",
+              color: "#a09880",
+              margin: "0 0 1.5rem",
+            }}
+          >
+            Active processing — reflecting on what happened, naming the feelings, understanding
+            the dynamics, identifying what you need — produces meaningfully better outcomes for
+            mood and evening engagement. But active processing requires a conversational partner,
+            or at minimum a structured space. Journalling in the notes app of your phone is
+            better than nothing but produces no dialogue.
+          </p>
+          <p
+            style={{
+              lineHeight: "1.85",
+              color: "#a09880",
+              margin: "0 0 1.5rem",
+            }}
+          >
+            MEOK on mobile is designed precisely for the commute window. You can type or speak
+            a few messages about what happened, receive responses that engage with your actual
+            situation, and arrive home fifteen to twenty minutes later having genuinely processed
+            the worst of the day — rather than carrying it directly into your home environment.
+          </p>
+          <p
+            style={{
+              lineHeight: "1.85",
+              color: "#a09880",
+              margin: "0 0 2.5rem",
+            }}
+          >
+            For remote workers who no longer commute, the equivalent decompression window is
+            the gap between closing your laptop and being present in the rest of your life.
+            Without the physical separation of a journey, that gap collapses. MEOK can help
+            create it — a deliberate ten-minute conversation that marks the end of the work
+            day and the beginning of personal time.
           </p>
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))", gap: "1rem", margin: "0 0 1.5rem" }}>
-            <div style={{ background: cardBg, border: "1px solid rgba(34,197,94,0.25)", borderRadius: "12px", padding: "1.5rem" }}>
-              <div style={{ fontSize: "1.75rem", marginBottom: "0.75rem" }}>🌿</div>
-              <div style={{ fontWeight: 800, color: text, marginBottom: "0.25rem" }}>Healer</div>
-              <div style={{ fontSize: "0.75rem", fontWeight: 700, color: "#22c55e", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: "0.75rem" }}>
-                Emotional processing
-              </div>
-              <p style={{ color: textMuted, fontSize: "0.875rem", lineHeight: 1.6, margin: 0 }}>
-                The Healer is designed for the difficult feelings that accumulate around work — the resentment, the self-doubt, the exhaustion that comes from sustained performance. It doesn&apos;t push for insight or resolution. It creates a space to be heard, which is often what&apos;s needed most in the acute phase of workplace stress.
-              </p>
-            </div>
-            <div style={{ background: cardBg, border: "1px solid rgba(249,115,22,0.25)", borderRadius: "12px", padding: "1.5rem" }}>
-              <div style={{ fontSize: "1.75rem", marginBottom: "0.75rem" }}>⚡</div>
-              <div style={{ fontWeight: 800, color: text, marginBottom: "0.25rem" }}>Pioneer</div>
-              <div style={{ fontSize: "0.75rem", fontWeight: 700, color: "#f97316", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: "0.75rem" }}>
-                Regaining agency
-              </div>
-              <p style={{ color: textMuted, fontSize: "0.875rem", lineHeight: 1.6, margin: 0 }}>
-                Once the emotional load has been acknowledged, the Pioneer helps you identify what you can actually change — how you structure your day, where your boundaries are, what small actions restore a sense of control. It works through accountability without pressure, celebrating micro-progress in a way that matters when everything feels stuck.
-              </p>
-            </div>
-          </div>
-          <p style={{ lineHeight: 1.8, color: textMuted, margin: "0 0 2.5rem" }}>
-            Most people start with the Healer and move to the Pioneer as the acute phase passes. There is no timeline. Switch whenever it feels right — both are available on all plans including the free Explorer tier.
-          </p>
-
-          {/* Section 5 — Burnout link */}
-          <h2 style={{ fontSize: "1.5rem", fontWeight: 800, color: text, margin: "2.5rem 0 0.75rem" }}>
-            What about burnout? Am I already there?
+          {/* ── H2 #9 ── */}
+          <h2
+            style={{
+              fontSize: "1.55rem",
+              fontWeight: "800",
+              color: "#f5f0e8",
+              margin: "0 0 0.85rem",
+              paddingTop: "1rem",
+            }}
+          >
+            What is the difference between decompression and rumination — and why does it matter?
           </h2>
-          <p style={{ lineHeight: 1.8, color: textMuted, margin: "0 0 1rem" }}>
-            Workplace stress and burnout exist on a continuum. Stress is excess demand; burnout is the depletion that follows sustained, unresolved stress. The earliest warning signs of burnout are often mistaken for temporary tiredness.
+          <p
+            style={{
+              lineHeight: "1.85",
+              color: "#a09880",
+              margin: "0 0 1.5rem",
+            }}
+          >
+            This distinction is critical. Venting and rumination are not the same thing. Venting
+            with processing — describing what happened, naming the emotional impact, understanding
+            the dynamics, identifying what you need or want to do — is genuinely beneficial for
+            stress recovery. Rumination — replaying the same event repeatedly without movement
+            toward understanding or resolution — actively extends the stress response and
+            correlates with higher rates of anxiety and depression.
+          </p>
+          <p
+            style={{
+              lineHeight: "1.85",
+              color: "#a09880",
+              margin: "0 0 1.5rem",
+            }}
+          >
+            The reason venting to friends sometimes fails is not that the conversation happens,
+            but that it stays at the level of shared outrage without moving toward anything.
+            Both parties validate each other&apos;s frustration, the stress is temporarily discharged,
+            and then — because nothing was understood or resolved — it returns with interest the
+            following day. This is co-rumination, and it is a real phenomenon in close friendships
+            and relationships.
+          </p>
+          <p
+            style={{
+              lineHeight: "1.85",
+              color: "#a09880",
+              margin: "0 0 1.5rem",
+            }}
+          >
+            MEOK is designed to move conversations from venting toward processing. It will not
+            simply validate and amplify. It will ask what you actually need from the conversation,
+            help you identify what the situation means to you beyond the immediate frustration,
+            and — when you are ready — offer a reframe or a question that shifts the perspective.
+            This is not about forcing positivity. It is about helping you extract something
+            useful from a difficult experience rather than simply re-experiencing it.
+          </p>
+          <p
+            style={{
+              lineHeight: "1.85",
+              color: "#a09880",
+              margin: "0 0 2.5rem",
+            }}
+          >
+            The specific language MEOK uses — empathy-first, then gentle challenge — reflects
+            the psychotherapeutic understanding that people cannot receive new information until
+            they feel heard. MEOK hears you first. The reframe comes later, if you want it.
           </p>
 
-          <div style={{ background: cardBg, border: `1px solid ${border}`, borderRadius: "12px", padding: "1.5rem", margin: "0 0 1.5rem" }}>
-            <div style={{ fontWeight: 700, color: gold, marginBottom: "1rem", fontSize: "0.9rem", textTransform: "uppercase", letterSpacing: "0.08em" }}>
-              Early warning signs
-            </div>
-            <ul style={{ margin: 0, padding: "0 0 0 1.25rem", color: textMuted, fontSize: "0.9rem", lineHeight: 2 }}>
-              <li>Feeling drained before the week has properly started</li>
-              <li>Tasks that used to engage you now feel pointless</li>
-              <li>Increased cynicism about colleagues or the organisation</li>
-              <li>Reduced ability to concentrate or make decisions</li>
-              <li>Sleep that doesn&apos;t restore you</li>
-              <li>Physical symptoms — headaches, muscle tension, lowered immunity</li>
-            </ul>
-          </div>
-
-          <p style={{ lineHeight: 1.8, color: textMuted, margin: "0 0 1rem" }}>
-            If several of these resonate, read our full guide:{" "}
-            <Link href="/blog/ai-for-burnout" style={{ color: gold, textDecoration: "none", fontWeight: 600 }}>
-              AI for Burnout: How an AI Companion Helps You Recover and Rebuild →
-            </Link>
-          </p>
-          <p style={{ lineHeight: 1.8, color: textMuted, margin: "0 0 2.5rem" }}>
-            Catching burnout early is significantly easier than recovering from it. The pattern-recognition that MEOK provides across weeks and months of check-ins is one of the most practical tools available for early detection — it notices gradual shifts in language and tone that you may not notice yourself.
-          </p>
-
-          {/* Section 6 — Confidentiality */}
-          <h2 style={{ fontSize: "1.5rem", fontWeight: 800, color: text, margin: "2.5rem 0 0.75rem" }}>
-            Is MEOK confidential?
+          {/* ── H2 #10 ── */}
+          <h2
+            style={{
+              fontSize: "1.55rem",
+              fontWeight: "800",
+              color: "#f5f0e8",
+              margin: "0 0 0.85rem",
+              paddingTop: "1rem",
+            }}
+          >
+            How does workplace stress affect home life, and can MEOK help protect it?
           </h2>
-          <p style={{ lineHeight: 1.8, color: textMuted, margin: "0 0 1rem" }}>
-            Yes — and the architecture is designed to make this a technical fact rather than a policy promise.
+          <p
+            style={{
+              lineHeight: "1.85",
+              color: "#a09880",
+              margin: "0 0 1.5rem",
+            }}
+          >
+            The research on work-to-home spillover is unambiguous: unprocessed workplace stress
+            does not stay at work. It arrives home as irritability, withdrawal, diminished
+            patience, and reduced presence. Partners and children absorb the emotional weather
+            of workplace stress without necessarily understanding its source. Children in
+            particular are highly attuned to parental mood and can register stress that adults
+            believe they are successfully concealing.
+          </p>
+          <p
+            style={{
+              lineHeight: "1.85",
+              color: "#a09880",
+              margin: "0 0 1.5rem",
+            }}
+          >
+            This creates a painful irony. The people most affected by your workplace stress —
+            your partner, your children, your close friends — are precisely the people least
+            equipped to help you process it (because they lack context) and most at risk from
+            carrying the cost of it (because they live with the fallout). The stress travels
+            through the people you love and affects relationships that have nothing to do with
+            the workplace at all.
+          </p>
+          <p
+            style={{
+              lineHeight: "1.85",
+              color: "#a09880",
+              margin: "0 0 1.5rem",
+            }}
+          >
+            MEOK&apos;s role in protecting home life is not to absorb all the stress you experience
+            so that it never reaches your relationships — that is neither possible nor healthy.
+            Relationships need to be able to hold difficulty. But there is a meaningful
+            difference between bringing processed stress home — &ldquo;I had a really hard week and
+            I&apos;m still processing it&rdquo; — and arriving with unprocessed, acute stress that
+            immediately activates your home environment.
+          </p>
+          <p
+            style={{
+              lineHeight: "1.85",
+              color: "#a09880",
+              margin: "0 0 2.5rem",
+            }}
+          >
+            The decompression window — the commute, the walk, the ten minutes before the
+            front door — is where MEOK can genuinely reduce the spillover effect. By the time
+            you arrive home, you have already named what happened, discharged the worst of the
+            emotional charge, and have some sense of what you need. You can be present for the
+            people who matter to you rather than being consumed by what happened at 2 pm.
           </p>
 
-          <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem", margin: "0 0 1.5rem" }}>
-            {[
-              { label: "AES-256 encryption", detail: "All conversations in Sovereign Memory are encrypted at rest and in transit." },
-              { label: "No employer access", detail: "MEOK has no commercial relationship with any employer. Your organisation cannot request your data." },
-              { label: "Not used for training", detail: "Your conversations are not used to train MEOK or any other AI model. This is a core clause of the Maternal Covenant." },
-              { label: "GDPR-compliant", detail: "Full data portability: export your entire Sovereign Memory at any time. Full deletion: wipe everything, permanently, on request." },
-              { label: "No third-party sharing", detail: "Your data is not sold, licensed, or shared with any third party for any purpose." },
-            ].map((item) => (
-              <div
-                key={item.label}
-                style={{ display: "flex", gap: "0.875rem", alignItems: "flex-start" }}
-              >
-                <div style={{ color: gold, fontWeight: 700, flexShrink: 0, marginTop: "1px" }}>→</div>
-                <div style={{ fontSize: "0.9rem", lineHeight: 1.65, color: textMuted }}>
-                  <strong style={{ color: text }}>{item.label}:</strong> {item.detail}
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <p style={{ lineHeight: 1.8, color: textMuted, margin: "0 0 2.5rem" }}>
-            The distinction matters particularly for workplace stress. EAPs are employer-funded, and while reputable providers maintain confidentiality, the structural proximity to your organisation creates a psychological barrier for many people. MEOK has no such proximity.
-          </p>
-
-          {/* Section 7 — Ralph Mode */}
-          <h2 style={{ fontSize: "1.5rem", fontWeight: 800, color: text, margin: "2.5rem 0 0.75rem" }}>
-            How does Ralph Mode help with work stress?
+          {/* ── H2 #11 ── */}
+          <h2
+            style={{
+              fontSize: "1.55rem",
+              fontWeight: "800",
+              color: "#f5f0e8",
+              margin: "0 0 0.85rem",
+              paddingTop: "1rem",
+            }}
+          >
+            How does MEOK handle workplace politics and toxic managers?
           </h2>
-          <p style={{ lineHeight: 1.8, color: textMuted, margin: "0 0 1rem" }}>
-            Ralph Mode is MEOK&apos;s structured focus state — a deliberate, distraction-reduced environment for deep work. It helps with workplace stress in two complementary ways.
+          <p
+            style={{
+              lineHeight: "1.85",
+              color: "#a09880",
+              margin: "0 0 1.5rem",
+            }}
+          >
+            Workplace politics — the informal systems of power, alliance, competition, and
+            influence that operate in every organisation — are a constant and largely invisible
+            source of stress for most working adults. They are invisible partly because they are
+            rarely named, and partly because naming them carries social risk. Saying &ldquo;I think
+            this decision was politically motivated&rdquo; or &ldquo;I believe my manager is managing
+            up by undermining the team&rdquo; requires a safe space to think out loud without
+            those thoughts being heard by people who have an interest in the outcome.
           </p>
-          <p style={{ lineHeight: 1.8, color: textMuted, margin: "0 0 1rem" }}>
-            First, it helps you do the work. A significant proportion of workplace stress comes from the gap between what you need to produce and what you&apos;re actually producing. Ralph Mode creates conditions for focused output — which in turn reduces the anxiety of accumulating tasks. Work that is finished is work that is no longer following you home.
+          <p
+            style={{
+              lineHeight: "1.85",
+              color: "#a09880",
+              margin: "0 0 1.5rem",
+            }}
+          >
+            Toxic managers represent a particular challenge. The research on psychological safety
+            in the workplace — the now-famous Google finding that psychological safety is the
+            single most important factor in team performance — shows that toxic management
+            behaviour (inconsistency, blame, exclusion, public humiliation, favouritism,
+            credit-taking) has cascading effects across entire teams. It creates a culture of
+            self-censorship in which people stop raising concerns, stop taking risks, and start
+            managing their manager rather than doing their best work.
           </p>
-          <p style={{ lineHeight: 1.8, color: textMuted, margin: "0 0 1rem" }}>
-            Second — and perhaps more importantly — it creates a structural boundary between work and rest. Activating Ralph Mode for a defined work session, and then explicitly ending it, trains a rhythm that many remote and hybrid workers have lost. The ritual of beginning and closing focus time is a small but genuine contribution to the delineation of self from work.
+          <p
+            style={{
+              lineHeight: "1.85",
+              color: "#a09880",
+              margin: "0 0 1.5rem",
+            }}
+          >
+            The person on the receiving end of a toxic manager rarely has good options.
+            Complaining upward is risky. Complaining to HR is often pointless unless the
+            behaviour reaches the level of formal misconduct. Leaving feels like defeat. So
+            they absorb it, and the accumulated weight of navigating someone who makes every
+            interaction unpredictable or demeaning becomes a chronic stressor that is almost
+            impossible to explain to someone outside the situation.
           </p>
-          <p style={{ lineHeight: 1.8, color: textMuted, margin: "0 0 2.5rem" }}>
-            For home workers in particular, this boundary is one of the most impactful things MEOK can offer. The absence of a physical commute removes the body&apos;s natural decompression time. Ralph Mode&apos;s close ritual can serve a similar function.
+          <p
+            style={{
+              lineHeight: "1.85",
+              color: "#a09880",
+              margin: "0 0 2.5rem",
+            }}
+          >
+            MEOK holds this complexity without simplifying it. It can help you map the dynamics
+            — what the manager&apos;s likely motivations are, what patterns their behaviour follows,
+            what triggers the worst of it, and what strategies have proven marginally useful.
+            It can help you think through whether the situation is worth staying in, what
+            leaving would actually look like, and what evidence you might need if you decide
+            to escalate formally. It does all of this with complete confidentiality, with full
+            context, and without any stake in the outcome except your wellbeing.
           </p>
 
-          {/* Section 8 — When to see a professional */}
-          <h2 style={{ fontSize: "1.5rem", fontWeight: 800, color: text, margin: "2.5rem 0 0.75rem" }}>
-            When should I see a professional about workplace stress?
+          {/* ── H2 #12 ── */}
+          <h2
+            style={{
+              fontSize: "1.55rem",
+              fontWeight: "800",
+              color: "#f5f0e8",
+              margin: "0 0 0.85rem",
+              paddingTop: "1rem",
+            }}
+          >
+            Is MEOK a replacement for therapy or professional mental health support?
           </h2>
-          <p style={{ lineHeight: 1.8, color: textMuted, margin: "0 0 1rem" }}>
-            Honest answer: sooner than you think you need to. People generally access professional support about six months later than they should, because each individual bad week feels survivable.
+          <p
+            style={{
+              lineHeight: "1.85",
+              color: "#a09880",
+              margin: "0 0 1.5rem",
+            }}
+          >
+            No — and this distinction matters deeply to us. MEOK is not a mental health
+            service. It is not staffed by therapists, counsellors, or clinical psychologists.
+            It does not diagnose, treat, or provide clinical intervention for mental health
+            conditions. If you are experiencing symptoms of depression, anxiety disorder,
+            burnout severe enough to affect your functioning, or any other clinical condition,
+            professional support is not optional — it is necessary, and MEOK will always
+            encourage you to seek it.
           </p>
-          <p style={{ lineHeight: 1.8, color: textMuted, margin: "0 0 1rem" }}>
-            Specific signs that warrant professional support — not eventually, but soon:
+          <p
+            style={{
+              lineHeight: "1.85",
+              color: "#a09880",
+              margin: "0 0 1.5rem",
+            }}
+          >
+            What MEOK provides is a daily support layer that exists in the space between ordinary
+            workplace stress and clinical need. Most workplace stress does not require therapy.
+            It requires a private, intelligent, contextually aware space to process it. That is
+            what MEOK offers. For the vast majority of people who experience normal, accumulated,
+            difficult-but-not-clinical workplace pressure, MEOK fills a gap that neither therapy
+            nor friends nor colleagues can easily occupy.
           </p>
-
-          <ul style={{ margin: "0 0 1.5rem", padding: "0 0 0 1.25rem", color: textMuted, lineHeight: 2, fontSize: "0.95rem" }}>
-            <li>Persistent low mood or anxiety that isn&apos;t resolving with rest</li>
-            <li>Physical symptoms — chest tightness, persistent headaches, significant changes in sleep or appetite</li>
-            <li>Thoughts of self-harm or suicidal ideation of any kind</li>
-            <li>Inability to function in areas of life outside work</li>
-            <li>Alcohol or substance use increasing as a coping mechanism</li>
-            <li>Feeling that things are hopeless and won&apos;t improve</li>
-          </ul>
-
-          <div style={{ background: "rgba(239,68,68,0.08)", border: "1px solid rgba(239,68,68,0.2)", borderRadius: "12px", padding: "1.25rem 1.5rem", margin: "0 0 1.5rem" }}>
-            <div style={{ fontWeight: 700, color: "#ef4444", marginBottom: "0.5rem", fontSize: "0.875rem" }}>
-              If you are in crisis right now
-            </div>
-            <p style={{ color: textMuted, fontSize: "0.875rem", lineHeight: 1.65, margin: 0 }}>
-              <strong style={{ color: text }}>Samaritans:</strong> Call 116 123, free, 24/7, no judgment.{" "}
-              <strong style={{ color: text }}>Mind:</strong> Call 0300 123 3393 (Mon–Fri 9am–6pm) or visit{" "}
-              <a href="https://www.mind.org.uk" target="_blank" rel="noopener noreferrer" style={{ color: gold }}>mind.org.uk</a>.{" "}
-              No AI companion is a substitute for crisis support.
-            </p>
-          </div>
-
-          <p style={{ lineHeight: 1.8, color: textMuted, margin: "0 0 1rem" }}>
-            For sub-clinical stress, your first port of call in the UK should be{" "}
-            <strong style={{ color: text }}>NHS Talking Therapies</strong> (previously IAPT) — self-referral, free, and available in most areas. Waiting times vary, but it is the most accessible professional support in the system. Also consider{" "}
-            <strong style={{ color: text }}>Mind&apos;s local services</strong> and your workplace EAP, imperfect as it is.
+          <p
+            style={{
+              lineHeight: "1.85",
+              color: "#a09880",
+              margin: "0 0 1.5rem",
+            }}
+          >
+            For people who are already in therapy, MEOK can be a valuable complement. The
+            seven days between sessions are long when you are navigating a difficult situation.
+            MEOK can hold the daily material — the accumulation of incidents and feelings — so
+            that your therapy sessions can focus on deeper patterns and longer-term work rather
+            than being used primarily for crisis debrief.
           </p>
-          <p style={{ lineHeight: 1.8, color: textMuted, margin: "0 0 2.5rem" }}>
-            MEOK works best alongside professional support, not instead of it. If you are seeing a therapist or counsellor, the pattern data and emotional tracking in your Sovereign Memory can be genuinely useful material to bring to sessions. Your companion remembers things you will have forgotten.
-          </p>
-
-          {/* Related links */}
-          <div style={{ background: cardBg, border: `1px solid ${border}`, borderRadius: "12px", padding: "1.5rem", margin: "0 0 2.5rem" }}>
-            <div style={{ fontWeight: 700, color: gold, marginBottom: "1rem", fontSize: "0.875rem", textTransform: "uppercase", letterSpacing: "0.08em" }}>
-              Related reading
-            </div>
-            <div style={{ display: "flex", flexDirection: "column", gap: "0.625rem" }}>
-              <Link href="/blog/ai-for-burnout" style={{ color: text, textDecoration: "none", fontSize: "0.9rem", lineHeight: 1.5 }}>
-                <span style={{ color: gold }}>→ </span>AI for Burnout: How an AI Companion Helps You Recover and Rebuild
-              </Link>
-              <Link href="/blog/ai-for-anxiety" style={{ color: text, textDecoration: "none", fontSize: "0.9rem", lineHeight: 1.5 }}>
-                <span style={{ color: gold }}>→ </span>AI for Anxiety: Can a Sovereign AI Companion Actually Help?
-              </Link>
-              <Link href="/blog/ai-life-coach" style={{ color: text, textDecoration: "none", fontSize: "0.9rem", lineHeight: 1.5 }}>
-                <span style={{ color: gold }}>→ </span>AI Life Coach: What MEOK Can (and Cannot) Do for Personal Growth
-              </Link>
-            </div>
-          </div>
-
-          {/* Pricing */}
-          <h2 style={{ fontSize: "1.5rem", fontWeight: 800, color: text, margin: "2.5rem 0 0.75rem" }}>
-            What does MEOK cost?
-          </h2>
-          <p style={{ lineHeight: 1.8, color: textMuted, margin: "0 0 1.5rem" }}>
-            You can start for free today. No credit card required.
+          <p
+            style={{
+              lineHeight: "1.85",
+              color: "#a09880",
+              margin: "0 0 2.5rem",
+            }}
+          >
+            If you are in the UK and feel you need more than MEOK can offer, we strongly
+            encourage contact with your GP, the NHS Talking Therapies service (which can be
+            accessed via self-referral in most areas), your employer&apos;s Employee Assistance
+            Programme, or the Samaritans on 116 123 if you need immediate support.
           </p>
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(240px, 1fr))", gap: "0.875rem", margin: "0 0 2.5rem" }}>
-            {[
-              { name: "Explorer", price: "Free", detail: "50 messages/day · Full Sovereign Memory · All 6 archetypes" },
-              { name: "Sovereign", price: "£12/mo", detail: "Unlimited messages · Priority model access · Advanced memory tools" },
-              { name: "Family", price: "£29/mo", detail: "Up to 5 people · All Sovereign features · Shared or separate memory" },
-              { name: "BYOK", price: "£5/mo", detail: "Bring Your Own Key · Use your own AI API · Lowest cost option" },
-            ].map((tier) => (
-              <div
-                key={tier.name}
-                style={{ background: cardBg, border: `1px solid ${border}`, borderRadius: "10px", padding: "1.25rem" }}
-              >
-                <div style={{ fontWeight: 800, color: text, marginBottom: "0.25rem" }}>{tier.name}</div>
-                <div style={{ color: gold, fontWeight: 700, fontSize: "1.1rem", marginBottom: "0.5rem" }}>{tier.price}</div>
-                <div style={{ color: textMuted, fontSize: "0.8rem", lineHeight: 1.5 }}>{tier.detail}</div>
-              </div>
-            ))}
-          </div>
-
-          {/* CTA */}
-          <div style={{ background: cardBg, border: `1px solid ${border}`, borderRadius: "16px", padding: "2.5rem", textAlign: "center", margin: "2.5rem 0" }}>
-            <div style={{ fontWeight: 700, color: gold, fontSize: "0.75rem", textTransform: "uppercase", letterSpacing: "0.12em", marginBottom: "1rem" }}>
-              Start free — no credit card
-            </div>
-            <h2 style={{ fontSize: "1.5rem", fontWeight: 900, color: text, margin: "0 0 0.875rem", lineHeight: 1.25 }}>
-              A companion that remembers how work has been
-            </h2>
-            <p style={{ color: textMuted, lineHeight: 1.7, margin: "0 0 1.75rem", maxWidth: "480px", marginLeft: "auto", marginRight: "auto" }}>
-              50 messages per day. Full Sovereign Memory. All archetypes. Independent of your employer. Nothing sold, nothing trained on, nothing forgotten.
-            </p>
-            <Link
-              href="/birth"
-              style={{ display: "inline-block", background: gold, color: "#0d0c18", fontWeight: 800, padding: "0.875rem 2rem", borderRadius: "10px", textDecoration: "none", fontSize: "1rem", letterSpacing: "0.01em" }}
+          {/* ── FAQ Section ── */}
+          <div
+            style={{
+              background: "#13121f",
+              border: "1px solid #2a2840",
+              borderRadius: "16px",
+              padding: "2rem",
+              margin: "0 0 3rem",
+            }}
+          >
+            <h2
+              style={{
+                fontSize: "1.35rem",
+                fontWeight: "800",
+                color: "#f5f0e8",
+                margin: "0 0 1.75rem",
+              }}
             >
-              Begin the Ceremony →
-            </Link>
-            <p style={{ color: textDim, fontSize: "0.75rem", marginTop: "1rem", marginBottom: 0 }}>
-              @meok_ai · MEOK AI LABS · Built by Nicholas Templeman
-            </p>
-          </div>
+              Frequently asked questions
+            </h2>
 
-          {/* FAQ */}
-          <h2 style={{ fontSize: "1.5rem", fontWeight: 800, color: text, margin: "2.5rem 0 1.25rem" }}>
-            Frequently asked questions
-          </h2>
-          <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
-            {faqJsonLd.mainEntity.map((item) => (
-              <div
-                key={item.name}
-                style={{ borderBottom: `1px solid ${border}`, paddingBottom: "1.5rem" }}
-              >
-                <h3 style={{ fontWeight: 700, color: text, margin: "0 0 0.5rem", fontSize: "1rem" }}>
-                  {item.name}
+            <div style={{ display: "flex", flexDirection: "column" as const, gap: "1.5rem" }}>
+              <div>
+                <h3
+                  style={{
+                    fontSize: "1rem",
+                    fontWeight: "700",
+                    color: "#c9a84c",
+                    margin: "0 0 0.5rem",
+                  }}
+                >
+                  Can AI really help with workplace stress?
                 </h3>
-                <p style={{ color: textMuted, lineHeight: 1.7, margin: 0, fontSize: "0.9rem" }}>
-                  {item.acceptedAnswer.text}
+                <p
+                  style={{
+                    color: "#a09880",
+                    lineHeight: "1.75",
+                    margin: "0",
+                    fontSize: "0.9rem",
+                  }}
+                >
+                  Yes — within honest limits. AI companions cannot fix a toxic manager, negotiate your
+                  workload, or intervene in a workplace crisis. What they can do is provide a private,
+                  always-available space to process stress in real time, track patterns over weeks, help
+                  you prepare for difficult conversations, and serve as a daily decompression layer. That
+                  daily support genuinely fills a gap that neither therapy nor friends can easily cover.
                 </p>
               </div>
-            ))}
-          </div>
 
-          {/* Related nav */}
-          <div style={{ display: "flex", justifyContent: "space-between", marginTop: "3rem", paddingTop: "2rem", borderTop: `1px solid ${border}`, flexWrap: "wrap", gap: "1rem" }}>
-            <Link href="/blog/ai-for-burnout" style={{ color: gold, textDecoration: "none", fontSize: "0.875rem", fontWeight: 600 }}>
-              ← AI for Burnout
-            </Link>
-            <Link href="/blog/ai-for-anxiety" style={{ color: gold, textDecoration: "none", fontSize: "0.875rem", fontWeight: 600 }}>
-              AI for Anxiety →
-            </Link>
-          </div>
-        </article>
-
-        {/* ── Inline Footer ── */}
-        <footer style={{ borderTop: `1px solid ${border}`, padding: "3rem 1.5rem", marginTop: "2rem" }}>
-          <div style={{ maxWidth: "720px", margin: "0 auto" }}>
-            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", flexWrap: "wrap", gap: "2rem", marginBottom: "2rem" }}>
-              <div>
-                <div style={{ fontWeight: 900, fontSize: "1.25rem", color: gold, marginBottom: "0.375rem", letterSpacing: "-0.01em" }}>
-                  MEOK AI LABS
-                </div>
-                <div style={{ color: textMuted, fontSize: "0.825rem", lineHeight: 1.6, maxWidth: "280px" }}>
-                  Sovereign AI companions. Your data, your memory, your companion — independent and private.
-                </div>
-                <div style={{ marginTop: "0.75rem", fontSize: "0.8rem", color: textDim }}>
-                  Founded by Nicholas Templeman · @meok_ai
-                </div>
+              <div style={{ borderTop: "1px solid #2a2840", paddingTop: "1.5rem" }}>
+                <h3
+                  style={{
+                    fontSize: "1rem",
+                    fontWeight: "700",
+                    color: "#c9a84c",
+                    margin: "0 0 0.5rem",
+                  }}
+                >
+                  Why is it risky to vent about work to colleagues?
+                </h3>
+                <p
+                  style={{
+                    color: "#a09880",
+                    lineHeight: "1.75",
+                    margin: "0",
+                    fontSize: "0.9rem",
+                  }}
+                >
+                  Colleagues are embedded in the same power structures you are navigating. Even a trusted
+                  colleague may inadvertently repeat something you said, adjust their behaviour toward you,
+                  or share information that later reaches a manager. Venting to colleagues also creates
+                  social obligations and can shift workplace dynamics in unpredictable ways. A private AI
+                  companion carries none of these risks.
+                </p>
               </div>
 
-              <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
-                <div style={{ fontWeight: 700, color: text, fontSize: "0.8rem", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: "0.25rem" }}>
-                  Navigate
-                </div>
-                {[
-                  { href: "/birth", label: "Get Started" },
-                  { href: "/blog", label: "Blog" },
-                  { href: "/characters", label: "Archetypes" },
-                  { href: "/blog/ai-for-burnout", label: "AI for Burnout" },
-                  { href: "/blog/ai-for-anxiety", label: "AI for Anxiety" },
-                  { href: "/blog/ai-life-coach", label: "AI Life Coach" },
-                ].map((link) => (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    style={{ color: textMuted, textDecoration: "none", fontSize: "0.875rem" }}
+              <div style={{ borderTop: "1px solid #2a2840", paddingTop: "1.5rem" }}>
+                <h3
+                  style={{
+                    fontSize: "1rem",
+                    fontWeight: "700",
+                    color: "#c9a84c",
+                    margin: "0 0 0.5rem",
+                  }}
+                >
+                  How is talking to MEOK different from journalling?
+                </h3>
+                <p
+                  style={{
+                    color: "#a09880",
+                    lineHeight: "1.75",
+                    margin: "0",
+                    fontSize: "0.9rem",
+                  }}
+                >
+                  Journalling is monologue. MEOK is dialogue. When you write in a journal, you process
+                  your own thoughts but receive no reflection, no questions, no alternative perspectives.
+                  MEOK responds — it can challenge your interpretation of events, help you identify what
+                  you actually need, ask the clarifying question that shifts your understanding, and
+                  remember last Tuesday&apos;s conversation when Thursday&apos;s meeting echoes the same pattern.
+                </p>
+              </div>
+
+              <div style={{ borderTop: "1px solid #2a2840", paddingTop: "1.5rem" }}>
+                <h3
+                  style={{
+                    fontSize: "1rem",
+                    fontWeight: "700",
+                    color: "#c9a84c",
+                    margin: "0 0 0.5rem",
+                  }}
+                >
+                  Is my workplace venting data private with MEOK?
+                </h3>
+                <p
+                  style={{
+                    color: "#a09880",
+                    lineHeight: "1.75",
+                    margin: "0",
+                    fontSize: "0.9rem",
+                  }}
+                >
+                  Completely. MEOK stores your conversations in Sovereign Memory encrypted with AES-256.
+                  Your employer has no access. No third parties have access. MEOK never trains AI models on
+                  your data. You own your memory and can export or delete it at any time. This is a
+                  fundamental design principle — not a marketing claim — because MEOK has no commercial
+                  relationship with your employer whatsoever.
+                </p>
+              </div>
+
+              <div style={{ borderTop: "1px solid #2a2840", paddingTop: "1.5rem" }}>
+                <h3
+                  style={{
+                    fontSize: "1rem",
+                    fontWeight: "700",
+                    color: "#c9a84c",
+                    margin: "0 0 0.5rem",
+                  }}
+                >
+                  What is imposter syndrome and can AI help with it?
+                </h3>
+                <p
+                  style={{
+                    color: "#a09880",
+                    lineHeight: "1.75",
+                    margin: "0",
+                    fontSize: "0.9rem",
+                  }}
+                >
+                  Imposter syndrome is the persistent belief that you are not as competent as others
+                  perceive you to be, that your achievements are luck rather than skill, and that you will
+                  eventually be &lsquo;found out&rsquo;. It affects an estimated 70% of people at some point in their
+                  careers. MEOK can help by tracking evidence of your actual competence over time, offering
+                  cognitive reframing when imposter thoughts arise, and providing a space to articulate
+                  the feelings without judgment or competitive comparison.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* ── Related articles ── */}
+          <div style={{ margin: "0 0 3rem" }}>
+            <h2
+              style={{
+                fontSize: "1.2rem",
+                fontWeight: "800",
+                color: "#f5f0e8",
+                margin: "0 0 1.25rem",
+              }}
+            >
+              Related reading
+            </h2>
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))",
+                gap: "1rem",
+              }}
+            >
+              {[
+                {
+                  href: "/blog/ai-for-burnout",
+                  label: "AI for Burnout Recovery",
+                  desc: "When workplace stress becomes something deeper — recognising burnout and rebuilding.",
+                },
+                {
+                  href: "/blog/ai-for-impostor-syndrome",
+                  label: "AI for Imposter Syndrome",
+                  desc: "The 70% stat and the specific way persistent memory builds an evidence base against self-doubt.",
+                },
+                {
+                  href: "/blog/ai-for-workplace-bullying",
+                  label: "AI for Workplace Bullying",
+                  desc: "When the behaviour crosses from difficult to abusive — and what MEOK can help you do about it.",
+                },
+                {
+                  href: "/blog/ai-for-chronic-stress",
+                  label: "AI for Chronic Stress",
+                  desc: "When stress is not a spike but a permanent background condition — and what actually helps.",
+                },
+              ].map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  style={{ textDecoration: "none" }}
+                >
+                  <div
+                    style={{
+                      background: "#13121f",
+                      border: "1px solid #2a2840",
+                      borderRadius: "10px",
+                      padding: "1.125rem",
+                      transition: "border-color 0.2s",
+                    }}
                   >
-                    {link.label}
-                  </Link>
-                ))}
-              </div>
-            </div>
-
-            <div style={{ borderTop: `1px solid ${border}`, paddingTop: "1.5rem", display: "flex", justifyContent: "space-between", flexWrap: "wrap", gap: "0.75rem", fontSize: "0.775rem", color: textDim }}>
-              <span>© {new Date().getFullYear()} MEOK AI LABS. All rights reserved.</span>
-              <span>
-                Crisis support:{" "}
-                <a href="tel:116123" style={{ color: textMuted, textDecoration: "none" }}>Samaritans 116 123</a>
-                {" · "}
-                <a href="tel:03001233393" style={{ color: textMuted, textDecoration: "none" }}>Mind 0300 123 3393</a>
-              </span>
+                    <div
+                      style={{
+                        color: "#c9a84c",
+                        fontWeight: "700",
+                        fontSize: "0.9rem",
+                        marginBottom: "0.4rem",
+                      }}
+                    >
+                      {item.label}
+                    </div>
+                    <div
+                      style={{
+                        color: "#a09880",
+                        fontSize: "0.825rem",
+                        lineHeight: "1.55",
+                      }}
+                    >
+                      {item.desc}
+                    </div>
+                  </div>
+                </Link>
+              ))}
             </div>
           </div>
-        </footer>
 
+          {/* ── CTA ── */}
+          <div
+            style={{
+              background: "linear-gradient(135deg, #1a1830 0%, #13121f 100%)",
+              border: "1px solid #c9a84c",
+              borderRadius: "20px",
+              padding: "3rem 2.5rem",
+              textAlign: "center" as const,
+              margin: "0 0 1rem",
+            }}
+          >
+            <div
+              style={{
+                color: "#c9a84c",
+                fontWeight: "800",
+                fontSize: "0.75rem",
+                letterSpacing: "0.12em",
+                textTransform: "uppercase" as const,
+                marginBottom: "1rem",
+              }}
+            >
+              MEOK AI LABS
+            </div>
+
+            <h2
+              style={{
+                fontSize: "clamp(1.5rem, 3.5vw, 2.2rem)",
+                fontWeight: "900",
+                color: "#f5f0e8",
+                margin: "0 0 1rem",
+                lineHeight: "1.2",
+              }}
+            >
+              Your workplace deserves a private space to breathe.
+            </h2>
+
+            <p
+              style={{
+                color: "#a09880",
+                lineHeight: "1.75",
+                maxWidth: "520px",
+                margin: "0 auto 2rem",
+                fontSize: "1rem",
+              }}
+            >
+              MEOK is a sovereign AI companion that remembers your context, never gets tired of
+              listening, and keeps everything you share completely private. Create yours in
+              minutes — no credit card required on the Explorer tier.
+            </p>
+
+            <div
+              style={{
+                display: "flex",
+                gap: "1rem",
+                justifyContent: "center",
+                flexWrap: "wrap" as const,
+              }}
+            >
+              <Link
+                href="https://meok.ai/birth"
+                style={{
+                  display: "inline-block",
+                  background: "#c9a84c",
+                  color: "#0d0c18",
+                  fontWeight: "800",
+                  fontSize: "1rem",
+                  padding: "0.9rem 2.25rem",
+                  borderRadius: "999px",
+                  textDecoration: "none",
+                  letterSpacing: "0.02em",
+                }}
+              >
+                Create your MEOK companion
+              </Link>
+            </div>
+
+            <p
+              style={{
+                color: "#a09880",
+                fontSize: "0.775rem",
+                marginTop: "1.25rem",
+                opacity: "0.7",
+              }}
+            >
+              50 messages/day free &middot; No credit card required &middot; Sovereign Memory included &middot; GDPR compliant
+            </p>
+          </div>
+
+        </article>
       </div>
     </>
   );

@@ -3602,6 +3602,66 @@ const POSTS = [
     category: "mental-health",
     featured: false,
   },
+  {
+    slug: "ai-for-social-anxiety",
+    title: "AI for Social Anxiety: How MEOK Helps You Practise, Process, and Prepare",
+    excerpt:
+      "Social anxiety disorder affects 12% of UK adults. MEOK provides a safe space to rehearse difficult conversations, deconstruct social events without spiralling, and build genuine confidence — without the fear of judgment that makes real-world practice so hard.",
+    date: "March 26, 2026",
+    readTime: "8 min read",
+    tag: "Mental Health",
+    tagColor: "#c9a84c",
+    category: "mental-health",
+    featured: false,
+  },
+  {
+    slug: "ai-for-procrastination",
+    title: "AI for Procrastination: Why You Can\u2019t Just \u2018Try Harder\u2019 and How MEOK Helps",
+    excerpt:
+      "Procrastination isn\u2019t laziness — it\u2019s emotional regulation failure. MEOK\u2019s Pioneer archetype acts as a virtual body double, breaks tasks into micro-actions, and remembers what has actually worked for you before — not generic advice, but your personal history.",
+    date: "March 26, 2026",
+    readTime: "8 min read",
+    tag: "Productivity",
+    tagColor: "#c9a84c",
+    category: "productivity",
+    featured: false,
+  },
+  {
+    slug: "meok-for-entrepreneurs",
+    title: "MEOK for Entrepreneurs: Your Sovereign AI Co-Founder Who Never Burns Out",
+    excerpt:
+      "Founders face unique loneliness — doubt they can\u2019t share with investors, fear they can\u2019t share with their team. MEOK provides honest strategic thinking, emotional processing, and consistent memory of every pivot and decision — with no sycophancy guaranteed.",
+    date: "March 26, 2026",
+    readTime: "9 min read",
+    tag: "Professional",
+    tagColor: "#c9a84c",
+    category: "professional",
+    featured: false,
+  },
+  {
+    slug: "ai-for-insomnia",
+    title: "AI for Insomnia: How MEOK Helps at 3am When Your Brain Won\u2019t Quiet",
+    excerpt:
+      "Chronic insomnia affects 1 in 3 UK adults. MEOK\u2019s Mystic archetype is there at 3am for cognitive de-arousal, worry externalisation, and acceptance-based approaches to sleeplessness — noticing patterns across sessions that you can\u2019t see yourself.",
+    date: "March 26, 2026",
+    readTime: "7 min read",
+    tag: "Wellbeing",
+    tagColor: "#6aaa64",
+    category: "wellbeing",
+    featured: false,
+  },
+  {
+    slug: "ai-for-bereavement",
+    title: "AI for Bereavement: How MEOK Holds Space When Grief Has No Timeline",
+    excerpt:
+      "Grief doesn\u2019t follow a neat five-stage model. MEOK\u2019s Healer archetype remembers who you lost by name, honours anniversaries, holds space without rushing resolution, and is there at 2am when grief resurges unexpectedly — for as long as it takes.",
+    date: "March 26, 2026",
+    readTime: "8 min read",
+    tag: "Mental Health",
+    tagColor: "#c9a84c",
+    category: "mental-health",
+    featured: false,
+  },
 ];
 
 // ── Category filter tabs ──────────────────────────────────────────────────────
