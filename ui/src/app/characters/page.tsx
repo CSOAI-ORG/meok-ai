@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ARCHETYPES, getCharactersByArchetype, getAllCharacters, type Archetype } from '@/lib/characters';
+import { ARCHETYPES, getCharactersByArchetype, getAllCharacters, type Archetype, type PersonalityDimensions } from '@/lib/characters';
 
 export const metadata: Metadata = {
   title: "AI Characters & Companions | MEOK AI LABS",
@@ -81,8 +81,18 @@ const ARCHETYPE_LIST = (Object.keys(ARCHETYPES) as Archetype[]).map((key) => {
     characters,
     description: display.description,
     locked: false,
+    dimensions: info.baseDimensions,
   };
 });
+
+// ── Big Five personality bar labels ─────────────────────────────────────────
+const BIG_FIVE_MAP: { key: keyof PersonalityDimensions; label: string }[] = [
+  { key: 'whimsy',     label: 'O' },  // Openness
+  { key: 'complexity', label: 'C' },  // Conscientiousness
+  { key: 'energy',     label: 'E' },  // Extraversion
+  { key: 'warmth',     label: 'A' },  // Agreeableness
+  { key: 'edge',       label: 'N' },  // Neuroticism (inverse)
+];
 
 const totalCharacters = getAllCharacters().length; // 26
 const totalArchetypes = Object.keys(ARCHETYPES).length; // 5
@@ -257,6 +267,28 @@ export default function CharactersPage() {
                     </span>
                   ))}
                 </div>
+
+                {/* Personality radar — Big Five bars */}
+                {archetype.dimensions && (
+                  <div aria-label="Big Five personality profile">
+                    <p className="text-xs text-gray-500 uppercase tracking-widest mb-2 font-medium">
+                      Personality profile
+                    </p>
+                    <div className="space-y-1.5">
+                      {BIG_FIVE_MAP.map(({ key, label }) => (
+                        <div key={label} className="flex items-center gap-2">
+                          <span className="text-[10px] font-bold w-4 text-right text-[#c9a84c]">{label}</span>
+                          <div className="flex-1 h-2 rounded-full bg-[rgba(255,255,255,0.06)] overflow-hidden">
+                            <div
+                              className="h-full rounded-full bg-[#c9a84c]"
+                              style={{ width: `${Math.round((archetype.dimensions[key] ?? 0) * 100)}%` }}
+                            />
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
 
                 {/* Example characters */}
                 <div>

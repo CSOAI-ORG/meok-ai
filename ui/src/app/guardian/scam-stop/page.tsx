@@ -290,6 +290,38 @@ export default function ScamStopPage() {
             }}
           />
 
+          {/* Try this — pre-loaded example scam messages */}
+          <div style={{ marginTop: 12, display: 'flex', flexWrap: 'wrap', gap: 8 }}>
+            {[
+              { label: 'Tech Support', text: 'URGENT: Your computer has a virus and your files are being deleted right now. Call 0800-FAKE-999 immediately to speak with a Microsoft certified technician. Do NOT turn off your computer or you will lose everything.' },
+              { label: 'Romance', text: 'My darling, I love you so much and I cannot wait to finally hold you. I have booked my flight but there is a problem with my card. Can you send me £800 for the ticket? I promise I will pay you back when I arrive. You are the only one I trust.' },
+              { label: 'Investment', text: 'EXCLUSIVE OPPORTUNITY: Our AI-powered crypto trading platform guarantees 500% returns within 30 days. Over 10,000 investors already joined. The investment window closes in 6 hours. Minimum deposit just £250. Act now or miss out forever.' },
+              { label: 'Grandparent', text: 'Grandma, it\'s me. Please don\'t tell mum or dad. I\'ve been arrested and I need bail money urgently. Can you wire £2,000 to this account right now? I\'m so scared. Please help me, I\'ll explain everything later.' },
+              { label: 'Phishing', text: 'Your bank account has been compromised and suspicious activity has been detected. Click the link below to verify your identity and secure your account immediately or it will be permanently locked: http://secure-bank-verify.fake.com' },
+              { label: 'Deepfake', text: 'Hello, this is your bank manager calling from the fraud department. We have detected an unauthorised transaction of £4,500 on your account. I need you to confirm your account number and PIN so we can reverse the charge immediately.' },
+            ].map((example) => (
+              <button
+                key={example.label}
+                onClick={() => { setMessage(example.text); setResult(null); setError(''); }}
+                style={{
+                  padding: '6px 14px',
+                  borderRadius: 9999,
+                  fontSize: 12,
+                  fontWeight: 600,
+                  background: `${GOLD}12`,
+                  border: `1px solid ${GOLD}30`,
+                  color: GOLD,
+                  cursor: 'pointer',
+                  transition: 'all 0.2s',
+                }}
+                onMouseEnter={(e) => { e.currentTarget.style.background = `${GOLD}28`; }}
+                onMouseLeave={(e) => { e.currentTarget.style.background = `${GOLD}12`; }}
+              >
+                Try: {example.label}
+              </button>
+            ))}
+          </div>
+
           {/* Scan button */}
           <div style={{ marginTop: 16, display: 'flex', justifyContent: 'flex-end' }}>
             <button

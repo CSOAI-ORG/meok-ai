@@ -11,8 +11,10 @@
  */
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 // Morning briefing uses local Next.js API routes, not SOV3 MCP
 import { useUser } from "@clerk/nextjs";
+import { MessageCircle, BookOpen, Shield } from "lucide-react";
 import {
   Moon,
   Sunrise,
@@ -693,6 +695,29 @@ export default function MorningBriefingPage() {
                   </div>
                 </div>
               )}
+
+              {/* ── Quick actions ── */}
+              <div className="card-6 flex flex-wrap items-center justify-center gap-3 pt-2">
+                {[
+                  { href: "/dashboard/chat", label: "Start chatting", icon: MessageCircle },
+                  { href: "/dashboard/memory", label: "View memories", icon: BookOpen },
+                  { href: "/dashboard/guardian", label: "Check guardian", icon: Shield },
+                ].map(({ href, label, icon: Icon }) => (
+                  <Link
+                    key={href}
+                    href={href}
+                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-200 hover:bg-[rgba(201,168,76,0.1)]"
+                    style={{
+                      color: GOLD,
+                      border: `1px solid ${GOLD}44`,
+                      background: "transparent",
+                    }}
+                  >
+                    <Icon className="w-4 h-4" />
+                    {label}
+                  </Link>
+                ))}
+              </div>
             </>
           )}
         </div>

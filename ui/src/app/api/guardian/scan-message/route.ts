@@ -131,15 +131,21 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
     }
 
     // 1. Validate body
-    if (!message || typeof message !== 'string') {
+    if (typeof message !== 'string') {
       return NextResponse.json(
-        { error: 'message is required' },
+        { error: 'message must be a string' },
         { status: 400 }
       )
     }
-    if (message.length > 2000) {
+    if (!message.trim()) {
       return NextResponse.json(
-        { error: 'message exceeds 2000 character limit' },
+        { error: 'message is required and cannot be empty' },
+        { status: 400 }
+      )
+    }
+    if (message.length > 10000) {
+      return NextResponse.json(
+        { error: 'message exceeds 10000 character limit' },
         { status: 400 }
       )
     }

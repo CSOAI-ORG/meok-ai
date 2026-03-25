@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import type { APIKeyResponse } from "@/lib/types";
 import Link from "next/link";
-import { Shield, User, CreditCard, Bot, Lock, AlertTriangle, Download, Trash2, Check } from "lucide-react";
+import { Shield, User, CreditCard, Bot, Lock, AlertTriangle, Download, Trash2, Check, Key, Eye, EyeOff } from "lucide-react";
 
 const GOLD = "#c9a84c";
 
@@ -177,6 +177,16 @@ export default function SettingsPage() {
   const [currentPlan, setCurrentPlan] = useState<string>("explorer");
   const [planLoading, setPlanLoading] = useState(true);
 
+  // BYOK (Bring Your Own Key)
+  const [anthropicKey, setAnthropicKey] = useState("");
+  const [openaiKey, setOpenaiKey] = useState("");
+  const [anthropicKeySet, setAnthropicKeySet] = useState(false);
+  const [openaiKeySet, setOpenaiKeySet] = useState(false);
+  const [showAnthropicKey, setShowAnthropicKey] = useState(false);
+  const [showOpenaiKey, setShowOpenaiKey] = useState(false);
+  const [byokSaving, setByokSaving] = useState(false);
+  const [byokSaved, setByokSaved] = useState(false);
+
   // Danger confirmations
   const [showDeleteMemoriesConfirm, setShowDeleteMemoriesConfirm] = useState(false);
   const [showDeleteAccountConfirm, setShowDeleteAccountConfirm] = useState(false);
@@ -217,8 +227,19 @@ export default function SettingsPage() {
         console.error("[settings] load companion error:", e);
       }
     };
+    const loadByok = async () => {
+      try {
+        const res = await fetch("/api/user/preferences");
+        if (res.ok) {
+          const data = await res.json();
+          if (data.anthropic_key_set) setAnthropicKeySet(true);
+          if (data.openai_key_set) setOpenaiKeySet(true);
+        }
+      } catch { /* ignore */ }
+    };
     loadPlan();
     loadCompanion();
+    loadByok();
   }, []);
 
   const generateKey = async () => {
@@ -261,6 +282,32 @@ export default function SettingsPage() {
     }
   };
 
+  const saveByok = async () => {
+    setByokSaving(true);
+    try {
+      const body: Record<string, string> = {};
+      if (anthropicKey) body.anthropic_api_key = anthropicKey;
+      if (openaiKey) body.openai_api_key = openaiKey;
+      const res = await fetch("/api/user/preferences", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body),
+      });
+      if (res.ok) {
+        if (anthropicKey) { setAnthropicKeySet(true); setAnthropicKey(""); }
+        if (openaiKey) { setOpenaiKeySet(true); setOpenaiKey(""); }
+        setByokSaved(true);
+        setTimeout(() => setByokSaved(false), 2500);
+      }
+    } catch (e) {
+      console.error("[settings] save BYOK error:", e);
+    } finally {
+      setByokSaving(false);
+    }
+  };
+
+  const maskKey = (prefix: string) => `${prefix}••••••••`;
+
   const planInfo = PLAN_FEATURES[currentPlan] ?? PLAN_FEATURES.explorer;
 
   return (
@@ -271,12 +318,12 @@ export default function SettingsPage() {
         <div className="mb-2">
           <h1 className="text-2xl font-bold text-white">Settings</h1>
           <p className="text-sm text-white/35 mt-1">
-            Account, companion, plan, privacy, and notifications
+            Profile, companion, billing, privacy, and API keys
           </p>
         </div>
 
-        {/* ── 1. Account ─────────────────────────────────────────── */}
-        <SectionCard icon={<User className="w-4 h-4" />} title="Account">
+        {/* ── 1. Profile ──────────────────────────────────────────── */}
+        <SectionCard icon={<User className="w-4 h-4" />} title="Profile">
           {user ? (
             <div className="space-y-1">
               <FieldRow label="Email" value={user.emailAddresses[0]?.emailAddress ?? "—"} />
@@ -365,8 +412,8 @@ export default function SettingsPage() {
           </div>
         </SectionCard>
 
-        {/* ── 2. Plan ─────────────────────────────────────────────── */}
-        <SectionCard icon={<CreditCard className="w-4 h-4" />} title="Plan">
+        {/* ── 2. Billing ───────────────────────────────────────────── */}
+        <SectionCard icon={<CreditCard className="w-4 h-4" />} title="Billing">
           {planLoading ? (
             <div className="space-y-2">
               <div className="h-7 w-32 rounded-md bg-white/5 animate-pulse" />
@@ -401,12 +448,12 @@ export default function SettingsPage() {
                     {planInfo.isFree ? "Upgrade →" : "Change plan →"}
                   </Link>
                   {!planInfo.isFree && (
-                    <button
-                      type="button"
-                      className="text-xs text-white/30 hover:text-white/60 transition-colors w-full"
+                    <Link
+                      href="/api/billing/portal"
+                      className="text-xs text-white/30 hover:text-white/60 transition-colors w-full block text-center"
                     >
-                      Manage billing →
-                    </button>
+                      Manage subscription →
+                    </Link>
                   )}
                 </div>
               </div>
@@ -549,20 +596,20 @@ export default function SettingsPage() {
               </Link>
             </p>
 
-            <button
-              type="button"
+            <a
+              href="/api/user/export"
               className="w-full flex items-center gap-2.5 px-4 py-2.5 rounded-lg text-sm font-medium transition-all text-left mt-3"
               style={{
                 border: `1px solid ${GOLD}35`,
                 color: GOLD,
                 background: "transparent",
               }}
-              onMouseEnter={(e) => { (e.currentTarget as HTMLButtonElement).style.background = `${GOLD}08`; }}
-              onMouseLeave={(e) => { (e.currentTarget as HTMLButtonElement).style.background = "transparent"; }}
+              onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.background = `${GOLD}08`; }}
+              onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.background = "transparent"; }}
             >
               <Download className="w-4 h-4 shrink-0" />
-              Export my data
-            </button>
+              Download my data
+            </a>
 
             {!showDeleteMemoriesConfirm ? (
               <button
@@ -650,7 +697,94 @@ export default function SettingsPage() {
           </div>
         </SectionCard>
 
-        {/* ── 6. Danger Zone ──────────────────────────────────────── */}
+        {/* ── 6. API Keys — BYOK ─────────────────────────────────── */}
+        <SectionCard icon={<Key className="w-4 h-4" />} title="Bring Your Own Key">
+          <p className="text-xs text-white/40 leading-relaxed">
+            Use your own API keys for direct model access. Your keys are encrypted at rest and never shared.
+          </p>
+
+          <div className="space-y-4 pt-2">
+            {/* Anthropic key */}
+            <div>
+              <label className="block text-xs text-white/35 uppercase tracking-wider mb-2">
+                Anthropic API Key
+              </label>
+              <div className="relative">
+                <input
+                  type={showAnthropicKey ? "text" : "password"}
+                  value={anthropicKey}
+                  onChange={(e) => setAnthropicKey(e.target.value)}
+                  placeholder={anthropicKeySet ? maskKey("sk-ant-") : "sk-ant-..."}
+                  className="w-full px-4 py-2.5 pr-10 rounded-lg bg-white/5 border border-white/10 text-white placeholder-white/20 focus:outline-none text-sm font-mono transition-colors"
+                  style={{ caretColor: GOLD }}
+                  onFocus={(e) => { e.currentTarget.style.borderColor = `${GOLD}60`; }}
+                  onBlur={(e) => { e.currentTarget.style.borderColor = "rgba(255,255,255,0.10)"; }}
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowAnthropicKey(!showAnthropicKey)}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-white/30 hover:text-white/60 transition-colors"
+                >
+                  {showAnthropicKey ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                </button>
+              </div>
+              {anthropicKeySet && !anthropicKey && (
+                <p className="text-xs mt-1.5" style={{ color: "#4ade80" }}>Key saved</p>
+              )}
+            </div>
+
+            {/* OpenAI key */}
+            <div>
+              <label className="block text-xs text-white/35 uppercase tracking-wider mb-2">
+                OpenAI API Key
+              </label>
+              <div className="relative">
+                <input
+                  type={showOpenaiKey ? "text" : "password"}
+                  value={openaiKey}
+                  onChange={(e) => setOpenaiKey(e.target.value)}
+                  placeholder={openaiKeySet ? maskKey("sk-") : "sk-..."}
+                  className="w-full px-4 py-2.5 pr-10 rounded-lg bg-white/5 border border-white/10 text-white placeholder-white/20 focus:outline-none text-sm font-mono transition-colors"
+                  style={{ caretColor: GOLD }}
+                  onFocus={(e) => { e.currentTarget.style.borderColor = `${GOLD}60`; }}
+                  onBlur={(e) => { e.currentTarget.style.borderColor = "rgba(255,255,255,0.10)"; }}
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowOpenaiKey(!showOpenaiKey)}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-white/30 hover:text-white/60 transition-colors"
+                >
+                  {showOpenaiKey ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                </button>
+              </div>
+              {openaiKeySet && !openaiKey && (
+                <p className="text-xs mt-1.5" style={{ color: "#4ade80" }}>Key saved</p>
+              )}
+            </div>
+
+            <div className="flex items-center gap-3">
+              <button
+                type="button"
+                onClick={saveByok}
+                disabled={byokSaving || (!anthropicKey && !openaiKey)}
+                className="px-5 py-2 rounded-lg text-sm font-semibold transition-all disabled:opacity-30 disabled:cursor-not-allowed"
+                style={{
+                  background: byokSaved ? "rgba(74,222,128,0.12)" : `${GOLD}18`,
+                  color: byokSaved ? "#4ade80" : GOLD,
+                  border: `1px solid ${byokSaved ? "#4ade8045" : `${GOLD}35`}`,
+                }}
+              >
+                {byokSaving ? "Saving..." : byokSaved ? "Saved" : "Save keys"}
+              </button>
+              <span className="flex items-center gap-1.5 text-xs text-white/25">
+                <Lock className="w-3 h-3" />
+                Encrypted and never shared
+              </span>
+            </div>
+          </div>
+        </SectionCard>
+
+        {/* ── 7. Danger Zone ──────────────────────────────────────── */}
         <SectionCard
           icon={<AlertTriangle className="w-4 h-4" />}
           title="Danger Zone"

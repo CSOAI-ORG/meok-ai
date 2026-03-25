@@ -226,6 +226,49 @@ export default function GuardianDashboardPage() {
           </div>
         </div>
 
+        {/* ─── WEEKLY SUMMARY ──────────────────────────────────────────────── */}
+        <div
+          className="rounded-2xl overflow-hidden"
+          style={{ background: SURFACE, border: `1px solid ${BORDER}` }}
+        >
+          <div
+            className="px-6 py-4 flex items-center gap-2"
+            style={{ borderBottom: `1px solid ${BORDER}` }}
+          >
+            <Shield size={16} color={GOLD} />
+            <span className="text-sm font-black text-white">Weekly Summary</span>
+          </div>
+          <div className="p-6 grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div
+              className="rounded-xl p-4 text-center"
+              style={{ background: 'rgba(201,168,76,0.06)', border: `1px solid ${GOLD}20` }}
+            >
+              <p className="text-2xl font-black" style={{ color: GOLD }}>12</p>
+              <p className="text-xs text-white/40 mt-1">Scans performed</p>
+            </div>
+            <div
+              className="rounded-xl p-4 text-center"
+              style={{ background: 'rgba(249,115,22,0.06)', border: '1px solid rgba(249,115,22,0.2)' }}
+            >
+              <p className="text-2xl font-black" style={{ color: '#f97316' }}>2</p>
+              <p className="text-xs text-white/40 mt-1">Threats caught</p>
+            </div>
+            <div
+              className="rounded-xl p-4 text-center"
+              style={{ background: 'rgba(74,222,128,0.06)', border: '1px solid rgba(74,222,128,0.2)' }}
+            >
+              <div className="flex items-center justify-center gap-2">
+                <span
+                  className="block w-2 h-2 rounded-full animate-pulse"
+                  style={{ background: '#4ade80' }}
+                />
+                <p className="text-sm font-black" style={{ color: '#4ade80' }}>Active</p>
+              </div>
+              <p className="text-xs text-white/40 mt-1">Guardian health</p>
+            </div>
+          </div>
+        </div>
+
         {/* ─── GUARDIAN ACTIVITY FEED ─────────────────────────────────────── */}
         <GuardianAlerts />
 
