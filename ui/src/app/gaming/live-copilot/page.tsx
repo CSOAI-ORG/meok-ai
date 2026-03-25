@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import { useState } from "react";
+import { callTool } from "@/lib/api";
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -197,6 +198,106 @@ const FAQS = [
     a: "Deep knowledge for Valorant, League of Legends, CS2, Apex Legends, Fortnite, Dota 2, Overwatch 2, and TFT. For any other game, MEOK uses its general gaming knowledge base — less specific, still useful.",
   },
 ];
+
+function PixelStrategyChat() {
+  const [input, setInput] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [history, setHistory] = useState<{ question: string; answer: Record<string, unknown>; ts: string }[]>([]);
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    if (!input.trim() || loading) return;
+    const question = input.trim();
+    setInput("");
+    setLoading(true);
+    setError(null);
+    try {
+      const data = await callTool<Record<string, unknown>>("assess_creativity", { input_text: question });
+      setHistory((prev) => [{ question, answer: data, ts: new Date().toLocaleTimeString() }, ...prev]);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Unknown error");
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  return (
+    <div className="space-y-6">
+      {/* Input */}
+      <form onSubmit={handleSubmit} className="flex gap-3">
+        <input
+          type="text"
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+          placeholder="Describe your gaming scenario... e.g. 'Enemy team rushes B every round in CS2'"
+          disabled={loading}
+          className="flex-1 px-5 py-4 rounded-2xl border border-white/[0.1] bg-white/[0.03] text-white text-sm placeholder:text-white/25 focus:outline-none focus:border-orange-400/40 transition-colors disabled:opacity-50"
+        />
+        <button
+          type="submit"
+          disabled={loading || !input.trim()}
+          className="flex items-center gap-2 px-6 py-4 rounded-2xl font-bold text-sm text-[#1a1a2e] bg-[#c9a84c] hover:bg-[#d4b463] transition-all disabled:opacity-50 disabled:cursor-not-allowed flex-shrink-0"
+          style={{ boxShadow: "0 0 20px rgba(201,168,76,0.2)" }}
+        >
+          {loading ? (
+            <svg className="w-4 h-4 animate-spin" viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="3" strokeLinecap="round" className="opacity-25" />
+              <path d="M4 12a8 8 0 018-8" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
+            </svg>
+          ) : (
+            "Get Strategy"
+          )}
+        </button>
+      </form>
+
+      {/* Error */}
+      {error && (
+        <div className="flex items-center gap-3 px-5 py-4 rounded-2xl border border-red-500/25 bg-red-500/5 text-red-400 text-sm">
+          <span className="flex-shrink-0">!</span>
+          {error}
+        </div>
+      )}
+
+      {/* Results */}
+      {history.length > 0 && (
+        <div className="space-y-4">
+          {history.map((entry, i) => (
+            <div
+              key={i}
+              className="rounded-2xl border border-white/[0.08] overflow-hidden"
+              style={{ background: "rgba(255,255,255,0.02)", animation: "fadeSlideIn 0.4s ease-out forwards" }}
+            >
+              {/* Question */}
+              <div className="flex items-start gap-3 px-5 py-4 border-b border-white/[0.06] bg-white/[0.02]">
+                <span className="text-orange-400 text-xs font-black tracking-wider uppercase flex-shrink-0 pt-0.5">YOU</span>
+                <p className="text-sm text-white/70">{entry.question}</p>
+                <span className="ml-auto text-[10px] font-mono text-white/20 flex-shrink-0">{entry.ts}</span>
+              </div>
+              {/* Answer */}
+              <div className="px-5 py-4">
+                <div className="flex items-center gap-2 mb-3">
+                  <span className="text-[#c9a84c] text-xs font-black tracking-wider uppercase">PIXEL</span>
+                  <span className="text-[10px] text-white/20 italic">Gamer-native, tactically sharp</span>
+                </div>
+                <pre className="text-xs text-white/60 leading-relaxed whitespace-pre-wrap break-words font-mono max-h-64 overflow-y-auto">
+                  {JSON.stringify(entry.answer, null, 2)}
+                </pre>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+
+      <style>{`
+        @keyframes fadeSlideIn {
+          from { opacity: 0; transform: translateY(8px); }
+          to   { opacity: 1; transform: translateY(0); }
+        }
+      `}</style>
+    </div>
+  );
+}
 
 function FAQAccordion({ faqs }: { faqs: typeof FAQS }) {
   const [open, setOpen] = useState<number | null>(null);
@@ -620,6 +721,28 @@ export default function LiveCopilotPage() {
             <h2 className="text-4xl font-black text-white">FAQ</h2>
           </div>
           <FAQAccordion faqs={FAQS} />
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════
+          PIXEL STRATEGY CHAT — Interactive
+      ═══════════════════════════════════════════════ */}
+      <section className="py-24 px-6 bg-[#0d0c18] border-y border-white/[0.05]">
+        <div className="max-w-3xl mx-auto">
+          <div className="text-center mb-14">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#c9a84c]/10 border border-[#c9a84c]/25 text-[#c9a84c] text-xs font-black tracking-[0.25em] uppercase mb-6">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#c9a84c] animate-pulse" />
+              LIVE STRATEGY CONSOLE
+            </div>
+            <h2 className="text-4xl font-black text-white mb-3">
+              Ask Pixel for a{" "}
+              <span className="text-orange-400">callout.</span>
+            </h2>
+            <p className="text-white/40 text-sm max-w-lg mx-auto leading-relaxed">
+              Describe your in-game situation and get tactical analysis. Gamer-native, tactically sharp.
+            </p>
+          </div>
+          <PixelStrategyChat />
         </div>
       </section>
 

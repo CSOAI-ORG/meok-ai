@@ -19,7 +19,12 @@ import {
   Timer,
   AlertTriangle,
   X,
+  Loader2,
+  Play,
+  Activity,
+  Newspaper,
 } from "lucide-react";
+import { callTool } from "@/lib/api";
 
 // ─── JSON-LD ──────────────────────────────────────────────────────────────────
 
@@ -242,6 +247,117 @@ const STATS = [
   { value: "0",    label: "harmful actions taken",  color: "text-green-400"  },
   { value: "100%", label: "audit trail coverage",   color: "text-yellow-400" },
 ];
+
+// ─── RALPH CONSOLE (INTERACTIVE) ──────────────────────────────────────────────
+
+function RalphConsole() {
+  const [loading, setLoading] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  const [results, setResults] = useState<{ label: string; data: Record<string, unknown>; ts: string }[]>([]);
+  const [ralphActive, setRalphActive] = useState(false);
+
+  async function runTool(toolName: string, label: string) {
+    setLoading(label);
+    setError(null);
+    try {
+      const data = await callTool<Record<string, unknown>>(toolName);
+      setResults((prev) => [{ label, data, ts: new Date().toLocaleTimeString() }, ...prev]);
+      if (toolName === "trigger_research_sweep") setRalphActive(true);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Unknown error");
+    } finally {
+      setLoading(null);
+    }
+  }
+
+  return (
+    <div className="space-y-6">
+      {/* Controls */}
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <button
+          onClick={() => runTool("trigger_research_sweep", "Research Sweep")}
+          disabled={loading !== null}
+          className="group relative flex items-center justify-center gap-3 px-6 py-4 rounded-2xl font-bold text-sm transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+          style={{
+            background: ralphActive
+              ? "linear-gradient(135deg, rgba(34,211,238,0.15), rgba(34,211,238,0.05))"
+              : "linear-gradient(135deg, rgba(201,168,76,0.15), rgba(201,168,76,0.05))",
+            border: `1px solid ${ralphActive ? "rgba(34,211,238,0.3)" : "rgba(201,168,76,0.3)"}`,
+            color: ralphActive ? "#22d3ee" : "#c9a84c",
+          }}
+        >
+          {loading === "Research Sweep" ? (
+            <Loader2 className="w-4 h-4 animate-spin" />
+          ) : (
+            <Play className="w-4 h-4" />
+          )}
+          {ralphActive ? "Ralph Active" : "Activate Ralph Mode"}
+        </button>
+
+        <button
+          onClick={() => runTool("orion_riri_hourman_status", "Agent Status")}
+          disabled={loading !== null}
+          className="group flex items-center justify-center gap-3 px-6 py-4 rounded-2xl font-bold text-sm border border-purple-400/25 text-purple-400 transition-all hover:bg-purple-400/10 disabled:opacity-50 disabled:cursor-not-allowed"
+          style={{ background: "rgba(168,85,247,0.05)" }}
+        >
+          {loading === "Agent Status" ? (
+            <Loader2 className="w-4 h-4 animate-spin" />
+          ) : (
+            <Activity className="w-4 h-4" />
+          )}
+          Get Agent Status
+        </button>
+
+        <button
+          onClick={() => runTool("get_nightshift_digest", "Overnight Digest")}
+          disabled={loading !== null}
+          className="group flex items-center justify-center gap-3 px-6 py-4 rounded-2xl font-bold text-sm border border-orange-400/25 text-orange-400 transition-all hover:bg-orange-400/10 disabled:opacity-50 disabled:cursor-not-allowed"
+          style={{ background: "rgba(251,146,60,0.05)" }}
+        >
+          {loading === "Overnight Digest" ? (
+            <Loader2 className="w-4 h-4 animate-spin" />
+          ) : (
+            <Newspaper className="w-4 h-4" />
+          )}
+          Get Overnight Digest
+        </button>
+      </div>
+
+      {/* Error */}
+      {error && (
+        <div className="flex items-center gap-3 px-5 py-4 rounded-2xl border border-red-500/25 bg-red-500/5 text-red-400 text-sm">
+          <AlertTriangle className="w-4 h-4 flex-shrink-0" />
+          {error}
+        </div>
+      )}
+
+      {/* Results */}
+      {results.length > 0 && (
+        <div className="space-y-4">
+          {results.map((result, i) => (
+            <div
+              key={i}
+              className="rounded-2xl border border-white/[0.08] overflow-hidden float-in"
+              style={{ background: "rgba(255,255,255,0.02)" }}
+            >
+              <div className="flex items-center justify-between px-5 py-3 border-b border-white/[0.06] bg-white/[0.02]">
+                <span className="text-xs font-bold tracking-wider uppercase text-cyan-400">
+                  {result.label}
+                </span>
+                <span className="text-[10px] font-mono text-white/25">{result.ts}</span>
+              </div>
+              <div className="p-5">
+                <pre className="text-xs text-white/60 leading-relaxed whitespace-pre-wrap break-words font-mono max-h-64 overflow-y-auto">
+                  {JSON.stringify(result.data, null, 2)}
+                </pre>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
 
 // ─── FAQ ACCORDION ────────────────────────────────────────────────────────────
 
@@ -1095,6 +1211,27 @@ export default function RalphPage() {
             </h2>
           </div>
           <FaqAccordion />
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════
+          13. RALPH CONSOLE — Interactive controls
+      ═══════════════════════════════════════════════ */}
+      <section className="py-24 px-6 border-t border-white/[0.05]" style={{ background: "linear-gradient(180deg, #0d0c18 0%, #0a0a0f 100%)" }}>
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-14">
+            <p className="text-xs font-mono text-cyan-400/70 tracking-widest uppercase mb-3">Live Console</p>
+            <h2 className="text-4xl sm:text-5xl font-black mb-4">
+              Ralph{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400">
+                Control Panel
+              </span>
+            </h2>
+            <p className="text-white/40 text-sm max-w-lg mx-auto leading-relaxed">
+              Trigger research sweeps, check agent status, and pull overnight digests — directly from here.
+            </p>
+          </div>
+          <RalphConsole />
         </div>
       </section>
 
