@@ -3182,6 +3182,66 @@ const POSTS = [
     category: "professional",
     featured: false,
   },
+  {
+    slug: "ai-for-chronic-stress",
+    title: "AI for Chronic Stress: How MEOK Helps You Regulate and Recover",
+    excerpt:
+      "Chronic stress is the silent epidemic of modern life. MEOK's Healer companion offers daily check-ins, stress pattern tracking, and care-based support to help you regulate, recover, and build resilience over time.",
+    date: "March 25, 2026",
+    readTime: "8 min read",
+    tag: "Mental Health",
+    tagColor: "#7ec8a0",
+    category: "mental-health",
+    featured: false,
+  },
+  {
+    slug: "ai-for-long-distance-relationships",
+    title: "AI for Long-Distance Relationships: Staying Connected When Miles Apart",
+    excerpt:
+      "Long-distance relationships test even the strongest bonds. MEOK's compassionate AI companion bridges emotional gaps, tracks relationship milestones, and provides 24/7 support when your partner is hours away.",
+    date: "March 25, 2026",
+    readTime: "8 min read",
+    tag: "Relationships",
+    tagColor: "#c9a84c",
+    category: "mental-health",
+    featured: false,
+  },
+  {
+    slug: "meok-for-students",
+    title: "MEOK for Students: Your AI Study Partner, Mental Health Companion, and Life Coach",
+    excerpt:
+      "Student mental health is at crisis point. MEOK combines Scholar's Socratic study support with Healer's emotional intelligence — giving students affordable, sovereign AI that remembers their academic journey.",
+    date: "March 25, 2026",
+    readTime: "9 min read",
+    tag: "Education",
+    tagColor: "#c9a84c",
+    category: "product",
+    featured: false,
+  },
+  {
+    slug: "ai-for-night-shift-workers",
+    title: "AI for Night Shift Workers: Support When the World Is Asleep",
+    excerpt:
+      "Night shift workers face unique isolation — working when everyone else sleeps, struggling with disrupted rhythms and loneliness at 3am. MEOK is available 24/7 with no office hours and no judgment.",
+    date: "March 25, 2026",
+    readTime: "7 min read",
+    tag: "Mental Health",
+    tagColor: "#7ec8a0",
+    category: "mental-health",
+    featured: false,
+  },
+  {
+    slug: "ai-for-newly-divorced",
+    title: "AI Support After Divorce: Rebuilding Your Life with a Compassionate AI Companion",
+    excerpt:
+      "Divorce is rated the second most stressful life event. MEOK's Healer and Mystic companions help you process grief, rebuild identity, and find meaning again — with sovereign memory that tracks your recovery journey.",
+    date: "March 25, 2026",
+    readTime: "9 min read",
+    tag: "Life Transitions",
+    tagColor: "#c9a84c",
+    category: "mental-health",
+    featured: false,
+  },
 ];
 
 // ── Category filter tabs ──────────────────────────────────────────────────────
