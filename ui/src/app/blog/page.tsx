@@ -2930,6 +2930,66 @@ const POSTS = [
     category: "professional",
     featured: false,
   },
+  {
+    slug: "ai-for-grief-after-miscarriage",
+    title: "AI for Grief After Miscarriage: Processing the Loss That Society Often Minimises",
+    excerpt:
+      "Miscarriage affects 1 in 4 pregnancies, yet grief after pregnancy loss is frequently minimised by those around us. MEOK's sovereign AI provides non-judgmental support for a grief that deserves to be taken seriously.",
+    date: "March 25, 2026",
+    readTime: "10 min read",
+    tag: "Wellbeing",
+    tagColor: "#4a9d6f",
+    category: "wellbeing",
+    featured: false,
+  },
+  {
+    slug: "ai-for-work-from-home",
+    title: "AI for Working From Home: Beating Isolation, Maintaining Focus, and Building Boundaries",
+    excerpt:
+      "Remote work promised freedom but delivered isolation and blurred boundaries for many people. MEOK's sovereign AI helps remote workers structure their days, maintain connection, and actually switch off when the day ends.",
+    date: "March 25, 2026",
+    readTime: "8 min read",
+    tag: "Professional",
+    tagColor: "#c9a84c",
+    category: "professional",
+    featured: false,
+  },
+  {
+    slug: "ai-for-phd-students",
+    title: "AI for PhD Students: Navigating the Isolation, Imposter Syndrome, and Intellectual Labyrinth",
+    excerpt:
+      "PhD life involves years of isolated intellectual work, constant self-doubt, and power dynamics with supervisors that are hard to navigate. MEOK's sovereign AI is the thinking partner and support system that PhDs deserve.",
+    date: "March 25, 2026",
+    readTime: "10 min read",
+    tag: "Wellbeing",
+    tagColor: "#4a9d6f",
+    category: "wellbeing",
+    featured: false,
+  },
+  {
+    slug: "ai-for-athletes",
+    title: "AI for Athletes: Mental Performance Support Beyond the Physical Game",
+    excerpt:
+      "Elite and amateur athletes know the body follows the mind. MEOK's sovereign AI helps with mental performance, injury recovery mindset, competitive anxiety, and the identity crisis that comes when sport ends.",
+    date: "March 25, 2026",
+    readTime: "9 min read",
+    tag: "Wellbeing",
+    tagColor: "#4a9d6f",
+    category: "wellbeing",
+    featured: false,
+  },
+  {
+    slug: "how-meok-protects-your-data",
+    title: "How MEOK Protects Your Data: A Plain-English Guide to Sovereign AI Privacy",
+    excerpt:
+      "Where does your data go when you talk to an AI? With most AI, it trains the model. With MEOK, it stays yours. Here is exactly how MEOK's sovereign architecture protects your most personal conversations.",
+    date: "March 25, 2026",
+    readTime: "9 min read",
+    tag: "Privacy",
+    tagColor: "#7c6fcd",
+    category: "privacy",
+    featured: false,
+  },
 ];
 
 // ── Category filter tabs ──────────────────────────────────────────────────────
