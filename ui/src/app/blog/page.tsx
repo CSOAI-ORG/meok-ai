@@ -2894,6 +2894,42 @@ const POSTS = [
     category: "accessibility",
     featured: false,
   },
+  {
+    slug: "ai-for-retirement",
+    title: "AI for Retirement: Finding Purpose After the Career That Defined You",
+    excerpt:
+      "Retirement is celebrated but rarely prepared for emotionally. When work ends, so does identity, routine, and social connection for many people. MEOK's sovereign AI helps retirees build a fulfilling next chapter.",
+    date: "March 25, 2026",
+    readTime: "9 min read",
+    tag: "Wellbeing",
+    tagColor: "#4a9d6f",
+    category: "wellbeing",
+    featured: false,
+  },
+  {
+    slug: "ai-for-single-parenting",
+    title: "AI for Single Parents: When You Are the Whole Village",
+    excerpt:
+      "Single parents carry the full weight of parenthood alone — the logistics, the emotional load, the financial pressure, and the loneliness. MEOK is the consistent support that does not judge and never forgets where you left off.",
+    date: "March 25, 2026",
+    readTime: "9 min read",
+    tag: "Wellbeing",
+    tagColor: "#4a9d6f",
+    category: "wellbeing",
+    featured: false,
+  },
+  {
+    slug: "meok-for-musicians",
+    title: "MEOK for Musicians: AI That Understands the Creative and Business Sides of Making Music",
+    excerpt:
+      "Musicians face a unique combination of creative vulnerability, business complexity, and emotional volatility. MEOK's sovereign AI supports the whole musician — the artist and the entrepreneur — without leaking your creative work.",
+    date: "March 25, 2026",
+    readTime: "9 min read",
+    tag: "Professional",
+    tagColor: "#c9a84c",
+    category: "professional",
+    featured: false,
+  },
 ];
 
 // ── Category filter tabs ──────────────────────────────────────────────────────

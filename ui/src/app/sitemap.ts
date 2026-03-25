@@ -377,6 +377,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: 'https://meok.ai/blog/personal-sovereign-ai-explained', lastModified: new Date('2026-03-25'), changeFrequency: 'monthly', priority: 0.95 },
     { url: 'https://meok.ai/blog/ai-for-dyscalculia', lastModified: new Date('2026-03-25'), changeFrequency: 'monthly', priority: 0.85 },
     { url: 'https://meok.ai/blog/ai-for-dyslexia', lastModified: new Date('2026-03-25'), changeFrequency: 'monthly', priority: 0.87 },
+    { url: 'https://meok.ai/blog/ai-for-retirement', lastModified: new Date('2026-03-25'), changeFrequency: 'monthly', priority: 0.88 },
+    { url: 'https://meok.ai/blog/ai-for-single-parenting', lastModified: new Date('2026-03-25'), changeFrequency: 'monthly', priority: 0.88 },
+    { url: 'https://meok.ai/blog/meok-for-musicians', lastModified: new Date('2026-03-25'), changeFrequency: 'monthly', priority: 0.86 },
 
     // ── Legal ─────────────────────────────────────────────────────────
     { url: 'https://meok.ai/privacy', lastModified: new Date(), changeFrequency: 'yearly', priority: 0.3 },
