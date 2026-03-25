@@ -21,6 +21,8 @@ const MODELS = [
   { id: 'nemotron-nano',     label: 'Nemotron Nano',  icon: '💚', privacy: 'cloud' as const },
   { id: 'gpt-4o',            label: 'GPT-4o',         icon: '🟢', privacy: 'cloud' as const },
   { id: 'deepseek-chat',     label: 'DeepSeek',       icon: '🔵', privacy: 'cloud' as const },
+  { id: 'cerebras-llama',    label: 'Cerebras',       icon: '⚡', privacy: 'cloud' as const },
+  { id: 'groq-llama',        label: 'Groq',           icon: '🟠', privacy: 'cloud' as const },
 ];
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────

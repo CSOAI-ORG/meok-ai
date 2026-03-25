@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useState, useEffect } from "react";
 import { ArrowRight, Shield, Lock, Database, Globe, Download, CheckCircle, XCircle } from "lucide-react";
 
 const jsonLd = {
@@ -119,6 +120,66 @@ const COMPARISON_ROWS: ComparisonRow[] = [
   { feature: "Zero-knowledge proofs", meok: true, claude: false, chatgpt: false, perplexity: false },
 ];
 
+function LiveSovereignData() {
+  const [data, setData] = useState<{ memory_episodes?: number; [key: string]: unknown } | null>(null);
+
+  useEffect(() => {
+    fetch('/api/council/status')
+      .then((r) => r.json())
+      .then((d) => setData(d))
+      .catch(() => {});
+  }, []);
+
+  const episodes = data?.memory_episodes ?? "---";
+
+  return (
+    <section className="bg-[#0d0c18] py-12 px-6">
+      <div className="max-w-5xl mx-auto">
+        <div
+          className="rounded-2xl p-6 border border-[#c9a84c]/25"
+          style={{ background: "rgba(201,168,76,0.04)" }}
+        >
+          <div className="flex items-center gap-2 mb-5">
+            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+            <span className="text-xs font-black tracking-[0.2em] uppercase text-[#c9a84c]">
+              Live Sovereign Data
+            </span>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
+            <div className="p-4 rounded-xl bg-white/[0.03] border border-white/[0.07]">
+              <div className="flex items-center gap-2 mb-2">
+                <Database className="w-4 h-4 text-[#c9a84c]" />
+                <span className="text-xs text-white/40 font-mono">Memory Episodes</span>
+              </div>
+              <div className="text-2xl font-black text-[#c9a84c]">
+                {typeof episodes === "number" ? episodes.toLocaleString() : episodes}
+              </div>
+            </div>
+            <div className="p-4 rounded-xl bg-white/[0.03] border border-white/[0.07]">
+              <div className="flex items-center gap-2 mb-2">
+                <Lock className="w-4 h-4 text-emerald-400" />
+                <span className="text-xs text-white/40 font-mono">Encryption</span>
+              </div>
+              <div className="text-2xl font-black text-emerald-400">
+                AES-256-GCM Active
+              </div>
+            </div>
+            <div className="p-4 rounded-xl bg-white/[0.03] border border-white/[0.07]">
+              <div className="flex items-center gap-2 mb-2">
+                <Globe className="w-4 h-4 text-blue-400" />
+                <span className="text-xs text-white/40 font-mono">Data Location</span>
+              </div>
+              <div className="text-2xl font-black text-blue-400">
+                Local + Neon EU-West-2
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function CellIcon({ val }: { val: boolean }) {
   return val ? (
     <CheckCircle className="w-5 h-5 text-[#c9a84c] mx-auto" />
@@ -179,6 +240,9 @@ export default function SovereignDisplayPage() {
           </div>
         </div>
       </section>
+
+      {/* ─── LIVE SOVEREIGN DATA ─────────────────────────── */}
+      <LiveSovereignData />
 
       {/* ─── WHAT THE DISPLAY SHOWS ─────────────────────── */}
       <section className="bg-[#1a1a2e] py-24 px-6">

@@ -217,6 +217,125 @@ const FAQS = [
   },
 ];
 
+const STRATEGY_GAMES = ["Valorant", "League of Legends", "CS2", "Apex Legends", "Fortnite", "Dota 2", "Overwatch 2", "TFT", "Rocket League"];
+
+function BuildStrategy() {
+  const [game, setGame] = useState(STRATEGY_GAMES[0]);
+  const [situation, setSituation] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [result, setResult] = useState<string | null>(null);
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    if (!situation.trim() || loading) return;
+    setLoading(true);
+    setError(null);
+    setResult(null);
+    try {
+      const res = await fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          messages: [{ role: 'user', content: `I need a strategy for ${game}. Here is my situation:\n\n${situation.trim()}\n\nGive me a specific, actionable strategy: what to pick, how to play it, what to watch for, and when to adapt.` }],
+          companionId: 'pixel',
+        }),
+      });
+      if (res.status === 401 || res.status === 403) {
+        setError("Sign in to use the strategy builder.");
+        return;
+      }
+      if (!res.ok) throw new Error(`Request failed (${res.status})`);
+      const text = await res.text();
+      setResult(text);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Unknown error");
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  return (
+    <div className="space-y-6">
+      <form onSubmit={handleSubmit} className="space-y-4">
+        <div>
+          <label className="text-xs font-black tracking-[0.15em] uppercase text-white/40 block mb-2">
+            Game
+          </label>
+          <div className="flex flex-wrap gap-2">
+            {STRATEGY_GAMES.map((g) => (
+              <button
+                key={g}
+                type="button"
+                onClick={() => setGame(g)}
+                className={`px-4 py-2 rounded-full text-xs font-bold transition-all border ${
+                  game === g
+                    ? "bg-emerald-500/15 border-emerald-500/40 text-emerald-400"
+                    : "bg-white/[0.03] border-white/[0.08] text-white/40 hover:text-white/60 hover:border-white/15"
+                }`}
+              >
+                {g}
+              </button>
+            ))}
+          </div>
+        </div>
+        <div>
+          <label className="text-xs font-black tracking-[0.15em] uppercase text-white/40 block mb-2">
+            Situation
+          </label>
+          <textarea
+            value={situation}
+            onChange={(e) => setSituation(e.target.value)}
+            placeholder={`e.g. 'I main Jett but keep losing to double-controller comps on Bind. My team plays default and I entry A short.'`}
+            disabled={loading}
+            rows={3}
+            className="w-full px-5 py-4 rounded-2xl border border-white/[0.1] bg-white/[0.03] text-white text-sm placeholder:text-white/25 focus:outline-none focus:border-emerald-400/40 transition-colors disabled:opacity-50 resize-none"
+          />
+        </div>
+        <button
+          type="submit"
+          disabled={loading || !situation.trim()}
+          className="flex items-center gap-2 px-8 py-4 rounded-2xl font-bold text-sm text-[#1a1a2e] bg-[#c9a84c] hover:bg-[#d4b463] transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+          style={{ boxShadow: "0 0 20px rgba(201,168,76,0.2)" }}
+        >
+          {loading ? (
+            <svg className="w-4 h-4 animate-spin" viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="3" strokeLinecap="round" className="opacity-25" />
+              <path d="M4 12a8 8 0 018-8" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
+            </svg>
+          ) : (
+            "Build Strategy"
+          )}
+        </button>
+      </form>
+
+      {error && (
+        <div className="flex items-center gap-3 px-5 py-4 rounded-2xl border border-red-500/25 bg-red-500/5 text-red-400 text-sm">
+          <span className="flex-shrink-0">!</span>
+          {error}
+        </div>
+      )}
+
+      {result && (
+        <div
+          className="rounded-2xl border border-emerald-500/20 overflow-hidden"
+          style={{ background: "rgba(52,211,153,0.04)" }}
+        >
+          <div className="flex items-center gap-2 px-5 py-3 border-b border-emerald-500/15 bg-black/20">
+            <span className="text-emerald-400 text-xs font-black tracking-wider uppercase">PIXEL</span>
+            <span className="text-[10px] text-white/20 italic">Strategy for {game}</span>
+          </div>
+          <div className="px-5 py-5">
+            <div className="text-sm text-white/60 leading-relaxed whitespace-pre-wrap break-words">
+              {result}
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
 function FAQAccordion({ faqs }: { faqs: typeof FAQS }) {
   const [open, setOpen] = useState<number | null>(null);
   return (
@@ -691,6 +810,28 @@ export default function StrategyPage() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════
+          BUILD STRATEGY — Interactive
+      ═══════════════════════════════════════════════ */}
+      <section className="py-24 px-6 bg-[#0d0c18] border-y border-white/[0.05]">
+        <div className="max-w-3xl mx-auto">
+          <div className="text-center mb-14">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/25 text-emerald-400 text-xs font-black tracking-[0.25em] uppercase mb-6">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+              INTERACTIVE STRATEGY
+            </div>
+            <h2 className="text-4xl font-black text-white mb-3">
+              Build your{" "}
+              <span className="text-emerald-400">strategy.</span>
+            </h2>
+            <p className="text-white/40 text-sm max-w-lg mx-auto leading-relaxed">
+              Pick your game, describe the situation, and Pixel builds a strategy around your specifics.
+            </p>
+          </div>
+          <BuildStrategy />
         </div>
       </section>
 

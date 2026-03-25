@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import { LiveConsciousnessStatus } from "./live-status";
 
 export const metadata: Metadata = {
   title: "Consciousness Modes — How MEOK Thinks | MEOK.AI",
@@ -184,6 +185,9 @@ const TRADITION_CATEGORIES = [
 export default function ConsciousnessPage() {
   return (
     <div className="min-h-screen bg-[#0d0c18] text-[#f5f0e8] overflow-x-hidden">
+
+      {/* ─── LIVE STATUS ─────────────────────────────────── */}
+      <LiveConsciousnessStatus />
 
       {/* ─── HERO ─────────────────────────────────────────── */}
       <section

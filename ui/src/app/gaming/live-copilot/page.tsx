@@ -1,7 +1,6 @@
 "use client";
 import Link from "next/link";
 import { useState } from "react";
-import { callTool } from "@/lib/api";
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -203,7 +202,7 @@ function PixelStrategyChat() {
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [history, setHistory] = useState<{ question: string; answer: Record<string, unknown>; ts: string }[]>([]);
+  const [history, setHistory] = useState<{ question: string; answer: string; ts: string }[]>([]);
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -213,8 +212,21 @@ function PixelStrategyChat() {
     setLoading(true);
     setError(null);
     try {
-      const data = await callTool<Record<string, unknown>>("assess_creativity", { input_text: question });
-      setHistory((prev) => [{ question, answer: data, ts: new Date().toLocaleTimeString() }, ...prev]);
+      const res = await fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          messages: [{ role: 'user', content: question }],
+          companionId: 'pixel',
+        }),
+      });
+      if (res.status === 401 || res.status === 403) {
+        setError("Sign in to use Pixel's live strategy console.");
+        return;
+      }
+      if (!res.ok) throw new Error(`Request failed (${res.status})`);
+      const text = await res.text();
+      setHistory((prev) => [{ question, answer: text, ts: new Date().toLocaleTimeString() }, ...prev]);
     } catch (err) {
       setError(err instanceof Error ? err.message : "Unknown error");
     } finally {
@@ -280,9 +292,9 @@ function PixelStrategyChat() {
                   <span className="text-[#c9a84c] text-xs font-black tracking-wider uppercase">PIXEL</span>
                   <span className="text-[10px] text-white/20 italic">Gamer-native, tactically sharp</span>
                 </div>
-                <pre className="text-xs text-white/60 leading-relaxed whitespace-pre-wrap break-words font-mono max-h-64 overflow-y-auto">
-                  {JSON.stringify(entry.answer, null, 2)}
-                </pre>
+                <div className="text-sm text-white/60 leading-relaxed whitespace-pre-wrap break-words max-h-64 overflow-y-auto">
+                  {entry.answer}
+                </div>
               </div>
             </div>
           ))}

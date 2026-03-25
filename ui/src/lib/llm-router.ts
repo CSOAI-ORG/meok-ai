@@ -13,9 +13,9 @@ import type { LanguageModel } from 'ai';
 // ── Tier-based model access ────────────────────────────────────────────────
 
 export const MODEL_ACCESS = {
-  explorer:  ['deepseek-chat', 'nemotron-nano', 'llama-3.1-8b'],
-  sovereign: ['deepseek-chat', 'nemotron-nano', 'nemotron-super', 'gpt-4o-mini', 'claude-3-5-haiku-latest'],
-  family:    ['deepseek-chat', 'nemotron-nano', 'nemotron-super', 'nemotron-ultra', 'gpt-4o', 'claude-3-5-sonnet-latest'],
+  explorer:  ['cerebras-llama', 'groq-llama', 'deepseek-chat', 'nemotron-nano', 'llama-3.1-8b'],
+  sovereign: ['cerebras-llama', 'groq-llama', 'deepseek-chat', 'nemotron-nano', 'nemotron-super', 'gpt-4o-mini', 'claude-3-5-haiku-latest'],
+  family:    ['cerebras-llama', 'groq-llama', 'deepseek-chat', 'nemotron-nano', 'nemotron-super', 'nemotron-ultra', 'gpt-4o', 'claude-3-5-sonnet-latest'],
 } as const;
 
 export type Tier = keyof typeof MODEL_ACCESS;
@@ -26,6 +26,7 @@ export type TaskType =
   | 'coding'
   | 'creative'
   | 'emotional'
+  | 'gaming'
   | 'research'
   | 'planning'
   | 'reasoning';
@@ -38,6 +39,12 @@ export type TaskType =
  */
 export function classifyTask(message: string): TaskType {
   const lower = message.toLowerCase();
+
+  if (lower.match(/\b(grief|loss|died|funeral|bereavement|passed away|mourning|death of|lost my|miss them|miss her|miss him)\b/))
+    return 'emotional';
+
+  if (lower.match(/\b(game|gaming|ranked|match|valorant|league|cs2|fortnite|apex|overwatch|esports|strategy game|build order|team comp|loadout)\b/))
+    return 'gaming';
 
   if (lower.match(/\b(reason|logic|deduce|prove|theorem|why does|solve|calculate|math|equation|step by step|think through|figure out)\b/))
     return 'reasoning';
@@ -74,10 +81,15 @@ export function classifyTask(message: string): TaskType {
  * - Family    → best available model per task
  */
 export function selectModel(taskType: TaskType, tier: Tier): string {
-  // Explorer tier: Nemotron Nano for reasoning/coding (free, powerful), DeepSeek for chat
+  // Explorer: all free providers
   if (tier === 'explorer') {
-    if (taskType === 'reasoning' || taskType === 'coding' || taskType === 'analysis') return 'nemotron-nano';
-    return 'deepseek-chat';
+    if (taskType === 'reasoning' || taskType === 'analysis') return 'nemotron-nano';
+    if (taskType === 'coding') return 'nemotron-nano';
+    if (taskType === 'creative') return 'groq-llama';
+    if (taskType === 'gaming') return 'groq-llama';
+    if (taskType === 'emotional') return 'groq-llama'; // Free tier gets Groq for emotional (better than DeepSeek)
+    if (taskType === 'research') return 'groq-llama';
+    return 'cerebras-llama'; // Simple chat → fastest free provider
   }
 
   switch (taskType) {
@@ -102,6 +114,9 @@ export function selectModel(taskType: TaskType, tier: Tier): string {
     case 'creative':
       // Claude is the best creative writer regardless of tier
       return 'claude-3-5-haiku-latest';
+
+    case 'gaming':
+      return tier === 'family' ? 'claude-3-5-sonnet-latest' : 'groq-llama';
 
     case 'planning':
       return tier === 'family' ? 'nemotron-super' : 'gpt-4o-mini';
@@ -165,6 +180,40 @@ export function getProvider(modelId: string): LanguageModel {
     // Strip the 'openrouter/' prefix to get the actual model ID
     const actualModelId = modelId.replace('openrouter/', '');
     return openrouter(actualModelId);
+  }
+
+  if (modelId.startsWith('cerebras-')) {
+    const cerebrasApiKey = process.env.CEREBRAS_API_KEY;
+    if (!cerebrasApiKey) {
+      console.warn('[llm-router] CEREBRAS_API_KEY not set — falling back to DeepSeek');
+      return getProvider('deepseek-chat');
+    }
+    const cerebras = createOpenAI({
+      baseURL: 'https://api.cerebras.ai/v1',
+      apiKey: cerebrasApiKey,
+    });
+    const cerebrasModels: Record<string, string> = {
+      'cerebras-llama': 'llama3.1-8b',
+      'cerebras-llama-70b': 'llama-3.3-70b',
+    };
+    return cerebras(cerebrasModels[modelId] ?? 'llama3.1-8b');
+  }
+
+  if (modelId.startsWith('groq-')) {
+    const groqApiKey = process.env.GROQ_API_KEY;
+    if (!groqApiKey) {
+      console.warn('[llm-router] GROQ_API_KEY not set — falling back to DeepSeek');
+      return getProvider('deepseek-chat');
+    }
+    const groq = createOpenAI({
+      baseURL: 'https://api.groq.com/openai/v1',
+      apiKey: groqApiKey,
+    });
+    const groqModels: Record<string, string> = {
+      'groq-llama': 'llama-3.3-70b-versatile',
+      'groq-mixtral': 'mixtral-8x7b-32768',
+    };
+    return groq(groqModels[modelId] ?? 'llama-3.3-70b-versatile');
   }
 
   if (modelId.startsWith('deepseek-')) {

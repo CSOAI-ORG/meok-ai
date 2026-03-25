@@ -181,6 +181,97 @@ const FAQS = [
   },
 ];
 
+function AnalyzeMyGame() {
+  const [input, setInput] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [result, setResult] = useState<string | null>(null);
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    if (!input.trim() || loading) return;
+    const description = input.trim();
+    setLoading(true);
+    setError(null);
+    setResult(null);
+    try {
+      const res = await fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          messages: [{ role: 'user', content: `Post-game analysis request. Here is a description of my match:\n\n${description}\n\nGive me an honest post-game breakdown: what I did well, what cost me rounds/fights, patterns you notice, and one specific thing to work on this week.` }],
+          companionId: 'pixel',
+        }),
+      });
+      if (res.status === 401 || res.status === 403) {
+        setError("Sign in to use post-game analysis.");
+        return;
+      }
+      if (!res.ok) throw new Error(`Request failed (${res.status})`);
+      const text = await res.text();
+      setResult(text);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Unknown error");
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  return (
+    <div className="space-y-6">
+      <form onSubmit={handleSubmit} className="space-y-4">
+        <textarea
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+          placeholder="Describe your match... e.g. 'CS2 competitive on Mirage, lost 16-14. I kept dying at A ramp to AWP. Had 18 kills but only 3 in the second half. Felt tilted after round 20.'"
+          disabled={loading}
+          rows={4}
+          className="w-full px-5 py-4 rounded-2xl border border-white/[0.1] bg-white/[0.03] text-white text-sm placeholder:text-white/25 focus:outline-none focus:border-[#c9a84c]/40 transition-colors disabled:opacity-50 resize-none"
+        />
+        <button
+          type="submit"
+          disabled={loading || !input.trim()}
+          className="flex items-center gap-2 px-8 py-4 rounded-2xl font-bold text-sm text-[#1a1a2e] bg-[#c9a84c] hover:bg-[#d4b463] transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+          style={{ boxShadow: "0 0 20px rgba(201,168,76,0.2)" }}
+        >
+          {loading ? (
+            <svg className="w-4 h-4 animate-spin" viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="3" strokeLinecap="round" className="opacity-25" />
+              <path d="M4 12a8 8 0 018-8" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
+            </svg>
+          ) : (
+            "Analyze My Game"
+          )}
+        </button>
+      </form>
+
+      {error && (
+        <div className="flex items-center gap-3 px-5 py-4 rounded-2xl border border-red-500/25 bg-red-500/5 text-red-400 text-sm">
+          <span className="flex-shrink-0">!</span>
+          {error}
+        </div>
+      )}
+
+      {result && (
+        <div
+          className="rounded-2xl border border-[#c9a84c]/20 overflow-hidden"
+          style={{ background: "rgba(201,168,76,0.04)" }}
+        >
+          <div className="flex items-center gap-2 px-5 py-3 border-b border-[#c9a84c]/15 bg-black/20">
+            <span className="text-[#c9a84c] text-xs font-black tracking-wider uppercase">PIXEL</span>
+            <span className="text-[10px] text-white/20 italic">Post-game analysis</span>
+          </div>
+          <div className="px-5 py-5">
+            <div className="text-sm text-white/60 leading-relaxed whitespace-pre-wrap break-words">
+              {result}
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
 function FAQAccordion({ faqs }: { faqs: typeof FAQS }) {
   const [open, setOpen] = useState<number | null>(null);
   return (
@@ -651,6 +742,29 @@ export default function PostGamePage() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════
+          ANALYZE MY GAME — Interactive
+      ═══════════════════════════════════════════════ */}
+      <section className="py-24 px-6 bg-[#0d0c18] border-y border-white/[0.05]">
+        <div className="max-w-3xl mx-auto">
+          <div className="text-center mb-14">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#c9a84c]/10 border border-[#c9a84c]/25 text-[#c9a84c] text-xs font-black tracking-[0.25em] uppercase mb-6">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#c9a84c] animate-pulse" />
+              INTERACTIVE ANALYSIS
+            </div>
+            <h2 className="text-4xl font-black text-white mb-3">
+              Analyze{" "}
+              <span className="text-[#c9a84c]">your game.</span>
+            </h2>
+            <p className="text-white/40 text-sm max-w-lg mx-auto leading-relaxed">
+              Describe what happened in your last match. Pixel will break down what worked,
+              what cost you, and what to focus on next.
+            </p>
+          </div>
+          <AnalyzeMyGame />
         </div>
       </section>
 
