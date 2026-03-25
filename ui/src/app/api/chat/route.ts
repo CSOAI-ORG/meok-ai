@@ -28,6 +28,9 @@ import { detectLanguage, getLanguageDirective } from '@/lib/language';
 import { analyzeOCEAN, formatProfileContext } from '@/lib/user-profile';
 import { computeStyleDirective, formatStyleDirective } from '@/lib/adaptive-dialogue';
 import { detectSycophancyRisk, formatAntiSycophancyDirective } from '@/lib/anti-sycophancy';
+import { pointsForAction } from '@/lib/bond';
+import { generateDiaryEntry } from '@/lib/personality-diary';
+import { evaluateCareSignal } from '@/lib/proactive-care';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -355,6 +358,47 @@ export async function POST(req: NextRequest): Promise<Response> {
       void updateUserProfile(userId, sessionProfile as unknown as Record<string, unknown>).catch(err =>
         console.error('[api/chat] Profile persistence failed (non-fatal):', err),
       );
+    }
+
+    // Award bond points for daily chat interaction
+    // (pointsForAction is pure — no DB call, just returns the number)
+    const _bondPoints = pointsForAction('daily_chat'); // 5 pts per message
+    // TODO: accumulate in user record when bond_points column is added
+
+    // Generate personality diary entry every 25 messages
+    if (user && (user.messages_total ?? 0) % 25 === 0 && (user.messages_total ?? 0) > 0) {
+      try {
+        const character = getCharacter(cid);
+        const _diaryEntry = generateDiaryEntry({
+          userName: user.name ?? 'there',
+          companionName: character?.name ?? 'Aria',
+          archetype: character?.archetype ?? 'nurturer',
+          recentTopics: [taskType, emotionState.primary],
+          interactionCount: user.messages_total ?? 0,
+          daysSinceFirst: Math.floor((Date.now() - new Date(user.created_at).getTime()) / 86400000),
+          lastEmotionalState: emotionState.primary,
+        });
+        // TODO: store diary entry in memory when diary table is added
+      } catch (err) {
+        console.error('[api/chat] Diary generation failed (non-fatal):', err);
+      }
+    }
+
+    // Evaluate proactive care signal (checks rate limits internally)
+    if (user) {
+      try {
+        const _careSignal = evaluateCareSignal({
+          lastInteraction: user.last_active_date ?? new Date().toISOString(),
+          interactionCount: user.messages_total ?? 0,
+          recentTopics: [taskType],
+          companionName: getCharacter(cid)?.name ?? 'Aria',
+          userName: user.name ?? undefined,
+          signalsSentThisWeek: 0, // TODO: track in DB
+        });
+        // TODO: queue signal for delivery if non-null
+      } catch (err) {
+        console.error('[api/chat] Care signal evaluation failed (non-fatal):', err);
+      }
     }
 
     void pushShortTerm(userId, cid, {
