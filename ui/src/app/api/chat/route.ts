@@ -4,10 +4,12 @@
  * POST /api/chat  — Streams a response from the routed LLM.
  * GET  /api/chat  — Health check endpoint.
  *
- * Pipeline (Phase 9):
+ * Pipeline (Phase 32 — Full Integration):
  *   Auth → validate → detect language → analyze emotion → guardian scan →
- *   rate-limit → retrieve memory → procedural patterns → build system prompt →
- *   route model → compress → stream → fire-and-forget storage
+ *   scam detection → rate-limit → retrieve memory → procedural patterns →
+ *   mood state → relationship level → voice fingerprint → cultural variant →
+ *   time-of-day → build system prompt → route model → compress → stream →
+ *   fire-and-forget (memory + bond + diary + care signals + logging)
  */
 
 import { type NextRequest, NextResponse } from 'next/server';
@@ -31,6 +33,15 @@ import { detectSycophancyRisk, formatAntiSycophancyDirective } from '@/lib/anti-
 import { pointsForAction } from '@/lib/bond';
 import { generateDiaryEntry } from '@/lib/personality-diary';
 import { evaluateCareSignal } from '@/lib/proactive-care';
+import { computeMoodTransition, formatMoodContext, getMoodGreeting, type MoodState } from '@/lib/character-mood';
+import { buildRelationshipState, formatRelationshipContext } from '@/lib/relationship-progression';
+import { analyzeVoicePattern, formatConsistencyDirective } from '@/lib/voice-fingerprint';
+import { detectCulturalVariant, getCulturalVariant, formatCulturalContext } from '@/lib/cultural-variants';
+import { analyzeForScams } from '@/lib/guardian/scam-detection';
+import { generateGentleWarning } from '@/lib/guardian/gentle-warnings';
+import { logInfo } from '@/lib/logger';
+import { estimateCost, formatCost } from '@/lib/cost-tracker';
+import { getTimeOfDay, getTimeGreeting } from '@/lib/adaptive-dialogue';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -58,6 +69,11 @@ interface PromptContextBlocks {
   language?: string;
   style?: string;
   antiSycophancy?: string;
+  mood?: string;
+  relationship?: string;
+  voiceConsistency?: string;
+  cultural?: string;
+  timeGreeting?: string;
 }
 
 /**
@@ -86,6 +102,13 @@ function buildSystemPrompt(companionId: string, contexts: PromptContextBlocks = 
   // Dynamism parameter — controlled unpredictability (Kindroid pattern)
   const dynamism = character?.dynamism ?? 0.95;
   parts.push(`\n[DYNAMISM: ${dynamism.toFixed(2)} — vary your expression and style slightly each response. Be predictable in care and values, unpredictable in how you express them. Surprise the user occasionally with unexpected angles, metaphors, or observations.]`);
+
+  // Phase 29-31 context blocks
+  if (contexts.mood) parts.push(`\n${contexts.mood}`);
+  if (contexts.relationship) parts.push(`\n${contexts.relationship}`);
+  if (contexts.voiceConsistency) parts.push(`\n${contexts.voiceConsistency}`);
+  if (contexts.cultural) parts.push(`\n${contexts.cultural}`);
+  if (contexts.timeGreeting) parts.push(`\n${contexts.timeGreeting}`);
 
   // Anti-sycophancy directive — injected when agreement rate is too high
   if (contexts.antiSycophancy) parts.push(`\n${contexts.antiSycophancy}`);
@@ -289,7 +312,83 @@ export async function POST(req: NextRequest): Promise<Response> {
     console.error('[api/chat] Anti-sycophancy detection failed:', err);
   }
 
-  // 6c. Build system prompt with all context blocks
+  // 6c. Character mood, relationship, voice consistency, cultural context (Phase 29-31)
+  let moodCtx = '';
+  let relationshipCtx = '';
+  let voiceCtx = '';
+  let culturalCtx = '';
+  let timeCtx = '';
+
+  try {
+    // Mood state machine — characters "exist between interactions"
+    const lastMood: MoodState = { mood: 'calm', intensity: 0.5, since: new Date().toISOString(), trigger: 'session_start' };
+    const timeSinceLastMs = user?.last_active_date
+      ? Date.now() - new Date(user.last_active_date).getTime()
+      : 0;
+    const currentMood = computeMoodTransition(lastMood, emotionState.primary as import('@/lib/character-mood').EmotionSignal, timeSinceLastMs / 60000, incomingMessages.length);
+    moodCtx = formatMoodContext(currentMood);
+  } catch (err) {
+    console.error('[api/chat] Mood computation failed:', err);
+  }
+
+  try {
+    // Relationship progression — content gating by depth
+    const bondPts = (user as unknown as Record<string, unknown>)?.bond_points as number ?? 0;
+    const sessionCount = user?.messages_total ?? 0;
+    const daysSinceFirst = user ? Math.floor((Date.now() - new Date(user.created_at).getTime()) / 86400000) : 0;
+    const relState = buildRelationshipState(bondPts, sessionCount, daysSinceFirst);
+    relationshipCtx = formatRelationshipContext(relState);
+  } catch (err) {
+    console.error('[api/chat] Relationship progression failed:', err);
+  }
+
+  try {
+    // Voice fingerprinting — maintain character consistency
+    const assistantMessages = incomingMessages.filter(m => m.role === 'assistant').map(m => m.content);
+    if (assistantMessages.length >= 3) {
+      const baselineText = assistantMessages.slice(0, -1).join(' ');
+      const baseline = analyzeVoicePattern(baselineText);
+      voiceCtx = formatConsistencyDirective(baseline);
+    }
+  } catch (err) {
+    console.error('[api/chat] Voice fingerprinting failed:', err);
+  }
+
+  try {
+    // Cultural variants — auto-detect from language
+    const culturalVariant = detectCulturalVariant(langDetection.language);
+    if (culturalVariant !== 'default') {
+      const config = getCulturalVariant(culturalVariant);
+      culturalCtx = formatCulturalContext(config);
+    }
+  } catch (err) {
+    console.error('[api/chat] Cultural variant detection failed:', err);
+  }
+
+  try {
+    // Time-of-day greeting
+    const character = getCharacter(cid);
+    const tod = getTimeOfDay();
+    timeCtx = `[Time context: It's ${tod}. ${getTimeGreeting(tod, character?.name ?? 'Aria')}]`;
+  } catch (err) {
+    console.error('[api/chat] Time greeting failed:', err);
+  }
+
+  // 6c2. Scam detection — run alongside guardian for conversation-level patterns
+  try {
+    const history = incomingMessages.filter(m => m.role === 'user').map(m => m.content);
+    const scamResult = analyzeForScams(trimmed, history);
+    if (scamResult.riskLevel !== 'safe' && scamResult.riskLevel !== 'low') {
+      const character = getCharacter(cid);
+      const warning = generateGentleWarning(scamResult, character?.name ?? 'Aria', emotionState.primary as import('@/lib/guardian/gentle-warnings').EmotionState);
+      // Inject warning into system prompt so the AI addresses it
+      moodCtx += `\n[GUARDIAN ALERT: ${warning}]`;
+    }
+  } catch (err) {
+    console.error('[api/chat] Scam detection failed:', err);
+  }
+
+  // 6d. Build system prompt with all context blocks
   const systemPrompt = buildSystemPrompt(cid, {
     emotion: emotionCtx,
     memory: memoryCtx,
@@ -297,6 +396,11 @@ export async function POST(req: NextRequest): Promise<Response> {
     language: languageDirective,
     style: [profileCtx, styleCtx].filter(Boolean).join('\n') || undefined,
     antiSycophancy: antiSycophancyCtx || undefined,
+    mood: moodCtx || undefined,
+    relationship: relationshipCtx || undefined,
+    voiceConsistency: voiceCtx || undefined,
+    cultural: culturalCtx || undefined,
+    timeGreeting: timeCtx || undefined,
   });
 
   // 7a. Compute effort level for adaptive thinking
@@ -304,12 +408,21 @@ export async function POST(req: NextRequest): Promise<Response> {
   const thinkingBudget = getThinkingBudget(effortLevel);
   const isAnthropic = model.startsWith('claude-');
 
-  console.log(
-    `[api/chat] userId=${userId} tier=${userTier} companion=${cid} ` +
-    `taskType=${taskType} model=${model} effort=${effortLevel} budget=${thinkingBudget} ` +
-    `lang=${langDetection.language}(${(langDetection.confidence * 100).toFixed(0)}%) ` +
-    `emotion=${emotionState.primary}(v=${emotionState.valence.toFixed(2)})`,
-  );
+  const requestStartMs = Date.now();
+  logInfo('chat.request', {
+    userId,
+    model,
+    taskType,
+    metadata: {
+      tier: userTier,
+      companion: cid,
+      effort: effortLevel,
+      budget: thinkingBudget,
+      language: langDetection.language,
+      emotion: emotionState.primary,
+      valence: emotionState.valence,
+    },
+  });
 
   // 7b. Compress context if conversation is long (>20 messages)
   let messagesForLLM = incomingMessages;
