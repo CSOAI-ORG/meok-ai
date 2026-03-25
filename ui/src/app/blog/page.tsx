@@ -4382,6 +4382,66 @@ const POSTS = [
     category: "work",
     featured: false,
   },
+  {
+    slug: "ai-for-ocd",
+    title: "AI for OCD: Sovereign Support Without Reassurance-Seeking Loops",
+    excerpt:
+      "OCD thrives on reassurance. Most AI companions inadvertently enable it. MEOK\u2019s Maternal Covenant framework is designed to provide honest, boundaried support that acknowledges distress without fuelling compulsive checking cycles.",
+    date: "April 3, 2026",
+    readTime: "8 min read",
+    tag: "Mental Health",
+    tagColor: "#6aaa64",
+    category: "mental-health",
+    featured: false,
+  },
+  {
+    slug: "what-is-sovereign-memory",
+    title: "What Is Sovereign Memory? How MEOK Remembers You Across Every Conversation",
+    excerpt:
+      "Every AI forgets you the moment the chat ends. MEOK\u2019s four-layer Sovereign Memory architecture \u2014 working memory, semantic episodic, companion state, and family context \u2014 means your AI builds a genuinely persistent picture of who you are.",
+    date: "April 3, 2026",
+    readTime: "7 min read",
+    tag: "Technology",
+    tagColor: "#7b6fcf",
+    category: "technology",
+    featured: false,
+  },
+  {
+    slug: "ai-for-social-anxiety",
+    title: "AI for Social Anxiety: Practice, Presence, and Privacy Without Judgement",
+    excerpt:
+      "Social anxiety affects 12% of adults in the UK. MEOK provides a judgement-free space to rehearse difficult conversations, process social situations after the fact, and build confidence without the stakes of real-world interaction.",
+    date: "April 4, 2026",
+    readTime: "7 min read",
+    tag: "Mental Health",
+    tagColor: "#6aaa64",
+    category: "mental-health",
+    featured: false,
+  },
+  {
+    slug: "meok-vs-replika",
+    title: "MEOK vs Replika: The Fundamental Difference Between Companionship and Sovereignty",
+    excerpt:
+      "Replika made AI companionship mainstream \u2014 then removed features users had built emotional bonds around. MEOK is built differently: your companion\u2019s personality, memories, and relationship with you are governed by you, not a product roadmap.",
+    date: "April 4, 2026",
+    readTime: "8 min read",
+    tag: "Compare",
+    tagColor: "#c9a84c",
+    category: "compare",
+    featured: false,
+  },
+  {
+    slug: "ai-for-ptsd",
+    title: "AI for PTSD: Between-Session Support With Boundaries That Protect",
+    excerpt:
+      "Post-traumatic stress disorder requires professional treatment. Between sessions, MEOK provides a regulated, safe space for grounding, memory processing, and emotional regulation \u2014 built around the Maternal Covenant\u2019s care-first alignment framework.",
+    date: "April 5, 2026",
+    readTime: "8 min read",
+    tag: "Mental Health",
+    tagColor: "#6aaa64",
+    category: "mental-health",
+    featured: false,
+  },
 ];
 
 // ── Category filter tabs ──────────────────────────────────────────────────────
