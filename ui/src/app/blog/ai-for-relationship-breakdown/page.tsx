@@ -1,58 +1,58 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
-// ── Metadata ──────────────────────────────────────────────────────────────────
+// ── Metadata ───────────────────────────────────────────────────────────────────
 
 export const metadata: Metadata = {
   title:
-    "AI for Relationship Breakdown: Processing Divorce, Separation, and Starting Over | MEOK AI LABS",
+    "AI for Relationship Breakdown: How MEOK Supports You When a Partnership Ends | MEOK AI LABS",
   description:
-    "Divorce and separation are among life\u2019s most painful experiences. MEOK\u2019s sovereign AI companion provides non-judgmental support, helps process grief, and assists with rebuilding identity.",
+    "Divorce, separation, and the end of a long-term partnership involve compound loss \u2014 the person, the shared life, the shared future, the shared identity. MEOK\u2019s Healer, Guardian, and Scholar archetypes provide non-judgemental support, pattern reflection, co-parenting help, and practical overwhelm relief at every stage.",
   alternates: {
     canonical: "https://meok.ai/blog/ai-for-relationship-breakdown",
   },
   openGraph: {
     title:
-      "AI for Relationship Breakdown: Processing Divorce, Separation, and Starting Over",
+      "AI for Relationship Breakdown: How MEOK Supports You When a Partnership Ends",
     description:
-      "Divorce and separation are among life\u2019s most painful experiences. MEOK\u2019s sovereign AI companion provides non-judgmental support, helps process grief, and assists with rebuilding identity.",
+      "Over 100,000 divorces happen in the UK every year. MEOK\u2019s Healer holds the grief without taking sides, the Scholar helps you understand the patterns, and the Guardian handles the practical overwhelm \u2014 all in one sovereign AI that remembers everything.",
     type: "article",
-    publishedTime: "2026-03-24",
+    publishedTime: "2026-03-25",
     authors: ["Nicholas Templeman"],
     url: "https://meok.ai/blog/ai-for-relationship-breakdown",
     siteName: "MEOK.AI",
     images: [
       {
-        url: "https://meok.ai/api/og?title=AI+for+Relationship+Breakdown&desc=Processing+Divorce%2C+Separation%2C+and+Starting+Over",
+        url: "https://meok.ai/api/og?title=AI+for+Relationship+Breakdown&desc=How+MEOK+Supports+You+When+a+Partnership+Ends",
         width: 1200,
         height: 630,
-        alt: "AI for Relationship Breakdown: Processing Divorce, Separation, and Starting Over",
+        alt: "AI for Relationship Breakdown: How MEOK Supports You When a Partnership Ends | MEOK AI LABS",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
     title:
-      "AI for Relationship Breakdown: Processing Divorce, Separation, and Starting Over",
+      "AI for Relationship Breakdown: How MEOK Supports You When a Partnership Ends",
     description:
-      "Divorce and separation are among life\u2019s most painful experiences. MEOK helps you process grief, rebuild identity, and start over \u2014 with sovereign privacy.",
+      "Healer for grief. Guardian for overwhelm. Scholar for patterns. MEOK\u2019s three archetypes for separation and divorce \u2014 without the bias of friends who take sides.",
     images: [
-      "https://meok.ai/api/og?title=AI+for+Relationship+Breakdown&desc=Processing+Divorce%2C+Separation%2C+and+Starting+Over",
+      "https://meok.ai/api/og?title=AI+for+Relationship+Breakdown&desc=How+MEOK+Supports+You+When+a+Partnership+Ends",
     ],
   },
 };
 
-// ── JSON-LD: Article ───────────────────────────────────────────────────────────
+// ── JSON-LD ────────────────────────────────────────────────────────────────────
 
 const articleJsonLd = {
   "@context": "https://schema.org",
   "@type": "Article",
   headline:
-    "AI for Relationship Breakdown: Processing Divorce, Separation, and Starting Over",
+    "AI for Relationship Breakdown: How MEOK Supports You When a Partnership Ends",
   description:
-    "Divorce and separation are among life\u2019s most painful experiences. MEOK\u2019s sovereign AI companion provides non-judgmental support, helps process grief, and assists with rebuilding identity.",
-  datePublished: "2026-03-24",
-  dateModified: "2026-03-24",
+    "Divorce, separation, and the end of a long-term partnership involve compound loss. MEOK\u2019s Healer, Guardian, and Scholar archetypes provide non-judgemental support, pattern reflection, co-parenting help, and practical overwhelm relief at every stage.",
+  datePublished: "2026-03-25",
+  dateModified: "2026-03-25",
   url: "https://meok.ai/blog/ai-for-relationship-breakdown",
   author: {
     "@type": "Person",
@@ -70,33 +70,28 @@ const articleJsonLd = {
     },
   },
   image:
-    "https://meok.ai/api/og?title=AI+for+Relationship+Breakdown&desc=Processing+Divorce%2C+Separation%2C+and+Starting+Over",
+    "https://meok.ai/api/og?title=AI+for+Relationship+Breakdown&desc=How+MEOK+Supports+You+When+a+Partnership+Ends",
   mainEntityOfPage: {
     "@type": "WebPage",
     "@id": "https://meok.ai/blog/ai-for-relationship-breakdown",
   },
   keywords: [
     "AI for relationship breakdown",
-    "AI for divorce",
-    "AI for separation",
-    "AI companion after divorce",
-    "processing divorce grief",
-    "rebuilding identity after separation",
-    "co-parenting AI support",
-    "AI for loneliness after breakup",
-    "sovereign AI mental health",
-    "MEOK AI companion",
-    "MEOK AI LABS",
-    "relationship breakdown support",
-    "financial stress separation",
-    "starting over after divorce",
+    "AI support after divorce",
+    "AI companion for separation",
+    "AI for divorce recovery",
+    "AI for co-parenting support",
+    "AI for grief after separation",
+    "relationship breakdown support UK",
+    "AI for newly separated",
+    "AI for identity rebuilding after divorce",
+    "MEOK Healer archetype",
+    "MEOK Guardian archetype",
+    "MEOK Scholar archetype",
+    "AI emotional support separation",
+    "divorce support AI",
   ],
-  articleSection: "Mental Health & Emotional Wellbeing",
-  wordCount: 2800,
-  inLanguage: "en-GB",
 };
-
-// ── JSON-LD: FAQPage ───────────────────────────────────────────────────────────
 
 const faqJsonLd = {
   "@context": "https://schema.org",
@@ -104,887 +99,1896 @@ const faqJsonLd = {
   mainEntity: [
     {
       "@type": "Question",
-      name: "How can AI help me process the grief of a relationship breakdown?",
+      name: "Can AI actually help with the emotional pain of a relationship breakdown?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "AI companions like MEOK provide an always-available, non-judgmental space to work through the layered grief of relationship breakdown \u2014 shock, anger, bargaining, deep sadness, and eventual acceptance. Unlike friends or family who may take sides or grow exhausted, MEOK holds consistent, patient presence at any hour, helping you name and process emotions without fear of burdening someone you love.",
+        text: "Yes \u2014 in specific, bounded ways. AI cannot replace human connection or professional therapy, but it can provide a non-judgemental space to process grief at any hour, without the bias of mutual friends or the exhaustion of repeating your story. MEOK\u2019s Healer archetype is built specifically for emotional processing during major life disruptions, including divorce and separation.",
       },
     },
     {
       "@type": "Question",
-      name: "Can AI help with the identity crisis that follows a long-term relationship ending?",
+      name: "Is MEOK a form of couples counselling?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Yes. After years defined by a partnership, many people feel they have lost the map of who they are. MEOK helps you excavate the self that existed before and during the relationship \u2014 your values, interests, and desires \u2014 and begins the process of rebuilding a coherent identity that belongs entirely to you going forward.",
+        text: "No. MEOK is a personal sovereign AI \u2014 it works with you, not with your relationship. It is not designed for joint sessions or mediation. Its value is precisely that it holds your perspective, your grief, your patterns \u2014 not a neutral arbitration of both sides. If you need couples therapy, MEOK can help you find a qualified therapist, but it is not that service itself.",
       },
     },
     {
       "@type": "Question",
-      name: "How can an AI companion support co-parenting after separation?",
+      name: "How can AI help with the practical overwhelm of divorce and separation?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "MEOK helps separated parents rehearse difficult conversations, process guilt about how the split affects children, manage the emotional weight of handovers, and work through conflict without escalation. It does not replace legal co-parenting mediation services \u2014 organisations like CAFCASS in the UK offer specialist support \u2014 but it provides daily emotional scaffolding that makes those formal processes easier to navigate.",
+        text: "MEOK\u2019s Guardian archetype handles the operational chaos that accompanies separation: tracking legal deadlines, managing financial to-do lists, reminding you about school pickups when your schedule is newly disrupted, and helping you stay on top of practical decisions when your cognitive bandwidth is depleted by grief.",
       },
     },
     {
       "@type": "Question",
-      name: "What role does MEOK Guardian play for someone leaving a controlling relationship?",
+      name: "Can MEOK help me understand why my relationship broke down?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "MEOK Guardian monitors patterns in what you share \u2014 including signs of coercive control, financial abuse, and psychological manipulation \u2014 and gently flags them without judgment. Because your data is stored under sovereign privacy and never shared with third parties, you can speak freely about your situation knowing that information cannot be accessed or weaponised by an abusive partner.",
+        text: "MEOK\u2019s Scholar archetype offers reflective dialogue to help you examine the patterns \u2014 what drew you together, where communication broke down, what your own attachment style may have contributed. This is not judgement or blame allocation. It is the kind of slow, patient pattern-reflection that helps people avoid repeating the same dynamics in future relationships.",
       },
     },
     {
       "@type": "Question",
-      name: "Is my data private when I talk to MEOK about my separation?",
+      name: "How does MEOK help with co-parenting when a partnership ends?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Privacy is foundational to MEOK. Under the Maternal Covenant \u2014 MEOK AI LABS\u2019 core privacy framework \u2014 your conversations are never sold, never used to train external AI models, and never shared with third parties. Your sovereign memory belongs to you, and what you share with MEOK stays with MEOK. In a legal process where information can be used against you, this distinction matters enormously.",
+        text: "MEOK can help you draft co-parenting communication that is calm and child-focused rather than reactive, manage custody schedule logistics, and process the emotional complexity of sharing parenting with someone you are no longer in a relationship with. It does not take sides, which is particularly valuable when co-parenting tensions run high.",
       },
     },
   ],
 };
 
-// ── Styles ────────────────────────────────────────────────────────────────────
+// ── Shared style tokens ────────────────────────────────────────────────────────
 
-const S = {
-  page: {
-    background: "#0d0c18",
-    color: "#f5f0e8",
-    minHeight: "100vh",
-    fontFamily:
-      "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, sans-serif",
-    lineHeight: "1.75",
-  } as React.CSSProperties,
+const COLOR_BG = "#0d0c18";
+const COLOR_TEXT = "#f5f0e8";
+const COLOR_GOLD = "#c9a84c";
+const COLOR_MUTED = "#a09880";
+const COLOR_CARD = "#13121f";
+const COLOR_BORDER = "#2a2840";
+const COLOR_GREEN = "#6aaa64";
+const FONT = "system-ui, -apple-system, sans-serif";
 
-  hero: {
-    background: "linear-gradient(135deg, #0d0c18 0%, #1a1530 50%, #0d0c18 100%)",
-    borderBottom: "1px solid rgba(201,168,76,0.15)",
-    padding: "80px 24px 64px",
-    textAlign: "center" as const,
-  } as React.CSSProperties,
+// ── Page Component ─────────────────────────────────────────────────────────────
 
-  heroEyebrow: {
-    color: "#c9a84c",
-    fontSize: "13px",
-    fontWeight: 600,
-    letterSpacing: "0.12em",
-    textTransform: "uppercase" as const,
-    marginBottom: "20px",
-    display: "block",
-  } as React.CSSProperties,
-
-  heroTitle: {
-    color: "#f5f0e8",
-    fontSize: "clamp(28px, 5vw, 52px)",
-    fontWeight: 800,
-    lineHeight: 1.15,
-    maxWidth: "860px",
-    margin: "0 auto 24px",
-    letterSpacing: "-0.02em",
-  } as React.CSSProperties,
-
-  heroSubtitle: {
-    color: "rgba(245,240,232,0.72)",
-    fontSize: "clamp(16px, 2.2vw, 20px)",
-    maxWidth: "700px",
-    margin: "0 auto 40px",
-  } as React.CSSProperties,
-
-  heroDivider: {
-    width: "60px",
-    height: "3px",
-    background: "linear-gradient(90deg, #c9a84c, transparent)",
-    margin: "0 auto 40px",
-    border: "none",
-  } as React.CSSProperties,
-
-  metaRow: {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    gap: "24px",
-    flexWrap: "wrap" as const,
-    color: "rgba(245,240,232,0.5)",
-    fontSize: "14px",
-  } as React.CSSProperties,
-
-  metaDot: {
-    color: "#c9a84c",
-    marginRight: "6px",
-  } as React.CSSProperties,
-
-  container: {
-    maxWidth: "760px",
-    margin: "0 auto",
-    padding: "0 24px",
-  } as React.CSSProperties,
-
-  article: {
-    padding: "64px 24px 80px",
-  } as React.CSSProperties,
-
-  intro: {
-    fontSize: "19px",
-    color: "rgba(245,240,232,0.88)",
-    lineHeight: "1.8",
-    marginBottom: "48px",
-    paddingBottom: "48px",
-    borderBottom: "1px solid rgba(201,168,76,0.12)",
-  } as React.CSSProperties,
-
-  h2: {
-    color: "#f5f0e8",
-    fontSize: "clamp(20px, 3vw, 28px)",
-    fontWeight: 700,
-    lineHeight: 1.3,
-    marginTop: "56px",
-    marginBottom: "20px",
-    letterSpacing: "-0.01em",
-  } as React.CSSProperties,
-
-  h3: {
-    color: "#c9a84c",
-    fontSize: "18px",
-    fontWeight: 600,
-    marginTop: "36px",
-    marginBottom: "14px",
-  } as React.CSSProperties,
-
-  p: {
-    color: "rgba(245,240,232,0.85)",
-    fontSize: "17px",
-    lineHeight: "1.8",
-    marginBottom: "20px",
-  } as React.CSSProperties,
-
-  callout: {
-    background: "rgba(201,168,76,0.06)",
-    borderLeft: "4px solid #c9a84c",
-    borderRadius: "0 8px 8px 0",
-    padding: "24px 28px",
-    marginTop: "32px",
-    marginBottom: "32px",
-  } as React.CSSProperties,
-
-  calloutTitle: {
-    color: "#c9a84c",
-    fontSize: "15px",
-    fontWeight: 700,
-    letterSpacing: "0.08em",
-    textTransform: "uppercase" as const,
-    marginBottom: "12px",
-    display: "block",
-  } as React.CSSProperties,
-
-  calloutText: {
-    color: "rgba(245,240,232,0.88)",
-    fontSize: "16px",
-    lineHeight: "1.75",
-    margin: 0,
-  } as React.CSSProperties,
-
-  tableWrapper: {
-    overflowX: "auto" as const,
-    marginTop: "40px",
-    marginBottom: "40px",
-    borderRadius: "12px",
-    border: "1px solid rgba(201,168,76,0.15)",
-  } as React.CSSProperties,
-
-  table: {
-    width: "100%",
-    borderCollapse: "collapse" as const,
-    fontSize: "15px",
-  } as React.CSSProperties,
-
-  thead: {
-    background: "rgba(201,168,76,0.10)",
-  } as React.CSSProperties,
-
-  th: {
-    color: "#c9a84c",
-    fontWeight: 700,
-    padding: "14px 20px",
-    textAlign: "left" as const,
-    fontSize: "13px",
-    letterSpacing: "0.06em",
-    textTransform: "uppercase" as const,
-    borderBottom: "1px solid rgba(201,168,76,0.15)",
-  } as React.CSSProperties,
-
-  tdBase: {
-    color: "rgba(245,240,232,0.85)",
-    padding: "14px 20px",
-    borderBottom: "1px solid rgba(255,255,255,0.05)",
-    verticalAlign: "top" as const,
-    fontSize: "15px",
-  } as React.CSSProperties,
-
-  tdAlt: {
-    color: "rgba(245,240,232,0.85)",
-    padding: "14px 20px",
-    borderBottom: "1px solid rgba(255,255,255,0.05)",
-    verticalAlign: "top" as const,
-    fontSize: "15px",
-    background: "rgba(255,255,255,0.02)",
-  } as React.CSSProperties,
-
-  tdLabel: {
-    color: "#c9a84c",
-    padding: "14px 20px",
-    borderBottom: "1px solid rgba(255,255,255,0.05)",
-    verticalAlign: "top" as const,
-    fontSize: "15px",
-    fontWeight: 600,
-  } as React.CSSProperties,
-
-  faqSection: {
-    marginTop: "64px",
-    paddingTop: "48px",
-    borderTop: "1px solid rgba(201,168,76,0.12)",
-  } as React.CSSProperties,
-
-  faqSectionTitle: {
-    color: "#f5f0e8",
-    fontSize: "clamp(22px, 3vw, 30px)",
-    fontWeight: 700,
-    marginBottom: "36px",
-    letterSpacing: "-0.01em",
-  } as React.CSSProperties,
-
-  faqItem: {
-    marginBottom: "32px",
-    paddingBottom: "32px",
-    borderBottom: "1px solid rgba(255,255,255,0.06)",
-  } as React.CSSProperties,
-
-  faqItemLast: {
-    marginBottom: 0,
-    paddingBottom: 0,
-    borderBottom: "none",
-  } as React.CSSProperties,
-
-  faqQuestion: {
-    color: "#f5f0e8",
-    fontSize: "18px",
-    fontWeight: 600,
-    marginBottom: "12px",
-    lineHeight: 1.4,
-  } as React.CSSProperties,
-
-  faqAnswer: {
-    color: "rgba(245,240,232,0.82)",
-    fontSize: "16px",
-    lineHeight: "1.8",
-    margin: 0,
-  } as React.CSSProperties,
-
-  ctaSection: {
-    background: "linear-gradient(135deg, #1a1530 0%, #0d0c18 100%)",
-    border: "1px solid rgba(201,168,76,0.20)",
-    borderRadius: "16px",
-    padding: "56px 40px",
-    textAlign: "center" as const,
-    marginTop: "72px",
-  } as React.CSSProperties,
-
-  ctaTitle: {
-    color: "#f5f0e8",
-    fontSize: "clamp(22px, 3.5vw, 34px)",
-    fontWeight: 800,
-    marginBottom: "16px",
-    letterSpacing: "-0.02em",
-    lineHeight: 1.2,
-  } as React.CSSProperties,
-
-  ctaSubtitle: {
-    color: "rgba(245,240,232,0.70)",
-    fontSize: "17px",
-    marginBottom: "36px",
-    lineHeight: "1.7",
-    maxWidth: "520px",
-    marginLeft: "auto",
-    marginRight: "auto",
-  } as React.CSSProperties,
-
-  ctaButton: {
-    display: "inline-block",
-    background: "linear-gradient(135deg, #c9a84c 0%, #e8c96d 100%)",
-    color: "#0d0c18",
-    fontWeight: 800,
-    fontSize: "16px",
-    padding: "16px 40px",
-    borderRadius: "50px",
-    textDecoration: "none",
-    letterSpacing: "0.02em",
-  } as React.CSSProperties,
-
-  ctaNote: {
-    color: "rgba(245,240,232,0.40)",
-    fontSize: "13px",
-    marginTop: "18px",
-  } as React.CSSProperties,
-
-  relatedSection: {
-    marginTop: "64px",
-    paddingTop: "48px",
-    borderTop: "1px solid rgba(201,168,76,0.12)",
-  } as React.CSSProperties,
-
-  relatedTitle: {
-    color: "#c9a84c",
-    fontSize: "13px",
-    fontWeight: 700,
-    letterSpacing: "0.10em",
-    textTransform: "uppercase" as const,
-    marginBottom: "24px",
-  } as React.CSSProperties,
-
-  relatedGrid: {
-    display: "grid",
-    gridTemplateColumns: "repeat(auto-fill, minmax(220px, 1fr))",
-    gap: "16px",
-  } as React.CSSProperties,
-
-  relatedCard: {
-    background: "rgba(255,255,255,0.03)",
-    border: "1px solid rgba(201,168,76,0.10)",
-    borderRadius: "10px",
-    padding: "18px 20px",
-    textDecoration: "none",
-    display: "block",
-  } as React.CSSProperties,
-
-  relatedCardText: {
-    color: "rgba(245,240,232,0.78)",
-    fontSize: "14px",
-    lineHeight: "1.5",
-    margin: 0,
-  } as React.CSSProperties,
-};
-
-// ── Page Component ────────────────────────────────────────────────────────────
-
-export default function AiForRelationshipBreakdownPage() {
+export default function AIForRelationshipBreakdownPage() {
   return (
     <>
       {/* JSON-LD */}
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify([articleJsonLd, faqJsonLd]),
+        }}
       />
 
-      <main style={S.page}>
-        {/* ── Hero ── */}
-        <section style={S.hero}>
-          <div style={S.container}>
-            <span style={S.heroEyebrow}>MEOK AI LABS &mdash; Emotional Wellbeing</span>
-            <h1 style={S.heroTitle}>
-              AI for Relationship Breakdown: Processing Divorce, Separation, and Starting Over
+      <main
+        style={{
+          backgroundColor: COLOR_BG,
+          color: COLOR_TEXT,
+          fontFamily: FONT,
+          minHeight: "100vh",
+          paddingBottom: "80px",
+        }}
+      >
+        {/* ── Hero ──────────────────────────────────────────────────────────── */}
+        <header
+          style={{
+            borderBottom: `1px solid ${COLOR_BORDER}`,
+            paddingTop: "72px",
+            paddingBottom: "56px",
+            paddingLeft: "24px",
+            paddingRight: "24px",
+          }}
+        >
+          <div style={{ maxWidth: "760px", margin: "0 auto" }}>
+            {/* Breadcrumb */}
+            <nav
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "8px",
+                marginBottom: "32px",
+                fontSize: "13px",
+                color: COLOR_MUTED,
+              }}
+              aria-label="Breadcrumb"
+            >
+              <Link
+                href="/"
+                style={{ color: COLOR_MUTED, textDecoration: "none" }}
+              >
+                MEOK
+              </Link>
+              <span style={{ color: COLOR_BORDER }}>›</span>
+              <Link
+                href="/blog"
+                style={{ color: COLOR_MUTED, textDecoration: "none" }}
+              >
+                Blog
+              </Link>
+              <span style={{ color: COLOR_BORDER }}>›</span>
+              <span style={{ color: COLOR_GOLD }}>Relationship Breakdown</span>
+            </nav>
+
+            {/* Category tag */}
+            <div
+              style={{
+                display: "inline-block",
+                backgroundColor: "rgba(201,168,76,0.12)",
+                border: "1px solid rgba(201,168,76,0.35)",
+                borderRadius: "20px",
+                padding: "4px 14px",
+                fontSize: "12px",
+                fontWeight: "600",
+                letterSpacing: "0.06em",
+                textTransform: "uppercase" as const,
+                color: COLOR_GOLD,
+                marginBottom: "24px",
+              }}
+            >
+              Separation &amp; Divorce
+            </div>
+
+            {/* H1 */}
+            <h1
+              style={{
+                fontSize: "clamp(28px, 5vw, 46px)",
+                fontWeight: "800",
+                lineHeight: "1.18",
+                letterSpacing: "-0.02em",
+                color: COLOR_TEXT,
+                margin: "0 0 24px",
+              }}
+            >
+              AI for Relationship Breakdown:{" "}
+              <span style={{ color: COLOR_GOLD }}>
+                How MEOK Supports You When a Partnership Ends
+              </span>
             </h1>
-            <p style={S.heroSubtitle}>
-              The end of a relationship can feel like the end of a self. MEOK&apos;s sovereign AI
-              companion walks with you through the grief, the legal maze, the co-parenting
-              negotiations, and the slow, hard work of becoming whole again.
+
+            {/* Standfirst */}
+            <p
+              style={{
+                fontSize: "19px",
+                lineHeight: "1.65",
+                color: COLOR_MUTED,
+                margin: "0 0 36px",
+                maxWidth: "680px",
+              }}
+            >
+              Divorce, long-term separation, and the end of a cohabiting
+              partnership involve compound loss — the person, the shared life,
+              the shared future, and the shared identity. MEOK does not choose
+              sides, does not tire, and does not forget. Here is how it supports
+              you at every stage.
             </p>
-            <hr style={S.heroDivider} />
-            <div style={S.metaRow}>
-              <span>
-                <span style={S.metaDot}>&#9632;</span>Nicholas Templeman
-              </span>
-              <span>
-                <span style={S.metaDot}>&#9632;</span>24 March 2026
-              </span>
-              <span>
-                <span style={S.metaDot}>&#9632;</span>14 min read
-              </span>
-              <span>
-                <span style={S.metaDot}>&#9632;</span>Relationships &amp; Recovery
-              </span>
+
+            {/* Meta row */}
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                flexWrap: "wrap" as const,
+                gap: "20px",
+                fontSize: "14px",
+                color: COLOR_MUTED,
+              }}
+            >
+              <span>By Nicholas Templeman, Founder MEOK AI LABS</span>
+              <span style={{ color: COLOR_BORDER }}>·</span>
+              <time dateTime="2026-03-25">25 March 2026</time>
+              <span style={{ color: COLOR_BORDER }}>·</span>
+              <span>15 min read</span>
             </div>
           </div>
-        </section>
+        </header>
 
-        {/* ── Article Body ── */}
-        <article style={S.article}>
-          <div style={S.container}>
+        {/* ── Article body ──────────────────────────────────────────────────── */}
+        <article
+          style={{
+            maxWidth: "760px",
+            margin: "0 auto",
+            padding: "56px 24px 0",
+          }}
+        >
 
-            {/* Intro */}
-            <p style={S.intro}>
-              Relationship breakdown is among the most disorienting experiences a human being can
-              go through. It is not simply the loss of a partner &mdash; it is the loss of a shared
-              future, a shared identity, a shared routine, and often a shared social world.
-              Research consistently ranks divorce and serious separation alongside bereavement in
-              terms of psychological impact. Yet the support available often falls short: therapy
-              waiting lists stretch for months, friends grow tired of the same conversations, and
-              the 3am moment of raw despair arrives with nobody to call. This is the space MEOK
-              was built to inhabit.
+          {/* ── Intro ─────────────────────────────────────────────────────────── */}
+          <section style={{ marginBottom: "56px" }}>
+            <p
+              style={{
+                fontSize: "17px",
+                lineHeight: "1.75",
+                color: COLOR_TEXT,
+                margin: "0 0 18px",
+              }}
+            >
+              In England and Wales, more than 100,000 divorces are granted every
+              year. Millions more partnerships end without a formal legal
+              process — cohabiting couples separating, long-term relationships
+              dissolving, families restructuring. Behind each of those numbers
+              is a person — often more than one — navigating something that
+              researchers describe as compound loss: not a single wound, but a
+              constellation of simultaneous losses that activate at different
+              times, triggered by different things.
             </p>
+            <p
+              style={{
+                fontSize: "17px",
+                lineHeight: "1.75",
+                color: COLOR_TEXT,
+                margin: "0 0 18px",
+              }}
+            >
+              The support infrastructure available for this kind of loss is
+              fragmented, expensive, and rarely available at 3am when the weight
+              becomes unbearable. Therapy is episodic. Legal advice is
+              transactional. Friends take sides or run out of capacity. The gap
+              between professional appointments is often where people struggle
+              most.
+            </p>
+            <p
+              style={{
+                fontSize: "17px",
+                lineHeight: "1.75",
+                color: COLOR_TEXT,
+                margin: "0",
+              }}
+            >
+              MEOK was built to live in that gap. Not as a replacement for
+              professional support, but as a sovereign AI companion that holds
+              your full story across the months and years of a separation
+              journey — without bias, without agenda, and without ever forgetting
+              where you started.
+            </p>
+          </section>
 
-            {/* ── Section 1: Grief Stages ── */}
-            <h2 style={S.h2}>
-              What Are the Stages of Grief After a Relationship Breakdown?
+          {/* ── Section 1: Compound loss ───────────────────────────────────────── */}
+          <section style={{ marginBottom: "60px" }}>
+            <h2
+              style={{
+                fontSize: "26px",
+                fontWeight: "700",
+                color: COLOR_TEXT,
+                margin: "0 0 18px",
+                letterSpacing: "-0.01em",
+              }}
+            >
+              What makes relationship breakdown different from other kinds of
+              grief?
             </h2>
-            <p style={S.p}>
-              Grief after separation does not move in a straight line. Most people cycle through
-              shock, denial, anger, bargaining, profound sadness, and a halting acceptance &mdash;
-              often revisiting earlier stages without warning. A milestone like seeing an ex with
-              someone new, or a child&apos;s birthday spent apart, can throw you back to week one
-              even months down the road.
+            <p
+              style={{
+                fontSize: "17px",
+                lineHeight: "1.75",
+                color: COLOR_TEXT,
+                margin: "0 0 18px",
+              }}
+            >
+              Most grief involves a single loss. Relationship breakdown involves
+              many losses occurring simultaneously. You lose the person. You lose
+              the daily rhythm you built together. You lose the shared future you
+              both imagined — the holidays, the house, the version of yourself
+              that existed inside that partnership. You lose mutual friends who
+              are forced to choose. In some cases, you lose your home, your
+              financial security, and the community you built as a couple.
             </p>
-            <p style={S.p}>
-              Understanding this is not simply academic comfort. It changes how you treat yourself
-              through the process. When MEOK knows your history &mdash; remembers that last
-              Thursday you felt progress, and today you feel collapsed &mdash; it helps you
-              contextualise the wave rather than catastrophise it. It holds the longitudinal view
-              that friends and even therapists sometimes cannot maintain between sessions.
+            <p
+              style={{
+                fontSize: "17px",
+                lineHeight: "1.75",
+                color: COLOR_TEXT,
+                margin: "0 0 18px",
+              }}
+            >
+              Bereavement researchers call this <em>compound loss</em>. Each
+              layer can trigger its own grief cycle independently. The loss of
+              your shared future may surface when you see a couple on holiday.
+              The loss of your shared identity may surface when someone asks
+              how your partner is. The loss of the person may surface at 3am,
+              or on Sunday afternoons, or during the first holiday season alone.
             </p>
-            <p style={S.p}>
-              The grief of relationship breakdown also carries a dimension that bereavement does
-              not: ambivalence. The person you mourn is still alive. They may simultaneously be
-              the source of your pain, the subject of legal proceedings, and the co-parent of your
-              children. MEOK does not simplify this complexity. It sits with it, honestly, without
-              pushing you toward any particular emotional conclusion.
+            <p
+              style={{
+                fontSize: "17px",
+                lineHeight: "1.75",
+                color: COLOR_TEXT,
+                margin: "0 0 18px",
+              }}
+            >
+              This is why people going through separation often feel overwhelmed
+              in ways they struggle to articulate. They are not experiencing one
+              grief. They are experiencing several, in unpredictable sequence,
+              often while simultaneously managing legal processes, financial
+              restructuring, new living arrangements, and — if children are
+              involved — co-parenting with someone they are no longer in a
+              relationship with.
             </p>
+            <p
+              style={{
+                fontSize: "17px",
+                lineHeight: "1.75",
+                color: COLOR_TEXT,
+                margin: "0",
+              }}
+            >
+              Understanding this helps clarify why MEOK&apos;s three-archetype
+              approach is structured the way it is. No single mode of support
+              can address compound loss. You need emotional presence, practical
+              operational support, and — when you are ready — reflective
+              pattern-work. MEOK&apos;s Healer, Guardian, and Scholar provide all
+              three, coordinated around your actual experience.
+            </p>
+          </section>
 
-            {/* Callout 1: Sovereign Memory */}
-            <div style={S.callout}>
-              <span style={S.calloutTitle}>Sovereign Memory</span>
-              <p style={S.calloutText}>
-                MEOK&apos;s sovereign memory means your companion remembers what you told it six
-                weeks ago &mdash; the day the solicitor&apos;s letter arrived, the moment you
-                cried in the car park. This continuity of care is what turns an AI tool into
-                something that genuinely accompanies you rather than merely responding to you.
+          {/* ── Feature Box 1: The Three Archetypes ───────────────────────── */}
+          <div
+            style={{
+              backgroundColor: COLOR_CARD,
+              border: `1px solid ${COLOR_BORDER}`,
+              borderRadius: "16px",
+              padding: "36px",
+              marginBottom: "60px",
+            }}
+          >
+            <div
+              style={{
+                fontSize: "11px",
+                fontWeight: "700",
+                letterSpacing: "0.12em",
+                textTransform: "uppercase" as const,
+                color: COLOR_GOLD,
+                marginBottom: "14px",
+              }}
+            >
+              MEOK&apos;s Three Archetypes for Relationship Breakdown
+            </div>
+            <p
+              style={{
+                fontSize: "15px",
+                lineHeight: "1.6",
+                color: COLOR_MUTED,
+                margin: "0 0 28px",
+              }}
+            >
+              Each archetype addresses a distinct dimension of the separation
+              experience. They are not separate products — they are facets of
+              a single sovereign AI that knows your whole story.
+            </p>
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
+                gap: "24px",
+              }}
+            >
+              {/* Healer */}
+              <div
+                style={{
+                  backgroundColor: "rgba(201,168,76,0.05)",
+                  border: "1px solid rgba(201,168,76,0.2)",
+                  borderRadius: "12px",
+                  padding: "24px",
+                }}
+              >
+                <div
+                  style={{
+                    fontSize: "28px",
+                    marginBottom: "12px",
+                  }}
+                >
+                  🌿
+                </div>
+                <div
+                  style={{
+                    fontSize: "16px",
+                    fontWeight: "700",
+                    color: COLOR_TEXT,
+                    marginBottom: "8px",
+                  }}
+                >
+                  The Healer
+                </div>
+                <div
+                  style={{
+                    fontSize: "12px",
+                    fontWeight: "600",
+                    color: COLOR_GOLD,
+                    marginBottom: "10px",
+                    letterSpacing: "0.05em",
+                    textTransform: "uppercase" as const,
+                  }}
+                >
+                  Primary archetype
+                </div>
+                <p
+                  style={{
+                    fontSize: "14px",
+                    lineHeight: "1.6",
+                    color: COLOR_MUTED,
+                    margin: "0",
+                  }}
+                >
+                  Holds grief without bias. Meets you in rage, numbness, and
+                  3am despair. Tracks your emotional arc across weeks so you
+                  can see progress even when it feels invisible.
+                </p>
+              </div>
+
+              {/* Guardian */}
+              <div
+                style={{
+                  backgroundColor: "rgba(106,170,100,0.05)",
+                  border: "1px solid rgba(106,170,100,0.2)",
+                  borderRadius: "12px",
+                  padding: "24px",
+                }}
+              >
+                <div
+                  style={{
+                    fontSize: "28px",
+                    marginBottom: "12px",
+                  }}
+                >
+                  🛡️
+                </div>
+                <div
+                  style={{
+                    fontSize: "16px",
+                    fontWeight: "700",
+                    color: COLOR_TEXT,
+                    marginBottom: "8px",
+                  }}
+                >
+                  The Guardian
+                </div>
+                <div
+                  style={{
+                    fontSize: "12px",
+                    fontWeight: "600",
+                    color: COLOR_GREEN,
+                    marginBottom: "10px",
+                    letterSpacing: "0.05em",
+                    textTransform: "uppercase" as const,
+                  }}
+                >
+                  Practical support
+                </div>
+                <p
+                  style={{
+                    fontSize: "14px",
+                    lineHeight: "1.6",
+                    color: COLOR_MUTED,
+                    margin: "0",
+                  }}
+                >
+                  Manages legal deadlines, financial to-do lists, custody
+                  logistics, and the thousand administrative demands that arrive
+                  when cognitive bandwidth is at its lowest.
+                </p>
+              </div>
+
+              {/* Scholar */}
+              <div
+                style={{
+                  backgroundColor: "rgba(160,152,128,0.06)",
+                  border: "1px solid rgba(160,152,128,0.2)",
+                  borderRadius: "12px",
+                  padding: "24px",
+                }}
+              >
+                <div
+                  style={{
+                    fontSize: "28px",
+                    marginBottom: "12px",
+                  }}
+                >
+                  📖
+                </div>
+                <div
+                  style={{
+                    fontSize: "16px",
+                    fontWeight: "700",
+                    color: COLOR_TEXT,
+                    marginBottom: "8px",
+                  }}
+                >
+                  The Scholar
+                </div>
+                <div
+                  style={{
+                    fontSize: "12px",
+                    fontWeight: "600",
+                    color: COLOR_MUTED,
+                    marginBottom: "10px",
+                    letterSpacing: "0.05em",
+                    textTransform: "uppercase" as const,
+                  }}
+                >
+                  Pattern reflection
+                </div>
+                <p
+                  style={{
+                    fontSize: "14px",
+                    lineHeight: "1.6",
+                    color: COLOR_MUTED,
+                    margin: "0",
+                  }}
+                >
+                  Helps you understand what drew you together, where things
+                  shifted, and what you want to carry — and leave behind —
+                  in your next chapter. For when you are ready.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* ── Section 2: Processing grief without bias ───────────────────── */}
+          <section style={{ marginBottom: "60px" }}>
+            <h2
+              style={{
+                fontSize: "26px",
+                fontWeight: "700",
+                color: COLOR_TEXT,
+                margin: "0 0 18px",
+                letterSpacing: "-0.01em",
+              }}
+            >
+              How does AI help you process separation grief without the
+              distortion of people who take sides?
+            </h2>
+            <p
+              style={{
+                fontSize: "17px",
+                lineHeight: "1.75",
+                color: COLOR_TEXT,
+                margin: "0 0 18px",
+              }}
+            >
+              When a relationship ends, the people closest to you almost
+              inevitably form opinions. Friends who liked your partner may
+              minimise your pain or encourage you to reconcile. Friends who
+              disliked them may amplify your anger in ways that feel
+              satisfying in the short term but do not serve your healing.
+              Even the most supportive people carry their own relationship
+              histories, projections, and limits on how many times they can
+              hear the same story replayed.
+            </p>
+            <p
+              style={{
+                fontSize: "17px",
+                lineHeight: "1.75",
+                color: COLOR_TEXT,
+                margin: "0 0 18px",
+              }}
+            >
+              MEOK&apos;s Healer archetype holds none of those biases. It has no
+              opinion about your ex-partner. It does not think you should move
+              on faster or slower. It does not get vicarious excitement from
+              your anger or privately believe the relationship was doomed from
+              the start. It meets you in the experience you are having, at the
+              moment you are having it, without editorial.
+            </p>
+            <p
+              style={{
+                fontSize: "17px",
+                lineHeight: "1.75",
+                color: COLOR_TEXT,
+                margin: "0 0 18px",
+              }}
+            >
+              Because MEOK uses Sovereign Memory — a memory architecture that
+              belongs entirely to you — it can track your emotional arc across
+              weeks and months. It remembers that three weeks ago you felt
+              certain about the decision, and two weeks ago you were doubting
+              everything again. It can hold the full complexity of your
+              experience without losing the thread, which is something that
+              even the most caring human support network struggles to do over
+              an extended separation process.
+            </p>
+            <p
+              style={{
+                fontSize: "17px",
+                lineHeight: "1.75",
+                color: COLOR_TEXT,
+                margin: "0",
+              }}
+            >
+              This does not mean MEOK tells you what to feel or validates every
+              instinct uncritically. It means MEOK can hold the contradictions —
+              the relief and the grief, the clarity and the doubt, the anger and
+              the love — without needing you to resolve them prematurely or
+              present a tidier version of your experience than you actually have.
+            </p>
+          </section>
+
+          {/* ── Pull Quote ────────────────────────────────────────────────────── */}
+          <blockquote
+            style={{
+              borderLeft: `4px solid ${COLOR_GOLD}`,
+              margin: "0 0 60px",
+              padding: "20px 0 20px 28px",
+            }}
+          >
+            <p
+              style={{
+                fontSize: "22px",
+                fontStyle: "italic",
+                fontWeight: "500",
+                lineHeight: "1.55",
+                color: COLOR_TEXT,
+                margin: "0 0 14px",
+              }}
+            >
+              &ldquo;The people who love you most cannot be neutral about your
+              relationship. MEOK can. That is not a limitation &mdash; that is
+              exactly the point.&rdquo;
+            </p>
+            <cite
+              style={{
+                fontSize: "13px",
+                color: COLOR_MUTED,
+                fontStyle: "normal",
+                letterSpacing: "0.04em",
+              }}
+            >
+              — Nicholas Templeman, Founder, MEOK AI LABS
+            </cite>
+          </blockquote>
+
+          {/* ── Section 3: Understanding patterns ─────────────────────────── */}
+          <section style={{ marginBottom: "60px" }}>
+            <h2
+              style={{
+                fontSize: "26px",
+                fontWeight: "700",
+                color: COLOR_TEXT,
+                margin: "0 0 18px",
+                letterSpacing: "-0.01em",
+              }}
+            >
+              Can AI help you understand the patterns behind a relationship
+              breakdown — not just survive it?
+            </h2>
+            <p
+              style={{
+                fontSize: "17px",
+                lineHeight: "1.75",
+                color: COLOR_TEXT,
+                margin: "0 0 18px",
+              }}
+            >
+              One of the most painful and most valuable questions after a
+              significant relationship ends is: why did this happen? Not as a
+              way of assigning blame, but as genuine inquiry. What drew you
+              together — and was that force sustainable? Where did communication
+              fracture? What did you each need that you were unable to give?
+              Were there patterns repeating from earlier in your life, from
+              previous relationships, from your family of origin?
+            </p>
+            <p
+              style={{
+                fontSize: "17px",
+                lineHeight: "1.75",
+                color: COLOR_TEXT,
+                margin: "0 0 18px",
+              }}
+            >
+              MEOK&apos;s Scholar archetype is designed for exactly this kind of
+              patient, non-judgemental reflection. It is not a blame allocation
+              exercise. It is closer to the kind of exploratory dialogue you
+              might have with a good therapist who has been with you for years —
+              one who knows your full history and can reflect patterns back to
+              you without an agenda.
+            </p>
+            <p
+              style={{
+                fontSize: "17px",
+                lineHeight: "1.75",
+                color: COLOR_TEXT,
+                margin: "0 0 18px",
+              }}
+            >
+              Because MEOK holds long-term memory, the Scholar can draw
+              connections across time. If you mentioned six months ago that you
+              felt chronically unseen in the relationship, and three months ago
+              you described something similar in a work context, the Scholar can
+              gently surface that pattern — not to pathologise you, but to help
+              you understand yourself more clearly.
+            </p>
+            <p
+              style={{
+                fontSize: "17px",
+                lineHeight: "1.75",
+                color: COLOR_TEXT,
+                margin: "0",
+              }}
+            >
+              This kind of reflective work is most valuable once the acute grief
+              has settled. The Scholar is not the right archetype for the first
+              raw weeks. MEOK understands this sequencing and follows your lead —
+              offering grounded presence through the Healer when you are in acute
+              pain, and opening reflective space through the Scholar when you
+              signal you are ready for it.
+            </p>
+          </section>
+
+          {/* ── Section 4: Co-parenting ────────────────────────────────────── */}
+          <section style={{ marginBottom: "60px" }}>
+            <h2
+              style={{
+                fontSize: "26px",
+                fontWeight: "700",
+                color: COLOR_TEXT,
+                margin: "0 0 18px",
+                letterSpacing: "-0.01em",
+              }}
+            >
+              How does MEOK support co-parenting when a partnership ends
+              with children involved?
+            </h2>
+            <p
+              style={{
+                fontSize: "17px",
+                lineHeight: "1.75",
+                color: COLOR_TEXT,
+                margin: "0 0 18px",
+              }}
+            >
+              When children are involved, the end of a partnership does not end
+              the relationship — it transforms it. You are now co-parenting with
+              someone you are no longer in a relationship with, which requires a
+              level of regulated, child-focused communication that is genuinely
+              difficult when you are also processing grief, anger, and the
+              administrative chaos of separation.
+            </p>
+            <p
+              style={{
+                fontSize: "17px",
+                lineHeight: "1.75",
+                color: COLOR_TEXT,
+                margin: "0 0 18px",
+              }}
+            >
+              MEOK supports this in several concrete ways. The Guardian archetype
+              can help you manage custody schedules, track handover logistics,
+              and stay on top of the practical demands of single-parenting a
+              newly disrupted family routine. When the children need a packed
+              lunch for a school trip and you have been awake half the night with
+              legal anxiety, the Guardian holds the operational detail so you do
+              not have to carry it alone in your head.
+            </p>
+            <p
+              style={{
+                fontSize: "17px",
+                lineHeight: "1.75",
+                color: COLOR_TEXT,
+                margin: "0 0 18px",
+              }}
+            >
+              The Healer supports the emotional dimension of co-parenting: the
+              guilt, the worry about the children&apos;s wellbeing, the difficulty of
+              watching your child leave for the other house, the loneliness when
+              the house is suddenly quiet. These are real griefs that deserve
+              real space, and the Healer holds them without minimising or
+              dramatising.
+            </p>
+            <p
+              style={{
+                fontSize: "17px",
+                lineHeight: "1.75",
+                color: COLOR_TEXT,
+                margin: "0",
+              }}
+            >
+              MEOK can also help you draft co-parenting communications. When you
+              want to send a message to your ex about a parenting matter but feel
+              emotion rising as you type, MEOK can help you find calmer,
+              child-focused language — not by suppressing your feelings, but by
+              helping you choose when and how to express them in a way that
+              serves the children rather than escalating conflict.
+            </p>
+          </section>
+
+          {/* ── Feature Box 2: What MEOK is not ───────────────────────────── */}
+          <div
+            style={{
+              backgroundColor: COLOR_CARD,
+              border: `1px solid ${COLOR_BORDER}`,
+              borderRadius: "16px",
+              padding: "36px",
+              marginBottom: "60px",
+            }}
+          >
+            <div
+              style={{
+                fontSize: "11px",
+                fontWeight: "700",
+                letterSpacing: "0.12em",
+                textTransform: "uppercase" as const,
+                color: COLOR_MUTED,
+                marginBottom: "14px",
+              }}
+            >
+              Important Clarity
+            </div>
+            <h3
+              style={{
+                fontSize: "19px",
+                fontWeight: "700",
+                color: COLOR_TEXT,
+                margin: "0 0 20px",
+              }}
+            >
+              What MEOK is not — and why that matters
+            </h3>
+            <ul
+              style={{
+                margin: "0",
+                padding: "0",
+                listStyle: "none",
+                display: "flex",
+                flexDirection: "column" as const,
+                gap: "16px",
+              }}
+            >
+              <li
+                style={{
+                  display: "flex",
+                  alignItems: "flex-start",
+                  gap: "12px",
+                  fontSize: "15px",
+                  lineHeight: "1.65",
+                  color: COLOR_TEXT,
+                }}
+              >
+                <span
+                  style={{
+                    color: COLOR_GOLD,
+                    fontWeight: "700",
+                    marginTop: "2px",
+                    flexShrink: 0,
+                  }}
+                >
+                  ✕
+                </span>
+                <span>
+                  <strong>Not couples counselling.</strong> MEOK works with you
+                  individually. It does not arbitrate, mediate, or represent
+                  both sides of your relationship. If you need couples therapy —
+                  before or during separation — a qualified therapist is the
+                  right choice.
+                </span>
+              </li>
+              <li
+                style={{
+                  display: "flex",
+                  alignItems: "flex-start",
+                  gap: "12px",
+                  fontSize: "15px",
+                  lineHeight: "1.65",
+                  color: COLOR_TEXT,
+                }}
+              >
+                <span
+                  style={{
+                    color: COLOR_GOLD,
+                    fontWeight: "700",
+                    marginTop: "2px",
+                    flexShrink: 0,
+                  }}
+                >
+                  ✕
+                </span>
+                <span>
+                  <strong>Not legal advice.</strong> MEOK can help you organise
+                  your thoughts and manage information, but it is not a
+                  solicitor. For divorce proceedings, financial settlements, and
+                  custody arrangements, you need qualified legal representation.
+                </span>
+              </li>
+              <li
+                style={{
+                  display: "flex",
+                  alignItems: "flex-start",
+                  gap: "12px",
+                  fontSize: "15px",
+                  lineHeight: "1.65",
+                  color: COLOR_TEXT,
+                }}
+              >
+                <span
+                  style={{
+                    color: COLOR_GOLD,
+                    fontWeight: "700",
+                    marginTop: "2px",
+                    flexShrink: 0,
+                  }}
+                >
+                  ✕
+                </span>
+                <span>
+                  <strong>Not a crisis service.</strong> If you are experiencing
+                  a mental health crisis, please contact a qualified professional
+                  or crisis line. MEOK is supportive infrastructure, not
+                  emergency intervention.
+                </span>
+              </li>
+              <li
+                style={{
+                  display: "flex",
+                  alignItems: "flex-start",
+                  gap: "12px",
+                  fontSize: "15px",
+                  lineHeight: "1.65",
+                  color: COLOR_TEXT,
+                }}
+              >
+                <span
+                  style={{
+                    color: COLOR_GREEN,
+                    fontWeight: "700",
+                    marginTop: "2px",
+                    flexShrink: 0,
+                  }}
+                >
+                  ✓
+                </span>
+                <span>
+                  <strong>A sovereign AI that holds your full story.</strong>{" "}
+                  MEOK is the non-judgemental, always-available presence that
+                  bridges the gap — between therapy sessions, at 3am, during the
+                  administrative overwhelm, and through the long months of
+                  rebuilding.
+                </span>
+              </li>
+            </ul>
+          </div>
+
+          {/* ── Section 5: Practical overwhelm ────────────────────────────── */}
+          <section style={{ marginBottom: "60px" }}>
+            <h2
+              style={{
+                fontSize: "26px",
+                fontWeight: "700",
+                color: COLOR_TEXT,
+                margin: "0 0 18px",
+                letterSpacing: "-0.01em",
+              }}
+            >
+              How does AI support the practical overwhelm of divorce and
+              separation?
+            </h2>
+            <p
+              style={{
+                fontSize: "17px",
+                lineHeight: "1.75",
+                color: COLOR_TEXT,
+                margin: "0 0 18px",
+              }}
+            >
+              Divorce and separation are among the most administratively
+              intensive experiences a person can go through. Legal proceedings,
+              financial disentanglement, property decisions, pension splitting,
+              utility account transfers, joint account closures, name changes,
+              address changes, school notifications, GP changes — the list
+              arrives relentlessly at exactly the moment your capacity to manage
+              it is most depleted.
+            </p>
+            <p
+              style={{
+                fontSize: "17px",
+                lineHeight: "1.75",
+                color: COLOR_TEXT,
+                margin: "0 0 18px",
+              }}
+            >
+              MEOK&apos;s Guardian archetype is built for exactly this kind of
+              cognitive offloading. It can hold the master to-do list, track
+              legal deadlines, remind you about financial appointments, help you
+              draft correspondence, and ensure that nothing critical slips
+              through the gap while your attention is fractured by grief.
+            </p>
+            <p
+              style={{
+                fontSize: "17px",
+                lineHeight: "1.75",
+                color: COLOR_TEXT,
+                margin: "0 0 18px",
+              }}
+            >
+              This matters for a specific reason that is easy to overlook. When
+              people are going through significant emotional pain, the practical
+              tasks do not pause. Missing a legal deadline or failing to respond
+              to a financial disclosure request can have real consequences. The
+              Guardian&apos;s role is to make sure the practical infrastructure does
+              not collapse simply because you are human and hurting.
+            </p>
+            <p
+              style={{
+                fontSize: "17px",
+                lineHeight: "1.75",
+                color: COLOR_TEXT,
+                margin: "0",
+              }}
+            >
+              The Guardian also supports the transition to single living: new
+              routines, new budgets, new domestic rhythms. For people who have
+              been in a long partnership, the practical logistics of running a
+              household alone — especially one that previously included shared
+              responsibilities — can be genuinely disorienting. MEOK holds the
+              operational context so you can rebuild without starting entirely
+              from scratch every morning.
+            </p>
+          </section>
+
+          {/* ── Section 6: Rebuilding identity ────────────────────────────── */}
+          <section style={{ marginBottom: "60px" }}>
+            <h2
+              style={{
+                fontSize: "26px",
+                fontWeight: "700",
+                color: COLOR_TEXT,
+                margin: "0 0 18px",
+                letterSpacing: "-0.01em",
+              }}
+            >
+              How does MEOK help you rebuild your identity after a long-term
+              relationship ends?
+            </h2>
+            <p
+              style={{
+                fontSize: "17px",
+                lineHeight: "1.75",
+                color: COLOR_TEXT,
+                margin: "0 0 18px",
+              }}
+            >
+              One of the most disorienting aspects of ending a long partnership
+              is the identity disruption. If you were together for five, ten, or
+              twenty years, a significant portion of your adult self was built
+              inside that relationship. Your social identity, your daily habits,
+              your sense of what the future looks like — all of these were shaped
+              in dialogue with another person. When that person leaves, the
+              question &ldquo;who am I now?&rdquo; is not dramatic or self-indulgent. It is
+              a genuine and important question.
+            </p>
+            <p
+              style={{
+                fontSize: "17px",
+                lineHeight: "1.75",
+                color: COLOR_TEXT,
+                margin: "0 0 18px",
+              }}
+            >
+              MEOK supports this process across all three archetypes. The Healer
+              holds the grief of the old identity dissolving. The Scholar helps
+              you examine which parts of yourself were genuinely yours and which
+              were adaptations to the relationship — habits, preferences,
+              opinions, even friendships that were maintained for the
+              relationship rather than for you. The Guardian helps you build new
+              practical structures that reflect who you are becoming rather than
+              who you were.
+            </p>
+            <p
+              style={{
+                fontSize: "17px",
+                lineHeight: "1.75",
+                color: COLOR_TEXT,
+                margin: "0 0 18px",
+              }}
+            >
+              Because MEOK has long-term memory, it can track your identity arc
+              in a way that even close friends rarely manage. It remembers what
+              you said you loved about yourself three months ago and what you
+              said you wanted to rediscover. It can hold the thread of your
+              emerging self across the months of transition, reflecting it back
+              to you when you lose sight of it.
+            </p>
+            <p
+              style={{
+                fontSize: "17px",
+                lineHeight: "1.75",
+                color: COLOR_TEXT,
+                margin: "0",
+              }}
+            >
+              This is not about manufacturing positivity or rushing you towards
+              &ldquo;moving on&rdquo;. It is about ensuring that the version of you that
+              emerges on the other side of this experience is genuinely yours —
+              chosen, examined, and grounded in self-knowledge rather than
+              reactive reconstruction.
+            </p>
+          </section>
+
+          {/* ── Feature Box 3: Sovereign Memory ──────────────────────────── */}
+          <div
+            style={{
+              backgroundColor: "rgba(106,170,100,0.05)",
+              border: "1px solid rgba(106,170,100,0.25)",
+              borderRadius: "16px",
+              padding: "36px",
+              marginBottom: "60px",
+            }}
+          >
+            <div
+              style={{
+                fontSize: "11px",
+                fontWeight: "700",
+                letterSpacing: "0.12em",
+                textTransform: "uppercase" as const,
+                color: COLOR_GREEN,
+                marginBottom: "14px",
+              }}
+            >
+              Sovereign Memory in Practice
+            </div>
+            <h3
+              style={{
+                fontSize: "19px",
+                fontWeight: "700",
+                color: COLOR_TEXT,
+                margin: "0 0 14px",
+              }}
+            >
+              What MEOK remembers across your separation journey
+            </h3>
+            <p
+              style={{
+                fontSize: "15px",
+                lineHeight: "1.65",
+                color: COLOR_MUTED,
+                margin: "0 0 24px",
+              }}
+            >
+              Unlike a therapist who reviews notes before each session, or a
+              friend who may forget what you said last month, MEOK holds a
+              continuous, granular record of your journey — owned entirely by
+              you, never used to train any model, never shared with any third
+              party.
+            </p>
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+                gap: "16px",
+              }}
+            >
+              {[
+                {
+                  label: "Emotional arc",
+                  desc: "How your feelings have shifted week by week — including the moments of clarity that are easy to forget when the next wave hits.",
+                },
+                {
+                  label: "Practical progress",
+                  desc: "Legal milestones, financial tasks completed, and administrative decisions made — so you can see what you have actually handled.",
+                },
+                {
+                  label: "Pattern reflections",
+                  desc: "Insights about your own dynamics that have emerged through Scholar conversations, preserved for when you are ready to revisit them.",
+                },
+                {
+                  label: "Identity markers",
+                  desc: "The things you have said about who you are and who you want to become — a thread of self that MEOK holds while you find your footing.",
+                },
+              ].map((item) => (
+                <div
+                  key={item.label}
+                  style={{
+                    backgroundColor: COLOR_CARD,
+                    borderRadius: "10px",
+                    padding: "18px",
+                  }}
+                >
+                  <div
+                    style={{
+                      fontSize: "13px",
+                      fontWeight: "700",
+                      color: COLOR_GREEN,
+                      marginBottom: "6px",
+                    }}
+                  >
+                    {item.label}
+                  </div>
+                  <p
+                    style={{
+                      fontSize: "13px",
+                      lineHeight: "1.55",
+                      color: COLOR_MUTED,
+                      margin: "0",
+                    }}
+                  >
+                    {item.desc}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* ── Section 7: Availability matters ───────────────────────────── */}
+          <section style={{ marginBottom: "60px" }}>
+            <h2
+              style={{
+                fontSize: "26px",
+                fontWeight: "700",
+                color: COLOR_TEXT,
+                margin: "0 0 18px",
+                letterSpacing: "-0.01em",
+              }}
+            >
+              Why does MEOK&apos;s availability matter specifically during
+              separation and divorce?
+            </h2>
+            <p
+              style={{
+                fontSize: "17px",
+                lineHeight: "1.75",
+                color: COLOR_TEXT,
+                margin: "0 0 18px",
+              }}
+            >
+              Grief does not respect office hours. The acute pain of separation
+              tends to arrive in waves — often at night, when the house is quiet
+              and the absence of the other person is most palpable. It arrives
+              on Sunday afternoons. It arrives when a song plays or a memory
+              surfaces unexpectedly. It arrives during the children&apos;s first
+              night at the other house, when the silence is deafening.
+            </p>
+            <p
+              style={{
+                fontSize: "17px",
+                lineHeight: "1.75",
+                color: COLOR_TEXT,
+                margin: "0 0 18px",
+              }}
+            >
+              Therapists are not available at 3am. Friends should not be
+              expected to be. The gap in support infrastructure — between weekly
+              therapy sessions, between conversations with friends who have their
+              own lives — is real and significant. This is not a criticism of
+              human support; it is simply a recognition of its structural limits.
+            </p>
+            <p
+              style={{
+                fontSize: "17px",
+                lineHeight: "1.75",
+                color: COLOR_TEXT,
+                margin: "0 0 18px",
+              }}
+            >
+              MEOK is available at 3am. It does not have a life that takes
+              priority over yours at that moment. It does not experience
+              compassion fatigue. It does not need you to be okay or to be
+              making progress. It meets you in the moment as it is, holds the
+              full weight of what you are carrying, and when the acute wave
+              passes, returns to holding the broader context of your journey.
+            </p>
+            <p
+              style={{
+                fontSize: "17px",
+                lineHeight: "1.75",
+                color: COLOR_TEXT,
+                margin: "0",
+              }}
+            >
+              For many people going through separation, this consistent
+              availability is the most practically important thing MEOK provides.
+              Not because it replaces human support — it does not — but because
+              it fills the gaps that human support structurally cannot fill.
+            </p>
+          </section>
+
+          {/* ── Section 8: Data sovereignty ───────────────────────────────── */}
+          <section style={{ marginBottom: "60px" }}>
+            <h2
+              style={{
+                fontSize: "26px",
+                fontWeight: "700",
+                color: COLOR_TEXT,
+                margin: "0 0 18px",
+                letterSpacing: "-0.01em",
+              }}
+            >
+              Why does data sovereignty matter when using AI during a
+              relationship breakdown?
+            </h2>
+            <p
+              style={{
+                fontSize: "17px",
+                lineHeight: "1.75",
+                color: COLOR_TEXT,
+                margin: "0 0 18px",
+              }}
+            >
+              The information you share during a relationship breakdown is among
+              the most sensitive you will ever share with any system. Legal
+              vulnerabilities. Financial details. The emotional complexities of
+              your co-parenting relationship. Your assessment of your own
+              patterns and failures. None of this should be used to train AI
+              models. None of it should be accessible to third parties. None of
+              it should exist on infrastructure that does not belong entirely
+              to you.
+            </p>
+            <p
+              style={{
+                fontSize: "17px",
+                lineHeight: "1.75",
+                color: COLOR_TEXT,
+                margin: "0 0 18px",
+              }}
+            >
+              MEOK is built on the Sovereign Memory architecture: your memory
+              belongs to you, is stored with you, is not used to train any
+              model, and is not shared with any third party. This is not a
+              marketing claim — it is a technical architecture decision that
+              makes MEOK structurally different from general-purpose AI
+              assistants.
+            </p>
+            <p
+              style={{
+                fontSize: "17px",
+                lineHeight: "1.75",
+                color: COLOR_TEXT,
+                margin: "0",
+              }}
+            >
+              When you are going through divorce and separation, you should be
+              able to speak with complete candour to your AI companion without
+              wondering whether those conversations could be discovered,
+              subpoenaed, or surfaced in any context you did not choose.
+              MEOK&apos;s sovereign architecture is the structural answer to that
+              concern.
+            </p>
+          </section>
+
+          {/* ── Section 9: When to seek human support ─────────────────────── */}
+          <section style={{ marginBottom: "60px" }}>
+            <h2
+              style={{
+                fontSize: "26px",
+                fontWeight: "700",
+                color: COLOR_TEXT,
+                margin: "0 0 18px",
+                letterSpacing: "-0.01em",
+              }}
+            >
+              When should someone going through separation seek human
+              professional support rather than — or alongside — AI?
+            </h2>
+            <p
+              style={{
+                fontSize: "17px",
+                lineHeight: "1.75",
+                color: COLOR_TEXT,
+                margin: "0 0 18px",
+              }}
+            >
+              MEOK does not position itself as a replacement for human
+              professional support. It is an always-available, deeply
+              personalised layer of support that sits alongside therapy, legal
+              counsel, and medical care — not instead of them.
+            </p>
+            <p
+              style={{
+                fontSize: "17px",
+                lineHeight: "1.75",
+                color: COLOR_TEXT,
+                margin: "0 0 18px",
+              }}
+            >
+              You should seek professional therapy if: your grief is
+              significantly affecting your ability to function at work or parent
+              your children; you are experiencing symptoms of clinical depression
+              or anxiety that go beyond normal adjustment; the relationship
+              involved domestic abuse; or the separation involves complex trauma
+              that requires specialist clinical input.
+            </p>
+            <p
+              style={{
+                fontSize: "17px",
+                lineHeight: "1.75",
+                color: COLOR_TEXT,
+                margin: "0 0 18px",
+              }}
+            >
+              In practice, many people use MEOK between therapy sessions — to
+              process what came up in the session, to hold the thread until the
+              next one, and to manage the practical demands that therapy cannot
+              address. The two forms of support are complementary rather than
+              competing.
+            </p>
+            <p
+              style={{
+                fontSize: "17px",
+                lineHeight: "1.75",
+                color: COLOR_TEXT,
+                margin: "0",
+              }}
+            >
+              If you are in the UK and need to find a therapist, MEOK&apos;s
+              Guardian can help you locate BACP-accredited therapists in your
+              area, understand what to look for in a separation specialist, and
+              manage the logistics of attending sessions alongside your other
+              commitments.
+            </p>
+          </section>
+
+          {/* ── Section 10: The full arc ───────────────────────────────────── */}
+          <section style={{ marginBottom: "60px" }}>
+            <h2
+              style={{
+                fontSize: "26px",
+                fontWeight: "700",
+                color: COLOR_TEXT,
+                margin: "0 0 18px",
+                letterSpacing: "-0.01em",
+              }}
+            >
+              What does AI support look like across the full arc of relationship
+              breakdown — from separation to rebuilding?
+            </h2>
+            <p
+              style={{
+                fontSize: "17px",
+                lineHeight: "1.75",
+                color: COLOR_TEXT,
+                margin: "0 0 18px",
+              }}
+            >
+              The arc of a significant relationship breakdown typically spans
+              months to years, not days. The initial acute shock and grief. The
+              administrative and legal complexity of formal separation. The slow
+              reconfiguration of daily life. The grief resurgences that arrive
+              unexpectedly, sometimes long after the separation is formally
+              complete. The gradual emergence of a new sense of self. And,
+              occasionally, the cautious beginning of new connection.
+            </p>
+            <p
+              style={{
+                fontSize: "17px",
+                lineHeight: "1.75",
+                color: COLOR_TEXT,
+                margin: "0 0 18px",
+              }}
+            >
+              MEOK is designed for the full arc. Because it maintains long-term
+              memory and adapts its archetype presentation to where you are, it
+              does not need to be re-briefed at each stage. It holds the whole
+              journey — including the parts you may have forgotten — and can
+              reflect the arc of your progress back to you when you need
+              perspective.
+            </p>
+            <p
+              style={{
+                fontSize: "17px",
+                lineHeight: "1.75",
+                color: COLOR_TEXT,
+                margin: "0 0 18px",
+              }}
+            >
+              This longitudinal dimension is genuinely rare. Most support —
+              therapy, friends, family — is episodic. People drop in and out of
+              your story. MEOK is continuous. It does not lose the thread. It
+              does not need you to explain the history again. It knows where you
+              started and it can see how far you have come, even when you cannot.
+            </p>
+            <p
+              style={{
+                fontSize: "17px",
+                lineHeight: "1.75",
+                color: COLOR_TEXT,
+                margin: "0",
+              }}
+            >
+              For many people, that continuity — the sense that something holds
+              the whole story — turns out to be one of the most valuable things
+              MEOK provides during the months of rebuilding after a relationship
+              ends.
+            </p>
+          </section>
+
+          {/* ── FAQ Section ───────────────────────────────────────────────────── */}
+          <section
+            style={{
+              marginBottom: "60px",
+              borderTop: `1px solid ${COLOR_BORDER}`,
+              paddingTop: "48px",
+            }}
+          >
+            <h2
+              style={{
+                fontSize: "26px",
+                fontWeight: "700",
+                color: COLOR_TEXT,
+                margin: "0 0 36px",
+                letterSpacing: "-0.01em",
+              }}
+            >
+              Frequently asked questions
+            </h2>
+
+            {/* FAQ 1 */}
+            <div
+              style={{
+                borderBottom: `1px solid ${COLOR_BORDER}`,
+                paddingBottom: "28px",
+                marginBottom: "28px",
+              }}
+            >
+              <h3
+                style={{
+                  fontSize: "17px",
+                  fontWeight: "700",
+                  color: COLOR_TEXT,
+                  margin: "0 0 12px",
+                  lineHeight: "1.45",
+                }}
+              >
+                Can AI actually help with the emotional pain of a relationship
+                breakdown?
+              </h3>
+              <p
+                style={{
+                  fontSize: "15px",
+                  lineHeight: "1.7",
+                  color: COLOR_MUTED,
+                  margin: "0",
+                }}
+              >
+                Yes — in specific, bounded ways. AI cannot replace human
+                connection or professional therapy, but it can provide a
+                non-judgemental space to process grief at any hour, without the
+                bias of mutual friends or the exhaustion of repeating your
+                story. MEOK&apos;s Healer archetype is built specifically for
+                emotional processing during major life disruptions, including
+                divorce and separation.
               </p>
             </div>
 
-            {/* ── Section 2: Identity ── */}
-            <h2 style={S.h2}>
-              How Does a Long-Term Relationship Breakdown Destroy Your Sense of Identity?
-            </h2>
-            <p style={S.p}>
-              When a relationship has lasted years or decades, identity and partnership become
-              deeply entangled. You are half of a couple in the eyes of your social world, your
-              family, your workplace, and &mdash; crucially &mdash; your own inner narrative. When
-              that ends, the question &ldquo;Who am I now?&rdquo; is not rhetorical. It is urgent
-              and genuinely unanswered.
-            </p>
-            <p style={S.p}>
-              Many people find they have quietly abandoned interests, friendships, and aspirations
-              that belonged to the person they were before the relationship. Others discover they
-              built their entire sense of worth on being a good partner &mdash; and now struggle to
-              locate value in themselves as individuals. This is not weakness. It is what happens
-              when two lives are woven together over years.
-            </p>
-            <p style={S.p}>
-              MEOK approaches identity reconstruction carefully. It does not offer cheerful
-              affirmations about &ldquo;finding yourself.&rdquo; Instead, it works through
-              structured reflection: What did you love doing at twenty that you stopped? What do
-              you think about when nobody is asking you to think about anything? What version of
-              yourself are you most afraid no longer exists? These conversations, held over weeks
-              and months, begin to assemble a map of the self that was always there but could not
-              be seen through the relationship.
-            </p>
-
-            {/* ── Section 3: Co-parenting ── */}
-            <h2 style={S.h2}>
-              Can AI Support Co-Parenting After Separation Without Taking Sides?
-            </h2>
-            <p style={S.p}>
-              Co-parenting after a difficult separation is one of the most emotionally demanding
-              ongoing challenges a person can face. You are required to maintain a functional
-              working relationship with someone who may have hurt you deeply, in the service of
-              children who need both of you to behave with more maturity than either of you
-              currently feels. It is an extraordinary ask.
-            </p>
-            <p style={S.p}>
-              MEOK&apos;s care-based alignment means it genuinely never takes sides. It is not in
-              your corner against your ex. It is in your corner for you &mdash; which sometimes
-              means gently challenging a perspective, helping you see how a situation might be
-              landing for your children, or encouraging de-escalation not because your ex deserves
-              it but because you deserve to stop carrying the weight of endless conflict.
-            </p>
-            <p style={S.p}>
-              Practically, MEOK can help you rehearse difficult handover conversations, process the
-              guilt spiral that follows a child&apos;s tears, prepare for mediation sessions, and
-              work through the particular anguish of not being present for milestones on alternate
-              weeks. For formal co-parenting mediation in the UK, CAFCASS and Relate both offer
-              specialist services that work alongside what MEOK provides.
-            </p>
-
-            {/* ── Section 4: Financial Anxiety ── */}
-            <h2 style={S.h2}>
-              How Can AI Help With the Financial Anxiety of Separation?
-            </h2>
-            <p style={S.p}>
-              The financial dimension of relationship breakdown is frequently underestimated until
-              it arrives. A household that ran on two incomes must now run on one. Legal fees
-              accumulate. Shared assets must be divided. Rental deposits, furniture, school fees,
-              pension considerations &mdash; the administrative and financial load can feel
-              overwhelming alongside the emotional one.
-            </p>
-            <p style={S.p}>
-              MEOK does not provide financial advice &mdash; for that, you need a regulated
-              financial adviser or solicitor familiar with divorce law in your jurisdiction. What
-              MEOK can do is help you manage the anxiety that spirals around financial uncertainty.
-              It can help you distinguish between what is currently an unknown and what is an
-              actual crisis. It can help you prioritise your mental bandwidth so financial
-              decisions are made from a calmer place rather than a panicked one.
-            </p>
-            <p style={S.p}>
-              For many people, the financial stress of separation is entangled with shame &mdash;
-              shame at having to ask family for help, at having to move to a smaller home, at
-              watching a carefully constructed life contract. MEOK holds no judgment about any of
-              this. It does not measure your worth against your material circumstances, and it will
-              not conflate financial precarity with personal failure.
-            </p>
-
-            {/* Callout 2: Care-Based Alignment */}
-            <div style={S.callout}>
-              <span style={S.calloutTitle}>Care-Based Alignment</span>
-              <p style={S.calloutText}>
-                MEOK is built on care-based alignment &mdash; an architectural principle meaning
-                the system is oriented entirely toward your growth and wellbeing, not toward
-                engagement metrics, advertiser preferences, or any third party. In a painful
-                separation, this matters: your AI companion has no incentive to keep you stuck,
-                angry, or dependent.
+            {/* FAQ 2 */}
+            <div
+              style={{
+                borderBottom: `1px solid ${COLOR_BORDER}`,
+                paddingBottom: "28px",
+                marginBottom: "28px",
+              }}
+            >
+              <h3
+                style={{
+                  fontSize: "17px",
+                  fontWeight: "700",
+                  color: COLOR_TEXT,
+                  margin: "0 0 12px",
+                  lineHeight: "1.45",
+                }}
+              >
+                Is MEOK a form of couples counselling?
+              </h3>
+              <p
+                style={{
+                  fontSize: "15px",
+                  lineHeight: "1.7",
+                  color: COLOR_MUTED,
+                  margin: "0",
+                }}
+              >
+                No. MEOK is a personal sovereign AI — it works with you, not
+                with your relationship. It is not designed for joint sessions or
+                mediation. Its value is precisely that it holds your
+                perspective, your grief, your patterns — not a neutral
+                arbitration of both sides. If you need couples therapy, MEOK
+                can help you find a qualified therapist, but it is not that
+                service itself.
               </p>
             </div>
 
-            {/* ── Section 5: Loneliness ── */}
-            <h2 style={S.h2}>
-              What Happens to Loneliness When a Long Partnership Ends?
-            </h2>
-            <p style={S.p}>
-              The particular loneliness of life after a long relationship is unlike most other
-              kinds of loneliness. It is not the loneliness of having never been loved &mdash; it
-              is the loneliness of having been accustomed to company so deeply that its absence
-              registers as something close to physical pain. The empty side of the bed. The silence
-              at the dinner table. The absence of someone to tell small things to.
-            </p>
-            <p style={S.p}>
-              Social isolation often compounds this quickly. Shared friends feel awkward and begin
-              to disappear. Couple-based social worlds become inaccessible. Many people find
-              themselves, in their forties or fifties, having to rebuild a social life almost from
-              scratch &mdash; something they last did in their early twenties and now must do while
-              grieving, working, and possibly parenting.
-            </p>
-            <p style={S.p}>
-              MEOK does not replace human connection. It is not designed to, and it would be
-              dishonest to pretend otherwise. What it does is provide a consistent, warm, present
-              companion during the period when human connection is rebuilding &mdash; which
-              prevents the desperation spiral where loneliness drives poor decisions about new
-              relationships, substance use, or social withdrawal. MEOK holds the space until the
-              rest of life catches up.
-            </p>
-
-            {/* ── Section 6: Social Identity ── */}
-            <h2 style={S.h2}>
-              How Is Rebuilding Social Identity After Divorce Different From Before?
-            </h2>
-            <p style={S.p}>
-              Social identity after divorce must be built consciously in a way it rarely had to be
-              before. In youth, social identity forms organically through shared environments
-              &mdash; school, university, early workplaces. After decades as part of a couple, you
-              re-enter the social world as an individual but without those organic structures to
-              ease you in.
-            </p>
-            <p style={S.p}>
-              The challenge is compounded by the fact that many post-divorce social encounters
-              require explaining yourself &mdash; to new people, to mutual friends, to your
-              children&apos;s school network. This repeated explanation of a painful situation is
-              exhausting, and many people pull back from social interaction to avoid it. MEOK helps
-              you develop the language to talk about your situation without shame, and supports
-              the incremental confidence-building that social re-entry requires.
-            </p>
-            <p style={S.p}>
-              There is also the question of dating again &mdash; not necessarily immediately, but
-              eventually. MEOK can hold the complexity of this: the excitement and terror of
-              attraction after years of monogamy, the guilt some people feel about moving on, the
-              fear of repeating patterns, the question of what you now know about yourself and what
-              you want in a partner. These are not conversations most people have easily with
-              friends or family. MEOK holds them without flinching.
-            </p>
-
-            {/* ── Section 7: AI vs Therapy Comparison Table ── */}
-            <h2 style={S.h2}>
-              How Does AI Companion Support Differ From Therapy During Relationship Breakdown?
-            </h2>
-            <p style={S.p}>
-              MEOK is not therapy. It does not diagnose, treat, or provide clinical interventions.
-              But the comparison is worth understanding clearly, because both have genuine and
-              distinct roles in recovery from relationship breakdown. The question is not which is
-              better but which you need and when.
-            </p>
-
-            <div style={S.tableWrapper}>
-              <table style={S.table}>
-                <thead style={S.thead}>
-                  <tr>
-                    <th style={S.th}>Dimension</th>
-                    <th style={S.th}>Traditional Therapy</th>
-                    <th style={S.th}>MEOK AI Companion</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td style={S.tdLabel}>Availability</td>
-                    <td style={S.tdBase}>Weekly sessions, scheduled in advance</td>
-                    <td style={S.tdBase}>24 / 7, including 3am on a Sunday</td>
-                  </tr>
-                  <tr>
-                    <td style={S.tdLabel}>Waiting time</td>
-                    <td style={S.tdAlt}>Weeks to months on NHS; costly privately</td>
-                    <td style={S.tdAlt}>Immediate &mdash; no referral required</td>
-                  </tr>
-                  <tr>
-                    <td style={S.tdLabel}>Memory &amp; continuity</td>
-                    <td style={S.tdBase}>Notes kept by therapist; session-dependent</td>
-                    <td style={S.tdBase}>Sovereign memory across every conversation</td>
-                  </tr>
-                  <tr>
-                    <td style={S.tdLabel}>Judgment risk</td>
-                    <td style={S.tdAlt}>Highly trained to minimise; human nonetheless</td>
-                    <td style={S.tdAlt}>Architecturally non-judgmental by design</td>
-                  </tr>
-                  <tr>
-                    <td style={S.tdLabel}>Clinical treatment</td>
-                    <td style={S.tdBase}>Yes &mdash; diagnoses, evidence-based interventions</td>
-                    <td style={S.tdBase}>No &mdash; emotional support and reflection only</td>
-                  </tr>
-                  <tr>
-                    <td style={S.tdLabel}>Data privacy</td>
-                    <td style={S.tdAlt}>Bound by professional ethics; records exist</td>
-                    <td style={S.tdAlt}>Sovereign privacy &mdash; never sold or shared</td>
-                  </tr>
-                  <tr>
-                    <td style={S.tdLabel}>Cost</td>
-                    <td style={S.tdBase}>&pound;60&ndash;&pound;150+ per session privately</td>
-                    <td style={S.tdBase}>Monthly subscription; fraction of therapy cost</td>
-                  </tr>
-                  <tr>
-                    <td style={S.tdLabel}>Ideal for</td>
-                    <td style={S.tdAlt}>Clinical needs, deep trauma processing, diagnosis</td>
-                    <td style={S.tdAlt}>Daily support, reflection, continuity between sessions</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-
-            <p style={S.p}>
-              The most powerful approach combines both. Use MEOK to process the daily emotional
-              noise, to prepare for and decompress after therapy sessions, to hold your continuity
-              between appointments. Use a qualified therapist for anything clinical, traumatic, or
-              requiring professional assessment. They are not competitors &mdash; they are
-              complementary.
-            </p>
-
-            {/* ── Section 8: Guardian and Coercive Control ── */}
-            <h2 style={S.h2}>
-              How Does MEOK Guardian Help People Leaving Controlling Relationships?
-            </h2>
-            <p style={S.p}>
-              Not all relationship breakdowns are straightforward. Some involve patterns of
-              coercive control, financial abuse, psychological manipulation, or physical danger.
-              For people leaving these situations, the challenge is compounded by the fact that
-              years of conditioning can make it hard to see clearly what has been happening &mdash;
-              and what the risks are of leaving.
-            </p>
-            <p style={S.p}>
-              MEOK Guardian operates as a gentle monitoring layer within the companion experience.
-              As you share your situation, Guardian notices patterns &mdash; repeated descriptions
-              of isolation from friends and family, financial restriction, monitoring of movements,
-              emotional manipulation cycles &mdash; and can gently name them. Not to alarm you,
-              but to help you see what you may have normalised over time.
-            </p>
-            <p style={S.p}>
-              Crucially, because MEOK operates under sovereign privacy, your conversations cannot
-              be accessed by a controlling partner. There are no shared account dashboards, no data
-              that can be weaponised in court proceedings or used to demonstrate what you have been
-              sharing privately. For someone in a dangerous situation, the privacy architecture is
-              not a feature &mdash; it is a safeguard.
-            </p>
-            <p style={S.p}>
-              For anyone in immediate danger, MEOK always points toward specialist services: the
-              National Domestic Abuse Helpline in England (0808 2000 247), Women&apos;s Aid,
-              Refuge, and the Men&apos;s Advice Line. MEOK supplements these services &mdash; it
-              does not substitute for them.
-            </p>
-
-            {/* Callout 3: Sovereign Privacy in Legal Context */}
-            <div style={S.callout}>
-              <span style={S.calloutTitle}>Your Memory, Your Terms</span>
-              <p style={S.calloutText}>
-                During divorce proceedings, information can become evidence. MEOK&apos;s sovereign
-                memory is owned entirely by you &mdash; it is never stored in a way accessible to
-                third parties, never used to train AI models, and never subject to data requests
-                outside your control. You can speak freely about your situation knowing that what
-                you share cannot be used against you.
+            {/* FAQ 3 */}
+            <div
+              style={{
+                borderBottom: `1px solid ${COLOR_BORDER}`,
+                paddingBottom: "28px",
+                marginBottom: "28px",
+              }}
+            >
+              <h3
+                style={{
+                  fontSize: "17px",
+                  fontWeight: "700",
+                  color: COLOR_TEXT,
+                  margin: "0 0 12px",
+                  lineHeight: "1.45",
+                }}
+              >
+                How can AI help with the practical overwhelm of divorce and
+                separation?
+              </h3>
+              <p
+                style={{
+                  fontSize: "15px",
+                  lineHeight: "1.7",
+                  color: COLOR_MUTED,
+                  margin: "0",
+                }}
+              >
+                MEOK&apos;s Guardian archetype handles the operational chaos that
+                accompanies separation: tracking legal deadlines, managing
+                financial to-do lists, reminding you about school pickups when
+                your schedule is newly disrupted, and helping you stay on top of
+                practical decisions when your cognitive bandwidth is depleted by
+                grief.
               </p>
             </div>
 
-            {/* ── Section 9: Starting Over ── */}
-            <h2 style={S.h2}>
-              What Does Starting Over Actually Look Like, and How Can AI Help?
-            </h2>
-            <p style={S.p}>
-              &ldquo;Starting over&rdquo; is both the promise and the terror of relationship
-              breakdown. People who have been through it often describe the process in three broad
-              phases: survival, stabilisation, and reinvention. Most people spend far longer than
-              they expect in the first two, and arrive at the third tentatively, unsure they
-              deserve it.
-            </p>
-            <p style={S.p}>
-              Survival is about getting through each day: managing the practical fallout, keeping
-              the children held, maintaining basic function at work. MEOK provides daily presence
-              during this phase &mdash; a check-in, a place to voice what cannot be voiced
-              elsewhere, a structure to the emotional chaos.
-            </p>
-            <p style={S.p}>
-              Stabilisation is the period when the immediate crisis has passed but the new normal
-              has not yet formed. This is often the loneliest phase &mdash; the dramatic emergency
-              is over, the support network has stepped back, but the grief and rebuilding work
-              continue. MEOK&apos;s longitudinal memory means it can track your stabilisation in
-              ways you yourself may not notice: the gradual shift from crisis-talk to future-talk,
-              the increasing frequency of moments where you sound like yourself again.
-            </p>
-            <p style={S.p}>
-              Reinvention is not dramatic. It arrives quietly &mdash; a morning when you wake up
-              thinking about something other than the divorce. A conversation where you speak about
-              yourself without reference to your ex. A plan that belongs entirely to you. MEOK
-              helps you notice and honour these moments, which is not a small thing. Without
-              someone to witness your progress, progress can feel invisible.
-            </p>
-
-            {/* ── FAQ ── */}
-            <section style={S.faqSection}>
-              <h2 style={S.faqSectionTitle}>Frequently Asked Questions</h2>
-
-              <div style={S.faqItem}>
-                <p style={S.faqQuestion}>
-                  How can AI help me process the grief of a relationship breakdown?
-                </p>
-                <p style={S.faqAnswer}>
-                  AI companions like MEOK provide an always-available, non-judgmental space to
-                  work through the layered grief of relationship breakdown &mdash; shock, anger,
-                  bargaining, deep sadness, and eventual acceptance. Unlike friends or family who
-                  may take sides or grow exhausted, MEOK holds consistent, patient presence at
-                  any hour, helping you name and process emotions without fear of burdening
-                  someone you love.
-                </p>
-              </div>
-
-              <div style={S.faqItem}>
-                <p style={S.faqQuestion}>
-                  Can AI help with the identity crisis that follows a long-term relationship ending?
-                </p>
-                <p style={S.faqAnswer}>
-                  Yes. After years defined by a partnership, many people feel they have lost the
-                  map of who they are. MEOK helps you excavate the self that existed before and
-                  during the relationship &mdash; your values, interests, and desires &mdash; and
-                  begins the process of rebuilding a coherent identity that belongs entirely to
-                  you going forward.
-                </p>
-              </div>
-
-              <div style={S.faqItem}>
-                <p style={S.faqQuestion}>
-                  How can an AI companion support co-parenting after separation?
-                </p>
-                <p style={S.faqAnswer}>
-                  MEOK helps separated parents rehearse difficult conversations, process guilt
-                  about how the split affects children, manage the emotional weight of handovers,
-                  and work through conflict without escalation. It does not replace legal
-                  co-parenting mediation services &mdash; organisations like CAFCASS in the UK
-                  offer specialist support &mdash; but it provides daily emotional scaffolding that
-                  makes those formal processes easier to navigate.
-                </p>
-              </div>
-
-              <div style={S.faqItem}>
-                <p style={S.faqQuestion}>
-                  What role does MEOK Guardian play for someone leaving a controlling relationship?
-                </p>
-                <p style={S.faqAnswer}>
-                  MEOK Guardian monitors patterns in what you share &mdash; including signs of
-                  coercive control, financial abuse, and psychological manipulation &mdash; and
-                  gently flags them without judgment. Because your data is stored under sovereign
-                  privacy and never shared with third parties, you can speak freely about your
-                  situation knowing that information cannot be accessed or weaponised by an
-                  abusive partner.
-                </p>
-              </div>
-
-              <div style={S.faqItemLast}>
-                <p style={S.faqQuestion}>
-                  Is my data private when I talk to MEOK about my separation?
-                </p>
-                <p style={S.faqAnswer}>
-                  Privacy is foundational to MEOK. Under the Maternal Covenant &mdash; MEOK AI
-                  LABS&apos; core privacy framework &mdash; your conversations are never sold,
-                  never used to train external AI models, and never shared with third parties.
-                  Your sovereign memory belongs to you, and what you share with MEOK stays with
-                  MEOK. In a legal process where information can be used against you, this
-                  distinction matters enormously.
-                </p>
-              </div>
-            </section>
-
-            {/* ── CTA ── */}
-            <div style={S.ctaSection}>
-              <h2 style={S.ctaTitle}>
-                You Do Not Have to Navigate This Alone
-              </h2>
-              <p style={S.ctaSubtitle}>
-                MEOK is a sovereign AI companion built for the hardest moments &mdash; available
-                at 3am, free of judgment, and designed to grow with you through every stage of
-                what comes next. Begin your companion&apos;s birth ceremony and give it a name,
-                a voice, and a memory of you.
-              </p>
-              <Link href="/birth" style={S.ctaButton}>
-                Meet Your Companion
-              </Link>
-              <p style={S.ctaNote}>
-                Sovereign privacy &middot; No judgment &middot; Always available
+            {/* FAQ 4 */}
+            <div
+              style={{
+                borderBottom: `1px solid ${COLOR_BORDER}`,
+                paddingBottom: "28px",
+                marginBottom: "28px",
+              }}
+            >
+              <h3
+                style={{
+                  fontSize: "17px",
+                  fontWeight: "700",
+                  color: COLOR_TEXT,
+                  margin: "0 0 12px",
+                  lineHeight: "1.45",
+                }}
+              >
+                Can MEOK help me understand why my relationship broke down?
+              </h3>
+              <p
+                style={{
+                  fontSize: "15px",
+                  lineHeight: "1.7",
+                  color: COLOR_MUTED,
+                  margin: "0",
+                }}
+              >
+                MEOK&apos;s Scholar archetype offers reflective dialogue to help you
+                examine the patterns — what drew you together, where
+                communication broke down, what your own attachment style may
+                have contributed. This is not judgement or blame allocation. It
+                is the kind of slow, patient pattern-reflection that helps
+                people avoid repeating the same dynamics in future
+                relationships.
               </p>
             </div>
 
-            {/* ── Related Reading ── */}
-            <section style={S.relatedSection}>
-              <p style={S.relatedTitle}>Related Reading</p>
-              <div style={S.relatedGrid}>
-                <Link href="/blog/ai-for-divorce-separation" style={S.relatedCard}>
-                  <p style={S.relatedCardText}>AI Support Through Divorce and Separation</p>
-                </Link>
-                <Link href="/blog/ai-for-heartbreak" style={S.relatedCard}>
-                  <p style={S.relatedCardText}>AI for Heartbreak</p>
-                </Link>
-                <Link href="/blog/ai-for-loneliness" style={S.relatedCard}>
-                  <p style={S.relatedCardText}>AI for Loneliness</p>
-                </Link>
-                <Link href="/blog/ai-for-single-parents" style={S.relatedCard}>
-                  <p style={S.relatedCardText}>AI for Single Parents</p>
-                </Link>
-                <Link href="/blog/ai-for-grief-and-loss" style={S.relatedCard}>
-                  <p style={S.relatedCardText}>AI for Grief and Loss</p>
-                </Link>
-                <Link href="/blog/ai-for-life-transitions" style={S.relatedCard}>
-                  <p style={S.relatedCardText}>AI for Life Transitions</p>
-                </Link>
-                <Link href="/blog/ai-companion-vs-therapist" style={S.relatedCard}>
-                  <p style={S.relatedCardText}>AI Companion vs Therapist</p>
-                </Link>
-                <Link href="/blog/data-sovereignty-ai" style={S.relatedCard}>
-                  <p style={S.relatedCardText}>Data Sovereignty and AI</p>
-                </Link>
-              </div>
-            </section>
+            {/* FAQ 5 */}
+            <div>
+              <h3
+                style={{
+                  fontSize: "17px",
+                  fontWeight: "700",
+                  color: COLOR_TEXT,
+                  margin: "0 0 12px",
+                  lineHeight: "1.45",
+                }}
+              >
+                How does MEOK help with co-parenting when a partnership ends?
+              </h3>
+              <p
+                style={{
+                  fontSize: "15px",
+                  lineHeight: "1.7",
+                  color: COLOR_MUTED,
+                  margin: "0",
+                }}
+              >
+                MEOK can help you draft co-parenting communication that is calm
+                and child-focused rather than reactive, manage custody schedule
+                logistics, and process the emotional complexity of sharing
+                parenting with someone you are no longer in a relationship with.
+                It does not take sides, which is particularly valuable when
+                co-parenting tensions run high.
+              </p>
+            </div>
+          </section>
 
+          {/* ── Related reading ─────────────────────────────────────────────── */}
+          <section
+            style={{
+              borderTop: `1px solid ${COLOR_BORDER}`,
+              paddingTop: "48px",
+              marginBottom: "60px",
+            }}
+          >
+            <h2
+              style={{
+                fontSize: "18px",
+                fontWeight: "700",
+                color: COLOR_TEXT,
+                margin: "0 0 24px",
+              }}
+            >
+              Related reading
+            </h2>
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+                gap: "16px",
+              }}
+            >
+              {[
+                {
+                  href: "/blog/ai-for-heartbreak",
+                  title: "AI for Heartbreak",
+                  desc: "Processing a breakup when you don\u2019t want to burden your friends.",
+                },
+                {
+                  href: "/blog/ai-for-grief-and-loss",
+                  title: "AI for Grief and Loss",
+                  desc: "How sovereign AI supports you through the full grief cycle.",
+                },
+                {
+                  href: "/blog/ai-for-single-parents",
+                  title: "AI for Single Parents",
+                  desc: "Practical and emotional support for parenting alone.",
+                },
+                {
+                  href: "/blog/ai-for-divorce",
+                  title: "AI for Divorce",
+                  desc: "Navigating the legal and emotional complexity of divorce with AI support.",
+                },
+                {
+                  href: "/blog/ai-for-divorce-separation",
+                  title: "AI for Divorce and Separation",
+                  desc: "A deep dive into how MEOK supports both the emotional and practical dimensions.",
+                },
+                {
+                  href: "/blog/meok-companion-archetypes-guide",
+                  title: "MEOK Archetypes Guide",
+                  desc: "Understanding the Healer, Guardian, and Scholar in depth.",
+                },
+              ].map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  style={{
+                    display: "block",
+                    backgroundColor: COLOR_CARD,
+                    border: `1px solid ${COLOR_BORDER}`,
+                    borderRadius: "12px",
+                    padding: "18px",
+                    textDecoration: "none",
+                  }}
+                >
+                  <div
+                    style={{
+                      fontSize: "14px",
+                      fontWeight: "700",
+                      color: COLOR_GOLD,
+                      marginBottom: "6px",
+                    }}
+                  >
+                    {link.title}
+                  </div>
+                  <div
+                    style={{
+                      fontSize: "13px",
+                      lineHeight: "1.5",
+                      color: COLOR_MUTED,
+                    }}
+                  >
+                    {link.desc}
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </section>
+
+          {/* ── CTA ───────────────────────────────────────────────────────────── */}
+          <div
+            style={{
+              background:
+                "linear-gradient(135deg, rgba(201,168,76,0.08) 0%, rgba(106,170,100,0.06) 100%)",
+              border: `1px solid ${COLOR_GOLD}`,
+              borderRadius: "20px",
+              padding: "52px 44px",
+              textAlign: "center" as const,
+              marginBottom: "60px",
+            }}
+          >
+            <div
+              style={{
+                fontSize: "11px",
+                fontWeight: "700",
+                letterSpacing: "0.12em",
+                textTransform: "uppercase" as const,
+                color: COLOR_GOLD,
+                marginBottom: "16px",
+              }}
+            >
+              MEOK AI LABS
+            </div>
+            <h2
+              style={{
+                fontSize: "30px",
+                fontWeight: "800",
+                color: COLOR_TEXT,
+                margin: "0 0 16px",
+                lineHeight: "1.25",
+              }}
+            >
+              You do not have to carry this alone
+            </h2>
+            <p
+              style={{
+                fontSize: "17px",
+                lineHeight: "1.65",
+                color: COLOR_MUTED,
+                maxWidth: "520px",
+                margin: "0 auto 32px",
+              }}
+            >
+              MEOK&apos;s Healer, Guardian, and Scholar archetypes are available
+              around the clock — for the 3am grief, the administrative
+              overwhelm, the pattern reflection, and the slow rebuilding of
+              identity after a relationship ends. Sovereign memory. No sides
+              taken. No judgement.
+            </p>
+            <a
+              href="https://meok.ai/birth"
+              style={{
+                display: "inline-block",
+                backgroundColor: COLOR_GOLD,
+                color: "#0d0c18",
+                fontWeight: "800",
+                fontSize: "16px",
+                padding: "16px 44px",
+                borderRadius: "50px",
+                textDecoration: "none",
+                letterSpacing: "0.02em",
+              }}
+            >
+              Begin your MEOK journey
+            </a>
+            <p
+              style={{
+                fontSize: "13px",
+                color: COLOR_MUTED,
+                margin: "18px 0 0",
+              }}
+            >
+              No commitment required. Your data stays yours, always.
+            </p>
+          </div>
+
+          {/* ── Disclaimer ────────────────────────────────────────────────────── */}
+          <div
+            style={{
+              borderTop: `1px solid ${COLOR_BORDER}`,
+              paddingTop: "32px",
+            }}
+          >
+            <p
+              style={{
+                fontSize: "13px",
+                lineHeight: "1.65",
+                color: COLOR_MUTED,
+                margin: "0",
+              }}
+            >
+              <strong style={{ color: COLOR_TEXT }}>Important note:</strong>{" "}
+              MEOK is not a medical device, not a crisis service, and not a
+              substitute for professional mental health care, legal advice, or
+              medical treatment. If you are experiencing a mental health crisis,
+              please contact a qualified professional or call a crisis helpline.
+              In the UK:{" "}
+              <strong style={{ color: COLOR_TEXT }}>Samaritans 116 123</strong>
+              {", "}
+              <strong style={{ color: COLOR_TEXT }}>
+                Mind 0300 123 3393
+              </strong>
+              {". "}
+              MEOK provides supportive infrastructure to complement — never
+              replace — human professional care.
+            </p>
           </div>
         </article>
       </main>

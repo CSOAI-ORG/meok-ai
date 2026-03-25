@@ -3782,6 +3782,66 @@ const POSTS = [
     category: "connection",
     featured: false,
   },
+  {
+    slug: "ai-for-dating-anxiety",
+    title: "AI for Dating Anxiety: How MEOK Helps You Navigate the Modern Dating Minefield",
+    excerpt:
+      "App fatigue, ghosting, rejection spirals, first-date performance anxiety — modern dating is exhausting. MEOK helps you practise conversations, process rejection, understand your attachment patterns, and build genuine confidence without the fake bravado.",
+    date: "March 26, 2026",
+    readTime: "7 min read",
+    tag: "Connection",
+    tagColor: "#6aaa64",
+    category: "connection",
+    featured: false,
+  },
+  {
+    slug: "meok-for-teachers",
+    title: "MEOK for Teachers: Sovereign AI Support in the Most Demanding Profession",
+    excerpt:
+      "40% of UK teachers leave within 5 years. Workload, behaviour management, Ofsted anxiety, emotional labour — MEOK provides a private decompression space with data sovereignty that ensures your venting about colleagues and students stays truly private.",
+    date: "March 26, 2026",
+    readTime: "8 min read",
+    tag: "Professional",
+    tagColor: "#c9a84c",
+    category: "professional",
+    featured: false,
+  },
+  {
+    slug: "ai-for-financial-stress",
+    title: "AI for Financial Stress: How MEOK Supports Emotional Wellbeing When Money Is Tight",
+    excerpt:
+      "Financial stress affects 50% of UK adults and causes shame, anxiety, and relationship conflict. MEOK provides emotional support for the psychological dimension of money stress — processing fear and shame without judgment, with sovereign privacy guaranteed.",
+    date: "March 26, 2026",
+    readTime: "7 min read",
+    tag: "Wellbeing",
+    tagColor: "#6aaa64",
+    category: "wellbeing",
+    featured: false,
+  },
+  {
+    slug: "ai-for-imposter-syndrome",
+    title: "AI for Imposter Syndrome: How MEOK Helps You Own What You\u2019ve Actually Built",
+    excerpt:
+      "70% of people experience imposter syndrome. MEOK\u2019s sovereign memory builds a factual record of your achievements over time, provides honest (not sycophantic) feedback via the Maternal Covenant, and helps you distinguish feelings from facts.",
+    date: "March 26, 2026",
+    readTime: "8 min read",
+    tag: "Productivity",
+    tagColor: "#c9a84c",
+    category: "productivity",
+    featured: false,
+  },
+  {
+    slug: "ai-for-creative-block",
+    title: "AI for Creative Block: How MEOK\u2019s Trickster Unlocks What\u2019s Stuck",
+    excerpt:
+      "Creative block is rarely lack of ideas — it\u2019s usually fear, perfectionism, or disconnection from the creative impulse. MEOK\u2019s Trickster archetype disrupts fixed thinking, reframes the inner critic, and asks the unexpected question that breaks the paralysis.",
+    date: "March 26, 2026",
+    readTime: "7 min read",
+    tag: "Creativity",
+    tagColor: "#c9a84c",
+    category: "creativity",
+    featured: false,
+  },
 ];
 
 // ── Category filter tabs ──────────────────────────────────────────────────────

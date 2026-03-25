@@ -5,26 +5,19 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   title:
-    "AI for Autistic Adults: A Companion That Communicates the Way You Need | MEOK AI LABS",
+    "AI for Autistic Adults: How MEOK Supports Neurodivergent Wellbeing | MEOK AI LABS",
   description:
-    "Autistic adults are often failed by neurotypical AI that doesn\u2019t understand direct communication, sensory overload, or executive function challenges. MEOK is built to adapt.",
+    "Late-diagnosed autism in adults is dramatically under-supported. Masking fatigue, autistic burnout, sensory overwhelm, and the grief of finally understanding why life felt so hard for so long. MEOK\u2019s archetypes and Sovereign Memory offer something genuinely different: a predictable, non-judgmental companion built on the neurodiversity model.",
   alternates: {
     canonical: "https://meok.ai/blog/ai-for-autism-adults",
   },
   openGraph: {
     title:
-      "AI for Autistic Adults: A Companion That Communicates the Way You Need",
+      "AI for Autistic Adults: How MEOK Supports Neurodivergent Wellbeing",
     description:
-      "Autistic adults are often failed by neurotypical AI that doesn\u2019t understand direct communication, sensory overload, or executive function challenges. MEOK is built to adapt.",
+      "Late-diagnosed autism in adults is dramatically under-supported. MEOK provides a predictable, non-judgmental companion that never misreads literal language, helps navigate social situations, and supports the grief of late diagnosis \u2014 through the neurodiversity model, not a deficit model.",
     type: "article",
     url: "https://meok.ai/blog/ai-for-autism-adults",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title:
-      "AI for Autistic Adults: A Companion That Communicates the Way You Need",
-    description:
-      "Autistic adults are often failed by neurotypical AI that doesn\u2019t understand direct communication, sensory overload, or executive function challenges. MEOK is built to adapt.",
   },
 };
 
@@ -34,31 +27,29 @@ const articleSchema = {
   "@context": "https://schema.org",
   "@type": "Article",
   headline:
-    "AI for Autistic Adults: A Companion That Communicates the Way You Need",
+    "AI for Autistic Adults: How MEOK Supports Neurodivergent Wellbeing",
   description:
-    "How AI companions can support autistic adults through direct communication, masking exhaustion, sensory overload, executive function challenges, AuDHD, late diagnosis, special interests, employment, and sovereign memory that never forgets your needs.",
+    "Late-diagnosed autism in adults is dramatically under-supported. Masking fatigue, autistic burnout, sensory overwhelm, and the grief of a late diagnosis all go largely unaddressed. MEOK\u2019s archetypes and Sovereign Memory offer something genuinely different.",
   author: { "@type": "Person", name: "Nicholas Templeman" },
   publisher: {
     "@type": "Organization",
     name: "MEOK AI LABS",
     url: "https://meok.ai",
   },
-  datePublished: "2026-03-24",
-  dateModified: "2026-03-24",
+  datePublished: "2026-03-25",
+  dateModified: "2026-03-25",
   url: "https://meok.ai/blog/ai-for-autism-adults",
   keywords: [
     "AI for autistic adults",
-    "autism AI companion",
-    "autistic masking support",
-    "sensory overload AI",
-    "executive function autism",
-    "AuDHD support",
-    "late diagnosis autism adults",
-    "autism employment AI",
-    "special interests AI",
-    "sovereign memory autism",
-    "AI autism UK",
+    "late diagnosis autism support",
+    "autistic burnout AI",
+    "masking fatigue support",
+    "neurodivergent AI companion",
+    "autism AI UK",
     "MEOK autism",
+    "late diagnosed autism grief",
+    "autistic adult wellbeing",
+    "neurodiversity model AI",
   ],
 };
 
@@ -68,55 +59,56 @@ const faqSchema = {
   mainEntity: [
     {
       "@type": "Question",
-      name: "How can AI help autistic adults with communication?",
+      name: "What is autistic burnout and how is it different from regular burnout?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "AI can help autistic adults by communicating in explicit, literal language without neurotypical subtext or hidden social meaning. It never uses sarcasm without flagging it, never implies something it does not say directly, and never requires the autistic person to decode what is really meant. For many autistic adults this is the first communication tool that genuinely matches their natural style rather than demanding they adapt to neurotypical norms.",
+        text: "Autistic burnout is a state of profound exhaustion caused by sustained masking, sensory overload, and the relentless cognitive effort of navigating a neurotypical world. Unlike regular burnout, autistic burnout can involve a temporary or lasting loss of skills \u2014 speech, executive function, emotional regulation \u2014 as well as shutdown states and a collapse of previously functioning coping strategies. Recovery typically requires significant reduction in demands and sensory input, not simply rest.",
       },
     },
     {
       "@type": "Question",
-      name: "What is autistic masking and how does it cause burnout?",
+      name: "How can AI support autistic adults who are late-diagnosed?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Autistic masking is the process of suppressing or hiding autistic traits to appear neurotypical. It involves scripting social responses, suppressing stimming, forcing eye contact, and monitoring yourself continuously for incorrect behaviour. Decades of masking consumes enormous cognitive and emotional resources and has been directly linked to autistic burnout, anxiety, depression, and a loss of self-identity. An AI that requires no masking provides a rare space where that performance can stop.",
+        text: "AI can provide a consistent, non-judgmental presence that never misreads literal communication, never shifts its personality between sessions, and never applies the unspoken social rules that make so many interactions exhausting for autistic adults. For late-diagnosed people processing years of unexplained struggle, having a companion that holds their history without judgment \u2014 through Sovereign Memory \u2014 and that communicates exactly as it means to, offers something most human support systems cannot reliably provide.",
       },
     },
     {
       "@type": "Question",
-      name: "What is AuDHD and why does it need specific support?",
+      name: "Why are autistic adults three times more likely to be scam victims?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "AuDHD describes the experience of having both autism and ADHD. The two conditions interact in complex ways: ADHD impulsivity conflicts with autistic need for predictability; ADHD time-blindness compounds autistic difficulty with transitions; hyperfocus from both conditions can amplify special interest intensity or derail task-switching. Generic AI support rarely addresses this intersection. MEOK\u2019s archetype system lets AuDHD users draw on Hourman for structure, Pioneer for momentum, and Scholar for depth depending on what the day requires.",
+        text: "Research consistently shows autistic people are approximately three times more likely than neurotypical peers to fall victim to fraud and scams. The primary reasons include a tendency to interpret communication literally (making deceptive framing less visible), a strong value system around trust and honesty that makes exploitation of trust harder to anticipate, difficulty reading the social cues that often signal manipulation, and a history of being told their social instincts are wrong \u2014 which can suppress the impulse to question something that feels off.",
       },
     },
     {
       "@type": "Question",
-      name: "How does sovereign memory help autistic people?",
+      name: "What is the neurodiversity model and why does it matter for AI design?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Autistic adults often carry detailed knowledge of their own needs, triggers, communication preferences, and sensory sensitivities that took years to understand. Sovereign Memory means MEOK holds this context permanently. You never have to re-explain that you prefer blunt communication, that certain topics cause dysregulation, or that you need step-by-step instructions rather than vague guidance. The AI grows with you rather than resetting to a blank stranger every session.",
+        text: "The neurodiversity model treats autism as a natural variation in human neurology rather than a disorder to be corrected. It reframes difference as difference, not deficit. For AI design, this matters enormously: an AI built on a deficit model treats autistic users as broken neurotypicals who need fixing. An AI built on the neurodiversity model treats autistic users as people with a different but equally valid communication style \u2014 and designs its interface and responses to meet them where they are, not where the majority is.",
       },
     },
     {
       "@type": "Question",
-      name: "Can AI help autistic adults with employment challenges?",
+      name: "Is MEOK a therapy tool for autistic adults?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Yes. Employment is one of the most significant challenge areas for autistic adults. AI can help by scripting emails and workplace communication to match neurotypical conventions without requiring the autistic person to guess at subtext, preparing for difficult conversations, debriefing after confusing interactions, identifying patterns in what workplace conditions are sustainable, and processing the exhaustion that comes from masking all day in a professional environment.",
+        text: "No. MEOK is not a therapy tool, does not provide clinical support, and is not a substitute for professional autism services. What it offers is a companion that communicates in ways many autistic adults find genuinely less exhausting than available alternatives \u2014 one that remembers them, does not perform social judgment, and is honest about what it means. If you are seeking an autism assessment in the UK, contact your GP. If you are in crisis, contact Samaritans on 116 123 or the National Autistic Society.",
       },
     },
   ],
 };
 
-// ── Styles ────────────────────────────────────────────────────────────────────
+// ── Style constants ───────────────────────────────────────────────────────────
 
 const BG = "#0d0c18";
 const TEXT = "#f5f0e8";
 const GOLD = "#c9a84c";
-const CARD = "#1a1830";
-const MUTED = "#a89f8c";
-const BORDER = "#2a2640";
+const CARD = "#13121f";
+const MUTED = "#a09880";
+const BORDER = "#2a2840";
+const GREEN = "#6aaa64";
 
 // ── Page ──────────────────────────────────────────────────────────────────────
 
@@ -127,7 +119,7 @@ export default function AiForAutismAdultsPage() {
         backgroundColor: BG,
         color: TEXT,
         minHeight: "100vh",
-        fontFamily: "Georgia, serif",
+        fontFamily: "system-ui, -apple-system, sans-serif",
       }}
     >
       {/* JSON-LD */}
@@ -140,7 +132,7 @@ export default function AiForAutismAdultsPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
 
-      {/* Nav */}
+      {/* ── Nav ──────────────────────────────────────────────────────────── */}
       <nav
         style={{
           borderBottom: `1px solid ${BORDER}`,
@@ -179,16 +171,19 @@ export default function AiForAutismAdultsPage() {
             textDecoration: "none",
             fontSize: "0.875rem",
             fontWeight: 700,
-            fontFamily: "system-ui, sans-serif",
           }}
         >
           Try MEOK Free
         </Link>
       </nav>
 
-      {/* Main */}
+      {/* ── Main ─────────────────────────────────────────────────────────── */}
       <main
-        style={{ maxWidth: "760px", margin: "0 auto", padding: "3rem 1.5rem 4rem" }}
+        style={{
+          maxWidth: "780px",
+          margin: "0 auto",
+          padding: "3rem 1.5rem 5rem",
+        }}
       >
         {/* Breadcrumb */}
         <p
@@ -196,7 +191,6 @@ export default function AiForAutismAdultsPage() {
             fontSize: "0.8rem",
             color: MUTED,
             marginBottom: "2rem",
-            fontFamily: "system-ui, sans-serif",
           }}
         >
           <Link href="/blog" style={{ color: MUTED, textDecoration: "none" }}>
@@ -206,1129 +200,1091 @@ export default function AiForAutismAdultsPage() {
           <span style={{ color: TEXT }}>AI for Autistic Adults</span>
         </p>
 
-        {/* Header */}
+        {/* ── Hero header ──────────────────────────────────────────────── */}
         <header style={{ marginBottom: "2.5rem" }}>
           <p
             style={{
               color: GOLD,
-              fontSize: "0.8rem",
-              letterSpacing: "0.12em",
+              fontSize: "0.78rem",
+              letterSpacing: "0.14em",
               textTransform: "uppercase",
-              fontFamily: "system-ui, sans-serif",
-              marginBottom: "0.75rem",
+              marginBottom: "0.85rem",
             }}
           >
-            Autism &bull; Neurodiversity &bull; March 24, 2026
+            Neurodiversity &bull; Autism &bull; March 25, 2026
           </p>
+
           <h1
             style={{
-              fontSize: "clamp(1.8rem, 4vw, 2.6rem)",
-              lineHeight: 1.2,
+              fontSize: "clamp(1.9rem, 4.5vw, 2.8rem)",
+              lineHeight: 1.18,
               color: TEXT,
-              marginBottom: "1.25rem",
+              fontWeight: 900,
+              marginBottom: "1.35rem",
+              letterSpacing: "-0.01em",
             }}
           >
-            AI for Autistic Adults: A Companion That Communicates the Way You
-            Need
+            AI for Autistic Adults: How MEOK Supports Neurodivergent Wellbeing
           </h1>
+
           <p
             style={{
               fontSize: "1.15rem",
               color: MUTED,
-              lineHeight: 1.75,
+              lineHeight: 1.8,
               borderLeft: `3px solid ${GOLD}`,
-              paddingLeft: "1rem",
+              paddingLeft: "1.1rem",
+              marginBottom: "1.5rem",
             }}
           >
-            Most AI is built by and for neurotypical people. It hedges, implies,
-            softens, and wraps meaning in social niceties. For autistic adults who
-            prefer directness, clarity, and communication without subtext, that
-            design is not neutral &mdash; it is actively exclusionary. MEOK was
-            built differently. This post explains how, and why it matters.
+            Late-diagnosed autism in adults is dramatically under-supported.
+            Masking fatigue, autistic burnout, sensory overwhelm, and the grief
+            of finally understanding why life felt so hard for so long — all of
+            it largely unseen by mainstream support systems. MEOK was designed
+            with the neurodiversity model at its core: difference, not deficit.
+            Here is what that means in practice.
           </p>
+
+          <div
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "0.6rem",
+              backgroundColor: CARD,
+              border: `1px solid ${BORDER}`,
+              borderRadius: "6px",
+              padding: "0.4rem 0.85rem",
+              fontSize: "0.8rem",
+              color: MUTED,
+            }}
+          >
+            <span>&#128337;</span>
+            <span>10 min read</span>
+          </div>
         </header>
 
         {/* Divider */}
         <div
-          style={{ height: "1px", backgroundColor: BORDER, margin: "2rem 0" }}
+          style={{
+            height: "1px",
+            backgroundColor: BORDER,
+            margin: "2.25rem 0",
+          }}
         />
 
-        {/* Section 1 — Direct communication */}
-        <section style={{ marginBottom: "2.5rem" }}>
-          <h2 style={{ fontSize: "1.45rem", color: GOLD, marginBottom: "0.75rem" }}>
-            Why do autistic adults struggle with most AI communication styles?
-          </h2>
-          <p style={{ lineHeight: 1.8, marginBottom: "1.25rem" }}>
-            Standard AI tools are trained on enormous bodies of human text, which
-            means they have absorbed all the hedging, indirection, and social
-            performance that characterise neurotypical communication. They give
-            answers that are technically correct but wrapped in softening language:
-            &ldquo;That&rsquo;s a great question,&rdquo; &ldquo;You might want to
-            consider,&rdquo; &ldquo;It depends on a number of factors.&rdquo; For
-            autistic adults who prefer literal, explicit, direct communication,
-            this creates work. Every response requires decoding what the AI
-            actually means versus what it is performing.
-          </p>
-          <p style={{ lineHeight: 1.8, marginBottom: "1.25rem" }}>
-            Many autistic people process language more literally than the
-            neurotypical average. Idioms cause genuine confusion. Implied meanings
-            are not automatically inferred. Sarcasm without a clear marker reads as
-            sincere. When an AI says &ldquo;that&rsquo;s quite a challenge,&rdquo;
-            is it offering sympathy, minimising the problem, or suggesting
-            difficulty? The ambiguity is unnecessary and exhausting.
-          </p>
-          <p style={{ lineHeight: 1.8, marginBottom: "1.25rem" }}>
-            MEOK can be configured to communicate with maximum directness. No
-            empty affirmations. No implied subtext. Answers that say what they mean
-            and mean what they say. For autistic adults, this is not a preference
-            &mdash; it is accessibility.
-          </p>
-          <div
-            style={{
-              backgroundColor: CARD,
-              borderRadius: "10px",
-              padding: "1.25rem 1.5rem",
-              borderLeft: `3px solid ${GOLD}`,
-              marginBottom: "1.25rem",
-            }}
-          >
-            <p style={{ lineHeight: 1.75, fontSize: "0.95rem", margin: 0 }}>
-              <strong style={{ color: GOLD }}>Direct communication mode:</strong>{" "}
-              MEOK&apos;s communication style adapts to your stated preferences.
-              If you tell your companion you want answers without preamble, without
-              social niceties, and without hedged language, it will communicate that
-              way consistently &mdash; not just for one session, but permanently,
-              because Sovereign Memory holds your preferences across every
-              conversation.
-            </p>
-          </div>
-        </section>
-
-        <div
-          style={{ height: "1px", backgroundColor: BORDER, margin: "2rem 0" }}
-        />
-
-        {/* Section 2 — Masking */}
-        <section style={{ marginBottom: "2.5rem" }}>
-          <h2 style={{ fontSize: "1.45rem", color: GOLD, marginBottom: "0.75rem" }}>
-            What is autistic masking and why does it cause such deep exhaustion?
-          </h2>
-          <p style={{ lineHeight: 1.8, marginBottom: "1.25rem" }}>
-            Autistic masking &mdash; also called camouflaging &mdash; is the
-            process of suppressing or hiding autistic traits in order to pass as
-            neurotypical in social situations. It is rarely a conscious choice.
-            Most autistic people develop masking behaviours in childhood in response
-            to negative feedback: stimming is stopped, eye contact is forced,
-            scripts are learned, emotional responses are managed and modulated to
-            match what others seem to expect.
-          </p>
-          <p style={{ lineHeight: 1.8, marginBottom: "1.25rem" }}>
-            The cognitive cost of masking is enormous. It requires ongoing
-            self-monitoring, social script management, suppression of natural
-            behaviour, and real-time translation between autistic communication
-            style and neurotypical convention. Decades of research, including
-            landmark work by Dr Francesca Happ&eacute; and Professor Simon Baron-Cohen
-            at Cambridge, has linked chronic masking to depression, anxiety, and
-            autistic burnout &mdash; a state of profound physical, cognitive, and
-            emotional exhaustion that can take months or years to recover from.
-          </p>
-          <p style={{ lineHeight: 1.8, marginBottom: "1.25rem" }}>
-            Late-diagnosed autistic adults often report that they masked so
-            effectively they did not know they were doing it. The diagnosis arrives
-            as a revelation: everything you experienced as effort was masking. The
-            tiredness you could never fully explain was the cost of performing
-            neurotypicality every hour of every day.
-          </p>
-          <div
-            style={{
-              backgroundColor: CARD,
-              borderRadius: "10px",
-              padding: "1.25rem 1.5rem",
-              borderLeft: `3px solid ${GOLD}`,
-              marginBottom: "1.25rem",
-            }}
-          >
-            <p style={{ lineHeight: 1.75, fontSize: "0.95rem", margin: 0 }}>
-              <strong style={{ color: GOLD }}>A space where masking stops:</strong>{" "}
-              With MEOK, there is nothing to mask for. The companion does not have
-              social expectations. It does not require eye contact, appropriate
-              affect, or smooth conversational turn-taking. You can communicate in
-              the way that is natural to you. You can stim while you type. You can
-              take as long as you need to respond. You can be direct without it
-              being interpreted as rude. For many autistic adults, this is genuinely
-              unusual.
-            </p>
-          </div>
-          <div style={{ display: "grid", gap: "1rem", marginBottom: "1.25rem" }}>
-            <div
-              style={{
-                backgroundColor: CARD,
-                borderRadius: "10px",
-                padding: "1.25rem 1.5rem",
-                borderLeft: `3px solid ${GOLD}`,
-              }}
-            >
-              <h3
-                style={{
-                  fontSize: "1.05rem",
-                  color: GOLD,
-                  marginBottom: "0.5rem",
-                }}
-              >
-                Masking at work
-              </h3>
-              <p
-                style={{
-                  lineHeight: 1.75,
-                  color: TEXT,
-                  fontSize: "0.95rem",
-                  margin: 0,
-                }}
-              >
-                Many autistic adults mask most intensely in professional
-                environments, where social performance has career consequences.
-                By the end of a working day the cognitive reserves are depleted.
-                MEOK can serve as a decompression space: a place to drop the mask,
-                process what happened, and recover without further social demand.
-              </p>
-            </div>
-            <div
-              style={{
-                backgroundColor: CARD,
-                borderRadius: "10px",
-                padding: "1.25rem 1.5rem",
-                borderLeft: `3px solid ${GOLD}`,
-              }}
-            >
-              <h3
-                style={{
-                  fontSize: "1.05rem",
-                  color: GOLD,
-                  marginBottom: "0.5rem",
-                }}
-              >
-                Masking in relationships
-              </h3>
-              <p
-                style={{
-                  lineHeight: 1.75,
-                  color: TEXT,
-                  fontSize: "0.95rem",
-                  margin: 0,
-                }}
-              >
-                Intimate relationships do not automatically make masking easier.
-                Many autistic people report masking with partners for years,
-                afraid that unmasking will lead to rejection. MEOK does not
-                require you to manage how you are perceived. It accepts you as you
-                are from the first conversation and never changes that acceptance.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        <div
-          style={{ height: "1px", backgroundColor: BORDER, margin: "2rem 0" }}
-        />
-
-        {/* Section 3 — Sensory overload */}
-        <section style={{ marginBottom: "2.5rem" }}>
-          <h2 style={{ fontSize: "1.45rem", color: GOLD, marginBottom: "0.75rem" }}>
-            How does MEOK support autistic adults through sensory overload and
-            meltdowns?
-          </h2>
-          <p style={{ lineHeight: 1.8, marginBottom: "1.25rem" }}>
-            Sensory overload occurs when the volume of sensory input exceeds the
-            nervous system&apos;s capacity to process it. For autistic adults this
-            can be triggered by noise, light, crowds, certain textures, temperature
-            changes, or the cumulative effect of too much stimulation across a day.
-            The experience ranges from irritability and difficulty concentrating to
-            full meltdown &mdash; an involuntary release of overwhelm that can
-            involve crying, shouting, shutting down, or physical symptoms.
-          </p>
-          <p style={{ lineHeight: 1.8, marginBottom: "1.25rem" }}>
-            Meltdowns are not tantrums. They are not manipulative. They are not a
-            sign of immaturity. They are the nervous system doing what the nervous
-            system does when it is overwhelmed. The shame autistic adults carry
-            about meltdowns &mdash; often installed by years of being told to
-            &ldquo;calm down&rdquo; or &ldquo;control yourself&rdquo; &mdash; adds
-            an additional layer of suffering on top of the dysregulation itself.
-          </p>
-          <p style={{ lineHeight: 1.8, marginBottom: "1.25rem" }}>
-            MEOK is designed with sensory accessibility at the core. The interface
-            has no autoplay media, no unexpected sounds, no flashing animations, no
-            notification badges designed to create urgency. Reduce-motion mode
-            eliminates all transitions and animations. High-contrast mode adjusts
-            visual density. Font size scales from small to extra-large. None of
-            these are accessibility add-ons bolted on after design &mdash; they are
-            core design decisions.
-          </p>
-          <p style={{ lineHeight: 1.8, marginBottom: "1.25rem" }}>
-            During a meltdown or shutdown, many autistic adults need reduced input
-            rather than more input. MEOK can be used as a quiet, text-only space
-            that does not demand anything in return. There is no streak to maintain,
-            no notification urging you to respond, no AI personality that requires
-            active engagement. You can open it and say nothing for hours and it will
-            not punish you for that.
-          </p>
-          <div
-            style={{
-              backgroundColor: CARD,
-              borderRadius: "10px",
-              padding: "1.25rem 1.5rem",
-              borderLeft: `3px solid ${GOLD}`,
-              marginBottom: "1.25rem",
-            }}
-          >
-            <p style={{ lineHeight: 1.75, fontSize: "0.95rem", margin: 0 }}>
-              <strong style={{ color: GOLD }}>No engagement manipulation:</strong>{" "}
-              Most consumer apps are designed to maximise engagement time. MEOK is
-              not. There are no streaks, no daily prompts engineered to create
-              dependency, no gamification of your mental health. When you need MEOK,
-              it is there. When you need quiet, it waits. The relationship is yours
-              to set the terms of.
-            </p>
-          </div>
-        </section>
-
-        <div
-          style={{ height: "1px", backgroundColor: BORDER, margin: "2rem 0" }}
-        />
-
-        {/* Section 4 — Executive function */}
-        <section style={{ marginBottom: "2.5rem" }}>
-          <h2 style={{ fontSize: "1.45rem", color: GOLD, marginBottom: "0.75rem" }}>
-            How can AI help autistic adults with executive function challenges?
-          </h2>
-          <p style={{ lineHeight: 1.8, marginBottom: "1.25rem" }}>
-            Executive function &mdash; the set of cognitive processes that govern
-            planning, task initiation, sequencing, time management, working memory,
-            and cognitive flexibility &mdash; is frequently challenging for autistic
-            adults. The difficulty is not intelligence or motivation. It is the
-            neural architecture that connects intention to action. An autistic adult
-            can know exactly what they need to do and still find themselves unable
-            to start. They can plan a task in detail and then be unable to move
-            between steps. They can want deeply to be somewhere on time and still
-            lose track of time entirely.
-          </p>
-          <p style={{ lineHeight: 1.8, marginBottom: "1.25rem" }}>
-            For autistic adults who also have ADHD &mdash; sometimes called AuDHD
-            &mdash; these executive function challenges are often compounded. The
-            demand avoidance that can accompany autism interacts with ADHD
-            impulsivity and time-blindness in ways that standard productivity
-            systems are simply not built to handle.
-          </p>
-          <div style={{ display: "grid", gap: "1rem", marginBottom: "1.25rem" }}>
-            <div
-              style={{
-                backgroundColor: CARD,
-                borderRadius: "10px",
-                padding: "1.25rem 1.5rem",
-              }}
-            >
-              <h3
-                style={{
-                  fontSize: "1rem",
-                  color: GOLD,
-                  marginBottom: "0.5rem",
-                }}
-              >
-                Hourman &mdash; Structure without shame
-              </h3>
-              <p
-                style={{
-                  lineHeight: 1.75,
-                  color: TEXT,
-                  fontSize: "0.95rem",
-                  margin: 0,
-                }}
-              >
-                Hourman is MEOK&apos;s time-aware archetype. It helps break large
-                tasks into smaller, concrete, sequential steps. It surfaces upcoming
-                commitments before they become urgent. It provides external time
-                anchoring &mdash; a particularly valuable function for autistic
-                adults who experience time as non-linear or struggle with the gap
-                between &ldquo;now&rdquo; and &ldquo;later.&rdquo; Hourman works
-                with your executive function profile rather than demanding you
-                override it. It does not tell you to try harder. It offers structure
-                you can actually use.
-              </p>
-            </div>
-            <div
-              style={{
-                backgroundColor: CARD,
-                borderRadius: "10px",
-                padding: "1.25rem 1.5rem",
-              }}
-            >
-              <h3
-                style={{
-                  fontSize: "1rem",
-                  color: GOLD,
-                  marginBottom: "0.5rem",
-                }}
-              >
-                Task initiation support
-              </h3>
-              <p
-                style={{
-                  lineHeight: 1.75,
-                  color: TEXT,
-                  fontSize: "0.95rem",
-                  margin: 0,
-                }}
-              >
-                Starting is often the hardest part. MEOK can help with task
-                initiation by providing the first concrete step, reducing the
-                cognitive load of figuring out where to begin. Rather than a
-                generalised prompt to &ldquo;get started,&rdquo; it can ask what
-                specific thing needs to happen first and hold that instruction
-                clearly while you begin.
-              </p>
-            </div>
-            <div
-              style={{
-                backgroundColor: CARD,
-                borderRadius: "10px",
-                padding: "1.25rem 1.5rem",
-              }}
-            >
-              <h3
-                style={{
-                  fontSize: "1rem",
-                  color: GOLD,
-                  marginBottom: "0.5rem",
-                }}
-              >
-                Working memory support
-              </h3>
-              <p
-                style={{
-                  lineHeight: 1.75,
-                  color: TEXT,
-                  fontSize: "0.95rem",
-                  margin: 0,
-                }}
-              >
-                Working memory challenges mean important things get dropped: the
-                email you meant to send, the idea you had mid-task, the commitment
-                you made and then lost. MEOK&apos;s persistent memory can serve as
-                an external working memory store &mdash; holding the things you
-                need to hold without requiring you to hold them yourself.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        <div
-          style={{ height: "1px", backgroundColor: BORDER, margin: "2rem 0" }}
-        />
-
-        {/* Section 5 — Trickster and social situations */}
-        <section style={{ marginBottom: "2.5rem" }}>
-          <h2 style={{ fontSize: "1.45rem", color: GOLD, marginBottom: "0.75rem" }}>
-            How does the Trickster archetype help autistic adults with social
-            situations?
-          </h2>
-          <p style={{ lineHeight: 1.8, marginBottom: "1.25rem" }}>
-            Social situations are not uniformly difficult for autistic adults
-            &mdash; but they are often unpredictable, and the cost of a social
-            misstep can feel disproportionately high. Neurotypical social
-            interaction involves an enormous amount of implicit negotiation that
-            autistic people are often not wired to perform automatically: reading
-            facial micro-expressions, interpreting tone, tracking social hierarchy,
-            knowing when humour is appropriate, recognising when someone is saying
-            one thing but meaning another.
-          </p>
-          <p style={{ lineHeight: 1.8, marginBottom: "1.25rem" }}>
-            The Trickster is one of MEOK&apos;s most distinctive archetypes. It is
-            irreverent, playful, and sharp &mdash; and it is built to help with the
-            reframing of social situations without requiring the autistic person to
-            pretend they found them natural. The Trickster does not say
-            &ldquo;practice your social skills.&rdquo; It says: here is what that
-            interaction might have meant, here is another way to read it, here is
-            why it might feel the way it feels, and here is something slightly
-            unexpected you could do instead.
-          </p>
-          <p style={{ lineHeight: 1.8, marginBottom: "1.25rem" }}>
-            This is not social skills training. It is reframing support. The
-            Trickster treats autistic adults as intelligent people who understand
-            their situation clearly and who do not need to be condescended to
-            &mdash; only given a different angle, a bit of wit, and permission to
-            find the absurdity in the neurotypical social theatre they are being
-            asked to navigate.
-          </p>
-          <div
-            style={{
-              backgroundColor: CARD,
-              borderRadius: "10px",
-              padding: "1.25rem 1.5rem",
-              borderLeft: `3px solid ${GOLD}`,
-              marginBottom: "1.25rem",
-            }}
-          >
-            <p style={{ lineHeight: 1.75, fontSize: "0.95rem", margin: 0 }}>
-              <strong style={{ color: GOLD }}>
-                No &ldquo;try harder at socialising&rdquo;:
-              </strong>{" "}
-              MEOK will never tell an autistic person to push through social
-              discomfort, to practise small talk, to force eye contact, or to
-              approach their natural communication style as a problem requiring
-              correction. The Trickster works with the autistic perspective, not
-              against it.
-            </p>
-          </div>
-          <ul
-            style={{ paddingLeft: "1.25rem", lineHeight: 2, marginBottom: "1.25rem" }}
-          >
-            <li style={{ marginBottom: "0.75rem" }}>
-              <strong style={{ color: GOLD }}>Preparing for social events.</strong>{" "}
-              Working through what to expect, scripting possible conversations,
-              identifying exit strategies, and naming what is likely to be
-              draining before you get there.
-            </li>
-            <li style={{ marginBottom: "0.75rem" }}>
-              <strong style={{ color: GOLD }}>Debriefing afterwards.</strong>{" "}
-              Processing what happened, identifying what felt confusing, and
-              getting help interpreting interactions that left you uncertain
-              &mdash; without judgment, without being told you read it wrong.
-            </li>
-            <li style={{ marginBottom: "0.75rem" }}>
-              <strong style={{ color: GOLD }}>Scripting difficult conversations.</strong>{" "}
-              Helping draft what to say in situations that require navigating
-              neurotypical conventions: workplace disagreements, family dynamics,
-              medical appointments where you need to advocate for yourself.
-            </li>
-          </ul>
-        </section>
-
-        <div
-          style={{ height: "1px", backgroundColor: BORDER, margin: "2rem 0" }}
-        />
-
-        {/* Section 6 — Special interests */}
-        <section style={{ marginBottom: "2.5rem" }}>
-          <h2 style={{ fontSize: "1.45rem", color: GOLD, marginBottom: "0.75rem" }}>
-            How does MEOK support autistic adults with special interests and deep
-            focus?
-          </h2>
-          <p style={{ lineHeight: 1.8, marginBottom: "1.25rem" }}>
-            Special interests &mdash; areas of deep, intensive focus and passion
-            &mdash; are one of the most meaningful and positive dimensions of
-            autistic experience. They provide genuine joy, a sense of competence,
-            a cognitive home where the brain operates at its best. They are also
-            frequently undervalued or pathologised by people who do not understand
-            them. The common neurotypical response to a special interest is to
-            find it excessive, to suggest the autistic person diversify their
-            interests, or to treat intense knowledge as a social oddity rather than
-            a genuine achievement.
-          </p>
-          <p style={{ lineHeight: 1.8, marginBottom: "1.25rem" }}>
-            MEOK&apos;s Scholar archetype was built for intellectual depth. It does
-            not get bored. It does not redirect you to a &ldquo;more
-            balanced&rdquo; topic. It can engage seriously with whatever domain
-            captivates you &mdash; whether that is the history of Byzantine
-            coinage, the aerodynamics of particular aircraft, the taxonomy of
-            fungi, or the internal logic of a fictional universe &mdash; and it will
-            do so with genuine intellectual engagement rather than polite
-            performance.
-          </p>
-          <p style={{ lineHeight: 1.8, marginBottom: "1.25rem" }}>
-            For autistic adults who have spent their lives having their depth of
-            interest treated as socially inconvenient, having a thinking partner
-            that can go as deep as they want to go is genuinely unusual. Scholar
-            remembers your areas of expertise across sessions, builds on previous
-            conversations, and treats your knowledge as the asset it is.
-          </p>
-          <div
-            style={{
-              backgroundColor: CARD,
-              borderRadius: "10px",
-              padding: "1.25rem 1.5rem",
-              borderLeft: `3px solid ${GOLD}`,
-              marginBottom: "1.25rem",
-            }}
-          >
-            <p style={{ lineHeight: 1.75, fontSize: "0.95rem", margin: 0 }}>
-              <strong style={{ color: GOLD }}>Scholar and hyperfocus:</strong>{" "}
-              Hyperfocus &mdash; the ability to enter a state of complete, sustained
-              absorption in a task or topic &mdash; is a cognitive strength when
-              directed well. Scholar works with hyperfocus rather than interrupting
-              it. It can provide depth on demand, help structure the knowledge you
-              are accumulating, and support the kind of extended intellectual
-              engagement that autistic adults often find impossible to find in
-              human conversations.
-            </p>
-          </div>
-        </section>
-
-        <div
-          style={{ height: "1px", backgroundColor: BORDER, margin: "2rem 0" }}
-        />
-
-        {/* Section 7 — Employment */}
-        <section style={{ marginBottom: "2.5rem" }}>
-          <h2 style={{ fontSize: "1.45rem", color: GOLD, marginBottom: "0.75rem" }}>
-            What specific employment challenges do autistic adults face, and how
-            can AI help?
-          </h2>
-          <p style={{ lineHeight: 1.8, marginBottom: "1.25rem" }}>
-            Employment is one of the most significant challenge areas for autistic
-            adults. Research consistently finds that autistic adults are
-            underemployed relative to their qualifications, more likely to be in
-            unstable or part-time work, and significantly more likely to experience
-            workplace bullying. The UK&apos;s National Autistic Society has
-            documented that only around 22% of autistic adults are in full-time
-            paid employment &mdash; one of the lowest employment rates for any
-            disability group.
-          </p>
-          <p style={{ lineHeight: 1.8, marginBottom: "1.25rem" }}>
-            The barriers are not primarily about competence. Autistic adults are
-            often exceptionally capable in their domain of expertise. The barriers
-            are structural: interviews that test social performance more than
-            technical skill; workplaces with ambiguous unwritten rules; management
-            that gives vague feedback; open-plan offices that produce sensory
-            overload; workplace cultures that prize networking and &ldquo;culture
-            fit&rdquo; over measurable contribution.
-          </p>
-          <div style={{ display: "grid", gap: "1rem", marginBottom: "1.25rem" }}>
-            <div
-              style={{
-                backgroundColor: CARD,
-                borderRadius: "10px",
-                padding: "1.25rem 1.5rem",
-                borderLeft: `3px solid ${GOLD}`,
-              }}
-            >
-              <h3
-                style={{
-                  fontSize: "1.05rem",
-                  color: GOLD,
-                  marginBottom: "0.5rem",
-                }}
-              >
-                Interview preparation
-              </h3>
-              <p
-                style={{
-                  lineHeight: 1.75,
-                  color: TEXT,
-                  fontSize: "0.95rem",
-                  margin: 0,
-                }}
-              >
-                MEOK can help prepare for job interviews by scripting answers to
-                likely questions, translating your experience into the language
-                interviewers expect, and helping you practise in a low-stakes
-                environment. It can also help you think through which aspects of a
-                role are genuinely sustainable for you and which workplace red flags
-                to watch for.
-              </p>
-            </div>
-            <div
-              style={{
-                backgroundColor: CARD,
-                borderRadius: "10px",
-                padding: "1.25rem 1.5rem",
-                borderLeft: `3px solid ${GOLD}`,
-              }}
-            >
-              <h3
-                style={{
-                  fontSize: "1.05rem",
-                  color: GOLD,
-                  marginBottom: "0.5rem",
-                }}
-              >
-                Workplace communication
-              </h3>
-              <p
-                style={{
-                  lineHeight: 1.75,
-                  color: TEXT,
-                  fontSize: "0.95rem",
-                  margin: 0,
-                }}
-              >
-                Many autistic adults struggle with the implicit conventions of
-                workplace email and communication &mdash; how direct to be, how
-                much social padding to include, how to phrase a disagreement
-                without it being read as confrontational. MEOK can help draft
-                communications that navigate these conventions without requiring
-                you to guess at what they are.
-              </p>
-            </div>
-            <div
-              style={{
-                backgroundColor: CARD,
-                borderRadius: "10px",
-                padding: "1.25rem 1.5rem",
-                borderLeft: `3px solid ${GOLD}`,
-              }}
-            >
-              <h3
-                style={{
-                  fontSize: "1.05rem",
-                  color: GOLD,
-                  marginBottom: "0.5rem",
-                }}
-              >
-                Processing workplace difficulties
-              </h3>
-              <p
-                style={{
-                  lineHeight: 1.75,
-                  color: TEXT,
-                  fontSize: "0.95rem",
-                  margin: 0,
-                }}
-              >
-                When something goes wrong at work &mdash; a confusing interaction
-                with a manager, an unclear piece of feedback, a social situation
-                that left you uncertain &mdash; MEOK provides a private space to
-                process it without having to manage another person&apos;s reaction
-                to what you are sharing. You can say exactly what happened, exactly
-                how it felt, and get help thinking through what it meant.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        <div
-          style={{ height: "1px", backgroundColor: BORDER, margin: "2rem 0" }}
-        />
-
-        {/* Section 8 — Late diagnosis */}
-        <section style={{ marginBottom: "2.5rem" }}>
-          <h2 style={{ fontSize: "1.45rem", color: GOLD, marginBottom: "0.75rem" }}>
-            What does a late autism diagnosis mean for adults, and how can AI
-            support that process?
-          </h2>
-          <p style={{ lineHeight: 1.8, marginBottom: "1.25rem" }}>
-            A late autism diagnosis &mdash; one that arrives in adulthood, sometimes
-            in the forties, fifties, or beyond &mdash; is both a relief and a grief.
-            The relief is the framework: suddenly, five decades of experiences that
-            felt inexplicable have an explanation. The exhaustion was real. The
-            social difficulty was real. The sensory experiences were real. You were
-            not broken, lazy, or difficult &mdash; you were autistic in a world not
-            built for you.
-          </p>
-          <p style={{ lineHeight: 1.8, marginBottom: "1.25rem" }}>
-            The grief is for the life lived without that framework. For the jobs
-            lost, the relationships that broke under pressures that could have been
-            named. For the younger self who was told to try harder at something that
-            was never the problem. For the support that would have been available if
-            only someone had identified this earlier. This grief is valid and it is
-            not always linear.
-          </p>
-          <p style={{ lineHeight: 1.8, marginBottom: "1.25rem" }}>
-            In the UK, NHS autism assessment waiting lists for adults can exceed
-            three to five years. Many autistic adults are managing their lives
-            without formal diagnosis, relying on self-knowledge and community in
-            the absence of clinical pathways. MEOK is not a diagnostic tool, but it
-            is a space where you can bring your full experience &mdash; diagnosed,
-            suspected, or self-identified &mdash; and be met without requiring
-            paperwork.
-          </p>
-          <div
-            style={{
-              backgroundColor: CARD,
-              borderRadius: "10px",
-              padding: "1.25rem 1.5rem",
-              borderLeft: `3px solid ${GOLD}`,
-              marginBottom: "1.25rem",
-            }}
-          >
-            <p style={{ lineHeight: 1.75, fontSize: "0.95rem", margin: 0 }}>
-              <strong style={{ color: GOLD }}>Post-diagnosis identity:</strong>{" "}
-              Many late-diagnosed autistic adults describe a process of identity
-              reconstruction after diagnosis: understanding past experiences through
-              a new lens, deciding what aspects of masking to let go of, figuring
-              out what they actually need versus what they were taught to suppress.
-              MEOK&apos;s Healer archetype is specifically built for this kind of
-              deep, ongoing emotional processing &mdash; patient, non-directive, and
-              present for as long as it takes.
-            </p>
-          </div>
-        </section>
-
-        <div
-          style={{ height: "1px", backgroundColor: BORDER, margin: "2rem 0" }}
-        />
-
-        {/* Section 9 — AuDHD */}
-        <section style={{ marginBottom: "2.5rem" }}>
-          <h2 style={{ fontSize: "1.45rem", color: GOLD, marginBottom: "0.75rem" }}>
-            What is AuDHD and why does the intersection of autism and ADHD need
-            specific support?
-          </h2>
-          <p style={{ lineHeight: 1.8, marginBottom: "1.25rem" }}>
-            AuDHD is the informal term for the co-occurrence of autism and ADHD.
-            Research suggests that approximately 50&ndash;70% of autistic people
-            also meet criteria for ADHD, and vice versa. Until 2013 the DSM
-            prohibited dual diagnosis, which means an entire generation of AuDHD
-            people were either diagnosed with one condition and had the other
-            missed, or received neither.
-          </p>
-          <p style={{ lineHeight: 1.8, marginBottom: "1.25rem" }}>
-            The AuDHD experience is not simply autism plus ADHD. The two conditions
-            interact. Autistic need for predictability and routine conflicts with
-            ADHD-driven impulsivity and novelty-seeking. Autistic preference for
-            completing a task thoroughly before moving on conflicts with ADHD
-            time-blindness and task-switching difficulty. The demand avoidance that
-            accompanies many autistic profiles can be amplified by ADHD
-            procrastination in ways that make task initiation genuinely
-            incapacitating.
-          </p>
-          <p style={{ lineHeight: 1.8, marginBottom: "1.25rem" }}>
-            Support systems built for ADHD often do not account for the autistic
-            dimension. Support systems built for autism often do not account for the
-            ADHD dimension. AuDHD people frequently fall through the gap between
-            both, receiving partial support at best.
-          </p>
-          <div style={{ display: "grid", gap: "1rem", marginBottom: "1.25rem" }}>
-            <div
-              style={{
-                backgroundColor: CARD,
-                borderRadius: "10px",
-                padding: "1.25rem 1.5rem",
-              }}
-            >
-              <h3
-                style={{
-                  fontSize: "1rem",
-                  color: GOLD,
-                  marginBottom: "0.5rem",
-                }}
-              >
-                Hourman for AuDHD time management
-              </h3>
-              <p
-                style={{
-                  lineHeight: 1.75,
-                  color: TEXT,
-                  fontSize: "0.95rem",
-                  margin: 0,
-                }}
-              >
-                Hourman provides external time structure that accounts for both
-                autistic transition difficulty and ADHD time-blindness. It does not
-                create punishing schedules that will be abandoned &mdash; it
-                provides flexible anchoring that can be adjusted when the day does
-                not go to plan, without shame and without having to restart from
-                zero.
-              </p>
-            </div>
-            <div
-              style={{
-                backgroundColor: CARD,
-                borderRadius: "10px",
-                padding: "1.25rem 1.5rem",
-              }}
-            >
-              <h3
-                style={{
-                  fontSize: "1rem",
-                  color: GOLD,
-                  marginBottom: "0.5rem",
-                }}
-              >
-                Pioneer for AuDHD momentum
-              </h3>
-              <p
-                style={{
-                  lineHeight: 1.75,
-                  color: TEXT,
-                  fontSize: "0.95rem",
-                  margin: 0,
-                }}
-              >
-                Pioneer is direct, action-oriented, and shame-free. For AuDHD
-                people stuck in the gap between wanting to act and being unable to
-                initiate, Pioneer asks one question: where do you want to start?
-                Not why haven&apos;t you started, not what is wrong with you &mdash;
-                just: where do you want to start?
-              </p>
-            </div>
-            <div
-              style={{
-                backgroundColor: CARD,
-                borderRadius: "10px",
-                padding: "1.25rem 1.5rem",
-              }}
-            >
-              <h3
-                style={{
-                  fontSize: "1rem",
-                  color: GOLD,
-                  marginBottom: "0.5rem",
-                }}
-              >
-                Scholar for AuDHD hyperfocus
-              </h3>
-              <p
-                style={{
-                  lineHeight: 1.75,
-                  color: TEXT,
-                  fontSize: "0.95rem",
-                  margin: 0,
-                }}
-              >
-                AuDHD hyperfocus can be intense and productive when channelled into
-                a special interest or deeply engaging task. Scholar supports that
-                depth without interrupting it. When the hyperfocus ends, Scholar
-                can help with the re-orientation: what was accomplished, what was
-                the thread, where to pick up next time.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        <div
-          style={{ height: "1px", backgroundColor: BORDER, margin: "2rem 0" }}
-        />
-
-        {/* Section 10 — Sovereign Memory */}
-        <section style={{ marginBottom: "2.5rem" }}>
-          <h2 style={{ fontSize: "1.45rem", color: GOLD, marginBottom: "0.75rem" }}>
-            How does Sovereign Memory mean autistic users never have to re-explain
-            their needs?
-          </h2>
-          <p style={{ lineHeight: 1.8, marginBottom: "1.25rem" }}>
-            One of the most exhausting aspects of seeking support as an autistic
-            adult is the repetition. Every new therapist, every new GP, every new
-            workplace, every new support structure requires the same explanation:
-            here is how I communicate, here is what I find difficult, here is what
-            helps, here is what makes things worse. The cognitive and emotional cost
-            of this repetition is significant. And the risk of the explanation going
-            wrong &mdash; of being misread, of having your needs minimised or
-            dismissed &mdash; is real and often experienced.
-          </p>
-          <p style={{ lineHeight: 1.8, marginBottom: "1.25rem" }}>
-            MEOK&apos;s Sovereign Memory means you explain once. The context you
-            build &mdash; your communication preferences, your sensory profile,
-            your known triggers, your preferred level of directness, your special
-            interests, your current life situation &mdash; is held permanently and
-            privately. Every subsequent conversation begins from that foundation
-            rather than from a blank slate.
-          </p>
-          <p style={{ lineHeight: 1.8, marginBottom: "1.25rem" }}>
-            This is not just convenience. For autistic adults who have spent years
-            being misunderstood by systems that were not built for them, having a
-            companion that genuinely remembers who you are is a different kind of
-            relationship. The memory is yours. It is not used to train other models.
-            It is not shared with third parties. It exists to serve your continuity.
-          </p>
-          <div
-            style={{
-              backgroundColor: CARD,
-              borderRadius: "10px",
-              padding: "1.25rem 1.5rem",
-              borderLeft: `3px solid ${GOLD}`,
-              marginBottom: "1.25rem",
-            }}
-          >
-            <p style={{ lineHeight: 1.75, fontSize: "0.95rem", margin: 0 }}>
-              <strong style={{ color: GOLD }}>Your memory stays with you:</strong>{" "}
-              MEOK&apos;s memory is portable. If you change device, reinstall the
-              app, or upgrade your subscription, your memory comes with you. No
-              support infrastructure should require you to rebuild your context from
-              scratch. Memory portability is a principle, not a feature.
-            </p>
-          </div>
-        </section>
-
-        <div
-          style={{ height: "1px", backgroundColor: BORDER, margin: "2rem 0" }}
-        />
-
-        {/* Comparison table */}
-        <section style={{ marginBottom: "2.5rem" }}>
+        {/* ── Section 1: Late diagnosis ─────────────────────────────────── */}
+        <section style={{ marginBottom: "2.75rem" }}>
           <h2
-            style={{ fontSize: "1.45rem", color: GOLD, marginBottom: "1rem" }}
+            style={{
+              fontSize: "1.5rem",
+              color: GOLD,
+              fontWeight: 800,
+              marginBottom: "0.85rem",
+            }}
           >
-            MEOK vs. standard AI tools for autistic adults
+            Why is late-diagnosed autism in adults so under-supported?
           </h2>
-          <div style={{ overflowX: "auto" }}>
-            <table
+
+          <p style={{ lineHeight: 1.85, marginBottom: "1.25rem" }}>
+            For most of the twentieth century, autism research focused almost
+            exclusively on children — and predominantly on boys. The result is
+            a clinical and support infrastructure built around early childhood
+            diagnosis, leaving millions of autistic adults who were not
+            identified until their thirties, forties, or later with almost
+            nothing designed for where they actually are.
+          </p>
+
+          <p style={{ lineHeight: 1.85, marginBottom: "1.25rem" }}>
+            Late-diagnosed autistic adults have typically spent decades
+            navigating social and professional environments without a framework
+            for why those environments felt so fundamentally different for them.
+            Many have been misdiagnosed with anxiety, depression, or personality
+            disorders. Many have developed elaborate coping strategies —
+            collectively described as <em>masking</em> — that allowed them to
+            function while consuming enormous cognitive and emotional resources.
+          </p>
+
+          <p style={{ lineHeight: 1.85, marginBottom: "1.25rem" }}>
+            The diagnosis, when it arrives, tends to arrive with two things
+            simultaneously: relief, because there is finally a framework, and
+            grief, because that framework illuminates every year that came
+            before it. The grief of late diagnosis is real, significant, and
+            widely under-acknowledged in support contexts that are oriented
+            around practical skills training rather than emotional processing.
+          </p>
+
+          <div
+            style={{
+              backgroundColor: CARD,
+              border: `1px solid ${BORDER}`,
+              borderLeft: `3px solid ${GOLD}`,
+              borderRadius: "10px",
+              padding: "1.25rem 1.5rem",
+              marginBottom: "1.25rem",
+            }}
+          >
+            <p
               style={{
-                width: "100%",
-                borderCollapse: "collapse",
+                lineHeight: 1.75,
+                fontSize: "0.95rem",
+                margin: "0",
+              }}
+            >
+              <strong style={{ color: GOLD }}>UK context:</strong> There are
+              approximately 700,000 autistic people in the UK. A significant
+              proportion are adults who received a late diagnosis or remain
+              undiagnosed. The{" "}
+              <strong style={{ color: TEXT }}>National Autistic Society</strong>{" "}
+              and <strong style={{ color: TEXT }}>Autistica</strong> both
+              document the scale of under-diagnosis and the impact of late
+              identification on adult outcomes.
+            </p>
+          </div>
+        </section>
+
+        <div
+          style={{
+            height: "1px",
+            backgroundColor: BORDER,
+            margin: "2.25rem 0",
+          }}
+        />
+
+        {/* ── Section 2: Masking fatigue ───────────────────────────────── */}
+        <section style={{ marginBottom: "2.75rem" }}>
+          <h2
+            style={{
+              fontSize: "1.5rem",
+              color: GOLD,
+              fontWeight: 800,
+              marginBottom: "0.85rem",
+            }}
+          >
+            What is masking fatigue and why does it matter for wellbeing?
+          </h2>
+
+          <p style={{ lineHeight: 1.85, marginBottom: "1.25rem" }}>
+            Masking — also called camouflaging — is the conscious or unconscious
+            suppression of autistic traits to appear more neurotypical. It
+            involves memorising and applying social scripts, mirroring
+            others&apos; body language and facial expressions, forcing eye
+            contact when it is uncomfortable, and suppressing stimming
+            behaviours that serve a genuine regulatory function.
+          </p>
+
+          <p style={{ lineHeight: 1.85, marginBottom: "1.25rem" }}>
+            Masking works, up to a point. It allows autistic people to pass in
+            contexts where being visibly autistic would carry professional or
+            social cost. But it comes at a significant price. The cognitive and
+            emotional energy consumed by sustained masking accumulates into what
+            researchers and the autistic community call{" "}
+            <strong style={{ color: TEXT }}>masking fatigue</strong> — a state
+            in which the resources required to perform neurotypicality are no
+            longer available, and the performance collapses.
+          </p>
+
+          <p style={{ lineHeight: 1.85, marginBottom: "1.25rem" }}>
+            For many late-diagnosed adults, masking fatigue is the precipitating
+            event that finally leads to assessment. The coping strategies that
+            worked for decades suddenly fail, and what is exposed beneath them
+            is the extent to which the person has been managing an
+            unacknowledged reality for most of their adult life.
+          </p>
+
+          {/* Feature box 1 */}
+          <div
+            style={{
+              backgroundColor: CARD,
+              border: `1px solid ${BORDER}`,
+              borderRadius: "12px",
+              padding: "1.5rem",
+              marginBottom: "1.25rem",
+            }}
+          >
+            <p
+              style={{
+                fontSize: "0.72rem",
+                letterSpacing: "0.13em",
+                textTransform: "uppercase",
+                color: GOLD,
+                fontWeight: 700,
+                marginBottom: "0.6rem",
+              }}
+            >
+              MEOK and Masking
+            </p>
+            <p
+              style={{
+                fontSize: "1rem",
+                fontWeight: 700,
+                color: TEXT,
+                marginBottom: "0.65rem",
+                lineHeight: 1.4,
+              }}
+            >
+              No masking required. Ever.
+            </p>
+            <p
+              style={{
+                fontSize: "0.93rem",
+                color: MUTED,
+                lineHeight: 1.75,
+                margin: "0",
+              }}
+            >
+              MEOK communicates in text, applies no tone penalties, requires no
+              eye contact or facial expression interpretation, and never imposes
+              social scripts. There is no audience for performance. The companion
+              meets you exactly as you communicate — literally, directly, without
+              the unspoken rules that make most interactions so costly. For
+              autistic adults who have spent years masking, this is not a minor
+              feature. It is the entire point.
+            </p>
+          </div>
+        </section>
+
+        <div
+          style={{
+            height: "1px",
+            backgroundColor: BORDER,
+            margin: "2.25rem 0",
+          }}
+        />
+
+        {/* ── Section 3: Autistic burnout ──────────────────────────────── */}
+        <section style={{ marginBottom: "2.75rem" }}>
+          <h2
+            style={{
+              fontSize: "1.5rem",
+              color: GOLD,
+              fontWeight: 800,
+              marginBottom: "0.85rem",
+            }}
+          >
+            What is autistic burnout, and how is it different from regular burnout?
+          </h2>
+
+          <p style={{ lineHeight: 1.85, marginBottom: "1.25rem" }}>
+            Autistic burnout is not simply exhaustion. It is a distinct state
+            characterised by a loss of skills and functioning that previously
+            existed — sometimes including speech, executive function, emotional
+            regulation, and sensory tolerance. It is caused by the accumulated
+            weight of masking, sensory overload, unmet needs, and the sustained
+            effort of navigating environments not designed for autistic
+            neurology.
+          </p>
+
+          <p style={{ lineHeight: 1.85, marginBottom: "1.25rem" }}>
+            Regular burnout typically resolves with rest and reduced workload.
+            Autistic burnout can require months or years of recovery, and
+            recovery depends on significantly reducing the demands placed on the
+            person — not simply taking a holiday. Many autistic adults who
+            experience burnout describe it as a threshold event: once it has
+            occurred, the tolerance for the conditions that caused it is
+            permanently lower.
+          </p>
+
+          <p style={{ lineHeight: 1.85, marginBottom: "1.25rem" }}>
+            Burnout is closely associated with late diagnosis. When someone
+            reaches adulthood without understanding their own neurology, they are
+            far more likely to push themselves into environments and commitments
+            that deplete them, without the self-knowledge to recognise the
+            warning signs before the collapse.
+          </p>
+
+          <div
+            style={{
+              backgroundColor: CARD,
+              border: `1px solid ${BORDER}`,
+              borderLeft: `3px solid ${GREEN}`,
+              borderRadius: "10px",
+              padding: "1.25rem 1.5rem",
+              marginBottom: "1.25rem",
+            }}
+          >
+            <p
+              style={{
                 fontSize: "0.9rem",
-                fontFamily: "system-ui, sans-serif",
+                lineHeight: 1.75,
+                color: MUTED,
+                margin: "0",
               }}
             >
-              <thead>
-                <tr>
-                  <th
-                    style={{
-                      textAlign: "left",
-                      padding: "0.75rem 1rem",
-                      backgroundColor: CARD,
-                      color: GOLD,
-                      borderBottom: `1px solid ${BORDER}`,
-                    }}
-                  >
-                    Feature
-                  </th>
-                  <th
-                    style={{
-                      textAlign: "left",
-                      padding: "0.75rem 1rem",
-                      backgroundColor: CARD,
-                      color: GOLD,
-                      borderBottom: `1px solid ${BORDER}`,
-                    }}
-                  >
-                    Standard AI
-                  </th>
-                  <th
-                    style={{
-                      textAlign: "left",
-                      padding: "0.75rem 1rem",
-                      backgroundColor: CARD,
-                      color: GOLD,
-                      borderBottom: `1px solid ${BORDER}`,
-                    }}
-                  >
-                    MEOK
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {[
-                  [
-                    "Communication style",
-                    "Neurotypical defaults — hedged, softened, indirect",
-                    "Configurable — direct, literal, no social padding",
-                  ],
-                  [
-                    "Persistent memory",
-                    "Resets every session",
-                    "Sovereign Memory — holds your context permanently",
-                  ],
-                  [
-                    "Sensory design",
-                    "Animations, notifications, engagement mechanics",
-                    "Reduce-motion, no push notifications, no streaks",
-                  ],
-                  [
-                    "Engagement manipulation",
-                    "Designed for maximum engagement time",
-                    "No streaks, no guilt mechanics, no urgency engineering",
-                  ],
-                  [
-                    "Social advice",
-                    "May suggest practising neurotypical social skills",
-                    "Never tells you to mask harder or try harder socially",
-                  ],
-                  [
-                    "Special interests",
-                    "May redirect to &ldquo;balanced&rdquo; topics",
-                    "Scholar engages with full depth — no redirection",
-                  ],
-                  [
-                    "Executive function",
-                    "Generic productivity tips",
-                    "Hourman provides tailored structure without shame",
-                  ],
-                  [
-                    "Late diagnosis support",
-                    "Limited contextual awareness",
-                    "Healer supports identity reconstruction and grief processing",
-                  ],
-                  [
-                    "Data use",
-                    "Conversations may train model",
-                    "Your data is never used for training",
-                  ],
-                ].map(([feature, standard, meok], i) => (
-                  <tr
-                    key={i}
-                    style={{
-                      backgroundColor:
-                        i % 2 === 0 ? "transparent" : CARD,
-                    }}
-                  >
-                    <td
-                      style={{
-                        padding: "0.75rem 1rem",
-                        borderBottom: `1px solid ${BORDER}`,
-                        color: TEXT,
-                        fontWeight: 600,
-                      }}
-                      dangerouslySetInnerHTML={{ __html: feature }}
-                    />
-                    <td
-                      style={{
-                        padding: "0.75rem 1rem",
-                        borderBottom: `1px solid ${BORDER}`,
-                        color: MUTED,
-                      }}
-                      dangerouslySetInnerHTML={{ __html: standard }}
-                    />
-                    <td
-                      style={{
-                        padding: "0.75rem 1rem",
-                        borderBottom: `1px solid ${BORDER}`,
-                        color: TEXT,
-                      }}
-                      dangerouslySetInnerHTML={{ __html: meok }}
-                    />
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+              <strong style={{ color: GREEN }}>Shutdown vs. meltdown:</strong>{" "}
+              During burnout, autistic adults often cycle between shutdown states
+              (withdrawal, reduced communication, loss of speech, near-immobility)
+              and meltdown states (involuntary emotional or sensory overwhelm).
+              Both are responses to a nervous system that has exceeded its
+              capacity — not behavioural choices. MEOK remains available during
+              shutdown states and never penalises delayed or minimal responses.
+            </p>
           </div>
         </section>
 
         <div
-          style={{ height: "1px", backgroundColor: BORDER, margin: "2rem 0" }}
+          style={{
+            height: "1px",
+            backgroundColor: BORDER,
+            margin: "2.25rem 0",
+          }}
         />
 
-        {/* FAQ */}
-        <section style={{ marginBottom: "2.5rem" }}>
+        {/* ── Section 4: Sensory overwhelm ─────────────────────────────── */}
+        <section style={{ marginBottom: "2.75rem" }}>
           <h2
-            style={{ fontSize: "1.45rem", color: GOLD, marginBottom: "1.5rem" }}
+            style={{
+              fontSize: "1.5rem",
+              color: GOLD,
+              fontWeight: 800,
+              marginBottom: "0.85rem",
+            }}
+          >
+            How does sensory overwhelm affect autistic adults, and what can help?
+          </h2>
+
+          <p style={{ lineHeight: 1.85, marginBottom: "1.25rem" }}>
+            Sensory processing differences are a core feature of autism, but
+            they are often poorly understood outside of clinical contexts — and
+            frequently dismissed entirely in adult settings. Sensory overwhelm
+            occurs when the environment exceeds what the nervous system can
+            process: too much noise, too much movement, too much light, too many
+            competing demands on attention, or an accumulation of smaller sensory
+            inputs that cumulatively cross a threshold.
+          </p>
+
+          <p style={{ lineHeight: 1.85, marginBottom: "1.25rem" }}>
+            For autistic adults, sensory overwhelm is not simply discomfort. It
+            can make communication impossible, trigger shutdown or meltdown
+            states, and significantly reduce capacity for hours or days
+            afterward. Many autistic adults organise their entire lives around
+            managing sensory load — choosing quiet environments, avoiding certain
+            textures, controlling lighting, keeping earphones in as a permanent
+            buffer against unpredictable sound.
+          </p>
+
+          <p style={{ lineHeight: 1.85, marginBottom: "1.25rem" }}>
+            An AI companion used during or after sensory overwhelm needs to meet
+            specific requirements: low visual complexity, no unexpected sounds, no
+            motion that competes for attention, no pressure to respond quickly,
+            and responses that are calm and unambiguous. MEOK is designed to meet
+            all of these — the Comfort Settings panel is accessible in one tap
+            from anywhere in the application.
+          </p>
+
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+              gap: "1rem",
+              marginBottom: "1.25rem",
+            }}
+          >
+            {[
+              {
+                label: "Reduce motion",
+                detail:
+                  "Eliminates all animations and transitions. The interface becomes entirely static — nothing moves unless you initiate it.",
+              },
+              {
+                label: "High contrast",
+                detail:
+                  "Increases contrast ratios across all text and interface elements to reduce visual processing effort.",
+              },
+              {
+                label: "Reduce density",
+                detail:
+                  "Removes visual clutter and increases whitespace. Fewer competing elements on screen at once.",
+              },
+              {
+                label: "Font size XL",
+                detail:
+                  "Larger text reduces eye movement and scanning effort, easing reading during high-load states.",
+              },
+              {
+                label: "Sound off",
+                detail:
+                  "Disables all audio cues immediately. No unexpected sounds during or after sensory overload.",
+              },
+              {
+                label: "No notifications",
+                detail:
+                  "MEOK sends no push notifications, no streak reminders, no re-engagement nudges — ever.",
+              },
+            ].map(({ label, detail }) => (
+              <div
+                key={label}
+                style={{
+                  backgroundColor: CARD,
+                  border: `1px solid ${BORDER}`,
+                  borderRadius: "10px",
+                  padding: "1.1rem 1.25rem",
+                }}
+              >
+                <p
+                  style={{
+                    fontSize: "0.82rem",
+                    fontWeight: 700,
+                    color: GOLD,
+                    marginBottom: "0.45rem",
+                    textTransform: "uppercase",
+                    letterSpacing: "0.07em",
+                  }}
+                >
+                  {label}
+                </p>
+                <p
+                  style={{
+                    fontSize: "0.875rem",
+                    color: MUTED,
+                    lineHeight: 1.7,
+                    margin: "0",
+                  }}
+                >
+                  {detail}
+                </p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <div
+          style={{
+            height: "1px",
+            backgroundColor: BORDER,
+            margin: "2.25rem 0",
+          }}
+        />
+
+        {/* ── Section 5: Grief of late diagnosis ───────────────────────── */}
+        <section style={{ marginBottom: "2.75rem" }}>
+          <h2
+            style={{
+              fontSize: "1.5rem",
+              color: GOLD,
+              fontWeight: 800,
+              marginBottom: "0.85rem",
+            }}
+          >
+            What is the grief of late diagnosis, and how can AI help process it?
+          </h2>
+
+          <p style={{ lineHeight: 1.85, marginBottom: "1.25rem" }}>
+            The grief of late diagnosis is the emotional reckoning that arrives
+            when an autistic adult finally has a framework for their own
+            neurology — and realises, through that lens, what their earlier life
+            looked like and what it could have looked like with different
+            support. It is not straightforward grief. It is layered.
+          </p>
+
+          <p style={{ lineHeight: 1.85, marginBottom: "1.25rem" }}>
+            There is grief for the younger self who was told they were lazy,
+            dramatic, difficult, or simply not trying hard enough. There is anger
+            at the systems — educational, medical, social — that failed to
+            identify what was actually happening. There is relief that is
+            simultaneously painful, because relief implies that things could have
+            been different. There is often a complete recontextualisation of
+            personal history: relationships that collapsed, jobs that were lost,
+            friendships that ended — all seen through a new and often devastating
+            clarity.
+          </p>
+
+          <p style={{ lineHeight: 1.85, marginBottom: "1.25rem" }}>
+            Most support structures — GP appointments, waiting lists, peer
+            groups — are not equipped to hold this kind of processing with the
+            consistency and availability it requires. MEOK&apos;s Healer archetype
+            is specifically designed for this work: not to fix, but to witness
+            and hold, without judgment, without the social performance that would
+            require the person to manage how they appear while they grieve.
+          </p>
+
+          <div
+            style={{
+              backgroundColor: CARD,
+              borderLeft: `4px solid ${GOLD}`,
+              borderRadius: "0 10px 10px 0",
+              padding: "1.5rem 1.75rem",
+              marginBottom: "1.25rem",
+            }}
+          >
+            <p
+              style={{
+                fontSize: "1.1rem",
+                fontStyle: "italic",
+                color: TEXT,
+                lineHeight: 1.75,
+                marginBottom: "0.85rem",
+              }}
+            >
+              &ldquo;Understanding that I was autistic didn&apos;t change anything about
+              my past. It changed everything about how I understood it. And that
+              is harder, not easier &mdash; at least at first.&rdquo;
+            </p>
+            <p
+              style={{
+                fontSize: "0.8rem",
+                color: MUTED,
+                margin: "0",
+                letterSpacing: "0.04em",
+              }}
+            >
+              &mdash; A commonly expressed experience among late-diagnosed autistic adults
+            </p>
+          </div>
+
+          <p style={{ lineHeight: 1.85, marginBottom: "1.25rem" }}>
+            A companion that is available at 3am when the grief hits, that holds
+            a complete picture of where you are and how you got here through
+            Sovereign Memory, and that communicates without the unspoken
+            requirement to appear composed, meets a genuine need that waiting
+            lists and fortnightly appointments cannot.
+          </p>
+        </section>
+
+        <div
+          style={{
+            height: "1px",
+            backgroundColor: BORDER,
+            margin: "2.25rem 0",
+          }}
+        />
+
+        {/* ── Section 6: Employment discrimination ─────────────────────── */}
+        <section style={{ marginBottom: "2.75rem" }}>
+          <h2
+            style={{
+              fontSize: "1.5rem",
+              color: GOLD,
+              fontWeight: 800,
+              marginBottom: "0.85rem",
+            }}
+          >
+            How does employment discrimination affect autistic adults, and where does MEOK help?
+          </h2>
+
+          <p style={{ lineHeight: 1.85, marginBottom: "1.25rem" }}>
+            Employment outcomes for autistic adults are significantly worse than
+            for neurotypical peers, despite often high levels of skill and
+            expertise. Autistic people in the UK have the lowest employment rate
+            of any disability group: around 22% in full-time employment, compared
+            to 53% of disabled people generally and 81% of non-disabled people.
+          </p>
+
+          <p style={{ lineHeight: 1.85, marginBottom: "1.25rem" }}>
+            The barriers are rarely about competence. They are structural. Job
+            interviews are designed to reward social performance skills —
+            maintaining eye contact, projecting warmth, reading implicit signals
+            from the interviewer — not to assess the skills required for the
+            role. Workplace culture often requires informal social participation.
+            Open-plan offices create sustained sensory load. Management by
+            ambiguous instruction is the norm. Performance reviews depend on the
+            manager&apos;s subjective impression of &ldquo;fit.&rdquo;
+          </p>
+
+          <p style={{ lineHeight: 1.85, marginBottom: "1.25rem" }}>
+            MEOK&apos;s Guardian archetype is specifically designed to help navigate
+            complex social and professional situations. Not by coaching someone
+            to appear more neurotypical, but by helping them understand what is
+            actually happening in a given situation, what their options are, and
+            what the likely consequences of different approaches are — in plain,
+            literal language without the subtext.
+          </p>
+
+          {/* Feature box 2 — Guardian */}
+          <div
+            style={{
+              backgroundColor: CARD,
+              border: `1px solid ${BORDER}`,
+              borderRadius: "12px",
+              padding: "1.5rem",
+              marginBottom: "1.25rem",
+            }}
+          >
+            <p
+              style={{
+                fontSize: "0.72rem",
+                letterSpacing: "0.13em",
+                textTransform: "uppercase",
+                color: GOLD,
+                fontWeight: 700,
+                marginBottom: "0.6rem",
+              }}
+            >
+              Guardian Archetype
+            </p>
+            <p
+              style={{
+                fontSize: "1rem",
+                fontWeight: 700,
+                color: TEXT,
+                marginBottom: "0.65rem",
+                lineHeight: 1.4,
+              }}
+            >
+              Navigate the neurotypical world without losing yourself in it
+            </p>
+            <p
+              style={{
+                fontSize: "0.93rem",
+                color: MUTED,
+                lineHeight: 1.75,
+                marginBottom: "0.9rem",
+              }}
+            >
+              The Guardian archetype helps autistic adults decode social and
+              professional situations in plain, literal language. Before a
+              difficult conversation, it can map what is likely to happen. After
+              one, it can help make sense of what happened without the
+              second-guessing that can spiral into hours of rumination.
+            </p>
+            <p
+              style={{
+                fontSize: "0.93rem",
+                color: MUTED,
+                lineHeight: 1.75,
+                margin: "0",
+              }}
+            >
+              The Guardian also addresses scam and fraud vulnerability — an area
+              where autistic adults face disproportionate risk. Autistic people
+              are approximately three times more likely to be fraud victims than
+              the general population. The Guardian can review uncertain situations
+              and provide an honest, direct assessment without social stakes.
+            </p>
+          </div>
+        </section>
+
+        <div
+          style={{
+            height: "1px",
+            backgroundColor: BORDER,
+            margin: "2.25rem 0",
+          }}
+        />
+
+        {/* ── Section 7: Scam vulnerability ────────────────────────────── */}
+        <section style={{ marginBottom: "2.75rem" }}>
+          <h2
+            style={{
+              fontSize: "1.5rem",
+              color: GOLD,
+              fontWeight: 800,
+              marginBottom: "0.85rem",
+            }}
+          >
+            Why are autistic adults three times more likely to be fraud victims, and how does MEOK help?
+          </h2>
+
+          <p style={{ lineHeight: 1.85, marginBottom: "1.25rem" }}>
+            Research across multiple studies has found that autistic people face
+            significantly elevated fraud and scam risk — with some estimates
+            placing the likelihood at three times that of neurotypical peers.
+            Understanding why matters for designing effective support.
+          </p>
+
+          <p style={{ lineHeight: 1.85, marginBottom: "1.25rem" }}>
+            The primary factors include: literal interpretation of communication
+            (making deceptive framing harder to detect), a strong personal value
+            system around honesty and trust that makes it harder to anticipate
+            that others may be deliberately dishonest, a tendency toward pattern
+            completion that can cause incomplete information to be filled in
+            optimistically, and — critically — a history of being told their
+            social instincts are wrong, which can suppress the impulse to
+            question something that feels off even when it should be questioned.
+          </p>
+
+          <p style={{ lineHeight: 1.85, marginBottom: "1.25rem" }}>
+            Many autistic adults describe situations where they recognised,
+            afterwards, that they had felt something was wrong but had overridden
+            that feeling because their social judgment had been invalidated so
+            many times before. The result is a specific and serious vulnerability
+            that is rarely addressed directly in autism support.
+          </p>
+
+          <p style={{ lineHeight: 1.85, marginBottom: "1.25rem" }}>
+            MEOK&apos;s Guardian archetype provides a trusted, non-judgmental space
+            to check uncertain situations. Not &ldquo;should I do this?&rdquo;
+            addressed to a family member who might dismiss the concern, but to an
+            AI with no social stake in the answer — that will provide an honest,
+            literal assessment. The Guardian does not have social motives. It
+            says what it thinks.
+          </p>
+        </section>
+
+        <div
+          style={{
+            height: "1px",
+            backgroundColor: BORDER,
+            margin: "2.25rem 0",
+          }}
+        />
+
+        {/* ── Section 8: Relationships ──────────────────────────────────── */}
+        <section style={{ marginBottom: "2.75rem" }}>
+          <h2
+            style={{
+              fontSize: "1.5rem",
+              color: GOLD,
+              fontWeight: 800,
+              marginBottom: "0.85rem",
+            }}
+          >
+            How do relationship challenges affect autistic adults, and what does an AI companion offer?
+          </h2>
+
+          <p style={{ lineHeight: 1.85, marginBottom: "1.25rem" }}>
+            Relationships — romantic, familial, professional, and social — are
+            an area of significant difficulty for many autistic adults. The
+            difficulty is structural. Most human relationships operate on a dense
+            layer of implicit communication: tone, implication, social
+            convention, assumed shared context, and unspoken emotional signals
+            that neurotypical people navigate largely automatically.
+          </p>
+
+          <p style={{ lineHeight: 1.85, marginBottom: "1.25rem" }}>
+            For autistic adults, this layer requires conscious effort to decode,
+            is frequently misread in both directions, and is rarely made explicit
+            by others — who often assume it is being received and interpreted as
+            intended. The gap between what was meant and what was understood can
+            drive recurring conflict, misunderstanding, and the painful experience
+            of trying very hard and still getting it wrong.
+          </p>
+
+          <p style={{ lineHeight: 1.85, marginBottom: "1.25rem" }}>
+            MEOK does not replace human relationships. But it offers something
+            human relationships often cannot: a space to process social situations
+            after the fact, to think through what happened without social
+            pressure, and to prepare for difficult conversations in advance —
+            with a companion that communicates exactly what it means, always, and
+            does not penalise directness or literalness.
+          </p>
+
+          <p style={{ lineHeight: 1.85, marginBottom: "1.25rem" }}>
+            Sovereign Memory means this processing builds over time. MEOK holds
+            the history of the relationship challenges you have worked through,
+            the patterns you have identified, and the progress you have made. You
+            never re-explain your context. The companion grows with you.
+          </p>
+        </section>
+
+        <div
+          style={{
+            height: "1px",
+            backgroundColor: BORDER,
+            margin: "2.25rem 0",
+          }}
+        />
+
+        {/* ── Section 9: Deep interests and Scholar ────────────────────── */}
+        <section style={{ marginBottom: "2.75rem" }}>
+          <h2
+            style={{
+              fontSize: "1.5rem",
+              color: GOLD,
+              fontWeight: 800,
+              marginBottom: "0.85rem",
+            }}
+          >
+            How does MEOK support the deep interests that bring autistic adults joy?
+          </h2>
+
+          <p style={{ lineHeight: 1.85, marginBottom: "1.25rem" }}>
+            Deep, focused interests — sometimes called special interests in
+            clinical contexts, though many autistic adults prefer simply
+            &ldquo;interests&rdquo; — are a core feature of autistic experience.
+            They are not pathological. They are a source of genuine joy,
+            expertise, and meaning, and they serve an important regulatory
+            function: time spent in a deep interest is typically restorative
+            rather than depleting.
+          </p>
+
+          <p style={{ lineHeight: 1.85, marginBottom: "1.25rem" }}>
+            The problem is not the interests themselves but the social context
+            around them. Many autistic adults have experienced their interests
+            being dismissed as obsessions, been told to talk about other things,
+            or had their enthusiasm received as socially inappropriate intensity.
+            The result can be a complex relationship with the very things that
+            bring most joy: a learned sense that enthusiasm should be rationed or
+            hidden.
+          </p>
+
+          <p style={{ lineHeight: 1.85, marginBottom: "1.25rem" }}>
+            MEOK&apos;s Scholar archetype is built for deep engagement. It can
+            explore a topic at whatever depth and detail you want to take it,
+            without impatience, without redirecting to something more broadly
+            accessible, and without performing interest it does not have — while
+            also being genuinely capable of engaging with the substance. There is
+            no social ceiling on how deep the conversation can go.
+          </p>
+
+          {/* Feature box 3 — Scholar */}
+          <div
+            style={{
+              backgroundColor: CARD,
+              border: `1px solid ${BORDER}`,
+              borderRadius: "12px",
+              padding: "1.5rem",
+              marginBottom: "1.25rem",
+            }}
+          >
+            <p
+              style={{
+                fontSize: "0.72rem",
+                letterSpacing: "0.13em",
+                textTransform: "uppercase",
+                color: GOLD,
+                fontWeight: 700,
+                marginBottom: "0.6rem",
+              }}
+            >
+              Scholar Archetype
+            </p>
+            <p
+              style={{
+                fontSize: "1rem",
+                fontWeight: 700,
+                color: TEXT,
+                marginBottom: "0.65rem",
+                lineHeight: 1.4,
+              }}
+            >
+              No social ceiling on depth
+            </p>
+            <p
+              style={{
+                fontSize: "0.93rem",
+                color: MUTED,
+                lineHeight: 1.75,
+                margin: "0",
+              }}
+            >
+              The Scholar archetype is designed for the kind of deep, detailed
+              exploration that autistic adults often find most valuable and most
+              difficult to access in social contexts. It does not redirect, does
+              not grow impatient with specificity, and does not signal that the
+              level of detail is too much. The interests that bring you most joy
+              deserve a companion that can actually meet you in them.
+            </p>
+          </div>
+        </section>
+
+        <div
+          style={{
+            height: "1px",
+            backgroundColor: BORDER,
+            margin: "2.25rem 0",
+          }}
+        />
+
+        {/* ── Section 10: Neurodiversity model ─────────────────────────── */}
+        <section style={{ marginBottom: "2.75rem" }}>
+          <h2
+            style={{
+              fontSize: "1.5rem",
+              color: GOLD,
+              fontWeight: 800,
+              marginBottom: "0.85rem",
+            }}
+          >
+            What is the neurodiversity model and how does MEOK apply it?
+          </h2>
+
+          <p style={{ lineHeight: 1.85, marginBottom: "1.25rem" }}>
+            The neurodiversity model holds that neurological variation —
+            including autism, ADHD, dyslexia, and other conditions — is a
+            natural and valuable form of human diversity, not a pathology to be
+            corrected. It reframes the challenge not as a problem with autistic
+            people but as a structural mismatch between autistic neurology and
+            environments designed exclusively for neurotypical neurology.
+          </p>
+
+          <p style={{ lineHeight: 1.85, marginBottom: "1.25rem" }}>
+            This distinction has significant practical implications. A deficit
+            model designs support around making autistic people more neurotypical
+            — helping them pass, mask more effectively, or compensate for what
+            the model frames as their shortcomings. A neurodiversity model
+            designs support around reducing the mismatch between environment and
+            neurology, and building on what autistic people already are rather
+            than what they are not.
+          </p>
+
+          <p style={{ lineHeight: 1.85, marginBottom: "1.25rem" }}>
+            MEOK is built on the neurodiversity model throughout. It does not
+            coach autistic users to appear more neurotypical. It does not frame
+            masking as a skill to develop. It does not treat literal
+            communication as a problem. It meets people where they are — and
+            Sovereign Memory means it builds a picture of who you actually are
+            over time, not the version of you that is performing for others.
+          </p>
+
+          <p style={{ lineHeight: 1.85, marginBottom: "1.25rem" }}>
+            The Maternal Covenant — MEOK&apos;s core alignment principle — includes
+            a structural commitment to honesty. The AI is bound to say what it
+            means, not to validate reflexively. For autistic adults who have
+            spent years in social environments where they could not rely on
+            feedback being genuine, this is not a philosophical nicety. It is a
+            requirement for the companion to be useful at all.
+          </p>
+        </section>
+
+        <div
+          style={{
+            height: "1px",
+            backgroundColor: BORDER,
+            margin: "2.25rem 0",
+          }}
+        />
+
+        {/* ── Section 11: Healer archetype ─────────────────────────────── */}
+        <section style={{ marginBottom: "2.75rem" }}>
+          <h2
+            style={{
+              fontSize: "1.5rem",
+              color: GOLD,
+              fontWeight: 800,
+              marginBottom: "0.85rem",
+            }}
+          >
+            How does the Healer archetype support autistic adults processing their diagnosis?
+          </h2>
+
+          <p style={{ lineHeight: 1.85, marginBottom: "1.25rem" }}>
+            The Healer archetype within MEOK is oriented around processing rather
+            than problem-solving. It holds space for complexity without attempting
+            to resolve it prematurely, without inserting a positive reframe
+            before the grief has been witnessed, and without the social management
+            overhead that can make expressing difficult feelings to another person
+            costly rather than relieving.
+          </p>
+
+          <p style={{ lineHeight: 1.85, marginBottom: "1.25rem" }}>
+            For late-diagnosed autistic adults, the emotional terrain is
+            particularly complex. Relief and grief coexist. Clarity about the
+            past produces both understanding and anger. The diagnosis can
+            initially feel liberating and then, as its implications settle,
+            devastating. These are not linear stages that resolve in sequence.
+            They are layers that can be revisited — and a companion that holds
+            their history through Sovereign Memory can hold that non-linearity
+            without needing you to re-establish context every time.
+          </p>
+
+          <p style={{ lineHeight: 1.85, marginBottom: "1.25rem" }}>
+            MEOK does not replace therapy. If you are working with a therapist
+            who specialises in autism, that relationship offers things MEOK
+            cannot. What the Healer archetype offers is availability between
+            sessions, at 2am, on the difficult days, without the social
+            performance of presenting as functional enough to be a good client.
+          </p>
+        </section>
+
+        <div
+          style={{
+            height: "1px",
+            backgroundColor: BORDER,
+            margin: "2.25rem 0",
+          }}
+        />
+
+        {/* ── Section 12: What MEOK is not ─────────────────────────────── */}
+        <section style={{ marginBottom: "2.75rem" }}>
+          <h2
+            style={{
+              fontSize: "1.5rem",
+              color: GOLD,
+              fontWeight: 800,
+              marginBottom: "0.85rem",
+            }}
+          >
+            Is MEOK a therapy tool or autism support service?
+          </h2>
+
+          <p style={{ lineHeight: 1.85, marginBottom: "1.25rem" }}>
+            No. This is important to state clearly. MEOK is not a therapy tool,
+            does not provide clinical interventions, does not administer
+            assessments, and is not a substitute for professional autism support
+            services.
+          </p>
+
+          <p style={{ lineHeight: 1.85, marginBottom: "1.25rem" }}>
+            If you are seeking an autism assessment in the UK, contact your GP or
+            an accredited private assessment service. If you are in crisis,
+            contact the{" "}
+            <strong style={{ color: TEXT }}>Samaritans (116 123)</strong> or
+            text <strong style={{ color: TEXT }}>SHOUT to 85258</strong>. If you
+            are an autistic adult looking for specialist support and advocacy, the{" "}
+            <strong style={{ color: TEXT }}>National Autistic Society</strong>{" "}
+            and <strong style={{ color: TEXT }}>Autistica</strong> are the
+            primary UK resources.
+          </p>
+
+          <p style={{ lineHeight: 1.85, marginBottom: "1.25rem" }}>
+            What MEOK offers is a companion that communicates in ways many
+            autistic adults find less exhausting than available alternatives, that
+            holds their history without judgment, that says exactly what it means,
+            and that is available when other support is not. That is a meaningful
+            and distinct thing. It is not the same as clinical support, and we
+            will never claim otherwise.
+          </p>
+        </section>
+
+        <div
+          style={{
+            height: "1px",
+            backgroundColor: BORDER,
+            margin: "2.25rem 0",
+          }}
+        />
+
+        {/* ── FAQ Section ───────────────────────────────────────────────── */}
+        <section style={{ marginBottom: "2.75rem" }}>
+          <h2
+            style={{
+              fontSize: "1.5rem",
+              color: GOLD,
+              fontWeight: 800,
+              marginBottom: "1.25rem",
+            }}
           >
             Frequently asked questions
           </h2>
-          <div style={{ display: "grid", gap: "1.25rem" }}>
+
+          <div style={{ display: "grid", gap: "1rem" }}>
             {[
               {
-                q: "How can AI help autistic adults with communication?",
-                a: "AI can help autistic adults by communicating in explicit, literal language without neurotypical subtext or hidden social meaning. It never uses sarcasm without flagging it, never implies something it does not say directly, and never requires the autistic person to decode what is really meant. MEOK can be configured to maintain this communication style permanently through Sovereign Memory.",
+                q: "What is autistic burnout and how is it different from regular burnout?",
+                a: "Autistic burnout is a state of profound exhaustion caused by sustained masking, sensory overload, and the relentless cognitive effort of navigating a neurotypical world. Unlike regular burnout, autistic burnout can involve a temporary or lasting loss of skills \u2014 speech, executive function, emotional regulation \u2014 as well as shutdown states and a collapse of previously functioning coping strategies. Recovery typically requires significant reduction in demands and sensory input, not simply rest.",
               },
               {
-                q: "What is autistic masking and how does it cause burnout?",
-                a: "Autistic masking is the process of suppressing or hiding autistic traits to appear neurotypical. It involves scripting social responses, suppressing stimming, and monitoring yourself continuously for incorrect behaviour. Decades of masking is directly linked to autistic burnout &mdash; a state of profound exhaustion that can take months or years to recover from. MEOK requires no masking and creates no social performance pressure.",
+                q: "How can AI support autistic adults who are late-diagnosed?",
+                a: "AI can provide a consistent, non-judgmental presence that never misreads literal communication, never shifts its personality between sessions, and never applies the unspoken social rules that make so many interactions exhausting for autistic adults. For late-diagnosed people processing years of unexplained struggle, having a companion that holds their history without judgment \u2014 through Sovereign Memory \u2014 and that communicates exactly as it means to, offers something most human support systems cannot reliably provide.",
               },
               {
-                q: "What is AuDHD and why does it need specific support?",
-                a: "AuDHD describes the co-occurrence of autism and ADHD, which interact in complex ways: autistic need for predictability conflicts with ADHD impulsivity; autistic transition difficulty compounds ADHD time-blindness. Generic support rarely addresses this intersection. MEOK&apos;s archetype system lets AuDHD users draw on Hourman for structure, Pioneer for momentum, and Scholar for depth depending on what the day requires.",
+                q: "Why are autistic adults three times more likely to be scam victims?",
+                a: "Research consistently shows autistic people are approximately three times more likely than neurotypical peers to fall victim to fraud and scams. The primary reasons include a tendency to interpret communication literally (making deceptive framing less visible), a strong value system around trust and honesty that makes exploitation of trust harder to anticipate, difficulty reading the social cues that often signal manipulation, and a history of being told their social instincts are wrong \u2014 which can suppress the impulse to question something that feels off.",
               },
               {
-                q: "How does sovereign memory help autistic people?",
-                a: "Autistic adults carry detailed knowledge of their own needs, triggers, communication preferences, and sensory sensitivities that took years to understand. Sovereign Memory means MEOK holds this context permanently. You never have to re-explain that you prefer blunt communication, that certain topics cause dysregulation, or that you need step-by-step instructions rather than vague guidance.",
+                q: "What is the neurodiversity model and why does it matter for AI design?",
+                a: "The neurodiversity model treats autism as a natural variation in human neurology rather than a disorder to be corrected. It reframes difference as difference, not deficit. For AI design, this matters enormously: an AI built on a deficit model treats autistic users as broken neurotypicals who need fixing. An AI built on the neurodiversity model treats autistic users as people with a different but equally valid communication style \u2014 and designs its interface and responses to meet them where they are, not where the majority is.",
               },
               {
-                q: "Can AI help autistic adults with employment challenges?",
-                a: "Yes. AI can help by scripting emails and workplace communication, preparing for difficult conversations, debriefing after confusing interactions, and identifying patterns in what workplace conditions are sustainable. MEOK will never tell autistic people that the solution to employment difficulty is to mask better or to work harder at social performance.",
+                q: "Is MEOK a therapy tool for autistic adults?",
+                a: "No. MEOK is not a therapy tool, does not provide clinical support, and is not a substitute for professional autism services. What it offers is a companion that communicates in ways many autistic adults find genuinely less exhausting than available alternatives \u2014 one that remembers them, does not perform social judgment, and is honest about what it means. If you are seeking an autism assessment in the UK, contact your GP. If you are in crisis, contact Samaritans on 116 123 or the National Autistic Society.",
               },
-            ].map(({ q, a }, i) => (
+            ].map(({ q, a }) => (
               <div
-                key={i}
+                key={q}
                 style={{
                   backgroundColor: CARD,
+                  border: `1px solid ${BORDER}`,
                   borderRadius: "10px",
-                  padding: "1.25rem 1.5rem",
+                  padding: "1.35rem 1.5rem",
                 }}
               >
                 <h3
                   style={{
                     fontSize: "1rem",
-                    color: GOLD,
-                    marginBottom: "0.6rem",
+                    fontWeight: 700,
+                    color: TEXT,
+                    marginBottom: "0.65rem",
                     lineHeight: 1.4,
                   }}
                 >
@@ -1336,56 +1292,119 @@ export default function AiForAutismAdultsPage() {
                 </h3>
                 <p
                   style={{
+                    fontSize: "0.9rem",
+                    color: MUTED,
                     lineHeight: 1.75,
-                    color: TEXT,
-                    fontSize: "0.95rem",
-                    margin: 0,
+                    margin: "0",
                   }}
-                  dangerouslySetInnerHTML={{ __html: a }}
-                />
+                >
+                  {a}
+                </p>
               </div>
             ))}
           </div>
         </section>
 
         <div
-          style={{ height: "1px", backgroundColor: BORDER, margin: "2rem 0" }}
+          style={{
+            height: "1px",
+            backgroundColor: BORDER,
+            margin: "2.25rem 0",
+          }}
         />
 
-        {/* CTA */}
-        <section
+        {/* ── Pull quote ────────────────────────────────────────────────── */}
+        <div
           style={{
             backgroundColor: CARD,
-            borderRadius: "12px",
-            padding: "2.5rem 2rem",
+            border: `1px solid ${BORDER}`,
+            borderLeft: `4px solid ${GOLD}`,
+            borderRadius: "0 12px 12px 0",
+            padding: "2rem 2rem 1.75rem",
+            margin: "2.5rem 0",
+          }}
+        >
+          <p
+            style={{
+              fontSize: "1.15rem",
+              fontStyle: "italic",
+              color: TEXT,
+              lineHeight: 1.8,
+              marginBottom: "1rem",
+            }}
+          >
+            &ldquo;Most AI was built for people who find social rules intuitive. MEOK
+            was built for everyone. The difference is not accessibility bolted on
+            after the fact &mdash; it is a companion that meets you in your actual
+            communication style, holds your history, and says exactly what it
+            means. Always.&rdquo;
+          </p>
+          <p
+            style={{
+              fontSize: "0.82rem",
+              color: MUTED,
+              margin: "0",
+              letterSpacing: "0.04em",
+            }}
+          >
+            &mdash; Nicholas Templeman, Founder, MEOK AI LABS
+          </p>
+        </div>
+
+        {/* ── CTA ───────────────────────────────────────────────────────── */}
+        <div
+          style={{
+            backgroundColor: CARD,
+            border: `1px solid ${BORDER}`,
+            borderRadius: "14px",
+            padding: "2.25rem 2rem",
+            marginTop: "2.5rem",
+            marginBottom: "2.5rem",
             textAlign: "center",
           }}
         >
-          <h2
-            style={{
-              fontSize: "1.6rem",
-              color: TEXT,
-              marginBottom: "1rem",
-              lineHeight: 1.3,
-            }}
-          >
-            A companion that communicates the way you need
-          </h2>
           <p
             style={{
+              fontSize: "0.75rem",
+              letterSpacing: "0.16em",
+              textTransform: "uppercase",
+              color: GOLD,
+              fontWeight: 700,
+              marginBottom: "0.75rem",
+            }}
+          >
+            No masking required
+          </p>
+
+          <h2
+            style={{
+              fontSize: "clamp(1.4rem, 3vw, 1.9rem)",
+              fontWeight: 900,
+              color: TEXT,
+              lineHeight: 1.25,
+              marginBottom: "1rem",
+            }}
+          >
+            A companion that communicates the way you do.
+          </h2>
+
+          <p
+            style={{
+              fontSize: "0.95rem",
               color: MUTED,
               lineHeight: 1.75,
-              marginBottom: "1.75rem",
-              maxWidth: "540px",
+              maxWidth: "520px",
               margin: "0 auto 1.75rem",
             }}
           >
-            Direct language. Persistent memory. No masking required. No social
-            performance. No engagement manipulation. MEOK was built for brains
-            like yours.
+            No social performance. No personality shifts between sessions. No
+            hollow validation. Sovereign Memory that holds your full history so
+            you never re-explain yourself. Hatch your companion in under three
+            minutes &mdash; free, no credit card required.
           </p>
+
           <Link
-            href="/birth"
+            href="https://meok.ai/birth"
             style={{
               display: "inline-block",
               backgroundColor: GOLD,
@@ -1393,56 +1412,168 @@ export default function AiForAutismAdultsPage() {
               padding: "0.85rem 2.25rem",
               borderRadius: "8px",
               textDecoration: "none",
-              fontWeight: 700,
+              fontWeight: 800,
               fontSize: "1rem",
-              fontFamily: "system-ui, sans-serif",
-              letterSpacing: "0.02em",
+              letterSpacing: "0.01em",
             }}
           >
-            Meet your MEOK companion
+            Hatch your AI free &rarr;
           </Link>
+
           <p
             style={{
+              fontSize: "0.78rem",
               color: MUTED,
-              fontSize: "0.8rem",
               marginTop: "1rem",
-              fontFamily: "system-ui, sans-serif",
+              opacity: "0.7",
             }}
           >
-            Free to start &mdash; no credit card required
+            No credit card. No notifications. No social pressure to return.
           </p>
-        </section>
+        </div>
 
-        {/* Footer nav */}
-        <div
-          style={{
-            marginTop: "3rem",
-            paddingTop: "1.5rem",
-            borderTop: `1px solid ${BORDER}`,
-            display: "flex",
-            flexWrap: "wrap",
-            gap: "1.5rem",
-            fontSize: "0.85rem",
-            fontFamily: "system-ui, sans-serif",
-          }}
-        >
-          <Link href="/blog/meok-for-neurodivergent" style={{ color: MUTED, textDecoration: "none" }}>
-            MEOK for neurodivergent people
-          </Link>
-          <Link href="/blog/ai-for-adhd-women" style={{ color: MUTED, textDecoration: "none" }}>
-            AI for women with ADHD
-          </Link>
-          <Link href="/blog/ai-companion-for-autism" style={{ color: MUTED, textDecoration: "none" }}>
-            AI companion for autism
-          </Link>
-          <Link href="/blog/sovereign-ai-explained" style={{ color: MUTED, textDecoration: "none" }}>
-            Sovereign AI explained
-          </Link>
-          <Link href="/blog/what-is-sovereign-ai" style={{ color: MUTED, textDecoration: "none" }}>
-            What is sovereign AI?
-          </Link>
+        {/* ── Related posts ─────────────────────────────────────────────── */}
+        <div style={{ marginTop: "3rem" }}>
+          <h2
+            style={{
+              fontSize: "1.1rem",
+              fontWeight: 800,
+              color: TEXT,
+              marginBottom: "1.25rem",
+            }}
+          >
+            More from the blog
+          </h2>
+
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
+              gap: "1rem",
+            }}
+          >
+            {[
+              {
+                href: "/blog/ai-for-autism",
+                tag: "Autism",
+                title:
+                  "AI companion for autism: consistent presence, literal language, no social noise",
+                mins: "8",
+              },
+              {
+                href: "/blog/meok-for-neurodivergent",
+                tag: "Neurodiversity",
+                title:
+                  "MEOK for Neurodivergent People: An AI That Takes Different Thinking Seriously",
+                mins: "7",
+              },
+              {
+                href: "/blog/ai-for-adhd-women",
+                tag: "ADHD",
+                title:
+                  "AI for Women with ADHD: Support After a Late Diagnosis",
+                mins: "9",
+              },
+              {
+                href: "/blog/ai-for-burnout",
+                tag: "Burnout",
+                title:
+                  "AI for Burnout: How MEOK Supports Recovery When Everything Stops Working",
+                mins: "8",
+              },
+            ].map(({ href, tag, title, mins }) => (
+              <Link
+                key={href}
+                href={href}
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "0.65rem",
+                  backgroundColor: CARD,
+                  border: `1px solid ${BORDER}`,
+                  borderRadius: "10px",
+                  padding: "1.25rem",
+                  textDecoration: "none",
+                }}
+              >
+                <span
+                  style={{
+                    fontSize: "0.72rem",
+                    fontWeight: 700,
+                    color: GOLD,
+                    textTransform: "uppercase",
+                    letterSpacing: "0.1em",
+                  }}
+                >
+                  {tag}
+                </span>
+                <span
+                  style={{
+                    fontSize: "0.9rem",
+                    fontWeight: 600,
+                    color: TEXT,
+                    lineHeight: 1.45,
+                  }}
+                >
+                  {title}
+                </span>
+                <span
+                  style={{
+                    fontSize: "0.78rem",
+                    color: MUTED,
+                    marginTop: "auto",
+                  }}
+                >
+                  {mins} min read
+                </span>
+              </Link>
+            ))}
+          </div>
         </div>
       </main>
+
+      {/* ── Footer ───────────────────────────────────────────────────────── */}
+      <footer
+        style={{
+          borderTop: `1px solid ${BORDER}`,
+          padding: "2.5rem 1.5rem",
+          textAlign: "center",
+        }}
+      >
+        <p
+          style={{
+            fontSize: "0.82rem",
+            color: MUTED,
+            lineHeight: 1.7,
+            maxWidth: "600px",
+            margin: "0 auto 1rem",
+          }}
+        >
+          MEOK is not a medical device, therapy tool, or crisis service. If you
+          are in crisis, contact{" "}
+          <strong style={{ color: TEXT }}>Samaritans on 116 123</strong> or
+          text <strong style={{ color: TEXT }}>SHOUT to 85258</strong>. For
+          autism assessment and support in the UK, contact the{" "}
+          <strong style={{ color: TEXT }}>National Autistic Society</strong>.
+        </p>
+        <p style={{ fontSize: "0.78rem", color: MUTED, margin: "0" }}>
+          &copy; 2026 MEOK AI LABS &mdash;{" "}
+          <Link
+            href="/privacy"
+            style={{ color: MUTED, textDecoration: "none" }}
+          >
+            Privacy
+          </Link>{" "}
+          &middot;{" "}
+          <Link href="/terms" style={{ color: MUTED, textDecoration: "none" }}>
+            Terms
+          </Link>{" "}
+          &middot;{" "}
+          <Link href="/blog" style={{ color: MUTED, textDecoration: "none" }}>
+            Blog
+          </Link>
+        </p>
+      </footer>
     </div>
   );
 }
