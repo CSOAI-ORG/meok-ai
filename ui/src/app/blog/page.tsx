@@ -3542,6 +3542,66 @@ const POSTS = [
     category: "connection",
     featured: false,
   },
+  {
+    slug: "ai-for-empty-nesters",
+    title: "AI for Empty Nesters: When the House Goes Quiet, MEOK Listens",
+    excerpt:
+      "When children leave home, parents face an identity crisis that society rarely acknowledges. MEOK\u2019s sovereign AI companion holds space for the grief, celebrates the pride, and helps you rediscover who you are beyond the role of parent.",
+    date: "March 26, 2026",
+    readTime: "8 min read",
+    tag: "Wellbeing",
+    tagColor: "#6aaa64",
+    category: "wellbeing",
+    featured: false,
+  },
+  {
+    slug: "ai-for-workplace-stress",
+    title: "AI for Workplace Stress: How MEOK Helps You Decompress After a Hard Day",
+    excerpt:
+      "Toxic managers, impossible deadlines, imposter syndrome — workplace stress erodes your mental health quietly. MEOK provides a private sovereign space to vent, get perspective, and plan your response without the risk of talking to colleagues.",
+    date: "March 26, 2026",
+    readTime: "7 min read",
+    tag: "Wellbeing",
+    tagColor: "#6aaa64",
+    category: "wellbeing",
+    featured: false,
+  },
+  {
+    slug: "meok-vs-replika",
+    title: "MEOK vs Replika: Which AI Companion Actually Remembers You? (2026)",
+    excerpt:
+      "Replika pioneered AI companionship. MEOK reinvents it with true data sovereignty, persistent memory across model switches, and a Maternal Covenant that enforces honest care. Here\u2019s the full comparison.",
+    date: "March 26, 2026",
+    readTime: "9 min read",
+    tag: "Comparison",
+    tagColor: "#c9a84c",
+    category: "comparison",
+    featured: false,
+  },
+  {
+    slug: "ai-for-caregiver-stress",
+    title: "AI for Caregiver Stress: How MEOK Supports Those Who Care for Others",
+    excerpt:
+      "The UK has 10.6 million unpaid carers — people who sacrifice their own wellbeing to look after others. MEOK provides a sovereign AI space where caregivers can finally be honest about exhaustion, resentment, and fear without guilt or judgment.",
+    date: "March 26, 2026",
+    readTime: "8 min read",
+    tag: "Wellbeing",
+    tagColor: "#6aaa64",
+    category: "wellbeing",
+    featured: false,
+  },
+  {
+    slug: "ai-for-phobias",
+    title: "AI for Phobias: Can MEOK Help You Manage Fear and Avoidance?",
+    excerpt:
+      "Specific phobias affect 12.5% of UK adults. MEOK isn\u2019t a replacement for CBT, but it supports phobia management through reflection, pre-exposure preparation, and post-exposure processing — with the Healer archetype\u2019s gentle, patient presence.",
+    date: "March 26, 2026",
+    readTime: "7 min read",
+    tag: "Mental Health",
+    tagColor: "#c9a84c",
+    category: "mental-health",
+    featured: false,
+  },
 ];
 
 // ── Category filter tabs ──────────────────────────────────────────────────────
