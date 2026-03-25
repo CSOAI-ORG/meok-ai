@@ -1,5 +1,9 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
-import { ArrowRight, Calendar, Timer, TrendingUp, Battery, RotateCcw, ListChecks } from "lucide-react";
+import { ArrowRight, Calendar, Timer, TrendingUp, Battery, RotateCcw, ListChecks, Loader2, Play, CheckCircle2 } from "lucide-react";
+import { callTool } from "@/lib/api";
 
 /* ─── DATA ─────────────────────────────────────────────── */
 
@@ -55,6 +59,64 @@ const jsonLd = {
 /* ─── PAGE ─────────────────────────────────────────────── */
 
 export default function HourmanPage() {
+  const [sprintGoal, setSprintGoal] = useState("");
+
+  const [startLoading, setStartLoading] = useState(false);
+  const [startResult, setStartResult] = useState<Record<string, unknown> | null>(null);
+  const [startError, setStartError] = useState<string | null>(null);
+
+  const [statusLoading, setStatusLoading] = useState(false);
+  const [statusResult, setStatusResult] = useState<Record<string, unknown> | null>(null);
+  const [statusError, setStatusError] = useState<string | null>(null);
+
+  const [completeLoading, setCompleteLoading] = useState(false);
+  const [completeResult, setCompleteResult] = useState<Record<string, unknown> | null>(null);
+  const [completeError, setCompleteError] = useState<string | null>(null);
+
+  async function handleStartSprint(e: React.FormEvent) {
+    e.preventDefault();
+    if (!sprintGoal.trim()) return;
+    setStartLoading(true);
+    setStartError(null);
+    setStartResult(null);
+    try {
+      const result = await callTool<Record<string, unknown>>("hourman_start_sprint", { goal: sprintGoal.trim() });
+      setStartResult(result);
+    } catch (err) {
+      setStartError(err instanceof Error ? err.message : "Failed to start sprint");
+    } finally {
+      setStartLoading(false);
+    }
+  }
+
+  async function handleGetStatus() {
+    setStatusLoading(true);
+    setStatusError(null);
+    setStatusResult(null);
+    try {
+      const result = await callTool<Record<string, unknown>>("hourman_get_status");
+      setStatusResult(result);
+    } catch (err) {
+      setStatusError(err instanceof Error ? err.message : "Failed to get status");
+    } finally {
+      setStatusLoading(false);
+    }
+  }
+
+  async function handleCompleteSprint() {
+    setCompleteLoading(true);
+    setCompleteError(null);
+    setCompleteResult(null);
+    try {
+      const result = await callTool<Record<string, unknown>>("hourman_complete_sprint");
+      setCompleteResult(result);
+    } catch (err) {
+      setCompleteError(err instanceof Error ? err.message : "Failed to complete sprint");
+    } finally {
+      setCompleteLoading(false);
+    }
+  }
+
   return (
     <div className="min-h-screen bg-[#0a0a0a] text-white overflow-x-hidden">
       <script
@@ -188,6 +250,145 @@ export default function HourmanPage() {
               Riri. All three agents are part of a single subscription. No per-sprint fees, no
               seat pricing, no enterprise tier required. One plan, all three agents, every morning.
             </p>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── INTERACTIVE CONSOLE ──────────────────────────── */}
+      <section className="py-24 px-6 bg-[#0d0c18]">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-12">
+            <span className="text-xs font-bold tracking-widest uppercase text-[#c9a84c]/60 block mb-4">
+              Live Console
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-black text-white leading-tight">
+              Command Hourman
+            </h2>
+            <p className="text-[#f5f0e8]/50 mt-4 max-w-xl mx-auto">
+              Start sprints, check progress, and mark sprints complete.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {/* Start Sprint */}
+            <div className="rounded-2xl bg-[#1a1a2e] border border-[#c9a84c]/20 p-6">
+              <h3 className="font-black text-[#c9a84c] text-lg mb-3">Start Sprint</h3>
+              <p className="text-sm text-[#f5f0e8]/40 mb-5">
+                Set a goal and kick off a new sprint.
+              </p>
+              <form onSubmit={handleStartSprint} className="space-y-3">
+                <textarea
+                  value={sprintGoal}
+                  onChange={(e) => setSprintGoal(e.target.value)}
+                  placeholder="Sprint goal..."
+                  rows={3}
+                  className="w-full px-4 py-2.5 rounded-lg bg-[#0d0c18] border border-[#c9a84c]/20 text-[#f5f0e8] placeholder-[#f5f0e8]/30 text-sm focus:outline-none focus:border-[#c9a84c]/50 transition-colors resize-none"
+                />
+                <button
+                  type="submit"
+                  disabled={startLoading || !sprintGoal.trim()}
+                  className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full font-bold text-[#0d0c18] bg-[#c9a84c] hover:bg-[#b8963e] disabled:opacity-50 disabled:cursor-not-allowed transition-all text-sm"
+                >
+                  {startLoading ? (
+                    <>
+                      <Loader2 className="w-4 h-4 animate-spin" />
+                      Starting...
+                    </>
+                  ) : (
+                    <>
+                      <Play className="w-4 h-4" />
+                      Start Sprint
+                    </>
+                  )}
+                </button>
+              </form>
+              {startError && (
+                <div className="mt-4 p-3 rounded-lg bg-red-500/10 border border-red-500/30 text-red-400 text-sm">
+                  {startError}
+                </div>
+              )}
+              {startResult && (
+                <div className="mt-4 p-4 rounded-lg bg-[#0d0c18] border border-[#c9a84c]/10 overflow-auto max-h-48">
+                  <pre className="text-xs text-[#f5f0e8]/70 whitespace-pre-wrap">
+                    {JSON.stringify(startResult, null, 2)}
+                  </pre>
+                </div>
+              )}
+            </div>
+
+            {/* Get Status */}
+            <div className="rounded-2xl bg-[#1a1a2e] border border-[#c9a84c]/20 p-6">
+              <h3 className="font-black text-[#c9a84c] text-lg mb-3">Sprint Status</h3>
+              <p className="text-sm text-[#f5f0e8]/40 mb-5">
+                Check the current sprint progress and velocity.
+              </p>
+              <button
+                onClick={handleGetStatus}
+                disabled={statusLoading}
+                className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full font-bold text-[#0d0c18] bg-[#c9a84c] hover:bg-[#b8963e] disabled:opacity-50 disabled:cursor-not-allowed transition-all text-sm"
+              >
+                {statusLoading ? (
+                  <>
+                    <Loader2 className="w-4 h-4 animate-spin" />
+                    Loading...
+                  </>
+                ) : (
+                  <>
+                    <TrendingUp className="w-4 h-4" />
+                    Get Status
+                  </>
+                )}
+              </button>
+              {statusError && (
+                <div className="mt-4 p-3 rounded-lg bg-red-500/10 border border-red-500/30 text-red-400 text-sm">
+                  {statusError}
+                </div>
+              )}
+              {statusResult && (
+                <div className="mt-4 p-4 rounded-lg bg-[#0d0c18] border border-[#c9a84c]/10 overflow-auto max-h-48">
+                  <pre className="text-xs text-[#f5f0e8]/70 whitespace-pre-wrap">
+                    {JSON.stringify(statusResult, null, 2)}
+                  </pre>
+                </div>
+              )}
+            </div>
+
+            {/* Complete Sprint */}
+            <div className="rounded-2xl bg-[#1a1a2e] border border-[#c9a84c]/20 p-6">
+              <h3 className="font-black text-[#c9a84c] text-lg mb-3">Complete Sprint</h3>
+              <p className="text-sm text-[#f5f0e8]/40 mb-5">
+                Mark the current sprint as done and log results.
+              </p>
+              <button
+                onClick={handleCompleteSprint}
+                disabled={completeLoading}
+                className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full font-bold text-[#0d0c18] bg-[#c9a84c] hover:bg-[#b8963e] disabled:opacity-50 disabled:cursor-not-allowed transition-all text-sm"
+              >
+                {completeLoading ? (
+                  <>
+                    <Loader2 className="w-4 h-4 animate-spin" />
+                    Completing...
+                  </>
+                ) : (
+                  <>
+                    <CheckCircle2 className="w-4 h-4" />
+                    Complete Sprint
+                  </>
+                )}
+              </button>
+              {completeError && (
+                <div className="mt-4 p-3 rounded-lg bg-red-500/10 border border-red-500/30 text-red-400 text-sm">
+                  {completeError}
+                </div>
+              )}
+              {completeResult && (
+                <div className="mt-4 p-4 rounded-lg bg-[#0d0c18] border border-[#c9a84c]/10 overflow-auto max-h-48">
+                  <pre className="text-xs text-[#f5f0e8]/70 whitespace-pre-wrap">
+                    {JSON.stringify(completeResult, null, 2)}
+                  </pre>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </section>

@@ -1,5 +1,9 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
-import { ArrowRight, Search, FileText, Target, BarChart2, Newspaper, Map } from "lucide-react";
+import { ArrowRight, Search, FileText, Target, BarChart2, Newspaper, Map, Loader2 } from "lucide-react";
+import { callTool } from "@/lib/api";
 
 /* ─── DATA ─────────────────────────────────────────────── */
 
@@ -62,6 +66,42 @@ const jsonLd = {
 /* ─── PAGE ─────────────────────────────────────────────── */
 
 export default function OrionPage() {
+  const [huntLoading, setHuntLoading] = useState(false);
+  const [huntResult, setHuntResult] = useState<Record<string, unknown> | null>(null);
+  const [huntError, setHuntError] = useState<string | null>(null);
+
+  const [statusLoading, setStatusLoading] = useState(false);
+  const [statusResult, setStatusResult] = useState<Record<string, unknown> | null>(null);
+  const [statusError, setStatusError] = useState<string | null>(null);
+
+  async function handleHuntTasks() {
+    setHuntLoading(true);
+    setHuntError(null);
+    setHuntResult(null);
+    try {
+      const result = await callTool<Record<string, unknown>>("orion_hunt_tasks");
+      setHuntResult(result);
+    } catch (err) {
+      setHuntError(err instanceof Error ? err.message : "Failed to hunt tasks");
+    } finally {
+      setHuntLoading(false);
+    }
+  }
+
+  async function handleGetStatus() {
+    setStatusLoading(true);
+    setStatusError(null);
+    setStatusResult(null);
+    try {
+      const result = await callTool<Record<string, unknown>>("orion_riri_hourman_status");
+      setStatusResult(result);
+    } catch (err) {
+      setStatusError(err instanceof Error ? err.message : "Failed to get status");
+    } finally {
+      setStatusLoading(false);
+    }
+  }
+
   return (
     <div className="min-h-screen bg-[#0a0a0a] text-white overflow-x-hidden">
       <script
@@ -222,6 +262,99 @@ export default function OrionPage() {
                 <p className="text-sm text-white/45 leading-relaxed">{desc}</p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ─── INTERACTIVE CONSOLE ──────────────────────────── */}
+      <section className="py-24 px-6 bg-[#0d0c18]">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-12">
+            <span className="text-xs font-bold tracking-widest uppercase text-[#c9a84c]/60 block mb-4">
+              Live Console
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-black text-white leading-tight">
+              Command Orion
+            </h2>
+            <p className="text-[#f5f0e8]/50 mt-4 max-w-xl mx-auto">
+              Interact with Orion directly. Hunt for tasks or check current status.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* Hunt Tasks */}
+            <div className="rounded-2xl bg-[#1a1a2e] border border-[#c9a84c]/20 p-6">
+              <h3 className="font-black text-[#c9a84c] text-lg mb-3">Hunt for Tasks</h3>
+              <p className="text-sm text-[#f5f0e8]/40 mb-5">
+                Send Orion out to discover and gather tasks from all sources.
+              </p>
+              <button
+                onClick={handleHuntTasks}
+                disabled={huntLoading}
+                className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full font-bold text-[#0d0c18] bg-[#c9a84c] hover:bg-[#b8963e] disabled:opacity-50 disabled:cursor-not-allowed transition-all text-sm"
+              >
+                {huntLoading ? (
+                  <>
+                    <Loader2 className="w-4 h-4 animate-spin" />
+                    Hunting...
+                  </>
+                ) : (
+                  <>
+                    <Search className="w-4 h-4" />
+                    Hunt Tasks
+                  </>
+                )}
+              </button>
+              {huntError && (
+                <div className="mt-4 p-3 rounded-lg bg-red-500/10 border border-red-500/30 text-red-400 text-sm">
+                  {huntError}
+                </div>
+              )}
+              {huntResult && (
+                <div className="mt-4 p-4 rounded-lg bg-[#0d0c18] border border-[#c9a84c]/10 overflow-auto max-h-64">
+                  <pre className="text-xs text-[#f5f0e8]/70 whitespace-pre-wrap">
+                    {JSON.stringify(huntResult, null, 2)}
+                  </pre>
+                </div>
+              )}
+            </div>
+
+            {/* View Current Tasks */}
+            <div className="rounded-2xl bg-[#1a1a2e] border border-[#c9a84c]/20 p-6">
+              <h3 className="font-black text-[#c9a84c] text-lg mb-3">Agent Status</h3>
+              <p className="text-sm text-[#f5f0e8]/40 mb-5">
+                View Orion&apos;s current task list and agent status.
+              </p>
+              <button
+                onClick={handleGetStatus}
+                disabled={statusLoading}
+                className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full font-bold text-[#0d0c18] bg-[#c9a84c] hover:bg-[#b8963e] disabled:opacity-50 disabled:cursor-not-allowed transition-all text-sm"
+              >
+                {statusLoading ? (
+                  <>
+                    <Loader2 className="w-4 h-4 animate-spin" />
+                    Loading...
+                  </>
+                ) : (
+                  <>
+                    <BarChart2 className="w-4 h-4" />
+                    View Status
+                  </>
+                )}
+              </button>
+              {statusError && (
+                <div className="mt-4 p-3 rounded-lg bg-red-500/10 border border-red-500/30 text-red-400 text-sm">
+                  {statusError}
+                </div>
+              )}
+              {statusResult && (
+                <div className="mt-4 p-4 rounded-lg bg-[#0d0c18] border border-[#c9a84c]/10 overflow-auto max-h-64">
+                  <pre className="text-xs text-[#f5f0e8]/70 whitespace-pre-wrap">
+                    {JSON.stringify(statusResult, null, 2)}
+                  </pre>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </section>

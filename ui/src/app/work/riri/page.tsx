@@ -1,5 +1,9 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
-import { ArrowRight, PenLine, Code2, Palette, Mail, BookOpen, RefreshCw } from "lucide-react";
+import { ArrowRight, PenLine, Code2, Palette, Mail, BookOpen, RefreshCw, Loader2, Hammer, List } from "lucide-react";
+import { callTool } from "@/lib/api";
 
 /* ─── DATA ─────────────────────────────────────────────── */
 
@@ -55,6 +59,50 @@ const jsonLd = {
 /* ─── PAGE ─────────────────────────────────────────────── */
 
 export default function RiriPage() {
+  const [templatesLoading, setTemplatesLoading] = useState(false);
+  const [templatesResult, setTemplatesResult] = useState<Record<string, unknown> | null>(null);
+  const [templatesError, setTemplatesError] = useState<string | null>(null);
+
+  const [buildLoading, setBuildLoading] = useState(false);
+  const [buildResult, setBuildResult] = useState<Record<string, unknown> | null>(null);
+  const [buildError, setBuildError] = useState<string | null>(null);
+
+  const [toolName, setToolName] = useState("");
+  const [toolDescription, setToolDescription] = useState("");
+
+  async function handleListTemplates() {
+    setTemplatesLoading(true);
+    setTemplatesError(null);
+    setTemplatesResult(null);
+    try {
+      const result = await callTool<Record<string, unknown>>("riri_list_templates");
+      setTemplatesResult(result);
+    } catch (err) {
+      setTemplatesError(err instanceof Error ? err.message : "Failed to list templates");
+    } finally {
+      setTemplatesLoading(false);
+    }
+  }
+
+  async function handleBuildTool(e: React.FormEvent) {
+    e.preventDefault();
+    if (!toolName.trim() || !toolDescription.trim()) return;
+    setBuildLoading(true);
+    setBuildError(null);
+    setBuildResult(null);
+    try {
+      const result = await callTool<Record<string, unknown>>("riri_build_tool", {
+        name: toolName.trim(),
+        description: toolDescription.trim(),
+      });
+      setBuildResult(result);
+    } catch (err) {
+      setBuildError(err instanceof Error ? err.message : "Failed to build tool");
+    } finally {
+      setBuildLoading(false);
+    }
+  }
+
   return (
     <div className="min-h-screen bg-[#0a0a0a] text-white overflow-x-hidden">
       <script
@@ -186,6 +234,115 @@ export default function RiriPage() {
               and Hourman — are included in a single subscription. No per-task fees. No add-ons.
               Everything you need to build overnight, every night.
             </p>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── INTERACTIVE CONSOLE ──────────────────────────── */}
+      <section className="py-24 px-6 bg-[#0d0c18]">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-12">
+            <span className="text-xs font-bold tracking-widest uppercase text-[#c9a84c]/60 block mb-4">
+              Live Console
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-black text-white leading-tight">
+              Command Riri
+            </h2>
+            <p className="text-[#f5f0e8]/50 mt-4 max-w-xl mx-auto">
+              Browse templates or build a new tool with Riri.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* List Templates */}
+            <div className="rounded-2xl bg-[#1a1a2e] border border-[#c9a84c]/20 p-6">
+              <h3 className="font-black text-[#c9a84c] text-lg mb-3">Templates</h3>
+              <p className="text-sm text-[#f5f0e8]/40 mb-5">
+                View all available build templates Riri can use.
+              </p>
+              <button
+                onClick={handleListTemplates}
+                disabled={templatesLoading}
+                className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full font-bold text-[#0d0c18] bg-[#c9a84c] hover:bg-[#b8963e] disabled:opacity-50 disabled:cursor-not-allowed transition-all text-sm"
+              >
+                {templatesLoading ? (
+                  <>
+                    <Loader2 className="w-4 h-4 animate-spin" />
+                    Loading...
+                  </>
+                ) : (
+                  <>
+                    <List className="w-4 h-4" />
+                    List Templates
+                  </>
+                )}
+              </button>
+              {templatesError && (
+                <div className="mt-4 p-3 rounded-lg bg-red-500/10 border border-red-500/30 text-red-400 text-sm">
+                  {templatesError}
+                </div>
+              )}
+              {templatesResult && (
+                <div className="mt-4 p-4 rounded-lg bg-[#0d0c18] border border-[#c9a84c]/10 overflow-auto max-h-64">
+                  <pre className="text-xs text-[#f5f0e8]/70 whitespace-pre-wrap">
+                    {JSON.stringify(templatesResult, null, 2)}
+                  </pre>
+                </div>
+              )}
+            </div>
+
+            {/* Build a Tool */}
+            <div className="rounded-2xl bg-[#1a1a2e] border border-[#c9a84c]/20 p-6">
+              <h3 className="font-black text-[#c9a84c] text-lg mb-3">Build a Tool</h3>
+              <p className="text-sm text-[#f5f0e8]/40 mb-5">
+                Give Riri a name and description to build a new tool.
+              </p>
+              <form onSubmit={handleBuildTool} className="space-y-3">
+                <input
+                  type="text"
+                  value={toolName}
+                  onChange={(e) => setToolName(e.target.value)}
+                  placeholder="Tool name"
+                  className="w-full px-4 py-2.5 rounded-lg bg-[#0d0c18] border border-[#c9a84c]/20 text-[#f5f0e8] placeholder-[#f5f0e8]/30 text-sm focus:outline-none focus:border-[#c9a84c]/50 transition-colors"
+                />
+                <textarea
+                  value={toolDescription}
+                  onChange={(e) => setToolDescription(e.target.value)}
+                  placeholder="Tool description"
+                  rows={3}
+                  className="w-full px-4 py-2.5 rounded-lg bg-[#0d0c18] border border-[#c9a84c]/20 text-[#f5f0e8] placeholder-[#f5f0e8]/30 text-sm focus:outline-none focus:border-[#c9a84c]/50 transition-colors resize-none"
+                />
+                <button
+                  type="submit"
+                  disabled={buildLoading || !toolName.trim() || !toolDescription.trim()}
+                  className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full font-bold text-[#0d0c18] bg-[#c9a84c] hover:bg-[#b8963e] disabled:opacity-50 disabled:cursor-not-allowed transition-all text-sm"
+                >
+                  {buildLoading ? (
+                    <>
+                      <Loader2 className="w-4 h-4 animate-spin" />
+                      Building...
+                    </>
+                  ) : (
+                    <>
+                      <Hammer className="w-4 h-4" />
+                      Build Tool
+                    </>
+                  )}
+                </button>
+              </form>
+              {buildError && (
+                <div className="mt-4 p-3 rounded-lg bg-red-500/10 border border-red-500/30 text-red-400 text-sm">
+                  {buildError}
+                </div>
+              )}
+              {buildResult && (
+                <div className="mt-4 p-4 rounded-lg bg-[#0d0c18] border border-[#c9a84c]/10 overflow-auto max-h-64">
+                  <pre className="text-xs text-[#f5f0e8]/70 whitespace-pre-wrap">
+                    {JSON.stringify(buildResult, null, 2)}
+                  </pre>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </section>
