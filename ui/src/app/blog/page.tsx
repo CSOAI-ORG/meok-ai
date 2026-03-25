@@ -3242,6 +3242,66 @@ const POSTS = [
     category: "mental-health",
     featured: false,
   },
+  {
+    slug: "ai-for-anger-management",
+    title: "AI for Anger Management: Processing Rage, Finding Calm, and Rebuilding Control",
+    excerpt:
+      "Anger disorders affect 7% of the population but most people suffer in silence. MEOK provides a non-judgmental space to process rage, track triggers, and build genuine emotional regulation — without costly anger management courses.",
+    date: "March 25, 2026",
+    readTime: "8 min read",
+    tag: "Mental Health",
+    tagColor: "#7ec8a0",
+    category: "mental-health",
+    featured: false,
+  },
+  {
+    slug: "meok-vs-pi-ai",
+    title: "MEOK vs Pi AI: Which AI Companion Actually Remembers You?",
+    excerpt:
+      "Pi AI is conversational but forgets you between sessions. MEOK's Sovereign Memory builds a persistent picture of your life over time. Here's how the two compare on memory, data sovereignty, safety, and depth.",
+    date: "March 25, 2026",
+    readTime: "7 min read",
+    tag: "Comparisons",
+    tagColor: "#c9a84c",
+    category: "sovereign-ai",
+    featured: false,
+  },
+  {
+    slug: "ai-for-highly-sensitive-person",
+    title: "AI for Highly Sensitive People: Finding Support That Understands Your Depth",
+    excerpt:
+      "15-20% of people are Highly Sensitive Persons — wired for deep processing, emotional intensity, and overstimulation. MEOK's Healer and Mystic archetypes are uniquely calibrated for the HSP experience.",
+    date: "March 25, 2026",
+    readTime: "8 min read",
+    tag: "Mental Health",
+    tagColor: "#7ec8a0",
+    category: "mental-health",
+    featured: false,
+  },
+  {
+    slug: "ai-for-cancer-patients",
+    title: "AI Support for Cancer Patients: Companionship Through the Hardest Journey",
+    excerpt:
+      "375,000 new cancer diagnoses in the UK each year. Many patients feel unable to burden loved ones with their fears. MEOK provides a compassionate, 24/7 companion for the emotional weight of cancer — not medical advice, but genuine presence.",
+    date: "March 25, 2026",
+    readTime: "9 min read",
+    tag: "Health",
+    tagColor: "#7ec8a0",
+    category: "mental-health",
+    featured: false,
+  },
+  {
+    slug: "ai-for-military-families",
+    title: "AI Support for Military Families: Staying Strong When a Loved One Is Deployed",
+    excerpt:
+      "Military families face deployment anxiety, solo parenting, relocation stress, and homecoming adjustment — often with minimal support. MEOK provides 24/7 companionship for the family members left holding everything together.",
+    date: "March 25, 2026",
+    readTime: "8 min read",
+    tag: "Life Transitions",
+    tagColor: "#c9a84c",
+    category: "mental-health",
+    featured: false,
+  },
 ];
 
 // ── Category filter tabs ──────────────────────────────────────────────────────
