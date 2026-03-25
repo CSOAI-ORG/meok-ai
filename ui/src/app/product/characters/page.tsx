@@ -129,7 +129,7 @@ export default function CharactersPage() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
               href="/hatch"
-              aria-label="Hatch your sovereign AI companion now — answer 4 questions and begin"
+              aria-label="Hatch your sovereign AI companion now — answer 5 questions and begin"
               className="group flex items-center gap-2 px-8 py-3.5 rounded-full font-bold text-[#1a1a2e] bg-[#c9a84c] hover:bg-[#b8963e] transition-all text-sm"
             >
               Hatch your AI now
@@ -198,7 +198,7 @@ export default function CharactersPage() {
 
           <div className="grid grid-cols-1 sm:grid-cols-4 gap-4">
             {[
-              { step: "01", label: "Answer 4 questions", desc: "About how you think, what you value, and how you like to be challenged." },
+              { step: "01", label: "Answer 5 questions", desc: "About how you think, what you value, and how you like to be challenged." },
               { step: "02", label: "Archetype assigned", desc: "Your answers map to the archetype that fits you best. You can override it." },
               { step: "03", label: "Your egg hatches", desc: "Watch your companion emerge. Name it. It begins building your care profile." },
               { step: "04", label: "It starts learning", desc: "From your first conversation, your companion starts building your memory and care score." },

@@ -63,7 +63,7 @@ const AFTER_HATCH_STEPS = [
   },
   {
     time: "Day 1",
-    desc: "Your AI asks you 3 questions to begin understanding how you think, what you care about, and how you like to work.",
+    desc: "Your AI asks you 5 questions to begin understanding how you think, what you care about, and how you like to work.",
   },
   {
     time: "Day 7",

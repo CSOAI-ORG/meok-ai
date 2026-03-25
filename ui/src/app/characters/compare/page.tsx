@@ -378,7 +378,7 @@ export default function CharactersComparePage() {
                 Still not sure?
               </h2>
               <p className="text-white/45 text-sm leading-relaxed mb-8 max-w-sm mx-auto">
-                Take the 7-question quiz. Answer honestly. The right companion finds you — you don&apos;t have to figure it out alone.
+                Take the 5-question quiz. Answer honestly. The right companion finds you — you don&apos;t have to figure it out alone.
               </p>
               <Link
                 href="/hatch"
@@ -389,7 +389,7 @@ export default function CharactersComparePage() {
                   boxShadow: "0 8px 32px rgba(201,168,76,0.20)",
                 }}
               >
-                Take the 7-question quiz <ArrowRight className="w-5 h-5" />
+                Take the 5-question quiz <ArrowRight className="w-5 h-5" />
               </Link>
               <p className="text-white/20 text-xs mt-5">Free · 3 minutes · No commitment</p>
             </div>

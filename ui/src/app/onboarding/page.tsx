@@ -294,11 +294,27 @@ export default function OnboardingPage() {
     setStep('greeting');
   }, []);
 
-  const handleSave = useCallback(() => {
+  const handleSave = useCallback(async () => {
     if (!companionName.trim()) return;
-    // TODO: POST to /api/user/companion to persist
+
+    // Persist companion to database
+    try {
+      await fetch('/api/user/companion', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          companionId: archetype,
+          companionName: companionName.trim(),
+          dimensions,
+        }),
+      });
+    } catch (err) {
+      // Non-blocking — companion persists on next interaction if this fails
+      console.error('Failed to persist companion:', err);
+    }
+
     setStep('complete');
-  }, [companionName]);
+  }, [companionName, archetype, dimensions]);
 
   const archetypeInfo = ARCHETYPES[archetype];
   const palette = archetypeInfo.basePalette;

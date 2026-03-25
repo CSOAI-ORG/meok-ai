@@ -1,0 +1,112 @@
+/**
+ * MEOK AI LABS — User Companion Endpoint
+ *
+ * POST /api/user/companion — Save companion archetype, name, and personality dimensions
+ * GET  /api/user/companion — Retrieve the user's current companion data
+ *
+ * Persists companion data from the onboarding wizard.
+ * Auth: Clerk auth() — returns 401 if not authenticated.
+ */
+
+import { auth } from '@clerk/nextjs/server'
+import { type NextRequest, NextResponse } from 'next/server'
+import { getUserById, updateCompanion } from '@/lib/db/user'
+
+export const runtime = 'nodejs'
+export const dynamic = 'force-dynamic'
+
+interface CompanionBody {
+  companionId: string
+  companionName: string
+  dimensions?: {
+    warmth: number
+    energy: number
+    whimsy: number
+    edge: number
+    complexity: number
+  }
+}
+
+// ---------------------------------------------------------------------------
+// GET /api/user/companion
+// ---------------------------------------------------------------------------
+export async function GET() {
+  const { userId } = await auth()
+  if (!userId) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+  }
+
+  try {
+    const user = await getUserById(userId)
+    if (!user) {
+      return NextResponse.json({
+        companion: null,
+        has_companion: false,
+      })
+    }
+
+    return NextResponse.json({
+      companion: user.companion_id
+        ? {
+            id: user.companion_id,
+            name: user.companion_name,
+            stage: user.companion_stage,
+          }
+        : null,
+      has_companion: !!user.companion_id,
+    })
+  } catch (e) {
+    console.error('[api/user/companion] GET failed:', e)
+    return NextResponse.json({ error: 'Failed to fetch companion data' }, { status: 500 })
+  }
+}
+
+// ---------------------------------------------------------------------------
+// POST /api/user/companion
+// ---------------------------------------------------------------------------
+export async function POST(req: NextRequest) {
+  const { userId } = await auth()
+  if (!userId) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+  }
+
+  let body: CompanionBody
+  try {
+    body = await req.json()
+  } catch {
+    return NextResponse.json({ error: 'Invalid request body' }, { status: 400 })
+  }
+
+  const { companionId, companionName, dimensions } = body
+
+  if (!companionId || !companionName) {
+    return NextResponse.json(
+      { error: 'companionId and companionName are required' },
+      { status: 400 },
+    )
+  }
+
+  try {
+    await updateCompanion(userId, companionId, companionName)
+
+    // TODO: persist dimensions to a companion_dimensions table when schema is ready
+    if (dimensions) {
+      console.log(
+        `[api/user/companion] Dimensions received for ${userId}:`,
+        JSON.stringify(dimensions),
+      )
+    }
+
+    return NextResponse.json({
+      success: true,
+      companion: {
+        id: companionId,
+        name: companionName,
+        dimensions: dimensions ?? null,
+      },
+    })
+  } catch (e) {
+    console.error('[api/user/companion] POST failed:', e)
+    return NextResponse.json({ error: 'Failed to save companion data' }, { status: 500 })
+  }
+}

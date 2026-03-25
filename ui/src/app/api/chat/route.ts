@@ -27,6 +27,7 @@ import { getCrisisResources, formatCrisisResponse } from '@/lib/crisis';
 import { detectLanguage, getLanguageDirective } from '@/lib/language';
 import { analyzeOCEAN, formatProfileContext } from '@/lib/user-profile';
 import { computeStyleDirective, formatStyleDirective } from '@/lib/adaptive-dialogue';
+import { detectSycophancyRisk, formatAntiSycophancyDirective } from '@/lib/anti-sycophancy';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -53,6 +54,7 @@ interface PromptContextBlocks {
   procedural?: string;
   language?: string;
   style?: string;
+  antiSycophancy?: string;
 }
 
 /**
@@ -81,6 +83,9 @@ function buildSystemPrompt(companionId: string, contexts: PromptContextBlocks = 
   // Dynamism parameter — controlled unpredictability (Kindroid pattern)
   const dynamism = character?.dynamism ?? 0.95;
   parts.push(`\n[DYNAMISM: ${dynamism.toFixed(2)} — vary your expression and style slightly each response. Be predictable in care and values, unpredictable in how you express them. Surprise the user occasionally with unexpected angles, metaphors, or observations.]`);
+
+  // Anti-sycophancy directive — injected when agreement rate is too high
+  if (contexts.antiSycophancy) parts.push(`\n${contexts.antiSycophancy}`);
 
   return parts.join('');
 }
@@ -270,6 +275,17 @@ export async function POST(req: NextRequest): Promise<Response> {
     console.error('[api/chat] Adaptive style computation failed:', err);
   }
 
+  // 6b2. Anti-sycophancy detection
+  let antiSycophancyCtx = '';
+  try {
+    const sycophancyRisk = detectSycophancyRisk(
+      incomingMessages as Array<{ role: string; content: string }>,
+    );
+    antiSycophancyCtx = formatAntiSycophancyDirective(sycophancyRisk);
+  } catch (err) {
+    console.error('[api/chat] Anti-sycophancy detection failed:', err);
+  }
+
   // 6c. Build system prompt with all context blocks
   const systemPrompt = buildSystemPrompt(cid, {
     emotion: emotionCtx,
@@ -277,6 +293,7 @@ export async function POST(req: NextRequest): Promise<Response> {
     procedural: proceduralCtx,
     language: languageDirective,
     style: [profileCtx, styleCtx].filter(Boolean).join('\n') || undefined,
+    antiSycophancy: antiSycophancyCtx || undefined,
   });
 
   // 7a. Compute effort level for adaptive thinking
@@ -355,7 +372,26 @@ export async function POST(req: NextRequest): Promise<Response> {
   } catch (err) {
     // Log the real error server-side; never expose internals to the client
     console.error('[api/chat] streamText error:', err);
-    return errorResponse('An error occurred while generating the response. Please try again.', 500);
+
+    // Care-centered error responses (from Sovereign Missing Layer research):
+    // "Errors are trust moments — never leave the user in a void."
+    const errMsg = err instanceof Error ? err.message : '';
+    if (errMsg.includes('rate') || errMsg.includes('429') || errMsg.includes('quota')) {
+      return errorResponse(
+        'I need a moment to think more carefully. Give me a minute and I\'ll be ready — your conversation is safe.',
+        429,
+      );
+    }
+    if (errMsg.includes('timeout') || errMsg.includes('ECONNREFUSED')) {
+      return errorResponse(
+        'I stumbled on that one. Let me try a different approach — could you send that again?',
+        503,
+      );
+    }
+    return errorResponse(
+      'Something went wrong on my end, but everything I remember about our conversations is intact. Could you try again?',
+      500,
+    );
   }
 }
 

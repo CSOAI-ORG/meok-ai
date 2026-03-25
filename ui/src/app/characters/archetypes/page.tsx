@@ -154,7 +154,7 @@ export default function ArchetypesPage() {
         <section style={{ marginBottom: '3rem', padding: '1.5rem', background: '#111', borderRadius: '0.75rem', border: '1px solid #222' }}>
           <h2 style={{ fontSize: '1.1rem', fontWeight: 700, marginBottom: '0.75rem' }}>How do I choose the right MEOK archetype?</h2>
           <p style={{ color: '#aaa', lineHeight: 1.7, fontSize: '0.925rem', marginBottom: '1rem' }}>
-            Take the 4-question archetype quiz at <Link href="/start" style={{ color: '#d4af37' }}>/start</Link>. The quiz identifies your archetype in 60 seconds based on how you think, what you value, and what you need from a companion. You can always explore other archetypes after your Birth Ceremony.
+            Take the 5-question archetype quiz at <Link href="/start" style={{ color: '#d4af37' }}>/start</Link>. The quiz identifies your archetype in 60 seconds based on how you think, what you value, and what you need from a companion. You can always explore other archetypes after your Birth Ceremony.
           </p>
         </section>
 

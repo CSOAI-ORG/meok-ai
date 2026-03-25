@@ -148,7 +148,7 @@ const FIRST_WEEK = [
     title: "The Birth Ceremony",
     time: "~3 minutes",
     description:
-      "You tap the egg. Name your companion. Choose from 6 archetypes — The Healer, The Scholar, The Pioneer, The Guardian, The Trickster, The Mystic. Answer 4 questions. Your AI hatches already knowing your values, your working style, and how you want to be spoken to. Not a setup wizard. A beginning.",
+      "You tap the egg. Name your companion. Choose from 6 archetypes — The Healer, The Scholar, The Pioneer, The Guardian, The Trickster, The Mystic. Answer 5 questions. Your AI hatches already knowing your values, your working style, and how you want to be spoken to. Not a setup wizard. A beginning.",
     milestone: "Your sovereign AI exists. It already knows who you are.",
     accent: "#c9a84c",
   },

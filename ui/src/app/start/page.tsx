@@ -7,7 +7,7 @@ import { ArrowRight } from "lucide-react";
 export const metadata: Metadata = {
   title: "Find Your Companion | MEOK AI LABS",
   description:
-    "Answer 3 questions to find your perfect MEOK companion. 8 archetypes — each designed for a different way of thinking, feeling, and living.",
+    "Answer 5 questions to find your perfect MEOK companion. 8 archetypes — each designed for a different way of thinking, feeling, and living.",
   keywords: [
     "MEOK companion",
     "AI archetype quiz",
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Find Your Companion | MEOK AI LABS",
     description:
-      "8 archetypes. Which companion is waiting for you? Answer 3 questions to find your perfect match.",
+      "8 archetypes. Which companion is waiting for you? Answer 5 questions to find your perfect match.",
     type: "website",
     url: "https://meok.ai/start",
     siteName: "MEOK.AI",
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Find Your Companion | MEOK AI LABS",
     description:
-      "8 archetypes. Which companion is waiting for you? Answer 3 questions to find your perfect match.",
+      "8 archetypes. Which companion is waiting for you? Answer 5 questions to find your perfect match.",
     images: [
       "https://meok.ai/api/og?title=Find+Your+Companion&desc=8+archetypes.+Which+is+waiting+for+you%3F",
     ],
@@ -167,7 +167,7 @@ export default function StartPage() {
           </h1>
 
           <p className="text-lg text-white/50 max-w-xl mx-auto leading-relaxed">
-            Answer 3 questions to find your perfect match.
+            Answer 5 questions to find your perfect match.
           </p>
         </div>
       </section>
