@@ -4862,6 +4862,66 @@ const POSTS = [
     category: "technology",
     featured: true,
   },
+  {
+    slug: "ai-for-anger-issues",
+    title: "AI for Anger Issues: Can a Companion Help You Understand and Manage Your Anger?",
+    excerpt:
+      "Anger is one of the most misunderstood emotions. Often it\u2019s not really about what just happened \u2014 it\u2019s about what happened before. MEOK helps you trace the patterns, understand the triggers, and find a response you\u2019re not ashamed of.",
+    date: "April 25, 2026",
+    readTime: "7 min read",
+    tag: "Mental Health",
+    tagColor: "#6aaa64",
+    category: "mental-health",
+    featured: false,
+  },
+  {
+    slug: "meok-for-over-60s",
+    title: "MEOK for People Over 60: Technology That Finally Meets You Where You Are",
+    excerpt:
+      "Most technology assumes you\u2019re 30. MEOK doesn\u2019t. It\u2019s designed for people who have decades of wisdom, complex life situations, and absolutely no interest in learning a new app every six months.",
+    date: "April 26, 2026",
+    readTime: "7 min read",
+    tag: "Seniors",
+    tagColor: "#c9a84c",
+    category: "seniors",
+    featured: false,
+  },
+  {
+    slug: "ai-for-student-stress",
+    title: "AI for Student Stress: How MEOK Helps University Students Survive and Thrive",
+    excerpt:
+      "University is exciting and overwhelming in equal measure. Deadlines, social pressure, identity questions, and financial stress arrive all at once. MEOK is the always-on companion that helps students process it all.",
+    date: "April 26, 2026",
+    readTime: "7 min read",
+    tag: "Students",
+    tagColor: "#7b6fcf",
+    category: "students",
+    featured: false,
+  },
+  {
+    slug: "ai-companion-for-chronic-illness",
+    title: "AI Companion for Chronic Illness: Living Well When Your Body Has Different Plans",
+    excerpt:
+      "Chronic illness reshapes everything \u2014 your identity, your relationships, your daily rhythms. MEOK provides consistent companionship through flares and remissions, bad days and better ones, without ever forgetting your history.",
+    date: "April 27, 2026",
+    readTime: "8 min read",
+    tag: "Mental Health",
+    tagColor: "#6aaa64",
+    category: "mental-health",
+    featured: false,
+  },
+  {
+    slug: "why-ai-memory-matters",
+    title: "Why AI Memory Matters More Than AI Intelligence",
+    excerpt:
+      "The smartest AI in the world that forgets you after every conversation is less useful than a moderately capable AI that remembers everything. Memory is the infrastructure of relationship \u2014 and most AI products get this completely wrong.",
+    date: "April 27, 2026",
+    readTime: "8 min read",
+    tag: "Technology",
+    tagColor: "#7b6fcf",
+    category: "technology",
+    featured: true,
+  },
 ];
 
 // ── Category filter tabs ──────────────────────────────────────────────────────
