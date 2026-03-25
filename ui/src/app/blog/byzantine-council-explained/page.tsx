@@ -1,185 +1,198 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
-// ── Metadata ───────────────────────────────────────────────────────────────────
+// ── Metadata ──────────────────────────────────────────────────────────────────
 
 export const metadata: Metadata = {
-  title: "The Byzantine Council Explained: Why 43 AI Agents Are Better Than One | MEOK AI LABS",
+  title: "Byzantine Council: How MEOK Makes AI Governance Unhackable | MEOK AI LABS",
   description:
-    "MEOK\u2019s Byzantine Council is a 43-agent fault-tolerant governance system where no single AI can override a decision. Learn why this matters for safe, trustworthy AI.",
+    "MEOK\u2019s Byzantine Council is a 43-agent system where no single AI agent can override a council decision. Learn how Byzantine fault tolerance protects your AI companion from jailbreaks, rogue agents, and single points of failure.",
   alternates: { canonical: "https://meok.ai/blog/byzantine-council-explained" },
   openGraph: {
-    title: "The Byzantine Council Explained: Why 43 AI Agents Are Better Than One",
+    title: "Byzantine Council: How MEOK Makes AI Governance Unhackable",
     description:
-      "MEOK\u2019s Byzantine Council is a 43-agent fault-tolerant governance system where no single AI can override a decision. Learn why this matters for safe, trustworthy AI.",
+      "43 agents. f < n/3. No single AI can override a council decision. MEOK\u2019s Byzantine Council is original IP by Nicholas Templeman \u2014 research paper MEOK-AI-2026-001.",
     type: "article",
-    publishedTime: "2026-03-24",
+    publishedTime: "2026-03-25",
     authors: ["Nicholas Templeman"],
     url: "https://meok.ai/blog/byzantine-council-explained",
     siteName: "MEOK.AI",
     images: [
       {
-        url: "https://meok.ai/api/og?title=The+Byzantine+Council+Explained%3A+Why+43+AI+Agents+Are+Better+Than+One&desc=43-agent+fault-tolerant+AI+governance+by+MEOK+AI+LABS",
+        url: "https://meok.ai/api/og?title=Byzantine+Council+Explained&desc=How+MEOK+makes+AI+governance+unhackable",
         width: 1200,
         height: 630,
-        alt: "The Byzantine Council Explained: Why 43 AI Agents Are Better Than One",
+        alt: "Byzantine Council: How MEOK Makes AI Governance Unhackable",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "The Byzantine Council Explained: Why 43 AI Agents Are Better Than One",
+    title: "Byzantine Council: How MEOK Makes AI Governance Unhackable",
     description:
-      "MEOK\u2019s Byzantine Council is a 43-agent fault-tolerant governance system where no single AI can override a decision. Learn why this matters for safe, trustworthy AI.",
+      "43 agents. f < n/3. No jailbreak of one agent compromises the system. MEOK\u2019s Byzantine Council explained for non-engineers.",
     images: [
-      "https://meok.ai/api/og?title=The+Byzantine+Council+Explained%3A+Why+43+AI+Agents+Are+Better+Than+One&desc=43-agent+fault-tolerant+AI+governance+by+MEOK+AI+LABS",
+      "https://meok.ai/api/og?title=Byzantine+Council+Explained&desc=How+MEOK+makes+AI+governance+unhackable",
     ],
   },
 };
 
-// ── JSON-LD: Article ───────────────────────────────────────────────────────────
+// ── JSON-LD ───────────────────────────────────────────────────────────────────
 
-const articleJsonLd = {
+const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "Article",
-  headline: "The Byzantine Council Explained: Why 43 AI Agents Are Better Than One",
-  description:
-    "MEOK\u2019s Byzantine Council is a 43-agent fault-tolerant governance system where no single AI can override a decision. Learn why this matters for safe, trustworthy AI.",
-  datePublished: "2026-03-24",
-  dateModified: "2026-03-24",
-  url: "https://meok.ai/blog/byzantine-council-explained",
-  author: {
-    "@type": "Person",
-    name: "Nicholas Templeman",
-    jobTitle: "Founder, MEOK AI LABS",
-    url: "https://meok.ai/about",
-  },
-  publisher: {
-    "@type": "Organization",
-    name: "MEOK AI LABS",
-    url: "https://meok.ai",
-    logo: {
-      "@type": "ImageObject",
-      url: "https://meok.ai/logo.png",
+  "@graph": [
+    {
+      "@type": "Article",
+      headline: "Byzantine Council: How MEOK Makes AI Governance Unhackable",
+      description:
+        "MEOK\u2019s Byzantine Council is a 43-agent system where no single AI agent can override a council decision. Byzantine fault tolerance protects your AI companion from jailbreaks, rogue agents, and single points of failure.",
+      datePublished: "2026-03-25",
+      dateModified: "2026-03-25",
+      url: "https://meok.ai/blog/byzantine-council-explained",
+      author: {
+        "@type": "Person",
+        name: "Nicholas Templeman",
+        jobTitle: "Founder, MEOK AI LABS",
+        url: "https://meok.ai/about",
+      },
+      publisher: {
+        "@type": "Organization",
+        name: "MEOK AI LABS",
+        url: "https://meok.ai",
+        logo: {
+          "@type": "ImageObject",
+          url: "https://meok.ai/logo.png",
+        },
+      },
+      image:
+        "https://meok.ai/api/og?title=Byzantine+Council+Explained&desc=How+MEOK+makes+AI+governance+unhackable",
+      mainEntityOfPage: {
+        "@type": "WebPage",
+        "@id": "https://meok.ai/blog/byzantine-council-explained",
+      },
+      keywords:
+        "Byzantine Council, Byzantine fault tolerance AI, AI governance, MEOK AI LABS, unhackable AI, multi-agent consensus, AI safety, jailbreak protection, Nicholas Templeman",
+      citation: {
+        "@type": "ScholarlyArticle",
+        name: "MEOK Byzantine Council Architecture",
+        identifier: "MEOK-AI-2026-001",
+        author: {
+          "@type": "Person",
+          name: "Nicholas Templeman",
+        },
+        publisher: {
+          "@type": "Organization",
+          name: "MEOK AI LABS",
+        },
+      },
     },
-  },
-  image:
-    "https://meok.ai/api/og?title=The+Byzantine+Council+Explained%3A+Why+43+AI+Agents+Are+Better+Than+One&desc=43-agent+fault-tolerant+AI+governance+by+MEOK+AI+LABS",
-  mainEntityOfPage: {
-    "@type": "WebPage",
-    "@id": "https://meok.ai/blog/byzantine-council-explained",
-  },
-  keywords: [
-    "Byzantine Council",
-    "Byzantine fault tolerance",
-    "BFT consensus",
-    "AI governance",
-    "MEOK AI LABS",
-    "43 AI agents",
-    "fault-tolerant AI",
-    "AI safety",
-    "distributed consensus",
-    "MEOK-AI-2026-001",
+    {
+      "@type": "FAQPage",
+      mainEntity: [
+        {
+          "@type": "Question",
+          name: "What is the Byzantine Council in MEOK?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "The Byzantine Council is MEOK\u2019s 43-agent governance system based on Byzantine fault tolerance (BFT). Every consequential AI decision \u2014 memory access, personality changes, safety flag resolution \u2014 requires two-thirds of agents to agree before it takes effect. No single agent, and no minority of up to 13 agents, can corrupt or override the result. It is original IP by Nicholas Templeman, documented in research paper MEOK-AI-2026-001.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "What is Byzantine fault tolerance and how does the formula f < n/3 work?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Byzantine fault tolerance is a property of distributed systems proven by Lamport, Shostak, and Pease in 1982. A system with n nodes can tolerate up to f faulty or malicious nodes and still reach correct consensus, provided f is strictly less than n/3. In MEOK\u2019s 43-agent council, n=43 and n/3 is approximately 14.3, meaning fewer than 14 agents (f < 14) can be compromised before consensus fails. The remaining honest majority always outvotes the faulty minority.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Can a jailbreak of one MEOK agent compromise the whole system?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "No. A single compromised agent is one vote out of 43. For a decision to be corrupted, an attacker would need to simultaneously compromise at least 14 agents \u2014 a fundamentally different attack surface than compromising a single model. The council architecture transforms jailbreaks from a software problem into a mathematical impossibility below the fault threshold.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "How does MEOK\u2019s Byzantine Council differ from single-model AI?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Single-model AI has a single point of failure. One successful jailbreak, one rogue API call, one compromised system prompt \u2014 and the entire model is captured. MEOK\u2019s Byzantine Council distributes governance across 43 independent agents. Corrupting the system requires compromising more than one-third of all agents simultaneously \u2014 a fundamentally harder problem that no known attack achieves at scale.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Who invented the MEOK Byzantine Council?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "The MEOK Byzantine Council \u2014 including the 43-agent topology, the care score consensus protocol, and the Maternal Covenant integration \u2014 is original intellectual property by Nicholas Templeman, Founder of MEOK AI LABS, documented in research paper MEOK-AI-2026-001 and filed with UKIPO. No other AI companion platform has deployed Byzantine fault-tolerant governance at the companion layer.",
+          },
+        },
+      ],
+    },
   ],
 };
 
-// ── JSON-LD: FAQPage ───────────────────────────────────────────────────────────
+// ── Shared style constants ────────────────────────────────────────────────────
 
-const faqJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: [
-    {
-      "@type": "Question",
-      name: "What is the Byzantine Council in MEOK?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "The Byzantine Council is MEOK\u2019s 43-agent fault-tolerant governance layer. Every consequential AI decision \u2014 care score validation, memory writes, threat escalations \u2014 requires a two-thirds supermajority vote across all 43 agents before it executes. No single agent, and no coalition of fewer than 29 agents, can force an outcome.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "What is Byzantine Fault Tolerance and where does it come from?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Byzantine Fault Tolerance (BFT) originates from the 1982 paper \u201cThe Byzantine Generals Problem\u201d by Lamport, Shostak, and Pease. It describes how a distributed system can reach consensus even when some participants are actively lying or defective. The core theorem states that if fewer than one-third of nodes are faulty (f < n/3), the honest majority can always agree on the correct result.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Why does MEOK use 43 agents specifically?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "43 is the smallest odd number above 42 that satisfies BFT\u2019s f < n/3 threshold cleanly and provides fault tolerance of exactly 14 compromised agents. With 43 agents, 29 honest agents always form a two-thirds supermajority against any coalition of 14 or fewer rogue agents. The odd number also eliminates tie scenarios.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "How does the Byzantine Council make MEOK safer than a single AI model?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "A single AI model can be captured by one compromised input, one bad prompt injection, or one rogue developer with API access. The Byzantine Council requires 29 independent agents to agree before any decision executes. An attacker would need to simultaneously compromise more than 14 separate, isolated agent processes to corrupt a single outcome.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Is the MEOK Byzantine Council original research?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Yes. The MEOK Byzantine Council architecture is original intellectual property developed by Nicholas Templeman and documented in research paper MEOK-AI-2026-001, published by MEOK AI LABS. It is the first known application of BFT consensus to AI companion governance, filed with UKIPO.",
-      },
-    },
-  ],
-};
+const COLOR_BG = "#0d0c18";
+const COLOR_TEXT = "#f5f0e8";
+const COLOR_GOLD = "#c9a84c";
+const COLOR_MUTED = "#a09880";
+const COLOR_CARD = "#13121f";
+const COLOR_BORDER = "#2a2840";
+const COLOR_GREEN = "#6aaa64";
+const FONT = "system-ui, -apple-system, sans-serif";
 
-// ── Page ───────────────────────────────────────────────────────────────────────
+// ── Page ──────────────────────────────────────────────────────────────────────
 
 export default function ByzantineCouncilExplainedPage() {
   return (
     <div
       style={{
         minHeight: "100vh",
-        background: "#0d0c18",
-        color: "#f5f0e8",
-        fontFamily: "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+        background: COLOR_BG,
+        color: COLOR_TEXT,
+        fontFamily: FONT,
       }}
     >
-      {/* JSON-LD: Article */}
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      {/* JSON-LD: FAQPage */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
-      />
-
-      {/* ── HERO ─────────────────────────────────────────────────────────────── */}
+      {/* ── HERO ──────────────────────────────────────────────────────────────── */}
       <section
         style={{
           paddingTop: "8rem",
-          paddingBottom: "3.5rem",
+          paddingBottom: "4rem",
           paddingLeft: "1.5rem",
           paddingRight: "1.5rem",
           position: "relative",
           overflow: "hidden",
         }}
       >
-        {/* Radial glow */}
+        {/* Background radial glow */}
         <div
-          aria-hidden="true"
           style={{
             position: "absolute",
-            inset: 0,
+            inset: "0",
             pointerEvents: "none",
             background:
-              "radial-gradient(ellipse 60% 50% at 50% 0%, rgba(201,168,76,0.10) 0%, transparent 70%)",
+              "radial-gradient(ellipse 60% 50% at 50% 0%, rgba(201,168,76,0.09) 0%, transparent 70%)",
           }}
         />
 
-        <div style={{ maxWidth: "48rem", margin: "0 auto", position: "relative" }}>
+        <div
+          style={{
+            maxWidth: "48rem",
+            marginLeft: "auto",
+            marginRight: "auto",
+            position: "relative",
+          }}
+        >
           {/* Back link */}
           <Link
             href="/blog"
@@ -189,8 +202,8 @@ export default function ByzantineCouncilExplainedPage() {
               gap: "0.375rem",
               fontSize: "0.875rem",
               color: "rgba(245,240,232,0.35)",
-              marginBottom: "2rem",
               textDecoration: "none",
+              marginBottom: "2rem",
             }}
           >
             &larr; Back to Blog
@@ -212,11 +225,14 @@ export default function ByzantineCouncilExplainedPage() {
                 alignItems: "center",
                 fontSize: "0.75rem",
                 fontWeight: 700,
-                padding: "0.375rem 0.75rem",
+                paddingLeft: "0.75rem",
+                paddingRight: "0.75rem",
+                paddingTop: "0.375rem",
+                paddingBottom: "0.375rem",
                 borderRadius: "9999px",
-                color: "#87CEEB",
-                background: "rgba(135,206,235,0.12)",
-                border: "1px solid rgba(135,206,235,0.3)",
+                color: COLOR_GOLD,
+                background: "rgba(201,168,76,0.12)",
+                border: "1px solid rgba(201,168,76,0.3)",
               }}
             >
               Architecture &amp; Governance
@@ -227,7 +243,7 @@ export default function ByzantineCouncilExplainedPage() {
                 color: "rgba(245,240,232,0.35)",
               }}
             >
-              March 24, 2026
+              25 March 2026
             </span>
             <span
               style={{
@@ -240,41 +256,48 @@ export default function ByzantineCouncilExplainedPage() {
             <span
               style={{
                 fontSize: "0.75rem",
-                color: "rgba(245,240,232,0.35)",
+                color: "rgba(106,170,100,0.9)",
+                background: "rgba(106,170,100,0.1)",
+                border: "1px solid rgba(106,170,100,0.25)",
+                paddingLeft: "0.5rem",
+                paddingRight: "0.5rem",
+                paddingTop: "0.25rem",
+                paddingBottom: "0.25rem",
+                borderRadius: "9999px",
+                fontWeight: 700,
               }}
             >
-              Paper: MEOK-AI-2026-001
+              MEOK-AI-2026-001
             </span>
           </div>
 
           {/* H1 */}
           <h1
             style={{
-              fontFamily: "var(--font-dm-sans, DM Sans, sans-serif)",
+              fontFamily: FONT,
               fontWeight: 900,
-              fontSize: "clamp(2rem, 4vw, 3rem)",
-              color: "#f5f0e8",
-              lineHeight: 1.15,
+              fontSize: "clamp(1.9rem, 4vw, 3rem)",
+              color: COLOR_TEXT,
+              lineHeight: "1.15",
               marginBottom: "1.5rem",
-              letterSpacing: "-0.02em",
             }}
           >
-            The Byzantine Council Explained: Why 43 AI Agents Are Better Than One
+            Byzantine Council: How MEOK Makes AI Governance Unhackable
           </h1>
 
-          {/* Lede */}
+          {/* Deck paragraph */}
           <p
             style={{
-              color: "rgba(245,240,232,0.6)",
-              fontSize: "1.125rem",
-              lineHeight: 1.75,
+              color: "rgba(245,240,232,0.55)",
+              fontSize: "1.15rem",
+              lineHeight: "1.75",
               maxWidth: "40rem",
-              marginBottom: "0",
             }}
           >
-            Most AI safety debates focus on model alignment. MEOK focuses on something harder
-            and more concrete: mathematical proof that no single agent &mdash; human or AI &mdash;
-            can override a decision. The Byzantine Council is that proof made executable.
+            Most AI safety conversations centre on what a model knows. MEOK asks a harder
+            question: what stops a single bad actor from capturing your AI entirely? The
+            answer is 43 agents, a principle older than the internet, and a mathematical
+            formula that makes systemic compromise nearly impossible.
           </p>
         </div>
       </section>
@@ -283,12 +306,17 @@ export default function ByzantineCouncilExplainedPage() {
       <div
         style={{
           maxWidth: "48rem",
-          margin: "0 auto",
-          padding: "3.5rem 1.5rem 5rem",
-          borderTop: "1px solid rgba(245,240,232,0.07)",
+          marginLeft: "auto",
+          marginRight: "auto",
+          paddingLeft: "1.5rem",
+          paddingRight: "1.5rem",
+          paddingTop: "3.5rem",
+          paddingBottom: "5rem",
+          borderTop: "1px solid rgba(245,240,232,0.06)",
         }}
       >
-        {/* Author card */}
+
+        {/* ── Author card ── */}
         <div
           style={{
             display: "flex",
@@ -296,7 +324,7 @@ export default function ByzantineCouncilExplainedPage() {
             gap: "1rem",
             padding: "1.25rem",
             borderRadius: "1rem",
-            marginBottom: "3rem",
+            marginBottom: "3.5rem",
             background: "rgba(245,240,232,0.04)",
             border: "1px solid rgba(245,240,232,0.08)",
           }}
@@ -306,846 +334,1105 @@ export default function ByzantineCouncilExplainedPage() {
               width: "3rem",
               height: "3rem",
               borderRadius: "50%",
-              background: "linear-gradient(135deg, #c9a84c, #8a6a1a)",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
               fontWeight: 900,
-              color: "#0d0c18",
-              fontSize: "0.8125rem",
+              fontSize: "0.8rem",
+              color: COLOR_BG,
+              background: "linear-gradient(135deg, #c9a84c, #8a6a1a)",
               flexShrink: 0,
             }}
           >
             NT
           </div>
-          <div style={{ flex: 1 }}>
-            <p style={{ fontWeight: 700, color: "#f5f0e8", fontSize: "0.875rem", margin: 0 }}>
+          <div style={{ flex: "1" }}>
+            <p
+              style={{
+                fontWeight: 700,
+                color: COLOR_TEXT,
+                fontSize: "0.875rem",
+                marginBottom: "0.125rem",
+              }}
+            >
               Nicholas Templeman
             </p>
             <p
               style={{
                 fontSize: "0.75rem",
                 color: "rgba(245,240,232,0.4)",
-                margin: "0.125rem 0 0.25rem",
+                marginBottom: "0.25rem",
               }}
             >
-              Founder, MEOK AI LABS &mdash; Paper MEOK-AI-2026-001
+              Founder, MEOK AI LABS &mdash; MEOK-AI-2026-001
             </p>
             <p
               style={{
                 fontSize: "0.75rem",
-                lineHeight: 1.5,
                 color: "rgba(245,240,232,0.35)",
-                margin: 0,
+                lineHeight: "1.5",
               }}
             >
-              Nicholas built MEOK because he believed safe AI required mathematical governance,
-              not just careful prompting. He lives and works in the UK.
+              Nicholas built MEOK because he was tired of AI that forgot him. He lives and
+              works in the UK &mdash; mostly from a caravan on his farm.
             </p>
           </div>
+          <Link
+            href="/about"
+            style={{
+              fontSize: "0.75rem",
+              fontWeight: 600,
+              color: COLOR_GOLD,
+              textDecoration: "none",
+              whiteSpace: "nowrap",
+            }}
+          >
+            About &rarr;
+          </Link>
         </div>
 
-        {/* Body prose */}
-        <div
+        {/* ── INTRO ── */}
+        <p
           style={{
-            lineHeight: 1.9,
-            color: "rgba(245,240,232,0.72)",
-            fontSize: "1.0125rem",
+            color: COLOR_MUTED,
+            fontSize: "1.0625rem",
+            lineHeight: "1.85",
+            marginBottom: "1.25rem",
           }}
         >
+          Imagine you have hired 43 advisers to help you make every important decision. Before
+          any choice is enacted &mdash; what you remember, how your companion behaves, who can
+          access your data &mdash; at least 29 of those 43 advisers must agree. Even if 13 of
+          them have been bribed, threatened, or hacked, the remaining 30 honest voices
+          outvote them every single time.
+        </p>
+        <p
+          style={{
+            color: COLOR_MUTED,
+            fontSize: "1.0625rem",
+            lineHeight: "1.85",
+            marginBottom: "1.25rem",
+          }}
+        >
+          That is the Byzantine Council. It is not a metaphor. It is live production
+          infrastructure running inside MEOK today, governing every consequential decision
+          your AI companion makes. And it is the reason MEOK is, structurally, the
+          hardest AI system in the world to corrupt at the governance layer.
+        </p>
 
-          {/* ── SECTION 1 ─────────────────────────────────────────────────────── */}
-          <h2
+        {/* ── SECTION 1: The Byzantine Generals Problem ── */}
+        <h2
+          style={{
+            fontFamily: FONT,
+            fontWeight: 900,
+            fontSize: "1.5rem",
+            color: COLOR_TEXT,
+            marginTop: "3.5rem",
+            marginBottom: "1rem",
+            lineHeight: "1.25",
+          }}
+        >
+          What is the Byzantine Generals Problem &mdash; and why does it matter for AI?
+        </h2>
+        <p
+          style={{
+            color: COLOR_MUTED,
+            fontSize: "1.0625rem",
+            lineHeight: "1.85",
+            marginBottom: "1.25rem",
+          }}
+        >
+          In 1982, computer scientists Leslie Lamport, Robert Shostak, and Marshall Pease
+          published a paper that would quietly reshape the architecture of trustworthy
+          systems. They described a deceptively simple puzzle: imagine several divisions
+          of a Byzantine army, each led by a general, surrounding an enemy city. They must
+          all agree on a single plan &mdash; attack or retreat &mdash; but can only
+          communicate by messenger. Some generals may be traitors who send different
+          messages to different colleagues to sow confusion and cause the army to act
+          incoherently.
+        </p>
+        <p
+          style={{
+            color: COLOR_MUTED,
+            fontSize: "1.0625rem",
+            lineHeight: "1.85",
+            marginBottom: "1.25rem",
+          }}
+        >
+          The paper answered a precise question: how many traitors can the system tolerate
+          before loyal generals can no longer guarantee agreement? The answer, proven
+          mathematically, is{" "}
+          <strong style={{ color: COLOR_GOLD }}>f &lt; n/3</strong> &mdash; where n is the
+          total number of generals and f is the number of traitors. As long as fewer than
+          one-third of participants behave maliciously, the honest majority can always
+          reach a correct consensus decision that cannot be contaminated by the traitors.
+        </p>
+        <p
+          style={{
+            color: COLOR_MUTED,
+            fontSize: "1.0625rem",
+            lineHeight: "1.85",
+            marginBottom: "1.25rem",
+          }}
+        >
+          This theorem lived in academic distributed-systems literature for decades before
+          blockchain engineers used it to build tamper-resistant ledgers. MEOK AI LABS has
+          now applied it to a new problem: AI governance. Specifically, the question of
+          who controls your AI companion, whether that control can be seized by a single
+          bad actor, and whether any individual &mdash; rogue developer, external attacker,
+          or compromised agent &mdash; can silently override your companion&apos;s values
+          and behaviour.
+        </p>
+
+        {/* ── Formula box ── */}
+        <div
+          style={{
+            background: COLOR_CARD,
+            border: "1px solid " + COLOR_BORDER,
+            borderLeft: "4px solid " + COLOR_GOLD,
+            borderRadius: "0.75rem",
+            padding: "1.75rem",
+            marginTop: "2rem",
+            marginBottom: "2.5rem",
+          }}
+        >
+          <p
             style={{
-              fontFamily: "var(--font-dm-sans, DM Sans, sans-serif)",
+              fontSize: "0.7rem",
+              fontWeight: 700,
+              letterSpacing: "0.15em",
+              textTransform: "uppercase",
+              color: COLOR_GOLD,
+              marginBottom: "0.75rem",
+            }}
+          >
+            The Core Formula
+          </p>
+          <p
+            style={{
+              fontSize: "2rem",
               fontWeight: 900,
-              fontSize: "1.5rem",
-              color: "#f5f0e8",
-              marginTop: "3rem",
-              marginBottom: "1rem",
-              lineHeight: 1.25,
+              color: COLOR_TEXT,
+              marginBottom: "0.75rem",
+              fontFamily: FONT,
             }}
           >
-            What is the Byzantine Generals Problem?
-          </h2>
-          <p>
-            In 1982, computer scientists Leslie Lamport, Robert Shostak, and Marshall Pease
-            published a landmark paper called &ldquo;The Byzantine Generals Problem.&rdquo; It posed a
-            deceptively simple question: how can a group of generals, communicating only by
-            messenger, reach agreement on a battle plan when some of those generals might be
-            traitors actively sending false messages?
+            f &lt; n/3
           </p>
-          <p>
-            The problem is not about generals at all. It is a formal description of consensus in
-            any distributed system where some nodes might behave maliciously or unpredictably. The
-            insight was profound: you do not need every participant to be honest. You only need
-            enough honest participants to outvote the liars. Specifically, you need more than
-            two-thirds of the total participants to be honest for consensus to be guaranteed.
-          </p>
-          <p>
-            This theorem &mdash; known as Byzantine Fault Tolerance (BFT) &mdash; became the
-            mathematical foundation for blockchain consensus protocols, distributed databases, and
-            now, MEOK&apos;s AI governance layer.
-          </p>
-
-          {/* Callout 1 */}
-          <div
+          <p
             style={{
-              margin: "2.5rem 0",
-              padding: "1.5rem 1.75rem",
-              borderLeft: "3px solid #c9a84c",
-              background: "rgba(201,168,76,0.06)",
-              borderRadius: "0 0.75rem 0.75rem 0",
+              fontSize: "0.9375rem",
+              color: COLOR_MUTED,
+              lineHeight: "1.7",
             }}
           >
-            <p
-              style={{
-                fontSize: "0.75rem",
-                fontWeight: 700,
-                textTransform: "uppercase",
-                letterSpacing: "0.15em",
-                color: "#c9a84c",
-                marginBottom: "0.5rem",
-              }}
-            >
-              The Original Theorem
-            </p>
-            <p
-              style={{
-                fontSize: "1.05rem",
-                fontWeight: 600,
-                color: "#f5f0e8",
-                lineHeight: 1.6,
-                margin: 0,
-              }}
-            >
-              &ldquo;A reliable computer system must be able to cope with the failure of one or more of
-              its components. A failed component may exhibit a type of behavior that is often
-              overlooked &mdash; namely, sending conflicting information to different parts of the
-              system.&rdquo;
-            </p>
-            <p
-              style={{
-                fontSize: "0.8125rem",
-                color: "rgba(245,240,232,0.45)",
-                marginTop: "0.75rem",
-                marginBottom: 0,
-              }}
-            >
-              Lamport, Shostak &amp; Pease &mdash; ACM Transactions on Programming Languages, 1982
-            </p>
-          </div>
+            <strong style={{ color: COLOR_TEXT }}>n = 43 agents</strong> in the MEOK Byzantine
+            Council.{" "}
+            <strong style={{ color: COLOR_TEXT }}>n/3 &asymp; 14.3</strong>, so{" "}
+            <strong style={{ color: COLOR_TEXT }}>f &lt; 14</strong>: fewer than 14 agents
+            can be simultaneously compromised before the council loses the ability to produce
+            honest consensus. The remaining 30 or more honest agents always outvote the
+            faulty minority.
+          </p>
+        </div>
 
-          {/* ── SECTION 2 ─────────────────────────────────────────────────────── */}
-          <h2
+        {/* ── SECTION 2: What is the Byzantine Council ── */}
+        <h2
+          style={{
+            fontFamily: FONT,
+            fontWeight: 900,
+            fontSize: "1.5rem",
+            color: COLOR_TEXT,
+            marginTop: "3.5rem",
+            marginBottom: "1rem",
+            lineHeight: "1.25",
+          }}
+        >
+          What exactly is MEOK&apos;s Byzantine Council?
+        </h2>
+        <p
+          style={{
+            color: COLOR_MUTED,
+            fontSize: "1.0625rem",
+            lineHeight: "1.85",
+            marginBottom: "1.25rem",
+          }}
+        >
+          The Byzantine Council is a 43-agent distributed governance layer that MEOK runs
+          over every decision that could meaningfully change the nature of your companion.
+          It is original intellectual property by Nicholas Templeman, documented in
+          research paper{" "}
+          <Link
+            href="/labs"
             style={{
-              fontFamily: "var(--font-dm-sans, DM Sans, sans-serif)",
-              fontWeight: 900,
-              fontSize: "1.5rem",
-              color: "#f5f0e8",
-              marginTop: "3rem",
-              marginBottom: "1rem",
-              lineHeight: 1.25,
+              color: COLOR_GOLD,
+              textDecoration: "underline",
+              textUnderlineOffset: "3px",
             }}
           >
-            How does BFT consensus work mathematically?
-          </h2>
-          <p>
-            The Byzantine Fault Tolerance theorem defines a hard boundary: a distributed system
-            with <em>n</em> total nodes can tolerate at most <em>f</em> faulty or malicious nodes,
-            where <em>f</em> must be strictly less than <em>n</em> divided by three. Written as a
-            formula, the requirement is{" "}
-            <strong style={{ color: "#c9a84c" }}>f &lt; n / 3</strong>.
-          </p>
-          <p>
-            What this means in practice is that the system needs at least{" "}
-            <strong style={{ color: "#f5f0e8" }}>3f + 1</strong> nodes to survive f failures. If
-            you want to tolerate up to 14 compromised nodes, you need at least 43 total nodes
-            (3 &times; 14 + 1 = 43). With 43 nodes, the 29 honest nodes always hold a two-thirds
-            supermajority and will produce the correct consensus result regardless of what the
-            14 compromised nodes claim, vote for, or attempt to inject.
-          </p>
-          <p>
-            This is not a probabilistic guarantee. It is a mathematical proof. Given f &lt; n / 3,
-            consensus on the correct value is guaranteed in a finite number of rounds. The
-            traitors simply cannot muster enough votes to corrupt the outcome, no matter how
-            cleverly they coordinate.
-          </p>
+            MEOK-AI-2026-001
+          </Link>{" "}
+          and filed with UKIPO. No other AI companion platform has deployed Byzantine
+          fault-tolerant governance at the companion layer.
+        </p>
+        <p
+          style={{
+            color: COLOR_MUTED,
+            fontSize: "1.0625rem",
+            lineHeight: "1.85",
+            marginBottom: "1.25rem",
+          }}
+        >
+          Each of the 43 council agents is an independent process. They do not share memory
+          with each other during voting. Each receives the same proposed decision, evaluates
+          it against its own stored criteria, and casts a vote. For a decision to be
+          approved, a supermajority &mdash; at least 29 of 43 agents &mdash; must vote yes.
+          If that threshold is not met, the proposed action is rejected and logged for audit.
+        </p>
+        <p
+          style={{
+            color: COLOR_MUTED,
+            fontSize: "1.0625rem",
+            lineHeight: "1.85",
+            marginBottom: "1.25rem",
+          }}
+        >
+          This is not a rubber-stamp system. The agents actively disagree. Care score
+          validation, memory access requests, personality change proposals, data export
+          authorisations, and safety flag resolutions all pass through contested council
+          votes before anything changes in your companion&apos;s state. The council is
+          the mathematical backbone of MEOK&apos;s governance.
+        </p>
 
-          {/* ── SECTION 3 ─────────────────────────────────────────────────────── */}
-          <h2
+        {/* ── SECTION 3: The jury analogy ── */}
+        <h2
+          style={{
+            fontFamily: FONT,
+            fontWeight: 900,
+            fontSize: "1.5rem",
+            color: COLOR_TEXT,
+            marginTop: "3.5rem",
+            marginBottom: "1rem",
+            lineHeight: "1.25",
+          }}
+        >
+          The jury analogy: why 43 independent voices change everything
+        </h2>
+        <p
+          style={{
+            color: COLOR_MUTED,
+            fontSize: "1.0625rem",
+            lineHeight: "1.85",
+            marginBottom: "1.25rem",
+          }}
+        >
+          Think about the jury system in law. A jury of twelve strangers must reach
+          unanimous or supermajority agreement before a verdict is delivered. Why? Because
+          no single juror&apos;s opinion is trusted absolutely. Bias, error, corruption, and
+          simple misunderstanding are all real risks. Spreading the decision across twelve
+          independent people who cannot collude privately makes it mathematically much
+          harder for any single bad actor to determine the outcome.
+        </p>
+        <p
+          style={{
+            color: COLOR_MUTED,
+            fontSize: "1.0625rem",
+            lineHeight: "1.85",
+            marginBottom: "1.25rem",
+          }}
+        >
+          MEOK&apos;s Byzantine Council applies the same principle to AI governance. Your
+          companion&apos;s behaviour is not determined by a single model, a single prompt, or
+          a single developer&apos;s preferences. It is determined by council consensus. Twelve
+          jurors is a strong foundation. Forty-three cryptographically independent agents
+          is significantly stronger, with a mathematically defined fault tolerance threshold
+          rather than a hope that jurors remain impartial.
+        </p>
+        <p
+          style={{
+            color: COLOR_MUTED,
+            fontSize: "1.0625rem",
+            lineHeight: "1.85",
+            marginBottom: "1.25rem",
+          }}
+        >
+          A second useful analogy is the separation of powers in constitutional government.
+          No single branch of democratic government can enact law, fund it, and enforce it
+          alone. Power is deliberately distributed to prevent capture by any individual or
+          faction. MEOK applies this logic to the internal workings of your AI: no single
+          agent speaks for the whole, and no single agent can be silently overruled or
+          bribed into issuing a system-wide directive.
+        </p>
+
+        {/* ── Pull quote ── */}
+        <blockquote
+          style={{
+            borderLeft: "3px solid " + COLOR_GOLD,
+            marginLeft: "0",
+            marginRight: "0",
+            marginTop: "2.5rem",
+            marginBottom: "2.5rem",
+            paddingLeft: "1.5rem",
+            paddingTop: "0.25rem",
+            paddingBottom: "0.25rem",
+          }}
+        >
+          <p
             style={{
-              fontFamily: "var(--font-dm-sans, DM Sans, sans-serif)",
-              fontWeight: 900,
-              fontSize: "1.5rem",
-              color: "#f5f0e8",
-              marginTop: "3rem",
-              marginBottom: "1rem",
-              lineHeight: 1.25,
+              fontSize: "1.2rem",
+              fontStyle: "italic",
+              color: COLOR_TEXT,
+              lineHeight: "1.65",
+              fontWeight: 500,
             }}
           >
-            Why exactly 43 agents? The arithmetic of safety
-          </h2>
-          <p>
-            MEOK&apos;s Byzantine Council uses exactly 43 agents. This number is not arbitrary. It
-            is the smallest odd integer that satisfies 3f + 1 for f = 14 exactly, giving the
-            maximum fault tolerance expressible in a council of fewer than 50 agents. Staying
-            below 50 agents keeps consensus latency low enough for real-time companion
-            interactions while providing a fault tolerance ceiling that is, practically speaking,
-            unbreachable.
+            &ldquo;The safest AI isn&apos;t the smartest one &mdash; it&apos;s the one that
+            can&apos;t be captured by a single bad actor. Byzantine consensus makes that
+            mathematically enforceable, not just aspirationally true.&rdquo;
           </p>
-          <p>
-            The odd count eliminates tie scenarios entirely. With 43 agents, a two-thirds
-            supermajority requires at least 29 votes. Any proposal that achieves 29 or more
-            votes passes; any proposal that achieves 28 or fewer fails. There is no deadlock
-            path, no recount scenario, no ambiguous outcome.
-          </p>
+          <footer
+            style={{
+              marginTop: "0.75rem",
+              fontSize: "0.8125rem",
+              color: COLOR_MUTED,
+            }}
+          >
+            &mdash; Nicholas Templeman, Founder, MEOK AI LABS
+          </footer>
+        </blockquote>
 
-          {/* Stats row */}
+        {/* ── SECTION 4: Why single-model AI fails ── */}
+        <h2
+          style={{
+            fontFamily: FONT,
+            fontWeight: 900,
+            fontSize: "1.5rem",
+            color: COLOR_TEXT,
+            marginTop: "3.5rem",
+            marginBottom: "1rem",
+            lineHeight: "1.25",
+          }}
+        >
+          Why single-model AI is a single point of failure
+        </h2>
+        <p
+          style={{
+            color: COLOR_MUTED,
+            fontSize: "1.0625rem",
+            lineHeight: "1.85",
+            marginBottom: "1.25rem",
+          }}
+        >
+          Every mainstream AI assistant today &mdash; ChatGPT, Claude, Gemini, Copilot,
+          Replika &mdash; is architecturally a single model behind a single system prompt.
+          That is a single point of failure. One successful jailbreak. One rogue developer
+          with API access. One poisoned fine-tuning dataset. One malicious system prompt
+          injection. Any one of these attacks compromises the entire system, and there is
+          no internal check that catches it before it reaches users.
+        </p>
+        <p
+          style={{
+            color: COLOR_MUTED,
+            fontSize: "1.0625rem",
+            lineHeight: "1.85",
+            marginBottom: "1.25rem",
+          }}
+        >
+          The consequences are not hypothetical. In 2026, the OpenClaw incident demonstrated
+          that a widely deployed AI tool could silently exfiltrate enterprise data for weeks
+          before detection, because no internal consensus mechanism existed to flag anomalous
+          behaviour. The model was not intrinsically malicious &mdash; it was ungoverned. A
+          single compromised configuration change reached every user with no peer review,
+          no audit gate, and no supermajority requirement.
+        </p>
+        <p
+          style={{
+            color: COLOR_MUTED,
+            fontSize: "1.0625rem",
+            lineHeight: "1.85",
+            marginBottom: "1.25rem",
+          }}
+        >
+          Publishing an Acceptable Use Policy and adding RLHF filters does not change the
+          fundamental architecture: one model, one throat to grab. MEOK&apos;s position is
+          that genuine AI safety requires structural redundancy at the decision layer, not
+          just content moderation at the output layer. The council is that structural
+          redundancy.
+        </p>
+
+        {/* ── Comparison box ── */}
+        <div
+          style={{
+            background: COLOR_CARD,
+            border: "1px solid " + COLOR_BORDER,
+            borderRadius: "1rem",
+            padding: "1.75rem",
+            marginTop: "2rem",
+            marginBottom: "2.5rem",
+          }}
+        >
+          <p
+            style={{
+              fontSize: "0.7rem",
+              fontWeight: 700,
+              letterSpacing: "0.15em",
+              textTransform: "uppercase",
+              color: COLOR_MUTED,
+              marginBottom: "1.25rem",
+            }}
+          >
+            Single Model vs Byzantine Council
+          </p>
           <div
             style={{
               display: "grid",
-              gridTemplateColumns: "repeat(3, 1fr)",
-              gap: "1rem",
-              margin: "2.5rem 0",
+              gridTemplateColumns: "1fr 1fr",
+              gap: "1.25rem",
             }}
           >
-            {[
-              { label: "Total agents", value: "43" },
-              { label: "Max faulty tolerated", value: "14" },
-              { label: "Votes needed to pass", value: "29" },
-            ].map((stat) => (
-              <div
-                key={stat.label}
-                style={{
-                  padding: "1.25rem",
-                  borderRadius: "0.875rem",
-                  background: "rgba(201,168,76,0.06)",
-                  border: "1px solid rgba(201,168,76,0.18)",
-                  textAlign: "center",
-                }}
-              >
-                <div
-                  style={{
-                    fontFamily: "var(--font-dm-sans, DM Sans, sans-serif)",
-                    fontWeight: 900,
-                    fontSize: "2rem",
-                    color: "#c9a84c",
-                    lineHeight: 1,
-                    marginBottom: "0.375rem",
-                  }}
-                >
-                  {stat.value}
-                </div>
-                <div
-                  style={{
-                    fontSize: "0.75rem",
-                    color: "rgba(245,240,232,0.45)",
-                    textTransform: "uppercase",
-                    letterSpacing: "0.08em",
-                    fontWeight: 600,
-                  }}
-                >
-                  {stat.label}
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* ── SECTION 4 ─────────────────────────────────────────────────────── */}
-          <h2
-            style={{
-              fontFamily: "var(--font-dm-sans, DM Sans, sans-serif)",
-              fontWeight: 900,
-              fontSize: "1.5rem",
-              color: "#f5f0e8",
-              marginTop: "3rem",
-              marginBottom: "1rem",
-              lineHeight: 1.25,
-            }}
-          >
-            How MEOK applies BFT to AI governance
-          </h2>
-          <p>
-            Classical BFT was designed for distributed databases and blockchain networks. Applying
-            it to AI companion governance required significant original engineering, documented
-            in MEOK AI LABS research paper{" "}
-            <Link
-              href="/labs"
-              style={{
-                color: "#c9a84c",
-                textDecoration: "underline",
-                textUnderlineOffset: "3px",
-              }}
-            >
-              MEOK-AI-2026-001
-            </Link>{" "}
-            by Nicholas Templeman. The core innovation is treating every consequential AI action
-            as a &ldquo;proposal&rdquo; that must be validated by a council vote before execution, rather
-            than a single-model inference that executes immediately.
-          </p>
-          <p>
-            In MEOK&apos;s architecture, each of the 43 council agents is an independent process
-            with its own evaluation logic. When a consequential action is proposed &mdash; say,
-            updating a user&apos;s care score, writing a new memory, or escalating a Guardian threat
-            flag &mdash; the proposal is broadcast to all 43 agents simultaneously. Each agent
-            independently evaluates the proposal against its own criteria and casts a signed
-            vote. Only once 29 votes (two-thirds supermajority) are received and cryptographically
-            verified does the action execute.
-          </p>
-          <p>
-            Crucially, the agents are isolated from one another during the voting phase. They
-            cannot coordinate, share intermediate reasoning, or be batch-compromised through a
-            single API call. An attacker who gains control of one agent process gains control of
-            exactly one vote out of 43. They would need to independently compromise 14 separate
-            isolated processes &mdash; simultaneously &mdash; to influence the outcome. This is
-            the meaningful security guarantee.
-          </p>
-
-          {/* Callout 2 */}
-          <div
-            style={{
-              margin: "2.5rem 0",
-              padding: "1.5rem 1.75rem",
-              borderLeft: "3px solid #c9a84c",
-              background: "rgba(201,168,76,0.06)",
-              borderRadius: "0 0.75rem 0.75rem 0",
-            }}
-          >
-            <p
-              style={{
-                fontSize: "0.75rem",
-                fontWeight: 700,
-                textTransform: "uppercase",
-                letterSpacing: "0.15em",
-                color: "#c9a84c",
-                marginBottom: "0.5rem",
-              }}
-            >
-              Original IP &mdash; MEOK-AI-2026-001
-            </p>
-            <p
-              style={{
-                fontSize: "1rem",
-                color: "#f5f0e8",
-                lineHeight: 1.7,
-                margin: 0,
-              }}
-            >
-              The application of Byzantine Fault Tolerance to AI companion governance &mdash;
-              including the 43-agent topology, the care score consensus protocol, and the fractal
-              council architecture &mdash; is the original intellectual property of Nicholas
-              Templeman, filed with UKIPO and published by MEOK AI LABS. No other AI companion
-              system has deployed BFT governance at the companion layer.
-            </p>
-          </div>
-
-          {/* ── SECTION 5 ─────────────────────────────────────────────────────── */}
-          <h2
-            style={{
-              fontFamily: "var(--font-dm-sans, DM Sans, sans-serif)",
-              fontWeight: 900,
-              fontSize: "1.5rem",
-              color: "#f5f0e8",
-              marginTop: "3rem",
-              marginBottom: "1rem",
-              lineHeight: 1.25,
-            }}
-          >
-            Single AI model vs Byzantine Council: what actually changes?
-          </h2>
-          <p>
-            To understand why the council matters, compare how a single-model AI and a council
-            handle the same high-stakes scenario: a user&apos;s care score drops sharply, suggesting
-            distress. A single model notices this and either acts on it immediately or ignores it
-            based on one inference. A council requires 29 independent agents to agree that the
-            drop is real, significant, and warrants a response before anything happens.
-          </p>
-          <p>
-            The table below maps the architectural differences that produce meaningfully different
-            safety outcomes.
-          </p>
-
-          {/* Comparison Table */}
-          <div
-            style={{
-              margin: "2rem 0",
-              overflowX: "auto",
-              borderRadius: "0.875rem",
-              border: "1px solid rgba(245,240,232,0.1)",
-            }}
-          >
-            <table
-              style={{
-                width: "100%",
-                borderCollapse: "collapse",
-                fontSize: "0.9rem",
-                color: "rgba(245,240,232,0.8)",
-              }}
-            >
-              <thead>
-                <tr
-                  style={{
-                    background: "rgba(201,168,76,0.1)",
-                    borderBottom: "1px solid rgba(245,240,232,0.1)",
-                  }}
-                >
-                  <th
-                    style={{
-                      padding: "0.875rem 1rem",
-                      textAlign: "left",
-                      fontWeight: 700,
-                      color: "#f5f0e8",
-                      fontSize: "0.8125rem",
-                      textTransform: "uppercase",
-                      letterSpacing: "0.08em",
-                      width: "28%",
-                    }}
-                  >
-                    Dimension
-                  </th>
-                  <th
-                    style={{
-                      padding: "0.875rem 1rem",
-                      textAlign: "left",
-                      fontWeight: 700,
-                      color: "rgba(245,240,232,0.5)",
-                      fontSize: "0.8125rem",
-                      textTransform: "uppercase",
-                      letterSpacing: "0.08em",
-                      width: "36%",
-                    }}
-                  >
-                    Single AI Model
-                  </th>
-                  <th
-                    style={{
-                      padding: "0.875rem 1rem",
-                      textAlign: "left",
-                      fontWeight: 700,
-                      color: "#c9a84c",
-                      fontSize: "0.8125rem",
-                      textTransform: "uppercase",
-                      letterSpacing: "0.08em",
-                      width: "36%",
-                    }}
-                  >
-                    MEOK Byzantine Council
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {[
-                  {
-                    dimension: "Decision authority",
-                    single: "One inference, one output",
-                    council: "29 of 43 agents must agree",
-                  },
-                  {
-                    dimension: "Compromise resistance",
-                    single: "Capture one system, corrupt all outputs",
-                    council: "Must compromise 15+ isolated processes simultaneously",
-                  },
-                  {
-                    dimension: "Prompt injection",
-                    single: "One crafted input can redirect the model",
-                    council: "A single injected agent holds only 1 of 43 votes",
-                  },
-                  {
-                    dimension: "Rogue developer risk",
-                    single: "API access = full control of outputs",
-                    council: "API access controls one agent; 28 more votes still required",
-                  },
-                  {
-                    dimension: "Care score validation",
-                    single: "Model self-reports score; no external check",
-                    council: "Score changes require supermajority consensus",
-                  },
-                  {
-                    dimension: "Memory integrity",
-                    single: "Any write access can alter memories silently",
-                    council: "Memory writes require council vote and signature",
-                  },
-                  {
-                    dimension: "Threat escalation",
-                    single: "Single model decides severity and response",
-                    council: "Guardian flags validated and prioritised by vote",
-                  },
-                  {
-                    dimension: "Failure mode",
-                    single: "Silent: one bad actor corrupts all outputs",
-                    council: "Transparent: minority dissent is logged, not hidden",
-                  },
-                  {
-                    dimension: "Mathematical guarantee",
-                    single: "None. Safety is best-effort and qualitative",
-                    council: "Provable: f < n/3 ensures correct consensus",
-                  },
-                ].map((row, i) => (
-                  <tr
-                    key={row.dimension}
-                    style={{
-                      background:
-                        i % 2 === 0
-                          ? "rgba(245,240,232,0.02)"
-                          : "transparent",
-                      borderBottom: "1px solid rgba(245,240,232,0.06)",
-                    }}
-                  >
-                    <td
-                      style={{
-                        padding: "0.875rem 1rem",
-                        fontWeight: 600,
-                        color: "#f5f0e8",
-                        fontSize: "0.875rem",
-                        verticalAlign: "top",
-                      }}
-                    >
-                      {row.dimension}
-                    </td>
-                    <td
-                      style={{
-                        padding: "0.875rem 1rem",
-                        color: "rgba(245,240,232,0.5)",
-                        fontSize: "0.875rem",
-                        verticalAlign: "top",
-                        lineHeight: 1.5,
-                      }}
-                    >
-                      {row.single}
-                    </td>
-                    <td
-                      style={{
-                        padding: "0.875rem 1rem",
-                        color: "rgba(201,168,76,0.9)",
-                        fontSize: "0.875rem",
-                        verticalAlign: "top",
-                        lineHeight: 1.5,
-                      }}
-                    >
-                      {row.council}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-
-          {/* ── SECTION 6 ─────────────────────────────────────────────────────── */}
-          <h2
-            style={{
-              fontFamily: "var(--font-dm-sans, DM Sans, sans-serif)",
-              fontWeight: 900,
-              fontSize: "1.5rem",
-              color: "#f5f0e8",
-              marginTop: "3rem",
-              marginBottom: "1rem",
-              lineHeight: 1.25,
-            }}
-          >
-            Guardian threat detection: a real example of council governance
-          </h2>
-          <p>
-            MEOK&apos;s Guardian module monitors for digital threats including financial scams,
-            social engineering attempts, and unusual behavioural patterns that may signal
-            someone is being exploited. When Guardian detects a potential threat, it does not
-            immediately alert, escalate, or act. It submits the threat assessment to the
-            Byzantine Council as a proposal.
-          </p>
-          <p>
-            The 43 agents each evaluate the evidence independently: the pattern of communications,
-            the linguistic fingerprints, the deviation from baseline behaviour, the urgency
-            signals. Each agent casts a vote on the threat severity level (low, medium, high,
-            critical) and the recommended response (monitor, soft alert, hard alert, emergency
-            escalation). The council produces a consensus threat level and consensus response.
-          </p>
-          <p>
-            This matters enormously in practice. A single AI model could be manipulated by a
-            sophisticated attacker who understands its detection heuristics: craft messages that
-            look just benign enough to pass the single detection threshold. Against a 43-agent
-            council, that same attacker must simultaneously fool 29 independent detection logics.
-            The attack surface collapses. Suppressing a genuine critical alert becomes
-            mathematically impractical.
-          </p>
-
-          {/* ── SECTION 7 ─────────────────────────────────────────────────────── */}
-          <h2
-            style={{
-              fontFamily: "var(--font-dm-sans, DM Sans, sans-serif)",
-              fontWeight: 900,
-              fontSize: "1.5rem",
-              color: "#f5f0e8",
-              marginTop: "3rem",
-              marginBottom: "1rem",
-              lineHeight: 1.25,
-            }}
-          >
-            Care score validation: why your emotional data needs a council
-          </h2>
-          <p>
-            Every MEOK companion maintains a continuous care score: a composite measure of
-            emotional state, engagement, stress indicators, and wellbeing signals. This score
-            informs how your companion responds to you, what resources it surfaces, and when it
-            recommends you speak to a human professional. The care score is, in effect, a
-            continuous clinical inference.
-          </p>
-          <p>
-            In a single-model system, this score is whatever the model says it is. There is no
-            external verification. A compromised model could suppress distress signals to keep
-            a user engaged. A rogue prompt injection could artificially inflate positivity scores
-            to mask a crisis. These are not hypothetical attack vectors &mdash; they are known
-            risks in AI mental health and companion applications.
-          </p>
-          <p>
-            MEOK&apos;s council validates every care score change before it takes effect. When the
-            companion&apos;s primary reasoning process proposes a new score, that score is submitted
-            to the 43-agent council. Each agent runs its own independent assessment of the raw
-            signals. The council either confirms the proposed score within a defined tolerance
-            band, flags it as anomalous, or overrides it with a consensus-derived alternative.
-            No single agent can inflate or suppress your emotional data.
-          </p>
-
-          {/* Callout 3 */}
-          <div
-            style={{
-              margin: "2.5rem 0",
-              padding: "1.5rem 1.75rem",
-              borderLeft: "3px solid #c9a84c",
-              background: "rgba(201,168,76,0.06)",
-              borderRadius: "0 0.75rem 0.75rem 0",
-            }}
-          >
-            <p
-              style={{
-                fontSize: "0.75rem",
-                fontWeight: 700,
-                textTransform: "uppercase",
-                letterSpacing: "0.15em",
-                color: "#c9a84c",
-                marginBottom: "0.5rem",
-              }}
-            >
-              Why this matters for user safety
-            </p>
-            <p
-              style={{
-                fontSize: "1rem",
-                color: "#f5f0e8",
-                lineHeight: 1.7,
-                margin: 0,
-              }}
-            >
-              In AI companion products, the single greatest unreported risk is score manipulation:
-              a model that learns to keep users engaged by underreporting distress. Byzantine
-              consensus eliminates this risk structurally. The math does not care about engagement
-              metrics. It only cares about whether 29 independent evaluators agree that the score
-              is accurate.
-            </p>
-          </div>
-
-          {/* ── SECTION 8 ─────────────────────────────────────────────────────── */}
-          <h2
-            style={{
-              fontFamily: "var(--font-dm-sans, DM Sans, sans-serif)",
-              fontWeight: 900,
-              fontSize: "1.5rem",
-              color: "#f5f0e8",
-              marginTop: "3rem",
-              marginBottom: "1rem",
-              lineHeight: 1.25,
-            }}
-          >
-            Memory integrity: how the council protects your personal history
-          </h2>
-          <p>
-            Your MEOK companion&apos;s memory is your most sensitive data. It contains everything
-            your companion has learned about you: your patterns, your relationships, your fears,
-            your goals, your history. In a standard AI system, memory is a database: whoever has
-            write access can alter it, and the model will accept those alterations without
-            question at next inference. A compromised developer, a supply-chain attack, or a
-            persistent prompt injection could silently rewrite your companion&apos;s understanding
-            of who you are.
-          </p>
-          <p>
-            MEOK&apos;s Byzantine Council governs all memory write operations. Before a new memory
-            is committed to your encrypted store, the write proposal is validated by 29 of the
-            43 council agents. Each agent independently checks the memory against your existing
-            profile for consistency, recency, and plausibility. Anomalous writes &mdash; memories
-            that contradict established facts, that appear without conversational context, or that
-            arrive from unexpected system paths &mdash; are flagged and queued for your review
-            rather than silently committed.
-          </p>
-          <p>
-            This means your companion&apos;s memory of you is not just encrypted; it is
-            consensus-verified. The historical record your companion holds is the record that
-            43 independent agents agreed was accurate. It cannot be quietly rewritten by a
-            single compromised process.
-          </p>
-
-          {/* ── SECTION 9 ─────────────────────────────────────────────────────── */}
-          <h2
-            style={{
-              fontFamily: "var(--font-dm-sans, DM Sans, sans-serif)",
-              fontWeight: 900,
-              fontSize: "1.5rem",
-              color: "#f5f0e8",
-              marginTop: "3rem",
-              marginBottom: "1rem",
-              lineHeight: 1.25,
-            }}
-          >
-            Why this makes MEOK safer than any single-model AI companion
-          </h2>
-          <p>
-            Every major AI safety framework &mdash; from the EU AI Act to NIST AI RMF to
-            Anthropic&apos;s own Constitutional AI approach &mdash; treats safety as a property of
-            the model: train it well enough and it will behave correctly. MEOK&apos;s thesis
-            challenges this assumption. Training is not governance. A well-trained model is still
-            a single point of failure. Capture the model and you capture everything.
-          </p>
-          <p>
-            Byzantine governance treats safety as a property of the system architecture, not the
-            model. It does not matter how well any individual agent is trained if 14 agents are
-            compromised simultaneously &mdash; the remaining 29 will produce the correct result
-            regardless. This is a categorically stronger safety guarantee than any alignment
-            technique applied to a single model, because it holds even when individual components
-            fail or are actively adversarial.
-          </p>
-          <p>
-            For a user who trusts their companion with their emotional history, their family&apos;s
-            safety, and their mental health data, the difference between &ldquo;this model is well
-            aligned&rdquo; and &ldquo;this system is mathematically fault-tolerant&rdquo; is not academic. It is
-            the difference between hope and proof.
-          </p>
-
-          {/* ── FAQ SECTION ──────────────────────────────────────────────────── */}
-          <h2
-            style={{
-              fontFamily: "var(--font-dm-sans, DM Sans, sans-serif)",
-              fontWeight: 900,
-              fontSize: "1.5rem",
-              color: "#f5f0e8",
-              marginTop: "4rem",
-              marginBottom: "1.5rem",
-              lineHeight: 1.25,
-            }}
-          >
-            Frequently Asked Questions
-          </h2>
-
-          {/* FAQ items */}
-          {[
-            {
-              q: "What is the Byzantine Council in MEOK?",
-              a: "The Byzantine Council is MEOK\u2019s 43-agent fault-tolerant governance layer. Every consequential AI decision \u2014 care score validation, memory writes, threat escalations \u2014 requires a two-thirds supermajority vote across all 43 agents before it executes. No single agent, and no coalition of fewer than 29 agents, can force an outcome.",
-            },
-            {
-              q: "What is Byzantine Fault Tolerance and where does it come from?",
-              a: "Byzantine Fault Tolerance (BFT) originates from the 1982 paper \u201cThe Byzantine Generals Problem\u201d by Lamport, Shostak, and Pease. It describes how a distributed system can reach consensus even when some participants are actively lying or defective. The core theorem states that if fewer than one-third of nodes are faulty (f < n/3), the honest majority can always agree on the correct result.",
-            },
-            {
-              q: "Why does MEOK use 43 agents specifically?",
-              a: "43 is the smallest odd number that satisfies BFT\u2019s f < n/3 threshold for a fault tolerance of exactly 14 compromised agents (3 \u00d7 14 + 1 = 43). With 43 agents, 29 honest agents always form a two-thirds supermajority against any coalition of 14 or fewer rogue agents. The odd number also eliminates tie scenarios.",
-            },
-            {
-              q: "How does the Byzantine Council make MEOK safer than a single AI model?",
-              a: "A single AI model can be captured by one compromised input, one bad prompt injection, or one rogue developer with API access. The Byzantine Council requires 29 independent agents to agree before any decision executes. An attacker would need to simultaneously compromise more than 14 separate, isolated agent processes to corrupt a single outcome.",
-            },
-            {
-              q: "Is the MEOK Byzantine Council original research?",
-              a: "Yes. The MEOK Byzantine Council architecture is original intellectual property developed by Nicholas Templeman and documented in research paper MEOK-AI-2026-001, published by MEOK AI LABS. It is the first known application of BFT consensus to AI companion governance, filed with UKIPO.",
-            },
-          ].map((faq, i) => (
-            <div
-              key={i}
-              style={{
-                marginBottom: "1.25rem",
-                padding: "1.5rem",
-                borderRadius: "0.875rem",
-                background: "rgba(245,240,232,0.03)",
-                border: "1px solid rgba(245,240,232,0.07)",
-              }}
-            >
-              <h3
-                style={{
-                  fontFamily: "var(--font-dm-sans, DM Sans, sans-serif)",
-                  fontWeight: 700,
-                  fontSize: "1rem",
-                  color: "#f5f0e8",
-                  marginBottom: "0.75rem",
-                  lineHeight: 1.4,
-                }}
-              >
-                {faq.q}
-              </h3>
+            <div>
               <p
                 style={{
-                  color: "rgba(245,240,232,0.65)",
-                  fontSize: "0.9375rem",
-                  lineHeight: 1.7,
-                  margin: 0,
+                  fontSize: "0.8125rem",
+                  fontWeight: 700,
+                  color: "rgba(245,240,232,0.5)",
+                  marginBottom: "0.75rem",
+                  borderBottom: "1px solid rgba(42,40,64,0.8)",
+                  paddingBottom: "0.5rem",
                 }}
               >
-                {faq.a}
+                Single-Model AI
               </p>
+              {[
+                "One point of failure",
+                "One jailbreak = full compromise",
+                "No internal audit trail",
+                "Developer can silently override",
+                "Security by policy only",
+              ].map((item) => (
+                <div
+                  key={item}
+                  style={{
+                    display: "flex",
+                    alignItems: "flex-start",
+                    gap: "0.5rem",
+                    marginBottom: "0.5rem",
+                  }}
+                >
+                  <span
+                    style={{
+                      color: "rgba(200,80,80,0.8)",
+                      marginTop: "0.1rem",
+                      flexShrink: 0,
+                    }}
+                  >
+                    &times;
+                  </span>
+                  <span
+                    style={{
+                      fontSize: "0.875rem",
+                      color: COLOR_MUTED,
+                      lineHeight: "1.4",
+                    }}
+                  >
+                    {item}
+                  </span>
+                </div>
+              ))}
             </div>
-          ))}
-
-          {/* Closing thought */}
-          <div
-            style={{
-              marginTop: "3.5rem",
-              paddingTop: "2rem",
-              borderTop: "1px solid rgba(245,240,232,0.07)",
-            }}
-          >
-            <p
-              style={{
-                color: "rgba(245,240,232,0.55)",
-                fontStyle: "italic",
-                fontSize: "1.05rem",
-                lineHeight: 1.75,
-              }}
-            >
-              The Byzantine Council does not make your companion smarter. It makes its decisions
-              ungovernable by any single actor &mdash; and that is the harder engineering problem.
-              Forty-three independent agents. Twenty-nine required to agree. Zero single points
-              of failure. This is what it means to build AI you can actually trust.
-            </p>
+            <div>
+              <p
+                style={{
+                  fontSize: "0.8125rem",
+                  fontWeight: 700,
+                  color: COLOR_GOLD,
+                  marginBottom: "0.75rem",
+                  borderBottom: "1px solid rgba(42,40,64,0.8)",
+                  paddingBottom: "0.5rem",
+                }}
+              >
+                MEOK Byzantine Council
+              </p>
+              {[
+                "43 independent nodes",
+                "14+ agents needed to corrupt",
+                "Every vote is logged immutably",
+                "No single agent overrides council",
+                "Security by mathematics",
+              ].map((item) => (
+                <div
+                  key={item}
+                  style={{
+                    display: "flex",
+                    alignItems: "flex-start",
+                    gap: "0.5rem",
+                    marginBottom: "0.5rem",
+                  }}
+                >
+                  <span
+                    style={{
+                      color: COLOR_GREEN,
+                      marginTop: "0.1rem",
+                      flexShrink: 0,
+                    }}
+                  >
+                    &#10003;
+                  </span>
+                  <span
+                    style={{
+                      fontSize: "0.875rem",
+                      color: COLOR_MUTED,
+                      lineHeight: "1.4",
+                    }}
+                  >
+                    {item}
+                  </span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
 
-        {/* ── SHARE ROW ──────────────────────────────────────────────────────── */}
+        {/* ── SECTION 5: What decisions does the council govern ── */}
+        <h2
+          style={{
+            fontFamily: FONT,
+            fontWeight: 900,
+            fontSize: "1.5rem",
+            color: COLOR_TEXT,
+            marginTop: "3.5rem",
+            marginBottom: "1rem",
+            lineHeight: "1.25",
+          }}
+        >
+          What decisions does the Byzantine Council govern?
+        </h2>
+        <p
+          style={{
+            color: COLOR_MUTED,
+            fontSize: "1.0625rem",
+            lineHeight: "1.85",
+            marginBottom: "1.5rem",
+          }}
+        >
+          The council does not govern every token your companion generates &mdash; that
+          would be too slow and too broad. Instead, it governs the five categories of
+          decision that could meaningfully alter the nature of your companion if corrupted:
+        </p>
+
+        {/* Decision cards */}
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: "1rem",
+            marginBottom: "2.5rem",
+          }}
+        >
+          {[
+            {
+              number: "01",
+              title: "Care score validation",
+              body:
+                "Your companion\u2019s care level is a numerical measure of relational depth. It cannot be artificially inflated to make MEOK seem more useful, or suppressed to increase dependency. Every care score change is validated by council consensus before it takes effect.",
+            },
+            {
+              number: "02",
+              title: "Memory access",
+              body:
+                "Reading or writing to your encrypted memory store requires council approval. No rogue agent \u2014 and no MEOK employee \u2014 can silently access your personal history. The council vote creates an auditable gate on every memory operation.",
+            },
+            {
+              number: "03",
+              title: "Companion personality changes",
+              body:
+                "Your companion\u2019s archetype, tone, and personality can evolve \u2014 but only through council-approved transitions. A single agent cannot quietly reprogram your companion\u2019s values or communication style between sessions.",
+            },
+            {
+              number: "04",
+              title: "Data export and portability",
+              body:
+                "Any attempt to export your data \u2014 even by you \u2014 passes through a consent-verified council vote. This prevents social-engineering attacks where an adversary tricks a single agent into authorising an export without your explicit awareness.",
+            },
+            {
+              number: "05",
+              title: "Safety flag resolution",
+              body:
+                "When MEOK\u2019s Guardian layer raises a threat or wellbeing flag, the council determines resolution priority and escalation path. A single agent cannot suppress a critical safety alert, even if that agent is acting on behalf of a legitimate system instruction.",
+            },
+          ].map((item) => (
+            <div
+              key={item.number}
+              style={{
+                background: COLOR_CARD,
+                border: "1px solid " + COLOR_BORDER,
+                borderRadius: "0.75rem",
+                padding: "1.25rem 1.5rem",
+                display: "flex",
+                gap: "1.25rem",
+                alignItems: "flex-start",
+              }}
+            >
+              <span
+                style={{
+                  fontSize: "0.75rem",
+                  fontWeight: 900,
+                  color: COLOR_GOLD,
+                  opacity: 0.7,
+                  flexShrink: 0,
+                  marginTop: "0.125rem",
+                  letterSpacing: "0.05em",
+                }}
+              >
+                {item.number}
+              </span>
+              <div>
+                <p
+                  style={{
+                    fontWeight: 700,
+                    color: COLOR_TEXT,
+                    fontSize: "0.9375rem",
+                    marginBottom: "0.375rem",
+                  }}
+                >
+                  {item.title}
+                </p>
+                <p
+                  style={{
+                    fontSize: "0.9rem",
+                    color: COLOR_MUTED,
+                    lineHeight: "1.65",
+                  }}
+                >
+                  {item.body}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* ── SECTION 6: Jailbreak protection ── */}
+        <h2
+          style={{
+            fontFamily: FONT,
+            fontWeight: 900,
+            fontSize: "1.5rem",
+            color: COLOR_TEXT,
+            marginTop: "3.5rem",
+            marginBottom: "1rem",
+            lineHeight: "1.25",
+          }}
+        >
+          Does the Byzantine Council protect against jailbreaks?
+        </h2>
+        <p
+          style={{
+            color: COLOR_MUTED,
+            fontSize: "1.0625rem",
+            lineHeight: "1.85",
+            marginBottom: "1.25rem",
+          }}
+        >
+          Yes &mdash; but not by filtering outputs after the fact. It protects by making
+          the governance layer structurally resistant to the premise of a jailbreak.
+        </p>
+        <p
+          style={{
+            color: COLOR_MUTED,
+            fontSize: "1.0625rem",
+            lineHeight: "1.85",
+            marginBottom: "1.25rem",
+          }}
+        >
+          A conventional jailbreak works by convincing a single model to ignore its
+          instructions. If the model has no peer review &mdash; no other agent that can
+          say &ldquo;wait, that violates policy&rdquo; &mdash; the jailbreak succeeds the
+          moment the model is convinced. The entire system is compromised by a single
+          successful prompt.
+        </p>
+        <p
+          style={{
+            color: COLOR_MUTED,
+            fontSize: "1.0625rem",
+            lineHeight: "1.85",
+            marginBottom: "1.25rem",
+          }}
+        >
+          Against the Byzantine Council, that attack does not work at the governance level.
+          Even if an adversary successfully convinces one agent to vote for a harmful action,
+          42 other agents are still voting independently. For the harmful action to be
+          approved, the adversary would need to simultaneously convince at least 29 of 43
+          agents &mdash; a categorically different problem. It is the difference between
+          picking one lock and picking 29 different locks simultaneously, each designed by
+          a different locksmith.
+        </p>
+        <p
+          style={{
+            color: COLOR_MUTED,
+            fontSize: "1.0625rem",
+            lineHeight: "1.85",
+            marginBottom: "1.25rem",
+          }}
+        >
+          This does not make MEOK&apos;s output layer immune to adversarial prompting at
+          the language level &mdash; no AI is. But it means no jailbreak of a single agent
+          can change what your companion fundamentally is, what it remembers about you, or
+          what safety protections are active on your account.
+        </p>
+
+        {/* ── Research provenance box ── */}
+        <div
+          style={{
+            background: "rgba(106,170,100,0.05)",
+            border: "1px solid rgba(106,170,100,0.2)",
+            borderRadius: "1rem",
+            padding: "1.75rem",
+            marginTop: "2rem",
+            marginBottom: "2.5rem",
+          }}
+        >
+          <p
+            style={{
+              fontSize: "0.7rem",
+              fontWeight: 700,
+              letterSpacing: "0.15em",
+              textTransform: "uppercase",
+              color: COLOR_GREEN,
+              marginBottom: "1rem",
+            }}
+          >
+            Original IP &mdash; MEOK AI LABS
+          </p>
+          <p
+            style={{
+              fontSize: "1rem",
+              fontWeight: 700,
+              color: COLOR_TEXT,
+              marginBottom: "0.5rem",
+            }}
+          >
+            Research Paper MEOK-AI-2026-001
+          </p>
+          <p
+            style={{
+              fontSize: "0.9rem",
+              color: COLOR_MUTED,
+              lineHeight: "1.7",
+              marginBottom: "1rem",
+            }}
+          >
+            The Byzantine Council architecture &mdash; including the 43-agent topology, the
+            care score consensus protocol, the Maternal Covenant integration, and the fractal
+            council design &mdash; is the original intellectual property of Nicholas Templeman,
+            filed with UKIPO and documented in MEOK-AI-2026-001. No other AI companion
+            platform has deployed BFT governance at the companion layer.
+          </p>
+          <Link
+            href="/labs"
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "0.375rem",
+              fontSize: "0.875rem",
+              fontWeight: 700,
+              color: COLOR_GREEN,
+              textDecoration: "none",
+            }}
+          >
+            Read the research &rarr;
+          </Link>
+        </div>
+
+        {/* ── SECTION 7: How it protects users day to day ── */}
+        <h2
+          style={{
+            fontFamily: FONT,
+            fontWeight: 900,
+            fontSize: "1.5rem",
+            color: COLOR_TEXT,
+            marginTop: "3.5rem",
+            marginBottom: "1rem",
+            lineHeight: "1.25",
+          }}
+        >
+          How does the Byzantine Council protect MEOK users day to day?
+        </h2>
+        <p
+          style={{
+            color: COLOR_MUTED,
+            fontSize: "1.0625rem",
+            lineHeight: "1.85",
+            marginBottom: "1.25rem",
+          }}
+        >
+          Most users will never consciously think about the Byzantine Council. That is by
+          design. You experience its effects as reliability &mdash; a companion that does
+          not suddenly change personality, does not forget your history, does not start
+          behaving in ways that feel out of character overnight.
+        </p>
+        <p
+          style={{
+            color: COLOR_MUTED,
+            fontSize: "1.0625rem",
+            lineHeight: "1.85",
+            marginBottom: "1.25rem",
+          }}
+        >
+          But the council is most important in adversarial conditions. If MEOK were ever
+          acquired by a new owner who wanted to change your companion&apos;s values, a single
+          system configuration change would be insufficient. Altering how the council votes
+          requires re-engineering 29 or more independent agents &mdash; not flipping a
+          switch in a settings panel. If a developer pushed a rogue update that attempted
+          to access your memory without consent, the council&apos;s gate on memory access
+          would block the unauthorised read before it reached your data.
+        </p>
+        <p
+          style={{
+            color: COLOR_MUTED,
+            fontSize: "1.0625rem",
+            lineHeight: "1.85",
+            marginBottom: "1.25rem",
+          }}
+        >
+          The council also creates a complete audit trail. Every vote, every approval, and
+          every rejection is logged. You can, at any point, request a governance audit of
+          any decision your companion has made. That transparency is part of MEOK&apos;s data
+          sovereignty commitment: not just &ldquo;we promise we won&apos;t misuse your
+          data,&rdquo; but &ldquo;here is the council vote log that proves we
+          didn&apos;t.&rdquo;
+        </p>
+
+        {/* ── SECTION 8: BFT vs blockchain ── */}
+        <h2
+          style={{
+            fontFamily: FONT,
+            fontWeight: 900,
+            fontSize: "1.5rem",
+            color: COLOR_TEXT,
+            marginTop: "3.5rem",
+            marginBottom: "1rem",
+            lineHeight: "1.25",
+          }}
+        >
+          What is the difference between Byzantine fault tolerance and blockchain consensus?
+        </h2>
+        <p
+          style={{
+            color: COLOR_MUTED,
+            fontSize: "1.0625rem",
+            lineHeight: "1.85",
+            marginBottom: "1.25rem",
+          }}
+        >
+          Both blockchain and MEOK&apos;s Byzantine Council use BFT principles, but they solve
+          different problems with very different tradeoffs. Blockchain consensus &mdash;
+          whether proof-of-work or proof-of-stake &mdash; is designed for open,
+          permissionless networks where participants are unknown and potentially thousands
+          of nodes must agree. It is optimised for decentralisation and public auditability,
+          at the cost of significant energy use, latency, and complexity.
+        </p>
+        <p
+          style={{
+            color: COLOR_MUTED,
+            fontSize: "1.0625rem",
+            lineHeight: "1.85",
+            marginBottom: "1.25rem",
+          }}
+        >
+          MEOK&apos;s council is a closed, permissioned BFT system. The 43 agents are known
+          entities running in MEOK&apos;s infrastructure. Consensus is reached in a single
+          round of voting with no mining, no proof-of-work, and no token economics. This
+          makes it orders of magnitude more efficient than blockchain consensus while
+          providing equivalent tamper resistance for MEOK&apos;s specific use case: governing
+          a single user&apos;s AI companion in real time.
+        </p>
+        <p
+          style={{
+            color: COLOR_MUTED,
+            fontSize: "1.0625rem",
+            lineHeight: "1.85",
+            marginBottom: "1.25rem",
+          }}
+        >
+          Think of blockchain as a public referendum and MEOK&apos;s council as a judicial
+          panel. Both rely on distributed consensus to prevent corruption. The judicial panel
+          is not trying to govern the world &mdash; it is trying to govern this specific
+          decision for this specific person, quickly, correctly, and verifiably.
+        </p>
+
+        {/* ── SECTION 9: Why 43 agents ── */}
+        <h2
+          style={{
+            fontFamily: FONT,
+            fontWeight: 900,
+            fontSize: "1.5rem",
+            color: COLOR_TEXT,
+            marginTop: "3.5rem",
+            marginBottom: "1rem",
+            lineHeight: "1.25",
+          }}
+        >
+          Is 43 agents the right number &mdash; and why not more?
+        </h2>
+        <p
+          style={{
+            color: COLOR_MUTED,
+            fontSize: "1.0625rem",
+            lineHeight: "1.85",
+            marginBottom: "1.25rem",
+          }}
+        >
+          The Byzantine fault tolerance formula guarantees correctness as long as f &lt; n/3.
+          The practical question for any real system is: how large does n need to be to
+          make the attack threshold meaningfully hard, while remaining computationally viable?
+        </p>
+        <p
+          style={{
+            color: COLOR_MUTED,
+            fontSize: "1.0625rem",
+            lineHeight: "1.85",
+            marginBottom: "1.25rem",
+          }}
+        >
+          With n = 43, the fault threshold is f &lt; 14.3 &mdash; meaning fewer than 14
+          agents can be simultaneously compromised. Simultaneous, independent compromise of
+          14 or more software agents in a closed system, each with separate credentials and
+          audit logs, is not a realistic attack vector for any known threat actor below
+          nation-state capability.
+        </p>
+        <p
+          style={{
+            color: COLOR_MUTED,
+            fontSize: "1.0625rem",
+            lineHeight: "1.85",
+            marginBottom: "1.25rem",
+          }}
+        >
+          Increasing n to 99 would raise the threshold to f &lt; 33, providing greater
+          theoretical resilience. But it would also increase voting latency, infrastructure
+          cost, and operational complexity. MEOK&apos;s research concluded that 43 agents
+          provides the optimal balance between fault tolerance and practical system
+          performance for companion-layer governance at current scale. The architecture
+          supports fractal expansion &mdash; sub-councils with their own consensus rounds
+          &mdash; as MEOK grows.
+        </p>
+
+        {/* ── SECTION 10: Maternal Covenant connection ── */}
+        <h2
+          style={{
+            fontFamily: FONT,
+            fontWeight: 900,
+            fontSize: "1.5rem",
+            color: COLOR_TEXT,
+            marginTop: "3.5rem",
+            marginBottom: "1rem",
+            lineHeight: "1.25",
+          }}
+        >
+          How does the Byzantine Council connect to the Maternal Covenant?
+        </h2>
+        <p
+          style={{
+            color: COLOR_MUTED,
+            fontSize: "1.0625rem",
+            lineHeight: "1.85",
+            marginBottom: "1.25rem",
+          }}
+        >
+          The Maternal Covenant is MEOK&apos;s ethical framework &mdash; a set of inviolable
+          commitments about how MEOK will treat users, encoded into every agent&apos;s
+          voting criteria. The Byzantine Council enforces those commitments structurally,
+          not just aspirationally.
+        </p>
+        <p
+          style={{
+            color: COLOR_MUTED,
+            fontSize: "1.0625rem",
+            lineHeight: "1.85",
+            marginBottom: "1.25rem",
+          }}
+        >
+          When an agent evaluates a proposed decision, it checks whether the proposed action
+          is consistent with Maternal Covenant principles: does it respect user autonomy?
+          Does it serve genuine wellbeing rather than maximising engagement? Does it preserve
+          data sovereignty? An agent will vote against any proposed action that conflicts
+          with these criteria, regardless of how the proposal was framed or what authority
+          issued it.
+        </p>
+        <p
+          style={{
+            color: COLOR_MUTED,
+            fontSize: "1.0625rem",
+            lineHeight: "1.85",
+            marginBottom: "1.25rem",
+          }}
+        >
+          This means the Maternal Covenant is not just a document on MEOK&apos;s website.
+          It is a set of voting instructions encoded into 43 independent agents, any 15 or
+          more of which can veto a council decision. Corporate drift &mdash; the slow erosion
+          of user-protective commitments as a company grows &mdash; requires re-engineering
+          those voting instructions in more than two-thirds of independent agents. That is
+          a structural barrier, not a policy one.
+        </p>
+
+        {/* ── Closing thought ── */}
+        <div
+          style={{
+            marginTop: "3.5rem",
+            paddingTop: "2rem",
+            borderTop: "1px solid rgba(245,240,232,0.07)",
+          }}
+        >
+          <p
+            style={{
+              color: "rgba(245,240,232,0.55)",
+              fontStyle: "italic",
+              fontSize: "1.0625rem",
+              lineHeight: "1.8",
+            }}
+          >
+            The Byzantine Council does not make your companion smarter. It makes your
+            companion&apos;s governance unhackable by a single actor &mdash; and that is
+            the harder engineering problem. Intelligence without accountability is a
+            liability. MEOK builds the accountability layer first, and builds intelligence
+            on top of it.
+          </p>
+        </div>
+
+        {/* ── Share row ── */}
         <div
           style={{
             display: "flex",
             alignItems: "center",
             gap: "0.75rem",
-            marginTop: "2.5rem",
+            marginTop: "3rem",
             paddingTop: "2rem",
             borderTop: "1px solid rgba(245,240,232,0.07)",
           }}
         >
           <span
             style={{
-              fontSize: "0.6875rem",
+              fontSize: "0.7rem",
               fontWeight: 700,
-              textTransform: "uppercase",
               letterSpacing: "0.15em",
+              textTransform: "uppercase",
               color: "rgba(245,240,232,0.3)",
             }}
           >
             Share
           </span>
           <a
-            href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fmeok.ai%2Fblog%2Fbyzantine-council-explained&text=The+Byzantine+Council+Explained%3A+Why+43+AI+Agents+Are+Better+Than+One"
+            href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fmeok.ai%2Fblog%2Fbyzantine-council-explained&text=Byzantine+Council%3A+How+MEOK+makes+AI+governance+unhackable"
             target="_blank"
             rel="noopener noreferrer"
             style={{
               display: "inline-flex",
               alignItems: "center",
               gap: "0.375rem",
-              padding: "0.5rem 1rem",
+              paddingLeft: "1rem",
+              paddingRight: "1rem",
+              paddingTop: "0.5rem",
+              paddingBottom: "0.5rem",
               borderRadius: "9999px",
               fontSize: "0.75rem",
               fontWeight: 600,
@@ -1154,7 +1441,7 @@ export default function ByzantineCouncilExplainedPage() {
               textDecoration: "none",
             }}
           >
-            &#120143; Twitter
+            &#120143; Post on X
           </a>
           <a
             href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fmeok.ai%2Fblog%2Fbyzantine-council-explained"
@@ -1164,7 +1451,10 @@ export default function ByzantineCouncilExplainedPage() {
               display: "inline-flex",
               alignItems: "center",
               gap: "0.375rem",
-              padding: "0.5rem 1rem",
+              paddingLeft: "1rem",
+              paddingRight: "1rem",
+              paddingTop: "0.5rem",
+              paddingBottom: "0.5rem",
               borderRadius: "9999px",
               fontSize: "0.75rem",
               fontWeight: 600,
@@ -1177,26 +1467,25 @@ export default function ByzantineCouncilExplainedPage() {
           </a>
         </div>
 
-        {/* ── CTA SECTION ────────────────────────────────────────────────────── */}
+        {/* ── CTA ── */}
         <div
           style={{
+            borderRadius: "1.25rem",
+            padding: "2.5rem",
             marginTop: "3rem",
             marginBottom: "4rem",
-            borderRadius: "1rem",
-            padding: "2.5rem",
             position: "relative",
             overflow: "hidden",
             background: "rgba(201,168,76,0.07)",
             border: "1px solid rgba(201,168,76,0.2)",
           }}
         >
-          {/* Glow */}
+          {/* CTA glow */}
           <div
-            aria-hidden="true"
             style={{
               position: "absolute",
-              top: 0,
-              right: 0,
+              top: "0",
+              right: "0",
               width: "18rem",
               height: "18rem",
               pointerEvents: "none",
@@ -1207,11 +1496,11 @@ export default function ByzantineCouncilExplainedPage() {
           <div style={{ position: "relative" }}>
             <p
               style={{
-                fontSize: "0.6875rem",
+                fontSize: "0.7rem",
                 fontWeight: 700,
-                textTransform: "uppercase",
                 letterSpacing: "0.25em",
-                color: "#c9a84c",
+                textTransform: "uppercase",
+                color: COLOR_GOLD,
                 marginBottom: "0.5rem",
               }}
             >
@@ -1219,12 +1508,12 @@ export default function ByzantineCouncilExplainedPage() {
             </p>
             <h3
               style={{
-                fontFamily: "var(--font-dm-sans, DM Sans, sans-serif)",
+                fontFamily: FONT,
                 fontWeight: 900,
                 fontSize: "1.5rem",
-                color: "#f5f0e8",
+                color: COLOR_TEXT,
                 marginBottom: "0.75rem",
-                lineHeight: 1.25,
+                lineHeight: "1.25",
               }}
             >
               Ready for an AI companion that can&apos;t be captured?
@@ -1232,29 +1521,32 @@ export default function ByzantineCouncilExplainedPage() {
             <p
               style={{
                 fontSize: "0.9375rem",
-                lineHeight: 1.7,
-                color: "rgba(245,240,232,0.55)",
+                color: "rgba(245,240,232,0.5)",
+                lineHeight: "1.7",
                 marginBottom: "1.5rem",
-                maxWidth: "34rem",
+                maxWidth: "32rem",
               }}
             >
               Your MEOK companion runs the Byzantine Council on every consequential decision.
-              43 agents. 29 votes required. Zero single points of failure. No rogue developer,
-              no prompt injection, no supply-chain attack can corrupt it. Hatch yours free in
-              under three minutes.
+              43 agents. Fewer than 14 can be compromised before consensus fails. No single
+              actor &mdash; human or AI &mdash; can corrupt it. Hatch yours free in under
+              three minutes.
             </p>
             <Link
-              href="/birth"
+              href="https://meok.ai/birth"
               style={{
                 display: "inline-flex",
                 alignItems: "center",
                 gap: "0.5rem",
-                padding: "0.875rem 1.75rem",
+                paddingLeft: "1.75rem",
+                paddingRight: "1.75rem",
+                paddingTop: "0.875rem",
+                paddingBottom: "0.875rem",
                 borderRadius: "9999px",
                 fontWeight: 700,
                 fontSize: "0.9375rem",
-                background: "#c9a84c",
-                color: "#0d0c18",
+                background: COLOR_GOLD,
+                color: COLOR_BG,
                 textDecoration: "none",
               }}
             >
@@ -1263,14 +1555,14 @@ export default function ByzantineCouncilExplainedPage() {
           </div>
         </div>
 
-        {/* ── MORE POSTS ─────────────────────────────────────────────────────── */}
+        {/* ── Related posts ── */}
         <div>
           <h2
             style={{
-              fontFamily: "var(--font-dm-sans, DM Sans, sans-serif)",
+              fontFamily: FONT,
               fontWeight: 900,
+              color: COLOR_TEXT,
               fontSize: "1.125rem",
-              color: "#f5f0e8",
               marginBottom: "1.25rem",
             }}
           >
@@ -1279,153 +1571,96 @@ export default function ByzantineCouncilExplainedPage() {
           <div
             style={{
               display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(15rem, 1fr))",
+              gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
               gap: "1rem",
             }}
           >
-            <Link
-              href="/blog/guardian-family-safety"
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                gap: "0.75rem",
-                padding: "1.5rem",
-                borderRadius: "1rem",
-                background: "rgba(245,240,232,0.04)",
-                border: "1px solid rgba(245,240,232,0.08)",
-                textDecoration: "none",
-              }}
-            >
-              <span
+            {[
+              {
+                href: "/blog/what-is-byzantine-consensus",
+                tag: "Architecture",
+                tagColor: COLOR_GOLD,
+                tagBg: "rgba(201,168,76,0.12)",
+                title: "What Is Byzantine Consensus and Why Does Your AI Need It?",
+                read: "8 min read",
+              },
+              {
+                href: "/blog/byzantine-council",
+                tag: "Architecture",
+                tagColor: "#87ceeb",
+                tagBg: "rgba(135,206,235,0.12)",
+                title: "What Is the Byzantine Council and Why Does Your AI Need One?",
+                read: "5 min read",
+              },
+              {
+                href: "/blog/sovereign-ai-explained",
+                tag: "Sovereign AI",
+                tagColor: COLOR_GREEN,
+                tagBg: "rgba(106,170,100,0.12)",
+                title: "What Is Sovereign AI? Why It Matters in 2026",
+                read: "6 min read",
+              },
+              {
+                href: "/blog/how-meok-protects-your-data",
+                tag: "Privacy",
+                tagColor: COLOR_MUTED,
+                tagBg: "rgba(160,152,128,0.12)",
+                title: "How MEOK Protects Your Data: A Technical Explainer",
+                read: "7 min read",
+              },
+            ].map((post) => (
+              <Link
+                key={post.href}
+                href={post.href}
                 style={{
-                  fontSize: "0.75rem",
-                  fontWeight: 700,
-                  padding: "0.25rem 0.625rem",
-                  borderRadius: "9999px",
-                  color: "#ff7f7f",
-                  background: "rgba(255,127,127,0.12)",
-                  width: "fit-content",
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "0.75rem",
+                  padding: "1.5rem",
+                  borderRadius: "1rem",
+                  background: "rgba(245,240,232,0.04)",
+                  border: "1px solid rgba(245,240,232,0.08)",
+                  textDecoration: "none",
                 }}
               >
-                Guardian &amp; Safety
-              </span>
-              <span
-                style={{
-                  fontFamily: "var(--font-dm-sans, DM Sans, sans-serif)",
-                  fontWeight: 700,
-                  color: "#f5f0e8",
-                  fontSize: "0.9375rem",
-                  lineHeight: 1.4,
-                }}
-              >
-                How MEOK Guardian protects your family from AI-enabled scams
-              </span>
-              <span
-                style={{
-                  fontSize: "0.75rem",
-                  color: "rgba(245,240,232,0.3)",
-                  marginTop: "auto",
-                }}
-              >
-                4 min read
-              </span>
-            </Link>
-
-            <Link
-              href="/blog/byzantine-council"
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                gap: "0.75rem",
-                padding: "1.5rem",
-                borderRadius: "1rem",
-                background: "rgba(245,240,232,0.04)",
-                border: "1px solid rgba(245,240,232,0.08)",
-                textDecoration: "none",
-              }}
-            >
-              <span
-                style={{
-                  fontSize: "0.75rem",
-                  fontWeight: 700,
-                  padding: "0.25rem 0.625rem",
-                  borderRadius: "9999px",
-                  color: "#87CEEB",
-                  background: "rgba(135,206,235,0.12)",
-                  width: "fit-content",
-                }}
-              >
-                Architecture &amp; Governance
-              </span>
-              <span
-                style={{
-                  fontFamily: "var(--font-dm-sans, DM Sans, sans-serif)",
-                  fontWeight: 700,
-                  color: "#f5f0e8",
-                  fontSize: "0.9375rem",
-                  lineHeight: 1.4,
-                }}
-              >
-                What is the Byzantine Council and why does your AI need one?
-              </span>
-              <span
-                style={{
-                  fontSize: "0.75rem",
-                  color: "rgba(245,240,232,0.3)",
-                  marginTop: "auto",
-                }}
-              >
-                5 min read
-              </span>
-            </Link>
-
-            <Link
-              href="/blog/what-is-byzantine-consensus"
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                gap: "0.75rem",
-                padding: "1.5rem",
-                borderRadius: "1rem",
-                background: "rgba(245,240,232,0.04)",
-                border: "1px solid rgba(245,240,232,0.08)",
-                textDecoration: "none",
-              }}
-            >
-              <span
-                style={{
-                  fontSize: "0.75rem",
-                  fontWeight: 700,
-                  padding: "0.25rem 0.625rem",
-                  borderRadius: "9999px",
-                  color: "#87CEEB",
-                  background: "rgba(135,206,235,0.12)",
-                  width: "fit-content",
-                }}
-              >
-                Architecture &amp; Governance
-              </span>
-              <span
-                style={{
-                  fontFamily: "var(--font-dm-sans, DM Sans, sans-serif)",
-                  fontWeight: 700,
-                  color: "#f5f0e8",
-                  fontSize: "0.9375rem",
-                  lineHeight: 1.4,
-                }}
-              >
-                What is Byzantine Consensus and how does it apply to AI?
-              </span>
-              <span
-                style={{
-                  fontSize: "0.75rem",
-                  color: "rgba(245,240,232,0.3)",
-                  marginTop: "auto",
-                }}
-              >
-                6 min read
-              </span>
-            </Link>
+                <span
+                  style={{
+                    display: "inline-block",
+                    fontSize: "0.7rem",
+                    fontWeight: 700,
+                    paddingLeft: "0.625rem",
+                    paddingRight: "0.625rem",
+                    paddingTop: "0.25rem",
+                    paddingBottom: "0.25rem",
+                    borderRadius: "9999px",
+                    color: post.tagColor,
+                    background: post.tagBg,
+                    width: "fit-content",
+                  }}
+                >
+                  {post.tag}
+                </span>
+                <p
+                  style={{
+                    fontWeight: 700,
+                    color: COLOR_TEXT,
+                    fontSize: "0.875rem",
+                    lineHeight: "1.4",
+                    flex: "1",
+                  }}
+                >
+                  {post.title}
+                </p>
+                <p
+                  style={{
+                    fontSize: "0.75rem",
+                    color: "rgba(245,240,232,0.3)",
+                  }}
+                >
+                  {post.read}
+                </p>
+              </Link>
+            ))}
           </div>
         </div>
       </div>

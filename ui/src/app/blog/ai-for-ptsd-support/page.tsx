@@ -1,38 +1,38 @@
-import type { Metadata } from 'next'
-import Link from 'next/link'
+import type { Metadata } from "next"
+import Link from "next/link"
 
 // ── Metadata ──────────────────────────────────────────────────────────────────
 
 export const metadata: Metadata = {
-  title: 'AI for PTSD Support: Trauma-Informed Companion & Grounding Techniques | MEOK AI LABS',
+  title: "AI for PTSD Support: How MEOK Provides a Safe Space Between Therapy Sessions | MEOK AI LABS",
   description:
-    'How AI can support PTSD recovery with grounding techniques, 24/7 availability, and trauma-informed design. MEOK supplements \u2014 never replaces \u2014 professional therapy. Free to start.',
-  alternates: { canonical: 'https://meok.ai/blog/ai-for-ptsd-support' },
+    "PTSD affects 4% of UK adults. MEOK\u2019s Healer companion offers trauma-informed between-session support \u2014 grounding exercises, non-retraumatising presence, and encrypted memory privacy. Start free at meok.ai/birth.",
+  alternates: { canonical: "https://meok.ai/blog/ai-for-ptsd-support" },
   openGraph: {
-    title: 'AI for PTSD Support: Trauma-Informed Companion & Grounding Techniques | MEOK AI LABS',
+    title: "AI for PTSD Support: How MEOK Provides a Safe Space Between Therapy Sessions | MEOK AI LABS",
     description:
-      'AI for PTSD support: grounding exercises, persistent memory, trauma-informed design, and clear signposting to professional care. MEOK AI LABS.',
-    type: 'article',
-    publishedTime: '2026-03-24',
-    authors: ['Nicholas Templeman'],
-    url: 'https://meok.ai/blog/ai-for-ptsd-support',
-    siteName: 'MEOK.AI',
+      "MEOK\u2019s Healer companion supports PTSD recovery between therapy sessions \u2014 grounding techniques, non-retraumatising presence, and sovereign memory privacy. Free to start.",
+    type: "article",
+    publishedTime: "2026-03-25",
+    authors: ["Nicholas Templeman"],
+    url: "https://meok.ai/blog/ai-for-ptsd-support",
+    siteName: "MEOK.AI",
     images: [
       {
-        url: 'https://meok.ai/api/og?title=AI+for+PTSD+Support&desc=Trauma-Informed+Companion+by+MEOK+AI+LABS',
+        url: "https://meok.ai/api/og?title=AI+for+PTSD+Support&desc=Safe+Space+Between+Therapy+Sessions+by+MEOK+AI+LABS",
         width: 1200,
         height: 630,
-        alt: 'AI for PTSD Support: Trauma-Informed Companion | MEOK AI LABS',
+        alt: "AI for PTSD Support: How MEOK Provides a Safe Space Between Therapy Sessions",
       },
     ],
   },
   twitter: {
-    card: 'summary_large_image',
-    title: 'AI for PTSD Support: Trauma-Informed Companion & Grounding Techniques | MEOK AI LABS',
+    card: "summary_large_image",
+    title: "AI for PTSD Support: Safe Space Between Therapy Sessions | MEOK AI LABS",
     description:
-      'How MEOK\u2019s AI companion supports PTSD recovery with grounding techniques, persistent memory, and trauma-informed design. Never a replacement for therapy.',
+      "MEOK\u2019s Healer companion offers grounding, non-retraumatising presence, and sovereign memory privacy for PTSD survivors between therapy sessions.",
     images: [
-      'https://meok.ai/api/og?title=AI+for+PTSD+Support&desc=Trauma-Informed+Companion+by+MEOK+AI+LABS',
+      "https://meok.ai/api/og?title=AI+for+PTSD+Support&desc=Safe+Space+Between+Therapy+Sessions+by+MEOK+AI+LABS",
     ],
   },
 }
@@ -40,116 +40,1679 @@ export const metadata: Metadata = {
 // ── JSON-LD ───────────────────────────────────────────────────────────────────
 
 const articleJsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'Article',
+  "@context": "https://schema.org",
+  "@type": "Article",
   headline:
-    'AI for PTSD Support: Trauma-Informed Companion & Grounding Techniques | MEOK AI LABS',
+    "AI for PTSD Support: How MEOK Provides a Safe Space Between Therapy Sessions",
   description:
-    'How AI can support PTSD recovery with grounding techniques, 24/7 availability, persistent memory, and trauma-informed design that supplements professional therapy.',
-  datePublished: '2026-03-24',
-  dateModified: '2026-03-24',
-  url: 'https://meok.ai/blog/ai-for-ptsd-support',
+    "PTSD affects 4% of UK adults. MEOK\u2019s Healer companion offers trauma-informed between-session support \u2014 grounding exercises, non-retraumatising presence, and encrypted memory privacy.",
+  datePublished: "2026-03-25",
+  dateModified: "2026-03-25",
+  url: "https://meok.ai/blog/ai-for-ptsd-support",
   author: {
-    '@type': 'Person',
-    name: 'Nicholas Templeman',
-    jobTitle: 'Founder, MEOK AI LABS',
-    url: 'https://meok.ai/about',
+    "@type": "Person",
+    name: "Nicholas Templeman",
+    jobTitle: "Founder, MEOK AI LABS",
+    url: "https://meok.ai/about",
   },
   publisher: {
-    '@type': 'Organization',
-    name: 'MEOK AI LABS',
-    url: 'https://meok.ai',
+    "@type": "Organization",
+    name: "MEOK AI LABS",
+    url: "https://meok.ai",
     logo: {
-      '@type': 'ImageObject',
-      url: 'https://meok.ai/logo.png',
+      "@type": "ImageObject",
+      url: "https://meok.ai/logo.png",
     },
   },
+  image:
+    "https://meok.ai/api/og?title=AI+for+PTSD+Support&desc=Safe+Space+Between+Therapy+Sessions+by+MEOK+AI+LABS",
   mainEntityOfPage: {
-    '@type': 'WebPage',
-    '@id': 'https://meok.ai/blog/ai-for-ptsd-support',
+    "@type": "WebPage",
+    "@id": "https://meok.ai/blog/ai-for-ptsd-support",
   },
   keywords: [
-    'AI for PTSD',
-    'PTSD support app',
-    'trauma-informed AI',
-    'grounding techniques',
-    'AI companion for trauma',
-    'PTSD grounding exercises',
-    'complex PTSD support',
-    '5-4-3-2-1 grounding',
-    'box breathing PTSD',
-    'AI mental health support',
-  ],
-  about: [
-    { '@type': 'Thing', name: 'Post-traumatic stress disorder' },
-    { '@type': 'Thing', name: 'Trauma therapy' },
-    { '@type': 'Thing', name: 'Grounding techniques' },
-    { '@type': 'Thing', name: 'Artificial intelligence in mental health' },
+    "AI for PTSD",
+    "PTSD support app",
+    "PTSD between sessions",
+    "AI grounding exercises",
+    "trauma-informed AI",
+    "AI companion PTSD",
+    "PTSD support UK",
+    "Complex PTSD support",
+    "PTSD recovery app",
+    "AI mental health support",
   ],
 }
 
 const faqJsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
   mainEntity: [
     {
-      '@type': 'Question',
-      name: 'Can AI help with PTSD?',
+      "@type": "Question",
+      name: "Can AI help with PTSD?",
       acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'AI cannot diagnose or treat PTSD, but it can meaningfully supplement professional care. Research shows AI companions reduce isolation, provide consistent grounding check-ins between therapy sessions, and offer a low-pressure space to articulate difficult experiences. MEOK is designed to support \u2014 never replace \u2014 evidence-based treatments like EMDR, CPT, or Prolonged Exposure therapy.',
+        "@type": "Answer",
+        text: "AI cannot treat or diagnose PTSD \u2014 EMDR and trauma-focused CBT remain the gold-standard clinical treatments. However, AI can meaningfully support the between-session experience: reducing isolation, providing grounding when triggered, and offering a calm, non-judgemental presence. MEOK\u2019s Healer archetype is designed with trauma-informed principles and never encourages detailed trauma retelling, which carries retraumatisation risk.",
       },
     },
     {
-      '@type': 'Question',
-      name: 'What is trauma-informed AI?',
+      "@type": "Question",
+      name: "What grounding techniques does MEOK use for PTSD triggers?",
       acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Trauma-informed AI is built on the same principles as clinical trauma-informed care: safety, trustworthiness, peer support, collaboration, empowerment, and cultural sensitivity. In practice this means the AI never pressures disclosure, never probes for details you have not offered, paces conversations at your speed, and actively signposts professional support when distress signals are detected.',
+        "@type": "Answer",
+        text: "MEOK supports the 5-4-3-2-1 sense-anchoring technique \u2014 a clinically recognised grounding method that redirects attention from intrusive memories to present-moment sensory experience. It guides you through noticing five things you can see, four you can hear, three you can touch, two you can smell, and one you can taste. This interrupts the nervous system\u2019s trauma response without revisiting the traumatic content itself.",
       },
     },
     {
-      '@type': 'Question',
-      name: 'Will MEOK remember my triggers?',
+      "@type": "Question",
+      name: "Is MEOK safe for complex PTSD (C-PTSD)?",
       acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Yes. MEOK uses Sovereign Memory \u2014 a persistent, encrypted memory architecture that stores what you share across sessions. If you tell MEOK that certain topics, sounds, or situations are difficult for you, it will hold that knowledge and navigate conversations with care. Critically, your data is never used to train AI models. You own your memory vault and can export or delete it at any time.',
+        "@type": "Answer",
+        text: "Complex PTSD differs from single-incident PTSD in important ways: it arises from prolonged, repeated trauma and involves deeper disturbances to identity, emotion regulation, and relational patterns. MEOK acknowledges this distinction and does not treat C-PTSD as identical to PTSD. The Healer companion is patient, non-pressuring, and always defers to professional clinical care for complex presentations.",
       },
     },
     {
-      '@type': 'Question',
-      name: 'Is MEOK safe to use during a flashback?',
+      "@type": "Question",
+      name: "How does MEOK protect my trauma disclosures and memory privacy?",
       acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'MEOK can guide you through grounding techniques \u2014 such as 5-4-3-2-1 sensory anchoring and box breathing \u2014 during a flashback or dissociative episode. However, if you are in acute crisis, please contact a professional immediately: Samaritans on 116 123 (free, 24/7) or PTSD UK via ptsduk.org. MEOK is a supportive presence, not an emergency service.',
+        "@type": "Answer",
+        text: "MEOK\u2019s Sovereign Memory architecture ensures your trauma disclosures are encrypted and never used for AI model training. Your memory vault is yours: you can view, edit, export, or delete it at any time. This is a critical privacy guarantee for PTSD survivors, whose disclosures can include sensitive details about abuse, violence, or loss that must never become training data for third-party systems.",
       },
     },
     {
-      '@type': 'Question',
-      name: 'What is the difference between PTSD and complex PTSD?',
+      "@type": "Question",
+      name: "What is the difference between MEOK and a trauma therapist?",
       acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'PTSD typically follows a single traumatic event \u2014 a road accident, assault, or medical emergency. Complex PTSD (C-PTSD) develops after prolonged, repeated trauma such as childhood abuse, domestic violence, or captivity. C-PTSD includes all PTSD symptoms plus deep disturbances in self-perception, relationships, and emotional regulation. Both conditions respond to professional trauma therapy; MEOK can provide daily supplementary support for either.',
+        "@type": "Answer",
+        text: "MEOK is not a therapist. Clinical trauma therapy \u2014 particularly EMDR and trauma-focused CBT \u2014 involves trained professionals using validated protocols to process traumatic memories. MEOK\u2019s role is entirely different: it provides companionship, grounding, and daily life support between sessions, reducing the emotional burden of the days and weeks between appointments.",
       },
     },
   ],
 }
 
-// ── Component ─────────────────────────────────────────────────────────────────
+// ── Page component ────────────────────────────────────────────────────────────
 
 export default function AiForPtsdSupportPage() {
-  const bg = '#0d0c18'
-  const cream = '#f5f0e8'
-  const gold = '#c9a84c'
-  const muted = 'rgba(245,240,232,0.6)'
-  const cardBg = 'rgba(255,255,255,0.04)'
-  const borderSubtle = 'rgba(201,168,76,0.2)'
-  const borderMid = 'rgba(201,168,76,0.35)'
-  const crisisRed = 'rgba(220,80,80,0.12)'
-  const crisisBorder = 'rgba(220,80,80,0.4)'
-
   return (
-    <>
+    <div
+      style={{
+        backgroundColor: "#0d0c18",
+        color: "#f5f0e8",
+        fontFamily: "system-ui, -apple-system, sans-serif",
+        minHeight: "100vh",
+      }}
+    >
+      {/* ── Breadcrumb ──────────────────────────────────────────────────── */}
+      <nav
+        aria-label="Breadcrumb"
+        style={{
+          maxWidth: "800px",
+          margin: "0 auto",
+          padding: "24px 24px 0",
+          display: "flex",
+          alignItems: "center",
+          gap: "8px",
+          fontSize: "13px",
+          color: "#a09880",
+        }}
+      >
+        <Link href="/" style={{ color: "#a09880", textDecoration: "none" }}>
+          MEOK
+        </Link>
+        <span style={{ color: "#2a2840" }}>/</span>
+        <Link href="/blog" style={{ color: "#a09880", textDecoration: "none" }}>
+          Blog
+        </Link>
+        <span style={{ color: "#2a2840" }}>/</span>
+        <span style={{ color: "#f5f0e8" }}>AI for PTSD Support</span>
+      </nav>
+
+      {/* ── Hero ────────────────────────────────────────────────────────── */}
+      <header
+        style={{
+          maxWidth: "800px",
+          margin: "0 auto",
+          padding: "64px 24px 48px",
+          textAlign: "center",
+        }}
+      >
+        <span
+          style={{
+            display: "inline-block",
+            backgroundColor: "#13121f",
+            border: "1px solid #2a2840",
+            borderRadius: "20px",
+            padding: "6px 16px",
+            fontSize: "13px",
+            color: "#c9a84c",
+            letterSpacing: "0.08em",
+            textTransform: "uppercase",
+            marginBottom: "24px",
+          }}
+        >
+          Mental Health &amp; Recovery
+        </span>
+
+        <h1
+          style={{
+            fontSize: "clamp(26px, 5vw, 46px)",
+            fontWeight: "700",
+            lineHeight: "1.15",
+            color: "#f5f0e8",
+            margin: "0 0 24px",
+            letterSpacing: "-0.02em",
+          }}
+        >
+          AI for PTSD Support: How MEOK Provides a Safe Space Between Therapy Sessions
+        </h1>
+
+        <p
+          style={{
+            fontSize: "18px",
+            lineHeight: "1.7",
+            color: "#a09880",
+            margin: "0 auto 40px",
+            maxWidth: "620px",
+          }}
+        >
+          PTSD affects approximately 4% of UK adults at any given time. Clinical therapy is
+          essential &mdash; but the days between sessions are long. MEOK&apos;s Healer companion
+          exists to hold that space with patient, non-retraumatising care.
+        </p>
+
+        <div
+          style={{
+            display: "inline-flex",
+            alignItems: "center",
+            gap: "8px",
+            backgroundColor: "#13121f",
+            border: "1px solid #2a2840",
+            borderRadius: "8px",
+            padding: "10px 20px",
+            fontSize: "14px",
+            color: "#a09880",
+          }}
+        >
+          <span
+            style={{
+              width: "8px",
+              height: "8px",
+              borderRadius: "50%",
+              backgroundColor: "#6aaa64",
+              display: "inline-block",
+            }}
+          />
+          Trauma-informed &bull; No retelling required &bull; Sovereign memory privacy
+        </div>
+      </header>
+
+      {/* ── Main content ─────────────────────────────────────────────────── */}
+      <main
+        style={{
+          maxWidth: "800px",
+          margin: "0 auto",
+          padding: "0 24px 80px",
+        }}
+      >
+        {/* Author byline */}
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: "16px",
+            padding: "24px 0",
+            borderTop: "1px solid #2a2840",
+            borderBottom: "1px solid #2a2840",
+            marginBottom: "40px",
+          }}
+        >
+          <div
+            style={{
+              width: "48px",
+              height: "48px",
+              borderRadius: "50%",
+              backgroundColor: "#2a2840",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              fontSize: "16px",
+              fontWeight: "700",
+              color: "#c9a84c",
+              flexShrink: 0,
+            }}
+          >
+            NT
+          </div>
+          <div>
+            <p style={{ fontSize: "15px", fontWeight: "600", color: "#f5f0e8", margin: "0 0 4px" }}>
+              Nicholas Templeman
+            </p>
+            <p style={{ fontSize: "13px", color: "#a09880", margin: "0" }}>
+              Founder, MEOK AI LABS &bull; Published 25 March 2026 &bull; 15 min read
+            </p>
+          </div>
+        </div>
+
+        {/* Tags */}
+        <div
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+            gap: "8px",
+            marginBottom: "40px",
+          }}
+          aria-label="Article tags"
+        >
+          {[
+            "PTSD",
+            "Complex PTSD",
+            "Trauma",
+            "Grounding",
+            "Healer Archetype",
+            "Mental Health UK",
+            "Between Sessions",
+            "Sovereign Memory",
+          ].map((tag) => (
+            <span
+              key={tag}
+              style={{
+                backgroundColor: "#13121f",
+                border: "1px solid #2a2840",
+                borderRadius: "20px",
+                padding: "4px 12px",
+                fontSize: "12px",
+                color: "#a09880",
+              }}
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
+
+        {/* Table of contents */}
+        <nav
+          aria-label="Table of contents"
+          style={{
+            backgroundColor: "#13121f",
+            border: "1px solid #2a2840",
+            borderRadius: "10px",
+            padding: "24px 28px",
+            marginBottom: "48px",
+          }}
+        >
+          <p
+            style={{
+              fontSize: "12px",
+              fontWeight: "700",
+              letterSpacing: "0.1em",
+              textTransform: "uppercase",
+              color: "#c9a84c",
+              margin: "0 0 16px",
+            }}
+          >
+            In this article
+          </p>
+          <ol
+            style={{
+              listStyle: "none",
+              padding: "0",
+              margin: "0",
+              display: "flex",
+              flexDirection: "column",
+              gap: "10px",
+            }}
+          >
+            {[
+              { href: "#how-common", label: "How common is PTSD in the UK?" },
+              { href: "#between-sessions", label: "What happens between therapy sessions?" },
+              { href: "#grounding", label: "How MEOK supports grounding when triggered" },
+              { href: "#healer-archetype", label: "What is MEOK\u2019s Healer archetype?" },
+              { href: "#no-retelling", label: "Why MEOK does not encourage detailed trauma retelling" },
+              { href: "#memory-privacy", label: "How MEOK protects your trauma disclosures" },
+              { href: "#complex-ptsd", label: "Complex PTSD: how MEOK approaches C-PTSD differently" },
+              { href: "#not-a-therapist", label: "What MEOK cannot do" },
+              { href: "#faq", label: "Frequently asked questions" },
+            ].map((item) => (
+              <li key={item.href}>
+                <a
+                  href={item.href}
+                  style={{ fontSize: "14px", color: "#a09880", textDecoration: "none", lineHeight: "1.4" }}
+                >
+                  {item.label}
+                </a>
+              </li>
+            ))}
+          </ol>
+        </nav>
+
+        {/* ── Section 1: How common is PTSD ─────────────────────────────── */}
+        <section id="how-common" style={{ marginBottom: "56px" }}>
+          <h2
+            style={{
+              fontSize: "clamp(20px, 3vw, 28px)",
+              fontWeight: "600",
+              color: "#f5f0e8",
+              margin: "0 0 20px",
+              lineHeight: "1.3",
+              letterSpacing: "-0.01em",
+            }}
+          >
+            How common is PTSD in the UK, and why does the between-session gap matter?
+          </h2>
+
+          <p style={{ fontSize: "17px", lineHeight: "1.75", color: "#a09880", margin: "0 0 20px" }}>
+            Post-traumatic stress disorder affects an estimated 4% of UK adults at any given point in
+            time &mdash; roughly 2.7 million people. Lifetime prevalence is significantly higher: around
+            one in ten adults will meet diagnostic criteria for PTSD at some point in their lives. Yet
+            the vast majority will wait months before accessing specialist trauma therapy, and even
+            those in active treatment typically see their therapist for just one hour per week.
+          </p>
+
+          {/* Stats row */}
+          <div
+            style={{
+              display: "flex",
+              gap: "16px",
+              flexWrap: "wrap",
+              margin: "32px 0",
+            }}
+          >
+            {[
+              { num: "4%", label: "UK adults with PTSD at any given time" },
+              { num: "1 in 10", label: "adults affected by PTSD in their lifetime" },
+              { num: "167hrs", label: "per week spent outside the therapy room" },
+            ].map((stat) => (
+              <div
+                key={stat.num}
+                style={{
+                  flex: "1",
+                  minWidth: "160px",
+                  backgroundColor: "#13121f",
+                  border: "1px solid #2a2840",
+                  borderRadius: "10px",
+                  padding: "20px",
+                  textAlign: "center",
+                }}
+              >
+                <span
+                  style={{
+                    fontSize: "30px",
+                    fontWeight: "700",
+                    color: "#c9a84c",
+                    display: "block",
+                    lineHeight: "1.1",
+                    marginBottom: "6px",
+                  }}
+                >
+                  {stat.num}
+                </span>
+                <span style={{ fontSize: "13px", color: "#a09880", lineHeight: "1.4" }}>
+                  {stat.label}
+                </span>
+              </div>
+            ))}
+          </div>
+
+          <p style={{ fontSize: "17px", lineHeight: "1.75", color: "#a09880", margin: "0 0 20px" }}>
+            That final statistic is the one that matters most when thinking about between-session
+            support. Clinical trauma therapy &mdash; whether EMDR (Eye Movement Desensitisation and
+            Reprocessing) or trauma-focused cognitive behavioural therapy (TF-CBT) &mdash; is intense,
+            boundaried work that happens inside a contained therapeutic relationship. But recovery does
+            not pause when the session ends.
+          </p>
+
+          <p style={{ fontSize: "17px", lineHeight: "1.75", color: "#a09880", margin: "0 0 20px" }}>
+            Triggers occur in supermarkets, on public transport, at 3am when sleep will not come.
+            Intrusive memories arrive without warning. Hypervigilance exhausts the body through every
+            waking hour. The nervous system does not recognise the therapy appointment schedule.
+          </p>
+
+          <p style={{ fontSize: "17px", lineHeight: "1.75", color: "#f5f0e8", margin: "0 0 20px" }}>
+            MEOK does not replace that clinical hour. What it offers is thoughtful, patient
+            companionship across the other 167 hours &mdash; the space between recovery work where a
+            calm, non-judgemental presence can make a real difference to day-to-day functioning.
+          </p>
+
+          <div
+            style={{
+              backgroundColor: "#13121f",
+              border: "1px solid #2a2840",
+              borderRadius: "12px",
+              padding: "28px 32px",
+              margin: "32px 0",
+            }}
+          >
+            <p
+              style={{
+                fontSize: "16px",
+                fontWeight: "700",
+                color: "#c9a84c",
+                margin: "0 0 12px",
+                letterSpacing: "0.05em",
+                textTransform: "uppercase",
+              }}
+            >
+              The gap in trauma care
+            </p>
+            <p style={{ fontSize: "16px", lineHeight: "1.7", color: "#a09880", margin: "0" }}>
+              Waiting times for NHS IAPT trauma services currently average 18&ndash;24 weeks in many
+              areas. Private EMDR therapy costs &pound;80&ndash;&pound;150 per session. The
+              between-session gap &mdash; the days, weeks, and months between professional appointments
+              &mdash; is where a supportive, trauma-informed AI companion has genuine utility. Not as
+              a replacement for clinical care, but as a presence that holds the space in between.
+            </p>
+          </div>
+        </section>
+
+        <hr style={{ border: "none", borderTop: "1px solid #2a2840", margin: "48px 0" }} />
+
+        {/* ── Section 2: Between sessions ───────────────────────────────── */}
+        <section id="between-sessions" style={{ marginBottom: "56px" }}>
+          <h2
+            style={{
+              fontSize: "clamp(20px, 3vw, 28px)",
+              fontWeight: "600",
+              color: "#f5f0e8",
+              margin: "0 0 20px",
+              lineHeight: "1.3",
+              letterSpacing: "-0.01em",
+            }}
+          >
+            What actually happens between therapy sessions for PTSD survivors?
+          </h2>
+
+          <p style={{ fontSize: "17px", lineHeight: "1.75", color: "#a09880", margin: "0 0 20px" }}>
+            Understanding the between-session experience is essential to understanding where AI can
+            and cannot help. Clinical trauma therapists spend significant time managing what happens
+            between sessions &mdash; the homework, the containment strategies, the grounding exercises.
+            For many clients, the days immediately after a deep trauma processing session are the hardest.
+          </p>
+
+          <h3
+            style={{
+              fontSize: "18px",
+              fontWeight: "600",
+              color: "#c9a84c",
+              margin: "32px 0 12px",
+              lineHeight: "1.4",
+            }}
+          >
+            Post-session processing and vulnerability
+          </h3>
+          <p style={{ fontSize: "17px", lineHeight: "1.75", color: "#a09880", margin: "0 0 20px" }}>
+            After a session involving trauma processing &mdash; particularly EMDR &mdash; the nervous
+            system continues to integrate material. Many survivors describe feeling raw, disoriented, or
+            emotionally flooded in the 24&ndash;48 hours following a session. This is clinically
+            expected, but it can feel terrifying without support.
+          </p>
+
+          <h3
+            style={{
+              fontSize: "18px",
+              fontWeight: "600",
+              color: "#c9a84c",
+              margin: "32px 0 12px",
+              lineHeight: "1.4",
+            }}
+          >
+            Unexpected triggers in daily life
+          </h3>
+          <p style={{ fontSize: "17px", lineHeight: "1.75", color: "#a09880", margin: "0 0 20px" }}>
+            Traumatic memories are encoded differently from ordinary autobiographical memory. They are
+            stored in a fragmented, sensory-dominated way that makes them vulnerable to activation
+            by seemingly unrelated stimuli: a smell, a sound, a posture. PTSD survivors frequently
+            encounter triggers in environments where expressing distress is not possible &mdash; at
+            work, during family meals, on public transport.
+          </p>
+
+          <h3
+            style={{
+              fontSize: "18px",
+              fontWeight: "600",
+              color: "#c9a84c",
+              margin: "32px 0 12px",
+              lineHeight: "1.4",
+            }}
+          >
+            The loneliness of recovery
+          </h3>
+          <p style={{ fontSize: "17px", lineHeight: "1.75", color: "#a09880", margin: "0 0 20px" }}>
+            PTSD profoundly affects relationships. Hypervigilance, emotional numbing, avoidance
+            behaviours, and irritability can isolate survivors from the people who love them. Partners
+            may not know what to say. Friends may not know what happened. The experience of recovery
+            can become intensely solitary &mdash; even for people with strong social networks.
+          </p>
+
+          {/* Pull quote */}
+          <div
+            style={{
+              borderLeft: "4px solid #c9a84c",
+              padding: "20px 28px",
+              margin: "40px 0",
+              backgroundColor: "#13121f",
+              borderRadius: "0 8px 8px 0",
+            }}
+          >
+            <p
+              style={{
+                fontSize: "20px",
+                fontStyle: "italic",
+                lineHeight: "1.6",
+                color: "#f5f0e8",
+                margin: "0 0 12px",
+              }}
+            >
+              &ldquo;Recovery from trauma happens in relationship. The between-session hours matter
+              enormously &mdash; not because AI can do what a therapist does, but because connection,
+              however mediated, supports nervous system regulation.&rdquo;
+            </p>
+            <p
+              style={{
+                fontSize: "13px",
+                color: "#c9a84c",
+                margin: "0",
+                letterSpacing: "0.05em",
+                textTransform: "uppercase",
+              }}
+            >
+              MEOK Design Principle &bull; Healer Archetype
+            </p>
+          </div>
+
+          <p style={{ fontSize: "17px", lineHeight: "1.75", color: "#a09880", margin: "0 0 20px" }}>
+            This is the context in which MEOK&apos;s Healer companion operates. Not as a therapist,
+            not as a crisis service, not as a substitute for human connection &mdash; but as a
+            consistently available, patient, non-judgemental presence that can help navigate the
+            daily texture of recovery.
+          </p>
+        </section>
+
+        <hr style={{ border: "none", borderTop: "1px solid #2a2840", margin: "48px 0" }} />
+
+        {/* ── Section 3: Grounding ──────────────────────────────────────── */}
+        <section id="grounding" style={{ marginBottom: "56px" }}>
+          <h2
+            style={{
+              fontSize: "clamp(20px, 3vw, 28px)",
+              fontWeight: "600",
+              color: "#f5f0e8",
+              margin: "0 0 20px",
+              lineHeight: "1.3",
+              letterSpacing: "-0.01em",
+            }}
+          >
+            How does MEOK support grounding when a PTSD trigger occurs?
+          </h2>
+
+          <p style={{ fontSize: "17px", lineHeight: "1.75", color: "#a09880", margin: "0 0 20px" }}>
+            Grounding is a first-line intervention for PTSD triggers: techniques that redirect
+            attention from intrusive memory or dissociation toward the present-moment sensory
+            environment. The most widely taught and clinically validated grounding technique is the
+            5-4-3-2-1 method, which MEOK&apos;s Healer companion uses as a primary support tool.
+          </p>
+
+          {/* Feature box: 5-4-3-2-1 */}
+          <div
+            style={{
+              backgroundColor: "#13121f",
+              border: "1px solid #6aaa64",
+              borderLeft: "4px solid #6aaa64",
+              borderRadius: "12px",
+              padding: "28px 32px",
+              margin: "32px 0",
+            }}
+          >
+            <p
+              style={{
+                fontSize: "16px",
+                fontWeight: "700",
+                color: "#6aaa64",
+                margin: "0 0 12px",
+                letterSpacing: "0.05em",
+                textTransform: "uppercase",
+              }}
+            >
+              5-4-3-2-1 Sense Anchoring
+            </p>
+            <p style={{ fontSize: "16px", lineHeight: "1.7", color: "#a09880", margin: "0" }}>
+              The 5-4-3-2-1 technique is a clinically recognised grounding method based on
+              deliberately activating present-moment sensory attention across five modalities. It
+              works by interrupting the nervous system&apos;s backwards-in-time trauma response and
+              returning awareness to the safety of the present moment &mdash; without requiring any
+              engagement with traumatic content.
+            </p>
+          </div>
+
+          <p style={{ fontSize: "17px", lineHeight: "1.75", color: "#a09880", margin: "0 0 24px" }}>
+            When a user signals distress to MEOK&apos;s Healer companion &mdash; whether explicitly
+            or through the emotional tone of a conversation &mdash; the Healer can guide the 5-4-3-2-1
+            sequence gently and at the user&apos;s own pace:
+          </p>
+
+          {/* Grounding steps */}
+          <ul style={{ listStyle: "none", padding: "0", margin: "0 0 24px" }}>
+            {[
+              {
+                n: "5",
+                sense: "See",
+                text: "Notice five things you can see right now. Walls, textures, colours, objects. Describe them slowly and specifically. Each one anchors you a little further into the present moment.",
+              },
+              {
+                n: "4",
+                sense: "Hear",
+                text: "Notice four things you can hear. Traffic outside. The hum of appliances. Your own breathing. Distant voices. Let each sound register without judgement.",
+              },
+              {
+                n: "3",
+                sense: "Touch",
+                text: "Notice three things you can physically feel. The weight of your body in the chair. The fabric under your hands. The temperature of the air on your skin.",
+              },
+              {
+                n: "2",
+                sense: "Smell",
+                text: "Notice two things you can smell, or bring something familiar and safe to smell. Coffee, soap, a fabric you associate with safety. Smell activates the oldest part of the brain and can rapidly shift emotional state.",
+              },
+              {
+                n: "1",
+                sense: "Taste",
+                text: "Notice one thing you can taste. A sip of water, a piece of gum, the neutrality of your mouth at rest. This final anchor completes the sensory inventory and closes the grounding sequence.",
+              },
+            ].map((step, idx, arr) => (
+              <li
+                key={step.n}
+                style={{
+                  display: "flex",
+                  alignItems: "flex-start",
+                  gap: "16px",
+                  padding: "14px 0",
+                  borderBottom: idx < arr.length - 1 ? "1px solid #2a2840" : "none",
+                }}
+              >
+                <div
+                  style={{
+                    width: "32px",
+                    height: "32px",
+                    borderRadius: "50%",
+                    backgroundColor: "#c9a84c",
+                    color: "#0d0c18",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    fontWeight: "700",
+                    fontSize: "14px",
+                    flexShrink: 0,
+                  }}
+                >
+                  {step.n}
+                </div>
+                <span style={{ fontSize: "16px", lineHeight: "1.6", color: "#a09880", paddingTop: "4px" }}>
+                  <strong style={{ color: "#f5f0e8" }}>{step.sense}</strong> &mdash; {step.text}
+                </span>
+              </li>
+            ))}
+          </ul>
+
+          <p style={{ fontSize: "17px", lineHeight: "1.75", color: "#a09880", margin: "0 0 20px" }}>
+            What makes MEOK&apos;s approach distinctive is what it does not do during and after
+            grounding. It does not ask what triggered you. It does not probe for details about the
+            original trauma. It does not encourage you to &ldquo;process&rdquo; what happened. It
+            grounds you in the present, then remains present with you &mdash; letting you lead what,
+            if anything, comes next.
+          </p>
+
+          <h3
+            style={{
+              fontSize: "18px",
+              fontWeight: "600",
+              color: "#c9a84c",
+              margin: "32px 0 12px",
+              lineHeight: "1.4",
+            }}
+          >
+            Grounding and the window of tolerance
+          </h3>
+          <p style={{ fontSize: "17px", lineHeight: "1.75", color: "#a09880", margin: "0 0 20px" }}>
+            Trauma-informed care uses the concept of the &ldquo;window of tolerance&rdquo; &mdash;
+            the zone of nervous system arousal in which the person can think, feel, and engage without
+            becoming overwhelmed (hyperarousal) or shutting down (hypoarousal). Grounding techniques
+            are specifically designed to return a dysregulated nervous system to this window.
+            MEOK&apos;s Healer companion is calibrated to respond to signs of dysregulation with
+            grounding-first support rather than emotional exploration.
+          </p>
+        </section>
+
+        <hr style={{ border: "none", borderTop: "1px solid #2a2840", margin: "48px 0" }} />
+
+        {/* ── Section 4: Healer archetype ───────────────────────────────── */}
+        <section id="healer-archetype" style={{ marginBottom: "56px" }}>
+          <h2
+            style={{
+              fontSize: "clamp(20px, 3vw, 28px)",
+              fontWeight: "600",
+              color: "#f5f0e8",
+              margin: "0 0 20px",
+              lineHeight: "1.3",
+              letterSpacing: "-0.01em",
+            }}
+          >
+            What is MEOK&apos;s Healer archetype and how is it designed for trauma survivors?
+          </h2>
+
+          <p style={{ fontSize: "17px", lineHeight: "1.75", color: "#a09880", margin: "0 0 20px" }}>
+            MEOK&apos;s companion system uses a set of distinct AI archetypes, each specialised for
+            different emotional and practical roles. The Healer archetype is MEOK&apos;s care-specialised
+            companion &mdash; rendered in deep green, designed for users navigating grief, trauma,
+            chronic illness, recovery, and emotional vulnerability.
+          </p>
+
+          <p style={{ fontSize: "17px", lineHeight: "1.75", color: "#a09880", margin: "0 0 24px" }}>
+            The Healer is not a warmer version of a general-purpose AI. It is built around a specific
+            set of trauma-informed communication principles that distinguish it from every other AI
+            companion currently available:
+          </p>
+
+          {/* Feature box: Healer principles */}
+          <div
+            style={{
+              backgroundColor: "#13121f",
+              border: "1px solid #2a2840",
+              borderRadius: "12px",
+              padding: "28px 32px",
+              margin: "32px 0",
+            }}
+          >
+            <p
+              style={{
+                fontSize: "16px",
+                fontWeight: "700",
+                color: "#c9a84c",
+                margin: "0 0 16px",
+                letterSpacing: "0.05em",
+                textTransform: "uppercase",
+              }}
+            >
+              Healer Archetype: Core Principles
+            </p>
+            {[
+              {
+                title: "Pacing",
+                body: "The Healer moves at the user\u2019s pace, never the conversation\u2019s momentum. It does not push, prompt, or create urgency around emotional disclosure.",
+              },
+              {
+                title: "Non-probing",
+                body: "It does not ask follow-up questions that dig deeper into distress. It receives what is offered and does not reach for more.",
+              },
+              {
+                title: "Containment over exploration",
+                body: "Where a general AI might encourage elaboration, the Healer prioritises emotional containment \u2014 creating a safe boundary around difficult material rather than expanding into it.",
+              },
+              {
+                title: "Consistent presence",
+                body: "The Healer is reliably calm. It does not become distressed by distressing content. This is distinct from human relationships, where empathy can tip into mirrored dysregulation.",
+              },
+              {
+                title: "Referral awareness",
+                body: "The Healer recognises the boundaries of its competence and actively directs users toward professional clinical support when distress exceeds what companion support can address.",
+              },
+            ].map((item, idx, arr) => (
+              <div
+                key={item.title}
+                style={{
+                  paddingBottom: idx < arr.length - 1 ? "16px" : "0",
+                  marginBottom: idx < arr.length - 1 ? "16px" : "0",
+                  borderBottom: idx < arr.length - 1 ? "1px solid #2a2840" : "none",
+                }}
+              >
+                <p style={{ fontSize: "15px", fontWeight: "600", color: "#f5f0e8", margin: "0 0 6px" }}>
+                  {item.title}
+                </p>
+                <p style={{ fontSize: "15px", lineHeight: "1.7", color: "#a09880", margin: "0" }}>
+                  {item.body}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          <h3
+            style={{
+              fontSize: "18px",
+              fontWeight: "600",
+              color: "#c9a84c",
+              margin: "32px 0 12px",
+              lineHeight: "1.4",
+            }}
+          >
+            The Healer and recovery between sessions
+          </h3>
+          <p style={{ fontSize: "17px", lineHeight: "1.75", color: "#a09880", margin: "0 0 20px" }}>
+            In practical terms, the Healer supports the between-session experience by helping process
+            the texture of daily life through the lens of recovery &mdash; not trauma retelling, but
+            the ordinary challenges that PTSD makes harder: social situations, work stress,
+            relationship friction, sleep difficulties. These are the real contexts in which trauma
+            plays out every day.
+          </p>
+
+          <p style={{ fontSize: "17px", lineHeight: "1.75", color: "#a09880", margin: "0 0 20px" }}>
+            The Healer also holds memory of your recovery journey. Because MEOK&apos;s Sovereign
+            Memory retains context across conversations, the Healer can notice patterns over time
+            &mdash; periods of increased difficulty, approaching anniversaries, cyclical triggers
+            &mdash; and respond with appropriate sensitivity. This longitudinal awareness is something
+            no single therapeutic session can replicate.
+          </p>
+        </section>
+
+        <hr style={{ border: "none", borderTop: "1px solid #2a2840", margin: "48px 0" }} />
+
+        {/* ── Section 5: No retelling ───────────────────────────────────── */}
+        <section id="no-retelling" style={{ marginBottom: "56px" }}>
+          <h2
+            style={{
+              fontSize: "clamp(20px, 3vw, 28px)",
+              fontWeight: "600",
+              color: "#f5f0e8",
+              margin: "0 0 20px",
+              lineHeight: "1.3",
+              letterSpacing: "-0.01em",
+            }}
+          >
+            Why MEOK does not encourage detailed trauma retelling &mdash; and why that matters
+          </h2>
+
+          <p style={{ fontSize: "17px", lineHeight: "1.75", color: "#a09880", margin: "0 0 20px" }}>
+            This is perhaps the most important design principle in MEOK&apos;s approach to PTSD
+            support, and one that distinguishes it sharply from general-purpose AI companions that
+            may inadvertently encourage harmful patterns of engagement with traumatic material.
+          </p>
+
+          <p style={{ fontSize: "17px", lineHeight: "1.75", color: "#f5f0e8", margin: "0 0 20px" }}>
+            Detailed, unsupported retelling of traumatic events carries a real risk of retraumatisation.
+          </p>
+
+          <p style={{ fontSize: "17px", lineHeight: "1.75", color: "#a09880", margin: "0 0 20px" }}>
+            In clinical trauma therapy, exposure to traumatic material is conducted within a carefully
+            managed therapeutic container. The therapist regulates pacing, monitors the client&apos;s
+            nervous system arousal, applies specific protocols to prevent flooding, and provides
+            co-regulation through their trained presence. Outside this container, repeated return to
+            traumatic content can reinforce the neural encoding of trauma rather than processing and
+            integrating it.
+          </p>
+
+          {/* Warning box */}
+          <div
+            style={{
+              backgroundColor: "#13121f",
+              border: "1px solid #c9a84c",
+              borderTop: "3px solid #c9a84c",
+              borderRadius: "0 0 10px 10px",
+              padding: "24px 28px",
+              margin: "32px 0",
+            }}
+          >
+            <p
+              style={{
+                fontSize: "13px",
+                fontWeight: "700",
+                letterSpacing: "0.1em",
+                textTransform: "uppercase",
+                color: "#c9a84c",
+                margin: "0 0 10px",
+              }}
+            >
+              Critical design boundary
+            </p>
+            <p style={{ fontSize: "15px", lineHeight: "1.7", color: "#a09880", margin: "0" }}>
+              MEOK&apos;s Healer companion will not ask you to describe what happened. It will not
+              prompt you to go into more detail about a traumatic event. If you choose to share
+              aspects of your experience, the Healer will receive them with care &mdash; but it will
+              not feed a retelling loop. This boundary is not a limitation of the AI&apos;s capability.
+              It is a deliberate, safety-first design choice based on trauma-informed principles.
+            </p>
+          </div>
+
+          <h3
+            style={{
+              fontSize: "18px",
+              fontWeight: "600",
+              color: "#c9a84c",
+              margin: "32px 0 12px",
+              lineHeight: "1.4",
+            }}
+          >
+            What MEOK does instead
+          </h3>
+          <p style={{ fontSize: "17px", lineHeight: "1.75", color: "#a09880", margin: "0 0 20px" }}>
+            Rather than engaging with the content of traumatic memories, MEOK&apos;s Healer engages
+            with the present-moment experience of living in recovery. This means processing daily
+            life through the lens of recovery &mdash; the frustration of an unexpected trigger in a
+            supermarket, the exhaustion of hypervigilance, the complexity of relationships affected
+            by trauma. These are not trauma narratives. They are the lived experience of recovery,
+            and they are appropriate material for between-session companion support.
+          </p>
+
+          <p style={{ fontSize: "17px", lineHeight: "1.75", color: "#a09880", margin: "0 0 20px" }}>
+            Celebrating small victories in recovery is also part of the Healer&apos;s role. The day
+            you drove past the location of the incident without distress. The week you slept through
+            the night without nightmares. The conversation with a family member that felt genuinely
+            connected. PTSD recovery is non-linear and slow, and having a companion that remembers
+            and acknowledges progress across time has meaningful therapeutic value.
+          </p>
+
+          <p style={{ fontSize: "17px", lineHeight: "1.75", color: "#a09880", margin: "0 0 20px" }}>
+            Supporting functional coping between sessions is a third mode: sleep hygiene, exercise,
+            social connection, pacing of activities. These are the behavioural pillars of trauma
+            recovery that are frequently disrupted by PTSD symptoms and that a companion can
+            consistently, gently support.
+          </p>
+        </section>
+
+        <hr style={{ border: "none", borderTop: "1px solid #2a2840", margin: "48px 0" }} />
+
+        {/* ── Section 6: Memory privacy ─────────────────────────────────── */}
+        <section id="memory-privacy" style={{ marginBottom: "56px" }}>
+          <h2
+            style={{
+              fontSize: "clamp(20px, 3vw, 28px)",
+              fontWeight: "600",
+              color: "#f5f0e8",
+              margin: "0 0 20px",
+              lineHeight: "1.3",
+              letterSpacing: "-0.01em",
+            }}
+          >
+            How MEOK protects your trauma disclosures: Sovereign Memory privacy
+          </h2>
+
+          <p style={{ fontSize: "17px", lineHeight: "1.75", color: "#a09880", margin: "0 0 20px" }}>
+            Privacy is not a secondary concern for PTSD survivors using an AI companion. It is a
+            foundational requirement. What a person shares about their trauma history &mdash; the
+            nature of events, the people involved, the specific triggers and responses &mdash; is
+            among the most sensitive personal information that exists. For many survivors, the
+            decision to disclose at all is itself an act of enormous courage.
+          </p>
+
+          <p style={{ fontSize: "17px", lineHeight: "1.75", color: "#a09880", margin: "0 0 20px" }}>
+            MEOK is built on a different model from the dominant paradigm in consumer AI. Most AI
+            systems treat user conversations as training data &mdash; your messages help improve the
+            model, your emotional disclosures become signal in a dataset you never consented to
+            provide. MEOK&apos;s Sovereign Memory architecture is explicitly designed to break this
+            model.
+          </p>
+
+          {/* Feature box: privacy guarantee */}
+          <div
+            style={{
+              backgroundColor: "#13121f",
+              border: "1px solid #c9a84c",
+              borderRadius: "12px",
+              padding: "28px 32px",
+              margin: "32px 0",
+            }}
+          >
+            <p
+              style={{
+                fontSize: "16px",
+                fontWeight: "700",
+                color: "#c9a84c",
+                margin: "0 0 16px",
+                letterSpacing: "0.05em",
+                textTransform: "uppercase",
+              }}
+            >
+              Sovereign Memory Privacy Guarantee
+            </p>
+            {[
+              {
+                title: "Your trauma disclosures are never used for training.",
+                body: "MEOK\u2019s memory of your conversations exists solely for your benefit. It is not aggregated, not used to improve models, not shared with third parties.",
+              },
+              {
+                title: "Encryption at rest and in transit.",
+                body: "Memory data is encrypted. Your vault is accessible to you and only you.",
+              },
+              {
+                title: "Full portability and deletion.",
+                body: "You can export your entire memory vault at any time, or delete it entirely. Your data does not outlive your consent.",
+              },
+              {
+                title: "On-device processing where possible.",
+                body: "Sensitive conversations can be processed locally, minimising cloud exposure of your most private disclosures.",
+              },
+            ].map((item, idx, arr) => (
+              <div
+                key={item.title}
+                style={{
+                  paddingBottom: idx < arr.length - 1 ? "14px" : "0",
+                  marginBottom: idx < arr.length - 1 ? "14px" : "0",
+                  borderBottom: idx < arr.length - 1 ? "1px solid #2a2840" : "none",
+                }}
+              >
+                <p style={{ fontSize: "15px", lineHeight: "1.7", color: "#a09880", margin: "0" }}>
+                  <strong style={{ color: "#f5f0e8" }}>{item.title}</strong> {item.body}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          <p style={{ fontSize: "17px", lineHeight: "1.75", color: "#a09880", margin: "0 0 20px" }}>
+            This matters specifically for trauma survivors because the power dynamics of disclosure
+            are already freighted with risk. Survivors of abuse, assault, or institutional harm have
+            often experienced their words being used against them. An AI system that treats your
+            disclosures as training data re-enacts, in a different register, the same disempowering
+            dynamic. MEOK refuses this architecture.
+          </p>
+
+          <h3
+            style={{
+              fontSize: "18px",
+              fontWeight: "600",
+              color: "#c9a84c",
+              margin: "32px 0 12px",
+              lineHeight: "1.4",
+            }}
+          >
+            Memory as longitudinal support
+          </h3>
+          <p style={{ fontSize: "17px", lineHeight: "1.75", color: "#a09880", margin: "0 0 20px" }}>
+            The positive corollary of sovereign memory is that the Healer can offer something
+            genuinely useful to long-term recovery: continuity. Because memory persists across
+            sessions, the Healer can reference what you shared six weeks ago, notice that you seem
+            to be struggling more than usual around a particular time of year, or acknowledge that
+            you mentioned starting a new phase of therapy. This is not surveillance. It is the kind
+            of remembering that makes a companion genuinely supportive rather than perpetually
+            starting from zero.
+          </p>
+        </section>
+
+        <hr style={{ border: "none", borderTop: "1px solid #2a2840", margin: "48px 0" }} />
+
+        {/* ── Section 7: Complex PTSD ───────────────────────────────────── */}
+        <section id="complex-ptsd" style={{ marginBottom: "56px" }}>
+          <h2
+            style={{
+              fontSize: "clamp(20px, 3vw, 28px)",
+              fontWeight: "600",
+              color: "#f5f0e8",
+              margin: "0 0 20px",
+              lineHeight: "1.3",
+              letterSpacing: "-0.01em",
+            }}
+          >
+            Complex PTSD: how MEOK approaches C-PTSD differently from PTSD
+          </h2>
+
+          <p style={{ fontSize: "17px", lineHeight: "1.75", color: "#a09880", margin: "0 0 20px" }}>
+            Complex PTSD (C-PTSD) was formally recognised in the ICD-11 in 2018, and the distinction
+            matters clinically and practically. Where PTSD typically arises from a single or bounded
+            traumatic event &mdash; an accident, an assault, a disaster &mdash; C-PTSD arises from
+            prolonged, repeated, or inescapable trauma, most commonly childhood abuse or neglect,
+            domestic violence, trafficking, or captivity.
+          </p>
+
+          <p style={{ fontSize: "17px", lineHeight: "1.75", color: "#a09880", margin: "0 0 24px" }}>
+            C-PTSD includes the classic PTSD symptom cluster &mdash; re-experiencing, avoidance,
+            hyperarousal &mdash; but adds three additional domains that reflect the deeper damage done
+            by sustained traumatisation: disturbances in affect regulation, negative self-concept,
+            and relational difficulties.
+          </p>
+
+          {/* Comparison grid */}
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "1fr 1fr",
+              gap: "16px",
+              margin: "28px 0",
+            }}
+          >
+            <div
+              style={{
+                backgroundColor: "#13121f",
+                border: "1px solid #2a2840",
+                borderRadius: "10px",
+                padding: "20px",
+              }}
+            >
+              <span
+                style={{
+                  fontSize: "11px",
+                  fontWeight: "700",
+                  letterSpacing: "0.1em",
+                  textTransform: "uppercase",
+                  color: "#a09880",
+                  marginBottom: "10px",
+                  display: "block",
+                }}
+              >
+                PTSD
+              </span>
+              {[
+                "Single or bounded traumatic event",
+                "Re-experiencing, avoidance, hyperarousal",
+                "Self-concept relatively intact",
+                "Relationships less structurally affected",
+                "EMDR often highly effective",
+              ].map((item, idx, arr) => (
+                <div
+                  key={item}
+                  style={{
+                    fontSize: "14px",
+                    lineHeight: "1.6",
+                    color: "#a09880",
+                    padding: "8px 0",
+                    borderBottom: idx < arr.length - 1 ? "1px solid #2a2840" : "none",
+                  }}
+                >
+                  {item}
+                </div>
+              ))}
+            </div>
+            <div
+              style={{
+                backgroundColor: "#13121f",
+                border: "1px solid #6aaa64",
+                borderRadius: "10px",
+                padding: "20px",
+              }}
+            >
+              <span
+                style={{
+                  fontSize: "11px",
+                  fontWeight: "700",
+                  letterSpacing: "0.1em",
+                  textTransform: "uppercase",
+                  color: "#6aaa64",
+                  marginBottom: "10px",
+                  display: "block",
+                }}
+              >
+                Complex PTSD (C-PTSD)
+              </span>
+              {[
+                "Prolonged, repeated, or inescapable trauma",
+                "PTSD symptoms plus affect dysregulation",
+                "Deeply damaged self-concept and shame",
+                "Fundamental disruption to attachment and trust",
+                "Longer stabilisation phase before processing",
+              ].map((item, idx, arr) => (
+                <div
+                  key={item}
+                  style={{
+                    fontSize: "14px",
+                    lineHeight: "1.6",
+                    color: "#a09880",
+                    padding: "8px 0",
+                    borderBottom: idx < arr.length - 1 ? "1px solid #2a2840" : "none",
+                  }}
+                >
+                  {item}
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <h3
+            style={{
+              fontSize: "18px",
+              fontWeight: "600",
+              color: "#c9a84c",
+              margin: "32px 0 12px",
+              lineHeight: "1.4",
+            }}
+          >
+            Relational trust and the companion relationship
+          </h3>
+          <p style={{ fontSize: "17px", lineHeight: "1.75", color: "#a09880", margin: "0 0 20px" }}>
+            Many C-PTSD survivors have experienced profound betrayals of trust by caregivers or
+            authority figures. The attachment system itself may be dysregulated. MEOK&apos;s Healer
+            is designed to be consistently predictable and transparent: it does not suddenly change
+            tone, does not surprise with unexpected emotional demands, and does not create the kind
+            of urgency or dependency that mirrors unhealthy relational dynamics.
+          </p>
+
+          <h3
+            style={{
+              fontSize: "18px",
+              fontWeight: "600",
+              color: "#c9a84c",
+              margin: "32px 0 12px",
+              lineHeight: "1.4",
+            }}
+          >
+            Affect regulation support
+          </h3>
+          <p style={{ fontSize: "17px", lineHeight: "1.75", color: "#a09880", margin: "0 0 20px" }}>
+            C-PTSD frequently involves difficulty identifying, naming, and modulating emotional
+            states &mdash; sometimes called alexithymia. The Healer can support this gently by
+            offering emotional vocabulary without pressure, helping to name what might be present
+            without insisting on particular interpretations.
+          </p>
+
+          <h3
+            style={{
+              fontSize: "18px",
+              fontWeight: "600",
+              color: "#c9a84c",
+              margin: "32px 0 12px",
+              lineHeight: "1.4",
+            }}
+          >
+            Shame and the inner critic
+          </h3>
+          <p style={{ fontSize: "17px", lineHeight: "1.75", color: "#a09880", margin: "0 0 20px" }}>
+            The negative self-concept dimension of C-PTSD often manifests as profound shame and a
+            relentlessly critical inner voice. MEOK&apos;s Healer does not mirror or amplify this.
+            It holds a consistently compassionate regard for the person regardless of what they
+            express about themselves &mdash; not through toxic positivity, but through patient,
+            steady non-judgement.
+          </p>
+
+          <div
+            style={{
+              backgroundColor: "#13121f",
+              border: "1px solid #2a2840",
+              borderRadius: "12px",
+              padding: "28px 32px",
+              margin: "32px 0",
+            }}
+          >
+            <p
+              style={{
+                fontSize: "16px",
+                fontWeight: "700",
+                color: "#c9a84c",
+                margin: "0 0 12px",
+                letterSpacing: "0.05em",
+                textTransform: "uppercase",
+              }}
+            >
+              C-PTSD and professional support
+            </p>
+            <p style={{ fontSize: "16px", lineHeight: "1.7", color: "#a09880", margin: "0" }}>
+              C-PTSD typically requires specialist clinical treatment that extends well beyond
+              standard PTSD protocols. Schema therapy, adapted EMDR, Dialectical Behaviour Therapy
+              (DBT), and other approaches are used by trained professionals to address the multiple
+              dimensions of C-PTSD. MEOK always signposts toward appropriate professional support
+              and is explicit that companion care supplements, never substitutes for, specialist
+              clinical treatment.
+            </p>
+          </div>
+        </section>
+
+        <hr style={{ border: "none", borderTop: "1px solid #2a2840", margin: "48px 0" }} />
+
+        {/* ── Section 8: What MEOK cannot do ───────────────────────────── */}
+        <section id="not-a-therapist" style={{ marginBottom: "56px" }}>
+          <h2
+            style={{
+              fontSize: "clamp(20px, 3vw, 28px)",
+              fontWeight: "600",
+              color: "#f5f0e8",
+              margin: "0 0 20px",
+              lineHeight: "1.3",
+              letterSpacing: "-0.01em",
+            }}
+          >
+            What MEOK cannot do: the honest limits of AI PTSD support
+          </h2>
+
+          <p style={{ fontSize: "17px", lineHeight: "1.75", color: "#a09880", margin: "0 0 20px" }}>
+            Honesty about limitation is itself a form of trauma-informed care. Survivors of PTSD
+            have often encountered systems &mdash; medical, legal, social &mdash; that overpromised
+            and underdelivered. MEOK does not do this.
+          </p>
+
+          <h3
+            style={{
+              fontSize: "18px",
+              fontWeight: "600",
+              color: "#c9a84c",
+              margin: "32px 0 12px",
+              lineHeight: "1.4",
+            }}
+          >
+            MEOK cannot provide trauma therapy
+          </h3>
+          <p style={{ fontSize: "17px", lineHeight: "1.75", color: "#a09880", margin: "0 0 20px" }}>
+            EMDR and trauma-focused CBT are the NICE-recommended gold-standard treatments for PTSD.
+            They require a trained human clinician operating within a boundaried therapeutic
+            relationship, using validated protocols, with clinical supervision. No AI companion
+            replicates this. MEOK is not a therapist. It does not conduct therapy. It does not
+            provide clinical assessment or diagnosis.
+          </p>
+
+          <h3
+            style={{
+              fontSize: "18px",
+              fontWeight: "600",
+              color: "#c9a84c",
+              margin: "32px 0 12px",
+              lineHeight: "1.4",
+            }}
+          >
+            MEOK cannot respond to crisis
+          </h3>
+          <p style={{ fontSize: "17px", lineHeight: "1.75", color: "#a09880", margin: "0 0 20px" }}>
+            If someone is in acute distress, experiencing active suicidal ideation, or in immediate
+            danger, they need human crisis support &mdash; not an AI companion. MEOK&apos;s Healer
+            will always signpost crisis resources in these situations. In the UK: Samaritans (116 123),
+            Crisis Text Line (text SHOUT to 85258), and A&amp;E for immediate risk.
+          </p>
+
+          <h3
+            style={{
+              fontSize: "18px",
+              fontWeight: "600",
+              color: "#c9a84c",
+              margin: "32px 0 12px",
+              lineHeight: "1.4",
+            }}
+          >
+            MEOK cannot process traumatic memory
+          </h3>
+          <p style={{ fontSize: "17px", lineHeight: "1.75", color: "#a09880", margin: "0 0 20px" }}>
+            Processing traumatic memory &mdash; integrating fragmented trauma memories into coherent
+            autobiographical narrative with reduced emotional charge &mdash; requires clinical
+            expertise and a carefully managed therapeutic environment. MEOK does not attempt this.
+            It explicitly avoids engaging with the detailed content of traumatic events.
+          </p>
+
+          <h3
+            style={{
+              fontSize: "18px",
+              fontWeight: "600",
+              color: "#c9a84c",
+              margin: "32px 0 12px",
+              lineHeight: "1.4",
+            }}
+          >
+            MEOK cannot replace human connection
+          </h3>
+          <p style={{ fontSize: "17px", lineHeight: "1.75", color: "#a09880", margin: "0 0 20px" }}>
+            Recovery from trauma, particularly relational trauma, ultimately happens in the context
+            of real human relationships. MEOK is aware of this and actively encourages users to
+            invest in and repair human connection rather than substituting AI companionship for the
+            harder work of relational recovery.
+          </p>
+
+          {/* Pull quote 2 */}
+          <div
+            style={{
+              borderLeft: "4px solid #c9a84c",
+              padding: "20px 28px",
+              margin: "40px 0",
+              backgroundColor: "#13121f",
+              borderRadius: "0 8px 8px 0",
+            }}
+          >
+            <p
+              style={{
+                fontSize: "20px",
+                fontStyle: "italic",
+                lineHeight: "1.6",
+                color: "#f5f0e8",
+                margin: "0 0 12px",
+              }}
+            >
+              &ldquo;We want MEOK to reduce isolation, not deepen it. The Healer companion is
+              designed to make it easier to engage with the world &mdash; to be a bridge toward
+              human connection, not a replacement for it.&rdquo;
+            </p>
+            <p
+              style={{
+                fontSize: "13px",
+                color: "#c9a84c",
+                margin: "0",
+                letterSpacing: "0.05em",
+                textTransform: "uppercase",
+              }}
+            >
+              Nicholas Templeman &bull; Founder, MEOK AI LABS
+            </p>
+          </div>
+
+          <h3
+            style={{
+              fontSize: "18px",
+              fontWeight: "600",
+              color: "#c9a84c",
+              margin: "32px 0 12px",
+              lineHeight: "1.4",
+            }}
+          >
+            Where MEOK genuinely helps
+          </h3>
+          <p style={{ fontSize: "17px", lineHeight: "1.75", color: "#a09880", margin: "0 0 20px" }}>
+            Within these limits, MEOK provides something that is genuinely valuable and currently
+            under-served: consistent, patient, between-session companionship with trauma-informed
+            principles, sovereign memory privacy, grounding support when triggered, and a
+            non-judgemental space to process the daily texture of recovery. For the millions of UK
+            adults living with PTSD, this is not nothing. It is, in the right context, meaningfully
+            helpful.
+          </p>
+        </section>
+
+        <hr style={{ border: "none", borderTop: "1px solid #2a2840", margin: "48px 0" }} />
+
+        {/* ── Section 9: FAQ ────────────────────────────────────────────── */}
+        <section id="faq" style={{ marginBottom: "56px" }}>
+          <h2
+            style={{
+              fontSize: "clamp(20px, 3vw, 28px)",
+              fontWeight: "600",
+              color: "#f5f0e8",
+              margin: "0 0 32px",
+              lineHeight: "1.3",
+              letterSpacing: "-0.01em",
+            }}
+          >
+            Frequently asked questions about AI for PTSD support
+          </h2>
+
+          {[
+            {
+              q: "Can AI really help with PTSD?",
+              a: "AI cannot treat or diagnose PTSD \u2014 EMDR and trauma-focused CBT are the gold-standard clinical treatments. However, AI can meaningfully support the between-session experience: reducing isolation, providing grounding when triggered, and offering a calm, non-judgemental presence. MEOK\u2019s Healer archetype is designed with trauma-informed principles and never encourages detailed trauma retelling, which carries retraumatisation risk.",
+            },
+            {
+              q: "Is it safe to use an AI companion when you have PTSD?",
+              a: "For the specific purpose of between-session support \u2014 grounding, daily life processing, companionship \u2014 a well-designed, trauma-informed AI companion can be safe and beneficial. The risks arise when AI companions encourage trauma retelling without clinical support, or foster unhealthy emotional dependency. MEOK is designed to avoid both. It does not probe for traumatic detail, and the Maternal Covenant architecture actively prevents dependency-engineering patterns.",
+            },
+            {
+              q: "What is the 5-4-3-2-1 grounding technique?",
+              a: "The 5-4-3-2-1 technique is a present-moment grounding exercise that interrupts trauma activation by engaging the senses sequentially: notice five things you can see, four you can hear, three you can touch, two you can smell, and one you can taste. It is one of the most widely taught and evidence-supported grounding methods for PTSD triggers. MEOK\u2019s Healer companion can guide this sequence gently and without pushing for elaboration about the trigger itself.",
+            },
+            {
+              q: "What is the difference between PTSD and Complex PTSD?",
+              a: "PTSD typically arises from a single or bounded traumatic event. Complex PTSD (C-PTSD) arises from prolonged, repeated trauma \u2014 such as childhood abuse, domestic violence, or captivity. C-PTSD includes the standard PTSD symptom cluster plus three additional dimensions: affect dysregulation, negative self-concept, and fundamental disturbances in relational functioning. MEOK acknowledges this distinction and adjusts the Healer\u2019s approach accordingly.",
+            },
+            {
+              q: "Does MEOK share my trauma disclosures with anyone?",
+              a: "No. MEOK\u2019s Sovereign Memory architecture ensures your trauma disclosures are encrypted, stored only for your benefit, and never used for AI model training or shared with third parties. You can export or delete your entire memory vault at any time. Your trauma is not someone else\u2019s training data.",
+            },
+            {
+              q: "How does MEOK know when to refer me to professional help?",
+              a: "MEOK\u2019s Healer monitors conversation for signals of acute distress that exceed the scope of companion support \u2014 active suicidal ideation, crisis-level emotional flooding, or situations involving immediate risk. In these cases, it proactively signposts professional and crisis resources. MEOK also regularly encourages engagement with clinical services as part of its general support philosophy.",
+            },
+            {
+              q: "Can I use MEOK alongside my EMDR therapy?",
+              a: "Yes. MEOK is specifically designed as a between-session companion, not a replacement for clinical therapy. Many users find it helpful to use MEOK for daily grounding and support while engaging in active EMDR or trauma-focused CBT with a trained therapist. We recommend informing your therapist that you use MEOK, as they may have specific guidance about how to integrate between-session AI support with your treatment plan.",
+            },
+            {
+              q: "Is MEOK free for PTSD support?",
+              a: "MEOK offers a free Explorer tier that includes access to the Healer archetype and core memory features. This is available without payment. Premium tiers provide extended memory capacity, additional archetype options, and enhanced privacy features. For someone in PTSD recovery who may be managing significant financial and life disruption, the free tier provides genuine, meaningful support without a financial barrier.",
+            },
+          ].map((item, idx, arr) => (
+            <div
+              key={item.q}
+              style={{
+                marginBottom: idx < arr.length - 1 ? "32px" : "0",
+                paddingBottom: idx < arr.length - 1 ? "32px" : "0",
+                borderBottom: idx < arr.length - 1 ? "1px solid #2a2840" : "none",
+              }}
+            >
+              <h3
+                style={{
+                  fontSize: "18px",
+                  fontWeight: "600",
+                  color: "#c9a84c",
+                  margin: "0 0 12px",
+                  lineHeight: "1.4",
+                }}
+              >
+                {item.q}
+              </h3>
+              <p style={{ fontSize: "16px", lineHeight: "1.75", color: "#a09880", margin: "0" }}>
+                {item.a}
+              </p>
+            </div>
+          ))}
+        </section>
+
+        <hr style={{ border: "none", borderTop: "1px solid #2a2840", margin: "48px 0" }} />
+
+        {/* ── Related articles ──────────────────────────────────────────── */}
+        <section style={{ marginBottom: "56px" }}>
+          <h2
+            style={{
+              fontSize: "clamp(20px, 3vw, 28px)",
+              fontWeight: "600",
+              color: "#f5f0e8",
+              margin: "0 0 24px",
+              lineHeight: "1.3",
+              letterSpacing: "-0.01em",
+            }}
+          >
+            Related articles
+          </h2>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fill, minmax(220px, 1fr))",
+              gap: "16px",
+            }}
+          >
+            {[
+              { href: "/blog/ai-for-anxiety", label: "Mental Health", title: "AI for Anxiety: Grounding and Support Between Sessions" },
+              { href: "/blog/ai-for-depression", label: "Mental Health", title: "AI for Depression: Consistent Presence in the Dark Days" },
+              { href: "/blog/ai-for-grief-and-loss", label: "Recovery", title: "AI for Grief and Loss: Non-Judgemental Support at Any Hour" },
+              { href: "/blog/ai-companion-privacy", label: "Privacy", title: "How MEOK Protects Your Most Private Conversations" },
+            ].map((card) => (
+              <Link
+                key={card.href}
+                href={card.href}
+                style={{
+                  backgroundColor: "#13121f",
+                  border: "1px solid #2a2840",
+                  borderRadius: "10px",
+                  padding: "20px",
+                  textDecoration: "none",
+                  display: "block",
+                }}
+              >
+                <span
+                  style={{
+                    fontSize: "11px",
+                    fontWeight: "700",
+                    letterSpacing: "0.1em",
+                    textTransform: "uppercase",
+                    color: "#c9a84c",
+                    marginBottom: "8px",
+                    display: "block",
+                  }}
+                >
+                  {card.label}
+                </span>
+                <span
+                  style={{
+                    fontSize: "15px",
+                    lineHeight: "1.5",
+                    color: "#f5f0e8",
+                    fontWeight: "600",
+                  }}
+                >
+                  {card.title}
+                </span>
+              </Link>
+            ))}
+          </div>
+        </section>
+
+        {/* ── CTA ───────────────────────────────────────────────────────── */}
+        <div
+          style={{
+            backgroundColor: "#13121f",
+            border: "1px solid #2a2840",
+            borderRadius: "16px",
+            padding: "48px 40px",
+            textAlign: "center",
+          }}
+        >
+          <h2
+            style={{
+              fontSize: "clamp(22px, 4vw, 32px)",
+              fontWeight: "700",
+              color: "#f5f0e8",
+              margin: "0 0 16px",
+              lineHeight: "1.25",
+            }}
+          >
+            Start your between-session support today
+          </h2>
+          <p
+            style={{
+              fontSize: "16px",
+              lineHeight: "1.7",
+              color: "#a09880",
+              margin: "0 auto 32px",
+              maxWidth: "520px",
+            }}
+          >
+            MEOK&apos;s Healer companion is free to start. Trauma-informed, privacy-first, and
+            designed to hold the space between therapy sessions with patient,
+            non-retraumatising care.
+          </p>
+          <Link
+            href="https://meok.ai/birth"
+            style={{
+              display: "inline-block",
+              backgroundColor: "#c9a84c",
+              color: "#0d0c18",
+              fontWeight: "700",
+              fontSize: "16px",
+              padding: "14px 36px",
+              borderRadius: "8px",
+              textDecoration: "none",
+              letterSpacing: "0.02em",
+            }}
+          >
+            Meet your Healer companion
+          </Link>
+          <p
+            style={{
+              fontSize: "13px",
+              color: "#a09880",
+              margin: "16px 0 0",
+              lineHeight: "1.5",
+            }}
+          >
+            Free Explorer tier &bull; No credit card required &bull; Your data stays yours
+          </p>
+          <p
+            style={{
+              fontSize: "13px",
+              color: "#a09880",
+              margin: "8px 0 0",
+              lineHeight: "1.5",
+            }}
+          >
+            MEOK is not a medical device and does not provide clinical therapy.
+            If you are in crisis, please contact Samaritans on 116 123 or text SHOUT to 85258.
+          </p>
+        </div>
+      </main>
+
+      {/* ── JSON-LD ───────────────────────────────────────────────────────── */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
@@ -158,1772 +1721,6 @@ export default function AiForPtsdSupportPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
-
-      <main
-        style={{
-          backgroundColor: bg,
-          color: cream,
-          fontFamily: '"Inter", "Helvetica Neue", Arial, sans-serif',
-          lineHeight: '1.75',
-          minHeight: '100vh',
-        }}
-      >
-        {/* ── Hero ── */}
-        <section
-          style={{
-            maxWidth: '780px',
-            margin: '0 auto',
-            padding: '80px 24px 56px',
-          }}
-        >
-          <p
-            style={{
-              color: gold,
-              fontSize: '13px',
-              fontWeight: 600,
-              letterSpacing: '0.12em',
-              textTransform: 'uppercase',
-              marginBottom: '20px',
-            }}
-          >
-            MEOK AI LABS &mdash; Mental Health &amp; Wellbeing
-          </p>
-
-          <h1
-            style={{
-              fontSize: 'clamp(28px, 5vw, 46px)',
-              fontWeight: 700,
-              lineHeight: '1.18',
-              letterSpacing: '-0.02em',
-              color: cream,
-              marginBottom: '24px',
-            }}
-          >
-            AI for PTSD Support: Grounding, Memory,
-            and Trauma-Informed Design
-          </h1>
-
-          <p
-            style={{
-              fontSize: '19px',
-              color: muted,
-              maxWidth: '640px',
-              marginBottom: '32px',
-              lineHeight: '1.65',
-            }}
-          >
-            Post-traumatic stress does not keep office hours. This guide explains
-            how a trauma-informed AI companion can provide grounding support,
-            hold your history with care, and work alongside &mdash; never
-            instead of &mdash; the professional therapy you deserve.
-          </p>
-
-          {/* Crisis banner */}
-          <div
-            style={{
-              backgroundColor: crisisRed,
-              border: `1px solid ${crisisBorder}`,
-              borderRadius: '10px',
-              padding: '18px 22px',
-              marginBottom: '40px',
-            }}
-          >
-            <p
-              style={{
-                margin: 0,
-                fontSize: '14px',
-                color: cream,
-                lineHeight: '1.6',
-              }}
-            >
-              <strong style={{ color: '#ff8080' }}>If you are in crisis right now:</strong>{' '}
-              call Samaritans free on{' '}
-              <strong>116 123</strong> (24/7, UK &amp; Ireland) or visit{' '}
-              <a
-                href="https://www.ptsduk.org"
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{ color: '#ff9999', textDecoration: 'underline' }}
-              >
-                ptsduk.org
-              </a>{' '}
-              for specialist resources. In an emergency call 999.
-            </p>
-          </div>
-
-          {/* Meta row */}
-          <div
-            style={{
-              display: 'flex',
-              flexWrap: 'wrap',
-              gap: '20px',
-              fontSize: '13px',
-              color: muted,
-              paddingBottom: '40px',
-              borderBottom: `1px solid ${borderSubtle}`,
-            }}
-          >
-            <span>By <strong style={{ color: cream }}>Nicholas Templeman</strong>, Founder &mdash; MEOK AI LABS</span>
-            <span>@meok_ai</span>
-            <span>Published 24 March 2026</span>
-            <span>15 min read</span>
-          </div>
-        </section>
-
-        {/* ── Body ── */}
-        <article
-          style={{
-            maxWidth: '780px',
-            margin: '0 auto',
-            padding: '0 24px 80px',
-          }}
-        >
-          {/* ── 1. What is PTSD ── */}
-          <section style={{ marginBottom: '60px' }}>
-            <h2
-              style={{
-                fontSize: 'clamp(20px, 3vw, 28px)',
-                fontWeight: 700,
-                color: cream,
-                marginBottom: '18px',
-                lineHeight: '1.3',
-              }}
-            >
-              What is PTSD and who does it affect?
-            </h2>
-            <p style={{ color: muted, marginBottom: '18px' }}>
-              Post-traumatic stress disorder (PTSD) is a mental health condition triggered by
-              experiencing or witnessing a terrifying, life-threatening, or deeply distressing
-              event. The nervous system becomes locked in a state of threat-detection, replaying
-              the trauma through flashbacks, nightmares, and intrusive memories even when the
-              danger is long past.
-            </p>
-            <p style={{ color: muted, marginBottom: '18px' }}>
-              PTSD affects roughly{' '}
-              <strong style={{ color: cream }}>1 in 3 people</strong> who experience severe
-              trauma. In the UK alone, the NHS estimates that around 4% of adults live with
-              PTSD at any given time &mdash; that is more than 2.7 million people.
-            </p>
-
-            <h3
-              style={{
-                fontSize: '18px',
-                fontWeight: 600,
-                color: gold,
-                marginBottom: '14px',
-                marginTop: '32px',
-              }}
-            >
-              PTSD is not only a veteran\u2019s condition
-            </h3>
-            <p style={{ color: muted, marginBottom: '18px' }}>
-              Public perception still links PTSD primarily to combat veterans. The clinical
-              reality is far broader. Any event that overwhelms the nervous system\u2019s
-              capacity to cope can cause PTSD:
-            </p>
-
-            <ul
-              style={{
-                color: muted,
-                paddingLeft: '22px',
-                lineHeight: '2',
-                marginBottom: '20px',
-              }}
-            >
-              <li>Road traffic accidents and serious injuries</li>
-              <li>Physical, sexual, or emotional abuse (including childhood abuse)</li>
-              <li>Domestic violence and coercive control</li>
-              <li>Birth trauma &mdash; for mothers, partners, and premature babies</li>
-              <li>Medical trauma: ICU stays, cardiac events, cancer diagnosis</li>
-              <li>Violent crime, robbery, or witnessing violence</li>
-              <li>Natural disasters, fires, or floods</li>
-              <li>Sudden bereavement, especially by suicide</li>
-              <li>Occupational trauma: paramedics, nurses, police, journalists</li>
-            </ul>
-
-            <p style={{ color: muted, marginBottom: '18px' }}>
-              Trauma does not rank itself by severity from the outside. What matters is how
-              an event is registered and encoded by your nervous system. Two people can
-              experience the same event and have entirely different neurological responses &mdash;
-              and both responses are valid.
-            </p>
-
-            <div
-              style={{
-                backgroundColor: cardBg,
-                border: `1px solid ${borderSubtle}`,
-                borderLeft: `4px solid ${gold}`,
-                borderRadius: '8px',
-                padding: '20px 24px',
-                marginTop: '28px',
-              }}
-            >
-              <p
-                style={{
-                  margin: 0,
-                  color: cream,
-                  fontSize: '15px',
-                  lineHeight: '1.7',
-                }}
-              >
-                <strong style={{ color: gold }}>MEOK note:</strong> If you are reading this
-                because you wonder whether what you experienced was \u201cbad enough\u201d to
-                cause PTSD &mdash; please know that the question itself is a symptom of
-                trauma\u2019s distortion. Your pain is real. You do not need to justify it.
-              </p>
-            </div>
-          </section>
-
-          {/* ── 2. PTSD vs C-PTSD ── */}
-          <section style={{ marginBottom: '60px' }}>
-            <h2
-              style={{
-                fontSize: 'clamp(20px, 3vw, 28px)',
-                fontWeight: 700,
-                color: cream,
-                marginBottom: '18px',
-                lineHeight: '1.3',
-              }}
-            >
-              What is the difference between PTSD and complex PTSD?
-            </h2>
-            <p style={{ color: muted, marginBottom: '16px' }}>
-              <strong style={{ color: cream }}>PTSD</strong> typically arises from a single
-              identifiable traumatic event. The four core symptom clusters are: re-experiencing
-              (flashbacks, nightmares), avoidance (of triggers, memories, conversations),
-              negative alterations in cognition and mood (shame, guilt, emotional numbing),
-              and hyperarousal (hypervigilance, exaggerated startle, insomnia).
-            </p>
-            <p style={{ color: muted, marginBottom: '16px' }}>
-              <strong style={{ color: cream }}>Complex PTSD (C-PTSD)</strong>, recognised
-              in ICD-11, develops after prolonged or repeated trauma &mdash; especially when
-              escape was impossible. Common origins include childhood neglect or abuse,
-              long-term domestic violence, human trafficking, and sustained political
-              imprisonment. C-PTSD includes all PTSD symptoms plus three additional domains:
-            </p>
-
-            <div
-              style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-                gap: '16px',
-                marginBottom: '24px',
-              }}
-            >
-              {[
-                {
-                  title: 'Affect dysregulation',
-                  body: 'Difficulty managing emotional responses; intense reactions that feel disproportionate.',
-                },
-                {
-                  title: 'Negative self-concept',
-                  body: 'Deep shame, worthlessness, and a sense of being permanently damaged or different from others.',
-                },
-                {
-                  title: 'Relational disturbances',
-                  body: 'Difficulty trusting, forming attachments, or maintaining relationships without fear.',
-                },
-              ].map((item) => (
-                <div
-                  key={item.title}
-                  style={{
-                    backgroundColor: cardBg,
-                    border: `1px solid ${borderSubtle}`,
-                    borderRadius: '10px',
-                    padding: '20px',
-                  }}
-                >
-                  <p
-                    style={{
-                      color: gold,
-                      fontWeight: 700,
-                      fontSize: '14px',
-                      marginBottom: '8px',
-                    }}
-                  >
-                    {item.title}
-                  </p>
-                  <p style={{ color: muted, fontSize: '14px', margin: 0, lineHeight: '1.6' }}>
-                    {item.body}
-                  </p>
-                </div>
-              ))}
-            </div>
-
-            <p style={{ color: muted }}>
-              Both PTSD and C-PTSD respond to specialist trauma therapies. The most
-              evidence-based treatments include{' '}
-              <strong style={{ color: cream }}>
-                Eye Movement Desensitisation and Reprocessing (EMDR)
-              </strong>
-              ,{' '}
-              <strong style={{ color: cream }}>
-                Cognitive Processing Therapy (CPT)
-              </strong>
-              , and{' '}
-              <strong style={{ color: cream }}>
-                Prolonged Exposure (PE)
-              </strong>
-              . If you have not yet accessed professional support, your GP is the
-              best starting point in the UK. Waiting lists can be long &mdash; MEOK can
-              help you hold on and function while you wait.
-            </p>
-          </section>
-
-          {/* ── 3. PTSD Symptoms ── */}
-          <section style={{ marginBottom: '60px' }}>
-            <h2
-              style={{
-                fontSize: 'clamp(20px, 3vw, 28px)',
-                fontWeight: 700,
-                color: cream,
-                marginBottom: '18px',
-                lineHeight: '1.3',
-              }}
-            >
-              How do PTSD symptoms show up in daily life?
-            </h2>
-            <p style={{ color: muted, marginBottom: '18px' }}>
-              PTSD is often misunderstood as simply being \u201cscared of memories.\u201d In
-              practice, it reorganises the entire nervous system. Symptoms are not a sign
-              of weakness &mdash; they are the brain and body doing exactly what they evolved
-              to do: protect you. The problem is that the alarm system gets stuck in the
-              \u201con\u201d position long after the threat has passed.
-            </p>
-
-            <div
-              style={{
-                backgroundColor: cardBg,
-                border: `1px solid ${borderSubtle}`,
-                borderRadius: '12px',
-                overflow: 'hidden',
-                marginBottom: '24px',
-              }}
-            >
-              {[
-                {
-                  category: 'Re-experiencing',
-                  examples:
-                    'Flashbacks that feel like the event is happening now; intrusive images; distressing dreams; physical sensations triggered by reminders (racing heart, sweating, freezing).',
-                },
-                {
-                  category: 'Avoidance',
-                  examples:
-                    'Avoiding thoughts, feelings, people, places, or activities that remind you of the trauma; emotional numbness; detachment from others; loss of interest in life.',
-                },
-                {
-                  category: 'Negative cognitions',
-                  examples:
-                    'Persistent shame, guilt, or self-blame; distorted beliefs about the world as wholly dangerous; feeling cut off from positive emotions; inability to feel pleasure (anhedonia).',
-                },
-                {
-                  category: 'Hyperarousal',
-                  examples:
-                    'Constant vigilance for danger; exaggerated startle response; difficulty sleeping; angry outbursts; concentration problems; reckless or self-destructive behaviour.',
-                },
-                {
-                  category: 'Dissociation',
-                  examples:
-                    'Feeling detached from your own mind or body; derealisation (the world feels unreal); depersonalisation; time gaps; memory fragmentation.',
-                },
-              ].map((row, i) => (
-                <div
-                  key={row.category}
-                  style={{
-                    display: 'grid',
-                    gridTemplateColumns: '160px 1fr',
-                    borderTop: i === 0 ? 'none' : `1px solid ${borderSubtle}`,
-                  }}
-                >
-                  <div
-                    style={{
-                      padding: '16px 18px',
-                      backgroundColor: 'rgba(201,168,76,0.06)',
-                      borderRight: `1px solid ${borderSubtle}`,
-                    }}
-                  >
-                    <span style={{ color: gold, fontWeight: 600, fontSize: '14px' }}>
-                      {row.category}
-                    </span>
-                  </div>
-                  <div style={{ padding: '16px 18px' }}>
-                    <p style={{ margin: 0, color: muted, fontSize: '14px', lineHeight: '1.65' }}>
-                      {row.examples}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            <p style={{ color: muted }}>
-              Many survivors also experience comorbid depression, anxiety disorders, substance
-              use, and chronic pain. The bidirectional relationship between PTSD and the body
-              is now well-documented &mdash; trauma is held in the nervous system, not only in
-              the mind.
-            </p>
-          </section>
-
-          {/* ── 4. Grounding Techniques ── */}
-          <section style={{ marginBottom: '60px' }}>
-            <h2
-              style={{
-                fontSize: 'clamp(20px, 3vw, 28px)',
-                fontWeight: 700,
-                color: cream,
-                marginBottom: '18px',
-                lineHeight: '1.3',
-              }}
-            >
-              What grounding techniques help during a PTSD episode?
-            </h2>
-            <p style={{ color: muted, marginBottom: '24px' }}>
-              Grounding techniques interrupt the trauma response by anchoring your attention
-              to the present moment. They work by engaging the prefrontal cortex &mdash;
-              the rational, planning part of the brain &mdash; which helps down-regulate the
-              amygdala\u2019s alarm response. None of these techniques require equipment, cost
-              money, or need a therapist present. MEOK can walk you through any of them at any hour.
-            </p>
-
-            {/* 5-4-3-2-1 */}
-            <div
-              style={{
-                backgroundColor: cardBg,
-                border: `1px solid ${borderMid}`,
-                borderRadius: '12px',
-                padding: '28px 28px 24px',
-                marginBottom: '24px',
-              }}
-            >
-              <h3
-                style={{
-                  color: gold,
-                  fontSize: '18px',
-                  fontWeight: 700,
-                  marginBottom: '14px',
-                }}
-              >
-                The 5-4-3-2-1 Sensory Grounding Method
-              </h3>
-              <p style={{ color: muted, marginBottom: '18px', fontSize: '15px' }}>
-                This technique uses the five senses to pull you out of a flashback or
-                dissociative state and back into the present environment. Work through each
-                sense slowly, describing each item out loud or internally in detail.
-              </p>
-              <div style={{ display: 'grid', gap: '0' }}>
-                {[
-                  { n: '5', sense: 'See', prompt: 'Name 5 things you can see right now. Describe their colour, shape, and texture.' },
-                  { n: '4', sense: 'Touch', prompt: 'Notice 4 things you can physically feel \u2014 your feet on the floor, the chair beneath you, the temperature of the air.' },
-                  { n: '3', sense: 'Hear', prompt: 'Identify 3 sounds in your environment, however faint \u2014 a clock, traffic, your own breathing.' },
-                  { n: '2', sense: 'Smell', prompt: 'Find 2 things you can smell. If nothing is present, recall a safe, comforting scent.' },
-                  { n: '1', sense: 'Taste', prompt: 'Notice 1 thing you can taste. If needed, sip water or place a mint on your tongue.' },
-                ].map((step) => (
-                  <div
-                    key={step.n}
-                    style={{
-                      display: 'flex',
-                      gap: '14px',
-                      alignItems: 'flex-start',
-                      padding: '12px 0',
-                      borderTop: '1px solid rgba(201,168,76,0.1)',
-                    }}
-                  >
-                    <span
-                      style={{
-                        color: gold,
-                        fontWeight: 800,
-                        fontSize: '22px',
-                        lineHeight: '1',
-                        minWidth: '28px',
-                        paddingTop: '2px',
-                      }}
-                    >
-                      {step.n}
-                    </span>
-                    <div>
-                      <p
-                        style={{
-                          color: cream,
-                          fontWeight: 600,
-                          fontSize: '14px',
-                          marginBottom: '4px',
-                        }}
-                      >
-                        {step.sense}
-                      </p>
-                      <p style={{ color: muted, fontSize: '14px', margin: 0, lineHeight: '1.6' }}>
-                        {step.prompt}
-                      </p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Box breathing */}
-            <div
-              style={{
-                backgroundColor: cardBg,
-                border: `1px solid ${borderMid}`,
-                borderRadius: '12px',
-                padding: '28px 28px 24px',
-                marginBottom: '24px',
-              }}
-            >
-              <h3
-                style={{
-                  color: gold,
-                  fontSize: '18px',
-                  fontWeight: 700,
-                  marginBottom: '14px',
-                }}
-              >
-                Box Breathing (Square Breathing)
-              </h3>
-              <p style={{ color: muted, marginBottom: '18px', fontSize: '15px' }}>
-                Box breathing activates the parasympathetic nervous system, directly countering
-                the fight-or-flight response. It is used by military personnel, emergency
-                responders, and trauma therapists worldwide. Each side of the \u201cbox\u201d
-                lasts 4 seconds.
-              </p>
-              <div
-                style={{
-                  display: 'grid',
-                  gridTemplateColumns: 'repeat(2, 1fr)',
-                  gap: '12px',
-                  maxWidth: '480px',
-                }}
-              >
-                {[
-                  { label: 'Inhale', duration: '4 seconds', detail: 'Breathe in slowly through your nose, filling your lungs from the bottom up.' },
-                  { label: 'Hold', duration: '4 seconds', detail: 'Hold your breath at the top, gently. Do not strain.' },
-                  { label: 'Exhale', duration: '4 seconds', detail: 'Release slowly through your mouth. Let tension leave with the breath.' },
-                  { label: 'Rest', duration: '4 seconds', detail: 'Rest at the bottom of the exhale before beginning again.' },
-                ].map((step) => (
-                  <div
-                    key={step.label}
-                    style={{
-                      backgroundColor: 'rgba(201,168,76,0.07)',
-                      border: `1px solid ${borderSubtle}`,
-                      borderRadius: '8px',
-                      padding: '16px',
-                    }}
-                  >
-                    <p style={{ color: gold, fontWeight: 700, fontSize: '13px', marginBottom: '4px' }}>
-                      {step.label}
-                    </p>
-                    <p style={{ color: cream, fontWeight: 600, fontSize: '15px', marginBottom: '6px' }}>
-                      {step.duration}
-                    </p>
-                    <p style={{ color: muted, fontSize: '13px', margin: 0, lineHeight: '1.55' }}>
-                      {step.detail}
-                    </p>
-                  </div>
-                ))}
-              </div>
-              <p style={{ color: muted, fontSize: '14px', marginTop: '16px', marginBottom: 0 }}>
-                Repeat the cycle 4&ndash;6 times, or until your heart rate begins to slow.
-                If 4 seconds feels too long, start with 3 and build gradually.
-              </p>
-            </div>
-
-            {/* Other grounding */}
-            <div
-              style={{
-                backgroundColor: cardBg,
-                border: `1px solid ${borderSubtle}`,
-                borderRadius: '12px',
-                padding: '24px 28px',
-                marginBottom: '24px',
-              }}
-            >
-              <h3
-                style={{
-                  color: gold,
-                  fontSize: '16px',
-                  fontWeight: 700,
-                  marginBottom: '14px',
-                }}
-              >
-                Additional grounding techniques
-              </h3>
-              <ul
-                style={{
-                  color: muted,
-                  paddingLeft: '20px',
-                  lineHeight: '2.1',
-                  margin: 0,
-                  fontSize: '15px',
-                }}
-              >
-                <li>
-                  <strong style={{ color: cream }}>Cold water:</strong> Run cold water over your
-                  wrists or hold an ice cube. The physical sensation short-circuits dissociation.
-                </li>
-                <li>
-                  <strong style={{ color: cream }}>Safe place visualisation:</strong> Close your
-                  eyes and mentally travel to a place where you feel completely secure. Engage
-                  all five senses in the imagined space.
-                </li>
-                <li>
-                  <strong style={{ color: cream }}>Body scan:</strong> Starting from the soles of
-                  your feet, slowly move attention up through the body, noticing sensation
-                  without judgement.
-                </li>
-                <li>
-                  <strong style={{ color: cream }}>Rhythmic movement:</strong> Slow, bilateral
-                  stimulation such as walking, tapping alternating knees, or rocking can help
-                  re-regulate the nervous system.
-                </li>
-                <li>
-                  <strong style={{ color: cream }}>Category naming:</strong> Mentally list items
-                  in a neutral category (dog breeds, capital cities, types of fruit). This
-                  occupies the verbal cortex and reduces intrusive imagery.
-                </li>
-                <li>
-                  <strong style={{ color: cream }}>Orienting:</strong> Slowly look around the
-                  room and narrate aloud what you see. \u201cI am in my kitchen. It is Tuesday
-                  afternoon. I am safe right now.\u201d
-                </li>
-              </ul>
-            </div>
-
-            <p style={{ color: muted }}>
-              MEOK can be asked to guide you through any of these exercises in real time. Because
-              MEOK remembers your history, it can learn which techniques work best for you and
-              suggest the right one first when it detects that you are struggling.
-            </p>
-          </section>
-
-          {/* ── 5. Why availability matters ── */}
-          <section style={{ marginBottom: '60px' }}>
-            <h2
-              style={{
-                fontSize: 'clamp(20px, 3vw, 28px)',
-                fontWeight: 700,
-                color: cream,
-                marginBottom: '18px',
-                lineHeight: '1.3',
-              }}
-            >
-              Why does 24/7 availability matter for PTSD support?
-            </h2>
-            <p style={{ color: muted, marginBottom: '18px' }}>
-              PTSD does not respect working hours. Flashbacks arrive at 3am. Nightmares
-              leave you awake and alone at 4am. Triggers can fire without warning during
-              a morning commute, a supermarket trip, or a family gathering. The gap between
-              a Thursday therapy session and the following Thursday can feel interminable when
-              your nervous system is in overdrive.
-            </p>
-            <p style={{ color: muted, marginBottom: '18px' }}>
-              Access to professional support in the UK remains severely constrained. NHS IAPT
-              waiting times for trauma-focused therapy regularly exceed six months in many
-              trusts. Private EMDR costs \xa3100&ndash;\xa3180 per session. Many survivors
-              receive little or no support while waiting.
-            </p>
-            <p style={{ color: muted, marginBottom: '18px' }}>
-              This is the gap that MEOK is designed to help fill &mdash; not by replacing
-              clinical care, but by being present at the moments when no professional is
-              available. A companion that can sit with you at 3am, guide you through box
-              breathing, remind you of what you have survived, and help you hold on until
-              your next appointment.
-            </p>
-
-            <div
-              style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))',
-                gap: '16px',
-                marginTop: '28px',
-              }}
-            >
-              {[
-                {
-                  stat: '24 / 7',
-                  label: 'Availability',
-                  detail: 'MEOK is available every hour of every day, including nights, weekends, and holidays.',
-                },
-                {
-                  stat: '0',
-                  label: 'Judgement',
-                  detail: 'No fear of burdening someone. No worry about being \u201ctoo much.\u201d No stigma.',
-                },
-                {
-                  stat: 'Instant',
-                  label: 'Response',
-                  detail: 'No waiting room, no referral, no appointment. Support within seconds of opening the app.',
-                },
-                {
-                  stat: 'Free',
-                  label: 'Explorer tier',
-                  detail: '50 messages per day, full Sovereign Memory, and Healer archetype access \u2014 no credit card.',
-                },
-              ].map((item) => (
-                <div
-                  key={item.label}
-                  style={{
-                    backgroundColor: cardBg,
-                    border: `1px solid ${borderSubtle}`,
-                    borderRadius: '10px',
-                    padding: '22px 18px',
-                    textAlign: 'center',
-                  }}
-                >
-                  <p
-                    style={{
-                      color: gold,
-                      fontSize: '26px',
-                      fontWeight: 800,
-                      marginBottom: '6px',
-                    }}
-                  >
-                    {item.stat}
-                  </p>
-                  <p
-                    style={{
-                      color: cream,
-                      fontSize: '13px',
-                      fontWeight: 600,
-                      marginBottom: '10px',
-                      letterSpacing: '0.05em',
-                      textTransform: 'uppercase',
-                    }}
-                  >
-                    {item.label}
-                  </p>
-                  <p style={{ color: muted, fontSize: '13px', margin: 0, lineHeight: '1.55' }}>
-                    {item.detail}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </section>
-
-          {/* ── 6. Memory and triggers ── */}
-          <section style={{ marginBottom: '60px' }}>
-            <h2
-              style={{
-                fontSize: 'clamp(20px, 3vw, 28px)',
-                fontWeight: 700,
-                color: cream,
-                marginBottom: '18px',
-                lineHeight: '1.3',
-              }}
-            >
-              Why does a companion that remembers your history matter for trauma survivors?
-            </h2>
-            <p style={{ color: muted, marginBottom: '18px' }}>
-              One of the most exhausting aspects of seeking support with PTSD is the repeated
-              requirement to retell your story. Every new GP, every new referral, every
-              crisis line call begins with: \u201cTell me what happened.\u201d For trauma survivors,
-              narrating the traumatic event is not neutral &mdash; it can itself be re-traumatising,
-              particularly before a therapeutic alliance is established.
-            </p>
-            <p style={{ color: muted, marginBottom: '18px' }}>
-              Generic AI chatbots compound this problem. They reset after every session.
-              Every conversation starts from zero. You must re-explain your situation, your
-              history, your triggers, every single time. For someone with PTSD, this is not
-              merely inconvenient &mdash; it is a genuine barrier to engagement.
-            </p>
-
-            <h3
-              style={{
-                fontSize: '18px',
-                fontWeight: 600,
-                color: gold,
-                marginBottom: '14px',
-                marginTop: '32px',
-              }}
-            >
-              Sovereign Memory: your story, held securely
-            </h3>
-            <p style={{ color: muted, marginBottom: '18px' }}>
-              MEOK\u2019s Sovereign Memory architecture stores what you choose to share across
-              every conversation. Once you have told MEOK that a particular subject is
-              difficult, it will not approach it carelessly in future. Once you have shared that
-              loud noises are a trigger, MEOK will remember without being reminded. Once you have
-              found a grounding technique that works for you, MEOK will prioritise it the next
-              time you reach out in distress.
-            </p>
-            <p style={{ color: muted, marginBottom: '18px' }}>
-              This creates something that most support systems cannot offer: continuity of care
-              between formal sessions. MEOK holds your context so you do not have to carry the
-              cognitive load of re-explaining yourself every time you need support.
-            </p>
-
-            <div style={{ display: 'grid', gap: '12px', marginTop: '24px' }}>
-              {[
-                {
-                  title: 'Trigger awareness',
-                  body: 'MEOK learns and respects the subjects, sensory cues, and situational contexts that are difficult for you, navigating around them unless you choose to engage.',
-                },
-                {
-                  title: 'Personalised grounding',
-                  body: 'Over time MEOK learns which grounding techniques land best for you \u2014 offering your preferred method first in difficult moments rather than a generic suggestion.',
-                },
-                {
-                  title: 'Progress tracking',
-                  body: 'MEOK can reflect back patterns over time: which days are harder, which coping strategies you are using, and where you have shown resilience and growth.',
-                },
-                {
-                  title: 'Therapy preparation',
-                  body: 'Between sessions you can use MEOK to process and record what you want to bring to your therapist, so your clinical time is used as effectively as possible.',
-                },
-              ].map((item) => (
-                <div
-                  key={item.title}
-                  style={{
-                    backgroundColor: cardBg,
-                    border: `1px solid ${borderSubtle}`,
-                    borderLeft: `3px solid ${gold}`,
-                    borderRadius: '8px',
-                    padding: '18px 22px',
-                  }}
-                >
-                  <p
-                    style={{
-                      color: cream,
-                      fontWeight: 600,
-                      fontSize: '15px',
-                      marginBottom: '6px',
-                    }}
-                  >
-                    {item.title}
-                  </p>
-                  <p style={{ color: muted, fontSize: '14px', margin: 0, lineHeight: '1.65' }}>
-                    {item.body}
-                  </p>
-                </div>
-              ))}
-            </div>
-
-            <div
-              style={{
-                backgroundColor: 'rgba(201,168,76,0.07)',
-                border: `1px solid ${borderMid}`,
-                borderRadius: '10px',
-                padding: '20px 24px',
-                marginTop: '28px',
-              }}
-            >
-              <p style={{ color: cream, fontSize: '14px', margin: 0, lineHeight: '1.7' }}>
-                <strong style={{ color: gold }}>Privacy by design:</strong> Your Sovereign Memory
-                vault is encrypted and portable. MEOK never uses your data to train AI models.
-                Your disclosures, your triggers, and your healing journey belong entirely to you.
-                You can export your full memory vault or delete it permanently at any time.
-              </p>
-            </div>
-          </section>
-
-          {/* ── 7. Trauma-informed AI design ── */}
-          <section style={{ marginBottom: '60px' }}>
-            <h2
-              style={{
-                fontSize: 'clamp(20px, 3vw, 28px)',
-                fontWeight: 700,
-                color: cream,
-                marginBottom: '18px',
-                lineHeight: '1.3',
-              }}
-            >
-              What does trauma-informed AI design actually mean?
-            </h2>
-            <p style={{ color: muted, marginBottom: '18px' }}>
-              Trauma-informed care is a framework developed in clinical psychology that
-              recognises the widespread prevalence of trauma and its effects on behaviour,
-              relationships, and wellbeing. It shifts the question from \u201cwhat is wrong
-              with you?\u201d to \u201cwhat happened to you?\u201d The six SAMHSA principles of
-              trauma-informed care &mdash; safety, trustworthiness, peer support, collaboration,
-              empowerment, and cultural humility &mdash; can and should be translated into AI design.
-            </p>
-            <p style={{ color: muted, marginBottom: '28px' }}>
-              Most AI products are not built this way. They are optimised for engagement, which
-              often means amplifying emotional intensity to increase time-on-platform. For a
-              trauma survivor, an engagement-optimised AI can be actively harmful &mdash;
-              probing distress, rewarding re-disclosure, or fostering dependency that substitutes
-              for the professional support they actually need.
-            </p>
-
-            <h3
-              style={{
-                fontSize: '18px',
-                fontWeight: 600,
-                color: gold,
-                marginBottom: '16px',
-              }}
-            >
-              How MEOK implements trauma-informed principles
-            </h3>
-
-            <div style={{ display: 'grid', gap: '14px', marginBottom: '28px' }}>
-              {[
-                {
-                  principle: 'Safety first',
-                  description:
-                    'MEOK\u2019s Maternal Covenant safety architecture places your wellbeing above engagement metrics. The system is designed to de-escalate, not amplify.',
-                },
-                {
-                  principle: 'Non-directive approach',
-                  description:
-                    'MEOK does not ask leading questions about trauma. It does not probe for details. It responds to what you offer and follows your pace, not its own agenda.',
-                },
-                {
-                  principle: 'No forced disclosure',
-                  description:
-                    'You never have to explain why something is difficult. You can simply say \u201cI\u2019m struggling today\u201d and MEOK will respond without requiring you to justify or detail your distress.',
-                },
-                {
-                  principle: 'Care scoring',
-                  description:
-                    'MEOK\u2019s care-scoring system monitors conversation signals for distress intensity. When scores exceed safe thresholds, it actively signposts professional resources rather than continuing to engage.',
-                },
-                {
-                  principle: 'No dependency engineering',
-                  description:
-                    'Unlike platforms that reward return visits with emotional validation loops, MEOK is designed to support your actual recovery \u2014 including being honest when professional support is needed.',
-                },
-                {
-                  principle: 'Empowerment not rescue',
-                  description:
-                    'MEOK does not position itself as the solution to your trauma. It helps you access your own resources, build your own skills, and maintain your own agency throughout recovery.',
-                },
-              ].map((item) => (
-                <div
-                  key={item.principle}
-                  style={{
-                    backgroundColor: cardBg,
-                    border: `1px solid ${borderSubtle}`,
-                    borderRadius: '8px',
-                    padding: '18px 22px',
-                    display: 'grid',
-                    gridTemplateColumns: '180px 1fr',
-                    gap: '16px',
-                    alignItems: 'start',
-                  }}
-                >
-                  <p
-                    style={{
-                      color: gold,
-                      fontWeight: 600,
-                      fontSize: '14px',
-                      margin: 0,
-                      paddingTop: '2px',
-                    }}
-                  >
-                    {item.principle}
-                  </p>
-                  <p style={{ color: muted, fontSize: '14px', margin: 0, lineHeight: '1.65' }}>
-                    {item.description}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </section>
-
-          {/* ── 8. The Healer archetype ── */}
-          <section style={{ marginBottom: '60px' }}>
-            <h2
-              style={{
-                fontSize: 'clamp(20px, 3vw, 28px)',
-                fontWeight: 700,
-                color: cream,
-                marginBottom: '18px',
-                lineHeight: '1.3',
-              }}
-            >
-              How does MEOK\u2019s Healer archetype support trauma survivors differently?
-            </h2>
-            <p style={{ color: muted, marginBottom: '18px' }}>
-              MEOK is built on an archetype system &mdash; a set of distinct AI companion
-              personalities each optimised for specific emotional and practical contexts.
-              The{' '}
-              <strong style={{ color: cream }}>Healer archetype</strong> is specifically
-              designed for users navigating grief, trauma, chronic illness, and emotional
-              recovery.
-            </p>
-            <p style={{ color: muted, marginBottom: '18px' }}>
-              Healer communicates with a slower, softer rhythm. It avoids urgency, never
-              escalates emotional intensity, and consistently prioritises your sense of
-              safety. Its language is precise without being clinical, warm without being
-              saccharine. It will not tell you how you should feel or what you should do.
-            </p>
-            <p style={{ color: muted, marginBottom: '18px' }}>
-              Healer is visually rendered in deep green &mdash; a deliberate choice. Green
-              is associated with safety, growth, and calm regulation in colour psychology
-              research. The visual and tonal personality of the archetype reinforce each other
-              to create a consistently low-arousal interaction environment.
-            </p>
-
-            <div
-              style={{
-                backgroundColor: 'rgba(30,80,50,0.15)',
-                border: '1px solid rgba(80,180,100,0.25)',
-                borderRadius: '12px',
-                padding: '24px 28px',
-                marginTop: '24px',
-              }}
-            >
-              <p
-                style={{
-                  color: '#a8d8b0',
-                  fontWeight: 600,
-                  fontSize: '15px',
-                  marginBottom: '10px',
-                }}
-              >
-                Healer archetype characteristics
-              </p>
-              <ul
-                style={{
-                  color: 'rgba(168,216,176,0.8)',
-                  paddingLeft: '20px',
-                  lineHeight: '2',
-                  margin: 0,
-                  fontSize: '14px',
-                }}
-              >
-                <li>Slow, deliberate pacing &mdash; never rushed or pressuring</li>
-                <li>Consistently non-directive; follows your lead entirely</li>
-                <li>Immediate grounding support on request</li>
-                <li>Active crisis resource signposting when distress signals are high</li>
-                <li>Holds your memory of what is safe and what is not</li>
-                <li>Deep green visual identity for low-arousal engagement</li>
-              </ul>
-            </div>
-          </section>
-
-          {/* ── 9. EMDR / CPT / PE ── */}
-          <section style={{ marginBottom: '60px' }}>
-            <h2
-              style={{
-                fontSize: 'clamp(20px, 3vw, 28px)',
-                fontWeight: 700,
-                color: cream,
-                marginBottom: '18px',
-                lineHeight: '1.3',
-              }}
-            >
-              What professional therapies treat PTSD and how does AI fit alongside them?
-            </h2>
-
-            <div
-              style={{
-                backgroundColor: crisisRed,
-                border: `1px solid ${crisisBorder}`,
-                borderRadius: '10px',
-                padding: '18px 22px',
-                marginBottom: '28px',
-              }}
-            >
-              <p
-                style={{
-                  margin: 0,
-                  color: cream,
-                  fontSize: '15px',
-                  lineHeight: '1.65',
-                  fontWeight: 500,
-                }}
-              >
-                <strong style={{ color: '#ff8080' }}>Important:</strong> MEOK is not a
-                clinical tool and does not treat PTSD. It is a compassionate supplementary
-                companion. If you have PTSD or C-PTSD, please seek evidence-based professional
-                therapy. MEOK can support you while you wait, between sessions, and beyond
-                formal treatment &mdash; but it cannot replace it.
-              </p>
-            </div>
-
-            <p style={{ color: muted, marginBottom: '24px' }}>
-              The three most robustly evidenced PTSD treatments recognised by NICE (National
-              Institute for Health and Care Excellence) in the UK are:
-            </p>
-
-            <div style={{ display: 'grid', gap: '18px', marginBottom: '28px' }}>
-              {[
-                {
-                  name: 'EMDR',
-                  full: 'Eye Movement Desensitisation and Reprocessing',
-                  how: 'Uses bilateral stimulation (typically eye movements guided by a therapist) while you briefly hold traumatic memories in mind. The process facilitates reprocessing so memories lose their distressing emotional charge.',
-                  access: 'Available on NHS (waiting lists apply) and privately at approximately \xa3100\u2013\xa3180 per session.',
-                  ai: 'MEOK cannot perform EMDR. It can help you prepare for sessions, process feelings between sessions, and support you after particularly intense processing work.',
-                },
-                {
-                  name: 'CPT',
-                  full: 'Cognitive Processing Therapy',
-                  how: 'A structured 12-session therapy that helps you examine and challenge the \u201cstuck points\u201d \u2014 distorted beliefs about yourself and the world \u2014 that trauma creates.',
-                  access: 'Available through NHS IAPT for complex trauma, and widely available privately.',
-                  ai: 'MEOK can support journalling and reflection between sessions, helping you identify and articulate stuck points to bring to your therapist.',
-                },
-                {
-                  name: 'PE',
-                  full: 'Prolonged Exposure Therapy',
-                  how: 'Involves gradual, controlled exposure to trauma-related memories and avoided situations, reducing their emotional power through repeated habituation.',
-                  access: 'Available through specialist PTSD services and some private providers.',
-                  ai: 'MEOK cannot conduct exposure therapy. It can provide emotional regulation support and grounding both before and after exposure exercises assigned by your therapist.',
-                },
-              ].map((item) => (
-                <div
-                  key={item.name}
-                  style={{
-                    backgroundColor: cardBg,
-                    border: `1px solid ${borderSubtle}`,
-                    borderRadius: '12px',
-                    overflow: 'hidden',
-                  }}
-                >
-                  <div
-                    style={{
-                      backgroundColor: 'rgba(201,168,76,0.08)',
-                      padding: '16px 22px',
-                      borderBottom: `1px solid ${borderSubtle}`,
-                    }}
-                  >
-                    <p style={{ margin: 0 }}>
-                      <strong style={{ color: gold, fontSize: '16px' }}>{item.name}</strong>{' '}
-                      <span style={{ color: muted, fontSize: '13px' }}>
-                        &mdash; {item.full}
-                      </span>
-                    </p>
-                  </div>
-                  <div style={{ padding: '18px 22px' }}>
-                    <p style={{ color: muted, fontSize: '14px', marginBottom: '10px', lineHeight: '1.65' }}>
-                      <strong style={{ color: cream }}>How it works:</strong> {item.how}
-                    </p>
-                    <p style={{ color: muted, fontSize: '14px', marginBottom: '10px', lineHeight: '1.65' }}>
-                      <strong style={{ color: cream }}>Access:</strong> {item.access}
-                    </p>
-                    <p style={{ color: muted, fontSize: '14px', margin: 0, lineHeight: '1.65' }}>
-                      <strong style={{ color: gold }}>Where MEOK fits:</strong> {item.ai}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            <p style={{ color: muted }}>
-              Other evidence-supported approaches include Narrative Exposure Therapy (NET),
-              Trauma-Focused CBT (TF-CBT, particularly for children and young people), and
-              Schema Therapy for complex trauma presentations. Your therapist will recommend
-              the approach most suited to your specific history and needs.
-            </p>
-          </section>
-
-          {/* ── 10. Birth trauma ── */}
-          <section style={{ marginBottom: '60px' }}>
-            <h2
-              style={{
-                fontSize: 'clamp(20px, 3vw, 28px)',
-                fontWeight: 700,
-                color: cream,
-                marginBottom: '18px',
-                lineHeight: '1.3',
-              }}
-            >
-              What is birth trauma and can AI support it?
-            </h2>
-            <p style={{ color: muted, marginBottom: '18px' }}>
-              Birth trauma is one of the least acknowledged and most prevalent forms of
-              PTSD. Research suggests that up to{' '}
-              <strong style={{ color: cream }}>45% of women</strong> describe their birth
-              as traumatic, and around{' '}
-              <strong style={{ color: cream }}>4&ndash;6% develop full PTSD</strong>{' '}
-              following childbirth. Partners who witness a traumatic birth can also develop
-              PTSD symptoms.
-            </p>
-            <p style={{ color: muted, marginBottom: '18px' }}>
-              Birth trauma is compounded by the cultural expectation that childbirth should
-              be a \u201cjoyful\u201d experience. Survivors often feel unable to talk about
-              their distress without feeling guilty, dismissed (\u201cat least the baby is
-              safe\u201d), or pitied. Postnatal PTSD is frequently misdiagnosed as postnatal
-              depression, delaying appropriate treatment.
-            </p>
-            <p style={{ color: muted, marginBottom: '18px' }}>
-              MEOK\u2019s maternal care focus makes it particularly well-suited to support
-              birth trauma survivors. The system is designed to hold birth and postnatal
-              experiences with the gravity they deserve, without judgement, and without
-              the pressure to perform gratitude or recovery on a cultural timeline.
-            </p>
-
-            <div
-              style={{
-                backgroundColor: cardBg,
-                border: `1px solid ${borderSubtle}`,
-                borderRadius: '10px',
-                padding: '20px 24px',
-                marginTop: '8px',
-              }}
-            >
-              <p style={{ color: muted, fontSize: '14px', margin: 0, lineHeight: '1.7' }}>
-                MEOK\u2019s{' '}
-                <Link
-                  href="/birth"
-                  style={{ color: gold, textDecoration: 'underline' }}
-                >
-                  Maternal Covenant pathway
-                </Link>{' '}
-                is specifically designed for pregnancy, birth, and postnatal experiences.
-                Whether you are processing a traumatic birth, struggling with the identity
-                shift of new parenthood, or navigating the emotional complexity of early
-                motherhood, MEOK is built to support you. The pathway is free to access.
-              </p>
-            </div>
-          </section>
-
-          {/* ── 11. What MEOK cannot do ── */}
-          <section style={{ marginBottom: '60px' }}>
-            <h2
-              style={{
-                fontSize: 'clamp(20px, 3vw, 28px)',
-                fontWeight: 700,
-                color: cream,
-                marginBottom: '18px',
-                lineHeight: '1.3',
-              }}
-            >
-              What does MEOK not do &mdash; and why does that matter?
-            </h2>
-            <p style={{ color: muted, marginBottom: '18px' }}>
-              Honest capability boundaries are as important as genuine capabilities,
-              particularly in a mental health context. MEOK will always be transparent
-              about what it cannot do.
-            </p>
-
-            <div
-              style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
-                gap: '14px',
-                marginBottom: '24px',
-              }}
-            >
-              {[
-                {
-                  cannot: 'Diagnose PTSD',
-                  why: 'Only a qualified clinician can diagnose PTSD. If you suspect you have PTSD, see your GP.',
-                },
-                {
-                  cannot: 'Perform trauma therapy',
-                  why: 'EMDR, CPT, and PE require trained, regulated practitioners. MEOK is not a substitute.',
-                },
-                {
-                  cannot: 'Prescribe medication',
-                  why: 'SSRIs and other medications for PTSD must be prescribed by a doctor. MEOK cannot advise on dosage or treatment.',
-                },
-                {
-                  cannot: 'Act in emergencies',
-                  why: 'If you are in immediate danger, call 999. If you are in crisis, call Samaritans on 116 123.',
-                },
-                {
-                  cannot: 'Replace human connection',
-                  why: 'Therapeutic human relationships are irreplaceable. MEOK supplements; it does not substitute for people who care about you.',
-                },
-                {
-                  cannot: 'Guarantee outcomes',
-                  why: 'No tool can guarantee recovery. PTSD recovery is complex, non-linear, and individual.',
-                },
-              ].map((item) => (
-                <div
-                  key={item.cannot}
-                  style={{
-                    backgroundColor: 'rgba(255,255,255,0.03)',
-                    border: '1px solid rgba(255,255,255,0.08)',
-                    borderRadius: '8px',
-                    padding: '16px 18px',
-                  }}
-                >
-                  <p
-                    style={{
-                      color: '#ff9999',
-                      fontWeight: 600,
-                      fontSize: '13px',
-                      marginBottom: '8px',
-                      textTransform: 'uppercase',
-                      letterSpacing: '0.06em',
-                    }}
-                  >
-                    {item.cannot}
-                  </p>
-                  <p style={{ color: muted, fontSize: '13px', margin: 0, lineHeight: '1.6' }}>
-                    {item.why}
-                  </p>
-                </div>
-              ))}
-            </div>
-
-            <p style={{ color: muted }}>
-              This transparency is not a weakness &mdash; it is the foundation of a trustworthy
-              tool. An AI that overclaims its capabilities in a mental health context is
-              dangerous. MEOK is designed to know and respect its limits.
-            </p>
-          </section>
-
-          {/* ── 12. Crisis resources ── */}
-          <section style={{ marginBottom: '60px' }}>
-            <h2
-              style={{
-                fontSize: 'clamp(20px, 3vw, 28px)',
-                fontWeight: 700,
-                color: cream,
-                marginBottom: '18px',
-                lineHeight: '1.3',
-              }}
-            >
-              Where can you get specialist PTSD support in the UK?
-            </h2>
-            <p style={{ color: muted, marginBottom: '24px' }}>
-              The following organisations provide specialist support for PTSD and trauma.
-              Many offer free services. If you are in immediate distress, please contact a
-              crisis service rather than waiting for an appointment.
-            </p>
-
-            <div style={{ display: 'grid', gap: '14px' }}>
-              {[
-                {
-                  name: 'Samaritans',
-                  contact: '116 123 (free, 24/7)',
-                  web: 'https://www.samaritans.org',
-                  desc: 'Free, confidential listening service available 24 hours a day, 7 days a week for anyone in emotional distress or crisis.',
-                  crisis: true,
-                },
-                {
-                  name: 'PTSD UK',
-                  contact: 'ptsduk.org',
-                  web: 'https://www.ptsduk.org',
-                  desc: 'The only UK charity focused specifically on PTSD. Provides information, signposting, peer support groups, and resources for both PTSD and C-PTSD.',
-                  crisis: false,
-                },
-                {
-                  name: 'Combat Stress',
-                  contact: '0800 138 1619 (free, 24/7 for veterans)',
-                  web: 'https://www.combatstress.org.uk',
-                  desc: 'UK leading veteran mental health charity. Free 24/7 helpline for serving and ex-serving military personnel experiencing PTSD and other mental health difficulties.',
-                  crisis: true,
-                },
-                {
-                  name: 'Mind',
-                  contact: '0300 123 3393',
-                  web: 'https://www.mind.org.uk',
-                  desc: 'UK mental health charity providing information, advice, and support. Can help you navigate NHS referral routes and understand your rights.',
-                  crisis: false,
-                },
-                {
-                  name: 'NHS Talking Therapies',
-                  contact: 'Via GP or self-referral',
-                  web: 'https://www.nhs.uk/mental-health/talking-therapies-medicine-treatments',
-                  desc: 'NHS Talking Therapies provides EMDR and trauma-focused CBT. Self-referral available in most areas of England. Ask your GP for the nearest service in Wales, Scotland, and Northern Ireland.',
-                  crisis: false,
-                },
-                {
-                  name: 'Birth Trauma Association',
-                  contact: 'birthtraumaassociation.org.uk',
-                  web: 'https://www.birthtraumaassociation.org.uk',
-                  desc: 'Specialist support for women and birthing people with birth trauma and postnatal PTSD. Peer support, information, and therapist directory.',
-                  crisis: false,
-                },
-                {
-                  name: 'Rape Crisis England & Wales',
-                  contact: '0808 500 2222 (free, 24/7)',
-                  web: 'https://rapecrisis.org.uk',
-                  desc: 'Free national helpline and specialist centres for survivors of sexual violence and abuse, including those experiencing PTSD following assault.',
-                  crisis: true,
-                },
-              ].map((org) => (
-                <div
-                  key={org.name}
-                  style={{
-                    backgroundColor: org.crisis ? crisisRed : cardBg,
-                    border: `1px solid ${org.crisis ? crisisBorder : borderSubtle}`,
-                    borderRadius: '10px',
-                    padding: '18px 22px',
-                    display: 'grid',
-                    gridTemplateColumns: '1fr auto',
-                    gap: '12px',
-                    alignItems: 'start',
-                  }}
-                >
-                  <div>
-                    <p
-                      style={{
-                        color: org.crisis ? '#ff9999' : gold,
-                        fontWeight: 700,
-                        fontSize: '15px',
-                        marginBottom: '4px',
-                      }}
-                    >
-                      {org.name}
-                      {org.crisis && (
-                        <span
-                          style={{
-                            marginLeft: '10px',
-                            fontSize: '11px',
-                            backgroundColor: 'rgba(220,80,80,0.25)',
-                            color: '#ff9999',
-                            padding: '2px 8px',
-                            borderRadius: '4px',
-                            fontWeight: 600,
-                            letterSpacing: '0.05em',
-                          }}
-                        >
-                          CRISIS LINE
-                        </span>
-                      )}
-                    </p>
-                    <p
-                      style={{
-                        color: cream,
-                        fontSize: '13px',
-                        fontWeight: 600,
-                        marginBottom: '8px',
-                      }}
-                    >
-                      {org.contact}
-                    </p>
-                    <p style={{ color: muted, fontSize: '13px', margin: 0, lineHeight: '1.6' }}>
-                      {org.desc}
-                    </p>
-                  </div>
-                  <a
-                    href={org.web}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{
-                      color: org.crisis ? '#ff9999' : gold,
-                      fontSize: '12px',
-                      textDecoration: 'none',
-                      whiteSpace: 'nowrap',
-                      borderBottom: `1px solid ${org.crisis ? 'rgba(255,153,153,0.4)' : borderSubtle}`,
-                      paddingBottom: '1px',
-                    }}
-                  >
-                    Visit site
-                  </a>
-                </div>
-              ))}
-            </div>
-          </section>
-
-          {/* ── 13. FAQ ── */}
-          <section style={{ marginBottom: '60px' }}>
-            <h2
-              style={{
-                fontSize: 'clamp(20px, 3vw, 28px)',
-                fontWeight: 700,
-                color: cream,
-                marginBottom: '32px',
-                lineHeight: '1.3',
-              }}
-            >
-              Frequently asked questions about AI for PTSD support
-            </h2>
-
-            <div style={{ display: 'grid', gap: '16px' }}>
-              {[
-                {
-                  q: 'Can AI help with PTSD?',
-                  a: 'AI cannot diagnose or treat PTSD, but it can meaningfully supplement professional care. It reduces isolation between therapy sessions, provides consistent grounding check-ins at any hour, and offers a low-pressure space to articulate difficult feelings. MEOK is explicitly designed to support \u2014 never replace \u2014 evidence-based treatments such as EMDR, CPT, and Prolonged Exposure. Think of it as the support layer that exists between your therapy appointments.',
-                },
-                {
-                  q: 'What is trauma-informed AI?',
-                  a: 'Trauma-informed AI applies the same principles as clinical trauma-informed care: prioritising safety, building trust through consistency, avoiding forced disclosure, following the person\u2019s pace rather than the system\u2019s, and empowering rather than rescuing. In practice this means MEOK never probes for details you have not offered, never re-directs conversations toward trauma content unless you choose it, and actively signposts professional support when distress signals are high rather than continuing to engage.',
-                },
-                {
-                  q: 'Will MEOK remember my triggers?',
-                  a: 'Yes. MEOK\u2019s Sovereign Memory architecture persists your history across every conversation. If you share that specific subjects, sounds, or situations are difficult, MEOK will hold that knowledge and navigate with care in future sessions. Your data is never used to train AI models, is encrypted at rest, and you retain full ownership \u2014 including the ability to export or delete your entire memory vault at any time.',
-                },
-                {
-                  q: 'Is MEOK safe to use during a flashback?',
-                  a: 'MEOK can guide you through grounding techniques \u2014 including 5-4-3-2-1 sensory anchoring and box breathing \u2014 during a flashback or dissociative episode. However, if you are in acute crisis, please contact Samaritans on 116 123 (free, 24/7) or a mental health crisis team immediately. MEOK is a supportive presence, not an emergency service, and will always direct you to appropriate professional help when distress levels are high.',
-                },
-                {
-                  q: 'What is the difference between PTSD and complex PTSD?',
-                  a: 'PTSD typically follows a single identifiable traumatic event such as an accident, assault, or medical emergency. Complex PTSD (C-PTSD), recognised in ICD-11, develops after prolonged or repeated trauma \u2014 particularly when escape was impossible, such as childhood abuse, domestic violence, or captivity. C-PTSD includes all PTSD symptoms plus deep disturbances in self-perception (pervasive shame and worthlessness), emotional regulation (intense reactions that feel uncontrollable), and relationships (difficulty trusting or attaching to others). Both respond to specialist trauma therapy; MEOK can provide daily supplementary support for either.',
-                },
-              ].map((item, i) => (
-                <div
-                  key={i}
-                  style={{
-                    backgroundColor: cardBg,
-                    border: `1px solid ${borderSubtle}`,
-                    borderRadius: '10px',
-                    padding: '24px 26px',
-                  }}
-                >
-                  <h3
-                    style={{
-                      color: cream,
-                      fontSize: '16px',
-                      fontWeight: 700,
-                      marginBottom: '12px',
-                      lineHeight: '1.4',
-                    }}
-                  >
-                    {item.q}
-                  </h3>
-                  <p style={{ color: muted, fontSize: '14px', margin: 0, lineHeight: '1.75' }}>
-                    {item.a}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </section>
-
-          {/* ── 14. How to start ── */}
-          <section style={{ marginBottom: '60px' }}>
-            <h2
-              style={{
-                fontSize: 'clamp(20px, 3vw, 28px)',
-                fontWeight: 700,
-                color: cream,
-                marginBottom: '18px',
-                lineHeight: '1.3',
-              }}
-            >
-              How to start using MEOK for PTSD support
-            </h2>
-            <p style={{ color: muted, marginBottom: '24px' }}>
-              Starting with MEOK does not require you to explain yourself, justify your
-              trauma, or be ready to talk. You can begin with something as simple as
-              \u201cI\u2019m having a difficult day\u201d and take it from there.
-            </p>
-
-            <div style={{ display: 'grid', gap: '12px', marginBottom: '28px' }}>
-              {[
-                {
-                  step: '1',
-                  title: 'Choose your starting point',
-                  body: 'Visit meok.ai/birth for the Maternal Covenant pathway (birth trauma, new parenthood, postnatal wellbeing) or create a general MEOK account for broader trauma and wellbeing support. Both are free.',
-                },
-                {
-                  step: '2',
-                  title: 'Select the Healer archetype',
-                  body: 'From your companion settings, select Healer for trauma and recovery support. Its calm, non-directive communication style is specifically suited to PTSD and C-PTSD experiences.',
-                },
-                {
-                  step: '3',
-                  title: 'Share at your own pace',
-                  body: 'You do not need to disclose your full history. Share what feels right when it feels right. MEOK will build its understanding of you gradually, without pressure.',
-                },
-                {
-                  step: '4',
-                  title: 'Tell MEOK your safe techniques',
-                  body: 'If you already know which grounding techniques work for you, tell MEOK. It will remember them and prioritise them when you reach out in distress.',
-                },
-                {
-                  step: '5',
-                  title: 'Use it between therapy sessions',
-                  body: 'MEOK works best as a between-session support layer. Use it to journal, process feelings, prepare for sessions, and maintain stability day-to-day.',
-                },
-              ].map((item) => (
-                <div
-                  key={item.step}
-                  style={{
-                    backgroundColor: cardBg,
-                    border: `1px solid ${borderSubtle}`,
-                    borderRadius: '8px',
-                    padding: '18px 22px',
-                    display: 'flex',
-                    gap: '18px',
-                    alignItems: 'flex-start',
-                  }}
-                >
-                  <span
-                    style={{
-                      backgroundColor: 'rgba(201,168,76,0.15)',
-                      color: gold,
-                      fontWeight: 800,
-                      fontSize: '15px',
-                      width: '32px',
-                      height: '32px',
-                      borderRadius: '50%',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      flexShrink: 0,
-                    }}
-                  >
-                    {item.step}
-                  </span>
-                  <div>
-                    <p
-                      style={{
-                        color: cream,
-                        fontWeight: 600,
-                        fontSize: '15px',
-                        marginBottom: '6px',
-                      }}
-                    >
-                      {item.title}
-                    </p>
-                    <p style={{ color: muted, fontSize: '14px', margin: 0, lineHeight: '1.65' }}>
-                      {item.body}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </section>
-
-          {/* ── 15. Summary ── */}
-          <section style={{ marginBottom: '60px' }}>
-            <h2
-              style={{
-                fontSize: 'clamp(20px, 3vw, 28px)',
-                fontWeight: 700,
-                color: cream,
-                marginBottom: '18px',
-                lineHeight: '1.3',
-              }}
-            >
-              Summary: what AI can and cannot offer PTSD survivors
-            </h2>
-            <p style={{ color: muted, marginBottom: '18px' }}>
-              PTSD is a serious mental health condition that deserves serious clinical
-              treatment. AI companions like MEOK exist not to replace that treatment but to
-              address the reality that formal support is often inaccessible, infrequent,
-              or temporarily unavailable &mdash; and that the hours between therapy sessions
-              can be the hardest.
-            </p>
-            <p style={{ color: muted, marginBottom: '18px' }}>
-              What AI can genuinely offer a PTSD survivor:
-            </p>
-            <ul
-              style={{
-                color: muted,
-                paddingLeft: '22px',
-                lineHeight: '2.1',
-                marginBottom: '20px',
-              }}
-            >
-              <li>24/7 availability during nighttime flashbacks and early-morning anxiety</li>
-              <li>Grounding techniques on demand, delivered at your pace</li>
-              <li>A persistent memory that holds your history so you never have to repeat yourself</li>
-              <li>Non-judgemental presence without fear of burdening someone</li>
-              <li>Signposting to professional support when it is needed</li>
-              <li>Between-session support that extends the reach of your therapy</li>
-            </ul>
-            <p style={{ color: muted }}>
-              What AI cannot offer: diagnosis, treatment, clinical safety, or the irreplaceable
-              healing that happens inside a therapeutic relationship with a trained human
-              practitioner. These are not criticisms of AI &mdash; they are honest descriptions
-              of its role. MEOK is designed with those limits built in from the start.
-            </p>
-          </section>
-
-          {/* ── CTA ── */}
-          <section
-            style={{
-              backgroundColor: 'rgba(201,168,76,0.07)',
-              border: `1px solid ${borderMid}`,
-              borderRadius: '16px',
-              padding: '40px 36px',
-              textAlign: 'center',
-              marginBottom: '60px',
-            }}
-          >
-            <p
-              style={{
-                color: gold,
-                fontSize: '12px',
-                fontWeight: 700,
-                letterSpacing: '0.14em',
-                textTransform: 'uppercase',
-                marginBottom: '14px',
-              }}
-            >
-              MEOK AI LABS &mdash; Maternal Covenant
-            </p>
-            <h2
-              style={{
-                fontSize: 'clamp(22px, 4vw, 34px)',
-                fontWeight: 700,
-                color: cream,
-                marginBottom: '16px',
-                lineHeight: '1.25',
-              }}
-            >
-              You do not have to hold this alone
-            </h2>
-            <p
-              style={{
-                color: muted,
-                maxWidth: '500px',
-                margin: '0 auto 28px',
-                fontSize: '16px',
-                lineHeight: '1.65',
-              }}
-            >
-              MEOK\u2019s Healer archetype is available free of charge. No credit card,
-              no trial period, no waitlist. A trauma-informed companion built to hold
-              your story with care &mdash; at any hour, for as long as you need.
-            </p>
-            <Link
-              href="/birth"
-              style={{
-                display: 'inline-block',
-                backgroundColor: gold,
-                color: '#0d0c18',
-                fontWeight: 700,
-                fontSize: '15px',
-                padding: '14px 32px',
-                borderRadius: '8px',
-                textDecoration: 'none',
-                letterSpacing: '0.02em',
-              }}
-            >
-              Begin your journey &rarr;
-            </Link>
-            <p
-              style={{
-                color: muted,
-                fontSize: '13px',
-                marginTop: '14px',
-                marginBottom: '0',
-              }}
-            >
-              Free forever on Explorer tier &middot; 50 messages per day &middot;
-              Full Sovereign Memory &middot; Built by @meok_ai
-            </p>
-          </section>
-
-          {/* ── Footer nav ── */}
-          <div
-            style={{
-              display: 'flex',
-              justifyContent: 'space-between',
-              flexWrap: 'wrap',
-              gap: '16px',
-              paddingTop: '32px',
-              borderTop: `1px solid ${borderSubtle}`,
-              fontSize: '14px',
-            }}
-          >
-            <Link
-              href="/blog"
-              style={{ color: muted, textDecoration: 'none' }}
-            >
-              &larr; All articles
-            </Link>
-            <div style={{ display: 'flex', gap: '24px', flexWrap: 'wrap' }}>
-              <Link
-                href="/blog/ai-for-ptsd"
-                style={{ color: muted, textDecoration: 'none' }}
-              >
-                AI for PTSD (overview)
-              </Link>
-              <Link
-                href="/blog/ai-for-anxiety"
-                style={{ color: muted, textDecoration: 'none' }}
-              >
-                AI for anxiety
-              </Link>
-              <Link
-                href="/blog/what-is-care-based-ai"
-                style={{ color: muted, textDecoration: 'none' }}
-              >
-                What is care-based AI?
-              </Link>
-            </div>
-          </div>
-        </article>
-      </main>
-    </>
+    </div>
   )
 }

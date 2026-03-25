@@ -3722,6 +3722,66 @@ const POSTS = [
     category: "connection",
     featured: false,
   },
+  {
+    slug: "ai-for-autism-adults",
+    title: "AI for Autistic Adults: How MEOK Supports Neurodivergent Wellbeing",
+    excerpt:
+      "Late-diagnosed autism in adults is dramatically under-supported. MEOK provides a predictable, non-judgemental companion that never misreads literal language, supports masking fatigue recovery, and helps navigate a world that wasn\u2019t designed for autistic minds.",
+    date: "March 26, 2026",
+    readTime: "9 min read",
+    tag: "Neurodivergent",
+    tagColor: "#6aaa64",
+    category: "neurodivergent",
+    featured: false,
+  },
+  {
+    slug: "ai-for-depression",
+    title: "AI for Depression: How MEOK Supports People Through the Dark Times",
+    excerpt:
+      "Depression affects 3.3 million UK adults. MEOK provides consistent, non-judgemental presence when reaching out to humans feels impossible, gentle activation support, and honest care — without toxic positivity or shame. Crisis resources always available.",
+    date: "March 26, 2026",
+    readTime: "8 min read",
+    tag: "Mental Health",
+    tagColor: "#c9a84c",
+    category: "mental-health",
+    featured: false,
+  },
+  {
+    slug: "ai-for-body-image",
+    title: "AI for Body Image: How MEOK Supports a Healthier Relationship with Your Body",
+    excerpt:
+      "Body dissatisfaction affects 89% of UK women and 65% of men. MEOK provides a body-neutral space to process appearance-related thoughts, challenge distorted thinking, and separate self-worth from how you look — without weight advice or diet discussion.",
+    date: "March 26, 2026",
+    readTime: "7 min read",
+    tag: "Wellbeing",
+    tagColor: "#6aaa64",
+    category: "wellbeing",
+    featured: false,
+  },
+  {
+    slug: "meok-for-nurses",
+    title: "MEOK for Nurses: Sovereign AI Support for Those Who Care for Everyone Else",
+    excerpt:
+      "NHS nurses face compassion fatigue, moral injury, and a culture that makes vulnerability difficult. MEOK provides a private decompression space after difficult shifts, with data sovereignty that ensures work conversations can never be accessed by employers.",
+    date: "March 26, 2026",
+    readTime: "8 min read",
+    tag: "Professional",
+    tagColor: "#c9a84c",
+    category: "professional",
+    featured: false,
+  },
+  {
+    slug: "ai-for-relationship-breakdown",
+    title: "AI for Relationship Breakdown: How MEOK Supports You When a Partnership Ends",
+    excerpt:
+      "Relationship breakdown involves compound loss — the person, the shared life, the shared future, the shared identity. MEOK helps you process grief without friends\u2019 bias, understand patterns, and rebuild identity — with Guardian support for the practical overwhelm.",
+    date: "March 26, 2026",
+    readTime: "8 min read",
+    tag: "Connection",
+    tagColor: "#6aaa64",
+    category: "connection",
+    featured: false,
+  },
 ];
 
 // ── Category filter tabs ──────────────────────────────────────────────────────
