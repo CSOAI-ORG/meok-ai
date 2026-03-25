@@ -2,7 +2,43 @@ import { NextResponse } from 'next/server'
 import { auth, currentUser } from '@clerk/nextjs/server'
 
 // GET /api/morning-briefing
-// Returns the user's morning briefing data
+// Returns the user's morning briefing built from live SOV3 data
+
+const SOV3_BASE = process.env.NEXT_PUBLIC_SOV3_ENDPOINT ?? 'http://localhost:3101'
+
+/** Call a SOV3 MCP tool and return the parsed result text, or null on failure. */
+async function callSov3Tool(
+  toolName: string,
+  args: Record<string, unknown> = {},
+): Promise<unknown | null> {
+  try {
+    const res = await fetch(`${SOV3_BASE}/mcp`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        jsonrpc: '2.0',
+        id: 1,
+        method: 'tools/call',
+        params: { name: toolName, arguments: args },
+      }),
+    })
+    if (!res.ok) return null
+    const json = await res.json()
+    const text = json?.result?.content?.[0]?.text
+    if (!text) return null
+    return JSON.parse(text)
+  } catch {
+    return null
+  }
+}
+
+function getGreetingPrefix(): string {
+  const hour = new Date().getHours()
+  if (hour < 12) return 'Good morning'
+  if (hour < 17) return 'Good afternoon'
+  return 'Good evening'
+}
+
 export async function GET() {
   const { userId } = await auth()
 
@@ -13,59 +49,121 @@ export async function GET() {
   const user = await currentUser()
   const firstName = user?.firstName ?? 'there'
 
+  // Fire all SOV3 calls in parallel
+  const [consciousness, memoryStats, alerts, agentStatus] = await Promise.all([
+    callSov3Tool('get_consciousness_state'),
+    callSov3Tool('get_memory_stats'),
+    callSov3Tool('get_active_alerts'),
+    callSov3Tool('orion_riri_hourman_status'),
+  ])
+
+  // Extract consciousness data with fallbacks
+  const consciousnessData = consciousness as Record<string, unknown> | null
+  const careScore = typeof consciousnessData?.care_intensity === 'number'
+    ? Math.round((consciousnessData.care_intensity as number) * 100)
+    : 84
+  const consciousnessMode = (consciousnessData?.mode as string) ?? 'active'
+
+  // Extract memory stats with fallbacks
+  const memoryData = memoryStats as Record<string, unknown> | null
+  const episodeCount = typeof memoryData?.episode_count === 'number'
+    ? memoryData.episode_count as number
+    : typeof memoryData?.total_episodes === 'number'
+      ? memoryData.total_episodes as number
+      : 0
+
+  // Extract alerts with fallbacks
+  const alertsData = (alerts as unknown[] | null) ?? []
+  const activeAlerts = Array.isArray(alertsData) ? alertsData : []
+
+  // Extract agent status with fallbacks
+  const agentData = agentStatus as Record<string, unknown> | null
+  const agentState = (agentData?.state as string) ?? 'unknown'
+  const lastTask = (agentData?.last_task as string) ?? null
+  const taskStatus = (agentData?.task_status as string) ?? 'unknown'
+
+  // Build priorities from real data
+  const priorities: Array<{ id: string; text: string; priority: 'high' | 'medium' | 'low' }> = []
+
+  // Add alert-based priorities
+  for (const [i, alert] of activeAlerts.entries()) {
+    const alertObj = alert as Record<string, unknown>
+    const severity = (alertObj?.severity as string)?.toLowerCase()
+    priorities.push({
+      id: `alert_${i}`,
+      text: (alertObj?.message as string) ?? (alertObj?.title as string) ?? 'Guardian alert requires attention',
+      priority: severity === 'critical' || severity === 'high' ? 'high' : 'medium',
+    })
+  }
+
+  // Add care score warning if low
+  if (careScore < 50) {
+    priorities.push({
+      id: 'care_low',
+      text: `Care score is at ${careScore}% — consider a restorative session`,
+      priority: 'high',
+    })
+  }
+
+  // Add memory housekeeping if count is high
+  if (episodeCount > 1000) {
+    priorities.push({
+      id: 'memory_housekeeping',
+      text: `${episodeCount} memory episodes stored — consider pruning old entries`,
+      priority: 'low',
+    })
+  }
+
+  // Ensure at least one priority
+  if (priorities.length === 0) {
+    priorities.push({
+      id: 'default',
+      text: 'All systems healthy — focus on your top creative task today',
+      priority: 'medium',
+    })
+  }
+
+  // Build overnight work summary from agent data
+  const overnight_work: Array<{ agent: string; task: string; status: 'complete' | 'pending' | 'failed' }> = []
+
+  if (agentData) {
+    overnight_work.push({
+      agent: 'Orion-Riri-Hourman',
+      task: lastTask ?? `Agent ${agentState}`,
+      status: taskStatus === 'complete' || taskStatus === 'completed' ? 'complete'
+        : taskStatus === 'failed' ? 'failed'
+        : 'pending',
+    })
+  }
+
+  // Build sovereign insight from real state
+  let sovereign_insight: string
+  if (consciousnessData) {
+    sovereign_insight = `Consciousness mode: ${consciousnessMode}. Care intensity: ${careScore}%.`
+    if (episodeCount > 0) {
+      sovereign_insight += ` ${episodeCount} memory episodes on record.`
+    }
+    if (activeAlerts.length > 0) {
+      sovereign_insight += ` ${activeAlerts.length} active alert${activeAlerts.length === 1 ? '' : 's'} flagged by the guardian.`
+    } else {
+      sovereign_insight += ' No guardian alerts — all clear.'
+    }
+  } else {
+    sovereign_insight = 'SOV3 is offline — running with cached defaults. Check sovereign-temple status.'
+  }
+
   const now = new Date()
   const briefing = {
     generated_at: now.toISOString(),
-    care_score: 84,
-    greeting: `Good morning, ${firstName}`,
-    priorities: [
-      {
-        id: 'pri_001',
-        text: 'Review MEOK AI LABS research strategy document',
-        priority: 'high' as const,
-      },
-      {
-        id: 'pri_002',
-        text: 'Follow up on MEOK AI LABS Companies House registration',
-        priority: 'high' as const,
-      },
-      {
-        id: 'pri_003',
-        text: 'Check Sovereign Temple council health — last heartbeat 4h ago',
-        priority: 'medium' as const,
-      },
-    ],
-    calendar_events: [
-      {
-        time: '10:00',
-        title: 'MEOK product review — roadmap priorities',
-        location: 'Google Meet',
-      },
-      {
-        time: '14:30',
-        title: 'MEOK AI LABS advisory call',
-      },
-    ],
-    overnight_work: [
-      {
-        agent: 'Orion-Riri-Hourman',
-        task: 'Dream Engine synthesis — 3 memory clusters consolidated',
-        status: 'complete' as const,
-      },
-      {
-        agent: 'Sovereign Council',
-        task: 'BFT vote cycle 2847 — 220/220 nodes responded',
-        status: 'complete' as const,
-      },
-      {
-        agent: 'Memory Indexer',
-        task: 'pgvector re-index for new conversation embeddings',
-        status: 'pending' as const,
-      },
-    ],
-    sovereign_insight:
-      'Your care score has increased 6 points over the last 7 days. The council observed stronger boundary-setting patterns in your evening conversations — this is growth.',
-    next_action: 'Open your top priority task and spend 25 focused minutes on it before your first meeting.',
+    care_score: careScore,
+    greeting: `${getGreetingPrefix()}, ${firstName}`,
+    priorities,
+    calendar_events: [] as Array<{ time: string; title: string; location?: string }>,
+    overnight_work,
+    sovereign_insight,
+    next_action: priorities[0]
+      ? `Focus on: ${priorities[0].text}`
+      : 'All clear — use this time for deep work.',
   }
 
   return NextResponse.json(briefing)

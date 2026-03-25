@@ -23,7 +23,7 @@ const jsonLd = {
       name: "Which AI models does MEOK support?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "MEOK supports GPT-4o and GPT-4o mini (OpenAI), Claude 3.5 Sonnet and Haiku (Anthropic), Gemini 1.5 Pro and Flash (Google), Llama 3.1 70B and 8B (via Groq or Ollama), Mistral Large and 7B, DeepSeek V3, and any Ollama-compatible local model. New models are added regularly.",
+        text: "MEOK supports GPT-4o and GPT-4o mini (OpenAI), Claude 3.5 Sonnet and Haiku (Anthropic), Gemini 1.5 Pro and Flash (Google), Llama 3.1 70B and 8B (via Groq or Ollama), Mistral Large and 7B, DeepSeek V3, NVIDIA Nemotron (Nano 30B, Super 120B, Ultra 253B), OpenRouter (100+ models), and any Ollama-compatible local model. New models are added regularly.",
       },
     },
     {
@@ -107,6 +107,20 @@ const MODELS: ModelCard[] = [
     borderClass: "border-yellow-500/20",
   },
   {
+    name: "Nemotron",
+    provider: "NVIDIA",
+    tags: ["Reasoning", "Coding", "1M context"],
+    accentClass: "text-lime-400",
+    borderClass: "border-lime-500/20",
+  },
+  {
+    name: "OpenRouter",
+    provider: "100+ models",
+    tags: ["Universal fallback", "Multi-provider", "Pay-per-token"],
+    accentClass: "text-cyan-400",
+    borderClass: "border-cyan-500/20",
+  },
+  {
     name: "Ollama (local)",
     provider: "Your device",
     tags: ["100% private", "Offline", "Free"],
@@ -179,7 +193,7 @@ const WHY_FREEDOM = [
 const FAQS = [
   {
     q: "Which AI models does MEOK support?",
-    a: "MEOK supports GPT-4o and GPT-4o mini (OpenAI), Claude 3.5 Sonnet and Haiku (Anthropic), Gemini 1.5 Pro and Flash (Google), Llama 3.1 70B and 8B via Groq or Ollama, Mistral Large and 7B, DeepSeek V3, and any Ollama-compatible local model. New models are added as they launch.",
+    a: "MEOK supports GPT-4o and GPT-4o mini (OpenAI), Claude 3.5 Sonnet and Haiku (Anthropic), Gemini 1.5 Pro and Flash (Google), Llama 3.1 70B and 8B via Groq or Ollama, Mistral Large and 7B, DeepSeek V3, NVIDIA Nemotron (Nano 30B, Super 120B, Ultra 253B), OpenRouter (100+ models as universal fallback), and any Ollama-compatible local model. New models are added as they launch.",
   },
   {
     q: "How do I get an API key?",
@@ -274,7 +288,7 @@ export default function AnyLlmPage() {
           </p>
 
           <div className="flex flex-wrap justify-center gap-2 mb-10 max-w-2xl mx-auto">
-            {["GPT-4o", "Claude 3.5", "Gemini Pro", "Llama 3", "Mistral", "DeepSeek", "Ollama"].map(
+            {["GPT-4o", "Claude 3.5", "Gemini Pro", "Llama 3", "Mistral", "DeepSeek", "Nemotron", "OpenRouter", "Ollama"].map(
               (m) => (
                 <span
                   key={m}

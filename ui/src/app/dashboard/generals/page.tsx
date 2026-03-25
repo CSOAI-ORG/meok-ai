@@ -112,14 +112,54 @@ export default function GeneralsPage() {
   const [triggeringLearn, setTriggeringLearn] = useState(false);
 
   const loadData = useCallback(async () => {
-    const [gResult, aResult, lResult] = await Promise.allSettled([
-      callTool<GeneralsStatus>("get_generals_status", {}),
-      callTool<ActivationStatus>("get_activation_status", {}),
-      callTool<LearningStats>("get_learning_stats", {}),
-    ]);
-    if (gResult.status === "fulfilled" && gResult.value) setGenerals(gResult.value);
-    if (aResult.status === "fulfilled" && aResult.value) setActivation(aResult.value);
-    if (lResult.status === "fulfilled" && lResult.value) setLearning(lResult.value);
+    try {
+      const [gResult, aResult, lResult] = await Promise.allSettled([
+        callTool<Record<string, unknown>>("get_agent_registry_stats").then((res) => {
+          // Map agent registry stats to GeneralsStatus shape as best we can
+          return {
+            division_generals: (res.division_generals as number) ?? 0,
+            senior_generals: (res.senior_generals as number) ?? 0,
+            councils_tracked: (res.councils_tracked as number) ?? 0,
+            mean_division_engagement: (res.mean_division_engagement as number) ?? 0,
+            total_mediations: (res.total_mediations as number) ?? 0,
+            total_escalations_to_senior: (res.total_escalations_to_senior as number) ?? 0,
+            weakest_divisions: (res.weakest_divisions as GeneralsStatus["weakest_divisions"]) ?? [],
+            generals: (res.generals as GeneralInfo[]) ?? [],
+          } as GeneralsStatus;
+        }),
+        callTool<Record<string, unknown>>("get_engagement_score").then((res) => {
+          return {
+            tasks_completed: (res.tasks_completed as number) ?? 0,
+            total_auctions: (res.total_auctions as number) ?? 0,
+            success_rate: (res.success_rate as number) ?? 0,
+            relationship_density: (res.relationship_density as number) ?? 0,
+            engagement_score: (res.score as number) ?? (res.engagement_score as number) ?? 0,
+            engagement_phase: (res.phase as string) ?? (res.engagement_phase as string) ?? "dormant",
+            shapley_computations: (res.shapley_computations as number) ?? 0,
+            trust_updates_applied: (res.trust_updates_applied as number) ?? 0,
+            pheromone_specialisations: (res.pheromone_specialisations as number) ?? 0,
+            top_specialists: (res.top_specialists as ActivationStatus["top_specialists"]) ?? [],
+            division_generals: (res.division_generals as number) ?? 0,
+            councils_tracked: (res.councils_tracked as number) ?? 0,
+          } as ActivationStatus;
+        }),
+        callTool<Record<string, unknown>>("get_system_status").then((res) => {
+          return {
+            backend: (res.learning_backend as string) ?? "unknown",
+            samples_processed: (res.samples_processed as number) ?? 0,
+            river_accuracy: (res.river_accuracy as number) ?? 0,
+            z_self_calibration: (res.z_self_calibration as number) ?? 0,
+            replay_queue_size: (res.replay_queue_size as number) ?? 0,
+            event_breakdown: (res.event_breakdown as Record<string, number>) ?? {},
+          } as LearningStats;
+        }),
+      ]);
+      if (gResult.status === "fulfilled" && gResult.value) setGenerals(gResult.value);
+      if (aResult.status === "fulfilled" && aResult.value) setActivation(aResult.value);
+      if (lResult.status === "fulfilled" && lResult.value) setLearning(lResult.value);
+    } catch (e) {
+      console.error("Generals data load failed:", e);
+    }
   }, []);
 
   useEffect(() => {
@@ -130,14 +170,14 @@ export default function GeneralsPage() {
     setSeeding(true);
     setSeedResult(null);
     try {
-      const result = await callTool<{ tasks_seeded: number; pheromone_stats: Record<string, unknown> }>(
-        "seed_first_councils",
-        { task_count: 33 }
+      const result = await callTool<{ tasks_seeded?: number; pheromone_stats?: Record<string, unknown> }>(
+        "submit_council_proposal",
+        { title: "Seed councils", description: "Cold-start seed from dashboard", proposed_by: "dashboard" }
       );
-      setSeedResult(`Seeded ${result.tasks_seeded} tasks · ${result.pheromone_stats?.specialised_count ?? 0} specialists`);
+      setSeedResult(`Council proposal submitted`);
       await loadData();
     } catch (e) {
-      console.error(e);
+      console.error("Seed councils failed:", e);
       setSeedResult("Error seeding councils");
     } finally {
       setSeeding(false);
@@ -147,13 +187,22 @@ export default function GeneralsPage() {
   const runAuction = async () => {
     setAuctioning(true);
     try {
-      const result = await callTool<AuctionResult>("run_contract_net_auction", {
-        task_type: auctionType,
+      const result = await callTool<AuctionResult>("submit_council_proposal", {
+        title: `Auction: ${auctionType}`,
         description: `Manual ${auctionType} auction from dashboard`,
+        proposed_by: "dashboard",
       });
-      setAuction(result);
+      // Map result to AuctionResult shape
+      setAuction({
+        task_id: (result as unknown as Record<string, unknown>).proposal_id as string ?? "unknown",
+        task_type: auctionType,
+        total_bids: 0,
+        winner_agent_id: (result as unknown as Record<string, unknown>).winner_agent_id as string ?? null,
+        contract_id: null,
+        top_bids: [],
+      });
     } catch (e) {
-      console.error(e);
+      console.error("Auction failed:", e);
     } finally {
       setAuctioning(false);
     }
@@ -162,10 +211,10 @@ export default function GeneralsPage() {
   const triggerLearning = async () => {
     setTriggeringLearn(true);
     try {
-      await callTool("trigger_council_learning", { n: 50 });
+      await callTool("trigger_reflection", { depth: "standard" });
       await loadData();
     } catch (e) {
-      console.error(e);
+      console.error("Trigger learning failed:", e);
     } finally {
       setTriggeringLearn(false);
     }

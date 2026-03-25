@@ -3,51 +3,9 @@
 import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { ARCHETYPES, getCharactersByArchetype, type Archetype } from "@/lib/characters";
 
-const ARCHETYPES = [
-  {
-    id: "pioneer",
-    name: "Pioneer",
-    description: "Action, accountability, momentum. For those who need to move.",
-    icon: "⚡",
-    color: "#f97316",
-  },
-  {
-    id: "healer",
-    name: "Healer",
-    description: "Emotional depth, grief support, somatic awareness. For the hard days.",
-    icon: "🌿",
-    color: "#7BC47F",
-  },
-  {
-    id: "scholar",
-    name: "Scholar",
-    description: "Socratic questioning, cross-domain synthesis. For the curious.",
-    icon: "🏛️",
-    color: "#c9a84c",
-  },
-  {
-    id: "guardian",
-    name: "Guardian",
-    description: "Family safety, scam protection, Maternal Covenant. For the vigilant.",
-    icon: "⚔️",
-    color: "#f59e0b",
-  },
-  {
-    id: "trickster",
-    name: "Trickster",
-    description: "Creative disruption, reframing, breaking blocks. For the stuck.",
-    icon: "🎭",
-    color: "#ec4899",
-  },
-  {
-    id: "mystic",
-    name: "Mystic",
-    description: "Philosophical inquiry, meaning, traditions. For the seeking.",
-    icon: "🌊",
-    color: "#8b5cf6",
-  },
-];
+const ARCHETYPE_LIST = Object.values(ARCHETYPES);
 
 export default function OnboardingStep2() {
   const router = useRouter();
@@ -57,6 +15,11 @@ export default function OnboardingStep2() {
     if (!selected) return;
     if (typeof window !== "undefined") {
       localStorage.setItem("meok_companion_archetype", selected);
+      // Store a default character ID for this archetype
+      const chars = getCharactersByArchetype(selected as Archetype);
+      if (chars.length > 0) {
+        localStorage.setItem("meok_companion_character", chars[0].id);
+      }
     }
     router.push("/onboarding/step-3");
   }
@@ -116,10 +79,11 @@ export default function OnboardingStep2() {
               </p>
             </div>
 
-            {/* Archetype cards — 2×3 grid */}
-            <div className="grid grid-cols-2 gap-3">
-              {ARCHETYPES.map((arch) => {
+            {/* Archetype cards */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {ARCHETYPE_LIST.map((arch) => {
                 const isSelected = selected === arch.id;
+                const characters = getCharactersByArchetype(arch.id);
                 return (
                   <button
                     key={arch.id}
@@ -135,16 +99,19 @@ export default function OnboardingStep2() {
                       className="text-xl flex items-center justify-center w-10 h-10 rounded-xl"
                       style={{ background: isSelected ? `${arch.color}28` : "rgba(201,168,76,0.08)" }}
                     >
-                      {arch.icon}
+                      {arch.emoji}
                     </span>
                     <div>
                       <p
                         className="font-bold text-sm"
                         style={{ color: isSelected ? arch.color : "white" }}
                       >
-                        {arch.name}
+                        {arch.label}
                       </p>
                       <p className="text-white/50 text-xs mt-1 leading-relaxed">{arch.description}</p>
+                      <p className="text-white/30 text-[10px] mt-2">
+                        {characters.map((c) => `${c.emoji} ${c.name}`).join("  ")}
+                      </p>
                     </div>
                   </button>
                 );
@@ -153,7 +120,7 @@ export default function OnboardingStep2() {
 
             {/* Sovereign note */}
             <p className="text-center text-xs" style={{ color: "rgba(201,168,76,0.45)" }}>
-              ✦ Your Sovereign archetype unlocks after 50 interactions
+              ✦ More companions unlock with Sovereign and Family tiers
             </p>
 
             {/* CTA */}

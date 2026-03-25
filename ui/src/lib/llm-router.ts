@@ -13,9 +13,9 @@ import type { LanguageModel } from 'ai';
 // ── Tier-based model access ────────────────────────────────────────────────
 
 export const MODEL_ACCESS = {
-  explorer:  ['deepseek-chat', 'llama-3.1-8b'],
-  sovereign: ['deepseek-chat', 'gpt-4o-mini', 'claude-3-5-haiku-latest'],
-  family:    ['deepseek-chat', 'gpt-4o', 'claude-3-5-sonnet-latest'],
+  explorer:  ['deepseek-chat', 'nemotron-nano', 'llama-3.1-8b'],
+  sovereign: ['deepseek-chat', 'nemotron-nano', 'nemotron-super', 'gpt-4o-mini', 'claude-3-5-haiku-latest'],
+  family:    ['deepseek-chat', 'nemotron-nano', 'nemotron-super', 'nemotron-ultra', 'gpt-4o', 'claude-3-5-sonnet-latest'],
 } as const;
 
 export type Tier = keyof typeof MODEL_ACCESS;
@@ -27,7 +27,8 @@ export type TaskType =
   | 'creative'
   | 'emotional'
   | 'research'
-  | 'planning';
+  | 'planning'
+  | 'reasoning';
 
 // ── Task classification ────────────────────────────────────────────────────
 
@@ -37,6 +38,9 @@ export type TaskType =
  */
 export function classifyTask(message: string): TaskType {
   const lower = message.toLowerCase();
+
+  if (lower.match(/\b(reason|logic|deduce|prove|theorem|why does|solve|calculate|math|equation|step by step|think through|figure out)\b/))
+    return 'reasoning';
 
   if (lower.match(/\b(code|function|bug|error|script|programming|python|javascript|typescript|debug|refactor|implement)\b/))
     return 'coding';
@@ -70,31 +74,40 @@ export function classifyTask(message: string): TaskType {
  * - Family    → best available model per task
  */
 export function selectModel(taskType: TaskType, tier: Tier): string {
-  if (tier === 'explorer') return 'deepseek-chat';
+  // Explorer tier: Nemotron Nano for reasoning/coding (free, powerful), DeepSeek for chat
+  if (tier === 'explorer') {
+    if (taskType === 'reasoning' || taskType === 'coding' || taskType === 'analysis') return 'nemotron-nano';
+    return 'deepseek-chat';
+  }
 
   switch (taskType) {
+    case 'reasoning':
+      // Nemotron excels at reasoning — use Super for paid, Ultra for family
+      return tier === 'family' ? 'nemotron-ultra' : 'nemotron-super';
+
     case 'emotional':
+      // Claude is best for empathy and emotional nuance
       return tier === 'family' ? 'claude-3-5-sonnet-latest' : 'claude-3-5-haiku-latest';
 
     case 'coding':
-      return tier === 'family' ? 'claude-3-5-sonnet-latest' : 'gpt-4o-mini';
+      // Nemotron Super is optimised for coding; Claude for family tier
+      return tier === 'family' ? 'claude-3-5-sonnet-latest' : 'nemotron-super';
 
     case 'analysis':
-      return tier === 'family' ? 'gpt-4o' : 'gpt-4o-mini';
+      return tier === 'family' ? 'nemotron-ultra' : 'nemotron-super';
 
     case 'research':
-      return tier === 'family' ? 'gpt-4o' : 'gpt-4o-mini';
+      return tier === 'family' ? 'gpt-4o' : 'nemotron-super';
 
     case 'creative':
-      // Claude is the best creative writer regardless of tier (within access)
+      // Claude is the best creative writer regardless of tier
       return 'claude-3-5-haiku-latest';
 
     case 'planning':
-      return 'gpt-4o-mini';
+      return tier === 'family' ? 'nemotron-super' : 'gpt-4o-mini';
 
     case 'chat':
     default:
-      // Default to cheapest capable model for open-ended conversation
       return 'deepseek-chat';
   }
 }
@@ -103,7 +116,7 @@ export function selectModel(taskType: TaskType, tier: Tier): string {
 
 /**
  * Returns a Vercel AI SDK LanguageModel provider instance for the given
- * model ID. Supports Anthropic, OpenAI, DeepSeek, and local Ollama.
+ * model ID. Supports Anthropic, OpenAI, DeepSeek, OpenRouter, and local Ollama.
  *
  * API keys are read from environment variables at call time so they can be
  * rotated without redeploying.
@@ -115,6 +128,43 @@ export function getProvider(modelId: string): LanguageModel {
 
   if (modelId.startsWith('gpt-') || modelId.startsWith('o1') || modelId.startsWith('o3')) {
     return openai(modelId);
+  }
+
+  // NVIDIA Nemotron models via NIM (OpenAI-compatible API)
+  if (modelId.startsWith('nemotron-')) {
+    const nvidiaApiKey = process.env.NVIDIA_API_KEY;
+    if (!nvidiaApiKey) {
+      console.warn('[llm-router] NVIDIA_API_KEY not set — falling back to DeepSeek');
+      return getProvider('deepseek-chat');
+    }
+    const nvidia = createOpenAI({
+      baseURL: 'https://integrate.api.nvidia.com/v1',
+      apiKey: nvidiaApiKey,
+    });
+    // Map friendly names to NVIDIA model IDs
+    const nemotronModels: Record<string, string> = {
+      'nemotron-nano':  'nvidia/nemotron-3-nano-30b-a3b-bf16',
+      'nemotron-super': 'nvidia/nemotron-3-super-120b-a12b-bf16',
+      'nemotron-ultra': 'nvidia/llama-nemotron-ultra-253b-v1',
+    };
+    const resolvedModel = nemotronModels[modelId] ?? nemotronModels['nemotron-nano'];
+    return nvidia(resolvedModel);
+  }
+
+  // OpenRouter — universal fallback, 100+ models with one key
+  if (modelId.startsWith('openrouter/')) {
+    const openrouterApiKey = process.env.OPENROUTER_API_KEY;
+    if (!openrouterApiKey) {
+      console.warn('[llm-router] OPENROUTER_API_KEY not set — falling back to DeepSeek');
+      return getProvider('deepseek-chat');
+    }
+    const openrouter = createOpenAI({
+      baseURL: 'https://openrouter.ai/api/v1',
+      apiKey: openrouterApiKey,
+    });
+    // Strip the 'openrouter/' prefix to get the actual model ID
+    const actualModelId = modelId.replace('openrouter/', '');
+    return openrouter(actualModelId);
   }
 
   if (modelId.startsWith('deepseek-')) {
@@ -131,7 +181,15 @@ export function getProvider(modelId: string): LanguageModel {
     return deepseek('deepseek-chat');
   }
 
-  // Unknown model — assume local Ollama
+  // Unknown model — try OpenRouter if key is set, otherwise fall back to local Ollama
+  if (process.env.OPENROUTER_API_KEY) {
+    console.warn(`[llm-router] Unknown model "${modelId}" — routing via OpenRouter`);
+    const openrouter = createOpenAI({
+      baseURL: 'https://openrouter.ai/api/v1',
+      apiKey: process.env.OPENROUTER_API_KEY,
+    });
+    return openrouter(modelId);
+  }
   console.warn(`[llm-router] Unknown model "${modelId}" — routing to local Ollama`);
   const ollama = createOpenAI({ baseURL: 'http://localhost:11434/v1', apiKey: 'ollama' });
   return ollama(modelId);

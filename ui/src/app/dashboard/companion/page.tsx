@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect, useCallback, useMemo } from 'react';
 import { useSearchParams } from 'next/navigation';
-import { useAuth } from '@/lib/auth';
+import { useUser } from '@clerk/nextjs';
 import { CHARACTERS, getCharacterBySlug } from '@/data/characters';
 import { callTool } from '@/lib/api';
 import type { MemoryEpisode } from '@/lib/types';
@@ -423,12 +423,12 @@ function CompanionPanel({
 
 export default function CompanionPage() {
   const searchParams = useSearchParams();
-  const { user } = useAuth();
+  const { user } = useUser();
   const characterSlug = searchParams.get('character') ?? 'scholar';
   const character = getCharacterBySlug(characterSlug) ?? CHARACTERS[0];
 
   const greeting = getGreeting();
-  const userName = user?.hatch_name ?? user?.email?.split('@')[0] ?? 'friend';
+  const userName = user?.firstName ?? user?.emailAddresses[0]?.emailAddress?.split('@')[0] ?? 'friend';
 
   // Chat state
   const [messages, setMessages] = useState<Message[]>([]);

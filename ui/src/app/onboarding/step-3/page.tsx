@@ -9,18 +9,42 @@ export default function OnboardingStep3() {
   const [memory, setMemory] = useState("");
   const [hatching, setHatching] = useState(false);
 
-  function handleHatch() {
+  const [error, setError] = useState("");
+
+  async function handleHatch() {
     if (!memory.trim()) return;
     setHatching(true);
+    setError("");
+
+    const name = typeof window !== "undefined" ? localStorage.getItem("meok_companion_name") ?? "" : "";
+    const archetype = typeof window !== "undefined" ? localStorage.getItem("meok_companion_archetype") ?? "" : "";
+
+    // Save to localStorage as backup
     if (typeof window !== "undefined") {
       localStorage.setItem("meok_companion_memory", memory.trim());
-      const name = localStorage.getItem("meok_companion_name") ?? "";
-      const archetype = localStorage.getItem("meok_companion_archetype") ?? "";
       localStorage.setItem(
         "meok_companion",
         JSON.stringify({ name, archetype, memory: memory.trim(), hatched_at: new Date().toISOString() })
       );
     }
+
+    // Persist to database
+    try {
+      const res = await fetch("/api/user/companions", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, archetype, memory: memory.trim() }),
+      });
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        console.error("[onboarding] Failed to save companion:", data);
+        // Continue anyway — localStorage backup means they can still chat
+      }
+    } catch (err) {
+      console.error("[onboarding] API error:", err);
+      // Non-fatal — continue to dashboard
+    }
+
     router.push("/dashboard");
   }
 

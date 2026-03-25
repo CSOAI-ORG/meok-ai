@@ -1,6 +1,7 @@
 import { auth } from '@clerk/nextjs/server'
 import { redirect } from 'next/navigation'
 import { CompanionProgress } from '@/components/companion-progress'
+import { getUserById } from '@/lib/db/user'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -63,6 +64,19 @@ export default async function EvolutionPage() {
   const { userId } = await auth()
   if (!userId) redirect('/login')
 
+  // Fetch real companion data from DB
+  let companionStage = 0
+  let companionName = 'Your Sovereign'
+  try {
+    const user = await getUserById(userId)
+    if (user) {
+      companionStage = user.companion_stage ?? 0
+      companionName = user.companion_name ?? 'Your Sovereign'
+    }
+  } catch (e) {
+    console.error('[evolution] Failed to load companion data:', e)
+  }
+
   return (
     <main style={{ minHeight: '100vh', background: '#0a0a0a', color: '#f5f5f5', padding: '2rem 1rem' }}>
       <div style={{ maxWidth: '720px', margin: '0 auto' }}>
@@ -78,7 +92,7 @@ export default async function EvolutionPage() {
         </div>
 
         {/* Progress component */}
-        <CompanionProgress interactions={0} streakDays={0} companionName="Your Sovereign" />
+        <CompanionProgress interactions={companionStage} streakDays={0} companionName={companionName} />
 
         {/* Evolution stages timeline */}
         <section style={{ marginTop: '2.5rem' }}>

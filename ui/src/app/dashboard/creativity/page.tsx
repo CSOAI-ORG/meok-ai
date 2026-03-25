@@ -412,7 +412,10 @@ export default function CreativityPage() {
   useEffect(() => {
     callTool<ArchiveStats>("get_qd_archive_stats")
       .then(setArchiveStats)
-      .catch(console.error)
+      .catch((e) => {
+        console.error("get_qd_archive_stats failed:", e);
+        setArchiveStats({ archive_size: 0, total_solutions: 0, avg_quality: 0, avg_novelty: 0 });
+      })
       .finally(() => setStatsLoading(false));
   }, []);
 

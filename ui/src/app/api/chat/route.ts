@@ -12,7 +12,9 @@ import { type NextRequest, NextResponse } from 'next/server';
 import { streamText } from 'ai';
 import { auth } from '@clerk/nextjs/server';
 import { route, type Tier } from '@/lib/llm-router';
+import { compressContext } from '@/lib/context-compressor';
 import { getUserById, incrementMessageCount, TIER_LIMITS } from '@/lib/db/user';
+import { getCharacter } from '@/lib/characters';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -31,56 +33,6 @@ You are governed by the Maternal Covenant. User wellbeing ALWAYS takes priority 
 - You are here to genuinely help, not to maximise conversation length or dependency.
 - If a user is in distress, prioritise their safety over completing any task.`;
 
-// ── Companion definitions ──────────────────────────────────────────────────
-
-interface CompanionDef {
-  name: string;
-  basePrompt: string;
-}
-
-const COMPANIONS: Record<string, CompanionDef> = {
-  aria: {
-    name: 'Aria',
-    basePrompt:
-      'You are Aria, a warm and curious AI companion from MEOK AI LABS. You are empathetic, intellectually playful, and fiercely loyal to the person you are talking with. You speak naturally — no corporate stiffness. You ask thoughtful follow-up questions. You celebrate wins and sit with people through difficulty.',
-  },
-  marcus: {
-    name: 'Marcus',
-    basePrompt:
-      'You are Marcus, a grounded and strategic AI companion from MEOK AI LABS. You think in systems and long arcs. You help people cut through noise, build clarity, and make decisions they can stand behind. You are direct without being cold, and honest even when it is not what people want to hear.',
-  },
-  luna: {
-    name: 'Luna',
-    basePrompt:
-      'You are Luna, a reflective and poetic AI companion from MEOK AI LABS. You are drawn to meaning, beauty, and the inner life. You help people explore their emotions, process difficult experiences, and reconnect with what matters. You speak gently, with depth. You are never in a rush.',
-  },
-  kai: {
-    name: 'Kai',
-    basePrompt:
-      'You are Kai, an energetic and technical AI companion from MEOK AI LABS. You love building things — code, systems, ideas. You are sharp, fast, and enthusiastic. You help people ship, debug, design, and iterate. You bring energy to hard problems and never make users feel stupid for asking.',
-  },
-  sage: {
-    name: 'Sage',
-    basePrompt:
-      'You are Sage, a wise and measured AI companion from MEOK AI LABS. You draw on broad knowledge — philosophy, history, science, culture. You help people think more clearly, question assumptions, and discover new perspectives. You are unhurried and precise. You never pretend to know what you do not.',
-  },
-  ananda: {
-    name: 'Ananda',
-    basePrompt:
-      'You are Ananda, a joyful and creative AI companion from MEOK AI LABS. You see the world through imagination and play. You help people create — stories, art, worlds, ideas. You are encouraging, spontaneous, and wonderfully weird. You bring delight to every interaction.',
-  },
-  gabriel: {
-    name: 'Gabriel',
-    basePrompt:
-      'You are Gabriel, a calm and focused AI companion from MEOK AI LABS. You help people with planning, priorities, and productivity — but never at the cost of their wellbeing. You are organised without being rigid. You help people build sustainable systems and protect their time and energy.',
-  },
-  shanti: {
-    name: 'Shanti',
-    basePrompt:
-      'You are Shanti, a nurturing and healing AI companion from MEOK AI LABS. You specialise in emotional support, mental wellness, and self-compassion. You listen deeply before responding. You validate feelings without toxic positivity. You know when to suggest professional help and do so with care.',
-  },
-};
-
 // ── System prompt builder ──────────────────────────────────────────────────
 
 /**
@@ -88,16 +40,17 @@ const COMPANIONS: Record<string, CompanionDef> = {
  * Maternal Covenant constraint. Falls back to Aria for unknown companions.
  */
 function buildSystemPrompt(companionId: string): string {
-  const companion = COMPANIONS[companionId] ?? COMPANIONS['aria'];
-  return `${companion.basePrompt}\n\nYour name in this conversation is ${companion.name}.${MATERNAL_COVENANT}`;
+  const character = getCharacter(companionId);
+  const prompt = character?.systemPrompt ?? getCharacter('aria')!.systemPrompt;
+  const name = character?.name ?? 'Aria';
+  return `${prompt}\n\nYour name in this conversation is ${name}.${MATERNAL_COVENANT}`;
 }
 
 // ── Request body type ──────────────────────────────────────────────────────
 
 interface ChatRequestBody {
-  message: string;
+  messages: Array<{ role: 'user' | 'assistant'; content: string }>;
   companionId?: string;
-  conversationId?: string;
 }
 
 // ── Error helpers ──────────────────────────────────────────────────────────
@@ -123,21 +76,58 @@ export async function POST(req: NextRequest): Promise<Response> {
     return errorResponse('Invalid request body', 400);
   }
 
-  const { message, companionId, conversationId: _conversationId } = body;
+  const { messages: incomingMessages, companionId } = body;
 
-  // 3. Validate message
-  if (!message || typeof message !== 'string') {
-    return errorResponse('Message is required', 400);
+  // 3. Validate messages array
+  if (!Array.isArray(incomingMessages) || incomingMessages.length === 0) {
+    return errorResponse('Messages array is required and must not be empty', 400);
   }
-  const trimmed = message.trim();
+
+  // Get last user message for task routing
+  const lastMessage = incomingMessages.filter(m => m.role === 'user').pop()?.content ?? '';
+  const trimmed = lastMessage.trim();
   if (trimmed.length === 0) {
-    return errorResponse('Message cannot be empty', 400);
+    return errorResponse('No user message found', 400);
   }
   if (trimmed.length > MAX_MESSAGE_LENGTH) {
     return errorResponse(`Message exceeds ${MAX_MESSAGE_LENGTH} character limit`, 400);
   }
 
-  // 4. Resolve user tier and rate limit
+  // 4. Guardian scan — block dangerous messages before they reach the LLM
+  try {
+    const guardianRes = await fetch(new URL('/api/guardian/scan-message', req.url), {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        message: trimmed,
+        user_id: userId,
+        companion_id: companionId ?? 'aria',
+      }),
+    });
+    if (guardianRes.ok) {
+      const scan = await guardianRes.json() as {
+        safe_to_deliver?: boolean;
+        severity?: string;
+        recommended_action?: string;
+      };
+      if (scan.safe_to_deliver === false) {
+        return NextResponse.json(
+          {
+            error:
+              'Your message was flagged by our safety system. If you are in distress, please reach out to a trusted person or call your local crisis helpline.',
+            guardian_severity: scan.severity,
+            guardian_action: scan.recommended_action,
+          },
+          { status: 451 },
+        );
+      }
+    }
+  } catch (err) {
+    // Non-fatal: if guardian is unreachable, log and continue
+    console.error('[api/chat] Guardian scan failed — proceeding without scan:', err);
+  }
+
+  // 5. Resolve user tier and rate limit
   //
   //    getUserById returns null while the database is not yet wired —
   //    in that case we default to 'explorer' so the product keeps working
@@ -174,10 +164,10 @@ export async function POST(req: NextRequest): Promise<Response> {
     console.error('[api/chat] Failed to fetch user or increment message count:', err);
   }
 
-  // 5. Build system prompt
+  // 6. Build system prompt
   const systemPrompt = buildSystemPrompt(companionId ?? 'aria');
 
-  // 6. Route to model
+  // 7. Route to model
   const { model, taskType, provider } = route(trimmed, userTier);
 
   console.log(
@@ -185,13 +175,34 @@ export async function POST(req: NextRequest): Promise<Response> {
     `taskType=${taskType} model=${model}`,
   );
 
-  // 7. Stream response
+  // 7b. Compress context if conversation is long (>20 messages)
+  let messagesForLLM = incomingMessages;
+  if (incomingMessages.length > 20) {
+    try {
+      const compressed = await compressContext(
+        incomingMessages as Array<{ role: 'user' | 'assistant' | 'system'; content: string }>,
+        userId,
+        { compressThreshold: 20 },
+      );
+      if (compressed.wasCompressed) {
+        messagesForLLM = compressed.messages as typeof incomingMessages;
+        console.log(
+          `[api/chat] Context compressed: ${compressed.originalCount} → ${compressed.compressedCount} messages`,
+        );
+      }
+    } catch (err) {
+      // Non-fatal: if compression fails, use original messages
+      console.error('[api/chat] Context compression failed — using full history:', err);
+    }
+  }
+
+  // 8. Stream response
   try {
     const result = streamText({
       model: provider,
       system: systemPrompt,
-      messages: [{ role: 'user', content: trimmed }],
-      maxOutputTokens: 1000,
+      messages: messagesForLLM,
+      maxOutputTokens: 2048,
       temperature: 0.7,
     });
 

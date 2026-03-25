@@ -1,11 +1,12 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import { mcp, callTool } from "@/lib/api";
 import { QuickChat } from "@/components/quick-chat";
 import type { ConsciousnessState, MemoryStats } from "@/lib/types";
 import Link from "next/link";
-import { useAuth } from "@/lib/auth";
+import { useUser } from "@clerk/nextjs";
 import { EVOLUTION_STAGES, getEvolutionStage, getProgressToNextStage, interactionsUntilNextStage } from "@/lib/evolution";
 import {
   Sunrise,
@@ -257,7 +258,9 @@ function ProgressRing({ progress, color, size = 56 }: { progress: number; color:
 
 // ── Main page ─────────────────────────────────────────────────────
 export default function DashboardOverview() {
-  const { user } = useAuth();
+  const { user } = useUser();
+  const router = useRouter();
+  const [companionChecked, setCompanionChecked] = useState(false);
   const [consciousness, setConsciousness] = useState<ConsciousnessState | null>(null);
   const [memStats, setMemStats] = useState<MemoryStats | null>(null);
   const [toolCount, setToolCount] = useState(0);
@@ -270,6 +273,26 @@ export default function DashboardOverview() {
   const [loadedMem, setLoadedMem] = useState(false);
   const [loadedMsgs, setLoadedMsgs] = useState(false);
   const [loadedEntity, setLoadedEntity] = useState(false);
+
+  // Check if user has a companion — redirect to onboarding if not
+  useEffect(() => {
+    async function checkCompanion() {
+      try {
+        const res = await fetch("/api/user/companions");
+        if (res.ok) {
+          const data = await res.json();
+          if (!data.has_companion) {
+            router.replace("/onboarding/step-1");
+            return;
+          }
+        }
+      } catch (err) {
+        console.error("[dashboard] companion check error:", err);
+      }
+      setCompanionChecked(true);
+    }
+    checkCompanion();
+  }, [router]);
 
   useEffect(() => {
     const load = async () => {
@@ -294,9 +317,14 @@ export default function DashboardOverview() {
 
     const loadBriefing = async () => {
       try {
-        const data = await mcp.get<MorningBriefingPreview>("/api/morning-briefing");
-        setBriefing(data);
-      } catch {}
+        const res = await fetch("/api/morning-briefing");
+        if (res.ok) {
+          const data = await res.json();
+          setBriefing(data);
+        }
+      } catch (e) {
+        console.error("[dashboard] briefing load error:", e);
+      }
     };
 
     const loadPlan = async () => {
@@ -315,8 +343,25 @@ export default function DashboardOverview() {
 
     const loadEntity = async () => {
       try {
-        const data = await mcp.get<EntitySummary>("/entity");
-        setEntity(data);
+        const res = await fetch("/api/user/companions");
+        if (res.ok) {
+          const data = await res.json();
+          if (data.has_companion && data.companion) {
+            setEntity({
+              name: data.companion.name ?? "Sovereign",
+              hatch_level: data.companion.stage ?? 0,
+              hatch_label: data.companion.stage >= 3 ? "Your Sovereign" : data.companion.stage >= 2 ? "Hatching Sovereign" : data.companion.stage >= 1 ? "Emergent Fracture" : "Prying Pulse",
+              color_primary: GOLD,
+              color_secondary: GOLD,
+              dominant_trait: data.companion.id ?? "explorer",
+              interactions_count: data.companion.stage ?? 0,
+              progress_to_next: 0,
+              next_threshold: null,
+              care_alignment: 0,
+              created_at: undefined,
+            });
+          }
+        }
         setLoadedEntity(true);
       } catch {
         setLoadedEntity(true);
@@ -325,11 +370,17 @@ export default function DashboardOverview() {
 
     const loadMessages = async () => {
       try {
-        const data = await mcp.get<{ count: number }>("/api/messages/today");
-        setMsgsToday(data.count);
-        setLoadedMsgs(true);
+        // Try to get message count from user data endpoint
+        const res = await fetch("/api/user/data");
+        if (res.ok) {
+          const data = await res.json();
+          setMsgsToday(data.messages_today ?? 0);
+        } else {
+          setMsgsToday(0);
+        }
       } catch {
-        setMsgsToday(null);
+        setMsgsToday(0);
+      } finally {
         setLoadedMsgs(true);
       }
     };
@@ -374,7 +425,7 @@ export default function DashboardOverview() {
       ];
 
   const displayName =
-    user?.hatch_name || entity?.name || user?.email?.split("@")[0] || "there";
+    user?.firstName || entity?.name || user?.emailAddresses[0]?.emailAddress?.split("@")[0] || "there";
 
   const isFree = plan?.plan === "free" || plan?.plan === "explorer";
 

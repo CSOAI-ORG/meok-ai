@@ -3,6 +3,8 @@
 // Protected route — auth is enforced by the dashboard layout (AuthProvider + useAuth).
 // This page is only reachable when the user is authenticated.
 
+import { useEffect, useState } from "react";
+import { callTool } from "@/lib/api";
 import Link from "next/link";
 import {
   Shield,
@@ -59,7 +61,7 @@ function SeverityBadge({ severity }: { severity: Severity }) {
 
 // ─── DATA ──────────────────────────────────────────────────────────────────────
 
-const EMPTY_STATE_ALERTS: AlertRow[] = [];
+const FALLBACK_ALERTS: AlertRow[] = [];
 
 const PROTECTIONS: {
   icon: React.ElementType;
@@ -101,6 +103,28 @@ const PROTECTIONS: {
 // ─── PAGE ──────────────────────────────────────────────────────────────────────
 
 export default function GuardianDashboardPage() {
+  const [alerts, setAlerts] = useState<AlertRow[]>(FALLBACK_ALERTS);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    callTool<{ alerts?: Array<{ id?: string; time?: string; severity?: string; type?: string; action?: string; message?: string; level?: string }> }>("get_active_alerts")
+      .then((res) => {
+        const mapped: AlertRow[] = (res.alerts ?? []).map((a, i) => ({
+          id: a.id ?? `alert-${i}`,
+          time: a.time ?? new Date().toISOString(),
+          severity: ((a.severity ?? a.level ?? "LOW").toUpperCase() as Severity),
+          type: a.type ?? "system",
+          action: a.action ?? a.message ?? "Detected",
+        }));
+        setAlerts(mapped);
+      })
+      .catch((e) => {
+        console.error("get_active_alerts failed:", e);
+        setAlerts(FALLBACK_ALERTS);
+      })
+      .finally(() => setLoading(false));
+  }, []);
+
   return (
     <div
       className="min-h-screen text-white overflow-x-hidden"
@@ -138,18 +162,27 @@ export default function GuardianDashboardPage() {
             </div>
             <span
               className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold"
-              style={{
-                background: "rgba(74,222,128,0.10)",
-                border: "1px solid rgba(74,222,128,0.25)",
-                color: "#4ade80",
-              }}
+              style={
+                alerts.length === 0
+                  ? { background: "rgba(74,222,128,0.10)", border: "1px solid rgba(74,222,128,0.25)", color: "#4ade80" }
+                  : { background: "rgba(251,191,36,0.10)", border: "1px solid rgba(251,191,36,0.25)", color: "#fbbf24" }
+              }
             >
-              <CheckCircle size={11} />
-              No alerts in the last 30 days
+              {alerts.length === 0 ? (
+                <>
+                  <CheckCircle size={11} />
+                  {loading ? "Loading alerts..." : "No alerts in the last 30 days"}
+                </>
+              ) : (
+                <>
+                  <AlertTriangle size={11} />
+                  {alerts.length} alert{alerts.length !== 1 ? "s" : ""}
+                </>
+              )}
             </span>
           </div>
 
-          {EMPTY_STATE_ALERTS.length === 0 ? (
+          {alerts.length === 0 ? (
             <div className="px-6 py-10 text-center">
               <CheckCircle
                 size={32}
@@ -185,12 +218,12 @@ export default function GuardianDashboardPage() {
                   </tr>
                 </thead>
                 <tbody>
-                  {EMPTY_STATE_ALERTS.map((row, i) => (
+                  {alerts.map((row, i) => (
                     <tr
                       key={row.id}
                       style={{
                         borderBottom:
-                          i < EMPTY_STATE_ALERTS.length - 1
+                          i < alerts.length - 1
                             ? `1px solid ${BORDER}`
                             : "none",
                       }}

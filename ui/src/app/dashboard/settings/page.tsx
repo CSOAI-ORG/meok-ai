@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useAuth } from "@/lib/auth";
+import { useUser } from "@clerk/nextjs";
 import { mcp } from "@/lib/api";
 import { Card, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -148,7 +148,7 @@ function FieldRow({ label, value }: { label: string; value: React.ReactNode }) {
 // ─── Main page ────────────────────────────────────────────────────
 
 export default function SettingsPage() {
-  const { user } = useAuth();
+  const { user } = useUser();
 
   // API Keys
   const [apiKeys, setApiKeys] = useState<APIKeyResponse[]>([]);
@@ -194,7 +194,31 @@ export default function SettingsPage() {
         setPlanLoading(false);
       }
     };
+    const loadCompanion = async () => {
+      try {
+        const res = await fetch("/api/user/companions");
+        if (res.ok) {
+          const data = await res.json();
+          if (data.has_companion && data.companion) {
+            if (data.companion.name) setCompanionName(data.companion.name);
+            if (data.companion.id) {
+              // Reverse lookup: companion_id -> archetype
+              const idToArchetype: Record<string, string> = {
+                marcus: "Pioneer", shanti: "Healer", sage: "Scholar",
+                gabriel: "Guardian", ananda: "Trickster", luna: "Mystic",
+                aria: "Scholar",
+              };
+              const arch = idToArchetype[data.companion.id];
+              if (arch) setSelectedArchetype(arch);
+            }
+          }
+        }
+      } catch (e) {
+        console.error("[settings] load companion error:", e);
+      }
+    };
     loadPlan();
+    loadCompanion();
   }, []);
 
   const generateKey = async () => {
@@ -214,10 +238,27 @@ export default function SettingsPage() {
 
   const saveCompanion = async () => {
     setCompanionSaving(true);
-    await new Promise((r) => setTimeout(r, 600));
-    setCompanionSaving(false);
-    setCompanionSaved(true);
-    setTimeout(() => setCompanionSaved(false), 2500);
+    try {
+      const res = await fetch("/api/user/settings", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          companion_name: companionName,
+          archetype: selectedArchetype,
+        }),
+      });
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        console.error("[settings] save companion failed:", data.error);
+      } else {
+        setCompanionSaved(true);
+        setTimeout(() => setCompanionSaved(false), 2500);
+      }
+    } catch (e) {
+      console.error("[settings] save companion error:", e);
+    } finally {
+      setCompanionSaving(false);
+    }
   };
 
   const planInfo = PLAN_FEATURES[currentPlan] ?? PLAN_FEATURES.explorer;
@@ -238,31 +279,29 @@ export default function SettingsPage() {
         <SectionCard icon={<User className="w-4 h-4" />} title="Account">
           {user ? (
             <div className="space-y-1">
-              <FieldRow label="Email" value={user.email} />
+              <FieldRow label="Email" value={user.emailAddresses[0]?.emailAddress ?? "—"} />
               <Divider />
-              <FieldRow label="Hatch Name" value={user.hatch_name} />
+              <FieldRow label="Name" value={user.fullName ?? user.firstName ?? "—"} />
               <Divider />
               <FieldRow
                 label="Status"
                 value={
-                  <Badge variant={user.is_active ? "green" : "red"}>
-                    {user.is_active ? "Active" : "Inactive"}
-                  </Badge>
+                  <Badge variant="green">Active</Badge>
                 }
               />
               <Divider />
               <FieldRow
-                label="Tenant ID"
+                label="User ID"
                 value={
-                  <code className="text-xs text-white/40 font-mono">{user.tenant_id}</code>
+                  <code className="text-xs text-white/40 font-mono">{user.id}</code>
                 }
               />
               <Divider />
               <FieldRow
                 label="Member since"
-                value={new Date(user.created_at).toLocaleDateString("en-GB", {
+                value={user.createdAt ? new Date(user.createdAt).toLocaleDateString("en-GB", {
                   day: "numeric", month: "long", year: "numeric",
-                })}
+                }) : "—"}
               />
             </div>
           ) : (

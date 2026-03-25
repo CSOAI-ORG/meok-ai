@@ -11,8 +11,8 @@
  */
 
 import { useEffect, useState } from "react";
-import { mcp } from "@/lib/api";
-import { useAuth } from "@/lib/auth";
+// Morning briefing uses local Next.js API routes, not SOV3 MCP
+import { useUser } from "@clerk/nextjs";
 import {
   Moon,
   Sunrise,
@@ -286,7 +286,7 @@ function EmptyState({ onTrigger, triggering }: { onTrigger: () => void; triggeri
 }
 
 export default function MorningBriefingPage() {
-  const { user } = useAuth();
+  const { user } = useUser();
   const [briefing, setBriefing] = useState<MorningBriefing | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -299,7 +299,9 @@ export default function MorningBriefingPage() {
     else setLoading(true);
     setError(null);
     try {
-      const data = await mcp.get<MorningBriefing>("/api/morning-briefing");
+      const res = await fetch("/api/morning-briefing");
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const data: MorningBriefing = await res.json();
       setBriefing(data);
       setVisible(true);
     } catch (e) {
@@ -313,7 +315,7 @@ export default function MorningBriefingPage() {
   const triggerNow = async () => {
     setTriggering(true);
     try {
-      await mcp.post("/api/morning-briefing/regenerate", {});
+      await fetch("/api/morning-briefing/regenerate", { method: "POST" });
       await load(false);
     } catch {
       await load(false);
@@ -341,7 +343,7 @@ export default function MorningBriefingPage() {
       })
     : null;
 
-  const displayName = user?.hatch_name || user?.email?.split("@")[0] || "there";
+  const displayName = user?.firstName || user?.emailAddresses[0]?.emailAddress?.split("@")[0] || "there";
   const careScore = briefing?.care_score_today;
   const hasMeaningfulContent =
     briefing && (briefing.sections?.length || briefing.one_line_summary || briefing.priorities?.length);

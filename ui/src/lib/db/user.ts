@@ -4,9 +4,9 @@
  * Handles user lifecycle: creation on Clerk signup, tier management,
  * companion bonding state, Guardian parental-control settings, and
  * message-rate enforcement.
- *
- * TODO: implement with your database of choice (Neon/Supabase/PlanetScale)
  */
+
+import { sql } from './index';
 
 // ── Types ──────────────────────────────────────────────────────────────────
 
@@ -122,16 +122,27 @@ export async function createUser(
 ): Promise<User> {
   console.log(`[db/user] createUser — clerkUserId=${clerkUserId} email=${email} name=${name ?? '(none)'}`);
 
-  // TODO: implement with your database of choice (Neon/Supabase/PlanetScale)
-  // Example (Neon/postgres):
-  //   const user = buildNewUser(clerkUserId, email, name);
-  //   await sql`
-  //     INSERT INTO users ${sql(user)}
-  //     ON CONFLICT (id) DO NOTHING
-  //   `;
-  //   return user;
-
   const user = buildNewUser(clerkUserId, email, name);
+
+  if (!sql) {
+    console.warn('[db/user] createUser — no database connection, returning in-memory user');
+    return user;
+  }
+
+  await sql`
+    INSERT INTO users (id, email, name, tier, companion_id, companion_name, companion_stage,
+                       guardian_enabled, guardian_settings, family_group_id,
+                       stripe_customer_id, stripe_subscription_id,
+                       messages_today, messages_today_reset, created_at, updated_at, deleted_at)
+    VALUES (${user.id}, ${user.email}, ${user.name}, ${user.tier},
+            ${user.companion_id}, ${user.companion_name}, ${user.companion_stage},
+            ${user.guardian_enabled}, ${user.guardian_settings ? JSON.stringify(user.guardian_settings) : null},
+            ${user.family_group_id}, ${user.stripe_customer_id}, ${user.stripe_subscription_id},
+            ${user.messages_today}, ${user.messages_today_reset},
+            ${user.created_at}, ${user.updated_at}, ${user.deleted_at})
+    ON CONFLICT (id) DO NOTHING
+  `;
+
   return user;
 }
 
@@ -144,12 +155,13 @@ export async function createUser(
 export async function getUserById(id: string): Promise<User | null> {
   console.log(`[db/user] getUserById — id=${id}`);
 
-  // TODO: implement with your database of choice (Neon/Supabase/PlanetScale)
-  // Example:
-  //   const rows = await sql`SELECT * FROM users WHERE id = ${id} AND deleted_at IS NULL`;
-  //   return rows[0] ?? null;
+  if (!sql) {
+    console.warn('[db/user] getUserById — no database connection');
+    return null;
+  }
 
-  return null;
+  const rows = await sql`SELECT * FROM users WHERE id = ${id} AND deleted_at IS NULL`;
+  return (rows[0] as User) ?? null;
 }
 
 /**
@@ -173,16 +185,19 @@ export async function updateUserTier(
     (stripeData ? ` stripeCustomer=${stripeData.customerId ?? '-'} stripeSub=${stripeData.subscriptionId ?? '-'}` : ''),
   );
 
-  // TODO: implement with your database of choice (Neon/Supabase/PlanetScale)
-  // Example:
-  //   await sql`
-  //     UPDATE users
-  //     SET tier                    = ${tier},
-  //         stripe_customer_id      = COALESCE(${stripeData?.customerId ?? null}, stripe_customer_id),
-  //         stripe_subscription_id  = COALESCE(${stripeData?.subscriptionId ?? null}, stripe_subscription_id),
-  //         updated_at              = NOW()
-  //     WHERE id = ${id}
-  //   `;
+  if (!sql) {
+    console.warn('[db/user] updateUserTier — no database connection');
+    return;
+  }
+
+  await sql`
+    UPDATE users
+    SET tier                    = ${tier},
+        stripe_customer_id      = COALESCE(${stripeData?.customerId ?? null}, stripe_customer_id),
+        stripe_subscription_id  = COALESCE(${stripeData?.subscriptionId ?? null}, stripe_subscription_id),
+        updated_at              = NOW()
+    WHERE id = ${id}
+  `;
 }
 
 /**
@@ -198,15 +213,18 @@ export async function updateUserTier(
 export async function markUserDeleted(id: string): Promise<void> {
   console.log(`[db/user] markUserDeleted — id=${id} deleted_at=${new Date().toISOString()}`);
 
-  // TODO: implement with your database of choice (Neon/Supabase/PlanetScale)
-  // Example:
-  //   await sql`
-  //     UPDATE users
-  //     SET deleted_at = NOW(),
-  //         updated_at = NOW()
-  //     WHERE id = ${id}
-  //   `;
-  //
+  if (!sql) {
+    console.warn('[db/user] markUserDeleted — no database connection');
+    return;
+  }
+
+  await sql`
+    UPDATE users
+    SET deleted_at = NOW(),
+        updated_at = NOW()
+    WHERE id = ${id}
+  `;
+
   // TODO: enqueue a GDPR erasure job (e.g. via Inngest / BullMQ):
   //   await gdprQueue.add('schedule-erasure', { userId: id }, { delay: ms('30d') });
 }
@@ -226,32 +244,36 @@ export async function incrementMessageCount(
 ): Promise<{ allowed: boolean; remaining: number }> {
   console.log(`[db/user] incrementMessageCount — id=${id}`);
 
-  // TODO: implement with your database of choice (Neon/Supabase/PlanetScale)
-  // Recommended: do this atomically in a single UPDATE … RETURNING to avoid
-  // race conditions under concurrent requests.
-  //
-  // Example (Neon/postgres — atomic):
-  //   const today = todayISO();
-  //   const [row] = await sql`
-  //     UPDATE users
-  //     SET messages_today       = CASE WHEN messages_today_reset < ${today}
-  //                                     THEN 1
-  //                                     ELSE messages_today + 1
-  //                                END,
-  //         messages_today_reset = ${today},
-  //         updated_at           = NOW()
-  //     WHERE id         = ${id}
-  //       AND deleted_at IS NULL
-  //     RETURNING tier, messages_today
-  //   `;
-  //   const limit = TIER_LIMITS[row.tier as Tier].messages_per_day;
-  //   if (limit === -1) return { allowed: true, remaining: -1 };
-  //   const allowed   = row.messages_today <= limit;
-  //   const remaining = Math.max(0, limit - row.messages_today);
-  //   return { allowed, remaining };
+  if (!sql) {
+    console.warn('[db/user] incrementMessageCount — no database connection');
+    return { allowed: true, remaining: -1 };
+  }
 
-  // Placeholder — always allowed while DB is not yet wired
-  return { allowed: true, remaining: -1 };
+  const today = todayISO();
+  const rows = await sql`
+    UPDATE users
+    SET messages_today       = CASE WHEN messages_today_reset < ${today}
+                                    THEN 1
+                                    ELSE messages_today + 1
+                               END,
+        messages_today_reset = ${today},
+        updated_at           = NOW()
+    WHERE id         = ${id}
+      AND deleted_at IS NULL
+    RETURNING tier, messages_today
+  `;
+
+  if (!rows[0]) {
+    // User not found or soft-deleted — deny by default
+    return { allowed: false, remaining: 0 };
+  }
+
+  const row = rows[0] as { tier: string; messages_today: number };
+  const limit = TIER_LIMITS[row.tier as Tier].messages_per_day;
+  if (limit === -1) return { allowed: true, remaining: -1 };
+  const allowed   = row.messages_today <= limit;
+  const remaining = Math.max(0, limit - row.messages_today);
+  return { allowed, remaining };
 }
 
 /**
@@ -269,16 +291,19 @@ export async function updateCompanion(
 ): Promise<void> {
   console.log(`[db/user] updateCompanion — id=${id} companionId=${companionId} companionName=${companionName}`);
 
-  // TODO: implement with your database of choice (Neon/Supabase/PlanetScale)
-  // Example:
-  //   await sql`
-  //     UPDATE users
-  //     SET companion_id    = ${companionId},
-  //         companion_name  = ${companionName},
-  //         companion_stage = 0,
-  //         updated_at      = NOW()
-  //     WHERE id = ${id}
-  //   `;
+  if (!sql) {
+    console.warn('[db/user] updateCompanion — no database connection');
+    return;
+  }
+
+  await sql`
+    UPDATE users
+    SET companion_id    = ${companionId},
+        companion_name  = ${companionName},
+        companion_stage = 0,
+        updated_at      = NOW()
+    WHERE id = ${id}
+  `;
 }
 
 /**
@@ -291,14 +316,16 @@ export async function updateCompanion(
 export async function getGuardianSettings(id: string): Promise<GuardianSettings | null> {
   console.log(`[db/user] getGuardianSettings — id=${id}`);
 
-  // TODO: implement with your database of choice (Neon/Supabase/PlanetScale)
-  // Example:
-  //   const [row] = await sql`
-  //     SELECT guardian_settings
-  //     FROM users
-  //     WHERE id = ${id} AND deleted_at IS NULL
-  //   `;
-  //   return (row?.guardian_settings as GuardianSettings) ?? null;
+  if (!sql) {
+    console.warn('[db/user] getGuardianSettings — no database connection');
+    return null;
+  }
 
-  return null;
+  const rows = await sql`
+    SELECT guardian_settings
+    FROM users
+    WHERE id = ${id} AND deleted_at IS NULL
+  `;
+
+  return (rows[0]?.guardian_settings as GuardianSettings) ?? null;
 }

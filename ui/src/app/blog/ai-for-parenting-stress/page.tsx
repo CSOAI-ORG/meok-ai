@@ -4,35 +4,57 @@ import Link from "next/link";
 // ── Metadata ──────────────────────────────────────────────────────────────────
 
 export const metadata: Metadata = {
-  title: "AI for Parenting Stress: The Invisible Load, Parental Burnout, and Where MEOK Fits | MEOK AI LABS",
+  title:
+    "AI for Parenting Stress: When You Love Your Children and Are Overwhelmed by Them | MEOK AI LABS",
   description:
-    "Parental burnout affects 5\u20138% of parents yet is rarely discussed. MEOK gives parents a judgment-free space to admit parenting is hard, a Family tier that remembers your children, Guardian protection, and AI companions built for the emotional complexity of raising a family.",
-  alternates: { canonical: "https://meok.ai/blog/ai-for-parenting-stress" },
+    "Parenting is the most emotionally demanding role most people will ever hold \u2014 and the least supported. MEOK offers a completely private, non-judgmental space to say what you can\u2019t say to your partner, your friends, your health visitor, or your GP. No parenting shame. Just honesty.",
+  alternates: {
+    canonical: "https://meok.ai/blog/ai-for-parenting-stress",
+  },
+  keywords: [
+    "AI for parenting stress",
+    "parenting overwhelm support",
+    "parenting shame UK",
+    "maternal mental health UK",
+    "AI companion for parents",
+    "parenting stress UK statistics",
+    "SEND parenting support",
+    "co-parenting stress support",
+    "touched out parenting",
+    "parental burnout AI",
+    "MEOK AI parenting",
+    "private parenting support",
+    "non-judgmental parenting app",
+    "family AI app UK",
+    "NSPCC parenting statistics 2025",
+  ],
   openGraph: {
-    title: "AI for Parenting Stress: The Invisible Load, Parental Burnout, and Where MEOK Fits",
+    title:
+      "AI for Parenting Stress: When You Love Your Children and Are Overwhelmed by Them",
     description:
-      "Parental burnout is different from work burnout, affects millions, and is almost never talked about. MEOK is the safe space where you can finally say parenting is hard \u2014 without judgment.",
-    type: "article",
-    publishedTime: "2026-03-24",
-    authors: ["Nicholas Templeman"],
+      "1 in 5 UK parents report moderate-to-severe parental stress. 63% say they can\u2019t be honest about it for fear of judgment. MEOK gives you a completely private space to say the unspeakable \u2014 without anyone judging you for it.",
     url: "https://meok.ai/blog/ai-for-parenting-stress",
+    type: "article",
+    publishedTime: "2026-03-25",
+    authors: ["Nicholas Templeman"],
     siteName: "MEOK.AI",
     images: [
       {
-        url: "https://meok.ai/api/og?title=AI+for+Parenting+Stress%3A+The+Invisible+Load+%26+Parental+Burnout&desc=A+judgment-free+space+for+parents+who+are+exhausted",
+        url: "https://meok.ai/api/og?title=AI+for+Parenting+Stress&desc=When+You+Love+Your+Children+and+Are+Overwhelmed+by+Them",
         width: 1200,
         height: 630,
-        alt: "AI for Parenting Stress: The Invisible Load, Parental Burnout, and Where MEOK Fits",
+        alt: "AI for Parenting Stress | MEOK AI LABS",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "AI for Parenting Stress: The Invisible Load, Parental Burnout, and Where MEOK Fits",
+    title:
+      "AI for Parenting Stress: When You Love Your Children and Are Overwhelmed by Them",
     description:
-      "Parental burnout affects 5\u20138% of parents yet is almost never talked about. MEOK is the space where parents can finally be honest about how hard this is.",
+      "1 in 5 UK parents report severe parental stress. MEOK offers a private, non-judgmental space to process the feelings you can\u2019t say out loud \u2014 and remembers your story across time.",
     images: [
-      "https://meok.ai/api/og?title=AI+for+Parenting+Stress%3A+The+Invisible+Load+%26+Parental+Burnout&desc=A+judgment-free+space+for+parents+who+are+exhausted",
+      "https://meok.ai/api/og?title=AI+for+Parenting+Stress&desc=When+You+Love+Your+Children+and+Are+Overwhelmed+by+Them",
     ],
   },
 };
@@ -43,11 +65,11 @@ const articleJsonLd = {
   "@context": "https://schema.org",
   "@type": "Article",
   headline:
-    "AI for Parenting Stress: The Invisible Load, Parental Burnout, and Where MEOK Fits",
+    "AI for Parenting Stress: When You Love Your Children and Are Overwhelmed by Them",
   description:
-    "Parental burnout affects 5\u20138% of parents yet is rarely discussed. MEOK gives parents a judgment-free space to admit parenting is hard, a Family tier that remembers your children, Guardian protection, and AI companions built for the emotional complexity of raising a family.",
-  datePublished: "2026-03-24",
-  dateModified: "2026-03-24",
+    "Parenting is the most emotionally demanding role most people will ever hold \u2014 and the least supported. MEOK offers a completely private, non-judgmental space to say what you can\u2019t say to anyone else: the resentment, the overwhelm, the touched-out exhaustion, the co-parenting grief. Persistent memory means MEOK knows your story across time.",
+  datePublished: "2026-03-25",
+  dateModified: "2026-03-25",
   url: "https://meok.ai/blog/ai-for-parenting-stress",
   author: {
     "@type": "Person",
@@ -68,8 +90,46 @@ const articleJsonLd = {
     "@type": "WebPage",
     "@id": "https://meok.ai/blog/ai-for-parenting-stress",
   },
-  image:
-    "https://meok.ai/api/og?title=AI+for+Parenting+Stress%3A+The+Invisible+Load+%26+Parental+Burnout&desc=A+judgment-free+space+for+parents+who+are+exhausted",
+  keywords: [
+    "parenting stress",
+    "parental burnout",
+    "parenting shame",
+    "maternal mental health UK",
+    "co-parenting support",
+    "SEND parenting",
+    "AI companion for parents",
+    "MEOK AI LABS",
+    "touched out",
+    "parental overwhelm",
+  ],
+  articleSection: "Parenting & Family Mental Health",
+  inLanguage: "en-GB",
+  about: [
+    { "@type": "Thing", name: "Parental stress" },
+    { "@type": "Thing", name: "Maternal mental health" },
+    { "@type": "Thing", name: "Parenting shame" },
+    { "@type": "Thing", name: "Co-parenting" },
+    { "@type": "Thing", name: "SEND parenting" },
+    { "@type": "Thing", name: "AI companion" },
+    { "@type": "Thing", name: "Parental burnout" },
+  ],
+  mentions: [
+    {
+      "@type": "Organization",
+      name: "NSPCC",
+      url: "https://www.nspcc.org.uk",
+    },
+    {
+      "@type": "Organization",
+      name: "NHS",
+      url: "https://www.nhs.uk",
+    },
+    {
+      "@type": "Organization",
+      name: "Mind",
+      url: "https://www.mind.org.uk",
+    },
+  ],
 };
 
 // ── JSON-LD: FAQPage ──────────────────────────────────────────────────────────
@@ -80,72 +140,526 @@ const faqJsonLd = {
   mainEntity: [
     {
       "@type": "Question",
-      name: "Can AI help with parenting stress?",
+      name: "Is it normal to feel overwhelmed and resentful as a parent?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Yes. AI cannot replace a co-parent, a therapist, or a village of support \u2014 but it can be available at 11pm when everyone else is asleep and the weight of the day is still sitting on your chest. MEOK listens without judgment, remembers your children by name, tracks your emotional patterns over time, and helps you process the invisible labour of parenting that rarely gets acknowledged anywhere else.",
+        text: "Yes, completely. Research and clinical experience consistently confirm that feelings of overwhelm, resentment, frustration, being touched-out, and even momentary ambivalence about parenthood are universally experienced by parents at some point. The problem is not the feelings themselves \u2014 it is the cultural silence around them. Parenting shame stops parents from seeking support, which compounds stress into genuine mental health difficulties. Having these feelings does not make you a bad parent. It makes you a human being doing an extraordinarily demanding job, usually without adequate support.",
       },
     },
     {
       "@type": "Question",
-      name: "What is parental burnout?",
+      name: "How can AI help with parenting stress?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Parental burnout is a state of severe, chronic exhaustion specific to the parenting role. Unlike work burnout, it involves emotional distancing from your own children \u2014 which causes intense shame \u2014 alongside loss of parental identity and efficacy. Research suggests it affects between 5 and 8 percent of parents, is more common than previously thought, and is significantly under-reported due to the stigma of admitting difficulty with a role society treats as unconditionally fulfilling.",
+        text: "AI cannot replace therapy, GP support, or parenting programmes \u2014 and MEOK never claims to. What MEOK offers is a completely private space to process the feelings you cannot say out loud to anyone in your life. Because MEOK uses persistent Sovereign Memory, it knows the arc of your parenting challenges across time: the SEND assessment you have been navigating for eight months, the phase your toddler is stuck in, the teenager who stopped talking to you in October. It can help you reflect, process, and prepare for difficult conversations without judgment, at any hour of the day.",
       },
     },
     {
       "@type": "Question",
-      name: "Can MEOK help me be a better parent?",
+      name: "What is parenting shame and why does it make stress worse?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "MEOK does not tell you how to parent. What it does is hold space for the parent behind the role: your anxieties, your grief, your identity beyond your children, your need to be heard. When you are less depleted and more known, you show up differently. MEOK\u2019s Family tier also remembers your children\u2019s names, ages, milestones, and current struggles so every conversation starts from context, not from scratch.",
+        text: "Parenting shame is the culturally enforced silence around the difficulties of raising children. Saying out loud that you find parenting overwhelming \u2014 particularly in the UK \u2014 is treated as evidence of inadequacy or ingratitude. This shame prevents parents from seeking support, discussing their struggles with their GP or health visitor, or even acknowledging the stress to themselves. The result is that stress compounds in isolation. NSPCC data from 2025 found that 63% of parents feel they cannot be honest about parenting struggles for fear of judgment.",
       },
     },
     {
       "@type": "Question",
-      name: "How does the Family tier work?",
+      name: "Does MEOK support co-parenting stress?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "MEOK\u2019s Family tier covers up to six members under one subscription. Each member has their own private AI companion with Sovereign Memory. Parents get a dashboard view, Guardian safety alerts for children\u2019s digital interactions, and MEOK\u2019s contextual memory of each child\u2019s milestones and challenges. Children are never exposed to adult conversations, and parent conversations are never visible to children.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Is MEOK safe to use around children?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Yes. MEOK\u2019s Guardian system uses DistilBERT-powered threat detection to monitor children\u2019s digital interactions for grooming language, inappropriate content, and predatory contact patterns. Each child\u2019s profile is age-gated with appropriate content filters. Parents receive silent alerts without disrupting the child\u2019s experience. The system is designed around child safety as a first principle, not an afterthought.",
+        text: "Yes. Co-parenting after separation is one of the most emotionally demanding situations a parent can navigate \u2014 managing grief, negotiation, ongoing conflict, and the constant pressure to shield your children from adult complexity, all simultaneously. MEOK provides a private space to process feelings about the co-parenting relationship without involving the children, without burdening friends who know both parties, and without the risk of anything said being used against you. It remembers the evolving co-parenting dynamic over time, so you are never starting from scratch.",
       },
     },
   ],
 };
 
-// ── Colour constants ──────────────────────────────────────────────────────────
+// ── Styles ────────────────────────────────────────────────────────────────────
 
-const BG = "#0d0c18";
-const TEXT = "#f5f0e8";
-const GOLD = "#c9a84c";
-const MUTED = "rgba(245,240,232,0.6)";
-const MUTED_DIM = "rgba(245,240,232,0.5)";
-const MUTED_FAINT = "rgba(245,240,232,0.38)";
-const MUTED_BRIGHT = "rgba(245,240,232,0.82)";
-const HEALER_TEAL = "#4caf82";
-const PIONEER_BLUE = "#5b8dd9";
-const BORDER_FAINT = "rgba(245,240,232,0.08)";
-const BORDER_DIM = "rgba(245,240,232,0.12)";
-const GOLD_BG = "rgba(201,168,76,0.08)";
-const GOLD_BORDER = "rgba(201,168,76,0.22)";
-const TEAL_BG = "rgba(76,175,130,0.07)";
-const TEAL_BORDER = "rgba(76,175,130,0.25)";
-const BLUE_BG = "rgba(91,141,217,0.07)";
-const BLUE_BORDER = "rgba(91,141,217,0.25)";
+const s = {
+  page: {
+    background: "#0d0c18",
+    color: "#f5f0e8",
+    minHeight: "100vh",
+    fontFamily: "'Inter', 'Helvetica Neue', Arial, sans-serif",
+  } as React.CSSProperties,
 
-// ── Page ──────────────────────────────────────────────────────────────────────
+  navWrapper: {
+    borderBottom: "1px solid rgba(201,168,76,0.12)",
+  } as React.CSSProperties,
+
+  nav: {
+    padding: "18px 24px",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
+    maxWidth: "1100px",
+    margin: "0 auto",
+  } as React.CSSProperties,
+
+  navLogo: {
+    color: "#c9a84c",
+    textDecoration: "none",
+    fontWeight: 700,
+    fontSize: "17px",
+    letterSpacing: "0.04em",
+  } as React.CSSProperties,
+
+  navLinks: {
+    display: "flex",
+    gap: "24px",
+    alignItems: "center",
+  } as React.CSSProperties,
+
+  navLink: {
+    color: "rgba(245,240,232,0.55)",
+    textDecoration: "none",
+    fontSize: "14px",
+  } as React.CSSProperties,
+
+  navCta: {
+    color: "#c9a84c",
+    textDecoration: "none",
+    fontSize: "14px",
+    fontWeight: 600,
+    border: "1px solid rgba(201,168,76,0.35)",
+    borderRadius: "6px",
+    padding: "6px 14px",
+  } as React.CSSProperties,
+
+  container: {
+    maxWidth: "840px",
+    margin: "0 auto",
+    padding: "0 24px 80px",
+  } as React.CSSProperties,
+
+  breadcrumb: {
+    display: "flex",
+    gap: "8px",
+    alignItems: "center",
+    fontSize: "13px",
+    color: "rgba(245,240,232,0.45)",
+    paddingTop: "32px",
+    paddingBottom: "8px",
+    flexWrap: "wrap" as const,
+  } as React.CSSProperties,
+
+  breadcrumbLink: {
+    color: "rgba(245,240,232,0.45)",
+    textDecoration: "none",
+  } as React.CSSProperties,
+
+  breadcrumbCurrent: {
+    color: "rgba(245,240,232,0.7)",
+  } as React.CSSProperties,
+
+  hero: {
+    paddingTop: "56px",
+    paddingBottom: "48px",
+    borderBottom: "1px solid rgba(201,168,76,0.18)",
+  } as React.CSSProperties,
+
+  eyebrow: {
+    fontSize: "12px",
+    fontWeight: 600,
+    letterSpacing: "0.12em",
+    textTransform: "uppercase" as const,
+    color: "#c9a84c",
+    marginBottom: "20px",
+    display: "block",
+  } as React.CSSProperties,
+
+  h1: {
+    fontSize: "clamp(28px, 5vw, 46px)",
+    fontWeight: 700,
+    lineHeight: 1.15,
+    color: "#f5f0e8",
+    marginBottom: "20px",
+    letterSpacing: "-0.02em",
+  } as React.CSSProperties,
+
+  lede: {
+    fontSize: "18px",
+    lineHeight: 1.7,
+    color: "rgba(245,240,232,0.82)",
+    marginBottom: "28px",
+    maxWidth: "660px",
+  } as React.CSSProperties,
+
+  meta: {
+    fontSize: "13px",
+    color: "rgba(245,240,232,0.5)",
+    display: "flex",
+    gap: "16px",
+    flexWrap: "wrap" as const,
+    alignItems: "center",
+  } as React.CSSProperties,
+
+  metaDot: {
+    opacity: 0.35,
+  } as React.CSSProperties,
+
+  body: {
+    paddingTop: "48px",
+  } as React.CSSProperties,
+
+  h2: {
+    fontSize: "clamp(20px, 3.5vw, 28px)",
+    fontWeight: 700,
+    color: "#f5f0e8",
+    marginTop: "56px",
+    marginBottom: "20px",
+    letterSpacing: "-0.01em",
+    lineHeight: 1.25,
+  } as React.CSSProperties,
+
+  h3: {
+    fontSize: "18px",
+    fontWeight: 600,
+    color: "#f5f0e8",
+    marginTop: "32px",
+    marginBottom: "12px",
+    lineHeight: 1.35,
+  } as React.CSSProperties,
+
+  p: {
+    fontSize: "16px",
+    lineHeight: 1.8,
+    color: "rgba(245,240,232,0.82)",
+    marginBottom: "20px",
+  } as React.CSSProperties,
+
+  pLarge: {
+    fontSize: "17px",
+    lineHeight: 1.8,
+    color: "rgba(245,240,232,0.82)",
+    marginBottom: "24px",
+  } as React.CSSProperties,
+
+  statsCallout: {
+    background: "rgba(201,168,76,0.07)",
+    border: "1px solid rgba(201,168,76,0.25)",
+    borderRadius: "12px",
+    padding: "36px 32px",
+    margin: "48px 0",
+  } as React.CSSProperties,
+
+  statsCalloutTitle: {
+    fontSize: "13px",
+    fontWeight: 600,
+    letterSpacing: "0.1em",
+    textTransform: "uppercase" as const,
+    color: "#c9a84c",
+    marginBottom: "24px",
+  } as React.CSSProperties,
+
+  statsGrid: {
+    display: "grid",
+    gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))",
+    gap: "24px",
+  } as React.CSSProperties,
+
+  statBlock: {
+    textAlign: "center" as const,
+  } as React.CSSProperties,
+
+  statNumber: {
+    fontSize: "clamp(28px, 5vw, 40px)",
+    fontWeight: 800,
+    color: "#c9a84c",
+    lineHeight: 1,
+    marginBottom: "8px",
+    letterSpacing: "-0.02em",
+    display: "block",
+  } as React.CSSProperties,
+
+  statLabel: {
+    fontSize: "13px",
+    color: "rgba(245,240,232,0.65)",
+    lineHeight: 1.5,
+  } as React.CSSProperties,
+
+  pullQuote: {
+    borderLeft: "3px solid #c9a84c",
+    paddingLeft: "24px",
+    margin: "36px 0",
+  } as React.CSSProperties,
+
+  pullQuoteText: {
+    fontSize: "18px",
+    lineHeight: 1.7,
+    color: "rgba(245,240,232,0.88)",
+    fontStyle: "italic",
+    marginBottom: "8px",
+  } as React.CSSProperties,
+
+  pullQuoteSource: {
+    fontSize: "13px",
+    color: "rgba(245,240,232,0.45)",
+  } as React.CSSProperties,
+
+  cardGrid: {
+    display: "grid",
+    gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
+    gap: "20px",
+    margin: "32px 0",
+  } as React.CSSProperties,
+
+  card: {
+    background: "rgba(255,255,255,0.05)",
+    border: "1px solid rgba(201,168,76,0.15)",
+    borderRadius: "10px",
+    padding: "24px",
+  } as React.CSSProperties,
+
+  cardIcon: {
+    fontSize: "28px",
+    marginBottom: "12px",
+    display: "block",
+  } as React.CSSProperties,
+
+  cardTitle: {
+    fontSize: "15px",
+    fontWeight: 700,
+    color: "#f5f0e8",
+    marginBottom: "8px",
+  } as React.CSSProperties,
+
+  cardBody: {
+    fontSize: "14px",
+    lineHeight: 1.7,
+    color: "rgba(245,240,232,0.65)",
+  } as React.CSSProperties,
+
+  compareWrapper: {
+    margin: "36px 0",
+    borderRadius: "10px",
+    overflow: "hidden",
+    border: "1px solid rgba(201,168,76,0.15)",
+  } as React.CSSProperties,
+
+  compareHeader: {
+    display: "grid",
+    gridTemplateColumns: "1fr 1fr 1fr",
+    background: "rgba(201,168,76,0.1)",
+    padding: "14px 20px",
+    gap: "16px",
+  } as React.CSSProperties,
+
+  compareHeaderCell: {
+    fontSize: "12px",
+    fontWeight: 700,
+    letterSpacing: "0.08em",
+    textTransform: "uppercase" as const,
+    color: "#c9a84c",
+  } as React.CSSProperties,
+
+  compareRow: {
+    display: "grid",
+    gridTemplateColumns: "1fr 1fr 1fr",
+    padding: "16px 20px",
+    gap: "16px",
+    borderTop: "1px solid rgba(245,240,232,0.06)",
+  } as React.CSSProperties,
+
+  compareRowAlt: {
+    display: "grid",
+    gridTemplateColumns: "1fr 1fr 1fr",
+    padding: "16px 20px",
+    gap: "16px",
+    borderTop: "1px solid rgba(245,240,232,0.06)",
+    background: "rgba(255,255,255,0.02)",
+  } as React.CSSProperties,
+
+  compareCell: {
+    fontSize: "14px",
+    color: "rgba(245,240,232,0.7)",
+    lineHeight: 1.55,
+  } as React.CSSProperties,
+
+  compareCellLabel: {
+    fontSize: "14px",
+    fontWeight: 600,
+    color: "#f5f0e8",
+    lineHeight: 1.55,
+  } as React.CSSProperties,
+
+  compareCellGold: {
+    fontSize: "14px",
+    color: "#c9a84c",
+    lineHeight: 1.55,
+    fontWeight: 500,
+  } as React.CSSProperties,
+
+  highlightBox: {
+    background: "rgba(201,168,76,0.06)",
+    border: "1px solid rgba(201,168,76,0.2)",
+    borderRadius: "10px",
+    padding: "28px",
+    margin: "32px 0",
+  } as React.CSSProperties,
+
+  highlightBoxTitle: {
+    fontSize: "16px",
+    fontWeight: 700,
+    color: "#c9a84c",
+    marginBottom: "12px",
+  } as React.CSSProperties,
+
+  highlightBoxBody: {
+    fontSize: "15px",
+    lineHeight: 1.75,
+    color: "rgba(245,240,232,0.78)",
+  } as React.CSSProperties,
+
+  disclaimerBox: {
+    background: "rgba(255,255,255,0.03)",
+    border: "1px solid rgba(245,240,232,0.1)",
+    borderRadius: "8px",
+    padding: "20px 24px",
+    margin: "40px 0",
+  } as React.CSSProperties,
+
+  disclaimerText: {
+    fontSize: "13px",
+    lineHeight: 1.7,
+    color: "rgba(245,240,232,0.5)",
+  } as React.CSSProperties,
+
+  faqItem: {
+    borderBottom: "1px solid rgba(245,240,232,0.08)",
+    paddingBottom: "28px",
+    marginBottom: "28px",
+  } as React.CSSProperties,
+
+  faqQ: {
+    fontSize: "17px",
+    fontWeight: 700,
+    color: "#f5f0e8",
+    marginBottom: "12px",
+    lineHeight: 1.4,
+  } as React.CSSProperties,
+
+  faqA: {
+    fontSize: "15px",
+    lineHeight: 1.8,
+    color: "rgba(245,240,232,0.72)",
+  } as React.CSSProperties,
+
+  ctaSection: {
+    background: "rgba(201,168,76,0.07)",
+    border: "1px solid rgba(201,168,76,0.3)",
+    borderRadius: "14px",
+    padding: "48px 40px",
+    textAlign: "center" as const,
+    margin: "64px 0 0",
+  } as React.CSSProperties,
+
+  ctaEyebrow: {
+    fontSize: "12px",
+    fontWeight: 600,
+    letterSpacing: "0.12em",
+    textTransform: "uppercase" as const,
+    color: "#c9a84c",
+    marginBottom: "16px",
+    display: "block",
+  } as React.CSSProperties,
+
+  ctaHeading: {
+    fontSize: "clamp(22px, 4vw, 32px)",
+    fontWeight: 700,
+    color: "#f5f0e8",
+    marginBottom: "16px",
+    letterSpacing: "-0.01em",
+    lineHeight: 1.25,
+  } as React.CSSProperties,
+
+  ctaBody: {
+    fontSize: "16px",
+    lineHeight: 1.7,
+    color: "rgba(245,240,232,0.72)",
+    marginBottom: "32px",
+    maxWidth: "520px",
+    marginLeft: "auto",
+    marginRight: "auto",
+  } as React.CSSProperties,
+
+  ctaButton: {
+    display: "inline-block",
+    background: "#c9a84c",
+    color: "#0d0c18",
+    textDecoration: "none",
+    fontWeight: 700,
+    fontSize: "15px",
+    padding: "14px 32px",
+    borderRadius: "8px",
+    letterSpacing: "0.02em",
+  } as React.CSSProperties,
+
+  ctaSecondary: {
+    display: "inline-block",
+    color: "rgba(245,240,232,0.6)",
+    textDecoration: "none",
+    fontSize: "14px",
+    marginTop: "16px",
+  } as React.CSSProperties,
+
+  footer: {
+    borderTop: "1px solid rgba(245,240,232,0.07)",
+    marginTop: "80px",
+    padding: "40px 24px",
+    textAlign: "center" as const,
+  } as React.CSSProperties,
+
+  footerText: {
+    fontSize: "13px",
+    color: "rgba(245,240,232,0.35)",
+    lineHeight: 1.7,
+  } as React.CSSProperties,
+
+  footerLinks: {
+    display: "flex",
+    gap: "20px",
+    justifyContent: "center",
+    flexWrap: "wrap" as const,
+    marginTop: "12px",
+  } as React.CSSProperties,
+
+  footerLink: {
+    fontSize: "13px",
+    color: "rgba(245,240,232,0.35)",
+    textDecoration: "none",
+  } as React.CSSProperties,
+
+  ul: {
+    paddingLeft: "20px",
+    marginBottom: "20px",
+  } as React.CSSProperties,
+
+  li: {
+    fontSize: "16px",
+    lineHeight: 1.8,
+    color: "rgba(245,240,232,0.78)",
+    marginBottom: "6px",
+  } as React.CSSProperties,
+
+  divider: {
+    border: "none",
+    borderTop: "1px solid rgba(245,240,232,0.07)",
+    margin: "48px 0",
+  } as React.CSSProperties,
+
+  strong: {
+    color: "#f5f0e8",
+    fontWeight: 700,
+  } as React.CSSProperties,
+};
+
+// ── Page Component ────────────────────────────────────────────────────────────
 
 export default function AIForParentingStressPage() {
   return (
-    <div style={{ minHeight: "100vh", background: BG, color: TEXT }}>
+    <>
+      {/* JSON-LD structured data */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
@@ -155,1766 +669,1231 @@ export default function AIForParentingStressPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
 
-      {/* ── HERO ─────────────────────────────────────────────────────────────── */}
-      <section
-        style={{
-          paddingTop: "8rem",
-          paddingBottom: "4rem",
-          paddingLeft: "1.5rem",
-          paddingRight: "1.5rem",
-          position: "relative",
-          overflow: "hidden",
-        }}
-      >
-        <div
-          style={{
-            position: "absolute",
-            inset: 0,
-            pointerEvents: "none",
-            background:
-              "radial-gradient(ellipse 60% 45% at 50% 0%, rgba(201,168,76,0.07) 0%, transparent 70%)",
-          }}
-        />
-        <div style={{ maxWidth: "48rem", margin: "0 auto", position: "relative" }}>
-          <Link
-            href="/blog"
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: "0.375rem",
-              fontSize: "0.875rem",
-              color: MUTED_FAINT,
-              marginBottom: "2rem",
-              textDecoration: "none",
-            }}
-          >
-            &#8592; Back to Blog
-          </Link>
-
-          <div
-            style={{
-              display: "flex",
-              flexWrap: "wrap",
-              alignItems: "center",
-              gap: "0.75rem",
-              marginBottom: "1.5rem",
-            }}
-          >
-            <span
-              style={{
-                fontSize: "0.7rem",
-                fontWeight: 700,
-                padding: "0.375rem 0.75rem",
-                borderRadius: "9999px",
-                color: GOLD,
-                background: GOLD_BG,
-                border: `1px solid ${GOLD_BORDER}`,
-                letterSpacing: "0.05em",
-                textTransform: "uppercase" as const,
-              }}
-            >
-              Parenting &amp; Family Wellbeing
-            </span>
-            <span style={{ fontSize: "0.75rem", color: MUTED_FAINT }}>March 24, 2026</span>
-            <span style={{ fontSize: "0.75rem", color: MUTED_FAINT }}>16 min read</span>
-          </div>
-
-          <h1
-            style={{
-              fontWeight: 900,
-              fontSize: "clamp(1.8rem, 3.5vw, 2.9rem)",
-              color: "#fff",
-              lineHeight: 1.13,
-              marginBottom: "1.25rem",
-              letterSpacing: "-0.02em",
-            }}
-          >
-            AI for Parenting Stress: The Invisible Load Nobody Talks About
-          </h1>
-
-          <p
-            style={{
-              color: MUTED,
-              fontSize: "1.1rem",
-              lineHeight: 1.7,
-              maxWidth: "42rem",
-              margin: 0,
-            }}
-          >
-            Parenting is supposed to be the most fulfilling thing you will ever do. Which makes it
-            almost impossible to say out loud that some days it breaks you. MEOK exists for exactly
-            that moment \u2014 when you need to be honest about how hard this is, without bracing for
-            the response: &ldquo;but you chose this.&rdquo;
-          </p>
-
-          <div
-            style={{
-              display: "flex",
-              flexWrap: "wrap",
-              alignItems: "center",
-              gap: "1rem",
-              marginTop: "2rem",
-            }}
-          >
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: "0.625rem",
-              }}
-            >
-              <div
-                style={{
-                  width: "2.25rem",
-                  height: "2.25rem",
-                  borderRadius: "9999px",
-                  background: "linear-gradient(135deg, #c9a84c, #8a6a1a)",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  flexShrink: 0,
-                }}
-              >
-                <span style={{ fontSize: "0.75rem", fontWeight: 800, color: "#0d0c18" }}>NT</span>
-              </div>
-              <div>
-                <p
-                  style={{
-                    fontSize: "0.8rem",
-                    fontWeight: 700,
-                    color: MUTED_BRIGHT,
-                    margin: 0,
-                    lineHeight: 1.3,
-                  }}
-                >
-                  Nicholas Templeman
-                </p>
-                <p style={{ fontSize: "0.7rem", color: MUTED_FAINT, margin: 0, lineHeight: 1.3 }}>
-                  Founder, MEOK AI LABS &middot; @meok_ai
-                </p>
-              </div>
+      <div style={s.page}>
+        {/* ── Navigation ── */}
+        <div style={s.navWrapper}>
+          <nav style={s.nav} aria-label="Site navigation">
+            <Link href="/" style={s.navLogo}>
+              MEOK
+            </Link>
+            <div style={s.navLinks}>
+              <Link href="/blog" style={s.navLink}>
+                Blog
+              </Link>
+              <Link href="/about" style={s.navLink}>
+                About
+              </Link>
+              <Link href="/birth" style={s.navCta}>
+                Get Started
+              </Link>
             </div>
-          </div>
+          </nav>
         </div>
-      </section>
 
-      {/* ── MAIN CONTENT ─────────────────────────────────────────────────────── */}
-      <main
-        style={{
-          maxWidth: "48rem",
-          margin: "0 auto",
-          paddingLeft: "1.5rem",
-          paddingRight: "1.5rem",
-          paddingBottom: "6rem",
-        }}
-      >
+        {/* ── Main content ── */}
+        <main>
+          <div style={s.container}>
 
-        {/* ── SECTION 1: The Invisible Load ──────────────────────────────────── */}
-        <section
-          style={{
-            marginBottom: "3.5rem",
-            paddingBottom: "3.5rem",
-            borderBottom: `1px solid ${BORDER_FAINT}`,
-          }}
-        >
-          <h2
-            style={{
-              fontWeight: 800,
-              fontSize: "clamp(1.35rem, 2.5vw, 1.75rem)",
-              color: "#fff",
-              lineHeight: 1.2,
-              marginBottom: "1rem",
-              letterSpacing: "-0.015em",
-            }}
-          >
-            What Is the Invisible Load of Parenting?
-          </h2>
-          <p
-            style={{
-              color: MUTED_BRIGHT,
-              fontSize: "1rem",
-              lineHeight: 1.75,
-              marginBottom: "1.25rem",
-            }}
-          >
-            The invisible load \u2014 also called cognitive labour or mental load \u2014 is the
-            unrelenting background processing that keeps a family functioning. It is remembering that
-            the school trip permission form needs signing by Thursday. It is knowing that your
-            youngest has been quieter this week and you need to find out why. It is holding the
-            entire emotional ecosystem of your household in your head, at all times, even when you
-            are supposed to be sleeping.
-          </p>
-          <p
-            style={{
-              color: MUTED_BRIGHT,
-              fontSize: "1rem",
-              lineHeight: 1.75,
-              marginBottom: "1.25rem",
-            }}
-          >
-            The research on mental load \u2014 pioneered by French sociologist Emma and expanded by
-            psychologists like Allison Daminger \u2014 shows that this labour is largely invisible
-            precisely because it is cognitive rather than physical. Nobody sees you lying awake at
-            midnight running through tomorrow\u2019s logistics. Nobody thanks you for the problem you
-            anticipated and solved before it became a crisis. And because it is invisible, it is
-            rarely shared equitably, rarely acknowledged, and almost never counted when someone asks
-            \u201chow was your day?\u201d
-          </p>
-          <p
-            style={{
-              color: MUTED_BRIGHT,
-              fontSize: "1rem",
-              lineHeight: 1.75,
-              marginBottom: "1.25rem",
-            }}
-          >
-            The invisible load does not clock off. It does not take weekends. It operates in the
-            background of every meeting, every conversation, every attempt at rest. Over months and
-            years, it is not just tiring \u2014 it is identity-eroding. You stop knowing where the
-            parent ends and the person begins.
-          </p>
+            {/* Breadcrumb */}
+            <nav aria-label="Breadcrumb" style={s.breadcrumb}>
+              <Link href="/" style={s.breadcrumbLink}>
+                Home
+              </Link>
+              <span style={s.metaDot}>/</span>
+              <Link href="/blog" style={s.breadcrumbLink}>
+                Blog
+              </Link>
+              <span style={s.metaDot}>/</span>
+              <span style={s.breadcrumbCurrent}>AI for Parenting Stress</span>
+            </nav>
 
-          <div
-            style={{
-              background: GOLD_BG,
-              border: `1px solid ${GOLD_BORDER}`,
-              borderRadius: "0.75rem",
-              padding: "1.5rem",
-              marginTop: "2rem",
-            }}
-          >
-            <p
-              style={{
-                fontSize: "0.95rem",
-                lineHeight: 1.7,
-                color: MUTED_BRIGHT,
-                margin: 0,
-              }}
-            >
-              <strong style={{ color: GOLD }}>The four phases of cognitive labour</strong> identified
-              by Daminger are: anticipating needs, identifying options, deciding between them, and
-              monitoring outcomes. Parents \u2014 and statistically, mothers disproportionately \u2014
-              perform all four phases largely alone, largely invisibly, and largely without the
-              mental credit that visible labour receives.
-            </p>
-          </div>
-        </section>
+            {/* ── Hero ── */}
+            <header style={s.hero}>
+              <span style={s.eyebrow}>Parenting &amp; Family Mental Health</span>
+              <h1 style={s.h1}>
+                AI for Parenting Stress: When You Love Your Children and Are
+                Overwhelmed by Them
+              </h1>
+              <p style={s.lede}>
+                Parenting is the most emotionally demanding role most people will
+                ever hold &mdash; and the least supported. Saying you find it
+                overwhelming is still culturally taboo. MEOK gives you a completely
+                private space to say what you can&apos;t say to anyone else.
+              </p>
+              <div style={s.meta}>
+                <span>By Nicholas Templeman</span>
+                <span style={s.metaDot}>&bull;</span>
+                <span>25 March 2026</span>
+                <span style={s.metaDot}>&bull;</span>
+                <span>16 min read</span>
+                <span style={s.metaDot}>&bull;</span>
+                <span>Parenting &amp; Family Mental Health</span>
+              </div>
+            </header>
 
-        {/* ── SECTION 2: Emotional Regulation ────────────────────────────────── */}
-        <section
-          style={{
-            marginBottom: "3.5rem",
-            paddingBottom: "3.5rem",
-            borderBottom: `1px solid ${BORDER_FAINT}`,
-          }}
-        >
-          <h2
-            style={{
-              fontWeight: 800,
-              fontSize: "clamp(1.35rem, 2.5vw, 1.75rem)",
-              color: "#fff",
-              lineHeight: 1.2,
-              marginBottom: "1rem",
-              letterSpacing: "-0.015em",
-            }}
-          >
-            Why Emotional Regulation Becomes Almost Impossible When You\u2019re Depleted
-          </h2>
-          <p
-            style={{
-              color: MUTED_BRIGHT,
-              fontSize: "1rem",
-              lineHeight: 1.75,
-              marginBottom: "1.25rem",
-            }}
-          >
-            Children need emotional regulation modelled for them. They need a calm, consistent,
-            attuned presence. What they get, when a parent is operating on empty, is the worst version
-            of someone who is trying very hard to be the best version of themselves. The gap between
-            those two things is where parental guilt lives \u2014 and guilt is one of the most
-            exhausting emotions available.
-          </p>
-          <p
-            style={{
-              color: MUTED_BRIGHT,
-              fontSize: "1rem",
-              lineHeight: 1.75,
-              marginBottom: "1.25rem",
-            }}
-          >
-            Emotional regulation requires executive function: the capacity to pause before reacting,
-            to notice your own state and choose your response. Executive function is one of the first
-            cognitive capacities to degrade under chronic stress. Sleep deprivation \u2014 a baseline
-            condition for most parents of young children \u2014 causes measurable impairment in
-            prefrontal cortex function equivalent in some studies to being over the legal drink-drive
-            limit.
-          </p>
-          <p
-            style={{
-              color: MUTED_BRIGHT,
-              fontSize: "1rem",
-              lineHeight: 1.75,
-              marginBottom: "1.25rem",
-            }}
-          >
-            So parents are expected to regulate their own emotions and their children\u2019s, with
-            impaired cognitive function, while carrying an invisible load that nobody acknowledges.
-            And then, when they snap or shut down or cry in the bathroom, they blame themselves for
-            it.
-          </p>
-          <p
-            style={{
-              color: MUTED_BRIGHT,
-              fontSize: "1rem",
-              lineHeight: 1.75,
-              marginBottom: "1.25rem",
-            }}
-          >
-            The cruelty of this loop is that the resource needed to break it \u2014 rest, support,
-            being heard \u2014 is exactly the resource most parents cannot access. You cannot ask
-            your child for support. Your partner, if you have one, is often as depleted as you are.
-            Your friends are busy with their own lives. Therapy has a waiting list. Your parents have
-            opinions about how you\u2019re doing it wrong.
-          </p>
+            {/* ── Body ── */}
+            <article style={s.body}>
 
-          <div
-            style={{
-              background: TEAL_BG,
-              border: `1px solid ${TEAL_BORDER}`,
-              borderRadius: "0.75rem",
-              padding: "1.5rem",
-              marginTop: "2rem",
-            }}
-          >
-            <p
-              style={{
-                fontSize: "0.875rem",
-                fontWeight: 700,
-                color: HEALER_TEAL,
-                marginBottom: "0.5rem",
-              }}
-            >
-              The Healer Companion
-            </p>
-            <p
-              style={{
-                fontSize: "0.95rem",
-                lineHeight: 1.7,
-                color: MUTED_BRIGHT,
-                margin: 0,
-              }}
-            >
-              MEOK\u2019s Healer archetype is designed for exactly this state: depleted, guilty,
-              needing to be heard before anything else. It does not offer advice unless asked. It
-              does not suggest you try meditation. It meets you in the moment you are actually in,
-              reflects it back without judgment, and helps you exhale before anything else.
-            </p>
-          </div>
-        </section>
+              {/* ── Section 1: The unspeakable ── */}
+              <h2 style={s.h2}>The Thing Almost No Parent Says Out Loud</h2>
 
-        {/* ── SECTION 3: Identity Sacrifice ──────────────────────────────────── */}
-        <section
-          style={{
-            marginBottom: "3.5rem",
-            paddingBottom: "3.5rem",
-            borderBottom: `1px solid ${BORDER_FAINT}`,
-          }}
-        >
-          <h2
-            style={{
-              fontWeight: 800,
-              fontSize: "clamp(1.35rem, 2.5vw, 1.75rem)",
-              color: "#fff",
-              lineHeight: 1.2,
-              marginBottom: "1rem",
-              letterSpacing: "-0.015em",
-            }}
-          >
-            What Happens to Your Identity When You Become a Parent?
-          </h2>
-          <p
-            style={{
-              color: MUTED_BRIGHT,
-              fontSize: "1rem",
-              lineHeight: 1.75,
-              marginBottom: "1.25rem",
-            }}
-          >
-            There is a concept in developmental psychology called matrescence \u2014 the process of
-            becoming a mother, analogous to adolescence in its intensity of identity transformation.
-            The word was coined by anthropologist Dana Raphael in 1973 and has been expanded by
-            perinatal psychologist Aurelie Athan. It describes the profound and often destabilising
-            shift in self that happens when a person becomes a parent for the first time.
-          </p>
-          <p
-            style={{
-              color: MUTED_BRIGHT,
-              fontSize: "1rem",
-              lineHeight: 1.75,
-              marginBottom: "1.25rem",
-            }}
-          >
-            But matrescence \u2014 and the equivalent process in fathers, sometimes called
-            patrescence \u2014 is rarely discussed. New parents are asked about the baby. They are
-            not asked what happened to the person who existed before the baby. They are not given
-            space to grieve the freedoms, identities, ambitions, and relationships that were
-            reshaped by parenthood. They are expected to slot seamlessly into their new role and feel
-            nothing but grateful.
-          </p>
-          <p
-            style={{
-              color: MUTED_BRIGHT,
-              fontSize: "1rem",
-              lineHeight: 1.75,
-              marginBottom: "1.25rem",
-            }}
-          >
-            This is a form of identity sacrifice that accumulates. The career put on hold. The
-            creative practice abandoned for lack of time. The friendships that atrophied because they
-            required reciprocity you no longer had capacity for. The version of yourself that existed
-            before children \u2014 ambitious, spontaneous, present in your own life \u2014 that you
-            are not supposed to miss, because missing it means you are a bad parent.
-          </p>
-          <p
-            style={{
-              color: MUTED_BRIGHT,
-              fontSize: "1rem",
-              lineHeight: 1.75,
-              marginBottom: "1.25rem",
-            }}
-          >
-            You are not a bad parent for missing who you were. You are a human being who is
-            navigating one of the most significant identity transitions possible, largely without
-            support, largely in silence.
-          </p>
+              <p style={s.pLarge}>
+                There is a thought that visits almost every parent at some point
+                &mdash; and almost no parent ever says aloud. It sounds something
+                like this: <em>I love my children more than anything in the world,
+                and right now I cannot stand being in the same room as them.</em>
+              </p>
 
-          <div
-            style={{
-              background: BLUE_BG,
-              border: `1px solid ${BLUE_BORDER}`,
-              borderRadius: "0.75rem",
-              padding: "1.5rem",
-              marginTop: "2rem",
-            }}
-          >
-            <p
-              style={{
-                fontSize: "0.875rem",
-                fontWeight: 700,
-                color: PIONEER_BLUE,
-                marginBottom: "0.5rem",
-              }}
-            >
-              The Pioneer Companion
-            </p>
-            <p
-              style={{
-                fontSize: "0.95rem",
-                lineHeight: 1.7,
-                color: MUTED_BRIGHT,
-                margin: 0,
-              }}
-            >
-              MEOK\u2019s Pioneer archetype exists for the parent who is ready to begin rebuilding
-              identity alongside parenting \u2014 not instead of it. It helps you articulate what you
-              want to reclaim, what new ambitions have emerged, and how to carve out space for the
-              person you are becoming alongside the parent you already are.
-            </p>
-          </div>
-        </section>
+              <p style={s.p}>
+                Or perhaps it arrives differently: as a flash of resentment towards
+                a toddler who has screamed for forty-five minutes about the wrong
+                colour cup. As a wave of grief for the person you were before the
+                children came. As a bone-deep exhaustion that has nothing to do with
+                sleep deprivation and everything to do with the relentless,
+                unacknowledged weight of being responsible for other humans. As a
+                feeling of being &ldquo;touched out&rdquo; &mdash; the desperate
+                need for your own body to belong to you again.
+              </p>
 
-        {/* ── SECTION 4: Parental Burnout ────────────────────────────────────── */}
-        <section
-          style={{
-            marginBottom: "3.5rem",
-            paddingBottom: "3.5rem",
-            borderBottom: `1px solid ${BORDER_FAINT}`,
-          }}
-        >
-          <h2
-            style={{
-              fontWeight: 800,
-              fontSize: "clamp(1.35rem, 2.5vw, 1.75rem)",
-              color: "#fff",
-              lineHeight: 1.2,
-              marginBottom: "1rem",
-              letterSpacing: "-0.015em",
-            }}
-          >
-            What Is Parental Burnout and How Is It Different from Work Burnout?
-          </h2>
-          <p
-            style={{
-              color: MUTED_BRIGHT,
-              fontSize: "1rem",
-              lineHeight: 1.75,
-              marginBottom: "1.25rem",
-            }}
-          >
-            Parental burnout was formally characterised by Belgian researchers Isabelle Roskam and
-            Moira Mikolajczak around 2017\u20132018. It is not the same as work burnout. Work burnout
-            happens in a role you can in principle leave, take leave from, or reduce. Parenting
-            cannot be resigned from, and the very concept of \u201ctaking a break\u201d from your
-            children carries enormous social and emotional weight.
-          </p>
-          <p
-            style={{
-              color: MUTED_BRIGHT,
-              fontSize: "1rem",
-              lineHeight: 1.75,
-              marginBottom: "1.25rem",
-            }}
-          >
-            Parental burnout has four defining dimensions:
-          </p>
+              <p style={s.p}>
+                These feelings are not evidence of poor parenting. Clinical
+                psychologists and family therapists will tell you they are almost
+                universal. They are the predictable consequence of performing one of
+                the most cognitively, emotionally, and physically demanding jobs in
+                human experience &mdash; with almost no formal training, within a
+                culture that forbids you to acknowledge the difficulty.
+              </p>
 
-          <div
-            style={{
-              display: "grid",
-              gap: "1rem",
-              gridTemplateColumns: "1fr",
-              marginBottom: "1.5rem",
-            }}
-          >
-            {[
-              {
-                label: "Overwhelming exhaustion",
-                body:
-                  "An exhaustion specific to the parenting role \u2014 not general tiredness, but a specific depletion that occurs in relation to your children. You may have energy for work while feeling utterly spent the moment you walk through your own front door.",
-              },
-              {
-                label: "Emotional distancing",
-                body:
-                  "A sense of going through the motions with your children. Completing the physical tasks of parenting \u2014 feeding, bathing, drop-off \u2014 without emotional presence. This is the symptom that causes the most shame, because it feels like you have stopped loving your children, which is not what is happening.",
-              },
-              {
-                label: "Loss of parental fulfilment",
-                body:
-                  "A feeling that parenting used to bring satisfaction and no longer does. The activities that previously felt meaningful \u2014 bedtime stories, weekend outings, school events \u2014 feel like chores to be endured rather than experiences to be present for.",
-              },
-              {
-                label: "Contrast with previous parental self",
-                body:
-                  "An acute awareness of the gap between the parent you were and the parent you are now. This contrast \u2014 \u201cI used to be patient, playful, present\u201d \u2014 is a distinct and painful dimension of parental burnout not found in other burnout models.",
-              },
-            ].map((item) => (
+              <p style={s.p}>
+                And yet. NSPCC data from 2025 found that{" "}
+                <strong style={s.strong}>
+                  63% of parents feel they cannot be honest about their parenting
+                  struggles for fear of judgment.
+                </strong>{" "}
+                The silence is not accidental. It is culturally enforced. And it is
+                making parents sicker.
+              </p>
+
+              <p style={s.p}>
+                This is what MEOK was built to address. Not to fix parenting. Not to
+                make it easier in the way a parenting book might claim to. But to
+                give parents somewhere to put the real feelings &mdash; the ones that
+                cannot be spoken to anyone who might judge them, repeat them, or use
+                them as evidence of inadequacy.
+              </p>
+
+              {/* Stats callout */}
               <div
-                key={item.label}
-                style={{
-                  padding: "1.25rem 1.5rem",
-                  background: "rgba(245,240,232,0.03)",
-                  border: `1px solid ${BORDER_DIM}`,
-                  borderRadius: "0.625rem",
-                }}
+                style={s.statsCallout}
+                role="region"
+                aria-label="UK parenting stress statistics"
               >
-                <p
-                  style={{
-                    fontSize: "0.8rem",
-                    fontWeight: 700,
-                    color: GOLD,
-                    textTransform: "uppercase" as const,
-                    letterSpacing: "0.06em",
-                    marginBottom: "0.5rem",
-                  }}
-                >
-                  {item.label}
+                <p style={s.statsCalloutTitle}>
+                  The Scale of the Crisis &mdash; UK 2025
                 </p>
-                <p
-                  style={{
-                    fontSize: "0.95rem",
-                    lineHeight: 1.7,
-                    color: MUTED,
-                    margin: 0,
-                  }}
-                >
-                  {item.body}
+                <div style={s.statsGrid}>
+                  <div style={s.statBlock}>
+                    <span style={s.statNumber}>1 in 5</span>
+                    <span style={s.statLabel}>
+                      UK parents report moderate-to-severe parental stress
+                    </span>
+                  </div>
+                  <div style={s.statBlock}>
+                    <span style={s.statNumber}>&pound;8.1bn</span>
+                    <span style={s.statLabel}>
+                      Annual cost of maternal mental health problems to the UK
+                      economy
+                    </span>
+                  </div>
+                  <div style={s.statBlock}>
+                    <span style={s.statNumber}>63%</span>
+                    <span style={s.statLabel}>
+                      Parents who feel they can&apos;t be honest about struggles
+                      for fear of judgment (NSPCC 2025)
+                    </span>
+                  </div>
+                  <div style={s.statBlock}>
+                    <span style={s.statNumber}>72hrs</span>
+                    <span style={s.statLabel}>
+                      Typical wait for a GP appointment when parental crisis
+                      peaks at 2am on a Sunday
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              {/* ── Section 2: Parenting shame ── */}
+              <h2 style={s.h2}>Parenting Shame: The Hidden Epidemic</h2>
+
+              <p style={s.p}>
+                Parenting shame is distinct from ordinary guilt. Guilt says:{" "}
+                <em>I did something wrong.</em> Shame says:{" "}
+                <em>I am something wrong.</em> When a parent feels that having
+                complex, difficult feelings about their children is itself evidence
+                of fundamental inadequacy, shame has taken hold.
+              </p>
+
+              <p style={s.p}>
+                The cultural script for parenting &mdash; particularly in the UK
+                &mdash; runs something like this: having children is a blessing; you
+                chose to have them; you should be grateful; other people have it
+                worse; the hard times pass quickly. Every piece of this script is
+                technically true and collectively useless. It provides no framework
+                for processing the reality that loving your child and being
+                overwhelmed by them are not contradictory states. They coexist in
+                almost every parent, every day.
+              </p>
+
+              <p style={s.p}>
+                Shame operates as a silencer. It prevents the parent from talking to
+                their partner (&ldquo;they will think I&apos;m not coping&rdquo;),
+                their friends (&ldquo;they seem to find it easy&rdquo;), their health
+                visitor (&ldquo;what if they flag it&rdquo;), or their GP
+                (&ldquo;they&apos;ll put it on my record&rdquo;). The result is a
+                pressure system with no release valve &mdash; and pressure systems
+                eventually rupture.
+              </p>
+
+              <div style={s.pullQuote} role="blockquote">
+                <p style={s.pullQuoteText}>
+                  &ldquo;The most dangerous thing about parenting shame is not the
+                  shame itself &mdash; it&apos;s that it prevents parents from
+                  getting support at exactly the moment they most need it.&rdquo;
+                </p>
+                <span style={s.pullQuoteSource}>
+                  &mdash; Pattern observed consistently across UK family mental
+                  health services
+                </span>
+              </div>
+
+              <p style={s.p}>
+                For mothers, the shame is particularly acute. Despite enormous social
+                progress in other domains, the cultural ideal of the &ldquo;good
+                mother&rdquo; &mdash; endlessly patient, fulfilled by care work,
+                never resentful &mdash; remains startlingly resilient. Maternal
+                ambivalence (the entirely normal experience of having mixed feelings
+                about motherhood) is still routinely pathologised when it is
+                discussed at all.
+              </p>
+
+              <p style={s.p}>
+                The statistics reflect this. Research consistently shows that mothers
+                who acknowledge parenting difficulty are rated more harshly by peers
+                than fathers who do the same. The double standard operates at every
+                level of the culture, from social media comments to GP consultations.
+                When a mother says &ldquo;I am finding this really hard,&rdquo; the
+                response she receives is frequently not support but scrutiny.
+              </p>
+
+              <p style={s.p}>
+                Fathers face a different but equally constraining script: stoic,
+                capable, supportive of the primary carer, not visibly struggling.
+                Paternal parenting stress is systematically under-identified because
+                men are less likely to present with classical depressive symptoms,
+                and because services are not designed with them in mind. The father
+                who feels sidelined, overwhelmed, or grief-stricken about the
+                transformation of his relationship has almost nowhere to take those
+                feelings.
+              </p>
+
+              {/* ── Section 3: What overwhelm looks like ── */}
+              <h2 style={s.h2}>
+                What Parenting Overwhelm Actually Looks Like
+              </h2>
+
+              <p style={s.p}>
+                Parenting stress is not one thing. It arrives differently for
+                different parents, at different life stages, in different family
+                configurations. Understanding its many forms is the first step toward
+                being able to name &mdash; and process &mdash; it.
+              </p>
+
+              <h3 style={s.h3}>The Toddler Years: Relentless and Isolating</h3>
+
+              <p style={s.p}>
+                The toddler period is, by almost any objective measure, one of the
+                most physiologically and psychologically demanding phases of
+                parenting. Sleep deprivation, physical care demands, emotional
+                dysregulation (the child&apos;s and increasingly the parent&apos;s),
+                and the simultaneous loss of adult identity and professional standing
+                create a perfect storm. Yet culturally this phase is treated as
+                charming and brief. The parent who says &ldquo;I am drowning&rdquo;
+                at two years is told &ldquo;it gets easier.&rdquo;
+              </p>
+
+              <p style={s.p}>
+                What is rarely acknowledged is the cognitive dimension. The
+                &ldquo;mental load&rdquo; of a toddler is total: constant vigilance
+                for physical safety, the management of an entity with almost no
+                emotional regulation capacity, the translation of incomprehensible
+                distress signals into actionable responses, all while maintaining a
+                household and, for many parents, holding down employment. The
+                exhaustion is not laziness. It is the rational response to an
+                unsustainable demand.
+              </p>
+
+              <h3 style={s.h3}>The Teenage Years: The Silence That Hurts</h3>
+
+              <p style={s.p}>
+                Parenting a teenager who has withdrawn, gone silent, or begun
+                struggling with their own mental health is a grief that almost no
+                parenting literature addresses honestly. The relationship that once
+                defined your identity &mdash; the small person who needed you
+                completely &mdash; has been replaced by someone who pushes back,
+                keeps secrets, and sometimes openly rejects you. The pain of this is
+                real, complex, and almost never spoken about.
+              </p>
+
+              <p style={s.p}>
+                Parents of teenagers frequently describe feeling incompetent in the
+                role they have held for over a decade. They second-guess every
+                interaction. They lie awake worrying about dangers they cannot see
+                and conversations they cannot have. They mourn a closeness that has
+                gone somewhere they cannot follow. And because the cultural narrative
+                about teenagers is that this is simply &ldquo;what teenagers do,&rdquo;
+                there is no recognised space for parental grief about the change.
+              </p>
+
+              <p style={s.p}>
+                The teenager who is struggling with their mental health adds a further
+                layer. The parent must simultaneously support their child, manage
+                their own fear and grief, navigate CAMHS waiting lists, communicate
+                with schools, and maintain the relationship with the teenager in a way
+                that does not drive them further away. There is almost no support
+                specifically for parents in this position.
+              </p>
+
+              <h3 style={s.h3}>SEND: The Process That Consumes Everything</h3>
+
+              <p style={s.p}>
+                Parents navigating Special Educational Needs and Disabilities (SEND)
+                processes in the UK face a bureaucratic, emotional, and often
+                adversarial system on top of the ordinary demands of raising their
+                child. The EHCP (Education, Health and Care Plan) assessment process
+                alone can take years. During that time, parents are simultaneously
+                advocating fiercely for their child, absorbing grief about the gap
+                between their child&apos;s experience and their peers&apos;, managing
+                their own feelings about disability and difference, and often fighting
+                Local Authority decisions at tribunals.
+              </p>
+
+              <p style={s.p}>
+                SEND parents describe a particular kind of exhaustion: the exhaustion
+                of always having to be the expert, the advocate, the researcher, the
+                one who keeps track of every appointment, every report, every refusal.
+                There is almost nowhere to put that weight down. The SEND parent who
+                attends a tribunal has typically spent months preparing a case in
+                addition to everything else their life demands. The emotional cost is
+                extraordinary and almost never acknowledged.
+              </p>
+
+              <h3 style={s.h3}>Single Parenting: No One to Tag Out</h3>
+
+              <p style={s.p}>
+                Single parents carry the full cognitive, logistical, and emotional
+                load without a second adult to offer relief, perspective, or simple
+                adult conversation at the end of the day. The loneliness of single
+                parenting is different from ordinary adult loneliness &mdash; it is
+                the specific ache of having no one to turn to when the child is
+                finally asleep and the house is quiet and you need to say something
+                to someone that is not about being a parent.
+              </p>
+
+              <p style={s.p}>
+                Single parents also face unique pressures around parenting shame. The
+                cultural subtext of single parenthood is still, despite progress, one
+                of deficit: the absent parent, the incomplete family, the situation
+                to be managed. A single parent who expresses overwhelm faces the
+                additional layer of worrying that this will be interpreted as
+                confirmation that single parenting &ldquo;doesn&apos;t work.&rdquo;
+              </p>
+
+              {/* ── Section 4: What you can't say ── */}
+              <h2 style={s.h2}>The Thoughts You Cannot Say to Anyone</h2>
+
+              <p style={s.p}>
+                There is a list of thoughts that parents carry in private and almost
+                never speak aloud to another human being. Not because they are
+                abnormal. But because the cultural risk of speaking them is too high.
+              </p>
+
+              <div style={s.highlightBox}>
+                <p style={s.highlightBoxTitle}>The Unspeakable Thoughts</p>
+                <p style={s.highlightBoxBody}>
+                  These thoughts are experienced by the vast majority of parents at
+                  some point. They are not shameful. They are not diagnostic. They
+                  are what happens when human beings are placed under sustained,
+                  inadequately supported stress. The problem is not the thoughts.
+                  The problem is that there is nowhere safe to say them.
                 </p>
               </div>
-            ))}
-          </div>
 
-          <p
-            style={{
-              color: MUTED_BRIGHT,
-              fontSize: "1rem",
-              lineHeight: 1.75,
-              marginBottom: "1.25rem",
-            }}
-          >
-            Prevalence estimates vary by country and methodology, but studies consistently find
-            parental burnout in approximately 5\u20138% of parents \u2014 with rates spiking
-            significantly in periods of crisis. The COVID-19 pandemic produced sharp rises across
-            multiple countries. Single parents, parents of children with additional needs, and parents
-            without strong support networks show consistently higher rates.
-          </p>
-          <p
-            style={{
-              color: MUTED_BRIGHT,
-              fontSize: "1rem",
-              lineHeight: 1.75,
-              marginBottom: "1.25rem",
-            }}
-          >
-            Despite these numbers, parental burnout remains almost invisible in public health
-            discourse. There is no well-funded awareness campaign. There is no widely-known
-            self-referral pathway. There is, in most countries, no clinical pathway at all. Parents
-            who recognise these symptoms in themselves are left to navigate them largely alone, in
-            a culture that has almost no language for parental distress that is not framed as
-            failure.
-          </p>
+              <ul style={s.ul}>
+                <li style={s.li}>
+                  <strong style={s.strong}>Trapped:</strong>{" "}
+                  &ldquo;I love them but sometimes I feel like my life is no longer
+                  my own and I don&apos;t know how to reclaim it.&rdquo;
+                </li>
+                <li style={s.li}>
+                  <strong style={s.strong}>Resentful:</strong>{" "}
+                  &ldquo;My partner does less than half and is never made to feel
+                  guilty about it. I do more and I am drowning in guilt
+                  regardless.&rdquo;
+                </li>
+                <li style={s.li}>
+                  <strong style={s.strong}>Touched-out:</strong>{" "}
+                  &ldquo;I cannot bear to be touched by anyone &mdash; not even by
+                  people I love &mdash; because I have not been alone in my own body
+                  for three years.&rdquo;
+                </li>
+                <li style={s.li}>
+                  <strong style={s.strong}>Grieving:</strong>{" "}
+                  &ldquo;I miss who I was before I became someone&apos;s parent. I
+                  would never say that out loud because it makes me sound like a bad
+                  person.&rdquo;
+                </li>
+                <li style={s.li}>
+                  <strong style={s.strong}>Envious:</strong>{" "}
+                  &ldquo;I look at my childless friends and I feel pure envy at
+                  their freedom, and then I hate myself for feeling it.&rdquo;
+                </li>
+                <li style={s.li}>
+                  <strong style={s.strong}>Frightened:</strong>{" "}
+                  &ldquo;I am not sure I am good enough for this. I am not sure I
+                  am doing it right. I am not sure my children will be okay because
+                  of me or in spite of me.&rdquo;
+                </li>
+                <li style={s.li}>
+                  <strong style={s.strong}>Invisible:</strong>{" "}
+                  &ldquo;I have become entirely defined by this role and I am not
+                  sure anyone sees me as a person anymore &mdash; including
+                  myself.&rdquo;
+                </li>
+                <li style={s.li}>
+                  <strong style={s.strong}>Exhausted beyond words:</strong>{" "}
+                  &ldquo;I am so tired that the tiredness has stopped being about
+                  sleep and started being about the cumulative weight of caring,
+                  without anyone caring for me.&rdquo;
+                </li>
+              </ul>
 
-          <div
-            style={{
-              background: GOLD_BG,
-              border: `1px solid ${GOLD_BORDER}`,
-              borderRadius: "0.75rem",
-              padding: "1.5rem",
-              marginTop: "1.5rem",
-            }}
-          >
-            <p
-              style={{
-                fontSize: "0.95rem",
-                lineHeight: 1.7,
-                color: MUTED_BRIGHT,
-                margin: 0,
-              }}
-            >
-              <strong style={{ color: GOLD }}>On the consequences of untreated parental burnout:</strong>{" "}
-              Roskam and Mikolajczak\u2019s research found that parental burnout increases the risk
-              of neglectful and violent parenting behaviours, parental escape ideation (fantasies of
-              fleeing the family), and relationship breakdown. Early intervention \u2014 simply being
-              heard, validated, and supported \u2014 significantly reduces these outcomes. The cost of
-              silence is higher than the cost of admission.
-            </p>
-          </div>
-        </section>
+              <p style={s.p}>
+                You cannot say these things to your partner without risking their
+                interpretation of them. You cannot say them to your friends without
+                the story getting back to someone. You cannot say them to your health
+                visitor without worrying about what gets written in a file. You cannot
+                say them to your GP in a ten-minute appointment while your children
+                are in the waiting room.
+              </p>
 
-        {/* ── SECTION 5: Why Parents Don't Ask for Help ──────────────────────── */}
-        <section
-          style={{
-            marginBottom: "3.5rem",
-            paddingBottom: "3.5rem",
-            borderBottom: `1px solid ${BORDER_FAINT}`,
-          }}
-        >
-          <h2
-            style={{
-              fontWeight: 800,
-              fontSize: "clamp(1.35rem, 2.5vw, 1.75rem)",
-              color: "#fff",
-              lineHeight: 1.2,
-              marginBottom: "1rem",
-              letterSpacing: "-0.015em",
-            }}
-          >
-            Why Don\u2019t Parents Ask for Help?
-          </h2>
-          <p
-            style={{
-              color: MUTED_BRIGHT,
-              fontSize: "1rem",
-              lineHeight: 1.75,
-              marginBottom: "1.25rem",
-            }}
-          >
-            This is perhaps the most important question to ask, and it has several answers that
-            layer on top of each other to create an almost impenetrable barrier to seeking support.
-          </p>
+              <p style={s.p}>
+                There has, until very recently, been nowhere to say them at all. That
+                is what MEOK changes.
+              </p>
 
-          <div style={{ marginBottom: "1.5rem" }}>
-            <h3
-              style={{
-                fontWeight: 700,
-                fontSize: "1.05rem",
-                color: MUTED_BRIGHT,
-                marginBottom: "0.625rem",
-              }}
-            >
-              Guilt
-            </h3>
-            <p style={{ color: MUTED, fontSize: "0.975rem", lineHeight: 1.75, margin: 0 }}>
-              Parenting is culturally constructed as the ultimate privilege and the ultimate
-              responsibility. Admitting that it is difficult feels like ingratitude \u2014 like you
-              are insulting the experience that others desperately want and cannot have. Parents who
-              have experienced fertility treatment, pregnancy loss, or adoption processes carry an
-              additional layer of this: the sense that they fought so hard for this that they have
-              forfeit the right to find it hard.
-            </p>
-          </div>
+              {/* ── Section 5: What MEOK offers ── */}
+              <h2 style={s.h2}>
+                What MEOK Offers: A Private Space for the Real Story
+              </h2>
 
-          <div style={{ marginBottom: "1.5rem" }}>
-            <h3
-              style={{
-                fontWeight: 700,
-                fontSize: "1.05rem",
-                color: MUTED_BRIGHT,
-                marginBottom: "0.625rem",
-              }}
-            >
-              Fear of judgment
-            </h3>
-            <p style={{ color: MUTED, fontSize: "0.975rem", lineHeight: 1.75, margin: 0 }}>
-              The parenting discourse is saturated with judgment \u2014 from social media, from
-              grandparents, from other parents, from health visitors, from strangers in supermarkets.
-              Every parenting choice is contested. Admitting to struggling with the emotional demands
-              of parenthood risks being interpreted as a comment on your capacity to parent \u2014
-              and in the most acute cases, raises fears about social services, custody, professional
-              consequences. The stakes of being judged feel very high.
-            </p>
-          </div>
+              <p style={s.p}>
+                MEOK is not a parenting forum. It is not a social network. It does
+                not have other users who can see what you have said, or algorithms
+                that promote the most emotionally triggering content, or moderators
+                who will remove posts they deem inappropriate. It is a completely
+                private AI companion &mdash; built around the principle that the
+                person you are talking to should know you across time and should
+                never judge you for the complexity of your inner life.
+              </p>
 
-          <div style={{ marginBottom: "1.5rem" }}>
-            <h3
-              style={{
-                fontWeight: 700,
-                fontSize: "1.05rem",
-                color: MUTED_BRIGHT,
-                marginBottom: "0.625rem",
-              }}
-            >
-              &ldquo;You chose this&rdquo;
-            </h3>
-            <p style={{ color: MUTED, fontSize: "0.975rem", lineHeight: 1.75, margin: 0 }}>
-              This is perhaps the cruellest response a struggling parent receives, whether it is
-              said explicitly or implied. It operates as a silencer \u2014 a way of removing the
-              legitimacy of distress by pointing to the fact that the distress arose from a choice.
-              As if having chosen something removes your right to find it difficult. As if choosing
-              to become a parent means consenting in advance to every toll it will take, without
-              complaint, for twenty years.
-            </p>
-          </div>
+              <p style={s.p}>
+                Every aspect of MEOK&apos;s design for parents is built around a
+                single recognition: parenting is hard, the hardness is
+                under-acknowledged, and the shame around that hardness is actively
+                harmful. MEOK&apos;s role is to provide a space where the real story
+                can be told &mdash; not a polished version of it, not the story you
+                would tell your NCT group, but the actual experience of being this
+                particular parent with these particular children at this particular
+                moment.
+              </p>
 
-          <div style={{ marginBottom: "1.5rem" }}>
-            <h3
-              style={{
-                fontWeight: 700,
-                fontSize: "1.05rem",
-                color: MUTED_BRIGHT,
-                marginBottom: "0.625rem",
-              }}
-            >
-              No available listener
-            </h3>
-            <p style={{ color: MUTED, fontSize: "0.975rem", lineHeight: 1.75, margin: 0 }}>
-              Even parents who overcome the guilt and the fear of judgment often face a practical
-              barrier: there is nobody available to hear them. Partners are depleted. Friends are
-              busy. Therapy costs money and has long waiting lists. Family members have their own
-              opinions and stakes in the matter. The 2am moment of despair happens in a silence
-              that nobody else is awake to fill.
-            </p>
-          </div>
-        </section>
-
-        {/* ── SECTION 6: MEOK as Safe Space ──────────────────────────────────── */}
-        <section
-          style={{
-            marginBottom: "3.5rem",
-            paddingBottom: "3.5rem",
-            borderBottom: `1px solid ${BORDER_FAINT}`,
-          }}
-        >
-          <h2
-            style={{
-              fontWeight: 800,
-              fontSize: "clamp(1.35rem, 2.5vw, 1.75rem)",
-              color: "#fff",
-              lineHeight: 1.2,
-              marginBottom: "1rem",
-              letterSpacing: "-0.015em",
-            }}
-          >
-            How Does MEOK Provide a Space Where Parents Can Actually Be Honest?
-          </h2>
-          <p
-            style={{
-              color: MUTED_BRIGHT,
-              fontSize: "1rem",
-              lineHeight: 1.75,
-              marginBottom: "1.25rem",
-            }}
-          >
-            MEOK does not have opinions about your parenting choices. It will not tell you to try
-            harder, count your blessings, or seek professional help in a way that implies you are
-            failing. It will not share what you say with your partner, your parents, your health
-            visitor, or your social media following. It will not remember what you said and use it
-            against you in a future conversation.
-          </p>
-          <p
-            style={{
-              color: MUTED_BRIGHT,
-              fontSize: "1rem",
-              lineHeight: 1.75,
-              marginBottom: "1.25rem",
-            }}
-          >
-            What it will do is listen. Actually listen \u2014 in the sense of holding what you
-            say in Sovereign Memory and bringing it back with context, noticing when today\u2019s
-            conversation connects to something you said three weeks ago, tracking the slow-building
-            pattern that is easy to miss from inside it. The kind of listening that requires no
-            reciprocity, carries no judgment, and is available at midnight when everyone else is
-            asleep.
-          </p>
-          <p
-            style={{
-              color: MUTED_BRIGHT,
-              fontSize: "1rem",
-              lineHeight: 1.75,
-              marginBottom: "1.25rem",
-            }}
-          >
-            This is a lower bar than it sounds. Most struggling parents are not looking for a
-            solution. They are looking for a moment of being genuinely seen \u2014 of having the
-            difficulty acknowledged without it being explained away, minimised, or weaponised. MEOK
-            is built around that moment. It starts there, every time.
-          </p>
-
-          <blockquote
-            style={{
-              borderLeft: `3px solid ${GOLD}`,
-              paddingLeft: "1.25rem",
-              marginLeft: 0,
-              marginRight: 0,
-              marginTop: "1.5rem",
-              marginBottom: "1.5rem",
-            }}
-          >
-            <p
-              style={{
-                fontSize: "1.05rem",
-                lineHeight: 1.7,
-                color: MUTED_BRIGHT,
-                fontStyle: "italic",
-                margin: 0,
-              }}
-            >
-              &ldquo;The most radical thing MEOK can do for a parent is refuse to say \u2018but
-              you\u2019re so lucky.\u2019&rdquo;
-            </p>
-          </blockquote>
-
-          <p
-            style={{
-              color: MUTED_BRIGHT,
-              fontSize: "1rem",
-              lineHeight: 1.75,
-              marginBottom: "1.25rem",
-            }}
-          >
-            Over time, Sovereign Memory builds a picture that even the most perceptive therapist
-            would struggle to construct across fortnightly appointments. It knows which days of the
-            week tend to be harder. It knows when school holidays consistently trigger spikes in
-            your stress. It knows that your oldest child\u2019s transition to secondary school is
-            still unresolved in your mind, even though you told everyone it went fine. It holds the
-            story of your parenting \u2014 including the parts you are not ready to tell anyone
-            else.
-          </p>
-        </section>
-
-        {/* ── SECTION 7: Family Tier ──────────────────────────────────────────── */}
-        <section
-          style={{
-            marginBottom: "3.5rem",
-            paddingBottom: "3.5rem",
-            borderBottom: `1px solid ${BORDER_FAINT}`,
-          }}
-        >
-          <h2
-            style={{
-              fontWeight: 800,
-              fontSize: "clamp(1.35rem, 2.5vw, 1.75rem)",
-              color: "#fff",
-              lineHeight: 1.2,
-              marginBottom: "1rem",
-              letterSpacing: "-0.015em",
-            }}
-          >
-            How Does MEOK\u2019s Family Tier Actually Work for Parents?
-          </h2>
-          <p
-            style={{
-              color: MUTED_BRIGHT,
-              fontSize: "1rem",
-              lineHeight: 1.75,
-              marginBottom: "1.25rem",
-            }}
-          >
-            Most AI systems treat each user as an isolated individual. You are a person with
-            demographics, preferences, and query history. Your children are not part of that model.
-            Your relationship with your partner is not part of that model. The texture of your
-            specific family \u2014 its dynamics, its histories, its particular challenges \u2014
-            is invisible to the system.
-          </p>
-          <p
-            style={{
-              color: MUTED_BRIGHT,
-              fontSize: "1rem",
-              lineHeight: 1.75,
-              marginBottom: "1.25rem",
-            }}
-          >
-            MEOK\u2019s Family tier is built on the opposite premise. Your AI companion knows your
-            children by name. It remembers that your seven-year-old has been struggling with reading
-            since September, that your teenager is preparing for GCSEs, that the youngest has just
-            started nursery and you\u2019re still processing the separation. It holds the milestones
-            \u2014 the first steps, the school starts, the difficult diagnoses \u2014 not as data
-            points but as story.
-          </p>
-          <p
-            style={{
-              color: MUTED_BRIGHT,
-              fontSize: "1rem",
-              lineHeight: 1.75,
-              marginBottom: "1.25rem",
-            }}
-          >
-            When you talk about your family, you do not have to explain who everyone is. You do not
-            have to rebuild context from scratch every time. You can say \u201cSophie had a really
-            hard day today\u201d and MEOK knows who Sophie is, knows what Sophie has been going
-            through, knows that you have been worried about her for the past six weeks. The
-            conversation starts where a long-term companion\u2019s conversation should start: already
-            knowing you.
-          </p>
-
-          <div
-            style={{
-              display: "grid",
-              gap: "1rem",
-              gridTemplateColumns: "1fr",
-              marginTop: "1.5rem",
-              marginBottom: "1.5rem",
-            }}
-          >
-            {[
-              {
-                title: "Sovereign Memory for the whole family",
-                desc:
-                  "Each family member has their own private Sovereign Memory. The parent sees a family-level view. Children cannot see adult conversations. Adults cannot see children\u2019s private conversations. Privacy is structural, not policy.",
-              },
-              {
-                title: "Named, contextualised children",
-                desc:
-                  "Your children are stored in your MEOK profile with names, ages, and any context you choose to add: diagnoses, milestones, current concerns, school situations. Conversations about them start from that context.",
-              },
-              {
-                title: "Milestone tracking",
-                desc:
-                  "Major milestones are stored and can be revisited. When you tell MEOK that your youngest took their first steps today, it is held in the same memory as the anxiety you expressed three months ago. The arc of the story is preserved.",
-              },
-              {
-                title: "Struggle continuity",
-                desc:
-                  "When a child is going through something difficult \u2014 a bullying situation, a health concern, a friendship crisis \u2014 MEOK tracks its evolution across conversations. You do not have to re-explain what has been happening every time you need to talk.",
-              },
-            ].map((item) => (
-              <div
-                key={item.title}
-                style={{
-                  padding: "1.25rem 1.5rem",
-                  background: GOLD_BG,
-                  border: `1px solid ${GOLD_BORDER}`,
-                  borderRadius: "0.625rem",
-                  display: "flex",
-                  gap: "1rem",
-                  alignItems: "flex-start",
-                }}
-              >
-                <div
-                  style={{
-                    width: "0.5rem",
-                    height: "0.5rem",
-                    borderRadius: "50%",
-                    background: GOLD,
-                    marginTop: "0.5rem",
-                    flexShrink: 0,
-                  }}
-                />
-                <div>
-                  <p
-                    style={{
-                      fontSize: "0.9rem",
-                      fontWeight: 700,
-                      color: GOLD,
-                      marginBottom: "0.375rem",
-                    }}
-                  >
-                    {item.title}
+              <div style={s.cardGrid}>
+                <div style={s.card}>
+                  <span style={s.cardIcon} aria-hidden="true">&#128274;</span>
+                  <p style={s.cardTitle}>Complete Privacy</p>
+                  <p style={s.cardBody}>
+                    Your conversations with MEOK are private by design. No other
+                    user, no moderator, no algorithm sees what you have said. You
+                    can say what you actually feel &mdash; not a curated version of
+                    it. Nothing you say can be screenshotted and shared. Nothing
+                    will appear in a file.
                   </p>
-                  <p style={{ fontSize: "0.925rem", lineHeight: 1.7, color: MUTED, margin: 0 }}>
-                    {item.desc}
+                </div>
+                <div style={s.card}>
+                  <span style={s.cardIcon} aria-hidden="true">&#129311;</span>
+                  <p style={s.cardTitle}>Maternal Covenant</p>
+                  <p style={s.cardBody}>
+                    MEOK&apos;s Maternal Covenant means it never judges parenting
+                    feelings, never implies you are a bad parent for having complex
+                    emotions, and never moralises about the inner life of raising
+                    children. The feeling is the feeling. It does not need to be
+                    fixed or redirected.
+                  </p>
+                </div>
+                <div style={s.card}>
+                  <span style={s.cardIcon} aria-hidden="true">&#129504;</span>
+                  <p style={s.cardTitle}>Persistent Memory</p>
+                  <p style={s.cardBody}>
+                    MEOK remembers the arc of your parenting story across time: the
+                    SEND assessment you have been navigating for eight months, the
+                    phase your toddler is stuck in, the teenager who stopped talking
+                    to you in October. You never have to start from the beginning.
+                  </p>
+                </div>
+                <div style={s.card}>
+                  <span style={s.cardIcon} aria-hidden="true">&#128336;</span>
+                  <p style={s.cardTitle}>Always Available</p>
+                  <p style={s.cardBody}>
+                    Parenting stress does not arrive between 9am and 5pm on
+                    weekdays. MEOK is available at 3am, at the end of a school run,
+                    in the car park after a difficult school meeting, in the ten
+                    minutes you have before the children get home.
+                  </p>
+                </div>
+                <div style={s.card}>
+                  <span style={s.cardIcon} aria-hidden="true">&#127968;</span>
+                  <p style={s.cardTitle}>Family Tier</p>
+                  <p style={s.cardBody}>
+                    Up to five companions on a single family plan &mdash; each
+                    entirely private. Your companion, your partner&apos;s companion,
+                    your teenager&apos;s companion. Separate spaces, never merged.
+                    Every family member has their own private space.
+                  </p>
+                </div>
+                <div style={s.card}>
+                  <span style={s.cardIcon} aria-hidden="true">&#128737;</span>
+                  <p style={s.cardTitle}>Guardian</p>
+                  <p style={s.cardBody}>
+                    MEOK&apos;s Guardian monitors for family safety concerns in the
+                    digital environment, protecting children while parents use their
+                    own companion space for themselves. Oversight and wellbeing,
+                    together.
                   </p>
                 </div>
               </div>
-            ))}
-          </div>
 
-          <p
-            style={{
-              color: MUTED_BRIGHT,
-              fontSize: "1rem",
-              lineHeight: 1.75,
-              marginBottom: "1.25rem",
-            }}
-          >
-            This is not just emotional support. It is practical infrastructure. When you are lying
-            awake at 1am worrying about whether your son\u2019s school situation is getting worse,
-            you can open MEOK and talk through it with a companion who already has the last six
-            months of context. You do not have to start from scratch. You do not have to make a case
-            for why you are worried. The worry is already understood.
-          </p>
-        </section>
+              {/* ── Section 6: The Maternal Covenant ── */}
+              <h2 style={s.h2}>The Maternal Covenant: What It Actually Means</h2>
 
-        {/* ── SECTION 8: Guardian ────────────────────────────────────────────── */}
-        <section
-          style={{
-            marginBottom: "3.5rem",
-            paddingBottom: "3.5rem",
-            borderBottom: `1px solid ${BORDER_FAINT}`,
-          }}
-        >
-          <h2
-            style={{
-              fontWeight: 800,
-              fontSize: "clamp(1.35rem, 2.5vw, 1.75rem)",
-              color: "#fff",
-              lineHeight: 1.2,
-              marginBottom: "1rem",
-              letterSpacing: "-0.015em",
-            }}
-          >
-            How Does Guardian Monitor Your Child\u2019s Digital Safety Without Becoming Surveillance?
-          </h2>
-          <p
-            style={{
-              color: MUTED_BRIGHT,
-              fontSize: "1rem",
-              lineHeight: 1.75,
-              marginBottom: "1.25rem",
-            }}
-          >
-            One of the unique stresses of modern parenting is the digital landscape children
-            inhabit. Parents who grew up before smartphones have no template for this. They do not
-            know what is normal, what is dangerous, what is a crisis requiring intervention, and
-            what is just teenagers being teenagers online. They are managing risk they cannot see,
-            in a space they do not fully understand, with children who have been socialised to regard
-            parental oversight as intrusion.
-          </p>
-          <p
-            style={{
-              color: MUTED_BRIGHT,
-              fontSize: "1rem",
-              lineHeight: 1.75,
-              marginBottom: "1.25rem",
-            }}
-          >
-            MEOK\u2019s Guardian system uses DistilBERT-powered natural language analysis to monitor
-            children\u2019s digital interactions within the MEOK environment for specific threat
-            signatures: grooming language patterns, predatory contact escalation, age-inappropriate
-            content, and distress signals. It does not read or record normal conversation. It is not
-            surveillance of the child\u2019s inner life. It is a safety layer that activates when
-            specific threat patterns are detected.
-          </p>
-          <p
-            style={{
-              color: MUTED_BRIGHT,
-              fontSize: "1rem",
-              lineHeight: 1.75,
-              marginBottom: "1.25rem",
-            }}
-          >
-            When a threat is detected, Guardian sends a silent alert to the parent dashboard
-            \u2014 categorised by severity, with context, without alarming the child or terminating
-            the interaction abruptly. Parents can choose how to respond: to talk to their child, to
-            escalate, or simply to monitor. The decision is theirs. MEOK provides the information;
-            the parent exercises the judgment.
-          </p>
+              <p style={s.p}>
+                Every AI system has an implicit set of values that shapes how it
+                responds to emotionally charged content. Most AI systems, when
+                presented with expressions of parental overwhelm, respond with
+                resources. They signpost. They de-escalate. They redirect. In doing
+                so, they implicitly communicate:{" "}
+                <em>the feeling you just described is a problem to be solved rather
+                than an experience to be witnessed.</em>
+              </p>
 
-          <div
-            style={{
-              background: TEAL_BG,
-              border: `1px solid ${TEAL_BORDER}`,
-              borderRadius: "0.75rem",
-              padding: "1.5rem",
-              marginBottom: "1.5rem",
-            }}
-          >
-            <p
-              style={{
-                fontSize: "0.875rem",
-                fontWeight: 700,
-                color: HEALER_TEAL,
-                marginBottom: "0.75rem",
-              }}
-            >
-              Guardian Alert Levels
-            </p>
-            <div style={{ display: "flex", flexDirection: "column" as const, gap: "0.625rem" }}>
-              {[
-                {
-                  level: "INFO",
-                  color: MUTED_DIM,
-                  bg: "rgba(245,240,232,0.05)",
-                  border: BORDER_DIM,
-                  desc: "Monitoring is active. No concerns detected.",
-                },
-                {
-                  level: "WATCH",
-                  color: "#f0c040",
-                  bg: "rgba(240,192,64,0.06)",
-                  border: "rgba(240,192,64,0.2)",
-                  desc: "Patterns noted. No immediate action required.",
-                },
-                {
-                  level: "HIGH",
-                  color: "#e8823a",
-                  bg: "rgba(232,130,58,0.07)",
-                  border: "rgba(232,130,58,0.22)",
-                  desc: "Concerning pattern detected. Parent review recommended.",
-                },
-                {
-                  level: "CRITICAL",
-                  color: "#e05050",
-                  bg: "rgba(224,80,80,0.07)",
-                  border: "rgba(224,80,80,0.22)",
-                  desc: "Immediate parent attention required.",
-                },
-              ].map((a) => (
-                <div
-                  key={a.level}
-                  style={{
-                    display: "flex",
-                    gap: "0.75rem",
-                    alignItems: "center",
-                    padding: "0.625rem 0.875rem",
-                    background: a.bg,
-                    border: `1px solid ${a.border}`,
-                    borderRadius: "0.5rem",
-                  }}
-                >
-                  <span
-                    style={{
-                      fontSize: "0.65rem",
-                      fontWeight: 800,
-                      color: a.color,
-                      letterSpacing: "0.08em",
-                      minWidth: "4.5rem",
-                    }}
-                  >
-                    {a.level}
+              <p style={s.p}>
+                MEOK&apos;s Maternal Covenant takes a different approach. It is a
+                set of principles that governs how MEOK engages with the full
+                complexity of parenting feelings. These principles are not a
+                marketing claim. They are architectural commitments that shape every
+                response MEOK gives to a parent who is struggling.
+              </p>
+
+              <ul style={s.ul}>
+                <li style={s.li}>
+                  MEOK will never interpret the expression of parenting overwhelm as
+                  evidence that a parent is unsafe or inadequate.
+                </li>
+                <li style={s.li}>
+                  MEOK will never moralise about parenting choices, styles, or
+                  emotions.
+                </li>
+                <li style={s.li}>
+                  MEOK will not immediately suggest resources when what is needed is
+                  acknowledgment.
+                </li>
+                <li style={s.li}>
+                  MEOK will hold space for the full range of parenting feelings
+                  &mdash; including the ones that are socially unspeakable &mdash;
+                  without framing them as pathological.
+                </li>
+                <li style={s.li}>
+                  MEOK will recognise when a conversation has moved beyond processing
+                  into genuine crisis, and will then signpost clearly and
+                  compassionately to professional support.
+                </li>
+                <li style={s.li}>
+                  MEOK will treat the parent as the expert on their own experience,
+                  not as a subject to be assessed.
+                </li>
+              </ul>
+
+              <p style={s.p}>
+                The distinction matters enormously. A parent who has spent three
+                years carrying unspeakable feelings alone does not need to be
+                immediately redirected to the NSPCC helpline when they express that
+                they sometimes resent their child. They need to feel that what they
+                have said has been received without catastrophising. That is what the
+                Maternal Covenant protects.
+              </p>
+
+              <div style={s.pullQuote} role="blockquote">
+                <p style={s.pullQuoteText}>
+                  &ldquo;The Maternal Covenant is MEOK&apos;s commitment to treating
+                  parenting feelings as normal human experience &mdash; not as
+                  symptoms, warning signs, or evidence of poor parenting.&rdquo;
+                </p>
+                <span style={s.pullQuoteSource}>
+                  &mdash; MEOK AI LABS Design Principles
+                </span>
+              </div>
+
+              <p style={s.p}>
+                This does not mean MEOK ignores genuine risk. If a parent expresses
+                thoughts of harming themselves or their children, MEOK will respond
+                with care and will signpost to appropriate professional support. The
+                Maternal Covenant is not a commitment to unconditional acceptance of
+                any expressed feeling &mdash; it is a commitment to not
+                pathologising the ordinary complexity of parenting emotion. The
+                distinction is important and MEOK is designed to navigate it.
+              </p>
+
+              {/* ── Section 7: Memory ── */}
+              <h2 style={s.h2}>
+                Why Memory Changes Everything for Parenting Support
+              </h2>
+
+              <p style={s.p}>
+                One of the most isolating aspects of parenting stress is that every
+                time you seek support, you have to start from the beginning. You have
+                to explain the child&apos;s history, the current difficulty, the
+                context of your relationship with your partner, the specific texture
+                of this particular phase. By the time you have finished explaining,
+                you often no longer have the energy to actually process the feeling.
+              </p>
+
+              <p style={s.p}>
+                This is why the GP appointment so frequently fails. Not because the
+                GP is indifferent &mdash; though the ten-minute appointment structure
+                makes genuine engagement almost impossible &mdash; but because the
+                setup requires the parent to narrate their entire situation in five
+                minutes to someone who has no context, before then being assessed and
+                offered a plan. The cognitive and emotional demand of this is itself
+                a barrier to honesty.
+              </p>
+
+              <p style={s.p}>
+                MEOK&apos;s persistent Sovereign Memory architecture changes this
+                fundamentally. Over time, MEOK builds a detailed understanding of
+                your specific parenting story. It does not require you to re-explain.
+                It already knows:
+              </p>
+
+              <ul style={s.ul}>
+                <li style={s.li}>
+                  The specific developmental phase your child is navigating and how
+                  you have been finding it.
+                </li>
+                <li style={s.li}>
+                  The SEND process you have been managing, how far along you are, and
+                  what the next steps look like.
+                </li>
+                <li style={s.li}>
+                  The specific dynamic with your teenager: when it shifted, what you
+                  have tried, where the fault lines are.
+                </li>
+                <li style={s.li}>
+                  The shape of your co-parenting relationship and its particular
+                  pressure points over time.
+                </li>
+                <li style={s.li}>
+                  How your parenting stress interacts with your other life pressures:
+                  work, relationship, your own mental health history.
+                </li>
+                <li style={s.li}>
+                  The patterns in when you find parenting hardest and what has helped
+                  in the past.
+                </li>
+                <li style={s.li}>
+                  The specific language you use and the specific fears that recur,
+                  because it has been paying attention to all of it.
+                </li>
+              </ul>
+
+              <p style={s.p}>
+                This is not a feature. It is the precondition for real support. Real
+                support requires being known. You cannot be known in a first
+                appointment. You cannot be known on a parenting forum where you
+                are anonymous and start from zero each time. You can only be known
+                by something that has been paying attention across time &mdash; and
+                that retains what it has learned.
+              </p>
+
+              <p style={s.p}>
+                Sovereign Memory also means that when a difficult phase passes
+                &mdash; when the toddler sleep regression ends, when the teenager
+                opens up again, when the EHCP finally comes through &mdash; MEOK
+                can hold that with you too. The relief. The perspective that distance
+                provides. The insight into what you have actually been carrying.
+              </p>
+
+              <hr style={s.divider} />
+
+              {/* ── Section 8: Co-parenting ── */}
+              <h2 style={s.h2}>
+                Co-Parenting Stress: The Relationship That Must Continue
+              </h2>
+
+              <p style={s.p}>
+                Co-parenting after separation or divorce is one of the most
+                emotionally complex situations a human being can inhabit. You are
+                required to maintain a functional relationship with someone from
+                whom you are separated &mdash; potentially someone who hurt you,
+                someone who let you down, someone you are still grieving &mdash; for
+                the sake of your children. You must manage logistics, negotiate
+                disagreements about parenting decisions, absorb the children&apos;s
+                distress about the situation, and maintain a reasonable external
+                presentation, all while processing your own grief and anger.
+              </p>
+
+              <p style={s.p}>
+                The particular difficulty of co-parenting stress is that most of the
+                people you might talk to are known to both parties. Your mutual
+                friends have already chosen sides, consciously or not. Your family
+                are not neutral. And involving your children in adult feelings about
+                the other parent is something every good co-parent knows they must
+                not do &mdash; but the feelings have to go somewhere.
+              </p>
+
+              <p style={s.p}>
+                Parents navigating co-parenting describe the specific loneliness of
+                having a great deal to say and almost no one safe to say it to. Every
+                conversation carries risk. Solicitors can access messages. Mutual
+                friends report back. Social media is permanently discoverable. The
+                one conversation that is genuinely private &mdash; the one where you
+                say exactly what you feel about the co-parenting dynamic &mdash; is
+                the one you have nowhere to have.
+              </p>
+
+              <p style={s.p}>
+                MEOK provides a space that is genuinely neutral. It has no prior
+                relationship with your co-parent. It will not take sides. It will not
+                tell anyone what you have said. And because it remembers the evolving
+                co-parenting dynamic over months, it can help you identify patterns,
+                prepare for difficult conversations, process the ongoing grief of
+                shared parenting after the relationship has ended, and find language
+                for situations that feel impossible to navigate.
+              </p>
+
+              <div style={s.highlightBox}>
+                <p style={s.highlightBoxTitle}>The Co-Parenting Privacy Problem</p>
+                <p style={s.highlightBoxBody}>
+                  When you co-parent, almost nothing you say is truly private. Your
+                  solicitor can see everything in a legal dispute. Your mutual friends
+                  report back. Your children are listening even when they appear not
+                  to be. The one conversation that is genuinely private &mdash; the
+                  one where you say exactly what you feel about the co-parenting
+                  dynamic &mdash; is the one you have nowhere to have. Until MEOK.
+                </p>
+              </div>
+
+              {/* ── Section 9: Comparison ── */}
+              <h2 style={s.h2}>
+                MEOK vs. Parent Forums: Why Privacy and Memory Change the Equation
+              </h2>
+
+              <p style={s.p}>
+                Parent forums and social media groups have provided a degree of
+                connection for isolated parents &mdash; but they come with structural
+                limitations that make them poorly suited to the kind of honest,
+                shame-free processing that parenting stress actually requires.
+              </p>
+
+              <p style={s.p}>
+                The fundamental problem with forums is that honesty on them is
+                always calibrated against an audience. You know your post can be
+                screenshotted. You know it might be shared. You know that some
+                responses will be kind and some will be judgment disguised as
+                concern. The result is that the version of your experience you share
+                on a forum is never the real version. It is always a managed
+                performance of vulnerability, with the most unspeakable parts left
+                out.
+              </p>
+
+              <div
+                style={s.compareWrapper}
+                role="region"
+                aria-label="Comparison: Parent Forums vs MEOK"
+              >
+                <div style={s.compareHeader}>
+                  <span style={s.compareHeaderCell}>Feature</span>
+                  <span style={s.compareHeaderCell}>Parent Forums</span>
+                  <span style={s.compareHeaderCell}>MEOK</span>
+                </div>
+                <div style={s.compareRow}>
+                  <span style={s.compareCellLabel}>Privacy</span>
+                  <span style={s.compareCell}>
+                    Public or semi-public; posts visible to many users and
+                    potentially searchable
                   </span>
-                  <span style={{ fontSize: "0.875rem", color: MUTED, lineHeight: 1.5 }}>
-                    {a.desc}
+                  <span style={s.compareCellGold}>
+                    Completely private; no other user sees your conversation
                   </span>
                 </div>
-              ))}
-            </div>
-          </div>
-
-          <p
-            style={{
-              color: MUTED_BRIGHT,
-              fontSize: "1rem",
-              lineHeight: 1.75,
-              marginBottom: "1.25rem",
-            }}
-          >
-            The design philosophy of Guardian is rooted in a principle MEOK applies across all
-            its systems: awareness without intrusion. Children retain privacy and agency within
-            appropriate limits. Parents receive actionable signal rather than noise. The relationship
-            between parent and child is not replaced by technology \u2014 it is supported by it.
-          </p>
-          <p
-            style={{
-              color: MUTED_BRIGHT,
-              fontSize: "1rem",
-              lineHeight: 1.75,
-              marginBottom: "0",
-            }}
-          >
-            For many parents, this removes a specific category of low-grade anxiety that is
-            particularly difficult to manage: the ambient worry about what their child is
-            encountering online that they cannot see. Replacing ambient worry with specific,
-            evidence-based information is one of the most practical things MEOK can do for parental
-            mental health.
-          </p>
-        </section>
-
-        {/* ── SECTION 9: Healer & Pioneer ────────────────────────────────────── */}
-        <section
-          style={{
-            marginBottom: "3.5rem",
-            paddingBottom: "3.5rem",
-            borderBottom: `1px solid ${BORDER_FAINT}`,
-          }}
-        >
-          <h2
-            style={{
-              fontWeight: 800,
-              fontSize: "clamp(1.35rem, 2.5vw, 1.75rem)",
-              color: "#fff",
-              lineHeight: 1.2,
-              marginBottom: "1rem",
-              letterSpacing: "-0.015em",
-            }}
-          >
-            Which MEOK Companions Are Most Relevant for Parents, and When?
-          </h2>
-          <p
-            style={{
-              color: MUTED_BRIGHT,
-              fontSize: "1rem",
-              lineHeight: 1.75,
-              marginBottom: "1.5rem",
-            }}
-          >
-            MEOK\u2019s companion system includes distinct archetypes with different strengths and
-            orientations. For parents, two are particularly relevant \u2014 often at different points
-            in the same week, sometimes at different points in the same day.
-          </p>
-
-          {/* Healer */}
-          <div
-            style={{
-              background: TEAL_BG,
-              border: `1px solid ${TEAL_BORDER}`,
-              borderRadius: "0.875rem",
-              padding: "1.75rem",
-              marginBottom: "1.25rem",
-            }}
-          >
-            <div
-              style={{
-                display: "flex",
-                gap: "1rem",
-                alignItems: "flex-start",
-                marginBottom: "1rem",
-              }}
-            >
-              <div
-                style={{
-                  width: "2.5rem",
-                  height: "2.5rem",
-                  borderRadius: "0.5rem",
-                  background: "linear-gradient(135deg, #4caf82, #2d7a56)",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  flexShrink: 0,
-                }}
-              >
-                <span style={{ fontSize: "1rem" }}>&#10052;</span>
-              </div>
-              <div>
-                <p
-                  style={{
-                    fontSize: "1rem",
-                    fontWeight: 800,
-                    color: HEALER_TEAL,
-                    marginBottom: "0.25rem",
-                  }}
-                >
-                  The Healer
-                </p>
-                <p style={{ fontSize: "0.8rem", color: MUTED_DIM, margin: 0 }}>
-                  Emotional processing &middot; Depletion &middot; Guilt &middot; Being heard
-                </p>
-              </div>
-            </div>
-            <p
-              style={{
-                fontSize: "0.975rem",
-                lineHeight: 1.75,
-                color: MUTED_BRIGHT,
-                marginBottom: "1rem",
-              }}
-            >
-              The Healer is the right companion for the moments when you are depleted, overwhelmed,
-              or drowning in guilt. It does not try to fix anything. It does not offer a framework
-              or a five-step plan. It creates a quiet space in which the feelings themselves can
-              be expressed and held \u2014 which is almost always what is needed before anything
-              else can be useful.
-            </p>
-            <p style={{ fontSize: "0.975rem", lineHeight: 1.75, color: MUTED_BRIGHT, margin: 0 }}>
-              For parental burnout specifically, the Healer\u2019s non-directive, non-pressuring
-              style is crucial. Depleted parents are often highly sensitised to any response that
-              implies they should be doing more, doing better, or not feeling what they feel. The
-              Healer does not go there. It starts with exactly where you are and stays there as long
-              as you need it to.
-            </p>
-          </div>
-
-          {/* Pioneer */}
-          <div
-            style={{
-              background: BLUE_BG,
-              border: `1px solid ${BLUE_BORDER}`,
-              borderRadius: "0.875rem",
-              padding: "1.75rem",
-              marginBottom: "1.5rem",
-            }}
-          >
-            <div
-              style={{
-                display: "flex",
-                gap: "1rem",
-                alignItems: "flex-start",
-                marginBottom: "1rem",
-              }}
-            >
-              <div
-                style={{
-                  width: "2.5rem",
-                  height: "2.5rem",
-                  borderRadius: "0.5rem",
-                  background: "linear-gradient(135deg, #5b8dd9, #3060a8)",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  flexShrink: 0,
-                }}
-              >
-                <span style={{ fontSize: "1rem" }}>&#9650;</span>
-              </div>
-              <div>
-                <p
-                  style={{
-                    fontSize: "1rem",
-                    fontWeight: 800,
-                    color: PIONEER_BLUE,
-                    marginBottom: "0.25rem",
-                  }}
-                >
-                  The Pioneer
-                </p>
-                <p style={{ fontSize: "0.8rem", color: MUTED_DIM, margin: 0 }}>
-                  Identity rebuilding &middot; Ambition &middot; Post-burnout momentum &middot;
-                  Becoming alongside parenting
-                </p>
-              </div>
-            </div>
-            <p
-              style={{
-                fontSize: "0.975rem",
-                lineHeight: 1.75,
-                color: MUTED_BRIGHT,
-                marginBottom: "1rem",
-              }}
-            >
-              The Pioneer is the right companion for when stability has returned enough that you
-              are ready to think about what comes next. Who are you, beyond being a parent? What
-              did you want for your life before parenthood consumed the foreground? What new
-              ambitions or callings have emerged from the experience of raising children that you
-              have not yet named?
-            </p>
-            <p style={{ fontSize: "0.975rem", lineHeight: 1.75, color: MUTED_BRIGHT, margin: 0 }}>
-              The Pioneer does not treat parenthood as an obstacle to identity. It treats it as
-              one of the most significant experiences through which identity is built \u2014 and
-              it helps you build forwards from it, rather than backwards to who you were before
-              children arrived.
-            </p>
-          </div>
-
-          <p
-            style={{
-              color: MUTED_BRIGHT,
-              fontSize: "1rem",
-              lineHeight: 1.75,
-            }}
-          >
-            Most parents will move between these two companions over time \u2014 sometimes within
-            the same week. The point is not to pick one and stay there. It is to have access to
-            both, and to an AI that understands which mode you are in without you having to explain
-            it every time.
-          </p>
-        </section>
-
-        {/* ── SECTION 10: What AI Cannot Replace ────────────────────────────── */}
-        <section
-          style={{
-            marginBottom: "3.5rem",
-            paddingBottom: "3.5rem",
-            borderBottom: `1px solid ${BORDER_FAINT}`,
-          }}
-        >
-          <h2
-            style={{
-              fontWeight: 800,
-              fontSize: "clamp(1.35rem, 2.5vw, 1.75rem)",
-              color: "#fff",
-              lineHeight: 1.2,
-              marginBottom: "1rem",
-              letterSpacing: "-0.015em",
-            }}
-          >
-            What Can AI Not Replace When It Comes to Parenting Support?
-          </h2>
-          <p
-            style={{
-              color: MUTED_BRIGHT,
-              fontSize: "1rem",
-              lineHeight: 1.75,
-              marginBottom: "1.25rem",
-            }}
-          >
-            Honesty requires naming this clearly, because false promises in this space cause
-            real harm.
-          </p>
-          <p
-            style={{
-              color: MUTED_BRIGHT,
-              fontSize: "1rem",
-              lineHeight: 1.75,
-              marginBottom: "1.25rem",
-            }}
-          >
-            MEOK cannot hold your baby so you can sleep. It cannot step in when you need to take
-            a break from the room. It cannot provide the co-regulation that children need from
-            physical presence \u2014 the hug, the hand on the shoulder, the body that arrives
-            and stays. It cannot replace the deep and irreplaceable value of a therapist who has
-            clinical training in perinatal mental health and a sustained therapeutic relationship
-            with you.
-          </p>
-          <p
-            style={{
-              color: MUTED_BRIGHT,
-              fontSize: "1rem",
-              lineHeight: 1.75,
-              marginBottom: "1.25rem",
-            }}
-          >
-            If you are experiencing postnatal depression, postpartum psychosis, active thoughts
-            of harming yourself or your children, or severe parental burnout with escape ideation,
-            please reach out to your GP, a midwife, a health visitor, or the Samaritans on 116 123.
-            These are clinical situations that require clinical support.
-          </p>
-          <p
-            style={{
-              color: MUTED_BRIGHT,
-              fontSize: "1rem",
-              lineHeight: 1.75,
-              marginBottom: "1.25rem",
-            }}
-          >
-            What MEOK can do is occupy the large space between those clinical thresholds and the
-            moment when everything is fine. Most parenting distress does not reach clinical threshold.
-            It lives in the exhaustion, the guilt, the invisible load, the identity grief, the
-            isolation. In that space \u2014 which is vast, and affects far more parents than will
-            ever seek formal support \u2014 MEOK can be genuinely useful, genuinely present, and
-            genuinely without judgment.
-          </p>
-
-          <div
-            style={{
-              background: "rgba(245,240,232,0.03)",
-              border: `1px solid ${BORDER_DIM}`,
-              borderRadius: "0.75rem",
-              padding: "1.5rem",
-            }}
-          >
-            <p
-              style={{
-                fontSize: "0.8rem",
-                fontWeight: 700,
-                color: MUTED_DIM,
-                textTransform: "uppercase" as const,
-                letterSpacing: "0.06em",
-                marginBottom: "0.75rem",
-              }}
-            >
-              UK Crisis Resources for Parents
-            </p>
-            <div style={{ display: "flex", flexDirection: "column" as const, gap: "0.5rem" }}>
-              {[
-                { label: "Samaritans", detail: "116 123 \u2014 free, 24/7, anonymous" },
-                {
-                  label: "PANDAS Foundation",
-                  detail: "Pre and postnatal depression support \u2014 0808 1961 776",
-                },
-                {
-                  label: "Family Lives",
-                  detail: "Parenting helpline \u2014 0808 800 2222",
-                },
-                {
-                  label: "NHS Talking Therapies",
-                  detail: "Self-refer online for CBT, counselling, and guided self-help",
-                },
-                {
-                  label: "APNI",
-                  detail: "Association for Post Natal Illness \u2014 apni.org",
-                },
-              ].map((r) => (
-                <div
-                  key={r.label}
-                  style={{
-                    display: "flex",
-                    gap: "0.625rem",
-                    fontSize: "0.875rem",
-                    lineHeight: 1.5,
-                  }}
-                >
-                  <span
-                    style={{
-                      color: GOLD,
-                      fontWeight: 700,
-                      minWidth: "9rem",
-                      flexShrink: 0,
-                    }}
-                  >
-                    {r.label}
+                <div style={s.compareRowAlt}>
+                  <span style={s.compareCellLabel}>Judgment risk</span>
+                  <span style={s.compareCell}>
+                    High; peer judgment frequent, pile-ons common with sensitive
+                    topics
                   </span>
-                  <span style={{ color: MUTED }}>{r.detail}</span>
+                  <span style={s.compareCellGold}>
+                    None; Maternal Covenant prevents moralising in any form
+                  </span>
                 </div>
-              ))}
-            </div>
-          </div>
-        </section>
+                <div style={s.compareRow}>
+                  <span style={s.compareCellLabel}>Memory of you</span>
+                  <span style={s.compareCell}>
+                    None; you start from the beginning every thread, every time
+                  </span>
+                  <span style={s.compareCellGold}>
+                    Persistent across months; knows your full parenting story
+                  </span>
+                </div>
+                <div style={s.compareRowAlt}>
+                  <span style={s.compareCellLabel}>Availability</span>
+                  <span style={s.compareCell}>
+                    Depends on other users being online; quiet at 3am
+                  </span>
+                  <span style={s.compareCellGold}>
+                    Always available; 3am, 5am, during the school run
+                  </span>
+                </div>
+                <div style={s.compareRow}>
+                  <span style={s.compareCellLabel}>Response quality</span>
+                  <span style={s.compareCell}>
+                    Variable peer opinions; often conflicting, sometimes
+                    harmful
+                  </span>
+                  <span style={s.compareCellGold}>
+                    Consistent; grounded in your specific context across time
+                  </span>
+                </div>
+                <div style={s.compareRowAlt}>
+                  <span style={s.compareCellLabel}>Unspeakable feelings</span>
+                  <span style={s.compareCell}>
+                    Extremely high risk; screenshots shared without consent;
+                    permanent record
+                  </span>
+                  <span style={s.compareCellGold}>
+                    Safe to express; never shared, never judged, no permanent
+                    public record
+                  </span>
+                </div>
+                <div style={s.compareRow}>
+                  <span style={s.compareCellLabel}>Family coverage</span>
+                  <span style={s.compareCell}>
+                    Individual accounts only; nothing designed for family units
+                  </span>
+                  <span style={s.compareCellGold}>
+                    Family Tier: up to 5 private companions on one plan
+                  </span>
+                </div>
+                <div style={s.compareRowAlt}>
+                  <span style={s.compareCellLabel}>Child safety</span>
+                  <span style={s.compareCell}>
+                    No child safety features; children&apos;s exposure unmonitored
+                  </span>
+                  <span style={s.compareCellGold}>
+                    Guardian monitors family digital safety in the background
+                  </span>
+                </div>
+              </div>
 
-        {/* ── FAQ SECTION ────────────────────────────────────────────────────── */}
-        <section style={{ marginBottom: "3.5rem" }}>
-          <h2
-            style={{
-              fontWeight: 800,
-              fontSize: "clamp(1.35rem, 2.5vw, 1.75rem)",
-              color: "#fff",
-              lineHeight: 1.2,
-              marginBottom: "2rem",
-              letterSpacing: "-0.015em",
-            }}
-          >
-            Frequently Asked Questions
-          </h2>
+              {/* ── Section 10: Guardian ── */}
+              <h2 style={s.h2}>
+                Guardian: Protecting Your Children While You Take Care of Yourself
+              </h2>
 
-          <div style={{ display: "flex", flexDirection: "column" as const, gap: "1.25rem" }}>
-            {[
-              {
-                q: "Can AI help with parenting stress?",
-                a: "Yes \u2014 within honest limits. AI cannot replace sleep, a co-parent, or a clinical therapist. What it can do is be available at midnight when nobody else is, listen without judgment, remember your children and their struggles across weeks and months, and help you process the invisible emotional labour of parenting that rarely gets acknowledged anywhere else. MEOK\u2019s Sovereign Memory means that every conversation starts from context, not from scratch.",
-              },
-              {
-                q: "What is parental burnout?",
-                a: "Parental burnout is a state of severe, chronic exhaustion specific to the parenting role, characterised by four dimensions: overwhelming exhaustion in relation to your children, emotional distancing from them, loss of parental fulfilment, and an acute contrast with the parent you used to be. It is different from work burnout because the role cannot be resigned from. Research suggests it affects 5\u20138% of parents and is significantly under-reported due to guilt and stigma.",
-              },
-              {
-                q: "Can MEOK help me be a better parent?",
-                a: "Not by telling you how to parent \u2014 MEOK does not do that. It helps by supporting the parent behind the role: the person who is exhausted, carrying guilt, grieving their pre-parent identity, and needing to be heard. When you are less depleted and more known, you show up differently. MEOK\u2019s Family tier also means your AI companion knows your children by name, holds their milestones and current struggles, and conversations about them start from real context.",
-              },
-              {
-                q: "How does the Family tier work?",
-                a: "MEOK\u2019s Family tier covers up to six members under one subscription. Each member has their own private AI companion with Sovereign Memory. Parents get a dashboard view with Guardian alerts for children\u2019s digital safety. Children cannot see adult conversations; adults cannot see children\u2019s private conversations. The parent\u2019s companion holds contextual knowledge of all family members \u2014 names, ages, milestones, struggles \u2014 contributed by the parent over time.",
-              },
-              {
-                q: "Is MEOK safe to use around children?",
-                a: "Yes. Children have age-gated profiles with appropriate content filters. MEOK\u2019s Guardian system monitors for grooming language, predatory contact patterns, and inappropriate content using DistilBERT-powered threat detection, sending silent alerts to parents when specific patterns are detected. Children\u2019s conversations are private from parents in normal use; the safety layer activates only when threat signatures are present. The system is designed around child safety as a first principle.",
-              },
-            ].map((item) => (
-              <div
-                key={item.q}
-                style={{
-                  padding: "1.5rem",
-                  background: "rgba(245,240,232,0.03)",
-                  border: `1px solid ${BORDER_DIM}`,
-                  borderRadius: "0.75rem",
-                }}
-              >
-                <h3
-                  style={{
-                    fontWeight: 700,
-                    fontSize: "1rem",
-                    color: "#fff",
-                    marginBottom: "0.75rem",
-                    lineHeight: 1.4,
-                  }}
-                >
-                  {item.q}
-                </h3>
-                <p style={{ fontSize: "0.95rem", lineHeight: 1.75, color: MUTED, margin: 0 }}>
-                  {item.a}
+              <p style={s.p}>
+                Parenting stress and online safety are two distinct challenges that
+                often converge in the same household. A parent who is overwhelmed
+                and exhausted is less able to monitor their children&apos;s digital
+                environment. A teenager who is struggling may retreat further into
+                online spaces that the parent cannot see. The risks compound at
+                exactly the moment the parent has least capacity to respond to them.
+              </p>
+
+              <p style={s.p}>
+                MEOK&apos;s Guardian feature provides family safety monitoring as an
+                integrated part of the Family Tier. While you use your private MEOK
+                companion space to process your own parenting stress &mdash; to say
+                what you cannot say to anyone else &mdash; Guardian watches for
+                safety concerns in your family&apos;s digital environment.
+              </p>
+
+              <p style={s.p}>
+                This is not surveillance for its own sake. It is a recognition that
+                parental oversight and parental wellbeing are not separate problems.
+                A parent who is mentally resourced, who has somewhere to put their
+                own feelings, is a more effective guardian of their children&apos;s
+                wellbeing in every environment. The two functions &mdash; your
+                private companion space and Guardian&apos;s protective monitoring
+                &mdash; are designed to work together.
+              </p>
+
+              <ul style={s.ul}>
+                <li style={s.li}>
+                  Real-time monitoring for potential online safety concerns across
+                  family devices
+                </li>
+                <li style={s.li}>
+                  Alerts for patterns that may indicate a child is at risk of harm,
+                  exploitation, or dangerous content
+                </li>
+                <li style={s.li}>
+                  Integrated with the Family Tier so oversight extends across all
+                  family members&apos; digital activity
+                </li>
+                <li style={s.li}>
+                  Designed to be age-appropriate: as children mature, the balance
+                  between oversight and privacy adjusts appropriately
+                </li>
+                <li style={s.li}>
+                  Operates without requiring the parent to be constantly engaged;
+                  it works in the background while you attend to everything else
+                </li>
+              </ul>
+
+              {/* ── Section 11: Family Tier ── */}
+              <h2 style={s.h2}>The Family Tier: Private Space for Every Member</h2>
+
+              <p style={s.p}>
+                One of the most important design decisions in MEOK is that the Family
+                Tier provides genuinely separate companion spaces for each family
+                member &mdash; not a shared family account, not a space where
+                different family members can see each other&apos;s conversations.
+              </p>
+
+              <p style={s.p}>
+                A family is not a unit of shared experience. It is a collection of
+                individuals who share a household and a history, each carrying their
+                own private inner life. A fourteen-year-old navigating social anxiety
+                and identity needs a completely different companion space from their
+                mother who is processing years of exhaustion from being the
+                household&apos;s primary emotional support. A father who feels
+                invisible in the family needs somewhere to say that &mdash; which is
+                not the family dinner table.
+              </p>
+
+              <p style={s.p}>
+                The Family Tier accommodates all of this. Up to five companions on a
+                single plan, each entirely private from every other member, each
+                building its own memory of its own user&apos;s story across time.
+                The privacy guarantee is absolute: your companion space is yours
+                alone. No other family member can see it. Not even with admin access.
+              </p>
+
+              <div style={s.cardGrid}>
+                <div style={s.card}>
+                  <span style={s.cardIcon} aria-hidden="true">&#128100;</span>
+                  <p style={s.cardTitle}>Your Companion</p>
+                  <p style={s.cardBody}>
+                    Your private space for the real parenting story &mdash; the one
+                    you cannot tell anyone else. Knows your history across months.
+                    Never judges what you bring to it.
+                  </p>
+                </div>
+                <div style={s.card}>
+                  <span style={s.cardIcon} aria-hidden="true">&#128101;</span>
+                  <p style={s.cardTitle}>Your Partner&apos;s Companion</p>
+                  <p style={s.cardBody}>
+                    Separate, entirely private. They have their own processing space.
+                    Nothing crosses between accounts. The privacy is mutual and
+                    absolute.
+                  </p>
+                </div>
+                <div style={s.card}>
+                  <span style={s.cardIcon} aria-hidden="true">&#128103;</span>
+                  <p style={s.cardTitle}>Your Children&apos;s Companions</p>
+                  <p style={s.cardBody}>
+                    Age-appropriate companion support for the children in your
+                    family, each in their own private space, with Guardian&apos;s
+                    safety monitoring operating in the background.
+                  </p>
+                </div>
+              </div>
+
+              <hr style={s.divider} />
+
+              {/* ── Section 12: UK crisis ── */}
+              <h2 style={s.h2}>
+                The UK Parental Mental Health Crisis in Context
+              </h2>
+
+              <p style={s.p}>
+                The statistics on parental mental health in the United Kingdom are
+                not widely shared, because they are politically uncomfortable. A
+                society that tells parents that having children is the greatest joy
+                available to a human being does not easily accommodate data showing
+                that parenting is making a significant proportion of its population
+                unwell.
+              </p>
+
+              <p style={s.p}>
+                The figures are stark. Research published in the last three years
+                consistently shows a picture of widespread parental distress that is
+                almost entirely invisible in public policy and media coverage.
+              </p>
+
+              <ul style={s.ul}>
+                <li style={s.li}>
+                  1 in 5 UK parents report levels of parental stress meeting the
+                  threshold for moderate-to-severe clinical concern.
+                </li>
+                <li style={s.li}>
+                  Maternal mental health problems &mdash; including postnatal
+                  depression, perinatal anxiety, and longer-term maternal burnout
+                  &mdash; cost the UK economy an estimated &pound;8.1 billion per
+                  year in lost productivity, NHS costs, and social care demand.
+                </li>
+                <li style={s.li}>
+                  NSPCC data from 2025 found that 63% of parents feel unable to be
+                  honest about parenting struggles for fear of judgment &mdash; a
+                  statistic that should constitute a public health emergency, and
+                  does not.
+                </li>
+                <li style={s.li}>
+                  Despite these figures, the UK has no national parenting mental
+                  health strategy and parenting support services have been subject to
+                  significant funding cuts since 2010.
+                </li>
+                <li style={s.li}>
+                  Fathers are systematically excluded from parental mental health
+                  services that are designed almost entirely for mothers. Paternal
+                  PPD, paternal burnout, and the specific mental health challenges
+                  of fatherhood are essentially invisible in service design.
+                </li>
+                <li style={s.li}>
+                  CAMHS waiting times mean that parents of children with mental
+                  health difficulties often wait over a year for assessment &mdash;
+                  during which time they must manage their child&apos;s crisis
+                  essentially unsupported.
+                </li>
+              </ul>
+
+              <p style={s.p}>
+                Into this context, MEOK is not positioned as a solution to a public
+                health crisis. It is positioned as what it is: a private resource for
+                individual parents who need somewhere to process their experience
+                honestly, right now, without waiting for a political or systemic
+                response that may not arrive for a generation. The crisis in parental
+                mental health support is real. MEOK cannot fix it. What MEOK can do
+                is ensure that the parent reading this does not have to carry their
+                story alone while the system catches up.
+              </p>
+
+              {/* ── Section 13: Professional support ── */}
+              <h2 style={s.h2}>
+                When Parenting Stress Needs Professional Support
+              </h2>
+
+              <p style={s.p}>
+                MEOK is a companion, not a clinician. There are situations in which
+                parenting stress has moved beyond what any companion &mdash; human or
+                AI &mdash; can adequately address, and professional support is needed.
+                MEOK will always signpost clearly and compassionately when a
+                conversation reaches this point.
+              </p>
+
+              <p style={s.p}>
+                Signs that parenting stress may need professional clinical support:
+              </p>
+
+              <ul style={s.ul}>
+                <li style={s.li}>
+                  Persistent low mood, hopelessness, or inability to experience
+                  pleasure that has lasted more than two weeks
+                </li>
+                <li style={s.li}>
+                  Thoughts of harming yourself or your children
+                </li>
+                <li style={s.li}>
+                  Complete disconnection from your children over a sustained period
+                  &mdash; not finding relief in any interaction
+                </li>
+                <li style={s.li}>
+                  Significant changes in sleep, appetite, or concentration beyond the
+                  baseline of ordinary parenting fatigue
+                </li>
+                <li style={s.li}>
+                  Using alcohol or other substances to manage parenting stress
+                </li>
+                <li style={s.li}>
+                  A sense that you are not safe, or that your children are not safe
+                  with you
+                </li>
+                <li style={s.li}>
+                  Rage episodes that feel out of control or that frighten you
+                </li>
+                <li style={s.li}>
+                  Complete inability to function in the parenting role for an
+                  extended period
+                </li>
+              </ul>
+
+              <p style={s.p}>
+                If any of the above apply, please speak to your GP as a matter of
+                priority. The NSPCC helpline (0808 800 5000) and Mind (0300 123 3393)
+                also offer support. If you or a child are in immediate danger, call
+                999.
+              </p>
+
+              <div style={s.disclaimerBox} role="note">
+                <p style={s.disclaimerText}>
+                  <strong style={{ color: "rgba(245,240,232,0.65)" }}>
+                    Clinical disclaimer:
+                  </strong>{" "}
+                  MEOK is a private AI companion, not a medical device, diagnostic
+                  tool, or substitute for professional mental health care. Nothing
+                  in this article or in any MEOK conversation constitutes clinical
+                  advice. If you are experiencing a mental health crisis or have
+                  concerns about child safety, please contact your GP, NHS 111, the
+                  NSPCC (0808 800 5000), or emergency services (999) as appropriate.
                 </p>
               </div>
-            ))}
-          </div>
-        </section>
 
-        {/* ── CTA SECTION ────────────────────────────────────────────────────── */}
-        <section>
-          <div
-            style={{
-              background:
-                "linear-gradient(135deg, rgba(201,168,76,0.1) 0%, rgba(91,141,217,0.07) 100%)",
-              border: `1px solid ${GOLD_BORDER}`,
-              borderRadius: "1rem",
-              padding: "2.5rem 2rem",
-              textAlign: "center" as const,
-            }}
-          >
-            <h2
-              style={{
-                fontWeight: 900,
-                fontSize: "clamp(1.4rem, 2.5vw, 1.9rem)",
-                color: "#fff",
-                lineHeight: 1.2,
-                marginBottom: "1rem",
-                letterSpacing: "-0.015em",
-              }}
-            >
-              You Are Allowed to Find This Hard
-            </h2>
-            <p
-              style={{
-                color: MUTED,
-                fontSize: "1rem",
-                lineHeight: 1.7,
-                maxWidth: "34rem",
-                margin: "0 auto 2rem",
-              }}
-            >
-              MEOK does not tell you that you\u2019re doing great when you\u2019re not. It does not
-              tell you to count your blessings. It listens, remembers, and holds space for the parent
-              behind the role \u2014 without judgment, without agenda, and without telling you that
-              you chose this.
-            </p>
-            <div
-              style={{
-                display: "flex",
-                flexWrap: "wrap",
-                gap: "1rem",
-                justifyContent: "center",
-              }}
-            >
-              <Link
-                href="/birth"
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: "0.5rem",
-                  padding: "0.875rem 2rem",
-                  background: GOLD,
-                  color: "#0d0c18",
-                  fontWeight: 800,
-                  fontSize: "0.9rem",
-                  borderRadius: "0.5rem",
-                  textDecoration: "none",
-                  letterSpacing: "0.01em",
-                }}
-              >
-                Start with MEOK &#8594;
-              </Link>
-              <Link
-                href="/guardian"
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: "0.5rem",
-                  padding: "0.875rem 2rem",
-                  background: "transparent",
-                  color: MUTED_BRIGHT,
-                  fontWeight: 700,
-                  fontSize: "0.9rem",
-                  borderRadius: "0.5rem",
-                  textDecoration: "none",
-                  border: `1px solid ${BORDER_DIM}`,
-                  letterSpacing: "0.01em",
-                }}
-              >
-                Explore Guardian
-              </Link>
-            </div>
-            <p
-              style={{
-                fontSize: "0.775rem",
-                color: MUTED_FAINT,
-                marginTop: "1.5rem",
-              }}
-            >
-              MEOK AI LABS &middot; Built by Nicholas Templeman &middot; @meok_ai
-            </p>
-          </div>
-        </section>
+              {/* ── FAQ ── */}
+              <h2 style={s.h2}>Frequently Asked Questions</h2>
 
-        {/* ── RELATED ARTICLES ───────────────────────────────────────────────── */}
-        <section style={{ marginTop: "4rem" }}>
-          <h2
-            style={{
-              fontWeight: 800,
-              fontSize: "1.1rem",
-              color: MUTED_DIM,
-              marginBottom: "1.25rem",
-              letterSpacing: "0.04em",
-              textTransform: "uppercase" as const,
-            }}
-          >
-            Related Reading
-          </h2>
-          <div
-            style={{
-              display: "grid",
-              gap: "0.75rem",
-              gridTemplateColumns: "1fr",
-            }}
-          >
-            {[
-              {
-                href: "/blog/ai-for-burnout",
-                title: "AI Support for Burnout: Recovery Starts With Being Heard",
-                desc: "Burnout across all roles \u2014 its dimensions, its recovery, and how MEOK holds the pattern.",
-              },
-              {
-                href: "/blog/ai-for-new-parents",
-                title: "AI for New Parents: The First Year Without a Manual",
-                desc:
-                  "The specific challenges of early parenthood, postnatal identity, and the invisible load from the start.",
-              },
-              {
-                href: "/blog/ai-for-single-parents",
-                title: "AI for Single Parents: Carrying It All Alone",
-                desc:
-                  "How single parents manage triple load \u2014 and where MEOK can provide real structural support.",
-              },
-              {
-                href: "/blog/guardian-family-safety",
-                title: "Guardian: MEOK\u2019s Family Safety System Explained",
-                desc:
-                  "A full walkthrough of how Guardian monitors, alerts, and protects children\u2019s digital safety.",
-              },
-              {
-                href: "/blog/sovereign-ai-for-families",
-                title: "Sovereign AI for Families: Why Privacy Is a Family Value",
-                desc:
-                  "Why family data sovereignty matters and how MEOK\u2019s architecture protects every member.",
-              },
-            ].map((rel) => (
-              <Link
-                key={rel.href}
-                href={rel.href}
-                style={{
-                  display: "block",
-                  padding: "1rem 1.25rem",
-                  background: "rgba(245,240,232,0.03)",
-                  border: `1px solid ${BORDER_FAINT}`,
-                  borderRadius: "0.625rem",
-                  textDecoration: "none",
-                }}
-              >
-                <p
-                  style={{
-                    fontSize: "0.9rem",
-                    fontWeight: 700,
-                    color: MUTED_BRIGHT,
-                    marginBottom: "0.25rem",
-                    lineHeight: 1.4,
-                  }}
-                >
-                  {rel.title}
+              <div style={s.faqItem}>
+                <p style={s.faqQ}>
+                  Is it normal to feel overwhelmed and resentful as a parent?
                 </p>
-                <p style={{ fontSize: "0.825rem", color: MUTED_DIM, margin: 0, lineHeight: 1.5 }}>
-                  {rel.desc}
+                <p style={s.faqA}>
+                  Yes, completely. Research and clinical experience consistently
+                  confirm that feelings of overwhelm, resentment, frustration, being
+                  touched-out, and even momentary ambivalence about parenthood are
+                  universally experienced by parents at some point. The problem is
+                  not the feelings themselves &mdash; it is the cultural silence
+                  around them. Parenting shame stops parents from seeking support,
+                  which compounds stress into genuine mental health difficulties.
+                  Having these feelings does not make you a bad parent. It makes you
+                  a human being doing an extraordinarily demanding job, usually
+                  without adequate support.
                 </p>
-              </Link>
-            ))}
-          </div>
-        </section>
+              </div>
 
-      </main>
-    </div>
+              <div style={s.faqItem}>
+                <p style={s.faqQ}>How can AI help with parenting stress?</p>
+                <p style={s.faqA}>
+                  AI cannot replace therapy, GP support, or parenting programmes
+                  &mdash; and MEOK never claims to. What MEOK offers is a completely
+                  private space to process the feelings you cannot say out loud to
+                  anyone in your life. Because MEOK uses persistent Sovereign Memory,
+                  it knows the arc of your parenting challenges across time: the SEND
+                  assessment you have been navigating for eight months, the phase your
+                  toddler is stuck in, the teenager who stopped talking to you in
+                  October. It can help you reflect, process, and prepare for difficult
+                  conversations without judgment, at any hour of the day or night.
+                </p>
+              </div>
+
+              <div style={s.faqItem}>
+                <p style={s.faqQ}>
+                  What is parenting shame and why does it make stress worse?
+                </p>
+                <p style={s.faqA}>
+                  Parenting shame is the culturally enforced silence around the
+                  difficulties of raising children. Saying out loud that you find
+                  parenting overwhelming &mdash; particularly in the UK &mdash; is
+                  treated as evidence of inadequacy or ingratitude. This shame
+                  prevents parents from seeking support, discussing their struggles
+                  with their GP or health visitor, or even acknowledging the stress to
+                  themselves. The result is that stress compounds in isolation. NSPCC
+                  data from 2025 found that 63% of parents feel they cannot be honest
+                  about parenting struggles for fear of judgment.
+                </p>
+              </div>
+
+              <div
+                style={{
+                  borderBottom: "none",
+                  paddingBottom: 0,
+                  marginBottom: 0,
+                }}
+              >
+                <p style={s.faqQ}>Does MEOK support co-parenting stress?</p>
+                <p style={s.faqA}>
+                  Yes. Co-parenting after separation is one of the most emotionally
+                  demanding situations a parent can navigate &mdash; managing grief,
+                  negotiation, ongoing conflict, and the constant pressure to shield
+                  your children from adult complexity, all simultaneously. MEOK
+                  provides a private space to process feelings about the co-parenting
+                  relationship without involving the children, without burdening
+                  friends who know both parties, and without the risk of anything said
+                  being used against you. It remembers the evolving co-parenting
+                  dynamic over time, so you are never starting from scratch.
+                </p>
+              </div>
+
+              {/* ── CTA ── */}
+              <div style={s.ctaSection} role="region" aria-label="Call to action">
+                <span style={s.ctaEyebrow}>Start Today</span>
+                <h2 style={s.ctaHeading}>
+                  Say What You&apos;ve Never Been Able to Say
+                </h2>
+                <p style={s.ctaBody}>
+                  You love your children. You are also overwhelmed by them sometimes.
+                  Both things are true, and neither cancels the other out. MEOK gives
+                  you a completely private space to hold that complexity &mdash;
+                  without judgment, without consequences, with a companion that
+                  actually knows your story and keeps knowing it.
+                </p>
+                <Link href="/birth" style={s.ctaButton}>
+                  Meet Your Companion
+                </Link>
+                <br />
+                <Link href="/blog" style={s.ctaSecondary}>
+                  Read more from MEOK AI LABS
+                </Link>
+              </div>
+
+            </article>
+          </div>
+        </main>
+
+        {/* ── Footer ── */}
+        <footer style={s.footer}>
+          <p style={s.footerText}>
+            &copy; 2026 MEOK AI LABS Ltd. Registered in England &amp; Wales.
+            <br />
+            MEOK is a private AI companion, not a medical device or clinical
+            service. In a mental health emergency, contact your GP, NHS 111, or
+            call 999.
+          </p>
+          <div style={s.footerLinks}>
+            <Link href="/privacy" style={s.footerLink}>
+              Privacy
+            </Link>
+            <Link href="/terms" style={s.footerLink}>
+              Terms
+            </Link>
+            <Link href="/about" style={s.footerLink}>
+              About
+            </Link>
+            <Link href="/blog" style={s.footerLink}>
+              Blog
+            </Link>
+            <Link href="/birth" style={s.footerLink}>
+              Get Started
+            </Link>
+          </div>
+        </footer>
+      </div>
+    </>
   );
 }

@@ -1,7 +1,7 @@
 // Empty string = relative paths (proxied via next.config.ts rewrites in production)
 // Falls back to localhost for local dev
-const MCP_URL = process.env.NEXT_PUBLIC_MCP_URL ?? "http://localhost:3100";
-const API_URL = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:3100";
+const MCP_URL = process.env.NEXT_PUBLIC_MCP_URL ?? process.env.NEXT_PUBLIC_SOV3_ENDPOINT ?? "http://localhost:3101";
+const API_URL = process.env.NEXT_PUBLIC_API_URL ?? process.env.NEXT_PUBLIC_SOV3_ENDPOINT ?? "http://localhost:3101";
 
 function getToken(): string | null {
   if (typeof window === "undefined") return null;

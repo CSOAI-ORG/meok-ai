@@ -268,7 +268,10 @@ export default function DreamsPage() {
   useEffect(() => {
     callTool<DreamTargets>("get_dream_targets")
       .then((r) => setTargets(r.targets || []))
-      .catch(console.error)
+      .catch((e) => {
+        console.error("get_dream_targets failed:", e);
+        setTargets([]);
+      })
       .finally(() => setLoading(false));
   }, []);
 
@@ -278,7 +281,8 @@ export default function DreamsPage() {
       const result = await callTool<DreamResult>("enter_dream_state", { duration: 30 });
       setDreamResult(result);
     } catch (e) {
-      console.error(e);
+      console.error("enter_dream_state failed:", e);
+      setDreamResult({ summary: "Dream cycle could not be triggered. The system may be busy.", insights: [], consolidations: [], bisociations: [] });
     } finally {
       setDreaming(false);
     }

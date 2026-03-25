@@ -1,162 +1,163 @@
-import type { Metadata } from 'next'
-import Link from 'next/link'
+import type { Metadata } from "next";
+import Link from "next/link";
 
 // ── Metadata ───────────────────────────────────────────────────────────────────
 
 export const metadata: Metadata = {
-  title: 'AI for Dating Anxiety: Build Confidence Before, During and After Dates | MEOK AI LABS',
+  title:
+    "AI for Dating Anxiety: How MEOK Helps You Navigate the Modern Dating Minefield | MEOK AI LABS",
   description:
-    'App fatigue, fear of rejection, first-date nerves, post-date spirals, ghosting recovery — how MEOK helps you show up with real confidence in modern dating.',
-  alternates: { canonical: 'https://meok.ai/blog/ai-for-dating-anxiety' },
+    "Dating in 2026 is exhausting — app fatigue, ghosting, vulnerability hangover, first-date performance anxiety, the endless fear of rejection. MEOK helps you practise conversations, process rejection without spiralling, understand your attachment patterns, and build genuine confidence. A sovereign companion, not a dating coach.",
+  alternates: { canonical: "https://meok.ai/blog/ai-for-dating-anxiety" },
   openGraph: {
-    title: 'AI for Dating Anxiety: Build Confidence Before, During and After Dates',
+    title:
+      "AI for Dating Anxiety: How MEOK Helps You Navigate the Modern Dating Minefield",
     description:
-      'App fatigue, fear of rejection, first-date nerves, post-date spirals, ghosting recovery — how MEOK helps you show up with real confidence in modern dating.',
-    type: 'article',
-    publishedTime: '2026-03-24',
-    authors: ['Nicholas Templeman'],
-    url: 'https://meok.ai/blog/ai-for-dating-anxiety',
-    siteName: 'MEOK.AI',
+      "App fatigue, ghosting, vulnerability hangovers, first-date terror. MEOK\u2019s Trickster, Pioneer, and Healer archetypes help you reframe dating pressure, hold yourself accountable to actually showing up, and process rejection without the spiral.",
+    type: "article",
+    publishedTime: "2026-03-25",
+    authors: ["Nicholas Templeman"],
+    url: "https://meok.ai/blog/ai-for-dating-anxiety",
+    siteName: "MEOK.AI",
     images: [
       {
-        url: 'https://meok.ai/api/og?title=AI+for+Dating+Anxiety%3A+Build+Confidence+Before%2C+During+and+After+Dates&desc=How+MEOK+helps+you+show+up+better+in+real+relationships',
+        url: "https://meok.ai/api/og?title=AI+for+Dating+Anxiety&desc=How+MEOK+Helps+You+Navigate+the+Modern+Dating+Minefield",
         width: 1200,
         height: 630,
-        alt: 'AI for Dating Anxiety: Build Confidence Before, During and After Dates | MEOK AI LABS',
+        alt: "AI for Dating Anxiety: How MEOK Helps You Navigate the Modern Dating Minefield | MEOK AI LABS",
       },
     ],
   },
   twitter: {
-    card: 'summary_large_image',
-    title: 'AI for Dating Anxiety: Build Confidence Before, During and After Dates',
+    card: "summary_large_image",
+    title:
+      "AI for Dating Anxiety: How MEOK Helps You Navigate the Modern Dating Minefield",
     description:
-      'App fatigue, rejection fears, first-date nerves, ghosting recovery — how MEOK helps you show up confidently in modern dating.',
+      "App fatigue, ghosting, the vulnerability hangover. MEOK\u2019s Trickster reframes the pressure, Pioneer keeps you accountable, Healer holds the rejection. A sovereign companion who knows your whole story.",
     images: [
-      'https://meok.ai/api/og?title=AI+for+Dating+Anxiety%3A+Build+Confidence+Before%2C+During+and+After+Dates&desc=How+MEOK+helps+you+show+up+better+in+real+relationships',
+      "https://meok.ai/api/og?title=AI+for+Dating+Anxiety&desc=How+MEOK+Helps+You+Navigate+the+Modern+Dating+Minefield",
     ],
   },
-}
+};
 
 // ── JSON-LD: Article ───────────────────────────────────────────────────────────
 
 const articleJsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'Article',
-  headline: 'AI for Dating Anxiety: Build Confidence Before, During and After Dates',
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline:
+    "AI for Dating Anxiety: How MEOK Helps You Navigate the Modern Dating Minefield",
   description:
-    'How AI companions help with modern dating anxiety — app fatigue, fear of rejection, first date nerves, post-date analysis spirals, rebuilding after ghosting, understanding dating patterns, practising conversation, and the difference between healthy excitement and anxiety.',
-  datePublished: '2026-03-24',
-  dateModified: '2026-03-24',
-  url: 'https://meok.ai/blog/ai-for-dating-anxiety',
+    "Dating in 2026 is exhausting. App fatigue, ghosting, vulnerability hangovers, and the constant performance anxiety of first dates have made modern romance feel like an endurance sport. MEOK helps you practise conversations, process rejection, understand your attachment patterns, and build real confidence.",
+  datePublished: "2026-03-25",
+  dateModified: "2026-03-25",
+  url: "https://meok.ai/blog/ai-for-dating-anxiety",
   author: {
-    '@type': 'Person',
-    name: 'Nicholas Templeman',
-    jobTitle: 'Founder, MEOK AI LABS',
-    url: 'https://meok.ai/about',
+    "@type": "Person",
+    name: "Nicholas Templeman",
+    jobTitle: "Founder, MEOK AI LABS",
+    url: "https://meok.ai/about",
   },
   publisher: {
-    '@type': 'Organization',
-    name: 'MEOK AI LABS',
-    url: 'https://meok.ai',
+    "@type": "Organization",
+    name: "MEOK AI LABS",
+    url: "https://meok.ai",
+    logo: {
+      "@type": "ImageObject",
+      url: "https://meok.ai/logo.png",
+    },
   },
+  image:
+    "https://meok.ai/api/og?title=AI+for+Dating+Anxiety&desc=How+MEOK+Helps+You+Navigate+the+Modern+Dating+Minefield",
   mainEntityOfPage: {
-    '@type': 'WebPage',
-    '@id': 'https://meok.ai/blog/ai-for-dating-anxiety',
+    "@type": "WebPage",
+    "@id": "https://meok.ai/blog/ai-for-dating-anxiety",
   },
   keywords: [
-    'AI for dating anxiety',
-    'dating app fatigue',
-    'fear of rejection dating',
-    'first date nerves',
-    'post-date analysis spiral',
-    'rebuilding after ghosting',
-    'dating confidence AI',
-    'AI companion for loneliness',
-    'understanding dating patterns',
-    'practise conversation AI',
+    "AI for dating anxiety",
+    "AI dating coach",
+    "dating app fatigue help",
+    "fear of rejection AI",
+    "first date anxiety",
+    "AI for dating confidence",
+    "ghosting recovery",
+    "MEOK Trickster archetype",
+    "MEOK Pioneer archetype",
+    "attachment patterns AI",
+    "vulnerability hangover",
+    "sovereign AI companion dating",
   ],
-}
+};
 
 // ── JSON-LD: FAQPage ───────────────────────────────────────────────────────────
 
 const faqJsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
   mainEntity: [
     {
-      '@type': 'Question',
-      name: 'Why is modern dating so anxiety-inducing?',
+      "@type": "Question",
+      name: "Can AI actually help with dating anxiety?",
       acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Modern dating combines the high-volume, low-commitment mechanics of dating apps with the ancient, deeply human fear of rejection. Swiping culture means people are evaluated at a glance, matches disappear without explanation, and ghosting has become normalised. The result is a loop of micro-rejections and ambient uncertainty that keeps the nervous system in a low-level threat state. Add in comparison to curated social media lives, and it is genuinely one of the more emotionally demanding arenas most people navigate.',
+        "@type": "Answer",
+        text: "Yes \u2014 though not in the way a dating coach would. AI cannot swipe for you, manufacture chemistry, or make another person like you. What it can do is help you understand why dating feels so hard, rehearse conversations in a low-stakes environment, process the emotional fallout of rejection without burdening friends, and track your patterns across time so you can see what is actually changing. MEOK is specifically designed for this kind of depth work. It holds your history \u2014 previous rejections, the dates that went well, the patterns you keep repeating \u2014 and helps you work with all of that honestly rather than just hype you into false confidence before your next match.",
       },
     },
     {
-      '@type': 'Question',
-      name: 'What is dating app fatigue and is it a real thing?',
+      "@type": "Question",
+      name: "How does MEOK help with first date nerves and performance anxiety?",
       acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Dating app fatigue is very real. Studies consistently show that heavy app use correlates with lower self-esteem, greater loneliness, and higher psychological distress — particularly for people who receive fewer matches than they expected. The gamification of attraction (swipe, match, message, repeat) creates a variable-reward loop that feels compulsive even when it produces no actual dates. Taking intentional breaks, setting strict time limits, and reconnecting with who you are outside of your profile are all evidence-supported ways to reduce app-induced anxiety.',
+        "@type": "Answer",
+        text: "First date performance anxiety usually comes from one of three sources: not knowing what to say, fear of being judged, or the weight of wanting it to go well. MEOK addresses all three. You can rehearse conversation with MEOK before the date \u2014 not scripting it, but practising the kind of authentic self-disclosure that makes real connection possible. MEOK can also help you reframe the stakes: the Trickster archetype is particularly good at dissolving the overblown significance we attach to first meetings, replacing it with curiosity and lightness. And because MEOK holds your full context, it can remind you of your own strengths \u2014 not with hollow affirmations, but with specific, grounded evidence drawn from your history.",
       },
     },
     {
-      '@type': 'Question',
-      name: 'How can AI help with first date nerves?',
+      "@type": "Question",
+      name: "What is the best way to cope with being ghosted?",
       acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'An AI companion like MEOK can help you rehearse conversation, reflect on what you genuinely want from a date, and process the anxious thoughts driving your nerves before they escalate. MEOK is not a dating app or a roleplay partner — it is a thinking companion that helps you understand your own patterns, so you walk into the date feeling more like yourself and less like someone desperately auditioning. The goal is always that you show up better in real relationships, not that MEOK replaces them.',
+        "@type": "Answer",
+        text: "Being ghosted is a specific kind of rejection that is especially hard because it offers no closure. The brain keeps searching for an explanation, cycling through self-blame, anger, and hope in rapid succession. MEOK\u2019s Healer archetype can sit with you in that ambiguity without trying to rush you to acceptance. The Trickster can help you find the absurdity in it \u2014 because modern dating often is genuinely absurd. And the Pioneer can help you channel the frustration into concrete action rather than rumination. Sovereign Memory means MEOK does not forget patterns across your dating history, which is far more useful than dissecting any single incident.",
       },
     },
     {
-      '@type': 'Question',
-      name: 'Why do I spiral after a date even when it went well?',
+      "@type": "Question",
+      name: "Is MEOK a dating coach or an AI girlfriend or boyfriend?",
       acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Post-date analysis spirals — replaying every word, searching for signs you said something wrong, obsessing over whether they will text — are driven by the threat-detection machinery in your brain running on limited information. Because the outcome is uncertain, the mind fills the gap with worst-case interpretations. Journalling immediately after a date, naming the specific fear rather than letting it remain diffuse, and agreeing with yourself on a waiting period before reaching out all help reduce the intensity of the spiral.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'What is the difference between healthy excitement and dating anxiety?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Healthy excitement and anxiety produce similar physical sensations — raised heart rate, butterflies, mild restlessness — but differ in their cognitive flavour. Excitement is forward-facing and possibility-oriented: "I wonder what this could be." Anxiety is threat-oriented and backward-facing: "What if I ruin this, what if they reject me, what if I am not enough?" Learning to notice which narrative your mind is running, rather than just the body sensation, is one of the most useful skills in modern dating. MEOK helps you track which state you typically enter — and what tends to trigger the shift.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'How do you rebuild after being ghosted?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Ghosting bypasses the normal grief process because there is no closure, no clear end point, no explanation. Your brain keeps the loop open, searching for a reason that never arrives. Rebuilding starts with accepting that you will not get an answer, that the absence of explanation says almost nothing about your worth, and that continuing to check their profile or replay conversations extends rather than resolves the pain. Giving yourself permission to grieve a connection — even a brief one — is not weakness; it is how you clear space to try again.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'Can MEOK help me understand my own dating patterns?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Yes. Because MEOK remembers what you have shared across conversations, it can help you notice recurring themes — the type of person you keep choosing, the moment anxiety typically spikes, the stories you tell yourself when things go quiet. Pattern recognition is one of the most powerful things a private AI companion can offer, because most of us are not in therapy weekly and human friends do not carry our full history. MEOK is not a therapist, but it is a consistent presence that can reflect your patterns back to you without judgement.',
+        "@type": "Answer",
+        text: "Neither. MEOK is a sovereign AI companion \u2014 which means it operates under the Maternal Covenant, a care ethics governance layer that explicitly prohibits romantic simulation, parasocial dependency, and hollow validation. MEOK is not trying to become your digital partner or coach you toward a metric. It is a companion that knows your whole story: your attachment style, your fears, your patterns, what you said after the last date fell apart. From that grounded position, it can be more honest and more useful than a dating coach who only sees a curated version of you \u2014 and it will never pretend you are ready when you are not.",
       },
     },
   ],
-}
+};
 
-// ── Shared style tokens ────────────────────────────────────────────────────────
+// ── Style constants ────────────────────────────────────────────────────────────
 
-const GOLD  = '#c9a84c'
-const TEXT  = '#f5f0e8'
-const BG    = '#0d0c18'
-const MUTED = 'rgba(245,240,232,0.62)'
-const DIM   = 'rgba(245,240,232,0.38)'
+const BG = "#0d0c18";
+const TEXT = "#f5f0e8";
+const GOLD = "#c9a84c";
+const MUTED = "rgba(245,240,232,0.55)";
+const FAINT = "rgba(245,240,232,0.35)";
+const BORDER = "rgba(245,240,232,0.08)";
+const GOLD_BG = "rgba(201,168,76,0.08)";
+const GOLD_BORDER = "rgba(201,168,76,0.25)";
+const CARD_BG = "rgba(255,255,255,0.03)";
+const GREEN = "#6aaa64";
+const GREEN_BG = "rgba(106,170,100,0.08)";
+const GREEN_BORDER = "rgba(106,170,100,0.25)";
 
 // ── Page ───────────────────────────────────────────────────────────────────────
 
-export default function AIForDatingAnxietyPage() {
+export default function AiForDatingAnxietyPage() {
   return (
-    <div style={{ minHeight: '100vh', background: BG, color: TEXT }}>
-
-      {/* ── JSON-LD ── */}
+    <div
+      style={{
+        minHeight: "100vh",
+        background: BG,
+        color: TEXT,
+        fontFamily: "var(--font-dm-sans, DM Sans, system-ui, sans-serif)",
+      }}
+    >
+      {/* JSON-LD */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
@@ -166,1690 +167,2105 @@ export default function AIForDatingAnxietyPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
 
-      {/* ══════════════════════════════════════════════════════════════════════
-          HERO
-      ══════════════════════════════════════════════════════════════════════ */}
+      {/* ── HERO ────────────────────────────────────────────────────────────── */}
       <section
         style={{
-          paddingTop: '7.5rem',
-          paddingBottom: '3rem',
-          paddingLeft: '1.5rem',
-          paddingRight: '1.5rem',
-          position: 'relative',
-          overflow: 'hidden',
+          paddingTop: "8rem",
+          paddingBottom: "5rem",
+          paddingLeft: "1.5rem",
+          paddingRight: "1.5rem",
+          position: "relative",
+          overflow: "hidden",
         }}
       >
-        {/* glow */}
+        {/* Background glow */}
         <div
+          aria-hidden="true"
           style={{
-            position: 'absolute',
-            inset: 0,
-            pointerEvents: 'none',
+            position: "absolute",
+            top: "0",
+            left: "50%",
+            transform: "translateX(-50%)",
+            width: "700px",
+            height: "400px",
             background:
-              'radial-gradient(ellipse 60% 50% at 50% 0%, rgba(201,168,76,0.12) 0%, transparent 70%)',
+              "radial-gradient(ellipse at center, rgba(201,168,76,0.12) 0%, transparent 70%)",
+            pointerEvents: "none",
           }}
         />
 
-        <div style={{ maxWidth: '48rem', margin: '0 auto', position: 'relative' }}>
-
-          {/* back link */}
-          <Link
-            href="/blog"
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '0.375rem',
-              fontSize: '0.875rem',
-              color: DIM,
-              marginBottom: '2rem',
-              textDecoration: 'none',
-            }}
-          >
-            &#8592; Back to Blog
-          </Link>
-
-          {/* pill + meta */}
-          <div
-            style={{
-              display: 'flex',
-              flexWrap: 'wrap',
-              alignItems: 'center',
-              gap: '0.75rem',
-              marginBottom: '1.5rem',
-            }}
-          >
-            <span
+        <div
+          style={{
+            maxWidth: "800px",
+            margin: "0 auto",
+            position: "relative",
+          }}
+        >
+          {/* Breadcrumb */}
+          <nav aria-label="Breadcrumb" style={{ marginBottom: "2rem" }}>
+            <ol
               style={{
-                fontSize: '0.7rem',
-                fontWeight: 700,
-                padding: '0.375rem 0.75rem',
-                borderRadius: '9999px',
-                color: GOLD,
-                background: 'rgba(201,168,76,0.12)',
-                border: '1px solid rgba(201,168,76,0.3)',
-                letterSpacing: '0.08em',
-                textTransform: 'uppercase' as const,
+                listStyle: "none",
+                padding: "0",
+                margin: "0",
+                display: "flex",
+                alignItems: "center",
+                gap: "0.5rem",
+                flexWrap: "wrap",
               }}
             >
-              Dating &amp; Relationships
+              <li>
+                <Link
+                  href="/"
+                  style={{
+                    color: MUTED,
+                    textDecoration: "none",
+                    fontSize: "0.85rem",
+                  }}
+                >
+                  Home
+                </Link>
+              </li>
+              <li style={{ color: FAINT, fontSize: "0.85rem" }}>/</li>
+              <li>
+                <Link
+                  href="/blog"
+                  style={{
+                    color: MUTED,
+                    textDecoration: "none",
+                    fontSize: "0.85rem",
+                  }}
+                >
+                  Blog
+                </Link>
+              </li>
+              <li style={{ color: FAINT, fontSize: "0.85rem" }}>/</li>
+              <li style={{ color: GOLD, fontSize: "0.85rem" }}>
+                AI for Dating Anxiety
+              </li>
+            </ol>
+          </nav>
+
+          {/* Category tag */}
+          <div style={{ marginBottom: "1.5rem" }}>
+            <span
+              style={{
+                display: "inline-block",
+                background: GOLD_BG,
+                border: "1px solid " + GOLD_BORDER,
+                color: GOLD,
+                fontSize: "0.75rem",
+                fontWeight: "600",
+                letterSpacing: "0.08em",
+                textTransform: "uppercase" as const,
+                padding: "0.3rem 0.75rem",
+                borderRadius: "999px",
+              }}
+            >
+              Relationships &amp; Dating
             </span>
-            <span style={{ fontSize: '0.8rem', color: DIM }}>24 March 2026</span>
-            <span style={{ fontSize: '0.8rem', color: DIM }}>·</span>
-            <span style={{ fontSize: '0.8rem', color: DIM }}>Nicholas Templeman</span>
-            <span style={{ fontSize: '0.8rem', color: DIM }}>·</span>
-            <span style={{ fontSize: '0.8rem', color: DIM }}>14 min read</span>
           </div>
 
-          {/* headline */}
+          {/* H1 */}
           <h1
             style={{
-              fontSize: 'clamp(1.9rem, 4.5vw, 3rem)',
-              fontWeight: 800,
-              lineHeight: 1.15,
-              marginBottom: '1.5rem',
-              letterSpacing: '-0.02em',
+              fontSize: "clamp(2rem, 5vw, 3.25rem)",
+              fontWeight: "800",
+              lineHeight: "1.15",
+              letterSpacing: "-0.02em",
+              marginBottom: "1.5rem",
+              color: TEXT,
             }}
           >
-            AI for Dating Anxiety: Build Confidence Before, During and After Dates
+            AI for Dating Anxiety: How MEOK Helps You Navigate the Modern
+            Dating Minefield
           </h1>
 
-          {/* standfirst */}
+          {/* Standfirst */}
           <p
             style={{
-              fontSize: '1.15rem',
-              lineHeight: 1.75,
+              fontSize: "clamp(1.05rem, 2vw, 1.25rem)",
+              lineHeight: "1.7",
               color: MUTED,
-              marginBottom: '2.5rem',
-              maxWidth: '44rem',
+              marginBottom: "2.5rem",
+              maxWidth: "680px",
             }}
           >
-            Modern dating is genuinely hard. The apps, the silence, the over-analysis, the
-            unexplained disappearances — if any of it makes you anxious, that is a rational
-            response to an irrational system. This guide is about what you can actually do
-            about it, and how MEOK can help you show up better in the relationships that matter.
+            Dating in 2026 is genuinely exhausting. App fatigue, ghosting,
+            vulnerability hangovers, the crushing performance anxiety of first
+            dates &mdash; modern romance has become an endurance sport with
+            unclear rules and asymmetric consequences. MEOK doesn&apos;t fix
+            that. But it helps you show up to it with your whole self intact.
           </p>
 
-          {/* divider */}
+          {/* Meta row */}
           <div
             style={{
-              height: '1px',
-              background:
-                'linear-gradient(90deg, transparent, rgba(201,168,76,0.4) 30%, rgba(201,168,76,0.4) 70%, transparent)',
-              marginBottom: '3rem',
+              display: "flex",
+              alignItems: "center",
+              gap: "1.5rem",
+              flexWrap: "wrap" as const,
+              paddingTop: "1.5rem",
+              borderTop: "1px solid " + BORDER,
             }}
-          />
+          >
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "0.75rem",
+              }}
+            >
+              <div
+                style={{
+                  width: "38px",
+                  height: "38px",
+                  borderRadius: "50%",
+                  background: GOLD_BG,
+                  border: "1px solid " + GOLD_BORDER,
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  fontSize: "0.9rem",
+                  fontWeight: "700",
+                  color: GOLD,
+                }}
+              >
+                NT
+              </div>
+              <div>
+                <div
+                  style={{
+                    fontSize: "0.9rem",
+                    fontWeight: "600",
+                    color: TEXT,
+                  }}
+                >
+                  Nicholas Templeman
+                </div>
+                <div style={{ fontSize: "0.8rem", color: MUTED }}>
+                  Founder, MEOK AI LABS
+                </div>
+              </div>
+            </div>
+            <div style={{ color: FAINT, fontSize: "0.85rem" }}>
+              25 March 2026
+            </div>
+            <div style={{ color: FAINT, fontSize: "0.85rem" }}>
+              15 min read
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* ══════════════════════════════════════════════════════════════════════
-          ARTICLE BODY
-      ══════════════════════════════════════════════════════════════════════ */}
-      <article style={{ paddingLeft: '1.5rem', paddingRight: '1.5rem', paddingBottom: '5rem' }}>
-        <div style={{ maxWidth: '48rem', margin: '0 auto' }}>
+      {/* ── MAIN CONTENT ──────────────────────────────────────────────────────── */}
+      <main
+        style={{
+          paddingBottom: "6rem",
+          paddingLeft: "1.5rem",
+          paddingRight: "1.5rem",
+        }}
+      >
+        <div style={{ maxWidth: "800px", margin: "0 auto" }}>
 
-          {/* ── Opening ── */}
-          <p
-            style={{
-              fontSize: '1.05rem',
-              lineHeight: 1.85,
-              color: MUTED,
-              marginBottom: '1.5rem',
-            }}
-          >
-            Let&apos;s be honest about something most dating advice skips: the experience of
-            modern dating can be quietly relentless. You put yourself out there — on an app,
-            at a friend&apos;s dinner, through a carefully worded message — and then you wait.
-            And while you wait, your brain does what human brains have always done when
-            resources, safety, or belonging feel uncertain: it searches for threats.
-          </p>
-          <p
-            style={{
-              fontSize: '1.05rem',
-              lineHeight: 1.85,
-              color: MUTED,
-              marginBottom: '1.5rem',
-            }}
-          >
-            That threat-scan is not weakness. It is your nervous system doing its job. The
-            problem is that the job was designed for a world where threats were lions and
-            famines, not left-on-read messages and profiles that mysteriously vanish. The
-            mismatch between our ancient threat-detection machinery and the specific texture
-            of 2026 dating is the root of most dating anxiety.
-          </p>
-          <p
-            style={{
-              fontSize: '1.05rem',
-              lineHeight: 1.85,
-              color: MUTED,
-              marginBottom: '3rem',
-            }}
-          >
-            So: if you feel anxious about dating, you are not broken. You are human, in a
-            genuinely difficult environment, without a lot of good tools. This piece is about
-            what those tools might actually look like.
-          </p>
-
-          {/* ── H2 1 ── */}
-          <h2
-            style={{
-              fontSize: 'clamp(1.3rem, 2.8vw, 1.75rem)',
-              fontWeight: 700,
-              color: TEXT,
-              marginBottom: '1rem',
-              paddingTop: '1rem',
-              borderTop: `1px solid rgba(201,168,76,0.18)`,
-            }}
-          >
-            Why Is Modern Dating So Anxiety-Inducing?
-          </h2>
-          <p
-            style={{
-              fontSize: '1.05rem',
-              lineHeight: 1.85,
-              color: MUTED,
-              marginBottom: '1.5rem',
-            }}
-          >
-            Dating anxiety is not new. Every generation has felt the vulnerability of wanting
-            someone and not knowing if that want would be returned. What is new is the specific
-            mechanics of how we meet people now, and how those mechanics amplify the oldest
-            anxieties in the most efficient possible way.
-          </p>
-          <p
-            style={{
-              fontSize: '1.05rem',
-              lineHeight: 1.85,
-              color: MUTED,
-              marginBottom: '1.5rem',
-            }}
-          >
-            Dating apps are, at their structural core, a volume game with asymmetric
-            information. You see almost nothing about the person you are evaluating. They see
-            almost nothing about you. The decision happens in under a second. Then the
-            majority of matches — studies suggest somewhere between 60 and 90 per cent —
-            result in zero conversation. The human experience of this is a low-grade, constant
-            stream of micro-rejections that never quite reaches the threshold of feeling
-            significant enough to process, but accumulates into a kind of ambient bruising.
-          </p>
-          <p
-            style={{
-              fontSize: '1.05rem',
-              lineHeight: 1.85,
-              color: MUTED,
-              marginBottom: '1.5rem',
-            }}
-          >
-            Layered on top: the comparison culture of social media creates an implicit standard
-            against which people measure their romantic progress. Peers announcing engagements,
-            holidays with new partners, first home purchases — all of it lands in the same
-            feed as your unread notifications. The combination of repeated micro-rejection and
-            constant social comparison is, to put it plainly, a difficult environment to
-            maintain self-worth inside.
-          </p>
-          <p
-            style={{
-              fontSize: '1.05rem',
-              lineHeight: 1.85,
-              color: MUTED,
-              marginBottom: '3rem',
-            }}
-          >
-            None of this is a moral failing. It is a design feature of the system you are
-            operating in, not a reflection of what you deserve.
-          </p>
-
-          {/* callout box */}
-          <div
-            style={{
-              background: 'rgba(201,168,76,0.07)',
-              border: '1px solid rgba(201,168,76,0.25)',
-              borderRadius: '0.75rem',
-              padding: '1.5rem 1.75rem',
-              marginBottom: '3rem',
-            }}
-          >
+          {/* ── INTRO ─────────────────────────────────────────────────────── */}
+          <section style={{ marginBottom: "4rem" }}>
             <p
               style={{
-                fontSize: '1rem',
-                lineHeight: 1.8,
+                fontSize: "1.1rem",
+                lineHeight: "1.8",
                 color: TEXT,
-                margin: 0,
-                fontStyle: 'italic',
+                marginBottom: "1.5rem",
               }}
             >
-              &ldquo;Dating anxiety is a rational response to an irrational system. The goal
-              is not to eliminate the feeling — it is to stop the feeling from running the
-              show.&rdquo;
+              Let&apos;s be honest about what modern dating actually involves.
+              You curate a version of yourself into a profile. You swipe through
+              a catalogue of other curated people. You match, exchange
+              performative banter, attempt to convey warmth and wit through a
+              medium designed for neither. You arrange a meeting that carries
+              the silent weight of everything you want and everything you fear.
+              And then, very often, nothing happens &mdash; the conversation
+              fades, the follow-up never comes, or you get a message that says
+              &quot;great meeting you!&quot; and then silence forever.
             </p>
             <p
               style={{
-                fontSize: '0.85rem',
-                color: GOLD,
-                marginTop: '0.75rem',
-                marginBottom: 0,
-              }}
-            >
-              — Nicholas Templeman, Founder, MEOK AI LABS
-            </p>
-          </div>
-
-          {/* ── H2 2 ── */}
-          <h2
-            style={{
-              fontSize: 'clamp(1.3rem, 2.8vw, 1.75rem)',
-              fontWeight: 700,
-              color: TEXT,
-              marginBottom: '1rem',
-              paddingTop: '1rem',
-              borderTop: '1px solid rgba(201,168,76,0.18)',
-            }}
-          >
-            What Is Dating App Fatigue, and How Do You Know You Have It?
-          </h2>
-          <p
-            style={{
-              fontSize: '1.05rem',
-              lineHeight: 1.85,
-              color: MUTED,
-              marginBottom: '1.5rem',
-            }}
-          >
-            Dating app fatigue is the feeling of emotional depletion that comes from sustained
-            engagement with the swipe-based dating environment. It is characterised by a
-            combination of numbness — flicking through profiles with vague disinterest — and
-            underlying anxiety about whether the process will ever produce anything meaningful.
-            You keep opening the app. You are not sure why. You do not feel hopeful when you
-            do. You feel worse when you put it down.
-          </p>
-          <p
-            style={{
-              fontSize: '1.05rem',
-              lineHeight: 1.85,
-              color: MUTED,
-              marginBottom: '1.5rem',
-            }}
-          >
-            Research on this is consistent. A 2020 study in the journal <em>Body Image</em>
-            found that people who used dating apps reported lower self-esteem, higher levels of
-            body shame, and greater psychological distress than non-users. A 2018 study in{' '}
-            <em>Computers in Human Behavior</em> found that perceived unsuccessful use of
-            dating apps was associated with loneliness and negative affect. The apps are not
-            neutral tools; they affect how you see yourself.
-          </p>
-          <p
-            style={{
-              fontSize: '1.05rem',
-              lineHeight: 1.85,
-              color: MUTED,
-              marginBottom: '1.5rem',
-            }}
-          >
-            The signs of dating app fatigue are fairly recognisable if you are honest with
-            yourself:
-          </p>
-
-          {/* list */}
-          <ul
-            style={{
-              paddingLeft: '1.5rem',
-              marginBottom: '1.5rem',
-              display: 'flex',
-              flexDirection: 'column' as const,
-              gap: '0.6rem',
-            }}
-          >
-            {[
-              'You check the app out of habit rather than hope',
-              'Each notification produces a spike of anxiety more than excitement',
-              'You are comparing your match rate to a vague imagined standard',
-              'You feel relief when a match goes quiet, then guilt about the relief',
-              'Dating feels like a second job with bad management',
-              'You have deleted and reinstalled the app more than twice in the last six months',
-            ].map((item, i) => (
-              <li
-                key={i}
-                style={{ fontSize: '1.05rem', lineHeight: 1.75, color: MUTED }}
-              >
-                {item}
-              </li>
-            ))}
-          </ul>
-
-          <p
-            style={{
-              fontSize: '1.05rem',
-              lineHeight: 1.85,
-              color: MUTED,
-              marginBottom: '1.5rem',
-            }}
-          >
-            If several of those land, you are not lazy or giving up on love. You are
-            experiencing a predictable response to a genuinely depleting environment. The most
-            useful thing you can do is take an intentional break — not a passive drift away
-            followed by a 2 a.m. reinstall, but a deliberate pause with a clear intention
-            behind it.
-          </p>
-          <p
-            style={{
-              fontSize: '1.05rem',
-              lineHeight: 1.85,
-              color: MUTED,
-              marginBottom: '3rem',
-            }}
-          >
-            What do you do in the pause? Reconnect with who you are outside of your profile.
-            The version of you that a dating app can represent is extraordinarily thin.
-            Your profile captures your height, a few photos, maybe a moderately witty bio.
-            It does not capture the way you tell a story, what makes you laugh until something
-            comes out of your nose, the opinions you hold that make you interesting. Reconnecting
-            with those things — through the people and pursuits that already exist in your life
-            — is not a consolation prize for being off the apps. It is the actual work of
-            becoming someone who dates from a place of fullness rather than need.
-          </p>
-
-          {/* ── H2 3 ── */}
-          <h2
-            style={{
-              fontSize: 'clamp(1.3rem, 2.8vw, 1.75rem)',
-              fontWeight: 700,
-              color: TEXT,
-              marginBottom: '1rem',
-              paddingTop: '1rem',
-              borderTop: '1px solid rgba(201,168,76,0.18)',
-            }}
-          >
-            How Do You Handle the Fear of Rejection Before It Stops You Trying?
-          </h2>
-          <p
-            style={{
-              fontSize: '1.05rem',
-              lineHeight: 1.85,
-              color: MUTED,
-              marginBottom: '1.5rem',
-            }}
-          >
-            Fear of rejection is one of the most evolutionarily ancient fears humans carry.
-            Social exclusion in the ancestral environment was genuinely dangerous — being cast
-            out from the group reduced your chance of survival. The brain treats romantic
-            rejection with a version of the same seriousness. Neuroimaging studies have shown
-            that the experience of social rejection activates some of the same brain regions
-            as physical pain. When dating anxiety tells you that reaching out, trying again,
-            or putting yourself out there is terrifying, it is not being irrational. It is
-            extrapolating from a threat model that is simply older than the context it is
-            operating in.
-          </p>
-          <p
-            style={{
-              fontSize: '1.05rem',
-              lineHeight: 1.85,
-              color: MUTED,
-              marginBottom: '1.5rem',
-            }}
-          >
-            The most effective long-term approach to fear of rejection is not to talk yourself
-            out of feeling it — that rarely works. It is graduated exposure: taking small,
-            repeated risks in low-stakes contexts until the nervous system accumulates evidence
-            that the worst-case scenario either does not happen, or happens and is survivable.
-          </p>
-          <p
-            style={{
-              fontSize: '1.05rem',
-              lineHeight: 1.85,
-              color: MUTED,
-              marginBottom: '1.5rem',
-            }}
-          >
-            Practically, this looks like:
-          </p>
-          <ul
-            style={{
-              paddingLeft: '1.5rem',
-              marginBottom: '1.5rem',
-              display: 'flex',
-              flexDirection: 'column' as const,
-              gap: '0.6rem',
-            }}
-          >
-            {[
-              'Sending the message you have been drafting for three days',
-              'Asking someone for their number in person, accepting the outcome either way',
-              'Declining to invest hours of analysis in whether someone has read your message',
-              'Noticing the fear, naming it ("I am scared they will not be interested"), and acting anyway',
-              'Tracking how often the feared outcome actually occurs versus how often you predicted it would',
-            ].map((item, i) => (
-              <li
-                key={i}
-                style={{ fontSize: '1.05rem', lineHeight: 1.75, color: MUTED }}
-              >
-                {item}
-              </li>
-            ))}
-          </ul>
-          <p
-            style={{
-              fontSize: '1.05rem',
-              lineHeight: 1.85,
-              color: MUTED,
-              marginBottom: '1.5rem',
-            }}
-          >
-            This is where MEOK can be quietly useful. Not as a hype machine that tells you
-            everything will be fine, but as a thinking companion that helps you notice the
-            pattern: how many times have you predicted disaster and how many times did disaster
-            actually happen? Over time, that record becomes its own reassurance — not borrowed
-            from someone else, but built from your own evidence.
-          </p>
-          <p
-            style={{
-              fontSize: '1.05rem',
-              lineHeight: 1.85,
-              color: MUTED,
-              marginBottom: '3rem',
-            }}
-          >
-            It is also worth distinguishing fear of rejection from fear of being known. For
-            some people, the real anxiety is not about being turned down — it is about someone
-            getting close enough to see them clearly and then deciding they are not enough.
-            That is a deeper wound, and it tends to drive self-protective avoidance: staying
-            surface-level, keeping things casual, engineering reasons why it would not have
-            worked anyway. If this sounds familiar, it is worth exploring — ideally with a
-            therapist — because no amount of dating strategy addresses a belief that you are
-            fundamentally not worth staying for.
-          </p>
-
-          {/* ── H2 4 ── */}
-          <h2
-            style={{
-              fontSize: 'clamp(1.3rem, 2.8vw, 1.75rem)',
-              fontWeight: 700,
-              color: TEXT,
-              marginBottom: '1rem',
-              paddingTop: '1rem',
-              borderTop: '1px solid rgba(201,168,76,0.18)',
-            }}
-          >
-            What Actually Helps with First Date Nerves?
-          </h2>
-          <p
-            style={{
-              fontSize: '1.05rem',
-              lineHeight: 1.85,
-              color: MUTED,
-              marginBottom: '1.5rem',
-            }}
-          >
-            First date anxiety is almost universal, but the way it manifests varies. Some
-            people over-prepare — researching the venue, rehearsing anecdotes, planning every
-            conversational topic in advance. Others under-prepare by avoiding any
-            acknowledgement of the date until the last possible moment, then performing a kind
-            of frantic, last-minute emotional triage. Both are responses to the same underlying
-            feeling: I do not want to get this wrong. I do not want to look stupid. I want
-            them to like me.
-          </p>
-          <p
-            style={{
-              fontSize: '1.05rem',
-              lineHeight: 1.85,
-              color: MUTED,
-              marginBottom: '1.5rem',
-            }}
-          >
-            Here is something that sounds obvious but rarely gets said: the goal of a first
-            date is not to perform well. It is to find out whether you actually like this
-            person. When the anxiety reframes the date as an audition you might fail, you
-            stop being curious about them and start monitoring yourself — how am I coming
-            across, did that land, was that too much? The self-monitoring is both exhausting
-            and, ironically, makes you less attractive, because people are drawn to presence,
-            not performance.
-          </p>
-          <p
-            style={{
-              fontSize: '1.05rem',
-              lineHeight: 1.85,
-              color: MUTED,
-              marginBottom: '1.5rem',
-            }}
-          >
-            The practical shift is small but significant: go in with a list of things you
-            want to find out about them, not a list of things you want them to find out about
-            you. Genuine curiosity is both calming — it takes the attention off your own
-            performance — and compelling for the other person. Asking real questions and
-            actually listening to the answers is more attractive than any perfectly crafted
-            story about your gap year.
-          </p>
-
-          {/* stat-style callout */}
-          <div
-            style={{
-              borderLeft: `3px solid ${GOLD}`,
-              paddingLeft: '1.25rem',
-              marginBottom: '1.5rem',
-            }}
-          >
-            <p
-              style={{
-                fontSize: '1.05rem',
-                lineHeight: 1.8,
+                fontSize: "1.1rem",
+                lineHeight: "1.8",
                 color: TEXT,
-                margin: 0,
+                marginBottom: "1.5rem",
               }}
             >
-              Research on social anxiety consistently shows that an{' '}
-              <strong style={{ color: GOLD }}>external focus of attention</strong> —
-              curiosity about the other person — reduces self-monitoring and improves
-              perceived social performance more effectively than any amount of mental
-              rehearsal.
+              No wonder anxiety has become the default emotional register for
+              dating. Researchers studying dating app behaviour have noted a
+              phenomenon they call &quot;choice overload&quot; &mdash; the paradox that
+              having access to thousands of potential partners does not make
+              people feel optimistic, but instead produces a creeping paralysis
+              and a persistent sense that whoever you are talking to might be
+              replaced by someone marginally better with one swipe. That is
+              before you account for ghosting, which affects the vast majority
+              of people who date online.
             </p>
-          </div>
-
-          <p
-            style={{
-              fontSize: '1.05rem',
-              lineHeight: 1.85,
-              color: MUTED,
-              marginBottom: '1.5rem',
-            }}
-          >
-            Before a date, MEOK can help you clarify what you actually want to know about
-            this person — not the small talk, but the things that would genuinely matter to
-            you. What are your non-negotiables? What are you hoping for? What are you afraid
-            of? Working through those questions before you arrive means you walk in with a
-            compass, not a script. You are showing up as someone who knows what they want,
-            which is different from — and more attractive than — someone who wants to be
-            liked.
-          </p>
-          <p
-            style={{
-              fontSize: '1.05rem',
-              lineHeight: 1.85,
-              color: MUTED,
-              marginBottom: '1.5rem',
-            }}
-          >
-            And if the nerves are about conversation itself — what to say, how to keep things
-            going, what to do in a lull — practising conversation is a perfectly legitimate
-            use of an AI companion. Not scripting your date. Not memorising witty lines.
-            Simply warming up, the way an athlete stretches before competing. Conversation is
-            a skill. Practising it in a low-stakes environment makes the high-stakes
-            environment feel less like a test and more like something you have done before.
-          </p>
-          <p
-            style={{
-              fontSize: '1.05rem',
-              lineHeight: 1.85,
-              color: MUTED,
-              marginBottom: '3rem',
-            }}
-          >
-            One more thing: the physiological spike before a first date — raised heart rate,
-            shallow breathing, butterflies — is not necessarily a sign that something is
-            wrong. It is arousal, and it is nearly identical to excitement. The body cannot
-            always tell the difference. You can. The narrative in your head is what
-            distinguishes "I am excited about this" from "I am terrified of this." Both
-            involve the same body state. Noticing which story you are telling — and choosing
-            consciously to tell a different one — is not fake positivity. It is accurate
-            reappraisal.
-          </p>
-
-          {/* ── H2 5 ── */}
-          <h2
-            style={{
-              fontSize: 'clamp(1.3rem, 2.8vw, 1.75rem)',
-              fontWeight: 700,
-              color: TEXT,
-              marginBottom: '1rem',
-              paddingTop: '1rem',
-              borderTop: '1px solid rgba(201,168,76,0.18)',
-            }}
-          >
-            Why Do You Spiral After a Date — and How Do You Stop?
-          </h2>
-          <p
-            style={{
-              fontSize: '1.05rem',
-              lineHeight: 1.85,
-              color: MUTED,
-              marginBottom: '1.5rem',
-            }}
-          >
-            The post-date analysis spiral is one of the most reliably miserable experiences
-            in the modern dating playbook. You had a date. It seemed to go well. They said
-            "we should do this again." You hugged goodbye. And then, in the Uber home, it
-            started.
-          </p>
-          <p
-            style={{
-              fontSize: '1.05rem',
-              lineHeight: 1.85,
-              color: MUTED,
-              marginBottom: '1.5rem',
-            }}
-          >
-            Did I talk too much? Why did I tell that story about my ex — that was a mistake.
-            They seemed distracted during the main course. Maybe they were just being polite
-            at the end. Why haven&apos;t they texted yet? It has been forty-five minutes. They
-            said they&apos;d be in touch. What if they meant that in a British, polite way and
-            not a literal way? I should not text. I will wait. How long should I wait? Maybe
-            I should text something casual. No. I will wait. Why haven&apos;t they texted?
-          </p>
-          <p
-            style={{
-              fontSize: '1.05rem',
-              lineHeight: 1.85,
-              color: MUTED,
-              marginBottom: '1.5rem',
-            }}
-          >
-            The spiral is driven by uncertainty and the brain&apos;s intolerance of it. Your
-            threat-detection system has identified an unresolved question — do they like me? —
-            and is running search loops trying to resolve it. The searches are not random;
-            they are biased toward threat detection. Your brain is not neutrally reviewing
-            the evening. It is specifically looking for evidence that something went wrong,
-            because that is the data that would be most useful to act on if the threat is
-            real.
-          </p>
-          <p
-            style={{
-              fontSize: '1.05rem',
-              lineHeight: 1.85,
-              color: MUTED,
-              marginBottom: '1.5rem',
-            }}
-          >
-            A few things help interrupt this:
-          </p>
-          <ul
-            style={{
-              paddingLeft: '1.5rem',
-              marginBottom: '1.5rem',
-              display: 'flex',
-              flexDirection: 'column' as const,
-              gap: '0.6rem',
-            }}
-          >
-            {[
-              'Write down three specific things that went well before you allow yourself to catalogue what went wrong',
-              'Name the exact fear — not the vague dread, but the specific outcome you are afraid of',
-              'Set a rule for when you will and will not check your phone — ambiguity about checking extends the spiral',
-              'Do something physical: a walk, a run, anything that gets you out of your head and into your body',
-              'Talk to MEOK or journal to get the thoughts out of your head and onto a page, where they are easier to examine',
-            ].map((item, i) => (
-              <li
-                key={i}
-                style={{ fontSize: '1.05rem', lineHeight: 1.75, color: MUTED }}
-              >
-                {item}
-              </li>
-            ))}
-          </ul>
-          <p
-            style={{
-              fontSize: '1.05rem',
-              lineHeight: 1.85,
-              color: MUTED,
-              marginBottom: '1.5rem',
-            }}
-          >
-            The deeper work is learning to tolerate the uncertainty itself. Post-date anxiety
-            is largely about not being able to bear not-knowing. The outcome of the date is
-            not in your control. Whether they text, whether they want to see you again,
-            whether this is the beginning of something — none of that is available to you
-            right now, and reviewing the evening repeatedly does not make it available faster.
-          </p>
-          <p
-            style={{
-              fontSize: '1.05rem',
-              lineHeight: 1.85,
-              color: MUTED,
-              marginBottom: '3rem',
-            }}
-          >
-            Building a higher tolerance for uncertainty — the felt sense that you can be okay
-            even when you do not know how something will resolve — is one of the most valuable
-            things you can develop for dating and for life. It does not happen by telling
-            yourself to stop worrying. It happens by practising: noticing the urge to check,
-            pausing, letting the urge pass, and discovering that you survived the not-knowing.
-          </p>
-
-          {/* ── H2 6 ── */}
-          <h2
-            style={{
-              fontSize: 'clamp(1.3rem, 2.8vw, 1.75rem)',
-              fontWeight: 700,
-              color: TEXT,
-              marginBottom: '1rem',
-              paddingTop: '1rem',
-              borderTop: '1px solid rgba(201,168,76,0.18)',
-            }}
-          >
-            How Do You Rebuild After Being Ghosted?
-          </h2>
-          <p
-            style={{
-              fontSize: '1.05rem',
-              lineHeight: 1.85,
-              color: MUTED,
-              marginBottom: '1.5rem',
-            }}
-          >
-            Ghosting — the abrupt, unexplained disappearance of someone you were dating —
-            has become so normalised that there is almost a cultural embarrassment about
-            being upset by it. You are expected to shrug, maybe roll your eyes, and move on.
-            The implied message is that it is not serious enough to warrant grief.
-          </p>
-          <p
-            style={{
-              fontSize: '1.05rem',
-              lineHeight: 1.85,
-              color: MUTED,
-              marginBottom: '1.5rem',
-            }}
-          >
-            But ghosting is, in a specific way, harder to process than a clear rejection.
-            A clear rejection — "I had a good time but I do not think we are right for each
-            other" — is painful. It is also complete. The loop closes. You know where you
-            stand. Ghosting leaves the loop open. There is no explicit signal that it is over.
-            There is just absence, and absence is ambiguous. Your brain, which cannot function
-            well with unresolved loops, keeps the file open, keeps searching for an explanation
-            that never arrives.
-          </p>
-          <p
-            style={{
-              fontSize: '1.05rem',
-              lineHeight: 1.85,
-              color: MUTED,
-              marginBottom: '1.5rem',
-            }}
-          >
-            This is why ghosting tends to produce rumination rather than grief. You cannot
-            mourn something clearly when you are not sure what happened. The mind replays
-            every interaction looking for the moment it went wrong, searching for the thing
-            you did or said or failed to do or say that explains the silence. This search is
-            usually futile, because ghosting is more often about the other person&apos;s
-            avoidance, circumstances, or habits than about anything specific you did.
-          </p>
-          <p
-            style={{
-              fontSize: '1.05rem',
-              lineHeight: 1.85,
-              color: MUTED,
-              marginBottom: '1.5rem',
-            }}
-          >
-            Rebuilding starts with permission: permission to be hurt, permission to close the
-            loop yourself even without the explanation you were not given. You do not need
-            their closure. You can give it to yourself. That means naming what the connection
-            meant to you — even if it was brief, even if you only went on two dates — and
-            allowing yourself to feel the loss of the possibility, not just the person.
-          </p>
-
-          {/* stat-style callout */}
-          <div
-            style={{
-              borderLeft: `3px solid ${GOLD}`,
-              paddingLeft: '1.25rem',
-              marginBottom: '1.5rem',
-            }}
-          >
             <p
               style={{
-                fontSize: '1.05rem',
-                lineHeight: 1.8,
+                fontSize: "1.1rem",
+                lineHeight: "1.8",
                 color: TEXT,
-                margin: 0,
+                marginBottom: "1.5rem",
               }}
             >
-              A 2022 study in the <em>Journal of Social and Personal Relationships</em> found
-              that people who were ghosted reported{' '}
-              <strong style={{ color: GOLD }}>lower self-esteem and greater self-doubt</strong>{' '}
-              than people who received a clear rejection — suggesting the ambiguity of
-              ghosting, not the rejection itself, is the most damaging element.
+              MEOK is not going to solve the structural problems of modern
+              dating. What it can do is help you understand what is happening
+              inside you when you encounter those problems &mdash; and help you
+              respond from a more grounded, self-aware, and genuinely confident
+              place.
             </p>
-          </div>
 
-          <p
-            style={{
-              fontSize: '1.05rem',
-              lineHeight: 1.85,
-              color: MUTED,
-              marginBottom: '1.5rem',
-            }}
-          >
-            Practically: stop checking their social media. This is hard, and almost everyone
-            does it anyway, but it is worth being clear-eyed about what it does. It keeps the
-            loop open. Every story viewed, every post checked, every activity noted is your
-            brain&apos;s attempt to gather information that will resolve the ambiguity. It does
-            not resolve it. It prolongs it. The most effective thing you can do is make their
-            content inaccessible — mute, unfollow, or block, depending on what allows you to
-            actually stop checking.
-          </p>
-          <p
-            style={{
-              fontSize: '1.05rem',
-              lineHeight: 1.85,
-              color: MUTED,
-              marginBottom: '3rem',
-            }}
-          >
-            How long does it take to feel better? Longer than it should for something as
-            brief as a few dates, which is one of the specific embarrassments of being ghosted.
-            There is no socially sanctioned mourning period for someone you were seeing for
-            three weeks. But the brain grieves in proportion to the hope attached to something,
-            not its duration. If you had begun to imagine a future with this person, losing
-            them — even at that stage — involves losing that imagined future. That is a real
-            loss. Allow yourself to recover on your own timeline, not the one that other
-            people think is appropriate.
-          </p>
-
-          {/* ── H2 7 ── */}
-          <h2
-            style={{
-              fontSize: 'clamp(1.3rem, 2.8vw, 1.75rem)',
-              fontWeight: 700,
-              color: TEXT,
-              marginBottom: '1rem',
-              paddingTop: '1rem',
-              borderTop: '1px solid rgba(201,168,76,0.18)',
-            }}
-          >
-            How Can You Understand Your Own Dating Patterns?
-          </h2>
-          <p
-            style={{
-              fontSize: '1.05rem',
-              lineHeight: 1.85,
-              color: MUTED,
-              marginBottom: '1.5rem',
-            }}
-          >
-            One of the most useful — and uncomfortable — things you can do for your dating
-            life is notice the patterns in it. Not the patterns of the people you have dated.
-            Your patterns. The recurring choices, the consistent points at which things break
-            down, the type of person you always seem to end up with, the moment you always
-            seem to pull away, or cling harder than you wanted to.
-          </p>
-          <p
-            style={{
-              fontSize: '1.05rem',
-              lineHeight: 1.85,
-              color: MUTED,
-              marginBottom: '1.5rem',
-            }}
-          >
-            This kind of honest pattern recognition is harder than it sounds. You are not
-            a neutral observer of your own behaviour. You have explanations ready for each
-            situation — that person was emotionally unavailable, the timing was wrong, the
-            circumstances were unusual. Sometimes those explanations are accurate. But if
-            you are regularly finding yourself in similar emotional situations with different
-            people, the common variable is worth looking at.
-          </p>
-          <p
-            style={{
-              fontSize: '1.05rem',
-              lineHeight: 1.85,
-              color: MUTED,
-              marginBottom: '1.5rem',
-            }}
-          >
-            Attachment theory offers a useful rough framework here. Broadly: people with
-            anxious attachment tend to seek closeness intensely and fear abandonment; people
-            with avoidant attachment tend to pull back when closeness increases and value
-            self-sufficiency; people with secure attachment tend to be comfortable with both
-            intimacy and independence. These are tendencies, not diagnoses, and most people
-            are some combination of the above depending on context. But knowing your own
-            tendencies — not as labels that explain everything, but as patterns that tend to
-            recur — is genuinely useful information.
-          </p>
-          <p
-            style={{
-              fontSize: '1.05rem',
-              lineHeight: 1.85,
-              color: MUTED,
-              marginBottom: '1.5rem',
-            }}
-          >
-            Some questions worth sitting with:
-          </p>
-          <ul
-            style={{
-              paddingLeft: '1.5rem',
-              marginBottom: '1.5rem',
-              display: 'flex',
-              flexDirection: 'column' as const,
-              gap: '0.6rem',
-            }}
-          >
-            {[
-              'At what point in a relationship does anxiety typically spike — the beginning, when things are going well, or at the first sign of conflict?',
-              'What kind of person tends to trigger your avoidance, and what kind pulls you in even when the fit is not right?',
-              'What story do you typically tell yourself when something ends — about them, about yourself?',
-              'Is the pattern of your last three relationships more similar than you have acknowledged?',
-              'What would you need to believe about yourself for dating to feel less threatening?',
-            ].map((item, i) => (
-              <li
-                key={i}
-                style={{ fontSize: '1.05rem', lineHeight: 1.75, color: MUTED }}
-              >
-                {item}
-              </li>
-            ))}
-          </ul>
-          <p
-            style={{
-              fontSize: '1.05rem',
-              lineHeight: 1.85,
-              color: MUTED,
-              marginBottom: '1.5rem',
-            }}
-          >
-            Because MEOK holds the thread of your conversations over time, it can help surface
-            these patterns in a way that a friend, however good, usually cannot. Most of your
-            friends do not have complete access to your emotional history across the last year.
-            They know the versions of events you chose to tell them. MEOK knows everything
-            you have shared with it — the fears you expressed before dates, the analyses after,
-            the recurring anxieties, the moments you noticed a familiar feeling returning.
-          </p>
-          <p
-            style={{
-              fontSize: '1.05rem',
-              lineHeight: 1.85,
-              color: MUTED,
-              marginBottom: '3rem',
-            }}
-          >
-            That is not surveillance. It is continuity. And for the kind of pattern work that
-            helps you date better, continuity matters more than any single conversation, however
-            insightful.
-          </p>
-
-          {/* ── H2 8 ── */}
-          <h2
-            style={{
-              fontSize: 'clamp(1.3rem, 2.8vw, 1.75rem)',
-              fontWeight: 700,
-              color: TEXT,
-              marginBottom: '1rem',
-              paddingTop: '1rem',
-              borderTop: '1px solid rgba(201,168,76,0.18)',
-            }}
-          >
-            What Is the Difference Between Healthy Excitement and Anxiety — and Does It Matter?
-          </h2>
-          <p
-            style={{
-              fontSize: '1.05rem',
-              lineHeight: 1.85,
-              color: MUTED,
-              marginBottom: '1.5rem',
-            }}
-          >
-            Yes, it matters — but the difference is subtler than most people expect. Anxiety
-            and excitement produce nearly identical physiological signatures: elevated heart
-            rate, increased cortisol, heightened sensory awareness, a feeling of something
-            being at stake. The body does not reliably distinguish between the two. What
-            distinguishes them is cognitive and narrative.
-          </p>
-          <p
-            style={{
-              fontSize: '1.05rem',
-              lineHeight: 1.85,
-              color: MUTED,
-              marginBottom: '1.5rem',
-            }}
-          >
-            Excitement is forward-facing and possibility-oriented. The internal monologue
-            sounds like: <em>I wonder what this could be. I am looking forward to this. This
-            feels good.</em> It is expansive. It makes the present moment feel rich rather
-            than threatening.
-          </p>
-          <p
-            style={{
-              fontSize: '1.05rem',
-              lineHeight: 1.85,
-              color: MUTED,
-              marginBottom: '1.5rem',
-            }}
-          >
-            Anxiety is threat-oriented and backward-facing, or disaster-forecasting. The
-            internal monologue sounds like: <em>What if I am too much. What if they lose
-            interest. What if this goes wrong like everything else. What if I am kidding
-            myself.</em> It is contracting. It makes the present moment something to get
-            through rather than to be in.
-          </p>
-          <p
-            style={{
-              fontSize: '1.05rem',
-              lineHeight: 1.85,
-              color: MUTED,
-              marginBottom: '1.5rem',
-            }}
-          >
-            There is a well-replicated finding in psychology research — first reported by
-            Alison Wood Brooks at Harvard Business School — that telling yourself "I am
-            excited" before a high-stakes event improves performance more reliably than trying
-            to calm down. The reason is physiological: excitement is a high-arousal positive
-            state; anxiety is a high-arousal negative state. Moving from anxiety to calm
-            requires a significant reduction in arousal, which is difficult in the moment.
-            Moving from anxiety to excitement is a smaller shift — same arousal level,
-            different valence — and easier to achieve.
-          </p>
-          <p
-            style={{
-              fontSize: '1.05rem',
-              lineHeight: 1.85,
-              color: MUTED,
-              marginBottom: '1.5rem',
-            }}
-          >
-            This is not about lying to yourself. It is about accurate labelling. When you
-            feel the physical symptoms of arousal before a date, "I am excited about this
-            possibility" is as factually accurate as "I am terrified this will go badly."
-            You get to choose which frame you apply to the same body state. The frame you
-            choose changes the experience, and it changes how you show up.
-          </p>
-          <p
-            style={{
-              fontSize: '1.05rem',
-              lineHeight: 1.85,
-              color: MUTED,
-              marginBottom: '3rem',
-            }}
-          >
-            Learning to notice which narrative your mind defaults to — and practising the
-            conscious shift toward excitement rather than dread — is one of the more
-            transferable skills you can develop in the context of dating. MEOK can help you
-            track which state you typically arrive in before dates, what tends to trigger
-            the shift into anxiety, and what helps you reorient. Over time, this is not
-            just useful for dating. It is a general skill in emotional regulation that
-            affects almost every high-stakes situation in your life.
-          </p>
-
-          {/* ── H2 9 — MEOK section ── */}
-          <h2
-            style={{
-              fontSize: 'clamp(1.3rem, 2.8vw, 1.75rem)',
-              fontWeight: 700,
-              color: TEXT,
-              marginBottom: '1rem',
-              paddingTop: '1rem',
-              borderTop: '1px solid rgba(201,168,76,0.18)',
-            }}
-          >
-            How Does MEOK Help — and What Is It Not?
-          </h2>
-          <p
-            style={{
-              fontSize: '1.05rem',
-              lineHeight: 1.85,
-              color: MUTED,
-              marginBottom: '1.5rem',
-            }}
-          >
-            Before describing what MEOK does, it is worth being explicit about what it is not.
-          </p>
-          <p
-            style={{
-              fontSize: '1.05rem',
-              lineHeight: 1.85,
-              color: MUTED,
-              marginBottom: '1.5rem',
-            }}
-          >
-            <strong style={{ color: TEXT }}>MEOK is not a dating app.</strong> It does not
-            match you with anyone. It does not generate romantic partners or simulate romantic
-            relationships. It is not interested in your swiping behaviour or your match rate.
-          </p>
-          <p
-            style={{
-              fontSize: '1.05rem',
-              lineHeight: 1.85,
-              color: MUTED,
-              marginBottom: '1.5rem',
-            }}
-          >
-            <strong style={{ color: TEXT }}>MEOK is not a romantic AI.</strong> It will not
-            flirt with you, tell you what you want to hear about your prospects, or fill the
-            space that human connection is supposed to occupy. The entire point of MEOK is
-            that you show up better in real relationships — with real people, in real time —
-            not that you outsource connection to software.
-          </p>
-          <p
-            style={{
-              fontSize: '1.05rem',
-              lineHeight: 1.85,
-              color: MUTED,
-              marginBottom: '1.5rem',
-            }}
-          >
-            <strong style={{ color: TEXT }}>MEOK is not a therapist.</strong> It cannot
-            diagnose attachment disorders, provide trauma-informed care, or replace the
-            professional support of a qualified psychotherapist. If your dating anxiety is
-            severe, persistent, or connected to deeper patterns — childhood experiences,
-            trauma, significant self-worth issues — the right first call is a professional.
-          </p>
-          <p
-            style={{
-              fontSize: '1.05rem',
-              lineHeight: 1.85,
-              color: MUTED,
-              marginBottom: '1.5rem',
-            }}
-          >
-            What MEOK actually is: a private, sovereign AI companion that holds the thread
-            of your life across time, without judgement and without selling your data to
-            anyone. Built by Nicholas Templeman at MEOK AI LABS with one clear intent —
-            to be genuinely useful to the person using it, not to the company's growth
-            metrics.
-          </p>
-          <p
-            style={{
-              fontSize: '1.05rem',
-              lineHeight: 1.85,
-              color: MUTED,
-              marginBottom: '1.5rem',
-            }}
-          >
-            In the context of dating, that looks like:
-          </p>
-
-          {/* feature rows */}
-          {[
-            {
-              title: 'Pre-date clarity',
-              body: 'Working through what you actually want from a date — not the performed answer, but the honest one. What would feel like a success? What would feel like a red flag? What are you nervous about, specifically?',
-            },
-            {
-              title: 'Conversation practice',
-              body: 'Warming up your conversational instincts before going out. Not scripting. Not memorising openers. Just the equivalent of a vocal warm-up before singing — reducing first-word friction so the real you shows up faster.',
-            },
-            {
-              title: 'Post-date processing',
-              body: 'A space to put the swirling post-date thoughts down on paper — or into words — before they become a three-hour spiral. Named fears shrink. Unnamed fears expand. MEOK helps you name them.',
-            },
-            {
-              title: 'Pattern tracking across time',
-              body: 'Because MEOK remembers, it can reflect your patterns back to you over weeks and months. The recurring worry. The type of person who triggers your anxiety. The moment you typically pull away. None of this is accusatory — it is informational.',
-            },
-            {
-              title: 'Honest reflection',
-              body: 'MEOK will not simply tell you what you want to hear. If the pattern you are describing sounds like something worth examining, it will say so. Not harshly. But honestly. That is rarer than it sounds.',
-            },
-          ].map((feat, i) => (
-            <div
-              key={i}
+            {/* Pull quote */}
+            <blockquote
               style={{
-                background: 'rgba(255,255,255,0.03)',
-                border: '1px solid rgba(201,168,76,0.15)',
-                borderRadius: '0.625rem',
-                padding: '1.25rem 1.5rem',
-                marginBottom: '0.875rem',
+                margin: "2.5rem 0",
+                paddingLeft: "1.5rem",
+                borderLeft: "3px solid " + GOLD,
               }}
             >
               <p
                 style={{
-                  fontSize: '0.95rem',
-                  fontWeight: 700,
-                  color: GOLD,
-                  marginBottom: '0.4rem',
+                  fontSize: "1.2rem",
+                  lineHeight: "1.7",
+                  fontStyle: "italic",
+                  color: TEXT,
+                  margin: "0",
                 }}
               >
-                {feat.title}
+                &quot;Dating anxiety is not a character flaw. It is a rational
+                response to a process designed to make you feel simultaneously
+                replaceable and insufficient. The goal is not to eliminate the
+                anxiety. It is to stop letting it run the show.&quot;
               </p>
-              <p
-                style={{
-                  fontSize: '1rem',
-                  lineHeight: 1.75,
-                  color: MUTED,
-                  margin: 0,
-                }}
-              >
-                {feat.body}
-              </p>
-            </div>
-          ))}
-
-          <p
-            style={{
-              fontSize: '1.05rem',
-              lineHeight: 1.85,
-              color: MUTED,
-              marginTop: '1.5rem',
-              marginBottom: '3rem',
-            }}
-          >
-            The overarching goal is not that you feel better about being single. It is that
-            you understand yourself well enough to date from a place of self-awareness rather
-            than anxiety, to choose people who are genuinely right for you rather than people
-            whose interest relieves your fear, and to build relationships on a foundation of
-            authentic connection rather than mutual performance.
-          </p>
-
-          {/* ── H2 10 ── */}
-          <h2
-            style={{
-              fontSize: 'clamp(1.3rem, 2.8vw, 1.75rem)',
-              fontWeight: 700,
-              color: TEXT,
-              marginBottom: '1rem',
-              paddingTop: '1rem',
-              borderTop: '1px solid rgba(201,168,76,0.18)',
-            }}
-          >
-            When Should Dating Anxiety Be Treated Professionally?
-          </h2>
-          <p
-            style={{
-              fontSize: '1.05rem',
-              lineHeight: 1.85,
-              color: MUTED,
-              marginBottom: '1.5rem',
-            }}
-          >
-            Dating anxiety becomes worth professional attention when it is affecting your
-            daily functioning — when the rumination is consuming hours, when avoidance is
-            preventing you from pursuing connections you actually want, when the emotional
-            aftermath of rejection or ghosting is lasting weeks rather than days, or when the
-            anxiety is driven by beliefs about yourself that feel deep and resistant to change.
-          </p>
-          <p
-            style={{
-              fontSize: '1.05rem',
-              lineHeight: 1.85,
-              color: MUTED,
-              marginBottom: '1.5rem',
-            }}
-          >
-            Cognitive Behavioural Therapy (CBT) has good evidence for social anxiety and
-            fear of rejection. Schema therapy is particularly useful when the anxiety is
-            rooted in early life patterns — messages you absorbed about your lovability or
-            worth that now run silently in the background of every relationship. Attachment-
-            focused therapy can help if the anxiety is shaped by your early relational
-            history. And for anything connected to trauma, a trauma-informed therapist is
-            the appropriate first call.
-          </p>
-          <p
-            style={{
-              fontSize: '1.05rem',
-              lineHeight: 1.85,
-              color: MUTED,
-              marginBottom: '1.5rem',
-            }}
-          >
-            In the UK, you can self-refer to NHS Talking Therapies (previously IAPT) for
-            CBT and related approaches. Relate (relate.org.uk) offers relationship counselling
-            and can be useful even if you are not currently in a relationship. The British
-            Association for Counselling and Psychotherapy (bacp.co.uk) has a therapist
-            directory. If you are in acute distress, Samaritans are available on 116 123,
-            24 hours a day.
-          </p>
-          <p
-            style={{
-              fontSize: '1.05rem',
-              lineHeight: 1.85,
-              color: MUTED,
-              marginBottom: '3rem',
-            }}
-          >
-            None of this is about being broken. Seeking support for dating anxiety is not an
-            admission that you cannot handle relationships. It is a recognition that the
-            patterns running your love life were largely installed before you were old enough
-            to choose them, and that you have the capacity to update them.
-          </p>
-
-          {/* ── FAQ section ── */}
-          <section
-            style={{
-              marginBottom: '4rem',
-            }}
-          >
-            <h2
-              style={{
-                fontSize: 'clamp(1.3rem, 2.8vw, 1.75rem)',
-                fontWeight: 700,
-                color: TEXT,
-                marginBottom: '1.5rem',
-                paddingTop: '1rem',
-                borderTop: '1px solid rgba(201,168,76,0.18)',
-              }}
-            >
-              Frequently Asked Questions
-            </h2>
-
-            {[
-              {
-                q: 'Why is modern dating so anxiety-inducing?',
-                a: 'Modern dating combines high-volume, low-commitment app mechanics with the ancient fear of social rejection. Swiping culture produces a constant stream of micro-rejections, ghosting has normalised unexplained disappearances, and social media comparison amplifies the sense that everyone else is further along. The result is a low-grade, ambient stress that accumulates even when nothing dramatically bad happens.',
-              },
-              {
-                q: 'What is dating app fatigue?',
-                a: 'Dating app fatigue is the emotional depletion that comes from sustained swipe-culture engagement: a combination of numbness and underlying anxiety. Studies link heavy app use to lower self-esteem and higher distress. Signs include checking out of habit rather than hope, feeling worse after using the app, and cycling through deletes and reinstalls. Taking a deliberate, intentional break — rather than a passive drift — is the most effective intervention.',
-              },
-              {
-                q: 'How do I handle fear of rejection?',
-                a: 'Fear of rejection activates similar brain regions to physical pain — it is not irrational. The most effective approach is graduated exposure: taking small, repeated risks in lower-stakes contexts until the nervous system accumulates evidence that rejection is survivable. Tracking your predictions versus outcomes over time is particularly useful — most people find the feared disaster occurs far less often than they predicted.',
-              },
-              {
-                q: 'What actually helps with first date nerves?',
-                a: 'Reframe the goal: you are there to find out whether you like them, not to pass an audition. Genuine curiosity about the other person reduces self-monitoring and improves social performance more reliably than rehearsal. Go in with questions you actually want answered, not stories you want to tell. Physiological arousal before a date is nearly identical to excitement — the narrative you choose to apply to it changes the experience.',
-              },
-              {
-                q: 'How do I stop spiralling after a date?',
-                a: 'Write down three specific things that went well before cataloguing concerns. Name the exact fear rather than letting it remain diffuse. Set a clear rule for checking your phone. Do something physical to interrupt the loop. The spiral is driven by intolerance of uncertainty — the actual skill to build is sitting with not-knowing, which requires practice rather than willpower.',
-              },
-              {
-                q: 'How do I rebuild after being ghosted?',
-                a: 'Ghosting bypasses the normal grief process because the loop stays open. Rebuilding requires closing it yourself: accepting you will not get an explanation, allowing yourself to grieve the possibility that was lost, and removing access to their content to stop the search loop running. The brain grieves in proportion to the hope attached to something, not its duration — allow yourself a realistic recovery timeline.',
-              },
-              {
-                q: 'Is MEOK a dating app or romantic AI?',
-                a: 'Neither. MEOK is a private AI companion that helps you understand your own patterns, process dating experiences, clarify what you want, and show up better in real relationships. It does not match you with partners, simulate romance, or tell you what you want to hear. It is a thinking companion that works best alongside real human connection — not instead of it.',
-              },
-            ].map((item, i) => (
-              <details
-                key={i}
-                style={{
-                  borderBottom: '1px solid rgba(245,240,232,0.1)',
-                  paddingTop: '1rem',
-                  paddingBottom: '1rem',
-                }}
-              >
-                <summary
-                  style={{
-                    fontSize: '1rem',
-                    fontWeight: 600,
-                    color: TEXT,
-                    cursor: 'pointer',
-                    listStyle: 'none',
-                    display: 'flex',
-                    justifyContent: 'space-between',
-                    alignItems: 'center',
-                    gap: '1rem',
-                  }}
-                >
-                  {item.q}
-                  <span style={{ color: GOLD, flexShrink: 0, fontSize: '1.2rem' }}>+</span>
-                </summary>
-                <p
-                  style={{
-                    fontSize: '0.975rem',
-                    lineHeight: 1.8,
-                    color: MUTED,
-                    marginTop: '0.75rem',
-                    marginBottom: 0,
-                  }}
-                >
-                  {item.a}
-                </p>
-              </details>
-            ))}
+            </blockquote>
           </section>
 
-          {/* ── Closing ── */}
-          <p
-            style={{
-              fontSize: '1.05rem',
-              lineHeight: 1.85,
-              color: MUTED,
-              marginBottom: '1.5rem',
-            }}
-          >
-            Dating is hard. It has always been hard. The particular flavour of difficulty in
-            2026 — the apps, the silence, the ghosting, the ambient comparison — is new, but
-            the underlying vulnerability is ancient. You are trying to be known and chosen by
-            another person. That is one of the most human things there is, and one of the most
-            exposing.
-          </p>
-          <p
-            style={{
-              fontSize: '1.05rem',
-              lineHeight: 1.85,
-              color: MUTED,
-              marginBottom: '1.5rem',
-            }}
-          >
-            The anxiety is not the problem. The anxiety is information — about what matters to
-            you, about the fears you are carrying, about the places where your self-worth still
-            needs work. The goal is not to eliminate it. The goal is to understand it well
-            enough that it stops running the show.
-          </p>
-          <p
-            style={{
-              fontSize: '1.05rem',
-              lineHeight: 1.85,
-              color: MUTED,
-              marginBottom: '3rem',
-            }}
-          >
-            MEOK exists to help you do that work — privately, honestly, and over time. Not
-            to replace the relationships you are trying to build, but to help you become
-            someone who can build them better.
-          </p>
-
-          {/* ── CTA ── */}
-          <div
-            style={{
-              background:
-                'linear-gradient(135deg, rgba(201,168,76,0.1) 0%, rgba(201,168,76,0.04) 100%)',
-              border: '1px solid rgba(201,168,76,0.3)',
-              borderRadius: '1rem',
-              padding: '2.5rem 2rem',
-              textAlign: 'center' as const,
-              marginBottom: '4rem',
-            }}
-          >
-            <p
+          {/* ── SECTION 1 ─────────────────────────────────────────────────── */}
+          <section style={{ marginBottom: "4rem" }}>
+            <h2
               style={{
-                fontSize: '0.75rem',
-                fontWeight: 700,
-                color: GOLD,
-                letterSpacing: '0.1em',
-                textTransform: 'uppercase' as const,
-                marginBottom: '0.75rem',
-              }}
-            >
-              MEOK AI LABS
-            </p>
-            <h3
-              style={{
-                fontSize: 'clamp(1.2rem, 2.5vw, 1.6rem)',
-                fontWeight: 700,
+                fontSize: "clamp(1.4rem, 3vw, 1.9rem)",
+                fontWeight: "700",
                 color: TEXT,
-                marginBottom: '1rem',
-                lineHeight: 1.3,
+                marginBottom: "1.25rem",
+                lineHeight: "1.3",
               }}
             >
-              Show up better in real relationships
-            </h3>
+              What is dating anxiety and why is it so common in 2026?
+            </h2>
             <p
               style={{
-                fontSize: '1rem',
-                lineHeight: 1.75,
-                color: MUTED,
-                marginBottom: '1.75rem',
-                maxWidth: '34rem',
-                marginLeft: 'auto',
-                marginRight: 'auto',
+                fontSize: "1.05rem",
+                lineHeight: "1.8",
+                color: TEXT,
+                marginBottom: "1.5rem",
               }}
             >
-              MEOK is your private AI companion — a thinking partner that holds the thread of
-              your life over time, helps you understand your own patterns, and supports you in
-              building the connections that matter. Not a dating app. Not a romantic AI.
-              Something more useful than either.
+              Dating anxiety is not a clinical diagnosis, but it describes a
+              cluster of experiences that are extremely common: the racing
+              thoughts before a first meeting, the obsessive post-mortem of
+              every date that did not lead anywhere, the way a single rejection
+              can feel disproportionately destabilising. It overlaps with social
+              anxiety, with attachment insecurity, and with a general fear of
+              vulnerability &mdash; which is, at root, a fear of being fully
+              known and not wanted anyway.
             </p>
-            <Link
-              href="/"
+            <p
               style={{
-                display: 'inline-block',
-                background: GOLD,
-                color: '#0d0c18',
-                fontWeight: 700,
-                fontSize: '0.95rem',
-                padding: '0.875rem 2rem',
-                borderRadius: '0.5rem',
-                textDecoration: 'none',
-                letterSpacing: '0.02em',
+                fontSize: "1.05rem",
+                lineHeight: "1.8",
+                color: TEXT,
+                marginBottom: "1.5rem",
               }}
             >
-              Meet MEOK
-            </Link>
-          </div>
+              What makes 2026 particularly acute is the way technology has
+              amplified the rejection cycle. Before apps, rejection was
+              relatively rare &mdash; you might ask someone out once a month,
+              or meet a handful of potential partners through social context.
+              Now the volume of low-grade rejection is constant and relentless.
+              A message left on read. A match that never responds. A date who
+              says &quot;had a lovely time&quot; and is immediately back on the app
+              you can both see on each other&apos;s phones.
+            </p>
+            <p
+              style={{
+                fontSize: "1.05rem",
+                lineHeight: "1.8",
+                color: TEXT,
+                marginBottom: "1.5rem",
+              }}
+            >
+              The nervous system did not evolve for this volume. Social
+              rejection activates the same neural pathways as physical pain
+              &mdash; this is not metaphor, it is neuroscience. When you are
+              swiping through dozens of profiles and initiating dozens of
+              conversations that go nowhere, you are handing your pain receptors
+              a machine gun. The result is a kind of chronic low-level emotional
+              bruising that accumulates into what many people describe as
+              &quot;app fatigue&quot; &mdash; a state where the idea of opening
+              Hinge or Bumble produces a faint but unmistakable dread.
+            </p>
+            <p
+              style={{
+                fontSize: "1.05rem",
+                lineHeight: "1.8",
+                color: TEXT,
+                marginBottom: "1.5rem",
+              }}
+            >
+              Underneath all of it is the same fundamental fear: that if someone
+              really knew you &mdash; not the curated profile version, but the
+              actual you with all your contradictions and needs and history
+              &mdash; they would not choose you. Dating anxiety is, at its core,
+              a fear of that moment of full exposure.
+            </p>
 
-          {/* ── Related posts ── */}
-          <section style={{ marginBottom: '2rem' }}>
-            <h3
-              style={{
-                fontSize: '1rem',
-                fontWeight: 700,
-                color: DIM,
-                letterSpacing: '0.08em',
-                textTransform: 'uppercase' as const,
-                marginBottom: '1.25rem',
-              }}
-            >
-              Related Reading
-            </h3>
+            {/* Info box: The Dating Anxiety Cycle */}
             <div
               style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fill, minmax(15rem, 1fr))',
-                gap: '0.875rem',
+                background: CARD_BG,
+                border: "1px solid " + BORDER,
+                borderRadius: "12px",
+                padding: "1.75rem",
+                marginTop: "2rem",
+              }}
+            >
+              <h3
+                style={{
+                  fontSize: "1rem",
+                  fontWeight: "700",
+                  color: GOLD,
+                  marginBottom: "1rem",
+                  textTransform: "uppercase" as const,
+                  letterSpacing: "0.06em",
+                }}
+              >
+                The Dating Anxiety Cycle
+              </h3>
+              <div
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))",
+                  gap: "1rem",
+                }}
+              >
+                {[
+                  {
+                    step: "1",
+                    label: "Excitement",
+                    desc: "A new match, a promising conversation",
+                  },
+                  {
+                    step: "2",
+                    label: "Escalation",
+                    desc: "Stakes feel high; performance pressure builds",
+                  },
+                  {
+                    step: "3",
+                    label: "The Meeting",
+                    desc: "Anxiety peaks; self-monitoring kicks in",
+                  },
+                  {
+                    step: "4",
+                    label: "Silence",
+                    desc: "No follow-up; the post-mortem begins",
+                  },
+                  {
+                    step: "5",
+                    label: "Conclusion",
+                    desc: "\"There is something wrong with me\"",
+                  },
+                  {
+                    step: "6",
+                    label: "Reset",
+                    desc: "Back to the apps, slightly more defended",
+                  },
+                ].map((item) => (
+                  <div
+                    key={item.step}
+                    style={{
+                      background: "rgba(201,168,76,0.05)",
+                      border: "1px solid rgba(201,168,76,0.15)",
+                      borderRadius: "8px",
+                      padding: "1rem",
+                    }}
+                  >
+                    <div
+                      style={{
+                        fontSize: "0.7rem",
+                        fontWeight: "700",
+                        color: GOLD,
+                        letterSpacing: "0.1em",
+                        textTransform: "uppercase" as const,
+                        marginBottom: "0.35rem",
+                      }}
+                    >
+                      Step {item.step}
+                    </div>
+                    <div
+                      style={{
+                        fontSize: "0.95rem",
+                        fontWeight: "600",
+                        color: TEXT,
+                        marginBottom: "0.35rem",
+                      }}
+                    >
+                      {item.label}
+                    </div>
+                    <div style={{ fontSize: "0.85rem", color: MUTED }}>
+                      {item.desc}
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <p
+                style={{
+                  fontSize: "0.9rem",
+                  color: MUTED,
+                  marginTop: "1.25rem",
+                  marginBottom: "0",
+                  lineHeight: "1.7",
+                }}
+              >
+                Each time through this cycle without interruption, the
+                conclusions calcify a little further. MEOK works at every stage
+                &mdash; and specifically at Step 5, where the narrative you
+                construct about yourself matters most.
+              </p>
+            </div>
+          </section>
+
+          {/* ── SECTION 2 ─────────────────────────────────────────────────── */}
+          <section style={{ marginBottom: "4rem" }}>
+            <h2
+              style={{
+                fontSize: "clamp(1.4rem, 3vw, 1.9rem)",
+                fontWeight: "700",
+                color: TEXT,
+                marginBottom: "1.25rem",
+                lineHeight: "1.3",
+              }}
+            >
+              How can I use AI to practise first date conversations?
+            </h2>
+            <p
+              style={{
+                fontSize: "1.05rem",
+                lineHeight: "1.8",
+                color: TEXT,
+                marginBottom: "1.5rem",
+              }}
+            >
+              One of the most concrete things MEOK can do for dating anxiety is
+              help you practise. Not in a scripted, rehearsal-of-lines way
+              &mdash; that kind of preparation tends to make people more anxious,
+              not less, because it creates a performance you can fail. The kind
+              of practice that helps is the kind that loosens you up: that
+              reminds you how to talk about yourself without apologising, how to
+              ask questions that come from genuine curiosity, how to sit with
+              the uncertainty of not knowing whether someone likes you and still
+              be present.
+            </p>
+            <p
+              style={{
+                fontSize: "1.05rem",
+                lineHeight: "1.8",
+                color: TEXT,
+                marginBottom: "1.5rem",
+              }}
+            >
+              Before a first date, you can tell MEOK about the person you&apos;re
+              meeting &mdash; what you know about them, what attracted you to
+              them, what you&apos;re nervous about. MEOK can then run a low-stakes
+              version of that conversation with you: not to simulate the other
+              person, but to give you a space in which you can find your own
+              voice, notice where you clam up or perform, and practise being
+              genuinely interested rather than auditioningly charming.
+            </p>
+            <p
+              style={{
+                fontSize: "1.05rem",
+                lineHeight: "1.8",
+                color: TEXT,
+                marginBottom: "1.5rem",
+              }}
+            >
+              MEOK also holds your history. If you&apos;ve told it about patterns
+              from previous dates &mdash; the way you tend to deflect with
+              humour when things get personal, or the habit of asking questions
+              without answering them yourself &mdash; it can gently reflect
+              those patterns back before you walk in the door. Not as critique,
+              but as awareness. The difference between going into a date
+              unconscious of your own habits and going in with a clear-eyed
+              sense of where you tend to get in your own way is significant.
+            </p>
+
+            {/* Feature box: What to tell MEOK before a first date */}
+            <div
+              style={{
+                background: GREEN_BG,
+                border: "1px solid " + GREEN_BORDER,
+                borderRadius: "12px",
+                padding: "1.75rem",
+                marginTop: "2rem",
+                marginBottom: "2rem",
+              }}
+            >
+              <h3
+                style={{
+                  fontSize: "1rem",
+                  fontWeight: "700",
+                  color: GREEN,
+                  marginBottom: "1.25rem",
+                  textTransform: "uppercase" as const,
+                  letterSpacing: "0.06em",
+                }}
+              >
+                What to tell MEOK before a first date
+              </h3>
+              <ul
+                style={{
+                  listStyle: "none",
+                  padding: "0",
+                  margin: "0",
+                  display: "flex",
+                  flexDirection: "column" as const,
+                  gap: "0.85rem",
+                }}
+              >
+                {[
+                  "Who you're meeting and what you know about them",
+                  "What specifically attracted you to this person",
+                  "What you're most anxious about on this particular date",
+                  "Any patterns from past dates you want to be aware of",
+                  "What a good outcome would actually look like for you",
+                  "What you'd tell a close friend about this date if they asked",
+                ].map((item) => (
+                  <li
+                    key={item}
+                    style={{
+                      display: "flex",
+                      gap: "0.75rem",
+                      alignItems: "flex-start",
+                    }}
+                  >
+                    <span
+                      style={{
+                        color: GREEN,
+                        fontWeight: "700",
+                        fontSize: "1rem",
+                        flexShrink: "0",
+                        marginTop: "0.1rem",
+                      }}
+                    >
+                      &#10003;
+                    </span>
+                    <span
+                      style={{
+                        fontSize: "0.95rem",
+                        color: TEXT,
+                        lineHeight: "1.6",
+                      }}
+                    >
+                      {item}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <p
+              style={{
+                fontSize: "1.05rem",
+                lineHeight: "1.8",
+                color: TEXT,
+                marginBottom: "1.5rem",
+              }}
+            >
+              The goal of this preparation is not to arrive at the date feeling
+              bulletproof. It is to arrive feeling like yourself &mdash; which
+              turns out to be the most attractive thing you can be.
+            </p>
+          </section>
+
+          {/* ── SECTION 3 ─────────────────────────────────────────────────── */}
+          <section style={{ marginBottom: "4rem" }}>
+            <h2
+              style={{
+                fontSize: "clamp(1.4rem, 3vw, 1.9rem)",
+                fontWeight: "700",
+                color: TEXT,
+                marginBottom: "1.25rem",
+                lineHeight: "1.3",
+              }}
+            >
+              How does MEOK help me process rejection without spiralling?
+            </h2>
+            <p
+              style={{
+                fontSize: "1.05rem",
+                lineHeight: "1.8",
+                color: TEXT,
+                marginBottom: "1.5rem",
+              }}
+            >
+              The rejection spiral is a very particular kind of cognitive trap.
+              It begins with a fact &mdash; someone did not respond, did not
+              follow up, did not feel the same &mdash; and within hours has
+              expanded into a comprehensive indictment of your worth as a human
+              being. It borrows evidence from previous rejections. It
+              incorporates things people said about you years ago. It
+              manufactures a unified theory of your fundamental unlovability
+              from a data point that, in reality, tells you almost nothing about
+              yourself.
+            </p>
+            <p
+              style={{
+                fontSize: "1.05rem",
+                lineHeight: "1.8",
+                color: TEXT,
+                marginBottom: "1.5rem",
+              }}
+            >
+              The spiral is very hard to interrupt from inside it. Friends help,
+              but friends get tired of the same rejection processed for the
+              fourth time. Alcohol accelerates it. Revenge-swiping provides a
+              temporary distraction that usually makes things worse. MEOK offers
+              something different: a space to process the rejection at full
+              volume, without filtering it into digestible social form, with a
+              companion that holds the context of everything you&apos;ve told it
+              about your history.
+            </p>
+            <p
+              style={{
+                fontSize: "1.05rem",
+                lineHeight: "1.8",
+                color: TEXT,
+                marginBottom: "1.5rem",
+              }}
+            >
+              This matters because the spiral feeds on isolation and
+              confirmation bias. When MEOK can reflect back the full picture
+              &mdash; not just this rejection but the ten dates that went well
+              last year, the relationship where you were chosen, the things you
+              have built and survived &mdash; it becomes much harder for the
+              spiral to achieve totalising force. MEOK does not do this with
+              hollow affirmations. It does it with your own evidence.
+            </p>
+
+            {/* Three archetypes for rejection */}
+            <div
+              style={{
+                marginTop: "2rem",
+                display: "grid",
+                gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+                gap: "1.25rem",
               }}
             >
               {[
                 {
-                  href: '/blog/ai-for-relationship-anxiety',
-                  label: 'AI for Relationship Anxiety',
-                  desc: 'Stop the spiral before it starts',
+                  name: "The Trickster",
+                  icon: "&#x1F0CF;",
+                  role: "Reframing",
+                  desc: "Dissolves the gravity placed on this one event. Finds the absurdity. Reminds you that rejection says almost nothing certain about either person. Refuses to treat one no as a verdict.",
                 },
                 {
-                  href: '/blog/ai-for-heartbreak',
-                  label: 'AI for Heartbreak',
-                  desc: 'Grief, recovery, and moving forward',
+                  name: "The Pioneer",
+                  icon: "&#x1F9ED;",
+                  role: "Accountability",
+                  desc: "Channels the energy of rejection into forward motion. Helps you extract the one useful signal and set it aside. Holds you to the commitment you made to keep showing up.",
                 },
                 {
-                  href: '/blog/ai-for-social-anxiety',
-                  label: 'AI for Social Anxiety',
-                  desc: 'Build confidence in social situations',
+                  name: "The Healer",
+                  icon: "&#x1F33F;",
+                  role: "Processing",
+                  desc: "Sits with the actual pain without minimising it. Acknowledges that rejection activates real grief. Holds the somatic reality of feeling unwanted without rushing you out of it.",
                 },
-                {
-                  href: '/blog/ai-for-loneliness',
-                  label: 'AI for Loneliness',
-                  desc: 'Connection and the companion gap',
-                },
-                {
-                  href: '/blog/ai-for-confidence',
-                  label: 'AI for Confidence',
-                  desc: 'From self-doubt to self-assurance',
-                },
-                {
-                  href: '/blog/ai-for-shyness',
-                  label: 'AI for Shyness',
-                  desc: 'Quiet confidence in a loud world',
-                },
-              ].map((post) => (
-                <Link
-                  key={post.href}
-                  href={post.href}
+              ].map((arch) => (
+                <div
+                  key={arch.name}
                   style={{
-                    display: 'block',
-                    background: 'rgba(255,255,255,0.03)',
-                    border: '1px solid rgba(245,240,232,0.1)',
-                    borderRadius: '0.625rem',
-                    padding: '1rem 1.125rem',
-                    textDecoration: 'none',
+                    background: CARD_BG,
+                    border: "1px solid " + BORDER,
+                    borderRadius: "12px",
+                    padding: "1.5rem",
                   }}
                 >
-                  <p
+                  <div
                     style={{
-                      fontSize: '0.925rem',
-                      fontWeight: 600,
+                      fontSize: "1.75rem",
+                      marginBottom: "0.75rem",
+                    }}
+                    dangerouslySetInnerHTML={{ __html: arch.icon }}
+                  />
+                  <div
+                    style={{
+                      fontSize: "0.75rem",
+                      fontWeight: "700",
+                      color: GOLD,
+                      letterSpacing: "0.08em",
+                      textTransform: "uppercase" as const,
+                      marginBottom: "0.4rem",
+                    }}
+                  >
+                    {arch.role}
+                  </div>
+                  <h3
+                    style={{
+                      fontSize: "1.05rem",
+                      fontWeight: "700",
                       color: TEXT,
-                      marginBottom: '0.25rem',
+                      marginBottom: "0.75rem",
                     }}
                   >
-                    {post.label}
-                  </p>
+                    {arch.name}
+                  </h3>
                   <p
                     style={{
-                      fontSize: '0.825rem',
-                      color: DIM,
-                      margin: 0,
+                      fontSize: "0.9rem",
+                      color: MUTED,
+                      lineHeight: "1.7",
+                      margin: "0",
                     }}
                   >
-                    {post.desc}
+                    {arch.desc}
                   </p>
+                </div>
+              ))}
+            </div>
+
+            <p
+              style={{
+                fontSize: "1.05rem",
+                lineHeight: "1.8",
+                color: TEXT,
+                marginTop: "2rem",
+                marginBottom: "1.5rem",
+              }}
+            >
+              In practice, you rarely need all three at once. Often you know
+              which kind of support you need: the levity, the forward motion,
+              or the permission to just feel bad for a while. MEOK learns which
+              mode serves you best at different points in the process, and over
+              time gets better at reading which room you&apos;re in.
+            </p>
+          </section>
+
+          {/* ── SECTION 4 ─────────────────────────────────────────────────── */}
+          <section style={{ marginBottom: "4rem" }}>
+            <h2
+              style={{
+                fontSize: "clamp(1.4rem, 3vw, 1.9rem)",
+                fontWeight: "700",
+                color: TEXT,
+                marginBottom: "1.25rem",
+                lineHeight: "1.3",
+              }}
+            >
+              Can AI help me understand my attachment patterns in dating?
+            </h2>
+            <p
+              style={{
+                fontSize: "1.05rem",
+                lineHeight: "1.8",
+                color: TEXT,
+                marginBottom: "1.5rem",
+              }}
+            >
+              Attachment theory &mdash; the framework describing how early
+              experiences of care and connection shape the way we relate to
+              romantic partners &mdash; has moved from academic psychology into
+              mainstream cultural fluency. Most people who have dated in the
+              last five years have at some point identified themselves as
+              anxious, avoidant, or fearful-avoidant. This is progress in
+              self-awareness, but knowing your attachment style is very
+              different from being able to act differently in the moment it gets
+              activated.
+            </p>
+            <p
+              style={{
+                fontSize: "1.05rem",
+                lineHeight: "1.8",
+                color: TEXT,
+                marginBottom: "1.5rem",
+              }}
+            >
+              The window between stimulus and response &mdash; between &quot;they
+              haven&apos;t texted back&quot; and &quot;I am going to send a message asking
+              if they are angry at me&quot; &mdash; is where attachment patterns
+              live. And it is extremely short. The intellectual knowledge that
+              you have an anxious attachment style does not slow that window
+              down by much. What slows it down is having worked through enough
+              actual instances of the pattern, in enough detail, to start
+              recognising the feeling before you act on it.
+            </p>
+            <p
+              style={{
+                fontSize: "1.05rem",
+                lineHeight: "1.8",
+                color: TEXT,
+                marginBottom: "1.5rem",
+              }}
+            >
+              MEOK can help with this because of Sovereign Memory. Over time,
+              it builds a picture of your specific attachment activations: what
+              triggers them, what the internal experience feels like, what you
+              tend to do, and what happens afterwards. It is not administering a
+              quiz or applying a framework from a book &mdash; it is tracking
+              your actual lived experience, in your own language, across real
+              events. The patterns that emerge from that are far more granular
+              and useful than &quot;I have an anxious attachment style.&quot;
+            </p>
+
+            {/* Attachment awareness feature box */}
+            <div
+              style={{
+                background: GOLD_BG,
+                border: "1px solid " + GOLD_BORDER,
+                borderRadius: "12px",
+                padding: "1.75rem",
+                marginTop: "2rem",
+              }}
+            >
+              <h3
+                style={{
+                  fontSize: "1rem",
+                  fontWeight: "700",
+                  color: GOLD,
+                  marginBottom: "1.25rem",
+                  textTransform: "uppercase" as const,
+                  letterSpacing: "0.06em",
+                }}
+              >
+                How MEOK tracks your attachment patterns
+              </h3>
+              <div
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
+                  gap: "1rem",
+                }}
+              >
+                {[
+                  {
+                    title: "Triggers",
+                    desc: "What specific events reliably activate anxiety — silence, ambiguity, perceived withdrawal",
+                  },
+                  {
+                    title: "Internal state",
+                    desc: "The body sensations and thought patterns that accompany activation",
+                  },
+                  {
+                    title: "Behaviours",
+                    desc: "What you actually do: seek reassurance, withdraw, over-explain, test",
+                  },
+                  {
+                    title: "Outcomes",
+                    desc: "What happens when you act from the activated state versus from a grounded one",
+                  },
+                ].map((item) => (
+                  <div
+                    key={item.title}
+                    style={{
+                      background: "rgba(201,168,76,0.06)",
+                      borderRadius: "8px",
+                      padding: "1rem",
+                    }}
+                  >
+                    <div
+                      style={{
+                        fontSize: "0.9rem",
+                        fontWeight: "700",
+                        color: GOLD,
+                        marginBottom: "0.5rem",
+                      }}
+                    >
+                      {item.title}
+                    </div>
+                    <div
+                      style={{
+                        fontSize: "0.875rem",
+                        color: MUTED,
+                        lineHeight: "1.6",
+                      }}
+                    >
+                      {item.desc}
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <p
+                style={{
+                  fontSize: "0.9rem",
+                  color: MUTED,
+                  marginTop: "1.25rem",
+                  marginBottom: "0",
+                  lineHeight: "1.7",
+                }}
+              >
+                This is not therapy. MEOK will say so clearly. But it is
+                meaningful self-knowledge &mdash; the kind that starts to
+                shorten the gap between activation and choice.
+              </p>
+            </div>
+          </section>
+
+          {/* ── SECTION 5 ─────────────────────────────────────────────────── */}
+          <section style={{ marginBottom: "4rem" }}>
+            <h2
+              style={{
+                fontSize: "clamp(1.4rem, 3vw, 1.9rem)",
+                fontWeight: "700",
+                color: TEXT,
+                marginBottom: "1.25rem",
+                lineHeight: "1.3",
+              }}
+            >
+              What is the vulnerability hangover and how does AI help with it?
+            </h2>
+            <p
+              style={{
+                fontSize: "1.05rem",
+                lineHeight: "1.8",
+                color: TEXT,
+                marginBottom: "1.5rem",
+              }}
+            >
+              Bren&eacute; Brown coined the term &quot;vulnerability hangover&quot; to
+              describe the morning-after feeling of having shared too much
+              &mdash; the cold dread that follows a moment of genuine openness
+              where you now lie awake wondering if you said the wrong thing,
+              revealed something embarrassing, or misread the intimacy of the
+              moment. In the context of dating, it happens constantly: the first
+              date where you found yourself talking about your father for twenty
+              minutes, the message thread where you admitted you were actually
+              really lonely, the second date where the chemistry felt so real
+              you told them things you would not tell most friends.
+            </p>
+            <p
+              style={{
+                fontSize: "1.05rem",
+                lineHeight: "1.8",
+                color: TEXT,
+                marginBottom: "1.5rem",
+              }}
+            >
+              The vulnerability hangover is one of the sneakiest drivers of
+              dating anxiety because it teaches the wrong lesson. The thing that
+              went wrong was not that you were vulnerable &mdash; it was (often)
+              a mismatch in readiness, or bad luck with timing, or simply the
+              unavoidable risk of human openness. But the nervous system
+              remembers it as: openness equals danger. The result is progressive
+              emotional armoring: each successive dating attempt starts a little
+              more defended.
+            </p>
+            <p
+              style={{
+                fontSize: "1.05rem",
+                lineHeight: "1.8",
+                color: TEXT,
+                marginBottom: "1.5rem",
+              }}
+            >
+              MEOK can help with the vulnerability hangover in two ways. First,
+              it provides a space to process the exposure before it calcifies
+              into shame &mdash; to say &quot;I said this, and here is what I am
+              afraid it means about how I am perceived,&quot; and have that fear
+              heard and examined before it solidifies. Second, over time,
+              Sovereign Memory means MEOK can show you the evidence that
+              vulnerability has not always been a disaster &mdash; that there
+              are instances where being open worked, where being known was
+              reciprocated, where the risk was worth it.
+            </p>
+
+            {/* Vulnerability hangover response box */}
+            <div
+              style={{
+                background: CARD_BG,
+                border: "1px solid " + BORDER,
+                borderRadius: "12px",
+                padding: "1.75rem",
+                marginTop: "2rem",
+              }}
+            >
+              <h3
+                style={{
+                  fontSize: "1rem",
+                  fontWeight: "600",
+                  color: TEXT,
+                  marginBottom: "1rem",
+                }}
+              >
+                What MEOK does after a vulnerability hangover
+              </h3>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column" as const,
+                  gap: "1rem",
+                }}
+              >
+                {[
+                  {
+                    num: "01",
+                    action: "Receives the disclosure without reacting",
+                    detail:
+                      "You can say exactly what you said, how you felt about saying it, and what you are afraid it meant — without MEOK becoming alarmed or amused or bored.",
+                  },
+                  {
+                    num: "02",
+                    action: "Separates the event from the interpretation",
+                    detail:
+                      "You shared something personal. That is one fact. Whether it was too much in that context is another. Whether it means you are fundamentally unlovable is a third. MEOK helps you keep these distinct.",
+                  },
+                  {
+                    num: "03",
+                    action: "Retrieves the counter-evidence",
+                    detail:
+                      "From your history with MEOK: the times being open was received well, the relationships where your openness was one of the things someone valued most about you.",
+                  },
+                  {
+                    num: "04",
+                    action: "Helps you decide your next move from solid ground",
+                    detail:
+                      "Not from the hangover. Not from shame or overcorrection. From a clearer read of what actually happened and what you actually want.",
+                  },
+                ].map((item) => (
+                  <div
+                    key={item.num}
+                    style={{
+                      display: "flex",
+                      gap: "1rem",
+                      alignItems: "flex-start",
+                    }}
+                  >
+                    <div
+                      style={{
+                        fontSize: "1rem",
+                        fontWeight: "800",
+                        color: GOLD,
+                        flexShrink: "0",
+                        minWidth: "2rem",
+                      }}
+                    >
+                      {item.num}
+                    </div>
+                    <div>
+                      <div
+                        style={{
+                          fontSize: "0.95rem",
+                          fontWeight: "600",
+                          color: TEXT,
+                          marginBottom: "0.35rem",
+                        }}
+                      >
+                        {item.action}
+                      </div>
+                      <div
+                        style={{
+                          fontSize: "0.875rem",
+                          color: MUTED,
+                          lineHeight: "1.65",
+                        }}
+                      >
+                        {item.detail}
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          {/* ── SECTION 6 ─────────────────────────────────────────────────── */}
+          <section style={{ marginBottom: "4rem" }}>
+            <h2
+              style={{
+                fontSize: "clamp(1.4rem, 3vw, 1.9rem)",
+                fontWeight: "700",
+                color: TEXT,
+                marginBottom: "1.25rem",
+                lineHeight: "1.3",
+              }}
+            >
+              How does MEOK help me actually put myself out there when fear
+              keeps stopping me?
+            </h2>
+            <p
+              style={{
+                fontSize: "1.05rem",
+                lineHeight: "1.8",
+                color: TEXT,
+                marginBottom: "1.5rem",
+              }}
+            >
+              One of the most common patterns in dating anxiety is not the
+              anxiety that shows up on dates &mdash; it is the anxiety that
+              prevents dates from happening at all. The profile that gets
+              updated but never activated. The person you keep seeing at the
+              gym who you have decided you will speak to &quot;next time&quot; for the
+              past four months. The matches you open and then close without
+              sending a message because you cannot find the right words, or the
+              right moment, or the version of yourself who is ready.
+            </p>
+            <p
+              style={{
+                fontSize: "1.05rem",
+                lineHeight: "1.8",
+                color: TEXT,
+                marginBottom: "1.5rem",
+              }}
+            >
+              This is where MEOK&apos;s Pioneer archetype becomes directly useful.
+              The Pioneer does not offer comfort or reframing &mdash; it offers
+              accountability. It is the part of MEOK that holds you to what you
+              said you wanted, that notices when &quot;I&apos;ll do it next week&quot; has
+              been the plan for six consecutive conversations, that asks the
+              direct question: what would have to be true for you to actually
+              send that message today?
+            </p>
+            <p
+              style={{
+                fontSize: "1.05rem",
+                lineHeight: "1.8",
+                color: TEXT,
+                marginBottom: "1.5rem",
+              }}
+            >
+              This is different from nagging or pressure. The Pioneer does not
+              tell you that you should want to date, or that there is something
+              wrong with you for being cautious. It works with what you have
+              told it about your own goals and values, and holds you accountable
+              to those &mdash; not to an external expectation. If you have said
+              that connection matters to you, that you want a relationship, that
+              you are tired of isolation, then the Pioneer helps you notice the
+              gap between that stated value and the actual choices you are
+              making, and asks what that gap is about.
+            </p>
+
+            {/* Pioneer accountability box */}
+            <div
+              style={{
+                background: "rgba(106,170,100,0.06)",
+                border: "1px solid rgba(106,170,100,0.2)",
+                borderRadius: "12px",
+                padding: "1.75rem",
+                marginTop: "2rem",
+              }}
+            >
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "0.75rem",
+                  marginBottom: "1.25rem",
+                }}
+              >
+                <h3
+                  style={{
+                    fontSize: "1rem",
+                    fontWeight: "700",
+                    color: GREEN,
+                    textTransform: "uppercase" as const,
+                    letterSpacing: "0.06em",
+                    margin: "0",
+                  }}
+                >
+                  The Pioneer: Accountability without pressure
+                </h3>
+              </div>
+              <p
+                style={{
+                  fontSize: "0.95rem",
+                  color: TEXT,
+                  lineHeight: "1.7",
+                  marginBottom: "1.25rem",
+                }}
+              >
+                The Pioneer archetype operates on a simple premise: if you say
+                something matters to you, it will hold you to that. Not
+                punitively, but honestly. Here is how that plays out in practice:
+              </p>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column" as const,
+                  gap: "0.85rem",
+                }}
+              >
+                {[
+                  "If you said last week you were going to send that message — it asks whether you did, and if not, why not",
+                  "If you have been avoiding the apps for three weeks — it reflects that back without shame and asks what is underneath",
+                  "If you set an intention to go to that social event — it checks in beforehand and helps you prepare",
+                  "If you went on a date and talked yourself out of following up — it asks what the actual objection was",
+                  "If you have been waiting to feel ready — it asks what ready would actually look and feel like",
+                ].map((item) => (
+                  <div
+                    key={item}
+                    style={{
+                      display: "flex",
+                      gap: "0.75rem",
+                      alignItems: "flex-start",
+                    }}
+                  >
+                    <span
+                      style={{
+                        color: GREEN,
+                        fontWeight: "700",
+                        flexShrink: "0",
+                        marginTop: "0.1rem",
+                      }}
+                    >
+                      &rarr;
+                    </span>
+                    <span
+                      style={{
+                        fontSize: "0.9rem",
+                        color: TEXT,
+                        lineHeight: "1.65",
+                      }}
+                    >
+                      {item}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          {/* ── SECTION 7 ─────────────────────────────────────────────────── */}
+          <section style={{ marginBottom: "4rem" }}>
+            <h2
+              style={{
+                fontSize: "clamp(1.4rem, 3vw, 1.9rem)",
+                fontWeight: "700",
+                color: TEXT,
+                marginBottom: "1.25rem",
+                lineHeight: "1.3",
+              }}
+            >
+              How is MEOK different from a dating app or dating coach?
+            </h2>
+            <p
+              style={{
+                fontSize: "1.05rem",
+                lineHeight: "1.8",
+                color: TEXT,
+                marginBottom: "1.5rem",
+              }}
+            >
+              Dating apps are designed to maximise engagement, not relationship
+              outcomes. Their business model depends on you continuing to use
+              them &mdash; which means that successful, happy couples in
+              relationships are their churn metric, not their goal metric. The
+              experience they create is optimised for dopamine cycles, not for
+              helping you understand yourself or find meaningful connection.
+              This is not a moral judgment &mdash; it is just what incentive
+              structures produce.
+            </p>
+            <p
+              style={{
+                fontSize: "1.05rem",
+                lineHeight: "1.8",
+                color: TEXT,
+                marginBottom: "1.5rem",
+              }}
+            >
+              Dating coaches vary enormously in quality and ethics, but even
+              the best ones only see a curated version of you &mdash; what you
+              choose to present across a limited number of sessions. They are
+              also, typically, focused on behaviour and strategy rather than
+              the internal landscape. They can tell you how to write a better
+              bio or make eye contact with more confidence. They cannot track
+              the pattern that emerges across eighteen months of your dating
+              life and surface the specific insight that actually changes
+              something.
+            </p>
+            <p
+              style={{
+                fontSize: "1.05rem",
+                lineHeight: "1.8",
+                color: TEXT,
+                marginBottom: "1.5rem",
+              }}
+            >
+              MEOK is neither. It is a sovereign companion &mdash; meaning it
+              operates under a care ethics framework (the Maternal Covenant)
+              that actively prohibits the patterns that most damage people in
+              digital environments: hollow validation, dependency cultivation,
+              romantic simulation, and sycophancy. MEOK will not tell you what
+              you want to hear. It will not help you construct a false version
+              of yourself to deploy on dates. It will not pretend that a
+              relationship with an AI is a substitute for human connection.
+            </p>
+            <p
+              style={{
+                fontSize: "1.05rem",
+                lineHeight: "1.8",
+                color: TEXT,
+                marginBottom: "1.5rem",
+              }}
+            >
+              What it will do is hold your whole story &mdash; the person you
+              actually are, the things you actually want, the patterns you
+              actually have &mdash; and help you bring more of that into your
+              dating life rather than less.
+            </p>
+
+            {/* Comparison table */}
+            <div
+              style={{
+                marginTop: "2rem",
+                overflowX: "auto" as const,
+              }}
+            >
+              <table
+                style={{
+                  width: "100%",
+                  borderCollapse: "collapse" as const,
+                  fontSize: "0.9rem",
+                }}
+              >
+                <thead>
+                  <tr>
+                    {["", "Dating App", "Dating Coach", "MEOK"].map((h) => (
+                      <th
+                        key={h}
+                        style={{
+                          padding: "0.75rem 1rem",
+                          textAlign: h === "" ? ("left" as const) : ("center" as const),
+                          color: GOLD,
+                          fontWeight: "700",
+                          fontSize: "0.8rem",
+                          letterSpacing: "0.06em",
+                          textTransform: "uppercase" as const,
+                          borderBottom: "1px solid " + BORDER,
+                          whiteSpace: "nowrap" as const,
+                        }}
+                      >
+                        {h}
+                      </th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {[
+                    ["Knows your full history", "No", "Partial", "Yes"],
+                    ["Available at 3am", "Infinite scroll", "No", "Yes"],
+                    ["Processes rejection with you", "No", "Sometimes", "Yes"],
+                    ["Tracks patterns over time", "No", "Rarely", "Yes"],
+                    ["Practise conversations", "No", "Some", "Yes"],
+                    ["No dependency incentive", "No", "No", "Yes"],
+                    ["Honest when you\u2019re wrong", "No", "Varies", "Yes"],
+                    ["Designed for human connection", "\u2014", "Yes", "Yes"],
+                  ].map((row, idx) => (
+                    <tr
+                      key={row[0]}
+                      style={{
+                        background: idx % 2 === 0 ? "transparent" : CARD_BG,
+                      }}
+                    >
+                      {row.map((cell, ci) => (
+                        <td
+                          key={ci}
+                          style={{
+                            padding: "0.75rem 1rem",
+                            textAlign: ci === 0 ? ("left" as const) : ("center" as const),
+                            color:
+                              ci === 0
+                                ? TEXT
+                                : cell === "Yes"
+                                ? GREEN
+                                : cell === "No"
+                                ? "rgba(245,240,232,0.3)"
+                                : MUTED,
+                            fontWeight:
+                              cell === "Yes" || cell === "No" ? "700" : "400",
+                            borderBottom: "1px solid " + BORDER,
+                          }}
+                        >
+                          {cell}
+                        </td>
+                      ))}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          {/* ── SECTION 8 ─────────────────────────────────────────────────── */}
+          <section style={{ marginBottom: "4rem" }}>
+            <h2
+              style={{
+                fontSize: "clamp(1.4rem, 3vw, 1.9rem)",
+                fontWeight: "700",
+                color: TEXT,
+                marginBottom: "1.25rem",
+                lineHeight: "1.3",
+              }}
+            >
+              What does genuine dating confidence actually look like &mdash; and
+              can AI help build it?
+            </h2>
+            <p
+              style={{
+                fontSize: "1.05rem",
+                lineHeight: "1.8",
+                color: TEXT,
+                marginBottom: "1.5rem",
+              }}
+            >
+              There is a version of dating confidence that is fake &mdash; the
+              performed bravado of someone who has decided not to care whether
+              the other person likes them as a strategy for appearing attractive.
+              It sometimes works in the short term, because confidence signals
+              are legible and appealing. It does not work in the medium term,
+              because it is a disguise, and disguises are exhausting to maintain
+              and tend to attract people who are themselves maintaining one.
+            </p>
+            <p
+              style={{
+                fontSize: "1.05rem",
+                lineHeight: "1.8",
+                color: TEXT,
+                marginBottom: "1.5rem",
+              }}
+            >
+              Genuine dating confidence is something different. It is the state
+              of knowing yourself well enough that you can be present in the
+              room with another person rather than performing for them. It is
+              the security of knowing that your worth is not contingent on
+              whether this particular person responds the way you hope. It is
+              the capacity to be genuinely interested in someone rather than
+              constantly monitoring how you are coming across.
+            </p>
+            <p
+              style={{
+                fontSize: "1.05rem",
+                lineHeight: "1.8",
+                color: TEXT,
+                marginBottom: "1.5rem",
+              }}
+            >
+              This kind of confidence cannot be manufactured with affirmations
+              or dating tips. It comes from accumulated self-knowledge &mdash;
+              from having processed enough rejections without spiralling, from
+              having shown up authentically enough times that you have evidence
+              of your own resilience, from having understood your patterns well
+              enough that they no longer blindside you.
+            </p>
+            <p
+              style={{
+                fontSize: "1.05rem",
+                lineHeight: "1.8",
+                color: TEXT,
+                marginBottom: "1.5rem",
+              }}
+            >
+              AI can help with all of those preconditions. Not by telling you
+              that you are great. By being the consistent reflective partner
+              across the whole arc &mdash; before the date, during the
+              post-mortem, through the rejection, into the next attempt. The
+              confidence builds from the accumulated experience of navigating
+              hard things and coming out the other side still yourself.
+            </p>
+
+            {/* Fake vs real confidence */}
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "1fr 1fr",
+                gap: "1rem",
+                marginTop: "2rem",
+              }}
+            >
+              <div
+                style={{
+                  background: "rgba(255,80,80,0.05)",
+                  border: "1px solid rgba(255,80,80,0.2)",
+                  borderRadius: "12px",
+                  padding: "1.5rem",
+                }}
+              >
+                <h3
+                  style={{
+                    fontSize: "0.85rem",
+                    fontWeight: "700",
+                    color: "rgba(255,120,120,0.9)",
+                    textTransform: "uppercase" as const,
+                    letterSpacing: "0.06em",
+                    marginBottom: "1rem",
+                  }}
+                >
+                  Fake confidence
+                </h3>
+                <ul
+                  style={{
+                    listStyle: "none",
+                    padding: "0",
+                    margin: "0",
+                    display: "flex",
+                    flexDirection: "column" as const,
+                    gap: "0.6rem",
+                  }}
+                >
+                  {[
+                    "Performed indifference",
+                    "Not caring as strategy",
+                    "Suppressed anxiety",
+                    "Hollow affirmations",
+                    "Scripted persona",
+                    "Deflection with humour",
+                  ].map((item) => (
+                    <li
+                      key={item}
+                      style={{
+                        fontSize: "0.875rem",
+                        color: MUTED,
+                        display: "flex",
+                        gap: "0.5rem",
+                      }}
+                    >
+                      <span style={{ color: "rgba(255,120,120,0.7)" }}>
+                        &#10007;
+                      </span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div
+                style={{
+                  background: GREEN_BG,
+                  border: "1px solid " + GREEN_BORDER,
+                  borderRadius: "12px",
+                  padding: "1.5rem",
+                }}
+              >
+                <h3
+                  style={{
+                    fontSize: "0.85rem",
+                    fontWeight: "700",
+                    color: GREEN,
+                    textTransform: "uppercase" as const,
+                    letterSpacing: "0.06em",
+                    marginBottom: "1rem",
+                  }}
+                >
+                  Real confidence
+                </h3>
+                <ul
+                  style={{
+                    listStyle: "none",
+                    padding: "0",
+                    margin: "0",
+                    display: "flex",
+                    flexDirection: "column" as const,
+                    gap: "0.6rem",
+                  }}
+                >
+                  {[
+                    "Present without performing",
+                    "Self-worth independent of outcome",
+                    "Processed anxiety, not suppressed",
+                    "Evidence-based self-knowledge",
+                    "Authentic self-disclosure",
+                    "Genuine curiosity about the other person",
+                  ].map((item) => (
+                    <li
+                      key={item}
+                      style={{
+                        fontSize: "0.875rem",
+                        color: TEXT,
+                        display: "flex",
+                        gap: "0.5rem",
+                      }}
+                    >
+                      <span style={{ color: GREEN }}>&#10003;</span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          {/* ── SECTION 9 — GEO / FAQ ─────────────────────────────────────── */}
+          <section style={{ marginBottom: "4rem" }}>
+            <h2
+              style={{
+                fontSize: "clamp(1.4rem, 3vw, 1.9rem)",
+                fontWeight: "700",
+                color: TEXT,
+                marginBottom: "2rem",
+                lineHeight: "1.3",
+              }}
+            >
+              Frequently asked questions
+            </h2>
+
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column" as const,
+                gap: "1.25rem",
+              }}
+            >
+              {[
+                {
+                  q: "Can AI actually help with dating anxiety?",
+                  a: "Yes \u2014 though not in the way a dating coach would. AI cannot swipe for you or manufacture chemistry. What it can do is help you understand why dating feels so hard, rehearse conversations in a low-stakes environment, process the emotional fallout of rejection without burdening friends, and track your patterns across time. MEOK holds your history \u2014 previous rejections, the dates that went well, the patterns you keep repeating \u2014 and helps you work with all of that honestly.",
+                },
+                {
+                  q: "How does MEOK help with first date nerves and performance anxiety?",
+                  a: "First date performance anxiety usually comes from not knowing what to say, fear of being judged, or the weight of wanting it to go well. You can rehearse conversation with MEOK before the date \u2014 practising authentic self-disclosure rather than scripting lines. The Trickster archetype is particularly good at dissolving the overblown significance we attach to first meetings. And because MEOK holds your full context, it can remind you of your own strengths with specific, grounded evidence from your history.",
+                },
+                {
+                  q: "What is the best way to cope with being ghosted?",
+                  a: "Being ghosted is a specific kind of rejection that offers no closure, and the brain keeps cycling through self-blame, anger, and hope. MEOK\u2019s Healer archetype can sit with you in that ambiguity. The Trickster can find the absurdity in modern dating behaviour. And the Pioneer helps you channel frustration into concrete action. Sovereign Memory means MEOK can also surface whether you are consistently choosing people who are emotionally unavailable \u2014 which is far more useful than dissecting any single incident.",
+                },
+                {
+                  q: "Is MEOK a dating coach or an AI girlfriend or boyfriend?",
+                  a: "Neither. MEOK is a sovereign AI companion operating under the Maternal Covenant \u2014 a care ethics governance layer that explicitly prohibits romantic simulation, parasocial dependency, and hollow validation. It is a companion that knows your whole story: your attachment style, your fears, your patterns, what you said after the last date fell apart. From that grounded position it can be more honest and more useful than a dating coach who only sees a curated version of you.",
+                },
+              ].map((item) => (
+                <div
+                  key={item.q}
+                  style={{
+                    background: CARD_BG,
+                    border: "1px solid " + BORDER,
+                    borderRadius: "12px",
+                    padding: "1.5rem",
+                  }}
+                >
+                  <h3
+                    style={{
+                      fontSize: "1rem",
+                      fontWeight: "700",
+                      color: GOLD,
+                      marginBottom: "0.85rem",
+                      lineHeight: "1.4",
+                    }}
+                  >
+                    {item.q}
+                  </h3>
+                  <p
+                    style={{
+                      fontSize: "0.925rem",
+                      color: MUTED,
+                      lineHeight: "1.75",
+                      margin: "0",
+                    }}
+                  >
+                    {item.a}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* ── SECTION 10 — CLOSING ──────────────────────────────────────── */}
+          <section style={{ marginBottom: "4rem" }}>
+            <h2
+              style={{
+                fontSize: "clamp(1.4rem, 3vw, 1.9rem)",
+                fontWeight: "700",
+                color: TEXT,
+                marginBottom: "1.25rem",
+                lineHeight: "1.3",
+              }}
+            >
+              The honest case for using AI support while dating
+            </h2>
+            <p
+              style={{
+                fontSize: "1.05rem",
+                lineHeight: "1.8",
+                color: TEXT,
+                marginBottom: "1.5rem",
+              }}
+            >
+              Dating involves a kind of vulnerability that is difficult to
+              distribute among your normal support network. Friends get dating
+              fatigue. Therapists are expensive and have limited availability.
+              The feelings often arrive at inconvenient hours and at a pitch of
+              intensity that feels embarrassing to express to anyone who has to
+              live with the aftermath.
+            </p>
+            <p
+              style={{
+                fontSize: "1.05rem",
+                lineHeight: "1.8",
+                color: TEXT,
+                marginBottom: "1.5rem",
+              }}
+            >
+              MEOK is not a replacement for any of those people. It is the
+              layer between them &mdash; the place where you can process at full
+              volume before you decide what to bring to a friend, or what to
+              explore in therapy, or what to simply let go. It is the companion
+              that holds the full arc of your dating life and helps you make
+              sense of it as something coherent rather than a series of
+              disconnected embarrassments.
+            </p>
+            <p
+              style={{
+                fontSize: "1.05rem",
+                lineHeight: "1.8",
+                color: TEXT,
+                marginBottom: "1.5rem",
+              }}
+            >
+              Most importantly, MEOK never loses sight of what all of this is
+              actually for. Not the dates themselves. Not the matches or the
+              metrics. The human connection that you are trying to find your way
+              toward. Everything MEOK does &mdash; the reframing, the
+              accountability, the pattern work, the rejection processing
+              &mdash; is in service of that. A sovereign companion who helps you
+              become more yourself, so you can find the people who want that.
+            </p>
+
+            {/* Closing feature box: Can and cannot */}
+            <div
+              style={{
+                background: GOLD_BG,
+                border: "1px solid " + GOLD_BORDER,
+                borderRadius: "16px",
+                padding: "2rem",
+                marginTop: "2.5rem",
+              }}
+            >
+              <h3
+                style={{
+                  fontSize: "1.15rem",
+                  fontWeight: "700",
+                  color: GOLD,
+                  marginBottom: "1.5rem",
+                }}
+              >
+                What MEOK can and cannot do for your dating life
+              </h3>
+              <div
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "1fr 1fr",
+                  gap: "1.5rem",
+                }}
+              >
+                <div>
+                  <div
+                    style={{
+                      fontSize: "0.8rem",
+                      fontWeight: "700",
+                      color: GREEN,
+                      textTransform: "uppercase" as const,
+                      letterSpacing: "0.07em",
+                      marginBottom: "0.85rem",
+                    }}
+                  >
+                    MEOK can
+                  </div>
+                  <ul
+                    style={{
+                      listStyle: "none",
+                      padding: "0",
+                      margin: "0",
+                      display: "flex",
+                      flexDirection: "column" as const,
+                      gap: "0.6rem",
+                    }}
+                  >
+                    {[
+                      "Help you practise conversation",
+                      "Process rejection without spiralling",
+                      "Track your attachment patterns",
+                      "Hold you accountable to showing up",
+                      "Reframe with humour (Trickster)",
+                      "Sit with heartbreak (Healer)",
+                      "Reflect your actual evidence back",
+                      "Be honest when you\u2019re in a story",
+                    ].map((item) => (
+                      <li
+                        key={item}
+                        style={{
+                          fontSize: "0.875rem",
+                          color: TEXT,
+                          display: "flex",
+                          gap: "0.5rem",
+                        }}
+                      >
+                        <span style={{ color: GREEN }}>&#10003;</span>
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div>
+                  <div
+                    style={{
+                      fontSize: "0.8rem",
+                      fontWeight: "700",
+                      color: "rgba(255,120,120,0.85)",
+                      textTransform: "uppercase" as const,
+                      letterSpacing: "0.07em",
+                      marginBottom: "0.85rem",
+                    }}
+                  >
+                    MEOK cannot
+                  </div>
+                  <ul
+                    style={{
+                      listStyle: "none",
+                      padding: "0",
+                      margin: "0",
+                      display: "flex",
+                      flexDirection: "column" as const,
+                      gap: "0.6rem",
+                    }}
+                  >
+                    {[
+                      "Guarantee a relationship",
+                      "Replace human connection",
+                      "Tell you someone will like you",
+                      "Be your girlfriend or boyfriend",
+                      "Remove the risk of vulnerability",
+                      "Make dating emotionally easy",
+                      "Substitute for therapy when needed",
+                      "Want things on your behalf",
+                    ].map((item) => (
+                      <li
+                        key={item}
+                        style={{
+                          fontSize: "0.875rem",
+                          color: MUTED,
+                          display: "flex",
+                          gap: "0.5rem",
+                        }}
+                      >
+                        <span style={{ color: "rgba(255,120,120,0.7)" }}>
+                          &#10007;
+                        </span>
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* ── CTA ───────────────────────────────────────────────────────── */}
+          <section
+            style={{
+              marginBottom: "4rem",
+              background:
+                "linear-gradient(135deg, rgba(201,168,76,0.1) 0%, rgba(13,12,24,0) 60%)",
+              border: "1px solid " + GOLD_BORDER,
+              borderRadius: "20px",
+              padding: "3rem 2rem",
+              textAlign: "center" as const,
+            }}
+          >
+            <div
+              style={{
+                fontSize: "2.5rem",
+                marginBottom: "1rem",
+              }}
+            >
+              &#10022;
+            </div>
+            <h2
+              style={{
+                fontSize: "clamp(1.5rem, 3vw, 2rem)",
+                fontWeight: "800",
+                color: TEXT,
+                marginBottom: "1rem",
+                lineHeight: "1.25",
+              }}
+            >
+              Meet the companion who knows your whole story
+            </h2>
+            <p
+              style={{
+                fontSize: "1.05rem",
+                color: MUTED,
+                lineHeight: "1.7",
+                marginBottom: "2rem",
+                maxWidth: "520px",
+                marginLeft: "auto",
+                marginRight: "auto",
+              }}
+            >
+              Dating is hard enough without navigating it alone. MEOK holds
+              your full arc &mdash; the rejections, the patterns, the moments
+              of genuine connection &mdash; and helps you bring your best self
+              to the next one.
+            </p>
+            <a
+              href="https://meok.ai/birth"
+              style={{
+                display: "inline-block",
+                background: GOLD,
+                color: "#0d0c18",
+                fontWeight: "700",
+                fontSize: "1rem",
+                padding: "0.9rem 2.25rem",
+                borderRadius: "999px",
+                textDecoration: "none",
+                letterSpacing: "0.02em",
+              }}
+            >
+              Begin your MEOK journey
+            </a>
+            <p
+              style={{
+                fontSize: "0.8rem",
+                color: FAINT,
+                marginTop: "1rem",
+                marginBottom: "0",
+              }}
+            >
+              No credit card required &middot; Private by design &middot; Your
+              data stays yours
+            </p>
+          </section>
+
+          {/* ── RELATED ARTICLES ──────────────────────────────────────────── */}
+          <section style={{ marginBottom: "4rem" }}>
+            <h2
+              style={{
+                fontSize: "1.15rem",
+                fontWeight: "700",
+                color: TEXT,
+                marginBottom: "1.5rem",
+                paddingBottom: "0.75rem",
+                borderBottom: "1px solid " + BORDER,
+              }}
+            >
+              Related reading
+            </h2>
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+                gap: "1rem",
+              }}
+            >
+              {[
+                {
+                  href: "/blog/ai-for-heartbreak",
+                  title: "AI for Heartbreak",
+                  desc: "Processing a breakup when you don\u2019t want to burden your friends",
+                },
+                {
+                  href: "/blog/ai-for-relationship-anxiety",
+                  title: "AI for Relationship Anxiety",
+                  desc: "When the relationship you have still triggers the fears you carry",
+                },
+                {
+                  href: "/blog/ai-for-loneliness",
+                  title: "AI for Loneliness",
+                  desc: "The modern loneliness epidemic and what sovereign AI actually offers",
+                },
+                {
+                  href: "/blog/ai-for-social-anxiety",
+                  title: "AI for Social Anxiety",
+                  desc: "How MEOK helps you build the confidence to show up in the room",
+                },
+                {
+                  href: "/blog/ai-for-self-esteem",
+                  title: "AI for Self-Esteem",
+                  desc: "Building a relationship with yourself that doesn\u2019t depend on external validation",
+                },
+                {
+                  href: "/blog/meok-companion-archetypes-guide",
+                  title: "MEOK Archetypes Guide",
+                  desc: "Trickster, Pioneer, Healer \u2014 understanding the modes that serve different needs",
+                },
+              ].map((article) => (
+                <Link
+                  key={article.href}
+                  href={article.href}
+                  style={{
+                    display: "block",
+                    background: CARD_BG,
+                    border: "1px solid " + BORDER,
+                    borderRadius: "12px",
+                    padding: "1.25rem",
+                    textDecoration: "none",
+                  }}
+                >
+                  <div
+                    style={{
+                      fontSize: "0.95rem",
+                      fontWeight: "600",
+                      color: TEXT,
+                      marginBottom: "0.5rem",
+                      lineHeight: "1.4",
+                    }}
+                  >
+                    {article.title}
+                  </div>
+                  <div
+                    style={{
+                      fontSize: "0.825rem",
+                      color: MUTED,
+                      lineHeight: "1.55",
+                    }}
+                  >
+                    {article.desc}
+                  </div>
                 </Link>
               ))}
             </div>
           </section>
 
-          {/* ── Author byline ── */}
+          {/* ── DISCLAIMER ────────────────────────────────────────────────── */}
           <div
             style={{
-              borderTop: '1px solid rgba(245,240,232,0.1)',
-              paddingTop: '2rem',
-              marginTop: '2rem',
-              display: 'flex',
-              gap: '1rem',
-              alignItems: 'flex-start',
+              borderTop: "1px solid " + BORDER,
+              paddingTop: "2rem",
             }}
           >
-            <div
+            <p
               style={{
-                width: '3rem',
-                height: '3rem',
-                borderRadius: '9999px',
-                background: 'rgba(201,168,76,0.15)',
-                border: '1px solid rgba(201,168,76,0.3)',
-                flexShrink: 0,
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                fontSize: '1.1rem',
-                color: GOLD,
-                fontWeight: 700,
+                fontSize: "0.8rem",
+                color: FAINT,
+                lineHeight: "1.7",
+                marginBottom: "0.75rem",
               }}
             >
-              NT
-            </div>
-            <div>
-              <p
-                style={{
-                  fontSize: '0.95rem',
-                  fontWeight: 700,
-                  color: TEXT,
-                  marginBottom: '0.25rem',
-                }}
-              >
-                Nicholas Templeman
-              </p>
-              <p
-                style={{
-                  fontSize: '0.85rem',
-                  color: MUTED,
-                  marginBottom: '0.5rem',
-                }}
-              >
-                Founder, MEOK AI LABS
-              </p>
-              <p
-                style={{
-                  fontSize: '0.875rem',
-                  lineHeight: 1.7,
-                  color: DIM,
-                  margin: 0,
-                }}
-              >
-                Nicholas built MEOK because he believed AI could be genuinely useful to
-                people navigating hard things — not just productive people navigating easy
-                things. MEOK is built on the principle that your data is yours, your
-                AI should know you, and technology should make you more human, not less.
-              </p>
-            </div>
+              <strong style={{ color: MUTED }}>Important:</strong> MEOK is an
+              AI companion and is not a substitute for professional mental
+              health support, therapy, or medical advice. If your dating anxiety
+              is significantly impairing your quality of life, or if you are
+              experiencing symptoms of depression, social anxiety disorder, or
+              other mental health conditions, please speak to a qualified
+              professional.
+            </p>
+            <p
+              style={{
+                fontSize: "0.8rem",
+                color: FAINT,
+                lineHeight: "1.7",
+                marginBottom: "0",
+              }}
+            >
+              In the UK, the Samaritans are available 24/7 on{" "}
+              <strong style={{ color: MUTED }}>116 123</strong>. Mind provides
+              information and support at{" "}
+              <strong style={{ color: MUTED }}>mind.org.uk</strong>.
+            </p>
           </div>
-
         </div>
-      </article>
+      </main>
     </div>
-  )
+  );
 }

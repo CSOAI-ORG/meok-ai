@@ -23,7 +23,7 @@ import {
   Menu,
   X,
 } from "lucide-react";
-import { useAuth } from "@/lib/auth";
+import { useUser, useClerk } from "@clerk/nextjs";
 import { useEffect, useState } from "react";
 import { mcp, callTool } from "@/lib/api";
 
@@ -307,7 +307,9 @@ function EntityOrb({ entity, mode }: { entity: EntitySummary | null; mode: strin
 // ── Main sidebar ──────────────────────────────────────────────────
 export function Sidebar({ consciousnessMode }: { consciousnessMode?: string }) {
   const pathname = usePathname();
-  const { user, logout, token } = useAuth();
+  const { user } = useUser();
+  const { signOut } = useClerk();
+  const token = !!user; // truthy when signed in
   const mode = consciousnessMode || "waking";
   const [entity, setEntity] = useState<EntitySummary | null>(null);
   const [userPlan, setUserPlan] = useState<string>("explorer");
@@ -598,12 +600,12 @@ export function Sidebar({ consciousnessMode }: { consciousnessMode?: string }) {
             className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 text-xs font-bold"
             style={{ background: `${GOLD}22`, color: GOLD }}
           >
-            {user?.email?.charAt(0).toUpperCase() || "?"}
+            {user?.emailAddresses[0]?.emailAddress?.charAt(0).toUpperCase() || "?"}
           </div>
 
           {/* Email + plan */}
           <div className="flex-1 min-w-0">
-            <p className="text-sm text-white/80 truncate leading-tight">{user?.email}</p>
+            <p className="text-sm text-white/80 truncate leading-tight">{user?.emailAddresses[0]?.emailAddress}</p>
             <div className="flex items-center gap-1.5 mt-0.5">
               <span
                 className="text-[10px] font-semibold px-1.5 py-0.5 rounded-full"
@@ -616,7 +618,7 @@ export function Sidebar({ consciousnessMode }: { consciousnessMode?: string }) {
 
           {/* Logout */}
           <button
-            onClick={logout}
+            onClick={() => signOut()}
             className="p-1.5 rounded-lg transition-colors flex-shrink-0"
             style={{ color: "rgba(255,255,255,0.25)" }}
             title="Logout"

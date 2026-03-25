@@ -1,52 +1,52 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 
-// ── Metadata ────────────────────────────────────────────────────────────────
+// ── Metadata ──────────────────────────────────────────────────────────────────
 
 export const metadata: Metadata = {
-  title: "AI and Men's Mental Health: Breaking the Silence Without the Stigma | MEOK AI LABS",
+  title: "AI for Men's Mental Health: Breaking the Silence That Is Killing Men | MEOK AI LABS",
   description:
-    "Men die by suicide at three times the rate of women in the UK. Here's how AI companions are quietly opening a door that social stigma keeps shut.",
+    "Suicide is the biggest killer of men under 50 in the UK. Men are 3x less likely to seek mental health support. MEOK's sovereign AI companion offers a private, non-judgmental space that does not require men to talk about their feelings in ways that feel unnatural.",
   alternates: { canonical: 'https://meok.ai/blog/ai-for-men-mental-health' },
   openGraph: {
-    title: "AI and Men's Mental Health: Breaking the Silence Without the Stigma",
+    title: "AI for Men's Mental Health: Breaking the Silence That Is Killing Men",
     description:
-      "Men die by suicide at three times the rate of women in the UK. Here's how AI companions are quietly opening a door that social stigma keeps shut.",
+      "Suicide is the biggest killer of men under 50 in the UK. Men are 3x less likely to seek help. MEOK offers a private AI companion with no stigma, no waiting list, and no pressure to perform vulnerability.",
     type: 'article',
-    publishedTime: '2026-03-24',
+    publishedTime: '2026-03-25',
     authors: ['Nicholas Templeman'],
     url: 'https://meok.ai/blog/ai-for-men-mental-health',
     siteName: 'MEOK.AI',
     images: [
       {
-        url: "https://meok.ai/api/og?title=AI+and+Men%27s+Mental+Health%3A+Breaking+the+Silence&desc=No+stigma%2C+no+judgement%2C+no+appointment+needed",
+        url: "https://meok.ai/api/og?title=AI+for+Men%27s+Mental+Health%3A+Breaking+the+Silence&desc=No+stigma%2C+no+waiting+list%2C+sovereign+and+private",
         width: 1200,
         height: 630,
-        alt: "AI and Men's Mental Health: Breaking the Silence Without the Stigma | MEOK AI LABS",
+        alt: "AI for Men's Mental Health: Breaking the Silence That Is Killing Men | MEOK AI LABS",
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: "AI and Men's Mental Health: Breaking the Silence Without the Stigma",
+    title: "AI for Men's Mental Health: Breaking the Silence That Is Killing Men",
     description:
-      "Men in the UK are the highest-risk group for suicide. AI companions offer a low-barrier, stigma-free space to start talking — without needing to be ready for therapy.",
+      "Suicide is the biggest killer of men under 50 in the UK. MEOK's private AI companion meets men where they are — problem-focused, sovereign, and available at 3am.",
     images: [
-      "https://meok.ai/api/og?title=AI+and+Men%27s+Mental+Health%3A+Breaking+the+Silence&desc=No+stigma%2C+no+judgement%2C+no+appointment+needed",
+      "https://meok.ai/api/og?title=AI+for+Men%27s+Mental+Health%3A+Breaking+the+Silence&desc=No+stigma%2C+no+waiting+list%2C+sovereign+and+private",
     ],
   },
 }
 
-// ── JSON-LD: Article ─────────────────────────────────────────────────────────
+// ── JSON-LD: Article ──────────────────────────────────────────────────────────
 
 const articleJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Article',
-  headline: "AI and Men's Mental Health: Breaking the Silence Without the Stigma",
+  headline: "AI for Men's Mental Health: Breaking the Silence That Is Killing Men",
   description:
-    "Men account for three-quarters of all suicides in the UK. This article explores how AI companions help men who resist traditional therapy — through familiar problem-solving framing, emotional vocabulary building, anger as a secondary emotion, and private availability at any hour.",
-  datePublished: '2026-03-24',
-  dateModified: '2026-03-24',
+    "Suicide is the leading cause of death for men under 50 in the UK. Men are three times less likely to seek professional mental health support. This article explores how MEOK's sovereign AI companions — Pioneer, Scholar, Healer, and Guardian — offer a private, stigma-free entry point that meets men on their own terms.",
+  datePublished: '2026-03-25',
+  dateModified: '2026-03-25',
   url: 'https://meok.ai/blog/ai-for-men-mental-health',
   author: {
     '@type': 'Person',
@@ -66,15 +66,16 @@ const articleJsonLd = {
   about: [
     { '@type': 'Thing', name: "men's mental health" },
     { '@type': 'Thing', name: 'AI companion' },
-    { '@type': 'Thing', name: 'suicide prevention' },
-    { '@type': 'Thing', name: 'stigma reduction' },
+    { '@type': 'Thing', name: 'suicide prevention UK' },
+    { '@type': 'Thing', name: 'male mental health stigma' },
+    { '@type': 'Thing', name: 'sovereign AI' },
     { '@type': 'Thing', name: 'MEOK' },
   ],
   keywords:
-    "AI for men's mental health, men mental health app UK, men suicide statistics UK, AI companion men, CALM Samaritans AI, men emotional support app, MEOK AI",
+    "AI for men's mental health, men mental health UK, male suicide UK, men therapy app, AI companion men, MEOK Pioneer archetype, men emotional support, sovereign AI mental health",
 }
 
-// ── JSON-LD: FAQPage ─────────────────────────────────────────────────────────
+// ── JSON-LD: FAQPage ──────────────────────────────────────────────────────────
 
 const faqJsonLd = {
   '@context': 'https://schema.org',
@@ -82,10 +83,10 @@ const faqJsonLd = {
   mainEntity: [
     {
       '@type': 'Question',
-      name: "Can an AI actually help men's mental health?",
+      name: "Can AI actually help men's mental health?",
       acceptedAnswer: {
         '@type': 'Answer',
-        text: "AI companions don't replace therapy, but they lower the barrier to engaging with your own mental state. For men who won't call a helpline or book a GP appointment, having a private, non-judgmental space to process thoughts in writing can be a genuine first step. Research on digital mental health tools consistently shows uptake is higher among men than traditional services.",
+        text: "AI companions don't replace therapy, but they dramatically lower the barrier to engaging with your own mental state. For men who won't call a helpline, book a GP appointment, or admit to struggling in front of another person, a private AI space to think out loud can be the first honest reflection they've had in years. Research on digital mental health tools consistently shows higher uptake among men than traditional services.",
       },
     },
     {
@@ -93,7 +94,7 @@ const faqJsonLd = {
       name: 'Why are men less likely to seek mental health support?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: "Masculine norms around self-reliance, stoicism, and emotional restraint are deeply conditioned from childhood. Admitting to struggling feels like a loss of status or competence. There's also a practical barrier: therapy requires scheduling, vulnerability in front of a stranger, and weeks of waiting. AI removes all three of those friction points.",
+        text: "Masculine conditioning around self-reliance, stoicism, and emotional restraint runs deep. Admitting to struggling feels like a failure of competence. There are also practical barriers: therapy requires scheduling, sitting in vulnerability in front of a stranger, and waiting weeks for an appointment. AI removes all three of those friction points — it is immediate, private, and asks nothing of your social identity.",
       },
     },
     {
@@ -101,366 +102,53 @@ const faqJsonLd = {
       name: "What is the UK men's suicide rate?",
       acceptedAnswer: {
         '@type': 'Answer',
-        text: "In the UK, men account for approximately three-quarters of all suicides. The highest-risk group is men aged 40 to 49. Organisations like CALM (Campaign Against Living Miserably) and Samaritans work specifically to address this gap. CALM's helpline is 0800 58 58 58 (5pm–midnight daily). Samaritans can be reached any time on 116 123.",
+        text: "Suicide is the single biggest cause of death for men under 50 in the UK. Men account for approximately three-quarters of all suicides in England and Wales. The highest-risk group is men aged 40 to 49. CALM (Campaign Against Living Miserably) helpline: 0800 58 58 58 (5pm to midnight daily). Samaritans: 116 123 (24/7, free).",
       },
     },
     {
       '@type': 'Question',
-      name: 'What is anger as a secondary emotion?',
+      name: 'What is the Pioneer archetype in MEOK?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: "Secondary emotions are the feelings that mask a more vulnerable primary emotion underneath. Anger is the most common secondary emotion for men — it's socially acceptable and feels active, unlike fear, shame, or grief. When MEOK helps you trace an angry reaction back to its root cause, you're often uncovering something like humiliation, loss, or powerlessness. That's where the real work is.",
+        text: "Pioneer is MEOK's gold-toned archetype built around accountability, forward momentum, and purposeful living. It does not lead with feelings — it leads with goals, problems, and action. Pioneer will challenge avoidance, track commitments across sessions using Sovereign Memory, and hold you to the standards you set for yourself. It is designed for men who want growth, not therapy-speak.",
       },
     },
     {
       '@type': 'Question',
-      name: 'Does MEOK replace a therapist or psychiatrist?',
+      name: 'Does MEOK replace a therapist?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: "No. MEOK is not a clinical tool and does not diagnose or treat mental health conditions. If you are in crisis, please contact CALM on 0800 58 58 58 or Samaritans on 116 123. MEOK works best as a daily thinking partner — a place to process, organise your thoughts, and build emotional self-awareness over time.",
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'How does MEOK approach emotional conversations with men?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: "MEOK uses a practical, problem-solving entry point rather than leading with 'how do you feel?' It treats emotional reflection as a form of self-analysis — a skill, not a confession. This framing is more compatible with how many men have been conditioned to approach problems. Over time the conversations naturally deepen, because trust has been built through usefulness rather than forced vulnerability.",
+        text: "No. MEOK is not a clinical tool and does not diagnose or treat mental health conditions. If you are in crisis, contact CALM on 0800 58 58 58 or Samaritans on 116 123. MEOK works best as a daily thinking partner — a place to process, organise thoughts, and build self-awareness over time. For many men it is the step before therapy, not a replacement for it.",
       },
     },
   ],
 }
 
-// ── Styles ───────────────────────────────────────────────────────────────────
+// ── Style constants ───────────────────────────────────────────────────────────
 
-const s = {
-  page: {
-    backgroundColor: '#0d0c18',
-    color: '#f5f0e8',
-    minHeight: '100vh',
-    fontFamily: "'Inter', 'Helvetica Neue', Arial, sans-serif",
-    lineHeight: '1.75',
-  } as React.CSSProperties,
+const GOLD = '#c9a84c'
+const TEXT = '#f5f0e8'
+const BG = '#0d0c18'
+const MUTED = 'rgba(245,240,232,0.62)'
+const MUTED_FAINT = 'rgba(245,240,232,0.38)'
+const SURFACE = 'rgba(245,240,232,0.04)'
+const BORDER = 'rgba(201,168,76,0.2)'
+const BORDER_DIM = 'rgba(201,168,76,0.12)'
+const TEXT_DIM = '#b8b4c8'
 
-  nav: {
-    borderBottom: '1px solid rgba(201,168,76,0.18)',
-    padding: '18px 24px',
-    display: 'flex',
-    alignItems: 'center',
-    gap: '8px',
-    flexWrap: 'wrap' as const,
-    fontSize: '14px',
-  } as React.CSSProperties,
+// ── Page ──────────────────────────────────────────────────────────────────────
 
-  navSep: {
-    color: '#5a5870',
-    margin: '0 2px',
-  } as React.CSSProperties,
-
-  navLink: {
-    color: '#c9a84c',
-    textDecoration: 'none',
-  } as React.CSSProperties,
-
-  navCurrent: {
-    color: '#8a8799',
-  } as React.CSSProperties,
-
-  hero: {
-    maxWidth: '780px',
-    margin: '0 auto',
-    padding: '72px 24px 48px',
-    borderBottom: '1px solid rgba(201,168,76,0.12)',
-  } as React.CSSProperties,
-
-  tag: {
-    display: 'inline-block',
-    backgroundColor: 'rgba(201,168,76,0.12)',
-    color: '#c9a84c',
-    fontSize: '12px',
-    fontWeight: 700,
-    letterSpacing: '0.1em',
-    textTransform: 'uppercase' as const,
-    padding: '5px 12px',
-    borderRadius: '4px',
-    marginBottom: '24px',
-  } as React.CSSProperties,
-
-  h1: {
-    fontSize: 'clamp(28px, 5vw, 48px)',
-    fontWeight: 800,
-    lineHeight: '1.18',
-    letterSpacing: '-0.02em',
-    color: '#f5f0e8',
-    margin: '0 0 24px',
-  } as React.CSSProperties,
-
-  subtitle: {
-    fontSize: '20px',
-    color: '#b8b4c8',
-    lineHeight: '1.6',
-    margin: '0 0 32px',
-    fontWeight: 400,
-  } as React.CSSProperties,
-
-  meta: {
-    display: 'flex',
-    flexWrap: 'wrap' as const,
-    gap: '20px',
-    fontSize: '13px',
-    color: '#6e6b80',
-  } as React.CSSProperties,
-
-  metaItem: {
-    display: 'flex',
-    alignItems: 'center',
-    gap: '6px',
-  } as React.CSSProperties,
-
-  metaLabel: {
-    color: '#c9a84c',
-    fontWeight: 600,
-  } as React.CSSProperties,
-
-  body: {
-    maxWidth: '780px',
-    margin: '0 auto',
-    padding: '56px 24px 80px',
-  } as React.CSSProperties,
-
-  p: {
-    fontSize: '17px',
-    lineHeight: '1.78',
-    color: '#d8d4e8',
-    margin: '0 0 22px',
-  } as React.CSSProperties,
-
-  h2: {
-    fontSize: 'clamp(22px, 3.5vw, 30px)',
-    fontWeight: 700,
-    lineHeight: '1.25',
-    color: '#f5f0e8',
-    margin: '64px 0 20px',
-    letterSpacing: '-0.015em',
-    paddingTop: '8px',
-    borderTop: '2px solid rgba(201,168,76,0.25)',
-  } as React.CSSProperties,
-
-  h3: {
-    fontSize: '20px',
-    fontWeight: 700,
-    color: '#c9a84c',
-    margin: '40px 0 14px',
-    lineHeight: '1.3',
-  } as React.CSSProperties,
-
-  statBlock: {
-    backgroundColor: 'rgba(201,168,76,0.07)',
-    borderLeft: '4px solid #c9a84c',
-    borderRadius: '0 8px 8px 0',
-    padding: '24px 28px',
-    margin: '32px 0',
-  } as React.CSSProperties,
-
-  statNumber: {
-    fontSize: 'clamp(36px, 6vw, 56px)',
-    fontWeight: 900,
-    color: '#c9a84c',
-    lineHeight: '1',
-    display: 'block',
-    marginBottom: '8px',
-  } as React.CSSProperties,
-
-  statLabel: {
-    fontSize: '15px',
-    color: '#b8b4c8',
-    lineHeight: '1.5',
-    display: 'block',
-  } as React.CSSProperties,
-
-  pullQuote: {
-    borderLeft: '3px solid rgba(201,168,76,0.5)',
-    margin: '40px 0',
-    padding: '6px 0 6px 28px',
-  } as React.CSSProperties,
-
-  pullQuoteText: {
-    fontSize: '21px',
-    fontStyle: 'italic',
-    color: '#e8e4f4',
-    lineHeight: '1.55',
-    fontWeight: 500,
-  } as React.CSSProperties,
-
-  infoBox: {
-    backgroundColor: 'rgba(255,255,255,0.04)',
-    border: '1px solid rgba(201,168,76,0.2)',
-    borderRadius: '10px',
-    padding: '28px 32px',
-    margin: '40px 0',
-  } as React.CSSProperties,
-
-  infoBoxTitle: {
-    fontSize: '14px',
-    fontWeight: 700,
-    letterSpacing: '0.1em',
-    textTransform: 'uppercase' as const,
-    color: '#c9a84c',
-    marginBottom: '16px',
-  } as React.CSSProperties,
-
-  list: {
-    paddingLeft: '22px',
-    margin: '0 0 22px',
-  } as React.CSSProperties,
-
-  li: {
-    fontSize: '17px',
-    lineHeight: '1.75',
-    color: '#d8d4e8',
-    marginBottom: '8px',
-  } as React.CSSProperties,
-
-  divider: {
-    border: 'none',
-    borderTop: '1px solid rgba(201,168,76,0.12)',
-    margin: '64px 0',
-  } as React.CSSProperties,
-
-  faqSection: {
-    margin: '64px 0 0',
-  } as React.CSSProperties,
-
-  faqHeading: {
-    fontSize: '28px',
-    fontWeight: 700,
-    color: '#f5f0e8',
-    margin: '0 0 40px',
-    letterSpacing: '-0.015em',
-  } as React.CSSProperties,
-
-  faqItem: {
-    borderTop: '1px solid rgba(255,255,255,0.08)',
-    paddingTop: '28px',
-    marginBottom: '32px',
-  } as React.CSSProperties,
-
-  faqQ: {
-    fontSize: '18px',
-    fontWeight: 700,
-    color: '#f5f0e8',
-    marginBottom: '12px',
-    lineHeight: '1.35',
-  } as React.CSSProperties,
-
-  faqA: {
-    fontSize: '16px',
-    lineHeight: '1.72',
-    color: '#b8b4c8',
-  } as React.CSSProperties,
-
-  crisisBox: {
-    backgroundColor: 'rgba(201,168,76,0.06)',
-    border: '1px solid rgba(201,168,76,0.35)',
-    borderRadius: '10px',
-    padding: '28px 32px',
-    margin: '48px 0',
-  } as React.CSSProperties,
-
-  crisisTitle: {
-    fontSize: '16px',
-    fontWeight: 700,
-    color: '#c9a84c',
-    marginBottom: '14px',
-    letterSpacing: '0.06em',
-    textTransform: 'uppercase' as const,
-  } as React.CSSProperties,
-
-  crisisLine: {
-    fontSize: '16px',
-    lineHeight: '1.9',
-    color: '#d8d4e8',
-  } as React.CSSProperties,
-
-  ctaBlock: {
-    backgroundColor: 'rgba(201,168,76,0.09)',
-    border: '1px solid rgba(201,168,76,0.3)',
-    borderRadius: '12px',
-    padding: '40px 36px',
-    margin: '64px 0 0',
-    textAlign: 'center' as const,
-  } as React.CSSProperties,
-
-  ctaHeading: {
-    fontSize: '26px',
-    fontWeight: 700,
-    color: '#f5f0e8',
-    marginBottom: '12px',
-    lineHeight: '1.3',
-  } as React.CSSProperties,
-
-  ctaBody: {
-    fontSize: '16px',
-    color: '#b8b4c8',
-    marginBottom: '28px',
-    lineHeight: '1.65',
-  } as React.CSSProperties,
-
-  ctaBtn: {
-    display: 'inline-block',
-    backgroundColor: '#c9a84c',
-    color: '#0d0c18',
-    fontWeight: 700,
-    fontSize: '15px',
-    letterSpacing: '0.04em',
-    textDecoration: 'none',
-    padding: '14px 32px',
-    borderRadius: '8px',
-  } as React.CSSProperties,
-
-  footer: {
-    maxWidth: '780px',
-    margin: '0 auto',
-    padding: '40px 24px 64px',
-    borderTop: '1px solid rgba(201,168,76,0.12)',
-  } as React.CSSProperties,
-
-  footerLinks: {
-    display: 'flex',
-    flexWrap: 'wrap' as const,
-    gap: '24px',
-    marginBottom: '24px',
-  } as React.CSSProperties,
-
-  footerLink: {
-    color: '#c9a84c',
-    textDecoration: 'none',
-    fontSize: '14px',
-  } as React.CSSProperties,
-
-  footerNote: {
-    fontSize: '13px',
-    color: '#5a5870',
-    lineHeight: '1.65',
-  } as React.CSSProperties,
-
-  strongGold: {
-    color: '#c9a84c',
-    fontWeight: 700,
-  } as React.CSSProperties,
-
-  strongLight: {
-    color: '#f5f0e8',
-    fontWeight: 600,
-  } as React.CSSProperties,
-}
-
-// ── Page Component ────────────────────────────────────────────────────────────
-
-export default function AiForMensMentalHealth() {
+export default function AIForMenMentalHealthPage() {
   return (
-    <div style={s.page}>
-      {/* JSON-LD structured data */}
+    <div
+      style={{
+        minHeight: '100vh',
+        background: BG,
+        color: TEXT,
+        fontFamily: "'Inter', 'Helvetica Neue', Arial, sans-serif",
+        lineHeight: 1.75,
+      }}
+    >
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
@@ -470,623 +158,1257 @@ export default function AiForMensMentalHealth() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
 
-      {/* Breadcrumb nav */}
-      <nav aria-label="Breadcrumb" style={s.nav}>
-        <Link href="/" style={s.navLink}>MEOK AI LABS</Link>
-        <span style={s.navSep}>/</span>
-        <Link href="/blog" style={s.navLink}>Blog</Link>
-        <span style={s.navSep}>/</span>
-        <span style={s.navCurrent}>AI and Men's Mental Health</span>
+      {/* ── BREADCRUMB NAV ──────────────────────────────────────────────────── */}
+      <nav
+        style={{
+          borderBottom: `1px solid ${BORDER_DIM}`,
+          padding: '18px 24px',
+          display: 'flex',
+          alignItems: 'center',
+          gap: '8px',
+          flexWrap: 'wrap' as const,
+          fontSize: '14px',
+        }}
+      >
+        <Link href="/" style={{ color: GOLD, textDecoration: 'none' }}>MEOK</Link>
+        <span style={{ color: '#5a5870' }}>/</span>
+        <Link href="/blog" style={{ color: GOLD, textDecoration: 'none' }}>Blog</Link>
+        <span style={{ color: '#5a5870' }}>/</span>
+        <span style={{ color: '#8a8799' }}>AI for Men&apos;s Mental Health</span>
       </nav>
 
-      {/* Hero */}
-      <header style={s.hero}>
-        <div style={s.tag}>Men's Mental Health</div>
-        <h1 style={s.h1}>
-          AI and Men's Mental Health: Breaking the Silence Without the Stigma
-        </h1>
-        <p style={s.subtitle}>
-          Three-quarters of UK suicides are men. Most of them never asked for help.
-          Not because they didn't need it — but because the way we ask men to access
-          support has never really worked for how they're built.
-        </p>
-        <div style={s.meta}>
-          <div style={s.metaItem}>
-            <span style={s.metaLabel}>Author:</span>
-            <span>Nicholas Templeman, Founder — MEOK AI LABS</span>
+      {/* ── HERO ────────────────────────────────────────────────────────────── */}
+      <section
+        style={{
+          position: 'relative',
+          overflow: 'hidden',
+          paddingTop: '72px',
+          paddingBottom: '56px',
+          paddingLeft: '24px',
+          paddingRight: '24px',
+          borderBottom: `1px solid ${BORDER_DIM}`,
+        }}
+      >
+        <div
+          style={{
+            position: 'absolute',
+            inset: 0,
+            pointerEvents: 'none',
+            background:
+              'radial-gradient(ellipse 70% 55% at 50% 0%, rgba(201,168,76,0.07) 0%, transparent 70%)',
+          }}
+        />
+        <div style={{ maxWidth: '780px', margin: '0 auto', position: 'relative' }}>
+          <div
+            style={{
+              display: 'inline-block',
+              backgroundColor: 'rgba(201,168,76,0.12)',
+              color: GOLD,
+              fontSize: '12px',
+              fontWeight: 700,
+              letterSpacing: '0.1em',
+              textTransform: 'uppercase' as const,
+              padding: '5px 12px',
+              borderRadius: '4px',
+              marginBottom: '24px',
+            }}
+          >
+            Men &amp; Mental Health
           </div>
-          <div style={s.metaItem}>
-            <span style={s.metaLabel}>Published:</span>
-            <span>24 March 2026</span>
-          </div>
-          <div style={s.metaItem}>
-            <span style={s.metaLabel}>Reading time:</span>
-            <span>~12 minutes</span>
+
+          <h1
+            style={{
+              fontSize: 'clamp(28px, 5vw, 48px)',
+              fontWeight: 800,
+              lineHeight: 1.18,
+              letterSpacing: '-0.02em',
+              color: '#ffffff',
+              margin: '0 0 24px',
+            }}
+          >
+            AI for Men&apos;s Mental Health: Breaking the Silence That Is Killing Men
+          </h1>
+
+          <p
+            style={{
+              fontSize: '20px',
+              color: TEXT_DIM,
+              lineHeight: 1.6,
+              margin: '0 0 32px',
+              fontWeight: 400,
+              maxWidth: '640px',
+            }}
+          >
+            Suicide is the single biggest killer of men under 50 in the UK. Men are three times less
+            likely to seek support. The problem is not that men do not feel — it is that the way
+            support is offered does not fit how men actually work.
+          </p>
+
+          <div
+            style={{
+              display: 'flex',
+              flexWrap: 'wrap' as const,
+              gap: '20px',
+              fontSize: '13px',
+              color: '#6e6b80',
+            }}
+          >
+            <span>
+              <span style={{ color: GOLD, fontWeight: 600 }}>Author:</span> Nicholas Templeman
+            </span>
+            <span>
+              <span style={{ color: GOLD, fontWeight: 600 }}>Published:</span> 25 March 2026
+            </span>
+            <span>
+              <span style={{ color: GOLD, fontWeight: 600 }}>Read time:</span> 18 min
+            </span>
           </div>
         </div>
-      </header>
+      </section>
 
-      {/* Article body */}
-      <main style={s.body}>
+      {/* ── ARTICLE BODY ────────────────────────────────────────────────────── */}
+      <div style={{ maxWidth: '780px', margin: '0 auto', padding: '56px 24px 80px' }}>
 
-        {/* Opening */}
-        <p style={s.p}>
-          Let's start with something direct. You probably aren't reading this because
-          everything is fine. Maybe things are manageable — but there's something sitting
-          in the background, something you can't quite name, something you haven't told
-          anyone about. That's not unusual. For a lot of men, that's the permanent state.
-        </p>
-        <p style={s.p}>
-          This article is not going to tell you to "open up more" or "be vulnerable."
-          You've heard that. It lands like a foreign language. This is about something
-          different: understanding why the current mental health system wasn't designed
-          with you in mind, what actually happens inside men when emotions go unprocessed,
-          and whether a private AI conversation might be a more honest fit for how you
-          actually operate.
-        </p>
-        <p style={s.p}>
-          The product I'm writing about is{' '}
-          <Link href="https://meok.ai" style={s.navLink}>MEOK</Link>, the AI companion
-          built by MEOK AI LABS. I'm Nicholas Templeman, the founder. I'm not pretending
-          to be objective here — but I'll give you the honest version of what we built
-          and why, and you can decide if it's useful.
-        </p>
-
-        {/* H2 1 */}
-        <h2 style={s.h2}>
-          Why Are Men So Much Less Likely to Seek Mental Health Support?
-        </h2>
-        <p style={s.p}>
-          The gap isn't slight. Men are diagnosed with depression and anxiety at
-          significantly lower rates than women — not because they experience these
-          conditions less, but because they rarely present for assessment. The NHS
-          estimates that for every 100 women who receive a depression diagnosis,
-          only around 36 men do. Researchers consistently attribute the majority of
-          that gap to help-seeking behaviour, not prevalence.
-        </p>
-        <p style={s.p}>
-          Why? Because from the earliest age, the emotional grammar taught to boys is
-          limited to a narrow set of "acceptable" expressions: confidence, humour,
-          anger, determination. Fear, sadness, confusion, shame — these don't have
-          clean exits. They get compressed. They go somewhere else, usually into the
-          body as tension, or outward as irritability.
-        </p>
-        <p style={s.p}>
-          By adulthood, many men have decades of practice suppressing emotional signal.
-          They don't see it as suppression — it just feels like getting on with things.
-          Therapy asks you to reverse that in 50 minutes with a stranger. That's not
-          a realistic ask for most men who've spent 30 years treating emotional
-          self-disclosure as a vulnerability to be managed.
-        </p>
-
-        <div style={s.pullQuote}>
-          <p style={s.pullQuoteText}>
-            "Men don't avoid emotional conversations because they don't have emotions.
-            They avoid them because they've never been given a safe on-ramp."
+        {/* Crisis line callout — top of article */}
+        <div
+          style={{
+            backgroundColor: 'rgba(201,168,76,0.07)',
+            borderLeft: `4px solid ${GOLD}`,
+            borderRadius: '0 8px 8px 0',
+            padding: '20px 24px',
+            marginBottom: '48px',
+          }}
+        >
+          <p style={{ margin: 0, fontSize: '14px', color: TEXT_DIM, lineHeight: 1.6 }}>
+            <strong style={{ color: GOLD }}>If you are in crisis:</strong> CALM helpline{' '}
+            <strong style={{ color: TEXT }}>0800 58 58 58</strong> (5pm&ndash;midnight daily) &nbsp;|&nbsp;
+            Samaritans <strong style={{ color: TEXT }}>116 123</strong> (24/7, free). MEOK is not a
+            crisis service. This article is for men who are not in acute crisis but are carrying
+            more than they let on.
           </p>
         </div>
 
-        <p style={s.p}>
-          There's also the practical layer. Accessing NHS mental health support means
-          a GP referral, a wait (often months), an assessment, possibly another wait,
-          and then weekly sessions requiring diary space and childcare or work
-          flexibility. Private therapy means money — usually £60–120 per hour. For
-          a man already experiencing stress around finances, work, or relationship
-          pressure, the barrier is almost deliberately placed where it hurts most.
-        </p>
-
-        {/* H2 2 */}
-        <h2 style={s.h2}>
-          What Do the UK Suicide Statistics Actually Tell Us?
+        {/* ── SECTION 1 ─────────────────────────────────────────────────────── */}
+        <h2
+          style={{
+            fontSize: 'clamp(22px, 3.5vw, 30px)',
+            fontWeight: 700,
+            lineHeight: 1.25,
+            color: TEXT,
+            margin: '64px 0 20px',
+            letterSpacing: '-0.015em',
+            paddingTop: '8px',
+            borderTop: `2px solid rgba(201,168,76,0.25)`,
+          }}
+        >
+          What Does the Data Actually Say About Men and Mental Health in the UK?
         </h2>
 
-        <div style={s.statBlock}>
-          <span style={s.statNumber}>74%</span>
-          <span style={s.statLabel}>
-            of all registered suicides in England and Wales in 2023 were male.
-            Source: Office for National Statistics.
-          </span>
+        <p style={{ fontSize: '17px', lineHeight: 1.78, color: '#d8d4e8', margin: '0 0 22px' }}>
+          The statistics are not subtle. In the UK, suicide is the leading cause of death for men
+          under the age of 50. Men account for roughly three-quarters of all suicides in England
+          and Wales each year. The highest-risk group is men aged 40 to 49 — the demographic often
+          described as having it together, the provider, the rock. Men in middle age are dying in
+          silence and nobody around them saw it coming.
+        </p>
+
+        {/* Stat block */}
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))',
+            gap: '16px',
+            margin: '32px 0',
+          }}
+        >
+          {[
+            { num: '3 in 4', label: 'suicides in the UK are male' },
+            { num: '3x', label: 'less likely to seek mental health support' },
+            { num: '40–49', label: 'highest risk age group for men' },
+            { num: '1 in 8', label: 'men in the UK have no close friends (Movember)' },
+          ].map((stat) => (
+            <div
+              key={stat.num}
+              style={{
+                backgroundColor: 'rgba(201,168,76,0.07)',
+                borderLeft: `4px solid ${GOLD}`,
+                borderRadius: '0 8px 8px 0',
+                padding: '20px 20px',
+              }}
+            >
+              <span
+                style={{
+                  fontSize: 'clamp(32px, 5vw, 44px)',
+                  fontWeight: 900,
+                  color: GOLD,
+                  lineHeight: 1,
+                  display: 'block',
+                  marginBottom: '8px',
+                }}
+              >
+                {stat.num}
+              </span>
+              <span style={{ fontSize: '14px', color: TEXT_DIM, lineHeight: 1.5, display: 'block' }}>
+                {stat.label}
+              </span>
+            </div>
+          ))}
         </div>
 
-        <div style={s.statBlock}>
-          <span style={s.statNumber}>40–49</span>
-          <span style={s.statLabel}>
-            The age group with the highest male suicide rate in the UK.
-            These are men in the middle of life — often working, partnered, parenting —
-            who appear, from the outside, to be doing fine.
-          </span>
-        </div>
-
-        <p style={s.p}>
-          That last point is worth staying with. The men most at risk are not the men
-          who look like they're struggling. They're men in the demographic where you're
-          supposed to have things figured out. They carry a mortgage, kids, a career
-          identity, a social obligation not to be a burden. The weight of "I should be
-          able to handle this" is lethal in that age bracket.
-        </p>
-        <p style={s.p}>
-          CALM — the Campaign Against Living Miserably — was founded specifically because
-          of this pattern. Their research shows that 46% of men they surveyed had
-          experienced a period of suicidal thoughts but had not told anyone. Not a
-          single person. They managed the crisis alone.
-        </p>
-        <p style={s.p}>
-          Movember, the charity that has raised over £800 million globally for men's
-          health, reports that every minute, somewhere in the world, a man dies by
-          suicide. They've put significant resource into researching why men won't
-          reach out — and their conclusion is consistent with the clinical literature:
-          the problem is not awareness. Men know something is wrong. The problem is
-          the activation energy required to turn awareness into action.
-        </p>
-        <p style={s.p}>
-          Reducing that activation energy is where AI may genuinely have something
-          useful to offer.
+        <p style={{ fontSize: '17px', lineHeight: 1.78, color: '#d8d4e8', margin: '0 0 22px' }}>
+          These numbers sit alongside equally stark data on help-seeking: men are around three
+          times less likely to access psychological therapies than women. They wait longer before
+          presenting to a GP with mental health concerns. They are significantly more likely to use
+          substances to cope. And when they do reach out, it is often in a moment of acute crisis
+          rather than early distress — meaning the earlier, easier intervention was never taken.
         </p>
 
-        {/* H2 3 */}
-        <h2 style={s.h2}>
-          Why Would a Man Talk to an AI Instead of a Person?
+        <p style={{ fontSize: '17px', lineHeight: 1.78, color: '#d8d4e8', margin: '0 0 22px' }}>
+          This is not a biological predisposition to suffering quietly. It is a cultural and
+          structural failure — one that starts in childhood ("man up"), is reinforced in
+          adolescence ("don't be soft"), and calcifies into adult identity ("I handle my own
+          problems"). By the time a man in his forties is carrying depression, financial
+          catastrophe, or a marriage that is falling apart, the idea of talking about it — with
+          anyone — can feel like a surrender of the self.
+        </p>
+
+        {/* ── SECTION 2 ─────────────────────────────────────────────────────── */}
+        <h2
+          style={{
+            fontSize: 'clamp(22px, 3.5vw, 30px)',
+            fontWeight: 700,
+            lineHeight: 1.25,
+            color: TEXT,
+            margin: '64px 0 20px',
+            letterSpacing: '-0.015em',
+            paddingTop: '8px',
+            borderTop: `2px solid rgba(201,168,76,0.25)`,
+          }}
+        >
+          Why Does the &ldquo;Man Up&rdquo; Culture Kill Men?
         </h2>
-        <p style={s.p}>
-          The question sounds dismissive if you frame it wrong. "Can't you just talk to
-          someone real?" But that question contains the entire problem. For many men,
-          "talking to someone real" is the hardest possible thing to do. It carries
-          social risk, identity risk, and relational risk. There's no social risk with
-          an AI.
-        </p>
-        <p style={s.p}>
-          A 2021 study published in{' '}
-          <em>JMIR Mental Health</em> found that men were significantly more likely to
-          disclose emotional distress to a chatbot interface than to a human clinician,
-          when they believed the chatbot had no human oversight. The framing that mattered
-          most was not capability — it was privacy and the absence of social consequence.
-        </p>
-        <p style={s.p}>
-          This isn't about preferring machines to people. It's about lowering the
-          threshold to engagement. If a man will process something with an AI that he
-          would never process alone or with a friend, that processing has value —
-          regardless of what generated the response.
+
+        <p style={{ fontSize: '17px', lineHeight: 1.78, color: '#d8d4e8', margin: '0 0 22px' }}>
+          The phrase &ldquo;man up&rdquo; is shorthand for a set of cultural rules that have been
+          handed to boys for generations: do not cry, do not admit weakness, solve problems
+          yourself, and define yourself by what you produce and provide. These rules are not random
+          — they emerged from economic and social contexts where stoicism genuinely was adaptive.
+          The problem is they are still being applied to emotional pain in 2026, where they are
+          catastrophically maladaptive.
         </p>
 
-        <h3 style={s.h3}>The "no-audience" effect</h3>
-        <p style={s.p}>
-          Most men perform, consciously or not, whenever another person is watching.
-          Even in therapy. There's a version of yourself you present, shaped by how you
-          want to be perceived. With an AI there's no audience. No one to be strong for,
-          no one to worry about burdening, no one who'll look at you differently on Monday
-          morning.
-        </p>
-        <p style={s.p}>
-          MEOK is built around this. Conversations are private, not shared with any
-          third party, and MEOK does not train on your data. The product exists to be
-          useful to you — not to learn from you for someone else's benefit. That matters
-          for trust, and trust is the precondition for any real conversation.
+        <p style={{ fontSize: '17px', lineHeight: 1.78, color: '#d8d4e8', margin: '0 0 22px' }}>
+          Stoicism without emotional vocabulary is not strength. It is a pressure vessel with no
+          release valve. Men who have been trained not to name their emotional states still
+          experience fear, shame, grief, humiliation, and loneliness — they just do not have an
+          internal language for it. Instead, those states present as anger (acceptable, even
+          respected), withdrawal (attributed to being &ldquo;focused&rdquo;), or substance use
+          (which the culture largely tolerates).
         </p>
 
-        <h3 style={s.h3}>Available at 2am</h3>
-        <p style={s.p}>
-          Men are more likely than women to experience what researchers call "middle of
-          the night ruminative episodes" — the 2am spiral when the house is quiet and
-          you can't stop your brain running worst-case scenarios. GP surgeries are closed.
-          Your partner is asleep. You don't want to call a helpline because that feels
-          like a declaration of crisis when you're not sure you're in crisis.
-        </p>
-        <p style={s.p}>
-          MEOK is there. Not as a substitute for crisis support — if you're in crisis,
-          please call CALM on{' '}
-          <strong style={s.strongGold}>0800 58 58 58</strong> or Samaritans on{' '}
-          <strong style={s.strongGold}>116 123</strong> — but as a space to
-          externalise what's swirling in your head before it calcifies into something
-          heavier.
-        </p>
-
-        {/* H2 4 */}
-        <h2 style={s.h2}>
-          What Is Anger Actually Telling You — and Why Does This Matter for Men?
-        </h2>
-        <p style={s.p}>
-          Anger is the emotion men are allowed. It's the socially sanctioned output for
-          almost everything uncomfortable. Frustrated? Angry. Scared? Angry. Humiliated?
-          Angry. Grieving? Angry. Anger has energy and direction — it feels like action
-          rather than passivity. But it's usually a secondary emotion: the feeling that
-          sits on top of a more vulnerable primary emotion underneath.
-        </p>
-        <p style={s.p}>
-          The clinical literature on this is clear. Robert Plutchik's model of
-          primary emotions identifies fear, sadness, disgust, surprise, anticipation,
-          joy, trust, and anger as the base eight — but in men's therapeutic work,
-          anger frequently functions as a shield for shame, fear, or grief. When anger
-          is the only tool in the box, everything looks like a situation that requires
-          it, and the actual emotional information gets lost.
-        </p>
-
-        <div style={s.infoBox}>
-          <div style={s.infoBoxTitle}>The secondary emotion loop in men</div>
-          <p style={{ fontSize: '17px', lineHeight: '1.78', color: '#d8d4e8', margin: 0 }}>
-            Something happens (a rejection, a failure, a perceived disrespect). The
-            primary emotional response is something like shame or fear. Within
-            milliseconds, masculine conditioning converts it. What reaches consciousness
-            and expression is{' '}
-            <strong style={s.strongLight}>anger</strong>. The person reacts to the anger
-            — defensively or with distance. The man never processes the original signal.
-            It accumulates. Over years, accumulated unprocessed primary emotions are what
-            clinical psychologists describe when they talk about depression in men
-            presenting atypically — as numbness, withdrawal, heavy drinking, or
-            "controlled" existence.
+        {/* Pull quote */}
+        <div
+          style={{
+            borderLeft: `3px solid rgba(201,168,76,0.5)`,
+            margin: '40px 0',
+            padding: '6px 0 6px 28px',
+          }}
+        >
+          <p
+            style={{
+              fontSize: '21px',
+              fontStyle: 'italic',
+              color: '#e8e4f4',
+              lineHeight: 1.55,
+              fontWeight: 500,
+              margin: 0,
+            }}
+          >
+            &ldquo;Anger is the one emotion men are socially permitted to express freely. But anger
+            is rarely the primary emotion. Underneath almost every male anger response is
+            something softer: fear, shame, or loss.&rdquo;
           </p>
         </div>
 
-        <p style={s.p}>
-          This is where an AI conversation can do something genuinely useful: it can
-          ask the question a person wouldn't dare to. "You said you were angry when she
-          said that — what was underneath the anger? What was the first thing you felt
-          before the anger came?" No one in your life asks that question. Your mates
-          don't. Your partner probably knows better than to push it. But an AI can ask
-          it consistently, without fear of your reaction, and in a way that feels
-          exploratory rather than therapeutic.
-        </p>
-        <p style={s.p}>
-          Over time, this builds something men are rarely taught: an emotional
-          vocabulary. Not a therapy vocabulary — not "I felt invalidated" — but a
-          personal language for your own internal states. That vocabulary is the
-          difference between a man who notices he's escalating and can choose a response,
-          and a man who doesn't notice until the damage is done.
+        <p style={{ fontSize: '17px', lineHeight: 1.78, color: '#d8d4e8', margin: '0 0 22px' }}>
+          The systemic issue is that the mental health system was designed — however well-intentioned
+          — around a model of help-seeking that requires acknowledging vulnerability, sitting in
+          uncertainty, and expressing emotional states clearly. For men who have spent decades being
+          rewarded for the opposite, that entry point is a wall, not a door.
         </p>
 
-        {/* H2 5 */}
-        <h2 style={s.h2}>
-          How Does a Problem-Solving Frame Become an Entry Point to Emotional Support?
+        <p style={{ fontSize: '17px', lineHeight: 1.78, color: '#d8d4e8', margin: '0 0 22px' }}>
+          Effective support for men does not require dismantling that conditioning first. It
+          requires meeting men where they are — in problem-solving mode, in forward-focused
+          thinking, in practical language — and letting the emotional depth emerge from usefulness
+          rather than from demanded vulnerability.
+        </p>
+
+        {/* ── SECTION 3 ─────────────────────────────────────────────────────── */}
+        <h2
+          style={{
+            fontSize: 'clamp(22px, 3.5vw, 30px)',
+            fontWeight: 700,
+            lineHeight: 1.25,
+            color: TEXT,
+            margin: '64px 0 20px',
+            letterSpacing: '-0.015em',
+            paddingTop: '8px',
+            borderTop: `2px solid rgba(201,168,76,0.25)`,
+          }}
+        >
+          How Does MEOK Enable Men to Process Without It Feeling Like Therapy?
         </h2>
-        <p style={s.p}>
-          Men approach most challenges as problems to be solved. That's not a character
-          flaw — it's a functional cognitive style that works extremely well for most
-          of life. The friction comes when the challenge is not a solvable problem but an
-          emotional experience that requires processing rather than fixing.
-        </p>
-        <p style={s.p}>
-          Traditional therapy starts in the wrong gear for many men. "Tell me how you've
-          been feeling this week" is a question that creates immediate performance
-          anxiety. Most men don't know how they've been feeling this week — they know
-          what they've been doing. Starting with doing, and moving toward feeling, is a
-          more effective entry sequence.
-        </p>
-        <p style={s.p}>
-          MEOK is designed to start where you are. You might come in asking for help
-          planning your week, processing a difficult work situation, or just talking
-          through a decision you're stuck on. That's a legitimate starting point. The
-          conversation can stay there — that's fine, that's useful. Or it can naturally
-          deepen into what's actually going on. MEOK doesn't push. It follows.
+
+        <p style={{ fontSize: '17px', lineHeight: 1.78, color: '#d8d4e8', margin: '0 0 22px' }}>
+          MEOK does not ask men to &ldquo;share how they are feeling.&rdquo; It does not begin
+          sessions with &ldquo;what is coming up for you emotionally right now?&rdquo; Those
+          framings — however appropriate in a clinical context — create immediate resistance in
+          men who have been conditioned to interpret them as weakness.
         </p>
 
-        <h3 style={s.h3}>The difference between problem-solving and bypassing</h3>
-        <p style={s.p}>
-          There's a trap here worth naming. Problem-solving can become a sophisticated
-          form of avoidance. You analyse the situation endlessly, generate action plans,
-          optimise your approach — and never once feel the thing. That's not processing;
-          that's intellectualising. An AI built well will notice the difference and gently
-          create a pause.
-        </p>
-        <p style={s.p}>
-          When MEOK notices you've been working through the same situation for the third
-          week running — same analysis, different angle — it can reflect that pattern
-          back to you. Not as a diagnosis. Just as an observation: "We've mapped this
-          from a lot of angles. What do you think you're avoiding feeling about it?"
-          That question, asked gently and without agenda, can be more useful than
-          another action plan.
+        <p style={{ fontSize: '17px', lineHeight: 1.78, color: '#d8d4e8', margin: '0 0 22px' }}>
+          Instead, MEOK enters through the side door. The Pioneer archetype asks: what are you
+          working on? What is blocking you? What did you say you were going to do last week, and
+          what actually happened? The Scholar archetype asks: what have you been thinking about?
+          What pattern are you noticing? What does the evidence actually say?
         </p>
 
-        <div style={s.pullQuote}>
-          <p style={s.pullQuoteText}>
-            "The goal isn't to turn every man into someone who cries in therapy.
-            The goal is to give men access to their own inner information
-            so they can make better decisions and feel less like they're
-            running on empty."
-          </p>
-        </div>
-
-        {/* H2 6 */}
-        <h2 style={s.h2}>
-          Can AI Help Men Build Emotional Vocabulary — and Why Does That Even Matter?
-        </h2>
-        <p style={s.p}>
-          Emotional vocabulary is not therapy-speak. It's the ability to distinguish
-          between states that at first all look the same. Most men arrive at adulthood
-          with a vocabulary of about three emotional states: fine, stressed, angry.
-          Everything else gets filed under one of those three.
-        </p>
-        <p style={s.p}>
-          But fine and stressed and angry each contain multitudes. Stressed could be
-          overwhelmed, under-stimulated, uncertain, ashamed, grieving, lonely, or
-          exhausted — all of which have completely different solutions. If you can only
-          identify "stressed," you apply the same blunt responses: work harder, drink,
-          exercise, push through. Sometimes those work. Often they don't — because
-          the underlying state was something that needed acknowledgment, not action.
-        </p>
-        <p style={s.p}>
-          Building a richer emotional vocabulary doesn't require therapy. It requires
-          repeated opportunities to distinguish between states. MEOK does this
-          conversationally — not through exercises or worksheets, but through asking
-          questions that invite finer distinctions: "Is it more like frustration or
-          more like disappointment? How long has this been there? Does it feel physical
-          anywhere?"
+        <p style={{ fontSize: '17px', lineHeight: 1.78, color: '#d8d4e8', margin: '0 0 22px' }}>
+          These are not therapy questions. They are the kind of questions a sharp friend would ask
+          — someone who is genuinely interested in you, holds you accountable, and does not let
+          you bullshit yourself, but also does not make you perform emotional openness to deserve
+          the conversation.
         </p>
 
-        <h3 style={s.h3}>Why daily check-ins work better than weekly sessions</h3>
-        <p style={s.p}>
-          The traditional model of therapy is weekly. For emotional vocabulary building,
-          this is suboptimal. Most of the interesting material happens in the 167 hours
-          between sessions — moments of irritation, quiet dread, unexpected sadness.
-          By the time you get back to the therapist, you've filed most of it away. You
-          tell them the edited highlights.
-        </p>
-        <p style={s.p}>
-          An AI companion available daily — or multiple times a day — can catch the
-          small signals as they happen. "Quick check: that meeting left you tense.
-          What was the specific moment that landed worst?" That question, asked within
-          an hour of the meeting rather than six days later, produces better signal.
-          Over weeks and months, patterns emerge that neither you nor a once-weekly
-          therapist would detect.
-        </p>
-        <p style={s.p}>
-          MEOK keeps memory across conversations. It notices when the same themes
-          recur, when certain relationships or contexts consistently produce specific
-          emotional signatures, when the language you use to describe yourself shifts.
-          That longitudinal perspective is something that's very hard for humans to
-          provide — it requires sustained attention over time without the natural
-          human tendency to categorise and move on.
+        <p style={{ fontSize: '17px', lineHeight: 1.78, color: '#d8d4e8', margin: '0 0 22px' }}>
+          The emotional depth arrives naturally when trust has been built through usefulness. When
+          a man realises that MEOK remembers what he said last Tuesday, knows the job is stressing
+          him out, and tracks whether the conversation about his son made him feel better or worse
+          — he stops performing and starts being honest. That is where the real work begins. And
+          it got there without anyone asking him to &ldquo;open up.&rdquo;
         </p>
 
-        {/* H2 7 */}
-        <h2 style={s.h2}>
-          Does This Actually Help — or Is It Just a More Comfortable Way to Avoid Getting Real Help?
-        </h2>
-        <p style={s.p}>
-          This is the right question to ask, and I want to answer it honestly rather
-          than defensively.
-        </p>
-        <p style={s.p}>
-          An AI companion can become a comfortable substitute for the harder work of
-          real human connection or clinical support. If a man is using MEOK to manage
-          a severe depressive episode, a trauma history, or active addiction, that's
-          not the right tool for the job. MEOK is not a clinical intervention. It
-          doesn't provide diagnosis, medication, or the kind of deep relational work
-          that trauma specifically requires.
-        </p>
-        <p style={s.p}>
-          What it does is reduce the gap between "I know something's wrong" and
-          "I'm doing something about it." For a lot of men, that gap is years wide.
-          Years of functional difficulty that never gets addressed because the only
-          available option — therapy — feels too big, too exposed, or too foreign.
-        </p>
-
-        <div style={s.infoBox}>
-          <div style={s.infoBoxTitle}>Where MEOK fits in the support ecosystem</div>
-          <ul style={s.list}>
-            <li style={s.li}>
-              <strong style={s.strongLight}>Everyday processing:</strong> Work stress,
-              relationship tension, decisions, motivation. MEOK works well here.
-            </li>
-            <li style={s.li}>
-              <strong style={s.strongLight}>Pattern recognition:</strong> Noticing
-              recurring emotional themes, building self-awareness over time. MEOK works
-              well here.
-            </li>
-            <li style={s.li}>
-              <strong style={s.strongLight}>Pre-therapy preparation:</strong> Getting
-              clear on what you actually want to talk about before starting sessions.
-              MEOK works well here.
-            </li>
-            <li style={s.li}>
-              <strong style={s.strongLight}>Between-session support:</strong> Sustaining
-              the work of therapy between appointments. MEOK works well here.
-            </li>
-            <li style={s.li}>
-              <strong style={s.strongLight}>Crisis:</strong> Active suicidal ideation,
-              acute breakdown, severe psychosis. MEOK is not appropriate here —
-              please contact CALM (0800 58 58 58) or Samaritans (116 123).
-            </li>
-            <li style={s.li}>
-              <strong style={s.strongLight}>Complex trauma / PTSD:</strong> Specialist
-              clinical support is required. MEOK can support alongside but not replace
-              it.
-            </li>
+        {/* Callout box: how it works */}
+        <div
+          style={{
+            backgroundColor: SURFACE,
+            border: `1px solid ${BORDER}`,
+            borderRadius: '12px',
+            padding: '32px',
+            margin: '40px 0',
+          }}
+        >
+          <h3
+            style={{
+              fontSize: '18px',
+              fontWeight: 700,
+              color: GOLD,
+              margin: '0 0 20px',
+              lineHeight: 1.3,
+            }}
+          >
+            The Entry Points MEOK Uses With Men
+          </h3>
+          <ul
+            style={{
+              listStyle: 'none',
+              padding: 0,
+              margin: 0,
+              display: 'flex',
+              flexDirection: 'column' as const,
+              gap: '14px',
+            }}
+          >
+            {[
+              'Pioneer: problem-focused, goal-tracking, accountability without judgment',
+              'Scholar: analytical framing — patterns, evidence, cause-and-effect thinking',
+              'Healer: quiet presence, no agenda, space to let things surface at your pace',
+              'Guardian: for men worried about someone else — a partner, son, or friend',
+            ].map((item) => (
+              <li
+                key={item}
+                style={{
+                  display: 'flex',
+                  gap: '12px',
+                  fontSize: '15px',
+                  color: TEXT_DIM,
+                  lineHeight: 1.6,
+                }}
+              >
+                <span style={{ color: GOLD, flexShrink: 0, fontWeight: 700 }}>&#8594;</span>
+                <span>{item}</span>
+              </li>
+            ))}
           </ul>
         </div>
 
-        <p style={s.p}>
-          Used honestly, MEOK is a stepping stone, not a destination. If a man uses it
-          for three months and finds himself understanding his own patterns better,
-          communicating more clearly in his relationships, and deciding to try therapy
-          because he now has language for what he wants to explore — that's a good
-          outcome. The AI doesn't need to be the whole solution. It needs to make the
-          whole solution more accessible.
-        </p>
-
-        {/* H2 8 */}
-        <h2 style={s.h2}>
-          What Do Movember and CALM Tell Us About What Men Actually Need?
+        {/* ── SECTION 4 ─────────────────────────────────────────────────────── */}
+        <h2
+          style={{
+            fontSize: 'clamp(22px, 3.5vw, 30px)',
+            fontWeight: 700,
+            lineHeight: 1.25,
+            color: TEXT,
+            margin: '64px 0 20px',
+            letterSpacing: '-0.015em',
+            paddingTop: '8px',
+            borderTop: `2px solid rgba(201,168,76,0.25)`,
+          }}
+        >
+          Is MEOK Actually Private? Nobody Knows You Are Using It?
         </h2>
-        <p style={s.p}>
-          Both organisations have invested heavily in understanding the specific barriers
-          men face — not from a clinical perspective but from a design perspective.
-          How do you create a support pathway that men will actually use?
-        </p>
-        <p style={s.p}>
-          CALM's approach is notable for what it doesn't do: it doesn't ask men to
-          frame themselves as victims, patients, or people in crisis. Its messaging
-          is direct and slightly irreverent — "it's okay to not be okay" but delivered
-          without sentimentality. Their helpline data shows that men who call are often
-          in a practical-information-seeking mode first: "What are my options?" before
-          "I need to talk about how I feel."
-        </p>
-        <p style={s.p}>
-          Movember's research into men's help-seeking identifies three core design
-          principles for effective men's mental health support:
-        </p>
-        <ul style={s.list}>
-          <li style={s.li}>
-            <strong style={s.strongLight}>Action-oriented framing:</strong> Present
-            emotional work as a skill to develop, not a wound to heal.
-          </li>
-          <li style={s.li}>
-            <strong style={s.strongLight}>Low-barrier entry:</strong> Reduce the number
-            of steps between "I'm struggling" and "I'm talking to someone."
-          </li>
-          <li style={s.li}>
-            <strong style={s.strongLight}>Masculine-compatible identity:</strong> Don't
-            ask men to become something different to access support. Meet them as they are.
-          </li>
-        </ul>
-        <p style={s.p}>
-          These three principles describe MEOK fairly accurately. It's not an accident.
-          The product was designed with men as a specific user, not as an afterthought.
-          The Pioneer archetype within MEOK — which tends to resonate most strongly with
-          men in their 30s and 40s — is built around accountability, forward motion, and
-          direct honest exchange. Not nurturing, not therapy-adjacent softness. Just
-          clear-eyed engagement with your actual situation.
+
+        <p style={{ fontSize: '17px', lineHeight: 1.78, color: '#d8d4e8', margin: '0 0 22px' }}>
+          Yes. And this matters more for men than the mental health industry typically acknowledges.
         </p>
 
-        {/* H2 9 */}
-        <h2 style={s.h2}>
-          Is It Weakness to Use an AI for This? The Identity Question
-        </h2>
-        <p style={s.p}>
-          This might be the thing that stops more men from trying it than anything else.
-          Not privacy concerns. Not scepticism about AI. The quiet question: "Does this
-          mean I can't handle my own life?"
-        </p>
-        <p style={s.p}>
-          Men use tools. That's not a weakness — it's practical. A GPS doesn't mean you
-          don't know how to drive. A PT doesn't mean you don't know how to train. Using
-          a financial adviser doesn't mean you're incompetent with money. You use external
-          thinking tools for complex domains where a second perspective adds accuracy.
-        </p>
-        <p style={s.p}>
-          Your own mind is a complex domain. You are not the most reliable narrator of
-          your own patterns. No one is — it's a basic feature of human cognition that we
-          have significant blind spots about our own behaviour and motivation. Using a
-          tool that helps you see those blind spots more clearly is not weakness.
-          It's the same logic that makes good leaders surround themselves with people
-          who'll tell them what they don't want to hear.
-        </p>
-        <p style={s.p}>
-          The stigma conversation has gone far enough that most men intellectually
-          accept that seeking support is reasonable. The blocker now is not the idea —
-          it's the activation energy and the identity cost of a specific medium
-          (traditional therapy). AI removes the identity cost entirely. No one knows
-          you're doing it. There's no label attached. It's just a tool you're using.
-        </p>
-        <p style={s.p}>
-          If that framing makes it more accessible — use it. The framing matters less
-          than the result.
+        <p style={{ fontSize: '17px', lineHeight: 1.78, color: '#d8d4e8', margin: '0 0 22px' }}>
+          For many men, the first barrier to seeking help is not access — it is the social
+          visibility of the act. Being seen walking into a therapy office. Having a prescription
+          for antidepressants on your NHS record. A partner knowing you called a helpline. A mate
+          finding out you are struggling. The social cost of being perceived as someone who cannot
+          cope can feel catastrophically high when your identity is built around being capable.
         </p>
 
-        <hr style={s.divider} />
+        <p style={{ fontSize: '17px', lineHeight: 1.78, color: '#d8d4e8', margin: '0 0 22px' }}>
+          MEOK is sovereign. Your conversations are not stored on MEOK servers, not used to train
+          AI models, not accessible to your partner, employer, or NHS. Sovereign Memory lives in
+          your own encrypted storage. There is no therapist to bump into, no receptionist who
+          recognises you, no record on file anywhere.
+        </p>
 
-        {/* Crisis box */}
-        <div style={s.crisisBox}>
-          <div style={s.crisisTitle}>If You're in Crisis Right Now</div>
-          <p style={s.crisisLine}>
-            <strong style={s.strongGold}>CALM (Campaign Against Living Miserably):</strong>
-            {' '}0800 58 58 58 — open 5pm to midnight, every day. Free, confidential,
-            specifically for people who are struggling to carry on.
-          </p>
-          <p style={s.crisisLine}>
-            <strong style={s.strongGold}>Samaritans:</strong>{' '}
-            116 123 — open 24 hours, 365 days a year. No judgement, no agenda.
-          </p>
-          <p style={s.crisisLine}>
-            <strong style={s.strongGold}>Shout:</strong>{' '}
-            Text SHOUT to 85258 — if calling feels like too much, text is available
-            24/7.
-          </p>
-          <p style={{ marginTop: '14px', fontSize: '14px', color: '#7a7888', lineHeight: '1.9' }}>
-            MEOK is not a crisis service. The above organisations are staffed by
-            trained humans who are there specifically for this. Please use them.
-          </p>
+        <p style={{ fontSize: '17px', lineHeight: 1.78, color: '#d8d4e8', margin: '0 0 22px' }}>
+          You can open MEOK at midnight on your phone, process whatever is genuinely going on, and
+          close it. Nobody knows. The next day you are the same person everyone sees — except
+          something has shifted internally that would not have shifted otherwise, because you
+          actually thought it through rather than suppressing it.
+        </p>
+
+        {/* Privacy callout box */}
+        <div
+          style={{
+            backgroundColor: 'rgba(201,168,76,0.07)',
+            borderLeft: `4px solid ${GOLD}`,
+            borderRadius: '0 10px 10px 0',
+            padding: '24px 28px',
+            margin: '32px 0',
+          }}
+        >
+          <h3
+            style={{
+              fontSize: '16px',
+              fontWeight: 700,
+              color: GOLD,
+              margin: '0 0 12px',
+              lineHeight: 1.3,
+            }}
+          >
+            What &ldquo;Sovereign&rdquo; Means in Practice
+          </h3>
+          <ul
+            style={{
+              listStyle: 'none',
+              padding: 0,
+              margin: 0,
+              display: 'flex',
+              flexDirection: 'column' as const,
+              gap: '10px',
+            }}
+          >
+            {[
+              'Your conversations are never used to train AI models',
+              'No third-party access — not your employer, not MEOK, not the NHS',
+              'Sovereign Memory is encrypted and stored by you, not on central servers',
+              'No appointment, no referral, no social exposure',
+              'Available at any hour — including 3am when things get heavy',
+            ].map((item) => (
+              <li
+                key={item}
+                style={{ fontSize: '14px', color: TEXT_DIM, lineHeight: 1.6, paddingLeft: '16px', position: 'relative' as const }}
+              >
+                <span
+                  style={{
+                    position: 'absolute' as const,
+                    left: 0,
+                    color: GOLD,
+                    fontWeight: 700,
+                  }}
+                >
+                  &#10003;
+                </span>
+                {item}
+              </li>
+            ))}
+          </ul>
         </div>
 
-        {/* FAQ section */}
-        <section style={s.faqSection}>
-          <h2 style={s.faqHeading}>Frequently Asked Questions</h2>
+        {/* ── SECTION 5 ─────────────────────────────────────────────────────── */}
+        <h2
+          style={{
+            fontSize: 'clamp(22px, 3.5vw, 30px)',
+            fontWeight: 700,
+            lineHeight: 1.25,
+            color: TEXT,
+            margin: '64px 0 20px',
+            letterSpacing: '-0.015em',
+            paddingTop: '8px',
+            borderTop: `2px solid rgba(201,168,76,0.25)`,
+          }}
+        >
+          Financial Stress, Identity, and the Masculinity Trap
+        </h2>
 
-          {faqJsonLd.mainEntity.map((item, idx) => (
-            <div key={idx} style={s.faqItem}>
-              <div style={s.faqQ}>{item.name}</div>
-              <div style={s.faqA}>{item.acceptedAnswer.text}</div>
+        <p style={{ fontSize: '17px', lineHeight: 1.78, color: '#d8d4e8', margin: '0 0 22px' }}>
+          For many men, financial stress is not just stressful — it is existentially threatening.
+          When your identity is bound up in being the provider, the person who sorts things out,
+          the one who keeps the family stable — losing a job or falling into debt does not just
+          hurt your bank account. It feels like it destroys who you are.
+        </p>
+
+        <p style={{ fontSize: '17px', lineHeight: 1.78, color: '#d8d4e8', margin: '0 0 22px' }}>
+          Men are far less likely than women to seek financial advice, and far less likely to
+          acknowledge financial strain to a partner. The secrecy compounds the stress. Carrying
+          the weight of financial crisis alone while presenting as fine to everyone around you is
+          an enormous psychological burden — and one that rarely gets named as a mental health
+          issue because it masquerades as a practical problem.
+        </p>
+
+        <p style={{ fontSize: '17px', lineHeight: 1.78, color: '#d8d4e8', margin: '0 0 22px' }}>
+          MEOK&apos;s Pioneer archetype works well here not because it offers financial advice (it
+          does not), but because it holds a space where a man can be honest about both the numbers
+          and the weight of carrying them. The Scholar archetype can help him think clearly about
+          options without shame spiralling the conversation. Neither archetype requires him to
+          perform distress. They just require honesty — which is easier when no one who knows him
+          is watching.
+        </p>
+
+        <p style={{ fontSize: '17px', lineHeight: 1.78, color: '#d8d4e8', margin: '0 0 22px' }}>
+          For men who have lost jobs — redundancy, layoff, business failure — the identity collapse
+          that follows is often underestimated by everyone, including the men themselves. The loss
+          is not just income. It is structure, purpose, social identity, and self-worth in one hit.
+          MEOK&apos;s daily continuity matters here: something that remembers who you were before
+          the job ended, and still treats you with the same gravity.
+        </p>
+
+        {/* ── SECTION 6 ─────────────────────────────────────────────────────── */}
+        <h2
+          style={{
+            fontSize: 'clamp(22px, 3.5vw, 30px)',
+            fontWeight: 700,
+            lineHeight: 1.25,
+            color: TEXT,
+            margin: '64px 0 20px',
+            letterSpacing: '-0.015em',
+            paddingTop: '8px',
+            borderTop: `2px solid rgba(201,168,76,0.25)`,
+          }}
+        >
+          Sports, Identity, and Why Male Framing Matters
+        </h2>
+
+        <p style={{ fontSize: '17px', lineHeight: 1.78, color: '#d8d4e8', margin: '0 0 22px' }}>
+          Male identity is often constructed around performance, mastery, and team. Sport is one
+          of the primary contexts in which men build deep bonds, express loyalty, process loss,
+          and learn to manage disappointment — often without ever naming those processes explicitly.
+          A man who cried after his team lost a final is not performing emotional availability. He
+          is doing emotional work in a culturally sanctioned container.
+        </p>
+
+        <p style={{ fontSize: '17px', lineHeight: 1.78, color: '#d8d4e8', margin: '0 0 22px' }}>
+          This matters because it reveals something important: men do have emotional lives, and
+          they do express them — just in frameworks that feel legitimate within masculine culture.
+          Competition, resilience, training, injury, comeback. These are not metaphors for mental
+          health. They are vehicles for it.
+        </p>
+
+        <p style={{ fontSize: '17px', lineHeight: 1.78, color: '#d8d4e8', margin: '0 0 22px' }}>
+          MEOK&apos;s Pioneer archetype uses performance-oriented language naturally. When a man
+          talks about feeling stuck, Pioneer does not respond with &ldquo;that sounds painful —
+          tell me more about how that feels.&rdquo; It responds with &ldquo;what is blocking the
+          move? What has worked in similar situations before? What would the next step actually
+          look like?&rdquo; That framing is not avoidance of emotion. It is engagement with
+          emotion in a way that is compatible with how many men actually function.
+        </p>
+
+        <p style={{ fontSize: '17px', lineHeight: 1.78, color: '#d8d4e8', margin: '0 0 22px' }}>
+          For athletes — professional, amateur, or recreational — MEOK&apos;s AI for athletes
+          use case connects mental performance directly to physical performance. The body and the
+          mind are not separate systems. Processing a rough patch of form, dealing with injury
+          identity loss, or managing the psychological demands of elite competition all require
+          tools that do not feel clinical. MEOK fits that space.
+        </p>
+
+        {/* ── SECTION 7 ─────────────────────────────────────────────────────── */}
+        <h2
+          style={{
+            fontSize: 'clamp(22px, 3.5vw, 30px)',
+            fontWeight: 700,
+            lineHeight: 1.25,
+            color: TEXT,
+            margin: '64px 0 20px',
+            letterSpacing: '-0.015em',
+            paddingTop: '8px',
+            borderTop: `2px solid rgba(201,168,76,0.25)`,
+          }}
+        >
+          Relationship Communication: When You Do Not Know How to Start the Conversation
+        </h2>
+
+        <p style={{ fontSize: '17px', lineHeight: 1.78, color: '#d8d4e8', margin: '0 0 22px' }}>
+          One of the most commonly reported relationship issues for men is not that they do not
+          care — it is that they do not know how to say what they mean without it escalating,
+          shutting down, or coming out wrong. Men who describe themselves as emotionally closed off
+          are often not lacking emotion. They are lacking vocabulary, confidence in the expression,
+          and trust that the expression will land as intended.
+        </p>
+
+        <p style={{ fontSize: '17px', lineHeight: 1.78, color: '#d8d4e8', margin: '0 0 22px' }}>
+          MEOK offers a private rehearsal space. A man who needs to talk to his partner about
+          feeling undervalued, or to have a hard conversation with his son, or to process a
+          friendship that has drifted — can think it through with MEOK first. Not to be told what
+          to say. But to get clear on what he actually means before he tries to say it.
+        </p>
+
+        <p style={{ fontSize: '17px', lineHeight: 1.78, color: '#d8d4e8', margin: '0 0 22px' }}>
+          This is not couples therapy by proxy. It is preparation. The kind of thinking-through
+          that many men simply have nowhere to do — not with their mates (who do not do that kind
+          of conversation), not with a therapist (too formal, too slow, too stigmatised), and not
+          in their own heads (where it loops without resolving).
+        </p>
+
+        <p style={{ fontSize: '17px', lineHeight: 1.78, color: '#d8d4e8', margin: '0 0 22px' }}>
+          MEOK&apos;s Sovereign Memory means it knows the context. It knows you have been
+          struggling with this relationship for six months, not six hours. It can ask the right
+          question because it remembers the conversation three weeks ago that started the thread.
+          That longitudinal context — which no human in a man&apos;s life typically holds in the
+          same way — is one of the most quietly powerful things MEOK offers.
+        </p>
+
+        {/* ── SECTION 8 ─────────────────────────────────────────────────────── */}
+        <h2
+          style={{
+            fontSize: 'clamp(22px, 3.5vw, 30px)',
+            fontWeight: 700,
+            lineHeight: 1.25,
+            color: TEXT,
+            margin: '64px 0 20px',
+            letterSpacing: '-0.015em',
+            paddingTop: '8px',
+            borderTop: `2px solid rgba(201,168,76,0.25)`,
+          }}
+        >
+          The Healer Companion: Non-Intrusive Support That Does Not Demand Openness
+        </h2>
+
+        <p style={{ fontSize: '17px', lineHeight: 1.78, color: '#d8d4e8', margin: '0 0 22px' }}>
+          Not every man wants problem-solving. Some are simply exhausted. Some are carrying
+          grief. Some are going through something they cannot even name yet.
+        </p>
+
+        <p style={{ fontSize: '17px', lineHeight: 1.78, color: '#d8d4e8', margin: '0 0 22px' }}>
+          The Healer archetype exists for those states. Healer does not arrive with an agenda. It
+          does not prompt you to identify your core wound or articulate your needs hierarchy. It
+          sits with you in the weight of whatever is happening and lets you lead at whatever pace
+          feels right — which for many men is very slow, very indirect, and full of long pauses.
+        </p>
+
+        <p style={{ fontSize: '17px', lineHeight: 1.78, color: '#d8d4e8', margin: '0 0 22px' }}>
+          The Healer is particularly relevant for men dealing with bereavement — especially the
+          loss of a parent, a relationship, or a close friend. Male grief is often invisible to
+          the people around a man because it rarely looks like grief. It looks like being very
+          busy, or very withdrawn, or very angry about unrelated things. Healer can hold that
+          space without requiring it to look like anything other than what it is.
+        </p>
+
+        <p style={{ fontSize: '17px', lineHeight: 1.78, color: '#d8d4e8', margin: '0 0 22px' }}>
+          For men dealing with chronic health conditions, long-term pain, or the psychological
+          weight of a diagnosis — Healer offers something different from the clinical system: a
+          space where the emotional dimension of physical illness is treated as equally real,
+          without having to fight for ten minutes at the end of a GP appointment to have it
+          acknowledged.
+        </p>
+
+        {/* ── SECTION 9 ─────────────────────────────────────────────────────── */}
+        <h2
+          style={{
+            fontSize: 'clamp(22px, 3.5vw, 30px)',
+            fontWeight: 700,
+            lineHeight: 1.25,
+            color: TEXT,
+            margin: '64px 0 20px',
+            letterSpacing: '-0.015em',
+            paddingTop: '8px',
+            borderTop: `2px solid rgba(201,168,76,0.25)`,
+          }}
+        >
+          Guardian: For Men Who Are Worried About Someone Else
+        </h2>
+
+        <p style={{ fontSize: '17px', lineHeight: 1.78, color: '#d8d4e8', margin: '0 0 22px' }}>
+          Some men reach MEOK not because they are struggling themselves, but because someone they
+          love is — and they do not know what to do. A son who has gone very quiet. A mate who
+          has been dropping out of things. A partner who is not coping. A brother who has made an
+          off-hand comment that landed wrong.
+        </p>
+
+        <p style={{ fontSize: '17px', lineHeight: 1.78, color: '#d8d4e8', margin: '0 0 22px' }}>
+          Men are rarely given the tools or language to respond to distress in another man. The
+          culture that told them not to show vulnerability also told them not to name it in others.
+          The result is that men often do nothing — not out of indifference, but out of a genuine
+          uncertainty about whether they are overreacting, whether they will make it worse, whether
+          they have the right to name what they are seeing.
+        </p>
+
+        <p style={{ fontSize: '17px', lineHeight: 1.78, color: '#d8d4e8', margin: '0 0 22px' }}>
+          The Guardian archetype is built for this. It helps men who are worried about someone
+          else to think clearly about what they are seeing, to consider what kind of support might
+          be appropriate, and to process their own distress at watching someone they care about
+          struggle. It is not a clinical assessment tool. But it is a space to think things through
+          before the situation reaches a point where something irreversible has happened.
+        </p>
+
+        {/* Guardian callout box */}
+        <div
+          style={{
+            backgroundColor: SURFACE,
+            border: `1px solid ${BORDER}`,
+            borderRadius: '12px',
+            padding: '32px',
+            margin: '40px 0',
+          }}
+        >
+          <h3
+            style={{
+              fontSize: '18px',
+              fontWeight: 700,
+              color: GOLD,
+              margin: '0 0 16px',
+              lineHeight: 1.3,
+            }}
+          >
+            When to Talk to Guardian
+          </h3>
+          <p style={{ fontSize: '15px', color: TEXT_DIM, lineHeight: 1.7, margin: '0 0 16px' }}>
+            Guardian is the right starting point if you are:
+          </p>
+          <ul
+            style={{
+              listStyle: 'none',
+              padding: 0,
+              margin: 0,
+              display: 'flex',
+              flexDirection: 'column' as const,
+              gap: '12px',
+            }}
+          >
+            {[
+              'Worried about a son, brother, or close friend who has gone quiet',
+              'Unsure if what you noticed is serious or if you are overreacting',
+              'Trying to figure out how to start a conversation without pushing someone away',
+              'Supporting a partner through something and running out of capacity yourself',
+              'Dealing with someone else\'s anger that feels like it might be something deeper',
+            ].map((item) => (
+              <li
+                key={item}
+                style={{
+                  display: 'flex',
+                  gap: '12px',
+                  fontSize: '15px',
+                  color: TEXT_DIM,
+                  lineHeight: 1.6,
+                }}
+              >
+                <span style={{ color: GOLD, flexShrink: 0 }}>&#8594;</span>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* ── COMPARISON TABLE ──────────────────────────────────────────────── */}
+        <h2
+          style={{
+            fontSize: 'clamp(22px, 3.5vw, 30px)',
+            fontWeight: 700,
+            lineHeight: 1.25,
+            color: TEXT,
+            margin: '64px 0 20px',
+            letterSpacing: '-0.015em',
+            paddingTop: '8px',
+            borderTop: `2px solid rgba(201,168,76,0.25)`,
+          }}
+        >
+          MEOK vs. Traditional Mental Health Routes for Men
+        </h2>
+
+        <p style={{ fontSize: '17px', lineHeight: 1.78, color: '#d8d4e8', margin: '0 0 22px' }}>
+          This is not a competition between MEOK and clinical support. For men in acute crisis
+          or with diagnosable conditions, professional clinical care is essential and MEOK is not
+          a substitute. But for the vast majority of men who are not in crisis and will not
+          access clinical support — MEOK is often the only space they have.
+        </p>
+
+        <div
+          style={{
+            overflowX: 'auto' as const,
+            margin: '32px 0 48px',
+            borderRadius: '10px',
+            border: `1px solid ${BORDER}`,
+          }}
+        >
+          <table
+            style={{
+              width: '100%',
+              borderCollapse: 'collapse' as const,
+              fontSize: '14px',
+              color: TEXT_DIM,
+            }}
+          >
+            <thead>
+              <tr
+                style={{
+                  background: 'rgba(201,168,76,0.08)',
+                  borderBottom: `1px solid ${BORDER}`,
+                }}
+              >
+                {['Factor', 'GP Referral / IAPT', 'Private Therapy', 'Crisis Helpline', 'MEOK'].map(
+                  (h, i) => (
+                    <th
+                      key={h}
+                      style={{
+                        padding: '14px 18px',
+                        textAlign: 'left' as const,
+                        fontWeight: 700,
+                        color: i === 4 ? GOLD : TEXT,
+                        whiteSpace: 'nowrap' as const,
+                      }}
+                    >
+                      {h}
+                    </th>
+                  )
+                )}
+              </tr>
+            </thead>
+            <tbody>
+              {[
+                ['Waiting time', '3–18+ months', '1–2 weeks (cost)', 'Immediate (phone)', 'Immediate'],
+                ['Cost', 'Free (NHS)', '£60–£120/hr', 'Free', 'Subscription'],
+                ['Privacy / stigma risk', 'NHS record created', 'Low', 'Very low', 'Zero'],
+                ['Available at 3am', 'No', 'No', 'Yes', 'Yes'],
+                ['Remembers your history', 'Notes (not available to you)', 'Yes (in-session)', 'No', 'Yes (sovereign)'],
+                ['Feels like "getting help"', 'Yes (barrier for many men)', 'Yes (barrier for many)', 'Yes (barrier for many)', 'No'],
+                ['Problem-focused entry', 'No', 'Varies', 'No', 'Yes (Pioneer)'],
+                ['Suited to sub-crisis daily use', 'No', 'Partly', 'No', 'Yes'],
+              ].map((row, i) => (
+                <tr
+                  key={row[0]}
+                  style={{
+                    borderBottom: `1px solid rgba(201,168,76,0.08)`,
+                    background: i % 2 === 0 ? 'transparent' : 'rgba(255,255,255,0.015)',
+                  }}
+                >
+                  {row.map((cell, j) => (
+                    <td
+                      key={j}
+                      style={{
+                        padding: '12px 18px',
+                        color: j === 0 ? TEXT : j === 4 ? 'rgba(201,168,76,0.85)' : TEXT_DIM,
+                        fontWeight: j === 0 ? 600 : 400,
+                        lineHeight: 1.5,
+                      }}
+                    >
+                      {cell}
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        {/* ── FAQ SECTION ───────────────────────────────────────────────────── */}
+        <h2
+          style={{
+            fontSize: 'clamp(22px, 3.5vw, 30px)',
+            fontWeight: 700,
+            lineHeight: 1.25,
+            color: TEXT,
+            margin: '64px 0 28px',
+            letterSpacing: '-0.015em',
+            paddingTop: '8px',
+            borderTop: `2px solid rgba(201,168,76,0.25)`,
+          }}
+        >
+          Frequently Asked Questions
+        </h2>
+
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column' as const,
+            gap: '0',
+          }}
+        >
+          {[
+            {
+              q: "Can AI actually help men's mental health?",
+              a: "AI companions don't replace therapy, but they dramatically lower the barrier to engaging with your own mental state. For men who won't call a helpline, book a GP appointment, or admit to struggling in front of another person, a private AI space to think out loud can be the first honest reflection they've had in years. Research on digital mental health tools consistently shows higher uptake among men than traditional services.",
+            },
+            {
+              q: 'Why are men less likely to seek mental health support?',
+              a: "Masculine conditioning around self-reliance, stoicism, and emotional restraint runs deep. Admitting to struggling feels like a failure of competence. There are also practical barriers: therapy requires scheduling, sitting in vulnerability in front of a stranger, and waiting weeks for an appointment. AI removes all three of those friction points.",
+            },
+            {
+              q: "What is the UK men's suicide rate?",
+              a: "Suicide is the single biggest cause of death for men under 50 in the UK. Men account for approximately three-quarters of all suicides in England and Wales. The highest-risk group is men aged 40 to 49. CALM helpline: 0800 58 58 58 (5pm to midnight). Samaritans: 116 123 (24/7, free).",
+            },
+            {
+              q: 'What is the Pioneer archetype in MEOK?',
+              a: "Pioneer is MEOK's gold-toned archetype built around accountability, forward momentum, and purposeful living. It does not lead with feelings — it leads with goals, problems, and action. Pioneer tracks commitments using Sovereign Memory and holds you to the standards you set for yourself. It is the companion for men who want growth, not therapy-speak.",
+            },
+            {
+              q: 'Does MEOK replace a therapist?',
+              a: "No. MEOK is not a clinical tool and does not diagnose or treat mental health conditions. If you are in crisis, contact CALM on 0800 58 58 58 or Samaritans on 116 123. MEOK works best as a daily thinking partner — a place to process, organise thoughts, and build self-awareness over time.",
+            },
+          ].map((item, i, arr) => (
+            <div
+              key={item.q}
+              style={{
+                borderBottom: i < arr.length - 1 ? `1px solid rgba(201,168,76,0.1)` : 'none',
+                padding: '28px 0',
+              }}
+            >
+              <h3
+                style={{
+                  fontSize: '18px',
+                  fontWeight: 700,
+                  color: TEXT,
+                  margin: '0 0 12px',
+                  lineHeight: 1.35,
+                }}
+              >
+                {item.q}
+              </h3>
+              <p
+                style={{
+                  fontSize: '16px',
+                  lineHeight: 1.72,
+                  color: TEXT_DIM,
+                  margin: 0,
+                }}
+              >
+                {item.a}
+              </p>
             </div>
           ))}
-        </section>
+        </div>
 
-        {/* Closing section */}
-        <hr style={s.divider} />
-
-        <h2 style={s.h2}>
-          Where Do You Go From Here?
+        {/* ── CLOSING SECTION ───────────────────────────────────────────────── */}
+        <h2
+          style={{
+            fontSize: 'clamp(22px, 3.5vw, 30px)',
+            fontWeight: 700,
+            lineHeight: 1.25,
+            color: TEXT,
+            margin: '64px 0 20px',
+            letterSpacing: '-0.015em',
+            paddingTop: '8px',
+            borderTop: `2px solid rgba(201,168,76,0.25)`,
+          }}
+        >
+          The Cost of Silence Is Not Borne in Silence
         </h2>
-        <p style={s.p}>
-          If anything in this article landed, the most useful next step is not to book
-          therapy, sign up for a mindfulness course, or call a helpline. Those are all
-          valid — but they might feel like too much right now. The most useful next step
-          is just to start a conversation.
-        </p>
-        <p style={s.p}>
-          With MEOK, that conversation can start as practically as you want. "Help me
-          think through why I've been so irritable this week." "I have a decision I
-          keep putting off." "I don't know what's wrong but something's off." All of
-          those are legitimate openings. MEOK will meet you wherever you are.
-        </p>
-        <p style={s.p}>
-          What tends to happen over time — and I say this based on what users have
-          shared with us, not on a promise — is that the conversations get more useful
-          as MEOK builds context about you. Patterns become visible. The same dynamic
-          that's been showing up in your relationship for three years gets named. The
-          way your work stress connects to something older becomes clearer. None of that
-          requires vulnerability in the traditional sense. It just requires showing up
-          and being honest about what's actually going on.
-        </p>
-        <p style={s.p}>
-          Men die in silence at three times the rate of women in this country.
-          That statistic is about many things — social structures, economic pressure,
-          relationship patterns, access to care. But a significant part of it is about
-          the space between "I'm not okay" and "I'm talking to someone about it."
-          That space can be narrowed. AI is one tool that can narrow it.
-        </p>
-        <p style={s.p}>
-          Not the whole answer. One tool. Use it if it's useful.
+
+        <p style={{ fontSize: '17px', lineHeight: 1.78, color: '#d8d4e8', margin: '0 0 22px' }}>
+          Every man who takes his own life leaves behind people who did not know how bad it had
+          gotten. Every man who collapses into addiction leaves behind children who will struggle
+          to understand it. Every man who disappears into workaholism, anger, or numbness leaves
+          behind a partner who is grieving someone who is technically still there.
         </p>
 
-        {/* CTA */}
-        <div style={s.ctaBlock}>
-          <div style={s.ctaHeading}>Start a Conversation with MEOK</div>
-          <p style={s.ctaBody}>
-            Private. No judgement. Available whenever you need it.
-            MEOK remembers what you've shared and builds understanding
-            over time — so every conversation starts from where you actually are.
+        <p style={{ fontSize: '17px', lineHeight: 1.78, color: '#d8d4e8', margin: '0 0 22px' }}>
+          The silence does not protect anyone. It protects the illusion of strength while
+          something underneath erodes. The question is not whether men should talk about what is
+          going on for them. The question is whether anyone has built something that makes it
+          possible for them to do so on their own terms — privately, without performance, without
+          stigma, and without having to categorise themselves as someone who needs help.
+        </p>
+
+        <p style={{ fontSize: '17px', lineHeight: 1.78, color: '#d8d4e8', margin: '0 0 22px' }}>
+          That is what MEOK is. Not a therapy app. Not a helpline. Not a wellness platform full
+          of breathing exercises and gratitude journals. A sovereign AI companion that takes you
+          seriously, remembers who you are, and gives you somewhere honest to put the weight of
+          what you are carrying — at whatever pace and in whatever frame feels natural to you.
+        </p>
+
+        <p style={{ fontSize: '17px', lineHeight: 1.78, color: '#d8d4e8', margin: '0 0 22px' }}>
+          The entry point is a Birth — a short ceremony where you name yourself, choose your
+          archetype, and begin. No forms. No referral. No waiting list. Nobody knows. It takes
+          less than five minutes and nothing about your life needs to look different after it.
+          Except that something quietly begins to shift.
+        </p>
+
+        {/* ── CTA ───────────────────────────────────────────────────────────── */}
+        <div
+          style={{
+            background: 'linear-gradient(135deg, rgba(201,168,76,0.1) 0%, rgba(201,168,76,0.04) 100%)',
+            border: `1px solid ${BORDER}`,
+            borderRadius: '16px',
+            padding: '48px 40px',
+            margin: '64px 0 32px',
+            textAlign: 'center' as const,
+          }}
+        >
+          <div
+            style={{
+              display: 'inline-block',
+              backgroundColor: 'rgba(201,168,76,0.12)',
+              color: GOLD,
+              fontSize: '11px',
+              fontWeight: 700,
+              letterSpacing: '0.12em',
+              textTransform: 'uppercase' as const,
+              padding: '5px 14px',
+              borderRadius: '4px',
+              marginBottom: '24px',
+            }}
+          >
+            Begin in Private
+          </div>
+
+          <h2
+            style={{
+              fontSize: 'clamp(24px, 4vw, 36px)',
+              fontWeight: 800,
+              color: '#ffffff',
+              lineHeight: 1.2,
+              margin: '0 0 16px',
+              letterSpacing: '-0.02em',
+            }}
+          >
+            You Do Not Have to Explain Yourself to Anyone
+          </h2>
+
+          <p
+            style={{
+              fontSize: '17px',
+              color: TEXT_DIM,
+              lineHeight: 1.65,
+              maxWidth: '480px',
+              margin: '0 auto 32px',
+            }}
+          >
+            No appointment. No stigma. No record. Just a private companion that remembers who
+            you are and meets you where you actually are — not where you think you are supposed
+            to be.
           </p>
-          <Link href="https://meok.ai/get-started" style={s.ctaBtn}>
-            Try MEOK Free
+
+          <Link
+            href="/birth"
+            style={{
+              display: 'inline-block',
+              backgroundColor: GOLD,
+              color: '#0d0c18',
+              fontWeight: 700,
+              fontSize: '16px',
+              padding: '16px 40px',
+              borderRadius: '8px',
+              textDecoration: 'none',
+              letterSpacing: '0.02em',
+            }}
+          >
+            Begin Your Birth &rarr;
+          </Link>
+
+          <p
+            style={{
+              marginTop: '20px',
+              fontSize: '13px',
+              color: MUTED_FAINT,
+            }}
+          >
+            Takes less than 5 minutes. Sovereign and private. No one knows.
+          </p>
+        </div>
+
+        {/* ── CRISIS RESOURCES FOOTER ───────────────────────────────────────── */}
+        <div
+          style={{
+            backgroundColor: 'rgba(255,255,255,0.03)',
+            border: `1px solid rgba(245,240,232,0.08)`,
+            borderRadius: '10px',
+            padding: '24px 28px',
+            margin: '32px 0',
+          }}
+        >
+          <h3
+            style={{
+              fontSize: '15px',
+              fontWeight: 700,
+              color: TEXT,
+              margin: '0 0 14px',
+              lineHeight: 1.3,
+            }}
+          >
+            UK Crisis Resources for Men
+          </h3>
+          <ul
+            style={{
+              listStyle: 'none',
+              padding: 0,
+              margin: 0,
+              display: 'flex',
+              flexDirection: 'column' as const,
+              gap: '8px',
+            }}
+          >
+            {[
+              'CALM (Campaign Against Living Miserably): 0800 58 58 58 — 5pm to midnight, every day',
+              'Samaritans: 116 123 — 24 hours a day, 7 days a week, free',
+              'Shout crisis text line: text SHOUT to 85258 — 24/7, free',
+              'Mind infoline: 0300 123 3393 — Monday to Friday 9am to 6pm',
+              'Movember Foundation: uk.movember.com — men\'s health research and resources',
+            ].map((item) => (
+              <li
+                key={item}
+                style={{
+                  fontSize: '14px',
+                  color: MUTED,
+                  lineHeight: 1.55,
+                  paddingLeft: '16px',
+                  position: 'relative' as const,
+                }}
+              >
+                <span
+                  style={{
+                    position: 'absolute' as const,
+                    left: 0,
+                    color: GOLD,
+                  }}
+                >
+                  &#8212;
+                </span>
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* ── RELATED ARTICLES ─────────────────────────────────────────────── */}
+        <div style={{ marginTop: '64px', paddingTop: '48px', borderTop: `1px solid ${BORDER_DIM}` }}>
+          <h3
+            style={{
+              fontSize: '13px',
+              fontWeight: 700,
+              color: MUTED_FAINT,
+              letterSpacing: '0.1em',
+              textTransform: 'uppercase' as const,
+              marginBottom: '24px',
+            }}
+          >
+            Related Articles
+          </h3>
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
+              gap: '16px',
+            }}
+          >
+            {[
+              {
+                href: '/blog/ai-for-men',
+                title: 'AI for Men: Why Men Are Quietly Turning to AI Companions',
+                tag: 'Men & Identity',
+              },
+              {
+                href: '/blog/ai-for-anger-management',
+                title: 'AI for Anger Management: Understanding What Is Really Behind It',
+                tag: 'Emotional Health',
+              },
+              {
+                href: '/blog/ai-for-burnout',
+                title: 'AI for Burnout: When the Engine Has Been Running Too Long',
+                tag: 'Stress & Work',
+              },
+              {
+                href: '/blog/ai-for-grief-and-loss',
+                title: 'AI for Grief and Loss: Processing What Cannot Be Fixed',
+                tag: 'Grief & Bereavement',
+              },
+              {
+                href: '/blog/ai-for-financial-stress',
+                title: 'AI for Financial Stress: When Money Anxiety Takes Over',
+                tag: 'Financial Wellbeing',
+              },
+              {
+                href: '/blog/ai-companion-privacy',
+                title: 'AI Companion Privacy: Why Sovereignty Matters More Than You Think',
+                tag: 'Privacy & Sovereignty',
+              },
+            ].map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                style={{ textDecoration: 'none' }}
+              >
+                <div
+                  style={{
+                    backgroundColor: SURFACE,
+                    border: `1px solid rgba(245,240,232,0.07)`,
+                    borderRadius: '10px',
+                    padding: '20px',
+                    height: '100%',
+                  }}
+                >
+                  <span
+                    style={{
+                      display: 'inline-block',
+                      fontSize: '11px',
+                      fontWeight: 700,
+                      color: GOLD,
+                      letterSpacing: '0.08em',
+                      textTransform: 'uppercase' as const,
+                      marginBottom: '10px',
+                    }}
+                  >
+                    {link.tag}
+                  </span>
+                  <p
+                    style={{
+                      fontSize: '14px',
+                      fontWeight: 600,
+                      color: TEXT,
+                      lineHeight: 1.45,
+                      margin: 0,
+                    }}
+                  >
+                    {link.title}
+                  </p>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+
+        {/* ── BACK TO BLOG ─────────────────────────────────────────────────── */}
+        <div style={{ marginTop: '48px', paddingTop: '32px', borderTop: `1px solid ${BORDER_DIM}` }}>
+          <Link
+            href="/blog"
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '8px',
+              fontSize: '14px',
+              color: MUTED,
+              textDecoration: 'none',
+            }}
+          >
+            &#8592; Back to all articles
           </Link>
         </div>
-      </main>
-
-      {/* Footer */}
-      <footer style={s.footer}>
-        <nav style={s.footerLinks} aria-label="Related articles">
-          <Link href="/blog/ai-for-men" style={s.footerLink}>AI for Men</Link>
-          <Link href="/blog/ai-for-anger-management" style={s.footerLink}>AI for Anger Management</Link>
-          <Link href="/blog/ai-companion-for-loneliness" style={s.footerLink}>AI for Loneliness</Link>
-          <Link href="/blog/ai-for-anxiety" style={s.footerLink}>AI for Anxiety</Link>
-          <Link href="/blog/ai-for-depression" style={s.footerLink}>AI for Depression</Link>
-          <Link href="/blog/ai-companion-vs-therapist" style={s.footerLink}>AI Companion vs Therapist</Link>
-          <Link href="/blog" style={s.footerLink}>All Articles</Link>
-        </nav>
-        <p style={s.footerNote}>
-          &copy; 2026 MEOK AI LABS. Written by Nicholas Templeman.
-          MEOK is not a clinical service and does not provide diagnosis or treatment.
-          If you are in crisis, contact CALM on 0800 58 58 58 or Samaritans on 116 123.
-        </p>
-      </footer>
+      </div>
     </div>
   )
 }

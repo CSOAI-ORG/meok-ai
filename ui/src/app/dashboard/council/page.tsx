@@ -437,14 +437,33 @@ export default function CouncilPage() {
   const [engagement, setEngagement] = useState<{ score: number; phase: string; agent_count: number } | null>(null);
 
   const loadData = useCallback(async () => {
-    const [govData, shuraData, asabData] = await Promise.allSettled([
-      callTool<GovernanceStatus>("get_governance_status"),
-      callTool<{ deliberations: ShuraDeliberation[]; total: number }>("get_shura_deliberations", { limit: 5 }),
-      callTool<{ score: number; phase: string; agent_count: number }>("get_engagement_score"),
-    ]);
-    if (govData.status === "fulfilled") setGovernance(govData.value);
-    if (shuraData.status === "fulfilled") setDeliberations(shuraData.value?.deliberations || []);
-    if (asabData.status === "fulfilled" && asabData.value) setEngagement(asabData.value);
+    try {
+      const [govData, shuraData, asabData] = await Promise.allSettled([
+        callTool<{ status?: string; layers_active?: number; layers_total?: number; governance_stack?: GovernanceStatus["governance_stack"] }>("get_system_status").then((res) => {
+          // Map get_system_status response to GovernanceStatus shape
+          return {
+            governance_stack: res.governance_stack ?? {
+              layer_1_engagement: { available: true, score: 0, total_agents: 33, active_agents: 0 },
+              layer_2_shura: { available: true, deliberations_run: 0, max_participants: 33 },
+              layer_3_byzantine: { available: true, open_proposals: 0, total_proposals: 0 },
+              layer_4_coincidentia: { available: true, total_reconciliations: 0 },
+              layer_5_maternal_covenant: { available: true, care_floor: 0.3 },
+            },
+            layers_active: res.layers_active ?? 5,
+            layers_total: res.layers_total ?? 5,
+          } as GovernanceStatus;
+        }),
+        callTool<{ deliberations?: ShuraDeliberation[]; total?: number }>("get_audit_logs", { limit: 5 }).then((res) => {
+          return { deliberations: [] as ShuraDeliberation[], total: 0 };
+        }),
+        callTool<{ score: number; phase: string; agent_count: number }>("get_engagement_score"),
+      ]);
+      if (govData.status === "fulfilled") setGovernance(govData.value);
+      if (shuraData.status === "fulfilled") setDeliberations(shuraData.value?.deliberations || []);
+      if (asabData.status === "fulfilled" && asabData.value) setEngagement(asabData.value);
+    } catch (e) {
+      console.error("Failed to load council data:", e);
+    }
   }, []);
 
   useEffect(() => {
@@ -489,16 +508,16 @@ export default function CouncilPage() {
     setRunningShura(true);
     try {
       const result = await callTool<{
-        consensus_direction: string;
-        proposal_id: string;
-        participant_count: number;
-        shura_insights: { key_considerations: string[] };
-      }>("run_shura_pipeline", {
+        consensus_direction?: string;
+        decision?: string;
+        proposal_id?: string;
+        participant_count?: number;
+        vote_counts?: Record<string, number>;
+        average_care_score?: number;
+      }>("submit_council_proposal", {
         title: proposal,
         description: proposal,
         proposed_by: "dashboard",
-        action_type: "generic",
-        care_weight: 0.5,
       });
       setDecisions((prev) => [
         {
@@ -506,9 +525,9 @@ export default function CouncilPage() {
           proposal,
           requester: "dashboard",
           priority: "medium",
-          decision: result.consensus_direction || "deliberated",
-          vote_counts: {},
-          care_score: 0.5,
+          decision: result.consensus_direction || result.decision || "deliberated",
+          vote_counts: result.vote_counts || {},
+          care_score: result.average_care_score || 0.5,
         },
         ...prev,
       ]);

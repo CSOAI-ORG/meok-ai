@@ -1,65 +1,32 @@
-import { NextRequest, NextResponse } from "next/server";
+import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server';
+import { NextResponse } from 'next/server';
+import type { NextRequest } from 'next/server';
 
-// Protected routes — require meok_auth cookie or Bearer token
-const PROTECTED = ["/dashboard", "/chat", "/settings"];
-const PUBLIC = [
-  "/", "/login", "/register", "/birth", "/easter", "/hatch",
-  "/api/health", "/api/stripe/webhook",
-  "/privacy", "/terms", "/cookies", "/maternal-covenant",
-  "/labs", "/blog", "/about", "/pricing",
-  "/work/documents", "/work/research", "/work/email",
-  "/roadmap", "/waitlist", "/terminal",
-  "/os", "/personal", "/memory", "/work", "/family", "/team",
-  "/characters", "/characters/legendary", "/characters/timeless", "/characters/elemental",
-  "/gaming", "/gaming/live-copilot", "/gaming/post-game", "/gaming/strategy", "/gaming/platforms",
-  "/guardian", "/guardian/elderly", "/guardian/children", "/smb", "/council",
-  "/sovereign", "/open-source", "/live", "/research",
-  "/how-it-works", "/press", "/sitemap",
-  "/connect", "/product",
-  "/problems",
-  "/faq",
-  "/compare",
-  "/hatch", "/waitlist", "/easter", "/birth",
-];
+const clerkKey = process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY ?? '';
+const hasValidClerk = clerkKey.startsWith('pk_') && !clerkKey.includes('REPLACE');
 
-function isProtected(pathname: string): boolean {
-  return PROTECTED.some((p) => pathname.startsWith(p));
-}
+const isProtectedRoute = createRouteMatcher([
+  '/dashboard(.*)',
+  '/chat(.*)',
+  '/settings(.*)',
+]);
 
-function isPublic(pathname: string): boolean {
-  return PUBLIC.some((p) => pathname === p || pathname.startsWith(p + "/"));
-}
-
-export function middleware(req: NextRequest) {
-  const { pathname } = req.nextUrl;
-
-  // Always allow public routes and static assets
-  if (isPublic(pathname)) return NextResponse.next();
-
-  // For protected routes: check for meok_auth cookie or Authorization header
-  if (isProtected(pathname)) {
-    const cookie = req.cookies.get("meok_auth")?.value;
-    const bearer = req.headers.get("authorization")?.replace("Bearer ", "");
-    const hasToken = !!(cookie || bearer);
-
-    if (!hasToken) {
-      // API routes → 401
-      if (pathname.startsWith("/api/")) {
-        return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-      }
-      // Pages → redirect to login
-      const loginUrl = new URL("/login", req.url);
-      loginUrl.searchParams.set("from", pathname);
-      return NextResponse.redirect(loginUrl);
-    }
-  }
-
+// When Clerk is not configured, allow all routes (dev mode)
+function passthroughMiddleware(_req: NextRequest) {
   return NextResponse.next();
 }
 
+export default hasValidClerk
+  ? clerkMiddleware(async (auth, req) => {
+      if (isProtectedRoute(req)) {
+        await auth.protect();
+      }
+    })
+  : passthroughMiddleware;
+
 export const config = {
   matcher: [
-    "/((?!_next|[^?]*\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest)).*)",
-    "/(api|trpc)(.*)",
+    '/((?!_next|[^?]*\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest)).*)',
+    '/(api|trpc)(.*)',
   ],
 };

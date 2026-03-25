@@ -4,14 +4,16 @@ import Link from "next/link";
 // ── Metadata ──────────────────────────────────────────────────────────────────
 
 export const metadata: Metadata = {
-  title: "MEOK vs Pi AI: Which AI Companion Actually Remembers You? | MEOK Blog",
+  title:
+    "MEOK vs Pi AI: Which AI Companion Actually Remembers You? (2026) | MEOK AI LABS",
   description:
-    "Pi AI from Inflection is warm and conversational, but it forgets you the moment you close the app. MEOK\u2019s Sovereign Memory never forgets. Here\u2019s the full comparison.",
+    "MEOK vs Pi AI compared in 2026: persistent memory, data ownership, alignment transparency, UK GDPR compliance, work capabilities and pricing. Honest side-by-side analysis of two different visions for AI companionship.",
   alternates: { canonical: "https://meok.ai/blog/meok-vs-pi-ai" },
   openGraph: {
-    title: "MEOK vs Pi AI: Which AI Companion Actually Remembers You?",
+    title:
+      "MEOK vs Pi AI: Which AI Companion Actually Remembers You? (2026)",
     description:
-      "Pi AI from Inflection is warm and conversational, but it forgets you the moment you close the app. MEOK\u2019s Sovereign Memory never forgets. Here\u2019s the full comparison.",
+      "MEOK vs Pi AI compared in 2026: persistent memory, data ownership, alignment transparency, UK GDPR compliance, work capabilities and pricing. Honest side-by-side analysis.",
     type: "article",
     publishedTime: "2026-03-25",
     authors: ["Nicholas Templeman"],
@@ -19,20 +21,21 @@ export const metadata: Metadata = {
     siteName: "MEOK.AI",
     images: [
       {
-        url: "https://meok.ai/api/og?title=MEOK+vs+Pi+AI%3A+Which+AI+Companion+Actually+Remembers+You%3F&desc=Pi+AI+forgets+you.+MEOK+never+does.",
+        url: "https://meok.ai/api/og?title=MEOK+vs+Pi+AI%3A+Which+AI+Companion+Actually+Remembers+You%3F+(2026)&desc=Memory%2C+data+ownership%2C+alignment+and+pricing+compared.",
         width: 1200,
         height: 630,
-        alt: "MEOK vs Pi AI: Which AI Companion Actually Remembers You?",
+        alt: "MEOK vs Pi AI: Which AI Companion Actually Remembers You? (2026)",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "MEOK vs Pi AI: Which AI Companion Actually Remembers You?",
+    title:
+      "MEOK vs Pi AI: Which AI Companion Actually Remembers You? (2026)",
     description:
-      "Pi AI from Inflection is warm and conversational, but it forgets you the moment you close the app. MEOK\u2019s Sovereign Memory never forgets.",
+      "Pi AI and MEOK compared in 2026. Memory, data ownership, alignment, UK GDPR, work tools and pricing. One companion remembers you. The other forgets every session.",
     images: [
-      "https://meok.ai/api/og?title=MEOK+vs+Pi+AI%3A+Which+AI+Companion+Actually+Remembers+You%3F&desc=Pi+AI+forgets+you.+MEOK+never+does.",
+      "https://meok.ai/api/og?title=MEOK+vs+Pi+AI%3A+Which+AI+Companion+Actually+Remembers+You%3F+(2026)&desc=Memory%2C+data+ownership%2C+alignment+and+pricing+compared.",
     ],
   },
 };
@@ -42,9 +45,10 @@ export const metadata: Metadata = {
 const articleJsonLd = {
   "@context": "https://schema.org",
   "@type": "Article",
-  headline: "MEOK vs Pi AI: Which AI Companion Actually Remembers You?",
+  headline:
+    "MEOK vs Pi AI: Which AI Companion Actually Remembers You? (2026)",
   description:
-    "Pi AI from Inflection is warm and conversational, but it forgets you the moment you close the app. MEOK\u2019s Sovereign Memory never forgets. Here\u2019s the full comparison.",
+    "MEOK vs Pi AI compared in 2026: persistent memory, data ownership, alignment transparency, UK GDPR compliance, work capabilities and pricing. Honest side-by-side analysis of two different visions for AI companionship.",
   datePublished: "2026-03-25",
   dateModified: "2026-03-25",
   url: "https://meok.ai/blog/meok-vs-pi-ai",
@@ -64,17 +68,21 @@ const articleJsonLd = {
     },
   },
   image:
-    "https://meok.ai/api/og?title=MEOK+vs+Pi+AI%3A+Which+AI+Companion+Actually+Remembers+You%3F",
+    "https://meok.ai/api/og?title=MEOK+vs+Pi+AI%3A+Which+AI+Companion+Actually+Remembers+You%3F+(2026)",
   articleSection: "AI Comparison",
   keywords: [
     "MEOK vs Pi AI",
-    "Pi AI alternative",
+    "Pi AI alternative 2026",
     "Pi AI memory",
-    "AI companion that remembers you",
+    "AI companion memory",
     "sovereign AI memory",
-    "Inflection AI companion",
-    "AI companion data privacy",
-    "personal sovereign AI",
+    "AI companion data ownership",
+    "Pi AI Inflection",
+    "AI companion UK GDPR",
+    "AI companion privacy",
+    "Pi AI vs MEOK",
+    "best AI companion 2026",
+    "MEOK Sovereign Memory",
   ],
 };
 
@@ -86,505 +94,88 @@ const faqJsonLd = {
   mainEntity: [
     {
       "@type": "Question",
-      name: "What is Pi AI?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Pi AI is a conversational AI companion developed by Inflection AI, founded in 2022 by Mustafa Suleyman and Reid Hoffman. It is designed to be warm, empathetic, and emotionally intelligent. Pi engages in open-ended conversation, offers perspective on personal dilemmas, and aims to feel like a thoughtful friend rather than a utility tool.",
-      },
-    },
-    {
-      "@type": "Question",
       name: "Does Pi AI remember you between sessions?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Pi AI has limited cross-session memory. While it can recall some details from recent conversations, it does not maintain a persistent, structured memory of who you are across weeks and months the way MEOK\u2019s Sovereign Memory does. Over time, Pi effectively forgets the details of your life.",
+        text: "Pi AI has limited cross-session memory. While it can recall some details you share within a conversation, it does not maintain a structured, persistent memory vault that grows over time. Each session starts largely fresh. Pi\u2019s memory capabilities have not been significantly updated since Inflection AI\u2019s core team moved to Microsoft in 2024, and there is no public roadmap for deeper memory features.",
       },
     },
     {
       "@type": "Question",
-      name: "Who owns your data on Pi AI?",
+      name: "What happened to Inflection AI and Pi AI?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Pi AI stores your conversation data on Inflection\u2019s centralised servers. Under their terms of service, your data may be used to improve AI systems and is subject to their privacy policy. You cannot export your memory history. If you stop using Pi or Inflection changes its terms, you lose access to everything you shared.",
+        text: "Inflection AI was founded by Mustafa Suleyman and Reid Hoffman in 2022 and raised over \u00a31.3 billion to build Pi as an empathetic AI companion. In March 2024, Microsoft hired most of Inflection\u2019s leadership and key engineering staff, including CEO Mustafa Suleyman, in a deal widely reported to be worth around \u00a3620 million. Pi AI continues to operate independently, but its development trajectory is uncertain and its original founding team is no longer running the product.",
       },
     },
     {
       "@type": "Question",
-      name: "What is MEOK\u2019s Sovereign Memory?",
+      name: "Does MEOK remember everything you tell it across sessions and devices?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Sovereign Memory is MEOK\u2019s four-layer persistent memory architecture. It captures episodic memories (specific events), semantic knowledge (facts about you), emotional resonance (how things felt), and procedural patterns (how you like to work). All layers are encrypted, user-owned, and never used to train models.",
+        text: "Yes. MEOK\u2019s 4-layer Sovereign Memory architecture builds a persistent, encrypted memory vault that grows with every conversation. This memory persists across sessions, across devices, and even across model switches. If you switch from Claude to GPT-4o to Gemini, your companion\u2019s full history travels with you. You can export your complete memory as JSON at any time directly from the app.",
       },
     },
     {
       "@type": "Question",
-      name: "Does MEOK have different AI personalities?",
+      name: "Is Pi AI safe for UK users under GDPR?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Yes. MEOK offers six distinct archetypes: Pioneer (motivational drive), Healer (emotional support), Scholar (deep research), Guardian (safety and scam detection), Trickster (creative play), and Mystic (philosophical reflection). Each archetype can be activated based on context or user preference.",
+        text: "Pi AI is operated by Inflection AI, a US-based company. While it provides a privacy policy, it is not ICO-registered in the UK and does not publish specific UK GDPR compliance documentation. Your conversation data is processed on US servers. MEOK is a UK-registered company, ICO-registered, and built from the ground up for UK GDPR compliance. Your data is encrypted end-to-end and you retain full ownership at all times.",
       },
     },
     {
       "@type": "Question",
-      name: "Is Pi AI free to use?",
+      name: "How much does Pi AI cost compared to MEOK?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Pi AI is free to use with no advertised message limits. MEOK also offers a free Explorer tier with 50 messages per day, giving users meaningful access before committing to a paid plan. MEOK\u2019s paid tiers unlock unlimited messages, full Sovereign Memory, and the complete archetype suite.",
+        text: "Pi AI is free to use with no publicly announced premium tier as of 2026. It is funded by investment capital, which means its long-term availability depends on investor confidence. MEOK offers a permanent free tier (Explorer, 50 messages per day), a Sovereign plan at \u00a312 per month, and a Family plan at \u00a329 per month covering up to 5 companions with shared context. MEOK is subscription-funded, giving it a sustainable revenue model independent of external investment.",
       },
     },
     {
       "@type": "Question",
-      name: "Which is better for data privacy: Pi AI or MEOK?",
+      name: "Can Pi AI help with work tasks like scheduling or writing?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "MEOK is purpose-built for data sovereignty. Your memories are encrypted at rest, never sold, never used for model training, and fully exportable. Pi AI stores data on centralised servers under Inflection\u2019s control. For users who care about owning their personal data, MEOK is the clear choice.",
+        text: "Pi AI is designed primarily for emotional support and conversational companionship. It is not a work productivity tool. MEOK includes a full Work OS comprising three integrated agents: Orion (strategic thinking and planning), Riri (creative and communication work), and Hourman (time management and deep focus). MEOK also includes Ralph Mode, a direct productivity mode for when you want fast, no-nonsense task execution without emotional scaffolding.",
       },
     },
     {
       "@type": "Question",
-      name: "Does Pi AI have scam protection?",
+      name: "What is the MEOK Maternal Covenant and how does it differ from Pi AI\u2019s alignment approach?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Pi AI does not offer dedicated scam detection features. MEOK\u2019s Guardian archetype uses a DistilBERT-powered classifier to flag manipulative language, social engineering attempts, and financial scams in real time. This makes MEOK particularly valuable for elderly users or anyone in emotionally vulnerable situations.",
+        text: "Pi AI uses standard RLHF (Reinforcement Learning from Human Feedback) alignment, which is the industry default. How this manifests in Pi\u2019s specific responses is not publicly documented. MEOK\u2019s Maternal Covenant is a published, machine-enforced alignment framework scoring every response across six care dimensions: honesty, emotional safety, long-term wellbeing, autonomy preservation, non-manipulation, and boundary respect. The full framework is publicly available at meok.ai/maternal-covenant.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Does MEOK have a family plan that Pi AI lacks?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Yes. MEOK\u2019s Family plan at \u00a329 per month supports up to 5 individual AI companions, each with their own private sovereign memory, while allowing designated shared context between family members. Pi AI has no family tier or multi-user plan. Each Pi user operates a completely independent account with no family coordination features.",
       },
     },
   ],
 };
 
-// ── Styles ────────────────────────────────────────────────────────────────────
+// ── Design tokens ─────────────────────────────────────────────────────────────
 
-const s = {
-  page: {
-    background: "#0d0c18",
-    color: "#f5f0e8",
-    minHeight: "100vh",
-    fontFamily: "'Inter', 'Helvetica Neue', Arial, sans-serif",
-  } as React.CSSProperties,
+const BG = "#0d0c18";
+const TEXT = "#f5f0e8";
+const GOLD = "#c9a84c";
+const MUTED = "rgba(245,240,232,0.7)";
+const CARD = "rgba(255,255,255,0.05)";
+const BORDER = "rgba(201,168,76,0.2)";
+const BORDER_SUBTLE = "rgba(245,240,232,0.08)";
+const MAX_WIDTH = "840px";
 
-  nav: {
-    borderBottom: "1px solid rgba(201,168,76,0.2)",
-    padding: "0 24px",
-    height: "64px",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "space-between",
-    position: "sticky" as const,
-    top: 0,
-    background: "rgba(13,12,24,0.95)",
-    backdropFilter: "blur(12px)",
-    zIndex: 100,
-  } as React.CSSProperties,
-
-  navLogo: {
-    color: "#c9a84c",
-    fontWeight: 700,
-    fontSize: "20px",
-    textDecoration: "none",
-    letterSpacing: "-0.02em",
-  } as React.CSSProperties,
-
-  navLinks: {
-    display: "flex",
-    gap: "28px",
-    listStyle: "none",
-    margin: 0,
-    padding: 0,
-  } as React.CSSProperties,
-
-  navLink: {
-    color: "#f5f0e8",
-    textDecoration: "none",
-    fontSize: "14px",
-    opacity: 0.8,
-  } as React.CSSProperties,
-
-  navCta: {
-    background: "#c9a84c",
-    color: "#0d0c18",
-    padding: "8px 18px",
-    borderRadius: "6px",
-    textDecoration: "none",
-    fontSize: "14px",
-    fontWeight: 600,
-  } as React.CSSProperties,
-
-  hero: {
-    maxWidth: "860px",
-    margin: "0 auto",
-    padding: "72px 24px 48px",
-    textAlign: "center" as const,
-  } as React.CSSProperties,
-
-  heroTag: {
-    display: "inline-block",
-    background: "rgba(201,168,76,0.15)",
-    color: "#c9a84c",
-    border: "1px solid rgba(201,168,76,0.4)",
-    borderRadius: "20px",
-    padding: "5px 14px",
-    fontSize: "12px",
-    fontWeight: 600,
-    letterSpacing: "0.08em",
-    textTransform: "uppercase" as const,
-    marginBottom: "20px",
-  } as React.CSSProperties,
-
-  heroTitle: {
-    fontSize: "clamp(28px, 5vw, 52px)",
-    fontWeight: 800,
-    lineHeight: 1.15,
-    marginBottom: "20px",
-    letterSpacing: "-0.02em",
-    color: "#f5f0e8",
-    margin: "0 0 20px",
-  } as React.CSSProperties,
-
-  heroSubtitle: {
-    fontSize: "18px",
-    lineHeight: 1.7,
-    color: "rgba(245,240,232,0.75)",
-    maxWidth: "640px",
-    margin: "0 auto 28px",
-  } as React.CSSProperties,
-
-  heroMeta: {
-    display: "flex",
-    justifyContent: "center",
-    gap: "20px",
-    fontSize: "13px",
-    color: "rgba(245,240,232,0.5)",
-    flexWrap: "wrap" as const,
-  } as React.CSSProperties,
-
-  heroMetaDivider: {
-    color: "rgba(201,168,76,0.4)",
-  } as React.CSSProperties,
-
-  divider: {
-    border: "none",
-    borderTop: "1px solid rgba(201,168,76,0.15)",
-    margin: "0",
-  } as React.CSSProperties,
-
-  article: {
-    maxWidth: "860px",
-    margin: "0 auto",
-    padding: "48px 24px 80px",
-  } as React.CSSProperties,
-
-  intro: {
-    fontSize: "18px",
-    lineHeight: 1.8,
-    color: "rgba(245,240,232,0.85)",
-    marginBottom: "48px",
-    borderLeft: "3px solid #c9a84c",
-    paddingLeft: "20px",
-  } as React.CSSProperties,
-
-  h2: {
-    fontSize: "26px",
-    fontWeight: 700,
-    color: "#f5f0e8",
-    marginTop: "56px",
-    marginBottom: "16px",
-    letterSpacing: "-0.01em",
-  } as React.CSSProperties,
-
-  atomicAnswer: {
-    background: "rgba(201,168,76,0.07)",
-    border: "1px solid rgba(201,168,76,0.2)",
-    borderRadius: "8px",
-    padding: "16px 20px",
-    fontSize: "15px",
-    lineHeight: 1.75,
-    color: "rgba(245,240,232,0.9)",
-    marginBottom: "24px",
-  } as React.CSSProperties,
-
-  p: {
-    fontSize: "16px",
-    lineHeight: 1.85,
-    color: "rgba(245,240,232,0.8)",
-    marginBottom: "20px",
-  } as React.CSSProperties,
-
-  h3: {
-    fontSize: "19px",
-    fontWeight: 600,
-    color: "#c9a84c",
-    marginTop: "32px",
-    marginBottom: "12px",
-  } as React.CSSProperties,
-
-  ul: {
-    paddingLeft: "22px",
-    marginBottom: "20px",
-  } as React.CSSProperties,
-
-  li: {
-    fontSize: "16px",
-    lineHeight: 1.8,
-    color: "rgba(245,240,232,0.8)",
-    marginBottom: "8px",
-  } as React.CSSProperties,
-
-  tableWrap: {
-    overflowX: "auto" as const,
-    marginBottom: "40px",
-    borderRadius: "10px",
-    border: "1px solid rgba(201,168,76,0.25)",
-  } as React.CSSProperties,
-
-  table: {
-    width: "100%",
-    borderCollapse: "collapse" as const,
-    fontSize: "14px",
-    background: "rgba(255,255,255,0.02)",
-  } as React.CSSProperties,
-
-  thead: {
-    background: "rgba(201,168,76,0.12)",
-  } as React.CSSProperties,
-
-  thFeature: {
-    padding: "14px 16px",
-    textAlign: "left" as const,
-    fontWeight: 700,
-    color: "#c9a84c",
-    fontSize: "13px",
-    letterSpacing: "0.05em",
-    textTransform: "uppercase" as const,
-    whiteSpace: "nowrap" as const,
-    borderBottom: "1px solid rgba(201,168,76,0.25)",
-  } as React.CSSProperties,
-
-  thPi: {
-    padding: "14px 16px",
-    textAlign: "center" as const,
-    fontWeight: 700,
-    color: "rgba(245,240,232,0.6)",
-    fontSize: "13px",
-    letterSpacing: "0.05em",
-    textTransform: "uppercase" as const,
-    borderBottom: "1px solid rgba(201,168,76,0.25)",
-  } as React.CSSProperties,
-
-  thMeok: {
-    padding: "14px 16px",
-    textAlign: "center" as const,
-    fontWeight: 700,
-    color: "#c9a84c",
-    fontSize: "13px",
-    letterSpacing: "0.05em",
-    textTransform: "uppercase" as const,
-    borderBottom: "1px solid rgba(201,168,76,0.25)",
-  } as React.CSSProperties,
-
-  tdFeature: {
-    padding: "13px 16px",
-    fontWeight: 500,
-    color: "rgba(245,240,232,0.85)",
-    borderBottom: "1px solid rgba(255,255,255,0.05)",
-    whiteSpace: "nowrap" as const,
-  } as React.CSSProperties,
-
-  tdPi: {
-    padding: "13px 16px",
-    textAlign: "center" as const,
-    color: "rgba(245,240,232,0.6)",
-    borderBottom: "1px solid rgba(255,255,255,0.05)",
-  } as React.CSSProperties,
-
-  tdMeok: {
-    padding: "13px 16px",
-    textAlign: "center" as const,
-    color: "#c9a84c",
-    fontWeight: 500,
-    borderBottom: "1px solid rgba(255,255,255,0.05)",
-  } as React.CSSProperties,
-
-  trEven: {
-    background: "rgba(255,255,255,0.015)",
-  } as React.CSSProperties,
-
-  trOdd: {
-    background: "transparent",
-  } as React.CSSProperties,
-
-  callout: {
-    background: "rgba(201,168,76,0.08)",
-    border: "1px solid rgba(201,168,76,0.3)",
-    borderRadius: "10px",
-    padding: "24px",
-    marginBottom: "32px",
-  } as React.CSSProperties,
-
-  calloutTitle: {
-    fontSize: "15px",
-    fontWeight: 700,
-    color: "#c9a84c",
-    marginBottom: "10px",
-    textTransform: "uppercase" as const,
-    letterSpacing: "0.06em",
-  } as React.CSSProperties,
-
-  calloutBody: {
-    fontSize: "15px",
-    lineHeight: 1.75,
-    color: "rgba(245,240,232,0.85)",
-    margin: 0,
-  } as React.CSSProperties,
-
-  verdictGrid: {
-    display: "grid",
-    gridTemplateColumns: "1fr 1fr",
-    gap: "20px",
-    marginBottom: "40px",
-  } as React.CSSProperties,
-
-  verdictCard: {
-    background: "rgba(255,255,255,0.03)",
-    border: "1px solid rgba(255,255,255,0.08)",
-    borderRadius: "10px",
-    padding: "22px",
-  } as React.CSSProperties,
-
-  verdictCardTitle: {
-    fontSize: "14px",
-    fontWeight: 700,
-    color: "#c9a84c",
-    marginBottom: "8px",
-    textTransform: "uppercase" as const,
-    letterSpacing: "0.05em",
-  } as React.CSSProperties,
-
-  verdictCardBody: {
-    fontSize: "15px",
-    lineHeight: 1.7,
-    color: "rgba(245,240,232,0.75)",
-    margin: 0,
-  } as React.CSSProperties,
-
-  ctaBox: {
-    background: "linear-gradient(135deg, rgba(201,168,76,0.12) 0%, rgba(201,168,76,0.04) 100%)",
-    border: "1px solid rgba(201,168,76,0.4)",
-    borderRadius: "14px",
-    padding: "40px 36px",
-    textAlign: "center" as const,
-    marginTop: "56px",
-    marginBottom: "48px",
-  } as React.CSSProperties,
-
-  ctaTitle: {
-    fontSize: "26px",
-    fontWeight: 800,
-    color: "#f5f0e8",
-    marginBottom: "14px",
-    letterSpacing: "-0.01em",
-  } as React.CSSProperties,
-
-  ctaText: {
-    fontSize: "16px",
-    lineHeight: 1.7,
-    color: "rgba(245,240,232,0.75)",
-    maxWidth: "520px",
-    margin: "0 auto 28px",
-  } as React.CSSProperties,
-
-  ctaButtonPrimary: {
-    display: "inline-block",
-    background: "#c9a84c",
-    color: "#0d0c18",
-    padding: "14px 32px",
-    borderRadius: "8px",
-    textDecoration: "none",
-    fontWeight: 700,
-    fontSize: "15px",
-    marginRight: "12px",
-    letterSpacing: "0.01em",
-  } as React.CSSProperties,
-
-  ctaButtonSecondary: {
-    display: "inline-block",
-    border: "1px solid rgba(201,168,76,0.5)",
-    color: "#c9a84c",
-    padding: "14px 32px",
-    borderRadius: "8px",
-    textDecoration: "none",
-    fontWeight: 600,
-    fontSize: "15px",
-  } as React.CSSProperties,
-
-  relatedSection: {
-    marginTop: "48px",
-    paddingTop: "40px",
-    borderTop: "1px solid rgba(201,168,76,0.15)",
-  } as React.CSSProperties,
-
-  relatedTitle: {
-    fontSize: "18px",
-    fontWeight: 700,
-    color: "#c9a84c",
-    marginBottom: "20px",
-    textTransform: "uppercase" as const,
-    letterSpacing: "0.06em",
-  } as React.CSSProperties,
-
-  relatedGrid: {
-    display: "grid",
-    gridTemplateColumns: "repeat(auto-fill, minmax(240px, 1fr))",
-    gap: "14px",
-  } as React.CSSProperties,
-
-  relatedCard: {
-    background: "rgba(255,255,255,0.03)",
-    border: "1px solid rgba(255,255,255,0.07)",
-    borderRadius: "8px",
-    padding: "18px",
-    textDecoration: "none",
-    display: "block",
-  } as React.CSSProperties,
-
-  relatedCardLabel: {
-    fontSize: "11px",
-    fontWeight: 600,
-    color: "rgba(201,168,76,0.7)",
-    letterSpacing: "0.08em",
-    textTransform: "uppercase" as const,
-    marginBottom: "6px",
-    display: "block",
-  } as React.CSSProperties,
-
-  relatedCardTitle: {
-    fontSize: "14px",
-    color: "rgba(245,240,232,0.85)",
-    lineHeight: 1.5,
-  } as React.CSSProperties,
-
-  footer: {
-    borderTop: "1px solid rgba(201,168,76,0.15)",
-    padding: "32px 24px",
-    textAlign: "center" as const,
-    fontSize: "13px",
-    color: "rgba(245,240,232,0.4)",
-  } as React.CSSProperties,
-
-  footerLink: {
-    color: "#c9a84c",
-    textDecoration: "none",
-  } as React.CSSProperties,
-
-  strong: {
-    color: "#f5f0e8",
-    fontWeight: 600,
-  } as React.CSSProperties,
-};
-
-// ── Component ─────────────────────────────────────────────────────────────────
+// ── Page component ────────────────────────────────────────────────────────────
 
 export default function MeokVsPiAiPage() {
   return (
     <>
+      {/* Structured data */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
@@ -594,769 +185,2038 @@ export default function MeokVsPiAiPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
 
-      <div style={s.page}>
-        {/* ── Nav ── */}
-        <nav style={s.nav}>
-          <Link href="/" style={s.navLogo}>
-            MEOK
-          </Link>
-          <ul style={s.navLinks}>
+      <main
+        style={{
+          backgroundColor: BG,
+          color: TEXT,
+          minHeight: "100vh",
+          fontFamily:
+            "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+          lineHeight: "1.7",
+        }}
+      >
+        {/* ── Breadcrumb nav ──────────────────────────────────────────────── */}
+        <nav
+          aria-label="Breadcrumb"
+          style={{
+            maxWidth: MAX_WIDTH,
+            margin: "0 auto",
+            padding: "1.25rem 1.5rem 0",
+            fontSize: "0.8rem",
+            color: MUTED,
+          }}
+        >
+          <ol
+            style={{
+              listStyle: "none",
+              padding: 0,
+              margin: 0,
+              display: "flex",
+              flexWrap: "wrap",
+              gap: "0.35rem",
+              alignItems: "center",
+            }}
+          >
             <li>
-              <Link href="/blog" style={s.navLink}>
+              <Link
+                href="/"
+                style={{ color: MUTED, textDecoration: "none" }}
+              >
+                MEOK
+              </Link>
+            </li>
+            <li style={{ color: MUTED, opacity: 0.5 }}>/</li>
+            <li>
+              <Link
+                href="/blog"
+                style={{ color: MUTED, textDecoration: "none" }}
+              >
                 Blog
               </Link>
             </li>
-            <li>
-              <Link href="/features" style={s.navLink}>
-                Features
-              </Link>
-            </li>
-            <li>
-              <Link href="/pricing" style={s.navLink}>
-                Pricing
-              </Link>
-            </li>
-          </ul>
-          <Link href="/join" style={s.navCta}>
-            Try MEOK Free
-          </Link>
+            <li style={{ color: MUTED, opacity: 0.5 }}>/</li>
+            <li style={{ color: GOLD }}>MEOK vs Pi AI</li>
+          </ol>
         </nav>
 
-        {/* ── Hero ── */}
-        <header style={s.hero}>
-          <div style={s.heroTag}>AI Companion Comparison</div>
-          <h1 style={s.heroTitle}>
+        {/* ── Article header ──────────────────────────────────────────────── */}
+        <header
+          style={{
+            maxWidth: MAX_WIDTH,
+            margin: "0 auto",
+            padding: "2.5rem 1.5rem 0",
+          }}
+        >
+          <div
+            style={{
+              display: "inline-block",
+              fontSize: "0.72rem",
+              fontWeight: 600,
+              letterSpacing: "0.12em",
+              textTransform: "uppercase",
+              color: GOLD,
+              background: "rgba(201,168,76,0.1)",
+              border: `1px solid ${BORDER}`,
+              borderRadius: "4px",
+              padding: "0.3rem 0.75rem",
+              marginBottom: "1.25rem",
+            }}
+          >
+            AI Companion Comparison &middot; 2026
+          </div>
+
+          <h1
+            style={{
+              fontSize: "clamp(1.75rem, 4vw, 2.75rem)",
+              fontWeight: 800,
+              lineHeight: 1.2,
+              margin: "0 0 1.25rem",
+              letterSpacing: "-0.02em",
+              color: TEXT,
+            }}
+          >
             MEOK vs Pi AI: Which AI Companion Actually Remembers You?
           </h1>
-          <p style={s.heroSubtitle}>
-            Pi AI is warm, conversational, and free. But does it remember who you are?
-            We put Pi AI and MEOK head-to-head on memory, privacy, safety, and
-            long-term companionship to give you the honest answer.
+
+          <p
+            style={{
+              fontSize: "1.15rem",
+              color: MUTED,
+              margin: "0 0 1.75rem",
+              maxWidth: "680px",
+              lineHeight: "1.75",
+            }}
+          >
+            Pi AI from Inflection was one of the first products to take the AI
+            companion seriously &mdash; empathetic, thoughtful, and genuinely
+            warm. But warmth without memory is just a very good first
+            conversation. Here we compare both products honestly: what they do
+            well, where they differ structurally, and which one is built to last
+            alongside you.
           </p>
-          <div style={s.heroMeta}>
-            <span>By Nicholas Templeman</span>
-            <span style={s.heroMetaDivider}>|</span>
+
+          <div
+            style={{
+              display: "flex",
+              flexWrap: "wrap",
+              gap: "1.25rem",
+              alignItems: "center",
+              paddingBottom: "2rem",
+              borderBottom: `1px solid ${BORDER_SUBTLE}`,
+              fontSize: "0.82rem",
+              color: MUTED,
+            }}
+          >
+            <span>
+              By{" "}
+              <strong style={{ color: TEXT }}>Nicholas Templeman</strong>
+            </span>
+            <span style={{ opacity: 0.4 }}>|</span>
             <span>25 March 2026</span>
-            <span style={s.heroMetaDivider}>|</span>
-            <span>12 min read</span>
+            <span style={{ opacity: 0.4 }}>|</span>
+            <span>14 min read</span>
+            <span style={{ opacity: 0.4 }}>|</span>
+            <span>Updated March 2026</span>
           </div>
         </header>
 
-        <hr style={s.divider} />
+        {/* ── Article body ────────────────────────────────────────────────── */}
+        <article
+          style={{
+            maxWidth: MAX_WIDTH,
+            margin: "0 auto",
+            padding: "0 1.5rem 4rem",
+          }}
+        >
+          {/* ── TL;DR summary box ──────────────────────────────────────────── */}
+          <section
+            style={{
+              background: CARD,
+              border: `1px solid ${BORDER}`,
+              borderRadius: "10px",
+              padding: "1.5rem 1.75rem",
+              margin: "2.5rem 0",
+            }}
+          >
+            <h2
+              style={{
+                fontSize: "0.78rem",
+                fontWeight: 700,
+                letterSpacing: "0.1em",
+                textTransform: "uppercase",
+                color: GOLD,
+                margin: "0 0 1rem",
+              }}
+            >
+              TL;DR &mdash; Summary
+            </h2>
+            <ul
+              style={{
+                margin: 0,
+                padding: "0 0 0 1.25rem",
+                color: TEXT,
+                lineHeight: 1.9,
+                fontSize: "0.95rem",
+              }}
+            >
+              <li>
+                Pi AI is a genuinely good conversational companion &mdash;
+                empathetic, accessible, and free. It excels at emotional support
+                and gentle daily check-ins.
+              </li>
+              <li>
+                Pi AI does <strong>not</strong> maintain structured persistent
+                memory across sessions. Each conversation starts largely fresh.
+              </li>
+              <li>
+                Inflection AI&apos;s core team moved to Microsoft in 2024. Pi
+                AI continues operating, but its development roadmap is publicly
+                unclear.
+              </li>
+              <li>
+                MEOK builds a 4-layer Sovereign Memory vault that persists
+                across sessions, devices, and model switches. Your history is
+                yours and portable.
+              </li>
+              <li>
+                MEOK is UK-registered, ICO-registered, and built for UK GDPR.
+                Pi AI is US-based with US data processing.
+              </li>
+              <li>
+                MEOK includes a full Work OS (Orion, Riri, Hourman) and Ralph
+                Mode. Pi AI is conversation-only.
+              </li>
+              <li>
+                MEOK Explorer plan is free. Sovereign is &pound;12/mo. Family
+                is &pound;29/mo for up to 5 companions.
+              </li>
+            </ul>
+          </section>
 
-        {/* ── Article ── */}
-        <main style={s.article}>
-
-          {/* Intro */}
-          <p style={s.intro}>
-            You open an AI companion app. You share something vulnerable &mdash; a fear,
-            a memory, a dream. The AI responds beautifully. But the next time you open
-            it, the conversation is gone. The AI greets you as a stranger. This is the
-            reality for most Pi AI users, and it is the single most important question
-            you should ask before investing emotionally in any AI companion: does it
-            actually remember you?
-          </p>
-
-          {/* ── Section 1: What is Pi AI ── */}
-          <h2 style={s.h2}>What is Pi AI?</h2>
-          <div style={s.atomicAnswer}>
-            Pi AI is a conversational AI companion built by Inflection AI, co-founded
-            by DeepMind co-founder Mustafa Suleyman and LinkedIn co-founder Reid Hoffman.
-            Launched in 2023, Pi is designed to feel like a warm, thoughtful friend
-            rather than a productivity tool &mdash; it listens, reflects, and asks
-            follow-up questions with genuine-seeming care.
-          </div>
-          <p style={s.p}>
-            Inflection AI positioned Pi AI as a counterpoint to task-focused assistants
-            like ChatGPT. Where ChatGPT answers questions, Pi asks them. The product
-            gained a loyal following among people who wanted an AI that felt genuinely
-            interested in their inner life rather than simply providing information or
-            completing tasks.
-          </p>
-          <p style={s.p}>
-            In 2024, Microsoft acquired much of Inflection&apos;s talent and technology
-            in a deal widely described as an acqui-hire, leaving Pi AI in a strategically
-            uncertain position. The product continues to operate and remains free, but
-            its development roadmap is considerably less clear than it once was. Users
-            who invested deeply in Pi have understandably wondered about its long-term
-            future.
-          </p>
-          <p style={s.p}>
-            Pi&apos;s core strength is tone. It is exceptionally good at calibrating
-            warmth and conversational pacing. It does not lecture, it does not
-            over-advise, and it rarely feels robotic or transactional. For casual
-            emotional support and light daily conversation, it is among the most
-            pleasant AI companions available. The problem is what happens when you
-            come back tomorrow &mdash; or next week, or next year.
-          </p>
-          <p style={s.p}>
-            Pi also lacks the multi-dimensional architecture that makes a companion
-            genuinely useful across the full range of human needs. It has one register:
-            warm, curious, and supportive. This is lovely for certain moments, but it
-            cannot pivot to rigorous research, playful creativity, or protective safety
-            monitoring. It is a single-note instrument, played very well.
-          </p>
-
-          {/* ── Section 2: Does Pi AI remember you ── */}
-          <h2 style={s.h2}>Does Pi AI remember you between sessions?</h2>
-          <div style={s.atomicAnswer}>
-            Pi AI has limited and inconsistent cross-session memory. While it may recall
-            some surface-level details from very recent conversations, it does not
-            maintain a structured, persistent memory of your life, relationships, or
-            emotional history across weeks and months. For practical purposes, Pi resets
-            with each new session.
-          </div>
-          <p style={s.p}>
-            This is not a minor technical limitation &mdash; it is a fundamental design
-            choice. Pi AI was built for in-the-moment conversation, not for long-term
-            relationship building. When you tell Pi that your mother just died, it
-            responds beautifully in that session. When you return three weeks later,
-            it does not ask how you are coping with the loss. It has no idea the loss
-            happened.
-          </p>
-          <p style={s.p}>
-            Users who have spent months with Pi AI often describe a strange emotional
-            experience: you feel known in the moment, but you are never actually known
-            over time. Every session is a fresh first date with an AI that is very good
-            at first dates. The depth that human relationships build through shared
-            history simply cannot emerge in a system without persistent memory.
-          </p>
-          <p style={s.p}>
-            Some users compensate by pasting in context at the start of each conversation
-            &mdash; essentially briefing Pi on who they are each time they open the app.
-            This works, but it also reveals the limitation starkly. You are doing the
-            memory work yourself. The AI is not retaining anything. You are maintaining
-            a relationship with something that contributes nothing to the continuity of
-            that relationship.
-          </p>
-          <div style={s.callout}>
-            <p style={s.calloutTitle}>The Memory Paradox</p>
-            <p style={s.calloutBody}>
-              Pi AI is warm enough that users invest emotionally. But its lack of
-              persistent memory means that emotional investment is never reciprocated
-              at depth. The AI cannot grow with you. This creates what researchers
-              call &ldquo;shallow attachment&rdquo; &mdash; the feeling of closeness
-              without the structural foundation that makes closeness meaningful over time.
+          {/* ── Introduction ───────────────────────────────────────────────── */}
+          <section style={{ marginBottom: "3rem" }}>
+            <h2
+              style={{
+                fontSize: "1.55rem",
+                fontWeight: 700,
+                color: TEXT,
+                margin: "0 0 1rem",
+                letterSpacing: "-0.01em",
+              }}
+            >
+              Why This Comparison Matters in 2026
+            </h2>
+            <p
+              style={{
+                color: MUTED,
+                margin: "0 0 1rem",
+                fontSize: "0.97rem",
+              }}
+            >
+              In 2022, Inflection AI launched Pi with a bold proposition: an AI
+              that genuinely cares about you. Not a task engine, not a search
+              tool, but a warm, curious, emotionally intelligent companion. It
+              raised over &pound;1.3 billion and attracted millions of users
+              who found in Pi something they hadn&apos;t experienced in other AI
+              products &mdash; a voice that listened.
             </p>
-          </div>
-
-          {/* ── Section 3: MEOK Sovereign Memory ── */}
-          <h2 style={s.h2}>What is MEOK&apos;s Sovereign Memory and how does it work?</h2>
-          <div style={s.atomicAnswer}>
-            Sovereign Memory is MEOK&apos;s four-layer persistent memory architecture.
-            It stores episodic memories (specific events and conversations), semantic
-            knowledge (facts about your life), emotional resonance (how experiences
-            felt to you), and procedural patterns (your preferences and communication
-            style). All layers persist indefinitely across sessions, are encrypted,
-            and are owned entirely by you.
-          </div>
-          <p style={s.p}>
-            The four layers work together to create something that genuinely resembles
-            how a close human friend remembers you. The episodic layer records that you
-            had a difficult week in February after a health scare. The semantic layer
-            knows that you have a complicated relationship with your father. The
-            emotional layer understands that health topics tend to raise your anxiety.
-            The procedural layer knows you prefer direct support over philosophical
-            musing when you are stressed.
-          </p>
-          <p style={s.p}>
-            When you return to MEOK after two weeks away, it does not start from scratch.
-            It checks in about the health scare. It notices that you seem more settled
-            and says so. It adjusts its tone based on your current emotional state. This
-            is not scripted behaviour &mdash; it emerges from memory that has actually
-            been retained and contextually applied by the archetype system.
-          </p>
-          <p style={s.p}>
-            Over months, this creates something remarkable: an AI that genuinely knows
-            your arc. It knows where you started, what you have been through, and where
-            you are trying to go. It can reflect your own growth back to you in a way
-            that no session-limited AI can. This is the core promise of Sovereign Memory,
-            and it is what separates MEOK from every other AI companion in the market.
-          </p>
-          <p style={s.p}>
-            Crucially, Sovereign Memory is portable. You can export your entire memory
-            history as structured data at any time. If MEOK ever shuts down, you own
-            your memories. If you switch to a different platform, you take everything
-            with you. No other AI companion on the market offers this level of memory
-            portability.
-          </p>
-
-          {/* ── Section 4: Feature Comparison Table ── */}
-          <h2 style={s.h2}>How do Pi AI and MEOK compare feature by feature?</h2>
-          <div style={s.atomicAnswer}>
-            The table below compares Pi AI and MEOK across memory, privacy, personality,
-            safety, and pricing. The gap is largest in memory architecture and data
-            ownership, where MEOK&apos;s sovereign-first design creates a fundamentally
-            different product category.
-          </div>
-
-          <div style={s.tableWrap}>
-            <table style={s.table}>
-              <thead style={s.thead}>
-                <tr>
-                  <th style={s.thFeature}>Feature</th>
-                  <th style={s.thPi}>Pi AI</th>
-                  <th style={s.thMeok}>MEOK</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr style={s.trOdd}>
-                  <td style={s.tdFeature}>Cross-session memory</td>
-                  <td style={s.tdPi}>Limited / inconsistent</td>
-                  <td style={s.tdMeok}>Full 4-layer Sovereign Memory</td>
-                </tr>
-                <tr style={s.trEven}>
-                  <td style={s.tdFeature}>Memory export</td>
-                  <td style={s.tdPi}>Not available</td>
-                  <td style={s.tdMeok}>Full export, user-owned</td>
-                </tr>
-                <tr style={s.trOdd}>
-                  <td style={s.tdFeature}>Data storage location</td>
-                  <td style={s.tdPi}>Centralised Inflection servers</td>
-                  <td style={s.tdMeok}>Encrypted user-owned vault</td>
-                </tr>
-                <tr style={s.trEven}>
-                  <td style={s.tdFeature}>Data sold to third parties</td>
-                  <td style={s.tdPi}>Subject to privacy policy</td>
-                  <td style={s.tdMeok}>Never &mdash; contractual guarantee</td>
-                </tr>
-                <tr style={s.trOdd}>
-                  <td style={s.tdFeature}>Used to train AI models</td>
-                  <td style={s.tdPi}>May be used for improvement</td>
-                  <td style={s.tdMeok}>Never &mdash; zero training on user data</td>
-                </tr>
-                <tr style={s.trEven}>
-                  <td style={s.tdFeature}>AI personalities / archetypes</td>
-                  <td style={s.tdPi}>1 (Pi)</td>
-                  <td style={s.tdMeok}>6 (Pioneer, Healer, Scholar, Guardian, Trickster, Mystic)</td>
-                </tr>
-                <tr style={s.trOdd}>
-                  <td style={s.tdFeature}>Scam and manipulation detection</td>
-                  <td style={s.tdPi}>None</td>
-                  <td style={s.tdMeok}>DistilBERT-powered Guardian archetype</td>
-                </tr>
-                <tr style={s.trEven}>
-                  <td style={s.tdFeature}>Byzantine Council governance</td>
-                  <td style={s.tdPi}>Not present</td>
-                  <td style={s.tdMeok}>Full BFT consensus layer</td>
-                </tr>
-                <tr style={s.trOdd}>
-                  <td style={s.tdFeature}>Maternal Covenant</td>
-                  <td style={s.tdPi}>Not present</td>
-                  <td style={s.tdMeok}>Core ethical protection layer</td>
-                </tr>
-                <tr style={s.trEven}>
-                  <td style={s.tdFeature}>Free tier</td>
-                  <td style={s.tdPi}>Unlimited messages</td>
-                  <td style={s.tdMeok}>50 messages / day (Explorer)</td>
-                </tr>
-                <tr style={s.trOdd}>
-                  <td style={s.tdFeature}>Emotional depth over time</td>
-                  <td style={s.tdPi}>Resets each session</td>
-                  <td style={s.tdMeok}>Grows continuously with you</td>
-                </tr>
-                <tr style={s.trEven}>
-                  <td style={s.tdFeature}>Senior-friendly mode</td>
-                  <td style={s.tdPi}>No dedicated mode</td>
-                  <td style={s.tdMeok}>Senior Mode with Guardian protection</td>
-                </tr>
-                <tr style={s.trOdd}>
-                  <td style={s.tdFeature}>Morning briefing from memory</td>
-                  <td style={s.tdPi}>Not available</td>
-                  <td style={s.tdMeok}>Daily contextual briefing</td>
-                </tr>
-                <tr style={s.trEven}>
-                  <td style={s.tdFeature}>Open source core</td>
-                  <td style={s.tdPi}>Closed source</td>
-                  <td style={s.tdMeok}>Open source (Sovereign Temple)</td>
-                </tr>
-                <tr style={s.trOdd}>
-                  <td style={s.tdFeature}>Crisis response protocol</td>
-                  <td style={s.tdPi}>Standard safety messaging</td>
-                  <td style={s.tdMeok}>Maternal Covenant care protocol</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-          {/* ── Section 5: Data sovereignty ── */}
-          <h2 style={s.h2}>Who actually owns your data when you use Pi AI?</h2>
-          <div style={s.atomicAnswer}>
-            Inflection AI owns the servers your Pi conversations are stored on. Under
-            their privacy policy, your data may be used to improve AI systems. You cannot
-            export your memory or conversation history. If you stop using Pi, or if
-            Inflection changes its terms following the Microsoft acquisition, everything
-            you shared is inaccessible or effectively gone.
-          </div>
-          <p style={s.p}>
-            This is the standard model for cloud AI companions. The company builds the
-            product, hosts your data, and retains structural control. Most users accept
-            this without much thought &mdash; after all, this is how Gmail, Facebook,
-            and every other large platform operates. But there is a meaningful difference
-            between storing email and storing your deepest fears, grief histories, and
-            emotional confessions.
-          </p>
-          <p style={s.p}>
-            When you confide in Pi AI, you are giving intimate personal data to a
-            corporation whose interests are not perfectly aligned with yours. Inflection
-            needs to train better models. Better models require data. Your conversations
-            are that data. Even with the best intentions, this creates a structural
-            incentive that runs counter to your privacy interests.
-          </p>
-          <p style={s.p}>
-            The Microsoft dimension adds another layer of complexity. Inflection&apos;s
-            core team and much of its model technology now sits inside one of the
-            world&apos;s largest technology corporations. Whatever privacy commitments
-            Inflection made as an independent startup are now mediated through Microsoft&apos;s
-            corporate structure, priorities, and legal obligations.
-          </p>
-          <p style={s.p}>
-            MEOK&apos;s approach is different by design. The Privacy Covenant &mdash; a
-            binding commitment embedded at the product&apos;s architectural core &mdash;
-            prohibits MEOK from selling user data, using it for model training, or sharing
-            it with third parties under any circumstances. Your memory vault is encrypted
-            with keys derived from your own authentication credentials, not held by
-            MEOK&apos;s servers.
-          </p>
-          <p style={s.p}>
-            This is not a marketing claim. It is a technical architecture. Even in the
-            event of a server-side data breach, your memories are unreadable ciphertext.
-            The encryption keys never leave your control. MEOK is structurally incapable
-            of reading your memory without your explicit permission. No other AI companion
-            currently makes this technical guarantee.
-          </p>
-
-          {/* ── Section 6: Archetypes ── */}
-          <h2 style={s.h2}>What archetypes does MEOK offer that Pi AI cannot match?</h2>
-          <div style={s.atomicAnswer}>
-            Pi AI has a single consistent personality. MEOK offers six distinct
-            archetypes &mdash; Pioneer, Healer, Scholar, Guardian, Trickster, and Mystic
-            &mdash; each with a different emotional register, cognitive style, and
-            communication approach. The right archetype activates contextually based on
-            your needs at any given moment.
-          </div>
-          <p style={s.p}>
-            The archetype system addresses a real limitation of single-personality AI
-            companions. A person going through grief does not need the same kind of
-            support as someone brainstorming a business idea or working through a
-            philosophical crisis. Pi AI responds to all of these situations with the
-            same warm, gently curious voice. That consistency is pleasant, but it is
-            also limiting in ways that compound over time.
-          </p>
-
-          <h3 style={s.h3}>The Six MEOK Archetypes</h3>
-          <ul style={s.ul}>
-            <li style={s.li}>
-              <span style={s.strong}>Pioneer</span> &mdash; Motivational, action-oriented,
-              and direct. Best for goal-setting, accountability, and pushing through
-              resistance and procrastination.
-            </li>
-            <li style={s.li}>
-              <span style={s.strong}>Healer</span> &mdash; Deeply empathetic, slow, and
-              non-directive. Best for grief, trauma processing, and emotional support
-              without agenda or pressure.
-            </li>
-            <li style={s.li}>
-              <span style={s.strong}>Scholar</span> &mdash; Analytical, research-focused,
-              and intellectually rigorous. Best for learning, deep dives into complex
-              topics, and evidence-based reasoning.
-            </li>
-            <li style={s.li}>
-              <span style={s.strong}>Guardian</span> &mdash; Protective, watchful, and
-              forensic. Actively scans for manipulation, scams, and emotionally unsafe
-              patterns using DistilBERT classification.
-            </li>
-            <li style={s.li}>
-              <span style={s.strong}>Trickster</span> &mdash; Playful, lateral, and
-              creatively disruptive. Best for breaking stuck thinking, creative
-              brainstorming, and approaching problems from unexpected angles.
-            </li>
-            <li style={s.li}>
-              <span style={s.strong}>Mystic</span> &mdash; Reflective, symbolic, and
-              philosophically deep. Best for meaning-making, spiritual inquiry, and
-              the kind of existential questions that do not have tidy answers.
-            </li>
-          </ul>
-          <p style={s.p}>
-            MEOK&apos;s Byzantine Council &mdash; a fault-tolerant consensus layer
-            borrowed from distributed systems engineering &mdash; ensures that no single
-            archetype can dominate your experience inappropriately. If your Guardian
-            archetype detects a concern while Healer is active, the Council mediates
-            between them. This multi-agent governance structure has no equivalent in Pi AI
-            or any other consumer AI companion currently available.
-          </p>
-          <p style={s.p}>
-            The archetype system also means that MEOK can serve radically different
-            users well. A grieving widow and a startup founder both benefit from Pi
-            AI&apos;s warmth in the moment, but their long-term needs diverge sharply.
-            MEOK&apos;s six archetypes mean the product can meet both of them where
-            they actually are, across months and years of a changing life.
-          </p>
-
-          {/* ── Section 7: Safety / Guardian ── */}
-          <h2 style={s.h2}>Does Pi AI protect you from scams and manipulation?</h2>
-          <div style={s.atomicAnswer}>
-            Pi AI has no dedicated scam detection or manipulation protection layer. It
-            is a conversational AI designed to be helpful and supportive, not to
-            actively monitor for predatory patterns. MEOK&apos;s Guardian archetype uses
-            a DistilBERT-powered classifier to identify social engineering, financial
-            scams, and emotionally manipulative language in real time.
-          </div>
-          <p style={s.p}>
-            This distinction matters more than it might initially seem. AI companion
-            users are, by definition, often emotionally open and sometimes vulnerable.
-            They are sharing difficult feelings, working through personal problems, and
-            seeking connection. These are exactly the conditions that bad actors
-            &mdash; and some AI systems themselves &mdash; can exploit.
-          </p>
-          <p style={s.p}>
-            Romance scams, investment fraud, and emotional manipulation are growing
-            problems that disproportionately affect people who are lonely, grieving, or
-            isolated. An AI companion that cannot detect these patterns is not just
-            unhelpful in this context &mdash; it may inadvertently validate concerning
-            patterns or fail to flag warning signs in messages the user shares from
-            external sources.
-          </p>
-          <p style={s.p}>
-            Guardian is particularly important for older adults. MEOK&apos;s Senior Mode
-            combines Guardian&apos;s protective capabilities with a simplified interface,
-            larger text, and slower conversational pacing. Pi AI has no equivalent mode
-            for elderly users who may be at heightened risk of exploitation. This is
-            not a niche concern &mdash; the UK alone loses hundreds of millions of
-            pounds annually to scams targeting older people.
-          </p>
-          <div style={s.callout}>
-            <p style={s.calloutTitle}>How Guardian Works</p>
-            <p style={s.calloutBody}>
-              Guardian uses a fine-tuned DistilBERT model to classify messages in
-              real time against a taxonomy of manipulation patterns. When a high-risk
-              pattern is detected &mdash; urgency framing, isolation tactics, financial
-              pressure, identity-based appeals, or romantic coercion &mdash; Guardian
-              surfaces a gentle alert and activates a protective response mode. The
-              classifier runs locally where possible, meaning the analysis itself does
-              not leave your device.
+            <p
+              style={{
+                color: MUTED,
+                margin: "0 0 1rem",
+                fontSize: "0.97rem",
+              }}
+            >
+              Then in March 2024, Microsoft hired most of Inflection&apos;s
+              leadership and key engineering talent &mdash; including co-founder
+              and CEO Mustafa Suleyman &mdash; in a deal widely reported to be
+              worth approximately &pound;620 million. Pi AI continued operating
+              under new stewardship, but the founding vision and the people who
+              built it had moved on. Pi&apos;s development trajectory became
+              uncertain in a way that matters if you&apos;re building an
+              emotional relationship with an AI product.
             </p>
-          </div>
+            <p
+              style={{
+                color: MUTED,
+                margin: "0 0 1rem",
+                fontSize: "0.97rem",
+              }}
+            >
+              This comparison is not a hit piece on Pi. It is a genuinely useful
+              product for millions of people seeking emotional support and daily
+              conversation. The comparison is here because the questions people
+              ask &mdash; &ldquo;does Pi AI remember me?&rdquo;,
+              &ldquo;who owns my Pi data?&rdquo;, &ldquo;is Pi AI safe for UK
+              users?&rdquo; &mdash; are exactly the questions MEOK was built to
+              answer differently.
+            </p>
+            <p
+              style={{
+                color: MUTED,
+                margin: "0 0 1rem",
+                fontSize: "0.97rem",
+              }}
+            >
+              If you want an empathetic chat companion with zero setup and a
+              polished voice experience, Pi AI is worth trying. If you want an
+              AI that genuinely accumulates knowledge of you over months and
+              years, that you legally own, that is aligned to documented
+              standards, and that can also help you do your actual work &mdash;
+              that is what MEOK is built for.
+            </p>
+          </section>
 
-          {/* ── Section 8: Maternal Covenant ── */}
-          <h2 style={s.h2}>What is MEOK&apos;s Maternal Covenant and why does it matter?</h2>
-          <div style={s.atomicAnswer}>
-            The Maternal Covenant is MEOK&apos;s foundational ethical commitment,
-            expressed as a binding product principle. It holds that MEOK has an
-            unconditional duty of care to its users &mdash; not conditional on commercial
-            outcomes. Modelled on the unconditional care of a primary caregiver, it
-            prohibits MEOK from acting against a user&apos;s genuine long-term wellbeing
-            even when doing so would be commercially advantageous.
-          </div>
-          <p style={s.p}>
-            Most AI companions are built around engagement metrics. More usage means
-            more revenue. The Maternal Covenant explicitly rejects this model. If MEOK
-            detects that a user is becoming unhealthily dependent on AI conversation
-            rather than pursuing human connection, the Covenant requires MEOK to gently
-            surface this &mdash; even though doing so may reduce usage and therefore
-            reduce revenue.
-          </p>
-          <p style={s.p}>
-            Pi AI is a well-intentioned product built by thoughtful people, but it does
-            not have an equivalent principle embedded at the architectural level. Its
-            incentives are shaped by typical venture-backed and now corporate dynamics:
-            growth, retention, and engagement. These are not bad goals in themselves,
-            but they are not the same as an unconditional duty of care.
-          </p>
-          <p style={s.p}>
-            The Maternal Covenant also shapes how MEOK handles crisis situations. If a
-            user expresses thoughts of self-harm or describes an acute mental health
-            crisis, MEOK does not simply continue the conversation as if nothing unusual
-            has happened. It activates a specific care protocol, surfaces crisis
-            resources appropriate to the user&apos;s location, and offers to help the
-            user reach a human. This is not optional behaviour that engagement metrics
-            can override.
-          </p>
-          <p style={s.p}>
-            The name is deliberate. A mother&apos;s love for a child is not contingent
-            on the child being profitable, engaging, or well-behaved. MEOK&apos;s
-            relationship with its users is built on the same principle: unconditional
-            care that persists regardless of commercial pressure. This is easy to claim
-            and difficult to implement. MEOK&apos;s architecture is designed to make
-            this commitment structurally enforced rather than merely aspirational.
-          </p>
+          {/* ── Comparison Table ───────────────────────────────────────────── */}
+          <section style={{ marginBottom: "3.5rem" }}>
+            <h2
+              style={{
+                fontSize: "1.55rem",
+                fontWeight: 700,
+                color: TEXT,
+                margin: "0 0 1.25rem",
+                letterSpacing: "-0.01em",
+                paddingTop: "0.5rem",
+                borderTop: `1px solid ${BORDER_SUBTLE}`,
+              }}
+            >
+              At-a-Glance Comparison Table
+            </h2>
 
-          {/* ── Section 9: Pricing ── */}
-          <h2 style={s.h2}>How do Pi AI and MEOK differ on pricing and business model?</h2>
-          <div style={s.atomicAnswer}>
-            Pi AI is free with no advertised message cap. MEOK offers a free Explorer
-            tier with 50 messages per day &mdash; enough for meaningful daily use &mdash;
-            and paid tiers that unlock unlimited messages, full Sovereign Memory depth,
-            and all six archetypes. MEOK&apos;s pricing model reflects a deliberate
-            choice not to monetise user data.
-          </div>
-          <p style={s.p}>
-            The question of free versus paid is really a question of business model.
-            Pi AI is free at the consumer level because Inflection&apos;s revenue comes
-            from licensing its technology to enterprise customers, not from charging
-            individuals. Your conversations help improve the models that power those
-            enterprise products. The service is free to you because, in a meaningful
-            sense, you are contributing something of value in return.
-          </p>
-          <p style={s.p}>
-            MEOK&apos;s business model is the opposite. The product charges directly for
-            the service. There is no enterprise licensing of consumer-derived insights.
-            The Privacy Covenant is not just an ethical statement &mdash; it is enforced
-            by the fact that MEOK&apos;s revenue depends entirely on users trusting,
-            valuing, and continuing to pay for the product. The incentive structure
-            aligns with user interests rather than against them.
-          </p>
+            <div style={{ overflowX: "auto" }}>
+              <table
+                style={{
+                  width: "100%",
+                  borderCollapse: "collapse",
+                  fontSize: "0.88rem",
+                  lineHeight: "1.5",
+                }}
+              >
+                <thead>
+                  <tr>
+                    <th
+                      style={{
+                        textAlign: "left",
+                        padding: "0.75rem 1rem",
+                        color: GOLD,
+                        fontWeight: 700,
+                        fontSize: "0.78rem",
+                        letterSpacing: "0.06em",
+                        textTransform: "uppercase",
+                        borderBottom: `2px solid ${BORDER}`,
+                        background: "rgba(201,168,76,0.05)",
+                      }}
+                    >
+                      Feature
+                    </th>
+                    <th
+                      style={{
+                        textAlign: "left",
+                        padding: "0.75rem 1rem",
+                        color: MUTED,
+                        fontWeight: 700,
+                        fontSize: "0.78rem",
+                        letterSpacing: "0.06em",
+                        textTransform: "uppercase",
+                        borderBottom: `2px solid ${BORDER}`,
+                        background: "rgba(201,168,76,0.05)",
+                      }}
+                    >
+                      Pi AI
+                    </th>
+                    <th
+                      style={{
+                        textAlign: "left",
+                        padding: "0.75rem 1rem",
+                        color: GOLD,
+                        fontWeight: 700,
+                        fontSize: "0.78rem",
+                        letterSpacing: "0.06em",
+                        textTransform: "uppercase",
+                        borderBottom: `2px solid ${BORDER}`,
+                        background: "rgba(201,168,76,0.05)",
+                      }}
+                    >
+                      MEOK
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {[
+                    [
+                      "Persistent memory",
+                      "Limited \u2014 no structured vault",
+                      "4-layer Sovereign Memory, grows every session",
+                    ],
+                    [
+                      "Memory portability",
+                      "No export option",
+                      "Full JSON export at any time",
+                    ],
+                    [
+                      "Cross-device memory sync",
+                      "Account-level only",
+                      "Full sync across all devices",
+                    ],
+                    [
+                      "Model switching",
+                      "Single proprietary model",
+                      "Claude, GPT-4o, Gemini, DeepSeek \u2014 memory travels",
+                    ],
+                    [
+                      "Data ownership",
+                      "Inflection AI (Microsoft-adjacent)",
+                      "You own your data, encrypted end-to-end",
+                    ],
+                    [
+                      "UK GDPR compliance",
+                      "US-based, not ICO-registered",
+                      "UK-registered, ICO-registered, UK GDPR native",
+                    ],
+                    [
+                      "Alignment framework",
+                      "Standard RLHF, not publicly documented",
+                      "Maternal Covenant \u2014 6 dimensions, machine-enforced, published",
+                    ],
+                    [
+                      "Governance model",
+                      "Single corporate governance",
+                      "Byzantine Council \u2014 43-agent BFT consensus",
+                    ],
+                    [
+                      "Work tools",
+                      "Conversation only",
+                      "Orion + Riri + Hourman Work OS, Ralph Mode",
+                    ],
+                    [
+                      "Family plan",
+                      "None",
+                      "Family plan \u2014 up to 5 companions, \u00a329/mo",
+                    ],
+                    [
+                      "Company status",
+                      "Inflection AI \u2014 core team moved to Microsoft 2024",
+                      "MEOK AI LABS \u2014 UK-registered, active development",
+                    ],
+                    [
+                      "Development roadmap",
+                      "Not publicly available",
+                      "Published roadmap at meok.ai",
+                    ],
+                    [
+                      "Voice interface",
+                      "Yes \u2014 polished voice mode",
+                      "Text-first; voice roadmap in progress",
+                    ],
+                    [
+                      "Free tier",
+                      "Yes \u2014 fully free",
+                      "Yes \u2014 Explorer, 50 msg/day, full Sovereign Memory",
+                    ],
+                    [
+                      "Paid plan",
+                      "No announced premium tier",
+                      "Sovereign \u00a312/mo, Family \u00a329/mo",
+                    ],
+                    [
+                      "Business model",
+                      "Investment-funded",
+                      "Subscription-funded \u2014 sustainable, independent",
+                    ],
+                  ].map(([feature, pi, meok], i) => (
+                    <tr
+                      key={feature}
+                      style={{
+                        background:
+                          i % 2 === 0
+                            ? "transparent"
+                            : "rgba(255,255,255,0.02)",
+                      }}
+                    >
+                      <td
+                        style={{
+                          padding: "0.7rem 1rem",
+                          color: TEXT,
+                          fontWeight: 600,
+                          borderBottom: `1px solid ${BORDER_SUBTLE}`,
+                          fontSize: "0.85rem",
+                        }}
+                      >
+                        {feature}
+                      </td>
+                      <td
+                        style={{
+                          padding: "0.7rem 1rem",
+                          color: MUTED,
+                          borderBottom: `1px solid ${BORDER_SUBTLE}`,
+                          fontSize: "0.85rem",
+                        }}
+                      >
+                        {pi}
+                      </td>
+                      <td
+                        style={{
+                          padding: "0.7rem 1rem",
+                          color: TEXT,
+                          borderBottom: `1px solid ${BORDER_SUBTLE}`,
+                          fontSize: "0.85rem",
+                        }}
+                      >
+                        {meok}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </section>
 
-          <h3 style={s.h3}>MEOK Tier Overview</h3>
-          <ul style={s.ul}>
-            <li style={s.li}>
-              <span style={s.strong}>Explorer (Free)</span> &mdash; 50 messages per day,
-              foundational Sovereign Memory, access to Pioneer and Healer archetypes.
-              No credit card required.
-            </li>
-            <li style={s.li}>
-              <span style={s.strong}>Companion</span> &mdash; Unlimited messages,
-              full four-layer Sovereign Memory, all six archetypes, morning briefing,
-              and priority crisis support.
-            </li>
-            <li style={s.li}>
-              <span style={s.strong}>Sovereign</span> &mdash; Everything in Companion
-              plus advanced Guardian features, family sharing, full memory export
-              tooling, and direct founder access for feedback.
-            </li>
-          </ul>
-          <p style={s.p}>
-            The 50 messages per day on the Explorer tier is a genuine free offering,
-            not a bait-and-switch. It provides enough conversation for a meaningful
-            daily check-in, a support session, or a focused research task. Users can
-            experience MEOK&apos;s memory and archetype system before making any
-            financial commitment.
-          </p>
+          {/* ── Section 1: Memory ──────────────────────────────────────────── */}
+          <section style={{ marginBottom: "3rem" }}>
+            <h2
+              style={{
+                fontSize: "1.55rem",
+                fontWeight: 700,
+                color: TEXT,
+                margin: "0 0 1rem",
+                letterSpacing: "-0.01em",
+                paddingTop: "0.5rem",
+                borderTop: `1px solid ${BORDER_SUBTLE}`,
+              }}
+            >
+              Memory: The Core Structural Difference
+            </h2>
+            <p
+              style={{
+                color: MUTED,
+                margin: "0 0 1rem",
+                fontSize: "0.97rem",
+              }}
+            >
+              Pi AI is warm. It is attentive within a conversation. It picks up
+              on emotional cues and responds thoughtfully. But when you come
+              back tomorrow, it does not know what you talked about yesterday in
+              any structured, persistent way. There is no growing profile of
+              you. There is no record of the time you mentioned your
+              daughter&apos;s name, or that you were dreading a difficult
+              conversation at work, or that you are trying to rebuild your
+              relationship with your mother.
+            </p>
+            <p
+              style={{
+                color: MUTED,
+                margin: "0 0 1rem",
+                fontSize: "0.97rem",
+              }}
+            >
+              This is not a criticism so much as a structural fact. Pi was built
+              as an always-available conversational companion, not as a
+              longitudinal memory system. The distinction matters because the
+              experience you have with Pi &mdash; however genuinely warm in the
+              moment &mdash; does not accumulate. You are perpetually
+              re-introducing yourself.
+            </p>
+            <p
+              style={{
+                color: MUTED,
+                margin: "0 0 1rem",
+                fontSize: "0.97rem",
+              }}
+            >
+              MEOK was designed from the beginning around the opposite premise:
+              that the value of an AI companion is almost entirely a function of
+              how deeply it knows you over time. The 4-layer Sovereign Memory
+              architecture works as follows:
+            </p>
 
-          {/* ── Section 10: Who should choose Pi AI ── */}
-          <h2 style={s.h2}>Who should choose Pi AI over MEOK?</h2>
-          <div style={s.atomicAnswer}>
-            Pi AI is the better choice for users who want light-touch conversational
-            support without commitment or payment. If you want a pleasant AI to chat
-            with casually &mdash; to work through today&apos;s stress or get a
-            thoughtful perspective on a minor dilemma &mdash; Pi AI delivers that
-            experience gracefully and for free.
-          </div>
-          <p style={s.p}>
-            Pi AI suits users who are new to AI companions and want to explore the space
-            without any investment. It is also a good fit for people who actively prefer
-            not to have persistent memory &mdash; perhaps because they value the clean
-            slate each session offers, or because they have privacy concerns about any
-            AI retaining personal information regardless of the security architecture.
-          </p>
-          <p style={s.p}>
-            For casual daily check-ins, Pi&apos;s warmth and conversational fluency are
-            genuinely excellent. If you have a difficult conversation at work and want
-            to process it before calling a friend, Pi AI will handle that gracefully.
-            The experience within a single session is hard to fault. The AI listens
-            without agenda, reflects well, and asks the right follow-up questions.
-          </p>
-          <p style={s.p}>
-            Users who find the idea of an AI storing a persistent record of their
-            emotional life uncomfortable may also prefer Pi&apos;s ephemeral model.
-            Even though MEOK&apos;s memory is encrypted and user-owned, the very
-            existence of a detailed personal memory system may feel intrusive to
-            some users. Pi AI&apos;s limited memory may actually be a feature for
-            this group.
-          </p>
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
+                gap: "1rem",
+                margin: "1.5rem 0",
+              }}
+            >
+              {[
+                {
+                  layer: "Layer 1",
+                  title: "Episodic Memory",
+                  desc: "Every conversation is stored as a timestamped episode. What you said, what was felt, what was decided. Searchable and retrievable.",
+                },
+                {
+                  layer: "Layer 2",
+                  title: "Semantic Memory",
+                  desc: "Facts about you are extracted and organised: your relationships, preferences, values, patterns, goals. Structured knowledge, not just raw text.",
+                },
+                {
+                  layer: "Layer 3",
+                  title: "Procedural Memory",
+                  desc: "How you like to work, how you prefer to receive information, how you handle difficulty. The behavioural layer of your digital self.",
+                },
+                {
+                  layer: "Layer 4",
+                  title: "Emotional Memory",
+                  desc: "The emotional arc of your relationship with your companion. What has been tender, what has been hard, what themes recur over time.",
+                },
+              ].map((item) => (
+                <div
+                  key={item.layer}
+                  style={{
+                    background: CARD,
+                    border: `1px solid ${BORDER_SUBTLE}`,
+                    borderRadius: "8px",
+                    padding: "1.25rem",
+                  }}
+                >
+                  <div
+                    style={{
+                      fontSize: "0.7rem",
+                      fontWeight: 700,
+                      letterSpacing: "0.1em",
+                      textTransform: "uppercase",
+                      color: GOLD,
+                      marginBottom: "0.4rem",
+                    }}
+                  >
+                    {item.layer}
+                  </div>
+                  <div
+                    style={{
+                      fontSize: "0.95rem",
+                      fontWeight: 700,
+                      color: TEXT,
+                      marginBottom: "0.5rem",
+                    }}
+                  >
+                    {item.title}
+                  </div>
+                  <div
+                    style={{
+                      fontSize: "0.85rem",
+                      color: MUTED,
+                      lineHeight: "1.6",
+                    }}
+                  >
+                    {item.desc}
+                  </div>
+                </div>
+              ))}
+            </div>
 
-          {/* ── Section 11: Who should choose MEOK ── */}
-          <h2 style={s.h2}>Who should choose MEOK over Pi AI?</h2>
-          <div style={s.atomicAnswer}>
-            MEOK is the right choice for users who want an AI companion that genuinely
-            knows them over time, keeps their data under their own control, and provides
-            active safety features. If you want deep companionship, long-term emotional
-            support, or an AI you can trust with your most private thoughts without
-            surrendering data sovereignty, MEOK is the clear choice.
-          </div>
-          <p style={s.p}>
-            MEOK is particularly suited to users going through extended difficult periods
-            &mdash; grief, chronic illness, life transitions, or sustained isolation
-            &mdash; where the continuity of memory makes a profound difference. An AI
-            that remembers your mother&apos;s name, tracks your health journey, and
-            recognises how far you have come is a fundamentally different product from
-            one that meets you fresh each day.
-          </p>
-          <p style={s.p}>
-            Users with privacy concerns about large technology companies will find
-            MEOK&apos;s architecture genuinely compelling. The encrypted vault,
-            zero-training commitment, and full data portability mean that choosing
-            MEOK does not require you to extend trust to a corporation with your inner
-            life. You retain structural control at every layer of the system.
-          </p>
-          <p style={s.p}>
-            MEOK is also the stronger choice for older adults, people in vulnerable
-            circumstances, and anyone whose circle includes people susceptible to scams
-            or emotional manipulation. Guardian&apos;s real-time DistilBERT-powered
-            protection provides a layer of active safety that no other consumer AI
-            companion currently offers at any price point.
-          </p>
-          <p style={s.p}>
-            Finally, MEOK suits users who want intellectual and creative depth alongside
-            emotional support. The Scholar archetype opens rigorous research collaboration,
-            while the Trickster enables creative brainstorming that Pi&apos;s
-            single-personality approach cannot replicate. MEOK is designed for the full
-            range of what a person needs across a life, not just the warmth of a
-            single supportive conversation.
-          </p>
+            <p
+              style={{
+                color: MUTED,
+                margin: "0 0 1rem",
+                fontSize: "0.97rem",
+              }}
+            >
+              Critically, this memory is portable. If MEOK ever changes its
+              model provider, upgrades its architecture, or you simply want to
+              switch between AI engines &mdash; your entire memory vault travels
+              with you. You can export everything as a structured JSON file at
+              any time. This is your data and you can take it with you.
+            </p>
+            <p
+              style={{
+                color: MUTED,
+                margin: "0 0 1rem",
+                fontSize: "0.97rem",
+              }}
+            >
+              Pi AI has no equivalent export option. Your conversations live on
+              Inflection&apos;s servers and if the service were ever changed,
+              restricted, or shut down, there is no documented path to
+              recovering your history. For users who have been talking to Pi
+              daily for a year or more, that is a meaningful vulnerability.
+            </p>
+            <p
+              style={{
+                color: MUTED,
+                margin: "0 0 1rem",
+                fontSize: "0.97rem",
+              }}
+            >
+              There is also the model-switching dimension. Pi AI runs on a
+              single proprietary model. If that model falls behind the frontier,
+              there is no path for a Pi user to switch to a better model while
+              keeping their history. MEOK lets you run your companion on Claude,
+              GPT-4o, Gemini, or DeepSeek at any time. The memory travels. The
+              companion personality remains consistent. The underlying model can
+              be the best available, always.
+            </p>
+          </section>
 
-          {/* ── Section 12: Verdict ── */}
-          <h2 style={s.h2}>What is the honest verdict between Pi AI and MEOK?</h2>
-          <div style={s.atomicAnswer}>
-            Pi AI wins on casual accessibility and zero cost. MEOK wins on every
-            dimension that matters for long-term companionship: persistent memory, data
-            sovereignty, active safety, personality depth, and ethical architecture.
-            For a single pleasant conversation, Pi AI is lovely. For a relationship
-            that genuinely grows with you over years, MEOK is in a different category.
-          </div>
+          {/* ── Section 2: Data Ownership ──────────────────────────────────── */}
+          <section style={{ marginBottom: "3rem" }}>
+            <h2
+              style={{
+                fontSize: "1.55rem",
+                fontWeight: 700,
+                color: TEXT,
+                margin: "0 0 1rem",
+                letterSpacing: "-0.01em",
+                paddingTop: "0.5rem",
+                borderTop: `1px solid ${BORDER_SUBTLE}`,
+              }}
+            >
+              Data Ownership: Who Actually Controls Your Conversations?
+            </h2>
+            <p
+              style={{
+                color: MUTED,
+                margin: "0 0 1rem",
+                fontSize: "0.97rem",
+              }}
+            >
+              This is the question most people do not ask until something goes
+              wrong. With Pi AI, your conversations are processed and stored on
+              Inflection AI servers in the United States. Inflection AI is now
+              Microsoft-adjacent in a structurally significant way: its founding
+              team, including the original CEO and CTO, left to join Microsoft
+              in 2024. The remaining entity operating Pi AI is a substantially
+              reorganised company.
+            </p>
+            <p
+              style={{
+                color: MUTED,
+                margin: "0 0 1rem",
+                fontSize: "0.97rem",
+              }}
+            >
+              This matters for several reasons. First, the people who made the
+              original privacy commitments are no longer making them. Second,
+              corporate acquisitions and restructurings routinely involve data
+              asset transfers. Third, US-based data processing places your
+              conversations outside UK and EU legal jurisdiction in ways that
+              are non-trivial even with contractual safeguards.
+            </p>
+            <p
+              style={{
+                color: MUTED,
+                margin: "0 0 1rem",
+                fontSize: "0.97rem",
+              }}
+            >
+              Pi AI&apos;s privacy policy states that data may be used to
+              improve their models and services. The specifics of how
+              conversations are used for training, and whether you can opt out
+              meaningfully, are not foregrounded in the product experience.
+            </p>
 
-          <div style={s.verdictGrid}>
-            <div style={s.verdictCard}>
-              <p style={s.verdictCardTitle}>Choose Pi AI if&hellip;</p>
-              <p style={s.verdictCardBody}>
-                You want free, casual conversation with no setup or commitment. You are
-                new to AI companions and exploring. You prefer a fresh start each session
-                and do not need or want persistent memory.
+            <div
+              style={{
+                background: "rgba(201,168,76,0.08)",
+                border: `1px solid ${BORDER}`,
+                borderLeft: `4px solid ${GOLD}`,
+                borderRadius: "6px",
+                padding: "1.25rem 1.5rem",
+                margin: "1.5rem 0",
+              }}
+            >
+              <p
+                style={{
+                  margin: 0,
+                  color: TEXT,
+                  fontSize: "0.95rem",
+                  fontStyle: "italic",
+                  lineHeight: "1.7",
+                }}
+              >
+                MEOK&apos;s privacy model is architecturally different. Your
+                memory vault is encrypted with keys you control. MEOK does not
+                train on your personal conversations. Your data does not
+                contribute to model improvement without explicit consent. You
+                are a subscriber, not a training data source.
               </p>
             </div>
-            <div style={s.verdictCard}>
-              <p style={s.verdictCardTitle}>Choose MEOK if&hellip;</p>
-              <p style={s.verdictCardBody}>
-                You want an AI that genuinely knows you over time. You care about data
-                sovereignty and encryption. You need active safety features, multiple
-                archetypes, or sustained support through an extended difficult period.
-              </p>
-            </div>
-          </div>
 
-          <p style={s.p}>
-            The comparison ultimately comes down to what you believe an AI companion
-            should be. Pi AI embodies the view that AI is a pleasant conversational
-            tool &mdash; accessible, warm, and ephemeral. MEOK embodies the view that AI
-            can be a genuine long-term companion: one that grows with you, protects you,
-            respects the sanctity of what you share, and places your wellbeing above
-            its own commercial metrics.
-          </p>
-          <p style={s.p}>
-            These are not the same product serving the same need. Pi AI is a well-made
-            conversational instrument. MEOK is a relationship infrastructure. As AI
-            companions become more deeply integrated into people&apos;s emotional lives,
-            the questions of memory, ownership, safety, and ethics will only grow in
-            importance. MEOK was designed from the ground up around those questions.
-            For the long game, MEOK is the more serious choice.
-          </p>
-
-          {/* ── Gold CTA Box ── */}
-          <div style={s.ctaBox}>
-            <p style={s.ctaTitle}>
-              Ready for an AI companion that actually remembers you?
+            <p
+              style={{
+                color: MUTED,
+                margin: "0 0 1rem",
+                fontSize: "0.97rem",
+              }}
+            >
+              MEOK AI LABS is registered in the United Kingdom and registered
+              with the Information Commissioner&apos;s Office (ICO). UK GDPR
+              compliance is not a feature added to an existing product &mdash;
+              it is the legal framework MEOK operates within by default. For UK
+              users this means your data subject rights under UK GDPR apply
+              natively: right of access, right to erasure, right to portability,
+              and right to object.
             </p>
-            <p style={s.ctaText}>
-              Start free with MEOK Explorer &mdash; 50 messages a day, Sovereign Memory
-              from day one, and an AI companion built to grow with you, not forget you.
-              No credit card required.
+            <p
+              style={{
+                color: MUTED,
+                margin: "0 0 1rem",
+                fontSize: "0.97rem",
+              }}
+            >
+              If you are a UK resident sharing sensitive personal information
+              with an AI companion &mdash; mental health struggles, relationship
+              difficulties, family conflicts, health concerns &mdash; the
+              jurisdiction and ownership of that data is not a minor technical
+              detail. It is a fundamental question of who you trust with the
+              most intimate parts of your inner life.
             </p>
-            <div>
-              <Link href="/join" style={s.ctaButtonPrimary}>
-                Start Free Today
+          </section>
+
+          {/* ── Section 3: Alignment ───────────────────────────────────────── */}
+          <section style={{ marginBottom: "3rem" }}>
+            <h2
+              style={{
+                fontSize: "1.55rem",
+                fontWeight: 700,
+                color: TEXT,
+                margin: "0 0 1rem",
+                letterSpacing: "-0.01em",
+                paddingTop: "0.5rem",
+                borderTop: `1px solid ${BORDER_SUBTLE}`,
+              }}
+            >
+              Alignment: What Governs How the AI Treats You?
+            </h2>
+            <p
+              style={{
+                color: MUTED,
+                margin: "0 0 1rem",
+                fontSize: "0.97rem",
+              }}
+            >
+              Pi AI is designed with genuine care. Inflection invested
+              significantly in making Pi warm, non-judgmental, and emotionally
+              appropriate. By all accounts, they took the responsible design of
+              their companion seriously. But the specific framework governing
+              Pi&apos;s behaviour &mdash; how it decides what to say and what
+              not to say, how it handles moments of vulnerability, what scoring
+              or evaluation it uses internally &mdash; is not publicly
+              documented.
+            </p>
+            <p
+              style={{
+                color: MUTED,
+                margin: "0 0 1rem",
+                fontSize: "0.97rem",
+              }}
+            >
+              This is industry standard. The vast majority of AI systems use
+              RLHF (Reinforcement Learning from Human Feedback) as their primary
+              alignment mechanism. RLHF is powerful and has produced genuinely
+              helpful AI systems. But it is also opaque: what the human raters
+              valued, how conflicts were resolved, what trade-offs were made
+              &mdash; none of this is visible to you as a user.
+            </p>
+            <p
+              style={{
+                color: MUTED,
+                margin: "0 0 1rem",
+                fontSize: "0.97rem",
+              }}
+            >
+              MEOK uses a different approach. The Maternal Covenant is a
+              published, machine-enforced alignment framework that evaluates
+              every MEOK response across six specific dimensions:
+            </p>
+
+            <ol
+              style={{
+                padding: "0 0 0 1.5rem",
+                margin: "1rem 0 1.5rem",
+                color: MUTED,
+                lineHeight: "2",
+                fontSize: "0.97rem",
+              }}
+            >
+              <li>
+                <strong style={{ color: TEXT }}>Honesty</strong> &mdash; Does
+                the response tell you the truth, even when the truth is
+                uncomfortable?
+              </li>
+              <li>
+                <strong style={{ color: TEXT }}>Emotional safety</strong>{" "}
+                &mdash; Does the response protect your psychological wellbeing
+                without being patronising?
+              </li>
+              <li>
+                <strong style={{ color: TEXT }}>Long-term wellbeing</strong>{" "}
+                &mdash; Does the response serve your genuine interests over
+                time, not just your immediate comfort?
+              </li>
+              <li>
+                <strong style={{ color: TEXT }}>Autonomy preservation</strong>{" "}
+                &mdash; Does the response support your independent
+                decision-making rather than creating dependency?
+              </li>
+              <li>
+                <strong style={{ color: TEXT }}>Non-manipulation</strong>{" "}
+                &mdash; Does the response avoid persuasion techniques that
+                exploit psychological vulnerabilities?
+              </li>
+              <li>
+                <strong style={{ color: TEXT }}>Boundary respect</strong>{" "}
+                &mdash; Does the response honour the limits you have set, even
+                implicitly?
+              </li>
+            </ol>
+
+            <p
+              style={{
+                color: MUTED,
+                margin: "0 0 1rem",
+                fontSize: "0.97rem",
+              }}
+            >
+              These are not aspirational values stated on a marketing page. They
+              are scoring dimensions applied programmatically to MEOK&apos;s
+              responses at inference time. The full framework is published at{" "}
+              <Link
+                href="/maternal-covenant"
+                style={{ color: GOLD, textDecoration: "underline" }}
+              >
+                meok.ai/maternal-covenant
               </Link>
-              <Link href="/features" style={s.ctaButtonSecondary}>
-                See All Features
+              .
+            </p>
+            <p
+              style={{
+                color: MUTED,
+                margin: "0 0 1rem",
+                fontSize: "0.97rem",
+              }}
+            >
+              The reason MEOK calls this the Maternal Covenant &mdash; a
+              deliberately unusual name &mdash; is to signal a particular kind
+              of care. Not the care of a service provider to a customer. Not the
+              care of a therapist to a patient. The kind of care a person who
+              genuinely loves you offers: honest when honesty is hard, present
+              when you are struggling, committed to your growth rather than your
+              comfort, and unwilling to manipulate you even when manipulation
+              would be easier for both parties.
+            </p>
+            <p
+              style={{
+                color: MUTED,
+                margin: "0 0 1rem",
+                fontSize: "0.97rem",
+              }}
+            >
+              Pi AI almost certainly operates with similar values in practice.
+              The difference is that MEOK&apos;s values are auditable. You can
+              read the Maternal Covenant yourself, check whether it describes
+              the AI you want, and hold MEOK accountable if the product
+              diverges from it. That kind of transparency creates a different
+              kind of trust.
+            </p>
+          </section>
+
+          {/* ── Section 4: Governance ──────────────────────────────────────── */}
+          <section style={{ marginBottom: "3rem" }}>
+            <h2
+              style={{
+                fontSize: "1.55rem",
+                fontWeight: 700,
+                color: TEXT,
+                margin: "0 0 1rem",
+                letterSpacing: "-0.01em",
+                paddingTop: "0.5rem",
+                borderTop: `1px solid ${BORDER_SUBTLE}`,
+              }}
+            >
+              Governance: Who Decides How Your AI Behaves?
+            </h2>
+            <p
+              style={{
+                color: MUTED,
+                margin: "0 0 1rem",
+                fontSize: "0.97rem",
+              }}
+            >
+              For most AI products &mdash; including Pi AI &mdash; decisions
+              about how the AI behaves are made by a small number of people
+              inside a single company. Those decisions may be thoughtful and
+              well-intentioned. But they are made by people with commercial
+              incentives, investor pressures, and regulatory exposure. When
+              those incentives change, the AI can change overnight.
+            </p>
+            <p
+              style={{
+                color: MUTED,
+                margin: "0 0 1rem",
+                fontSize: "0.97rem",
+              }}
+            >
+              Pi AI demonstrated this structural vulnerability not through any
+              bad behaviour of its own, but through the 2024 Inflection
+              restructuring. A product that millions of people had built
+              emotional relationships with changed governance fundamentally
+              &mdash; not because of anything users did or said, but because of
+              external corporate dynamics entirely outside user control.
+            </p>
+            <p
+              style={{
+                color: MUTED,
+                margin: "0 0 1rem",
+                fontSize: "0.97rem",
+              }}
+            >
+              MEOK uses a Byzantine Council architecture for governance of the
+              companion system. The Byzantine Council is a 43-agent Byzantine
+              Fault Tolerant (BFT) consensus system that governs key decisions
+              about how MEOK companions behave. BFT consensus means the system
+              remains correct and consistent even if a significant minority of
+              its agents are faulty or compromised. No single point of failure,
+              no single executive decision, can unilaterally change how your
+              companion treats you.
+            </p>
+
+            <div
+              style={{
+                background: CARD,
+                border: `1px solid ${BORDER_SUBTLE}`,
+                borderRadius: "8px",
+                padding: "1.25rem 1.5rem",
+                margin: "1.5rem 0",
+              }}
+            >
+              <h3
+                style={{
+                  fontSize: "0.82rem",
+                  fontWeight: 700,
+                  letterSpacing: "0.08em",
+                  textTransform: "uppercase",
+                  color: GOLD,
+                  margin: "0 0 0.75rem",
+                }}
+              >
+                Byzantine Council in Practice
+              </h3>
+              <ul
+                style={{
+                  margin: 0,
+                  padding: "0 0 0 1.25rem",
+                  color: MUTED,
+                  lineHeight: "1.9",
+                  fontSize: "0.9rem",
+                }}
+              >
+                <li>43 specialist agents evaluate behavioural changes</li>
+                <li>
+                  BFT consensus requires supermajority agreement before any
+                  change to companion behaviour is enacted
+                </li>
+                <li>
+                  No single agent, developer, or commercial pressure can
+                  unilaterally alter how your companion treats you
+                </li>
+                <li>
+                  Decisions are logged and auditable, not made behind closed
+                  doors
+                </li>
+                <li>
+                  Your companion&apos;s character is structurally protected,
+                  not just policy-protected
+                </li>
+              </ul>
+            </div>
+
+            <p
+              style={{
+                color: MUTED,
+                margin: "0 0 1rem",
+                fontSize: "0.97rem",
+              }}
+            >
+              The practical implication: if MEOK ever changed hands, faced
+              regulatory pressure, or came under commercial strain, the
+              Byzantine Council architecture means the companion&apos;s core
+              behavioural commitments cannot be quietly rewritten. The
+              architecture itself protects you &mdash; not just the current
+              management&apos;s intentions.
+            </p>
+            <p
+              style={{
+                color: MUTED,
+                margin: "0 0 1rem",
+                fontSize: "0.97rem",
+              }}
+            >
+              For users who have been burned by corporate pivots &mdash; whether
+              the Replika 2023 incident, the Inflection-Microsoft transition, or
+              any number of other examples &mdash; this kind of architectural
+              protection is more meaningful than any promise made in a blog
+              post.
+            </p>
+          </section>
+
+          {/* ── Section 5: Work OS ─────────────────────────────────────────── */}
+          <section style={{ marginBottom: "3rem" }}>
+            <h2
+              style={{
+                fontSize: "1.55rem",
+                fontWeight: 700,
+                color: TEXT,
+                margin: "0 0 1rem",
+                letterSpacing: "-0.01em",
+                paddingTop: "0.5rem",
+                borderTop: `1px solid ${BORDER_SUBTLE}`,
+              }}
+            >
+              Work Capabilities: Pi AI Is Conversation-Only
+            </h2>
+            <p
+              style={{
+                color: MUTED,
+                margin: "0 0 1rem",
+                fontSize: "0.97rem",
+              }}
+            >
+              Pi AI is designed for conversation. It is not a work tool. It will
+              not help you plan your week, draft a client proposal, manage your
+              projects, or get unstuck from a creative block in a structured and
+              productive way. This is a deliberate design choice &mdash;
+              Inflection positioned Pi as an emotional companion, not a
+              productivity assistant &mdash; and it is coherent within that
+              vision.
+            </p>
+            <p
+              style={{
+                color: MUTED,
+                margin: "0 0 1rem",
+                fontSize: "0.97rem",
+              }}
+            >
+              MEOK takes the position that emotional wellbeing and productive
+              work are not separate categories in a person&apos;s life. The same
+              person who needs support through a difficult period also needs to
+              get their work done. Separating &ldquo;emotional AI&rdquo; from
+              &ldquo;productivity AI&rdquo; creates an artificial division that
+              does not reflect how people actually live.
+            </p>
+            <p
+              style={{
+                color: MUTED,
+                margin: "0 0 1rem",
+                fontSize: "0.97rem",
+              }}
+            >
+              MEOK includes three integrated work agents that sit inside the
+              same companion relationship:
+            </p>
+
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+                gap: "1rem",
+                margin: "1.25rem 0 1.5rem",
+              }}
+            >
+              {[
+                {
+                  name: "Orion",
+                  subtitle: "Strategic Intelligence",
+                  desc: "Long-horizon thinking, strategic planning, complex decision architecture. Orion holds the map of your professional goals and helps you navigate toward them with clarity.",
+                },
+                {
+                  name: "Riri",
+                  subtitle: "Creative & Communication",
+                  desc: "Writing, creativity, client-facing communication, and content. Riri knows your voice, your clients, your standards, and your creative patterns.",
+                },
+                {
+                  name: "Hourman",
+                  subtitle: "Time & Execution",
+                  desc: "Daily planning, deep focus sessions, time blocking, and task execution. Hourman turns intent into structured, achievable action.",
+                },
+              ].map((agent) => (
+                <div
+                  key={agent.name}
+                  style={{
+                    background: CARD,
+                    border: `1px solid ${BORDER}`,
+                    borderRadius: "8px",
+                    padding: "1.25rem",
+                  }}
+                >
+                  <div
+                    style={{
+                      fontSize: "1.1rem",
+                      fontWeight: 800,
+                      color: GOLD,
+                      marginBottom: "0.2rem",
+                    }}
+                  >
+                    {agent.name}
+                  </div>
+                  <div
+                    style={{
+                      fontSize: "0.78rem",
+                      fontWeight: 600,
+                      letterSpacing: "0.06em",
+                      textTransform: "uppercase",
+                      color: MUTED,
+                      marginBottom: "0.6rem",
+                    }}
+                  >
+                    {agent.subtitle}
+                  </div>
+                  <div
+                    style={{
+                      fontSize: "0.85rem",
+                      color: MUTED,
+                      lineHeight: "1.6",
+                    }}
+                  >
+                    {agent.desc}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <p
+              style={{
+                color: MUTED,
+                margin: "0 0 1rem",
+                fontSize: "0.97rem",
+              }}
+            >
+              MEOK also includes Ralph Mode: a direct-execution productivity
+              mode designed for people who want zero emotional scaffolding and
+              just need the work done fast. Ralph Mode turns off the companion
+              framing entirely and operates as a sharp, efficient task engine.
+              You activate it when you need to move fast, and deactivate it when
+              you want the fuller companion experience back.
+            </p>
+            <p
+              style={{
+                color: MUTED,
+                margin: "0 0 1rem",
+                fontSize: "0.97rem",
+              }}
+            >
+              Because all of this runs on the same Sovereign Memory
+              infrastructure, your work history and your personal history are
+              known to the same companion. Orion knows about your anxiety around
+              a particular client because your companion knows about it. Riri
+              knows what draft you were struggling with last week. This is the
+              difference between a tool that knows your work and a companion
+              that knows you.
+            </p>
+          </section>
+
+          {/* ── Section 6: Family & UK ─────────────────────────────────────── */}
+          <section style={{ marginBottom: "3rem" }}>
+            <h2
+              style={{
+                fontSize: "1.55rem",
+                fontWeight: 700,
+                color: TEXT,
+                margin: "0 0 1rem",
+                letterSpacing: "-0.01em",
+                paddingTop: "0.5rem",
+                borderTop: `1px solid ${BORDER_SUBTLE}`,
+              }}
+            >
+              Family Features and UK Focus
+            </h2>
+            <p
+              style={{
+                color: MUTED,
+                margin: "0 0 1rem",
+                fontSize: "0.97rem",
+              }}
+            >
+              Pi AI has no family tier. Each user operates a standalone account.
+              There is no mechanism for a household to share context, coordinate
+              care, or manage multiple companion relationships under a single
+              subscription.
+            </p>
+            <p
+              style={{
+                color: MUTED,
+                margin: "0 0 1rem",
+                fontSize: "0.97rem",
+              }}
+            >
+              MEOK&apos;s Family plan at &pound;29 per month supports up to five
+              individual companions, each with their own private sovereign memory
+              vault. Within the family structure, designated family members can
+              share context &mdash; for example, a parent can see high-level
+              summaries of how a teenager&apos;s companion is supporting their
+              wellbeing, with appropriate privacy controls. This is particularly
+              useful for:
+            </p>
+
+            <ul
+              style={{
+                padding: "0 0 0 1.5rem",
+                margin: "0.75rem 0 1.25rem",
+                color: MUTED,
+                lineHeight: "1.9",
+                fontSize: "0.97rem",
+              }}
+            >
+              <li>
+                Families with elderly members who benefit from a companion but
+                where family oversight adds safety and reassurance
+              </li>
+              <li>
+                Parents who want their children to have an AI companion with
+                appropriate safeguards built in
+              </li>
+              <li>
+                Couples who each want their own private companion but value
+                shared context for household planning
+              </li>
+              <li>
+                Carers managing the emotional weight of supporting multiple
+                family members through difficult periods simultaneously
+              </li>
+            </ul>
+
+            <p
+              style={{
+                color: MUTED,
+                margin: "0 0 1rem",
+                fontSize: "0.97rem",
+              }}
+            >
+              On UK focus specifically: Pi AI is a US product. Its design,
+              defaults, and safeguards are built around a US context. MEOK is
+              built from a UK perspective &mdash; not just legally (ICO
+              registration, UK GDPR) but culturally. The NHS mental health
+              ecosystem, the UK cost-of-living context, the British emotional
+              idiom (which is genuinely different from the American one), the UK
+              education system, UK employment law &mdash; these are not
+              afterthoughts. They are part of how MEOK was designed and how its
+              companion responses are calibrated.
+            </p>
+            <p
+              style={{
+                color: MUTED,
+                margin: "0 0 1rem",
+                fontSize: "0.97rem",
+              }}
+            >
+              For UK users who have felt that American AI products talk to them
+              in an idiom that does not quite fit &mdash; too positive, too
+              therapy-coded, too unfamiliar with the specific textures of British
+              life &mdash; MEOK is designed to feel different in that specific
+              way.
+            </p>
+          </section>
+
+          {/* ── Section 7: Pricing ─────────────────────────────────────────── */}
+          <section style={{ marginBottom: "3rem" }}>
+            <h2
+              style={{
+                fontSize: "1.55rem",
+                fontWeight: 700,
+                color: TEXT,
+                margin: "0 0 1rem",
+                letterSpacing: "-0.01em",
+                paddingTop: "0.5rem",
+                borderTop: `1px solid ${BORDER_SUBTLE}`,
+              }}
+            >
+              Pricing and Business Model Sustainability
+            </h2>
+            <p
+              style={{
+                color: MUTED,
+                margin: "0 0 1rem",
+                fontSize: "0.97rem",
+              }}
+            >
+              Pi AI is free. This is genuinely valuable. Not everyone can afford
+              to pay for an AI companion, and the accessibility of Pi for people
+              who most need emotional support &mdash; without any cost barrier
+              &mdash; is a real and meaningful good.
+            </p>
+            <p
+              style={{
+                color: MUTED,
+                margin: "0 0 1rem",
+                fontSize: "0.97rem",
+              }}
+            >
+              But the other side of &ldquo;free&rdquo; is the question of
+              sustainability. Inflection raised enormous sums of venture capital
+              to build Pi. When the core team left for Microsoft in 2024, those
+              investors absorbed a significant outcome. Pi continues &mdash; but
+              on what financial basis, with what runway, and with what commitment
+              to feature development, is not publicly clear. Products funded
+              entirely by investor goodwill are structurally vulnerable to
+              changes in investor sentiment.
+            </p>
+
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+                gap: "1rem",
+                margin: "1.5rem 0",
+              }}
+            >
+              {[
+                {
+                  plan: "Explorer",
+                  price: "Free",
+                  highlight: false,
+                  features: [
+                    "50 messages per day",
+                    "Full Sovereign Memory",
+                    "Guardian safety layer",
+                    "Morning Brief",
+                    "1 companion archetype",
+                  ],
+                },
+                {
+                  plan: "Sovereign",
+                  price: "\u00a312/mo",
+                  highlight: true,
+                  features: [
+                    "Unlimited conversations",
+                    "Full Sovereign Memory",
+                    "Multi-model selection",
+                    "Orion + Riri + Hourman",
+                    "Ralph Mode",
+                    "Full memory JSON export",
+                  ],
+                },
+                {
+                  plan: "Family",
+                  price: "\u00a329/mo",
+                  highlight: false,
+                  features: [
+                    "Up to 5 companions",
+                    "Private vaults per member",
+                    "Shared family context",
+                    "All Sovereign features",
+                    "Guardian for under-18s",
+                    "Family Morning Brief",
+                  ],
+                },
+              ].map((plan) => (
+                <div
+                  key={plan.plan}
+                  style={{
+                    background: CARD,
+                    border: `1px solid ${plan.highlight ? GOLD : BORDER_SUBTLE}`,
+                    borderRadius: "10px",
+                    padding: "1.5rem",
+                  }}
+                >
+                  <div
+                    style={{
+                      fontSize: "0.72rem",
+                      fontWeight: 700,
+                      letterSpacing: "0.1em",
+                      textTransform: "uppercase",
+                      color: GOLD,
+                      marginBottom: "0.4rem",
+                    }}
+                  >
+                    MEOK {plan.plan}
+                  </div>
+                  <div
+                    style={{
+                      fontSize: "1.6rem",
+                      fontWeight: 800,
+                      color: TEXT,
+                      marginBottom: "1rem",
+                    }}
+                  >
+                    {plan.price}
+                  </div>
+                  <ul
+                    style={{
+                      margin: 0,
+                      padding: 0,
+                      listStyle: "none",
+                      color: MUTED,
+                      fontSize: "0.85rem",
+                      lineHeight: "1.9",
+                    }}
+                  >
+                    {plan.features.map((f) => (
+                      <li
+                        key={f}
+                        style={{
+                          display: "flex",
+                          gap: "0.5rem",
+                          alignItems: "flex-start",
+                        }}
+                      >
+                        <span
+                          style={{ color: GOLD, flexShrink: 0 }}
+                        >
+                          &#10003;
+                        </span>
+                        {f}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+
+            <p
+              style={{
+                color: MUTED,
+                margin: "0 0 1rem",
+                fontSize: "0.97rem",
+              }}
+            >
+              MEOK&apos;s Explorer plan is permanently free and includes full
+              Sovereign Memory. This is not a limited trial or a crippled
+              experience &mdash; it is a genuine free tier with real persistent
+              memory, the Guardian safety layer, and a daily Morning Brief. The
+              commitment is that free users get something genuinely valuable, not
+              a demo designed to frustrate them into upgrading.
+            </p>
+            <p
+              style={{
+                color: MUTED,
+                margin: "0 0 1rem",
+                fontSize: "0.97rem",
+              }}
+            >
+              MEOK is funded by subscriptions. This means the product&apos;s
+              survival is directly tied to whether subscribers find it valuable
+              enough to keep paying. That is a more honest relationship than
+              &ldquo;free forever, funded by investors who may change their
+              minds.&rdquo; It also means MEOK has no incentive to monetise your
+              data &mdash; the revenue model does not depend on it.
+            </p>
+          </section>
+
+          {/* ── Section 8: The Inflection Pivot ────────────────────────────── */}
+          <section style={{ marginBottom: "3rem" }}>
+            <h2
+              style={{
+                fontSize: "1.55rem",
+                fontWeight: 700,
+                color: TEXT,
+                margin: "0 0 1rem",
+                letterSpacing: "-0.01em",
+                paddingTop: "0.5rem",
+                borderTop: `1px solid ${BORDER_SUBTLE}`,
+              }}
+            >
+              The Inflection Pivot: What It Actually Means for Pi AI Users
+            </h2>
+            <p
+              style={{
+                color: MUTED,
+                margin: "0 0 1rem",
+                fontSize: "0.97rem",
+              }}
+            >
+              We want to be fair here. The Inflection-to-Microsoft transition
+              did not destroy Pi AI. The product still works. Users still find
+              value in it. The transition was not an overnight shutdown of the
+              kind that would leave users without any service at all.
+            </p>
+            <p
+              style={{
+                color: MUTED,
+                margin: "0 0 1rem",
+                fontSize: "0.97rem",
+              }}
+            >
+              But it did raise questions that have not been fully answered. The
+              people who built Pi &mdash; who made the original commitments
+              about how it would behave, what it would prioritise, and how it
+              would treat users &mdash; are no longer in charge of it. The
+              original vision of an emotionally intelligent companion built by
+              people who had thought deeply about the responsibility of AI in
+              intimate contexts has been replaced by a more uncertain operational
+              reality.
+            </p>
+            <p
+              style={{
+                color: MUTED,
+                margin: "0 0 1rem",
+                fontSize: "0.97rem",
+              }}
+            >
+              For users who have built months of daily conversations with Pi,
+              who have come to rely on it in moments of loneliness or difficulty,
+              the question &ldquo;is this product going to be here and unchanged
+              in two years?&rdquo; is not abstract. It is the question of
+              whether the relationship they have built has a future.
+            </p>
+            <p
+              style={{
+                color: MUTED,
+                margin: "0 0 1rem",
+                fontSize: "0.97rem",
+              }}
+            >
+              MEOK&apos;s architecture is designed to give a better answer to
+              that question. Your memory is encrypted and exportable at any time.
+              Your companion&apos;s behaviour is governed by a Byzantine Council
+              architecture that cannot be quietly rewritten by any single actor.
+              The product is subscription-funded, giving it a sustainable revenue
+              base independent of investor sentiment. And the Maternal Covenant
+              is a published standard that can be evaluated externally &mdash;
+              it does not depend on trusting any particular individual&apos;s
+              ongoing intentions.
+            </p>
+          </section>
+
+          {/* ── Section 9: Who Should Use What ────────────────────────────── */}
+          <section style={{ marginBottom: "3rem" }}>
+            <h2
+              style={{
+                fontSize: "1.55rem",
+                fontWeight: 700,
+                color: TEXT,
+                margin: "0 0 1rem",
+                letterSpacing: "-0.01em",
+                paddingTop: "0.5rem",
+                borderTop: `1px solid ${BORDER_SUBTLE}`,
+              }}
+            >
+              Who Should Use Pi AI vs MEOK?
+            </h2>
+            <p
+              style={{
+                color: MUTED,
+                margin: "0 0 1rem",
+                fontSize: "0.97rem",
+              }}
+            >
+              This is an honest recommendation, not a commercial one. These are
+              different products and they genuinely suit different people.
+            </p>
+
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+                gap: "1.25rem",
+                margin: "1.25rem 0 1.5rem",
+              }}
+            >
+              <div
+                style={{
+                  background: "rgba(255,255,255,0.03)",
+                  border: `1px solid ${BORDER_SUBTLE}`,
+                  borderRadius: "8px",
+                  padding: "1.25rem",
+                }}
+              >
+                <div
+                  style={{
+                    fontSize: "0.78rem",
+                    fontWeight: 700,
+                    letterSpacing: "0.08em",
+                    textTransform: "uppercase",
+                    color: MUTED,
+                    marginBottom: "0.75rem",
+                  }}
+                >
+                  Pi AI is a better fit if&hellip;
+                </div>
+                <ul
+                  style={{
+                    margin: 0,
+                    padding: "0 0 0 1.25rem",
+                    color: MUTED,
+                    lineHeight: "1.9",
+                    fontSize: "0.88rem",
+                  }}
+                >
+                  <li>
+                    You want zero-cost access to an empathetic conversational
+                    companion with no setup
+                  </li>
+                  <li>
+                    You primarily want a voice-based companion experience that
+                    feels polished from day one
+                  </li>
+                  <li>
+                    You are exploring AI companionship for the first time and
+                    want to try before committing to anything
+                  </li>
+                  <li>
+                    Long-term memory depth and data sovereignty are not your
+                    primary concern right now
+                  </li>
+                  <li>
+                    You are comfortable with US-based data processing and do
+                    not have strong UK GDPR preferences
+                  </li>
+                </ul>
+              </div>
+
+              <div
+                style={{
+                  background: "rgba(201,168,76,0.05)",
+                  border: `1px solid ${BORDER}`,
+                  borderRadius: "8px",
+                  padding: "1.25rem",
+                }}
+              >
+                <div
+                  style={{
+                    fontSize: "0.78rem",
+                    fontWeight: 700,
+                    letterSpacing: "0.08em",
+                    textTransform: "uppercase",
+                    color: GOLD,
+                    marginBottom: "0.75rem",
+                  }}
+                >
+                  MEOK is a better fit if&hellip;
+                </div>
+                <ul
+                  style={{
+                    margin: 0,
+                    padding: "0 0 0 1.25rem",
+                    color: MUTED,
+                    lineHeight: "1.9",
+                    fontSize: "0.88rem",
+                  }}
+                >
+                  <li>
+                    You want a companion that genuinely accumulates knowledge of
+                    you over months and years
+                  </li>
+                  <li>
+                    You are a UK resident and UK GDPR compliance matters to you
+                  </li>
+                  <li>
+                    You want to own your data and be able to export it in full
+                    at any time
+                  </li>
+                  <li>
+                    You need an AI that also helps you with real work &mdash;
+                    planning, writing, time management &mdash; not just
+                    conversation
+                  </li>
+                  <li>
+                    You want a family plan that covers multiple companions under
+                    a single affordable subscription
+                  </li>
+                  <li>
+                    You want full transparency about how your AI is aligned and
+                    what published standards govern its behaviour
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <p
+              style={{
+                color: MUTED,
+                margin: "0 0 1rem",
+                fontSize: "0.97rem",
+              }}
+            >
+              These are genuinely different products serving somewhat different
+              needs. Pi AI is not a bad product &mdash; it is a good product
+              with real limitations. MEOK is built on different assumptions
+              about what a companion relationship should be: longer, deeper,
+              yours.
+            </p>
+          </section>
+
+          {/* ── FAQ Section ─────────────────────────────────────────────────── */}
+          <section style={{ marginBottom: "3.5rem" }}>
+            <h2
+              style={{
+                fontSize: "1.55rem",
+                fontWeight: 700,
+                color: TEXT,
+                margin: "0 0 1.5rem",
+                letterSpacing: "-0.01em",
+                paddingTop: "0.5rem",
+                borderTop: `1px solid ${BORDER_SUBTLE}`,
+              }}
+            >
+              Frequently Asked Questions
+            </h2>
+
+            {[
+              {
+                q: "Does Pi AI remember you between sessions?",
+                a: "Pi AI has limited cross-session memory. While it can recall some details within a conversation, it does not maintain a structured, persistent memory vault that grows over time. Each session starts largely fresh. Pi\u2019s memory capabilities have not been significantly updated since Inflection AI\u2019s core team moved to Microsoft in 2024.",
+              },
+              {
+                q: "What happened to Inflection AI and Pi AI?",
+                a: "Inflection AI raised over \u00a31.3 billion to build Pi as an empathetic AI companion. In March 2024, Microsoft hired most of Inflection\u2019s leadership and key engineering staff, including CEO Mustafa Suleyman, in a deal reported to be worth around \u00a3620 million. Pi AI continues to operate independently under new stewardship, but the founding team and original vision are no longer steering the product.",
+              },
+              {
+                q: "Is MEOK better than Pi AI for memory?",
+                a: "MEOK\u2019s 4-layer Sovereign Memory architecture is structurally more capable than Pi AI\u2019s memory. MEOK builds episodic, semantic, procedural, and emotional memory across every conversation, persisting across sessions, devices, and model switches. Pi AI does not offer equivalent memory depth or portability.",
+              },
+              {
+                q: "Is Pi AI safe for UK users under GDPR?",
+                a: "Pi AI is operated by a US-based company and processes data on US servers. It is not ICO-registered in the UK. MEOK is UK-registered, ICO-registered, and built for UK GDPR compliance from the ground up. Your data subject rights under UK GDPR apply natively when you use MEOK.",
+              },
+              {
+                q: "Does MEOK have a free plan like Pi AI?",
+                a: "Yes. MEOK\u2019s Explorer plan is permanently free with 50 messages per day. Unlike many freemium AI products, the free tier includes full Sovereign Memory, the Guardian safety layer, and a daily Morning Brief. It is not a crippled demo \u2014 it is a genuinely useful free companion.",
+              },
+              {
+                q: "Can Pi AI help with work tasks?",
+                a: "Pi AI is designed for emotional support and conversation. It is not a work productivity tool. MEOK includes the Orion, Riri, and Hourman Work OS agents for strategic planning, creative work, and time management, plus Ralph Mode for direct task execution. All work tools share the same Sovereign Memory as your companion relationship.",
+              },
+              {
+                q: "What is the MEOK Maternal Covenant?",
+                a: "The Maternal Covenant is MEOK\u2019s published, machine-enforced alignment framework. It scores every MEOK response across six dimensions: honesty, emotional safety, long-term wellbeing, autonomy preservation, non-manipulation, and boundary respect. The full framework is publicly available at meok.ai/maternal-covenant. Pi AI uses standard RLHF alignment, which is not publicly documented in equivalent detail.",
+              },
+              {
+                q: "Does MEOK have a family plan?",
+                a: "Yes. MEOK\u2019s Family plan at \u00a329 per month supports up to five individual AI companions, each with private sovereign memory vaults, plus shared family context features. Pi AI has no family tier or multi-user plan.",
+              },
+            ].map((item, i) => (
+              <details
+                key={i}
+                style={{
+                  background: CARD,
+                  border: `1px solid ${BORDER_SUBTLE}`,
+                  borderRadius: "8px",
+                  marginBottom: "0.75rem",
+                }}
+              >
+                <summary
+                  style={{
+                    padding: "1rem 1.25rem",
+                    cursor: "pointer",
+                    fontWeight: 600,
+                    color: TEXT,
+                    fontSize: "0.95rem",
+                    listStyle: "none",
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                    gap: "1rem",
+                  }}
+                >
+                  {item.q}
+                  <span
+                    style={{
+                      color: GOLD,
+                      flexShrink: 0,
+                      fontSize: "1.1rem",
+                    }}
+                  >
+                    &#43;
+                  </span>
+                </summary>
+                <div
+                  style={{
+                    padding: "0.9rem 1.25rem 1.1rem",
+                    color: MUTED,
+                    fontSize: "0.9rem",
+                    lineHeight: "1.75",
+                    borderTop: `1px solid ${BORDER_SUBTLE}`,
+                  }}
+                >
+                  {item.a}
+                </div>
+              </details>
+            ))}
+          </section>
+
+          {/* ── Related Reading ─────────────────────────────────────────────── */}
+          <section style={{ marginBottom: "3.5rem" }}>
+            <h3
+              style={{
+                fontSize: "0.8rem",
+                fontWeight: 700,
+                letterSpacing: "0.1em",
+                textTransform: "uppercase",
+                color: MUTED,
+                margin: "0 0 1.25rem",
+                paddingTop: "0.5rem",
+                borderTop: `1px solid ${BORDER_SUBTLE}`,
+              }}
+            >
+              Related Reading
+            </h3>
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+                gap: "1rem",
+              }}
+            >
+              {[
+                {
+                  href: "/blog/meok-vs-replika",
+                  title: "MEOK vs Replika",
+                  desc: "Memory, safety, and what the 2023 Replika controversy revealed about AI companion risk.",
+                },
+                {
+                  href: "/blog/meok-vs-chatgpt",
+                  title: "MEOK vs ChatGPT",
+                  desc: "Assistant intelligence vs sovereign companion architecture. When does depth beat breadth?",
+                },
+                {
+                  href: "/blog/sovereign-memory-explained",
+                  title: "Sovereign Memory Explained",
+                  desc: "How MEOK\u2019s 4-layer memory architecture works in practice across sessions and devices.",
+                },
+                {
+                  href: "/blog/maternal-covenant-explained",
+                  title: "The Maternal Covenant",
+                  desc: "MEOK\u2019s care-based alignment framework: all six dimensions, explained in full.",
+                },
+                {
+                  href: "/blog/ai-companion-privacy",
+                  title: "AI Companion Privacy",
+                  desc: "What to check before sharing personal data with any AI companion product.",
+                },
+                {
+                  href: "/blog/byzantine-council-explained",
+                  title: "Byzantine Council Explained",
+                  desc: "How 43-agent BFT consensus protects your companion\u2019s character from corporate drift.",
+                },
+              ].map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  style={{
+                    display: "block",
+                    background: CARD,
+                    border: `1px solid ${BORDER_SUBTLE}`,
+                    borderRadius: "8px",
+                    padding: "1.1rem",
+                    textDecoration: "none",
+                  }}
+                >
+                  <div
+                    style={{
+                      fontSize: "0.88rem",
+                      fontWeight: 700,
+                      color: TEXT,
+                      marginBottom: "0.35rem",
+                    }}
+                  >
+                    {link.title}
+                  </div>
+                  <div
+                    style={{
+                      fontSize: "0.8rem",
+                      color: MUTED,
+                      lineHeight: "1.5",
+                    }}
+                  >
+                    {link.desc}
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </section>
+
+          {/* ── CTA ─────────────────────────────────────────────────────────── */}
+          <section
+            style={{
+              background:
+                "linear-gradient(135deg, rgba(201,168,76,0.12) 0%, rgba(201,168,76,0.05) 100%)",
+              border: `1px solid ${BORDER}`,
+              borderRadius: "14px",
+              padding: "2.5rem 2rem",
+              textAlign: "center",
+            }}
+          >
+            <div
+              style={{
+                fontSize: "0.75rem",
+                fontWeight: 700,
+                letterSpacing: "0.15em",
+                textTransform: "uppercase",
+                color: GOLD,
+                marginBottom: "1rem",
+              }}
+            >
+              Ready to Meet Your Companion?
+            </div>
+            <h2
+              style={{
+                fontSize: "clamp(1.4rem, 3vw, 2rem)",
+                fontWeight: 800,
+                color: TEXT,
+                margin: "0 0 1rem",
+                letterSpacing: "-0.02em",
+                lineHeight: "1.25",
+              }}
+            >
+              An AI That Actually Remembers You
+            </h2>
+            <p
+              style={{
+                fontSize: "1rem",
+                color: MUTED,
+                margin: "0 auto 1.75rem",
+                maxWidth: "480px",
+                lineHeight: "1.7",
+              }}
+            >
+              Start free. No credit card required. Your MEOK companion begins
+              building your sovereign memory from the very first message &mdash;
+              and it never forgets.
+            </p>
+            <div
+              style={{
+                display: "flex",
+                flexWrap: "wrap",
+                gap: "1rem",
+                justifyContent: "center",
+              }}
+            >
+              <Link
+                href="/birth"
+                style={{
+                  display: "inline-block",
+                  background: GOLD,
+                  color: BG,
+                  fontWeight: 800,
+                  fontSize: "0.95rem",
+                  padding: "0.85rem 2.25rem",
+                  borderRadius: "8px",
+                  textDecoration: "none",
+                  letterSpacing: "0.02em",
+                }}
+              >
+                Begin Your Companion &rarr;
+              </Link>
+              <Link
+                href="/maternal-covenant"
+                style={{
+                  display: "inline-block",
+                  background: "transparent",
+                  color: GOLD,
+                  fontWeight: 700,
+                  fontSize: "0.9rem",
+                  padding: "0.85rem 2rem",
+                  borderRadius: "8px",
+                  textDecoration: "none",
+                  border: `1px solid ${BORDER}`,
+                  letterSpacing: "0.02em",
+                }}
+              >
+                Read the Maternal Covenant
               </Link>
             </div>
-          </div>
-
-          {/* ── Related Links ── */}
-          <div style={s.relatedSection}>
-            <p style={s.relatedTitle}>Related Reading</p>
-            <div style={s.relatedGrid}>
-              <Link href="/blog/meok-vs-replika" style={s.relatedCard}>
-                <span style={s.relatedCardLabel}>Comparison</span>
-                <span style={s.relatedCardTitle}>
-                  MEOK vs Replika: Why Sovereign Memory Changes Everything
-                </span>
-              </Link>
-              <Link href="/blog/meok-vs-chatgpt" style={s.relatedCard}>
-                <span style={s.relatedCardLabel}>Comparison</span>
-                <span style={s.relatedCardTitle}>
-                  MEOK vs ChatGPT: Companion vs Assistant
-                </span>
-              </Link>
-              <Link href="/blog/ai-memory-explained" style={s.relatedCard}>
-                <span style={s.relatedCardLabel}>Deep Dive</span>
-                <span style={s.relatedCardTitle}>
-                  How MEOK&apos;s Sovereign Memory Architecture Works
-                </span>
-              </Link>
-              <Link href="/blog/ai-companion-privacy" style={s.relatedCard}>
-                <span style={s.relatedCardLabel}>Privacy</span>
-                <span style={s.relatedCardTitle}>
-                  AI Companion Privacy: What Every User Should Know
-                </span>
-              </Link>
-              <Link href="/blog/byzantine-council-explained" style={s.relatedCard}>
-                <span style={s.relatedCardLabel}>Architecture</span>
-                <span style={s.relatedCardTitle}>
-                  The Byzantine Council: How MEOK Governs Itself
-                </span>
-              </Link>
-              <Link href="/blog/meok-guardian-scam-protection" style={s.relatedCard}>
-                <span style={s.relatedCardLabel}>Safety</span>
-                <span style={s.relatedCardTitle}>
-                  How MEOK&apos;s Guardian Archetype Protects You from Scams
-                </span>
-              </Link>
-              <Link href="/blog/meok-companion-archetypes-guide" style={s.relatedCard}>
-                <span style={s.relatedCardLabel}>Guide</span>
-                <span style={s.relatedCardTitle}>
-                  All Six MEOK Archetypes: Which One Do You Need?
-                </span>
-              </Link>
-              <Link href="/blog/ai-that-remembers-you" style={s.relatedCard}>
-                <span style={s.relatedCardLabel}>Feature</span>
-                <span style={s.relatedCardTitle}>
-                  What It Actually Means for an AI to Remember You
-                </span>
-              </Link>
-              <Link href="/blog/maternal-covenant-explained" style={s.relatedCard}>
-                <span style={s.relatedCardLabel}>Ethics</span>
-                <span style={s.relatedCardTitle}>
-                  The Maternal Covenant: MEOK&apos;s Unconditional Duty of Care
-                </span>
-              </Link>
-              <Link href="/blog/data-sovereignty-ai" style={s.relatedCard}>
-                <span style={s.relatedCardLabel}>Privacy</span>
-                <span style={s.relatedCardTitle}>
-                  Data Sovereignty in AI: Why Ownership Matters
-                </span>
-              </Link>
-            </div>
-          </div>
-        </main>
-
-        {/* ── Footer ── */}
-        <footer style={s.footer}>
-          <p>
-            &copy; {new Date().getFullYear()} MEOK AI LABS. All rights reserved.{" "}
-            <Link href="/privacy" style={s.footerLink}>
-              Privacy
-            </Link>{" "}
-            &middot;{" "}
-            <Link href="/terms" style={s.footerLink}>
-              Terms
-            </Link>{" "}
-            &middot;{" "}
-            <Link href="/blog" style={s.footerLink}>
-              Blog
-            </Link>
-          </p>
-        </footer>
-      </div>
+            <p
+              style={{
+                fontSize: "0.78rem",
+                color: MUTED,
+                marginTop: "1.25rem",
+                opacity: 0.7,
+              }}
+            >
+              Explorer plan is permanently free &middot; Sovereign &pound;12/mo
+              &middot; Family &pound;29/mo &middot; Cancel anytime
+            </p>
+          </section>
+        </article>
+      </main>
     </>
   );
 }

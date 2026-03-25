@@ -4,35 +4,35 @@ import Link from "next/link";
 // ── Metadata ──────────────────────────────────────────────────────────────────
 
 export const metadata: Metadata = {
-  title: "AI for Workplace Bullying: Document, Prepare, and Reclaim Your Power | MEOK AI LABS",
+  title: "AI for Workplace Bullying: A Private Space to Process What You Cannot Say at Work | MEOK AI LABS",
   description:
-    "1 in 3 UK workers experience workplace bullying. Learn how AI can help you document incidents, prepare for HR meetings, recognise gaslighting, and protect your mental health when the system fails you.",
+    "Workplace bullying affects 1 in 4 UK workers. HR often sides with management. MEOK\u2019s sovereign AI provides a completely private space to process what is happening, plan your response, and protect your mental health.",
   alternates: { canonical: "https://meok.ai/blog/ai-for-workplace-bullying" },
   openGraph: {
-    title: "AI for Workplace Bullying: Document, Prepare, and Reclaim Your Power",
+    title: "AI for Workplace Bullying: A Private Space to Process What You Cannot Say at Work",
     description:
-      "1 in 3 UK workers are affected by workplace bullying. Here\u2019s how sovereign AI helps you document, prepare, and protect yourself when HR won\u2019t.",
+      "1 in 4 UK workers face workplace bullying. HR often sides with management. Sovereign AI gives you a completely private space to process, document, and plan \u2014 without your employer ever knowing.",
     type: "article",
-    publishedTime: "2026-03-24",
+    publishedTime: "2026-03-25",
     authors: ["Nicholas Templeman"],
     url: "https://meok.ai/blog/ai-for-workplace-bullying",
     siteName: "MEOK.AI",
     images: [
       {
-        url: "https://meok.ai/api/og?title=AI+for+Workplace+Bullying%3A+Document+%26+Reclaim+Power&desc=1+in+3+UK+workers+affected.+Sovereign+AI+helps+you+fight+back.",
+        url: "https://meok.ai/api/og?title=AI+for+Workplace+Bullying%3A+A+Private+Space&desc=1+in+4+UK+workers+affected.+Sovereign+AI+helps+you+process%2C+plan+and+protect+yourself.",
         width: 1200,
         height: 630,
-        alt: "AI for Workplace Bullying: Document, Prepare, and Reclaim Your Power",
+        alt: "AI for Workplace Bullying: A Private Space to Process What You Cannot Say at Work",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "AI for Workplace Bullying: Document, Prepare, and Reclaim Your Power",
+    title: "AI for Workplace Bullying: A Private Space to Process What You Cannot Say at Work",
     description:
-      "1 in 3 UK workers face bullying. AI can help you document incidents with timestamps, rehearse HR conversations, and process the emotional toll \u2014 privately and safely.",
+      "HR sides with management. Your employer must never see your notes. MEOK gives you a completely private space to process, document, and plan your next move.",
     images: [
-      "https://meok.ai/api/og?title=AI+for+Workplace+Bullying%3A+Document+%26+Reclaim+Power&desc=1+in+3+UK+workers+affected.+Sovereign+AI+helps+you+fight+back.",
+      "https://meok.ai/api/og?title=AI+for+Workplace+Bullying%3A+A+Private+Space&desc=1+in+4+UK+workers+affected.+Sovereign+AI+helps+you+process%2C+plan+and+protect+yourself.",
     ],
   },
 };
@@ -42,11 +42,12 @@ export const metadata: Metadata = {
 const articleJsonLd = {
   "@context": "https://schema.org",
   "@type": "Article",
-  headline: "AI for Workplace Bullying: Document, Prepare, and Reclaim Your Power",
+  headline:
+    "AI for Workplace Bullying: A Private Space to Process What You Cannot Say at Work",
   description:
-    "1 in 3 UK workers experience workplace bullying. Learn how AI can help you document incidents, prepare for HR meetings, recognise gaslighting, and protect your mental health when the system fails you.",
-  datePublished: "2026-03-24",
-  dateModified: "2026-03-24",
+    "Workplace bullying affects 1 in 4 UK workers. HR often sides with management. MEOK\u2019s sovereign AI provides a completely private space to process what is happening, plan your response, and protect your mental health.",
+  datePublished: "2026-03-25",
+  dateModified: "2026-03-25",
   url: "https://meok.ai/blog/ai-for-workplace-bullying",
   author: {
     "@type": "Person",
@@ -60,7 +61,7 @@ const articleJsonLd = {
     url: "https://meok.ai",
   },
   image:
-    "https://meok.ai/api/og?title=AI+for+Workplace+Bullying%3A+Document+%26+Reclaim+Power&desc=1+in+3+UK+workers+affected.+Sovereign+AI+helps+you+fight+back.",
+    "https://meok.ai/api/og?title=AI+for+Workplace+Bullying%3A+A+Private+Space&desc=1+in+4+UK+workers+affected.+Sovereign+AI+helps+you+process%2C+plan+and+protect+yourself.",
   mainEntityOfPage: {
     "@type": "WebPage",
     "@id": "https://meok.ai/blog/ai-for-workplace-bullying",
@@ -76,39 +77,39 @@ const faqJsonLd = {
       name: "Can AI help with workplace bullying?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Yes. AI cannot report your bully for you, but it can help you build a timestamped evidence log, identify behavioural patterns across incidents, rehearse what you want to say to HR, and process the emotional damage in a safe, private space. For many people, that practical and emotional scaffolding is the difference between staying silent and taking action.",
+        text: "Yes \u2014 within honest limits. AI cannot report your bully or compel HR to act. But it can provide a completely private space to process what is happening, help you build a timestamped incident log, prepare for difficult conversations, identify patterns of gaslighting, and protect your mental health during a situation that is designed to make you doubt yourself.",
       },
     },
     {
       "@type": "Question",
-      name: "How do I document workplace bullying?",
+      name: "Will my employer be able to see what I tell MEOK?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Record every incident immediately after it happens with five key fields: date and time, location, what was said or done verbatim, who witnessed it, and how it affected you. Keep this log outside company systems \u2014 in a personal app or secure note. MEOK\u2019s Sovereign Memory creates a persistent, timestamped record that belongs only to you, which you can draw on when preparing a formal grievance.",
+        text: "No. MEOK has no relationship with your employer. Your conversations are encrypted with AES-256, stored in Sovereign Memory that belongs entirely to you, never shared with any third party, and never used to train AI models. MEOK is a personal sovereign AI \u2014 the opposite of a company-provided EAP where confidentiality guarantees may be limited.",
       },
     },
     {
       "@type": "Question",
-      name: "What is gaslighting at work?",
+      name: "What is gaslighting at work and how do I recognise it?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Workplace gaslighting is when a colleague or manager causes you to doubt your own memory or perception of events \u2014 saying things like \u2018that never happened\u2019, \u2018you\u2019re too sensitive\u2019, or \u2018everyone else is fine with it\u2019. It is a subtle form of psychological manipulation that erodes your confidence and makes it harder to report abuse. Documenting incidents in real time is one of the most effective defences against it.",
+        text: "Workplace gaslighting is when a manager or colleague causes you to doubt your own memory or perception \u2014 saying things like \u2018that never happened\u2019, \u2018you\u2019re too sensitive\u2019, or \u2018everyone else is fine\u2019. It is a subtle psychological manipulation that erodes your confidence and makes reporting harder. Keeping a real-time incident log is one of the most effective defences.",
       },
     },
     {
       "@type": "Question",
-      name: "Can MEOK help me prepare for an HR meeting?",
+      name: "What are my legal rights if I am being bullied at work in the UK?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Yes. MEOK can help you structure your account of events clearly, anticipate the questions HR is likely to ask, rehearse your answers until you feel confident, and think through what outcome you want from the meeting. You can run through the conversation as many times as you need, in private, without time pressure or judgment.",
+        text: "UK employees have several protections. Under the Employment Rights Act 1996 you have the right to raise a formal grievance. Under the Equality Act 2010, bullying linked to a protected characteristic (race, gender, disability, age, religion, sexual orientation) may constitute harassment, which is unlawful. ACAS provides free early conciliation. If conditions become intolerable and you resign, you may have grounds for a constructive dismissal claim at an Employment Tribunal.",
       },
     },
     {
       "@type": "Question",
-      name: "What should I do if HR ignores my bullying complaint?",
+      name: "What is constructive dismissal and how does it relate to workplace bullying?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "First, document the failure to act in the same way you documented the bullying \u2014 dates, what you submitted, who you spoke to, and what response you received. Then consider escalating to ACAS (free UK conciliation service), your trade union, or an employment solicitor. Your evidence log becomes critical at this stage. MEOK can help you organise this documentation and prepare for external escalation.",
+        text: "Constructive dismissal is when an employer\u2019s conduct is so serious that an employee has no reasonable alternative but to resign. Sustained workplace bullying that the employer fails to address may meet this threshold. A strong, contemporaneous evidence log is essential to any constructive dismissal claim. You must usually raise a formal grievance first. Consult an employment solicitor before resigning.",
       },
     },
   ],
@@ -120,12 +121,14 @@ export default function AiForWorkplaceBullyingPage() {
   const bg = "#0d0c18";
   const text = "#f5f0e8";
   const gold = "#c9a84c";
-  const muted = "rgba(245,240,232,0.6)";
+  const muted = "rgba(245,240,232,0.62)";
   const cardBg = "rgba(255,255,255,0.04)";
-  const borderColor = "rgba(201,168,76,0.25)";
+  const border = "rgba(201,168,76,0.2)";
   const warnBg = "rgba(201,168,76,0.08)";
   const dangerBg = "rgba(200,60,60,0.08)";
   const dangerBorder = "rgba(200,60,60,0.3)";
+  const infoBg = "rgba(80,160,220,0.08)";
+  const infoBorder = "rgba(80,160,220,0.3)";
 
   return (
     <>
@@ -139,1378 +142,1062 @@ export default function AiForWorkplaceBullyingPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
 
-      <main
+      <div
         style={{
-          backgroundColor: bg,
+          background: bg,
           color: text,
-          fontFamily: "'Inter', 'Helvetica Neue', Arial, sans-serif",
-          lineHeight: "1.75",
           minHeight: "100vh",
+          fontFamily: "system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif",
         }}
       >
-        {/* ── Hero ── */}
+        {/* ── Hero ──────────────────────────────────────────────────────────── */}
         <header
           style={{
-            maxWidth: "780px",
-            margin: "0 auto",
-            padding: "80px 24px 56px",
+            borderBottom: `1px solid ${border}`,
+            padding: "3.5rem 1.5rem 3rem",
           }}
         >
-          <div
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: "8px",
-              background: warnBg,
-              border: `1px solid ${borderColor}`,
-              borderRadius: "20px",
-              padding: "6px 16px",
-              marginBottom: "28px",
-            }}
-          >
-            <span style={{ color: gold, fontSize: "12px", fontWeight: 600, letterSpacing: "0.08em", textTransform: "uppercase" }}>
-              MEOK AI LABS
-            </span>
-            <span style={{ color: muted, fontSize: "12px" }}>&mdash; Workplace Wellbeing</span>
-          </div>
+          <div style={{ maxWidth: "740px", margin: "0 auto" }}>
+            <Link
+              href="/blog"
+              style={{
+                color: gold,
+                textDecoration: "none",
+                fontSize: "0.875rem",
+                display: "inline-block",
+                marginBottom: "2rem",
+              }}
+            >
+              &larr; Back to Blog
+            </Link>
 
-          <h1
-            style={{
-              fontSize: "clamp(2rem, 5vw, 3rem)",
-              fontWeight: 700,
-              lineHeight: "1.2",
-              marginBottom: "24px",
-              letterSpacing: "-0.02em",
-            }}
-          >
-            AI for Workplace Bullying: Document, Prepare, and Reclaim Your Power
-          </h1>
+            <div
+              style={{
+                display: "inline-block",
+                background: "rgba(201,168,76,0.12)",
+                color: gold,
+                fontSize: "0.7rem",
+                fontWeight: 700,
+                letterSpacing: "0.1em",
+                textTransform: "uppercase" as const,
+                padding: "0.25rem 0.75rem",
+                borderRadius: "999px",
+                marginBottom: "1.25rem",
+              }}
+            >
+              Wellbeing &middot; Work &middot; Rights
+            </div>
 
-          <p
-            style={{
-              fontSize: "1.2rem",
-              color: muted,
-              marginBottom: "32px",
-              maxWidth: "640px",
-            }}
-          >
-            1 in 3 UK workers experience bullying at work. Many suffer in silence, unsure how to prove what is happening, afraid of retaliation, and let down by the very HR systems that should protect them. This is what sovereign AI can do for you when the institution won\u2019t.
-          </p>
+            <h1
+              style={{
+                fontSize: "clamp(1.75rem, 4.5vw, 2.9rem)",
+                fontWeight: 900,
+                lineHeight: 1.15,
+                margin: "0 0 1.25rem",
+                color: text,
+                letterSpacing: "-0.02em",
+              }}
+            >
+              AI for Workplace Bullying: A Private Space to Process What You Cannot Say at Work
+            </h1>
 
-          <div
-            style={{
-              display: "flex",
-              flexWrap: "wrap",
-              gap: "12px",
-              alignItems: "center",
-              fontSize: "14px",
-              color: muted,
-            }}
-          >
-            <span>By <strong style={{ color: text }}>Nicholas Templeman</strong>, Founder &mdash; MEOK AI LABS</span>
-            <span style={{ color: borderColor }}>|</span>
-            <time dateTime="2026-03-24">24 March 2026</time>
-            <span style={{ color: borderColor }}>|</span>
-            <span>14 min read</span>
+            <p
+              style={{
+                fontSize: "1.125rem",
+                lineHeight: 1.8,
+                color: muted,
+                margin: "0 0 2rem",
+                maxWidth: "640px",
+              }}
+            >
+              Workplace bullying affects 1 in 4 UK workers. HR often sides with management. Most people suffer
+              in silence because they have nowhere private to process what is happening. Sovereign AI changes that.
+            </p>
+
+            <div
+              style={{
+                display: "flex",
+                gap: "1.5rem",
+                fontSize: "0.8rem",
+                color: "rgba(245,240,232,0.4)",
+                flexWrap: "wrap" as const,
+              }}
+            >
+              <span>25 March 2026</span>
+              <span>Nicholas Templeman</span>
+              <span>16 min read</span>
+              <span>MEOK AI LABS</span>
+            </div>
           </div>
         </header>
 
-        {/* ── Body ── */}
+        {/* ── Article body ──────────────────────────────────────────────────── */}
         <article
-          style={{
-            maxWidth: "780px",
-            margin: "0 auto",
-            padding: "0 24px 100px",
-          }}
+          style={{ maxWidth: "740px", margin: "0 auto", padding: "3rem 1.5rem 5rem" }}
         >
+
+          {/* Intro */}
+          <p
+            style={{ fontSize: "1.125rem", lineHeight: 1.85, color: text, margin: "0 0 1.25rem" }}
+          >
+            You sit at your desk on Monday morning and your stomach tightens before you have opened a single
+            email. The meetings that leave you shaking. The comments that nobody else seems to notice. The
+            quiet exclusions, the credit taken, the targets moved just as you reach them. You have started
+            to wonder whether you are the problem.
+          </p>
+          <p style={{ lineHeight: 1.8, color: muted, margin: "0 0 1.25rem" }}>
+            You are not. And the silence around you is not evidence that nothing is wrong. It is evidence
+            of how well workplace bullying works &mdash; isolating targets, distorting their perception,
+            and relying on institutional structures that are rarely designed to believe them.
+          </p>
+          <p style={{ lineHeight: 1.8, color: muted, margin: "0 0 2.5rem" }}>
+            This article is about what sovereign AI can do when you are in that situation: not as a replacement
+            for legal advice or therapy, but as the private, patient, non-judgmental presence that most people
+            in this position desperately need and rarely have.
+          </p>
+
           {/* ── Stat callout ── */}
           <div
             style={{
               background: dangerBg,
               border: `1px solid ${dangerBorder}`,
-              borderRadius: "12px",
-              padding: "28px 32px",
-              marginBottom: "56px",
+              borderRadius: "14px",
+              padding: "1.75rem 2rem",
+              marginBottom: "3rem",
             }}
           >
-            <p style={{ margin: 0, fontSize: "1.05rem", lineHeight: "1.7" }}>
-              <strong style={{ color: text }}>The numbers are not abstract.</strong> Research by the Trades Union Congress and the University of Sheffield estimates that{" "}
-              <strong style={{ color: gold }}>1 in 3 UK workers</strong> has experienced bullying in the workplace. The psychological consequences include clinical-level anxiety, depression, and post-traumatic stress disorder. Estimated costs to UK employers exceed{" "}
-              <strong style={{ color: gold }}>&pound;18 billion per year</strong> in lost productivity, absence, and staff turnover &mdash; yet formal reporting rates remain startlingly low.
+            <p style={{ margin: "0 0 0.75rem", fontSize: "1rem", lineHeight: 1.7, color: text }}>
+              <strong>The scale of the problem in the UK:</strong>
             </p>
+            <ul
+              style={{
+                margin: 0,
+                padding: "0 0 0 1.25rem",
+                color: muted,
+                lineHeight: 1.85,
+                fontSize: "0.95rem",
+              }}
+            >
+              <li>
+                <strong style={{ color: gold }}>1 in 4 workers</strong> report experiencing bullying at
+                work &mdash; CIPD Good Work Index 2024.
+              </li>
+              <li>
+                <strong style={{ color: gold }}>72% of targets</strong> say HR either did nothing or made
+                the situation worse &mdash; Trades Union Congress survey.
+              </li>
+              <li>
+                <strong style={{ color: gold }}>&pound;18 billion per year</strong> is estimated to be
+                lost to UK employers through bullying-related absence, turnover, and reduced productivity.
+              </li>
+              <li>
+                <strong style={{ color: gold }}>Fewer than 1 in 5</strong> targets ever make a formal
+                complaint &mdash; fear of retaliation, disbelief, and lack of evidence are the primary barriers.
+              </li>
+            </ul>
           </div>
 
           {/* ── Section 1 ── */}
-          <section style={{ marginBottom: "64px" }}>
+          <section style={{ marginBottom: "3.5rem" }}>
             <h2
               style={{
-                fontSize: "1.6rem",
-                fontWeight: 700,
+                fontSize: "1.55rem",
+                fontWeight: 800,
                 color: text,
-                marginBottom: "20px",
+                margin: "0 0 0.75rem",
                 letterSpacing: "-0.01em",
-                lineHeight: "1.3",
               }}
             >
-              What does workplace bullying actually look like in 2026?
+              Why is workplace bullying so hard to report?
             </h2>
-            <p style={{ color: muted, marginBottom: "20px" }}>
-              The popular image of workplace bullying is a red-faced manager screaming across an open-plan office. That version exists, but it is the easiest to confront and the least common. Most bullying in modern workplaces is subtler, more deniable, and deliberately constructed so that the target looks unreasonable if they complain.
+            <p style={{ lineHeight: 1.8, color: muted, margin: "0 0 1rem" }}>
+              Workplace bullying rarely announces itself. It operates through plausible deniability: the tone
+              that does not show up in meeting notes, the pattern visible only across dozens of small incidents,
+              the manager who is charming to everyone else and cruel only to you. The very features that make
+              it damaging also make it almost impossible to prove.
             </p>
-            <p style={{ color: muted, marginBottom: "20px" }}>
-              Understanding the vocabulary is the first step to defending yourself.
+            <p style={{ lineHeight: 1.8, color: muted, margin: "0 0 1rem" }}>
+              The power imbalance compounds everything. When the bully is your manager, reporting means
+              approaching HR with a complaint about someone who has daily influence over your career, your
+              references, and your performance reviews. When the bully is a peer, it can feel trivial to
+              formalise. When the bully is a senior leader, HR&apos;s institutional incentives may quietly
+              favour the person the organisation has most invested in.
             </p>
-
-            <div style={{ display: "flex", flexDirection: "column", gap: "16px", marginBottom: "24px" }}>
-              {[
-                {
-                  label: "Gaslighting",
-                  body: "Systematically causing you to doubt your own memory and perception. \u201cThat meeting never happened.\u201d \u201cYou\u2019re imagining things.\u201d \u201cEveryone else is fine with how I manage.\u201d Over weeks this can shatter your professional confidence entirely.",
-                },
-                {
-                  label: "Social exclusion",
-                  body: "Being omitted from team lunches, Slack channels, project meetings, or key information loops. The exclusion is rarely documented in writing; it happens in corridors and DMs you\u2019re not in.",
-                },
-                {
-                  label: "Workload manipulation",
-                  body: "Either being deliberately overloaded to the point of failure, or starved of work to signal irrelevance and push you toward resignation. Both are designed to make you look incompetent.",
-                },
-                {
-                  label: "Undermining",
-                  body: "Having your ideas dismissed in meetings, then re-presented by someone else. Being criticised in front of colleagues. Having your professional judgment publicly questioned without grounds.",
-                },
-                {
-                  label: "Threat and intimidation",
-                  body: "Implicit warnings about performance reviews, restructures, or future references that signal: \u2018stay quiet or face consequences\u2019. Often delivered verbally and with plausible deniability.",
-                },
-              ].map((item) => (
-                <div
-                  key={item.label}
-                  style={{
-                    background: cardBg,
-                    border: `1px solid ${borderColor}`,
-                    borderRadius: "10px",
-                    padding: "20px 24px",
-                  }}
-                >
-                  <h3
-                    style={{
-                      fontSize: "1rem",
-                      fontWeight: 700,
-                      color: gold,
-                      marginBottom: "8px",
-                      marginTop: 0,
-                    }}
-                  >
-                    {item.label}
-                  </h3>
-                  <p style={{ color: muted, margin: 0, fontSize: "0.95rem" }}>{item.body}</p>
-                </div>
-              ))}
-            </div>
-
-            <p style={{ color: muted }}>
-              The common thread is deniability. Subtle bullying is designed so that each individual incident sounds minor when described in isolation. It is the pattern &mdash; the cumulative, deliberate repetition &mdash; that constitutes the harm. This is precisely why documentation matters so profoundly, and why most people fail to document effectively until it is too late.
-            </p>
-          </section>
-
-          {/* ── Section 2 ── */}
-          <section style={{ marginBottom: "64px" }}>
-            <h2
-              style={{
-                fontSize: "1.6rem",
-                fontWeight: 700,
-                color: text,
-                marginBottom: "20px",
-                letterSpacing: "-0.01em",
-                lineHeight: "1.3",
-              }}
-            >
-              Why don\u2019t people report workplace bullying?
-            </h2>
-            <p style={{ color: muted, marginBottom: "20px" }}>
-              If you have ever wondered why victims stay silent, the answer is not weakness. It is rational risk calculation performed by someone who is already psychologically depleted. Reporting bullying in a workplace that does not have a genuine anti-bullying culture involves a cascade of real costs.
+            <p style={{ lineHeight: 1.8, color: muted, margin: "0 0 1rem" }}>
+              The result is a system where the people most harmed are the least likely to be believed, the
+              least likely to have documented evidence, and the most likely to conclude that the wisest option
+              is to leave quietly and say nothing.
             </p>
 
-            <div
-              style={{
-                background: warnBg,
-                border: `1px solid ${borderColor}`,
-                borderRadius: "12px",
-                padding: "28px 32px",
-                marginBottom: "28px",
-              }}
-            >
-              <h3
-                style={{
-                  fontSize: "1.05rem",
-                  fontWeight: 700,
-                  color: gold,
-                  marginBottom: "16px",
-                  marginTop: 0,
-                }}
-              >
-                The reporting trap
-              </h3>
-              <ul
-                style={{
-                  color: muted,
-                  paddingLeft: "20px",
-                  margin: 0,
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: "10px",
-                }}
-              >
-                <li>
-                  <strong style={{ color: text }}>Fear of disbelief.</strong> Without documentation, it is your word against a manager\u2019s. HR professionals are trained to investigate, not to believe automatically &mdash; and targets often have no evidence trail.
-                </li>
-                <li>
-                  <strong style={{ color: text }}>Fear of retaliation.</strong> Studies consistently show that a significant proportion of people who raise formal complaints face worsened treatment, exclusion, or managed-out processes in the months that follow.
-                </li>
-                <li>
-                  <strong style={{ color: text }}>HR\u2019s structural loyalty.</strong> In most UK companies, HR is employed by the organisation, not by you. Their primary function is to manage legal and reputational risk for the employer. That is not cynicism; it is their job description. Acting as though HR is on your side before you have evidence is a strategic error.
-                </li>
-                <li>
-                  <strong style={{ color: text }}>Emotional cost of reliving it.</strong> Formally documenting abuse and repeating it to strangers in an investigation is itself traumatic. Many people choose to leave rather than endure the process.
-                </li>
-                <li>
-                  <strong style={{ color: text }}>The normalisation trap.</strong> Months of gaslighting mean many targets genuinely believe they are overreacting by the time they consider reporting. The internal voice that says \u2018maybe it\u2019s not that bad\u2019 is often the bully\u2019s voice, internalised.
-                </li>
-              </ul>
-            </div>
-
-            <p style={{ color: muted }}>
-              None of these barriers disappear with an AI companion. But several of them become more manageable when you have a private, non-judgmental space to build your evidence, test your perceptions, and prepare your case before you walk into any formal process.
-            </p>
-          </section>
-
-          {/* ── Section 3: Psychological impact ── */}
-          <section style={{ marginBottom: "64px" }}>
-            <h2
-              style={{
-                fontSize: "1.6rem",
-                fontWeight: 700,
-                color: text,
-                marginBottom: "20px",
-                letterSpacing: "-0.01em",
-                lineHeight: "1.3",
-              }}
-            >
-              What is the psychological impact of workplace bullying?
-            </h2>
-            <p style={{ color: muted, marginBottom: "20px" }}>
-              Workplace bullying is not a minor inconvenience to be toughened up about. The clinical literature is unambiguous: sustained workplace bullying causes measurable, lasting psychological injury. The Workplace Bullying Institute and peer-reviewed studies in occupational health have documented the following outcomes in targets.
-            </p>
-
+            {/* Three barriers */}
             <div
               style={{
                 display: "grid",
-                gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
-                gap: "16px",
-                marginBottom: "28px",
+                gridTemplateColumns: "repeat(auto-fill, minmax(210px, 1fr))",
+                gap: "1rem",
+                marginTop: "1.5rem",
               }}
             >
               {[
-                { stat: "77%", label: "report anxiety symptoms severe enough to affect daily functioning" },
-                { stat: "50%+", label: "meet diagnostic criteria for depression after sustained bullying" },
-                { stat: "30%", label: "develop PTSD symptoms including hypervigilance and intrusive memories" },
-                { stat: "60%", label: "report physical symptoms: insomnia, headaches, digestive problems" },
+                {
+                  heading: "Fear of retaliation",
+                  body: "Reporting risks being labelled a troublemaker, losing projects, being managed out. The risk is real and rational.",
+                },
+                {
+                  heading: "No contemporaneous evidence",
+                  body: "Bullying is often verbal or tonal. By the time you consider reporting, you have no timestamped record.",
+                },
+                {
+                  heading: "Self-doubt",
+                  body: "Sustained exposure erodes confidence. You start to question whether you are too sensitive or whether it is really that bad.",
+                },
+                {
+                  heading: "HR alignment",
+                  body: "HR protects the organisation. When bully and target are not equally valued, the institutional maths is rarely neutral.",
+                },
+                {
+                  heading: "Social isolation",
+                  body: "Bullying often includes being cut out of informal networks. Without allies, there are no witnesses and nowhere to turn.",
+                },
               ].map((item) => (
                 <div
-                  key={item.stat}
+                  key={item.heading}
                   style={{
                     background: cardBg,
-                    border: `1px solid ${borderColor}`,
-                    borderRadius: "10px",
-                    padding: "24px 20px",
-                    textAlign: "center",
+                    border: `1px solid ${border}`,
+                    borderRadius: "12px",
+                    padding: "1.125rem",
                   }}
                 >
                   <div
                     style={{
-                      fontSize: "2.2rem",
-                      fontWeight: 800,
+                      fontWeight: 700,
                       color: gold,
-                      marginBottom: "8px",
-                      lineHeight: "1",
+                      marginBottom: "0.4rem",
+                      fontSize: "0.9rem",
                     }}
                   >
-                    {item.stat}
+                    {item.heading}
                   </div>
-                  <p style={{ color: muted, fontSize: "0.9rem", margin: 0, lineHeight: "1.5" }}>
-                    {item.label}
-                  </p>
+                  <div
+                    style={{ color: muted, fontSize: "0.855rem", lineHeight: 1.65 }}
+                  >
+                    {item.body}
+                  </div>
                 </div>
               ))}
             </div>
-
-            <p style={{ color: muted, marginBottom: "20px" }}>
-              The psychological effects of bullying compound over time. Unlike a single traumatic event, workplace bullying is a sustained low-grade assault on your identity and self-worth. You spend every working day in the presence of the person harming you. You cannot easily escape. The cumulative effect on mental health is often worse than a single acute crisis.
-            </p>
-            <p style={{ color: muted }}>
-              This is why the emotional support dimension of AI assistance matters alongside the practical documentation work. Many targets of bullying carry immense shame &mdash; they blame themselves, second-guess every interaction, and feel unable to talk about what is happening at home because they are exhausted from minimising it at work. Having somewhere safe to process that in real time, without judgment or advice-giving, is often the first step toward recovery.
-            </p>
           </section>
 
-          {/* ── Section 4: Gaslighting deep dive ── */}
-          <section style={{ marginBottom: "64px" }}>
+          {/* ── Section 2: Gaslighting ── */}
+          <section style={{ marginBottom: "3.5rem" }}>
             <h2
               style={{
-                fontSize: "1.6rem",
-                fontWeight: 700,
+                fontSize: "1.55rem",
+                fontWeight: 800,
                 color: text,
-                marginBottom: "20px",
+                margin: "0 0 0.75rem",
                 letterSpacing: "-0.01em",
-                lineHeight: "1.3",
               }}
             >
-              What is gaslighting at work &mdash; and how do you recognise it in yourself?
+              What is gaslighting at work, and how does it work?
             </h2>
-            <p style={{ color: muted, marginBottom: "20px" }}>
-              Gaslighting is named after the 1944 film in which a husband systematically manipulates his wife into doubting her sanity. In workplace contexts it operates through the same mechanism: the bully repeatedly contradicts your lived experience until you lose confidence in your own perceptions.
+            <p style={{ lineHeight: 1.8, color: muted, margin: "0 0 1rem" }}>
+              Gaslighting is a form of psychological manipulation in which the abuser causes the target to
+              question their own memory, perception, or judgment. In a workplace context it appears in phrases
+              like &ldquo;that never happened,&rdquo; &ldquo;you are being oversensitive,&rdquo;
+              &ldquo;everyone else found that feedback helpful,&rdquo; and &ldquo;I was only joking &mdash;
+              you need to learn to take a joke.&rdquo;
             </p>
-            <p style={{ color: muted, marginBottom: "20px" }}>
-              The insidious feature of gaslighting is that it works best on conscientious, self-reflective people. If you are the kind of person who genuinely considers whether you might be wrong, gaslighting will find purchase. The bully weaponises your intellectual honesty against you.
+            <p style={{ lineHeight: 1.8, color: muted, margin: "0 0 1rem" }}>
+              Over time, even highly capable professionals begin to believe the narrative. The confusion is
+              the point. A gaslighted employee is less likely to report, less likely to be believed if they
+              do, and more likely to eventually leave without making any formal record &mdash; which suits
+              the bully and the organisation perfectly.
+            </p>
+            <p style={{ lineHeight: 1.8, color: muted, margin: "0 0 1rem" }}>
+              The antidote is contemporaneous documentation. A timestamped record created immediately after
+              an incident &mdash; logging what was said, the exact words, who was present, and how it affected
+              you &mdash; creates an objective anchor that gaslighting cannot easily erase. The record does
+              not lie. You wrote it the day it happened.
             </p>
 
+            {/* Callout: MEOK Pioneer */}
             <div
               style={{
-                background: dangerBg,
-                border: `1px solid ${dangerBorder}`,
-                borderRadius: "12px",
-                padding: "28px 32px",
-                marginBottom: "28px",
+                background: warnBg,
+                border: `1px solid rgba(201,168,76,0.35)`,
+                borderRadius: "14px",
+                padding: "1.75rem 2rem",
+                marginTop: "1.75rem",
               }}
             >
-              <h3
+              <p
                 style={{
-                  fontSize: "1.05rem",
+                  margin: "0 0 0.5rem",
                   fontWeight: 700,
-                  color: text,
-                  marginBottom: "16px",
-                  marginTop: 0,
+                  color: gold,
+                  fontSize: "0.85rem",
+                  letterSpacing: "0.06em",
+                  textTransform: "uppercase" as const,
                 }}
               >
-                Signs you may be experiencing workplace gaslighting
-              </h3>
-              <ul
-                style={{
-                  color: muted,
-                  paddingLeft: "20px",
-                  margin: 0,
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: "10px",
-                }}
-              >
-                <li>You frequently apologise at work without knowing exactly what you did wrong.</li>
-                <li>You make decisions, then immediately second-guess yourself when a specific person is present.</li>
-                <li>You find yourself spending large amounts of mental energy replaying conversations, looking for what you might have misunderstood.</li>
-                <li>Your confidence at work has eroded over months without a clear external reason.</li>
-                <li>When you try to describe what is happening to someone you trust, it sounds implausible even to you.</li>
-                <li>You have noticed the person treating other colleagues differently to you, but you tell yourself it must be you.</li>
-                <li>You feel anxious before interacting with a specific person in a way that is disproportionate to their formal authority over you.</li>
-              </ul>
+                MEOK Pioneer &mdash; Your Private Incident Log
+              </p>
+              <p style={{ margin: 0, lineHeight: 1.8, color: text, fontSize: "0.975rem" }}>
+                The Pioneer archetype inside MEOK is built for action. When you describe an incident, Pioneer
+                helps you capture it in a structured, timestamped format: what happened, who was involved,
+                what was said verbatim, who witnessed it, and how it affected you. This record lives in your
+                Sovereign Memory &mdash; encrypted, owned entirely by you, invisible to your employer. It
+                is the closest thing to having a trusted legal adviser available at 11pm on a Tuesday when
+                you are still shaking from what happened in that meeting.
+              </p>
             </div>
+          </section>
 
-            <p style={{ color: muted, marginBottom: "20px" }}>
-              The most effective counter to gaslighting is an objective written record made at the time, before memory can be revised. When you can pull up a note from three months ago that says exactly what was said, exactly where, and exactly how it made you feel &mdash; and then compare it to what you are now being told &ldquo;happened&rdquo; &mdash; the manipulation loses its power.
+          {/* ── Section 3: Mental health toll ── */}
+          <section style={{ marginBottom: "3.5rem" }}>
+            <h2
+              style={{
+                fontSize: "1.55rem",
+                fontWeight: 800,
+                color: text,
+                margin: "0 0 0.75rem",
+                letterSpacing: "-0.01em",
+              }}
+            >
+              What is the mental health toll of workplace bullying?
+            </h2>
+            <p style={{ lineHeight: 1.8, color: muted, margin: "0 0 1rem" }}>
+              Workplace bullying is not a disagreement or a difficult personality. It is sustained psychological
+              harm. Clinical research consistently links it to anxiety disorders, major depression, insomnia,
+              and in severe cases, PTSD. The Workplace Bullying Institute estimates that targets are five
+              times more likely to experience significant depression than non-targets, and the effects persist
+              for years after the employment relationship ends.
             </p>
-            <p style={{ color: muted }}>
-              MEOK\u2019s Guardian archetype is specifically designed to help with pattern recognition of this kind. It can hold the history of what you\u2019ve shared over time and, when you describe a new incident, surface whether it fits a pattern you have been describing for weeks or months. That external memory &mdash; one that cannot be manipulated by the bully &mdash; is a genuine protective resource.
+            <p style={{ lineHeight: 1.8, color: muted, margin: "0 0 1rem" }}>
+              The cruelty of it is that the same conditions that cause the harm also prevent getting help.
+              You cannot talk to colleagues &mdash; you do not know who you can trust. You cannot talk to
+              HR &mdash; they are part of the structure. You cannot always talk to a partner or friend &mdash;
+              the story is complicated, you have told parts of it before, you feel like a burden, and the
+              nuance is almost impossible to convey without hours of context.
+            </p>
+            <p style={{ lineHeight: 1.8, color: muted, margin: "0 0 1rem" }}>
+              What you need is somewhere to put it. Somewhere that will not get tired of hearing about it.
+              Somewhere that remembers what happened last month and the month before, so you do not have to
+              re-explain everything from the beginning every time.
+            </p>
+            <p style={{ lineHeight: 1.8, color: muted, margin: "0 0 0" }}>
+              That is not a substitute for therapy. It is the layer of support that keeps you functional
+              enough to get to therapy, or to get through the week, or to make the decision about what to
+              do next.
             </p>
           </section>
 
-          {/* ── Section 5: Evidence log ── */}
-          <section style={{ marginBottom: "64px" }}>
+          {/* ── Section 4: Data sovereignty ── */}
+          <section style={{ marginBottom: "3.5rem" }}>
             <h2
               style={{
-                fontSize: "1.6rem",
-                fontWeight: 700,
+                fontSize: "1.55rem",
+                fontWeight: 800,
                 color: text,
-                marginBottom: "20px",
+                margin: "0 0 0.75rem",
                 letterSpacing: "-0.01em",
-                lineHeight: "1.3",
               }}
             >
-              How do you build an evidence log for workplace bullying?
+              How does MEOK ensure your employer can never see what you say?
             </h2>
-            <p style={{ color: muted, marginBottom: "20px" }}>
-              An evidence log is the single most important thing you can create if you are experiencing workplace bullying. It transforms a subjective, deniable experience into a structured, credible account. HR professionals, trade union representatives, ACAS mediators, and employment tribunals all respond to the same thing: dates, specifics, and impact.
+            <p style={{ lineHeight: 1.8, color: muted, margin: "0 0 1rem" }}>
+              This is not a minor feature. It is the entire premise.
             </p>
-            <p style={{ color: muted, marginBottom: "28px" }}>
-              Every entry in your log should contain five elements, recorded as soon as possible after the incident &mdash; ideally the same day.
+            <p style={{ lineHeight: 1.8, color: muted, margin: "0 0 1rem" }}>
+              Most employer-provided mental health tools &mdash; EAPs, workplace wellbeing apps, even some
+              counselling services &mdash; have a contractual relationship with your employer. The
+              confidentiality guarantees are real, but the relationship is not. The data is held by a company
+              your employer pays. Your usage may be visible as aggregate data. And if you leave or are
+              dismissed, the history follows the contract, not you.
+            </p>
+            <p style={{ lineHeight: 1.8, color: muted, margin: "0 0 1rem" }}>
+              MEOK has no relationship with your employer. It has never had one. It does not know where you
+              work. Your Sovereign Memory is encrypted with AES-256 and stored against your personal account
+              only. It is never shared with any third party. It is never used to train AI models. It is fully
+              GDPR-compliant under UK law. You can export it, delete it, or port it to another provider at
+              any time.
+            </p>
+            <p style={{ lineHeight: 1.8, color: muted, margin: "0 0 0" }}>
+              Conversations you have with MEOK about what is happening at work are private in the way that a
+              handwritten journal is private &mdash; except the journal has memory, can ask useful questions,
+              and will still be there at 3am when you cannot sleep.
             </p>
 
-            <div style={{ display: "flex", flexDirection: "column", gap: "2px", marginBottom: "32px" }}>
-              {[
-                {
-                  number: "01",
-                  title: "Date, time, and location",
-                  body: "Precision matters. \u201cLast Tuesday\u201d is legally weak. \u201c14 March 2026, 11:42am, the second-floor meeting room\u201d is not. Include the platform if it was a Teams or Slack interaction.",
-                },
-                {
-                  number: "02",
-                  title: "Exact words used",
-                  body: "Write verbatim quotes where possible. Do not paraphrase. The difference between \u201cHe questioned my competence\u201d and \u201cHe said, in front of the team, \u2018I genuinely wonder if you\u2019re cut out for this\u2019\u201d is the difference between a feeling and evidence.",
-                },
-                {
-                  number: "03",
-                  title: "Who was present",
-                  body: "Name every witness, even people you do not think will support you. An investigation may interview them; your log shows you know they were there.",
-                },
-                {
-                  number: "04",
-                  title: "Your immediate impact",
-                  body: "Record how you felt immediately afterward. This is not self-indulgence; it establishes the psychological harm in real time rather than in retrospect. \u201cI went to the bathroom and cried. I was shaking for the rest of the afternoon.\u201d",
-                },
-                {
-                  number: "05",
-                  title: "Any supporting material",
-                  body: "Note any emails, Slack messages, or calendar invites that corroborate the incident. If you have them, save them outside company systems immediately. Forward relevant emails to a personal address. Screenshot Slack messages.",
-                },
-              ].map((item, i) => (
-                <div
-                  key={item.number}
-                  style={{
-                    display: "flex",
-                    gap: "20px",
-                    background: i % 2 === 0 ? cardBg : "transparent",
-                    border: `1px solid ${borderColor}`,
-                    borderRadius: "10px",
-                    padding: "20px 24px",
-                    alignItems: "flex-start",
-                  }}
-                >
-                  <div
+            {/* Sovereignty callout */}
+            <div
+              style={{
+                background: infoBg,
+                border: `1px solid ${infoBorder}`,
+                borderRadius: "14px",
+                padding: "1.75rem 2rem",
+                marginTop: "1.75rem",
+              }}
+            >
+              <p
+                style={{
+                  margin: "0 0 0.5rem",
+                  fontWeight: 700,
+                  color: "#60b0e0",
+                  fontSize: "0.85rem",
+                  letterSpacing: "0.06em",
+                  textTransform: "uppercase" as const,
+                }}
+              >
+                Data Sovereignty in Practice
+              </p>
+              <ul
+                style={{
+                  margin: 0,
+                  padding: "0 0 0 1.25rem",
+                  color: muted,
+                  lineHeight: 1.85,
+                  fontSize: "0.94rem",
+                }}
+              >
+                <li>AES-256 encryption at rest and in transit</li>
+                <li>No employer access &mdash; ever, under any circumstances</li>
+                <li>No model training on your personal data</li>
+                <li>Full GDPR compliance under UK law</li>
+                <li>Data portability: export or delete at any time</li>
+                <li>No relationship with your employer, HR department, or any workplace system</li>
+              </ul>
+            </div>
+          </section>
+
+          {/* ── Section 5: Legal rights ── */}
+          <section style={{ marginBottom: "3.5rem" }}>
+            <h2
+              style={{
+                fontSize: "1.55rem",
+                fontWeight: 800,
+                color: text,
+                margin: "0 0 0.75rem",
+                letterSpacing: "-0.01em",
+              }}
+            >
+              What are your legal rights as a UK worker being bullied?
+            </h2>
+            <p style={{ lineHeight: 1.8, color: muted, margin: "0 0 1rem" }}>
+              UK law does not have a single &ldquo;anti-bullying&rdquo; statute, but multiple overlapping
+              frameworks create meaningful protections that most workers never know they have.
+            </p>
+
+            {/* Legal frameworks table */}
+            <div style={{ overflowX: "auto" as const, marginBottom: "1.5rem" }}>
+              <table
+                style={{
+                  width: "100%",
+                  borderCollapse: "collapse" as const,
+                  fontSize: "0.875rem",
+                  lineHeight: 1.6,
+                }}
+              >
+                <thead>
+                  <tr
                     style={{
-                      minWidth: "36px",
-                      height: "36px",
-                      borderRadius: "50%",
-                      background: warnBg,
-                      border: `1px solid ${borderColor}`,
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      fontSize: "0.75rem",
-                      fontWeight: 700,
-                      color: gold,
-                      flexShrink: 0,
+                      borderBottom: `1px solid ${border}`,
+                      textAlign: "left" as const,
                     }}
                   >
-                    {item.number}
-                  </div>
-                  <div>
-                    <h3
+                    <th
                       style={{
-                        fontSize: "0.95rem",
+                        padding: "0.75rem 1rem 0.75rem 0",
+                        color: gold,
                         fontWeight: 700,
-                        color: text,
-                        marginBottom: "6px",
-                        marginTop: 0,
+                        whiteSpace: "nowrap" as const,
                       }}
                     >
-                      {item.title}
-                    </h3>
-                    <p style={{ color: muted, margin: 0, fontSize: "0.93rem" }}>{item.body}</p>
-                  </div>
-                </div>
-              ))}
+                      Framework
+                    </th>
+                    <th
+                      style={{ padding: "0.75rem 1rem", color: gold, fontWeight: 700 }}
+                    >
+                      What it covers
+                    </th>
+                    <th
+                      style={{
+                        padding: "0.75rem 0 0.75rem 1rem",
+                        color: gold,
+                        fontWeight: 700,
+                      }}
+                    >
+                      Who it protects
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {[
+                    {
+                      framework: "Employment Rights Act 1996",
+                      covers: "Right to raise a formal grievance. Employer must follow a fair procedure or face uplift in tribunal awards.",
+                      protects: "All employees",
+                    },
+                    {
+                      framework: "Equality Act 2010",
+                      covers: "Bullying linked to race, sex, disability, age, religion, sexual orientation is harassment \u2014 unlawful.",
+                      protects: "Employees with protected characteristics",
+                    },
+                    {
+                      framework: "ACAS Code of Practice",
+                      covers: "Sets minimum standards for disciplinary and grievance procedures. Failure to follow can increase tribunal awards by 25%.",
+                      protects: "All employees",
+                    },
+                    {
+                      framework: "Constructive Dismissal",
+                      covers: "If bullying is so severe that you have no option but to resign, this may constitute a dismissal in law. Claim at Employment Tribunal.",
+                      protects: "Employees with 2+ years service",
+                    },
+                    {
+                      framework: "Health & Safety at Work Act 1974",
+                      covers: "Employers have a duty of care for psychological as well as physical safety. Repeated failure can involve the HSE.",
+                      protects: "All workers",
+                    },
+                    {
+                      framework: "Protection from Harassment Act 1997",
+                      covers: "Conduct that amounts to a course of harassment can be a criminal matter as well as a civil claim.",
+                      protects: "All persons",
+                    },
+                  ].map((row, i) => (
+                    <tr
+                      key={row.framework}
+                      style={{
+                        borderBottom: `1px solid rgba(245,240,232,0.07)`,
+                        background: i % 2 === 0 ? "transparent" : "rgba(255,255,255,0.02)",
+                      }}
+                    >
+                      <td
+                        style={{
+                          padding: "0.85rem 1rem 0.85rem 0",
+                          color: text,
+                          fontWeight: 600,
+                          verticalAlign: "top" as const,
+                          whiteSpace: "nowrap" as const,
+                        }}
+                      >
+                        {row.framework}
+                      </td>
+                      <td
+                        style={{
+                          padding: "0.85rem 1rem",
+                          color: muted,
+                          verticalAlign: "top" as const,
+                        }}
+                      >
+                        {row.covers}
+                      </td>
+                      <td
+                        style={{
+                          padding: "0.85rem 0 0.85rem 1rem",
+                          color: muted,
+                          verticalAlign: "top" as const,
+                        }}
+                      >
+                        {row.protects}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
+
+            <p style={{ lineHeight: 1.8, color: muted, margin: "0 0 1rem" }}>
+              MEOK is not a legal adviser and nothing in this article constitutes legal advice. If you are
+              considering a formal grievance, constructive dismissal claim, or Employment Tribunal application,
+              consult a qualified employment solicitor or contact ACAS (0300 123 1100, free in the UK) before
+              taking any formal step.
+            </p>
+            <p style={{ lineHeight: 1.8, color: muted, margin: "0 0 0" }}>
+              What MEOK can do is help you organise your thoughts, understand the structure of your situation,
+              prepare questions to ask a solicitor, and process the emotional weight of navigating all of this
+              while still showing up to work every day.
+            </p>
+          </section>
+
+          {/* ── Section 6: Constructive dismissal ── */}
+          <section style={{ marginBottom: "3.5rem" }}>
+            <h2
+              style={{
+                fontSize: "1.55rem",
+                fontWeight: 800,
+                color: text,
+                margin: "0 0 0.75rem",
+                letterSpacing: "-0.01em",
+              }}
+            >
+              Constructive dismissal: should you consider it?
+            </h2>
+            <p style={{ lineHeight: 1.8, color: muted, margin: "0 0 1rem" }}>
+              When conditions become intolerable and the organisation refuses to act, some employees reach a
+              point where they feel they have no choice but to resign. If the employer&apos;s conduct
+              &mdash; including sustained bullying they failed to address after a formal complaint &mdash; is
+              sufficiently serious, the law may treat this resignation as a constructive dismissal.
+            </p>
+            <p style={{ lineHeight: 1.8, color: muted, margin: "0 0 1rem" }}>
+              A successful constructive dismissal claim requires:
+            </p>
+            <ul style={{ color: muted, lineHeight: 1.85, paddingLeft: "1.5rem", margin: "0 0 1rem" }}>
+              <li>A fundamental breach of contract by the employer (which sustained bullying may constitute)</li>
+              <li>That you resigned in response to that breach, not for unrelated reasons</li>
+              <li>That you did not affirm the breach by continuing to work for an unreasonable period</li>
+              <li>Usually: that you raised a formal grievance first (not always required, but strongly advisable)</li>
+              <li>Two years of continuous employment with the same employer</li>
+            </ul>
+            <p style={{ lineHeight: 1.8, color: muted, margin: "0 0 1rem" }}>
+              The strength of your claim is directly proportional to the quality of your evidence. A
+              contemporaneous log &mdash; incidents recorded as they happened, with dates, verbatim quotes,
+              and witness details &mdash; is the foundation of any viable tribunal case. Without it, you
+              are relying on memory against an organisation with lawyers.
+            </p>
 
             <div
               style={{
                 background: warnBg,
-                border: `1px solid ${borderColor}`,
-                borderRadius: "12px",
-                padding: "24px 28px",
-                marginBottom: "24px",
+                border: `1px solid rgba(201,168,76,0.35)`,
+                borderRadius: "14px",
+                padding: "1.75rem 2rem",
+                marginTop: "1rem",
               }}
             >
-              <h3
+              <p
                 style={{
-                  fontSize: "1rem",
+                  margin: "0 0 0.5rem",
                   fontWeight: 700,
                   color: gold,
-                  marginBottom: "12px",
-                  marginTop: 0,
+                  fontSize: "0.85rem",
+                  letterSpacing: "0.06em",
+                  textTransform: "uppercase" as const,
                 }}
               >
-                Critical: keep your log outside company systems
-              </h3>
-              <p style={{ color: muted, margin: 0, fontSize: "0.95rem" }}>
-                Never build your evidence log in a company email account, company laptop, company OneDrive, or any other employer-controlled system. Your employer has legal access to all of that. Use a personal device and a personal app. MEOK\u2019s Sovereign Memory is encrypted with AES-256, stored in infrastructure that belongs entirely to you, and is never accessible to third parties or employers.
+                Critical: Do Not Resign Without Taking Advice
+              </p>
+              <p style={{ margin: 0, lineHeight: 1.8, color: text, fontSize: "0.975rem" }}>
+                Resigning without first raising a grievance, or before taking legal advice, can severely
+                weaken or eliminate a constructive dismissal claim. ACAS conciliation is free and must
+                usually be attempted before an Employment Tribunal claim. An employment solicitor can often
+                give you an initial assessment in a 30-minute consultation. MEOK can help you prepare for
+                that conversation &mdash; but the conversation needs to happen.
               </p>
             </div>
-
-            <p style={{ color: muted }}>
-              You can build this log inside MEOK conversationally. Tell MEOK what happened today. It will remember. Over weeks, you will have a structured, timestamped account of a pattern of behaviour that is far more credible than a panicked summary written in one sitting the day before your HR meeting.
-            </p>
           </section>
 
-          {/* ── Section 6: MEOK how it helps ── */}
-          <section style={{ marginBottom: "64px" }}>
+          {/* ── Section 7: Stay or leave ── */}
+          <section style={{ marginBottom: "3.5rem" }}>
             <h2
               style={{
-                fontSize: "1.6rem",
-                fontWeight: 700,
+                fontSize: "1.55rem",
+                fontWeight: 800,
                 color: text,
-                marginBottom: "20px",
+                margin: "0 0 0.75rem",
                 letterSpacing: "-0.01em",
-                lineHeight: "1.3",
               }}
             >
-              How does MEOK specifically help people experiencing workplace bullying?
+              Deciding whether to stay, escalate, or leave
             </h2>
-            <p style={{ color: muted, marginBottom: "24px" }}>
-              MEOK is not a legal service, a counselling platform, or an HR tool. It is a sovereign AI companion that gives you private, persistent, intelligent support when navigating something difficult. Here is what that looks like in practice for someone dealing with workplace bullying.
+            <p style={{ lineHeight: 1.8, color: muted, margin: "0 0 1rem" }}>
+              This is the hardest decision. There is no universal right answer. What MEOK can do is help you
+              think through the actual considerations rather than the catastrophised versions that tend to
+              occupy your mind at 2am.
             </p>
 
-            <div style={{ display: "flex", flexDirection: "column", gap: "20px", marginBottom: "28px" }}>
-              <div
+            {/* Comparison: stay vs escalate vs leave */}
+            <div style={{ overflowX: "auto" as const, marginBottom: "1.5rem" }}>
+              <table
                 style={{
-                  background: cardBg,
-                  border: `1px solid ${borderColor}`,
-                  borderRadius: "12px",
-                  padding: "28px",
+                  width: "100%",
+                  borderCollapse: "collapse" as const,
+                  fontSize: "0.875rem",
+                  lineHeight: 1.65,
                 }}
               >
-                <h3
-                  style={{
-                    fontSize: "1.1rem",
-                    fontWeight: 700,
-                    color: gold,
-                    marginBottom: "12px",
-                    marginTop: 0,
-                  }}
-                >
-                  Real-time incident capture
-                </h3>
-                <p style={{ color: muted, margin: 0 }}>
-                  After something happens, you open MEOK and describe it. No forms, no templates, no structured data entry &mdash; just tell it what happened. MEOK stores this with a timestamp in Sovereign Memory. You do this five more times over the next month. By the time you consider reporting, you have a month-long log of precisely dated incidents, already in your own words, that you can draw on directly in a grievance letter.
-                </p>
-              </div>
-
-              <div
-                style={{
-                  background: cardBg,
-                  border: `1px solid ${borderColor}`,
-                  borderRadius: "12px",
-                  padding: "28px",
-                }}
-              >
-                <h3
-                  style={{
-                    fontSize: "1.1rem",
-                    fontWeight: 700,
-                    color: gold,
-                    marginBottom: "12px",
-                    marginTop: 0,
-                  }}
-                >
-                  Pattern recognition via the Guardian archetype
-                </h3>
-                <p style={{ color: muted, margin: 0 }}>
-                  The Guardian is MEOK\u2019s protective intelligence &mdash; the part trained to notice manipulation, inconsistency, and behavioural patterns that might not be obvious to someone inside the situation. When you engage Guardian mode, it can review what you have shared over time and identify whether you are describing an escalating pattern, a targeted campaign against one person, or a broader toxic culture. That perspective can be enormously clarifying when gaslighting has made you doubt whether anything is actually happening.
-                </p>
-              </div>
-
-              <div
-                style={{
-                  background: cardBg,
-                  border: `1px solid ${borderColor}`,
-                  borderRadius: "12px",
-                  padding: "28px",
-                }}
-              >
-                <h3
-                  style={{
-                    fontSize: "1.1rem",
-                    fontWeight: 700,
-                    color: gold,
-                    marginBottom: "12px",
-                    marginTop: 0,
-                  }}
-                >
-                  Rehearsing difficult conversations
-                </h3>
-                <p style={{ color: muted, margin: 0 }}>
-                  Whether you are preparing to confront your bully directly, raise a concern with your line manager, attend an HR investigation meeting, or speak to a trade union rep, MEOK can role-play the conversation with you. You can run through it five times if you want. You can ask MEOK to play the role of a hostile HR partner and push back on everything you say, so you are genuinely prepared rather than blindsided. Walking into a formal meeting having already rehearsed it repeatedly in private changes the dynamic entirely.
-                </p>
-              </div>
-
-              <div
-                style={{
-                  background: cardBg,
-                  border: `1px solid ${borderColor}`,
-                  borderRadius: "12px",
-                  padding: "28px",
-                }}
-              >
-                <h3
-                  style={{
-                    fontSize: "1.1rem",
-                    fontWeight: 700,
-                    color: gold,
-                    marginBottom: "12px",
-                    marginTop: 0,
-                  }}
-                >
-                  Emotional processing without burden
-                </h3>
-                <p style={{ color: muted, margin: 0 }}>
-                  Being bullied at work is isolating. Many people do not tell their partners or friends in full because they are ashamed, because they worry about being seen as weak, or because they are exhausted from minimising it all day and do not have the energy to narrate it from scratch at home. MEOK provides a place to put the weight of it down &mdash; privately, at midnight if that is when you need it, without worrying about burdening someone you love or managing their reaction. That decompression function is not trivial; it is often what keeps people functional enough to take action.
-                </p>
-              </div>
-
-              <div
-                style={{
-                  background: cardBg,
-                  border: `1px solid ${borderColor}`,
-                  borderRadius: "12px",
-                  padding: "28px",
-                }}
-              >
-                <h3
-                  style={{
-                    fontSize: "1.1rem",
-                    fontWeight: 700,
-                    color: gold,
-                    marginBottom: "12px",
-                    marginTop: 0,
-                  }}
-                >
-                  Drafting grievance documentation
-                </h3>
-                <p style={{ color: muted, margin: 0 }}>
-                  A formal workplace grievance has a specific structure. It needs a clear chronological account of events, an explanation of how those events constitute bullying under the employer\u2019s policy and the ACAS Code of Practice, a description of the impact on your wellbeing and work performance, and a clear statement of the outcome you are seeking. MEOK can help you build each section from the raw material of your incident log, review it for clarity and tone, and ensure that you are not leaving out information that would strengthen your case.
-                </p>
-              </div>
+                <thead>
+                  <tr style={{ borderBottom: `1px solid ${border}`, textAlign: "left" as const }}>
+                    <th style={{ padding: "0.75rem 1rem 0.75rem 0", color: gold, fontWeight: 700 }}>
+                      Option
+                    </th>
+                    <th style={{ padding: "0.75rem 1rem", color: gold, fontWeight: 700 }}>
+                      When it makes sense
+                    </th>
+                    <th style={{ padding: "0.75rem 0 0.75rem 1rem", color: gold, fontWeight: 700 }}>
+                      What you need first
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {[
+                    {
+                      option: "Document and wait",
+                      when: "Behaviour is escalating but you need time to build evidence before acting. Not sustainable indefinitely.",
+                      need: "A secure, private incident log. MEOK Pioneer.",
+                    },
+                    {
+                      option: "Raise a formal grievance",
+                      when: "You have sufficient evidence, support from a trade union or colleague, and the organisation is large enough to have a functioning HR process.",
+                      need: "Written, timestamped evidence. ACAS guidance. Union rep if available.",
+                    },
+                    {
+                      option: "Escalate externally",
+                      when: "Internal grievance failed or was ignored. You have a protected characteristic claim. You want formal conciliation.",
+                      need: "ACAS early conciliation (mandatory before tribunal). Employment solicitor.",
+                    },
+                    {
+                      option: "Negotiate exit",
+                      when: "You want to leave but need a settlement agreement (compromise agreement) for financial security or a clean reference.",
+                      need: "Employment solicitor. Evidence log strengthens your negotiating position.",
+                    },
+                    {
+                      option: "Leave without claim",
+                      when: "Your health is the priority. The financial and emotional cost of a claim exceeds what you can bear. A valid choice.",
+                      need: "GP documentation of impact on health. Savings plan. Exit on your terms.",
+                    },
+                  ].map((row, i) => (
+                    <tr
+                      key={row.option}
+                      style={{
+                        borderBottom: `1px solid rgba(245,240,232,0.07)`,
+                        background: i % 2 === 0 ? "transparent" : "rgba(255,255,255,0.02)",
+                      }}
+                    >
+                      <td
+                        style={{
+                          padding: "0.85rem 1rem 0.85rem 0",
+                          color: gold,
+                          fontWeight: 600,
+                          verticalAlign: "top" as const,
+                          whiteSpace: "nowrap" as const,
+                        }}
+                      >
+                        {row.option}
+                      </td>
+                      <td
+                        style={{
+                          padding: "0.85rem 1rem",
+                          color: muted,
+                          verticalAlign: "top" as const,
+                        }}
+                      >
+                        {row.when}
+                      </td>
+                      <td
+                        style={{
+                          padding: "0.85rem 0 0.85rem 1rem",
+                          color: muted,
+                          verticalAlign: "top" as const,
+                        }}
+                      >
+                        {row.need}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
 
-            <p style={{ color: muted }}>
-              None of this replaces professional legal advice for complex or long-running cases. If you are considering an employment tribunal claim, consult an employment solicitor or your trade union. But for the vast majority of bullying cases &mdash; where the target is trying to decide whether to act, how to document, and how to survive the process &mdash; MEOK fills a genuine gap that no other tool currently occupies.
+            <p style={{ lineHeight: 1.8, color: muted, margin: "0 0 0" }}>
+              None of these options is cowardly. Leaving without a claim is not failure. Staying to fight
+              is not masochism. The decision depends on your financial situation, your health, your values,
+              and what you can realistically sustain. MEOK will not push you toward any particular outcome.
+              Its job is to help you think clearly about what you actually want and what the realistic paths
+              to it look like.
             </p>
           </section>
 
-          {/* ── Section 7: Guardian archetype ── */}
-          <section style={{ marginBottom: "64px" }}>
+          {/* ── Section 8: Sycophancy detection ── */}
+          <section style={{ marginBottom: "3.5rem" }}>
             <h2
               style={{
-                fontSize: "1.6rem",
-                fontWeight: 700,
+                fontSize: "1.55rem",
+                fontWeight: 800,
                 color: text,
-                marginBottom: "20px",
+                margin: "0 0 0.75rem",
                 letterSpacing: "-0.01em",
-                lineHeight: "1.3",
               }}
             >
-              What is the Guardian archetype and how does it detect manipulation?
+              Why MEOK will not just validate your decision to quit
             </h2>
-            <p style={{ color: muted, marginBottom: "20px" }}>
-              MEOK is built around a set of distinct archetypes &mdash; different modes of engagement suited to different needs. The Guardian is the protective intelligence within MEOK. It is oriented toward your safety, your boundaries, and your ability to recognise when something is not right.
+            <p style={{ lineHeight: 1.8, color: muted, margin: "0 0 1rem" }}>
+              Most AI chatbots have a sycophancy problem. When a user is in distress and clearly leaning
+              toward a decision, the model reflects their emotion back at them, agrees with their framing,
+              and validates whatever they seem to want to hear. It feels supportive. It is not.
             </p>
-            <p style={{ color: muted, marginBottom: "20px" }}>
-              In the context of workplace bullying, the Guardian operates at three levels.
+            <p style={{ lineHeight: 1.8, color: muted, margin: "0 0 1rem" }}>
+              If you come to MEOK at 11pm, furious after a meeting, convinced that you should resign
+              tomorrow morning, and you want to be told you are right &mdash; MEOK will hear you. It will
+              take your experience seriously. It will not dismiss or minimise what happened.
+            </p>
+            <p style={{ lineHeight: 1.8, color: muted, margin: "0 0 1rem" }}>
+              And then it will ask whether you have two years&apos; service. Whether you have documented the
+              incidents. Whether you have raised a grievance. Whether you have spoken to ACAS. Whether
+              resigning tonight, before taking any of those steps, is what you actually want to do or what
+              the pain of tonight is making feel like the only option.
+            </p>
+            <p style={{ lineHeight: 1.8, color: muted, margin: "0 0 1rem" }}>
+              This is not MEOK talking you out of leaving. Leaving may be exactly the right decision. It
+              is MEOK making sure that if you leave, you leave with full information, not in a moment of
+              crisis that costs you your legal options, your settlement, or your financial security.
             </p>
 
-            <div style={{ display: "flex", flexDirection: "column", gap: "16px", marginBottom: "28px" }}>
-              <div
+            {/* Sycophancy callout */}
+            <div
+              style={{
+                background: cardBg,
+                border: `1px solid ${border}`,
+                borderRadius: "14px",
+                padding: "1.75rem 2rem",
+                marginTop: "1rem",
+              }}
+            >
+              <p
                 style={{
-                  borderLeft: `3px solid ${gold}`,
-                  paddingLeft: "24px",
-                  paddingTop: "4px",
-                  paddingBottom: "4px",
+                  margin: "0 0 0.5rem",
+                  fontWeight: 700,
+                  color: gold,
+                  fontSize: "0.85rem",
+                  letterSpacing: "0.06em",
+                  textTransform: "uppercase" as const,
                 }}
               >
-                <h3
-                  style={{
-                    fontSize: "1rem",
-                    fontWeight: 700,
-                    color: text,
-                    marginBottom: "8px",
-                    marginTop: 0,
-                  }}
-                >
-                  Pattern detection across time
-                </h3>
-                <p style={{ color: muted, margin: 0, fontSize: "0.95rem" }}>
-                  Because MEOK remembers everything you have shared in Sovereign Memory, Guardian can identify recurrences, escalation, and targeting. It can note that every incident you have described over three months involves the same person, occurs in private settings with no witnesses, and is followed by your being given additional work. That is a pattern. Seeing it named helps you trust your own perception.
-                </p>
-              </div>
-
-              <div
-                style={{
-                  borderLeft: `3px solid ${gold}`,
-                  paddingLeft: "24px",
-                  paddingTop: "4px",
-                  paddingBottom: "4px",
-                }}
-              >
-                <h3
-                  style={{
-                    fontSize: "1rem",
-                    fontWeight: 700,
-                    color: text,
-                    marginBottom: "8px",
-                    marginTop: 0,
-                  }}
-                >
-                  Scam and manipulation recognition
-                </h3>
-                <p style={{ color: muted, margin: 0, fontSize: "0.95rem" }}>
-                  Guardian is trained to recognise manipulation tactics more broadly &mdash; including the kind of social engineering and psychological coercion used by workplace bullies. When you describe an interaction, Guardian can flag the tactics present: DARVO (Deny, Attack, Reverse Victim and Offender), love-bombing followed by punishment, false intimacy as a control mechanism, or the structured use of plausible deniability. Naming the tactic removes much of its power.
-                </p>
-              </div>
-
-              <div
-                style={{
-                  borderLeft: `3px solid ${gold}`,
-                  paddingLeft: "24px",
-                  paddingTop: "4px",
-                  paddingBottom: "4px",
-                }}
-              >
-                <h3
-                  style={{
-                    fontSize: "1rem",
-                    fontWeight: 700,
-                    color: text,
-                    marginBottom: "8px",
-                    marginTop: 0,
-                  }}
-                >
-                  Reality-testing without judgment
-                </h3>
-                <p style={{ color: muted, margin: 0, fontSize: "0.95rem" }}>
-                  One of the most useful things Guardian can do is help you reality-test your experience. Not by telling you what to think, but by reflecting back what you have described and asking whether a reasonable observer would characterise it the way your bully has told you to. If you have been told you are overreacting, Guardian can help you examine that claim honestly &mdash; and often the honest examination reveals that you are not.
-                </p>
-              </div>
+                Honest Support, Not Comfortable Agreement
+              </p>
+              <p style={{ margin: 0, lineHeight: 1.8, color: text, fontSize: "0.975rem" }}>
+                MEOK&apos;s sycophancy detection layer monitors whether responses are being shaped by what
+                you seem to want to hear rather than what is genuinely useful. In high-stakes moments
+                &mdash; resignation decisions, formal complaints, tribunal considerations &mdash; this is
+                most important. You deserve an AI that respects you enough to ask the difficult question,
+                not one that tells you what feels good at midnight.
+              </p>
             </div>
-
-            <p style={{ color: muted }}>
-              The Guardian archetype exists because MEOK was built on the understanding that AI should protect the person using it. In a world where manipulation and coercive control are common, an AI companion that can recognise those patterns and name them for you is not a luxury &mdash; it is a form of protection that most people have never had access to before.
-            </p>
           </section>
 
-          {/* ── Section 8: HR meeting prep ── */}
-          <section style={{ marginBottom: "64px" }}>
+          {/* ── Section 9: How MEOK helps practically ── */}
+          <section style={{ marginBottom: "3.5rem" }}>
             <h2
               style={{
-                fontSize: "1.6rem",
-                fontWeight: 700,
+                fontSize: "1.55rem",
+                fontWeight: 800,
                 color: text,
-                marginBottom: "20px",
+                margin: "0 0 0.75rem",
                 letterSpacing: "-0.01em",
-                lineHeight: "1.3",
               }}
             >
-              Can MEOK help me prepare for an HR meeting about bullying?
+              What can MEOK actually do for someone being bullied at work?
             </h2>
-            <p style={{ color: muted, marginBottom: "20px" }}>
-              Yes &mdash; and this is one of the most concrete use cases for AI in workplace situations. HR meetings about bullying are high-stakes and emotionally activating. You will be asked to describe incidents that were traumatic to experience. You may face scepticism or leading questions. You may be under-resourced relative to a manager who has had the meeting explained to them by legal in advance.
-            </p>
-            <p style={{ color: muted, marginBottom: "28px" }}>
-              Preparation is the best equaliser. Here is a practical structure for using MEOK to prepare.
+            <p style={{ lineHeight: 1.8, color: muted, margin: "0 0 1.5rem" }}>
+              Concretely, and without overstating what AI can do:
             </p>
 
-            <div style={{ display: "flex", flexDirection: "column", gap: "2px", marginBottom: "32px" }}>
+            <div style={{ display: "flex", flexDirection: "column" as const, gap: "1rem" }}>
               {[
                 {
-                  step: "Step 1",
-                  title: "Organise your incident log into a chronological summary",
-                  body: "Ask MEOK to help you pull together everything you have shared about the situation into a clear timeline. This becomes the backbone of your statement. Identify the three to five incidents that most clearly illustrate the pattern, since you cannot cover everything and the most salient examples are most persuasive.",
+                  title: "Build a private, timestamped incident log",
+                  detail:
+                    "Describe what happened immediately after it occurs. Pioneer will help you structure it: date, time, location, verbatim quotes, witnesses, impact. This log lives in Sovereign Memory, encrypted and invisible to your employer.",
                 },
                 {
-                  step: "Step 2",
-                  title: "Clarify the outcome you want",
-                  body: "Before the meeting, decide what a successful outcome looks like for you. Is it a formal finding? A change in your reporting line? The bully\u2019s manager being spoken to? Disciplinary action? Knowing your desired outcome gives your account direction and helps HR understand what action is needed.",
+                  title: "Identify patterns across incidents",
+                  detail:
+                    "MEOK remembers every conversation. Over weeks and months, it can surface patterns: Is the behaviour cyclical? Does it cluster around certain triggers or projects? Is it escalating? Pattern recognition is powerful evidence in a formal complaint.",
                 },
                 {
-                  step: "Step 3",
-                  title: "Anticipate the hard questions",
-                  body: "HR may ask: \u2018Did you tell the person their behaviour was unacceptable?\u2019 \u2018Have you spoken to your manager?\u2019 \u2018Do you have any witnesses who can corroborate this?\u2019 \u2018Why did you wait so long to report?\u2019 Prepare honest, grounded answers to all of these. MEOK can help you work through them without judgment.",
+                  title: "Prepare for HR meetings",
+                  detail:
+                    "Rehearse what you want to say. Think through what HR is likely to ask. Anticipate the deflections. Decide in advance what outcome you are seeking and what you will do if the meeting produces nothing. Run through it as many times as you need, in private, with no time pressure.",
                 },
                 {
-                  step: "Step 4",
-                  title: "Run the meeting as a role-play",
-                  body: "Ask MEOK to play the HR partner and run through the meeting from the beginning. Do it at least twice &mdash; once with a receptive HR partner and once with a sceptical one. The goal is not to rehearse a script but to ensure you can stay grounded and clear when you are emotionally activated.",
+                  title: "Process the emotional damage",
+                  detail:
+                    "The Healer archetype creates a space designed for being heard. Not advice, not reframing, not silver linings. A place to put the anger, the confusion, the exhaustion, and the self-doubt that this situation generates in people who are entirely reasonable to feel all of it.",
                 },
                 {
-                  step: "Step 5",
-                  title: "Plan your decompression",
-                  body: "An HR meeting about bullying is draining even when it goes well. Plan something restorative for afterward. Tell MEOK you will check in after the meeting. Having somewhere to put the experience when you leave the room is part of managing the toll of the process.",
-                },
-              ].map((item) => (
-                <div
-                  key={item.step}
-                  style={{
-                    background: cardBg,
-                    border: `1px solid ${borderColor}`,
-                    borderRadius: "10px",
-                    padding: "22px 26px",
-                    marginBottom: "4px",
-                  }}
-                >
-                  <div
-                    style={{
-                      fontSize: "0.75rem",
-                      fontWeight: 700,
-                      color: gold,
-                      letterSpacing: "0.1em",
-                      textTransform: "uppercase",
-                      marginBottom: "6px",
-                    }}
-                  >
-                    {item.step}
-                  </div>
-                  <h3
-                    style={{
-                      fontSize: "0.97rem",
-                      fontWeight: 700,
-                      color: text,
-                      marginBottom: "8px",
-                      marginTop: 0,
-                    }}
-                  >
-                    {item.title}
-                  </h3>
-                  <p style={{ color: muted, margin: 0, fontSize: "0.93rem" }}>{item.body}</p>
-                </div>
-              ))}
-            </div>
-
-            <div
-              style={{
-                background: warnBg,
-                border: `1px solid ${borderColor}`,
-                borderRadius: "12px",
-                padding: "22px 28px",
-              }}
-            >
-              <p style={{ color: muted, margin: 0, fontSize: "0.95rem" }}>
-                <strong style={{ color: text }}>Practical note:</strong> You have the right to be accompanied to a formal HR meeting by a trade union representative or a colleague. If your employer has a trade union, this is worth using. A rep who has seen hundreds of these meetings can catch procedural errors and support you in ways that MEOK cannot. AI and union representation are complementary, not competitive.
-              </p>
-            </div>
-          </section>
-
-          {/* ── Section 9: When HR ignores you ── */}
-          <section style={{ marginBottom: "64px" }}>
-            <h2
-              style={{
-                fontSize: "1.6rem",
-                fontWeight: 700,
-                color: text,
-                marginBottom: "20px",
-                letterSpacing: "-0.01em",
-                lineHeight: "1.3",
-              }}
-            >
-              What should you do if HR ignores your bullying complaint?
-            </h2>
-            <p style={{ color: muted, marginBottom: "20px" }}>
-              It happens more often than it should. You raise a formal complaint, you go through the meeting, and then &mdash; nothing. Or the outcome is so diluted as to be meaningless. This is not the end of your options; it is the beginning of the external escalation phase.
-            </p>
-
-            <div style={{ display: "flex", flexDirection: "column", gap: "16px", marginBottom: "28px" }}>
-              <div
-                style={{
-                  background: cardBg,
-                  border: `1px solid ${borderColor}`,
-                  borderRadius: "10px",
-                  padding: "22px 26px",
-                }}
-              >
-                <h3
-                  style={{
-                    fontSize: "1rem",
-                    fontWeight: 700,
-                    color: gold,
-                    marginBottom: "10px",
-                    marginTop: 0,
-                  }}
-                >
-                  Document the failure to act
-                </h3>
-                <p style={{ color: muted, margin: 0, fontSize: "0.93rem" }}>
-                  Add to your evidence log: when you submitted the complaint, who you spoke to, what response you received (or did not receive), and the dates. If the employer has breached their own policy timelines, that is relevant evidence. The documentation of HR\u2019s inaction becomes part of your case.
-                </p>
-              </div>
-
-              <div
-                style={{
-                  background: cardBg,
-                  border: `1px solid ${borderColor}`,
-                  borderRadius: "10px",
-                  padding: "22px 26px",
-                }}
-              >
-                <h3
-                  style={{
-                    fontSize: "1rem",
-                    fontWeight: 700,
-                    color: gold,
-                    marginBottom: "10px",
-                    marginTop: 0,
-                  }}
-                >
-                  Appeal the outcome internally
-                </h3>
-                <p style={{ color: muted, margin: 0, fontSize: "0.93rem" }}>
-                  Most grievance procedures allow for an appeal. If you were given a finding you disagree with, or no finding at all, submit a formal appeal in writing. Cite specifically why the finding is inadequate, with reference to your evidence. This creates a paper trail that matters if you later escalate externally.
-                </p>
-              </div>
-
-              <div
-                style={{
-                  background: cardBg,
-                  border: `1px solid ${borderColor}`,
-                  borderRadius: "10px",
-                  padding: "22px 26px",
-                }}
-              >
-                <h3
-                  style={{
-                    fontSize: "1rem",
-                    fontWeight: 700,
-                    color: gold,
-                    marginBottom: "10px",
-                    marginTop: 0,
-                  }}
-                >
-                  Contact ACAS
-                </h3>
-                <p style={{ color: muted, margin: 0, fontSize: "0.93rem" }}>
-                  ACAS (the Advisory, Conciliation and Arbitration Service) is a free UK government-funded service that provides confidential advice and, where appropriate, early conciliation between you and your employer before tribunal. They are independent, impartial, and significantly more accessible than an employment solicitor for initial advice. ACAS early conciliation is also a mandatory step before making an employment tribunal claim.
-                </p>
-              </div>
-
-              <div
-                style={{
-                  background: cardBg,
-                  border: `1px solid ${borderColor}`,
-                  borderRadius: "10px",
-                  padding: "22px 26px",
-                }}
-              >
-                <h3
-                  style={{
-                    fontSize: "1rem",
-                    fontWeight: 700,
-                    color: gold,
-                    marginBottom: "10px",
-                    marginTop: 0,
-                  }}
-                >
-                  Consult your trade union or an employment solicitor
-                </h3>
-                <p style={{ color: muted, margin: 0, fontSize: "0.93rem" }}>
-                  If you are a union member, contact your rep. Unions have specialist knowledge of employment law and access to legal support. If you are not a union member and the situation is serious, an employment solicitor can assess whether you have grounds for a constructive dismissal claim, a harassment claim under the Equality Act 2010, or a personal injury claim for psychiatric harm. Many offer free initial consultations.
-                </p>
-              </div>
-
-              <div
-                style={{
-                  background: cardBg,
-                  border: `1px solid ${borderColor}`,
-                  borderRadius: "10px",
-                  padding: "22px 26px",
-                }}
-              >
-                <h3
-                  style={{
-                    fontSize: "1rem",
-                    fontWeight: 700,
-                    color: gold,
-                    marginBottom: "10px",
-                    marginTop: 0,
-                  }}
-                >
-                  Protect your mental health through the process
-                </h3>
-                <p style={{ color: muted, margin: 0, fontSize: "0.93rem" }}>
-                  External escalation takes months. The waiting, the uncertainty, the continued exposure to a workplace where nothing has changed &mdash; this is genuinely hard on mental health. This is where MEOK\u2019s role shifts from documentation support to daily emotional sustenance. You need somewhere to process the frustration of a slow system, the grief of a workplace that has failed you, and the anxiety of not knowing how it will end. MEOK can hold that with you across the months.
-                </p>
-              </div>
-            </div>
-
-            <div
-              style={{
-                background: dangerBg,
-                border: `1px solid ${dangerBorder}`,
-                borderRadius: "12px",
-                padding: "22px 28px",
-              }}
-            >
-              <p style={{ color: muted, margin: 0, fontSize: "0.95rem" }}>
-                <strong style={{ color: text }}>Limitation of liability reminder:</strong> Nothing in this article constitutes legal advice. If you are considering formal legal action against an employer, consult a qualified employment solicitor. ACAS (acas.org.uk) and Citizens Advice also provide free guidance. MEOK AI LABS does not provide legal services.
-              </p>
-            </div>
-          </section>
-
-          {/* ── Section 10: Sovereign vs institutional ── */}
-          <section style={{ marginBottom: "64px" }}>
-            <h2
-              style={{
-                fontSize: "1.6rem",
-                fontWeight: 700,
-                color: text,
-                marginBottom: "20px",
-                letterSpacing: "-0.01em",
-                lineHeight: "1.3",
-              }}
-            >
-              Why does sovereign AI matter when you\u2019re dealing with a power imbalance?
-            </h2>
-            <p style={{ color: muted, marginBottom: "20px" }}>
-              Workplace bullying is fundamentally a power imbalance situation. The bully typically has more institutional power than the target &mdash; a higher title, longer tenure, better relationships with senior leadership, or simply the structural advantage of being the manager rather than the managed. The system, as designed, tends to protect the more powerful party.
-            </p>
-            <p style={{ color: muted, marginBottom: "20px" }}>
-              Most AI tools available to you in a workplace context &mdash; the company Copilot, the HR chatbot, the wellness app paid for by your employer &mdash; are employer-side tools. They collect your data. They are accessible to your employer under the right circumstances. Using them to document bullying by your manager is not safe.
-            </p>
-            <p style={{ color: muted, marginBottom: "20px" }}>
-              Sovereign AI is different. MEOK is your tool, not your employer\u2019s. Sovereign Memory means your data belongs to you: encrypted, private, and completely outside your employer\u2019s reach. The architecture was built specifically so that your AI companion cannot be compelled to hand over your data to your employer, cannot be accessed by HR, and cannot be monitored by IT.
-            </p>
-            <p style={{ color: muted }}>
-              When you are dealing with an institution that has more power than you, having a private sovereign intelligence on your side &mdash; one that remembers everything you tell it, can help you think clearly, and is answerable only to you &mdash; is a meaningful shift in the power dynamic. It does not equalise everything. But it gives you something.
-            </p>
-          </section>
-
-          {/* ── Section 11: Self-care framework ── */}
-          <section style={{ marginBottom: "64px" }}>
-            <h2
-              style={{
-                fontSize: "1.6rem",
-                fontWeight: 700,
-                color: text,
-                marginBottom: "20px",
-                letterSpacing: "-0.01em",
-                lineHeight: "1.3",
-              }}
-            >
-              How do you protect your mental health while still employed by a bully?
-            </h2>
-            <p style={{ color: muted, marginBottom: "20px" }}>
-              The process of challenging workplace bullying is a marathon, not a sprint. You may need to continue performing in your role, attending meetings with the person harming you, and appearing professional while simultaneously building an evidence log and considering your legal options. That demands a level of psychological compartmentalisation that can be exhausting.
-            </p>
-            <p style={{ color: muted, marginBottom: "24px" }}>
-              Some grounded practical strategies for surviving the process.
-            </p>
-
-            <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
-                gap: "16px",
-                marginBottom: "28px",
-              }}
-            >
-              {[
-                {
-                  title: "Create firm boundaries between work and home",
-                  body: "Have a physical transition ritual when you leave work. Walk a different route. Change your clothes. Do not check work email after a set time. The harder boundary you can draw, the more restorative your non-work hours become.",
+                  title: "Understand your options clearly",
+                  detail:
+                    "MEOK can explain how formal grievances work, what ACAS does, when constructive dismissal applies, and what questions to ask an employment solicitor. It will be honest about the limits of what AI can tell you and direct you to the right human resources.",
                 },
                 {
-                  title: "Tell one trusted person",
-                  body: "Complete isolation in a bullying situation amplifies the harm. Choose one person outside your workplace who knows what is happening. They do not need to solve it. They just need to know, so that you are not carrying it entirely alone.",
-                },
-                {
-                  title: "Visit your GP",
-                  body: "If bullying is affecting your sleep, concentration, or mood significantly, see your GP. This creates a medical record of the psychological impact at the time, which is evidence if you later pursue a claim. It also gets you support you may genuinely need.",
-                },
-                {
-                  title: "Protect your professional identity",
-                  body: "Bullying attacks your professional self-concept. Counter this actively: remind yourself of your skills, keep a record of positive feedback from others, and if possible maintain relationships and projects that remind you of your competence independent of the bully\u2019s assessment.",
-                },
-                {
-                  title: "Use MEOK to decompress, not spiral",
-                  body: "MEOK can be a space to process events, but be intentional about not using it purely to ruminate. Balance venting with future-focused conversations: what you are doing next, what you need, what would help you feel more capable tomorrow.",
-                },
-                {
-                  title: "Consider your exit options in parallel",
-                  body: "You do not have to stay. Exploring other roles, updating your CV, and having a quiet conversation with your network costs nothing and preserves your options. Sometimes knowing you have an exit changes how you feel about staying to fight.",
+                  title: "Protect your mental health across the duration",
+                  detail:
+                    "Formal complaints take months. Legal processes take longer. The gap between deciding to act and resolution is where people break. Daily check-ins, decompression conversations, and the accumulating evidence that you are being heard all matter across that timeline.",
                 },
               ].map((item) => (
                 <div
                   key={item.title}
                   style={{
+                    display: "flex",
+                    gap: "1rem",
                     background: cardBg,
-                    border: `1px solid ${borderColor}`,
-                    borderRadius: "10px",
-                    padding: "22px 20px",
+                    border: `1px solid ${border}`,
+                    borderRadius: "12px",
+                    padding: "1.25rem",
                   }}
                 >
-                  <h3
+                  <div
                     style={{
-                      fontSize: "0.95rem",
-                      fontWeight: 700,
-                      color: gold,
-                      marginBottom: "8px",
-                      marginTop: 0,
+                      flexShrink: 0,
+                      width: "6px",
+                      borderRadius: "3px",
+                      background: gold,
+                      alignSelf: "stretch" as const,
                     }}
-                  >
-                    {item.title}
-                  </h3>
-                  <p style={{ color: muted, margin: 0, fontSize: "0.9rem" }}>{item.body}</p>
+                  />
+                  <div>
+                    <div style={{ fontWeight: 700, color: text, marginBottom: "0.35rem" }}>
+                      {item.title}
+                    </div>
+                    <div style={{ color: muted, fontSize: "0.9rem", lineHeight: 1.7 }}>
+                      {item.detail}
+                    </div>
+                  </div>
                 </div>
               ))}
             </div>
-
-            <p style={{ color: muted }}>
-              Surviving workplace bullying with your mental health intact is an act of significant personal resilience. The strategies above are not about passivity; they are about maintaining enough stability to take effective action at the right moment, rather than being so depleted that you cannot act at all.
-            </p>
           </section>
 
-          {/* ── FAQ Section ── */}
-          <section style={{ marginBottom: "64px" }}>
+          {/* ── FAQ ── */}
+          <section style={{ marginBottom: "3.5rem" }}>
             <h2
               style={{
-                fontSize: "1.6rem",
-                fontWeight: 700,
+                fontSize: "1.55rem",
+                fontWeight: 800,
                 color: text,
-                marginBottom: "32px",
+                margin: "0 0 1.5rem",
                 letterSpacing: "-0.01em",
-                lineHeight: "1.3",
               }}
             >
-              Frequently asked questions about AI and workplace bullying
+              Frequently asked questions
             </h2>
 
-            <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
+            <div style={{ display: "flex", flexDirection: "column" as const, gap: "1.25rem" }}>
               {[
                 {
                   q: "Can AI help with workplace bullying?",
-                  a: "Yes. AI cannot report your bully for you, but it can help you build a timestamped evidence log, identify behavioural patterns across incidents, rehearse what you want to say to HR, and process the emotional damage in a safe, private space. For many people, that practical and emotional scaffolding is the difference between staying silent and taking action.",
+                  a: "Yes \u2014 within honest limits. AI cannot report your bully or compel HR to act. But it can provide a completely private space to process what is happening, build a timestamped incident log, prepare for difficult conversations, identify patterns of gaslighting, and support your mental health through a situation that is specifically designed to make you doubt yourself.",
                 },
                 {
-                  q: "How do I document workplace bullying?",
-                  a: "Record every incident immediately after it happens with five key fields: date and time, location, what was said or done verbatim, who witnessed it, and how it affected you. Keep this log outside company systems \u2014 in a personal app or secure note. MEOK\u2019s Sovereign Memory creates a persistent, timestamped record that belongs only to you, which you can draw on when preparing a formal grievance.",
+                  q: "Will my employer be able to see what I tell MEOK?",
+                  a: "No. MEOK has no relationship with your employer. Your conversations are encrypted with AES-256, stored in Sovereign Memory that belongs entirely to you, never shared with any third party, and never used to train AI models. Unlike employer-provided EAPs, MEOK is entirely independent of your organisation.",
                 },
                 {
                   q: "What is gaslighting at work?",
-                  a: "Workplace gaslighting is when a colleague or manager causes you to doubt your own memory or perception of events \u2014 saying things like \u2018that never happened\u2019, \u2018you\u2019re too sensitive\u2019, or \u2018everyone else is fine with it\u2019. It is a subtle form of psychological manipulation that erodes your confidence and makes it harder to report abuse. Documenting incidents in real time is one of the most effective defences against it.",
+                  a: "Workplace gaslighting is when a manager or colleague causes you to doubt your own memory or perception \u2014 using phrases like \u201cthat never happened,\u201d \u201cyou\u2019re being oversensitive,\u201d or \u201ceveryone else is fine with it.\u201d Real-time documentation is the most effective defence: a contemporaneous record cannot be gaslit.",
                 },
                 {
-                  q: "Can MEOK help me prepare for an HR meeting?",
-                  a: "Yes. MEOK can help you structure your account of events clearly, anticipate the questions HR is likely to ask, rehearse your answers until you feel confident, and think through what outcome you want from the meeting. You can run through the conversation as many times as you need, in private, without time pressure or judgment.",
+                  q: "What are my legal rights if I am being bullied at work in the UK?",
+                  a: "UK employees have the right to raise a formal grievance under the Employment Rights Act 1996. Where bullying is linked to a protected characteristic (race, sex, disability, age, religion, sexual orientation), it may constitute unlawful harassment under the Equality Act 2010. ACAS provides free conciliation. If conditions become intolerable and you resign, you may have grounds for constructive dismissal. Consult a solicitor before taking formal steps.",
                 },
                 {
-                  q: "What should I do if HR ignores my bullying complaint?",
-                  a: "First, document the failure to act in the same way you documented the bullying \u2014 dates, what you submitted, who you spoke to, and what response you received. Then consider escalating to ACAS (free UK conciliation service), your trade union, or an employment solicitor. Your evidence log becomes critical at this stage. MEOK can help you organise this documentation and prepare for external escalation.",
+                  q: "What is constructive dismissal?",
+                  a: "Constructive dismissal is when an employer\u2019s conduct is so serious that you have no reasonable alternative but to resign, and the law treats that resignation as a dismissal. Sustained bullying that the employer fails to address after a formal grievance may meet this threshold. You usually need two years\u2019 service and must have raised a grievance first. A strong evidence log is essential to any claim.",
                 },
-              ].map((item, i) => (
+              ].map((item) => (
                 <div
-                  key={i}
+                  key={item.q}
                   style={{
                     background: cardBg,
-                    border: `1px solid ${borderColor}`,
-                    borderRadius: "10px",
-                    padding: "28px 32px",
-                    marginBottom: "8px",
+                    border: `1px solid ${border}`,
+                    borderRadius: "12px",
+                    padding: "1.375rem 1.5rem",
                   }}
                 >
-                  <h3
+                  <p
                     style={{
-                      fontSize: "1.05rem",
+                      margin: "0 0 0.5rem",
                       fontWeight: 700,
                       color: text,
-                      marginBottom: "12px",
-                      marginTop: 0,
+                      fontSize: "1rem",
                     }}
                   >
                     {item.q}
-                  </h3>
-                  <p style={{ color: muted, margin: 0, lineHeight: "1.7" }}>{item.a}</p>
+                  </p>
+                  <p style={{ margin: 0, color: muted, lineHeight: 1.75, fontSize: "0.925rem" }}>
+                    {item.a}
+                  </p>
                 </div>
               ))}
             </div>
           </section>
 
-          {/* ── CTA Section ── */}
+          {/* ── CTA ── */}
           <section
             style={{
               background: warnBg,
-              border: `1px solid ${borderColor}`,
+              border: `1px solid rgba(201,168,76,0.4)`,
               borderRadius: "16px",
-              padding: "48px 40px",
-              marginBottom: "64px",
-              textAlign: "center",
+              padding: "2.5rem 2rem",
+              textAlign: "center" as const,
             }}
           >
-            <div
+            <p
               style={{
+                margin: "0 0 0.75rem",
                 fontSize: "0.8rem",
                 fontWeight: 700,
+                letterSpacing: "0.1em",
+                textTransform: "uppercase" as const,
                 color: gold,
-                letterSpacing: "0.12em",
-                textTransform: "uppercase",
-                marginBottom: "16px",
               }}
             >
               MEOK AI LABS
-            </div>
+            </p>
             <h2
               style={{
-                fontSize: "clamp(1.4rem, 3vw, 2rem)",
-                fontWeight: 700,
+                fontSize: "clamp(1.4rem, 3vw, 1.9rem)",
+                fontWeight: 800,
                 color: text,
-                marginBottom: "16px",
-                marginTop: 0,
-                lineHeight: "1.3",
+                margin: "0 0 1rem",
+                letterSpacing: "-0.01em",
               }}
             >
-              You deserve an AI that is on your side
+              You deserve somewhere private to process this
             </h2>
             <p
               style={{
                 color: muted,
-                maxWidth: "540px",
-                margin: "0 auto 32px",
-                lineHeight: "1.7",
+                lineHeight: 1.8,
+                margin: "0 auto 1.75rem",
+                maxWidth: "520px",
+                fontSize: "0.975rem",
               }}
             >
-              MEOK gives you a private, sovereign AI companion that remembers your story, helps you document what is happening, and supports you through the hardest professional experiences of your life. No employer access. No data training. No waiting list.
+              MEOK is a sovereign AI that belongs only to you. Your employer will never see what you say.
+              Your data will never be shared or used for training. Start with the free Explorer tier &mdash;
+              50 messages per day, no credit card required. Build your incident log. Process what is
+              happening. Plan your next move.
             </p>
-            <div
+            <Link
+              href="/birth"
               style={{
-                display: "flex",
-                flexWrap: "wrap",
-                gap: "16px",
-                justifyContent: "center",
-              }}
-            >
-              <Link
-                href="/birth"
-                style={{
-                  display: "inline-block",
-                  background: gold,
-                  color: bg,
-                  fontWeight: 700,
-                  fontSize: "0.95rem",
-                  padding: "14px 32px",
-                  borderRadius: "8px",
-                  textDecoration: "none",
-                  letterSpacing: "0.02em",
-                }}
-              >
-                Start with MEOK &rarr;
-              </Link>
-              <Link
-                href="/guardian"
-                style={{
-                  display: "inline-block",
-                  background: "transparent",
-                  color: gold,
-                  fontWeight: 700,
-                  fontSize: "0.95rem",
-                  padding: "14px 32px",
-                  borderRadius: "8px",
-                  textDecoration: "none",
-                  border: `1px solid ${borderColor}`,
-                  letterSpacing: "0.02em",
-                }}
-              >
-                Explore Guardian mode
-              </Link>
-            </div>
-          </section>
-
-          {/* ── Related articles ── */}
-          <section style={{ marginBottom: "48px" }}>
-            <h2
-              style={{
-                fontSize: "1.2rem",
+                display: "inline-block",
+                background: gold,
+                color: "#0d0c18",
                 fontWeight: 700,
-                color: text,
-                marginBottom: "20px",
-                letterSpacing: "-0.01em",
+                fontSize: "1rem",
+                padding: "0.875rem 2.25rem",
+                borderRadius: "999px",
+                textDecoration: "none",
+                letterSpacing: "0.01em",
               }}
             >
-              Related reading
-            </h2>
-            <div
+              Start for Free &rarr;
+            </Link>
+            <p
               style={{
-                display: "grid",
-                gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
-                gap: "12px",
+                marginTop: "1rem",
+                fontSize: "0.8rem",
+                color: "rgba(245,240,232,0.35)",
               }}
             >
-              {[
-                { href: "/blog/ai-for-workplace-stress", label: "AI for Workplace Stress" },
-                { href: "/blog/ai-for-anxiety", label: "AI for Anxiety" },
-                { href: "/blog/ai-for-burnout", label: "AI for Burnout" },
-                { href: "/blog/ai-for-ptsd", label: "AI for PTSD" },
-                { href: "/blog/ai-for-impostor-syndrome", label: "AI for Impostor Syndrome" },
-                { href: "/blog/guardian-family-safety", label: "Guardian: Family Safety" },
-              ].map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  style={{
-                    display: "block",
-                    background: cardBg,
-                    border: `1px solid ${borderColor}`,
-                    borderRadius: "8px",
-                    padding: "16px 18px",
-                    textDecoration: "none",
-                    color: text,
-                    fontSize: "0.9rem",
-                    fontWeight: 500,
-                    transition: "border-color 0.2s",
-                  }}
-                >
-                  {link.label} &rarr;
-                </Link>
-              ))}
-            </div>
+              No credit card. No employer access. Your data, your sovereign memory.
+            </p>
           </section>
 
-          {/* ── Footer byline ── */}
-          <footer
-            style={{
-              borderTop: `1px solid ${borderColor}`,
-              paddingTop: "32px",
-              display: "flex",
-              flexWrap: "wrap",
-              gap: "16px",
-              justifyContent: "space-between",
-              alignItems: "flex-start",
-            }}
-          >
-            <div>
-              <p
-                style={{
-                  color: muted,
-                  fontSize: "0.875rem",
-                  margin: "0 0 4px",
-                }}
-              >
-                Written by <strong style={{ color: text }}>Nicholas Templeman</strong>
-              </p>
-              <p style={{ color: muted, fontSize: "0.875rem", margin: 0 }}>
-                Founder, MEOK AI LABS &mdash;{" "}
-                <a
-                  href="https://x.com/meok_ai"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{ color: gold, textDecoration: "none" }}
-                >
-                  @meok_ai
-                </a>
-              </p>
-            </div>
-            <div style={{ textAlign: "right" }}>
-              <p style={{ color: muted, fontSize: "0.8rem", margin: "0 0 4px" }}>
-                Published: 24 March 2026
-              </p>
-              <p style={{ color: muted, fontSize: "0.8rem", margin: 0 }}>
-                &copy; 2026 MEOK AI LABS
-              </p>
-            </div>
-          </footer>
         </article>
-      </main>
+      </div>
     </>
   );
 }

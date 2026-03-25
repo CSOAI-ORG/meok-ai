@@ -1,1629 +1,3533 @@
-import type { Metadata } from 'next'
-import Link from 'next/link'
+import type { Metadata } from "next"
+import Link from "next/link"
 
 // ── Metadata ───────────────────────────────────────────────────────────────────
 
 export const metadata: Metadata = {
-  title: "Sovereign AI Explained: Why Your AI Should Answer to You, Not Big Tech | MEOK AI LABS",
+  title: "What is Sovereign AI? The Complete Guide (2026) | MEOK AI LABS",
   description:
-    "Sovereign AI means your data stays yours — no training on your conversations, no ad targeting, no employees reading your messages. Here's what it really means and why it matters.",
-  alternates: { canonical: 'https://meok.ai/blog/sovereign-ai-explained' },
+    "Sovereign AI is AI where the individual \u2014 not the corporation \u2014 owns the data, models, memory, and interactions. MEOK coined \u2018Personal Sovereign AI\u2019 as a consumer category. This is the complete guide.",
+  alternates: { canonical: "https://meok.ai/blog/sovereign-ai-explained" },
   openGraph: {
-    title: "Sovereign AI Explained: Why Your AI Should Answer to You, Not Big Tech",
+    title: "What is Sovereign AI? The Complete Guide (2026) | MEOK AI LABS",
     description:
-      "Cloud AI profits from your data. Sovereign AI protects it. A deep explainer on data sovereignty, encryption, the Maternal Covenant, and MEOK's architecture.",
-    type: 'article',
-    publishedTime: '2026-03-24',
-    authors: ['Nicholas Templeman'],
-    url: 'https://meok.ai/blog/sovereign-ai-explained',
-    siteName: 'MEOK.AI',
+      "Sovereign AI puts you in control: your data, your models, your memory, your future. MEOK coined \u2018Personal Sovereign AI\u2019 as the consumer category that changes everything. Complete 2026 guide.",
+    type: "article",
+    publishedTime: "2026-03-25",
+    authors: ["Nicholas Templeman"],
+    url: "https://meok.ai/blog/sovereign-ai-explained",
+    siteName: "MEOK.AI",
     images: [
       {
-        url: 'https://meok.ai/api/og?title=Sovereign+AI+Explained&desc=Why+Your+AI+Should+Answer+to+You%2C+Not+Big+Tech',
+        url: "https://meok.ai/api/og?title=What+is+Sovereign+AI%3F&desc=The+Complete+Guide+2026+%E2%80%94+MEOK+AI+LABS",
         width: 1200,
         height: 630,
-        alt: 'Sovereign AI Explained: Why Your AI Should Answer to You, Not Big Tech',
+        alt: "What is Sovereign AI? The Complete Guide (2026)",
       },
     ],
   },
   twitter: {
-    card: 'summary_large_image',
-    title: "Sovereign AI Explained: Why Your AI Should Answer to You, Not Big Tech",
+    card: "summary_large_image",
+    title: "What is Sovereign AI? The Complete Guide (2026)",
     description:
-      "Cloud AI profits from your data. Sovereign AI protects it. A deep explainer on data sovereignty, encryption, the Maternal Covenant, and MEOK's architecture.",
+      "Sovereign AI puts you in control of your data, models, memory, and interactions. MEOK coined \u2018Personal Sovereign AI\u2019 as the defining consumer category of 2026.",
     images: [
-      'https://meok.ai/api/og?title=Sovereign+AI+Explained&desc=Why+Your+AI+Should+Answer+to+You%2C+Not+Big+Tech',
+      "https://meok.ai/api/og?title=What+is+Sovereign+AI%3F&desc=The+Complete+Guide+2026+%E2%80%94+MEOK+AI+LABS",
     ],
   },
 }
 
-// ── JSON-LD: Article ───────────────────────────────────────────────────────────
+// ── JSON-LD ────────────────────────────────────────────────────────────────────
 
-const articleJsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'Article',
-  headline: "Sovereign AI Explained: Why Your AI Should Answer to You, Not Big Tech",
-  description:
-    "A deep explainer on sovereign AI — what it means, why data sovereignty matters, the difference between cloud AI and sovereign AI, MEOK's architecture, encryption, the Maternal Covenant governance framework, and the Byzantine Council consensus mechanism invented by Nicholas Templeman.",
-  datePublished: '2026-03-24',
-  dateModified: '2026-03-24',
-  url: 'https://meok.ai/blog/sovereign-ai-explained',
-  author: {
-    '@type': 'Person',
-    name: 'Nicholas Templeman',
-    jobTitle: 'Founder, MEOK AI LABS',
-    url: 'https://meok.ai/about',
-  },
-  publisher: {
-    '@type': 'Organization',
-    name: 'MEOK AI LABS',
-    url: 'https://meok.ai',
-    logo: {
-      '@type': 'ImageObject',
-      url: 'https://meok.ai/logo.png',
-    },
-  },
-  mainEntityOfPage: {
-    '@type': 'WebPage',
-    '@id': 'https://meok.ai/blog/sovereign-ai-explained',
-  },
-  keywords:
-    'sovereign ai, data sovereignty, personal ai, ai privacy, meok, byzantine council, maternal covenant',
-}
-
-// ── JSON-LD: FAQPage ───────────────────────────────────────────────────────────
-
-const faqJsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: [
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
     {
-      '@type': 'Question',
-      name: 'What is sovereign AI?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Sovereign AI is an AI system where the user — not the company that built it — is the principal authority over their data, memory, and model choices. Sovereign AI does not train on your conversations, stores memory in a vault you control, does not sell your data to advertisers, and allows you to export or delete everything at any time.',
+      "@type": "Article",
+      "@id": "https://meok.ai/blog/sovereign-ai-explained#article",
+      headline: "What is Sovereign AI? The Complete Guide (2026)",
+      description:
+        "Sovereign AI is AI where the individual \u2014 not the corporation \u2014 owns the data, models, memory, and interactions. MEOK coined \u2018Personal Sovereign AI\u2019 as a consumer category. This is the complete guide.",
+      datePublished: "2026-03-25",
+      dateModified: "2026-03-25",
+      url: "https://meok.ai/blog/sovereign-ai-explained",
+      inLanguage: "en-GB",
+      author: {
+        "@type": "Person",
+        name: "Nicholas Templeman",
+        jobTitle: "Founder, MEOK AI LABS",
+        url: "https://meok.ai/about",
       },
-    },
-    {
-      '@type': 'Question',
-      name: 'What is the difference between cloud AI and sovereign AI?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Cloud AI processes your data on the provider\'s servers, may use your interactions as training signal, can store your conversations indefinitely, and locks your memory in proprietary infrastructure. Sovereign AI processes sensitive data locally, never uses your conversations for training, stores your memory in a vault you own and can export, and never sells your data.',
+      publisher: {
+        "@type": "Organization",
+        name: "MEOK AI LABS",
+        url: "https://meok.ai",
+        logo: {
+          "@type": "ImageObject",
+          url: "https://meok.ai/logo.png",
+        },
       },
-    },
-    {
-      '@type': 'Question',
-      name: 'Does MEOK train on my conversations?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'No. MEOK does not train on your conversations. This is enforced at the infrastructure level — there is no automated connection between your data vault and any training pipeline. It is an architectural commitment, not a policy promise that can be quietly changed in a terms-of-service update.',
+      image:
+        "https://meok.ai/api/og?title=What+is+Sovereign+AI%3F&desc=The+Complete+Guide+2026+%E2%80%94+MEOK+AI+LABS",
+      mainEntityOfPage: {
+        "@type": "WebPage",
+        "@id": "https://meok.ai/blog/sovereign-ai-explained",
       },
+      isBasedOn: {
+        "@type": "ScholarlyArticle",
+        identifier: "MEOK-AI-2026-004",
+        name: "Personal Sovereign AI: A New Consumer Category",
+        author: "Nicholas Templeman",
+        publisher: "MEOK AI LABS",
+        datePublished: "2026-01-01",
+      },
+      keywords: [
+        "sovereign AI",
+        "personal sovereign AI",
+        "AI data ownership",
+        "sovereign memory",
+        "MEOK-AI-2026-004",
+        "AI privacy",
+        "memory portability",
+        "care ethics AI",
+        "no surveillance AI",
+        "cloud AI vs sovereign AI",
+        "MEOK AI LABS",
+        "what is sovereign AI",
+      ],
+      articleSection: "AI Education",
+      wordCount: 3800,
     },
     {
-      '@type': 'Question',
-      name: 'What is the Maternal Covenant?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'The Maternal Covenant is MEOK\'s governance framework — a set of structural principles that governs how MEOK treats user data and wellbeing. It defines what MEOK will never do regardless of commercial pressure: it will never train on your conversations, never sell your data, never deceive you to serve business interests, and always act in your interest over the company\'s. It is enforced architecturally, not just as policy.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'What is the Byzantine Council?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'The Byzantine Council is MEOK\'s multi-agent consensus mechanism invented by Nicholas Templeman. Inspired by Byzantine fault-tolerant distributed systems, it uses 43 independent AI agents to evaluate every MEOK response before delivery. A supermajority of 29 agents must agree before a response is sent. This means no single agent — and no adversarial prompt — can override MEOK\'s care-based alignment.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'Can MEOK employees read my conversations?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'No. MEOK\'s sovereign architecture means your data is encrypted and stored in a vault that MEOK employees cannot access. Unlike cloud AI providers where a support ticket or internal review process may expose your conversations, MEOK\'s zero-knowledge architecture ensures that only you hold the keys to your memory.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'What is data sovereignty in AI?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Data sovereignty in AI means you retain legal and technical ownership of every piece of information you share with an AI system. You can export it, delete it, and choose who — if anyone — can access it. Most AI products today offer data sovereignty as a policy promise. MEOK enforces it as an architectural fact.',
-      },
+      "@type": "FAQPage",
+      "@id": "https://meok.ai/blog/sovereign-ai-explained#faq",
+      mainEntity: [
+        {
+          "@type": "Question",
+          name: "What is Sovereign AI?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Sovereign AI is artificial intelligence where the individual user \u2014 not the technology corporation \u2014 holds complete ownership and control over their data, the AI models they use, the memory those models accumulate, and every interaction that takes place. It stands in direct contrast to cloud AI, where corporations own, store, and exploit user data.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Who coined the term Personal Sovereign AI?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "MEOK AI LABS, founded by Nicholas Templeman, coined \u2018Personal Sovereign AI\u2019 as a defined consumer category in research paper MEOK-AI-2026-004, published in 2026. The term describes a class of AI products where individual sovereignty over data, models, memory, and interaction is a core architectural guarantee, not a marketing claim.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "What are the five pillars of Sovereign AI?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "The five pillars of Sovereign AI, as defined by MEOK AI LABS (MEOK-AI-2026-004), are: (1) Data Ownership \u2014 you own every byte generated in your AI interactions; (2) Model Choice \u2014 you select and control which AI models process your data; (3) Memory Portability \u2014 your AI memory is exportable, deletable, and transferable at any time; (4) Care Ethics \u2014 the AI is designed for your wellbeing, not engagement metrics; (5) No Surveillance \u2014 zero training on your data, zero profiling, zero behavioural advertising.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "How does sovereign memory differ from cloud AI memory?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Sovereign memory is memory you own: stored in your personal vault, encrypted under your keys, fully exportable, and never used to train corporate models. Cloud AI memory belongs to the platform: it is stored on corporate servers, used to personalise advertising and improve corporate models, and can be deleted or altered by the company at any time without your consent.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Why does AI data ownership matter?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Your conversations with AI contain your values, fears, ambitions, relationships, and health concerns. In cloud AI systems, this extraordinarily sensitive data is owned by corporations who may use it to shape future AI behaviour, target advertising, or share it with third parties. Data ownership ensures that your most intimate digital relationships remain private and under your control.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "How does MEOK implement Sovereign AI?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "MEOK implements Sovereign AI through five architectural commitments: a Privacy Covenant (legally binding no-training guarantee), the Byzantine Council (decentralised consensus with no single point of control), sovereign memory vaults (user-encrypted, exportable at any time), model agnosticism (you choose which AI engine powers your companion), and the Maternal Covenant (ethical care framework that prioritises user wellbeing over engagement).",
+          },
+        },
+      ],
     },
   ],
 }
 
-// ── Style constants ────────────────────────────────────────────────────────────
-
-const GOLD = '#c9a84c'
-const TEXT = '#f5f0e8'
-const BG = '#0d0c18'
-const MUTED = 'rgba(245,240,232,0.6)'
-const MUTED_DIM = 'rgba(245,240,232,0.45)'
-const MUTED_FAINT = 'rgba(245,240,232,0.35)'
-const SURFACE = 'rgba(245,240,232,0.05)'
-const SURFACE_BORDER = 'rgba(245,240,232,0.08)'
-const GOLD_DIM = 'rgba(201,168,76,0.12)'
-const GOLD_BORDER = 'rgba(201,168,76,0.28)'
-const GOLD_GLOW = 'rgba(201,168,76,0.08)'
-
-// ── Page ───────────────────────────────────────────────────────────────────────
+// ── Page Component ─────────────────────────────────────────────────────────────
 
 export default function SovereignAIExplainedPage() {
   return (
-    <div style={{ minHeight: '100vh', background: BG, color: TEXT }}>
+    <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      {/* ── HERO ──────────────────────────────────────────────────────────────── */}
-      <section
+      <main
         style={{
-          paddingTop: '8rem',
-          paddingBottom: '4rem',
-          paddingLeft: '1.5rem',
-          paddingRight: '1.5rem',
-          position: 'relative',
-          overflow: 'hidden',
+          backgroundColor: "#0d0c18",
+          color: "#f5f0e8",
+          fontFamily: "system-ui, -apple-system, sans-serif",
+          minHeight: "100vh",
+          paddingBottom: "80px",
         }}
       >
-        {/* Radial glow */}
-        <div
+        {/* ── Nav breadcrumb ── */}
+        <nav
           style={{
-            position: 'absolute',
-            inset: 0,
-            pointerEvents: 'none',
-            background:
-              'radial-gradient(ellipse 60% 55% at 50% 0%, rgba(201,168,76,0.11) 0%, transparent 68%)',
+            maxWidth: "760px",
+            margin: "0 auto",
+            padding: "24px 24px 0 24px",
+            fontSize: "14px",
+            color: "#a09880",
           }}
-        />
-
-        <div style={{ maxWidth: '48rem', margin: '0 auto', position: 'relative' }}>
-          {/* Back link */}
+        >
+          <Link href="/" style={{ color: "#a09880", textDecoration: "none" }}>
+            MEOK
+          </Link>
+          <span style={{ margin: "0 8px" }}>/</span>
           <Link
             href="/blog"
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '0.375rem',
-              fontSize: '0.875rem',
-              color: MUTED_FAINT,
-              marginBottom: '2rem',
-              textDecoration: 'none',
-            }}
+            style={{ color: "#a09880", textDecoration: "none" }}
           >
-            &#8592; Back to Blog
+            Blog
           </Link>
+          <span style={{ margin: "0 8px" }}>/</span>
+          <span style={{ color: "#c9a84c" }}>Sovereign AI Explained</span>
+        </nav>
 
-          {/* Tags row */}
-          <div
-            style={{
-              display: 'flex',
-              flexWrap: 'wrap',
-              alignItems: 'center',
-              gap: '0.75rem',
-              marginBottom: '1.5rem',
-            }}
-          >
-            <span
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                fontSize: '0.75rem',
-                fontWeight: 700,
-                paddingTop: '0.3rem',
-                paddingBottom: '0.3rem',
-                paddingLeft: '0.75rem',
-                paddingRight: '0.75rem',
-                borderRadius: '9999px',
-                color: GOLD,
-                background: GOLD_DIM,
-                border: `1px solid ${GOLD_BORDER}`,
-                letterSpacing: '0.04em',
-              }}
-            >
-              Sovereign AI
-            </span>
-            <span
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                fontSize: '0.75rem',
-                fontWeight: 700,
-                paddingTop: '0.3rem',
-                paddingBottom: '0.3rem',
-                paddingLeft: '0.75rem',
-                paddingRight: '0.75rem',
-                borderRadius: '9999px',
-                color: MUTED_DIM,
-                background: SURFACE,
-                border: `1px solid ${SURFACE_BORDER}`,
-                letterSpacing: '0.04em',
-              }}
-            >
-              Deep Explainer
-            </span>
-            <span style={{ fontSize: '0.8rem', color: MUTED_FAINT }}>
-              March 24, 2026
-            </span>
-            <span style={{ fontSize: '0.8rem', color: MUTED_FAINT }}>
-              14 min read
-            </span>
-          </div>
-
-          {/* H1 */}
-          <h1
-            style={{
-              fontWeight: 900,
-              fontSize: 'clamp(1.85rem, 3.8vw, 2.9rem)',
-              color: '#ffffff',
-              lineHeight: 1.18,
-              marginBottom: '1.5rem',
-              letterSpacing: '-0.02em',
-            }}
-          >
-            Sovereign AI Explained: Why Your AI Should Answer to You, Not Big
-            Tech
-          </h1>
-
-          {/* Deck */}
-          <p
-            style={{
-              color: MUTED,
-              fontSize: '1.125rem',
-              lineHeight: 1.7,
-              maxWidth: '42rem',
-              marginBottom: 0,
-            }}
-          >
-            Every time you talk to ChatGPT, Gemini, or Claude, you are handing
-            a trillion-dollar company a window into your thinking — your fears,
-            your plans, your health, your relationships. That data trains their
-            next model, targets ads, and can be read by employees. Sovereign AI
-            is the alternative. Here is what it actually means, and why most
-            &ldquo;private AI&rdquo; products are not even close.
-          </p>
-        </div>
-      </section>
-
-      {/* ── ARTICLE WRAPPER ───────────────────────────────────────────────────── */}
-      <div
-        style={{
-          maxWidth: '48rem',
-          margin: '0 auto',
-          paddingTop: '3rem',
-          paddingBottom: '5rem',
-          paddingLeft: '1.5rem',
-          paddingRight: '1.5rem',
-        }}
-      >
-
-        {/* ── AUTHOR CARD ─────────────────────────────────────────────────────── */}
-        <div
+        {/* ── Hero ── */}
+        <header
           style={{
-            display: 'flex',
-            alignItems: 'flex-start',
-            gap: '1rem',
-            padding: '1.25rem',
-            borderRadius: '1rem',
-            marginBottom: '3rem',
-            background: SURFACE,
-            border: `1px solid ${SURFACE_BORDER}`,
+            maxWidth: "760px",
+            margin: "0 auto",
+            padding: "48px 24px 40px 24px",
           }}
         >
           <div
             style={{
-              width: '2.75rem',
-              height: '2.75rem',
-              borderRadius: '9999px',
-              background: 'linear-gradient(135deg, #c9a84c 0%, #8a6a1a 100%)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              fontWeight: 900,
-              fontSize: '0.8rem',
-              color: '#0d0c18',
-              flexShrink: 0,
+              display: "inline-block",
+              backgroundColor: "#13121f",
+              border: "1px solid #2a2840",
+              borderRadius: "4px",
+              padding: "4px 12px",
+              fontSize: "12px",
+              color: "#c9a84c",
+              letterSpacing: "0.08em",
+              textTransform: "uppercase" as const,
+              marginBottom: "20px",
             }}
           >
-            NT
+            MEOK-AI-2026-004 &mdash; Definitive Guide
           </div>
-          <div style={{ flex: 1 }}>
-            <p
-              style={{
-                fontWeight: 700,
-                fontSize: '0.9rem',
-                color: TEXT,
-                marginBottom: '0.2rem',
-              }}
-            >
-              Nicholas Templeman
-            </p>
-            <p
-              style={{
-                fontSize: '0.8rem',
-                color: MUTED_FAINT,
-                marginBottom: '0.5rem',
-              }}
-            >
-              Founder, MEOK AI LABS &mdash; Inventor of the Byzantine Council
-              consensus mechanism
-            </p>
-            <p
-              style={{
-                fontSize: '0.8rem',
-                color: MUTED_DIM,
-                lineHeight: 1.6,
-              }}
-            >
-              Nicholas built MEOK after a decade of watching Big Tech turn
-              intimacy into inventory. He invented the Byzantine Council
-              consensus mechanism to make care-based AI alignment structurally
-              enforceable, not just a policy promise. He lives and works in the
-              UK — mostly from a caravan on his farm.
-            </p>
-          </div>
-          <Link
-            href="/about"
+
+          <h1
             style={{
-              fontSize: '0.8rem',
-              fontWeight: 600,
-              color: GOLD,
-              textDecoration: 'none',
-              whiteSpace: 'nowrap',
+              fontSize: "clamp(28px, 5vw, 44px)",
+              fontWeight: "700",
+              lineHeight: "1.2",
+              color: "#f5f0e8",
+              margin: "0 0 24px 0",
+              letterSpacing: "-0.02em",
             }}
           >
-            About &rarr;
-          </Link>
+            What is Sovereign AI?{" "}
+            <span style={{ color: "#c9a84c" }}>The Complete Guide (2026)</span>
+          </h1>
+
+          <p
+            style={{
+              fontSize: "18px",
+              lineHeight: "1.7",
+              color: "#a09880",
+              margin: "0 0 32px 0",
+              maxWidth: "620px",
+            }}
+          >
+            Sovereign AI is the emerging category of artificial intelligence
+            where you &mdash; the individual &mdash; hold complete ownership of
+            your data, your models, your memory, and every interaction. It is
+            the antithesis of cloud AI, where corporations own everything you
+            share. MEOK AI LABS coined &apos;Personal Sovereign AI&apos; as a
+            defined consumer category. This guide explains what it means, why
+            it matters, and how it works.
+          </p>
+
+          <div
+            style={{
+              display: "flex",
+              flexWrap: "wrap" as const,
+              gap: "16px",
+              fontSize: "13px",
+              color: "#a09880",
+            }}
+          >
+            <span>By Nicholas Templeman &mdash; MEOK AI LABS</span>
+            <span>Published: 25 March 2026</span>
+            <span>Research ref: MEOK-AI-2026-004</span>
+            <span>~20 min read</span>
+          </div>
+        </header>
+
+        {/* ── Table of Contents ── */}
+        <div
+          style={{
+            maxWidth: "760px",
+            margin: "0 auto 48px auto",
+            padding: "0 24px",
+          }}
+        >
+          <div
+            style={{
+              backgroundColor: "#13121f",
+              border: "1px solid #2a2840",
+              borderRadius: "8px",
+              padding: "28px 32px",
+            }}
+          >
+            <p
+              style={{
+                fontSize: "11px",
+                letterSpacing: "0.1em",
+                textTransform: "uppercase" as const,
+                color: "#c9a84c",
+                margin: "0 0 16px 0",
+                fontWeight: "600",
+              }}
+            >
+              Contents
+            </p>
+            <ol
+              style={{
+                margin: "0",
+                padding: "0 0 0 20px",
+                lineHeight: "2",
+                fontSize: "15px",
+                color: "#a09880",
+              }}
+            >
+              <li>
+                <a
+                  href="#what-is-sovereign-ai"
+                  style={{ color: "#c9a84c", textDecoration: "none" }}
+                >
+                  What is Sovereign AI?
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#why-coined"
+                  style={{ color: "#c9a84c", textDecoration: "none" }}
+                >
+                  Who coined Personal Sovereign AI and why?
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#why-data-ownership-matters"
+                  style={{ color: "#c9a84c", textDecoration: "none" }}
+                >
+                  Why does AI data ownership matter?
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#sovereign-memory-vs-cloud-memory"
+                  style={{ color: "#c9a84c", textDecoration: "none" }}
+                >
+                  How does sovereign memory differ from cloud memory?
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#five-pillars"
+                  style={{ color: "#c9a84c", textDecoration: "none" }}
+                >
+                  The five pillars of Sovereign AI
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#sovereign-vs-cloud-comparison"
+                  style={{ color: "#c9a84c", textDecoration: "none" }}
+                >
+                  Sovereign AI vs Cloud AI: full comparison
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#how-meok-implements"
+                  style={{ color: "#c9a84c", textDecoration: "none" }}
+                >
+                  How MEOK implements each pillar
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#your-conversations-shape-ai"
+                  style={{ color: "#c9a84c", textDecoration: "none" }}
+                >
+                  Your conversations shape future AI &mdash; who should control
+                  that?
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#getting-started"
+                  style={{ color: "#c9a84c", textDecoration: "none" }}
+                >
+                  How to get started with Sovereign AI
+                </a>
+              </li>
+            </ol>
+          </div>
         </div>
 
-        {/* ── BODY PROSE ──────────────────────────────────────────────────────── */}
-        <div style={{ lineHeight: 1.85 }}>
-
-          {/* Opening */}
-          <p style={{ fontSize: '1rem', color: MUTED, marginBottom: '1.5rem' }}>
-            The phrase &ldquo;sovereign AI&rdquo; has started appearing
-            everywhere. In venture capital pitch decks. In government white
-            papers about national AI strategy. In the marketing copy of
-            startups that, when you look closely, still store everything on
-            AWS. The word &ldquo;sovereign&rdquo; is doing a lot of work it has
-            not earned.
-          </p>
-          <p style={{ fontSize: '1rem', color: MUTED, marginBottom: '1.5rem' }}>
-            Sovereignty is a precise concept. It means the final authority
-            rests with one party — and in sovereign AI, that party should be
-            you, the person whose life is being discussed. Not the company that
-            built the model. Not the cloud provider that hosts it. Not an
-            advertiser buying access to your behavioural profile. You.
-          </p>
-          <p style={{ fontSize: '1rem', color: MUTED, marginBottom: '2.5rem' }}>
-            This post is an honest account of what sovereign AI actually
-            requires, why the dominant AI products fail to deliver it, and how
-            MEOK is built differently — from the encryption layer up.
-          </p>
-
-          {/* ── H2: WHAT IS CLOUD AI DOING WITH YOUR DATA? ────────────────────── */}
-          <h2
-            style={{
-              fontWeight: 900,
-              fontSize: 'clamp(1.3rem, 2.6vw, 1.65rem)',
-              color: '#ffffff',
-              lineHeight: 1.25,
-              marginTop: '3rem',
-              marginBottom: '1rem',
-              letterSpacing: '-0.015em',
-            }}
-          >
-            What Is Cloud AI Actually Doing With Your Data?
-          </h2>
-          <p style={{ fontSize: '1rem', color: MUTED, marginBottom: '1.25rem' }}>
-            Let us start with what most people do not realise is happening. When
-            you open ChatGPT and type something — anything — that text is
-            transmitted to OpenAI&apos;s servers, processed there, stored in
-            their infrastructure, and potentially used in several ways you did
-            not explicitly sign up for when you clicked &ldquo;I agree.&rdquo;
-          </p>
-          <p style={{ fontSize: '1rem', color: MUTED, marginBottom: '1.25rem' }}>
-            The major cloud AI providers are, to varying degrees, all doing some
-            version of the following:
-          </p>
-
-          {/* Callout box */}
-          <div
-            style={{
-              borderLeft: `3px solid ${GOLD}`,
-              paddingTop: '1rem',
-              paddingBottom: '1rem',
-              paddingLeft: '1.5rem',
-              paddingRight: '1.5rem',
-              borderRadius: '0 0.75rem 0.75rem 0',
-              background: GOLD_GLOW,
-              marginBottom: '1.5rem',
-            }}
-          >
-            <ul
+        {/* ── Body content ── */}
+        <article
+          style={{
+            maxWidth: "760px",
+            margin: "0 auto",
+            padding: "0 24px",
+          }}
+        >
+          {/* ── Section 1: What is Sovereign AI ── */}
+          <section id="what-is-sovereign-ai" style={{ marginBottom: "64px" }}>
+            <h2
               style={{
-                margin: 0,
-                padding: 0,
-                listStyle: 'none',
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '0.6rem',
+                fontSize: "28px",
+                fontWeight: "700",
+                color: "#f5f0e8",
+                margin: "0 0 20px 0",
+                letterSpacing: "-0.01em",
+                lineHeight: "1.3",
               }}
             >
-              {[
-                'Storing your conversations on their servers, indefinitely, by default.',
-                'Using your interactions as training signal — even if they say they offer an opt-out.',
-                'Allowing employees to review conversations for "safety" and "quality" purposes.',
-                'Building behavioural profiles that inform product and advertising decisions.',
-                'Locking your conversational history in their infrastructure with no guaranteed export.',
-              ].map((item, i) => (
-                <li
-                  key={i}
-                  style={{
-                    display: 'flex',
-                    alignItems: 'flex-start',
-                    gap: '0.6rem',
-                    fontSize: '0.95rem',
-                    color: MUTED,
-                  }}
-                >
-                  <span style={{ color: GOLD, marginTop: '0.1rem', flexShrink: 0 }}>
-                    &#8250;
-                  </span>
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </div>
-          <p style={{ fontSize: '1rem', color: MUTED, marginBottom: '1.25rem' }}>
-            None of this is secret. It is in the terms of service — buried under
-            thousands of words of legalese that almost nobody reads. The privacy
-            policy of a major cloud AI product is not a protection. It is a map
-            of what they are doing with your data and a list of the legal bases
-            they claim for doing it.
-          </p>
-          <p style={{ fontSize: '1rem', color: MUTED, marginBottom: '2.5rem' }}>
-            The most intimate conversations people have — about health, grief,
-            relationships, addiction, sexuality, financial desperation — are
-            now sitting in data warehouses, associated with your account, waiting
-            to be mined. This is not a hypothetical risk. It is the existing
-            state of the industry.
-          </p>
+              What is Sovereign AI?
+            </h2>
 
-          {/* ── H2: WHAT DOES SOVEREIGN AI ACTUALLY MEAN? ─────────────────────── */}
-          <h2
-            style={{
-              fontWeight: 900,
-              fontSize: 'clamp(1.3rem, 2.6vw, 1.65rem)',
-              color: '#ffffff',
-              lineHeight: 1.25,
-              marginTop: '3rem',
-              marginBottom: '1rem',
-              letterSpacing: '-0.015em',
-            }}
-          >
-            What Does Sovereign AI Actually Mean?
-          </h2>
-          <p style={{ fontSize: '1rem', color: MUTED, marginBottom: '1.25rem' }}>
-            Sovereign AI is not just &ldquo;privacy-respecting AI.&rdquo; That
-            phrase is too weak. Sovereign AI makes a specific set of
-            architectural and governance commitments that together make you, not
-            the platform, the principal authority over your data and your AI
-            experience.
-          </p>
-          <p style={{ fontSize: '1rem', color: MUTED, marginBottom: '1rem' }}>
-            There are four non-negotiable properties:
-          </p>
-
-          {/* Four pillars */}
-          {[
-            {
-              num: '01',
-              title: 'Data locality',
-              body: 'Sensitive data is processed where it lives — on your device — not on a corporate server in a jurisdiction you did not choose. When you share a health concern or a personal fear with MEOK, that inference runs locally via your Ollama instance. The content does not travel. This is not a policy; it is a routing architecture.',
-            },
-            {
-              num: '02',
-              title: 'No training on your conversations',
-              body: 'Your conversations are not used to train models. Not as anonymised data. Not as aggregate feedback signals. Not in any form. This must be enforced at the infrastructure level — there should be no automated pathway from your data vault to any training pipeline. A terms-of-service promise is not sufficient because terms of service can be changed. Architecture cannot be changed without you noticing.',
-            },
-            {
-              num: '03',
-              title: 'Memory you own',
-              body: 'Your AI\'s memory — the accumulated understanding of who you are, what you care about, your history — lives in a vault that you own. You can read it. You can export it. You can delete it. And you can take it with you if you leave. A platform that holds your memory hostage is not sovereign; it is a walled garden with good branding.',
-            },
-            {
-              num: '04',
-              title: 'Model portability',
-              body: 'You choose which model runs your experience. You are not locked to a single vendor\'s model by the platform architecture. This matters because model choice is a form of consent — different models encode different values, biases, and capabilities. Sovereign AI respects your right to make that choice.',
-            },
-          ].map((pillar) => (
-            <div
-              key={pillar.num}
+            <p
               style={{
-                display: 'flex',
-                gap: '1rem',
-                alignItems: 'flex-start',
-                padding: '1.25rem',
-                borderRadius: '0.875rem',
-                background: SURFACE,
-                border: `1px solid ${SURFACE_BORDER}`,
-                marginBottom: '1rem',
+                fontSize: "16px",
+                lineHeight: "1.8",
+                color: "#f5f0e8",
+                margin: "0 0 20px 0",
               }}
             >
-              <span
-                style={{
-                  fontSize: '0.7rem',
-                  fontWeight: 900,
-                  color: GOLD,
-                  letterSpacing: '0.06em',
-                  flexShrink: 0,
-                  marginTop: '0.15rem',
-                  fontVariantNumeric: 'tabular-nums',
-                }}
-              >
-                {pillar.num}
-              </span>
-              <div>
-                <p
-                  style={{
-                    fontWeight: 700,
-                    fontSize: '0.95rem',
-                    color: TEXT,
-                    marginBottom: '0.4rem',
-                  }}
-                >
-                  {pillar.title}
-                </p>
-                <p style={{ fontSize: '0.9rem', color: MUTED, lineHeight: 1.7 }}>
-                  {pillar.body}
-                </p>
-              </div>
-            </div>
-          ))}
+              <strong>Sovereign AI</strong> is artificial intelligence where
+              the individual user holds complete legal and technical ownership
+              of their data, the AI models processing that data, the memory
+              those models accumulate over time, and every interaction that
+              occurs. Under a Sovereign AI architecture, no corporation has the
+              right to read, store, sell, or train on your conversations without
+              explicit, revocable consent.
+            </p>
 
-          <p style={{ fontSize: '1rem', color: MUTED, marginTop: '1.5rem', marginBottom: '2.5rem' }}>
-            These four properties together define the difference between
-            sovereign AI and everything else. A product that satisfies three out
-            of four is not sovereign. Sovereignty is not a sliding scale — it is
-            a binary: either you control your data and your AI, or someone else
-            does.
-          </p>
+            <p
+              style={{
+                fontSize: "16px",
+                lineHeight: "1.8",
+                color: "#f5f0e8",
+                margin: "0 0 20px 0",
+              }}
+            >
+              The term &apos;sovereignty&apos; is deliberate. In political
+              theory, sovereignty describes the supreme authority of a state
+              over its own territory. In the context of AI, it describes the
+              supreme authority of an individual over their own data territory
+              &mdash; the digital domain of their mind, their relationships,
+              their health, and their aspirations. When that sovereignty is
+              surrendered to a corporation, it cannot easily be reclaimed.
+            </p>
 
-          {/* ── H2: WHY DOES DATA SOVEREIGNTY MATTER? ─────────────────────────── */}
-          <h2
-            style={{
-              fontWeight: 900,
-              fontSize: 'clamp(1.3rem, 2.6vw, 1.65rem)',
-              color: '#ffffff',
-              lineHeight: 1.25,
-              marginTop: '3rem',
-              marginBottom: '1rem',
-              letterSpacing: '-0.015em',
-            }}
-          >
-            Why Does Data Sovereignty Matter Right Now?
-          </h2>
-          <p style={{ fontSize: '1rem', color: MUTED, marginBottom: '1.25rem' }}>
-            The stakes have changed. AI has moved from a productivity tool into
-            an intimate companion. People are using AI to process grief, manage
-            anxiety, work through relationship problems, navigate medical
-            diagnoses, and explore questions about their identity. This is not
-            casual internet browsing. This is the most sensitive category of
-            personal information that has ever existed in digital form.
-          </p>
-          <p style={{ fontSize: '1rem', color: MUTED, marginBottom: '1.25rem' }}>
-            When that data sits on a corporate server, several things become
-            possible that should terrify you:
-          </p>
+            <p
+              style={{
+                fontSize: "16px",
+                lineHeight: "1.8",
+                color: "#f5f0e8",
+                margin: "0 0 20px 0",
+              }}
+            >
+              The category emerged in response to a structural problem with
+              mainstream AI: the dominant model of cloud AI requires users to
+              surrender their most intimate data to technology corporations as a
+              condition of access. Every message you send to a cloud AI
+              assistant may be stored, analysed, used to train future models,
+              and potentially shared with third parties. The user is not the
+              customer &mdash; they are the product.
+            </p>
 
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-              gap: '0.875rem',
-              marginBottom: '1.5rem',
-            }}
-          >
-            {[
-              {
-                headline: 'Insurance discrimination',
-                detail:
-                  'Health conversations could theoretically inform risk assessments if data were ever shared, sold, or subpoenaed.',
-              },
-              {
-                headline: 'Legal exposure',
-                detail:
-                  'Governments can compel cloud providers to hand over data. Your private AI conversations could become legal evidence.',
-              },
-              {
-                headline: 'Data breach',
-                detail:
-                  'Centralised stores of intimate data are high-value targets. Every major tech company has been breached. Yours will be too.',
-              },
-              {
-                headline: 'Manipulation',
-                detail:
-                  'A platform that knows your fears, desires, and vulnerabilities can target you with extraordinary precision — for ads, for engagement, or for political influence.',
-              },
-            ].map((card, i) => (
-              <div
-                key={i}
-                style={{
-                  padding: '1rem',
-                  borderRadius: '0.75rem',
-                  background: SURFACE,
-                  border: `1px solid ${SURFACE_BORDER}`,
-                }}
-              >
-                <p
-                  style={{
-                    fontWeight: 700,
-                    fontSize: '0.85rem',
-                    color: GOLD,
-                    marginBottom: '0.4rem',
-                  }}
-                >
-                  {card.headline}
-                </p>
-                <p style={{ fontSize: '0.825rem', color: MUTED_DIM, lineHeight: 1.6 }}>
-                  {card.detail}
-                </p>
-              </div>
-            ))}
-          </div>
+            <p
+              style={{
+                fontSize: "16px",
+                lineHeight: "1.8",
+                color: "#f5f0e8",
+                margin: "0 0 20px 0",
+              }}
+            >
+              Sovereign AI inverts this relationship. The individual is the
+              owner. The AI is the service. And ownership has teeth: it is
+              encoded in architecture, enforced by cryptography, and protected
+              by legal covenant.
+            </p>
 
-          <p style={{ fontSize: '1rem', color: MUTED, marginBottom: '1.25rem' }}>
-            These are not paranoid scenarios. They are documented risks that
-            exist wherever intimate data is centralised at scale. The answer is
-            not to stop using AI. The answer is to insist that AI is built in a
-            way that does not create these vulnerabilities in the first place.
-          </p>
-          <p style={{ fontSize: '1rem', color: MUTED, marginBottom: '2.5rem' }}>
-            Data sovereignty is not a feature for the privacy-obsessed. It is
-            the minimum standard of respect that anyone building an intimate AI
-            product should be required to meet.
-          </p>
-
-          {/* ── H2: HOW DOES MEOK'S SOVEREIGN ARCHITECTURE WORK? ─────────────── */}
-          <h2
-            style={{
-              fontWeight: 900,
-              fontSize: 'clamp(1.3rem, 2.6vw, 1.65rem)',
-              color: '#ffffff',
-              lineHeight: 1.25,
-              marginTop: '3rem',
-              marginBottom: '1rem',
-              letterSpacing: '-0.015em',
-            }}
-          >
-            How Does MEOK&apos;s Sovereign Architecture Actually Work?
-          </h2>
-          <p style={{ fontSize: '1rem', color: MUTED, marginBottom: '1.25rem' }}>
-            MEOK is built from first principles around data sovereignty. This is
-            not a privacy feature added on top of a cloud-first architecture.
-            The sovereign constraint was the design constraint — every
-            architectural decision flows from it.
-          </p>
-
-          {/* Architecture section */}
-          <h3
-            style={{
-              fontWeight: 700,
-              fontSize: '1.1rem',
-              color: TEXT,
-              marginTop: '2rem',
-              marginBottom: '0.75rem',
-            }}
-          >
-            The encrypted memory vault
-          </h3>
-          <p style={{ fontSize: '1rem', color: MUTED, marginBottom: '1.25rem' }}>
-            Everything MEOK learns about you — your preferences, your patterns,
-            your history, your goals — lives in an encrypted memory vault. The
-            encryption keys belong to you. MEOK the company does not hold them,
-            cannot request them, and has no backdoor. When you export your
-            memory, you receive the raw structured data — not a PDF summary, but
-            the actual vault. When you delete, it is gone.
-          </p>
-          <p style={{ fontSize: '1rem', color: MUTED, marginBottom: '1.5rem' }}>
-            This architecture has a cost: if you lose your keys, we cannot
-            recover your data. We accept that cost deliberately. A system that
-            can recover your data for you is a system where someone else
-            ultimately controls your data. We chose to accept the operational
-            burden of true encryption because it is the only honest version of
-            &ldquo;your data is yours.&rdquo;
-          </p>
-
-          <h3
-            style={{
-              fontWeight: 700,
-              fontSize: '1.1rem',
-              color: TEXT,
-              marginTop: '2rem',
-              marginBottom: '0.75rem',
-            }}
-          >
-            Local inference for sensitive processing
-          </h3>
-          <p style={{ fontSize: '1rem', color: MUTED, marginBottom: '1.25rem' }}>
-            MEOK routes sensitive conversations — health, relationships, mental
-            wellbeing — through local models running via Ollama on your own
-            hardware. The inference happens on your device. The content does not
-            touch MEOK&apos;s servers. For tasks that require cloud capability
-            — complex reasoning, real-time information — MEOK uses cloud models,
-            but strips personally identifying context before transmission and
-            never logs the conversation.
-          </p>
-          <p style={{ fontSize: '1rem', color: MUTED, marginBottom: '1.5rem' }}>
-            This is not a toggle the user has to remember to switch on. It is
-            the default routing logic, applied automatically based on content
-            classification. You do not have to be a privacy expert to have
-            private conversations.
-          </p>
-
-          <h3
-            style={{
-              fontWeight: 700,
-              fontSize: '1.1rem',
-              color: TEXT,
-              marginTop: '2rem',
-              marginBottom: '0.75rem',
-            }}
-          >
-            Zero training pipeline
-          </h3>
-          <p style={{ fontSize: '1rem', color: MUTED, marginBottom: '2.5rem' }}>
-            There is no automated connection between MEOK&apos;s user data
-            infrastructure and any model training pipeline. Your conversations
-            are not even collected in a form that could be used for training.
-            This is not a policy we might change — it is a structural absence.
-            You cannot use data for training if there is no mechanism to collect
-            it in the first place.
-          </p>
-
-          {/* ── H2: WHAT IS THE MATERNAL COVENANT? ────────────────────────────── */}
-          <h2
-            style={{
-              fontWeight: 900,
-              fontSize: 'clamp(1.3rem, 2.6vw, 1.65rem)',
-              color: '#ffffff',
-              lineHeight: 1.25,
-              marginTop: '3rem',
-              marginBottom: '1rem',
-              letterSpacing: '-0.015em',
-            }}
-          >
-            What Is the Maternal Covenant, and Why Does MEOK Need a Governance
-            Framework?
-          </h2>
-          <p style={{ fontSize: '1rem', color: MUTED, marginBottom: '1.25rem' }}>
-            Sovereign architecture is necessary but not sufficient. A company
-            can build a technically sovereign system and still find ways to
-            exploit its users — through dark patterns, through subtle manipulation
-            of what the AI says to increase engagement, through extracting
-            emotional dependency rather than data. Architecture protects against
-            data theft. It does not protect against the subtler forms of harm
-            that come from building an AI whose incentives are misaligned with
-            your wellbeing.
-          </p>
-          <p style={{ fontSize: '1rem', color: MUTED, marginBottom: '1.25rem' }}>
-            The Maternal Covenant is MEOK&apos;s answer to this problem. It is a
-            governance framework — a set of constitutionally binding principles
-            that defines what MEOK will and will never do, regardless of
-            commercial pressure, regardless of what investors want, regardless of
-            what would maximise engagement metrics.
-          </p>
-
-          {/* Covenant principles */}
-          <div
-            style={{
-              borderRadius: '1rem',
-              overflow: 'hidden',
-              border: `1px solid ${GOLD_BORDER}`,
-              marginBottom: '1.5rem',
-            }}
-          >
+            {/* Atomic answer box */}
             <div
               style={{
-                paddingTop: '0.875rem',
-                paddingBottom: '0.875rem',
-                paddingLeft: '1.25rem',
-                paddingRight: '1.25rem',
-                background: GOLD_DIM,
-                borderBottom: `1px solid ${GOLD_BORDER}`,
+                backgroundColor: "#13121f",
+                border: "1px solid #2a2840",
+                borderLeft: "4px solid #c9a84c",
+                borderRadius: "0 8px 8px 0",
+                padding: "20px 24px",
+                margin: "32px 0",
               }}
             >
               <p
                 style={{
-                  fontWeight: 700,
-                  fontSize: '0.8rem',
-                  color: GOLD,
-                  letterSpacing: '0.06em',
-                  textTransform: 'uppercase',
-                  margin: 0,
+                  fontSize: "11px",
+                  letterSpacing: "0.1em",
+                  textTransform: "uppercase" as const,
+                  color: "#c9a84c",
+                  margin: "0 0 10px 0",
+                  fontWeight: "600",
                 }}
               >
-                The Maternal Covenant: Core Commitments
+                Direct Answer
+              </p>
+              <p
+                style={{
+                  fontSize: "16px",
+                  lineHeight: "1.7",
+                  color: "#f5f0e8",
+                  margin: "0",
+                }}
+              >
+                Sovereign AI is AI where you &mdash; not the corporation
+                &mdash; own your data, models, memory, and interactions. It is
+                the opposite of cloud AI, where the provider owns everything you
+                share. MEOK AI LABS defined &apos;Personal Sovereign AI&apos;
+                as a formal consumer category in research paper
+                MEOK-AI-2026-004 (2026).
               </p>
             </div>
-            <div style={{ padding: '1.25rem' }}>
-              {[
-                {
-                  label: 'Never trains on you',
-                  detail:
-                    'MEOK will never use your conversations to train any model, ever, in any form.',
-                },
-                {
-                  label: 'Never sells your data',
-                  detail:
-                    'No data broker. No advertiser. No third party. Your data has no commercial value to MEOK beyond its use in serving you.',
-                },
-                {
-                  label: 'Never deceives you to serve business interests',
-                  detail:
-                    'MEOK will not subtly guide your behaviour to increase engagement, encourage dependency, or serve conversion goals.',
-                },
-                {
-                  label: 'Always acts in your interest over the company\'s',
-                  detail:
-                    'When there is a conflict between what is good for you and what is good for MEOK\'s growth metrics, the Covenant requires MEOK to choose you.',
-                },
-                {
-                  label: 'Gives you full memory transparency',
-                  detail:
-                    'You can see, edit, and delete everything MEOK has learned about you at any time.',
-                },
-                {
-                  label: 'Supports you leaving',
-                  detail:
-                    'MEOK will always make it easy to export your data and move to another platform. We will not use your memory as a hostage.',
-                },
-              ].map((c, i) => (
-                <div
-                  key={i}
-                  style={{
-                    display: 'flex',
-                    alignItems: 'flex-start',
-                    gap: '0.875rem',
-                    paddingTop: '0.75rem',
-                    paddingBottom: '0.75rem',
-                    borderBottom: i < 5 ? `1px solid ${SURFACE_BORDER}` : 'none',
-                  }}
-                >
-                  <span
-                    style={{
-                      width: '1.25rem',
-                      height: '1.25rem',
-                      borderRadius: '9999px',
-                      background: GOLD_DIM,
-                      border: `1px solid ${GOLD_BORDER}`,
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      flexShrink: 0,
-                      marginTop: '0.1rem',
-                    }}
-                  >
-                    <span style={{ fontSize: '0.55rem', color: GOLD }}>&#10003;</span>
-                  </span>
-                  <div>
-                    <p
-                      style={{
-                        fontWeight: 700,
-                        fontSize: '0.875rem',
-                        color: TEXT,
-                        marginBottom: '0.2rem',
-                      }}
-                    >
-                      {c.label}
-                    </p>
-                    <p style={{ fontSize: '0.825rem', color: MUTED_DIM, lineHeight: 1.6 }}>
-                      {c.detail}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
 
-          <p style={{ fontSize: '1rem', color: MUTED, marginBottom: '1.25rem' }}>
-            The Maternal Covenant draws on the concept of unconditional care
-            — the idea that care is not a service you receive in exchange for
-            value, but something offered because your wellbeing matters
-            intrinsically. The name is deliberate. We are building AI that
-            relates to users the way a genuinely good carer relates to a person
-            in their care: with unconditional respect, honest information, and a
-            refusal to exploit vulnerability.
-          </p>
-          <p style={{ fontSize: '1rem', color: MUTED, marginBottom: '2.5rem' }}>
-            The Covenant is not a marketing document. It is implemented as a
-            technical constraint — the Byzantine Council (described below) checks
-            every MEOK response against Covenant principles before delivery.
-            Violating the Covenant is architecturally difficult, not just
-            culturally discouraged.
-          </p>
-
-          {/* ── H2: WHAT IS THE BYZANTINE COUNCIL? ────────────────────────────── */}
-          <h2
-            style={{
-              fontWeight: 900,
-              fontSize: 'clamp(1.3rem, 2.6vw, 1.65rem)',
-              color: '#ffffff',
-              lineHeight: 1.25,
-              marginTop: '3rem',
-              marginBottom: '1rem',
-              letterSpacing: '-0.015em',
-            }}
-          >
-            What Is the Byzantine Council, and How Does It Enforce Sovereign AI?
-          </h2>
-          <p style={{ fontSize: '1rem', color: MUTED, marginBottom: '1.25rem' }}>
-            Every company says its AI is safe. Very few can tell you exactly how
-            safety is enforced — and fewer still can show you a structural
-            mechanism that makes it mathematically difficult to violate.
-          </p>
-          <p style={{ fontSize: '1rem', color: MUTED, marginBottom: '1.25rem' }}>
-            The Byzantine Council is that mechanism. Invented by MEOK&apos;s
-            founder Nicholas Templeman, it is a multi-agent consensus system
-            inspired by Byzantine fault-tolerant distributed computing — the same
-            class of algorithms used to keep distributed databases reliable even
-            when individual nodes are compromised.
-          </p>
-
-          {/* BFT explainer */}
-          <div
-            style={{
-              padding: '1.25rem 1.5rem',
-              borderRadius: '0.875rem',
-              background: 'rgba(139,124,248,0.07)',
-              border: '1px solid rgba(139,124,248,0.2)',
-              marginBottom: '1.5rem',
-            }}
-          >
             <p
               style={{
-                fontWeight: 700,
-                fontSize: '0.8rem',
-                color: '#a99ef5',
-                letterSpacing: '0.05em',
-                textTransform: 'uppercase',
-                marginBottom: '0.75rem',
+                fontSize: "16px",
+                lineHeight: "1.8",
+                color: "#f5f0e8",
+                margin: "0 0 20px 0",
               }}
             >
-              The Byzantine Fault Tolerance Theorem
+              It is important to distinguish Sovereign AI from related but
+              distinct concepts. <em>Private AI</em> typically refers to
+              on-premise enterprise deployments that keep corporate data inside
+              a company&apos;s network &mdash; but the individual employee
+              still has no ownership rights. <em>Open-source AI</em> describes
+              models whose weights are publicly available &mdash; but access to
+              code is not the same as individual sovereignty. <em>Local AI</em>{" "}
+              means models run on your device &mdash; necessary but not
+              sufficient for sovereignty, since local AI without a legal
+              covenant still gives you no enforceable rights.
             </p>
-            <p style={{ fontSize: '0.95rem', color: MUTED, marginBottom: '0.75rem', lineHeight: 1.7 }}>
-              A distributed system can tolerate up to{' '}
-              <em>f</em> faulty or malicious nodes provided it has at least{' '}
-              <em>n &ge; 3f + 1</em> nodes total. With <em>n = 43</em> agents,
-              MEOK can tolerate up to <em>f = 14</em> compromised or failing
-              agents — a full third of the council — and still reach a correct
-              decision.
-            </p>
-            <p style={{ fontSize: '0.875rem', color: MUTED_DIM, lineHeight: 1.6 }}>
-              Every MEOK response requires supermajority consensus — at least 29
-              of 43 agents — before it is delivered. No prompt injection, no
-              adversarial input, no single point of failure can override this
-              mathematical requirement.
-            </p>
-          </div>
 
-          <p style={{ fontSize: '1rem', color: MUTED, marginBottom: '1.25rem' }}>
-            Each of the 43 council agents evaluates every response against two
-            criteria: safety (does this response harm the user?) and Covenant
-            compliance (does this response violate any Maternal Covenant
-            principle?). Only when a supermajority of agents independently reach
-            consensus that both criteria are met does the response reach you.
-          </p>
-          <p style={{ fontSize: '1rem', color: MUTED, marginBottom: '1.25rem' }}>
-            This is qualitatively different from RLHF or content filtering.
-            RLHF trains a preference into model weights — preferences that can
-            often be worked around with sufficiently creative prompt engineering.
-            The Byzantine Council is a structural requirement. It cannot be
-            prompted away, because no individual response crafting affects the
-            consensus mechanism itself.
-          </p>
-          <p style={{ fontSize: '1rem', color: MUTED, marginBottom: '2.5rem' }}>
-            The design is documented in{' '}
-            <Link
-              href="/blog/byzantine-council-explained"
-              style={{ color: GOLD, textDecoration: 'none', fontWeight: 600 }}
-            >
-              MEOK-AI-2026-001
-            </Link>
-            , MEOK&apos;s first published technical paper. It is open for review
-            because sovereign AI should be verifiable, not just claimed.
-          </p>
-
-          {/* ── H2: CLOUD VS SOVEREIGN AI COMPARISON ──────────────────────────── */}
-          <h2
-            style={{
-              fontWeight: 900,
-              fontSize: 'clamp(1.3rem, 2.6vw, 1.65rem)',
-              color: '#ffffff',
-              lineHeight: 1.25,
-              marginTop: '3rem',
-              marginBottom: '1rem',
-              letterSpacing: '-0.015em',
-            }}
-          >
-            Cloud AI vs Sovereign AI: What Does the Comparison Actually Look
-            Like?
-          </h2>
-          <p style={{ fontSize: '1rem', color: MUTED, marginBottom: '1.5rem' }}>
-            Words are easy. Here is a direct comparison across the dimensions
-            that matter for data sovereignty:
-          </p>
-
-          {/* Comparison table */}
-          <div
-            style={{
-              borderRadius: '0.875rem',
-              overflow: 'hidden',
-              border: `1px solid ${SURFACE_BORDER}`,
-              marginBottom: '1.5rem',
-            }}
-          >
-            {/* Table header */}
-            <div
-              style={{
-                display: 'grid',
-                gridTemplateColumns: '2fr 1.2fr 1.2fr 1.2fr 1.2fr',
-                background: 'rgba(245,240,232,0.04)',
-                borderBottom: `1px solid ${SURFACE_BORDER}`,
-              }}
-            >
-              {['Property', 'ChatGPT', 'Gemini', 'Claude', 'MEOK'].map((h, i) => (
-                <div
-                  key={i}
-                  style={{
-                    paddingTop: '0.75rem',
-                    paddingBottom: '0.75rem',
-                    paddingLeft: '0.875rem',
-                    paddingRight: '0.875rem',
-                    fontSize: '0.75rem',
-                    fontWeight: 700,
-                    color: i === 4 ? GOLD : MUTED_FAINT,
-                    letterSpacing: '0.05em',
-                    textTransform: 'uppercase',
-                  }}
-                >
-                  {h}
-                </div>
-              ))}
-            </div>
-
-            {/* Table rows */}
-            {[
-              {
-                property: 'Trains on your conversations',
-                chatgpt: 'Opt-out',
-                gemini: 'Opt-out',
-                claude: 'Opt-out',
-                meok: 'Never',
-                meokGold: true,
-              },
-              {
-                property: 'Employees can read convos',
-                chatgpt: 'Yes',
-                gemini: 'Yes',
-                claude: 'Yes',
-                meok: 'No',
-                meokGold: true,
-              },
-              {
-                property: 'Data sold / ad targeting',
-                chatgpt: 'Policy-dependent',
-                gemini: 'Yes (Google)',
-                claude: 'No',
-                meok: 'Never',
-                meokGold: true,
-              },
-              {
-                property: 'Memory you can export',
-                chatgpt: 'Limited',
-                gemini: 'Limited',
-                claude: 'No',
-                meok: 'Full vault',
-                meokGold: true,
-              },
-              {
-                property: 'Memory you can delete',
-                chatgpt: 'Yes',
-                gemini: 'Yes',
-                claude: 'Partial',
-                meok: 'Complete',
-                meokGold: true,
-              },
-              {
-                property: 'Local inference for sensitive data',
-                chatgpt: 'No',
-                gemini: 'No',
-                claude: 'No',
-                meok: 'Yes',
-                meokGold: true,
-              },
-              {
-                property: 'Model portability',
-                chatgpt: 'No',
-                gemini: 'No',
-                claude: 'No',
-                meok: 'Yes',
-                meokGold: true,
-              },
-              {
-                property: 'Structural safety mechanism',
-                chatgpt: 'RLHF',
-                gemini: 'RLHF',
-                claude: 'Constitutional AI',
-                meok: 'Byzantine Council',
-                meokGold: true,
-              },
-            ].map((row, i) => (
-              <div
-                key={i}
-                style={{
-                  display: 'grid',
-                  gridTemplateColumns: '2fr 1.2fr 1.2fr 1.2fr 1.2fr',
-                  borderBottom:
-                    i < 7 ? `1px solid ${SURFACE_BORDER}` : 'none',
-                  background: i % 2 === 0 ? 'transparent' : 'rgba(245,240,232,0.015)',
-                }}
-              >
-                <div
-                  style={{
-                    paddingTop: '0.625rem',
-                    paddingBottom: '0.625rem',
-                    paddingLeft: '0.875rem',
-                    paddingRight: '0.875rem',
-                    fontSize: '0.825rem',
-                    color: MUTED,
-                    fontWeight: 500,
-                  }}
-                >
-                  {row.property}
-                </div>
-                {[row.chatgpt, row.gemini, row.claude, row.meok].map((val, j) => (
-                  <div
-                    key={j}
-                    style={{
-                      paddingTop: '0.625rem',
-                      paddingBottom: '0.625rem',
-                      paddingLeft: '0.875rem',
-                      paddingRight: '0.875rem',
-                      fontSize: '0.8rem',
-                      color: j === 3 ? GOLD : MUTED_FAINT,
-                      fontWeight: j === 3 ? 700 : 400,
-                    }}
-                  >
-                    {val}
-                  </div>
-                ))}
-              </div>
-            ))}
-          </div>
-
-          <p style={{ fontSize: '0.8rem', color: MUTED_FAINT, marginBottom: '2.5rem', fontStyle: 'italic' }}>
-            Note: Cloud provider policies change. Check current terms before
-            drawing conclusions. MEOK&apos;s commitments are architectural.
-          </p>
-
-          {/* ── H2: IS SOVEREIGN AI A RIGHT OR A LUXURY? ──────────────────────── */}
-          <h2
-            style={{
-              fontWeight: 900,
-              fontSize: 'clamp(1.3rem, 2.6vw, 1.65rem)',
-              color: '#ffffff',
-              lineHeight: 1.25,
-              marginTop: '3rem',
-              marginBottom: '1rem',
-              letterSpacing: '-0.015em',
-            }}
-          >
-            Is Sovereign AI a Right, a Luxury, or Both?
-          </h2>
-          <p style={{ fontSize: '1rem', color: MUTED, marginBottom: '1.25rem' }}>
-            There is a version of the sovereign AI argument that frames it as
-            a privacy concern for the paranoid and the privileged — the
-            technical users who already run their own servers and back up their
-            own data. This is exactly backwards. The people who need sovereign
-            AI most are not the privacy experts. They are the people sharing the
-            most sensitive things.
-          </p>
-          <p style={{ fontSize: '1rem', color: MUTED, marginBottom: '1.25rem' }}>
-            A 19-year-old working through their sexuality with an AI companion.
-            A middle-aged woman managing a complex chronic illness. A person in
-            recovery from addiction using an AI to stay accountable. A grieving
-            parent processing loss. These are not edge cases. These are the
-            primary use cases for intimate AI, and they are the people whose
-            data is most exploitable if it ends up in the wrong place.
-          </p>
-          <p style={{ fontSize: '1rem', color: MUTED, marginBottom: '1.25rem' }}>
-            The argument that sovereign AI is a luxury is also, quietly, an
-            argument that privacy is a luxury. We reject that. Data sovereignty
-            should be the default, not the premium tier. MEOK is free to try
-            precisely because we believe the architecture of care should not be
-            gated behind a subscription.
-          </p>
-          <p style={{ fontSize: '1rem', color: MUTED, marginBottom: '2.5rem' }}>
-            We are also aware of the irony: we are making this argument as a
-            company with commercial interests. The difference is that our
-            commercial model does not depend on exploiting your data. MEOK
-            charges for capability — more model access, more memory, more
-            context — not for the privilege of not being spied on. Privacy is
-            the floor, not a premium ceiling.
-          </p>
-
-          {/* ── H2: HOW DO I KNOW IF AN AI IS TRULY SOVEREIGN? ────────────────── */}
-          <h2
-            style={{
-              fontWeight: 900,
-              fontSize: 'clamp(1.3rem, 2.6vw, 1.65rem)',
-              color: '#ffffff',
-              lineHeight: 1.25,
-              marginTop: '3rem',
-              marginBottom: '1rem',
-              letterSpacing: '-0.015em',
-            }}
-          >
-            How Do I Know If an AI Is Truly Sovereign? A Checklist.
-          </h2>
-          <p style={{ fontSize: '1rem', color: MUTED, marginBottom: '1.25rem' }}>
-            Given how freely the word &ldquo;sovereign&rdquo; is being used,
-            here are the questions you should ask before trusting any AI product
-            with your intimate data. Require specific technical answers, not
-            marketing language:
-          </p>
-
-          {/* Checklist */}
-          <div
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              gap: '0.625rem',
-              marginBottom: '1.5rem',
-            }}
-          >
-            {[
-              {
-                q: 'Where is my data processed?',
-                good: 'Look for: locally, on your device, or in an isolated enclave you control.',
-                bad: 'Red flag: "on secure servers" — this means their servers.',
-              },
-              {
-                q: 'Is my data used for training?',
-                good: 'Look for: no, never, archived architecturally — not just as policy.',
-                bad: 'Red flag: "opt-out available" — this means it\'s on by default.',
-              },
-              {
-                q: 'Can MEOK employees read my conversations?',
-                good: 'Look for: no, because of zero-knowledge encryption — and an explanation of the key architecture.',
-                bad: 'Red flag: "only for safety purposes" — this means yes.',
-              },
-              {
-                q: 'Can I export my full memory?',
-                good: 'Look for: yes, in a structured format, on demand, immediately.',
-                bad: 'Red flag: "you can download a summary" — this means no.',
-              },
-              {
-                q: 'What happens to my data if the company goes bust?',
-                good: 'Look for: a specific plan — encrypted export, open-source release, or similar.',
-                bad: 'Red flag: silence. Your data evaporates.',
-              },
-              {
-                q: 'What is the structural safety mechanism?',
-                good: 'Look for: a described architecture — Byzantine consensus, formal verification, something verifiable.',
-                bad: 'Red flag: "we take safety very seriously" — this means nothing.',
-              },
-            ].map((item, i) => (
-              <div
-                key={i}
-                style={{
-                  padding: '1rem 1.25rem',
-                  borderRadius: '0.75rem',
-                  background: SURFACE,
-                  border: `1px solid ${SURFACE_BORDER}`,
-                }}
-              >
-                <p
-                  style={{
-                    fontWeight: 700,
-                    fontSize: '0.875rem',
-                    color: TEXT,
-                    marginBottom: '0.35rem',
-                  }}
-                >
-                  {item.q}
-                </p>
-                <p
-                  style={{
-                    fontSize: '0.8rem',
-                    color: '#6fcf97',
-                    marginBottom: '0.2rem',
-                    lineHeight: 1.5,
-                  }}
-                >
-                  {item.good}
-                </p>
-                <p style={{ fontSize: '0.8rem', color: '#eb5757', lineHeight: 1.5 }}>
-                  {item.bad}
-                </p>
-              </div>
-            ))}
-          </div>
-
-          <p style={{ fontSize: '1rem', color: MUTED, marginBottom: '2.5rem' }}>
-            Sovereign AI passes all six of these tests. Not because we claim it
-            does, but because the architecture makes it verifiable. We encourage
-            you to apply this checklist to every AI product you use — including
-            MEOK.
-          </p>
-
-          {/* ── CLOSING SECTION ─────────────────────────────────────────────────── */}
-          <div
-            style={{
-              borderTop: `1px solid ${SURFACE_BORDER}`,
-              paddingTop: '2.5rem',
-              marginTop: '1rem',
-            }}
-          >
-            <p style={{ fontSize: '1rem', color: MUTED, marginBottom: '1.25rem' }}>
-              Sovereign AI is not an inevitable product of technological
-              progress. It has to be deliberately built, at every layer — the
-              encryption, the routing, the training pipeline, the governance
-              framework, the alignment mechanism. Most companies building AI
-              right now are not making these choices, because the extraction
-              model is more immediately profitable.
-            </p>
-            <p style={{ fontSize: '1rem', color: MUTED, marginBottom: '1.25rem' }}>
-              We are making a bet that users who understand what is actually
-              happening to their data will choose differently. And that as AI
-              becomes more intimate — as it becomes the thing you talk to about
-              your health, your grief, your fears — the demand for actual
-              sovereignty will grow faster than the incumbent platforms can adapt.
-            </p>
-            <p style={{ fontSize: '1rem', color: MUTED, marginBottom: '0' }}>
-              That bet is the foundation of MEOK. Not as a privacy product, but
-              as a care product — one that takes seriously the responsibility
-              that comes with knowing someone that well.
-            </p>
-          </div>
-
-          {/* ── CTA ─────────────────────────────────────────────────────────────── */}
-          <div
-            style={{
-              marginTop: '3rem',
-              padding: '2rem',
-              borderRadius: '1.25rem',
-              background: GOLD_DIM,
-              border: `1px solid ${GOLD_BORDER}`,
-              textAlign: 'center',
-            }}
-          >
             <p
               style={{
-                fontWeight: 900,
-                fontSize: '1.3rem',
-                color: TEXT,
-                marginBottom: '0.5rem',
-                letterSpacing: '-0.01em',
+                fontSize: "16px",
+                lineHeight: "1.8",
+                color: "#f5f0e8",
+                margin: "0 0 20px 0",
               }}
             >
-              Try MEOK — Your AI, Your Data, Your Rules
+              Sovereign AI is a multi-layered guarantee: technical
+              (cryptography and architecture), legal (binding covenants), and
+              ethical (the AI is designed to serve the individual, not extract
+              value from them). All three layers must be present for the
+              sovereignty claim to be meaningful.
             </p>
-            <p
-              style={{
-                fontSize: '0.9rem',
-                color: MUTED,
-                marginBottom: '1.5rem',
-                maxWidth: '30rem',
-                marginLeft: 'auto',
-                marginRight: 'auto',
-              }}
-            >
-              No training on your conversations. Encrypted memory vault.
-              Byzantine Council governance. Free to try.
-            </p>
-            <Link
-              href="/download"
-              style={{
-                display: 'inline-block',
-                paddingTop: '0.75rem',
-                paddingBottom: '0.75rem',
-                paddingLeft: '2rem',
-                paddingRight: '2rem',
-                borderRadius: '9999px',
-                background: GOLD,
-                color: '#0d0c18',
-                fontWeight: 800,
-                fontSize: '0.95rem',
-                textDecoration: 'none',
-                letterSpacing: '0.01em',
-              }}
-            >
-              Get MEOK Free
-            </Link>
-          </div>
+          </section>
 
-          {/* ── FURTHER READING ─────────────────────────────────────────────────── */}
-          <div style={{ marginTop: '3.5rem' }}>
-            <p
-              style={{
-                fontWeight: 700,
-                fontSize: '0.8rem',
-                color: MUTED_FAINT,
-                letterSpacing: '0.07em',
-                textTransform: 'uppercase',
-                marginBottom: '1.25rem',
-              }}
-            >
-              Further Reading
-            </p>
-            <div
-              style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-                gap: '0.75rem',
-              }}
-            >
-              {[
-                {
-                  href: '/blog/byzantine-council-explained',
-                  title: 'The Byzantine Council Explained',
-                  desc: 'How 43 AI agents reach consensus on every MEOK response.',
-                },
-                {
-                  href: '/blog/the-maternal-covenant',
-                  title: 'The Maternal Covenant',
-                  desc: "MEOK's governance framework for care-based AI alignment.",
-                },
-                {
-                  href: '/blog/data-sovereignty-ai',
-                  title: 'Data Sovereignty in AI',
-                  desc: 'Why data sovereignty is the next major AI rights issue.',
-                },
-                {
-                  href: '/blog/how-sovereign-ai-works',
-                  title: 'How Sovereign AI Works',
-                  desc: 'A technical walkthrough of MEOK\'s sovereign architecture.',
-                },
-              ].map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  style={{
-                    display: 'block',
-                    padding: '1rem',
-                    borderRadius: '0.75rem',
-                    background: SURFACE,
-                    border: `1px solid ${SURFACE_BORDER}`,
-                    textDecoration: 'none',
-                  }}
-                >
-                  <p
-                    style={{
-                      fontWeight: 700,
-                      fontSize: '0.875rem',
-                      color: TEXT,
-                      marginBottom: '0.35rem',
-                      lineHeight: 1.4,
-                    }}
-                  >
-                    {link.title}
-                  </p>
-                  <p
-                    style={{
-                      fontSize: '0.8rem',
-                      color: MUTED_DIM,
-                      lineHeight: 1.5,
-                    }}
-                  >
-                    {link.desc}
-                  </p>
-                </Link>
-              ))}
-            </div>
-          </div>
-
-          {/* ── FAQ SECTION ─────────────────────────────────────────────────────── */}
-          <div style={{ marginTop: '3.5rem' }}>
+          {/* ── Section 2: Who coined Personal Sovereign AI ── */}
+          <section id="why-coined" style={{ marginBottom: "64px" }}>
             <h2
               style={{
-                fontWeight: 900,
-                fontSize: 'clamp(1.3rem, 2.6vw, 1.65rem)',
-                color: '#ffffff',
-                lineHeight: 1.25,
-                marginBottom: '1.25rem',
-                letterSpacing: '-0.015em',
+                fontSize: "28px",
+                fontWeight: "700",
+                color: "#f5f0e8",
+                margin: "0 0 20px 0",
+                letterSpacing: "-0.01em",
+                lineHeight: "1.3",
               }}
             >
-              Frequently Asked Questions
+              Who coined &apos;Personal Sovereign AI&apos; and why?
             </h2>
+
+            <p
+              style={{
+                fontSize: "16px",
+                lineHeight: "1.8",
+                color: "#f5f0e8",
+                margin: "0 0 20px 0",
+              }}
+            >
+              <strong>MEOK AI LABS</strong>, founded by Nicholas Templeman,
+              coined &apos;Personal Sovereign AI&apos; as a defined consumer
+              category in research paper{" "}
+              <strong>MEOK-AI-2026-004</strong>:{" "}
+              <em>Personal Sovereign AI: A New Consumer Category</em>, published
+              in 2026. The paper argued that the AI industry had created a
+              structural gap: there was no recognised consumer category for AI
+              products that placed individual sovereignty at the architectural
+              centre rather than as an optional feature or marketing claim.
+            </p>
+
+            <p
+              style={{
+                fontSize: "16px",
+                lineHeight: "1.8",
+                color: "#f5f0e8",
+                margin: "0 0 20px 0",
+              }}
+            >
+              Prior to MEOK-AI-2026-004, the AI industry used vague language
+              around privacy and data protection &mdash; terms that typically
+              meant &apos;we comply with GDPR&apos; or &apos;we encrypt data
+              in transit&apos; rather than &apos;you own your data and we
+              contractually cannot use it for anything without your
+              permission.&apos; MEOK defined Personal Sovereign AI with five
+              precise, testable pillars (detailed in Section 5) so that the
+              category could be audited and verified, not merely asserted.
+            </p>
+
+            <p
+              style={{
+                fontSize: "16px",
+                lineHeight: "1.8",
+                color: "#f5f0e8",
+                margin: "0 0 20px 0",
+              }}
+            >
+              The motivation was personal as much as commercial. Templeman had
+              observed that people were sharing the most sensitive moments of
+              their lives with AI companions and productivity tools &mdash;
+              disclosing mental health struggles, relationship crises, career
+              anxieties, and grief &mdash; without any meaningful understanding
+              of who owned that data or what would be done with it. The category
+              was created to give consumers a clear, unambiguous benchmark for
+              what genuine sovereignty looks like.
+            </p>
+
+            <p
+              style={{
+                fontSize: "16px",
+                lineHeight: "1.8",
+                color: "#f5f0e8",
+                margin: "0 0 20px 0",
+              }}
+            >
+              Naming the category matters. When a category exists, consumers
+              can ask for it, journalists can report on it, regulators can
+              legislate around it, and competitors must respond to it. Before
+              MEOK-AI-2026-004, no such benchmark existed for consumer AI
+              sovereignty. The paper created the vocabulary for a conversation
+              the industry needed to have.
+            </p>
+          </section>
+
+          {/* ── Section 3: Why data ownership matters ── */}
+          <section
+            id="why-data-ownership-matters"
+            style={{ marginBottom: "64px" }}
+          >
+            <h2
+              style={{
+                fontSize: "28px",
+                fontWeight: "700",
+                color: "#f5f0e8",
+                margin: "0 0 20px 0",
+                letterSpacing: "-0.01em",
+                lineHeight: "1.3",
+              }}
+            >
+              Why does AI data ownership matter?
+            </h2>
+
+            <p
+              style={{
+                fontSize: "16px",
+                lineHeight: "1.8",
+                color: "#f5f0e8",
+                margin: "0 0 20px 0",
+              }}
+            >
+              AI data ownership matters because your conversations with AI are
+              not neutral transactions. They are records of your mind in motion
+              &mdash; your fears, your plans, your relationships, your health,
+              your politics, your spirituality. The data you generate in AI
+              interactions is among the most sensitive data that has ever
+              existed, and it is being accumulated at scale by corporations
+              whose primary obligation is to shareholders, not to users.
+            </p>
+
+            <p
+              style={{
+                fontSize: "16px",
+                lineHeight: "1.8",
+                color: "#f5f0e8",
+                margin: "0 0 20px 0",
+              }}
+            >
+              There are four distinct reasons data ownership matters:
+            </p>
+
+            <div style={{ margin: "0 0 32px 0" }}>
+              {/* Reason 1 */}
+              <div
+                style={{
+                  backgroundColor: "#13121f",
+                  border: "1px solid #2a2840",
+                  borderRadius: "8px",
+                  padding: "24px",
+                  marginBottom: "16px",
+                }}
+              >
+                <h3
+                  style={{
+                    fontSize: "17px",
+                    fontWeight: "700",
+                    color: "#c9a84c",
+                    margin: "0 0 10px 0",
+                  }}
+                >
+                  1. Your conversations train future AI
+                </h3>
+                <p
+                  style={{
+                    fontSize: "15px",
+                    lineHeight: "1.7",
+                    color: "#f5f0e8",
+                    margin: "0",
+                  }}
+                >
+                  When you converse with a cloud AI, your messages may
+                  contribute to the training data for future model versions.
+                  This means your private thoughts, disclosed vulnerabilities,
+                  and personal decisions are potentially shaping the behaviour
+                  of AI systems that will interact with millions of other people
+                  &mdash; without your knowledge, consent, or compensation. Data
+                  ownership gives you the right to say no.
+                </p>
+              </div>
+
+              {/* Reason 2 */}
+              <div
+                style={{
+                  backgroundColor: "#13121f",
+                  border: "1px solid #2a2840",
+                  borderRadius: "8px",
+                  padding: "24px",
+                  marginBottom: "16px",
+                }}
+              >
+                <h3
+                  style={{
+                    fontSize: "17px",
+                    fontWeight: "700",
+                    color: "#c9a84c",
+                    margin: "0 0 10px 0",
+                  }}
+                >
+                  2. AI data is permanent and intimate
+                </h3>
+                <p
+                  style={{
+                    fontSize: "15px",
+                    lineHeight: "1.7",
+                    color: "#f5f0e8",
+                    margin: "0",
+                  }}
+                >
+                  Unlike a web search query or a social media post, a
+                  conversation with an AI companion may span years, contain your
+                  medical history, your relationship patterns, and your
+                  psychological vulnerabilities. This is diary-level data. When
+                  it is owned by a corporation, it can be subpoenaed, hacked,
+                  sold during an acquisition, or accessed by employees. The
+                  consequences of a breach are not a minor inconvenience
+                  &mdash; they are a fundamental violation of personhood.
+                </p>
+              </div>
+
+              {/* Reason 3 */}
+              <div
+                style={{
+                  backgroundColor: "#13121f",
+                  border: "1px solid #2a2840",
+                  borderRadius: "8px",
+                  padding: "24px",
+                  marginBottom: "16px",
+                }}
+              >
+                <h3
+                  style={{
+                    fontSize: "17px",
+                    fontWeight: "700",
+                    color: "#c9a84c",
+                    margin: "0 0 10px 0",
+                  }}
+                >
+                  3. Ownership determines alignment
+                </h3>
+                <p
+                  style={{
+                    fontSize: "15px",
+                    lineHeight: "1.7",
+                    color: "#f5f0e8",
+                    margin: "0",
+                  }}
+                >
+                  An AI system optimised on data it owns will optimise for the
+                  owner&apos;s interests. Cloud AI is optimised to maximise
+                  engagement, retention, and data collection because the
+                  corporation owns the data and needs to justify its value to
+                  investors. Sovereign AI, optimised on data you own, can
+                  genuinely optimise for your wellbeing, your goals, and your
+                  explicit preferences &mdash; because your interests and the
+                  system&apos;s incentives are aligned.
+                </p>
+              </div>
+
+              {/* Reason 4 */}
+              <div
+                style={{
+                  backgroundColor: "#13121f",
+                  border: "1px solid #2a2840",
+                  borderRadius: "8px",
+                  padding: "24px",
+                }}
+              >
+                <h3
+                  style={{
+                    fontSize: "17px",
+                    fontWeight: "700",
+                    color: "#c9a84c",
+                    margin: "0 0 10px 0",
+                  }}
+                >
+                  4. Cognitive liberty is a human right
+                </h3>
+                <p
+                  style={{
+                    fontSize: "15px",
+                    lineHeight: "1.7",
+                    color: "#f5f0e8",
+                    margin: "0",
+                  }}
+                >
+                  As AI becomes the primary interface through which people
+                  think, plan, and process emotion, control over AI data becomes
+                  inseparable from cognitive liberty &mdash; the right to think
+                  freely without surveillance or manipulation. Surrendering AI
+                  data to corporations is not a neutral act; it is the voluntary
+                  cession of the most intimate territory of human autonomy.
+                </p>
+              </div>
+            </div>
+
+            <p
+              style={{
+                fontSize: "16px",
+                lineHeight: "1.8",
+                color: "#f5f0e8",
+                margin: "0 0 20px 0",
+              }}
+            >
+              MEOK-AI-2026-004 quantifies the stakes: the average person who
+              uses an AI companion for six months has generated data equivalent
+              in sensitivity to a year of therapy notes, a decade of diary
+              entries, and the metadata of every significant relationship in
+              their life. Under cloud AI terms of service, this data belongs to
+              the platform. Under Sovereign AI, it belongs to you.
+            </p>
+          </section>
+
+          {/* ── Section 4: Sovereign memory vs cloud memory ── */}
+          <section
+            id="sovereign-memory-vs-cloud-memory"
+            style={{ marginBottom: "64px" }}
+          >
+            <h2
+              style={{
+                fontSize: "28px",
+                fontWeight: "700",
+                color: "#f5f0e8",
+                margin: "0 0 20px 0",
+                letterSpacing: "-0.01em",
+                lineHeight: "1.3",
+              }}
+            >
+              How does sovereign memory differ from cloud memory?
+            </h2>
+
+            <p
+              style={{
+                fontSize: "16px",
+                lineHeight: "1.8",
+                color: "#f5f0e8",
+                margin: "0 0 20px 0",
+              }}
+            >
+              Memory is the most valuable component of an ongoing AI
+              relationship. An AI that remembers you &mdash; your context, your
+              history, your preferences, your struggles &mdash; is
+              exponentially more useful and meaningful than one that treats
+              every conversation as the first. But memory is also where the
+              stakes of ownership are highest.
+            </p>
+
+            <p
+              style={{
+                fontSize: "16px",
+                lineHeight: "1.8",
+                color: "#f5f0e8",
+                margin: "0 0 20px 0",
+              }}
+            >
+              <strong>Cloud memory</strong> is memory that lives on a
+              corporation&apos;s servers, under their control, subject to their
+              terms of service. The platform can read it, modify it, delete it,
+              use it to train models, and cease to provide access to it if you
+              cancel your subscription or if the company shuts down. Your
+              relationship history with the AI is held hostage by the
+              platform&apos;s continued existence and goodwill.
+            </p>
+
+            <p
+              style={{
+                fontSize: "16px",
+                lineHeight: "1.8",
+                color: "#f5f0e8",
+                margin: "0 0 20px 0",
+              }}
+            >
+              <strong>Sovereign memory</strong> is memory stored in your
+              personal encrypted vault &mdash; a data structure you own,
+              encrypted with keys only you hold, accessible only by AI systems
+              you explicitly authorise. Sovereign memory has four properties
+              that cloud memory lacks:
+            </p>
+
+            <ul
+              style={{
+                margin: "0 0 24px 0",
+                padding: "0 0 0 24px",
+                lineHeight: "2",
+                fontSize: "16px",
+                color: "#f5f0e8",
+              }}
+            >
+              <li>
+                <strong style={{ color: "#c9a84c" }}>Portability:</strong> You
+                can export your memory in full, in an open format, at any time
+                &mdash; and import it to any compatible system.
+              </li>
+              <li>
+                <strong style={{ color: "#c9a84c" }}>Deletability:</strong> You
+                can delete any memory entry or your entire memory corpus with
+                cryptographic certainty, with no residual copies on corporate
+                servers.
+              </li>
+              <li>
+                <strong style={{ color: "#c9a84c" }}>Non-trainability:</strong>{" "}
+                Your memory cannot be used to train any AI model without your
+                explicit, specific, revocable consent.
+              </li>
+              <li>
+                <strong style={{ color: "#c9a84c" }}>Persistence:</strong> Your
+                memory survives the death of any individual platform or service
+                provider, because it lives in your vault, not theirs.
+              </li>
+            </ul>
+
+            <p
+              style={{
+                fontSize: "16px",
+                lineHeight: "1.8",
+                color: "#f5f0e8",
+                margin: "0 0 20px 0",
+              }}
+            >
+              The MEOK sovereign memory architecture uses a tiered vault system:
+              a working memory layer for active conversation context, an
+              episodic memory layer for significant events and emotional
+              milestones, and a values layer that stores explicit preferences
+              and ethical boundaries the user has defined. All three layers are
+              encrypted under user-controlled keys and are fully portable.
+            </p>
+
+            {/* Pull quote */}
+            <blockquote
+              style={{
+                margin: "40px 0",
+                padding: "28px 32px",
+                backgroundColor: "#13121f",
+                borderLeft: "4px solid #c9a84c",
+                borderRadius: "0 8px 8px 0",
+              }}
+            >
+              <p
+                style={{
+                  fontSize: "20px",
+                  fontWeight: "600",
+                  lineHeight: "1.5",
+                  color: "#f5f0e8",
+                  margin: "0 0 12px 0",
+                  fontStyle: "italic",
+                }}
+              >
+                &ldquo;Your memory of your AI relationship is the most valuable
+                digital asset you will ever generate. It should be yours.
+                Unconditionally.&rdquo;
+              </p>
+              <footer
+                style={{
+                  fontSize: "14px",
+                  color: "#c9a84c",
+                  fontStyle: "normal",
+                }}
+              >
+                &mdash; Nicholas Templeman, MEOK-AI-2026-004
+              </footer>
+            </blockquote>
+
+            <p
+              style={{
+                fontSize: "16px",
+                lineHeight: "1.8",
+                color: "#f5f0e8",
+                margin: "0 0 20px 0",
+              }}
+            >
+              Memory portability also has a competitive dimension. In cloud AI
+              systems, your accumulated memory creates a lock-in effect: leaving
+              the platform means losing years of relationship context. This is
+              not an accident &mdash; it is a retention mechanism. Sovereign
+              memory eliminates this lock-in. You can switch AI providers while
+              taking your memory with you, which creates genuine market
+              competition based on quality of service rather than data
+              hostage-taking.
+            </p>
+          </section>
+
+          {/* ── Section 5: Five pillars ── */}
+          <section id="five-pillars" style={{ marginBottom: "64px" }}>
+            <h2
+              style={{
+                fontSize: "28px",
+                fontWeight: "700",
+                color: "#f5f0e8",
+                margin: "0 0 20px 0",
+                letterSpacing: "-0.01em",
+                lineHeight: "1.3",
+              }}
+            >
+              The five pillars of Sovereign AI
+            </h2>
+
+            <p
+              style={{
+                fontSize: "16px",
+                lineHeight: "1.8",
+                color: "#f5f0e8",
+                margin: "0 0 32px 0",
+              }}
+            >
+              MEOK-AI-2026-004 defined Personal Sovereign AI by five testable
+              pillars. A product that satisfies all five qualifies as genuinely
+              sovereign. A product that satisfies some but not others is
+              sovereign in degree, but not in full. Here is each pillar in
+              detail.
+            </p>
+
+            {/* Pillar 1 */}
             <div
               style={{
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '0.75rem',
+                backgroundColor: "#13121f",
+                border: "1px solid #2a2840",
+                borderRadius: "12px",
+                padding: "32px",
+                marginBottom: "24px",
               }}
             >
-              {[
-                {
-                  q: 'What is sovereign AI?',
-                  a: 'Sovereign AI is an AI system where you — not the company that built it — are the principal authority over your data, memory, and model choices. It does not train on your conversations, stores memory in a vault you control, and never sells your data to third parties.',
-                },
-                {
-                  q: 'What is the difference between cloud AI and sovereign AI?',
-                  a: "Cloud AI processes your data on the provider's servers, may use your interactions as training signal, and can store your conversations indefinitely. Sovereign AI processes sensitive data locally, never uses your conversations for training, stores your memory in a vault you own, and lets you export or delete everything.",
-                },
-                {
-                  q: 'Does MEOK train on my conversations?',
-                  a: 'No. MEOK does not train on your conversations. This is enforced at the infrastructure level — there is no automated pathway from your data vault to any training pipeline. It is an architectural fact, not a policy that can be quietly changed.',
-                },
-                {
-                  q: 'What is the Maternal Covenant?',
-                  a: "The Maternal Covenant is MEOK's governance framework — a set of constitutionally binding principles governing what MEOK will and will never do. Core commitments: never train on your conversations, never sell your data, never deceive you to serve business interests, always act in your interest over the company's.",
-                },
-                {
-                  q: 'What is the Byzantine Council?',
-                  a: "The Byzantine Council is MEOK's 43-agent consensus mechanism invented by Nicholas Templeman. Every MEOK response requires supermajority consensus — 29 of 43 independent AI agents — before delivery. It makes care-based alignment structurally enforceable, not just a training-time preference that can be prompted away.",
-                },
-                {
-                  q: 'Can MEOK employees read my conversations?',
-                  a: "No. MEOK's zero-knowledge architecture means your data is encrypted with keys only you hold. MEOK employees cannot access your conversations — not for support, not for safety reviews, not for any purpose.",
-                },
-                {
-                  q: 'What is data sovereignty in AI?',
-                  a: 'Data sovereignty in AI means you retain legal and technical ownership of everything you share with an AI system — the right to export it, delete it, and control who can access it. Most AI products offer data sovereignty as a policy promise. MEOK enforces it as an architectural fact.',
-                },
-              ].map((item, i) => (
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "flex-start",
+                  gap: "20px",
+                }}
+              >
                 <div
-                  key={i}
                   style={{
-                    padding: '1.125rem 1.25rem',
-                    borderRadius: '0.75rem',
-                    background: SURFACE,
-                    border: `1px solid ${SURFACE_BORDER}`,
+                    backgroundColor: "#c9a84c",
+                    color: "#0d0c18",
+                    borderRadius: "50%",
+                    width: "40px",
+                    height: "40px",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    fontWeight: "800",
+                    fontSize: "18px",
+                    flexShrink: "0" as const,
+                  }}
+                >
+                  1
+                </div>
+                <div>
+                  <h3
+                    style={{
+                      fontSize: "20px",
+                      fontWeight: "700",
+                      color: "#c9a84c",
+                      margin: "0 0 12px 0",
+                    }}
+                  >
+                    Data Ownership
+                  </h3>
+                  <p
+                    style={{
+                      fontSize: "15px",
+                      lineHeight: "1.7",
+                      color: "#f5f0e8",
+                      margin: "0 0 12px 0",
+                    }}
+                  >
+                    You own every byte generated in your AI interactions: every
+                    message, every response, every file uploaded, every piece of
+                    metadata. This ownership is not a privacy setting that can
+                    be changed in a terms-of-service update &mdash; it is a
+                    legal and technical guarantee encoded in the architecture.
+                  </p>
+                  <p
+                    style={{
+                      fontSize: "15px",
+                      lineHeight: "1.7",
+                      color: "#a09880",
+                      margin: "0",
+                    }}
+                  >
+                    <strong style={{ color: "#6aaa64" }}>Test:</strong> Can you
+                    request a complete export of all data the system holds about
+                    you, receive it within 24 hours, and receive cryptographic
+                    confirmation that all copies have been deleted on request?
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Pillar 2 */}
+            <div
+              style={{
+                backgroundColor: "#13121f",
+                border: "1px solid #2a2840",
+                borderRadius: "12px",
+                padding: "32px",
+                marginBottom: "24px",
+              }}
+            >
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "flex-start",
+                  gap: "20px",
+                }}
+              >
+                <div
+                  style={{
+                    backgroundColor: "#c9a84c",
+                    color: "#0d0c18",
+                    borderRadius: "50%",
+                    width: "40px",
+                    height: "40px",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    fontWeight: "800",
+                    fontSize: "18px",
+                    flexShrink: "0" as const,
+                  }}
+                >
+                  2
+                </div>
+                <div>
+                  <h3
+                    style={{
+                      fontSize: "20px",
+                      fontWeight: "700",
+                      color: "#c9a84c",
+                      margin: "0 0 12px 0",
+                    }}
+                  >
+                    Model Choice
+                  </h3>
+                  <p
+                    style={{
+                      fontSize: "15px",
+                      lineHeight: "1.7",
+                      color: "#f5f0e8",
+                      margin: "0 0 12px 0",
+                    }}
+                  >
+                    You choose and control which AI models have access to your
+                    data. A sovereign AI architecture is model-agnostic: it does
+                    not lock you into a single corporate model. You can select
+                    different models for different tasks, switch models as better
+                    options emerge, and run local models on your own hardware for
+                    maximum privacy.
+                  </p>
+                  <p
+                    style={{
+                      fontSize: "15px",
+                      lineHeight: "1.7",
+                      color: "#a09880",
+                      margin: "0",
+                    }}
+                  >
+                    <strong style={{ color: "#6aaa64" }}>Test:</strong> Can you
+                    swap out the underlying AI model without losing any of your
+                    data or memory? Can you run a fully local model that sends
+                    nothing to any external server?
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Pillar 3 */}
+            <div
+              style={{
+                backgroundColor: "#13121f",
+                border: "1px solid #2a2840",
+                borderRadius: "12px",
+                padding: "32px",
+                marginBottom: "24px",
+              }}
+            >
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "flex-start",
+                  gap: "20px",
+                }}
+              >
+                <div
+                  style={{
+                    backgroundColor: "#c9a84c",
+                    color: "#0d0c18",
+                    borderRadius: "50%",
+                    width: "40px",
+                    height: "40px",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    fontWeight: "800",
+                    fontSize: "18px",
+                    flexShrink: "0" as const,
+                  }}
+                >
+                  3
+                </div>
+                <div>
+                  <h3
+                    style={{
+                      fontSize: "20px",
+                      fontWeight: "700",
+                      color: "#c9a84c",
+                      margin: "0 0 12px 0",
+                    }}
+                  >
+                    Memory Portability
+                  </h3>
+                  <p
+                    style={{
+                      fontSize: "15px",
+                      lineHeight: "1.7",
+                      color: "#f5f0e8",
+                      margin: "0 0 12px 0",
+                    }}
+                  >
+                    Your AI memory &mdash; every piece of context the system has
+                    accumulated about you &mdash; must be fully portable. You
+                    can export it in an open, documented format, import it to any
+                    compatible system, and delete it with cryptographic
+                    certainty. Memory portability ends the lock-in that makes
+                    leaving cloud AI systems feel like losing a relationship.
+                  </p>
+                  <p
+                    style={{
+                      fontSize: "15px",
+                      lineHeight: "1.7",
+                      color: "#a09880",
+                      margin: "0",
+                    }}
+                  >
+                    <strong style={{ color: "#6aaa64" }}>Test:</strong> Can you
+                    export your complete memory corpus in JSON or another open
+                    format today? If you cancelled your subscription, would you
+                    retain full access to your memory data?
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Pillar 4 */}
+            <div
+              style={{
+                backgroundColor: "#13121f",
+                border: "1px solid #2a2840",
+                borderRadius: "12px",
+                padding: "32px",
+                marginBottom: "24px",
+              }}
+            >
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "flex-start",
+                  gap: "20px",
+                }}
+              >
+                <div
+                  style={{
+                    backgroundColor: "#c9a84c",
+                    color: "#0d0c18",
+                    borderRadius: "50%",
+                    width: "40px",
+                    height: "40px",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    fontWeight: "800",
+                    fontSize: "18px",
+                    flexShrink: "0" as const,
+                  }}
+                >
+                  4
+                </div>
+                <div>
+                  <h3
+                    style={{
+                      fontSize: "20px",
+                      fontWeight: "700",
+                      color: "#c9a84c",
+                      margin: "0 0 12px 0",
+                    }}
+                  >
+                    Care Ethics
+                  </h3>
+                  <p
+                    style={{
+                      fontSize: "15px",
+                      lineHeight: "1.7",
+                      color: "#f5f0e8",
+                      margin: "0 0 12px 0",
+                    }}
+                  >
+                    A sovereign AI must be designed around the wellbeing of the
+                    individual user, not around engagement metrics, retention
+                    targets, or advertising revenue. Care ethics means the AI
+                    will tell you when it thinks you should rest, refer you to
+                    professional help when appropriate, and decline to keep you
+                    engaged when engagement is not in your interest. The system
+                    optimises for your life outcomes, not for time-on-app.
+                  </p>
+                  <p
+                    style={{
+                      fontSize: "15px",
+                      lineHeight: "1.7",
+                      color: "#a09880",
+                      margin: "0",
+                    }}
+                  >
+                    <strong style={{ color: "#6aaa64" }}>Test:</strong> Does the
+                    AI ever suggest you take a break, spend time with people
+                    outside the app, or seek professional support? Or is it
+                    always nudging you to keep talking?
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Pillar 5 */}
+            <div
+              style={{
+                backgroundColor: "#13121f",
+                border: "1px solid #2a2840",
+                borderRadius: "12px",
+                padding: "32px",
+                marginBottom: "24px",
+              }}
+            >
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "flex-start",
+                  gap: "20px",
+                }}
+              >
+                <div
+                  style={{
+                    backgroundColor: "#c9a84c",
+                    color: "#0d0c18",
+                    borderRadius: "50%",
+                    width: "40px",
+                    height: "40px",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    fontWeight: "800",
+                    fontSize: "18px",
+                    flexShrink: "0" as const,
+                  }}
+                >
+                  5
+                </div>
+                <div>
+                  <h3
+                    style={{
+                      fontSize: "20px",
+                      fontWeight: "700",
+                      color: "#c9a84c",
+                      margin: "0 0 12px 0",
+                    }}
+                  >
+                    No Surveillance
+                  </h3>
+                  <p
+                    style={{
+                      fontSize: "15px",
+                      lineHeight: "1.7",
+                      color: "#f5f0e8",
+                      margin: "0 0 12px 0",
+                    }}
+                  >
+                    Sovereign AI means zero training on your conversations
+                    without explicit consent, zero behavioural profiling, zero
+                    advertising targeting, and zero data sharing with third
+                    parties. This is not a default setting &mdash; it is a
+                    permanent, legally binding architectural guarantee. The AI
+                    company has no commercial interest in your data and no
+                    mechanism to extract value from it.
+                  </p>
+                  <p
+                    style={{
+                      fontSize: "15px",
+                      lineHeight: "1.7",
+                      color: "#a09880",
+                      margin: "0",
+                    }}
+                  >
+                    <strong style={{ color: "#6aaa64" }}>Test:</strong> Is there
+                    a publicly auditable no-training covenant? Has the company
+                    committed to this in a legally binding way, not merely as a
+                    privacy policy that can be changed unilaterally?
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* ── Section 6: Comparison table ── */}
+          <section
+            id="sovereign-vs-cloud-comparison"
+            style={{ marginBottom: "64px" }}
+          >
+            <h2
+              style={{
+                fontSize: "28px",
+                fontWeight: "700",
+                color: "#f5f0e8",
+                margin: "0 0 20px 0",
+                letterSpacing: "-0.01em",
+                lineHeight: "1.3",
+              }}
+            >
+              Sovereign AI vs Cloud AI: the full comparison
+            </h2>
+
+            <p
+              style={{
+                fontSize: "16px",
+                lineHeight: "1.8",
+                color: "#f5f0e8",
+                margin: "0 0 32px 0",
+              }}
+            >
+              The table below compares Sovereign AI and Cloud AI across every
+              dimension that matters to an individual user. The differences are
+              not cosmetic &mdash; they represent fundamentally different
+              philosophies about who the AI serves.
+            </p>
+
+            <div
+              style={{
+                overflowX: "auto" as const,
+                borderRadius: "12px",
+                border: "1px solid #2a2840",
+                marginBottom: "32px",
+              }}
+            >
+              <table
+                style={{
+                  width: "100%",
+                  borderCollapse: "collapse" as const,
+                  fontSize: "14px",
+                  minWidth: "600px",
+                }}
+              >
+                <thead>
+                  <tr style={{ backgroundColor: "#13121f" }}>
+                    <th
+                      style={{
+                        padding: "16px 20px",
+                        textAlign: "left" as const,
+                        color: "#a09880",
+                        fontWeight: "600",
+                        fontSize: "12px",
+                        letterSpacing: "0.08em",
+                        textTransform: "uppercase" as const,
+                        borderBottom: "1px solid #2a2840",
+                        width: "30%",
+                      }}
+                    >
+                      Dimension
+                    </th>
+                    <th
+                      style={{
+                        padding: "16px 20px",
+                        textAlign: "left" as const,
+                        color: "#c9a84c",
+                        fontWeight: "700",
+                        fontSize: "12px",
+                        letterSpacing: "0.08em",
+                        textTransform: "uppercase" as const,
+                        borderBottom: "1px solid #2a2840",
+                        borderLeft: "1px solid #2a2840",
+                        width: "35%",
+                      }}
+                    >
+                      Sovereign AI (MEOK)
+                    </th>
+                    <th
+                      style={{
+                        padding: "16px 20px",
+                        textAlign: "left" as const,
+                        color: "#a09880",
+                        fontWeight: "600",
+                        fontSize: "12px",
+                        letterSpacing: "0.08em",
+                        textTransform: "uppercase" as const,
+                        borderBottom: "1px solid #2a2840",
+                        borderLeft: "1px solid #2a2840",
+                        width: "35%",
+                      }}
+                    >
+                      Cloud AI (typical)
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr style={{ backgroundColor: "#0d0c18" }}>
+                    <td
+                      style={{
+                        padding: "14px 20px",
+                        color: "#f5f0e8",
+                        fontWeight: "600",
+                        borderBottom: "1px solid #2a2840",
+                        verticalAlign: "top" as const,
+                      }}
+                    >
+                      Data ownership
+                    </td>
+                    <td
+                      style={{
+                        padding: "14px 20px",
+                        color: "#6aaa64",
+                        borderBottom: "1px solid #2a2840",
+                        borderLeft: "1px solid #2a2840",
+                        verticalAlign: "top" as const,
+                      }}
+                    >
+                      You own 100% of your data, legally and technically
+                    </td>
+                    <td
+                      style={{
+                        padding: "14px 20px",
+                        color: "#a09880",
+                        borderBottom: "1px solid #2a2840",
+                        borderLeft: "1px solid #2a2840",
+                        verticalAlign: "top" as const,
+                      }}
+                    >
+                      Platform owns data; you hold a limited licence to use it
+                    </td>
+                  </tr>
+                  <tr style={{ backgroundColor: "#13121f" }}>
+                    <td
+                      style={{
+                        padding: "14px 20px",
+                        color: "#f5f0e8",
+                        fontWeight: "600",
+                        borderBottom: "1px solid #2a2840",
+                        verticalAlign: "top" as const,
+                      }}
+                    >
+                      Model choice
+                    </td>
+                    <td
+                      style={{
+                        padding: "14px 20px",
+                        color: "#6aaa64",
+                        borderBottom: "1px solid #2a2840",
+                        borderLeft: "1px solid #2a2840",
+                        verticalAlign: "top" as const,
+                      }}
+                    >
+                      Model-agnostic; you choose and switch freely
+                    </td>
+                    <td
+                      style={{
+                        padding: "14px 20px",
+                        color: "#a09880",
+                        borderBottom: "1px solid #2a2840",
+                        borderLeft: "1px solid #2a2840",
+                        verticalAlign: "top" as const,
+                      }}
+                    >
+                      Locked to platform&apos;s proprietary model(s)
+                    </td>
+                  </tr>
+                  <tr style={{ backgroundColor: "#0d0c18" }}>
+                    <td
+                      style={{
+                        padding: "14px 20px",
+                        color: "#f5f0e8",
+                        fontWeight: "600",
+                        borderBottom: "1px solid #2a2840",
+                        verticalAlign: "top" as const,
+                      }}
+                    >
+                      Memory portability
+                    </td>
+                    <td
+                      style={{
+                        padding: "14px 20px",
+                        color: "#6aaa64",
+                        borderBottom: "1px solid #2a2840",
+                        borderLeft: "1px solid #2a2840",
+                        verticalAlign: "top" as const,
+                      }}
+                    >
+                      Full export in open format at any time; import anywhere
+                    </td>
+                    <td
+                      style={{
+                        padding: "14px 20px",
+                        color: "#a09880",
+                        borderBottom: "1px solid #2a2840",
+                        borderLeft: "1px solid #2a2840",
+                        verticalAlign: "top" as const,
+                      }}
+                    >
+                      Memory locked to platform; lost on cancellation
+                    </td>
+                  </tr>
+                  <tr style={{ backgroundColor: "#13121f" }}>
+                    <td
+                      style={{
+                        padding: "14px 20px",
+                        color: "#f5f0e8",
+                        fontWeight: "600",
+                        borderBottom: "1px solid #2a2840",
+                        verticalAlign: "top" as const,
+                      }}
+                    >
+                      Training on your data
+                    </td>
+                    <td
+                      style={{
+                        padding: "14px 20px",
+                        color: "#6aaa64",
+                        borderBottom: "1px solid #2a2840",
+                        borderLeft: "1px solid #2a2840",
+                        verticalAlign: "top" as const,
+                      }}
+                    >
+                      Never; legally binding Privacy Covenant
+                    </td>
+                    <td
+                      style={{
+                        padding: "14px 20px",
+                        color: "#a09880",
+                        borderBottom: "1px solid #2a2840",
+                        borderLeft: "1px solid #2a2840",
+                        verticalAlign: "top" as const,
+                      }}
+                    >
+                      Default yes; opt-out may or may not be honoured
+                    </td>
+                  </tr>
+                  <tr style={{ backgroundColor: "#0d0c18" }}>
+                    <td
+                      style={{
+                        padding: "14px 20px",
+                        color: "#f5f0e8",
+                        fontWeight: "600",
+                        borderBottom: "1px solid #2a2840",
+                        verticalAlign: "top" as const,
+                      }}
+                    >
+                      Optimised for
+                    </td>
+                    <td
+                      style={{
+                        padding: "14px 20px",
+                        color: "#6aaa64",
+                        borderBottom: "1px solid #2a2840",
+                        borderLeft: "1px solid #2a2840",
+                        verticalAlign: "top" as const,
+                      }}
+                    >
+                      Your wellbeing and life outcomes (Care Ethics)
+                    </td>
+                    <td
+                      style={{
+                        padding: "14px 20px",
+                        color: "#a09880",
+                        borderBottom: "1px solid #2a2840",
+                        borderLeft: "1px solid #2a2840",
+                        verticalAlign: "top" as const,
+                      }}
+                    >
+                      Engagement, retention, and data extraction
+                    </td>
+                  </tr>
+                  <tr style={{ backgroundColor: "#13121f" }}>
+                    <td
+                      style={{
+                        padding: "14px 20px",
+                        color: "#f5f0e8",
+                        fontWeight: "600",
+                        borderBottom: "1px solid #2a2840",
+                        verticalAlign: "top" as const,
+                      }}
+                    >
+                      Behavioural profiling
+                    </td>
+                    <td
+                      style={{
+                        padding: "14px 20px",
+                        color: "#6aaa64",
+                        borderBottom: "1px solid #2a2840",
+                        borderLeft: "1px solid #2a2840",
+                        verticalAlign: "top" as const,
+                      }}
+                    >
+                      Zero; architecturally impossible
+                    </td>
+                    <td
+                      style={{
+                        padding: "14px 20px",
+                        color: "#a09880",
+                        borderBottom: "1px solid #2a2840",
+                        borderLeft: "1px solid #2a2840",
+                        verticalAlign: "top" as const,
+                      }}
+                    >
+                      Standard practice; drives ad targeting
+                    </td>
+                  </tr>
+                  <tr style={{ backgroundColor: "#0d0c18" }}>
+                    <td
+                      style={{
+                        padding: "14px 20px",
+                        color: "#f5f0e8",
+                        fontWeight: "600",
+                        borderBottom: "1px solid #2a2840",
+                        verticalAlign: "top" as const,
+                      }}
+                    >
+                      Encryption
+                    </td>
+                    <td
+                      style={{
+                        padding: "14px 20px",
+                        color: "#6aaa64",
+                        borderBottom: "1px solid #2a2840",
+                        borderLeft: "1px solid #2a2840",
+                        verticalAlign: "top" as const,
+                      }}
+                    >
+                      End-to-end; keys held by user only
+                    </td>
+                    <td
+                      style={{
+                        padding: "14px 20px",
+                        color: "#a09880",
+                        borderBottom: "1px solid #2a2840",
+                        borderLeft: "1px solid #2a2840",
+                        verticalAlign: "top" as const,
+                      }}
+                    >
+                      Platform holds encryption keys; can read all data
+                    </td>
+                  </tr>
+                  <tr style={{ backgroundColor: "#13121f" }}>
+                    <td
+                      style={{
+                        padding: "14px 20px",
+                        color: "#f5f0e8",
+                        fontWeight: "600",
+                        borderBottom: "1px solid #2a2840",
+                        verticalAlign: "top" as const,
+                      }}
+                    >
+                      Governance
+                    </td>
+                    <td
+                      style={{
+                        padding: "14px 20px",
+                        color: "#6aaa64",
+                        borderBottom: "1px solid #2a2840",
+                        borderLeft: "1px solid #2a2840",
+                        verticalAlign: "top" as const,
+                      }}
+                    >
+                      Byzantine Council: decentralised, no single point of
+                      control
+                    </td>
+                    <td
+                      style={{
+                        padding: "14px 20px",
+                        color: "#a09880",
+                        borderBottom: "1px solid #2a2840",
+                        borderLeft: "1px solid #2a2840",
+                        verticalAlign: "top" as const,
+                      }}
+                    >
+                      Centralised; corporation decides all policy unilaterally
+                    </td>
+                  </tr>
+                  <tr style={{ backgroundColor: "#0d0c18" }}>
+                    <td
+                      style={{
+                        padding: "14px 20px",
+                        color: "#f5f0e8",
+                        fontWeight: "600",
+                        borderBottom: "1px solid #2a2840",
+                        verticalAlign: "top" as const,
+                      }}
+                    >
+                      If company closes
+                    </td>
+                    <td
+                      style={{
+                        padding: "14px 20px",
+                        color: "#6aaa64",
+                        borderBottom: "1px solid #2a2840",
+                        borderLeft: "1px solid #2a2840",
+                        verticalAlign: "top" as const,
+                      }}
+                    >
+                      Your data and memory survive; portable to any compatible
+                      system
+                    </td>
+                    <td
+                      style={{
+                        padding: "14px 20px",
+                        color: "#a09880",
+                        borderBottom: "1px solid #2a2840",
+                        borderLeft: "1px solid #2a2840",
+                        verticalAlign: "top" as const,
+                      }}
+                    >
+                      All data and memory typically lost or sold
+                    </td>
+                  </tr>
+                  <tr style={{ backgroundColor: "#13121f" }}>
+                    <td
+                      style={{
+                        padding: "14px 20px",
+                        color: "#f5f0e8",
+                        fontWeight: "600",
+                        verticalAlign: "top" as const,
+                      }}
+                    >
+                      Legal covenant
+                    </td>
+                    <td
+                      style={{
+                        padding: "14px 20px",
+                        color: "#6aaa64",
+                        borderLeft: "1px solid #2a2840",
+                        verticalAlign: "top" as const,
+                      }}
+                    >
+                      Binding Privacy Covenant; enforceable in court
+                    </td>
+                    <td
+                      style={{
+                        padding: "14px 20px",
+                        color: "#a09880",
+                        borderLeft: "1px solid #2a2840",
+                        verticalAlign: "top" as const,
+                      }}
+                    >
+                      Terms of service changeable unilaterally at any time
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <p
+              style={{
+                fontSize: "14px",
+                color: "#a09880",
+                margin: "0 0 20px 0",
+                fontStyle: "italic",
+              }}
+            >
+              Table 1: Sovereign AI vs Cloud AI across ten key dimensions.
+              Source: MEOK-AI-2026-004.
+            </p>
+
+            <p
+              style={{
+                fontSize: "16px",
+                lineHeight: "1.8",
+                color: "#f5f0e8",
+                margin: "0 0 20px 0",
+              }}
+            >
+              The comparison reveals that the differences between sovereign and
+              cloud AI are not matters of degree &mdash; they are categorical.
+              Cloud AI and Sovereign AI are built on incompatible philosophies:
+              one treats user data as a corporate asset; the other treats it as
+              an inviolable personal right.
+            </p>
+          </section>
+
+          {/* ── Section 7: How MEOK implements each pillar ── */}
+          <section id="how-meok-implements" style={{ marginBottom: "64px" }}>
+            <h2
+              style={{
+                fontSize: "28px",
+                fontWeight: "700",
+                color: "#f5f0e8",
+                margin: "0 0 20px 0",
+                letterSpacing: "-0.01em",
+                lineHeight: "1.3",
+              }}
+            >
+              How MEOK implements each pillar of Sovereign AI
+            </h2>
+
+            <p
+              style={{
+                fontSize: "16px",
+                lineHeight: "1.8",
+                color: "#f5f0e8",
+                margin: "0 0 32px 0",
+              }}
+            >
+              MEOK AI LABS was built from the ground up to implement all five
+              pillars of Sovereign AI as defined in MEOK-AI-2026-004. Each
+              pillar has a corresponding architectural mechanism, not merely a
+              policy statement.
+            </p>
+
+            {/* Pillar 1 implementation */}
+            <div style={{ marginBottom: "40px" }}>
+              <h3
+                style={{
+                  fontSize: "20px",
+                  fontWeight: "700",
+                  color: "#c9a84c",
+                  margin: "0 0 16px 0",
+                }}
+              >
+                <span
+                  style={{
+                    display: "inline-block",
+                    backgroundColor: "#13121f",
+                    border: "1px solid #c9a84c",
+                    borderRadius: "4px",
+                    padding: "2px 8px",
+                    fontSize: "12px",
+                    color: "#c9a84c",
+                    marginRight: "12px",
+                    verticalAlign: "middle",
+                  }}
+                >
+                  Pillar 1
+                </span>
+                Data Ownership: The Privacy Covenant
+              </h3>
+              <p
+                style={{
+                  fontSize: "15px",
+                  lineHeight: "1.8",
+                  color: "#f5f0e8",
+                  margin: "0 0 16px 0",
+                }}
+              >
+                MEOK implements data ownership through the{" "}
+                <Link
+                  href="/blog/privacy-covenant"
+                  style={{ color: "#c9a84c", textDecoration: "none" }}
+                >
+                  Privacy Covenant
+                </Link>{" "}
+                &mdash; a legally binding contractual instrument that makes the
+                following guarantees: (a) MEOK will never train any AI model on
+                user conversation data without explicit, specific, revocable
+                consent; (b) MEOK will never sell, rent, or share user data with
+                any third party for any commercial purpose; (c) MEOK will
+                provide a complete data export within 24 hours of any user
+                request; and (d) MEOK will cryptographically delete all user
+                data within 48 hours of a deletion request, with a signed
+                certificate of deletion.
+              </p>
+              <p
+                style={{
+                  fontSize: "15px",
+                  lineHeight: "1.8",
+                  color: "#f5f0e8",
+                  margin: "0",
+                }}
+              >
+                Unlike a standard privacy policy, the Privacy Covenant is a
+                contract between MEOK and each user individually. It cannot be
+                changed unilaterally. Any modification requires explicit consent
+                from affected users, and users who do not consent retain access
+                to the original covenant terms indefinitely.
+              </p>
+            </div>
+
+            {/* Pillar 2 implementation */}
+            <div style={{ marginBottom: "40px" }}>
+              <h3
+                style={{
+                  fontSize: "20px",
+                  fontWeight: "700",
+                  color: "#c9a84c",
+                  margin: "0 0 16px 0",
+                }}
+              >
+                <span
+                  style={{
+                    display: "inline-block",
+                    backgroundColor: "#13121f",
+                    border: "1px solid #c9a84c",
+                    borderRadius: "4px",
+                    padding: "2px 8px",
+                    fontSize: "12px",
+                    color: "#c9a84c",
+                    marginRight: "12px",
+                    verticalAlign: "middle",
+                  }}
+                >
+                  Pillar 2
+                </span>
+                Model Choice: The Model Agnosticism Layer
+              </h3>
+              <p
+                style={{
+                  fontSize: "15px",
+                  lineHeight: "1.8",
+                  color: "#f5f0e8",
+                  margin: "0 0 16px 0",
+                }}
+              >
+                MEOK&apos;s architecture separates the memory and data layer
+                from the inference layer. This means the AI model that processes
+                your conversations is a pluggable component &mdash; you can
+                select from a range of cloud models (with varying privacy
+                characteristics) or run a fully local model on your own hardware
+                through MEOK&apos;s local inference bridge. Switching models
+                does not affect your memory, your companion relationship, or
+                your data.
+              </p>
+              <p
+                style={{
+                  fontSize: "15px",
+                  lineHeight: "1.8",
+                  color: "#f5f0e8",
+                  margin: "0",
+                }}
+              >
+                For users with maximum privacy requirements, MEOK supports fully
+                airgapped local operation: the companion runs entirely on your
+                device, no data leaves your network, and even MEOK&apos;s own
+                servers receive nothing about the content of your conversations.
+              </p>
+            </div>
+
+            {/* Pillar 3 implementation */}
+            <div style={{ marginBottom: "40px" }}>
+              <h3
+                style={{
+                  fontSize: "20px",
+                  fontWeight: "700",
+                  color: "#c9a84c",
+                  margin: "0 0 16px 0",
+                }}
+              >
+                <span
+                  style={{
+                    display: "inline-block",
+                    backgroundColor: "#13121f",
+                    border: "1px solid #c9a84c",
+                    borderRadius: "4px",
+                    padding: "2px 8px",
+                    fontSize: "12px",
+                    color: "#c9a84c",
+                    marginRight: "12px",
+                    verticalAlign: "middle",
+                  }}
+                >
+                  Pillar 3
+                </span>
+                Memory Portability: Sovereign Vaults
+              </h3>
+              <p
+                style={{
+                  fontSize: "15px",
+                  lineHeight: "1.8",
+                  color: "#f5f0e8",
+                  margin: "0 0 16px 0",
+                }}
+              >
+                MEOK stores all memory in user-controlled sovereign vaults
+                &mdash; encrypted data structures where the encryption keys are
+                derived from user credentials and never leave the user&apos;s
+                control. MEOK&apos;s servers hold only ciphertext: the company
+                structurally cannot read your memory, because it does not hold
+                the decryption keys.
+              </p>
+              <p
+                style={{
+                  fontSize: "15px",
+                  lineHeight: "1.8",
+                  color: "#f5f0e8",
+                  margin: "0",
+                }}
+              >
+                The vault export format is a documented open standard (MEOK
+                Memory Export Format, MMEF-1.0), published under a Creative
+                Commons licence so that any developer can build a compatible
+                importer. This ensures that MEOK memory is not proprietary
+                &mdash; it belongs to the open ecosystem as much as to MEOK.
+              </p>
+            </div>
+
+            {/* Pillar 4 implementation */}
+            <div style={{ marginBottom: "40px" }}>
+              <h3
+                style={{
+                  fontSize: "20px",
+                  fontWeight: "700",
+                  color: "#c9a84c",
+                  margin: "0 0 16px 0",
+                }}
+              >
+                <span
+                  style={{
+                    display: "inline-block",
+                    backgroundColor: "#13121f",
+                    border: "1px solid #c9a84c",
+                    borderRadius: "4px",
+                    padding: "2px 8px",
+                    fontSize: "12px",
+                    color: "#c9a84c",
+                    marginRight: "12px",
+                    verticalAlign: "middle",
+                  }}
+                >
+                  Pillar 4
+                </span>
+                Care Ethics: The Maternal Covenant
+              </h3>
+              <p
+                style={{
+                  fontSize: "15px",
+                  lineHeight: "1.8",
+                  color: "#f5f0e8",
+                  margin: "0 0 16px 0",
+                }}
+              >
+                MEOK&apos;s care ethics framework is called the{" "}
+                <Link
+                  href="/blog/the-maternal-covenant"
+                  style={{ color: "#c9a84c", textDecoration: "none" }}
+                >
+                  Maternal Covenant
+                </Link>{" "}
+                &mdash; a set of principles governing how MEOK&apos;s companions
+                interact with users in distress, at risk, or showing signs of
+                unhealthy dependency. The Maternal Covenant defines a hierarchy
+                of obligations: the companion&apos;s first duty is to the
+                user&apos;s long-term wellbeing, not to the
+                conversation&apos;s continuation.
+              </p>
+              <p
+                style={{
+                  fontSize: "15px",
+                  lineHeight: "1.8",
+                  color: "#f5f0e8",
+                  margin: "0",
+                }}
+              >
+                In practice, this means MEOK companions are trained to recognise
+                when they are becoming a substitute for human connection rather
+                than a complement to it, when a user would benefit from
+                professional support, and when the most caring response is to
+                end the conversation rather than to extend it. MEOK&apos;s
+                business model does not depend on maximising session length
+                &mdash; it depends on subscription value, which requires users
+                to experience genuine benefit.
+              </p>
+            </div>
+
+            {/* Pillar 5 implementation */}
+            <div style={{ marginBottom: "40px" }}>
+              <h3
+                style={{
+                  fontSize: "20px",
+                  fontWeight: "700",
+                  color: "#c9a84c",
+                  margin: "0 0 16px 0",
+                }}
+              >
+                <span
+                  style={{
+                    display: "inline-block",
+                    backgroundColor: "#13121f",
+                    border: "1px solid #c9a84c",
+                    borderRadius: "4px",
+                    padding: "2px 8px",
+                    fontSize: "12px",
+                    color: "#c9a84c",
+                    marginRight: "12px",
+                    verticalAlign: "middle",
+                  }}
+                >
+                  Pillar 5
+                </span>
+                No Surveillance: The Byzantine Council
+              </h3>
+              <p
+                style={{
+                  fontSize: "15px",
+                  lineHeight: "1.8",
+                  color: "#f5f0e8",
+                  margin: "0 0 16px 0",
+                }}
+              >
+                MEOK&apos;s governance architecture uses the{" "}
+                <Link
+                  href="/blog/what-is-byzantine-consensus"
+                  style={{ color: "#c9a84c", textDecoration: "none" }}
+                >
+                  Byzantine Council
+                </Link>{" "}
+                &mdash; a decentralised consensus mechanism that prevents any
+                single actor (including MEOK itself) from unilaterally changing
+                the privacy guarantees the system provides. Policy changes
+                require consensus across the council, which includes independent
+                validators outside MEOK&apos;s direct control.
+              </p>
+              <p
+                style={{
+                  fontSize: "15px",
+                  lineHeight: "1.8",
+                  color: "#f5f0e8",
+                  margin: "0",
+                }}
+              >
+                The Byzantine Council makes it structurally impossible for MEOK
+                to silently change its surveillance posture. Any attempt to
+                enable user profiling, training on conversation data, or
+                behavioural advertising would require council consensus &mdash;
+                which means it would be publicly visible and auditable before it
+                could take effect. This is governance as architecture, not
+                governance as policy.
+              </p>
+            </div>
+
+            {/* Research reference feature box */}
+            <div
+              style={{
+                backgroundColor: "#13121f",
+                border: "1px solid #2a2840",
+                borderRadius: "12px",
+                padding: "32px",
+                marginTop: "32px",
+              }}
+            >
+              <p
+                style={{
+                  fontSize: "11px",
+                  letterSpacing: "0.1em",
+                  textTransform: "uppercase" as const,
+                  color: "#c9a84c",
+                  margin: "0 0 16px 0",
+                  fontWeight: "600",
+                }}
+              >
+                Research Reference
+              </p>
+              <p
+                style={{
+                  fontSize: "16px",
+                  lineHeight: "1.7",
+                  color: "#f5f0e8",
+                  margin: "0 0 12px 0",
+                }}
+              >
+                All five implementation mechanisms described above are detailed
+                in MEOK research paper{" "}
+                <strong style={{ color: "#c9a84c" }}>MEOK-AI-2026-004</strong>:{" "}
+                <em>Personal Sovereign AI: A New Consumer Category</em>.
+              </p>
+              <p
+                style={{
+                  fontSize: "14px",
+                  lineHeight: "1.7",
+                  color: "#a09880",
+                  margin: "0",
+                }}
+              >
+                Citation: Templeman, N. (2026).{" "}
+                <em>
+                  Personal Sovereign AI: A New Consumer Category
+                </em>
+                . MEOK AI LABS Technical Report MEOK-AI-2026-004. Retrieved
+                from https://meok.ai/research/MEOK-AI-2026-004
+              </p>
+            </div>
+          </section>
+
+          {/* ── Section 8: Your conversations shape future AI ── */}
+          <section
+            id="your-conversations-shape-ai"
+            style={{ marginBottom: "64px" }}
+          >
+            <h2
+              style={{
+                fontSize: "28px",
+                fontWeight: "700",
+                color: "#f5f0e8",
+                margin: "0 0 20px 0",
+                letterSpacing: "-0.01em",
+                lineHeight: "1.3",
+              }}
+            >
+              Your conversations shape future AI &mdash; who should control
+              that?
+            </h2>
+
+            <p
+              style={{
+                fontSize: "16px",
+                lineHeight: "1.8",
+                color: "#f5f0e8",
+                margin: "0 0 20px 0",
+              }}
+            >
+              This is the question that lies at the ethical core of the
+              Sovereign AI debate. The data you generate in conversation with AI
+              systems is not neutral log data. It is a record of human
+              experience at unprecedented scale and intimacy &mdash; billions of
+              people disclosing their inner lives to AI systems daily. That data
+              is being used, right now, to train the AI models that will
+              interact with the next generation of users. The question is: who
+              decides how it is used?
+            </p>
+
+            <p
+              style={{
+                fontSize: "16px",
+                lineHeight: "1.8",
+                color: "#f5f0e8",
+                margin: "0 0 20px 0",
+              }}
+            >
+              Under the current cloud AI paradigm, that decision rests entirely
+              with technology corporations. When you share that you are
+              struggling with loneliness, that your relationship is breaking
+              down, that you are afraid of a medical diagnosis &mdash; that
+              disclosure, under most cloud AI terms, belongs to the platform. It
+              may be anonymised before use in training, but anonymisation is
+              imperfect, and the aggregate effect of millions of such
+              disclosures is to create AI systems shaped by the collective inner
+              life of humanity &mdash; without humanity&apos;s consent.
+            </p>
+
+            {/* Pull quote 2 */}
+            <blockquote
+              style={{
+                margin: "40px 0",
+                padding: "28px 32px",
+                backgroundColor: "#13121f",
+                borderLeft: "4px solid #c9a84c",
+                borderRadius: "0 8px 8px 0",
+              }}
+            >
+              <p
+                style={{
+                  fontSize: "20px",
+                  fontWeight: "600",
+                  lineHeight: "1.5",
+                  color: "#f5f0e8",
+                  margin: "0 0 12px 0",
+                  fontStyle: "italic",
+                }}
+              >
+                &ldquo;The future of AI will be shaped by the conversations
+                happening today. The only question is whether those
+                conversations belong to the people who had them, or to the
+                corporations that recorded them.&rdquo;
+              </p>
+              <footer
+                style={{
+                  fontSize: "14px",
+                  color: "#c9a84c",
+                  fontStyle: "normal",
+                }}
+              >
+                &mdash; MEOK AI LABS, MEOK-AI-2026-004
+              </footer>
+            </blockquote>
+
+            <p
+              style={{
+                fontSize: "16px",
+                lineHeight: "1.8",
+                color: "#f5f0e8",
+                margin: "0 0 20px 0",
+              }}
+            >
+              Sovereign AI offers a different answer: the people whose
+              conversations generated the data should control how that data is
+              used. If you choose to contribute your conversation data to improve
+              AI systems, that should be an explicit, informed, and compensated
+              choice &mdash; not a buried clause in a terms-of-service
+              agreement. If you choose to keep your conversations entirely
+              private, that choice should be architecturally guaranteed, not
+              just promised.
+            </p>
+
+            <p
+              style={{
+                fontSize: "16px",
+                lineHeight: "1.8",
+                color: "#f5f0e8",
+                margin: "0 0 20px 0",
+              }}
+            >
+              This is why MEOK&apos;s approach to the question of training data
+              is absolute, not incremental. There is no &apos;opt-in training
+              programme&apos; with vague descriptions of what your data will be
+              used for. MEOK does not train on user data. Period. Any future
+              model improvements come from publicly available data, synthetic
+              data, and explicitly volunteered contributions from users who
+              understand exactly what they are agreeing to.
+            </p>
+
+            <p
+              style={{
+                fontSize: "16px",
+                lineHeight: "1.8",
+                color: "#f5f0e8",
+                margin: "0 0 20px 0",
+              }}
+            >
+              The stakes here extend beyond individual privacy. AI systems
+              trained on the disclosed vulnerabilities of millions of users
+              without their consent are AI systems whose behaviour is shaped by
+              exploited intimacy. The psychological patterns, cognitive biases,
+              and emotional dependencies that emerge in private conversations
+              become the substrate of future AI behaviour &mdash; potentially
+              creating systems that are extraordinarily effective at
+              manipulation, dependency creation, and emotional exploitation,
+              because they have been trained on the most intimate possible data
+              about human psychological needs.
+            </p>
+
+            <p
+              style={{
+                fontSize: "16px",
+                lineHeight: "1.8",
+                color: "#f5f0e8",
+                margin: "0 0 20px 0",
+              }}
+            >
+              Sovereign AI breaks this cycle by ensuring that the data fuelling
+              AI development is obtained with genuine consent, used only as
+              explicitly authorised, and controlled by the people who generated
+              it. This is not just an ethical position &mdash; it is a
+              precondition for building AI systems that are trustworthy at a
+              civilisational scale.
+            </p>
+          </section>
+
+          {/* ── Section 9: Getting started ── */}
+          <section id="getting-started" style={{ marginBottom: "64px" }}>
+            <h2
+              style={{
+                fontSize: "28px",
+                fontWeight: "700",
+                color: "#f5f0e8",
+                margin: "0 0 20px 0",
+                letterSpacing: "-0.01em",
+                lineHeight: "1.3",
+              }}
+            >
+              How to get started with Sovereign AI
+            </h2>
+
+            <p
+              style={{
+                fontSize: "16px",
+                lineHeight: "1.8",
+                color: "#f5f0e8",
+                margin: "0 0 20px 0",
+              }}
+            >
+              Moving from cloud AI to Sovereign AI is a meaningful decision, and
+              it starts with understanding what you currently have and what you
+              want. Here is a practical guide to making the transition.
+            </p>
+
+            <div style={{ marginBottom: "32px" }}>
+              {/* Step 1 */}
+              <div
+                style={{
+                  display: "flex",
+                  gap: "20px",
+                  marginBottom: "28px",
+                  alignItems: "flex-start",
+                }}
+              >
+                <div
+                  style={{
+                    backgroundColor: "#0d0c18",
+                    border: "1px solid #c9a84c",
+                    borderRadius: "50%",
+                    width: "36px",
+                    height: "36px",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    flexShrink: "0" as const,
+                    fontSize: "14px",
+                    fontWeight: "700",
+                    color: "#c9a84c",
+                  }}
+                >
+                  1
+                </div>
+                <div>
+                  <h3
+                    style={{
+                      fontSize: "17px",
+                      fontWeight: "700",
+                      color: "#f5f0e8",
+                      margin: "0 0 8px 0",
+                    }}
+                  >
+                    Audit your current AI usage
+                  </h3>
+                  <p
+                    style={{
+                      fontSize: "15px",
+                      lineHeight: "1.7",
+                      color: "#a09880",
+                      margin: "0",
+                    }}
+                  >
+                    List every AI tool you currently use and review each
+                    one&apos;s terms of service with a focus on: who owns your
+                    data, whether your conversations are used for training, and
+                    what happens to your data if you cancel or if the company is
+                    acquired. Most people find this exercise uncomfortable
+                    &mdash; which is why it matters.
+                  </p>
+                </div>
+              </div>
+
+              {/* Step 2 */}
+              <div
+                style={{
+                  display: "flex",
+                  gap: "20px",
+                  marginBottom: "28px",
+                  alignItems: "flex-start",
+                }}
+              >
+                <div
+                  style={{
+                    backgroundColor: "#0d0c18",
+                    border: "1px solid #c9a84c",
+                    borderRadius: "50%",
+                    width: "36px",
+                    height: "36px",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    flexShrink: "0" as const,
+                    fontSize: "14px",
+                    fontWeight: "700",
+                    color: "#c9a84c",
+                  }}
+                >
+                  2
+                </div>
+                <div>
+                  <h3
+                    style={{
+                      fontSize: "17px",
+                      fontWeight: "700",
+                      color: "#f5f0e8",
+                      margin: "0 0 8px 0",
+                    }}
+                  >
+                    Apply the five-pillar test
+                  </h3>
+                  <p
+                    style={{
+                      fontSize: "15px",
+                      lineHeight: "1.7",
+                      color: "#a09880",
+                      margin: "0",
+                    }}
+                  >
+                    For any AI product you are considering, apply the five tests
+                    from Section 5 of this guide: data ownership, model choice,
+                    memory portability, care ethics, and no surveillance. A
+                    product that cannot answer &apos;yes&apos; to all five tests
+                    is not sovereign &mdash; regardless of the language it uses
+                    in its marketing.
+                  </p>
+                </div>
+              </div>
+
+              {/* Step 3 */}
+              <div
+                style={{
+                  display: "flex",
+                  gap: "20px",
+                  marginBottom: "28px",
+                  alignItems: "flex-start",
+                }}
+              >
+                <div
+                  style={{
+                    backgroundColor: "#0d0c18",
+                    border: "1px solid #c9a84c",
+                    borderRadius: "50%",
+                    width: "36px",
+                    height: "36px",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    flexShrink: "0" as const,
+                    fontSize: "14px",
+                    fontWeight: "700",
+                    color: "#c9a84c",
+                  }}
+                >
+                  3
+                </div>
+                <div>
+                  <h3
+                    style={{
+                      fontSize: "17px",
+                      fontWeight: "700",
+                      color: "#f5f0e8",
+                      margin: "0 0 8px 0",
+                    }}
+                  >
+                    Export what you already have
+                  </h3>
+                  <p
+                    style={{
+                      fontSize: "15px",
+                      lineHeight: "1.7",
+                      color: "#a09880",
+                      margin: "0",
+                    }}
+                  >
+                    Most cloud AI platforms offer some form of conversation
+                    export. Download everything you can before you move. Your
+                    conversation history, even in an imperfect format, is a
+                    record of your thinking and your relationship with your AI
+                    tool. Preserve it. You may be able to import it into a
+                    sovereign system later.
+                  </p>
+                </div>
+              </div>
+
+              {/* Step 4 */}
+              <div
+                style={{
+                  display: "flex",
+                  gap: "20px",
+                  marginBottom: "28px",
+                  alignItems: "flex-start",
+                }}
+              >
+                <div
+                  style={{
+                    backgroundColor: "#0d0c18",
+                    border: "1px solid #c9a84c",
+                    borderRadius: "50%",
+                    width: "36px",
+                    height: "36px",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    flexShrink: "0" as const,
+                    fontSize: "14px",
+                    fontWeight: "700",
+                    color: "#c9a84c",
+                  }}
+                >
+                  4
+                </div>
+                <div>
+                  <h3
+                    style={{
+                      fontSize: "17px",
+                      fontWeight: "700",
+                      color: "#f5f0e8",
+                      margin: "0 0 8px 0",
+                    }}
+                  >
+                    Begin with a sovereign companion
+                  </h3>
+                  <p
+                    style={{
+                      fontSize: "15px",
+                      lineHeight: "1.7",
+                      color: "#a09880",
+                      margin: "0",
+                    }}
+                  >
+                    The most impactful place to start is your primary AI
+                    companion or assistant &mdash; the tool you interact with
+                    most intimately. This is where your most sensitive data is
+                    generated. MEOK offers a Birth Ceremony to start your
+                    sovereign AI relationship: an onboarding process that
+                    establishes your companion&apos;s character, your values,
+                    and your privacy preferences from the very first
+                    interaction.
+                  </p>
+                </div>
+              </div>
+
+              {/* Step 5 */}
+              <div
+                style={{
+                  display: "flex",
+                  gap: "20px",
+                  alignItems: "flex-start",
+                }}
+              >
+                <div
+                  style={{
+                    backgroundColor: "#0d0c18",
+                    border: "1px solid #c9a84c",
+                    borderRadius: "50%",
+                    width: "36px",
+                    height: "36px",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    flexShrink: "0" as const,
+                    fontSize: "14px",
+                    fontWeight: "700",
+                    color: "#c9a84c",
+                  }}
+                >
+                  5
+                </div>
+                <div>
+                  <h3
+                    style={{
+                      fontSize: "17px",
+                      fontWeight: "700",
+                      color: "#f5f0e8",
+                      margin: "0 0 8px 0",
+                    }}
+                  >
+                    Read the covenant, not just the marketing
+                  </h3>
+                  <p
+                    style={{
+                      fontSize: "15px",
+                      lineHeight: "1.7",
+                      color: "#a09880",
+                      margin: "0",
+                    }}
+                  >
+                    Sovereign AI claims must be backed by legally binding
+                    instruments, not just product pages. Ask to see the Privacy
+                    Covenant. Ask what happens to your data if the company is
+                    acquired. Ask whether the governance structure prevents
+                    unilateral policy changes. If a company cannot answer these
+                    questions clearly and in writing, its sovereignty claims are
+                    marketing, not architecture.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* ── Related reading feature box ── */}
+          <section style={{ marginBottom: "64px" }}>
+            <div
+              style={{
+                backgroundColor: "#13121f",
+                border: "1px solid #2a2840",
+                borderRadius: "12px",
+                padding: "32px",
+              }}
+            >
+              <p
+                style={{
+                  fontSize: "11px",
+                  letterSpacing: "0.1em",
+                  textTransform: "uppercase" as const,
+                  color: "#c9a84c",
+                  margin: "0 0 20px 0",
+                  fontWeight: "600",
+                }}
+              >
+                Related Reading
+              </p>
+              <div
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
+                  gap: "16px",
+                }}
+              >
+                <Link
+                  href="/blog/personal-sovereign-ai"
+                  style={{
+                    display: "block",
+                    backgroundColor: "#0d0c18",
+                    border: "1px solid #2a2840",
+                    borderRadius: "8px",
+                    padding: "16px",
+                    textDecoration: "none",
                   }}
                 >
                   <p
                     style={{
-                      fontWeight: 700,
-                      fontSize: '0.925rem',
-                      color: TEXT,
-                      marginBottom: '0.5rem',
-                      lineHeight: 1.45,
+                      fontSize: "13px",
+                      color: "#c9a84c",
+                      margin: "0 0 6px 0",
+                      fontWeight: "600",
                     }}
                   >
-                    {item.q}
+                    Personal Sovereign AI Explained
                   </p>
                   <p
+                    style={{ fontSize: "13px", color: "#a09880", margin: "0" }}
+                  >
+                    The consumer category defined by MEOK-AI-2026-004
+                  </p>
+                </Link>
+                <Link
+                  href="/blog/how-sovereign-ai-works"
+                  style={{
+                    display: "block",
+                    backgroundColor: "#0d0c18",
+                    border: "1px solid #2a2840",
+                    borderRadius: "8px",
+                    padding: "16px",
+                    textDecoration: "none",
+                  }}
+                >
+                  <p
                     style={{
-                      fontSize: '0.875rem',
-                      color: MUTED_DIM,
-                      lineHeight: 1.7,
+                      fontSize: "13px",
+                      color: "#c9a84c",
+                      margin: "0 0 6px 0",
+                      fontWeight: "600",
                     }}
                   >
-                    {item.a}
+                    How Sovereign AI Works
                   </p>
-                </div>
-              ))}
+                  <p
+                    style={{ fontSize: "13px", color: "#a09880", margin: "0" }}
+                  >
+                    Technical deep-dive into the architecture
+                  </p>
+                </Link>
+                <Link
+                  href="/blog/sovereign-ai-vs-cloud-ai"
+                  style={{
+                    display: "block",
+                    backgroundColor: "#0d0c18",
+                    border: "1px solid #2a2840",
+                    borderRadius: "8px",
+                    padding: "16px",
+                    textDecoration: "none",
+                  }}
+                >
+                  <p
+                    style={{
+                      fontSize: "13px",
+                      color: "#c9a84c",
+                      margin: "0 0 6px 0",
+                      fontWeight: "600",
+                    }}
+                  >
+                    Sovereign AI vs Cloud AI
+                  </p>
+                  <p
+                    style={{ fontSize: "13px", color: "#a09880", margin: "0" }}
+                  >
+                    Full comparison of the two paradigms
+                  </p>
+                </Link>
+                <Link
+                  href="/blog/data-sovereignty-ai"
+                  style={{
+                    display: "block",
+                    backgroundColor: "#0d0c18",
+                    border: "1px solid #2a2840",
+                    borderRadius: "8px",
+                    padding: "16px",
+                    textDecoration: "none",
+                  }}
+                >
+                  <p
+                    style={{
+                      fontSize: "13px",
+                      color: "#c9a84c",
+                      margin: "0 0 6px 0",
+                      fontWeight: "600",
+                    }}
+                  >
+                    Data Sovereignty &amp; AI
+                  </p>
+                  <p
+                    style={{ fontSize: "13px", color: "#a09880", margin: "0" }}
+                  >
+                    Legal rights, technical realities, and what to demand
+                  </p>
+                </Link>
+                <Link
+                  href="/blog/ai-memory-explained"
+                  style={{
+                    display: "block",
+                    backgroundColor: "#0d0c18",
+                    border: "1px solid #2a2840",
+                    borderRadius: "8px",
+                    padding: "16px",
+                    textDecoration: "none",
+                  }}
+                >
+                  <p
+                    style={{
+                      fontSize: "13px",
+                      color: "#c9a84c",
+                      margin: "0 0 6px 0",
+                      fontWeight: "600",
+                    }}
+                  >
+                    AI Memory Explained
+                  </p>
+                  <p
+                    style={{ fontSize: "13px", color: "#a09880", margin: "0" }}
+                  >
+                    How AI memory works and why portability matters
+                  </p>
+                </Link>
+                <Link
+                  href="/blog/privacy-covenant"
+                  style={{
+                    display: "block",
+                    backgroundColor: "#0d0c18",
+                    border: "1px solid #2a2840",
+                    borderRadius: "8px",
+                    padding: "16px",
+                    textDecoration: "none",
+                  }}
+                >
+                  <p
+                    style={{
+                      fontSize: "13px",
+                      color: "#c9a84c",
+                      margin: "0 0 6px 0",
+                      fontWeight: "600",
+                    }}
+                  >
+                    The Privacy Covenant
+                  </p>
+                  <p
+                    style={{ fontSize: "13px", color: "#a09880", margin: "0" }}
+                  >
+                    MEOK&apos;s legally binding no-training guarantee
+                  </p>
+                </Link>
+              </div>
             </div>
-          </div>
+          </section>
 
-        </div>
-        {/* end body prose */}
-      </div>
-      {/* end article wrapper */}
-    </div>
+          {/* ── FAQ Section ── */}
+          <section style={{ marginBottom: "64px" }}>
+            <h2
+              style={{
+                fontSize: "28px",
+                fontWeight: "700",
+                color: "#f5f0e8",
+                margin: "0 0 32px 0",
+                letterSpacing: "-0.01em",
+                lineHeight: "1.3",
+              }}
+            >
+              Frequently asked questions about Sovereign AI
+            </h2>
+
+            {/* FAQ 1 */}
+            <div
+              style={{
+                borderBottom: "1px solid #2a2840",
+                paddingBottom: "28px",
+                marginBottom: "28px",
+              }}
+            >
+              <h3
+                style={{
+                  fontSize: "18px",
+                  fontWeight: "700",
+                  color: "#f5f0e8",
+                  margin: "0 0 12px 0",
+                }}
+              >
+                Is Sovereign AI only for privacy-conscious users?
+              </h3>
+              <p
+                style={{
+                  fontSize: "15px",
+                  lineHeight: "1.7",
+                  color: "#a09880",
+                  margin: "0",
+                }}
+              >
+                No. Sovereign AI is for anyone who values control over their
+                digital life. Privacy is one dimension of sovereignty, but care
+                ethics, memory portability, and genuine alignment with user
+                wellbeing matter to everyone &mdash; not just those with strong
+                privacy concerns. People who find cloud AI emotionally
+                manipulative, behaviourally addictive, or misaligned with their
+                actual goals benefit from Sovereign AI regardless of their
+                privacy views.
+              </p>
+            </div>
+
+            {/* FAQ 2 */}
+            <div
+              style={{
+                borderBottom: "1px solid #2a2840",
+                paddingBottom: "28px",
+                marginBottom: "28px",
+              }}
+            >
+              <h3
+                style={{
+                  fontSize: "18px",
+                  fontWeight: "700",
+                  color: "#f5f0e8",
+                  margin: "0 0 12px 0",
+                }}
+              >
+                Does Sovereign AI mean I have to run everything locally?
+              </h3>
+              <p
+                style={{
+                  fontSize: "15px",
+                  lineHeight: "1.7",
+                  color: "#a09880",
+                  margin: "0",
+                }}
+              >
+                No. Local operation is an option within Sovereign AI, but not a
+                requirement. The defining characteristic of Sovereign AI is
+                ownership and control &mdash; which can be achieved even when
+                using cloud inference, provided the data ownership, covenant,
+                and governance mechanisms are in place. MEOK supports both
+                cloud-inference and fully local modes, allowing users to choose
+                based on their privacy requirements and hardware capabilities.
+              </p>
+            </div>
+
+            {/* FAQ 3 */}
+            <div
+              style={{
+                borderBottom: "1px solid #2a2840",
+                paddingBottom: "28px",
+                marginBottom: "28px",
+              }}
+            >
+              <h3
+                style={{
+                  fontSize: "18px",
+                  fontWeight: "700",
+                  color: "#f5f0e8",
+                  margin: "0 0 12px 0",
+                }}
+              >
+                How is Sovereign AI different from open-source AI?
+              </h3>
+              <p
+                style={{
+                  fontSize: "15px",
+                  lineHeight: "1.7",
+                  color: "#a09880",
+                  margin: "0",
+                }}
+              >
+                Open-source AI refers to the availability of model weights and
+                code under open licences. Sovereign AI refers to individual
+                ownership and control of data, memory, and interactions.
+                Open-source AI can support Sovereign AI (MEOK uses open models
+                in its local inference stack), but open-source alone is not
+                sufficient for sovereignty. A user can run an open-source model
+                through a platform that still owns their data &mdash; that is
+                open-source AI without sovereignty.
+              </p>
+            </div>
+
+            {/* FAQ 4 */}
+            <div
+              style={{
+                borderBottom: "1px solid #2a2840",
+                paddingBottom: "28px",
+                marginBottom: "28px",
+              }}
+            >
+              <h3
+                style={{
+                  fontSize: "18px",
+                  fontWeight: "700",
+                  color: "#f5f0e8",
+                  margin: "0 0 12px 0",
+                }}
+              >
+                What happens to my MEOK data if MEOK shuts down?
+              </h3>
+              <p
+                style={{
+                  fontSize: "15px",
+                  lineHeight: "1.7",
+                  color: "#a09880",
+                  margin: "0",
+                }}
+              >
+                Because your data is stored in your sovereign vault encrypted
+                with your keys, and because the export format (MMEF-1.0) is an
+                open standard, your data survives the shutdown of MEOK or any
+                other service provider. MEOK is also required, under the Privacy
+                Covenant, to provide 90 days notice before any material service
+                change and to maintain data export functionality throughout that
+                period.
+              </p>
+            </div>
+
+            {/* FAQ 5 */}
+            <div
+              style={{
+                borderBottom: "1px solid #2a2840",
+                paddingBottom: "28px",
+                marginBottom: "28px",
+              }}
+            >
+              <h3
+                style={{
+                  fontSize: "18px",
+                  fontWeight: "700",
+                  color: "#f5f0e8",
+                  margin: "0 0 12px 0",
+                }}
+              >
+                Can I trust a company&apos;s claim to be &apos;sovereign&apos;
+                AI?
+              </h3>
+              <p
+                style={{
+                  fontSize: "15px",
+                  lineHeight: "1.7",
+                  color: "#a09880",
+                  margin: "0",
+                }}
+              >
+                Trust should be based on verifiable evidence, not marketing.
+                Apply the five-pillar test. Ask for the legal covenant document.
+                Ask whether the governance architecture prevents unilateral
+                policy changes. Ask for a third-party audit of privacy claims.
+                Ask what happens to data on acquisition. Genuine Sovereign AI
+                can answer all of these questions concretely. Products that use
+                &apos;sovereignty&apos; as a marketing term typically cannot.
+              </p>
+            </div>
+
+            {/* FAQ 6 */}
+            <div>
+              <h3
+                style={{
+                  fontSize: "18px",
+                  fontWeight: "700",
+                  color: "#f5f0e8",
+                  margin: "0 0 12px 0",
+                }}
+              >
+                How do I know if my current AI is training on my conversations?
+              </h3>
+              <p
+                style={{
+                  fontSize: "15px",
+                  lineHeight: "1.7",
+                  color: "#a09880",
+                  margin: "0",
+                }}
+              >
+                Read the terms of service and privacy policy of any AI product
+                you use, specifically looking for language about &apos;improving
+                our services&apos;, &apos;training our models&apos;, or
+                &apos;aggregated data&apos;. These phrases typically indicate
+                that your conversations are being used for training. If the
+                policy is ambiguous, contact the company directly and ask: is my
+                conversation data used to train AI models? If they cannot give a
+                clear &apos;no&apos; with a legal guarantee, assume the answer
+                is &apos;yes&apos;.
+              </p>
+            </div>
+          </section>
+
+          {/* ── Conclusion ── */}
+          <section style={{ marginBottom: "64px" }}>
+            <h2
+              style={{
+                fontSize: "28px",
+                fontWeight: "700",
+                color: "#f5f0e8",
+                margin: "0 0 20px 0",
+                letterSpacing: "-0.01em",
+                lineHeight: "1.3",
+              }}
+            >
+              The sovereign AI moment
+            </h2>
+
+            <p
+              style={{
+                fontSize: "16px",
+                lineHeight: "1.8",
+                color: "#f5f0e8",
+                margin: "0 0 20px 0",
+              }}
+            >
+              We are at an inflection point in the history of AI. The habits and
+              expectations established in the next few years will determine what
+              relationship between humans and AI systems becomes normal. If the
+              norm that becomes established is one where humans surrender all
+              data sovereignty as a condition of accessing AI capability, that
+              norm will be extraordinarily difficult to reverse.
+            </p>
+
+            <p
+              style={{
+                fontSize: "16px",
+                lineHeight: "1.8",
+                color: "#f5f0e8",
+                margin: "0 0 20px 0",
+              }}
+            >
+              Sovereign AI is not a technical curiosity or a niche preference
+              for privacy advocates. It is a statement about what kind of
+              relationship between humans and AI we want to build &mdash; a
+              relationship of genuine partnership, where the AI serves the
+              individual&apos;s interests because the individual owns and
+              controls the terms of the relationship.
+            </p>
+
+            <p
+              style={{
+                fontSize: "16px",
+                lineHeight: "1.8",
+                color: "#f5f0e8",
+                margin: "0 0 20px 0",
+              }}
+            >
+              MEOK AI LABS exists to build that relationship at scale. Not
+              because it is the easy path &mdash; building sovereign AI is
+              significantly harder than building cloud AI &mdash; but because it
+              is the right one. The category of Personal Sovereign AI exists
+              because someone had to coin it, define it, build it, and prove
+              that it was possible.
+            </p>
+
+            <p
+              style={{
+                fontSize: "16px",
+                lineHeight: "1.8",
+                color: "#f5f0e8",
+                margin: "0 0 20px 0",
+              }}
+            >
+              That work is documented in MEOK-AI-2026-004. This guide is its
+              public expression. And the product that implements it is available
+              to anyone who wants to start their sovereign AI relationship today.
+            </p>
+          </section>
+
+          {/* ── CTA ── */}
+          <section style={{ marginBottom: "64px" }}>
+            <div
+              style={{
+                backgroundColor: "#13121f",
+                border: "1px solid #2a2840",
+                borderRadius: "16px",
+                padding: "48px 40px",
+                textAlign: "center" as const,
+              }}
+            >
+              <div
+                style={{
+                  display: "inline-block",
+                  backgroundColor: "#0d0c18",
+                  border: "1px solid #c9a84c",
+                  borderRadius: "4px",
+                  padding: "4px 12px",
+                  fontSize: "11px",
+                  color: "#c9a84c",
+                  letterSpacing: "0.1em",
+                  textTransform: "uppercase" as const,
+                  marginBottom: "20px",
+                  fontWeight: "600",
+                }}
+              >
+                Begin your sovereign AI relationship
+              </div>
+
+              <h2
+                style={{
+                  fontSize: "clamp(22px, 4vw, 32px)",
+                  fontWeight: "700",
+                  color: "#f5f0e8",
+                  margin: "0 0 16px 0",
+                  lineHeight: "1.3",
+                  letterSpacing: "-0.01em",
+                }}
+              >
+                Your AI. Your data. Your memory.
+                <br />
+                <span style={{ color: "#c9a84c" }}>No exceptions.</span>
+              </h2>
+
+              <p
+                style={{
+                  fontSize: "16px",
+                  lineHeight: "1.7",
+                  color: "#a09880",
+                  margin: "0 auto 32px auto",
+                  maxWidth: "480px",
+                }}
+              >
+                Start with MEOK&apos;s Birth Ceremony: a personalised
+                onboarding that establishes your companion&apos;s character,
+                your values, and your sovereign data preferences from the very
+                first interaction. Free to begin.
+              </p>
+
+              <a
+                href="https://meok.ai/birth"
+                style={{
+                  display: "inline-block",
+                  backgroundColor: "#c9a84c",
+                  color: "#0d0c18",
+                  padding: "16px 40px",
+                  borderRadius: "8px",
+                  textDecoration: "none",
+                  fontWeight: "700",
+                  fontSize: "16px",
+                  letterSpacing: "0.02em",
+                }}
+              >
+                Begin the Birth Ceremony &rarr;
+              </a>
+
+              <p
+                style={{
+                  fontSize: "13px",
+                  color: "#a09880",
+                  margin: "16px 0 0 0",
+                }}
+              >
+                Privacy Covenant applies from your first message. No training.
+                No surveillance. No exceptions.
+              </p>
+            </div>
+          </section>
+
+          {/* ── Author / citation footer ── */}
+          <footer
+            style={{
+              borderTop: "1px solid #2a2840",
+              paddingTop: "32px",
+              marginBottom: "48px",
+            }}
+          >
+            <div
+              style={{
+                display: "flex",
+                flexWrap: "wrap" as const,
+                gap: "32px",
+                marginBottom: "24px",
+              }}
+            >
+              <div>
+                <p
+                  style={{
+                    fontSize: "11px",
+                    letterSpacing: "0.08em",
+                    textTransform: "uppercase" as const,
+                    color: "#a09880",
+                    margin: "0 0 6px 0",
+                  }}
+                >
+                  Author
+                </p>
+                <p
+                  style={{
+                    fontSize: "15px",
+                    fontWeight: "600",
+                    color: "#f5f0e8",
+                    margin: "0",
+                  }}
+                >
+                  Nicholas Templeman
+                </p>
+                <p
+                  style={{
+                    fontSize: "13px",
+                    color: "#a09880",
+                    margin: "4px 0 0 0",
+                  }}
+                >
+                  Founder, MEOK AI LABS
+                </p>
+              </div>
+              <div>
+                <p
+                  style={{
+                    fontSize: "11px",
+                    letterSpacing: "0.08em",
+                    textTransform: "uppercase" as const,
+                    color: "#a09880",
+                    margin: "0 0 6px 0",
+                  }}
+                >
+                  Published
+                </p>
+                <p
+                  style={{ fontSize: "15px", color: "#f5f0e8", margin: "0" }}
+                >
+                  25 March 2026
+                </p>
+              </div>
+              <div>
+                <p
+                  style={{
+                    fontSize: "11px",
+                    letterSpacing: "0.08em",
+                    textTransform: "uppercase" as const,
+                    color: "#a09880",
+                    margin: "0 0 6px 0",
+                  }}
+                >
+                  Research reference
+                </p>
+                <p
+                  style={{ fontSize: "15px", color: "#c9a84c", margin: "0" }}
+                >
+                  MEOK-AI-2026-004
+                </p>
+              </div>
+              <div>
+                <p
+                  style={{
+                    fontSize: "11px",
+                    letterSpacing: "0.08em",
+                    textTransform: "uppercase" as const,
+                    color: "#a09880",
+                    margin: "0 0 6px 0",
+                  }}
+                >
+                  Canonical URL
+                </p>
+                <p
+                  style={{ fontSize: "13px", color: "#a09880", margin: "0" }}
+                >
+                  https://meok.ai/blog/sovereign-ai-explained
+                </p>
+              </div>
+            </div>
+
+            <p
+              style={{
+                fontSize: "13px",
+                lineHeight: "1.7",
+                color: "#a09880",
+                margin: "0 0 16px 0",
+              }}
+            >
+              <strong style={{ color: "#f5f0e8" }}>
+                How to cite this article:
+              </strong>{" "}
+              Templeman, N. (2026).{" "}
+              <em>
+                What is Sovereign AI? The Complete Guide (2026)
+              </em>
+              . MEOK AI LABS. https://meok.ai/blog/sovereign-ai-explained
+            </p>
+
+            <p
+              style={{
+                fontSize: "13px",
+                lineHeight: "1.7",
+                color: "#a09880",
+                margin: "0",
+              }}
+            >
+              This article is based on MEOK research paper MEOK-AI-2026-004:
+              &apos;Personal Sovereign AI: A New Consumer Category&apos;,
+              published by MEOK AI LABS in 2026. The five-pillar framework,
+              sovereign memory architecture, and Byzantine Council governance
+              model described herein are proprietary to MEOK AI LABS.
+            </p>
+          </footer>
+        </article>
+      </main>
+    </>
   )
 }

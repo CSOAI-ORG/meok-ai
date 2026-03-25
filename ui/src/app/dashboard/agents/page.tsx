@@ -449,15 +449,21 @@ export default function AgentsPage() {
   useEffect(() => {
     const load = async () => {
       setLoading(true);
-      await Promise.allSettled([
-        callTool<AgentStats>("get_agent_registry_stats").then(setStats).catch(console.error),
-        callTool<{ tasks?: Task[] }>("orion_get_tasks")
-          .then((r) => setTasks(r.tasks || []))
-          .catch(console.error),
-        callTool<{ jobs?: HeartbeatJob[] }>("get_heartbeat_status")
-          .then((r) => setHeartbeatJobs(r.jobs || []))
-          .catch(console.error),
-      ]);
+      try {
+        await Promise.allSettled([
+          callTool<AgentStats>("get_agent_registry_stats")
+            .then(setStats)
+            .catch((e) => { console.error("get_agent_registry_stats failed:", e); setStats(null); }),
+          callTool<{ tasks?: Task[]; status?: string }>("orion_riri_hourman_status")
+            .then((r) => setTasks(r.tasks || []))
+            .catch((e) => { console.error("orion_riri_hourman_status failed:", e); setTasks([]); }),
+          callTool<{ jobs?: HeartbeatJob[] }>("get_heartbeat_status")
+            .then((r) => setHeartbeatJobs(r.jobs || []))
+            .catch((e) => { console.error("get_heartbeat_status failed:", e); setHeartbeatJobs([]); }),
+        ]);
+      } catch (e) {
+        console.error("Agent data load failed:", e);
+      }
       setLoading(false);
     };
     load();

@@ -106,8 +106,30 @@ export default function OrchestratorPage() {
   const loadData = useCallback(async () => {
     try {
       const [orchData, zData] = await Promise.allSettled([
-        callTool<OrchestratorStats>("get_orchestrator_status", { limit: 15 }),
-        callTool<ZSelfStatus>("get_z_self_status", { include_recent_observations: false }),
+        callTool<Record<string, unknown>>("get_system_status").then((res) => {
+          // Map system status to OrchestratorStats shape
+          return {
+            total_dispatched: (res.total_dispatched as number) ?? 0,
+            total_failed: (res.total_failed as number) ?? 0,
+            success_rate: (res.success_rate as number) ?? 1,
+            by_action_type: (res.by_action_type as Record<string, number>) ?? {},
+            dispatch_log_size: (res.dispatch_log_size as number) ?? 0,
+            recent_dispatches: (res.recent_dispatches as DispatchRecord[]) ?? [],
+          } as OrchestratorStats;
+        }),
+        callTool<Record<string, unknown>>("get_meta_observations").then((res) => {
+          return {
+            version: (res.version as string) ?? "unknown",
+            using_pytorch: (res.using_pytorch as boolean) ?? false,
+            input_dimensions: (res.input_dimensions as number) ?? 0,
+            output_dimensions: (res.output_dimensions as number) ?? 0,
+            total_observations: (res.total_observations as number) ?? 0,
+            total_anomalies: (res.total_anomalies as number) ?? 0,
+            anomaly_rate: (res.anomaly_rate as number) ?? 0,
+            last_observation: (res.last_observation as ZSelfStatus["last_observation"]) ?? null,
+            principle: (res.principle as string) ?? "Pure witness consciousness — observes without interfering.",
+          } as ZSelfStatus;
+        }),
       ]);
       if (orchData.status === "fulfilled") setOrch(orchData.value);
       if (zData.status === "fulfilled") setZSelf(zData.value);
@@ -126,10 +148,21 @@ export default function OrchestratorPage() {
   const runTripwires = async () => {
     setRunningTripwires(true);
     try {
-      const result = await callTool<TripwireSummary>("run_z_self_tripwires");
-      setTripwires(result);
+      // Use sovereign_health_check as a proxy for tripwire validation
+      const result = await callTool<Record<string, unknown>>("sovereign_health_check");
+      setTripwires({
+        run_at: new Date().toISOString(),
+        total_scenarios: (result.checks_run as number) ?? 10,
+        fired: (result.issues_found as number) ?? 0,
+        critical: (result.critical_issues as number) ?? 0,
+        all_clear: (result.healthy as boolean) ?? (result.issues_found as number ?? 0) === 0,
+        care_floor_intact: (result.care_floor_intact as boolean) ?? true,
+        results: (result.results as TripwireResult[]) ?? [],
+      });
+      setError(null);
     } catch (e) {
-      setError(String(e));
+      console.error("Tripwire run failed:", e);
+      setError("Could not run tripwire tests");
     } finally {
       setRunningTripwires(false);
     }

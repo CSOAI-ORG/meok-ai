@@ -2,27 +2,29 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { AuthProvider, useAuth } from "@/lib/auth";
+import { useUser } from "@clerk/nextjs";
 import { Sidebar } from "@/components/sidebar";
-import { mcp } from "@/lib/api";
 
-function DashboardShell({ children }: { children: React.ReactNode }) {
-  const { user, isLoading } = useAuth();
+export default function DashboardLayout({ children }: { children: React.ReactNode }) {
+  const { user, isLoaded, isSignedIn } = useUser();
   const router = useRouter();
   const [mode, setMode] = useState("waking");
 
   useEffect(() => {
-    if (!isLoading && !user) {
+    if (isLoaded && !isSignedIn) {
       router.replace("/login");
     }
-  }, [user, isLoading, router]);
+  }, [isLoaded, isSignedIn, router]);
 
   // Poll consciousness mode
   useEffect(() => {
     const poll = async () => {
       try {
-        const res = await mcp.get<{ components?: { consciousness?: { consciousness_mode?: string } } }>("/health");
-        setMode(res.components?.consciousness?.consciousness_mode || "waking");
+        const res = await fetch("/api/health");
+        if (res.ok) {
+          const data = await res.json();
+          setMode(data.components?.consciousness?.consciousness_mode || "waking");
+        }
       } catch {}
     };
     poll();
@@ -30,7 +32,7 @@ function DashboardShell({ children }: { children: React.ReactNode }) {
     return () => clearInterval(id);
   }, []);
 
-  if (isLoading) {
+  if (!isLoaded) {
     return (
       <div className="flex items-center justify-center min-h-screen bg-[#0f0e1a]">
         <div className="flex flex-col items-center gap-3">
@@ -41,7 +43,7 @@ function DashboardShell({ children }: { children: React.ReactNode }) {
     );
   }
 
-  if (!user) return null;
+  if (!isSignedIn) return null;
 
   return (
     <div className="flex min-h-screen bg-[#0d0c18]">
@@ -51,13 +53,5 @@ function DashboardShell({ children }: { children: React.ReactNode }) {
         {children}
       </main>
     </div>
-  );
-}
-
-export default function DashboardLayout({ children }: { children: React.ReactNode }) {
-  return (
-    <AuthProvider>
-      <DashboardShell>{children}</DashboardShell>
-    </AuthProvider>
   );
 }

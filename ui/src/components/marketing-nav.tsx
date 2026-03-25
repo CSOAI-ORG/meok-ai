@@ -139,7 +139,7 @@ const RESOURCE_LINKS: ResourceLink[] = [
   { href: "/how-it-works", label: "How it works", desc: "The MEOK OS explained step by step", icon: <Lightbulb className="w-4 h-4" /> },
   { href: "/characters", label: "Characters", desc: "Your cast of AI companions", icon: <Users className="w-4 h-4" /> },
   { href: "/blog", label: "Blog", desc: "Insights, launches & stories", icon: <BookOpen className="w-4 h-4" /> },
-  { href: "/blog", label: "Changelog", desc: "What's new in MEOK", icon: <GitCommit className="w-4 h-4" /> },
+  { href: "/changelog", label: "Changelog", desc: "What's new in MEOK", icon: <GitCommit className="w-4 h-4" /> },
   { href: "/press", label: "Press", desc: "Media kit & coverage", icon: <Newspaper className="w-4 h-4" /> },
   { href: "/labs", label: "Labs", desc: "Experiments from our research team", icon: <FlaskConical className="w-4 h-4" /> },
   { href: "/roadmap", label: "Roadmap", desc: "What we're building next", icon: <Map className="w-4 h-4" /> },
@@ -305,7 +305,7 @@ export function MarketingNav({ activePage }: MarketingNavProps) {
                 <div className="p-2">
                   {RESOURCE_LINKS.map((r) => (
                     <Link
-                      key={r.href}
+                      key={r.label}
                       href={r.href}
                       className="flex items-start gap-3 px-3 py-2.5 rounded-xl transition-colors group"
                       style={{ color: "rgba(255,255,255,0.75)" }}
@@ -612,7 +612,7 @@ export function MarketingNav({ activePage }: MarketingNavProps) {
               </p>
               {RESOURCE_LINKS.map((r) => (
                 <Link
-                  key={r.href}
+                  key={r.label}
                   href={r.href}
                   className="flex items-center gap-2.5 text-sm py-2 text-[#4a4a3a] hover:text-[#111111] transition-colors font-medium"
                   onClick={() => setMobileOpen(false)}

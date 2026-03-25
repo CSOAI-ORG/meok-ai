@@ -1,6 +1,14 @@
 import type { Metadata } from "next";
 import { DM_Sans } from "next/font/google";
 import { ClerkProvider } from "@clerk/nextjs";
+
+const clerkKey = process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY ?? '';
+const hasValidClerk = clerkKey.startsWith('pk_') && !clerkKey.includes('REPLACE');
+
+function MaybeClerk({ children }: { children: React.ReactNode }) {
+  if (!hasValidClerk) return <>{children}</>;
+  return <ClerkProvider>{children}</ClerkProvider>;
+}
 import { Suspense } from "react";
 import { PostHogProvider } from "@/components/posthog-provider";
 import { CookieConsent } from "@/components/cookie-consent";
@@ -155,7 +163,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <ClerkProvider>
+    <MaybeClerk>
       <html lang="en" className="dark">
         <head>
           <meta name="mobile-web-app-capable" content="yes" />
@@ -180,6 +188,6 @@ export default function RootLayout({
           <SovereignWidget />
         </body>
       </html>
-    </ClerkProvider>
+    </MaybeClerk>
   );
 }

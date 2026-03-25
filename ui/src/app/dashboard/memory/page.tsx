@@ -190,14 +190,22 @@ export default function MemoryPage() {
   const [typeFilter, setTypeFilter] = useState("all");
 
   const loadMemories = useCallback(async (agentId?: string) => {
-    const args: Record<string, unknown> = { limit: 20 };
-    if (agentId && agentId !== "all") args.agent_id = agentId;
-    const res = await callTool<{ memories: MemoryEpisode[] }>("list_memories", args);
-    return res.memories || [];
+    try {
+      const args: Record<string, unknown> = { limit: 20 };
+      if (agentId && agentId !== "all") args.agent_id = agentId;
+      const res = await callTool<{ memories: MemoryEpisode[] }>("list_memories", args);
+      return res.memories || [];
+    } catch (e) {
+      console.error("Failed to load memories:", e);
+      return [];
+    }
   }, []);
 
   useEffect(() => {
-    callTool<MemoryStats>("get_memory_stats").then(setStats).catch(console.error);
+    callTool<MemoryStats>("get_memory_stats").then(setStats).catch((e) => {
+      console.error("Failed to load memory stats:", e);
+      setStats({ total_episodes: 0, average_importance: 0, average_care_weight: 0, by_type: {} } as MemoryStats);
+    });
     setMemoriesLoading(true);
     loadMemories()
       .then(setMemories)
@@ -231,7 +239,8 @@ export default function MemoryPage() {
       const res = await callTool<{ memories: MemoryEpisode[] }>("query_memories", args);
       setMemories(res.memories || []);
     } catch (e) {
-      console.error(e);
+      console.error("Memory search failed:", e);
+      setMemories([]);
     } finally {
       setSearching(false);
     }
