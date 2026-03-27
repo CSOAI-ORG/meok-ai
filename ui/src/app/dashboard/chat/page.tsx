@@ -782,13 +782,35 @@ export default function DashboardChatPage() {
                     <div className="h-full transition-all duration-300" style={{ width: `${pct}%`, background: GOLD }} />
                   </div>
                   {pct > 90 && (
-                    <div className="text-[10px] px-4 py-1 text-center" style={{ color: '#ef4444', background: `${DEEP}ee` }}>
-                      Context nearly full — consider starting a new conversation
+                    <div className="flex items-center justify-center gap-2 px-4 py-1.5 text-center" style={{ color: '#ef4444', background: `${DEEP}ee` }}>
+                      <span className="text-[10px]">Context nearly full — consider starting a new conversation</span>
+                      <button
+                        onClick={() => {
+                          showToast('Conversation summarization coming soon');
+                        }}
+                        className="text-[10px] px-2 py-0.5 rounded-full border transition-colors flex-shrink-0"
+                        style={{ borderColor: '#ef4444', color: '#ef4444' }}
+                        title="Summarize conversation and continue with condensed context"
+                        aria-label="Summarize conversation"
+                      >
+                        Summarize
+                      </button>
                     </div>
                   )}
                   {pct > 75 && pct <= 90 && (
-                    <div className="text-[10px] px-4 py-1 text-center" style={{ color: GOLD, background: `${DEEP}ee` }}>
-                      Context: {Math.round(pct)}% used
+                    <div className="flex items-center justify-between px-4 py-1 text-center gap-2" style={{ color: GOLD, background: `${DEEP}ee` }}>
+                      <span className="text-[10px]">Context: {Math.round(pct)}% used</span>
+                      <button
+                        onClick={() => {
+                          showToast('Context pruning preview: First 5 messages would be compressed');
+                        }}
+                        className="text-[10px] px-2 py-0.5 rounded-full border transition-colors flex-shrink-0"
+                        style={{ borderColor: GOLD, color: GOLD }}
+                        title="Preview context pruning strategy"
+                        aria-label="Preview context pruning"
+                      >
+                        Preview
+                      </button>
                     </div>
                   )}
                 </div>
