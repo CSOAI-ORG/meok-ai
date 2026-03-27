@@ -296,6 +296,8 @@ export default function DashboardChatPage() {
   const [isDragOver, setIsDragOver] = useState(false);
   const [rateLimited, setRateLimited] = useState(false);
   const [bondLevel] = useState(1);
+  const [highContrast, setHighContrast] = useState(false);
+  const [focusedMsgIdx, setFocusedMsgIdx] = useState<number | null>(null);
   const { toast, show: showToast } = useToast();
 
   // Streaming telemetry
@@ -377,6 +379,34 @@ export default function DashboardChatPage() {
   // Auto-scroll — smooth scroll to exact bottom of messages list
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: 'smooth', block: 'end' });
+  }, [messages]);
+
+  // Keyboard navigation between messages (arrow keys)
+  useEffect(() => {
+    function handleKeyboardNav(e: KeyboardEvent) {
+      if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        setFocusedMsgIdx(prev => {
+          const next = prev === null ? messages.length - 1 : Math.max(0, prev - 1);
+          const el = document.querySelector(`[data-msg-idx="${next}"]`) as HTMLElement;
+          el?.focus();
+          el?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          return next;
+        });
+      }
+      if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        setFocusedMsgIdx(prev => {
+          const next = prev === null ? 0 : Math.min(messages.length - 1, prev + 1);
+          const el = document.querySelector(`[data-msg-idx="${next}"]`) as HTMLElement;
+          el?.focus();
+          el?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          return next;
+        });
+      }
+    }
+    window.addEventListener('keydown', handleKeyboardNav);
+    return () => window.removeEventListener('keydown', handleKeyboardNav);
   }, [messages]);
 
   // Auto-resize textarea
@@ -537,6 +567,11 @@ export default function DashboardChatPage() {
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" /><circle cx="12" cy="12" r="3" /></svg>
               <span className="hidden sm:inline">Sovereign</span>
             </button>
+            <button onClick={() => setHighContrast(v => !v)} className="flex items-center gap-1.5 text-xs px-2.5 py-1 rounded-lg border transition-colors flex-shrink-0"
+              style={highContrast ? { borderColor: '#ffffff', color: '#ffffff', background: 'rgba(255,255,255,0.15)' } : { borderColor: 'rgba(255,255,255,0.1)', color: 'rgba(255,255,255,0.4)' }} title="Toggle high contrast mode" aria-label="High contrast mode">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="9" /><path d="M12 9v6M15 12h-6" /></svg>
+              <span className="hidden sm:inline">Contrast</span>
+            </button>
           </header>
 
           {/* Messages area */}
@@ -577,12 +612,24 @@ export default function DashboardChatPage() {
               {messages.map((msg: UIMessage, i: number) => {
                 const text = getMessageText(msg);
                 const isStreamingMsg = isStreaming && msg.role === 'assistant' && i === messages.length - 1;
+                const isFocused = focusedMsgIdx === i;
 
                 return (
-                  <div key={msg.id} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`} style={{ animation: 'messageIn 0.25s ease both' }}>
+                  <div key={msg.id} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`} style={{ animation: 'messageIn 0.25s ease both' }} data-msg-idx={i}>
                     {msg.role === 'user' ? (
                       <div className="max-w-[75%]">
-                        <div className="rounded-2xl rounded-tr-sm px-4 py-3" tabIndex={0} role="article" aria-label={`Your message: ${text.slice(0, 80)}`} style={{ background: GOLD, color: NAVY }}>
+                        <div
+                          className="rounded-2xl rounded-tr-sm px-4 py-3"
+                          tabIndex={0}
+                          role="article"
+                          aria-label={`Your message: ${text.slice(0, 80)}`}
+                          style={{
+                            background: highContrast ? '#ffffff' : GOLD,
+                            color: highContrast ? '#000000' : NAVY,
+                            outline: isFocused ? `3px solid ${GOLD}` : 'none',
+                            outlineOffset: '2px'
+                          }}
+                        >
                           <p className="text-sm font-medium whitespace-pre-wrap leading-relaxed">{text}</p>
                         </div>
                         <p className="text-[10px] mt-1 text-right" style={{ color: 'rgba(255,255,255,0.25)' }}>{formatTime((msg as unknown as { createdAt?: Date }).createdAt ?? new Date())}</p>
@@ -590,7 +637,18 @@ export default function DashboardChatPage() {
                     ) : (
                       <div className="max-w-[75%] group/msg">
                         <SovereignBadge model={selectedModelConfig.label} latency={isStreamingMsg ? undefined : sovereignMeta?.latency} care_score={85} streaming={isStreamingMsg} contextPct={isStreamingMsg ? undefined : contextUsagePct} />
-                        <div className="rounded-2xl rounded-tl-sm px-4 py-3" tabIndex={0} role="article" aria-label={`Aura's response: ${text.slice(0, 80)}`} style={{ background: SURFACE, border: '1px solid rgba(255,255,255,0.07)' }}>
+                        <div
+                          className="rounded-2xl rounded-tl-sm px-4 py-3"
+                          tabIndex={0}
+                          role="article"
+                          aria-label={`Aura's response: ${text.slice(0, 80)}`}
+                          style={{
+                            background: highContrast ? '#1a1a1a' : SURFACE,
+                            border: highContrast ? '2px solid #ffffff' : '1px solid rgba(255,255,255,0.07)',
+                            outline: isFocused ? '3px solid #ffffff' : 'none',
+                            outlineOffset: '2px'
+                          }}
+                        >
                           {text ? (
                             <p className="text-sm whitespace-pre-wrap leading-relaxed" style={{ color: `${CREAM}dd` }}>
                               {text}
