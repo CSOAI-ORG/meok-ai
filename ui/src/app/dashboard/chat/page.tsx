@@ -288,10 +288,12 @@ export default function DashboardChatPage() {
   const [companionId] = useState('aria');
   const [speakingMsgId, setSpeakingMsgId] = useState<string | null>(null);
   const [copiedMsgId, setCopiedMsgId] = useState<string | null>(null);
+  const [explainMsgId, setExplainMsgId] = useState<string | null>(null);
   const [input, setInput] = useState('');
   const [selectedImage, setSelectedImage] = useState<File | null>(null);
   const [imagePreview, setImagePreview] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const [isDragOver, setIsDragOver] = useState(false);
   const [rateLimited, setRateLimited] = useState(false);
   const [bondLevel] = useState(1);
   const { toast, show: showToast } = useToast();
@@ -435,6 +437,11 @@ export default function DashboardChatPage() {
       e.preventDefault();
       handleSend();
     }
+    if (e.key === 'Escape') {
+      e.preventDefault();
+      setInput('');
+      clearImage();
+    }
   }
 
   function handleImageSelect(e: React.ChangeEvent<HTMLInputElement>) {
@@ -450,6 +457,30 @@ export default function DashboardChatPage() {
     if (imagePreview) URL.revokeObjectURL(imagePreview);
     setImagePreview(null);
     if (fileInputRef.current) fileInputRef.current.value = '';
+  }
+
+  function handleDragOver(e: React.DragEvent<HTMLDivElement>) {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsDragOver(true);
+  }
+
+  function handleDragLeave(e: React.DragEvent<HTMLDivElement>) {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsDragOver(false);
+  }
+
+  function handleDrop(e: React.DragEvent<HTMLDivElement>) {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsDragOver(false);
+    const file = e.dataTransfer.files?.[0];
+    if (file && file.type.startsWith('image/')) {
+      setSelectedImage(file);
+      const url = URL.createObjectURL(file);
+      setImagePreview(url);
+    }
   }
 
   return (
@@ -637,11 +668,42 @@ export default function DashboardChatPage() {
                                 title="Like"
                               >👍</button>
                               <button
+                                onClick={() => showToast('Disliked!')}
+                                aria-label="Dislike message"
+                                className="text-[13px] px-1 py-0.5 rounded transition-colors hover:bg-white/10"
+                                title="Dislike"
+                              >👎</button>
+                              <button
                                 onClick={() => showToast('Saved!')}
                                 aria-label="Save message"
                                 className="text-[13px] px-1 py-0.5 rounded transition-colors hover:bg-white/10"
                                 title="Save"
                               >💾</button>
+                              <button
+                                onClick={async () => {
+                                  setExplainMsgId(msg.id);
+                                  try {
+                                    const res = await fetch('/api/explain', {
+                                      method: 'POST',
+                                      headers: { 'Content-Type': 'application/json' },
+                                      body: JSON.stringify({ text }),
+                                    });
+                                    const data = await res.json();
+                                    if (data.explanation) {
+                                      sendMessage({ text: `In simpler terms: ${data.explanation}` });
+                                      showToast('Explanation sent to chat');
+                                    }
+                                  } catch {
+                                    showToast('Failed to explain');
+                                  } finally {
+                                    setExplainMsgId(null);
+                                  }
+                                }}
+                                disabled={explainMsgId === msg.id}
+                                aria-label="Explain simpler"
+                                className="text-[13px] px-1 py-0.5 rounded transition-colors hover:bg-white/10 disabled:opacity-50"
+                                title="Explain simpler"
+                              >{explainMsgId === msg.id ? '⏳' : '💡'}</button>
                               <button
                                 onClick={() => { regenerate(); showToast('Regenerating…'); }}
                                 aria-label="Regenerate response"
@@ -743,7 +805,10 @@ export default function DashboardChatPage() {
               </div>
             )}
             <input ref={fileInputRef} type="file" accept="image/*" className="hidden" onChange={handleImageSelect} />
-            <div className="relative flex items-end gap-2 max-w-3xl mx-auto">
+            <div className="relative flex items-end gap-2 max-w-3xl mx-auto" onDragOver={handleDragOver} onDragLeave={handleDragLeave} onDrop={handleDrop} style={{ position: 'relative' }}>
+              {isDragOver && (
+                <div className="absolute inset-0 rounded-xl border-2 border-dashed pointer-events-none" style={{ borderColor: `${GOLD}60`, background: `${GOLD}10` }} />
+              )}
               <textarea
                 ref={textareaRef}
                 value={input}
