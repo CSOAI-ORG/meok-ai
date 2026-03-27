@@ -36,6 +36,47 @@ const QUICK_PROMPTS = [
   'I need someone to talk to',
 ];
 
+// ─── Crisis detection ─────────────────────────────────────────────────────────
+const CRISIS_SIGNALS = [
+  'want to die', 'kill myself', 'end my life', 'suicide', 'self harm', 'self-harm',
+  'hurt myself', 'no reason to live', 'better off dead', 'can\'t go on', 'give up on life',
+];
+
+function detectCrisis(text: string): boolean {
+  const lower = text.toLowerCase();
+  return CRISIS_SIGNALS.some(signal => lower.includes(signal));
+}
+
+function CrisisBanner({ onDismiss }: { onDismiss: () => void }) {
+  return (
+    <div
+      className="mx-4 mb-2 rounded-xl p-4"
+      style={{ background: 'rgba(239,68,68,0.08)', border: '1px solid rgba(239,68,68,0.25)' }}
+      role="alert"
+      aria-live="assertive"
+    >
+      <div className="flex items-start gap-3">
+        <span className="text-xl">💙</span>
+        <div className="flex-1">
+          <p className="font-bold text-sm mb-1" style={{ color: '#fca5a5' }}>
+            I care about you. Please reach out to someone.
+          </p>
+          <p className="text-xs text-white/60 mb-2">
+            I&apos;m here for you, but trained support is available right now:
+          </p>
+          <div className="flex flex-wrap gap-3 text-xs">
+            <a href="tel:988" className="font-bold text-white/80 hover:text-white">🇺🇸 988 (US/CA)</a>
+            <a href="tel:116123" className="font-bold text-white/80 hover:text-white">🇬🇧 116 123 Samaritans</a>
+            <a href="tel:131114" className="font-bold text-white/80 hover:text-white">🇦🇺 13 11 14 Lifeline</a>
+            <a href="https://www.iasp.info/resources/Crisis_Centres/" target="_blank" rel="noreferrer" className="font-bold text-white/50 hover:text-white/80">Other countries →</a>
+          </div>
+        </div>
+        <button onClick={onDismiss} className="text-white/30 hover:text-white/60 text-sm">✕</button>
+      </div>
+    </div>
+  );
+}
+
 /** Format a Date to HH:MM */
 function formatTime(d: Date): string {
   return d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false });
@@ -236,6 +277,7 @@ function SovereignPanel({
 
 export default function DashboardChatPage() {
   const [selectedModel, setSelectedModel] = useState('claude-sonnet-4-5');
+  const [showCrisisBanner, setShowCrisisBanner] = useState(false);
   const [showSovereign, setShowSovereign] = useState(true);
   const [privacyMode, setPrivacyMode] = useState(false);
   const [powerMode, setPowerMode] = useState(false);
@@ -378,6 +420,8 @@ export default function DashboardChatPage() {
       tokens: 0,
     });
     try { playSound('message-sent'); } catch { /* non-critical */ }
+    // Crisis detection — show safety banner if distress signals detected
+    if (detectCrisis(text)) setShowCrisisBanner(true);
     sendMessage({ text });
     setInput('');
   }, [input, isStreaming, selectedModelConfig.label, sendMessage]);
@@ -562,6 +606,27 @@ export default function DashboardChatPage() {
                                 {copiedMsgId === msg.id ? 'Copied!' : 'Copy'}
                               </button>
                             )}
+                            {/* Reaction buttons — visible on hover */}
+                            <span className="inline-flex items-center gap-0.5 ml-1 opacity-0 group-hover/msg:opacity-100 transition-opacity duration-150">
+                              <button
+                                onClick={() => showToast('Liked!')}
+                                aria-label="Like message"
+                                className="text-[13px] px-1 py-0.5 rounded transition-colors hover:bg-white/10"
+                                title="Like"
+                              >👍</button>
+                              <button
+                                onClick={() => showToast('Saved!')}
+                                aria-label="Save message"
+                                className="text-[13px] px-1 py-0.5 rounded transition-colors hover:bg-white/10"
+                                title="Save"
+                              >💾</button>
+                              <button
+                                onClick={() => { regenerate(); showToast('Regenerating…'); }}
+                                aria-label="Regenerate response"
+                                className="text-[13px] px-1 py-0.5 rounded transition-colors hover:bg-white/10"
+                                title="Regenerate"
+                              >🔄</button>
+                            </span>
                           </>
                         )}
                         <p className="text-[10px] mt-1" style={{ color: 'rgba(255,255,255,0.25)' }}>{formatTime((msg as unknown as { createdAt?: Date }).createdAt ?? new Date())}</p>
@@ -584,6 +649,11 @@ export default function DashboardChatPage() {
             </div>
           </div>
           </div>
+
+          {/* Crisis safety banner */}
+          {showCrisisBanner && (
+            <CrisisBanner onDismiss={() => setShowCrisisBanner(false)} />
+          )}
 
           {/* Rate limit banner */}
           {rateLimited && (
@@ -714,6 +784,16 @@ export default function DashboardChatPage() {
           />
         )}
       </div>
+
+      {/* Toast notification */}
+      {toast && (
+        <div
+          className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 px-4 py-2 rounded-xl text-xs font-semibold shadow-lg pointer-events-none"
+          style={{ background: SURFACE, border: `1px solid ${GOLD}40`, color: GOLD }}
+        >
+          {toast}
+        </div>
+      )}
     </>
   );
 }
