@@ -11,6 +11,7 @@ import { getCharacter } from '@/lib/characters';
 import { SovereignDisplay, type SovereignDisplayProps } from '@/components/sovereign-display';
 import { playSound } from '@/lib/sound';
 import { speakAsCharacter, stopSpeaking, isTTSSupported } from '@/lib/voice-synthesis';
+import { startListening, stopListening, isVoiceSupported } from '@/lib/voice';
 import { copyToClipboard } from '@/lib/chat-actions';
 import { KEYFRAMES_IDLE } from '@/lib/animation-state';
 
@@ -311,6 +312,8 @@ export default function DashboardChatPage() {
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [isDragOver, setIsDragOver] = useState(false);
   const [rateLimited, setRateLimited] = useState(false);
+  const [isListening, setIsListening] = useState(false);
+  const [voiceTranscript, setVoiceTranscript] = useState('');
   const [bondLevel] = useState(1);
   const [highContrast, setHighContrast] = useState(false);
   const [focusedMsgIdx, setFocusedMsgIdx] = useState<number | null>(null);
@@ -549,6 +552,40 @@ export default function DashboardChatPage() {
       setSelectedImage(file);
       const url = URL.createObjectURL(file);
       setImagePreview(url);
+    }
+  }
+
+  function toggleVoiceInput() {
+    if (!isVoiceSupported()) {
+      showToast('Voice input not supported in this browser');
+      return;
+    }
+    if (isListening) {
+      stopListening();
+      setIsListening(false);
+      if (voiceTranscript) {
+        setInput(prev => (prev ? prev + ' ' : '') + voiceTranscript);
+        setVoiceTranscript('');
+      }
+    } else {
+      setVoiceTranscript('');
+      setIsListening(true);
+      startListening(
+        (result) => {
+          setVoiceTranscript(result.transcript);
+          if (result.isFinal) {
+            setTimeout(() => {
+              setIsListening(false);
+              if (result.transcript) {
+                setInput(prev => (prev ? prev + ' ' : '') + result.transcript);
+                setVoiceTranscript('');
+                showToast('Voice input captured');
+              }
+            }, 300);
+          }
+        },
+        { continuous: false, language: 'en-GB' }
+      );
     }
   }
 
@@ -1045,13 +1082,28 @@ export default function DashboardChatPage() {
                   onClick={() => fileInputRef.current?.click()}
                   disabled={isStreaming}
                   aria-label="Attach image"
-                  title="Image support coming soon"
+                  title="Attach image"
                   className="h-8 w-8 rounded-lg flex items-center justify-center transition-colors disabled:opacity-30"
                   style={{ color: 'rgba(255,255,255,0.4)' }}
                   onMouseEnter={e => (e.currentTarget.style.background = 'rgba(255,255,255,0.08)')}
                   onMouseLeave={e => (e.currentTarget.style.background = 'transparent')}
                 >
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+                </button>
+                <button
+                  onClick={toggleVoiceInput}
+                  disabled={isStreaming}
+                  aria-label={isListening ? 'Stop recording' : 'Record voice input'}
+                  title={isVoiceSupported() ? (isListening ? 'Stop recording' : 'Record voice input') : 'Voice input not supported'}
+                  className="h-8 w-8 rounded-lg flex items-center justify-center transition-colors disabled:opacity-30"
+                  style={{
+                    color: isListening ? GOLD : 'rgba(255,255,255,0.4)',
+                    background: isListening ? `${GOLD}20` : 'transparent'
+                  }}
+                  onMouseEnter={e => !isListening && (e.currentTarget.style.background = 'rgba(255,255,255,0.08)')}
+                  onMouseLeave={e => !isListening && (e.currentTarget.style.background = 'transparent')}
+                >
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
                 </button>
                 {isStreaming ? (
                   <button onClick={() => stop()} aria-label="Stop generating response" className="h-8 px-3 rounded-lg text-xs font-semibold transition-all flex-shrink-0" style={{ background: '#ef4444', color: '#fff' }}>Stop</button>
