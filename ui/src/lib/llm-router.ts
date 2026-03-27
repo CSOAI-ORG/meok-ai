@@ -18,8 +18,8 @@ const OLLAMA_ENDPOINT = process.env.OLLAMA_ENDPOINT || 'http://localhost:11434/v
 
 export const MODEL_ACCESS = {
   explorer:  ['cerebras-llama', 'groq-llama', 'deepseek-chat', 'nemotron-nano', 'llama-3.1-8b', 'ollama:nemotron-nano'],
-  sovereign: ['cerebras-llama', 'groq-llama', 'deepseek-chat', 'nemotron-nano', 'nemotron-super', 'gpt-4o-mini', 'claude-3-5-haiku-latest', 'ollama:nemotron-nano'],
-  family:    ['cerebras-llama', 'groq-llama', 'deepseek-chat', 'nemotron-nano', 'nemotron-super', 'nemotron-ultra', 'gpt-4o', 'claude-3-5-sonnet-latest', 'ollama:nemotron-nano'],
+  sovereign: ['cerebras-llama', 'groq-llama', 'deepseek-chat', 'nemotron-nano', 'nemotron-super', 'gpt-4o-mini', 'claude-3-5-haiku-latest', 'mistral-small', 'ollama:nemotron-nano'],
+  family:    ['cerebras-llama', 'groq-llama', 'deepseek-chat', 'nemotron-nano', 'nemotron-super', 'nemotron-ultra', 'gpt-4o', 'claude-3-5-sonnet-latest', 'minimax-text-01', 'mistral-large', 'ollama:nemotron-nano'],
 } as const;
 
 export type Tier = keyof typeof MODEL_ACCESS;
@@ -122,8 +122,9 @@ export function selectModel(taskType: TaskType, tier: Tier): string {
       return tier === 'family' ? 'nemotron-ultra' : 'nemotron-super';
 
     case 'emotional':
-      // Claude is best for empathy and emotional nuance
-      return tier === 'family' ? 'claude-3-5-sonnet-latest' : 'claude-3-5-haiku-latest';
+      // MiniMax-Text-01 is purpose-built for character AI and empathy (4M context)
+      // Claude haiku is the fallback for sovereign tier
+      return tier === 'family' ? 'minimax-text-01' : 'claude-3-5-haiku-latest';
 
     case 'coding':
       // Nemotron Super is optimised for coding; Claude for family tier
@@ -274,6 +275,43 @@ export function getProvider(modelId: string): LanguageModel {
       apiKey: deepseekApiKey,
     });
     return deepseek('deepseek-chat');
+  }
+
+  // MiniMax — 4M context window, built for character AI (best for emotional/companion tasks)
+  if (modelId.startsWith('minimax-')) {
+    const minimaxApiKey = process.env.MINIMAX_API_KEY;
+    if (!minimaxApiKey) {
+      console.warn('[llm-router] MINIMAX_API_KEY not set — falling back to Claude');
+      return getProvider('claude-3-5-haiku-latest');
+    }
+    const minimax = createOpenAI({
+      baseURL: 'https://api.minimax.chat/v1',
+      apiKey: minimaxApiKey,
+    });
+    const minimaxModels: Record<string, string> = {
+      'minimax-text-01':  'MiniMax-Text-01',   // 4M context, character AI
+      'minimax-abab6.5': 'abab6.5-chat',       // Faster, standard context
+    };
+    return minimax(minimaxModels[modelId] ?? 'MiniMax-Text-01');
+  }
+
+  // Mistral — excellent creative writing + multilingual
+  if (modelId.startsWith('mistral-')) {
+    const mistralApiKey = process.env.MISTRAL_API_KEY;
+    if (!mistralApiKey) {
+      console.warn('[llm-router] MISTRAL_API_KEY not set — falling back to DeepSeek');
+      return getProvider('deepseek-chat');
+    }
+    const mistral = createOpenAI({
+      baseURL: 'https://api.mistral.ai/v1',
+      apiKey: mistralApiKey,
+    });
+    const mistralModels: Record<string, string> = {
+      'mistral-small':  'mistral-small-latest',
+      'mistral-medium': 'mistral-medium-latest',
+      'mistral-large':  'mistral-large-latest',
+    };
+    return mistral(mistralModels[modelId] ?? 'mistral-small-latest');
   }
 
   // Local Ollama models — explicit routing via 'ollama:' prefix

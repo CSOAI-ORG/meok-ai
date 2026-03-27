@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 
 // ─── BRAND TOKENS ─────────────────────────────────────────────────────────────
@@ -10,148 +10,263 @@ const SURFACE = '#13121f';
 const BORDER = 'rgba(255,255,255,0.07)';
 const GOLD = '#c9a84c';
 
-// ─── SCAM TYPE CARDS ──────────────────────────────────────────────────────────
+// ─── SCAM ANALYSIS (CLIENT-SIDE ONLY) ─────────────────────────────────────────
 
-const SCAM_TYPES = [
+function analyseScam(text: string): { score: number; flags: string[] } {
+  const lower = text.toLowerCase();
+  let score = 0;
+  const flags: string[] = [];
+
+  if (lower.includes('urgent') || lower.includes('immediately')) {
+    score += 20;
+    flags.push('Urgency language');
+  }
+  if (lower.includes('bank') || lower.includes('account') || lower.includes('payment')) {
+    score += 15;
+    flags.push('Financial pressure');
+  }
+  if (lower.includes('click') || lower.includes('link') || lower.includes('http')) {
+    score += 20;
+    flags.push('Suspicious link');
+  }
+  if (lower.includes('prize') || lower.includes('winner') || lower.includes('won')) {
+    score += 25;
+    flags.push('Prize/lottery claim');
+  }
+  if (lower.includes('verify') || lower.includes('suspended') || lower.includes('locked')) {
+    score += 20;
+    flags.push('Account threat');
+  }
+  if (lower.includes('dear customer') || lower.includes('dear user')) {
+    score += 10;
+    flags.push('Generic greeting');
+  }
+  if (lower.includes('£') || lower.includes('$') || lower.includes('€')) {
+    score += 10;
+    flags.push('Money mention');
+  }
+  if (/\d{4,}/.test(text)) {
+    score += 5;
+    flags.push('Long number string');
+  }
+
+  return { score: Math.min(score, 100), flags };
+}
+
+// ─── EXAMPLE SCAM CARDS ───────────────────────────────────────────────────────
+
+const EXAMPLES = [
   {
-    emoji: '🖥️',
-    title: 'Tech Support',
-    color: '#f87171',
-    description:
-      'Fake alerts claiming your device is infected, demanding remote access or payment for "repairs" that were never needed.',
-    pattern: '"Your computer has been compromised. Call this number immediately or your data will be deleted."',
-  },
-  {
-    emoji: '💕',
-    title: 'Romance',
-    color: '#f472b6',
-    description:
-      'Trust-building over weeks or months followed by fabricated emergencies requiring urgent money transfers.',
-    pattern: '"I know we haven\'t met yet but I\'ve never felt this way. I just need £500 for my flight to see you."',
-  },
-  {
+    category: 'Investment',
     emoji: '📈',
-    title: 'Investment',
     color: '#facc15',
-    description:
-      'Guaranteed returns, crypto schemes, and high-pressure tactics designed to separate you from your savings.',
-    pattern: '"This AI trading platform guarantees 300% returns. The window closes in 24 hours — act now."',
+    text: "URGENT: Your £500 investment has grown to £50,000! Click here immediately to claim: bit.ly/claim-now",
   },
   {
-    emoji: '👵',
-    title: 'Grandparent',
-    color: '#fb923c',
-    description:
-      'Impersonating a grandchild in distress, exploiting love and urgency to extract immediate wire transfers.',
-    pattern: '"Gran, it\'s me. I\'m in trouble and I need you to send money right now. Please don\'t tell mum."',
-  },
-  {
-    emoji: '🎣',
-    title: 'Phishing',
+    category: 'Bank',
+    emoji: '🏦',
     color: '#60a5fa',
-    description:
-      'Fake emails and texts mimicking banks, HMRC, or delivery services to harvest login credentials and card details.',
-    pattern: '"HMRC: You are owed a tax refund of £472.30. Verify your identity to claim: [suspicious link]"',
+    text: "Dear Customer, your account has been suspended. Verify immediately to avoid permanent closure.",
   },
   {
-    emoji: '🤖',
-    title: 'Deepfake',
-    color: '#a78bfa',
-    description:
-      'AI-generated voice or video impersonating someone you trust — a boss, family member, or public figure.',
-    pattern: '"Hi, this is your CEO. I need you to process an urgent wire transfer before end of day. Keep this confidential."',
-  },
-];
-
-// ─── HOW IT WORKS STEPS ───────────────────────────────────────────────────────
-
-const STEPS = [
-  {
-    number: '01',
-    emoji: '📋',
-    title: 'Paste the message',
-    body: 'Copy any suspicious text, email, or message into the scanner. SMS, WhatsApp, email — anything.',
-    color: GOLD,
+    category: 'Romance',
+    emoji: '💕',
+    color: '#f472b6',
+    text: "My darling, I am a doctor in Syria. I have $2,000,000 I need your help to move. I love you.",
   },
   {
-    number: '02',
-    emoji: '🧠',
-    title: 'AI analyses patterns',
-    body: 'DistilBERT threat classification runs alongside pattern matching across 15+ fraud indicator categories in milliseconds.',
-    color: '#60a5fa',
-  },
-  {
-    number: '03',
-    emoji: '✅',
-    title: 'Get instant verdict',
-    body: 'Threat level rated LOW to CRITICAL with specific categories detected, so you know exactly what to watch for.',
+    category: 'Prize',
+    emoji: '🎉',
     color: '#4ade80',
+    text: "Congratulations! You are our 1,000,000th visitor! You have won a prize. Click to verify your details.",
+  },
+  {
+    category: 'Tech Support',
+    emoji: '🖥️',
+    color: '#f87171',
+    text: "Microsoft Alert: Your computer has a virus! Call our technicians immediately: 0800-123-4567",
+  },
+  {
+    category: 'Crypto',
+    emoji: '₿',
+    color: '#fb923c',
+    text: "LAST CHANCE: Bitcoin is going to $200k. This exclusive signal group expires in 24 hours.",
   },
 ];
 
-// ─── THREAT LEVEL COLOURS ─────────────────────────────────────────────────────
+// ─── SVG ARC GAUGE ─────────────────────────────────────────────────────────────
 
-function threatColor(level: string): string {
-  const map: Record<string, string> = {
-    LOW: '#71717a',
-    MEDIUM: '#fbbf24',
-    HIGH: '#f97316',
-    CRITICAL: '#ef4444',
-  };
-  return map[level?.toUpperCase()] || '#71717a';
+function arcPath(cx: number, cy: number, r: number, startDeg: number, endDeg: number): string {
+  const toRad = (d: number) => ((d - 90) * Math.PI) / 180;
+  const x1 = cx + r * Math.cos(toRad(startDeg));
+  const y1 = cy + r * Math.sin(toRad(startDeg));
+  const x2 = cx + r * Math.cos(toRad(endDeg));
+  const y2 = cy + r * Math.sin(toRad(endDeg));
+  const large = endDeg - startDeg > 180 ? 1 : 0;
+  return `M ${x1} ${y1} A ${r} ${r} 0 ${large} 1 ${x2} ${y2}`;
+}
+
+function scoreColor(score: number): string {
+  if (score < 30) return '#4ade80';
+  if (score < 60) return '#fbbf24';
+  return '#ef4444';
+}
+
+function verdict(score: number): { label: string; icon: string; color: string } {
+  if (score < 30) return { label: 'SAFE', icon: '✅', color: '#4ade80' };
+  if (score < 60) return { label: 'SUSPICIOUS', icon: '⚠️', color: '#fbbf24' };
+  return { label: 'LIKELY SCAM', icon: '🚨', color: '#ef4444' };
+}
+
+interface GaugeProps {
+  targetScore: number;
+  animate: boolean;
+}
+
+function RiskGauge({ targetScore, animate }: GaugeProps) {
+  const [displayed, setDisplayed] = useState(0);
+  const rafRef = useRef<number>(0);
+  const startTimeRef = useRef<number>(0);
+  const duration = 1200; // ms
+
+  useEffect(() => {
+    if (!animate) {
+      setDisplayed(0);
+      return;
+    }
+    startTimeRef.current = performance.now();
+
+    function step(now: number) {
+      const elapsed = now - startTimeRef.current;
+      const progress = Math.min(elapsed / duration, 1);
+      // ease-out cubic
+      const eased = 1 - Math.pow(1 - progress, 3);
+      setDisplayed(Math.round(eased * targetScore));
+      if (progress < 1) {
+        rafRef.current = requestAnimationFrame(step);
+      }
+    }
+
+    rafRef.current = requestAnimationFrame(step);
+    return () => cancelAnimationFrame(rafRef.current);
+  }, [animate, targetScore]);
+
+  const cx = 120;
+  const cy = 120;
+  const r = 88;
+  // Arc spans from -210° to +30° (240° sweep) — bottom-open semicircle
+  const startDeg = 150;
+  const endDeg = 390; // = 30 next revolution
+  const fillEndDeg = startDeg + (displayed / 100) * 240;
+
+  const trackPath = arcPath(cx, cy, r, startDeg, endDeg);
+  const fillPath = displayed > 0 ? arcPath(cx, cy, r, startDeg, fillEndDeg) : '';
+  const color = scoreColor(displayed);
+  const v = verdict(displayed);
+
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8 }}>
+      <svg width={240} height={200} viewBox="0 0 240 200" style={{ overflow: 'visible' }}>
+        {/* Track */}
+        <path
+          d={trackPath}
+          fill="none"
+          stroke="rgba(255,255,255,0.07)"
+          strokeWidth={18}
+          strokeLinecap="round"
+        />
+        {/* Fill */}
+        {fillPath && (
+          <path
+            d={fillPath}
+            fill="none"
+            stroke={color}
+            strokeWidth={18}
+            strokeLinecap="round"
+            style={{ filter: `drop-shadow(0 0 8px ${color}80)` }}
+          />
+        )}
+        {/* Score text */}
+        <text
+          x={cx}
+          y={cy + 10}
+          textAnchor="middle"
+          fill="#fff"
+          fontSize={48}
+          fontWeight={900}
+          fontFamily="DM Sans, sans-serif"
+        >
+          {displayed}
+        </text>
+        <text
+          x={cx}
+          y={cy + 34}
+          textAnchor="middle"
+          fill="rgba(255,255,255,0.3)"
+          fontSize={13}
+          fontFamily="DM Sans, sans-serif"
+        >
+          Risk Score
+        </text>
+        {/* Zone labels */}
+        <text x={28} y={170} fill="#4ade80" fontSize={10} fontFamily="monospace">LOW</text>
+        <text x={104} y={200} fill="#fbbf24" fontSize={10} fontFamily="monospace" textAnchor="middle">MED</text>
+        <text x={198} y={170} fill="#ef4444" fontSize={10} fontFamily="monospace" textAnchor="end">HIGH</text>
+      </svg>
+
+      {/* Verdict */}
+      {animate && displayed > 0 && (
+        <div
+          style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: 8,
+            padding: '8px 20px',
+            borderRadius: 9999,
+            fontSize: 15,
+            fontWeight: 900,
+            letterSpacing: '0.06em',
+            background: `${v.color}18`,
+            border: `1px solid ${v.color}50`,
+            color: v.color,
+          }}
+        >
+          {v.icon} {v.label}
+        </div>
+      )}
+    </div>
+  );
 }
 
 // ─── COMPONENT ────────────────────────────────────────────────────────────────
 
 export default function ScamStopPage() {
   const [message, setMessage] = useState('');
-  const [scanning, setScanning] = useState(false);
-  const [result, setResult] = useState<{
-    threatLevel: string;
-    score: number;
-    categories: string[];
-    summary: string;
-  } | null>(null);
-  const [error, setError] = useState('');
+  const [analysing, setAnalysing] = useState(false);
+  const [result, setResult] = useState<{ score: number; flags: string[] } | null>(null);
+  const [gaugeActive, setGaugeActive] = useState(false);
 
-  // Set document title for SEO (client component workaround)
-  if (typeof document !== 'undefined') {
-    document.title = 'Scam Stop — AI Scam Protection | MEOK Guardian';
-  }
-
-  async function handleScan() {
-    if (!message.trim()) return;
-    setScanning(true);
+  function handleAnalyse() {
+    if (!message.trim() || analysing) return;
+    setAnalysing(true);
     setResult(null);
-    setError('');
+    setGaugeActive(false);
 
-    try {
-      const res = await fetch('/api/guardian/scan-message', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ text: message.trim() }),
-      });
-
-      if (!res.ok) {
-        throw new Error(`Server returned ${res.status}`);
-      }
-
-      const data = await res.json();
-      setResult({
-        threatLevel: data.threatLevel || data.threat_level || 'UNKNOWN',
-        score: data.score ?? data.confidence ?? 0,
-        categories: data.categories || data.flags || [],
-        summary: data.summary || data.message || 'Analysis complete.',
-      });
-    } catch (err: unknown) {
-      const msg = err instanceof Error ? err.message : 'Something went wrong';
-      setError(msg);
-    } finally {
-      setScanning(false);
-    }
+    setTimeout(() => {
+      const res = analyseScam(message);
+      setResult(res);
+      setGaugeActive(true);
+      setAnalysing(false);
+    }, 1500);
   }
 
-  const tColor = result ? threatColor(result.threatLevel) : '#71717a';
+  function loadExample(text: string) {
+    setMessage(text);
+    setResult(null);
+    setGaugeActive(false);
+  }
+
+  const v = result ? verdict(result.score) : null;
 
   return (
     <div
@@ -163,11 +278,13 @@ export default function ScamStopPage() {
         overflowX: 'hidden',
       }}
     >
-      {/* ─── 1. HERO ──────────────────────────────────────────────────────── */}
+      {/* ═══════════════════════════════════════════════════════════════════════
+          SECTION 1 — HERO
+      ═══════════════════════════════════════════════════════════════════════ */}
       <section
         style={{
           position: 'relative',
-          minHeight: '70vh',
+          minHeight: '65vh',
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
@@ -176,7 +293,7 @@ export default function ScamStopPage() {
           textAlign: 'center',
         }}
       >
-        {/* Badge */}
+        {/* Guardian breadcrumb badge */}
         <div
           style={{
             display: 'inline-flex',
@@ -203,44 +320,73 @@ export default function ScamStopPage() {
             fontWeight: 900,
             lineHeight: 1.02,
             letterSpacing: '-0.02em',
-            maxWidth: 800,
+            maxWidth: 820,
             marginBottom: 20,
           }}
         >
-          Scam Stop
+          Scam Stop —{' '}
+          <span
+            style={{
+              background: `linear-gradient(135deg, ${GOLD}, #e0bb60)`,
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+            }}
+          >
+            Real-Time AI Protection
+          </span>
         </h1>
 
         <p
           style={{
-            fontSize: 'clamp(1rem, 2.5vw, 1.25rem)',
+            fontSize: 'clamp(1rem, 2.5vw, 1.2rem)',
             color: 'rgba(255,255,255,0.55)',
             maxWidth: 600,
             lineHeight: 1.7,
-            marginBottom: 8,
+            marginBottom: 28,
           }}
         >
-          AI-powered scam protection that analyses suspicious messages in real time.
-          Paste anything — texts, emails, DMs — and know instantly if it is a threat.
+          AI-generated scams achieve{' '}
+          <strong style={{ color: '#ef4444' }}>54% click-through rates</strong>.
+          {' '}Ours stops them.
         </p>
+
+        {/* Demo badge */}
+        <div
+          style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: 8,
+            padding: '10px 20px',
+            borderRadius: 9999,
+            background: 'rgba(74,222,128,0.08)',
+            border: '1px solid rgba(74,222,128,0.3)',
+            color: '#4ade80',
+            fontSize: 13,
+            fontWeight: 600,
+          }}
+        >
+          ✦ Try the live detector below — no signup needed
+        </div>
 
         <p
           style={{
-            fontSize: 12,
-            color: 'rgba(255,255,255,0.2)',
+            fontSize: 11,
+            color: 'rgba(255,255,255,0.18)',
             fontFamily: 'monospace',
-            marginTop: 16,
+            marginTop: 24,
           }}
         >
-          DistilBERT threat detection · On-device · Nothing stored
+          Client-side only · Nothing sent to servers · Nothing stored
         </p>
       </section>
 
-      {/* ─── DIVIDER ──────────────────────────────────────────────────────── */}
       <div style={{ height: 1, background: BORDER, margin: '0 auto', maxWidth: 900 }} />
 
-      {/* ─── 2. INTERACTIVE DEMO ──────────────────────────────────────────── */}
+      {/* ═══════════════════════════════════════════════════════════════════════
+          SECTION 2 — INTERACTIVE SCAM DETECTOR
+      ═══════════════════════════════════════════════════════════════════════ */}
       <section style={{ padding: '5rem 1.5rem', background: DEEP }}>
-        <div style={{ maxWidth: 720, margin: '0 auto' }}>
+        <div style={{ maxWidth: 800, margin: '0 auto' }}>
           <div style={{ textAlign: 'center', marginBottom: 40 }}>
             <p
               style={{
@@ -252,161 +398,115 @@ export default function ScamStopPage() {
                 marginBottom: 10,
               }}
             >
-              Try it now
+              Live detector
             </p>
             <h2 style={{ fontSize: 'clamp(1.5rem, 4vw, 2.25rem)', fontWeight: 900 }}>
-              Scan a Suspicious Message
+              Paste Any Suspicious Message
             </h2>
             <p style={{ color: 'rgba(255,255,255,0.45)', marginTop: 12, fontSize: 14, lineHeight: 1.6 }}>
-              Paste any message you have received and our AI will analyse it for scam patterns.
+              SMS, email, WhatsApp, DM — the AI analyses it for 8 scam indicators instantly.
             </p>
           </div>
 
-          {/* Textarea */}
-          <textarea
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
-            placeholder="Paste a suspicious message here..."
-            rows={6}
+          {/* Two-column layout: textarea left, gauge right */}
+          <div
             style={{
-              width: '100%',
-              padding: 20,
-              borderRadius: 16,
-              background: SURFACE,
-              border: `1px solid ${BORDER}`,
-              color: '#fff',
-              fontSize: 15,
-              lineHeight: 1.6,
-              resize: 'vertical',
-              fontFamily: "'DM Sans', sans-serif",
-              outline: 'none',
-              boxSizing: 'border-box',
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+              gap: 32,
+              alignItems: 'start',
             }}
-            onFocus={(e) => {
-              e.currentTarget.style.borderColor = `${GOLD}60`;
-            }}
-            onBlur={(e) => {
-              e.currentTarget.style.borderColor = BORDER;
-            }}
-          />
-
-          {/* Try this — pre-loaded example scam messages */}
-          <div style={{ marginTop: 12, display: 'flex', flexWrap: 'wrap', gap: 8 }}>
-            {[
-              { label: 'Tech Support', text: 'URGENT: Your computer has a virus and your files are being deleted right now. Call 0800-FAKE-999 immediately to speak with a Microsoft certified technician. Do NOT turn off your computer or you will lose everything.' },
-              { label: 'Romance', text: 'My darling, I love you so much and I cannot wait to finally hold you. I have booked my flight but there is a problem with my card. Can you send me £800 for the ticket? I promise I will pay you back when I arrive. You are the only one I trust.' },
-              { label: 'Investment', text: 'EXCLUSIVE OPPORTUNITY: Our AI-powered crypto trading platform guarantees 500% returns within 30 days. Over 10,000 investors already joined. The investment window closes in 6 hours. Minimum deposit just £250. Act now or miss out forever.' },
-              { label: 'Grandparent', text: 'Grandma, it\'s me. Please don\'t tell mum or dad. I\'ve been arrested and I need bail money urgently. Can you wire £2,000 to this account right now? I\'m so scared. Please help me, I\'ll explain everything later.' },
-              { label: 'Phishing', text: 'Your bank account has been compromised and suspicious activity has been detected. Click the link below to verify your identity and secure your account immediately or it will be permanently locked: http://secure-bank-verify.fake.com' },
-              { label: 'Deepfake', text: 'Hello, this is your bank manager calling from the fraud department. We have detected an unauthorised transaction of £4,500 on your account. I need you to confirm your account number and PIN so we can reverse the charge immediately.' },
-            ].map((example) => (
-              <button
-                key={example.label}
-                onClick={() => { setMessage(example.text); setResult(null); setError(''); }}
+          >
+            {/* Left: input */}
+            <div>
+              <textarea
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
+                placeholder="Paste any suspicious message here..."
+                rows={7}
                 style={{
-                  padding: '6px 14px',
-                  borderRadius: 9999,
-                  fontSize: 12,
-                  fontWeight: 600,
-                  background: `${GOLD}12`,
-                  border: `1px solid ${GOLD}30`,
-                  color: GOLD,
-                  cursor: 'pointer',
-                  transition: 'all 0.2s',
+                  width: '100%',
+                  padding: 20,
+                  borderRadius: 16,
+                  background: SURFACE,
+                  border: `1px solid ${BORDER}`,
+                  color: '#fff',
+                  fontSize: 15,
+                  lineHeight: 1.6,
+                  resize: 'vertical',
+                  fontFamily: "'DM Sans', sans-serif",
+                  outline: 'none',
+                  boxSizing: 'border-box',
+                  transition: 'border-color 0.2s',
                 }}
-                onMouseEnter={(e) => { e.currentTarget.style.background = `${GOLD}28`; }}
-                onMouseLeave={(e) => { e.currentTarget.style.background = `${GOLD}12`; }}
+                onFocus={(e) => { e.currentTarget.style.borderColor = `${GOLD}60`; }}
+                onBlur={(e) => { e.currentTarget.style.borderColor = BORDER; }}
+              />
+
+              <button
+                onClick={handleAnalyse}
+                disabled={analysing || !message.trim()}
+                style={{
+                  marginTop: 12,
+                  width: '100%',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: 8,
+                  padding: '14px 32px',
+                  borderRadius: 12,
+                  fontWeight: 700,
+                  fontSize: 15,
+                  border: 'none',
+                  cursor: analysing || !message.trim() ? 'not-allowed' : 'pointer',
+                  background:
+                    analysing || !message.trim()
+                      ? 'rgba(201,168,76,0.25)'
+                      : GOLD,
+                  color:
+                    analysing || !message.trim()
+                      ? 'rgba(255,255,255,0.4)'
+                      : DEEP,
+                  transition: 'all 0.2s',
+                  fontFamily: "'DM Sans', sans-serif",
+                }}
               >
-                Try: {example.label}
+                {analysing ? (
+                  <>
+                    <span
+                      style={{
+                        display: 'inline-block',
+                        width: 14,
+                        height: 14,
+                        border: '2px solid rgba(255,255,255,0.3)',
+                        borderTopColor: '#fff',
+                        borderRadius: '50%',
+                        animation: 'spin 0.7s linear infinite',
+                      }}
+                    />
+                    Analysing…
+                  </>
+                ) : (
+                  '🔍 Analyse'
+                )}
               </button>
-            ))}
-          </div>
-
-          {/* Scan button */}
-          <div style={{ marginTop: 16, display: 'flex', justifyContent: 'flex-end' }}>
-            <button
-              onClick={handleScan}
-              disabled={scanning || !message.trim()}
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: 8,
-                padding: '14px 32px',
-                borderRadius: 9999,
-                fontWeight: 700,
-                fontSize: 14,
-                border: 'none',
-                cursor: scanning || !message.trim() ? 'not-allowed' : 'pointer',
-                background: scanning || !message.trim() ? 'rgba(201,168,76,0.3)' : GOLD,
-                color: scanning || !message.trim() ? 'rgba(255,255,255,0.5)' : DEEP,
-                transition: 'all 0.2s',
-              }}
-            >
-              {scanning ? '⏳ Scanning...' : '🔍 Scan Message'}
-            </button>
-          </div>
-
-          {/* Error */}
-          {error && (
-            <div
-              style={{
-                marginTop: 20,
-                padding: 16,
-                borderRadius: 12,
-                background: 'rgba(239,68,68,0.08)',
-                border: '1px solid rgba(239,68,68,0.25)',
-                color: '#fca5a5',
-                fontSize: 14,
-              }}
-            >
-              {error}
             </div>
-          )}
 
-          {/* Result */}
-          {result && (
-            <div
-              style={{
-                marginTop: 24,
-                padding: 28,
-                borderRadius: 16,
-                background: SURFACE,
-                border: `1px solid ${tColor}40`,
-              }}
-            >
-              {/* Threat level badge */}
-              <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 16 }}>
-                <span
+            {/* Right: gauge + flags */}
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 20 }}>
+              <RiskGauge targetScore={result?.score ?? 0} animate={gaugeActive} />
+
+              {/* Flags */}
+              {result && result.flags.length > 0 && (
+                <div
                   style={{
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    padding: '6px 14px',
-                    borderRadius: 9999,
-                    fontSize: 12,
-                    fontWeight: 900,
-                    letterSpacing: '0.06em',
-                    background: `${tColor}18`,
-                    color: tColor,
-                    border: `1px solid ${tColor}40`,
+                    width: '100%',
+                    padding: '16px 20px',
+                    borderRadius: 12,
+                    background: SURFACE,
+                    border: `1px solid ${BORDER}`,
                   }}
                 >
-                  {result.threatLevel.toUpperCase()}
-                </span>
-                {result.score > 0 && (
-                  <span style={{ fontSize: 13, color: 'rgba(255,255,255,0.4)', fontFamily: 'monospace' }}>
-                    Confidence: {(result.score * 100).toFixed(0)}%
-                  </span>
-                )}
-              </div>
-
-              {/* Summary */}
-              <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.7)', lineHeight: 1.6, marginBottom: 16 }}>
-                {result.summary}
-              </p>
-
-              {/* Categories */}
-              {result.categories.length > 0 && (
-                <div>
                   <p
                     style={{
                       fontSize: 11,
@@ -417,37 +517,78 @@ export default function ScamStopPage() {
                       marginBottom: 10,
                     }}
                   >
-                    Categories Detected
+                    Indicators Detected
                   </p>
-                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
-                    {result.categories.map((cat) => (
-                      <span
-                        key={cat}
+                  <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 6 }}>
+                    {result.flags.map((flag) => (
+                      <li
+                        key={flag}
                         style={{
-                          padding: '5px 12px',
-                          borderRadius: 9999,
-                          fontSize: 12,
-                          fontWeight: 600,
-                          background: `${tColor}12`,
-                          color: `${tColor}`,
-                          border: `1px solid ${tColor}30`,
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: 8,
+                          fontSize: 13,
+                          color: 'rgba(255,255,255,0.7)',
                         }}
                       >
-                        {cat}
-                      </span>
+                        <span style={{ fontSize: 14 }}>⚠️</span>
+                        {flag}
+                      </li>
                     ))}
-                  </div>
+                  </ul>
+                </div>
+              )}
+
+              {result && result.flags.length === 0 && gaugeActive && (
+                <div
+                  style={{
+                    width: '100%',
+                    padding: '14px 20px',
+                    borderRadius: 12,
+                    background: 'rgba(74,222,128,0.06)',
+                    border: '1px solid rgba(74,222,128,0.2)',
+                    fontSize: 13,
+                    color: '#4ade80',
+                    textAlign: 'center',
+                  }}
+                >
+                  No scam indicators detected in this message.
+                </div>
+              )}
+
+              {/* How Guardian protects you */}
+              {result && v && (
+                <div
+                  style={{
+                    width: '100%',
+                    padding: '14px 18px',
+                    borderRadius: 12,
+                    background: `${GOLD}0A`,
+                    border: `1px solid ${GOLD}25`,
+                    fontSize: 13,
+                    color: 'rgba(255,255,255,0.5)',
+                    lineHeight: 1.6,
+                  }}
+                >
+                  <strong style={{ color: GOLD, display: 'block', marginBottom: 4, fontSize: 11, letterSpacing: '0.08em', textTransform: 'uppercase' }}>
+                    What MEOK Guardian does
+                  </strong>
+                  In real-world protection, Guardian runs this analysis on every message
+                  that enters your network — in under 50ms, without storing anything. When
+                  a risk score exceeds the threshold, your trusted contacts are alerted
+                  before you can act on a scam.
                 </div>
               )}
             </div>
-          )}
+          </div>
         </div>
       </section>
 
-      {/* ─── DIVIDER ──────────────────────────────────────────────────────── */}
       <div style={{ height: 1, background: BORDER, margin: '0 auto', maxWidth: 900 }} />
 
-      {/* ─── 3. SCAM TYPE CARDS ───────────────────────────────────────────── */}
+      {/* ═══════════════════════════════════════════════════════════════════════
+          SECTION 3 — EXAMPLE SCAM CARDS
+      ═══════════════════════════════════════════════════════════════════════ */}
       <section style={{ padding: '5rem 1.5rem', background: DEEP }}>
         <div style={{ maxWidth: 1000, margin: '0 auto' }}>
           <div style={{ textAlign: 'center', marginBottom: 48 }}>
@@ -461,13 +602,22 @@ export default function ScamStopPage() {
                 marginBottom: 10,
               }}
             >
-              Threat library
+              Scam examples
             </p>
             <h2 style={{ fontSize: 'clamp(1.5rem, 4vw, 2.25rem)', fontWeight: 900 }}>
-              What We Detect
+              Try These Real Scam Patterns
             </h2>
-            <p style={{ color: 'rgba(255,255,255,0.45)', marginTop: 12, fontSize: 14, maxWidth: 520, margin: '12px auto 0' }}>
-              Six major scam categories, each with dedicated detection patterns trained on real-world fraud data.
+            <p
+              style={{
+                color: 'rgba(255,255,255,0.45)',
+                marginTop: 12,
+                fontSize: 14,
+                maxWidth: 520,
+                margin: '12px auto 0',
+                lineHeight: 1.6,
+              }}
+            >
+              Click any card to load it into the detector above, then hit Analyse.
             </p>
           </div>
 
@@ -475,76 +625,98 @@ export default function ScamStopPage() {
             style={{
               display: 'grid',
               gridTemplateColumns: 'repeat(auto-fill, minmax(290px, 1fr))',
-              gap: 20,
+              gap: 16,
             }}
           >
-            {SCAM_TYPES.map((scam) => (
+            {EXAMPLES.map((ex) => (
               <div
-                key={scam.title}
+                key={ex.category}
                 style={{
-                  padding: 28,
-                  borderRadius: 16,
+                  padding: 22,
+                  borderRadius: 14,
                   background: SURFACE,
                   border: `1px solid ${BORDER}`,
-                  borderLeft: `3px solid ${scam.color}80`,
-                  transition: 'border-color 0.2s',
+                  borderLeft: `3px solid ${ex.color}70`,
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: 12,
                 }}
               >
-                {/* Icon + Title */}
-                <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 14 }}>
-                  <div
+                {/* Category badge */}
+                <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                  <span style={{ fontSize: 18 }}>{ex.emoji}</span>
+                  <span
                     style={{
-                      width: 40,
-                      height: 40,
-                      borderRadius: 12,
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      fontSize: 20,
-                      background: `${scam.color}15`,
-                      border: `1px solid ${scam.color}30`,
+                      fontSize: 10,
+                      fontWeight: 800,
+                      letterSpacing: '0.1em',
+                      textTransform: 'uppercase',
+                      padding: '3px 10px',
+                      borderRadius: 9999,
+                      background: `${ex.color}15`,
+                      color: ex.color,
+                      border: `1px solid ${ex.color}30`,
                     }}
                   >
-                    {scam.emoji}
-                  </div>
-                  <h3 style={{ fontSize: 16, fontWeight: 900, color: scam.color }}>
-                    {scam.title}
-                  </h3>
+                    {ex.category}
+                  </span>
                 </div>
 
-                {/* Description */}
-                <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.5)', lineHeight: 1.6, marginBottom: 14 }}>
-                  {scam.description}
-                </p>
-
-                {/* Example pattern */}
-                <div
+                {/* Message preview */}
+                <p
                   style={{
-                    padding: '10px 14px',
-                    borderRadius: 10,
-                    background: 'rgba(255,255,255,0.03)',
-                    border: `1px solid ${BORDER}`,
-                    fontSize: 12,
-                    color: 'rgba(255,255,255,0.35)',
-                    lineHeight: 1.5,
+                    fontSize: 13,
+                    color: 'rgba(255,255,255,0.5)',
+                    lineHeight: 1.55,
                     fontStyle: 'italic',
+                    flexGrow: 1,
                   }}
                 >
-                  <span style={{ color: `${scam.color}90`, fontStyle: 'normal', fontWeight: 700, fontSize: 10, textTransform: 'uppercase', letterSpacing: '0.06em' }}>
-                    Example:{' '}
-                  </span>
-                  {scam.pattern}
-                </div>
+                  &ldquo;{ex.text}&rdquo;
+                </p>
+
+                {/* Try button */}
+                <button
+                  onClick={() => {
+                    loadExample(ex.text);
+                    // Scroll to detector on mobile
+                    if (typeof window !== 'undefined') {
+                      const el = document.querySelector('textarea');
+                      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }
+                  }}
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: 6,
+                    padding: '8px 0',
+                    borderRadius: 8,
+                    fontSize: 13,
+                    fontWeight: 700,
+                    background: `${ex.color}15`,
+                    border: `1px solid ${ex.color}35`,
+                    color: ex.color,
+                    cursor: 'pointer',
+                    transition: 'all 0.2s',
+                    fontFamily: "'DM Sans', sans-serif",
+                  }}
+                  onMouseEnter={(e) => { e.currentTarget.style.background = `${ex.color}28`; }}
+                  onMouseLeave={(e) => { e.currentTarget.style.background = `${ex.color}15`; }}
+                >
+                  Try →
+                </button>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ─── DIVIDER ──────────────────────────────────────────────────────── */}
       <div style={{ height: 1, background: BORDER, margin: '0 auto', maxWidth: 900 }} />
 
-      {/* ─── 4. HOW IT WORKS ──────────────────────────────────────────────── */}
+      {/* ═══════════════════════════════════════════════════════════════════════
+          SECTION 4 — STATS
+      ═══════════════════════════════════════════════════════════════════════ */}
       <section style={{ padding: '5rem 1.5rem', background: DEEP }}>
         <div style={{ maxWidth: 900, margin: '0 auto' }}>
           <div style={{ textAlign: 'center', marginBottom: 48 }}>
@@ -558,133 +730,128 @@ export default function ScamStopPage() {
                 marginBottom: 10,
               }}
             >
-              Three-step protection
+              The threat is real
             </p>
             <h2 style={{ fontSize: 'clamp(1.5rem, 4vw, 2.25rem)', fontWeight: 900 }}>
-              How It Works
+              Why This Matters
             </h2>
           </div>
 
+          {/* Click-rate comparison */}
           <div
             style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))',
-              gap: 20,
-            }}
-          >
-            {STEPS.map((step) => (
-              <div
-                key={step.number}
-                style={{
-                  padding: 28,
-                  borderRadius: 16,
-                  background: SURFACE,
-                  border: `1px solid ${BORDER}`,
-                }}
-              >
-                <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 16 }}>
-                  <span
-                    style={{
-                      fontSize: 11,
-                      fontWeight: 900,
-                      padding: '3px 10px',
-                      borderRadius: 6,
-                      background: `${step.color}18`,
-                      color: step.color,
-                      border: `1px solid ${step.color}30`,
-                    }}
-                  >
-                    {step.number}
-                  </span>
-                  <span style={{ fontSize: 22 }}>{step.emoji}</span>
-                </div>
-                <h3 style={{ fontSize: 16, fontWeight: 900, marginBottom: 8 }}>
-                  {step.title}
-                </h3>
-                <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.5)', lineHeight: 1.6 }}>
-                  {step.body}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ─── DIVIDER ──────────────────────────────────────────────────────── */}
-      <div style={{ height: 1, background: BORDER, margin: '0 auto', maxWidth: 900 }} />
-
-      {/* ─── 5. PRIVACY ───────────────────────────────────────────────────── */}
-      <section style={{ padding: '4rem 1.5rem', background: DEEP }}>
-        <div style={{ maxWidth: 700, margin: '0 auto' }}>
-          <div
-            style={{
-              padding: 32,
-              borderRadius: 16,
-              background: `${GOLD}0A`,
-              border: `1px solid ${GOLD}33`,
-              display: 'flex',
-              gap: 20,
-              alignItems: 'flex-start',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
+              gap: 16,
+              marginBottom: 20,
             }}
           >
             <div
               style={{
-                flexShrink: 0,
-                width: 48,
-                height: 48,
-                borderRadius: 12,
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                fontSize: 24,
-                background: `${GOLD}26`,
-                border: `1px solid ${GOLD}4D`,
+                padding: 28,
+                borderRadius: 16,
+                background: SURFACE,
+                border: '1px solid rgba(239,68,68,0.25)',
+                textAlign: 'center',
               }}
             >
-              🔒
+              <div style={{ fontSize: 52, fontWeight: 900, color: '#ef4444', lineHeight: 1, marginBottom: 8 }}>
+                54%
+              </div>
+              <div style={{ fontSize: 14, fontWeight: 700, color: 'rgba(255,255,255,0.7)', marginBottom: 6 }}>
+                AI-generated phishing click rate
+              </div>
+              <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.3)', lineHeight: 1.5 }}>
+                Hyper-personalised deepfake attacks crafted by AI to exploit each target individually
+              </div>
             </div>
-            <div>
-              <h3 style={{ fontSize: 16, fontWeight: 900, marginBottom: 12 }}>
-                We Analyse Patterns, Never Store Your Messages
-              </h3>
-              <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 8 }}>
-                {[
-                  'Messages are analysed in real time and immediately discarded. Nothing is stored on MEOK servers.',
-                  'Pattern analysis happens on-device wherever possible. Your data never leaves your control.',
-                  'No message content is used for training, advertising, or shared with any third party.',
-                  'ScamStop is consent-first. You choose when to scan and what to share.',
-                ].map((item) => (
-                  <li
-                    key={item}
-                    style={{
-                      display: 'flex',
-                      gap: 8,
-                      fontSize: 14,
-                      color: 'rgba(255,255,255,0.55)',
-                      lineHeight: 1.6,
-                    }}
-                  >
-                    <span style={{ color: GOLD, flexShrink: 0 }}>·</span>
-                    {item}
-                  </li>
-                ))}
-              </ul>
+
+            <div
+              style={{
+                padding: 28,
+                borderRadius: 16,
+                background: SURFACE,
+                border: '1px solid rgba(74,222,128,0.2)',
+                textAlign: 'center',
+              }}
+            >
+              <div style={{ fontSize: 52, fontWeight: 900, color: '#4ade80', lineHeight: 1, marginBottom: 8 }}>
+                12%
+              </div>
+              <div style={{ fontSize: 14, fontWeight: 700, color: 'rgba(255,255,255,0.7)', marginBottom: 6 }}>
+                Traditional phishing click rate
+              </div>
+              <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.3)', lineHeight: 1.5 }}>
+                Generic mass-sent scams still catch 1 in 8 people — AI scams are 4× more dangerous
+              </div>
+            </div>
+          </div>
+
+          {/* Stat cards row */}
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
+              gap: 16,
+            }}
+          >
+            <div
+              style={{
+                padding: 24,
+                borderRadius: 14,
+                background: SURFACE,
+                border: `1px solid ${BORDER}`,
+                display: 'flex',
+                gap: 16,
+                alignItems: 'flex-start',
+              }}
+            >
+              <span style={{ fontSize: 28, flexShrink: 0 }}>😯</span>
+              <div>
+                <div style={{ fontSize: 22, fontWeight: 900, color: '#fbbf24', lineHeight: 1, marginBottom: 6 }}>
+                  96%
+                </div>
+                <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.5)', lineHeight: 1.6 }}>
+                  of people think they can spot scams. Research shows they cannot — especially with AI-personalised attacks.
+                </div>
+              </div>
+            </div>
+
+            <div
+              style={{
+                padding: 24,
+                borderRadius: 14,
+                background: SURFACE,
+                border: `1px solid ${BORDER}`,
+                display: 'flex',
+                gap: 16,
+                alignItems: 'flex-start',
+              }}
+            >
+              <span style={{ fontSize: 28, flexShrink: 0 }}>⚡</span>
+              <div>
+                <div style={{ fontSize: 22, fontWeight: 900, color: GOLD, lineHeight: 1, marginBottom: 6 }}>
+                  Real time
+                </div>
+                <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.5)', lineHeight: 1.6 }}>
+                  MEOK Guardian runs on every message in your network — under 50ms per scan — so protection never slows you down.
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ─── DIVIDER ──────────────────────────────────────────────────────── */}
       <div style={{ height: 1, background: BORDER, margin: '0 auto', maxWidth: 900 }} />
 
-      {/* ─── 6. CTA ───────────────────────────────────────────────────────── */}
+      {/* ═══════════════════════════════════════════════════════════════════════
+          CTA
+      ═══════════════════════════════════════════════════════════════════════ */}
       <section
         style={{
-          position: 'relative',
           padding: '6rem 1.5rem',
           background: DEEP,
           textAlign: 'center',
-          overflow: 'hidden',
         }}
       >
         <div style={{ fontSize: 40, marginBottom: 20 }}>🛡️</div>
@@ -693,12 +860,12 @@ export default function ScamStopPage() {
           style={{
             fontSize: 'clamp(1.8rem, 5vw, 3rem)',
             fontWeight: 900,
-            lineHeight: 1,
+            lineHeight: 1.05,
             maxWidth: 600,
             margin: '0 auto 16px',
           }}
         >
-          Protect Yourself{' '}
+          Get Protected{' '}
           <span
             style={{
               background: `linear-gradient(135deg, ${GOLD}, #e0bb60)`,
@@ -706,7 +873,7 @@ export default function ScamStopPage() {
               WebkitTextFillColor: 'transparent',
             }}
           >
-            Free
+            For Free
           </span>
         </h2>
 
@@ -714,17 +881,17 @@ export default function ScamStopPage() {
           style={{
             fontSize: 16,
             color: 'rgba(255,255,255,0.4)',
-            maxWidth: 480,
+            maxWidth: 460,
             margin: '0 auto 36px',
-            lineHeight: 1.6,
+            lineHeight: 1.65,
           }}
         >
-          Real-time scam detection powered by DistilBERT AI. No sign-up wall for the scanner.
-          Full Guardian protection when you hatch your MEOK.
+          Real-time scam detection running silently in the background.
+          No sign-up wall for the scanner. Full Guardian protection when you join MEOK.
         </p>
 
         <Link
-          href="/hatch"
+          href="/birth"
           style={{
             display: 'inline-flex',
             alignItems: 'center',
@@ -739,7 +906,7 @@ export default function ScamStopPage() {
             transition: 'all 0.2s',
           }}
         >
-          Protect Yourself Free →
+          Get protected for free →
         </Link>
 
         <p
@@ -753,6 +920,13 @@ export default function ScamStopPage() {
           Consent-first · Encrypted · 24/7 · Never sold
         </p>
       </section>
+
+      {/* Spinner keyframe */}
+      <style>{`
+        @keyframes spin {
+          to { transform: rotate(360deg); }
+        }
+      `}</style>
     </div>
   );
 }

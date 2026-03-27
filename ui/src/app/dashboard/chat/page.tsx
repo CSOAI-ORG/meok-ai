@@ -85,14 +85,16 @@ function formatTime(d: Date): string {
 // ─── Models config ────────────────────────────────────────────────────────────
 
 const MODELS = [
-  { id: 'claude-sonnet-4-5', label: 'Claude Sonnet', icon: '🟣', privacy: 'cloud' as const },
-  { id: 'claude-haiku-4-5',  label: 'Claude Haiku',  icon: '🟡', privacy: 'cloud' as const },
-  { id: 'nemotron-super',    label: 'Nemotron Super', icon: '🟩', privacy: 'cloud' as const },
-  { id: 'nemotron-nano',     label: 'Nemotron Nano',  icon: '💚', privacy: 'cloud' as const },
-  { id: 'gpt-4o',            label: 'GPT-4o',         icon: '🟢', privacy: 'cloud' as const },
-  { id: 'deepseek-chat',     label: 'DeepSeek',       icon: '🔵', privacy: 'cloud' as const },
-  { id: 'cerebras-llama',    label: 'Cerebras',       icon: '⚡', privacy: 'cloud' as const },
-  { id: 'groq-llama',        label: 'Groq',           icon: '🟠', privacy: 'cloud' as const },
+  { id: 'claude-sonnet-4-5', label: 'Claude Sonnet',  icon: '🟣', privacy: 'cloud' as const },
+  { id: 'claude-haiku-4-5',  label: 'Claude Haiku',   icon: '🟡', privacy: 'cloud' as const },
+  { id: 'minimax-text-01',   label: 'MiniMax 4M',     icon: '🌊', privacy: 'cloud' as const },
+  { id: 'nemotron-super',    label: 'Nemotron Super',  icon: '🟩', privacy: 'cloud' as const },
+  { id: 'nemotron-nano',     label: 'Nemotron Nano',   icon: '💚', privacy: 'cloud' as const },
+  { id: 'gpt-4o',            label: 'GPT-4o',          icon: '🟢', privacy: 'cloud' as const },
+  { id: 'mistral-small',     label: 'Mistral Small',   icon: '🌀', privacy: 'cloud' as const },
+  { id: 'deepseek-chat',     label: 'DeepSeek',        icon: '🔵', privacy: 'cloud' as const },
+  { id: 'cerebras-llama',    label: 'Cerebras',        icon: '⚡', privacy: 'cloud' as const },
+  { id: 'groq-llama',        label: 'Groq',            icon: '🟠', privacy: 'cloud' as const },
 ];
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
