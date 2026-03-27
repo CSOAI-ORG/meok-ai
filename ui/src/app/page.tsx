@@ -253,11 +253,11 @@ export default function HomePage() {
                   <ArrowRight className="w-4 h-4" />
                 </Link>
                 <Link
-                  href="/how-it-works"
+                  href="/demo"
                   className="inline-flex items-center gap-2 font-semibold rounded-full transition-colors hover:bg-white/10"
                   style={{ border: "1px solid rgba(255,255,255,0.30)", color: "#ffffff", padding: "1rem 2rem", fontSize: "1.125rem" }}
                 >
-                  How it works
+                  ✦ Try demo first
                 </Link>
               </div>
 
@@ -277,27 +277,49 @@ export default function HomePage() {
             className="py-16 px-6"
             style={{ background: "#0d0c18", borderTop: "1px solid rgba(201,168,76,0.08)" }}
           >
-            <div className="max-w-4xl mx-auto text-center">
-              <p className="text-white/40 text-sm mb-8">
-                Trusted by early adopters building sovereign AI
-              </p>
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
+            <div className="max-w-5xl mx-auto">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
                 {[
-                  { stat: "469+", label: "AI Models" },
-                  { stat: "30+", label: "Companions" },
-                  { stat: "22-Module", label: "Pipeline" },
+                  { stat: "50+", label: "AI Companions", sub: "9 archetypes" },
+                  { stat: "469+", label: "AI Models", sub: "10+ providers" },
+                  { stat: "22", label: "Pipeline Modules", sub: "per conversation" },
+                  { stat: "∞", label: "Memory", sub: "never forgets you" },
                 ].map((item) => (
                   <div
                     key={item.label}
-                    className="rounded-xl py-6 px-4"
+                    className="rounded-xl py-5 px-4 text-center"
                     style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(201,168,76,0.12)" }}
                   >
                     <div className="text-3xl md:text-4xl font-black mb-1" style={{ color: "#c9a84c" }}>
                       {item.stat}
                     </div>
-                    <div className="text-sm text-white/40 font-medium">{item.label}</div>
+                    <div className="text-sm text-white/60 font-semibold">{item.label}</div>
+                    <div className="text-xs text-white/25 mt-0.5">{item.sub}</div>
                   </div>
                 ))}
+              </div>
+              {/* Industry stats that justify MEOK's existence */}
+              <div
+                className="rounded-xl p-5 flex flex-col sm:flex-row gap-4 sm:gap-8 justify-center text-center"
+                style={{ background: "rgba(255,255,255,0.02)", border: "1px solid rgba(255,255,255,0.06)" }}
+              >
+                <div>
+                  <span className="text-white/70 text-sm">
+                    <span className="font-black text-white">342 million</span> people use AI for personal reflection each week
+                  </span>
+                </div>
+                <div className="hidden sm:block text-white/15">|</div>
+                <div>
+                  <span className="text-white/70 text-sm">
+                    <span className="font-black text-white">37%</span> of Americans say AI is their closest confidant
+                  </span>
+                </div>
+                <div className="hidden sm:block text-white/15">|</div>
+                <div>
+                  <span className="text-white/70 text-sm">
+                    <span className="font-black text-white">0</span> of them are remembered tomorrow
+                  </span>
+                </div>
               </div>
             </div>
           </section>
@@ -341,7 +363,85 @@ export default function HomePage() {
             </div>
           </section>
 
-          {/* ── 2b. GUARDIAN SHOWCASE ─────────────────────────────── */}
+          {/* ── 2b. AI IS FAILING USERS — trust comparison ──────────── */}
+          <section
+            aria-label="Why current AI is failing"
+            className="py-20 px-6"
+            style={{ background: "#0a0918" }}
+          >
+            <div className="max-w-5xl mx-auto">
+              <header className="text-center mb-12">
+                <p className="text-red-400/80 text-sm font-bold tracking-widest uppercase mb-4">The Problem With Every Other AI</p>
+                <h2 className="font-black text-white leading-tight tracking-tight mb-4" style={{ fontSize: "clamp(1.6rem, 4vw, 2.5rem)" }}>
+                  84% of developers use AI.{" "}
+                  <span className="text-red-400">Only 29% trust it.</span>
+                </h2>
+                <p className="text-white/45 text-base max-w-2xl mx-auto">
+                  The world&apos;s biggest AI platforms are failing users in ways that keep getting worse. MEOK was built to solve every one.
+                </p>
+              </header>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10">
+                {[
+                  {
+                    problem: "ChatGPT forgets you every conversation",
+                    solution: "MEOK remembers everything, permanently",
+                    icon: "🧠",
+                  },
+                  {
+                    problem: "AI companies train on your private data",
+                    solution: "Your data stays yours — always encrypted",
+                    icon: "🔒",
+                  },
+                  {
+                    problem: "Models get worse with every update",
+                    solution: "Your bond deepens over months and years",
+                    icon: "📈",
+                  },
+                  {
+                    problem: "$66/month across fragmented subscriptions",
+                    solution: "One sovereign AI OS — free forever tier",
+                    icon: "💰",
+                  },
+                  {
+                    problem: "AI is built for English-speaking, neurotypical users",
+                    solution: "47 civilisational traditions. Accessibility first.",
+                    icon: "🌍",
+                  },
+                  {
+                    problem: "No AI admits when it's wrong",
+                    solution: "Care over flattery — we tell you the truth",
+                    icon: "💙",
+                  },
+                ].map((item) => (
+                  <div
+                    key={item.problem}
+                    className="rounded-xl p-5 flex gap-4 items-start"
+                    style={{ background: "rgba(255,255,255,0.025)", border: "1px solid rgba(255,255,255,0.07)" }}
+                  >
+                    <span className="text-2xl shrink-0">{item.icon}</span>
+                    <div>
+                      <p className="text-sm text-red-400/70 line-through mb-1">{item.problem}</p>
+                      <p className="text-sm font-semibold" style={{ color: "#c9a84c" }}>{item.solution}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="text-center">
+                <Link
+                  href="/demo"
+                  className="inline-flex items-center gap-2 font-semibold text-sm transition-all hover:scale-105 rounded-full px-6 py-3"
+                  style={{ background: "rgba(201,168,76,0.10)", border: "1px solid rgba(201,168,76,0.25)", color: "#c9a84c" }}
+                >
+                  ✦ See the difference yourself — try the demo
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+              </div>
+            </div>
+          </section>
+
+          {/* ── 2c. GUARDIAN SHOWCASE ─────────────────────────────── */}
           <section aria-label="Guardian protection" className="py-20 px-6" style={{ background: "#080811" }}>
             <div className="max-w-5xl mx-auto text-center">
               <p className="text-[#2d9b8a] text-sm font-bold tracking-widest uppercase mb-4">Protect Your People</p>

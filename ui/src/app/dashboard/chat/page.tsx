@@ -12,6 +12,14 @@ import { playSound } from '@/lib/sound';
 import { speakAsCharacter, stopSpeaking, isTTSSupported } from '@/lib/voice-synthesis';
 import { copyToClipboard } from '@/lib/chat-actions';
 
+// ─── Mood config ──────────────────────────────────────────────────────────────
+const MOOD_CYCLE: Array<{ label: string; color: string }> = [
+  { label: 'curious',    color: '#7c9cf5' },
+  { label: 'playful',    color: '#f5c87c' },
+  { label: 'thoughtful', color: '#9c7cf5' },
+  { label: 'warm',       color: '#f57c7c' },
+];
+
 // ─── Brand tokens ─────────────────────────────────────────────────────────────
 const GOLD = '#c9a84c';
 const DEEP = '#0d0c18';
@@ -58,11 +66,12 @@ function getMessageText(msg: UIMessage): string {
 
 // ─── Sub-components ───────────────────────────────────────────────────────────
 
-function SovereignBadge({ model, latency, care_score, streaming }: {
+function SovereignBadge({ model, latency, care_score, streaming, contextPct }: {
   model?: string;
   latency?: number;
   care_score?: number;
   streaming?: boolean;
+  contextPct?: number;
 }) {
   if (streaming) {
     return (
@@ -83,9 +92,20 @@ function SovereignBadge({ model, latency, care_score, streaming }: {
         style={{ background: 'rgba(255,255,255,0.04)', color: 'rgba(255,255,255,0.3)', borderColor: 'rgba(255,255,255,0.07)' }}
       >
         🤖 {model ?? 'Claude Sonnet'} · {latency ?? 0}ms · ☁️ Cloud · Care {care_score ?? 87}/100
+        {contextPct !== undefined && ` · ctx: ${Math.round(contextPct)}%`}
       </span>
     </div>
   );
+}
+
+// ─── Toast ─────────────────────────────────────────────────────────────────────
+function useToast() {
+  const [toast, setToast] = useState<string | null>(null);
+  const show = useCallback((msg: string) => {
+    setToast(msg);
+    setTimeout(() => setToast(null), 1800);
+  }, []);
+  return { toast, show };
 }
 
 function ThreeDots() {
@@ -227,6 +247,8 @@ export default function DashboardChatPage() {
   const [imagePreview, setImagePreview] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [rateLimited, setRateLimited] = useState(false);
+  const [bondLevel] = useState(1);
+  const { toast, show: showToast } = useToast();
 
   // Streaming telemetry
   const [streamStart, setStreamStart] = useState(0);
@@ -276,6 +298,7 @@ export default function DashboardChatPage() {
   const {
     messages,
     sendMessage,
+    regenerate,
     status,
     stop,
   } = useChat({
@@ -295,9 +318,17 @@ export default function DashboardChatPage() {
   const isStreaming = status === 'streaming' || status === 'submitted';
   const hasUserMessages = messages.some((m: UIMessage) => m.role === 'user');
 
-  // Auto-scroll
+  // Mood cycles through 4 states based on number of assistant messages
+  const assistantMsgCount = messages.filter((m: UIMessage) => m.role === 'assistant').length;
+  const currentMood = MOOD_CYCLE[assistantMsgCount % MOOD_CYCLE.length];
+
+  // Context usage: total chars across all messages / 200000 context limit
+  const totalChars = messages.reduce((acc: number, m: UIMessage) => acc + getMessageText(m).length, 0);
+  const contextUsagePct = Math.min((totalChars / 200000) * 100, 100);
+
+  // Auto-scroll — smooth scroll to exact bottom of messages list
   useEffect(() => {
-    bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
+    bottomRef.current?.scrollIntoView({ behavior: 'smooth', block: 'end' });
   }, [messages]);
 
   // Auto-resize textarea
@@ -387,8 +418,14 @@ export default function DashboardChatPage() {
           <header className="h-12 flex items-center justify-between px-4 flex-shrink-0" style={{ borderBottom: '1px solid rgba(255,255,255,0.08)', background: SURFACE }}>
             <div className="flex items-center gap-2 min-w-0">
               <div className="w-6 h-6 rounded-full flex items-center justify-center text-xs flex-shrink-0" style={{ background: `linear-gradient(135deg, ${GOLD}, #92703d)` }}>✨</div>
-              <span className="text-sm font-semibold truncate" style={{ color: `${CREAM}90` }}>Aura</span>
-              <span className="w-2 h-2 rounded-full bg-green-400 flex-shrink-0 animate-pulse" title="Online" />
+              <div className="flex flex-col min-w-0">
+                <div className="flex items-center gap-1.5">
+                  <span className="text-sm font-semibold truncate" style={{ color: `${CREAM}90` }}>Aura</span>
+                  <span className="w-2 h-2 rounded-full flex-shrink-0 animate-pulse" style={{ background: currentMood.color }} title={`Mood: ${currentMood.label}`} />
+                  <span className="text-[10px] font-medium" style={{ color: currentMood.color }}>{currentMood.label}</span>
+                </div>
+                <span className="text-[11px] font-semibold" style={{ color: GOLD }}>Bond Level {bondLevel} ✦</span>
+              </div>
             </div>
             <div className="flex items-center gap-1 overflow-x-auto scrollbar-hide px-2">
               {MODELS.map(m => (
@@ -454,8 +491,8 @@ export default function DashboardChatPage() {
                         <p className="text-[10px] mt-1 text-right" style={{ color: 'rgba(255,255,255,0.25)' }}>{formatTime((msg as unknown as { createdAt?: Date }).createdAt ?? new Date())}</p>
                       </div>
                     ) : (
-                      <div className="max-w-[75%]">
-                        <SovereignBadge model={selectedModelConfig.label} latency={isStreamingMsg ? undefined : sovereignMeta?.latency} care_score={85} streaming={isStreamingMsg} />
+                      <div className="max-w-[75%] group/msg">
+                        <SovereignBadge model={selectedModelConfig.label} latency={isStreamingMsg ? undefined : sovereignMeta?.latency} care_score={85} streaming={isStreamingMsg} contextPct={isStreamingMsg ? undefined : contextUsagePct} />
                         <div className="rounded-2xl rounded-tl-sm px-4 py-3" tabIndex={0} role="article" aria-label={`Aura's response: ${text.slice(0, 80)}`} style={{ background: SURFACE, border: '1px solid rgba(255,255,255,0.07)' }}>
                           {text ? (
                             <p className="text-sm whitespace-pre-wrap leading-relaxed" style={{ color: `${CREAM}dd` }}>
