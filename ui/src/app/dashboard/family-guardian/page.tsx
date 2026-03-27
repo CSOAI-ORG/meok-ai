@@ -11,6 +11,7 @@ import {
   Activity,
   Calendar,
   ChevronRight,
+  Mail,
 } from "lucide-react";
 
 // ── BRAND TOKENS ────────────────────────────────────────────────────────────
@@ -42,6 +43,8 @@ interface ProtectedMember {
   status: "active" | "idle";
   lastActive: string;
   alertCount: number;
+  protectionStatus: "enabled" | "disabled";
+  consentGiven: boolean;
 }
 
 // ── RISK BADGE ──────────────────────────────────────────────────────────────
@@ -177,15 +180,19 @@ export default function FamilyGuardianPage() {
   const [sensitivity, setSensitivity] = useState<Sensitivity>("medium");
 
   // Current user as placeholder protected member
-  const [members] = useState<ProtectedMember[]>([
+  const [members, setMembers] = useState<ProtectedMember[]>([
     {
       id: "self",
       name: "You",
       status: "active",
       lastActive: new Date().toISOString(),
       alertCount: 0,
+      protectionStatus: "enabled",
+      consentGiven: true,
     },
   ]);
+  const [showConsentModal, setShowConsentModal] = useState(false);
+  const [selectedMember, setSelectedMember] = useState<ProtectedMember | null>(null);
 
   // Fetch guardian alerts on mount
   useEffect(() => {
@@ -259,8 +266,12 @@ export default function FamilyGuardianPage() {
             {members.map((member) => (
               <div
                 key={member.id}
-                className="flex items-center gap-4 p-4 rounded-xl"
+                className="flex items-start gap-4 p-4 rounded-xl cursor-pointer transition-all hover:border-opacity-100"
                 style={{ background: "rgba(255,255,255,0.02)", border: `1px solid ${BORDER}` }}
+                onClick={() => {
+                  setSelectedMember(member);
+                  setShowConsentModal(true);
+                }}
               >
                 <div
                   className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0"
@@ -271,7 +282,7 @@ export default function FamilyGuardianPage() {
                   </span>
                 </div>
                 <div className="flex-1 min-w-0">
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-2 mb-1">
                     <p className="text-sm font-bold text-white/90">{member.name}</p>
                     <span
                       className="w-2 h-2 rounded-full"
@@ -281,13 +292,33 @@ export default function FamilyGuardianPage() {
                       {member.status === "active" ? "Active" : "Idle"}
                     </span>
                   </div>
-                  <p className="text-xs text-white/30 mt-0.5">
+                  <div className="flex items-center gap-2 text-xs">
+                    <span
+                      className="px-2 py-1 rounded-full"
+                      style={{
+                        background: member.protectionStatus === "enabled" ? "rgba(74,222,128,0.15)" : "rgba(107,114,128,0.15)",
+                        color: member.protectionStatus === "enabled" ? "#4ade80" : "#9ca3af",
+                      }}
+                    >
+                      {member.protectionStatus === "enabled" ? "🛡️ Protected" : "Off"}
+                    </span>
+                    <span
+                      className="px-2 py-1 rounded-full"
+                      style={{
+                        background: member.consentGiven ? "rgba(59,130,246,0.15)" : "rgba(239,68,68,0.15)",
+                        color: member.consentGiven ? "#3b82f6" : "#ef4444",
+                      }}
+                    >
+                      {member.consentGiven ? "✓ Consented" : "No consent"}
+                    </span>
+                  </div>
+                  <p className="text-xs text-white/30 mt-1">
                     {member.alertCount === 0
-                      ? "No alerts"
-                      : `${member.alertCount} alert${member.alertCount !== 1 ? "s" : ""}`}
+                      ? "No alerts in the last 7 days"
+                      : `${member.alertCount} alert${member.alertCount !== 1 ? "s" : ""} this week`}
                   </p>
                 </div>
-                <ChevronRight size={16} className="text-white/20" />
+                <ChevronRight size={16} className="text-white/20 flex-shrink-0 mt-1" />
               </div>
             ))}
           </div>
@@ -397,6 +428,168 @@ export default function FamilyGuardianPage() {
             </div>
           )}
         </div>
+
+        {/* ── WEEKLY FAMILY SAFETY EMAIL ──────────────────────────────────── */}
+        <div
+          className="rounded-2xl overflow-hidden"
+          style={{ background: SURFACE, border: `1px solid ${BORDER}` }}
+        >
+          <div
+            className="px-6 py-4 flex items-center gap-2"
+            style={{ borderBottom: `1px solid ${BORDER}` }}
+          >
+            <Mail size={16} color={GOLD} />
+            <span className="text-sm font-black text-white">Weekly Safety Email</span>
+            <span className="text-xs text-white/25 ml-auto">Every Monday, 9:00 AM</span>
+          </div>
+
+          <div className="p-6 space-y-4">
+            <div
+              className="rounded-xl p-4 font-mono text-xs leading-relaxed"
+              style={{ background: "rgba(255,255,255,0.02)", border: `1px solid ${BORDER}` }}
+            >
+              <p style={{ color: GOLD }}>Subject: Your Weekly Family Safety Summary</p>
+              <p className="mt-3 text-white/70">
+                Hi there,
+                <br />
+                <br />
+                Here's your weekly family safety summary for {new Date().toLocaleDateString("en-US", { month: "long", day: "numeric" })}:
+                <br />
+                <br />
+                <strong>Protected Members:</strong> {members.length} {members.map(m => m.name).join(", ")}
+                <br />
+                <strong>Alerts This Week:</strong> {alerts.length} (0 critical threats blocked)
+                <br />
+                <strong>Guardian Status:</strong> All protections active
+                <br />
+                <br />
+                No major concerns detected. Everyone is safe. 🛡️
+                <br />
+                <br />
+                — Your Family Guardian
+              </p>
+            </div>
+
+            <div className="flex gap-3">
+              <button
+                className="flex-1 px-4 py-2 rounded-lg text-sm font-medium transition-all"
+                style={{
+                  background: "rgba(201,168,76,0.15)",
+                  color: GOLD,
+                  border: `1px solid ${GOLD}30`,
+                }}
+              >
+                Send Test Email
+              </button>
+              <button
+                className="flex-1 px-4 py-2 rounded-lg text-sm font-medium transition-all"
+                style={{
+                  background: "rgba(255,255,255,0.05)",
+                  color: "rgba(255,255,255,0.7)",
+                  border: `1px solid ${BORDER}`,
+                }}
+              >
+                Edit Template
+              </button>
+            </div>
+
+            <p className="text-xs text-white/40">
+              Family members receive alerts directly via email. Customize this template in settings to match your preferences.
+            </p>
+          </div>
+        </div>
+
+        {/* ── CONSENT MANAGEMENT MODAL ────────────────────────────────────── */}
+        {showConsentModal && selectedMember && (
+          <div
+            className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50"
+            onClick={() => setShowConsentModal(false)}
+          >
+            <div
+              className="rounded-2xl max-w-md w-full p-6"
+              style={{ background: SURFACE, border: `1px solid ${BORDER}` }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <h2 className="text-lg font-black text-white mb-4">
+                Guardian Consent for {selectedMember.name}
+              </h2>
+
+              <div className="space-y-3 mb-6">
+                <div className="flex items-start gap-3 p-3 rounded-lg" style={{ background: "rgba(255,255,255,0.02)" }}>
+                  <input
+                    type="checkbox"
+                    defaultChecked={selectedMember.consentGiven}
+                    onChange={(e) => {
+                      const updated = { ...selectedMember, consentGiven: e.target.checked };
+                      setSelectedMember(updated);
+                      setMembers(members.map(m => m.id === updated.id ? updated : m));
+                    }}
+                    className="mt-1 w-4 h-4 cursor-pointer"
+                  />
+                  <div>
+                    <p className="text-sm font-medium text-white">
+                      Explicit opt-in for monitoring
+                    </p>
+                    <p className="text-xs text-white/40 mt-1">
+                      {selectedMember.name} understands and consents to Guardian monitoring their messages for safety threats.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3 p-3 rounded-lg" style={{ background: "rgba(255,255,255,0.02)" }}>
+                  <input
+                    type="checkbox"
+                    defaultChecked={selectedMember.protectionStatus === "enabled"}
+                    onChange={(e) => {
+                      const updated: ProtectedMember = {
+                        ...selectedMember,
+                        protectionStatus: e.target.checked ? "enabled" : "disabled",
+                      };
+                      setSelectedMember(updated);
+                      setMembers(members.map(m => m.id === updated.id ? updated : m));
+                    }}
+                    className="mt-1 w-4 h-4 cursor-pointer"
+                  />
+                  <div>
+                    <p className="text-sm font-medium text-white">
+                      Enable Guardian protections
+                    </p>
+                    <p className="text-xs text-white/40 mt-1">
+                      Active monitoring and real-time alerts for this family member.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex gap-3">
+                <button
+                  onClick={() => setShowConsentModal(false)}
+                  className="flex-1 px-4 py-2 rounded-lg text-sm font-medium transition-all"
+                  style={{
+                    background: "rgba(255,255,255,0.05)",
+                    color: "rgba(255,255,255,0.7)",
+                    border: `1px solid ${BORDER}`,
+                  }}
+                >
+                  Cancel
+                </button>
+                <button
+                  onClick={() => {
+                    // Save consent changes
+                    setShowConsentModal(false);
+                  }}
+                  className="flex-1 px-4 py-2 rounded-lg text-sm font-medium transition-all"
+                  style={{
+                    background: GOLD,
+                    color: DEEP,
+                  }}
+                >
+                  Save Consent
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
 
       </div>
     </div>
