@@ -7,10 +7,12 @@ import type { UIMessage } from 'ai';
 import Link from 'next/link';
 import { PlanModeToggle, type ChatMode } from '@/components/plan-mode-toggle';
 import { generateAvatar } from '@/lib/avatar';
+import { getCharacter } from '@/lib/characters';
 import { SovereignDisplay, type SovereignDisplayProps } from '@/components/sovereign-display';
 import { playSound } from '@/lib/sound';
 import { speakAsCharacter, stopSpeaking, isTTSSupported } from '@/lib/voice-synthesis';
 import { copyToClipboard } from '@/lib/chat-actions';
+import { KEYFRAMES_IDLE } from '@/lib/animation-state';
 
 // ─── Mood config ──────────────────────────────────────────────────────────────
 const MOOD_CYCLE: Array<{ label: string; color: string }> = [
@@ -462,17 +464,35 @@ export default function DashboardChatPage() {
         <div className="flex-1 flex flex-col min-w-0">
           {/* Top bar */}
           <header className="h-12 flex items-center justify-between px-4 flex-shrink-0" style={{ borderBottom: '1px solid rgba(255,255,255,0.08)', background: SURFACE }}>
-            <div className="flex items-center gap-2 min-w-0">
-              <div className="w-6 h-6 rounded-full flex items-center justify-center text-xs flex-shrink-0" style={{ background: `linear-gradient(135deg, ${GOLD}, #92703d)` }}>✨</div>
-              <div className="flex flex-col min-w-0">
-                <div className="flex items-center gap-1.5">
-                  <span className="text-sm font-semibold truncate" style={{ color: `${CREAM}90` }}>Aura</span>
-                  <span className="w-2 h-2 rounded-full flex-shrink-0 animate-pulse" style={{ background: currentMood.color }} title={`Mood: ${currentMood.label}`} />
-                  <span className="text-[10px] font-medium" style={{ color: currentMood.color }}>{currentMood.label}</span>
+            <style>{KEYFRAMES_IDLE}</style>
+            {(() => {
+              const companion = getCharacter(companionId);
+              const charName = companion?.name || 'Aura';
+              const avatar = companion && companion.dimensions ?
+                generateAvatar(companion.dimensions, companion.archetype, companion.name) :
+                generateAvatar({ warmth: 0.7, energy: 0.7, whimsy: 0.6, edge: 0.3, complexity: 0.6 }, 'nurturer', 'Aura');
+              return (
+                <div className="flex items-center gap-2 min-w-0">
+                  <img
+                    src={avatar}
+                    alt={charName}
+                    className="w-6 h-6 rounded-full flex-shrink-0"
+                    style={{
+                      animation: 'meok-idle 3s ease-in-out infinite',
+                      boxShadow: `0 0 8px 2px ${currentMood.color}40`,
+                    }}
+                  />
+                  <div className="flex flex-col min-w-0">
+                    <div className="flex items-center gap-1.5">
+                      <span className="text-sm font-semibold truncate" style={{ color: `${CREAM}90` }}>{charName}</span>
+                      <span className="w-2 h-2 rounded-full flex-shrink-0 animate-pulse" style={{ background: currentMood.color }} title={`Mood: ${currentMood.label}`} />
+                      <span className="text-[10px] font-medium" style={{ color: currentMood.color }}>{currentMood.label}</span>
+                    </div>
+                    <span className="text-[11px] font-semibold" style={{ color: GOLD }}>Bond Level {bondLevel} ✦</span>
+                  </div>
                 </div>
-                <span className="text-[11px] font-semibold" style={{ color: GOLD }}>Bond Level {bondLevel} ✦</span>
-              </div>
-            </div>
+              );
+            })()}
             <div className="flex items-center gap-1 overflow-x-auto scrollbar-hide px-2">
               {MODELS.map(m => (
                 <button key={m.id} onClick={() => setSelectedModel(m.id)} className="text-xs font-medium px-3 py-1 rounded-full border whitespace-nowrap transition-all"
