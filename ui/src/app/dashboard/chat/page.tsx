@@ -298,6 +298,10 @@ export default function DashboardChatPage() {
   const [bondLevel] = useState(1);
   const [highContrast, setHighContrast] = useState(false);
   const [focusedMsgIdx, setFocusedMsgIdx] = useState<number | null>(null);
+  const [sidebarOpen, setSidebarOpen] = useState(true);
+  const [conversations, setConversations] = useState<Array<{ id: string; title: string; updated_at: string }>>([]);
+  const [loadingConversations, setLoadingConversations] = useState(false);
+  const [currentConversationId, setCurrentConversationId] = useState<string | null>(null);
   const { toast, show: showToast } = useToast();
 
   // Streaming telemetry
@@ -417,6 +421,25 @@ export default function DashboardChatPage() {
     }
   }, [input]);
 
+  // Fetch conversation history on mount
+  useEffect(() => {
+    const fetchConversations = async () => {
+      setLoadingConversations(true);
+      try {
+        const res = await fetch('/api/user/conversations');
+        if (res.ok) {
+          const data = await res.json();
+          setConversations(data.conversations || []);
+        }
+      } catch (error) {
+        console.error('Failed to fetch conversations:', error);
+      } finally {
+        setLoadingConversations(false);
+      }
+    };
+    fetchConversations();
+  }, []);
+
   // Latency ticker while streaming
   useEffect(() => {
     if (isStreaming && streamStart) {
@@ -513,6 +536,111 @@ export default function DashboardChatPage() {
     }
   }
 
+  async function handleNewConversation() {
+    try {
+      const res = await fetch('/api/user/conversations', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ title: 'New conversation' }),
+      });
+      if (res.ok) {
+        const data = await res.json();
+        const newConversation = data.conversation;
+        setConversations(prev => [newConversation, ...prev]);
+        setCurrentConversationId(newConversation.id);
+        // Clear input
+        setInput('');
+        showToast('New conversation started');
+      }
+    } catch (error) {
+      console.error('Failed to create conversation:', error);
+      showToast('Failed to create conversation');
+    }
+  }
+
+  async function handleLoadConversation(conversationId: string) {
+    try {
+      setCurrentConversationId(conversationId);
+      const res = await fetch(`/api/user/conversations/${conversationId}`);
+      if (res.ok) {
+        showToast('Conversation loaded');
+        // Note: Message loading handled by conversation context/state management
+        // This sets the current conversation ID which should trigger message fetching
+        // via a separate useEffect or context provider
+      }
+    } catch (error) {
+      console.error('Failed to load conversation:', error);
+      showToast('Failed to load conversation');
+    }
+  }
+
+  // Sidebar component for conversation history
+  const ConversationSidebar = () => (
+    <div className="w-64 flex-shrink-0 flex flex-col" style={{ background: SURFACE, borderRight: '1px solid rgba(255,255,255,0.08)' }}>
+      {/* Header */}
+      <div className="flex items-center justify-between px-4 py-3 flex-shrink-0" style={{ borderBottom: '1px solid rgba(255,255,255,0.07)' }}>
+        <span className="text-xs font-semibold uppercase tracking-widest" style={{ color: GOLD }}>Conversations</span>
+        <button
+          onClick={() => setSidebarOpen(false)}
+          className="text-sm text-white/25 hover:text-white/50 transition-colors"
+          title="Close sidebar"
+          aria-label="Close conversation sidebar"
+        >
+          ✕
+        </button>
+      </div>
+
+      {/* New conversation button */}
+      <button
+        onClick={handleNewConversation}
+        className="m-3 px-3 py-2 rounded-lg text-xs font-medium border transition-all hover:scale-[1.02]"
+        style={{ background: `${GOLD}20`, borderColor: `${GOLD}40`, color: GOLD }}
+        aria-label="Start new conversation"
+      >
+        + New Chat
+      </button>
+
+      {/* Conversations list */}
+      <div className="flex-1 overflow-y-auto">
+        {loadingConversations ? (
+          <div className="px-4 py-6 text-center text-xs text-white/40">Loading…</div>
+        ) : conversations.length === 0 ? (
+          <div className="px-4 py-6 text-center text-xs text-white/40">No conversations yet</div>
+        ) : (
+          <div className="space-y-1 px-2 py-2">
+            {conversations.map(conv => (
+              <button
+                key={conv.id}
+                onClick={() => handleLoadConversation(conv.id)}
+                className="w-full text-left px-3 py-2 rounded-lg text-xs transition-colors truncate"
+                style={{
+                  background: currentConversationId === conv.id ? `${GOLD}15` : 'transparent',
+                  color: currentConversationId === conv.id ? GOLD : 'rgba(255,255,255,0.6)',
+                  borderLeft: currentConversationId === conv.id ? `2px solid ${GOLD}` : '2px solid transparent',
+                  paddingLeft: currentConversationId === conv.id ? '12px' : '14px',
+                }}
+                title={conv.title}
+              >
+                {conv.title}
+              </button>
+            ))}
+          </div>
+        )}
+      </div>
+
+      {/* Toggle button */}
+      <div className="px-3 py-2 flex-shrink-0 border-t" style={{ borderColor: 'rgba(255,255,255,0.07)' }}>
+        <button
+          onClick={() => setSidebarOpen(false)}
+          className="w-full text-xs py-1.5 rounded-lg transition-colors text-white/40 hover:text-white/60"
+          title="Hide sidebar"
+        >
+          ← Hide
+        </button>
+      </div>
+    </div>
+  );
+
   return (
     <>
       <style>{`
@@ -521,11 +649,25 @@ export default function DashboardChatPage() {
       `}</style>
 
       <div className="flex text-white overflow-hidden" style={{ height: 'calc(100vh)', background: DEEP }}>
+        {/* ── Conversation Sidebar ───────────────────────────────────── */}
+        {sidebarOpen && <ConversationSidebar />}
+
         {/* ── Chat column ───────────────────────────────────────────── */}
         <div className="flex-1 flex flex-col min-w-0">
           {/* Top bar */}
           <header className="h-12 flex items-center justify-between px-4 flex-shrink-0" style={{ borderBottom: '1px solid rgba(255,255,255,0.08)', background: SURFACE }}>
             <style>{KEYFRAMES_IDLE}</style>
+            {!sidebarOpen && (
+              <button
+                onClick={() => setSidebarOpen(true)}
+                className="text-xs px-2 py-1 rounded-lg border transition-colors flex-shrink-0"
+                style={{ borderColor: 'rgba(255,255,255,0.1)', color: 'rgba(255,255,255,0.4)' }}
+                title="Open conversation history"
+                aria-label="Open sidebar"
+              >
+                ☰
+              </button>
+            )}
             {(() => {
               const companion = getCharacter(companionId);
               const charName = companion?.name || 'Aura';
