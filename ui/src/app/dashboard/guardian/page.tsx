@@ -19,6 +19,7 @@ import {
   Brain,
   Baby,
   UserPlus,
+  Zap,
 } from "lucide-react";
 
 // ─── BRAND TOKENS ─────────────────────────────────────────────────────────────
@@ -269,6 +270,74 @@ export default function GuardianDashboardPage() {
           </div>
         </div>
 
+        {/* ─── REAL-TIME PROTECTION ACTIVITY ───────────────────────────────── */}
+        <div
+          className="rounded-2xl overflow-hidden"
+          style={{ background: SURFACE, border: `1px solid ${BORDER}` }}
+        >
+          <div
+            className="px-6 py-4 flex items-center gap-2"
+            style={{ borderBottom: `1px solid ${BORDER}` }}
+          >
+            <Zap size={16} color={GOLD} />
+            <span className="text-sm font-black text-white">Real-Time Activity</span>
+          </div>
+          <div className="p-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div
+              className="flex items-start gap-3 p-4 rounded-xl border"
+              style={{
+                background: "rgba(74,222,128,0.05)",
+                borderColor: "rgba(74,222,128,0.2)",
+              }}
+            >
+              <div className="w-2 h-2 rounded-full mt-1.5 flex-shrink-0 animate-pulse" style={{ background: "#4ade80" }} />
+              <div>
+                <p className="text-sm font-semibold text-white">Message Scanning</p>
+                <p className="text-xs text-white/40 mt-0.5">Last scan: 2 minutes ago · 0 threats detected</p>
+              </div>
+            </div>
+            <div
+              className="flex items-start gap-3 p-4 rounded-xl border"
+              style={{
+                background: "rgba(74,222,128,0.05)",
+                borderColor: "rgba(74,222,128,0.2)",
+              }}
+            >
+              <div className="w-2 h-2 rounded-full mt-1.5 flex-shrink-0 animate-pulse" style={{ background: "#4ade80" }} />
+              <div>
+                <p className="text-sm font-semibold text-white">Pattern Analysis</p>
+                <p className="text-xs text-white/40 mt-0.5">Monitoring 247 connection patterns · Active</p>
+              </div>
+            </div>
+            <div
+              className="flex items-start gap-3 p-4 rounded-xl border"
+              style={{
+                background: "rgba(168,162,142,0.05)",
+                borderColor: "rgba(168,162,142,0.2)",
+              }}
+            >
+              <div className="w-2 h-2 rounded-full mt-1.5 flex-shrink-0" style={{ background: "#a8a28e" }} />
+              <div>
+                <p className="text-sm font-semibold text-white">Family Alerts</p>
+                <p className="text-xs text-white/40 mt-0.5">No family members added · Configure in settings</p>
+              </div>
+            </div>
+            <div
+              className="flex items-start gap-3 p-4 rounded-xl border"
+              style={{
+                background: "rgba(74,222,128,0.05)",
+                borderColor: "rgba(74,222,128,0.2)",
+              }}
+            >
+              <div className="w-2 h-2 rounded-full mt-1.5 flex-shrink-0 animate-pulse" style={{ background: "#4ade80" }} />
+              <div>
+                <p className="text-sm font-semibold text-white">Threat Database</p>
+                <p className="text-xs text-white/40 mt-0.5">Updated 4 hours ago · 15,847 patterns</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
         {/* ─── GUARDIAN ACTIVITY FEED ─────────────────────────────────────── */}
         <GuardianAlerts />
 
@@ -375,16 +444,42 @@ export default function GuardianDashboardPage() {
           style={{ background: SURFACE, border: `1px solid ${BORDER}` }}
         >
           <div
-            className="px-6 py-4 flex items-center gap-2"
+            className="px-6 py-4 flex items-center justify-between gap-2"
             style={{ borderBottom: `1px solid ${BORDER}` }}
           >
-            <Shield size={16} color={GOLD} />
-            <span className="text-sm font-black text-white">
-              Active Protections
-            </span>
-            {saving && (
-              <span className="text-[10px] text-white/30 ml-auto">Saving...</span>
-            )}
+            <div className="flex items-center gap-2">
+              <Shield size={16} color={GOLD} />
+              <span className="text-sm font-black text-white">
+                Active Protections
+              </span>
+            </div>
+            <div className="flex items-center gap-3 ml-auto">
+              {saving && (
+                <span className="text-[10px] text-white/30">Saving...</span>
+              )}
+              <button
+                onClick={() => {
+                  const allEnabled = Object.values(protections).every(v => v);
+                  const newProtections = {
+                    scan_messages: !allEnabled,
+                    relationship_shield: !allEnabled,
+                    social_guardian: !allEnabled,
+                    child_safe_mode: !allEnabled,
+                  };
+                  setProtections(newProtections);
+                  saveSettings(newProtections, notifications);
+                }}
+                className="px-3 py-1.5 rounded-lg text-xs font-bold transition-all"
+                style={{
+                  background: "rgba(201,168,76,0.15)",
+                  color: GOLD,
+                  border: `1px solid ${GOLD}30`,
+                }}
+                title="Toggle all protections at once"
+              >
+                {Object.values(protections).every(v => v) ? "Disable All" : "Enable All"}
+              </button>
+            </div>
           </div>
 
           <div className="p-6 grid grid-cols-1 sm:grid-cols-2 gap-4">

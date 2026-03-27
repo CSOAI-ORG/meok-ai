@@ -316,6 +316,7 @@ export default function DashboardChatPage() {
   const [voiceTranscript, setVoiceTranscript] = useState('');
   const [bondLevel] = useState(1);
   const [highContrast, setHighContrast] = useState(false);
+  const [fontSize, setFontSize] = useState(14); // in pixels, range 12-20
   const [focusedMsgIdx, setFocusedMsgIdx] = useState<number | null>(null);
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [conversations, setConversations] = useState<Array<{ id: string; title: string; updated_at: string }>>([]);
@@ -767,6 +768,25 @@ export default function DashboardChatPage() {
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="9" /><path d="M12 9v6M15 12h-6" /></svg>
               <span className="hidden sm:inline">Contrast</span>
             </button>
+            <div className="flex items-center gap-1.5 text-xs px-2.5 py-1 rounded-lg border" style={{ borderColor: 'rgba(255,255,255,0.1)', background: 'rgba(255,255,255,0.03)' }} title="Adjust font size for readability">
+              <button
+                onClick={() => setFontSize(prev => Math.max(12, prev - 1))}
+                className="flex-shrink-0 w-4 h-4 flex items-center justify-center hover:opacity-70"
+                style={{ color: 'rgba(255,255,255,0.4)' }}
+                aria-label="Decrease font size"
+              >
+                −
+              </button>
+              <span className="text-[10px] px-1 min-w-[20px] text-center" style={{ color: 'rgba(255,255,255,0.3)' }}>{fontSize}px</span>
+              <button
+                onClick={() => setFontSize(prev => Math.min(20, prev + 1))}
+                className="flex-shrink-0 w-4 h-4 flex items-center justify-center hover:opacity-70"
+                style={{ color: 'rgba(255,255,255,0.4)' }}
+                aria-label="Increase font size"
+              >
+                +
+              </button>
+            </div>
           </header>
 
           {/* Messages area */}
@@ -847,7 +867,7 @@ export default function DashboardChatPage() {
                             outlineOffset: '2px'
                           }}
                         >
-                          <p className="text-sm font-medium whitespace-pre-wrap leading-relaxed">{text}</p>
+                          <p className="text-sm font-medium whitespace-pre-wrap leading-relaxed" style={{ fontSize: fontSize + 'px' }}>{text}</p>
                         </div>
                         <p className="text-[10px] mt-1 text-right" style={{ color: 'rgba(255,255,255,0.25)' }}>{formatTime((msg as unknown as { createdAt?: Date }).createdAt ?? new Date())}</p>
                       </div>
@@ -867,7 +887,7 @@ export default function DashboardChatPage() {
                           }}
                         >
                           {text ? (
-                            <p className="text-sm whitespace-pre-wrap leading-relaxed" style={{ color: `${CREAM}dd` }}>
+                            <p className="text-sm whitespace-pre-wrap leading-relaxed" style={{ color: `${CREAM}dd`, fontSize: fontSize + 'px' }}>
                               {text}
                               {isStreamingMsg && <span className="inline-block w-0.5 h-4 ml-0.5 animate-pulse align-middle" style={{ background: GOLD }} />}
                             </p>
