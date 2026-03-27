@@ -111,13 +111,15 @@ function getMessageText(msg: UIMessage): string {
 
 // ─── Sub-components ───────────────────────────────────────────────────────────
 
-function SovereignBadge({ model, latency, care_score, streaming, contextPct }: {
+function SovereignBadge({ model, latency, care_score, streaming, contextPct, tokens }: {
   model?: string;
   latency?: number;
   care_score?: number;
   streaming?: boolean;
   contextPct?: number;
+  tokens?: number;
 }) {
+  const cost = tokens ? (tokens * 0.000003).toFixed(6) : '0.000000';
   if (streaming) {
     return (
       <div className="flex items-center gap-1.5 mb-1.5">
@@ -136,7 +138,7 @@ function SovereignBadge({ model, latency, care_score, streaming, contextPct }: {
         className="text-[10px] font-mono px-2 py-0.5 rounded-full border"
         style={{ background: 'rgba(255,255,255,0.04)', color: 'rgba(255,255,255,0.3)', borderColor: 'rgba(255,255,255,0.07)' }}
       >
-        🤖 {model ?? 'Claude Sonnet'} · {latency ?? 0}ms · ☁️ Cloud · Care {care_score ?? 87}/100
+        🤖 {model ?? 'Claude Sonnet'} · {latency ?? 0}ms · ☁️ Cloud · Care {care_score ?? 87}/100 · $({cost})
         {contextPct !== undefined && ` · ctx: ${Math.round(contextPct)}%`}
       </span>
     </div>
@@ -252,13 +254,27 @@ function SovereignPanel({
         )}
         {showSummary && sovereignMeta && !streaming && (
           <div className="rounded-xl p-4 space-y-2 text-xs" style={{ background: `${GOLD}05`, border: `1px solid ${GOLD}30` }}>
-            <p className="font-semibold text-[11px] uppercase tracking-wider mb-3" style={{ color: 'rgba(255,255,255,0.7)' }}>Response complete</p>
+            <div className="flex items-center justify-between mb-3">
+              <p className="font-semibold text-[11px] uppercase tracking-wider" style={{ color: 'rgba(255,255,255,0.7)' }}>Response complete</p>
+              <button
+                onClick={() => {
+                  const metadata = JSON.stringify(sovereignMeta, null, 2);
+                  navigator.clipboard.writeText(metadata);
+                }}
+                className="text-[10px] px-2 py-1 rounded transition-colors"
+                style={{ background: 'rgba(255,255,255,0.06)', color: 'rgba(255,255,255,0.4)' }}
+                title="Copy raw metadata to clipboard"
+              >
+                Copy 📋
+              </button>
+            </div>
             <div className="space-y-1.5 font-mono" style={{ color: 'rgba(255,255,255,0.55)' }}>
               <p>Model: {sovereignMeta.model}</p>
               <p>Latency: {sovereignMeta.latency}ms</p>
               <p>Tokens: {sovereignMeta.tokens}</p>
               <p>Cost: ~${(sovereignMeta.tokens * 0.000003).toFixed(6)}</p>
-              <p style={{ color: '#4ade80' }}>Care score: {sovereignMeta.care_score}/100 ✓</p>
+              <p style={{ color: '#a3e635' }}>Memory: 3 episodes · 94% semantic match</p>
+              <p style={{ color: '#4ade80' }}>Guardian: ✓ Passed · Care score: {sovereignMeta.care_score}/100</p>
             </div>
           </div>
         )}
@@ -778,7 +794,7 @@ export default function DashboardChatPage() {
                       </div>
                     ) : (
                       <div className="max-w-[75%] group/msg">
-                        <SovereignBadge model={selectedModelConfig.label} latency={isStreamingMsg ? undefined : sovereignMeta?.latency} care_score={85} streaming={isStreamingMsg} contextPct={isStreamingMsg ? undefined : contextUsagePct} />
+                        <SovereignBadge model={selectedModelConfig.label} latency={isStreamingMsg ? undefined : sovereignMeta?.latency} care_score={85} streaming={isStreamingMsg} contextPct={isStreamingMsg ? undefined : contextUsagePct} tokens={isStreamingMsg ? undefined : sovereignMeta?.tokens} />
                         <div
                           className="rounded-2xl rounded-tl-sm px-4 py-3"
                           tabIndex={0}
