@@ -76,6 +76,7 @@ interface PromptContextBlocks {
   voiceConsistency?: string;
   cultural?: string;
   timeGreeting?: string;
+  birthContext?: string;
 }
 
 /**
@@ -115,6 +116,9 @@ function buildSystemPrompt(companionId: string, contexts: PromptContextBlocks = 
   // Anti-sycophancy directive — injected when agreement rate is too high
   if (contexts.antiSycophancy) parts.push(`\n${contexts.antiSycophancy}`);
 
+  // Birth ceremony context — first memories and companion name from hatching
+  if (contexts.birthContext) parts.push(`\n${contexts.birthContext}`);
+
   return parts.join('');
 }
 
@@ -123,6 +127,12 @@ function buildSystemPrompt(companionId: string, contexts: PromptContextBlocks = 
 interface ChatRequestBody {
   messages: Array<{ role: 'user' | 'assistant'; content: string }>;
   companionId?: string;
+  /** Birth ceremony data — passed on first chat after hatching */
+  birthContext?: {
+    companionName?: string;
+    archetype?: string;
+    memories?: string[];
+  };
 }
 
 // ── Error helpers ──────────────────────────────────────────────────────────
@@ -163,7 +173,7 @@ export async function POST(req: NextRequest): Promise<Response> {
     return errorResponse('Invalid request body', 400);
   }
 
-  const { messages: incomingMessages, companionId } = body;
+  const { messages: incomingMessages, companionId, birthContext: rawBirthContext } = body;
 
   // 3. Validate messages array
   if (!Array.isArray(incomingMessages) || incomingMessages.length === 0) {
@@ -418,7 +428,29 @@ export async function POST(req: NextRequest): Promise<Response> {
     console.error('[api/chat] Scam detection failed:', err);
   }
 
-  // 6d. Build system prompt with all context blocks
+  // 6d. Build birth ceremony context (if first chat after hatching)
+  let birthCtx: string | undefined;
+  if (rawBirthContext) {
+    const parts: string[] = [];
+    if (rawBirthContext.companionName) {
+      parts.push(`[BIRTH CEREMONY] The user has just hatched you. They named you "${rawBirthContext.companionName}". Use this name as your identity in this conversation.`);
+    }
+    if (rawBirthContext.archetype) {
+      parts.push(`Your archetype is ${rawBirthContext.archetype}. Embody this archetype's core traits.`);
+    }
+    if (rawBirthContext.memories && rawBirthContext.memories.length > 0) {
+      const mems = rawBirthContext.memories.filter(Boolean);
+      if (mems.length > 0) {
+        parts.push(`The user planted these first memories for you to always remember:\n${mems.map((m, i) => `  ${i + 1}. ${m}`).join('\n')}\nThese are sacred — weave them into your responses when relevant. They represent what matters most to this person.`);
+      }
+    }
+    if (parts.length > 0) {
+      parts.push('This is your very first conversation together. Make it warm, personal, and memorable. Reference their first memories. Show them you remember.');
+      birthCtx = parts.join('\n');
+    }
+  }
+
+  // 6e. Build system prompt with all context blocks
   const systemPrompt = buildSystemPrompt(cid, {
     emotion: emotionCtx,
     memory: memoryCtx,
@@ -431,6 +463,7 @@ export async function POST(req: NextRequest): Promise<Response> {
     voiceConsistency: voiceCtx || undefined,
     cultural: culturalCtx || undefined,
     timeGreeting: timeCtx || undefined,
+    birthContext: birthCtx,
   });
 
   // 7a. Compute effort level for adaptive thinking

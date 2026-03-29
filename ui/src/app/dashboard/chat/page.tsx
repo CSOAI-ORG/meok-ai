@@ -304,7 +304,18 @@ export default function DashboardChatPage() {
   const [privacyMode, setPrivacyMode] = useState(false);
   const [powerMode, setPowerMode] = useState(false);
   const searchParams = useSearchParams();
-  const [companionId] = useState(searchParams.get('characterId') ?? 'aria');
+  const urlCharacterId = searchParams.get('characterId');
+  const urlCompanionName = searchParams.get('name');
+  const urlMemory1 = searchParams.get('memory1');
+  const urlMemory2 = searchParams.get('memory2');
+  const urlMemory3 = searchParams.get('memory3');
+  const [companionId] = useState(urlCharacterId ?? 'aria');
+  // Build birth context from URL params (set after hatch ceremony)
+  const birthContext = urlCompanionName ? {
+    companionName: urlCompanionName,
+    archetype: urlCharacterId ?? undefined,
+    memories: [urlMemory1, urlMemory2, urlMemory3].filter(Boolean) as string[],
+  } : undefined;
   const [speakingMsgId, setSpeakingMsgId] = useState<string | null>(null);
   const [copiedMsgId, setCopiedMsgId] = useState<string | null>(null);
   const [explainMsgId, setExplainMsgId] = useState<string | null>(null);
@@ -385,7 +396,7 @@ export default function DashboardChatPage() {
   } = useChat({
     transport: new TextStreamChatTransport({
       api: '/api/chat',
-      body: { companionId },
+      body: { companionId, ...(birthContext ? { birthContext } : {}) },
       fetch: sovereignFetchRef.current,
     }),
     onFinish: ({ message }: { message: UIMessage }) => {
