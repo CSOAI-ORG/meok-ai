@@ -248,23 +248,44 @@ export async function dbGetMarketplaceCharacters(opts?: {
 
   const { sortBy = 'popular', tier, limit = 20, offset = 0 } = opts ?? {};
 
-  const orderClause = sortBy === 'rating'
-    ? 'avg_rating DESC NULLS LAST, download_count DESC'
-    : sortBy === 'newest'
-    ? 'created_at DESC'
-    : 'download_count DESC, avg_rating DESC NULLS LAST';
-
   try {
-    const rows = await sql`
-      SELECT id, name, title, archetype, emoji, color, tagline,
-             system_prompt, personality, tags, tier, license,
-             voice_style, communication_style, dynamism, dimensions,
-             download_count, avg_rating, price_cents
-      FROM marketplace_characters
-      WHERE (${tier ?? null}::TEXT IS NULL OR tier = ${tier ?? null})
-      ORDER BY ${sql.unsafe(orderClause)}
-      LIMIT ${limit} OFFSET ${offset}
-    `;
+    // @neondatabase/serverless tagged template does not support sql.unsafe().
+    // Use three separate queries per sort order instead of dynamic ORDER BY.
+    let rows;
+    if (sortBy === 'rating') {
+      rows = await sql`
+        SELECT id, name, title, archetype, emoji, color, tagline,
+               system_prompt, personality, tags, tier, license,
+               voice_style, communication_style, dynamism, dimensions,
+               download_count, avg_rating, price_cents
+        FROM marketplace_characters
+        WHERE (${tier ?? null}::TEXT IS NULL OR tier = ${tier ?? null})
+        ORDER BY avg_rating DESC NULLS LAST, download_count DESC
+        LIMIT ${limit} OFFSET ${offset}
+      `;
+    } else if (sortBy === 'newest') {
+      rows = await sql`
+        SELECT id, name, title, archetype, emoji, color, tagline,
+               system_prompt, personality, tags, tier, license,
+               voice_style, communication_style, dynamism, dimensions,
+               download_count, avg_rating, price_cents
+        FROM marketplace_characters
+        WHERE (${tier ?? null}::TEXT IS NULL OR tier = ${tier ?? null})
+        ORDER BY created_at DESC
+        LIMIT ${limit} OFFSET ${offset}
+      `;
+    } else {
+      rows = await sql`
+        SELECT id, name, title, archetype, emoji, color, tagline,
+               system_prompt, personality, tags, tier, license,
+               voice_style, communication_style, dynamism, dimensions,
+               download_count, avg_rating, price_cents
+        FROM marketplace_characters
+        WHERE (${tier ?? null}::TEXT IS NULL OR tier = ${tier ?? null})
+        ORDER BY download_count DESC, avg_rating DESC NULLS LAST
+        LIMIT ${limit} OFFSET ${offset}
+      `;
+    }
 
     return (rows as Record<string, unknown>[]).map(row => ({
       ...rowToCharacter(row),
