@@ -1,17 +1,35 @@
 # Page snapshot
 
 ```yaml
-- generic [active] [ref=e1]:
-  - banner [ref=e2]:
-    - generic [ref=e3]:
-      - link "MEOK.AI — home" [ref=e4] [cursor=pointer]:
+- generic [ref=e1]:
+  - generic [active]:
+    - menu "Next.js Dev Tools Items" [ref=e2]:
+      - generic [ref=e3]:
+        - menuitem "Route Static" [ref=e4] [cursor=pointer]:
+          - generic [ref=e5]: Route
+          - generic [ref=e6]: Static
+        - menuitem "Try Turbopack" [ref=e7]:
+          - generic [ref=e8]: Try Turbopack
+          - img [ref=e10]
+        - menuitem "Route Info" [ref=e12]:
+          - generic [ref=e13]: Route Info
+          - img [ref=e15]
+      - menuitem "Preferences" [ref=e18]:
+        - generic [ref=e19]: Preferences
+        - img [ref=e21]
+    - button "Close Next.js Dev Tools" [expanded] [ref=e28] [cursor=pointer]:
+      - img [ref=e29]
+  - alert [ref=e32]
+  - banner [ref=e33]:
+    - generic [ref=e34]:
+      - link "MEOK.AI — home" [ref=e35] [cursor=pointer]:
         - /url: /
         - text: MEOK.AI
-      - navigation "Primary navigation" [ref=e5]:
-        - generic [ref=e6]:
-          - button "OS" [ref=e7]:
+      - navigation "Primary navigation" [ref=e36]:
+        - generic [ref=e37]:
+          - button "OS" [ref=e38]:
             - text: OS
-            - img [ref=e8]
+            - img [ref=e39]
           - menu "OS navigation":
             - generic:
               - generic: OS
@@ -37,10 +55,10 @@
                 - generic: 🥚
                 - generic: Birth Ceremony
                 - generic: Hatch your sovereign AI companion
-        - generic [ref=e10]:
-          - button "Characters" [ref=e11]:
+        - generic [ref=e41]:
+          - button "Characters" [ref=e42]:
             - text: Characters
-            - img [ref=e12]
+            - img [ref=e43]
           - menu "Characters navigation":
             - generic:
               - generic: Characters
@@ -82,10 +100,10 @@
                 - generic: ⚖️
                 - generic: Compare Characters
                 - generic: Find your perfect match
-        - generic [ref=e14]:
-          - button "Work" [ref=e15]:
+        - generic [ref=e45]:
+          - button "Work" [ref=e46]:
             - text: Work
-            - img [ref=e16]
+            - img [ref=e47]
           - menu "Work navigation":
             - generic:
               - generic: Work
@@ -111,10 +129,10 @@
                 - generic: 🤖
                 - generic: Ralph Mode
                 - generic: Executive AI agent — Elite tier
-        - generic [ref=e18]:
-          - button "Guardian" [ref=e19]:
+        - generic [ref=e49]:
+          - button "Guardian" [ref=e50]:
             - text: Guardian
-            - img [ref=e20]
+            - img [ref=e51]
           - menu "Guardian navigation":
             - generic:
               - generic: Guardian
@@ -140,10 +158,10 @@
                 - generic: 🔒
                 - generic: Relationship Shield
                 - generic: Guard against manipulation & contracts
-        - generic [ref=e22]:
-          - button "Gaming" [ref=e23]:
+        - generic [ref=e53]:
+          - button "Gaming" [ref=e54]:
             - text: Gaming
-            - img [ref=e24]
+            - img [ref=e55]
           - menu "Gaming navigation":
             - generic:
               - generic: Gaming
@@ -165,21 +183,32 @@
                 - generic: 👥
                 - generic: Community
                 - generic: Play with your AI, share with others
-        - link "Pricing" [ref=e26] [cursor=pointer]:
+        - link "Pricing" [ref=e57] [cursor=pointer]:
           - /url: /pricing
-      - generic [ref=e27]:
-        - link "Sign in" [ref=e28] [cursor=pointer]:
+      - generic [ref=e58]:
+        - link "Sign in" [ref=e59] [cursor=pointer]:
           - /url: /login
-        - link "Hatch" [ref=e29] [cursor=pointer]:
+        - link "Hatch" [ref=e60] [cursor=pointer]:
           - /url: /birth
-  - main [ref=e31]:
-    - generic [ref=e32]:
-      - paragraph [ref=e36]: ↑ tap the egg
-      - generic [ref=e37]:
-        - paragraph [ref=e38]: MEOK.AI
-        - heading "Something is waiting for you." [level=1] [ref=e39]
-        - paragraph [ref=e40]: Seven questions. No right answers. By the end, your companion will have already found you.
-        - button "Begin" [ref=e41] [cursor=pointer]
-  - button "Open sovereign AI chat" [ref=e42]:
-    - generic [ref=e43]: 🥚
+  - main [ref=e62]:
+    - generic [ref=e63]:
+      - paragraph [ref=e67]: ↑ tap the egg
+      - generic [ref=e68]:
+        - paragraph [ref=e69]: MEOK.AI
+        - heading "Something is waiting for you." [level=1] [ref=e70]
+        - paragraph [ref=e71]: Seven questions. No right answers. By the end, your companion will have already found you.
+        - button "Begin" [ref=e72] [cursor=pointer]
+  - dialog "Cookie consent" [ref=e73]:
+    - paragraph [ref=e75]:
+      - text: We use cookies to analyse how MEOK is used and improve the experience. Your sovereign data stays yours — we never sell it.
+      - link "Privacy Policy" [ref=e76] [cursor=pointer]:
+        - /url: /privacy
+    - generic [ref=e77]:
+      - generic [ref=e78]:
+        - button "Accept all" [ref=e79]
+        - button "Essential only" [ref=e80]
+      - button "Cookie details ↓" [ref=e81]
+  - generic [ref=e82] [cursor=pointer]: Talk to your sovereign AI →
+  - button "Open sovereign AI chat" [ref=e84]:
+    - generic [ref=e85]: 🥚
 ```

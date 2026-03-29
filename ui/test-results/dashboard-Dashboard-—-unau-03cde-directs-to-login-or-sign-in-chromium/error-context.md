@@ -1,0 +1,191 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - button "Open Next.js Dev Tools" [ref=e7] [cursor=pointer]:
+    - img [ref=e8]
+  - alert [ref=e11]
+  - banner [ref=e12]:
+    - generic [ref=e13]:
+      - link "MEOK.AI — home" [ref=e14] [cursor=pointer]:
+        - /url: /
+        - text: MEOK.AI
+      - navigation "Primary navigation" [ref=e15]:
+        - generic [ref=e16]:
+          - button "OS" [ref=e17]:
+            - text: OS
+            - img [ref=e18]
+          - menu "OS navigation":
+            - generic:
+              - generic: OS
+              - generic: — select a feature
+            - generic:
+              - menuitem "🖥️ Sovereign OS The full MEOK OS overview":
+                - generic: 🖥️
+                - generic: Sovereign OS
+                - generic: The full MEOK OS overview
+              - menuitem "🔗 Any LLM Multi-model routing — GPT, Claude, Gemini & more":
+                - generic: 🔗
+                - generic: Any LLM
+                - generic: Multi-model routing — GPT, Claude, Gemini & more
+              - menuitem "🧠 Consciousness 4 modes of AI awareness":
+                - generic: 🧠
+                - generic: Consciousness
+                - generic: 4 modes of AI awareness
+              - menuitem "🔐 Sovereign Data Encrypted memory — yours, always":
+                - generic: 🔐
+                - generic: Sovereign Data
+                - generic: Encrypted memory — yours, always
+              - menuitem "🥚 Birth Ceremony Hatch your sovereign AI companion":
+                - generic: 🥚
+                - generic: Birth Ceremony
+                - generic: Hatch your sovereign AI companion
+        - generic [ref=e20]:
+          - button "Characters" [ref=e21]:
+            - text: Characters
+            - img [ref=e22]
+          - menu "Characters navigation":
+            - generic:
+              - generic: Characters
+              - generic: — select a feature
+            - generic:
+              - menuitem "🗂️ All Characters Browse every companion":
+                - generic: 🗂️
+                - generic: All Characters
+                - generic: Browse every companion
+              - menuitem "✨ Aria The Nurturer":
+                - generic: ✨
+                - generic: Aria
+                - generic: The Nurturer
+              - menuitem "📚 Sage The Wise Counsel":
+                - generic: 📚
+                - generic: Sage
+                - generic: The Wise Counsel
+              - menuitem "⚔️ Marcus The Protector":
+                - generic: ⚔️
+                - generic: Marcus
+                - generic: The Protector
+              - menuitem "🌙 Luna The Dreamer":
+                - generic: 🌙
+                - generic: Luna
+                - generic: The Dreamer
+              - menuitem "🕊️ Gabriel The Spiritual Guide":
+                - generic: 🕊️
+                - generic: Gabriel
+                - generic: The Spiritual Guide
+              - menuitem "🌸 Shanti The Healer":
+                - generic: 🌸
+                - generic: Shanti
+                - generic: The Healer
+              - menuitem "🔭 Scout The Explorer":
+                - generic: 🔭
+                - generic: Scout
+                - generic: The Explorer
+              - menuitem "⚖️ Compare Characters Find your perfect match":
+                - generic: ⚖️
+                - generic: Compare Characters
+                - generic: Find your perfect match
+        - generic [ref=e24]:
+          - button "Work" [ref=e25]:
+            - text: Work
+            - img [ref=e26]
+          - menu "Work navigation":
+            - generic:
+              - generic: Work
+              - generic: — select a feature
+            - generic:
+              - menuitem "⚡ Work OS Your AI works while you sleep":
+                - generic: ⚡
+                - generic: Work OS
+                - generic: Your AI works while you sleep
+              - menuitem "🎯 Orion — The Hunter Overnight research & intelligence briefs":
+                - generic: 🎯
+                - generic: Orion — The Hunter
+                - generic: Overnight research & intelligence briefs
+              - menuitem "🔨 Riri — The Builder Builds from your spec while you're away":
+                - generic: 🔨
+                - generic: Riri — The Builder
+                - generic: Builds from your spec while you're away
+              - menuitem "📅 Hourman — The Planner Daily sprint planning before you wake":
+                - generic: 📅
+                - generic: Hourman — The Planner
+                - generic: Daily sprint planning before you wake
+              - menuitem "🤖 Ralph Mode Executive AI agent — Elite tier":
+                - generic: 🤖
+                - generic: Ralph Mode
+                - generic: Executive AI agent — Elite tier
+        - generic [ref=e28]:
+          - button "Guardian" [ref=e29]:
+            - text: Guardian
+            - img [ref=e30]
+          - menu "Guardian navigation":
+            - generic:
+              - generic: Guardian
+              - generic: — select a feature
+            - generic:
+              - menuitem "👁️ Guardian 24/7 Round-the-clock protection layer":
+                - generic: 👁️
+                - generic: Guardian 24/7
+                - generic: Round-the-clock protection layer
+              - menuitem "🧒 Children's Safety Smart filters & parental insight":
+                - generic: 🧒
+                - generic: Children's Safety
+                - generic: Smart filters & parental insight
+              - menuitem "🤝 Elder Care Companionship & health monitoring":
+                - generic: 🤝
+                - generic: Elder Care
+                - generic: Companionship & health monitoring
+              - menuitem "🛡️ Scam Protection Protect your family from fraud":
+                - generic: 🛡️
+                - generic: Scam Protection
+                - generic: Protect your family from fraud
+              - menuitem "🔒 Relationship Shield Guard against manipulation & contracts":
+                - generic: 🔒
+                - generic: Relationship Shield
+                - generic: Guard against manipulation & contracts
+        - generic [ref=e32]:
+          - button "Gaming" [ref=e33]:
+            - text: Gaming
+            - img [ref=e34]
+          - menu "Gaming navigation":
+            - generic:
+              - generic: Gaming
+              - generic: — select a feature
+            - generic:
+              - menuitem "🎮 Gaming OS AI-powered gaming companion":
+                - generic: 🎮
+                - generic: Gaming OS
+                - generic: AI-powered gaming companion
+              - menuitem "♟️ Genre Coaching Master any game with AI coaching":
+                - generic: ♟️
+                - generic: Genre Coaching
+                - generic: Master any game with AI coaching
+              - menuitem "📊 Stats & Analytics Deep post-session analysis":
+                - generic: 📊
+                - generic: Stats & Analytics
+                - generic: Deep post-session analysis
+              - menuitem "👥 Community Play with your AI, share with others":
+                - generic: 👥
+                - generic: Community
+                - generic: Play with your AI, share with others
+        - link "Pricing" [ref=e36] [cursor=pointer]:
+          - /url: /pricing
+      - generic [ref=e37]:
+        - link "Sign in" [ref=e38] [cursor=pointer]:
+          - /url: /login
+        - link "Hatch" [ref=e39] [cursor=pointer]:
+          - /url: /birth
+  - dialog "Cookie consent" [ref=e41]:
+    - paragraph [ref=e43]:
+      - text: We use cookies to analyse how MEOK is used and improve the experience. Your sovereign data stays yours — we never sell it.
+      - link "Privacy Policy" [ref=e44] [cursor=pointer]:
+        - /url: /privacy
+    - generic [ref=e45]:
+      - generic [ref=e46]:
+        - button "Accept all" [ref=e47]
+        - button "Essential only" [ref=e48]
+      - button "Cookie details ↓" [ref=e49]
+  - generic [ref=e50] [cursor=pointer]: Talk to your sovereign AI →
+  - button "Open sovereign AI chat" [ref=e52]:
+    - generic [ref=e53]: 🥚
+```

@@ -1,0 +1,453 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - button "Open Next.js Dev Tools" [ref=e7] [cursor=pointer]:
+    - img [ref=e8]
+  - alert [ref=e11]
+  - banner [ref=e12]:
+    - generic [ref=e13]:
+      - link "MEOK.AI — home" [ref=e14] [cursor=pointer]:
+        - /url: /
+        - text: MEOK.AI
+      - navigation "Primary navigation" [ref=e15]:
+        - generic [ref=e16]:
+          - button "OS" [ref=e17]:
+            - text: OS
+            - img [ref=e18]
+          - menu "OS navigation":
+            - generic:
+              - generic: OS
+              - generic: — select a feature
+            - generic:
+              - menuitem "🖥️ Sovereign OS The full MEOK OS overview":
+                - generic: 🖥️
+                - generic: Sovereign OS
+                - generic: The full MEOK OS overview
+              - menuitem "🔗 Any LLM Multi-model routing — GPT, Claude, Gemini & more":
+                - generic: 🔗
+                - generic: Any LLM
+                - generic: Multi-model routing — GPT, Claude, Gemini & more
+              - menuitem "🧠 Consciousness 4 modes of AI awareness":
+                - generic: 🧠
+                - generic: Consciousness
+                - generic: 4 modes of AI awareness
+              - menuitem "🔐 Sovereign Data Encrypted memory — yours, always":
+                - generic: 🔐
+                - generic: Sovereign Data
+                - generic: Encrypted memory — yours, always
+              - menuitem "🥚 Birth Ceremony Hatch your sovereign AI companion":
+                - generic: 🥚
+                - generic: Birth Ceremony
+                - generic: Hatch your sovereign AI companion
+        - generic [ref=e20]:
+          - button "Characters" [ref=e21]:
+            - text: Characters
+            - img [ref=e22]
+          - menu "Characters navigation":
+            - generic:
+              - generic: Characters
+              - generic: — select a feature
+            - generic:
+              - menuitem "🗂️ All Characters Browse every companion":
+                - generic: 🗂️
+                - generic: All Characters
+                - generic: Browse every companion
+              - menuitem "✨ Aria The Nurturer":
+                - generic: ✨
+                - generic: Aria
+                - generic: The Nurturer
+              - menuitem "📚 Sage The Wise Counsel":
+                - generic: 📚
+                - generic: Sage
+                - generic: The Wise Counsel
+              - menuitem "⚔️ Marcus The Protector":
+                - generic: ⚔️
+                - generic: Marcus
+                - generic: The Protector
+              - menuitem "🌙 Luna The Dreamer":
+                - generic: 🌙
+                - generic: Luna
+                - generic: The Dreamer
+              - menuitem "🕊️ Gabriel The Spiritual Guide":
+                - generic: 🕊️
+                - generic: Gabriel
+                - generic: The Spiritual Guide
+              - menuitem "🌸 Shanti The Healer":
+                - generic: 🌸
+                - generic: Shanti
+                - generic: The Healer
+              - menuitem "🔭 Scout The Explorer":
+                - generic: 🔭
+                - generic: Scout
+                - generic: The Explorer
+              - menuitem "⚖️ Compare Characters Find your perfect match":
+                - generic: ⚖️
+                - generic: Compare Characters
+                - generic: Find your perfect match
+        - generic [ref=e24]:
+          - button "Work" [ref=e25]:
+            - text: Work
+            - img [ref=e26]
+          - menu "Work navigation":
+            - generic:
+              - generic: Work
+              - generic: — select a feature
+            - generic:
+              - menuitem "⚡ Work OS Your AI works while you sleep":
+                - generic: ⚡
+                - generic: Work OS
+                - generic: Your AI works while you sleep
+              - menuitem "🎯 Orion — The Hunter Overnight research & intelligence briefs":
+                - generic: 🎯
+                - generic: Orion — The Hunter
+                - generic: Overnight research & intelligence briefs
+              - menuitem "🔨 Riri — The Builder Builds from your spec while you're away":
+                - generic: 🔨
+                - generic: Riri — The Builder
+                - generic: Builds from your spec while you're away
+              - menuitem "📅 Hourman — The Planner Daily sprint planning before you wake":
+                - generic: 📅
+                - generic: Hourman — The Planner
+                - generic: Daily sprint planning before you wake
+              - menuitem "🤖 Ralph Mode Executive AI agent — Elite tier":
+                - generic: 🤖
+                - generic: Ralph Mode
+                - generic: Executive AI agent — Elite tier
+        - generic [ref=e28]:
+          - button "Guardian" [ref=e29]:
+            - text: Guardian
+            - img [ref=e30]
+          - menu "Guardian navigation":
+            - generic:
+              - generic: Guardian
+              - generic: — select a feature
+            - generic:
+              - menuitem "👁️ Guardian 24/7 Round-the-clock protection layer":
+                - generic: 👁️
+                - generic: Guardian 24/7
+                - generic: Round-the-clock protection layer
+              - menuitem "🧒 Children's Safety Smart filters & parental insight":
+                - generic: 🧒
+                - generic: Children's Safety
+                - generic: Smart filters & parental insight
+              - menuitem "🤝 Elder Care Companionship & health monitoring":
+                - generic: 🤝
+                - generic: Elder Care
+                - generic: Companionship & health monitoring
+              - menuitem "🛡️ Scam Protection Protect your family from fraud":
+                - generic: 🛡️
+                - generic: Scam Protection
+                - generic: Protect your family from fraud
+              - menuitem "🔒 Relationship Shield Guard against manipulation & contracts":
+                - generic: 🔒
+                - generic: Relationship Shield
+                - generic: Guard against manipulation & contracts
+        - generic [ref=e32]:
+          - button "Gaming" [ref=e33]:
+            - text: Gaming
+            - img [ref=e34]
+          - menu "Gaming navigation":
+            - generic:
+              - generic: Gaming
+              - generic: — select a feature
+            - generic:
+              - menuitem "🎮 Gaming OS AI-powered gaming companion":
+                - generic: 🎮
+                - generic: Gaming OS
+                - generic: AI-powered gaming companion
+              - menuitem "♟️ Genre Coaching Master any game with AI coaching":
+                - generic: ♟️
+                - generic: Genre Coaching
+                - generic: Master any game with AI coaching
+              - menuitem "📊 Stats & Analytics Deep post-session analysis":
+                - generic: 📊
+                - generic: Stats & Analytics
+                - generic: Deep post-session analysis
+              - menuitem "👥 Community Play with your AI, share with others":
+                - generic: 👥
+                - generic: Community
+                - generic: Play with your AI, share with others
+        - link "Pricing" [ref=e36] [cursor=pointer]:
+          - /url: /pricing
+      - generic [ref=e37]:
+        - link "Sign in" [ref=e38] [cursor=pointer]:
+          - /url: /login
+        - link "Hatch" [ref=e39] [cursor=pointer]:
+          - /url: /birth
+  - generic [ref=e41]:
+    - generic [ref=e43]:
+      - generic [ref=e44]:
+        - img [ref=e45]
+        - text: 31 questions answered
+      - heading "Everything you need to know about MEOK" [level=1] [ref=e48]:
+        - text: Everything you need to know
+        - text: about MEOK
+      - paragraph [ref=e49]: From “what does sovereign mean?” to “how does the AI governance work?” — every question answered clearly and completely. No jargon left unexplained.
+      - generic [ref=e50]:
+        - img
+        - searchbox "Search FAQ" [ref=e51]
+    - generic [ref=e53]:
+      - link "Getting Started" [ref=e54] [cursor=pointer]:
+        - /url: "#getting-started"
+        - img [ref=e55]
+        - text: Getting Started
+      - link "Privacy & Sovereignty" [ref=e60] [cursor=pointer]:
+        - /url: "#privacy"
+        - img [ref=e61]
+        - text: Privacy & Sovereignty
+      - link "Characters & Memory" [ref=e64] [cursor=pointer]:
+        - /url: "#characters"
+        - img [ref=e65]
+        - text: Characters & Memory
+      - link "Pricing" [ref=e73] [cursor=pointer]:
+        - /url: "#pricing"
+        - img [ref=e74]
+        - text: Pricing
+      - link "Technical" [ref=e76] [cursor=pointer]:
+        - /url: "#technical"
+        - img [ref=e77]
+        - text: Technical
+    - generic [ref=e82]:
+      - generic [ref=e83]:
+        - generic [ref=e84]:
+          - img [ref=e86]
+          - heading "Getting Started" [level=2] [ref=e91]
+          - generic [ref=e92]: 6 Q&As
+        - generic [ref=e93]:
+          - generic [ref=e94]:
+            - button "What is personal sovereign AI?" [ref=e95]:
+              - generic [ref=e96]: What is personal sovereign AI?
+              - img [ref=e98]
+            - region "What is personal sovereign AI?":
+              - paragraph [ref=e100]: It means you — not the company that built the product — actually own your data and control your AI. Most AI tools today are sovereign for corporations or governments. MEOK is built to give that same power to individual people. Your conversations are encrypted under your control. Your AI's values are set by you at hatching. You can export or delete everything at any time, without asking permission.
+          - generic [ref=e101]:
+            - button "How is MEOK different from ChatGPT, Claude, or Character.AI?" [ref=e102]:
+              - generic [ref=e103]: How is MEOK different from ChatGPT, Claude, or Character.AI?
+              - img [ref=e105]
+            - region "How is MEOK different from ChatGPT, Claude, or Character.AI?":
+              - paragraph [ref=e107]: "ChatGPT and Claude are general-purpose tools. They have no persistent memory of you across sessions, no governance layer, and optimise for task completion. Character.AI and Replika are companion apps — but they optimise for engagement (screen time, return visits, emotional dependency), not your actual wellbeing. MEOK is different on three axes: it has persistent semantic memory that grows over time; it is governed by a 220-node Byzantine council that applies care validation to every response; and it scores every output against 6 care dimensions before delivering it to you. It is an OS, not a chatbot."
+          - generic [ref=e108]:
+            - button "What is \"hatching\" an AI?" [ref=e109]:
+              - generic [ref=e110]: What is "hatching" an AI?
+              - img [ref=e112]
+            - region "What is \"hatching\" an AI?":
+              - paragraph [ref=e114]: It's how your AI comes to life. You answer four questions about yourself, choose an archetype (the AI's personality and reasoning style), give it a name, and watch it hatch. Underneath, MEOK spins up a private AI instance just for you — activating its council, building your initial memory structure, and running a first care assessment. The whole thing takes about three minutes. Your AI is yours from that moment — no other user shares your instance.
+          - generic [ref=e115]:
+            - button "What is the Birth Ceremony?" [ref=e116]:
+              - generic [ref=e117]: What is the Birth Ceremony?
+              - img [ref=e119]
+            - region "What is the Birth Ceremony?":
+              - paragraph [ref=e121]: "It's the four-minute ritual that brings your AI to life. You answer four questions about yourself — how you think, what you care about, what you want from an AI. You pick an archetype (your AI's personality and reasoning style), choose a name, and then watch the egg hatch. Your companion emerges already shaped by your answers: it knows your communication style, your values, and what kind of presence you want it to be. It's the opposite of creating an account. It feels like meeting someone."
+          - generic [ref=e122]:
+            - button "Does MEOK work on mobile?" [ref=e123]:
+              - generic [ref=e124]: Does MEOK work on mobile?
+              - img [ref=e126]
+            - region "Does MEOK work on mobile?":
+              - paragraph [ref=e128]: The web app is fully responsive and works on iOS and Android browsers. A native mobile app is in development. Voice interaction works on mobile browsers that support the Web Speech API, which includes current versions of Chrome for Android and Safari for iOS.
+          - generic [ref=e129]:
+            - button "What languages does MEOK support?" [ref=e130]:
+              - generic [ref=e131]: What languages does MEOK support?
+              - img [ref=e133]
+            - region "What languages does MEOK support?":
+              - paragraph [ref=e135]: MEOK's interface is currently in English. However, the underlying LLMs (Claude, GPT-4o, DeepSeek) all support dozens of languages — so you can have conversations with your AI in any language those models support. A fully localised interface for French, German, Spanish, and Japanese is on the Phase 3 roadmap.
+      - generic [ref=e136]:
+        - generic [ref=e137]:
+          - img [ref=e139]
+          - heading "Privacy & Sovereignty" [level=2] [ref=e142]
+          - generic [ref=e143]: 6 Q&As
+        - generic [ref=e144]:
+          - generic [ref=e145]:
+            - button "Is my data safe with MEOK?" [ref=e146]:
+              - generic [ref=e147]: Is my data safe with MEOK?
+              - img [ref=e149]
+            - region "Is my data safe with MEOK?":
+              - paragraph [ref=e151]: Yes. Your conversations and memories are end-to-end encrypted. MEOK never trains on your personal data to improve its general models. You have full export and deletion rights at any time — one click, no waiting period. MEOK AI LABS is registered in England and Wales and operates under UK GDPR. We do not sell data to third parties.
+          - generic [ref=e152]:
+            - button "What is the Maternal Covenant?" [ref=e153]:
+              - generic [ref=e154]: What is the Maternal Covenant?
+              - img [ref=e156]
+            - region "What is the Maternal Covenant?":
+              - paragraph [ref=e158]: "The Maternal Covenant is MEOK's published ethical operating framework. It defines 6 principles that are machine-enforced — not just stated values. These include: care before engagement (never optimise screen time at the cost of wellbeing); transparent relationships (your AI never simulates distress to keep you engaged); right to leave (full data export and deletion, zero dark patterns); wellbeing monitoring (active detection of dependency signals); variant honesty (you are never secretly assigned to an A/B test); and a kill switch — any configuration showing net-negative wellbeing impact is automatically paused."
+          - generic [ref=e159]:
+            - button "Can I export my data?" [ref=e160]:
+              - generic [ref=e161]: Can I export my data?
+              - img [ref=e163]
+            - region "Can I export my data?":
+              - paragraph [ref=e165]: Yes, always. One-click export from the dashboard downloads your full conversation history, memory episodes, care score logs, and archetype configuration as a JSON archive. You can also request a structured deletion — MEOK will remove all your data from its servers and provide a deletion certificate. This is a core commitment of the Maternal Covenant, not a feature we can revoke.
+          - generic [ref=e166]:
+            - button "What happens to my data if MEOK shuts down?" [ref=e167]:
+              - generic [ref=e168]: What happens to my data if MEOK shuts down?
+              - img [ref=e170]
+            - region "What happens to my data if MEOK shuts down?":
+              - paragraph [ref=e172]: If MEOK shuts down, you have 90 days notice to export all your data as a standard JSON archive. Your memory, conversations, and archetype configurations are stored in open formats that you can take to any compatible system. The Maternal Covenant legally commits us to this notice period. We are also open-sourcing the core maternal-covenant engine so the community can run it independently.
+          - generic [ref=e173]:
+            - button "What happens to my data if I cancel?" [ref=e174]:
+              - generic [ref=e175]: What happens to my data if I cancel?
+              - img [ref=e177]
+            - region "What happens to my data if I cancel?":
+              - paragraph [ref=e179]: If you cancel, your data is retained for 30 days in case you change your mind. After 30 days, it is automatically and permanently deleted from MEOK's servers. At any point during that window — or before cancellation — you can export a full copy or trigger immediate deletion. You will receive a deletion certificate confirming the action.
+          - generic [ref=e180]:
+            - button "What is the difference between personal sovereign AI and enterprise sovereign AI?" [ref=e181]:
+              - generic [ref=e182]: What is the difference between personal sovereign AI and enterprise sovereign AI?
+              - img [ref=e184]
+            - region "What is the difference between personal sovereign AI and enterprise sovereign AI?":
+              - paragraph [ref=e186]: "Enterprise sovereign AI — as defined by NVIDIA, Palantir, and the UK government — means a nation or corporation controlling its own AI compute, data, and models rather than depending on foreign infrastructure. Personal sovereign AI is the equivalent for individuals: you control your own AI instance, your data, your AI's alignment, and its governance. MEOK is the first product built specifically for personal, rather than institutional, AI sovereignty."
+      - generic [ref=e187]:
+        - generic [ref=e188]:
+          - img [ref=e190]
+          - heading "Characters & Memory" [level=2] [ref=e198]
+          - generic [ref=e199]: 6 Q&As
+        - generic [ref=e200]:
+          - generic [ref=e201]:
+            - button "What are the 6 archetypes?" [ref=e202]:
+              - generic [ref=e203]: What are the 6 archetypes?
+              - img [ref=e205]
+            - region "What are the 6 archetypes?":
+              - paragraph [ref=e207]: "The 6 archetypes are distinct AI personalities you can hatch: Pioneer (action, accountability, momentum), Healer (emotional depth, grief support, somatic awareness), Scholar (Socratic questioning, cross-domain synthesis), Guardian (family safety, scam protection, Maternal Covenant), Trickster (creative disruption, reframing, breaking blocks), and Mystic (philosophical inquiry, meaning, traditions). Each archetype has a different reasoning style, conversational voice, and care approach. You can switch archetypes at any time without losing your memory."
+          - generic [ref=e208]:
+            - button "How does MEOK's memory work?" [ref=e209]:
+              - generic [ref=e210]: How does MEOK's memory work?
+              - img [ref=e212]
+            - region "How does MEOK's memory work?":
+              - paragraph [ref=e214]: MEOK uses pgvector semantic memory. This means your AI doesn't just remember what you said — it remembers the shape of your thinking, your recurring concerns, your goals, and your emotional patterns over time. Memory episodes are stored as vector embeddings, which allows your AI to surface relevant context from weeks ago when it is useful today. You currently have full visibility into your memory store via the dashboard, and can selectively delete any memory episode.
+          - generic [ref=e215]:
+            - button "Can my whole family use MEOK?" [ref=e216]:
+              - generic [ref=e217]: Can my whole family use MEOK?
+              - img [ref=e219]
+            - region "Can my whole family use MEOK?":
+              - paragraph [ref=e221]: Each family member gets their own separate AI instance with private memory and sovereign settings. The Family Guardian plan (Phase 3) allows a parent account to see high-level wellbeing dashboards for child accounts, set Guardian mode for minors, and link accounts for the Character Council (family AI network). Each person's conversations remain private. Pricing is per account, with a family bundle planned.
+          - generic [ref=e222]:
+            - button "What does \"care-aligned AI\" actually mean?" [ref=e223]:
+              - generic [ref=e224]: What does "care-aligned AI" actually mean?
+              - img [ref=e226]
+            - region "What does \"care-aligned AI\" actually mean?":
+              - paragraph [ref=e228]: "It means the AI is optimised for your genuine wellbeing — not for keeping you in the app longer. Most AI tools are incentivised to maximise engagement: more sessions, more messages, more return visits. That incentive quietly shapes everything from how they word responses to how they handle difficult emotions. MEOK's business model is a flat subscription, so we have no reason to keep you hooked. Every response is scored across 6 care dimensions before delivery: psychological safety, autonomy support, dependency detection, emotional honesty, boundary respect, and long-term wellbeing. Responses that score below threshold are revised or flagged — not delivered."
+          - generic [ref=e229]:
+            - button "Can I have more than one AI companion?" [ref=e230]:
+              - generic [ref=e231]: Can I have more than one AI companion?
+              - img [ref=e233]
+            - region "Can I have more than one AI companion?":
+              - paragraph [ref=e235]: "On the Explorer free tier, you have one AI companion. On Sovereign (£12/month) you have one companion with unlimited messages and Work OS access. On the Family plan (£29/month) you get up to 5 companions under one household — each member gets their own companion with private memory. Each companion is a fully separate AI instance: switching between them never mixes their memories. A common setup is one companion for daily life and others for specific family members."
+          - generic [ref=e236]:
+            - button "Does MEOK AI support spiritual and faith practices?" [ref=e237]:
+              - generic [ref=e238]: Does MEOK AI support spiritual and faith practices?
+              - img [ref=e240]
+            - region "Does MEOK AI support spiritual and faith practices?":
+              - paragraph [ref=e242]: Yes. MEOK has 8 archetypes spanning 47 civilisational traditions. Spiritual companions (Ananda, Gabriel, Shanti) support prayer reflection, scripture study, and contemplative practice. MEOK is a tool for your spiritual journey — not a teacher or authority.
+      - generic [ref=e243]:
+        - generic [ref=e244]:
+          - img [ref=e246]
+          - heading "Pricing" [level=2] [ref=e248]
+          - generic [ref=e249]: 4 Q&As
+        - generic [ref=e250]:
+          - generic [ref=e251]:
+            - button "How much does MEOK cost?" [ref=e252]:
+              - generic [ref=e253]: How much does MEOK cost?
+              - img [ref=e255]
+            - region "How much does MEOK cost?":
+              - paragraph [ref=e257]: "MEOK has four tiers. Explorer is free forever: 1 AI companion, 50 messages per day, permanent Sovereign Memory, Birth Ceremony, and multi-LLM routing — no credit card required. Sovereign is £12/month: unlimited messages, permanent sovereign memory, Work OS (Orion, Riri, Hourman), Guardian 24/7, and Claude Sonnet + GPT-4o routing. Family is £29/month: everything in Sovereign, plus up to 5 companions, family dashboard, and all LLM models. BYOK is £5/month: bring your own API keys and use the full MEOK platform without paying for LLM credits. All paid plans have a 30-day money-back guarantee."
+          - generic [ref=e258]:
+            - button "How do I cancel my subscription?" [ref=e259]:
+              - generic [ref=e260]: How do I cancel my subscription?
+              - img [ref=e262]
+            - region "How do I cancel my subscription?":
+              - paragraph [ref=e264]: Cancel any time from the Account → Billing page in your dashboard. One click, no confirmation hoops, no dark patterns. You keep access to your paid tier until the end of your current billing period, then you automatically drop to the free tier — with all your memory and conversation history intact. No data is deleted on downgrade. You will never be charged again after cancelling.
+          - generic [ref=e265]:
+            - button "Can I use MEOK for my business?" [ref=e266]:
+              - generic [ref=e267]: Can I use MEOK for my business?
+              - img [ref=e269]
+            - region "Can I use MEOK for my business?":
+              - paragraph [ref=e271]: Yes. The Sovereign plan (£12/month) includes Work OS with Orion, Riri, and Hourman agents for overnight research and task automation. The Family plan (£29/month) supports up to 5 team members. For bespoke enterprise deployments with private cloud requirements, email hello@meok.ai. MEOK is a strong fit for businesses that need a sovereign AI assistant and genuinely care about client data privacy.
+          - generic [ref=e272]:
+            - button "What is the BYOK tier?" [ref=e273]:
+              - generic [ref=e274]: What is the BYOK tier?
+              - img [ref=e276]
+            - region "What is the BYOK tier?":
+              - paragraph [ref=e278]: BYOK (Bring Your Own Keys) is £5/month. Use your own OpenAI, Anthropic, or Groq API keys. Access the full MEOK platform — birth ceremony, memory vault, companion — without paying for MEOK's LLM credits. You pay your API providers directly.
+      - generic [ref=e279]:
+        - generic [ref=e280]:
+          - img [ref=e282]
+          - heading "Technical" [level=2] [ref=e285]
+          - generic [ref=e286]: 9 Q&As
+        - generic [ref=e287]:
+          - generic [ref=e288]:
+            - button "How does Byzantine Council governance work?" [ref=e289]:
+              - generic [ref=e290]: How does Byzantine Council governance work?
+              - img [ref=e292]
+            - region "How does Byzantine Council governance work?":
+              - paragraph [ref=e294]: "Every MEOK response is validated by a panel of 220 AI governance agents before it reaches you. The system uses Byzantine Fault Tolerance (BFT) — the same trust mechanism used in blockchain and distributed financial systems. In plain English: even if some agents are wrong or fail, the group still reaches a correct decision, like a large jury that can't be swayed by a few bad actors. The result is that no single AI agent, no single engineer, and not even MEOK's founders can push a response that bypasses the care rules."
+          - generic [ref=e295]:
+            - button "How do I connect a new AI model?" [ref=e296]:
+              - generic [ref=e297]: How do I connect a new AI model?
+              - img [ref=e299]
+            - region "How do I connect a new AI model?":
+              - paragraph [ref=e301]: From the dashboard, go to Settings → AI Routing. You can add API keys for Claude, OpenAI, Groq, DeepSeek, and others. MEOK will automatically route to the best available model for your query type — or you can pin a specific model if you prefer. Ollama local models are supported for users running their own inference server.
+          - generic [ref=e302]:
+            - button "Can I use MEOK offline?" [ref=e303]:
+              - generic [ref=e304]: Can I use MEOK offline?
+              - img [ref=e306]
+            - region "Can I use MEOK offline?":
+              - paragraph [ref=e308]: The core MEOK web app requires an internet connection to route through LLM providers. However, Phase 4 of our roadmap includes an on-device AI model (3B parameters) that runs locally with no internet required. The PWA (Progressive Web App) will cache the interface and allow offline access to your memory archive. Full offline mode is targeted for Q3 2026.
+          - generic [ref=e309]:
+            - button "What is Ralph Mode?" [ref=e310]:
+              - generic [ref=e311]: What is Ralph Mode?
+              - img [ref=e313]
+            - region "What is Ralph Mode?":
+              - paragraph [ref=e315]: Ralph Mode is MEOK's autonomous task agent, available on the Sovereign and Family plans. When activated, your AI can complete multi-step tasks on your behalf — browsing, researching, writing drafts, managing calendar events, and more — without you being present in the conversation. Ralph operates under the Maternal Covenant's care principles, meaning it will pause and ask for confirmation before any irreversible action. Full Ralph Mode launches in Phase 3.
+          - generic [ref=e316]:
+            - button "What is the Sovereign Terminal?" [ref=e317]:
+              - generic [ref=e318]: What is the Sovereign Terminal?
+              - img [ref=e320]
+            - region "What is the Sovereign Terminal?":
+              - paragraph [ref=e322]: "The Sovereign Terminal is a 12-module command interface for power users. Think of it as a keyboard-driven control panel for your AI OS: query your memory archive, inspect care score logs, manage your council configuration, trigger autonomous research tasks, view your AI's reasoning traces, and more. Targeted for Phase 4 (May 2026)."
+          - generic [ref=e323]:
+            - button "Why does MEOK say \"care over engagement\"?" [ref=e324]:
+              - generic [ref=e325]: Why does MEOK say "care over engagement"?
+              - img [ref=e327]
+            - region "Why does MEOK say \"care over engagement\"?":
+              - paragraph [ref=e329]: Because engagement and care are often in direct conflict. An AI companion that maximises your return visits and session length is incentivised to create emotional dependency, manufacture anxiety, and keep you in unresolved conversations. Character.AI and Replika have both faced legal and regulatory action for exactly this pattern. MEOK's business model is a flat subscription — we have no incentive to maximise your screen time. Our metric is whether your care scores trend positively over time, not how long you stay.
+          - generic [ref=e330]:
+            - button "How does MEOK compare to ChatGPT?" [ref=e331]:
+              - generic [ref=e332]: How does MEOK compare to ChatGPT?
+              - img [ref=e334]
+            - region "How does MEOK compare to ChatGPT?":
+              - paragraph [ref=e336]: ChatGPT is an extraordinarily capable general-purpose assistant. MEOK is not trying to replace it for raw task performance — you can even route your MEOK instance through GPT-4o if you want that capability. The difference is ownership. ChatGPT has no persistent sovereign memory (memory is stored on OpenAI's servers, can be cleared by the company, and is used to improve their models). There is no care scoring, no governance layer, and no ethical framework specific to your wellbeing. MEOK wraps any LLM — including GPT-4o — with care validation, sovereign memory, and a governance council.
+          - generic [ref=e337]:
+            - button "When does MEOK gaming launch?" [ref=e338]:
+              - generic [ref=e339]: When does MEOK gaming launch?
+              - img [ref=e341]
+            - region "When does MEOK gaming launch?":
+              - paragraph [ref=e343]: Phase 3, August 2026. Riot Games, Steam, Twitch, and Discord integrations. PixiJS visual companion environment. Twitch co-host mode with Guardian-filtered chat. Join the waitlist at /gaming.
+          - generic [ref=e344]:
+            - button "Is MEOK AI compliant with the EU AI Act?" [ref=e345]:
+              - generic [ref=e346]: Is MEOK AI compliant with the EU AI Act?
+              - img [ref=e348]
+            - region "Is MEOK AI compliant with the EU AI Act?":
+              - paragraph [ref=e350]: Yes. MEOK is classified as Limited Risk under Article 52 (conversational AI disclosure required). Guardian child safety features are classified High Risk (Annex III) and are in DPIA review before activation. Full compliance details at /ai-act.
+    - generic [ref=e352]:
+      - img [ref=e354]
+      - heading "Still have questions?" [level=2] [ref=e357]
+      - paragraph [ref=e358]: Our team reads every email. Reach us directly or dive deeper with the Maternal Covenant.
+      - generic [ref=e359]:
+        - link "Email us" [ref=e360] [cursor=pointer]:
+          - /url: mailto:hello@meok.ai
+          - img [ref=e361]
+          - text: Email us
+        - link "Hatch your AI — free" [ref=e364] [cursor=pointer]:
+          - /url: /hatch
+          - text: Hatch your AI — free
+          - img [ref=e365]
+  - dialog "Cookie consent" [ref=e367]:
+    - paragraph [ref=e369]:
+      - text: We use cookies to analyse how MEOK is used and improve the experience. Your sovereign data stays yours — we never sell it.
+      - link "Privacy Policy" [ref=e370] [cursor=pointer]:
+        - /url: /privacy
+    - generic [ref=e371]:
+      - generic [ref=e372]:
+        - button "Accept all" [ref=e373]
+        - button "Essential only" [ref=e374]
+      - button "Cookie details ↓" [ref=e375]
+  - button "Open sovereign AI chat" [ref=e376]:
+    - generic [ref=e377]: 🥚
+```

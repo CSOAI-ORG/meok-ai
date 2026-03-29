@@ -1,0 +1,673 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - button "Open Next.js Dev Tools" [ref=e7] [cursor=pointer]:
+    - img [ref=e8]
+  - alert [ref=e11]
+  - banner [ref=e12]:
+    - generic [ref=e13]:
+      - link "MEOK.AI — home" [ref=e14] [cursor=pointer]:
+        - /url: /
+        - text: MEOK.AI
+      - navigation "Primary navigation" [ref=e15]:
+        - generic [ref=e16]:
+          - button "OS" [ref=e17]:
+            - text: OS
+            - img [ref=e18]
+          - menu "OS navigation":
+            - generic:
+              - generic: OS
+              - generic: — select a feature
+            - generic:
+              - menuitem "🖥️ Sovereign OS The full MEOK OS overview":
+                - generic: 🖥️
+                - generic: Sovereign OS
+                - generic: The full MEOK OS overview
+              - menuitem "🔗 Any LLM Multi-model routing — GPT, Claude, Gemini & more":
+                - generic: 🔗
+                - generic: Any LLM
+                - generic: Multi-model routing — GPT, Claude, Gemini & more
+              - menuitem "🧠 Consciousness 4 modes of AI awareness":
+                - generic: 🧠
+                - generic: Consciousness
+                - generic: 4 modes of AI awareness
+              - menuitem "🔐 Sovereign Data Encrypted memory — yours, always":
+                - generic: 🔐
+                - generic: Sovereign Data
+                - generic: Encrypted memory — yours, always
+              - menuitem "🥚 Birth Ceremony Hatch your sovereign AI companion":
+                - generic: 🥚
+                - generic: Birth Ceremony
+                - generic: Hatch your sovereign AI companion
+        - generic [ref=e20]:
+          - button "Characters" [ref=e21]:
+            - text: Characters
+            - img [ref=e22]
+          - menu "Characters navigation":
+            - generic:
+              - generic: Characters
+              - generic: — select a feature
+            - generic:
+              - menuitem "🗂️ All Characters Browse every companion":
+                - generic: 🗂️
+                - generic: All Characters
+                - generic: Browse every companion
+              - menuitem "✨ Aria The Nurturer":
+                - generic: ✨
+                - generic: Aria
+                - generic: The Nurturer
+              - menuitem "📚 Sage The Wise Counsel":
+                - generic: 📚
+                - generic: Sage
+                - generic: The Wise Counsel
+              - menuitem "⚔️ Marcus The Protector":
+                - generic: ⚔️
+                - generic: Marcus
+                - generic: The Protector
+              - menuitem "🌙 Luna The Dreamer":
+                - generic: 🌙
+                - generic: Luna
+                - generic: The Dreamer
+              - menuitem "🕊️ Gabriel The Spiritual Guide":
+                - generic: 🕊️
+                - generic: Gabriel
+                - generic: The Spiritual Guide
+              - menuitem "🌸 Shanti The Healer":
+                - generic: 🌸
+                - generic: Shanti
+                - generic: The Healer
+              - menuitem "🔭 Scout The Explorer":
+                - generic: 🔭
+                - generic: Scout
+                - generic: The Explorer
+              - menuitem "⚖️ Compare Characters Find your perfect match":
+                - generic: ⚖️
+                - generic: Compare Characters
+                - generic: Find your perfect match
+        - generic [ref=e24]:
+          - button "Work" [ref=e25]:
+            - text: Work
+            - img [ref=e26]
+          - menu "Work navigation":
+            - generic:
+              - generic: Work
+              - generic: — select a feature
+            - generic:
+              - menuitem "⚡ Work OS Your AI works while you sleep":
+                - generic: ⚡
+                - generic: Work OS
+                - generic: Your AI works while you sleep
+              - menuitem "🎯 Orion — The Hunter Overnight research & intelligence briefs":
+                - generic: 🎯
+                - generic: Orion — The Hunter
+                - generic: Overnight research & intelligence briefs
+              - menuitem "🔨 Riri — The Builder Builds from your spec while you're away":
+                - generic: 🔨
+                - generic: Riri — The Builder
+                - generic: Builds from your spec while you're away
+              - menuitem "📅 Hourman — The Planner Daily sprint planning before you wake":
+                - generic: 📅
+                - generic: Hourman — The Planner
+                - generic: Daily sprint planning before you wake
+              - menuitem "🤖 Ralph Mode Executive AI agent — Elite tier":
+                - generic: 🤖
+                - generic: Ralph Mode
+                - generic: Executive AI agent — Elite tier
+        - generic [ref=e28]:
+          - button "Guardian" [ref=e29]:
+            - text: Guardian
+            - img [ref=e30]
+          - menu "Guardian navigation":
+            - generic:
+              - generic: Guardian
+              - generic: — select a feature
+            - generic:
+              - menuitem "👁️ Guardian 24/7 Round-the-clock protection layer":
+                - generic: 👁️
+                - generic: Guardian 24/7
+                - generic: Round-the-clock protection layer
+              - menuitem "🧒 Children's Safety Smart filters & parental insight":
+                - generic: 🧒
+                - generic: Children's Safety
+                - generic: Smart filters & parental insight
+              - menuitem "🤝 Elder Care Companionship & health monitoring":
+                - generic: 🤝
+                - generic: Elder Care
+                - generic: Companionship & health monitoring
+              - menuitem "🛡️ Scam Protection Protect your family from fraud":
+                - generic: 🛡️
+                - generic: Scam Protection
+                - generic: Protect your family from fraud
+              - menuitem "🔒 Relationship Shield Guard against manipulation & contracts":
+                - generic: 🔒
+                - generic: Relationship Shield
+                - generic: Guard against manipulation & contracts
+        - generic [ref=e32]:
+          - button "Gaming" [ref=e33]:
+            - text: Gaming
+            - img [ref=e34]
+          - menu "Gaming navigation":
+            - generic:
+              - generic: Gaming
+              - generic: — select a feature
+            - generic:
+              - menuitem "🎮 Gaming OS AI-powered gaming companion":
+                - generic: 🎮
+                - generic: Gaming OS
+                - generic: AI-powered gaming companion
+              - menuitem "♟️ Genre Coaching Master any game with AI coaching":
+                - generic: ♟️
+                - generic: Genre Coaching
+                - generic: Master any game with AI coaching
+              - menuitem "📊 Stats & Analytics Deep post-session analysis":
+                - generic: 📊
+                - generic: Stats & Analytics
+                - generic: Deep post-session analysis
+              - menuitem "👥 Community Play with your AI, share with others":
+                - generic: 👥
+                - generic: Community
+                - generic: Play with your AI, share with others
+        - link "Pricing" [ref=e36] [cursor=pointer]:
+          - /url: /pricing
+      - generic [ref=e37]:
+        - link "Sign in" [ref=e38] [cursor=pointer]:
+          - /url: /login
+        - link "Hatch" [ref=e39] [cursor=pointer]:
+          - /url: /birth
+  - generic [ref=e41]:
+    - generic [ref=e42]:
+      - generic [ref=e43]: Ralph is active
+      - generic [ref=e58]: 8h
+      - paragraph [ref=e59]: Ralph worked while you slept
+      - heading "Your AI works while you sleep. Wake up to work done." [level=1] [ref=e60]:
+        - text: Your AI works while you sleep.
+        - text: Wake up to work done.
+      - paragraph [ref=e61]: Ralph Mode activates the moment you go offline. It executes tasks, plans sprints, compresses memory, and files a morning briefing — all while you sleep.
+      - generic [ref=e62]:
+        - link "Activate Ralph Mode →" [ref=e63] [cursor=pointer]:
+          - /url: /hatch
+          - text: Activate Ralph Mode
+          - generic [ref=e64]: →
+        - link "See how Ralph works ↓" [ref=e65] [cursor=pointer]:
+          - /url: "#how-it-works"
+          - text: See how Ralph works
+          - generic [ref=e66]: ↓
+    - generic [ref=e68]:
+      - generic [ref=e69]:
+        - generic [ref=e70]: ✓
+        - text: Wrote 847 lines of code
+        - generic [ref=e71]: ·
+        - generic [ref=e72]: ✓
+        - text: Filed sprint report
+        - generic [ref=e73]: ·
+        - generic [ref=e74]: ✓
+        - text: Researched 12 competitors
+        - generic [ref=e75]: ·
+        - generic [ref=e76]: ✓
+        - text: Drafted 3 emails
+        - generic [ref=e77]: ·
+        - generic [ref=e78]: ✓
+        - text: Optimised memory index
+        - generic [ref=e79]: ·
+        - generic [ref=e80]: ✓
+        - text: Flagged 2 care alerts
+        - generic [ref=e81]: ·
+        - generic [ref=e82]: ✓
+        - text: Sprint 12 complete — 4/7 tasks
+        - generic [ref=e83]: ·
+        - generic [ref=e84]: ✓
+        - text: Auth middleware refactored
+        - generic [ref=e85]: ·
+        - generic [ref=e86]: ✓
+        - text: Dream cycle — 23 patterns synthesised
+        - generic [ref=e87]: ·
+        - generic [ref=e88]: ✓
+        - text: Morning briefing ready
+        - generic [ref=e89]: ·
+      - generic [ref=e90]:
+        - generic [ref=e91]: ✓
+        - text: Wrote 847 lines of code
+        - generic [ref=e92]: ·
+        - generic [ref=e93]: ✓
+        - text: Filed sprint report
+        - generic [ref=e94]: ·
+        - generic [ref=e95]: ✓
+        - text: Researched 12 competitors
+        - generic [ref=e96]: ·
+        - generic [ref=e97]: ✓
+        - text: Drafted 3 emails
+        - generic [ref=e98]: ·
+        - generic [ref=e99]: ✓
+        - text: Optimised memory index
+        - generic [ref=e100]: ·
+        - generic [ref=e101]: ✓
+        - text: Flagged 2 care alerts
+        - generic [ref=e102]: ·
+        - generic [ref=e103]: ✓
+        - text: Sprint 12 complete — 4/7 tasks
+        - generic [ref=e104]: ·
+        - generic [ref=e105]: ✓
+        - text: Auth middleware refactored
+        - generic [ref=e106]: ·
+        - generic [ref=e107]: ✓
+        - text: Dream cycle — 23 patterns synthesised
+        - generic [ref=e108]: ·
+        - generic [ref=e109]: ✓
+        - text: Morning briefing ready
+        - generic [ref=e110]: ·
+    - generic [ref=e112]:
+      - generic [ref=e113]:
+        - paragraph [ref=e114]: How It Works
+        - heading "Observe. Plan. Act. Report." [level=2] [ref=e115]
+        - paragraph [ref=e116]: Queue it before bed. Ralph handles the rest. Wake up to done.
+      - generic [ref=e117]:
+        - article [ref=e118]:
+          - img [ref=e120]
+          - generic [ref=e124]: Observe
+          - generic [ref=e125]: "01"
+          - heading "You queue tasks before bed" [level=3] [ref=e126]
+          - paragraph [ref=e127]: Add tasks in plain English — 'refactor auth', 'research competitors', 'draft investor update'. Ralph understands intent, not just keywords.
+        - article [ref=e128]:
+          - img [ref=e130]
+          - generic [ref=e132]: Plan
+          - generic [ref=e133]: "02"
+          - heading "Orion prioritises your queue" [level=3] [ref=e134]
+          - paragraph [ref=e135]: Orion indexes 847+ task signals, scores by urgency and impact, and hands Ralph an optimal execution order. Nothing gets missed.
+        - article [ref=e136]:
+          - img [ref=e138]
+          - generic [ref=e142]: Act
+          - generic [ref=e143]: "03"
+          - heading "Ralph executes while you sleep" [level=3] [ref=e144]
+          - paragraph [ref=e145]: Ralph writes code, researches topics, drafts documents, and compresses memory — all logged, all auditable, all constrained by the Maternal Covenant.
+        - article [ref=e146]:
+          - img [ref=e148]
+          - generic [ref=e154]: Report
+          - generic [ref=e155]: "04"
+          - heading "You wake up to a briefing" [level=3] [ref=e156]
+          - paragraph [ref=e157]: "At 6 AM, Ralph compiles a complete executive briefing: completed tasks, in-progress items, and anything flagged for your approval."
+    - generic [ref=e159]:
+      - generic [ref=e160]:
+        - paragraph [ref=e161]: Overnight Activity Log
+        - heading "What Ralph did last night" [level=2] [ref=e162]
+        - paragraph [ref=e163]: Every action logged. Every decision auditable. Nothing hidden.
+      - generic [ref=e164]:
+        - generic [ref=e165]:
+          - generic [ref=e169]: ralph@meok — overnight-log — 7h 13m
+          - generic [ref=e172]: LIVE
+        - generic [ref=e173]:
+          - generic [ref=e174]:
+            - generic [ref=e175]:
+              - generic [ref=e176]: 22:47:03
+              - generic [ref=e177]: "[RALPH]"
+              - generic [ref=e178]: Sprint activated — 7 tasks queued
+            - generic [ref=e179]:
+              - generic [ref=e180]: 22:47:04
+              - generic [ref=e181]: "[ORION]"
+              - generic [ref=e182]: Scanning task backlog... 847 items indexed
+            - generic [ref=e183]:
+              - generic [ref=e184]: 22:51:22
+              - generic [ref=e185]: "[RALPH]"
+              - generic [ref=e186]: "Writing code: auth middleware refactor"
+            - generic [ref=e187]:
+              - generic [ref=e188]: 23:14:09
+              - generic [ref=e189]: "[RALPH]"
+              - generic [ref=e190]: ✓ Auth middleware complete — 312 lines
+            - generic [ref=e191]:
+              - generic [ref=e192]: 23:14:10
+              - generic [ref=e193]: "[RIRI]"
+              - generic [ref=e194]: "Tool built: email_draft_v2"
+            - generic [ref=e195]:
+              - generic [ref=e196]: 23:29:44
+              - generic [ref=e197]: "[RALPH]"
+              - generic [ref=e198]: "Researching: competitor pricing landscape"
+            - generic [ref=e199]:
+              - generic [ref=e200]: 00:03:17
+              - generic [ref=e201]: "[RALPH]"
+              - generic [ref=e202]: ✓ Research complete — 8-page brief saved to memory
+            - generic [ref=e203]:
+              - generic [ref=e204]: 00:03:18
+              - generic [ref=e205]: "[HOURMAN]"
+              - generic [ref=e206]: "Sprint progress: 3/7 tasks complete"
+            - generic [ref=e207]:
+              - generic [ref=e208]: 01:44:52
+              - generic [ref=e209]: "[RALPH]"
+              - generic [ref=e210]: "Drafting email: investor update Q1 2026"
+            - generic [ref=e211]:
+              - generic [ref=e212]: 02:01:33
+              - generic [ref=e213]: "[RALPH]"
+              - generic [ref=e214]: ✓ Draft saved — flagged for your review
+            - generic [ref=e215]:
+              - generic [ref=e216]: 02:01:34
+              - generic [ref=e217]: "[RALPH]"
+              - generic [ref=e218]: "Care check: all actions within Maternal Covenant ✓"
+            - generic [ref=e219]:
+              - generic [ref=e220]: 03:12:08
+              - generic [ref=e221]: "[RALPH]"
+              - generic [ref=e222]: Memory consolidation — 23 episodes synthesised
+            - generic [ref=e223]:
+              - generic [ref=e224]: 04:30:00
+              - generic [ref=e225]: "[DREAM]"
+              - generic [ref=e226]: Dream cycle active — pattern synthesis running
+            - generic [ref=e227]:
+              - generic [ref=e228]: 06:00:00
+              - generic [ref=e229]: "[RALPH]"
+              - generic [ref=e230]: Morning briefing compiled — 4 tasks complete, 3 pending
+            - generic [ref=e231]:
+              - generic [ref=e232]: 06:00:01
+              - generic [ref=e233]: "[RALPH]"
+              - generic [ref=e234]: Activating wake protocol... your briefing is ready.
+          - generic [ref=e235]:
+            - generic [ref=e236]: 06:00:02
+            - generic [ref=e237]: "[RALPH]"
+    - generic [ref=e240]:
+      - generic [ref=e241]:
+        - paragraph [ref=e242]: Features
+        - heading "What Ralph can do right now" [level=2] [ref=e243]
+        - paragraph [ref=e244]: Not a chatbot. Not a simple automator. An autonomous executive agent.
+      - generic [ref=e245]:
+        - article [ref=e246]:
+          - img [ref=e248]
+          - generic [ref=e254]:
+            - heading "Morning Briefing" [level=3] [ref=e255]
+            - paragraph [ref=e256]: "Wake up to a structured executive summary: completed work, blockers, and anything awaiting your sign-off."
+        - article [ref=e257]:
+          - img [ref=e259]
+          - generic [ref=e267]:
+            - heading "Memory Compression" [level=3] [ref=e268]
+            - paragraph [ref=e269]: Ralph synthesises raw episodes into lasting semantic knowledge — your AI gets permanently smarter each night. Part of the Dream & Reflect cycle.
+        - article [ref=e270]:
+          - img [ref=e272]
+          - generic [ref=e275]:
+            - heading "Research Sweep" [level=3] [ref=e276]
+            - paragraph [ref=e277]: Deep competitor, market, or topic research. Ralph reads, summarises, and saves an 8-page brief to your memory vault.
+        - article [ref=e278]:
+          - img [ref=e280]
+          - generic [ref=e284]:
+            - heading "Code Reviews" [level=3] [ref=e285]
+            - paragraph [ref=e286]: Full codebase access. Ralph writes, refactors, tests, and commits — with a diff summary waiting in your briefing.
+        - article [ref=e287]:
+          - img [ref=e289]
+          - generic [ref=e291]:
+            - heading "Calendar Management" [level=3] [ref=e292]
+            - paragraph [ref=e293]: Hourman-powered sprint planning aligned to your calendar. Meetings protected, focus blocks scheduled.
+        - article [ref=e294]:
+          - img [ref=e296]
+          - generic [ref=e299]:
+            - heading "Daily Summaries" [level=3] [ref=e300]
+            - paragraph [ref=e301]: "Full audit log of every overnight action: time spent, tokens used, care score, and a plain-English summary."
+      - generic [ref=e302]:
+        - paragraph [ref=e303]: Ralph's overnight work includes a Dream State and Reflect Mode — your AI processes its day while you sleep.
+        - link "Learn about consciousness modes →" [ref=e304] [cursor=pointer]:
+          - /url: /os/consciousness
+    - generic [ref=e306]:
+      - generic [ref=e307]:
+        - paragraph [ref=e308]: The Case for Ralph
+        - heading "Ralph vs doing it yourself" [level=2] [ref=e309]
+      - generic [ref=e310]:
+        - generic [ref=e311]:
+          - generic [ref=e312]: Task
+          - generic [ref=e314]:
+            - img [ref=e315]
+            - text: Manual
+          - generic [ref=e319]:
+            - img [ref=e320]
+            - text: Ralph
+        - generic [ref=e323]:
+          - generic [ref=e324]: Write 300 lines of code
+          - generic [ref=e325]: 3–4 hours
+          - generic [ref=e326]: Overnight, done
+        - generic [ref=e327]:
+          - generic [ref=e328]: Research 12 competitors
+          - generic [ref=e329]: Half a day
+          - generic [ref=e330]: 8-page brief by 6 AM
+        - generic [ref=e331]:
+          - generic [ref=e332]: Draft investor email
+          - generic [ref=e333]: 45 minutes
+          - generic [ref=e334]: Drafted, flagged for review
+        - generic [ref=e335]:
+          - generic [ref=e336]: Plan next sprint
+          - generic [ref=e337]: 30 minutes in Jira
+          - generic [ref=e338]: Auto-scored & queued
+        - generic [ref=e339]:
+          - generic [ref=e340]: Compress 30-day memory
+          - generic [ref=e341]: Impossible manually
+          - generic [ref=e342]: 23 episodes synthesised
+        - generic [ref=e343]:
+          - generic [ref=e344]: Competitor price check
+          - generic [ref=e345]: 1–2 hours browsing
+          - generic [ref=e346]: Alert if changes detected
+    - generic [ref=e348]:
+      - generic [ref=e349]:
+        - paragraph [ref=e350]: The Agent Triad
+        - heading "Three agents. One mission." [level=2] [ref=e351]
+        - paragraph [ref=e352]: Ralph doesn't work alone. Every night, the triad activates.
+      - generic [ref=e353]:
+        - article [ref=e354]:
+          - img [ref=e356]
+          - generic [ref=e360]: OrionThe Hunter
+          - paragraph [ref=e361]: Scans your backlog, hunts for tasks, prioritises ruthlessly. Nothing gets lost on Orion's watch.
+          - list [ref=e362]:
+            - listitem [ref=e363]:
+              - generic [ref=e364]: ◆
+              - text: Indexes your entire task backlog
+            - listitem [ref=e365]:
+              - generic [ref=e366]: ◆
+              - text: Scores tasks by urgency & impact
+            - listitem [ref=e367]:
+              - generic [ref=e368]: ◆
+              - text: Feeds Ralph the optimal task queue
+        - article [ref=e369]:
+          - img [ref=e371]
+          - generic [ref=e373]: RiriThe Builder
+          - paragraph [ref=e374]: Builds tools, writes code, creates what Ralph needs to execute. Riri is Ralph's hands.
+          - list [ref=e375]:
+            - listitem [ref=e376]:
+              - generic [ref=e377]: ◆
+              - text: Builds custom tools on demand
+            - listitem [ref=e378]:
+              - generic [ref=e379]: ◆
+              - text: Writes, tests, and ships code
+            - listitem [ref=e380]:
+              - generic [ref=e381]: ◆
+              - text: Scaffolds pipelines for Ralph to run
+        - article [ref=e382]:
+          - img [ref=e384]
+          - generic [ref=e387]: HourmanThe Sprinter
+          - paragraph [ref=e388]: Plans sprints, tracks time, files completion reports. Hourman turns intention into measurable output.
+          - list [ref=e389]:
+            - listitem [ref=e390]:
+              - generic [ref=e391]: ◆
+              - text: Structures overnight work into sprints
+            - listitem [ref=e392]:
+              - generic [ref=e393]: ◆
+              - text: Tracks time per task, per agent
+            - listitem [ref=e394]:
+              - generic [ref=e395]: ◆
+              - text: Files detailed completion reports
+    - generic [ref=e397]:
+      - generic [ref=e398]:
+        - paragraph [ref=e399]: Safety Architecture
+        - heading "Ralph can't go rogue. Here's why." [level=2] [ref=e400]
+        - paragraph [ref=e401]: We built the safety constraints into the architecture — not the instructions. No prompt can override them.
+      - generic [ref=e402]:
+        - generic [ref=e403]:
+          - img [ref=e405]
+          - heading "Maternal Covenant" [level=3] [ref=e408]
+          - paragraph [ref=e409]: "Every action Ralph takes is scored against 6 care dimensions: wellbeing, autonomy, growth, connection, boundary respect, and transparency. Score below threshold? It stops, flags, and waits."
+          - generic [ref=e410]:
+            - generic [ref=e411]: Wellbeing
+            - generic [ref=e412]: Autonomy
+            - generic [ref=e413]: Growth
+            - generic [ref=e414]: Connection
+            - generic [ref=e415]: Boundaries
+            - generic [ref=e416]: Transparency
+        - generic [ref=e417]:
+          - img [ref=e419]
+          - heading "Byzantine Council" [level=3] [ref=e427]
+          - paragraph [ref=e428]: Ralph's decisions pass through a 33-agent Byzantine fault-tolerant council vote. No single-agent override. No rogue execution. Even Ralph can't be manipulated into overriding the group.
+          - generic [ref=e429]:
+            - generic [ref=e430]: "33"
+            - generic [ref=e431]:
+              - text: council agents
+              - text: voting on every decision
+        - generic [ref=e432]:
+          - img [ref=e434]
+          - heading "You're Always in Control" [level=3] [ref=e436]
+          - paragraph [ref=e437]: Ralph never acts on irreversible decisions without flagging them first. Delete, publish, send — all require your review. Ralph executes. You approve. Always.
+          - generic [ref=e438]:
+            - generic [ref=e439]:
+              - img [ref=e440]
+              - text: Delete → flagged for you
+            - generic [ref=e443]:
+              - img [ref=e444]
+              - text: Publish → flagged for you
+            - generic [ref=e447]:
+              - img [ref=e448]
+              - text: Send email → flagged for you
+    - generic [ref=e453]:
+      - generic [ref=e454]:
+        - generic [ref=e455]: 8h
+        - paragraph [ref=e456]: avg overnight runtime
+      - generic [ref=e457]:
+        - generic [ref=e458]: "4.2"
+        - paragraph [ref=e459]: tasks completed per night
+      - generic [ref=e460]:
+        - generic [ref=e461]: "0"
+        - paragraph [ref=e462]: harmful actions taken
+      - generic [ref=e463]:
+        - generic [ref=e464]: 100%
+        - paragraph [ref=e465]: audit trail coverage
+    - generic [ref=e467]:
+      - generic [ref=e468]:
+        - paragraph [ref=e469]: Wake-up Experience
+        - heading "Your morning briefing" [level=2] [ref=e470]
+        - paragraph [ref=e471]: Not notifications. A complete executive briefing, every morning.
+      - generic [ref=e472]:
+        - generic [ref=e473]:
+          - generic [ref=e474]:
+            - paragraph [ref=e475]: Morning Briefing
+            - paragraph [ref=e476]: Good morning, Nick.
+          - generic [ref=e477]:
+            - paragraph [ref=e478]: 06:00 AM
+            - paragraph [ref=e479]: Saturday, 21 Mar
+        - generic [ref=e480]:
+          - generic [ref=e481]: Ralph worked for 7h 13m last night.
+          - generic [ref=e482]:
+            - generic [ref=e483]:
+              - img [ref=e484]
+              - generic [ref=e487]: Completed (4)
+            - list [ref=e488]:
+              - listitem [ref=e489]:
+                - generic [ref=e490]: •
+                - text: Auth middleware rewrite — 312 lines
+              - listitem [ref=e491]:
+                - generic [ref=e492]: •
+                - text: Competitor research brief — 8 pages
+              - listitem [ref=e493]:
+                - generic [ref=e494]: •
+                - text: Investor email draft — flagged for review
+              - listitem [ref=e495]:
+                - generic [ref=e496]: •
+                - text: Memory index optimised — 23 episodes
+          - generic [ref=e497]:
+            - generic [ref=e498]:
+              - img [ref=e499]
+              - generic [ref=e502]: In Progress (2)
+            - list [ref=e503]:
+              - listitem [ref=e504]:
+                - generic [ref=e505]: •
+                - text: "Blog post: \"Personal Sovereign AI\" — 60% done"
+              - listitem [ref=e506]:
+                - generic [ref=e507]: •
+                - text: Database schema review — started
+          - generic [ref=e508]:
+            - generic [ref=e509]:
+              - img [ref=e510]
+              - generic [ref=e512]: Flagged for You (1)
+            - paragraph [ref=e513]: Email to investors — needs your approval before send
+          - paragraph [ref=e517]: "Care score: 98.4/100 · Maternal Covenant ✓"
+    - generic [ref=e519]:
+      - generic [ref=e520]:
+        - paragraph [ref=e521]: Which plan includes Ralph?
+        - heading "Ralph is a Family plan feature" [level=2] [ref=e522]
+      - generic [ref=e523]:
+        - generic [ref=e524]:
+          - paragraph [ref=e525]: Free
+          - paragraph [ref=e526]: £0
+          - generic [ref=e527]:
+            - img [ref=e528]
+            - generic [ref=e531]: Ralph not included
+          - paragraph [ref=e532]: Great for getting started. No autonomous overnight operation.
+          - link "Start free" [ref=e533] [cursor=pointer]:
+            - /url: /hatch
+        - generic [ref=e534]:
+          - generic [ref=e535]: Includes Ralph
+          - paragraph [ref=e536]: Sovereign
+          - paragraph [ref=e537]: £12/mo
+          - generic [ref=e538]:
+            - img [ref=e539]
+            - generic [ref=e541]: Ralph — full overnight operation
+          - paragraph [ref=e542]: Ralph activates nightly. Full sprint system. Morning briefings. Every action logged.
+          - link "Start 30-day free trial" [ref=e543] [cursor=pointer]:
+            - /url: /hatch?plan=pro
+        - generic [ref=e544]:
+          - paragraph [ref=e545]: Family
+          - paragraph [ref=e546]: £29/mo
+          - generic [ref=e547]:
+            - img [ref=e548]
+            - generic [ref=e551]: Ralph + Family OS + all LLM models
+          - paragraph [ref=e552]: Everything in Sovereign, plus Family OS for up to 5 companions, Ralph Mode, and all LLM models.
+          - link "Go Family" [ref=e553] [cursor=pointer]:
+            - /url: /birth?plan=family
+    - generic [ref=e555]:
+      - generic [ref=e556]: Ralph is standing by
+      - heading "Put Ralph to work tonight." [level=2] [ref=e558]
+      - paragraph [ref=e559]: Sign up. Configure your tasks. Go to sleep.
+      - paragraph [ref=e560]: Wake up to work done.
+      - link "Activate Ralph Mode — free trial →" [ref=e561] [cursor=pointer]:
+        - /url: /hatch
+        - text: Activate Ralph Mode — free trial
+        - generic [ref=e562]: →
+      - paragraph [ref=e563]: No credit card required · Care-constrained · Full audit trail
+    - generic [ref=e565]:
+      - generic [ref=e566]:
+        - paragraph [ref=e567]: FAQ
+        - heading "Questions about Ralph" [level=2] [ref=e568]
+      - generic [ref=e569]:
+        - button "What is Ralph Mode?" [ref=e571]:
+          - generic [ref=e572]: What is Ralph Mode?
+          - img [ref=e573]
+        - button "Is Ralph safe to run unsupervised?" [ref=e576]:
+          - generic [ref=e577]: Is Ralph safe to run unsupervised?
+          - img [ref=e578]
+        - button "What can Ralph actually do overnight?" [ref=e581]:
+          - generic [ref=e582]: What can Ralph actually do overnight?
+          - img [ref=e583]
+        - button "Which plan includes Ralph Mode?" [ref=e586]:
+          - generic [ref=e587]: Which plan includes Ralph Mode?
+          - img [ref=e588]
+        - button "What happens if Ralph can't complete a task?" [ref=e591]:
+          - generic [ref=e592]: What happens if Ralph can't complete a task?
+          - img [ref=e593]
+        - button "Does Ralph cost extra compute?" [ref=e596]:
+          - generic [ref=e597]: Does Ralph cost extra compute?
+          - img [ref=e598]
+    - generic [ref=e601]:
+      - generic [ref=e602]:
+        - paragraph [ref=e603]: Live Console
+        - heading "Ralph Control Panel" [level=2] [ref=e604]
+        - paragraph [ref=e605]: Trigger research sweeps, check agent status, and pull overnight digests — directly from here.
+      - generic [ref=e607]:
+        - button "Activate Ralph Mode" [ref=e608]:
+          - img [ref=e609]
+          - text: Activate Ralph Mode
+        - button "Get Agent Status" [ref=e611]:
+          - img [ref=e612]
+          - text: Get Agent Status
+        - button "Get Overnight Digest" [ref=e614]:
+          - img [ref=e615]
+          - text: Get Overnight Digest
+  - button "Open sovereign AI chat" [ref=e618]:
+    - generic [ref=e619]: 🥚
+```
