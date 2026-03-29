@@ -63,6 +63,20 @@ export async function GET() {
   // Extract preferences from guardian_settings JSONB sub-key
   const preferences = (guardianSettings as Record<string, unknown> | null)?.preferences ?? {}
 
+  // Fetch conversations from DB
+  let conversations: unknown[] = [];
+  try {
+    const { sql } = await import('@/lib/db');
+    if (sql) {
+      const rows = await sql`
+        SELECT id, companion_id, title, message_count, created_at, updated_at
+        FROM conversations WHERE user_id = ${userId} AND deleted_at IS NULL
+        ORDER BY updated_at DESC LIMIT 100
+      `;
+      conversations = rows as unknown[];
+    }
+  } catch { /* non-fatal */ }
+
   return NextResponse.json({
     user_id: userId,
     exported_at: new Date().toISOString(),
@@ -78,6 +92,7 @@ export async function GET() {
         messages_total: dbUser?.messages_total ?? 0,
       },
       memories,
+      conversations,
       companion: dbUser?.companion_id
         ? {
             id: dbUser.companion_id,
@@ -88,6 +103,6 @@ export async function GET() {
       guardian_settings: guardianSettings ?? {},
       preferences,
     },
-    note: 'This export contains all data MEOK AI LABS holds about you.',
+    note: 'This export contains all data MEOK AI LABS holds about you. Request deletion at privacy@meok.ai.',
   })
 }
