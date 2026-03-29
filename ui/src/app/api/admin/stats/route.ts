@@ -52,12 +52,12 @@ export async function GET() {
       sql`SELECT COUNT(*)::int AS count FROM users WHERE deleted_at IS NULL`,
       sql`SELECT COUNT(*)::int AS count FROM users WHERE deleted_at IS NULL AND companion_id IS NOT NULL`,
       sql`SELECT COALESCE(SUM(messages_today), 0)::int AS count FROM users WHERE deleted_at IS NULL AND messages_today_reset = to_char(CURRENT_DATE, 'YYYY-MM-DD')`,
-    ]);
+    ]) as [Array<{ count: number }>, Array<{ count: number }>, Array<{ count: number }>];
 
     return NextResponse.json({
-      totalUsers: (usersResult[0] as { count: number })?.count ?? 0,
-      activeCompanions: (companionsResult[0] as { count: number })?.count ?? 0,
-      messagesToday: (messagesTodayResult[0] as { count: number })?.count ?? 0,
+      totalUsers: usersResult[0]?.count ?? 0,
+      activeCompanions: companionsResult[0]?.count ?? 0,
+      messagesToday: messagesTodayResult[0]?.count ?? 0,
     });
   } catch (err) {
     console.error('[api/admin/stats] Error fetching stats:', err);
