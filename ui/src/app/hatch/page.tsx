@@ -963,14 +963,14 @@ export default function HatchPage() {
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
-              justifyContent: "center",
               minHeight: "calc(100vh - 72px)",
-              padding: "40px 20px",
+              padding: "24px 20px",
               textAlign: "center",
+              overflowY: "auto",
             }}
           >
-            {/* Egg (cracking) */}
-            <div style={{ marginBottom: "16px" }}>
+            {/* Egg (cracking) — compact on reveal */}
+            <div style={{ marginBottom: "12px", transform: "scale(0.7)", transformOrigin: "center top" }}>
               <Egg
                 color={state.eggColor}
                 heartbeat={false}
@@ -1051,19 +1051,7 @@ export default function HatchPage() {
                   >
                     {archetype.desc}
                   </p>
-                  {!archetype.free && (
-                    <p
-                      style={{
-                        marginTop: "12px",
-                        fontSize: "12px",
-                        color: archetype.color,
-                        fontWeight: 600,
-                        letterSpacing: "0.06em",
-                      }}
-                    >
-                      ✦ PRO COMPANION
-                    </p>
-                  )}
+                  {/* PRO badge removed — all archetypes available */}
                 </div>
 
                 {/* ── Birth Ceremony: Name & First Memories ── */}
@@ -1251,7 +1239,7 @@ export default function HatchPage() {
                           boxShadow: `0 0 30px ${archetype.color}44`,
                         }}
                       >
-                        {archetype.free ? `Start free with ${winner}` : `Unlock ${winner} — Pro`}
+                        {`Continue with ${winner} →`}
                       </Link>
                     ) : (
                       <span

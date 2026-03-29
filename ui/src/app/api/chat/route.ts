@@ -146,7 +146,8 @@ function errorResponse(message: string, status: number): NextResponse {
 export async function POST(req: NextRequest): Promise<Response> {
   // 1. Auth check (with local dev bypass)
   const clerkKey = process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY ?? '';
-  const hasClerk = clerkKey.startsWith('pk_') && !clerkKey.includes('REPLACE');
+  const localMode = process.env.MEOK_LOCAL_MODE === 'true';
+  const hasClerk = !localMode && clerkKey.startsWith('pk_') && !clerkKey.includes('REPLACE');
   let userId: string | null = null;
   if (hasClerk) {
     const authResult = await auth();

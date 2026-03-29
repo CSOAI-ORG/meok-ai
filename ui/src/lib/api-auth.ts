@@ -37,9 +37,10 @@ export async function requireAuth(
 ): Promise<AuthResult | AuthError> {
   let userId: string | null = null;
 
-  // Dev/local bypass: when Clerk keys are not configured, use a default local user
+  // Dev/local bypass: when MEOK_LOCAL_MODE=true or Clerk keys not configured
   const clerkKey = process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY ?? '';
-  const hasClerk = clerkKey.startsWith('pk_') && !clerkKey.includes('REPLACE');
+  const localMode = process.env.MEOK_LOCAL_MODE === 'true';
+  const hasClerk = !localMode && clerkKey.startsWith('pk_') && !clerkKey.includes('REPLACE');
 
   if (hasClerk) {
     const authResult = await auth();

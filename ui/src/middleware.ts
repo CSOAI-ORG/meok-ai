@@ -3,7 +3,8 @@ import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
 const clerkKey = process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY ?? '';
-const hasValidClerk = clerkKey.startsWith('pk_') && !clerkKey.includes('REPLACE');
+const localMode = process.env.MEOK_LOCAL_MODE === 'true';
+const hasValidClerk = !localMode && clerkKey.startsWith('pk_') && !clerkKey.includes('REPLACE');
 
 const isProtectedRoute = createRouteMatcher([
   '/dashboard(.*)',
