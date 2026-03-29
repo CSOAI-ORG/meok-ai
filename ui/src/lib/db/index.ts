@@ -19,24 +19,21 @@ if (!DATABASE_URL) {
 
 // For local Postgres: use postgres.js which supports the same tagged template syntax
 // For Neon cloud: use @neondatabase/serverless HTTP driver
-let sql: ReturnType<typeof neon> | null = null;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+let sql: any = null;
 
 if (DATABASE_URL) {
   if (IS_LOCAL) {
-    // Local mode: use postgres.js (TCP connection)
-    // postgres.js returns rows as arrays by default, but with the tagged template
-    // interface it matches neon's API closely enough for our queries
+    // Local mode: use postgres.js (TCP connection to localhost PostgreSQL)
     try {
-      // Dynamic import to avoid bundling issues when not needed
       const pgModule = require('postgres');
       const pg = pgModule(DATABASE_URL);
-
-      // Wrap postgres.js to match neon's tagged template return type (array of rows)
-      sql = ((strings: TemplateStringsArray, ...values: unknown[]) => {
-        return pg(strings, ...values).then((rows: unknown[]) => rows);
-      }) as ReturnType<typeof neon>;
-    } catch (err) {
-      console.warn('[db] postgres.js not available for local mode, falling back to neon driver');
+      // Wrap postgres.js to return plain arrays (matching Neon's API)
+      sql = (strings: TemplateStringsArray, ...values: unknown[]) => {
+        return pg(strings, ...values).then((rows: unknown[]) => [...rows]);
+      };
+    } catch {
+      console.warn('[db] postgres.js not available, falling back to neon driver');
       sql = neon(DATABASE_URL);
     }
   } else {
