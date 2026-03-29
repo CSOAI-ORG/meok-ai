@@ -252,11 +252,15 @@ export async function dbGetMarketplaceCharacters(opts?: {
     // @neondatabase/serverless tagged template does not support sql.unsafe().
     // Use three separate queries per sort order instead of dynamic ORDER BY.
     let rows;
+    // marketplace_characters view columns: id, name, title, archetype, emoji, color, tagline,
+    // personality, tags, tier, license, voice_style, dimensions, is_marketplace, price_cents,
+    // creator_user_id, download_count, avg_rating, rating_count, created_at
+    // (no system_prompt, communication_style, dynamism)
     if (sortBy === 'rating') {
       rows = await sql`
         SELECT id, name, title, archetype, emoji, color, tagline,
-               system_prompt, personality, tags, tier, license,
-               voice_style, communication_style, dynamism, dimensions,
+               personality, tags, tier, license,
+               voice_style, dimensions,
                download_count, avg_rating, price_cents
         FROM marketplace_characters
         WHERE (${tier ?? null}::TEXT IS NULL OR tier = ${tier ?? null})
@@ -266,8 +270,8 @@ export async function dbGetMarketplaceCharacters(opts?: {
     } else if (sortBy === 'newest') {
       rows = await sql`
         SELECT id, name, title, archetype, emoji, color, tagline,
-               system_prompt, personality, tags, tier, license,
-               voice_style, communication_style, dynamism, dimensions,
+               personality, tags, tier, license,
+               voice_style, dimensions,
                download_count, avg_rating, price_cents
         FROM marketplace_characters
         WHERE (${tier ?? null}::TEXT IS NULL OR tier = ${tier ?? null})
@@ -277,8 +281,8 @@ export async function dbGetMarketplaceCharacters(opts?: {
     } else {
       rows = await sql`
         SELECT id, name, title, archetype, emoji, color, tagline,
-               system_prompt, personality, tags, tier, license,
-               voice_style, communication_style, dynamism, dimensions,
+               personality, tags, tier, license,
+               voice_style, dimensions,
                download_count, avg_rating, price_cents
         FROM marketplace_characters
         WHERE (${tier ?? null}::TEXT IS NULL OR tier = ${tier ?? null})
