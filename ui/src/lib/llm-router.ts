@@ -420,7 +420,7 @@ export function getThinkingBudget(effort: EffortLevel): number {
  * const { model, taskType, provider } = route(message, 'sovereign');
  * const result = streamText({ model: provider, messages, system });
  */
-export function route(message: string, tier: Tier, options?: { sensitivity?: 'low' | 'medium' | 'high' }): RouterResult {
+export function route(message: string, tier: Tier, options?: { sensitivity?: 'low' | 'medium' | 'high'; companionId?: string }): RouterResult {
   const taskType = classifyTask(message);
   let model = selectModel(taskType, tier);
 
@@ -430,6 +430,11 @@ export function route(message: string, tier: Tier, options?: { sensitivity?: 'lo
     // Use 8b for quality-sensitive tasks, 3b for speed
     const qualityTasks = ['reasoning', 'analysis', 'coding', 'code_review', 'research', 'creative'];
     model = qualityTasks.includes(taskType) ? 'ollama:llama3.1:8b' : 'ollama:llama3.2:3b';
+  }
+
+  // Sovereign/Jarvis ALWAYS gets 8b — builder needs quality, not speed
+  if (options?.companionId === 'sovereign' && OLLAMA_AVAILABLE) {
+    model = 'ollama:llama3.1:8b';
   }
 
   // Sensitivity-based routing override

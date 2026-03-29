@@ -322,7 +322,7 @@ export async function POST(req: NextRequest): Promise<Response> {
   }
 
   // 6a. Route to model (needed for adaptive style)
-  const { model, taskType, provider } = route(trimmed, userTier);
+  const { model, taskType, provider } = route(trimmed, userTier, { companionId: cid });
 
   // 6a2. Draft-refine: if explorer tier and simple task, try local draft first
   let draftRefineText: string | null = null;
