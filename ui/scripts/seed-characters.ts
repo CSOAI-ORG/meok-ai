@@ -33,10 +33,6 @@ const BATCH_SIZE    = parseInt(args.find(a => a.startsWith('--batch='))?.split('
 
 // ── Static character data ─────────────────────────────────────────────────────
 
-// Import after dotenv so DATABASE_URL is available
-const { getAllCharacters } = await import('../src/lib/characters.js');
-const { dbUpsertCharacter } = await import('../src/lib/db/characters.js');
-
 // ── Embedding helper ──────────────────────────────────────────────────────────
 
 async function getEmbedding(text: string): Promise<number[] | null> {
@@ -56,15 +52,15 @@ async function getEmbedding(text: string): Promise<number[] | null> {
   }
 }
 
-function buildEmbedText(char: Awaited<ReturnType<typeof getAllCharacters>>[number]): string {
+function buildEmbedText(char: Record<string, unknown>): string {
   // Build a rich text representation for embedding:
   // name + title + tagline + personality traits + tags
   const parts = [
-    char.name,
-    char.title ?? '',
-    char.tagline ?? '',
-    ...(char.personality ?? []),
-    ...(char.tags ?? []),
+    char.name as string,
+    (char.title as string) ?? '',
+    (char.tagline as string) ?? '',
+    ...((char.personality as string[]) ?? []),
+    ...((char.tags as string[]) ?? []),
   ].filter(Boolean);
   return parts.join('. ');
 }
@@ -72,6 +68,10 @@ function buildEmbedText(char: Awaited<ReturnType<typeof getAllCharacters>>[numbe
 // ── Main seed ─────────────────────────────────────────────────────────────────
 
 async function main() {
+  // Dynamic imports inside main() to avoid top-level await (CJS compat)
+  const { getAllCharacters } = await import('../src/lib/characters.js');
+  const { dbUpsertCharacter } = await import('../src/lib/db/characters.js');
+
   console.log('🌱 MEOK Character Database Seed');
   console.log(`   DB: ${process.env.DATABASE_URL ? '✅' : '❌ DATABASE_URL missing'}`);
   console.log(`   M2 Ollama: ${M2_OLLAMA_URL}`);
