@@ -144,8 +144,16 @@ function errorResponse(message: string, status: number): NextResponse {
 // ── POST /api/chat ─────────────────────────────────────────────────────────
 
 export async function POST(req: NextRequest): Promise<Response> {
-  // 1. Auth check
-  const { userId } = await auth();
+  // 1. Auth check (with local dev bypass)
+  const clerkKey = process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY ?? '';
+  const hasClerk = clerkKey.startsWith('pk_') && !clerkKey.includes('REPLACE');
+  let userId: string | null = null;
+  if (hasClerk) {
+    const authResult = await auth();
+    userId = authResult.userId;
+  } else {
+    userId = 'local_sovereign_user'; // Local dev — no Clerk
+  }
   if (!userId) {
     return errorResponse('Unauthorised', 401);
   }

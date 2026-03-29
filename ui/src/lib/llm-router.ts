@@ -11,8 +11,15 @@ import { openai, createOpenAI } from '@ai-sdk/openai';
 import type { LanguageModel } from 'ai';
 import { logInfo, logWarn, logError } from './logger';
 
-/** Local Ollama endpoint — set OLLAMA_ENDPOINT env var to enable local model routing */
-const OLLAMA_ENDPOINT = process.env.OLLAMA_ENDPOINT || 'http://localhost:11434/v1';
+/** Local Ollama endpoint — set OLLAMA_ENDPOINT env var to enable local model routing.
+ *  Falls back to M2_OLLAMA_HOST (LAN inference server) if set. */
+const M2_HOST = process.env.M2_OLLAMA_HOST;
+const M2_PORT = process.env.M2_OLLAMA_PORT || '11434';
+const OLLAMA_ENDPOINT = process.env.OLLAMA_ENDPOINT
+  || (M2_HOST ? `http://${M2_HOST}:${M2_PORT}/v1` : 'http://localhost:11434/v1');
+
+/** Whether local Ollama is available as fallback */
+const OLLAMA_AVAILABLE = !!(process.env.OLLAMA_ENDPOINT || process.env.OLLAMA_ENABLED === 'true' || M2_HOST);
 
 // ── Tier-based model access ────────────────────────────────────────────────
 
@@ -175,10 +182,29 @@ export function selectModel(taskType: TaskType, tier: Tier): string {
  */
 export function getProvider(modelId: string): LanguageModel {
   if (modelId.startsWith('claude-')) {
+    // If Anthropic API key is available, use Claude
+    if (process.env.ANTHROPIC_API_KEY) {
+      return anthropic(modelId);
+    }
+    // Fallback: route to local Ollama when API key is exhausted/missing
+    if (OLLAMA_AVAILABLE) {
+      console.warn(`[llm-router] ANTHROPIC_API_KEY not set — routing ${modelId} to local Ollama (llama3.2:3b)`);
+      const ollama = createOpenAI({ baseURL: OLLAMA_ENDPOINT, apiKey: 'ollama' });
+      return ollama('llama3.2:3b');
+    }
+    // Last resort: try anyway (will fail with auth error)
     return anthropic(modelId);
   }
 
   if (modelId.startsWith('gpt-') || modelId.startsWith('o1') || modelId.startsWith('o3')) {
+    if (process.env.OPENAI_API_KEY) {
+      return openai(modelId);
+    }
+    if (OLLAMA_AVAILABLE) {
+      console.warn(`[llm-router] OPENAI_API_KEY not set — routing ${modelId} to local Ollama`);
+      const ollama = createOpenAI({ baseURL: OLLAMA_ENDPOINT, apiKey: 'ollama' });
+      return ollama('llama3.2:3b');
+    }
     return openai(modelId);
   }
 

@@ -35,7 +35,19 @@ export interface AuthError {
 export async function requireAuth(
   opts: { skipRateLimit?: boolean; tier?: RateLimitTier } = {},
 ): Promise<AuthResult | AuthError> {
-  const { userId } = await auth();
+  let userId: string | null = null;
+
+  // Dev/local bypass: when Clerk keys are not configured, use a default local user
+  const clerkKey = process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY ?? '';
+  const hasClerk = clerkKey.startsWith('pk_') && !clerkKey.includes('REPLACE');
+
+  if (hasClerk) {
+    const authResult = await auth();
+    userId = authResult.userId;
+  } else {
+    // Local dev mode — no Clerk, use sovereign local user
+    userId = 'local_sovereign_user';
+  }
 
   if (!userId) {
     return {
