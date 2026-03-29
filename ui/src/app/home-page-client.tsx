@@ -410,7 +410,7 @@ function ExitIntentPopup() {
               You&apos;re on the list.
             </h2>
             <p className="text-white/55 text-sm mb-6">
-              We&apos;ll reach out before March 31. Your egg is waiting.
+              We&apos;ll reach out before April 5. Your egg is waiting.
             </p>
             <button
               onClick={dismiss}
@@ -468,7 +468,7 @@ function HeroSection() {
           className="inline-flex items-center gap-2 px-5 py-2 rounded-full text-sm font-semibold mb-10"
           style={{ border: `1px solid ${GOLD}`, color: GOLD, background: "rgba(201,168,76,0.08)" }}
         >
-          Launching March 31, 2026
+          Launching April 5, 2026
         </span>
 
         {/* Floating egg */}
@@ -587,8 +587,8 @@ export default function HomePageClient() {
       <div className="min-h-screen bg-[#FAF9F6] text-[#111111]">
         {/* Launch banner */}
         <div className="bg-[#c9a84c] text-[#1a1a2e] py-2.5 px-6 text-center text-sm font-bold tracking-wide">
-          March 31, 2026 — The Birth Ceremony opens to everyone. Free forever.{" "}
-          <a href="/birth" className="underline underline-offset-2 hover:opacity-80" aria-label="Begin Birth Ceremony">
+          April 5, 2026 — The Birth Ceremony opens to everyone. Free forever.{" "}
+          <a href="/hatch" className="underline underline-offset-2 hover:opacity-80" aria-label="Begin Birth Ceremony">
             Begin Ceremony <span aria-hidden="true">→</span>
           </a>
         </div>
