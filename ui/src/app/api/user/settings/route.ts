@@ -14,6 +14,7 @@ import { type NextRequest, NextResponse } from 'next/server'
 import { getUserById, updateCompanion, createUser } from '@/lib/db/user'
 import { currentUser } from '@clerk/nextjs/server'
 import { checkRateLimit } from '@/lib/rate-limit'
+const _isLocalMode = process.env.MEOK_LOCAL_MODE === 'true';
 
 export const runtime = 'nodejs'
 export const dynamic = 'force-dynamic'
@@ -36,7 +37,6 @@ const ARCHETYPE_MAP: Record<string, string> = {
   shanti: 'shanti',
 }
 
-const _isLocalMode = process.env.MEOK_LOCAL_MODE === 'true';
 export async function POST(req: NextRequest) {
   const userId = await getAuthUserId()
   if (!userId) {

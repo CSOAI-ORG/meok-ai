@@ -4,9 +4,9 @@ import { currentUser } from '@clerk/nextjs/server'
 import { NextRequest, NextResponse } from 'next/server'
 import { getUserById, createUser } from '@/lib/db/user'
 import { sql } from '@/lib/db/index'
+const _isLocalMode = process.env.MEOK_LOCAL_MODE === 'true';
 
 // GET /api/user/family — get user's family group
-const _isLocalMode = process.env.MEOK_LOCAL_MODE === 'true';
 export async function GET() {
   const authResult = await requireAuth()
   if (authResult.error) return authResult.error
@@ -52,7 +52,6 @@ export async function GET() {
 }
 
 // POST /api/user/family — create or join a family group
-const _isLocalMode = process.env.MEOK_LOCAL_MODE === 'true';
 export async function POST(req: NextRequest) {
   const authResult = await requireAuth()
   if (authResult.error) return authResult.error

@@ -4,6 +4,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { getUserById, updateCompanion, createUser } from '@/lib/db/user'
 import { checkRateLimit } from '@/lib/rate-limit'
 import { getCharacter, getCharactersByArchetype, ARCHETYPES, type Archetype } from '@/lib/characters'
+const _isLocalMode = process.env.MEOK_LOCAL_MODE === 'true';
 
 /**
  * Resolve an archetype name or character ID to a valid companion ID.
@@ -27,7 +28,6 @@ function resolveCompanionId(input: string): string {
 }
 
 // GET /api/user/companions — returns the user's companion info
-const _isLocalMode = process.env.MEOK_LOCAL_MODE === 'true';
 export async function GET() {
   const userId = await getAuthUserId()
   if (!userId) {
@@ -79,7 +79,6 @@ export async function GET() {
 }
 
 // POST /api/user/companions — create/update companion from onboarding
-const _isLocalMode = process.env.MEOK_LOCAL_MODE === 'true';
 export async function POST(req: NextRequest) {
   const userId = await getAuthUserId()
   if (!userId) {

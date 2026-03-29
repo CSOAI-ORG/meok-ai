@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { currentUser } from '@clerk/nextjs/server';
 import { getAuthUserId } from '@/lib/api-auth';
 import { createCheckoutSession, Tier } from '@/lib/stripe';
+const _isLocalMode = process.env.MEOK_LOCAL_MODE === 'true';
 
 // Accepted paid tiers
 const PAID_TIERS = new Set<string>(['sovereign', 'family']);
@@ -11,7 +12,6 @@ interface CheckoutBody {
   interval: 'month' | 'year';
 }
 
-const _isLocalMode = process.env.MEOK_LOCAL_MODE === 'true';
 export async function POST(req: NextRequest): Promise<NextResponse> {
   // -------------------------------------------------------------------------
   // Auth guard

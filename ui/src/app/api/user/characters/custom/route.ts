@@ -9,6 +9,7 @@ import {
   CUSTOM_CHARACTER_LIMITS,
 } from '@/lib/db/user'
 import type { Archetype } from '@/lib/characters'
+const _isLocalMode = process.env.MEOK_LOCAL_MODE === 'true';
 
 // ── Validation ────────────────────────────────────────────────────────────
 
@@ -25,7 +26,6 @@ function isValidVoiceStyle(v: string): boolean {
 
 // ── GET /api/user/characters/custom — list user's custom characters ─────
 
-const _isLocalMode = process.env.MEOK_LOCAL_MODE === 'true';
 export async function GET() {
   const userId = await getAuthUserId()
   if (!userId) {
@@ -38,7 +38,6 @@ export async function GET() {
 
 // ── POST /api/user/characters/custom — create a new custom character ────
 
-const _isLocalMode = process.env.MEOK_LOCAL_MODE === 'true';
 export async function POST(req: NextRequest) {
   const userId = await getAuthUserId()
   if (!userId) {

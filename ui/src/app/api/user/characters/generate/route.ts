@@ -24,6 +24,7 @@ import { getAuthUserId } from '@/lib/api-auth';
 import { dbUpsertCharacter } from '@/lib/db/characters';
 import { getUserById, createUser, CUSTOM_CHARACTER_LIMITS } from '@/lib/db/user';
 import { checkRateLimit } from '@/lib/rate-limit';
+const _isLocalMode = process.env.MEOK_LOCAL_MODE === 'true';
 
 export const runtime = 'nodejs';
 
@@ -197,7 +198,6 @@ async function getEmbedding(character: Record<string, unknown>): Promise<number[
 
 // ── Route handler ─────────────────────────────────────────────────────────────
 
-const _isLocalMode = process.env.MEOK_LOCAL_MODE === 'true';
 export async function POST(req: NextRequest): Promise<NextResponse> {
   const userId = await getAuthUserId();
   if (!userId) {
