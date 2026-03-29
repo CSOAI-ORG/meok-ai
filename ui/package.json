@@ -8,6 +8,8 @@
     "start": "next start",
     "test": "jest",
     "test:ci": "jest --passWithNoTests --ci",
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui",
     "lint": "npx tsc --noEmit"
   },
   "dependencies": {
@@ -48,5 +50,8 @@
     "tailwindcss": "^4",
     "ts-jest": "^29.4.6",
     "typescript": "^5"
+  },
+  "optionalDependencies": {
+    "@upstash/redis": "^1.37.0"
   }
 }

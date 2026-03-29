@@ -1,13 +1,19 @@
-import { auth, currentUser } from '@clerk/nextjs/server'
+import { requireAuth } from '@/lib/api-auth'
+import { checkRateLimit } from '@/lib/rate-limit'
+import { currentUser } from '@clerk/nextjs/server'
 import { NextRequest, NextResponse } from 'next/server'
 import { getUserById, createUser } from '@/lib/db/user'
 import { sql } from '@/lib/db/index'
 
 // GET /api/user/family — get user's family group
 export async function GET() {
-  const { userId } = await auth()
-  if (!userId) {
-    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+  const authResult = await requireAuth()
+  if (authResult.error) return authResult.error
+  const { userId } = authResult
+
+  const rateLimitResult = checkRateLimit(userId, 'explorer');
+  if (!rateLimitResult.allowed) {
+    return NextResponse.json({ error: 'Rate limit exceeded' }, { status: 429 });
   }
 
   const user = await getUserById(userId)
@@ -46,9 +52,13 @@ export async function GET() {
 
 // POST /api/user/family — create or join a family group
 export async function POST(req: NextRequest) {
-  const { userId } = await auth()
-  if (!userId) {
-    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+  const authResult = await requireAuth()
+  if (authResult.error) return authResult.error
+  const { userId } = authResult
+
+  const rateLimitResult = checkRateLimit(userId, 'explorer');
+  if (!rateLimitResult.allowed) {
+    return NextResponse.json({ error: 'Rate limit exceeded' }, { status: 429 });
   }
 
   let body: { action?: string; invite_code?: string }

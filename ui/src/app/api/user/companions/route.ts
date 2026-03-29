@@ -1,6 +1,7 @@
 import { auth, currentUser } from '@clerk/nextjs/server'
 import { NextRequest, NextResponse } from 'next/server'
 import { getUserById, updateCompanion, createUser } from '@/lib/db/user'
+import { checkRateLimit } from '@/lib/rate-limit'
 import { getCharacter, getCharactersByArchetype, ARCHETYPES, type Archetype } from '@/lib/characters'
 
 /**
@@ -29,6 +30,11 @@ export async function GET() {
   const { userId } = await auth()
   if (!userId) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+  }
+
+  const rateLimitResult = checkRateLimit(userId, 'explorer')
+  if (!rateLimitResult.allowed) {
+    return NextResponse.json({ error: 'Rate limit exceeded' }, { status: 429 })
   }
 
   let user = await getUserById(userId)
@@ -75,6 +81,11 @@ export async function POST(req: NextRequest) {
   const { userId } = await auth()
   if (!userId) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+  }
+
+  const rateLimitResult = checkRateLimit(userId, 'explorer')
+  if (!rateLimitResult.allowed) {
+    return NextResponse.json({ error: 'Rate limit exceeded' }, { status: 429 })
   }
 
   let body: { name?: string; archetype?: string; memory?: string }

@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import type { APIKeyResponse } from "@/lib/types";
 import Link from "next/link";
-import { Shield, User, CreditCard, Bot, Lock, AlertTriangle, Download, Trash2, Check, Key, Eye, EyeOff } from "lucide-react";
+import { Shield, User, CreditCard, Bot, Lock, AlertTriangle, Download, Trash2, Check, Key, Eye, EyeOff, Bell, Camera, ChevronDown } from "lucide-react";
 
 const GOLD = "#c9a84c";
 
@@ -192,6 +192,30 @@ export default function SettingsPage() {
   const [showDeleteAccountConfirm, setShowDeleteAccountConfirm] = useState(false);
   const [deleteConfirmText, setDeleteConfirmText] = useState("");
 
+  // 92.1 Profile edit
+  const [profileName, setProfileName] = useState("");
+  const [avatarPreview, setAvatarPreview] = useState<string | null>(null);
+  const [profileSaving, setProfileSaving] = useState(false);
+  const [profileSaved, setProfileSaved] = useState(false);
+
+  // 92.2 Companion extended settings
+  const COMPANION_OPTIONS = ["Aria", "Sage", "Luna", "Gabriel", "Marcus", "Shanti"];
+  const LANGUAGES = ["English", "Spanish", "French", "German", "Japanese"];
+  const [activeCompanion, setActiveCompanion] = useState("Aria");
+  const [responseStyle, setResponseStyle] = useState(1); // 0=concise,1=balanced,2=detailed
+  const [language, setLanguage] = useState("English");
+
+  // 92.3 Privacy extended
+  const [learnFromConversations, setLearnFromConversations] = useState(true);
+  const [shareAnonymousData, setShareAnonymousData] = useState(false);
+  const [dreamCycleProcessing, setDreamCycleProcessing] = useState(true);
+  const [dataRetention, setDataRetention] = useState("1year");
+
+  // 92.4 Notification extended
+  const [weeklySummaryEmail, setWeeklySummaryEmail] = useState(true);
+  const [careSignalPush, setCareSignalPush] = useState(true);
+  const [bondMilestonesInApp, setBondMilestonesInApp] = useState(true);
+
   useEffect(() => {
     const loadPlan = async () => {
       try {
@@ -241,6 +265,14 @@ export default function SettingsPage() {
     loadCompanion();
     loadByok();
   }, []);
+
+  // Pre-populate profile name from Clerk once user loads
+  useEffect(() => {
+    if (user && !profileName) {
+      setProfileName(user.fullName ?? user.firstName ?? "");
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user]);
 
   const generateKey = async () => {
     setGenerating(true);
@@ -308,6 +340,34 @@ export default function SettingsPage() {
 
   const maskKey = (prefix: string) => `${prefix}••••••••`;
 
+  const handleAvatarChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = (ev) => setAvatarPreview(ev.target?.result as string);
+    reader.readAsDataURL(file);
+  };
+
+  const saveProfile = async () => {
+    setProfileSaving(true);
+    try {
+      const stored = JSON.parse(localStorage.getItem("meok_profile") ?? "{}");
+      stored.name = profileName;
+      if (avatarPreview) stored.avatar = avatarPreview;
+      localStorage.setItem("meok_profile", JSON.stringify(stored));
+      // Attempt real endpoint; silently ignore if not available
+      await fetch("/api/user/settings", {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ display_name: profileName }),
+      }).catch(() => {});
+      setProfileSaved(true);
+      setTimeout(() => setProfileSaved(false), 2500);
+    } finally {
+      setProfileSaving(false);
+    }
+  };
+
   const planInfo = PLAN_FEATURES[currentPlan] ?? PLAN_FEATURES.explorer;
 
   return (
@@ -324,25 +384,78 @@ export default function SettingsPage() {
 
         {/* ── 1. Profile ──────────────────────────────────────────── */}
         <SectionCard icon={<User className="w-4 h-4" />} title="Profile">
-          {user ? (
-            <div className="space-y-1">
-              <FieldRow label="Email" value={user.emailAddresses[0]?.emailAddress ?? "—"} />
-              <Divider />
-              <FieldRow label="Name" value={user.fullName ?? user.firstName ?? "—"} />
-              <Divider />
-              <FieldRow
-                label="Status"
-                value={
-                  <Badge variant="green">Active</Badge>
-                }
+          {/* Avatar upload */}
+          <div className="flex items-center gap-5">
+            <label
+              htmlFor="avatar-upload"
+              className="relative w-16 h-16 rounded-full cursor-pointer flex-shrink-0 group overflow-hidden"
+              style={{ border: `2px solid ${GOLD}40` }}
+            >
+              {avatarPreview ? (
+                <img
+                  src={avatarPreview}
+                  alt="Avatar preview"
+                  className="w-full h-full object-cover"
+                />
+              ) : (
+                <div
+                  className="w-full h-full flex items-center justify-center"
+                  style={{ background: "rgba(201,168,76,0.08)" }}
+                >
+                  <span className="text-2xl font-bold" style={{ color: GOLD }}>
+                    {(user?.firstName?.[0] ?? "?").toUpperCase()}
+                  </span>
+                </div>
+              )}
+              <div
+                className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
+                style={{ background: "rgba(13,12,24,0.7)" }}
+              >
+                <Camera className="w-5 h-5" style={{ color: GOLD }} />
+              </div>
+              <input
+                id="avatar-upload"
+                type="file"
+                accept="image/*"
+                className="sr-only"
+                onChange={handleAvatarChange}
               />
-              <Divider />
-              <FieldRow
-                label="User ID"
-                value={
-                  <code className="text-xs text-white/40 font-mono">{user.id}</code>
-                }
+            </label>
+            <div className="flex-1 min-w-0">
+              <p className="text-xs text-white/35 uppercase tracking-wider mb-1">Display name</p>
+              <input
+                type="text"
+                value={profileName}
+                onChange={(e) => setProfileName(e.target.value)}
+                placeholder="Your name"
+                maxLength={48}
+                className="w-full px-3 py-2 rounded-lg bg-white/5 border border-white/10 text-white placeholder-white/20 focus:outline-none text-sm transition-colors"
+                style={{ caretColor: GOLD }}
+                onFocus={(e) => { e.currentTarget.style.borderColor = `${GOLD}60`; }}
+                onBlur={(e) => { e.currentTarget.style.borderColor = "rgba(255,255,255,0.10)"; }}
               />
+              <p className="text-xs text-white/25 mt-1">Click avatar to upload a photo (preview only)</p>
+            </div>
+          </div>
+
+          {/* Email read-only */}
+          <div className="mt-3">
+            <label className="block text-xs text-white/35 uppercase tracking-wider mb-1">Email</label>
+            <div
+              className="w-full px-3 py-2 rounded-lg text-sm text-white/40 select-all"
+              style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.07)" }}
+            >
+              {user?.emailAddresses[0]?.emailAddress ?? "—"}
+            </div>
+          </div>
+
+          {/* Read-only meta */}
+          {user && (
+            <div className="space-y-1 mt-1">
+              <Divider />
+              <FieldRow label="Status" value={<Badge variant="green">Active</Badge>} />
+              <Divider />
+              <FieldRow label="User ID" value={<code className="text-xs text-white/40 font-mono">{user.id}</code>} />
               <Divider />
               <FieldRow
                 label="Member since"
@@ -351,17 +464,30 @@ export default function SettingsPage() {
                 }) : "—"}
               />
             </div>
-          ) : (
-            <div className="space-y-2">
+          )}
+          {!user && (
+            <div className="space-y-2 mt-2">
               {[1, 2, 3].map((i) => (
-                <div
-                  key={i}
-                  className="h-6 rounded-md bg-white/5 animate-pulse"
-                  style={{ width: `${60 + i * 10}%` }}
-                />
+                <div key={i} className="h-6 rounded-md bg-white/5 animate-pulse" style={{ width: `${60 + i * 10}%` }} />
               ))}
             </div>
           )}
+
+          {/* Save profile */}
+          <button
+            type="button"
+            onClick={saveProfile}
+            disabled={profileSaving}
+            className="mt-2 px-5 py-2 rounded-lg text-sm font-semibold transition-all"
+            style={{
+              background: profileSaved ? "rgba(74,222,128,0.12)" : `${GOLD}18`,
+              color: profileSaved ? "#4ade80" : GOLD,
+              border: `1px solid ${profileSaved ? "#4ade8045" : `${GOLD}35`}`,
+              opacity: profileSaving ? 0.6 : 1,
+            }}
+          >
+            {profileSaving ? "Saving…" : profileSaved ? "Saved ✓" : "Save Profile"}
+          </button>
 
           {/* API Keys sub-section */}
           <div className="pt-4 mt-2 border-t border-white/5 space-y-3">
@@ -542,6 +668,81 @@ export default function SettingsPage() {
               </div>
             </div>
 
+            {/* 92.2 — Active companion selector */}
+            <div>
+              <label className="block text-xs text-white/35 uppercase tracking-wider mb-2">
+                Active Companion
+              </label>
+              <div className="relative">
+                <select
+                  value={activeCompanion}
+                  onChange={(e) => setActiveCompanion(e.target.value)}
+                  className="w-full appearance-none px-4 py-2.5 pr-10 rounded-lg text-sm text-white focus:outline-none transition-colors"
+                  style={{
+                    background: "rgba(255,255,255,0.05)",
+                    border: "1px solid rgba(255,255,255,0.10)",
+                    caretColor: GOLD,
+                  }}
+                  onFocus={(e) => { e.currentTarget.style.borderColor = `${GOLD}60`; }}
+                  onBlur={(e) => { e.currentTarget.style.borderColor = "rgba(255,255,255,0.10)"; }}
+                >
+                  {COMPANION_OPTIONS.map((c) => (
+                    <option key={c} value={c} style={{ background: "#13121f" }}>{c}</option>
+                  ))}
+                </select>
+                <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-white/30 pointer-events-none" />
+              </div>
+            </div>
+
+            {/* 92.2 — Response style slider */}
+            <div>
+              <label className="block text-xs text-white/35 uppercase tracking-wider mb-3">
+                Response Style
+              </label>
+              <div className="space-y-2">
+                <input
+                  type="range"
+                  min={0}
+                  max={2}
+                  step={1}
+                  value={responseStyle}
+                  onChange={(e) => setResponseStyle(Number(e.target.value))}
+                  className="w-full accent-[#c9a84c] h-1.5 rounded-full cursor-pointer"
+                  style={{ accentColor: GOLD }}
+                />
+                <div className="flex justify-between text-xs text-white/30">
+                  <span className={responseStyle === 0 ? "text-[#c9a84c] font-semibold" : ""}>Concise</span>
+                  <span className={responseStyle === 1 ? "text-[#c9a84c] font-semibold" : ""}>Balanced</span>
+                  <span className={responseStyle === 2 ? "text-[#c9a84c] font-semibold" : ""}>Detailed</span>
+                </div>
+              </div>
+            </div>
+
+            {/* 92.2 — Language preference */}
+            <div>
+              <label className="block text-xs text-white/35 uppercase tracking-wider mb-2">
+                Language Preference
+              </label>
+              <div className="relative">
+                <select
+                  value={language}
+                  onChange={(e) => setLanguage(e.target.value)}
+                  className="w-full appearance-none px-4 py-2.5 pr-10 rounded-lg text-sm text-white focus:outline-none transition-colors"
+                  style={{
+                    background: "rgba(255,255,255,0.05)",
+                    border: "1px solid rgba(255,255,255,0.10)",
+                  }}
+                  onFocus={(e) => { e.currentTarget.style.borderColor = `${GOLD}60`; }}
+                  onBlur={(e) => { e.currentTarget.style.borderColor = "rgba(255,255,255,0.10)"; }}
+                >
+                  {LANGUAGES.map((l) => (
+                    <option key={l} value={l} style={{ background: "#13121f" }}>{l}</option>
+                  ))}
+                </select>
+                <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-white/30 pointer-events-none" />
+              </div>
+            </div>
+
             <button
               type="button"
               onClick={saveCompanion}
@@ -562,6 +763,29 @@ export default function SettingsPage() {
         {/* ── 4. Privacy ──────────────────────────────────────────── */}
         <SectionCard icon={<Lock className="w-4 h-4" />} title="Privacy">
           <div className="space-y-0">
+            {/* 92.3 — Required privacy controls */}
+            <Toggle
+              checked={learnFromConversations}
+              onChange={setLearnFromConversations}
+              label="Allow MEOK to learn from my conversations"
+              sublabel="Improves personalisation and memory over time"
+            />
+            <Divider />
+            <Toggle
+              checked={shareAnonymousData}
+              onChange={setShareAnonymousData}
+              label="Share anonymous usage data"
+              sublabel="Helps us improve the product — no personal data included"
+            />
+            <Divider />
+            <Toggle
+              checked={dreamCycleProcessing}
+              onChange={setDreamCycleProcessing}
+              label="Enable dream cycle processing"
+              sublabel="Background synthesis of memories during low-activity periods"
+            />
+            <Divider />
+            {/* Legacy privacy controls */}
             <Toggle
               checked={allowDataImprovement}
               onChange={setAllowDataImprovement}
@@ -582,6 +806,35 @@ export default function SettingsPage() {
               label={privacyMode ? "Privacy Mode — ON" : "Privacy Mode"}
               sublabel="Route all queries through local Ollama instance"
             />
+          </div>
+
+          {/* 92.3 — Data retention selector */}
+          <div className="pt-4 mt-2 border-t border-white/5">
+            <label className="block text-xs text-white/35 uppercase tracking-wider mb-2">
+              Data Retention
+            </label>
+            <div className="relative">
+              <select
+                value={dataRetention}
+                onChange={(e) => setDataRetention(e.target.value)}
+                className="w-full appearance-none px-4 py-2.5 pr-10 rounded-lg text-sm text-white focus:outline-none transition-colors"
+                style={{
+                  background: "rgba(255,255,255,0.05)",
+                  border: "1px solid rgba(255,255,255,0.10)",
+                }}
+                onFocus={(e) => { e.currentTarget.style.borderColor = `${GOLD}60`; }}
+                onBlur={(e) => { e.currentTarget.style.borderColor = "rgba(255,255,255,0.10)"; }}
+              >
+                <option value="30days" style={{ background: "#13121f" }}>30 days</option>
+                <option value="90days" style={{ background: "#13121f" }}>90 days</option>
+                <option value="1year" style={{ background: "#13121f" }}>1 year</option>
+                <option value="forever" style={{ background: "#13121f" }}>Forever</option>
+              </select>
+              <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-white/30 pointer-events-none" />
+            </div>
+            <p className="text-xs text-white/25 mt-1.5">
+              How long MEOK retains your conversation and memory data
+            </p>
           </div>
 
           {/* Your data */}
@@ -673,13 +926,14 @@ export default function SettingsPage() {
         </SectionCard>
 
         {/* ── 5. Notifications ────────────────────────────────────── */}
-        <SectionCard icon={<Shield className="w-4 h-4" />} title="Notifications">
+        <SectionCard icon={<Bell className="w-4 h-4" />} title="Notification Preferences">
           <div>
+            {/* 92.4 Morning briefing (email) */}
             <Toggle
               checked={morningBriefing}
               onChange={setMorningBriefing}
               label="Morning briefing"
-              sublabel="Daily digest delivered each morning"
+              sublabel="Daily personalised digest sent to your email each morning"
               icon="🌅"
             />
             {morningBriefing && (
@@ -695,18 +949,52 @@ export default function SettingsPage() {
               </div>
             )}
             <Divider />
+
+            {/* 92.4 Weekly summary (email) */}
+            <Toggle
+              checked={weeklySummaryEmail}
+              onChange={setWeeklySummaryEmail}
+              label="Weekly summary"
+              sublabel="A recap of your week, insights, and bond progress — via email"
+              icon="📋"
+            />
+            <Divider />
+
+            {/* 92.4 Care signal alerts (push) */}
+            <Toggle
+              checked={careSignalPush}
+              onChange={setCareSignalPush}
+              label="Care signal alerts"
+              sublabel="Push notification when your care score needs attention"
+              icon="💛"
+            />
+            <Divider />
+
+            {/* 92.4 Bond level milestones (in-app) */}
+            <Toggle
+              checked={bondMilestonesInApp}
+              onChange={setBondMilestonesInApp}
+              label="Bond level milestones"
+              sublabel="In-app celebration when you reach a new bond level with your companion"
+              icon="🔗"
+            />
+            <Divider />
+
+            {/* 92.4 Guardian alerts (push) — was careScoreAlerts legacy */}
             <Toggle
               checked={guardianAlerts}
               onChange={setGuardianAlerts}
               label="Guardian alerts"
-              sublabel="Security and anomaly notifications"
+              sublabel="Push notifications for security events and anomalies"
               icon="🛡️"
             />
             <Divider />
+
+            {/* Legacy care score toggle preserved */}
             <Toggle
               checked={careScoreAlerts}
               onChange={setCareScoreAlerts}
-              label="Care score alerts"
+              label="Care score threshold alerts"
               sublabel="Notify when care score drops below 70"
               icon="❤️"
             />

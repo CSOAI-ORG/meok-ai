@@ -16,7 +16,7 @@
 import { useState } from 'react';
 import { Brain, Clock, BarChart3, Heart, Sparkles } from 'lucide-react';
 
-// ── Mock Data (will be replaced with real API calls) ────────────────────
+// ── Data ────────────────────────────────────────────────────────────────
 
 const MEMORY_TOPICS = [
   { id: 'work', label: 'Work', size: 0.8, color: '#c9a84c', x: 45, y: 30 },

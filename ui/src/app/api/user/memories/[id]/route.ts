@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { auth } from '@clerk/nextjs/server'
+import { requireAuth } from '@/lib/api-auth'
 
 // DELETE /api/user/memories/:id
 // Stub — returns success. Real deletion requires SOV3 support.
@@ -7,11 +7,9 @@ export async function DELETE(
   _req: NextRequest,
   { params }: { params: Promise<{ id: string }> },
 ) {
-  const { userId } = await auth()
-
-  if (!userId) {
-    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
-  }
+  const authResult = await requireAuth()
+  if (authResult.error) return authResult.error
+  const { userId } = authResult
 
   const { id } = await params
 
@@ -21,7 +19,7 @@ export async function DELETE(
 
   // Attempt SOV3 delete_memory; fall back to acknowledging deletion
   try {
-    const sov3Url = process.env.SOV3_API_URL || 'http://localhost:3100';
+    const sov3Url = process.env.SOV3_URL || process.env.SOV3_API_URL || 'http://localhost:3101';
     const res = await fetch(`${sov3Url}/mcp`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },

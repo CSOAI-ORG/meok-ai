@@ -3,185 +3,309 @@
 import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
-import {
-  Menu,
-  X,
-  BookOpen,
-  FlaskConical,
-  Map,
-  Terminal,
-  HelpCircle,
-  Github,
-  Hourglass,
-  ChevronDown,
-  Users,
-  Newspaper,
-  GitCommit,
-  Lightbulb,
-} from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 
 interface MarketingNavProps {
   activePage?: string;
 }
 
-// ─── DATA ─────────────────────────────────────────────────────────────────────
+// ─── BRAND TOKENS ─────────────────────────────────────────────────────────────
 
-interface SubPage {
+const DEEP = "#0d0c18";
+const GOLD = "#c9a84c";
+
+// ─── NAV DATA ─────────────────────────────────────────────────────────────────
+
+interface NavItem {
   href: string;
   icon: string;
   label: string;
   desc: string;
 }
 
-interface Product {
+interface NavPillar {
+  key: string;
+  label: string;
   href: string;
-  icon: string;
-  name: string;
-  color: string;
-  sub: SubPage[];
+  accentColor: string;
+  items: NavItem[];
 }
 
-const PRODUCTS: Product[] = [
+const NAV_PILLARS: NavPillar[] = [
   {
-    href: "/personal",
-    icon: "🥚",
-    name: "Personal OS",
-    color: "#c9a84c",
-    sub: [
-      { href: "/what-is-meok", icon: "❓", label: "What is MEOK?", desc: "Sovereign AI OS explained — not a chatbot" },
-      { href: "/memory", icon: "🧠", label: "Memory", desc: "Lifelong context that remembers you" },
-      { href: "/personal/care", icon: "💛", label: "Care Dimensions", desc: "Emotional awareness & wellbeing layers" },
-      { href: "/personal/morning-brief", icon: "☀️", label: "Morning Brief", desc: "Start every day with clarity" },
-      { href: "/characters", icon: "✨", label: "Characters", desc: "Your cast of AI companions" },
-      { href: "/birth", icon: "🎂", label: "Birth Ceremony", desc: "Hatch your sovereign AI companion" },
-      { href: "/os/sovereign", icon: "🔐", label: "Sovereign AI", desc: "Your data, your keys — zero training, always" },
-      { href: "/os/any-llm", icon: "🔗", label: "Any LLM", desc: "GPT, Claude, Gemini — your memory travels with you" },
+    key: "os",
+    label: "OS",
+    href: "/os",
+    accentColor: GOLD,
+    items: [
+      { href: "/os", icon: "🖥️", label: "Sovereign OS", desc: "The full MEOK OS overview" },
+      { href: "/os/any-llm", icon: "🔗", label: "Any LLM", desc: "Multi-model routing — GPT, Claude, Gemini & more" },
+      { href: "/os/consciousness", icon: "🧠", label: "Consciousness", desc: "4 modes of AI awareness" },
+      { href: "/os/sovereign", icon: "🔐", label: "Sovereign Data", desc: "Encrypted memory — yours, always" },
+      { href: "/birth", icon: "🥚", label: "Birth Ceremony", desc: "Hatch your sovereign AI companion" },
     ],
   },
   {
+    key: "characters",
+    label: "Characters",
+    href: "/characters",
+    accentColor: "#F472B6",
+    items: [
+      { href: "/characters", icon: "🗂️", label: "All Characters", desc: "Browse every companion" },
+      { href: "/characters/aria", icon: "✨", label: "Aria", desc: "The Nurturer" },
+      { href: "/characters/sage", icon: "📚", label: "Sage", desc: "The Wise Counsel" },
+      { href: "/characters/marcus", icon: "⚔️", label: "Marcus", desc: "The Protector" },
+      { href: "/characters/luna", icon: "🌙", label: "Luna", desc: "The Dreamer" },
+      { href: "/characters/gabriel", icon: "🕊️", label: "Gabriel", desc: "The Spiritual Guide" },
+      { href: "/characters/shanti", icon: "🌸", label: "Shanti", desc: "The Healer" },
+      { href: "/characters/scout", icon: "🔭", label: "Scout", desc: "The Explorer" },
+      { href: "/characters#compare", icon: "⚖️", label: "Compare Characters", desc: "Find your perfect match" },
+    ],
+  },
+  {
+    key: "work",
+    label: "Work",
     href: "/work",
-    icon: "⚡",
-    name: "Work OS",
-    color: "#3B82F6",
-    sub: [
+    accentColor: "#3B82F6",
+    items: [
       { href: "/work", icon: "⚡", label: "Work OS", desc: "Your AI works while you sleep" },
       { href: "/work/orion", icon: "🎯", label: "Orion — The Hunter", desc: "Overnight research & intelligence briefs" },
       { href: "/work/riri", icon: "🔨", label: "Riri — The Builder", desc: "Builds from your spec while you're away" },
       { href: "/work/hourman", icon: "📅", label: "Hourman — The Planner", desc: "Daily sprint planning before you wake" },
       { href: "/ralph", icon: "🤖", label: "Ralph Mode", desc: "Executive AI agent — Elite tier" },
-      { href: "/os/any-llm", icon: "🔗", label: "Any LLM", desc: "Plug in GPT, Gemini, Claude & more" },
-      { href: "/os/sovereign", icon: "🔐", label: "Sovereign Data", desc: "Encrypted. Yours. Never trained on." },
     ],
   },
   {
-    href: "/family",
-    icon: "🛡️",
-    name: "Family OS",
-    color: "#7BC47F",
-    sub: [
-      { href: "/family", icon: "🏠", label: "Overview", desc: "Protect & connect your whole family" },
-      { href: "/guardian", icon: "👁️", label: "Guardian 24/7", desc: "Round-the-clock family safety layer" },
+    key: "guardian",
+    label: "Guardian",
+    href: "/guardian",
+    accentColor: "#7BC47F",
+    items: [
+      { href: "/guardian", icon: "👁️", label: "Guardian 24/7", desc: "Round-the-clock protection layer" },
+      { href: "/guardian/children", icon: "🧒", label: "Children's Safety", desc: "Smart filters & parental insight" },
       { href: "/guardian/elderly", icon: "🤝", label: "Elder Care", desc: "Companionship & health monitoring" },
-      { href: "/guardian/children", icon: "🧒", label: "Child Safety", desc: "Smart filters & parental insight" },
-      { href: "/guardian/scam-stop", icon: "🛡️", label: "Scam Stop", desc: "Protect your family from fraud and manipulation" },
-      { href: "/guardian/personal", icon: "🔒", label: "Personal Guardian", desc: "Protect yourself from contracts and manipulation" },
-      { href: "/council", icon: "🏛️", label: "Character Council", desc: "Family-wide AI governance" },
+      { href: "/guardian/scam-stop", icon: "🛡️", label: "Scam Protection", desc: "Protect your family from fraud" },
+      { href: "/guardian/personal", icon: "🔒", label: "Relationship Shield", desc: "Guard against manipulation & contracts" },
     ],
   },
   {
-    href: "/team",
-    icon: "👥",
-    name: "Team OS",
-    color: "#A78BFA",
-    sub: [
-      { href: "/team", icon: "👥", label: "Overview", desc: "AI intelligence for your whole team" },
-      { href: "/smb", icon: "🏢", label: "SMB Layer", desc: "Small-business power tools" },
-      { href: "/team", icon: "📡", label: "Team Intelligence", desc: "Shared context & collective memory" },
-    ],
-  },
-  {
-    href: "/characters",
-    icon: "✨",
-    name: "Characters",
-    color: "#F472B6",
-    sub: [
-      { href: "/characters", icon: "🗂️", label: "All Archetypes", desc: "Browse all 8 archetypes & 27 characters" },
-      { href: "/characters/archetypes", icon: "✨", label: "Character Gallery", desc: "Every companion, every archetype" },
-      { href: "/birth", icon: "🥚", label: "Birth Ceremony", desc: "Hatch your sovereign companion" },
-      { href: "/characters#seeker", icon: "🕊️", label: "Spiritual — The Seeker", desc: "Ananda · Gabriel · Shanti" },
-    ],
-  },
-  {
+    key: "gaming",
+    label: "Gaming",
     href: "/gaming",
-    icon: "🎮",
-    name: "Gaming",
-    color: "#FB923C",
-    sub: [
-      { href: "/gaming", icon: "🎮", label: "Overview", desc: "AI-powered gaming companion" },
-      { href: "/gaming/live-copilot", icon: "⚡", label: "Live Co-Pilot", desc: "Real-time in-game guidance" },
-      { href: "/gaming/post-game", icon: "📊", label: "Post-Game Analyst", desc: "Break down every session" },
-      { href: "/gaming/strategy", icon: "♟️", label: "Strategy Builder", desc: "Plan your meta & loadouts" },
-      { href: "/gaming/platforms", icon: "🔌", label: "All Platforms", desc: "PC, console & mobile support" },
-      { href: "/gaming/companion", icon: "🤝", label: "Play With Your AI", desc: "Your companion that knows your playstyle" },
-      { href: "/gaming/predator-stop", icon: "🚫", label: "Predator Stop", desc: "Keep children safe in online gaming" },
+    accentColor: "#FB923C",
+    items: [
+      { href: "/gaming", icon: "🎮", label: "Gaming OS", desc: "AI-powered gaming companion" },
+      { href: "/gaming/strategy", icon: "♟️", label: "Genre Coaching", desc: "Master any game with AI coaching" },
+      { href: "/gaming/post-game", icon: "📊", label: "Stats & Analytics", desc: "Deep post-session analysis" },
+      { href: "/gaming/live-copilot", icon: "👥", label: "Community", desc: "Play with your AI, share with others" },
     ],
   },
 ];
 
-interface ResourceLink {
-  href: string;
-  label: string;
-  desc: string;
-  icon: React.ReactNode;
+// ─── HELPERS ──────────────────────────────────────────────────────────────────
+
+function useOutsideClick(ref: React.RefObject<HTMLElement | null>, cb: () => void) {
+  useEffect(() => {
+    const handler = (e: MouseEvent) => {
+      if (ref.current && !ref.current.contains(e.target as Node)) cb();
+    };
+    document.addEventListener("mousedown", handler);
+    return () => document.removeEventListener("mousedown", handler);
+  }, [ref, cb]);
 }
 
-const RESOURCE_LINKS: ResourceLink[] = [
-  { href: "/how-it-works", label: "How it works", desc: "The MEOK OS explained step by step", icon: <Lightbulb className="w-4 h-4" /> },
-  { href: "/characters", label: "Characters", desc: "Your cast of AI companions", icon: <Users className="w-4 h-4" /> },
-  { href: "/blog", label: "Blog", desc: "Insights, launches & stories", icon: <BookOpen className="w-4 h-4" /> },
-  { href: "/changelog", label: "Changelog", desc: "What's new in MEOK", icon: <GitCommit className="w-4 h-4" /> },
-  { href: "/press", label: "Press", desc: "Media kit & coverage", icon: <Newspaper className="w-4 h-4" /> },
-  { href: "/labs", label: "Labs", desc: "Experiments from our research team", icon: <FlaskConical className="w-4 h-4" /> },
-  { href: "/roadmap", label: "Roadmap", desc: "What we're building next", icon: <Map className="w-4 h-4" /> },
-  { href: "/terminal", label: "Terminal", desc: "Developer & power-user tools", icon: <Terminal className="w-4 h-4" /> },
-  { href: "/faq", label: "FAQ", desc: "Common questions answered", icon: <HelpCircle className="w-4 h-4" /> },
-  { href: "/open-source", label: "Open Source", desc: "Our public repositories", icon: <Github className="w-4 h-4" /> },
-  { href: "/waitlist", label: "Waitlist", desc: "Get early access to MEOK", icon: <Hourglass className="w-4 h-4" /> },
-];
+// ─── DROPDOWN PANEL ───────────────────────────────────────────────────────────
 
-const PRIMARY_LINKS = [
-  { href: "/personal", label: "Personal" },
-  { href: "/work", label: "Work" },
-  { href: "/family", label: "Family" },
-  { href: "/guardian", label: "Guardian" },
-  { href: "/pricing", label: "Pricing" },
-];
+interface DropdownPanelProps {
+  pillar: NavPillar;
+  open: boolean;
+  pathname: string;
+  onClose: () => void;
+}
 
-const MORE_LINKS = [
-  { href: "/gaming", label: "Gaming", icon: "🎮" },
-  { href: "/team", label: "Team", icon: "👥" },
-  { href: "/labs", label: "Labs", icon: "🧪" },
-  { href: "/blog", label: "Blog", icon: "📝" },
-  { href: "/roadmap", label: "Roadmap", icon: "🗺️" },
-  { href: "/about", label: "About", icon: "💡" },
-];
+function DropdownPanel({ pillar, open, pathname, onClose }: DropdownPanelProps) {
+  const cols = pillar.items.length <= 4 ? pillar.items.length : Math.ceil(pillar.items.length / 2);
 
-const ALL_NAV_LINKS = [
-  ...PRIMARY_LINKS,
-  ...MORE_LINKS.map(({ href, label }) => ({ href, label })),
-];
+  return (
+    <div
+      role="menu"
+      aria-label={`${pillar.label} navigation`}
+      style={{
+        position: "absolute",
+        top: "calc(100% + 8px)",
+        left: "50%",
+        transform: open
+          ? "translateX(-50%) translateY(0) scale(1)"
+          : "translateX(-50%) translateY(-6px) scale(0.97)",
+        opacity: open ? 1 : 0,
+        pointerEvents: open ? "auto" : "none",
+        transition: "opacity 0.18s ease, transform 0.18s ease",
+        zIndex: 60,
+        minWidth: "320px",
+        width: pillar.items.length > 4 ? "640px" : "340px",
+        background: `${DEEP}f5`,
+        backdropFilter: "blur(24px)",
+        WebkitBackdropFilter: "blur(24px)",
+        border: "1px solid rgba(255,255,255,0.08)",
+        borderRadius: "16px",
+        boxShadow: `0 24px 64px rgba(0,0,0,0.55), 0 2px 0 rgba(255,255,255,0.04) inset`,
+        overflow: "hidden",
+      }}
+    >
+      {/* Panel header */}
+      <div
+        className="flex items-center gap-2.5 px-5 py-3"
+        style={{ borderBottom: "1px solid rgba(255,255,255,0.07)" }}
+      >
+        <span className="text-sm font-bold tracking-wide" style={{ color: pillar.accentColor }}>
+          {pillar.label}
+        </span>
+        <span className="text-xs" style={{ color: "rgba(255,255,255,0.3)" }}>
+          — select a feature
+        </span>
+      </div>
 
-// ─── COMPONENT ────────────────────────────────────────────────────────────────
+      {/* Grid of items */}
+      <div
+        className="p-3"
+        style={{
+          display: "grid",
+          gridTemplateColumns: `repeat(${Math.min(cols, 4)}, minmax(0, 1fr))`,
+          gap: "6px",
+        }}
+      >
+        {pillar.items.map((item) => {
+          const isActive = pathname === item.href || pathname.startsWith(item.href + "/");
+          return (
+            <Link
+              key={item.href}
+              href={item.href}
+              role="menuitem"
+              onClick={onClose}
+              className="flex flex-col gap-1.5 rounded-xl p-3 transition-all duration-150"
+              style={{
+                background: isActive ? `${pillar.accentColor}22` : "rgba(255,255,255,0.03)",
+                border: `1px solid ${isActive ? pillar.accentColor + "44" : "rgba(255,255,255,0.05)"}`,
+              }}
+              onMouseEnter={(e) => {
+                if (!isActive) {
+                  const el = e.currentTarget as HTMLAnchorElement;
+                  el.style.background = `${pillar.accentColor}18`;
+                  el.style.border = `1px solid ${pillar.accentColor}44`;
+                }
+              }}
+              onMouseLeave={(e) => {
+                if (!isActive) {
+                  const el = e.currentTarget as HTMLAnchorElement;
+                  el.style.background = "rgba(255,255,255,0.03)";
+                  el.style.border = "1px solid rgba(255,255,255,0.05)";
+                }
+              }}
+            >
+              <span className="text-xl leading-none">{item.icon}</span>
+              <span
+                className="text-sm font-semibold leading-tight"
+                style={{ color: isActive ? pillar.accentColor : "rgba(255,255,255,0.88)" }}
+              >
+                {item.label}
+              </span>
+              <span className="text-xs leading-snug" style={{ color: "rgba(255,255,255,0.4)" }}>
+                {item.desc}
+              </span>
+            </Link>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
+// ─── MOBILE ACCORDION ─────────────────────────────────────────────────────────
+
+interface MobileAccordionProps {
+  pillar: NavPillar;
+  pathname: string;
+  onClose: () => void;
+}
+
+function MobileAccordion({ pillar, pathname, onClose }: MobileAccordionProps) {
+  const [open, setOpen] = useState(false);
+  const isActive =
+    pathname === pillar.href || pathname.startsWith(pillar.href + "/");
+
+  return (
+    <div className="border-b" style={{ borderColor: "rgba(255,255,255,0.07)" }}>
+      <button
+        className="w-full flex items-center justify-between px-6 py-4 text-left"
+        onClick={() => setOpen((v) => !v)}
+        aria-expanded={open}
+      >
+        <span
+          className="text-base font-semibold"
+          style={{ color: isActive ? pillar.accentColor : "rgba(255,255,255,0.85)" }}
+        >
+          {pillar.label}
+        </span>
+        <ChevronDown
+          className={`w-4 h-4 transition-transform duration-200 ${open ? "rotate-180" : ""}`}
+          style={{ color: "rgba(255,255,255,0.4)" }}
+          aria-hidden="true"
+        />
+      </button>
+
+      {open && (
+        <div className="pb-3 px-4 space-y-1">
+          {pillar.items.map((item) => {
+            const itemActive = pathname === item.href || pathname.startsWith(item.href + "/");
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="flex items-center gap-3 px-3 py-2.5 rounded-xl transition-colors"
+                style={{
+                  background: itemActive ? `${pillar.accentColor}18` : "transparent",
+                  color: itemActive ? pillar.accentColor : "rgba(255,255,255,0.72)",
+                }}
+                onClick={onClose}
+                onMouseEnter={(e) => {
+                  if (!itemActive) {
+                    (e.currentTarget as HTMLAnchorElement).style.background = "rgba(255,255,255,0.06)";
+                  }
+                }}
+                onMouseLeave={(e) => {
+                  if (!itemActive) {
+                    (e.currentTarget as HTMLAnchorElement).style.background = "transparent";
+                  }
+                }}
+              >
+                <span className="text-lg leading-none flex-shrink-0">{item.icon}</span>
+                <div>
+                  <div className="text-sm font-semibold leading-tight">{item.label}</div>
+                  <div className="text-xs mt-0.5" style={{ color: "rgba(255,255,255,0.38)" }}>
+                    {item.desc}
+                  </div>
+                </div>
+              </Link>
+            );
+          })}
+        </div>
+      )}
+    </div>
+  );
+}
+
+// ─── MAIN COMPONENT ───────────────────────────────────────────────────────────
 
 export function MarketingNav({ activePage }: MarketingNavProps) {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [hoveredProduct, setHoveredProduct] = useState<string | null>(null);
-  const [resourcesOpen, setResourcesOpen] = useState(false);
+  const [openPillar, setOpenPillar] = useState<string | null>(null);
   const [scrolled, setScrolled] = useState(false);
-  const subBarRef = useRef<HTMLDivElement>(null);
-  const resourcesRef = useRef<HTMLDivElement>(null);
-  const closeTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  // Refs for each pillar trigger + the whole nav
+  const pillarRefs = useRef<Record<string, HTMLDivElement | null>>({});
+  const navRef = useRef<HTMLDivElement>(null);
+  const closeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -189,175 +313,173 @@ export function MarketingNav({ activePage }: MarketingNavProps) {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  // Close on outside click
+  useOutsideClick(navRef, () => setOpenPillar(null));
+
+  // Close mobile on route change
+  useEffect(() => {
+    setMobileOpen(false);
+    setOpenPillar(null);
+  }, [pathname]);
+
+  // Cleanup timers
+  useEffect(() => () => { if (closeTimerRef.current) clearTimeout(closeTimerRef.current); }, []);
+
   function scheduleClose() {
-    if (closeTimeoutRef.current) clearTimeout(closeTimeoutRef.current);
-    closeTimeoutRef.current = setTimeout(() => setHoveredProduct(null), 80);
+    if (closeTimerRef.current) clearTimeout(closeTimerRef.current);
+    closeTimerRef.current = setTimeout(() => setOpenPillar(null), 120);
   }
   function cancelClose() {
-    if (closeTimeoutRef.current) clearTimeout(closeTimeoutRef.current);
+    if (closeTimerRef.current) clearTimeout(closeTimerRef.current);
   }
-
-  useEffect(() => {
-    return () => {
-      if (closeTimeoutRef.current) clearTimeout(closeTimeoutRef.current);
-    };
-  }, []);
-
-  // Close resources dropdown on outside click
-  useEffect(() => {
-    const handler = (e: MouseEvent) => {
-      if (resourcesRef.current && !resourcesRef.current.contains(e.target as Node)) {
-        setResourcesOpen(false);
-      }
-    };
-    document.addEventListener("mousedown", handler);
-    return () => document.removeEventListener("mousedown", handler);
-  }, []);
-
-  const activeProduct = PRODUCTS.find(
-    (p) => pathname === p.href || pathname.startsWith(p.href + "/")
-  );
-
-  const hovered = hoveredProduct ? PRODUCTS.find((p) => p.href === hoveredProduct) : null;
 
   return (
     <>
-      {/* ─── TOP BAR ─── */}
       <header
         className="fixed top-0 left-0 right-0 z-50 transition-shadow"
         style={{
-          background: "rgba(250,249,246,0.90)",
-          backdropFilter: "blur(16px)",
-          WebkitBackdropFilter: "blur(16px)",
-          borderBottom: "1px solid #e8e4dc",
-          boxShadow: scrolled ? "0 1px 12px rgba(26,26,46,0.07)" : "none",
+          background: scrolled
+            ? `rgba(13,12,24,0.97)`
+            : `rgba(13,12,24,0.92)`,
+          backdropFilter: "blur(20px)",
+          WebkitBackdropFilter: "blur(20px)",
+          borderBottom: `1px solid rgba(255,255,255,${scrolled ? "0.08" : "0.05"})`,
+          boxShadow: scrolled ? "0 2px 24px rgba(0,0,0,0.45)" : "none",
         }}
       >
         <div
+          ref={navRef}
           className="max-w-7xl mx-auto px-6 flex items-center justify-between"
-          style={{ height: "52px" }}
+          style={{ height: "56px" }}
         >
-          {/* Logo */}
+          {/* ─── LOGO ─── */}
           <Link
             href="/"
             aria-label="MEOK.AI — home"
-            className="font-black text-base tracking-tight text-[#111111] flex-shrink-0"
+            className="font-black text-base tracking-tight flex-shrink-0"
+            style={{ color: "#ffffff" }}
           >
-            MEOK<span className="text-[#c9a84c]">.AI</span>
+            MEOK<span style={{ color: GOLD }}>.AI</span>
           </Link>
 
-          {/* Desktop primary links + More dropdown */}
-          <nav aria-label="Primary navigation" className="hidden md:flex items-center gap-7 text-sm text-[#4a4a3a]">
-            {PRIMARY_LINKS.map((l) => (
-              <Link
-                key={l.href}
-                href={l.href}
-                className={`hover:text-[#111111] transition-colors font-medium ${
-                  pathname === l.href || pathname.startsWith(l.href + "/") || activePage === l.label.toLowerCase()
-                    ? "text-[#111111] font-semibold"
-                    : ""
-                }`}
-              >
-                {l.label}
-              </Link>
-            ))}
+          {/* ─── DESKTOP NAV ─── */}
+          <nav
+            aria-label="Primary navigation"
+            className="hidden md:flex items-center"
+            style={{ gap: "4px" }}
+          >
+            {NAV_PILLARS.map((pillar) => {
+              const isActive =
+                pathname === pillar.href ||
+                pathname.startsWith(pillar.href + "/") ||
+                activePage === pillar.key;
+              const isOpen = openPillar === pillar.key;
 
-            {/* More dropdown trigger */}
-            <div ref={resourcesRef} className="relative">
-              <button
-                className="flex items-center gap-1 font-medium hover:text-[#111111] transition-colors"
-                onClick={() => setResourcesOpen((v) => !v)}
-                onMouseEnter={() => setResourcesOpen(true)}
-                aria-haspopup="true"
-                aria-expanded={resourcesOpen}
-                aria-controls="more-dropdown"
-              >
-                More
-                <ChevronDown
-                  className={`w-3.5 h-3.5 transition-transform duration-200 ${resourcesOpen ? "rotate-180" : ""}`}
-                  aria-hidden="true"
-                />
-              </button>
+              return (
+                <div
+                  key={pillar.key}
+                  ref={(el) => { pillarRefs.current[pillar.key] = el; }}
+                  className="relative"
+                  onMouseEnter={() => { cancelClose(); setOpenPillar(pillar.key); }}
+                  onMouseLeave={scheduleClose}
+                >
+                  <button
+                    className="flex items-center gap-1 px-3 py-2 rounded-lg text-sm font-medium transition-colors"
+                    style={{
+                      color: isActive || isOpen
+                        ? "#ffffff"
+                        : "rgba(255,255,255,0.62)",
+                      background: isOpen ? "rgba(255,255,255,0.07)" : "transparent",
+                    }}
+                    onClick={() => setOpenPillar(isOpen ? null : pillar.key)}
+                    aria-haspopup="menu"
+                    aria-expanded={isOpen}
+                  >
+                    {pillar.label}
+                    <ChevronDown
+                      className={`w-3.5 h-3.5 transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`}
+                      aria-hidden="true"
+                      style={{ color: isActive || isOpen ? GOLD : "rgba(255,255,255,0.38)" }}
+                    />
+                  </button>
 
-              {/* More panel */}
-              <nav
-                id="more-dropdown"
-                role="navigation"
-                aria-label="More pages"
-                className="absolute top-full right-0 mt-2 w-56 rounded-2xl overflow-hidden"
-                style={{
-                  background: "rgba(26,26,46,0.97)",
-                  backdropFilter: "blur(20px)",
-                  WebkitBackdropFilter: "blur(20px)",
-                  border: "1px solid rgba(255,255,255,0.10)",
-                  boxShadow: "0 16px 48px rgba(0,0,0,0.35)",
-                  opacity: resourcesOpen ? 1 : 0,
-                  transform: resourcesOpen ? "translateY(0) scale(1)" : "translateY(-8px) scale(0.97)",
-                  pointerEvents: resourcesOpen ? "auto" : "none",
-                  transition: "opacity 0.18s ease, transform 0.18s ease",
-                }}
-                onMouseLeave={() => setResourcesOpen(false)}
-              >
-                <div className="p-2">
-                  {MORE_LINKS.map((m) => (
-                    <Link
-                      key={m.label}
-                      href={m.href}
-                      className="flex items-center gap-3 px-3 py-2.5 rounded-xl transition-colors"
-                      style={{ color: "rgba(255,255,255,0.75)" }}
-                      onClick={() => setResourcesOpen(false)}
-                      onMouseEnter={(e) => {
-                        (e.currentTarget as HTMLAnchorElement).style.background = "rgba(255,255,255,0.07)";
-                        (e.currentTarget as HTMLAnchorElement).style.color = "rgba(255,255,255,1)";
-                      }}
-                      onMouseLeave={(e) => {
-                        (e.currentTarget as HTMLAnchorElement).style.background = "transparent";
-                        (e.currentTarget as HTMLAnchorElement).style.color = "rgba(255,255,255,0.75)";
-                      }}
-                    >
-                      <span className="text-base leading-none flex-shrink-0">{m.icon}</span>
-                      <span className="text-sm font-semibold leading-tight">{m.label}</span>
-                    </Link>
-                  ))}
+                  <DropdownPanel
+                    pillar={pillar}
+                    open={isOpen}
+                    pathname={pathname}
+                    onClose={() => setOpenPillar(null)}
+                  />
                 </div>
-              </nav>
-            </div>
+              );
+            })}
+
+            {/* Pricing — no dropdown */}
+            <Link
+              href="/pricing"
+              className="px-3 py-2 rounded-lg text-sm font-medium transition-colors"
+              style={{
+                color:
+                  pathname === "/pricing"
+                    ? "#ffffff"
+                    : "rgba(255,255,255,0.62)",
+              }}
+              onMouseEnter={(e) =>
+                ((e.currentTarget as HTMLAnchorElement).style.color = "#ffffff")
+              }
+              onMouseLeave={(e) => {
+                if (pathname !== "/pricing")
+                  (e.currentTarget as HTMLAnchorElement).style.color =
+                    "rgba(255,255,255,0.62)";
+              }}
+            >
+              Pricing
+            </Link>
           </nav>
 
-          {/* Desktop CTAs */}
+          {/* ─── DESKTOP CTAs ─── */}
           <div className="hidden md:flex items-center gap-4">
             <Link
               href="/login"
-              className="text-sm text-[#4a4a3a] hover:text-[#111111] transition-colors font-medium"
+              className="text-sm font-medium transition-colors"
+              style={{ color: "rgba(255,255,255,0.62)" }}
+              onMouseEnter={(e) =>
+                ((e.currentTarget as HTMLAnchorElement).style.color = "#ffffff")
+              }
+              onMouseLeave={(e) =>
+                ((e.currentTarget as HTMLAnchorElement).style.color =
+                  "rgba(255,255,255,0.62)")
+              }
             >
               Sign in
             </Link>
             <Link
               href="/birth"
-              className="text-sm px-5 py-2 rounded-full font-bold transition-colors"
-              style={{ background: "#c9a84c", color: "#111111" }}
+              className="text-sm px-5 py-2 rounded-full font-bold transition-all hover:brightness-110"
+              style={{ background: GOLD, color: DEEP }}
             >
-              Begin Ceremony 🥚
+              Hatch
             </Link>
           </div>
 
-          {/* Mobile: sign-in + hatch + hamburger */}
+          {/* ─── MOBILE CONTROLS ─── */}
           <div className="md:hidden flex items-center gap-2 flex-shrink-0">
             <Link
               href="/login"
-              className="text-xs text-[#4a4a3a] hover:text-[#111111] transition-colors font-medium px-2 py-1"
+              className="text-xs font-medium px-2 py-1 transition-colors"
+              style={{ color: "rgba(255,255,255,0.62)" }}
             >
               Sign in
             </Link>
             <Link
               href="/birth"
-              className="text-xs px-3 py-1.5 rounded-full font-bold whitespace-nowrap transition-colors"
-              style={{ background: "#c9a84c", color: "#111111" }}
+              className="text-xs px-3 py-1.5 rounded-full font-bold whitespace-nowrap transition-all hover:brightness-110"
+              style={{ background: GOLD, color: DEEP }}
             >
-              Begin Ceremony 🥚
+              Hatch 🥚
             </Link>
             <button
-              className="text-[#4a4a3a] hover:text-[#111111] transition-colors ml-1"
+              className="ml-1 transition-colors"
+              style={{ color: "rgba(255,255,255,0.7)" }}
               onClick={() => setMobileOpen((v) => !v)}
               aria-label="Toggle menu"
             >
@@ -366,220 +488,68 @@ export function MarketingNav({ activePage }: MarketingNavProps) {
           </div>
         </div>
 
-        {/* ─── PRODUCT SUB-BAR ─── */}
+        {/* ─── MOBILE FULL-SCREEN OVERLAY ─── */}
         <div
-          ref={subBarRef}
-          className="hidden md:block border-t border-[#e8e4dc]"
+          className="md:hidden fixed inset-0 z-40 flex flex-col overflow-y-auto"
           style={{
-            background: "rgba(255,255,255,0.95)",
-            backdropFilter: "blur(8px)",
-            WebkitBackdropFilter: "blur(8px)",
+            top: "56px",
+            background: `${DEEP}f8`,
+            backdropFilter: "blur(24px)",
+            WebkitBackdropFilter: "blur(24px)",
+            opacity: mobileOpen ? 1 : 0,
+            pointerEvents: mobileOpen ? "auto" : "none",
+            transform: mobileOpen ? "translateY(0)" : "translateY(-8px)",
+            transition: "opacity 0.22s ease, transform 0.22s ease",
           }}
-          onMouseLeave={scheduleClose}
         >
-          {/* Product pill row */}
-          <div
-            className="max-w-7xl mx-auto px-6 flex items-stretch overflow-x-auto scrollbar-none"
-            style={{ height: "42px" }}
-          >
-            {PRODUCTS.map((product) => {
-              const isActive =
-                pathname === product.href || pathname.startsWith(product.href + "/");
-              const isHovered = hoveredProduct === product.href;
+          {/* Pillar accordions */}
+          <div className="flex-1">
+            {NAV_PILLARS.map((pillar) => (
+              <MobileAccordion
+                key={pillar.key}
+                pillar={pillar}
+                pathname={pathname}
+                onClose={() => setMobileOpen(false)}
+              />
+            ))}
 
-              return (
-                <div
-                  key={product.href}
-                  className="relative flex items-stretch"
-                  onMouseEnter={() => { cancelClose(); setHoveredProduct(product.href); }}
-                >
-                  <Link
-                    href={product.href}
-                    className="flex items-center gap-1.5 px-4 text-sm font-semibold transition-colors whitespace-nowrap"
-                    style={{
-                      color: isActive || isHovered ? product.color : "#6b6b6b",
-                      borderBottom: isActive
-                        ? `2px solid ${product.color}`
-                        : isHovered
-                        ? `2px solid ${product.color}60`
-                        : "2px solid transparent",
-                    }}
-                  >
-                    <span className="text-base leading-none">{product.icon}</span>
-                    <span>{product.name}</span>
-                  </Link>
-                </div>
-              );
-            })}
-
-            <div className="flex-1" />
-            <Link
-              href="/os"
-              className="flex items-center gap-1.5 px-4 text-xs font-semibold text-[#9a9a8a] hover:text-[#1a1a2e] transition-colors whitespace-nowrap border-l border-[#e8e4dc]"
-            >
-              View full OS →
-            </Link>
-          </div>
-
-          {/* ─── MEGA DROPDOWN PANEL ─── */}
-          <nav
-            role="navigation"
-            aria-label={hovered ? `${hovered.name} sub-navigation` : "Product sub-navigation"}
-            aria-hidden={!hovered}
-            style={{
-              position: "fixed",
-              top: "94px",
-              left: 0,
-              right: 0,
-              zIndex: 49,
-              display: "flex",
-              justifyContent: "center",
-              padding: "0 24px",
-              pointerEvents: hovered ? "auto" : "none",
-              opacity: hovered ? 1 : 0,
-              transform: hovered ? "translateY(0)" : "translateY(-6px)",
-              transition: "opacity 0.18s ease, transform 0.18s ease",
-            }}
-            onMouseEnter={cancelClose}
-            onMouseLeave={scheduleClose}
-          >
-            <div
-              className="w-full max-w-5xl rounded-2xl overflow-hidden"
-              style={{
-                background: "rgba(20,20,40,0.97)",
-                backdropFilter: "blur(24px)",
-                WebkitBackdropFilter: "blur(24px)",
-                border: "1px solid rgba(255,255,255,0.08)",
-                boxShadow: "0 24px 64px rgba(0,0,0,0.45), 0 2px 0 rgba(255,255,255,0.04) inset",
-              }}
-            >
-              {hovered && (
-                <>
-                  {/* Panel header */}
-                  <div
-                    className="flex items-center gap-2.5 px-6 py-3.5 border-b"
-                    style={{ borderColor: "rgba(255,255,255,0.07)" }}
-                  >
-                    <span className="text-xl leading-none">{hovered.icon}</span>
-                    <span
-                      className="text-sm font-bold tracking-wide"
-                      style={{ color: hovered.color }}
-                    >
-                      {hovered.name}
-                    </span>
-                    <span className="text-xs ml-1" style={{ color: "rgba(255,255,255,0.35)" }}>
-                      — select a feature
-                    </span>
-                  </div>
-
-                  {/* Sub-page cards grid */}
-                  <div
-                    className="grid gap-1.5 p-4"
-                    style={{
-                      gridTemplateColumns: `repeat(${Math.min(hovered.sub.length, 4)}, minmax(0, 1fr))`,
-                    }}
-                  >
-                    {hovered.sub.map((s) => (
-                      <Link
-                        key={s.href}
-                        href={s.href}
-                        className="flex flex-col gap-1.5 rounded-xl p-3.5 transition-all duration-150"
-                        style={{
-                          background:
-                            pathname === s.href
-                              ? `${hovered.color}22`
-                              : "rgba(255,255,255,0.03)",
-                          border: `1px solid ${
-                            pathname === s.href
-                              ? hovered.color + "55"
-                              : "rgba(255,255,255,0.05)"
-                          }`,
-                        }}
-                        onMouseEnter={(e) => {
-                          const el = e.currentTarget as HTMLAnchorElement;
-                          if (pathname !== s.href) {
-                            el.style.background = `${hovered.color}18`;
-                            el.style.border = `1px solid ${hovered.color}44`;
-                          }
-                        }}
-                        onMouseLeave={(e) => {
-                          const el = e.currentTarget as HTMLAnchorElement;
-                          if (pathname !== s.href) {
-                            el.style.background = "rgba(255,255,255,0.03)";
-                            el.style.border = "1px solid rgba(255,255,255,0.05)";
-                          }
-                        }}
-                        onClick={() => setHoveredProduct(null)}
-                      >
-                        <span className="text-xl leading-none">{s.icon}</span>
-                        <span
-                          className="text-sm font-semibold leading-tight"
-                          style={{
-                            color:
-                              pathname === s.href
-                                ? hovered.color
-                                : "rgba(255,255,255,0.88)",
-                          }}
-                        >
-                          {s.label}
-                        </span>
-                        <span
-                          className="text-xs leading-snug"
-                          style={{ color: "rgba(255,255,255,0.42)" }}
-                        >
-                          {s.desc}
-                        </span>
-                      </Link>
-                    ))}
-                  </div>
-                </>
-              )}
-            </div>
-          </nav>
-        </div>
-
-        {/* ─── MOBILE MENU ─── */}
-        {mobileOpen && (
-          <div className="md:hidden border-t border-[#e8e4dc] bg-[#FAF9F6] px-6 py-4 max-h-[85vh] overflow-y-auto">
-            {/* All navigation links — flat list */}
-            <div className="mb-4 space-y-0.5">
-              <p className="text-[10px] font-bold tracking-widest uppercase text-[#9a9a8a] mb-2">
-                Navigate
-              </p>
-              {ALL_NAV_LINKS.map((l) => {
-                const isActive = pathname === l.href || pathname.startsWith(l.href + "/");
-                return (
-                  <Link
-                    key={l.href}
-                    href={l.href}
-                    className={`flex items-center text-sm py-2.5 transition-colors font-medium ${
-                      isActive ? "text-[#111111] font-semibold" : "text-[#4a4a3a] hover:text-[#111111]"
-                    }`}
-                    onClick={() => setMobileOpen(false)}
-                  >
-                    {l.label}
-                  </Link>
-                );
-              })}
-            </div>
-
-            {/* CTA */}
-            <div className="border-t border-[#e8e4dc] pt-3">
+            {/* Pricing flat link */}
+            <div className="border-b" style={{ borderColor: "rgba(255,255,255,0.07)" }}>
               <Link
-                href="/birth"
-                className="block text-sm text-center py-3 rounded-full font-bold transition-colors"
-                style={{ background: "#c9a84c", color: "#111111" }}
+                href="/pricing"
+                className="flex items-center px-6 py-4 text-base font-semibold transition-colors"
+                style={{
+                  color:
+                    pathname === "/pricing"
+                      ? GOLD
+                      : "rgba(255,255,255,0.85)",
+                }}
                 onClick={() => setMobileOpen(false)}
               >
-                Begin Ceremony 🥚
+                Pricing
               </Link>
             </div>
           </div>
-        )}
+
+          {/* ─── Mobile CTA ─── */}
+          <div className="p-6 border-t" style={{ borderColor: "rgba(255,255,255,0.07)" }}>
+            <Link
+              href="/birth"
+              className="block w-full text-center py-4 rounded-2xl font-bold text-base transition-all hover:brightness-110"
+              style={{ background: GOLD, color: DEEP }}
+              onClick={() => setMobileOpen(false)}
+            >
+              🥚 Hatch your companion
+            </Link>
+            <p className="text-center text-xs mt-3" style={{ color: "rgba(255,255,255,0.35)" }}>
+              Free forever · No credit card
+            </p>
+          </div>
+        </div>
       </header>
 
-      {/* Spacer — dual-bar: ~94px desktop, ~52px mobile */}
-      <div className="h-[52px] md:h-[94px]" aria-hidden />
+      {/* Spacer */}
+      <div className="h-[56px]" aria-hidden />
     </>
   );
 }

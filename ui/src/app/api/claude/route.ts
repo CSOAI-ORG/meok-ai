@@ -30,7 +30,7 @@ const DEFAULT_MODEL: AllowedModel = "claude-sonnet-4-5";
 
 // Fetch recent SOV3 memories to inject as context
 async function getSovMemoryContext(): Promise<string> {
-  const sovBase = process.env.MEOK_BACKEND_URL || "http://198.53.64.194:40646";
+  const sovBase = process.env.MEOK_BACKEND_URL || process.env.SOV3_URL || "http://localhost:3101";
   try {
     const res = await fetch(`${sovBase}/api/memories/recent?limit=20`, {
       headers: { "Content-Type": "application/json" },

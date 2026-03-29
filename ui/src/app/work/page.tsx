@@ -356,6 +356,166 @@ export default function WorkOSPage() {
       </section>
 
       {/* ═══════════════════════════════════════════════
+          MEET THE AGENTS — Large linked cards
+      ═══════════════════════════════════════════════ */}
+      <section className="py-28 px-6 bg-[#1a1a2e]">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-16">
+            <span className="text-xs font-black tracking-[0.25em] uppercase text-white/30 block mb-5">
+              The Crew
+            </span>
+            <h2 className="text-4xl sm:text-5xl font-black tracking-tight mb-4">
+              Meet the agents.
+            </h2>
+            <p className="text-white/40 text-base max-w-xl mx-auto leading-relaxed">
+              Three specialists. One shared memory. Working every night so you don&apos;t have to.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+            {/* Orion card */}
+            <Link
+              href="/work/orion"
+              className="group relative rounded-3xl overflow-hidden border border-amber-500/20 bg-[#0d0c18] hover:border-amber-500/50 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_40px_rgba(251,191,36,0.1)]"
+            >
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{ background: "radial-gradient(ellipse 80% 60% at 50% 0%, rgba(251,191,36,0.07) 0%, transparent 70%)" }} />
+              <div className="relative p-10 flex flex-col h-full min-h-[380px]">
+                <div className="flex items-start justify-between mb-8">
+                  <div className="w-16 h-16 rounded-2xl bg-amber-500/10 border border-amber-500/25 flex items-center justify-center text-3xl">
+                    🔭
+                  </div>
+                  <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 text-[10px] font-black tracking-[0.18em] uppercase">
+                    <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse" />
+                    Active tonight
+                  </div>
+                </div>
+
+                <div className="mb-6">
+                  <p className="text-xs font-black tracking-[0.2em] uppercase text-amber-400/50 mb-1">Agent 01</p>
+                  <h3 className="text-3xl font-black text-white mb-1">Orion</h3>
+                  <p className="text-base font-black text-amber-400">The Hunter</p>
+                </div>
+
+                <p className="text-sm text-white/45 leading-relaxed mb-8 flex-1">
+                  Hunts intelligence while you sleep. Brief Orion before bed — markets, competitors, leads — and wake up to a complete research report.
+                </p>
+
+                <div className="flex flex-wrap gap-2 mb-6">
+                  {["Market intel", "Lead discovery", "Competitor watch"].map(t => (
+                    <span key={t} className="px-2.5 py-1 rounded-full bg-amber-500/10 border border-amber-500/15 text-amber-300/60 text-[10px] font-semibold">{t}</span>
+                  ))}
+                </div>
+
+                <div className="flex items-center gap-2 text-amber-400 font-black text-sm group-hover:gap-3 transition-all">
+                  Meet Orion <ArrowRight className="w-4 h-4" />
+                </div>
+              </div>
+            </Link>
+
+            {/* Riri card */}
+            <Link
+              href="/work/riri"
+              className="group relative rounded-3xl overflow-hidden border border-cyan-500/20 bg-[#0d0c18] hover:border-cyan-500/50 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_40px_rgba(6,182,212,0.1)]"
+            >
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{ background: "radial-gradient(ellipse 80% 60% at 50% 0%, rgba(6,182,212,0.07) 0%, transparent 70%)" }} />
+              <div className="relative p-10 flex flex-col h-full min-h-[380px]">
+                <div className="flex items-start justify-between mb-8">
+                  <div className="w-16 h-16 rounded-2xl bg-cyan-500/10 border border-cyan-500/25 flex items-center justify-center text-3xl">
+                    ⚡
+                  </div>
+                  <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-[10px] font-black tracking-[0.18em] uppercase">
+                    <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
+                    Building now
+                  </div>
+                </div>
+
+                <div className="mb-6">
+                  <p className="text-xs font-black tracking-[0.2em] uppercase text-cyan-400/50 mb-1">Agent 02</p>
+                  <h3 className="text-3xl font-black text-white mb-1">Riri</h3>
+                  <p className="text-base font-black text-cyan-400">The Builder</p>
+                </div>
+
+                <p className="text-sm text-white/45 leading-relaxed mb-8 flex-1">
+                  Builds what you need, delivers completed work. Spec it before bed — code, content, pipelines — wake up to working output.
+                </p>
+
+                <div className="flex flex-wrap gap-2 mb-6">
+                  {["Code gen", "Content", "Data pipelines"].map(t => (
+                    <span key={t} className="px-2.5 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/15 text-cyan-300/60 text-[10px] font-semibold">{t}</span>
+                  ))}
+                </div>
+
+                <div className="flex items-center gap-2 text-cyan-400 font-black text-sm group-hover:gap-3 transition-all">
+                  Meet Riri <ArrowRight className="w-4 h-4" />
+                </div>
+              </div>
+            </Link>
+
+            {/* Hourman card */}
+            <Link
+              href="/work/hourman"
+              className="group relative rounded-3xl overflow-hidden border border-violet-500/20 bg-[#0d0c18] hover:border-violet-500/50 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_40px_rgba(139,92,246,0.1)]"
+            >
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{ background: "radial-gradient(ellipse 80% 60% at 50% 0%, rgba(139,92,246,0.07) 0%, transparent 70%)" }} />
+              <div className="relative p-10 flex flex-col h-full min-h-[380px]">
+                <div className="flex items-start justify-between mb-8">
+                  <div className="w-16 h-16 rounded-2xl bg-violet-500/10 border border-violet-500/25 flex items-center justify-center text-3xl">
+                    ⏱
+                  </div>
+                  <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-violet-500/10 border border-violet-500/20 text-violet-400 text-[10px] font-black tracking-[0.18em] uppercase">
+                    <span className="w-1.5 h-1.5 rounded-full bg-violet-400 animate-pulse" />
+                    Delivers at 6am
+                  </div>
+                </div>
+
+                <div className="mb-6">
+                  <p className="text-xs font-black tracking-[0.2em] uppercase text-violet-400/50 mb-1">Agent 03</p>
+                  <h3 className="text-3xl font-black text-white mb-1">Hourman</h3>
+                  <p className="text-base font-black text-violet-400">The Planner</p>
+                </div>
+
+                <p className="text-sm text-white/45 leading-relaxed mb-8 flex-1">
+                  Plans your time, delivers your daily sprint by 6am. Hourman knows your energy patterns, your calendar, and your priorities.
+                </p>
+
+                <div className="flex flex-wrap gap-2 mb-6">
+                  {["Sprint planning", "Calendar sync", "Energy mapping"].map(t => (
+                    <span key={t} className="px-2.5 py-1 rounded-full bg-violet-500/10 border border-violet-500/15 text-violet-300/60 text-[10px] font-semibold">{t}</span>
+                  ))}
+                </div>
+
+                <div className="flex items-center gap-2 text-violet-400 font-black text-sm group-hover:gap-3 transition-all">
+                  Meet Hourman <ArrowRight className="w-4 h-4" />
+                </div>
+              </div>
+            </Link>
+
+          </div>
+
+          {/* Ralph teaser below cards */}
+          <div className="mt-8 rounded-2xl border border-[#c9a84c]/20 bg-[#c9a84c]/[0.04] p-6 flex flex-col sm:flex-row items-center justify-between gap-5">
+            <div className="flex items-center gap-4">
+              <div className="w-10 h-10 rounded-xl bg-[#c9a84c]/10 border border-[#c9a84c]/25 flex items-center justify-center text-xl">
+                🧠
+              </div>
+              <div>
+                <p className="text-sm font-black text-white">Ralph Mode — all three, together.</p>
+                <p className="text-xs text-white/40 mt-0.5">Coordinate Orion, Riri, and Hourman on complex multi-day projects. Family plan.</p>
+              </div>
+            </div>
+            <Link
+              href="/work/ralph"
+              className="group flex items-center gap-2 px-6 py-2.5 rounded-full font-black text-[#1a1a2e] bg-[#c9a84c] hover:bg-[#d4b463] transition-all text-sm flex-shrink-0"
+            >
+              Explore Ralph Mode
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════
           RALPH MODE — Special callout
       ═══════════════════════════════════════════════ */}
       <section className="py-20 px-6 bg-[#1a1a2e]">

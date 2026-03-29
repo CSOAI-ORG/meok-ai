@@ -8,7 +8,8 @@
  */
 
 import { type NextRequest, NextResponse } from 'next/server';
-import { auth } from '@clerk/nextjs/server';
+import { requireAuth } from '@/lib/api-auth';
+import { checkRateLimit } from '@/lib/rate-limit';
 import { getUserById, updateUserProfile } from '@/lib/db/user';
 import { getStripe } from '@/lib/stripe';
 
@@ -18,9 +19,13 @@ export const dynamic = 'force-dynamic';
 // ── POST: Schedule account deletion ─────────────────────────────────────────
 
 export async function POST(req: NextRequest) {
-  const { userId } = await auth();
-  if (!userId) {
-    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  const authResult = await requireAuth();
+  if (authResult.error) return authResult.error;
+  const { userId } = authResult;
+
+  const rateLimitResult = checkRateLimit(userId, 'explorer');
+  if (!rateLimitResult.allowed) {
+    return NextResponse.json({ error: 'Rate limit exceeded' }, { status: 429 });
   }
 
   // Validate confirmation
@@ -77,10 +82,9 @@ export async function POST(req: NextRequest) {
 // ── DELETE: Reactivate account within grace period ──────────────────────────
 
 export async function DELETE(_req: NextRequest) {
-  const { userId } = await auth();
-  if (!userId) {
-    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-  }
+  const authResult = await requireAuth();
+  if (authResult.error) return authResult.error;
+  const { userId } = authResult;
 
   const user = await getUserById(userId);
   if (!user) {

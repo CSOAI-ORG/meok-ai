@@ -4,6 +4,7 @@
 // This page is only reachable when the user is authenticated.
 
 import { useEffect, useState, useCallback } from "react";
+import { useRouter } from "next/navigation";
 import { callTool } from "@/lib/api";
 import Link from "next/link";
 import { GuardianAlerts } from "@/components/guardian-alerts";
@@ -105,6 +106,7 @@ const PROTECTION_META: {
 // ─── PAGE ──────────────────────────────────────────────────────────────────────
 
 export default function GuardianDashboardPage() {
+  const router = useRouter();
   const [alerts, setAlerts] = useState<AlertRow[]>(FALLBACK_ALERTS);
   const [loading, setLoading] = useState(true);
 
@@ -575,7 +577,7 @@ export default function GuardianDashboardPage() {
                 border: "1px solid rgba(201,168,76,0.25)",
                 color: GOLD,
               }}
-              onClick={() => alert('Family Circle members — coming soon!')}
+              onClick={() => router.push('/dashboard/family-circle')}
             >
               <UserPlus size={15} />
               Add Member

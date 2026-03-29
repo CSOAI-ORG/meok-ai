@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { SubscribeBar } from "./subscribe-bar";
+import { PostCard } from "./post-card";
 
 // ── Metadata ─────────────────────────────────────────────────────────────────
 
@@ -5045,73 +5046,69 @@ const POSTS = [
 ];
 
 // ── Category filter tabs ──────────────────────────────────────────────────────
+// 90.1 — expanded filter tabs with slug-based category inference
 
 const CATEGORIES = [
-  { id: "all", label: "All" },
-  { id: "sovereign-ai", label: "Sovereign AI" },
-  { id: "product", label: "Product" },
-  { id: "guardian", label: "Guardian" },
-  { id: "behind-the-build", label: "Behind the Build" },
-  { id: "research", label: "Research" },
+  { id: "all",              label: "All" },
+  { id: "guides",           label: "Guides" },
+  { id: "research",         label: "Research" },
+  { id: "product",          label: "Product" },
+  { id: "wellbeing",        label: "Wellbeing" },
+  { id: "gaming",           label: "Gaming" },
+  { id: "business",         label: "Business" },
 ];
 
-// ── Post card component ───────────────────────────────────────────────────────
+/**
+ * Infer a normalised display-category from a post's raw category field
+ * or its slug when the raw category doesn't map to a filter tab.
+ */
+function inferCategory(rawCategory: string, slug: string): string {
+  // Direct hits — categories already named correctly
+  const directMap: Record<string, string> = {
+    guides:            "guides",
+    research:          "research",
+    product:           "product",
+    wellbeing:         "wellbeing",
+    gaming:            "gaming",
+    business:          "business",
+    // alias groups
+    "deep-dives":      "research",
+    "sovereign-ai":    "research",
+    "behind-the-build":"research",
+    "mental-health":   "wellbeing",
+    comparisons:       "product",
+    comparison:        "product",
+    guardian:          "product",
+    productivity:      "guides",
+    professional:      "business",
+    accessibility:     "guides",
+    connection:        "wellbeing",
+    "neurodivergent":  "guides",
+    explainer:         "research",
+    privacy:           "research",
+  };
+  if (directMap[rawCategory]) return directMap[rawCategory];
 
-function PostCard({
-  post,
-  featured = false,
-}: {
-  post: (typeof POSTS)[0];
-  featured?: boolean;
-}) {
-  return (
-    <article
-      className={`group rounded-2xl overflow-hidden hover:shadow-xl hover:-translate-y-0.5 transition-all flex flex-col ${featured ? "md:flex-row" : ""}`}
-      style={{ background: "#1a1a2e", border: "1px solid rgba(245,240,232,0.07)" }}
-    >
-      {/* Colour accent bar */}
-      <div
-        className={`flex-shrink-0 ${featured ? "w-full md:w-1 h-1 md:h-auto" : "h-1 w-full"}`}
-        style={{ background: post.tagColor }}
-      />
+  // Slug-based inference for edge cases
+  if (slug.startsWith("ai-for-") || slug.startsWith("meok-for-")) {
+    // Wellbeing slugs
+    if (/wellbeing|mental|grief|anxiety|depress|burnout|loneliness|lonely|ptsd|ocd|adhd|autism|bipolar|fibro|pain|insomnia|stress|sleep|heartbreak|divorce|bereavement|miscarriage|sobriety|infertility|perimenopause|menopause|eating|self-harm|shyness|social-anx|dating|body-image|health-anx|seasonal|postpartum|gender|cptsd|long-covid|eco-anxiety/.test(slug)) {
+      return "wellbeing";
+    }
+    // Guides slugs
+    if (/journaling|life-coach|self-improvement|productivity|career|students|teachers|habit|procrastination|weight|freelancer|job-seeker|relationship|couples|parents|caregiving/.test(slug)) {
+      return "guides";
+    }
+    // Business slugs
+    if (/small-business|entrepreneur|startup|freelancer|lawyers|accountant|professional|nurse|healthcare|teacher|remote-work|work-from-home/.test(slug)) {
+      return "business";
+    }
+  }
+  if (/meok-vs-/.test(slug)) return "product";
+  if (/cognitive-symbiosis|byzantine|maternal-covenant|sovereign-ai|how-sovereign|what-is-sovereign|what-is-meok|hydro-neuro|if-ai-becomes|the-memory-problem/.test(slug)) return "research";
+  if (/ai-gaming|gaming/.test(slug)) return "gaming";
 
-      <div className={`flex flex-col flex-1 p-7 ${featured ? "md:p-10" : ""}`}>
-        {/* Meta row */}
-        <div className="flex items-center flex-wrap gap-2 mb-4">
-          <span
-            className="text-xs font-bold px-2.5 py-1 rounded-full"
-            style={{ color: post.tagColor, background: `${post.tagColor}18` }}
-          >
-            {post.tag}
-          </span>
-          <span className="text-xs" style={{ color: "rgba(245,240,232,0.4)" }}>{post.date}</span>
-          <span className="text-xs" style={{ color: "rgba(245,240,232,0.25)" }}>·</span>
-          <span className="text-xs" style={{ color: "rgba(245,240,232,0.4)" }}>{post.readTime}</span>
-        </div>
-
-        {/* Title */}
-        <Link href={`/blog/${post.slug}`} className="flex-1">
-          <h2
-            className={`font-black leading-tight mb-3 group-hover:text-[#c9a84c] transition-colors ${featured ? "text-2xl sm:text-3xl" : "text-xl"}`}
-            style={{ color: "#f5f0e8" }}
-          >
-            {post.title}
-          </h2>
-          <p className="text-sm leading-relaxed mb-5" style={{ color: "rgba(245,240,232,0.55)" }}>
-            {post.excerpt}
-          </p>
-        </Link>
-
-        <Link
-          href={`/blog/${post.slug}`}
-          className="inline-flex items-center gap-1.5 text-sm font-bold mt-auto transition-all group-hover:gap-3"
-          style={{ color: "#c9a84c" }}
-        >
-          Read article →
-        </Link>
-      </div>
-    </article>
-  );
+  return rawCategory; // fall through — keep as-is
 }
 
 // ── Page ──────────────────────────────────────────────────────────────────────
@@ -5123,10 +5120,11 @@ export default async function BlogIndex({
 }) {
   const params = await searchParams;
   const activeCategory = params?.category ?? "all";
+  // 90.1 — filter using inferred category
   const filteredPosts =
     activeCategory === "all"
       ? POSTS
-      : POSTS.filter((p) => p.category === activeCategory);
+      : POSTS.filter((p) => inferCategory(p.category ?? "", p.slug) === activeCategory);
   const featured = (filteredPosts.find((p) => p.featured) ?? filteredPosts[0])!;
   const rest = filteredPosts.filter((p) => p !== featured);
 
@@ -5192,7 +5190,7 @@ export default async function BlogIndex({
         {/* Featured post */}
         {featured && (
           <div className="mb-8">
-            '*'
+            <PostCard post={featured} featured />
           </div>
         )}
 
@@ -5200,7 +5198,7 @@ export default async function BlogIndex({
         {rest.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
             {rest.map((post) => (
-              '*'
+              <PostCard key={post.slug} post={post} />
             ))}
           </div>
         ) : !featured ? (

@@ -2,10 +2,11 @@ import { auth } from '@clerk/nextjs/server'
 import { redirect } from 'next/navigation'
 import Link from 'next/link'
 import type { Metadata } from 'next'
+import { getUserById } from '@/lib/db/user'
 
 export const metadata: Metadata = {
   title: 'Chat | MEOK AI LABS',
-  description: 'Your sovereign AI companion — coming soon.',
+  description: 'Talk to your sovereign AI companion. Persistent memory. Deep context. Governed by care.',
 }
 
 const EXAMPLE_MESSAGES = [
@@ -18,6 +19,14 @@ const EXAMPLE_MESSAGES = [
 export default async function ChatPage() {
   const { userId } = await auth()
   if (!userId) redirect('/login')
+
+  // Users who already have a companion go straight to the real chat
+  try {
+    const user = await getUserById(userId)
+    if (user?.companion_id) redirect('/dashboard/chat')
+  } catch {
+    // DB unavailable — fall through to show the hatch-first page
+  }
 
   return (
     <div style={{ minHeight: '100vh', background: '#0a0a0a', color: '#f5f5f5', display: 'flex', flexDirection: 'column' }}>

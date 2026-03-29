@@ -1,13 +1,18 @@
-import { auth } from '@clerk/nextjs/server'
+import { requireAuth } from '@/lib/api-auth'
+import { checkRateLimit } from '@/lib/rate-limit'
 import { NextResponse } from 'next/server'
 import { getEvolutionStage, getProgressToNextStage, interactionsUntilNextStage, isFeatureUnlocked } from '@/lib/evolution'
 import { getMasteryLevel, getLevelProgress } from '@/lib/gamification'
 import { getUserById } from '@/lib/db/user'
 
 export async function GET() {
-  const { userId } = await auth()
-  if (!userId) {
-    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+  const authResult = await requireAuth()
+  if (authResult.error) return authResult.error
+  const { userId } = authResult
+
+  const rateLimitResult = checkRateLimit(userId, 'explorer');
+  if (!rateLimitResult.allowed) {
+    return NextResponse.json({ error: 'Rate limit exceeded' }, { status: 429 });
   }
 
   const user = await getUserById(userId)
@@ -18,9 +23,12 @@ export async function GET() {
   const mastery = getMasteryLevel(interactions)
   const levelProgress = getLevelProgress(interactions)
 
+  const bondPoints = user?.bond_points ?? 0;
+
   return NextResponse.json({
     interactions,
     streak_days: streakDays,
+    bond_points: bondPoints,
     evolution: {
       stage_name: stage.name,
       stage_index: stage.id,

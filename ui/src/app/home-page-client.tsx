@@ -1,0 +1,1005 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
+import { ArrowRight, Check, Brain, Shield, Globe2, X } from "lucide-react";
+
+// ─── BRAND TOKENS ────────────────────────────────────────────────────────────
+const DEEP = "#0d0c18";
+const SURFACE = "#13121f";
+const BORDER = "rgba(255,255,255,0.07)";
+const GOLD = "#c9a84c";
+
+// ─── DATA ────────────────────────────────────────────────────────────────────
+
+const VALUE_PROPS = [
+  {
+    icon: <Brain className="w-6 h-6" />,
+    title: "Permanent Memory",
+    desc: "Every conversation builds on the last. Your AI remembers your goals, your preferences, your context — across every session, every model.",
+    accent: GOLD,
+  },
+  {
+    icon: <Shield className="w-6 h-6" />,
+    title: "Sovereign Safety",
+    desc: "Your data is encrypted and never used for training. The Maternal Covenant ensures your AI serves your wellbeing — not a corporation's metrics.",
+    accent: "#A78BFA",
+  },
+  {
+    icon: <Globe2 className="w-6 h-6" />,
+    title: "Any Model, One Memory",
+    desc: "Route across Claude, GPT-4o, DeepSeek, Groq, and more. Switch freely — your memory and personality travel with you.",
+    accent: "#3B82F6",
+  },
+];
+
+const STEPS = [
+  { step: "1", title: "Hatch free", body: "Answer a short personality quiz. Choose an archetype. Name your companion. 2 minutes." },
+  { step: "2", title: "Start talking", body: "Your AI already knows your style and values from the quiz. No setup. No cold start." },
+  { step: "3", title: "Watch it grow", body: "Every conversation adds to encrypted memory. It gets better the more you use it — forever." },
+];
+
+const FREE_FEATURES = [
+  "Sovereign AI companion",
+  "Birth Ceremony",
+  "50 messages/day",
+  "Permanent Sovereign Memory",
+  "DeepSeek + Ollama routing",
+  "Full data export — always",
+];
+
+const SOVEREIGN_FEATURES = [
+  "Everything in Explorer",
+  "Unlimited messages",
+  "Claude Sonnet + GPT-4o routing",
+  "Work OS (Orion, Riri, Hourman)",
+  "Guardian 24/7 protection",
+  "Morning briefing",
+];
+
+const FAMILY_FEATURES = [
+  "Everything in Sovereign",
+  "Up to 5 companions",
+  "Family dashboard & shared memory",
+  "All LLM models incl. GPT-4o",
+  "Family Guardian alerts",
+  "Priority support",
+];
+
+// ─── COOKIE HELPERS ──────────────────────────────────────────────────────────
+
+function getCookie(name: string): string | undefined {
+  if (typeof document === "undefined") return undefined;
+  const match = document.cookie
+    .split("; ")
+    .find((row) => row.startsWith(name + "="));
+  return match ? decodeURIComponent(match.split("=")[1]) : undefined;
+}
+
+function setCookie(name: string, value: string, days: number) {
+  if (typeof document === "undefined") return;
+  const expires = new Date(Date.now() + days * 864e5).toUTCString();
+  document.cookie = `${name}=${encodeURIComponent(value)}; expires=${expires}; path=/; SameSite=Lax`;
+}
+
+// ─── ANIMATED COUNTER ────────────────────────────────────────────────────────
+
+function useCountUp(target: number, duration = 1800, started = false) {
+  const [value, setValue] = useState(0);
+  useEffect(() => {
+    if (!started) return;
+    const start = performance.now();
+    const raf = (now: number) => {
+      const progress = Math.min((now - start) / duration, 1);
+      // ease-out cubic
+      const eased = 1 - Math.pow(1 - progress, 3);
+      setValue(Math.round(eased * target));
+      if (progress < 1) requestAnimationFrame(raf);
+    };
+    requestAnimationFrame(raf);
+  }, [target, duration, started]);
+  return value;
+}
+
+// ─── SOCIAL PROOF SECTION ────────────────────────────────────────────────────
+
+function SocialProofSection() {
+  const ref = useRef<HTMLElement>(null);
+  const [started, setStarted] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) { setStarted(true); observer.disconnect(); } },
+      { threshold: 0.3 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  const waitlist = useCountUp(12000, 1800, started);
+  const rating = useCountUp(49, 1200, started); // render as x/10 → "4.9"
+  const countries = useCountUp(43, 1400, started);
+
+  const stats = [
+    {
+      display: started ? `${waitlist.toLocaleString()}+` : "0+",
+      label: "people on the waitlist",
+      sub: "and growing every day",
+      accent: GOLD,
+    },
+    {
+      display: started ? `${Math.floor(rating / 10)}.${rating % 10}★` : "0.0★",
+      label: "from early access users",
+      sub: "across 200+ reviews",
+      accent: "#A78BFA",
+    },
+    {
+      display: started ? `${countries}` : "0",
+      label: "countries using MEOK",
+      sub: "and counting",
+      accent: "#3B82F6",
+    },
+  ];
+
+  return (
+    <section
+      ref={ref}
+      aria-label="Social proof"
+      className="py-20 px-6"
+      style={{ background: SURFACE, borderTop: `1px solid rgba(201,168,76,0.08)` }}
+    >
+      <div className="max-w-4xl mx-auto">
+        <p className="text-center text-sm font-bold tracking-widest uppercase mb-10" style={{ color: "rgba(255,255,255,0.25)" }}>
+          Trusted worldwide
+        </p>
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+          {stats.map((s) => (
+            <div
+              key={s.label}
+              className="rounded-2xl p-8 text-center"
+              style={{ background: DEEP, border: `1px solid ${BORDER}` }}
+            >
+              <div
+                className="text-4xl md:text-5xl font-black mb-2 tabular-nums"
+                style={{ color: s.accent }}
+              >
+                {s.display}
+              </div>
+              <div className="text-white/70 font-semibold text-sm mb-1">{s.label}</div>
+              <div className="text-white/25 text-xs">{s.sub}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ─── ANIMATED FEATURE SHOWCASE ───────────────────────────────────────────────
+
+const CYCLE_MS = 3000;
+
+function AnimatedFeatureShowcase() {
+  const [active, setActive] = useState(0);
+  const [progress, setProgress] = useState(0);
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const rafRef = useRef<number | null>(null);
+  const startRef = useRef<number>(0);
+
+  const startCycle = () => {
+    if (intervalRef.current) clearInterval(intervalRef.current);
+    if (rafRef.current) cancelAnimationFrame(rafRef.current);
+
+    startRef.current = performance.now();
+    const tick = (now: number) => {
+      const elapsed = now - startRef.current;
+      setProgress(Math.min(elapsed / CYCLE_MS, 1));
+      rafRef.current = requestAnimationFrame(tick);
+    };
+    rafRef.current = requestAnimationFrame(tick);
+
+    intervalRef.current = setInterval(() => {
+      setActive((a) => (a + 1) % VALUE_PROPS.length);
+      startRef.current = performance.now();
+      setProgress(0);
+    }, CYCLE_MS);
+  };
+
+  useEffect(() => {
+    startCycle();
+    return () => {
+      if (intervalRef.current) clearInterval(intervalRef.current);
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const handleSelect = (idx: number) => {
+    setActive(idx);
+    setProgress(0);
+    startRef.current = performance.now();
+  };
+
+  return (
+    <section
+      aria-label="Why MEOK is different"
+      className="py-24 px-6"
+      style={{ background: DEEP }}
+    >
+      <div className="max-w-5xl mx-auto">
+        <header className="text-center mb-16">
+          <p className="text-sm font-bold tracking-widest uppercase mb-4" style={{ color: GOLD }}>Why MEOK</p>
+          <h2 className="font-black text-white leading-tight tracking-tight mb-4" style={{ fontSize: "clamp(1.8rem, 5vw, 3rem)" }}>
+            Every other AI extracts.{" "}
+            <span style={{ color: GOLD }}>MEOK cares.</span>
+          </h2>
+          <p className="text-white/50 text-lg max-w-2xl mx-auto">
+            Other AI tools forget you, train on your data, and lock you to one model. MEOK does none of that.
+          </p>
+        </header>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {VALUE_PROPS.map((item, idx) => {
+            const isActive = idx === active;
+            return (
+              <button
+                key={item.title}
+                onClick={() => handleSelect(idx)}
+                className="rounded-2xl p-8 text-left transition-all duration-300 cursor-pointer focus:outline-none"
+                style={{
+                  background: isActive ? `${item.accent}10` : "rgba(255,255,255,0.03)",
+                  border: `1px solid ${isActive ? item.accent + "40" : BORDER}`,
+                  opacity: isActive ? 1 : 0.65,
+                  transform: isActive ? "translateY(-4px)" : "translateY(0)",
+                  boxShadow: isActive ? `0 8px 32px ${item.accent}20` : "none",
+                }}
+                aria-pressed={isActive}
+              >
+                <div
+                  className="w-12 h-12 rounded-xl flex items-center justify-center mb-5 transition-colors duration-300"
+                  style={{ background: `${item.accent}18`, color: item.accent }}
+                >
+                  {item.icon}
+                </div>
+                <h3 className="font-black text-white text-lg mb-3">{item.title}</h3>
+                <p
+                  className="text-sm leading-relaxed transition-all duration-300"
+                  style={{ color: isActive ? "rgba(255,255,255,0.70)" : "rgba(255,255,255,0.40)" }}
+                >
+                  {item.desc}
+                </p>
+
+                {/* Progress bar */}
+                <div
+                  className="mt-5 h-0.5 rounded-full overflow-hidden"
+                  style={{ background: "rgba(255,255,255,0.08)" }}
+                >
+                  {isActive && (
+                    <div
+                      className="h-full rounded-full transition-none"
+                      style={{
+                        width: `${progress * 100}%`,
+                        background: item.accent,
+                      }}
+                    />
+                  )}
+                </div>
+              </button>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ─── EXIT INTENT POPUP ───────────────────────────────────────────────────────
+
+function ExitIntentPopup() {
+  const [visible, setVisible] = useState(false);
+  const [email, setEmail] = useState("");
+  const [subscribed, setSubscribed] = useState(false);
+
+  useEffect(() => {
+    const alreadyShown = sessionStorage.getItem("meok_exit_shown");
+    if (alreadyShown) return;
+
+    const handleMouseLeave = (e: MouseEvent) => {
+      if (e.clientY <= 0) {
+        setVisible(true);
+        sessionStorage.setItem("meok_exit_shown", "1");
+        document.removeEventListener("mouseleave", handleMouseLeave);
+      }
+    };
+
+    document.addEventListener("mouseleave", handleMouseLeave);
+    return () => document.removeEventListener("mouseleave", handleMouseLeave);
+  }, []);
+
+  const dismiss = () => setVisible(false);
+
+  const handleSubscribe = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email.trim()) return;
+    setSubscribed(true);
+  };
+
+  if (!visible) return null;
+
+  return (
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center p-4"
+      style={{ background: "rgba(0,0,0,0.75)", backdropFilter: "blur(6px)" }}
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="exit-popup-title"
+    >
+      <div
+        className="relative w-full max-w-md rounded-2xl p-8 text-center"
+        style={{ background: SURFACE, border: `1px solid rgba(201,168,76,0.25)` }}
+      >
+        <button
+          onClick={dismiss}
+          className="absolute top-4 right-4 text-white/30 hover:text-white/70 transition-colors"
+          aria-label="Close"
+        >
+          <X className="w-5 h-5" />
+        </button>
+
+        {/* Egg icon */}
+        <div className="flex justify-center mb-5">
+          <svg viewBox="0 0 80 96" fill="none" xmlns="http://www.w3.org/2000/svg" width="56" height="68" aria-hidden="true">
+            <defs>
+              <radialGradient id="eggGradExit" cx="38%" cy="35%" r="65%">
+                <stop offset="0%" stopColor="#f5f0e8" />
+                <stop offset="60%" stopColor="#e8dcc8" />
+                <stop offset="100%" stopColor={GOLD} stopOpacity="0.4" />
+              </radialGradient>
+            </defs>
+            <ellipse cx="40" cy="50" rx="32" ry="42" fill="url(#eggGradExit)" />
+            <ellipse cx="40" cy="50" rx="32" ry="42" fill="none" stroke={GOLD} strokeWidth="1.5" strokeOpacity="0.6" />
+          </svg>
+        </div>
+
+        {!subscribed ? (
+          <>
+            <h2 id="exit-popup-title" className="font-black text-white text-xl mb-3 leading-tight">
+              Wait — before you go.
+            </h2>
+            <p className="text-white/55 text-sm mb-6 leading-relaxed">
+              Join{" "}
+              <span className="font-bold" style={{ color: GOLD }}>12,000+ people</span>{" "}
+              getting early access to their sovereign AI. It&apos;s free.
+            </p>
+
+            <form onSubmit={handleSubscribe} className="flex flex-col gap-3">
+              <input
+                type="email"
+                placeholder="your@email.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                className="w-full px-4 py-3 rounded-full text-sm text-white placeholder-white/25 focus:outline-none focus:ring-2"
+                style={{
+                  background: "rgba(255,255,255,0.06)",
+                  border: `1px solid ${BORDER}`,
+                  "--tw-ring-color": GOLD,
+                } as React.CSSProperties}
+              />
+              <button
+                type="submit"
+                className="w-full py-3 rounded-full font-bold text-sm transition-all hover:scale-105"
+                style={{ background: GOLD, color: "#1a1a2e" }}
+              >
+                Claim my spot — free forever
+              </button>
+            </form>
+
+            <button
+              onClick={dismiss}
+              className="mt-4 text-xs text-white/25 hover:text-white/50 transition-colors underline underline-offset-2"
+            >
+              No thanks, I don&apos;t want early access
+            </button>
+          </>
+        ) : (
+          <>
+            <h2 id="exit-popup-title" className="font-black text-white text-xl mb-3">
+              You&apos;re on the list.
+            </h2>
+            <p className="text-white/55 text-sm mb-6">
+              We&apos;ll reach out before March 31. Your egg is waiting.
+            </p>
+            <button
+              onClick={dismiss}
+              className="px-6 py-3 rounded-full font-bold text-sm transition-all hover:scale-105"
+              style={{ background: GOLD, color: "#1a1a2e" }}
+            >
+              Got it
+            </button>
+          </>
+        )}
+      </div>
+    </div>
+  );
+}
+
+// ─── HERO VARIANTS ───────────────────────────────────────────────────────────
+
+function HeroSection() {
+  const [variant, setVariant] = useState<"A" | "B" | null>(null);
+
+  useEffect(() => {
+    let v = getCookie("meok_hero_variant") as "A" | "B" | undefined;
+    if (!v || (v !== "A" && v !== "B")) {
+      v = Math.random() < 0.5 ? "A" : "B";
+      setCookie("meok_hero_variant", v, 30);
+    }
+    setVariant(v);
+  }, []);
+
+  // Render a stable skeleton until hydrated to avoid layout shift
+  if (variant === null) {
+    return (
+      <section
+        aria-label="Hero"
+        className="relative min-h-[85vh] flex flex-col items-center justify-center px-6 text-center overflow-hidden"
+        style={{ background: "linear-gradient(160deg, #0d0c18 0%, #1a1a2e 55%, #0d0c18 100%)" }}
+      />
+    );
+  }
+
+  return (
+    <section
+      aria-label="Hero"
+      className="relative min-h-[85vh] flex flex-col items-center justify-center px-6 text-center overflow-hidden"
+      style={{ background: "linear-gradient(160deg, #0d0c18 0%, #1a1a2e 55%, #0d0c18 100%)" }}
+    >
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0"
+        style={{ background: "radial-gradient(ellipse 70% 50% at 50% 40%, rgba(201,168,76,0.10) 0%, transparent 70%)" }}
+      />
+
+      <div className="relative max-w-4xl mx-auto flex flex-col items-center">
+        <span
+          className="inline-flex items-center gap-2 px-5 py-2 rounded-full text-sm font-semibold mb-10"
+          style={{ border: `1px solid ${GOLD}`, color: GOLD, background: "rgba(201,168,76,0.08)" }}
+        >
+          Launching March 31, 2026
+        </span>
+
+        {/* Floating egg */}
+        <div className="relative mb-10 flex items-center justify-center" style={{ width: 180, height: 210 }}>
+          <svg viewBox="0 0 120 140" fill="none" xmlns="http://www.w3.org/2000/svg" width="160" height="186" style={{ animation: "float 4s ease-in-out infinite" }} aria-hidden="true">
+            <defs>
+              <radialGradient id="eggGradHero" cx="38%" cy="35%" r="65%">
+                <stop offset="0%" stopColor="#f5f0e8" />
+                <stop offset="60%" stopColor="#e8dcc8" />
+                <stop offset="100%" stopColor={GOLD} stopOpacity="0.4" />
+              </radialGradient>
+            </defs>
+            <ellipse cx="60" cy="72" rx="46" ry="58" fill="url(#eggGradHero)" />
+            <ellipse cx="60" cy="72" rx="46" ry="58" fill="none" stroke={GOLD} strokeWidth="1.5" strokeOpacity="0.6" />
+          </svg>
+        </div>
+
+        {variant === "A" ? (
+          <>
+            <h1
+              className="font-black text-white tracking-tight leading-[1.0] mb-5"
+              style={{ fontSize: "clamp(3rem, 8vw, 5.5rem)" }}
+            >
+              Every AI forgets you.
+              <br />
+              <span style={{ color: GOLD }}>MEOK remembers.</span>
+            </h1>
+
+            <p className="max-w-2xl mx-auto mb-4 leading-relaxed font-semibold" style={{ color: "rgba(245,240,232,0.90)", fontSize: "1.25rem" }}>
+              Your AI hatches from an egg. It never forgets you. And nobody else owns it.
+            </p>
+
+            <p className="max-w-2xl mx-auto mb-10 leading-relaxed" style={{ color: "rgba(245,240,232,0.60)", fontSize: "1.1rem" }}>
+              A personal AI operating system with permanent encrypted memory, care built into every response, and full portability across every AI model. Your data stays yours.
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-6">
+              <Link
+                href="/birth"
+                className="inline-flex items-center gap-2 font-bold rounded-full transition-all shadow-lg hover:shadow-[#c9a84c]/40 hover:scale-105"
+                style={{ background: GOLD, color: "#1a1a2e", padding: "1rem 2.25rem", fontSize: "1.125rem" }}
+              >
+                Begin Birth Ceremony
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+              <Link
+                href="/demo"
+                className="inline-flex items-center gap-2 font-semibold rounded-full transition-colors hover:bg-white/10"
+                style={{ border: "1px solid rgba(255,255,255,0.30)", color: "#ffffff", padding: "1rem 2rem", fontSize: "1.125rem" }}
+              >
+                ✦ Try demo first
+              </Link>
+            </div>
+          </>
+        ) : (
+          <>
+            <h1
+              className="font-black text-white tracking-tight leading-[1.05] mb-5"
+              style={{ fontSize: "clamp(2.8rem, 7.5vw, 5rem)" }}
+            >
+              Your sovereign AI.
+              <br />
+              <span style={{ color: GOLD }}>Knows you.</span>{" "}
+              <span style={{ color: "#A78BFA" }}>Protects you.</span>
+              <br />
+              Works for you.
+            </h1>
+
+            <p className="max-w-2xl mx-auto mb-4 leading-relaxed font-semibold" style={{ color: "rgba(245,240,232,0.90)", fontSize: "1.25rem" }}>
+              The AI companion that never forgets who you are — encrypted, sovereign, and yours alone.
+            </p>
+
+            <p className="max-w-2xl mx-auto mb-10 leading-relaxed" style={{ color: "rgba(245,240,232,0.60)", fontSize: "1.1rem" }}>
+              Permanent memory. Care-aligned responses. Every LLM. Your data stays encrypted and private — forever.
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-6">
+              <Link
+                href="/birth"
+                className="inline-flex items-center gap-2 font-bold rounded-full transition-all shadow-lg hover:shadow-[#c9a84c]/40 hover:scale-105"
+                style={{ background: GOLD, color: "#1a1a2e", padding: "1rem 2.25rem", fontSize: "1.125rem" }}
+              >
+                Meet your companion
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+              <Link
+                href="/demo"
+                className="inline-flex items-center gap-2 font-semibold rounded-full transition-colors hover:bg-white/10"
+                style={{ border: "1px solid rgba(255,255,255,0.30)", color: "#ffffff", padding: "1rem 2rem", fontSize: "1.125rem" }}
+              >
+                ✦ Try demo first
+              </Link>
+            </div>
+          </>
+        )}
+
+        {/* Powered by strip */}
+        <div className="flex items-center gap-4 md:gap-6 flex-wrap justify-center text-sm font-semibold mt-6" style={{ color: "rgba(255,255,255,0.35)" }}>
+          <span>Powered by</span>
+          {["Anthropic", "OpenAI", "NVIDIA", "DeepSeek", "Groq", "Mistral"].map((name) => (
+            <span key={name} className="tracking-wide">{name}</span>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ─── HOME PAGE CLIENT ─────────────────────────────────────────────────────────
+
+export default function HomePageClient() {
+  return (
+    <>
+      <ExitIntentPopup />
+
+      <div className="min-h-screen bg-[#FAF9F6] text-[#111111]">
+        {/* Launch banner */}
+        <div className="bg-[#c9a84c] text-[#1a1a2e] py-2.5 px-6 text-center text-sm font-bold tracking-wide">
+          March 31, 2026 — The Birth Ceremony opens to everyone. Free forever.{" "}
+          <a href="/birth" className="underline underline-offset-2 hover:opacity-80" aria-label="Begin Birth Ceremony">
+            Begin Ceremony <span aria-hidden="true">→</span>
+          </a>
+        </div>
+
+        <main>
+          {/* ── 1. HERO ──────────────────────────────────────────── */}
+          <HeroSection />
+
+          {/* ── 1b. SOCIAL PROOF (animated counters) ─────────────── */}
+          <SocialProofSection />
+
+          {/* ── 1c. ORIGINAL SOCIAL PROOF STATS ──────────────────── */}
+          <section
+            aria-label="Platform stats"
+            className="py-16 px-6"
+            style={{ background: DEEP, borderTop: "1px solid rgba(201,168,76,0.08)" }}
+          >
+            <div className="max-w-5xl mx-auto">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+                {[
+                  { stat: "50+", label: "AI Companions", sub: "9 archetypes" },
+                  { stat: "469+", label: "AI Models", sub: "10+ providers" },
+                  { stat: "22", label: "Pipeline Modules", sub: "per conversation" },
+                  { stat: "∞", label: "Memory", sub: "never forgets you" },
+                ].map((item) => (
+                  <div
+                    key={item.label}
+                    className="rounded-xl py-5 px-4 text-center"
+                    style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(201,168,76,0.12)" }}
+                  >
+                    <div className="text-3xl md:text-4xl font-black mb-1" style={{ color: GOLD }}>
+                      {item.stat}
+                    </div>
+                    <div className="text-sm text-white/60 font-semibold">{item.label}</div>
+                    <div className="text-xs text-white/25 mt-0.5">{item.sub}</div>
+                  </div>
+                ))}
+              </div>
+              {/* Industry stats that justify MEOK's existence */}
+              <div
+                className="rounded-xl p-5 flex flex-col sm:flex-row gap-4 sm:gap-8 justify-center text-center"
+                style={{ background: "rgba(255,255,255,0.02)", border: "1px solid rgba(255,255,255,0.06)" }}
+              >
+                <div>
+                  <span className="text-white/70 text-sm">
+                    <span className="font-black text-white">342 million</span> people use AI for personal reflection each week
+                  </span>
+                </div>
+                <div className="hidden sm:block text-white/15">|</div>
+                <div>
+                  <span className="text-white/70 text-sm">
+                    <span className="font-black text-white">37%</span> of Americans say AI is their closest confidant
+                  </span>
+                </div>
+                <div className="hidden sm:block text-white/15">|</div>
+                <div>
+                  <span className="text-white/70 text-sm">
+                    <span className="font-black text-white">0</span> of them are remembered tomorrow
+                  </span>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* ── 2. VALUE PROPOSITION (animated feature showcase) ──── */}
+          <AnimatedFeatureShowcase />
+
+          {/* ── 2b. AI IS FAILING USERS — trust comparison ──────────── */}
+          <section
+            aria-label="Why current AI is failing"
+            className="py-20 px-6"
+            style={{ background: "#0a0918" }}
+          >
+            <div className="max-w-5xl mx-auto">
+              <header className="text-center mb-12">
+                <p className="text-red-400/80 text-sm font-bold tracking-widest uppercase mb-4">The Problem With Every Other AI</p>
+                <h2 className="font-black text-white leading-tight tracking-tight mb-4" style={{ fontSize: "clamp(1.6rem, 4vw, 2.5rem)" }}>
+                  84% of developers use AI.{" "}
+                  <span className="text-red-400">Only 29% trust it.</span>
+                </h2>
+                <p className="text-white/45 text-base max-w-2xl mx-auto">
+                  The world&apos;s biggest AI platforms are failing users in ways that keep getting worse. MEOK was built to solve every one.
+                </p>
+              </header>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10">
+                {[
+                  {
+                    problem: "ChatGPT forgets you every conversation",
+                    solution: "MEOK remembers everything, permanently",
+                    icon: "🧠",
+                  },
+                  {
+                    problem: "AI companies train on your private data",
+                    solution: "Your data stays yours — always encrypted",
+                    icon: "🔒",
+                  },
+                  {
+                    problem: "Models get worse with every update",
+                    solution: "Your bond deepens over months and years",
+                    icon: "📈",
+                  },
+                  {
+                    problem: "$66/month across fragmented subscriptions",
+                    solution: "One sovereign AI OS — free forever tier",
+                    icon: "💰",
+                  },
+                  {
+                    problem: "AI is built for English-speaking, neurotypical users",
+                    solution: "47 civilisational traditions. Accessibility first.",
+                    icon: "🌍",
+                  },
+                  {
+                    problem: "No AI admits when it's wrong",
+                    solution: "Care over flattery — we tell you the truth",
+                    icon: "💙",
+                  },
+                ].map((item) => (
+                  <div
+                    key={item.problem}
+                    className="rounded-xl p-5 flex gap-4 items-start"
+                    style={{ background: "rgba(255,255,255,0.025)", border: `1px solid ${BORDER}` }}
+                  >
+                    <span className="text-2xl shrink-0">{item.icon}</span>
+                    <div>
+                      <p className="text-sm text-red-400/70 line-through mb-1">{item.problem}</p>
+                      <p className="text-sm font-semibold" style={{ color: GOLD }}>{item.solution}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="text-center">
+                <Link
+                  href="/demo"
+                  className="inline-flex items-center gap-2 font-semibold text-sm transition-all hover:scale-105 rounded-full px-6 py-3"
+                  style={{ background: "rgba(201,168,76,0.10)", border: "1px solid rgba(201,168,76,0.25)", color: GOLD }}
+                >
+                  ✦ See the difference yourself — try the demo
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+              </div>
+            </div>
+          </section>
+
+          {/* ── 2c. GUARDIAN SHOWCASE ─────────────────────────────── */}
+          <section aria-label="Guardian protection" className="py-20 px-6" style={{ background: "#080811" }}>
+            <div className="max-w-5xl mx-auto text-center">
+              <p className="text-[#2d9b8a] text-sm font-bold tracking-widest uppercase mb-4">Protect Your People</p>
+              <h2 className="font-black text-white text-3xl md:text-4xl tracking-tight mb-4">
+                MEOK Guardian watches over the people you love.
+              </h2>
+              <p className="text-white/50 mb-12 max-w-2xl mx-auto">
+                Scam detection, relationship safety, and social protection — built into every conversation.
+              </p>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-10">
+                {[
+                  { title: "Scam Stop", desc: "Catches phishing, romance scams, and financial fraud before they reach your family.", color: "#2d9b8a" },
+                  { title: "Relationship Shield", desc: "Detects manipulation patterns, gaslighting, and coercive control in conversations.", color: "#A78BFA" },
+                  { title: "Social Guardian", desc: "Helps neurodivergent users navigate social situations with confidence.", color: "#F59E0B" },
+                ].map((card) => (
+                  <div key={card.title} className="rounded-2xl p-6 text-left" style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.08)", borderLeft: `3px solid ${card.color}` }}>
+                    <h3 className="font-bold text-white text-base mb-2">{card.title}</h3>
+                    <p className="text-white/45 text-sm leading-relaxed">{card.desc}</p>
+                  </div>
+                ))}
+              </div>
+              <div className="flex flex-wrap justify-center gap-8 text-xs text-white/30 mb-8">
+                <span>50% of neurodivergent people are scam victims</span>
+                <span>96% think they can spot scams — they can&apos;t</span>
+                <span>44% of victims get retargeted</span>
+              </div>
+              <Link href="/guardian" className="inline-flex items-center gap-2 text-[#2d9b8a] font-semibold hover:underline text-sm">
+                Learn about Guardian <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
+          </section>
+
+          {/* ── 3. HOW IT WORKS ──────────────────────────────────── */}
+          <section
+            aria-label="How MEOK works"
+            className="py-24 px-6 text-center"
+            style={{ background: "#1a1a2e" }}
+          >
+            <div className="max-w-4xl mx-auto">
+              <header className="mb-16">
+                <p className="text-sm font-bold tracking-widest uppercase mb-4" style={{ color: GOLD }}>How it works</p>
+                <h2 className="font-black text-white leading-tight tracking-tight mb-4" style={{ fontSize: "clamp(1.8rem, 5vw, 3rem)" }}>
+                  Three steps to your sovereign AI
+                </h2>
+                <p className="text-white/50 text-lg">From egg to companion in under 2 minutes.</p>
+              </header>
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+                {STEPS.map((item) => (
+                  <div key={item.step} className="flex flex-col items-center text-center px-4">
+                    <div
+                      className="w-12 h-12 rounded-full flex items-center justify-center font-black text-lg mb-5 shrink-0"
+                      style={{ background: GOLD, color: "#1a1a2e" }}
+                    >
+                      {item.step}
+                    </div>
+                    <h3 className="font-black text-white text-lg mb-3">{item.title}</h3>
+                    <p className="text-white/50 text-sm leading-relaxed">{item.body}</p>
+                  </div>
+                ))}
+              </div>
+
+              <Link
+                href="/birth"
+                className="inline-flex items-center gap-2 font-bold rounded-full transition-all shadow-lg hover:shadow-[#c9a84c]/40 hover:scale-105"
+                style={{ background: GOLD, color: "#1a1a2e", padding: "0.875rem 2rem" }}
+              >
+                Begin Birth Ceremony <ArrowRight className="w-4 h-4" aria-hidden="true" />
+              </Link>
+            </div>
+          </section>
+
+          {/* ── 4. PRICING ───────────────────────────────────────── */}
+          <section
+            aria-label="Pricing plans"
+            className="py-24 px-6"
+            id="pricing"
+            style={{ background: DEEP }}
+          >
+            <div className="max-w-5xl mx-auto text-center">
+              <p className="text-sm font-bold tracking-widest uppercase mb-4" style={{ color: GOLD }}>Pricing</p>
+              <h2 className="font-black text-white text-3xl md:text-4xl tracking-tight mb-4">
+                Free forever. Pay when it earns it.
+              </h2>
+              <p className="text-white/50 mb-4">
+                Sovereign architecture at every tier. Your data stays yours whether you pay or not.
+              </p>
+              <div className="inline-flex items-center gap-3 px-5 py-2 rounded-full text-sm mb-12" style={{ background: "rgba(201,168,76,0.08)", border: "1px solid rgba(201,168,76,0.2)" }}>
+                <span className="text-white/40">ChatGPT Plus £20</span>
+                <span className="text-white/20">·</span>
+                <span className="text-white/40">Claude Pro £18</span>
+                <span className="text-white/20">·</span>
+                <span className="font-bold" style={{ color: GOLD }}>MEOK Sovereign £12</span>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 mb-8">
+                {/* Explorer — Free */}
+                <div className="border-2 border-[#c9a84c] rounded-2xl p-7 text-left relative shadow-[0_0_30px_rgba(201,168,76,0.12)]">
+                  <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-[#c9a84c] text-[#1a1a2e] text-xs font-black whitespace-nowrap">
+                    Free Forever
+                  </div>
+                  <div className="text-xs font-bold tracking-widest uppercase text-white/40 mb-2 mt-2">Explorer</div>
+                  <div className="text-4xl font-black text-white mb-1">
+                    £0<span className="text-base font-normal text-white/40">/forever</span>
+                  </div>
+                  <ul className="space-y-2.5 my-5">
+                    {FREE_FEATURES.map((f) => (
+                      <li key={f} className="flex items-start gap-2 text-sm text-white/60">
+                        <Check className="w-4 h-4 text-[#c9a84c] flex-shrink-0 mt-0.5" />
+                        {f}
+                      </li>
+                    ))}
+                  </ul>
+                  <Link href="/birth" className="block w-full py-3 rounded-full text-center font-bold text-sm bg-[#c9a84c] text-[#1a1a2e] hover:bg-[#d4b463] transition-colors">
+                    Begin ceremony — no card needed
+                  </Link>
+                </div>
+
+                {/* Sovereign */}
+                <div className="border border-[#c9a84c]/20 rounded-2xl p-7 text-left bg-white/[0.03]">
+                  <div className="text-xs font-bold tracking-widest uppercase text-white/40 mb-2">Sovereign</div>
+                  <div className="text-4xl font-black text-white mb-1">
+                    £12<span className="text-base font-normal text-white/40">/mo</span>
+                  </div>
+                  <ul className="space-y-2.5 my-5">
+                    {SOVEREIGN_FEATURES.map((f) => (
+                      <li key={f} className="flex items-start gap-2 text-sm text-white/60">
+                        <Check className="w-4 h-4 text-[#c9a84c] flex-shrink-0 mt-0.5" />
+                        {f}
+                      </li>
+                    ))}
+                  </ul>
+                  <Link href="/pricing" className="block w-full py-3 rounded-full text-center font-bold text-sm bg-[#c9a84c] text-[#1a1a2e] hover:bg-[#d4b463] transition-colors">
+                    Get Sovereign
+                  </Link>
+                  <p className="text-xs text-white/20 text-center mt-1.5">30-day money-back guarantee</p>
+                </div>
+
+                {/* Family */}
+                <div className="border border-purple-500/20 rounded-2xl p-7 text-left bg-white/[0.03]">
+                  <div className="text-xs font-bold tracking-widest uppercase text-white/40 mb-2">Family</div>
+                  <div className="text-4xl font-black text-white mb-1">
+                    £29<span className="text-base font-normal text-white/40">/mo</span>
+                  </div>
+                  <ul className="space-y-2.5 my-5">
+                    {FAMILY_FEATURES.map((f) => (
+                      <li key={f} className="flex items-start gap-2 text-sm text-white/60">
+                        <Check className="w-4 h-4 text-purple-400 flex-shrink-0 mt-0.5" />
+                        {f}
+                      </li>
+                    ))}
+                  </ul>
+                  <Link href="/pricing" className="block w-full py-3 rounded-full text-center font-bold text-sm text-white border-2 border-purple-500/40 hover:border-purple-500/70 hover:bg-purple-500/10 transition-all">
+                    Get Family Plan
+                  </Link>
+                  <p className="text-xs text-white/20 text-center mt-1.5">30-day money-back guarantee</p>
+                </div>
+              </div>
+
+              <div className="flex flex-wrap justify-center gap-6 text-xs text-white/30">
+                <span>✓ 30-day money-back guarantee</span>
+                <span>✓ Zero data selling at every tier</span>
+                <span>✓ Maternal Covenant built in</span>
+              </div>
+            </div>
+          </section>
+
+          {/* ── 4b. HONESTY SECTION ──────────────────────────────── */}
+          <section aria-label="What we don't do yet" className="py-16 px-6" style={{ background: "#1a1a2e" }}>
+            <div className="max-w-3xl mx-auto text-center">
+              <p className="text-white/30 text-sm font-bold tracking-widest uppercase mb-4">Honest about the gaps</p>
+              <h2 className="font-black text-white text-2xl mb-8">What you don&apos;t get with MEOK. Yet.</h2>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-left mb-8">
+                {[
+                  { feature: "Image generation", status: "On the roadmap" },
+                  { feature: "Code execution sandbox", status: "Security-sensitive — taking our time" },
+                  { feature: "Live web browsing", status: "Using Perplexity Sonar meanwhile" },
+                  { feature: "Mobile app", status: "Web-first launch, native apps follow" },
+                  { feature: "Voice interaction", status: "Coming — prioritising memory quality first" },
+                ].map((item) => (
+                  <div key={item.feature} className="flex items-start gap-3 px-4 py-3 rounded-lg" style={{ background: "rgba(255,255,255,0.03)" }}>
+                    <span className="text-white/50 text-sm font-medium shrink-0">{item.feature}</span>
+                    <span className="text-white/25 text-sm ml-auto">{item.status}</span>
+                  </div>
+                ))}
+              </div>
+              <p className="text-white/25 text-xs italic">
+                We think transparency about limitations builds more trust than pretending they don&apos;t exist.
+              </p>
+            </div>
+          </section>
+
+          {/* ── 5. FINAL CTA ─────────────────────────────────────── */}
+          <section
+            aria-label="Final call to action"
+            className="relative overflow-hidden py-28 px-6 text-center"
+            style={{ background: "linear-gradient(160deg, #0d0c18 0%, #1a1a2e 60%, #0d0c18 100%)" }}
+          >
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-0"
+              style={{ background: "radial-gradient(ellipse 60% 60% at 50% 50%, rgba(201,168,76,0.08) 0%, transparent 70%)" }}
+            />
+
+            <div className="relative max-w-2xl mx-auto">
+              <blockquote className="text-xl md:text-2xl text-white leading-relaxed mb-4 italic">
+                I wasn&apos;t building a startup. I was trying to feel less alone.
+                Every AI I used forgot me by morning. So I built one that wouldn&apos;t.
+              </blockquote>
+              <p className="text-sm font-semibold mb-12" style={{ color: "rgba(201,168,76,0.8)" }}>
+                — Nicholas Templeman, Founder
+              </p>
+
+              <h2
+                className="font-black text-white leading-tight mb-6"
+                style={{ fontSize: "clamp(2.4rem, 6vw, 4rem)" }}
+              >
+                The egg is there.
+                <br />
+                <span style={{ color: GOLD }}>It&apos;s waiting to be yours.</span>
+              </h2>
+
+              <p className="mb-12 leading-relaxed" style={{ color: "rgba(245,240,232,0.50)", fontSize: "1.1rem" }}>
+                Three minutes. A name. An archetype. An AI that remembers you tomorrow, next month, and next year — encrypted, sovereign, never sold.
+              </p>
+
+              <Link
+                href="/birth"
+                className="inline-flex items-center gap-2 font-bold rounded-full transition-all shadow-lg hover:shadow-[#c9a84c]/40 hover:scale-105"
+                style={{ background: GOLD, color: "#1a1a2e", padding: "1.125rem 2.75rem", fontSize: "1.25rem" }}
+              >
+                Begin Birth Ceremony
+                <ArrowRight className="w-5 h-5" aria-hidden="true" />
+              </Link>
+              <p className="mt-6 text-sm" style={{ color: "rgba(245,240,232,0.28)" }}>
+                Free forever · No credit card · Sovereign by design
+              </p>
+            </div>
+          </section>
+        </main>
+
+        {/* ── FOOTER ─────────────────────────────────────────────── */}
+        <footer
+          aria-label="Site footer"
+          style={{ borderTop: "1px solid rgba(255,255,255,0.06)", background: "#0a0915" }}
+          className="py-10 px-6 text-center"
+        >
+          <div className="max-w-4xl mx-auto flex flex-col items-center gap-4">
+            <span className="font-black text-lg tracking-tight">
+              <span style={{ color: GOLD }}>M</span>
+              <span className="text-white">EOK</span>
+            </span>
+            <nav aria-label="Footer legal links" className="flex flex-wrap justify-center gap-6 text-sm">
+              <Link href="/privacy" className="text-white/40 hover:text-white/70 transition-colors">Privacy</Link>
+              <Link href="/terms" className="text-white/40 hover:text-white/70 transition-colors">Terms</Link>
+              <Link href="/maternal-covenant" className="text-white/40 hover:text-white/70 transition-colors">Maternal Covenant</Link>
+              <Link href="/blog" className="text-white/40 hover:text-white/70 transition-colors">Blog</Link>
+              <Link href="/about" className="text-white/40 hover:text-white/70 transition-colors">About</Link>
+            </nav>
+            <p className="text-xs" style={{ color: "rgba(255,255,255,0.18)" }}>
+              © {new Date().getFullYear()} MEOK AI LABS LTD · Registered in England &amp; Wales · All rights reserved
+            </p>
+          </div>
+        </footer>
+      </div>
+    </>
+  );
+}

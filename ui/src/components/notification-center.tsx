@@ -56,14 +56,28 @@ export default function NotificationCenter() {
   const [notifications, setNotifications] = useState<Notification[]>([]);
   const ref = useRef<HTMLDivElement>(null);
 
-  // Fetch on mount
+  // Fetch notifications + poll every 30s (pause when tab is hidden)
   useEffect(() => {
-    fetch('/api/user/notifications')
-      .then((r) => r.json())
-      .then((data) => {
-        if (Array.isArray(data.notifications)) setNotifications(data.notifications);
-      })
-      .catch(() => { /* silent */ });
+    let interval: ReturnType<typeof setInterval> | null = null;
+
+    function fetchNotifications() {
+      if (document.visibilityState === 'hidden') return;
+      fetch('/api/user/notifications')
+        .then((r) => r.json())
+        .then((data) => {
+          if (Array.isArray(data.notifications)) setNotifications(data.notifications);
+        })
+        .catch(() => { /* silent */ });
+    }
+
+    fetchNotifications();
+    interval = setInterval(fetchNotifications, 30_000);
+
+    document.addEventListener('visibilitychange', fetchNotifications);
+    return () => {
+      if (interval) clearInterval(interval);
+      document.removeEventListener('visibilitychange', fetchNotifications);
+    };
   }, []);
 
   // Close on outside click

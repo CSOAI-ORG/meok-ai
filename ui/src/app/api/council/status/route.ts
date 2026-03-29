@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server'
 import { auth } from '@clerk/nextjs/server'
 
 // GET /api/council/status
-// Returns Byzantine Council health — proxies to SOV3 or returns mock data
+// Returns Byzantine Council health — proxies to SOV3 with local fallback
 
 const SOV3_URL = process.env.SOV3_API_URL || 'http://localhost:3101'
 

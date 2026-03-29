@@ -13,6 +13,7 @@
  */
 
 import { type NextRequest, NextResponse } from 'next/server';
+import { auth } from '@clerk/nextjs/server';
 import { generateText } from 'ai';
 import { createOpenAI } from '@ai-sdk/openai';
 import { checkRateLimit } from '@/lib/rate-limit';
@@ -42,6 +43,14 @@ const WINDOW_MS = 60_000;
 
 function checkRateLimitLocal(ip: string): boolean {
   const now = Date.now();
+
+  // Prune expired entries periodically to prevent unbounded memory growth
+  if (rateLimits.size > 5000) {
+    for (const [key, val] of rateLimits) {
+      if (now > val.resetAt) rateLimits.delete(key);
+    }
+  }
+
   const entry = rateLimits.get(ip);
 
   if (!entry || now > entry.resetAt) {
@@ -57,6 +66,12 @@ function checkRateLimitLocal(ip: string): boolean {
 // ── Route Handler ──────────────────────────────────────────────────────────
 
 export async function POST(req: NextRequest): Promise<NextResponse> {
+  // Auth check — must be signed in
+  const { userId } = await auth();
+  if (!userId) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  }
+
   // Rate limit by IP (local per-minute check)
   const ip = req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ?? 'unknown';
   if (!checkRateLimitLocal(ip)) {

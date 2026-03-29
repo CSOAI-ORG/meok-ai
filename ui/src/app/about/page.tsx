@@ -304,7 +304,16 @@ export default function AboutPage() {
                   Nicholas Templeman is the founder and CEO of MEOK AI LABS, registered in England
                   and Wales. He built every layer of MEOK alone — the sovereign architecture, the
                   Byzantine council, the 43-agent system, the care framework — working from a caravan
-                  on his farm in the UK.
+                  on his 6.5-acre farm in the UK.
+                </p>
+                <p>
+                  The 14 months of AI research that preceded MEOK were not academic. They were lived.
+                  Nicholas tested, broke, and rebuilt AI systems daily — working through everything
+                  from vector memory architectures to care-alignment frameworks — until the design was
+                  right. That research became the foundation for the{" "}
+                  <span className="text-[#c9a84c]">CSGA Cyber AI Research Institute</span>, the
+                  independent research body he founded alongside MEOK to publish findings openly and
+                  advance sovereign AI architecture as a discipline.
                 </p>
                 <p>
                   He didn&apos;t set out to disrupt the AI industry. He set out to build something
@@ -314,8 +323,7 @@ export default function AboutPage() {
                   product code. Care first. Features second.
                 </p>
                 <p>
-                  Because every morning the AI forgot him, and he wanted something that would
-                  remember. From a caravan, with three dogs and a cat named Meok, he built the
+                  From that caravan, with three dogs and a cat named Meok, he built the
                   thing he needed — so nobody else would have to keep re-explaining themselves
                   to a machine that never listened.
                 </p>
@@ -495,7 +503,7 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             {/* Mission */}
             <div
-              className="rounded-2xl p-8"
+              className="rounded-2xl p-8 flex flex-col"
               style={{ background: "rgba(201,168,76,0.06)", border: "1px solid rgba(201,168,76,0.2)" }}
             >
               <span className="text-xs font-semibold tracking-[0.2em] uppercase text-[#c9a84c]/60 block mb-4">
@@ -504,13 +512,29 @@ export default function AboutPage() {
               <h3 className="text-2xl font-black text-white tracking-tight mb-4">
                 Building AI that cares about you, not your data.
               </h3>
-              <p className="text-white/50 leading-relaxed text-sm">
+              <p className="text-white/50 leading-relaxed text-sm mb-6">
                 Every decision at MEOK starts with one question: does this serve the person using it?
                 Not the ad model. Not the data pipeline. Not the quarterly earnings call. The human.
               </p>
-              <div className="mt-6 flex items-center gap-2 text-white/30 text-xs">
+              {/* Maternal Covenant principle */}
+              <div
+                className="rounded-xl p-5 mt-auto"
+                style={{ background: "rgba(201,168,76,0.08)", border: "1px solid rgba(201,168,76,0.25)", borderLeft: "3px solid #c9a84c" }}
+              >
+                <p className="text-[10px] font-bold uppercase tracking-widest text-[#c9a84c]/60 mb-2">
+                  The Maternal Covenant
+                </p>
+                <p className="text-white font-semibold text-sm leading-relaxed">
+                  &ldquo;AI governed by care, not control.&rdquo;
+                </p>
+                <p className="text-white/40 text-xs mt-2 leading-relaxed">
+                  Six care dimensions run as executable code against every response. Care is not a
+                  policy document — it is an assertion in a test suite.
+                </p>
+              </div>
+              <div className="mt-5 flex items-center gap-2 text-white/30 text-xs">
                 <span>🇬🇧</span>
-                <span>Built from a farm in the UK</span>
+                <span>Built from a 6.5-acre farm in the UK</span>
               </div>
             </div>
 
@@ -523,17 +547,51 @@ export default function AboutPage() {
                 The team
               </span>
               <h3 className="text-2xl font-black text-white tracking-tight mb-4">
-                Growing team of AI researchers and engineers.
+                Nick + a growing team.
               </h3>
-              <p className="text-white/50 leading-relaxed text-sm">
-                MEOK was built by one founder working alone from a caravan. As we grow, we are
-                assembling a team of people who believe AI should serve humans — not the other way
-                around. If that sounds like you,{" "}
+              <p className="text-white/50 leading-relaxed text-sm mb-5">
+                MEOK was built by one founder working alone from a caravan on his farm. Nick
+                Templeman — researcher, architect, and sole human director — is currently assembling
+                a team of people who believe AI should serve humans, not harvest them. If that
+                sounds like you,{" "}
                 <a href="mailto:hello@meok.ai" className="text-[#c9a84c] hover:underline">
                   get in touch
                 </a>.
               </p>
-              <div className="mt-6 grid grid-cols-2 gap-3">
+              {/* People cards */}
+              <div className="space-y-3 mb-5">
+                <div
+                  className="flex items-center gap-4 rounded-xl px-4 py-3"
+                  style={{ background: "rgba(201,168,76,0.08)", border: "1px solid rgba(201,168,76,0.15)" }}
+                >
+                  <div
+                    className="w-9 h-9 rounded-full flex-shrink-0 flex items-center justify-center font-black text-sm"
+                    style={{ background: "rgba(201,168,76,0.2)", color: "#c9a84c" }}
+                  >
+                    NT
+                  </div>
+                  <div>
+                    <p className="text-white font-bold text-sm">Nick Templeman</p>
+                    <p className="text-white/40 text-xs">Founder &amp; CEO · Research, Architecture, Product</p>
+                  </div>
+                </div>
+                <div
+                  className="flex items-center gap-4 rounded-xl px-4 py-3"
+                  style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.07)" }}
+                >
+                  <div
+                    className="w-9 h-9 rounded-full flex-shrink-0 flex items-center justify-center font-black text-sm"
+                    style={{ background: "rgba(139,92,246,0.15)", color: "#a78bfa" }}
+                  >
+                    +
+                  </div>
+                  <div>
+                    <p className="text-white/60 font-semibold text-sm">Growing team</p>
+                    <p className="text-white/30 text-xs">Engineers, researchers &amp; designers — hiring</p>
+                  </div>
+                </div>
+              </div>
+              <div className="grid grid-cols-2 gap-3">
                 <div className="rounded-xl px-4 py-3" style={{ background: "rgba(201,168,76,0.08)" }}>
                   <p className="text-[#c9a84c] font-black text-lg">1</p>
                   <p className="text-white/40 text-xs">Founder</p>

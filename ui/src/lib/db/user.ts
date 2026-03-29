@@ -7,6 +7,7 @@
  */
 
 import { sql } from './index';
+import type { DiaryEntry } from '../personality-diary';
 
 // ── Types ──────────────────────────────────────────────────────────────────
 
@@ -33,6 +34,9 @@ export interface User {
   created_at: string;            // ISO datetime
   updated_at: string;            // ISO datetime
   deleted_at: string | null;     // ISO datetime — set on GDPR deletion request
+  bond_points?: number;          // Accumulated bond points (added in migrate-v4)
+  referral_code?: string | null; // Deterministic referral code (added in migrate-v4)
+  consciousness_state?: Record<string, unknown> | null; // Cross-device consciousness (added in migrate-v3)
 }
 
 export interface GuardianSettings {
@@ -503,7 +507,7 @@ export async function getUserProfile(userId: string): Promise<Record<string, unk
  * Merges the new profile into the existing JSONB column so partial
  * updates are supported.
  */
-export async function updateUserProfile(userId: string, profile: Record<string, unknown>): Promise<void> {
+export async function updateUserProfile(userId: string, profile: Record<string, unknown> | object): Promise<void> {
   console.log(`[db/user] updateUserProfile — userId=${userId}`);
 
   if (!sql) {
@@ -568,7 +572,7 @@ export async function addBondPoints(userId: string, points: number): Promise<voi
 export async function storeDiaryEntry(
   userId: string,
   companionId: string,
-  entry: Record<string, unknown>,
+  entry: DiaryEntry,
 ): Promise<void> {
   console.log(`[db/user] storeDiaryEntry — userId=${userId} companionId=${companionId} entryId=${entry.id}`);
 
@@ -581,15 +585,15 @@ export async function storeDiaryEntry(
     await sql`
       INSERT INTO diary_entries (id, user_id, companion_id, entry_type, content, topics, mood, bond_value, created_at)
       VALUES (
-        ${(entry.id as string) ?? crypto.randomUUID()},
+        ${entry.id ?? crypto.randomUUID()},
         ${userId},
         ${companionId},
-        ${(entry.type as string) ?? 'reflection'},
-        ${(entry.content as string) ?? ''},
-        ${JSON.stringify((entry.topics as string[]) ?? [])},
-        ${(entry.mood as string) ?? 'thoughtful'},
-        ${(entry.bondValue as number) ?? 0},
-        ${(entry.timestamp as string) ?? new Date().toISOString()}
+        ${entry.type ?? 'reflection'},
+        ${entry.content ?? ''},
+        ${JSON.stringify(entry.topics ?? [])},
+        ${entry.mood ?? 'thoughtful'},
+        ${entry.bondValue ?? 0},
+        ${entry.timestamp ?? new Date().toISOString()}
       )
       ON CONFLICT (id) DO NOTHING
     `;
@@ -746,4 +750,205 @@ export async function setGracePeriod(userId: string, days: number = 7): Promise<
         updated_at = NOW()
     WHERE id = ${userId} AND deleted_at IS NULL
   `;
+}
+
+// ── Notifications ──────────────────────────────────────────────────────────
+
+export type NotificationType = 'care_signal' | 'guardian_alert' | 'level_up' | 'system' | 'milestone';
+
+export interface Notification {
+  id: string;
+  user_id: string;
+  type: NotificationType;
+  title: string;
+  message: string;
+  read: boolean;
+  read_at: string | null;
+  metadata: Record<string, unknown>;
+  created_at: string;
+}
+
+/**
+ * Fetches the most recent notifications for a user (newest first).
+ */
+export async function getNotifications(
+  userId: string,
+  limit = 30,
+): Promise<Notification[]> {
+  if (!sql) return [];
+
+  try {
+    const rows = await sql`
+      SELECT id, user_id, type, title, message, read, read_at, metadata, created_at
+      FROM notifications
+      WHERE user_id = ${userId}
+      ORDER BY created_at DESC
+      LIMIT ${limit}
+    `;
+    return rows as unknown as Notification[];
+  } catch (err: unknown) {
+    const msg = err instanceof Error ? err.message : String(err);
+    if (msg.includes('notifications') && msg.includes('does not exist')) {
+      console.warn('[db/user] getNotifications — notifications table missing. Run migrate-v4.sql.');
+      return [];
+    }
+    throw err;
+  }
+}
+
+/**
+ * Creates a new notification for a user.
+ */
+export async function createNotification(
+  userId: string,
+  notification: {
+    type: NotificationType;
+    title: string;
+    message: string;
+    metadata?: Record<string, unknown>;
+  },
+): Promise<void> {
+  if (!sql) return;
+
+  try {
+    await sql`
+      INSERT INTO notifications (user_id, type, title, message, metadata)
+      VALUES (
+        ${userId},
+        ${notification.type},
+        ${notification.title},
+        ${notification.message},
+        ${JSON.stringify(notification.metadata ?? {})}::jsonb
+      )
+    `;
+  } catch (err: unknown) {
+    const msg = err instanceof Error ? err.message : String(err);
+    if (msg.includes('notifications') && msg.includes('does not exist')) {
+      console.warn('[db/user] createNotification — notifications table missing. Run migrate-v4.sql.');
+      return;
+    }
+    throw err;
+  }
+}
+
+/**
+ * Marks specific notifications as read.
+ */
+export async function markNotificationsRead(
+  userId: string,
+  ids: string[],
+): Promise<void> {
+  if (!sql || ids.length === 0) return;
+
+  try {
+    await sql`
+      UPDATE notifications
+      SET read = TRUE, read_at = NOW()
+      WHERE user_id = ${userId}
+        AND id = ANY(${ids}::text[])
+        AND read = FALSE
+    `;
+  } catch (err: unknown) {
+    const msg = err instanceof Error ? err.message : String(err);
+    if (msg.includes('notifications') && msg.includes('does not exist')) return;
+    throw err;
+  }
+}
+
+/**
+ * Marks all unread notifications for a user as read.
+ */
+export async function markAllNotificationsRead(userId: string): Promise<void> {
+  if (!sql) return;
+
+  try {
+    await sql`
+      UPDATE notifications
+      SET read = TRUE, read_at = NOW()
+      WHERE user_id = ${userId} AND read = FALSE
+    `;
+  } catch (err: unknown) {
+    const msg = err instanceof Error ? err.message : String(err);
+    if (msg.includes('notifications') && msg.includes('does not exist')) return;
+    throw err;
+  }
+}
+
+// ── Referrals ──────────────────────────────────────────────────────────────
+
+/**
+ * Saves the user's referral code to the DB so other users can look them up.
+ */
+export async function setReferralCode(userId: string, code: string): Promise<void> {
+  if (!sql) return;
+  try {
+    await sql`
+      UPDATE users SET referral_code = ${code}, updated_at = NOW()
+      WHERE id = ${userId} AND referral_code IS NULL
+    `;
+  } catch { /* ignore — code might already be set */ }
+}
+
+/**
+ * Looks up a user by their referral code. Returns the user ID or null.
+ */
+export async function getUserByReferralCode(code: string): Promise<string | null> {
+  if (!sql) return null;
+  try {
+    const rows = await sql`
+      SELECT id FROM users WHERE referral_code = ${code} AND deleted_at IS NULL LIMIT 1
+    `;
+    return (rows[0] as { id: string } | undefined)?.id ?? null;
+  } catch { return null; }
+}
+
+/**
+ * Checks whether a user has already redeemed a referral code.
+ */
+export async function hasRedeemedReferral(userId: string): Promise<boolean> {
+  if (!sql) return false;
+  try {
+    const rows = await sql`
+      SELECT 1 FROM referrals WHERE referred_user_id = ${userId} LIMIT 1
+    `;
+    return rows.length > 0;
+  } catch { return false; }
+}
+
+/**
+ * Records a successful referral and awards bond points + trial extension.
+ */
+export async function recordReferral(
+  referrerId: string,
+  referredUserId: string,
+  code: string,
+  bondPoints: number,
+  trialDays: number,
+): Promise<void> {
+  if (!sql) return;
+  // Insert referral record
+  await sql`
+    INSERT INTO referrals (referrer_id, referred_user_id, code, bond_points_awarded, trial_days_granted)
+    VALUES (${referrerId}, ${referredUserId}, ${code}, ${bondPoints}, ${trialDays})
+  `;
+  // Award bond points to referrer
+  await sql`
+    UPDATE users SET bond_points = COALESCE(bond_points, 0) + ${bondPoints}, updated_at = NOW()
+    WHERE id = ${referrerId}
+  `;
+}
+
+/**
+ * Returns the number of successful referrals a user has made and total bond points earned.
+ */
+export async function getReferralStats(userId: string): Promise<{ totalReferred: number; totalBondEarned: number }> {
+  if (!sql) return { totalReferred: 0, totalBondEarned: 0 };
+  try {
+    const rows = await sql`
+      SELECT COUNT(*)::int AS total_referred, COALESCE(SUM(bond_points_awarded), 0)::int AS total_bond
+      FROM referrals WHERE referrer_id = ${userId}
+    `;
+    const row = rows[0] as { total_referred: number; total_bond: number } | undefined;
+    return { totalReferred: row?.total_referred ?? 0, totalBondEarned: row?.total_bond ?? 0 };
+  } catch { return { totalReferred: 0, totalBondEarned: 0 }; }
 }

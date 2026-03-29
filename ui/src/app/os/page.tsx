@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, Lock, Zap, Link2, Crown, Brain, Heart } from "lucide-react";
+import { ArrowRight, Lock, Zap, Link2, Crown, Brain, Heart, Monitor, Grid2x2 } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "MEOK OS — Personal Sovereign AI Operating System",
@@ -254,6 +254,27 @@ export default function OsPage() {
             Think of it as the intelligent layer underneath your apps — connecting your work, family,
             and personal AI into one unified, sovereign system.
           </p>
+
+          {/* ── Enter OS Mode CTAs ────────────────────────────────────────── */}
+          <div className="flex flex-col sm:flex-row gap-3 justify-center items-center mb-5">
+            <Link
+              href="/os/sovereign-os"
+              aria-label="Enter OS Mode — character-first sovereign interface"
+              className="inline-flex items-center gap-2 px-9 py-3.5 rounded-full bg-[#c9a84c] text-[#1a1a2e] font-black hover:bg-[#b8963e] active:scale-95 transition-all text-sm shadow-lg gold-glow"
+              style={{ letterSpacing: "0.02em" }}
+            >
+              <Monitor className="w-4 h-4" />
+              Enter OS Mode
+            </Link>
+            <Link
+              href="/os/fly-eye"
+              aria-label="Try Fly Eye Mode — 4-panel overview interface"
+              className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full border border-[#c9a84c]/30 text-[#c9a84c]/80 hover:text-[#c9a84c] hover:border-[#c9a84c]/60 hover:bg-[#c9a84c]/[0.04] active:scale-95 transition-all text-sm"
+            >
+              <Grid2x2 className="w-4 h-4" />
+              Try Fly Eye
+            </Link>
+          </div>
 
           <div className="flex flex-col sm:flex-row gap-3 justify-center items-center mb-12">
             <Link

@@ -1,7 +1,7 @@
 'use client';
 
 import { useUser } from '@clerk/nextjs';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import NotificationCenter from '@/components/notification-center';
 import { SCHEDULED_TASKS, formatSchedule } from '@/lib/scheduler';
 
@@ -33,14 +33,7 @@ function isAdmin(email: string | undefined | null): boolean {
 interface StatCard {
   label: string;
   value: string;
-  trend: string;        // e.g. "+12%"
-  trendUp: boolean;
-}
-
-interface ActivityItem {
-  id: string;
-  message: string;
-  timestamp: string;
+  loading: boolean;
 }
 
 interface HealthCheck {
@@ -48,34 +41,20 @@ interface HealthCheck {
   status: 'healthy' | 'degraded' | 'down';
 }
 
-// ---------------------------------------------------------------------------
-// Placeholder data  (swap for real API calls later)
-// ---------------------------------------------------------------------------
-const STAT_CARDS: StatCard[] = [
-  { label: 'Total Users',         value: '1,247',   trend: '+8.3%',  trendUp: true  },
-  { label: 'Messages Today',      value: '3,891',   trend: '+23.1%', trendUp: true  },
-  { label: 'Active Companions',   value: '412',     trend: '+4.7%',  trendUp: true  },
-  { label: 'Revenue MTD',         value: '\u00a312,430', trend: '+11.2%', trendUp: true  },
-  { label: 'Error Rate',          value: '0.12%',   trend: '-0.03%', trendUp: false },
-];
+interface AdminStats {
+  totalUsers: number | null;
+  activeCompanions: number | null;
+  messagesToday: number | null;
+  error?: string;
+}
 
-const ACTIVITY_LOG: ActivityItem[] = [
-  { id: '1', message: 'User alice@example.com upgraded to Pro',            timestamp: '2 min ago'  },
-  { id: '2', message: 'Guardian alert triggered for user #4821',           timestamp: '14 min ago' },
-  { id: '3', message: 'New companion "Luna" created by user #3190',        timestamp: '27 min ago' },
-  { id: '4', message: 'SOV3 council vote completed \u2014 motion passed',  timestamp: '43 min ago' },
-  { id: '5', message: 'Webhook delivery failure to stripe endpoint',       timestamp: '1 hr ago'   },
-  { id: '6', message: 'LLM provider latency spike (avg 2.4s)',             timestamp: '1.5 hr ago' },
-  { id: '7', message: 'Batch memory compaction finished (312 users)',      timestamp: '2 hr ago'   },
-];
-
-const HEALTH_CHECKS: HealthCheck[] = [
-  { name: 'Database (Postgres)',  status: 'healthy'  },
-  { name: 'LLM Provider',        status: 'healthy'  },
-  { name: 'SOV3 Council Engine',  status: 'healthy'  },
-  { name: 'Redis Cache',         status: 'healthy'  },
-  { name: 'Stripe Webhooks',     status: 'degraded' },
-];
+interface HealthData {
+  status: 'healthy' | 'degraded' | 'unhealthy';
+  db: { connected: boolean; latencyMs?: number; error?: string };
+  ollama: { reachable: boolean; models?: string[]; error?: string };
+  providers: Record<string, boolean>;
+  uptime: number;
+}
 
 // ---------------------------------------------------------------------------
 // Helpers
@@ -92,16 +71,71 @@ function statusLabel(status: HealthCheck['status']): string {
   return 'Down';
 }
 
+function formatUptime(seconds: number): string {
+  if (seconds < 60) return `${seconds}s`;
+  if (seconds < 3600) return `${Math.floor(seconds / 60)}m`;
+  if (seconds < 86400) return `${Math.floor(seconds / 3600)}h ${Math.floor((seconds % 3600) / 60)}m`;
+  return `${Math.floor(seconds / 86400)}d ${Math.floor((seconds % 86400) / 3600)}h`;
+}
+
+function formatNumber(n: number | null | undefined): string {
+  if (n === null || n === undefined) return '\u2014';
+  return n.toLocaleString();
+}
+
 // ---------------------------------------------------------------------------
 // Component
 // ---------------------------------------------------------------------------
 export default function AdminDashboard() {
   const { user, isLoaded } = useUser();
   const [mounted, setMounted] = useState(false);
+  const [stats, setStats] = useState<AdminStats | null>(null);
+  const [statsLoading, setStatsLoading] = useState(true);
+  const [healthData, setHealthData] = useState<HealthData | null>(null);
+  const [healthLoading, setHealthLoading] = useState(true);
 
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  const fetchStats = useCallback(async () => {
+    try {
+      setStatsLoading(true);
+      const res = await fetch('/api/admin/stats');
+      if (res.ok) {
+        const data = await res.json() as AdminStats;
+        setStats(data);
+      } else {
+        setStats({ totalUsers: null, activeCompanions: null, messagesToday: null, error: `HTTP ${res.status}` });
+      }
+    } catch {
+      setStats({ totalUsers: null, activeCompanions: null, messagesToday: null, error: 'Fetch failed' });
+    } finally {
+      setStatsLoading(false);
+    }
+  }, []);
+
+  const fetchHealth = useCallback(async () => {
+    try {
+      setHealthLoading(true);
+      const res = await fetch('/api/health');
+      if (res.ok || res.status === 503) {
+        const data = await res.json() as HealthData;
+        setHealthData(data);
+      }
+    } catch {
+      setHealthData(null);
+    } finally {
+      setHealthLoading(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (mounted && isLoaded && isAdmin(user?.primaryEmailAddress?.emailAddress)) {
+      fetchStats();
+      fetchHealth();
+    }
+  }, [mounted, isLoaded, user, fetchStats, fetchHealth]);
 
   // ---- Loading state ----
   if (!isLoaded || !mounted) {
@@ -123,6 +157,29 @@ export default function AdminDashboard() {
       </div>
     );
   }
+
+  // ---- Build stat cards from real data ----
+  const statCards: StatCard[] = [
+    { label: 'Total Users',       value: formatNumber(stats?.totalUsers),       loading: statsLoading },
+    { label: 'Messages Today',    value: formatNumber(stats?.messagesToday),     loading: statsLoading },
+    { label: 'Active Companions', value: formatNumber(stats?.activeCompanions),  loading: statsLoading },
+    { label: 'Revenue MTD',       value: '\u2014',                               loading: false },
+    { label: 'Error Rate',        value: '\u2014',                               loading: false },
+  ];
+
+  // ---- Build health checks from real /api/health data ----
+  const healthChecks: HealthCheck[] = healthData
+    ? [
+        { name: 'Database (Postgres)', status: healthData.db.connected ? 'healthy' : 'down' },
+        { name: 'Ollama (Local LLM)',  status: healthData.ollama.reachable ? 'healthy' : 'down' },
+        ...Object.entries(healthData.providers)
+          .filter(([, configured]) => configured)
+          .map(([name]) => ({
+            name: `${name.charAt(0).toUpperCase() + name.slice(1)} API`,
+            status: 'healthy' as const,
+          })),
+      ]
+    : [];
 
   // ---- Dashboard ----
   return (
@@ -159,43 +216,66 @@ export default function AdminDashboard() {
           gap: 16,
           marginBottom: 40,
         }}>
-          {STAT_CARDS.map((card) => (
+          {statCards.map((card) => (
             <div key={card.label} style={{
               background: SURFACE, borderRadius: 12, padding: '24px 20px',
               border: `1px solid ${BORDER}`,
             }}>
               <p style={{ margin: 0, fontSize: 13, color: TEXT_SECONDARY, marginBottom: 8 }}>{card.label}</p>
-              <p style={{ margin: 0, fontSize: 28, fontWeight: 700, letterSpacing: '-0.02em' }}>{card.value}</p>
-              <p style={{
-                margin: 0, marginTop: 8, fontSize: 13, fontWeight: 500,
-                color: card.label === 'Error Rate'
-                  ? (card.trendUp ? RED : GREEN)
-                  : (card.trendUp ? GREEN : RED),
-              }}>
-                {card.trend}
-                <span style={{ color: TEXT_SECONDARY, fontWeight: 400, marginLeft: 4 }}>vs last period</span>
-              </p>
+              {card.loading ? (
+                <p style={{ margin: 0, fontSize: 28, fontWeight: 700, letterSpacing: '-0.02em', color: TEXT_SECONDARY }}>
+                  ...
+                </p>
+              ) : (
+                <p style={{ margin: 0, fontSize: 28, fontWeight: 700, letterSpacing: '-0.02em' }}>{card.value}</p>
+              )}
+              {!card.loading && card.value === '\u2014' && stats?.error && (card.label === 'Total Users' || card.label === 'Messages Today' || card.label === 'Active Companions') ? (
+                <p style={{ margin: 0, marginTop: 8, fontSize: 12, color: RED }}>
+                  {stats.error}
+                </p>
+              ) : !card.loading && card.value === '\u2014' ? (
+                <p style={{ margin: 0, marginTop: 8, fontSize: 12, color: TEXT_SECONDARY }}>
+                  No endpoint
+                </p>
+              ) : null}
             </div>
           ))}
         </section>
 
-        {/* ---- Two-column layout: Activity + Health ---- */}
+        {/* ---- Two-column layout: Data Sources + Health ---- */}
         <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: 24 }}>
 
-          {/* ---- Recent activity ---- */}
+          {/* ---- Data Source Info ---- */}
           <section style={{
             background: SURFACE, borderRadius: 12, border: `1px solid ${BORDER}`,
             padding: '24px',
           }}>
-            <h2 style={{ margin: 0, fontSize: 16, fontWeight: 600, marginBottom: 20 }}>Recent Activity</h2>
+            <h2 style={{ margin: 0, fontSize: 16, fontWeight: 600, marginBottom: 20 }}>Data Sources</h2>
             <ul style={{ listStyle: 'none', margin: 0, padding: 0 }}>
-              {ACTIVITY_LOG.map((item) => (
-                <li key={item.id} style={{
+              {[
+                { label: 'Total Users', source: 'GET /api/admin/stats', live: stats?.totalUsers !== null && stats?.totalUsers !== undefined },
+                { label: 'Messages Today', source: 'GET /api/admin/stats', live: stats?.messagesToday !== null && stats?.messagesToday !== undefined },
+                { label: 'Active Companions', source: 'GET /api/admin/stats', live: stats?.activeCompanions !== null && stats?.activeCompanions !== undefined },
+                { label: 'Revenue MTD', source: 'No endpoint (needs Stripe integration)', live: false },
+                { label: 'Error Rate', source: 'No endpoint (needs error tracking)', live: false },
+                { label: 'System Health', source: 'GET /api/health', live: healthData !== null },
+              ].map((item) => (
+                <li key={item.label} style={{
                   display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start',
                   padding: '12px 0', borderBottom: `1px solid ${BORDER}`,
                 }}>
-                  <span style={{ fontSize: 14, lineHeight: 1.5, maxWidth: '75%' }}>{item.message}</span>
-                  <span style={{ fontSize: 12, color: TEXT_SECONDARY, whiteSpace: 'nowrap', marginLeft: 16 }}>{item.timestamp}</span>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+                    <span style={{ fontSize: 14, lineHeight: 1.5 }}>{item.label}</span>
+                    <span style={{ fontSize: 12, color: TEXT_SECONDARY, fontFamily: 'monospace' }}>{item.source}</span>
+                  </div>
+                  <span style={{
+                    fontSize: 11, fontWeight: 500, padding: '2px 8px', borderRadius: 9999,
+                    background: item.live ? 'rgba(52,211,153,0.15)' : 'rgba(255,255,255,0.05)',
+                    color: item.live ? GREEN : TEXT_SECONDARY,
+                    whiteSpace: 'nowrap', marginLeft: 16,
+                  }}>
+                    {item.live ? 'Live' : 'Not wired'}
+                  </span>
                 </li>
               ))}
             </ul>
@@ -207,27 +287,52 @@ export default function AdminDashboard() {
             padding: '24px',
           }}>
             <h2 style={{ margin: 0, fontSize: 16, fontWeight: 600, marginBottom: 20 }}>System Health</h2>
-            <ul style={{ listStyle: 'none', margin: 0, padding: 0 }}>
-              {HEALTH_CHECKS.map((check) => (
-                <li key={check.name} style={{
-                  display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-                  padding: '14px 0', borderBottom: `1px solid ${BORDER}`,
+            {healthLoading ? (
+              <p style={{ color: TEXT_SECONDARY, fontSize: 14 }}>Loading health data...</p>
+            ) : healthData === null ? (
+              <p style={{ color: RED, fontSize: 14 }}>Failed to fetch health data</p>
+            ) : (
+              <>
+                <div style={{
+                  display: 'flex', alignItems: 'center', gap: 8, marginBottom: 16,
+                  padding: '8px 12px', borderRadius: 8,
+                  background: healthData.status === 'healthy' ? 'rgba(52,211,153,0.1)' : healthData.status === 'degraded' ? 'rgba(201,168,76,0.1)' : 'rgba(248,113,113,0.1)',
                 }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                    <span style={{
-                      width: 10, height: 10, borderRadius: '50%',
-                      background: statusColor(check.status),
-                      display: 'inline-block',
-                      boxShadow: `0 0 6px ${statusColor(check.status)}60`,
-                    }} />
-                    <span style={{ fontSize: 14 }}>{check.name}</span>
-                  </div>
-                  <span style={{ fontSize: 12, color: statusColor(check.status), fontWeight: 500 }}>
-                    {statusLabel(check.status)}
+                  <span style={{
+                    width: 10, height: 10, borderRadius: '50%',
+                    background: healthData.status === 'healthy' ? GREEN : healthData.status === 'degraded' ? GOLD : RED,
+                    display: 'inline-block',
+                  }} />
+                  <span style={{ fontSize: 14, fontWeight: 500 }}>
+                    Overall: {healthData.status === 'healthy' ? 'Healthy' : healthData.status === 'degraded' ? 'Degraded' : 'Unhealthy'}
                   </span>
-                </li>
-              ))}
-            </ul>
+                  <span style={{ fontSize: 12, color: TEXT_SECONDARY, marginLeft: 'auto' }}>
+                    Uptime: {formatUptime(healthData.uptime)}
+                  </span>
+                </div>
+                <ul style={{ listStyle: 'none', margin: 0, padding: 0 }}>
+                  {healthChecks.map((check) => (
+                    <li key={check.name} style={{
+                      display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+                      padding: '14px 0', borderBottom: `1px solid ${BORDER}`,
+                    }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+                        <span style={{
+                          width: 10, height: 10, borderRadius: '50%',
+                          background: statusColor(check.status),
+                          display: 'inline-block',
+                          boxShadow: `0 0 6px ${statusColor(check.status)}60`,
+                        }} />
+                        <span style={{ fontSize: 14 }}>{check.name}</span>
+                      </div>
+                      <span style={{ fontSize: 12, color: statusColor(check.status), fontWeight: 500 }}>
+                        {statusLabel(check.status)}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </>
+            )}
           </section>
         </div>
 
@@ -266,7 +371,7 @@ export default function AdminDashboard() {
 
         {/* ---- Footer note ---- */}
         <p style={{ marginTop: 48, textAlign: 'center', fontSize: 12, color: TEXT_SECONDARY }}>
-          MEOK AI OS &mdash; Admin v0.1.0 &mdash; Data is placeholder. Wire to real APIs.
+          MEOK AI OS &mdash; Admin v0.2.0 &mdash; Live data from /api/admin/stats and /api/health
         </p>
       </main>
     </div>

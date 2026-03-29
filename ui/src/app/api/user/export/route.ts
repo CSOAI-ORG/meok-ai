@@ -10,7 +10,8 @@
  */
 
 import { type NextRequest, NextResponse } from 'next/server';
-import { auth } from '@clerk/nextjs/server';
+import { requireAuth } from '@/lib/api-auth';
+import { checkRateLimit } from '@/lib/rate-limit';
 import { getUserById, getGuardianSettings } from '@/lib/db/user';
 
 export const runtime = 'nodejs';
@@ -18,13 +19,13 @@ export const dynamic = 'force-dynamic';
 
 export async function GET(_req: NextRequest) {
   // ── 1. Auth ──────────────────────────────────────────────────────────────
-  const { userId } = await auth();
+  const authResult = await requireAuth();
+  if (authResult.error) return authResult.error;
+  const { userId } = authResult;
 
-  if (!userId) {
-    return NextResponse.json(
-      { error: 'Unauthorized. Please sign in to export your data.' },
-      { status: 401 },
-    );
+  const rateLimitResult = checkRateLimit(userId, 'explorer');
+  if (!rateLimitResult.allowed) {
+    return NextResponse.json({ error: 'Rate limit exceeded' }, { status: 429 });
   }
 
   // ── 2. Fetch account data ─────────────────────────────────────────────────
@@ -54,7 +55,7 @@ export async function GET(_req: NextRequest) {
     // Semantic memories from SOV3: attempt live fetch with graceful fallback
     memories: await (async () => {
       try {
-        const sov3Url = process.env.SOV3_API_URL || 'http://localhost:3100';
+        const sov3Url = process.env.SOV3_URL || process.env.SOV3_API_URL || 'http://localhost:3101';
         const res = await fetch(`${sov3Url}/mcp`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },

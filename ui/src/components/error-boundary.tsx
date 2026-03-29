@@ -17,6 +17,10 @@ const BASE_DELAY_MS = 1000;
 interface ErrorBoundaryProps {
   companionId?: string;
   children: ReactNode;
+  /** Custom fallback UI rendered instead of the default error card */
+  fallback?: ReactNode;
+  /** Called when an error is caught (in addition to console.error) */
+  onError?: (error: Error, info: React.ErrorInfo) => void;
 }
 
 interface ErrorBoundaryState {
@@ -68,6 +72,7 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
 
   componentDidCatch(error: Error, info: React.ErrorInfo) {
     console.error('[MEOK ErrorBoundary]', error, info.componentStack);
+    this.props.onError?.(error, info);
   }
 
   handleRetry = () => {
@@ -90,6 +95,11 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
   render() {
     if (!this.state.hasError) {
       return this.props.children;
+    }
+
+    /* Custom fallback short-circuits all default error UI */
+    if (this.props.fallback != null) {
+      return this.props.fallback;
     }
 
     const { retryCount, isRetrying, error } = this.state;
@@ -154,6 +164,11 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
   }
 }
 
+/* ── Brand tokens ── */
+const DEEP    = '#0d0c18';
+const SURFACE = '#13121f';
+const GOLD    = '#c9a84c';
+
 /* ── Inline styles (dark MEOK theme + gold accent) ── */
 
 const styles: Record<string, React.CSSProperties> = {
@@ -163,15 +178,17 @@ const styles: Record<string, React.CSSProperties> = {
     justifyContent: 'center',
     minHeight: 240,
     padding: 24,
+    background: DEEP,
   },
   card: {
-    background: '#1a1a2e',
-    border: '1px solid #2a2a4a',
+    background: SURFACE,
+    border: `1px solid rgba(201,168,76,0.25)`,
     borderRadius: 16,
     padding: 32,
     maxWidth: 400,
     textAlign: 'center',
     color: '#e0e0e0',
+    boxShadow: '0 8px 32px rgba(0,0,0,0.4)',
   },
   avatar: {
     width: 64,
@@ -179,12 +196,12 @@ const styles: Record<string, React.CSSProperties> = {
     borderRadius: '50%',
     objectFit: 'cover' as const,
     marginBottom: 12,
-    border: '2px solid #d4a843',
+    border: `2px solid ${GOLD}`,
   },
   companionName: {
     fontSize: 18,
     fontWeight: 600,
-    color: '#d4a843',
+    color: GOLD,
     margin: '0 0 8px',
   },
   stumbleMessage: {
@@ -195,18 +212,19 @@ const styles: Record<string, React.CSSProperties> = {
     lineHeight: 1.5,
   },
   retryButton: {
-    background: 'linear-gradient(135deg, #d4a843 0%, #b8892e 100%)',
-    color: '#1a1a2e',
+    background: `linear-gradient(135deg, ${GOLD} 0%, #a88630 100%)`,
+    color: DEEP,
     border: 'none',
     borderRadius: 8,
     padding: '10px 24px',
     fontSize: 14,
     fontWeight: 600,
     transition: 'opacity 0.2s',
+    cursor: 'pointer',
   },
   hint: {
     fontSize: 12,
-    color: '#888',
+    color: 'rgba(255,255,255,0.35)',
     marginTop: 12,
     marginBottom: 0,
   },
@@ -218,14 +236,14 @@ const styles: Record<string, React.CSSProperties> = {
   },
   fallbackDetail: {
     fontSize: 13,
-    color: '#888',
+    color: 'rgba(255,255,255,0.45)',
     margin: '0 0 20px',
     wordBreak: 'break-word',
   },
   reloadButton: {
-    background: '#2a2a4a',
-    color: '#d4a843',
-    border: '1px solid #d4a843',
+    background: 'rgba(201,168,76,0.08)',
+    color: GOLD,
+    border: `1px solid ${GOLD}`,
     borderRadius: 8,
     padding: '10px 24px',
     fontSize: 14,

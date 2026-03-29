@@ -174,13 +174,21 @@ export default function CharactersPage() {
           </p>
 
           {/* CTA */}
-          <Link
-            href="/birth"
-            className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-[#c9a84c] text-[#0d0c18] font-semibold text-lg hover:bg-[#f0d080] transition-colors duration-200"
-          >
-            Begin Birth Ceremony
-            <span aria-hidden="true">→</span>
-          </Link>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <Link
+              href="/birth"
+              className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-[#c9a84c] text-[#0d0c18] font-semibold text-lg hover:bg-[#f0d080] transition-colors duration-200"
+            >
+              Begin Birth Ceremony
+              <span aria-hidden="true">→</span>
+            </Link>
+            <Link
+              href="/characters/search"
+              className="inline-flex items-center gap-2 px-8 py-4 rounded-full border border-[rgba(201,168,76,0.3)] text-[#c9a84c] font-semibold text-lg hover:bg-[rgba(201,168,76,0.08)] transition-colors duration-200"
+            >
+              Search all characters →
+            </Link>
+          </div>
         </div>
       </section>
 
@@ -203,6 +211,49 @@ export default function CharactersPage() {
       {/* ── Archetype grid (with search/filter) ────────────────────────────── */}
       <ArchetypeGrid archetypes={ARCHETYPE_LIST} />
 
+      {/* ── Compare characters ────────────────────────────────────────────── */}
+      <section aria-labelledby="compare-heading" className="px-4 pb-20">
+        <div className="max-w-5xl mx-auto">
+          <div className="section-divider mb-12" />
+          <div className="premium-card p-8 sm:p-10 flex flex-col sm:flex-row items-center gap-8">
+            {/* Character emoji row */}
+            <div className="flex-shrink-0 flex items-center gap-3" aria-hidden="true">
+              {['🌸', '🌿', '⚡', '🌙', '🕊️', '🌅', '📊'].map((emoji, i) => (
+                <div
+                  key={i}
+                  className="w-10 h-10 rounded-xl flex items-center justify-center text-lg bg-[rgba(255,255,255,0.05)] border border-[rgba(255,255,255,0.08)]"
+                >
+                  {emoji}
+                </div>
+              ))}
+            </div>
+
+            <div className="flex-1 text-center sm:text-left">
+              <h2
+                id="compare-heading"
+                className="text-xl font-bold text-white mb-2"
+              >
+                Not sure which companion is right for you?
+              </h2>
+              <p className="text-gray-400 text-sm leading-relaxed">
+                Compare all {totalCharacters} characters side-by-side — personality, capabilities, and
+                what each one is best suited for.
+              </p>
+            </div>
+
+            <div className="flex-shrink-0">
+              <Link
+                href="/characters/compare"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-[rgba(201,168,76,0.3)] text-[#c9a84c] font-semibold text-sm hover:bg-[rgba(201,168,76,0.08)] transition-colors duration-200 whitespace-nowrap"
+              >
+                Compare characters
+                <span aria-hidden="true">→</span>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ── Stats bar ────────────────────────────────────────────────────────── */}
       <section aria-label="Platform statistics" className="px-4 pb-20">
         <div className="max-w-3xl mx-auto">
@@ -224,6 +275,50 @@ export default function CharactersPage() {
             ))}
           </div>
           <div className="section-divider mt-12" />
+        </div>
+      </section>
+
+      {/* ── Character Packs + Digital Self ──────────────────────────────────── */}
+      <section aria-labelledby="packs-heading" className="px-4 pb-20">
+        <div className="max-w-5xl mx-auto">
+          <div className="section-divider mb-12" />
+          <h2 id="packs-heading" className="text-2xl md:text-3xl font-bold text-white mb-3 text-center">
+            Expanded character universe
+          </h2>
+          <p className="text-gray-400 text-center mb-10 max-w-xl mx-auto">
+            Beyond MEOK originals — mythological gods, historical legends, iconic literary characters,
+            Jungian archetypes, and your own digital avatar.
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {[
+              { href: "/characters/mythological",   emoji: "⚡", label: "Mythological",       desc: "28 gods from 8 traditions",    color: "#6366F1" },
+              { href: "/characters/historical",      emoji: "🏛️", label: "Historical",         desc: "20 legends from history",      color: "#F59E0B" },
+              { href: "/characters/literary",        emoji: "📚", label: "Literary Classics",  desc: "20 iconic fictional characters", color: "#10B981" },
+              { href: "/characters/archetypes-pack", emoji: "☯️", label: "Jungian Archetypes", desc: "20 universal patterns",         color: "#8B5CF6" },
+              { href: "/characters/create-yourself", emoji: "🪞", label: "Create Yourself",    desc: "Your digital self",             color: "#c9a84c" },
+            ].map(pack => (
+              <Link
+                key={pack.href}
+                href={pack.href}
+                className="block group"
+                style={{ textDecoration: "none" }}
+              >
+                <div
+                  className="h-full rounded-2xl p-6 flex flex-col gap-3 transition-all duration-200"
+                  style={{ background: "#13121f", border: `1px solid ${pack.color}25` }}
+                >
+                  <span className="text-3xl">{pack.emoji}</span>
+                  <div>
+                    <div className="font-bold text-white text-base mb-1">{pack.label}</div>
+                    <div className="text-sm" style={{ color: "rgba(245,240,232,0.4)" }}>{pack.desc}</div>
+                  </div>
+                  <span className="text-sm font-semibold mt-auto" style={{ color: pack.color }}>
+                    Explore →
+                  </span>
+                </div>
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
 

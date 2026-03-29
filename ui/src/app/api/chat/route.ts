@@ -17,7 +17,7 @@ import { streamText } from 'ai';
 import { auth } from '@clerk/nextjs/server';
 import { route, type Tier, getEffortLevel, getThinkingBudget } from '@/lib/llm-router';
 import { compressContext } from '@/lib/context-compressor';
-import { getUserById, incrementMessageCount, getUserProfile, updateUserProfile, TIER_LIMITS, addBondPoints, storeDiaryEntry, getSignalsSentThisWeek, queueCareSignal } from '@/lib/db/user';
+import { getUserById, incrementMessageCount, getUserProfile, updateUserProfile, TIER_LIMITS, addBondPoints, storeDiaryEntry, getSignalsSentThisWeek, queueCareSignal, createNotification } from '@/lib/db/user';
 import { getCharacter } from '@/lib/characters';
 import { analyzeEmotion, formatEmotionContext } from '@/lib/emotion';
 import {
@@ -363,7 +363,7 @@ export async function POST(req: NextRequest): Promise<Response> {
 
   try {
     // Relationship progression — content gating by depth
-    const bondPts = (user as unknown as Record<string, unknown>)?.bond_points as number ?? 0;
+    const bondPts = user?.bond_points ?? 0;
     const sessionCount = user?.messages_total ?? 0;
     const daysSinceFirst = user ? Math.floor((Date.now() - new Date(user.created_at).getTime()) / 86400000) : 0;
     const relState = buildRelationshipState(bondPts, sessionCount, daysSinceFirst);
@@ -507,7 +507,7 @@ export async function POST(req: NextRequest): Promise<Response> {
 
     // Persist OCEAN profile every 10 messages
     if (sessionProfile && user && (user.messages_total ?? 0) % 10 === 0) {
-      void updateUserProfile(userId, sessionProfile as unknown as Record<string, unknown>).catch(err =>
+      void updateUserProfile(userId, sessionProfile).catch(err =>
         console.error('[api/chat] Profile persistence failed (non-fatal):', err),
       );
     }
@@ -518,6 +518,29 @@ export async function POST(req: NextRequest): Promise<Response> {
     void addBondPoints(userId, bondPoints).catch(err =>
       console.error('[api/chat] Bond points persistence failed (non-fatal):', err),
     );
+
+    // Level-up notification: detect when messages_total crosses a stage threshold
+    if (user) {
+      const prevTotal = user.messages_total ?? 0;
+      const newTotal = prevTotal + 1;
+      const STAGE_THRESHOLDS: Record<number, string> = {
+        10:  'First Light',
+        25:  'Growing Form',
+        50:  'Mature Companion',
+        100: 'Deep Bond',
+        200: 'Sovereign',
+      };
+      const stageLabel = STAGE_THRESHOLDS[newTotal];
+      if (stageLabel) {
+        const character = getCharacter(cid);
+        void createNotification(userId, {
+          type: 'level_up',
+          title: `Companion Stage Unlocked: ${stageLabel}`,
+          message: `${character?.name ?? 'Your companion'} has reached the "${stageLabel}" stage. New capabilities and deeper connection await.`,
+          metadata: { stage: stageLabel, interactions: newTotal, character_id: cid },
+        }).catch(() => {});
+      }
+    }
 
     // Generate personality diary entry every 25 messages
     if (user && (user.messages_total ?? 0) % 25 === 0 && (user.messages_total ?? 0) > 0) {
@@ -532,7 +555,7 @@ export async function POST(req: NextRequest): Promise<Response> {
           daysSinceFirst: Math.floor((Date.now() - new Date(user.created_at).getTime()) / 86400000),
           lastEmotionalState: emotionState.primary,
         });
-        void storeDiaryEntry(userId, cid, diaryEntry as unknown as Record<string, unknown>).catch(err =>
+        void storeDiaryEntry(userId, cid, diaryEntry).catch(err =>
           console.error('[api/chat] Diary storage failed (non-fatal):', err),
         );
       } catch (err) {
@@ -556,6 +579,13 @@ export async function POST(req: NextRequest): Promise<Response> {
           void queueCareSignal(userId, careSignal).catch(err =>
             console.error('[api/chat] Care signal queueing failed (non-fatal):', err),
           );
+          // Also create an in-app notification so the user sees it in their inbox
+          void createNotification(userId, {
+            type: 'care_signal',
+            title: 'Care Signal',
+            message: careSignal.message,
+            metadata: { signal_type: careSignal.type, priority: careSignal.priority },
+          }).catch(() => {});
         }
       } catch (err) {
         console.error('[api/chat] Care signal evaluation failed (non-fatal):', err);

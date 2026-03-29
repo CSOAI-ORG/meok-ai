@@ -1,17 +1,24 @@
 /**
  * MEOK AI LABS — Character Database
  *
- * SINGLE SOURCE OF TRUTH for all 50 MEOK companions.
+ * SINGLE SOURCE OF TRUTH for all MEOK companions.
  *
  * This module exports:
  *   - Character / Archetype / ArchetypeInfo interfaces
  *   - ARCHETYPES   — the 9 archetype definitions
- *   - CHARACTERS    — all 50 companions keyed by ID
+ *   - CHARACTERS    — all companions keyed by ID (50 MEOK originals + 75 extended packs)
  *   - Helper fns    — getCharacter, getCharactersByArchetype, etc.
+ *
+ * Character packs are merged in from src/lib/character-packs/:
+ *   - MYTHOLOGICAL_PACK (25 characters: Greek, Norse, Celtic, Egyptian, World)
+ *   - HISTORICAL_PACK   (20 characters: philosophers, scientists, writers, leaders)
+ *   - ARCHETYPE_PACK    (20 characters: Jungian, Hero's Journey, Universal)
  *
  * Every other part of the codebase (chat API, UI, admin, billing)
  * should import from here rather than maintaining its own list.
  */
+
+import { ALL_PACKS } from './character-packs';
 
 // ── Types ──────────────────────────────────────────────────────────────────
 
@@ -1270,7 +1277,18 @@ export const CHARACTERS: Record<string, Character> = {
     dynamism: 0.86,
     dimensions: { warmth: 0.6, energy: 0.8, whimsy: 0.3, edge: 0.5, complexity: 0.5 },
   },
+
+  // Extended packs merged in — do not edit here; edit in src/lib/character-packs/
+  ...ALL_PACKS,
 };
+
+// ── Pack Metadata ──────────────────────────────────────────────────────────
+
+export { MYTHOLOGICAL_PACK, HISTORICAL_PACK, ARCHETYPE_PACK } from './character-packs';
+export { MYTHOLOGICAL_TRADITIONS, HISTORICAL_DOMAINS } from './character-packs';
+
+/** Total character count including all packs. */
+export const TOTAL_CHARACTERS = Object.keys(CHARACTERS).length;
 
 // ── Helper Functions ───────────────────────────────────────────────────────
 

@@ -465,9 +465,34 @@ const POSTS: PostData[] = [
 ];
 
 // ── Related posts helper ───────────────────────────────────────────────────────
+// 90.2 — match by tag (same category proxy), show 3 articles
 
 function getRelated(slug: string): PostData[] {
-  return POSTS.filter((p) => p.slug !== slug).slice(0, 2);
+  const current = POSTS.find((p) => p.slug === slug);
+  if (!current) return POSTS.filter((p) => p.slug !== slug).slice(0, 3);
+
+  // First try: same tag
+  const sameTag = POSTS.filter(
+    (p) => p.slug !== slug && p.tag === current.tag
+  );
+  if (sameTag.length >= 3) return sameTag.slice(0, 3);
+
+  // Second try: partially matching tag (first word)
+  const firstWord = current.tag.split(/[\s\/]/)[0].toLowerCase();
+  const partialTag = POSTS.filter(
+    (p) =>
+      p.slug !== slug &&
+      !sameTag.includes(p) &&
+      p.tag.toLowerCase().startsWith(firstWord)
+  );
+  const combined = [...sameTag, ...partialTag];
+  if (combined.length >= 3) return combined.slice(0, 3);
+
+  // Fallback: fill with recent posts
+  const fallback = POSTS.filter(
+    (p) => p.slug !== slug && !combined.includes(p)
+  ).slice(0, 3 - combined.length);
+  return [...combined, ...fallback].slice(0, 3);
 }
 
 // ── Static params ─────────────────────────────────────────────────────────────
@@ -721,11 +746,11 @@ export default async function BlogPost({ params }: Props) {
           </div>
         </div>
 
-        {/* Related posts */}
+        {/* Related articles — 90.2 */}
         {related.length > 0 && (
           <div>
-            <h2 className="text-lg font-black text-[#1a1a2e] mb-5">More from the blog</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <h2 className="text-lg font-black text-[#1a1a2e] mb-5">Related articles</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {related.map((rel) => (
                 <Link
                   key={rel.slug}

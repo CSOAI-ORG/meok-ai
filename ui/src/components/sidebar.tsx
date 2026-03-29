@@ -22,6 +22,15 @@ import {
   Link2,
   Menu,
   X,
+  Gamepad2,
+  Users,
+  FileText,
+  Briefcase,
+  CreditCard,
+  FlaskConical,
+  Zap,
+  Star,
+  Lock,
 } from "lucide-react";
 import { useUser, useClerk } from "@clerk/nextjs";
 import { useEffect, useState } from "react";
@@ -107,39 +116,83 @@ const navGroups: NavGroup[] = [
     items: [
       { href: "/dashboard", label: "Overview", icon: LayoutDashboard },
       { href: "/dashboard/morning-briefing", label: "Morning Briefing", icon: Sunrise },
+      { href: "/dashboard/research", label: "Research", icon: FlaskConical },
+    ],
+  },
+  {
+    title: "Sovereign OS",
+    items: [
+      { href: "/os/sovereign-os", label: "OS Interface", icon: Cpu },
+      { href: "/os/fly-eye", label: "Fly Eye Mode", icon: Sparkles },
+      { href: "/os/any-llm", label: "Any LLM", icon: Link2 },
+      { href: "/os/consciousness", label: "Consciousness", icon: Moon },
+      { href: "/birth", label: "Birth Ceremony", icon: Star },
     ],
   },
   {
     title: "Your AI",
     items: [
+      { href: "/dashboard/chat", label: "Chat", icon: MessageSquare },
       { href: "/dashboard/companion", label: "Companion", icon: Heart },
-      { href: "/chat", label: "Chat", icon: MessageSquare },
-      { href: "/dashboard/memory", label: "Memory", icon: Database },
-      { href: "/dashboard/care-metrics", label: "Care Metrics", icon: Heart },
+      { href: "/dashboard/memories", label: "Memories", icon: Database },
+      { href: "/dashboard/evolution", label: "Evolution", icon: Sparkles },
+      { href: "/dashboard/bond", label: "Bond Score", icon: Heart },
+      { href: "/dashboard/dream", label: "Dreams", icon: Moon },
+      { href: "/dashboard/voice", label: "Voice", icon: Zap },
+      { href: "/dashboard/anti-sycophancy", label: "Honesty Mode", icon: Star },
     ],
   },
   {
-    title: "Platform",
+    title: "Work OS",
     items: [
-      { href: "/dashboard/agents", label: "Agents", icon: Bot },
-      { href: "/dashboard/dreams", label: "Dreams", icon: Moon },
-      { href: "/dashboard/creativity", label: "Creativity", icon: Sparkles },
-      { href: "/dashboard/connect", label: "Connect", icon: Link2 },
+      { href: "/work", label: "Work Overview", icon: Briefcase },
+      { href: "/work/orion", label: "Orion — Hunter", icon: Star },
+      { href: "/work/riri", label: "Riri — Builder", icon: Cpu },
+      { href: "/work/hourman", label: "Hourman — Planner", icon: Crown },
+      { href: "/dashboard/ralph", label: "Ralph Mode", icon: Zap, proOnly: true },
+    ],
+  },
+  {
+    title: "Guardian",
+    items: [
+      { href: "/guardian", label: "Guardian 24/7", icon: Shield },
+      { href: "/guardian/scam-stop", label: "Scam Stop", icon: Lock },
+      { href: "/dashboard/relationship-shield", label: "Relationship Shield", icon: Heart },
+      { href: "/dashboard/social-guardian", label: "Social Guardian", icon: Users },
+    ],
+  },
+  {
+    title: "Gaming",
+    items: [
+      { href: "/gaming", label: "Gaming OS", icon: Gamepad2 },
+      { href: "/dashboard/gaming/coaching", label: "Coaching", icon: Star },
+      { href: "/dashboard/gaming/stats", label: "Stats", icon: LayoutDashboard },
+      { href: "/dashboard/gaming/community", label: "Community", icon: Users },
+    ],
+  },
+  {
+    title: "Family",
+    items: [
+      { href: "/dashboard/family-circle", label: "Family Circle", icon: Heart },
+      { href: "/dashboard/family-vault", label: "Family Vault", icon: Lock },
     ],
   },
   {
     title: "Advanced",
     proOnly: true,
     items: [
-      { href: "/dashboard/council", label: "Council", icon: Shield, proOnly: true },
       { href: "/dashboard/orchestrator", label: "Orchestrator", icon: Cpu, proOnly: true },
-      { href: "/dashboard/generals", label: "Generals", icon: Swords, proOnly: true },
+      { href: "/dashboard/council", label: "Council", icon: Shield, proOnly: true },
+      { href: "/dashboard/team", label: "Team", icon: Users, proOnly: true },
     ],
   },
   {
     title: "Account",
     items: [
       { href: "/dashboard/settings", label: "Settings", icon: Settings },
+      { href: "/dashboard/billing", label: "Billing", icon: CreditCard },
+      { href: "/dashboard/api-keys", label: "API Keys", icon: Link2 },
+      { href: "/dashboard/data", label: "My Data", icon: FileText },
     ],
   },
 ];

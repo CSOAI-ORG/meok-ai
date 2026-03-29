@@ -319,9 +319,12 @@ export default function DashboardChatPage() {
   const [fontSize, setFontSize] = useState(14); // in pixels, range 12-20
   const [focusedMsgIdx, setFocusedMsgIdx] = useState<number | null>(null);
   const [sidebarOpen, setSidebarOpen] = useState(true);
-  const [conversations, setConversations] = useState<Array<{ id: string; title: string; updated_at: string }>>([]);
+  const [conversations, setConversations] = useState<Array<{ id: string; companion_id: string; title: string; message_count: number; last_message: string | null; updated_at: string }>>([]);
   const [loadingConversations, setLoadingConversations] = useState(false);
   const [currentConversationId, setCurrentConversationId] = useState<string | null>(null);
+  const titleGeneratedRef = useRef(false);
+  const [summarizing, setSummarizing] = useState(false);
+  const [summaryText, setSummaryText] = useState<string | null>(null);
   const { toast, show: showToast } = useToast();
 
   // Streaming telemetry
@@ -331,6 +334,8 @@ export default function DashboardChatPage() {
   const [sovereignMeta, setSovereignMeta] = useState<SovereignMeta | null>(null);
   const latencyIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const firstTokenSoundPlayed = useRef(false);
+  const _messagesRef = useRef<UIMessage[]>([]);
+  const _currentConvIdRef = useRef<string | null>(null);
 
   // Sovereign Display metadata (from response headers)
   const [sovereignDisplay, setSovereignDisplay] = useState<SovereignDisplayProps>({});
@@ -386,6 +391,72 @@ export default function DashboardChatPage() {
       const finalLatency = streamStart ? Date.now() - streamStart : 0;
       const estimatedTokens = Math.ceil(text.length / 4);
       setSovereignMeta(prev => prev ? { ...prev, latency: finalLatency, tokens: estimatedTokens } : prev);
+
+      // Post-response: persist conversation metadata using refs (stable across renders)
+      void (async () => {
+        try {
+          const currentMessages = _messagesRef.current;
+          const userMessages = currentMessages.filter((m: UIMessage) => m.role === 'user');
+          const totalCount = currentMessages.length;
+          const firstUserText = userMessages[0] ? getMessageText(userMessages[0]) : 'New conversation';
+          const lastAiText = text.slice(0, 150);
+
+          let convId = _currentConvIdRef.current;
+
+          // Create conversation record if this is the first response
+          if (!convId) {
+            const res = await fetch('/api/user/conversations', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ companion_id: companionId, title: 'New conversation' }),
+            });
+            if (res.ok) {
+              const data = await res.json() as { id: string; created_at: string };
+              convId = data.id;
+              _currentConvIdRef.current = convId;
+              setCurrentConversationId(convId);
+              setConversations(prev => [{
+                id: convId!,
+                companion_id: companionId,
+                title: 'New conversation',
+                message_count: totalCount,
+                last_message: lastAiText,
+                updated_at: new Date().toISOString(),
+              }, ...prev]);
+            }
+          }
+
+          if (!convId) return;
+
+          // Auto-generate title on first AI response
+          if (!titleGeneratedRef.current) {
+            titleGeneratedRef.current = true;
+            const title = firstUserText.trim().slice(0, 60) + (firstUserText.length > 60 ? '…' : '');
+
+            await fetch('/api/user/conversations', {
+              method: 'PATCH',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ id: convId, title, message_count: totalCount, last_message: lastAiText }),
+            });
+
+            setConversations(prev => prev.map(c =>
+              c.id === convId ? { ...c, title, message_count: totalCount, last_message: lastAiText, updated_at: new Date().toISOString() } : c
+            ));
+          } else {
+            // Subsequent responses: update count + last message
+            await fetch('/api/user/conversations', {
+              method: 'PATCH',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ id: convId, message_count: totalCount, last_message: lastAiText }),
+            });
+            setConversations(prev => prev.map(c =>
+              c.id === convId ? { ...c, message_count: totalCount, last_message: lastAiText, updated_at: new Date().toISOString() } : c
+            ));
+          }
+        } catch (err) {
+          console.error('[conversation tracking]', err);
+        }
+      })();
     },
   });
 
@@ -399,6 +470,71 @@ export default function DashboardChatPage() {
   // Context usage: total chars across all messages / 200000 context limit
   const totalChars = messages.reduce((acc: number, m: UIMessage) => acc + getMessageText(m).length, 0);
   const contextUsagePct = Math.min((totalChars / 200000) * 100, 100);
+
+  // ── Conversation summarization ───────────────────────────────────────────────
+  const handleSummarize = useCallback(async () => {
+    if (summarizing) return;
+    const last20 = messages.slice(-20);
+    if (last20.length === 0) {
+      showToast('No messages to summarize');
+      return;
+    }
+    setSummarizing(true);
+    try {
+      const transcript = last20
+        .map((m: UIMessage) => `${m.role === 'user' ? 'You' : 'Companion'}: ${getMessageText(m)}`)
+        .join('\n');
+      const res = await fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          companionId,
+          messages: [
+            {
+              role: 'user',
+              content: `Please summarize the following conversation in 3–5 concise bullet points, capturing the key topics and outcomes:\n\n${transcript}`,
+            },
+          ],
+        }),
+      });
+      if (!res.ok) throw new Error(`Summarization request failed (${res.status})`);
+      // Read the streamed response text
+      const reader = res.body?.getReader();
+      const decoder = new TextDecoder();
+      let raw = '';
+      if (reader) {
+        while (true) {
+          const { done, value } = await reader.read();
+          if (done) break;
+          raw += decoder.decode(value, { stream: true });
+        }
+      }
+      // Extract plain text from streamed chunks (SSE "0:" prefix lines)
+      const summaryLines = raw
+        .split('\n')
+        .filter(l => l.startsWith('0:'))
+        .map(l => {
+          try { return JSON.parse(l.slice(2)); } catch { return ''; }
+        })
+        .join('');
+      setSummaryText(summaryLines || raw.trim() || 'Summary not available.');
+    } catch (err) {
+      console.error('[summarize]', err);
+      showToast('Summarization failed — please try again');
+    } finally {
+      setSummarizing(false);
+    }
+  }, [messages, summarizing, companionId, showToast]);
+
+  // Keep messages ref in sync so onFinish can read current messages
+  useEffect(() => {
+    _messagesRef.current = messages;
+  }, [messages]);
+
+  // Keep conversation ID ref in sync so onFinish closure can read it
+  useEffect(() => {
+    _currentConvIdRef.current = currentConversationId;
+  }, [currentConversationId]);
 
   // Auto-scroll — smooth scroll to exact bottom of messages list
   useEffect(() => {
@@ -591,41 +727,20 @@ export default function DashboardChatPage() {
   }
 
   async function handleNewConversation() {
-    try {
-      const res = await fetch('/api/user/conversations', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ title: 'New conversation' }),
-      });
-      if (res.ok) {
-        const data = await res.json();
-        const newConversation = data.conversation;
-        setConversations(prev => [newConversation, ...prev]);
-        setCurrentConversationId(newConversation.id);
-        // Clear input
-        setInput('');
-        showToast('New conversation started');
-      }
-    } catch (error) {
-      console.error('Failed to create conversation:', error);
-      showToast('Failed to create conversation');
-    }
+    // Reset conversation state for a fresh chat
+    setCurrentConversationId(null);
+    titleGeneratedRef.current = false;
+    setInput('');
+    setSummaryText(null);
+    showToast('New conversation started');
   }
 
-  async function handleLoadConversation(conversationId: string) {
-    try {
-      setCurrentConversationId(conversationId);
-      const res = await fetch(`/api/user/conversations/${conversationId}`);
-      if (res.ok) {
-        showToast('Conversation loaded');
-        // Note: Message loading handled by conversation context/state management
-        // This sets the current conversation ID which should trigger message fetching
-        // via a separate useEffect or context provider
-      }
-    } catch (error) {
-      console.error('Failed to load conversation:', error);
-      showToast('Failed to load conversation');
-    }
+  function handleLoadConversation(conversationId: string) {
+    // Mark this as the active conversation (messages are in-memory via useChat)
+    // A full page-based history reload would require persisting messages server-side
+    setCurrentConversationId(conversationId);
+    titleGeneratedRef.current = true; // don't re-title an existing conversation
+    showToast('Switched to conversation');
   }
 
   // Sidebar component for conversation history
@@ -662,22 +777,33 @@ export default function DashboardChatPage() {
           <div className="px-4 py-6 text-center text-xs text-white/40">No conversations yet</div>
         ) : (
           <div className="space-y-1 px-2 py-2">
-            {conversations.map(conv => (
-              <button
-                key={conv.id}
-                onClick={() => handleLoadConversation(conv.id)}
-                className="w-full text-left px-3 py-2 rounded-lg text-xs transition-colors truncate"
-                style={{
-                  background: currentConversationId === conv.id ? `${GOLD}15` : 'transparent',
-                  color: currentConversationId === conv.id ? GOLD : 'rgba(255,255,255,0.6)',
-                  borderLeft: currentConversationId === conv.id ? `2px solid ${GOLD}` : '2px solid transparent',
-                  paddingLeft: currentConversationId === conv.id ? '12px' : '14px',
-                }}
-                title={conv.title}
-              >
-                {conv.title}
-              </button>
-            ))}
+            {conversations.slice(0, 10).map(conv => {
+              const char = getCharacter(conv.companion_id);
+              const charName = char?.name ?? conv.companion_id ?? 'Aura';
+              const isActive = currentConversationId === conv.id;
+              return (
+                <button
+                  key={conv.id}
+                  onClick={() => handleLoadConversation(conv.id)}
+                  className="w-full text-left px-3 py-2 rounded-lg text-xs transition-colors"
+                  style={{
+                    background: isActive ? `${GOLD}15` : 'transparent',
+                    color: isActive ? GOLD : 'rgba(255,255,255,0.6)',
+                    borderLeft: isActive ? `2px solid ${GOLD}` : '2px solid transparent',
+                    paddingLeft: isActive ? '12px' : '14px',
+                  }}
+                  title={conv.title}
+                >
+                  <div className="truncate font-medium">{conv.title}</div>
+                  <div className="flex items-center gap-1.5 mt-0.5" style={{ color: 'rgba(255,255,255,0.35)' }}>
+                    <span>{charName}</span>
+                    {conv.message_count > 0 && (
+                      <><span>·</span><span>{conv.message_count} msgs</span></>
+                    )}
+                  </div>
+                </button>
+              );
+            })}
           </div>
         )}
       </div>
@@ -758,6 +884,42 @@ export default function DashboardChatPage() {
                 </button>
               ))}
             </div>
+            {/* OS Mode handoff pill */}
+            {(() => {
+              const companion = getCharacter(companionId);
+              const charName = companion?.name || 'Aura';
+              return (
+                <button
+                  onClick={() => {
+                    if (messages.length > 0) {
+                      try {
+                        localStorage.setItem('meok_os_handoff_context', JSON.stringify({
+                          messages: messages.slice(-10).map((m: UIMessage) => ({
+                            role: m.role,
+                            text: getMessageText(m),
+                          })),
+                          companionId,
+                          charName,
+                          model: selectedModel,
+                          timestamp: Date.now(),
+                        }));
+                      } catch {}
+                    }
+                    window.location.href = '/os/sovereign-os';
+                  }}
+                  className="flex items-center gap-1.5 text-xs px-2.5 py-1 rounded-full border transition-colors flex-shrink-0"
+                  style={{ borderColor: `${GOLD}40`, color: GOLD, background: `${GOLD}08`, fontWeight: 600, letterSpacing: '0.02em' }}
+                  title={`Let ${charName} take over in OS Mode`}
+                  aria-label="Enter OS Mode"
+                >
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" /><circle cx="12" cy="12" r="3" />
+                  </svg>
+                  <span className="hidden sm:inline">Let {charName} take over →</span>
+                  <span className="sm:hidden">OS</span>
+                </button>
+              );
+            })()}
             <button onClick={() => setShowSovereign(v => !v)} className="flex items-center gap-1.5 text-xs px-2.5 py-1 rounded-lg border transition-colors flex-shrink-0"
               style={showSovereign ? { borderColor: `${GOLD}50`, color: GOLD, background: `${GOLD}10` } : { borderColor: 'rgba(255,255,255,0.1)', color: 'rgba(255,255,255,0.4)' }} title="Toggle sovereign display">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" /><circle cx="12" cy="12" r="3" /></svg>
@@ -805,15 +967,14 @@ export default function DashboardChatPage() {
                     <div className="flex items-center justify-center gap-2 px-4 py-1.5 text-center" style={{ color: '#ef4444', background: `${DEEP}ee` }}>
                       <span className="text-[10px]">Context nearly full — consider starting a new conversation</span>
                       <button
-                        onClick={() => {
-                          showToast('Conversation summarization coming soon');
-                        }}
+                        onClick={handleSummarize}
+                        disabled={summarizing}
                         className="text-[10px] px-2 py-0.5 rounded-full border transition-colors flex-shrink-0"
-                        style={{ borderColor: '#ef4444', color: '#ef4444' }}
+                        style={{ borderColor: '#ef4444', color: '#ef4444', opacity: summarizing ? 0.6 : 1, cursor: summarizing ? 'wait' : 'pointer' }}
                         title="Summarize conversation and continue with condensed context"
                         aria-label="Summarize conversation"
                       >
-                        Summarize
+                        {summarizing ? 'Summarizing…' : 'Summarize'}
                       </button>
                     </div>
                   )}
@@ -1181,6 +1342,42 @@ export default function DashboardChatPage() {
           />
         )}
       </div>
+
+      {/* Summary modal */}
+      {summaryText && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center p-6"
+          style={{ background: 'rgba(13,12,24,0.85)', backdropFilter: 'blur(6px)' }}
+          onClick={() => setSummaryText(null)}
+        >
+          <div
+            className="relative max-w-lg w-full rounded-2xl p-6"
+            style={{ background: SURFACE, border: `1px solid rgba(201,168,76,0.3)`, boxShadow: '0 16px 48px rgba(0,0,0,0.5)' }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="text-sm font-bold" style={{ color: GOLD }}>Conversation Summary</h3>
+              <button
+                onClick={() => setSummaryText(null)}
+                className="text-white/40 hover:text-white/70 transition-colors text-lg leading-none"
+                aria-label="Close summary"
+              >
+                ×
+              </button>
+            </div>
+            <div className="text-sm text-white/80 leading-relaxed whitespace-pre-wrap">
+              {summaryText}
+            </div>
+            <button
+              onClick={() => setSummaryText(null)}
+              className="mt-5 w-full py-2 rounded-xl text-xs font-semibold transition-colors"
+              style={{ background: `rgba(201,168,76,0.12)`, border: `1px solid rgba(201,168,76,0.25)`, color: GOLD }}
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      )}
 
       {/* Toast notification */}
       {toast && (

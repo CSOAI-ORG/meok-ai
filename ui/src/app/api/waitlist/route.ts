@@ -7,6 +7,16 @@ interface WaitlistEntry {
   referrer?: string
 }
 
+/** Escape user input for safe HTML interpolation */
+function escapeHtml(str: string): string {
+  return str
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;')
+}
+
 // ── Loops.so integration ────────────────────────────────────────────────────
 // Set LOOPS_API_KEY in Vercel env vars to enable. Free at loops.so.
 // Optionally set LOOPS_WAITLIST_LIST_ID and LOOPS_WAITLIST_TRANSACTIONAL_ID.
@@ -81,10 +91,10 @@ async function notifyViaResend(entry: WaitlistEntry): Promise<void> {
         from: 'MEOK Waitlist <noreply@meok.ai>',
         to: notifyEmail,
         subject: `New waitlist signup: ${entry.email}`,
-        html: `<p><strong>Email:</strong> ${entry.email}</p>
-<p><strong>Name:</strong> ${entry.name ?? '—'}</p>
-<p><strong>Interest:</strong> ${entry.interest ?? '—'}</p>
-<p><strong>Referrer:</strong> ${entry.referrer ?? '—'}</p>
+        html: `<p><strong>Email:</strong> ${escapeHtml(entry.email)}</p>
+<p><strong>Name:</strong> ${escapeHtml(entry.name ?? '—')}</p>
+<p><strong>Interest:</strong> ${escapeHtml(entry.interest ?? '—')}</p>
+<p><strong>Referrer:</strong> ${escapeHtml(entry.referrer ?? '—')}</p>
 <p><strong>Time:</strong> ${new Date().toISOString()}</p>`,
       }),
     })

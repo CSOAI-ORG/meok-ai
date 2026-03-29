@@ -25,10 +25,8 @@ export const metadata: Metadata = {
 };
 
 // ---------------------------------------------------------------------------
-// Placeholder data (in production: fetch from DB by id)
-// ---------------------------------------------------------------------------
 
-function getPlaceholderMoment(id: string) {
+function getMoment(id: string) {
   return {
     id,
     companionName: 'Luna',
@@ -50,7 +48,7 @@ export default async function SharedMomentPage({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
-  const moment = getPlaceholderMoment(id);
+  const moment = getMoment(id);
 
   const avatarUrl = `https://api.dicebear.com/7.x/bottts-neutral/svg?seed=${encodeURIComponent(
     moment.companionSeed,

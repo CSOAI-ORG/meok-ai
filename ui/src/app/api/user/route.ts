@@ -59,7 +59,7 @@ export async function DELETE(req: NextRequest) {
   // (scheduled above in markUserDeleted) is the authoritative cleanup path.
   //
   // Fire-and-forget SOV3 memory purge — best-effort, non-blocking
-  const sov3Url = process.env.SOV3_API_URL || process.env.SOV3_BASE_URL || 'http://localhost:3100';
+  const sov3Url = process.env.SOV3_URL || process.env.SOV3_API_URL || process.env.SOV3_BASE_URL || 'http://localhost:3101';
   fetch(`${sov3Url}/mcp`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },

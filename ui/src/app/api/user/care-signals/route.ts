@@ -5,17 +5,21 @@
  */
 
 import { NextResponse } from 'next/server';
-import { auth } from '@clerk/nextjs/server';
+import { requireAuth } from '@/lib/api-auth';
+import { checkRateLimit } from '@/lib/rate-limit';
 import { getPendingCareSignals } from '@/lib/db/user';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 
 export async function GET() {
-  const { userId } = await auth();
+  const authResult = await requireAuth();
+  if (authResult.error) return authResult.error;
+  const { userId } = authResult;
 
-  if (!userId) {
-    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  const rateLimitResult = checkRateLimit(userId, 'explorer');
+  if (!rateLimitResult.allowed) {
+    return NextResponse.json({ error: 'Rate limit exceeded' }, { status: 429 });
   }
 
   try {

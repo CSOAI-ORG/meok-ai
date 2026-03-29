@@ -10,8 +10,8 @@ const CRON_SECRET = process.env.CRON_SECRET;
 /**
  * GET /api/cron/weekly-summary
  *
- * Generates weekly care summaries for family plan members.
- * Triggered by Vercel Cron on Mondays at 10 AM UTC (vercel.json: "0 10 * * 1").
+ * Generates weekly care summaries for active users and delivers them
+ * as in-app notifications. Triggered every Monday at 10 AM UTC.
  */
 export async function GET(req: Request) {
   try {
@@ -21,23 +21,39 @@ export async function GET(req: Request) {
     }
 
     const startTime = Date.now();
-
-    // Weekly care summary generation for family plan members
     let summariesGenerated = 0;
+
     try {
       const { sql } = await import('@/lib/db/index');
       if (sql) {
-        // Query family plan members with activity this week
-        const familyUsers = await sql`
-          SELECT id, email, name, messages_total, streak_days, last_active_date
+        // Fetch active users from the past 7 days
+        const activeUsers = await sql`
+          SELECT id, name, messages_total, streak_days
           FROM users
-          WHERE tier = 'family'
-            AND deleted_at IS NULL
+          WHERE deleted_at IS NULL
             AND last_active_date >= (CURRENT_DATE - INTERVAL '7 days')::date
-        `;
-        summariesGenerated = familyUsers.length;
-        // Delivery via email/in-app pending Resend integration
-        console.log(`[cron/weekly-summary] ${summariesGenerated} family member(s) eligible for summary`);
+          LIMIT 1000
+        ` as Array<{ id: string; name: string | null; messages_total: number; streak_days: number }>;
+
+        for (const user of activeUsers) {
+          const firstName = user.name?.split(' ')[0] ?? 'there';
+          const streakText = user.streak_days > 1 ? `${user.streak_days}-day streak` : 'daily practice';
+
+          await sql`
+            INSERT INTO notifications (user_id, type, title, message, metadata)
+            VALUES (
+              ${user.id},
+              'system',
+              'Your Weekly Companion Summary',
+              ${`Hi ${firstName}, here's your weekly companion check-in. You've maintained a ${streakText} with ${user.messages_total} total interactions. Keep growing your bond — each conversation deepens your companion's understanding of you.`},
+              ${{ week_of: new Date().toISOString().split('T')[0], messages_total: user.messages_total, streak_days: user.streak_days } as unknown as string}::jsonb
+            )
+          `.catch(() => {}); // Non-fatal per user
+
+          summariesGenerated++;
+        }
+
+        console.log(`[cron/weekly-summary] Created ${summariesGenerated} weekly summary notifications`);
       } else {
         console.warn('[cron/weekly-summary] No database connection — skipping');
       }

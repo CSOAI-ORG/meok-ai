@@ -1,11 +1,18 @@
-import { auth } from '@clerk/nextjs/server'
+import { requireAuth } from '@/lib/api-auth'
+import { checkRateLimit } from '@/lib/rate-limit'
 import { NextRequest, NextResponse } from 'next/server'
 import { getUserById, getGuardianSettings, updateGuardianSettings } from '@/lib/db/user'
 
 // GET /api/user/guardian — load guardian settings
 export async function GET() {
-  const { userId } = await auth()
-  if (!userId) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+  const authResult = await requireAuth()
+  if (authResult.error) return authResult.error
+  const { userId } = authResult
+
+  const rateLimitResult = checkRateLimit(userId, 'explorer');
+  if (!rateLimitResult.allowed) {
+    return NextResponse.json({ error: 'Rate limit exceeded' }, { status: 429 });
+  }
 
   const user = await getUserById(userId)
   const settings = await getGuardianSettings(userId)
@@ -27,8 +34,14 @@ export async function GET() {
 
 // POST /api/user/guardian — save guardian settings
 export async function POST(req: NextRequest) {
-  const { userId } = await auth()
-  if (!userId) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+  const authResult = await requireAuth()
+  if (authResult.error) return authResult.error
+  const { userId } = authResult
+
+  const rateLimitResult = checkRateLimit(userId, 'explorer');
+  if (!rateLimitResult.allowed) {
+    return NextResponse.json({ error: 'Rate limit exceeded' }, { status: 429 });
+  }
 
   let body: { guardian_enabled?: boolean; settings?: Record<string, unknown> }
   try {

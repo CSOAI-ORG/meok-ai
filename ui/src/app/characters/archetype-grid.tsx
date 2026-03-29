@@ -34,6 +34,7 @@ type TierFilter = (typeof TIER_FILTERS)[number];
 export function ArchetypeGrid({ archetypes }: { archetypes: ArchetypeItem[] }) {
   const [search, setSearch] = useState('');
   const [tierFilter, setTierFilter] = useState<TierFilter>('All');
+  const [archetypeFilter, setArchetypeFilter] = useState<string>('All');
 
   const filtered = useMemo(() => {
     let list = archetypes;
@@ -51,18 +52,22 @@ export function ArchetypeGrid({ archetypes }: { archetypes: ArchetypeItem[] }) {
       );
     }
 
+    // Archetype filter
+    if (archetypeFilter !== 'All') {
+      list = list.filter((a) => a.name === archetypeFilter);
+    }
+
     // Tier filter
     if (tierFilter === 'Free') {
       list = list.filter((a) => !a.locked);
     } else if (tierFilter === 'Sovereign') {
-      // Show archetypes that have sovereign-tier characters (all unlocked ones are at least sovereign)
       list = list.filter((a) => !a.locked);
     } else if (tierFilter === 'Family') {
       list = list.filter((a) => a.locked);
     }
 
     return list;
-  }, [archetypes, search, tierFilter]);
+  }, [archetypes, search, tierFilter, archetypeFilter]);
 
   return (
     <section className="px-4 pb-20" aria-label="Companion archetypes">
@@ -106,8 +111,40 @@ export function ArchetypeGrid({ archetypes }: { archetypes: ArchetypeItem[] }) {
           </div>
         </div>
 
+        {/* ── Archetype quick-filter pills ─────────────────────────── */}
+        <div className="flex flex-wrap items-center gap-2 mb-6" aria-label="Filter by archetype">
+          <span className="text-xs text-gray-600 uppercase tracking-widest font-semibold mr-1">
+            Archetype:
+          </span>
+          <button
+            onClick={() => setArchetypeFilter('All')}
+            className="px-3 py-1 rounded-full text-xs font-semibold transition-all"
+            style={{
+              background: archetypeFilter === 'All' ? 'rgba(201,168,76,0.15)' : 'rgba(255,255,255,0.04)',
+              border: archetypeFilter === 'All' ? '1px solid #c9a84c' : '1px solid rgba(255,255,255,0.08)',
+              color: archetypeFilter === 'All' ? '#c9a84c' : 'rgba(255,255,255,0.4)',
+            }}
+          >
+            All
+          </button>
+          {archetypes.map((a) => (
+            <button
+              key={a.id}
+              onClick={() => setArchetypeFilter(a.name === archetypeFilter ? 'All' : a.name)}
+              className="px-3 py-1 rounded-full text-xs font-semibold transition-all"
+              style={{
+                background: archetypeFilter === a.name ? 'rgba(201,168,76,0.15)' : 'rgba(255,255,255,0.04)',
+                border: archetypeFilter === a.name ? '1px solid #c9a84c' : '1px solid rgba(255,255,255,0.08)',
+                color: archetypeFilter === a.name ? '#c9a84c' : 'rgba(255,255,255,0.4)',
+              }}
+            >
+              {a.emoji} {a.name}
+            </button>
+          ))}
+        </div>
+
         {/* ── Results count ────────────────────────────────────────── */}
-        {(search || tierFilter !== 'All') && (
+        {(search || tierFilter !== 'All' || archetypeFilter !== 'All') && (
           <p className="text-xs text-gray-500 mb-4">
             Showing {filtered.length} of {archetypes.length} archetypes
           </p>
@@ -118,7 +155,7 @@ export function ArchetypeGrid({ archetypes }: { archetypes: ArchetypeItem[] }) {
           <div className="text-center py-16">
             <p className="text-gray-500 text-sm">No archetypes match your search.</p>
             <button
-              onClick={() => { setSearch(''); setTierFilter('All'); }}
+              onClick={() => { setSearch(''); setTierFilter('All'); setArchetypeFilter('All'); }}
               className="mt-3 text-[#c9a84c] text-sm hover:underline"
             >
               Clear filters
@@ -204,41 +241,57 @@ export function ArchetypeGrid({ archetypes }: { archetypes: ArchetypeItem[] }) {
                   </div>
                 )}
 
-                {/* Example characters */}
+                {/* Example characters — link to profile pages */}
                 <div>
                   <p className="text-xs text-gray-500 uppercase tracking-widest mb-2 font-medium">
                     Example characters
                   </p>
                   <div className="flex flex-wrap gap-2">
-                    {archetype.characters.map((name) => (
-                      <span
-                        key={name}
-                        className={`px-3 py-1 rounded-full text-xs font-semibold ${
-                          archetype.locked
-                            ? "bg-[rgba(201,168,76,0.08)] border border-[rgba(201,168,76,0.2)] text-[rgba(201,168,76,0.6)] italic"
-                            : "bg-[rgba(201,168,76,0.1)] border border-[rgba(201,168,76,0.25)] text-[#c9a84c]"
-                        }`}
-                      >
-                        {name}
-                      </span>
-                    ))}
+                    {archetype.characters.map((charName) => {
+                      const slug = charName.toLowerCase();
+                      return archetype.locked ? (
+                        <span
+                          key={charName}
+                          className="px-3 py-1 rounded-full text-xs font-semibold bg-[rgba(201,168,76,0.08)] border border-[rgba(201,168,76,0.2)] text-[rgba(201,168,76,0.6)] italic"
+                        >
+                          {charName}
+                        </span>
+                      ) : (
+                        <Link
+                          key={charName}
+                          href={`/characters/${slug}`}
+                          className="px-3 py-1 rounded-full text-xs font-semibold bg-[rgba(201,168,76,0.1)] border border-[rgba(201,168,76,0.25)] text-[#c9a84c] hover:bg-[rgba(201,168,76,0.18)] hover:text-[#f0d080] transition-colors duration-200"
+                        >
+                          {charName}
+                        </Link>
+                      );
+                    })}
                   </div>
                 </div>
 
-                {/* Card CTA */}
+                {/* Card CTAs */}
                 {!archetype.locked && (
-                  <Link
-                    href="/birth"
-                    className="mt-auto inline-flex items-center gap-1.5 text-sm text-[#c9a84c] hover:text-[#f0d080] font-medium transition-colors duration-200 group"
-                  >
-                    Hatch a {archetype.name}
-                    <span
-                      aria-hidden="true"
-                      className="group-hover:translate-x-0.5 transition-transform duration-200"
+                  <div className="mt-auto flex items-center justify-between flex-wrap gap-3">
+                    <Link
+                      href="/birth"
+                      className="inline-flex items-center gap-1.5 text-sm text-[#c9a84c] hover:text-[#f0d080] font-medium transition-colors duration-200 group"
                     >
-                      &#x2192;
-                    </span>
-                  </Link>
+                      Hatch a {archetype.name}
+                      <span
+                        aria-hidden="true"
+                        className="group-hover:translate-x-0.5 transition-transform duration-200"
+                      >
+                        &#x2192;
+                      </span>
+                    </Link>
+                    <Link
+                      href={`/characters/${archetype.characters[0]?.toLowerCase() ?? ''}`}
+                      className="inline-flex items-center gap-1 text-xs text-gray-500 hover:text-gray-300 transition-colors duration-200"
+                    >
+                      View profile
+                      <span aria-hidden="true">&#x2197;</span>
+                    </Link>
+                  </div>
                 )}
               </article>
             ))}

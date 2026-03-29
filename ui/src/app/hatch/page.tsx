@@ -1164,7 +1164,7 @@ export default function HatchPage() {
               </div>
             )}
 
-            {/* Placeholder while cracking */}
+            {/* Loading state while cracking */}
             {revealPhase === "cracking" && (
               <p
                 style={{

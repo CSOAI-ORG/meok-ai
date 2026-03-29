@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect, useCallback } from "react";
 
-const MCP_URL = process.env.NEXT_PUBLIC_MCP_URL ?? "http://localhost:3100";
+const MCP_URL = process.env.NEXT_PUBLIC_MCP_URL ?? "http://localhost:3101";
 
 type Role = "user" | "sovereign";
 

@@ -4,6 +4,30 @@ import { withSentryConfig } from "@sentry/nextjs";
 const BACKEND = process.env.MEOK_BACKEND_URL || "http://198.53.64.194:40646";
 
 const nextConfig: NextConfig = {
+  images: {
+    remotePatterns: [
+      // GitHub avatars (user profile images)
+      { protocol: "https", hostname: "avatars.githubusercontent.com" },
+      // Cloudflare Images / R2 public buckets
+      { protocol: "https", hostname: "imagedelivery.net" },
+      { protocol: "https", hostname: "*.r2.dev" },
+      // Clerk user profile photos
+      { protocol: "https", hostname: "img.clerk.com" },
+      { protocol: "https", hostname: "images.clerk.dev" },
+      // General HTTPS images (game covers from RAWG / IGDB etc.)
+      { protocol: "https", hostname: "media.rawg.io" },
+      { protocol: "https", hostname: "images.igdb.com" },
+      { protocol: "https", hostname: "cdn.akamai.steamstatic.com" },
+      { protocol: "https", hostname: "steamcdn-a.akamaihd.net" },
+    ],
+  },
+
+  experimental: {
+    serverActions: {
+      allowedOrigins: ["meok.ai", "www.meok.ai", "localhost:3000"],
+    },
+  },
+
   async redirects() {
     return [
       { source: '/product/companions',      destination: '/characters', permanent: true },
@@ -28,10 +52,11 @@ const nextConfig: NextConfig = {
         source: "/(.*)",
         headers: [
           { key: "X-Content-Type-Options",  value: "nosniff" },
-          { key: "X-Frame-Options",          value: "DENY" },
+          // SAMEORIGIN allows embedding within meok.ai itself (e.g. iframes in dashboard)
+          { key: "X-Frame-Options",          value: "SAMEORIGIN" },
           { key: "X-XSS-Protection",         value: "1; mode=block" },
           { key: "Referrer-Policy",           value: "strict-origin-when-cross-origin" },
-          { key: "Permissions-Policy",        value: "camera=(), microphone=(self), geolocation=()" },
+          { key: "Permissions-Policy",        value: "camera=(), microphone=(), geolocation=()" },
           { key: "Strict-Transport-Security", value: "max-age=31536000; includeSubDomains; preload" },
           {
             key: "Content-Security-Policy",

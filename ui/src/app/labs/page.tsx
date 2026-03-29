@@ -303,6 +303,88 @@ export default function LabsPage() {
         </div>
       </section>
 
+      {/* ── RESEARCH HIGHLIGHTS ───────────────────────────────────── */}
+      <section className="py-24 px-6" style={{ background: "rgba(19,18,31,0.98)" }}>
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-12">
+            <p className="text-[#c9a84c] text-xs font-bold uppercase tracking-widest mb-4">
+              Research Highlights
+            </p>
+            <h2 className="text-3xl sm:text-4xl font-black text-white mb-4">
+              From experiments to findings.
+            </h2>
+            <p className="text-white/40 text-sm max-w-sm mx-auto leading-relaxed">
+              Three studies shaping the sovereign AI research agenda at MEOK AI LABS and the CSGA Cyber AI Research Institute.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {/* Card 1 */}
+            <div className="rounded-2xl p-7 border border-[#c9a84c]/20 bg-[#c9a84c]/[0.03] flex flex-col gap-4">
+              <div className="flex items-start justify-between gap-3">
+                <div className="w-10 h-10 rounded-xl bg-[#c9a84c]/10 border border-[#c9a84c]/20 flex items-center justify-center flex-shrink-0">
+                  <span className="text-[#c9a84c] font-black text-xs">CS</span>
+                </div>
+                <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full border bg-emerald-500/10 text-emerald-400 border-emerald-500/20 flex-shrink-0">
+                  Active
+                </span>
+              </div>
+              <div>
+                <h3 className="font-black text-white text-lg leading-snug mb-2">
+                  Cognitive Symbiosis Study
+                </h3>
+                <p className="text-white/50 text-sm leading-relaxed">
+                  Measuring how persistent AI memory changes human cognitive load over time.
+                  Tracking recall, decision quality, and emotional regulation across a cohort of sovereign AI users.
+                </p>
+              </div>
+            </div>
+
+            {/* Card 2 */}
+            <div className="rounded-2xl p-7 border border-purple-500/20 bg-purple-900/[0.04] flex flex-col gap-4">
+              <div className="flex items-start justify-between gap-3">
+                <div className="w-10 h-10 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center flex-shrink-0">
+                  <span className="text-purple-400 font-black text-xs">BCA</span>
+                </div>
+                <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full border bg-blue-500/10 text-blue-400 border-blue-500/20 flex-shrink-0">
+                  Published
+                </span>
+              </div>
+              <div>
+                <h3 className="font-black text-white text-lg leading-snug mb-2">
+                  Byzantine Council Architecture
+                </h3>
+                <p className="text-white/50 text-sm leading-relaxed">
+                  Original IP by Nicholas Templeman — PBFT consensus adapted for LLM-agent contexts.
+                  43-node fault-tolerant governance achieving P99 consensus latency under 94ms in production.
+                </p>
+              </div>
+            </div>
+
+            {/* Card 3 */}
+            <div className="rounded-2xl p-7 border border-blue-500/20 bg-blue-900/[0.04] flex flex-col gap-4">
+              <div className="flex items-start justify-between gap-3">
+                <div className="w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center flex-shrink-0">
+                  <span className="text-blue-400 font-black text-xs">HNE</span>
+                </div>
+                <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full border bg-[#c9a84c]/10 text-[#c9a84c] border-[#c9a84c]/20 flex-shrink-0">
+                  In Progress
+                </span>
+              </div>
+              <div>
+                <h3 className="font-black text-white text-lg leading-snug mb-2">
+                  HARVI Hydro-Neuromorphic Experiment
+                </h3>
+                <p className="text-white/50 text-sm leading-relaxed">
+                  Exploring water as a neural substrate for physical AI computation.
+                  HARVI rig investigates embodied intelligence beyond silicon — consciousness through fluid dynamics.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ── 47 TRADITIONS ─────────────────────────────────────────── */}
       <section className="py-24 px-6" style={{ background: "rgba(13,12,24,0.95)" }}>
         <div className="max-w-4xl mx-auto">

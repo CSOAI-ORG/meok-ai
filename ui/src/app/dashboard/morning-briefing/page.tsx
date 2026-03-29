@@ -1,100 +1,143 @@
 "use client";
 
 /**
- * Morning Briefing — Phase 4.11 Progressive Disclosure UX
+ * Morning Briefing — wired to real /api/morning-briefing data.
  *
  * "The moment users realise: it wasn't sleeping, it was working for me."
- *
- * Translates the overnight dream cycle output into human-readable cards.
- * No AI jargon. Written for the person who's never heard of BFT or z_self.
- * Design principle: first win in 60 seconds.
  */
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-// Morning briefing uses local Next.js API routes, not SOV3 MCP
 import { useUser } from "@clerk/nextjs";
-import { MessageCircle, BookOpen, Shield } from "lucide-react";
 import {
-  Moon,
-  Sunrise,
+  MessageCircle,
+  BookOpen,
+  FlaskConical,
   Brain,
-  ShieldCheck,
   Heart,
   Lightbulb,
   RefreshCw,
   Clock,
   TrendingUp,
   AlertCircle,
-  Gamepad2,
   Bot,
-  Copy,
-  Check,
+  Moon,
+  Sunrise,
+  ShieldCheck,
 } from "lucide-react";
 
 // ── Brand tokens ─────────────────────────────────────────────────
 const GOLD = "#c9a84c";
 const DEEP = "#0d0c18";
 const SURFACE = "#13121f";
-const NAVY = "#1a1a2e";
-const SURFACE2 = "#1a1929";
-const CREAM = "#f5f0e8";
+const BORDER = "rgba(255,255,255,0.07)";
 
-interface BriefingSection {
+// ── API response shape ────────────────────────────────────────────
+interface Priority {
+  id: string;
+  text: string;
+  priority: "high" | "medium" | "low";
+}
+
+interface OvernightWork {
+  agent: string;
+  task: string;
+  status: "complete" | "pending" | "failed";
+}
+
+interface CalendarEvent {
+  time: string;
   title: string;
-  content: string;
-  metadata?: Record<string, unknown>;
+  location?: string;
 }
 
-interface MorningBriefing {
-  generated_at?: string;
-  greeting?: string;
-  sections?: BriefingSection[];
-  one_line_summary?: string;
-  next_suggested_action?: string;
-  care_score_today?: number;
-  priorities?: string[];
-  calendar_events?: Array<{ time: string; title: string; location?: string }>;
-  care_checkin?: string;
-  sovereign_insight?: string;
-  alerts?: Array<{ level: string; message: string }>;
+interface Briefing {
+  generated_at: string;
+  care_score: number; // 0–100
+  greeting: string;
+  priorities: Priority[];
+  calendar_events: CalendarEvent[];
+  overnight_work: OvernightWork[];
+  sovereign_insight: string;
+  dream_insight: string | null;
+  next_action: string;
 }
 
-const SECTION_ICONS: Record<string, React.ElementType> = {
-  dream: Moon,
-  consciousness: Brain,
-  learning: TrendingUp,
-  alerts: AlertCircle,
-  care: Heart,
-  personal: Lightbulb,
-  gaming: Gamepad2,
-};
-
-const SECTION_COLORS: Record<string, string> = {
-  dream: "#a78bfa",
-  consciousness: "#22d3ee",
-  learning: "#4ade80",
-  alerts: "#fb923c",
-  care: "#f472b6",
-  personal: GOLD,
-  gaming: "#60a5fa",
-};
-
-function humaniseKey(key: string): string {
-  const map: Record<string, string> = {
-    dream: "While you slept",
-    consciousness: "System awareness",
-    learning: "What was learned",
-    alerts: "Things to know",
-    care: "Care quality",
-    personal: "For you today",
-  };
-  return map[key] || key;
+// Fallback when /api/chat is used instead
+interface FallbackBriefing {
+  fallback: true;
+  greeting: string;
+  message: string;
+  generated_at: string;
 }
 
-// ── Care score circular progress ring ────────────────────────────
+type BriefingState = Briefing | FallbackBriefing | null;
+
+// ── Helpers ───────────────────────────────────────────────────────
+function getTimeGreeting(): string {
+  const h = new Date().getHours();
+  if (h < 12) return "Good morning";
+  if (h < 17) return "Good afternoon";
+  return "Good evening";
+}
+
+function priorityColor(p: Priority["priority"]): string {
+  if (p === "high") return "#f87171";
+  if (p === "medium") return GOLD;
+  return "#4ade80";
+}
+
+function statusColor(s: OvernightWork["status"]): string {
+  if (s === "complete") return "#4ade80";
+  if (s === "failed") return "#f87171";
+  return GOLD;
+}
+
+// ── Loading skeleton ──────────────────────────────────────────────
+function Skeleton() {
+  return (
+    <div className="space-y-4">
+      <div className="h-44 rounded-2xl animate-pulse" style={{ background: SURFACE }} />
+      <div className="rounded-2xl p-5 animate-pulse" style={{ background: SURFACE }}>
+        <div className="h-3 w-28 rounded mb-4" style={{ background: "rgba(255,255,255,0.06)" }} />
+        {[1, 2, 3].map((i) => (
+          <div key={i} className="flex items-center gap-3 mb-3">
+            <div className="w-5 h-5 rounded-full flex-shrink-0" style={{ background: "rgba(255,255,255,0.06)" }} />
+            <div className="h-3 rounded flex-1" style={{ background: "rgba(255,255,255,0.05)" }} />
+          </div>
+        ))}
+      </div>
+      {[1, 2].map((i) => (
+        <div key={i} className="h-24 rounded-2xl animate-pulse" style={{ background: SURFACE }} />
+      ))}
+    </div>
+  );
+}
+
+// ── Generating state ──────────────────────────────────────────────
+function GeneratingState() {
+  return (
+    <div
+      className="rounded-2xl p-12 flex flex-col items-center text-center"
+      style={{ background: SURFACE, border: `1px solid ${BORDER}` }}
+    >
+      <div
+        className="w-16 h-16 rounded-full flex items-center justify-center mb-5"
+        style={{ background: `${GOLD}14`, border: `1px solid ${GOLD}33` }}
+      >
+        <Brain className="w-7 h-7 animate-pulse" style={{ color: GOLD }} />
+      </div>
+      <h3 className="text-lg font-bold text-white mb-2">Preparing your briefing…</h3>
+      <p className="text-sm max-w-sm" style={{ color: "rgba(255,255,255,0.4)" }}>
+        MEOK is gathering overnight work, care data, and insights. Just a moment.
+      </p>
+    </div>
+  );
+}
+
+// ── Care score ring ───────────────────────────────────────────────
 function CareScoreRing({ score }: { score: number }) {
-  const pct = Math.round(score * 100);
+  const pct = Math.min(100, Math.max(0, score));
   const { stroke, label } =
     pct >= 80
       ? { stroke: "#4ade80", label: "Strong" }
@@ -110,12 +153,7 @@ function CareScoreRing({ score }: { score: number }) {
     <div className="flex flex-col items-center gap-2">
       <div className="relative w-24 h-24 flex items-center justify-center">
         <svg className="absolute inset-0 -rotate-90" width="96" height="96" viewBox="0 0 96 96">
-          <circle
-            cx="48" cy="48" r={radius}
-            fill="none"
-            stroke="rgba(255,255,255,0.06)"
-            strokeWidth="6"
-          />
+          <circle cx="48" cy="48" r={radius} fill="none" stroke="rgba(255,255,255,0.06)" strokeWidth="6" />
           <circle
             cx="48" cy="48" r={radius}
             fill="none"
@@ -142,213 +180,236 @@ function CareScoreRing({ score }: { score: number }) {
   );
 }
 
-// ── Copy priorities button ────────────────────────────────────────
-function CopyPrioritiesButton({ priorities }: { priorities: string[] }) {
-  const [copied, setCopied] = useState(false);
-
-  const handleCopy = async () => {
-    const text = priorities.map((p, i) => `${i + 1}. ${p}`).join("\n");
-    await navigator.clipboard.writeText(`Today's focus:\n${text}`);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
-
-  return (
-    <button
-      onClick={handleCopy}
-      className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-all duration-200"
-      style={{
-        background: copied ? "rgba(74,222,128,0.1)" : "rgba(255,255,255,0.05)",
-        color: copied ? "#4ade80" : "rgba(255,255,255,0.4)",
-        border: `1px solid ${copied ? "rgba(74,222,128,0.25)" : "rgba(255,255,255,0.08)"}`,
-      }}
-    >
-      {copied ? <Check className="w-3.5 h-3.5" /> : <Copy className="w-3.5 h-3.5" />}
-      {copied ? "Copied!" : "Share today's focus"}
-    </button>
-  );
-}
-
-// ── Loading skeleton ──────────────────────────────────────────────
-function Skeleton() {
-  return (
-    <div className="space-y-4">
-      {/* Hero skeleton */}
-      <div className="h-40 rounded-2xl animate-pulse" style={{ background: SURFACE }} />
-      {/* Priority skeleton */}
-      <div className="rounded-2xl p-5 animate-pulse" style={{ background: SURFACE }}>
-        <div className="h-4 w-32 rounded mb-4" style={{ background: "rgba(255,255,255,0.06)" }} />
-        <div className="space-y-3">
-          {[1, 2, 3].map((i) => (
-            <div key={i} className="flex items-center gap-3">
-              <div className="w-5 h-5 rounded-full flex-shrink-0" style={{ background: "rgba(255,255,255,0.06)" }} />
-              <div className="h-3 rounded flex-1" style={{ background: "rgba(255,255,255,0.05)", width: `${70 + i * 8}%` }} />
-            </div>
-          ))}
-        </div>
-      </div>
-      {[1, 2].map((i) => (
-        <div key={i} className="h-28 rounded-2xl animate-pulse" style={{ background: SURFACE }} />
-      ))}
-    </div>
-  );
-}
-
-// ── Gaming section ────────────────────────────────────────────────
-function GamingCard({ section }: { section: BriefingSection }) {
-  const meta = section.metadata ?? {};
-  const sessionCount = meta.session_count as number | undefined;
-  const totalMinutes = meta.total_minutes as number | undefined;
-  const favouriteGame = meta.favourite_game as string | undefined;
-  const insight = meta.insight as string | undefined;
-  const hasStats = sessionCount !== undefined || totalMinutes !== undefined;
-
+// ── Error state ───────────────────────────────────────────────────
+function ErrorState({ message, onRetry }: { message: string; onRetry: () => void }) {
   return (
     <div
-      className="rounded-2xl p-5"
-      style={{ background: SURFACE, border: "1px solid rgba(96,165,250,0.15)" }}
+      className="rounded-2xl p-10 flex flex-col items-center text-center"
+      style={{ background: SURFACE, border: "1px solid rgba(248,113,113,0.18)" }}
     >
-      <div className="flex items-center gap-2 mb-3">
-        <Gamepad2 className="w-4 h-4" style={{ color: "#60a5fa" }} />
-        <h3 className="text-sm font-semibold text-white">Gaming yesterday</h3>
-        {favouriteGame && (
-          <span
-            className="ml-auto text-xs px-2 py-0.5 rounded-full"
-            style={{ background: "rgba(96,165,250,0.12)", color: "#60a5fa", border: "1px solid rgba(96,165,250,0.2)" }}
-          >
-            {favouriteGame}
-          </span>
-        )}
+      <div
+        className="w-14 h-14 rounded-full flex items-center justify-center mb-4"
+        style={{ background: "rgba(248,113,113,0.10)", border: "1px solid rgba(248,113,113,0.20)" }}
+      >
+        <AlertCircle className="w-6 h-6" style={{ color: "#f87171" }} />
       </div>
-      {hasStats && (
-        <div className="flex gap-2 flex-wrap mb-3">
-          {sessionCount !== undefined && (
-            <span className="text-xs px-3 py-1 rounded-full" style={{ background: "rgba(96,165,250,0.08)", color: "#60a5fa", border: "1px solid rgba(96,165,250,0.15)" }}>
-              {sessionCount} {sessionCount === 1 ? "session" : "sessions"}
-            </span>
-          )}
-          {totalMinutes !== undefined && (
-            <span className="text-xs px-3 py-1 rounded-full" style={{ background: "rgba(96,165,250,0.08)", color: "#60a5fa", border: "1px solid rgba(96,165,250,0.15)" }}>
-              {totalMinutes} min
-            </span>
-          )}
-        </div>
-      )}
-      {section.content && (
-        <p className="text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.6)" }}>{section.content}</p>
-      )}
-      {insight && (
-        <p className="text-xs italic mt-2" style={{ color: "rgba(255,255,255,0.3)" }}>
-          &ldquo;{insight}&rdquo;
-        </p>
-      )}
-      {!hasStats && !section.content && (
-        <p className="text-sm" style={{ color: "rgba(255,255,255,0.3)" }}>No gaming sessions recorded yesterday.</p>
-      )}
-    </div>
-  );
-}
-
-// ── Empty state ────────────────────────────────────────────────────
-function EmptyState({ onTrigger, triggering }: { onTrigger: () => void; triggering: boolean }) {
-  return (
-    <div
-      className="rounded-2xl p-12 flex flex-col items-center text-center"
-      style={{
-        background: SURFACE,
-        border: "1px solid rgba(255,255,255,0.05)",
-        animation: "fadeSlideUp 0.4s ease both",
-      }}
-    >
-      <span className="text-5xl mb-4">🧭</span>
-      <h3 className="text-lg font-bold text-white mb-2">Your briefing is being prepared...</h3>
-      <p className="text-sm max-w-sm mb-6" style={{ color: "rgba(255,255,255,0.4)" }}>
-        Check back after midnight. MEOK works through the night to prepare your personalised morning brief.
+      <h3 className="text-base font-bold text-white mb-2">Couldn&rsquo;t load briefing</h3>
+      <p className="text-sm mb-6 max-w-xs" style={{ color: "rgba(255,255,255,0.4)" }}>
+        {message}
       </p>
       <button
-        onClick={onTrigger}
-        disabled={triggering}
-        className="flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold transition-all duration-150 disabled:opacity-50"
-        style={{ background: `${GOLD}18`, color: GOLD, border: `1px solid ${GOLD}33` }}
+        onClick={onRetry}
+        className="flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold transition-all"
+        style={{
+          background: GOLD,
+          color: "#1a1a2e",
+        }}
       >
-        {triggering ? (
-          <>
-            <RefreshCw className="w-4 h-4 animate-spin" />
-            Generating…
-          </>
-        ) : (
-          <>
-            <RefreshCw className="w-4 h-4" />
-            Trigger now
-          </>
-        )}
+        <RefreshCw className="w-4 h-4" />
+        Try again
       </button>
     </div>
   );
 }
 
+// ── Main page ─────────────────────────────────────────────────────
 export default function MorningBriefingPage() {
   const { user } = useUser();
-  const [briefing, setBriefing] = useState<MorningBriefing | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const [briefing, setBriefing] = useState<BriefingState>(null);
+  const [status, setStatus] = useState<"loading" | "generating" | "ready" | "error">("loading");
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const [refreshing, setRefreshing] = useState(false);
-  const [triggering, setTriggering] = useState(false);
-  const [visible, setVisible] = useState(false);
+  const [lastUpdated, setLastUpdated] = useState<Date | null>(null);
 
-  const load = async (showRefresh = false) => {
-    if (showRefresh) setRefreshing(true);
-    else setLoading(true);
-    setError(null);
+  const displayName =
+    user?.firstName ||
+    user?.emailAddresses[0]?.emailAddress?.split("@")[0] ||
+    "there";
+
+  const greeting = `${getTimeGreeting()}, ${displayName}`;
+
+  // ── Fallback: call /api/chat when briefing API fails ─────────
+  const fallbackToChat = async () => {
+    try {
+      const res = await fetch("/api/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          messages: [
+            {
+              role: "user",
+              content:
+                "Generate a warm, caring morning briefing for the MEOK AI user. Include: a motivating thought, a care reminder, and an invitation to share what's on their mind today.",
+            },
+          ],
+          system:
+            "Generate a warm, caring morning briefing for the MEOK AI user. Include: a motivating thought, a care reminder, and an invitation to share what's on their mind today.",
+        }),
+      });
+
+      if (!res.ok) throw new Error("chat fallback failed");
+
+      // Handle both streaming and JSON responses
+      const contentType = res.headers.get("content-type") ?? "";
+      let message = "";
+
+      if (contentType.includes("text/event-stream") || contentType.includes("text/plain")) {
+        const text = await res.text();
+        // Strip SSE data: prefixes if present
+        message = text
+          .split("\n")
+          .filter((l) => l.startsWith("data: ") && !l.includes("[DONE]"))
+          .map((l) => {
+            try {
+              const parsed = JSON.parse(l.slice(6));
+              return parsed?.choices?.[0]?.delta?.content ?? parsed?.content ?? "";
+            } catch {
+              return l.slice(6);
+            }
+          })
+          .join("")
+          .trim();
+        if (!message) message = text.trim();
+      } else {
+        const json = await res.json();
+        message =
+          json?.choices?.[0]?.message?.content ??
+          json?.content ??
+          json?.message ??
+          "I'm here with you this morning. Take a breath — today holds possibility.";
+      }
+
+      const now = new Date();
+      const fb: FallbackBriefing = {
+        fallback: true,
+        greeting,
+        message,
+        generated_at: now.toISOString(),
+      };
+      setBriefing(fb);
+      setLastUpdated(now);
+      setStatus("ready");
+    } catch {
+      // Even fallback failed — show generic message
+      const now = new Date();
+      const fb: FallbackBriefing = {
+        fallback: true,
+        greeting,
+        message:
+          "Good morning. MEOK is here with you. Take a moment, breathe, and share what's on your mind today — I'm listening.",
+        generated_at: now.toISOString(),
+      };
+      setBriefing(fb);
+      setLastUpdated(now);
+      setStatus("ready");
+    }
+  };
+
+  // ── Load briefing ─────────────────────────────────────────────
+  const load = async (isRefresh = false) => {
+    if (isRefresh) setRefreshing(true);
+    else setStatus("loading");
+    setErrorMsg(null);
+
     try {
       const res = await fetch("/api/morning-briefing");
+
+      // No briefing yet — generate one
+      if (res.status === 404 || res.status === 204) {
+        if (!isRefresh) {
+          setStatus("generating");
+          setRefreshing(false);
+        }
+        await generate();
+        return;
+      }
+
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      const data: MorningBriefing = await res.json();
+
+      const data: Briefing = await res.json();
       setBriefing(data);
-      setVisible(true);
+      setLastUpdated(new Date());
+      setStatus("ready");
     } catch (e) {
-      setError(e instanceof Error ? e.message : "Could not load briefing");
+      const msg = e instanceof Error ? e.message : "Unknown error";
+
+      if (isRefresh) {
+        // On refresh, surface a hard error with a retry button rather than silently falling back
+        setErrorMsg(msg);
+        setStatus("error");
+        setRefreshing(false);
+        return;
+      }
+
+      // On first load, try to generate fresh, then fall back to chat
+      setStatus("generating");
+      setRefreshing(false);
+      const generated = await tryGenerate();
+      if (generated) return;
+
+      setErrorMsg(msg);
+      // Last resort: /api/chat warm message
+      await fallbackToChat();
     } finally {
-      setLoading(false);
       setRefreshing(false);
     }
   };
 
-  const triggerNow = async () => {
-    setTriggering(true);
+  // ── POST to generate a new briefing ──────────────────────────
+  const tryGenerate = async (): Promise<boolean> => {
     try {
-      await fetch("/api/morning-briefing/regenerate", { method: "POST" });
-      await load(false);
+      const res = await fetch("/api/morning-briefing", { method: "POST" });
+      if (!res.ok) return false;
+      const data: Briefing = await res.json();
+      setBriefing(data);
+      setLastUpdated(new Date());
+      setStatus("ready");
+      return true;
     } catch {
-      await load(false);
-    } finally {
-      setTriggering(false);
+      return false;
+    }
+  };
+
+  const generate = async () => {
+    const ok = await tryGenerate();
+    if (!ok) {
+      // POST not supported or failed — try GET one more time, then chat fallback
+      try {
+        const res = await fetch("/api/morning-briefing");
+        if (res.ok) {
+          const data: Briefing = await res.json();
+          setBriefing(data);
+          setLastUpdated(new Date());
+          setStatus("ready");
+          return;
+        }
+      } catch {
+        // fall through
+      }
+      await fallbackToChat();
     }
   };
 
   useEffect(() => {
     load();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // Today's date — always show current day prominently
+  // ── Derived ───────────────────────────────────────────────────
+  const isFallback = briefing && "fallback" in briefing && briefing.fallback;
+  const real = !isFallback ? (briefing as Briefing | null) : null;
+
+  const formattedTime = lastUpdated
+    ? lastUpdated.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })
+    : briefing?.generated_at
+    ? new Date(briefing.generated_at).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })
+    : null;
+
   const todayFormatted = new Date().toLocaleDateString("en-GB", {
     weekday: "long",
     day: "numeric",
     month: "long",
-    year: "numeric",
   });
-
-  const formattedTime = briefing?.generated_at
-    ? new Date(briefing.generated_at).toLocaleTimeString([], {
-        hour: "2-digit",
-        minute: "2-digit",
-      })
-    : null;
-
-  const displayName = user?.firstName || user?.emailAddresses[0]?.emailAddress?.split("@")[0] || "there";
-  const careScore = briefing?.care_score_today;
-  const hasMeaningfulContent =
-    briefing && (briefing.sections?.length || briefing.one_line_summary || briefing.priorities?.length);
 
   return (
     <>
@@ -357,92 +418,151 @@ export default function MorningBriefingPage() {
           from { opacity: 0; transform: translateY(10px); }
           to   { opacity: 1; transform: translateY(0); }
         }
-        .card-1 { animation: fadeSlideUp 0.35s ease both 0.05s; }
-        .card-2 { animation: fadeSlideUp 0.35s ease both 0.12s; }
-        .card-3 { animation: fadeSlideUp 0.35s ease both 0.19s; }
-        .card-4 { animation: fadeSlideUp 0.35s ease both 0.26s; }
-        .card-5 { animation: fadeSlideUp 0.35s ease both 0.33s; }
-        .card-6 { animation: fadeSlideUp 0.35s ease both 0.40s; }
+        .anim-1 { animation: fadeSlideUp 0.35s ease both 0.05s; }
+        .anim-2 { animation: fadeSlideUp 0.35s ease both 0.12s; }
+        .anim-3 { animation: fadeSlideUp 0.35s ease both 0.19s; }
+        .anim-4 { animation: fadeSlideUp 0.35s ease both 0.26s; }
+        .anim-5 { animation: fadeSlideUp 0.35s ease both 0.33s; }
+        .anim-6 { animation: fadeSlideUp 0.35s ease both 0.40s; }
       `}</style>
 
       <div className="min-h-screen p-6 md:p-8" style={{ background: DEEP, color: "white" }}>
         <div className="max-w-3xl space-y-5">
 
-          {/* ── Header ── */}
+          {/* ── Page header ── */}
           <div className="flex items-start justify-between gap-4">
             <div>
               <div className="flex items-center gap-2 mb-1">
                 <Sunrise className="w-5 h-5" style={{ color: GOLD }} />
                 <h2 className="text-2xl font-bold text-white">Morning Briefing</h2>
               </div>
-              <p className="text-sm" style={{ color: "rgba(255,255,255,0.35)" }}>
-                What MEOK worked on while you were away
+              <div className="flex items-center gap-2 flex-wrap">
+                <p className="text-sm" style={{ color: "rgba(255,255,255,0.35)" }}>
+                  What MEOK worked on while you were away
+                </p>
                 {formattedTime && (
-                  <span className="ml-2">
-                    <Clock className="inline w-3 h-3 mr-1" style={{ color: "rgba(255,255,255,0.2)" }} />
-                    <span style={{ color: "rgba(255,255,255,0.2)" }}>Updated {formattedTime}</span>
+                  <span
+                    className="flex items-center gap-1 text-xs px-2.5 py-0.5 rounded-full"
+                    style={{
+                      background: "rgba(255,255,255,0.04)",
+                      border: `1px solid ${BORDER}`,
+                      color: "rgba(255,255,255,0.30)",
+                    }}
+                  >
+                    <Clock className="w-3 h-3" />
+                    Last updated {formattedTime}
                   </span>
                 )}
-              </p>
+              </div>
             </div>
             <button
               onClick={() => load(true)}
-              disabled={refreshing}
-              className="flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition-all duration-150 flex-shrink-0"
+              disabled={refreshing || status === "loading" || status === "generating"}
+              className="flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition-all duration-150 flex-shrink-0 disabled:opacity-40"
               style={{
                 background: "rgba(255,255,255,0.05)",
                 color: "rgba(255,255,255,0.5)",
-                border: "1px solid rgba(255,255,255,0.08)",
+                border: `1px solid ${BORDER}`,
               }}
             >
               <RefreshCw className={`w-4 h-4 ${refreshing ? "animate-spin" : ""}`} />
-              Refresh
+              {refreshing ? "Refreshing…" : "Refresh briefing"}
             </button>
           </div>
 
-          {/* ── Loading skeleton ── */}
-          {loading && <Skeleton />}
+          {/* ── States ── */}
+          {status === "loading" && <Skeleton />}
+          {status === "generating" && <GeneratingState />}
+          {/* Refresh in-progress: show skeleton overlay on top of stale content */}
+          {refreshing && status === "ready" && <Skeleton />}
 
-          {/* ── Error state ── */}
-          {error && !loading && (
+          {/* ── Hard error (on refresh) — show retry button ── */}
+          {status === "error" && (
+            <ErrorState
+              message={errorMsg ?? "The briefing API is unavailable. Please try again."}
+              onRetry={() => load(true)}
+            />
+          )}
+
+          {/* ── Error notice (non-fatal — fallback content shown below) ── */}
+          {errorMsg && status === "ready" && (
             <div
-              className="flex items-center gap-3 px-5 py-4 rounded-2xl"
-              style={{ background: "rgba(248,113,113,0.08)", border: "1px solid rgba(248,113,113,0.2)" }}
+              className="flex items-center gap-3 px-5 py-3 rounded-xl anim-1"
+              style={{ background: "rgba(248,113,113,0.07)", border: "1px solid rgba(248,113,113,0.18)" }}
             >
-              <AlertCircle className="w-5 h-5 flex-shrink-0" style={{ color: "#f87171" }} />
-              <div>
-                <p className="font-medium text-sm" style={{ color: "#f87171" }}>Briefing unavailable</p>
-                <p className="text-xs mt-0.5" style={{ color: "rgba(255,255,255,0.4)" }}>{error}</p>
-              </div>
+              <AlertCircle className="w-4 h-4 flex-shrink-0" style={{ color: "#f87171" }} />
+              <p className="text-xs" style={{ color: "rgba(255,255,255,0.45)" }}>
+                Briefing API unavailable — showing AI-generated summary instead. ({errorMsg})
+              </p>
             </div>
           )}
 
-          {/* ── Empty state ── */}
-          {!loading && !error && !hasMeaningfulContent && (
-            <EmptyState onTrigger={triggerNow} triggering={triggering} />
-          )}
-
-          {/* ── Full briefing ── */}
-          {briefing && !loading && hasMeaningfulContent && (
+          {/* ── Fallback briefing card ── */}
+          {status === "ready" && !refreshing && isFallback && briefing && (
             <>
-              {/* Hero header card */}
+              {/* Hero */}
               <div
-                className="card-1 rounded-2xl p-6 relative overflow-hidden"
+                className="anim-1 rounded-2xl p-6 relative overflow-hidden"
                 style={{
-                  background: `linear-gradient(135deg, ${SURFACE2} 0%, rgba(201,168,76,0.08) 100%)`,
+                  background: `linear-gradient(135deg, ${SURFACE} 0%, rgba(201,168,76,0.06) 100%)`,
                   border: `1px solid ${GOLD}28`,
                 }}
               >
-                {/* "Powered by Ralph" badge */}
-                <div className="absolute top-4 right-4 flex items-center gap-1.5 px-2.5 py-1 rounded-full"
-                  style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.08)" }}>
+                <div
+                  className="absolute top-4 right-4 flex items-center gap-1.5 px-2.5 py-1 rounded-full"
+                  style={{ background: "rgba(255,255,255,0.05)", border: `1px solid ${BORDER}` }}
+                >
                   <Bot className="w-3 h-3" style={{ color: "rgba(255,255,255,0.3)" }} />
-                  <span className="text-[10px]" style={{ color: "rgba(255,255,255,0.3)" }}>
-                    Generated by Ralph Mode overnight
+                  <span className="text-[10px]" style={{ color: "rgba(255,255,255,0.3)" }}>AI fallback</span>
+                </div>
+
+                <div className="flex items-center gap-2 mb-3">
+                  <Sunrise className="w-4 h-4" style={{ color: GOLD }} />
+                  <span className="text-xs font-mono uppercase tracking-widest" style={{ color: GOLD }}>
+                    {todayFormatted}
                   </span>
                 </div>
 
-                {/* Date + Care score row */}
+                <h1 className="text-xl font-bold text-white mb-4">{greeting}</h1>
+
+                <p
+                  className="text-base leading-relaxed"
+                  style={{ color: "rgba(255,255,255,0.75)", whiteSpace: "pre-wrap" }}
+                >
+                  {(briefing as FallbackBriefing).message}
+                </p>
+              </div>
+
+              {/* Quick actions */}
+              <div className="anim-2 flex flex-wrap items-center justify-center gap-3 pt-2">
+                {quickActions.map(({ href, label, Icon }) => (
+                  <QuickActionLink key={href} href={href} label={label} Icon={Icon} />
+                ))}
+              </div>
+            </>
+          )}
+
+          {/* ── Real briefing ── */}
+          {status === "ready" && !refreshing && real && (
+            <>
+              {/* ── Hero card ── */}
+              <div
+                className="anim-1 rounded-2xl p-6 relative overflow-hidden"
+                style={{
+                  background: `linear-gradient(135deg, ${SURFACE} 0%, rgba(201,168,76,0.07) 100%)`,
+                  border: `1px solid ${GOLD}28`,
+                }}
+              >
+                <div
+                  className="absolute top-4 right-4 flex items-center gap-1.5 px-2.5 py-1 rounded-full"
+                  style={{ background: "rgba(255,255,255,0.05)", border: `1px solid ${BORDER}` }}
+                >
+                  <Bot className="w-3 h-3" style={{ color: "rgba(255,255,255,0.3)" }} />
+                  <span className="text-[10px]" style={{ color: "rgba(255,255,255,0.3)" }}>
+                    Generated overnight
+                  </span>
+                </div>
+
                 <div className="flex items-start justify-between gap-4">
                   <div className="flex-1">
                     <div className="flex items-center gap-2 mb-2">
@@ -452,117 +572,124 @@ export default function MorningBriefingPage() {
                       </span>
                     </div>
 
-                    {/* Big day display */}
-                    <div className="mb-1">
-                      <span
-                        className="text-3xl font-black tracking-tight"
-                        style={{ color: CREAM }}
-                      >
-                        {new Date().toLocaleDateString("en-GB", { weekday: "long" })}
-                      </span>
-                      <span
-                        className="ml-2 text-lg font-semibold"
-                        style={{ color: "rgba(255,255,255,0.4)" }}
-                      >
-                        {new Date().toLocaleDateString("en-GB", { day: "numeric", month: "long" })}
-                      </span>
-                    </div>
-
-                    <h1 className="text-base font-semibold mt-2 mb-3" style={{ color: "rgba(255,255,255,0.8)" }}>
-                      Good morning, {displayName}. Here&rsquo;s your brief.
+                    {/* Greeting — time-aware from API or derived */}
+                    <h1 className="text-2xl font-black tracking-tight text-white mb-1">
+                      {real.greeting || greeting}
                     </h1>
 
-                    {briefing.one_line_summary && (
-                      <p
-                        className="text-base italic leading-snug"
-                        style={{ color: GOLD }}
-                      >
-                        &ldquo;{briefing.one_line_summary}&rdquo;
+                    {/* Next suggested action as a one-liner */}
+                    {real.next_action && (
+                      <p className="text-sm italic mt-2" style={{ color: GOLD }}>
+                        &ldquo;{real.next_action}&rdquo;
                       </p>
                     )}
                   </div>
 
-                  {/* Care score ring */}
-                  {careScore !== undefined && (
-                    <div className="flex-shrink-0 pt-8">
-                      <CareScoreRing score={careScore} />
+                  {/* Care score ring — yesterday's score */}
+                  {typeof real.care_score === "number" && (
+                    <div className="flex-shrink-0 pt-6">
+                      <CareScoreRing score={real.care_score} />
+                      <p className="text-center text-[10px] mt-1" style={{ color: "rgba(255,255,255,0.25)" }}>
+                        yesterday
+                      </p>
                     </div>
                   )}
                 </div>
               </div>
 
-              {/* ── Alerts strip ── */}
-              {briefing.alerts && briefing.alerts.length > 0 && (
-                <div className="card-2 space-y-2">
-                  {briefing.alerts.map((alert, i) => (
-                    <div
-                      key={i}
-                      className="flex items-start gap-2 px-4 py-3 rounded-xl text-sm"
-                      style={
-                        alert.level === "high"
-                          ? { background: "rgba(248,113,113,0.08)", border: "1px solid rgba(248,113,113,0.2)", color: "#f87171" }
-                          : alert.level === "medium"
-                          ? { background: "rgba(251,146,60,0.08)", border: "1px solid rgba(251,146,60,0.2)", color: "#fb923c" }
-                          : { background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)", color: "rgba(255,255,255,0.5)" }
-                      }
+              {/* ── Sovereign insight ── */}
+              {real.sovereign_insight && (
+                <div
+                  className="anim-2 rounded-2xl p-5"
+                  style={{ background: SURFACE, border: `1px solid ${GOLD}22` }}
+                >
+                  <div className="flex items-center gap-2 mb-3">
+                    <Brain className="w-4 h-4" style={{ color: GOLD }} />
+                    <h3 className="text-sm font-semibold text-white">Today&rsquo;s insight</h3>
+                    <span
+                      className="ml-auto text-[10px] px-2 py-0.5 rounded-full"
+                      style={{ background: `${GOLD}12`, color: `${GOLD}99`, border: `1px solid ${GOLD}22` }}
                     >
-                      <AlertCircle className="w-4 h-4 flex-shrink-0 mt-0.5" />
-                      <span>{alert.message}</span>
-                    </div>
-                  ))}
+                      sovereign
+                    </span>
+                  </div>
+                  <p className="text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.65)" }}>
+                    {real.sovereign_insight}
+                  </p>
                 </div>
               )}
 
-              {/* ── Today's priorities ── */}
-              {briefing.priorities && briefing.priorities.length > 0 && (
+              {/* ── Dream insight (memory summary) ── */}
+              {real.dream_insight && (
                 <div
-                  className="card-3 rounded-2xl p-5"
-                  style={{ background: SURFACE, border: "1px solid rgba(255,255,255,0.05)" }}
+                  className="anim-3 rounded-2xl p-5"
+                  style={{ background: SURFACE, border: "1px solid rgba(167,139,250,0.18)" }}
+                >
+                  <div className="flex items-center gap-2 mb-3">
+                    <Moon className="w-4 h-4" style={{ color: "#a78bfa" }} />
+                    <h3 className="text-sm font-semibold text-white">Memory summary</h3>
+                  </div>
+                  <p className="text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.6)" }}>
+                    {real.dream_insight}
+                  </p>
+                </div>
+              )}
+
+              {/* ── Priorities ── */}
+              {real.priorities && real.priorities.length > 0 && (
+                <div
+                  className="anim-3 rounded-2xl p-5"
+                  style={{ background: SURFACE, border: `1px solid ${BORDER}` }}
                 >
                   <div className="flex items-center gap-2 mb-4">
                     <TrendingUp className="w-4 h-4" style={{ color: GOLD }} />
                     <h3 className="text-sm font-semibold text-white">Today&rsquo;s priorities</h3>
-                    <div className="ml-auto">
-                      <CopyPrioritiesButton priorities={briefing.priorities} />
-                    </div>
                   </div>
-                  <ol className="space-y-3">
-                    {briefing.priorities.map((p, i) => (
-                      <li
-                        key={i}
-                        className="flex items-start gap-3 p-3 rounded-xl"
-                        style={{ background: NAVY, border: "1px solid rgba(255,255,255,0.04)" }}
-                      >
-                        <span
-                          className="w-6 h-6 rounded-full flex-shrink-0 flex items-center justify-center text-xs font-bold mt-0.5"
-                          style={{ background: `${GOLD}22`, color: GOLD, border: `1px solid ${GOLD}33` }}
+                  <ol className="space-y-2.5">
+                    {real.priorities.map((p, i) => {
+                      const col = priorityColor(p.priority);
+                      return (
+                        <li
+                          key={p.id}
+                          className="flex items-start gap-3 px-3 py-3 rounded-xl"
+                          style={{ background: "rgba(255,255,255,0.03)", border: `1px solid ${BORDER}` }}
                         >
-                          {i + 1}
-                        </span>
-                        <span className="text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.75)" }}>{p}</span>
-                      </li>
-                    ))}
+                          <span
+                            className="w-6 h-6 rounded-full flex-shrink-0 flex items-center justify-center text-xs font-bold mt-0.5"
+                            style={{ background: `${col}20`, color: col, border: `1px solid ${col}33` }}
+                          >
+                            {i + 1}
+                          </span>
+                          <span className="text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.75)" }}>
+                            {p.text}
+                          </span>
+                          <span
+                            className="ml-auto text-[10px] px-2 py-0.5 rounded-full flex-shrink-0 mt-0.5"
+                            style={{ background: `${col}14`, color: col, border: `1px solid ${col}28` }}
+                          >
+                            {p.priority}
+                          </span>
+                        </li>
+                      );
+                    })}
                   </ol>
                 </div>
               )}
 
               {/* ── Calendar events ── */}
-              {briefing.calendar_events && briefing.calendar_events.length > 0 && (
+              {real.calendar_events && real.calendar_events.length > 0 && (
                 <div
-                  className="card-4 rounded-2xl p-5"
-                  style={{ background: SURFACE, border: "1px solid rgba(255,255,255,0.05)" }}
+                  className="anim-4 rounded-2xl p-5"
+                  style={{ background: SURFACE, border: `1px solid ${BORDER}` }}
                 >
                   <div className="flex items-center gap-2 mb-4">
                     <Clock className="w-4 h-4" style={{ color: "#22d3ee" }} />
                     <h3 className="text-sm font-semibold text-white">Today&rsquo;s calendar</h3>
                   </div>
                   <div className="space-y-3">
-                    {briefing.calendar_events.map((ev, i) => (
+                    {real.calendar_events.map((ev, i) => (
                       <div key={i} className="flex items-center gap-3">
-                        <span
-                          className="text-xs font-mono w-14 flex-shrink-0"
-                          style={{ color: "#22d3ee" }}
-                        >
+                        <span className="text-xs font-mono w-14 flex-shrink-0" style={{ color: "#22d3ee" }}>
                           {ev.time}
                         </span>
                         <div className="w-px h-8 flex-shrink-0" style={{ background: "rgba(34,211,238,0.2)" }} />
@@ -578,103 +705,54 @@ export default function MorningBriefingPage() {
                 </div>
               )}
 
-              {/* ── Care check-in ── */}
-              {briefing.care_checkin && (
+              {/* ── Overnight work ── */}
+              {real.overnight_work && real.overnight_work.length > 0 && (
                 <div
-                  className="card-4 rounded-2xl p-5"
-                  style={{ background: SURFACE, border: "1px solid rgba(244,114,182,0.15)" }}
+                  className="anim-4 rounded-2xl p-5"
+                  style={{ background: SURFACE, border: `1px solid ${BORDER}` }}
                 >
-                  <div className="flex items-center gap-2 mb-3">
-                    <Heart className="w-4 h-4" style={{ color: "#f472b6" }} />
-                    <h3 className="text-sm font-semibold text-white">Care check-in</h3>
+                  <div className="flex items-center gap-2 mb-4">
+                    <Lightbulb className="w-4 h-4" style={{ color: "#22d3ee" }} />
+                    <h3 className="text-sm font-semibold text-white">Overnight work</h3>
                   </div>
-                  <p className="text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.65)" }}>
-                    {briefing.care_checkin}
-                  </p>
-                </div>
-              )}
-
-              {/* ── Sovereign insight ── */}
-              {briefing.sovereign_insight && (
-                <div
-                  className="card-5 rounded-2xl p-5"
-                  style={{ background: SURFACE, border: `1px solid ${GOLD}22` }}
-                >
-                  <div className="flex items-center gap-2 mb-3">
-                    <Brain className="w-4 h-4" style={{ color: GOLD }} />
-                    <h3 className="text-sm font-semibold text-white">Sovereign insight</h3>
-                    <span
-                      className="ml-auto text-[10px] px-2 py-0.5 rounded-full"
-                      style={{ background: `${GOLD}12`, color: `${GOLD}88`, border: `1px solid ${GOLD}22` }}
-                    >
-                      overnight observation
-                    </span>
-                  </div>
-                  <p className="text-sm italic leading-relaxed" style={{ color: "rgba(255,255,255,0.6)" }}>
-                    &ldquo;{briefing.sovereign_insight}&rdquo;
-                  </p>
-                </div>
-              )}
-
-              {/* ── Dynamic sections ── */}
-              {briefing.sections?.map((section, idx) => {
-                const key = section.title?.toLowerCase().split(" ")[0] || "personal";
-
-                if (key === "gaming") {
-                  return (
-                    <div key={section.title} className={`card-${Math.min(idx + 3, 6)}`}>
-                      <GamingCard section={section} />
-                    </div>
-                  );
-                }
-
-                const Icon = SECTION_ICONS[key] || Lightbulb;
-                const color = SECTION_COLORS[key] || "rgba(255,255,255,0.5)";
-                return (
-                  <div
-                    key={section.title}
-                    className={`card-${Math.min(idx + 3, 6)} rounded-2xl p-5`}
-                    style={{ background: SURFACE, border: "1px solid rgba(255,255,255,0.05)" }}
-                  >
-                    <div className="flex items-center gap-2 mb-3">
-                      <Icon className="w-4 h-4" style={{ color }} />
-                      <h3 className="text-sm font-semibold text-white">{humaniseKey(key)}</h3>
-                      {section.title && (
-                        <span
-                          className="ml-auto text-[10px] px-2 py-0.5 rounded-full"
-                          style={{ background: "rgba(255,255,255,0.05)", color: "rgba(255,255,255,0.35)", border: "1px solid rgba(255,255,255,0.08)" }}
+                  <div className="space-y-2.5">
+                    {real.overnight_work.map((w, i) => {
+                      const col = statusColor(w.status);
+                      return (
+                        <div
+                          key={i}
+                          className="flex items-start gap-3 px-3 py-2.5 rounded-xl"
+                          style={{ background: "rgba(255,255,255,0.03)", border: `1px solid ${BORDER}` }}
                         >
-                          {section.title}
-                        </span>
-                      )}
-                    </div>
-                    <p className="text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.6)" }}>
-                      {section.content}
-                    </p>
-                    {section.metadata && Object.keys(section.metadata).length > 0 && (
-                      <div className="mt-3 flex flex-wrap gap-2">
-                        {Object.entries(section.metadata)
-                          .slice(0, 4)
-                          .map(([k, v]) => (
-                            <div
-                              key={k}
-                              className="text-xs px-2 py-1 rounded"
-                              style={{ background: "rgba(255,255,255,0.04)", color: "rgba(255,255,255,0.35)" }}
-                            >
-                              <span style={{ color: "rgba(255,255,255,0.2)" }}>{k}: </span>
-                              {String(v)}
-                            </div>
-                          ))}
-                      </div>
-                    )}
+                          <div
+                            className="w-2 h-2 rounded-full flex-shrink-0 mt-1.5"
+                            style={{ background: col }}
+                          />
+                          <div className="flex-1 min-w-0">
+                            <p className="text-xs font-semibold mb-0.5" style={{ color: "rgba(255,255,255,0.45)" }}>
+                              {w.agent}
+                            </p>
+                            <p className="text-sm leading-snug" style={{ color: "rgba(255,255,255,0.7)" }}>
+                              {w.task}
+                            </p>
+                          </div>
+                          <span
+                            className="text-[10px] px-2 py-0.5 rounded-full flex-shrink-0"
+                            style={{ background: `${col}14`, color: col, border: `1px solid ${col}28` }}
+                          >
+                            {w.status}
+                          </span>
+                        </div>
+                      );
+                    })}
                   </div>
-                );
-              })}
+                </div>
+              )}
 
               {/* ── Next suggested action ── */}
-              {briefing.next_suggested_action && (
+              {real.next_action && (
                 <div
-                  className="card-6 rounded-2xl p-5"
+                  className="anim-5 rounded-2xl p-5"
                   style={{ background: SURFACE, border: "1px solid rgba(74,222,128,0.15)" }}
                 >
                   <div className="flex items-start gap-3">
@@ -689,7 +767,7 @@ export default function MorningBriefingPage() {
                         Suggested next step
                       </p>
                       <p className="text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.7)" }}>
-                        {briefing.next_suggested_action}
+                        {real.next_action}
                       </p>
                     </div>
                   </div>
@@ -697,31 +775,54 @@ export default function MorningBriefingPage() {
               )}
 
               {/* ── Quick actions ── */}
-              <div className="card-6 flex flex-wrap items-center justify-center gap-3 pt-2">
-                {[
-                  { href: "/dashboard/chat", label: "Start chatting", icon: MessageCircle },
-                  { href: "/dashboard/memory", label: "View memories", icon: BookOpen },
-                  { href: "/dashboard/guardian", label: "Check guardian", icon: Shield },
-                ].map(({ href, label, icon: Icon }) => (
-                  <Link
-                    key={href}
-                    href={href}
-                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-200 hover:bg-[rgba(201,168,76,0.1)]"
-                    style={{
-                      color: GOLD,
-                      border: `1px solid ${GOLD}44`,
-                      background: "transparent",
-                    }}
-                  >
-                    <Icon className="w-4 h-4" />
-                    {label}
-                  </Link>
+              <div className="anim-6 flex flex-wrap items-center justify-center gap-3 pt-2">
+                {quickActions.map(({ href, label, Icon }) => (
+                  <QuickActionLink key={href} href={href} label={label} Icon={Icon} />
                 ))}
               </div>
             </>
           )}
+
         </div>
       </div>
     </>
+  );
+}
+
+// ── Quick action definitions ──────────────────────────────────────
+const quickActions = [
+  { href: "/dashboard/chat", label: "Chat", Icon: MessageCircle },
+  { href: "/dashboard/journal", label: "Journal", Icon: BookOpen },
+  { href: "/dashboard/research", label: "Research", Icon: FlaskConical },
+] as const;
+
+function QuickActionLink({
+  href,
+  label,
+  Icon,
+}: {
+  href: string;
+  label: string;
+  Icon: React.ElementType;
+}) {
+  return (
+    <Link
+      href={href}
+      className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-200"
+      style={{
+        color: GOLD,
+        border: `1px solid ${GOLD}44`,
+        background: "transparent",
+      }}
+      onMouseEnter={(e) => {
+        (e.currentTarget as HTMLAnchorElement).style.background = `${GOLD}12`;
+      }}
+      onMouseLeave={(e) => {
+        (e.currentTarget as HTMLAnchorElement).style.background = "transparent";
+      }}
+    >
+      <Icon className="w-4 h-4" />
+      {label}
+    </Link>
   );
 }

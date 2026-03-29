@@ -19,6 +19,7 @@ import {
 } from '@/lib/characters';
 import { generateAvatarSVG } from '@/lib/avatar';
 import { SAMPLE_DIALOGUES } from '@/lib/character-dialogues';
+import { EVOLUTION_STAGES } from '@/lib/evolution';
 
 // ── Brand tokens ──────────────────────────────────────────────────────────
 
@@ -390,10 +391,92 @@ export default async function CharacterProfilePage({
           </section>
         )}
 
+        {/* ── Evolution preview ────────────────────────────────────────── */}
+        <section
+          className="rounded-2xl border p-6 sm:p-8"
+          style={{ backgroundColor: SURFACE, borderColor: 'rgba(255,255,255,0.06)' }}
+        >
+          <h2 className="text-2xl font-bold mb-2" style={{ color: GOLD }}>
+            How {char.name} evolves
+          </h2>
+          <p className="text-white/40 text-sm mb-8">
+            Every MEOK companion deepens through 6 stages as your bond grows. More conversations
+            mean richer memory, deeper personality, and unlocked capabilities.
+          </p>
+
+          <ol className="space-y-4">
+            {EVOLUTION_STAGES.map((stage, i) => (
+              <li key={stage.id} className="flex items-start gap-4">
+                {/* Stage indicator */}
+                <div
+                  className="flex-shrink-0 w-9 h-9 rounded-full flex items-center justify-center text-lg"
+                  style={{
+                    backgroundColor: i === 0 ? `${char.color}20` : 'rgba(255,255,255,0.04)',
+                    border: `1px solid ${i === 0 ? `${char.color}50` : 'rgba(255,255,255,0.08)'}`,
+                  }}
+                  aria-hidden="true"
+                >
+                  {stage.emoji}
+                </div>
+
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center gap-3 flex-wrap mb-1">
+                    <span
+                      className="text-sm font-bold"
+                      style={{ color: i === 0 ? char.color : 'rgba(255,255,255,0.7)' }}
+                    >
+                      {stage.name}
+                    </span>
+                    <span className="text-xs text-white/30 italic">{stage.title}</span>
+                    {i === 0 && (
+                      <span
+                        className="text-[10px] font-semibold px-2 py-0.5 rounded-full"
+                        style={{
+                          backgroundColor: `${char.color}15`,
+                          color: char.color,
+                        }}
+                      >
+                        Starting point
+                      </span>
+                    )}
+                    <span className="text-[10px] text-white/25 ml-auto">
+                      {stage.maxInteractions
+                        ? `${stage.minInteractions}–${stage.maxInteractions} interactions`
+                        : `${stage.minInteractions}+ interactions`}
+                    </span>
+                  </div>
+                  <p className="text-white/50 text-sm leading-relaxed">{stage.description}</p>
+
+                  {/* Unlocks */}
+                  {(stage.unlocksGuardian || stage.unlocksRalphMode || stage.unlocksWorkOS) && (
+                    <div className="flex flex-wrap gap-1.5 mt-2">
+                      {stage.unlocksGuardian && !EVOLUTION_STAGES.slice(0, i).some((s) => s.unlocksGuardian) && (
+                        <span className="text-[10px] px-2 py-0.5 rounded-full bg-[rgba(34,197,94,0.12)] border border-[rgba(34,197,94,0.25)] text-[#22c55e] font-medium">
+                          Unlocks Guardian
+                        </span>
+                      )}
+                      {stage.unlocksRalphMode && !EVOLUTION_STAGES.slice(0, i).some((s) => s.unlocksRalphMode) && (
+                        <span className="text-[10px] px-2 py-0.5 rounded-full bg-[rgba(201,168,76,0.12)] border border-[rgba(201,168,76,0.25)] text-[#c9a84c] font-medium">
+                          Unlocks Ralph Mode
+                        </span>
+                      )}
+                      {stage.unlocksWorkOS && !EVOLUTION_STAGES.slice(0, i).some((s) => s.unlocksWorkOS) && (
+                        <span className="text-[10px] px-2 py-0.5 rounded-full bg-[rgba(139,92,246,0.12)] border border-[rgba(139,92,246,0.25)] text-[#8b5cf6] font-medium">
+                          Unlocks Work OS
+                        </span>
+                      )}
+                    </div>
+                  )}
+                </div>
+              </li>
+            ))}
+          </ol>
+        </section>
+
         {/* ── CTA ────────────────────────────────────────────────────────── */}
         <section className="text-center space-y-6">
           <Link
-            href={`/dashboard/chat?companion=${char.id}`}
+            href={`/birth?archetype=${char.id}`}
             className="inline-flex items-center gap-2 px-8 py-4 rounded-full text-lg font-bold transition-all hover:scale-[1.03] hover:shadow-lg"
             style={{
               backgroundColor: char.color,
@@ -401,15 +484,21 @@ export default async function CharacterProfilePage({
               boxShadow: `0 0 40px ${char.color}30`,
             }}
           >
-            Chat with {char.name} &rarr;
+            Hatch {char.name} &rarr;
           </Link>
 
-          <div>
+          <div className="flex items-center justify-center gap-6">
             <Link
               href="/characters"
               className="text-sm text-white/40 hover:text-white/70 transition-colors"
             >
               &larr; Back to all characters
+            </Link>
+            <Link
+              href="/characters/compare"
+              className="text-sm text-white/40 hover:text-white/70 transition-colors"
+            >
+              Compare characters
             </Link>
           </div>
         </section>

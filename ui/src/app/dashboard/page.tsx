@@ -284,7 +284,9 @@ export default function DashboardOverview() {
         if (res.ok) {
           const data = await res.json();
           if (!data.has_companion) {
-            router.replace("/onboarding/step-1");
+            // Check if birth ceremony already completed locally
+            const birthDone = typeof window !== "undefined" && localStorage.getItem("meok_birth_complete");
+            router.replace(birthDone ? "/dashboard/chat" : "/birth");
             return;
           }
         }

@@ -14,7 +14,7 @@ import { useState, useRef, useEffect } from "react";
 import { Sparkles, RotateCcw } from "lucide-react";
 import { ExamplePrompts } from "@/components/example-prompts";
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3100";
+const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3101";
 const GOLD = "#c9a84c";
 
 function getToken(): string | null {

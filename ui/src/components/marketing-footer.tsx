@@ -35,64 +35,63 @@ const MARQUEE_IMAGES = [
 ];
 
 const OS_LINKS = [
-  { href: "/os", label: "MEOK OS" },
-  { href: "/os/birth-ceremony", label: "Birth Ceremony" },
-  { href: "/os/sovereign", label: "Sovereign Data" },
+  { href: "/os", label: "Sovereign OS" },
   { href: "/os/any-llm", label: "Any LLM" },
+  { href: "/os/consciousness", label: "Consciousness" },
+  { href: "/os/sovereign", label: "Sovereign Data" },
+  { href: "/birth", label: "Birth Ceremony" },
   { href: "/os/sovereign-display", label: "Sovereign Display" },
   { href: "/open-source", label: "Open Source" },
 ];
 
-const PRODUCT_LINKS = [
-  { href: "/personal", label: "Personal OS" },
-  { href: "/work", label: "Work OS" },
-  { href: "/family", label: "Family OS" },
-  { href: "/team", label: "Team OS" },
-  { href: "/characters", label: "Characters" },
-  { href: "/gaming", label: "Gaming" },
-  { href: "/council", label: "Character Council" },
+const CHARACTERS_LINKS = [
+  { href: "/characters", label: "All Characters" },
+  { href: "/characters/aria", label: "Aria" },
+  { href: "/characters/sage", label: "Sage" },
+  { href: "/characters/marcus", label: "Marcus" },
+  { href: "/characters/luna", label: "Luna" },
+  { href: "/characters/gabriel", label: "Gabriel" },
+  { href: "/characters/shanti", label: "Shanti" },
+  { href: "/characters/scout", label: "Scout" },
+  { href: "/characters#compare", label: "Compare Characters" },
 ];
 
-const SOLUTIONS_LINKS = [
-  { href: "/problems", label: "Why MEOK" },
-  { href: "/problems#eleven", label: "11 Problems We Solve" },
-  { href: "/compare", label: "Compare MEOK" },
-  { href: "/roadmap", label: "Roadmap" },
-  { href: "/how-it-works", label: "How It Works" },
-  { href: "/memory", label: "Infinite Memory" },
-  { href: "/connect", label: "Connect Everything" },
+const WORK_LINKS = [
+  { href: "/work", label: "Work OS" },
+  { href: "/work/orion", label: "Orion — The Hunter" },
+  { href: "/work/riri", label: "Riri — The Builder" },
+  { href: "/work/hourman", label: "Hourman — The Planner" },
+  { href: "/ralph", label: "Ralph Mode" },
+];
+
+const GUARDIAN_LINKS = [
+  { href: "/guardian", label: "Guardian 24/7" },
+  { href: "/guardian/children", label: "Children's Safety" },
+  { href: "/guardian/elderly", label: "Elder Care" },
+  { href: "/guardian/scam-stop", label: "Scam Protection" },
+  { href: "/guardian/personal", label: "Relationship Shield" },
 ];
 
 const GAMING_LINKS = [
-  { href: "/gaming", label: "Gaming Overview" },
+  { href: "/gaming", label: "Gaming OS" },
+  { href: "/gaming/strategy", label: "Genre Coaching" },
+  { href: "/gaming/post-game", label: "Stats & Analytics" },
   { href: "/gaming/live-copilot", label: "Live Co-Pilot" },
-  { href: "/gaming/post-game", label: "Post-Game Analyst" },
-  { href: "/gaming/strategy", label: "Strategy Builder" },
   { href: "/gaming/platforms", label: "All Platforms" },
-];
-
-const FEATURES_LINKS = [
-  { href: "/guardian", label: "Guardian 24/7" },
-  { href: "/guardian/elderly", label: "Elder Care" },
-  { href: "/guardian/children", label: "Child Safety" },
-  { href: "/ralph", label: "Ralph Mode" },
-  { href: "/terminal", label: "Terminal" },
-  { href: "/personal/care", label: "Care Dimensions" },
-  { href: "/personal/morning-brief", label: "Morning Brief" },
-  { href: "/os/consciousness", label: "Consciousness Preparedness" },
-  { href: "/hatch", label: "Waitlist" },
+  { href: "/gaming/predator-stop", label: "Predator Stop" },
 ];
 
 const COMPANY_LINKS = [
+  { href: "/pricing", label: "Pricing" },
   { href: "/about", label: "About" },
   { href: "/blog", label: "Blog" },
   { href: "/labs", label: "Labs" },
   { href: "/press", label: "Press" },
-  { href: "/open-source", label: "Open Source" },
-  { href: "/pricing", label: "Pricing" },
+  { href: "/roadmap", label: "Roadmap" },
+  { href: "/how-it-works", label: "How It Works" },
   { href: "/faq", label: "FAQ" },
+  { href: "/open-source", label: "Open Source" },
   { href: "/sitemap", label: "Sitemap" },
-  { href: "/easter", label: "Easter Egg" },
   { href: "/privacy", label: "Privacy" },
   { href: "/terms", label: "Terms" },
 ];
@@ -158,7 +157,7 @@ export function MarketingFooter() {
           {/* 7-Column Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-7 gap-10 mb-14">
 
-            {/* Column 1 — Brand (wider on large screens) */}
+            {/* Column 1 — Brand */}
             <div className="lg:col-span-1">
               <div className="font-bold text-xl tracking-tight mb-2 text-white">
                 MEOK<span className="text-[#c9a84c]">.AI</span>
@@ -228,32 +227,32 @@ export function MarketingFooter() {
               links={OS_LINKS}
             />
 
-            {/* Column 3 — Products */}
+            {/* Column 3 — Characters */}
             <FooterColumn
-              heading="Products"
-              dotColor="#7c6ef0"
-              links={PRODUCT_LINKS}
+              heading="Characters"
+              dotColor="#F472B6"
+              links={CHARACTERS_LINKS}
             />
 
-            {/* Column 4 — Gaming */}
+            {/* Column 4 — Work */}
+            <FooterColumn
+              heading="Work"
+              dotColor="#3B82F6"
+              links={WORK_LINKS}
+            />
+
+            {/* Column 5 — Guardian */}
+            <FooterColumn
+              heading="Guardian"
+              dotColor="#7BC47F"
+              links={GUARDIAN_LINKS}
+            />
+
+            {/* Column 6 — Gaming */}
             <FooterColumn
               heading="Gaming"
               dotColor="#FB923C"
               links={GAMING_LINKS}
-            />
-
-            {/* Column 5 — Solutions */}
-            <FooterColumn
-              heading="Solutions"
-              dotColor="#4caf92"
-              links={SOLUTIONS_LINKS}
-            />
-
-            {/* Column 6 — Features */}
-            <FooterColumn
-              heading="Features"
-              dotColor="#e05c7a"
-              links={FEATURES_LINKS}
             />
 
             {/* Column 7 — Company */}

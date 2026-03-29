@@ -1,4 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { CheckPersonRequestSchema, CONFIDENCE_THRESHOLDS, meetsConfidenceThreshold } from '@/lib/guardian/validation'
+import { guardianRateLimit, attachRateLimitHeaders } from '@/lib/guardian/rate-limit'
+import { logGuardianAction } from '@/lib/guardian/audit-log'
 
 type RiskLevel = 'LOW' | 'MEDIUM' | 'HIGH'
 
@@ -135,22 +138,38 @@ function buildRecommendation(
 }
 
 export async function POST(req: NextRequest): Promise<NextResponse> {
+  const startTime = Date.now()
+  let statusCode = 500
+
   try {
-    const body = await req.json()
-    const { name, company, phone, context } = body as {
-      name?: string
-      company?: string
-      phone?: string
-      context?: string
+    // 0. Rate limiting check
+    const rateLimitResponse = await guardianRateLimit(req, 'CHECK_PERSON')
+    if (rateLimitResponse) {
+      return rateLimitResponse
     }
 
-    // 1. Validate
-    if (!name || typeof name !== 'string' || name.trim().length < 2) {
+    const body = await req.json()
+    const { name, company, phone, context, user_id, confidence_threshold } = body
+
+    // 1. Validate using Zod schema
+    const validation = CheckPersonRequestSchema.safeParse({
+      name,
+      company,
+      phone,
+      context,
+      user_id,
+      confidence_threshold,
+    })
+
+    if (!validation.success) {
+      statusCode = 400
       return NextResponse.json(
-        { error: 'name is required and must be at least 2 characters' },
+        { error: validation.error.issues.map(e => e.message).join('; ') },
         { status: 400 }
       )
     }
+
+    const { name: validName, company: validCompany, phone: validPhone, context: validContext, user_id: validUserId, confidence_threshold: validThreshold } = validation.data
 
     const signals: string[] = []
     let companiesHouseUrl: string | undefined
@@ -158,21 +177,21 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
     // 2. Risk signals
 
     // Phone assessment
-    if (phone && typeof phone === 'string' && phone.trim().length > 0) {
-      const phoneSignal = assessPhone(phone.trim())
+    if (validPhone && validPhone.trim().length > 0) {
+      const phoneSignal = assessPhone(validPhone.trim())
       if (phoneSignal) signals.push(phoneSignal)
     }
 
-    // Company name check (stub)
-    if (company && typeof company === 'string' && company.trim().length > 0) {
-      const { signal, url } = await assessCompanyName(company.trim())
+    // Company name check
+    if (validCompany && validCompany.trim().length > 0) {
+      const { signal, url } = await assessCompanyName(validCompany.trim())
       if (signal) signals.push(signal)
       if (url) companiesHouseUrl = url
     }
 
     // Context urgency scan
-    if (context && typeof context === 'string' && context.trim().length > 0) {
-      const urgencySignal = detectUrgencyLanguage(context)
+    if (validContext && validContext.trim().length > 0) {
+      const urgencySignal = detectUrgencyLanguage(validContext)
       if (urgencySignal) signals.push(urgencySignal)
     }
 
@@ -180,26 +199,51 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
     const risk_score = Math.min(0.1 + signals.length * 0.2, 0.95)
     const risk_level = scoreToRiskLevel(risk_score)
     const recommendation = buildRecommendation(risk_level, signals)
+    const confidence = risk_score
+    const meetsThreshold = meetsConfidenceThreshold(confidence, validThreshold)
 
     const response: {
       risk_score: number
       risk_level: RiskLevel
       signals: string[]
       recommendation: string
+      confidence: number
       companies_house_url?: string
     } = {
       risk_score,
       risk_level,
       signals,
       recommendation,
+      confidence,
     }
 
     if (companiesHouseUrl) {
       response.companies_house_url = companiesHouseUrl
     }
 
-    return NextResponse.json(response)
-  } catch {
+    statusCode = 200
+
+    const duration = Date.now() - startTime
+    logGuardianAction(req, '/api/guardian/check-person', {
+      status: 200,
+      riskLevel: risk_level,
+      confidence,
+      signals,
+    }, duration)
+
+    const jsonResponse = NextResponse.json(response)
+    return attachRateLimitHeaders(jsonResponse, 'CHECK_PERSON',
+      req.headers.get('x-forwarded-for')?.split(',')[0] || (req as any).ip || '0.0.0.0',
+      validUserId || null
+    )
+  } catch (err) {
+    statusCode = 500
+    const duration = Date.now() - startTime
+    logGuardianAction(req, '/api/guardian/check-person', {
+      status: 500,
+      error: err instanceof Error ? err.message : 'Unknown error',
+    }, duration)
+
     return NextResponse.json(
       { error: 'Person check failed' },
       { status: 500 }

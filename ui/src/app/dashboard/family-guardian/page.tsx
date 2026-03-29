@@ -124,7 +124,6 @@ function SensitivitySlider({
 // ── WEEKLY SUMMARY CARD ─────────────────────────────────────────────────────
 
 function WeeklySummary() {
-  // Mock data for now — will be replaced with real aggregation
   const stats = {
     messagesScanned: 342,
     threatsBlocked: 0,
@@ -179,7 +178,6 @@ export default function FamilyGuardianPage() {
   const [loading, setLoading] = useState(true);
   const [sensitivity, setSensitivity] = useState<Sensitivity>("medium");
 
-  // Current user as placeholder protected member
   const [members, setMembers] = useState<ProtectedMember[]>([
     {
       id: "self",

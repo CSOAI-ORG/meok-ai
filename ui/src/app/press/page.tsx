@@ -262,6 +262,152 @@ export default function PressPage() {
         </div>
       </section>
 
+      {/* ── BRAND PRESS KIT ───────────────────────────────────────── */}
+      <section className="py-24 px-6 bg-[#0d0c18]">
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-14">
+            <p className="text-[#c9a84c] text-xs font-bold uppercase tracking-widest mb-4">Brand Press Kit</p>
+            <h2 className="text-3xl sm:text-4xl font-black text-white mb-4">Identity at a glance.</h2>
+            <p className="text-white/40 text-sm max-w-sm mx-auto">
+              Colours, logos, and the tagline — everything you need to represent MEOK accurately.
+            </p>
+          </div>
+
+          {/* Tagline */}
+          <div
+            className="rounded-2xl p-8 mb-10 text-center"
+            style={{ background: "rgba(201,168,76,0.06)", border: "1.5px solid rgba(201,168,76,0.25)" }}
+          >
+            <p className="text-[10px] font-bold uppercase tracking-widest text-[#c9a84c]/60 mb-3">Official Tagline</p>
+            <p
+              className="font-black text-white tracking-tight"
+              style={{ fontSize: "clamp(1.5rem, 4vw, 2.5rem)" }}
+            >
+              Sovereign AI for Humans.
+            </p>
+          </div>
+
+          {/* Brand colours */}
+          <div className="mb-10">
+            <p className="text-xs font-bold uppercase tracking-widest text-white/30 mb-5 px-1">
+              Brand Colours
+            </p>
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+              {[
+                { name: "DEEP", token: "DEEP", hex: "#0d0c18", bg: "#0d0c18", fg: "#c9a84c", border: "rgba(201,168,76,0.2)" },
+                { name: "SURFACE", token: "SURFACE", hex: "#13121f", bg: "#13121f", fg: "rgba(255,255,255,0.7)", border: "rgba(255,255,255,0.08)" },
+                { name: "BORDER", token: "BORDER", hex: "rgba(255,255,255,0.07)", bg: "rgba(255,255,255,0.07)", fg: "rgba(255,255,255,0.5)", border: "rgba(255,255,255,0.12)" },
+                { name: "GOLD", token: "GOLD", hex: "#c9a84c", bg: "#c9a84c", fg: "#0d0c18", border: "none" },
+              ].map((c) => (
+                <div
+                  key={c.name}
+                  className="rounded-xl overflow-hidden"
+                  style={{ border: `1px solid ${c.border}` }}
+                >
+                  <div
+                    className="h-16 flex flex-col items-center justify-center gap-1"
+                    style={{ background: c.bg }}
+                  >
+                    <span
+                      className="text-[10px] font-mono font-bold"
+                      style={{ color: c.fg }}
+                    >
+                      {c.hex}
+                    </span>
+                  </div>
+                  <div className="px-3 py-2.5" style={{ background: "rgba(255,255,255,0.03)" }}>
+                    <p className="text-xs font-bold text-white/60">{c.name}</p>
+                    <p className="text-[10px] font-mono text-white/25 mt-0.5">{c.token}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Logo versions */}
+          <div className="mb-10">
+            <p className="text-xs font-bold uppercase tracking-widest text-white/30 mb-5 px-1">
+              Logo Versions
+            </p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              {/* Dark version */}
+              <div
+                className="rounded-2xl overflow-hidden border"
+                style={{ borderColor: "rgba(201,168,76,0.2)" }}
+              >
+                <div
+                  className="h-36 flex flex-col items-center justify-center gap-3"
+                  style={{ background: "#0d0c18" }}
+                >
+                  <div className="flex items-center gap-3">
+                    <div
+                      className="w-10 h-10 rounded-xl flex items-center justify-center font-black text-base"
+                      style={{ background: "#c9a84c", color: "#0d0c18" }}
+                    >
+                      M
+                    </div>
+                    <span className="font-black text-white text-xl tracking-tight">MEOK.AI</span>
+                  </div>
+                  <span className="text-[10px] font-mono text-white/25 uppercase tracking-widest">Dark version</span>
+                </div>
+                <div className="px-5 py-3" style={{ background: "rgba(255,255,255,0.02)" }}>
+                  <p className="text-xs text-white/40">Use on dark backgrounds · SVG + PNG available</p>
+                </div>
+              </div>
+
+              {/* Light version */}
+              <div
+                className="rounded-2xl overflow-hidden border"
+                style={{ borderColor: "rgba(26,26,46,0.2)" }}
+              >
+                <div
+                  className="h-36 flex flex-col items-center justify-center gap-3"
+                  style={{ background: "#f5f0e8" }}
+                >
+                  <div className="flex items-center gap-3">
+                    <div
+                      className="w-10 h-10 rounded-xl flex items-center justify-center font-black text-base"
+                      style={{ background: "#0d0c18", color: "#c9a84c" }}
+                    >
+                      M
+                    </div>
+                    <span className="font-black text-[#0d0c18] text-xl tracking-tight">MEOK.AI</span>
+                  </div>
+                  <span className="text-[10px] font-mono text-[#0d0c18]/30 uppercase tracking-widest">Light version</span>
+                </div>
+                <div className="px-5 py-3" style={{ background: "rgba(26,26,46,0.03)" }}>
+                  <p className="text-xs text-[#1a1a2e]/40">Use on light backgrounds · SVG + PNG available</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Press contact */}
+          <div
+            className="rounded-2xl p-7 flex flex-col sm:flex-row items-center gap-6"
+            style={{ background: "rgba(201,168,76,0.05)", border: "1px solid rgba(201,168,76,0.2)" }}
+          >
+            <div className="flex-1 text-center sm:text-left">
+              <p className="text-xs font-bold uppercase tracking-widest text-[#c9a84c]/60 mb-1">
+                Press &amp; Brand Enquiries
+              </p>
+              <p className="text-white font-bold text-base">press@meok.ai</p>
+              <p className="text-white/40 text-xs mt-1">
+                Logo files, brand guidelines, and high-res assets on request. Response within 4 hours.
+              </p>
+            </div>
+            <a
+              href="mailto:press@meok.ai?subject=Brand assets request"
+              className="flex-shrink-0 inline-flex items-center gap-2 px-6 py-3 rounded-full font-bold text-sm transition-all hover:opacity-90"
+              style={{ background: "#c9a84c", color: "#0d0c18" }}
+            >
+              <Mail className="w-4 h-4" />
+              Request assets
+            </a>
+          </div>
+        </div>
+      </section>
+
       {/* ── FOUNDER BIO ───────────────────────────────────────────── */}
       <section className="py-24 px-6 bg-[#0d0c18]">
         <div className="max-w-4xl mx-auto">
@@ -275,7 +421,7 @@ export default function PressPage() {
             style={{ background: "rgba(201,168,76,0.04)" }}
           >
             <div className="flex flex-col md:flex-row gap-10 items-start">
-              {/* Avatar placeholder */}
+              {/* Avatar */}
               <div
                 className="w-24 h-24 rounded-2xl flex-shrink-0 flex items-center justify-center text-3xl font-black"
                 style={{ background: "rgba(201,168,76,0.15)", color: "#c9a84c", border: "1.5px solid rgba(201,168,76,0.3)" }}

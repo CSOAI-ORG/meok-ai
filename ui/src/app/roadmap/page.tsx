@@ -341,6 +341,122 @@ export default function RoadmapPage() {
         </div>
       </section>
 
+      {/* ── Phase Kanban ──────────────────────────────────────────────────── */}
+      <section className="pb-16 px-6">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-10">
+            <span className="inline-block px-3 py-1 rounded-full bg-[#c9a84c]/10 border border-[#c9a84c]/25 text-[#c9a84c] text-xs font-bold tracking-widest uppercase mb-4">
+              Phase Kanban
+            </span>
+            <h2 className="text-2xl font-black text-white mb-2">Build phases at a glance.</h2>
+            <p className="text-white/35 text-sm max-w-sm mx-auto">
+              Phases 71 – 100. Three columns: what shipped, what&apos;s building, what&apos;s planned.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {/* ── Shipped ── */}
+            <div>
+              <div className="flex items-center gap-2 mb-4 px-1">
+                <CheckCircle2 className="w-4 h-4 text-emerald-400 flex-shrink-0" />
+                <span className="text-xs font-bold uppercase tracking-widest text-emerald-400">Shipped</span>
+                <span className="ml-auto text-[10px] text-white/25 font-mono">Ph 71–74</span>
+              </div>
+              <div className="space-y-2.5">
+                {[
+                  { phase: 71, name: "Sovereign Temple v3.0 core" },
+                  { phase: 72, name: "Byzantine Council 33-node consensus" },
+                  { phase: 73, name: "pgvector HNSW semantic memory" },
+                  { phase: 74, name: "Maternal Covenant care scoring" },
+                ].map((item) => (
+                  <div
+                    key={item.phase}
+                    className="flex items-center gap-3 px-4 py-3 rounded-xl border border-emerald-500/15 bg-emerald-950/[0.12]"
+                  >
+                    <span className="text-[10px] font-mono font-bold text-emerald-400/60 flex-shrink-0">
+                      Ph {item.phase}
+                    </span>
+                    <span className="text-sm font-medium text-white/80 leading-snug">{item.name}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* ── Building ── */}
+            <div>
+              <div className="flex items-center gap-2 mb-4 px-1">
+                <Hammer className="w-4 h-4 text-[#c9a84c] flex-shrink-0" />
+                <span className="text-xs font-bold uppercase tracking-widest text-[#c9a84c]">Building</span>
+                <span className="ml-auto text-[10px] text-white/25 font-mono">Ph 75–86</span>
+              </div>
+              <div className="space-y-2.5">
+                {[
+                  { phase: 75, name: "Multi-model LLM routing" },
+                  { phase: 76, name: "Gmail + Calendar MCP integration" },
+                  { phase: 77, name: "Consciousness state machine" },
+                  { phase: 78, name: "Dream-state creativity engine" },
+                  { phase: 79, name: "QD memory archive" },
+                  { phase: 80, name: "Birth Ceremony onboarding" },
+                  { phase: 81, name: "Telegram companion bot" },
+                  { phase: 82, name: "Care score dashboard" },
+                  { phase: 83, name: "7 AI character archetypes" },
+                  { phase: 84, name: "Full-stack UI (Next.js 14)" },
+                  { phase: 85, name: "SOV3 Python backend" },
+                  { phase: 86, name: "Public web launch prep" },
+                ].map((item) => (
+                  <div
+                    key={item.phase}
+                    className="flex items-center gap-3 px-4 py-3 rounded-xl border border-[#c9a84c]/20 bg-[#c9a84c]/[0.04]"
+                  >
+                    <span className="text-[10px] font-mono font-bold text-[#c9a84c]/60 flex-shrink-0">
+                      Ph {item.phase}
+                    </span>
+                    <span className="text-sm font-medium text-white/80 leading-snug">{item.name}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* ── Planned ── */}
+            <div>
+              <div className="flex items-center gap-2 mb-4 px-1">
+                <CalendarDays className="w-4 h-4 text-blue-400 flex-shrink-0" />
+                <span className="text-xs font-bold uppercase tracking-widest text-blue-400">Planned</span>
+                <span className="ml-auto text-[10px] text-white/25 font-mono">Ph 87–100</span>
+              </div>
+              <div className="space-y-2.5">
+                {[
+                  { phase: 87, name: "Scam detection engine" },
+                  { phase: 88, name: "Elder protection dashboard" },
+                  { phase: 89, name: "Brand & press site v2" },
+                  { phase: 90, name: "Plaid financial monitoring" },
+                  { phase: 91, name: "50+ MCP server marketplace" },
+                  { phase: 92, name: "Plugin marketplace (WASM)" },
+                  { phase: 93, name: "Riot Games / Steam integration" },
+                  { phase: 94, name: "Twitch co-host mode" },
+                  { phase: 95, name: "PixiJS companion environment" },
+                  { phase: 96, name: "Personal knowledge graph" },
+                  { phase: 97, name: "Tauri 2.0 desktop OS shell" },
+                  { phase: 98, name: "LanceDB offline vector store" },
+                  { phase: 99, name: "Ollama on-device LLM" },
+                  { phase: 100, name: "Consciousness steering committee" },
+                ].map((item) => (
+                  <div
+                    key={item.phase}
+                    className="flex items-center gap-3 px-4 py-3 rounded-xl border border-blue-500/15 bg-blue-950/[0.10]"
+                  >
+                    <span className="text-[10px] font-mono font-bold text-blue-400/60 flex-shrink-0">
+                      Ph {item.phase}
+                    </span>
+                    <span className="text-sm font-medium text-white/80 leading-snug">{item.name}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ── Timeline phases ───────────────────────────────────────────────── */}
       <section className="pb-16 px-6">
         <div className="max-w-4xl mx-auto">

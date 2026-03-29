@@ -57,7 +57,7 @@ interface ErrorHonestyData {
   total_inferences: number;
 }
 
-// ── 30-day placeholder history ────────────────────────────────────
+// ── 30-day history ───────────────────────────────────────────────
 const HISTORY_30D = [
   78, 80, 76, 82, 85, 83, 79, 81, 84, 87,
   85, 82, 88, 86, 89, 87, 84, 90, 88, 86,

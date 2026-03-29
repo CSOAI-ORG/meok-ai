@@ -1,30 +1,42 @@
 /** MEOK AI LABS — Referral API */
 
-import { auth } from '@clerk/nextjs/server';
+import { requireAuth } from '@/lib/api-auth';
+import { checkRateLimit } from '@/lib/rate-limit';
 import { NextRequest, NextResponse } from 'next/server';
 import {
   generateReferralCode,
   validateReferralCode,
-  emptyStats,
   REFERRAL_REWARDS,
 } from '@/lib/referral';
+import {
+  setReferralCode,
+  getUserByReferralCode,
+  hasRedeemedReferral,
+  recordReferral,
+  getReferralStats,
+  createNotification,
+} from '@/lib/db/user';
 
-// ---------------------------------------------------------------------------
 // GET /api/user/referral — Return current user's referral code + stats
-// ---------------------------------------------------------------------------
-
 export async function GET() {
-  const { userId } = await auth();
-  if (!userId) {
-    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  const authResult = await requireAuth();
+  if (authResult.error) return authResult.error;
+  const { userId } = authResult;
+
+  const rateLimitResult = checkRateLimit(userId, 'explorer');
+  if (!rateLimitResult.allowed) {
+    return NextResponse.json({ error: 'Rate limit exceeded' }, { status: 429 });
   }
 
-  // In production: query DB for actual stats.
-  // For now return placeholder zeros with the deterministic code.
-  const stats = emptyStats(userId);
+  const code = generateReferralCode(userId);
+
+  // Persist the code to DB for lookup (idempotent — only sets if null)
+  void setReferralCode(userId, code).catch(() => {});
+
+  const stats = await getReferralStats(userId);
 
   return NextResponse.json({
-    code: stats.code,
+    code,
     stats: {
       totalReferred: stats.totalReferred,
       totalBondEarned: stats.totalBondEarned,
@@ -33,17 +45,18 @@ export async function GET() {
   });
 }
 
-// ---------------------------------------------------------------------------
 // POST /api/user/referral — Redeem a referral code
-// ---------------------------------------------------------------------------
-
 export async function POST(req: NextRequest) {
-  const { userId } = await auth();
-  if (!userId) {
-    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  const authResult = await requireAuth();
+  if (authResult.error) return authResult.error;
+  const { userId } = authResult;
+
+  const rateLimitResult = checkRateLimit(userId, 'explorer');
+  if (!rateLimitResult.allowed) {
+    return NextResponse.json({ error: 'Rate limit exceeded' }, { status: 429 });
   }
 
-  const body = await req.json().catch(() => null);
+  const body = await req.json().catch(() => null) as { code?: string } | null;
   const code = body?.code;
 
   if (!code || !validateReferralCode(code)) {
@@ -62,17 +75,45 @@ export async function POST(req: NextRequest) {
     );
   }
 
-  // Production referral flow:
-  // 1. Look up referrer by code (SELECT id FROM users WHERE referral_code = ${code})
-  // 2. Check referred user hasn't already redeemed (SELECT 1 FROM referrals WHERE referred_user_id = ${userId})
-  // 3. Award referrer REFERRAL_REWARDS.referrerBondPoints bond points via addBondPoints()
-  // 4. Extend referred user's trial by REFERRAL_REWARDS.referredTrialDays days
-  // 5. INSERT INTO referrals (referrer_id, referred_user_id, code, created_at)
-  // Wiring deferred until referrals table is deployed.
+  // Guard: user cannot redeem more than once
+  const alreadyRedeemed = await hasRedeemedReferral(userId);
+  if (alreadyRedeemed) {
+    return NextResponse.json(
+      { error: 'You have already redeemed a referral code.' },
+      { status: 400 },
+    );
+  }
+
+  // Look up the referrer by their code
+  const referrerId = await getUserByReferralCode(code);
+  if (!referrerId) {
+    return NextResponse.json(
+      { error: 'Referral code not found.' },
+      { status: 404 },
+    );
+  }
+
+  // Record the referral and award rewards
+  await recordReferral(
+    referrerId,
+    userId,
+    code,
+    REFERRAL_REWARDS.referrerBondPoints,
+    REFERRAL_REWARDS.referredTrialDays,
+  );
+
+  // Notify the referrer
+  void createNotification(referrerId, {
+    type: 'milestone',
+    title: 'Referral Reward Earned!',
+    message: `Someone joined MEOK using your referral code. You've earned ${REFERRAL_REWARDS.referrerBondPoints} bond points!`,
+    metadata: { bond_points: REFERRAL_REWARDS.referrerBondPoints },
+  }).catch(() => {});
 
   return NextResponse.json({
     success: true,
     reward: 'trial_extended',
     trialDays: REFERRAL_REWARDS.referredTrialDays,
+    message: `Welcome! Your ${REFERRAL_REWARDS.referredTrialDays}-day trial extension has been applied.`,
   });
 }

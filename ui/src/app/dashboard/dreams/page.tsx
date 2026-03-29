@@ -1,10 +1,11 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { callTool } from "@/lib/api";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Moon, Sparkles, Brain, Link2, BookOpen, Loader2, Stars } from "lucide-react";
+import { Moon, Sparkles, Brain, Link2, BookOpen, Loader2, Stars, Clock, AlertCircle } from "lucide-react";
+import type { DreamInsight } from "@/lib/dream";
 
 const GOLD = "#c9a84c";
 const PURPLE = "#7c3aed";
@@ -27,6 +28,13 @@ interface DreamResult {
   bisociations?: Array<{ concept_a: string; concept_b: string; connection?: string }>;
   summary?: string;
   [key: string]: unknown;
+}
+
+interface ApiDreamData {
+  insights: DreamInsight[];
+  themes: string[];
+  processed_at: string;
+  has_data: boolean;
 }
 
 // ─── Moon phases / priority dots ──────────────────────────────────
@@ -65,8 +73,8 @@ function DreamEmptyState() {
         MEOK dreams while you sleep.
       </h3>
       <p className="text-sm text-white/35 max-w-sm leading-relaxed mb-6">
-        Your first dream session will run tonight. Each night MEOK consolidates your memories,
-        finds unexpected creative connections between ideas, and prepares your morning brief.
+        Your companion analyses your conversations each night to find patterns and insights.
+        Start chatting to create your first dream cycle, or trigger one manually below.
       </p>
       <div className="grid grid-cols-3 gap-5 text-xs text-white/35 max-w-md">
         <div className="flex flex-col items-center gap-1.5">
@@ -82,6 +90,64 @@ function DreamEmptyState() {
           <span>Morning brief prep</span>
         </div>
       </div>
+    </div>
+  );
+}
+
+// ─── API insight card (from /api/user/dreams) ──────────────────────
+
+function ApiInsightCard({ insight, index }: { insight: DreamInsight; index: number }) {
+  const confidencePercent = Math.round(insight.confidence * 100);
+  return (
+    <div
+      className="rounded-lg border border-purple-700/30 bg-gradient-to-r from-purple-900/20 to-indigo-900/10 p-4 space-y-3"
+      style={{ animationDelay: `${index * 60}ms` }}
+    >
+      <div className="flex items-start justify-between gap-3">
+        <div className="flex-1 min-w-0">
+          <h4 className="font-semibold text-gray-100 capitalize mb-1">{insight.pattern}</h4>
+          <p className="text-sm text-gray-300 leading-relaxed">{insight.insight}</p>
+        </div>
+        <div className="flex-shrink-0 text-right">
+          <div className="text-lg font-semibold text-purple-300">{confidencePercent}%</div>
+          <div className="text-xs text-gray-400">confidence</div>
+        </div>
+      </div>
+      {insight.connections.length > 0 && (
+        <div className="flex flex-wrap gap-1 pt-2 border-t border-purple-700/20">
+          {insight.connections.map((conn) => (
+            <Badge
+              key={conn}
+              variant="outline"
+              className="text-xs bg-purple-900/30 text-purple-200 border-purple-700/30"
+            >
+              {conn}
+            </Badge>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
+// ─── Error banner ──────────────────────────────────────────────────
+
+function ErrorBanner({ message, onRetry }: { message: string; onRetry: () => void }) {
+  return (
+    <div
+      className="rounded-lg p-4 flex items-center justify-between gap-3 text-sm"
+      style={{ background: "#1f0a0a", border: "1px solid rgba(239,68,68,0.3)", color: "#FCA5A5" }}
+    >
+      <div className="flex items-center gap-2">
+        <AlertCircle className="w-4 h-4 shrink-0" />
+        {message}
+      </div>
+      <button
+        onClick={onRetry}
+        className="shrink-0 text-xs px-3 py-1 rounded border border-red-700/40 hover:bg-red-900/20 transition-colors"
+      >
+        Retry
+      </button>
     </div>
   );
 }
@@ -265,7 +331,32 @@ export default function DreamsPage() {
   const [dreamResult, setDreamResult] = useState<DreamResult | null>(null);
   const [loading, setLoading] = useState(true);
 
+  // API dream data (from /api/user/dreams)
+  const [apiData, setApiData] = useState<ApiDreamData | null>(null);
+  const [apiLoading, setApiLoading] = useState(true);
+  const [apiError, setApiError] = useState<string | null>(null);
+
+  const fetchApiDreams = useCallback(async () => {
+    setApiLoading(true);
+    setApiError(null);
+    try {
+      const res = await fetch("/api/user/dreams");
+      if (!res.ok) {
+        const body = await res.json().catch(() => ({}));
+        throw new Error((body as { error?: string }).error ?? `HTTP ${res.status}`);
+      }
+      const json: ApiDreamData = await res.json();
+      setApiData(json);
+    } catch (err) {
+      console.error("[DreamsPage] API fetch error:", err);
+      setApiError(err instanceof Error ? err.message : "Could not load dream insights.");
+    } finally {
+      setApiLoading(false);
+    }
+  }, []);
+
   useEffect(() => {
+    // Fetch MCP dream targets
     callTool<DreamTargets>("get_dream_targets")
       .then((r) => setTargets(r.targets || []))
       .catch((e) => {
@@ -273,13 +364,18 @@ export default function DreamsPage() {
         setTargets([]);
       })
       .finally(() => setLoading(false));
-  }, []);
+
+    // Fetch processed insights from our API
+    fetchApiDreams();
+  }, [fetchApiDreams]);
 
   const triggerDream = async () => {
     setDreaming(true);
     try {
       const result = await callTool<DreamResult>("enter_dream_state", { duration: 30 });
       setDreamResult(result);
+      // Re-fetch API data after triggering — the API re-processes on each call
+      await fetchApiDreams();
     } catch (e) {
       console.error("enter_dream_state failed:", e);
       setDreamResult({ summary: "Dream cycle could not be triggered. The system may be busy.", insights: [], consolidations: [], bisociations: [] });
@@ -317,11 +413,63 @@ export default function DreamsPage() {
           </p>
         </div>
 
-        {/* Dream journal or empty */}
-        {dreamResult ? (
-          <DreamJournalEntry result={dreamResult} />
-        ) : (
+        {/* Processed insights from /api/user/dreams */}
+        {apiError && (
+          <ErrorBanner message={apiError} onRetry={fetchApiDreams} />
+        )}
+
+        {apiLoading && !apiData && (
+          <div className="space-y-3">
+            {[1, 2, 3].map((n) => (
+              <div
+                key={n}
+                className="rounded-lg h-20 animate-pulse"
+                style={{ background: "rgba(124,58,237,0.06)", border: "1px solid rgba(124,58,237,0.12)" }}
+              />
+            ))}
+          </div>
+        )}
+
+        {!apiLoading && apiData?.has_data && apiData.insights.length > 0 && (
+          <div className="space-y-4">
+            <div className="flex items-center justify-between gap-3">
+              <div className="flex items-center gap-2">
+                <Sparkles className="w-4 h-4 text-purple-400" />
+                <h2 className="text-base font-semibold text-white">Latest Dream Insights</h2>
+              </div>
+              {apiData.processed_at && (
+                <div className="flex items-center gap-1 text-xs text-white/30">
+                  <Clock className="w-3 h-3" />
+                  {new Date(apiData.processed_at).toLocaleString("en-GB", {
+                    day: "numeric", month: "short", hour: "2-digit", minute: "2-digit",
+                  })}
+                </div>
+              )}
+            </div>
+            <div className="space-y-3">
+              {apiData.insights.map((insight, idx) => (
+                <ApiInsightCard key={`${insight.pattern}-${idx}`} insight={insight} index={idx} />
+              ))}
+            </div>
+            {apiData.themes.length > 0 && (
+              <div className="flex flex-wrap gap-2 pt-1">
+                {apiData.themes.map((theme) => (
+                  <Badge key={theme} variant="outline" className="text-xs bg-indigo-900/20 text-indigo-300 border-indigo-700/30">
+                    {theme}
+                  </Badge>
+                ))}
+              </div>
+            )}
+          </div>
+        )}
+
+        {!apiLoading && !apiData?.has_data && !dreamResult && (
           <DreamEmptyState />
+        )}
+
+        {/* Dream journal result (from MCP enter_dream_state) */}
+        {dreamResult && (
+          <DreamJournalEntry result={dreamResult} />
         )}
 
         {/* Dream targets card */}

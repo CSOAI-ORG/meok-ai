@@ -12,6 +12,12 @@ import {
   injectAnimationStyles,
   getAvatarOverlayStyles,
 } from '@/lib/animation-state';
+import {
+  EVOLUTION_STAGES,
+  getEvolutionStage as getEvolutionStageLib,
+  getProgressToNextStage,
+  interactionsUntilNextStage,
+} from '@/lib/evolution';
 
 // ─── Brand tokens ───────────────────────────────────────────────────────────
 const GOLD = '#c9a84c';
@@ -158,6 +164,10 @@ interface CompanionPanelProps {
   memoriesLoading: boolean;
   careScore: number;
   conversationCount: number;
+  /** Real companion name from the database (overrides character default) */
+  savedCompanionName: string | null;
+  /** Real interactions total from the API */
+  totalInteractions: number;
 }
 
 function CompanionPanel({
@@ -167,9 +177,65 @@ function CompanionPanel({
   memoriesLoading,
   careScore,
   conversationCount,
+  savedCompanionName,
+  totalInteractions,
 }: CompanionPanelProps) {
   const character = getCharacter(characterSlug) ?? getCharacter('aria')!;
   const mood = getMood(messages, careScore);
+
+  // Rename companion state
+  const [renameValue, setRenameValue] = useState('');
+  const [renameLoading, setRenameLoading] = useState(false);
+  const [renameSuccess, setRenameSuccess] = useState(false);
+
+  // Archetype selector state
+  const ARCHETYPES = ['pioneer', 'healer', 'scholar', 'guardian', 'trickster', 'mystic'];
+  const [selectedArchetype, setSelectedArchetype] = useState('');
+  const [archetypeLoading, setArchetypeLoading] = useState(false);
+  const [archetypeSuccess, setArchetypeSuccess] = useState(false);
+
+  async function handleRename(e: React.FormEvent) {
+    e.preventDefault();
+    if (!renameValue.trim()) return;
+    setRenameLoading(true);
+    setRenameSuccess(false);
+    try {
+      const res = await fetch('/api/user/settings', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ companion_name: renameValue.trim() }),
+      });
+      if (res.ok) {
+        setRenameSuccess(true);
+        setTimeout(() => setRenameSuccess(false), 3000);
+      }
+    } catch {
+      // ignore
+    } finally {
+      setRenameLoading(false);
+    }
+  }
+
+  async function handleArchetype(archetype: string) {
+    setSelectedArchetype(archetype);
+    setArchetypeLoading(true);
+    setArchetypeSuccess(false);
+    try {
+      const res = await fetch('/api/user/settings', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ archetype }),
+      });
+      if (res.ok) {
+        setArchetypeSuccess(true);
+        setTimeout(() => setArchetypeSuccess(false), 3000);
+      }
+    } catch {
+      // ignore
+    } finally {
+      setArchetypeLoading(false);
+    }
+  }
 
   // Animation state — inject keyframes and compute overlay styles
   const animationState: AnimationState = messages.length === 0
@@ -198,19 +264,17 @@ function CompanionPanel({
     }
   }, [animationState, animationMood]);
 
-  // Evolution stages — derived from conversation count (not stored on character)
-  const DEFAULT_STAGES = [
-    { stage: 1, name: 'Prying Pulse', description: 'First encounters — learning your rhythms', unlockedAt: 0, traits: ['attentive', 'curious'] },
-    { stage: 2, name: 'Bonded Flame', description: 'Deeper understanding — adapting to your style', unlockedAt: 10, traits: ['adaptive', 'empathic'] },
-    { stage: 3, name: 'Trusted Core', description: 'True partnership — anticipating your needs', unlockedAt: 30, traits: ['proactive', 'insightful'] },
-    { stage: 4, name: 'Your Sovereign', description: 'Full sovereignty — acting on your behalf', unlockedAt: 50, traits: ['autonomous', 'loyal'] },
-  ];
-  const { current: currentStage, next: nextStage, progressToNext } = getEvolutionStage(
-    conversationCount,
-    DEFAULT_STAGES
-  );
+  // Evolution — use real totalInteractions from the API, fall back to local count
+  const effectiveInteractions = totalInteractions > 0 ? totalInteractions : conversationCount;
+  const currentStage = getEvolutionStageLib(effectiveInteractions);
+  const nextStage = currentStage.id < 5 ? EVOLUTION_STAGES[currentStage.id + 1] : null;
+  const progressToNext = getProgressToNextStage(effectiveInteractions) / 100;
+  const untilNext = interactionsUntilNextStage(effectiveInteractions);
 
-  const daysSince = Math.max(1, Math.ceil(conversationCount / 3));
+  const daysSince = Math.max(1, Math.ceil(effectiveInteractions / 3));
+
+  // Companion display name: prefer saved DB name, fall back to character name
+  const displayName = savedCompanionName ?? character.name;
 
   // Dominant care dimensions in plain language
   const careInsights = [
@@ -221,7 +285,7 @@ function CompanionPanel({
   ];
 
   // Traits that have emerged from current stage
-  const emergedTraits = currentStage.traits ?? [];
+  const emergedTraits = currentStage.attributes.map((a) => a.label);
 
   return (
     <aside
@@ -260,7 +324,7 @@ function CompanionPanel({
               }}
             />
           </div>
-          <h3 className="text-lg font-bold text-white">{character.name}</h3>
+          <h3 className="text-lg font-bold text-white">{displayName}</h3>
           <span
             className="text-xs px-2.5 py-1 rounded-full font-semibold mt-1"
             style={{ background: `${character.color}20`, color: character.color, border: `1px solid ${character.color}35` }}
@@ -306,12 +370,12 @@ function CompanionPanel({
             <p className="text-[10px] uppercase tracking-widest" style={{ color: 'rgba(255,255,255,0.3)' }}>Evolution</p>
             <span
               className="text-[10px] font-bold px-2 py-0.5 rounded-full"
-              style={{ background: `${character.color}20`, color: character.color }}
+              style={{ background: `${currentStage.color}20`, color: currentStage.color }}
             >
-              Stage {currentStage.stage}
+              Stage {currentStage.id + 1}
             </span>
           </div>
-          <p className="text-sm font-semibold text-white">{currentStage.name}</p>
+          <p className="text-sm font-semibold text-white">{currentStage.emoji} {currentStage.name}</p>
           <p className="text-xs mt-0.5 mb-3" style={{ color: 'rgba(255,255,255,0.4)' }}>{currentStage.description}</p>
 
           {nextStage ? (
@@ -319,16 +383,16 @@ function CompanionPanel({
               <div className="relative h-2 rounded-full overflow-hidden mb-1.5" style={{ background: 'rgba(255,255,255,0.08)' }}>
                 <div
                   className="absolute inset-y-0 left-0 rounded-full transition-all duration-1000"
-                  style={{ width: `${Math.round(progressToNext * 100)}%`, background: character.color }}
+                  style={{ width: `${Math.round(progressToNext * 100)}%`, background: currentStage.color }}
                 />
               </div>
               <p className="text-[10px]" style={{ color: 'rgba(255,255,255,0.25)' }}>
-                {nextStage.unlockedAt - conversationCount} conversations to{' '}
-                <span style={{ color: character.color }}>{nextStage.name}</span>
+                {untilNext} interactions to{' '}
+                <span style={{ color: nextStage.color }}>{nextStage.name}</span>
               </p>
             </>
           ) : (
-            <p className="text-[10px] font-semibold" style={{ color: character.color }}>Max evolution reached ✦</p>
+            <p className="text-[10px] font-semibold" style={{ color: currentStage.color }}>Full sovereignty reached ✦</p>
           )}
         </div>
 
@@ -986,6 +1050,8 @@ export default function CompanionPage() {
           memoriesLoading={memoriesLoading}
           careScore={careScore}
           conversationCount={conversationCount}
+          savedCompanionName={null}
+          totalInteractions={conversationCount}
         />
       </div>
     </>

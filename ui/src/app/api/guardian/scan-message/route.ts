@@ -1,6 +1,14 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { getCrisisResources, formatCrisisResponse } from '@/lib/crisis'
+import { createNotification } from '@/lib/db/user'
 import { analyzeForCognitiveDecline, type CognitiveAnalysis } from '@/lib/guardian/elderly-patterns'
+import {
+  ScanMessageRequestSchema,
+  CONFIDENCE_THRESHOLDS,
+  meetsConfidenceThreshold,
+} from '@/lib/guardian/validation'
+import { guardianRateLimit, attachRateLimitHeaders } from '@/lib/guardian/rate-limit'
+import { logGuardianAction } from '@/lib/guardian/audit-log'
 
 const THREAT_PATTERNS: Record<string, string[]> = {
   scam: [
@@ -121,66 +129,65 @@ async function triggerGuardianWebhook(payload: {
 }
 
 export async function POST(req: NextRequest): Promise<NextResponse> {
+  const startTime = Date.now()
+  let statusCode = 500
+  let responseData: any = null
+
   try {
-    const body = await req.json()
-    const { message, user_id, companion_id, context } = body as {
-      message?: string
-      user_id?: string
-      companion_id?: string
-      context?: string
+    // 0. Rate limiting check
+    const rateLimitResponse = await guardianRateLimit(req, 'SCAN_MESSAGE')
+    if (rateLimitResponse) {
+      statusCode = 429
+      return rateLimitResponse
     }
 
-    // 1. Validate body
-    if (typeof message !== 'string') {
+    const body = await req.json()
+    const { message, user_id, context, companion_id } = body
+
+    // 1. Validate using Zod schema
+    const validation = ScanMessageRequestSchema.safeParse({
+      message,
+      user_id,
+      context,
+    })
+
+    if (!validation.success) {
+      statusCode = 400
       return NextResponse.json(
-        { error: 'message must be a string' },
+        { error: validation.error.issues.map(e => e.message).join('; ') },
         { status: 400 }
       )
     }
-    if (!message.trim()) {
-      return NextResponse.json(
-        { error: 'message is required and cannot be empty' },
-        { status: 400 }
-      )
-    }
-    if (message.length > 10000) {
-      return NextResponse.json(
-        { error: 'message exceeds 10000 character limit' },
-        { status: 400 }
-      )
-    }
-    if (!user_id) {
-      return NextResponse.json(
-        { error: 'user_id is required' },
-        { status: 400 }
-      )
-    }
+
+    const { message: validMessage, user_id: validUserId, context: validContext, confidence_threshold } = validation.data
 
     // 2. Build threat assessment
-    const fullText = context ? `${message} ${context}` : message
+    const fullText = validContext ? `${validMessage} ${validContext}` : validMessage
 
     const scores: Record<string, number> = {}
     for (const [category, patterns] of Object.entries(THREAT_PATTERNS)) {
       scores[category] = scanKeywords(fullText, category, patterns)
     }
 
-    // 3. Determine severity
+    // 3. Determine severity with confidence threshold
+    const maxScore = Math.max(...Object.values(scores))
     const severity = determineSeverity(scores)
+    const confidence = maxScore
+    const meetsThreshold = meetsConfidenceThreshold(confidence, confidence_threshold)
 
     // 4. Trigger guardian webhook for HIGH / CRITICAL (fire-and-forget)
     if (severity === 'HIGH' || severity === 'CRITICAL') {
       void triggerGuardianWebhook({
         severity,
         scores,
-        user_id,
+        user_id: validUserId,
         companion_id,
-        message_excerpt: message.slice(0, 200),
+        message_excerpt: validMessage.slice(0, 200),
       })
     }
 
     // 5. Determine response fields
-    const flagged = severity !== 'LOW'
-
+    const flagged = severity !== 'LOW' && meetsThreshold
     const safe_to_deliver = severity !== 'CRITICAL'
 
     const recommended_action: Record<Severity, string> = {
@@ -193,7 +200,7 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
     // 5b. Elderly cognitive pattern analysis
     let cognitive_analysis: CognitiveAnalysis | undefined
     try {
-      const cogResult = analyzeForCognitiveDecline([message])
+      const cogResult = analyzeForCognitiveDecline([validMessage])
       if (cogResult.score > 0) {
         cognitive_analysis = cogResult
       }
@@ -211,16 +218,53 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
       crisis_resources = formatCrisisResponse(resources)
     }
 
-    return NextResponse.json({
+    responseData = {
       severity,
       scores,
       flagged,
       recommended_action: recommended_action[severity],
       safe_to_deliver,
+      confidence,
       ...(crisis_resources && { crisis_resources }),
       ...(cognitive_analysis && { cognitive_analysis }),
-    })
-  } catch {
+    }
+
+    statusCode = 200
+    const response = NextResponse.json(responseData)
+
+    // Create in-app notification for high/critical threats
+    if (flagged && (severity === 'HIGH' || severity === 'CRITICAL') && validUserId) {
+      const topSignal = Object.keys(scores).filter(k => scores[k] > 0)[0] ?? 'threat'
+      void createNotification(validUserId, {
+        type: 'guardian_alert',
+        title: severity === 'CRITICAL' ? 'Critical Guardian Alert' : 'Guardian Alert',
+        message: `The Guardian system detected a potential ${topSignal} in a message. Please review your recent conversations.`,
+        metadata: { severity, scores, confidence, companion_id },
+      }).catch(() => {})
+    }
+
+    // Log audit trail
+    const duration = Date.now() - startTime
+    logGuardianAction(req, '/api/guardian/scan-message', {
+      status: 200,
+      severity,
+      flagged,
+      confidence,
+      signals: Object.keys(scores).filter(k => scores[k] > 0),
+    }, duration)
+
+    return attachRateLimitHeaders(response, 'SCAN_MESSAGE',
+      req.headers.get('x-forwarded-for')?.split(',')[0] || (req as any).ip || '0.0.0.0',
+      validUserId
+    )
+  } catch (err) {
+    statusCode = 500
+    const duration = Date.now() - startTime
+    logGuardianAction(req, '/api/guardian/scan-message', {
+      status: 500,
+      error: err instanceof Error ? err.message : 'Unknown error',
+    }, duration)
+
     return NextResponse.json(
       {
         error: 'Guardian scan failed',

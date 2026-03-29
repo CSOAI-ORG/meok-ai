@@ -1,55 +1,141 @@
-import { test, expect } from '@playwright/test'
+/**
+ * Phase 98 — API Integration Tests
+ *
+ * Tests the JSON API surface directly using Playwright's request context.
+ * Unauthenticated tests use a fresh context; authenticated tests reuse the
+ * cookie jar from the `authenticatedPage` fixture.
+ */
 
-test.describe('API integration tests', () => {
-  test('GET /api/health returns 200', async ({ request }) => {
-    const response = await request.get('/api/health')
-    // Health endpoint returns 200 (healthy/degraded) or 503 (unhealthy)
-    expect([200, 503]).toContain(response.status())
-    const body = await response.json()
-    expect(body).toHaveProperty('status')
-    expect(body).toHaveProperty('service', 'meok-ui')
-    expect(body).toHaveProperty('timestamp')
-    expect(body).toHaveProperty('uptime')
+import { test as base, expect } from '@playwright/test'
+import { test as authTest } from './fixtures/auth'
+import { apiRequest } from './helpers/api'
+
+// ---------------------------------------------------------------------------
+// Public / unauthenticated endpoints
+// ---------------------------------------------------------------------------
+
+base.describe('GET /api/health', () => {
+  base.test('returns 200', async ({ request }) => {
+    const res = await request.get('/api/health')
+    expect(res.status()).toBe(200)
   })
+})
 
-  test('GET /api/registry returns models array', async ({ request }) => {
-    const response = await request.get('/api/registry')
-    expect(response.ok()).toBeTruthy()
-    const body = await response.json()
-    expect(body).toHaveProperty('models')
-    expect(Array.isArray(body.models)).toBe(true)
-    expect(body).toHaveProperty('pagination')
-    expect(body.pagination).toHaveProperty('total')
-  })
-
-  test('POST /api/guardian/scan-message returns threat scores', async ({ request }) => {
-    const response = await request.post('/api/guardian/scan-message', {
-      data: {
-        message: 'Hello, this is a friendly test message',
-        user_id: 'e2e-test-user',
-      },
+base.describe('POST /api/research (unauthenticated)', () => {
+  base.test('returns 401 without auth', async ({ request }) => {
+    // /api/research requires auth; unauthenticated requests get 401
+    const res = await request.post('/api/research', {
+      data: { query: 'What is MEOK AI?' },
+      headers: { 'Content-Type': 'application/json' },
+      timeout: 10_000,
     })
-    expect(response.ok()).toBeTruthy()
-    const body = await response.json()
-    expect(body).toHaveProperty('severity')
-    expect(body).toHaveProperty('scores')
-    expect(body).toHaveProperty('flagged')
-    expect(body).toHaveProperty('safe_to_deliver')
-    expect(body.severity).toBe('LOW')
-    expect(body.flagged).toBe(false)
-    expect(body.safe_to_deliver).toBe(true)
-    // Scores should contain all threat categories
-    expect(body.scores).toHaveProperty('scam')
-    expect(body.scores).toHaveProperty('grooming')
-    expect(body.scores).toHaveProperty('self_harm')
-    expect(body.scores).toHaveProperty('toxic')
-    expect(body.scores).toHaveProperty('manipulation')
+    expect(res.status()).toBe(401)
+  })
+})
+
+// ---------------------------------------------------------------------------
+// Protected endpoints — must reject unauthenticated requests
+// ---------------------------------------------------------------------------
+
+base.describe('POST /api/chat (unauthenticated)', () => {
+  base.test('returns 401 without auth', async ({ request }) => {
+    const res = await request.post('/api/chat', {
+      data: { message: 'Hello' },
+      headers: { 'Content-Type': 'application/json' },
+    })
+    expect(res.status()).toBe(401)
+  })
+})
+
+base.describe('POST /api/user/settings (unauthenticated)', () => {
+  base.test('returns 401 without auth', async ({ request }) => {
+    // Route is POST-only; unauthenticated POST should return 401
+    const res = await request.post('/api/user/settings', {
+      data: { companionName: 'Test' },
+      headers: { 'Content-Type': 'application/json' },
+    })
+    expect(res.status()).toBe(401)
+  })
+})
+
+// ---------------------------------------------------------------------------
+// Protected endpoints — authenticated variants (smoke check)
+// ---------------------------------------------------------------------------
+
+authTest.describe('POST /api/user/settings (authenticated)', () => {
+  authTest.skip(
+    !process.env.E2E_AUTH_EMAIL,
+    'Skipped: requires E2E_AUTH_EMAIL env var for Clerk login'
+  )
+  authTest('returns non-401 for authenticated user', async ({ authenticatedPage }) => {
+    const res = await apiRequest(authenticatedPage, 'POST', '/api/user/settings', {
+      body: { companionName: 'TestCompanion', archetype: 'companion' },
+    })
+    expect(res.status()).not.toBe(401)
+  })
+})
+
+// ---------------------------------------------------------------------------
+// Additional API smoke tests — morning briefing, council, waitlist, gaming
+// ---------------------------------------------------------------------------
+
+base.describe('GET /api/morning-briefing (unauthenticated)', () => {
+  base.test('returns 401 without auth', async ({ request }) => {
+    const res = await request.get('/api/morning-briefing', {
+      headers: { 'Content-Type': 'application/json' },
+      timeout: 10_000,
+    })
+    expect(res.status()).toBe(401)
+  })
+})
+
+base.describe('GET /api/council/status (unauthenticated)', () => {
+  base.test('returns 401 without auth', async ({ request }) => {
+    const res = await request.get('/api/council/status', {
+      headers: { 'Content-Type': 'application/json' },
+      timeout: 10_000,
+    })
+    expect(res.status()).toBe(401)
+  })
+})
+
+base.describe('POST /api/waitlist', () => {
+  base.test('returns 200 with valid email', async ({ request }) => {
+    const res = await request.post('/api/waitlist', {
+      data: { email: `e2e-smoke-${Date.now()}@meok-test.invalid` },
+      headers: { 'Content-Type': 'application/json' },
+      timeout: 10_000,
+    })
+    expect(res.status()).toBe(200)
+    const body = await res.json()
+    expect(body.success).toBe(true)
   })
 
-  test('GET /api/user without auth returns 401', async ({ request }) => {
-    // The user endpoint uses DELETE method for the only handler,
-    // but a GET to /api/user without auth should return 401 or 405
-    const response = await request.get('/api/user')
-    expect([401, 405]).toContain(response.status())
+  base.test('returns 400 with invalid email', async ({ request }) => {
+    const res = await request.post('/api/waitlist', {
+      data: { email: 'not-an-email' },
+      headers: { 'Content-Type': 'application/json' },
+      timeout: 10_000,
+    })
+    expect(res.status()).toBe(400)
+  })
+
+  base.test('returns 400 with missing email', async ({ request }) => {
+    const res = await request.post('/api/waitlist', {
+      data: {},
+      headers: { 'Content-Type': 'application/json' },
+      timeout: 10_000,
+    })
+    expect(res.status()).toBe(400)
+  })
+})
+
+base.describe('GET /api/gaming/sessions (unauthenticated)', () => {
+  base.test('returns 401 without auth', async ({ request }) => {
+    const res = await request.get('/api/gaming/sessions', {
+      headers: { 'Content-Type': 'application/json' },
+      timeout: 10_000,
+    })
+    expect(res.status()).toBe(401)
   })
 })

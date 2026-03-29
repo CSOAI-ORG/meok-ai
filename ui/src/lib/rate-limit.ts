@@ -1,122 +1,90 @@
 /**
- * MEOK AI LABS — In-Memory Sliding Window Rate Limiter
+ * MEOK AI LABS — Rate Limiter (Redis-backed with Map fallback)
  *
  * Token bucket algorithm with daily refill at midnight UTC.
- * No Redis dependency — suitable for single-instance deployments.
- * For multi-instance, swap the Map for a shared store.
+ * Storage: Upstash Redis when configured, in-process Map fallback.
+ * KV layer (kv-cache.ts) handles the backend switch automatically.
  */
+
+import { kv } from '@/lib/kv-cache';
 
 export type RateLimitTier = 'explorer' | 'sovereign' | 'family';
 
-interface TokenBucket {
-  tokens: number;
-  lastRefill: number;
-}
+interface TokenBucket { tokens: number; lastRefill: number; }
 
 const TIER_LIMITS: Record<RateLimitTier, number> = {
-  explorer: 100,   // 100 requests per day
-  sovereign: 1000, // 1000 requests per day
-  family: -1,      // unlimited
+  explorer: 100, sovereign: 1000, family: -1,
 };
 
-/** In-memory store — keyed by userId */
-const buckets = new Map<string, TokenBucket>();
-
-/**
- * Returns the epoch-ms timestamp for the next midnight UTC.
- */
 function nextMidnightUTC(): number {
   const now = new Date();
-  const tomorrow = new Date(Date.UTC(
-    now.getUTCFullYear(),
-    now.getUTCMonth(),
-    now.getUTCDate() + 1,
-    0, 0, 0, 0,
-  ));
-  return tomorrow.getTime();
+  return new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate() + 1)).getTime();
 }
 
-/**
- * Returns the epoch-ms timestamp for midnight UTC today (start of current window).
- */
 function todayMidnightUTC(): number {
   const now = new Date();
-  return Date.UTC(
-    now.getUTCFullYear(),
-    now.getUTCMonth(),
-    now.getUTCDate(),
-    0, 0, 0, 0,
-  );
+  return Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate());
 }
 
-/**
- * Refill the bucket if we've crossed into a new UTC day.
- */
-function maybeRefill(bucket: TokenBucket, tier: RateLimitTier): void {
-  const windowStart = todayMidnightUTC();
-  if (bucket.lastRefill < windowStart) {
-    bucket.tokens = TIER_LIMITS[tier];
-    bucket.lastRefill = Date.now();
-  }
+function secondsUntilMidnight(): number {
+  return Math.max(1, Math.floor((nextMidnightUTC() - Date.now()) / 1000));
+}
+
+function kvKey(userId: string): string {
+  return `meok:rl:${userId}:${new Date().toISOString().slice(0, 10)}`;
 }
 
 export interface RateLimitResult {
-  allowed: boolean;
-  remaining: number;
-  resetAt: number;
+  allowed: boolean; remaining: number; resetAt: number;
 }
 
-/**
- * Check and consume one token from the rate limit bucket for a user.
- *
- * @param userId - Unique user identifier
- * @param tier   - User's subscription tier
- * @returns Rate limit result with remaining tokens and reset time
- */
-export function checkRateLimit(userId: string, tier: RateLimitTier): RateLimitResult {
+/** Async Redis-backed rate limit — use in new routes */
+export async function checkRateLimitAsync(userId: string, tier: RateLimitTier): Promise<RateLimitResult> {
   const limit = TIER_LIMITS[tier];
-
-  // Unlimited tier — always allow
-  if (limit === -1) {
-    return { allowed: true, remaining: Infinity, resetAt: 0 };
-  }
-
-  let bucket = buckets.get(userId);
-
-  if (!bucket) {
-    bucket = { tokens: limit, lastRefill: Date.now() };
-    buckets.set(userId, bucket);
-  }
-
-  maybeRefill(bucket, tier);
-
+  if (limit === -1) return { allowed: true, remaining: Infinity, resetAt: 0 };
+  const key = kvKey(userId);
   const resetAt = nextMidnightUTC();
-
-  if (bucket.tokens <= 0) {
-    return { allowed: false, remaining: 0, resetAt };
+  const ttl = secondsUntilMidnight();
+  let bucket = await kv.get<TokenBucket>(key);
+  if (!bucket || bucket.lastRefill < todayMidnightUTC()) {
+    bucket = { tokens: limit - 1, lastRefill: Date.now() };
+    await kv.set(key, bucket, { ex: ttl });
+    return { allowed: true, remaining: bucket.tokens, resetAt };
   }
-
+  if (bucket.tokens <= 0) return { allowed: false, remaining: 0, resetAt };
   bucket.tokens -= 1;
+  await kv.set(key, bucket, { ex: ttl });
   return { allowed: true, remaining: bucket.tokens, resetAt };
 }
 
-/**
- * Peek at remaining tokens without consuming one.
- */
+/** Sync shim for backwards compat — uses in-process Map */
+const _sb = new Map<string, TokenBucket>();
+
+export function checkRateLimit(userId: string, tier: RateLimitTier): RateLimitResult {
+  const limit = TIER_LIMITS[tier];
+  if (limit === -1) return { allowed: true, remaining: Infinity, resetAt: 0 };
+  const key = `${userId}:${new Date().toISOString().slice(0, 10)}`;
+  let b = _sb.get(key);
+  if (!b) { b = { tokens: limit, lastRefill: Date.now() }; _sb.set(key, b); }
+  if (b.lastRefill < todayMidnightUTC()) { b.tokens = limit; b.lastRefill = Date.now(); }
+  const resetAt = nextMidnightUTC();
+  if (b.tokens <= 0) return { allowed: false, remaining: 0, resetAt };
+  b.tokens -= 1;
+  return { allowed: true, remaining: b.tokens, resetAt };
+}
+
+export async function getRemainingTokensAsync(userId: string, tier: RateLimitTier): Promise<number> {
+  const limit = TIER_LIMITS[tier];
+  if (limit === -1) return Infinity;
+  const b = await kv.get<TokenBucket>(kvKey(userId));
+  return b?.tokens ?? limit;
+}
+
 export function getRemainingTokens(userId: string, tier: RateLimitTier): number {
   const limit = TIER_LIMITS[tier];
   if (limit === -1) return Infinity;
-
-  const bucket = buckets.get(userId);
-  if (!bucket) return limit;
-
-  maybeRefill(bucket, tier);
-  return bucket.tokens;
+  const b = _sb.get(`${userId}:${new Date().toISOString().slice(0, 10)}`);
+  return b?.tokens ?? limit;
 }
 
-/**
- * Clear all buckets — useful for testing.
- */
-export function resetAllBuckets(): void {
-  buckets.clear();
-}
+export function resetAllBuckets(): void { _sb.clear(); }

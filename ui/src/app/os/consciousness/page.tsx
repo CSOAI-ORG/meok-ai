@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { LiveConsciousnessStatus } from "./live-status";
+import { ConsciousnessControlRoom } from "./control-room";
 
 export const metadata: Metadata = {
   title: "Consciousness Modes — How MEOK Thinks | MEOK.AI",
@@ -188,6 +189,9 @@ export default function ConsciousnessPage() {
 
       {/* ─── LIVE STATUS ─────────────────────────────────── */}
       <LiveConsciousnessStatus />
+
+      {/* ─── CONSCIOUSNESS CONTROL ROOM ───────────────────── */}
+      <ConsciousnessControlRoom />
 
       {/* ─── HERO ─────────────────────────────────────────── */}
       <section

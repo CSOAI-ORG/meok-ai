@@ -2,13 +2,14 @@
  * memory.ts — 4-layer MEOK memory architecture for companion chat
  *
  * Retrieval priority (fastest → most contextual):
- *   1. Short-term   — last N messages, in-memory buffer (ephemeral)
+ *   1. Short-term   — last N messages, in-process L1 cache + Neon DB L2 (persistent)
  *   2. Semantic     — pgvector/SOV3 vector search (relevant, slower)
  *   3. Companion state — structured facts about the user stored in DB
  *   4. Family/team  — shared context across family group (P3 stub)
  */
 
 import { encryptMemory, decryptMemory, isEncryptionAvailable } from './encryption';
+import { sql } from './db/index';
 
 // ---------------------------------------------------------------------------
 // Types
@@ -82,8 +83,14 @@ export const MEMORY_CONFIG = {
 } as const;
 
 // ---------------------------------------------------------------------------
-// Module-level short-term cache
-// Key: `${userId}:${companionId}` → circular buffer of MemoryEpisode
+// Module-level short-term cache (L1: in-process, L2: Neon DB)
+//
+// L1 (in-process Map) — zero-latency within a warm function instance.
+// L2 (Neon short_term_memory table) — survives cold starts and cross-device.
+//
+// Read path:  L1 hit → return immediately. L1 miss → load from L2 into L1.
+// Write path: push to L1 immediately, fire-and-forget write to L2.
+// Clear path: delete from L1 + async delete from L2.
 // ---------------------------------------------------------------------------
 
 const _shortTermCache = new Map<string, MemoryEpisode[]>();
@@ -96,11 +103,64 @@ function _getShortTerm(userId: string, companionId: string): MemoryEpisode[] {
   return _shortTermCache.get(_cacheKey(userId, companionId)) ?? [];
 }
 
+/** Load short-term episodes from Neon DB into the in-process L1 cache. */
+async function _loadShortTermFromDB(userId: string, companionId: string): Promise<MemoryEpisode[]> {
+  if (!sql) return [];
+  try {
+    const rows = await sql`
+      SELECT id, content, importance AS importance_score, source_agent, tags, care_weight, created_at
+      FROM short_term_memory
+      WHERE user_id = ${userId} AND companion_id = ${companionId}
+      ORDER BY created_at DESC
+      LIMIT ${MEMORY_CONFIG.SHORT_TERM_WINDOW}
+    `;
+    const episodes: MemoryEpisode[] = (rows as Record<string, unknown>[]).reverse().map(r => ({
+      id:               String(r['id']),
+      content:          String(r['content']),
+      timestamp:        String(r['created_at']),
+      importance_score: Number(r['importance_score'] ?? 0.5),
+      memory_type:      'short_term' as MemoryLayerName,
+      source_agent:     String(r['source_agent'] ?? 'user'),
+      tags:             Array.isArray(r['tags']) ? r['tags'] as string[] : [],
+      care_weight:      Number(r['care_weight'] ?? MEMORY_CONFIG.CARE_WEIGHT_DEFAULT),
+    }));
+    _shortTermCache.set(_cacheKey(userId, companionId), episodes);
+    console.log(`[memory] _loadShortTermFromDB loaded ${episodes.length} episodes for user=${userId}`);
+    return episodes;
+  } catch (err) {
+    console.warn(`[memory] _loadShortTermFromDB failed (non-fatal): ${(err as Error).message}`);
+    return [];
+  }
+}
+
+/** Persist a single episode to the Neon short_term_memory table (fire-and-forget). */
+function _persistEpisodeToDB(userId: string, companionId: string, episode: MemoryEpisode): void {
+  if (!sql) return;
+  sql`
+    INSERT INTO short_term_memory (id, user_id, companion_id, content, importance, source_agent, tags, care_weight)
+    VALUES (${episode.id}, ${userId}, ${companionId}, ${episode.content},
+            ${episode.importance_score}, ${episode.source_agent}, ${episode.tags}, ${episode.care_weight})
+    ON CONFLICT (id) DO NOTHING
+  `.then(() => {
+    // Prune old episodes beyond the window
+    return sql!`
+      DELETE FROM short_term_memory
+      WHERE user_id = ${userId} AND companion_id = ${companionId}
+        AND id NOT IN (
+          SELECT id FROM short_term_memory
+          WHERE user_id = ${userId} AND companion_id = ${companionId}
+          ORDER BY created_at DESC
+          LIMIT ${MEMORY_CONFIG.SHORT_TERM_WINDOW}
+        )
+    `;
+  }).catch((err: Error) => console.warn(`[memory] _persistEpisodeToDB failed (non-fatal): ${err.message}`));
+}
+
 // ---------------------------------------------------------------------------
 // SOV3 JSON-RPC helper
 // ---------------------------------------------------------------------------
 
-const DEFAULT_SOV3_URL = process.env.SOV3_API_URL || 'http://localhost:3100';
+const DEFAULT_SOV3_URL = process.env.SOV3_URL || process.env.SOV3_API_URL || 'http://localhost:3101';
 
 interface JsonRpcResponse<T = unknown> {
   result?: T;
@@ -193,7 +253,9 @@ export async function retrieveMemory(
 ): Promise<CompanionMemory> {
   console.log(`[memory] retrieveMemory user=${userId} companion=${companionId} query="${query.slice(0, 60)}"`);
 
-  const short_term = _getShortTerm(userId, companionId);
+  // L1 hit: use in-process cache. L1 miss: load from Neon DB (survives cold starts).
+  const cached = _getShortTerm(userId, companionId);
+  const short_term = cached.length > 0 ? cached : await _loadShortTermFromDB(userId, companionId);
 
   let semantic: MemoryEpisode[] = [];
   let companion_state: Record<string, unknown> = {};
@@ -478,6 +540,7 @@ export function pushShortTerm(
   companionId: string,
   episode: MemoryEpisode,
 ): void {
+  // L1: update in-process cache immediately (zero latency for next retrieval)
   const key = _cacheKey(userId, companionId);
   const buffer = _shortTermCache.get(key) ?? [];
   buffer.push(episode);
@@ -485,15 +548,23 @@ export function pushShortTerm(
     buffer.splice(0, buffer.length - MEMORY_CONFIG.SHORT_TERM_WINDOW);
   }
   _shortTermCache.set(key, buffer);
+  // L2: persist to Neon DB (fire-and-forget — never blocks chat hot path)
+  _persistEpisodeToDB(userId, companionId, episode);
   console.log(`[memory] pushShortTerm user=${userId} buffer_size=${buffer.length}`);
 }
 
 /**
  * Clears the short-term buffer for a user+companion pair.
+ * Clears both L1 (in-process) and L2 (Neon DB).
  * Useful on session end or companion switch.
  */
 export function clearShortTerm(userId: string, companionId: string): void {
   _shortTermCache.delete(_cacheKey(userId, companionId));
+  // L2: also clear from DB (fire-and-forget)
+  if (sql) {
+    sql`DELETE FROM short_term_memory WHERE user_id = ${userId} AND companion_id = ${companionId}`
+      .catch((err: Error) => console.warn(`[memory] clearShortTerm DB failed (non-fatal): ${err.message}`));
+  }
   console.log(`[memory] clearShortTerm user=${userId} companion=${companionId}`);
 }
 
