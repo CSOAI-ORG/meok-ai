@@ -89,6 +89,8 @@ function formatTime(d: Date): string {
 // ─── Models config ────────────────────────────────────────────────────────────
 
 const MODELS = [
+  { id: 'ollama:llama3.2:3b', label: 'Local (M2)',     icon: '🏠', privacy: 'local' as const },
+  { id: 'ollama:llama3.1:8b', label: 'Local 8B (M2)',  icon: '🏠', privacy: 'local' as const },
   { id: 'claude-sonnet-4-5', label: 'Claude Sonnet',  icon: '🟣', privacy: 'cloud' as const },
   { id: 'claude-haiku-4-5',  label: 'Claude Haiku',   icon: '🟡', privacy: 'cloud' as const },
   { id: 'minimax-text-01',   label: 'MiniMax 4M',     icon: '🌊', privacy: 'cloud' as const },
@@ -298,7 +300,7 @@ function SovereignPanel({
 // ─── Main page ─────────────────────────────────────────────────────────────────
 
 export default function DashboardChatPage() {
-  const [selectedModel, setSelectedModel] = useState('claude-sonnet-4-5');
+  const [selectedModel, setSelectedModel] = useState('ollama:llama3.2:3b');
   const [showCrisisBanner, setShowCrisisBanner] = useState(false);
   const [showSovereign, setShowSovereign] = useState(true);
   const [privacyMode, setPrivacyMode] = useState(false);
