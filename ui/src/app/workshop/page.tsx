@@ -49,6 +49,15 @@ export default function WorkshopPage() {
     '',
   ]);
   const [isLoading, setIsLoading] = useState(false);
+  const [briefing, setBriefing] = useState<{ greeting?: string; care_score?: number; priorities?: Array<{ text: string; priority: string }> } | null>(null);
+
+  // Fetch morning briefing
+  const fetchBriefing = useCallback(async () => {
+    try {
+      const res = await fetch('/api/morning-briefing');
+      if (res.ok) setBriefing(await res.json());
+    } catch { /* offline */ }
+  }, []);
 
   // Fetch SOV3 health
   const fetchHealth = useCallback(async () => {
@@ -92,9 +101,10 @@ export default function WorkshopPage() {
     fetchHealth();
     fetchHeartbeat();
     fetchOllama();
+    fetchBriefing();
     const interval = setInterval(() => { fetchHealth(); fetchHeartbeat(); }, 30000);
     return () => clearInterval(interval);
-  }, [fetchHealth, fetchHeartbeat, fetchOllama]);
+  }, [fetchHealth, fetchHeartbeat, fetchOllama, fetchBriefing]);
 
   // Execute MCP command
   const executeCommand = async (cmd: string) => {
@@ -202,6 +212,20 @@ export default function WorkshopPage() {
           {ollamaModels.length > 0 ? ollamaModels.map(m => (
             <div key={m} style={{ padding: '3px 0', fontSize: 11, color: '#60a5fa' }}>🏠 {m}</div>
           )) : <div style={{ color: '#ef4444', fontSize: 11 }}>Offline</div>}
+
+          {/* Morning Briefing */}
+          {briefing && (
+            <>
+              <SectionTitle>Briefing</SectionTitle>
+              <div style={{ fontSize: 12, color: GOLD, marginBottom: 6 }}>{briefing.greeting}</div>
+              <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.5)', marginBottom: 8 }}>Care: {briefing.care_score}%</div>
+              {briefing.priorities?.map((p, i) => (
+                <div key={i} style={{ fontSize: 10, padding: '4px 0', borderBottom: '1px solid rgba(255,255,255,0.05)', color: p.priority === 'high' ? '#ef4444' : p.priority === 'medium' ? '#f59e0b' : '#4ade80' }}>
+                  {p.priority === 'high' ? '🔴' : p.priority === 'medium' ? '🟡' : '🟢'} {p.text}
+                </div>
+              ))}
+            </>
+          )}
 
           {/* Quick Actions */}
           <SectionTitle>Quick Actions</SectionTitle>
