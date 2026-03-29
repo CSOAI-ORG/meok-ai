@@ -18,7 +18,7 @@ import {
   interactionsUntilNextStage,
   isFeatureUnlocked,
   EVOLUTION_STAGES,
-} from "../../src/lib/evolution";
+} from "../src/lib/evolution";
 
 // ─── Unit-level logic tests (run in Node, no browser needed) ──────────────────
 

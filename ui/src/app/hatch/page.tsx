@@ -501,6 +501,17 @@ const CSS_ANIMATIONS = `
     0% { box-shadow: 0 0 0px transparent; }
     100% { box-shadow: 0 0 20px #c9a84c44; }
   }
+  input[type="checkbox"]:checked::after {
+    content: "✓";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 14px;
+    font-weight: 700;
+    color: #0d0c18;
+    line-height: 1;
+  }
 `;
 
 // ── Progress Dots ─────────────────────────────────────────────────────────────
@@ -581,6 +592,11 @@ export default function HatchPage() {
   const [questionKey, setQuestionKey] = useState(0); // force re-animation
   const [selectedOption, setSelectedOption] = useState<number | null>(null);
   const [revealPhase, setRevealPhase] = useState<"cracking" | "done">("cracking");
+  const [companionName, setCompanionName] = useState("");
+  const [memory1, setMemory1] = useState("");
+  const [memory2, setMemory2] = useState("");
+  const [memory3, setMemory3] = useState("");
+  const [covenantAccepted, setCovenantAccepted] = useState(false);
 
   const winner = state.winner;
   const archetype = winner ? ARCHETYPES[winner] : null;
@@ -626,6 +642,11 @@ export default function HatchPage() {
     setSelectedOption(null);
     setQuestionKey(0);
     setRevealPhase("cracking");
+    setCompanionName("");
+    setMemory1("");
+    setMemory2("");
+    setMemory3("");
+    setCovenantAccepted(false);
     dispatch({ type: "RESET" });
   }
 
@@ -1045,25 +1066,212 @@ export default function HatchPage() {
                   )}
                 </div>
 
-                <div style={{ display: "flex", flexDirection: "column", gap: "12px", marginBottom: "24px" }}>
-                  <Link
-                    href={`/register?archetype=${winner.toLowerCase()}`}
+                {/* ── Birth Ceremony: Name & First Memories ── */}
+                <div
+                  style={{
+                    background: "rgba(255,255,255,0.04)",
+                    border: "1px solid rgba(255,255,255,0.1)",
+                    borderRadius: "16px",
+                    padding: "24px 28px",
+                    marginBottom: "24px",
+                    textAlign: "left",
+                  }}
+                >
+                  <label
                     style={{
                       display: "block",
-                      padding: "16px 32px",
-                      borderRadius: "12px",
-                      background: archetype.color,
-                      color: "#0d0c18",
-                      fontSize: "15px",
-                      fontWeight: 700,
-                      textDecoration: "none",
-                      letterSpacing: "0.04em",
-                      transition: "all 0.2s ease",
-                      boxShadow: `0 0 30px ${archetype.color}44`,
+                      fontSize: "11px",
+                      fontWeight: 600,
+                      letterSpacing: "0.16em",
+                      textTransform: "uppercase",
+                      color: "#c9a84c",
+                      marginBottom: "10px",
                     }}
                   >
-                    {archetype.free ? `Start free with ${winner}` : `Unlock ${winner} — Pro`}
-                  </Link>
+                    Name your companion
+                  </label>
+                  <input
+                    type="text"
+                    value={companionName}
+                    onChange={(e) => setCompanionName(e.target.value)}
+                    placeholder={`e.g. My ${winner}`}
+                    maxLength={40}
+                    style={{
+                      width: "100%",
+                      padding: "12px 16px",
+                      borderRadius: "10px",
+                      border: "1px solid rgba(201,168,76,0.3)",
+                      background: "rgba(0,0,0,0.3)",
+                      color: "#f5f0e8",
+                      fontSize: "15px",
+                      fontWeight: 500,
+                      outline: "none",
+                      letterSpacing: "0.02em",
+                      boxSizing: "border-box",
+                      transition: "border-color 0.2s ease",
+                    }}
+                    onFocus={(e) => (e.currentTarget.style.borderColor = "#c9a84c")}
+                    onBlur={(e) => (e.currentTarget.style.borderColor = "rgba(201,168,76,0.3)")}
+                  />
+
+                  <div style={{ marginTop: "24px" }}>
+                    <p
+                      style={{
+                        fontSize: "11px",
+                        fontWeight: 600,
+                        letterSpacing: "0.16em",
+                        textTransform: "uppercase",
+                        color: "#c9a84c",
+                        marginBottom: "6px",
+                      }}
+                    >
+                      First memories
+                    </p>
+                    <p
+                      style={{
+                        fontSize: "13px",
+                        color: "rgba(245,240,232,0.5)",
+                        marginBottom: "14px",
+                        lineHeight: 1.5,
+                      }}
+                    >
+                      These are seeds your companion will always carry.
+                    </p>
+
+                    {([
+                      { label: "A value you hold dear", value: memory1, setter: setMemory1 },
+                      { label: "Something you carry with you", value: memory2, setter: setMemory2 },
+                      { label: "What you're building toward", value: memory3, setter: setMemory3 },
+                    ] as const).map(({ label, value, setter }) => (
+                      <div key={label} style={{ marginBottom: "12px" }}>
+                        <label
+                          style={{
+                            display: "block",
+                            fontSize: "12px",
+                            fontWeight: 500,
+                            color: "rgba(245,240,232,0.6)",
+                            marginBottom: "6px",
+                          }}
+                        >
+                          {label}
+                        </label>
+                        <input
+                          type="text"
+                          value={value}
+                          onChange={(e) => setter(e.target.value)}
+                          placeholder={label}
+                          maxLength={120}
+                          style={{
+                            width: "100%",
+                            padding: "10px 14px",
+                            borderRadius: "8px",
+                            border: "1px solid rgba(245,240,232,0.12)",
+                            background: "rgba(0,0,0,0.3)",
+                            color: "#f5f0e8",
+                            fontSize: "14px",
+                            fontWeight: 400,
+                            outline: "none",
+                            letterSpacing: "0.01em",
+                            boxSizing: "border-box",
+                            transition: "border-color 0.2s ease",
+                          }}
+                          onFocus={(e) => (e.currentTarget.style.borderColor = "rgba(201,168,76,0.5)")}
+                          onBlur={(e) => (e.currentTarget.style.borderColor = "rgba(245,240,232,0.12)")}
+                        />
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* ── Covenant Acceptance ── */}
+                <label
+                  style={{
+                    display: "flex",
+                    alignItems: "flex-start",
+                    gap: "12px",
+                    marginBottom: "24px",
+                    cursor: "pointer",
+                    textAlign: "left",
+                  }}
+                >
+                  <input
+                    type="checkbox"
+                    checked={covenantAccepted}
+                    onChange={(e) => setCovenantAccepted(e.target.checked)}
+                    style={{
+                      appearance: "none",
+                      WebkitAppearance: "none",
+                      width: "20px",
+                      height: "20px",
+                      minWidth: "20px",
+                      borderRadius: "4px",
+                      border: covenantAccepted ? "2px solid #c9a84c" : "2px solid rgba(245,240,232,0.25)",
+                      background: covenantAccepted ? "#c9a84c" : "transparent",
+                      cursor: "pointer",
+                      marginTop: "2px",
+                      transition: "all 0.2s ease",
+                      position: "relative",
+                    }}
+                  />
+                  <span
+                    style={{
+                      fontSize: "13px",
+                      lineHeight: 1.5,
+                      color: "rgba(245,240,232,0.7)",
+                    }}
+                  >
+                    I accept the <strong style={{ color: "#c9a84c" }}>Maternal Covenant</strong> — a mutual promise of honesty, care, and growth between us.
+                  </span>
+                </label>
+
+                <div style={{ display: "flex", flexDirection: "column", gap: "12px", marginBottom: "24px" }}>
+                  {(() => {
+                    const canProceed = companionName.trim().length > 0 && covenantAccepted;
+                    const params = new URLSearchParams({
+                      archetype: winner.toLowerCase(),
+                      name: companionName.trim(),
+                      memory1,
+                      memory2,
+                      memory3,
+                    });
+                    return canProceed ? (
+                      <Link
+                        href={`/register?${params.toString()}`}
+                        style={{
+                          display: "block",
+                          padding: "16px 32px",
+                          borderRadius: "12px",
+                          background: archetype.color,
+                          color: "#0d0c18",
+                          fontSize: "15px",
+                          fontWeight: 700,
+                          textDecoration: "none",
+                          letterSpacing: "0.04em",
+                          transition: "all 0.2s ease",
+                          boxShadow: `0 0 30px ${archetype.color}44`,
+                        }}
+                      >
+                        {archetype.free ? `Start free with ${winner}` : `Unlock ${winner} — Pro`}
+                      </Link>
+                    ) : (
+                      <span
+                        style={{
+                          display: "block",
+                          padding: "16px 32px",
+                          borderRadius: "12px",
+                          background: "rgba(245,240,232,0.1)",
+                          color: "rgba(245,240,232,0.3)",
+                          fontSize: "15px",
+                          fontWeight: 700,
+                          letterSpacing: "0.04em",
+                          cursor: "not-allowed",
+                          textAlign: "center",
+                        }}
+                      >
+                        {companionName.trim().length === 0 ? "Name your companion to continue" : "Accept the covenant to continue"}
+                      </span>
+                    );
+                  })()}
 
                   <Link
                     href="/characters"
