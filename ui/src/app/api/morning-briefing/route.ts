@@ -131,10 +131,32 @@ export async function GET() {
     })
   }
 
-  // Build overnight work summary from agent data
+  // Build overnight work summary from Ralph task queue + agent data
   const overnight_work: Array<{ agent: string; task: string; status: 'complete' | 'pending' | 'failed' }> = []
 
-  if (agentData) {
+  // Pull real Ralph task results from DB
+  try {
+    const { sql: dbSql } = await import('@/lib/db');
+    if (dbSql) {
+      const ralphRows = await dbSql`
+        SELECT agent, title, status FROM ralph_tasks
+        WHERE user_id = ${userId}
+          AND created_at > NOW() - INTERVAL '24 hours'
+        ORDER BY completed_at DESC NULLS LAST
+        LIMIT 10
+      `;
+      for (const row of ralphRows as Array<{ agent: string; title: string; status: string }>) {
+        overnight_work.push({
+          agent: row.agent.charAt(0).toUpperCase() + row.agent.slice(1),
+          task: row.title,
+          status: row.status === 'complete' ? 'complete' : row.status === 'failed' ? 'failed' : 'pending',
+        });
+      }
+    }
+  } catch { /* non-fatal */ }
+
+  // Also pull from SOV3 agent status
+  if (agentData && overnight_work.length === 0) {
     overnight_work.push({
       agent: 'Orion-Riri-Hourman',
       task: lastTask ?? `Agent ${agentState}`,
