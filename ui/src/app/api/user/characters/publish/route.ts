@@ -18,7 +18,7 @@
  */
 
 import { NextRequest, NextResponse } from 'next/server';
-import { auth } from '@clerk/nextjs/server';
+import { getAuthUserId } from '@/lib/api-auth';
 import { sql } from '@/lib/db';
 import { getUserById } from '@/lib/db/user';
 import { checkRateLimit } from '@/lib/rate-limit';
@@ -26,7 +26,7 @@ import { checkRateLimit } from '@/lib/rate-limit';
 export const runtime = 'nodejs';
 
 export async function POST(req: NextRequest): Promise<NextResponse> {
-  const { userId } = await auth();
+  const userId = await getAuthUserId();
   if (!userId) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }

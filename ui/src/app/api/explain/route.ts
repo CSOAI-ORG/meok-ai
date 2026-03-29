@@ -13,7 +13,7 @@
  */
 
 import { type NextRequest, NextResponse } from 'next/server';
-import { auth } from '@clerk/nextjs/server';
+import { getAuthUserId } from '@/lib/api-auth';
 import { generateText } from 'ai';
 import { createOpenAI } from '@ai-sdk/openai';
 import { checkRateLimit } from '@/lib/rate-limit';
@@ -67,7 +67,7 @@ function checkRateLimitLocal(ip: string): boolean {
 
 export async function POST(req: NextRequest): Promise<NextResponse> {
   // Auth check — must be signed in
-  const { userId } = await auth();
+  const userId = await getAuthUserId();
   if (!userId) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }

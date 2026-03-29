@@ -19,7 +19,7 @@
  *   id, timestamp, type, content, mood, topics, bondValue
  */
 
-import { auth } from '@clerk/nextjs/server'
+import { getAuthUserId } from '@/lib/api-auth'
 import { NextResponse } from 'next/server'
 
 export const runtime = 'nodejs'
@@ -65,7 +65,7 @@ function normalise(raw: Record<string, unknown>, index: number): DiaryEntry {
 }
 
 export async function GET() {
-  const { userId } = await auth()
+  const userId = await getAuthUserId()
   if (!userId) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
   }

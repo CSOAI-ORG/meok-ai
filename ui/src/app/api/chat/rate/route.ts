@@ -9,7 +9,7 @@
  * Logs the rating via structured logger for analytics/quality tracking.
  */
 
-import { auth } from '@clerk/nextjs/server';
+import { getAuthUserId } from '@/lib/api-auth';
 import { type NextRequest, NextResponse } from 'next/server';
 import { logInfo, logError } from '@/lib/logger';
 
@@ -17,7 +17,7 @@ export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 
 export async function POST(req: NextRequest) {
-  const { userId } = await auth();
+  const userId = await getAuthUserId();
   if (!userId) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }

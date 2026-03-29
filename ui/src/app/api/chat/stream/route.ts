@@ -1,4 +1,4 @@
-import { auth } from '@clerk/nextjs/server'
+import { getAuthUserId } from '@/lib/api-auth'
 import { NextRequest, NextResponse } from 'next/server'
 
 // POST /api/chat/stream — streaming chat endpoint
@@ -6,7 +6,7 @@ import { NextRequest, NextResponse } from 'next/server'
 // This route exists for future WebSocket/SSE migration
 
 export async function POST(req: NextRequest) {
-  const { userId } = await auth()
+  const userId = await getAuthUserId()
   if (!userId) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
   }

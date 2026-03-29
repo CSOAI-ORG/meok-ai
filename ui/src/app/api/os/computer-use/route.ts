@@ -16,7 +16,7 @@
 
 import { type NextRequest, NextResponse } from 'next/server';
 import Anthropic from '@anthropic-ai/sdk';
-import { auth } from '@clerk/nextjs/server';
+import { getAuthUserId } from '@/lib/api-auth';
 import { getCharacter } from '@/lib/characters';
 
 export const runtime = 'nodejs';
@@ -78,7 +78,7 @@ function errorResponse(message: string, status: number): NextResponse {
 
 export async function POST(req: NextRequest): Promise<Response> {
   // 1. Auth check
-  const { userId } = await auth();
+  const userId = await getAuthUserId();
   if (!userId) {
     return errorResponse('Unauthorised', 401);
   }

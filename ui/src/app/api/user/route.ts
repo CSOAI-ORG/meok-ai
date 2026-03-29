@@ -11,7 +11,7 @@
  */
 
 import { type NextRequest, NextResponse } from 'next/server';
-import { auth } from '@clerk/nextjs/server';
+import { getAuthUserId } from '@/lib/api-auth';
 import { markUserDeleted } from '@/lib/db/user';
 
 export const runtime = 'nodejs';
@@ -21,7 +21,7 @@ const CONFIRM_STRING = 'DELETE MY ACCOUNT';
 
 export async function DELETE(req: NextRequest) {
   // ── 1. Auth ──────────────────────────────────────────────────────────────
-  const { userId } = await auth();
+  const userId = await getAuthUserId();
 
   if (!userId) {
     return NextResponse.json(

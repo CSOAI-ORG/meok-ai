@@ -8,7 +8,7 @@
  */
 
 import { NextRequest, NextResponse } from 'next/server';
-import { auth } from '@clerk/nextjs/server';
+import { getAuthUserId } from '@/lib/api-auth';
 import { getTeamForUser, createTeam, getTeamMembers } from '@/lib/db/team';
 
 export const runtime = 'nodejs';
@@ -18,7 +18,7 @@ export const dynamic = 'force-dynamic';
  * GET /api/team — Returns the user's team with member list.
  */
 export async function GET() {
-  const { userId } = await auth();
+  const userId = await getAuthUserId();
 
   if (!userId) {
     return NextResponse.json(
@@ -51,7 +51,7 @@ export async function GET() {
  * Body: { name: string }
  */
 export async function POST(req: NextRequest) {
-  const { userId } = await auth();
+  const userId = await getAuthUserId();
 
   if (!userId) {
     return NextResponse.json(

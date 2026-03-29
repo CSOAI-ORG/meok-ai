@@ -25,7 +25,7 @@ function parseSteamId(input: string): string | null {
 }
 
 export async function GET(req: NextRequest) {
-  const { userId } = await auth();
+  const userId = await getAuthUserId();
   if (!userId) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }

@@ -12,7 +12,7 @@
  * Persists to Neon DB via guardian_settings JSONB (preferences sub-key).
  */
 
-import { auth } from '@clerk/nextjs/server';
+import { getAuthUserId } from '@/lib/api-auth';
 import { type NextRequest, NextResponse } from 'next/server';
 import { sql } from '@/lib/db/index';
 import { checkRateLimit } from '@/lib/rate-limit';
@@ -30,7 +30,7 @@ const ALLOWED_KEYS = [
 ] as const;
 
 export async function PATCH(req: NextRequest) {
-  const { userId } = await auth();
+  const userId = await getAuthUserId();
   if (!userId) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }

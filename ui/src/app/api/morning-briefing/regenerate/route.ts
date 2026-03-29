@@ -1,10 +1,10 @@
 import { NextResponse } from 'next/server'
-import { auth } from '@clerk/nextjs/server'
+import { getAuthUserId } from '@/lib/api-auth'
 
 // POST /api/morning-briefing/regenerate
 // Triggers a fresh morning briefing by calling the main GET endpoint internally.
 export async function POST(req: Request) {
-  const { userId } = await auth()
+  const userId = await getAuthUserId()
 
   if (!userId) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })

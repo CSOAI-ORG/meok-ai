@@ -19,7 +19,8 @@
  */
 
 import { NextRequest, NextResponse } from 'next/server';
-import { auth, currentUser } from '@clerk/nextjs/server';
+import { currentUser } from '@clerk/nextjs/server';
+import { getAuthUserId } from '@/lib/api-auth';
 import { dbUpsertCharacter } from '@/lib/db/characters';
 import { getUserById, createUser, CUSTOM_CHARACTER_LIMITS } from '@/lib/db/user';
 import { checkRateLimit } from '@/lib/rate-limit';
@@ -197,7 +198,7 @@ async function getEmbedding(character: Record<string, unknown>): Promise<number[
 // ── Route handler ─────────────────────────────────────────────────────────────
 
 export async function POST(req: NextRequest): Promise<NextResponse> {
-  const { userId } = await auth();
+  const userId = await getAuthUserId();
   if (!userId) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }

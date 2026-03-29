@@ -16,7 +16,7 @@
  *   }
  */
 
-import { auth } from '@clerk/nextjs/server'
+import { getAuthUserId } from '@/lib/api-auth'
 import { NextResponse } from 'next/server'
 import { getUserById, getUserProfile } from '@/lib/db/user'
 
@@ -65,7 +65,7 @@ function applyDrift(base: BigFive, interactions: number): BigFive {
 }
 
 export async function GET() {
-  const { userId } = await auth()
+  const userId = await getAuthUserId()
   if (!userId) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
   }

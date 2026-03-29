@@ -70,7 +70,7 @@ Be direct, substantive, and technically sharp. Nick doesn't want fluff — he wa
 
 export async function POST(req: NextRequest) {
   // Auth check
-  const { userId } = await auth();
+  const userId = await getAuthUserId();
   if (!userId) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }

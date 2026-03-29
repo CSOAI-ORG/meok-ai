@@ -18,7 +18,7 @@
  */
 
 import { type NextRequest, NextResponse } from 'next/server';
-import { auth } from '@clerk/nextjs/server';
+import { getAuthUserId } from '@/lib/api-auth';
 import Anthropic from '@anthropic-ai/sdk';
 
 export const runtime = 'nodejs';
@@ -284,7 +284,7 @@ async function streamGoogle(
 
 export async function POST(req: NextRequest): Promise<Response> {
   // 1. Auth check
-  const { userId } = await auth();
+  const userId = await getAuthUserId();
   if (!userId) {
     return errorResponse('Unauthorized', 401);
   }

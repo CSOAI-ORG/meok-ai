@@ -8,7 +8,7 @@
 
 import { type NextRequest, NextResponse } from 'next/server';
 import { generateText } from 'ai';
-import { auth } from '@clerk/nextjs/server';
+import { getAuthUserId } from '@/lib/api-auth';
 import { route, type Tier } from '@/lib/llm-router';
 import { getUserById } from '@/lib/db/user';
 import { checkRateLimit, type RateLimitTier } from '@/lib/rate-limit';
@@ -18,7 +18,7 @@ export const dynamic = 'force-dynamic';
 
 export async function POST(req: NextRequest): Promise<NextResponse> {
   // 1. Auth check
-  const { userId } = await auth();
+  const userId = await getAuthUserId();
   if (!userId) {
     return NextResponse.json({ error: 'Unauthorised' }, { status: 401 });
   }

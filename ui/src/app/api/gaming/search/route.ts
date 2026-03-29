@@ -14,7 +14,7 @@ export const runtime = "nodejs";
 const RAWG_BASE = "https://api.rawg.io/api";
 
 export async function GET(req: NextRequest) {
-  const { userId } = await auth();
+  const userId = await getAuthUserId();
   if (!userId) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }

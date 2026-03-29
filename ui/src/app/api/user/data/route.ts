@@ -8,7 +8,8 @@
  * Auth: Clerk auth() — returns 401 if not authenticated.
  */
 
-import { auth, currentUser } from '@clerk/nextjs/server'
+import { currentUser } from '@clerk/nextjs/server'
+import { getAuthUserId } from '@/lib/api-auth';
 import { NextResponse } from 'next/server'
 import { checkRateLimit } from '@/lib/rate-limit'
 import { getUserById, getGuardianSettings } from '@/lib/db/user'
@@ -16,7 +17,7 @@ import { getUserById, getGuardianSettings } from '@/lib/db/user'
 export const dynamic = 'force-dynamic'
 
 export async function GET() {
-  const { userId } = await auth()
+  const userId = await getAuthUserId()
   if (!userId) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
   }

@@ -8,7 +8,7 @@
  */
 
 import { NextRequest, NextResponse } from 'next/server';
-import { auth } from '@clerk/nextjs/server';
+import { getAuthUserId } from '@/lib/api-auth';
 import {
   getTeamForUser,
   getTeamMembers,
@@ -26,7 +26,7 @@ export const dynamic = 'force-dynamic';
  * GET /api/team/members — Returns the member list for the user's team.
  */
 export async function GET() {
-  const { userId } = await auth();
+  const userId = await getAuthUserId();
 
   if (!userId) {
     return NextResponse.json(
@@ -65,7 +65,7 @@ export async function GET() {
  *   { action: "add", user_id: string, role?: TeamRole } — Direct add (admin only)
  */
 export async function POST(req: NextRequest) {
-  const { userId } = await auth();
+  const userId = await getAuthUserId();
 
   if (!userId) {
     return NextResponse.json(

@@ -10,7 +10,8 @@
  */
 
 import { NextResponse } from 'next/server';
-import { auth, currentUser } from '@clerk/nextjs/server';
+import { currentUser } from '@clerk/nextjs/server';
+import { getAuthUserId } from '@/lib/api-auth';
 import { sql } from '@/lib/db';
 
 export const runtime = 'nodejs';
@@ -19,7 +20,7 @@ export const dynamic = 'force-dynamic';
 const ADMIN_EMAILS = ['nick@meok.ai', 'nicholas@meok.ai'];
 
 export async function GET() {
-  const { userId } = await auth();
+  const userId = await getAuthUserId();
   if (!userId) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
