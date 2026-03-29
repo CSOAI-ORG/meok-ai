@@ -427,7 +427,9 @@ export function route(message: string, tier: Tier, options?: { sensitivity?: 'lo
   // M2 Ollama as primary: when M2_OLLAMA_HOST is set, route explorer tier locally
   // This means zero API key burn for local workshop use
   if (M2_HOST && tier === 'explorer' && OLLAMA_AVAILABLE) {
-    model = 'ollama:llama3.2:3b';
+    // Use 8b for quality-sensitive tasks, 3b for speed
+    const qualityTasks = ['reasoning', 'analysis', 'coding', 'code_review', 'research', 'creative'];
+    model = qualityTasks.includes(taskType) ? 'ollama:llama3.1:8b' : 'ollama:llama3.2:3b';
   }
 
   // Sensitivity-based routing override
