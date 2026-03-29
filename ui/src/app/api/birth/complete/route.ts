@@ -6,7 +6,7 @@
  */
 
 import { type NextRequest, NextResponse } from 'next/server';
-import { auth } from '@clerk/nextjs/server';
+import { getAuthUserId } from '@/lib/api-auth';
 import { updateCompanion } from '@/lib/db/user';
 
 interface BirthCompleteBody {
@@ -17,7 +17,7 @@ interface BirthCompleteBody {
 }
 
 export async function POST(req: NextRequest): Promise<NextResponse> {
-  const { userId } = await auth();
+  const userId = await getAuthUserId();
   if (!userId) {
     return NextResponse.json({ error: 'Unauthorised' }, { status: 401 });
   }

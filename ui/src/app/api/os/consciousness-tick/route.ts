@@ -16,7 +16,7 @@
  */
 
 import { type NextRequest, NextResponse } from 'next/server';
-import { auth } from '@clerk/nextjs/server';
+import { getAuthUserId } from '@/lib/api-auth';
 import { sql } from '@/lib/db';
 
 export const runtime = 'nodejs';
@@ -25,7 +25,7 @@ export const dynamic = 'force-dynamic';
 // ── GET: retrieve persisted consciousness state ───────────────────────────────
 
 export async function GET(): Promise<NextResponse> {
-  const { userId } = await auth();
+  const userId = await getAuthUserId();
   if (!userId) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
   if (!sql) {
@@ -59,7 +59,7 @@ export async function GET(): Promise<NextResponse> {
 // ── POST: persist consciousness state ────────────────────────────────────────
 
 export async function POST(req: NextRequest): Promise<NextResponse> {
-  const { userId } = await auth();
+  const userId = await getAuthUserId();
   if (!userId) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
   let body: { state?: unknown };

@@ -14,6 +14,20 @@ import { NextResponse } from 'next/server';
 import { checkRateLimit, type RateLimitTier } from './rate-limit';
 import { getUserById } from './db/user';
 
+const _clerkKey = process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY ?? '';
+const _localMode = process.env.MEOK_LOCAL_MODE === 'true';
+const _hasClerk = !_localMode && _clerkKey.startsWith('pk_') && !_clerkKey.includes('REPLACE');
+
+/**
+ * Get the authenticated user ID, with local mode bypass.
+ * Use this instead of `auth()` directly in API routes.
+ */
+export async function getAuthUserId(): Promise<string | null> {
+  if (!_hasClerk) return 'local_sovereign_user';
+  const { userId } = await auth();
+  return userId;
+}
+
 export interface AuthResult {
   userId: string;
   tier: RateLimitTier;

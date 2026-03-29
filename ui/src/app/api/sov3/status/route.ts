@@ -11,7 +11,7 @@
  */
 
 import { NextResponse } from 'next/server';
-import { auth } from '@clerk/nextjs/server';
+import { getAuthUserId } from '@/lib/api-auth';
 import { getUserById } from '@/lib/db/user';
 import sov3 from '@/lib/sov3-client';
 
@@ -22,7 +22,7 @@ let _cache: { data: unknown; ts: number } | null = null;
 const CACHE_TTL = 30_000;
 
 export async function GET() {
-  const { userId } = await auth();
+  const userId = await getAuthUserId();
   if (!userId) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }

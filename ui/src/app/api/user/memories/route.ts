@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { auth } from '@clerk/nextjs/server'
+import { getAuthUserId } from '@/lib/api-auth'
 import { checkRateLimit } from '@/lib/rate-limit'
 import { sql } from '@/lib/db'
 
@@ -69,7 +69,7 @@ function normalise(raw: Record<string, unknown>, index: number) {
 
 // ── GET /api/user/memories[?q=searchterm] ─────────────────────────────────
 export async function GET(req: NextRequest) {
-  const { userId } = await auth()
+  const userId = await getAuthUserId()
   if (!userId) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
   }

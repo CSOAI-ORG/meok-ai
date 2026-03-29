@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server'
-import { auth } from '@clerk/nextjs/server'
+import { getAuthUserId } from '@/lib/api-auth'
 import { getUserById } from '@/lib/db/user'
 import { TIERS } from '@/lib/stripe'
 
@@ -7,7 +7,7 @@ export const runtime = 'nodejs'
 export const dynamic = 'force-dynamic'
 
 export async function GET() {
-  const { userId } = await auth()
+  const userId = await getAuthUserId()
 
   if (!userId) {
     // Unauthenticated — return explorer defaults

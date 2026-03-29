@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server'
-import { auth, currentUser } from '@clerk/nextjs/server'
+import { currentUser } from '@clerk/nextjs/server';
+import { getAuthUserId } from '@/lib/api-auth'
 import { processDreamCycle, formatMorningInsight } from '@/lib/dream'
 
 // GET /api/morning-briefing
@@ -41,7 +42,7 @@ function getGreetingPrefix(): string {
 }
 
 export async function GET() {
-  const { userId } = await auth()
+  const userId = await getAuthUserId()
 
   if (!userId) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })

@@ -8,7 +8,7 @@
  * Auth: Clerk auth() — returns 401 if not authenticated.
  */
 
-import { auth } from '@clerk/nextjs/server'
+import { getAuthUserId } from '@/lib/api-auth'
 import { type NextRequest, NextResponse } from 'next/server'
 import { getUserById, updateCompanion } from '@/lib/db/user'
 import { checkRateLimit } from '@/lib/rate-limit'
@@ -32,7 +32,7 @@ interface CompanionBody {
 // GET /api/user/companion
 // ---------------------------------------------------------------------------
 export async function GET() {
-  const { userId } = await auth()
+  const userId = await getAuthUserId()
   if (!userId) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
   }
@@ -71,7 +71,7 @@ export async function GET() {
 // POST /api/user/companion
 // ---------------------------------------------------------------------------
 export async function POST(req: NextRequest) {
-  const { userId } = await auth()
+  const userId = await getAuthUserId()
   if (!userId) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
   }

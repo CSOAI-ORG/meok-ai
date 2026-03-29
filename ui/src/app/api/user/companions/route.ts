@@ -1,4 +1,5 @@
-import { auth, currentUser } from '@clerk/nextjs/server'
+import { currentUser } from '@clerk/nextjs/server';
+import { getAuthUserId } from '@/lib/api-auth'
 import { NextRequest, NextResponse } from 'next/server'
 import { getUserById, updateCompanion, createUser } from '@/lib/db/user'
 import { checkRateLimit } from '@/lib/rate-limit'
@@ -27,7 +28,7 @@ function resolveCompanionId(input: string): string {
 
 // GET /api/user/companions — returns the user's companion info
 export async function GET() {
-  const { userId } = await auth()
+  const userId = await getAuthUserId()
   if (!userId) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
   }
@@ -78,7 +79,7 @@ export async function GET() {
 
 // POST /api/user/companions — create/update companion from onboarding
 export async function POST(req: NextRequest) {
-  const { userId } = await auth()
+  const userId = await getAuthUserId()
   if (!userId) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
   }

@@ -15,7 +15,7 @@
  */
 
 import { NextRequest, NextResponse } from 'next/server';
-import { auth } from '@clerk/nextjs/server';
+import { getAuthUserId } from '@/lib/api-auth';
 import { getUserById } from '@/lib/db/user';
 import { checkRateLimit } from '@/lib/rate-limit';
 import sov3 from '@/lib/sov3-client';
@@ -25,7 +25,7 @@ export const runtime = 'nodejs';
 // ── GET — list tasks or sprint status ────────────────────────────────────────
 
 export async function GET(req: NextRequest) {
-  const { userId } = await auth();
+  const userId = await getAuthUserId();
   if (!userId) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
   const user = await getUserById(userId);
@@ -62,7 +62,7 @@ export async function GET(req: NextRequest) {
 // ── POST — capture a task ─────────────────────────────────────────────────────
 
 export async function POST(req: NextRequest) {
-  const { userId } = await auth();
+  const userId = await getAuthUserId();
   if (!userId) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
   const rateLimitResult = checkRateLimit(userId, 'explorer');
