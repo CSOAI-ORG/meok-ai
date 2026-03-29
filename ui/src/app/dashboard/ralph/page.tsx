@@ -283,33 +283,64 @@ export default function RalphModePage() {
     setShowMorningSummary(false);
 
     try {
-      const res = await fetch("/api/chat", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          system:
-            "You are Ralph, MEOK's autonomous project orchestrator. When given a project, decompose it into: 1) Orion tasks (research/intelligence), 2) Riri tasks (building/creating), 3) Hourman tasks (planning/scheduling). Return a structured project plan with tasks assigned to each agent, estimated completion times, and dependencies. IMPORTANT: respond with valid JSON only — no prose, no markdown. Schema: { projectTitle: string, summary: string, totalEstimatedTime: string, tasks: [ { id: string, agent: 'orion'|'riri'|'hourman', title: string, description: string, estimatedTime: string, dependencies: string[] } ] }",
-          messages: [{ role: "user", content: projectInput }],
-        }),
-      });
-
-      if (!res.ok) throw new Error("Ralph failed to respond");
-
-      const data = await res.json();
-      const raw: string = data.content ?? data.message ?? data.text ?? "";
-
-      let parsed: RalphPlan;
+      // Try Ralph project API first (fast heuristic decomposition)
+      let parsed: RalphPlan | null = null;
       try {
-        // Strip markdown code fences if present
-        const cleaned = raw.replace(/```json\n?/g, "").replace(/```\n?/g, "").trim();
-        parsed = JSON.parse(cleaned);
-      } catch {
-        throw new Error("Ralph returned an unexpected format. Try again.");
+        const ralphRes = await fetch("/api/ralph/projects", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ goal: projectInput }),
+        });
+        if (ralphRes.ok) {
+          const ralphData = await ralphRes.json();
+          if (ralphData.decomposition?.length > 0) {
+            parsed = {
+              projectTitle: projectInput.slice(0, 60),
+              summary: `Decomposed into ${ralphData.tasks} tasks across Orion, Riri, Hourman, and Sovereign`,
+              totalEstimatedTime: "Overnight",
+              tasks: ralphData.decomposition.map((t: { title: string; agent: string; priority: number }, i: number) => ({
+                id: `task-${i}`,
+                agent: t.agent === 'sovereign' ? 'orion' : t.agent, // Map sovereign to orion for UI
+                title: t.title,
+                description: t.title,
+                estimatedTime: t.priority >= 4 ? "30 min" : "15 min",
+                dependencies: [],
+                status: "pending" as const,
+              })),
+            };
+          }
+        }
+      } catch { /* fall through to LLM */ }
+
+      // Fallback: use LLM for richer decomposition
+      if (!parsed) {
+        const res = await fetch("/api/chat", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            system:
+              "You are Ralph, MEOK's autonomous project orchestrator. Decompose into Orion (research), Riri (build), Hourman (plan) tasks. Return valid JSON only: { projectTitle, summary, totalEstimatedTime, tasks: [{ id, agent, title, description, estimatedTime, dependencies }] }",
+            messages: [{ role: "user", content: projectInput }],
+          }),
+        });
+
+        if (!res.ok) throw new Error("Ralph failed to respond");
+        const data = await res.json();
+        const raw: string = data.content ?? data.message ?? data.text ?? "";
+
+        try {
+          const cleaned = raw.replace(/```json\n?/g, "").replace(/```\n?/g, "").trim();
+          parsed = JSON.parse(cleaned);
+        } catch {
+          throw new Error("Ralph returned an unexpected format. Try again.");
+        }
       }
 
       // Ensure all tasks start as pending
-      parsed.tasks = parsed.tasks.map((t) => ({ ...t, status: "pending" as const }));
-      setPlan(parsed);
+      if (parsed) {
+        parsed.tasks = parsed.tasks.map((t) => ({ ...t, status: "pending" as const }));
+        setPlan(parsed);
+      }
     } catch (e) {
       setError(e instanceof Error ? e.message : "Something went wrong");
     } finally {
@@ -317,12 +348,38 @@ export default function RalphModePage() {
     }
   };
 
-  const handleApprove = () => {
+  const handleApprove = async () => {
     if (!plan) return;
     setApproved(true);
     setRunning(true);
 
-    // Simulate sequential task execution
+    // Save project + tasks to real Ralph API (persistent queue)
+    try {
+      const projRes = await fetch('/api/ralph/projects', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ goal: projectInput, title: plan.projectTitle }),
+      });
+      if (projRes.ok) {
+        const projData = await projRes.json();
+        // Also submit individual tasks with full descriptions
+        for (const task of plan.tasks) {
+          await fetch('/api/ralph/tasks', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              title: task.title,
+              description: task.description,
+              agent: task.agent,
+              project_id: projData.project_id,
+              priority: 3,
+            }),
+          }).catch(() => {});
+        }
+      }
+    } catch { /* non-fatal — tasks still execute in browser simulation */ }
+
+    // Also simulate sequential task execution for immediate UI feedback
     let delay = 0;
     const tasks = [...plan.tasks];
 
