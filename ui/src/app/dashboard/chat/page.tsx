@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useRef, useEffect, useCallback } from 'react';
+import { useSearchParams } from 'next/navigation';
 import { useChat } from '@ai-sdk/react';
 import { TextStreamChatTransport } from 'ai';
 import type { UIMessage } from 'ai';
@@ -302,7 +303,8 @@ export default function DashboardChatPage() {
   const [showSovereign, setShowSovereign] = useState(true);
   const [privacyMode, setPrivacyMode] = useState(false);
   const [powerMode, setPowerMode] = useState(false);
-  const [companionId] = useState('aria');
+  const searchParams = useSearchParams();
+  const [companionId] = useState(searchParams.get('characterId') ?? 'aria');
   const [speakingMsgId, setSpeakingMsgId] = useState<string | null>(null);
   const [copiedMsgId, setCopiedMsgId] = useState<string | null>(null);
   const [explainMsgId, setExplainMsgId] = useState<string | null>(null);

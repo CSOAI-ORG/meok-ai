@@ -17,6 +17,7 @@ import {
   type PersonalityDimensions,
   type Tier,
 } from '@/lib/characters';
+import { dbGetCharacter } from '@/lib/db/characters';
 import { generateAvatarSVG } from '@/lib/avatar';
 import { SAMPLE_DIALOGUES } from '@/lib/character-dialogues';
 import { EVOLUTION_STAGES } from '@/lib/evolution';
@@ -36,6 +37,8 @@ const TIER_META: Record<Tier, { label: string; color: string; icon: string }> = 
 };
 
 // ── Static params (ISR) ──────────────────────────────────────────────────
+// Pre-render the static 69 chars; allow unknown slugs to be rendered on-demand (DB fallback)
+export const dynamicParams = true;
 
 export async function generateStaticParams() {
   return getAllCharacterIds().map((id) => ({ slug: id }));
@@ -49,10 +52,10 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const char = getCharacter(slug);
+  const char = getCharacter(slug) ?? await dbGetCharacter(slug);
   if (!char) return {};
 
-  const archetype = ARCHETYPES[char.archetype];
+  const archetype = ARCHETYPES[char.archetype] ?? ARCHETYPES['explorer'];
 
   return {
     title: `${char.name} — ${char.title} | MEOK AI LABS`,
@@ -162,10 +165,10 @@ export default async function CharacterProfilePage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const char = getCharacter(slug);
+  const char = getCharacter(slug) ?? await dbGetCharacter(slug);
   if (!char) notFound();
 
-  const archetype = ARCHETYPES[char.archetype];
+  const archetype = ARCHETYPES[char.archetype] ?? ARCHETYPES['explorer'];
   const tier = TIER_META[char.tier];
   const dialogues = SAMPLE_DIALOGUES[char.id] ?? [];
 
@@ -475,17 +478,30 @@ export default async function CharacterProfilePage({
 
         {/* ── CTA ────────────────────────────────────────────────────────── */}
         <section className="text-center space-y-6">
-          <Link
-            href={`/birth?archetype=${char.id}`}
-            className="inline-flex items-center gap-2 px-8 py-4 rounded-full text-lg font-bold transition-all hover:scale-[1.03] hover:shadow-lg"
-            style={{
-              backgroundColor: char.color,
-              color: DEEP,
-              boxShadow: `0 0 40px ${char.color}30`,
-            }}
-          >
-            Hatch {char.name} &rarr;
-          </Link>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <Link
+              href={`/dashboard/chat?characterId=${char.id}`}
+              className="inline-flex items-center gap-2 px-8 py-4 rounded-full text-lg font-bold transition-all hover:scale-[1.03] hover:shadow-lg"
+              style={{
+                backgroundColor: char.color,
+                color: DEEP,
+                boxShadow: `0 0 40px ${char.color}30`,
+              }}
+            >
+              Chat with {char.name} &rarr;
+            </Link>
+            <Link
+              href={`/birth?archetype=${char.id}`}
+              className="inline-flex items-center gap-2 px-8 py-4 rounded-full text-lg font-semibold transition-all hover:opacity-80"
+              style={{
+                background: 'rgba(255,255,255,0.06)',
+                color: 'rgba(255,255,255,0.7)',
+                border: '1px solid rgba(255,255,255,0.12)',
+              }}
+            >
+              Hatch {char.name}
+            </Link>
+          </div>
 
           <div className="flex items-center justify-center gap-6">
             <Link
