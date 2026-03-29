@@ -11,15 +11,16 @@ import { openai, createOpenAI } from '@ai-sdk/openai';
 import type { LanguageModel } from 'ai';
 import { logInfo, logWarn, logError } from './logger';
 
-/** Local Ollama endpoint — set OLLAMA_ENDPOINT env var to enable local model routing.
- *  Falls back to M2_OLLAMA_HOST (LAN inference server) if set. */
+/** Local Ollama endpoint — ALWAYS prefers localhost (M4) first.
+ *  M2_OLLAMA_HOST is LAN backup only — not primary. */
 const M2_HOST = process.env.M2_OLLAMA_HOST;
 const M2_PORT = process.env.M2_OLLAMA_PORT || '11434';
-const OLLAMA_ENDPOINT = process.env.OLLAMA_ENDPOINT
-  || (M2_HOST ? `http://${M2_HOST}:${M2_PORT}/v1` : 'http://localhost:11434/v1');
+// Always use localhost Ollama first — M4 has its own Ollama with all models
+const OLLAMA_ENDPOINT = process.env.OLLAMA_ENDPOINT || 'http://localhost:11434/v1';
+const M2_OLLAMA_ENDPOINT = M2_HOST ? `http://${M2_HOST}:${M2_PORT}/v1` : null;
 
-/** Whether local Ollama is available as fallback */
-const OLLAMA_AVAILABLE = !!(process.env.OLLAMA_ENDPOINT || process.env.OLLAMA_ENABLED === 'true' || M2_HOST);
+/** Ollama is available if localhost or env var is set */
+const OLLAMA_AVAILABLE = true; // M4 always has Ollama
 
 // ── Tier-based model access ────────────────────────────────────────────────
 
@@ -432,9 +433,19 @@ export function route(message: string, tier: Tier, options?: { sensitivity?: 'lo
     model = qualityTasks.includes(taskType) ? 'ollama:llama3.1:8b' : 'ollama:llama3.2:3b';
   }
 
-  // Sovereign/Jarvis ALWAYS gets 8b — builder needs quality, not speed
-  if (options?.companionId === 'sovereign' && OLLAMA_AVAILABLE) {
-    model = 'ollama:llama3.1:8b';
+  // Sovereign/Jarvis: use best available model
+  // Priority: Groq (fast cloud) > Cerebras (fast cloud) > local 8b > local 3b
+  if (options?.companionId === 'sovereign') {
+    const complexTasks = ['reasoning', 'analysis', 'coding', 'code_review', 'research', 'creative'];
+    const isComplex = complexTasks.includes(taskType);
+
+    if (process.env.GROQ_API_KEY && isComplex) {
+      model = 'groq-llama'; // Groq is ultra-fast cloud — best for Jarvis
+    } else if (process.env.CEREBRAS_API_KEY && isComplex) {
+      model = 'cerebras-llama'; // Cerebras also fast + free tier
+    } else if (OLLAMA_AVAILABLE) {
+      model = isComplex ? 'ollama:llama3.1:8b' : 'ollama:llama3.2:3b';
+    }
   }
 
   // Sensitivity-based routing override

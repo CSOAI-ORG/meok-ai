@@ -468,12 +468,13 @@ export async function POST(req: NextRequest): Promise<Response> {
   if (cid === 'sovereign') {
     try {
       const sov3Url = process.env.SOV3_API_URL || 'http://localhost:3100';
+      // 1s timeout — speed over completeness for chat UX
       const [healthRes, heartbeatRes] = await Promise.all([
-        fetch(`${sov3Url}/health`, { signal: AbortSignal.timeout(3000) }).then(r => r.json()).catch(() => null),
+        fetch(`${sov3Url}/health`, { signal: AbortSignal.timeout(1500) }).then(r => r.json()).catch(() => null),
         fetch(`${sov3Url}/mcp`, {
           method: 'POST', headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ jsonrpc: '2.0', method: 'tools/call', params: { name: 'get_heartbeat_status', arguments: {} }, id: 1 }),
-          signal: AbortSignal.timeout(3000),
+          signal: AbortSignal.timeout(1500),
         }).then(r => r.json()).then(d => JSON.parse(d?.result?.content?.[0]?.text ?? '{}')).catch(() => null),
       ]);
 
