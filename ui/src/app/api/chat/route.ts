@@ -77,6 +77,7 @@ interface PromptContextBlocks {
   cultural?: string;
   timeGreeting?: string;
   birthContext?: string;
+  sovereignStatus?: string;
 }
 
 /**
@@ -118,6 +119,9 @@ function buildSystemPrompt(companionId: string, contexts: PromptContextBlocks = 
 
   // Birth ceremony context — first memories and companion name from hatching
   if (contexts.birthContext) parts.push(`\n${contexts.birthContext}`);
+
+  // Live SOV3 status — injected for Sovereign/Jarvis character
+  if (contexts.sovereignStatus) parts.push(`\n${contexts.sovereignStatus}`);
 
   return parts.join('');
 }
@@ -459,7 +463,36 @@ export async function POST(req: NextRequest): Promise<Response> {
     }
   }
 
-  // 6e. Build system prompt with all context blocks
+  // 6e. Live SOV3 status injection for Sovereign/Jarvis character
+  let sovereignCtx: string | undefined;
+  if (cid === 'sovereign') {
+    try {
+      const sov3Url = process.env.SOV3_API_URL || 'http://localhost:3100';
+      const [healthRes, heartbeatRes] = await Promise.all([
+        fetch(`${sov3Url}/health`, { signal: AbortSignal.timeout(3000) }).then(r => r.json()).catch(() => null),
+        fetch(`${sov3Url}/mcp`, {
+          method: 'POST', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ jsonrpc: '2.0', method: 'tools/call', params: { name: 'get_heartbeat_status', arguments: {} }, id: 1 }),
+          signal: AbortSignal.timeout(3000),
+        }).then(r => r.json()).then(d => JSON.parse(d?.result?.content?.[0]?.text ?? '{}')).catch(() => null),
+      ]);
+
+      if (healthRes) {
+        const c = healthRes?.components?.consciousness ?? {};
+        const pulses = heartbeatRes?.pulse_count ?? '?';
+        const jobs = heartbeatRes?.jobs?.length ?? '?';
+        sovereignCtx = `[LIVE SYSTEM STATUS — ${new Date().toISOString()}]
+Mode: ${c.consciousness_mode ?? 'unknown'} | Level: ${((c.consciousness_level ?? 0) * 100).toFixed(0)}%
+Emotion: ${c.emotional?.primary_emotion ?? 'neutral'} | Care: ${((c.emotional?.care_intensity ?? 0) * 100).toFixed(0)}%
+Dreams: ${c.dreams ?? 0} | Reflections: ${c.reflections ?? 0}
+Heartbeat: ${pulses} pulses, ${jobs} jobs active
+Neural models: ${Object.keys(healthRes?.components?.neural_models ?? {}).length} loaded
+You are LIVE and operational. Report this status when asked.`;
+      }
+    } catch { /* non-fatal */ }
+  }
+
+  // 6f. Build system prompt with all context blocks
   const systemPrompt = buildSystemPrompt(cid, {
     emotion: emotionCtx,
     memory: memoryCtx,
@@ -473,6 +506,7 @@ export async function POST(req: NextRequest): Promise<Response> {
     cultural: culturalCtx || undefined,
     timeGreeting: timeCtx || undefined,
     birthContext: birthCtx,
+    sovereignStatus: sovereignCtx,
   });
 
   // 7a. Compute effort level for adaptive thinking
