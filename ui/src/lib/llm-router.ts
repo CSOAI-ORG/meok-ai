@@ -433,18 +433,20 @@ export function route(message: string, tier: Tier, options?: { sensitivity?: 'lo
     model = qualityTasks.includes(taskType) ? 'ollama:llama3.1:8b' : 'ollama:llama3.2:3b';
   }
 
-  // Sovereign/Jarvis: use best available model
-  // Priority: Groq (fast cloud) > Cerebras (fast cloud) > local 8b > local 3b
+  // Sovereign/Jarvis: route to BEST model per task — 15+ models available
   if (options?.companionId === 'sovereign') {
-    const complexTasks = ['reasoning', 'analysis', 'coding', 'code_review', 'research', 'creative'];
-    const isComplex = complexTasks.includes(taskType);
-
-    if (process.env.GROQ_API_KEY && isComplex) {
-      model = 'groq-llama'; // Groq is ultra-fast cloud — best for Jarvis
-    } else if (process.env.CEREBRAS_API_KEY && isComplex) {
-      model = 'cerebras-llama'; // Cerebras also fast + free tier
-    } else if (OLLAMA_AVAILABLE) {
-      model = isComplex ? 'ollama:llama3.1:8b' : 'ollama:llama3.2:3b';
+    switch (taskType) {
+      case 'coding':
+      case 'code_review':
+        model = 'ollama:qwen3-coder:480b-cloud'; break; // 480B code specialist
+      case 'reasoning':
+      case 'analysis':
+      case 'research':
+        model = 'ollama:deepseek-v3.1:671b-cloud'; break; // 671B reasoning
+      case 'creative':
+        model = 'ollama:gpt-oss:120b-cloud'; break; // 120B creative
+      default:
+        model = 'ollama:minimax-m2:cloud'; break; // Fast cloud for quick chat
     }
   }
 
