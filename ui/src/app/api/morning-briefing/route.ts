@@ -48,8 +48,14 @@ export async function GET() {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
   }
 
-  const user = await currentUser()
-  const firstName = user?.firstName ?? 'there'
+  const isLocal = process.env.MEOK_LOCAL_MODE === 'true';
+  let firstName = 'there';
+  if (!isLocal) {
+    const user = await currentUser();
+    firstName = user?.firstName ?? 'there';
+  } else {
+    firstName = 'Nick';
+  }
 
   // Fire all SOV3 calls in parallel
   const [consciousness, memoryStats, alerts, agentStatus] = await Promise.all([

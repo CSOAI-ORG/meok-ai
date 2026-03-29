@@ -27,8 +27,12 @@ export async function GET() {
     return NextResponse.json({ error: 'Rate limit exceeded' }, { status: 429 })
   }
 
-  const [clerkUser, dbUser, guardianSettings] = await Promise.all([
-    currentUser(),
+  const isLocal = process.env.MEOK_LOCAL_MODE === 'true';
+  let clerkUser: Awaited<ReturnType<typeof currentUser>> | null = null;
+  if (!isLocal) {
+    clerkUser = await currentUser();
+  }
+  const [dbUser, guardianSettings] = await Promise.all([
     getUserById(userId),
     getGuardianSettings(userId),
   ])

@@ -25,8 +25,15 @@ export async function GET() {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
 
-  const user = await currentUser();
-  const email = user?.emailAddresses?.[0]?.emailAddress?.toLowerCase();
+  // In local mode, skip Clerk user lookup — local_sovereign_user is always admin
+  const isLocal = process.env.MEOK_LOCAL_MODE === 'true';
+  let email: string | undefined;
+  if (isLocal) {
+    email = 'nick@meok.ai';
+  } else {
+    const user = await currentUser();
+    email = user?.emailAddresses?.[0]?.emailAddress?.toLowerCase();
+  }
   if (!email || !ADMIN_EMAILS.includes(email)) {
     return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
   }
