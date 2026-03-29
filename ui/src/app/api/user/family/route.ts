@@ -6,6 +6,7 @@ import { getUserById, createUser } from '@/lib/db/user'
 import { sql } from '@/lib/db/index'
 
 // GET /api/user/family — get user's family group
+const _isLocalMode = process.env.MEOK_LOCAL_MODE === 'true';
 export async function GET() {
   const authResult = await requireAuth()
   if (authResult.error) return authResult.error
@@ -51,6 +52,7 @@ export async function GET() {
 }
 
 // POST /api/user/family — create or join a family group
+const _isLocalMode = process.env.MEOK_LOCAL_MODE === 'true';
 export async function POST(req: NextRequest) {
   const authResult = await requireAuth()
   if (authResult.error) return authResult.error
@@ -71,7 +73,7 @@ export async function POST(req: NextRequest) {
   // Ensure user exists
   let user = await getUserById(userId)
   if (!user) {
-    const clerkUser = await currentUser()
+    const clerkUser = _isLocalMode ? null : await currentUser()
     const email = clerkUser?.emailAddresses?.[0]?.emailAddress ?? ''
     const displayName = clerkUser?.fullName ?? clerkUser?.firstName ?? null
     user = await createUser(userId, email, displayName)

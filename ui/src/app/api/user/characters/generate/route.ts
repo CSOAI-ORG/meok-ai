@@ -197,6 +197,7 @@ async function getEmbedding(character: Record<string, unknown>): Promise<number[
 
 // ── Route handler ─────────────────────────────────────────────────────────────
 
+const _isLocalMode = process.env.MEOK_LOCAL_MODE === 'true';
 export async function POST(req: NextRequest): Promise<NextResponse> {
   const userId = await getAuthUserId();
   if (!userId) {
@@ -238,7 +239,7 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
   if (shouldSave) {
     let user = await getUserById(userId);
     if (!user) {
-      const clerkUser = await currentUser();
+      const clerkUser = _isLocalMode ? null : await currentUser();
       if (clerkUser) {
         user = await createUser(
           userId,

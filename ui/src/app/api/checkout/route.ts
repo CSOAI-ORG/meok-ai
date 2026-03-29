@@ -11,6 +11,7 @@ interface CheckoutBody {
   interval: 'month' | 'year';
 }
 
+const _isLocalMode = process.env.MEOK_LOCAL_MODE === 'true';
 export async function POST(req: NextRequest): Promise<NextResponse> {
   // -------------------------------------------------------------------------
   // Auth guard
@@ -51,7 +52,7 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
   // -------------------------------------------------------------------------
   let email: string;
   try {
-    const user = await currentUser();
+    const user = _isLocalMode ? null : await currentUser();
     const primary = user?.emailAddresses?.find(
       (e) => e.id === user.primaryEmailAddressId,
     );

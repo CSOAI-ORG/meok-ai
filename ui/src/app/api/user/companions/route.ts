@@ -27,6 +27,7 @@ function resolveCompanionId(input: string): string {
 }
 
 // GET /api/user/companions — returns the user's companion info
+const _isLocalMode = process.env.MEOK_LOCAL_MODE === 'true';
 export async function GET() {
   const userId = await getAuthUserId()
   if (!userId) {
@@ -42,7 +43,7 @@ export async function GET() {
 
   // Auto-create user if missing (webhook may not have fired in dev)
   if (!user) {
-    const clerkUser = await currentUser()
+    const clerkUser = _isLocalMode ? null : await currentUser()
     if (clerkUser) {
       const email = clerkUser.emailAddresses?.[0]?.emailAddress ?? ''
       const displayName = clerkUser.fullName ?? clerkUser.firstName ?? null
@@ -78,6 +79,7 @@ export async function GET() {
 }
 
 // POST /api/user/companions — create/update companion from onboarding
+const _isLocalMode = process.env.MEOK_LOCAL_MODE === 'true';
 export async function POST(req: NextRequest) {
   const userId = await getAuthUserId()
   if (!userId) {
@@ -106,7 +108,7 @@ export async function POST(req: NextRequest) {
   // Ensure user exists in DB (webhook may not have fired in dev/local)
   const existing = await getUserById(userId)
   if (!existing) {
-    const clerkUser = await currentUser()
+    const clerkUser = _isLocalMode ? null : await currentUser()
     const email = clerkUser?.emailAddresses?.[0]?.emailAddress ?? ''
     const displayName = clerkUser?.fullName ?? clerkUser?.firstName ?? null
     await createUser(userId, email, displayName)

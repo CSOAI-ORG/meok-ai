@@ -36,6 +36,7 @@ const ARCHETYPE_MAP: Record<string, string> = {
   shanti: 'shanti',
 }
 
+const _isLocalMode = process.env.MEOK_LOCAL_MODE === 'true';
 export async function POST(req: NextRequest) {
   const userId = await getAuthUserId()
   if (!userId) {
@@ -64,7 +65,7 @@ export async function POST(req: NextRequest) {
     // Ensure user exists
     let user = await getUserById(userId)
     if (!user) {
-      const clerkUser = await currentUser()
+      const clerkUser = _isLocalMode ? null : await currentUser()
       const email = clerkUser?.emailAddresses?.[0]?.emailAddress ?? ''
       const displayName = clerkUser?.fullName ?? clerkUser?.firstName ?? null
       user = await createUser(userId, email, displayName)
