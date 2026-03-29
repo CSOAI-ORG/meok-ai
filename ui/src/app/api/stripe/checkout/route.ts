@@ -1,6 +1,6 @@
 "use server";
 import { NextRequest, NextResponse } from "next/server";
-import { auth } from "@clerk/nextjs/server";
+import { getAuthUserId } from "@/lib/api-auth";
 import { stripe, PLANS, PlanId } from "@/lib/stripe";
 
 export async function POST(req: NextRequest) {
