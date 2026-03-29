@@ -89,18 +89,20 @@ function formatTime(d: Date): string {
 // ─── Models config ────────────────────────────────────────────────────────────
 
 const MODELS = [
-  { id: 'ollama:llama3.2:3b', label: 'Local (M2)',     icon: '🏠', privacy: 'local' as const },
-  { id: 'ollama:llama3.1:8b', label: 'Local 8B (M2)',  icon: '🏠', privacy: 'local' as const },
+  // Local (always available, zero cost)
+  { id: 'ollama:llama3.2:3b', label: 'Local Fast',      icon: '🏠', privacy: 'local' as const },
+  { id: 'ollama:llama3.1:8b', label: 'Local Quality',   icon: '🏠', privacy: 'local' as const },
+  // Cloud powerhouses (via Ollama cloud routing)
+  { id: 'ollama:deepseek-v3.1:671b-cloud', label: 'DeepSeek 671B', icon: '🧠', privacy: 'cloud' as const },
+  { id: 'ollama:qwen3-coder:480b-cloud', label: 'Qwen Coder 480B', icon: '💻', privacy: 'cloud' as const },
+  { id: 'ollama:gpt-oss:120b-cloud', label: 'GPT-OSS 120B',  icon: '🌟', privacy: 'cloud' as const },
+  { id: 'ollama:qwen3-vl:235b-cloud', label: 'Qwen Vision 235B', icon: '👁️', privacy: 'cloud' as const },
+  { id: 'ollama:minimax-m2:cloud', label: 'MiniMax M2',    icon: '🌊', privacy: 'cloud' as const },
+  // Cloud APIs (need API keys)
   { id: 'claude-sonnet-4-5', label: 'Claude Sonnet',  icon: '🟣', privacy: 'cloud' as const },
-  { id: 'claude-haiku-4-5',  label: 'Claude Haiku',   icon: '🟡', privacy: 'cloud' as const },
-  { id: 'minimax-text-01',   label: 'MiniMax 4M',     icon: '🌊', privacy: 'cloud' as const },
-  { id: 'nemotron-super',    label: 'Nemotron Super',  icon: '🟩', privacy: 'cloud' as const },
-  { id: 'nemotron-nano',     label: 'Nemotron Nano',   icon: '💚', privacy: 'cloud' as const },
-  { id: 'gpt-4o',            label: 'GPT-4o',          icon: '🟢', privacy: 'cloud' as const },
-  { id: 'mistral-small',     label: 'Mistral Small',   icon: '🌀', privacy: 'cloud' as const },
-  { id: 'deepseek-chat',     label: 'DeepSeek',        icon: '🔵', privacy: 'cloud' as const },
-  { id: 'cerebras-llama',    label: 'Cerebras',        icon: '⚡', privacy: 'cloud' as const },
-  { id: 'groq-llama',        label: 'Groq',            icon: '🟠', privacy: 'cloud' as const },
+  { id: 'groq-llama',        label: 'Groq (Fast)',    icon: '⚡', privacy: 'cloud' as const },
+  { id: 'cerebras-llama',    label: 'Cerebras',       icon: '🟠', privacy: 'cloud' as const },
+  { id: 'deepseek-chat',     label: 'DeepSeek API',   icon: '🔵', privacy: 'cloud' as const },
 ];
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
