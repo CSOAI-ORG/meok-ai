@@ -17,7 +17,7 @@
  */
 
 import { NextRequest, NextResponse } from 'next/server';
-import { dbGetMarketplaceCharacters } from '@/lib/db/characters';
+import { dbGetMarketplaceCharacters, dbCountMarketplaceCharacters } from '@/lib/db/characters';
 
 export const runtime = 'nodejs';
 
@@ -28,7 +28,10 @@ export async function GET(req: NextRequest): Promise<NextResponse> {
   const limit  = Math.min(parseInt(searchParams.get('limit') ?? '20', 10), 50);
   const offset = Math.max(parseInt(searchParams.get('offset') ?? '0', 10), 0);
 
-  const characters = await dbGetMarketplaceCharacters({ sortBy: sort, tier, limit, offset });
+  const [characters, total] = await Promise.all([
+    dbGetMarketplaceCharacters({ sortBy: sort, tier, limit, offset }),
+    dbCountMarketplaceCharacters(tier),
+  ]);
 
   return NextResponse.json({
     characters: characters.map(c => ({
@@ -47,7 +50,7 @@ export async function GET(req: NextRequest): Promise<NextResponse> {
       avgRating:     c.avgRating,
       priceCents:    c.priceCents,
     })),
-    total:  characters.length,
+    total,
     offset,
     limit,
     sort,

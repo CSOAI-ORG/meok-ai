@@ -303,6 +303,23 @@ export async function dbGetMarketplaceCharacters(opts?: {
   }
 }
 
+// ── Marketplace total count ────────────────────────────────────────────────────
+
+export async function dbCountMarketplaceCharacters(tier?: string): Promise<number> {
+  if (!sql) return 0;
+  try {
+    const rows = await sql`
+      SELECT COUNT(*)::int AS n
+      FROM marketplace_characters
+      WHERE (${tier ?? null}::TEXT IS NULL OR tier = ${tier ?? null})
+    `;
+    return (rows[0] as { n: number }).n ?? 0;
+  } catch (err) {
+    console.error('[db/characters] dbCountMarketplaceCharacters error:', err);
+    return 0;
+  }
+}
+
 // ── Upsert (seed script + user-created characters) ────────────────────────────
 
 export interface UpsertCharacterInput {
