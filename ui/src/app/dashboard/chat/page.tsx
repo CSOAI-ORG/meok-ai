@@ -54,8 +54,8 @@ function detectCrisis(text: string): boolean {
 function CrisisBanner({ onDismiss }: { onDismiss: () => void }) {
   return (
     <div
-      className="mx-4 mb-2 rounded-xl p-4"
-      style={{ background: 'rgba(239,68,68,0.08)', border: '1px solid rgba(239,68,68,0.25)' }}
+      className="mx-4 mb-2 rounded-xl p-4 sticky top-16 z-50"
+      style={{ background: 'rgba(239,68,68,0.15)', border: '1px solid rgba(239,68,68,0.4)', backdropFilter: 'blur(12px)' }}
       role="alert"
       aria-live="assertive"
     >
@@ -171,8 +171,9 @@ function ThreeDots() {
   );
 }
 
-function ThinkingIndicator({ messageLength }: { messageLength: number }) {
-  const label = messageLength > 200 ? 'Deep thinking' : 'Thinking';
+function ThinkingIndicator({ messageLength, characterName }: { messageLength: number; characterName?: string }) {
+  const name = characterName ?? 'AI';
+  const label = messageLength > 200 ? `${name} is deep thinking` : `${name} is thinking`;
   return (
     <div className="flex items-center gap-2 px-1 py-1" style={{ animation: 'fadeSlideUp 0.3s ease both' }}>
       <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: GOLD }} />
@@ -470,6 +471,21 @@ export default function DashboardChatPage() {
               c.id === convId ? { ...c, message_count: totalCount, last_message: lastAiText, updated_at: new Date().toISOString() } : c
             ));
           }
+          // Save individual messages to DB for history persistence
+          const lastUser = userMessages[userMessages.length - 1];
+          if (lastUser) {
+            fetch('/api/user/conversations/messages', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ conversation_id: convId, role: 'user', content: getMessageText(lastUser) }),
+            }).catch(() => {});
+          }
+          fetch('/api/user/conversations/messages', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ conversation_id: convId, role: 'assistant', content: text }),
+          }).catch(() => {});
+
         } catch (err) {
           console.error('[conversation tracking]', err);
         }
@@ -1133,7 +1149,7 @@ export default function DashboardChatPage() {
                               </button>
                             )}
                             {/* Reaction buttons — visible on hover */}
-                            <span className="inline-flex items-center gap-0.5 ml-1 opacity-0 group-hover/msg:opacity-100 transition-opacity duration-150">
+                            <span className="inline-flex items-center gap-0.5 ml-1 opacity-100 sm:opacity-0 sm:group-hover/msg:opacity-100 transition-opacity duration-150">
                               <button
                                 onClick={() => showToast('Liked!')}
                                 aria-label="Like message"
@@ -1198,7 +1214,7 @@ export default function DashboardChatPage() {
                   <div className="max-w-[75%]">
                     <SovereignBadge streaming />
                     <div className="rounded-2xl rounded-tl-sm px-4 py-3" style={{ background: SURFACE, border: '1px solid rgba(255,255,255,0.07)' }}><ThreeDots /></div>
-                    <ThinkingIndicator messageLength={getMessageText(messages[messages.length - 1]).length} />
+                    <ThinkingIndicator messageLength={getMessageText(messages[messages.length - 1]).length} characterName={getCharacter(companionId)?.name} />
                   </div>
                 </div>
               )}
