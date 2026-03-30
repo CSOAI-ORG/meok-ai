@@ -413,27 +413,30 @@ export function MarketingNav({ activePage }: MarketingNavProps) {
               );
             })}
 
-            {/* Pricing — no dropdown */}
-            <Link
-              href="/pricing"
-              className="px-3 py-2 rounded-lg text-sm font-medium transition-colors"
-              style={{
-                color:
-                  pathname === "/pricing"
-                    ? "#ffffff"
-                    : "rgba(255,255,255,0.62)",
-              }}
-              onMouseEnter={(e) =>
-                ((e.currentTarget as HTMLAnchorElement).style.color = "#ffffff")
-              }
-              onMouseLeave={(e) => {
-                if (pathname !== "/pricing")
-                  (e.currentTarget as HTMLAnchorElement).style.color =
-                    "rgba(255,255,255,0.62)";
-              }}
-            >
-              Pricing
-            </Link>
+            {/* Flat links — no dropdown */}
+            {[
+              { href: "/features", label: "Features" },
+              { href: "/pricing", label: "Pricing" },
+              { href: "/about", label: "About" },
+            ].map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="px-3 py-2 rounded-lg text-sm font-medium transition-colors"
+                style={{
+                  color: pathname === link.href ? "#ffffff" : "rgba(255,255,255,0.62)",
+                }}
+                onMouseEnter={(e) =>
+                  ((e.currentTarget as HTMLAnchorElement).style.color = "#ffffff")
+                }
+                onMouseLeave={(e) => {
+                  if (pathname !== link.href)
+                    (e.currentTarget as HTMLAnchorElement).style.color = "rgba(255,255,255,0.62)";
+                }}
+              >
+                {link.label}
+              </Link>
+            ))}
           </nav>
 
           {/* ─── DESKTOP CTAs ─── */}
@@ -513,22 +516,23 @@ export function MarketingNav({ activePage }: MarketingNavProps) {
               />
             ))}
 
-            {/* Pricing flat link */}
-            <div className="border-b" style={{ borderColor: "rgba(255,255,255,0.07)" }}>
-              <Link
-                href="/pricing"
-                className="flex items-center px-6 py-4 text-base font-semibold transition-colors"
-                style={{
-                  color:
-                    pathname === "/pricing"
-                      ? GOLD
-                      : "rgba(255,255,255,0.85)",
-                }}
-                onClick={() => setMobileOpen(false)}
-              >
-                Pricing
-              </Link>
-            </div>
+            {/* Flat links */}
+            {[
+              { href: "/features", label: "Features" },
+              { href: "/pricing", label: "Pricing" },
+              { href: "/about", label: "About" },
+            ].map((link) => (
+              <div key={link.href} className="border-b" style={{ borderColor: "rgba(255,255,255,0.07)" }}>
+                <Link
+                  href={link.href}
+                  className="flex items-center px-6 py-4 text-base font-semibold transition-colors"
+                  style={{ color: pathname === link.href ? GOLD : "rgba(255,255,255,0.85)" }}
+                  onClick={() => setMobileOpen(false)}
+                >
+                  {link.label}
+                </Link>
+              </div>
+            ))}
           </div>
 
           {/* ─── Mobile CTA ─── */}

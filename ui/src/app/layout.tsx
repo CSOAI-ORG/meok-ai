@@ -17,6 +17,8 @@ import { FloatingCTA } from "@/components/floating-cta";
 import { SessionTimeout } from "@/components/session-timeout";
 import { ExperienceModeProvider } from "@/components/experience-mode";
 import { GlobalNav } from "@/components/GlobalNav";
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 
 const dmSans = DM_Sans({
@@ -191,6 +193,8 @@ export default function RootLayout({
           </Suspense>
           <CookieConsent />
           <SessionTimeout />
+          <Analytics />
+          <SpeedInsights />
           {/* Removed: SovereignWidget + FloatingCTA — blocked content, no real functionality */}
           {/* <SovereignWidget /> */}
           {/* <FloatingCTA /> */}
