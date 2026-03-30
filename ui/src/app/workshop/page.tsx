@@ -89,7 +89,7 @@ export default function WorkshopPage() {
   // Fetch Ollama models
   const fetchOllama = useCallback(async () => {
     try {
-      const res = await fetch('http://192.168.1.159:11434/api/tags');
+      const res = await fetch('http://localhost:11434/api/tags');
       if (res.ok) {
         const data = await res.json();
         setOllamaModels(data.models?.map((m: { name: string }) => m.name) ?? []);

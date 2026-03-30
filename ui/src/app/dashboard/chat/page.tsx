@@ -332,6 +332,15 @@ export default function DashboardChatPage() {
   const [rateLimited, setRateLimited] = useState(false);
   const [isListening, setIsListening] = useState(false);
   const [voiceTranscript, setVoiceTranscript] = useState('');
+
+  // Safety net: push voice transcript into input field when it updates
+  useEffect(() => {
+    if (voiceTranscript) {
+      setInput(prev => prev + (prev ? ' ' : '') + voiceTranscript);
+      setVoiceTranscript('');
+    }
+  }, [voiceTranscript]);
+
   const [bondLevel] = useState(1);
   const [highContrast, setHighContrast] = useState(false);
   const [fontSize, setFontSize] = useState(14); // in pixels, range 12-20
@@ -1049,7 +1058,7 @@ export default function DashboardChatPage() {
             {!hasUserMessages && loadedHistory.length === 0 && (
               <div className="flex flex-col items-center justify-center h-full text-center px-8" style={{ animation: 'fadeSlideUp 0.5s ease both' }}>
                 <div className="text-4xl mb-5 w-20 h-20 rounded-full flex items-center justify-center" style={{ background: `radial-gradient(circle at 35% 35%, ${GOLD}30, ${GOLD}08)`, border: `2px solid ${GOLD}40`, boxShadow: `0 0 40px ${GOLD}15` }}>✨</div>
-                <h2 className="text-xl font-bold mb-2 text-white">Aura is here.</h2>
+                <h2 className="text-xl font-bold mb-2 text-white">{getCharacter(companionId)?.name ?? 'Your companion'} is here.</h2>
                 <p className="text-base mb-8" style={{ color: 'rgba(255,255,255,0.4)' }}>What&apos;s on your mind?</p>
               </div>
             )}
@@ -1196,19 +1205,40 @@ export default function DashboardChatPage() {
                             {/* Reaction buttons — visible on hover */}
                             <span className="inline-flex items-center gap-0.5 ml-1 opacity-100 sm:opacity-0 sm:group-hover/msg:opacity-100 transition-opacity duration-150">
                               <button
-                                onClick={() => showToast('Liked!')}
+                                onClick={() => {
+                                  fetch('/api/feedback', {
+                                    method: 'POST',
+                                    headers: { 'Content-Type': 'application/json' },
+                                    body: JSON.stringify({ messageId: msg.id, rating: 1, comment: 'liked' }),
+                                  }).catch(() => {});
+                                  showToast('Liked!');
+                                }}
                                 aria-label="Like message"
                                 className="text-[13px] px-1 py-0.5 rounded transition-colors hover:bg-white/10"
                                 title="Like"
                               >👍</button>
                               <button
-                                onClick={() => showToast('Disliked!')}
+                                onClick={() => {
+                                  fetch('/api/feedback', {
+                                    method: 'POST',
+                                    headers: { 'Content-Type': 'application/json' },
+                                    body: JSON.stringify({ messageId: msg.id, rating: -1, comment: 'disliked' }),
+                                  }).catch(() => {});
+                                  showToast('Disliked!');
+                                }}
                                 aria-label="Dislike message"
                                 className="text-[13px] px-1 py-0.5 rounded transition-colors hover:bg-white/10"
                                 title="Dislike"
                               >👎</button>
                               <button
-                                onClick={() => showToast('Saved!')}
+                                onClick={() => {
+                                  fetch('/api/feedback', {
+                                    method: 'POST',
+                                    headers: { 'Content-Type': 'application/json' },
+                                    body: JSON.stringify({ messageId: msg.id, rating: 1, comment: 'saved' }),
+                                  }).catch(() => {});
+                                  showToast('Saved!');
+                                }}
                                 aria-label="Save message"
                                 className="text-[13px] px-1 py-0.5 rounded transition-colors hover:bg-white/10"
                                 title="Save"
@@ -1359,7 +1389,8 @@ export default function DashboardChatPage() {
               />
               <div className="absolute right-2 bottom-2 flex items-center gap-1">
                 <span className="text-[10px] hidden sm:inline" style={{ color: 'rgba(255,255,255,0.2)' }}>⌘↵</span>
-                <button
+                {/* Image upload hidden — no image processing backend yet */}
+                {false && <button
                   onClick={() => fileInputRef.current?.click()}
                   disabled={isStreaming}
                   aria-label="Attach image"
@@ -1370,7 +1401,7 @@ export default function DashboardChatPage() {
                   onMouseLeave={e => (e.currentTarget.style.background = 'transparent')}
                 >
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
-                </button>
+                </button>}
                 <button
                   onClick={toggleVoiceInput}
                   disabled={isStreaming}
