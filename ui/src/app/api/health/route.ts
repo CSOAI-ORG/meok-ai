@@ -90,21 +90,48 @@ export async function GET() {
   const [db, ollama] = await Promise.all([checkDatabase(), checkOllama()]);
   const providers = checkProviders();
 
+  // SOV3 check
+  let sov3: { connected: boolean; consciousness?: string; models?: number; error?: string } = { connected: false };
+  try {
+    const sov3Url = process.env.SOV3_API_URL || 'http://localhost:3100';
+    const res = await fetch(`${sov3Url}/health`, { signal: AbortSignal.timeout(2000) });
+    if (res.ok) {
+      const data = await res.json() as { status?: string; components?: { consciousness?: { consciousness_level?: number }; neural_models?: Record<string, unknown> } };
+      sov3 = {
+        connected: data?.status === 'healthy',
+        consciousness: `${((data?.components?.consciousness?.consciousness_level ?? 0) * 100).toFixed(0)}%`,
+        models: Object.keys(data?.components?.neural_models ?? {}).length,
+      };
+    }
+  } catch (err) {
+    sov3 = { connected: false, error: err instanceof Error ? err.message : 'unreachable' };
+  }
+
+  // Auth + billing
+  const clerkKey = process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY ?? '';
+  const localMode = process.env.MEOK_LOCAL_MODE === 'true';
+  const clerk = localMode ? 'local_mode' : (clerkKey.startsWith('pk_') ? 'configured' : 'missing');
+  const stripe = (process.env.STRIPE_SECRET_KEY ?? '').startsWith('sk_') ? 'configured' : 'missing';
+
   const allHealthy = db.connected && ollama.reachable;
   const allDown = !db.connected && !ollama.reachable;
 
-  const response: HealthResponse = {
+  const response = {
     status: allHealthy ? 'healthy' : allDown ? 'unhealthy' : 'degraded',
     service: 'meok-ui',
-    version: process.env.npm_package_version ?? '1.0.0',
+    version: process.env.npm_package_version ?? '3.0.0',
     timestamp: new Date().toISOString(),
     uptime: Math.floor((Date.now() - startTime) / 1000),
     db,
     ollama,
+    sov3,
+    clerk,
+    stripe,
     providers,
   };
 
   return NextResponse.json(response, {
     status: response.status === 'unhealthy' ? 503 : 200,
+    headers: { 'Cache-Control': 'no-store' },
   });
 }

@@ -101,6 +101,59 @@ function useCountUp(target: number, duration = 1800, started = false) {
   return value;
 }
 
+// ─── COUNTDOWN TIMER ────────────────────────────────────────────────────────
+
+const LAUNCH_DATE = new Date('2026-04-05T00:00:00+01:00'); // April 5 BST
+
+function useCountdown(target: Date) {
+  const [remaining, setRemaining] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0, launched: false });
+  useEffect(() => {
+    function tick() {
+      const now = Date.now();
+      const diff = target.getTime() - now;
+      if (diff <= 0) {
+        setRemaining({ days: 0, hours: 0, minutes: 0, seconds: 0, launched: true });
+        return;
+      }
+      setRemaining({
+        days: Math.floor(diff / 86400000),
+        hours: Math.floor((diff % 86400000) / 3600000),
+        minutes: Math.floor((diff % 3600000) / 60000),
+        seconds: Math.floor((diff % 60000) / 1000),
+        launched: false,
+      });
+    }
+    tick();
+    const id = setInterval(tick, 1000);
+    return () => clearInterval(id);
+  }, [target]);
+  return remaining;
+}
+
+function CountdownBanner() {
+  const { days, hours, minutes, seconds, launched } = useCountdown(LAUNCH_DATE);
+  if (launched) {
+    return (
+      <div className="bg-[#c9a84c] text-[#1a1a2e] py-2.5 px-6 text-center text-sm font-bold tracking-wide">
+        MEOK is live — hatch your companion now.{" "}
+        <a href="/hatch" className="underline underline-offset-2 hover:opacity-80">
+          Begin Ceremony <span aria-hidden="true">→</span>
+        </a>
+      </div>
+    );
+  }
+  return (
+    <div className="bg-[#c9a84c] text-[#1a1a2e] py-2.5 px-6 text-center text-sm font-bold tracking-wide">
+      <span className="hidden sm:inline">Easter Sunday — </span>
+      <span className="font-mono">{days}d {hours}h {minutes}m {seconds}s</span>
+      <span className="hidden sm:inline"> until hatching begins</span>{" "}
+      <a href="/waitlist" className="underline underline-offset-2 hover:opacity-80 ml-1">
+        Join Early Access <span aria-hidden="true">→</span>
+      </a>
+    </div>
+  );
+}
+
 // ─── SOCIAL PROOF SECTION ────────────────────────────────────────────────────
 
 function SocialProofSection() {
@@ -585,13 +638,8 @@ export default function HomePageClient() {
       <ExitIntentPopup />
 
       <div className="min-h-screen bg-[#FAF9F6] text-[#111111]">
-        {/* Launch banner */}
-        <div className="bg-[#c9a84c] text-[#1a1a2e] py-2.5 px-6 text-center text-sm font-bold tracking-wide">
-          April 5, 2026 — The Birth Ceremony opens to everyone. Free forever.{" "}
-          <a href="/hatch" className="underline underline-offset-2 hover:opacity-80" aria-label="Begin Birth Ceremony">
-            Begin Ceremony <span aria-hidden="true">→</span>
-          </a>
-        </div>
+        {/* Launch countdown banner */}
+        <CountdownBanner />
 
         <main>
           {/* ── 1. HERO ──────────────────────────────────────────── */}
