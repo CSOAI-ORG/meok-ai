@@ -246,6 +246,9 @@ export default function WorkshopPage() {
             </button>
           ))}
 
+          {/* Ralph Tasks */}
+          <RalphTasks />
+
           {/* Links */}
           <SectionTitle>Navigate</SectionTitle>
           <Link href="/dashboard/chat?characterId=sovereign" style={{ display: 'block', padding: '6px 0', color: GOLD, fontSize: 11, textDecoration: 'none' }}>Chat with Sovereign →</Link>
@@ -296,5 +299,49 @@ function SectionTitle({ children }: { children: React.ReactNode }) {
     <div style={{ color: '#c9a84c', fontSize: 11, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', marginTop: 20, marginBottom: 8, paddingBottom: 4, borderBottom: '1px solid rgba(201,168,76,0.15)' }}>
       {children}
     </div>
+  );
+}
+
+const TASK_ICONS: Record<string, string> = { queued: '🕐', running: '⚡', complete: '✅' };
+const TASK_COLORS: Record<string, string> = { queued: '#f59e0b', running: '#60a5fa', complete: '#4ade80' };
+
+function RalphTasks() {
+  const [tasks, setTasks] = useState<Array<{ id: string; name: string; status: string; agent?: string }>>([]);
+  const [error, setError] = useState(false);
+
+  useEffect(() => {
+    const load = async () => {
+      try {
+        const res = await fetch('/api/ralph/tasks');
+        if (res.ok) {
+          const data = await res.json();
+          setTasks(data.tasks ?? data ?? []);
+        } else { setError(true); }
+      } catch { setError(true); }
+    };
+    load();
+    const iv = setInterval(load, 15000);
+    return () => clearInterval(iv);
+  }, []);
+
+  return (
+    <>
+      <SectionTitle>Ralph Tasks</SectionTitle>
+      {error ? (
+        <div style={{ color: 'rgba(255,255,255,0.3)', fontSize: 11 }}>Offline</div>
+      ) : tasks.length === 0 ? (
+        <div style={{ color: 'rgba(255,255,255,0.3)', fontSize: 11 }}>No tasks</div>
+      ) : (
+        tasks.map(t => (
+          <div key={t.id} style={{ padding: '5px 0', borderBottom: '1px solid rgba(255,255,255,0.05)', fontSize: 11 }}>
+            <div style={{ color: TASK_COLORS[t.status] ?? '#e0ddd4' }}>
+              {TASK_ICONS[t.status] ?? '○'} {t.name}
+              {t.agent && <span style={{ color: 'rgba(255,255,255,0.3)', marginLeft: 6 }}>({t.agent})</span>}
+            </div>
+            <div style={{ color: 'rgba(255,255,255,0.25)', fontSize: 10, marginTop: 1 }}>{t.status}</div>
+          </div>
+        ))
+      )}
+    </>
   );
 }
