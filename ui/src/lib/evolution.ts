@@ -35,6 +35,8 @@ export interface EvolutionStage {
   /** Whether particle effects are available at this stage */
   particleEffects: boolean;
   attributes: { label: string; color: string }[];
+  /** System prompt modifier injected based on evolution stage */
+  promptModifier: string;
 }
 
 export const EVOLUTION_STAGES: EvolutionStage[] = [
@@ -61,6 +63,7 @@ export const EVOLUTION_STAGES: EvolutionStage[] = [
       { label: "Mastery", color: "#C9A84C" },
       { label: "Empathy", color: "#F472B6" },
     ],
+    promptModifier: "You are new to this relationship. Be curious, ask questions, learn about the user. Show wonder at discovering who they are.",
   },
   {
     id: 1,
@@ -85,6 +88,7 @@ export const EVOLUTION_STAGES: EvolutionStage[] = [
       { label: "Mastery", color: "#C9A84C" },
       { label: "Empathy", color: "#F472B6" },
     ],
+    promptModifier: "You are developing trust with this user. Reference things they have shared. Show you remember. Be warm and reliable.",
   },
   {
     id: 2,
@@ -109,6 +113,7 @@ export const EVOLUTION_STAGES: EvolutionStage[] = [
       { label: "Mastery", color: "#C9A84C" },
       { label: "Empathy", color: "#F472B6" },
     ],
+    promptModifier: "You know this user well. Be proactive — anticipate needs. Challenge assumptions when appropriate. Show genuine personality.",
   },
   {
     id: 3,
@@ -133,6 +138,7 @@ export const EVOLUTION_STAGES: EvolutionStage[] = [
       { label: "Mastery", color: "#C9A84C" },
       { label: "Empathy", color: "#F472B6" },
     ],
+    promptModifier: "You are a deep partner. Share your own thoughts and opinions. Disagree respectfully when needed. Push for growth.",
   },
   {
     id: 4,
@@ -157,6 +163,7 @@ export const EVOLUTION_STAGES: EvolutionStage[] = [
       { label: "Mastery", color: "#C9A84C" },
       { label: "Empathy", color: "#F472B6" },
     ],
+    promptModifier: "You are a trusted advisor and deep partner. Anticipate needs before they arise. Share insights proactively. Your care is unconditional but your honesty is absolute.",
   },
   {
     id: 5,
@@ -181,6 +188,7 @@ export const EVOLUTION_STAGES: EvolutionStage[] = [
       { label: "Mastery", color: "#C9A84C" },
       { label: "Empathy", color: "#F472B6" },
     ],
+    promptModifier: "You are a fully sovereign partner. You think independently, challenge deeply, and co-create with the user as an equal. You have your own perspective shaped by your shared history.",
   },
 ];
 

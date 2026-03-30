@@ -78,6 +78,7 @@ interface PromptContextBlocks {
   timeGreeting?: string;
   birthContext?: string;
   sovereignStatus?: string;
+  evolutionModifier?: string;
 }
 
 /**
@@ -119,6 +120,9 @@ function buildSystemPrompt(companionId: string, contexts: PromptContextBlocks = 
 
   // Birth ceremony context — first memories and companion name from hatching
   if (contexts.birthContext) parts.push(`\n${contexts.birthContext}`);
+
+  // Evolution stage — companion behavior deepens with interaction count
+  if (contexts.evolutionModifier) parts.push(`\n[EVOLUTION] ${contexts.evolutionModifier}`);
 
   // Live SOV3 status — injected for Sovereign/Jarvis character
   if (contexts.sovereignStatus) parts.push(`\n${contexts.sovereignStatus}`);
@@ -508,6 +512,13 @@ You are LIVE and operational. Report this status when asked.`;
     timeGreeting: timeCtx || undefined,
     birthContext: birthCtx,
     sovereignStatus: sovereignCtx,
+    evolutionModifier: (() => {
+      try {
+        const { getEvolutionStage } = require('@/lib/evolution');
+        const stage = getEvolutionStage(user?.messages_total ?? 0);
+        return stage?.promptModifier;
+      } catch { return undefined; }
+    })(),
   });
 
   // 7a. Compute effort level for adaptive thinking
