@@ -343,6 +343,7 @@ export default function DashboardChatPage() {
   const titleGeneratedRef = useRef(false);
   const [summarizing, setSummarizing] = useState(false);
   const [summaryText, setSummaryText] = useState<string | null>(null);
+  const [loadedHistory, setLoadedHistory] = useState<Array<{ role: 'user' | 'assistant'; content: string; created_at?: string }>>([]);
   const { toast, show: showToast } = useToast();
 
   // Streaming telemetry
@@ -760,20 +761,34 @@ export default function DashboardChatPage() {
   }
 
   async function handleNewConversation() {
-    // Reset conversation state for a fresh chat
     setCurrentConversationId(null);
+    _currentConvIdRef.current = null;
     titleGeneratedRef.current = false;
     setInput('');
     setSummaryText(null);
+    setLoadedHistory([]);
     showToast('New conversation started');
   }
 
-  function handleLoadConversation(conversationId: string) {
-    // Mark this as the active conversation (messages are in-memory via useChat)
-    // A full page-based history reload would require persisting messages server-side
+  async function handleLoadConversation(conversationId: string) {
     setCurrentConversationId(conversationId);
-    titleGeneratedRef.current = true; // don't re-title an existing conversation
-    showToast('Switched to conversation');
+    _currentConvIdRef.current = conversationId;
+    titleGeneratedRef.current = true;
+
+    // Load message history from DB
+    try {
+      const res = await fetch(`/api/user/conversations/messages?conversation_id=${conversationId}`);
+      if (res.ok) {
+        const data = await res.json();
+        const msgs = data.messages ?? [];
+        setLoadedHistory(msgs);
+        if (msgs.length > 0) {
+          showToast(`Loaded ${msgs.length} messages`);
+        }
+      }
+    } catch {
+      showToast('Switched to conversation');
+    }
   }
 
   // Sidebar component for conversation history
@@ -1031,7 +1046,7 @@ export default function DashboardChatPage() {
               );
             })()}
           <div className="px-4 py-6">
-            {!hasUserMessages && (
+            {!hasUserMessages && loadedHistory.length === 0 && (
               <div className="flex flex-col items-center justify-center h-full text-center px-8" style={{ animation: 'fadeSlideUp 0.5s ease both' }}>
                 <div className="text-4xl mb-5 w-20 h-20 rounded-full flex items-center justify-center" style={{ background: `radial-gradient(circle at 35% 35%, ${GOLD}30, ${GOLD}08)`, border: `2px solid ${GOLD}40`, boxShadow: `0 0 40px ${GOLD}15` }}>✨</div>
                 <h2 className="text-xl font-bold mb-2 text-white">Aura is here.</h2>
@@ -1040,6 +1055,35 @@ export default function DashboardChatPage() {
             )}
 
             <div className="space-y-5 max-w-3xl mx-auto">
+              {/* Loaded history from DB (previous sessions) */}
+              {loadedHistory.map((hist, i) => (
+                <div key={`hist-${i}`} className={`flex ${hist.role === 'user' ? 'justify-end' : 'justify-start'}`}>
+                  <div className={`max-w-[75%] ${hist.role === 'user' ? '' : ''}`}>
+                    <div
+                      className="rounded-2xl px-4 py-3 text-sm leading-relaxed whitespace-pre-wrap"
+                      style={hist.role === 'user'
+                        ? { background: GOLD, color: DEEP, borderRadius: '20px 20px 4px 20px' }
+                        : { background: SURFACE, color: 'rgba(255,255,255,0.85)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '20px 20px 20px 4px' }
+                      }
+                    >
+                      {hist.content}
+                    </div>
+                    {hist.created_at && (
+                      <span className="text-xs mt-1 block" style={{ color: 'rgba(255,255,255,0.2)' }}>
+                        {new Date(hist.created_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                      </span>
+                    )}
+                  </div>
+                </div>
+              ))}
+              {loadedHistory.length > 0 && messages.length > 0 && (
+                <div className="flex items-center gap-3 py-2">
+                  <div className="flex-1 h-px" style={{ background: 'rgba(201,168,76,0.2)' }} />
+                  <span className="text-xs" style={{ color: 'rgba(201,168,76,0.4)' }}>New messages</span>
+                  <div className="flex-1 h-px" style={{ background: 'rgba(201,168,76,0.2)' }} />
+                </div>
+              )}
+              {/* Live messages from current session */}
               {messages.map((msg: UIMessage, i: number) => {
                 const text = getMessageText(msg);
                 const isStreamingMsg = isStreaming && msg.role === 'assistant' && i === messages.length - 1;
