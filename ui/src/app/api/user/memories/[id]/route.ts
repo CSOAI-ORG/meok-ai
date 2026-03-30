@@ -38,5 +38,13 @@ export async function DELETE(
     console.warn(`[user/memories] SOV3 delete_memory failed for memory ${id} (non-fatal):`, e);
   }
 
+  // Also delete from local DB if available
+  try {
+    const { sql } = await import('@/lib/db');
+    if (sql) {
+      await sql`DELETE FROM user_memories WHERE id = ${id} AND user_id = ${userId}`;
+    }
+  } catch { /* non-fatal */ }
+
   return NextResponse.json({ deleted: true, id })
 }
