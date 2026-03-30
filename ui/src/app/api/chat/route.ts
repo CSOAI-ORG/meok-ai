@@ -135,6 +135,8 @@ function buildSystemPrompt(companionId: string, contexts: PromptContextBlocks = 
 interface ChatRequestBody {
   messages: Array<{ role: 'user' | 'assistant'; content: string }>;
   companionId?: string;
+  /** Temperature override from client-side preset (0.3 / 0.7 / 1.0) */
+  temperature?: number;
   /** Birth ceremony data — passed on first chat after hatching */
   birthContext?: {
     companionName?: string;
@@ -190,7 +192,7 @@ export async function POST(req: NextRequest): Promise<Response> {
     return errorResponse('Invalid request body', 400);
   }
 
-  const { messages: incomingMessages, companionId, birthContext: rawBirthContext } = body;
+  const { messages: incomingMessages, companionId, temperature: clientTemperature, birthContext: rawBirthContext } = body;
 
   // 3. Validate messages array
   if (!Array.isArray(incomingMessages) || incomingMessages.length === 0) {
@@ -579,7 +581,7 @@ You are LIVE and operational. Report this status when asked.`;
       system: systemPrompt,
       messages: messagesForLLM,
       maxOutputTokens: Math.max(2048, thinkingBudget),
-      temperature: 0.7,
+      temperature: (typeof clientTemperature === 'number' && clientTemperature >= 0 && clientTemperature <= 2) ? clientTemperature : 0.7,
       providerOptions: isAnthropic ? {
         anthropic: {
           cacheControl: { type: "ephemeral" },

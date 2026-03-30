@@ -304,6 +304,7 @@ function SovereignPanel({
 
 export default function DashboardChatPage() {
   const [selectedModel, setSelectedModel] = useState('ollama:llama3.2:3b');
+  const [tempPreset, setTempPreset] = useState<'focused' | 'balanced' | 'creative'>('balanced');
   const [showCrisisBanner, setShowCrisisBanner] = useState(false);
   const [showSovereign, setShowSovereign] = useState(true);
   const [privacyMode, setPrivacyMode] = useState(false);
@@ -411,7 +412,7 @@ export default function DashboardChatPage() {
   } = useChat({
     transport: new TextStreamChatTransport({
       api: '/api/chat',
-      body: { companionId, ...(birthContext ? { birthContext } : {}) },
+      body: { companionId, temperature: tempPreset === 'focused' ? 0.3 : tempPreset === 'creative' ? 1.0 : 0.7, ...(birthContext ? { birthContext } : {}) },
       fetch: sovereignFetchRef.current,
     }),
     onFinish: ({ message }: { message: UIMessage }) => {
@@ -938,6 +939,19 @@ export default function DashboardChatPage() {
                 <button key={m.id} onClick={() => setSelectedModel(m.id)} className="text-xs font-medium px-3 py-1 rounded-full border whitespace-nowrap transition-all"
                   style={selectedModel === m.id ? { background: GOLD, color: NAVY, borderColor: GOLD } : { color: 'rgba(255,255,255,0.5)', borderColor: 'rgba(255,255,255,0.15)' }}>
                   {m.label}{selectedModel === m.id && ' ✓'}
+                </button>
+              ))}
+            </div>
+            {/* Temperature preset selector */}
+            <div className="flex items-center gap-1 px-2">
+              {([
+                { key: 'focused' as const, label: 'Focused', tip: 'Direct, efficient responses' },
+                { key: 'balanced' as const, label: 'Balanced', tip: 'Default' },
+                { key: 'creative' as const, label: 'Creative', tip: 'Expansive, exploratory responses' },
+              ]).map(p => (
+                <button key={p.key} onClick={() => setTempPreset(p.key)} title={p.tip} className="text-xs font-medium px-3 py-1 rounded-full border whitespace-nowrap transition-all"
+                  style={tempPreset === p.key ? { background: GOLD, color: NAVY, borderColor: GOLD } : { color: 'rgba(255,255,255,0.5)', borderColor: 'rgba(255,255,255,0.15)' }}>
+                  {p.label}{tempPreset === p.key && ' ✓'}
                 </button>
               ))}
             </div>

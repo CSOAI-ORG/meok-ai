@@ -13,6 +13,7 @@ interface Archetype {
   trait: string;
   desc: string;
   free: boolean;
+  dimensions: { warmth: number; energy: number; whimsy: number; edge: number; complexity: number };
 }
 
 interface TraitSpark {
@@ -51,12 +52,12 @@ type QuizAction =
 // ── Constants ─────────────────────────────────────────────────────────────────
 
 const ARCHETYPES: Record<ArchetypeKey, Archetype> = {
-  Scholar:  { emoji: "🎓", color: "#c9a84c", trait: "Curious & precise",        desc: "Turns chaos into clarity. Your thinking partner.",      free: true  },
-  Guardian: { emoji: "🛡️", color: "#3b82f6", trait: "Protective & steady",      desc: "Watches over what matters most. Your anchor.",          free: true  },
-  Healer:   { emoji: "🌿", color: "#22c55e", trait: "Empathic & restorative",    desc: "Holds space for the hard days. Your safe place.",       free: true  },
-  Trickster:{ emoji: "⚡", color: "#f59e0b", trait: "Playful & subversive",      desc: "Breaks patterns. Your creative disruptor.",             free: true  },
-  Pioneer:  { emoji: "🚀", color: "#ef4444", trait: "Bold & action-oriented",    desc: "Moves first, learns fast. Your momentum.",              free: true  },
-  Mystic:   { emoji: "🔮", color: "#7c3aed", trait: "Intuitive & deep",          desc: "Sees beneath the surface. Your inner voice.",           free: false },
+  Scholar:  { emoji: "🎓", color: "#c9a84c", trait: "Curious & precise",        desc: "Turns chaos into clarity. Your thinking partner.",      free: true,  dimensions: { warmth: 0.6, energy: 0.4, whimsy: 0.3, edge: 0.2, complexity: 0.9 } },
+  Guardian: { emoji: "🛡️", color: "#3b82f6", trait: "Protective & steady",      desc: "Watches over what matters most. Your anchor.",          free: true,  dimensions: { warmth: 0.9, energy: 0.5, whimsy: 0.2, edge: 0.2, complexity: 0.5 } },
+  Healer:   { emoji: "🌿", color: "#22c55e", trait: "Empathic & restorative",    desc: "Holds space for the hard days. Your safe place.",       free: true,  dimensions: { warmth: 0.9, energy: 0.3, whimsy: 0.4, edge: 0.1, complexity: 0.7 } },
+  Trickster:{ emoji: "⚡", color: "#f59e0b", trait: "Playful & subversive",      desc: "Breaks patterns. Your creative disruptor.",             free: true,  dimensions: { warmth: 0.5, energy: 0.8, whimsy: 0.9, edge: 0.4, complexity: 0.3 } },
+  Pioneer:  { emoji: "🚀", color: "#ef4444", trait: "Bold & action-oriented",    desc: "Moves first, learns fast. Your momentum.",              free: true,  dimensions: { warmth: 0.4, energy: 0.8, whimsy: 0.3, edge: 0.8, complexity: 0.6 } },
+  Mystic:   { emoji: "🔮", color: "#7c3aed", trait: "Intuitive & deep",          desc: "Sees beneath the surface. Your inner voice.",           free: false, dimensions: { warmth: 0.5, energy: 0.2, whimsy: 0.6, edge: 0.3, complexity: 0.9 } },
 };
 
 type QuestionOption = {
@@ -1222,6 +1223,7 @@ export default function HatchPage() {
                       memory2,
                       memory3,
                     });
+                    params.set('dimensions', JSON.stringify(archetype.dimensions));
                     return canProceed ? (
                       <Link
                         href={`/register?${params.toString()}`}

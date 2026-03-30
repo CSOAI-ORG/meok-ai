@@ -53,10 +53,13 @@ export async function POST(request: NextRequest) {
     );
   }
 
-  const { category, message, email } = body as {
+  const { category, message, email, messageId, rating, comment } = body as {
     category?: string;
     message?: string;
     email?: string;
+    messageId?: string;
+    rating?: number;
+    comment?: string;
   };
 
   if (!category || typeof category !== "string") {
@@ -77,9 +80,38 @@ export async function POST(request: NextRequest) {
     category,
     message: message.trim().slice(0, 2000),
     email: email || null,
+    messageId: messageId || null,
+    rating: rating ?? null,
+    comment: comment || null,
     ip,
     timestamp: new Date().toISOString(),
   });
+
+  // Bayesian care update: close the feedback → care score loop
+  if (typeof rating === 'number') {
+    const sovUrl = process.env.SOV3_API_URL || 'http://localhost:3100';
+    if (rating === 1) {
+      fetch(`${sovUrl}/mcp`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          jsonrpc: '2.0', method: 'tools/call',
+          params: { name: 'validate_care', arguments: { text: 'User provided positive feedback — care alignment confirmed' } },
+          id: Date.now(),
+        }),
+      }).catch(() => {});
+    } else if (rating === -1) {
+      fetch(`${sovUrl}/mcp`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          jsonrpc: '2.0', method: 'tools/call',
+          params: { name: 'validate_care', arguments: { text: 'User provided negative feedback — care alignment needs improvement' } },
+          id: Date.now(),
+        }),
+      }).catch(() => {});
+    }
+  }
 
   return NextResponse.json({ success: true });
 }
