@@ -100,28 +100,16 @@ export async function PATCH(req: NextRequest): Promise<NextResponse> {
 
     if (!body.id) return NextResponse.json({ error: 'id required' }, { status: 400 });
 
-    // Handle approval
-    if (body.status === 'complete' || body.status === 'running') {
-      const now = body.status === 'running' ? 'started_at' : 'completed_at';
-      await sql`
-        UPDATE ralph_tasks
-        SET status = ${body.status},
-            output_data = COALESCE(${body.output_data ? JSON.stringify(body.output_data) : null}::JSONB, output_data),
-            care_score = COALESCE(${body.care_score ?? null}, care_score),
-            error_message = COALESCE(${body.error_message ?? null}, error_message),
-            ${body.status === 'running' ? sql`started_at = NOW()` : sql`completed_at = NOW()`}
-        WHERE id = ${body.id} AND user_id = ${userId}
-      `;
-    } else {
-      await sql`
-        UPDATE ralph_tasks
-        SET status = COALESCE(${body.status ?? null}, status),
-            output_data = COALESCE(${body.output_data ? JSON.stringify(body.output_data) : null}::JSONB, output_data),
-            care_score = COALESCE(${body.care_score ?? null}, care_score),
-            error_message = COALESCE(${body.error_message ?? null}, error_message)
-        WHERE id = ${body.id} AND user_id = ${userId}
-      `;
-    }
+    // Simple update — no nested tagged templates (postgres.js compatibility)
+    await sql`
+      UPDATE ralph_tasks
+      SET status = COALESCE(${body.status ?? null}, status),
+          care_score = COALESCE(${body.care_score ?? null}::FLOAT, care_score),
+          error_message = COALESCE(${body.error_message ?? null}, error_message),
+          started_at = CASE WHEN ${body.status ?? ''} = 'running' THEN NOW() ELSE started_at END,
+          completed_at = CASE WHEN ${body.status ?? ''} = 'complete' THEN NOW() ELSE completed_at END
+      WHERE id = ${body.id} AND user_id = ${userId}
+    `;
 
     return NextResponse.json({ ok: true });
   } catch (err) {
