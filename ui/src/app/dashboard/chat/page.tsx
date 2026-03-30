@@ -90,8 +90,10 @@ function formatTime(d: Date): string {
 
 const MODELS = [
   // Local (always available, zero cost)
-  { id: 'ollama:llama3.2:3b', label: 'Local Fast',      icon: '🏠', privacy: 'local' as const },
-  { id: 'ollama:llama3.1:8b', label: 'Local Quality',   icon: '🏠', privacy: 'local' as const },
+  { id: 'ollama:phi4-mini',   label: 'Phi-4 Mini',      icon: '🏠', privacy: 'local' as const },
+  { id: 'ollama:qwen2.5:7b',  label: 'Qwen 2.5 7B',    icon: '🏠', privacy: 'local' as const },
+  { id: 'ollama:llama3.2:3b', label: 'Llama 3B',        icon: '🏠', privacy: 'local' as const },
+  { id: 'ollama:llama3.1:8b', label: 'Llama 8B',        icon: '🏠', privacy: 'local' as const },
   // Cloud powerhouses (via Ollama cloud routing)
   { id: 'ollama:deepseek-v3.1:671b-cloud', label: 'DeepSeek 671B', icon: '🧠', privacy: 'cloud' as const },
   { id: 'ollama:qwen3-coder:480b-cloud', label: 'Qwen Coder 480B', icon: '💻', privacy: 'cloud' as const },

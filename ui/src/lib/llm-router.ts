@@ -428,9 +428,9 @@ export function route(message: string, tier: Tier, options?: { sensitivity?: 'lo
   // M2 Ollama as primary: when M2_OLLAMA_HOST is set, route explorer tier locally
   // This means zero API key burn for local workshop use
   if (M2_HOST && tier === 'explorer' && OLLAMA_AVAILABLE) {
-    // Use 8b for quality-sensitive tasks, 3b for speed
+    // Use qwen2.5:7b for quality tasks, phi4-mini for speed, 3b as fallback
     const qualityTasks = ['reasoning', 'analysis', 'coding', 'code_review', 'research', 'creative'];
-    model = qualityTasks.includes(taskType) ? 'ollama:llama3.1:8b' : 'ollama:llama3.2:3b';
+    model = qualityTasks.includes(taskType) ? 'ollama:qwen2.5:7b' : 'ollama:phi4-mini';
   }
 
   // Sovereign/Jarvis: route to BEST model per task — 15+ models available

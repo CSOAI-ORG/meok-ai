@@ -656,6 +656,125 @@ export default function HomePageClient() {
           {/* ── 2. VALUE PROPOSITION (animated feature showcase) ──── */}
           <AnimatedFeatureShowcase />
 
+          {/* ── 2a. LIVE CHAT DEMO ────────────────────────────────── */}
+          <section
+            aria-label="See MEOK in action"
+            className="py-24 px-6"
+            style={{ background: "#0e0d1a" }}
+          >
+            <div className="max-w-5xl mx-auto">
+              <header className="text-center mb-14">
+                <p className="text-sm font-bold tracking-widest uppercase mb-4" style={{ color: GOLD }}>
+                  See What It Feels Like
+                </p>
+                <h2
+                  className="font-black text-white leading-tight tracking-tight mb-4"
+                  style={{ fontSize: "clamp(1.6rem, 4vw, 2.5rem)" }}
+                >
+                  Your companion remembers{" "}
+                  <span style={{ color: GOLD }}>every conversation</span>
+                </h2>
+                <p className="text-white/40 text-base max-w-xl mx-auto">
+                  No cold starts. No repeating yourself. Watch how a MEOK companion picks up exactly where you left off.
+                </p>
+              </header>
+
+              {/* Phone frame with animated chat */}
+              <div className="max-w-sm mx-auto">
+                <div
+                  className="rounded-[2rem] p-1.5 mx-auto"
+                  style={{ background: "linear-gradient(145deg, rgba(201,168,76,0.3), rgba(201,168,76,0.05))" }}
+                >
+                  <div
+                    className="rounded-[1.6rem] overflow-hidden"
+                    style={{ background: DEEP, border: `1px solid ${BORDER}` }}
+                  >
+                    {/* Phone status bar */}
+                    <div className="flex items-center justify-between px-5 pt-3 pb-2">
+                      <span className="text-[10px] text-white/30 font-medium">14:04</span>
+                      <div className="flex items-center gap-1">
+                        <span className="text-[10px]" style={{ color: GOLD }}>Aria</span>
+                        <span className="w-2 h-2 rounded-full animate-pulse" style={{ background: "#22c55e" }} />
+                      </div>
+                      <span className="text-[10px] text-white/30">Bond 3 ✦</span>
+                    </div>
+
+                    {/* Chat messages with staggered animation */}
+                    <div className="px-4 py-4 space-y-3 min-h-[320px]">
+                      {/* Previous context hint */}
+                      <div className="text-center">
+                        <span className="text-[10px] px-3 py-1 rounded-full" style={{ color: "rgba(201,168,76,0.4)", background: "rgba(201,168,76,0.06)" }}>
+                          Yesterday, 9:41 PM
+                        </span>
+                      </div>
+
+                      {/* User message */}
+                      <div className="flex justify-end" style={{ animation: "homeChat 0.5s ease 0.8s both" }}>
+                        <div className="rounded-2xl rounded-tr-sm px-3.5 py-2.5 max-w-[75%]" style={{ background: GOLD, color: "#1a1a2e" }}>
+                          <p className="text-sm font-medium">I&apos;m stressed about the presentation tomorrow</p>
+                        </div>
+                      </div>
+
+                      {/* AI response — remembers context */}
+                      <div className="flex justify-start" style={{ animation: "homeChat 0.5s ease 1.6s both" }}>
+                        <div className="rounded-2xl rounded-tl-sm px-3.5 py-2.5 max-w-[80%]" style={{ background: SURFACE, border: "1px solid rgba(255,255,255,0.07)" }}>
+                          <p className="text-sm text-white/80">I remember you mentioned this one last week — the Q2 review for the board. You were worried about the financial slide...</p>
+                          <p className="text-sm text-white/80 mt-1.5">Want to practise the opening together?</p>
+                        </div>
+                      </div>
+
+                      {/* Gap indicator */}
+                      <div className="text-center" style={{ animation: "homeChat 0.5s ease 2.4s both" }}>
+                        <span className="text-[10px] px-3 py-1 rounded-full" style={{ color: "rgba(201,168,76,0.4)", background: "rgba(201,168,76,0.06)" }}>
+                          Today, 2:04 PM
+                        </span>
+                      </div>
+
+                      {/* User returns next day */}
+                      <div className="flex justify-end" style={{ animation: "homeChat 0.5s ease 3.2s both" }}>
+                        <div className="rounded-2xl rounded-tr-sm px-3.5 py-2.5 max-w-[75%]" style={{ background: GOLD, color: "#1a1a2e" }}>
+                          <p className="text-sm font-medium">It went really well!</p>
+                        </div>
+                      </div>
+
+                      {/* AI remembers and celebrates */}
+                      <div className="flex justify-start" style={{ animation: "homeChat 0.5s ease 4.0s both" }}>
+                        <div className="rounded-2xl rounded-tl-sm px-3.5 py-2.5 max-w-[80%]" style={{ background: SURFACE, border: "1px solid rgba(255,255,255,0.07)" }}>
+                          <p className="text-sm text-white/80">The Q2 board review! That matters. How did the financial slide land?</p>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Input bar */}
+                    <div className="px-4 pb-4">
+                      <div
+                        className="rounded-xl px-4 py-2.5 flex items-center gap-2"
+                        style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)" }}
+                      >
+                        <span className="text-sm text-white/25 flex-1">Message Aria...</span>
+                        <div className="w-7 h-7 rounded-full flex items-center justify-center" style={{ background: `${GOLD}30` }}>
+                          <ArrowRight className="w-3.5 h-3.5" style={{ color: GOLD }} />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Caption below phone */}
+                <p className="text-center text-sm mt-6" style={{ color: "rgba(245,240,232,0.35)" }}>
+                  Same companion. Same memory. Across days, weeks, and years.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <style>{`
+            @keyframes homeChat {
+              from { opacity: 0; transform: translateY(12px); }
+              to { opacity: 1; transform: translateY(0); }
+            }
+          `}</style>
+
           {/* ── 2b. AI IS FAILING USERS — trust comparison ──────────── */}
           <section
             aria-label="Why current AI is failing"
@@ -924,6 +1043,79 @@ export default function HomePageClient() {
               <p className="text-white/25 text-xs italic">
                 We think transparency about limitations builds more trust than pretending they don&apos;t exist.
               </p>
+            </div>
+          </section>
+
+          {/* ── 4b. FROM THE JOURNAL ────────────────────────────── */}
+          <section
+            aria-label="From the journal"
+            className="py-20 px-6"
+            style={{ background: DEEP }}
+          >
+            <div className="max-w-5xl mx-auto">
+              <header className="text-center mb-12">
+                <p className="text-sm font-bold tracking-widest uppercase mb-4" style={{ color: GOLD }}>
+                  From the Journal
+                </p>
+                <h2
+                  className="font-black text-white leading-tight tracking-tight"
+                  style={{ fontSize: "clamp(1.4rem, 3vw, 2rem)" }}
+                >
+                  Ideas we&apos;re thinking about
+                </h2>
+              </header>
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+                {[
+                  {
+                    title: "What Is Sovereign AI?",
+                    desc: "Why your AI should answer to you — not a corporation. The case for personal data sovereignty.",
+                    href: "/blog/what-is-sovereign-ai",
+                    tag: "Concept",
+                  },
+                  {
+                    title: "The Maternal Covenant Explained",
+                    desc: "How MEOK's ethical framework ensures your companion serves your wellbeing above all else.",
+                    href: "/blog/maternal-covenant-explained",
+                    tag: "Ethics",
+                  },
+                  {
+                    title: "AI Companions for Anxiety",
+                    desc: "How a care-aligned AI companion can support — not replace — your mental health journey.",
+                    href: "/blog/ai-companion-for-anxiety",
+                    tag: "Wellbeing",
+                  },
+                ].map((post) => (
+                  <Link
+                    key={post.href}
+                    href={post.href}
+                    className="group rounded-xl p-6 transition-all hover:scale-[1.02]"
+                    style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.07)" }}
+                  >
+                    <span
+                      className="text-[10px] font-bold tracking-widest uppercase px-2 py-0.5 rounded-full"
+                      style={{ color: GOLD, background: `${GOLD}15`, border: `1px solid ${GOLD}25` }}
+                    >
+                      {post.tag}
+                    </span>
+                    <h3 className="font-bold text-white mt-3 mb-2 group-hover:text-[#c9a84c] transition-colors">
+                      {post.title}
+                    </h3>
+                    <p className="text-sm text-white/40 leading-relaxed">{post.desc}</p>
+                  </Link>
+                ))}
+              </div>
+
+              <div className="text-center mt-10">
+                <Link
+                  href="/blog"
+                  className="inline-flex items-center gap-2 text-sm font-semibold transition-colors hover:opacity-80"
+                  style={{ color: GOLD }}
+                >
+                  Read all 350+ articles
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+              </div>
             </div>
           </section>
 
