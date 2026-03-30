@@ -37,6 +37,17 @@
   --meok-muted:       #9a9a8a;
   --meok-border:      #e8e4dc;
 
+  /* ── Surface Hierarchy (dark UI) ── */
+  --surface-0: #0a0a0f;
+  --surface-1: #13121f;
+  --surface-2: #1a1a2e;
+  --surface-3: #242340;
+  --surface-border: rgba(255,255,255,0.08);
+  --surface-border-hover: rgba(255,255,255,0.15);
+
+  /* ── Mobile viewport ── */
+  --app-height: 100dvh;
+
   /* ── Archetype Accent Colors ── */
   --accent-sovereign: #c9a84c;   /* Gold */
   --accent-guardian:  #2d9b8a;   /* Teal */
@@ -45,6 +56,11 @@
   --accent-creator:   #d4820a;   /* Amber */
   --accent-companion: #c4707a;   /* Rose */
   --accent-sage:      #7a9e7e;   /* Sage green */
+}
+
+/* ── dvh fallback for older browsers ── */
+@supports not (height: 100dvh) {
+  :root { --app-height: 100vh; }
 }
 
 /* ── Base body ── */

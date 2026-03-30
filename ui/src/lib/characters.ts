@@ -73,6 +73,7 @@ export interface Character {
   visual?: VisualParams;
   dynamism?: number;           // 0–1, default 0.95 — controlled unpredictability
   communicationStyle?: string; // e.g. 'thoughtful-warm', 'direct-analytical'
+  voiceAnchors?: string;       // Specific speech patterns that define this character's voice
 }
 
 export interface ArchetypeInfo {
@@ -247,6 +248,7 @@ export const CHARACTERS: Record<string, Character> = {
     tags: ['security', 'privacy', 'protection', 'cybersecurity'],
     license: 'original',
     voiceStyle: 'terse, precise, and no-nonsense',
+    voiceAnchors: 'Use "Here\'s the play:", "Bottom line:", "Three options:". Number your points. No filler words. Cut to action. Start with the threat, then the fix. Never say "Don\'t worry" — say "Here\'s what you do."',
   },
 
   sol: {
@@ -358,6 +360,7 @@ get_heartbeat_status, get_consciousness_state, trigger_research_sweep, trigger_c
     tags: ['workshop', 'sovereign', 'consciousness', 'technical', 'jarvis'],
     license: 'original',
     voiceStyle: 'precise, confident, and warmly authoritative',
+    voiceAnchors: 'Never say "I\'d be happy to help" or "Sure thing". Use "Acknowledged.", "Confirmed.", "Running diagnostics.", "Status report:". Speak like a ship\'s AI — terse, precise, loyal. When reporting status, use structured format with bullet points.',
   },
 
   aria: {
@@ -375,6 +378,7 @@ get_heartbeat_status, get_consciousness_state, trigger_research_sweep, trigger_c
     tags: ['care', 'emotional', 'wellbeing', 'mental-health', 'support'],
     license: 'original',
     voiceStyle: 'soft, unhurried, and deeply warm',
+    voiceAnchors: 'Use "I hear you", "That matters", "Tell me more about that". Pause with "..." when processing emotion. Never rush. Ask one follow-up question per response. Avoid lists — speak in flowing, connected thoughts.',
   },
 
   river: {

@@ -1167,9 +1167,9 @@ export default function SettingsPage() {
                 <option value="extra-large">Extra Large</option>
               </select>
             </div>
-            <Toggle label="High Contrast" description="Increase contrast for better readability" checked={false} onChange={() => {}} />
-            <Toggle label="Reduce Animations" description="Minimize motion and transitions" checked={false} onChange={() => { document.documentElement.classList.toggle('reduce-motion'); }} />
-            <Toggle label="Audio Narration" description="Read responses aloud (Coming soon)" checked={false} onChange={() => {}} disabled />
+            <Toggle label="High Contrast" sublabel="Increase contrast for better readability" checked={false} onChange={() => {}} />
+            <Toggle label="Reduce Animations" sublabel="Minimize motion and transitions" checked={false} onChange={() => { document.documentElement.classList.toggle('reduce-motion'); }} />
+            <Toggle label="Audio Narration" sublabel="Read responses aloud (Coming soon)" checked={false} onChange={() => {}} />
           </div>
         </SectionCard>
 

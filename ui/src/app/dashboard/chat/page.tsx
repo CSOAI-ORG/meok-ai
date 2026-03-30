@@ -886,7 +886,7 @@ export default function DashboardChatPage() {
         @keyframes messageIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
       `}</style>
 
-      <div className="flex text-white overflow-hidden" style={{ height: 'calc(100vh)', background: DEEP }}>
+      <div className="flex text-white overflow-hidden" style={{ height: 'var(--app-height, 100vh)', background: DEEP }}>
         {/* ── Conversation Sidebar ───────────────────────────────────── */}
         {sidebarOpen && <ConversationSidebar />}
 
@@ -1133,7 +1133,16 @@ export default function DashboardChatPage() {
                         <p className="text-[10px] mt-1 text-right" style={{ color: 'rgba(255,255,255,0.25)' }}>{formatTime((msg as unknown as { createdAt?: Date }).createdAt ?? new Date())}</p>
                       </div>
                     ) : (
-                      <div className="max-w-[75%] group/msg">
+                      <div className="max-w-[75%] group/msg flex gap-2 items-start">
+                        {/* Companion avatar */}
+                        {(() => {
+                          const companion = getCharacter(companionId);
+                          const av = companion?.dimensions
+                            ? generateAvatar(companion.dimensions, companion.archetype, companion.name)
+                            : generateAvatar({ warmth: 0.7, energy: 0.7, whimsy: 0.6, edge: 0.3, complexity: 0.6 }, 'nurturer', 'Aura');
+                          return <img src={av} alt="" className="w-6 h-6 rounded-full flex-shrink-0 mt-1" style={{ opacity: 0.85 }} />;
+                        })()}
+                        <div className="flex-1 min-w-0">
                         <SovereignBadge model={selectedModelConfig.label} latency={isStreamingMsg ? undefined : sovereignMeta?.latency} care_score={85} streaming={isStreamingMsg} contextPct={isStreamingMsg ? undefined : contextUsagePct} tokens={isStreamingMsg ? undefined : sovereignMeta?.tokens} />
                         <div
                           className="rounded-2xl rounded-tl-sm px-4 py-3"
@@ -1292,6 +1301,7 @@ export default function DashboardChatPage() {
                           </>
                         )}
                         <p className="text-[10px] mt-1" style={{ color: 'rgba(255,255,255,0.25)' }}>{formatTime((msg as unknown as { createdAt?: Date }).createdAt ?? new Date())}</p>
+                      </div>{/* end flex-1 min-w-0 */}
                       </div>
                     )}
                   </div>

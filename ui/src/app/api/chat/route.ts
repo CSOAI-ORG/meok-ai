@@ -79,6 +79,8 @@ interface PromptContextBlocks {
   birthContext?: string;
   sovereignStatus?: string;
   evolutionModifier?: string;
+  gapContext?: string;
+  voiceAnchors?: string;
 }
 
 /**
@@ -115,8 +117,14 @@ function buildSystemPrompt(companionId: string, contexts: PromptContextBlocks = 
   if (contexts.cultural) parts.push(`\n${contexts.cultural}`);
   if (contexts.timeGreeting) parts.push(`\n${contexts.timeGreeting}`);
 
+  // Voice anchors — character-specific speech patterns
+  if (contexts.voiceAnchors) parts.push(`\n[VOICE ANCHORS] ${contexts.voiceAnchors}`);
+
   // Anti-sycophancy directive — injected when agreement rate is too high
   if (contexts.antiSycophancy) parts.push(`\n${contexts.antiSycophancy}`);
+
+  // Return-after-gap — acknowledge when user has been away
+  if (contexts.gapContext) parts.push(`\n${contexts.gapContext}`);
 
   // Birth ceremony context — first memories and companion name from hatching
   if (contexts.birthContext) parts.push(`\n${contexts.birthContext}`);
@@ -377,6 +385,7 @@ export async function POST(req: NextRequest): Promise<Response> {
   let voiceCtx = '';
   let culturalCtx = '';
   let timeCtx = '';
+  let gapCtx = '';
 
   try {
     // Mood state machine — characters "exist between interactions"
@@ -386,6 +395,15 @@ export async function POST(req: NextRequest): Promise<Response> {
       : 0;
     const currentMood = computeMoodTransition(lastMood, emotionState.primary as import('@/lib/character-mood').EmotionSignal, timeSinceLastMs / 60000, incomingMessages.length);
     moodCtx = formatMoodContext(currentMood);
+
+    // Return-after-gap: if >4 hours since last activity, acknowledge warmly
+    if (timeSinceLastMs > 4 * 60 * 60 * 1000 && incomingMessages.length <= 2) {
+      const hours = Math.round(timeSinceLastMs / (60 * 60 * 1000));
+      const gapLabel = hours >= 48 ? `${Math.round(hours / 24)} days` : `${hours} hours`;
+      const tod = getTimeOfDay();
+      const character = getCharacter(cid);
+      gapCtx = `[RETURN AFTER GAP] The user has been away for ~${gapLabel}. This is their first message back. Acknowledge their return warmly but briefly (one sentence max). It's ${tod}. ${character?.name ?? 'You'} noticed they were gone and is glad to see them. Do NOT make it dramatic or guilt-inducing — just a natural warm greeting before addressing their message.`;
+    }
   } catch (err) {
     console.error('[api/chat] Mood computation failed:', err);
   }
@@ -512,6 +530,11 @@ You are LIVE and operational. Report this status when asked.`;
     voiceConsistency: voiceCtx || undefined,
     cultural: culturalCtx || undefined,
     timeGreeting: timeCtx || undefined,
+    gapContext: gapCtx || undefined,
+    voiceAnchors: (() => {
+      const character = getCharacter(cid);
+      return character?.voiceAnchors;
+    })(),
     birthContext: birthCtx,
     sovereignStatus: sovereignCtx,
     evolutionModifier: (() => {
@@ -702,7 +725,7 @@ You are LIVE and operational. Report this status when asked.`;
     };
     const costKey = Object.keys(costPerKToken).find(k => model.includes(k)) ?? 'ollama';
     const estimatedCost = ((inputTokens + outputTokens) / 1000) * (costPerKToken[costKey] ?? 0);
-    logInfo('chat.cost', { userId, model, inputTokens, outputTokens, estimatedCost: `$${estimatedCost.toFixed(6)}` });
+    logInfo('chat.cost', { userId, model, metadata: { inputTokens, outputTokens, estimatedCost: `$${estimatedCost.toFixed(6)}` } });
 
     // Inject sovereign metadata headers into the streaming response
     const streamResponse = result.toTextStreamResponse();
