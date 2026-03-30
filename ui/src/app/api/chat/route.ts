@@ -680,6 +680,17 @@ You are LIVE and operational. Report this status when asked.`;
       care_weight: emotionState.valence < -0.3 ? 0.8 : 0.5,
     });
 
+    // Cost tracking (per-message logging)
+    const inputTokens = Math.ceil(trimmed.length / 4);
+    const outputTokens = Math.ceil((result as unknown as { text?: string })?.text?.length ?? 200 / 4);
+    const costPerKToken: Record<string, number> = {
+      'claude': 0.003, 'gpt': 0.005, 'groq': 0.0001, 'cerebras': 0.0001,
+      'deepseek': 0.0005, 'ollama': 0, 'minimax': 0.0002, 'qwen': 0.0002,
+    };
+    const costKey = Object.keys(costPerKToken).find(k => model.includes(k)) ?? 'ollama';
+    const estimatedCost = ((inputTokens + outputTokens) / 1000) * (costPerKToken[costKey] ?? 0);
+    logInfo('chat.cost', { userId, model, inputTokens, outputTokens, estimatedCost: `$${estimatedCost.toFixed(6)}` });
+
     // Inject sovereign metadata headers into the streaming response
     const streamResponse = result.toTextStreamResponse();
     const location = model.startsWith('local-') || model.startsWith('ollama-') ? 'local' : 'cloud';

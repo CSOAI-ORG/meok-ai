@@ -428,9 +428,22 @@ export async function compressMemory(
 export function buildMemoryContext(memory: CompanionMemory): string {
   const sections: string[] = [];
 
-  // --- Layer 2: Semantic (newest first, max 3) ---
+  // --- Layer 2: Semantic (relevance × time-decay, max 3) ---
+  const now = Date.now();
+  const timeDecay = (ts: string): number => {
+    const ageMs = now - new Date(ts).getTime();
+    const ageH = ageMs / 3600000;
+    if (ageH < 24) return 1.0;
+    if (ageH < 168) return 0.8;   // 7 days
+    if (ageH < 720) return 0.5;   // 30 days
+    return 0.2;
+  };
   const semanticEpisodes = [...memory.semantic]
-    .sort((a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime())
+    .sort((a, b) => {
+      const scoreA = (a.importance_score ?? 0.5) * timeDecay(a.timestamp);
+      const scoreB = (b.importance_score ?? 0.5) * timeDecay(b.timestamp);
+      return scoreB - scoreA;
+    })
     .slice(0, 3);
 
   if (semanticEpisodes.length > 0) {
