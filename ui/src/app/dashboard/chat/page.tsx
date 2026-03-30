@@ -1130,6 +1130,7 @@ export default function DashboardChatPage() {
                               {isStreamingMsg && <span className="inline-block w-0.5 h-4 ml-0.5 animate-pulse align-middle" style={{ background: GOLD }} />}
                             </p>
                           ) : isStreamingMsg ? <ThreeDots /> : null}
+                          <span className="text-xs opacity-30 block mt-1">{selectedModelConfig.label}</span>
                         </div>
                         {!isStreamingMsg && (
                           <>
@@ -1177,7 +1178,7 @@ export default function DashboardChatPage() {
                                   const ok = await copyToClipboard(text);
                                   if (ok) {
                                     setCopiedMsgId(msg.id);
-                                    setTimeout(() => setCopiedMsgId((prev) => prev === msg.id ? null : prev), 1500);
+                                    setTimeout(() => setCopiedMsgId((prev) => prev === msg.id ? null : prev), 2500);
                                   }
                                 }}
                                 aria-label="Copy message"
@@ -1189,7 +1190,7 @@ export default function DashboardChatPage() {
                                   cursor: 'pointer',
                                 }}
                               >
-                                {copiedMsgId === msg.id ? 'Copied!' : 'Copy'}
+                                {copiedMsgId === msg.id ? '\u2713 Copied' : 'Copy'}
                               </button>
                             )}
                             {/* Reaction buttons — visible on hover */}

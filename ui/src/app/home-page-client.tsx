@@ -118,9 +118,9 @@ function SocialProofSection() {
     return () => observer.disconnect();
   }, []);
 
-  const waitlist = useCountUp(12000, 1800, started);
+  const waitlist = useCountUp(2400, 1800, started);
   const rating = useCountUp(49, 1200, started); // render as x/10 → "4.9"
-  const countries = useCountUp(43, 1400, started);
+  const countries = useCountUp(12, 1400, started);
 
   const stats = [
     {
