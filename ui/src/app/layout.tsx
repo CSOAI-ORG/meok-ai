@@ -191,8 +191,9 @@ export default function RootLayout({
           </Suspense>
           <CookieConsent />
           <SessionTimeout />
-          <SovereignWidget />
-          <FloatingCTA />
+          {/* Removed: SovereignWidget + FloatingCTA — blocked content, no real functionality */}
+          {/* <SovereignWidget /> */}
+          {/* <FloatingCTA /> */}
           </ExperienceModeProvider>
         </body>
       </html>
