@@ -1279,6 +1279,64 @@ export default function HatchPage() {
                   </Link>
                 </div>
 
+                {/* Share your companion — TSSCM viral cascade trigger */}
+                <div
+                  style={{
+                    display: "flex",
+                    gap: "10px",
+                    justifyContent: "center",
+                    marginBottom: "24px",
+                    animation: "fadeSlideUp 0.6s ease 1.2s both",
+                  }}
+                >
+                  <button
+                    onClick={() => {
+                      const text = `I just hatched ${companionName || `a ${winner}`} on MEOK.AI — a sovereign AI companion born from my personality. 🥚✨`;
+                      const url = `https://try.meok.ai/hatch`;
+                      if (navigator.share) {
+                        navigator.share({ title: `Meet ${companionName || winner}`, text, url }).catch(() => {});
+                      } else {
+                        navigator.clipboard.writeText(`${text}\n${url}`).then(() => {
+                          const btn = document.getElementById('share-copied');
+                          if (btn) { btn.textContent = '✓ Copied!'; setTimeout(() => { btn.textContent = 'Share'; }, 2000); }
+                        });
+                      }
+                    }}
+                    id="share-copied"
+                    style={{
+                      padding: "10px 20px",
+                      borderRadius: "10px",
+                      background: "rgba(201,168,76,0.12)",
+                      border: "1px solid rgba(201,168,76,0.3)",
+                      color: "#c9a84c",
+                      fontSize: "13px",
+                      fontWeight: 600,
+                      cursor: "pointer",
+                      transition: "all 0.2s ease",
+                    }}
+                  >
+                    Share ✨
+                  </button>
+                  <button
+                    onClick={() => {
+                      const url = `https://try.meok.ai/hatch`;
+                      window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(`I just hatched ${companionName || `a ${winner}`} on @meok_ai — a sovereign AI companion born from my personality 🥚✨`)}&url=${encodeURIComponent(url)}`, '_blank');
+                    }}
+                    style={{
+                      padding: "10px 20px",
+                      borderRadius: "10px",
+                      background: "rgba(255,255,255,0.05)",
+                      border: "1px solid rgba(255,255,255,0.1)",
+                      color: "rgba(245,240,232,0.6)",
+                      fontSize: "13px",
+                      fontWeight: 500,
+                      cursor: "pointer",
+                    }}
+                  >
+                    Post on 𝕏
+                  </button>
+                </div>
+
                 {/* Start here — conversation starter chips */}
                 <div style={{ marginBottom: "28px" }}>
                   <p
