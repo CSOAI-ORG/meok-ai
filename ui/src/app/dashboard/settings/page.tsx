@@ -1148,6 +1148,31 @@ export default function SettingsPage() {
           )}
         </SectionCard>
 
+        {/* Comfort Settings / Accessibility */}
+        <SectionCard icon={<span className="text-sm">♿</span>} title="Comfort Settings">
+          <div className="space-y-4">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-sm font-medium text-white">Font Size</p>
+                <p className="text-xs text-white/40">Adjust text size across the app</p>
+              </div>
+              <select
+                className="bg-white/5 border border-white/10 rounded-lg px-3 py-1.5 text-sm text-white"
+                defaultValue="medium"
+                onChange={(e) => { localStorage.setItem('meok-font-size', e.target.value); document.documentElement.style.fontSize = { small: '14px', medium: '16px', large: '18px', 'extra-large': '20px' }[e.target.value] ?? '16px'; }}
+              >
+                <option value="small">Small</option>
+                <option value="medium">Medium</option>
+                <option value="large">Large</option>
+                <option value="extra-large">Extra Large</option>
+              </select>
+            </div>
+            <Toggle label="High Contrast" description="Increase contrast for better readability" checked={false} onChange={() => {}} />
+            <Toggle label="Reduce Animations" description="Minimize motion and transitions" checked={false} onChange={() => { document.documentElement.classList.toggle('reduce-motion'); }} />
+            <Toggle label="Audio Narration" description="Read responses aloud (Coming soon)" checked={false} onChange={() => {}} disabled />
+          </div>
+        </SectionCard>
+
         {/* Bottom padding */}
         <div className="h-6" />
       </div>
