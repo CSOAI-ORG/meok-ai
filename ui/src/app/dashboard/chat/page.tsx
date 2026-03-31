@@ -33,12 +33,41 @@ const CREAM = '#f5f0e8';
 const MAX_MESSAGE_LENGTH = 4000;
 
 // ─── Quick prompts ───────────────────────────────────────────────────────────
-const QUICK_PROMPTS = [
-  'How are you today?',
-  'Tell me something interesting',
-  'Help me think through a problem',
-  'I need someone to talk to',
-];
+function getQuickPrompts(): string[] {
+  const hour = new Date().getHours();
+  if (hour >= 5 && hour < 12) {
+    return [
+      'Good morning — what should I focus on today?',
+      'Help me plan my day',
+      'I had an interesting dream last night',
+      'Tell me something inspiring to start the day',
+    ];
+  }
+  if (hour >= 12 && hour < 17) {
+    return [
+      'I need help thinking through something',
+      'Tell me something I don\'t know',
+      'Help me with a problem at work',
+      'I could use a creative boost',
+    ];
+  }
+  if (hour >= 17 && hour < 22) {
+    return [
+      'How was your day? Mine was...',
+      'Help me unwind — tell me a story',
+      'I want to reflect on something',
+      'What should I read tonight?',
+    ];
+  }
+  // Late night (22-5)
+  return [
+    'I can\'t sleep',
+    'Tell me something calming',
+    'I need to talk through my thoughts',
+    'Help me wind down',
+  ];
+}
+const QUICK_PROMPTS = getQuickPrompts();
 
 // ─── Crisis detection ─────────────────────────────────────────────────────────
 const CRISIS_SIGNALS = [
@@ -348,7 +377,7 @@ export default function DashboardChatPage() {
     }
   }, [voiceTranscript]);
 
-  const [bondLevel] = useState(1);
+  // bondLevel computed inline where displayed
   const [highContrast, setHighContrast] = useState(false);
   const [fontSize, setFontSize] = useState(14); // in pixels, range 12-20
   const [focusedMsgIdx, setFocusedMsgIdx] = useState<number | null>(null);
@@ -618,6 +647,30 @@ export default function DashboardChatPage() {
     window.addEventListener('keydown', handleKeyboardNav);
     return () => window.removeEventListener('keydown', handleKeyboardNav);
   }, [messages]);
+
+  // Global keyboard shortcuts
+  useEffect(() => {
+    function handleShortcuts(e: KeyboardEvent) {
+      // Cmd+N or Ctrl+N → new conversation
+      if ((e.metaKey || e.ctrlKey) && e.key === 'n') {
+        e.preventDefault();
+        handleNewConversation();
+      }
+      // Cmd+/ or Ctrl+/ → focus input
+      if ((e.metaKey || e.ctrlKey) && e.key === '/') {
+        e.preventDefault();
+        textareaRef.current?.focus();
+      }
+      // Cmd+B or Ctrl+B → toggle sidebar
+      if ((e.metaKey || e.ctrlKey) && e.key === 'b') {
+        e.preventDefault();
+        setSidebarOpen(v => !v);
+      }
+    }
+    window.addEventListener('keydown', handleShortcuts);
+    return () => window.removeEventListener('keydown', handleShortcuts);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   // Auto-resize textarea
   useEffect(() => {
@@ -935,7 +988,7 @@ export default function DashboardChatPage() {
                       <span className="w-2 h-2 rounded-full flex-shrink-0 animate-pulse" style={{ background: currentMood.color }} title={`Mood: ${currentMood.label}`} />
                       <span className="text-[10px] font-medium" style={{ color: currentMood.color }}>{currentMood.label}</span>
                     </div>
-                    <span className="text-[11px] font-semibold" style={{ color: GOLD }}>Bond Level {bondLevel} ✦</span>
+                    <span className="text-[11px] font-semibold" style={{ color: GOLD }}>Bond Level {Math.min(10, Math.floor((loadedHistory.length + messages.length) / 5) + 1)} ✦</span>
                   </div>
                 </div>
               );
@@ -1408,10 +1461,10 @@ export default function DashboardChatPage() {
                 value={input}
                 onChange={e => setInput(e.target.value)}
                 onKeyDown={handleKeyDown}
-                placeholder="Talk to Aura…"
+                placeholder={`Talk to ${getCharacter(companionId)?.name ?? 'your companion'}…`}
                 rows={1}
                 disabled={isStreaming}
-                aria-label="Type a message to Aura"
+                aria-label={`Type a message to ${getCharacter(companionId)?.name ?? 'your companion'}`}
                 className="flex-1 text-sm rounded-xl px-4 py-3 pr-24 resize-none outline-none transition-colors leading-6 min-h-[44px] max-h-[120px] disabled:opacity-50"
                 style={{ background: NAVY, color: CREAM, border: '1px solid rgba(255,255,255,0.08)', caretColor: GOLD }}
                 onFocus={e => (e.currentTarget.style.borderColor = `${GOLD}50`)}
