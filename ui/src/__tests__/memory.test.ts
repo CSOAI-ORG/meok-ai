@@ -150,19 +150,21 @@ describe('buildMemoryContext', () => {
     expect(ctx).toContain('Nick loves coffee')
   })
 
-  it('limits semantic episodes to newest 3', () => {
+  it('limits semantic episodes to top 3 by relevance', () => {
+    // buildMemoryContext sorts by importance_score * timeDecay(timestamp)
+    // Give different importance scores so sort is deterministic
     const semantic: MemoryEpisode[] = [
-      makeEpisode({ id: 'a', content: 'oldest', timestamp: '2024-01-01T00:00:00.000Z', memory_type: 'semantic' }),
-      makeEpisode({ id: 'b', content: 'middle', timestamp: '2024-06-01T00:00:00.000Z', memory_type: 'semantic' }),
-      makeEpisode({ id: 'c', content: 'newer', timestamp: '2024-09-01T00:00:00.000Z', memory_type: 'semantic' }),
-      makeEpisode({ id: 'd', content: 'newest', timestamp: '2024-12-01T00:00:00.000Z', memory_type: 'semantic' }),
+      makeEpisode({ id: 'a', content: 'lowest', importance_score: 0.1, timestamp: '2024-01-01T00:00:00.000Z', memory_type: 'semantic' }),
+      makeEpisode({ id: 'b', content: 'mid', importance_score: 0.5, timestamp: '2024-06-01T00:00:00.000Z', memory_type: 'semantic' }),
+      makeEpisode({ id: 'c', content: 'higher', importance_score: 0.7, timestamp: '2024-09-01T00:00:00.000Z', memory_type: 'semantic' }),
+      makeEpisode({ id: 'd', content: 'highest', importance_score: 0.9, timestamp: '2024-12-01T00:00:00.000Z', memory_type: 'semantic' }),
     ]
     const ctx = buildMemoryContext(makeMemory({ semantic }))
-    // Should include the 3 newest, exclude the oldest
-    expect(ctx).toContain('newest')
-    expect(ctx).toContain('newer')
-    expect(ctx).toContain('middle')
-    expect(ctx).not.toContain('oldest')
+    // Should include the 3 highest-scored, exclude the lowest
+    expect(ctx).toContain('highest')
+    expect(ctx).toContain('higher')
+    expect(ctx).toContain('mid')
+    expect(ctx).not.toContain('lowest')
   })
 
   it('includes [COMPANION STATE] section when companion_state has keys', () => {

@@ -9,8 +9,8 @@
   "orientation": "portrait-primary",
   "categories": ["productivity", "utilities", "lifestyle"],
   "icons": [
-    { "src": "/brand/hero-eggs.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
-    { "src": "/brand/hero-eggs.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+    { "src": "/brand/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "/brand/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
   ],
   "screenshots": [
     { "src": "/brand/cover.png", "sizes": "1280x800", "type": "image/png", "form_factor": "wide" }

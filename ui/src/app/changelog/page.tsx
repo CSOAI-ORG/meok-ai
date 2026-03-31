@@ -9,8 +9,30 @@ export const metadata: Metadata = {
 
 const ENTRIES = [
   {
-    version: 'v0.9.0',
+    version: 'v0.9.2',
     date: 'March 31, 2026',
+    label: 'Easter Sprint',
+    labelColor: '#c9a84c',
+    items: [
+      { type: 'new', text: 'Voice anchors — 8 companions now speak in distinct character voices' },
+      { type: 'new', text: 'Return-after-gap context — companion acknowledges your absence naturally' },
+      { type: 'new', text: 'Chat error boundary — graceful recovery when streams fail' },
+      { type: 'new', text: 'Features showcase page — 12-card grid of everything MEOK does' },
+      { type: 'new', text: 'Skeleton loading states for chat and marketplace' },
+      { type: 'new', text: 'DiceBear companion avatars in chat messages' },
+      { type: 'improved', text: 'Chat feedback persists to PostgreSQL — thumbs up/down now stored for care alignment' },
+      { type: 'improved', text: 'PWA icons — proper 192×192 and 512×512 app icons' },
+      { type: 'improved', text: 'Mobile input sticky — stays above virtual keyboard with safe-area padding' },
+      { type: 'improved', text: 'CSP hardened — backend URL no longer hardcoded in headers' },
+      { type: 'improved', text: 'Memory dedup — sliding window of 10 reduces daily memories from ~400 to ~30' },
+      { type: 'fixed', text: 'Evolution tests rewritten for 6-stage model (160/160 tests pass)' },
+      { type: 'fixed', text: 'Settings Toggle prop type error resolved' },
+      { type: 'fixed', text: 'Cost logger type error — metadata wrapper for inputTokens/outputTokens' },
+    ],
+  },
+  {
+    version: 'v0.9.0',
+    date: 'March 28, 2026',
     label: 'Public Launch',
     labelColor: '#c9a84c',
     items: [

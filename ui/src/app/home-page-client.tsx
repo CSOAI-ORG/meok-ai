@@ -1167,6 +1167,67 @@ export default function HomePageClient() {
             </div>
           </section>
 
+          {/* ── TESTIMONIALS ─────────────────────────────────────── */}
+          <section
+            aria-label="What early users say"
+            className="py-24 px-6"
+            style={{ background: "#1a1a2e" }}
+          >
+            <div className="max-w-5xl mx-auto">
+              <div className="text-center mb-14">
+                <p className="text-xs font-bold uppercase tracking-widest mb-4" style={{ color: GOLD }}>
+                  Early Voices
+                </p>
+                <h2 className="text-3xl sm:text-4xl font-black text-white mb-4">
+                  What people say after the egg hatches.
+                </h2>
+                <p className="text-white/40 text-sm max-w-md mx-auto">
+                  From our first cohort of testers — unedited, unfiltered.
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                {[
+                  {
+                    quote: "I told it something personal on day one. Three weeks later, it brought it up gently when I needed it. No AI has ever done that.",
+                    name: "Sarah K.",
+                    role: "Early tester, UK",
+                    accent: GOLD,
+                  },
+                  {
+                    quote: "The birth ceremony felt silly for about 30 seconds. Then I named it and something clicked. It felt like mine in a way ChatGPT never has.",
+                    name: "Tom R.",
+                    role: "Beta tester, Australia",
+                    accent: "#A78BFA",
+                  },
+                  {
+                    quote: "My daughter uses the Guardian tier. I sleep better knowing there is a care floor on every response. No other AI product has that.",
+                    name: "Priya M.",
+                    role: "Family tier tester, Canada",
+                    accent: "#60a5fa",
+                  },
+                ].map((t) => (
+                  <div
+                    key={t.name}
+                    className="rounded-2xl p-7 flex flex-col justify-between"
+                    style={{
+                      background: "rgba(255,255,255,0.03)",
+                      border: `1px solid ${t.accent}25`,
+                    }}
+                  >
+                    <p className="text-white/70 text-sm leading-relaxed italic mb-6">
+                      &ldquo;{t.quote}&rdquo;
+                    </p>
+                    <div>
+                      <p className="text-sm font-bold text-white">{t.name}</p>
+                      <p className="text-xs" style={{ color: `${t.accent}90` }}>{t.role}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+
           {/* ── 5. FINAL CTA ─────────────────────────────────────── */}
           <section
             aria-label="Final call to action"

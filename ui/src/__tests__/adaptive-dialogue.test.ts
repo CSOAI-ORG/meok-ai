@@ -111,6 +111,7 @@ describe('computeStyleDirective', () => {
       const ctx = makeContext({
         taskType: 'research',
         conversationLength: 2,
+        timeOfDay: 'afternoon' as const, // fix: avoid time-dependent flakiness
       });
       const style = computeStyleDirective(ctx);
       expect(style.pacing).toBe('quick');

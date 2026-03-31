@@ -15,6 +15,7 @@ import { CookieConsent } from "@/components/cookie-consent";
 import { SovereignWidget } from "@/components/sovereign-widget";
 import { FloatingCTA } from "@/components/floating-cta";
 import { SessionTimeout } from "@/components/session-timeout";
+import { WhatsNew } from "@/components/whats-new";
 import { ExperienceModeProvider } from "@/components/experience-mode";
 import { GlobalNav } from "@/components/GlobalNav";
 import { Analytics } from "@vercel/analytics/react";
@@ -193,6 +194,7 @@ export default function RootLayout({
           </Suspense>
           <CookieConsent />
           <SessionTimeout />
+          <WhatsNew />
           <Analytics />
           <SpeedInsights />
           {/* Removed: SovereignWidget + FloatingCTA — blocked content, no real functionality */}

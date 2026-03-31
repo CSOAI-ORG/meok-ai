@@ -177,9 +177,13 @@ function ThinkingIndicator({ messageLength, characterName }: { messageLength: nu
   const name = characterName ?? 'AI';
   const label = messageLength > 200 ? `${name} is deep thinking` : `${name} is thinking`;
   return (
-    <div className="flex items-center gap-2 px-1 py-1" style={{ animation: 'fadeSlideUp 0.3s ease both' }}>
-      <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: GOLD }} />
-      <span className="text-xs font-medium" style={{ color: `${GOLD}90` }}>{label}...</span>
+    <div className="flex items-center gap-2 px-1 py-1.5" style={{ animation: 'fadeSlideUp 0.3s ease both' }}>
+      <div className="flex gap-[3px] items-center">
+        <span className="w-1.5 h-1.5 rounded-full animate-bounce" style={{ background: GOLD, animationDuration: '1.2s', animationDelay: '0ms' }} />
+        <span className="w-1.5 h-1.5 rounded-full animate-bounce" style={{ background: GOLD, opacity: 0.7, animationDuration: '1.2s', animationDelay: '200ms' }} />
+        <span className="w-1.5 h-1.5 rounded-full animate-bounce" style={{ background: GOLD, opacity: 0.4, animationDuration: '1.2s', animationDelay: '400ms' }} />
+      </div>
+      <span className="text-xs font-medium" style={{ color: `${GOLD}90` }}>{label}</span>
     </div>
   );
 }
@@ -1358,8 +1362,8 @@ export default function DashboardChatPage() {
             </div>
           )}
 
-          {/* Input area */}
-          <div className="flex-shrink-0 px-4 py-3" style={{ borderTop: '1px solid rgba(255,255,255,0.08)', background: SURFACE }}>
+          {/* Input area — sticky on mobile to stay above virtual keyboard */}
+          <div className="flex-shrink-0 px-4 py-3 sticky bottom-0 z-20" style={{ borderTop: '1px solid rgba(255,255,255,0.08)', background: SURFACE, paddingBottom: 'max(12px, env(safe-area-inset-bottom))' }}>
             <div className="flex items-center gap-1.5 mb-2">
               <PlanModeToggle mode={chatMode} onModeChange={setChatMode} />
               <span className="text-[10px] px-2 py-0.5 rounded-full border font-mono" style={{ background: 'rgba(255,255,255,0.04)', color: 'rgba(255,255,255,0.25)', borderColor: 'rgba(255,255,255,0.07)' }}>
