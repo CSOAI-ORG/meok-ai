@@ -134,8 +134,28 @@ export async function POST(req: NextRequest) {
       ts: new Date().toISOString(),
     }))
 
+    // Persist to DB — never lose a signup
+    async function persistToDB(): Promise<boolean> {
+      try {
+        const { sql } = await import('@/lib/db')
+        await sql`
+          INSERT INTO waitlist (email, name, interest, referrer)
+          VALUES (${entry.email}, ${entry.name ?? null}, ${entry.interest ?? null}, ${entry.referrer ?? null})
+          ON CONFLICT (email) DO UPDATE SET
+            name = COALESCE(EXCLUDED.name, waitlist.name),
+            interest = COALESCE(EXCLUDED.interest, waitlist.interest),
+            updated_at = NOW()
+        `
+        return true
+      } catch (err) {
+        console.error('[waitlist] DB persist error:', err)
+        return false
+      }
+    }
+
     // Best-effort integrations (parallel, never block response)
     await Promise.allSettled([
+      persistToDB(),
       sendToLoops(entry),
       notifyViaResend(entry),
     ])

@@ -62,3 +62,15 @@ CREATE INDEX IF NOT EXISTS idx_feedback_created ON message_feedback(created_at D
 -- ── Full-text search GIN index on conversation messages ─────────────────
 CREATE INDEX IF NOT EXISTS idx_conv_messages_fts
   ON conversation_messages USING GIN (to_tsvector('english', content));
+
+-- ── Waitlist (pre-launch signups) ───────────────────────────────────────
+CREATE TABLE IF NOT EXISTS waitlist (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  email TEXT NOT NULL UNIQUE,
+  name TEXT,
+  interest TEXT,
+  referrer TEXT,
+  created_at TIMESTAMPTZ DEFAULT NOW(),
+  updated_at TIMESTAMPTZ DEFAULT NOW()
+);
+CREATE INDEX IF NOT EXISTS idx_waitlist_created ON waitlist(created_at DESC);
