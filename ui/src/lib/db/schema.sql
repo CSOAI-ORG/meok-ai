@@ -44,3 +44,21 @@ CREATE INDEX IF NOT EXISTS idx_users_stripe_customer_id
 CREATE INDEX IF NOT EXISTS idx_users_family_group_id
   ON users (family_group_id)
   WHERE family_group_id IS NOT NULL;
+
+-- ── Message Feedback (thumbs up/down on chat messages) ──────────────────
+CREATE TABLE IF NOT EXISTS message_feedback (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  user_id TEXT NOT NULL,
+  message_id TEXT,
+  conversation_id UUID,
+  rating INTEGER NOT NULL CHECK (rating IN (-1, 0, 1)),
+  comment TEXT,
+  companion_id TEXT,
+  created_at TIMESTAMPTZ DEFAULT NOW()
+);
+CREATE INDEX IF NOT EXISTS idx_feedback_user ON message_feedback(user_id);
+CREATE INDEX IF NOT EXISTS idx_feedback_created ON message_feedback(created_at DESC);
+
+-- ── Full-text search GIN index on conversation messages ─────────────────
+CREATE INDEX IF NOT EXISTS idx_conv_messages_fts
+  ON conversation_messages USING GIN (to_tsvector('english', content));

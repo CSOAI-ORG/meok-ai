@@ -67,7 +67,7 @@ const nextConfig: NextConfig = {
               "style-src 'self' 'unsafe-inline'",
               "img-src 'self' data: blob: https:",
               "font-src 'self'",
-              "connect-src 'self' http://198.53.64.194:40646 https://api.anthropic.com https://api.openai.com https://*.clerk.accounts.dev https://*.ingest.sentry.io https://eu.posthog.com https://us.posthog.com wss:",
+              `connect-src 'self' ${BACKEND} https://api.anthropic.com https://api.openai.com https://*.clerk.accounts.dev https://*.ingest.sentry.io https://eu.posthog.com https://us.posthog.com wss:`,
               "frame-src https://js.stripe.com https://hooks.stripe.com",
               "worker-src 'self' blob:",
             ].join("; "),

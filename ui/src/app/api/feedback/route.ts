@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { getAuthUserId } from '@/lib/api-auth';
 
 /* Simple in-memory rate limiter: max 5 requests per IP per minute */
 const rateLimitMap = new Map<string, { count: number; resetAt: number }>();
@@ -62,23 +63,37 @@ export async function POST(request: NextRequest) {
     comment?: string;
   };
 
-  if (!category || typeof category !== "string") {
-    return NextResponse.json(
-      { error: "Category is required." },
-      { status: 400 }
-    );
+  // Chat message ratings (thumbs up/down) — only need messageId + rating
+  const isChatRating = typeof rating === 'number' && messageId;
+
+  // General feedback requires category + message
+  if (!isChatRating) {
+    if (!category || typeof category !== "string") {
+      return NextResponse.json({ error: "Category is required." }, { status: 400 });
+    }
+    if (!message || typeof message !== "string" || message.trim().length === 0) {
+      return NextResponse.json({ error: "Message is required." }, { status: 400 });
+    }
   }
 
-  if (!message || typeof message !== "string" || message.trim().length === 0) {
-    return NextResponse.json(
-      { error: "Message is required." },
-      { status: 400 }
-    );
+  // Persist chat ratings to DB
+  if (isChatRating) {
+    try {
+      const userId = await getAuthUserId();
+      const { sql } = await import('@/lib/db');
+      await (sql as any)`
+        INSERT INTO message_feedback (user_id, message_id, rating, comment, companion_id)
+        VALUES (${userId || 'anonymous'}, ${messageId}, ${rating}, ${comment || null}, ${(body as any).companionId || null})
+      `;
+    } catch (err) {
+      // Non-fatal — log and continue (SOV3 care loop still fires below)
+      console.error('[feedback] DB persist failed:', err);
+    }
   }
 
   console.log("[feedback]", {
-    category,
-    message: message.trim().slice(0, 2000),
+    category: category || 'chat_rating',
+    message: message?.trim().slice(0, 2000) || null,
     email: email || null,
     messageId: messageId || null,
     rating: rating ?? null,
