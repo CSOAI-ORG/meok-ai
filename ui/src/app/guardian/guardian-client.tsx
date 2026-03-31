@@ -450,10 +450,13 @@ export default function GuardianClient() {
           <h2 className="mb-6 text-3xl font-bold md:text-4xl">
             Your family deserves Guardian.
           </h2>
-          <p className="mx-auto mb-10 max-w-xl leading-relaxed text-white/60">
+          <p className="mx-auto mb-4 max-w-xl leading-relaxed text-white/60">
             Guardian activates automatically when your companion reaches Growing
             Form (50 interactions). Family Guardian — up to 5 people — is
-            available on Sovereign Family tier.
+            available on Sovereign Pro tier.
+          </p>
+          <p className="mx-auto mb-10 max-w-md text-sm text-white/40">
+            Included in Sovereign (£9/mo) and Sovereign Pro (£19/mo). Free tier gets basic safety. No add-on fees. No upsells.
           </p>
           <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
             <Link

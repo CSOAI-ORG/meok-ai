@@ -1050,6 +1050,37 @@ export default function PricingClient() {
         </div>
       </section>
 
+      {/* ── TRUST STRIP ──────────────────────────────────────────────────── */}
+      <section className="py-16 px-6 bg-white border-t border-[#1a1a2e]/[0.06]">
+        <div className="max-w-4xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            {[
+              { value: '160', label: 'Tests passing', sub: 'Zero regressions' },
+              { value: '78', label: 'MCP tools', sub: 'Sovereign Temple' },
+              { value: '14', label: 'AI models', sub: 'Local + cloud' },
+              { value: '0', label: 'Data sold', sub: 'Ever. Period.' },
+            ].map((s) => (
+              <div key={s.label}>
+                <p className="text-3xl font-black text-[#1a1a2e]">{s.value}</p>
+                <p className="text-sm font-semibold text-[#1a1a2e]/70 mt-1">{s.label}</p>
+                <p className="text-xs text-[#1a1a2e]/40 mt-0.5">{s.sub}</p>
+              </div>
+            ))}
+          </div>
+          <div className="flex flex-wrap items-center justify-center gap-6 mt-10 text-xs text-[#1a1a2e]/40">
+            <span>Encrypted memory</span>
+            <span className="w-1 h-1 rounded-full bg-[#1a1a2e]/20" />
+            <span>GDPR compliant</span>
+            <span className="w-1 h-1 rounded-full bg-[#1a1a2e]/20" />
+            <span>Full data export</span>
+            <span className="w-1 h-1 rounded-full bg-[#1a1a2e]/20" />
+            <span>30-day money-back</span>
+            <span className="w-1 h-1 rounded-full bg-[#1a1a2e]/20" />
+            <span>Cancel anytime</span>
+          </div>
+        </div>
+      </section>
+
       {/* ── FAQ ───────────────────────────────────────────────────────────── */}
       <section className="py-24 px-6 bg-[#f5f0e8]">
         <div className="max-w-3xl mx-auto">
