@@ -175,7 +175,7 @@ function SovereignBadge({ model, latency, care_score, streaming, contextPct, tok
         className="text-[10px] font-mono px-2 py-0.5 rounded-full border"
         style={{ background: 'rgba(255,255,255,0.04)', color: 'rgba(255,255,255,0.3)', borderColor: 'rgba(255,255,255,0.07)' }}
       >
-        🤖 {model ?? 'Claude Sonnet'} · {latency ?? 0}ms · ☁️ Cloud · Care {care_score ?? 87}/100 · $({cost})
+        🤖 {model ?? 'Claude Sonnet'} · {latency ?? 0}ms · ☁️ Cloud · Care <span style={{ color: (care_score ?? 85) >= 80 ? '#22c55e' : (care_score ?? 85) >= 60 ? '#c9a84c' : '#ef4444' }}>{care_score ?? 85}/100</span> · $({cost})
         {contextPct !== undefined && ` · ctx: ${Math.round(contextPct)}%`}
       </span>
     </div>
@@ -378,6 +378,11 @@ export default function DashboardChatPage() {
   }, [voiceTranscript]);
 
   // bondLevel computed inline where displayed
+  // Search overlay
+  const [searchOpen, setSearchOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [searchResults, setSearchResults] = useState<Array<{ id: string; content: string; role: string; conversation_id: string; created_at: string }>>([]);
+  const searchInputRef = useRef<HTMLInputElement>(null);
   const [highContrast, setHighContrast] = useState(false);
   const [fontSize, setFontSize] = useState(14); // in pixels, range 12-20
   const [focusedMsgIdx, setFocusedMsgIdx] = useState<number | null>(null);
@@ -631,9 +636,23 @@ export default function DashboardChatPage() {
     _currentConvIdRef.current = currentConversationId;
   }, [currentConversationId]);
 
-  // Auto-scroll — smooth scroll to exact bottom of messages list
+  // Auto-scroll — only if user hasn't scrolled up
+  const [userScrolledUp, setUserScrolledUp] = useState(false);
+  const messagesContainerRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
-    bottomRef.current?.scrollIntoView({ behavior: 'smooth', block: 'end' });
+    const container = messagesContainerRef.current;
+    if (!container) return;
+    function onScroll() {
+      const atBottom = container!.scrollHeight - container!.scrollTop - container!.clientHeight < 100;
+      setUserScrolledUp(!atBottom);
+    }
+    container.addEventListener('scroll', onScroll, { passive: true });
+    return () => container.removeEventListener('scroll', onScroll);
+  }, []);
+
+  useEffect(() => {
+    if (!userScrolledUp) bottomRef.current?.scrollIntoView({ behavior: 'smooth', block: 'end' });
   }, [messages]);
 
   // Keyboard navigation between messages (arrow keys)
@@ -682,11 +701,40 @@ export default function DashboardChatPage() {
         e.preventDefault();
         setSidebarOpen(v => !v);
       }
+      // Cmd+K or Ctrl+K → search conversations
+      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+        e.preventDefault();
+        setSearchOpen(v => !v);
+        setSearchQuery('');
+        setSearchResults([]);
+      }
+      // Escape closes search
+      if (e.key === 'Escape' && searchOpen) {
+        setSearchOpen(false);
+      }
     }
     window.addEventListener('keydown', handleShortcuts);
     return () => window.removeEventListener('keydown', handleShortcuts);
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  // Focus search input when opened
+  useEffect(() => {
+    if (searchOpen) setTimeout(() => searchInputRef.current?.focus(), 100);
+  }, [searchOpen]);
+
+  // Search conversations
+  async function handleSearch(q: string) {
+    setSearchQuery(q);
+    if (q.length < 2) { setSearchResults([]); return; }
+    try {
+      const res = await fetch(`/api/user/conversations/messages?q=${encodeURIComponent(q)}&limit=10`);
+      if (res.ok) {
+        const data = await res.json();
+        setSearchResults(data.messages ?? []);
+      }
+    } catch { /* non-critical */ }
+  }
 
   // Auto-resize textarea
   useEffect(() => {
@@ -1000,7 +1048,14 @@ export default function DashboardChatPage() {
                   />
                   <div className="flex flex-col min-w-0">
                     <div className="flex items-center gap-1.5">
-                      <span className="text-sm font-semibold truncate" style={{ color: `${CREAM}90` }}>{charName}</span>
+                      <span className="text-sm font-semibold truncate" style={{ color: `${CREAM}90` }}>
+                        {charName}
+                        {currentConversationId && conversations.find(c => c.id === currentConversationId)?.title && (
+                          <span className="text-[10px] font-normal ml-1.5" style={{ color: 'rgba(255,255,255,0.3)' }}>
+                            — {conversations.find(c => c.id === currentConversationId)!.title}
+                          </span>
+                        )}
+                      </span>
                       <span className="w-2 h-2 rounded-full flex-shrink-0 animate-pulse" style={{ background: currentMood.color }} title={`Mood: ${currentMood.label}`} />
                       <span className="text-[10px] font-medium" style={{ color: currentMood.color }}>{currentMood.label}</span>
                     </div>
@@ -1100,7 +1155,7 @@ export default function DashboardChatPage() {
           </header>
 
           {/* Messages area */}
-          <div className="flex-1 overflow-y-auto relative" role="log" aria-live="polite" aria-label="Chat messages" style={{ background: DEEP }}>
+          <div ref={messagesContainerRef} className="flex-1 overflow-y-auto relative" role="log" aria-live="polite" aria-label="Chat messages" style={{ background: DEEP }}>
             {/* Context window indicator */}
             {(() => {
               const estimatedTokens = messages.length * 100;
@@ -1377,7 +1432,12 @@ export default function DashboardChatPage() {
                             </span>
                           </>
                         )}
-                        <p className="text-[10px] mt-1" style={{ color: 'rgba(255,255,255,0.25)' }}>{formatTime((msg as unknown as { createdAt?: Date }).createdAt ?? new Date())}</p>
+                        <p className="text-[10px] mt-1" style={{ color: 'rgba(255,255,255,0.25)' }}>
+                          {formatTime((msg as unknown as { createdAt?: Date }).createdAt ?? new Date())}
+                          {text.split(/\s+/).length > 100 && (
+                            <span className="ml-2">{text.split(/\s+/).length} words · ~{Math.ceil(text.split(/\s+/).length / 200)} min read</span>
+                          )}
+                        </p>
                       </div>{/* end flex-1 min-w-0 */}
                       </div>
                     )}
@@ -1431,6 +1491,18 @@ export default function DashboardChatPage() {
                 </button>
               </div>
             </div>
+          )}
+
+          {/* Scroll to bottom button */}
+          {userScrolledUp && messages.length > 0 && (
+            <button
+              onClick={() => { bottomRef.current?.scrollIntoView({ behavior: 'smooth' }); setUserScrolledUp(false); }}
+              className="absolute bottom-20 left-1/2 -translate-x-1/2 z-30 px-3 py-1.5 rounded-full text-xs font-semibold shadow-lg transition-all hover:scale-105"
+              style={{ background: GOLD, color: DEEP }}
+              aria-label="Scroll to latest messages"
+            >
+              ↓ New messages
+            </button>
           )}
 
           {/* Input area — sticky on mobile to stay above virtual keyboard */}
@@ -1596,6 +1668,58 @@ export default function DashboardChatPage() {
           style={{ background: SURFACE, border: `1px solid ${GOLD}40`, color: GOLD }}
         >
           {toast}
+        </div>
+      )}
+
+      {/* Search overlay (Cmd+K) */}
+      {searchOpen && (
+        <div
+          className="fixed inset-0 z-50 flex items-start justify-center pt-24 px-4"
+          style={{ background: 'rgba(13,12,24,0.85)', backdropFilter: 'blur(6px)' }}
+          onClick={() => setSearchOpen(false)}
+        >
+          <div
+            className="w-full max-w-lg rounded-2xl overflow-hidden shadow-2xl"
+            style={{ background: SURFACE, border: `1px solid ${GOLD}30` }}
+            onClick={e => e.stopPropagation()}
+          >
+            <div className="flex items-center gap-3 px-4 py-3" style={{ borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
+              <span className="text-white/30 text-sm">🔍</span>
+              <input
+                ref={searchInputRef}
+                type="text"
+                value={searchQuery}
+                onChange={e => handleSearch(e.target.value)}
+                placeholder="Search your conversations…"
+                className="flex-1 bg-transparent text-sm text-white outline-none placeholder:text-white/30"
+                autoFocus
+              />
+              <kbd className="text-[10px] px-1.5 py-0.5 rounded border text-white/25" style={{ borderColor: 'rgba(255,255,255,0.1)' }}>esc</kbd>
+            </div>
+            {searchResults.length > 0 && (
+              <div className="max-h-72 overflow-y-auto">
+                {searchResults.map((r, i) => (
+                  <button
+                    key={`${r.conversation_id}-${i}`}
+                    onClick={() => { handleLoadConversation(r.conversation_id); setSearchOpen(false); }}
+                    className="w-full text-left px-4 py-3 text-xs hover:bg-white/5 transition-colors"
+                    style={{ borderBottom: '1px solid rgba(255,255,255,0.04)' }}
+                  >
+                    <p className="text-white/70 truncate">{r.content}</p>
+                    <p className="text-white/25 mt-0.5 text-[10px]">
+                      {r.role === 'user' ? 'You' : 'Companion'} · {new Date(r.created_at).toLocaleDateString()}
+                    </p>
+                  </button>
+                ))}
+              </div>
+            )}
+            {searchQuery.length >= 2 && searchResults.length === 0 && (
+              <p className="px-4 py-6 text-center text-xs text-white/30">No results found</p>
+            )}
+            {searchQuery.length < 2 && (
+              <p className="px-4 py-6 text-center text-xs text-white/20">Type 2+ characters to search</p>
+            )}
+          </div>
         </div>
       )}
     </>

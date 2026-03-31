@@ -59,6 +59,8 @@ export function SovereignDisplay({
   memoryCount,
   estimatedCost,
   memoriesRetrieved,
+  stageName,
+  interactions,
 }: SovereignDisplayProps) {
   const [expanded, setExpanded] = useState(false);
   const [copied, setCopied] = useState(false);
@@ -173,6 +175,8 @@ export function SovereignDisplay({
           <MetaRow icon={'\u23F1'} label="Latency" value={latencyMs !== undefined ? `${latencyMs}ms` : undefined} />
           <MetaRow icon={'\u2601'} label="Location" value={processingLocation} />
           <MetaRow icon={'\u2630'} label="Memory Count" value={memoryCount} />
+          <MetaRow icon={'\u{1F95A}'} label="Evolution" value={stageName} />
+          <MetaRow icon={'\u{1F4AC}'} label="Interactions" value={interactions} />
         </div>
       )}
     </div>
