@@ -4,6 +4,141 @@ export const runtime = 'edge';
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
+
+  const name = searchParams.get('name');
+  const archetype = searchParams.get('archetype');
+
+  // Hatch companion card mode
+  if (name) {
+    return new ImageResponse(
+      (
+        <div
+          style={{
+            background: '#0d0c18',
+            width: '100%',
+            height: '100%',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+            fontFamily: 'system-ui, sans-serif',
+            position: 'relative',
+            overflow: 'hidden',
+          }}
+        >
+          {/* Radial glow behind companion name */}
+          <div
+            style={{
+              position: 'absolute',
+              top: '42%',
+              left: '50%',
+              width: 700,
+              height: 700,
+              transform: 'translate(-50%, -50%)',
+              background:
+                'radial-gradient(ellipse at center, rgba(201,168,76,0.22) 0%, rgba(201,168,76,0.08) 35%, rgba(201,168,76,0.02) 55%, transparent 70%)',
+              borderRadius: '50%',
+            }}
+          />
+
+          {/* MEOK.AI branding — top left */}
+          <div
+            style={{
+              position: 'absolute',
+              top: 40,
+              left: 48,
+              color: '#c9a84c',
+              fontSize: 28,
+              fontWeight: 800,
+              letterSpacing: 2,
+              opacity: 0.9,
+            }}
+          >
+            MEOK.AI
+          </div>
+
+          {/* Companion name — large gold */}
+          <div
+            style={{
+              color: '#c9a84c',
+              fontSize: name.length > 12 ? 96 : 120,
+              fontWeight: 900,
+              letterSpacing: -2,
+              lineHeight: 1,
+              textAlign: 'center',
+              marginTop: -20,
+            }}
+          >
+            {name}
+          </div>
+
+          {/* Archetype subtitle */}
+          {archetype && (
+            <div
+              style={{
+                color: 'rgba(245,240,232,0.7)',
+                fontSize: 36,
+                fontWeight: 500,
+                marginTop: 20,
+                letterSpacing: 4,
+                textTransform: 'uppercase',
+              }}
+            >
+              {archetype}
+            </div>
+          )}
+
+          {/* Tagline */}
+          <div
+            style={{
+              color: 'rgba(245,240,232,0.45)',
+              fontSize: 24,
+              fontWeight: 400,
+              marginTop: 40,
+              letterSpacing: 1,
+            }}
+          >
+            Sovereign AI for Humans
+          </div>
+
+          {/* Bottom URL */}
+          <div
+            style={{
+              position: 'absolute',
+              bottom: 40,
+              color: '#c9a84c',
+              fontSize: 18,
+              fontWeight: 600,
+              letterSpacing: 3,
+              opacity: 0.6,
+            }}
+          >
+            meok.ai/hatch
+          </div>
+
+          {/* Bottom gold border */}
+          <div
+            style={{
+              position: 'absolute',
+              bottom: 0,
+              left: 0,
+              right: 0,
+              height: 4,
+              background:
+                'linear-gradient(90deg, transparent 0%, #c9a84c 30%, #c9a84c 70%, transparent 100%)',
+              opacity: 0.5,
+            }}
+          />
+        </div>
+      ),
+      {
+        width: 1200,
+        height: 630,
+      }
+    );
+  }
+
+  // Default generic mode (existing behavior)
   const title = searchParams.get('title') || 'MEOK.AI';
   const desc =
     searchParams.get('desc') ||
