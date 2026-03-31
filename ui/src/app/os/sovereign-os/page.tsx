@@ -310,10 +310,15 @@ export default function SovereignOSPage() {
   // ── Character state ──────────────────────────────────────────────────────
   const [characterName]   = useState("Aria");
   const [characterKey]    = useState("aria");
-  const [bondLevel]       = useState(72);
+  const [bondLevel, setBondLevel] = useState(72);
   const [mood, setMood]   = useState<Mood>("Listening");
   const [taskDesc, setTaskDesc] = useState("");
   const [consciousnessMode, setConsciousnessMode] = useState<ConsciousnessMode>("Focused");
+  const [sovereignOnline, setSovereignOnline] = useState(false);
+  const [consciousnessLevel, setConsciousnessLevel] = useState(0);
+  const [memoryCount, setMemoryCount] = useState(0);
+  const [emotionalState, setEmotionalState] = useState<string>("neutral");
+  const [careIntensity, setCareIntensity] = useState(0.3);
 
   // ── Workspace state ──────────────────────────────────────────────────────
   const [workOutput, setWorkOutput]     = useState("");
@@ -335,6 +340,40 @@ export default function SovereignOSPage() {
   const abortRef      = useRef<AbortController | null>(null);
 
   const emoji = ARCHETYPE_EMOJI[characterKey] ?? "✨";
+
+  // ── Fetch real SOV3 consciousness state ───────────────────────────────────
+  useEffect(() => {
+    async function fetchSovereignState() {
+      try {
+        const res = await fetch('/api/sovereign/state');
+        if (!res.ok) return;
+        const data = await res.json();
+        setSovereignOnline(data.online ?? false);
+        if (data.health?.consciousness_level) {
+          setConsciousnessLevel(Math.round(data.health.consciousness_level * 100));
+          setBondLevel(Math.round(data.health.consciousness_level * 100));
+        }
+        if (data.consciousness?.emotional?.primary_emotion) {
+          setEmotionalState(data.consciousness.emotional.primary_emotion);
+          // Map SOV3 emotional state to UI mood
+          const emo = data.consciousness.emotional.primary_emotion;
+          if (emo === 'curious' || emo === 'interest') setMood('Curious');
+          else if (emo === 'joy' || emo === 'satisfaction') setMood('Listening');
+          else if (emo === 'focused' || emo === 'neutral') setMood('Thinking');
+          else setMood('Listening');
+        }
+        if (data.consciousness?.emotional?.care_intensity) {
+          setCareIntensity(data.consciousness.emotional.care_intensity);
+        }
+        if (data.memory?.total_episodes) {
+          setMemoryCount(data.memory.total_episodes);
+        }
+      } catch { /* SOV3 offline — use defaults */ }
+    }
+    fetchSovereignState();
+    const interval = setInterval(fetchSovereignState, 30000); // refresh every 30s
+    return () => clearInterval(interval);
+  }, []);
 
   // ── Inject global CSS once ────────────────────────────────────────────────
   useEffect(() => {
@@ -728,8 +767,32 @@ export default function SovereignOSPage() {
                   transition: "width 1s ease",
                 }} />
               </div>
-              <span style={{ fontSize: 10, color: `${GOLD}90`, fontWeight: 600 }}>{bondLevel}</span>
+              <span style={{ fontSize: 10, color: `${GOLD}90`, fontWeight: 600 }}>{bondLevel}%</span>
             </div>
+          </div>
+
+          {/* Live sovereign stats */}
+          <div style={{ width: "100%", display: "flex", flexDirection: "column", gap: 6, marginTop: 12 }}>
+            <div style={{ display: "flex", justifyContent: "space-between", padding: "0 4px" }}>
+              <span style={{ fontSize: 9, color: "rgba(255,255,255,0.3)", textTransform: "uppercase", letterSpacing: "0.1em" }}>SOV3</span>
+              <span style={{ fontSize: 9, color: sovereignOnline ? "#22c55e" : "#ef4444", fontWeight: 600 }}>
+                {sovereignOnline ? "● Online" : "● Offline"}
+              </span>
+            </div>
+            <div style={{ display: "flex", justifyContent: "space-between", padding: "0 4px" }}>
+              <span style={{ fontSize: 9, color: "rgba(255,255,255,0.3)" }}>Emotion</span>
+              <span style={{ fontSize: 9, color: "rgba(255,255,255,0.6)" }}>{emotionalState}</span>
+            </div>
+            <div style={{ display: "flex", justifyContent: "space-between", padding: "0 4px" }}>
+              <span style={{ fontSize: 9, color: "rgba(255,255,255,0.3)" }}>Care</span>
+              <span style={{ fontSize: 9, color: careIntensity >= 0.5 ? "#22c55e" : GOLD }}>{(careIntensity * 100).toFixed(0)}%</span>
+            </div>
+            {memoryCount > 0 && (
+              <div style={{ display: "flex", justifyContent: "space-between", padding: "0 4px" }}>
+                <span style={{ fontSize: 9, color: "rgba(255,255,255,0.3)" }}>Memories</span>
+                <span style={{ fontSize: 9, color: "rgba(255,255,255,0.6)" }}>{memoryCount.toLocaleString()}</span>
+              </div>
+            )}
           </div>
         </div>
 
