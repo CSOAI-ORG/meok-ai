@@ -74,7 +74,9 @@ export async function POST(req: NextRequest) {
 
   try {
     const body = await req.json() as { companion_id?: string; title?: string };
-    const companion_id = body.companion_id ?? 'aria';
+    const rawCompanionId = body.companion_id ?? 'aria';
+    // Validate companion_id is alphanumeric/hyphens only (prevent injection of weird IDs)
+    const companion_id = /^[a-zA-Z0-9_-]{1,64}$/.test(rawCompanionId) ? rawCompanionId : 'aria';
     const title = (body.title ?? 'New conversation').slice(0, 255);
     const now = new Date().toISOString();
 
