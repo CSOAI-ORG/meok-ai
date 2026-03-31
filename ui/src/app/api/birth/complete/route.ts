@@ -35,7 +35,7 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
     return NextResponse.json({ error: 'companionName and archetype are required' }, { status: 400 });
   }
 
-  if (!covenantAccepted) {
+  if (covenantAccepted !== true) {
     return NextResponse.json({ error: 'Maternal Covenant must be accepted' }, { status: 400 });
   }
 

@@ -188,8 +188,11 @@ export async function POST(req: NextRequest): Promise<Response> {
       );
     }
   } catch (err) {
-    // Non-fatal: if rate limiter fails, continue
     console.error('[api/chat] Rate limit check failed:', err);
+    return NextResponse.json(
+      { error: 'Service temporarily unavailable. Please try again.' },
+      { status: 503 },
+    );
   }
 
   // 2. Parse body

@@ -131,7 +131,7 @@ export async function GET() {
   };
 
   return NextResponse.json(response, {
-    status: response.status === 'unhealthy' ? 503 : 200,
+    status: response.status === 'healthy' ? 200 : 503,
     headers: { 'Cache-Control': 'no-store' },
   });
 }

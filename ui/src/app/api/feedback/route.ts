@@ -83,7 +83,7 @@ export async function POST(request: NextRequest) {
       const { sql } = await import('@/lib/db');
       await (sql as any)`
         INSERT INTO message_feedback (user_id, message_id, rating, comment, companion_id)
-        VALUES (${userId || 'anonymous'}, ${messageId}, ${rating}, ${comment || null}, ${(body as any).companionId || null})
+        VALUES (${userId || `anon_${Date.now()}`}, ${messageId}, ${rating}, ${comment || null}, ${(body as any).companionId || null})
       `;
     } catch (err) {
       // Non-fatal — log and continue (SOV3 care loop still fires below)

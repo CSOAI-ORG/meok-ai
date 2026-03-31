@@ -59,8 +59,27 @@ export async function checkRateLimitAsync(userId: string, tier: RateLimitTier): 
 
 /** Sync shim for backwards compat — uses in-process Map */
 const _sb = new Map<string, TokenBucket>();
+const MAX_BUCKET_ENTRIES = 10_000;
+let _lastCleanup = Date.now();
+
+/** Prune stale entries from the in-memory rate limit map */
+function pruneStaleEntries() {
+  if (Date.now() - _lastCleanup < 60_000) return; // at most once per minute
+  _lastCleanup = Date.now();
+  const today = new Date().toISOString().slice(0, 10);
+  for (const key of _sb.keys()) {
+    if (!key.endsWith(today)) _sb.delete(key);
+  }
+  // Hard cap as safety net
+  if (_sb.size > MAX_BUCKET_ENTRIES) {
+    const excess = _sb.size - MAX_BUCKET_ENTRIES;
+    const iter = _sb.keys();
+    for (let i = 0; i < excess; i++) { const k = iter.next().value; if (k) _sb.delete(k); }
+  }
+}
 
 export function checkRateLimit(userId: string, tier: RateLimitTier): RateLimitResult {
+  pruneStaleEntries();
   const limit = TIER_LIMITS[tier];
   if (limit === -1) return { allowed: true, remaining: Infinity, resetAt: 0 };
   const key = `${userId}:${new Date().toISOString().slice(0, 10)}`;
