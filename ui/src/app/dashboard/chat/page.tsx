@@ -435,8 +435,14 @@ export default function DashboardChatPage() {
       }
       const meokStageName = res.headers.get('X-MEOK-StageName');
       const meokInteractions = res.headers.get('X-MEOK-Interactions');
-      if (meokStageName) {
-        setSovereignDisplay(prev => ({ ...prev, stageName: meokStageName, interactions: meokInteractions ? parseInt(meokInteractions, 10) : undefined }));
+      const meokMemories = res.headers.get('X-MEOK-Memories');
+      if (meokStageName || meokMemories) {
+        setSovereignDisplay(prev => ({
+          ...prev,
+          ...(meokStageName ? { stageName: meokStageName } : {}),
+          ...(meokInteractions ? { interactions: parseInt(meokInteractions, 10) } : {}),
+          ...(meokMemories ? { memoriesRetrieved: parseInt(meokMemories, 10) } : {}),
+        }));
       }
       return res;
     },

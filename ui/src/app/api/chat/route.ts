@@ -314,9 +314,11 @@ export async function POST(req: NextRequest): Promise<Response> {
   let sessionPatterns: import('@/lib/memory').ProceduralPattern[] = [];
   let sessionProfile: import('@/lib/user-profile').UserProfile | null = null;
 
+  let memoryCount = 0;
   try {
     const memory = await retrieveMemory(userId, cid, trimmed);
     memoryCtx = buildMemoryContext(memory);
+    memoryCount = memory.semantic.length + memory.short_term.length;
   } catch (err) {
     console.error('[api/chat] Memory retrieval failed:', err);
   }
@@ -758,6 +760,7 @@ You are LIVE and operational. Report this status when asked.`;
     sovereignHeaders.set('X-MEOK-Stage', String(stage.id));
     sovereignHeaders.set('X-MEOK-StageName', stage.name);
     sovereignHeaders.set('X-MEOK-Interactions', String(totalMessages));
+    sovereignHeaders.set('X-MEOK-Memories', String(memoryCount));
 
     return new Response(streamResponse.body, {
       status: streamResponse.status,
