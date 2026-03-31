@@ -221,7 +221,7 @@ function SocialProofSection() {
                 {s.display}
               </div>
               <div className="text-white/70 font-semibold text-sm mb-1">{s.label}</div>
-              <div className="text-white/25 text-xs">{s.sub}</div>
+              <div className="text-white/40 text-xs">{s.sub}</div>
             </div>
           ))}
         </div>
@@ -452,7 +452,7 @@ function ExitIntentPopup() {
 
             <button
               onClick={dismiss}
-              className="mt-4 text-xs text-white/25 hover:text-white/50 transition-colors underline underline-offset-2"
+              className="mt-4 text-xs text-white/40 hover:text-white/50 transition-colors underline underline-offset-2"
             >
               No thanks, I don&apos;t want early access
             </button>
@@ -671,7 +671,7 @@ export default function HomePageClient() {
                       {item.stat}
                     </div>
                     <div className="text-sm text-white/60 font-semibold">{item.label}</div>
-                    <div className="text-xs text-white/25 mt-0.5">{item.sub}</div>
+                    <div className="text-xs text-white/40 mt-0.5">{item.sub}</div>
                   </div>
                 ))}
               </div>
@@ -799,7 +799,7 @@ export default function HomePageClient() {
                         className="rounded-xl px-4 py-2.5 flex items-center gap-2"
                         style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)" }}
                       >
-                        <span className="text-sm text-white/25 flex-1">Message Aria...</span>
+                        <span className="text-sm text-white/40 flex-1">Message Aria...</span>
                         <div className="w-7 h-7 rounded-full flex items-center justify-center" style={{ background: `${GOLD}30` }}>
                           <ArrowRight className="w-3.5 h-3.5" style={{ color: GOLD }} />
                         </div>
@@ -1084,11 +1084,11 @@ export default function HomePageClient() {
                 ].map((item) => (
                   <div key={item.feature} className="flex items-start gap-3 px-4 py-3 rounded-lg" style={{ background: "rgba(255,255,255,0.03)" }}>
                     <span className="text-white/50 text-sm font-medium shrink-0">{item.feature}</span>
-                    <span className="text-white/25 text-sm ml-auto">{item.status}</span>
+                    <span className="text-white/40 text-sm ml-auto">{item.status}</span>
                   </div>
                 ))}
               </div>
-              <p className="text-white/25 text-xs italic">
+              <p className="text-white/40 text-xs italic">
                 We think transparency about limitations builds more trust than pretending they don&apos;t exist.
               </p>
             </div>
