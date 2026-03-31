@@ -19,6 +19,7 @@ import { route, type Tier, getEffortLevel, getThinkingBudget } from '@/lib/llm-r
 import { compressContext } from '@/lib/context-compressor';
 import { getUserById, incrementMessageCount, getUserProfile, updateUserProfile, TIER_LIMITS, addBondPoints, storeDiaryEntry, getSignalsSentThisWeek, queueCareSignal, createNotification } from '@/lib/db/user';
 import { getCharacter } from '@/lib/characters';
+import { getEvolutionStage } from '@/lib/evolution';
 import { analyzeEmotion, formatEmotionContext } from '@/lib/emotion';
 import {
   retrieveMemory, buildMemoryContext, storeMemory,
@@ -734,12 +735,29 @@ You are LIVE and operational. Report this status when asked.`;
     const streamResponse = result.toTextStreamResponse();
     const location = model.startsWith('local-') || model.startsWith('ollama-') ? 'local' : 'cloud';
     const sovereignHeaders = new Headers(streamResponse.headers);
+    // Compute real care score from emotion analysis + memory importance
+    // Care score = baseline 70 + emotion confidence bonus + importance bonus + valence adjustment
+    const careScore = Math.min(100, Math.max(40, Math.round(
+      70
+      + (emotionState.confidence * 15)                // +0-15 for understanding the user's emotion
+      + (importance * 10)                              // +0-10 for important messages getting more care
+      + (emotionState.valence < -0.3 ? 10 : 0)        // +10 bonus for distressed users (extra care)
+      - (emotionState.arousal > 0.8 ? 5 : 0)          // -5 for very high arousal (potential escalation)
+    )));
+
     sovereignHeaders.set('X-MEOK-Model', model);
     sovereignHeaders.set('X-MEOK-TaskType', taskType);
     sovereignHeaders.set('X-MEOK-Effort', effortLevel);
     sovereignHeaders.set('X-MEOK-Emotion', emotionState.primary);
     sovereignHeaders.set('X-MEOK-Language', langDetection.language);
     sovereignHeaders.set('X-MEOK-Location', location);
+    sovereignHeaders.set('X-MEOK-CareScore', String(careScore));
+    // Evolution metadata
+    const totalMessages = (user?.messages_total ?? 0) + 1;
+    const stage = getEvolutionStage(totalMessages);
+    sovereignHeaders.set('X-MEOK-Stage', String(stage.id));
+    sovereignHeaders.set('X-MEOK-StageName', stage.name);
+    sovereignHeaders.set('X-MEOK-Interactions', String(totalMessages));
 
     return new Response(streamResponse.body, {
       status: streamResponse.status,

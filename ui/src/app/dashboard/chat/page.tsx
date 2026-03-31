@@ -417,6 +417,7 @@ export default function DashboardChatPage() {
       const meokEmotion = res.headers.get('X-MEOK-Emotion');
       const meokLanguage = res.headers.get('X-MEOK-Language');
       const meokLocation = res.headers.get('X-MEOK-Location');
+      const meokCareScore = res.headers.get('X-MEOK-CareScore');
       if (meokModel || meokTaskType) {
         setSovereignDisplay({
           model: meokModel ?? undefined,
@@ -427,6 +428,15 @@ export default function DashboardChatPage() {
           guardianPassed: true, // reached here means guardian passed
           processingLocation: meokLocation ?? undefined,
         });
+      }
+      // Update care score + evolution from real server computation
+      if (meokCareScore) {
+        setSovereignMeta(prev => prev ? { ...prev, care_score: parseInt(meokCareScore, 10) } : prev);
+      }
+      const meokStageName = res.headers.get('X-MEOK-StageName');
+      const meokInteractions = res.headers.get('X-MEOK-Interactions');
+      if (meokStageName) {
+        setSovereignDisplay(prev => ({ ...prev, stageName: meokStageName, interactions: meokInteractions ? parseInt(meokInteractions, 10) : undefined }));
       }
       return res;
     },
@@ -988,7 +998,9 @@ export default function DashboardChatPage() {
                       <span className="w-2 h-2 rounded-full flex-shrink-0 animate-pulse" style={{ background: currentMood.color }} title={`Mood: ${currentMood.label}`} />
                       <span className="text-[10px] font-medium" style={{ color: currentMood.color }}>{currentMood.label}</span>
                     </div>
-                    <span className="text-[11px] font-semibold" style={{ color: GOLD }}>Bond Level {Math.min(10, Math.floor((loadedHistory.length + messages.length) / 5) + 1)} ✦</span>
+                    <span className="text-[11px] font-semibold" style={{ color: GOLD }}>
+                      {sovereignDisplay.stageName ?? `Bond ${Math.min(10, Math.floor((loadedHistory.length + messages.length) / 5) + 1)}`} ✦
+                    </span>
                   </div>
                 </div>
               );
@@ -1202,7 +1214,7 @@ export default function DashboardChatPage() {
                           return <img src={av} alt="" className="w-6 h-6 rounded-full flex-shrink-0 mt-1" style={{ opacity: 0.85 }} loading="lazy" decoding="async" />;
                         })()}
                         <div className="flex-1 min-w-0">
-                        <SovereignBadge model={selectedModelConfig.label} latency={isStreamingMsg ? undefined : sovereignMeta?.latency} care_score={85} streaming={isStreamingMsg} contextPct={isStreamingMsg ? undefined : contextUsagePct} tokens={isStreamingMsg ? undefined : sovereignMeta?.tokens} />
+                        <SovereignBadge model={selectedModelConfig.label} latency={isStreamingMsg ? undefined : sovereignMeta?.latency} care_score={isStreamingMsg ? undefined : sovereignMeta?.care_score ?? 85} streaming={isStreamingMsg} contextPct={isStreamingMsg ? undefined : contextUsagePct} tokens={isStreamingMsg ? undefined : sovereignMeta?.tokens} />
                         <div
                           className="rounded-2xl rounded-tl-sm px-4 py-3"
                           tabIndex={0}

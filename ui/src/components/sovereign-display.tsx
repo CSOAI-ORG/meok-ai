@@ -23,6 +23,8 @@ export interface SovereignDisplayProps {
   memoryCount?: number;
   estimatedCost?: number;       // USD cost estimate for the message
   memoriesRetrieved?: number;   // number of memory sources retrieved
+  stageName?: string;           // evolution stage name from server
+  interactions?: number;        // total interaction count
 }
 
 // ── Metadata row ─────────────────────────────────────────────────────────────
