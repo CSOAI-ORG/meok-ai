@@ -598,6 +598,12 @@ export default function HatchPage() {
   const [memory2, setMemory2] = useState("");
   const [memory3, setMemory3] = useState("");
   const [covenantAccepted, setCovenantAccepted] = useState(false);
+  const [linkCopied, setLinkCopied] = useState(false);
+  const [canNativeShare, setCanNativeShare] = useState(false);
+
+  useEffect(() => {
+    setCanNativeShare(typeof navigator !== "undefined" && !!navigator.share);
+  }, []);
 
   const winner = state.winner;
   const archetype = winner ? ARCHETYPES[winner] : null;
@@ -1281,34 +1287,31 @@ export default function HatchPage() {
                   </Link>
                 </div>
 
-                {/* Share your companion — TSSCM viral cascade trigger */}
+                {/* Share your companion */}
                 <div
                   style={{
                     display: "flex",
                     gap: "10px",
                     justifyContent: "center",
+                    flexWrap: "wrap",
                     marginBottom: "24px",
                     animation: "fadeSlideUp 0.6s ease 1.2s both",
                   }}
                 >
+                  {/* Twitter/X */}
                   <button
                     onClick={() => {
-                      const text = `I just hatched ${companionName || `a ${winner}`} on MEOK.AI — a sovereign AI companion born from my personality. 🥚✨`;
-                      const url = `https://try.meok.ai/hatch`;
-                      if (navigator.share) {
-                        navigator.share({ title: `Meet ${companionName || winner}`, text, url }).catch(() => {});
-                      } else {
-                        navigator.clipboard.writeText(`${text}\n${url}`).then(() => {
-                          const btn = document.getElementById('share-copied');
-                          if (btn) { btn.textContent = '✓ Copied!'; setTimeout(() => { btn.textContent = 'Share'; }, 2000); }
-                        });
-                      }
+                      const name = companionName || winner;
+                      const tweetText = `I just hatched ${name}, my sovereign AI companion on @meok_ai \u{1F95A}\u{2728} meok.ai/easter`;
+                      window.open(
+                        `https://twitter.com/intent/tweet?text=${encodeURIComponent(tweetText)}`,
+                        '_blank'
+                      );
                     }}
-                    id="share-copied"
                     style={{
                       padding: "10px 20px",
                       borderRadius: "10px",
-                      background: "rgba(201,168,76,0.12)",
+                      background: "#13121f",
                       border: "1px solid rgba(201,168,76,0.3)",
                       color: "#c9a84c",
                       fontSize: "13px",
@@ -1316,27 +1319,90 @@ export default function HatchPage() {
                       cursor: "pointer",
                       transition: "all 0.2s ease",
                     }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.background = "rgba(201,168,76,0.12)";
+                      e.currentTarget.style.borderColor = "#c9a84c";
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.background = "#13121f";
+                      e.currentTarget.style.borderColor = "rgba(201,168,76,0.3)";
+                    }}
                   >
-                    Share ✨
+                    Post on {"\ud835\udd4f"}
                   </button>
+
+                  {/* Copy OG image link */}
                   <button
                     onClick={() => {
-                      const url = `https://try.meok.ai/hatch`;
-                      window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(`I just hatched ${companionName || `a ${winner}`} on @meok_ai — a sovereign AI companion born from my personality 🥚✨`)}&url=${encodeURIComponent(url)}`, '_blank');
+                      const name = encodeURIComponent(companionName || winner);
+                      const arch = encodeURIComponent(winner);
+                      const ogUrl = `https://meok.ai/api/og?name=${name}&archetype=${arch}`;
+                      navigator.clipboard.writeText(ogUrl).then(() => {
+                        setLinkCopied(true);
+                        setTimeout(() => setLinkCopied(false), 2000);
+                      });
                     }}
                     style={{
                       padding: "10px 20px",
                       borderRadius: "10px",
-                      background: "rgba(255,255,255,0.05)",
-                      border: "1px solid rgba(255,255,255,0.1)",
-                      color: "rgba(245,240,232,0.6)",
+                      background: "#13121f",
+                      border: "1px solid rgba(245,240,232,0.15)",
+                      color: linkCopied ? "#c9a84c" : "rgba(245,240,232,0.6)",
                       fontSize: "13px",
                       fontWeight: 500,
                       cursor: "pointer",
+                      transition: "all 0.2s ease",
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.borderColor = "rgba(201,168,76,0.4)";
+                      e.currentTarget.style.color = "#c9a84c";
+                    }}
+                    onMouseLeave={(e) => {
+                      if (!linkCopied) {
+                        e.currentTarget.style.borderColor = "rgba(245,240,232,0.15)";
+                        e.currentTarget.style.color = "rgba(245,240,232,0.6)";
+                      }
                     }}
                   >
-                    Post on 𝕏
+                    {linkCopied ? "Copied!" : "Copy link"}
                   </button>
+
+                  {/* Native share (if available) */}
+                  {canNativeShare && (
+                    <button
+                      onClick={() => {
+                        const name = companionName || winner;
+                        const arch = encodeURIComponent(winner);
+                        const encodedName = encodeURIComponent(name);
+                        navigator.share({
+                          title: `Meet ${name}`,
+                          text: `I just hatched ${name}, my sovereign AI companion on MEOK.AI \u{1F95A}\u{2728}`,
+                          url: `https://meok.ai/api/og?name=${encodedName}&archetype=${arch}`,
+                        }).catch(() => {});
+                      }}
+                      style={{
+                        padding: "10px 20px",
+                        borderRadius: "10px",
+                        background: "rgba(201,168,76,0.12)",
+                        border: "1px solid rgba(201,168,76,0.3)",
+                        color: "#c9a84c",
+                        fontSize: "13px",
+                        fontWeight: 600,
+                        cursor: "pointer",
+                        transition: "all 0.2s ease",
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.background = "rgba(201,168,76,0.2)";
+                        e.currentTarget.style.boxShadow = "0 0 20px rgba(201,168,76,0.2)";
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.background = "rgba(201,168,76,0.12)";
+                        e.currentTarget.style.boxShadow = "none";
+                      }}
+                    >
+                      Share
+                    </button>
+                  )}
                 </div>
 
                 {/* Start here — conversation starter chips */}
