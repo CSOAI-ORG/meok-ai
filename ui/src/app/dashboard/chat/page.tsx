@@ -1199,7 +1199,7 @@ export default function DashboardChatPage() {
                           const av = companion?.dimensions
                             ? generateAvatar(companion.dimensions, companion.archetype, companion.name)
                             : generateAvatar({ warmth: 0.7, energy: 0.7, whimsy: 0.6, edge: 0.3, complexity: 0.6 }, 'nurturer', 'Aura');
-                          return <img src={av} alt="" className="w-6 h-6 rounded-full flex-shrink-0 mt-1" style={{ opacity: 0.85 }} />;
+                          return <img src={av} alt="" className="w-6 h-6 rounded-full flex-shrink-0 mt-1" style={{ opacity: 0.85 }} loading="lazy" decoding="async" />;
                         })()}
                         <div className="flex-1 min-w-0">
                         <SovereignBadge model={selectedModelConfig.label} latency={isStreamingMsg ? undefined : sovereignMeta?.latency} care_score={85} streaming={isStreamingMsg} contextPct={isStreamingMsg ? undefined : contextUsagePct} tokens={isStreamingMsg ? undefined : sovereignMeta?.tokens} />

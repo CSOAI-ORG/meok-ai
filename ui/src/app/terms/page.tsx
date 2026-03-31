@@ -27,7 +27,7 @@ export default function TermsPage() {
         {/* Header */}
         <div className="mb-10">
           <h1 className="text-3xl sm:text-4xl font-black mb-2 text-white">Terms of Service</h1>
-          <p className="text-white/30 text-sm">Last updated: 21 March 2026 · MEOK AI LABS · Registered in England &amp; Wales</p>
+          <p className="text-white/30 text-sm">Last updated: 5 April 2026 · MEOK AI LABS · Registered in England &amp; Wales</p>
         </div>
 
         {/* TL;DR */}

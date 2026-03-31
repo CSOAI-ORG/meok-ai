@@ -21,7 +21,7 @@ export default function CookiePolicyPage() {
               We use cookies minimally and transparently. Your privacy is a first-class concern.
             </p>
             <p className="text-[#9a9a8a]/60 text-sm mt-3">
-              Last updated: March 2026
+              Last updated: April 2026
             </p>
           </div>
         </section>

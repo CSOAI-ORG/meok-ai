@@ -17,7 +17,10 @@ import { sql } from '@/lib/db';
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 
-const ADMIN_EMAILS = ['nick@meok.ai', 'nicholas@meok.ai'];
+const ADMIN_EMAILS = (process.env.ADMIN_EMAILS || 'nick@meok.ai,nicholas@meok.ai')
+  .split(',')
+  .map(e => e.trim().toLowerCase())
+  .filter(Boolean);
 
 export async function GET() {
   const userId = await getAuthUserId();
