@@ -10,6 +10,7 @@ export const metadata: Metadata = {
     description: "Live copilot, strategy coach, and Steam/Twitch integration. A sovereign AI companion built for gamers.",
     type: "website",
     url: "https://meok.ai/gaming",
+    images: [{ url: "/api/og?title=Gaming+Companion&desc=AI+that+knows+your+games%2C+builds%2C+and+strategy.", width: 1200, height: 630, alt: "Gaming Companion" }],
   },
 };
 

@@ -17,6 +17,7 @@ export const metadata: Metadata = {
     description:
       "Thoughts on sovereign AI, care ethics, and building in public.",
     type: "website",
+    images: [{ url: "/api/og?title=Blog&desc=Thoughts+on+sovereign+AI%2C+care+alignment%2C+and+building+alone.", width: 1200, height: 630, alt: "Blog" }],
   },
 };
 

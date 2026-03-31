@@ -12,6 +12,7 @@ export const metadata: Metadata = {
     description:
       "Answer four questions. Your AI is assigned an archetype. It hatches. You name it. From that moment — it's yours.",
     type: "website",
+    images: [{ url: "/api/og?title=Choose+Your+AI+Companion&desc=7+archetypes.+50%2B+personalities.+One+that%27s+yours.", width: 1200, height: 630, alt: "Choose Your AI Companion" }],
   },
 };
 

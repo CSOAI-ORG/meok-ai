@@ -10,6 +10,7 @@ export const metadata: Metadata = {
     description: "Explorer free forever. Sovereign $29/mo. Private AI companions with persistent memory, character evolution, and zero training on your data.",
     type: "website",
     url: "https://meok.ai/pricing",
+    images: [{ url: "/api/og?title=Pricing&desc=Free+forever.+Sovereign+%C2%A39%2Fmo.+Pro+%C2%A319%2Fmo.", width: 1200, height: 630, alt: "Pricing" }],
   },
 };
 

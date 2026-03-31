@@ -8,6 +8,11 @@ export const metadata: Metadata = {
   description:
     "50+ sovereign AI companions. 9 archetypes. Each one hatches, grows, and remembers you — governed by the Maternal Covenant. Find yours and begin the birth ceremony.",
   alternates: { canonical: "https://meok.ai/characters" },
+  openGraph: {
+    title: "50+ AI Companions",
+    description: "Choose your archetype. Meet your companion.",
+    images: [{ url: "/api/og?title=50%2B+AI+Companions&desc=Choose+your+archetype.+Meet+your+companion.", width: 1200, height: 630, alt: "50+ AI Companions" }],
+  },
 };
 
 // ── Archetype display data (derived from @/lib/characters) ───────────────────
