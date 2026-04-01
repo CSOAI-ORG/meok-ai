@@ -182,6 +182,13 @@ const faqJsonLd = {
 export default function AboutPage() {
   return (
     <div className="min-h-screen bg-[#f5f0e8] text-[#1a1a2e] overflow-x-hidden">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+        "@context": "https://schema.org", "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: "https://meok.ai" },
+          { "@type": "ListItem", position: 2, name: "About", item: "https://meok.ai/about" },
+        ],
+      }) }} />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}

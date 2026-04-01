@@ -14,6 +14,20 @@ export const metadata: Metadata = {
   },
 };
 
+const breadcrumbJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://meok.ai" },
+    { "@type": "ListItem", position: 2, name: "Pricing", item: "https://meok.ai/pricing" },
+  ],
+};
+
 export default function PricingPage() {
-  return <PricingClient />;
+  return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
+      <PricingClient />
+    </>
+  );
 }

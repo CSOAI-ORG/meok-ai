@@ -147,6 +147,13 @@ export default function CharactersPage() {
   return (
     <main className="min-h-screen bg-[#0d0c18] text-white overflow-x-hidden">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+        "@context": "https://schema.org", "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: "https://meok.ai" },
+          { "@type": "ListItem", position: 2, name: "Characters", item: "https://meok.ai/characters" },
+        ],
+      }) }} />
       {/* ── Hero ─────────────────────────────────────────────────────────────── */}
       <section className="relative overflow-hidden pt-24 pb-20 px-4">
         {/* Blobs */}
