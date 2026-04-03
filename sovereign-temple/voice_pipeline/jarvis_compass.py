@@ -27,24 +27,19 @@ log = logging.getLogger("jarvis")
 # ─── Config ───
 RATE = 16000
 OLLAMA_URL = "http://localhost:11434/api/chat"
-# ═══ DUAL-BRAIN ARCHITECTURE ═══
-# RIGHT BRAIN (Qwen): Conversation, creativity, empathy, voice, planning
-# LEFT BRAIN (DeepSeek): Code, math, analysis, debugging, logic, reasoning
+# ═══ DUAL-BRAIN ARCHITECTURE — GPU ACTIVE ═══
+# RIGHT BRAIN (Qwen 9B): Fast conversation, creativity, voice replies
+# LEFT BRAIN (Qwen 35B): Deep thinking, analysis, complex reasoning
 #
-# LOCAL (no GPU rented):
-RIGHT_BRAIN = "jarvis"          # Local qwen2.5:7b — both roles
-LEFT_BRAIN = "jarvis"           # Same model locally
+# GPU: Q RTX 8000 45GB VRAM at $0.220/hr via SSH tunnel
+OLLAMA_URL = "http://localhost:11435/api/chat"     # SSH tunnel to GPU
+RIGHT_BRAIN = "qwen3.5:9b"                         # Fast brain — 60 tok/s
+LEFT_BRAIN = "qwen3.5:35b"                          # Deep brain — 35B MoE
 #
-# WITH GPU (uncomment when rented):
-# OLLAMA_URL = "http://localhost:11435/api/chat"     # SSH tunnel to GPU
-# RIGHT_BRAIN = "qwen3.5:9b"                        # Qwen: creative, conversational, fast
-# LEFT_BRAIN = "deepseek-r1:32b"                     # DeepSeek: analytical, code, reasoning
-#
-# WITH 2x GPU ($186/mo):
-# GPU1_URL = "http://localhost:11435/api/chat"       # GPU #1
-# GPU2_URL = "http://localhost:11436/api/chat"       # GPU #2
-# RIGHT_BRAIN on GPU1: "qwen3.5:35b-a3b"            # 35B MoE, 8GB, conversation master
-# LEFT_BRAIN on GPU2: "deepseek-r1:70b"              # 70B, 22GB, reasoning powerhouse
+# FALLBACK (if GPU down, use local):
+# OLLAMA_URL = "http://localhost:11434/api/chat"
+# RIGHT_BRAIN = "jarvis"
+# LEFT_BRAIN = "jarvis"
 FAST_MODEL = RIGHT_BRAIN
 DEEP_MODEL = LEFT_BRAIN
 SOV3_URL = "http://localhost:3101"
@@ -214,12 +209,31 @@ def transcribe(audio_bytes):
     return result['text'].strip()
 
 def route_to_brain(text):
-    """Route to RIGHT BRAIN (Qwen) or LEFT BRAIN (DeepSeek).
+    """QUANTUM-ENHANCED ROUTING — uses QAOA care weights to pick optimal model.
 
-    RIGHT BRAIN (Qwen): Conversation, creativity, empathy, voice, memory recall, planning.
-    LEFT BRAIN (DeepSeek): Code, math, analysis, debugging, logic, step-by-step reasoning.
+    Loads care weights from quantum batch (nightly QAOA optimization).
+    Scores each model by: qaoa_weight × model_affinity × query_relevance.
+    Falls back to keyword matching if quantum router unavailable.
 
     Like human hemispheres — right = holistic/creative, left = analytical/sequential."""
+
+    # TRY QUANTUM ROUTING FIRST (uses QAOA care weights)
+    try:
+        import sys
+        sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+        from quantum_council_router import get_best_model
+        best = get_best_model(text)
+        # Map council model names to our FAST/DEEP brain config
+        if best in ("qwen3.5:9b",):
+            log.info(f"🔮 Quantum route → FAST BRAIN ({best})")
+            return FAST_MODEL
+        else:
+            log.info(f"🔮 Quantum route → DEEP BRAIN ({best})")
+            return DEEP_MODEL
+    except Exception as qe:
+        log.debug(f"Quantum router unavailable ({qe}), using keyword fallback")
+
+    # FALLBACK: keyword-based routing
     lower = text.lower().strip()
     word_count = len(lower.split())
 
