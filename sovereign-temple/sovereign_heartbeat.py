@@ -371,12 +371,22 @@ class SovereignHeartbeat:
                 logger.info("Autonomous cycle: failed to capture task %s", task_id)
                 return
 
-            # 3. EXECUTE — start micro sprint
-            sprint = await orion.start_sprint("micro", target_task_id=task_id)
-            logger.info("Autonomous cycle: sprint started for %s", task_title)
+            # 3. EXECUTE — use ClawCodeExecutor for real work
+            try:
+                from claw_code_adapter import ClawCodeExecutor
+                executor = ClawCodeExecutor(working_dir="/Users/nicholas/clawd/meok/ui")
+                exec_result = await executor.execute_task({
+                    "type": "search_code",
+                    "pattern": task_title[:50],
+                    "path": "/Users/nicholas/clawd/meok/ui/src",
+                })
+                summary = f"Autonomous: {task_title}. Found: {exec_result.output[:200]}"
+                logger.info("Autonomous cycle: executed %s (success=%s)", task_title, exec_result.success)
+            except Exception as exec_err:
+                summary = f"Autonomous: {task_title}. Execution failed: {exec_err}"
+                logger.warning("Autonomous cycle: execution failed for %s: %s", task_title, exec_err)
 
             # 4. VALIDATE — complete sprint
-            summary = f"Autonomous execution of: {task_title}"
             completion = await orion.complete_sprint(summary, task_id)
 
             # 5. LEARN — record to memory

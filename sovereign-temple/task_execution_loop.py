@@ -154,12 +154,18 @@ async def run_heartbeat_tick(task_queue: TaskQueue, trust_manager: AgentTrustMan
             success = True
             result = {"agent": agent_id, "task_type": task["type"]}
             try:
-                if task["type"] == "memory_consolidation":
-                    result["action"] = "memory_consolidation_stub"
-                elif task["type"] == "research_sweep":
-                    result["action"] = "research_sweep_stub"
-                elif task["type"] == "care_validation_sweep":
-                    result["action"] = "care_validation_stub"
+                if task["type"] in ("memory_consolidation", "research_sweep", "care_validation_sweep"):
+                    # Real execution via ClawCodeExecutor
+                    import asyncio as _aio
+                    from claw_code_adapter import ClawCodeExecutor
+                    _executor = ClawCodeExecutor(working_dir="/Users/nicholas/clawd/sovereign-temple")
+                    _exec_result = _aio.get_event_loop().run_until_complete(
+                        _executor.execute_task({"type": task["type"], "working_dir": "/Users/nicholas/clawd/sovereign-temple"})
+                    )
+                    result["action"] = _exec_result.action
+                    result["output"] = _exec_result.output[:500]
+                    result["execution_success"] = _exec_result.success
+                    success = _exec_result.success
                 elif task["type"] == "pairwise_trust":
                     result["action"] = "pairwise_trust_interaction"
                 result["completed_at"] = datetime.utcnow().isoformat()

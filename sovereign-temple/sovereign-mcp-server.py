@@ -1054,6 +1054,25 @@ MCP_TOOLS = [
             "properties": {}
         }
     },
+    {
+        "name": "execute_with_claw_code",
+        "description": "Execute a task using the ClawCodeExecutor — read/write files, run commands, run tests, search code, git commit. Tier 0 (read) auto-approved, Tier 1 (write) needs care check, Tier 2 (commit/deploy) needs council.",
+        "inputSchema": {
+            "type": "object",
+            "properties": {
+                "action": {"type": "string", "enum": ["read_file", "write_file", "run_command", "run_tests", "search_code", "git_commit", "memory_consolidation", "research_sweep", "care_validation_sweep"], "description": "The action to execute"},
+                "path": {"type": "string", "description": "File path (for read/write)"},
+                "content": {"type": "string", "description": "File content (for write)"},
+                "command": {"type": "string", "description": "Shell command (for run_command)"},
+                "pattern": {"type": "string", "description": "Search pattern (for search_code)"},
+                "test_path": {"type": "string", "description": "Test file path (for run_tests)"},
+                "files": {"type": "array", "items": {"type": "string"}, "description": "Files to commit (for git_commit)"},
+                "message": {"type": "string", "description": "Commit message (for git_commit)"},
+                "working_dir": {"type": "string", "description": "Working directory override"}
+            },
+            "required": ["action"]
+        }
+    },
 ]
 
 # =============================================================================
@@ -2692,8 +2711,8 @@ async def execute_tool(name: str, arguments: Dict[str, Any]) -> Dict[str, Any]:
                 if meta_monitor:
                     obs = await meta_monitor.observe(
                         consciousness.emotional_state,
-                        consciousness.reflection_cycle,
-                        consciousness.dream_state,
+                        getattr(consciousness, 'reflection', None),
+                        getattr(consciousness, 'dream', None),
                     )
                     return obs
                 return {"mode": "turiya_not_initialized", "message": "MetaMonitor not yet active"}
@@ -2974,6 +2993,44 @@ async def execute_tool(name: str, arguments: Dict[str, Any]) -> Dict[str, Any]:
                 }
             except Exception as ve:
                 return {"error": f"Voice pipeline not available: {ve}", "phase": 0}
+
+        elif name == "execute_with_claw_code":
+            import asyncio as _aio
+            from claw_code_adapter import ClawCodeExecutor
+            executor = ClawCodeExecutor(
+                working_dir=arguments.get("working_dir", "/Users/nicholas/clawd/meok/ui"),
+                timeout=arguments.get("timeout", 30),
+            )
+            task_payload = {
+                "type": arguments["action"],
+                "description": arguments.get("description", ""),
+                "path": arguments.get("path", ""),
+                "content": arguments.get("content", ""),
+                "command": arguments.get("command", ""),
+                "pattern": arguments.get("pattern", ""),
+                "test_path": arguments.get("test_path", ""),
+                "files": arguments.get("files", []),
+                "message": arguments.get("message", ""),
+                "working_dir": arguments.get("working_dir", "/Users/nicholas/clawd/meok/ui"),
+            }
+            result = await executor.execute_task(task_payload)
+            # Record to memory
+            if memory_store:
+                try:
+                    await memory_store.store(
+                        f"Execution: {arguments['action']} → {'success' if result.success else 'failed'}. Output: {result.output[:200]}",
+                        "jarvis_executor", "interaction", 0.6, ["execution", "claw_code", arguments["action"]]
+                    )
+                except: pass
+            return {
+                "success": result.success,
+                "action": result.action,
+                "output": result.output[:3000],
+                "files_changed": result.files_changed,
+                "tests_passed": result.tests_passed,
+                "duration_ms": result.duration_ms,
+                "tier": result.tier,
+            }
 
         else:
             return {"error": f"Unknown tool: {name}"}
