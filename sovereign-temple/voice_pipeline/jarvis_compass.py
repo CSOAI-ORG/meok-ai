@@ -273,6 +273,16 @@ def route_to_brain(text):
     # Default → RIGHT BRAIN (voice-friendly, natural conversation)
     return RIGHT_BRAIN
 
+# ═══ ICRL SELF-IMPROVEMENT ═══
+try:
+    import sys as _sys
+    _sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+    from icrl_self_improvement import icrl_buffer, compute_care_reward
+    ICRL_AVAILABLE = True
+    log.info("🧬 ICRL self-improvement: ACTIVE")
+except ImportError:
+    ICRL_AVAILABLE = False
+
 def query_sov3_memory(query):
     """Retrieve relevant memories from SOV3."""
     try:
@@ -452,6 +462,12 @@ def ask_sovereign(text):
     if quantum:
         memory_block += f"\n{quantum}"
 
+    # ICRL: inject self-improvement context (best/worst past responses)
+    if ICRL_AVAILABLE:
+        icrl_context = icrl_buffer.get_icrl_context()
+        if icrl_context:
+            memory_block += f"\n{icrl_context}"
+
     enhanced_system = SYSTEM_PROMPT + memory_block + (
         "\n\nYou have access to 80 sovereign tools including: code execution, quantum computing, "
         "creativity assessment, dream generation, research sweeps, neural retraining, care validation, "
@@ -479,6 +495,13 @@ def ask_sovereign(text):
         }, timeout=120)
         reply = r.json()["message"]["content"]
         history.append({"role": "assistant", "content": reply})
+
+        # 4a. ICRL: Record care reward for self-improvement
+        if ICRL_AVAILABLE:
+            care_reward = compute_care_reward(reply)
+            icrl_buffer.add_episode(text, reply, care_reward)
+            stats = icrl_buffer.get_stats()
+            log.info(f"🧬 ICRL: care={care_reward:.2f}, avg={stats['avg_care']:.2f}, episodes={stats['episodes']}")
 
         # 4. Record interaction to SOV3 memory
         try:
