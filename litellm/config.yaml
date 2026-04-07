@@ -1,19 +1,10 @@
-# LiteLLM Configuration - MEOK
-# Only using providers with API keys configured
+# ═══════════════════════════════════════════════════════════════════════
+# MEOK SOVEREIGN LLM GATEWAY — LiteLLM Unified Configuration
+# All LLMs route through localhost:4000 — one gateway, all models
+# ═══════════════════════════════════════════════════════════════════════
 
 model_list:
-  # Anthropic (we have this key)
-  - model_name: claude-sonnet
-    litellm_params:
-      model: anthropic/claude-sonnet-4-20250514
-      api_key: os.environ/ANTHROPIC_API_KEY
-
-  - model_name: claude-haiku
-    litellm_params:
-      model: anthropic/claude-3-haiku-20240307
-      api_key: os.environ/ANTHROPIC_API_KEY
-
-  # Ollama (local, always available)
+  # ── LOCAL OLLAMA (always available, zero cost) ──────────────────────
   - model_name: llama-local
     litellm_params:
       model: ollama/llama3.1:8b
@@ -29,32 +20,102 @@ model_list:
       model: ollama/gemma3:4b
       api_base: http://localhost:11434
 
-  # Cerebras (free, low latency)
+  # ── VAST.AI GPU (Gemma 4 31B via SSH tunnel) ───────────────────────
+  - model_name: gemma4-gpu
+    litellm_params:
+      model: ollama/gemma4:31b
+      api_base: http://localhost:11436
+
+  # ── CEREBRAS (free tier, ultra-fast 450 tok/s) ─────────────────────
   - model_name: cerebras-fast
     litellm_params:
       model: cerebras/llama-3.1-70b
       api_key: os.environ/CEREBRAS_API_KEY
 
-  # Groq (free, fast)
+  - model_name: cerebras-small
+    litellm_params:
+      model: cerebras/llama-3.1-8b
+      api_key: os.environ/CEREBRAS_API_KEY
+
+  # ── GROQ (free tier, fast inference) ───────────────────────────────
   - model_name: groq-fast
     litellm_params:
       model: groq/llama-3.1-70b-versatile
       api_key: os.environ/GROQ_API_KEY
 
-# Settings
+  - model_name: groq-small
+    litellm_params:
+      model: groq/llama-3.1-8b-instant
+      api_key: os.environ/GROQ_API_KEY
+
+  # ── OPENROUTER (400+ models, pay-per-use) ──────────────────────────
+  - model_name: deepseek-reasoner
+    litellm_params:
+      model: openrouter/deepseek/deepseek-reasoner
+      api_key: os.environ/OPENROUTER_API_KEY
+
+  - model_name: deepseek-coder
+    litellm_params:
+      model: openrouter/deepseek/deepseek-coder
+      api_key: os.environ/OPENROUTER_API_KEY
+
+  - model_name: gemini-flash
+    litellm_params:
+      model: openrouter/google/gemini-2.5-flash-preview:thinking
+      api_key: os.environ/OPENROUTER_API_KEY
+
+  - model_name: gemini-pro
+    litellm_params:
+      model: openrouter/google/gemini-2.5-pro
+      api_key: os.environ/OPENROUTER_API_KEY
+
+  - model_name: qwen-coder-cloud
+    litellm_params:
+      model: openrouter/qwen/qwen3-coder
+      api_key: os.environ/OPENROUTER_API_KEY
+
+  - model_name: minimax-chat
+    litellm_params:
+      model: openrouter/minimax/minimax-text-01
+      api_key: os.environ/OPENROUTER_API_KEY
+
+# ── ROUTING (task → model) ───────────────────────────────────────────
+router_settings:
+  routing_strategy: "usage-based-routing-v2"
+  enable_pre_call_checks: true
+  num_retries: 2
+  timeout: 60
+  allowed_fails: 2
+  retry_after: 5
+
+  # Model groups for fallback chains
+  model_group_alias:
+    reasoning: ["deepseek-reasoner", "gemini-pro", "cerebras-fast", "llama-local"]
+    coding: ["deepseek-coder", "qwen-coder-cloud", "qwen-local"]
+    fast: ["cerebras-fast", "groq-fast", "llama-local"]
+    creative: ["gemini-flash", "minimax-chat", "gemma-local"]
+    research: ["gemini-pro", "deepseek-reasoner", "cerebras-fast"]
+    local: ["gemma4-gpu", "llama-local", "qwen-local", "gemma-local"]
+    sovereign: ["gemma4-gpu", "deepseek-reasoner", "cerebras-fast"]
+
+# ── SETTINGS ─────────────────────────────────────────────────────────
 litellm_settings:
   drop_params: true
   set_verbose: false
   request_timeout: 60
   telemetry: false
-  master_key: "meok-local-dev-key"
+  master_key: "meok-sovereign-key"
+  cache: true
+  cache_params:
+    type: "local"
+    ttl: 3600
 
-# UI Admin
+general_settings:
+  master_key: "meok-sovereign-key"
+  alerting: ["log"]
+
+# ── ADMIN UI ─────────────────────────────────────────────────────────
 admin_ui:
   enabled: true
   username: admin
   password: meokadmin123
-
-# Database (optional - uses sqlite by default)
-database:
-  db_path: ./litellm.db
