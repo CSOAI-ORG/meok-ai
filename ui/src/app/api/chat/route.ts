@@ -33,6 +33,8 @@ import { computeStyleDirective, formatStyleDirective } from '@/lib/adaptive-dial
 import { detectSycophancyRisk, formatAntiSycophancyDirective } from '@/lib/anti-sycophancy';
 import { pointsForAction } from '@/lib/bond';
 import { generateDiaryEntry } from '@/lib/personality-diary';
+import { getToolsForCharacter } from '@/lib/character-tools';
+import { ensureAgentRegistered } from '@/lib/character-agent-bridge';
 import { evaluateCareSignal } from '@/lib/proactive-care';
 import { computeMoodTransition, formatMoodContext, getMoodGreeting, type MoodState } from '@/lib/character-mood';
 import { buildRelationshipState, formatRelationshipContext } from '@/lib/relationship-progression';
@@ -605,12 +607,26 @@ You are LIVE and operational. Report this status when asked.`;
 
   // 8. Stream response
   try {
+    // Build character tools (sovereign+ tier only, based on archetype)
+    const character = getCharacter(cid);
+    const characterTools = getToolsForCharacter(cid, character?.archetype ?? 'nurturer', userTier, userId);
+    const hasTools = Object.keys(characterTools).length > 0;
+
+    // Lazy-register character as SOV3 agent on first tool-enabled chat
+    if (hasTools) {
+      void ensureAgentRegistered(
+        { id: cid, name: character?.name ?? cid, archetype: character?.archetype ?? 'nurturer', tags: character?.tags },
+        0, // TODO: pass real evolution stage
+      ).catch(() => {});
+    }
+
     const result = streamText({
       model: provider,
       system: systemPrompt,
       messages: messagesForLLM,
       maxOutputTokens: Math.max(2048, thinkingBudget),
       temperature: (typeof clientTemperature === 'number' && clientTemperature >= 0 && clientTemperature <= 2) ? clientTemperature : 0.7,
+      ...(hasTools ? { tools: characterTools, maxSteps: 3 } : {}),
       providerOptions: isAnthropic ? {
         anthropic: {
           cacheControl: { type: "ephemeral" },
