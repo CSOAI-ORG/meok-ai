@@ -5,7 +5,7 @@
  * Run: npx playwright test e2e/ui-pages.spec.ts
  */
 import { test, expect } from '@playwright/test';
-import { waitForPageLoad } from './helpers';
+import { waitForPageLoad, TIMEOUT } from './helpers';
 
 const BASE_URL = process.env.BASE_URL || 'http://localhost:3000';
 
@@ -285,32 +285,37 @@ test.describe('Navigation Flow', () => {
     await page.goto('/');
     await waitForPageLoad(page);
     const pricingLink = page.getByRole('link', { name: /pricing/i }).first();
-    if (await pricingLink.isVisible()) {
+    if (await pricingLink.isVisible({ timeout: 5000 }).catch(() => false)) {
       await pricingLink.click();
-      await waitForPageLoad(page);
-      expect(page.url()).toContain('/pricing');
+      await page.waitForURL('**/pricing**', { timeout: TIMEOUT });
     }
   });
 
-  test('homepage to characters navigation', async ({ page }) => {
+  test('homepage to characters via menu', async ({ page }) => {
     await page.goto('/');
     await waitForPageLoad(page);
-    const charactersLink = page.getByRole('link', { name: /characters|companions/i }).first();
-    if (await charactersLink.isVisible()) {
-      await charactersLink.click();
-      await waitForPageLoad(page);
-      expect(page.url()).toContain('/characters');
+    const charBtn = page.getByRole('button', { name: /characters/i }).first();
+    if (await charBtn.isVisible({ timeout: 5000 }).catch(() => false)) {
+      await charBtn.click();
+      const allChars = page.getByRole('menuitem', { name: /all characters/i }).first();
+      if (await allChars.isVisible({ timeout: 5000 }).catch(() => false)) {
+        await allChars.click();
+        await page.waitForURL('**/characters**', { timeout: TIMEOUT });
+      }
     }
   });
 
-  test('homepage to guardian navigation', async ({ page }) => {
+  test('homepage to guardian via menu', async ({ page }) => {
     await page.goto('/');
     await waitForPageLoad(page);
-    const guardianLink = page.getByRole('link', { name: /guardian/i }).first();
-    if (await guardianLink.isVisible()) {
-      await guardianLink.click();
-      await waitForPageLoad(page);
-      expect(page.url()).toContain('/guardian');
+    const guardianBtn = page.getByRole('button', { name: /guardian/i }).first();
+    if (await guardianBtn.isVisible({ timeout: 5000 }).catch(() => false)) {
+      await guardianBtn.click();
+      const guardian247 = page.getByRole('menuitem', { name: /guardian 24/i }).first();
+      if (await guardian247.isVisible({ timeout: 5000 }).catch(() => false)) {
+        await guardian247.click();
+        await page.waitForURL('**/guardian**', { timeout: TIMEOUT });
+      }
     }
   });
 });
