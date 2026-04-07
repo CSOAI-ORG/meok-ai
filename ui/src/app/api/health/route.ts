@@ -93,7 +93,7 @@ export async function GET() {
   // SOV3 check
   let sov3: { connected: boolean; consciousness?: string; models?: number; error?: string } = { connected: false };
   try {
-    const sov3Url = process.env.SOV3_API_URL || 'http://localhost:3100';
+    const sov3Url = process.env.SOV3_API_URL || 'http://localhost:3101';
     const res = await fetch(`${sov3Url}/health`, { signal: AbortSignal.timeout(2000) });
     if (res.ok) {
       const data = await res.json() as { status?: string; components?: { consciousness?: { consciousness_level?: number }; neural_models?: Record<string, unknown> } };

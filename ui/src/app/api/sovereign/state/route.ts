@@ -13,7 +13,7 @@ import { NextResponse } from 'next/server';
 
 export const runtime = 'nodejs';
 
-const SOV3_URL = process.env.SOV3_API_URL || process.env.SOV3_URL || 'http://localhost:3100';
+const SOV3_URL = process.env.SOV3_API_URL || process.env.SOV3_URL || 'http://localhost:3101';
 
 async function callMCP(toolName: string, args: Record<string, unknown> = {}) {
   const res = await fetch(`${SOV3_URL}/mcp`, {

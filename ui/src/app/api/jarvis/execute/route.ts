@@ -11,7 +11,7 @@
 import { type NextRequest, NextResponse } from 'next/server';
 import { getAuthUserId } from '@/lib/api-auth';
 
-const SOV3_URL = process.env.SOV3_API_URL || 'http://localhost:3100';
+const SOV3_URL = process.env.SOV3_API_URL || 'http://localhost:3101';
 
 export async function POST(req: NextRequest): Promise<NextResponse> {
   const userId = await getAuthUserId();

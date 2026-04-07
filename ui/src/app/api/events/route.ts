@@ -23,7 +23,7 @@ export async function GET(req: NextRequest) {
       // Poll SOV3 for updates every 15 seconds
       const poll = setInterval(async () => {
         try {
-          const sov3Url = process.env.SOV3_API_URL || 'http://localhost:3100';
+          const sov3Url = process.env.SOV3_API_URL || 'http://localhost:3101';
           const res = await fetch(`${sov3Url}/health`, {
             signal: AbortSignal.timeout(3000),
           });

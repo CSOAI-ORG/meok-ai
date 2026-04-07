@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useCallback } from "react";
 
-const MCP_SERVER_URL = process.env.NEXT_PUBLIC_MCP_URL || process.env.MCP_SERVER_URL || 'http://localhost:3100';
+const MCP_SERVER_URL = process.env.NEXT_PUBLIC_MCP_URL || process.env.MCP_SERVER_URL || 'http://localhost:3101';
 
 export interface MCPTool {
   name: string;

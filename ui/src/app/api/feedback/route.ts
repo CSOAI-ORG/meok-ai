@@ -104,7 +104,7 @@ export async function POST(request: NextRequest) {
 
   // Bayesian care update: close the feedback → care score loop
   if (typeof rating === 'number') {
-    const sovUrl = process.env.SOV3_API_URL || 'http://localhost:3100';
+    const sovUrl = process.env.SOV3_API_URL || 'http://localhost:3101';
     if (rating === 1) {
       fetch(`${sovUrl}/mcp`, {
         method: 'POST',

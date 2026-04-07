@@ -44,7 +44,7 @@ export default function WorkshopPage() {
   const [commandInput, setCommandInput] = useState('');
   const [commandOutput, setCommandOutput] = useState<string[]>([
     '> Sovereign Workshop Terminal v1.0',
-    '> SOV3 MCP: localhost:3100 | MEOK OS: localhost:3000',
+    '> SOV3 MCP: localhost:3101 | MEOK OS: localhost:3000',
     '> Type a command or ask Jarvis anything...',
     '',
   ]);
@@ -62,7 +62,7 @@ export default function WorkshopPage() {
   // Fetch SOV3 health
   const fetchHealth = useCallback(async () => {
     try {
-      const res = await fetch('http://localhost:3100/health');
+      const res = await fetch('http://localhost:3101/health');
       if (res.ok) setSov3Health(await res.json());
     } catch { /* offline */ }
   }, []);
@@ -70,7 +70,7 @@ export default function WorkshopPage() {
   // Fetch heartbeat status
   const fetchHeartbeat = useCallback(async () => {
     try {
-      const res = await fetch('http://localhost:3100/mcp', {
+      const res = await fetch('http://localhost:3101/mcp', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -121,7 +121,7 @@ export default function WorkshopPage() {
         if (k) args[k] = v.join('=') || 'true';
       }
 
-      const res = await fetch('http://localhost:3100/mcp', {
+      const res = await fetch('http://localhost:3101/mcp', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

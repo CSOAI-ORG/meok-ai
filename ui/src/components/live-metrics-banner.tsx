@@ -31,7 +31,7 @@ export function LiveMetricsBanner() {
     const fetchData = async () => {
       try {
         // Get consciousness
-        const csRes = await fetch("http://localhost:3100/mcp", {
+        const csRes = await fetch("http://localhost:3101/mcp", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({

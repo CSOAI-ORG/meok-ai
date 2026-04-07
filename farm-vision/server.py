@@ -337,12 +337,17 @@ class FarmVisionHandler(http.server.SimpleHTTPRequestHandler):
             return f"Analysis failed: {str(e)}"
 
     def _query_sov3(self, query):
-        """Send query to SOV3 chat."""
+        """Send query to SOV3 via MCP JSON-RPC."""
         try:
-            data = json.dumps({"message": query, "model": "local"}).encode()
+            data = json.dumps({
+                "jsonrpc": "2.0",
+                "id": "farm-vision",
+                "method": "tools/call",
+                "params": {"name": "ask_sovereign", "arguments": {"question": query}},
+            }).encode()
 
             req = urllib.request.Request(
-                f"{SOV3_URL}/chat",
+                f"{SOV3_URL}/mcp",
                 data=data,
                 headers={"Content-Type": "application/json"},
                 method="POST",
@@ -350,7 +355,8 @@ class FarmVisionHandler(http.server.SimpleHTTPRequestHandler):
 
             with urllib.request.urlopen(req, timeout=30) as resp:
                 result = json.loads(resp.read().decode())
-                return result.get("response", "Response received.")
+                text = result.get("result", {}).get("content", [{}])[0].get("text", "")
+                return text or "Response received."
         except Exception as e:
             return f"Query failed: {str(e)}"
 

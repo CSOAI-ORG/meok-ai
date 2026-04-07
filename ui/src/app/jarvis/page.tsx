@@ -5,7 +5,7 @@ import { useState, useEffect, useCallback, useRef } from 'react';
 const GOLD = '#c9a84c';
 const DEEP = '#0d0c18';
 const SURFACE = '#13121f';
-const SOV3 = 'http://localhost:3100';
+const SOV3 = 'http://localhost:3101';
 
 type Tab = 'chat' | 'terminal' | 'dashboard' | 'ralph' | 'memory';
 

@@ -94,7 +94,8 @@ export async function executeToolUnified(req: ToolRequest): Promise<ToolResponse
     const careCheck = await sov3.validateCare(
       `Tool call: ${req.toolName} with args: ${JSON.stringify(req.args).slice(0, 200)}`
     );
-    const careScore = careCheck.data?.care_score ?? 0.5;
+    const careData = careCheck.data as Record<string, unknown> | null;
+    const careScore = (careData?.care_score ?? careData?.overall_care_score ?? 0.5) as number;
     if (careCheck.ok && careScore < 0.3) {
       return {
         success: false, result: null, careScore, safetyTier: tier,
