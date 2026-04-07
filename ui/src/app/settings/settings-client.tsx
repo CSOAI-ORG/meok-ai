@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import { SensorySettingsPanel } from '@/components/sensory-settings'
 
 /* ── Brand tokens ── */
 const DEEP = '#0a0a0f'
@@ -396,6 +397,11 @@ export default function SettingsClient({ profile }: { profile: Profile }) {
               checked={productUpdates}
               onChange={setProductUpdates}
             />
+          </Section>
+
+          {/* ── Comfort ── */}
+          <Section title="Comfort &amp; Accessibility" icon="♿">
+            <SensorySettingsPanel />
           </Section>
 
           {/* ── Privacy ── */}

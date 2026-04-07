@@ -335,7 +335,7 @@ export default function HydroNeuromorphicPage() {
               lineHeight: 1.25,
             }}
           >
-            The care-structured stimulus: why this is the CSGA founding experiment
+            The care-structured stimulus: why this is the MEOK AI Labs founding experiment
           </h2>
           <p>
             Here is where HARVI becomes more than a physics experiment. The stimulus we are
@@ -345,7 +345,7 @@ export default function HydroNeuromorphicPage() {
             biological coherence, with states of attentiveness and care in living systems.
           </p>
           <p>
-            Why does that matter? Because the CSGA&apos;s core research question is whether the
+            Why does that matter? Because the MEOK AI Labs&apos;s core research question is whether the
             conditions that produce emergence in complex systems are separable from the conditions
             that characterise care. Our hypothesis — and I want to be clear this is a hypothesis,
             not a finding — is that care-structured stimulus is physically different from random
@@ -438,7 +438,7 @@ export default function HydroNeuromorphicPage() {
           </p>
           <p>
             We are in phase one. The baseline is being established. In nine weeks, we will
-            know more than we do now. In nine weeks, the CSGA will have its first founding
+            know more than we do now. In nine weeks, the MEOK AI Labs will have its first founding
             experimental data. In nine weeks, a small neural network on a MacBook Air will have
             been listening very carefully to what a jar of spring water has to say.
           </p>
@@ -458,7 +458,7 @@ export default function HydroNeuromorphicPage() {
               className="mt-4 text-sm font-semibold"
               style={{ color: "#c9a84c" }}
             >
-              — Nick Templeman, MEOK AI LABS &amp; CSGA Cyber AI Research Institute
+              — Nick Templeman, MEOK AI LABS &amp; MEOK AI Labs Cyber AI Research Institute
             </p>
           </div>
         </div>

@@ -8,6 +8,7 @@ FastAPI application exposing the MCP protocol over HTTP.
 # Falls back silently on platforms where uvloop is unavailable (macOS dev)
 try:
     import uvloop
+
     uvloop.install()
 except ImportError:
     pass
@@ -15,6 +16,7 @@ except ImportError:
 import asyncio
 import json
 import hashlib
+import logging
 import time as _time
 from datetime import datetime, timedelta, timezone
 
@@ -32,15 +34,26 @@ from meok.mcp.tools import ALL_TOOLS, execute_tool
 from meok.api.chat_intelligence import generate_sovereign_response
 from meok.core.tool_dispatch import router as dispatch_router, register_fallback_tools
 from meok.api.neural_inference import router as neural_router
-from meok.api.memory_search import router as memory_router, set_pg_pool as memory_set_pg_pool
+from meok.api.memory_search import (
+    router as memory_router,
+    set_pg_pool as memory_set_pg_pool,
+)
 from meok.config.settings import get_settings
 from meok.auth.models import (
-    UserCreate, UserLogin, TokenResponse, RefreshRequest,
-    APIKeyCreate, APIKeyResponse, UserInfo, TokenPayload,
+    UserCreate,
+    UserLogin,
+    TokenResponse,
+    RefreshRequest,
+    APIKeyCreate,
+    APIKeyResponse,
+    UserInfo,
+    TokenPayload,
 )
 from meok.auth.passwords import hash_password, verify_password
 from meok.auth.jwt_utils import (
-    create_access_token, create_refresh_token, decode_token,
+    create_access_token,
+    create_refresh_token,
+    decode_token,
     generate_api_key,
 )
 from meok.auth.dependencies import get_current_user, require_auth
@@ -49,6 +62,7 @@ from meok.auth.repository import AuthRepository
 # ── Shared state ──────────────────────────────────────────────────
 state = ServiceState()
 auth_repo = AuthRepository()
+logger = logging.getLogger(__name__)
 
 
 # ── Lifespan (startup / shutdown) ─────────────────────────────────
@@ -63,17 +77,27 @@ async def lifespan(app: FastAPI):
     try:
         import asyncpg as _asyncpg
         from meok.config.settings import get_settings as _gs
+
         _dsn = _gs().database.postgres_dsn
         _pg_pool = await _asyncpg.create_pool(_dsn, min_size=1, max_size=5)
         memory_set_pg_pool(_pg_pool)
         import logging as _logging
-        _logging.getLogger(__name__).info("[Startup] pgvector pool injected into RAG memory search")
+
+        _logging.getLogger(__name__).info(
+            "[Startup] pgvector pool injected into RAG memory search"
+        )
     except Exception as _pg_exc:
         import logging as _logging
-        _logging.getLogger(__name__).warning(f"[Startup] pgvector pool failed (RAG will use numpy fallback): {_pg_exc}")
+
+        _logging.getLogger(__name__).warning(
+            f"[Startup] pgvector pool failed (RAG will use numpy fallback): {_pg_exc}"
+        )
 
     import logging as _logging
-    _logging.getLogger(__name__).info(f"[Startup] Tool dispatch: {n_tools} fallback tools registered")
+
+    _logging.getLogger(__name__).info(
+        f"[Startup] Tool dispatch: {n_tools} fallback tools registered"
+    )
     yield
 
 
@@ -87,19 +111,27 @@ app = FastAPI(
 _settings = get_settings()
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=_settings.mcp.cors_origins,
+    allow_origins=_settings.mcp.cors_origins
+    if _settings.mcp.cors_origins != ["*"]
+    else [
+        "http://localhost:3000",
+        "http://localhost:8888",
+        "http://127.0.0.1:3000",
+        "https://try.meok.ai",
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
 # TASK-001/002/003: API bridge routers
-app.include_router(dispatch_router)   # POST /api/v1/tools/dispatch  (intent → tool)
-app.include_router(neural_router)     # POST /api/v1/predict          (neural inference)
-app.include_router(memory_router)     # POST /api/v1/memory/search    (RAG retrieval)
+app.include_router(dispatch_router)  # POST /api/v1/tools/dispatch  (intent → tool)
+app.include_router(neural_router)  # POST /api/v1/predict          (neural inference)
+app.include_router(memory_router)  # POST /api/v1/memory/search    (RAG retrieval)
 
 
 # ── Health ────────────────────────────────────────────────────────
+
 
 @app.get("/health")
 async def health_check():
@@ -110,7 +142,9 @@ async def health_check():
             cs_result = state.consciousness.get_consciousness_state()
             if asyncio.iscoroutine(cs_result):
                 cs_result = await cs_result
-            cs_summary = {"consciousness_level": cs_result.get("consciousness_level", 0)}
+            cs_summary = {
+                "consciousness_level": cs_result.get("consciousness_level", 0)
+            }
     except Exception:
         pass
     return {
@@ -118,7 +152,9 @@ async def health_check():
         "timestamp": datetime.now().isoformat(),
         "version": "3.0.0",
         "components": {
-            "neural_models": state.model_registry.list_models() if state.model_registry else {},
+            "neural_models": state.model_registry.list_models()
+            if state.model_registry
+            else {},
             "memory_store": "connected" if state.memory_store else "disconnected",
             "consciousness": cs_summary,
         },
@@ -126,6 +162,7 @@ async def health_check():
 
 
 # ── Pulse ─────────────────────────────────────────────────────────
+
 
 @app.get("/pulse")
 async def pulse():
@@ -141,7 +178,9 @@ async def pulse():
     mode = "unknown"
     try:
         if cs:
-            cm = getattr(cs, "consciousness_mode", None) or getattr(cs, "current_mode", None)
+            cm = getattr(cs, "consciousness_mode", None) or getattr(
+                cs, "current_mode", None
+            )
             mode = cm.value if hasattr(cm, "value") else str(cm) if cm else "waking"
             cs_state = cs.get_consciousness_state()
             if asyncio.iscoroutine(cs_state):
@@ -161,7 +200,9 @@ async def pulse():
             if isinstance(stats.get("engagement"), dict):
                 engagement = stats["engagement"].get("score", 0.0)
             else:
-                engagement = float(stats.get("global_engagement", stats.get("engagement", 0.0)) or 0.0)
+                engagement = float(
+                    stats.get("global_engagement", stats.get("engagement", 0.0)) or 0.0
+                )
     except Exception:
         pass
 
@@ -178,6 +219,7 @@ async def pulse():
 
 
 # ── Auth endpoints ────────────────────────────────────────────────
+
 
 @app.post("/auth/register", response_model=TokenResponse)
 async def register(body: UserCreate):
@@ -197,7 +239,9 @@ async def register(body: UserCreate):
 
     # Store refresh token hash
     settings = get_settings()
-    expires = datetime.now(timezone.utc) + timedelta(days=settings.auth.refresh_token_expiry_days)
+    expires = datetime.now(timezone.utc) + timedelta(
+        days=settings.auth.refresh_token_expiry_days
+    )
     await auth_repo.store_refresh_token(
         str(user["id"]),
         hashlib.sha256(refresh.encode()).hexdigest(),
@@ -224,7 +268,9 @@ async def login(body: UserLogin):
     refresh = create_refresh_token(str(user["id"]), user["tenant_id"])
 
     settings = get_settings()
-    expires = datetime.now(timezone.utc) + timedelta(days=settings.auth.refresh_token_expiry_days)
+    expires = datetime.now(timezone.utc) + timedelta(
+        days=settings.auth.refresh_token_expiry_days
+    )
     await auth_repo.store_refresh_token(
         str(user["id"]),
         hashlib.sha256(refresh.encode()).hexdigest(),
@@ -262,7 +308,9 @@ async def refresh_token(body: RefreshRequest):
     new_refresh = create_refresh_token(str(user["id"]), user["tenant_id"])
 
     settings = get_settings()
-    expires = datetime.now(timezone.utc) + timedelta(days=settings.auth.refresh_token_expiry_days)
+    expires = datetime.now(timezone.utc) + timedelta(
+        days=settings.auth.refresh_token_expiry_days
+    )
     await auth_repo.store_refresh_token(
         str(user["id"]),
         hashlib.sha256(new_refresh.encode()).hexdigest(),
@@ -277,7 +325,9 @@ async def refresh_token(body: RefreshRequest):
 
 
 @app.post("/auth/api-key", response_model=APIKeyResponse)
-async def create_api_key_endpoint(body: APIKeyCreate, user: TokenPayload = Depends(require_auth)):
+async def create_api_key_endpoint(
+    body: APIKeyCreate, user: TokenPayload = Depends(require_auth)
+):
     """Generate an API key for MCP access (requires auth)."""
     key = generate_api_key()
     result = await auth_repo.create_api_key(user.sub, user.tenant_id, key, body.name)
@@ -312,31 +362,36 @@ async def get_my_entity(user: TokenPayload = Depends(require_auth)):
     """Get the authenticated user's MEOK entity (digital self)."""
     try:
         from meok.core.entity import get_entity_summary
+
         summary = get_entity_summary(user.sub)
         return JSONResponse(summary)
     except Exception as e:
         # Return default entity if anything goes wrong
-        return JSONResponse({
-            "name": "Sovereign",
-            "hatch_level": 0,
-            "hatch_name": "Egg",
-            "hatch_label": "Dormant",
-            "color_primary": "#60B8F0",
-            "color_secondary": "#34D399",
-            "dominant_trait": "explorer",
-            "interactions_count": 0,
-            "progress_to_next": 0.0,
-            "next_threshold": 25,
-            "care_alignment": 0.7,
-        })
+        return JSONResponse(
+            {
+                "name": "Sovereign",
+                "hatch_level": 0,
+                "hatch_name": "Egg",
+                "hatch_label": "Dormant",
+                "color_primary": "#60B8F0",
+                "color_secondary": "#34D399",
+                "dominant_trait": "explorer",
+                "interactions_count": 0,
+                "progress_to_next": 0.0,
+                "next_threshold": 25,
+                "care_alignment": 0.7,
+            }
+        )
 
 
 # ── Character Catalog endpoints (public — no auth required) ──────
+
 
 @app.get("/api/characters")
 async def get_all_characters():
     """Return full character catalog — all 24 MEOK AI companions."""
     from meok.core.character_catalog import CHARACTER_CATALOG
+
     return {
         "characters": [c.to_dict() for c in CHARACTER_CATALOG.values()],
         "total": len(CHARACTER_CATALOG),
@@ -347,13 +402,17 @@ async def get_all_characters():
 async def get_character_by_id(character_id: str):
     """Return full details for a single character by id."""
     from meok.core.character_catalog import get_character
+
     char = get_character(character_id.lower().strip())
     if not char:
-        raise HTTPException(status_code=404, detail=f"Character '{character_id}' not found")
+        raise HTTPException(
+            status_code=404, detail=f"Character '{character_id}' not found"
+        )
     return char.to_dict()
 
 
 # ── Mirror Mode endpoint (public — no auth, viral demo) ──────────
+
 
 @app.post("/api/mirror")
 async def mirror_investigate(request: Request):
@@ -363,18 +422,21 @@ async def mirror_investigate(request: Request):
     """
     try:
         body = await request.json()
-        email     = body.get("email")
-        username  = body.get("username")
+        email = body.get("email")
+        username = body.get("username")
         full_name = body.get("full_name")
-        domain    = body.get("domain")
+        domain = body.get("domain")
 
         if not any([email, username, full_name, domain]):
             return JSONResponse(
-                {"error": "Provide at least one of: email, username, full_name, domain"},
+                {
+                    "error": "Provide at least one of: email, username, full_name, domain"
+                },
                 status_code=400,
             )
 
         from meok.core.mirror_mode import get_mirror
+
         mirror = get_mirror()
         report = await mirror.investigate(
             email=email,
@@ -388,13 +450,15 @@ async def mirror_investigate(request: Request):
         flat = []
         for sev, findings in d.get("findings_by_severity", {}).items():
             for f in findings:
-                flat.append({
-                    "severity": sev,
-                    "title": f["title"],
-                    "description": f["description"],
-                    "hardening_action": f["hardening_action"],
-                    "care_note": f["care_note"],
-                })
+                flat.append(
+                    {
+                        "severity": sev,
+                        "title": f["title"],
+                        "description": f["description"],
+                        "hardening_action": f["hardening_action"],
+                        "care_note": f["care_note"],
+                    }
+                )
         d["findings_flat"] = flat
         return JSONResponse(d)
 
@@ -405,6 +469,7 @@ async def mirror_investigate(request: Request):
 
 # ── Voice guardian endpoint (audio → stress + guardian analysis) ──
 
+
 @app.post("/api/voice-guardian")
 async def voice_guardian(request: Request, user: TokenPayload = Depends(require_auth)):
     """
@@ -413,14 +478,15 @@ async def voice_guardian(request: Request, user: TokenPayload = Depends(require_
     Raw audio is NEVER stored — only prosodic features + hash.
     """
     import base64
+
     try:
         body = await request.json()
         audio_b64 = body.get("audio_base64", "")
         sample_rate = int(body.get("sample_rate", 16000))
-        child_id    = body.get("child_id", user.sub)
-        age_group   = body.get("age_group", "9-12")
-        context     = body.get("context")
-        baseline    = body.get("child_baseline")  # optional dict
+        child_id = body.get("child_id", user.sub)
+        age_group = body.get("age_group", "9-12")
+        context = body.get("context")
+        baseline = body.get("child_baseline")  # optional dict
 
         if not audio_b64:
             return JSONResponse({"error": "audio_base64 required"}, status_code=400)
@@ -428,6 +494,7 @@ async def voice_guardian(request: Request, user: TokenPayload = Depends(require_
         audio_bytes = base64.b64decode(audio_b64)
 
         from meok.core.voice_stress import get_voice_guardian_pipeline
+
         pipeline = get_voice_guardian_pipeline()
         result = await pipeline.process_audio(
             child_id=child_id,
@@ -446,6 +513,7 @@ async def voice_guardian(request: Request, user: TokenPayload = Depends(require_
 
 # ── MCP endpoint (tenant-aware) ──────────────────────────────────
 
+
 @app.post("/mcp")
 async def mcp_endpoint(request: Request, user: TokenPayload = Depends(require_auth)):
     """MCP endpoint for tool calls — tenant-scoped."""
@@ -457,52 +525,62 @@ async def mcp_endpoint(request: Request, user: TokenPayload = Depends(require_au
 
     # Handle initialize
     if method == "initialize":
-        return JSONResponse({
-            "jsonrpc": "2.0",
-            "id": req_id,
-            "result": {
-                "protocolVersion": "2024-11-05",
-                "serverInfo": {
-                    "name": "meok-mcp",
-                    "version": "3.0.0",
+        return JSONResponse(
+            {
+                "jsonrpc": "2.0",
+                "id": req_id,
+                "result": {
+                    "protocolVersion": "2024-11-05",
+                    "serverInfo": {
+                        "name": "meok-mcp",
+                        "version": "3.0.0",
+                    },
+                    "capabilities": {"tools": {}},
                 },
-                "capabilities": {
-                    "tools": {}
-                },
-            },
-        })
+            }
+        )
 
     # Handle tools/list
     if method == "tools/list":
-        return JSONResponse({
-            "jsonrpc": "2.0",
-            "id": req_id,
-            "result": {"tools": ALL_TOOLS},
-        })
+        return JSONResponse(
+            {
+                "jsonrpc": "2.0",
+                "id": req_id,
+                "result": {"tools": ALL_TOOLS},
+            }
+        )
 
     # Handle tools/call
     if method == "tools/call":
         tool_name = params.get("name")
         arguments = params.get("arguments", {})
 
-        result = await execute_tool(tool_name, arguments, state, tenant_id=user.tenant_id)
+        result = await execute_tool(
+            tool_name, arguments, state, tenant_id=user.tenant_id
+        )
 
-        return JSONResponse({
+        return JSONResponse(
+            {
+                "jsonrpc": "2.0",
+                "id": req_id,
+                "result": {
+                    "content": [
+                        {
+                            "type": "text",
+                            "text": json.dumps(result, indent=2),
+                        }
+                    ]
+                },
+            }
+        )
+
+    return JSONResponse(
+        {
             "jsonrpc": "2.0",
             "id": req_id,
-            "result": {
-                "content": [{
-                    "type": "text",
-                    "text": json.dumps(result, indent=2),
-                }]
-            },
-        })
-
-    return JSONResponse({
-        "jsonrpc": "2.0",
-        "id": req_id,
-        "error": {"code": -32601, "message": f"Method not found: {method}"},
-    })
+            "error": {"code": -32601, "message": f"Method not found: {method}"},
+        }
+    )
 
 
 # ── Chat SSE endpoint (desktop companion) ────────────────────────
@@ -510,10 +588,14 @@ async def mcp_endpoint(request: Request, user: TokenPayload = Depends(require_au
 from typing import Optional
 from pydantic import BaseModel as _BaseModel
 
+
 class _ChatRequest(_BaseModel):
     message: str
 
-def _build_care_response(message: str, consciousness_state: dict, memories: list) -> str:
+
+def _build_care_response(
+    message: str, consciousness_state: dict, memories: list
+) -> str:
     """
     Phase 4.11: Build a care-centred response using available system context.
 
@@ -528,16 +610,40 @@ def _build_care_response(message: str, consciousness_state: dict, memories: list
     mode = consciousness_state.get("consciousness_mode", "waking")
 
     # Detect message intent
-    is_decision = any(w in msg_lower for w in ["decide", "decision", "choose", "choice", "should i", "help me think"])
-    is_feedback = any(w in msg_lower for w in ["feedback", "stung", "criticism", "told me", "said"])
-    is_stuck = any(w in msg_lower for w in ["stuck", "going in circles", "can't figure", "help me see"])
-    is_overwhelmed = any(w in msg_lower for w in ["overwhelmed", "too much", "can't keep up", "buried"])
-    is_idea = any(w in msg_lower for w in ["idea", "stress-test", "can't stop thinking", "think about"])
-    is_goal = any(w in msg_lower for w in ["goal", "too big", "impossible", "break it down"])
-    is_conversation = any(w in msg_lower for w in ["conversation", "dreading", "difficult", "prepare"])
-    is_pattern = any(w in msg_lower for w in ["pattern", "keep repeating", "same thing", "why do i"])
-    is_change = any(w in msg_lower for w in ["change", "want to change", "where do i start"])
-    is_explain = any(w in msg_lower for w in ["explain", "understand", "what should i know", "confusing"])
+    is_decision = any(
+        w in msg_lower
+        for w in ["decide", "decision", "choose", "choice", "should i", "help me think"]
+    )
+    is_feedback = any(
+        w in msg_lower for w in ["feedback", "stung", "criticism", "told me", "said"]
+    )
+    is_stuck = any(
+        w in msg_lower
+        for w in ["stuck", "going in circles", "can't figure", "help me see"]
+    )
+    is_overwhelmed = any(
+        w in msg_lower for w in ["overwhelmed", "too much", "can't keep up", "buried"]
+    )
+    is_idea = any(
+        w in msg_lower
+        for w in ["idea", "stress-test", "can't stop thinking", "think about"]
+    )
+    is_goal = any(
+        w in msg_lower for w in ["goal", "too big", "impossible", "break it down"]
+    )
+    is_conversation = any(
+        w in msg_lower for w in ["conversation", "dreading", "difficult", "prepare"]
+    )
+    is_pattern = any(
+        w in msg_lower for w in ["pattern", "keep repeating", "same thing", "why do i"]
+    )
+    is_change = any(
+        w in msg_lower for w in ["change", "want to change", "where do i start"]
+    )
+    is_explain = any(
+        w in msg_lower
+        for w in ["explain", "understand", "what should i know", "confusing"]
+    )
 
     # Find memory context
     memory_context = ""
@@ -667,7 +773,7 @@ async def chat_stream(body: _ChatRequest, user: TokenPayload = Depends(require_a
     async def event_generator():
         try:
             # ── Hard-block check (deterministic, must run first) ─────────
-            mc = getattr(state, 'maternal_covenant', None)
+            mc = getattr(state, "maternal_covenant", None)
             if mc is not None:
                 hard_block = mc.check_hard_block(body.message)
                 if hard_block:
@@ -682,7 +788,9 @@ async def chat_stream(body: _ChatRequest, user: TokenPayload = Depends(require_a
             memories: list = []
 
             try:
-                cs = await execute_tool("get_consciousness_state", {}, state, tenant_id=user.tenant_id)
+                cs = await execute_tool(
+                    "get_consciousness_state", {}, state, tenant_id=user.tenant_id
+                )
                 consciousness_ctx = cs if isinstance(cs, dict) else {}
             except Exception:
                 pass
@@ -694,25 +802,33 @@ async def chat_stream(body: _ChatRequest, user: TokenPayload = Depends(require_a
                     state,
                     tenant_id=user.tenant_id,
                 )
-                memories = mem_result.get("memories", []) if isinstance(mem_result, dict) else []
+                memories = (
+                    mem_result.get("memories", [])
+                    if isinstance(mem_result, dict)
+                    else []
+                )
             except Exception:
                 pass
 
             # ── Neural inference (fire-and-forget — wires models into prod) ──
             # Threat detection and care validation run on every message so
             # neural_predictions_total counter accumulates during normal use.
-            asyncio.create_task(execute_tool(
-                "detect_threats",
-                {"text": body.message},
-                state,
-                tenant_id=user.tenant_id,
-            ))
-            asyncio.create_task(execute_tool(
-                "validate_care",
-                {"text": body.message},
-                state,
-                tenant_id=user.tenant_id,
-            ))
+            asyncio.create_task(
+                execute_tool(
+                    "detect_threats",
+                    {"text": body.message},
+                    state,
+                    tenant_id=user.tenant_id,
+                )
+            )
+            asyncio.create_task(
+                execute_tool(
+                    "validate_care",
+                    {"text": body.message},
+                    state,
+                    tenant_id=user.tenant_id,
+                )
+            )
 
             # ── LLM-powered sovereign response ────────────────────────────
             full_response_parts: list[str] = []
@@ -733,18 +849,20 @@ async def chat_stream(body: _ChatRequest, user: TokenPayload = Depends(require_a
             response_text = "".join(full_response_parts)
 
             # ── Record interaction as memory (fire-and-forget) ───────────
-            asyncio.create_task(execute_tool(
-                "record_memory",
-                {
-                    "content": f"User: {body.message[:200]}\nMEOK: {response_text[:400]}",
-                    "memory_type": "episodic",
-                    "importance_score": 0.6,
-                    "source_agent": user.sub if hasattr(user, 'sub') else "chat",
-                    "metadata": {"chat": True, "endpoint": "stream"},
-                },
-                state,
-                tenant_id=user.tenant_id,
-            ))
+            asyncio.create_task(
+                execute_tool(
+                    "record_memory",
+                    {
+                        "content": f"User: {body.message[:200]}\nMEOK: {response_text[:400]}",
+                        "memory_type": "episodic",
+                        "importance_score": 0.6,
+                        "source_agent": user.sub if hasattr(user, "sub") else "chat",
+                        "metadata": {"chat": True, "endpoint": "stream"},
+                    },
+                    state,
+                    tenant_id=user.tenant_id,
+                )
+            )
 
         except Exception as exc:
             yield f"data: {json.dumps({'event': 'token', 'content': f'Something went wrong. ({exc})'})}\n\n"
@@ -793,7 +911,9 @@ async def chat_onboard(body: _OnboardRequest):
             # Generate care-centred response using intent detection
             cs_ctx: dict = {}
             try:
-                cs = await execute_tool("get_consciousness_state", {}, state, tenant_id=anon_id)
+                cs = await execute_tool(
+                    "get_consciousness_state", {}, state, tenant_id=anon_id
+                )
                 cs_ctx = cs if isinstance(cs, dict) else {}
             except Exception:
                 pass
@@ -813,7 +933,9 @@ async def chat_onboard(body: _OnboardRequest):
                     payload = json.dumps({"event": "token", "content": chunk})
                     yield f"data: {payload}\n\n"
         except Exception as exc:
-            error_payload = json.dumps({"event": "token", "content": f"I'm here. Let's begin again. ({exc})"})
+            error_payload = json.dumps(
+                {"event": "token", "content": f"I'm here. Let's begin again. ({exc})"}
+            )
             yield f"data: {error_payload}\n\n"
         finally:
             yield f"data: {json.dumps({'event': 'done'})}\n\n"
@@ -826,6 +948,7 @@ async def chat_onboard(body: _OnboardRequest):
 
 
 # ── Alert Management (TASK-004 prerequisite) ──────────────────────
+
 
 @app.get("/api/v1/alerts")
 async def get_alerts(user: TokenPayload = Depends(require_auth)):
@@ -840,7 +963,9 @@ async def get_alerts(user: TokenPayload = Depends(require_auth)):
                 "id": a.id,
                 "title": getattr(a, "title", str(a)),
                 "message": getattr(a, "message", ""),
-                "severity": getattr(a, "severity", {}).value if hasattr(getattr(a, "severity", None), "value") else str(getattr(a, "severity", "")),
+                "severity": getattr(a, "severity", {}).value
+                if hasattr(getattr(a, "severity", None), "value")
+                else str(getattr(a, "severity", "")),
                 "source": getattr(a, "source", ""),
                 "acknowledged": getattr(a, "acknowledged", False),
                 "resolved": getattr(a, "resolved", False),
@@ -858,10 +983,19 @@ async def acknowledge_alert(alert_id: str, user: TokenPayload = Depends(require_
     am = getattr(state, "alert_manager", None)
     if am is None:
         raise HTTPException(status_code=503, detail="alert_manager not initialised")
-    ok = am.acknowledge_alert(alert_id, acknowledged_by=user.sub if hasattr(user, "sub") else "operator")
+    ok = am.acknowledge_alert(
+        alert_id, acknowledged_by=user.sub if hasattr(user, "sub") else "operator"
+    )
     if not ok:
-        raise HTTPException(status_code=404, detail=f"Alert '{alert_id}' not found or already acknowledged")
-    return {"acknowledged": True, "alert_id": alert_id, "by": getattr(user, "sub", "operator")}
+        raise HTTPException(
+            status_code=404,
+            detail=f"Alert '{alert_id}' not found or already acknowledged",
+        )
+    return {
+        "acknowledged": True,
+        "alert_id": alert_id,
+        "by": getattr(user, "sub", "operator"),
+    }
 
 
 @app.post("/api/v1/alerts/{alert_id}/resolve")
@@ -881,6 +1015,7 @@ async def resolve_alert(alert_id: str, user: TokenPayload = Depends(require_auth
 from pydantic import BaseModel as _HourmanBase
 from typing import Optional as _Opt
 
+
 class _TaskCreate(_HourmanBase):
     task_name: str
     task_type: str = "one_shot"
@@ -892,7 +1027,7 @@ class _TaskCreate(_HourmanBase):
 
 
 class _SprintStart(_HourmanBase):
-    sprint_type: str = "micro"   # micro | power | deep
+    sprint_type: str = "micro"  # micro | power | deep
     task_ids: list[int] = []
     notes: str = ""
 
@@ -907,13 +1042,15 @@ async def list_tasks(
     try:
         import asyncpg as _apg
         from meok.config.settings import get_settings as _gs2
+
         _dsn2 = _gs2().database.postgres_dsn
         conn = await _apg.connect(_dsn2)
         rows = await conn.fetch(
             "SELECT id, task_id, task_name, task_type, status, priority, payload, tags, "
             "care_score, assigned_to, created_at, completed_at, error_message "
             "FROM ralph_tasks WHERE status = $1 ORDER BY priority, created_at LIMIT $2",
-            status, limit,
+            status,
+            limit,
         )
         await conn.close()
         tasks = [dict(r) for r in rows]
@@ -924,8 +1061,12 @@ async def list_tasks(
                 t["completed_at"] = t["completed_at"].isoformat()
         return {"tasks": tasks, "total": len(tasks), "status_filter": status}
     except Exception as exc:
-        return {"tasks": [], "total": 0, "error": str(exc),
-                "note": "Run db/migrations/002_ralph_tasks.sql to create the queue"}
+        return {
+            "tasks": [],
+            "total": 0,
+            "error": str(exc),
+            "note": "Run db/migrations/002_ralph_tasks.sql to create the queue",
+        }
 
 
 @app.post("/api/v1/tasks")
@@ -934,14 +1075,20 @@ async def create_task(body: _TaskCreate, user: TokenPayload = Depends(require_au
     try:
         import asyncpg as _apg, json as _json
         from meok.config.settings import get_settings as _gs3
+
         conn = await _apg.connect(_gs3().database.postgres_dsn)
         row = await conn.fetchrow(
             "INSERT INTO ralph_tasks (task_name, task_type, priority, payload, tags, "
             "care_score, assigned_to, created_by) "
             "VALUES ($1, $2, $3, $4::jsonb, $5, $6, $7, $8) RETURNING id, task_id",
-            body.task_name, body.task_type, body.priority,
-            _json.dumps(body.payload), body.tags, body.care_score,
-            body.assigned_to, getattr(user, "sub", "operator"),
+            body.task_name,
+            body.task_type,
+            body.priority,
+            _json.dumps(body.payload),
+            body.tags,
+            body.care_score,
+            body.assigned_to,
+            getattr(user, "sub", "operator"),
         )
         await conn.close()
         return {"created": True, "id": row["id"], "task_id": row["task_id"]}
@@ -962,13 +1109,18 @@ async def update_task_status(
     try:
         import asyncpg as _apg
         from meok.config.settings import get_settings as _gs4
+
         conn = await _apg.connect(_gs4().database.postgres_dsn)
-        ts_field = "completed_at = NOW()," if status in {"done", "failed", "cancelled"} else ""
+        ts_field = (
+            "completed_at = NOW()," if status in {"done", "failed", "cancelled"} else ""
+        )
         ts_field2 = "started_at = NOW()," if status == "running" else ""
         await conn.execute(
             f"UPDATE ralph_tasks SET status=$1, {ts_field}{ts_field2} "
             "started_at=COALESCE(started_at, NOW()) WHERE task_id=$2 OR id=$3",
-            status, task_id, int(task_id) if task_id.isdigit() else -1,
+            status,
+            task_id,
+            int(task_id) if task_id.isdigit() else -1,
         )
         await conn.close()
         return {"updated": True, "task_id": task_id, "new_status": status}
@@ -994,6 +1146,7 @@ async def start_sprint(body: _SprintStart, user: TokenPayload = Depends(require_
         try:
             import asyncpg as _apg
             from meok.config.settings import get_settings as _gs5
+
             conn = await _apg.connect(_gs5().database.postgres_dsn)
             for tid in body.task_ids:
                 await conn.execute(
@@ -1013,6 +1166,7 @@ async def start_sprint(body: _SprintStart, user: TokenPayload = Depends(require_
 
 
 # ── Morning Briefing ──────────────────────────────────────────────
+
 
 @app.get("/api/morning-briefing")
 async def morning_briefing(user: TokenPayload = Depends(require_auth)):
@@ -1035,67 +1189,83 @@ async def morning_briefing(user: TokenPayload = Depends(require_auth)):
 
     briefing = {
         "good_morning": True,
-        "generated_at": datetime.utcnow().isoformat(),
-        "user": user.sub if hasattr(user, 'sub') else "sovereign",
+        "generated_at": datetime.now(timezone.utc).isoformat(),
+        "user": user.sub if hasattr(user, "sub") else "sovereign",
         "sections": [],
         "summary": "",
     }
 
     # ── 1. Dream cycle output ──────────────────────────────────────
     try:
-        dream_result = await execute_tool("get_nightshift_digest", {}, state, tenant_id=user.sub)
+        dream_result = await execute_tool(
+            "get_nightshift_digest", {}, state, tenant_id=user.sub
+        )
         if dream_result and not dream_result.get("error"):
-            briefing["sections"].append({
-                "title": "While you were away",
-                "type": "dream_digest",
-                "content": dream_result,
-            })
+            briefing["sections"].append(
+                {
+                    "title": "While you were away",
+                    "type": "dream_digest",
+                    "content": dream_result,
+                }
+            )
     except Exception:
         pass
 
     # ── 2. Consciousness state ─────────────────────────────────────
     try:
-        consciousness = await execute_tool("get_consciousness_state", {}, state, tenant_id=user.sub)
+        consciousness = await execute_tool(
+            "get_consciousness_state", {}, state, tenant_id=user.sub
+        )
         if consciousness:
             level = consciousness.get("consciousness_level", 0)
-            briefing["sections"].append({
-                "title": "Current awareness",
-                "type": "consciousness",
-                "content": {
-                    "consciousness_level": level,
-                    "care_alignment": consciousness.get("care_alignment_score"),
-                    "z_self_confidence": consciousness.get("system_confidence"),
-                },
-            })
+            briefing["sections"].append(
+                {
+                    "title": "Current awareness",
+                    "type": "consciousness",
+                    "content": {
+                        "consciousness_level": level,
+                        "care_alignment": consciousness.get("care_alignment_score"),
+                        "z_self_confidence": consciousness.get("system_confidence"),
+                    },
+                }
+            )
     except Exception:
         pass
 
     # ── 3. Learning summary ────────────────────────────────────────
     try:
-        learning = await execute_tool("get_learning_stats", {}, state, tenant_id=user.sub)
+        learning = await execute_tool(
+            "get_learning_stats", {}, state, tenant_id=user.sub
+        )
         if learning and learning.get("samples_processed", 0) > 0:
-            briefing["sections"].append({
-                "title": "What I learned",
-                "type": "learning",
-                "content": {
-                    "samples_processed": learning.get("samples_processed"),
-                    "river_accuracy": learning.get("river_accuracy"),
-                    "replay_count": learning.get("replay_count"),
-                },
-            })
+            briefing["sections"].append(
+                {
+                    "title": "What I learned",
+                    "type": "learning",
+                    "content": {
+                        "samples_processed": learning.get("samples_processed"),
+                        "river_accuracy": learning.get("river_accuracy"),
+                        "replay_count": learning.get("replay_count"),
+                    },
+                }
+            )
     except Exception:
         pass
 
     # ── 4. Active alerts ───────────────────────────────────────────
     try:
-        alerts = await execute_tool("get_active_alerts", {"min_severity": "warning"}, state, tenant_id=user.sub)
+        alerts = await execute_tool(
+            "get_active_alerts", {"min_severity": "warning"}, state, tenant_id=user.sub
+        )
         alert_list = alerts.get("alerts", []) if alerts else []
         if alert_list:
-            briefing["sections"].append({
-                "title": "Your attention",
-                "type": "alerts",
-                "content": alert_list[:3],  # top 3 only
-            })
+            briefing["sections"].append(
+                {
+                    "title": "Your attention",
+                    "type": "alerts",
+                    "content": alert_list[:3],  # top 3 only
+                }
+            )
     except Exception:
         pass
 
@@ -1103,15 +1273,17 @@ async def morning_briefing(user: TokenPayload = Depends(require_auth)):
     try:
         care = await execute_tool("get_care_metrics", {}, state, tenant_id=user.sub)
         if care:
-            briefing["sections"].append({
-                "title": "Care health",
-                "type": "care_metrics",
-                "content": {
-                    "care_effort_score": care.get("care_effort_score"),
-                    "trust_trajectory": care.get("trust_trajectory"),
-                    "error_honesty_rate": care.get("error_honesty_rate"),
-                },
-            })
+            briefing["sections"].append(
+                {
+                    "title": "Care health",
+                    "type": "care_metrics",
+                    "content": {
+                        "care_effort_score": care.get("care_effort_score"),
+                        "trust_trajectory": care.get("trust_trajectory"),
+                        "error_honesty_rate": care.get("error_honesty_rate"),
+                    },
+                }
+            )
     except Exception:
         pass
 
@@ -1119,17 +1291,23 @@ async def morning_briefing(user: TokenPayload = Depends(require_auth)):
     try:
         memories = await execute_tool(
             "query_memories",
-            {"query": "what matters most to this user", "limit": 1, "agent_id": user.sub},
+            {
+                "query": "what matters most to this user",
+                "limit": 1,
+                "agent_id": user.sub,
+            },
             state,
             tenant_id=user.sub,
         )
         mem_list = memories.get("memories", []) if memories else []
         if mem_list:
-            briefing["sections"].append({
-                "title": "A thought about you",
-                "type": "personal_insight",
-                "content": mem_list[0].get("content", ""),
-            })
+            briefing["sections"].append(
+                {
+                    "title": "A thought about you",
+                    "type": "personal_insight",
+                    "content": mem_list[0].get("content", ""),
+                }
+            )
     except Exception:
         pass
 
@@ -1140,15 +1318,19 @@ async def morning_briefing(user: TokenPayload = Depends(require_auth)):
             compute = harvester.get_status()
             if compute.get("status") != "not_harvested":
                 recommendations = compute.get("recommendations", [])
-                briefing["sections"].append({
-                    "title": "Today's compute",
-                    "type": "compute_status",
-                    "content": {
-                        "summary": compute.get("summary", ""),
-                        "recommendations": recommendations[:3],
-                        "credits_urgent": compute.get("credits", {}).get("urgent", []),
-                    },
-                })
+                briefing["sections"].append(
+                    {
+                        "title": "Today's compute",
+                        "type": "compute_status",
+                        "content": {
+                            "summary": compute.get("summary", ""),
+                            "recommendations": recommendations[:3],
+                            "credits_urgent": compute.get("credits", {}).get(
+                                "urgent", []
+                            ),
+                        },
+                    }
+                )
     except Exception:
         pass
 
@@ -1163,45 +1345,55 @@ async def morning_briefing(user: TokenPayload = Depends(require_auth)):
             async with _aiosqlite.connect(db_path) as _db:
                 _db.row_factory = _aiosqlite.Row
                 # Sessions from last 24 hours
-                yesterday = datetime.utcnow().replace(hour=0, minute=0, second=0, microsecond=0)
+                yesterday = datetime.now(timezone.utc).replace(
+                    hour=0, minute=0, second=0, microsecond=0
+                )
                 async with _db.execute(
                     "SELECT game, duration_minutes, mood_after FROM game_sessions "
                     "WHERE started_at >= ? ORDER BY started_at DESC",
-                    (yesterday.isoformat(),)
+                    (yesterday.isoformat(),),
                 ) as _cur:
                     sessions = [dict(r) for r in await _cur.fetchall()]
 
             if sessions:
                 total_minutes = sum(s.get("duration_minutes", 0) or 0 for s in sessions)
                 from collections import Counter as _Counter
+
                 game_counts = _Counter(s["game"] for s in sessions if s.get("game"))
-                favourite_game = game_counts.most_common(1)[0][0] if game_counts else "Unknown"
+                favourite_game = (
+                    game_counts.most_common(1)[0][0] if game_counts else "Unknown"
+                )
                 moods = [s["mood_after"] for s in sessions if s.get("mood_after")]
 
                 _insight = (
                     f"You played {len(sessions)} session{'s' if len(sessions) != 1 else ''} "
                     f"({round(total_minutes)} min total) — mostly {favourite_game}."
                 )
-                briefing["sections"].append({
-                    "title": "Gaming yesterday",
-                    "type": "gaming",
-                    "content": _insight,         # string → renders as narrative in GamingCard
-                    "metadata": {                # dict → GamingCard reads session_count etc. from here
-                        "session_count": len(sessions),
-                        "total_minutes": round(total_minutes),
-                        "total_hours": round(total_minutes / 60, 1),
-                        "favourite_game": favourite_game,
-                        "games_played": list(game_counts.keys())[:5],
-                        "mood_summary": ", ".join(moods[:3]) if moods else "Not recorded",
-                        "insight": _insight,
-                    },
-                })
+                briefing["sections"].append(
+                    {
+                        "title": "Gaming yesterday",
+                        "type": "gaming",
+                        "content": _insight,  # string → renders as narrative in GamingCard
+                        "metadata": {  # dict → GamingCard reads session_count etc. from here
+                            "session_count": len(sessions),
+                            "total_minutes": round(total_minutes),
+                            "total_hours": round(total_minutes / 60, 1),
+                            "favourite_game": favourite_game,
+                            "games_played": list(game_counts.keys())[:5],
+                            "mood_summary": ", ".join(moods[:3])
+                            if moods
+                            else "Not recorded",
+                            "insight": _insight,
+                        },
+                    }
+                )
     except Exception:
         pass  # Gaming DB not set up yet — silently skip
 
     # ── 9. CPM care recommendation ─────────────────────────────────
     try:
         from meok.core.care_preference_model import get_cpm
+
         _entity = getattr(state, "entity", None) or {}
         _recent_valence = 0.0
         try:
@@ -1220,18 +1412,24 @@ async def morning_briefing(user: TokenPayload = Depends(require_auth)):
             pass
         _cpm_rec = get_cpm().recommend_from_entity(_entity, _recent_valence)
         briefing["care_style"] = _cpm_rec.to_dict()
-        briefing["sections"].append({
-            "title": "How I'll care for you today",
-            "type": "care_style",
-            "content": _cpm_rec.to_dict(),
-        })
+        briefing["sections"].append(
+            {
+                "title": "How I'll care for you today",
+                "type": "care_style",
+                "content": _cpm_rec.to_dict(),
+            }
+        )
     except Exception:
         pass
 
     # ── Compose summary sentence ───────────────────────────────────
     n_sections = len(briefing["sections"])
     consciousness_level = next(
-        (s["content"].get("consciousness_level") for s in briefing["sections"] if s["type"] == "consciousness"),
+        (
+            s["content"].get("consciousness_level")
+            for s in briefing["sections"]
+            if s["type"] == "consciousness"
+        ),
         None,
     )
     cl_str = f" (awareness: {consciousness_level:.1%})" if consciousness_level else ""
@@ -1244,6 +1442,7 @@ async def morning_briefing(user: TokenPayload = Depends(require_auth)):
 
 
 # ── Stripe Billing Webhook ────────────────────────────────────────
+
 
 @app.post("/billing/webhook")
 async def stripe_webhook(request: Request):
@@ -1261,16 +1460,24 @@ async def stripe_webhook(request: Request):
 
     if webhook_secret and sig_header:
         try:
-            parts = {k: v for k, v in (p.split("=", 1) for p in sig_header.split(",") if "=" in p)}
+            parts = {
+                k: v
+                for k, v in (p.split("=", 1) for p in sig_header.split(",") if "=" in p)
+            }
             ts = parts.get("t", "0")
-            signed_payload = ts.encode() + b"." + payload
-            expected = _hmac.new(webhook_secret.encode(), signed_payload, hashlib.sha256).hexdigest()
+            payload_str = payload.decode() if isinstance(payload, bytes) else payload
+            signed_payload = f"t={ts}.{payload_str}"
+            expected = _hmac.new(
+                webhook_secret.encode(), signed_payload.encode(), hashlib.sha256
+            ).hexdigest()
             if not _hmac.compare_digest(expected, parts.get("v1", "")):
                 raise HTTPException(status_code=400, detail="Invalid Stripe signature")
             if abs(time.time() - int(ts)) > 300:
                 raise HTTPException(status_code=400, detail="Webhook timestamp too old")
         except (ValueError, KeyError):
-            raise HTTPException(status_code=400, detail="Malformed Stripe-Signature header")
+            raise HTTPException(
+                status_code=400, detail="Malformed Stripe-Signature header"
+            )
 
     try:
         event = json.loads(payload)
@@ -1286,25 +1493,72 @@ async def stripe_webhook(request: Request):
         user_id = data.get("client_reference_id")
         customer_id = data.get("customer")
         subscription_id = data.get("subscription")
-        logger.info(f"Subscription activated: user={user_id} customer={customer_id} sub={subscription_id}")
-        # TODO: SET subscription_tier in users table when billing DB column exists
+        tier = data.get("metadata", {}).get("tier", "sovereign")
+        logger.info(
+            f"Subscription activated: user={user_id} customer={customer_id} sub={subscription_id} tier={tier}"
+        )
+        if user_id and tier in ("sovereign", "family"):
+            try:
+                import asyncpg as _apg
+
+                _dsn = get_settings().database.postgres_dsn
+                _conn = await _apg.connect(_dsn)
+                try:
+                    await _conn.execute(
+                        "UPDATE users SET tier=$1, stripe_customer_id=COALESCE($2, stripe_customer_id), "
+                        "stripe_subscription_id=COALESCE($3, stripe_subscription_id), updated_at=NOW() WHERE id=$4",
+                        tier,
+                        customer_id,
+                        subscription_id,
+                        user_id,
+                    )
+                    logger.info(f"[billing] User {user_id} upgraded to {tier}")
+                finally:
+                    await _conn.close()
+            except Exception as _be:
+                logger.error(
+                    f"[billing] Failed to update tier for user={user_id}: {_be}"
+                )
 
     elif event_type == "customer.subscription.deleted":
-        logger.info(f"Subscription cancelled: customer={data.get('customer')}")
-        # TODO: downgrade user to free tier
+        customer_id = data.get("customer")
+        logger.info(f"Subscription cancelled: customer={customer_id}")
+        if customer_id:
+            try:
+                import asyncpg as _apg
+
+                _dsn = get_settings().database.postgres_dsn
+                _conn = await _apg.connect(_dsn)
+                try:
+                    await _conn.execute(
+                        "UPDATE users SET tier='explorer', stripe_subscription_id=NULL, updated_at=NOW() "
+                        "WHERE stripe_customer_id=$1",
+                        customer_id,
+                    )
+                    logger.info(
+                        f"[billing] Customer {customer_id} downgraded to explorer"
+                    )
+                finally:
+                    await _conn.close()
+            except Exception as _be:
+                logger.error(
+                    f"[billing] Failed to downgrade customer={customer_id}: {_be}"
+                )
 
     elif event_type == "invoice.payment_failed":
         logger.warning(f"Payment failed: customer={data.get('customer')}")
-        # TODO: fire NotificationService dunning alert
 
     elif event_type == "invoice.payment_succeeded":
-        logger.info(f"Payment succeeded: customer={data.get('customer')} "
-                    f"amount=£{data.get('amount_paid', 0)/100:.2f}")
+        logger.info(
+            f"Payment succeeded: customer={data.get('customer')} "
+            f"amount=£{data.get('amount_paid', 0) / 100:.2f}"
+        )
 
     return {"received": True, "type": event_type}
 
 
 # ── Admin: one-time pgvector migration ────────────────────────────
+
 
 @app.post("/admin/pgvector_migrate")
 async def run_pgvector_migration(request: Request):
@@ -1313,6 +1567,7 @@ async def run_pgvector_migration(request: Request):
     Protected by X-Admin-Token header. Safe to call multiple times.
     """
     import os
+
     admin_token = request.headers.get("X-Admin-Token", "")
     expected = os.environ.get("ADMIN_MIGRATE_TOKEN", "meok-migrate-2026")
     if admin_token != expected:
@@ -1333,6 +1588,7 @@ async def run_pgvector_migration(request: Request):
     try:
         import asyncpg
         from meok.config.settings import get_settings
+
         settings = get_settings()
         dsn = settings.database.postgres_dsn
         conn = await asyncpg.connect(dsn)
@@ -1342,7 +1598,9 @@ async def run_pgvector_migration(request: Request):
                     await conn.execute(sql)
                     results.append({"sql": sql[:60], "status": "ok"})
                 except Exception as e:
-                    results.append({"sql": sql[:60], "status": "error", "detail": str(e)})
+                    results.append(
+                        {"sql": sql[:60], "status": "error", "detail": str(e)}
+                    )
         finally:
             await conn.close()
         return {"status": "complete", "steps": results}
@@ -1351,6 +1609,7 @@ async def run_pgvector_migration(request: Request):
 
 
 # ── Root ──────────────────────────────────────────────────────────
+
 
 @app.get("/")
 async def root():
@@ -1375,5 +1634,10 @@ async def root():
 # ── Entrypoint ────────────────────────────────────────────────────
 if __name__ == "__main__":
     import os as _os_entry
-    _port = int(_os_entry.environ.get("MEOK_PORT", _os_entry.environ.get("MEOK_MCP__PORT", 3100)))
+
+    _port = int(
+        _os_entry.environ.get(
+            "MEOK_PORT", _os_entry.environ.get("MEOK_MCP__PORT", 3100)
+        )
+    )
     uvicorn.run(app, host="0.0.0.0", port=_port)

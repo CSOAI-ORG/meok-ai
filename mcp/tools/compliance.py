@@ -105,73 +105,75 @@ COMPLIANCE_TOOLS = [
 
 async def handle_compliance_tool(name: str, arguments: Dict[str, Any], state: ServiceState) -> Dict[str, Any]:
     """Handle compliance + BFT tool calls."""
+    try:
+        if name == "get_compliance_status":
+            auditor = getattr(state, 'compliance_auditor', None)
+            if auditor is None:
+                return {"error": "ComplianceAuditor not initialised"}
+            jurisdiction = arguments.get("jurisdiction", "UK")
+            return auditor.run_audit(jurisdiction=jurisdiction)
 
-    if name == "get_compliance_status":
-        auditor = getattr(state, 'compliance_auditor', None)
-        if auditor is None:
-            return {"error": "ComplianceAuditor not initialised"}
-        jurisdiction = arguments.get("jurisdiction", "UK")
-        return auditor.run_audit(jurisdiction=jurisdiction)
+        elif name == "get_bft_confidence_status":
+            bft = getattr(state, 'bft_meta_council', None)
+            if bft is None:
+                return {"error": "BFTMetaCouncil not initialised"}
+            return bft.get_status()
 
-    elif name == "get_bft_confidence_status":
-        bft = getattr(state, 'bft_meta_council', None)
-        if bft is None:
-            return {"error": "BFTMetaCouncil not initialised"}
-        return bft.get_status()
+        elif name == "get_sycophancy_report":
+            z_self = getattr(state, 'z_self', None)
+            if z_self is None:
+                return {"error": "z_self not initialised"}
+            return z_self.check_sycophancy()
 
-    elif name == "get_sycophancy_report":
-        z_self = getattr(state, 'z_self', None)
-        if z_self is None:
-            return {"error": "z_self not initialised"}
-        return z_self.check_sycophancy()
+        elif name == "run_gdpr_erasure":
+            gdpr = getattr(state, 'gdpr_consent', None)
+            if gdpr is None:
+                return {"error": "GDPRConsentTracker not initialised"}
+            user_id = arguments.get("user_id", "")
+            if not user_id:
+                return {"error": "user_id required"}
+            ticket_id = gdpr.request_erasure(user_id)
+            return {
+                "ticket_id": ticket_id,
+                "user_id": user_id,
+                "deadline": "30 days from today (GDPR Art.17)",
+                "next_steps": [
+                    "Run erasure pipeline to remove user data from PostgreSQL",
+                    "Remove from Weaviate vector store",
+                    "Remove from Neo4j graph (user nodes + relationships)",
+                    "Unlearn from River online model if possible",
+                    "Confirm erasure in audit log",
+                ],
+            }
 
-    elif name == "run_gdpr_erasure":
-        gdpr = getattr(state, 'gdpr_consent', None)
-        if gdpr is None:
-            return {"error": "GDPRConsentTracker not initialised"}
-        user_id = arguments.get("user_id", "")
-        if not user_id:
-            return {"error": "user_id required"}
-        ticket_id = gdpr.request_erasure(user_id)
-        return {
-            "ticket_id": ticket_id,
-            "user_id": user_id,
-            "deadline": "30 days from today (GDPR Art.17)",
-            "next_steps": [
-                "Run erasure pipeline to remove user data from PostgreSQL",
-                "Remove from Weaviate vector store",
-                "Remove from Neo4j graph (user nodes + relationships)",
-                "Unlearn from River online model if possible",
-                "Confirm erasure in audit log",
-            ],
-        }
+        elif name == "get_age_verification_status":
+            age = getattr(state, 'age_verification', None)
+            if age is None:
+                return {"error": "AgeVerificationLayer not initialised"}
+            return age.status()
 
-    elif name == "get_age_verification_status":
-        age = getattr(state, 'age_verification', None)
-        if age is None:
-            return {"error": "AgeVerificationLayer not initialised"}
-        return age.status()
+        elif name == "get_agent_confidence_report":
+            bft = getattr(state, 'bft_meta_council', None)
+            if bft is None:
+                return {"error": "BFTMetaCouncil not initialised"}
+            agent_id = arguments.get("agent_id", "")
+            if not agent_id:
+                return {"error": "agent_id required"}
+            return bft.get_agent_confidence_report(agent_id)
 
-    elif name == "get_agent_confidence_report":
-        bft = getattr(state, 'bft_meta_council', None)
-        if bft is None:
-            return {"error": "BFTMetaCouncil not initialised"}
-        agent_id = arguments.get("agent_id", "")
-        if not agent_id:
-            return {"error": "agent_id required"}
-        return bft.get_agent_confidence_report(agent_id)
+        elif name == "get_corpus_stats":
+            try:
+                from meok.learning.pain_point_corpus import get_corpus_stats
+                return get_corpus_stats()
+            except Exception as e:
+                return {"error": str(e)}
 
-    elif name == "get_corpus_stats":
-        try:
-            from meok.learning.pain_point_corpus import get_corpus_stats
-            return get_corpus_stats()
-        except Exception as e:
-            return {"error": str(e)}
+        elif name == "get_agent_pool_stats":
+            pool = getattr(state, 'agent_pool', None)
+            if pool is None:
+                return {"error": "AgentPoolManager not initialised"}
+            return pool.stats()
 
-    elif name == "get_agent_pool_stats":
-        pool = getattr(state, 'agent_pool', None)
-        if pool is None:
-            return {"error": "AgentPoolManager not initialised"}
-        return pool.stats()
-
-    return {"error": f"Unknown compliance tool: {name}"}
+        return {"error": f"Unknown compliance tool: {name}"}
+    except Exception as e:
+        return {"error": f"Compliance tool error: {str(e)}", "tool": name}

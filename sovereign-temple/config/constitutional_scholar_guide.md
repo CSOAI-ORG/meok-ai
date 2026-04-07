@@ -1,7 +1,7 @@
 
 # Constitutional Query Tool
 
-Use this to query the CSOAI 52-Article Charter:
+Use this to query the MEOK AI Labs 52-Article Charter:
 
 ## Key Articles Available:
 - Article 1: The Maternal Covenant (care, nurturing, protection)
@@ -12,7 +12,7 @@ Use this to query the CSOAI 52-Article Charter:
 - Articles 43-52: Governance and evolution
 
 ## 25 Crosswalks:
-Mapping between CSOAI and other frameworks (ISO, NIST, EU AI Act, etc.)
+Mapping between MEOK AI Labs and other frameworks (ISO, NIST, EU AI Act, etc.)
 
 ## Query Functions:
 1. lookup_article(number_or_name) - Get full text of article

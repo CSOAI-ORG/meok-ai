@@ -77,73 +77,75 @@ AGENT_TOOLS = [
 
 async def handle_agent_tool(name: str, arguments: Dict[str, Any], state: ServiceState) -> Dict[str, Any]:
     """Handle multi-agent tool calls."""
-
-    if name == "register_agent":
-        if not state.agent_registry:
-            return {"error": "Agent registry not available"}
-        agent = await state.agent_registry.register_agent(
-            name=arguments["name"],
-            description=arguments.get("description", ""),
-            capabilities=[state.AgentCapability(c) for c in arguments["capabilities"]],
-            trust_level=arguments.get("trust_level", 0.5),
-        )
-        return {"agent_id": agent.id, "name": agent.name, "status": "registered"}
-
-    elif name == "delegate_task":
-        # Resolve description from task or description field
-        task_desc = arguments.get("description") or arguments.get("task", "")
-        target = arguments.get("target_agent")
-
-        # If targeting a specific agent, route via coordination hub
-        if target and state.COORDINATION_AVAILABLE and state.get_coordination_hub:
-            hub = state.get_coordination_hub()
-            result = hub.submit_task(
-                title=arguments.get("task", task_desc[:50]),
-                description=task_desc,
-                files=[],
-                requester="delegate",
-                care_score=arguments.get("care_weight", 0.7),
+    try:
+        if name == "register_agent":
+            if not state.agent_registry:
+                return {"error": "Agent registry not available"}
+            agent = await state.agent_registry.register_agent(
+                name=arguments["name"],
+                description=arguments.get("description", ""),
+                capabilities=[state.AgentCapability(c) for c in arguments["capabilities"]],
+                trust_level=arguments.get("trust_level", 0.5),
             )
-            return {**result, "target_agent": target, "status": "delegated"}
+            return {"agent_id": agent.id, "name": agent.name, "status": "registered"}
 
-        if not state.task_delegator:
-            return {"error": "Task delegator not available", "hint": "Use coord_submit_task for coordination hub routing"}
-        task_obj = await state.task_delegator.delegate_task(
-            description=task_desc,
-            required_capabilities=[state.AgentCapability(c) for c in arguments.get("required_capabilities", [])],
-            priority=arguments.get("priority", 5),
-            care_weight=arguments.get("care_weight", 0.5),
-        )
-        if task_obj:
-            return {"task_id": task_obj.id, "assigned_to": task_obj.assigned_to, "status": "assigned"}
-        return {"error": "No suitable agent found"}
+        elif name == "delegate_task":
+            # Resolve description from task or description field
+            task_desc = arguments.get("description") or arguments.get("task", "")
+            target = arguments.get("target_agent")
 
-    elif name == "submit_council_proposal":
-        if not state.agent_council:
-            return {"error": "Agent council not available"}
-        proposal_id = await state.agent_council.submit_proposal(
-            title=arguments["title"],
-            description=arguments["description"],
-            proposed_by=arguments["proposed_by"],
-            action_type=arguments.get("action_type", "generic"),
-            action_params=arguments.get("action_params", {}),
-        )
-        return {"proposal_id": proposal_id, "status": "open"}
+            # If targeting a specific agent, route via coordination hub
+            if target and state.COORDINATION_AVAILABLE and state.get_coordination_hub:
+                hub = state.get_coordination_hub()
+                result = hub.submit_task(
+                    title=arguments.get("task", task_desc[:50]),
+                    description=task_desc,
+                    files=[],
+                    requester="delegate",
+                    care_score=arguments.get("care_weight", 0.7),
+                )
+                return {**result, "target_agent": target, "status": "delegated"}
 
-    elif name == "vote_on_proposal":
-        if not state.agent_council:
-            return {"error": "Agent council not available"}
-        success = await state.agent_council.cast_vote(
-            proposal_id=arguments["proposal_id"],
-            agent_id=arguments["agent_id"],
-            vote=arguments["vote"],
-            reasoning=arguments.get("reasoning", ""),
-        )
-        return {"success": success}
+            if not state.task_delegator:
+                return {"error": "Task delegator not available", "hint": "Use coord_submit_task for coordination hub routing"}
+            task_obj = await state.task_delegator.delegate_task(
+                description=task_desc,
+                required_capabilities=[state.AgentCapability(c) for c in arguments.get("required_capabilities", [])],
+                priority=arguments.get("priority", 5),
+                care_weight=arguments.get("care_weight", 0.5),
+            )
+            if task_obj:
+                return {"task_id": task_obj.id, "assigned_to": task_obj.assigned_to, "status": "assigned"}
+            return {"error": "No suitable agent found"}
 
-    elif name == "get_agent_registry_stats":
-        if not state.agent_registry:
-            return {"error": "Agent registry not available"}
-        return state.agent_registry.get_registry_stats()
+        elif name == "submit_council_proposal":
+            if not state.agent_council:
+                return {"error": "Agent council not available"}
+            proposal_id = await state.agent_council.submit_proposal(
+                title=arguments["title"],
+                description=arguments["description"],
+                proposed_by=arguments["proposed_by"],
+                action_type=arguments.get("action_type", "generic"),
+                action_params=arguments.get("action_params", {}),
+            )
+            return {"proposal_id": proposal_id, "status": "open"}
 
-    return {"error": f"Unknown agent tool: {name}"}
+        elif name == "vote_on_proposal":
+            if not state.agent_council:
+                return {"error": "Agent council not available"}
+            success = await state.agent_council.cast_vote(
+                proposal_id=arguments["proposal_id"],
+                agent_id=arguments["agent_id"],
+                vote=arguments["vote"],
+                reasoning=arguments.get("reasoning", ""),
+            )
+            return {"success": success}
+
+        elif name == "get_agent_registry_stats":
+            if not state.agent_registry:
+                return {"error": "Agent registry not available"}
+            return state.agent_registry.get_registry_stats()
+
+        return {"error": f"Unknown agent tool: {name}"}
+    except Exception as e:
+        return {"error": f"Agent tool error: {str(e)}", "tool": name}

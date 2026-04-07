@@ -1,4 +1,6 @@
 {
+  "buildCommand": "NODE_OPTIONS='--max-old-space-size=14336' npm run build",
+  "installCommand": "npm install --legacy-peer-deps",
   "crons": [
     {
       "path": "/api/cron/update-registry",

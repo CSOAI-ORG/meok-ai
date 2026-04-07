@@ -20,6 +20,9 @@ import { ExperienceModeProvider } from "@/components/experience-mode";
 import { GlobalNav } from "@/components/GlobalNav";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { SensoryInit } from "@/components/sensory-init";
+import { JarvisOverlay } from "@/components/jarvis-overlay";
+import { JarvisStatusWidget } from "@/components/jarvis-status-widget";
 import "./globals.css";
 
 const dmSans = DM_Sans({
@@ -187,6 +190,7 @@ export default function RootLayout({
           />
         </head>
         <body className={`${dmSans.variable} font-sans antialiased bg-[#FAF9F6] text-[#111111] min-h-screen`}>
+          <SensoryInit />
           <ExperienceModeProvider>
           <GlobalNav />
           <Suspense>
@@ -197,6 +201,8 @@ export default function RootLayout({
           <WhatsNew />
           <Analytics />
           <SpeedInsights />
+          <JarvisOverlay />
+          <JarvisStatusWidget />
           {/* Removed: SovereignWidget + FloatingCTA — blocked content, no real functionality */}
           {/* <SovereignWidget /> */}
           {/* <FloatingCTA /> */}

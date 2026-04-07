@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback, useEffect } from "react";
+import { useState, useCallback, useEffect, useRef } from "react";
 import {
   Search,
   BookOpen,
@@ -17,7 +17,19 @@ import {
   HelpCircle,
   FileText,
   X,
+  Mic,
+  MicOff,
+  Volume2,
+  LayoutGrid,
+  FileDown,
+  Brain,
+  Sparkles,
 } from "lucide-react";
+import { RESEARCH_TEMPLATES, type ResearchTemplate } from "@/lib/research-templates";
+import { exportAsMarkdown, exportAsHTML, exportAsText } from "@/lib/research-export";
+import { ResearchVisualizations } from "@/components/research-visualizations";
+import { getConsciousnessModifier, fetchConsciousnessState, type ConsciousnessState } from "@/lib/research-consciousness";
+import { researchAnalytics } from "@/lib/research-analytics";
 
 // ── Brand tokens ─────────────────────────────────────────────────────────────
 const DEEP = "#0d0c18";
@@ -248,11 +260,78 @@ export default function ResearchPage() {
   const [history, setHistory] = useState<ResearchEntry[]>([]);
   const [showHistory, setShowHistory] = useState(false);
   const [activeEntry, setActiveEntry] = useState<ResearchEntry | null>(null);
+  const [streaming, setStreaming] = useState(false);
+  const [streamChunk, setStreamChunk] = useState("");
+  const [sources, setSources] = useState<Array<{ title: string; url: string; snippet: string }>>([]);
+  const [showSources, setShowSources] = useState(true);
+  const [researchMode, setResearchMode] = useState<'fast' | 'deep' | 'crew'>('fast');
+  
+  // Template selection
+  const [selectedTemplate, setSelectedTemplate] = useState<ResearchTemplate | null>(null);
+  const [showTemplates, setShowTemplates] = useState(false);
+  
+  // Voice input
+  const [isListening, setIsListening] = useState(false);
+  const [voiceSupported, setVoiceSupported] = useState(false);
+  const recognitionRef = useRef<any>(null);
+  
+  // Consciousness state
+  const [consciousnessState, setConsciousnessState] = useState<ConsciousnessState | null>(null);
+  
+  // Show visualizations
+  const [showViz, setShowViz] = useState(false);
 
   // Load history on mount
   useEffect(() => {
     setHistory(loadHistory());
   }, []);
+
+  // Initialize voice recognition and consciousness state
+  useEffect(() => {
+    // Check voice support
+    if (typeof window !== 'undefined' && ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window)) {
+      setVoiceSupported(true);
+    }
+
+    // Fetch consciousness state
+    fetchConsciousnessState().then(setConsciousnessState).catch(() => {});
+    
+    // Refresh consciousness periodically
+    const interval = setInterval(() => {
+      fetchConsciousnessState().then(setConsciousnessState).catch(() => {});
+    }, 30000);
+    
+    return () => clearInterval(interval);
+  }, []);
+
+  // Voice input handler
+  const toggleVoice = useCallback(() => {
+    if (!voiceSupported) return;
+    
+    if (isListening) {
+      recognitionRef.current?.stop();
+      setIsListening(false);
+    } else {
+      const SpeechRecognition = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
+      if (SpeechRecognition) {
+        const recognition = new SpeechRecognition();
+        recognition.continuous = true;
+        recognition.interimResults = true;
+        
+        recognition.onresult = (event: any) => {
+          const transcript = Array.from(event.results)
+            .map((r: any) => r[0].transcript)
+            .join('');
+          setQuery(transcript);
+        };
+        
+        recognition.onend = () => setIsListening(false);
+        recognitionRef.current = recognition;
+        recognition.start();
+        setIsListening(true);
+      }
+    }
+  }, [isListening, voiceSupported]);
 
   const runResearch = useCallback(async () => {
     const q = query.trim();
@@ -263,46 +342,128 @@ export default function ResearchPage() {
     setCitations([]);
     setActiveEntry(null);
     setSaved(false);
+    setStreamChunk("");
+    setSources([]);
+
+    const startTime = Date.now();
 
     try {
-      const res = await fetch("/api/research", {
+      // Choose endpoint based on mode
+      const endpoints: Record<string, string> = {
+        fast: '/api/research/stream',
+        deep: '/api/research/advanced',
+        crew: '/api/research/advanced',
+      };
+      
+      const endpoint = endpoints[researchMode] || '/api/research/stream';
+      const body: Record<string, any> = { query: q };
+      
+      // Add mode for advanced endpoints
+      if (researchMode === 'deep') body.mode = 'sequential';
+      if (researchMode === 'crew') body.mode = 'crew';
+      
+      // Add consciousness context if available
+      if (consciousnessState) {
+        body.consciousnessContext = getConsciousnessModifier(consciousnessState);
+      }
+      
+      // Add template system prompt if selected
+      if (selectedTemplate) {
+        body.systemPrompt = selectedTemplate.systemPrompt;
+      }
+
+      const res = await fetch(endpoint, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ query: q }),
+        body: JSON.stringify(body),
       });
 
       if (!res.ok) {
-        const err = await res.json().catch(() => ({}));
-        setError((err as Record<string, string>).error ?? "Research failed. Please try again.");
-        return;
+        throw new Error(`Research failed: ${res.status}`);
       }
 
-      const data = (await res.json()) as { answer: string; model?: string };
-      const parsed = extractCitations(data.answer);
-      setAnswer(data.answer);
-      setCitations(parsed);
+      // Handle streaming (fast mode)
+      if (researchMode === 'fast' && endpoint === '/api/research/stream') {
+        setStreaming(true);
+        const reader = res.body?.getReader();
+        const decoder = new TextDecoder();
 
-      // Persist to history
-      const entry: ResearchEntry = {
-        id: `r_${Date.now()}`,
+        if (!reader) throw new Error("No reader");
+
+        while (true) {
+          const { done, value } = await reader.read();
+          if (done) break;
+          
+          const chunk = decoder.decode(value);
+          const lines = chunk.split("\n").filter(l => l.startsWith("data: "));
+          
+          for (const line of lines) {
+            try {
+              const data = JSON.parse(line.slice(6));
+              if (data.type === "sources") {
+                setSources(data.sources || []);
+              } else if (data.type === "chunk") {
+                setStreamChunk(prev => prev + data.text);
+              } else if (data.type === "done") {
+                // Set final answer when done
+                setAnswer(streamChunk);
+                setCitations(extractCitations(streamChunk));
+              } else if (data.type === "error") {
+                throw new Error(data.message || "Research failed");
+              }
+            } catch { /* skip */ }
+          }
+        }
+        setStreaming(false);
+      } else {
+        // Non-streaming (deep/crew)
+        const data = await res.json();
+        setAnswer(data.answer || '');
+        setCitations(extractCitations(data.answer || ''));
+        setSources(data.sources || []);
+        
+        // Save to history with correct answer
+        const finalAnswer = data.answer || '';
+        const entry: ResearchEntry = {
+          id: `r_${Date.now()}`,
+          query: q,
+          answer: finalAnswer,
+          citations: extractCitations(finalAnswer),
+          timestamp: Date.now(),
+          model: researchMode,
+        };
+        setHistory(prev => {
+          const updated = [entry, ...prev];
+          saveHistory(updated);
+          return updated;
+        });
+        
+        researchAnalytics.track({
+          query: q,
+          mode: researchMode as 'fast' | 'deep' | 'crew',
+          template: selectedTemplate?.name,
+          sourcesCount: sources.length,
+          responseTime: Date.now() - startTime,
+          success: true,
+        });
+      }
+
+    } catch (err) {
+      researchAnalytics.track({
         query: q,
-        answer: data.answer,
-        citations: parsed,
-        timestamp: Date.now(),
-        model: data.model,
-      };
-
-      setHistory((prev) => {
-        const updated = [entry, ...prev];
-        saveHistory(updated);
-        return updated;
+        mode: researchMode as 'fast' | 'deep' | 'crew',
+        template: selectedTemplate?.name,
+        sourcesCount: 0,
+        responseTime: Date.now() - startTime,
+        success: false,
+        error: err instanceof Error ? err.message : 'Unknown error',
       });
-    } catch {
-      setError("Network error. Please try again.");
+      setError(err instanceof Error ? err.message : "Network error");
     } finally {
       setLoading(false);
+      setStreaming(false);
     }
-  }, [query]);
+  }, [query, researchMode, streamChunk, answer]);
 
   const copyAnswer = useCallback(async () => {
     const text = activeEntry?.answer ?? answer;
@@ -362,8 +523,8 @@ export default function ResearchPage() {
     [activeEntry],
   );
 
-  const currentAnswer = activeEntry?.answer ?? answer;
-  const currentCitations = activeEntry?.citations ?? citations;
+  const currentAnswer = streaming ? streamChunk : (activeEntry?.answer ?? answer);
+  const currentCitations = streaming ? extractCitations(streamChunk) : (activeEntry?.citations ?? citations);
   const currentQuery = activeEntry?.query ?? query;
 
   return (
@@ -487,7 +648,7 @@ export default function ResearchPage() {
                   }}
                   onKeyDown={(e) => e.key === "Enter" && !loading && runResearch()}
                   placeholder="e.g. What are the best AI governance frameworks in 2026?"
-                  className="w-full pl-10 pr-4 py-3 rounded-lg text-white/80 text-sm outline-none focus:ring-1"
+                  className="w-full pl-10 pr-20 py-3 rounded-lg text-white/80 text-sm outline-none focus:ring-1"
                   style={{
                     background: SURFACE,
                     border: `1px solid ${BORDER}`,
@@ -495,9 +656,104 @@ export default function ResearchPage() {
                     "--tw-ring-color": GOLD,
                   }}
                 />
+                {/* Voice input button */}
+                {voiceSupported && (
+                  <button
+                    onClick={toggleVoice}
+                    className="absolute right-12 top-1/2 -translate-y-1/2 p-1 rounded-full hover:bg-white/10"
+                    title={isListening ? "Stop recording" : "Voice input"}
+                  >
+                    {isListening ? (
+                      <Mic className="w-4 h-4 text-red-400 animate-pulse" />
+                    ) : (
+                      <MicOff className="w-4 h-4 text-gray-500" />
+                    )}
+                  </button>
+                )}
               </div>
+              
+              {/* Research mode selector */}
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={() => setResearchMode('fast')}
+                  className="px-3 py-1.5 rounded text-xs font-medium transition-all"
+                  style={{
+                    color: researchMode === 'fast' ? GOLD : "rgba(255,255,255,0.4)",
+                    background: researchMode === 'fast' ? `${GOLD}15` : "transparent",
+                    border: `1px solid ${researchMode === 'fast' ? GOLD : BORDER}`,
+                  }}
+                >
+                  ⚡ Fast
+                </button>
+                <button
+                  onClick={() => setResearchMode('deep')}
+                  className="px-3 py-1.5 rounded text-xs font-medium transition-all"
+                  style={{
+                    color: researchMode === 'deep' ? GOLD : "rgba(255,255,255,0.4)",
+                    background: researchMode === 'deep' ? `${GOLD}15` : "transparent",
+                    border: `1px solid ${researchMode === 'deep' ? GOLD : BORDER}`,
+                  }}
+                >
+                  🔬 Deep
+                </button>
+                <button
+                  onClick={() => setResearchMode('crew')}
+                  className="px-3 py-1.5 rounded text-xs font-medium transition-all"
+                  style={{
+                    color: researchMode === 'crew' ? GOLD : "rgba(255,255,255,0.4)",
+                    background: researchMode === 'crew' ? `${GOLD}15` : "transparent",
+                    border: `1px solid ${researchMode === 'crew' ? GOLD : BORDER}`,
+                  }}
+                >
+                  👥 Crew
+                </button>
+              </div>
+
+              {/* Template selector */}
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={() => setShowTemplates(!showTemplates)}
+                  className="flex items-center gap-2 px-3 py-1.5 rounded text-xs font-medium transition-all"
+                  style={{
+                    color: selectedTemplate ? GOLD : "rgba(255,255,255,0.4)",
+                    background: selectedTemplate ? `${GOLD}15` : "transparent",
+                    border: `1px solid ${selectedTemplate ? GOLD : BORDER}`,
+                  }}
+                >
+                  <LayoutGrid className="w-3.5 h-3.5" />
+                  {selectedTemplate ? selectedTemplate.name : "Templates"}
+                </button>
+                
+                {/* Visualizations toggle */}
+                <button
+                  onClick={() => setShowViz(!showViz)}
+                  className="flex items-center gap-2 px-3 py-1.5 rounded text-xs font-medium transition-all"
+                  style={{
+                    color: showViz ? GOLD : "rgba(255,255,255,0.4)",
+                    background: showViz ? `${GOLD}15` : "transparent",
+                    border: `1px solid ${showViz ? GOLD : BORDER}`,
+                  }}
+                >
+                  <Brain className="w-3.5 h-3.5" />
+                  Stats
+                </button>
+
+                {/* Consciousness indicator */}
+                {consciousnessState && (
+                  <div 
+                    className="flex items-center gap-1 px-2 py-1 rounded text-xs"
+                    style={{ background: 'rgba(139, 92, 246, 0.15)', border: 'rgba(139, 92, 246, 0.3)' }}
+                  >
+                    <Sparkles className="w-3 h-3 text-purple-400" />
+                    <span className="text-purple-300">
+                      {Math.round((consciousnessState.consciousness_level || 0.5) * 100)}%
+                    </span>
+                  </div>
+                )}
+              </div>
+              
               <button
-                onClick={runResearch}
+                onClick={() => runResearch()}
                 disabled={loading || (!activeEntry && !query.trim())}
                 className="flex items-center gap-2 px-6 py-3 rounded-lg text-sm font-semibold transition-all hover:scale-[1.02] disabled:opacity-40 disabled:hover:scale-100 whitespace-nowrap"
                 style={{
@@ -523,7 +779,7 @@ export default function ResearchPage() {
           )}
 
           {/* Result */}
-          {currentAnswer && (
+          {(currentAnswer || streaming) && (
             <div className="rounded-xl p-5 space-y-4" style={{ background: SURFACE, border: `1px solid ${BORDER}` }}>
               {/* Result header */}
               <div className="flex items-start justify-between gap-4">
@@ -536,6 +792,29 @@ export default function ResearchPage() {
 
                 {/* Toolbar */}
                 <div className="flex items-center gap-2 flex-shrink-0">
+                  {/* Streaming indicator */}
+                  {(loading || streaming) && (
+                    <div className="flex items-center gap-1.5 px-2 py-1 rounded text-xs" style={{ background: `${GOLD}12`, color: GOLD }}>
+                      <Loader2 className="w-3 h-3 animate-spin" />
+                      {streaming ? "Streaming..." : "Researching..."}
+                    </div>
+                  )}
+
+                  {/* Sources toggle */}
+                  <button
+                    onClick={() => setShowSources(!showSources)}
+                    className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-md text-xs font-medium transition-all"
+                    style={{
+                      color: showSources ? GOLD : "rgba(255,255,255,0.4)",
+                      background: showSources ? `${GOLD}12` : "transparent",
+                      border: `1px solid ${showSources ? `${GOLD}30` : BORDER}`,
+                    }}
+                    title="Toggle sources panel"
+                  >
+                    <BookOpen className="w-3 h-3" />
+                    Sources ({sources.length})
+                  </button>
+
                   {/* Confidence toggle */}
                   <button
                     onClick={() => setShowConfidence(!showConfidence)}
@@ -565,6 +844,38 @@ export default function ResearchPage() {
                     {saved ? <Check className="w-3 h-3" /> : <Save className="w-3 h-3" />}
                     {saved ? "Saved" : "Save"}
                   </button>
+
+                  {/* Export menu */}
+                  <div className="relative group">
+                    <button
+                      className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-md text-xs font-medium transition-all"
+                      style={{ color: "rgba(255,255,255,0.5)", background: "transparent", border: `1px solid ${BORDER}` }}
+                      title="Export"
+                    >
+                      <FileDown className="w-3 h-3" />
+                      Export
+                    </button>
+                    <div className="absolute right-0 top-full mt-1 hidden group-hover:block z-50 min-w-32 bg-slate-800 border border-slate-600 rounded-lg shadow-xl overflow-hidden">
+                      <button
+                        onClick={() => exportAsMarkdown({ title: currentQuery, query: currentQuery, answer: currentAnswer, sources }, { format: 'markdown', includeSources: true, includeMetadata: true })}
+                        className="w-full px-3 py-2 text-xs text-white/80 hover:bg-white/10 text-left"
+                      >
+                        Markdown
+                      </button>
+                      <button
+                        onClick={() => exportAsHTML({ title: currentQuery, query: currentQuery, answer: currentAnswer, sources }, { format: 'html', includeSources: true, includeMetadata: true })}
+                        className="w-full px-3 py-2 text-xs text-white/80 hover:bg-white/10 text-left"
+                      >
+                        HTML / PDF
+                      </button>
+                      <button
+                        onClick={() => exportAsText({ title: currentQuery, query: currentQuery, answer: currentAnswer, sources }, { format: 'text', includeSources: true, includeMetadata: true })}
+                        className="w-full px-3 py-2 text-xs text-white/80 hover:bg-white/10 text-left"
+                      >
+                        Plain Text
+                      </button>
+                    </div>
+                  </div>
 
                   {/* Copy */}
                   <button
@@ -622,6 +933,37 @@ export default function ResearchPage() {
                 showConfidence={showConfidence}
               />
 
+              {/* Sources sidebar panel */}
+              {showSources && sources.length > 0 && (
+                <div className="mt-4 p-4 rounded-lg" style={{ background: "rgba(201,168,76,0.05)", border: `1px solid ${GOLD}30` }}>
+                  <div className="flex items-center gap-2 mb-3">
+                    <BookOpen className="w-4 h-4" style={{ color: GOLD }} />
+                    <p className="text-sm font-semibold" style={{ color: GOLD }}>Sources ({sources.length})</p>
+                  </div>
+                  <div className="space-y-2 max-h-48 overflow-y-auto">
+                    {sources.map((src, i) => (
+                      <a
+                        key={i}
+                        href={src.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block p-2 rounded bg-white/5 hover:bg-white/10 transition-colors"
+                      >
+                        <div className="flex items-start gap-2">
+                          <span className="text-xs font-bold w-5 h-5 rounded flex items-center justify-center flex-shrink-0 mt-0.5" style={{ background: `${GOLD}18`, color: GOLD }}>
+                            {i + 1}
+                          </span>
+                          <div className="min-w-0">
+                            <p className="text-xs text-white/80 truncate">{src.title}</p>
+                            <p className="text-[10px] text-white/40 truncate">{src.url}</p>
+                          </div>
+                        </div>
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              )}
+
               {/* Citation format row */}
               {currentCitations.length > 0 && (
                 <CitationFormatRow citations={currentCitations} query={currentQuery} />
@@ -631,10 +973,44 @@ export default function ResearchPage() {
 
           {/* Empty state */}
           {!currentAnswer && !loading && !error && (
-            <div className="text-center py-16 space-y-3">
-              <FileText className="w-10 h-10 mx-auto text-white/10" />
-              <p className="text-sm text-white/25">Enter a research question above to get started.</p>
-              <p className="text-xs text-white/15">Results include source citations, confidence scoring, and save to documents.</p>
+            <div className="space-y-6">
+              {/* Template selector dropdown */}
+              {showTemplates && (
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-3 p-4 rounded-xl" style={{ background: SURFACE, border: `1px solid ${BORDER}` }}>
+                  {RESEARCH_TEMPLATES.map(template => (
+                    <button
+                      key={template.id}
+                      onClick={() => {
+                        setSelectedTemplate(template);
+                        setQuery(template.defaultQuery);
+                        setShowTemplates(false);
+                      }}
+                      className="p-3 rounded-lg text-left transition-all hover:scale-[1.02]"
+                      style={{ 
+                        background: selectedTemplate?.id === template.id ? `${template.color}20` : 'rgba(255,255,255,0.03)',
+                        border: `1px solid ${selectedTemplate?.id === template.id ? template.color : 'transparent'}`,
+                      }}
+                    >
+                      <div className="text-lg mb-1">{template.icon}</div>
+                      <div className="text-sm font-medium text-white">{template.name}</div>
+                      <div className="text-xs text-gray-500 mt-1">{template.description.slice(0, 40)}...</div>
+                    </button>
+                  ))}
+                </div>
+              )}
+
+              {/* Visualizations */}
+              {showViz && history.length > 0 && (
+                <div className="p-4 rounded-xl" style={{ background: SURFACE, border: `1px solid ${BORDER}` }}>
+                  <ResearchVisualizations history={history} />
+                </div>
+              )}
+
+              <div className="text-center py-16 space-y-3">
+                <FileText className="w-10 h-10 mx-auto text-white/10" />
+                <p className="text-sm text-white/25">Enter a research question above to get started.</p>
+                <p className="text-xs text-white/15">Results include source citations, confidence scoring, templates, and export options.</p>
+              </div>
             </div>
           )}
         </div>

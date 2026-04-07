@@ -1,0 +1,52 @@
+{
+  "farm": {
+    "name": "MEOK Farm",
+    "location": "UK",
+    "size_acres": 6.5,
+    "description": "6.5-acre farm testbed with 1,800 sq ft lab"
+  },
+  "livestock": {
+    "sheep": {
+      "count": 0,
+      "breed": "Unknown",
+      "health_notes": "Add your sheep details here",
+      "last_check": null
+    },
+    "cattle": {
+      "count": 0,
+      "breed": "Unknown",
+      "health_notes": "Add your cattle details here",
+      "last_check": null
+    },
+    "poultry": {
+      "count": 0,
+      "type": "Unknown",
+      "health_notes": "Add your poultry details here",
+      "last_check": null
+    },
+    "horses": {
+      "count": 0,
+      "breed": "Unknown",
+      "health_notes": "Add your horse details here",
+      "last_check": null
+    }
+  },
+  "crops": {
+    "fields": [],
+    "notes": "Add your crop details here"
+  },
+  "infrastructure": {
+    "buildings": ["1,800 sq ft lab"],
+    "fences": [],
+    "gates": [],
+    "water_systems": [],
+    "equipment": [],
+    "maintenance_notes": "Add your infrastructure details here"
+  },
+  "wildlife": {
+    "common_species": [],
+    "notes": "Add wildlife observations here"
+  },
+  "tasks": [],
+  "observations": []
+}

@@ -318,7 +318,7 @@ export default function AboutPage() {
                   Nicholas tested, broke, and rebuilt AI systems daily — working through everything
                   from vector memory architectures to care-alignment frameworks — until the design was
                   right. That research became the foundation for the{" "}
-                  <span className="text-[#c9a84c]">CSGA Cyber AI Research Institute</span>, the
+                  <span className="text-[#c9a84c]">MEOK AI Labs Cyber AI Research Institute</span>, the
                   independent research body he founded alongside MEOK to publish findings openly and
                   advance sovereign AI architecture as a discipline.
                 </p>

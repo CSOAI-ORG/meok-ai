@@ -4,6 +4,44 @@ import { withSentryConfig } from "@sentry/nextjs";
 const BACKEND = process.env.MEOK_BACKEND_URL || "http://198.53.64.194:40646";
 
 const nextConfig: NextConfig = {
+  // Performance optimizations
+  compress: true,
+  poweredByHeader: false,
+  
+  // Reduce memory usage during build
+  experimental: {
+    serverActions: {
+      allowedOrigins: ["meok.ai", "www.meok.ai", "localhost:3000"],
+    },
+  },
+  webpack: (config, { isServer, nextRuntime }) => {
+    // Reduce memory usage during build
+    if (!isServer) {
+      config.optimization = {
+        ...config.optimization,
+        splitChunks: {
+          chunks: 'all',
+          minSize: 20000,
+          maxSize: 244000,
+          cacheGroups: {
+            defaultVendors: {
+              test: /[\\/]node_modules[\\/]/,
+              priority: -10,
+              reuseExistingChunk: true,
+              name: 'vendors',
+            },
+            default: {
+              minChunks: 2,
+              priority: -20,
+              reuseExistingChunk: true,
+            },
+          },
+        },
+      };
+    }
+    return config;
+  },
+  
   images: {
     remotePatterns: [
       // GitHub avatars (user profile images)
@@ -20,12 +58,6 @@ const nextConfig: NextConfig = {
       { protocol: "https", hostname: "cdn.akamai.steamstatic.com" },
       { protocol: "https", hostname: "steamcdn-a.akamaihd.net" },
     ],
-  },
-
-  experimental: {
-    serverActions: {
-      allowedOrigins: ["meok.ai", "www.meok.ai", "localhost:3000"],
-    },
   },
 
   async redirects() {

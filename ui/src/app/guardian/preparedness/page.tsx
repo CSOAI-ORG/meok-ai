@@ -25,7 +25,7 @@ const jsonLd = {
   "@type": "WebPage",
   name: "AI Consciousness Preparedness — MEOK Guardian",
   description:
-    "MEOK is building governance and alignment frameworks for the AI that doesn't exist yet. The Byzantine Council, the Maternal Covenant, and CSGA research are our preparation for more capable AI.",
+    "MEOK is building governance and alignment frameworks for the AI that doesn't exist yet. The Byzantine Council, the Maternal Covenant, and MEOK AI Labs research are our preparation for more capable AI.",
   url: "https://meok.ai/guardian/preparedness",
   publisher: {
     "@type": "Organization",
@@ -40,7 +40,7 @@ const jsonLd = {
         name: "What is AI consciousness preparedness?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "AI consciousness preparedness is the discipline of building governance, alignment, and ethical frameworks now — before more capable or potentially conscious AI systems exist. MEOK's preparedness work includes the Byzantine Council (governance), the Maternal Covenant (alignment), and the CSGA Research Institute (ongoing research).",
+          text: "AI consciousness preparedness is the discipline of building governance, alignment, and ethical frameworks now — before more capable or potentially conscious AI systems exist. MEOK's preparedness work includes the Byzantine Council (governance), the Maternal Covenant (alignment), and the MEOK AI Labs Research Institute (ongoing research).",
         },
       },
       {
@@ -61,10 +61,10 @@ const jsonLd = {
       },
       {
         "@type": "Question",
-        name: "What is CSGA?",
+        name: "What is MEOK AI Labs?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "CSGA (the Centre for Sovereign and Guardian AI) is MEOK's research arm, focused on alignment, interpretability, and the ethical frameworks needed for more capable AI systems. Its work informs both current Guardian products and long-term preparedness for AI systems that do not yet exist.",
+          text: "MEOK AI Labs (the Centre for Sovereign and Guardian AI) is MEOK's research arm, focused on alignment, interpretability, and the ethical frameworks needed for more capable AI systems. Its work informs both current Guardian products and long-term preparedness for AI systems that do not yet exist.",
         },
       },
     ],
@@ -128,7 +128,7 @@ const MEOK_ACTIONS = [
     linkLabel: "Read the Maternal Covenant",
   },
   {
-    label: "CSGA Research Institute",
+    label: "MEOK AI Labs Research Institute",
     color: "#38bdf8",
     headline: "Researching the AI that doesn't exist yet",
     desc: "The Centre for Sovereign and Guardian AI conducts ongoing research into alignment, interpretability, and ethical frameworks for more capable AI. Its work is not theoretical — it directly informs current Guardian products and builds the intellectual infrastructure for what comes next.",
@@ -139,7 +139,7 @@ const MEOK_ACTIONS = [
       "Open publication and peer review where possible",
     ],
     link: "/research",
-    linkLabel: "Read CSGA research",
+    linkLabel: "Read MEOK AI Labs research",
   },
 ];
 
@@ -156,7 +156,7 @@ const FUTURE_SCENARIOS = [
   },
   {
     scenario: "AI with moral reasoning capability",
-    preparation: "CSGA research is developing alignment protocols for AI that can reason about ethics — to ensure that capability serves human values rather than replacing them.",
+    preparation: "MEOK AI Labs research is developing alignment protocols for AI that can reason about ethics — to ensure that capability serves human values rather than replacing them.",
   },
   {
     scenario: "AI that may have experiences",
@@ -211,7 +211,7 @@ export default function PreparednessPage() {
             needed for the far more capable AI that will exist within a decade.
           </p>
           <p className="mx-auto mb-10 max-w-xl text-base leading-relaxed" style={{ color: "rgba(255,255,255,0.40)" }}>
-            The Byzantine Council. The Maternal Covenant. CSGA research. These
+            The Byzantine Council. The Maternal Covenant. MEOK AI Labs research. These
             are not marketing concepts. They are the structural foundation for AI
             that can be trusted with the people you love — at any capability level.
           </p>
@@ -222,7 +222,7 @@ export default function PreparednessPage() {
               className="rounded-xl px-8 py-4 text-base font-bold transition-opacity hover:opacity-90"
               style={{ backgroundColor: PURPLE, color: "#fff" }}
             >
-              Read CSGA Research
+              Read MEOK AI Labs Research
             </Link>
             <Link
               href="/maternal-covenant"
@@ -349,7 +349,7 @@ export default function PreparednessPage() {
           </div>
         </section>
 
-        {/* ── CSOAI / CSGA CONNECTION ───────────────────────────────────────── */}
+        {/* ── MEOK AI Labs / MEOK AI Labs CONNECTION ───────────────────────────────────────── */}
         <section className="mx-auto max-w-3xl px-6 pb-24">
           <div
             className="rounded-2xl border p-10 text-center"
@@ -362,7 +362,7 @@ export default function PreparednessPage() {
               <Globe className="h-7 w-7" style={{ color: GOLD }} />
             </div>
             <h2 className="mb-4 text-2xl font-bold md:text-3xl">
-              CSGA Research Institute
+              MEOK AI Labs Research Institute
             </h2>
             <p className="mb-6 leading-relaxed text-white/60">
               The Centre for Sovereign and Guardian AI is MEOK&apos;s research arm.
@@ -372,7 +372,7 @@ export default function PreparednessPage() {
               people it serves? Not as a feature. As a constitutional constraint.
             </p>
             <p className="mb-8 leading-relaxed text-white/60">
-              CSGA research informs everything Guardian does today — and
+              MEOK AI Labs research informs everything Guardian does today — and
               everything MEOK will build for the AI systems that will exist in
               five, ten, twenty years. It is our answer to the question: what
               does responsible AI development actually look like in practice?
@@ -386,7 +386,7 @@ export default function PreparednessPage() {
                 for the AI that is coming.&rdquo;
               </p>
               <cite className="mt-2 block text-sm not-italic text-white/40">
-                CSGA Research Institute — MEOK AI LTD
+                MEOK AI Labs Research Institute — MEOK AI LTD
               </cite>
             </blockquote>
           </div>
@@ -449,7 +449,7 @@ export default function PreparednessPage() {
             This work requires participation.
           </h2>
           <p className="mx-auto mb-10 max-w-xl leading-relaxed text-white/60">
-            CSGA publishes its research. The Byzantine Council operates with
+            MEOK AI Labs publishes its research. The Byzantine Council operates with
             transparent deliberation logs. The Maternal Covenant is public. This
             work is only as good as the scrutiny it receives — we welcome
             researchers, ethicists, and technologists who want to engage with it
@@ -461,7 +461,7 @@ export default function PreparednessPage() {
               className="rounded-xl px-8 py-4 text-base font-bold transition-opacity hover:opacity-90"
               style={{ backgroundColor: PURPLE, color: "#fff" }}
             >
-              Read CSGA Research
+              Read MEOK AI Labs Research
             </Link>
             <Link
               href="/hatch"

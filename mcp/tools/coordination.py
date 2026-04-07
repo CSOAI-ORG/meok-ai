@@ -90,51 +90,53 @@ COORDINATION_TOOLS = [
 
 async def handle_coordination_tool(name: str, arguments: Dict[str, Any], state: ServiceState) -> Dict[str, Any]:
     """Handle coordination tool calls."""
+    try:
+        if not state.COORDINATION_AVAILABLE or not state.get_coordination_hub:
+            return {"error": "Coordination hub not available"}
 
-    if not state.COORDINATION_AVAILABLE or not state.get_coordination_hub:
-        return {"error": "Coordination hub not available"}
+        hub = state.get_coordination_hub()
 
-    hub = state.get_coordination_hub()
+        if name == "coord_register_agent":
+            return hub.register_agent(
+                arguments["agent_id"],
+                arguments["agent_type"],
+                arguments["capabilities"],
+            )
 
-    if name == "coord_register_agent":
-        return hub.register_agent(
-            arguments["agent_id"],
-            arguments["agent_type"],
-            arguments["capabilities"],
-        )
+        elif name == "coord_submit_task":
+            return hub.submit_task(
+                title=arguments["title"],
+                description=arguments["description"],
+                files=arguments.get("files", []),
+                requester="claude-mcp",
+                care_score=arguments.get("care_score", 0.5),
+            )
 
-    elif name == "coord_submit_task":
-        return hub.submit_task(
-            title=arguments["title"],
-            description=arguments["description"],
-            files=arguments.get("files", []),
-            requester="claude-mcp",
-            care_score=arguments.get("care_score", 0.5),
-        )
+        elif name == "coord_acquire_files":
+            return hub.acquire_files(
+                agent_id=arguments["agent_id"],
+                files=arguments["files"],
+                task_id=arguments["task_id"],
+                exclusive=arguments.get("exclusive", False),
+            )
 
-    elif name == "coord_acquire_files":
-        return hub.acquire_files(
-            agent_id=arguments["agent_id"],
-            files=arguments["files"],
-            task_id=arguments["task_id"],
-            exclusive=arguments.get("exclusive", False),
-        )
+        elif name == "coord_release_files":
+            return hub.release_files(
+                agent_id=arguments["agent_id"],
+                files=arguments["files"],
+            )
 
-    elif name == "coord_release_files":
-        return hub.release_files(
-            agent_id=arguments["agent_id"],
-            files=arguments["files"],
-        )
+        elif name == "coord_complete_task":
+            return hub.complete_task(
+                task_id=arguments["task_id"],
+                agent_id=arguments["agent_id"],
+                result_summary=arguments["result_summary"],
+                care_score=arguments.get("care_score", 0.5),
+            )
 
-    elif name == "coord_complete_task":
-        return hub.complete_task(
-            task_id=arguments["task_id"],
-            agent_id=arguments["agent_id"],
-            result_summary=arguments["result_summary"],
-            care_score=arguments.get("care_score", 0.5),
-        )
+        elif name == "coord_get_dashboard":
+            return hub.get_dashboard()
 
-    elif name == "coord_get_dashboard":
-        return hub.get_dashboard()
-
-    return {"error": f"Unknown coordination tool: {name}"}
+        return {"error": f"Unknown coordination tool: {name}"}
+    except Exception as e:
+        return {"error": f"Coordination tool error: {str(e)}", "tool": name}

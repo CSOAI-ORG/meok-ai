@@ -1,0 +1,16 @@
+# Robots.txt for MEOK AI Labs
+# https://meok.ai
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://meok.ai/sitemap.xml
+
+# Disallow admin/private areas
+Disallow: /api/admin
+Disallow: /api/private
+Disallow: /_next/static
+
+# Crawl-delay (optional, for respectful crawling)
+Crawl-delay: 1

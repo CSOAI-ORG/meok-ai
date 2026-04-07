@@ -93,50 +93,53 @@ SOUL_VAULT_TOOLS = [
 
 
 async def handle_soul_vault(tool_name: str, arguments: dict) -> dict:
-    vault = get_vault()
+    try:
+        vault = get_vault()
 
-    if tool_name == "vault_unlock":
-        return vault.unlock(arguments["passphrase"])
+        if tool_name == "vault_unlock":
+            return vault.unlock(arguments["passphrase"])
 
-    elif tool_name == "vault_lock":
-        return vault.lock()
+        elif tool_name == "vault_lock":
+            return vault.lock()
 
-    elif tool_name == "vault_status":
-        souls = vault.list_souls() if vault.status.value == "unlocked" else []
-        return {
-            "status": vault.status.value,
-            "soul_count": len(souls),
-            "souls": [{"soul_id": s["soul_id"], "name": s["character_name"],
-                       "created": s["created_at"]} for s in souls],
-        }
+        elif tool_name == "vault_status":
+            souls = vault.list_souls() if vault.status.value == "unlocked" else []
+            return {
+                "status": vault.status.value,
+                "soul_count": len(souls),
+                "souls": [{"soul_id": s["soul_id"], "name": s["character_name"],
+                           "created": s["created_at"]} for s in souls],
+            }
 
-    elif tool_name == "vault_save_soul":
-        if vault.status.value != "unlocked":
-            return {"error": "Vault is locked. Call vault_unlock first."}
-        soul = CharacterSoulData(
-            name=arguments["name"],
-            personality=arguments.get("personality", ""),
-            scenario=arguments.get("scenario", ""),
-            first_message=arguments.get("first_message", ""),
-            care_weight=float(arguments.get("care_weight", 0.8)),
-        )
-        soul_id = vault.save_soul(soul)
-        return {"success": True, "soul_id": soul_id, "name": soul.name}
+        elif tool_name == "vault_save_soul":
+            if vault.status.value != "unlocked":
+                return {"error": "Vault is locked. Call vault_unlock first."}
+            soul = CharacterSoulData(
+                name=arguments["name"],
+                personality=arguments.get("personality", ""),
+                scenario=arguments.get("scenario", ""),
+                first_message=arguments.get("first_message", ""),
+                care_weight=float(arguments.get("care_weight", 0.8)),
+            )
+            soul_id = vault.save_soul(soul)
+            return {"success": True, "soul_id": soul_id, "name": soul.name}
 
-    elif tool_name == "vault_load_soul":
-        if vault.status.value != "unlocked":
-            return {"error": "Vault is locked. Call vault_unlock first."}
-        soul = vault.load_soul(arguments["soul_id"])
-        if soul is None:
-            return {"error": "Soul not found or corrupted"}
-        return soul.to_dict()
+        elif tool_name == "vault_load_soul":
+            if vault.status.value != "unlocked":
+                return {"error": "Vault is locked. Call vault_unlock first."}
+            soul = vault.load_soul(arguments["soul_id"])
+            if soul is None:
+                return {"error": "Soul not found or corrupted"}
+            return soul.to_dict()
 
-    elif tool_name == "vault_register_duress":
-        return vault.register_duress(arguments["duress_passphrase"])
+        elif tool_name == "vault_register_duress":
+            return vault.register_duress(arguments["duress_passphrase"])
 
-    elif tool_name == "vault_emergency_wipe":
-        if arguments.get("confirm") != "WIPE ALL SOULS":
-            return {"error": "Confirm with exactly: 'WIPE ALL SOULS'"}
-        return vault.emergency_wipe(reason="explicit_user_request")
+        elif tool_name == "vault_emergency_wipe":
+            if arguments.get("confirm") != "WIPE ALL SOULS":
+                return {"error": "Confirm with exactly: 'WIPE ALL SOULS'"}
+            return vault.emergency_wipe(reason="explicit_user_request")
 
-    return {"error": f"Unknown vault tool: {tool_name}"}
+        return {"error": f"Unknown vault tool: {tool_name}"}
+    except Exception as e:
+        return {"error": f"Soul vault tool error: {str(e)}", "tool": tool_name}

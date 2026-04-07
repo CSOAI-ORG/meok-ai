@@ -21,7 +21,7 @@ export function testURL(path: string): string {
  * Useful after navigation to ensure all assets have loaded.
  */
 export async function waitForPageLoad(page: Page): Promise<void> {
-  await page.waitForLoadState('networkidle', { timeout: TIMEOUT })
+  await page.waitForLoadState('domcontentloaded', { timeout: TIMEOUT })
 }
 
 /**

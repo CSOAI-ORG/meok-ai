@@ -314,7 +314,7 @@ export default function LabsPage() {
               From experiments to findings.
             </h2>
             <p className="text-white/40 text-sm max-w-sm mx-auto leading-relaxed">
-              Three studies shaping the sovereign AI research agenda at MEOK AI LABS and the CSGA Cyber AI Research Institute.
+              Three studies shaping the sovereign AI research agenda at MEOK AI LABS and the MEOK AI Labs Cyber AI Research Institute.
             </p>
           </div>
 

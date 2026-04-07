@@ -1,0 +1,40 @@
+{
+  "livestock": [
+    {
+      "id": "20260406050033",
+      "type": "sheep",
+      "count": 12,
+      "health": "healthy",
+      "notes": "Grazing in south field",
+      "image": "",
+      "timestamp": "2026-04-06T05:00:33.984546"
+    },
+    {
+      "id": "20260406050034",
+      "type": "sheep",
+      "count": 5,
+      "health": "observed",
+      "notes": "5 sheep in the north field",
+      "timestamp": "2026-04-06T05:00:34.103394"
+    }
+  ],
+  "tasks": [
+    {
+      "id": "20260406050033",
+      "description": "Fix the north gate",
+      "priority": "medium",
+      "status": "open",
+      "created": "2026-04-06T05:00:33.927776",
+      "completed": null
+    },
+    {
+      "id": "20260406050034",
+      "description": "repair the fence near the barn",
+      "priority": "medium",
+      "status": "open",
+      "created": "2026-04-06T05:00:34.042204",
+      "completed": null
+    }
+  ],
+  "health_logs": []
+}

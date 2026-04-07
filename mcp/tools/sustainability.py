@@ -133,47 +133,49 @@ COMPUTE_CREDITS = [
 
 async def handle_sustainability_tool(name: str, arguments: Dict[str, Any], state: ServiceState) -> Dict[str, Any]:
     """Handle sustainability tool calls."""
+    try:
+        engine = getattr(state, 'sustainability_engine', None)
 
-    engine = getattr(state, 'sustainability_engine', None)
+        if name == "get_sustainability_status":
+            if engine is None:
+                return {"error": "SustainabilityEngine not initialised"}
+            return engine.get_sustainability_status()
 
-    if name == "get_sustainability_status":
-        if engine is None:
-            return {"error": "SustainabilityEngine not initialised"}
-        return engine.get_sustainability_status()
+        elif name == "get_tier_info":
+            if engine is None:
+                return {"error": "SustainabilityEngine not initialised"}
+            tier_name = arguments.get("tier_name")
+            return engine.get_tier_info(tier_name)
 
-    elif name == "get_tier_info":
-        if engine is None:
-            return {"error": "SustainabilityEngine not initialised"}
-        tier_name = arguments.get("tier_name")
-        return engine.get_tier_info(tier_name)
+        elif name == "check_upgrade_prompt":
+            if engine is None:
+                return {"error": "SustainabilityEngine not initialised"}
+            prompt_text = arguments.get("prompt_text", "")
+            context = arguments.get("context", "unknown")
+            return engine.dark_pattern_guard.check_upgrade_prompt(prompt_text, context)
 
-    elif name == "check_upgrade_prompt":
-        if engine is None:
-            return {"error": "SustainabilityEngine not initialised"}
-        prompt_text = arguments.get("prompt_text", "")
-        context = arguments.get("context", "unknown")
-        return engine.dark_pattern_guard.check_upgrade_prompt(prompt_text, context)
+        elif name == "record_tier_change":
+            if engine is None:
+                return {"error": "SustainabilityEngine not initialised"}
+            tier_name = arguments.get("tier_name", "Free")
+            delta = int(arguments.get("delta", 1))
+            engine.record_tier_user(tier_name, delta)
+            return {"recorded": True, "tier": tier_name, "delta": delta}
 
-    elif name == "record_tier_change":
-        if engine is None:
-            return {"error": "SustainabilityEngine not initialised"}
-        tier_name = arguments.get("tier_name", "Free")
-        delta = int(arguments.get("delta", 1))
-        engine.record_tier_user(tier_name, delta)
-        return {"recorded": True, "tier": tier_name, "delta": delta}
+        elif name == "get_compute_credits_status":
+            total = sum(c["amount_usd"] for c in COMPUTE_CREDITS)
+            active = sum(c["amount_usd"] for c in COMPUTE_CREDITS if c["status"] == "active")
+            pending = sum(c["amount_usd"] for c in COMPUTE_CREDITS if c["status"] == "not_applied")
+            return {
+                "total_available_usd": total,
+                "active_usd": active,
+                "pending_application_usd": pending,
+                "credits": COMPUTE_CREDITS,
+                "action_required": "Apply for Google Cloud ($200K), AWS ($100K), Azure ($150K), NVIDIA ($50K) NOW",
+                "runway_months_estimate": round(total / 15000, 1),  # ~$15K/month ops cost
+                "breakeven_paid_users": 320,  # at $15/mo, $2.50 compute cost = $12.50 margin
+            }
 
-    elif name == "get_compute_credits_status":
-        total = sum(c["amount_usd"] for c in COMPUTE_CREDITS)
-        active = sum(c["amount_usd"] for c in COMPUTE_CREDITS if c["status"] == "active")
-        pending = sum(c["amount_usd"] for c in COMPUTE_CREDITS if c["status"] == "not_applied")
-        return {
-            "total_available_usd": total,
-            "active_usd": active,
-            "pending_application_usd": pending,
-            "credits": COMPUTE_CREDITS,
-            "action_required": "Apply for Google Cloud ($200K), AWS ($100K), Azure ($150K), NVIDIA ($50K) NOW",
-            "runway_months_estimate": round(total / 15000, 1),  # ~$15K/month ops cost
-            "breakeven_paid_users": 320,  # at $15/mo, $2.50 compute cost = $12.50 margin
-        }
-
-    return {"error": f"Unknown sustainability tool: {name}"}
+        return {"error": f"Unknown sustainability tool: {name}"}
+    except Exception as e:
+        return {"error": f"Sustainability tool error: {str(e)}", "tool": name}

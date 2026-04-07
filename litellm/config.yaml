@@ -1,0 +1,60 @@
+# LiteLLM Configuration - MEOK
+# Only using providers with API keys configured
+
+model_list:
+  # Anthropic (we have this key)
+  - model_name: claude-sonnet
+    litellm_params:
+      model: anthropic/claude-sonnet-4-20250514
+      api_key: os.environ/ANTHROPIC_API_KEY
+
+  - model_name: claude-haiku
+    litellm_params:
+      model: anthropic/claude-3-haiku-20240307
+      api_key: os.environ/ANTHROPIC_API_KEY
+
+  # Ollama (local, always available)
+  - model_name: llama-local
+    litellm_params:
+      model: ollama/llama3.1:8b
+      api_base: http://localhost:11434
+
+  - model_name: qwen-local
+    litellm_params:
+      model: ollama/qwen2.5:7b
+      api_base: http://localhost:11434
+
+  - model_name: gemma-local
+    litellm_params:
+      model: ollama/gemma3:4b
+      api_base: http://localhost:11434
+
+  # Cerebras (free, low latency)
+  - model_name: cerebras-fast
+    litellm_params:
+      model: cerebras/llama-3.1-70b
+      api_key: os.environ/CEREBRAS_API_KEY
+
+  # Groq (free, fast)
+  - model_name: groq-fast
+    litellm_params:
+      model: groq/llama-3.1-70b-versatile
+      api_key: os.environ/GROQ_API_KEY
+
+# Settings
+litellm_settings:
+  drop_params: true
+  set_verbose: false
+  request_timeout: 60
+  telemetry: false
+  master_key: "meok-local-dev-key"
+
+# UI Admin
+admin_ui:
+  enabled: true
+  username: admin
+  password: meokadmin123
+
+# Database (optional - uses sqlite by default)
+database:
+  db_path: ./litellm.db

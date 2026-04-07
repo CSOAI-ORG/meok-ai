@@ -89,7 +89,7 @@ const ENTRIES = [
       { type: 'new', text: 'Organization JSON-LD — MEOK AI LABS, Nicholas Templeman, @meok_ai' },
       { type: 'new', text: 'CVE-2025-66478 patch — Next.js 15.2.0 upgrade (CVSS 9.1)' },
       { type: 'new', text: 'GitHub Actions CI/CD — build, test, audit, security scan' },
-      { type: 'fixed', text: 'All CSGA/Nick Randall references removed from codebase' },
+      { type: 'fixed', text: 'All MEOK AI Labs/Nick Randall references removed from codebase' },
     ],
   },
 ]

@@ -199,6 +199,45 @@ export async function GET() {
     // Non-fatal — dream cycle is a nice-to-have
   }
 
+  // Pull MEOK_AI_LABS revenue dashboard (non-fatal — MEOK_AI_LABS platform may be offline)
+  let csoai_revenue: Record<string, unknown> | null = null
+  const MEOK_AI_LABS_API = process.env.MEOK_AI_LABS_API_URL ?? 'http://localhost:3001'
+  const MEOK_AI_LABS_ADMIN_TOKEN = process.env.MEOK_AI_LABS_ADMIN_TOKEN ?? ''
+  try {
+    if (MEOK_AI_LABS_ADMIN_TOKEN) {
+      const csoaiRes = await fetch(`${MEOK_AI_LABS_API}/api/admin-revenue/dashboard`, {
+        headers: { Authorization: `Bearer ${MEOK_AI_LABS_ADMIN_TOKEN}` },
+        signal: AbortSignal.timeout(3000),
+      })
+      if (csoaiRes.ok) {
+        const data = await csoaiRes.json()
+        if (data.success) {
+          csoai_revenue = {
+            confirmed_gbp: data.revenue?.confirmed_this_month_gbp ?? 0,
+            pipeline_gbp: data.revenue?.pipeline_gbp ?? 0,
+            mrr_gbp: data.revenue?.mrr_gbp ?? 0,
+            action_items: data.action_items ?? [],
+            audit_leads: data.emergency_audits?.total_leads ?? 0,
+            audit_pending: data.emergency_audits?.pending ?? 0,
+            consortium_active: data.consortium?.active ?? 0,
+            monitor_active: data.monitoring_subscriptions?.active ?? 0,
+            facility_new: data.facility?.new ?? 0,
+            citizenship_pending: data.citizenship?.pending ?? 0,
+          }
+          // Surface MEOK_AI_LABS action items as high-priority briefing items
+          const csoaiItems = data.action_items as string[] ?? []
+          for (const item of csoaiItems.slice(0, 3)) {
+            priorities.unshift({
+              id: `csoai_${Math.random().toString(36).slice(2, 7)}`,
+              text: `[MEOK_AI_LABS] ${item}`,
+              priority: 'high',
+            })
+          }
+        }
+      }
+    }
+  } catch { /* non-fatal — MEOK_AI_LABS platform offline */ }
+
   const now = new Date()
   const briefing = {
     generated_at: now.toISOString(),
@@ -209,6 +248,7 @@ export async function GET() {
     overnight_work,
     sovereign_insight,
     dream_insight,
+    csoai_revenue,
     next_action: priorities[0]
       ? `Focus on: ${priorities[0].text}`
       : 'All clear — use this time for deep work.',

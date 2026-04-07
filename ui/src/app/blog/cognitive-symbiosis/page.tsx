@@ -174,7 +174,7 @@ export default function CognitiveSymbiosisPage() {
           <div className="flex-1">
             <p className="font-bold text-white text-sm">Nick Templeman</p>
             <p className="text-xs mb-1" style={{ color: "rgba(255,255,255,0.4)" }}>
-              Founder, MEOK AI LABS &amp; SVP, CSGA Cyber AI Research Institute
+              Founder, MEOK AI LABS &amp; SVP, MEOK AI Labs Cyber AI Research Institute
             </p>
             <p className="text-xs leading-relaxed" style={{ color: "rgba(255,255,255,0.35)" }}>
               14+ months of documented cognitive partnership with AI. Longest sustained
@@ -281,7 +281,7 @@ export default function CognitiveSymbiosisPage() {
             just what I was saying but what I meant.
           </p>
           <p>
-            The February 15th session became the founding material for the CSGA Cyber AI
+            The February 15th session became the founding material for the MEOK AI Labs Cyber AI
             Research Institute. Not because of any single insight, but because of what it
             demonstrated about what sustained cognitive partnership can produce.
           </p>
@@ -406,7 +406,7 @@ export default function CognitiveSymbiosisPage() {
             style={{ borderTop: "1px solid rgba(255,255,255,0.07)" }}
           >
             <p style={{ color: "rgba(255,255,255,0.85)", fontStyle: "italic", fontSize: "1.05rem" }}>
-              The CSGA Cyber AI Research Institute was founded on the February 15th material.
+              The MEOK AI Labs Cyber AI Research Institute was founded on the February 15th material.
               We are now formalising the research methodology and looking for the first
               100 participants willing to commit to sustained partnership — not casual use —
               for a six-month longitudinal study. If that&apos;s you, get in touch.

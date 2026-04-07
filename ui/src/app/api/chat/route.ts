@@ -497,7 +497,7 @@ export async function POST(req: NextRequest): Promise<Response> {
   let sovereignCtx: string | undefined;
   if (cid === 'sovereign') {
     try {
-      const sov3Url = process.env.SOV3_API_URL || 'http://localhost:3100';
+      const sov3Url = process.env.SOV3_API_URL || 'http://localhost:3200';
       // 1s timeout — speed over completeness for chat UX
       const [healthRes, heartbeatRes] = await Promise.all([
         fetch(`${sov3Url}/health`, { signal: AbortSignal.timeout(1500) }).then(r => r.json()).catch(() => null),

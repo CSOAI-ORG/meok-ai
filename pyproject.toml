@@ -1,0 +1,9 @@
+[build-system]
+requires = ["setuptools>=45", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "meok"
+version = "3.0.0"
+description = "MEOK.ai - Sovereign AI Operating System"
+requires-python = ">=3.9"

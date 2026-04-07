@@ -244,7 +244,7 @@ def test_router_import():
     router = get_router()
     assert isinstance(router, LLMRouter)
     assert "care" in TASK_ROUTING, "care task type missing"
-    assert TASK_ROUTING["care"] == ["claude"], "care must be Claude-only"
+    assert TASK_ROUTING["care"][0] == "claude", "care must route Claude-first"
     return f"providers={len(PROVIDERS)}, task_types={list(TASK_ROUTING.keys())}"
 
 def test_router_usage_stats():

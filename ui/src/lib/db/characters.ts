@@ -346,6 +346,51 @@ export interface UpsertCharacterInput {
   creatorUserId?: string;
 }
 
+export async function dbCreateCharacter(input: Record<string, unknown>): Promise<Record<string, unknown>> {
+  if (!sql) {
+    return { ...input, id: input.id as string, createdAt: new Date().toISOString() };
+  }
+
+  const embeddingStr = (input.personalityEmbedding as number[])
+    ? '[' + (input.personalityEmbedding as number[]).join(',') + ']'
+    : null;
+
+  await sql`
+    INSERT INTO characters (
+      id, name, title, archetype, emoji, color, tagline,
+      system_prompt, personality, tags, tier, license,
+      pack, voice_style, communication_style, dynamism, dimensions,
+      personality_embedding, is_marketplace, price_cents, creator_user_id,
+      created_at, updated_at
+    ) VALUES (
+      ${input.id as string},
+      ${input.name as string},
+      ${(input.title as string) ?? null},
+      ${input.archetype as string},
+      ${(input.emoji as string) ?? null},
+      ${(input.color as string) ?? null},
+      ${(input.tagline as string) ?? null},
+      ${(input.systemPrompt as string) ?? null},
+      ${JSON.stringify((input.personality as string[]) ?? [])}::jsonb,
+      ${JSON.stringify((input.tags as string[]) ?? [])}::jsonb,
+      ${(input.tier as string) ?? 'explorer'},
+      ${(input.license as string) ?? 'original'},
+      ${(input.pack as string) ?? null},
+      ${(input.voiceStyle as string) ?? null},
+      ${(input.communicationStyle as string) ?? null},
+      ${(input.dynamism as number) ?? 0.95},
+      ${input.dimensions ? JSON.stringify(input.dimensions) : null}::jsonb,
+      ${embeddingStr}::vector,
+      ${(input.isMarketplace as boolean) ?? false},
+      ${(input.priceCents as number) ?? null},
+      ${(input.creatorUserId as string) ?? null},
+      NOW(), NOW()
+    )
+  `;
+
+  return { ...input, createdAt: new Date().toISOString() };
+}
+
 export async function dbUpsertCharacter(input: UpsertCharacterInput): Promise<void> {
   if (!sql) throw new Error('DATABASE_URL not configured');
 

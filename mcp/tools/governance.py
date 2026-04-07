@@ -159,202 +159,205 @@ async def handle_governance_tool(
     """Handle governance tool calls (Shura + Coincidentia)."""
 
     # ── run_shura_pipeline ────────────────────────────────────────────────────
-    if name == "run_shura_pipeline":
-        if not getattr(state, "shura_council", None):
+    try:
+        if name == "run_shura_pipeline":
+            if not getattr(state, "shura_council", None):
+                return {
+                    "error": "Shura Council (Layer 2) not available",
+                    "hint": "Check initializer logs — shura_council may have failed to load",
+                }
+            result = await state.shura_council.run_shura_pipeline(
+                title=arguments["title"],
+                description=arguments["description"],
+                proposed_by=arguments["proposed_by"],
+                action_type=arguments.get("action_type", "generic"),
+                action_params=arguments.get("action_params", {}),
+                care_weight=float(arguments.get("care_weight", 0.5)),
+                council=getattr(state, "agent_council", None),
+            )
             return {
-                "error": "Shura Council (Layer 2) not available",
-                "hint": "Check initializer logs — shura_council may have failed to load",
+                "status": "deliberated",
+                "proposal_id": result.get("proposal_id"),
+                "consensus_direction": result.get("consensus_direction"),
+                "participant_count": result.get("participant_count"),
+                "concerns": result.get("concerns", [])[:5],
+                "shura_insights": {
+                    "key_considerations": result.get("shura_deliberation", {}).get("key_considerations", []),
+                    "supporting_evidence_count": len(
+                        result.get("shura_deliberation", {}).get("supporting_evidence", [])
+                    ),
+                },
             }
-        result = await state.shura_council.run_shura_pipeline(
-            title=arguments["title"],
-            description=arguments["description"],
-            proposed_by=arguments["proposed_by"],
-            action_type=arguments.get("action_type", "generic"),
-            action_params=arguments.get("action_params", {}),
-            care_weight=float(arguments.get("care_weight", 0.5)),
-            council=getattr(state, "agent_council", None),
-        )
-        return {
-            "status": "deliberated",
-            "proposal_id": result.get("proposal_id"),
-            "consensus_direction": result.get("consensus_direction"),
-            "participant_count": result.get("participant_count"),
-            "concerns": result.get("concerns", [])[:5],
-            "shura_insights": {
-                "key_considerations": result.get("shura_deliberation", {}).get("key_considerations", []),
-                "supporting_evidence_count": len(
-                    result.get("shura_deliberation", {}).get("supporting_evidence", [])
-                ),
-            },
-        }
 
-    # ── reconcile_proposal ────────────────────────────────────────────────────
-    elif name == "reconcile_proposal":
-        if not getattr(state, "coincidentia", None):
+        # ── reconcile_proposal ────────────────────────────────────────────────────
+        elif name == "reconcile_proposal":
+            if not getattr(state, "coincidentia", None):
+                return {
+                    "error": "Coincidentia Oppositorum (Layer 4) not available",
+                    "hint": "Check initializer logs — coincidentia may have failed to load",
+                }
+            proposal = {
+                "title": arguments["title"],
+                "description": arguments["description"],
+                "action_type": arguments.get("action_type", "generic"),
+                "action_params": {},
+                "care_weight": 0.5,
+            }
+            result = await state.coincidentia.reconcile(
+                proposal_id=arguments["proposal_id"],
+                proposal=proposal,
+                votes=arguments.get("votes", {}),
+                council=getattr(state, "agent_council", None),
+                shura=getattr(state, "shura_council", None),
+                attempt=int(arguments.get("attempt", 1)),
+            )
+            return result
+
+        # ── get_shura_deliberations ───────────────────────────────────────────────
+        elif name == "get_shura_deliberations":
+            if not getattr(state, "shura_council", None):
+                return {"error": "Shura Council not available", "deliberations": []}
+            limit = int(arguments.get("limit", 10))
+            deliberations = state.shura_council.list_recent_deliberations(limit=limit)
             return {
-                "error": "Coincidentia Oppositorum (Layer 4) not available",
-                "hint": "Check initializer logs — coincidentia may have failed to load",
+                "deliberations": deliberations,
+                "total": len(state.shura_council.deliberations),
             }
-        proposal = {
-            "title": arguments["title"],
-            "description": arguments["description"],
-            "action_type": arguments.get("action_type", "generic"),
-            "action_params": {},
-            "care_weight": 0.5,
-        }
-        result = await state.coincidentia.reconcile(
-            proposal_id=arguments["proposal_id"],
-            proposal=proposal,
-            votes=arguments.get("votes", {}),
-            council=getattr(state, "agent_council", None),
-            shura=getattr(state, "shura_council", None),
-            attempt=int(arguments.get("attempt", 1)),
-        )
-        return result
 
-    # ── get_shura_deliberations ───────────────────────────────────────────────
-    elif name == "get_shura_deliberations":
-        if not getattr(state, "shura_council", None):
-            return {"error": "Shura Council not available", "deliberations": []}
-        limit = int(arguments.get("limit", 10))
-        deliberations = state.shura_council.list_recent_deliberations(limit=limit)
-        return {
-            "deliberations": deliberations,
-            "total": len(state.shura_council.deliberations),
-        }
-
-    # ── get_reconciliation_stats ──────────────────────────────────────────────
-    elif name == "get_reconciliation_stats":
-        if not getattr(state, "coincidentia", None):
-            return {"error": "Coincidentia Oppositorum not available"}
-        stats = state.coincidentia.get_stats()
-        recent = state.coincidentia.list_reconciliations(limit=5)
-        return {
-            **stats,
-            "recent_reconciliations": recent,
-        }
-
-    # ── get_governance_status ─────────────────────────────────────────────────
-    elif name == "get_governance_status":
-        status: Dict[str, Any] = {}
-
-        # Layer 1: Engagement
-        if state.agent_registry:
-            reg_stats = state.agent_registry.get_registry_stats()
-            status["layer_1_engagement"] = {
-                "available": True,
-                "score": reg_stats.get("engagement_score", "unknown"),
-                "total_agents": reg_stats.get("total_agents", 0),
-                "active_agents": reg_stats.get("active_agents", 0),
+        # ── get_reconciliation_stats ──────────────────────────────────────────────
+        elif name == "get_reconciliation_stats":
+            if not getattr(state, "coincidentia", None):
+                return {"error": "Coincidentia Oppositorum not available"}
+            stats = state.coincidentia.get_stats()
+            recent = state.coincidentia.list_reconciliations(limit=5)
+            return {
+                **stats,
+                "recent_reconciliations": recent,
             }
-        else:
-            status["layer_1_engagement"] = {"available": False}
 
-        # Layer 2: Shura
-        shura = getattr(state, "shura_council", None)
-        status["layer_2_shura"] = {
-            "available": shura is not None,
-            "deliberations_run": len(shura.deliberations) if shura else 0,
-            "max_participants": shura.max_participants if shura else None,
-        }
+        # ── get_governance_status ─────────────────────────────────────────────────
+        elif name == "get_governance_status":
+            status: Dict[str, Any] = {}
 
-        # Layer 3: Byzantine Council
-        council = getattr(state, "agent_council", None)
-        if council:
-            proposals = getattr(council, "proposals", {})
-            status["layer_3_byzantine"] = {
-                "available": True,
-                "open_proposals": sum(
-                    1 for p in proposals.values() if p.get("status") == "open"
-                ),
-                "total_proposals": len(proposals),
+            # Layer 1: Engagement
+            if state.agent_registry:
+                reg_stats = state.agent_registry.get_registry_stats()
+                status["layer_1_engagement"] = {
+                    "available": True,
+                    "score": reg_stats.get("engagement_score", "unknown"),
+                    "total_agents": reg_stats.get("total_agents", 0),
+                    "active_agents": reg_stats.get("active_agents", 0),
+                }
+            else:
+                status["layer_1_engagement"] = {"available": False}
+
+            # Layer 2: Shura
+            shura = getattr(state, "shura_council", None)
+            status["layer_2_shura"] = {
+                "available": shura is not None,
+                "deliberations_run": len(shura.deliberations) if shura else 0,
+                "max_participants": shura.max_participants if shura else None,
             }
-        else:
-            status["layer_3_byzantine"] = {"available": False}
 
-        # Layer 4: Coincidentia
-        co = getattr(state, "coincidentia", None)
-        if co:
-            co_stats = co.get_stats()
-            status["layer_4_coincidentia"] = {
-                "available": True,
-                **co_stats,
+            # Layer 3: Byzantine Council
+            council = getattr(state, "agent_council", None)
+            if council:
+                proposals = getattr(council, "proposals", {})
+                status["layer_3_byzantine"] = {
+                    "available": True,
+                    "open_proposals": sum(
+                        1 for p in proposals.values() if p.get("status") == "open"
+                    ),
+                    "total_proposals": len(proposals),
+                }
+            else:
+                status["layer_3_byzantine"] = {"available": False}
+
+            # Layer 4: Coincidentia
+            co = getattr(state, "coincidentia", None)
+            if co:
+                co_stats = co.get_stats()
+                status["layer_4_coincidentia"] = {
+                    "available": True,
+                    **co_stats,
+                }
+            else:
+                status["layer_4_coincidentia"] = {"available": False}
+
+            # Layer 5: Maternal Covenant
+            maintenance = getattr(state, "maintenance_system", None)
+            status["layer_5_maternal_covenant"] = {
+                "available": maintenance is not None,
+                "care_floor": 0.3,
+                "description": "Blocks all proposals with care_weight < 0.3",
             }
-        else:
-            status["layer_4_coincidentia"] = {"available": False}
 
-        # Layer 5: Maternal Covenant
-        maintenance = getattr(state, "maintenance_system", None)
-        status["layer_5_maternal_covenant"] = {
-            "available": maintenance is not None,
-            "care_floor": 0.3,
-            "description": "Blocks all proposals with care_weight < 0.3",
-        }
+            return {
+                "governance_stack": status,
+                "layers_active": sum(1 for v in status.values() if v.get("available")),
+                "layers_total": 5,
+            }
 
-        return {
-            "governance_stack": status,
-            "layers_active": sum(1 for v in status.values() if v.get("available")),
-            "layers_total": 5,
-        }
+        # ── dispatch_proposal ─────────────────────────────────────────────────────
+        elif name == "dispatch_proposal":
+            if not getattr(state, "orchestrator", None):
+                return {"error": "TaskOrchestrator not available", "hint": "Check initializer logs"}
+            proposal_id = arguments["proposal_id"]
+            # Look up proposal to get action_type / action_params if not overridden
+            council = getattr(state, "agent_council", None)
+            proposal = council.get_proposal(proposal_id) if council else None
+            if proposal is None and "action_type" not in arguments:
+                return {"error": f"Proposal '{proposal_id}' not found — provide action_type to dispatch manually"}
+            action_type = arguments.get("action_type") or (proposal or {}).get("action_type", "generic")
+            action_params = arguments.get("action_params") or (proposal or {}).get("action_params", {})
+            proposed_by = (proposal or {}).get("proposed_by", "manual_dispatch")
+            result = await state.orchestrator.dispatch(
+                proposal_id=proposal_id,
+                action_type=action_type,
+                action_params=action_params,
+                proposed_by=proposed_by,
+            )
+            return result
 
-    # ── dispatch_proposal ─────────────────────────────────────────────────────
-    elif name == "dispatch_proposal":
-        if not getattr(state, "orchestrator", None):
-            return {"error": "TaskOrchestrator not available", "hint": "Check initializer logs"}
-        proposal_id = arguments["proposal_id"]
-        # Look up proposal to get action_type / action_params if not overridden
-        council = getattr(state, "agent_council", None)
-        proposal = council.get_proposal(proposal_id) if council else None
-        if proposal is None and "action_type" not in arguments:
-            return {"error": f"Proposal '{proposal_id}' not found — provide action_type to dispatch manually"}
-        action_type = arguments.get("action_type") or (proposal or {}).get("action_type", "generic")
-        action_params = arguments.get("action_params") or (proposal or {}).get("action_params", {})
-        proposed_by = (proposal or {}).get("proposed_by", "manual_dispatch")
-        result = await state.orchestrator.dispatch(
-            proposal_id=proposal_id,
-            action_type=action_type,
-            action_params=action_params,
-            proposed_by=proposed_by,
-        )
-        return result
+        # ── get_orchestrator_status ───────────────────────────────────────────────
+        elif name == "get_orchestrator_status":
+            if not getattr(state, "orchestrator", None):
+                return {"error": "TaskOrchestrator not available"}
+            limit = int(arguments.get("limit", 10))
+            stats = state.orchestrator.get_stats()
+            recent = state.orchestrator.list_recent_dispatches(limit=limit)
+            return {
+                **stats,
+                "recent_dispatches": recent,
+            }
 
-    # ── get_orchestrator_status ───────────────────────────────────────────────
-    elif name == "get_orchestrator_status":
-        if not getattr(state, "orchestrator", None):
-            return {"error": "TaskOrchestrator not available"}
-        limit = int(arguments.get("limit", 10))
-        stats = state.orchestrator.get_stats()
-        recent = state.orchestrator.list_recent_dispatches(limit=limit)
-        return {
-            **stats,
-            "recent_dispatches": recent,
-        }
+        # ── get_z_self_status ─────────────────────────────────────────────────────
+        elif name == "get_z_self_status":
+            z_self = getattr(state, "z_self", None)
+            if not z_self:
+                return {"error": "z_self not available — check initializer logs"}
+            status = z_self.get_status()
+            result: Dict[str, Any] = {**status}
+            if arguments.get("include_recent_observations"):
+                meta_memory = getattr(z_self, "_meta_memory", None)
+                if meta_memory:
+                    try:
+                        recent = await meta_memory.get_recent_observations(limit=10)
+                        result["recent_observations"] = recent
+                        meta_stats = await meta_memory.get_stats()
+                        result["meta_memory"] = meta_stats
+                    except Exception as e:
+                        result["meta_memory_error"] = str(e)
+            return result
 
-    # ── get_z_self_status ─────────────────────────────────────────────────────
-    elif name == "get_z_self_status":
-        z_self = getattr(state, "z_self", None)
-        if not z_self:
-            return {"error": "z_self not available — check initializer logs"}
-        status = z_self.get_status()
-        result: Dict[str, Any] = {**status}
-        if arguments.get("include_recent_observations"):
-            meta_memory = getattr(z_self, "_meta_memory", None)
-            if meta_memory:
-                try:
-                    recent = await meta_memory.get_recent_observations(limit=10)
-                    result["recent_observations"] = recent
-                    meta_stats = await meta_memory.get_stats()
-                    result["meta_memory"] = meta_stats
-                except Exception as e:
-                    result["meta_memory_error"] = str(e)
-        return result
+        # ── run_z_self_tripwires ──────────────────────────────────────────────────
+        elif name == "run_z_self_tripwires":
+            tripwires = getattr(state, "z_self_tripwires", None)
+            if not tripwires:
+                return {"error": "z_self tripwires not available — check initializer logs"}
+            summary = await tripwires.run_all()
+            return summary
 
-    # ── run_z_self_tripwires ──────────────────────────────────────────────────
-    elif name == "run_z_self_tripwires":
-        tripwires = getattr(state, "z_self_tripwires", None)
-        if not tripwires:
-            return {"error": "z_self tripwires not available — check initializer logs"}
-        summary = await tripwires.run_all()
-        return summary
-
-    return {"error": f"Unknown governance tool: {name}"}
+        return {"error": f"Unknown governance tool: {name}"}
+    except Exception as e:
+        return {"error": f"Governance tool error: {str(e)}", "tool": name}

@@ -1,5 +1,5 @@
 # KIMI DEEP RESEARCH BRIEF — Autonomous AI Business Operating System
-## For MEOK AI LTD / CSGA Sovereign Platform
+## For MEOK AI LTD / MEOK AI Labs Sovereign Platform
 ## Date: 2026-03-20
 
 ---

@@ -63,86 +63,89 @@ _baselines = {}
 
 
 async def handle_voice_guardian(tool_name: str, arguments: dict) -> dict:
-    import asyncio
-    from core.voice_stress import (
-        ProsodicExtractor, VoiceStressAnalyser,
-        get_voice_guardian_pipeline,
-    )
-
-    extractor = ProsodicExtractor()
-    analyser  = VoiceStressAnalyser()
-
-    if tool_name == "voice_analyse_stress":
-        audio_bytes = base64.b64decode(arguments["audio_base64"])
-        sample_rate = int(arguments.get("sample_rate", 16000))
-        age_group   = arguments.get("age_group", "9-12")
-        child_id    = arguments.get("child_id", "unknown")
-        baseline    = arguments.get("child_baseline") or _baselines.get(child_id)
-
-        features = extractor.extract(audio_bytes, sample_rate)
-        if features is None:
-            return {"error": "Audio too short or empty"}
-
-        result = analyser.analyse(features, baseline, age_group)
-        return {
-            "distress_score": result.distress_score,
-            "confidence": result.confidence,
-            "needs_alert": result.needs_guardian_alert,
-            "markers": result.markers_detected,
-            "note": result.analysis_note,
-            "baseline_deviation": result.baseline_deviation,
-            "prosodic_features": {
-                "rms_energy":    round(features.rms_energy, 4),
-                "speaking_rate": round(features.speaking_rate, 2),
-                "pause_ratio":   round(features.pause_ratio, 3),
-                "tremor_index":  round(features.tremor_index, 3),
-                "duration_s":    round(features.duration_seconds, 2),
-            },
-            "privacy_note": "Raw audio not stored. Hash only.",
-        }
-
-    elif tool_name == "voice_guardian_full":
-        audio_bytes = base64.b64decode(arguments["audio_base64"])
-        child_id    = arguments["child_id"]
-        age_group   = arguments.get("age_group", "9-12")
-        sample_rate = int(arguments.get("sample_rate", 16000))
-        context     = arguments.get("context")
-        baseline    = arguments.get("child_baseline") or _baselines.get(child_id)
-
-        pipeline = get_voice_guardian_pipeline()
-        result = await pipeline.process_audio(
-            child_id=child_id,
-            audio_bytes=audio_bytes,
-            sample_rate=sample_rate,
-            age_group=age_group,
-            child_baseline=baseline,
-            context=context,
+    try:
+        import asyncio
+        from core.voice_stress import (
+            ProsodicExtractor, VoiceStressAnalyser,
+            get_voice_guardian_pipeline,
         )
-        return result
 
-    elif tool_name == "voice_stress_calibrate":
-        audio_bytes = base64.b64decode(arguments["calm_audio_b64"])
-        child_id    = arguments["child_id"]
-        sample_rate = int(arguments.get("sample_rate", 16000))
+        extractor = ProsodicExtractor()
+        analyser  = VoiceStressAnalyser()
 
-        features = extractor.extract(audio_bytes, sample_rate)
-        if features is None:
-            return {"error": "Calibration audio too short"}
+        if tool_name == "voice_analyse_stress":
+            audio_bytes = base64.b64decode(arguments["audio_base64"])
+            sample_rate = int(arguments.get("sample_rate", 16000))
+            age_group   = arguments.get("age_group", "9-12")
+            child_id    = arguments.get("child_id", "unknown")
+            baseline    = arguments.get("child_baseline") or _baselines.get(child_id)
 
-        baseline = {
-            "rms_mean":     features.rms_energy,
-            "rms_std":      0.04,  # default std until more samples collected
-            "speaking_rate": features.speaking_rate,
-            "rate_std":     0.8,
-            "pause_ratio":  features.pause_ratio,
-            "pause_std":    0.10,
-        }
-        _baselines[child_id] = baseline
-        return {
-            "success": True,
-            "child_id": child_id,
-            "baseline": baseline,
-            "message": f"Baseline established for {child_id}. Future audio will be compared against this profile.",
-        }
+            features = extractor.extract(audio_bytes, sample_rate)
+            if features is None:
+                return {"error": "Audio too short or empty"}
 
-    return {"error": f"Unknown voice_guardian tool: {tool_name}"}
+            result = analyser.analyse(features, baseline, age_group)
+            return {
+                "distress_score": result.distress_score,
+                "confidence": result.confidence,
+                "needs_alert": result.needs_guardian_alert,
+                "markers": result.markers_detected,
+                "note": result.analysis_note,
+                "baseline_deviation": result.baseline_deviation,
+                "prosodic_features": {
+                    "rms_energy":    round(features.rms_energy, 4),
+                    "speaking_rate": round(features.speaking_rate, 2),
+                    "pause_ratio":   round(features.pause_ratio, 3),
+                    "tremor_index":  round(features.tremor_index, 3),
+                    "duration_s":    round(features.duration_seconds, 2),
+                },
+                "privacy_note": "Raw audio not stored. Hash only.",
+            }
+
+        elif tool_name == "voice_guardian_full":
+            audio_bytes = base64.b64decode(arguments["audio_base64"])
+            child_id    = arguments["child_id"]
+            age_group   = arguments.get("age_group", "9-12")
+            sample_rate = int(arguments.get("sample_rate", 16000))
+            context     = arguments.get("context")
+            baseline    = arguments.get("child_baseline") or _baselines.get(child_id)
+
+            pipeline = get_voice_guardian_pipeline()
+            result = await pipeline.process_audio(
+                child_id=child_id,
+                audio_bytes=audio_bytes,
+                sample_rate=sample_rate,
+                age_group=age_group,
+                child_baseline=baseline,
+                context=context,
+            )
+            return result
+
+        elif tool_name == "voice_stress_calibrate":
+            audio_bytes = base64.b64decode(arguments["calm_audio_b64"])
+            child_id    = arguments["child_id"]
+            sample_rate = int(arguments.get("sample_rate", 16000))
+
+            features = extractor.extract(audio_bytes, sample_rate)
+            if features is None:
+                return {"error": "Calibration audio too short"}
+
+            baseline = {
+                "rms_mean":     features.rms_energy,
+                "rms_std":      0.04,  # default std until more samples collected
+                "speaking_rate": features.speaking_rate,
+                "rate_std":     0.8,
+                "pause_ratio":  features.pause_ratio,
+                "pause_std":    0.10,
+            }
+            _baselines[child_id] = baseline
+            return {
+                "success": True,
+                "child_id": child_id,
+                "baseline": baseline,
+                "message": f"Baseline established for {child_id}. Future audio will be compared against this profile.",
+            }
+
+        return {"error": f"Unknown voice_guardian tool: {tool_name}"}
+    except Exception as e:
+        return {"error": f"Voice guardian tool error: {str(e)}", "tool": tool_name}

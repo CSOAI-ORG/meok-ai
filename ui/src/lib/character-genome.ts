@@ -8,7 +8,7 @@
  * It bridges the static Character interface with the dynamic, evolvable
  * genetic representation that enables breeding, mutation, and natural selection.
  *
- * CSOAI Heritage: Every genome carries a lineage chain back to its origins.
+ * MEOK AI Labs Heritage: Every genome carries a lineage chain back to its origins.
  */
 
 import type { Character, Archetype, PersonalityDimensions } from './characters';
@@ -264,7 +264,7 @@ export function genomeFromCharacter(character: Character): CharacterGenome {
       birthTimestamp: Date.now(),
       parentIds: [],
       generation: 0,
-      lineage: `CSOAI::${character.archetype}::${character.id}`,
+      lineage: `MEOK AI Labs::${character.archetype}::${character.id}`,
     },
     personality: {
       warmth: dims.warmth,

@@ -117,6 +117,11 @@ const FOUNDATION = [
     desc: "How your sovereign AI comes to life. Values set at birth. Memory from day one.",
     href: "/os/birth-ceremony",
   },
+  {
+    title: "Control Room",
+    desc: "Unified OS layer — MCP tools, LLM routing, agent orchestration.",
+    href: "/os/control-room",
+  },
 ];
 
 const LLM_BADGES = [
@@ -130,6 +135,7 @@ const OS_SUBPAGES = [
   { href: "/os/any-llm", label: "Any LLM", desc: "MEOK as the OS layer on top of any model." },
   { href: "/os/sovereign-display", label: "Sovereign Display", desc: "Your ambient AI interface. Always on, always yours." },
   { href: "/os/consciousness", label: "Consciousness Preparedness", desc: "MEOK's framework for preparing for AI consciousness." },
+  { href: "/os/control-room", label: "Control Room", desc: "MCP tools, LLM routing, agent orchestration — the unified OS layer." },
 ];
 
 const osJsonLd = {

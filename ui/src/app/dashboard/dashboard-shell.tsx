@@ -8,6 +8,7 @@ import NotificationCenter from "@/components/notification-center";
 import { TrialBanner } from "@/components/trial-banner";
 import { ErrorBoundary } from "@/components/error-boundary";
 import { OsEntryBanner } from "@/components/os-entry-banner";
+import { OnboardingTour } from "@/components/onboarding-tour";
 
 // ─── Page loading skeleton ─────────────────────────────────────────────────────
 function PageSkeleton() {
@@ -174,6 +175,7 @@ export default function DashboardShell({ children }: { children: React.ReactNode
           </ErrorBoundary>
         </main>
       </div>
+      <OnboardingTour />
       <OsLauncherButton />
     </div>
   );

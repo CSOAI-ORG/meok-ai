@@ -99,56 +99,58 @@ ORION_TOOLS = [
 
 async def handle_orion_tool(name: str, arguments: Dict[str, Any], state: ServiceState) -> Dict[str, Any]:
     """Handle Orion-Riri-Hourman tool calls."""
+    try:
+        if not state.ORION_AGENT_AVAILABLE or not state.get_orion_agent:
+            return {"error": "Orion-Riri-Hourman agent not available"}
 
-    if not state.ORION_AGENT_AVAILABLE or not state.get_orion_agent:
-        return {"error": "Orion-Riri-Hourman agent not available"}
+        agent = state.get_orion_agent()
 
-    agent = state.get_orion_agent()
+        if name == "orion_hunt_tasks":
+            result = await agent.hunt_tasks(max_files=arguments.get("max_files", 100))
+            return result
 
-    if name == "orion_hunt_tasks":
-        result = await agent.hunt_tasks(max_files=arguments.get("max_files", 100))
-        return result
+        elif name == "orion_get_tasks":
+            tasks = agent.get_pursuing_tasks(arguments.get("limit", 10))
+            return {"tasks": tasks}
 
-    elif name == "orion_get_tasks":
-        tasks = agent.get_pursuing_tasks(arguments.get("limit", 10))
-        return {"tasks": tasks}
+        elif name == "orion_capture_task":
+            result = await agent.capture_task(arguments["task_id"])
+            return result
 
-    elif name == "orion_capture_task":
-        result = await agent.capture_task(arguments["task_id"])
-        return result
+        elif name == "hourman_start_sprint":
+            result = await agent.start_sprint(
+                arguments["sprint_type"],
+                arguments.get("task_id"),
+            )
+            return result
 
-    elif name == "hourman_start_sprint":
-        result = await agent.start_sprint(
-            arguments["sprint_type"],
-            arguments.get("task_id"),
-        )
-        return result
+        elif name == "hourman_get_status":
+            return agent.sprints.get_status()
 
-    elif name == "hourman_get_status":
-        return agent.sprints.get_status()
+        elif name == "hourman_complete_sprint":
+            result = await agent.complete_sprint(
+                arguments["summary"],
+                arguments.get("task_id"),
+            )
+            return result
 
-    elif name == "hourman_complete_sprint":
-        result = await agent.complete_sprint(
-            arguments["summary"],
-            arguments.get("task_id"),
-        )
-        return result
+        elif name == "riri_list_templates":
+            return agent.get_available_templates()
 
-    elif name == "riri_list_templates":
-        return agent.get_available_templates()
+        elif name == "riri_build_tool":
+            result = await agent.build_tool(
+                arguments["template"],
+                {
+                    "name": arguments["name"],
+                    "description": arguments["description"],
+                    **arguments.get("params", {}),
+                },
+            )
+            return result
 
-    elif name == "riri_build_tool":
-        result = await agent.build_tool(
-            arguments["template"],
-            {
-                "name": arguments["name"],
-                "description": arguments["description"],
-                **arguments.get("params", {}),
-            },
-        )
-        return result
+        elif name == "orion_riri_hourman_status":
+            return agent.get_full_status()
 
-    elif name == "orion_riri_hourman_status":
-        return agent.get_full_status()
-
-    return {"error": f"Unknown orion tool: {name}"}
+        return {"error": f"Unknown orion tool: {name}"}
+    except Exception as e:
+        return {"error": f"Orion tool error: {str(e)}", "tool": name}

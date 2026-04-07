@@ -101,44 +101,46 @@ async def handle_learning_tool(
     state: ServiceState,
 ) -> Dict[str, Any]:
     """Dispatch learning tool calls."""
+    try:
+        learner = getattr(state, "council_learner", None)
 
-    learner = getattr(state, "council_learner", None)
+        if name == "get_learning_stats":
+            if learner is None:
+                return {"error": "CouncilLearner not initialised", "tip": "Check initializer logs"}
+            return learner.get_learning_stats()
 
-    if name == "get_learning_stats":
-        if learner is None:
-            return {"error": "CouncilLearner not initialised", "tip": "Check initializer logs"}
-        return learner.get_learning_stats()
+        if name == "trigger_council_learning":
+            if learner is None:
+                return {"error": "CouncilLearner not initialised"}
+            n = int(arguments.get("n", 50))
+            result = await learner.replay_recent(n=n)
+            stats = learner.get_learning_stats()
+            return {**result, "stats_after_replay": stats}
 
-    if name == "trigger_council_learning":
-        if learner is None:
-            return {"error": "CouncilLearner not initialised"}
-        n = int(arguments.get("n", 50))
-        result = await learner.replay_recent(n=n)
-        stats = learner.get_learning_stats()
-        return {**result, "stats_after_replay": stats}
+        if name == "get_learning_feed":
+            if learner is None:
+                return {"error": "CouncilLearner not initialised"}
+            n = int(arguments.get("n", 10))
+            return {
+                "signals": learner.get_recent_feed(n=n),
+                "total_processed": learner._samples_processed,
+            }
 
-    if name == "get_learning_feed":
-        if learner is None:
-            return {"error": "CouncilLearner not initialised"}
-        n = int(arguments.get("n", 10))
-        return {
-            "signals": learner.get_recent_feed(n=n),
-            "total_processed": learner._samples_processed,
-        }
+        if name == "reset_online_model":
+            if learner is None:
+                return {"error": "CouncilLearner not initialised"}
+            return learner.reset_online_model()
 
-    if name == "reset_online_model":
-        if learner is None:
-            return {"error": "CouncilLearner not initialised"}
-        return learner.reset_online_model()
+        if name == "trigger_synthetic_training":
+            try:
+                from meok.learning.synthetic_training import inject_synthetic_data_into_models
+                n_care = int(arguments.get("n_care", 1000))
+                n_threat = int(arguments.get("n_threat", 500))
+                result = await inject_synthetic_data_into_models(state, n_care=n_care, n_threat=n_threat)
+                return result
+            except Exception as e:
+                return {"error": f"Synthetic training failed: {e}"}
 
-    if name == "trigger_synthetic_training":
-        try:
-            from meok.learning.synthetic_training import inject_synthetic_data_into_models
-            n_care = int(arguments.get("n_care", 1000))
-            n_threat = int(arguments.get("n_threat", 500))
-            result = await inject_synthetic_data_into_models(state, n_care=n_care, n_threat=n_threat)
-            return result
-        except Exception as e:
-            return {"error": f"Synthetic training failed: {e}"}
-
-    return {"error": f"Unknown learning tool: {name}"}
+        return {"error": f"Unknown learning tool: {name}"}
+    except Exception as e:
+        return {"error": f"Learning tool error: {str(e)}", "tool": name}

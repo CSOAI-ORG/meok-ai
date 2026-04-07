@@ -42,15 +42,15 @@ test.describe('/hatch — Birth Quiz Flow', () => {
       const fallback = page.locator('text=/of 7/').first()
       await expect(fallback.or(optionCards)).toBeVisible({ timeout: 8_000 })
 
-      // Click any clickable option in the right column
-      const clickable = page.locator('.hatch-quiz-grid div[style*="cursor: pointer"]').first()
+      // Click any clickable option (button elements)
+      const clickable = page.locator('.hatch-quiz-grid button').first()
       if (await clickable.isVisible({ timeout: 3_000 }).catch(() => false)) {
         await clickable.click()
       } else {
-        // Fallback: click the first non-egg interactive element
-        const anyOption = page.locator('div[style*="border-radius"][style*="padding"]').nth(1)
-        if (await anyOption.isVisible({ timeout: 3_000 }).catch(() => false)) {
-          await anyOption.click()
+        // Fallback: click any button in the page
+        const anyButton = page.locator('button').nth(1)
+        if (await anyButton.isVisible({ timeout: 3_000 }).catch(() => false)) {
+          await anyButton.click()
         }
       }
 

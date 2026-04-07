@@ -38,26 +38,28 @@ CONSCIOUSNESS_TOOLS = [
 
 async def handle_consciousness_tool(name: str, arguments: Dict[str, Any], state: ServiceState) -> Dict[str, Any]:
     """Handle consciousness tool calls."""
+    try:
+        if name == "get_consciousness_state":
+            if not state.consciousness:
+                return {"error": "Consciousness module not available"}
+            return state.consciousness.get_consciousness_state()
 
-    if name == "get_consciousness_state":
-        if not state.consciousness:
-            return {"error": "Consciousness module not available"}
-        return state.consciousness.get_consciousness_state()
+        elif name == "trigger_reflection":
+            if not state.consciousness:
+                return {"error": "Consciousness module not available"}
+            reflection = await state.consciousness.reflection.perform_reflection(
+                trigger=arguments.get("trigger", "manual")
+            )
+            return reflection
 
-    elif name == "trigger_reflection":
-        if not state.consciousness:
-            return {"error": "Consciousness module not available"}
-        reflection = await state.consciousness.reflection.perform_reflection(
-            trigger=arguments.get("trigger", "manual")
-        )
-        return reflection
+        elif name == "enter_dream_state":
+            if not state.consciousness:
+                return {"error": "Consciousness module not available"}
+            dream = await state.consciousness.dream.enter_dream_state(
+                duration_seconds=arguments.get("duration_seconds", 30)
+            )
+            return dream
 
-    elif name == "enter_dream_state":
-        if not state.consciousness:
-            return {"error": "Consciousness module not available"}
-        dream = await state.consciousness.dream.enter_dream_state(
-            duration_seconds=arguments.get("duration_seconds", 30)
-        )
-        return dream
-
-    return {"error": f"Unknown consciousness tool: {name}"}
+        return {"error": f"Unknown consciousness tool: {name}"}
+    except Exception as e:
+        return {"error": f"Consciousness tool error: {str(e)}", "tool": name}

@@ -93,16 +93,45 @@ function ResponseBubble({
         `}</style>
       </p>
       {!streaming && (
-        <button
-          onClick={onClear}
-          className="mt-3 flex items-center gap-1.5 text-xs transition-colors"
-          style={{ color: "rgba(255,255,255,0.3)" }}
-          onMouseEnter={(e) => { (e.currentTarget as HTMLButtonElement).style.color = "rgba(255,255,255,0.6)"; }}
-          onMouseLeave={(e) => { (e.currentTarget as HTMLButtonElement).style.color = "rgba(255,255,255,0.3)"; }}
-        >
-          <RotateCcw className="w-3 h-3" />
-          Ask something else
-        </button>
+        <div className="mt-3 flex items-center gap-3">
+          <button
+            onClick={onClear}
+            className="flex items-center gap-1.5 text-xs transition-colors"
+            style={{ color: "rgba(255,255,255,0.3)" }}
+            onMouseEnter={(e) => { (e.currentTarget as HTMLButtonElement).style.color = "rgba(255,255,255,0.6)"; }}
+            onMouseLeave={(e) => { (e.currentTarget as HTMLButtonElement).style.color = "rgba(255,255,255,0.3)"; }}
+          >
+            <RotateCcw className="w-3 h-3" />
+            Ask something else
+          </button>
+          <button
+            onClick={async () => {
+              if (!text) return;
+              try {
+                const res = await fetch("http://localhost:3200/speak", {
+                  method: "POST",
+                  headers: { "Content-Type": "application/json" },
+                  body: JSON.stringify({ text, voice: "bm_daniel" }),
+                });
+                if (res.ok) {
+                  const blob = await res.blob();
+                  const audio = new Audio(URL.createObjectURL(blob));
+                  await audio.play();
+                }
+              } catch (e) {
+                console.error("TTS error:", e);
+                // Fallback to Web Speech
+                const utterance = new SpeechSynthesisUtterance(text);
+                speechSynthesis.speak(utterance);
+              }
+            }}
+            className="flex items-center gap-1.5 text-xs transition-colors hover:text-white"
+            style={{ color: "rgba(255,255,255,0.3)" }}
+            title="Read aloud"
+          >
+            🔊 Read aloud
+          </button>
+        </div>
       )}
     </div>
   );
@@ -298,6 +327,47 @@ export function QuickChat({ placeholder = "What's on your mind?" }: QuickChatPro
             onFocus={(e) => { e.currentTarget.style.borderColor = `${GOLD}50`; }}
             onBlur={(e) => { e.currentTarget.style.borderColor = "rgba(255,255,255,0.10)"; }}
           />
+          <button
+            type="button"
+            onClick={async () => {
+              if (!("webkitSpeechRecognition" in window)) {
+                alert("Voice input not supported in this browser");
+                return;
+              }
+              const SpeechRecognition = (window as any).webkitSpeechRecognition;
+              const recognition = new SpeechRecognition();
+              recognition.continuous = false;
+              recognition.interimResults = true;
+              recognition.lang = "en-US";
+              
+              const finalTranscript = "";
+              recognition.onresult = (event: any) => {
+                let transcript = "";
+                for (let i = 0; i < event.results.length; i++) {
+                  if (event.results[i].isFinal) {
+                    transcript += event.results[i][0].transcript;
+                  }
+                }
+                if (transcript) {
+                  setInput(transcript);
+                  setTimeout(() => submit(transcript), 100);
+                }
+              };
+              recognition.onerror = (event: any) => {
+                console.error("Voice error:", event.error);
+              };
+              recognition.start();
+            }}
+            disabled={streaming || thinking}
+            className="h-10 px-3 rounded-xl flex items-center justify-center flex-shrink-0 transition-all disabled:opacity-30"
+            style={{
+              background: "rgba(255,255,255,0.05)",
+              border: "1px solid rgba(255,255,255,0.1)",
+            }}
+            title="Voice input"
+          >
+            🎤
+          </button>
           <button
             type="submit"
             disabled={!input.trim() || streaming || thinking}

@@ -62,58 +62,60 @@ HEARTBEAT_TOOLS = [
 
 async def handle_heartbeat_tool(name: str, arguments: Dict[str, Any], state: ServiceState) -> Dict[str, Any]:
     """Handle heartbeat tool calls."""
+    try:
+        if name == "get_heartbeat_status":
+            if state.heartbeat:
+                return state.heartbeat.get_status()
+            return {"error": "Heartbeat not available", "hint": "Project Heartbeat not initialized"}
 
-    if name == "get_heartbeat_status":
-        if state.heartbeat:
-            return state.heartbeat.get_status()
-        return {"error": "Heartbeat not available", "hint": "Project Heartbeat not initialized"}
+        elif name == "get_nightshift_digest":
+            if state.memory_store and state.memory_store.pool:
+                async with state.memory_store.pool.acquire() as conn:
+                    rows = await conn.fetch(
+                        "SELECT * FROM memory_episodes WHERE tags @> $1::text[] "
+                        "ORDER BY timestamp DESC LIMIT 1",
+                        ['morning_digest'],
+                    )
+                    if rows:
+                        row = rows[0]
+                        return {
+                            "id": str(row['id']),
+                            "content": row['content'],
+                            "timestamp": row['timestamp'].isoformat(),
+                            "care_weight": float(row['care_weight']),
+                            "tags": row['tags'],
+                        }
+                    return {"message": "No morning digest found yet. Digest is generated at 3:30 AM GMT."}
+            return {"error": "Memory store not available"}
 
-    elif name == "get_nightshift_digest":
-        if state.memory_store and state.memory_store.pool:
-            async with state.memory_store.pool.acquire() as conn:
-                rows = await conn.fetch(
-                    "SELECT * FROM memory_episodes WHERE tags @> $1::text[] "
-                    "ORDER BY timestamp DESC LIMIT 1",
-                    ['morning_digest'],
-                )
-                if rows:
-                    row = rows[0]
-                    return {
-                        "id": str(row['id']),
-                        "content": row['content'],
-                        "timestamp": row['timestamp'].isoformat(),
-                        "care_weight": float(row['care_weight']),
-                        "tags": row['tags'],
-                    }
-                return {"message": "No morning digest found yet. Digest is generated at 3:30 AM GMT."}
-        return {"error": "Memory store not available"}
+        elif name == "trigger_research_sweep":
+            if state.research_agent:
+                result = await state.research_agent.sweep()
+                return result
+            return {"error": "Research agent not available"}
 
-    elif name == "trigger_research_sweep":
-        if state.research_agent:
-            result = await state.research_agent.sweep()
-            return result
-        return {"error": "Research agent not available"}
+        elif name == "trigger_security_hardening":
+            if state.security_engine:
+                result = await state.security_engine.run_full_cycle()
+                return result
+            return {"error": "Security hardening engine not available"}
 
-    elif name == "trigger_security_hardening":
-        if state.security_engine:
-            result = await state.security_engine.run_full_cycle()
-            return result
-        return {"error": "Security hardening engine not available"}
+        elif name == "trigger_neural_retrain":
+            if state.continual_trainer:
+                result = await state.continual_trainer.retrain_all()
+                return result
+            return {"error": "Continual learning trainer not available"}
 
-    elif name == "trigger_neural_retrain":
-        if state.continual_trainer:
-            result = await state.continual_trainer.retrain_all()
-            return result
-        return {"error": "Continual learning trainer not available"}
+        elif name == "pause_heartbeat_job":
+            if state.heartbeat:
+                return state.heartbeat.pause_job(arguments["job_id"])
+            return {"error": "Heartbeat not available"}
 
-    elif name == "pause_heartbeat_job":
-        if state.heartbeat:
-            return state.heartbeat.pause_job(arguments["job_id"])
-        return {"error": "Heartbeat not available"}
+        elif name == "resume_heartbeat_job":
+            if state.heartbeat:
+                return state.heartbeat.resume_job(arguments["job_id"])
+            return {"error": "Heartbeat not available"}
 
-    elif name == "resume_heartbeat_job":
-        if state.heartbeat:
-            return state.heartbeat.resume_job(arguments["job_id"])
-        return {"error": "Heartbeat not available"}
-
-    return {"error": f"Unknown heartbeat tool: {name}"}
+        return {"error": f"Unknown heartbeat tool: {name}"}
+    except Exception as e:
+        return {"error": f"Heartbeat tool error: {str(e)}", "tool": name}
