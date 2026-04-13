@@ -90,6 +90,12 @@ const FEATURES = [
     desc: "Route across Claude, GPT-4o, DeepSeek, Groq, Ollama, and 15+ more. Switch freely — your memory and personality travel with you.",
     color: "#06B6D4",
   },
+  {
+    icon: "🔌",
+    title: "255 MCP Servers",
+    desc: "The world's largest independent MCP server marketplace. From AI safety to business automation — every tool is open source, security audited, and ready to plug into Claude or Cursor.",
+    color: "#A78BFA",
+  },
 ];
 
 export default function FeaturesPage() {

@@ -657,9 +657,9 @@ export default function HomePageClient() {
             <div className="max-w-5xl mx-auto">
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
                 {[
+                  { stat: "255", label: "MCP Servers", sub: "open source on GitHub" },
                   { stat: "50+", label: "AI Companions", sub: "9 archetypes" },
                   { stat: "469+", label: "AI Models", sub: "10+ providers" },
-                  { stat: "22", label: "Pipeline Modules", sub: "per conversation" },
                   { stat: "∞", label: "Memory", sub: "never forgets you" },
                 ].map((item) => (
                   <div

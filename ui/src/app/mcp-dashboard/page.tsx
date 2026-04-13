@@ -29,6 +29,7 @@ export default function MCPDashboard() {
   const [servers, setServers] = useState<MCPServer[]>([]);
   const [synergies, setSynergies] = useState<Synergy[]>([]);
   const [workflows, setWorkflows] = useState<Workflow[]>([]);
+  const [mcpStats, setMcpStats] = useState({ repos: 255, lines: '39K+', categories: 18 });
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState<'servers' | 'synergies' | 'workflows' | 'orchestration'>('servers');
@@ -144,7 +145,30 @@ export default function MCPDashboard() {
         {/* Header */}
         <div className="mb-8">
           <h1 className="text-4xl font-bold mb-2">MCP Control Center</h1>
-          <p className="text-gray-400">50+ MCP Servers • Unified Intelligence Orchestration</p>
+          <p className="text-gray-400">255 Open-Source MCP Servers • Unified Intelligence Orchestration</p>
+        </div>
+
+        {/* External MCP Stats Banner */}
+        <div className="mb-8 p-5 rounded-xl border border-purple-500/30 bg-purple-500/10">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+            <div className="flex items-center gap-4">
+              <div className="text-3xl">🔌</div>
+              <div>
+                <h3 className="text-lg font-bold text-white">MEOK MCP Marketplace</h3>
+                <p className="text-gray-400 text-sm">
+                  {mcpStats.repos} repos · {mcpStats.lines} lines · {mcpStats.categories} categories · All MIT licensed
+                </p>
+              </div>
+            </div>
+            <a
+              href="https://csoai-org.github.io/mcp-servers/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-5 py-2 rounded-lg font-semibold text-sm bg-purple-500 hover:bg-purple-400 text-black transition"
+            >
+              Browse Marketplace →
+            </a>
+          </div>
         </div>
 
         {/* Stats */}

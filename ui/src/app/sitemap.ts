@@ -27,6 +27,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // Blog categories
     '/blog', '/blog/cognitive-symbiosis', '/blog/hydro-neuromorphic',
     '/blog/what-is-sovereign-ai', '/blog/maternal-covenant-explained',
+    // MCP & Open Source
+    '/mcp-dashboard', '/open-source', '/marketplace',
     // Onboarding
     '/hatch', '/onboarding', '/registry',
   ];

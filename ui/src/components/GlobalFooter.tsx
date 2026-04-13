@@ -100,6 +100,9 @@ export function GlobalFooter() {
           <Link href="/press" className="text-white/40 hover:text-white/70 transition-colors">
             Press
           </Link>
+          <a href="https://csoai-org.github.io/mcp-servers/" target="_blank" rel="noopener noreferrer" className="text-white/40 hover:text-white/70 transition-colors">
+            MCP Marketplace
+          </a>
         </nav>
         <p className="text-xs" style={{ color: "rgba(255,255,255,0.18)" }}>
           © {new Date().getFullYear()} MEOK AI LABS LTD · Registered in England &amp; Wales · All rights reserved

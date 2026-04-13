@@ -100,6 +100,18 @@ const NAV_PILLARS: NavPillar[] = [
       { href: "/gaming/live-copilot", icon: "👥", label: "Community", desc: "Play with your AI, share with others" },
     ],
   },
+  {
+    key: "mcp",
+    label: "MCP",
+    href: "https://csoai-org.github.io/mcp-servers/",
+    accentColor: "#A78BFA",
+    items: [
+      { href: "https://csoai-org.github.io/mcp-servers/", icon: "🔌", label: "MCP Marketplace", desc: "255 open-source MCP servers for Claude & Cursor" },
+      { href: "/mcp-dashboard", icon: "🧩", label: "MCP Dashboard", desc: "Manage your MCP tool mesh" },
+      { href: "/open-source", icon: "🛠️", label: "Open Source", desc: "Browse 255 repos on GitHub" },
+      { href: "https://github.com/CSOAI-ORG", icon: "⭐", label: "GitHub", desc: "CSOAI-ORG — all repositories" },
+    ],
+  },
 ];
 
 // ─── HELPERS ──────────────────────────────────────────────────────────────────

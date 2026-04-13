@@ -66,6 +66,44 @@ export default function MarketplacePage() {
         </div>
       </section>
 
+      {/* MCP Marketplace Banner */}
+      <section className="py-12 px-4 bg-[#0d0c18]">
+        <div className="max-w-4xl mx-auto">
+          <div className="rounded-2xl p-6 md:p-8 border flex flex-col md:flex-row items-center gap-6" style={{ background: '#13121f', borderColor: 'rgba(167,139,250,0.25)' }}>
+            <div className="text-4xl">🔌</div>
+            <div className="flex-1 text-center md:text-left">
+              <h3 className="text-xl font-bold text-white mb-2">
+                MEOK MCP Marketplace
+              </h3>
+              <p className="text-gray-400 text-sm leading-relaxed mb-4">
+                255 production-ready MCP servers for Claude, Cursor, and any MCP-compatible client.
+                AI safety, business automation, healthcare, robotics — all open source, all MIT licensed.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-3 justify-center md:justify-start">
+                <a
+                  href="https://csoai-org.github.io/mcp-servers/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full font-semibold text-sm transition-all hover:opacity-90"
+                  style={{ background: '#A78BFA', color: '#0d0c18' }}
+                >
+                  Browse 255 MCP Servers →
+                </a>
+                <a
+                  href="https://github.com/CSOAI-ORG"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full font-semibold text-sm transition-all"
+                  style={{ background: 'rgba(255,255,255,0.06)', color: 'rgba(255,255,255,0.7)', border: '1px solid rgba(255,255,255,0.1)' }}
+                >
+                  View on GitHub
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Character grid — client component */}
       <MarketplaceClient />
 

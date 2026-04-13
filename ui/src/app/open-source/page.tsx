@@ -14,9 +14,11 @@ const FSL_COMPONENTS = [
   "Character SDK",
   "MCP Server Toolkit",
   "SOV3 Byzantine Council",
+  "MCP Mesh Network",
 ];
 
 const MIT_COMPONENTS = [
+  "255 MCP servers",
   "Client libraries",
   "Plugin scaffolding",
 ];
@@ -31,7 +33,7 @@ const OPEN_SOURCE_CARDS = [
   {
     icon: "🔌",
     name: "MCP Server Toolkit",
-    desc: "The Model Context Protocol integration layer. Connect MEOK to any tool — Gmail, Notion, GitHub, Slack, custom APIs. Works with any MCP-compatible host.",
+    desc: "255 production-ready MCP servers. From AI safety to business automation — every server is MIT licensed, security audited, and ready for Claude, Cursor, and any MCP client.",
     licence: "FSL 1.1",
   },
   {
@@ -185,6 +187,30 @@ export default function OpenSourcePage() {
         </div>
       </section>
 
+      {/* ── Open source stats ──────────────────────────────────────────────── */}
+      <section className="px-4 pb-12">
+        <div className="max-w-5xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16">
+            <div className="premium-card p-6 text-center">
+              <p className="text-3xl font-bold text-[#c9a84c] mb-1">255</p>
+              <p className="text-gray-400 text-sm">GitHub Repos</p>
+            </div>
+            <div className="premium-card p-6 text-center">
+              <p className="text-3xl font-bold text-[#c9a84c] mb-1">39K+</p>
+              <p className="text-gray-400 text-sm">Lines of MCP Code</p>
+            </div>
+            <div className="premium-card p-6 text-center">
+              <p className="text-3xl font-bold text-[#c9a84c] mb-1">100%</p>
+              <p className="text-gray-400 text-sm">Open Source</p>
+            </div>
+            <div className="premium-card p-6 text-center">
+              <p className="text-3xl font-bold text-[#c9a84c] mb-1">MIT</p>
+              <p className="text-gray-400 text-sm">Licensed</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ── Which components are open source? ───────────────────────────────── */}
       <section className="px-4 pb-20">
         <div className="max-w-5xl mx-auto">
@@ -263,6 +289,41 @@ export default function OpenSourcePage() {
             . Once merged, your companion or integration is live in the marketplace and earning
             revenue share on every subscription that uses it.
           </p>
+        </div>
+      </section>
+
+      {/* ── MCP Marketplace CTA ─────────────────────────────────────────────── */}
+      <section className="px-4 pb-20">
+        <div className="max-w-3xl mx-auto">
+          <div className="section-divider mb-16" />
+          <div className="rounded-2xl p-8 border text-center" style={{ background: '#13121f', borderColor: 'rgba(167,139,250,0.25)' }}>
+            <div className="text-4xl mb-4">🔌</div>
+            <h2 className="text-2xl font-bold text-white mb-3">MCP Marketplace</h2>
+            <p className="text-gray-400 mb-6 leading-relaxed">
+              Explore 255 production-ready MCP servers. AI safety, business automation, healthcare, robotics, and more.
+              Every server is MIT licensed, security audited, and ready for Claude, Cursor, and any MCP-compatible client.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-3 justify-center">
+              <a
+                href="https://csoai-org.github.io/mcp-servers/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full font-semibold text-sm transition-all hover:opacity-90"
+                style={{ background: '#A78BFA', color: '#0d0c18' }}
+              >
+                Browse 255 MCP Servers →
+              </a>
+              <a
+                href="https://github.com/CSOAI-ORG"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full font-semibold text-sm transition-all"
+                style={{ background: 'rgba(255,255,255,0.06)', color: 'rgba(255,255,255,0.7)', border: '1px solid rgba(255,255,255,0.1)' }}
+              >
+                View on GitHub
+              </a>
+            </div>
+          </div>
         </div>
       </section>
 
