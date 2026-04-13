@@ -1,8 +1,9 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "buildCommand": "cd ui && NODE_OPTIONS='--max-old-space-size=14336' npm run build",
-  "outputDirectory": "ui/.next",
-  "installCommand": "cd ui && npm install --legacy-peer-deps",
+  "rootDirectory": "ui",
+  "buildCommand": "NODE_OPTIONS='--max-old-space-size=14336' npm run build",
+  "outputDirectory": ".next",
+  "installCommand": "npm install --legacy-peer-deps",
   "framework": "nextjs",
   "crons": [
     {
