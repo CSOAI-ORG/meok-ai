@@ -11,7 +11,7 @@ const nextConfig: NextConfig = {
   // Reduce memory usage during build
   experimental: {
     serverActions: {
-      allowedOrigins: ["meok.ai", "www.meok.ai", "localhost:3000"],
+      allowedOrigins: ["meok.ai", "www.meok.ai", "try.meok.ai", "localhost:3000"],
     },
   },
   webpack: (config, { isServer, nextRuntime }) => {
