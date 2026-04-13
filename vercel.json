@@ -1,0 +1,29 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "buildCommand": "cd ui && NODE_OPTIONS='--max-old-space-size=14336' npm run build",
+  "outputDirectory": "ui/.next",
+  "installCommand": "cd ui && npm install --legacy-peer-deps",
+  "framework": "nextjs",
+  "crons": [
+    {
+      "path": "/api/cron/update-registry",
+      "schedule": "0 4 * * *"
+    },
+    {
+      "path": "/api/cron/consolidate",
+      "schedule": "0 3 * * *"
+    },
+    {
+      "path": "/api/cron/care-signals",
+      "schedule": "0 6 * * *"
+    },
+    {
+      "path": "/api/cron/streak-reset",
+      "schedule": "5 0 * * *"
+    },
+    {
+      "path": "/api/cron/weekly-summary",
+      "schedule": "0 10 * * 1"
+    }
+  ]
+}
