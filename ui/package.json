@@ -44,7 +44,8 @@
     "react-is": "^19.2.4",
     "recharts": "^3.8.0",
     "stripe": "^20.4.1",
-    "svix": "^1.89.0"
+    "svix": "^1.89.0",
+    "zod": "^4.3.6"
   },
   "devDependencies": {
     "@playwright/test": "^1.58.2",
