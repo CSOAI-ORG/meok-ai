@@ -1,0 +1,11 @@
+# Python backend — not deployed to Vercel
+pyproject.toml
+api/
+neural/
+core/
+memory/
+models/
+pipelines/
+scripts/
+tests/
+.github/

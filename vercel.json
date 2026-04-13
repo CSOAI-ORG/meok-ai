@@ -4,9 +4,6 @@
   "outputDirectory": "ui/.next",
   "installCommand": "npm install --legacy-peer-deps && cd ui && npm install --legacy-peer-deps",
   "framework": "nextjs",
-  "builds": [
-    { "src": "package.json", "use": "@vercel/next" }
-  ],
   "crons": [
     {
       "path": "/api/cron/update-registry",
