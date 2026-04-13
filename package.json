@@ -1,0 +1,16 @@
+{
+  "name": "meok",
+  "version": "3.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "cd ui && npm run dev",
+    "build": "cd ui && NODE_OPTIONS='--max-old-space-size=14336' npm run build",
+    "start": "cd ui && npm start",
+    "test": "cd ui && npm test"
+  },
+  "dependencies": {
+    "next": "^15.2.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  }
+}
