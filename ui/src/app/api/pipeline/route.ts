@@ -46,7 +46,7 @@ export async function GET(req: NextRequest): Promise<NextResponse> {
       
       case 'runs': {
         const pipelineId = searchParams.get('pipelineId');
-        const runs = await listPipelineRuns(pipelineId);
+        const runs = await listPipelineRuns(pipelineId ?? undefined);
         return NextResponse.json({ runs });
       }
       

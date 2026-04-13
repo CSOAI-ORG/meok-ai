@@ -198,7 +198,7 @@ async function seedCharacters() {
         personality: char.personality,
         tags: char.tags,
         tier: char.tier,
-        license: char.license,
+        license: char.license as 'CC0' | 'original' | 'user-created',
         voiceStyle: char.voiceStyle,
         dimensions: char.dimensions,
         isMarketplace: true,

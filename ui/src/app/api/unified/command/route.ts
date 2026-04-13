@@ -23,7 +23,7 @@ export async function GET(req: NextRequest): Promise<NextResponse> {
   try {
     switch (action) {
       case 'status': {
-        const status = await getUnifiedStatus(system);
+        const status = await getUnifiedStatus(system ?? undefined);
         return NextResponse.json(status);
       }
       

@@ -96,7 +96,7 @@ export async function GET(req: NextRequest): Promise<NextResponse> {
       
       case 'workflow': {
         const domain = searchParams.get('domain');
-        const workflow = getRecommendedWorkflow(domain);
+        const workflow = getRecommendedWorkflow(domain ?? undefined);
         return NextResponse.json({ workflow });
       }
       

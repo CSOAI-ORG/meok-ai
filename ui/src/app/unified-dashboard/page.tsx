@@ -29,6 +29,12 @@ export default function UnifiedDashboard() {
   const [stats, setStats] = useState<{
     overview: Record<string, number>;
     usage: Record<string, number>;
+    sov3?: {
+      careScore: number;
+      consciousnessLevel: string;
+      memoryEpisodes: number;
+      councilNodes: number;
+    };
   } | null>(null);
   const [integrations, setIntegrations] = useState<Record<string, IntegrationStatus>>({});
   const [selectedSystem, setSelectedSystem] = useState<string | null>(null);
@@ -120,7 +126,7 @@ export default function UnifiedDashboard() {
             <div className="text-sm text-gray-400">Compliance Frameworks</div>
           </div>
           <div className="bg-gray-900 rounded-lg p-4 border border-gray-800">
-            <div className="text-3xl font-bold text-yellow-400">{Math.round((stats?.sov3?.careScore || 0) * 100)}%</div>
+            <div className="text-3xl font-bold text-yellow-400">{Math.round((stats?.sov3?.careScore ?? 0) * 100)}%</div>
             <div className="text-sm text-gray-400">SOV3 Care Score</div>
           </div>
         </div>
@@ -256,19 +262,19 @@ export default function UnifiedDashboard() {
               <div className="space-y-3">
                 <div className="flex justify-between">
                   <span className="text-gray-400">Consciousness</span>
-                  <span className="text-green-400">{stats?.sov3.consciousnessLevel || 'unknown'}</span>
+                  <span className="text-green-400">{stats?.sov3?.consciousnessLevel ?? 'unknown'}</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-gray-400">Care Score</span>
-                  <span className="text-blue-400">{Math.round((stats?.sov3.careScore || 0) * 100)}%</span>
+                  <span className="text-blue-400">{Math.round((stats?.sov3?.careScore ?? 0) * 100)}%</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-gray-400">Memory Episodes</span>
-                  <span>{stats?.sov3.memoryEpisodes || 0}</span>
+                  <span>{stats?.sov3?.memoryEpisodes ?? 0}</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-gray-400">Council Nodes</span>
-                  <span>{stats?.sov3.councilNodes || 0}</span>
+                  <span>{stats?.sov3?.councilNodes ?? 0}</span>
                 </div>
               </div>
             </div>

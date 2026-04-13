@@ -72,7 +72,7 @@ export async function GET(req: NextRequest): Promise<NextResponse> {
       
       case 'voices': {
         const profileKey = characterId ? `voice:${characterId}` : 'voices:all';
-        const voices = await getVoiceProfiles(characterId);
+        const voices = await getVoiceProfiles(characterId ?? undefined);
         return NextResponse.json({ voices });
       }
       

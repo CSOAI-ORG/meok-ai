@@ -19,7 +19,7 @@ import { executeToolUnified, TOOL_PERMISSIONS, type SafetyTier } from './unified
 function makeSov3Tool(
   toolName: string,
   description: string,
-  parameters: z.ZodType,
+  parameters: z.ZodTypeAny,
   characterId: string,
   archetype: string,
   userTier: string,
@@ -28,10 +28,10 @@ function makeSov3Tool(
   return tool({
     description,
     parameters,
-    execute: async (args: Record<string, unknown>) => {
+    execute: async (args: any) => {
       const result = await executeToolUnified({
         toolName,
-        args,
+        args: args as Record<string, unknown>,
         characterId,
         archetype,
         userTier,
@@ -44,7 +44,7 @@ function makeSov3Tool(
       }
       return result.result;
     },
-  });
+  } as any);
 }
 
 // ── Tool catalogue ───────────────────────────────────────────────────────────
@@ -52,7 +52,7 @@ function makeSov3Tool(
 interface ToolDef {
   name: string;
   description: string;
-  parameters: z.ZodType;
+  parameters: z.ZodTypeAny;
 }
 
 const TOOL_CATALOGUE: ToolDef[] = [
@@ -161,11 +161,11 @@ export function getToolsForCharacter(
   archetype: string,
   userTier: string,
   userId: string = 'anonymous',
-): Record<string, ReturnType<typeof tool>> {
+): Record<string, any> {
   // Explorer tier gets no tools (free tier)
   if (userTier === 'explorer') return {};
 
-  const tools: Record<string, ReturnType<typeof tool>> = {};
+  const tools: Record<string, any> = {};
 
   for (const def of TOOL_CATALOGUE) {
     const permission = TOOL_PERMISSIONS[def.name];
