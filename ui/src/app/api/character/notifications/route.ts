@@ -13,7 +13,7 @@ import { kv } from '@/lib/kv-cache';
 
 export const runtime = 'nodejs';
 
-export interface Notification {
+interface Notification {
   id: string;
   characterId: string;
   userId: string;
@@ -146,7 +146,7 @@ export async function DELETE(req: NextRequest): Promise<NextResponse> {
   }
 }
 
-export async function createNotification(
+async function createNotification(
   userId: string,
   characterId: string,
   type: Notification['type'],

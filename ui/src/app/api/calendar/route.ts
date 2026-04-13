@@ -52,7 +52,7 @@ export async function GET(req: NextRequest): Promise<NextResponse> {
   try {
     switch (action) {
       case 'events': {
-        const events = await getEvents(from, to);
+        const events = await getEvents(from || undefined, to || undefined);
         return NextResponse.json({ events });
       }
       
@@ -77,7 +77,7 @@ export async function GET(req: NextRequest): Promise<NextResponse> {
       }
       
       case 'calendar': {
-        const calendar = await getCalendarView(from, to);
+        const calendar = await getCalendarView(from || undefined, to || undefined);
         return NextResponse.json(calendar);
       }
       

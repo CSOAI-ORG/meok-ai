@@ -9,7 +9,7 @@ import { kv } from '@/lib/kv-cache';
 
 export const runtime = 'nodejs';
 
-export interface Pipeline {
+interface Pipeline {
   id: string;
   name: string;
   type: 'etl' | 'transform' | 'aggregate' | 'sync' | 'export';
@@ -22,7 +22,7 @@ export interface Pipeline {
   createdAt: string;
 }
 
-export interface PipelineRun {
+interface PipelineRun {
   id: string;
   pipelineId: string;
   status: 'started' | 'running' | 'completed' | 'failed';

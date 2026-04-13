@@ -63,7 +63,7 @@ export async function GET(req: NextRequest): Promise<NextResponse> {
   }
 }
 
-function generateCharacterCard(character: ReturnType<typeof getCharacter>) {
+function generateCharacterCard(character: NonNullable<ReturnType<typeof getCharacter>>) {
   return {
     spec: 'chara_card_v2',
     spec_version: '2.0',
@@ -93,7 +93,7 @@ function generateCharacterCard(character: ReturnType<typeof getCharacter>) {
   };
 }
 
-function generateVoiceConfig(character: ReturnType<typeof getCharacter>) {
+function generateVoiceConfig(character: NonNullable<ReturnType<typeof getCharacter>>) {
   const VOICE_PROFILES: Record<string, { voiceId: string; speed: number; pitch: number }> = {
     marcus: { voiceId: 'en-gb-male-1', speed: 0.95, pitch: 0.85 },
     aria: { voiceId: 'en-us-female-1', speed: 1.0, pitch: 1.1 },
@@ -125,7 +125,7 @@ function generateVoiceConfig(character: ReturnType<typeof getCharacter>) {
   };
 }
 
-async function generateFullExport(character: ReturnType<typeof getCharacter>, includeMemories: boolean) {
+async function generateFullExport(character: NonNullable<ReturnType<typeof getCharacter>>, includeMemories: boolean) {
   const exportData: Record<string, unknown> = {
     version: '1.0',
     exportedAt: new Date().toISOString(),

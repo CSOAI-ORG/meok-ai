@@ -7,7 +7,7 @@ import { kv } from '@/lib/kv-cache';
 
 export const runtime = 'nodejs';
 
-export interface Badge {
+interface Badge {
   id: string;
   name: string;
   description: string;
@@ -18,7 +18,7 @@ export interface Badge {
   secret?: boolean;
 }
 
-export const ALL_BADGES: Badge[] = [
+const ALL_BADGES: Badge[] = [
   { id: 'first_chat', name: 'First Contact', description: 'Start your first conversation', icon: '👋', category: 'interaction', requirement: 1 },
   { id: 'chat_10', name: 'Getting Started', description: 'Have 10 conversations', icon: '💬', category: 'interaction', requirement: 10 },
   { id: 'chat_50', name: 'Regular', description: 'Have 50 conversations', icon: '🗣️', category: 'interaction', requirement: 50 },

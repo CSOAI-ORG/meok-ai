@@ -9,26 +9,26 @@ import { kv } from '@/lib/kv-cache';
 
 export const runtime = 'nodejs';
 
-export type MoodType = 'idle' | 'thinking' | 'responding' | 'learning' | 'dreaming' | 'active' | 'curious' | 'contemplative' | 'energetic' | 'calm' | 'focused' | 'creative';
+type MoodType = 'idle' | 'thinking' | 'responding' | 'learning' | 'dreaming' | 'active' | 'curious' | 'contemplative' | 'energetic' | 'calm' | 'focused' | 'creative';
 
-export interface MoodEntry {
+interface MoodEntry {
   mood: MoodType;
   energy: number;
   trigger?: string;
   timestamp: string;
 }
 
-export interface MoodState {
+interface MoodState {
   characterId: string;
   userId: string;
   currentMood: MoodType;
-  moodHistory: MoodEntry[];
+  moodHistory?: MoodEntry[];
   averageMood: Record<MoodType, number>;
   dominantMood: MoodType;
   lastMoodChange: string;
 }
 
-export const MOOD_COLORS: Record<MoodType, string> = {
+const MOOD_COLORS: Record<MoodType, string> = {
   idle: '#6B7280',
   thinking: '#06B6D4',
   responding: '#10B981',
@@ -43,14 +43,14 @@ export const MOOD_COLORS: Record<MoodType, string> = {
   creative: '#A855F7',
 };
 
-export const MOOD_TRANSITIONS: Record<MoodType, MoodType[]> = {
+const MOOD_TRANSITIONS: Record<MoodType, MoodType[]> = {
   idle: ['curious', 'thinking'],
   thinking: ['active', 'responding'],
   responding: ['learning', 'idle'],
   learning: ['curious', 'active'],
   dreaming: ['creative', 'contemplative'],
   active: ['focused', 'energetic'],
-  curious: ['thinking', 'explorer'],
+  curious: ['thinking', 'learning'],
   contemplative: ['calm', 'dreaming'],
   energetic: ['active', 'creative'],
   calm: ['contemplative', 'idle'],
@@ -101,6 +101,7 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
         timestamp: new Date().toISOString(),
       };
       
+      moodState.moodHistory = moodState.moodHistory || [];
       moodState.moodHistory.push(entry);
       moodState.moodHistory = moodState.moodHistory.slice(-50);
       moodState.currentMood = mood as MoodType;
@@ -125,6 +126,7 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
       moodState.currentMood = newMood;
       moodState.lastMoodChange = new Date().toISOString();
       
+      moodState.moodHistory = moodState.moodHistory || [];
       moodState.moodHistory.push({
         mood: newMood,
         energy: moodState.averageMood[moodState.currentMood] || 0.5,
@@ -161,7 +163,10 @@ async function getMoodState(characterId: string, userId: string): Promise<MoodSt
     userId,
     currentMood: 'idle',
     moodHistory: [],
-    averageMood: { idle: 0.5 },
+    averageMood: Object.fromEntries(
+      (['idle', 'thinking', 'responding', 'learning', 'dreaming', 'active', 'curious', 'contemplative', 'energetic', 'calm', 'focused', 'creative'] as MoodType[])
+        .map(m => [m, m === 'idle' ? 0.5 : 0])
+    ) as Record<MoodType, number>,
     dominantMood: 'idle',
     lastMoodChange: new Date().toISOString(),
   };
@@ -175,7 +180,7 @@ async function saveMoodState(characterId: string, userId: string, state: MoodSta
 function updateAverageMood(state: MoodState) {
   const counts: Record<MoodType, number> = {} as Record<MoodType, number>;
   
-  for (const entry of state.moodHistory) {
+  for (const entry of state.moodHistory || []) {
     counts[entry.mood] = (counts[entry.mood] || 0) + 1;
   }
   

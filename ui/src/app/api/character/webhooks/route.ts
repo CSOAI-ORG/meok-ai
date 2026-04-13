@@ -13,7 +13,7 @@ import { kv } from '@/lib/kv-cache';
 
 export const runtime = 'nodejs';
 
-export interface Webhook {
+interface Webhook {
   id: string;
   characterId: string;
   userId: string;
@@ -141,7 +141,7 @@ export async function DELETE(req: NextRequest): Promise<NextResponse> {
   }
 }
 
-export async function triggerWebhook(characterId: string, userId: string, event: string, data: Record<string, unknown>): Promise<void> {
+async function triggerWebhook(characterId: string, userId: string, event: string, data: Record<string, unknown>): Promise<void> {
   const key = `meok:webhooks:${characterId}:${userId}`;
   const webhooks = (await kv.get<Webhook[]>(key)) || [];
   

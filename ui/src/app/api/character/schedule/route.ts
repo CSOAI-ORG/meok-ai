@@ -13,7 +13,7 @@ import { kv } from '@/lib/kv-cache';
 
 export const runtime = 'nodejs';
 
-export interface ScheduledItem {
+interface ScheduledItem {
   id: string;
   characterId: string;
   userId: string;
@@ -32,7 +32,7 @@ export interface ScheduledItem {
   createdAt: string;
 }
 
-export const DEFAULT_SCHEDULES: Record<string, Partial<ScheduledItem>> = {
+const DEFAULT_SCHEDULES: Record<string, Partial<ScheduledItem>> = {
   morning_brief: {
     type: 'morning_brief',
     schedule: { time: '07:00', timezone: 'UTC', days: ['mon', 'tue', 'wed', 'thu', 'fri'] },

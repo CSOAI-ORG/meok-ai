@@ -78,7 +78,7 @@ export async function GET(req: NextRequest): Promise<NextResponse> {
         const framework = searchParams.get('framework');
         const intent = searchParams.get('intent');
         
-        const suggestions = suggestServers(domain, framework, intent);
+        const suggestions = suggestServers(domain ?? undefined, framework ?? undefined, intent ?? undefined);
         return NextResponse.json(suggestions);
       }
       

@@ -9,7 +9,7 @@ import { kv } from '@/lib/kv-cache';
 
 export const runtime = 'nodejs';
 
-export interface SystemAnalytics {
+interface SystemAnalytics {
   overview: {
     totalUsers: number;
     activeUsers24h: number;

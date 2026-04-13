@@ -43,6 +43,7 @@ export async function GET(req: NextRequest): Promise<NextResponse> {
     // Build cache key from filters
     const cacheKey = `char:search:${query}:${archetype || 'none'}:${tier || 'none'}:${pack || 'none'}:${semantic}:${limit}`;
     const bypass = req.headers.get('Cache-Control')?.includes('no-cache');
+    const requestId = req.headers.get('x-request-id') || crypto.randomUUID();
     const cached = !bypass ? await apiCache.get(cacheKey) : null;
     if (cached && !cached.stale) {
       return NextResponse.json(cached.data, {

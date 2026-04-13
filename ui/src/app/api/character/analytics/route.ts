@@ -72,7 +72,7 @@ async function getAllCharacterAnalytics(period: string) {
   return analytics;
 }
 
-function calculateSummary(allAnalytics: ReturnType<typeof getAllCharacterAnalytics>) {
+function calculateSummary(allAnalytics: Awaited<ReturnType<typeof getAllCharacterAnalytics>>) {
   const totalInteractions = allAnalytics.reduce((sum, a) => sum + a.totalInteractions, 0);
   const avgPerDay = allAnalytics.reduce((sum, a) => sum + a.averageInteractionsPerDay, 0);
   

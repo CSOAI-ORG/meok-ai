@@ -13,7 +13,7 @@ import { getCharacter, type Character } from '@/lib/characters';
 
 export const runtime = 'nodejs';
 
-export interface Customization {
+interface Customization {
   characterId: string;
   userId: string;
   appearance: {
@@ -44,7 +44,6 @@ export interface Customization {
 const DEFAULT_CUSTOMIZATION: Omit<Customization, 'characterId' | 'userId' | 'updatedAt'> = {
   appearance: {
     theme: 'auto',
-    emojis: true,
   },
   behavior: {
     responseLength: 'medium',
@@ -146,7 +145,7 @@ function getDefaultsForArchetype(archetype: string): Partial<Customization> {
       behavior: { responseLength: 'short', formality: 'neutral', humor: 'light' },
     },
     nurturer: {
-      behavior: { responseLength: 'medium', formality: 'warm', humor: 'light' },
+      behavior: { responseLength: 'medium', formality: 'casual', humor: 'light' },
     },
     sage: {
       behavior: { responseLength: 'long', formality: 'formal', humor: 'none' },

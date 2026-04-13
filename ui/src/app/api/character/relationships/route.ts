@@ -9,9 +9,9 @@ import { kv } from '@/lib/kv-cache';
 
 export const runtime = 'nodejs';
 
-export type RelationshipType = 'friend' | 'rival' | 'mentor' | 'student' | 'partner' | 'family' | 'colleague' | 'stranger';
+type RelationshipType = 'friend' | 'rival' | 'mentor' | 'student' | 'partner' | 'family' | 'colleague' | 'stranger';
 
-export interface CharacterRelationship {
+interface CharacterRelationship {
   id: string;
   characterId: string;
   targetId: string;
@@ -151,7 +151,7 @@ async function saveRelationships(characterId: string, userId: string, relationsh
   await kv.set(key, relationships);
 }
 
-export async function getCompatibleCharacters(characterId: string): Promise<Array<{ id: string; name: string; emoji: string; relationship: string }>> {
+async function getCompatibleCharacters(characterId: string): Promise<Array<{ id: string; name: string; emoji: string; relationship: string }>> {
   const COMPATIBLE: Record<string, RelationshipType[]> = {
     challenger: ['rival', 'colleague', 'partner'],
     nurturer: ['mentor', 'friend', 'family'],

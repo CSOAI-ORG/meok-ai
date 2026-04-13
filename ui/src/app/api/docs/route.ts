@@ -214,11 +214,11 @@ export async function GET(req: NextRequest): Promise<NextResponse> {
   
   if (endpoint) {
     const parts = endpoint.split('/').filter(Boolean);
-    let doc = API_DOCS.endpoints;
+    let doc: unknown = API_DOCS.endpoints;
     
     for (const part of parts) {
       if (doc && typeof doc === 'object' && part in doc) {
-        doc = doc[part as keyof typeof doc];
+        doc = (doc as Record<string, unknown>)[part];
       } else {
         return NextResponse.json({ error: 'Endpoint not found' }, { status: 404 });
       }

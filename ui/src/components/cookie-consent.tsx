@@ -35,6 +35,11 @@ export function CookieConsent() {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
     setVisible(false);
 
+    // Notify the rest of the app that consent changed so analytics can mount/unmount
+    if (typeof window !== "undefined") {
+      window.dispatchEvent(new Event("meok-consent-changed"));
+    }
+
     // Fire PostHog opt-in/out based on consent
     if (typeof window !== "undefined" && (window as Window & { posthog?: { opt_in_capturing: () => void; opt_out_capturing: () => void } }).posthog) {
       if (level === "all") {

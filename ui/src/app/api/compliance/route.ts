@@ -101,7 +101,7 @@ export async function GET(req: NextRequest): Promise<NextResponse> {
     }
     
     if (type === 'audit' || type === 'audits') {
-      const audits = await getComplianceAudits(auditId);
+      const audits = await getComplianceAudits(auditId ?? undefined);
       return NextResponse.json({ audits });
     }
     
@@ -273,10 +273,10 @@ function runFDACheck(checkType: string, context: Record<string, unknown>) {
   const { systemName, intendedUse, clinicalContext, modelType } = context;
   return {
     systemName: systemName || 'AI System',
-    deviceClassification: determineDeviceClassification(intendedUse, clinicalContext),
-    regulatoryPathway: determineRegulatoryPathway(intendedUse, clinicalContext),
-    samdCategory: determineSaMDCategory(intendedUse, clinicalContext),
-    predeterminedChangeControl: modelType?.includes('adaptive') || modelType?.includes('learning'),
+    deviceClassification: determineDeviceClassification(intendedUse as string | undefined, clinicalContext as string | undefined),
+    regulatoryPathway: determineRegulatoryPathway(intendedUse as string | undefined, clinicalContext as string | undefined),
+    samdCategory: determineSaMDCategory(intendedUse as string | undefined, clinicalContext as string | undefined),
+    predeterminedChangeControl: (modelType as string | undefined)?.includes('adaptive') || (modelType as string | undefined)?.includes('learning'),
     qualitySystemRequirements: ['IEC 62304', 'IEC 62366', '21 CFR Part 820'],
     timelineEstimate: '6-18 months',
     findings: [],
@@ -370,7 +370,7 @@ async function getComplianceDashboard(): Promise<Record<string, unknown>> {
   };
 }
 
-export async function createComplianceAudit(framework: string, userId?: string): Promise<ComplianceAudit> {
+async function createComplianceAudit(framework: string, userId?: string): Promise<ComplianceAudit> {
   const audit: ComplianceAudit = {
     id: `audit_${Date.now()}`,
     framework,
@@ -389,7 +389,7 @@ export async function createComplianceAudit(framework: string, userId?: string):
   return audit;
 }
 
-export async function logComplianceEvent(
+async function logComplianceEvent(
   framework: string,
   checkType: string,
   result: string,

@@ -9,20 +9,16 @@ function MaybeClerk({ children }: { children: React.ReactNode }) {
   if (!hasValidClerk) return <>{children}</>;
   return <ClerkProvider>{children}</ClerkProvider>;
 }
-import { Suspense } from "react";
-import { PostHogProvider } from "@/components/posthog-provider";
 import { CookieConsent } from "@/components/cookie-consent";
-import { SovereignWidget } from "@/components/sovereign-widget";
-import { FloatingCTA } from "@/components/floating-cta";
 import { SessionTimeout } from "@/components/session-timeout";
 import { WhatsNew } from "@/components/whats-new";
 import { ExperienceModeProvider } from "@/components/experience-mode";
 import { GlobalNav } from "@/components/GlobalNav";
-import { Analytics } from "@vercel/analytics/react";
-import { SpeedInsights } from "@vercel/speed-insights/next";
+import { GlobalFooter } from "@/components/GlobalFooter";
 import { SensoryInit } from "@/components/sensory-init";
 import { JarvisOverlay } from "@/components/jarvis-overlay";
 import { JarvisStatusWidget } from "@/components/jarvis-status-widget";
+import { ConsentAwareProviders } from "@/components/consent-aware-providers";
 import "./globals.css";
 
 const dmSans = DM_Sans({
@@ -192,20 +188,14 @@ export default function RootLayout({
         <body className={`${dmSans.variable} font-sans antialiased bg-[#FAF9F6] text-[#111111] min-h-screen`}>
           <SensoryInit />
           <ExperienceModeProvider>
-          <GlobalNav />
-          <Suspense>
-            <PostHogProvider>{children}</PostHogProvider>
-          </Suspense>
-          <CookieConsent />
-          <SessionTimeout />
-          <WhatsNew />
-          <Analytics />
-          <SpeedInsights />
-          <JarvisOverlay />
-          <JarvisStatusWidget />
-          {/* Removed: SovereignWidget + FloatingCTA — blocked content, no real functionality */}
-          {/* <SovereignWidget /> */}
-          {/* <FloatingCTA /> */}
+            <GlobalNav />
+            <ConsentAwareProviders>{children}</ConsentAwareProviders>
+            <GlobalFooter />
+            <CookieConsent />
+            <SessionTimeout />
+            <WhatsNew />
+            <JarvisOverlay />
+            <JarvisStatusWidget />
           </ExperienceModeProvider>
         </body>
       </html>

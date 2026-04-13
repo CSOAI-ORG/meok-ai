@@ -134,7 +134,7 @@ class EventBroadcaster {
   }
 }
 
-export const eventBroadcaster = new EventBroadcaster();
+const eventBroadcaster = new EventBroadcaster();
 
 export async function GET(req: NextRequest): Promise<NextResponse> {
   const { searchParams } = new URL(req.url);

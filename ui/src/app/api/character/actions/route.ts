@@ -13,7 +13,7 @@ import { kv } from '@/lib/kv-cache';
 
 export const runtime = 'nodejs';
 
-export interface CharacterAction {
+interface CharacterAction {
   id: string;
   name: string;
   description: string;
@@ -21,7 +21,7 @@ export interface CharacterAction {
   requiresInput: boolean;
 }
 
-export const CHARACTER_ACTIONS: CharacterAction[] = [
+const CHARACTER_ACTIONS: CharacterAction[] = [
   { id: 'chat', name: 'Chat', description: 'Start a conversation', icon: '💬', requiresInput: false },
   { id: 'morning_brief', name: 'Morning Brief', description: 'Get your daily briefing', icon: '🌅', requiresInput: false },
   { id: 'brainstorm', name: 'Brainstorm', description: 'Generate creative ideas', icon: '💡', requiresInput: true },

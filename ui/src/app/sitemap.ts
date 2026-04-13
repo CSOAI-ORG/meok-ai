@@ -1,13 +1,17 @@
 import { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://www.meok.ai';
+  const baseUrl = 'https://meok.ai';
   const routes = [
     // Core
-    '', '/pricing', '/about', '/blog', '/birth',
+    '', '/birth', '/pricing', '/characters',
+    // OS
+    '/os', '/os/control-room',
+    // Dashboard
+    '/dashboard',
     // Product pillars
-    '/os', '/os/sovereign-os', '/os/fly-eye', '/os/any-llm', '/os/consciousness',
-    '/characters', '/characters/aria', '/characters/sage', '/characters/marcus',
+    '/os/sovereign-os', '/os/fly-eye', '/os/any-llm', '/os/consciousness',
+    '/characters/aria', '/characters/sage', '/characters/marcus',
     '/characters/luna', '/characters/gabriel', '/characters/shanti', '/characters/scout',
     '/work', '/work/orion', '/work/riri', '/work/hourman', '/work/ralph',
     '/guardian', '/guardian/children', '/guardian/seniors', '/guardian/preparedness',
@@ -17,9 +21,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/personal', '/family', '/families', '/for-developers', '/business', '/sovereign',
     // About / Company
     '/about', '/about/labs', '/about/roadmap', '/about/press',
-    '/privacy', '/terms', '/faq', '/help', '/connect', '/compare',
+    // Legal
+    '/privacy', '/terms', '/cookies', '/ai-act', '/accessibility',
+    '/faq', '/help', '/connect', '/compare',
     // Blog categories
-    '/blog/cognitive-symbiosis', '/blog/hydro-neuromorphic',
+    '/blog', '/blog/cognitive-symbiosis', '/blog/hydro-neuromorphic',
     '/blog/what-is-sovereign-ai', '/blog/maternal-covenant-explained',
     // Onboarding
     '/hatch', '/onboarding', '/registry',

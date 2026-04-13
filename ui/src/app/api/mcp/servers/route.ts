@@ -20,7 +20,7 @@ import { kv } from '@/lib/kv-cache';
 
 export const runtime = 'nodejs';
 
-export interface MCPServerConfig {
+interface MCPServerConfig {
   name: string;
   url: string;
   tools: string[];
@@ -29,7 +29,7 @@ export interface MCPServerConfig {
   description: string;
 }
 
-export interface MCPToolResult {
+interface MCPToolResult {
   tool: string;
   success: boolean;
   data?: unknown;
@@ -242,12 +242,12 @@ async function executeMCPTool(server: string, tool: string, args: Record<string,
   }
 }
 
-export async function registerMCPServer(name: string, url: string, tools: string[]): Promise<void> {
+async function registerMCPServer(name: string, url: string, tools: string[]): Promise<void> {
   const key = `meok:mcp:server:${name}`;
   await kv.set(key, { name, url, tools, registeredAt: new Date().toISOString() });
 }
 
-export async function listRegisteredServers(): Promise<Array<{ name: string; url: string; tools: string[] }>> {
+async function listRegisteredServers(): Promise<Array<{ name: string; url: string; tools: string[] }>> {
   const servers = [];
   for (const name of Object.keys(MCP_SERVERS)) {
     const key = `meok:mcp:server:${name}`;

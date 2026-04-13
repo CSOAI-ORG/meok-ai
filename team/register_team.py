@@ -10,7 +10,7 @@ import json
 import sys
 from datetime import datetime
 
-MEOK_URL = "http://localhost:3100/mcp"
+MEOK_URL = "http://localhost:3102/mcp"
 
 TEAM = [
     {
@@ -77,7 +77,7 @@ async def main():
     async with httpx.AsyncClient() as client:
         # Check MEOK health
         try:
-            r = await client.get("http://localhost:3100/health", timeout=5)
+            r = await client.get("http://localhost:3102/health", timeout=5)
             health = r.json()
             print(f"   MEOK status: {health.get('status', '?')} v{health.get('version', '?')}")
         except Exception as e:

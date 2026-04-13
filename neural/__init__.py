@@ -10,6 +10,7 @@ from .partnership_detection_ml import PartnershipDetectionML
 from .threat_detection_nn import ThreatDetectionNN
 from .relationship_evolution_nn import RelationshipEvolutionNN
 from .care_pattern_analyzer import CarePatternAnalyzer
+from .dependency_detection_nn import DependencyDetectionNN
 from .pytorch_adapter import (
     PyTorchModelAdapter,
     create_threat_detection_pt,
@@ -81,6 +82,7 @@ def create_default_registry(model_dir: str = "models") -> NeuralModelRegistry:
     registry.register(ThreatDetectionNN(model_dir))
     registry.register(RelationshipEvolutionNN(model_dir))
     registry.register(CarePatternAnalyzer(model_dir))
+    registry.register(DependencyDetectionNN(model_dir))
 
     # GPU-trained PyTorch models (CPU inference)
     try:
@@ -109,6 +111,7 @@ __all__ = [
     'ThreatDetectionNN',
     'RelationshipEvolutionNN',
     'CarePatternAnalyzer',
+    'DependencyDetectionNN',
     'PyTorchModelAdapter',
     'create_default_registry',
     # Novelty metrics

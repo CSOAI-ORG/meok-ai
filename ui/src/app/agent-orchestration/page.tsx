@@ -216,7 +216,7 @@ export default function AgentOrchestration() {
                     <div className="flex items-center justify-between mb-2">
                       <div className="flex items-center gap-2">
                         <span className="text-2xl">
-                          {agentTypes.find(t => t.type === agent.type)?.icon || '🤖'}
+                          {agentTypes.find(t => t.id === agent.type)?.icon || '🤖'}
                         </span>
                         <div>
                           <div className="font-semibold">{agent.name}</div>

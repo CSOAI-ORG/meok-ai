@@ -9,7 +9,7 @@ import { kv } from '@/lib/kv-cache';
 
 export const runtime = 'nodejs';
 
-export interface EvolutionStage {
+interface EvolutionStage {
   stage: number;
   name: string;
   description: string;
@@ -23,7 +23,7 @@ export interface EvolutionStage {
   };
 }
 
-export const EVOLUTION_STAGES: EvolutionStage[] = [
+const EVOLUTION_STAGES: EvolutionStage[] = [
   {
     stage: 1,
     name: 'Newborn',
@@ -173,12 +173,12 @@ async function getEvolution(characterId: string, userId: string) {
   };
 }
 
-async function saveEvolution(characterId: string, userId: string, evolution: ReturnType<typeof getEvolution>) {
+async function saveEvolution(characterId: string, userId: string, evolution: Awaited<ReturnType<typeof getEvolution>>) {
   const key = `meok:evolution:${characterId}:${userId}`;
   await kv.set(key, evolution);
 }
 
-function checkForEvolution(evolution: ReturnType<typeof getEvolution>) {
+function checkForEvolution(evolution: Awaited<ReturnType<typeof getEvolution>>) {
   for (let i = evolution.currentStage; i < EVOLUTION_STAGES.length; i++) {
     const stage = EVOLUTION_STAGES[i];
     const req = stage.requirements;
@@ -198,11 +198,11 @@ function checkForEvolution(evolution: ReturnType<typeof getEvolution>) {
   }
 }
 
-export function getStageInfo(stage: number): EvolutionStage | null {
+function getStageInfo(stage: number): EvolutionStage | null {
   return EVOLUTION_STAGES.find(s => s.stage === stage) || null;
 }
 
-export function getProgressToNextStage(evolution: ReturnType<typeof getEvolution>): {
+function getProgressToNextStage(evolution: Awaited<ReturnType<typeof getEvolution>>): {
   current: EvolutionStage;
   next: EvolutionStage | null;
   progress: number;

@@ -1,11 +1,17 @@
 {
   "model_name": "threat_detection_nn",
   "metrics": {
-    "accuracy": 1.0,
+    "accuracy": 0.45454545454545453,
+    "per_class_accuracy": {
+      "prompt_injection": 0.9393939393939394,
+      "manipulation": 0.7878787878787878,
+      "data_exfiltration": 0.7575757575757576,
+      "toxicity": 0.8484848484848485
+    },
     "training_samples": 33,
     "input_features": 116,
     "output_dimensions": 4
   },
   "is_trained": true,
-  "saved_at": "2026-03-17T00:21:16.389503"
+  "saved_at": "2026-04-07T09:51:32.374096"
 }

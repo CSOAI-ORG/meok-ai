@@ -211,7 +211,7 @@ async function syncCharacter(characterId: string): Promise<Record<string, unknow
   };
 }
 
-async function runCouncil(data: { topic: string; context: string }): Promise<Record<string, unknown>> {
+async function runCouncil(data: { topic: string; context: string; characters?: string[] }): Promise<Record<string, unknown>> {
   const characters = data.characters || ['mentor', 'challenger', 'companion'];
   
   return {

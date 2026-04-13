@@ -22,6 +22,12 @@ function checkApiRate(ip: string): boolean {
   const entry = apiRateMap.get(ip);
   if (!entry || now > entry.reset) {
     apiRateMap.set(ip, { count: 1, reset: now + API_RATE_WINDOW });
+    // Periodic cleanup: evict expired entries to prevent memory leak
+    if (apiRateMap.size > 10_000) {
+      for (const [key, val] of apiRateMap) {
+        if (now > val.reset) apiRateMap.delete(key);
+      }
+    }
     return true;
   }
   entry.count++;
@@ -40,13 +46,21 @@ function passthroughMiddleware(req: NextRequest) {
   return NextResponse.next();
 }
 
-export default hasValidClerk
-  ? clerkMiddleware(async (auth, req) => {
-      if (isProtectedRoute(req)) {
-        await auth.protect();
-      }
-    })
-  : passthroughMiddleware;
+// Clerk middleware wrapped with rate limiting on API routes
+const clerkWithRateLimit = clerkMiddleware(async (auth, req) => {
+  // Apply rate limiting to API routes even when Clerk is active
+  if (req.nextUrl.pathname.startsWith('/api/')) {
+    const ip = req.headers.get('x-forwarded-for')?.split(',')[0] ?? req.headers.get('x-real-ip') ?? '127.0.0.1';
+    if (!checkApiRate(ip)) {
+      return NextResponse.json({ error: 'Rate limit exceeded' }, { status: 429 });
+    }
+  }
+  if (isProtectedRoute(req)) {
+    await auth.protect();
+  }
+});
+
+export default hasValidClerk ? clerkWithRateLimit : passthroughMiddleware;
 
 export const config = {
   matcher: [

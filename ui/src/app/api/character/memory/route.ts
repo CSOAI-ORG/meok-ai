@@ -9,7 +9,7 @@ import { kv } from '@/lib/kv-cache';
 
 export const runtime = 'nodejs';
 
-export interface CharacterMemory {
+interface CharacterMemory {
   id: string;
   characterId: string;
   userId: string;
@@ -141,7 +141,7 @@ export async function DELETE(req: NextRequest): Promise<NextResponse> {
   }
 }
 
-export async function searchMemories(characterId: string, userId: string, query: string, limit = 10): Promise<CharacterMemory[]> {
+async function searchMemories(characterId: string, userId: string, query: string, limit = 10): Promise<CharacterMemory[]> {
   const key = `meok:memory:${characterId}:${userId}`;
   const memories = (await kv.get<CharacterMemory[]>(key)) || [];
   

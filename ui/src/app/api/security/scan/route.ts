@@ -8,7 +8,7 @@ import { NextRequest, NextResponse } from 'next/server';
 
 export const runtime = 'nodejs';
 
-export interface Vulnerability {
+interface Vulnerability {
   id: string;
   severity: 'critical' | 'high' | 'medium' | 'low' | 'info';
   title: string;

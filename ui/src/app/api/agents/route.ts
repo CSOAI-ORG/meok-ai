@@ -9,7 +9,7 @@ import { kv } from '@/lib/kv-cache';
 
 export const runtime = 'nodejs';
 
-export interface Agent {
+interface Agent {
   id: string;
   name: string;
   type: 'researcher' | 'builder' | 'analyst' | 'writer' | 'guardian' | 'architect' | 'synthesizer' | 'validator';
@@ -22,7 +22,7 @@ export interface Agent {
   lastActive?: string;
 }
 
-export interface Task {
+interface Task {
   id: string;
   agentId: string;
   description: string;
