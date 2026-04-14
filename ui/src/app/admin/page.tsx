@@ -86,6 +86,8 @@ function formatNumber(n: number | null | undefined): string {
 // ---------------------------------------------------------------------------
 // Component
 // ---------------------------------------------------------------------------
+export const dynamic = 'force-dynamic';
+
 export default function AdminDashboard() {
   const { user, isLoaded } = useUser();
   const [mounted, setMounted] = useState(false);
