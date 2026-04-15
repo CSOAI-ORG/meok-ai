@@ -90,12 +90,10 @@ test.describe('Footer links', () => {
     expect(href).toMatch(/\/terms/)
   })
 
-  test('Maternal Covenant link exists in footer', async ({ page }) => {
+  test('CSOAI / Powered by badge exists in footer', async ({ page }) => {
     const footer = page.locator('footer')
-    const covenantLink = footer.getByRole('link', { name: /maternal covenant/i }).first()
-    await expect(covenantLink).toBeVisible({ timeout: 10_000 })
-    const href = await covenantLink.getAttribute('href')
-    expect(href).toMatch(/\/maternal-covenant/)
+    const poweredBy = footer.getByText(/powered by csoai/i).first()
+    await expect(poweredBy).toBeVisible({ timeout: 10_000 })
   })
 
   test('footer contains at least 3 navigable links', async ({ page }) => {
@@ -112,13 +110,13 @@ test.describe('Footer links', () => {
 // ---------------------------------------------------------------------------
 
 test.describe('CTA links', () => {
-  test('Birth Ceremony CTA links to /birth', async ({ page }) => {
+  test('Start free CTA links to /start', async ({ page }) => {
     await page.goto('/')
     await waitForPageLoad(page)
 
-    const cta = page.getByRole('link', { name: /begin birth ceremony/i }).first()
+    const cta = page.getByRole('link', { name: /start free/i }).first()
     await expect(cta).toBeVisible({ timeout: 10_000 })
-    await expect(cta).toHaveAttribute('href', '/birth')
+    await expect(cta).toHaveAttribute('href', '/start')
   })
 
   test('/birth page loads', async ({ page }) => {
