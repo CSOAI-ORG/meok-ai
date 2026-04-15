@@ -42,7 +42,7 @@ const NAV_PILLARS: NavPillar[] = [
       { href: "/os/any-llm", icon: "🔗", label: "Any LLM", desc: "Multi-model routing — GPT, Claude, Gemini & more" },
       { href: "/os/consciousness", icon: "🧠", label: "Consciousness", desc: "4 modes of AI awareness" },
       { href: "/os/sovereign", icon: "🔐", label: "Sovereign Data", desc: "Encrypted memory — yours, always" },
-      { href: "/birth", icon: "🥚", label: "Birth Ceremony", desc: "Hatch your sovereign AI companion" },
+      { href: "/birth", icon: "🚀", label: "Get Started", desc: "Activate your sovereign AI agent" },
     ],
   },
   {
@@ -51,7 +51,7 @@ const NAV_PILLARS: NavPillar[] = [
     href: "/characters",
     accentColor: "#F472B6",
     items: [
-      { href: "/characters", icon: "🗂️", label: "All Characters", desc: "Browse every companion" },
+      { href: "/characters", icon: "🗂️", label: "All Characters", desc: "Browse every agent archetype" },
       { href: "/characters/aria", icon: "✨", label: "Aria", desc: "The Nurturer" },
       { href: "/characters/sage", icon: "📚", label: "Sage", desc: "The Wise Counsel" },
       { href: "/characters/marcus", icon: "⚔️", label: "Marcus", desc: "The Protector" },
@@ -94,20 +94,21 @@ const NAV_PILLARS: NavPillar[] = [
     href: "/gaming",
     accentColor: "#FB923C",
     items: [
-      { href: "/gaming", icon: "🎮", label: "Gaming OS", desc: "AI-powered gaming companion" },
+      { href: "/gaming", icon: "🎮", label: "Gaming OS", desc: "AI-powered gaming agent" },
       { href: "/gaming/strategy", icon: "♟️", label: "Genre Coaching", desc: "Master any game with AI coaching" },
       { href: "/gaming/post-game", icon: "📊", label: "Stats & Analytics", desc: "Deep post-session analysis" },
       { href: "/gaming/live-copilot", icon: "👥", label: "Community", desc: "Play with your AI, share with others" },
     ],
   },
   {
-    key: "mcp",
-    label: "MCP",
-    href: "https://csoai-org.github.io/mcp-servers/",
+    key: "marketplace",
+    label: "Marketplace",
+    href: "/marketplace",
     accentColor: "#A78BFA",
     items: [
-      { href: "https://csoai-org.github.io/mcp-servers/", icon: "🔌", label: "MCP Marketplace", desc: "255 open-source MCP servers for Claude & Cursor" },
+      { href: "/marketplace", icon: "🛒", label: "MCP Marketplace", desc: "Browse 255+ sovereign MCP servers" },
       { href: "/mcp-dashboard", icon: "🧩", label: "MCP Dashboard", desc: "Manage your MCP tool mesh" },
+      { href: "https://csoai-org.github.io/mcp-servers/", icon: "🔌", label: "MCP Registry", desc: "Open-source servers for Claude & Cursor" },
       { href: "/open-source", icon: "🛠️", label: "Open Source", desc: "Browse 255 repos on GitHub" },
       { href: "https://github.com/CSOAI-ORG", icon: "⭐", label: "GitHub", desc: "CSOAI-ORG — all repositories" },
     ],
@@ -555,7 +556,7 @@ export function MarketingNav({ activePage }: MarketingNavProps) {
               style={{ background: GOLD, color: DEEP }}
               onClick={() => setMobileOpen(false)}
             >
-              🥚 Hatch your companion
+              🚀 Activate your agent
             </Link>
             <p className="text-center text-xs mt-3" style={{ color: "rgba(255,255,255,0.35)" }}>
               Free forever · No credit card

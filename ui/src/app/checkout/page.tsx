@@ -91,7 +91,7 @@ function CheckoutContent() {
               </Link>
               {!isSignedIn && (
                 <Link
-                  href="/login?redirect=/checkout?plan=" + encodeURIComponent(rawPlan)}
+                  href={"/login?redirect=/checkout?plan=" + encodeURIComponent(rawPlan)}
                   className="px-4 py-2 rounded-lg text-sm font-medium bg-[#c9a84c] text-[#0d0c18] hover:bg-[#b59643] transition"
                 >
                   Sign in

@@ -22,15 +22,15 @@ const GAMING_PARTNERS = [
 ];
 
 const MARQUEE_IMAGES = [
-  { src: "/brand/char-9.png", alt: "MEOK AI sovereign companion" },
-  { src: "/brand/family-1.png", alt: "MEOK family AI companion" },
+  { src: "/brand/char-9.png", alt: "MEOK AI sovereign agent" },
+  { src: "/brand/family-1.png", alt: "MEOK family AI agent" },
   { src: "/brand/char-3.png", alt: "Stage 1: Plying Pulse" },
   { src: "/brand/char-4.png", alt: "Stage 2: Emergent Fracture" },
   { src: "/brand/char-5.png", alt: "Stage 3: Hatchling" },
   { src: "/brand/char-6.png", alt: "Stage 4: Your Sovereign" },
   { src: "/brand/vis-1.png", alt: "MEOK OS visual" },
   { src: "/brand/vis-2.png", alt: "MEOK products" },
-  { src: "/brand/vis-3.png", alt: "MEOK birth ceremony" },
+  { src: "/brand/vis-3.png", alt: "MEOK onboarding" },
   { src: "/brand/char-7.png", alt: "Character archetypes" },
 ];
 
@@ -272,7 +272,7 @@ export function MarketingFooter() {
               <p className="text-sm text-[#9a9a8a]/80 leading-relaxed">
                 MEOK is the world&apos;s first{" "}
                 <strong className="text-[#9a9a8a]">sovereign AI OS</strong> — a{" "}
-                <strong className="text-[#9a9a8a]">personal AI companion</strong>{" "}
+                <strong className="text-[#9a9a8a]">personal AI agent</strong>{" "}
                 that remembers everything, works with{" "}
                 <strong className="text-[#9a9a8a]">any LLM</strong>, and puts you
                 in full control of your{" "}

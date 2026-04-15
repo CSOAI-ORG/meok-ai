@@ -4,9 +4,9 @@ import HomePageClient from "./home-page-client";
 // ─── METADATA ──────────────────────────────────────────────────────────────
 
 export const metadata: Metadata = {
-  title: "MEOK.AI — Personal Sovereign AI That Remembers You | Free Forever",
+  title: "MEOK AI Labs — Sovereign AI OS & Agent Infrastructure",
   description:
-    "Every AI forgets you. MEOK remembers. The world's first sovereign AI OS — hatches from an egg, grows with you, works across every LLM. Your data, your rules. Free forever.",
+    "MEOK is the sovereign AI operating system: one encrypted memory layer, every LLM, built to work, guard, and play. Powered by CSOAI.",
   keywords: [
     "personal sovereign AI",
     "sovereign AI OS",
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "MEOK.AI — Personal Sovereign AI That Remembers You",
     description:
-      "Every AI forgets you. MEOK remembers. The world's first personal sovereign AI OS — hatches from an egg, grows with care, works with every LLM. Free forever.",
+      "MEOK is the sovereign AI operating system: one encrypted memory layer, every LLM, built to work, guard, and play. Powered by CSOAI.",
     type: "website",
     url: "https://meok.ai",
     siteName: "MEOK.AI",
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "MEOK.AI — Personal Sovereign AI That Remembers You",
     description:
-      "Every AI forgets you. MEOK remembers. Sovereign AI OS — hatches from an egg, grows with you, works with every LLM. Free forever.",
+      "MEOK is the sovereign AI operating system: one encrypted memory layer, every LLM, built to work, guard, and play. Powered by CSOAI.",
     site: "@meok_ai",
     images: ["https://meok.ai/api/og?title=MEOK.AI&desc=Your+sovereign+AI.+Built+to+remember.+Designed+to+care."],
   },
@@ -60,7 +60,7 @@ const organizationJsonLd = {
   foundingDate: "2026",
   founder: { "@type": "Person", name: "Nicholas Templeman" },
   description:
-    "MEOK AI LABS builds the world's first personal sovereign AI OS — an AI companion that remembers you, protects your data, and is governed by the Maternal Covenant care framework.",
+    "MEOK AI Labs builds the sovereign AI operating system and agent infrastructure that powers secure, memory-enabled AI across gaming, safety, and productivity.",
   address: { "@type": "PostalAddress", addressCountry: "GB" },
   contactPoint: [
     { "@type": "ContactPoint", email: "hello@meok.ai", contactType: "customer service" },
@@ -75,7 +75,7 @@ const websiteJsonLd = {
   name: "MEOK.AI",
   url: "https://meok.ai",
   description:
-    "Personal sovereign AI OS. Your AI hatches from an egg, remembers you permanently, works with every LLM, and is governed by the Maternal Covenant care ethics constitution.",
+    "Sovereign AI OS and agent infrastructure. One memory layer. Every LLM. Zero compromise. Built for work, Guardian safety, and gaming — powered by CSOAI.",
   publisher: { "@type": "Organization", name: "MEOK AI LABS" },
   potentialAction: {
     "@type": "SearchAction",
@@ -93,7 +93,7 @@ const faqJsonLd = {
       name: "What is MEOK AI?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "MEOK.AI is the world's first personal sovereign AI operating system. Your AI hatches from an egg, grows with care, works with every major LLM, and answers only to you.",
+        text: "MEOK.AI is the sovereign AI operating system. It unifies encrypted memory, multi-LLM routing, and a 255-node MCP marketplace into one secure platform — powered by CSOAI.",
       },
     },
     {

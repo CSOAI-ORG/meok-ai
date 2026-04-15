@@ -200,9 +200,8 @@ async function handleSubscriptionDeleted(subscription: Stripe.Subscription): Pro
 }
 
 async function handleInvoicePaid(invoice: Stripe.Invoice): Promise<void> {
-  const subscriptionId = typeof invoice.subscription === 'string'
-    ? invoice.subscription
-    : (invoice.subscription as string | null | undefined);
+  const sub = (invoice as any).subscription;
+  const subscriptionId = typeof sub === 'string' ? sub : (sub as string | null | undefined);
 
   console.log('[Stripe] Invoice paid', {
     invoiceId: invoice.id,

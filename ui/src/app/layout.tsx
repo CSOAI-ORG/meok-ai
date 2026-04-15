@@ -34,14 +34,14 @@ export const metadata: Metadata = {
     template: "%s | MEOK.AI",
   },
   description:
-    "Every AI forgets you. MEOK remembers. The world's first sovereign AI OS — hatches from an egg, grows with you, works across every LLM. Free forever.",
+    "Every AI forgets you. MEOK remembers. The world's first sovereign AI OS — one memory layer, every LLM, built to work, guard, and play. Free forever.",
   keywords: [
     "personal sovereign AI",
     "sovereign AI OS",
     "AI that remembers you",
     "AI with memory",
     "care-aligned AI",
-    "AI companion",
+    "sovereign AI agent",
     "personal AI operating system",
     "MEOK AI",
     "Maternal Covenant",
@@ -56,7 +56,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "MEOK.AI — Personal Sovereign AI That Remembers You",
     description:
-      "Every AI forgets you. MEOK remembers. The world's first personal sovereign AI OS — hatches from an egg, grows with care, works with every LLM. Free forever.",
+      "Every AI forgets you. MEOK remembers. The world's first personal sovereign AI OS — one memory layer, every LLM, built to work, guard, and play. Free forever.",
     type: "website",
     url: "https://meok.ai",
     siteName: "MEOK.AI",
@@ -74,7 +74,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "MEOK.AI — Personal Sovereign AI That Remembers You",
     description:
-      "Every AI forgets you. MEOK remembers. Sovereign AI OS — hatches, grows, works with every LLM. Free forever.",
+      "Every AI forgets you. MEOK remembers. Sovereign AI OS — one memory layer, every LLM, built to work, guard, and play. Free forever.",
     site: "@meok_ai",
     images: ["https://meok.ai/api/og?title=MEOK.AI&desc=Your+sovereign+AI.+Built+to+remember.+Designed+to+care."],
   },
@@ -98,7 +98,7 @@ const organizationSchema = {
   url: "https://meok.ai",
   logo: "https://meok.ai/logo.png",
   description:
-    "The world's first personal sovereign AI operating system. Your AI hatches from an egg, grows with care, works with every LLM, and answers only to you. Free forever.",
+    "The world's first personal sovereign AI operating system. One encrypted memory layer, every LLM, built to work, guard, and play. Your data, your rules. Free forever.",
   foundingDate: "2026",
   foundingLocation: {
     "@type": "Place",
@@ -132,7 +132,7 @@ const softwareSchema = {
       name: "Explorer",
       price: "0",
       priceCurrency: "GBP",
-      description: "Free tier: 50 messages/day, permanent Sovereign Memory, sovereign AI companion",
+      description: "Free tier: 50 messages/day, permanent Sovereign Memory, sovereign AI agent",
     },
     {
       "@type": "Offer",
@@ -148,7 +148,7 @@ const softwareSchema = {
       price: "29",
       priceCurrency: "GBP",
       billingIncrement: "month",
-      description: "Family OS for up to 5 companions, Guardian 24/7, all LLM models, shared family memory vault",
+      description: "Family OS for up to 5 members, Guardian 24/7, all LLM models, shared family memory vault",
     },
   ],
   featureList: [

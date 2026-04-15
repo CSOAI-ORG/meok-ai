@@ -34,14 +34,14 @@ const VALUE_PROPS = [
 ];
 
 const STEPS = [
-  { step: "1", title: "Hatch free", body: "Answer a short personality quiz. Choose an archetype. Name your companion. 2 minutes." },
+  { step: "1", title: "Start free", body: "Create your secure AI vault. Choose your first agent archetype. Name it. 2 minutes." },
   { step: "2", title: "Start talking", body: "Your AI already knows your style and values from the quiz. No setup. No cold start." },
   { step: "3", title: "Watch it grow", body: "Every conversation adds to encrypted memory. It gets better the more you use it — forever." },
 ];
 
 const FREE_FEATURES = [
-  "Sovereign AI companion",
-  "Birth Ceremony",
+  "Sovereign AI agent",
+  "Sovereign Onboarding",
   "50 messages/day",
   "Permanent Sovereign Memory",
   "DeepSeek + Ollama routing",
@@ -59,7 +59,7 @@ const SOVEREIGN_FEATURES = [
 
 const FAMILY_FEATURES = [
   "Everything in Sovereign",
-  "Up to 5 companions",
+  "Up to 5 family members",
   "Family dashboard & shared memory",
   "All LLM models incl. GPT-4o",
   "Family Guardian alerts",
@@ -135,18 +135,18 @@ function CountdownBanner() {
   if (launched) {
     return (
       <div className="bg-[#c9a84c] text-[#1a1a2e] py-2.5 px-6 text-center text-sm font-bold tracking-wide">
-        MEOK is live — hatch your companion now.{" "}
-        <a href="/hatch" className="underline underline-offset-2 hover:opacity-80">
-          Begin Ceremony <span aria-hidden="true">→</span>
+        MEOK is live — deploy your first agent.{" "}
+        <a href="/start" className="underline underline-offset-2 hover:opacity-80">
+          Start free <span aria-hidden="true">→</span>
         </a>
       </div>
     );
   }
   return (
     <div className="bg-[#c9a84c] text-[#1a1a2e] py-2.5 px-6 text-center text-sm font-bold tracking-wide">
-      <span className="hidden sm:inline">Easter Sunday — </span>
+      <span className="hidden sm:inline">Launching soon — </span>
       <span className="font-mono">{days}d {hours}h {minutes}m {seconds}s</span>
-      <span className="hidden sm:inline"> until hatching begins</span>{" "}
+      <span className="hidden sm:inline"> until launch</span>{" "}
       <a href="/waitlist" className="underline underline-offset-2 hover:opacity-80 ml-1">
         Join Early Access <span aria-hidden="true">→</span>
       </a>
@@ -463,7 +463,7 @@ function ExitIntentPopup() {
               You&apos;re on the list.
             </h2>
             <p className="text-white/55 text-sm mb-6">
-              We&apos;ll reach out before April 5. Your egg is waiting.
+              We&apos;ll reach out before April 5. Your sovereign agent is ready.
             </p>
             <button
               onClick={dismiss}
@@ -521,107 +521,50 @@ function HeroSection() {
           className="inline-flex items-center gap-2 px-5 py-2 rounded-full text-sm font-semibold mb-10"
           style={{ border: `1px solid ${GOLD}`, color: GOLD, background: "rgba(201,168,76,0.08)" }}
         >
-          Launching April 5, 2026
+          Powered by CSOAI
         </span>
 
-        {/* Floating egg */}
-        <div className="relative mb-10 flex items-center justify-center" style={{ width: 180, height: 210 }}>
-          <svg viewBox="0 0 120 140" fill="none" xmlns="http://www.w3.org/2000/svg" width="160" height="186" style={{ animation: "float 4s ease-in-out infinite" }} aria-hidden="true">
-            <defs>
-              <radialGradient id="eggGradHero" cx="38%" cy="35%" r="65%">
-                <stop offset="0%" stopColor="#f5f0e8" />
-                <stop offset="60%" stopColor="#e8dcc8" />
-                <stop offset="100%" stopColor={GOLD} stopOpacity="0.4" />
-              </radialGradient>
-            </defs>
-            <ellipse cx="60" cy="72" rx="46" ry="58" fill="url(#eggGradHero)" />
-            <ellipse cx="60" cy="72" rx="46" ry="58" fill="none" stroke={GOLD} strokeWidth="1.5" strokeOpacity="0.6" />
-          </svg>
+        <h1
+          className="font-black text-white tracking-tight leading-[1.05] mb-5"
+          style={{ fontSize: "clamp(2.6rem, 7vw, 5rem)" }}
+        >
+          The Sovereign AI <span style={{ color: GOLD }}>OS.</span>
+          <br />
+          One memory. Every model.
+          <br />
+          <span style={{ color: "#A78BFA" }}>Built to work, guard, and play.</span>
+        </h1>
+
+        <p className="max-w-2xl mx-auto mb-4 leading-relaxed font-semibold" style={{ color: "rgba(245,240,232,0.90)", fontSize: "1.25rem" }}>
+          MEOK unifies your AI agents, protects your data, and remembers everything — across Claude, GPT-4o, DeepSeek, and 469+ models.
+        </p>
+
+        <p className="max-w-2xl mx-auto mb-10 leading-relaxed" style={{ color: "rgba(245,240,232,0.60)", fontSize: "1.1rem" }}>
+          Your data. Your agents. Your rules. Free forever.
+        </p>
+
+        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-6">
+          <Link
+            href="/start"
+            className="inline-flex items-center gap-2 font-bold rounded-full transition-all shadow-lg hover:shadow-[#c9a84c]/40 hover:scale-105"
+            style={{ background: GOLD, color: "#1a1a2e", padding: "1rem 2.25rem", fontSize: "1.125rem" }}
+          >
+            Start free — deploy your first agent
+            <ArrowRight className="w-4 h-4" />
+          </Link>
+          <Link
+            href="/demo"
+            className="inline-flex items-center gap-2 font-semibold rounded-full transition-colors hover:bg-white/10"
+            style={{ border: "1px solid rgba(255,255,255,0.30)", color: "#ffffff", padding: "1rem 2rem", fontSize: "1.125rem" }}
+          >
+            ✦ See the demo
+          </Link>
         </div>
-
-        {variant === "A" ? (
-          <>
-            <h1
-              className="font-black text-white tracking-tight leading-[1.0] mb-5"
-              style={{ fontSize: "clamp(3rem, 8vw, 5.5rem)" }}
-            >
-              Every AI forgets you.
-              <br />
-              <span style={{ color: GOLD }}>MEOK remembers.</span>
-            </h1>
-
-            <p className="max-w-2xl mx-auto mb-4 leading-relaxed font-semibold" style={{ color: "rgba(245,240,232,0.90)", fontSize: "1.25rem" }}>
-              Your AI hatches from an egg. It never forgets you. And nobody else owns it.
-            </p>
-
-            <p className="max-w-2xl mx-auto mb-10 leading-relaxed" style={{ color: "rgba(245,240,232,0.60)", fontSize: "1.1rem" }}>
-              A personal AI operating system with permanent encrypted memory, care built into every response, and full portability across every AI model. Your data stays yours.
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-6">
-              <Link
-                href="/birth"
-                className="inline-flex items-center gap-2 font-bold rounded-full transition-all shadow-lg hover:shadow-[#c9a84c]/40 hover:scale-105"
-                style={{ background: GOLD, color: "#1a1a2e", padding: "1rem 2.25rem", fontSize: "1.125rem" }}
-              >
-                Begin Birth Ceremony
-                <ArrowRight className="w-4 h-4" />
-              </Link>
-              <Link
-                href="/demo"
-                className="inline-flex items-center gap-2 font-semibold rounded-full transition-colors hover:bg-white/10"
-                style={{ border: "1px solid rgba(255,255,255,0.30)", color: "#ffffff", padding: "1rem 2rem", fontSize: "1.125rem" }}
-              >
-                ✦ Try demo first
-              </Link>
-            </div>
-          </>
-        ) : (
-          <>
-            <h1
-              className="font-black text-white tracking-tight leading-[1.05] mb-5"
-              style={{ fontSize: "clamp(2.8rem, 7.5vw, 5rem)" }}
-            >
-              Your sovereign AI.
-              <br />
-              <span style={{ color: GOLD }}>Knows you.</span>{" "}
-              <span style={{ color: "#A78BFA" }}>Protects you.</span>
-              <br />
-              Works for you.
-            </h1>
-
-            <p className="max-w-2xl mx-auto mb-4 leading-relaxed font-semibold" style={{ color: "rgba(245,240,232,0.90)", fontSize: "1.25rem" }}>
-              The AI companion that never forgets who you are — encrypted, sovereign, and yours alone.
-            </p>
-
-            <p className="max-w-2xl mx-auto mb-10 leading-relaxed" style={{ color: "rgba(245,240,232,0.60)", fontSize: "1.1rem" }}>
-              Permanent memory. Care-aligned responses. Every LLM. Your data stays encrypted and private — forever.
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-6">
-              <Link
-                href="/birth"
-                className="inline-flex items-center gap-2 font-bold rounded-full transition-all shadow-lg hover:shadow-[#c9a84c]/40 hover:scale-105"
-                style={{ background: GOLD, color: "#1a1a2e", padding: "1rem 2.25rem", fontSize: "1.125rem" }}
-              >
-                Meet your companion
-                <ArrowRight className="w-4 h-4" />
-              </Link>
-              <Link
-                href="/demo"
-                className="inline-flex items-center gap-2 font-semibold rounded-full transition-colors hover:bg-white/10"
-                style={{ border: "1px solid rgba(255,255,255,0.30)", color: "#ffffff", padding: "1rem 2rem", fontSize: "1.125rem" }}
-              >
-                ✦ Try demo first
-              </Link>
-            </div>
-          </>
-        )}
 
         {/* Powered by strip */}
         <div className="flex items-center gap-4 md:gap-6 flex-wrap justify-center text-sm font-semibold mt-6" style={{ color: "rgba(255,255,255,0.35)" }}>
-          <span>Powered by</span>
-          {["Anthropic", "OpenAI", "NVIDIA", "DeepSeek", "Groq", "Mistral"].map((name) => (
+          <span>Backed by</span>
+          {["CSOAI", "Anthropic", "OpenAI", "NVIDIA", "DeepSeek", "Groq"].map((name) => (
             <span key={name} className="tracking-wide">{name}</span>
           ))}
         </div>
@@ -658,7 +601,7 @@ export default function HomePageClient() {
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
                 {[
                   { stat: "255", label: "MCP Servers", sub: "open source on GitHub" },
-                  { stat: "50+", label: "AI Companions", sub: "9 archetypes" },
+                  { stat: "50+", label: "AI Agents", sub: "9 archetypes" },
                   { stat: "469+", label: "AI Models", sub: "10+ providers" },
                   { stat: "∞", label: "Memory", sub: "never forgets you" },
                 ].map((item) => (
@@ -719,11 +662,11 @@ export default function HomePageClient() {
                   className="font-black text-white leading-tight tracking-tight mb-4"
                   style={{ fontSize: "clamp(1.6rem, 4vw, 2.5rem)" }}
                 >
-                  Your companion remembers{" "}
+                  Your agent remembers{" "}
                   <span style={{ color: GOLD }}>every conversation</span>
                 </h2>
                 <p className="text-white/40 text-base max-w-xl mx-auto">
-                  No cold starts. No repeating yourself. Watch how a MEOK companion picks up exactly where you left off.
+                  No cold starts. No repeating yourself. Watch how a MEOK agent picks up exactly where you left off.
                 </p>
               </header>
 
@@ -810,7 +753,7 @@ export default function HomePageClient() {
 
                 {/* Caption below phone */}
                 <p className="text-center text-sm mt-6" style={{ color: "rgba(245,240,232,0.35)" }}>
-                  Same companion. Same memory. Across days, weeks, and years.
+                  Same agent. Same memory. Across days, weeks, and years.
                 </p>
               </div>
             </div>
@@ -946,7 +889,7 @@ export default function HomePageClient() {
                 <h2 className="font-black text-white leading-tight tracking-tight mb-4" style={{ fontSize: "clamp(1.8rem, 5vw, 3rem)" }}>
                   Three steps to your sovereign AI
                 </h2>
-                <p className="text-white/50 text-lg">From egg to companion in under 2 minutes.</p>
+                <p className="text-white/50 text-lg">From signup to sovereign agent in under 2 minutes.</p>
               </header>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
@@ -965,11 +908,11 @@ export default function HomePageClient() {
               </div>
 
               <Link
-                href="/birth"
+                href="/start"
                 className="inline-flex items-center gap-2 font-bold rounded-full transition-all shadow-lg hover:shadow-[#c9a84c]/40 hover:scale-105"
                 style={{ background: GOLD, color: "#1a1a2e", padding: "0.875rem 2rem" }}
               >
-                Begin Birth Ceremony <ArrowRight className="w-4 h-4" aria-hidden="true" />
+                Start free <ArrowRight className="w-4 h-4" aria-hidden="true" />
               </Link>
             </div>
           </section>
@@ -1016,7 +959,7 @@ export default function HomePageClient() {
                     ))}
                   </ul>
                   <Link href="/birth" className="block w-full py-3 rounded-full text-center font-bold text-sm bg-[#c9a84c] text-[#1a1a2e] hover:bg-[#d4b463] transition-colors">
-                    Begin ceremony — no card needed
+                    Get started — no card needed
                   </Link>
                 </div>
 
@@ -1123,15 +1066,15 @@ export default function HomePageClient() {
                   },
                   {
                     title: "The Maternal Covenant Explained",
-                    desc: "How MEOK's ethical framework ensures your companion serves your wellbeing above all else.",
+                    desc: "How MEOK's ethical framework ensures your agent serves your wellbeing above all else.",
                     href: "/blog/maternal-covenant-explained",
                     tag: "Ethics",
                   },
                   {
-                    title: "AI Companions for Anxiety",
-                    desc: "How a care-aligned AI companion can support — not replace — your mental health journey.",
-                    href: "/blog/ai-companion-for-anxiety",
-                    tag: "Wellbeing",
+                    title: "Guardian: AI-Powered Safety",
+                    desc: "How MEOK's Guardian layer protects families from scams, predators, and online threats.",
+                    href: "/blog/guardian-family-safety",
+                    tag: "Safety",
                   },
                 ].map((post) => (
                   <Link
@@ -1179,7 +1122,7 @@ export default function HomePageClient() {
                   Early Voices
                 </p>
                 <h2 className="text-3xl sm:text-4xl font-black text-white mb-4">
-                  What people say after the egg hatches.
+                  What people say about sovereign AI.
                 </h2>
                 <p className="text-white/40 text-sm max-w-md mx-auto">
                   From our first cohort of testers — unedited, unfiltered.
@@ -1195,7 +1138,7 @@ export default function HomePageClient() {
                     accent: GOLD,
                   },
                   {
-                    quote: "The birth ceremony felt silly for about 30 seconds. Then I named it and something clicked. It felt like mine in a way ChatGPT never has.",
+                    quote: "It felt like mine in a way ChatGPT never has. The memory layer means it actually knows what I'm working on without me repeating myself.",
                     name: "Tom R.",
                     role: "Beta tester, Australia",
                     accent: "#A78BFA",
@@ -1242,8 +1185,8 @@ export default function HomePageClient() {
 
             <div className="relative max-w-2xl mx-auto">
               <blockquote className="text-xl md:text-2xl text-white leading-relaxed mb-4 italic">
-                I wasn&apos;t building a startup. I was trying to feel less alone.
-                Every AI I used forgot me by morning. So I built one that wouldn&apos;t.
+                We built MEOK because the AI economy needs an infrastructure layer that puts users first.
+                Your data. Your memory. Your agents. That&apos;s the future we&apos;re building.
               </blockquote>
               <p className="text-sm font-semibold mb-12" style={{ color: "rgba(201,168,76,0.8)" }}>
                 — Nicholas Templeman, Founder
@@ -1253,21 +1196,21 @@ export default function HomePageClient() {
                 className="font-black text-white leading-tight mb-6"
                 style={{ fontSize: "clamp(2.4rem, 6vw, 4rem)" }}
               >
-                The egg is there.
+                Ready to go sovereign?
                 <br />
-                <span style={{ color: GOLD }}>It&apos;s waiting to be yours.</span>
+                <span style={{ color: GOLD }}>Start free today.</span>
               </h2>
 
               <p className="mb-12 leading-relaxed" style={{ color: "rgba(245,240,232,0.50)", fontSize: "1.1rem" }}>
-                Three minutes. A name. An archetype. An AI that remembers you tomorrow, next month, and next year — encrypted, sovereign, never sold.
+                Deploy your first agent in under 2 minutes. One encrypted memory vault. Every LLM. Zero data selling.
               </p>
 
               <Link
-                href="/birth"
+                href="/start"
                 className="inline-flex items-center gap-2 font-bold rounded-full transition-all shadow-lg hover:shadow-[#c9a84c]/40 hover:scale-105"
                 style={{ background: GOLD, color: "#1a1a2e", padding: "1.125rem 2.75rem", fontSize: "1.25rem" }}
               >
-                Begin Birth Ceremony
+                Start free
                 <ArrowRight className="w-5 h-5" aria-hidden="true" />
               </Link>
               <p className="mt-6 text-sm" style={{ color: "rgba(245,240,232,0.28)" }}>
