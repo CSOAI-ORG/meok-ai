@@ -339,12 +339,17 @@ class FarmVisionHandler(http.server.SimpleHTTPRequestHandler):
     def _query_sov3(self, query):
         """Send query to SOV3 via MCP JSON-RPC."""
         try:
-            data = json.dumps({
-                "jsonrpc": "2.0",
-                "id": "farm-vision",
-                "method": "tools/call",
-                "params": {"name": "ask_sovereign", "arguments": {"question": query}},
-            }).encode()
+            data = json.dumps(
+                {
+                    "jsonrpc": "2.0",
+                    "id": "farm-vision",
+                    "method": "tools/call",
+                    "params": {
+                        "name": "ask_sovereign",
+                        "arguments": {"question": query},
+                    },
+                }
+            ).encode()
 
             req = urllib.request.Request(
                 f"{SOV3_URL}/mcp",
@@ -436,7 +441,7 @@ class FarmVisionHandler(http.server.SimpleHTTPRequestHandler):
 
 
 if __name__ == "__main__":
-    port = 8889
+    port = int(os.environ.get("PORT", 8888))
     http.server.HTTPServer.allow_reuse_address = True
     server = http.server.HTTPServer(("0.0.0.0", port), FarmVisionHandler)
     print(f"🌾 MEOK Farm Vision API Server running on port {port}")

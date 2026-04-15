@@ -5,7 +5,7 @@ import { createCheckoutSession, Tier } from '@/lib/stripe';
 const _isLocalMode = process.env.MEOK_LOCAL_MODE === 'true';
 
 // Accepted paid tiers
-const PAID_TIERS = new Set<string>(['sovereign', 'family']);
+const PAID_TIERS = new Set<string>(['sovereign', 'family', 'byok']);
 
 interface CheckoutBody {
   tier: 'sovereign' | 'family';

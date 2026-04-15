@@ -1,11 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import Link from "next/link";
 import {
   CreditCard,
   Download,
   CheckCircle,
-  Clock,
   ChevronRight,
   X,
   Zap,
@@ -14,6 +14,8 @@ import {
   MessageSquare,
   Brain,
   Plug,
+  ExternalLink,
+  Loader2,
 } from "lucide-react";
 
 // ── Brand tokens ─────────────────────────────────────────────────────────────
@@ -23,29 +25,29 @@ const BORDER  = "rgba(255,255,255,0.07)";
 const GOLD    = "#c9a84c";
 
 // ── Types ─────────────────────────────────────────────────────────────────────
-type PlanId = "explorer" | "sovereign" | "sovereign_pro" | "enterprise";
-type InvoiceStatus = "Paid" | "Pending";
+type PlanId = "explorer" | "sovereign" | "sovereign_pro" | "byok" | "enterprise";
 
-interface Plan {
+interface BillingStatus {
+  plan: PlanId;
+  plan_name: string;
+  status: "active" | "pending" | "canceled" | "past_due";
+  next_billing: string | null;
+  stripe_customer_id: string | null;
+  stripe_subscription_id: string | null;
+  upgrade_url: string | null;
+}
+
+interface PlanInfo {
   id: PlanId;
   name: string;
   price: number;
-  annualPrice: number | null; // annual total; null = free or custom
+  annualPrice: number | null;
   icon: React.ReactNode;
   features: string[];
   limits: { messages: number; memory: number; api: number };
 }
 
-interface Invoice {
-  id: string;
-  date: string;
-  amount: string;
-  plan: string;
-  status: InvoiceStatus;
-}
-
-// ── Demo data ─────────────────────────────────────────────────────────────────
-const PLANS: Plan[] = [
+const PLANS: PlanInfo[] = [
   {
     id: "explorer",
     name: "Explorer",
@@ -74,6 +76,15 @@ const PLANS: Plan[] = [
     limits: { messages: 999999, memory: 999999, api: 999999 },
   },
   {
+    id: "byok",
+    name: "BYOK",
+    price: 5,
+    annualPrice: 50,
+    icon: <Plug className="w-5 h-5" />,
+    features: ["Use your own API keys", "Unlimited inference", "1 companion", "Full data sovereignty"],
+    limits: { messages: 999999, memory: 5000, api: 999999 },
+  },
+  {
     id: "enterprise",
     name: "Enterprise",
     price: 0,
@@ -82,23 +93,6 @@ const PLANS: Plan[] = [
     features: ["Custom pricing", "Dedicated support", "SLA", "Custom integrations"],
     limits: { messages: 999999, memory: 999999, api: 999999 },
   },
-];
-
-const CURRENT_PLAN_ID: PlanId = "explorer";
-
-const USAGE = {
-  messages: { used: 45,  limit: 100  },
-  memory:   { used: 89,  limit: 500  },
-  api:      { used: 320, limit: 1000 },
-};
-
-const INVOICES: Invoice[] = [
-  { id: "INV-2026-006", date: "1 Mar 2026",  amount: "£0.00",  plan: "Explorer",      status: "Paid"    },
-  { id: "INV-2026-005", date: "1 Feb 2026",  amount: "£0.00",  plan: "Explorer",      status: "Paid"    },
-  { id: "INV-2026-004", date: "1 Jan 2026",  amount: "£9.00",  plan: "Sovereign",     status: "Paid"    },
-  { id: "INV-2025-012", date: "1 Dec 2025",  amount: "£9.00",  plan: "Sovereign",     status: "Paid"    },
-  { id: "INV-2025-011", date: "1 Nov 2025",  amount: "£19.00", plan: "Sovereign Pro", status: "Paid"    },
-  { id: "INV-2025-010", date: "1 Oct 2025",  amount: "£19.00", plan: "Sovereign Pro", status: "Pending" },
 ];
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
@@ -116,6 +110,12 @@ function usageColor(p: number) {
   return "#22c55e";
 }
 
+function formatDate(iso: string | null) {
+  if (!iso) return "—";
+  const d = new Date(iso);
+  return d.toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" });
+}
+
 // ── Sub-components ────────────────────────────────────────────────────────────
 function UsageBar({ label, used, limit, icon }: { label: string; used: number; limit: number; icon: React.ReactNode }) {
   const p = pct(used, limit);
@@ -131,47 +131,27 @@ function UsageBar({ label, used, limit, icon }: { label: string; used: number; l
         </span>
       </div>
       <div className="w-full h-2 rounded-full" style={{ background: "rgba(255,255,255,0.08)" }}>
-        <div
-          className="h-full rounded-full transition-all duration-500"
-          style={{ width: `${p}%`, background: usageColor(p) }}
-        />
+        <div className="h-full rounded-full transition-all duration-500" style={{ width: `${p}%`, background: usageColor(p) }} />
       </div>
       <p className="text-xs mt-1" style={{ color: usageColor(p) }}>{p}% used</p>
     </div>
   );
 }
 
-function PlanCard({
-  plan,
-  isCurrent,
-  isSelected,
-  onSelect,
-}: {
-  plan: Plan;
-  isCurrent: boolean;
-  isSelected: boolean;
-  onSelect: () => void;
-}) {
+function PlanCard({ plan, isCurrent, isSelected, onSelect }: { plan: PlanInfo; isCurrent: boolean; isSelected: boolean; onSelect: () => void }) {
   const active = isCurrent || isSelected;
   return (
     <button
       onClick={onSelect}
       className="w-full text-left p-4 rounded-xl transition-all duration-200 hover:scale-[1.01]"
-      style={{
-        background: active ? `${GOLD}12` : SURFACE,
-        border: `1px solid ${active ? `${GOLD}50` : BORDER}`,
-        outline: "none",
-      }}
+      style={{ background: active ? `${GOLD}12` : SURFACE, border: `1px solid ${active ? `${GOLD}50` : BORDER}`, outline: "none" }}
     >
       <div className="flex items-center justify-between mb-3">
         <div className="flex items-center gap-2">
           <span style={{ color: GOLD }}>{plan.icon}</span>
           <span className="font-semibold text-white">{plan.name}</span>
           {isCurrent && (
-            <span
-              className="text-xs px-2 py-0.5 rounded-full font-medium"
-              style={{ background: `${GOLD}20`, color: GOLD }}
-            >
+            <span className="text-xs px-2 py-0.5 rounded-full font-medium" style={{ background: `${GOLD}20`, color: GOLD }}>
               Current
             </span>
           )}
@@ -180,12 +160,8 @@ function PlanCard({
           <span className="text-xl font-bold text-white">
             {plan.id === "enterprise" ? "Custom" : plan.price === 0 ? "Free" : `£${plan.price}`}
           </span>
-          {plan.price > 0 && plan.id !== "enterprise" && (
-            <span className="text-xs text-white/40">/mo</span>
-          )}
-          {plan.annualPrice && (
-            <p className="text-[10px] text-white/30 mt-0.5">£{plan.annualPrice}/yr</p>
-          )}
+          {plan.price > 0 && plan.id !== "enterprise" && <span className="text-xs text-white/40">/mo</span>}
+          {plan.annualPrice && <p className="text-[10px] text-white/30 mt-0.5">£{plan.annualPrice}/yr</p>}
         </div>
       </div>
       <ul className="space-y-1">
@@ -202,11 +178,31 @@ function PlanCard({
 
 // ── Main page ─────────────────────────────────────────────────────────────────
 export default function BillingPage() {
+  const [billing, setBilling] = useState<BillingStatus | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
   const [showModal, setShowModal]       = useState(false);
   const [selectedPlan, setSelectedPlan] = useState<PlanId | null>(null);
   const [showConfirm, setShowConfirm]   = useState(false);
+  const [portalLoading, setPortalLoading] = useState(false);
+  const [checkoutLoading, setCheckoutLoading] = useState(false);
 
-  const currentPlan = PLANS.find((p) => p.id === CURRENT_PLAN_ID)!;
+  useEffect(() => {
+    fetch("/api/billing/status")
+      .then(async (res) => {
+        if (!res.ok) throw new Error("Failed to load billing status");
+        return res.json();
+      })
+      .then((data: BillingStatus) => {
+        setBilling(data);
+      })
+      .catch((err) => setError(err instanceof Error ? err.message : String(err)))
+      .finally(() => setLoading(false));
+  }, []);
+
+  const currentPlanId: PlanId = billing?.plan ?? "explorer";
+  const currentPlan = PLANS.find((p) => p.id === currentPlanId) ?? PLANS[0];
   const targetPlan  = PLANS.find((p) => p.id === selectedPlan);
 
   function openModal() {
@@ -216,13 +212,36 @@ export default function BillingPage() {
   }
 
   function handleSelectPlan(id: PlanId) {
-    if (id === CURRENT_PLAN_ID) return;
+    if (id === currentPlanId) return;
     setSelectedPlan(id);
     setShowConfirm(false);
   }
 
-  function handleConfirmPlan() {
-    setShowConfirm(true);
+  async function handleConfirmPlan() {
+    if (!selectedPlan || selectedPlan === currentPlanId) return;
+
+    // Enterprise goes to contact
+    if (selectedPlan === "enterprise") {
+      window.location.href = "/contact";
+      return;
+    }
+
+    // Explorer is free — no checkout needed
+    if (selectedPlan === "explorer") {
+      setShowModal(false);
+      return;
+    }
+
+    setCheckoutLoading(true);
+    const planToCheckout: Record<Exclude<PlanId, "explorer" | "enterprise">, string> = {
+      sovereign: "sovereign_monthly",
+      sovereign_pro: "sovereign_pro_monthly",
+      byok: "byok_monthly",
+    };
+
+    // For now we default to monthly; could add interval selector in modal later
+    const checkoutPlan = planToCheckout[selectedPlan as Exclude<PlanId, "explorer" | "enterprise">];
+    window.location.href = `/checkout?plan=${checkoutPlan}`;
   }
 
   function handleDone() {
@@ -231,21 +250,54 @@ export default function BillingPage() {
     setShowConfirm(false);
   }
 
-  // Prorated cost preview (demo: assume 15 days left in month)
-  function proratedToday(price: number) {
-    const daily = price / 30;
-    return (daily * 15).toFixed(2);
+  async function openPortal() {
+    setPortalLoading(true);
+    try {
+      const res = await fetch("/api/billing/portal", { method: "POST" });
+      const data = await res.json();
+      if (data.url) {
+        window.location.href = data.url;
+      } else {
+        throw new Error(data.error || "Could not open billing portal");
+      }
+    } catch (err) {
+      alert(err instanceof Error ? err.message : "Something went wrong");
+      setPortalLoading(false);
+    }
+  }
+
+  // Estimated usage until we have a dedicated usage endpoint
+  const usage = {
+    messages: { used: 0, limit: currentPlan.limits.messages },
+  };
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center" style={{ background: DEEP }}>
+        <Loader2 className="w-8 h-8 text-[#c9a84c] animate-spin" />
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="min-h-screen p-8" style={{ background: DEEP }}>
+        <div className="max-w-xl mx-auto rounded-xl border border-red-500/30 bg-red-500/10 p-6 text-red-200">
+          <p className="font-semibold mb-1">Unable to load billing</p>
+          <p className="text-sm opacity-80">{error}</p>
+          <button onClick={() => window.location.reload()} className="mt-4 px-4 py-2 rounded-lg bg-red-500/20 hover:bg-red-500/30 text-sm">
+            Retry
+          </button>
+        </div>
+      </div>
+    );
   }
 
   return (
     <div className="min-h-screen p-4 md:p-8" style={{ background: DEEP }}>
-
       {/* ── Header ── */}
       <div className="flex items-center gap-3 mb-8">
-        <div
-          className="w-10 h-10 rounded-lg flex items-center justify-center"
-          style={{ background: `${GOLD}18` }}
-        >
+        <div className="w-10 h-10 rounded-lg flex items-center justify-center" style={{ background: `${GOLD}18` }}>
           <CreditCard className="w-5 h-5" style={{ color: GOLD }} />
         </div>
         <div>
@@ -255,15 +307,10 @@ export default function BillingPage() {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-
         {/* ── Left column: plan + usage ── */}
         <div className="lg:col-span-2 space-y-6">
-
-          {/* 84.1 — Current plan card */}
-          <div
-            className="p-6 rounded-xl"
-            style={{ background: SURFACE, border: `1px solid ${BORDER}` }}
-          >
+          {/* Current plan card */}
+          <div className="p-6 rounded-xl" style={{ background: SURFACE, border: `1px solid ${BORDER}` }}>
             <div className="flex items-start justify-between mb-6">
               <div>
                 <p className="text-xs text-white/40 uppercase tracking-widest mb-1">Current Plan</p>
@@ -272,20 +319,34 @@ export default function BillingPage() {
                   <h2 className="text-2xl font-bold text-white">{currentPlan.name}</h2>
                 </div>
                 <p className="text-sm text-white/40 mt-1">
-                  Next billing date: <span className="text-white/70">1 Apr 2026</span>
+                  Next billing date: <span className="text-white/70">{formatDate(billing?.next_billing ?? null)}</span>
                 </p>
+                {billing?.status && billing.status !== "active" && (
+                  <p className="text-xs mt-1 capitalize" style={{ color: billing.status === "past_due" ? "#ef4444" : GOLD }}>
+                    Status: {billing.status.replace("_", " ")}
+                  </p>
+                )}
               </div>
-              <button
-                onClick={openModal}
-                className="flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-semibold transition-all hover:scale-[1.02]"
-                style={{
-                  background: `linear-gradient(135deg, ${GOLD}, ${GOLD}cc)`,
-                  color: DEEP,
-                }}
-              >
-                Change plan
-                <ChevronRight className="w-4 h-4" />
-              </button>
+              <div className="flex flex-col gap-2">
+                <button
+                  onClick={openModal}
+                  className="flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-semibold transition-all hover:scale-[1.02]"
+                  style={{ background: `linear-gradient(135deg, ${GOLD}, ${GOLD}cc)`, color: DEEP }}
+                >
+                  Change plan
+                  <ChevronRight className="w-4 h-4" />
+                </button>
+                {billing?.stripe_customer_id && (
+                  <button
+                    onClick={openPortal}
+                    disabled={portalLoading}
+                    className="flex items-center justify-center gap-1.5 px-4 py-2 rounded-lg text-xs font-medium transition-all hover:bg-white/10 border border-white/10 text-white/80"
+                  >
+                    {portalLoading ? <Loader2 className="w-3 h-3 animate-spin" /> : <ExternalLink className="w-3 h-3" />}
+                    Manage payments
+                  </button>
+                )}
+              </div>
             </div>
 
             {/* Usage meters */}
@@ -293,274 +354,151 @@ export default function BillingPage() {
               <p className="text-xs text-white/40 uppercase tracking-widest">Usage this cycle</p>
               <UsageBar
                 label="Messages"
-                used={USAGE.messages.used}
-                limit={USAGE.messages.limit}
+                used={usage.messages.used}
+                limit={usage.messages.limit}
                 icon={<MessageSquare className="w-4 h-4" />}
               />
-              <UsageBar
-                label="Memory entries"
-                used={USAGE.memory.used}
-                limit={USAGE.memory.limit}
-                icon={<Brain className="w-4 h-4" />}
-              />
-              <UsageBar
-                label="API calls"
-                used={USAGE.api.used}
-                limit={USAGE.api.limit}
-                icon={<Plug className="w-4 h-4" />}
-              />
             </div>
           </div>
 
-          {/* 84.4 — Invoice history */}
-          <div
-            className="p-6 rounded-xl"
-            style={{ background: SURFACE, border: `1px solid ${BORDER}` }}
-          >
-            <h3 className="text-base font-semibold text-white mb-4">Invoice History</h3>
-            <div className="overflow-x-auto">
-              <table className="w-full text-sm">
-                <thead>
-                  <tr className="text-left">
-                    <th className="pb-3 text-xs text-white/30 font-medium uppercase tracking-wide">Date</th>
-                    <th className="pb-3 text-xs text-white/30 font-medium uppercase tracking-wide">Invoice</th>
-                    <th className="pb-3 text-xs text-white/30 font-medium uppercase tracking-wide">Plan</th>
-                    <th className="pb-3 text-xs text-white/30 font-medium uppercase tracking-wide">Amount</th>
-                    <th className="pb-3 text-xs text-white/30 font-medium uppercase tracking-wide">Status</th>
-                    <th className="pb-3 text-xs text-white/30 font-medium uppercase tracking-wide"></th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y" style={{ borderColor: BORDER }}>
-                  {INVOICES.map((inv) => (
-                    <tr key={inv.id} className="group">
-                      <td className="py-3 text-white/60">{inv.date}</td>
-                      <td className="py-3 text-white/50 font-mono text-xs">{inv.id}</td>
-                      <td className="py-3 text-white/70">{inv.plan}</td>
-                      <td className="py-3 text-white font-medium">{inv.amount}</td>
-                      <td className="py-3">
-                        <span
-                          className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium"
-                          style={{
-                            background: inv.status === "Paid"
-                              ? "rgba(34,197,94,0.1)"
-                              : `${GOLD}15`,
-                            color: inv.status === "Paid" ? "#22c55e" : GOLD,
-                          }}
-                        >
-                          {inv.status === "Paid"
-                            ? <CheckCircle className="w-3 h-3" />
-                            : <Clock className="w-3 h-3" />}
-                          {inv.status}
-                        </span>
-                      </td>
-                      <td className="py-3">
-                        <button
-                          className="flex items-center gap-1 px-2.5 py-1.5 rounded-md text-xs transition-all opacity-0 group-hover:opacity-100 hover:scale-105"
-                          style={{
-                            background: `${GOLD}10`,
-                            color: GOLD,
-                            border: `1px solid ${GOLD}30`,
-                          }}
-                        >
-                          <Download className="w-3 h-3" />
-                          PDF
-                        </button>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-
-        {/* ── Right column: payment method ── */}
-        <div className="space-y-4">
-
-          {/* 84.3 — Payment method */}
-          <div
-            className="p-5 rounded-xl"
-            style={{ background: SURFACE, border: `1px solid ${BORDER}` }}
-          >
-            <h3 className="text-base font-semibold text-white mb-4">Payment Method</h3>
-            <div
-              className="p-4 rounded-lg mb-4"
-              style={{ background: `${GOLD}08`, border: `1px solid ${GOLD}20` }}
-            >
-              {/* Card visual */}
-              <div className="flex items-center justify-between mb-4">
-                <div
-                  className="w-10 h-7 rounded flex items-center justify-center text-xs font-bold"
-                  style={{ background: "#1a1f71", color: "#fff" }}
-                >
-                  VISA
-                </div>
-                <div
-                  className="w-8 h-5 rounded-full"
-                  style={{ background: "rgba(255,255,255,0.1)", border: `1px solid ${BORDER}` }}
-                />
-              </div>
-              <p className="text-white font-mono tracking-widest text-sm mb-1">
-                •••• •••• •••• 4242
-              </p>
-              <p className="text-xs text-white/40">Expires 09 / 27</p>
-            </div>
-            <button
-              className="w-full py-2.5 rounded-lg text-sm font-semibold transition-all hover:scale-[1.02]"
-              style={{
-                background: `${GOLD}15`,
-                color: GOLD,
-                border: `1px solid ${GOLD}30`,
-              }}
-            >
-              Update card
-            </button>
-          </div>
-
-          {/* Quick plan summary */}
-          <div
-            className="p-5 rounded-xl"
-            style={{ background: SURFACE, border: `1px solid ${BORDER}` }}
-          >
-            <p className="text-xs text-white/40 uppercase tracking-widest mb-3">Plan summary</p>
-            <div className="space-y-2">
-              {[
-                { label: "Plan", value: currentPlan.name },
-                { label: "Billing", value: currentPlan.id === "enterprise" ? "Custom" : currentPlan.price === 0 ? "Free" : `£${currentPlan.price}/mo` },
-                { label: "Renews", value: "1 Apr 2026" },
-                { label: "Seats", value: "1" },
-              ].map(({ label, value }) => (
-                <div key={label} className="flex items-center justify-between text-sm">
-                  <span className="text-white/40">{label}</span>
-                  <span className="text-white/80 font-medium">{value}</span>
+          {/* Plan comparison */}
+          <div className="p-6 rounded-xl" style={{ background: SURFACE, border: `1px solid ${BORDER}` }}>
+            <h3 className="text-sm font-semibold text-white mb-4">Included in your plan</h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {currentPlan.features.map((f) => (
+                <div key={f} className="flex items-center gap-2 text-sm text-white/70">
+                  <CheckCircle className="w-4 h-4 flex-shrink-0" style={{ color: GOLD }} />
+                  {f}
                 </div>
               ))}
             </div>
           </div>
         </div>
+
+        {/* ── Right column: invoices + help ── */}
+        <div className="space-y-6">
+          {/* Invoices */}
+          <div className="p-5 rounded-xl" style={{ background: SURFACE, border: `1px solid ${BORDER}` }}>
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="text-sm font-semibold text-white">Invoices</h3>
+              {billing?.stripe_customer_id ? (
+                <button onClick={openPortal} className="text-xs font-medium hover:underline" style={{ color: GOLD }}>
+                  View all
+                </button>
+              ) : (
+                <span className="text-xs text-white/30">No invoices yet</span>
+              )}
+            </div>
+            {billing?.stripe_customer_id ? (
+              <div className="text-sm text-white/60">
+                <p className="mb-3">Your invoices are available in the Stripe Customer Portal.</p>
+                <button
+                  onClick={openPortal}
+                  disabled={portalLoading}
+                  className="inline-flex items-center gap-2 px-3 py-2 rounded-lg text-xs font-medium bg-white/5 hover:bg-white/10 border border-white/10 transition"
+                >
+                  <Download className="w-3.5 h-3.5" />
+                  Open portal
+                </button>
+              </div>
+            ) : (
+              <div className="text-sm text-white/40">You have no paid invoices yet.</div>
+            )}
+          </div>
+
+          {/* Help */}
+          <div className="p-5 rounded-xl" style={{ background: SURFACE, border: `1px solid ${BORDER}` }}>
+            <h3 className="text-sm font-semibold text-white mb-3">Need help?</h3>
+            <ul className="space-y-2 text-sm">
+              <li>
+                <Link href="/faq" className="text-white/60 hover:text-white transition">Billing FAQ</Link>
+              </li>
+              <li>
+                <Link href="/contact" className="text-white/60 hover:text-white transition">Contact support</Link>
+              </li>
+              <li>
+                <button onClick={openPortal} className="text-white/60 hover:text-white transition text-left">Update payment method</button>
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
 
-      {/* ── 84.2 — Change plan modal ── */}
+      {/* ── Change plan modal ── */}
       {showModal && (
-        <div
-          className="fixed inset-0 z-50 flex items-center justify-center p-4"
-          style={{ background: "rgba(0,0,0,0.75)", backdropFilter: "blur(4px)" }}
-          onClick={(e) => { if (e.target === e.currentTarget) handleDone(); }}
-        >
-          <div
-            className="w-full max-w-2xl rounded-2xl p-6 relative"
-            style={{ background: "#0f0e1c", border: `1px solid ${BORDER}` }}
-          >
-            {/* Modal header */}
-            <div className="flex items-center justify-between mb-6">
-              <div>
-                <h2 className="text-lg font-bold text-white">Change Plan</h2>
-                <p className="text-sm text-white/40">
-                  Currently on <span style={{ color: GOLD }}>{currentPlan.name}</span>
-                </p>
-              </div>
-              <button
-                onClick={handleDone}
-                className="p-2 rounded-lg text-white/40 hover:text-white/70 transition-colors"
-                style={{ background: "rgba(255,255,255,0.05)" }}
-              >
-                <X className="w-4 h-4" />
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm">
+          <div className="w-full max-w-lg rounded-2xl p-6" style={{ background: SURFACE, border: `1px solid ${BORDER}` }}>
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="text-lg font-semibold text-white">Change plan</h3>
+              <button onClick={handleDone} className="p-1 rounded-lg hover:bg-white/10 text-white/60">
+                <X className="w-5 h-5" />
               </button>
             </div>
 
             {!showConfirm ? (
               <>
-                {/* Plan cards */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 mb-6">
-                  {PLANS.map((plan) => (
+                <div className="space-y-3 mb-5">
+                  {PLANS.filter((p) => p.id !== "enterprise").map((plan) => (
                     <PlanCard
                       key={plan.id}
                       plan={plan}
-                      isCurrent={plan.id === CURRENT_PLAN_ID}
-                      isSelected={plan.id === selectedPlan}
+                      isCurrent={plan.id === currentPlanId}
+                      isSelected={selectedPlan === plan.id}
                       onSelect={() => handleSelectPlan(plan.id)}
                     />
                   ))}
                 </div>
-
-                {/* Proceed button */}
-                <button
-                  onClick={handleConfirmPlan}
-                  disabled={!selectedPlan}
-                  className="w-full py-3 rounded-lg text-sm font-semibold transition-all hover:scale-[1.01] disabled:opacity-30 disabled:hover:scale-100"
-                  style={{
-                    background: `linear-gradient(135deg, ${GOLD}, ${GOLD}cc)`,
-                    color: DEEP,
-                  }}
-                >
-                  {selectedPlan
-                    ? `Continue with ${PLANS.find((p) => p.id === selectedPlan)?.name}`
-                    : "Select a plan to continue"}
-                </button>
+                <div className="pt-4 border-t" style={{ borderColor: BORDER }}>
+                  <p className="text-xs text-white/40 mb-3">
+                    Need a custom solution? <Link href="/contact" className="underline hover:text-white">Contact sales</Link>
+                  </p>
+                  <button
+                    onClick={handleConfirmPlan}
+                    disabled={!selectedPlan || selectedPlan === currentPlanId || checkoutLoading}
+                    className="w-full py-2.5 rounded-lg text-sm font-semibold transition-all disabled:opacity-40 disabled:cursor-not-allowed"
+                    style={{ background: `linear-gradient(135deg, ${GOLD}, ${GOLD}cc)`, color: DEEP }}
+                  >
+                    {checkoutLoading ? (
+                      <span className="flex items-center justify-center gap-2">
+                        <Loader2 className="w-4 h-4 animate-spin" /> Redirecting…
+                      </span>
+                    ) : selectedPlan === currentPlanId ? (
+                      "Current plan"
+                    ) : selectedPlan ? (
+                      `Continue with ${PLANS.find((p) => p.id === selectedPlan)?.name}`
+                    ) : (
+                      "Select a plan"
+                    )}
+                  </button>
+                </div>
               </>
             ) : (
-              /* Confirm upgrade */
-              <div className="space-y-5">
-                <div
-                  className="p-5 rounded-xl"
-                  style={{ background: `${GOLD}08`, border: `1px solid ${GOLD}20` }}
-                >
-                  <div className="flex items-center gap-3 mb-4">
-                    <span style={{ color: GOLD }}>{targetPlan?.icon}</span>
-                    <div>
-                      <p className="font-semibold text-white">{targetPlan?.name} Plan</p>
-                      <p className="text-sm text-white/50">
-                        {targetPlan!.id === "enterprise"
-                          ? "Custom pricing — contact us"
-                          : targetPlan!.price === 0
-                          ? "Free — no charge"
-                          : `£${targetPlan?.price} / month`}
-                      </p>
-                    </div>
-                  </div>
-
-                  {targetPlan!.price > 0 && (
-                    <div
-                      className="p-3 rounded-lg space-y-2 text-sm"
-                      style={{ background: "rgba(255,255,255,0.04)" }}
-                    >
-                      <div className="flex justify-between text-white/60">
-                        <span>Prorated charge today (15 days remaining)</span>
-                        <span className="text-white font-medium">
-                          £{proratedToday(targetPlan!.price)}
-                        </span>
-                      </div>
-                      <div className="flex justify-between text-white/60">
-                        <span>Then from 1 May 2026</span>
-                        <span className="text-white font-medium">
-                          £{targetPlan!.price}.00 / month
-                        </span>
-                      </div>
-                    </div>
-                  )}
-                </div>
-
-                <p className="text-xs text-white/30 text-center">
-                  You can cancel or change your plan at any time. No hidden fees.
+              <div className="space-y-4">
+                <p className="text-sm text-white/80">
+                  You are about to change to <strong className="text-white">{targetPlan?.name}</strong>.
                 </p>
-
+                <div className="p-4 rounded-xl" style={{ background: DEEP, border: `1px solid ${BORDER}` }}>
+                  <p className="text-xs text-white/40 uppercase tracking-widest mb-2">Cost today</p>
+                  <p className="text-2xl font-bold text-white">
+                    {targetPlan?.price === 0 ? "Free" : `£${proratedToday(targetPlan?.price ?? 0)}`}
+                  </p>
+                  <p className="text-xs text-white/40 mt-1">
+                    Prorated for the rest of this billing cycle. Full price starts next cycle.
+                  </p>
+                </div>
                 <div className="flex gap-3">
                   <button
                     onClick={() => setShowConfirm(false)}
-                    className="flex-1 py-2.5 rounded-lg text-sm font-medium text-white/60 hover:text-white/80 transition-colors"
-                    style={{ background: "rgba(255,255,255,0.05)", border: `1px solid ${BORDER}` }}
+                    className="flex-1 py-2.5 rounded-lg text-sm font-medium text-white/80 hover:bg-white/5 border border-white/10"
                   >
                     Back
                   </button>
                   <button
-                    onClick={handleDone}
-                    className="flex-1 py-2.5 rounded-lg text-sm font-semibold transition-all hover:scale-[1.01]"
-                    style={{
-                      background: `linear-gradient(135deg, ${GOLD}, ${GOLD}cc)`,
-                      color: DEEP,
-                    }}
+                    onClick={handleConfirmPlan}
+                    className="flex-1 py-2.5 rounded-lg text-sm font-semibold transition-all"
+                    style={{ background: `linear-gradient(135deg, ${GOLD}, ${GOLD}cc)`, color: DEEP }}
                   >
-                    Confirm {targetPlan!.price === 0 ? "downgrade" : "upgrade"}
+                    Confirm change
                   </button>
                 </div>
               </div>
@@ -570,4 +508,9 @@ export default function BillingPage() {
       )}
     </div>
   );
+}
+
+function proratedToday(price: number) {
+  const daily = price / 30;
+  return (daily * 15).toFixed(2);
 }

@@ -8,6 +8,23 @@ export const dynamic = 'force-dynamic';
 
 const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET!;
 
+// Simple in-memory idempotency guard (per-process). In a multi-instance deployment,
+// switch to Redis or a database table.
+const processedEvents = new Set<string>();
+const MAX_PROCESSED = 5000;
+
+function markProcessed(eventId: string) {
+  if (processedEvents.size >= MAX_PROCESSED) {
+    const first = processedEvents.values().next().value;
+    if (first) processedEvents.delete(first);
+  }
+  processedEvents.add(eventId);
+}
+
+function isProcessed(eventId: string): boolean {
+  return processedEvents.has(eventId);
+}
+
 // ---------------------------------------------------------------------------
 // Tier mapping — price IDs → internal tier names
 // ---------------------------------------------------------------------------
@@ -47,6 +64,11 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
 
   console.log(`[Stripe webhook] Received: ${event.type} (id=${event.id})`);
 
+  if (isProcessed(event.id)) {
+    console.log(`[Stripe webhook] Event ${event.id} already processed — skipping`);
+    return NextResponse.json({ received: true, idempotent: true });
+  }
+
   try {
     switch (event.type) {
       case 'checkout.session.completed':
@@ -61,6 +83,10 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
         await handleSubscriptionDeleted(event.data.object as Stripe.Subscription);
         break;
 
+      case 'invoice.paid':
+        await handleInvoicePaid(event.data.object as Stripe.Invoice);
+        break;
+
       case 'invoice.payment_failed':
         await handlePaymentFailed(event.data.object as Stripe.Invoice);
         break;
@@ -68,6 +94,7 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
       default:
         console.log(`[Stripe webhook] Unhandled event type: ${event.type}`);
     }
+    markProcessed(event.id);
   } catch (err) {
     // Log handler errors but still return 200 — Stripe will retry on non-2xx
     console.error(`[Stripe webhook] Handler error for ${event.type}:`, err);
@@ -170,6 +197,29 @@ async function handleSubscriptionDeleted(subscription: Stripe.Subscription): Pro
 
   await updateUserTier(userId, downgradedTier as Tier);
   console.log(`[Stripe] Downgraded user ${userId} to tier=${downgradedTier}`);
+}
+
+async function handleInvoicePaid(invoice: Stripe.Invoice): Promise<void> {
+  const subscriptionId = typeof invoice.subscription === 'string'
+    ? invoice.subscription
+    : (invoice.subscription as string | null | undefined);
+
+  console.log('[Stripe] Invoice paid', {
+    invoiceId: invoice.id,
+    subscriptionId,
+    amountPaid: invoice.amount_paid,
+    currency: invoice.currency,
+  });
+
+  if (!subscriptionId) return;
+
+  try {
+    const subscription = await getStripe().subscriptions.retrieve(subscriptionId);
+    await handleSubscriptionUpdated(subscription);
+    console.log(`[Stripe] Refreshed tier after invoice payment for subscription=${subscriptionId}`);
+  } catch (err) {
+    console.warn('[Stripe] Could not refresh subscription after invoice.paid:', err);
+  }
 }
 
 async function handlePaymentFailed(invoice: Stripe.Invoice): Promise<void> {
