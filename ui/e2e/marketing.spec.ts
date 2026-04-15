@@ -32,15 +32,15 @@ test.describe('Pricing page', () => {
   test('loads with 4 tiers', async ({ page }) => {
     await page.goto('/pricing')
     await expect(page.locator('body')).toContainText('Free')
+    await expect(page.locator('body')).toContainText('Sovereign')
+    await expect(page.locator('body')).toContainText('BYOK')
     await expect(page.locator('body')).toContainText('Pro')
-    await expect(page.locator('body')).toContainText('Elite')
-    await expect(page.locator('body')).toContainText('Team')
   })
 
-  test('CTAs go to /hatch not /register', async ({ page }) => {
+  test('CTAs go to checkout or waitlist not /register', async ({ page }) => {
     await page.goto('/pricing')
-    const hatchLinks = page.locator('a[href*="/hatch"]')
-    const count = await hatchLinks.count()
+    const ctaLinks = page.locator('a[href*="/checkout"], a[href*="/waitlist"]')
+    const count = await ctaLinks.count()
     expect(count).toBeGreaterThan(0)
   })
 
