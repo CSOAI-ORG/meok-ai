@@ -57,11 +57,12 @@ const SOVEREIGN_FEATURES = [
   "Morning briefing",
 ];
 
-const FAMILY_FEATURES = [
+const PRO_FEATURES = [
   "Everything in Sovereign",
-  "Up to 5 family members",
+  "Up to 7 companions",
+  "Ralph Mode autonomy",
   "Family dashboard & shared memory",
-  "All LLM models incl. GPT-4o",
+  "Priority API & support",
   "Family Guardian alerts",
   "Priority support",
 ];
@@ -463,7 +464,7 @@ function ExitIntentPopup() {
               You&apos;re on the list.
             </h2>
             <p className="text-white/55 text-sm mb-6">
-              We&apos;ll reach out before April 5. Your sovereign agent is ready.
+              We&apos;ll reach out within 24 hours. Your sovereign agent is ready.
             </p>
             <button
               onClick={dismiss}
@@ -933,11 +934,11 @@ export default function HomePageClient() {
                 Sovereign architecture at every tier. Your data stays yours whether you pay or not.
               </p>
               <div className="inline-flex items-center gap-3 px-5 py-2 rounded-full text-sm mb-12" style={{ background: "rgba(201,168,76,0.08)", border: "1px solid rgba(201,168,76,0.2)" }}>
-                <span className="text-white/40">ChatGPT Plus £20</span>
+                <span className="text-white/40">ChatGPT Plus £16</span>
                 <span className="text-white/20">·</span>
                 <span className="text-white/40">Claude Pro £18</span>
                 <span className="text-white/20">·</span>
-                <span className="font-bold" style={{ color: GOLD }}>MEOK Sovereign £12</span>
+                <span className="font-bold" style={{ color: GOLD }}>MEOK Sovereign £9</span>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 mb-8">
@@ -967,7 +968,7 @@ export default function HomePageClient() {
                 <div className="border border-[#c9a84c]/20 rounded-2xl p-7 text-left bg-white/[0.03]">
                   <div className="text-xs font-bold tracking-widest uppercase text-white/40 mb-2">Sovereign</div>
                   <div className="text-4xl font-black text-white mb-1">
-                    £12<span className="text-base font-normal text-white/40">/mo</span>
+                    £9<span className="text-base font-normal text-white/40">/mo</span>
                   </div>
                   <ul className="space-y-2.5 my-5">
                     {SOVEREIGN_FEATURES.map((f) => (
@@ -977,28 +978,28 @@ export default function HomePageClient() {
                       </li>
                     ))}
                   </ul>
-                  <Link href="/pricing" className="block w-full py-3 rounded-full text-center font-bold text-sm bg-[#c9a84c] text-[#1a1a2e] hover:bg-[#d4b463] transition-colors">
+                  <Link href="/checkout?plan=sovereign_monthly" className="block w-full py-3 rounded-full text-center font-bold text-sm bg-[#c9a84c] text-[#1a1a2e] hover:bg-[#d4b463] transition-colors">
                     Get Sovereign
                   </Link>
                   <p className="text-xs text-white/20 text-center mt-1.5">30-day money-back guarantee</p>
                 </div>
 
-                {/* Family */}
+                {/* Sovereign Pro */}
                 <div className="border border-purple-500/20 rounded-2xl p-7 text-left bg-white/[0.03]">
-                  <div className="text-xs font-bold tracking-widest uppercase text-white/40 mb-2">Family</div>
+                  <div className="text-xs font-bold tracking-widest uppercase text-white/40 mb-2">Sovereign Pro</div>
                   <div className="text-4xl font-black text-white mb-1">
-                    £29<span className="text-base font-normal text-white/40">/mo</span>
+                    £19<span className="text-base font-normal text-white/40">/mo</span>
                   </div>
                   <ul className="space-y-2.5 my-5">
-                    {FAMILY_FEATURES.map((f) => (
+                    {PRO_FEATURES.map((f) => (
                       <li key={f} className="flex items-start gap-2 text-sm text-white/60">
                         <Check className="w-4 h-4 text-purple-400 flex-shrink-0 mt-0.5" />
                         {f}
                       </li>
                     ))}
                   </ul>
-                  <Link href="/pricing" className="block w-full py-3 rounded-full text-center font-bold text-sm text-white border-2 border-purple-500/40 hover:border-purple-500/70 hover:bg-purple-500/10 transition-all">
-                    Get Family Plan
+                  <Link href="/checkout?plan=sovereign_pro_monthly" className="block w-full py-3 rounded-full text-center font-bold text-sm text-white border-2 border-purple-500/40 hover:border-purple-500/70 hover:bg-purple-500/10 transition-all">
+                    Go Pro
                   </Link>
                   <p className="text-xs text-white/20 text-center mt-1.5">30-day money-back guarantee</p>
                 </div>

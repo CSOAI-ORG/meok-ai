@@ -204,7 +204,7 @@ export default function AiForChronicPainManagementPage() {
               Pricing
             </Link>
             <Link
-              href="/app"
+              href="/birth"
               style={{
                 fontSize: "0.825rem",
                 fontWeight: 700,
@@ -1591,7 +1591,7 @@ export default function AiForChronicPainManagementPage() {
             }}
           >
             <Link
-              href="/app"
+              href="/birth"
               style={{
                 display: "inline-block",
                 background: GOLD,

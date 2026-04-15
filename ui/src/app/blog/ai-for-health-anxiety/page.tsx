@@ -250,7 +250,7 @@ export default function AIForHealthAnxietySymptomCheckingPage() {
               Pricing
             </Link>
             <Link
-              href="/app"
+              href="/birth"
               style={{
                 color: BG,
                 background: GOLD,
@@ -2313,7 +2313,7 @@ export default function AIForHealthAnxietySymptomCheckingPage() {
               }}
             >
               <Link
-                href="/app"
+                href="/birth"
                 style={{
                   display: 'inline-block',
                   background: GOLD,

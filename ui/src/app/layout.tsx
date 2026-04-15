@@ -14,7 +14,7 @@ import { SessionTimeout } from "@/components/session-timeout";
 import { WhatsNew } from "@/components/whats-new";
 import { ExperienceModeProvider } from "@/components/experience-mode";
 import { GlobalNav } from "@/components/GlobalNav";
-import { GlobalFooter } from "@/components/GlobalFooter";
+import { MarketingFooter } from "@/components/marketing-footer";
 import { SensoryInit } from "@/components/sensory-init";
 import { JarvisOverlay } from "@/components/jarvis-overlay";
 import { JarvisStatusWidget } from "@/components/jarvis-status-widget";
@@ -190,7 +190,7 @@ export default function RootLayout({
           <ExperienceModeProvider>
             <GlobalNav />
             <ConsentAwareProviders>{children}</ConsentAwareProviders>
-            <GlobalFooter />
+            <MarketingFooter />
             <CookieConsent />
             <SessionTimeout />
             <WhatsNew />

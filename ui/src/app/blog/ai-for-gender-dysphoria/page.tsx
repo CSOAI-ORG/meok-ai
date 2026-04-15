@@ -236,7 +236,7 @@ export default function AiForGenderDysphoriaPage() {
                 Pricing
               </Link>
               <Link
-                href="/app"
+                href="/birth"
                 style={{
                   background: palette.gold,
                   color: palette.bg,
@@ -312,7 +312,7 @@ export default function AiForGenderDysphoriaPage() {
               }}
             >
               <Link
-                href="/app"
+                href="/birth"
                 style={{
                   background: palette.gold,
                   color: palette.bg,
@@ -1168,7 +1168,7 @@ export default function AiForGenderDysphoriaPage() {
               you are ready.
             </p>
             <Link
-              href="/app"
+              href="/birth"
               style={{
                 background: palette.gold,
                 color: palette.bg,
