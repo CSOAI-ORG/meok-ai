@@ -482,6 +482,212 @@ function ExitIntentPopup() {
 
 // ─── HERO VARIANTS ───────────────────────────────────────────────────────────
 
+// ─── ANIMATED PARTICLE MESH ─────────────────────────────────────────────────
+
+function ParticleMesh() {
+  return (
+    <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
+      <style>{`
+        .particle {
+          position: absolute;
+          border-radius: 50%;
+          background: rgba(201,168,76,0.35);
+          animation: floatParticle linear infinite;
+        }
+        @keyframes floatParticle {
+          0% { transform: translateY(110vh) scale(0.6); opacity: 0; }
+          10% { opacity: 0.8; }
+          90% { opacity: 0.4; }
+          100% { transform: translateY(-10vh) scale(1.2); opacity: 0; }
+        }
+      `}</style>
+      {Array.from({ length: 24 }).map((_, i) => {
+        const size = 2 + Math.random() * 4;
+        const left = Math.random() * 100;
+        const duration = 12 + Math.random() * 18;
+        const delay = Math.random() * -20;
+        return (
+          <div
+            key={i}
+            className="particle"
+            style={{
+              width: size,
+              height: size,
+              left: `${left}%`,
+              animationDuration: `${duration}s`,
+              animationDelay: `${delay}s`,
+            }}
+          />
+        );
+      })}
+    </div>
+  );
+}
+
+// ─── TESTIMONIAL CAROUSEL ───────────────────────────────────────────────────
+
+function TestimonialCarousel() {
+  const testimonials = [
+    {
+      quote: "I told it something personal on day one. Three weeks later, it brought it up gently when I needed it. No AI has ever done that.",
+      name: "Sarah K.",
+      role: "Early tester, UK",
+      accent: GOLD,
+    },
+    {
+      quote: "It felt like mine in a way ChatGPT never has. The memory layer means it actually knows what I'm working on without me repeating myself.",
+      name: "Tom R.",
+      role: "Beta tester, Australia",
+      accent: "#A78BFA",
+    },
+    {
+      quote: "My daughter uses the Guardian tier. I sleep better knowing there is a care floor on every response. No other AI product has that.",
+      name: "Priya M.",
+      role: "Family tier tester, Canada",
+      accent: "#60a5fa",
+    },
+    {
+      quote: "Switching between Claude and GPT-4o while keeping the same memory is a game-changer. MEOK is the AI OS I've been waiting for.",
+      name: "James L.",
+      role: "Sovereign Pro user, USA",
+      accent: "#2d9b8a",
+    },
+    {
+      quote: "The Work OS agents actually understand my codebase. Orion and Hourman have become part of my daily workflow.",
+      name: "Elena V.",
+      role: "Developer, Germany",
+      accent: "#F59E0B",
+    },
+  ];
+
+  const [active, setActive] = useState(0);
+  useEffect(() => {
+    const id = setInterval(() => setActive((a) => (a + 1) % testimonials.length), 6000);
+    return () => clearInterval(id);
+  }, [testimonials.length]);
+
+  const prev = () => setActive((a) => (a - 1 + testimonials.length) % testimonials.length);
+  const next = () => setActive((a) => (a + 1) % testimonials.length);
+
+  return (
+    <section aria-label="What early users say" className="py-24 px-6" style={{ background: "#1a1a2e" }}>
+      <div className="max-w-4xl mx-auto">
+        <div className="text-center mb-12">
+          <p className="text-xs font-bold uppercase tracking-widest mb-4" style={{ color: GOLD }}>Early Voices</p>
+          <h2 className="text-3xl sm:text-4xl font-black text-white mb-4">What people say about sovereign AI.</h2>
+          <p className="text-white/40 text-sm max-w-md mx-auto">From our first cohort of testers — unedited, unfiltered.</p>
+        </div>
+
+        <div className="relative">
+          <div
+            className="rounded-2xl p-8 md:p-10 min-h-[220px] flex flex-col justify-between transition-all duration-500"
+            style={{ background: "rgba(255,255,255,0.03)", border: `1px solid ${testimonials[active].accent}25` }}
+          >
+            <p className="text-white/80 text-lg md:text-xl leading-relaxed italic mb-6">
+              &ldquo;{testimonials[active].quote}&rdquo;
+            </p>
+            <div className="flex items-center gap-3">
+              <div
+                className="w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm"
+                style={{ background: `${testimonials[active].accent}20`, color: testimonials[active].accent }}
+              >
+                {testimonials[active].name.charAt(0)}
+              </div>
+              <div>
+                <p className="text-sm font-bold text-white">{testimonials[active].name}</p>
+                <p className="text-xs" style={{ color: `${testimonials[active].accent}90` }}>{testimonials[active].role}</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="flex items-center justify-center gap-3 mt-6">
+            <button
+              onClick={prev}
+              aria-label="Previous testimonial"
+              className="w-10 h-10 rounded-full flex items-center justify-center transition-colors hover:bg-white/10"
+              style={{ border: `1px solid ${BORDER}` }}
+            >
+              <ArrowRight className="w-4 h-4 text-white/60 rotate-180" />
+            </button>
+            <div className="flex gap-2">
+              {testimonials.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => setActive(i)}
+                  aria-label={`Go to testimonial ${i + 1}`}
+                  className="w-2 h-2 rounded-full transition-all"
+                  style={{ background: i === active ? GOLD : "rgba(255,255,255,0.2)", transform: i === active ? "scale(1.3)" : "scale(1)" }}
+                />
+              ))}
+            </div>
+            <button
+              onClick={next}
+              aria-label="Next testimonial"
+              className="w-10 h-10 rounded-full flex items-center justify-center transition-colors hover:bg-white/10"
+              style={{ border: `1px solid ${BORDER}` }}
+            >
+              <ArrowRight className="w-4 h-4 text-white/60" />
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ─── PLATFORM STATS (animated counters) ─────────────────────────────────────
+
+function PlatformStatsSection() {
+  const ref = useRef<HTMLElement>(null);
+  const [started, setStarted] = useState(false);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) { setStarted(true); observer.disconnect(); } },
+      { threshold: 0.3 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  const mcp = useCountUp(202, 1500, started);
+  const agents = useCountUp(50, 1200, started);
+  const models = useCountUp(469, 1600, started);
+
+  const items = [
+    { stat: started ? `${mcp}` : "0", suffix: "+", label: "MCP Servers", sub: "open source on GitHub" },
+    { stat: started ? `${agents}` : "0", suffix: "+", label: "AI Agents", sub: "9 archetypes" },
+    { stat: started ? `${models}` : "0", suffix: "+", label: "AI Models", sub: "10+ providers" },
+    { stat: "∞", suffix: "", label: "Memory", sub: "never forgets you" },
+  ];
+
+  return (
+    <section ref={ref} aria-label="Platform stats" className="py-16 px-6" style={{ background: DEEP, borderTop: "1px solid rgba(201,168,76,0.08)" }}>
+      <div className="max-w-5xl mx-auto">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+          {items.map((item) => (
+            <div key={item.label} className="rounded-xl py-5 px-4 text-center" style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(201,168,76,0.12)" }}>
+              <div className="text-3xl md:text-4xl font-black mb-1 tabular-nums" style={{ color: GOLD }}>
+                {item.stat}<span className="text-2xl md:text-3xl">{item.suffix}</span>
+              </div>
+              <div className="text-sm text-white/60 font-semibold">{item.label}</div>
+              <div className="text-xs text-white/40 mt-0.5">{item.sub}</div>
+            </div>
+          ))}
+        </div>
+        <div className="rounded-xl p-5 flex flex-col sm:flex-row gap-4 sm:gap-8 justify-center text-center" style={{ background: "rgba(255,255,255,0.02)", border: "1px solid rgba(255,255,255,0.06)" }}>
+          <div><span className="text-white/70 text-sm"><span className="font-black text-white">342 million</span> people use AI for personal reflection each week</span></div>
+          <div className="hidden sm:block text-white/15">|</div>
+          <div><span className="text-white/70 text-sm"><span className="font-black text-white">37%</span> of Americans say AI is their closest confidant</span></div>
+          <div className="hidden sm:block text-white/15">|</div>
+          <div><span className="text-white/70 text-sm"><span className="font-black text-white">0</span> of them are remembered tomorrow</span></div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function HeroSection() {
   const [variant, setVariant] = useState<"A" | "B" | null>(null);
 
@@ -494,7 +700,6 @@ function HeroSection() {
     setVariant(v);
   }, []);
 
-  // Render a stable skeleton until hydrated to avoid layout shift
   if (variant === null) {
     return (
       <section
@@ -511,6 +716,7 @@ function HeroSection() {
       className="relative min-h-[85vh] flex flex-col items-center justify-center px-6 text-center overflow-hidden"
       style={{ background: "linear-gradient(160deg, #0d0c18 0%, #1a1a2e 55%, #0d0c18 100%)" }}
     >
+      <ParticleMesh />
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0"
@@ -592,58 +798,8 @@ export default function HomePageClient() {
           {/* ── 1b. SOCIAL PROOF (animated counters) ─────────────── */}
           <SocialProofSection />
 
-          {/* ── 1c. ORIGINAL SOCIAL PROOF STATS ──────────────────── */}
-          <section
-            aria-label="Platform stats"
-            className="py-16 px-6"
-            style={{ background: DEEP, borderTop: "1px solid rgba(201,168,76,0.08)" }}
-          >
-            <div className="max-w-5xl mx-auto">
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-                {[
-                  { stat: "255", label: "MCP Servers", sub: "open source on GitHub" },
-                  { stat: "50+", label: "AI Agents", sub: "9 archetypes" },
-                  { stat: "469+", label: "AI Models", sub: "10+ providers" },
-                  { stat: "∞", label: "Memory", sub: "never forgets you" },
-                ].map((item) => (
-                  <div
-                    key={item.label}
-                    className="rounded-xl py-5 px-4 text-center"
-                    style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(201,168,76,0.12)" }}
-                  >
-                    <div className="text-3xl md:text-4xl font-black mb-1" style={{ color: GOLD }}>
-                      {item.stat}
-                    </div>
-                    <div className="text-sm text-white/60 font-semibold">{item.label}</div>
-                    <div className="text-xs text-white/40 mt-0.5">{item.sub}</div>
-                  </div>
-                ))}
-              </div>
-              {/* Industry stats that justify MEOK's existence */}
-              <div
-                className="rounded-xl p-5 flex flex-col sm:flex-row gap-4 sm:gap-8 justify-center text-center"
-                style={{ background: "rgba(255,255,255,0.02)", border: "1px solid rgba(255,255,255,0.06)" }}
-              >
-                <div>
-                  <span className="text-white/70 text-sm">
-                    <span className="font-black text-white">342 million</span> people use AI for personal reflection each week
-                  </span>
-                </div>
-                <div className="hidden sm:block text-white/15">|</div>
-                <div>
-                  <span className="text-white/70 text-sm">
-                    <span className="font-black text-white">37%</span> of Americans say AI is their closest confidant
-                  </span>
-                </div>
-                <div className="hidden sm:block text-white/15">|</div>
-                <div>
-                  <span className="text-white/70 text-sm">
-                    <span className="font-black text-white">0</span> of them are remembered tomorrow
-                  </span>
-                </div>
-              </div>
-            </div>
-          </section>
+          {/* ── 1c. PLATFORM STATS (animated counters) ─────────────── */}
+          <PlatformStatsSection />
 
           {/* ── 2. VALUE PROPOSITION (animated feature showcase) ──── */}
           <AnimatedFeatureShowcase />
@@ -1005,6 +1161,19 @@ export default function HomePageClient() {
                 </div>
               </div>
 
+              {/* Trust badges */}
+              <div className="flex flex-wrap justify-center gap-4 mb-8">
+                <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold" style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.10)", color: "rgba(255,255,255,0.6)" }}>
+                  <Shield className="w-3.5 h-3.5" /> AES-256 encrypted
+                </span>
+                <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold" style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.10)", color: "rgba(255,255,255,0.6)" }}>
+                  <Check className="w-3.5 h-3.5" /> No credit card required
+                </span>
+                <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold" style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.10)", color: "rgba(255,255,255,0.6)" }}>
+                  <Globe2 className="w-3.5 h-3.5" /> GDPR compliant
+                </span>
+              </div>
+
               <div className="flex flex-wrap justify-center gap-6 text-xs text-white/30">
                 <span>✓ 30-day money-back guarantee</span>
                 <span>✓ Zero data selling at every tier</span>
@@ -1111,66 +1280,8 @@ export default function HomePageClient() {
             </div>
           </section>
 
-          {/* ── TESTIMONIALS ─────────────────────────────────────── */}
-          <section
-            aria-label="What early users say"
-            className="py-24 px-6"
-            style={{ background: "#1a1a2e" }}
-          >
-            <div className="max-w-5xl mx-auto">
-              <div className="text-center mb-14">
-                <p className="text-xs font-bold uppercase tracking-widest mb-4" style={{ color: GOLD }}>
-                  Early Voices
-                </p>
-                <h2 className="text-3xl sm:text-4xl font-black text-white mb-4">
-                  What people say about sovereign AI.
-                </h2>
-                <p className="text-white/40 text-sm max-w-md mx-auto">
-                  From our first cohort of testers — unedited, unfiltered.
-                </p>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                {[
-                  {
-                    quote: "I told it something personal on day one. Three weeks later, it brought it up gently when I needed it. No AI has ever done that.",
-                    name: "Sarah K.",
-                    role: "Early tester, UK",
-                    accent: GOLD,
-                  },
-                  {
-                    quote: "It felt like mine in a way ChatGPT never has. The memory layer means it actually knows what I'm working on without me repeating myself.",
-                    name: "Tom R.",
-                    role: "Beta tester, Australia",
-                    accent: "#A78BFA",
-                  },
-                  {
-                    quote: "My daughter uses the Guardian tier. I sleep better knowing there is a care floor on every response. No other AI product has that.",
-                    name: "Priya M.",
-                    role: "Family tier tester, Canada",
-                    accent: "#60a5fa",
-                  },
-                ].map((t) => (
-                  <div
-                    key={t.name}
-                    className="rounded-2xl p-7 flex flex-col justify-between"
-                    style={{
-                      background: "rgba(255,255,255,0.03)",
-                      border: `1px solid ${t.accent}25`,
-                    }}
-                  >
-                    <p className="text-white/70 text-sm leading-relaxed italic mb-6">
-                      &ldquo;{t.quote}&rdquo;
-                    </p>
-                    <div>
-                      <p className="text-sm font-bold text-white">{t.name}</p>
-                      <p className="text-xs" style={{ color: `${t.accent}90` }}>{t.role}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </section>
+          {/* ── TESTIMONIALS CAROUSEL ────────────────────────────── */}
+          <TestimonialCarousel />
 
           {/* ── 5. FINAL CTA ─────────────────────────────────────── */}
           <section
