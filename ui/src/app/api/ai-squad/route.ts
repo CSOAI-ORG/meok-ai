@@ -1,9 +1,9 @@
 /**
  * MEOK AI LABS — AI Squad System
- * 
+ *
  * Multiple AI characters working together as a team
  * Combines MEOK characters with Legion-style collaboration
- * 
+ *
  * Features:
  * - Team formation (gaming, creative, productivity)
  * - Real-time collaboration via WebSocket
@@ -17,73 +17,51 @@ import {
   buildSquadSystemPrompt,
   getCharacterPrompt,
   getRolePrompt,
-  CHARACTER_PROMPTS,
 } from "@/lib/character-prompts";
+import { sql } from "@/lib/db";
+import {
+  type AISquad,
+  type SquadMember,
+  type SquadMessage,
+  insertSquad,
+  getSquadsForUser,
+  getSquadWithMessages,
+  deleteSquad,
+  insertMessages,
+} from "@/lib/db/ai-squad";
 
 export const runtime = "nodejs";
 
-// ── AI Squad Types ─────────────────────────────────────────────────────────────
-
-export interface AISquad {
-  id: string;
-  name: string;
-  purpose: "gaming" | "creative" | "productivity" | "learning" | "general";
-  members: SquadMember[];
-  createdAt: string;
-  createdBy: string;
-}
-
-export interface SquadMember {
-  characterId: string;
-  role: "leader" | "specialist" | "support" | "analyst";
-  joinedAt: string;
-  contributionScore: number;
-}
-
 // Pre-built squad templates (not exported to avoid Next.js route error)
-const SQUAD_TEMPLATES = [
+const SQUAD_TEMPLATES: { name: string; purpose: AISquad["purpose"]; members: SquadMember[] }[] = [
   {
     name: "Gaming Elite",
-    purpose: "gaming" as const,
+    purpose: "gaming",
     members: [
-      { characterId: "pixel", role: "leader" as const, joinedAt: "", contributionScore: 0 },
-      { characterId: "commander", role: "specialist" as const, joinedAt: "", contributionScore: 0 },
-      { characterId: "sage", role: "analyst" as const, joinedAt: "", contributionScore: 0 },
+      { characterId: "pixel", role: "leader", joinedAt: "", contributionScore: 0 },
+      { characterId: "commander", role: "specialist", joinedAt: "", contributionScore: 0 },
+      { characterId: "sage", role: "analyst", joinedAt: "", contributionScore: 0 },
     ],
   },
   {
     name: "Creative Studio",
-    purpose: "creative" as const,
+    purpose: "creative",
     members: [
-      { characterId: "luna", role: "leader" as const, joinedAt: "", contributionScore: 0 },
-      { characterId: "iris", role: "specialist" as const, joinedAt: "", contributionScore: 0 },
-      { characterId: "nova", role: "analyst" as const, joinedAt: "", contributionScore: 0 },
+      { characterId: "luna", role: "leader", joinedAt: "", contributionScore: 0 },
+      { characterId: "iris", role: "specialist", joinedAt: "", contributionScore: 0 },
+      { characterId: "nova", role: "analyst", joinedAt: "", contributionScore: 0 },
     ],
   },
   {
     name: "Productivity Powerhouse",
-    purpose: "productivity" as const,
+    purpose: "productivity",
     members: [
-      { characterId: "athena", role: "leader" as const, joinedAt: "", contributionScore: 0 },
-      { characterId: "nexus", role: "specialist" as const, joinedAt: "", contributionScore: 0 },
-      { characterId: "sage", role: "analyst" as const, joinedAt: "", contributionScore: 0 },
+      { characterId: "athena", role: "leader", joinedAt: "", contributionScore: 0 },
+      { characterId: "nexus", role: "specialist", joinedAt: "", contributionScore: 0 },
+      { characterId: "sage", role: "analyst", joinedAt: "", contributionScore: 0 },
     ],
   },
 ];
-
-// In-memory store (replace with DB in production)
-const squads = new Map<string, AISquad>();
-const squadMessages = new Map<string, SquadMessage[]>();
-
-interface SquadMessage {
-  id: string;
-  squadId: string;
-  characterId: string;
-  content: string;
-  timestamp: string;
-}
-
-// ── Helper Functions ────────────────────────────────────────���───────────────────
 
 function generateSquadId(): string {
   return `squad_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`;
@@ -91,43 +69,50 @@ function generateSquadId(): string {
 
 function getSquadContext(squad: AISquad): string {
   const memberList = squad.members
-    .map(m => `- ${m.characterId} (${m.role})`)
+    .map((m) => `- ${m.characterId} (${m.role})`)
     .join("\n");
   return `${squad.name} (${squad.purpose}):\n${memberList}`;
 }
 
-// ── API Handlers ────────────────────────────────────────────────────────────────
-
 /**
- * POST — Create, join, or message a squad
+ * POST — Create, list, get, chat, or delete a squad
  */
 export async function POST(req: NextRequest) {
-  const userId = await getAuthUserId() || "anonymous";
-  
+  const userId = await getAuthUserId();
+  if (!userId) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
+
   try {
     const body = await req.json();
-    const { action, squadId, characterId, message, templateIndex } = body;
+    const { action, squadId, message, templateIndex } = body;
 
     switch (action) {
       case "create": {
-        // Create from template or custom
+        if (!sql) {
+          return NextResponse.json(
+            { error: "Database not available" },
+            { status: 503 }
+          );
+        }
+
         let squad: AISquad;
-        
+        const now = new Date().toISOString();
+
         if (templateIndex !== undefined && templateIndex >= 0) {
           const template = SQUAD_TEMPLATES[templateIndex];
           squad = {
             ...template,
             id: generateSquadId(),
-            createdAt: new Date().toISOString(),
+            createdAt: now,
             createdBy: userId,
-            members: template.members.map(m => ({
+            members: template.members.map((m) => ({
               ...m,
-              joinedAt: new Date().toISOString(),
-              role: m.role as "leader" | "specialist" | "support" | "analyst",
+              joinedAt: now,
+              role: m.role,
             })),
           };
         } else {
-          // Custom squad
           const { name, purpose, members } = body;
           squad = {
             id: generateSquadId(),
@@ -136,16 +121,21 @@ export async function POST(req: NextRequest) {
             members: (members || []).map((m: string) => ({
               characterId: m,
               role: "member" as const,
-              joinedAt: new Date().toISOString(),
+              joinedAt: now,
               contributionScore: 0,
             })),
-            createdAt: new Date().toISOString(),
+            createdAt: now,
             createdBy: userId,
           };
         }
 
-        squads.set(squad.id, squad);
-        squadMessages.set(squad.id, []);
+        const ok = await insertSquad(userId, squad);
+        if (!ok) {
+          return NextResponse.json(
+            { error: "Failed to create squad" },
+            { status: 500 }
+          );
+        }
 
         return NextResponse.json({
           squad,
@@ -154,13 +144,8 @@ export async function POST(req: NextRequest) {
       }
 
       case "list": {
-        // Get all squads (or filter by purpose)
-        const purpose = body.purpose;
-        let allSquads = Array.from(squads.values());
-        
-        if (purpose) {
-          allSquads = allSquads.filter(s => s.purpose === purpose);
-        }
+        const purpose = body.purpose as string | undefined;
+        const allSquads = await getSquadsForUser(userId, purpose);
 
         return NextResponse.json({
           squads: allSquads,
@@ -174,25 +159,28 @@ export async function POST(req: NextRequest) {
 
       case "get": {
         if (!squadId) {
-          return NextResponse.json({ error: "Missing squadId" }, { status: 400 });
+          return NextResponse.json(
+            { error: "Missing squadId" },
+            { status: 400 }
+          );
         }
 
-        const squad = squads.get(squadId);
-        if (!squad) {
-          return NextResponse.json({ error: "Squad not found" }, { status: 404 });
+        const result = await getSquadWithMessages(userId, squadId);
+        if (!result) {
+          return NextResponse.json(
+            { error: "Squad not found" },
+            { status: 404 }
+          );
         }
-
-        const messages = squadMessages.get(squadId) || [];
 
         return NextResponse.json({
-          squad,
-          messages: messages.slice(-20),
-          context: getSquadContext(squad),
+          squad: result.squad,
+          messages: result.messages.slice(-20),
+          context: getSquadContext(result.squad),
         });
       }
 
       case "chat": {
-        // Chat with the squad - generate response from characters
         if (!squadId || !message) {
           return NextResponse.json(
             { error: "Missing squadId or message" },
@@ -200,33 +188,50 @@ export async function POST(req: NextRequest) {
           );
         }
 
-        const squad = squads.get(squadId);
-        if (!squad) {
-          return NextResponse.json({ error: "Squad not found" }, { status: 404 });
+        if (!sql) {
+          return NextResponse.json(
+            { error: "Database not available" },
+            { status: 503 }
+          );
         }
 
-        // Get conversation history
-        const msgs = squadMessages.get(squadId) || [];
-        
+        const result = await getSquadWithMessages(userId, squadId);
+        if (!result) {
+          return NextResponse.json(
+            { error: "Squad not found" },
+            { status: 404 }
+          );
+        }
+
+        const { squad, messages: allMessages } = result;
+
         // Build system prompt from squad members
         const systemPrompt = buildSquadSystemPrompt(
           squad.name,
           squad.purpose,
-          squad.members.map(m => ({ characterId: m.characterId, role: m.role }))
+          squad.members.map((m) => ({ characterId: m.characterId, role: m.role }))
         );
 
         // Get recent messages for context
-        const history = msgs.slice(-6).map(m => {
-          if (m.characterId === "user") {
-            return `User: ${m.content}`;
-          }
-          return `${m.characterId}: ${m.content}`;
-        }).join("\n");
+        const history = allMessages
+          .slice(-6)
+          .map((m) => {
+            if (m.characterId === "user") {
+              return `User: ${m.content}`;
+            }
+            return `${m.characterId}: ${m.content}`;
+          })
+          .join("\n");
 
-        // Create prompt with gaming context if in gaming mode
         let gamingContext = "";
-        if (body.gamingMode && (message.includes("[Analyze") || message.includes("[Suggest") || message.includes("[Give"))) {
-          gamingContext = "\n\n## Gaming Mode Active\nThis is a gaming-specific request. Provide actionable gaming advice.";
+        if (
+          body.gamingMode &&
+          (message.includes("[Analyze") ||
+            message.includes("[Suggest") ||
+            message.includes("[Give"))
+        ) {
+          gamingContext =
+            "\n\n## Gaming Mode Active\nThis is a gaming-specific request. Provide actionable gaming advice.";
         }
 
         const fullPrompt = `${systemPrompt}${gamingContext}
@@ -238,28 +243,29 @@ User: ${message}
 
 Respond as ${squad.members[0]?.characterId || "the squad"}:`;
 
-        // Generate response using chat API
         let responseContent = "";
         let respondingCharacter = "";
         let gameAnalysis = null;
 
         try {
-          const chatRes = await fetch(`${process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000"}/api/chat`, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              message: fullPrompt,
-              characterId: squad.members[0]?.characterId || "pixel",
-              stream: false,
-            }),
-          });
+          const chatRes = await fetch(
+            `${process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000"}/api/chat`,
+            {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                message: fullPrompt,
+                characterId: squad.members[0]?.characterId || "pixel",
+                stream: false,
+              }),
+            }
+          );
 
           if (chatRes.ok) {
             const chatData = await chatRes.json();
             responseContent = chatData.text || chatData.content || "";
             respondingCharacter = squad.members[0]?.characterId || "pixel";
-            
-            // Extract game analysis if gaming mode
+
             if (body.gamingMode) {
               gameAnalysis = responseContent;
             }
@@ -268,16 +274,11 @@ Respond as ${squad.members[0]?.characterId || "the squad"}:`;
           console.log("[AI Squad] Using fallback response");
         }
 
-        // Fallback: generate response based on character personalities
         if (!responseContent) {
-          // Pick a random character to respond
-          const responder = squad.members[Math.floor(Math.random() * squad.members.length)];
+          const responder =
+            squad.members[Math.floor(Math.random() * squad.members.length)];
           respondingCharacter = responder.characterId;
-          
-          const charPrompt = getCharacterPrompt(responder.characterId);
-          const rolePrompt = getRolePrompt(responder.role);
-          
-          // Generate contextual response
+
           const responses: Record<string, string[]> = {
             gaming: [
               "Great play! Let me analyze that strategy for you...",
@@ -306,30 +307,31 @@ Respond as ${squad.members[0]?.characterId || "the squad"}:`;
             ],
           };
 
-          const options = responses[squad.purpose as keyof typeof responses] || responses.general;
+          const options =
+            responses[squad.purpose as keyof typeof responses] || responses.general;
           responseContent = options[Math.floor(Math.random() * options.length)];
         }
 
-        // Store user message
+        const now = new Date().toISOString();
+
         const userMsg: SquadMessage = {
           id: `msg_${Date.now()}`,
           squadId,
           characterId: "user",
           content: message,
-          timestamp: new Date().toISOString(),
+          timestamp: now,
         };
-        msgs.push(userMsg);
 
-        // Store AI response
         const aiMsg: SquadMessage = {
           id: `msg_${Date.now()}_ai`,
           squadId,
-          characterId: respondingCharacter || squad.members[0]?.characterId || "pixel",
+          characterId:
+            respondingCharacter || squad.members[0]?.characterId || "pixel",
           content: responseContent,
-          timestamp: new Date().toISOString(),
+          timestamp: now,
         };
-        msgs.push(aiMsg);
-        squadMessages.set(squadId, msgs);
+
+        await insertMessages(squadId, [userMsg, aiMsg]);
 
         return NextResponse.json({
           squad,
@@ -340,11 +342,26 @@ Respond as ${squad.members[0]?.characterId || "the squad"}:`;
 
       case "delete": {
         if (!squadId) {
-          return NextResponse.json({ error: "Missing squadId" }, { status: 400 });
+          return NextResponse.json(
+            { error: "Missing squadId" },
+            { status: 400 }
+          );
         }
 
-        squads.delete(squadId);
-        squadMessages.delete(squadId);
+        if (!sql) {
+          return NextResponse.json(
+            { error: "Database not available" },
+            { status: 503 }
+          );
+        }
+
+        const ok = await deleteSquad(userId, squadId);
+        if (!ok) {
+          return NextResponse.json(
+            { error: "Squad not found" },
+            { status: 404 }
+          );
+        }
 
         return NextResponse.json({ status: "deleted", squadId });
       }
@@ -378,22 +395,32 @@ export async function GET(req: NextRequest) {
         index: i,
         name: t.name,
         purpose: t.purpose,
-        members: t.members.map(m => m.characterId),
+        members: t.members.map((m) => m.characterId),
       })),
     });
   }
 
+  const userId = await getAuthUserId();
+  if (!userId) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
+
   if (squadId) {
-    const squad = squads.get(squadId);
-    if (squad) {
-      return NextResponse.json({ squad, context: getSquadContext(squad) });
+    const result = await getSquadWithMessages(userId, squadId);
+    if (result) {
+      return NextResponse.json({
+        squad: result.squad,
+        context: getSquadContext(result.squad),
+      });
     }
   }
+
+  const userSquads = await getSquadsForUser(userId);
 
   return NextResponse.json({
     status: "MEOK AI Squad System",
     purpose: "Multi-AI collaboration teams",
-    squads: Array.from(squads.values()).length,
+    squads: userSquads.length,
     templates: SQUAD_TEMPLATES.length,
   });
 }

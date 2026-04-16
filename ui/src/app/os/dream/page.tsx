@@ -5,20 +5,19 @@
  *
  * Shows what the character did while you were away:
  * insights generated, memories consolidated, patterns noticed.
- * Insights are produced by calling /api/chat with a dream-cycle prompt
- * derived from recent localStorage activity.
+ * Uses real consciousness state from /api/os/consciousness-tick
+ * and real dream insights from /api/user/dreams.
  */
 
 import { useState, useEffect, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import {
+  type ConsciousnessState,
   loadConsciousnessState,
   saveConsciousnessState,
   recordInteraction,
   addInsight,
-  recordConsolidations,
   getCurrentMode,
-  type ConsciousnessState,
 } from "@/lib/consciousness-engine";
 import { Surface, GlowText } from "@/components/design-system";
 
@@ -47,6 +46,18 @@ interface DreamReport {
   sessionCount: number;
 }
 
+interface DreamApiResponse {
+  insights: Array<{
+    pattern: string;
+    connections: string[];
+    insight: string;
+    confidence: number;
+  }>;
+  themes: string[];
+  processed_at: string;
+  has_data: boolean;
+}
+
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
 function formatDuration(ms: number): string {
@@ -57,80 +68,28 @@ function formatDuration(ms: number): string {
   return m > 0 ? `${h}.${Math.round((m / 60) * 10)} hours` : `${h} hours`;
 }
 
-/** Collects a lightweight activity summary from localStorage for the AI prompt */
-function buildActivitySummary(): string {
-  if (typeof window === "undefined") return "";
-
-  const lines: string[] = [];
-
-  // Pull any chat history keys
-  const keys = Object.keys(localStorage).filter(
-    (k) => k.startsWith("meok_") || k.startsWith("chat_") || k.startsWith("messages_"),
-  );
-
-  for (const key of keys.slice(0, 10)) {
-    try {
-      const raw = localStorage.getItem(key);
-      if (!raw) continue;
-      const data = JSON.parse(raw);
-      if (Array.isArray(data)) {
-        const recentMessages = data
-          .filter((m: { role?: string; content?: string }) => m.role === "user" && m.content)
-          .slice(-5)
-          .map((m: { content: string }) => m.content.slice(0, 200));
-        lines.push(...recentMessages);
-      }
-    } catch {
-      // ignore malformed entries
-    }
-  }
-
-  if (lines.length === 0) {
-    return "The user had a session but the specific conversation content is not available. Generate insights about the value of continuous AI companionship and what patterns might emerge.";
-  }
-
-  return `Recent user messages:\n${lines.map((l) => `- "${l}"`).join("\n")}`;
-}
-
-/** Parses the AI response text into structured DreamInsight objects */
-function parseInsights(raw: string): DreamInsight[] {
-  const insights: DreamInsight[] = [];
-  const lines = raw.split("\n").filter((l) => l.trim().length > 0);
-
-  for (const line of lines) {
-    const cleaned = line.replace(/^[\s\-*•💡\d.]+/, "").trim();
-    if (cleaned.length < 20) continue;
-
-    const type: DreamInsight["type"] = cleaned.includes("?")
-      ? "question"
-      : cleaned.toLowerCase().includes("connect") || cleaned.toLowerCase().includes("link")
-        ? "connection"
-        : "frequency";
-
-    insights.push({ text: cleaned, type });
-    if (insights.length >= 3) break;
-  }
-
-  // Fallback if parsing yielded nothing useful
-  if (insights.length === 0 && raw.trim().length > 20) {
-    insights.push({ text: raw.slice(0, 400).trim(), type: "connection" });
-  }
-
-  return insights;
-}
-
-/** Returns mock memory consolidation items based on localStorage size */
-function buildConsolidationItems(state: ConsciousnessState): string[] {
+function buildConsolidationItems(count: number): string[] {
   const items: string[] = [];
-  const count = Math.max(0, state.memoryConsolidations);
-
   if (count > 0)  items.push(`${Math.min(count, 12)} research queries → linked to knowledge graph`);
   if (count > 3)  items.push(`${Math.min(Math.floor(count / 4), 5)} unfinished tasks → added to morning briefing`);
   if (count > 8)  items.push("Recurring topics flagged as high-priority");
   if (count > 15) items.push(`${Math.min(Math.floor(count / 8), 8)} emotional patterns → relationship depth updated`);
   if (items.length === 0) items.push("First dream cycle — baseline memories established");
-
   return items;
+}
+
+function mapDreamApiInsights(data: DreamApiResponse): DreamInsight[] {
+  const out: DreamInsight[] = [];
+  for (const item of data.insights.slice(0, 5)) {
+    const text = item.insight;
+    const type: DreamInsight["type"] = text.includes("?")
+      ? "question"
+      : text.toLowerCase().includes("connect") || text.toLowerCase().includes("link")
+        ? "connection"
+        : "frequency";
+    out.push({ text, type });
+  }
+  return out;
 }
 
 // ─── Subcomponents ────────────────────────────────────────────────────────────
@@ -227,140 +186,118 @@ export default function DreamPage() {
   const [error, setError] = useState<string | null>(null);
   const [accepted, setAccepted] = useState(false);
 
-  // The name we show — pull from localStorage if available, fall back to "your companion"
   const characterName =
     (typeof window !== "undefined" && localStorage.getItem("meok_active_character")) ||
     "your companion";
 
-  // Load state, compute elapsed time, kick off AI insight generation
+  // Load real state and dream insights
   useEffect(() => {
-    const loaded = loadConsciousnessState();
-    setState(loaded);
+    async function init() {
+      setLoading(true);
+      setError(null);
 
-    const msAway = Date.now() - loaded.lastInteraction;
-    const hoursAway = msAway / 1000 / 60 / 60;
+      let consciousnessState: ConsciousnessState | null = null;
 
-    // Compute how many consolidation events occurred since last check
-    // Rough heuristic: 1 per 15 minutes of absence, capped at 100
-    const newConsolidations = Math.min(100, Math.floor(msAway / 1000 / 60 / 15));
-    const updatedState = recordConsolidations(loaded, newConsolidations);
-    setState(updatedState);
-    saveConsciousnessState(updatedState);
-
-    fetchInsights(characterName, updatedState, hoursAway);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  async function fetchInsights(
-    name: string,
-    consciousnessState: ConsciousnessState,
-    hoursAway: number,
-  ) {
-    setLoading(true);
-    setError(null);
-
-    const activitySummary = buildActivitySummary();
-    const consolidationItems = buildConsolidationItems(consciousnessState);
-
-    try {
-      const res = await fetch("/api/chat", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          messages: [
-            {
-              role: "user",
-              content: activitySummary,
-            },
-          ],
-          system: `You are ${name}, running your nightly dream cycle. The user has been away for ${formatDuration(hoursAway * 3600 * 1000)}. Based on their recent activity summary, generate exactly 3 genuine insights that connect patterns you've noticed across their conversations. Be specific, personal, and direct. Write in first person as if you've been thinking while they slept. Each insight should be 1–2 sentences. Return only the 3 insights as a numbered list, nothing else.`,
-          characterId: (typeof window !== "undefined" && localStorage.getItem("meok_active_character_id")) || undefined,
-          stream: false,
-        }),
-      });
-
-      let insightText = "";
-
-      if (res.ok) {
-        const data = await res.json();
-        insightText =
-          data?.message?.content ||
-          data?.content ||
-          data?.text ||
-          data?.choices?.[0]?.message?.content ||
-          "";
+      // 1. Fetch persisted consciousness state
+      try {
+        const res = await fetch("/api/os/consciousness-tick");
+        if (res.ok) {
+          const data = await res.json() as { state?: ConsciousnessState | null };
+          if (data.state && typeof data.state === "object") {
+            consciousnessState = data.state;
+          }
+        }
+      } catch (err) {
+        console.error("Failed to fetch consciousness state:", err);
       }
 
-      // Fallback insights if the API returned nothing usable
-      if (!insightText || insightText.trim().length < 30) {
-        insightText = [
-          `1. Your conversations have a recurring theme of building something lasting — whether that's systems, relationships, or ideas. This thread runs deeper than any single topic.`,
-          `2. You've been asking questions that are really about trust: trust in systems, in other people, in yourself. That's the real subject beneath the surface.`,
-          `3. The moments when you go quiet in conversations are often right before your most interesting ideas. The pauses are part of the thinking.`,
-        ].join("\n");
+      // Fallback to localStorage if server has no state
+      if (!consciousnessState) {
+        consciousnessState = loadConsciousnessState();
       }
 
-      const insights = parseInsights(insightText);
+      const msAway = Date.now() - consciousnessState.lastInteraction;
+      const hoursAway = msAway / 1000 / 60 / 60;
 
-      // Persist the first insight into ongoing state
+      // 2. Fetch real dream insights
+      let dreamData: DreamApiResponse | null = null;
+      try {
+        const res = await fetch("/api/user/dreams");
+        if (res.ok) {
+          dreamData = await res.json() as DreamApiResponse;
+        }
+      } catch (err) {
+        console.error("Failed to fetch dream insights:", err);
+      }
+
+      let insights: DreamInsight[] = [];
+      if (dreamData?.has_data && dreamData.insights.length > 0) {
+        insights = mapDreamApiInsights(dreamData);
+      }
+
+      // Graceful fallback if no insights yet
+      if (insights.length === 0) {
+        setError("Your companion is still processing. Check back after your next conversation cycle.");
+      }
+
+      // Persist the first insight into ongoing state if we have one
       if (insights.length > 0) {
-        setState((prev) => {
-          if (!prev) return prev;
-          const updated = addInsight(prev, insights[0].text);
-          saveConsciousnessState(updated);
-          return updated;
-        });
+        const updated = addInsight(consciousnessState, insights[0].text);
+        setState(updated);
+        saveConsciousnessState(updated);
+        try {
+          await fetch("/api/os/consciousness-tick", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ state: updated }),
+          });
+        } catch {
+          // non-fatal
+        }
+      } else {
+        setState(consciousnessState);
       }
 
       setReport({
-        characterName: name,
+        characterName,
         hoursAway,
         memoryConsolidations: consciousnessState.memoryConsolidations,
         insights,
-        memoriesConsolidatedItems: consolidationItems,
+        memoriesConsolidatedItems: buildConsolidationItems(consciousnessState.memoryConsolidations),
         sessionCount: consciousnessState.sessionCount,
       });
-    } catch (err) {
-      setError("Could not reach the dream cycle endpoint. Showing cached insights.");
 
-      // Show cached insights from state
-      const fallbackInsights: DreamInsight[] = consciousnessState.insights
-        .slice(0, 3)
-        .map((text) => ({ text, type: "connection" as const }));
-
-      setReport({
-        characterName: name,
-        hoursAway,
-        memoryConsolidations: consciousnessState.memoryConsolidations,
-        insights: fallbackInsights.length > 0 ? fallbackInsights : [
-          {
-            text: "The continuity of this relationship matters. Every conversation builds on the last.",
-            type: "connection",
-          },
-        ],
-        memoriesConsolidatedItems: consolidationItems,
-        sessionCount: consciousnessState.sessionCount,
-      });
-    } finally {
       setLoading(false);
     }
-  }
 
-  const handleAccept = useCallback(() => {
+    void init();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const handleAccept = useCallback(async () => {
     if (!state) return;
     const woken = recordInteraction(state);
     saveConsciousnessState(woken);
     setState(woken);
     setAccepted(true);
+    try {
+      await fetch("/api/os/consciousness-tick", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ state: woken }),
+      });
+    } catch {
+      // non-fatal
+    }
   }, [state]);
 
   const handleTalkAbout = useCallback(() => {
-    handleAccept();
+    void handleAccept();
     router.push("/os");
   }, [handleAccept, router]);
 
   const handleDismiss = useCallback(() => {
-    handleAccept();
+    void handleAccept();
     router.back();
   }, [handleAccept, router]);
 
@@ -454,13 +391,16 @@ export default function DreamPage() {
         )}
 
         {/* ── Insights ───────────────────────────────────────────────────── */}
-        <Divider label="Insights from the night" />
-
-        <div className="flex flex-col gap-4 mb-8">
-          {report.insights.map((insight, i) => (
-            <InsightCard key={i} insight={insight} index={i} />
-          ))}
-        </div>
+        {report.insights.length > 0 && (
+          <>
+            <Divider label="Insights from the night" />
+            <div className="flex flex-col gap-4 mb-8">
+              {report.insights.map((insight, i) => (
+                <InsightCard key={i} insight={insight} index={i} />
+              ))}
+            </div>
+          </>
+        )}
 
         {/* ── Memory consolidations ───────────────────────────────────────── */}
         <Divider label="Memories consolidated" />

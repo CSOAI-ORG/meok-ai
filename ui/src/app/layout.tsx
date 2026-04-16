@@ -19,6 +19,7 @@ import { SensoryInit } from "@/components/sensory-init";
 import { JarvisOverlay } from "@/components/jarvis-overlay";
 import { JarvisStatusWidget } from "@/components/jarvis-status-widget";
 import { ConsentAwareProviders } from "@/components/consent-aware-providers";
+import { PwaInstallPrompt } from "@/components/pwa-install-prompt";
 import "./globals.css";
 
 const dmSans = DM_Sans({
@@ -196,6 +197,7 @@ export default function RootLayout({
             <WhatsNew />
             <JarvisOverlay />
             <JarvisStatusWidget />
+            <PwaInstallPrompt />
           </ExperienceModeProvider>
         </body>
       </html>

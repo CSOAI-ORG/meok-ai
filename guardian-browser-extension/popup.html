@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MEOK Guardian</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <span class="shield">🛡️</span>
+        <h1>MEOK Guardian</h1>
+      </div>
+      <div class="status" id="status-indicator" aria-label="Status">
+        <span class="dot"></span>
+        <span class="label" id="status-label">Active</span>
+      </div>
+    </header>
+
+    <section class="toggle-section">
+      <label class="toggle" for="enable-toggle">
+        <span>Enable Guardian Scanning</span>
+        <input type="checkbox" id="enable-toggle" />
+        <span class="slider"></span>
+      </label>
+    </section>
+
+    <section class="result-section" id="result-section">
+      <h2>Last Scan</h2>
+      <div class="result-card" id="result-card">
+        <p class="empty">No scan results yet.</p>
+      </div>
+    </section>
+
+    <footer>
+      <a href="https://csoai.org/dashboard" target="_blank" rel="noopener noreferrer">Open Dashboard →</a>
+    </footer>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

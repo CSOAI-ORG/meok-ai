@@ -6,6 +6,7 @@ import { clsx } from "clsx";
 import {
   LayoutDashboard,
   Database,
+  Brain,
   Shield,
   Bot,
   Moon,
@@ -132,6 +133,7 @@ const navGroups: NavGroup[] = [
     title: "Memory",
     items: [
       { href: "/dashboard/memories", label: "Memories", icon: Database },
+      { href: "/dashboard/memory", label: "Memory Vault", icon: Brain },
       { href: "/dashboard/dream", label: "Dreams", icon: Moon },
       { href: "/dashboard/voice", label: "Voice", icon: Zap },
     ],

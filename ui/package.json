@@ -13,7 +13,8 @@
     "test:e2e:api": "playwright test --project=api",
     "test:e2e:ui": "playwright test --project=chromium",
     "test:e2e:headed": "playwright test --headed",
-    "lint": "npx tsc --noEmit"
+    "lint": "npx tsc --noEmit",
+    "generate-vapid": "node -e \"const webPush = require('web-push'); const vapidKeys = webPush.generateVAPIDKeys(); console.log('NEXT_PUBLIC_VAPID_PUBLIC_KEY=' + vapidKeys.publicKey); console.log('VAPID_PRIVATE_KEY=' + vapidKeys.privateKey);\""
   },
   "dependencies": {
     "@ai-sdk/anthropic": "^3.0.63",
@@ -45,6 +46,7 @@
     "recharts": "^3.8.0",
     "stripe": "^20.4.1",
     "svix": "^1.89.0",
+    "web-push": "^3.6.7",
     "zod": "^4.3.6"
   },
   "devDependencies": {
@@ -54,6 +56,7 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@types/web-push": "^3.6.4",
     "jest": "^30.3.0",
     "tailwindcss": "^4",
     "ts-jest": "^29.4.6",

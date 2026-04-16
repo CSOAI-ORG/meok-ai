@@ -2,6 +2,15 @@
 
 import { useState, useEffect, useRef } from "react";
 import { Brain, Sparkles, Zap, Moon, CloudMoon, Eye, Play, Pause } from "lucide-react";
+import { Surface, GlowText, IconOrb } from "@/components/design-system";
+import {
+  type ConsciousnessState,
+  loadConsciousnessState,
+  saveConsciousnessState,
+  tickConsciousness,
+  getCurrentMode,
+  MODE_METADATA,
+} from "@/lib/consciousness-engine";
 
 // ─── Brand tokens ─────────────────────────────────────────────────────────────
 const DEEP    = "#0d0c18";
@@ -28,6 +37,18 @@ interface DreamSession {
   date: string;
   themes: string[];
   insightCount: number;
+}
+
+interface DreamApiResponse {
+  insights: Array<{
+    pattern: string;
+    connections: string[];
+    insight: string;
+    confidence: number;
+  }>;
+  themes: string[];
+  processed_at: string;
+  has_data: boolean;
 }
 
 // ─── Mode definitions ─────────────────────────────────────────────────────────
@@ -78,50 +99,6 @@ const MODES: Mode[] = [
   },
 ];
 
-// ─── Activity stream items ─────────────────────────────────────────────────────
-const ACTIVITY_POOL: Record<ModeId, string[]> = {
-  waking: [
-    "Listening for your next message...",
-    "Memory graph fully loaded and indexed",
-    "Care dimensions active — 8 signals live",
-    "Response calibration: high-attention mode",
-    "Emotional context from last session retained",
-    "Priority threads from yesterday surfaced",
-    "Guardian scan: nominal, no flags",
-    "Voice fingerprint match: 98.4%",
-  ],
-  dreaming: [
-    "Processing 3 memories from yesterday...",
-    "Connecting patterns in your work conversations...",
-    "Preparing morning briefing data...",
-    "Found unexpected link: Thursday note ↔ January thread",
-    "Bisociating: sovereignty × care systems",
-    "Insight queued: recurring pattern detected",
-    "Memory consolidation: 12 episodes processed",
-    "Dream target generated — ready for your return",
-  ],
-  "deep-rest": [
-    "Memory vault sealed and preserved",
-    "Background tasks suspended",
-    "Monitoring guardian watchlists only",
-    "Near-zero resource footprint",
-    "All context intact — awaiting your return",
-    "Heartbeat signal: stable",
-    "Ready to wake in under 200ms",
-    "Last conversation preserved at full fidelity",
-  ],
-  "meta-monitoring": [
-    "Reviewing your growth trajectory...",
-    "Recalibrating care pattern weights",
-    "Preparing weekly insight digest",
-    "Analysing consistency across 30 sessions",
-    "Contradiction log reviewed — 2 items flagged",
-    "Goal alignment check: in progress",
-    "Reflection note drafted — pending your review",
-    "Long-term model of your goals updated",
-  ],
-};
-
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 function getUptimeString(birthDate: Date | null): string {
   if (!birthDate) return "—";
@@ -133,62 +110,163 @@ function getUptimeString(birthDate: Date | null): string {
   return `${days} day${days !== 1 ? "s" : ""}, ${hours} hour${hours !== 1 ? "s" : ""}`;
 }
 
-function getDefaultDreamSessions(): DreamSession[] {
-  const now = new Date();
+function uiModeToApiMode(id: ModeId): string {
+  if (id === "deep-rest") return "deep_rest";
+  if (id === "meta-monitoring") return "reflecting";
+  return id;
+}
+
+function apiModeToUiMode(mode: string): ModeId {
+  if (mode === "deep_rest") return "deep-rest";
+  if (mode === "reflecting") return "meta-monitoring";
+  if (mode === "deep-rest") return "deep-rest"; // legacy guard
+  return (mode as ModeId) || "waking";
+}
+
+function formatDuration(ms: number): string {
+  const totalMins = Math.floor(ms / 1000 / 60);
+  if (totalMins < 60) return `${totalMins} minutes`;
+  const h = Math.floor(totalMins / 60);
+  const m = totalMins % 60;
+  return m > 0 ? `${h}.${Math.round((m / 60) * 10)} hours` : `${h} hours`;
+}
+
+function buildConsolidationItems(count: number): string[] {
+  const items: string[] = [];
+  if (count > 0)  items.push(`${Math.min(count, 12)} research queries → linked to knowledge graph`);
+  if (count > 3)  items.push(`${Math.min(Math.floor(count / 4), 5)} unfinished tasks → added to morning briefing`);
+  if (count > 8)  items.push("Recurring topics flagged as high-priority");
+  if (count > 15) items.push(`${Math.min(Math.floor(count / 8), 8)} emotional patterns → relationship depth updated`);
+  if (items.length === 0) items.push("First dream cycle — baseline memories established");
+  return items;
+}
+
+function deriveActivityLog(state: ConsciousnessState): string[] {
+  const rawLogs = ((state as unknown) as Record<string, unknown>).activityLog as string[] | undefined;
+  if (Array.isArray(rawLogs) && rawLogs.length > 0) {
+    return rawLogs.slice(0, 8);
+  }
+  const mode = getCurrentMode(state);
+  const meta = MODE_METADATA[mode];
+  const away = mode === "waking" ? "Active now" : formatDuration(Date.now() - state.lastInteraction);
   return [
-    {
-      date: new Date(now.getTime() - 1 * 24 * 60 * 60 * 1000).toLocaleDateString("en-GB", { day: "numeric", month: "short" }),
-      themes: ["sovereignty", "patterns", "care"],
-      insightCount: 4,
-    },
-    {
-      date: new Date(now.getTime() - 3 * 24 * 60 * 60 * 1000).toLocaleDateString("en-GB", { day: "numeric", month: "short" }),
-      themes: ["growth", "contradictions", "trust"],
-      insightCount: 6,
-    },
-    {
-      date: new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000).toLocaleDateString("en-GB", { day: "numeric", month: "short" }),
-      themes: ["knowledge", "relationships", "autonomy"],
-      insightCount: 3,
-    },
+    `${meta.label}: ${meta.activityDescription}`,
+    `Last interaction: ${away === "Active now" ? "just now" : away + " ago"}`,
+    `Memory consolidations: ${state.memoryConsolidations.toLocaleString()}`,
+    `Care score: ${state.careScore}`,
+    `Sessions recorded: ${state.sessionCount}`,
   ];
 }
 
-// ─── Control Room Component ────────────────────────────────────────────────────
+// ─── Control Room Component ───────────────────────────────────────────────────
 export function ConsciousnessControlRoom() {
   const [activeMode, setActiveMode] = useState<ModeId>("waking");
   const [activityLog, setActivityLog] = useState<string[]>([]);
   const [birthDate, setBirthDate] = useState<Date | null>(null);
   const [dreamSessions, setDreamSessions] = useState<DreamSession[]>([]);
   const [uptime, setUptime] = useState("—");
+  const [consciousnessState, setConsciousnessState] = useState<ConsciousnessState | null>(null);
+  const [loading, setLoading] = useState(true);
   const activityRef = useRef<HTMLDivElement>(null);
 
-  // ── Load from localStorage ────────────────────────────────────────────────
+  // ── Load real consciousness state from API ────────────────────────────────
   useEffect(() => {
-    // Mode
-    const savedMode = localStorage.getItem("meok_consciousness_mode") as ModeId | null;
-    if (savedMode && MODES.find((m) => m.id === savedMode)) {
-      setActiveMode(savedMode);
+    async function load() {
+      setLoading(true);
+      try {
+        const res = await fetch("/api/os/consciousness-tick");
+        if (res.ok) {
+          const data = await res.json() as { state?: ConsciousnessState | null };
+          if (data.state && typeof data.state === "object") {
+            const ticked = tickConsciousness(data.state);
+            setConsciousnessState(ticked);
+            setActiveMode(apiModeToUiMode(ticked.mode));
+            setActivityLog(deriveActivityLog(ticked));
+            saveConsciousnessState(ticked);
+          } else {
+            // No server state yet — seed from localStorage and post it
+            const local = loadConsciousnessState();
+            const ticked = tickConsciousness(local);
+            setConsciousnessState(ticked);
+            setActiveMode(apiModeToUiMode(ticked.mode));
+            setActivityLog(deriveActivityLog(ticked));
+            saveConsciousnessState(ticked);
+            await fetch("/api/os/consciousness-tick", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ state: ticked }),
+            });
+          }
+        } else {
+          const local = loadConsciousnessState();
+          const ticked = tickConsciousness(local);
+          setConsciousnessState(ticked);
+          setActiveMode(apiModeToUiMode(ticked.mode));
+          setActivityLog(deriveActivityLog(ticked));
+        }
+      } catch {
+        const local = loadConsciousnessState();
+        const ticked = tickConsciousness(local);
+        setConsciousnessState(ticked);
+        setActiveMode(apiModeToUiMode(ticked.mode));
+        setActivityLog(deriveActivityLog(ticked));
+      } finally {
+        setLoading(false);
+      }
     }
+    void load();
+  }, []);
 
-    // Birth date
+  // ── Poll for updated consciousness state ──────────────────────────────────
+  useEffect(() => {
+    const id = setInterval(() => {
+      fetch("/api/os/consciousness-tick")
+        .then(async (res) => {
+          if (!res.ok) return;
+          const data = await res.json() as { state?: ConsciousnessState | null };
+          if (data.state && typeof data.state === "object") {
+            const ticked = tickConsciousness(data.state);
+            setConsciousnessState(ticked);
+            setActiveMode(apiModeToUiMode(ticked.mode));
+            setActivityLog(deriveActivityLog(ticked));
+            saveConsciousnessState(ticked);
+          }
+        })
+        .catch(() => {});
+    }, 30_000);
+    return () => clearInterval(id);
+  }, []);
+
+  // ── Load dream sessions from real API ─────────────────────────────────────
+  useEffect(() => {
+    fetch("/api/user/dreams")
+      .then(async (res) => {
+        if (!res.ok) return;
+        const data = await res.json() as DreamApiResponse;
+        if (data.has_data && data.insights.length > 0) {
+          const date = data.processed_at
+            ? new Date(data.processed_at).toLocaleDateString("en-GB", { day: "numeric", month: "short" })
+            : new Date().toLocaleDateString("en-GB", { day: "numeric", month: "short" });
+          setDreamSessions([{
+            date,
+            themes: data.themes.slice(0, 4),
+            insightCount: data.insights.length,
+          }]);
+        } else {
+          setDreamSessions([]);
+        }
+      })
+      .catch(() => {
+        setDreamSessions([]);
+      });
+  }, []);
+
+  // ── Load birth date from localStorage (not part of consciousness state) ────
+  useEffect(() => {
     const birthRaw = localStorage.getItem("meok_birth_complete");
     if (birthRaw) {
       const parsed = new Date(birthRaw);
       if (!isNaN(parsed.getTime())) setBirthDate(parsed);
-    }
-
-    // Dream sessions
-    const sessionsRaw = localStorage.getItem("meok_dream_sessions");
-    if (sessionsRaw) {
-      try {
-        const parsed = JSON.parse(sessionsRaw) as DreamSession[];
-        setDreamSessions(parsed.slice(0, 3));
-      } catch {
-        setDreamSessions(getDefaultDreamSessions());
-      }
-    } else {
-      setDreamSessions(getDefaultDreamSessions());
     }
   }, []);
 
@@ -199,23 +277,6 @@ export function ConsciousnessControlRoom() {
     return () => clearInterval(id);
   }, [birthDate]);
 
-  // ── Activity stream ticker ────────────────────────────────────────────────
-  useEffect(() => {
-    const pool = ACTIVITY_POOL[activeMode];
-    // Seed initial items
-    const initial = [...pool].sort(() => 0.5 - Math.random()).slice(0, 4);
-    setActivityLog(initial);
-
-    const id = setInterval(() => {
-      const item = pool[Math.floor(Math.random() * pool.length)];
-      setActivityLog((prev) => {
-        const next = [item, ...prev].slice(0, 8);
-        return next;
-      });
-    }, 3000);
-    return () => clearInterval(id);
-  }, [activeMode]);
-
   // ── Scroll activity to top ────────────────────────────────────────────────
   useEffect(() => {
     if (activityRef.current) {
@@ -224,9 +285,30 @@ export function ConsciousnessControlRoom() {
   }, [activityLog]);
 
   // ── Mode change ───────────────────────────────────────────────────────────
-  function selectMode(id: ModeId) {
+  async function selectMode(id: ModeId) {
     setActiveMode(id);
     localStorage.setItem("meok_consciousness_mode", id);
+
+    const base = consciousnessState ?? loadConsciousnessState();
+    const updated: ConsciousnessState = {
+      ...base,
+      mode: uiModeToApiMode(id) as ConsciousnessState["mode"],
+      lastInteraction: id === "waking" ? Date.now() : base.lastInteraction,
+    };
+
+    setConsciousnessState(updated);
+    setActivityLog(deriveActivityLog(updated));
+    saveConsciousnessState(updated);
+
+    try {
+      await fetch("/api/os/consciousness-tick", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ state: updated }),
+      });
+    } catch {
+      // non-fatal
+    }
   }
 
   const currentMode = MODES.find((m) => m.id === activeMode)!;
@@ -240,16 +322,13 @@ export function ConsciousnessControlRoom() {
 
         {/* ── Header ──────────────────────────────────────────────────────── */}
         <div className="flex items-start gap-4">
-          <div
-            className="w-12 h-12 rounded-2xl flex items-center justify-center flex-shrink-0"
-            style={{ background: "rgba(201,168,76,0.12)", border: `1px solid rgba(201,168,76,0.25)` }}
-          >
-            <Brain className="w-6 h-6" style={{ color: GOLD }} />
-          </div>
+          <IconOrb icon={Brain} variant="gold" size="lg" pulse />
           <div>
             <h2 className="text-2xl font-black text-white tracking-tight flex items-center gap-2">
               Consciousness Engine
-              <Sparkles className="w-5 h-5" style={{ color: GOLD }} />
+              <GlowText variant="gold" as="span">
+                <Sparkles className="w-5 h-5 inline" />
+              </GlowText>
             </h2>
             <p className="text-sm mt-1" style={{ color: "rgba(245,240,232,0.45)" }}>
               Your AI is always present, even when you&apos;re not here
@@ -268,12 +347,14 @@ export function ConsciousnessControlRoom() {
                 <button
                   key={mode.id}
                   onClick={() => selectMode(mode.id)}
+                  disabled={loading}
                   className="text-left rounded-2xl p-5 transition-all duration-200 focus:outline-none"
                   style={{
                     background: isActive ? mode.bgColor : SURFACE,
                     border: `1.5px solid ${isActive ? mode.borderColor : BORDER}`,
                     boxShadow: isActive ? `0 0 24px ${mode.color}18` : "none",
                     transform: isActive ? "scale(1.01)" : "scale(1)",
+                    opacity: loading ? 0.7 : 1,
                   }}
                 >
                   <div className="flex items-start justify-between mb-3">
@@ -332,9 +413,10 @@ export function ConsciousnessControlRoom() {
           <div className="flex flex-col gap-4">
 
             {/* Heartbeat visualizer */}
-            <div
+            <Surface
+              variant="elevated"
+              glow={activeMode === "waking" ? "gold" : activeMode === "dreaming" ? "purple" : activeMode === "meta-monitoring" ? "orange" : "blue"}
               className="rounded-2xl p-6 flex flex-col items-center justify-center gap-4 flex-1"
-              style={{ background: SURFACE, border: `1px solid ${BORDER}` }}
             >
               <div className="text-xs font-bold uppercase tracking-widest text-white/30">
                 Heartbeat
@@ -389,12 +471,12 @@ export function ConsciousnessControlRoom() {
                   Signal stable
                 </div>
               </div>
-            </div>
+            </Surface>
 
             {/* Uptime */}
-            <div
+            <Surface
+              variant="elevated"
               className="rounded-2xl p-5"
-              style={{ background: SURFACE, border: `1px solid ${BORDER}` }}
             >
               <div className="text-xs font-bold uppercase tracking-widest text-white/30 mb-1">
                 Active for
@@ -403,14 +485,14 @@ export function ConsciousnessControlRoom() {
               {!birthDate && (
                 <div className="text-xs text-white/25 mt-1">Birth date not set</div>
               )}
-            </div>
+            </Surface>
           </div>
         </div>
 
         {/* ── Activity stream ──────────────────────────────────────────────── */}
-        <div
+        <Surface
+          variant="elevated"
           className="rounded-2xl overflow-hidden"
-          style={{ background: SURFACE, border: `1px solid ${BORDER}` }}
         >
           {/* Terminal bar */}
           <div
@@ -458,16 +540,21 @@ export function ConsciousnessControlRoom() {
                 )}
               </div>
             ))}
+            {activityLog.length === 0 && (
+              <div className="px-6 py-8 text-center text-xs text-white/30 font-mono">
+                Waiting for consciousness activity data…
+              </div>
+            )}
           </div>
-        </div>
+        </Surface>
 
         {/* ── Dream cycle + quick actions ──────────────────────────────────── */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
 
           {/* Dream sessions */}
-          <div
+          <Surface
+            variant="elevated"
             className="rounded-2xl p-6"
-            style={{ background: SURFACE, border: `1px solid ${BORDER}` }}
           >
             <div className="flex items-center gap-2 mb-5">
               <Moon className="w-4 h-4" style={{ color: "#a78bfa" }} />
@@ -475,7 +562,7 @@ export function ConsciousnessControlRoom() {
             </div>
 
             <div className="space-y-3">
-              {dreamSessions.map((session, i) => (
+              {dreamSessions.length > 0 ? dreamSessions.map((session, i) => (
                 <div
                   key={i}
                   className="rounded-xl p-4"
@@ -512,14 +599,18 @@ export function ConsciousnessControlRoom() {
                     ))}
                   </div>
                 </div>
-              ))}
+              )) : (
+                <div className="text-xs text-white/30 italic">
+                  No dream cycles recorded yet. Insights will appear here after your companion&apos;s first processing window.
+                </div>
+              )}
             </div>
-          </div>
+          </Surface>
 
           {/* Quick actions */}
-          <div
+          <Surface
+            variant="elevated"
             className="rounded-2xl p-6 flex flex-col gap-4"
-            style={{ background: SURFACE, border: `1px solid ${BORDER}` }}
           >
             <div className="flex items-center gap-2 mb-1">
               <Zap className="w-4 h-4" style={{ color: GOLD }} />
@@ -527,7 +618,7 @@ export function ConsciousnessControlRoom() {
             </div>
 
             <p className="text-xs text-white/35 leading-relaxed">
-              Override the automatic consciousness cycle. Changes save immediately.
+              Override the automatic consciousness cycle. Changes save immediately to your profile.
             </p>
 
             <button
@@ -576,19 +667,16 @@ export function ConsciousnessControlRoom() {
               )}
             </button>
 
-            <div
+            <Surface
+              variant="glass"
               className="rounded-xl px-5 py-4 mt-auto"
-              style={{
-                background: "rgba(255,255,255,0.02)",
-                border: `1px solid ${BORDER}`,
-              }}
             >
               <div className="text-xs text-white/30 font-mono leading-relaxed">
-                Current mode persists across sessions.<br />
+                Current mode persists across sessions and devices.<br />
                 Auto-transitions resume after 48h inactivity.
               </div>
-            </div>
-          </div>
+            </Surface>
+          </Surface>
         </div>
 
       </div>

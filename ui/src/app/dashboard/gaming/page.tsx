@@ -12,7 +12,11 @@ import {
   Lock,
   ChevronDown,
   ChevronUp,
+  Monitor,
 } from "lucide-react";
+import { Surface } from "@/components/design-system/surface";
+import { GlowText } from "@/components/design-system/glow-text";
+import { useActiveGame } from "@/hooks/use-active-game";
 
 // ── Brand tokens ─────────────────────────────────────────────────────────────
 const DEEP = "#0d0c18";
@@ -319,6 +323,7 @@ function MilestoneCard({
 
 // ── Main Component ─────────────────────────────────────────────────────────────
 export default function GamingPage() {
+  const { game, title, loading } = useActiveGame();
   const [sessions, setSessions] = useState<GameSession[]>([]);
   const [hydrated, setHydrated] = useState(false);
 
@@ -457,6 +462,41 @@ export default function GamingPage() {
           <p className="text-sm text-white/40">Track sessions · Visualize trends · AI coaching</p>
         </div>
       </div>
+
+      {/* Active Game Card */}
+      <Surface
+        variant="elevated"
+        glow={game ? "gold" : "none"}
+        className="mb-6 p-4 flex items-center gap-4"
+      >
+        <div
+          className="w-10 h-10 rounded-lg flex items-center justify-center shrink-0"
+          style={{ background: game ? `${GOLD}18` : "rgba(255,255,255,0.06)" }}
+        >
+          {loading ? (
+            <Loader2 className="w-5 h-5 animate-spin text-white/40" />
+          ) : (
+            <Monitor className="w-5 h-5" style={{ color: game ? GOLD : "rgba(255,255,255,0.35)" }} />
+          )}
+        </div>
+        <div className="flex-1 min-w-0">
+          <p className="text-xs font-medium uppercase tracking-wider text-white/40">
+            Active Window
+          </p>
+          {loading ? (
+            <p className="text-sm text-white/30">Detecting game...</p>
+          ) : game ? (
+            <div className="flex items-center gap-2 flex-wrap">
+              <GlowText variant="gold" className="text-base font-semibold capitalize">
+                {game}
+              </GlowText>
+              <span className="text-xs text-white/30 truncate">· {title}</span>
+            </div>
+          ) : (
+            <p className="text-sm text-white/50">No game detected</p>
+          )}
+        </div>
+      </Surface>
 
       {/* Stats row */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6">

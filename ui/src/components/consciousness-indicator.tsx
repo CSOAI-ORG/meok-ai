@@ -199,12 +199,29 @@ export function ConsciousnessIndicator({
   const [state, setState] = useState<ConsciousnessState | null>(null);
   const [modalOpen, setModalOpen] = useState(false);
 
-  // Load + tick on mount
+  // Load from server on mount, fallback to localStorage
   useEffect(() => {
-    const loaded = loadConsciousnessState();
-    const ticked = tickConsciousness(loaded);
-    saveConsciousnessState(ticked);
-    setState(ticked);
+    async function load() {
+      try {
+        const res = await fetch("/api/os/consciousness-tick");
+        if (res.ok) {
+          const data = await res.json() as { state?: ConsciousnessState | null };
+          if (data.state && typeof data.state === "object") {
+            const ticked = tickConsciousness(data.state);
+            saveConsciousnessState(ticked);
+            setState(ticked);
+            return;
+          }
+        }
+      } catch {
+        // fall through to localStorage
+      }
+      const loaded = loadConsciousnessState();
+      const ticked = tickConsciousness(loaded);
+      saveConsciousnessState(ticked);
+      setState(ticked);
+    }
+    void load();
   }, []);
 
   // Re-tick every 60 seconds so the indicator updates without a refresh
@@ -217,6 +234,24 @@ export function ConsciousnessIndicator({
         return ticked;
       });
     }, 60_000);
+    return () => clearInterval(id);
+  }, []);
+
+  // Re-fetch from server every 30s for cross-device consistency
+  useEffect(() => {
+    const id = setInterval(() => {
+      fetch("/api/os/consciousness-tick")
+        .then(async (res) => {
+          if (!res.ok) return;
+          const data = await res.json() as { state?: ConsciousnessState | null };
+          if (data.state && typeof data.state === "object") {
+            const ticked = tickConsciousness(data.state);
+            saveConsciousnessState(ticked);
+            setState(ticked);
+          }
+        })
+        .catch(() => {});
+    }, 30_000);
     return () => clearInterval(id);
   }, []);
 
@@ -290,10 +325,27 @@ export function ConsciousnessDot({
   const [modalOpen, setModalOpen] = useState(false);
 
   useEffect(() => {
-    const loaded = loadConsciousnessState();
-    const ticked = tickConsciousness(loaded);
-    saveConsciousnessState(ticked);
-    setState(ticked);
+    async function load() {
+      try {
+        const res = await fetch("/api/os/consciousness-tick");
+        if (res.ok) {
+          const data = await res.json() as { state?: ConsciousnessState | null };
+          if (data.state && typeof data.state === "object") {
+            const ticked = tickConsciousness(data.state);
+            saveConsciousnessState(ticked);
+            setState(ticked);
+            return;
+          }
+        }
+      } catch {
+        // fall through
+      }
+      const loaded = loadConsciousnessState();
+      const ticked = tickConsciousness(loaded);
+      saveConsciousnessState(ticked);
+      setState(ticked);
+    }
+    void load();
   }, []);
 
   useEffect(() => {
@@ -305,6 +357,24 @@ export function ConsciousnessDot({
         return ticked;
       });
     }, 60_000);
+    return () => clearInterval(id);
+  }, []);
+
+  // Re-fetch from server every 30s
+  useEffect(() => {
+    const id = setInterval(() => {
+      fetch("/api/os/consciousness-tick")
+        .then(async (res) => {
+          if (!res.ok) return;
+          const data = await res.json() as { state?: ConsciousnessState | null };
+          if (data.state && typeof data.state === "object") {
+            const ticked = tickConsciousness(data.state);
+            saveConsciousnessState(ticked);
+            setState(ticked);
+          }
+        })
+        .catch(() => {});
+    }, 30_000);
     return () => clearInterval(id);
   }, []);
 

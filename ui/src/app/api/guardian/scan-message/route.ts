@@ -9,6 +9,7 @@ import {
 } from '@/lib/guardian/validation'
 import { guardianRateLimit, attachRateLimitHeaders } from '@/lib/guardian/rate-limit'
 import { logGuardianAction } from '@/lib/guardian/audit-log'
+import { sendPushToUser } from '@/lib/push'
 
 const THREAT_PATTERNS: Record<string, string[]> = {
   scam: [
@@ -240,6 +241,14 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
         title: severity === 'CRITICAL' ? 'Critical Guardian Alert' : 'Guardian Alert',
         message: `The Guardian system detected a potential ${topSignal} in a message. Please review your recent conversations.`,
         metadata: { severity, scores, confidence, companion_id },
+      }).catch(() => {})
+
+      // Also send Web Push notification
+      void sendPushToUser(validUserId, {
+        title: severity === 'CRITICAL' ? 'Critical Guardian Alert' : 'Guardian Alert',
+        body: `Potential ${topSignal} detected in a message. Tap to review.`,
+        tag: `guardian-${validUserId}-${Date.now()}`,
+        data: { url: '/dashboard/guardian', severity, topSignal },
       }).catch(() => {})
     }
 

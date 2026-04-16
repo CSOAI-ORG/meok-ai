@@ -20,9 +20,21 @@ const HEARTBEAT_KEY = "meok_sw_heartbeat";
 
 /* ── Install / Activate ───────────────────────────────────────────────────── */
 
+const APP_SHELL_CACHE = "meok-app-shell-v1";
+const APP_SHELL_URLS = [
+  "/",
+  "/manifest.webmanifest",
+  "/brand/icon-192.png",
+  "/brand/icon-512.png",
+];
+
 self.addEventListener("install", (event) => {
-  // Skip waiting so the new worker takes over immediately
-  event.waitUntil(self.skipWaiting());
+  event.waitUntil(
+    caches
+      .open(APP_SHELL_CACHE)
+      .then((cache) => cache.addAll(APP_SHELL_URLS))
+      .then(() => self.skipWaiting())
+  );
 });
 
 self.addEventListener("activate", (event) => {
@@ -134,6 +146,49 @@ self.addEventListener("message", (event) => {
     default:
       break;
   }
+});
+
+/* ── Push notifications ─────────────────────────────────────────────────── */
+
+self.addEventListener("push", (event) => {
+  let data = {};
+  try {
+    data = event.data.json();
+  } catch {
+    data = { title: "MEOK Guardian", body: "New alert available." };
+  }
+
+  const title = data.title || "MEOK Guardian";
+  const options = {
+    body: data.body || "",
+    icon: data.icon || "/brand/icon-192.png",
+    badge: data.badge || "/brand/icon-192.png",
+    tag: data.tag || "guardian-alert",
+    data: data.data || {},
+    actions: data.actions || [],
+    requireInteraction: data.severity === "CRITICAL" || data.severity === "HIGH",
+  };
+
+  event.waitUntil(self.registration.showNotification(title, options));
+});
+
+self.addEventListener("notificationclick", (event) => {
+  event.notification.close();
+  const url = event.notification.data?.url || "/dashboard/guardian";
+  event.waitUntil(
+    self.clients
+      .matchAll({ type: "window", includeUncontrolled: true })
+      .then((clientList) => {
+        for (const client of clientList) {
+          if (client.url.includes(url) && "focus" in client) {
+            return client.focus();
+          }
+        }
+        if (self.clients.openWindow) {
+          return self.clients.openWindow(url);
+        }
+      })
+  );
 });
 
 /* ── Periodic sync (opportunistic, where supported) ──────────────────────── */

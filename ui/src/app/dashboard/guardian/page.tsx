@@ -21,6 +21,7 @@ import {
   Baby,
   UserPlus,
   Zap,
+  ScanLine,
 } from "lucide-react";
 
 // ─── BRAND TOKENS ─────────────────────────────────────────────────────────────
@@ -296,6 +297,23 @@ export default function GuardianDashboardPage() {
               <div>
                 <p className="text-sm font-semibold text-white">Message Scanning</p>
                 <p className="text-xs text-white/40 mt-0.5">Last scan: 2 minutes ago · 0 threats detected</p>
+              </div>
+            </div>
+            <div
+              className="flex items-start gap-3 p-4 rounded-xl border cursor-pointer transition-all hover:opacity-90"
+              onClick={() => router.push('/dashboard/guardian/email-scanner')}
+              style={{
+                background: "rgba(201,168,76,0.08)",
+                borderColor: "rgba(201,168,76,0.25)",
+              }}
+            >
+              <div className="w-2 h-2 rounded-full mt-1.5 flex-shrink-0 animate-pulse" style={{ background: GOLD }} />
+              <div className="flex-1">
+                <div className="flex items-center justify-between">
+                  <p className="text-sm font-semibold text-white">Email Scanner</p>
+                  <ScanLine size={14} color={GOLD} />
+                </div>
+                <p className="text-xs text-white/40 mt-0.5">Forward suspicious emails for instant threat analysis</p>
               </div>
             </div>
             <div

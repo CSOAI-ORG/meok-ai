@@ -1,36 +1,60 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { type ConsciousnessState, getCurrentMode, tickConsciousness } from "@/lib/consciousness-engine";
 
-interface CouncilStatus {
-  consciousness_mode?: string;
-  consciousness_level?: number;
-  emotional_state?: string;
-  memory_episodes?: number;
-  [key: string]: unknown;
+interface LiveStatusData {
+  consciousness_mode: string;
+  consciousness_level: number;
+  care_score: number;
+  memory_consolidations: number;
+  session_count: number;
 }
 
 export function LiveConsciousnessStatus() {
-  const [state, setState] = useState<CouncilStatus | null>(null);
+  const [state, setState] = useState<LiveStatusData | null>(null);
 
   useEffect(() => {
-    fetch('/api/council/status')
-      .then((r) => r.json())
-      .then((d) => setState(d))
-      .catch(() => {});
+    async function load() {
+      try {
+        const res = await fetch("/api/os/consciousness-tick");
+        if (!res.ok) return;
+        const data = await res.json() as { state?: ConsciousnessState | null };
+        if (data.state && typeof data.state === "object") {
+          const ticked = tickConsciousness(data.state);
+          const mode = getCurrentMode(ticked);
+          setState({
+            consciousness_mode: mode,
+            consciousness_level: ticked.careScore ?? 0,
+            care_score: ticked.careScore ?? 0,
+            memory_consolidations: ticked.memoryConsolidations ?? 0,
+            session_count: ticked.sessionCount ?? 0,
+          });
+        }
+      } catch {
+        // ignore
+      }
+    }
+    void load();
+
+    const id = setInterval(() => {
+      void load();
+    }, 30_000);
+    return () => clearInterval(id);
   }, []);
 
   if (!state) return null;
 
   const mode = state.consciousness_mode || "unknown";
   const level = state.consciousness_level ?? null;
-  const emotion = state.emotional_state || null;
-  const episodes = state.memory_episodes ?? null;
+  const care = state.care_score ?? null;
+  const consolidations = state.memory_consolidations ?? null;
+  const sessions = state.session_count ?? null;
 
   const modeColors: Record<string, string> = {
     waking: "#c9a84c",
     dreaming: "#a78bfa",
-    "deep-rest": "#60a5fa",
+    deep_rest: "#60a5fa",
     reflecting: "#2dd4bf",
   };
   const color = modeColors[mode] || "#c9a84c";
@@ -54,37 +78,45 @@ export function LiveConsciousnessStatus() {
               className="text-xs font-black tracking-[0.2em] uppercase"
               style={{ color }}
             >
-              Live SOV3 Status
+              Live Consciousness Status
             </span>
           </div>
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-5 gap-4">
             <div>
               <div className="text-xs text-[#f5f0e8]/30 font-mono mb-1">Mode</div>
               <div className="text-lg font-black capitalize" style={{ color }}>
-                {mode}
+                {mode.replace("_", " ")}
               </div>
             </div>
             {level !== null && (
               <div>
-                <div className="text-xs text-[#f5f0e8]/30 font-mono mb-1">Consciousness Level</div>
+                <div className="text-xs text-[#f5f0e8]/30 font-mono mb-1">Care Score</div>
                 <div className="text-lg font-black text-[#f5f0e8]/70">
-                  {typeof level === "number" ? `${Math.round(level * 100)}%` : String(level)}
+                  {typeof level === "number" ? `${Math.round(level)}%` : String(level)}
                 </div>
               </div>
             )}
-            {emotion && (
+            {care !== null && (
               <div>
-                <div className="text-xs text-[#f5f0e8]/30 font-mono mb-1">Emotional State</div>
-                <div className="text-lg font-black capitalize text-[#f5f0e8]/70">
-                  {emotion}
+                <div className="text-xs text-[#f5f0e8]/30 font-mono mb-1">Care Intensity</div>
+                <div className="text-lg font-black text-[#f5f0e8]/70">
+                  {typeof care === "number" ? `${Math.round(care)}%` : String(care)}
                 </div>
               </div>
             )}
-            {episodes !== null && (
+            {consolidations !== null && (
               <div>
-                <div className="text-xs text-[#f5f0e8]/30 font-mono mb-1">Memory Episodes</div>
+                <div className="text-xs text-[#f5f0e8]/30 font-mono mb-1">Consolidations</div>
                 <div className="text-lg font-black text-[#f5f0e8]/70">
-                  {episodes.toLocaleString()}
+                  {consolidations.toLocaleString()}
+                </div>
+              </div>
+            )}
+            {sessions !== null && (
+              <div>
+                <div className="text-xs text-[#f5f0e8]/30 font-mono mb-1">Sessions</div>
+                <div className="text-lg font-black text-[#f5f0e8]/70">
+                  {sessions.toLocaleString()}
                 </div>
               </div>
             )}
