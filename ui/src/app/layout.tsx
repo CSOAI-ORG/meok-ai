@@ -9,17 +9,11 @@ function MaybeClerk({ children }: { children: React.ReactNode }) {
   if (!hasValidClerk) return <>{children}</>;
   return <ClerkProvider>{children}</ClerkProvider>;
 }
-import { CookieConsent } from "@/components/cookie-consent";
-import { SessionTimeout } from "@/components/session-timeout";
-import { WhatsNew } from "@/components/whats-new";
 import { ExperienceModeProvider } from "@/components/experience-mode";
 import { GlobalNav } from "@/components/GlobalNav";
 import { MarketingFooter } from "@/components/marketing-footer";
 import { SensoryInit } from "@/components/sensory-init";
-import { JarvisOverlay } from "@/components/jarvis-overlay";
-import { JarvisStatusWidget } from "@/components/jarvis-status-widget";
 import { ConsentAwareProviders } from "@/components/consent-aware-providers";
-import { PwaInstallPrompt } from "@/components/pwa-install-prompt";
 import "./globals.css";
 
 const dmSans = DM_Sans({
@@ -192,12 +186,6 @@ export default function RootLayout({
             <GlobalNav />
             <ConsentAwareProviders>{children}</ConsentAwareProviders>
             <MarketingFooter />
-            <CookieConsent />
-            <SessionTimeout />
-            <WhatsNew />
-            <JarvisOverlay />
-            <JarvisStatusWidget />
-            <PwaInstallPrompt />
           </ExperienceModeProvider>
         </body>
       </html>
