@@ -28,6 +28,11 @@ import {
   Crown,
   MessageSquare,
   Calendar,
+  ListChecks,
+  Loader2,
+  AlertCircle,
+  Flag,
+  Clock,
 } from "lucide-react";
 
 // ── Brand tokens ──────────────────────────────────────────────────
@@ -66,6 +71,16 @@ interface EntitySummary {
   care_alignment: number;
   hatch_name?: string;
   created_at?: string;
+}
+
+interface RalphTask {
+  id: string;
+  title: string;
+  description?: string;
+  agent: string;
+  status: string;
+  priority: number;
+  created_at: string;
 }
 
 // ── Helpers ───────────────────────────────────────────────────────
@@ -109,6 +124,72 @@ const hatchEmoji: Record<number, string> = {
   2: "🌱",
   3: "⚡",
 };
+
+function UserIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      className={className}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+      <circle cx="12" cy="7" r="4" />
+    </svg>
+  );
+}
+
+function TaskStatusPill({ status }: { status: string }) {
+  const colour =
+    status === "complete"
+      ? "#4ade80"
+      : status === "running"
+      ? "#c9a84c"
+      : status === "blocked"
+      ? "#f87171"
+      : "#60a5fa";
+  const label =
+    status === "complete"
+      ? "Done"
+      : status === "running"
+      ? "In Progress"
+      : status === "queued"
+      ? "Pending"
+      : status === "blocked"
+      ? "Blocked"
+      : status;
+
+  return (
+    <span
+      className="text-[10px] px-2 py-0.5 rounded-full font-medium flex-shrink-0"
+      style={{
+        color: colour,
+        background:
+          status === "complete"
+            ? "rgba(74,222,128,0.12)"
+            : status === "running"
+            ? "rgba(201,168,76,0.12)"
+            : status === "blocked"
+            ? "rgba(248,113,113,0.12)"
+            : "rgba(96,165,250,0.12)",
+        border: `1px solid ${
+          status === "complete"
+            ? "rgba(74,222,128,0.25)"
+            : status === "running"
+            ? "rgba(201,168,76,0.25)"
+            : status === "blocked"
+            ? "rgba(248,113,113,0.25)"
+            : "rgba(96,165,250,0.25)"
+        }`,
+      }}
+    >
+      {label}
+    </span>
+  );
+}
 
 // Archetype emoji map keyed by dominant_trait
 const traitEmoji: Record<string, string> = {
@@ -242,6 +323,9 @@ export default function DashboardOverview() {
   const [plan, setPlan] = useState<PlanInfo | null>(null);
   const [entity, setEntity] = useState<EntitySummary | null>(null);
   const [msgsToday, setMsgsToday] = useState<number | null>(null);
+  const [ralphTasks, setRalphTasks] = useState<RalphTask[] | null>(null);
+  const [ralphLoading, setRalphLoading] = useState(true);
+  const [ralphError, setRalphError] = useState<string | null>(null);
 
   // Track which async loads have settled
   const [loadedMem, setLoadedMem] = useState(false);
@@ -365,7 +449,23 @@ export default function DashboardOverview() {
     loadBriefing();
     loadPlan();
     loadEntity();
+    const loadRalphTasks = async () => {
+      try {
+        setRalphLoading(true);
+        setRalphError(null);
+        const res = await fetch("/api/ralph/tasks");
+        if (!res.ok) throw new Error("Failed to load tasks");
+        const data = await res.json();
+        setRalphTasks(data.tasks || []);
+      } catch (e) {
+        setRalphError(e instanceof Error ? e.message : "Error loading tasks");
+      } finally {
+        setRalphLoading(false);
+      }
+    };
+
     loadMessages();
+    loadRalphTasks();
     const id = setInterval(load, 15000);
     return () => clearInterval(id);
   }, []);
@@ -787,6 +887,86 @@ export default function DashboardOverview() {
                     Start a conversation →
                   </Link>
                 </div>
+              )}
+            </div>
+
+            {/* ── Ralph Task Queue widget ── */}
+            <div>
+              <div className="flex items-center justify-between mb-4">
+                <p className="text-[10px] font-bold uppercase tracking-widest text-[#c9a84c]/50">
+                  Ralph Task Queue
+                </p>
+                <Link href="/os/tasks" className="text-[10px] text-white/30 hover:text-[#c9a84c] transition-colors">
+                  View all →
+                </Link>
+              </div>
+
+              {ralphLoading ? (
+                <div className="flex items-center justify-center py-8">
+                  <Loader2 className="w-5 h-5 animate-spin text-white/30" />
+                </div>
+              ) : ralphError ? (
+                <div className="flex flex-col items-center gap-2 py-6 text-center">
+                  <AlertCircle className="w-5 h-5 text-red-400" />
+                  <p className="text-xs text-white/40">{ralphError}</p>
+                  <button
+                    onClick={() => window.location.reload()}
+                    className="text-xs text-[#c9a84c] hover:underline"
+                  >
+                    Retry
+                  </button>
+                </div>
+              ) : (
+                (() => {
+                  const pending = (ralphTasks || []).filter((t) => t.status !== "complete").slice(0, 5);
+                  if (pending.length === 0) {
+                    return (
+                      <div className="flex flex-col items-center gap-3 py-8 text-center">
+                        <IconOrb icon={ListChecks} variant="gold" size="md" />
+                        <p className="text-sm text-white/50">No active tasks</p>
+                        <Link href="/os/tasks" className="text-sm font-medium text-[#c9a84c] hover:underline">
+                          Open Task Queue →
+                        </Link>
+                      </div>
+                    );
+                  }
+                  return (
+                    <div className="space-y-2">
+                      {pending.map((task) => (
+                        <Link key={task.id} href="/os/tasks">
+                          <Surface
+                            variant="elevated"
+                            className="px-4 py-3 flex items-center justify-between gap-3 cursor-pointer transition-all hover:border-[#c9a84c]/20"
+                          >
+                            <div className="min-w-0">
+                              <p className="text-sm text-white/80 truncate" title={task.title}>
+                                {task.title}
+                              </p>
+                              <div className="flex items-center gap-3 mt-1 text-[10px] text-white/30">
+                                <span className="flex items-center gap-1 capitalize">
+                                  <UserIcon className="w-3 h-3" />
+                                  {task.agent}
+                                </span>
+                                <span className="flex items-center gap-1">
+                                  <Flag className="w-3 h-3" />
+                                  P{task.priority}
+                                </span>
+                                <span className="flex items-center gap-1">
+                                  <Clock className="w-3 h-3" />
+                                  {new Date(task.created_at).toLocaleDateString("en-GB", {
+                                    day: "numeric",
+                                    month: "short",
+                                  })}
+                                </span>
+                              </div>
+                            </div>
+                            <TaskStatusPill status={task.status} />
+                          </Surface>
+                        </Link>
+                      ))}
+                    </div>
+                  );
+                })()
               )}
             </div>
           </Surface>

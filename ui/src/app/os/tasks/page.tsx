@@ -1,135 +1,135 @@
 'use client';
 
 /**
- * /os/tasks — MEOK Agentic Task Management page.
+ * /os/tasks — Ralph Task Management page.
  *
- * Shows the current task being executed, a queued task list, the session
- * task history, and a "Give character a task" input.
- * Keyboard shortcut: Cmd+T (Mac) / Ctrl+T (Win) focuses the task input.
+ * Fetches real Ralph tasks from /api/ralph/tasks and allows creating new tasks.
  */
 
 import { useState, useEffect, useRef, useCallback } from 'react';
-import { Plus, Trash2, ArrowUp, Layers, ListChecks, History, Terminal } from 'lucide-react';
-import { TaskExecution }     from '@/components/task-execution';
-import { TaskHistory }       from '@/components/task-history';
-import { Surface, GlowText, IconOrb } from '@/components/design-system';
 import {
-  classifyTask,
-  getStepsForTask,
-  estimateTime,
-  TASK_TYPE_LABELS,
-  TASK_TYPE_COLOURS,
-  type TaskType,
-  type Step,
-} from '@/lib/task-planner';
-import type { HistoryEntry } from '@/components/task-history';
+  Plus,
+  Trash2,
+  ArrowUp,
+  Layers,
+  ListChecks,
+  History,
+  Terminal,
+  Loader2,
+  AlertCircle,
+  CheckCircle2,
+  Clock,
+  PauseCircle,
+  User,
+  Calendar,
+  Flag,
+} from 'lucide-react';
+import { Surface, GlowText, IconOrb, StatCard } from '@/components/design-system';
 
-// ── Constants ────────────────────────────────────────────────────────────────
+// ── Brand tokens ──────────────────────────────────────────────────────────────
 
-const DEEP    = '#0d0c18';
+const DEEP = '#0d0c18';
 const SURFACE = '#13121f';
-const BORDER  = 'rgba(255,255,255,0.07)';
-const GOLD    = '#c9a84c';
+const BORDER = 'rgba(255,255,255,0.07)';
+const GOLD = '#c9a84c';
 
-// Demo character — in production this comes from user's active character context
-const CHARACTER = {
-  name: 'Sage',
-  avatar: '🔮',
-  mood: 'curious',
-} as const;
+// ── Types ─────────────────────────────────────────────────────────────────────
 
-// ── Internal task state ───────────────────────────────────────────────────────
-
-interface QueuedTask {
+interface RalphTask {
   id: string;
-  description: string;
-  type: TaskType;
-  addedAt: Date;
+  title: string;
+  description?: string;
+  agent: string;
+  status: string;
+  priority: number;
+  care_score?: number;
+  output_data?: Record<string, unknown>;
+  error_message?: string;
+  requires_approval?: boolean;
+  approved_at?: string;
+  started_at?: string;
+  completed_at?: string;
+  created_at: string;
+  project_id?: string;
 }
 
-interface ActiveTask {
-  id: string;
-  description: string;
-  type: TaskType;
-  steps: Step[];
-  output: string;
-  progress: number;
-  isPaused: boolean;
-  startedAt: Date;
-  estimatedSeconds: number;
+// ── Helpers ───────────────────────────────────────────────────────────────────
+
+function statusColor(status: string): "gold" | "green" | "red" | "blue" | "orange" | "purple" {
+  switch (status) {
+    case 'complete':
+      return 'green';
+    case 'running':
+      return 'gold';
+    case 'queued':
+      return 'blue';
+    case 'blocked':
+      return 'red';
+    default:
+      return 'purple';
+  }
 }
 
-// ── Simulation helpers ────────────────────────────────────────────────────────
-// In production these are replaced by real SSE / websocket events from the API.
+function statusLabel(status: string): string {
+  switch (status) {
+    case 'complete':
+      return 'Completed';
+    case 'running':
+      return 'In Progress';
+    case 'queued':
+      return 'Pending';
+    case 'blocked':
+      return 'Blocked';
+    default:
+      return status;
+  }
+}
 
-function simulateProgress(
-  task: ActiveTask,
-  setTask: React.Dispatch<React.SetStateAction<ActiveTask | null>>
-) {
-  const totalMs = task.estimatedSeconds * 1000;
-  const steps   = task.steps.length;
-  let   tick    = 0;
-  const intervalMs = 300;
-  const totalTicks = totalMs / intervalMs;
-
-  const id = setInterval(() => {
-    tick++;
-    const rawProgress = Math.min(100, (tick / totalTicks) * 100);
-
-    // Activate / complete steps based on progress bands
-    const stepIndex = Math.min(steps - 1, Math.floor((rawProgress / 100) * steps));
-
-    setTask((prev) => {
-      if (!prev || prev.isPaused) return prev;
-
-      const updatedSteps: Step[] = prev.steps.map((s, i) => ({
-        ...s,
-        status:
-          i < stepIndex  ? 'done'   :
-          i === stepIndex ? 'active' :
-          'pending',
-      }));
-
-      // Trickle demo output when a new step activates
-      const isNewStep = prev.steps[stepIndex]?.status !== 'active';
-      const appendLine = isNewStep && stepIndex < steps
-        ? `\n> ${prev.steps[stepIndex]?.label ?? ''}…\n`
-        : '';
-
-      if (rawProgress >= 100) {
-        clearInterval(id);
-        // Mark all done
-        const finalSteps: Step[] = prev.steps.map((s) => ({ ...s, status: 'done' as const }));
-        return { ...prev, steps: finalSteps, progress: 100, output: prev.output + appendLine };
-      }
-
-      return {
-        ...prev,
-        steps: updatedSteps,
-        progress: rawProgress,
-        output: prev.output + appendLine,
-      };
-    });
-
-    if (tick >= totalTicks) clearInterval(id);
-  }, intervalMs);
-
-  return id;
+function formatDate(iso?: string): string {
+  if (!iso) return '—';
+  return new Date(iso).toLocaleDateString('en-GB', {
+    day: 'numeric',
+    month: 'short',
+    year: 'numeric',
+  });
 }
 
 // ── Page ──────────────────────────────────────────────────────────────────────
 
 export default function TasksPage() {
-  const [activeTask,  setActiveTask]  = useState<ActiveTask  | null>(null);
-  const [queue,       setQueue]       = useState<QueuedTask[]>([]);
-  const [history,     setHistory]     = useState<HistoryEntry[]>([]);
-  const [input,       setInput]       = useState('');
-  const [inputFocus,  setInputFocus]  = useState(false);
+  const [tasks, setTasks] = useState<RalphTask[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
-  const inputRef     = useRef<HTMLInputElement>(null);
-  const simIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const [inputTitle, setInputTitle] = useState('');
+  const [inputDesc, setInputDesc] = useState('');
+  const [inputFocus, setInputFocus] = useState(false);
+  const [creating, setCreating] = useState(false);
 
-  // ── Keyboard shortcut: Cmd+T ──────────────────────────────────────────────
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  // ── Fetch tasks ─────────────────────────────────────────────────────────────
+
+  const fetchTasks = useCallback(async () => {
+    try {
+      setLoading(true);
+      setError(null);
+      const res = await fetch('/api/ralph/tasks');
+      if (!res.ok) throw new Error('Failed to fetch tasks');
+      const data = (await res.json()) as { tasks: RalphTask[] };
+      setTasks(data.tasks || []);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Unknown error');
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    fetchTasks();
+  }, [fetchTasks]);
+
+  // ── Keyboard shortcut: Cmd+T ────────────────────────────────────────────────
 
   useEffect(() => {
     function handleKeyDown(e: KeyboardEvent) {
@@ -142,119 +142,57 @@ export default function TasksPage() {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
 
-  // ── Start a task ──────────────────────────────────────────────────────────
+  // ── Create task ─────────────────────────────────────────────────────────────
 
-  const startTask = useCallback((description: string) => {
-    const type            = classifyTask(description);
-    const steps           = getStepsForTask(type);
-    const estimatedSeconds = estimateTime(type);
-
-    const task: ActiveTask = {
-      id:               crypto.randomUUID(),
-      description,
-      type,
-      steps,
-      output:           `Starting: ${description}\n`,
-      progress:         0,
-      isPaused:         false,
-      startedAt:        new Date(),
-      estimatedSeconds,
-    };
-
-    setActiveTask(task);
-
-    // Clear any existing simulation
-    if (simIntervalRef.current) clearInterval(simIntervalRef.current);
-    simIntervalRef.current = simulateProgress(task, setActiveTask);
-  }, []);
-
-  // ── Watch for task completion → move to history ───────────────────────────
-
-  useEffect(() => {
-    if (activeTask?.progress === 100) {
-      const elapsed = Math.round(
-        (Date.now() - activeTask.startedAt.getTime()) / 1000
-      );
-
-      const entry: HistoryEntry = {
-        id:               activeTask.id,
-        characterName:    CHARACTER.name,
-        characterAvatar:  CHARACTER.avatar,
-        taskDescription:  activeTask.description,
-        taskType:         activeTask.type,
-        durationSeconds:  elapsed,
-        output:           activeTask.output,
-        completedAt:      new Date(),
-      };
-
-      setHistory((prev) => [entry, ...prev]);
-
-      // Short delay so user sees 100% before clearing
-      const t = setTimeout(() => {
-        setActiveTask(null);
-        // Dequeue next if any
-        setQueue((prev) => {
-          if (prev.length === 0) return prev;
-          const [next, ...rest] = prev;
-          startTask(next.description);
-          return rest;
-        });
-      }, 1800);
-
-      return () => clearTimeout(t);
-    }
-  }, [activeTask?.progress, activeTask?.id]); // eslint-disable-line react-hooks/exhaustive-deps
-
-  // ── Handlers ──────────────────────────────────────────────────────────────
-
-  function handleSubmit() {
-    const trimmed = input.trim();
+  async function handleSubmit() {
+    const trimmed = inputTitle.trim();
     if (!trimmed) return;
-    setInput('');
 
-    if (!activeTask) {
-      startTask(trimmed);
-    } else {
-      // Queue it
-      const type = classifyTask(trimmed);
-      setQueue((prev) => [
-        ...prev,
-        { id: crypto.randomUUID(), description: trimmed, type, addedAt: new Date() },
-      ]);
+    setCreating(true);
+    try {
+      const res = await fetch('/api/ralph/tasks', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          title: trimmed,
+          description: inputDesc.trim() || undefined,
+          agent: 'sovereign',
+          priority: 3,
+        }),
+      });
+      if (!res.ok) {
+        const err = await res.json().catch(() => ({}));
+        throw new Error(err.error || 'Failed to create task');
+      }
+      setInputTitle('');
+      setInputDesc('');
+      await fetchTasks();
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Failed to create task');
+    } finally {
+      setCreating(false);
     }
   }
 
-  function handlePause() {
-    setActiveTask((prev) => {
-      if (!prev) return prev;
-      return { ...prev, isPaused: !prev.isPaused };
-    });
-  }
+  // ── Derived state ───────────────────────────────────────────────────────────
 
-  function handleRedirect(newInstruction: string) {
-    if (simIntervalRef.current) clearInterval(simIntervalRef.current);
-    startTask(newInstruction);
-  }
+  const pendingTasks = tasks.filter((t) => t.status !== 'complete');
+  const completedTasks = tasks.filter((t) => t.status === 'complete');
 
-  function removeFromQueue(id: string) {
-    setQueue((prev) => prev.filter((t) => t.id !== id));
-  }
-
-  // ── Render ────────────────────────────────────────────────────────────────
+  // ── Render ──────────────────────────────────────────────────────────────────
 
   return (
     <div
       className="min-h-screen font-mono"
       style={{ background: DEEP, color: 'rgba(255,255,255,0.85)' }}
     >
-      <div className="max-w-4xl mx-auto px-4 py-8 flex flex-col gap-6">
-
+      <div className="max-w-5xl mx-auto px-4 py-8 flex flex-col gap-6">
         {/* ── Page header ──────────────────────────────────────────────── */}
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
             <IconOrb icon={Terminal} variant="gold" size="lg" />
             <h1 className="text-xl font-bold tracking-tight">
-              <GlowText variant="gold" as="span">Task Execution</GlowText>
+              <GlowText variant="gold" as="span">Ralph Task Queue</GlowText>
             </h1>
           </div>
           <span
@@ -265,126 +203,145 @@ export default function TasksPage() {
           </span>
         </div>
 
-        {/* ── Active task ───────────────────────────────────────────────── */}
-        <section>
-          <SectionLabel icon={<Layers className="w-3.5 h-3.5" />} label="Current Task" />
+        {/* ── Stats row ────────────────────────────────────────────────── */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <StatCard
+            label="Total Tasks"
+            value={loading ? <Loader2 className="w-5 h-5 animate-spin" /> : tasks.length}
+            icon={<Layers className="w-4 h-4" />}
+          />
+          <StatCard
+            label="Pending"
+            value={loading ? <Loader2 className="w-5 h-5 animate-spin" /> : pendingTasks.length}
+            icon={<Clock className="w-4 h-4" />}
+          />
+          <StatCard
+            label="In Progress"
+            value={loading ? <Loader2 className="w-5 h-5 animate-spin" /> : tasks.filter((t) => t.status === 'running').length}
+            icon={<Flag className="w-4 h-4" />}
+          />
+          <StatCard
+            label="Completed"
+            value={loading ? <Loader2 className="w-5 h-5 animate-spin" /> : completedTasks.length}
+            icon={<CheckCircle2 className="w-4 h-4" />}
+          />
+        </div>
 
-          {activeTask ? (
-            <TaskExecution
-              taskDescription={activeTask.description}
-              steps={activeTask.steps}
-              output={activeTask.output}
-              progress={activeTask.progress}
-              onPause={handlePause}
-              onRedirect={handleRedirect}
-              characterName={CHARACTER.name}
-              characterMood={CHARACTER.mood}
-              estimatedSeconds={activeTask.estimatedSeconds}
-              isPaused={activeTask.isPaused}
-            />
-          ) : (
-            <Surface variant="elevated" glow="gold" className="flex items-center justify-center py-10 text-xs text-white/20">
-              No active task — give {CHARACTER.name} something to do below.
-            </Surface>
-          )}
-        </section>
+        {/* ── Error banner ─────────────────────────────────────────────── */}
+        {error && (
+          <Surface variant="elevated" glow="orange" className="px-4 py-3 flex items-center gap-3">
+            <AlertCircle className="w-4 h-4 text-orange-400 flex-shrink-0" />
+            <p className="text-sm text-white/70">{error}</p>
+            <button
+              onClick={() => setError(null)}
+              className="ml-auto text-xs text-white/40 hover:text-white/70"
+            >
+              Dismiss
+            </button>
+          </Surface>
+        )}
 
-        {/* ── Queue ─────────────────────────────────────────────────────── */}
+        {/* ── Pending / Active tasks ───────────────────────────────────── */}
         <section>
           <SectionLabel
             icon={<ListChecks className="w-3.5 h-3.5" />}
-            label={`Queue (${queue.length})`}
+            label={`Active Tasks (${pendingTasks.length})`}
           />
 
-          <Surface variant="elevated" className="overflow-hidden">
-            {queue.length === 0 ? (
-              <div
-                className="py-6 text-xs text-center"
-                style={{ color: 'rgba(255,255,255,0.2)' }}
-              >
-                Queue is empty. Tasks added while {CHARACTER.name} is busy will appear here.
-              </div>
-            ) : (
-              queue.map((task, i) => (
-                <QueueRow
-                  key={task.id}
-                  task={task}
-                  position={i + 1}
-                  onRemove={() => removeFromQueue(task.id)}
-                />
-              ))
+          {loading ? (
+            <Surface variant="elevated" className="flex items-center justify-center py-12">
+              <Loader2 className="w-6 h-6 animate-spin text-white/30" />
+            </Surface>
+          ) : pendingTasks.length === 0 ? (
+            <Surface variant="elevated" glow="gold" className="flex flex-col items-center justify-center py-10 text-center gap-3">
+              <IconOrb icon={PauseCircle} variant="gold" size="md" />
+              <p className="text-sm text-white/50">No active tasks.</p>
+              <p className="text-xs text-white/30">Create a new task below to get started.</p>
+            </Surface>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {pendingTasks.map((task) => (
+                <TaskCard key={task.id} task={task} />
+              ))}
+            </div>
+          )}
+        </section>
+
+        {/* ── Completed tasks ──────────────────────────────────────────── */}
+        {!loading && completedTasks.length > 0 && (
+          <section>
+            <SectionLabel
+              icon={<CheckCircle2 className="w-3.5 h-3.5" />}
+              label={`Completed (${completedTasks.length})`}
+            />
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {completedTasks.slice(0, 6).map((task) => (
+                <TaskCard key={task.id} task={task} />
+              ))}
+            </div>
+            {completedTasks.length > 6 && (
+              <p className="text-xs text-white/20 mt-3 text-center">
+                +{completedTasks.length - 6} more completed tasks
+              </p>
             )}
-          </Surface>
-        </section>
+          </section>
+        )}
 
-        {/* ── History ───────────────────────────────────────────────────── */}
-        <section>
-          <SectionLabel icon={<History className="w-3.5 h-3.5" />} label="History" />
-          <TaskHistory entries={history} limit={10} />
-        </section>
-
-        {/* ── Task input ────────────────────────────────────────────────── */}
+        {/* ── Create task input ────────────────────────────────────────── */}
         <div className="sticky bottom-4">
           <Surface
             variant="elevated"
             glow={inputFocus ? 'gold' : 'none'}
             className="overflow-hidden transition-all"
           >
-            <div className="flex items-center gap-3 px-4 py-3">
-              {/* Character avatar */}
-              <span className="text-base flex-shrink-0" aria-hidden>
-                {CHARACTER.avatar}
-              </span>
-
+            <div className="flex flex-col gap-3 px-4 py-4">
+              <div className="flex items-center gap-3">
+                <IconOrb icon={Plus} variant="gold" size="sm" />
+                <input
+                  ref={inputRef}
+                  value={inputTitle}
+                  onChange={(e) => setInputTitle(e.target.value)}
+                  onFocus={() => setInputFocus(true)}
+                  onBlur={() => setInputFocus(false)}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' && !e.shiftKey) {
+                      e.preventDefault();
+                      handleSubmit();
+                    }
+                  }}
+                  placeholder="What should Ralph work on? (Enter to submit)"
+                  className="flex-1 bg-transparent text-sm outline-none placeholder:text-white/25"
+                  style={{ color: 'rgba(255,255,255,0.9)' }}
+                  disabled={creating}
+                />
+                <button
+                  onClick={handleSubmit}
+                  disabled={!inputTitle.trim() || creating}
+                  className="w-8 h-8 rounded-md flex items-center justify-center flex-shrink-0 transition-all disabled:opacity-30"
+                  style={{
+                    background: inputTitle.trim() && !creating ? GOLD : 'rgba(255,255,255,0.08)',
+                    color: inputTitle.trim() && !creating ? '#0d0c18' : 'rgba(255,255,255,0.4)',
+                  }}
+                  aria-label="Create task"
+                >
+                  {creating ? (
+                    <Loader2 className="w-4 h-4 animate-spin" />
+                  ) : (
+                    <ArrowUp className="w-4 h-4" />
+                  )}
+                </button>
+              </div>
               <input
-                ref={inputRef}
-                value={input}
-                onChange={(e) => setInput(e.target.value)}
-                onFocus={() => setInputFocus(true)}
-                onBlur={() => setInputFocus(false)}
-                onKeyDown={(e) => {
-                  if (e.key === 'Enter' && !e.shiftKey) {
-                    e.preventDefault();
-                    handleSubmit();
-                  }
-                }}
-                placeholder={
-                  activeTask
-                    ? `Queue a task for ${CHARACTER.name}… (Enter)`
-                    : `Give ${CHARACTER.name} a task… (Enter)`
-                }
-                className="flex-1 bg-transparent text-sm outline-none placeholder:text-white/25"
-                style={{ color: 'rgba(255,255,255,0.9)' }}
+                value={inputDesc}
+                onChange={(e) => setInputDesc(e.target.value)}
+                placeholder="Optional description…"
+                className="w-full bg-transparent text-xs outline-none placeholder:text-white/20"
+                style={{ color: 'rgba(255,255,255,0.6)' }}
+                disabled={creating}
               />
-
-              <button
-                onClick={handleSubmit}
-                disabled={!input.trim()}
-                className="w-7 h-7 rounded-md flex items-center justify-center flex-shrink-0 transition-all disabled:opacity-30"
-                style={{
-                  background: input.trim() ? GOLD : 'rgba(255,255,255,0.08)',
-                  color: input.trim() ? '#0d0c18' : 'rgba(255,255,255,0.4)',
-                }}
-                aria-label="Submit task"
-              >
-                <ArrowUp className="w-4 h-4" />
-              </button>
-            </div>
-
-            {/* Hint row */}
-            <div
-              className="px-4 pb-2 flex gap-4 text-xs"
-              style={{ color: 'rgba(255,255,255,0.2)' }}
-            >
-              <span>Try: &quot;Research Byzantine councils&quot;</span>
-              <span>·</span>
-              <span>&quot;Draft email to the team&quot;</span>
-              <span>·</span>
-              <span>&quot;Plan Q3 roadmap&quot;</span>
             </div>
           </Surface>
         </div>
-
       </div>
     </div>
   );
@@ -410,67 +367,70 @@ function SectionLabel({
   );
 }
 
-function QueueRow({
-  task,
-  position,
-  onRemove,
-}: {
-  task: QueuedTask;
-  position: number;
-  onRemove: () => void;
-}) {
-  const colour = TASK_TYPE_COLOURS[task.type];
+function TaskCard({ task }: { task: RalphTask }) {
+  const colour = statusColor(task.status);
 
   return (
-    <div
-      className="flex items-center gap-3 px-4 py-2.5 border-b last:border-b-0 group"
-      style={{ borderColor: 'rgba(255,255,255,0.05)' }}
+    <Surface variant="elevated" className="p-4 flex flex-col gap-3 transition-all hover:border-white/10">
+      <div className="flex items-start justify-between gap-3">
+        <div className="min-w-0">
+          <p className="text-sm font-semibold text-white truncate" title={task.title}>
+            {task.title}
+          </p>
+          {task.description && (
+            <p className="text-xs text-white/40 truncate" title={task.description}>
+              {task.description}
+            </p>
+          )}
+        </div>
+        <span
+          className="text-[10px] px-2 py-0.5 rounded-full flex-shrink-0 font-medium"
+          style={{
+            color: colour === 'gold' ? '#c9a84c' : colour === 'green' ? '#4ade80' : colour === 'red' ? '#f87171' : colour === 'blue' ? '#60a5fa' : '#a78bfa',
+            background: colour === 'gold' ? 'rgba(201,168,76,0.12)' : colour === 'green' ? 'rgba(74,222,128,0.12)' : colour === 'red' ? 'rgba(248,113,113,0.12)' : colour === 'blue' ? 'rgba(96,165,250,0.12)' : 'rgba(167,139,250,0.12)',
+            border: `1px solid ${colour === 'gold' ? 'rgba(201,168,76,0.25)' : colour === 'green' ? 'rgba(74,222,128,0.25)' : colour === 'red' ? 'rgba(248,113,113,0.25)' : colour === 'blue' ? 'rgba(96,165,250,0.25)' : 'rgba(167,139,250,0.25)'}`,
+          }}
+        >
+          {statusLabel(task.status)}
+        </span>
+      </div>
+
+      <div className="grid grid-cols-2 gap-2 text-[11px] text-white/30">
+        <div className="flex items-center gap-1.5">
+          <User className="w-3 h-3" />
+          <span className="capitalize truncate">{task.agent}</span>
+        </div>
+        <div className="flex items-center gap-1.5">
+          <Flag className="w-3 h-3" />
+          <span>Priority {task.priority}</span>
+        </div>
+        <div className="flex items-center gap-1.5">
+          <Calendar className="w-3 h-3" />
+          <span>{formatDate(task.created_at)}</span>
+        </div>
+        {task.care_score != null && (
+          <div className="flex items-center gap-1.5">
+            <HeartIcon className="w-3 h-3" />
+            <span>Care {Math.round(task.care_score)}/100</span>
+          </div>
+        )}
+      </div>
+    </Surface>
+  );
+}
+
+function HeartIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      className={className}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     >
-      {/* Position */}
-      <span
-        className="text-xs w-4 text-right flex-shrink-0 tabular-nums"
-        style={{ color: 'rgba(255,255,255,0.2)' }}
-      >
-        {position}
-      </span>
-
-      {/* Description */}
-      <span
-        className="flex-1 text-xs truncate"
-        style={{ color: 'rgba(255,255,255,0.65)' }}
-        title={task.description}
-      >
-        {task.description}
-      </span>
-
-      {/* Type badge */}
-      <span
-        className="text-xs px-1.5 py-0.5 rounded flex-shrink-0"
-        style={{
-          color: colour,
-          background: `${colour}18`,
-          border: `1px solid ${colour}30`,
-        }}
-      >
-        {TASK_TYPE_LABELS[task.type]}
-      </span>
-
-      {/* Remove */}
-      <button
-        onClick={onRemove}
-        className="flex-shrink-0 opacity-0 group-hover:opacity-100 transition-opacity hover:text-red-400"
-        style={{ color: 'rgba(255,255,255,0.3)' }}
-        aria-label="Remove from queue"
-      >
-        <Trash2 className="w-3.5 h-3.5" />
-      </button>
-
-      {/* Plus icon to indicate it will be queued after current */}
-      <Plus
-        className="w-3 h-3 flex-shrink-0 opacity-20"
-        style={{ color: 'rgba(255,255,255,0.5)' }}
-        aria-hidden
-      />
-    </div>
+      <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+    </svg>
   );
 }
