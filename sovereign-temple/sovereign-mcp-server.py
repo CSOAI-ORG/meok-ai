@@ -25,9 +25,10 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), "monitoring"))
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "multi_agent"))
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "consciousness"))
 
-from fastapi import FastAPI, HTTPException, BackgroundTasks, Request, Response
+from fastapi import FastAPI, HTTPException, BackgroundTasks, Request, Response, Depends, Header, status
 from fastapi.responses import JSONResponse, StreamingResponse
 from fastapi.middleware.cors import CORSMiddleware
+from starlette.middleware.base import BaseHTTPMiddleware
 
 try:
     from prometheus_fastapi_instrumentator import Instrumentator
@@ -35,8 +36,10 @@ try:
     PROMETHEUS_AVAILABLE = True
 except ImportError:
     PROMETHEUS_AVAILABLE = False
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 import uvicorn
+
+logger = logging.getLogger("sov3.mcp")
 
 # Import our modules
 from neural_core import create_default_registry, NeuralModelRegistry
@@ -234,6 +237,26 @@ class McpRequest(BaseModel):
     id: Optional[str] = None
     method: str
     params: Optional[Dict[str, Any]] = None
+
+
+class HarvUpdatePayload(BaseModel):
+    location: Optional[str] = Field(default=None, max_length=256)
+    activity: Optional[str] = Field(default=None, max_length=256)
+    pc_idle: Optional[int] = Field(default=None)
+    pc_app: Optional[str] = Field(default=None, max_length=256)
+    pc_window: Optional[str] = Field(default=None, max_length=256)
+    weather: Optional[str] = Field(default=None, max_length=256)
+    dogs: Optional[int] = Field(default=None)
+    custom: Optional[Dict[str, Any]] = Field(default=None)
+    confidence: Optional[float] = Field(default=0.8, ge=0.0, le=1.0)
+
+
+class HarvCameraEventPayload(BaseModel):
+    event_type: str = Field(default="detection", max_length=128)
+    label: str = Field(default="", max_length=256)
+    confidence: float = Field(default=0.0, ge=0.0, le=1.0)
+    zone: str = Field(default="unknown", max_length=128)
+    metadata: Optional[Dict[str, Any]] = Field(default=None)
 
 
 # Global state
@@ -2067,16 +2090,70 @@ async def initialize_system():
     print("✅ Sovereign Temple initialized successfully!")
 
 
+# ── Security: API key dependency ─────────────────────────────────────────────
+SOV3_API_KEY = os.environ.get("SOV3_API_KEY")
+
+
+def require_api_key(x_api_key: str = Header(..., alias="X-API-Key")):
+    if not SOV3_API_KEY:
+        return  # dev mode: no key required
+    if x_api_key != SOV3_API_KEY:
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid or missing API key")
+
+
+# ── Security: per-IP rate limiter (120 req/min) ──────────────────────────────
+_IP_RATE_LIMIT_MAX = 120
+_IP_RATE_LIMIT_WINDOW = 60.0
+_ip_rate_limit_windows: Dict[str, deque] = {}
+
+
+class SecurityMiddleware(BaseHTTPMiddleware):
+    """Enforce request size limits, API key auth, and per-IP rate limits."""
+
+    async def dispatch(self, request: Request, call_next):
+        # 1. Request size limit (10 MB)
+        content_length = request.headers.get("content-length")
+        if content_length and int(content_length) > 10 * 1024 * 1024:
+            return JSONResponse({"detail": "Payload too large"}, status_code=413)
+
+        # 2. API key auth (skip exempt paths)
+        exempt_paths = {"/health", "/healthz", "/healthz/deep", "/"}
+        if request.url.path not in exempt_paths:
+            if SOV3_API_KEY:
+                header_key = request.headers.get("X-API-Key")
+                if header_key != SOV3_API_KEY:
+                    return JSONResponse({"detail": "Unauthorized"}, status_code=401)
+
+        # 3. Per-IP rate limit (120 req/min)
+        client_host = request.client.host if request.client else "unknown"
+        now = time.time()
+        window = _ip_rate_limit_windows.setdefault(client_host, deque())
+        while window and (now - window[0]) > _IP_RATE_LIMIT_WINDOW:
+            window.popleft()
+        if len(window) >= _IP_RATE_LIMIT_MAX:
+            return JSONResponse({"detail": "Rate limit exceeded"}, status_code=429)
+        window.append(now)
+
+        return await call_next(request)
+
+
 # Create FastAPI app
 app = FastAPI(title="Sovereign Temple MCP Server", version="2.0.0")
 
+# ── CORS hardening ───────────────────────────────────────────────────────────
+_cors_raw = os.environ.get("SOV3_CORS_ORIGINS", "")
+_allow_origins = [o.strip() for o in _cors_raw.split(",") if o.strip()] if _cors_raw else []
+_allow_credentials = "*" not in _allow_origins
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
-    allow_credentials=True,
+    allow_origins=_allow_origins,
+    allow_credentials=_allow_credentials,
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+app.add_middleware(SecurityMiddleware)
 
 app.include_router(create_safety_router(SafetyClassifier()))
 app.include_router(create_sycophancy_router(SycophancyDetector()))
@@ -4331,8 +4408,8 @@ Reply in 2-4 sentences. Never say "As an AI" or "I'm just a language model". You
                                 "model": "claude-sonnet-4-5",
                                 "tools_used": tools_used_names,
                             }
-        except Exception:
-            pass
+        except Exception as exc:
+            logger.exception("Claude fallback failed: %s", exc)
 
     # FALLBACK: GPT-4o
     if openai_key:
@@ -4377,8 +4454,8 @@ Reply in 2-4 sentences. Never say "As an AI" or "I'm just a language model". You
                         "response": d["choices"][0]["message"]["content"],
                         "model": mdl,
                     }
-        except Exception:
-            pass
+        except Exception as exc:
+            logger.exception("GPT-4o fallback failed: %s", exc)
 
     return {
         "response": "All 235 minds are present, Nick. Configure ANTHROPIC_API_KEY for full Sovereign voice.",
@@ -4451,54 +4528,52 @@ async def text_to_speech(request: Request):
 
 
 @app.post("/harv/update")
-async def harv_update(request: Request):
+async def harv_update(payload: HarvUpdatePayload):
     """Receive context updates from Hammerspoon, HomeAssistant webhooks, etc."""
     if not HARV_AVAILABLE:
         return {"error": "HARV not available"}
-    body = await request.json()
     harv = get_harv()
     updated = []
-    if "location" in body:
-        harv.update("location", body["location"], body.get("confidence", 0.8))
+    if payload.location is not None:
+        harv.update("location", payload.location, payload.confidence)
         updated.append("location")
-    if "activity" in body:
-        harv.update("activity", body["activity"])
+    if payload.activity is not None:
+        harv.update("activity", payload.activity)
         from datetime import datetime
 
         harv.update("activity_since", datetime.utcnow().isoformat())
         updated.append("activity")
-    if "pc_idle" in body:
+    if payload.pc_idle is not None:
         harv.update_pc(
-            int(body["pc_idle"]), body.get("pc_app", ""), body.get("pc_window", "")
+            payload.pc_idle, payload.pc_app or "", payload.pc_window or ""
         )
         updated.append("pc_status")
-    if "weather" in body:
-        harv.update("weather", body["weather"])
+    if payload.weather is not None:
+        harv.update("weather", payload.weather)
         updated.append("weather")
-    if "dogs" in body:
-        harv.update("dogs_detected", int(body["dogs"]))
+    if payload.dogs is not None:
+        harv.update("dogs_detected", payload.dogs)
         updated.append("dogs")
-    if "custom" in body:
+    if payload.custom is not None:
         harv = get_harv()
-        harv._state.setdefault("custom", {}).update(body["custom"])
+        harv._state.setdefault("custom", {}).update(payload.custom)
         harv._save()
         updated.append("custom")
     return {"updated": updated, "envelope": get_harv().get_envelope()}
 
 
 @app.post("/harv/camera_event")
-async def harv_camera_event(request: Request):
+async def harv_camera_event(payload: HarvCameraEventPayload):
     """Receive camera detection events from DeepCamera/Guardian."""
     if not HARV_AVAILABLE:
         return {"error": "HARV not available"}
-    body = await request.json()
     harv = get_harv()
     harv.push_camera_event(
-        event_type=body.get("event_type", "detection"),
-        label=body.get("label", ""),
-        confidence=float(body.get("confidence", 0.0)),
-        zone=body.get("zone", "unknown"),
-        metadata=body.get("metadata", {}),
+        event_type=payload.event_type,
+        label=payload.label,
+        confidence=payload.confidence,
+        zone=payload.zone,
+        metadata=payload.metadata or {},
     )
     return {"status": "ok", "buffered": len(harv.camera_events)}
 

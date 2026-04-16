@@ -12,6 +12,8 @@ import asyncio
 import json
 import logging
 import os
+import re
+import shlex
 import subprocess
 import tempfile
 import time
@@ -26,6 +28,11 @@ TIER_0_ACTIONS = {"read_file", "list_files", "run_tests", "search_code", "check_
 TIER_1_ACTIONS = {"write_file", "edit_file", "create_file"}
 TIER_2_ACTIONS = {"git_commit", "delete_file", "run_command", "deploy"}
 
+# ── Command hardening ────────────────────────────────────────────────────────
+_ALLOWED_COMMANDS = {"git", "python", "node", "npm", "ls", "cat", "pwd", "echo", "mkdir", "cp", "mv", "rm"}
+_SHELL_METACHARS = re.compile(r"[;|&$`><()]")
+
+
 @dataclass
 class ExecutionResult:
     success: bool
@@ -35,6 +42,7 @@ class ExecutionResult:
     tests_passed: Optional[bool] = None
     duration_ms: int = 0
     tier: int = 0
+
 
 class ClawCodeExecutor:
     """
@@ -55,6 +63,52 @@ class ClawCodeExecutor:
         if action in TIER_2_ACTIONS:
             return 2
         return 2  # Default to highest tier for unknown actions
+
+    def _resolve_path(self, path: str) -> Path:
+        """Resolve a relative path inside the working directory."""
+        p = Path(path)
+        if p.is_absolute():
+            raise ValueError("Absolute paths are not allowed")
+        if ".." in p.parts:
+            raise ValueError("Path traversal detected")
+        resolved = (Path(self.working_dir) / p).resolve()
+        base = Path(self.working_dir).resolve()
+        # Ensure resolved path is still under base
+        try:
+            resolved.relative_to(base)
+        except ValueError:
+            raise ValueError("Path traversal detected")
+        return resolved
+
+    def _validate_command(self, command: str) -> List[str]:
+        """Validate and split a command string into safe list args."""
+        if not command or not isinstance(command, str):
+            raise ValueError("Invalid command")
+
+        if _SHELL_METACHARS.search(command):
+            raise ValueError("Shell metacharacters are not allowed")
+
+        try:
+            parts = shlex.split(command)
+        except ValueError as exc:
+            raise ValueError(f"Command parsing failed: {exc}")
+
+        if not parts:
+            raise ValueError("Empty command")
+
+        cmd = parts[0]
+        if cmd not in _ALLOWED_COMMANDS:
+            raise ValueError(f"Command '{cmd}' is not in the allowed list")
+
+        # Extra restriction for rm: block -rf / patterns and traversal
+        if cmd == "rm":
+            for arg in parts[1:]:
+                if arg.startswith("-"):
+                    continue
+                if arg.startswith("/") or ".." in arg:
+                    raise ValueError("rm target outside working directory is not allowed")
+
+        return parts
 
     async def execute_task(self, task: Dict) -> ExecutionResult:
         """Execute a task and return results."""
@@ -107,28 +161,36 @@ class ClawCodeExecutor:
             return result
 
         except Exception as e:
+            log.warning("Execution error for %s: %s", task_type, e)
             return ExecutionResult(
                 success=False,
                 action=task_type,
-                output=f"Execution error: {str(e)}",
+                output="Execution failed due to a security or runtime error",
                 duration_ms=int((time.monotonic() - start) * 1000),
             )
 
     async def read_file(self, path: str) -> ExecutionResult:
         """Read a file safely."""
         try:
-            content = Path(path).read_text()
+            target = self._resolve_path(path)
+            content = target.read_text()
             return ExecutionResult(
                 success=True, action="read_file",
                 output=content[:10000],  # Cap at 10K chars
                 tier=0,
             )
         except Exception as e:
-            return ExecutionResult(success=False, action="read_file", output=str(e))
+            log.warning("read_file blocked: %s", e)
+            return ExecutionResult(success=False, action="read_file", output="File read denied or failed")
 
     async def write_file(self, path: str, content: str) -> ExecutionResult:
         """Write a file with backup."""
-        p = Path(path)
+        try:
+            p = self._resolve_path(path)
+        except Exception as e:
+            log.warning("write_file blocked: %s", e)
+            return ExecutionResult(success=False, action="write_file", output="File write denied: invalid path")
+
         backup = None
         try:
             if p.exists():
@@ -148,13 +210,25 @@ class ClawCodeExecutor:
                     p.write_text(backup)
                 except:
                     pass
-            return ExecutionResult(success=False, action="write_file", output=str(e))
+            log.warning("write_file error: %s", e)
+            return ExecutionResult(success=False, action="write_file", output="File write failed")
 
     async def run_command(self, command: str, working_dir: str = None) -> ExecutionResult:
-        """Run a shell command with timeout."""
-        # Safety: block dangerous commands
+        """Run a shell command with timeout using list args where possible."""
+        # Validate and parse command
+        try:
+            cmd_parts = self._validate_command(command)
+        except ValueError as e:
+            return ExecutionResult(
+                success=False, action="run_command",
+                output=f"Blocked: {e}",
+                tier=2,
+            )
+
+        # Extra block for dangerous bare strings that slip through tokenization
         dangerous = ["rm -rf /", "mkfs", "dd if=", ":(){ :|:", "shutdown", "reboot"]
-        if any(d in command for d in dangerous):
+        lowered = command.lower()
+        if any(d in lowered for d in dangerous):
             return ExecutionResult(
                 success=False, action="run_command",
                 output="Blocked: dangerous command detected",
@@ -162,8 +236,8 @@ class ClawCodeExecutor:
             )
 
         try:
-            proc = await asyncio.create_subprocess_shell(
-                command,
+            proc = await asyncio.create_subprocess_exec(
+                *cmd_parts,
                 stdout=asyncio.subprocess.PIPE,
                 stderr=asyncio.subprocess.PIPE,
                 cwd=working_dir or self.working_dir,
@@ -186,28 +260,71 @@ class ClawCodeExecutor:
                 success=False, action="run_command",
                 output=f"Command timed out after {self.timeout}s",
             )
+        except Exception as e:
+            log.warning("run_command error: %s", e)
+            return ExecutionResult(
+                success=False, action="run_command",
+                output="Command execution failed",
+            )
 
     async def run_tests(self, test_path: str = "", working_dir: str = None) -> ExecutionResult:
         """Run tests and report results."""
         wd = working_dir or self.working_dir
-        cmd = f"cd {wd} && npx jest --no-coverage {test_path}" if test_path else f"cd {wd} && npx jest --no-coverage"
+        cmd_parts = ["npx", "jest", "--no-coverage"]
+        if test_path:
+            cmd_parts.append(test_path)
 
-        result = await self.run_command(cmd, working_dir=wd)
-        result.action = "run_tests"
-        result.tier = 0
-        result.tests_passed = result.success
-        return result
+        try:
+            proc = await asyncio.create_subprocess_exec(
+                *cmd_parts,
+                stdout=asyncio.subprocess.PIPE,
+                stderr=asyncio.subprocess.PIPE,
+                cwd=wd,
+            )
+            stdout, stderr = await asyncio.wait_for(proc.communicate(), timeout=self.timeout)
+            output = stdout.decode()[:5000]
+            if proc.returncode != 0:
+                output += f"\nSTDERR: {stderr.decode()[:2000]}"
+            return ExecutionResult(
+                success=proc.returncode == 0,
+                action="run_tests",
+                output=output,
+                tier=0,
+                tests_passed=proc.returncode == 0,
+            )
+        except asyncio.TimeoutError:
+            return ExecutionResult(
+                success=False, action="run_tests",
+                output=f"Tests timed out after {self.timeout}s",
+                tier=0,
+                tests_passed=False,
+            )
+        except Exception as e:
+            log.warning("run_tests error: %s", e)
+            return ExecutionResult(success=False, action="run_tests", output="Test execution failed", tier=0, tests_passed=False)
 
     async def search_code(self, pattern: str, path: str = None) -> ExecutionResult:
-        """Search code with grep."""
+        """Search code with grep (no shell pipes)."""
         search_path = path or self.working_dir
-        result = await self.run_command(
-            f"grep -rn '{pattern}' {search_path} --include='*.ts' --include='*.tsx' --include='*.py' | head -20",
-            working_dir=self.working_dir,
-        )
-        result.action = "search_code"
-        result.tier = 0
-        return result
+        try:
+            proc = await asyncio.create_subprocess_exec(
+                "grep", "-rn", pattern, search_path,
+                "--include=*.ts", "--include=*.tsx", "--include=*.py",
+                stdout=asyncio.subprocess.PIPE,
+                stderr=asyncio.subprocess.PIPE,
+            )
+            stdout, stderr = await asyncio.wait_for(proc.communicate(), timeout=self.timeout)
+            lines = stdout.decode().splitlines()[:20]
+            output = "\n".join(lines)
+            return ExecutionResult(
+                success=proc.returncode == 0 or bool(lines),
+                action="search_code",
+                output=output,
+                tier=0,
+            )
+        except Exception as e:
+            log.warning("search_code error: %s", e)
+            return ExecutionResult(success=False, action="search_code", output="Search failed")
 
     async def git_commit(self, files: List[str], message: str, working_dir: str = None) -> ExecutionResult:
         """Stage and commit files."""
@@ -215,19 +332,43 @@ class ClawCodeExecutor:
         try:
             # Stage files
             for f in files:
-                await self.run_command(f"git add {f}", working_dir=wd)
+                result = await self._run_exec(["git", "add", f], cwd=wd)
+                if not result["success"]:
+                    return ExecutionResult(
+                        success=False, action="git_commit",
+                        output=f"git add failed: {result['output']}",
+                        tier=2, files_changed=files,
+                    )
 
             # Commit
-            result = await self.run_command(
-                f'git commit -m "{message}\n\nAutonomous commit by Jarvis/SOV3"',
-                working_dir=wd,
+            result = await self._run_exec(
+                ["git", "commit", "-m", f"{message}\n\nAutonomous commit by Jarvis/SOV3"],
+                cwd=wd,
             )
-            result.action = "git_commit"
-            result.tier = 2
-            result.files_changed = files
-            return result
+            return ExecutionResult(
+                success=result["success"],
+                action="git_commit",
+                output=result["output"],
+                tier=2,
+                files_changed=files,
+            )
         except Exception as e:
-            return ExecutionResult(success=False, action="git_commit", output=str(e))
+            log.warning("git_commit error: %s", e)
+            return ExecutionResult(success=False, action="git_commit", output="Git commit failed")
+
+    async def _run_exec(self, cmd: List[str], cwd: str = None) -> Dict[str, any]:
+        """Low-level subprocess_exec helper."""
+        proc = await asyncio.create_subprocess_exec(
+            *cmd,
+            stdout=asyncio.subprocess.PIPE,
+            stderr=asyncio.subprocess.PIPE,
+            cwd=cwd or self.working_dir,
+        )
+        stdout, stderr = await asyncio.wait_for(proc.communicate(), timeout=self.timeout)
+        output = stdout.decode()[:5000]
+        if proc.returncode != 0:
+            output += f"\nSTDERR: {stderr.decode()[:2000]}"
+        return {"success": proc.returncode == 0, "output": output}
 
     async def _run_sov3_task(self, task_type: str, working_dir: str) -> ExecutionResult:
         """Execute SOV3-specific tasks that were previously stubs."""
@@ -286,10 +427,10 @@ if __name__ == "__main__":
     async def test():
         executor = ClawCodeExecutor(working_dir="/Users/nicholas/clawd/meok/ui")
         # Test read
-        r = await executor.read_file("/Users/nicholas/clawd/meok/ui/package.json")
+        r = await executor.read_file("package.json")
         print(f"Read: {r.success}, {len(r.output)} chars")
         # Test search
-        r = await executor.search_code("getCharacter", "/Users/nicholas/clawd/meok/ui/src/lib")
+        r = await executor.search_code("getCharacter", "src/lib")
         print(f"Search: {r.success}, found lines")
         # Test run tests
         r = await executor.run_tests(working_dir="/Users/nicholas/clawd/meok/ui")

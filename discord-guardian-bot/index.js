@@ -10,6 +10,8 @@ const {
   ChannelType,
 } = require('discord.js');
 const axios = require('axios');
+const http = require('http');
+const { loadStats, saveStats, getGuildStats } = require('./db');
 
 const DISCORD_BOT_TOKEN = process.env.DISCORD_BOT_TOKEN;
 const MEOK_BASE_URL = process.env.MEOK_BASE_URL || 'http://localhost:3000';
@@ -28,14 +30,25 @@ const client = new Client({
   ],
 });
 
-// In-memory stats per guild
-const stats = new Map(); // guildId -> { scanned, flagged, high, critical, selfHarm }
+// Persistent stats
+const stats = loadStats();
+
+// Rate limiting: max 1 scan per user per 3 seconds
+const rateLimitMap = new Map();
+const RATE_LIMIT_MS = 3000;
+
+function isRateLimited(userId) {
+  const now = Date.now();
+  const lastScan = rateLimitMap.get(userId);
+  if (lastScan && now - lastScan < RATE_LIMIT_MS) {
+    return true;
+  }
+  rateLimitMap.set(userId, now);
+  return false;
+}
 
 function getStats(guildId) {
-  if (!stats.has(guildId)) {
-    stats.set(guildId, { scanned: 0, flagged: 0, high: 0, critical: 0, selfHarm: 0 });
-  }
-  return stats.get(guildId);
+  return getGuildStats(stats, guildId);
 }
 
 async function registerCommands() {
@@ -71,8 +84,10 @@ client.on(Events.MessageCreate, async (message) => {
   if (message.author.bot) return;
   if (!message.guild) return;
 
+  if (isRateLimited(message.author.id)) return;
+
   const guildStats = getStats(message.guild.id);
-  guildStats.scanned++;
+  guildStats.messagesScanned++;
 
   try {
     const payload = {
@@ -90,23 +105,26 @@ client.on(Events.MessageCreate, async (message) => {
     });
 
     console.log(
-      `[SCAN] #${message.channel.name} @${message.author.tag} | flagged=${data.flagged} severity=${data.severity} category=${data.category}`
+      `[SCAN] #${message.channel.name} @${message.author.tag} | flagged=${data.flagged} severity=${data.severity} scores=${JSON.stringify(data.scores)}`
     );
 
     if (data.flagged) {
-      guildStats.flagged++;
-      if (data.severity === 'high') guildStats.high++;
-      if (data.severity === 'critical') guildStats.critical++;
-      if (data.category === 'self-harm') guildStats.selfHarm++;
+      guildStats.alertsSent++;
 
-      if (data.severity === 'high' || data.severity === 'critical') {
+      const isCritical = data.severity === 'CRITICAL';
+      const isHigh = data.severity === 'HIGH';
+      const hasSelfHarm = data.scores && data.scores.self_harm > 0;
+
+      if (isHigh || isCritical) {
         await sendAlert(message, data);
       }
 
-      if (data.severity === 'critical' && data.category === 'self-harm') {
+      if (isCritical && hasSelfHarm) {
         await notifyModerators(message, data);
       }
     }
+
+    saveStats(stats);
   } catch (err) {
     console.error(`[SCAN ERROR] ${err.message}`);
   }
@@ -146,14 +164,17 @@ async function sendAlert(message, scan) {
   const channel = await getOrCreateAlertsChannel(message.guild);
   if (!channel) return;
 
+  const isCritical = scan.severity === 'CRITICAL';
+  const recommendedAction = scan.recommended_action || 'Review message and take appropriate action.';
+
   const embed = new EmbedBuilder()
-    .setColor(scan.severity === 'critical' ? 0xff0000 : 0xffa500)
-    .setTitle(`🛡️ Guardian Alert — ${scan.category || 'Threat Detected'}`)
+    .setColor(isCritical ? 0xff0000 : 0xffa500)
+    .setTitle(`🛡️ Guardian Alert — ${scan.severity || 'Threat Detected'}`)
     .addFields(
       { name: 'Severity', value: scan.severity || 'unknown', inline: true },
       { name: 'Author', value: `<@${message.author.id}>`, inline: true },
       { name: 'Channel', value: `<#${message.channel.id}>`, inline: true },
-      { name: 'Explanation', value: scan.explanation || 'No explanation provided.' },
+      { name: 'Recommended Action', value: recommendedAction },
       { name: 'Message', value: message.content.substring(0, 1024) || '(empty)' }
     )
     .setTimestamp();
@@ -175,6 +196,8 @@ async function notifyModerators(message, scan) {
         m.permissions.has(PermissionsBitField.Flags.ManageMessages)
     );
 
+    const recommendedAction = scan.recommended_action || 'Review message and take appropriate action.';
+
     const dmEmbed = new EmbedBuilder()
       .setColor(0xff0000)
       .setTitle('🚨 CRITICAL: Self-Harm Detected')
@@ -183,7 +206,7 @@ async function notifyModerators(message, scan) {
       )
       .addFields(
         { name: 'Author', value: `<@${message.author.id}>`, inline: true },
-        { name: 'Explanation', value: scan.explanation || 'No explanation provided.' }
+        { name: 'Recommended Action', value: recommendedAction }
       )
       .setTimestamp();
 
@@ -212,13 +235,11 @@ client.on(Events.InteractionCreate, async (interaction) => {
       .setColor(0x0099ff)
       .setTitle('🛡️ Guardian Status')
       .addFields(
-        { name: 'Messages Scanned', value: String(s.scanned), inline: true },
-        { name: 'Flagged', value: String(s.flagged), inline: true },
-        { name: 'High Severity', value: String(s.high), inline: true },
-        { name: 'Critical Severity', value: String(s.critical), inline: true },
-        { name: 'Self-Harm Alerts', value: String(s.selfHarm), inline: true }
+        { name: 'Messages Scanned', value: String(s.messagesScanned), inline: true },
+        { name: 'Alerts Sent', value: String(s.alertsSent), inline: true },
+        { name: 'Last Reset', value: s.lastReset ? new Date(s.lastReset).toLocaleString() : 'Never', inline: true }
       )
-      .setFooter({ text: 'Stats are in-memory since last restart.' })
+      .setFooter({ text: 'Stats are persisted to disk.' })
       .setTimestamp();
 
     await interaction.reply({ embeds: [embed], ephemeral: true });
@@ -239,4 +260,37 @@ client.on(Events.InteractionCreate, async (interaction) => {
   }
 });
 
+// Healthcheck server
+const healthServer = http.createServer((req, res) => {
+  if (req.url === '/health') {
+    if (client.isReady()) {
+      res.writeHead(200, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({ status: 'ok', uptime: process.uptime() }));
+    } else {
+      res.writeHead(503, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({ status: 'not ready' }));
+    }
+  } else {
+    res.writeHead(404);
+    res.end();
+  }
+});
+
+healthServer.listen(9090, () => {
+  console.log('Healthcheck server listening on port 9090');
+});
+
 client.login(DISCORD_BOT_TOKEN);
+
+// Graceful shutdown
+function shutdown(signal) {
+  console.log(`Received ${signal}. Shutting down gracefully...`);
+  client.destroy();
+  healthServer.close(() => {
+    process.exit(0);
+  });
+  setTimeout(() => process.exit(0), 5000);
+}
+
+process.on('SIGTERM', () => shutdown('SIGTERM'));
+process.on('SIGINT', () => shutdown('SIGINT'));

@@ -117,6 +117,20 @@ services:
       - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml
     restart: unless-stopped
 
+  discord-guardian-bot:
+    build:
+      context: ./discord-guardian-bot
+    container_name: meok-discord-guardian-bot
+    ports:
+      - "9091:9090"
+    environment:
+      - DISCORD_BOT_TOKEN=${DISCORD_BOT_TOKEN}
+      - MEOK_BASE_URL=${MEOK_BASE_URL:-http://meok:3100}
+      - MEOK_API_KEY=${MEOK_API_KEY:-}
+    volumes:
+      - ./discord-guardian-bot/data:/app/data
+    restart: unless-stopped
+
 volumes:
   postgres_data:
   redis_data:

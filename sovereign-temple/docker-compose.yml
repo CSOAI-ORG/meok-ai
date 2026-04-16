@@ -7,7 +7,7 @@ services:
     container_name: sovereign-postgres
     environment:
       POSTGRES_USER: sovereign
-      POSTGRES_PASSWORD: sovereign
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-sovereign}
       POSTGRES_DB: sovereign_memory
     ports:
       - "5432:5432"
@@ -51,7 +51,7 @@ services:
     image: neo4j:5.15-community
     container_name: sovereign-neo4j
     environment:
-      NEO4J_AUTH: neo4j/sovereign
+      NEO4J_AUTH: ${NEO4J_AUTH:-neo4j/sovereign}
       NEO4J_PLUGINS: '["apoc"]'
     ports:
       - "7474:7474"
