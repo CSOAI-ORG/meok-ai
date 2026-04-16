@@ -10,6 +10,13 @@ import { useUser } from "@clerk/nextjs";
 import { EVOLUTION_STAGES, getEvolutionStage, getProgressToNextStage, interactionsUntilNextStage } from "@/lib/evolution";
 import { OnboardingChecklist } from "@/components/onboarding-checklist";
 import { GuardianAlerts } from "@/components/guardian-alerts";
+import { cn } from "@/lib/utils";
+import {
+  Surface,
+  GlowText,
+  IconOrb,
+  StatCard,
+} from "@/components/design-system";
 import {
   Sunrise,
   ChevronRight,
@@ -147,13 +154,8 @@ function Skeleton({
 }) {
   return (
     <div
-      style={{
-        width: w,
-        height: h,
-        borderRadius: rounded,
-        background: "rgba(255,255,255,0.06)",
-        animation: "pulse 1.5s ease-in-out infinite",
-      }}
+      className="animate-shimmer"
+      style={{ width: w, height: h, borderRadius: rounded }}
     />
   );
 }
@@ -177,64 +179,34 @@ function CareRing({ score, size = 120 }: { score: number; size?: number }) {
 
   return (
     <div className="flex flex-col items-center gap-2">
-      {/* Ring */}
       <div
+        className="rounded-full flex items-center justify-center p-1.5"
         style={{
           width: size,
           height: size,
-          borderRadius: "50%",
           background: `conic-gradient(${ringColor} ${deg}deg, rgba(255,255,255,0.06) ${deg}deg)`,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          padding: 6,
         }}
       >
         <div
-          style={{
-            width: size - 20,
-            height: size - 20,
-            borderRadius: "50%",
-            background: SURFACE,
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
+          className="rounded-full bg-[#13121f] flex flex-col items-center justify-center"
+          style={{ width: size - 20, height: size - 20 }}
         >
-          <span
-            style={{
-              fontSize: "2rem",
-              fontWeight: 900,
-              color: GOLD,
-              lineHeight: 1,
-              letterSpacing: "-0.03em",
-            }}
-          >
+          <span className="text-[2rem] font-black text-[#c9a84c] leading-none tracking-tight">
             {pct}
           </span>
-          <span style={{ fontSize: 10, color: "rgba(255,255,255,0.4)", marginTop: 2 }}>
-            / 100
-          </span>
+          <span className="text-[10px] text-white/40 mt-0.5">/ 100</span>
         </div>
       </div>
-      <p style={{ fontSize: 11, color: "rgba(255,255,255,0.5)", textAlign: "center" }}>
-        Care alignment today
-      </p>
+      <p className="text-[11px] text-white/50 text-center">Care alignment today</p>
       {pct > 0 && (
         <span
-          style={{
-            fontSize: 10,
-            color: pct >= 80 ? "#4ade80" : pct >= 60 ? GOLD : "#f87171",
-            fontWeight: 600,
-          }}
+          className="text-[10px] font-semibold text-center"
+          style={{ color: ringColor }}
         >
           {pct >= 80 ? "↑ Above your average" : pct >= 60 ? "→ On track" : "↓ Below average"}
         </span>
       )}
-      <p style={{ fontSize: 11, color: "rgba(255,255,255,0.35)", textAlign: "center" }}>
-        {label}
-      </p>
+      <p className="text-[11px] text-white/[0.35] text-center">{label}</p>
     </div>
   );
 }
@@ -483,59 +455,27 @@ export default function DashboardOverview() {
 
   return (
     <>
-      {/* ── Global keyframes ── */}
-      <style>{`
-        @keyframes pulse {
-          0%, 100% { opacity: 1; }
-          50% { opacity: 0.4; }
-        }
-        @keyframes fadeSlideUp {
-          from { opacity: 0; transform: translateY(12px); }
-          to   { opacity: 1; transform: translateY(0); }
-        }
-        .fade-slide-up {
-          animation: fadeSlideUp 0.35s ease forwards;
-        }
-        .shortcut-card {
-          transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
-        }
-        .shortcut-card:hover {
-          transform: translateY(-1px);
-          border-color: ${GOLD}44 !important;
-          box-shadow: 0 0 0 1px ${GOLD}22, 0 4px 16px ${GOLD}14;
-        }
-      `}</style>
-
-      <div
-        className="min-h-screen p-6 md:p-8 pb-24 space-y-5"
-        style={{ background: DEEP, color: "white" }}
-      >
+      <div className="min-h-screen p-6 md:p-8 pb-24 space-y-5 meok-deep">
         {/* ── Hero greeting ── */}
-        <div
-          className="fade-slide-up flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 px-6 py-5 rounded-2xl"
-          style={{
-            background: SURFACE,
-            border: "1px solid rgba(255,255,255,0.05)",
-            animationDelay: "0ms",
-          }}
+        <Surface
+          variant="surface"
+          className="animate-fade-in-up flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 px-6 py-5"
+          style={{ animationDelay: "0ms" }}
         >
           <div>
             <h1 className="text-2xl font-bold tracking-tight text-white flex items-center gap-2">
               <span>{companionEmoji}</span>
               <span>{getGreeting()}, {displayName}</span>
             </h1>
-            <p className="text-sm mt-1" style={{ color: "rgba(255,255,255,0.35)" }}>
+            <p className="text-sm mt-1 text-white/35">
               {formatDate()}
             </p>
             {companionLine ? (
-              <p
-                className="text-sm mt-2 italic"
-                style={{ color: `${GOLD}cc` }}
-              >
+              <p className="text-sm mt-2 italic text-[#c9a84c]/80">
                 &ldquo;{companionLine}&rdquo;
               </p>
             ) : (
-              <p className="text-sm mt-2" style={{ color: "rgba(255,255,255,0.4)" }}>
+              <p className="text-sm mt-2 text-white/40">
                 I&rsquo;m ready when you are.
               </p>
             )}
@@ -550,151 +490,121 @@ export default function DashboardOverview() {
               {consciousnessLabel(consciousness)}
             </span>
           </div>
-        </div>
+        </Surface>
 
         {/* ── Onboarding Checklist (shows until dismissed) ── */}
         <OnboardingChecklist />
 
         {/* ── Quick Chat — star of the show ── */}
-        <div
-          className="fade-slide-up lg:col-span-2 rounded-2xl p-6 flex flex-col"
-          style={{
-            background: SURFACE,
-            border: "1px solid rgba(255,255,255,0.05)",
-            animationDelay: "60ms",
-          }}
+        <Surface
+          variant="surface"
+          className="animate-fade-in-up lg:col-span-2 p-6 flex flex-col"
+          style={{ animationDelay: "60ms" }}
         >
           <div className="mb-4">
             <h2 className="text-base font-bold text-white">What&rsquo;s on your mind?</h2>
-            <p className="text-xs mt-0.5" style={{ color: "rgba(255,255,255,0.3)" }}>
+            <p className="text-xs mt-0.5 text-white/30">
               Your companion is listening — ask anything
             </p>
           </div>
           <div style={{ minHeight: 280 }}>
             <QuickChat placeholder="What's on your mind?" />
           </div>
-        </div>
+        </Surface>
 
         {/* ── Quick stats row (4 cards) ── */}
         <div
-          className="fade-slide-up grid grid-cols-2 lg:grid-cols-4 gap-4"
+          className="animate-fade-in-up grid grid-cols-2 lg:grid-cols-4 gap-4"
           style={{ animationDelay: "120ms" }}
         >
-          {/* Messages today */}
-          <div
-            className="rounded-2xl p-5 flex flex-col gap-2"
-            style={{ background: SURFACE, border: "1px solid rgba(255,255,255,0.05)" }}
-          >
-            <MessageSquare className="w-4 h-4" style={{ color: "rgba(255,255,255,0.25)" }} />
-            {!loadedMsgs ? (
-              <Skeleton w="3rem" h="2rem" />
-            ) : msgsToday !== null && msgsToday > 0 ? (
-              <p className="text-2xl font-bold text-white">{msgsToday}</p>
-            ) : (
-              <Link href="/chat">
-                <p className="text-sm font-semibold" style={{ color: GOLD }}>
+          <StatCard
+            label="Messages today"
+            value={
+              !loadedMsgs ? (
+                <div className="h-8 w-16 animate-shimmer rounded-md" />
+              ) : msgsToday !== null && msgsToday > 0 ? (
+                msgsToday
+              ) : (
+                <Link href="/chat" className="text-base text-[#c9a84c] hover:underline">
                   Start your first conversation →
-                </p>
-              </Link>
-            )}
-            <p className="text-xs" style={{ color: "rgba(255,255,255,0.35)" }}>Messages today</p>
-          </div>
+                </Link>
+              )
+            }
+            icon={<MessageSquare className="w-4 h-4" />}
+          />
 
-          {/* Memories stored */}
-          <div
-            className="rounded-2xl p-5 flex flex-col gap-2"
-            style={{ background: SURFACE, border: "1px solid rgba(255,255,255,0.05)" }}
-          >
-            <Database className="w-4 h-4" style={{ color: "rgba(255,255,255,0.25)" }} />
-            {!loadedMem ? (
-              <Skeleton w="3rem" h="2rem" />
-            ) : (
-              <p className="text-2xl font-bold text-white">
-                {memStats?.total_episodes ?? 0}
-              </p>
-            )}
-            <p className="text-xs" style={{ color: "rgba(255,255,255,0.35)" }}>Memories stored</p>
-            {loadedMem && (memStats as unknown as Record<string, unknown> | null)?.recent_episodes != null && (
-              <p className="text-xs" style={{ color: "#4ade80" }}>
-                ↑ {((memStats as unknown as Record<string, unknown>).recent_episodes as number)} this week
-              </p>
-            )}
-          </div>
+          <StatCard
+            label="Memories stored"
+            value={
+              !loadedMem ? (
+                <div className="h-8 w-16 animate-shimmer rounded-md" />
+              ) : (
+                memStats?.total_episodes ?? 0
+              )
+            }
+            change={
+              loadedMem && (memStats as unknown as Record<string, unknown> | null)?.recent_episodes != null
+                ? `↑ ${((memStats as unknown as Record<string, unknown>).recent_episodes as number)} this week`
+                : undefined
+            }
+            changeType="positive"
+            icon={<Database className="w-4 h-4" />}
+          />
 
-          {/* Days since hatch */}
-          <div
-            className="rounded-2xl p-5 flex flex-col gap-2"
-            style={{ background: SURFACE, border: "1px solid rgba(255,255,255,0.05)" }}
-          >
-            <Calendar className="w-4 h-4" style={{ color: "rgba(255,255,255,0.25)" }} />
-            {!loadedEntity ? (
-              <Skeleton w="3rem" h="2rem" />
-            ) : daysSinceHatch !== null ? (
-              <p className="text-2xl font-bold text-white">{daysSinceHatch}</p>
-            ) : (
-              <p className="text-sm font-semibold" style={{ color: "rgba(255,255,255,0.5)" }}>
-                Just arrived
-              </p>
-            )}
-            <p className="text-xs" style={{ color: "rgba(255,255,255,0.35)" }}>Days since hatch</p>
-          </div>
+          <StatCard
+            label="Days since hatch"
+            value={
+              !loadedEntity ? (
+                <div className="h-8 w-16 animate-shimmer rounded-md" />
+              ) : daysSinceHatch !== null ? (
+                daysSinceHatch
+              ) : (
+                <span className="text-lg text-white/60">Just arrived</span>
+              )
+            }
+            icon={<Calendar className="w-4 h-4" />}
+          />
 
-          {/* Current archetype */}
-          <div
-            className="rounded-2xl p-5 flex flex-col gap-2"
-            style={{ background: SURFACE, border: "1px solid rgba(255,255,255,0.05)" }}
-          >
-            {!loadedEntity ? (
-              <>
-                <Skeleton w="1.5rem" h="1.5rem" rounded="50%" />
-                <Skeleton w="70%" h="1.25rem" />
-              </>
-            ) : (
-              <>
-                <span className="text-base leading-none">
-                  {(entity?.dominant_trait && traitEmoji[entity.dominant_trait.toLowerCase()]) ||
-                    hatchEmoji[entityLevel] ||
-                    "👑"}
-                </span>
-                <p className="text-lg font-bold text-white capitalize truncate">
+          <StatCard
+            label="Current archetype"
+            value={
+              !loadedEntity ? (
+                <div className="h-8 w-24 animate-shimmer rounded-md" />
+              ) : (
+                <span className="capitalize truncate">
                   {entity?.dominant_trait || entity?.hatch_label || "Explorer"}
-                </p>
-              </>
-            )}
-            <p className="text-xs" style={{ color: "rgba(255,255,255,0.35)" }}>Current archetype</p>
-          </div>
+                </span>
+              )
+            }
+            icon={
+              <span className="text-base leading-none">
+                {(entity?.dominant_trait && traitEmoji[entity.dominant_trait.toLowerCase()]) ||
+                  hatchEmoji[entityLevel] ||
+                  "👑"}
+              </span>
+            }
+          />
         </div>
 
         {/* ── Morning Briefing card ── */}
         <div
-          className="fade-slide-up"
+          className="animate-fade-in-up"
           style={{ animationDelay: "180ms" }}
         >
           <Link href="/dashboard/morning-briefing">
-            <div
-              className="w-full flex items-center gap-4 px-5 py-4 rounded-2xl cursor-pointer group transition-all duration-200"
-              style={{
-                background: SURFACE2,
-                border: `1px solid ${GOLD}33`,
-                boxShadow: `0 2px 16px ${GOLD}08`,
-              }}
+            <Surface
+              variant="elevated"
+              glow="gold"
+              className="w-full flex items-center gap-4 px-5 py-4 cursor-pointer group transition-all duration-200 hover:border-[#c9a84c]/30 hover:shadow-[0_0_0_1px_#c9a84c/15,0_4px_16px_#c9a84c/10]"
             >
-              <div
-                className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
-                style={{ background: `${GOLD}18` }}
-              >
-                <Sunrise className="w-5 h-5" style={{ color: GOLD }} />
-              </div>
+              <IconOrb icon={Sunrise} variant="gold" size="md" />
               <div className="flex-1 min-w-0">
-                <p className="text-[11px] font-bold uppercase tracking-widest mb-0.5" style={{ color: `${GOLD}88` }}>
+                <GlowText variant="gold" as="p" className="text-[11px] font-bold uppercase tracking-widest mb-0.5">
                   Morning Briefing
-                </p>
+                </GlowText>
                 {briefingIsToday ? (
                   <p className="text-sm text-white/70 flex items-center gap-1.5">
-                    <span
-                      className="w-1.5 h-1.5 rounded-full flex-shrink-0"
-                      style={{ background: "#4ade80", boxShadow: "0 0 4px #4ade80" }}
-                    />
+                    <span className="w-1.5 h-1.5 rounded-full flex-shrink-0 bg-green-400 shadow-[0_0_4px_#4ade80]" />
                     Ready — tap to read
                   </p>
                 ) : briefing?.one_line_summary ? (
@@ -702,13 +612,12 @@ export default function DashboardOverview() {
                     {briefing.one_line_summary}
                   </p>
                 ) : (
-                  <p className="text-sm" style={{ color: "rgba(255,255,255,0.3)" }}>
+                  <p className="text-sm text-white/30">
                     Being prepared for tomorrow morning...
                   </p>
                 )}
               </div>
 
-              {/* Care score pill */}
               {careScore !== null && (
                 <span
                   className="flex-shrink-0 text-xs font-bold px-2.5 py-1 rounded-full"
@@ -723,52 +632,45 @@ export default function DashboardOverview() {
               )}
 
               <ChevronRight
-                className="w-4 h-4 flex-shrink-0 transition-transform group-hover:translate-x-0.5"
-                style={{ color: `${GOLD}66` }}
+                className="w-4 h-4 flex-shrink-0 transition-transform group-hover:translate-x-0.5 text-[#c9a84c]/40"
               />
-            </div>
+            </Surface>
           </Link>
         </div>
 
         {/* ── Main 2-col grid ── */}
         <div
-          className="fade-slide-up grid grid-cols-1 lg:grid-cols-3 gap-5"
+          className="animate-fade-in-up grid grid-cols-1 lg:grid-cols-3 gap-5"
           style={{ animationDelay: "240ms" }}
         >
           {/* Right column (1/3) — rendered first on mobile via order */}
           <div className="flex flex-col gap-4 order-2 lg:order-2">
             {/* Care score card — prominent conic-gradient ring */}
-            <div
-              className="rounded-2xl p-5 flex flex-col items-center"
-              style={{ background: SURFACE, border: `1px solid ${GOLD}22` }}
-            >
-              <p className="text-[10px] font-bold uppercase tracking-widest mb-4 self-start" style={{ color: `${GOLD}77` }}>
+            <Surface variant="glass" glow="gold" className="p-6 flex flex-col items-center gap-4">
+              <p className="text-[10px] font-bold uppercase tracking-widest self-start text-[#c9a84c]/50">
                 Care Score
               </p>
               {careScore !== null ? (
                 <CareRing score={careScore} size={120} />
               ) : (
                 <div className="py-4 flex flex-col items-center gap-3 w-full">
-                  <Skeleton w="120px" h="120px" rounded="50%" />
-                  <Skeleton w="60%" h="0.75rem" />
+                  <div className="w-[120px] h-[120px] rounded-full animate-shimmer" />
+                  <div className="w-[60%] h-3 animate-shimmer rounded-md" />
                 </div>
               )}
-            </div>
+            </Surface>
 
             {/* Character card */}
-            <div
-              className="rounded-2xl p-5"
-              style={{ background: SURFACE, border: "1px solid rgba(255,255,255,0.05)" }}
-            >
-              <p className="text-[10px] font-bold uppercase tracking-widest mb-3" style={{ color: `${GOLD}77` }}>
+            <Surface variant="elevated" className="p-5">
+              <p className="text-[10px] font-bold uppercase tracking-widest mb-3 text-[#c9a84c]/50">
                 Your Character
               </p>
               {!loadedEntity ? (
                 <div className="flex items-center gap-4">
-                  <Skeleton w="54px" h="54px" rounded="50%" />
+                  <div className="w-[54px] h-[54px] rounded-full animate-shimmer" />
                   <div className="flex flex-col gap-2 flex-1">
-                    <Skeleton w="70%" h="0.875rem" />
-                    <Skeleton w="50%" h="0.75rem" />
+                    <div className="w-[70%] h-3.5 animate-shimmer rounded-md" />
+                    <div className="w-[50%] h-3 animate-shimmer rounded-md" />
                   </div>
                 </div>
               ) : (
@@ -790,19 +692,19 @@ export default function DashboardOverview() {
                     <p className="text-xs mt-0.5 font-semibold" style={{ color: evolutionStage.color }}>
                       {evolutionStage.name}
                     </p>
-                    <p className="text-xs mt-0.5 capitalize" style={{ color: "rgba(255,255,255,0.3)" }}>
+                    <p className="text-xs mt-0.5 capitalize text-white/30">
                       {entity?.dominant_trait || "explorer"}
                     </p>
                     {/* Evolution progress bar */}
                     {evolutionStage.maxInteractions !== null && (
                       <div className="mt-2">
-                        <div className="h-1 rounded-full overflow-hidden" style={{ background: "rgba(255,255,255,0.06)" }}>
+                        <div className="h-1 rounded-full overflow-hidden bg-white/[0.06]">
                           <div
                             className="h-full rounded-full transition-all duration-700"
                             style={{ width: `${Math.round(evolutionProgress * 100)}%`, background: evolutionStage.color }}
                           />
                         </div>
-                        <p className="text-[10px] mt-1" style={{ color: "rgba(255,255,255,0.25)" }}>
+                        <p className="text-[10px] mt-1 text-white/25">
                           {interactionsToNext} interactions to next stage
                         </p>
                       </div>
@@ -810,12 +712,12 @@ export default function DashboardOverview() {
                     {/* Feature unlock badges */}
                     <div className="flex gap-1 mt-1.5 flex-wrap">
                       {evolutionStage.unlocksGuardian && (
-                        <span className="text-[9px] px-1.5 py-0.5 rounded-full font-bold" style={{ background: "rgba(74,222,128,0.15)", color: "#4ade80" }}>
+                        <span className="text-[9px] px-1.5 py-0.5 rounded-full font-bold bg-green-400/15 text-green-400">
                           🛡 Guardian
                         </span>
                       )}
                       {evolutionStage.unlocksRalphMode && (
-                        <span className="text-[9px] px-1.5 py-0.5 rounded-full font-bold" style={{ background: "rgba(201,168,76,0.15)", color: GOLD }}>
+                        <span className="text-[9px] px-1.5 py-0.5 rounded-full font-bold bg-[#c9a84c]/15 text-[#c9a84c]">
                           ⚡ Ralph Mode
                         </span>
                       )}
@@ -823,14 +725,11 @@ export default function DashboardOverview() {
                   </div>
                 </div>
               )}
-            </div>
+            </Surface>
 
             {/* Emotional state dimensions */}
-            <div
-              className="rounded-2xl p-5 flex-1"
-              style={{ background: SURFACE, border: "1px solid rgba(255,255,255,0.05)" }}
-            >
-              <p className="text-[10px] font-bold uppercase tracking-widest mb-3" style={{ color: `${GOLD}77` }}>
+            <Surface variant="elevated" className="p-5 flex-1">
+              <p className="text-[10px] font-bold uppercase tracking-widest mb-3 text-[#c9a84c]/50">
                 Emotional State
               </p>
               <div className="space-y-3">
@@ -840,11 +739,11 @@ export default function DashboardOverview() {
                       <span className="text-xs font-medium text-white/60">
                         {dim.label}
                       </span>
-                      <span className="text-xs font-bold" style={{ color: dim.pct >= 70 ? GOLD : "rgba(255,255,255,0.3)" }}>
+                      <span className={cn("text-xs font-bold", dim.pct >= 70 ? "text-[#c9a84c]" : "text-white/30")}>
                         {dim.pct}%
                       </span>
                     </div>
-                    <div className="h-1 rounded-full overflow-hidden" style={{ background: "rgba(255,255,255,0.06)" }}>
+                    <div className="h-1 rounded-full overflow-hidden bg-white/[0.06]">
                       <div
                         className="h-full rounded-full transition-all duration-700"
                         style={{
@@ -856,17 +755,14 @@ export default function DashboardOverview() {
                   </div>
                 ))}
               </div>
-            </div>
+            </Surface>
           </div>
 
           {/* Left: secondary info col (2/3) — order-1 so it appears first on desktop */}
-          <div
-            className="lg:col-span-2 order-1 lg:order-1 rounded-2xl p-6 flex flex-col gap-5"
-            style={{ background: SURFACE, border: "1px solid rgba(255,255,255,0.05)" }}
-          >
+          <Surface variant="surface" className="lg:col-span-2 order-1 lg:order-1 p-6 flex flex-col gap-5">
             {/* ── Your AI is working on... ── */}
             <div>
-              <p className="text-[10px] font-bold uppercase tracking-widest mb-4" style={{ color: `${GOLD}77` }}>
+              <p className="text-[10px] font-bold uppercase tracking-widest mb-4 text-[#c9a84c]/50">
                 Your AI is working on…
               </p>
               {activityItems.length > 0 ? (
@@ -876,23 +772,29 @@ export default function DashboardOverview() {
                       <span className="text-base flex-shrink-0 mt-0.5">{item.icon}</span>
                       <div className="min-w-0">
                         <p className="text-sm text-white/70">{item.text}</p>
-                        <p className="text-xs mt-0.5" style={{ color: "rgba(255,255,255,0.25)" }}>{item.sub}</p>
+                        <p className="text-xs mt-0.5 text-white/25">{item.sub}</p>
                       </div>
                     </div>
                   ))}
                 </div>
               ) : (
-                <p className="text-sm" style={{ color: "rgba(255,255,255,0.35)" }}>
-                  Your companion is just waking up. Start a conversation to begin.
-                </p>
+                <div className="flex flex-col items-center gap-4 py-8 text-center">
+                  <IconOrb icon={Cpu} variant="gold" size="lg" pulse />
+                  <p className="text-sm text-white/50">
+                    Your companion is just waking up.
+                  </p>
+                  <Link href="/dashboard/chat" className="text-sm font-medium text-[#c9a84c] hover:underline">
+                    Start a conversation →
+                  </Link>
+                </div>
               )}
             </div>
-          </div>
+          </Surface>
         </div>
 
         {/* ── Bottom shortcut row ── */}
         <div
-          className="fade-slide-up grid grid-cols-2 sm:grid-cols-4 gap-3"
+          className="animate-fade-in-up grid grid-cols-2 sm:grid-cols-4 gap-3"
           style={{ animationDelay: "300ms" }}
         >
           {[
@@ -924,32 +826,25 @@ export default function DashboardOverview() {
             const Icon = link.icon;
             return (
               <Link key={link.href} href={link.href}>
-                <div
-                  className="shortcut-card flex items-center gap-3 p-4 rounded-2xl cursor-pointer group"
-                  style={{
-                    background: SURFACE,
-                    border: "1px solid rgba(255,255,255,0.05)",
-                  }}
+                <Surface
+                  variant="elevated"
+                  className="flex items-center gap-3 p-4 cursor-pointer group transition-all duration-200 hover:-translate-y-0.5 hover:border-[#c9a84c]/30 hover:shadow-[0_0_0_1px_#c9a84c/15,0_4px_16px_#c9a84c/10]"
                 >
-                  <div
-                    className="w-8 h-8 rounded-xl flex items-center justify-center flex-shrink-0"
-                    style={{ background: `${GOLD}14` }}
-                  >
-                    <Icon className="w-4 h-4" style={{ color: GOLD }} />
+                  <div className="w-8 h-8 rounded-xl flex items-center justify-center flex-shrink-0 bg-[#c9a84c]/10">
+                    <Icon className="w-4 h-4 text-[#c9a84c]" />
                   </div>
                   <div className="min-w-0 flex-1">
                     <p className="text-sm font-semibold text-white">
                       {link.label}
                     </p>
-                    <p className="text-xs truncate" style={{ color: "rgba(255,255,255,0.3)" }}>
+                    <p className="text-xs truncate text-white/30">
                       {link.sub}
                     </p>
                   </div>
                   <ArrowUpRight
-                    className="w-3.5 h-3.5 flex-shrink-0 opacity-0 group-hover:opacity-100 transition-opacity"
-                    style={{ color: GOLD }}
+                    className="w-3.5 h-3.5 flex-shrink-0 opacity-0 group-hover:opacity-100 transition-opacity text-[#c9a84c]"
                   />
-                </div>
+                </Surface>
               </Link>
             );
           })}
@@ -958,33 +853,30 @@ export default function DashboardOverview() {
         {/* ── Upgrade CTA (free tier only, bottom — the only CTA) ── */}
         {isFree && (
           <div
-            className="fade-slide-up"
+            className="animate-fade-in-up"
             style={{ animationDelay: "360ms" }}
           >
             <Link href="/#pricing">
-              <div
-                className="flex items-center justify-between px-5 py-4 rounded-2xl cursor-pointer group transition-all duration-150"
-                style={{
-                  background: `${GOLD}0c`,
-                  border: `1px solid ${GOLD}22`,
-                }}
+              <Surface
+                variant="glass"
+                glow="gold"
+                className="flex items-center justify-between px-5 py-4 cursor-pointer group transition-all duration-150 hover:border-[#c9a84c]/30"
               >
                 <div className="flex items-center gap-3">
-                  <Crown className="w-5 h-5 flex-shrink-0" style={{ color: GOLD }} />
+                  <Crown className="w-5 h-5 flex-shrink-0 text-[#c9a84c]" />
                   <div>
-                    <p className="text-sm font-semibold" style={{ color: GOLD }}>
+                    <p className="text-sm font-semibold text-[#c9a84c]">
                       Upgrade to Pro
                     </p>
-                    <p className="text-xs" style={{ color: "rgba(255,255,255,0.3)" }}>
+                    <p className="text-xs text-white/30">
                       Unlimited memory · All archetypes · Voice mode
                     </p>
                   </div>
                 </div>
                 <ChevronRight
-                  className="w-4 h-4 flex-shrink-0 transition-transform group-hover:translate-x-0.5"
-                  style={{ color: `${GOLD}66` }}
+                  className="w-4 h-4 flex-shrink-0 transition-transform group-hover:translate-x-0.5 text-[#c9a84c]/40"
                 />
-              </div>
+              </Surface>
             </Link>
           </div>
         )}

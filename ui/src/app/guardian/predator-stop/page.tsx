@@ -14,7 +14,11 @@ import {
   ExternalLink,
   Trash2,
   Clock,
+  Baby,
+  Eye,
+  Lock,
 } from "lucide-react";
+import { Surface, IconOrb, FeatureCard } from "@/components/design-system";
 
 // ─── Brand Tokens ─────────────────────────────────────────────────────────────
 
@@ -66,6 +70,26 @@ const HOW_IT_WORKS = [
     title: "Alert",
     desc: "If patterns are detected, you get a clear breakdown of what was found and why it is concerning — with links to professional reporting routes and crisis support.",
     color: "#ef4444",
+  },
+];
+
+// ─── Feature cards ────────────────────────────────────────────────────────────
+
+const FEATURES = [
+  {
+    icon: Eye,
+    title: "Pattern Detection",
+    description: "Identifies secrecy language, exclusivity flattery, photo solicitation, and meetup requests in conversations.",
+  },
+  {
+    icon: Baby,
+    title: "Child-First Design",
+    description: "Built to protect children without creating fear. Results are clear for adults and actionable for reporting.",
+  },
+  {
+    icon: Lock,
+    title: "Private & Local",
+    description: "Scans are stored only in your browser. No data is sent to servers beyond the analysis request.",
   },
 ];
 
@@ -244,10 +268,10 @@ function PatternAccordion() {
         const bodyId = `pattern-body-${i}`;
         const headId = `pattern-head-${i}`;
         return (
-          <div
+          <Surface
             key={i}
-            className="rounded-2xl border overflow-hidden"
-            style={{ background: "rgba(255,255,255,0.02)", borderColor: BORDER }}
+            variant="elevated"
+            className="overflow-hidden"
           >
             <button
               type="button"
@@ -282,7 +306,7 @@ function PatternAccordion() {
                 </ul>
               </div>
             )}
-          </div>
+          </Surface>
         );
       })}
     </div>
@@ -375,6 +399,7 @@ export default function PredatorStopPage() {
           className="absolute top-1/2 right-0 w-[600px] h-[600px] rounded-full blur-3xl opacity-08"
           style={{ background: "radial-gradient(ellipse, #ef444430 0%, transparent 65%)" }}
         />
+        <div className="blob-teal absolute bottom-0 left-1/3 h-[400px] w-[400px] opacity-10" />
       </div>
 
       <main className="relative z-10 mx-auto max-w-4xl px-6 pb-32 pt-20">
@@ -391,67 +416,70 @@ export default function PredatorStopPage() {
         {/* ── Header ────────────────────────────────────────────────────────── */}
         <div className="mb-12">
           <div className="mb-5 flex items-center gap-4">
-            <div
-              className="flex h-14 w-14 items-center justify-center rounded-2xl"
-              style={{ backgroundColor: "#ef444420" }}
-            >
-              <AlertTriangle className="h-7 w-7 text-red-400" />
-            </div>
+            <IconOrb icon={AlertTriangle} variant="teal" size="lg" pulse />
             <div>
               <h1 className="text-3xl font-black tracking-tight md:text-4xl">Predator Stop</h1>
               <p className="mt-1 text-white/50">AI detection of grooming patterns in conversations</p>
             </div>
           </div>
 
-          <div
-            className="rounded-2xl border p-4"
-            style={{ background: "#ef444410", borderColor: "#ef444430" }}
-          >
+          <Surface variant="glass" glow="teal" className="p-4">
             <p className="text-sm leading-relaxed text-white/65">
               <strong className="text-red-400">Important: </strong>
               This tool helps identify potential grooming language patterns for awareness and reporting purposes.
               It does not replace professional assessment. If a child is in immediate danger, call <strong className="text-white">999</strong> (UK) or <strong className="text-white">911</strong> (US).
             </p>
-          </div>
+          </Surface>
         </div>
+
+        {/* ── Feature Cards ─────────────────────────────────────────────────── */}
+        <section className="animate-fade-in-up mb-12">
+          <div className="grid gap-5 sm:grid-cols-3">
+            {FEATURES.map((f) => (
+              <FeatureCard
+                key={f.title}
+                title={f.title}
+                description={f.description}
+                icon={f.icon}
+                iconVariant="teal"
+                glow="teal"
+              />
+            ))}
+          </div>
+        </section>
 
         <div className="space-y-8">
 
           {/* ── How it works ──────────────────────────────────────────────────── */}
-          <section>
+          <section className="animate-fade-in-up">
             <h2 className="mb-6 text-xl font-bold text-white/90">How it works</h2>
             <div className="grid gap-4 sm:grid-cols-3">
               {HOW_IT_WORKS.map((step) => {
                 const Icon = step.icon;
                 return (
-                  <div
+                  <Surface
                     key={step.step}
-                    className="rounded-2xl border p-6"
-                    style={{ background: SURFACE, borderColor: BORDER }}
+                    variant="elevated"
+                    className="p-6"
                   >
                     <div className="mb-4 flex items-center gap-3">
                       <span className="text-xs font-bold tracking-widest" style={{ color: step.color }}>
                         {step.step}
                       </span>
-                      <div
-                        className="flex h-9 w-9 items-center justify-center rounded-xl"
-                        style={{ backgroundColor: `${step.color}20` }}
-                      >
-                        <Icon className="h-4 w-4" style={{ color: step.color }} />
-                      </div>
+                      <IconOrb icon={Icon} variant="teal" size="sm" />
                     </div>
                     <h3 className="mb-2 font-semibold">{step.title}</h3>
                     <p className="text-sm leading-relaxed text-white/50">{step.desc}</p>
-                  </div>
+                  </Surface>
                 );
               })}
             </div>
           </section>
 
           {/* ── Message Scanner ───────────────────────────────────────────────── */}
-          <section
-            className="rounded-2xl border p-6"
-            style={{ background: SURFACE, borderColor: BORDER }}
+          <Surface
+            variant="elevated"
+            className="p-6"
           >
             <h2 className="mb-1 font-semibold text-white/90">Message Scanner</h2>
             <p className="mb-5 text-sm text-white/40">
@@ -493,13 +521,14 @@ export default function PredatorStopPage() {
                 )}
               </button>
             </div>
-          </section>
+          </Surface>
 
           {/* ── Scan result ───────────────────────────────────────────────────── */}
           {result && threatCfg && (
-            <section
-              className="rounded-2xl border p-6"
-              style={{ background: SURFACE, borderColor: threatCfg.color + "40" }}
+            <Surface
+              variant="elevated"
+              className="p-6"
+              style={{ borderColor: threatCfg.color + "40" }}
             >
               <div className="mb-5 flex items-center justify-between gap-4 flex-wrap">
                 <h2 className="font-semibold text-white/90">Scan Result</h2>
@@ -552,11 +581,11 @@ export default function PredatorStopPage() {
                   </p>
                 </div>
               )}
-            </section>
+            </Surface>
           )}
 
           {/* ── Pattern library ───────────────────────────────────────────────── */}
-          <section>
+          <section className="animate-fade-in-up">
             <h2 className="mb-2 text-xl font-bold text-white/90">Grooming Pattern Library</h2>
             <p className="mb-6 text-sm text-white/40">
               Educational descriptions of known grooming tactics — awareness is the first layer of protection
@@ -565,14 +594,15 @@ export default function PredatorStopPage() {
           </section>
 
           {/* ── Emergency contacts ────────────────────────────────────────────── */}
-          <section>
+          <section className="animate-fade-in-up">
             <h2 className="mb-6 text-xl font-bold text-white/90">Emergency Contacts</h2>
             <div className="grid gap-4 sm:grid-cols-2">
               {EMERGENCY_CONTACTS.map((contact) => (
-                <div
+                <Surface
                   key={contact.name}
-                  className="rounded-2xl border p-6"
-                  style={{ background: SURFACE, borderColor: `${contact.color}30` }}
+                  variant="elevated"
+                  className="p-6"
+                  style={{ borderColor: `${contact.color}30` }}
                 >
                   <div className="mb-3 flex items-center gap-3">
                     <div
@@ -609,16 +639,16 @@ export default function PredatorStopPage() {
                       {contact.urlLabel}
                     </a>
                   </div>
-                </div>
+                </Surface>
               ))}
             </div>
           </section>
 
           {/* ── Scan history ──────────────────────────────────────────────────── */}
           {history.length > 0 && (
-            <section
-              className="rounded-2xl border p-6"
-              style={{ background: SURFACE, borderColor: BORDER }}
+            <Surface
+              variant="elevated"
+              className="p-6"
             >
               <div className="mb-5 flex items-center justify-between">
                 <div>
@@ -660,25 +690,31 @@ export default function PredatorStopPage() {
                   );
                 })}
               </ul>
-            </section>
+            </Surface>
           )}
 
         </div>
 
-        {/* ── Bottom nav ────────────────────────────────────────────────────── */}
-        <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row">
-          <Link
-            href="/guardian/school-safe"
-            className="rounded-xl border border-white/15 px-6 py-3 text-sm font-semibold text-white/60 transition-colors hover:border-white/30 hover:text-white"
-          >
-            ← School-Safe Mode
-          </Link>
-          <Link
-            href="/guardian/children"
-            className="rounded-xl border border-white/15 px-6 py-3 text-sm font-semibold text-white/60 transition-colors hover:border-white/30 hover:text-white"
-          >
-            Back to Children Safety
-          </Link>
+        {/* ── Bottom CTA ────────────────────────────────────────────────────── */}
+        <div className="mt-12 flex flex-col items-center gap-4 border-t border-white/10 pt-10 sm:flex-row sm:justify-between">
+          <div className="text-center sm:text-left">
+            <p className="text-sm font-semibold text-white/80">Keep your family safe</p>
+            <p className="text-xs text-white/40">Explore more Guardian tools below.</p>
+          </div>
+          <div className="flex flex-col items-center gap-3 sm:flex-row">
+            <Link
+              href="/guardian/school-safe"
+              className="rounded-xl border border-white/15 px-6 py-3 text-sm font-semibold text-white/60 transition-colors hover:border-white/30 hover:text-white"
+            >
+              ← School-Safe Mode
+            </Link>
+            <Link
+              href="/guardian/children"
+              className="rounded-xl border border-white/15 px-6 py-3 text-sm font-semibold text-white/60 transition-colors hover:border-white/30 hover:text-white"
+            >
+              Back to Children Safety
+            </Link>
+          </div>
         </div>
 
       </main>

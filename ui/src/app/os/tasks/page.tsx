@@ -12,6 +12,7 @@ import { useState, useEffect, useRef, useCallback } from 'react';
 import { Plus, Trash2, ArrowUp, Layers, ListChecks, History, Terminal } from 'lucide-react';
 import { TaskExecution }     from '@/components/task-execution';
 import { TaskHistory }       from '@/components/task-history';
+import { Surface, GlowText, IconOrb } from '@/components/design-system';
 import {
   classifyTask,
   getStepsForTask,
@@ -251,9 +252,9 @@ export default function TasksPage() {
         {/* ── Page header ──────────────────────────────────────────────── */}
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <Terminal className="w-5 h-5" style={{ color: GOLD }} />
-            <h1 className="text-lg font-semibold tracking-tight" style={{ color: GOLD }}>
-              Task Execution
+            <IconOrb icon={Terminal} variant="gold" size="lg" />
+            <h1 className="text-xl font-bold tracking-tight">
+              <GlowText variant="gold" as="span">Task Execution</GlowText>
             </h1>
           </div>
           <span
@@ -282,16 +283,9 @@ export default function TasksPage() {
               isPaused={activeTask.isPaused}
             />
           ) : (
-            <div
-              className="rounded-xl flex items-center justify-center py-10 text-xs"
-              style={{
-                background: SURFACE,
-                border: `1px solid ${BORDER}`,
-                color: 'rgba(255,255,255,0.2)',
-              }}
-            >
+            <Surface variant="elevated" glow="gold" className="flex items-center justify-center py-10 text-xs text-white/20">
               No active task — give {CHARACTER.name} something to do below.
-            </div>
+            </Surface>
           )}
         </section>
 
@@ -302,10 +296,7 @@ export default function TasksPage() {
             label={`Queue (${queue.length})`}
           />
 
-          <div
-            className="rounded-xl overflow-hidden"
-            style={{ background: SURFACE, border: `1px solid ${BORDER}` }}
-          >
+          <Surface variant="elevated" className="overflow-hidden">
             {queue.length === 0 ? (
               <div
                 className="py-6 text-xs text-center"
@@ -323,7 +314,7 @@ export default function TasksPage() {
                 />
               ))
             )}
-          </div>
+          </Surface>
         </section>
 
         {/* ── History ───────────────────────────────────────────────────── */}
@@ -334,13 +325,10 @@ export default function TasksPage() {
 
         {/* ── Task input ────────────────────────────────────────────────── */}
         <div className="sticky bottom-4">
-          <div
-            className="rounded-xl overflow-hidden transition-all"
-            style={{
-              background: SURFACE,
-              border: `1px solid ${inputFocus ? GOLD : BORDER}`,
-              boxShadow: inputFocus ? `0 0 0 1px ${GOLD}22` : 'none',
-            }}
+          <Surface
+            variant="elevated"
+            glow={inputFocus ? 'gold' : 'none'}
+            className="overflow-hidden transition-all"
           >
             <div className="flex items-center gap-3 px-4 py-3">
               {/* Character avatar */}
@@ -394,7 +382,7 @@ export default function TasksPage() {
               <span>·</span>
               <span>&quot;Plan Q3 roadmap&quot;</span>
             </div>
-          </div>
+          </Surface>
         </div>
 
       </div>

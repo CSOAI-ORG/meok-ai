@@ -35,6 +35,10 @@ function CheckoutContent() {
       byok: { tier: "byok", interval: "month" },
       family_monthly: { tier: "family", interval: "month" },
       family_annual: { tier: "family", interval: "year" },
+      // Governance / Labs MCP tiers (monthly only)
+      "governance-smb": { tier: "governance-smb", interval: "month" },
+      "governance-professional": { tier: "governance-professional", interval: "month" },
+      "governance-enterprise": { tier: "governance-enterprise", interval: "month" },
     };
 
     const mapped = planMap[planParam];

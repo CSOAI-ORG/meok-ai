@@ -11,7 +11,12 @@ import {
   ArrowRight,
   RotateCcw,
   Sparkles,
+  Zap,
+  Layers,
+  Brain,
 } from "lucide-react";
+import { Surface, FeatureCard, IconOrb, GlowText } from "@/components/design-system";
+import Link from "next/link";
 
 // ─── Brand constants ──────────────────────────────────────────────────────────
 
@@ -101,36 +106,16 @@ function sampleThoughts(awayHours: number): string[] {
 
 function DreamSummary() {
   return (
-    <div
-      style={{
-        marginTop: "24px",
-        padding: "16px 20px",
-        borderRadius: "14px",
-        background: `${SURFACE}cc`,
-        border: `1px solid ${BORDER}`,
-        backdropFilter: "blur(8px)",
-      }}
-    >
-      <p
-        style={{
-          fontSize: "10px",
-          letterSpacing: "0.14em",
-          textTransform: "uppercase",
-          color: "rgba(255,255,255,0.3)",
-          marginBottom: "8px",
-          display: "flex",
-          alignItems: "center",
-          gap: "6px",
-        }}
-      >
-        <Moon style={{ width: "12px", height: "12px" }} />
+    <Surface variant="glass" className="mt-6 p-5">
+      <p className="text-[10px] tracking-[0.14em] uppercase text-white/30 mb-2 flex items-center gap-1.5">
+        <Moon className="w-3 h-3" />
         Dream cycle
       </p>
-      <p style={{ fontSize: "13px", color: "rgba(255,255,255,0.55)", lineHeight: 1.6 }}>
+      <p className="text-sm text-white/55 leading-relaxed">
         While you were away I ran a synthesis pass — connecting threads from the past few sessions,
         surfacing patterns, and preparing context for when you returned. Everything is ready.
       </p>
-    </div>
+    </Surface>
   );
 }
 
@@ -181,233 +166,156 @@ export default function WakePage() {
 
   return (
     <div
+      className="min-h-screen bg-[#0d0c18]"
       style={{
-        minHeight: "100dvh",
-        background: DEEP,
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
-        padding: "24px",
-        position: "relative",
-        overflow: "hidden",
         opacity: visible ? 1 : 0,
         transition: "opacity 0.6s ease",
       }}
     >
-      {/* ── Ambient glow ────────────────────────────────────────────────── */}
-      <div
-        aria-hidden
-        style={{
-          position: "absolute",
-          inset: 0,
-          background: `radial-gradient(ellipse 60% 50% at 50% 60%, ${GOLD}08 0%, transparent 70%)`,
-          pointerEvents: "none",
-        }}
-      />
-      <div
-        aria-hidden
-        style={{
-          position: "absolute",
-          top: "-20%",
-          left: "50%",
-          transform: "translateX(-50%)",
-          width: "600px",
-          height: "400px",
-          borderRadius: "50%",
-          background: `radial-gradient(ellipse at center, ${GOLD}05 0%, transparent 70%)`,
-          filter: "blur(40px)",
-          pointerEvents: "none",
-        }}
-      />
-
-      {/* ── Character avatar orb ────────────────────────────────────────── */}
-      <div
-        aria-hidden
-        style={{
-          width: "72px",
-          height: "72px",
-          borderRadius: "50%",
-          background: `radial-gradient(circle at 38% 38%, ${GOLD}44, ${GOLD}11 60%, transparent)`,
-          border: `1px solid ${GOLD}33`,
-          boxShadow: `0 0 40px ${GOLD}22, 0 0 80px ${GOLD}0a`,
-          marginBottom: "28px",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          animation: "orb-breathe 4s ease-in-out infinite",
-        }}
-      >
-        <TimeIcon tod={tod} />
-      </div>
-
-      {/* ── Greeting ────────────────────────────────────────────────────── */}
-      <div style={{ textAlign: "center", maxWidth: "480px", marginBottom: "32px" }}>
-        <h1
-          style={{
-            fontSize: "clamp(28px, 5vw, 42px)",
-            fontWeight: 900,
-            color: "#f5f0e8",
-            letterSpacing: "-0.02em",
-            marginBottom: "10px",
-            lineHeight: 1.1,
-          }}
-        >
-          {greeting}
-        </h1>
-        <p
-          style={{
-            fontSize: "14px",
-            color: "rgba(255,255,255,0.45)",
-            lineHeight: 1.6,
-          }}
-        >
-          {subtext}
-        </p>
-      </div>
-
-      {/* ── While you were away ─────────────────────────────────────────── */}
-      {thoughts.length > 0 && (
-        <div
-          style={{
-            width: "100%",
-            maxWidth: "420px",
-            marginBottom: "28px",
-          }}
-        >
-          <p
-            style={{
-              fontSize: "10px",
-              letterSpacing: "0.14em",
-              textTransform: "uppercase",
-              color: "rgba(255,255,255,0.25)",
-              marginBottom: "10px",
-              display: "flex",
-              alignItems: "center",
-              gap: "6px",
-            }}
-          >
-            <Clock style={{ width: "12px", height: "12px" }} />
-            While you were away, I&hellip;
-          </p>
-
-          <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "8px" }}>
-            {thoughts.map((thought, i) => (
-              <li
-                key={i}
-                style={{
-                  display: "flex",
-                  alignItems: "flex-start",
-                  gap: "10px",
-                  padding: "10px 14px",
-                  borderRadius: "10px",
-                  background: `${SURFACE}99`,
-                  border: `1px solid ${BORDER}`,
-                  fontSize: "13px",
-                  color: "rgba(255,255,255,0.6)",
-                  lineHeight: 1.5,
-                }}
-              >
-                <Sparkles
-                  style={{
-                    width: "14px",
-                    height: "14px",
-                    color: GOLD,
-                    flexShrink: 0,
-                    marginTop: "2px",
-                  }}
-                />
-                {thought}
-              </li>
-            ))}
-          </ul>
-
-          {showDream && <DreamSummary />}
+      {/* Hero */}
+      <section className="relative pt-28 pb-12 px-6 text-center overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[500px] rounded-full bg-[#c9a84c]/[0.06] blur-3xl" />
+          <div className="absolute top-1/4 right-1/4 w-[300px] h-[300px] rounded-full bg-purple-900/20 blur-3xl" />
         </div>
-      )}
+        <div className="relative z-10 max-w-3xl mx-auto">
+          <IconOrb icon={Sun} variant="gold" size="lg" className="mx-auto mb-6" />
+          <h1 className="text-4xl sm:text-5xl font-black tracking-tight mb-4">
+            <GlowText variant="gold">Wake</GlowText>
+          </h1>
+          <p className="text-lg text-white/50 max-w-xl mx-auto">
+            Your sovereign AI has been waiting. Here&apos;s what happened while you were away.
+          </p>
+        </div>
+      </section>
 
-      {/* ── Action buttons ───────────────────────────────────────────────── */}
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          gap: "10px",
-          width: "100%",
-          maxWidth: "360px",
-        }}
-      >
-        <button
-          onClick={handleContinue}
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            gap: "8px",
-            width: "100%",
-            padding: "14px 24px",
-            borderRadius: "999px",
-            border: "none",
-            cursor: "pointer",
-            background: GOLD,
-            color: "#1a1a2e",
-            fontSize: "14px",
-            fontWeight: 800,
-            letterSpacing: "0.01em",
-            boxShadow: `0 4px 20px ${GOLD}33`,
-            transition: "all 0.18s ease",
-          }}
-          onMouseEnter={(e) => {
-            (e.currentTarget as HTMLButtonElement).style.background = "#b8963e";
-            (e.currentTarget as HTMLButtonElement).style.transform = "translateY(-1px)";
-          }}
-          onMouseLeave={(e) => {
-            (e.currentTarget as HTMLButtonElement).style.background = GOLD;
-            (e.currentTarget as HTMLButtonElement).style.transform = "translateY(0)";
-          }}
-        >
-          {hasSession ? "Continue where we left off" : "Enter OS Mode"}
-          <ArrowRight style={{ width: "16px", height: "16px" }} />
-        </button>
+      {/* Greeting Card */}
+      <section className="px-6 pb-12">
+        <div className="max-w-xl mx-auto">
+          <Surface variant="elevated" glow="gold" className="p-8 text-center">
+            {/* Character avatar orb */}
+            <div
+              className="w-16 h-16 rounded-full mx-auto mb-5 flex items-center justify-center"
+              style={{
+                background: `radial-gradient(circle at 38% 38%, ${GOLD}44, ${GOLD}11 60%, transparent)`,
+                border: `1px solid ${GOLD}33`,
+                boxShadow: `0 0 40px ${GOLD}22, 0 0 80px ${GOLD}0a`,
+              }}
+            >
+              <TimeIcon tod={tod} />
+            </div>
 
-        <button
-          onClick={handleFresh}
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            gap: "8px",
-            width: "100%",
-            padding: "12px 24px",
-            borderRadius: "999px",
-            border: `1px solid ${BORDER}`,
-            cursor: "pointer",
-            background: "transparent",
-            color: "rgba(255,255,255,0.4)",
-            fontSize: "13px",
-            fontWeight: 500,
-            transition: "all 0.18s ease",
-          }}
-          onMouseEnter={(e) => {
-            (e.currentTarget as HTMLButtonElement).style.color = "rgba(255,255,255,0.7)";
-            (e.currentTarget as HTMLButtonElement).style.borderColor = "rgba(255,255,255,0.2)";
-          }}
-          onMouseLeave={(e) => {
-            (e.currentTarget as HTMLButtonElement).style.color = "rgba(255,255,255,0.4)";
-            (e.currentTarget as HTMLButtonElement).style.borderColor = BORDER;
-          }}
-        >
-          <RotateCcw style={{ width: "14px", height: "14px" }} />
-          Start fresh
-        </button>
-      </div>
+            <h2 className="text-3xl font-black text-[#f5f0e8] mb-2">
+              {greeting}
+            </h2>
+            <p className="text-sm text-white/45">
+              {subtext}
+            </p>
 
-      {/* Keyframes */}
-      <style>{`
-        @keyframes orb-breathe {
-          0%, 100% { transform: scale(1);   box-shadow: 0 0 40px ${GOLD}22, 0 0 80px ${GOLD}0a; }
-          50%       { transform: scale(1.06); box-shadow: 0 0 60px ${GOLD}33, 0 0 120px ${GOLD}11; }
-        }
-      `}</style>
+            {/* While you were away */}
+            {thoughts.length > 0 && (
+              <div className="mt-8 text-left">
+                <p className="text-[10px] tracking-[0.14em] uppercase text-white/25 mb-3 flex items-center gap-1.5">
+                  <Clock className="w-3 h-3" />
+                  While you were away, I&hellip;
+                </p>
+                <ul className="space-y-2">
+                  {thoughts.map((thought, i) => (
+                    <li
+                      key={i}
+                      className="flex items-start gap-3 text-sm text-white/60 p-3 rounded-lg bg-white/[0.03] border border-white/[0.06]"
+                    >
+                      <Sparkles className="w-4 h-4 text-[#c9a84c] flex-shrink-0 mt-0.5" />
+                      {thought}
+                    </li>
+                  ))}
+                </ul>
+                {showDream && <DreamSummary />}
+              </div>
+            )}
+
+            {/* Action buttons */}
+            <div className="flex flex-col gap-3 mt-8 max-w-sm mx-auto">
+              <button
+                onClick={handleContinue}
+                className="flex items-center justify-center gap-2 w-full px-6 py-3 rounded-full bg-[#c9a84c] text-[#0d0c18] font-bold hover:bg-[#b8963e] transition-all"
+              >
+                {hasSession ? "Continue where we left off" : "Enter OS Mode"}
+                <ArrowRight className="w-4 h-4" />
+              </button>
+
+              <button
+                onClick={handleFresh}
+                className="flex items-center justify-center gap-2 w-full px-6 py-3 rounded-full border border-white/10 text-white/40 hover:text-white/70 hover:border-white/20 transition-all"
+              >
+                <RotateCcw className="w-4 h-4" />
+                Start fresh
+              </button>
+            </div>
+          </Surface>
+        </div>
+      </section>
+
+      {/* Feature Cards */}
+      <section className="px-6 pb-12">
+        <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-5">
+          <FeatureCard
+            title="Memory Sync"
+            description="Every conversation and insight is preserved and ready to resume exactly where you left off."
+            icon={Brain}
+            iconVariant="gold"
+            glow="gold"
+          />
+          <FeatureCard
+            title="Background Tasks"
+            description="Your agents kept working — research, planning, and analysis continued while you were away."
+            icon={Layers}
+            iconVariant="teal"
+            glow="teal"
+          />
+          <FeatureCard
+            title="Dream Cycles"
+            description="After 6+ hours away, your AI runs a synthesis pass to surface patterns and prepare context."
+            icon={Moon}
+            iconVariant="purple"
+            glow="purple"
+          />
+        </div>
+      </section>
+
+      {/* Capabilities */}
+      <section className="px-6 py-10 bg-[#1a1a2e]">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-xl font-bold text-white mb-6 text-center">Capabilities</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {[
+              "Persistent session memory across devices",
+              "Automatic background task continuation",
+              "Dream-cycle insight generation",
+              "One-click resume or fresh start",
+            ].map((item, i) => (
+              <div key={i} className="flex items-center gap-3 text-sm text-white/60">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#c9a84c]" />
+                {item}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Bottom CTA */}
+      <section className="px-6 py-16">
+        <div className="max-w-3xl mx-auto text-center">
+          <h2 className="text-2xl font-bold text-white mb-3">Ready to continue?</h2>
+          <p className="text-white/50 mb-6">Jump back into the sovereign OS experience.</p>
+          <Link
+            href="/os/sovereign-os"
+            className="inline-flex items-center gap-2 px-8 py-3 rounded-full bg-[#c9a84c] text-[#0d0c18] font-bold hover:bg-[#b8963e] transition-all"
+          >
+            Enter OS Mode <ArrowRight className="w-4 h-4" />
+          </Link>
+        </div>
+      </section>
     </div>
   );
 }

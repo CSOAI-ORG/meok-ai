@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, Lock, Zap, Link2, Crown, Brain, Heart, Monitor, Grid2x2 } from "lucide-react";
+import { ArrowRight, Lock, Zap, Link2, Crown, Brain, Heart, Monitor, Grid2x2, Shield, Gamepad2, Users } from "lucide-react";
+import { Surface, GlowText, IconOrb } from "@/components/design-system";
 
 export const metadata: Metadata = {
   title: "MEOK OS — Personal Sovereign AI Operating System",
@@ -65,35 +66,35 @@ const OS_LAYERS = [
 
 const PILLARS = [
   {
-    icon: "⚡",
+    icon: Zap,
     title: "Work OS",
     desc: "Autonomous agents that handle your tasks, calendar, and output. Meet Orion, Riri, and Hourman.",
     href: "/work",
     accent: "#b8963e",
   },
   {
-    icon: "🥚",
+    icon: Users,
     title: "Characters",
     desc: "7 AI archetypes. Each one sovereign, memory-bearing, and care-aligned.",
     href: "/characters",
     accent: "#d4820a",
   },
   {
-    icon: "🛡️",
+    icon: Shield,
     title: "Guardian 24/7",
     desc: "Family safety AI. Age-gated, COPPA-compliant, parent dashboard included.",
     href: "/guardian",
     accent: "#2d9b8a",
   },
   {
-    icon: "🎮",
+    icon: Gamepad2,
     title: "Gaming",
     desc: "AI coaching and performance analytics for competitive players.",
     href: "/gaming",
     accent: "#e07340",
   },
   {
-    icon: "🔐",
+    icon: Lock,
     title: "Sovereign Data",
     desc: "End-to-end encrypted memory. Zero data selling. Full export.",
     href: "/os/sovereign",
@@ -337,7 +338,7 @@ export default function OsPage() {
       </section>
 
       {/* ─── SOVEREIGN AI CALLOUT ─────────────────────────── */}
-      <section className="py-16 px-6 bg-[#1a1a2e]">
+      <section className="py-16 px-6 bg-[#1a1a2e] animate-fade-in-up">
         <div className="max-w-3xl mx-auto">
           <div className="rounded-2xl p-8 sm:p-10 flex flex-col sm:flex-row items-start sm:items-center gap-6 border border-[#c9a84c]/20 bg-[#c9a84c]/[0.03]">
             <div className="flex-shrink-0">
@@ -366,7 +367,7 @@ export default function OsPage() {
       </section>
 
       {/* ─── WHAT MAKES IT AN OS ──────────────────────────── */}
-      <section className="py-24 px-6 bg-[#1a1a2e]">
+      <section className="py-24 px-6 bg-[#1a1a2e] animate-fade-in-up">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-16">
             <span className="text-xs font-semibold tracking-[0.2em] uppercase text-[#a0a0b8] block mb-4">
@@ -395,16 +396,17 @@ export default function OsPage() {
                 Icon: Crown,
               },
             ].map((p) => (
-              <div
+              <Surface
                 key={p.title}
-                className="glass-card p-6 rounded-2xl hover:border-white/20 transition-all"
+                variant="glass"
+                className="p-6 rounded-2xl hover:border-white/20 transition-all"
               >
                 <div className="w-10 h-10 rounded-xl icon-gold flex items-center justify-center mb-4">
                   <p.Icon className="w-5 h-5" />
                 </div>
                 <h3 className="font-bold text-lg mb-2 text-white">{p.title}</h3>
                 <p className="text-sm text-[#a0a0b8] leading-relaxed">{p.desc}</p>
-              </div>
+              </Surface>
             ))}
           </div>
         </div>
@@ -414,7 +416,7 @@ export default function OsPage() {
       <div className="section-divider" />
 
       {/* ─── THE 5 PILLARS ────────────────────────────────── */}
-      <section id="pillars" className="py-24 px-6 bg-[#0d0c18]">
+      <section id="pillars" className="py-24 px-6 bg-[#0d0c18] animate-fade-in-up">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-16">
             <span className="text-xs font-semibold tracking-[0.2em] uppercase text-[#a0a0b8] block mb-4">
@@ -430,27 +432,34 @@ export default function OsPage() {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {PILLARS.map((p) => (
-              <Link
-                key={p.href}
-                href={p.href}
-                className="group p-6 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-[#c9a84c]/30 hover:bg-white/[0.05] transition-all"
-              >
-                <div className="text-4xl mb-4">{p.icon}</div>
-                <h3 className="font-bold text-lg mb-2 text-[#f5f0e8]">
-                  {p.title}
-                </h3>
-                <p className="text-sm text-[#f5f0e8]/55 leading-relaxed mb-4">{p.desc}</p>
-                <span
-                  className="inline-flex items-center gap-1 text-xs font-semibold transition-all"
-                  style={{ color: p.accent }}
+            {PILLARS.map((p) => {
+              const Icon = p.icon;
+              return (
+                <Surface
+                  key={p.href}
+                  variant="elevated"
+                  glow="gold"
+                  as="article"
+                  className="group p-6 hover:border-[#c9a84c]/30 hover:bg-white/[0.05] transition-all"
                 >
-                  <span className="flex items-center gap-1">
-                    See full details <ArrowRight className="w-3 h-3 transition-transform group-hover:translate-x-1" />
-                  </span>
-                </span>
-              </Link>
-            ))}
+                  <Link href={p.href} className="block">
+                    <IconOrb icon={Icon} variant="gold" size="lg" className="mb-4" />
+                    <h3 className="font-bold text-lg mb-2 text-[#f5f0e8]">
+                      {p.title}
+                    </h3>
+                    <p className="text-sm text-[#f5f0e8]/55 leading-relaxed mb-4">{p.desc}</p>
+                    <span
+                      className="inline-flex items-center gap-1 text-xs font-semibold transition-all"
+                      style={{ color: p.accent }}
+                    >
+                      <span className="flex items-center gap-1">
+                        See full details <ArrowRight className="w-3 h-3 transition-transform group-hover:translate-x-1" />
+                      </span>
+                    </span>
+                  </Link>
+                </Surface>
+              );
+            })}
           </div>
 
           {/* Hatch your AI CTA */}
@@ -472,7 +481,7 @@ export default function OsPage() {
       <div className="section-divider" />
 
       {/* ─── THE FOUNDATION ───────────────────────────────── */}
-      <section className="py-24 px-6 bg-[#1a1a2e]">
+      <section className="py-24 px-6 bg-[#1a1a2e] animate-fade-in-up">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-16">
             <span className="text-xs font-semibold tracking-[0.2em] uppercase text-[#a0a0b8] block mb-4">
@@ -489,19 +498,22 @@ export default function OsPage() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
             {FOUNDATION.map((f) => (
-              <Link
+              <Surface
                 key={f.href}
-                href={f.href}
-                className="group p-6 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-[#c9a84c]/30 hover:bg-white/[0.05] transition-all"
+                variant="glass"
+                as="article"
+                className="group p-6 hover:border-[#c9a84c]/30 hover:bg-white/[0.05] transition-all"
               >
-                <h3 className="font-bold text-base mb-2 text-[#f5f0e8] group-hover:text-[#c9a84c] transition-colors">
-                  {f.title}
-                </h3>
-                <p className="text-sm text-[#f5f0e8]/55 leading-relaxed mb-4">{f.desc}</p>
-                <span className="inline-flex items-center gap-1 text-xs text-[#c9a84c] font-semibold group-hover:gap-2 transition-all">
-                  Learn more <ArrowRight className="w-3 h-3 transition-transform group-hover:translate-x-1" />
-                </span>
-              </Link>
+                <Link href={f.href} className="block">
+                  <h3 className="font-bold text-base mb-2 text-[#f5f0e8] group-hover:text-[#c9a84c] transition-colors">
+                    {f.title}
+                  </h3>
+                  <p className="text-sm text-[#f5f0e8]/55 leading-relaxed mb-4">{f.desc}</p>
+                  <span className="inline-flex items-center gap-1 text-xs text-[#c9a84c] font-semibold group-hover:gap-2 transition-all">
+                    Learn more <ArrowRight className="w-3 h-3 transition-transform group-hover:translate-x-1" />
+                  </span>
+                </Link>
+              </Surface>
             ))}
           </div>
         </div>
@@ -511,7 +523,7 @@ export default function OsPage() {
       <div className="section-divider" />
 
       {/* ─── THE 5 MODULES OF MEOK OS ─────────────────────── */}
-      <section className="py-24 px-6 bg-[#0d0c18]">
+      <section className="py-24 px-6 bg-[#0d0c18] animate-fade-in-up">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-16">
             <span className="text-xs font-semibold tracking-[0.2em] uppercase text-[#a0a0b8] block mb-4">
@@ -598,7 +610,7 @@ export default function OsPage() {
       <div className="section-divider" />
 
       {/* ─── THE COMPLETE URL MAP ─────────────────────────── */}
-      <section className="py-24 px-6 bg-[#1a1a2e]">
+      <section className="py-24 px-6 bg-[#1a1a2e] animate-fade-in-up">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-16">
             <span className="text-xs font-semibold tracking-[0.2em] uppercase text-[#a0a0b8] block mb-4">
@@ -636,7 +648,7 @@ export default function OsPage() {
       <div className="section-divider" />
 
       {/* ─── WORKS WITH ANY LLM ───────────────────────────── */}
-      <section className="py-24 px-6 bg-[#1a1a2e]">
+      <section className="py-24 px-6 bg-[#1a1a2e] animate-fade-in-up">
         <div className="max-w-3xl mx-auto text-center">
           <span className="text-xs font-semibold tracking-[0.2em] uppercase text-[#a0a0b8] block mb-6">
             LLM agnostic
@@ -665,7 +677,7 @@ export default function OsPage() {
       <div className="section-divider" />
 
       {/* ─── FINAL CTA ────────────────────────────────────── */}
-      <section className="py-24 px-6 bg-[#1a1a2e]">
+      <section className="py-24 px-6 bg-[#1a1a2e] animate-fade-in-up">
         <div className="max-w-3xl mx-auto">
           <div className="relative overflow-hidden rounded-3xl border border-[#c9a84c]/30 bg-[#16161f] p-12 text-center">
             {/* Blob background inside CTA */}

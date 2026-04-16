@@ -17,6 +17,17 @@
 
 import { NextRequest, NextResponse } from 'next/server';
 import { kv } from '@/lib/kv-cache';
+import { requireAuth, getAuthUserId } from '@/lib/api-auth';
+
+// Tier-based MCP access control
+const TIER_MCP_LIMITS: Record<string, { maxCallsPerDay: number; allowedCategories: string[] }> = {
+  explorer:  { maxCallsPerDay: 15,   allowedCategories: ['governance'] },
+  sovereign: { maxCallsPerDay: 500,  allowedCategories: ['governance', 'security', 'healthcare', 'finance', 'education', 'services'] },
+  family:    { maxCallsPerDay: 2000, allowedCategories: ['governance', 'security', 'healthcare', 'finance', 'education', 'services', 'industry', 'emerging', 'defense', 'government', 'legacy'] },
+};
+
+// In-memory call counter (resets on server restart — production should use DB)
+const _mcpCallCounts: Record<string, { count: number; date: string }> = {};
 
 export const runtime = 'nodejs';
 
@@ -160,15 +171,58 @@ export async function GET(req: NextRequest): Promise<NextResponse> {
 
 export async function POST(req: NextRequest): Promise<NextResponse> {
   try {
+    // Authenticate and check tier
+    const authResult = await requireAuth({ skipRateLimit: true });
+    if ('error' in authResult && authResult.error) return authResult.error;
+
+    const { userId, tier } = authResult as { userId: string; tier: string };
+    const limits = TIER_MCP_LIMITS[tier] || TIER_MCP_LIMITS.explorer;
+
+    // Check daily MCP call limit
+    const today = new Date().toISOString().split('T')[0];
+    const key = `${userId}:mcp`;
+    if (!_mcpCallCounts[key] || _mcpCallCounts[key].date !== today) {
+      _mcpCallCounts[key] = { count: 0, date: today };
+    }
+    if (_mcpCallCounts[key].count >= limits.maxCallsPerDay) {
+      return NextResponse.json({
+        error: `MCP call limit reached (${limits.maxCallsPerDay}/day on ${tier} tier). Upgrade at https://meok.ai/labs/mcp#pricing`,
+        tier,
+        limit: limits.maxCallsPerDay,
+        resetAt: `${today}T23:59:59Z`,
+      }, { status: 429 });
+    }
+
     const body = await req.json();
     const { server, tool, arguments: args } = body;
-    
+
     if (!server || !tool) {
       return NextResponse.json({ error: 'Missing server or tool' }, { status: 400 });
     }
-    
+
+    // Check category access
+    const serverConfig = MCP_SERVERS[server];
+    if (serverConfig && !limits.allowedCategories.includes(serverConfig.category)) {
+      return NextResponse.json({
+        error: `Server '${server}' (${serverConfig.category}) requires ${tier === 'explorer' ? 'Sovereign' : 'Family'} tier. Upgrade at https://meok.ai/labs/mcp#pricing`,
+        tier,
+        requiredCategories: limits.allowedCategories,
+      }, { status: 403 });
+    }
+
+    // Execute and count
     const result = await executeMCPTool(server, tool, args || {});
-    return NextResponse.json(result);
+    _mcpCallCounts[key].count++;
+
+    return NextResponse.json({
+      ...result,
+      _meta: {
+        tier,
+        callsUsed: _mcpCallCounts[key].count,
+        callsLimit: limits.maxCallsPerDay,
+        callsRemaining: limits.maxCallsPerDay - _mcpCallCounts[key].count,
+      },
+    });
   } catch (error) {
     console.error('[mcp/execute] error:', error);
     return NextResponse.json({ error: 'Tool execution failed' }, { status: 500 });

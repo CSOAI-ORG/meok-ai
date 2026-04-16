@@ -1,7 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { Settings, Brain, Volume2, User, Sparkles, Save, RefreshCw, Check, AlertCircle } from "lucide-react";
+import { Settings, Brain, Volume2, User, Sparkles, Save, RefreshCw, Check, AlertCircle, ArrowRight } from "lucide-react";
+import { Surface, FeatureCard, IconOrb, GlowText } from "@/components/design-system";
+import Link from "next/link";
 
 interface ModelConfig {
   id: string;
@@ -88,15 +90,79 @@ export default function SettingsPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 p-6">
-      <div className="max-w-4xl mx-auto">
+    <div className="min-h-screen bg-[#0d0c18] p-6">
+      {/* Hero */}
+      <section className="relative pt-20 pb-12 px-6 text-center overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] rounded-full bg-[#c9a84c]/[0.05] blur-3xl" />
+        </div>
+        <div className="relative z-10 max-w-3xl mx-auto">
+          <IconOrb icon={Settings} variant="gold" size="lg" className="mx-auto mb-6" />
+          <h1 className="text-4xl sm:text-5xl font-black tracking-tight mb-4">
+            <GlowText variant="gold">OS Settings</GlowText>
+          </h1>
+          <p className="text-lg text-white/50 max-w-xl mx-auto">
+            Fine-tune your sovereign AI companion — models, voice, personality, and advanced behaviour.
+          </p>
+        </div>
+      </section>
+
+      {/* Feature Cards */}
+      <section className="px-6 pb-10">
+        <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-5">
+          <FeatureCard
+            title="Model Routing"
+            description="Assign different brains for fast chat, deep reasoning, coding, vision, and orchestration."
+            icon={Brain}
+            iconVariant="gold"
+            glow="gold"
+          />
+          <FeatureCard
+            title="Voice Profiles"
+            description="Choose from multiple voices with distinct accents, warmth, and tone for every context."
+            icon={Volume2}
+            iconVariant="teal"
+            glow="teal"
+          />
+          <FeatureCard
+            title="Character Identity"
+            description="Set your companion's name, greeting, archetype, and formality level."
+            icon={User}
+            iconVariant="purple"
+            glow="purple"
+          />
+        </div>
+      </section>
+
+      {/* Capabilities */}
+      <section className="px-6 py-10 bg-[#1a1a2e]">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-xl font-bold text-white mb-6 text-center">Capabilities</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {[
+              "Local and cloud model switching",
+              "Adjustable context window up to 128K",
+              "Temperature control for creativity",
+              "Real-time streaming toggle",
+            ].map((item, i) => (
+              <div key={i} className="flex items-center gap-3 text-sm text-white/60">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#c9a84c]" />
+                {item}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Settings UI */}
+      <div className="max-w-4xl mx-auto py-12">
         {/* Header */}
         <div className="flex items-center justify-between mb-8">
           <div>
-            <h1 className="text-3xl font-bold text-white flex items-center gap-3">
-              <Settings className="w-8 h-8 text-yellow-400" />
+            <h2 className="text-2xl font-bold text-white flex items-center gap-3">
+              <Settings className="w-7 h-7 text-[#c9a84c]" />
               MEOK OS Settings
-            </h1>
+            </h2>
             <p className="text-gray-400 mt-1">Customize your AI companion</p>
           </div>
           <button
@@ -104,7 +170,7 @@ export default function SettingsPage() {
             className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-all ${
               saved 
                 ? "bg-green-500/20 text-green-400" 
-                : "bg-yellow-500/20 text-yellow-400 hover:bg-yellow-500/30"
+                : "bg-[#c9a84c]/20 text-[#c9a84c] hover:bg-[#c9a84c]/30"
             }`}
           >
             {saved ? <Check className="w-4 h-4" /> : <Save className="w-4 h-4" />}
@@ -120,8 +186,8 @@ export default function SettingsPage() {
               onClick={() => setActiveTab(tab.id)}
               className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium whitespace-nowrap transition-all ${
                 activeTab === tab.id
-                  ? "bg-yellow-500/20 text-yellow-400 border border-yellow-500/30"
-                  : "bg-slate-800 text-gray-400 border border-slate-700 hover:border-slate-600"
+                  ? "bg-[#c9a84c]/20 text-[#c9a84c] border border-[#c9a84c]/30"
+                  : "bg-[#13121f] text-gray-400 border border-white/10 hover:border-white/20"
               }`}
             >
               <tab.icon className="w-4 h-4" />
@@ -131,13 +197,13 @@ export default function SettingsPage() {
         </div>
 
         {/* Content */}
-        <div className="bg-slate-800/50 rounded-xl border border-slate-700 p-6">
+        <Surface variant="elevated" className="p-6">
           
           {/* Brains Tab */}
           {activeTab === "brains" && (
             <div className="space-y-6">
               <div>
-                <h2 className="text-xl font-semibold text-white mb-4">AI Brain Configuration</h2>
+                <h3 className="text-xl font-semibold text-white mb-4">AI Brain Configuration</h3>
                 <p className="text-gray-400 text-sm mb-6">Choose which models to use for different cognitive tasks</p>
               </div>
 
@@ -187,7 +253,7 @@ export default function SettingsPage() {
           {activeTab === "voice" && (
             <div className="space-y-6">
               <div>
-                <h2 className="text-xl font-semibold text-white mb-4">Voice Configuration</h2>
+                <h3 className="text-xl font-semibold text-white mb-4">Voice Configuration</h3>
                 <p className="text-gray-400 text-sm mb-6">Customize JARVIS's voice and speech settings</p>
               </div>
 
@@ -224,7 +290,7 @@ export default function SettingsPage() {
                   step="0.1"
                   value={ttsSpeed}
                   onChange={(e) => setTtsSpeed(parseFloat(e.target.value))}
-                  className="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer"
+                  className="w-full h-2 bg-[#1a1929] rounded-lg appearance-none cursor-pointer"
                 />
               </div>
 
@@ -237,7 +303,7 @@ export default function SettingsPage() {
                   step="0.1"
                   value={ttsVolume}
                   onChange={(e) => setTtsVolume(parseFloat(e.target.value))}
-                  className="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer"
+                  className="w-full h-2 bg-[#1a1929] rounded-lg appearance-none cursor-pointer"
                 />
               </div>
             </div>
@@ -247,7 +313,7 @@ export default function SettingsPage() {
           {activeTab === "character" && (
             <div className="space-y-6">
               <div>
-                <h2 className="text-xl font-semibold text-white mb-4">Character Personality</h2>
+                <h3 className="text-xl font-semibold text-white mb-4">Character Personality</h3>
                 <p className="text-gray-400 text-sm mb-6">Define your AI companion's identity</p>
               </div>
 
@@ -257,7 +323,7 @@ export default function SettingsPage() {
                   type="text"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  className="w-full px-4 py-3 bg-slate-700/50 border border-slate-600 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-yellow-500/50"
+                  className="w-full px-4 py-3 bg-[#0d0c18] border border-white/10 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-[#c9a84c]/50"
                   placeholder="Enter name..."
                 />
               </div>
@@ -268,7 +334,7 @@ export default function SettingsPage() {
                   type="text"
                   value={greeting}
                   onChange={(e) => setGreeting(e.target.value)}
-                  className="w-full px-4 py-3 bg-slate-700/50 border border-slate-600 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-yellow-500/50"
+                  className="w-full px-4 py-3 bg-[#0d0c18] border border-white/10 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-[#c9a84c]/50"
                   placeholder="Enter greeting..."
                 />
               </div>
@@ -282,8 +348,8 @@ export default function SettingsPage() {
                       onClick={() => setPersonality(p.id)}
                       className={`p-4 rounded-lg border text-left transition-all ${
                         personality === p.id
-                          ? "bg-yellow-500/20 border-yellow-500/50"
-                          : "bg-slate-700/30 border-slate-700 hover:border-slate-600"
+                          ? "bg-[#c9a84c]/20 border-[#c9a84c]/50"
+                          : "bg-[#0d0c18] border-white/10 hover:border-white/20"
                       }`}
                     >
                       <div className="text-2xl mb-1">{p.emoji}</div>
@@ -307,7 +373,7 @@ export default function SettingsPage() {
                   step="0.1"
                   value={formality}
                   onChange={(e) => setFormality(parseFloat(e.target.value))}
-                  className="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer"
+                  className="w-full h-2 bg-[#1a1929] rounded-lg appearance-none cursor-pointer"
                 />
               </div>
             </div>
@@ -317,7 +383,7 @@ export default function SettingsPage() {
           {activeTab === "advanced" && (
             <div className="space-y-6">
               <div>
-                <h2 className="text-xl font-semibold text-white mb-4">Advanced Settings</h2>
+                <h3 className="text-xl font-semibold text-white mb-4">Advanced Settings</h3>
                 <p className="text-gray-400 text-sm mb-6">Fine-tune behavior and performance</p>
               </div>
 
@@ -326,7 +392,7 @@ export default function SettingsPage() {
                 <select
                   value={contextWindow}
                   onChange={(e) => setContextWindow(parseInt(e.target.value))}
-                  className="w-full px-4 py-3 bg-slate-700/50 border border-slate-600 rounded-lg text-white focus:outline-none focus:border-yellow-500/50"
+                  className="w-full px-4 py-3 bg-[#0d0c18] border border-white/10 rounded-lg text-white focus:outline-none focus:border-[#c9a84c]/50"
                 >
                   <option value="4096">4K (Basic)</option>
                   <option value="16384">16K (Standard)</option>
@@ -350,11 +416,11 @@ export default function SettingsPage() {
                   step="0.1"
                   value={temperature}
                   onChange={(e) => setTemperature(parseFloat(e.target.value))}
-                  className="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer"
+                  className="w-full h-2 bg-[#1a1929] rounded-lg appearance-none cursor-pointer"
                 />
               </div>
 
-              <div className="flex items-center justify-between p-4 bg-slate-700/30 rounded-lg">
+              <div className="flex items-center justify-between p-4 bg-[#0d0c18] rounded-lg border border-white/10">
                 <div>
                   <div className="text-white font-medium">Stream Response</div>
                   <div className="text-gray-400 text-sm">Show responses as they're generated</div>
@@ -362,7 +428,7 @@ export default function SettingsPage() {
                 <button
                   onClick={() => setStreamResponse(!streamResponse)}
                   className={`w-12 h-6 rounded-full transition-all ${
-                    streamResponse ? "bg-yellow-500" : "bg-slate-600"
+                    streamResponse ? "bg-[#c9a84c]" : "bg-gray-600"
                   }`}
                 >
                   <div className={`w-5 h-5 bg-white rounded-full shadow transform transition-transform ${
@@ -381,7 +447,7 @@ export default function SettingsPage() {
             </div>
           )}
 
-        </div>
+        </Surface>
 
         {/* Reset Button */}
         <div className="mt-6 flex justify-center">
@@ -391,6 +457,20 @@ export default function SettingsPage() {
           </button>
         </div>
       </div>
+
+      {/* Bottom CTA */}
+      <section className="px-6 py-16 bg-[#1a1a2e]">
+        <div className="max-w-3xl mx-auto text-center">
+          <h2 className="text-2xl font-bold text-white mb-3">Back to the OS dashboard?</h2>
+          <p className="text-white/50 mb-6">Your settings are saved automatically.</p>
+          <Link
+            href="/os"
+            className="inline-flex items-center gap-2 px-8 py-3 rounded-full bg-[#c9a84c] text-[#0d0c18] font-bold hover:bg-[#b8963e] transition-all"
+          >
+            Enter OS Mode <ArrowRight className="w-4 h-4" />
+          </Link>
+        </div>
+      </section>
     </div>
   );
 }
@@ -403,7 +483,7 @@ function ModelSelector({ label, description, value, onChange, models }: {
   models: any[];
 }) {
   return (
-    <div className="p-4 bg-slate-700/30 rounded-lg border border-slate-700">
+    <Surface variant="glass" className="p-4">
       <div className="flex items-center justify-between mb-3">
         <div>
           <div className="text-white font-medium">{label}</div>
@@ -412,13 +492,13 @@ function ModelSelector({ label, description, value, onChange, models }: {
         <select
           value={value}
           onChange={(e) => onChange(e.target.value)}
-          className="px-3 py-2 bg-slate-700 border border-slate-600 rounded-lg text-white text-sm focus:outline-none focus:border-yellow-500/50"
+          className="px-3 py-2 bg-[#0d0c18] border border-white/10 rounded-lg text-white text-sm focus:outline-none focus:border-[#c9a84c]/50"
         >
           {models.map((m) => (
             <option key={m.id} value={m.id}>{m.name}</option>
           ))}
         </select>
       </div>
-    </div>
+    </Surface>
   );
 }

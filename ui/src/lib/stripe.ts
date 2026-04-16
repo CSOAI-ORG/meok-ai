@@ -86,6 +86,29 @@ export const TIERS = {
 export type Tier = keyof typeof TIERS;
 
 // ---------------------------------------------------------------------------
+// Governance tiers (Labs MCP product)
+// ---------------------------------------------------------------------------
+export const GOVERNANCE_TIERS = {
+  'governance-smb': {
+    name: 'Governance SMB',
+    price_monthly: 49,
+    features: ['1 industry pack', '500 API calls/day', 'Data persistence', 'Email support', 'Audit logging'],
+  },
+  'governance-professional': {
+    name: 'Governance Professional',
+    price_monthly: 149,
+    features: ['Full compliance suite', '12 framework crosswalks', '2,000 API calls/day', 'Audit trail export', 'Priority support', '1 industry pack included'],
+  },
+  'governance-enterprise': {
+    name: 'Governance Enterprise',
+    price_monthly: 499,
+    features: ['All 208 servers', 'Unlimited API calls', 'SSO / SAML', 'On-premise option', '99.9% SLA', 'Dedicated manager', 'Custom frameworks'],
+  },
+} as const;
+
+export type GovernanceTier = keyof typeof GOVERNANCE_TIERS;
+
+// ---------------------------------------------------------------------------
 // Checkout session helper
 // ---------------------------------------------------------------------------
 
@@ -96,7 +119,7 @@ export type Tier = keyof typeof TIERS;
 export async function createCheckoutSession(params: {
   userId: string;
   email: string;
-  tier: 'sovereign' | 'family' | 'byok';
+  tier: 'sovereign' | 'family' | 'byok' | GovernanceTier;
   interval: 'month' | 'year';
   successUrl: string;
   cancelUrl: string;
@@ -104,7 +127,13 @@ export async function createCheckoutSession(params: {
   const { userId, email, tier, interval, successUrl, cancelUrl } = params;
 
   let priceId: string;
-  if (tier === 'sovereign') {
+  if (tier === 'governance-smb') {
+    priceId = process.env.STRIPE_PRICE_GOVERNANCE_SMB_MONTHLY!;
+  } else if (tier === 'governance-professional') {
+    priceId = process.env.STRIPE_PRICE_GOVERNANCE_PRO_MONTHLY!;
+  } else if (tier === 'governance-enterprise') {
+    priceId = process.env.STRIPE_PRICE_GOVERNANCE_ENTERPRISE_MONTHLY!;
+  } else if (tier === 'sovereign') {
     priceId = interval === 'month'
       ? process.env.STRIPE_PRICE_SOVEREIGN_MONTHLY!
       : process.env.STRIPE_PRICE_SOVEREIGN_ANNUAL!;

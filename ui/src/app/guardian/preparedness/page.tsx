@@ -11,6 +11,7 @@ import {
   ArrowRight,
   AlertTriangle,
 } from "lucide-react";
+import { Surface, IconOrb, GlowText } from "@/components/design-system";
 
 // ─── Brand Tokens ─────────────────────────────────────────────────────────────
 
@@ -191,18 +192,19 @@ export default function PreparednessPage() {
         {/* ── HERO ──────────────────────────────────────────────────────────── */}
         <section className="mx-auto max-w-5xl px-6 pb-24 pt-28 text-center">
           {/* Badge */}
-          <div
-            className="mb-8 inline-flex items-center gap-2 rounded-full border px-4 py-2 text-xs font-mono tracking-wider"
-            style={{ background: `${PURPLE}18`, borderColor: `${PURPLE}40`, color: "#a78bfa" }}
+          <Surface
+            variant="glass"
+            glow="teal"
+            className="mb-8 inline-flex items-center gap-2 rounded-full px-4 py-2 text-xs font-mono tracking-wider"
           >
             <Brain className="h-3.5 w-3.5" />
             Guardian · AI Consciousness Preparedness
-          </div>
+          </Surface>
 
           <h1 className="mb-6 text-4xl font-black leading-tight tracking-tight sm:text-6xl lg:text-7xl">
             We&apos;re building for the AI
             <br />
-            <span className="text-gradient-gold">that doesn&apos;t exist yet.</span>
+            <GlowText variant="teal" className="font-black">that doesn&apos;t exist yet.</GlowText>
           </h1>
 
           <p className="mx-auto mb-5 max-w-2xl text-lg leading-relaxed md:text-xl" style={{ color: "rgba(255,255,255,0.65)" }}>
@@ -246,21 +248,18 @@ export default function PreparednessPage() {
             {PREPAREDNESS_REASONS.map((reason) => {
               const Icon = reason.icon;
               return (
-                <div
+                <Surface
                   key={reason.title}
-                  className="rounded-2xl border border-white/10 bg-white/5 p-7"
+                  variant="elevated"
+                  glow="teal"
+                  className="p-7"
                 >
                   <div className="mb-4 flex items-center gap-3">
-                    <div
-                      className="flex h-10 w-10 items-center justify-center rounded-xl"
-                      style={{ backgroundColor: `${PURPLE}20` }}
-                    >
-                      <Icon className="h-5 w-5" style={{ color: PURPLE }} />
-                    </div>
+                    <IconOrb icon={Icon} variant="teal" size="md" />
                     <span className="font-semibold">{reason.title}</span>
                   </div>
                   <p className="leading-relaxed text-sm text-white/55">{reason.desc}</p>
-                </div>
+                </Surface>
               );
             })}
           </div>
@@ -277,9 +276,11 @@ export default function PreparednessPage() {
 
           <div className="space-y-8">
             {MEOK_ACTIONS.map((action) => (
-              <div
+              <Surface
                 key={action.label}
-                className="rounded-2xl border border-white/10 bg-white/5 p-8"
+                variant="elevated"
+                glow="teal"
+                className="p-8"
               >
                 {/* Header */}
                 <div className="mb-2 flex items-center gap-3">
@@ -310,7 +311,7 @@ export default function PreparednessPage() {
                   {action.linkLabel}
                   <ArrowRight className="h-3.5 w-3.5" />
                 </Link>
-              </div>
+              </Surface>
             ))}
           </div>
         </section>
@@ -326,9 +327,11 @@ export default function PreparednessPage() {
 
           <div className="space-y-4">
             {FUTURE_SCENARIOS.map((item) => (
-              <div
+              <Surface
                 key={item.scenario}
-                className="rounded-2xl border border-white/10 bg-white/5 p-7"
+                variant="elevated"
+                glow="teal"
+                className="p-7"
               >
                 <div className="flex flex-col gap-4 sm:flex-row sm:items-start">
                   <div className="shrink-0">
@@ -344,22 +347,20 @@ export default function PreparednessPage() {
                     <p className="text-sm leading-relaxed text-white/55">{item.preparation}</p>
                   </div>
                 </div>
-              </div>
+              </Surface>
             ))}
           </div>
         </section>
 
         {/* ── MEOK AI Labs / MEOK AI Labs CONNECTION ───────────────────────────────────────── */}
         <section className="mx-auto max-w-3xl px-6 pb-24">
-          <div
-            className="rounded-2xl border p-10 text-center"
-            style={{ borderColor: `${GOLD}30`, backgroundColor: `${GOLD}08` }}
+          <Surface
+            variant="elevated"
+            glow="teal"
+            className="p-10 text-center"
           >
-            <div
-              className="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-2xl"
-              style={{ backgroundColor: `${GOLD}20` }}
-            >
-              <Globe className="h-7 w-7" style={{ color: GOLD }} />
+            <div className="mx-auto mb-5 flex justify-center">
+              <IconOrb icon={Globe} variant="teal" size="lg" />
             </div>
             <h2 className="mb-4 text-2xl font-bold md:text-3xl">
               MEOK AI Labs Research Institute
@@ -389,21 +390,17 @@ export default function PreparednessPage() {
                 MEOK AI Labs Research Institute — MEOK AI LTD
               </cite>
             </blockquote>
-          </div>
+          </Surface>
         </section>
 
         {/* ── MATERNAL COVENANT SUMMARY ─────────────────────────────────────── */}
         <section className="mx-auto max-w-3xl px-6 pb-24">
-          <div
-            className="rounded-2xl border p-10"
-            style={{ borderColor: `${PURPLE}30`, backgroundColor: `${PURPLE}08` }}
+          <Surface
+            variant="elevated"
+            glow="teal"
+            className="p-10"
           >
-            <div
-              className="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl"
-              style={{ backgroundColor: `${PURPLE}20` }}
-            >
-              <Heart className="h-7 w-7" style={{ color: PURPLE }} />
-            </div>
+            <IconOrb icon={Heart} variant="teal" size="lg" className="mb-5" />
             <h2 className="mb-4 text-2xl font-bold">
               The Maternal Covenant as an alignment framework
             </h2>
@@ -440,7 +437,7 @@ export default function PreparednessPage() {
             >
               Read the full Maternal Covenant <ArrowRight className="h-3.5 w-3.5" />
             </Link>
-          </div>
+          </Surface>
         </section>
 
         {/* ── BOTTOM CTA ────────────────────────────────────────────────────── */}

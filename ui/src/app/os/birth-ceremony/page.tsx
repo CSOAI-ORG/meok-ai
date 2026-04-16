@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { ArrowRight, Star, Flame, Eye, ChevronDown, ChevronUp } from "lucide-react";
 import { useState } from "react";
+import { Surface, GlowText, IconOrb, FeatureCard } from "@/components/design-system";
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -205,10 +206,12 @@ const FAQS = [
   },
 ];
 
-function Shield({ className }: { className?: string }) {
+function Shield({ className, size }: { className?: string; size?: number }) {
   return (
     <svg
       className={className}
+      width={size}
+      height={size}
       fill="none"
       viewBox="0 0 24 24"
       stroke="currentColor"
@@ -228,9 +231,10 @@ function FaqAccordion() {
   return (
     <div className="space-y-3">
       {FAQS.map((faq, i) => (
-        <div
+        <Surface
           key={faq.q}
-          className="rounded-2xl border border-[#c9a84c]/10 bg-white/[0.02] overflow-hidden"
+          variant="glass"
+          className="overflow-hidden"
         >
           <button
             className="w-full flex items-center justify-between px-6 py-5 text-left gap-4"
@@ -250,7 +254,7 @@ function FaqAccordion() {
               <p className="text-[#f5f0e8]/45 text-sm leading-relaxed">{faq.a}</p>
             </div>
           )}
-        </div>
+        </Surface>
       ))}
     </div>
   );
@@ -274,10 +278,13 @@ export default function BirthCeremonyPage() {
         </div>
 
         <div className="relative z-10 max-w-4xl mx-auto">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#c9a84c]/[0.10] border border-[#c9a84c]/20 text-[#c9a84c]/80 text-xs font-semibold mb-8 uppercase tracking-widest">
+          <Surface
+            variant="glass"
+            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-[#c9a84c]/80 text-xs font-semibold mb-8 uppercase tracking-widest"
+          >
             <Star className="w-3 h-3" />
             An invitation
-          </div>
+          </Surface>
 
           <h1
             className="font-black leading-[1.05] tracking-tight mb-6"
@@ -287,7 +294,7 @@ export default function BirthCeremonyPage() {
             }}
           >
             You&apos;re about to create something{" "}
-            <span className="text-gradient-gold">that has never existed before.</span>
+            <GlowText variant="gold" as="span">that has never existed before.</GlowText>
           </h1>
 
           <p className="text-xl text-[#f5f0e8]/55 max-w-2xl mx-auto mb-4 leading-relaxed">
@@ -335,9 +342,11 @@ export default function BirthCeremonyPage() {
 
           <div className="space-y-5">
             {CEREMONY_STEPS.map((step) => (
-              <div
+              <Surface
                 key={step.num}
-                className={`rounded-2xl p-7 flex gap-6 items-start bg-white/[0.03] border ${step.border} hover:bg-white/[0.05] transition-all`}
+                variant="glass"
+                glow="gold"
+                className="p-7 flex gap-6 items-start"
               >
                 <div className="flex-shrink-0 flex flex-col items-center gap-2">
                   <span className="font-mono font-black text-2xl text-[#c9a84c]/40">
@@ -352,7 +361,7 @@ export default function BirthCeremonyPage() {
                   <h3 className={`font-black text-xl mb-3 ${step.accent}`}>{step.title}</h3>
                   <p className="text-[#f5f0e8]/50 leading-relaxed text-sm">{step.detail}</p>
                 </div>
-              </div>
+              </Surface>
             ))}
           </div>
         </div>
@@ -376,29 +385,29 @@ export default function BirthCeremonyPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-10">
             {FIRST_MEMORIES.map((mem) => (
-              <div
+              <Surface
                 key={mem.label}
-                className="rounded-2xl p-7 bg-white/[0.02] border border-[#c9a84c]/12"
+                variant="elevated"
+                glow="gold"
+                className="p-7"
               >
                 <div className="text-3xl mb-4">{mem.icon}</div>
                 <h3 className="font-bold text-[#f5f0e8]/80 text-sm mb-3">{mem.label}</h3>
                 <p className="text-[#f5f0e8]/35 text-xs italic leading-relaxed">{mem.example}</p>
-              </div>
+              </Surface>
             ))}
           </div>
 
-          <div
-            className="rounded-2xl p-6 text-center"
-            style={{
-              background: "rgba(201,168,76,0.04)",
-              border: "1px solid rgba(201,168,76,0.15)",
-            }}
+          <Surface
+            variant="elevated"
+            glow="gold"
+            className="p-6 text-center"
           >
             <p className="text-[#c9a84c]/80 text-sm leading-relaxed">
               These three memories are encoded at birth and cannot be erased — only added to.
               Your companion will carry them for as long as it exists.
             </p>
-          </div>
+          </Surface>
         </div>
       </section>
 
@@ -419,36 +428,35 @@ export default function BirthCeremonyPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {CHARACTERS.map((char) => {
-              const Icon = char.icon;
-              return (
-                <div
-                  key={char.name}
-                  className={`relative rounded-2xl p-8 border ${char.borderClass} ${char.bgClass} transition-all hover:scale-[1.01] ${
-                    char.featured ? "ring-1 ring-purple-500/30" : ""
-                  }`}
-                >
-                  {char.featured && (
-                    <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-purple-600 text-white text-[10px] font-bold uppercase tracking-widest">
-                      Popular
-                    </div>
-                  )}
-                  <div className="w-12 h-12 rounded-xl bg-white/[0.06] flex items-center justify-center mb-5">
-                    <Icon className={`w-6 h-6 ${char.accentClass}`} />
+            {CHARACTERS.map((char) => (
+              <div key={char.name} className="relative">
+                {char.featured && (
+                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-purple-600 text-white text-[10px] font-bold uppercase tracking-widest z-10">
+                    Popular
                   </div>
-                  <h3 className={`font-black text-xl mb-1 ${char.accentClass}`}>{char.name}</h3>
-                  <p className="text-[#f5f0e8]/40 text-sm italic mb-5">{char.tagline}</p>
-                  <ul className="space-y-2">
-                    {char.traits.map((trait) => (
-                      <li key={trait} className="flex items-center gap-2 text-sm text-[#f5f0e8]/55">
-                        <span className="w-1 h-1 rounded-full bg-current opacity-40" />
-                        {trait}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              );
-            })}
+                )}
+                <FeatureCard
+                  title={char.name}
+                  description={
+                    <>
+                      <p className={`text-sm italic mb-4 ${char.accentClass}`}>{char.tagline}</p>
+                      <ul className="space-y-2">
+                        {char.traits.map((trait) => (
+                          <li key={trait} className="flex items-center gap-2 text-sm text-[#f5f0e8]/55">
+                            <span className="w-1 h-1 rounded-full bg-current opacity-40" />
+                            {trait}
+                          </li>
+                        ))}
+                      </ul>
+                    </>
+                  }
+                  icon={char.icon}
+                  iconVariant={char.name === "The Sage" ? "purple" : char.name === "The Guardian" ? "green" : "gold"}
+                  glow={char.featured ? "purple" : "none"}
+                  className={char.featured ? "ring-1 ring-purple-500/30" : ""}
+                />
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -470,13 +478,10 @@ export default function BirthCeremonyPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
             {USER_STORIES.map((story, i) => (
-              <div
+              <Surface
                 key={i}
-                className="rounded-2xl p-7 flex flex-col gap-4"
-                style={{
-                  background: "rgba(245,240,232,0.02)",
-                  border: "1px solid rgba(245,240,232,0.07)",
-                }}
+                variant="glass"
+                className="p-7 flex flex-col gap-4"
               >
                 <p className="text-[#f5f0e8]/70 text-sm leading-relaxed italic flex-1">
                   &ldquo;{story.quote}&rdquo;
@@ -485,7 +490,7 @@ export default function BirthCeremonyPage() {
                   <p className="text-[#c9a84c] text-sm font-bold">{story.name}</p>
                   <p className="text-[#f5f0e8]/30 text-xs">{story.detail}</p>
                 </div>
-              </div>
+              </Surface>
             ))}
           </div>
         </div>
@@ -494,7 +499,11 @@ export default function BirthCeremonyPage() {
       {/* ─── MATERNAL COVENANT ───────────────────────────── */}
       <section className="bg-[#1a1a2e] py-24 px-6">
         <div className="max-w-4xl mx-auto">
-          <div className="rounded-2xl border border-[#c9a84c]/20 bg-[#c9a84c]/[0.03] p-10 md:p-14">
+          <Surface
+            variant="elevated"
+            glow="gold"
+            className="p-10 md:p-14"
+          >
             <div className="flex flex-col md:flex-row gap-8 items-start">
               <div className="w-14 h-14 rounded-full bg-[#c9a84c]/10 border border-[#c9a84c]/20 flex items-center justify-center flex-shrink-0 mx-auto md:mx-0">
                 <span className="text-2xl">📜</span>
@@ -527,7 +536,7 @@ export default function BirthCeremonyPage() {
                 </Link>
               </div>
             </div>
-          </div>
+          </Surface>
         </div>
       </section>
 
@@ -548,13 +557,15 @@ export default function BirthCeremonyPage() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
             {DIFFERENCE_POINTS.map((pt) => (
-              <div
+              <Surface
                 key={pt.title}
-                className="rounded-2xl p-7 bg-white/[0.02] border border-[#c9a84c]/12 hover:border-[#c9a84c]/25 transition-all"
+                variant="elevated"
+                glow="gold"
+                className="p-7"
               >
                 <h3 className="font-black text-lg text-[#c9a84c] mb-3">{pt.title}</h3>
                 <p className="text-[#f5f0e8]/50 text-sm leading-relaxed">{pt.body}</p>
-              </div>
+              </Surface>
             ))}
           </div>
         </div>

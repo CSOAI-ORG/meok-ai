@@ -14,9 +14,11 @@
  *   - Live session panel
  */
 
-import { useState }           from "react";
-import { ComputerUsePanel }   from "@/components/computer-use-panel";
-import Link                   from "next/link";
+import { useState } from "react";
+import { ComputerUsePanel } from "@/components/computer-use-panel";
+import Link from "next/link";
+import { Monitor, ArrowRight, Shield, Eye, MousePointer, Terminal } from "lucide-react";
+import { Surface, FeatureCard, IconOrb, GlowText } from "@/components/design-system";
 
 // ── Brand ──────────────────────────────────────────────────────────────────
 const DEEP    = "#0d0c18";
@@ -67,47 +69,110 @@ export default function ComputerUsePage() {
 
   return (
     <div className="min-h-screen text-[#f5f0e8]" style={{ background: DEEP }}>
+      {/* ── Hero ───────────────────────────────────────────────────────── */}
+      <section className="relative pt-28 pb-16 px-6 text-center overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] rounded-full bg-[#c9a84c]/[0.05] blur-3xl" />
+          <div className="absolute top-1/4 right-1/4 w-[300px] h-[300px] rounded-full bg-purple-900/20 blur-3xl" />
+        </div>
+        <div className="relative z-10 max-w-3xl mx-auto">
+          <IconOrb icon={Monitor} variant="gold" size="lg" className="mx-auto mb-6" />
+          <h1 className="text-4xl sm:text-5xl font-black tracking-tight mb-4">
+            <GlowText variant="gold">Computer Use</GlowText>
+          </h1>
+          <p className="text-lg text-white/50 max-w-xl mx-auto">
+            Give the keyboard to your sovereign AI. It sees your screen, moves the cursor, and executes tasks — with your consent at every step.
+          </p>
+        </div>
+      </section>
 
-      {/* ── Header ───────────────────────────────────────────────────────── */}
-      <div className="border-b" style={{ borderColor: BORDER }}>
-        <div className="max-w-5xl mx-auto px-6 py-5 flex items-center justify-between gap-4">
-          <div className="flex items-center gap-3">
-            <Link
-              href="/os"
-              className="text-xs text-white/30 hover:text-white/60 transition"
-            >
-              OS
-            </Link>
-            <span className="text-white/20 text-xs">/</span>
-            <span className="text-xs font-semibold text-white/70">Computer Use</span>
-          </div>
+      {/* Feature Cards */}
+      <section className="px-6 pb-12">
+        <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-5">
+          <FeatureCard
+            title="Screen Vision"
+            description="Your character can see any window or screen you share, understanding UI elements in real time."
+            icon={Eye}
+            iconVariant="gold"
+            glow="gold"
+          />
+          <FeatureCard
+            title="Action Narration"
+            description="Every click, scroll, and keystroke is announced before it happens. Nothing is hidden."
+            icon={MousePointer}
+            iconVariant="teal"
+            glow="teal"
+          />
+          <FeatureCard
+            title="Instant Stop"
+            description="Reclaim control instantly with one button. Your sovereignty is never surrendered."
+            icon={Shield}
+            iconVariant="purple"
+            glow="purple"
+          />
+        </div>
+      </section>
 
-          <div className="flex items-center gap-2">
-            <span
-              className="text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-widest"
-              style={{
-                background: "rgba(201,168,76,0.1)",
-                color:      GOLD,
-                border:     `1px solid rgba(201,168,76,0.2)`,
-              }}
-            >
-              Beta
-            </span>
+      {/* Capabilities */}
+      <section className="px-6 py-10 bg-[#1a1a2e]">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-xl font-bold text-white mb-6 text-center">Capabilities</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {[
+              "Browser automation and web research",
+              "Document editing in any app",
+              "Code execution in your local editor",
+              "Email drafting with send confirmation",
+            ].map((item, i) => (
+              <div key={i} className="flex items-center gap-3 text-sm text-white/60">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#c9a84c]" />
+                {item}
+              </div>
+            ))}
           </div>
         </div>
-      </div>
+      </section>
 
+      {/* App Interface */}
       <div className="max-w-5xl mx-auto px-6 py-12 space-y-14">
+        {/* ── Header ───────────────────────────────────────────────────────── */}
+        <div className="border-b" style={{ borderColor: BORDER }}>
+          <div className="max-w-5xl mx-auto px-6 py-5 flex items-center justify-between gap-4">
+            <div className="flex items-center gap-3">
+              <Link
+                href="/os"
+                className="text-xs text-white/30 hover:text-white/60 transition"
+              >
+                OS
+              </Link>
+              <span className="text-white/20 text-xs">/</span>
+              <span className="text-xs font-semibold text-white/70">Computer Use</span>
+            </div>
+
+            <div className="flex items-center gap-2">
+              <span
+                className="text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-widest"
+                style={{
+                  background: "rgba(201,168,76,0.1)",
+                  color:      GOLD,
+                  border:     `1px solid rgba(201,168,76,0.2)`,
+                }}
+              >
+                Beta
+              </span>
+            </div>
+          </div>
+        </div>
 
         {/* ── Hero ─────────────────────────────────────────────────────── */}
         <div className="max-w-2xl">
           <span className="text-xs font-semibold tracking-[0.2em] uppercase text-white/30 block mb-4">
             MEOK OS — Computer Use
           </span>
-          <h1 className="text-4xl sm:text-5xl font-black leading-tight mb-4 tracking-tight">
+          <h2 className="text-4xl sm:text-5xl font-black leading-tight mb-4 tracking-tight">
             Give the keyboard to{" "}
             <span style={{ color: GOLD }}>your sovereign AI.</span>
-          </h1>
+          </h2>
           <p className="text-base text-white/55 leading-relaxed max-w-lg">
             Your MEOK character can see your screen, move the cursor, type, and
             click — narrating every action before it takes it. You stay in full
@@ -311,8 +376,21 @@ export default function ComputerUsePage() {
             </Link>
           </div>
         </div>
-
       </div>
+
+      {/* Bottom CTA */}
+      <section className="px-6 py-16 bg-[#1a1a2e]">
+        <div className="max-w-3xl mx-auto text-center">
+          <h2 className="text-2xl font-bold text-white mb-3">Ready to delegate?</h2>
+          <p className="text-white/50 mb-6">Your sovereign AI is waiting in the OS dashboard.</p>
+          <Link
+            href="/os"
+            className="inline-flex items-center gap-2 px-8 py-3 rounded-full bg-[#c9a84c] text-[#0d0c18] font-bold hover:bg-[#b8963e] transition-all"
+          >
+            Enter OS Mode <ArrowRight className="w-4 h-4" />
+          </Link>
+        </div>
+      </section>
     </div>
   );
 }

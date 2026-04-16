@@ -14,6 +14,7 @@ import {
   Users,
   Phone,
 } from "lucide-react";
+import { Surface, IconOrb, FeatureCard, GlowText, StatCard } from "@/components/design-system";
 
 // ── Metadata ──────────────────────────────────────────────────────────────
 
@@ -30,6 +31,9 @@ export const metadata: Metadata = {
     type: "website",
   },
 };
+
+const DEEP = "#0d0c18";
+const GOLD = "#c9a84c";
 
 // ── Feature cards ─────────────────────────────────────────────────────────
 
@@ -91,20 +95,25 @@ export default function SocialGuardianPage() {
         <div className="blob-gold absolute -top-40 -left-40 h-[600px] w-[600px] opacity-20" />
         <div className="blob-purple absolute top-1/3 -right-60 h-[500px] w-[500px] opacity-15" />
         <div className="blob-gold absolute bottom-0 left-1/3 h-[400px] w-[400px] opacity-10" />
+        <div className="blob-teal absolute top-1/2 right-1/4 h-[400px] w-[400px] opacity-10" />
       </div>
 
       <main className="relative z-10">
         {/* ── HERO ──────────────────────────────────────────────────────── */}
-        <section className="mx-auto max-w-5xl px-6 pb-20 pt-28 text-center">
-          <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm backdrop-blur-sm">
-            <Shield className="h-4 w-4 text-[#c9a84c]" />
-            <span className="text-white/70">Guardian &mdash; social protection</span>
+        <section className="animate-fade-in-up mx-auto max-w-5xl px-6 pb-20 pt-28 text-center">
+          <div className="mb-6 flex justify-center">
+            <IconOrb icon={Shield} variant="teal" size="lg" pulse />
           </div>
+
+          <Surface variant="glass" glow="teal" className="mb-8 inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm backdrop-blur-sm">
+            <Shield className="h-4 w-4 text-[#2d9b8a]" />
+            <span className="text-white/70">Guardian &mdash; social protection</span>
+          </Surface>
 
           <h1 className="mb-6 text-5xl font-bold leading-tight tracking-tight md:text-7xl">
             Social
             <br />
-            <span className="text-gradient-gold">Guardian</span>
+            <GlowText variant="teal" className="font-bold">Guardian</GlowText>
           </h1>
 
           <p className="mx-auto mb-10 max-w-2xl text-lg leading-relaxed text-white/60 md:text-xl">
@@ -115,7 +124,8 @@ export default function SocialGuardianPage() {
           <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
             <Link
               href="/hatch"
-              className="rounded-xl bg-[#c9a84c] px-8 py-4 text-base font-semibold text-[#0d0c18] transition-opacity hover:opacity-90"
+              className="rounded-xl px-8 py-4 text-base font-semibold transition-opacity hover:opacity-90"
+              style={{ backgroundColor: GOLD, color: DEEP }}
             >
               Get your social co-pilot
             </Link>
@@ -129,9 +139,9 @@ export default function SocialGuardianPage() {
         </section>
 
         {/* ── FEATURES ─────────────────────────────────────────────────── */}
-        <section id="features" className="mx-auto max-w-6xl px-6 py-20">
+        <section id="features" className="animate-fade-in-up mx-auto max-w-6xl px-6 py-20">
           <h2 className="mb-4 text-center text-3xl font-bold md:text-4xl">
-            Five tools. <span className="text-[#c9a84c]">One companion.</span>
+            Five tools. <GlowText variant="teal" className="font-bold">One companion.</GlowText>
           </h2>
           <p className="mx-auto mb-14 max-w-xl text-center text-white/50">
             Each feature is designed to reduce cognitive load, not add to it.
@@ -139,30 +149,23 @@ export default function SocialGuardianPage() {
 
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {FEATURES.map((f) => (
-              <div
+              <FeatureCard
                 key={f.title}
-                className="group rounded-2xl border border-white/[0.07] bg-[#13121f] p-7 transition-colors hover:border-[#c9a84c]/30"
-              >
-                <div className="mb-4 flex items-center gap-3">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#c9a84c]/10">
-                    <f.icon className="h-5 w-5 text-[#c9a84c]" />
-                  </div>
-                  <span className="rounded-full border border-white/10 bg-white/5 px-3 py-0.5 text-xs text-white/40">
-                    {f.tag}
-                  </span>
-                </div>
-                <h3 className="mb-2 text-lg font-semibold">{f.title}</h3>
-                <p className="text-sm leading-relaxed text-white/50">{f.description}</p>
-              </div>
+                title={f.title}
+                description={f.description}
+                icon={f.icon}
+                iconVariant="teal"
+                glow="teal"
+              />
             ))}
           </div>
         </section>
 
         {/* ── NEURODIVERGENT-FRIENDLY ──────────────────────────────────── */}
-        <section className="mx-auto max-w-4xl px-6 py-20">
-          <div className="rounded-2xl border border-[#c9a84c]/20 bg-[#13121f] p-10 md:p-14">
+        <section className="animate-fade-in-up mx-auto max-w-4xl px-6 py-20">
+          <Surface variant="glass" glow="teal" className="p-10 md:p-14">
             <h2 className="mb-6 text-center text-3xl font-bold md:text-4xl">
-              Built for how <span className="text-[#c9a84c]">YOUR</span> brain works
+              Built for how <GlowText variant="teal" className="font-bold">YOUR</GlowText> brain works
             </h2>
 
             <p className="mx-auto mb-8 max-w-2xl text-center text-lg leading-relaxed text-white/60">
@@ -190,13 +193,13 @@ export default function SocialGuardianPage() {
                 &ldquo;Not a fix. A tool. Like glasses for social vision.&rdquo;
               </p>
             </div>
-          </div>
+          </Surface>
         </section>
 
         {/* ── USE CASES ────────────────────────────────────────────────── */}
-        <section className="mx-auto max-w-5xl px-6 py-20">
+        <section className="animate-fade-in-up mx-auto max-w-5xl px-6 py-20">
           <h2 className="mb-4 text-center text-3xl font-bold md:text-4xl">
-            Where Social Guardian <span className="text-[#c9a84c]">shows up</span>
+            Where Social Guardian <GlowText variant="teal" className="font-bold">shows up</GlowText>
           </h2>
           <p className="mx-auto mb-12 max-w-xl text-center text-white/50">
             Real situations. Real support. No judgement.
@@ -204,28 +207,26 @@ export default function SocialGuardianPage() {
 
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {USE_CASES.map((uc) => (
-              <div
+              <Surface
                 key={uc.label}
-                className="flex items-start gap-4 rounded-xl border border-white/[0.07] bg-[#13121f] p-6"
+                variant="elevated"
+                glow="teal"
+                className="flex items-start gap-4 p-6"
               >
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[#c9a84c]/10">
-                  <uc.icon className="h-5 w-5 text-[#c9a84c]" />
-                </div>
+                <IconOrb icon={uc.icon} variant="teal" size="md" />
                 <div>
                   <h3 className="mb-1 font-semibold">{uc.label}</h3>
                   <p className="text-sm text-white/45">{uc.detail}</p>
                 </div>
-              </div>
+              </Surface>
             ))}
           </div>
         </section>
 
         {/* ── PRIVACY ──────────────────────────────────────────────────── */}
-        <section className="mx-auto max-w-4xl px-6 py-20">
-          <div className="flex flex-col items-center gap-6 rounded-2xl border border-white/[0.07] bg-[#13121f] p-10 text-center md:flex-row md:text-left">
-            <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-[#c9a84c]/10">
-              <Lock className="h-8 w-8 text-[#c9a84c]" />
-            </div>
+        <section className="animate-fade-in-up mx-auto max-w-4xl px-6 py-20">
+          <Surface variant="elevated" glow="teal" className="flex flex-col items-center gap-6 p-10 text-center md:flex-row md:text-left">
+            <IconOrb icon={Lock} variant="teal" size="lg" className="shrink-0" />
             <div>
               <h2 className="mb-2 text-2xl font-bold">Your conversations. Your business.</h2>
               <p className="text-white/50">
@@ -234,13 +235,13 @@ export default function SocialGuardianPage() {
                 encrypted. No third-party access. What you say stays with you.
               </p>
             </div>
-          </div>
+          </Surface>
         </section>
 
         {/* ── SCRIPTS LIBRARY PREVIEW ──────────────────────────────────── */}
-        <section className="mx-auto max-w-5xl px-6 py-20">
+        <section className="animate-fade-in-up mx-auto max-w-5xl px-6 py-20">
           <h2 className="mb-4 text-center text-3xl font-bold md:text-4xl">
-            Scripts <span className="text-[#c9a84c]">Library</span> Preview
+            Scripts <GlowText variant="teal" className="font-bold">Library</GlowText> Preview
           </h2>
           <p className="mx-auto mb-12 max-w-xl text-center text-white/50">
             Ready-made scripts you can practise with your companion until they feel natural.
@@ -265,9 +266,10 @@ export default function SocialGuardianPage() {
                 opening: "\"How do you know the host? I'm still figuring out who everyone is — figured I'd start with the friendliest face.\"",
               },
             ].map((script) => (
-              <div
+              <Surface
                 key={script.title}
-                className="group rounded-2xl border border-white/[0.07] bg-[#13121f] p-7 transition-colors hover:border-[#c9a84c]/30"
+                variant="glass"
+                className="p-7 transition-all hover:border-white/15"
               >
                 <h3 className="mb-3 text-lg font-semibold text-white">{script.title}</h3>
                 <p className="mb-5 text-sm italic leading-relaxed text-white/45">
@@ -275,20 +277,20 @@ export default function SocialGuardianPage() {
                 </p>
                 <Link
                   href="/hatch"
-                  className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#c9a84c] transition-opacity hover:opacity-80"
+                  className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#2d9b8a] transition-opacity hover:opacity-80"
                 >
                   Practice with your companion
                   <span aria-hidden="true">&rarr;</span>
                 </Link>
-              </div>
+              </Surface>
             ))}
           </div>
         </section>
 
         {/* ── CTA ──────────────────────────────────────────────────────── */}
-        <section className="mx-auto max-w-3xl px-6 pb-28 pt-10 text-center">
+        <section className="animate-fade-in-up mx-auto max-w-3xl px-6 pb-28 pt-10 text-center">
           <h2 className="mb-4 text-3xl font-bold md:text-4xl">
-            Ready for a <span className="text-[#c9a84c]">social co-pilot</span>?
+            Ready for a <GlowText variant="teal" className="font-bold">social co-pilot</GlowText>?
           </h2>
           <p className="mx-auto mb-10 max-w-lg text-white/50">
             Stop white-knuckling every interaction. Social Guardian gives you
@@ -296,7 +298,8 @@ export default function SocialGuardianPage() {
           </p>
           <Link
             href="/hatch"
-            className="inline-block rounded-xl bg-[#c9a84c] px-10 py-4 text-lg font-semibold text-[#0d0c18] transition-opacity hover:opacity-90"
+            className="inline-block rounded-xl px-10 py-4 text-lg font-semibold transition-opacity hover:opacity-90"
+            style={{ backgroundColor: GOLD, color: DEEP }}
           >
             Get your social co-pilot
           </Link>

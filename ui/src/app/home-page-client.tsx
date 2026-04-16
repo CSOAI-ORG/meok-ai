@@ -752,19 +752,19 @@ function HeroSection() {
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-6">
           <Link
-            href="/start"
+            href="/register"
             className="inline-flex items-center gap-2 font-bold rounded-full transition-all shadow-lg hover:shadow-[#c9a84c]/40 hover:scale-105"
             style={{ background: GOLD, color: "#1a1a2e", padding: "1rem 2.25rem", fontSize: "1.125rem" }}
           >
-            Start free — deploy your first agent
+            Start Free
             <ArrowRight className="w-4 h-4" />
           </Link>
           <Link
-            href="/demo"
+            href="/pricing"
             className="inline-flex items-center gap-2 font-semibold rounded-full transition-colors hover:bg-white/10"
             style={{ border: "1px solid rgba(255,255,255,0.30)", color: "#ffffff", padding: "1rem 2rem", fontSize: "1.125rem" }}
           >
-            ✦ See the demo
+            See Pricing
           </Link>
         </div>
 

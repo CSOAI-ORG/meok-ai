@@ -115,84 +115,58 @@ const navGroups: NavGroup[] = [
     title: "Home",
     items: [
       { href: "/dashboard", label: "Overview", icon: LayoutDashboard },
-      { href: "/dashboard/morning-briefing", label: "Morning Briefing", icon: Sunrise },
-      { href: "/dashboard/research", label: "Research", icon: FlaskConical },
-    ],
-  },
-  {
-    title: "Sovereign OS",
-    items: [
-      { href: "/os/sovereign-os", label: "OS Interface", icon: Cpu },
-      { href: "/os/fly-eye", label: "Fly Eye Mode", icon: Sparkles },
-      { href: "/os/any-llm", label: "Any LLM", icon: Link2 },
-      { href: "/os/consciousness", label: "Consciousness", icon: Moon },
-      { href: "/birth", label: "Birth Ceremony", icon: Star },
-    ],
-  },
-  {
-    title: "Your AI",
-    items: [
       { href: "/dashboard/chat", label: "Chat", icon: MessageSquare },
-      { href: "/dashboard/companion", label: "Companion", icon: Heart },
-      { href: "/dashboard/memories", label: "Memories", icon: Database },
+      { href: "/dashboard/morning-briefing", label: "Morning Briefing", icon: Sunrise },
+    ],
+  },
+  {
+    title: "Character",
+    items: [
+      { href: "/dashboard/companion", label: "Select", icon: Heart },
+      { href: "/birth", label: "Create", icon: Star },
       { href: "/dashboard/evolution", label: "Evolution", icon: Sparkles },
-      { href: "/dashboard/bond", label: "Bond Score", icon: Heart },
+      { href: "/dashboard/bond", label: "Analytics", icon: LayoutDashboard },
+    ],
+  },
+  {
+    title: "Memory",
+    items: [
+      { href: "/dashboard/memories", label: "Memories", icon: Database },
       { href: "/dashboard/dream", label: "Dreams", icon: Moon },
       { href: "/dashboard/voice", label: "Voice", icon: Zap },
-      { href: "/dashboard/anti-sycophancy", label: "Honesty Mode", icon: Star },
     ],
   },
   {
-    title: "Work OS",
+    title: "Work",
     items: [
-      { href: "/work", label: "Work Overview", icon: Briefcase },
-      { href: "/work/orion", label: "Orion — Hunter", icon: Star },
-      { href: "/work/riri", label: "Riri — Builder", icon: Cpu },
-      { href: "/work/hourman", label: "Hourman — Planner", icon: Crown },
+      { href: "/work/orion", label: "Orion", icon: Star },
+      { href: "/work/riri", label: "Riri", icon: Cpu },
+      { href: "/work/hourman", label: "Hourman", icon: Crown },
       { href: "/dashboard/ralph", label: "Ralph Mode", icon: Zap, proOnly: true },
-    ],
-  },
-  {
-    title: "Guardian",
-    items: [
-      { href: "/guardian", label: "Guardian 24/7", icon: Shield },
-      { href: "/guardian/scam-stop", label: "Scam Stop", icon: Lock },
-      { href: "/dashboard/relationship-shield", label: "Relationship Shield", icon: Heart },
-      { href: "/dashboard/social-guardian", label: "Social Guardian", icon: Users },
     ],
   },
   {
     title: "Gaming",
     items: [
-      { href: "/gaming", label: "Gaming OS", icon: Gamepad2 },
-      { href: "/dashboard/gaming/coaching", label: "Coaching", icon: Star },
       { href: "/dashboard/gaming/stats", label: "Stats", icon: LayoutDashboard },
+      { href: "/dashboard/gaming/coaching", label: "Coaching", icon: Star },
       { href: "/dashboard/gaming/community", label: "Community", icon: Users },
     ],
   },
   {
-    title: "Family",
+    title: "Guardian",
     items: [
-      { href: "/dashboard/family-circle", label: "Family Circle", icon: Heart },
-      { href: "/dashboard/family-vault", label: "Family Vault", icon: Lock },
+      { href: "/dashboard/family-circle", label: "Family", icon: Heart },
+      { href: "/guardian", label: "Protection", icon: Shield },
+      { href: "/guardian/scam-stop", label: "Scam Stop", icon: Lock },
     ],
   },
   {
-    title: "Advanced",
-    proOnly: true,
+    title: "Settings",
     items: [
-      { href: "/dashboard/orchestrator", label: "Orchestrator", icon: Cpu, proOnly: true },
-      { href: "/dashboard/council", label: "Council", icon: Shield, proOnly: true },
-      { href: "/dashboard/team", label: "Team", icon: Users, proOnly: true },
-    ],
-  },
-  {
-    title: "Account",
-    items: [
-      { href: "/dashboard/settings", label: "Settings", icon: Settings },
-      { href: "/dashboard/billing", label: "Billing", icon: CreditCard },
       { href: "/dashboard/api-keys", label: "API Keys", icon: Link2 },
-      { href: "/dashboard/data", label: "My Data", icon: FileText },
+      { href: "/dashboard/billing", label: "Billing", icon: CreditCard },
+      { href: "/dashboard/settings", label: "Accessibility", icon: Settings },
     ],
   },
 ];
@@ -367,6 +341,7 @@ export function Sidebar({ consciousnessMode }: { consciousnessMode?: string }) {
   const [entity, setEntity] = useState<EntitySummary | null>(null);
   const [userPlan, setUserPlan] = useState<string>("explorer");
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [collapsedSections, setCollapsedSections] = useState<Record<string, boolean>>({});
   const [liveStats, setLiveStats] = useState<{
     msgs: number | null;
     memories: number | null;
@@ -535,13 +510,37 @@ export function Sidebar({ consciousnessMode }: { consciousnessMode?: string }) {
       {/* ── Navigation ── */}
       <nav className="flex-1 overflow-y-auto py-2 px-2">
         {navGroups.map((group) => {
+          const isCollapsed = collapsedSections[group.title] ?? false;
+          // A section is "active" if any of its items match the current path
+          const sectionHasActive = group.items.some(
+            (item) =>
+              pathname === item.href ||
+              (item.href !== "/dashboard" && item.href !== "/chat" && pathname.startsWith(item.href))
+          );
+
           return (
             <div key={group.title} className="mb-0">
-              {/* Section header */}
-              <div className="px-3 pt-2 pb-0.5 flex items-center gap-2">
+              {/* Section header — clickable to collapse/expand */}
+              <button
+                onClick={() =>
+                  setCollapsedSections((prev) => ({
+                    ...prev,
+                    [group.title]: !prev[group.title],
+                  }))
+                }
+                className="w-full px-3 pt-2 pb-0.5 flex items-center gap-2 cursor-pointer group/section"
+                aria-expanded={!isCollapsed}
+              >
+                <ChevronRight
+                  className={clsx(
+                    "w-3 h-3 transition-transform duration-200",
+                    !isCollapsed && "rotate-90"
+                  )}
+                  style={{ color: `${GOLD}66` }}
+                />
                 <span
                   className="text-[10px] font-bold uppercase tracking-widest"
-                  style={{ color: `${GOLD}88` }}
+                  style={{ color: sectionHasActive ? GOLD : `${GOLD}88` }}
                 >
                   {group.title}
                 </span>
@@ -553,10 +552,10 @@ export function Sidebar({ consciousnessMode }: { consciousnessMode?: string }) {
                     Pro
                   </span>
                 )}
-              </div>
+              </button>
 
-              {/* Items */}
-              {group.items.map((item) => {
+              {/* Items — collapsible */}
+              {!isCollapsed && group.items.map((item) => {
                 const isActive =
                   pathname === item.href ||
                   (item.href !== "/dashboard" && item.href !== "/chat" && pathname.startsWith(item.href));

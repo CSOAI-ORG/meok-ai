@@ -1,14 +1,17 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { currentUser } from '@clerk/nextjs/server';
 import { getAuthUserId } from '@/lib/api-auth';
-import { createCheckoutSession, Tier } from '@/lib/stripe';
+import { createCheckoutSession, Tier, GovernanceTier } from '@/lib/stripe';
 const _isLocalMode = process.env.MEOK_LOCAL_MODE === 'true';
 
 // Accepted paid tiers
-const PAID_TIERS = new Set<string>(['sovereign', 'family', 'byok']);
+const PAID_TIERS = new Set<string>([
+  'sovereign', 'family', 'byok',
+  'governance-smb', 'governance-professional', 'governance-enterprise',
+]);
 
 interface CheckoutBody {
-  tier: 'sovereign' | 'family';
+  tier: 'sovereign' | 'family' | 'byok' | 'governance-smb' | 'governance-professional' | 'governance-enterprise';
   interval: 'month' | 'year';
 }
 
@@ -35,7 +38,7 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
 
   if (!tier || !PAID_TIERS.has(tier)) {
     return NextResponse.json(
-      { error: 'Invalid tier. Must be "sovereign" or "family".' },
+      { error: 'Invalid tier. Must be "sovereign", "family", "byok", "governance-smb", "governance-professional", or "governance-enterprise".' },
       { status: 400 },
     );
   }
@@ -76,7 +79,7 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
     const url = await createCheckoutSession({
       userId,
       email,
-      tier: tier as Exclude<Tier, 'explorer'>,
+      tier: tier as Exclude<Tier, 'explorer'> | GovernanceTier,
       interval,
       successUrl,
       cancelUrl,

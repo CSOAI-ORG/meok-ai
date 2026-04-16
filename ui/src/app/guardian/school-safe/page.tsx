@@ -13,7 +13,11 @@ import {
   BarChart2,
   XCircle,
   ChevronRight,
+  GraduationCap,
+  Lock,
+  Eye,
 } from "lucide-react";
+import { Surface, IconOrb, FeatureCard } from "@/components/design-system";
 
 // ─── Brand Tokens ─────────────────────────────────────────────────────────────
 
@@ -59,6 +63,32 @@ const STRICT_BLOCKS = [
 ];
 
 const STORAGE_KEY = "meok_school_safe_config";
+
+// ─── Feature cards ────────────────────────────────────────────────────────────
+
+const FEATURES = [
+  {
+    icon: GraduationCap,
+    title: "Homework Helper",
+    description: "MEOK helps children understand concepts — it never writes essays or completes assignments for them.",
+  },
+  {
+    icon: Lock,
+    title: "Strict Blocking",
+    description: "Hard blocks on adult content, gambling, and social media during configured school hours.",
+  },
+  {
+    icon: Search,
+    title: "Safe Search",
+    description: "Forces safe-search filtering on all platforms to keep research appropriate and focused.",
+  },
+];
+
+const HOW_IT_WORKS = [
+  { step: "01", title: "Set Hours", desc: "Choose the school days and times when restrictions should apply." },
+  { step: "02", title: "Pick Subjects", desc: "Select which subjects MEOK can help with during school hours." },
+  { step: "03", title: "Stay Focused", desc: "Blocks and monitoring activate automatically when school time starts." },
+];
 
 // ─── Mode Toggle ──────────────────────────────────────────────────────────────
 
@@ -189,6 +219,7 @@ export default function SchoolSafePage() {
           className="absolute top-1/3 left-1/4 w-[500px] h-[500px] rounded-full blur-3xl opacity-10"
           style={{ background: `radial-gradient(ellipse, ${GOLD} 0%, transparent 65%)` }}
         />
+        <div className="blob-teal absolute bottom-0 left-1/3 h-[400px] w-[400px] opacity-10" />
       </div>
 
       <main className="relative z-10 mx-auto max-w-4xl px-6 pb-32 pt-20">
@@ -205,12 +236,7 @@ export default function SchoolSafePage() {
         {/* ── Header ────────────────────────────────────────────────────────── */}
         <div className="mb-10">
           <div className="mb-5 flex items-center gap-4">
-            <div
-              className="flex h-14 w-14 items-center justify-center rounded-2xl"
-              style={{ backgroundColor: `${GOLD}20` }}
-            >
-              <Shield className="h-7 w-7" style={{ color: GOLD }} />
-            </div>
+            <IconOrb icon={Shield} variant="teal" size="lg" pulse />
             <div>
               <h1 className="text-3xl font-black tracking-tight md:text-4xl">School-Safe Mode</h1>
               <p className="mt-1 text-white/50">Education-focused protection that lets kids learn safely</p>
@@ -232,23 +258,55 @@ export default function SchoolSafePage() {
           </div>
         </div>
 
+        {/* ── Feature Cards ─────────────────────────────────────────────────── */}
+        <section className="animate-fade-in-up mb-12">
+          <div className="grid gap-5 sm:grid-cols-3">
+            {FEATURES.map((f) => (
+              <FeatureCard
+                key={f.title}
+                title={f.title}
+                description={f.description}
+                icon={f.icon}
+                iconVariant="teal"
+                glow="teal"
+              />
+            ))}
+          </div>
+        </section>
+
+        {/* ── How it works ──────────────────────────────────────────────────── */}
+        <section className="animate-fade-in-up mb-12">
+          <div className="grid gap-4 sm:grid-cols-3">
+            {HOW_IT_WORKS.map((s) => (
+              <Surface key={s.step} variant="glass" className="p-6 text-center">
+                <div className="mb-2 text-2xl font-bold tabular-nums" style={{ color: GOLD }}>
+                  {s.step}
+                </div>
+                <h3 className="mb-1 text-base font-semibold">{s.title}</h3>
+                <p className="text-sm leading-relaxed text-white/50">{s.desc}</p>
+              </Surface>
+            ))}
+          </div>
+        </section>
+
         <div className="space-y-6">
 
           {/* ── Mode toggle ───────────────────────────────────────────────────── */}
-          <section
-            className="rounded-2xl border p-6"
-            style={{ background: SURFACE, borderColor: BORDER }}
+          <Surface
+            variant="elevated"
+            className="p-6"
           >
             <h2 className="mb-1 font-semibold text-white/90">Protection Mode</h2>
             <p className="mb-5 text-sm text-white/40">Choose how actively School-Safe Mode protects your child</p>
             <ModeToggle value={config.mode} onChange={(v) => update({ mode: v })} />
-          </section>
+          </Surface>
 
           {/* ── What it blocks (STRICT) ─────────────────────────────────────── */}
           {config.mode === "STRICT" && (
-            <section
-              className="rounded-2xl border p-6"
-              style={{ background: SURFACE, borderColor: `${GOLD}30` }}
+            <Surface
+              variant="elevated"
+              className="p-6"
+              style={{ borderColor: `${GOLD}30` }}
             >
               <h2 className="mb-1 font-semibold" style={{ color: GOLD }}>Blocked in Strict Mode</h2>
               <p className="mb-5 text-sm text-white/40">These categories are hard-blocked during school hours</p>
@@ -260,13 +318,13 @@ export default function SchoolSafePage() {
                   </li>
                 ))}
               </ul>
-            </section>
+            </Surface>
           )}
 
           {/* ── School hours ──────────────────────────────────────────────────── */}
-          <section
-            className="rounded-2xl border p-6"
-            style={{ background: SURFACE, borderColor: BORDER }}
+          <Surface
+            variant="elevated"
+            className="p-6"
           >
             <div className="mb-5 flex items-center gap-3">
               <Clock className="h-5 w-5" style={{ color: GOLD }} />
@@ -317,12 +375,12 @@ export default function SchoolSafePage() {
                 </button>
               ))}
             </div>
-          </section>
+          </Surface>
 
           {/* ── Homework Helper ───────────────────────────────────────────────── */}
-          <section
-            className="rounded-2xl border p-6"
-            style={{ background: SURFACE, borderColor: BORDER }}
+          <Surface
+            variant="elevated"
+            className="p-6"
           >
             <div className="mb-5 flex items-center gap-3">
               <BookOpen className="h-5 w-5" style={{ color: GOLD }} />
@@ -357,12 +415,12 @@ export default function SchoolSafePage() {
             <p className="mt-4 text-xs text-white/30">
               MEOK will help your child understand concepts — it will never write essays or complete assignments for them.
             </p>
-          </section>
+          </Surface>
 
           {/* ── Safe Search ───────────────────────────────────────────────────── */}
-          <section
-            className="rounded-2xl border p-6"
-            style={{ background: SURFACE, borderColor: BORDER }}
+          <Surface
+            variant="elevated"
+            className="p-6"
           >
             <div className="flex items-center justify-between gap-4">
               <div className="flex items-center gap-3">
@@ -392,12 +450,12 @@ export default function SchoolSafePage() {
                 />
               </button>
             </div>
-          </section>
+          </Surface>
 
           {/* ── Block List ────────────────────────────────────────────────────── */}
-          <section
-            className="rounded-2xl border p-6"
-            style={{ background: SURFACE, borderColor: BORDER }}
+          <Surface
+            variant="elevated"
+            className="p-6"
           >
             <h2 className="mb-1 font-semibold text-white/90">Domain Block List</h2>
             <p className="mb-5 text-sm text-white/40">Manually block specific websites during school hours</p>
@@ -446,12 +504,12 @@ export default function SchoolSafePage() {
                 ))}
               </ul>
             )}
-          </section>
+          </Surface>
 
           {/* ── Activity Summary ──────────────────────────────────────────────── */}
-          <section
-            className="rounded-2xl border p-6"
-            style={{ background: SURFACE, borderColor: BORDER }}
+          <Surface
+            variant="elevated"
+            className="p-6"
           >
             <div className="mb-5 flex items-center gap-3">
               <BarChart2 className="h-5 w-5" style={{ color: GOLD }} />
@@ -475,25 +533,31 @@ export default function SchoolSafePage() {
                 </div>
               ))}
             </div>
-          </section>
+          </Surface>
 
         </div>
 
-        {/* ── Bottom nav ────────────────────────────────────────────────────── */}
-        <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row">
-          <Link
-            href="/guardian/children"
-            className="rounded-xl border border-white/15 px-6 py-3 text-sm font-semibold text-white/60 transition-colors hover:border-white/30 hover:text-white"
-          >
-            ← Back to Children Safety
-          </Link>
-          <Link
-            href="/guardian/predator-stop"
-            className="rounded-xl px-6 py-3 text-sm font-bold transition-opacity hover:opacity-90"
-            style={{ backgroundColor: `${GOLD}20`, color: GOLD, border: `1px solid ${GOLD}40` }}
-          >
-            Predator Stop →
-          </Link>
+        {/* ── Bottom CTA ────────────────────────────────────────────────────── */}
+        <div className="mt-12 flex flex-col items-center gap-4 border-t border-white/10 pt-10 sm:flex-row sm:justify-between">
+          <div className="text-center sm:text-left">
+            <p className="text-sm font-semibold text-white/80">Protect your child</p>
+            <p className="text-xs text-white/40">Explore more Guardian tools below.</p>
+          </div>
+          <div className="flex flex-col items-center gap-3 sm:flex-row">
+            <Link
+              href="/guardian/children"
+              className="rounded-xl border border-white/15 px-6 py-3 text-sm font-semibold text-white/60 transition-colors hover:border-white/30 hover:text-white"
+            >
+              ← Back to Children Safety
+            </Link>
+            <Link
+              href="/guardian/predator-stop"
+              className="rounded-xl px-6 py-3 text-sm font-bold transition-opacity hover:opacity-90"
+              style={{ backgroundColor: `${GOLD}20`, color: GOLD, border: `1px solid ${GOLD}40` }}
+            >
+              Predator Stop →
+            </Link>
+          </div>
         </div>
 
       </main>

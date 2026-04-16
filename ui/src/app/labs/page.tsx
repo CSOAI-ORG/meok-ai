@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, FlaskConical, Github, ExternalLink, Cpu, Brain, Sparkles, Vote } from "lucide-react";
+import { Surface, FeatureCard, GlowText, IconOrb } from "@/components/design-system";
 
 export const metadata: Metadata = {
   title: "MEOK Labs — Experiments in Public | MEOK.AI",
@@ -77,6 +78,8 @@ interface Experiment {
   borderClass: string;
   bgClass: string;
   labelBgClass: string;
+  orbVariant: "gold" | "teal" | "orange" | "purple" | "green" | "red" | "blue";
+  glow: "none" | "gold" | "teal" | "orange" | "purple";
 }
 
 const STATUS_LABELS: Record<ExperimentStatus, { label: string; dot: string }> = {
@@ -104,6 +107,8 @@ const EXPERIMENTS: Experiment[] = [
     borderClass: "border-[#c9a84c]/20",
     bgClass: "bg-[#c9a84c]/[0.03]",
     labelBgClass: "bg-[#c9a84c]/10 text-[#c9a84c] border-[#c9a84c]/20",
+    orbVariant: "gold",
+    glow: "gold",
   },
   {
     id: "consciousness-state-machine",
@@ -122,6 +127,8 @@ const EXPERIMENTS: Experiment[] = [
     borderClass: "border-purple-500/20",
     bgClass: "bg-purple-900/[0.04]",
     labelBgClass: "bg-purple-500/10 text-purple-400 border-purple-500/20",
+    orbVariant: "purple",
+    glow: "purple",
   },
   {
     id: "dream-state-creativity",
@@ -140,6 +147,8 @@ const EXPERIMENTS: Experiment[] = [
     borderClass: "border-blue-500/20",
     bgClass: "bg-blue-900/[0.04]",
     labelBgClass: "bg-blue-500/10 text-blue-400 border-blue-500/20",
+    orbVariant: "blue",
+    glow: "none",
   },
   {
     id: "byzantine-council-voting",
@@ -158,6 +167,8 @@ const EXPERIMENTS: Experiment[] = [
     borderClass: "border-emerald-500/20",
     bgClass: "bg-emerald-900/[0.04]",
     labelBgClass: "bg-emerald-500/10 text-emerald-400 border-emerald-500/20",
+    orbVariant: "green",
+    glow: "none",
   },
 ];
 
@@ -178,7 +189,7 @@ export default function LabsPage() {
         <div className="blob-gold absolute top-20 left-1/4 w-96 h-96 pointer-events-none opacity-40" aria-hidden />
         <div className="blob-purple absolute bottom-0 right-1/3 w-80 h-80 pointer-events-none opacity-35" aria-hidden />
 
-        <div className="relative z-10 max-w-3xl mx-auto">
+        <div className="relative z-10 max-w-3xl mx-auto animate-fade-in-up">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#c9a84c]/10 border border-[#c9a84c]/25 text-[#c9a84c] text-xs font-semibold tracking-widest uppercase mb-8">
             <span className="w-1.5 h-1.5 rounded-full bg-[#c9a84c] animate-pulse" />
             4 active experiments
@@ -190,7 +201,7 @@ export default function LabsPage() {
           >
             MEOK Labs —
             <br />
-            <span className="text-gradient-gold">where we experiment in public.</span>
+            <GlowText variant="gold" as="span">where we experiment in public.</GlowText>
           </h1>
 
           <p className="text-lg text-white/55 max-w-2xl mx-auto leading-relaxed mb-8">
@@ -207,21 +218,21 @@ export default function LabsPage() {
       </section>
 
       {/* ── EXPERIMENTS ───────────────────────────────────────────── */}
-      <section className="pb-24 px-6">
+      <section className="pb-24 px-6 animate-fade-in-up">
         <div className="max-w-4xl mx-auto space-y-8">
           {EXPERIMENTS.map((exp) => {
             const statusInfo = STATUS_LABELS[exp.status];
             return (
-              <article
+              <Surface
                 key={exp.id}
-                id={exp.id}
-                className={`rounded-3xl border p-8 sm:p-10 transition-all scroll-mt-28 ${exp.borderClass} ${exp.bgClass}`}
+                variant="glass"
+                glow={exp.glow}
+                as="article"
+                className="p-8 sm:p-10 scroll-mt-28"
               >
                 {/* Header */}
                 <div className="flex flex-col sm:flex-row sm:items-start gap-5 mb-8">
-                  <div className={`w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0 ${exp.labelBgClass}`}>
-                    {exp.icon}
-                  </div>
+                  <IconOrb icon={exp.id === "pgvector-hnsw" ? Cpu : exp.id === "consciousness-state-machine" ? Brain : exp.id === "dream-state-creativity" ? Sparkles : Vote} variant={exp.orbVariant} size="lg" />
                   <div className="flex-1">
                     <div className="flex flex-wrap items-center gap-3 mb-2">
                       <span className={`inline-flex items-center gap-1.5 text-xs font-bold px-3 py-1 rounded-full border ${exp.labelBgClass}`}>
@@ -258,7 +269,7 @@ export default function LabsPage() {
                   {exp.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="px-2.5 py-1 rounded-lg text-xs font-mono text-white/35 border border-white/[0.07] bg-white/[0.03]"
+                      className="px-2.5 py-1 rounded-lg text-xs font-mono text-white/50 border border-white/[0.08] bg-white/[0.04] hover:bg-white/[0.08] transition-colors"
                     >
                       {tag}
                     </span>
@@ -267,7 +278,7 @@ export default function LabsPage() {
 
                 {/* Live system status — Byzantine experiment only */}
                 {exp.id === "byzantine-council-voting" && (
-                  <div className="mt-6 rounded-2xl border border-emerald-500/20 bg-emerald-900/[0.06] px-6 py-5">
+                  <Surface variant="elevated" className="mt-6 px-6 py-5">
                     <p className="text-[10px] font-bold uppercase tracking-widest text-emerald-400/60 mb-4">
                       Live system status
                     </p>
@@ -295,16 +306,16 @@ export default function LabsPage() {
                         View full dashboard <ExternalLink className="w-3 h-3" />
                       </a>
                     </div>
-                  </div>
+                  </Surface>
                 )}
-              </article>
+              </Surface>
             );
           })}
         </div>
       </section>
 
       {/* ── RESEARCH HIGHLIGHTS ───────────────────────────────────── */}
-      <section className="py-24 px-6" style={{ background: "rgba(19,18,31,0.98)" }}>
+      <section className="py-24 px-6 animate-fade-in-up" style={{ background: "rgba(19,18,31,0.98)" }}>
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
             <p className="text-[#c9a84c] text-xs font-bold uppercase tracking-widest mb-4">
@@ -319,74 +330,30 @@ export default function LabsPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {/* Card 1 */}
-            <div className="rounded-2xl p-7 border border-[#c9a84c]/20 bg-[#c9a84c]/[0.03] flex flex-col gap-4">
-              <div className="flex items-start justify-between gap-3">
-                <div className="w-10 h-10 rounded-xl bg-[#c9a84c]/10 border border-[#c9a84c]/20 flex items-center justify-center flex-shrink-0">
-                  <span className="text-[#c9a84c] font-black text-xs">CS</span>
-                </div>
-                <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full border bg-emerald-500/10 text-emerald-400 border-emerald-500/20 flex-shrink-0">
-                  Active
-                </span>
-              </div>
-              <div>
-                <h3 className="font-black text-white text-lg leading-snug mb-2">
-                  Cognitive Symbiosis Study
-                </h3>
-                <p className="text-white/50 text-sm leading-relaxed">
-                  Measuring how persistent AI memory changes human cognitive load over time.
-                  Tracking recall, decision quality, and emotional regulation across a cohort of sovereign AI users.
-                </p>
-              </div>
-            </div>
-
-            {/* Card 2 */}
-            <div className="rounded-2xl p-7 border border-purple-500/20 bg-purple-900/[0.04] flex flex-col gap-4">
-              <div className="flex items-start justify-between gap-3">
-                <div className="w-10 h-10 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center flex-shrink-0">
-                  <span className="text-purple-400 font-black text-xs">BCA</span>
-                </div>
-                <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full border bg-blue-500/10 text-blue-400 border-blue-500/20 flex-shrink-0">
-                  Published
-                </span>
-              </div>
-              <div>
-                <h3 className="font-black text-white text-lg leading-snug mb-2">
-                  Byzantine Council Architecture
-                </h3>
-                <p className="text-white/50 text-sm leading-relaxed">
-                  Original IP by Nicholas Templeman — PBFT consensus adapted for LLM-agent contexts.
-                  43-node fault-tolerant governance achieving P99 consensus latency under 94ms in production.
-                </p>
-              </div>
-            </div>
-
-            {/* Card 3 */}
-            <div className="rounded-2xl p-7 border border-blue-500/20 bg-blue-900/[0.04] flex flex-col gap-4">
-              <div className="flex items-start justify-between gap-3">
-                <div className="w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center flex-shrink-0">
-                  <span className="text-blue-400 font-black text-xs">HNE</span>
-                </div>
-                <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full border bg-[#c9a84c]/10 text-[#c9a84c] border-[#c9a84c]/20 flex-shrink-0">
-                  In Progress
-                </span>
-              </div>
-              <div>
-                <h3 className="font-black text-white text-lg leading-snug mb-2">
-                  HARVI Hydro-Neuromorphic Experiment
-                </h3>
-                <p className="text-white/50 text-sm leading-relaxed">
-                  Exploring water as a neural substrate for physical AI computation.
-                  HARVI rig investigates embodied intelligence beyond silicon — consciousness through fluid dynamics.
-                </p>
-              </div>
-            </div>
+            <FeatureCard
+              title="Cognitive Symbiosis Study"
+              description="Measuring how persistent AI memory changes human cognitive load over time. Tracking recall, decision quality, and emotional regulation across a cohort of sovereign AI users."
+              glow="gold"
+              className="h-full"
+            />
+            <FeatureCard
+              title="Byzantine Council Architecture"
+              description="Original IP by Nicholas Templeman — PBFT consensus adapted for LLM-agent contexts. 43-node fault-tolerant governance achieving P99 consensus latency under 94ms in production."
+              glow="purple"
+              className="h-full"
+            />
+            <FeatureCard
+              title="HARVI Hydro-Neuromorphic Experiment"
+              description="Exploring water as a neural substrate for physical AI computation. HARVI rig investigates embodied intelligence beyond silicon — consciousness through fluid dynamics."
+              glow="none"
+              className="h-full"
+            />
           </div>
         </div>
       </section>
 
       {/* ── 47 TRADITIONS ─────────────────────────────────────────── */}
-      <section className="py-24 px-6" style={{ background: "rgba(13,12,24,0.95)" }}>
+      <section className="py-24 px-6 animate-fade-in-up" style={{ background: "rgba(13,12,24,0.95)" }}>
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
             <p className="text-[#c9a84c] text-xs font-bold uppercase tracking-widest mb-4">
@@ -419,15 +386,11 @@ export default function LabsPage() {
               "Māori kaitiakitanga",
               "Socratic dialogue",
               "Existential responsibility",
-            ].map((tradition) => (
+            ].map((tradition, i) => (
               <span
                 key={tradition}
-                className="px-3.5 py-1.5 rounded-full text-xs font-semibold border"
-                style={{
-                  background: "rgba(201,168,76,0.08)",
-                  borderColor: "rgba(201,168,76,0.22)",
-                  color: "rgba(201,168,76,0.80)",
-                }}
+                className="px-4 py-1.5 rounded-full text-xs font-semibold border bg-[rgba(201,168,76,0.08)] border-[rgba(201,168,76,0.25)] text-[rgba(201,168,76,0.85)] hover:bg-[rgba(201,168,76,0.14)] hover:border-[rgba(201,168,76,0.4)] hover:shadow-[0_0_16px_rgba(201,168,76,0.15)] transition-all cursor-default"
+                style={{ animationDelay: `${i * 40}ms` }}
               >
                 {tradition}
               </span>
@@ -437,7 +400,7 @@ export default function LabsPage() {
       </section>
 
       {/* ── HOW TO FOLLOW ALONG ───────────────────────────────────── */}
-      <section className="py-24 px-6" style={{ background: "rgba(26,26,46,0.6)" }}>
+      <section className="py-24 px-6 animate-fade-in-up" style={{ background: "rgba(26,26,46,0.6)" }}>
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-14">
             <p className="text-[#c9a84c] text-xs font-bold uppercase tracking-widest mb-4">Follow along</p>
@@ -448,79 +411,45 @@ export default function LabsPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-            {[
-              {
-                icon: <FlaskConical className="w-6 h-6" />,
-                title: "/live",
-                desc: "The MEOK live feed — experiment updates, care score snapshots, and council decisions as they happen.",
-                href: "/live",
-                linkLabel: "Open live feed",
-                accentClass: "icon-gold",
-                borderClass: "border-[#c9a84c]/20",
-              },
-              {
-                icon: (
-                  <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
-                    <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057c.001.022.015.045.036.059a19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z" />
-                  </svg>
-                ),
-                title: "Discord",
-                desc: "Join #meok-labs on Discord. Ask questions, challenge our methodology, or share what you're building on top.",
-                href: "https://discord.gg/meok",
-                linkLabel: "Join Discord",
-                accentClass: "icon-purple",
-                borderClass: "border-purple-500/20",
-              },
-              {
-                icon: (
-                  <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
-                    <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z" />
-                  </svg>
-                ),
-                title: "GitHub",
-                desc: "Star meok-ai/labs on GitHub to track issues, experiments, and the raw implementation as it evolves.",
-                href: "https://github.com/meok-ai",
-                linkLabel: "View on GitHub",
-                accentClass: "icon-blue",
-                borderClass: "border-blue-500/20",
-              },
-            ].map((channel) => (
-              <div
-                key={channel.title}
-                className={`rounded-2xl p-7 bg-white/[0.03] border ${channel.borderClass} flex flex-col gap-5`}
-              >
-                <div className={`w-12 h-12 rounded-xl ${channel.accentClass} flex items-center justify-center`}>
-                  {channel.icon}
-                </div>
-                <div className="flex-1">
-                  <h3 className="font-black text-white text-lg mb-2">{channel.title}</h3>
-                  <p className="text-white/50 text-sm leading-relaxed">{channel.desc}</p>
-                </div>
-                {channel.href.startsWith("http") ? (
-                  <a
-                    href={channel.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-sm font-semibold text-white/50 hover:text-white/80 transition-colors"
-                  >
-                    {channel.linkLabel} <ExternalLink className="w-3.5 h-3.5" />
-                  </a>
-                ) : (
-                  <Link
-                    href={channel.href}
-                    className="inline-flex items-center gap-1.5 text-sm font-semibold text-white/50 hover:text-white/80 transition-colors"
-                  >
-                    {channel.linkLabel} <ArrowRight className="w-3.5 h-3.5" />
-                  </Link>
-                )}
-              </div>
-            ))}
+            <FeatureCard
+              title="/live"
+              description="The MEOK live feed — experiment updates, care score snapshots, and council decisions as they happen."
+              glow="gold"
+              className="h-full"
+              action={
+                <Link href="/live" className="inline-flex items-center gap-1.5 text-sm font-semibold text-white/60 hover:text-white transition-colors">
+                  Open live feed <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
+              }
+            />
+            <FeatureCard
+              title="Discord"
+              description="Join #meok-labs on Discord. Ask questions, challenge our methodology, or share what you're building on top."
+              glow="purple"
+              className="h-full"
+              action={
+                <a href="https://discord.gg/meok" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-sm font-semibold text-white/60 hover:text-white transition-colors">
+                  Join Discord <ExternalLink className="w-3.5 h-3.5" />
+                </a>
+              }
+            />
+            <FeatureCard
+              title="GitHub"
+              description="Star meok-ai/labs on GitHub to track issues, experiments, and the raw implementation as it evolves."
+              glow="none"
+              className="h-full"
+              action={
+                <a href="https://github.com/meok-ai" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-sm font-semibold text-white/60 hover:text-white transition-colors">
+                  View on GitHub <ExternalLink className="w-3.5 h-3.5" />
+                </a>
+              }
+            />
           </div>
         </div>
       </section>
 
       {/* ── PAPERS / RESEARCH ─────────────────────────────────────── */}
-      <section className="py-24 px-6">
+      <section className="py-24 px-6 animate-fade-in-up">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
             <p className="text-[#c9a84c] text-xs font-bold uppercase tracking-widest mb-4">From experiments to papers</p>
@@ -557,9 +486,10 @@ export default function LabsPage() {
                 statusClass: "bg-white/[0.06] text-white/50 border-white/[0.1]",
               },
             ].map((paper) => (
-              <div
+              <Surface
                 key={paper.id}
-                className="flex items-center justify-between gap-4 px-6 py-5 rounded-2xl bg-white/[0.02] border border-white/[0.07] hover:border-white/[0.12] transition-all"
+                variant="elevated"
+                className="flex items-center justify-between gap-4 px-6 py-5 hover:border-white/15 transition-colors"
               >
                 <div className="flex items-center gap-4 min-w-0">
                   <span className="font-mono text-xs text-white/25 flex-shrink-0">{paper.id}</span>
@@ -568,7 +498,7 @@ export default function LabsPage() {
                 <span className={`flex-shrink-0 text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full border ${paper.statusClass}`}>
                   {paper.status}
                 </span>
-              </div>
+              </Surface>
             ))}
           </div>
 
@@ -584,11 +514,9 @@ export default function LabsPage() {
       </section>
 
       {/* ── CTA ───────────────────────────────────────────────────── */}
-      <section className="py-24 px-6" style={{ background: "rgba(26,26,46,0.6)" }}>
+      <section className="py-24 px-6 animate-fade-in-up" style={{ background: "rgba(26,26,46,0.6)" }}>
         <div className="max-w-2xl mx-auto text-center">
-          <div className="w-14 h-14 rounded-2xl icon-gold flex items-center justify-center mx-auto mb-6">
-            <FlaskConical className="w-7 h-7" />
-          </div>
+          <IconOrb icon={FlaskConical} variant="gold" size="lg" className="mx-auto mb-6" />
           <h2 className="text-3xl font-black text-white mb-4">
             Want to run experiments with us?
           </h2>

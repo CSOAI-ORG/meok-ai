@@ -1,6 +1,8 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { Surface, GlowText, StatCard, FeatureCard, IconOrb } from '@/components/design-system';
+import { Server, Zap, Layers, Workflow, Search, ArrowRight, Activity, GitBranch, Package, Plus, Terminal } from 'lucide-react';
 
 interface MCPServer {
   name: string;
@@ -82,9 +84,9 @@ export default function MCPDashboard() {
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'connected': return 'bg-green-500';
-      case 'error': return 'bg-red-500';
-      default: return 'bg-yellow-500';
+      case 'connected': return 'bg-green-500 animate-glow-pulse shadow-[0_0_8px_rgba(34,197,94,0.6)]';
+      case 'error': return 'bg-red-500 shadow-[0_0_8px_rgba(239,68,68,0.5)]';
+      default: return 'bg-yellow-500 shadow-[0_0_8px_rgba(234,179,8,0.5)]';
     }
   };
 
@@ -130,7 +132,7 @@ export default function MCPDashboard() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-black text-white flex items-center justify-center">
+      <div className="min-h-screen bg-[#0d0c18] text-white flex items-center justify-center">
         <div className="text-center">
           <div className="text-4xl mb-4">⚡</div>
           <div className="text-xl">Loading MCP Dashboard...</div>
@@ -140,22 +142,24 @@ export default function MCPDashboard() {
   }
 
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen bg-[#0d0c18] text-white">
       <div className="max-w-7xl mx-auto px-4 py-8">
         {/* Header */}
         <div className="mb-8">
-          <h1 className="text-4xl font-bold mb-2">MCP Control Center</h1>
-          <p className="text-gray-400">255 Open-Source MCP Servers • Unified Intelligence Orchestration</p>
+          <h1 className="text-4xl font-bold mb-2">
+            <GlowText variant="gold" as="span">MCP Control Center</GlowText>
+          </h1>
+          <p className="text-white/50">255 Open-Source MCP Servers • Unified Intelligence Orchestration</p>
         </div>
 
         {/* External MCP Stats Banner */}
-        <div className="mb-8 p-5 rounded-xl border border-purple-500/30 bg-purple-500/10">
+        <Surface variant="glass" glow="purple" className="mb-8 p-5">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <div className="flex items-center gap-4">
-              <div className="text-3xl">🔌</div>
+              <IconOrb icon={Package} variant="purple" size="lg" pulse />
               <div>
                 <h3 className="text-lg font-bold text-white">MEOK MCP Marketplace</h3>
-                <p className="text-gray-400 text-sm">
+                <p className="text-white/50 text-sm">
                   {mcpStats.repos} repos · {mcpStats.lines} lines · {mcpStats.categories} categories · All MIT licensed
                 </p>
               </div>
@@ -169,40 +173,74 @@ export default function MCPDashboard() {
               Browse Marketplace →
             </a>
           </div>
-        </div>
+        </Surface>
 
         {/* Stats */}
-        <div className="grid grid-cols-4 gap-4 mb-8">
-          <div className="bg-gray-900 rounded-lg p-4 border border-gray-800">
-            <div className="text-3xl font-bold text-blue-400">{servers.length}</div>
-            <div className="text-sm text-gray-400">Total Servers</div>
-          </div>
-          <div className="bg-gray-900 rounded-lg p-4 border border-gray-800">
-            <div className="text-3xl font-bold text-green-400">
-              {servers.filter(s => s.status === 'connected').length}
-            </div>
-            <div className="text-sm text-gray-400">Online</div>
-          </div>
-          <div className="bg-gray-900 rounded-lg p-4 border border-gray-800">
-            <div className="text-3xl font-bold text-purple-400">{categories.length}</div>
-            <div className="text-sm text-gray-400">Categories</div>
-          </div>
-          <div className="bg-gray-900 rounded-lg p-4 border border-gray-800">
-            <div className="text-3xl font-bold text-yellow-400">{synergies.length}</div>
-            <div className="text-sm text-gray-400">Synergies</div>
-          </div>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+          <StatCard
+            label="Marketplace Repos"
+            value={mcpStats.repos}
+            icon={<GitBranch className="w-5 h-5" />}
+            glow="gold"
+          />
+          <StatCard
+            label="Lines of Code"
+            value={mcpStats.lines}
+            icon={<Terminal className="w-5 h-5" />}
+            glow="blue"
+          />
+          <StatCard
+            label="Categories"
+            value={mcpStats.categories}
+            icon={<Layers className="w-5 h-5" />}
+            glow="purple"
+          />
+          <StatCard
+            label="Connected Servers"
+            value={servers.filter(s => s.status === 'connected').length}
+            icon={<Activity className="w-5 h-5" />}
+            glow="teal"
+          />
+        </div>
+
+        {/* Secondary Stats */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+          <StatCard
+            label="Total Servers"
+            value={servers.length}
+            icon={<Server className="w-5 h-5" />}
+            glow="gold"
+          />
+          <StatCard
+            label="Total Tools"
+            value={totalTools}
+            icon={<Zap className="w-5 h-5" />}
+            glow="orange"
+          />
+          <StatCard
+            label="Active Categories"
+            value={categories.length}
+            icon={<Layers className="w-5 h-5" />}
+            glow="purple"
+          />
+          <StatCard
+            label="Workflows"
+            value={workflows.length}
+            icon={<Workflow className="w-5 h-5" />}
+            glow="orange"
+          />
         </div>
 
         {/* Tabs */}
-        <div className="flex gap-2 mb-6 border-b border-gray-800 pb-4">
+        <div className="flex gap-2 mb-6 border-b border-white/10 pb-4">
           {(['servers', 'synergies', 'workflows', 'orchestration'] as const).map(tab => (
             <button
               key={tab}
               onClick={() => setActiveTab(tab)}
-              className={`px-4 py-2 rounded-lg transition ${
+              className={`px-4 py-2 rounded-xl transition-all font-medium text-sm ${
                 activeTab === tab 
-                  ? 'bg-blue-600 text-white' 
-                  : 'bg-gray-800 text-gray-400 hover:bg-gray-700'
+                  ? 'bg-white/10 text-white shadow-[0_0_0_1px_rgba(201,168,76,0.3),0_4px_20px_rgba(201,168,76,0.15)] border border-[rgba(201,168,76,0.2)]' 
+                  : 'bg-white/[0.03] text-white/50 hover:bg-white/[0.06] hover:text-white border border-transparent'
               }`}
             >
               {tab.charAt(0).toUpperCase() + tab.slice(1)}
@@ -212,13 +250,15 @@ export default function MCPDashboard() {
 
         {/* Servers Tab */}
         {activeTab === 'servers' && (
-          <div>
+          <div className="animate-fade-in-up">
             {/* Category Filter */}
             <div className="flex gap-2 mb-6 flex-wrap">
               <button
                 onClick={() => setSelectedCategory('all')}
-                className={`px-3 py-1 rounded-full text-sm ${
-                  selectedCategory === 'all' ? 'bg-blue-600' : 'bg-gray-800'
+                className={`px-3 py-1.5 rounded-full text-sm transition-all ${
+                  selectedCategory === 'all'
+                    ? 'bg-[rgba(201,168,76,0.2)] text-[#c9a84c] border border-[rgba(201,168,76,0.4)] shadow-[0_0_12px_rgba(201,168,76,0.2)]'
+                    : 'bg-white/[0.05] text-white/60 border border-white/10 hover:border-white/20'
                 }`}
               >
                 All ({servers.length})
@@ -227,8 +267,10 @@ export default function MCPDashboard() {
                 <button
                   key={cat}
                   onClick={() => setSelectedCategory(cat)}
-                  className={`px-3 py-1 rounded-full text-sm flex items-center gap-1 ${
-                    selectedCategory === cat ? 'bg-blue-600' : 'bg-gray-800'
+                  className={`px-3 py-1.5 rounded-full text-sm flex items-center gap-1.5 transition-all ${
+                    selectedCategory === cat
+                      ? 'bg-[rgba(201,168,76,0.2)] text-[#c9a84c] border border-[rgba(201,168,76,0.4)] shadow-[0_0_12px_rgba(201,168,76,0.2)]'
+                      : 'bg-white/[0.05] text-white/60 border border-white/10 hover:border-white/20'
                   }`}
                 >
                   <span>{getCategoryIcon(cat)}</span>
@@ -241,30 +283,42 @@ export default function MCPDashboard() {
             {/* Server Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
               {filteredServers.map(server => (
-                <div
+                <Surface
                   key={server.name}
-                  className="bg-gray-900 rounded-lg p-4 border border-gray-800 hover:border-gray-700 transition"
+                  variant="elevated"
+                  className="p-5 transition-all duration-300 hover:-translate-y-1 hover:border-white/15 group"
                 >
-                  <div className="flex items-start justify-between mb-2">
-                    <div className="flex items-center gap-2">
+                  <div className="flex items-start justify-between mb-4">
+                    <div className="flex items-center gap-3">
                       <span className="text-2xl">{getCategoryIcon(server.category)}</span>
-                      <h3 className="font-semibold text-lg">{server.name}</h3>
+                      <h3 className="font-semibold text-lg text-white">{server.name}</h3>
                     </div>
-                    <div className={`w-3 h-3 rounded-full ${getStatusColor(server.status)}`} />
+                    <div className="flex items-center gap-2">
+                      <span className={`text-xs px-2 py-0.5 rounded-full ${
+                        server.status === 'connected' ? 'bg-green-500/15 text-green-400' :
+                        server.status === 'error' ? 'bg-red-500/15 text-red-400' :
+                        'bg-yellow-500/15 text-yellow-400'
+                      }`}>
+                        {server.status}
+                      </span>
+                      <div className={`w-2.5 h-2.5 rounded-full ${getStatusColor(server.status)}`} />
+                    </div>
                   </div>
-                  <p className="text-sm text-gray-400 mb-3 line-clamp-2">{server.description}</p>
-                  <div className="flex flex-wrap gap-1 mb-2">
+                  <p className="text-sm text-white/50 mb-4 line-clamp-2">{server.description}</p>
+                  <div className="flex flex-wrap gap-1.5 mb-4">
                     {server.tools.slice(0, 4).map(tool => (
-                      <span key={tool} className="text-xs bg-gray-800 px-2 py-1 rounded">
+                      <span key={tool} className="text-xs bg-white/[0.06] px-2 py-1 rounded-md text-white/70 border border-white/[0.05]">
                         {tool}
                       </span>
                     ))}
                     {server.tools.length > 4 && (
-                      <span className="text-xs text-gray-500">+{server.tools.length - 4} more</span>
+                      <span className="text-xs text-white/40 px-1">+{server.tools.length - 4} more</span>
                     )}
                   </div>
-                  <div className="text-xs text-gray-500">{server.url}</div>
-                </div>
+                  <div className="text-xs text-white/30 font-mono truncate pt-3 border-t border-white/[0.05]">
+                    {server.url}
+                  </div>
+                </Surface>
               ))}
             </div>
           </div>
@@ -272,129 +326,153 @@ export default function MCPDashboard() {
 
         {/* Synergies Tab */}
         {activeTab === 'synergies' && (
-          <div className="space-y-4">
+          <div className="space-y-4 animate-fade-in-up">
             {synergies.map((synergy, i) => (
-              <div
+              <Surface
                 key={i}
-                className="bg-gray-900 rounded-lg p-6 border border-gray-800"
+                variant="glass"
+                glow="purple"
+                className="p-6"
               >
                 <div className="flex items-center gap-3 mb-3">
-                  <span className="text-2xl">{getCategoryIcon(synergy.category.toLowerCase())}</span>
-                  <h3 className="text-xl font-semibold">{synergy.category}</h3>
+                  <IconOrb icon={Layers} variant="purple" size="sm" />
+                  <h3 className="text-xl font-semibold text-white">{synergy.category}</h3>
                 </div>
-                <p className="text-gray-400 mb-4">{synergy.synergy}</p>
+                <p className="text-white/50 mb-4">{synergy.synergy}</p>
                 <div className="flex flex-wrap gap-2">
                   {synergy.servers.map(server => (
-                    <span key={server} className="bg-blue-900/50 text-blue-300 px-3 py-1 rounded-full text-sm">
+                    <span key={server} className="bg-purple-500/15 text-purple-300 px-3 py-1 rounded-full text-sm border border-purple-500/20">
                       {server}
                     </span>
                   ))}
                 </div>
-              </div>
+              </Surface>
             ))}
           </div>
         )}
 
         {/* Workflows Tab */}
         {activeTab === 'workflows' && (
-          <div className="space-y-4">
+          <div className="space-y-6 animate-fade-in-up">
             {workflows.map((workflow, i) => (
-              <div
+              <Surface
                 key={i}
-                className="bg-gray-900 rounded-lg p-6 border border-gray-800"
+                variant="glass"
+                glow="gold"
+                className="p-6"
               >
-                <div className="flex items-center justify-between mb-3">
-                  <h3 className="text-xl font-semibold">{workflow.name}</h3>
-                  <span className="text-sm text-gray-400">{workflow.servers.length} servers</span>
+                <div className="flex items-center justify-between mb-4">
+                  <div className="flex items-center gap-3">
+                    <IconOrb icon={GitBranch} variant="blue" size="sm" />
+                    <h3 className="text-xl font-semibold text-white">{workflow.name}</h3>
+                  </div>
+                  <span className="text-sm text-white/40 bg-white/[0.05] px-3 py-1 rounded-full border border-white/[0.08]">
+                    {workflow.servers.length} servers
+                  </span>
                 </div>
-                <p className="text-gray-400 mb-4">{workflow.description}</p>
-                <div className="space-y-2">
+                <p className="text-white/50 mb-5">{workflow.description}</p>
+                <div className="space-y-3">
                   {workflow.steps.map((step, j) => (
-                    <div key={j} className="flex items-center gap-3 text-sm">
-                      <span className="w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center text-xs">
+                    <Surface key={j} variant="elevated" className="p-3 flex items-center gap-3">
+                      <span className="w-6 h-6 bg-[rgba(201,168,76,0.2)] text-[#c9a84c] rounded-full flex items-center justify-center text-xs font-medium border border-[rgba(201,168,76,0.3)]">
                         {j + 1}
                       </span>
-                      <span className="text-gray-300">{step.server}</span>
-                      <span className="text-gray-500">→</span>
+                      <span className="text-white/70 font-medium">{step.server}</span>
+                      <span className="text-white/30">→</span>
                       <span className="text-blue-400">{step.tool}</span>
-                      <span className="text-gray-500">({step.description})</span>
-                    </div>
+                      <span className="text-white/30 text-xs ml-auto">{step.description}</span>
+                    </Surface>
                   ))}
                 </div>
-              </div>
+              </Surface>
             ))}
           </div>
         )}
 
         {/* Orchestration Tab */}
         {activeTab === 'orchestration' && (
-          <div className="space-y-6">
+          <div className="space-y-6 animate-fade-in-up">
             {/* Smart Query */}
-            <div className="bg-gray-900 rounded-lg p-6 border border-gray-800">
-              <h3 className="text-xl font-semibold mb-4">Smart Query Routing</h3>
+            <Surface variant="glass" glow="gold" className="p-6">
+              <div className="flex items-center gap-3 mb-4">
+                <IconOrb icon={Search} variant="gold" size="sm" />
+                <h3 className="text-xl font-semibold text-white">Smart Query Routing</h3>
+              </div>
               <div className="flex gap-2">
                 <input
                   type="text"
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
                   placeholder="Describe your compliance need (e.g., 'HIPAA healthcare data audit')"
-                  className="flex-1 bg-gray-800 border border-gray-700 rounded-lg px-4 py-2 text-white placeholder-gray-500"
+                  className="flex-1 bg-white/[0.05] border border-white/10 rounded-xl px-4 py-2.5 text-white placeholder-white/30 focus:outline-none focus:border-[rgba(201,168,76,0.4)]"
                 />
                 <button
                   onClick={handleMatch}
-                  className="bg-blue-600 hover:bg-blue-700 px-6 py-2 rounded-lg font-medium"
+                  className="bg-[#c9a84c] hover:opacity-90 text-black px-6 py-2 rounded-xl font-medium transition-all"
                 >
                   Match
                 </button>
               </div>
               
               {matchResults.length > 0 && (
-                <div className="mt-4">
-                  <h4 className="text-sm text-gray-400 mb-2">Matching Servers & Tools:</h4>
+                <div className="mt-5">
+                  <h4 className="text-sm text-white/40 mb-3">Matching Servers & Tools:</h4>
                   <div className="space-y-2">
                     {matchResults.slice(0, 5).map((match, i) => (
-                      <div key={i} className="flex items-center gap-3 bg-gray-800 rounded-lg p-3">
+                      <Surface key={i} variant="elevated" className="flex items-center gap-3 p-3">
                         <span className="text-lg">{getCategoryIcon(servers.find(s => s.name === match.server)?.category || '')}</span>
-                        <span className="font-medium">{match.server}</span>
+                        <span className="font-medium text-white">{match.server}</span>
                         <span className="text-blue-400">{match.tool}</span>
-                        <span className="text-sm text-gray-500">relevance: {match.relevance}</span>
-                      </div>
+                        <span className="text-sm text-white/40 ml-auto">relevance: {match.relevance}</span>
+                      </Surface>
                     ))}
                   </div>
                 </div>
               )}
-            </div>
+            </Surface>
 
             {/* Quick Actions */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              <button className="bg-gray-900 hover:bg-gray-800 rounded-lg p-4 border border-gray-800 text-left">
-                <div className="text-2xl mb-2">🏥</div>
-                <div className="font-semibold">Healthcare Audit</div>
-                <div className="text-sm text-gray-400">HIPAA + FDA</div>
-              </button>
-              <button className="bg-gray-900 hover:bg-gray-800 rounded-lg p-4 border border-gray-800 text-left">
-                <div className="text-2xl mb-2">🛡️</div>
-                <div className="font-semibold">Security Posture</div>
-                <div className="text-sm text-gray-400">Full scan</div>
-              </button>
-              <button className="bg-gray-900 hover:bg-gray-800 rounded-lg p-4 border border-gray-800 text-left">
-                <div className="text-2xl mb-2">💰</div>
-                <div className="font-semibold">Finance Compliance</div>
-                <div className="text-sm text-gray-400">SEC + AML</div>
-              </button>
-              <button className="bg-gray-900 hover:bg-gray-800 rounded-lg p-4 border border-gray-800 text-left">
-                <div className="text-2xl mb-2">⚖️</div>
-                <div className="font-semibold">AI Risk Assessment</div>
-                <div className="text-sm text-gray-400">EU AI Act</div>
-              </button>
+              <FeatureCard
+                title="Healthcare Audit"
+                description="HIPAA + FDA compliance workflows"
+                icon={Activity}
+                iconVariant="teal"
+                glow="teal"
+                className="text-left"
+              />
+              <FeatureCard
+                title="Security Posture"
+                description="Full vulnerability scan"
+                icon={Zap}
+                iconVariant="orange"
+                glow="orange"
+                className="text-left"
+              />
+              <FeatureCard
+                title="Finance Compliance"
+                description="SEC + AML risk checks"
+                icon={Layers}
+                iconVariant="green"
+                glow="gold"
+                className="text-left"
+              />
+              <FeatureCard
+                title="AI Risk Assessment"
+                description="EU AI Act coverage"
+                icon={ArrowRight}
+                iconVariant="purple"
+                glow="purple"
+                className="text-left"
+              />
             </div>
 
             {/* Execution Result */}
             {executeResult && (
-              <div className="bg-gray-900 rounded-lg p-6 border border-gray-800">
-                <h3 className="text-lg font-semibold mb-2">Execution Result</h3>
+              <Surface variant="elevated" className="p-6">
+                <h3 className="text-lg font-semibold mb-2 text-white">Execution Result</h3>
                 <pre className="text-sm text-green-400 overflow-x-auto">{executeResult}</pre>
-              </div>
+              </Surface>
             )}
           </div>
         )}

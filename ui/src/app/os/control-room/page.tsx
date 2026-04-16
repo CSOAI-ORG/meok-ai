@@ -8,6 +8,7 @@ import {
   Terminal, Box, Globe, Key, Users, Briefcase
 } from "lucide-react";
 import { SystemConnections } from "@/components/system-connections";
+import { Surface, GlowText, IconOrb, StatCard } from "@/components/design-system";
 
 type TabId = "overview" | "mcp" | "llms" | "agents" | "apis" | "departments";
 
@@ -185,14 +186,16 @@ export default function ControlRoom() {
   return (
     <div className="min-h-screen bg-[#0d0c18] text-white p-6">
       <div className="flex items-center justify-between mb-8">
-        <div>
-          <h1 className="text-2xl font-bold flex items-center gap-3">
-            <Activity className="w-6 h-6 text-[#c9a84c]" />
-            MEOK OS Control Center
-          </h1>
-          <p className="text-gray-400 text-sm mt-1">
-            Unified OS layer — MCP tools, LLM routing, agent orchestration
-          </p>
+        <div className="flex items-center gap-3">
+          <IconOrb icon={Activity} variant="gold" size="lg" />
+          <div>
+            <h1 className="text-2xl font-bold">
+              <GlowText variant="gold" as="span">MEOK OS Control Center</GlowText>
+            </h1>
+            <p className="text-gray-400 text-sm mt-1">
+              Unified OS layer — MCP tools, LLM routing, agent orchestration
+            </p>
+          </div>
         </div>
         <div className="flex items-center gap-4">
           <span className="text-xs text-gray-500">
@@ -234,10 +237,10 @@ export default function ControlRoom() {
       {activeTab === "overview" && (
         <div className="space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-            <StatCard icon={Brain} label="SOV3 Consciousness" value={`${stats.sov3Consciousness}%`} sub="Neural processing" color="#c9a84c" />
-            <StatCard icon={Database} label="Database" value={stats.dbConnected ? "Connected" : "Offline"} sub={`${stats.dbLatency}ms latency`} color={stats.dbConnected ? "#22c55e" : "#ef4444"} />
-            <StatCard icon={Server} label="MCP Server" value={`${stats.mcpTools} tools`} sub="SOV3 MCP running" color="#8b5cf6" />
-            <StatCard icon={Zap} label="Ollama" value={stats.ollamaReachable ? "Online" : "Offline"} sub={`${stats.ollamaModels} models`} color={stats.ollamaReachable ? "#22c55e" : "#ef4444"} />
+            <StatCard label="SOV3 Consciousness" value={`${stats.sov3Consciousness}%`} change="Neural processing" changeType="neutral" icon={<Brain className="w-5 h-5 text-white/70" />} glow="gold" />
+            <StatCard label="Database" value={stats.dbConnected ? "Connected" : "Offline"} change={`${stats.dbLatency}ms latency`} changeType={stats.dbConnected ? "positive" : "negative"} icon={<Database className="w-5 h-5 text-white/70" />} glow={stats.dbConnected ? "teal" : "orange"} />
+            <StatCard label="MCP Server" value={`${stats.mcpTools} tools`} change="SOV3 MCP running" changeType="neutral" icon={<Server className="w-5 h-5 text-white/70" />} glow="purple" />
+            <StatCard label="Ollama" value={stats.ollamaReachable ? "Online" : "Offline"} change={`${stats.ollamaModels} models`} changeType={stats.ollamaReachable ? "positive" : "negative"} icon={<Zap className="w-5 h-5 text-white/70" />} glow={stats.ollamaReachable ? "teal" : "orange"} />
           </div>
           <SystemConnections />
         </div>
@@ -245,9 +248,9 @@ export default function ControlRoom() {
 
       {activeTab === "departments" && (
         <div className="grid gap-4">
-          <div className="bg-white/5 rounded-xl p-6">
+          <Surface variant="elevated" glow="gold" className="p-6">
             <h2 className="text-lg font-semibold flex items-center gap-2 mb-4">
-              <Briefcase className="w-5 h-5 text-[#c9a84c]" />
+              <IconOrb icon={Briefcase} variant="gold" size="sm" />
               Autonomous Department Agents
             </h2>
             <p className="text-sm text-gray-400 mb-6">
@@ -260,7 +263,7 @@ export default function ControlRoom() {
               </div>
             ) : (
               <>
-                <div className="mb-6 p-4 bg-white/5 rounded-lg border border-[#c9a84c]/30">
+                <Surface variant="glass" className="mb-6 p-4">
                   <h3 className="text-sm font-medium text-[#c9a84c] mb-3">Delegate New Task</h3>
                   <div className="flex flex-col md:flex gap-3">
                     <select
@@ -302,13 +305,15 @@ export default function ControlRoom() {
                       {delegating ? "Delegating..." : "Delegate"}
                     </button>
                   </div>
-                </div>
+                </Surface>
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                   {departments.map((dept) => (
-                    <div
+                    <Surface
                       key={dept.id}
-                      className="p-4 rounded-lg bg-white/5 border border-white/10"
+                      variant="elevated"
+                      glow="gold"
+                      className="p-4"
                     >
                       <div className="flex items-center justify-between mb-3">
                         <h3 className="font-semibold text-lg">{dept.name}</h3>
@@ -346,42 +351,42 @@ export default function ControlRoom() {
                           ))}
                         </div>
                       </div>
-                    </div>
+                    </Surface>
                   ))}
                 </div>
               </>
             )}
-          </div>
+          </Surface>
         </div>
       )}
 
       {activeTab === "mcp" && (
-        <div className="bg-white/5 rounded-xl p-6">
+        <Surface variant="elevated" glow="gold" className="p-6">
           <h2 className="text-lg font-semibold flex items-center gap-2 mb-4">
-            <Network className="w-5 h-5 text-[#c9a84c]" />
+            <IconOrb icon={Network} variant="gold" size="sm" />
             MCP Server Tools — {stats.mcpTools} Available
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
             {["delegate_to_department", "get_department_status", "get_department_task_queue", 
               "nemotron_chat", "kimi_send_task", "orion_hunt_tasks", "hourman_start_sprint",
               "run_quantum_batch", "delegate_task", "register_agent"].map((tool) => (
-              <div key={tool} className="p-3 bg-white/5 rounded-lg">
+              <Surface key={tool} variant="glass" className="p-3">
                 <span className="text-sm font-mono text-yellow-400">{tool}</span>
-              </div>
+              </Surface>
             ))}
           </div>
-        </div>
+        </Surface>
       )}
 
       {activeTab === "llms" && (
-        <div className="bg-white/5 rounded-xl p-6">
+        <Surface variant="elevated" glow="gold" className="p-6">
           <h2 className="text-lg font-semibold flex items-center gap-2 mb-4">
-            <Brain className="w-5 h-5 text-[#c9a84c]" />
+            <IconOrb icon={Brain} variant="gold" size="sm" />
             LLM Providers
           </h2>
           <div className="space-y-3">
             {llmProviders.map((provider) => (
-              <div key={provider.name} className="flex items-center justify-between p-4 bg-white/5 rounded-lg">
+              <Surface key={provider.name} variant="glass" className="p-4 flex items-center justify-between">
                 <div>
                   <div className="font-medium">{provider.name}</div>
                   <div className="text-sm text-gray-500">{provider.models} models</div>
@@ -390,30 +395,49 @@ export default function ControlRoom() {
                   <div className={`font-medium ${getStatusColor(provider.status)}`}>{provider.status}</div>
                   <div className="text-xs text-gray-500">{provider.latency}ms</div>
                 </div>
-              </div>
+              </Surface>
             ))}
           </div>
-        </div>
+        </Surface>
       )}
 
       {activeTab === "agents" && (
         <div className="grid gap-4">
           {agents.map((group) => (
-            <AgentCard key={group.name} name={group.name} status={group.status} agents={group.agents} />
+            <Surface key={group.name} variant="elevated" glow="gold" className="p-5">
+              <div className="flex items-center justify-between mb-3">
+                <span className="font-medium">{group.name}</span>
+                <span className={`text-xs px-2 py-1 rounded ${
+                  group.status === "active" ? "bg-green-500/20 text-green-400" :
+                  group.status === "ready" ? "bg-yellow-500/20 text-yellow-400" :
+                  "bg-gray-500/20 text-gray-400"
+                }`}>
+                  {group.status}
+                </span>
+              </div>
+              <div className="space-y-1">
+                {group.agents.map((agent, i) => (
+                  <div key={i} className="text-xs text-gray-500 flex items-center gap-2">
+                    <div className="w-1 h-1 rounded-full bg-gray-500" />
+                    {agent}
+                  </div>
+                ))}
+              </div>
+            </Surface>
           ))}
         </div>
       )}
 
       {activeTab === "apis" && (
         <div className="grid gap-4">
-          <div className="bg-white/5 rounded-xl p-6">
+          <Surface variant="elevated" glow="gold" className="p-6">
             <h2 className="text-lg font-semibold flex items-center gap-2 mb-4">
-              <Globe className="w-5 h-5 text-[#c9a84c]" />
+              <IconOrb icon={Globe} variant="gold" size="sm" />
               External API Connections
             </h2>
             <div className="space-y-3">
               {MOCK_APIS.map((api) => (
-                <div key={api.name} className="flex items-center justify-between p-4 bg-white/5 rounded-lg">
+                <Surface key={api.name} variant="glass" className="p-4 flex items-center justify-between">
                   <div>
                     <div className="font-medium">{api.name}</div>
                     <div className="text-sm text-gray-500">{api.description}</div>
@@ -421,58 +445,12 @@ export default function ControlRoom() {
                   <span className={`px-2 py-1 rounded text-xs ${getStatusBg(api.status)} ${getStatusColor(api.status)}`}>
                     {api.status}
                   </span>
-                </div>
+                </Surface>
               ))}
             </div>
-          </div>
+          </Surface>
         </div>
       )}
-    </div>
-  );
-}
-
-function AgentCard({ name, status, agents }: { name: string; status: string; agents: string[] }) {
-  return (
-    <div className="bg-white/5 rounded-xl p-5">
-      <div className="flex items-center justify-between mb-3">
-        <span className="font-medium">{name}</span>
-        <span className={`text-xs px-2 py-1 rounded ${
-          status === "active" ? "bg-green-500/20 text-green-400" :
-          status === "ready" ? "bg-yellow-500/20 text-yellow-400" :
-          "bg-gray-500/20 text-gray-400"
-        }`}>
-          {status}
-        </span>
-      </div>
-      <div className="space-y-1">
-        {agents.map((agent, i) => (
-          <div key={i} className="text-xs text-gray-500 flex items-center gap-2">
-            <div className="w-1 h-1 rounded-full bg-gray-500" />
-            {agent}
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
-
-function StatCard({ icon: Icon, label, value, sub, color }: {
-  icon: React.ElementType;
-  label: string;
-  value: string;
-  sub: string;
-  color: string;
-}) {
-  return (
-    <div className="bg-white/5 rounded-xl p-5">
-      <div className="flex items-center gap-3 mb-3">
-        <div className="p-2 rounded-lg" style={{ backgroundColor: `${color}20` }}>
-          <Icon className="w-5 h-5" style={{ color }} />
-        </div>
-        <span className="text-gray-400 text-sm">{label}</span>
-      </div>
-      <div className="text-3xl font-bold" style={{ color }}>{value}</div>
-      <div className="text-xs text-gray-500 mt-1">{sub}</div>
     </div>
   );
 }

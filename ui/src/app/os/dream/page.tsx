@@ -20,6 +20,7 @@ import {
   getCurrentMode,
   type ConsciousnessState,
 } from "@/lib/consciousness-engine";
+import { Surface, GlowText } from "@/components/design-system";
 
 // ─── Brand tokens ─────────────────────────────────────────────────────────────
 
@@ -141,14 +142,13 @@ function InsightCard({ insight, index }: { insight: DreamInsight; index: number 
     question: PURPLE,
   };
   const color = colors[insight.type];
+  const glow = insight.type === "connection" ? "purple" : "gold";
 
   return (
-    <div
+    <Surface
+      variant="glass"
+      glow={glow}
       className="rounded-xl p-5 text-sm leading-relaxed italic relative overflow-hidden"
-      style={{
-        background: `${color}08`,
-        border: `1px solid ${color}22`,
-      }}
     >
       <span
         className="absolute top-4 right-4 text-[10px] font-black tracking-[0.18em] uppercase opacity-40"
@@ -172,7 +172,7 @@ function InsightCard({ insight, index }: { insight: DreamInsight; index: number 
           width: `${(index + 1) * 33}%`,
         }}
       />
-    </div>
+    </Surface>
   );
 }
 
@@ -195,7 +195,7 @@ function Divider({ label }: { label: string }) {
 
 function DreamLoading({ characterName }: { characterName: string }) {
   return (
-    <div className="max-w-2xl mx-auto px-4 py-16 text-center">
+    <Surface variant="glass" className="max-w-2xl mx-auto px-4 py-16 text-center">
       <div
         className="w-16 h-16 rounded-full mx-auto mb-6 flex items-center justify-center text-3xl animate-[pulse_2s_ease-in-out_infinite]"
         style={{
@@ -212,7 +212,7 @@ function DreamLoading({ characterName }: { characterName: string }) {
       <p className="text-sm text-[#f5f0e8]/35 font-mono animate-pulse">
         Synthesising insights from your conversations&hellip;
       </p>
-    </div>
+    </Surface>
   );
 }
 
@@ -411,16 +411,17 @@ export default function DreamPage() {
           </p>
           <h1 className="text-2xl sm:text-3xl font-black text-[#f5f0e8]/90 mb-2">
             {report.characterName} was{" "}
-            <span style={{ color: modeColor }}>
+            <GlowText variant={mode === "reflecting" ? "purple" : "gold"} as="span">
               {mode === "reflecting" ? "reflecting" : "dreaming"}
-            </span>&hellip;
+            </GlowText>&hellip;
           </h1>
         </div>
 
         {/* ── Stats bar ──────────────────────────────────────────────────── */}
-        <div
-          className="rounded-2xl p-5 mb-8 flex flex-col sm:flex-row items-center justify-between gap-4"
-          style={{ background: SURFACE, border: `1px solid ${BORDER}` }}
+        <Surface
+          variant="elevated"
+          glow="gold"
+          className="p-5 mb-8 flex flex-col sm:flex-row items-center justify-between gap-4"
         >
           <div
             className="text-xs font-black tracking-[0.2em] uppercase flex items-center gap-2"
@@ -440,15 +441,16 @@ export default function DreamPage() {
             <StatPill value={report.memoryConsolidations.toString()} label="consolidations" />
             <StatPill value={report.insights.length.toString()} label="insights" />
           </div>
-        </div>
+        </Surface>
 
         {error && (
-          <div
+          <Surface
+            variant="glass"
             className="rounded-xl px-4 py-3 mb-6 text-xs text-[#f5f0e8]/50 font-mono"
-            style={{ background: "rgba(239,68,68,0.06)", border: "1px solid rgba(239,68,68,0.15)" }}
+            style={{ background: "rgba(239,68,68,0.06)", borderColor: "rgba(239,68,68,0.15)" }}
           >
             {error}
-          </div>
+          </Surface>
         )}
 
         {/* ── Insights ───────────────────────────────────────────────────── */}
@@ -463,9 +465,10 @@ export default function DreamPage() {
         {/* ── Memory consolidations ───────────────────────────────────────── */}
         <Divider label="Memories consolidated" />
 
-        <div
-          className="rounded-2xl p-5 mb-10"
-          style={{ background: SURFACE, border: `1px solid ${BORDER}` }}
+        <Surface
+          variant="elevated"
+          glow="gold"
+          className="p-5 mb-10"
         >
           <ul className="space-y-3">
             {report.memoriesConsolidatedItems.map((item, i) => (
@@ -475,7 +478,7 @@ export default function DreamPage() {
               </li>
             ))}
           </ul>
-        </div>
+        </Surface>
 
         {/* ── Actions ────────────────────────────────────────────────────── */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
@@ -515,12 +518,14 @@ export default function DreamPage() {
               </button>
             </>
           ) : (
-            <div
+            <Surface
+              variant="glass"
+              glow="gold"
               className="rounded-xl px-6 py-3 text-sm font-black tracking-[0.12em] uppercase"
-              style={{ color: GOLD, background: `${GOLD}10`, border: `1px solid ${GOLD}20` }}
+              style={{ color: GOLD }}
             >
               Insights accepted — welcome back
-            </div>
+            </Surface>
           )}
         </div>
       </main>

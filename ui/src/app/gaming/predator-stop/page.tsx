@@ -16,6 +16,7 @@ import {
   ChevronDown,
   ChevronUp,
 } from "lucide-react";
+import { Surface, IconOrb, FeatureCard, GlowText } from "@/components/design-system";
 
 const FAQS = [
   {
@@ -40,13 +41,40 @@ const FAQS = [
   },
 ];
 
+const FEATURES = [
+  {
+    icon: Brain,
+    title: "Communication Pattern Analysis",
+    description: "Monitors who contacts your child and how. Flags escalating private communication attempts and detects grooming language patterns.",
+  },
+  {
+    icon: Shield,
+    title: "Platform Coverage",
+    description: "Across Discord, Steam, Xbox Live, PlayStation Network. In-game chat, friend requests, DMs — PC, console, and mobile.",
+  },
+  {
+    icon: Eye,
+    title: "Parent Dashboard",
+    description: "Weekly summaries of social patterns. Alert when something shifts. Never reads actual message content without consent.",
+  },
+  {
+    icon: AlertTriangle,
+    title: "Gentle Escalation",
+    description: "Soft alerts, not panic. First alert: 'A new contact is escalating unusually fast.' Emergency escalation only for clear danger signals.",
+  },
+];
+
+const CAPABILITIES = [
+  "Tracks new contacts in gaming environments",
+  "Detects adult-to-minor grooming language patterns",
+  "Learns continuously from known predator tactics",
+  "Provides context for difficult parent-child conversations",
+];
+
 function FAQItem({ q, a }: { q: string; a: string }) {
   const [open, setOpen] = useState(false);
   return (
-    <div
-      className="rounded-2xl border border-white/[0.07] overflow-hidden"
-      style={{ background: "rgba(255,255,255,0.03)" }}
-    >
+    <Surface variant="glass" className="overflow-hidden">
       <button
         onClick={() => setOpen(!open)}
         className="w-full flex items-center justify-between gap-4 px-6 py-5 text-left hover:bg-white/[0.03] transition-colors"
@@ -56,9 +84,9 @@ function FAQItem({ q, a }: { q: string; a: string }) {
           {q}
         </span>
         {open ? (
-          <ChevronUp className="w-4 h-4 text-blue-400 flex-shrink-0" />
+          <ChevronUp className="w-4 h-4 text-orange-400 flex-shrink-0" />
         ) : (
-          <ChevronDown className="w-4 h-4 text-blue-400 flex-shrink-0" />
+          <ChevronDown className="w-4 h-4 text-orange-400 flex-shrink-0" />
         )}
       </button>
       {open && (
@@ -66,78 +94,55 @@ function FAQItem({ q, a }: { q: string; a: string }) {
           <p className="text-white/50 text-sm leading-relaxed">{a}</p>
         </div>
       )}
-    </div>
+    </Surface>
   );
 }
 
 export default function PredatorStopPage() {
   return (
-    <div
-      className="min-h-screen text-white overflow-x-hidden"
-      style={{ background: "#00071a" }}
-    >
-
+    <div className="min-h-screen bg-[#0d0c18] text-white overflow-x-hidden">
       {/* ═══════════════════════════════════════════════
           HERO
       ═══════════════════════════════════════════════ */}
-      <section
-        className="relative min-h-screen flex flex-col items-center justify-center px-6 pt-14 pb-20 overflow-hidden"
-        style={{ background: "#00071a" }}
-      >
-        {/* Blobs */}
+      <section className="relative min-h-screen flex flex-col items-center justify-center px-6 pt-14 pb-20 overflow-hidden">
         <div
           aria-hidden
           className="absolute w-[700px] h-[700px] top-[-150px] left-[-150px] opacity-60"
           style={{
-            background:
-              "radial-gradient(circle, rgba(29,78,216,0.2) 0%, transparent 70%)",
+            background: "radial-gradient(circle, rgba(224,115,64,0.15) 0%, transparent 70%)",
           }}
         />
         <div
           aria-hidden
           className="absolute w-[500px] h-[500px] top-[25%] right-[-100px] opacity-40"
           style={{
-            background:
-              "radial-gradient(circle, rgba(59,130,246,0.15) 0%, transparent 70%)",
+            background: "radial-gradient(circle, rgba(224,115,64,0.12) 0%, transparent 70%)",
           }}
         />
         <div
           aria-hidden
           className="absolute w-[600px] h-[600px] bottom-[-100px] right-[20%] opacity-30"
           style={{
-            background:
-              "radial-gradient(circle, rgba(29,78,216,0.1) 0%, transparent 70%)",
+            background: "radial-gradient(circle, rgba(224,115,64,0.10) 0%, transparent 70%)",
           }}
         />
 
         <div className="relative max-w-4xl mx-auto text-center">
-          {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-600/15 border border-blue-500/30 text-blue-300 text-xs font-black tracking-[0.25em] uppercase mb-8">
-            <span className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse" />
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-orange-500/15 border border-orange-500/30 text-orange-300 text-xs font-black tracking-[0.25em] uppercase mb-8">
+            <span className="w-1.5 h-1.5 rounded-full bg-orange-400 animate-pulse" />
             Guardian · Predator Stop · For Parents
           </div>
 
-          {/* Shield icon */}
           <div className="flex justify-center mb-6">
-            <div className="w-16 h-16 rounded-2xl flex items-center justify-center bg-blue-600/15 border border-blue-500/30">
-              <Shield className="w-8 h-8 text-blue-400" />
-            </div>
+            <IconOrb icon={Shield} variant="orange" size="lg" pulse />
           </div>
 
           <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black leading-[0.95] tracking-tight mb-6">
             Your child plays online.
             <br />
-            <span
-              style={{
-                background:
-                  "linear-gradient(135deg, #60a5fa 0%, #3b82f6 40%, #1d4ed8 100%)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                backgroundClip: "text",
-              }}
-            >
+            <GlowText variant="orange" as="span">
               Not every player is a child.
-            </span>
+            </GlowText>
           </h1>
 
           <p className="text-lg sm:text-xl text-white/50 max-w-2xl mx-auto leading-relaxed mb-4">
@@ -152,8 +157,8 @@ export default function PredatorStopPage() {
               href="/hatch"
               className="group flex items-center gap-2 px-8 py-4 rounded-full font-black text-white transition-all text-base"
               style={{
-                background: "#1d4ed8",
-                boxShadow: "0 0 40px rgba(29,78,216,0.3)",
+                background: "#e07340",
+                boxShadow: "0 0 40px rgba(224,115,64,0.3)",
               }}
             >
               Activate free for families
@@ -161,7 +166,7 @@ export default function PredatorStopPage() {
             </Link>
             <a
               href="#how"
-              className="group flex items-center gap-2 px-8 py-4 rounded-full font-black text-blue-300 border border-blue-500/40 hover:border-blue-400 hover:bg-blue-500/10 transition-all text-base"
+              className="group flex items-center gap-2 px-8 py-4 rounded-full font-black text-orange-300 border border-orange-500/40 hover:border-orange-400 hover:bg-orange-500/10 transition-all text-base"
             >
               How it works
               <ArrowRight className="w-4 h-4" />
@@ -177,10 +182,7 @@ export default function PredatorStopPage() {
       {/* ═══════════════════════════════════════════════
           THE REALITY
       ═══════════════════════════════════════════════ */}
-      <section
-        className="py-24 px-6"
-        style={{ background: "#00071a", borderTop: "1px solid rgba(29,78,216,0.15)" }}
-      >
+      <section className="py-24 px-6 bg-[#0d0c18] border-y border-white/[0.05] animate-fade-in-up">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-14">
             <span className="text-xs font-black tracking-[0.25em] uppercase text-white/30 block mb-4">
@@ -195,41 +197,22 @@ export default function PredatorStopPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-14">
             {[
-              {
-                stat: "1 in 9",
-                desc: "children is contacted by a predator online",
-              },
-              {
-                stat: "#1",
-                desc: "Online gaming is the #1 new vector for child grooming",
-              },
-              {
-                stat: "73%",
-                desc: "of gaming-related incidents happen in 'private' Discord servers",
-              },
+              { stat: "1 in 9", desc: "children is contacted by a predator online" },
+              { stat: "#1", desc: "Online gaming is the #1 new vector for child grooming" },
+              { stat: "73%", desc: "of gaming-related incidents happen in 'private' Discord servers" },
             ].map((item) => (
-              <div
-                key={item.stat}
-                className="rounded-2xl p-7 text-center border border-blue-500/15"
-                style={{ background: "rgba(29,78,216,0.06)" }}
-              >
-                <div
-                  className="text-5xl font-black mb-3"
-                  style={{ color: "#60a5fa" }}
-                >
+              <Surface key={item.stat} variant="elevated" glow="orange" className="p-7 text-center">
+                <div className="text-5xl font-black mb-3 text-orange-400">
                   {item.stat}
                 </div>
                 <p className="text-white/50 text-sm leading-relaxed">
                   {item.desc}
                 </p>
-              </div>
+              </Surface>
             ))}
           </div>
 
-          <div
-            className="rounded-2xl p-8 border border-blue-500/15"
-            style={{ background: "rgba(29,78,216,0.04)" }}
-          >
+          <Surface variant="glass" className="p-8">
             <p className="text-white/60 leading-relaxed text-sm mb-4">
               The tactics haven&apos;t changed. The venue has.
             </p>
@@ -241,10 +224,9 @@ export default function PredatorStopPage() {
               ].map((line) => (
                 <div
                   key={line}
-                  className="flex items-start gap-3 p-3 rounded-xl"
-                  style={{ background: "rgba(0,0,0,0.3)" }}
+                  className="flex items-start gap-3 p-3 rounded-xl bg-black/30"
                 >
-                  <span className="text-blue-400 font-black text-xs mt-0.5 flex-shrink-0">
+                  <span className="text-orange-400 font-black text-xs mt-0.5 flex-shrink-0">
                     ›
                   </span>
                   <p className="text-white/50 text-sm italic">{line}</p>
@@ -254,194 +236,74 @@ export default function PredatorStopPage() {
             <p className="text-white/40 text-sm leading-relaxed mt-5">
               MEOK recognises these patterns before your child does.
             </p>
-          </div>
+          </Surface>
         </div>
       </section>
 
       {/* ═══════════════════════════════════════════════
-          WHAT PREDATOR STOP DOES
+          FEATURES
       ═══════════════════════════════════════════════ */}
-      <section
-        id="how"
-        className="py-24 px-6"
-        style={{ background: "#00071a", borderTop: "1px solid rgba(29,78,216,0.12)" }}
-      >
-        <div className="max-w-4xl mx-auto">
+      <section id="how" className="py-24 px-6 bg-[#13121f] animate-fade-in-up">
+        <div className="max-w-5xl mx-auto">
           <div className="text-center mb-14">
             <span className="text-xs font-black tracking-[0.25em] uppercase text-white/30 block mb-4">
               How it works
             </span>
             <h2 className="text-4xl sm:text-5xl font-black tracking-tight">
               What Predator Stop{" "}
-              <span style={{ color: "#60a5fa" }}>does.</span>
+              <GlowText variant="orange" as="span">does.</GlowText>
             </h2>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-            {[
-              {
-                icon: Brain,
-                iconColor: "text-blue-400",
-                iconBg: "bg-blue-600/15",
-                borderColor: "border-blue-500/20",
-                title: "Communication Pattern Analysis",
-                subtitle: "Monitors who contacts your child and how",
-                features: [
-                  "Tracks new contacts in gaming environments",
-                  "Flags escalating private communication attempts",
-                  "Detects adult-to-minor grooming language patterns",
-                ],
-              },
-              {
-                icon: Shield,
-                iconColor: "text-blue-400",
-                iconBg: "bg-blue-600/15",
-                borderColor: "border-blue-500/20",
-                title: "Platform Coverage",
-                subtitle: "Across every platform they play on",
-                features: [
-                  "Discord, Steam, Xbox Live, PlayStation Network",
-                  "In-game chat, friend requests, DMs",
-                  "Works across PC, console, and mobile",
-                ],
-              },
-              {
-                icon: Eye,
-                iconColor: "text-purple-400",
-                iconBg: "bg-purple-600/15",
-                borderColor: "border-purple-500/20",
-                title: "Parent Dashboard",
-                subtitle: "You see the pattern. Not the conversation.",
-                features: [
-                  "Weekly summaries of your child's social patterns",
-                  "Alert when something shifts — who's new, who's becoming intense",
-                  "Never reads actual message content without child's consent",
-                ],
-              },
-              {
-                icon: AlertTriangle,
-                iconColor: "text-amber-400",
-                iconBg: "bg-amber-400/10",
-                borderColor: "border-amber-400/20",
-                title: "Gentle Escalation",
-                subtitle: "Soft alerts, not panic",
-                features: [
-                  'First alert to you: "A new contact is escalating unusually fast"',
-                  "Option to review with your child together",
-                  "Emergency escalation if clear danger signals appear",
-                ],
-              },
-            ].map((card) => {
-              const Icon = card.icon;
-              return (
-                <div
-                  key={card.title}
-                  className={`rounded-2xl p-7 border ${card.borderColor}`}
-                  style={{ background: "rgba(255,255,255,0.02)" }}
-                >
-                  <div
-                    className={`w-11 h-11 rounded-xl flex items-center justify-center ${card.iconBg} mb-5`}
-                  >
-                    <Icon className={`w-5 h-5 ${card.iconColor}`} />
-                  </div>
-                  <h3 className="font-black text-white text-base mb-1">
-                    {card.title}
-                  </h3>
-                  <p className="text-xs text-white/40 mb-4 font-mono">
-                    {card.subtitle}
-                  </p>
-                  <ul className="space-y-2">
-                    {card.features.map((feat) => (
-                      <li
-                        key={feat}
-                        className="flex items-start gap-2.5 text-sm text-white/50"
-                      >
-                        <span className={`${card.iconColor} font-black text-xs mt-0.5 flex-shrink-0`}>
-                          ›
-                        </span>
-                        {feat}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              );
-            })}
+            {FEATURES.map((feat) => (
+              <FeatureCard
+                key={feat.title}
+                title={feat.title}
+                description={feat.description}
+                icon={feat.icon}
+                iconVariant="orange"
+                glow="orange"
+              />
+            ))}
           </div>
         </div>
       </section>
 
       {/* ═══════════════════════════════════════════════
-          REAL PATTERN EXAMPLES
+          CAPABILITIES
       ═══════════════════════════════════════════════ */}
-      <section
-        className="py-24 px-6"
-        style={{ background: "#000d2e" }}
-      >
+      <section className="py-24 px-6 bg-[#0d0c18] border-y border-white/[0.05] animate-fade-in-up">
         <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-14">
-            <span className="text-xs font-black tracking-[0.25em] uppercase text-white/30 block mb-4">
-              Real patterns
-            </span>
-            <h2 className="text-4xl sm:text-5xl font-black tracking-tight leading-tight">
-              What it looks like
-              <br />
-              <span className="text-white/35">before it becomes a crisis.</span>
-            </h2>
-          </div>
-
-          <div className="space-y-5">
-            {[
-              {
-                label: "The compliment pattern",
-                scenario:
-                  "A new 'friend' tells your 13-year-old they're 'so much more mature' than other players. Asks to play private games together. Moves conversation to Discord. Starts asking personal questions about school, home, whether they have a boyfriend/girlfriend.",
-                response:
-                  "Predator Stop flags the escalation velocity and language markers. You get a quiet alert: 'A new contact is showing some patterns worth discussing with Jack.'",
-              },
-              {
-                label: "The secret server",
-                scenario:
-                  "Your daughter has been invited to a 'special server' and asked not to tell her parents. The server has adults claiming to be teenage gamers. Messages ask for photos of 'gaming setups.'",
-                response:
-                  "Predator Stop detects the isolation request (don't tell parents) and photo solicitation pattern. Immediate alert. No need to read her conversations — the pattern alone is enough.",
-              },
-              {
-                label: "The gift giver",
-                scenario:
-                  "Someone keeps sending your child in-game gifts, currency, rare items. Has been building a relationship for 3 months. Now wants to 'meet up at a gaming event.'",
-                response:
-                  "Guardian has tracked the relationship — one-sided gift giving over time is a known grooming pattern. The offline meeting request triggers an immediate parent alert.",
-              },
-            ].map((item) => (
-              <div
-                key={item.label}
-                className="rounded-2xl border border-blue-500/15 overflow-hidden"
-                style={{ background: "rgba(0,7,26,0.8)" }}
-              >
-                <div className="p-6 sm:p-8">
-                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-600/10 border border-blue-500/20 text-blue-300 text-xs font-black tracking-widest uppercase mb-5">
-                    {item.label}
-                  </div>
-                  <p className="text-white/60 text-sm leading-relaxed mb-5">
-                    &ldquo;{item.scenario}&rdquo;
-                  </p>
-                  <div
-                    className="rounded-xl p-4"
-                    style={{
-                      background: "rgba(29,78,216,0.08)",
-                      border: "1px solid rgba(29,78,216,0.2)",
-                    }}
-                  >
-                    <span className="text-[10px] font-black text-blue-400/60 font-mono block mb-2">
-                      GUARDIAN RESPONSE
-                    </span>
-                    <p className="text-sm text-white/60 leading-relaxed">
-                      {item.response}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            ))}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div>
+              <span className="text-xs font-black tracking-[0.25em] uppercase text-white/30 block mb-4">
+                Capabilities
+              </span>
+              <h2 className="text-3xl sm:text-4xl font-black tracking-tight mb-5">
+                Pattern-based.
+                <br />
+                <GlowText variant="orange" as="span">
+                  Privacy-first.
+                </GlowText>
+              </h2>
+              <p className="text-white/50 leading-relaxed text-sm">
+                Predator Stop monitors communication patterns — who is contacting
+                your child, how fast relationships escalate, and what categories of
+                language are being used. The pattern alone is enough to detect danger.
+                The content stays private.
+              </p>
+            </div>
+            <Surface variant="elevated" glow="orange" className="p-7">
+              <ul className="space-y-4">
+                {CAPABILITIES.map((item) => (
+                  <li key={item} className="flex items-start gap-3 text-sm text-white/60">
+                    <Eye className="w-4 h-4 text-orange-400 flex-shrink-0 mt-0.5" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </Surface>
           </div>
         </div>
       </section>
@@ -449,28 +311,21 @@ export default function PredatorStopPage() {
       {/* ═══════════════════════════════════════════════
           DOES / NEVER DOES
       ═══════════════════════════════════════════════ */}
-      <section
-        className="py-24 px-6"
-        style={{ background: "#1a1a2e" }}
-      >
+      <section className="py-24 px-6 bg-[#0d0c18] animate-fade-in-up">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-14">
             <h2 className="text-4xl sm:text-5xl font-black tracking-tight">
               What Predator Stop{" "}
-              <span style={{ color: "#60a5fa" }}>will</span> and{" "}
+              <GlowText variant="orange" as="span">will</GlowText> and{" "}
               <span className="text-white/35">won&apos;t</span> do.
             </h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {/* DOES */}
-            <div
-              className="rounded-2xl p-7 border border-green-500/20"
-              style={{ background: "rgba(21,128,61,0.05)" }}
-            >
+            <Surface variant="elevated" glow="teal" className="p-7">
               <div className="flex items-center gap-3 mb-6">
-                <CheckCircle className="w-5 h-5 text-green-400" />
-                <h3 className="font-black text-green-400 text-sm tracking-widest uppercase">
+                <CheckCircle className="w-5 h-5 text-teal-400" />
+                <h3 className="font-black text-teal-400 text-sm tracking-widest uppercase">
                   Predator Stop does
                 </h3>
               </div>
@@ -483,22 +338,15 @@ export default function PredatorStopPage() {
                   "Alert child and parent simultaneously (age-appropriate)",
                   "Provide context for difficult parent-child conversations",
                 ].map((item) => (
-                  <li
-                    key={item}
-                    className="flex items-start gap-3 text-sm text-white/60"
-                  >
-                    <CheckCircle className="w-4 h-4 text-green-400 flex-shrink-0 mt-0.5" />
+                  <li key={item} className="flex items-start gap-3 text-sm text-white/60">
+                    <CheckCircle className="w-4 h-4 text-teal-400 flex-shrink-0 mt-0.5" />
                     {item}
                   </li>
                 ))}
               </ul>
-            </div>
+            </Surface>
 
-            {/* NEVER DOES */}
-            <div
-              className="rounded-2xl p-7 border border-red-500/20"
-              style={{ background: "rgba(239,68,68,0.04)" }}
-            >
+            <Surface variant="elevated" className="p-7" style={{ borderColor: "rgba(239,68,68,0.2)" }}>
               <div className="flex items-center gap-3 mb-6">
                 <XCircle className="w-5 h-5 text-red-400" />
                 <h3 className="font-black text-red-400 text-sm tracking-widest uppercase">
@@ -514,97 +362,13 @@ export default function PredatorStopPage() {
                   "Share data with platforms, advertisers, or third parties",
                   "Override your child's right to know they're protected",
                 ].map((item) => (
-                  <li
-                    key={item}
-                    className="flex items-start gap-3 text-sm text-white/60"
-                  >
+                  <li key={item} className="flex items-start gap-3 text-sm text-white/60">
                     <XCircle className="w-4 h-4 text-red-400 flex-shrink-0 mt-0.5" />
                     {item}
                   </li>
                 ))}
               </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ═══════════════════════════════════════════════
-          AGE GROUPS
-      ═══════════════════════════════════════════════ */}
-      <section className="py-24 px-6 bg-[#f5f0e8]">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-14">
-            <span className="text-xs font-black tracking-[0.25em] uppercase text-black/30 block mb-4">
-              Age-appropriate protection
-            </span>
-            <h2 className="text-4xl sm:text-5xl font-black tracking-tight text-[#0a0a1a] leading-tight">
-              Protection that grows
-              <br />
-              <span className="text-black/35">with your child.</span>
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-            {[
-              {
-                range: "Ages 6–12",
-                label: "Full protection, minimal visibility",
-                body: "You see everything. They know Guardian is there for safety. Full monitoring with age-appropriate protection on all platforms.",
-                accentColor: "#1d4ed8",
-                badgeBg: "#dbeafe",
-                badgeText: "#1e40af",
-                borderColor: "#93c5fd",
-                bg: "#eff6ff",
-              },
-              {
-                range: "Ages 13–16",
-                label: "Partnership mode",
-                body: "They can see what Guardian flags. Builds media literacy alongside protection. Joint conversations about online safety replace unilateral monitoring.",
-                accentColor: "#7c3aed",
-                badgeBg: "#ede9fe",
-                badgeText: "#5b21b6",
-                borderColor: "#c4b5fd",
-                bg: "#f5f3ff",
-              },
-              {
-                range: "Ages 16–18",
-                label: "Trust and verify",
-                body: "More autonomy, same coverage. Guardian shifts to coaching rather than monitoring. Alerts only for serious escalation patterns.",
-                accentColor: "#0f766e",
-                badgeBg: "#ccfbf1",
-                badgeText: "#134e4a",
-                borderColor: "#5eead4",
-                bg: "#f0fdfa",
-              },
-            ].map((card) => (
-              <div
-                key={card.range}
-                className="rounded-2xl p-7 border"
-                style={{
-                  background: card.bg,
-                  borderColor: card.borderColor,
-                }}
-              >
-                <div
-                  className="inline-flex items-center px-3 py-1 rounded-full text-xs font-black mb-4"
-                  style={{
-                    background: card.badgeBg,
-                    color: card.badgeText,
-                  }}
-                >
-                  {card.range}
-                </div>
-                <h3
-                  className="font-black text-base mb-2"
-                  style={{ color: card.accentColor }}
-                >
-                  {card.label}
-                </h3>
-                <p className="text-sm leading-relaxed text-black/60">
-                  {card.body}
-                </p>
-              </div>
-            ))}
+            </Surface>
           </div>
         </div>
       </section>
@@ -612,10 +376,7 @@ export default function PredatorStopPage() {
       {/* ═══════════════════════════════════════════════
           FAQ
       ═══════════════════════════════════════════════ */}
-      <section
-        className="py-24 px-6"
-        style={{ background: "#0d0c18" }}
-      >
+      <section className="py-24 px-6 bg-[#13121f] animate-fade-in-up">
         <div className="max-w-2xl mx-auto">
           <div className="text-center mb-12">
             <span className="text-xs font-black tracking-[0.25em] uppercase text-white/30 block mb-4">
@@ -636,18 +397,15 @@ export default function PredatorStopPage() {
       {/* ═══════════════════════════════════════════════
           CTA
       ═══════════════════════════════════════════════ */}
-      <section
-        className="py-24 px-6"
-        style={{ background: "#00071a" }}
-      >
+      <section className="py-24 px-6 bg-[#0a0a0f] animate-fade-in-up">
         <div className="max-w-2xl mx-auto text-center">
-          <div className="w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-6 bg-blue-600/15 border border-blue-500/30">
-            <Lock className="w-7 h-7 text-blue-400" />
+          <div className="flex justify-center mb-6">
+            <IconOrb icon={Lock} variant="orange" size="lg" />
           </div>
           <h2 className="text-3xl sm:text-4xl font-black tracking-tight mb-4">
             Gaming should be safe.
             <br />
-            <span style={{ color: "#60a5fa" }}>MEOK makes it that way.</span>
+            <GlowText variant="orange" as="span">MEOK makes it that way.</GlowText>
           </h2>
           <p className="text-white/45 leading-relaxed mb-8 text-sm max-w-lg mx-auto">
             Free for families. Consent-based. Designed by parents, advised by
@@ -658,8 +416,8 @@ export default function PredatorStopPage() {
               href="/hatch"
               className="group flex items-center gap-2 px-8 py-4 rounded-full font-black text-white transition-all text-base"
               style={{
-                background: "#1d4ed8",
-                boxShadow: "0 0 40px rgba(29,78,216,0.3)",
+                background: "#e07340",
+                boxShadow: "0 0 40px rgba(224,115,64,0.3)",
               }}
             >
               Activate Predator Stop free
@@ -667,7 +425,7 @@ export default function PredatorStopPage() {
             </Link>
             <Link
               href="/guardian"
-              className="group flex items-center gap-2 px-8 py-4 rounded-full font-black text-blue-300 border border-blue-500/40 hover:border-blue-400 hover:bg-blue-500/10 transition-all text-base"
+              className="group flex items-center gap-2 px-8 py-4 rounded-full font-black text-orange-300 border border-orange-500/40 hover:border-orange-400 hover:bg-orange-500/10 transition-all text-base"
             >
               All Guardian features
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -675,7 +433,6 @@ export default function PredatorStopPage() {
           </div>
         </div>
       </section>
-
     </div>
   );
 }

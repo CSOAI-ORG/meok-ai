@@ -13,6 +13,7 @@ import {
   Database,
   Key,
 } from "lucide-react";
+import { FeatureCard, Surface, GlowText } from "@/components/design-system";
 
 // ── METADATA ───────────────────────────────────────────────────────────────
 export const metadata: Metadata = {
@@ -210,7 +211,7 @@ export default function SovereignPage() {
       {/* ═══════════════════════════════════════════════
           HERO
       ═══════════════════════════════════════════════ */}
-      <section className="relative flex flex-col items-center justify-center text-center pt-40 pb-28 px-6 overflow-hidden">
+      <section className="relative flex flex-col items-center justify-center text-center pt-40 pb-28 px-6 overflow-hidden animate-fade-in-up">
         {/* Blobs */}
         <div
           aria-hidden
@@ -302,7 +303,7 @@ export default function SovereignPage() {
       {/* ═══════════════════════════════════════════════
           4 GUARANTEES
       ═══════════════════════════════════════════════ */}
-      <section id="guarantees" className="py-28 px-6">
+      <section id="guarantees" className="py-28 px-6 animate-fade-in-up">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-16">
             <span className="text-xs font-black tracking-[0.25em] uppercase text-white/25 block mb-4">
@@ -316,64 +317,34 @@ export default function SovereignPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {GUARANTEES.map((g) => {
-              const Icon = g.icon;
-              return (
-                <div
-                  key={g.number}
-                  className="rounded-3xl p-8 relative overflow-hidden"
-                  style={{
-                    background: g.glowColor,
-                    border: `1px solid ${g.borderColor}`,
-                  }}
-                >
-                  {/* Top accent line */}
-                  <div
-                    className="absolute top-0 left-0 right-0 h-px"
-                    style={{ background: `linear-gradient(90deg, transparent, ${g.accentColor}40, transparent)` }}
-                  />
-
-                  <div className="flex items-start gap-4 mb-5">
+            {GUARANTEES.map((g) => (
+              <FeatureCard
+                key={g.number}
+                title={g.title}
+                description={
+                  <>
+                    <p className="text-sm font-semibold mb-2" style={{ color: g.accentColor }}>
+                      &ldquo;{g.tagline}&rdquo;
+                    </p>
+                    <p className="text-white/50 text-sm leading-relaxed mb-3">
+                      {g.body}
+                    </p>
                     <div
-                      className="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0"
-                      style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.08)" }}
+                      className="rounded-xl p-3 text-[11px] font-mono text-white/40 leading-relaxed"
+                      style={{ background: "rgba(0,0,0,0.3)", border: "1px solid rgba(255,255,255,0.05)" }}
                     >
-                      <Icon className={`w-5 h-5 ${g.iconColor}`} />
+                      <span className="text-[9px] font-black tracking-widest uppercase block mb-1" style={{ color: g.accentColor }}>
+                        TECHNICAL PROOF
+                      </span>
+                      {g.proof}
                     </div>
-                    <div className="min-w-0">
-                      <div
-                        className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[9px] font-black tracking-widest uppercase mb-2"
-                        style={{ background: `${g.accentColor}18`, border: `1px solid ${g.accentColor}30`, color: g.accentColor }}
-                      >
-                        {g.badge}
-                      </div>
-                      <p className="text-[11px] font-mono text-white/20">Guarantee {g.number}</p>
-                    </div>
-                  </div>
-
-                  <h3 className="text-2xl font-black tracking-tight mb-2 leading-tight">
-                    {g.title}
-                  </h3>
-                  <p className="text-sm font-semibold mb-4" style={{ color: g.accentColor }}>
-                    &ldquo;{g.tagline}&rdquo;
-                  </p>
-                  <p className="text-white/50 text-sm leading-relaxed mb-5">
-                    {g.body}
-                  </p>
-
-                  {/* Proof badge */}
-                  <div
-                    className="rounded-xl p-3 text-[11px] font-mono text-white/40 leading-relaxed"
-                    style={{ background: "rgba(0,0,0,0.3)", border: "1px solid rgba(255,255,255,0.05)" }}
-                  >
-                    <span className="text-[9px] font-black tracking-widest uppercase block mb-1" style={{ color: g.accentColor }}>
-                      TECHNICAL PROOF
-                    </span>
-                    {g.proof}
-                  </div>
-                </div>
-              );
-            })}
+                  </>
+                }
+                icon={g.icon}
+                iconVariant="gold"
+                glow="gold"
+              />
+            ))}
           </div>
         </div>
       </section>
@@ -381,7 +352,7 @@ export default function SovereignPage() {
       {/* ═══════════════════════════════════════════════
           TECHNICAL TRANSPARENCY
       ═══════════════════════════════════════════════ */}
-      <section className="py-24 px-6 bg-[#0a0a14]">
+      <section className="py-24 px-6 bg-[#0a0a14] animate-fade-in-up">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-14">
             <span className="text-xs font-black tracking-[0.25em] uppercase text-white/25 block mb-4">
@@ -420,7 +391,7 @@ export default function SovereignPage() {
       {/* ═══════════════════════════════════════════════
           COMPARISON TABLE
       ═══════════════════════════════════════════════ */}
-      <section className="py-24 px-6">
+      <section className="py-24 px-6 animate-fade-in-up">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-14">
             <span className="text-xs font-black tracking-[0.25em] uppercase text-white/25 block mb-4">
@@ -434,7 +405,7 @@ export default function SovereignPage() {
             </p>
           </div>
 
-          <div className="overflow-x-auto rounded-2xl" style={{ border: "1px solid rgba(255,255,255,0.07)" }}>
+          <Surface variant="elevated" className="overflow-x-auto rounded-2xl">
             <table className="w-full text-sm">
               <thead>
                 <tr style={{ background: "rgba(255,255,255,0.03)", borderBottom: "1px solid rgba(255,255,255,0.07)" }}>
@@ -508,7 +479,7 @@ export default function SovereignPage() {
                 ))}
               </tbody>
             </table>
-          </div>
+          </Surface>
           <p className="text-center text-white/20 text-[10px] mt-4 font-mono">
             Comparison based on publicly available data policies as of Q1 2026. Subject to change.
           </p>
@@ -518,7 +489,7 @@ export default function SovereignPage() {
       {/* ═══════════════════════════════════════════════
           SELF-HOSTING ROADMAP
       ═══════════════════════════════════════════════ */}
-      <section className="py-20 px-6 bg-[#0a0a14]">
+      <section className="py-20 px-6 bg-[#0a0a14] animate-fade-in-up">
         <div className="max-w-4xl mx-auto">
           <div className="rounded-3xl p-10 relative overflow-hidden" style={{ background: "rgba(201,168,76,0.04)", border: "1px solid rgba(201,168,76,0.15)" }}>
             <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(201,168,76,0.40), transparent)" }} />
@@ -572,7 +543,7 @@ export default function SovereignPage() {
       {/* ═══════════════════════════════════════════════
           CTA
       ═══════════════════════════════════════════════ */}
-      <section className="py-28 px-6 relative overflow-hidden">
+      <section className="py-28 px-6 relative overflow-hidden animate-fade-in-up">
         <div
           aria-hidden
           className="pointer-events-none absolute inset-0"

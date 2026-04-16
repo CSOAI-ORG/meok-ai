@@ -16,6 +16,11 @@ import {
   MessageSquare,
   Trophy,
 } from "lucide-react";
+import { Surface } from "@/components/design-system";
+import { IconOrb } from "@/components/design-system";
+import { FeatureCard } from "@/components/design-system";
+import { StatCard } from "@/components/design-system";
+import { GlowText } from "@/components/design-system";
 
 // ── JSON-LD ────────────────────────────────────────────────────────────────
 const jsonLd = {
@@ -107,7 +112,6 @@ const FEATURES = [
     badgeColor: "text-[#c9a84c]",
     badgeBg: "bg-[#c9a84c]/10",
     badgeBorder: "border-[#c9a84c]/20",
-    cardBorder: "border-[#c9a84c]/20 hover:border-[#c9a84c]/40",
     icon: BarChart2,
     iconColor: "text-[#c9a84c]",
     glowColor: "rgba(201,168,76,0.08)",
@@ -135,7 +139,6 @@ const FEATURES = [
     badgeColor: "text-purple-400",
     badgeBg: "bg-purple-400/10",
     badgeBorder: "border-purple-400/20",
-    cardBorder: "border-purple-400/20 hover:border-purple-400/40",
     icon: Gamepad2,
     iconColor: "text-purple-400",
     glowColor: "rgba(168,85,247,0.08)",
@@ -163,7 +166,6 @@ const FEATURES = [
     badgeColor: "text-pink-400",
     badgeBg: "bg-pink-400/10",
     badgeBorder: "border-pink-400/20",
-    cardBorder: "border-pink-400/20 hover:border-pink-400/40",
     icon: Radio,
     iconColor: "text-pink-400",
     glowColor: "rgba(236,72,153,0.08)",
@@ -191,7 +193,6 @@ const FEATURES = [
     badgeColor: "text-green-400",
     badgeBg: "bg-green-400/10",
     badgeBorder: "border-green-400/20",
-    cardBorder: "border-green-400/20 hover:border-green-400/40",
     icon: Users,
     iconColor: "text-green-400",
     glowColor: "rgba(74,222,128,0.08)",
@@ -255,7 +256,7 @@ const FAQS = [
 function FAQItem({ q, a }: { q: string; a: string }) {
   const [open, setOpen] = useState(false);
   return (
-    <div className="rounded-2xl border border-white/[0.07] overflow-hidden" style={{ background: "rgba(255,255,255,0.03)" }}>
+    <Surface variant="glass" className="overflow-hidden">
       <button
         onClick={() => setOpen(!open)}
         className="w-full flex items-center justify-between gap-4 px-6 py-5 text-left hover:bg-white/[0.03] transition-colors"
@@ -269,7 +270,7 @@ function FAQItem({ q, a }: { q: string; a: string }) {
           <p className="text-white/50 text-sm leading-relaxed">{a}</p>
         </div>
       )}
-    </div>
+    </Surface>
   );
 }
 
@@ -327,13 +328,11 @@ export default function GamingClient() {
 
           {/* Scout companion badge */}
           <div className="flex justify-center mb-6">
-            <div className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full border border-[#c9a84c]/30 bg-[#c9a84c]/8">
-              <div className="w-7 h-7 rounded-full bg-[#c9a84c]/20 border border-[#c9a84c]/40 flex items-center justify-center">
-                <Zap className="w-3.5 h-3.5 text-[#c9a84c]" />
-              </div>
+            <Surface variant="glass" glow="gold" className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full">
+              <IconOrb icon={Zap} variant="gold" size="sm" />
               <span className="text-xs font-black text-[#c9a84c] tracking-widest uppercase">Scout</span>
               <span className="text-xs text-white/40">Your gaming companion</span>
-            </div>
+            </Surface>
           </div>
 
           <h1 className="text-5xl sm:text-7xl lg:text-[5.5rem] font-black leading-[0.9] tracking-tight mb-6">
@@ -341,16 +340,9 @@ export default function GamingClient() {
             <br className="hidden sm:block" />
             learns how you play.
             <br />
-            <span
-              style={{
-                background: "linear-gradient(135deg, #c9a84c 0%, #f0d080 40%, #a855f7 100%)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                backgroundClip: "text",
-              }}
-            >
+            <GlowText variant="gold" as="span">
               Gets smarter every session.
-            </span>
+            </GlowText>
           </h1>
 
           <p className="text-lg sm:text-xl text-white/40 max-w-2xl mx-auto leading-relaxed mb-10">
@@ -380,14 +372,13 @@ export default function GamingClient() {
           {/* Stats row */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-2xl mx-auto">
             {STATS.map((s) => (
-              <div
+              <StatCard
                 key={s.label}
-                className="rounded-xl px-4 py-3 text-center"
-                style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.07)" }}
-              >
-                <div className="text-xl font-black text-[#c9a84c]">{s.val}</div>
-                <div className="text-[10px] text-white/30 font-mono mt-0.5 leading-tight">{s.label}</div>
-              </div>
+                label={s.label}
+                value={s.val}
+                glow="gold"
+                className="text-center"
+              />
             ))}
           </div>
         </div>
@@ -418,7 +409,7 @@ export default function GamingClient() {
       {/* ═══════════════════════════════════════════════
           4 CORE FEATURES
       ═══════════════════════════════════════════════ */}
-      <section className="py-28 px-6">
+      <section className="py-28 px-6 animate-fade-in-up">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-16">
             <span className="text-xs font-black tracking-[0.25em] uppercase text-white/25 block mb-4">
@@ -431,72 +422,31 @@ export default function GamingClient() {
             </h2>
           </div>
 
-          <div className="space-y-8">
-            {FEATURES.map((f, idx) => {
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            {FEATURES.map((f) => {
               const Icon = f.icon;
               return (
-                <div
+                <FeatureCard
                   key={f.id}
-                  className={`rounded-3xl border ${f.cardBorder} p-8 sm:p-10 transition-all`}
-                  style={{ background: f.glowColor, borderColor: undefined }}
-                >
-                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
-                    {/* Left: content */}
-                    <div className={idx % 2 === 1 ? "lg:order-2" : ""}>
-                      <div className="flex items-center gap-3 mb-5">
-                        <div
-                          className="w-10 h-10 rounded-xl flex items-center justify-center"
-                          style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.08)" }}
-                        >
-                          <Icon className={`w-5 h-5 ${f.iconColor}`} />
-                        </div>
-                        <div className={`inline-flex items-center px-3 py-1 rounded-full text-[10px] font-black tracking-widest uppercase ${f.badgeColor} ${f.badgeBg} border ${f.badgeBorder}`}>
-                          {f.badge}
-                        </div>
-                      </div>
-
-                      <h3 className="text-2xl sm:text-3xl font-black tracking-tight mb-4 leading-tight">
-                        {f.title}
-                      </h3>
-                      <p className="text-white/50 leading-relaxed mb-6 text-sm">
-                        {f.body}
-                      </p>
-
-                      <ul className="space-y-2.5">
+                  title={f.title}
+                  description={
+                    <div className="space-y-4">
+                      <p className="text-white/50 leading-relaxed text-sm">{f.body}</p>
+                      <ul className="space-y-2">
                         {f.bullets.map((b) => (
-                          <li key={b} className="flex items-start gap-2.5 text-sm text-white/60">
-                            <span className={`mt-1 w-1 h-1 rounded-full flex-shrink-0 inline-block ${f.badgeColor.replace("text-", "bg-")}`} />
+                          <li key={b} className="flex items-start gap-2 text-sm text-white/60">
+                            <span className={`mt-1.5 w-1 h-1 rounded-full flex-shrink-0 ${f.iconColor.replace("text-", "bg-")}`} />
                             {b}
                           </li>
                         ))}
                       </ul>
                     </div>
-
-                    {/* Right: mock panel */}
-                    <div className={idx % 2 === 1 ? "lg:order-1" : ""}>
-                      <div
-                        className="rounded-2xl p-5 font-mono text-xs"
-                        style={{ background: "rgba(0,0,0,0.4)", border: "1px solid rgba(255,255,255,0.06)" }}
-                      >
-                        <div className="flex items-center gap-2 mb-4 pb-3 border-b border-white/[0.06]">
-                          <span className={`w-1.5 h-1.5 rounded-full animate-pulse ${f.iconColor.replace("text-", "bg-")}`} />
-                          <span className="text-white/30 text-[10px] tracking-wide">{f.mock.title}</span>
-                        </div>
-                        <div className="space-y-3">
-                          {f.mock.rows.map((row) => (
-                            <div key={row.label} className="flex items-start justify-between gap-4">
-                              <div className="min-w-0 flex-1">
-                                <span className="text-white/30 text-[10px] block mb-0.5">{row.label}</span>
-                                <span className="text-white/55 text-[11px]">{row.note}</span>
-                              </div>
-                              <span className={`font-black text-sm flex-shrink-0 ${row.color}`}>{row.val}</span>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                  }
+                  icon={Icon}
+                  iconVariant="orange"
+                  glow="orange"
+                  className="h-full"
+                />
               );
             })}
           </div>
@@ -506,22 +456,14 @@ export default function GamingClient() {
       {/* ═══════════════════════════════════════════════
           STATS — PERFORMANCE IMPROVEMENT
       ═══════════════════════════════════════════════ */}
-      <section className="py-24 px-6" style={{ background: "rgba(201,168,76,0.04)", borderTop: "1px solid rgba(201,168,76,0.10)", borderBottom: "1px solid rgba(201,168,76,0.10)" }}>
+      <section className="py-24 px-6 animate-fade-in-up" style={{ background: "rgba(201,168,76,0.04)", borderTop: "1px solid rgba(201,168,76,0.10)", borderBottom: "1px solid rgba(201,168,76,0.10)" }}>
         <div className="max-w-4xl mx-auto text-center">
           <span className="text-xs font-black tracking-[0.25em] uppercase text-[#c9a84c]/50 block mb-6">
             The numbers
           </span>
-          <p
-            className="text-6xl sm:text-8xl font-black mb-4"
-            style={{
-              background: "linear-gradient(135deg, #c9a84c 0%, #f0d080 60%)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              backgroundClip: "text",
-            }}
-          >
+          <GlowText variant="gold" as="p" className="text-6xl sm:text-8xl font-black mb-4">
             23%
-          </p>
+          </GlowText>
           <p className="text-xl sm:text-2xl font-black text-white/70 mb-3">
             Average performance improvement after 10 sessions
           </p>
@@ -537,15 +479,11 @@ export default function GamingClient() {
             ].map((s) => {
               const Icon = s.icon;
               return (
-                <div
-                  key={s.label}
-                  className="rounded-2xl p-6 text-center"
-                  style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(201,168,76,0.12)" }}
-                >
+                <Surface key={s.label} variant="elevated" glow="gold" className="p-6 text-center">
                   <Icon className="w-5 h-5 text-[#c9a84c] mx-auto mb-3" />
                   <div className="text-3xl font-black text-white mb-2">{s.val}</div>
                   <div className="text-xs text-white/40 leading-relaxed">{s.label}</div>
-                </div>
+                </Surface>
               );
             })}
           </div>
@@ -555,7 +493,7 @@ export default function GamingClient() {
       {/* ═══════════════════════════════════════════════
           SCOUT — GAMING COMPANION
       ═══════════════════════════════════════════════ */}
-      <section className="py-24 px-6 bg-[#0a0a14]">
+      <section className="py-24 px-6 bg-[#0a0a14] animate-fade-in-up">
         <div className="max-w-4xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
@@ -584,19 +522,11 @@ export default function GamingClient() {
             </div>
 
             {/* Scout card mock */}
-            <div
-              className="rounded-3xl p-7 relative overflow-hidden"
-              style={{ background: "rgba(201,168,76,0.05)", border: "1px solid rgba(201,168,76,0.18)" }}
-            >
+            <Surface variant="glass" glow="gold" className="p-7 relative overflow-hidden">
               <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#c9a84c]/40 to-transparent" />
 
               <div className="flex items-center gap-3 mb-6">
-                <div
-                  className="w-12 h-12 rounded-2xl flex items-center justify-center"
-                  style={{ background: "rgba(201,168,76,0.15)", border: "1px solid rgba(201,168,76,0.30)" }}
-                >
-                  <Zap className="w-6 h-6 text-[#c9a84c]" />
-                </div>
+                <IconOrb icon={Zap} variant="gold" size="lg" pulse />
                 <div>
                   <p className="font-black text-white text-sm">Scout</p>
                   <p className="text-[#c9a84c] text-[10px] font-mono">Gaming Companion · Active</p>
@@ -626,7 +556,7 @@ export default function GamingClient() {
                   </div>
                 ))}
               </div>
-            </div>
+            </Surface>
           </div>
         </div>
       </section>
@@ -634,19 +564,20 @@ export default function GamingClient() {
       {/* ═══════════════════════════════════════════════
           INTEGRATION BADGES
       ═══════════════════════════════════════════════ */}
-      <section className="py-16 px-6 border-t border-white/[0.05]">
+      <section className="py-16 px-6 border-t border-white/[0.05] animate-fade-in-up">
         <div className="max-w-4xl mx-auto text-center">
           <p className="text-xs font-black tracking-[0.25em] uppercase text-white/20 mb-8">Integrations</p>
           <div className="flex flex-wrap items-center justify-center gap-4">
             {INTEGRATIONS.map((badge) => (
-              <div
+              <Surface
                 key={badge.name}
-                className="flex items-center gap-2 px-5 py-2.5 rounded-full border border-white/[0.10] bg-white/[0.03] hover:border-[#c9a84c]/30 transition-colors"
+                variant="glass"
+                className="flex items-center gap-2 px-5 py-2.5 rounded-full hover:border-[#c9a84c]/30 transition-colors"
               >
                 <Shield className="w-3.5 h-3.5 text-green-400" />
                 <span className="text-sm font-black text-white/70">{badge.name}</span>
                 <span className="text-green-400 text-xs font-black">✓</span>
-              </div>
+              </Surface>
             ))}
           </div>
         </div>
@@ -655,7 +586,7 @@ export default function GamingClient() {
       {/* ═══════════════════════════════════════════════
           FAQ
       ═══════════════════════════════════════════════ */}
-      <section className="py-24 px-6 bg-[#0a0a14]">
+      <section className="py-24 px-6 bg-[#0a0a14] animate-fade-in-up">
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl sm:text-4xl font-black tracking-tight">
@@ -673,7 +604,7 @@ export default function GamingClient() {
       {/* ═══════════════════════════════════════════════
           CTA
       ═══════════════════════════════════════════════ */}
-      <section className="py-28 px-6 relative overflow-hidden">
+      <section className="py-28 px-6 relative overflow-hidden animate-fade-in-up">
         <div
           aria-hidden
           className="pointer-events-none absolute inset-0"
@@ -686,16 +617,9 @@ export default function GamingClient() {
           <h2 className="text-5xl sm:text-6xl font-black tracking-tight leading-tight mb-6">
             Play more.
             <br />
-            <span
-              style={{
-                background: "linear-gradient(135deg, #c9a84c 0%, #f0d080 60%)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                backgroundClip: "text",
-              }}
-            >
+            <GlowText variant="gold" as="span">
               Improve faster.
-            </span>
+            </GlowText>
           </h2>
           <p className="text-white/40 text-lg mb-10 max-w-xl mx-auto leading-relaxed">
             Scout is waiting. Your first session is free. No credit card required.

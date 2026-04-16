@@ -18,6 +18,7 @@ import {
   Brain,
   Clock,
 } from "lucide-react";
+import { Surface, IconOrb, FeatureCard, GlowText } from "@/components/design-system";
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -69,19 +70,16 @@ const jsonLd = {
 const GUARDIAN_PROMISE = [
   {
     icon: Heart,
-    color: "icon-gold",
     word: "Independence",
     desc: "Guardian never takes over. It supports — gently, in the background. Your parent remains in charge of their own life.",
   },
   {
     icon: Shield,
-    color: "icon-blue",
     word: "Dignity",
     desc: "No alarms, no alerts that make them feel fragile. Guardian treats your parent as the capable adult they are.",
   },
   {
     icon: Activity,
-    color: "icon-green",
     word: "Safety",
     desc: "And when something needs attention — a fall, a pattern change, a missed dose three days running — the right people know.",
   },
@@ -135,25 +133,21 @@ const MARGARET_DAY = [
 const WHAT_YOU_KNOW = [
   {
     icon: BarChart2,
-    color: "#c9a84c",
     title: "Weekly wellbeing summary",
     desc: "Every week, a gentle overview arrives by email: activity levels, medication adherence, social contact, any patterns worth noting. Readable in two minutes. Actionable if needed. Not overwhelming.",
   },
   {
     icon: Activity,
-    color: "#ef4444",
     title: "Pattern alerts",
     desc: "When something drifts from normal — not one missed dose, but a trend — you get a quiet notification. Not constant pings. Not anxiety-inducing alarms. A heads-up, at the right moment.",
   },
   {
     icon: Calendar,
-    color: "#60a5fa",
     title: "Appointment visibility",
     desc: "Upcoming GP visits, physio, specialist appointments. Guardian coordinates reminders for your parent and lets you know what's coming up — so you can arrange transport, or just be prepared.",
   },
   {
     icon: MessageCircle,
-    color: "#34d399",
     title: "Send a message through Guardian",
     desc: "Leave a message for your parent via the family dashboard. Guardian delivers it in the next check-in, warmly and in context. Staying connected without the pressure of perfect timing.",
   },
@@ -224,8 +218,7 @@ function FAQAccordion() {
         return (
           <div
             key={i}
-            className="rounded-2xl border overflow-hidden"
-            style={{ background: "rgba(255,255,255,0.03)", borderColor: "rgba(255,255,255,0.07)" }}
+            className="rounded-2xl border border-white/[0.07] bg-white/[0.03] overflow-hidden"
           >
             <button
               type="button"
@@ -260,83 +253,50 @@ function FAQAccordion() {
 
 export default function GuardianElderlyPage() {
   return (
-    <div
-      className="min-h-screen text-white overflow-x-hidden"
-      style={{ background: "#0d0c18", fontFamily: "'DM Sans', sans-serif" }}
-    >
+    <div className="min-h-screen overflow-x-hidden bg-[#0d0c18] text-white">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
       {/* ─── HERO ─────────────────────────────────────────── */}
-      <section
-        className="relative min-h-screen flex flex-col items-center justify-center px-6 pt-20 pb-28 overflow-hidden"
-        style={{ background: "#1a0a00" }}
-      >
-        <div className="absolute inset-0 pointer-events-none" aria-hidden>
-          <div
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] rounded-full blur-3xl opacity-20"
-            style={{ background: "radial-gradient(ellipse, #F59E0B 0%, transparent 65%)" }}
-          />
-          <div
-            className="absolute top-1/4 right-1/3 w-[300px] h-[300px] rounded-full blur-3xl opacity-10"
-            style={{ background: "#c9a84c" }}
-          />
+      <section className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-6 pt-20 pb-28">
+        <div className="pointer-events-none absolute inset-0" aria-hidden>
+          <div className="blob-gold absolute top-1/2 left-1/2 h-[500px] w-[800px] -translate-x-1/2 -translate-y-1/2 opacity-20" />
+          <div className="blob-gold absolute top-1/4 right-1/3 h-[300px] w-[300px] opacity-10" />
         </div>
 
-        <div className="relative max-w-4xl mx-auto text-center">
-          <div
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full border text-xs font-mono tracking-wider mb-10"
-            style={{
-              background: "rgba(245,158,11,0.10)",
-              borderColor: "rgba(245,158,11,0.30)",
-              color: "#F59E0B",
-            }}
-          >
+        <div className="relative mx-auto max-w-4xl text-center">
+          <div className="mb-10 inline-flex items-center gap-2 rounded-full border border-[#2d9b8a]/30 bg-[#2d9b8a]/10 px-4 py-2 text-xs font-mono tracking-wider text-[#2d9b8a]">
             Guardian · Elder Care · GDPR Compliant
           </div>
 
-          <h1
-            className="text-4xl sm:text-6xl lg:text-7xl font-black text-center leading-[1.05] tracking-tight max-w-4xl mb-6 text-white"
-            style={{ fontWeight: 900 }}
-          >
+          <h1 className="mb-6 max-w-4xl text-4xl font-black leading-[1.05] tracking-tight text-white sm:text-6xl lg:text-7xl">
             They raised you.<br />
             <span className="hidden sm:inline">Now you want to be there for them.</span>
             <span className="sm:hidden">Now you want to be there.</span>
             <br />
-            <span style={{ color: "#F59E0B" }}>Even when you can&apos;t be.</span>
+            <GlowText variant="teal" as="span">Even when you can&apos;t be.</GlowText>
           </h1>
 
-          <p
-            className="text-lg sm:text-xl text-center max-w-2xl mx-auto leading-relaxed mb-6"
-            style={{ color: "rgba(245,240,232,0.65)" }}
-          >
+          <p className="mx-auto mb-6 max-w-2xl text-center text-lg leading-relaxed text-white/65 sm:text-xl">
             You&apos;re not looking for a surveillance camera. You&apos;re looking for something that checks in on them, remembers what they need, notices when something&apos;s off — and lets you know, gently, when it matters.
           </p>
-          <p
-            className="text-base text-center max-w-xl mx-auto leading-relaxed mb-10"
-            style={{ color: "rgba(245,240,232,0.40)" }}
-          >
+          <p className="mx-auto mb-10 max-w-xl text-center text-base leading-relaxed text-white/40">
             That&apos;s Guardian. Not a monitor. A companion — for them, and peace of mind for you.
           </p>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-14">
+          <div className="mb-14 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Link
               href="/hatch"
-              className="group flex items-center gap-2 px-8 py-4 rounded-full font-bold transition-all text-base"
-              style={{
-                background: "#F59E0B",
-                color: "#1a0800",
-                boxShadow: "0 0 24px rgba(245,158,11,0.3), 0 0 48px rgba(245,158,11,0.12)",
-              }}
+              className="group flex items-center gap-2 rounded-full bg-[#c9a84c] px-8 py-4 text-base font-bold text-[#0d0c18] transition-opacity hover:opacity-90"
             >
               Set up Guardian for a parent
-              <span className="group-hover:translate-x-1 transition-transform" aria-hidden="true">→</span>
+              <span className="transition-transform group-hover:translate-x-1" aria-hidden="true">→</span>
             </Link>
             <Link
               href="/guardian"
-              className="text-white/35 hover:text-white/60 text-sm font-medium transition-colors"
+              className="text-sm font-medium text-white/35 transition-colors hover:text-white/60"
             >
               ← Back to Guardian
             </Link>
@@ -346,14 +306,9 @@ export default function GuardianElderlyPage() {
             {["Daily check-ins", "Medication reminders", "Emergency alerts", "Family dashboard", "GDPR compliant", "Consent-first"].map((badge) => (
               <div
                 key={badge}
-                className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium"
-                style={{
-                  background: "rgba(255,255,255,0.05)",
-                  border: "1px solid rgba(255,255,255,0.09)",
-                  color: "rgba(245,240,232,0.45)",
-                }}
+                className="flex items-center gap-1.5 rounded-full border border-white/[0.09] bg-white/5 px-3 py-1.5 text-xs font-medium text-white/45"
               >
-                <span style={{ color: "#F59E0B" }}>✓</span>
+                <span className="text-[#2d9b8a]">✓</span>
                 {badge}
               </div>
             ))}
@@ -362,41 +317,39 @@ export default function GuardianElderlyPage() {
       </section>
 
       {/* ─── THE GUARDIAN PROMISE ─────────────────────────── */}
-      <section className="py-24 px-6 bg-[#1a1a2e]">
-        <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-14">
-            <p className="text-xs font-mono tracking-widest uppercase mb-3" style={{ color: "rgba(245,158,11,0.5)" }}>
+      <section className="bg-[#13121f] px-6 py-24">
+        <div className="mx-auto max-w-5xl">
+          <div className="mb-14 text-center">
+            <p className="mb-3 text-xs font-mono uppercase tracking-widest text-[#2d9b8a]/70">
               The Guardian promise
             </p>
-            <h2 className="text-3xl sm:text-4xl font-black text-white leading-tight" style={{ fontWeight: 900 }}>
+            <h2 className="text-3xl font-black leading-tight text-white sm:text-4xl">
               In this order. Always.
             </h2>
-            <p className="text-white/50 mt-4 max-w-xl mx-auto text-sm leading-relaxed">
+            <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-white/50">
               We put dignity before safety because dignity is what makes a life worth living. Safety without dignity is just a cage.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
             {GUARDIAN_PROMISE.map((item, i) => {
               const Icon = item.icon;
               return (
-                <div
+                <Surface
                   key={item.word}
-                  className="rounded-2xl p-8 text-left relative border border-white/[0.07]"
-                  style={{ background: "rgba(255,255,255,0.03)" }}
+                  variant="elevated"
+                  glow="teal"
+                  className="relative p-8 text-left"
                 >
-                  <div
-                    className="absolute -top-3 left-8 px-3 py-1 rounded-full text-xs font-black"
-                    style={{ background: "#c9a84c", color: "#1a0800", border: "1px solid rgba(201,168,76,0.5)" }}
-                  >
+                  <div className="absolute -top-3 left-8 rounded-full border border-[#c9a84c]/50 bg-[#c9a84c] px-3 py-1 text-xs font-black text-[#0d0c18]">
                     0{i + 1}
                   </div>
-                  <div className={`w-11 h-11 rounded-xl flex items-center justify-center mb-5 mt-3 ${item.color}`}>
-                    <Icon size={20} />
+                  <div className="mb-5 mt-3">
+                    <IconOrb icon={Icon} variant="teal" size="lg" />
                   </div>
-                  <h3 className="text-2xl font-black text-white mb-3">{item.word}</h3>
-                  <p className="text-white/55 text-sm leading-relaxed">{item.desc}</p>
-                </div>
+                  <h3 className="mb-3 text-2xl font-black text-white">{item.word}</h3>
+                  <p className="text-sm leading-relaxed text-white/55">{item.desc}</p>
+                </Surface>
               );
             })}
           </div>
@@ -404,216 +357,204 @@ export default function GuardianElderlyPage() {
       </section>
 
       {/* ─── A DAY WITH MARGARET ──────────────────────────── */}
-      <section className="py-24 px-6 bg-[#0d0c18] border-y border-white/[0.05]">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-14">
-            <p className="text-xs font-mono tracking-widest uppercase mb-3" style={{ color: "rgba(245,158,11,0.7)" }}>
+      <section className="border-y border-white/[0.05] bg-[#0d0c18] px-6 py-24">
+        <div className="mx-auto max-w-4xl">
+          <div className="mb-14 text-center">
+            <p className="mb-3 text-xs font-mono uppercase tracking-widest text-[#2d9b8a]/70">
               A day in the life
             </p>
-            <h2 className="text-3xl sm:text-4xl font-black mb-4 text-white" style={{ fontWeight: 900 }}>
+            <h2 className="mb-4 text-3xl font-black text-white sm:text-4xl">
               A day with Margaret, 74.
             </h2>
-            <p className="text-base max-w-xl mx-auto leading-relaxed" style={{ color: "rgba(245,240,232,0.55)" }}>
+            <p className="mx-auto max-w-xl text-base leading-relaxed text-white/55">
               Margaret is sharp, opinionated, and proud of her independence. She&apos;s not a care patient. She&apos;s a person — who happens to live alone, take three medications, and have a son who worries about her.
             </p>
           </div>
 
           <div className="space-y-4">
             {MARGARET_DAY.map((item, i) => (
-              <div
+              <Surface
                 key={i}
-                className="flex gap-5 p-5 rounded-2xl"
-                style={{
-                  background: item.type === "alert" ? "rgba(245,158,11,0.08)" : "rgba(255,255,255,0.03)",
-                  border: item.type === "alert" ? "1.5px solid rgba(245,158,11,0.40)" : "1px solid rgba(255,255,255,0.07)",
-                }}
+                variant="elevated"
+                className={`p-5 ${
+                  item.type === "alert"
+                    ? "border-[#e07340]/40 bg-[#e07340]/[0.08]"
+                    : item.type === "reminder"
+                    ? "border-[#22c55e]/40 bg-[#22c55e]/[0.08]"
+                    : ""
+                }`}
               >
-                <div className="flex-shrink-0 text-center w-16">
-                  <div
-                    className="text-[10px] font-mono font-bold mt-1"
-                    style={{
-                      color: item.type === "alert" ? "#F59E0B" : "rgba(245,240,232,0.35)",
-                    }}
-                  >
-                    {item.time}
+                <div className="flex gap-5">
+                  <div className="w-16 flex-shrink-0 text-center">
+                    <div
+                      className={`mt-1 text-[10px] font-mono font-bold ${
+                        item.type === "alert" ? "text-[#e07340]" : "text-white/35"
+                      }`}
+                    >
+                      {item.time}
+                    </div>
                   </div>
-                </div>
-                <div className="flex-1 min-w-0">
-                  <div
-                    className="text-[10px] font-bold tracking-wider uppercase mb-1.5"
-                    style={{
-                      color:
+                  <div className="min-w-0 flex-1">
+                    <div
+                      className={`mb-1.5 text-[10px] font-bold uppercase tracking-wider ${
                         item.type === "alert"
-                          ? "#F59E0B"
+                          ? "text-[#e07340]"
                           : item.type === "reminder"
-                          ? "#22c55e"
-                          : "rgba(245,240,232,0.35)",
-                    }}
-                  >
-                    {item.label}
+                          ? "text-[#22c55e]"
+                          : "text-white/35"
+                      }`}
+                    >
+                      {item.label}
+                    </div>
+                    <p
+                      className={`text-sm leading-relaxed ${
+                        item.type === "alert" ? "text-[#fbbf24]" : "text-white/70"
+                      } ${item.type === "companion" ? "italic" : ""}`}
+                    >
+                      {item.type === "companion" ? `"${item.message}"` : item.message}
+                    </p>
                   </div>
-                  <p
-                    className="text-sm leading-relaxed"
-                    style={{
-                      color: item.type === "alert" ? "#fbbf24" : "rgba(245,240,232,0.70)",
-                      fontStyle: item.type === "companion" ? "italic" : "normal",
-                    }}
-                  >
-                    {item.type === "companion" ? `"${item.message}"` : item.message}
-                  </p>
                 </div>
-              </div>
+              </Surface>
             ))}
           </div>
-          <p className="text-xs text-center mt-5 font-mono" style={{ color: "rgba(245,240,232,0.25)" }}>
+          <p className="mt-5 text-center text-xs font-mono text-white/25">
             Illustrative example — not a real conversation record
           </p>
         </div>
       </section>
 
       {/* ─── WHAT GUARDIAN NEVER DOES ─────────────────────── */}
-      <section className="py-24 px-6 bg-[#1a1a2e]">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-14">
-            <p className="text-xs font-mono text-[#c9a84c]/70 tracking-widest uppercase mb-3">The honest list</p>
-            <h2 className="text-3xl sm:text-4xl font-black text-white leading-tight" style={{ fontWeight: 900 }}>
+      <section className="bg-[#13121f] px-6 py-24">
+        <div className="mx-auto max-w-4xl">
+          <div className="mb-14 text-center">
+            <p className="mb-3 text-xs font-mono uppercase tracking-widest text-[#c9a84c]/70">
+              The honest list
+            </p>
+            <h2 className="text-3xl font-black leading-tight text-white sm:text-4xl">
               What Guardian<br />
-              <span className="text-gradient-gold">will never do.</span>
+              <GlowText variant="teal" as="span">will never do.</GlowText>
             </h2>
-            <p className="text-white/50 mt-4 max-w-xl mx-auto text-sm leading-relaxed">
+            <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-white/50">
               These aren&apos;t small-print caveats. They&apos;re the promises that make the rest of it worth trusting.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
+          <div className="mb-10 grid grid-cols-1 gap-4 sm:grid-cols-2">
             {NEVER_DOES.map((item) => (
-              <div
+              <Surface
                 key={item}
-                className="flex gap-3 p-5 rounded-2xl items-start"
-                style={{ background: "rgba(239,68,68,0.04)", border: "1px solid rgba(239,68,68,0.15)" }}
+                variant="elevated"
+                className="flex items-start gap-3 bg-red-500/[0.04] p-5 border-red-500/15"
               >
-                <XCircle size={16} className="text-red-400 flex-shrink-0 mt-0.5" />
-                <p className="text-sm text-white/70 leading-relaxed">{item}</p>
-              </div>
+                <XCircle size={16} className="mt-0.5 flex-shrink-0 text-red-400" />
+                <p className="text-sm leading-relaxed text-white/70">{item}</p>
+              </Surface>
             ))}
           </div>
 
-          <div
-            className="p-5 rounded-2xl border text-sm text-white/60 leading-relaxed text-center"
-            style={{ background: "rgba(201,168,76,0.06)", borderColor: "rgba(201,168,76,0.2)" }}
+          <Surface
+            variant="glass"
+            className="p-5 text-center text-sm leading-relaxed text-white/60"
           >
-            <span className="text-[#c9a84c] font-bold">Your parent is in control. </span>
+            <span className="font-bold text-[#c9a84c]">Your parent is in control. </span>
             Guardian cannot be activated without their consent. They can ask it what it tracks, pause monitoring, or stop entirely — at any moment, without your permission.
-          </div>
+          </Surface>
         </div>
       </section>
 
-      {/* ─── WHAT YOU'LL KNOW ─────────────────────────────── */}
-      <section className="py-24 px-6 bg-[#1a1a2e]">
-        <div className="max-w-5xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+      {/* ─── WHAT YOU&apos;LL KNOW ─────────────────────────────── */}
+      <section className="bg-[#13121f] px-6 py-24">
+        <div className="mx-auto max-w-5xl">
+          <div className="grid grid-cols-1 items-start gap-12 md:grid-cols-2">
             <div>
-              <p className="text-xs font-mono tracking-widest uppercase mb-3" style={{ color: "rgba(245,158,11,0.50)" }}>
+              <p className="mb-3 text-xs font-mono uppercase tracking-widest text-[#2d9b8a]/70">
                 For the family
               </p>
-              <h2 className="text-3xl sm:text-4xl font-black mb-5 text-white" style={{ fontWeight: 900 }}>
+              <h2 className="mb-5 text-3xl font-black text-white sm:text-4xl">
                 What you&apos;ll know,<br />
-                <span style={{ color: "#F59E0B" }}>and how.</span>
+                <GlowText variant="teal" as="span">and how.</GlowText>
               </h2>
-              <p className="text-base leading-relaxed mb-6" style={{ color: "rgba(245,240,232,0.60)" }}>
+              <p className="mb-6 text-base leading-relaxed text-white/60">
                 You get a gentle picture of how your parent is doing — not a surveillance feed. The goal is to reduce your anxiety, not to give you more things to worry about.
               </p>
-              <p className="text-sm leading-relaxed mb-8" style={{ color: "rgba(245,240,232,0.50)" }}>
+              <p className="mb-8 text-sm leading-relaxed text-white/50">
                 Their conversations with Guardian are theirs. Private. Not shared with you. What you see is a summary — written for human eyes, not a data dashboard.
               </p>
               <Link
                 href="/hatch"
-                className="group inline-flex items-center gap-2 px-7 py-3.5 rounded-full font-bold text-sm transition-all"
-                style={{ background: "#F59E0B", color: "#1a0800" }}
+                className="group inline-flex items-center gap-2 rounded-full bg-[#c9a84c] px-7 py-3.5 text-sm font-bold text-[#0d0c18] transition-opacity hover:opacity-90"
               >
                 Set up family account
-                <span className="group-hover:translate-x-1 transition-transform" aria-hidden="true">→</span>
+                <span className="transition-transform group-hover:translate-x-1" aria-hidden="true">→</span>
               </Link>
             </div>
 
             <div className="space-y-4">
-              {WHAT_YOU_KNOW.map((item) => {
-                const Icon = item.icon;
-                return (
-                  <div
-                    key={item.title}
-                    className="flex gap-4 p-5 rounded-2xl border border-white/[0.07]"
-                    style={{ background: "rgba(255,255,255,0.03)" }}
-                  >
-                    <div
-                      className="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0"
-                      style={{ background: `${item.color}15`, border: `1px solid ${item.color}30` }}
-                    >
-                      <Icon size={18} color={item.color} />
-                    </div>
-                    <div>
-                      <h3 className="font-bold text-sm mb-1 text-white">{item.title}</h3>
-                      <p className="text-xs leading-relaxed" style={{ color: "rgba(245,240,232,0.50)" }}>{item.desc}</p>
-                    </div>
-                  </div>
-                );
-              })}
+              {WHAT_YOU_KNOW.map((item) => (
+                <FeatureCard
+                  key={item.title}
+                  title={item.title}
+                  description={item.desc}
+                  icon={item.icon}
+                  iconVariant="teal"
+                  glow="teal"
+                />
+              ))}
             </div>
           </div>
         </div>
       </section>
 
       {/* ─── HOW TO INTRODUCE MEOK ────────────────────────── */}
-      <section className="py-24 px-6 bg-[#0d0c18] border-t border-white/[0.05]">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-14">
-            <p className="text-xs font-mono tracking-widest uppercase mb-3" style={{ color: "rgba(245,158,11,0.50)" }}>
+      <section className="border-t border-white/[0.05] bg-[#0d0c18] px-6 py-24">
+        <div className="mx-auto max-w-4xl">
+          <div className="mb-14 text-center">
+            <p className="mb-3 text-xs font-mono uppercase tracking-widest text-[#2d9b8a]/70">
               Practical guidance
             </p>
-            <h2 className="text-3xl sm:text-4xl font-black mb-4 text-white" style={{ fontWeight: 900 }}>
+            <h2 className="mb-4 text-3xl font-black text-white sm:text-4xl">
               Talking to your parent about MEOK.
             </h2>
-            <p className="text-base max-w-xl mx-auto leading-relaxed" style={{ color: "rgba(245,240,232,0.55)" }}>
+            <p className="mx-auto max-w-xl text-base leading-relaxed text-white/55">
               The conversation can feel awkward. Here&apos;s how to have it in a way that doesn&apos;t make them feel managed.
             </p>
           </div>
 
           <div className="space-y-4">
             {HOW_TO_INTRODUCE.map((step) => (
-              <div
+              <Surface
                 key={step.step}
-                className="flex gap-5 p-6 rounded-2xl border border-white/[0.07]"
-                style={{ background: "rgba(255,255,255,0.03)" }}
+                variant="elevated"
+                glow="teal"
+                className="flex gap-5 p-6"
               >
-                <div
-                  className="w-10 h-10 rounded-xl flex items-center justify-center font-black text-sm flex-shrink-0"
-                  style={{ background: "rgba(245,158,11,0.12)", border: "1px solid rgba(245,158,11,0.25)", color: "#F59E0B" }}
-                >
+                <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl border border-[#2d9b8a]/25 bg-[#2d9b8a]/10 text-sm font-black text-[#2d9b8a]">
                   {step.step}
                 </div>
                 <div>
-                  <h3 className="font-bold text-white mb-2">{step.title}</h3>
-                  <p className="text-sm leading-relaxed" style={{ color: "rgba(245,240,232,0.55)" }}>{step.desc}</p>
+                  <h3 className="mb-2 font-bold text-white">{step.title}</h3>
+                  <p className="text-sm leading-relaxed text-white/55">{step.desc}</p>
                 </div>
-              </div>
+              </Surface>
             ))}
           </div>
         </div>
       </section>
 
       {/* ─── PRIVACY ──────────────────────────────────────── */}
-      <section className="py-24 px-6 bg-[#1a1a2e]">
-        <div className="max-w-3xl mx-auto text-center">
-          <div className="w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-6 icon-gold">
-            <Lock size={24} />
+      <section className="bg-[#13121f] px-6 py-24">
+        <div className="mx-auto max-w-3xl text-center">
+          <div className="mb-6 flex justify-center">
+            <IconOrb icon={Lock} variant="teal" size="lg" />
           </div>
-          <h2 className="text-3xl sm:text-4xl font-black mb-5 text-white" style={{ fontWeight: 900 }}>
-            Protected. <span style={{ color: "#c9a84c" }}>Not surveilled.</span>
+          <h2 className="mb-5 text-3xl font-black text-white sm:text-4xl">
+            Protected. <GlowText variant="teal" as="span">Not surveilled.</GlowText>
           </h2>
-          <p className="text-lg mb-10 leading-relaxed" style={{ color: "rgba(245,240,232,0.60)" }}>
+          <p className="mb-10 text-lg leading-relaxed text-white/60">
             Guardian is consent-first by architecture. Your parent activates it. They control it. They can stop it. No data is sold, shared with insurers, or used for advertising. Ever.
           </p>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 text-left">
+          <div className="grid grid-cols-1 gap-5 text-left sm:grid-cols-3">
             {[
               {
                 icon: Users,
@@ -630,55 +571,53 @@ export default function GuardianElderlyPage() {
                 title: "Full transparency",
                 desc: "Your parent can ask what Guardian tracks and receive a plain-English answer. Always. No hidden monitoring.",
               },
-            ].map((item) => {
-              const Icon = item.icon;
-              return (
-                <div
-                  key={item.title}
-                  className="p-6 rounded-2xl"
-                  style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(201,168,76,0.20)" }}
-                >
-                  <div className="icon-gold w-9 h-9 rounded-xl flex items-center justify-center mb-3">
-                    <Icon size={16} />
-                  </div>
-                  <h3 className="font-bold text-white mb-2 text-sm">{item.title}</h3>
-                  <p className="text-sm leading-relaxed" style={{ color: "rgba(245,240,232,0.50)" }}>{item.desc}</p>
+            ].map((item) => (
+              <Surface
+                key={item.title}
+                variant="elevated"
+                glow="teal"
+                className="p-6"
+              >
+                <div className="mb-3">
+                  <IconOrb icon={item.icon} variant="teal" size="md" />
                 </div>
-              );
-            })}
+                <h3 className="mb-2 text-sm font-bold text-white">{item.title}</h3>
+                <p className="text-sm leading-relaxed text-white/50">{item.desc}</p>
+              </Surface>
+            ))}
           </div>
         </div>
       </section>
 
       {/* ─── FAQ ─────────────────────────────────────────── */}
-      <section className="py-24 px-6 bg-[#1a1a2e]">
-        <div className="max-w-3xl mx-auto">
-          <div className="text-center mb-14">
-            <p className="text-xs font-mono tracking-widest uppercase mb-3" style={{ color: "rgba(245,158,11,0.50)" }}>
+      <section className="bg-[#13121f] px-6 py-24">
+        <div className="mx-auto max-w-3xl">
+          <div className="mb-14 text-center">
+            <p className="mb-3 text-xs font-mono uppercase tracking-widest text-[#2d9b8a]/70">
               Questions
             </p>
-            <h2 className="text-4xl sm:text-5xl font-black mb-3 text-white" style={{ fontWeight: 900 }}>
+            <h2 className="mb-3 text-4xl font-black text-white sm:text-5xl">
               What families ask.
             </h2>
-            <p className="text-white/45 text-sm">The questions we hear most — answered honestly.</p>
+            <p className="text-sm text-white/45">The questions we hear most — answered honestly.</p>
           </div>
           <FAQAccordion />
         </div>
       </section>
 
       {/* ─── CORE GUARDIAN FEATURES ──────────────────────── */}
-      <section className="py-24 px-6 bg-[#0d0c18] border-t border-white/[0.05]">
-        <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-14">
-            <p className="text-xs font-mono tracking-widest uppercase mb-3" style={{ color: "rgba(245,158,11,0.50)" }}>
+      <section className="border-t border-white/[0.05] bg-[#0d0c18] px-6 py-24">
+        <div className="mx-auto max-w-5xl">
+          <div className="mb-14 text-center">
+            <p className="mb-3 text-xs font-mono uppercase tracking-widest text-[#2d9b8a]/70">
               Intelligent care
             </p>
-            <h2 className="text-3xl sm:text-4xl font-black mb-4 text-white" style={{ fontWeight: 900 }}>
+            <h2 className="mb-4 text-3xl font-black text-white sm:text-4xl">
               Built around what matters most.
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
             {[
               {
                 icon: Brain,
@@ -700,99 +639,69 @@ export default function GuardianElderlyPage() {
                 title: "Daily Check-in Reminders",
                 desc: "Warm, personalised check-ins at times that suit your parent. Not clinical pings — genuine conversations that happen to surface how they are really doing.",
               },
-            ].map((feature) => {
-              const Icon = feature.icon;
-              return (
-                <div
-                  key={feature.title}
-                  className="flex gap-5 p-6 rounded-2xl border border-white/[0.07]"
-                  style={{ background: "rgba(255,255,255,0.03)" }}
-                >
-                  <div
-                    className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0"
-                    style={{ background: "rgba(245,158,11,0.10)", border: "1px solid rgba(245,158,11,0.25)" }}
-                  >
-                    <Icon size={20} color="#F59E0B" />
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-white mb-2">{feature.title}</h3>
-                    <p className="text-sm leading-relaxed" style={{ color: "rgba(245,240,232,0.55)" }}>{feature.desc}</p>
-                  </div>
-                </div>
-              );
-            })}
+            ].map((feature) => (
+              <FeatureCard
+                key={feature.title}
+                title={feature.title}
+                description={feature.desc}
+                icon={feature.icon}
+                iconVariant="teal"
+                glow="teal"
+              />
+            ))}
           </div>
         </div>
       </section>
 
       {/* ─── EMERGENCY CONTACTS ────────────────────────── */}
-      <section className="py-20 px-6 bg-[#1a1a2e]">
-        <div className="max-w-3xl mx-auto text-center">
-          <div
-            className="w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-6"
-            style={{ background: "rgba(245,158,11,0.12)", border: "1px solid rgba(245,158,11,0.3)" }}
-          >
-            <Users size={24} color="#F59E0B" />
+      <section className="bg-[#13121f] px-6 py-20">
+        <div className="mx-auto max-w-3xl text-center">
+          <div className="mb-6 flex justify-center">
+            <IconOrb icon={Users} variant="teal" size="lg" />
           </div>
-          <h2 className="text-3xl sm:text-4xl font-black mb-4 text-white" style={{ fontWeight: 900 }}>
+          <h2 className="mb-4 text-3xl font-black text-white sm:text-4xl">
             Set up trusted contacts who receive alerts
           </h2>
-          <p className="text-base leading-relaxed mb-6" style={{ color: "rgba(245,240,232,0.55)" }}>
+          <p className="mb-6 text-base leading-relaxed text-white/55">
             Choose family members, neighbours, or carers who should be notified when Guardian detects something that needs attention. Soft alerts go to your inner circle. Emergencies go to everyone on the list — instantly.
           </p>
-          <p className="text-sm leading-relaxed mb-8" style={{ color: "rgba(245,240,232,0.40)" }}>
+          <p className="mb-8 text-sm leading-relaxed text-white/40">
             Your parent approves each contact. No one is added without their knowledge. They can review and change the list at any time.
           </p>
           <Link
             href="/hatch"
-            className="group inline-flex items-center gap-2 px-8 py-4 rounded-full font-bold transition-all text-base"
-            style={{
-              background: "#F59E0B",
-              color: "#1a0800",
-              boxShadow: "0 0 24px rgba(245,158,11,0.3)",
-            }}
+            className="group inline-flex items-center gap-2 rounded-full bg-[#c9a84c] px-8 py-4 text-base font-bold text-[#0d0c18] transition-opacity hover:opacity-90"
           >
             Protect someone you love
-            <span className="group-hover:translate-x-1 transition-transform" aria-hidden="true">&rarr;</span>
+            <span className="transition-transform group-hover:translate-x-1" aria-hidden="true">&rarr;</span>
           </Link>
         </div>
       </section>
 
       {/* ─── CTA ─────────────────────────────────────────── */}
-      <section className="relative py-32 px-6 overflow-hidden bg-[#0d0c18]">
-        <div className="absolute inset-0 pointer-events-none" aria-hidden>
-          <div
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[250px] rounded-full blur-3xl opacity-10"
-            style={{ background: "#F59E0B" }}
-          />
+      <section className="relative overflow-hidden bg-[#0d0c18] px-6 py-32">
+        <div className="pointer-events-none absolute inset-0" aria-hidden>
+          <div className="blob-gold absolute top-1/2 left-1/2 h-[250px] w-[500px] -translate-x-1/2 -translate-y-1/2 opacity-10" />
         </div>
-        <div className="relative max-w-3xl mx-auto text-center">
-          <div
-            className="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6 float-slow"
-            style={{ background: "rgba(245,158,11,0.12)", border: "1px solid rgba(245,158,11,0.3)" }}
-          >
-            <Heart size={28} color="#F59E0B" strokeWidth={1.5} />
+        <div className="relative mx-auto max-w-3xl text-center">
+          <div className="mb-6 flex justify-center">
+            <IconOrb icon={Heart} variant="teal" size="lg" />
           </div>
-          <h2 className="text-4xl sm:text-5xl font-black leading-[1.05] mb-3 text-white" style={{ fontWeight: 900 }}>
+          <h2 className="mb-3 text-4xl font-black leading-[1.05] text-white sm:text-5xl">
             Be there for them.<br />
-            <span style={{ color: "#F59E0B" }}>Even when life gets in the way.</span>
+            <GlowText variant="teal" as="span">Even when life gets in the way.</GlowText>
           </h2>
-          <p className="text-lg font-medium mb-10" style={{ color: "rgba(245,240,232,0.55)" }}>
+          <p className="mb-10 text-lg font-medium text-white/55">
             Set up Guardian in 20 minutes. Your parent stays in charge of everything.
           </p>
           <Link
             href="/hatch"
-            className="group inline-flex items-center gap-3 px-10 py-4 rounded-full font-black transition-all text-base sm:text-lg"
-            style={{
-              background: "#F59E0B",
-              color: "#1a0800",
-              boxShadow: "0 0 24px rgba(245,158,11,0.3)",
-            }}
+            className="group inline-flex items-center gap-3 rounded-full bg-[#c9a84c] px-10 py-4 text-base font-black text-[#0d0c18] transition-opacity hover:opacity-90 sm:text-lg"
           >
             Set up Guardian today
-            <span className="group-hover:translate-x-1 transition-transform">→</span>
+            <span className="transition-transform group-hover:translate-x-1">→</span>
           </Link>
-          <p className="mt-6 text-xs font-mono" style={{ color: "rgba(245,240,232,0.30)" }}>
+          <p className="mt-6 text-xs font-mono text-white/30">
             GDPR compliant · Consent-first · No surveillance · No data selling
           </p>
         </div>

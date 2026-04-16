@@ -2,7 +2,8 @@
 
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
-import { Copy, CheckCheck, AlertTriangle, ShieldAlert, ShieldCheck, Shield } from 'lucide-react';
+import { Copy, CheckCheck, AlertTriangle, ShieldAlert, ShieldCheck, Shield, Scan, Eye, Lock, ArrowRight } from 'lucide-react';
+import { Surface, IconOrb, FeatureCard, GlowText } from "@/components/design-system";
 
 // ─── BRAND TOKENS ─────────────────────────────────────────────────────────────
 
@@ -31,6 +32,32 @@ interface ApiResult {
   gauge_score: number;   // 0-100
   source: 'api' | 'client';
 }
+
+// ─── FEATURES ─────────────────────────────────────────────────────────────────
+
+const FEATURES = [
+  {
+    icon: Scan,
+    title: "Instant Analysis",
+    description: "Paste any suspicious message and get an AI-powered threat assessment in seconds.",
+  },
+  {
+    icon: Eye,
+    title: "Pattern Recognition",
+    description: "Detects urgency language, financial pressure, suspicious links, and prize scams automatically.",
+  },
+  {
+    icon: Lock,
+    title: "No Signup Required",
+    description: "Try the live detector freely. Your pasted messages are not stored on our servers.",
+  },
+];
+
+const HOW_IT_WORKS = [
+  { step: "01", title: "Paste", desc: "Copy any SMS, email, or DM into the scanner." },
+  { step: "02", title: "Analyse", desc: "Our AI evaluates threat signals and assigns a risk score." },
+  { step: "03", title: "Act", desc: "Get clear guidance on whether to ignore, verify, or block." },
+];
 
 // ─── CLIENT-SIDE FALLBACK ANALYSIS ────────────────────────────────────────────
 
@@ -301,7 +328,6 @@ export default function ScamStopPage() {
       });
 
       if (!res.ok) {
-        // API rejected the request — fall back to client analysis
         throw new Error(`HTTP ${res.status}`);
       }
 
@@ -309,7 +335,6 @@ export default function ScamStopPage() {
       const derived = deriveFromApiResponse(raw);
       setResult(derived);
     } catch {
-      // Auth failure or network error — use client-side fallback
       const fallback = analyseScamFallback(message);
       setResult(fallback);
     } finally {
@@ -330,20 +355,13 @@ export default function ScamStopPage() {
       {/* ═══════════════════════════════════════════════════════════════════════
           SECTION 1 — HERO
       ═══════════════════════════════════════════════════════════════════════ */}
-      <section style={{
-        position: 'relative', minHeight: '65vh',
+      <section className="animate-fade-in-up" style={{
+        position: 'relative', minHeight: '55vh',
         display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
         padding: '7rem 1.5rem 4rem', textAlign: 'center',
       }}>
-        {/* Guardian breadcrumb badge */}
-        <div style={{
-          display: 'inline-flex', alignItems: 'center', gap: 8,
-          padding: '6px 16px', borderRadius: 9999,
-          background: `${GOLD}18`, border: `1px solid ${GOLD}50`,
-          color: GOLD, fontSize: 11, fontWeight: 700,
-          letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: 32,
-        }}>
-          <Shield size={12} /> Guardian · Scam Stop
+        <div className="mb-6 flex justify-center">
+          <IconOrb icon={ShieldAlert} variant="teal" size="lg" pulse />
         </div>
 
         <h1 style={{
@@ -362,13 +380,20 @@ export default function ScamStopPage() {
           {' '}Ours stops them.
         </p>
 
-        <div style={{
-          display: 'inline-flex', alignItems: 'center', gap: 8,
-          padding: '10px 20px', borderRadius: 9999,
-          background: 'rgba(74,222,128,0.08)', border: '1px solid rgba(74,222,128,0.3)',
-          color: '#4ade80', fontSize: 13, fontWeight: 600,
-        }}>
-          ✦ Try the live detector below — no signup needed
+        <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+          <Link
+            href="/hatch"
+            className="rounded-xl px-8 py-4 text-base font-semibold transition-opacity hover:opacity-90"
+            style={{ backgroundColor: GOLD, color: DEEP }}
+          >
+            Get full Guardian protection
+          </Link>
+          <a
+            href="#detector"
+            className="rounded-xl border border-white/20 px-8 py-4 text-base font-semibold text-white/80 transition-colors hover:border-white/40 hover:text-white"
+          >
+            Try the detector
+          </a>
         </div>
 
         <p style={{ fontSize: 11, color: 'rgba(255,255,255,0.18)', fontFamily: 'monospace', marginTop: 24 }}>
@@ -376,12 +401,28 @@ export default function ScamStopPage() {
         </p>
       </section>
 
+      {/* ── FEATURES ────────────────────────────────────────────────────────── */}
+      <section className="animate-fade-in-up mx-auto max-w-5xl px-6 pb-16">
+        <div className="grid gap-5 md:grid-cols-3">
+          {FEATURES.map((f) => (
+            <FeatureCard
+              key={f.title}
+              title={f.title}
+              description={f.description}
+              icon={f.icon}
+              iconVariant="teal"
+              glow="teal"
+            />
+          ))}
+        </div>
+      </section>
+
       <div style={{ height: 1, background: BORDER, margin: '0 auto', maxWidth: 900 }} />
 
       {/* ═══════════════════════════════════════════════════════════════════════
           SECTION 2 — INTERACTIVE SCAM DETECTOR
       ═══════════════════════════════════════════════════════════════════════ */}
-      <section style={{ padding: '5rem 1.5rem', background: DEEP }}>
+      <section id="detector" className="animate-fade-in-up" style={{ padding: '5rem 1.5rem', background: DEEP }}>
         <div style={{ maxWidth: 800, margin: '0 auto' }}>
           <div style={{ textAlign: 'center', marginBottom: 40 }}>
             <p style={{ fontSize: 11, fontFamily: 'monospace', letterSpacing: '0.12em', textTransform: 'uppercase', color: `${GOLD}99`, marginBottom: 10 }}>
@@ -547,7 +588,7 @@ export default function ScamStopPage() {
       {/* ═══════════════════════════════════════════════════════════════════════
           SECTION 3 — EXAMPLE SCAM CARDS
       ═══════════════════════════════════════════════════════════════════════ */}
-      <section style={{ padding: '5rem 1.5rem', background: DEEP }}>
+      <section className="animate-fade-in-up" style={{ padding: '5rem 1.5rem', background: DEEP }}>
         <div style={{ maxWidth: 1000, margin: '0 auto' }}>
           <div style={{ textAlign: 'center', marginBottom: 48 }}>
             <p style={{ fontSize: 11, fontFamily: 'monospace', letterSpacing: '0.12em', textTransform: 'uppercase', color: `${GOLD}99`, marginBottom: 10 }}>
@@ -613,7 +654,7 @@ export default function ScamStopPage() {
       {/* ═══════════════════════════════════════════════════════════════════════
           SECTION 4 — STATS
       ═══════════════════════════════════════════════════════════════════════ */}
-      <section style={{ padding: '5rem 1.5rem', background: DEEP }}>
+      <section className="animate-fade-in-up" style={{ padding: '5rem 1.5rem', background: DEEP }}>
         <div style={{ maxWidth: 900, margin: '0 auto' }}>
           <div style={{ textAlign: 'center', marginBottom: 48 }}>
             <p style={{ fontSize: 11, fontFamily: 'monospace', letterSpacing: '0.12em', textTransform: 'uppercase', color: `${GOLD}99`, marginBottom: 10 }}>
@@ -664,10 +705,31 @@ export default function ScamStopPage() {
 
       <div style={{ height: 1, background: BORDER, margin: '0 auto', maxWidth: 900 }} />
 
+      {/* ── HOW IT WORKS ────────────────────────────────────────────────────── */}
+      <section className="animate-fade-in-up mx-auto max-w-5xl px-6 py-20">
+        <h2 className="mb-4 text-center text-3xl font-bold md:text-4xl">
+          How it works
+        </h2>
+        <p className="mx-auto mb-12 max-w-xl text-center text-white/50">
+          Three simple steps to safer messages.
+        </p>
+        <div className="grid gap-6 sm:grid-cols-3">
+          {HOW_IT_WORKS.map((s) => (
+            <Surface key={s.step} variant="glass" className="p-6 text-center">
+              <div className="mb-3 text-3xl font-bold tabular-nums" style={{ color: GOLD }}>
+                {s.step}
+              </div>
+              <h3 className="mb-2 text-lg font-semibold">{s.title}</h3>
+              <p className="text-sm leading-relaxed text-white/50">{s.desc}</p>
+            </Surface>
+          ))}
+        </div>
+      </section>
+
       {/* ═══════════════════════════════════════════════════════════════════════
           CTA
       ═══════════════════════════════════════════════════════════════════════ */}
-      <section style={{ padding: '6rem 1.5rem', background: DEEP, textAlign: 'center' }}>
+      <section className="animate-fade-in-up" style={{ padding: '6rem 1.5rem', background: DEEP, textAlign: 'center' }}>
         <div style={{ fontSize: 40, marginBottom: 20 }}>🛡️</div>
 
         <h2 style={{ fontSize: 'clamp(1.8rem, 5vw, 3rem)', fontWeight: 900, lineHeight: 1.05, maxWidth: 600, margin: '0 auto 16px' }}>

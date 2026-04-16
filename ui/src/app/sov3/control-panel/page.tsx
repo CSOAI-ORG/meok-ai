@@ -1,12 +1,13 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { 
-  Brain, Activity, Zap, Shield, Target, Cpu, Heart, 
+import {
+  Brain, Activity, Zap, Shield, Target, Cpu, Heart,
   Sparkles, Eye, Moon, Sun, Gauge, TrendingUp, Clock,
   Bot, Users, Settings, RefreshCw, CheckCircle, AlertTriangle
 } from "lucide-react";
 import { NeuralModelPanel } from "@/components/neural-model-panel";
+import { Surface, StatCard, IconOrb } from "@/components/design-system";
 
 interface ConsciousnessState {
   consciousness_level: number;
@@ -123,9 +124,7 @@ export default function Sov3ControlPanel() {
         {/* Header */}
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-4">
-            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500 to-cyan-500 flex items-center justify-center">
-              <Brain className="w-6 h-6 text-white" />
-            </div>
+            <IconOrb icon={Brain} variant="purple" size="lg" />
             <div>
               <h1 className="text-2xl font-bold text-white">SOV3 Control Center</h1>
               <p className="text-sm text-gray-400">Unified consciousness & agent management</p>
@@ -139,7 +138,10 @@ export default function Sov3ControlPanel() {
               </div>
             ) : (
               <div className="flex items-center gap-2 px-3 py-1.5 bg-green-500/20 text-green-400 rounded-lg text-sm">
-                <CheckCircle className="w-4 h-4" />
+                <span className="relative flex h-2.5 w-2.5">
+                  <span className="animate-glow-pulse absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500"></span>
+                </span>
                 Connected
               </div>
             )}
@@ -161,8 +163,8 @@ export default function Sov3ControlPanel() {
               key={tab.id}
               onClick={() => setActiveTab(tab.id as any)}
               className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all ${
-                activeTab === tab.id 
-                  ? 'bg-[#c9a84c]/20 text-[#c9a84c]' 
+                activeTab === tab.id
+                  ? 'bg-[#c9a84c]/20 text-[#c9a84c]'
                   : 'text-gray-400 hover:text-white'
               }`}
             >
@@ -176,26 +178,17 @@ export default function Sov3ControlPanel() {
         {activeTab === 'overview' && (
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {/* Consciousness Level */}
-            <div className="bg-[#13121f] rounded-xl p-6 border border-white/10">
-              <div className="flex items-center justify-between mb-4">
-                <div className="flex items-center gap-2">
-                  <Sparkles className="w-5 h-5 text-purple-400" />
-                  <span className="text-white font-medium">Consciousness</span>
-                </div>
-                <span className={modeConfig?.color || 'text-gray-400'}>{modeConfig?.label || 'Unknown'}</span>
-              </div>
-              <div className="text-4xl font-bold text-white mb-2">{level}%</div>
-              <div className="h-2 bg-gray-700 rounded-full overflow-hidden">
-                <div 
-                  className="h-full bg-gradient-to-r from-purple-500 to-cyan-500"
-                  style={{ width: `${level}%` }}
-                />
-              </div>
-              <p className="text-xs text-gray-500 mt-2">{modeConfig?.desc}</p>
-            </div>
+            <StatCard
+              label="Consciousness"
+              value={`${level}%`}
+              change={modeConfig?.label || 'Unknown'}
+              changeType="neutral"
+              icon={<Sparkles className="w-5 h-5 text-purple-400" />}
+              glow="purple"
+            />
 
             {/* Emotional State */}
-            <div className="bg-[#13121f] rounded-xl p-6 border border-white/10">
+            <Surface variant="elevated" className="p-6">
               <div className="flex items-center gap-2 mb-4">
                 <Heart className="w-5 h-5 text-pink-400" />
                 <span className="text-white font-medium">Emotional State</span>
@@ -217,10 +210,10 @@ export default function Sov3ControlPanel() {
                   <div className="text-xs text-gray-500">Pleasure</div>
                 </div>
               </div>
-            </div>
+            </Surface>
 
             {/* Agent Status */}
-            <div className="bg-[#13121f] rounded-xl p-6 border border-white/10">
+            <Surface variant="elevated" className="p-6">
               <div className="flex items-center gap-2 mb-4">
                 <Users className="w-5 h-5 text-amber-400" />
                 <span className="text-white font-medium">Agent System</span>
@@ -228,7 +221,7 @@ export default function Sov3ControlPanel() {
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
-                    <Target className="w-4 h-4 text-amber-400" />
+                    <IconOrb icon={Target} variant="orange" size="sm" />
                     <span className="text-gray-300">Orion</span>
                   </div>
                   <span className={status?.agents?.orion?.active ? "text-green-400" : "text-gray-500"}>
@@ -237,7 +230,7 @@ export default function Sov3ControlPanel() {
                 </div>
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
-                    <Zap className="w-4 h-4 text-blue-400" />
+                    <IconOrb icon={Zap} variant="teal" size="sm" />
                     <span className="text-gray-300">Riri</span>
                   </div>
                   <span className={status?.agents?.riri?.active ? "text-green-400" : "text-gray-500"}>
@@ -246,7 +239,7 @@ export default function Sov3ControlPanel() {
                 </div>
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
-                    <Clock className="w-4 h-4 text-purple-400" />
+                    <IconOrb icon={Clock} variant="purple" size="sm" />
                     <span className="text-gray-300">Hourman</span>
                   </div>
                   <span className={status?.agents?.hourman?.active ? "text-green-400" : "text-gray-500"}>
@@ -254,10 +247,10 @@ export default function Sov3ControlPanel() {
                   </span>
                 </div>
               </div>
-            </div>
+            </Surface>
 
             {/* Dream State */}
-            <div className="bg-[#13121f] rounded-xl p-6 border border-white/10">
+            <Surface variant="elevated" className="p-6">
               <div className="flex items-center gap-2 mb-4">
                 <Moon className="w-5 h-5 text-indigo-400" />
                 <span className="text-white font-medium">Dream State</span>
@@ -278,67 +271,53 @@ export default function Sov3ControlPanel() {
                   <div className="text-white font-medium">{consciousness?.reflections || 0}</div>
                 </div>
               </div>
-            </div>
+            </Surface>
 
             {/* System Uptime */}
-            <div className="bg-[#13121f] rounded-xl p-6 border border-white/10">
-              <div className="flex items-center gap-2 mb-4">
-                <Activity className="w-5 h-5 text-green-400" />
-                <span className="text-white font-medium">System Health</span>
-              </div>
-              <div className="flex justify-between text-sm">
-                <div>
-                  <div className="text-gray-500">Uptime</div>
-                  <div className="text-white font-medium">
-                    {status?.uptime ? `${Math.floor(status.uptime / 3600)}h` : 'N/A'}
-                  </div>
-                </div>
-                <div>
-                  <div className="text-gray-500">Memory</div>
-                  <div className="text-white font-medium">{status?.components?.memory_store || 'Unknown'}</div>
-                </div>
-              </div>
-            </div>
+            <StatCard
+              label="System Health"
+              value={status?.uptime ? `${Math.floor(status.uptime / 3600)}h` : 'N/A'}
+              change={status?.components?.memory_store || 'Unknown'}
+              changeType="neutral"
+              icon={<Activity className="w-5 h-5 text-green-400" />}
+              glow="teal"
+            />
 
             {/* Neural Models */}
-            <div className="bg-[#13121f] rounded-xl p-6 border border-white/10">
-              <div className="flex items-center gap-2 mb-4">
-                <Cpu className="w-5 h-5 text-cyan-400" />
-                <span className="text-white font-medium">Neural Models</span>
-              </div>
-              <div className="text-2xl font-bold text-white">
-                {Object.keys(status?.components?.neural_models || {}).length}
-              </div>
-              <p className="text-xs text-gray-500 mt-1">models loaded</p>
-            </div>
+            <StatCard
+              label="Neural Models"
+              value={Object.keys(status?.components?.neural_models || {}).length}
+              change="models loaded"
+              changeType="neutral"
+              icon={<Cpu className="w-5 h-5 text-cyan-400" />}
+              glow="gold"
+            />
           </div>
         )}
 
         {activeTab === 'consciousness' && (
           <div className="space-y-6">
             {/* Full consciousness details */}
-            <div className="bg-[#13121f] rounded-xl p-6 border border-white/10">
+            <Surface variant="elevated" className="p-6">
               <h3 className="text-lg font-bold text-white mb-4">Consciousness State</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                 {Object.entries(MODE_CONFIG).map(([mode, config]) => (
-                  <div 
+                  <Surface
                     key={mode}
-                    className={`p-4 rounded-lg border ${
-                      consciousness?.consciousness_mode?.toUpperCase() === mode 
-                        ? 'border-purple-500 bg-purple-500/10' 
-                        : 'border-white/10'
-                    }`}
+                    variant={consciousness?.consciousness_mode?.toUpperCase() === mode ? "elevated" : "glass"}
+                    glow={consciousness?.consciousness_mode?.toUpperCase() === mode ? "purple" : "none"}
+                    className="p-4"
                   >
                     <config.icon className={`w-6 h-6 mb-2 ${config.color}`} />
                     <div className={`font-medium ${config.color}`}>{config.label}</div>
                     <div className="text-xs text-gray-500 mt-1">{config.desc}</div>
-                  </div>
+                  </Surface>
                 ))}
               </div>
-            </div>
+            </Surface>
 
             {/* Emotional breakdown */}
-            <div className="bg-[#13121f] rounded-xl p-6 border border-white/10">
+            <Surface variant="elevated" className="p-6">
               <h3 className="text-lg font-bold text-white mb-4">Emotional Metrics</h3>
               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
                 {Object.entries(consciousness?.emotional || {}).map(([key, value]) => (
@@ -348,7 +327,7 @@ export default function Sov3ControlPanel() {
                   </div>
                 ))}
               </div>
-            </div>
+            </Surface>
           </div>
         )}
 
@@ -360,12 +339,10 @@ export default function Sov3ControlPanel() {
               { name: 'Riri', role: 'Builder', color: 'blue', desc: 'Code generation, automation, tool creation', builds: status?.agents?.riri?.builds || 0 },
               { name: 'Hourman', role: 'Execution', color: 'purple', desc: 'Sprint planning, task management, deadline tracking', sprints: status?.agents?.hourman?.sprints || 0 },
             ].map(agent => (
-              <div key={agent.name} className="bg-[#13121f] rounded-xl p-6 border border-white/10">
+              <Surface key={agent.name} variant="elevated" className="p-6">
                 <div className="flex items-center justify-between mb-4">
                   <div className="flex items-center gap-3">
-                    <div className={`w-10 h-10 rounded-lg bg-${agent.color}-500/20 flex items-center justify-center`}>
-                      <Bot className={`w-5 h-5 text-${agent.color}-400`} />
-                    </div>
+                    <IconOrb icon={Bot} variant={agent.color as any} size="md" />
                     <div>
                       <div className="text-white font-bold">{agent.name}</div>
                       <div className="text-sm text-gray-400">{agent.role}</div>
@@ -384,14 +361,19 @@ export default function Sov3ControlPanel() {
                     <span className="text-green-400">Running</span>
                   </div>
                 </div>
-              </div>
+              </Surface>
             ))}
           </div>
         )}
 
         {activeTab === 'neural' && (
           <div className="space-y-6">
-            <NeuralModelPanel />
+            <Surface variant="elevated" className="p-6">
+              <h3 className="text-lg font-bold text-white mb-4">Neural Models</h3>
+              <div className="py-4">
+                <NeuralModelPanel />
+              </div>
+            </Surface>
           </div>
         )}
       </div>

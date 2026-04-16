@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import { useState } from "react";
+import { Surface, GlowText } from "@/components/design-system";
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -270,7 +271,7 @@ function BuildStrategy() {
                 onClick={() => setGame(g)}
                 className={`px-4 py-2 rounded-full text-xs font-bold transition-all border ${
                   game === g
-                    ? "bg-emerald-500/15 border-emerald-500/40 text-emerald-400"
+                    ? "bg-orange-500/15 border-orange-500/40 text-orange-400"
                     : "bg-white/[0.03] border-white/[0.08] text-white/40 hover:text-white/60 hover:border-white/15"
                 }`}
               >
@@ -289,7 +290,7 @@ function BuildStrategy() {
             placeholder={`e.g. 'I main Jett but keep losing to double-controller comps on Bind. My team plays default and I entry A short.'`}
             disabled={loading}
             rows={3}
-            className="w-full px-5 py-4 rounded-2xl border border-white/[0.1] bg-white/[0.03] text-white text-sm placeholder:text-white/25 focus:outline-none focus:border-emerald-400/40 transition-colors disabled:opacity-50 resize-none"
+            className="w-full px-5 py-4 rounded-2xl border border-white/[0.1] bg-white/[0.03] text-white text-sm placeholder:text-white/25 focus:outline-none focus:border-orange-400/40 transition-colors disabled:opacity-50 resize-none"
           />
         </div>
         <button
@@ -318,11 +319,11 @@ function BuildStrategy() {
 
       {result && (
         <div
-          className="rounded-2xl border border-emerald-500/20 overflow-hidden"
-          style={{ background: "rgba(52,211,153,0.04)" }}
+          className="rounded-2xl border border-orange-500/20 overflow-hidden"
+          style={{ background: "rgba(224,115,64,0.04)" }}
         >
-          <div className="flex items-center gap-2 px-5 py-3 border-b border-emerald-500/15 bg-black/20">
-            <span className="text-emerald-400 text-xs font-black tracking-wider uppercase">PIXEL</span>
+          <div className="flex items-center gap-2 px-5 py-3 border-b border-orange-500/15 bg-black/20">
+            <span className="text-orange-400 text-xs font-black tracking-wider uppercase">PIXEL</span>
             <span className="text-[10px] text-white/20 italic">Strategy for {game}</span>
           </div>
           <div className="px-5 py-5">
@@ -341,11 +342,7 @@ function FAQAccordion({ faqs }: { faqs: typeof FAQS }) {
   return (
     <div className="space-y-3">
       {faqs.map((faq, i) => (
-        <div
-          key={i}
-          className="rounded-2xl border border-white/[0.07] overflow-hidden"
-          style={{ background: "rgba(255,255,255,0.03)" }}
-        >
+        <Surface key={i} variant="glass" className="overflow-hidden">
           <button
             className="w-full flex items-center justify-between gap-4 px-6 py-5 text-left hover:bg-white/[0.03] transition-colors"
             onClick={() => setOpen(open === i ? null : i)}
@@ -364,7 +361,7 @@ function FAQAccordion({ faqs }: { faqs: typeof FAQS }) {
               <p className="text-white/50 text-sm leading-relaxed">{faq.a}</p>
             </div>
           )}
-        </div>
+        </Surface>
       ))}
     </div>
   );
@@ -387,7 +384,7 @@ export default function StrategyPage() {
           className="pointer-events-none absolute inset-0 opacity-[0.04]"
           style={{
             backgroundImage:
-              "linear-gradient(rgba(52,211,153,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(52,211,153,0.5) 1px, transparent 1px)",
+              "linear-gradient(rgba(224,115,64,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(224,115,64,0.5) 1px, transparent 1px)",
             backgroundSize: "60px 60px",
           }}
         />
@@ -396,7 +393,7 @@ export default function StrategyPage() {
           className="pointer-events-none absolute inset-0"
           style={{
             background:
-              "radial-gradient(ellipse 70% 55% at 50% 40%, rgba(52,211,153,0.07) 0%, rgba(201,168,76,0.05) 60%, transparent 80%)",
+              "radial-gradient(ellipse 70% 55% at 50% 40%, rgba(224,115,64,0.07) 0%, rgba(201,168,76,0.05) 60%, transparent 80%)",
           }}
         />
         <div
@@ -406,19 +403,16 @@ export default function StrategyPage() {
         />
 
         <div className="relative max-w-4xl mx-auto text-center">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/25 text-emerald-400 text-xs font-black tracking-[0.25em] uppercase mb-8">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-orange-500/10 border border-orange-500/25 text-orange-400 text-xs font-black tracking-[0.25em] uppercase mb-8">
+            <span className="w-1.5 h-1.5 rounded-full bg-orange-400 animate-pulse" />
             MEOK GAMING OS — STRATEGY BUILDER
           </div>
 
           <h1 className="text-5xl sm:text-7xl lg:text-8xl font-black leading-[0.9] tracking-tight mb-6 text-white">
             Not a tier list.{" "}
-            <span
-              className="text-emerald-400"
-              style={{ textShadow: "0 0 50px rgba(52,211,153,0.4)" }}
-            >
+            <GlowText variant="orange" as="span">
               Your strategy.
-            </span>
+            </GlowText>
           </h1>
 
           <p className="text-xl sm:text-2xl text-white/55 max-w-2xl mx-auto leading-relaxed mb-4">
@@ -460,7 +454,7 @@ export default function StrategyPage() {
             </span>
             <h2 className="text-4xl font-black text-white">
               What a strategy session{" "}
-              <span className="text-emerald-400">looks like.</span>
+              <GlowText variant="orange" as="span">looks like.</GlowText>
             </h2>
             <p className="text-white/35 mt-4 text-sm max-w-lg mx-auto">
               You&apos;re about to queue ranked. You ask MEOK what to play.
@@ -470,20 +464,21 @@ export default function StrategyPage() {
           {/* User prompt */}
           <div className="mb-6 flex justify-end">
             <div
-              className="max-w-md px-6 py-4 rounded-3xl rounded-tr-lg border border-emerald-500/25"
-              style={{ background: "rgba(52,211,153,0.08)" }}
+              className="max-w-md px-6 py-4 rounded-3xl rounded-tr-lg border border-orange-500/25"
+              style={{ background: "rgba(224,115,64,0.08)" }}
             >
               <p className="text-white/85 text-sm font-medium" dangerouslySetInnerHTML={{ __html: STRATEGY_SESSION.prompt }} />
             </div>
           </div>
 
           {/* MEOK processing steps */}
-          <div
-            className="rounded-3xl border border-white/[0.07] overflow-hidden mb-6"
-            style={{ background: "rgba(255,255,255,0.03)" }}
+          <Surface
+            variant="elevated"
+            glow="orange"
+            className="overflow-hidden mb-6"
           >
             <div className="px-6 py-4 border-b border-white/[0.07] bg-black/20 flex items-center gap-3">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+              <span className="w-2 h-2 rounded-full bg-orange-400 animate-pulse" />
               <span className="text-xs font-black tracking-[0.15em] uppercase text-white/40">
                 MEOK processing
               </span>
@@ -501,24 +496,25 @@ export default function StrategyPage() {
                     <div className="font-bold text-white text-sm mb-1">{step.label}</div>
                     <div className="text-xs text-white/35 leading-relaxed">{step.detail}</div>
                   </div>
-                  <div
-                    className="p-3 rounded-2xl border text-xs text-white/60 leading-relaxed"
+                  <Surface
+                    variant="glass"
+                    className="p-3 text-xs text-white/60 leading-relaxed"
                     style={{
-                      background: `${step.color}08`,
                       borderColor: `${step.color}20`,
                     }}
                   >
                     {step.result}
-                  </div>
+                  </Surface>
                 </div>
               ))}
             </div>
-          </div>
+          </Surface>
 
           {/* Recommendation */}
-          <div
-            className="rounded-3xl border border-[#c9a84c]/20 overflow-hidden"
-            style={{ background: "rgba(201,168,76,0.04)" }}
+          <Surface
+            variant="elevated"
+            glow="orange"
+            className="overflow-hidden"
           >
             <div className="px-6 py-4 border-b border-[#c9a84c]/15 bg-black/10">
               <span className="text-xs font-black tracking-[0.15em] uppercase text-[#c9a84c]">
@@ -555,7 +551,7 @@ export default function StrategyPage() {
                 </div>
               ))}
             </div>
-          </div>
+          </Surface>
 
           <p className="text-center text-xs text-white/20 font-mono mt-4">
             Illustrative example — your actual data and recommendations will differ
@@ -582,10 +578,7 @@ export default function StrategyPage() {
             </p>
           </div>
 
-          <div
-            className="rounded-3xl border border-purple-500/20 overflow-hidden"
-            style={{ background: "rgba(167,139,250,0.05)" }}
-          >
+          <Surface variant="elevated" glow="orange" className="overflow-hidden">
             <div className="px-7 py-5 border-b border-purple-500/15 bg-black/10">
               <span className="text-xs font-black tracking-[0.15em] uppercase text-[#a78bfa]">
                 Draft moment
@@ -610,14 +603,14 @@ export default function StrategyPage() {
                   dangerouslySetInnerHTML={{ __html: `&ldquo;${COUNTER_PICK_EXAMPLE.meokSays}&rdquo;` }}
                 />
                 <div className="mt-4 flex items-center gap-3 flex-wrap">
-                  <span className="px-3 py-1.5 rounded-full text-xs font-black bg-emerald-500/15 border border-emerald-500/30 text-emerald-400">
+                  <span className="px-3 py-1.5 rounded-full text-xs font-black bg-orange-500/15 border border-orange-500/30 text-orange-400">
                     Suggested: {COUNTER_PICK_EXAMPLE.action}
                   </span>
                   <span className="text-xs text-white/30">{COUNTER_PICK_EXAMPLE.stat}</span>
                 </div>
               </div>
             </div>
-          </div>
+          </Surface>
         </div>
       </section>
 
@@ -662,14 +655,11 @@ export default function StrategyPage() {
                 desc: "Hard data from your match history. Which champions you overperform or underperform relative to their expected win rate.",
               },
             ].map((layer, i) => (
-              <div
+              <Surface
                 key={layer.label}
-                className="relative p-7 rounded-3xl border text-center"
-                style={{
-                  background: "rgba(255,255,255,0.03)",
-                  backdropFilter: "blur(12px)",
-                  borderColor: `${layer.color}25`,
-                }}
+                variant="elevated"
+                glow="orange"
+                className="relative p-7 text-center"
               >
                 {i === 1 && (
                   <div
@@ -687,7 +677,7 @@ export default function StrategyPage() {
                   className="text-sm text-white/45 leading-relaxed"
                   dangerouslySetInnerHTML={{ __html: layer.desc }}
                 />
-              </div>
+              </Surface>
             ))}
           </div>
         </div>
@@ -710,14 +700,11 @@ export default function StrategyPage() {
 
           <div className="space-y-6">
             {STRATEGY_PHASES.map((section, i) => (
-              <div
+              <Surface
                 key={section.title}
-                className="group grid grid-cols-1 md:grid-cols-2 gap-8 items-start p-8 rounded-3xl border transition-all hover:border-white/15"
-                style={{
-                  background: "rgba(255,255,255,0.03)",
-                  backdropFilter: "blur(12px)",
-                  borderColor: `${section.color}18`,
-                }}
+                variant="elevated"
+                glow="orange"
+                className="group grid grid-cols-1 md:grid-cols-2 gap-8 items-start p-8 transition-all hover:border-white/15"
               >
                 <div>
                   <div className="flex items-center gap-3 mb-4">
@@ -761,7 +748,7 @@ export default function StrategyPage() {
                     </li>
                   ))}
                 </ul>
-              </div>
+              </Surface>
             ))}
           </div>
         </div>
@@ -788,14 +775,11 @@ export default function StrategyPage() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
             {PLAYSTYLE_TYPES.map((type) => (
-              <div
+              <Surface
                 key={type.type}
-                className="p-7 rounded-3xl border transition-all hover:scale-[1.01]"
-                style={{
-                  background: "rgba(255,255,255,0.03)",
-                  backdropFilter: "blur(12px)",
-                  borderColor: `${type.color}20`,
-                }}
+                variant="elevated"
+                glow="orange"
+                className="p-7 transition-all hover:scale-[1.01]"
               >
                 <div className="flex items-center gap-3 mb-4">
                   <div
@@ -807,7 +791,7 @@ export default function StrategyPage() {
                   <h3 className="font-black text-white">{type.type}</h3>
                 </div>
                 <p className="text-sm text-white/50 leading-relaxed">{type.desc}</p>
-              </div>
+              </Surface>
             ))}
           </div>
         </div>
@@ -819,13 +803,13 @@ export default function StrategyPage() {
       <section className="py-24 px-6 bg-[#0d0c18] border-y border-white/[0.05]">
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-14">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/25 text-emerald-400 text-xs font-black tracking-[0.25em] uppercase mb-6">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-orange-500/10 border border-orange-500/25 text-orange-400 text-xs font-black tracking-[0.25em] uppercase mb-6">
+              <span className="w-1.5 h-1.5 rounded-full bg-orange-400 animate-pulse" />
               INTERACTIVE STRATEGY
             </div>
             <h2 className="text-4xl font-black text-white mb-3">
               Build your{" "}
-              <span className="text-emerald-400">strategy.</span>
+              <GlowText variant="orange" as="span">strategy.</GlowText>
             </h2>
             <p className="text-white/40 text-sm max-w-lg mx-auto leading-relaxed">
               Pick your game, describe the situation, and Pixel builds a strategy around your specifics.
@@ -859,7 +843,7 @@ export default function StrategyPage() {
           className="pointer-events-none absolute inset-0"
           style={{
             background:
-              "radial-gradient(ellipse 60% 50% at 50% 50%, rgba(52,211,153,0.06) 0%, rgba(201,168,76,0.04) 55%, transparent 70%)",
+              "radial-gradient(ellipse 60% 50% at 50% 50%, rgba(224,115,64,0.06) 0%, rgba(201,168,76,0.04) 55%, transparent 70%)",
           }}
         />
         <div className="relative max-w-3xl mx-auto text-center">

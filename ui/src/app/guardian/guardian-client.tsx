@@ -19,6 +19,7 @@ import {
   Swords,
   ArrowRight,
 } from "lucide-react";
+import { Surface, IconOrb, StatCard, GlowText } from "@/components/design-system";
 
 // ─── Brand Tokens ───────────────────────────────────────────────────────────
 
@@ -127,6 +128,7 @@ const PROTECTION_MODES = [
     href: "/guardian/scam-stop",
     accent: GOLD,
     badge: "Most common threat",
+    glow: "gold" as const,
   },
   {
     icon: Baby,
@@ -135,6 +137,7 @@ const PROTECTION_MODES = [
     href: "/guardian/children",
     accent: PURPLE,
     badge: "UK Children's Code",
+    glow: "purple" as const,
   },
   {
     icon: Heart,
@@ -143,6 +146,7 @@ const PROTECTION_MODES = [
     href: "/guardian/seniors",
     accent: "#e05c8a",
     badge: "NHS crisis pathway",
+    glow: "orange" as const,
   },
   {
     icon: Swords,
@@ -151,6 +155,7 @@ const PROTECTION_MODES = [
     href: "/guardian/relationship-shield",
     accent: "#38bdf8",
     badge: "Survivor-designed",
+    glow: "teal" as const,
   },
 ];
 
@@ -219,7 +224,7 @@ export default function GuardianClient() {
       <main className="relative z-10">
 
         {/* ── HERO ────────────────────────────────────────────────────────── */}
-        <section className="mx-auto max-w-5xl px-6 pb-24 pt-28 text-center">
+        <section className="animate-fade-in-up mx-auto max-w-5xl px-6 pb-24 pt-28 text-center">
 
           {/* Badge */}
           <div
@@ -234,9 +239,9 @@ export default function GuardianClient() {
           <h1 className="mb-6 text-5xl font-bold leading-tight tracking-tight md:text-7xl">
             Guardian 24/7
             <br />
-            <span className="text-gradient-gold">
+            <GlowText variant="gold" className="font-bold">
               AI that protects the people you love.
-            </span>
+            </GlowText>
           </h1>
 
           {/* Subtitle */}
@@ -247,17 +252,13 @@ export default function GuardianClient() {
           </p>
 
           {/* Threat counter */}
-          <div
-            className="mx-auto mb-10 flex max-w-sm flex-col items-center gap-1 rounded-2xl border p-6"
-            style={{ borderColor: `${PURPLE}40`, backgroundColor: `${PURPLE}10` }}
-          >
-            <p
-              className="text-4xl font-bold tabular-nums"
-              style={{ color: PURPLE }}
-            >
-              <ThreatCounter />
-            </p>
-            <p className="text-sm text-white/50">threats caught this week</p>
+          <div className="mx-auto mb-10 max-w-sm">
+            <StatCard
+              label="threats caught this week"
+              value={<ThreatCounter />}
+              glow="purple"
+              className="text-center"
+            />
           </div>
 
           {/* CTAs */}
@@ -279,7 +280,7 @@ export default function GuardianClient() {
         </section>
 
         {/* ── PROTECTION MODES ────────────────────────────────────────────── */}
-        <section className="mx-auto max-w-6xl px-6 pb-24">
+        <section className="animate-fade-in-up mx-auto max-w-6xl px-6 pb-24">
           <h2 className="mb-3 text-center text-3xl font-bold md:text-4xl">
             Four modes of protection
           </h2>
@@ -294,33 +295,34 @@ export default function GuardianClient() {
                 <Link
                   key={mode.label}
                   href={mode.href}
-                  className="group rounded-2xl border border-white/10 bg-white/5 p-8 backdrop-blur-sm transition-all hover:border-white/20 hover:-translate-y-0.5"
+                  className="group block"
                 >
-                  {/* Header row */}
-                  <div className="mb-4 flex items-start justify-between">
-                    <div className="flex items-center gap-3">
-                      <div
-                        className="flex h-11 w-11 items-center justify-center rounded-xl"
-                        style={{ backgroundColor: `${mode.accent}18` }}
-                      >
-                        <Icon className="h-5 w-5" style={{ color: mode.accent }} />
+                  <Surface
+                    variant="glass"
+                    glow={mode.glow}
+                    className="h-full p-8 transition-all hover:-translate-y-0.5"
+                  >
+                    {/* Header row */}
+                    <div className="mb-4 flex items-start justify-between">
+                      <div className="flex items-center gap-3">
+                        <IconOrb icon={Icon} variant={mode.glow} size="md" />
+                        <span className="text-lg font-semibold">{mode.label}</span>
                       </div>
-                      <span className="text-lg font-semibold">{mode.label}</span>
+                      <span
+                        className="rounded-full px-3 py-1 text-xs font-medium"
+                        style={{ backgroundColor: `${mode.accent}18`, color: mode.accent }}
+                      >
+                        {mode.badge}
+                      </span>
                     </div>
-                    <span
-                      className="rounded-full px-3 py-1 text-xs font-medium"
-                      style={{ backgroundColor: `${mode.accent}18`, color: mode.accent }}
-                    >
-                      {mode.badge}
-                    </span>
-                  </div>
 
-                  <p className="mb-4 leading-relaxed text-white/55">{mode.desc}</p>
+                    <p className="mb-4 leading-relaxed text-white/55">{mode.desc}</p>
 
-                  <div className="flex items-center gap-1 text-sm font-medium" style={{ color: mode.accent }}>
-                    <span>Learn more</span>
-                    <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
-                  </div>
+                    <div className="flex items-center gap-1 text-sm font-medium" style={{ color: mode.accent }}>
+                      <span>Learn more</span>
+                      <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
+                    </div>
+                  </Surface>
                 </Link>
               );
             })}
@@ -328,7 +330,7 @@ export default function GuardianClient() {
         </section>
 
         {/* ── HOW IT WORKS ────────────────────────────────────────────────── */}
-        <section id="how-it-works" className="mx-auto max-w-5xl px-6 pb-24">
+        <section id="how-it-works" className="animate-fade-in-up mx-auto max-w-5xl px-6 pb-24">
           <h2 className="mb-3 text-center text-3xl font-bold md:text-4xl">
             How Guardian works
           </h2>
@@ -340,9 +342,10 @@ export default function GuardianClient() {
             {HOW_IT_WORKS.map((step) => {
               const Icon = step.icon;
               return (
-                <div
+                <Surface
                   key={step.step}
-                  className="rounded-2xl border border-white/10 bg-white/5 p-6"
+                  variant="glass"
+                  className="p-6"
                 >
                   <div className="mb-4 flex items-center gap-3">
                     <span
@@ -351,32 +354,25 @@ export default function GuardianClient() {
                     >
                       {step.step}
                     </span>
-                    <div
-                      className="flex h-9 w-9 items-center justify-center rounded-xl"
-                      style={{ backgroundColor: `${PURPLE}20` }}
-                    >
-                      <Icon className="h-4 w-4" style={{ color: PURPLE }} />
-                    </div>
+                    <IconOrb icon={Icon} variant="purple" size="sm" />
                   </div>
                   <h3 className="mb-2 text-lg font-semibold">{step.title}</h3>
                   <p className="text-sm leading-relaxed text-white/55">{step.desc}</p>
-                </div>
+                </Surface>
               );
             })}
           </div>
         </section>
 
         {/* ── PRIVACY FIRST ────────────────────────────────────────────────── */}
-        <section className="mx-auto max-w-3xl px-6 pb-24">
-          <div
-            className="rounded-2xl border p-10 text-center"
-            style={{ borderColor: `${PURPLE}30`, backgroundColor: `${PURPLE}08` }}
+        <section className="animate-fade-in-up mx-auto max-w-3xl px-6 pb-24">
+          <Surface
+            variant="glass"
+            glow="purple"
+            className="p-10 text-center"
           >
-            <div
-              className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl"
-              style={{ backgroundColor: `${PURPLE}20` }}
-            >
-              <Lock className="h-8 w-8" style={{ color: PURPLE }} />
+            <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl">
+              <IconOrb icon={Lock} variant="purple" size="lg" />
             </div>
             <h2 className="mb-4 text-2xl font-bold md:text-3xl">
               Always watching. Never intrusive.
@@ -399,11 +395,11 @@ export default function GuardianClient() {
                 Maternal Covenant — MEOK AI LTD
               </cite>
             </blockquote>
-          </div>
+          </Surface>
         </section>
 
         {/* ── THREAT TYPES ─────────────────────────────────────────────────── */}
-        <section className="mx-auto max-w-3xl px-6 pb-24">
+        <section className="animate-fade-in-up mx-auto max-w-3xl px-6 pb-24">
           <h2 className="mb-8 text-center text-2xl font-bold md:text-3xl">
             Guardian watches for:
           </h2>
@@ -424,7 +420,7 @@ export default function GuardianClient() {
         </section>
 
         {/* ── COMPLIANCE ───────────────────────────────────────────────────── */}
-        <section className="mx-auto max-w-3xl px-6 pb-24 text-center">
+        <section className="animate-fade-in-up mx-auto max-w-3xl px-6 pb-24 text-center">
           <p className="mb-6 text-sm font-semibold uppercase tracking-widest text-white/40">
             Built for the UK regulatory environment
           </p>
@@ -446,7 +442,7 @@ export default function GuardianClient() {
         </section>
 
         {/* ── BOTTOM CTA ───────────────────────────────────────────────────── */}
-        <section className="mx-auto max-w-3xl px-6 pb-32 text-center">
+        <section className="animate-fade-in-up mx-auto max-w-3xl px-6 pb-32 text-center">
           <h2 className="mb-6 text-3xl font-bold md:text-4xl">
             Your family deserves Guardian.
           </h2>

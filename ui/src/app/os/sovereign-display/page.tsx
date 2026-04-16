@@ -2,7 +2,8 @@
 
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import { ArrowRight, Shield, Lock, Database, Globe, Download, CheckCircle, XCircle } from "lucide-react";
+import { ArrowRight, Shield, Lock, Database, Globe, Download, CheckCircle, XCircle, Monitor } from "lucide-react";
+import { Surface, FeatureCard, IconOrb, GlowText } from "@/components/design-system";
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -135,10 +136,7 @@ function LiveSovereignData() {
   return (
     <section className="bg-[#0d0c18] py-12 px-6">
       <div className="max-w-5xl mx-auto">
-        <div
-          className="rounded-2xl p-6 border border-[#c9a84c]/25"
-          style={{ background: "rgba(201,168,76,0.04)" }}
-        >
+        <Surface variant="elevated" glow="gold" className="p-6">
           <div className="flex items-center gap-2 mb-5">
             <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
             <span className="text-xs font-black tracking-[0.2em] uppercase text-[#c9a84c]">
@@ -174,7 +172,7 @@ function LiveSovereignData() {
               </div>
             </div>
           </div>
-        </div>
+        </Surface>
       </div>
     </section>
   );
@@ -197,25 +195,18 @@ export default function SovereignDisplayPage() {
       />
 
       {/* ─── HERO ───────────────────────────────────────── */}
-      <section className="relative min-h-[85vh] flex flex-col items-center justify-center px-6 pt-28 pb-20 text-center overflow-hidden">
+      <section className="relative min-h-[70vh] flex flex-col items-center justify-center px-6 pt-28 pb-20 text-center overflow-hidden animate-fade-in-up">
         <div className="absolute inset-0 pointer-events-none" aria-hidden>
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] rounded-full bg-[#c9a84c]/[0.05] blur-3xl" />
           <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] rounded-full bg-blue-900/20 blur-3xl" />
         </div>
 
         <div className="relative z-10 max-w-4xl mx-auto">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#c9a84c]/[0.10] border border-[#c9a84c]/20 text-[#c9a84c]/80 text-xs font-semibold mb-8 uppercase tracking-widest">
-            <Shield className="w-3 h-3" />
-            Sovereign Display
-          </div>
-
-          <h1
-            className="font-black leading-[1.05] tracking-tight mb-6"
-            style={{ fontSize: "clamp(2.6rem, 6vw, 4.5rem)" }}
-          >
-            Proof of sovereignty.
+          <IconOrb icon={Monitor} variant="gold" size="lg" className="mx-auto mb-6" />
+          <h1 className="text-4xl sm:text-6xl font-black tracking-tight mb-6">
+            <GlowText variant="gold">Proof of sovereignty.</GlowText>
             <br />
-            <span className="text-gradient-gold">Always visible.</span>
+            <span className="text-white/30">Always visible.</span>
           </h1>
 
           <p className="text-xl text-white/55 max-w-2xl mx-auto mb-10 leading-relaxed">
@@ -226,17 +217,11 @@ export default function SovereignDisplayPage() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
             <Link
               href="/hatch"
-              className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-black text-sm transition-all hover:shadow-[0_0_30px_rgba(201,168,76,0.30)]"
-              style={{ backgroundColor: "#c9a84c", color: "#0d0c18" }}
+              className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-black text-sm transition-all hover:shadow-[0_0_30px_rgba(201,168,76,0.30)] bg-[#c9a84c] text-[#0d0c18]"
             >
               Try the Sovereign Display
               <ArrowRight className="w-4 h-4" />
             </Link>
-          </div>
-
-          {/* Gold shield visual */}
-          <div className="w-24 h-24 rounded-full bg-[#c9a84c]/10 border border-[#c9a84c]/25 flex items-center justify-center mx-auto float-slow">
-            <Shield className="w-10 h-10 text-[#c9a84c]" />
           </div>
         </div>
       </section>
@@ -245,7 +230,7 @@ export default function SovereignDisplayPage() {
       <LiveSovereignData />
 
       {/* ─── WHAT THE DISPLAY SHOWS ─────────────────────── */}
-      <section className="bg-[#1a1a2e] py-24 px-6">
+      <section className="bg-[#1a1a2e] py-24 px-6 animate-fade-in-up">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-14">
             <p className="text-[#c9a84c] text-xs font-bold uppercase tracking-widest mb-4">
@@ -260,39 +245,32 @@ export default function SovereignDisplayPage() {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            {DISPLAY_PANELS.map((panel) => {
-              const Icon = panel.icon;
-              return (
-                <div
-                  key={panel.id}
-                  className={`rounded-2xl p-8 border ${panel.borderClass} ${panel.bgClass} hover:scale-[1.01] transition-all`}
-                >
-                  <div className="flex items-start justify-between mb-5">
-                    <div
-                      className={`w-11 h-11 rounded-xl bg-white/[0.06] flex items-center justify-center`}
-                    >
-                      <Icon className={`w-5 h-5 ${panel.accentClass}`} />
-                    </div>
-                    {panel.stat && (
-                      <div className="text-right">
-                        <div className={`font-black text-xl ${panel.accentClass}`}>
-                          {panel.stat}
-                        </div>
-                        <div className="text-white/30 text-xs">{panel.statLabel}</div>
+            {DISPLAY_PANELS.map((panel) => (
+              <FeatureCard
+                key={panel.id}
+                title={panel.title}
+                description={panel.desc}
+                icon={panel.icon}
+                iconVariant="gold"
+                glow="gold"
+                action={
+                  panel.stat && (
+                    <div className="text-right mt-2">
+                      <div className={`font-black text-xl ${panel.accentClass}`}>
+                        {panel.stat}
                       </div>
-                    )}
-                  </div>
-                  <h3 className={`font-black text-lg mb-3 ${panel.accentClass}`}>{panel.title}</h3>
-                  <p className="text-white/50 text-sm leading-relaxed">{panel.desc}</p>
-                </div>
-              );
-            })}
+                      <div className="text-white/30 text-xs">{panel.statLabel}</div>
+                    </div>
+                  )
+                }
+              />
+            ))}
           </div>
         </div>
       </section>
 
       {/* ─── TECHNICAL SPECS ────────────────────────────── */}
-      <section className="bg-[#0d0c18] py-24 px-6">
+      <section className="bg-[#0d0c18] py-24 px-6 animate-fade-in-up">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-14">
             <p className="text-[#c9a84c] text-xs font-bold uppercase tracking-widest mb-4">
@@ -310,10 +288,7 @@ export default function SovereignDisplayPage() {
             {TECH_SPECS.map((spec) => {
               const Icon = spec.icon;
               return (
-                <div
-                  key={spec.label}
-                  className="rounded-2xl p-7 bg-white/[0.03] border border-white/[0.07] hover:border-white/[0.12] transition-all"
-                >
+                <Surface key={spec.label} variant="glass" className="p-7 hover:border-white/[0.12] transition-all">
                   <div className="flex items-center gap-3 mb-3">
                     <Icon className={`w-5 h-5 ${spec.accentClass}`} />
                     <span className="text-white/40 text-xs uppercase tracking-widest font-semibold">
@@ -324,7 +299,7 @@ export default function SovereignDisplayPage() {
                     {spec.value}
                   </div>
                   <div className="text-white/35 text-sm">{spec.sub}</div>
-                </div>
+                </Surface>
               );
             })}
           </div>
@@ -332,10 +307,10 @@ export default function SovereignDisplayPage() {
       </section>
 
       {/* ─── YOUR DATA PASSPORT ─────────────────────────── */}
-      <section className="bg-[#1a1a2e] py-24 px-6">
+      <section className="bg-[#1a1a2e] py-24 px-6 animate-fade-in-up">
         <div className="max-w-4xl mx-auto">
-          <div className="rounded-2xl border border-[#c9a84c]/20 bg-[#c9a84c]/[0.03] p-10 md:p-14">
-            <div className="flex flex-col md:flex-row gap-10 items-center">
+          <Surface variant="elevated" glow="gold" className="p-10 md:p-14">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
               <div className="flex-shrink-0">
                 <div className="w-28 h-28 rounded-2xl bg-[#c9a84c]/10 border border-[#c9a84c]/20 flex items-center justify-center">
                   <span className="text-5xl">🛂</span>
@@ -367,12 +342,12 @@ export default function SovereignDisplayPage() {
                 </div>
               </div>
             </div>
-          </div>
+          </Surface>
         </div>
       </section>
 
       {/* ─── TRANSPARENCY COMPARISON ────────────────────── */}
-      <section className="bg-[#0d0c18] py-24 px-6">
+      <section className="bg-[#0d0c18] py-24 px-6 animate-fade-in-up">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-14">
             <p className="text-[#c9a84c] text-xs font-bold uppercase tracking-widest mb-4">
@@ -386,7 +361,7 @@ export default function SovereignDisplayPage() {
             </p>
           </div>
 
-          <div className="rounded-2xl border border-white/[0.08] overflow-hidden">
+          <Surface variant="elevated" className="overflow-hidden rounded-2xl">
             <div className="grid grid-cols-5 bg-white/[0.05] border-b border-white/[0.08]">
               <div className="px-5 py-4 col-span-2 text-white/30 text-xs font-semibold uppercase tracking-wider">
                 Feature
@@ -404,7 +379,7 @@ export default function SovereignDisplayPage() {
             {COMPARISON_ROWS.map((row, i) => (
               <div
                 key={row.feature}
-                className={`grid grid-cols-5 border-b border-white/[0.05] last:border-0 ${
+                className={`grid grid-cols-5 border-b border-white/[0.05] last:border-0 hover:bg-white/[0.02] transition-colors ${
                   i % 2 === 0 ? "" : "bg-white/[0.01]"
                 }`}
               >
@@ -420,12 +395,12 @@ export default function SovereignDisplayPage() {
                 </div>
               </div>
             ))}
-          </div>
+          </Surface>
         </div>
       </section>
 
       {/* ─── CTA ────────────────────────────────────────── */}
-      <section className="bg-[#1a1a2e] py-24 px-6">
+      <section className="bg-[#1a1a2e] py-24 px-6 animate-fade-in-up">
         <div className="relative max-w-3xl mx-auto text-center overflow-hidden">
           <div className="absolute inset-0 pointer-events-none" aria-hidden>
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] rounded-full bg-[#c9a84c]/[0.06] blur-3xl" />
@@ -440,8 +415,7 @@ export default function SovereignDisplayPage() {
             </p>
             <Link
               href="/hatch"
-              className="inline-flex items-center gap-2 px-10 py-4 rounded-full font-black text-base transition-all hover:shadow-[0_0_40px_rgba(201,168,76,0.30)]"
-              style={{ backgroundColor: "#c9a84c", color: "#0d0c18" }}
+              className="inline-flex items-center gap-2 px-10 py-4 rounded-full font-black text-base transition-all hover:shadow-[0_0_40px_rgba(201,168,76,0.30)] bg-[#c9a84c] text-[#0d0c18]"
             >
               Try the Sovereign Display <ArrowRight className="w-5 h-5" />
             </Link>
@@ -451,7 +425,6 @@ export default function SovereignDisplayPage() {
           </div>
         </div>
       </section>
-
     </div>
   );
 }

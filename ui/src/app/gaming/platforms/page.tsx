@@ -1,6 +1,8 @@
 "use client";
 import Link from "next/link";
 import { useState } from "react";
+import { ArrowRight, Monitor, Shield, Lock, Gamepad2, Cpu } from "lucide-react";
+import { Surface, IconOrb, FeatureCard, GlowText } from "@/components/design-system";
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -235,27 +237,6 @@ const PLATFORM_CATEGORIES: PlatformCategory[] = [
   },
 ];
 
-const HOW_IT_WORKS = [
-  {
-    step: "01",
-    icon: "🖱️",
-    title: "You click Connect",
-    desc: "MEOK opens the platform's official OAuth flow or API key dialog. The connection is handled entirely through the platform's own authentication — your password never touches MEOK.",
-  },
-  {
-    step: "02",
-    icon: "🔐",
-    title: "Platform grants access",
-    desc: "Read-only scopes only. The platform shows you exactly what you're granting before you confirm. MEOK requests the minimum required to do the job.",
-  },
-  {
-    step: "03",
-    icon: "🌊",
-    title: "Your data flows in",
-    desc: "Match history, stats, achievements — into your sovereign memory vault, encrypted, owned by you. MEOK can now query it mid-conversation. You can revoke access at any time from the platform's settings.",
-  },
-];
-
 const FAQS = [
   {
     q: "Does connecting platforms cost extra?",
@@ -281,7 +262,7 @@ const FAQS = [
 
 const METHOD_LABELS: Record<DataMethod, { label: string; color: string; title: string }> = {
   api: { label: "API", color: "#34d399", title: "Official API — structured data, automatic sync" },
-  screen: { label: "Screen read", color: "#fb923c", title: "Screen capture — MEOK reads your game window visually" },
+  screen: { label: "Screen read", color: "#e07340", title: "Screen capture — MEOK reads your game window visually" },
   manual: { label: "Manual", color: "#6b7fa3", title: "Manual input — you enter stats, MEOK analyses them" },
   "api+screen": { label: "API + Screen", color: "#c9a84c", title: "API where available, screen capture for the rest" },
 };
@@ -327,10 +308,10 @@ function StatusBadge({ status }: { status: IntegrationStatus }) {
 function PlatformCard({ platform, accent }: { platform: PlatformEntry; accent: string }) {
   const [expanded, setExpanded] = useState(false);
   return (
-    <div
-      className="group relative rounded-2xl border transition-all"
+    <Surface
+      variant="elevated"
+      className="group relative overflow-hidden"
       style={{
-        background: "rgba(255,255,255,0.04)",
         borderColor: expanded ? `${accent}50` : `${accent}25`,
         boxShadow: expanded ? `0 0 20px ${accent}10` : "none",
       }}
@@ -377,7 +358,7 @@ function PlatformCard({ platform, accent }: { platform: PlatformEntry; accent: s
           </div>
         </div>
       )}
-    </div>
+    </Surface>
   );
 }
 
@@ -386,11 +367,7 @@ function FAQAccordion({ faqs }: { faqs: typeof FAQS }) {
   return (
     <div className="space-y-3">
       {faqs.map((faq, i) => (
-        <div
-          key={i}
-          className="rounded-2xl border border-white/[0.07] overflow-hidden"
-          style={{ background: "rgba(255,255,255,0.03)" }}
-        >
+        <Surface key={i} variant="glass" className="overflow-hidden">
           <button
             className="w-full flex items-center justify-between gap-4 px-6 py-5 text-left hover:bg-white/[0.03] transition-colors"
             onClick={() => setOpen(open === i ? null : i)}
@@ -409,7 +386,7 @@ function FAQAccordion({ faqs }: { faqs: typeof FAQS }) {
               <p className="text-white/50 text-sm leading-relaxed">{faq.a}</p>
             </div>
           )}
-        </div>
+        </Surface>
       ))}
     </div>
   );
@@ -432,7 +409,7 @@ export default function GamingPlatformsPage() {
           className="pointer-events-none absolute inset-0 opacity-[0.06]"
           style={{
             backgroundImage:
-              "linear-gradient(rgba(201,168,76,0.4) 1px, transparent 1px), linear-gradient(90deg, rgba(201,168,76,0.4) 1px, transparent 1px)",
+              "linear-gradient(rgba(224,115,64,0.4) 1px, transparent 1px), linear-gradient(90deg, rgba(224,115,64,0.4) 1px, transparent 1px)",
             backgroundSize: "80px 80px",
           }}
         />
@@ -441,25 +418,26 @@ export default function GamingPlatformsPage() {
           className="pointer-events-none absolute inset-0"
           style={{
             background:
-              "radial-gradient(ellipse 80% 60% at 50% 40%, rgba(201,168,76,0.09) 0%, transparent 70%)",
+              "radial-gradient(ellipse 80% 60% at 50% 40%, rgba(224,115,64,0.09) 0%, transparent 70%)",
           }}
         />
 
         <div className="relative max-w-5xl mx-auto text-center">
-          <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-[#c9a84c]/15 border border-[#c9a84c]/30 text-[#c9a84c] text-xs font-black tracking-[0.25em] uppercase mb-8">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#c9a84c] animate-pulse" />
+          <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-orange-500/15 border border-orange-500/30 text-orange-300 text-xs font-black tracking-[0.25em] uppercase mb-8">
+            <span className="w-1.5 h-1.5 rounded-full bg-orange-400 animate-pulse" />
             PLATFORM CONNECTIONS
+          </div>
+
+          <div className="flex justify-center mb-6">
+            <IconOrb icon={Monitor} variant="orange" size="lg" pulse />
           </div>
 
           <h1 className="text-5xl sm:text-7xl lg:text-8xl font-black leading-[0.9] tracking-tight text-white mb-6">
             Connect your platforms.{" "}
             <br className="hidden sm:block" />
-            <span
-              className="text-[#c9a84c]"
-              style={{ textShadow: "0 0 50px rgba(201,168,76,0.4)" }}
-            >
+            <GlowText variant="orange" as="span">
               Know what MEOK can see.
-            </span>
+            </GlowText>
           </h1>
 
           <p className="text-lg sm:text-xl text-white/55 max-w-3xl mx-auto leading-relaxed mb-6">
@@ -467,36 +445,52 @@ export default function GamingPlatformsPage() {
             reads, what OAuth scope it requests, and what it will never touch. Read-only. Always.
           </p>
 
-          {/* Method legend */}
-          <div className="flex flex-wrap items-center justify-center gap-3 mb-10 text-xs">
-            {Object.entries(METHOD_LABELS).map(([key, m]) => (
-              <div
-                key={key}
-                className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border"
-                style={{ borderColor: `${m.color}30`, background: `${m.color}08`, color: m.color }}
-              >
-                <span className="font-black tracking-wider uppercase">{m.label}</span>
-                <span className="text-white/30">·</span>
-                <span className="text-white/40 normal-case font-medium">{m.title.split(" — ")[1]}</span>
-              </div>
-            ))}
-          </div>
-
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
               href="/hatch"
-              className="group flex items-center gap-2 px-8 py-4 rounded-full font-black text-[#1a1a2e] bg-[#c9a84c] hover:bg-[#d4b463] transition-all text-base"
-              style={{ boxShadow: "0 0 24px rgba(201,168,76,0.3), 0 0 48px rgba(201,168,76,0.1)" }}
+              className="group flex items-center gap-2 px-8 py-4 rounded-full font-black text-[#1a1a2e] bg-[#e07340] hover:bg-[#e5804d] transition-all text-base"
+              style={{ boxShadow: "0 0 24px rgba(224,115,64,0.3), 0 0 48px rgba(224,115,64,0.1)" }}
             >
               Connect your platforms
               <span className="group-hover:translate-x-1 transition-transform">→</span>
             </Link>
             <Link
               href="/gaming"
-              className="group flex items-center gap-2 px-8 py-4 rounded-full font-black text-[#c9a84c] border border-[#c9a84c]/40 hover:border-[#c9a84c] hover:bg-[#c9a84c]/10 transition-all text-base"
+              className="group flex items-center gap-2 px-8 py-4 rounded-full font-black text-orange-300 border border-orange-500/40 hover:border-orange-400 hover:bg-orange-500/10 transition-all text-base"
             >
               ← Back to Gaming OS
             </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════
+          FEATURE CARDS
+      ═══════════════════════════════════════════════ */}
+      <section className="py-24 px-6 bg-[#0d0c18] border-y border-white/[0.05] animate-fade-in-up">
+        <div className="max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
+            <FeatureCard
+              title="One-click OAuth"
+              description="No API keys. No configuration. Click Connect and MEOK opens the platform's official auth flow."
+              icon={Lock}
+              iconVariant="orange"
+              glow="orange"
+            />
+            <FeatureCard
+              title="Read-only always"
+              description="We never post, never write, and never modify anything on your behalf. You can revoke any connection at any time."
+              icon={Shield}
+              iconVariant="teal"
+              glow="teal"
+            />
+            <FeatureCard
+              title="Unified dashboard"
+              description="All your stats, achievements, and match history in one sovereign memory vault — owned by you."
+              icon={Gamepad2}
+              iconVariant="orange"
+              glow="orange"
+            />
           </div>
         </div>
       </section>
@@ -507,13 +501,12 @@ export default function GamingPlatformsPage() {
       {PLATFORM_CATEGORIES.map((cat, catIdx) => (
         <section
           key={cat.category}
-          className="py-20 px-6 border-t border-white/[0.05]"
+          className="py-20 px-6 border-t border-white/[0.05] animate-fade-in-up"
           style={{
-            background: catIdx % 2 === 0 ? "#1a1a2e" : "#0d0c18",
+            background: catIdx % 2 === 0 ? "#0d0c18" : "#13121f",
           }}
         >
           <div className="max-w-6xl mx-auto">
-            {/* Category header */}
             <div className="flex items-center gap-4 mb-10">
               <div
                 className="w-12 h-12 rounded-2xl flex items-center justify-center text-2xl flex-shrink-0"
@@ -543,140 +536,43 @@ export default function GamingPlatformsPage() {
       ))}
 
       {/* ═══════════════════════════════════════════════
-          HOW PLATFORM CONNECTIONS WORK
+          CAPABILITIES
       ═══════════════════════════════════════════════ */}
-      <section className="py-24 px-6 bg-[#0d0c18] border-t border-white/[0.05]">
-        <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-16">
-            <span className="text-xs font-black tracking-[0.25em] uppercase text-white/30 block mb-4">
-              The connection flow
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-black text-white">
-              How platform connections{" "}
-              <span className="text-[#c9a84c]">work.</span>
-            </h2>
-            <p className="text-white/45 max-w-xl mx-auto text-sm leading-relaxed mt-4">
-              One button per platform. No configuration. No API keys to manage. No reading docs.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-            {HOW_IT_WORKS.map((step) => (
-              <div
-                key={step.step}
-                className="relative rounded-3xl p-8 border border-white/[0.07] hover:border-white/15 transition-all"
-                style={{ background: "rgba(255,255,255,0.03)" }}
-              >
-                <div className="text-4xl mb-4">{step.icon}</div>
-                <div className="text-xs font-black tracking-widest text-[#c9a84c] mb-2">
-                  {step.step}
-                </div>
-                <h3 className="text-lg font-black text-white mb-3">{step.title}</h3>
-                <p className="text-sm text-white/50 leading-relaxed">{step.desc}</p>
-              </div>
-            ))}
-          </div>
-
-          {/* Read-only callout */}
-          <div
-            className="rounded-2xl border border-[#c9a84c]/25 p-6 flex gap-4 items-start"
-            style={{ background: "rgba(201,168,76,0.05)" }}
-          >
-            <span className="text-2xl flex-shrink-0">🔒</span>
+      <section className="py-24 px-6 bg-[#0d0c18] border-t border-white/[0.05] animate-fade-in-up">
+        <div className="max-w-4xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div>
-              <div className="font-black text-[#c9a84c] mb-1">Read-only. Always.</div>
-              <p className="text-sm text-white/55 leading-relaxed">
-                MEOK requests{" "}
-                <strong className="text-white">read-only</strong> access to all platforms.
-                We never post, never write, never modify anything on your behalf without explicit
-                confirmation. You can revoke any connection at any time from the platform&apos;s
-                own settings — MEOK does not need to be involved. Your gaming accounts remain
-                entirely under your control.
+              <span className="text-xs font-black tracking-[0.25em] uppercase text-white/30 block mb-4">
+                Security
+              </span>
+              <h2 className="text-3xl sm:text-4xl font-black tracking-tight mb-5">
+                Read-only.
+                <br />
+                <GlowText variant="orange" as="span">
+                  Always.
+                </GlowText>
+              </h2>
+              <p className="text-white/50 leading-relaxed text-sm">
+                MEOK requests read-only access to all platforms. We never post,
+                never write, never modify anything on your behalf without explicit
+                confirmation. Your gaming accounts remain entirely under your control.
               </p>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ═══════════════════════════════════════════════
-          WHO THIS IS FOR
-      ═══════════════════════════════════════════════ */}
-      <section className="py-24 px-6 bg-[#0d0c18] border-t border-white/[0.05]">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-14">
-            <span className="text-xs font-black tracking-[0.25em] uppercase text-white/30 block mb-4">
-              Who this is for
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-black text-white">
-              Connect once.{" "}
-              <span className="text-[#c9a84c]">MEOK remembers everything.</span>
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
-            {[
-              {
-                label: "The multi-platform player",
-                detail: "You play CS2 on Steam, ranked on Riot, and chill games on Xbox — your stats are scattered across five accounts and you have no single view of your progress. MEOK unifies all of it.",
-                accent: "#66c0f4",
-              },
-              {
-                label: "The privacy-conscious gamer",
-                detail: "You want to connect your accounts but you've never trusted a third-party tool with your gaming credentials. Every card on this page shows exactly what MEOK reads, what scope it requests, and what it will never touch.",
-                accent: "#c9a84c",
-              },
-              {
-                label: "The serious competitor",
-                detail: "You need context before every session — your recent match history, your rank trend, your platform stats. MEOK pulls it automatically and delivers it in your morning brief or pre-game report.",
-                accent: "#9146ff",
-              },
-            ].map((p) => (
-              <div
-                key={p.label}
-                className="rounded-2xl border border-white/[0.07] p-7 flex flex-col gap-4"
-                style={{ background: "rgba(255,255,255,0.03)" }}
-              >
-                <div className="w-2 h-2 rounded-full" style={{ backgroundColor: p.accent }} />
-                <h3 className="font-black text-sm leading-snug text-white">{p.label}</h3>
-                <p className="text-sm text-white/50 leading-relaxed">{p.detail}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ═══════════════════════════════════════════════
-          GEO — Generative Engine Optimisation H2s
-      ═══════════════════════════════════════════════ */}
-      <section className="py-24 px-6 bg-[#0a0a0a] border-t border-white/[0.05]">
-        <div className="max-w-3xl mx-auto space-y-14">
-          <div>
-            <h2 className="text-2xl sm:text-3xl font-black text-white mb-4">
-              What gaming platforms does MEOK AI support?
-            </h2>
-            <p className="text-white/55 leading-relaxed text-sm sm:text-base">
-              MEOK AI connects to the four platforms where most gamers spend their time: Riot Games (League of Legends and Valorant), Steam, Twitch, and Discord. Each connection is read-only and uses the platform's official OAuth flow. MEOK pulls your rank history, match stats, achievements, and community context into your sovereign memory vault — giving your AI companion a full picture of your gaming life across every game you play.
-            </p>
-          </div>
-
-          <div>
-            <h2 className="text-2xl sm:text-3xl font-black text-white mb-4">
-              How does MEOK protect gamers from toxic behaviour?
-            </h2>
-            <p className="text-white/55 leading-relaxed text-sm sm:text-base">
-              MEOK&apos;s Guardian layer monitors gaming communications — in-game chat, Discord DMs, and Twitch chat — for toxicity, harassment, and grooming patterns. For families on the Family tier, parents get a dashboard surfacing Guardian alerts without reading private conversations. School-Safe Mode blocks adult content across all connected platforms. Guardian runs passively and only escalates when a pattern of concern is detected — it is care, not surveillance.
-            </p>
-          </div>
-
-          <div>
-            <h2 className="text-2xl sm:text-3xl font-black text-white mb-4">
-              When does MEOK gaming launch?
-            </h2>
-            <p className="text-white/55 leading-relaxed text-sm sm:text-base">
-              MEOK&apos;s full gaming suite — including Riot Games and Steam API integration, Twitch co-host mode, and the PixiJS visual environment — launches in Phase 3, targeted for August 2026. Discord integration is already in beta. Join the gaming waitlist at{" "}
-              <a href="/gaming" className="text-[#d4af37] hover:underline font-bold">/gaming</a>{" "}
-              to get early access and shape what MEOK builds next.
-            </p>
+            <Surface variant="elevated" glow="orange" className="p-7">
+              <ul className="space-y-4">
+                {[
+                  "OAuth via official platform flows only",
+                  "Minimum required scopes per platform",
+                  "Encrypted sovereign memory vault",
+                  "Instant revocation from platform settings",
+                ].map((item) => (
+                  <li key={item} className="flex items-start gap-3 text-sm text-white/60">
+                    <Lock className="w-4 h-4 text-orange-400 flex-shrink-0 mt-0.5" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </Surface>
           </div>
         </div>
       </section>
@@ -684,7 +580,7 @@ export default function GamingPlatformsPage() {
       {/* ═══════════════════════════════════════════════
           FAQ
       ═══════════════════════════════════════════════ */}
-      <section className="py-24 px-6 bg-[#1a1a2e]">
+      <section className="py-24 px-6 bg-[#13121f] animate-fade-in-up">
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-14">
             <span className="text-xs font-black tracking-[0.25em] uppercase text-white/30 block mb-4">
@@ -699,19 +595,22 @@ export default function GamingPlatformsPage() {
       {/* ═══════════════════════════════════════════════
           FINAL CTA
       ═══════════════════════════════════════════════ */}
-      <section className="relative py-32 px-6 overflow-hidden bg-[#1a1a2e]">
+      <section className="relative py-32 px-6 overflow-hidden bg-[#0a0a0f] animate-fade-in-up">
         <div
           aria-hidden
           className="pointer-events-none absolute inset-0"
           style={{
             background:
-              "radial-gradient(ellipse 70% 60% at 50% 50%, rgba(201,168,76,0.08) 0%, transparent 70%)",
+              "radial-gradient(ellipse 70% 60% at 50% 50%, rgba(224,115,64,0.08) 0%, transparent 70%)",
           }}
         />
         <div className="relative max-w-3xl mx-auto text-center">
+          <div className="flex justify-center mb-6">
+            <IconOrb icon={Cpu} variant="orange" size="lg" />
+          </div>
           <h2 className="text-4xl sm:text-6xl font-black leading-[0.92] tracking-tight text-white mb-6">
             Connect your gaming world.{" "}
-            <span className="text-[#c9a84c]">All of it.</span>
+            <GlowText variant="orange" as="span">All of it.</GlowText>
           </h2>
           <p className="text-lg text-white/40 max-w-xl mx-auto mb-10 leading-relaxed">
             Every platform. Every stat. Every match. One AI that works for you — not for ad networks.
@@ -719,8 +618,8 @@ export default function GamingPlatformsPage() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
               href="/hatch"
-              className="group inline-flex items-center gap-3 px-10 py-4 rounded-full font-black text-[#1a1a2e] bg-[#c9a84c] hover:bg-[#d4b463] transition-all text-base sm:text-lg"
-              style={{ boxShadow: "0 0 24px rgba(201,168,76,0.3), 0 0 48px rgba(201,168,76,0.1)" }}
+              className="group inline-flex items-center gap-3 px-10 py-4 rounded-full font-black text-[#1a1a2e] bg-[#e07340] hover:bg-[#e5804d] transition-all text-base sm:text-lg"
+              style={{ boxShadow: "0 0 24px rgba(224,115,64,0.3), 0 0 48px rgba(224,115,64,0.1)" }}
             >
               Connect platforms
               <span className="group-hover:translate-x-1 transition-transform">→</span>
@@ -737,7 +636,6 @@ export default function GamingPlatformsPage() {
           </p>
         </div>
       </section>
-
     </div>
   );
 }

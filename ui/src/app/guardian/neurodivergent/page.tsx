@@ -15,6 +15,7 @@ import {
   ChevronUp,
   Zap,
 } from "lucide-react";
+import { Surface, IconOrb, FeatureCard, GlowText } from "@/components/design-system";
 
 const FEATURES = [
   {
@@ -22,42 +23,36 @@ const FEATURES = [
     title: "Pattern Recognition Without Shame",
     description:
       "MEOK notices your rhythms without judging them. Whether you work best at 2am, need three warm-up tasks before the hard one, or go silent for a week then sprint — it adapts, not you.",
-    color: "#a78bfa",
   },
   {
     icon: Calendar,
     title: "Low-Friction Daily Rituals",
     description:
       "A morning briefing that meets you where you are, not where it wants you to be. No guilt if you skip it. No pressure to engage. It's there when you want it — quiet when you don't.",
-    color: "#a78bfa",
   },
   {
     icon: RefreshCw,
     title: "Memory Without Repetition",
     description:
       "Never explain your context again. MEOK remembers everything about how you work — your projects, your blockers, your preferences, your patterns. Pick up mid-thought, any time.",
-    color: "#5eead4",
   },
   {
     icon: MessageCircle,
     title: "Communication Translation",
     description:
       "Helps decode ambiguous social situations, emails, and messages. What did they actually mean? Is this passive-aggressive? MEOK translates subtext into plain language — without drama.",
-    color: "#5eead4",
   },
   {
     icon: Zap,
     title: "Executive Function Support",
     description:
       "Task breakdown, priority ordering, gentle reminders without pressure. MEOK helps you find the first step — because once you have that, the rest usually follows.",
-    color: "#a78bfa",
   },
   {
     icon: Shield,
     title: "Safe Processing Space",
     description:
       "No judgment, no unsolicited advice, no wellness metrics that make you feel broken. Process out loud, think in circles, change your mind three times — MEOK is patient without limit.",
-    color: "#5eead4",
   },
 ];
 
@@ -66,25 +61,21 @@ const SCENARIOS = [
     trigger: "\"I forgot where I was in a project after a bad week.\"",
     response:
       "MEOK picks up exactly where you left off. It knows which file you were editing, what you were trying to solve, what was blocking you. It doesn't ask you to start over — it hands you back the thread.",
-    accentColor: "#a78bfa",
   },
   {
     trigger: "\"I can't figure out what this email really means.\"",
     response:
       "Social decode: plain language translation of subtext. MEOK reads the message and tells you what they're actually asking — not just what they wrote. No more second-guessing at midnight.",
-    accentColor: "#5eead4",
   },
   {
     trigger: "\"I need to break this into steps I can actually do.\"",
     response:
       "Executive function scaffolding. Give MEOK the task — however messy and vague — and it builds a sequence of steps sized for today's capacity. You choose how small small needs to be.",
-    accentColor: "#a78bfa",
   },
   {
     trigger: "\"My routine works differently to other people's.\"",
     response:
       "MEOK adapts to your patterns, not the other way round. It learns when you're sharp, when you're running on empty, how you like information structured. And it never asks you to be someone else.",
-    accentColor: "#5eead4",
   },
 ];
 
@@ -133,165 +124,129 @@ function FAQAccordion() {
   const [open, setOpen] = useState<number | null>(null);
   return (
     <div className="space-y-3">
-      {FAQS.map((faq, i) => (
-        <div
-          key={faq.q}
-          className="rounded-2xl border overflow-hidden transition-all"
-          style={{
-            background: open === i ? "rgba(167,139,250,0.06)" : "rgba(255,255,255,0.03)",
-            borderColor: open === i ? "rgba(167,139,250,0.3)" : "rgba(255,255,255,0.08)",
-          }}
-        >
-          <button
-            type="button"
-            className="w-full flex items-center justify-between gap-4 px-6 py-5 text-left"
-            onClick={() => setOpen(open === i ? null : i)}
-            aria-expanded={open === i}
+      {FAQS.map((faq, i) => {
+        const isOpen = open === i;
+        return (
+          <div
+            key={faq.q}
+            className={`rounded-2xl border overflow-hidden transition-all ${
+              isOpen
+                ? "bg-[#2d9b8a]/[0.06] border-[#2d9b8a]/30"
+                : "bg-white/[0.03] border-white/[0.08]"
+            }`}
           >
-            <span className="font-bold text-white/90 text-sm sm:text-base leading-snug">{faq.q}</span>
-            <span className="flex-shrink-0 text-[#a78bfa]">
-              {open === i ? <ChevronUp size={18} /> : <ChevronDown size={18} />}
-            </span>
-          </button>
-          {open === i && (
-            <div className="px-6 pb-5">
-              <div className="h-px bg-white/[0.06] mb-4" />
-              <p className="text-sm text-white/55 leading-relaxed">{faq.a}</p>
-            </div>
-          )}
-        </div>
-      ))}
+            <button
+              type="button"
+              className="w-full flex items-center justify-between gap-4 px-6 py-5 text-left"
+              onClick={() => setOpen(isOpen ? null : i)}
+              aria-expanded={isOpen}
+            >
+              <span className="font-bold text-white/90 text-sm sm:text-base leading-snug">{faq.q}</span>
+              <span className="flex-shrink-0 text-[#2d9b8a]">
+                {isOpen ? <ChevronUp size={18} /> : <ChevronDown size={18} />}
+              </span>
+            </button>
+            {isOpen && (
+              <div className="px-6 pb-5">
+                <div className="h-px bg-white/[0.06] mb-4" />
+                <p className="text-sm text-white/55 leading-relaxed">{faq.a}</p>
+              </div>
+            )}
+          </div>
+        );
+      })}
     </div>
   );
 }
 
 export default function GuardianNeurodivergentPage() {
   return (
-    <div
-      className="min-h-screen bg-[#0d0c18] text-white overflow-x-hidden"
-      style={{ fontFamily: "'DM Sans', sans-serif" }}
-    >
+    <div className="min-h-screen overflow-x-hidden bg-[#0d0c18] text-white">
 
       {/* ─── HERO ─────────────────────────────────────────── */}
-      <section className="relative min-h-[90vh] flex flex-col items-center justify-center px-6 pt-20 pb-24 overflow-hidden">
-        <div className="absolute inset-0 pointer-events-none" aria-hidden>
-          <div
-            className="absolute rounded-full blur-[160px] opacity-20 w-[700px] h-[600px] top-[-10%] left-[-10%]"
-            style={{ background: "#a78bfa" }}
-          />
-          <div
-            className="absolute rounded-full blur-[160px] opacity-15 w-[500px] h-[400px] bottom-[10%] right-[-5%]"
-            style={{ background: "#5eead4" }}
-          />
+      <section className="relative flex min-h-[90vh] flex-col items-center justify-center overflow-hidden px-6 pt-20 pb-24">
+        <div className="pointer-events-none absolute inset-0" aria-hidden>
+          <div className="blob-purple absolute top-[-10%] left-[-10%] h-[600px] w-[700px] opacity-20" />
+          <div className="blob-teal absolute bottom-[10%] right-[-5%] h-[400px] w-[500px] opacity-15" />
         </div>
 
-        <div
-          className="relative mb-8 inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase"
-          style={{
-            background: "rgba(167,139,250,0.1)",
-            border: "1px solid rgba(167,139,250,0.3)",
-            color: "#a78bfa",
-          }}
-        >
+        <div className="relative mb-8 inline-flex items-center gap-2 rounded-full border border-[#2d9b8a]/30 bg-[#2d9b8a]/10 px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-[#2d9b8a]">
           For neurodivergent minds
         </div>
 
         <div className="relative mb-10 float-slow">
-          <div
-            className="w-24 h-24 rounded-2xl flex items-center justify-center"
-            style={{
-              background: "rgba(167,139,250,0.12)",
-              border: "1px solid rgba(167,139,250,0.3)",
-            }}
-          >
-            <Sparkles size={44} color="#a78bfa" strokeWidth={1.5} />
-          </div>
-          <div className="absolute -inset-3 rounded-3xl border border-[#a78bfa]/15 animate-pulse" />
+          <IconOrb icon={Sparkles} variant="teal" size="lg" pulse />
         </div>
 
-        <h1
-          className="text-[3rem] sm:text-6xl lg:text-7xl font-black text-center leading-[1.02] tracking-tight max-w-4xl mb-6 text-white relative"
-          style={{ fontWeight: 900 }}
-        >
+        <h1 className="relative mb-6 max-w-4xl text-center text-[3rem] font-black leading-[1.02] tracking-tight text-white sm:text-6xl lg:text-7xl">
           An AI that thinks differently.{" "}
           <br />
-          <span style={{ color: "#a78bfa" }}>Built for people who do too.</span>
+          <GlowText variant="teal" as="span">Built for people who do too.</GlowText>
         </h1>
 
-        <p className="relative text-lg sm:text-xl text-white/60 text-center max-w-2xl leading-relaxed mb-10">
+        <p className="relative mb-10 max-w-2xl text-center text-lg leading-relaxed text-white/60 sm:text-xl">
           Most AI was designed for neurotypical workflows. MEOK was designed for humans.
           There&apos;s a difference.
         </p>
 
         {/* Stats row */}
-        <div className="relative flex flex-col sm:flex-row gap-6 sm:gap-12 mb-12 text-center">
+        <div className="relative mb-12 flex flex-col gap-6 text-center sm:flex-row sm:gap-12">
           {[
             { stat: "1 in 7", label: "people are neurodivergent" },
             { stat: "Most AI", label: "ignores their needs" },
             { stat: "MEOK", label: "was built differently" },
           ].map((item) => (
             <div key={item.label} className="flex flex-col gap-1">
-              <span className="text-2xl font-black" style={{ color: "#a78bfa" }}>{item.stat}</span>
-              <span className="text-xs text-white/45 font-mono uppercase tracking-widest">{item.label}</span>
+              <span className="text-2xl font-black text-[#2d9b8a]">{item.stat}</span>
+              <span className="text-xs font-mono uppercase tracking-widest text-white/45">{item.label}</span>
             </div>
           ))}
         </div>
 
-        <div className="relative flex flex-col sm:flex-row gap-4 items-center">
+        <div className="relative flex flex-col items-center gap-4 sm:flex-row">
           <Link
             href="/hatch"
-            className="group flex items-center gap-2 px-8 py-4 rounded-full font-bold text-white transition-all text-base hover:shadow-[0_0_40px_rgba(167,139,250,0.45)]"
-            style={{ background: "#a78bfa", color: "#0d0c18" }}
+            className="group flex items-center gap-2 rounded-full bg-[#c9a84c] px-8 py-4 text-base font-bold text-[#0d0c18] transition-opacity hover:opacity-90"
           >
             Start for free
-            <span className="group-hover:translate-x-1 transition-transform">→</span>
+            <span className="transition-transform group-hover:translate-x-1">→</span>
           </Link>
           <Link
             href="/guardian"
-            className="group flex items-center gap-2 px-7 py-3.5 rounded-full font-bold text-white/60 hover:text-white transition-colors text-sm"
+            className="group flex items-center gap-2 rounded-full px-7 py-3.5 text-sm font-bold text-white/60 transition-colors hover:text-white"
           >
             Guardian overview →
           </Link>
         </div>
-        <p className="relative mt-5 text-xs text-white/25 font-mono">
+        <p className="relative mt-5 text-xs font-mono text-white/25">
           Free to start · No credit card · No pressure · Your data, always
         </p>
       </section>
 
       {/* ─── WHAT MEOK UNDERSTANDS ────────────────────────── */}
-      <section className="py-24 px-6" style={{ background: "#100a1e" }}>
-        <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-14">
-            <div
-              className="mb-4 inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold tracking-widest uppercase"
-              style={{
-                background: "rgba(167,139,250,0.12)",
-                color: "#a78bfa",
-                border: "1px solid rgba(167,139,250,0.25)",
-              }}
-            >
+      <section className="bg-[#13121f] px-6 py-24">
+        <div className="mx-auto max-w-5xl">
+          <div className="mb-14 text-center">
+            <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-[#2d9b8a]/25 bg-[#2d9b8a]/10 px-3 py-1 text-xs font-bold uppercase tracking-widest text-[#2d9b8a]">
               What MEOK understands
             </div>
-            <h2
-              className="text-3xl sm:text-4xl font-black leading-tight text-white"
-              style={{ fontWeight: 900 }}
-            >
+            <h2 className="text-3xl font-black leading-tight text-white sm:text-4xl">
               Not an accessibility feature.
               <br />
-              <span style={{ color: "#a78bfa" }}>A core design principle.</span>
+              <GlowText variant="teal" as="span">A core design principle.</GlowText>
             </h2>
-            <p className="text-white/50 mt-4 max-w-xl mx-auto text-sm leading-relaxed">
+            <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-white/50">
               Neurodivergent needs weren&apos;t bolted on later. They shaped how MEOK was built from
               the first line of code.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+          <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
             {[
               {
                 title: "ADHD minds",
-                color: "#a78bfa",
-                border: "rgba(167,139,250,0.25)",
+                color: "#2d9b8a",
+                border: "rgba(45,155,138,0.25)",
                 points: [
                   "Task-switching support without losing context",
                   "Hyperfocus tools that work with the surge, not against it",
@@ -314,8 +269,8 @@ export default function GuardianNeurodivergentPage() {
               },
               {
                 title: "Dyslexic & processing differences",
-                color: "#5eead4",
-                border: "rgba(94,234,212,0.25)",
+                color: "#2d9b8a",
+                border: "rgba(45,155,138,0.25)",
                 points: [
                   "Plain language by default, always",
                   "No information overload",
@@ -325,196 +280,167 @@ export default function GuardianNeurodivergentPage() {
                 ],
               },
             ].map((card) => (
-              <div
+              <Surface
                 key={card.title}
-                className="rounded-2xl p-7 border"
-                style={{
-                  background: "rgba(255,255,255,0.03)",
-                  borderColor: card.border,
-                }}
+                variant="elevated"
+                glow="teal"
+                className="p-7"
+                style={{ borderColor: card.border }}
               >
                 <div
-                  className="w-2 h-2 rounded-full mb-4"
+                  className="mb-4 h-2 w-2 rounded-full"
                   style={{ backgroundColor: card.color }}
                 />
                 <h3
-                  className="font-black text-base mb-5 leading-snug"
+                  className="mb-5 text-base font-black leading-snug"
                   style={{ color: card.color }}
                 >
                   {card.title}
                 </h3>
                 <ul className="space-y-2.5">
                   {card.points.map((p) => (
-                    <li key={p} className="flex gap-2.5 text-sm text-white/60 leading-relaxed">
-                      <CheckCircle size={13} className="flex-shrink-0 mt-0.5" style={{ color: card.color }} />
+                    <li key={p} className="flex gap-2.5 text-sm leading-relaxed text-white/60">
+                      <CheckCircle size={13} className="mt-0.5 flex-shrink-0" style={{ color: card.color }} />
                       <span>{p}</span>
                     </li>
                   ))}
                 </ul>
-              </div>
+              </Surface>
             ))}
           </div>
         </div>
       </section>
 
       {/* ─── FEATURES ─────────────────────────────────────── */}
-      <section className="py-24 px-6 bg-[#0d0c18]">
-        <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-14">
-            <p className="text-xs font-mono tracking-widest uppercase mb-3 text-[#a78bfa]/60">
+      <section className="bg-[#0d0c18] px-6 py-24">
+        <div className="mx-auto max-w-5xl">
+          <div className="mb-14 text-center">
+            <p className="mb-3 text-xs font-mono uppercase tracking-widest text-[#2d9b8a]/60">
               Six ways it works for you
             </p>
-            <h2
-              className="text-3xl sm:text-4xl font-black leading-tight text-white"
-              style={{ fontWeight: 900 }}
-            >
+            <h2 className="text-3xl font-black leading-tight text-white sm:text-4xl">
               Built for the way you actually work.
               <br />
-              <span style={{ color: "#a78bfa" }}>Not the way you&apos;re supposed to.</span>
+              <GlowText variant="teal" as="span">Not the way you&apos;re supposed to.</GlowText>
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-            {FEATURES.map((feature) => {
-              const Icon = feature.icon;
-              return (
-                <div
-                  key={feature.title}
-                  className="premium-card rounded-2xl p-7 transition-all"
-                  style={{ borderLeft: `3px solid ${feature.color}55` }}
-                >
-                  <div
-                    className="w-11 h-11 rounded-xl flex items-center justify-center mb-4"
-                    style={{
-                      background: `${feature.color}18`,
-                      border: `1px solid ${feature.color}35`,
-                      color: feature.color,
-                    }}
-                  >
-                    <Icon size={20} />
-                  </div>
-                  <h3 className="font-black text-white text-base mb-3 leading-snug">
-                    {feature.title}
-                  </h3>
-                  <p className="text-sm text-white/55 leading-relaxed">{feature.description}</p>
-                </div>
-              );
-            })}
+          <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
+            {FEATURES.map((feature) => (
+              <FeatureCard
+                key={feature.title}
+                title={feature.title}
+                description={feature.description}
+                icon={feature.icon}
+                iconVariant="teal"
+                glow="teal"
+              />
+            ))}
           </div>
         </div>
       </section>
 
       {/* ─── REAL SCENARIOS ────────────────────────────────── */}
-      <section className="py-24 px-6 bg-[#f5f0e8]">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-14">
-            <p
-              className="text-xs font-mono tracking-widest uppercase mb-3"
-              style={{ color: "#1a1a2e60" }}
-            >
+      <section className="bg-[#0d0c18] px-6 py-24">
+        <div className="mx-auto max-w-4xl">
+          <div className="mb-14 text-center">
+            <p className="mb-3 text-xs font-mono uppercase tracking-widest text-[#2d9b8a]/60">
               Real scenarios
             </p>
-            <h2 className="text-3xl sm:text-4xl font-black leading-tight text-[#1a1a2e]">
+            <h2 className="text-3xl font-black leading-tight text-white sm:text-4xl">
               What it actually sounds like.
             </h2>
-            <p className="text-[#4a4a3a] mt-4 max-w-xl mx-auto text-sm leading-relaxed">
+            <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-white/50">
               These aren&apos;t edge cases. They&apos;re Tuesday.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
             {SCENARIOS.map((s) => (
-              <div
+              <Surface
                 key={s.trigger}
-                className="bg-white rounded-2xl p-7 border shadow-sm hover:shadow-md transition-shadow flex flex-col gap-4"
-                style={{ borderColor: `${s.accentColor}30` }}
+                variant="glass"
+                glow="teal"
+                className="flex flex-col gap-4 p-7"
               >
-                <p
-                  className="font-black text-sm leading-snug"
-                  style={{ color: s.accentColor }}
-                >
+                <p className="text-sm font-black leading-snug text-[#2d9b8a]">
                   {s.trigger}
                 </p>
-                <div className="h-px" style={{ background: `${s.accentColor}20` }} />
-                <p className="text-sm text-[#4a4a3a] leading-relaxed">{s.response}</p>
-              </div>
+                <div className="h-px bg-[#2d9b8a]/20" />
+                <p className="text-sm leading-relaxed text-white/60">{s.response}</p>
+              </Surface>
             ))}
           </div>
         </div>
       </section>
 
       {/* ─── DOES / NEVER DOES ────────────────────────────── */}
-      <section className="py-24 px-6 bg-[#1a1a2e]">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-14">
-            <p className="text-xs font-mono text-[#a78bfa]/70 tracking-widest uppercase mb-3">
+      <section className="bg-[#13121f] px-6 py-24">
+        <div className="mx-auto max-w-4xl">
+          <div className="mb-14 text-center">
+            <p className="mb-3 text-xs font-mono uppercase tracking-widest text-[#2d9b8a]/70">
               The honest version
             </p>
-            <h2
-              className="text-3xl sm:text-4xl font-black text-white leading-tight"
-              style={{ fontWeight: 900 }}
-            >
+            <h2 className="text-3xl font-black leading-tight text-white sm:text-4xl">
               It works with you.
               <br />
-              <span style={{ color: "#a78bfa" }}>Never around you.</span>
+              <GlowText variant="teal" as="span">Never around you.</GlowText>
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 mb-10">
-            <div className="p-7 rounded-2xl bg-green-500/[0.05] border border-green-500/15">
-              <h3 className="text-xs font-black text-green-400 mb-5 uppercase tracking-widest flex items-center gap-2">
+          <div className="mb-10 grid grid-cols-1 gap-8 sm:grid-cols-2">
+            <Surface variant="elevated" className="border-green-500/15 bg-green-500/[0.05] p-7">
+              <h3 className="mb-5 flex items-center gap-2 text-xs font-black uppercase tracking-widest text-green-400">
                 <CheckCircle size={14} /> What MEOK does
               </h3>
               <div className="space-y-3">
                 {DOES.map((item) => (
                   <div key={item} className="flex gap-3 text-sm text-white/70">
-                    <CheckCircle size={14} className="text-green-400 flex-shrink-0 mt-0.5" />
+                    <CheckCircle size={14} className="mt-0.5 flex-shrink-0 text-green-400" />
                     <span>{item}</span>
                   </div>
                 ))}
               </div>
-            </div>
+            </Surface>
 
-            <div className="p-7 rounded-2xl bg-red-500/[0.05] border border-red-500/15">
-              <h3 className="text-xs font-black text-red-400 mb-5 uppercase tracking-widest flex items-center gap-2">
+            <Surface variant="elevated" className="border-red-500/15 bg-red-500/[0.05] p-7">
+              <h3 className="mb-5 flex items-center gap-2 text-xs font-black uppercase tracking-widest text-red-400">
                 <XCircle size={14} /> What MEOK never does
               </h3>
               <div className="space-y-3">
                 {NEVER_DOES.map((item) => (
                   <div key={item} className="flex gap-3 text-sm text-white/70">
-                    <XCircle size={14} className="text-red-400 flex-shrink-0 mt-0.5" />
+                    <XCircle size={14} className="mt-0.5 flex-shrink-0 text-red-400" />
                     <span>{item}</span>
                   </div>
                 ))}
               </div>
-            </div>
+            </Surface>
           </div>
 
-          <div
-            className="p-5 rounded-2xl border text-sm text-white/60 leading-relaxed text-center"
-            style={{
-              background: "rgba(167,139,250,0.06)",
-              borderColor: "rgba(167,139,250,0.2)",
-            }}
+          <Surface
+            variant="glass"
+            glow="teal"
+            className="p-5 text-center text-sm leading-relaxed text-white/60"
           >
-            <span className="text-[#a78bfa] font-bold">Your patterns are yours. </span>
+            <span className="font-bold text-[#2d9b8a]">Your patterns are yours. </span>
             MEOK uses what you share to serve you better. It never shares it, sells it, or uses it
             to build models. What you tell MEOK about how you work stays between you and MEOK.
-          </div>
+          </Surface>
         </div>
       </section>
 
       {/* ─── FAQ ─────────────────────────────────────────── */}
-      <section className="py-24 px-6 bg-[#0d0c18]">
-        <div className="max-w-3xl mx-auto">
-          <div className="text-center mb-14">
-            <p className="text-xs font-mono text-[#a78bfa]/70 tracking-widest uppercase mb-3">
+      <section className="bg-[#0d0c18] px-6 py-24">
+        <div className="mx-auto max-w-3xl">
+          <div className="mb-14 text-center">
+            <p className="mb-3 text-xs font-mono uppercase tracking-widest text-[#2d9b8a]/70">
               Good questions
             </p>
-            <h2 className="text-3xl sm:text-4xl font-black text-white mb-3">
+            <h2 className="mb-3 text-3xl font-black text-white sm:text-4xl">
               Things worth knowing.
             </h2>
-            <p className="text-white/45 text-sm max-w-md mx-auto">
+            <p className="mx-auto max-w-md text-sm text-white/45">
               We built this with a lot of people who had good reasons to ask hard questions.
             </p>
           </div>
@@ -523,53 +449,40 @@ export default function GuardianNeurodivergentPage() {
       </section>
 
       {/* ─── CTA ─────────────────────────────────────────── */}
-      <section className="relative py-32 px-6 overflow-hidden bg-[#0d0c18]">
-        <div className="absolute inset-0 pointer-events-none" aria-hidden>
-          <div
-            className="absolute rounded-full blur-[200px] opacity-20 w-[700px] h-[400px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-            style={{ background: "#a78bfa" }}
-          />
+      <section className="relative overflow-hidden bg-[#0d0c18] px-6 py-32">
+        <div className="pointer-events-none absolute inset-0" aria-hidden>
+          <div className="blob-purple absolute top-1/2 left-1/2 h-[400px] w-[700px] -translate-x-1/2 -translate-y-1/2 opacity-20" />
         </div>
-        <div className="relative max-w-3xl mx-auto text-center">
-          <div
-            className="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6 float-slow"
-            style={{
-              background: "rgba(167,139,250,0.15)",
-              border: "1px solid rgba(167,139,250,0.35)",
-            }}
-          >
-            <Sparkles size={32} color="#a78bfa" strokeWidth={1.5} />
+        <div className="relative mx-auto max-w-3xl text-center">
+          <div className="mb-6 flex justify-center">
+            <IconOrb icon={Sparkles} variant="teal" size="lg" pulse />
           </div>
-          <h2
-            className="text-4xl sm:text-5xl font-black leading-[0.95] mb-4 text-white"
-            style={{ fontWeight: 900 }}
-          >
+          <h2 className="mb-4 text-4xl font-black leading-[0.95] text-white sm:text-5xl">
             This was built
             <br />
-            <span style={{ color: "#a78bfa" }}>for you.</span>
+            <GlowText variant="teal" as="span">for you.</GlowText>
           </h2>
-          <p className="text-lg text-white/40 max-w-xl mx-auto mb-10 leading-relaxed">
+          <p className="mx-auto mb-10 max-w-xl text-lg leading-relaxed text-white/40">
             Not retrofitted. Not a setting buried in accessibility options. Built, from the
             beginning, for minds that work differently.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col justify-center gap-4 sm:flex-row">
             <Link
               href="/hatch"
-              className="group inline-flex items-center gap-2 px-8 py-4 rounded-full font-bold transition-all text-sm hover:shadow-[0_0_40px_rgba(167,139,250,0.4)]"
-              style={{ background: "#a78bfa", color: "#0d0c18" }}
+              className="group inline-flex items-center gap-2 rounded-full bg-[#c9a84c] px-8 py-4 text-sm font-bold text-[#0d0c18] transition-opacity hover:opacity-90"
             >
               Start for free
-              <span className="group-hover:translate-x-1 transition-transform">→</span>
+              <span className="transition-transform group-hover:translate-x-1">→</span>
             </Link>
             <Link
               href="/guardian"
-              className="group inline-flex items-center gap-2 px-8 py-4 rounded-full font-bold text-white border border-white/20 hover:bg-white/10 transition-colors text-sm"
+              className="group inline-flex items-center gap-2 rounded-full border border-white/20 px-8 py-4 text-sm font-bold text-white transition-colors hover:bg-white/10"
             >
               Guardian overview
-              <span className="group-hover:translate-x-1 transition-transform">→</span>
+              <span className="transition-transform group-hover:translate-x-1">→</span>
             </Link>
           </div>
-          <p className="mt-6 text-xs text-white/20 font-mono">
+          <p className="mt-6 text-xs font-mono text-white/20">
             Free to start · No credit card · No pressure · Your data, always
           </p>
         </div>

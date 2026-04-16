@@ -14,6 +14,7 @@ import {
   ChevronDown,
   ChevronUp,
 } from "lucide-react";
+import { Surface, IconOrb, FeatureCard, GlowText } from "@/components/design-system";
 
 const FEATURES = [
   {
@@ -160,138 +161,113 @@ function FAQAccordion() {
   const [open, setOpen] = useState<number | null>(null);
   return (
     <div className="space-y-3">
-      {FAQS.map((faq, i) => (
-        <div
-          key={faq.q}
-          className="rounded-2xl border overflow-hidden transition-all"
-          style={{
-            background: open === i ? "rgba(201,168,76,0.06)" : "rgba(255,255,255,0.03)",
-            borderColor: open === i ? "rgba(201,168,76,0.3)" : "rgba(255,255,255,0.08)",
-          }}
-        >
-          <button
-            type="button"
-            className="w-full flex items-center justify-between gap-4 px-6 py-5 text-left"
-            onClick={() => setOpen(open === i ? null : i)}
-            aria-expanded={open === i}
+      {FAQS.map((faq, i) => {
+        const isOpen = open === i;
+        return (
+          <div
+            key={faq.q}
+            className={`rounded-2xl border overflow-hidden transition-all ${
+              isOpen
+                ? "bg-[#2d9b8a]/[0.06] border-[#2d9b8a]/30"
+                : "bg-white/[0.03] border-white/[0.08]"
+            }`}
           >
-            <span className="font-bold text-white/90 text-sm sm:text-base leading-snug">{faq.q}</span>
-            <span className="flex-shrink-0 text-[#c9a84c]">
-              {open === i ? <ChevronUp size={18} /> : <ChevronDown size={18} />}
-            </span>
-          </button>
-          {open === i && (
-            <div className="px-6 pb-5">
-              <div className="h-px bg-white/[0.06] mb-4" />
-              <p className="text-sm text-white/55 leading-relaxed">{faq.a}</p>
-            </div>
-          )}
-        </div>
-      ))}
+            <button
+              type="button"
+              className="w-full flex items-center justify-between gap-4 px-6 py-5 text-left"
+              onClick={() => setOpen(isOpen ? null : i)}
+              aria-expanded={isOpen}
+            >
+              <span className="font-bold text-white/90 text-sm sm:text-base leading-snug">{faq.q}</span>
+              <span className="flex-shrink-0 text-[#2d9b8a]">
+                {isOpen ? <ChevronUp size={18} /> : <ChevronDown size={18} />}
+              </span>
+            </button>
+            {isOpen && (
+              <div className="px-6 pb-5">
+                <div className="h-px bg-white/[0.06] mb-4" />
+                <p className="text-sm text-white/55 leading-relaxed">{faq.a}</p>
+              </div>
+            )}
+          </div>
+        );
+      })}
     </div>
   );
 }
 
 export default function GuardianPersonalPage() {
   return (
-    <div
-      className="min-h-screen bg-[#0d0c18] text-white overflow-x-hidden"
-      style={{ fontFamily: "'DM Sans', sans-serif" }}
-    >
+    <div className="min-h-screen overflow-x-hidden bg-[#0d0c18] text-white">
 
       {/* ─── HERO ─────────────────────────────────────────── */}
-      <section className="relative min-h-[90vh] flex flex-col items-center justify-center px-6 pt-20 pb-24 overflow-hidden">
-        <div className="absolute inset-0 pointer-events-none" aria-hidden>
-          <div className="blob-gold w-[700px] h-[600px] top-[-10%] left-[-10%]" />
-          <div
-            className="blob-gold w-[500px] h-[400px] bottom-[10%] right-[-5%]"
-            style={{ animationDelay: "3s" }}
-          />
+      <section className="relative flex min-h-[90vh] flex-col items-center justify-center overflow-hidden px-6 pt-20 pb-24">
+        <div className="pointer-events-none absolute inset-0" aria-hidden>
+          <div className="blob-gold absolute top-[-10%] left-[-10%] h-[600px] w-[700px] opacity-20" />
+          <div className="blob-gold absolute bottom-[10%] right-[-5%] h-[400px] w-[500px] opacity-15" style={{ animationDelay: "3s" }} />
         </div>
 
-        <div className="relative mb-8 inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#c9a84c]/10 border border-[#c9a84c]/30 text-[#c9a84c] text-xs font-bold tracking-widest uppercase">
+        <div className="relative mb-8 inline-flex items-center gap-2 rounded-full border border-[#2d9b8a]/30 bg-[#2d9b8a]/10 px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-[#2d9b8a]">
           Guardian Personal · Protection for you
         </div>
 
         <div className="relative mb-10 float-slow">
-          <div
-            className="w-24 h-24 rounded-2xl flex items-center justify-center"
-            style={{
-              background: "rgba(201,168,76,0.12)",
-              border: "1px solid rgba(201,168,76,0.3)",
-            }}
-          >
-            <Shield size={44} color="#c9a84c" strokeWidth={1.5} />
-          </div>
-          <div className="absolute -inset-3 rounded-3xl border border-[#c9a84c]/15 animate-pulse" />
+          <IconOrb icon={Shield} variant="teal" size="lg" pulse />
         </div>
 
-        <h1
-          className="text-[3rem] sm:text-6xl lg:text-7xl font-black text-center leading-[1.02] tracking-tight max-w-4xl mb-6 text-white relative"
-          style={{ fontWeight: 900 }}
-        >
+        <h1 className="relative mb-6 max-w-4xl text-center text-[3rem] font-black leading-[1.02] tracking-tight text-white sm:text-6xl lg:text-7xl">
           The AI that protects{" "}
-          <span className="text-gradient-gold">you.</span>
+          <GlowText variant="teal" as="span">you.</GlowText>
           <br />
           Not just your family.
         </h1>
 
-        <p className="relative text-lg sm:text-xl text-white/60 text-center max-w-2xl leading-relaxed mb-4">
+        <p className="relative mb-4 max-w-2xl text-center text-lg leading-relaxed text-white/60 sm:text-xl">
           For the people who miss social cues and get manipulated. Who struggle with contracts and
           fine print. Who&apos;ve been taken advantage of and never want it to happen again.
         </p>
-        <p className="relative text-base text-white/45 text-center max-w-xl leading-relaxed mb-10">
+        <p className="relative mb-10 max-w-xl text-center text-base leading-relaxed text-white/45">
           MEOK Guardian Personal is the AI that reads what they want you to miss, remembers what
           they promised you, and notices what you can&apos;t always see in the moment.
         </p>
 
-        <div className="relative flex flex-col sm:flex-row gap-4 items-center">
+        <div className="relative flex flex-col items-center gap-4 sm:flex-row">
           <Link
             href="/hatch"
-            className="group flex items-center gap-2 px-8 py-4 rounded-full font-bold text-[#0d0c18] bg-[#c9a84c] hover:bg-[#e0bb60] transition-all hover:shadow-[0_0_40px_rgba(201,168,76,0.45)] text-base"
+            className="group flex items-center gap-2 rounded-full bg-[#c9a84c] px-8 py-4 text-base font-bold text-[#0d0c18] transition-opacity hover:opacity-90"
           >
             Protect yourself free
-            <span className="group-hover:translate-x-1 transition-transform">→</span>
+            <span className="transition-transform group-hover:translate-x-1">→</span>
           </Link>
           <Link
             href="/guardian"
-            className="group flex items-center gap-2 px-7 py-3.5 rounded-full font-bold text-white/60 hover:text-white transition-colors text-sm"
+            className="group flex items-center gap-2 rounded-full px-7 py-3.5 text-sm font-bold text-white/60 transition-colors hover:text-white"
           >
             Guardian for families →
           </Link>
         </div>
-        <p className="relative mt-5 text-xs text-white/25 font-mono">
+        <p className="relative mt-5 text-xs font-mono text-white/25">
           Free to start · No credit card · Your data never leaves your vault
         </p>
       </section>
 
       {/* ─── MANIFESTO ────────────────────────────────────── */}
-      <section className="py-20 px-6 relative overflow-hidden" style={{ background: "#100a00" }}>
-        <div className="absolute inset-0 pointer-events-none" aria-hidden>
-          <div className="blob-gold w-[600px] h-[500px] top-0 right-[-10%]" style={{ opacity: 0.5 }} />
+      <section className="relative overflow-hidden bg-[#0d0c18] px-6 py-20">
+        <div className="pointer-events-none absolute inset-0" aria-hidden>
+          <div className="blob-gold absolute top-0 right-[-10%] h-[500px] w-[600px] opacity-20" />
         </div>
-        <div className="relative max-w-3xl mx-auto">
-          <div
-            className="mb-6 inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold tracking-widest uppercase"
-            style={{
-              background: "rgba(201,168,76,0.12)",
-              color: "#c9a84c",
-              border: "1px solid rgba(201,168,76,0.25)",
-            }}
-          >
+        <div className="relative mx-auto max-w-3xl">
+          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-[#c9a84c]/25 bg-[#c9a84c]/10 px-3 py-1 text-xs font-bold uppercase tracking-widest text-[#c9a84c]">
             Nobody in AI is building this. We are.
           </div>
 
-          <h2
-            className="text-3xl sm:text-4xl font-black leading-tight mb-8"
-            style={{ color: "#fbbf24", fontWeight: 900 }}
-          >
+          <h2 className="mb-8 text-3xl font-black leading-tight text-white sm:text-4xl">
             There are a thousand apps to protect your family.
             <br />
-            <span className="text-white">There are almost none to protect you.</span>
+            <GlowText variant="teal" as="span">There are almost none to protect you.</GlowText>
           </h2>
 
-          <div className="space-y-5 text-white/65 text-base leading-relaxed">
+          <div className="space-y-5 text-base leading-relaxed text-white/65">
             <p>
               Most protection technology is built for families — parents watching children, adult
               children watching parents. It assumes you are the one doing the watching.
@@ -310,10 +286,7 @@ export default function GuardianPersonalPage() {
               accomplished — and still get taken advantage of because some people are very, very
               good at it.
             </p>
-            <p
-              className="text-white/85 font-semibold border-l-2 pl-5"
-              style={{ borderColor: "#c9a84c" }}
-            >
+            <p className="border-l-2 border-[#c9a84c] pl-5 font-semibold text-white/85">
               MEOK Guardian Personal was built for those people. It was built because the person who
               founded this company is one of them — and it would have changed things.
             </p>
@@ -322,7 +295,7 @@ export default function GuardianPersonalPage() {
               lawyers and financial advisors. You deserve to know when someone is manipulating you.
               You deserve to never be gaslit about what was promised.
             </p>
-            <p className="text-[#c9a84c] font-bold">
+            <p className="font-bold text-[#c9a84c]">
               This is that. Finally.
             </p>
           </div>
@@ -330,272 +303,215 @@ export default function GuardianPersonalPage() {
       </section>
 
       {/* ─── FEATURES ─────────────────────────────────────── */}
-      <section className="py-24 px-6 bg-[#0d0c18]">
-        <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-14">
-            <p className="text-xs font-mono tracking-widest uppercase mb-3 text-[#c9a84c]/60">
+      <section className="bg-[#0d0c18] px-6 py-24">
+        <div className="mx-auto max-w-5xl">
+          <div className="mb-14 text-center">
+            <p className="mb-3 text-xs font-mono uppercase tracking-widest text-[#2d9b8a]/60">
               Six layers of protection
             </p>
-            <h2
-              className="text-3xl sm:text-4xl font-black leading-tight text-white"
-              style={{ fontWeight: 900 }}
-            >
+            <h2 className="text-3xl font-black leading-tight text-white sm:text-4xl">
               Everything they had.
               <br />
-              <span className="text-gradient-gold">Now you have it too.</span>
+              <GlowText variant="teal" as="span">Now you have it too.</GlowText>
             </h2>
-            <p className="text-white/50 mt-4 max-w-xl mx-auto text-sm leading-relaxed">
+            <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-white/50">
               Expensive lawyers read contracts for their clients. Financial advisors track promises
               for wealthy clients. MEOK does all of it — for you.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-            {FEATURES.map((feature) => {
-              const Icon = feature.icon;
-              return (
-                <div
-                  key={feature.title}
-                  className="premium-card rounded-2xl p-7 hover:border-[#c9a84c]/30 transition-all"
-                  style={{ borderLeft: "3px solid rgba(201,168,76,0.35)" }}
-                >
-                  <div className="icon-gold w-11 h-11 rounded-xl flex items-center justify-center mb-4">
-                    <Icon size={20} />
-                  </div>
-                  <h3 className="font-black text-white text-base mb-1 leading-snug">
-                    {feature.title}
-                  </h3>
-                  <p className="text-[#c9a84c] text-xs font-semibold mb-4 leading-snug italic">
-                    &ldquo;{feature.tagline}&rdquo;
-                  </p>
-                  <ul className="space-y-2">
-                    {feature.bullets.map((b) => (
-                      <li key={b} className="flex gap-2.5 text-sm text-white/55 leading-relaxed">
-                        <CheckCircle
-                          size={13}
-                          className="text-[#c9a84c] flex-shrink-0 mt-0.5"
-                        />
-                        <span>{b}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              );
-            })}
+          <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
+            {FEATURES.map((feature) => (
+              <FeatureCard
+                key={feature.title}
+                title={feature.title}
+                description={
+                  <>
+                    <p className="mb-4 text-xs font-semibold italic leading-snug text-[#2d9b8a]">
+                      &ldquo;{feature.tagline}&rdquo;
+                    </p>
+                    <ul className="space-y-2">
+                      {feature.bullets.map((b) => (
+                        <li key={b} className="flex gap-2.5 text-sm leading-relaxed text-white/55">
+                          <CheckCircle size={13} className="mt-0.5 flex-shrink-0 text-[#2d9b8a]" />
+                          <span>{b}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </>
+                }
+                icon={feature.icon}
+                iconVariant="teal"
+                glow="teal"
+              />
+            ))}
           </div>
         </div>
       </section>
 
       {/* ─── SCENARIOS ────────────────────────────────────── */}
-      <section
-        className="py-24 px-6 relative overflow-hidden"
-        style={{ background: "#0a0820" }}
-      >
-        <div className="absolute inset-0 pointer-events-none" aria-hidden>
-          <div className="blob-gold w-[600px] h-[500px] top-[-10%] right-[-5%]" style={{ opacity: 0.6 }} />
-          <div
-            className="blob-gold w-[400px] h-[400px] bottom-[10%] left-[-5%]"
-            style={{ animationDelay: "4s", opacity: 0.4 }}
-          />
+      <section className="relative overflow-hidden bg-[#0d0c18] px-6 py-24">
+        <div className="pointer-events-none absolute inset-0" aria-hidden>
+          <div className="blob-gold absolute top-[-10%] right-[-5%] h-[500px] w-[600px] opacity-20" />
+          <div className="blob-gold absolute bottom-[10%] left-[-5%] h-[400px] w-[400px] opacity-15" style={{ animationDelay: "4s" }} />
         </div>
-        <div className="relative max-w-4xl mx-auto">
-          <div className="text-center mb-14">
-            <div
-              className="mb-4 inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold tracking-widest uppercase"
-              style={{
-                background: "rgba(201,168,76,0.12)",
-                color: "#c9a84c",
-                border: "1px solid rgba(201,168,76,0.25)",
-              }}
-            >
+        <div className="relative mx-auto max-w-4xl">
+          <div className="mb-14 text-center">
+            <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-[#c9a84c]/25 bg-[#c9a84c]/10 px-3 py-1 text-xs font-bold uppercase tracking-widest text-[#c9a84c]">
               Real scenarios
             </div>
-            <h2
-              className="text-3xl sm:text-4xl font-black leading-tight text-white"
-              style={{ fontWeight: 900 }}
-            >
+            <h2 className="text-3xl font-black leading-tight text-white sm:text-4xl">
               What it actually catches.
             </h2>
-            <p className="text-white/50 mt-4 max-w-xl mx-auto text-sm leading-relaxed">
+            <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-white/50">
               These aren&apos;t hypotheticals. These are the kinds of things that happen to people
               every day — and that MEOK would have caught.
             </p>
           </div>
 
           <div className="space-y-5">
-            {SCENARIOS.map((s) => {
-              const Icon = s.icon;
-              return (
-                <div
-                  key={s.situation}
-                  className="premium-card p-7 rounded-2xl"
-                  style={{ borderLeft: "3px solid rgba(201,168,76,0.4)" }}
-                >
-                  <div className="flex items-start gap-4">
-                    <div className="icon-gold w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5">
-                      <Icon size={18} />
-                    </div>
-                    <div>
-                      <p className="font-black text-[#c9a84c] text-xs uppercase tracking-widest mb-2 font-mono">
-                        {s.situation}
-                      </p>
-                      <p className="text-sm text-white/70 leading-relaxed">{s.story}</p>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
+            {SCENARIOS.map((s) => (
+              <FeatureCard
+                key={s.situation}
+                title={s.situation}
+                description={s.story}
+                icon={s.icon}
+                iconVariant="teal"
+                glow="teal"
+              />
+            ))}
           </div>
         </div>
       </section>
 
       {/* ─── WHO THIS IS FOR ──────────────────────────────── */}
-      <section className="py-24 px-6 bg-[#f5f0e8]">
-        <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-14">
-            <p
-              className="text-xs font-mono tracking-widest uppercase mb-3"
-              style={{ color: "#1a1a2e60" }}
-            >
+      <section className="bg-[#0d0c18] px-6 py-24">
+        <div className="mx-auto max-w-5xl">
+          <div className="mb-14 text-center">
+            <p className="mb-3 text-xs font-mono uppercase tracking-widest text-[#2d9b8a]/60">
               Who this is for
             </p>
-            <h2 className="text-3xl sm:text-4xl font-black leading-tight text-[#1a1a2e]">
+            <h2 className="text-3xl font-black leading-tight text-white sm:text-4xl">
               If any of these sound like you,{" "}
-              <span style={{ color: "#c9a84c" }}>this is yours.</span>
+              <GlowText variant="teal" as="span">this is yours.</GlowText>
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {[
               {
                 label: "Autistic & neurodivergent people",
                 detail:
                   "Social manipulation often works precisely because autistic people are honest and expect others to be too. MEOK reads subtext, flags tactics, and gives you a second opinion on interactions — without judgement.",
-                color: "#c9a84c",
-                border: "#c9a84c30",
               },
               {
                 label: "People with anxiety",
                 detail:
                   "Anxiety can make it hard to trust your own read on a situation. MEOK gives you an objective pattern — something to look at that isn't your own swirling thoughts. Is this person actually behaving strangely, or is it me? Now you can check.",
-                color: "#c9a84c",
-                border: "#c9a84c30",
               },
               {
                 label: "Anyone who's been defrauded",
                 detail:
                   "Once it's happened, it changes how you see the world. MEOK is the layer of protection you wish you'd had — and now you do. Quiet, steady, always reading for the patterns that came before.",
-                color: "#c9a84c",
-                border: "#c9a84c30",
               },
               {
                 label: "People who struggle with documents",
                 detail:
                   "Dense legal language is deliberately hard to read. It protects the person who wrote it, not you. MEOK levels that playing field — every time, for every document, in plain English.",
-                color: "#c9a84c",
-                border: "#c9a84c30",
               },
               {
                 label: "People who've been gaslit",
                 detail:
                   "When you've been told often enough that you're imagining things, you stop trusting your own memory. MEOK's promise records are a ledger that doesn't forget, doesn't doubt itself, and can't be rewritten.",
-                color: "#c9a84c",
-                border: "#c9a84c30",
               },
               {
                 label: "Anyone who wants a second opinion",
                 detail:
                   "You don't have to have a diagnosis or a history of trauma. If you've ever looked at a message and thought \"is this normal?\" — MEOK is the second opinion you can ask at 11pm without bothering anyone.",
-                color: "#c9a84c",
-                border: "#c9a84c30",
               },
             ].map((p) => (
-              <div
+              <Surface
                 key={p.label}
-                className="bg-white rounded-2xl p-7 border shadow-sm hover:shadow-md transition-shadow flex flex-col gap-4"
-                style={{ borderColor: p.border }}
+                variant="elevated"
+                glow="teal"
+                className="flex flex-col gap-4 p-7"
               >
-                <div className="w-2 h-2 rounded-full" style={{ backgroundColor: p.color }} />
-                <h3 className="font-black text-sm leading-snug text-[#1a1a2e]">{p.label}</h3>
-                <p className="text-sm text-[#4a4a3a] leading-relaxed">{p.detail}</p>
-              </div>
+                <div className="h-2 w-2 rounded-full bg-[#2d9b8a]" />
+                <h3 className="text-sm font-black leading-snug text-white">{p.label}</h3>
+                <p className="text-sm leading-relaxed text-white/60">{p.detail}</p>
+              </Surface>
             ))}
           </div>
         </div>
       </section>
 
       {/* ─── DOES / NEVER DOES ────────────────────────────── */}
-      <section className="py-24 px-6 bg-[#1a1a2e]">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-14">
-            <p className="text-xs font-mono text-[#c9a84c]/70 tracking-widest uppercase mb-3">
+      <section className="bg-[#13121f] px-6 py-24">
+        <div className="mx-auto max-w-4xl">
+          <div className="mb-14 text-center">
+            <p className="mb-3 text-xs font-mono uppercase tracking-widest text-[#2d9b8a]/70">
               The honest version
             </p>
-            <h2
-              className="text-3xl sm:text-4xl font-black text-white leading-tight"
-              style={{ fontWeight: 900 }}
-            >
+            <h2 className="text-3xl font-black leading-tight text-white sm:text-4xl">
               It works for you.
               <br />
-              <span className="text-gradient-gold">Never against you.</span>
+              <GlowText variant="teal" as="span">Never against you.</GlowText>
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 mb-10">
-            <div className="p-7 rounded-2xl bg-green-500/[0.05] border border-green-500/15">
-              <h3 className="text-xs font-black text-green-400 mb-5 uppercase tracking-widest flex items-center gap-2">
+          <div className="mb-10 grid grid-cols-1 gap-8 sm:grid-cols-2">
+            <Surface variant="elevated" className="border-green-500/15 bg-green-500/[0.05] p-7">
+              <h3 className="mb-5 flex items-center gap-2 text-xs font-black uppercase tracking-widest text-green-400">
                 <Eye size={14} /> What Guardian Personal does
               </h3>
               <div className="space-y-3">
                 {PERSONAL_DOES.map((item) => (
                   <div key={item} className="flex gap-3 text-sm text-white/70">
-                    <CheckCircle size={14} className="text-green-400 flex-shrink-0 mt-0.5" />
+                    <CheckCircle size={14} className="mt-0.5 flex-shrink-0 text-green-400" />
                     <span>{item}</span>
                   </div>
                 ))}
               </div>
-            </div>
+            </Surface>
 
-            <div className="p-7 rounded-2xl bg-red-500/[0.05] border border-red-500/15">
-              <h3 className="text-xs font-black text-red-400 mb-5 uppercase tracking-widest flex items-center gap-2">
+            <Surface variant="elevated" className="border-red-500/15 bg-red-500/[0.05] p-7">
+              <h3 className="mb-5 flex items-center gap-2 text-xs font-black uppercase tracking-widest text-red-400">
                 <XCircle size={14} /> What Guardian Personal never does
               </h3>
               <div className="space-y-3">
                 {PERSONAL_NEVER.map((item) => (
                   <div key={item} className="flex gap-3 text-sm text-white/70">
-                    <XCircle size={14} className="text-red-400 flex-shrink-0 mt-0.5" />
+                    <XCircle size={14} className="mt-0.5 flex-shrink-0 text-red-400" />
                     <span>{item}</span>
                   </div>
                 ))}
               </div>
-            </div>
+            </Surface>
           </div>
 
-          <div
-            className="p-5 rounded-2xl border text-sm text-white/60 leading-relaxed text-center"
-            style={{
-              background: "rgba(201,168,76,0.06)",
-              borderColor: "rgba(201,168,76,0.2)",
-            }}
+          <Surface
+            variant="glass"
+            glow="teal"
+            className="p-5 text-center text-sm leading-relaxed text-white/60"
           >
-            <span className="text-[#c9a84c] font-bold">You are the only person who sees your data. </span>
+            <span className="font-bold text-[#2d9b8a]">You are the only person who sees your data. </span>
             Guardian Personal is built for your protection alone. Not your employer&apos;s, not your
             family&apos;s, not ours. Yours.
-          </div>
+          </Surface>
         </div>
       </section>
 
       {/* ─── FAQ ─────────────────────────────────────────── */}
-      <section className="py-24 px-6 bg-[#0d0c18]">
-        <div className="max-w-3xl mx-auto">
-          <div className="text-center mb-14">
-            <p className="text-xs font-mono text-[#c9a84c]/70 tracking-widest uppercase mb-3">
+      <section className="bg-[#0d0c18] px-6 py-24">
+        <div className="mx-auto max-w-3xl">
+          <div className="mb-14 text-center">
+            <p className="mb-3 text-xs font-mono uppercase tracking-widest text-[#2d9b8a]/70">
               Hard questions
             </p>
-            <h2 className="text-3xl sm:text-4xl font-black text-white mb-3">
+            <h2 className="mb-3 text-3xl font-black text-white sm:text-4xl">
               Questions worth asking.
             </h2>
-            <p className="text-white/45 text-sm max-w-md mx-auto">
+            <p className="mx-auto max-w-md text-sm text-white/45">
               We&apos;d rather you asked them of us than found out later.
             </p>
           </div>
@@ -604,17 +520,14 @@ export default function GuardianPersonalPage() {
       </section>
 
       {/* ─── EMPOWERMENT CALLOUT ─────────────────────────── */}
-      <section className="py-16 px-6 bg-[#0d0c18]">
-        <div className="max-w-3xl mx-auto text-center">
-          <h3
-            className="font-black text-white mb-5 leading-tight"
-            style={{ fontSize: "clamp(1.6rem, 4vw, 2.2rem)" }}
-          >
+      <section className="bg-[#0d0c18] px-6 py-16">
+        <div className="mx-auto max-w-3xl text-center">
+          <h3 className="mb-5 font-black leading-tight text-white" style={{ fontSize: "clamp(1.6rem, 4vw, 2.2rem)" }}>
             Nobody is coming to save you.
             <br />
-            <span style={{ color: "#c9a84c" }}>But you can save yourself.</span>
+            <GlowText variant="teal" as="span">But you can save yourself.</GlowText>
           </h3>
-          <p className="text-white/65 leading-relaxed max-w-2xl mx-auto mb-8">
+          <p className="mx-auto mb-8 max-w-2xl leading-relaxed text-white/65">
             MEOK was built because the systems that should protect you often don&apos;t. Your
             employer&apos;s contract. Your landlord&apos;s lease. The business partner who knows more than
             you. You deserve an AI that reads the small print, remembers what was promised, and
@@ -622,61 +535,49 @@ export default function GuardianPersonalPage() {
           </p>
           <Link
             href="/start"
-            className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full font-bold text-[#0d0c18] bg-[#c9a84c] hover:bg-[#e0bb60] transition-all text-sm hover:shadow-[0_0_30px_rgba(201,168,76,0.4)]"
+            className="inline-flex items-center gap-2 rounded-full bg-[#c9a84c] px-7 py-3.5 text-sm font-bold text-[#0d0c18] transition-opacity hover:opacity-90"
           >
             Start protecting yourself
-            <span className="group-hover:translate-x-1 transition-transform">→</span>
+            <span className="transition-transform group-hover:translate-x-1">→</span>
           </Link>
         </div>
       </section>
 
       {/* ─── CTA ─────────────────────────────────────────── */}
-      <section className="relative py-32 px-6 overflow-hidden bg-[#0d0c18]">
-        <div className="absolute inset-0 pointer-events-none" aria-hidden>
-          <div
-            className="blob-gold w-[700px] h-[400px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-            style={{ opacity: 0.65 }}
-          />
+      <section className="relative overflow-hidden bg-[#0d0c18] px-6 py-32">
+        <div className="pointer-events-none absolute inset-0" aria-hidden>
+          <div className="blob-gold absolute top-1/2 left-1/2 h-[400px] w-[700px] -translate-x-1/2 -translate-y-1/2 opacity-20" />
         </div>
-        <div className="relative max-w-3xl mx-auto text-center">
-          <div
-            className="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6 float-slow"
-            style={{
-              background: "rgba(201,168,76,0.15)",
-              border: "1px solid rgba(201,168,76,0.35)",
-            }}
-          >
-            <Shield size={32} color="#c9a84c" strokeWidth={1.5} />
+        <div className="relative mx-auto max-w-3xl text-center">
+          <div className="mb-6 flex justify-center">
+            <IconOrb icon={Shield} variant="teal" size="lg" pulse />
           </div>
-          <h2
-            className="text-4xl sm:text-5xl font-black leading-[0.95] mb-4 text-white"
-            style={{ fontWeight: 900 }}
-          >
+          <h2 className="mb-4 text-4xl font-black leading-[0.95] text-white sm:text-5xl">
             You deserve to feel safe
             <br />
-            <span className="text-gradient-gold">in your own life.</span>
+            <GlowText variant="teal" as="span">in your own life.</GlowText>
           </h2>
-          <p className="text-lg text-white/40 max-w-xl mx-auto mb-10 leading-relaxed">
+          <p className="mx-auto mb-10 max-w-xl text-lg leading-relaxed text-white/40">
             Not paranoid. Not naive. Protected — with the kind of intelligence that reads what
             others miss and remembers what others forget.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col justify-center gap-4 sm:flex-row">
             <Link
               href="/hatch"
-              className="group inline-flex items-center gap-2 px-8 py-4 rounded-full font-bold text-[#0d0c18] bg-[#c9a84c] hover:bg-[#e0bb60] transition-all text-sm hover:shadow-[0_0_40px_rgba(201,168,76,0.4)]"
+              className="group inline-flex items-center gap-2 rounded-full bg-[#c9a84c] px-8 py-4 text-sm font-bold text-[#0d0c18] transition-opacity hover:opacity-90"
             >
               Protect yourself free
-              <span className="group-hover:translate-x-1 transition-transform">→</span>
+              <span className="transition-transform group-hover:translate-x-1">→</span>
             </Link>
             <Link
               href="/guardian"
-              className="group inline-flex items-center gap-2 px-8 py-4 rounded-full font-bold text-white border border-white/20 hover:bg-white/10 transition-colors text-sm"
+              className="group inline-flex items-center gap-2 rounded-full border border-white/20 px-8 py-4 text-sm font-bold text-white transition-colors hover:bg-white/10"
             >
               Guardian for families
-              <span className="group-hover:translate-x-1 transition-transform">→</span>
+              <span className="transition-transform group-hover:translate-x-1">→</span>
             </Link>
           </div>
-          <p className="mt-6 text-xs text-white/20 font-mono">
+          <p className="mt-6 text-xs font-mono text-white/20">
             Free to start · No credit card · Consent-first · Your data, always
           </p>
         </div>

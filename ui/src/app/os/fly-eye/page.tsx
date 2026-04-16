@@ -24,6 +24,7 @@ import {
   RotateCcw,
   X,
 } from "lucide-react";
+import { Surface, GlowText, IconOrb } from "@/components/design-system";
 
 // ── Brand tokens ────────────────────────────────────────────────────────────
 const DEEP    = "#0d0c18";
@@ -558,25 +559,15 @@ Surface only what matters. No fluff. Start immediately.`,
 
               {/* Speech bubble */}
               {character.speechBubble && speechVisible && (
-                <div
-                  className="fly-eye-speech"
-                  style={{
-                    background: "rgba(255,255,255,0.04)",
-                    border: `1px solid ${BORDER}`,
-                    borderRadius: "10px",
-                    padding: "0.625rem 0.875rem",
-                    fontSize: "0.8125rem",
-                    lineHeight: 1.55,
-                    color: "rgba(255,255,255,0.75)",
-                    maxWidth: "100%",
-                    textAlign: "center",
-                    position: "relative",
-                  }}
+                <Surface
+                  variant="glass"
+                  className="fly-eye-speech rounded-[10px] px-3.5 py-2.5 text-[13px] leading-relaxed text-center relative max-w-full"
+                  style={{ color: "rgba(255,255,255,0.75)" }}
                 >
                   <span style={{ color: "rgba(255,255,255,0.25)", marginRight: "0.375rem" }}>&ldquo;</span>
                   {character.speechBubble}
                   <span style={{ color: "rgba(255,255,255,0.25)", marginLeft: "0.375rem" }}>&rdquo;</span>
-                </div>
+                </Surface>
               )}
 
               {/* Voice input button */}
@@ -696,7 +687,9 @@ Surface only what matters. No fluff. Start immediately.`,
                 /* Idle state */
                 <div style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: "1.25rem", textAlign: "center" }}>
                   <div>
-                    <Zap size={28} color="rgba(255,255,255,0.1)" style={{ margin: "0 auto 0.5rem" }} />
+                    <div className="mx-auto mb-2">
+                      <IconOrb icon={Zap} variant="gold" size="lg" />
+                    </div>
                     <div style={{ fontWeight: 600, fontSize: "0.9375rem", color: "rgba(255,255,255,0.35)" }}>
                       Ready. What shall I do?
                     </div>
@@ -761,24 +754,17 @@ Surface only what matters. No fluff. Start immediately.`,
                 <SectionLabel>{character.name} remembers:</SectionLabel>
                 <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem", marginTop: "0.5rem" }}>
                   {memories.map(m => (
-                    <div
+                    <Surface
                       key={m.id}
-                      className="fly-eye-memory-card"
-                      style={{
-                        background: "rgba(255,255,255,0.02)",
-                        border: `1px solid ${BORDER}`,
-                        borderRadius: "8px",
-                        padding: "0.625rem 0.75rem",
-                        cursor: "pointer",
-                        transition: "all 0.18s",
-                      }}
+                      variant="glass"
+                      className="fly-eye-memory-card p-2.5 px-3 rounded-lg cursor-pointer transition-all hover:border-white/15"
                     >
                       <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "0.2rem" }}>
                         <span style={{ fontSize: "0.75rem", fontWeight: 700, color: "#d4c4a0" }}>{m.topic}</span>
                         <span style={{ fontSize: "0.6rem", color: "rgba(255,255,255,0.2)" }}>{m.ago}</span>
                       </div>
                       <span style={{ fontSize: "0.75rem", color: "rgba(255,255,255,0.45)", lineHeight: 1.45 }}>{m.snippet}</span>
-                    </div>
+                    </Surface>
                   ))}
                 </div>
               </div>
@@ -1170,17 +1156,9 @@ const TOOL_PLACEHOLDERS: Record<ToolTab, { icon: React.ReactNode; title: string;
 function ToolPanel({ tab }: { tab: ToolTab }) {
   const item = TOOL_PLACEHOLDERS[tab];
   return (
-    <div
-      style={{
-        height: "100%",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
-        gap: "0.875rem",
-        textAlign: "center",
-        padding: "1rem",
-      }}
+    <Surface
+      variant="glass"
+      className="h-full flex flex-col items-center justify-center gap-3.5 text-center p-4 rounded-xl"
     >
       {item.icon}
       <div>
@@ -1220,6 +1198,6 @@ function ToolPanel({ tab }: { tab: ToolTab }) {
         {item.cta}
         <ChevronRight size={12} />
       </button>
-    </div>
+    </Surface>
   );
 }

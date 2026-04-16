@@ -16,6 +16,7 @@ import {
   AlertCircle,
   RotateCcw,
 } from "lucide-react";
+import { Surface, GlowText, IconOrb } from "@/components/design-system";
 
 // ── Brand tokens ────────────────────────────────────────────────────────────
 const DEEP    = "#0d0c18";
@@ -266,9 +267,10 @@ function RuleToggle({
   onChange: (v: boolean) => void;
 }) {
   return (
-    <div
-      className="flex items-start justify-between gap-4 p-4 rounded-xl transition-colors cursor-pointer"
-      style={{ background: value ? `${GOLD}0a` : "rgba(255,255,255,0.03)", border: `1px solid ${value ? `${GOLD}30` : BORDER}` }}
+    <Surface
+      variant="glass"
+      className="flex items-start justify-between gap-4 p-4 rounded-xl cursor-pointer transition-colors"
+      style={{ background: value ? `${GOLD}0a` : undefined, borderColor: value ? `${GOLD}30` : undefined }}
       onClick={() => onChange(!value)}
       role="checkbox"
       aria-checked={value}
@@ -284,7 +286,7 @@ function RuleToggle({
       ) : (
         <ToggleLeft className="w-5 h-5 flex-shrink-0 mt-0.5 text-white/20" />
       )}
-    </div>
+    </Surface>
   );
 }
 
@@ -389,24 +391,22 @@ export default function AnyLlmPage() {
 
       {/* ── Header ── */}
       <div className="flex items-center gap-3 mb-8">
-        <div
-          className="w-10 h-10 rounded-lg flex items-center justify-center"
-          style={{ background: `${GOLD}18` }}
-        >
-          <Network className="w-5 h-5" style={{ color: GOLD }} />
-        </div>
+        <IconOrb icon={Network} variant="gold" size="lg" />
         <div>
-          <h1 className="text-lg md:text-xl font-bold text-white">Any LLM</h1>
+          <h1 className="text-lg md:text-xl font-bold text-white">
+            <GlowText variant="gold" as="span">Any LLM</GlowText>
+          </h1>
           <p className="text-sm text-white/40">Route your conversations to any AI model</p>
         </div>
         {activeProviderObj && (
-          <div
+          <Surface
+            variant="glass"
             className="ml-auto flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold"
-            style={{ background: `${activeProviderObj.color}20`, color: activeProviderObj.color, border: `1px solid ${activeProviderObj.color}40` }}
+            style={{ color: activeProviderObj.color, borderColor: `${activeProviderObj.color}40` }}
           >
             <span>{activeProviderObj.icon}</span>
             {activeProviderObj.name} active
-          </div>
+          </Surface>
         )}
       </div>
 
@@ -416,10 +416,7 @@ export default function AnyLlmPage() {
         <div className="xl:col-span-2 space-y-6">
 
           {/* Provider selector grid */}
-          <div
-            className="p-6 rounded-xl"
-            style={{ background: SURFACE, border: `1px solid ${BORDER}` }}
-          >
+          <Surface variant="elevated" className="p-6">
             <h2 className="text-sm font-semibold text-white/70 mb-4 uppercase tracking-wider">
               Providers
             </h2>
@@ -431,13 +428,11 @@ export default function AnyLlmPage() {
                 const ts         = testState[provider.id];
 
                 return (
-                  <div
+                  <Surface
                     key={provider.id}
+                    variant="elevated"
+                    glow={isActive ? "gold" : "none"}
                     className="rounded-xl p-4 flex flex-col gap-3 transition-all duration-200"
-                    style={{
-                      background: isActive ? provider.glowColor : "rgba(255,255,255,0.03)",
-                      border: `1px solid ${isActive ? provider.color + "50" : BORDER}`,
-                    }}
                   >
                     {/* Provider header */}
                     <div className="flex items-center justify-between">
@@ -515,17 +510,15 @@ export default function AnyLlmPage() {
                           Test this model
                         </button>
                       ) : ts.loading ? (
-                        <div
-                          className="flex items-center justify-center gap-2 py-2 rounded-lg text-xs"
-                          style={{ background: "rgba(255,255,255,0.04)", color: "rgba(255,255,255,0.4)" }}
-                        >
+                        <Surface variant="glass" className="flex items-center justify-center gap-2 py-2 text-xs text-white/40">
                           <Loader2 className="w-3 h-3 animate-spin" />
                           Testing…
-                        </div>
+                        </Surface>
                       ) : (
-                        <div
-                          className="rounded-lg p-2.5 text-xs leading-relaxed"
-                          style={{ background: ts.error ? "rgba(239,68,68,0.08)" : `${provider.color}0a`, border: `1px solid ${ts.error ? "rgba(239,68,68,0.2)" : provider.color + "20"}` }}
+                        <Surface
+                          variant="glass"
+                          className="p-2.5 text-xs leading-relaxed"
+                          style={{ background: ts.error ? "rgba(239,68,68,0.08)" : `${provider.color}0a`, borderColor: ts.error ? "rgba(239,68,68,0.2)" : provider.color + "20" }}
                         >
                           {ts.error ? (
                             <div className="flex items-start gap-1.5">
@@ -542,24 +535,21 @@ export default function AnyLlmPage() {
                             <RotateCcw className="w-2.5 h-2.5" />
                             Clear
                           </button>
-                        </div>
+                        </Surface>
                       )}
                     </div>
-                  </div>
+                  </Surface>
                 );
               })}
             </div>
-          </div>
+          </Surface>
         </div>
 
         {/* ── Right column: routing rules ── */}
         <div className="space-y-6">
 
           {/* Active model summary */}
-          <div
-            className="p-5 rounded-xl"
-            style={{ background: SURFACE, border: `1px solid ${BORDER}` }}
-          >
+          <Surface variant="elevated" glow="gold" className="p-5">
             <p className="text-xs text-white/40 uppercase tracking-widest mb-3">Active model</p>
             {activeProviderObj ? (() => {
               const selId = config.selectedModels[activeProviderObj.id] ?? activeProviderObj.models[0].id;
@@ -588,13 +578,10 @@ export default function AnyLlmPage() {
             })() : (
               <p className="text-sm text-white/30">No provider selected. Click ○ on any provider card to activate it.</p>
             )}
-          </div>
+          </Surface>
 
           {/* Routing rules */}
-          <div
-            className="p-5 rounded-xl"
-            style={{ background: SURFACE, border: `1px solid ${BORDER}` }}
-          >
+          <Surface variant="elevated" glow="gold" className="p-5">
             <h2 className="text-sm font-semibold text-white/70 mb-4 uppercase tracking-wider">
               Routing rules
             </h2>
@@ -647,13 +634,10 @@ export default function AnyLlmPage() {
                 ))}
               </div>
             </div>
-          </div>
+          </Surface>
 
           {/* Config status */}
-          <div
-            className="p-4 rounded-xl text-xs text-white/30"
-            style={{ background: "rgba(255,255,255,0.02)", border: `1px solid ${BORDER}` }}
-          >
+          <Surface variant="glass" className="p-4 text-xs text-white/30">
             <p className="font-mono mb-1" style={{ color: GOLD }}>meok_llm_router_config</p>
             <p>Stored in localStorage. Synced across sessions.</p>
             <button
@@ -670,7 +654,7 @@ export default function AnyLlmPage() {
               <RotateCcw className="w-3 h-3" />
               Reset to defaults
             </button>
-          </div>
+          </Surface>
         </div>
       </div>
     </div>

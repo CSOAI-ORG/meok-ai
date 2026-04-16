@@ -299,6 +299,98 @@ body {
 ::-webkit-scrollbar-thumb:hover { background: rgba(0, 0, 0, 0.2); }
 
 /* ═══════════════════════════════════════════════════════════
+   MEOK OS — DARK UI SEMANTIC UTILITIES
+   ═══════════════════════════════════════════════════════════ */
+
+.meok-deep {
+  background-color: #0d0c18;
+  color: #f5f5f5;
+}
+
+.meok-surface {
+  background-color: #13121f;
+  color: #f5f5f5;
+}
+
+.meok-elevated {
+  background-color: #1a1929;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 1rem;
+}
+
+.meok-glass {
+  background: rgba(255,255,255,0.03);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 1rem;
+}
+
+.meok-border {
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.meok-glow-gold {
+  box-shadow: 0 0 0 1px rgba(201,168,76,0.15), 0 8px 32px rgba(201,168,76,0.12);
+}
+
+.meok-glow-teal {
+  box-shadow: 0 0 0 1px rgba(45,155,138,0.15), 0 8px 32px rgba(45,155,138,0.12);
+}
+
+.meok-glow-orange {
+  box-shadow: 0 0 0 1px rgba(224,115,64,0.15), 0 8px 32px rgba(224,115,64,0.12);
+}
+
+.meok-glow-purple {
+  box-shadow: 0 0 0 1px rgba(139,92,246,0.15), 0 8px 32px rgba(139,92,246,0.12);
+}
+
+/* ── Motion keyframes ── */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.animate-shimmer {
+  background: linear-gradient(90deg, rgba(255,255,255,0.03) 25%, rgba(255,255,255,0.08) 50%, rgba(255,255,255,0.03) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite linear;
+}
+
+@keyframes glow-pulse {
+  0%, 100% { box-shadow: 0 0 6px currentColor; opacity: 0.6; }
+  50% { box-shadow: 0 0 14px currentColor; opacity: 1; }
+}
+.animate-glow-pulse {
+  animation: glow-pulse 2s ease-in-out infinite;
+}
+
+@keyframes border-travel {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+.animate-border-travel {
+  background: linear-gradient(90deg, rgba(201,168,76,0.2), rgba(201,168,76,0.6), rgba(201,168,76,0.2));
+  background-size: 200% 100%;
+  animation: border-travel 3s ease infinite;
+}
+
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in-up {
+  animation: fade-in-up 0.5s ease-out both;
+}
+
+/* ── Focus ring standard ── */
+.meok-focus:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(201,168,76,0.5);
+}
+
+/* ═══════════════════════════════════════════════════════════
    SENSORY / ACCESSIBILITY SETTINGS
    Applied via body classes from sensory-settings.tsx
    ═══════════════════════════════════════════════════════════ */
