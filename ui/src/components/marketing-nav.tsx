@@ -430,6 +430,7 @@ export function MarketingNav({ activePage }: MarketingNavProps) {
             {[
               { href: "/features", label: "Features" },
               { href: "/pricing", label: "Pricing" },
+              { href: "/family", label: "Family" },
               { href: "/blog", label: "Blog" },
               { href: "/about", label: "About" },
             ].map((link) => (
@@ -470,11 +471,11 @@ export function MarketingNav({ activePage }: MarketingNavProps) {
               Sign in
             </Link>
             <Link
-              href="/birth"
+              href="/start"
               className="text-sm px-5 py-2 rounded-full font-bold transition-all hover:brightness-110"
               style={{ background: GOLD, color: DEEP }}
             >
-              Hatch
+              Start Free
             </Link>
           </div>
 
@@ -488,11 +489,11 @@ export function MarketingNav({ activePage }: MarketingNavProps) {
               Sign in
             </Link>
             <Link
-              href="/birth"
+              href="/start"
               className="text-xs px-3 py-1.5 rounded-full font-bold whitespace-nowrap transition-all hover:brightness-110"
               style={{ background: GOLD, color: DEEP }}
             >
-              Hatch 🥚
+              Start Free
             </Link>
             <button
               className="ml-1 transition-colors"

@@ -114,7 +114,7 @@ export default function WorkOSPage() {
           </div>
 
           <p className="text-xs text-white/25 font-mono">
-            Available on all tiers. Ralph Mode requires Family plan.
+            Work OS on Sovereign (£9/mo) and above. Ralph Mode on Pro (£19/mo) and Family plan.
           </p>
         </div>
       </section>

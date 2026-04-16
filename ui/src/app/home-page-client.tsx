@@ -735,24 +735,22 @@ function HeroSection() {
           className="font-black text-white tracking-tight leading-[1.05] mb-5"
           style={{ fontSize: "clamp(2.6rem, 7vw, 5rem)" }}
         >
-          The Sovereign AI <span style={{ color: GOLD }}>OS.</span>
+          Your AI. <span style={{ color: GOLD }}>Your memory.</span>
           <br />
-          One memory. Every model.
-          <br />
-          <span style={{ color: "#A78BFA" }}>Built to work, guard, and play.</span>
+          Your rules.
         </h1>
 
         <p className="max-w-2xl mx-auto mb-4 leading-relaxed font-semibold" style={{ color: "rgba(245,240,232,0.90)", fontSize: "1.25rem" }}>
-          MEOK unifies your AI agents, protects your data, and remembers everything — across Claude, GPT-4o, DeepSeek, and 469+ models.
+          One companion that remembers everything — across every model.
         </p>
 
         <p className="max-w-2xl mx-auto mb-10 leading-relaxed" style={{ color: "rgba(245,240,232,0.60)", fontSize: "1.1rem" }}>
-          Your data. Your agents. Your rules. Free forever.
+          Free to start. Private by design.
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-6">
           <Link
-            href="/register"
+            href="/start"
             className="inline-flex items-center gap-2 font-bold rounded-full transition-all shadow-lg hover:shadow-[#c9a84c]/40 hover:scale-105"
             style={{ background: GOLD, color: "#1a1a2e", padding: "1rem 2.25rem", fontSize: "1.125rem" }}
           >

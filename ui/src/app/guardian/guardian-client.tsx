@@ -264,11 +264,11 @@ export default function GuardianClient() {
           {/* CTAs */}
           <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
             <Link
-              href="/hatch"
+              href="/checkout?plan=sovereign_monthly"
               className="rounded-xl px-8 py-4 text-base font-semibold transition-opacity hover:opacity-90"
               style={{ backgroundColor: GOLD, color: DEEP }}
             >
-              Activate Guardian
+              Get Guardian
             </Link>
             <a
               href="#how-it-works"
@@ -456,7 +456,7 @@ export default function GuardianClient() {
           </p>
           <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
             <Link
-              href="/hatch"
+              href="/checkout?plan=sovereign_monthly"
               className="rounded-xl px-8 py-4 text-base font-semibold transition-opacity hover:opacity-90"
               style={{ backgroundColor: GOLD, color: DEEP }}
             >

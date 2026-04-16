@@ -353,11 +353,11 @@ export default function GamingClient() {
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
             <Link
-              href="/hatch"
+              href="/start"
               className="group flex items-center gap-2 px-8 py-4 rounded-full font-black text-[#0d0c18] bg-[#c9a84c] hover:bg-[#d4b463] transition-all text-base"
               style={{ boxShadow: "0 0 40px rgba(201,168,76,0.25)" }}
             >
-              Start tracking your performance
+              Join the waitlist
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Link>
             <Link
@@ -512,11 +512,11 @@ export default function GamingClient() {
                 Unlike generic AI assistants, Scout holds memory across every session. It knows what you're working on. It knows when you're tilting. And it will tell you — if you ask.
               </p>
               <Link
-                href="/hatch"
+                href="/start"
                 className="group inline-flex items-center gap-2 px-7 py-3.5 rounded-full font-black text-[#0d0c18] bg-[#c9a84c] hover:bg-[#d4b463] transition-all text-sm"
                 style={{ boxShadow: "0 0 30px rgba(201,168,76,0.20)" }}
               >
-                Unlock Scout
+                Join the waitlist
                 <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
               </Link>
             </div>
@@ -622,14 +622,14 @@ export default function GamingClient() {
             </GlowText>
           </h2>
           <p className="text-white/40 text-lg mb-10 max-w-xl mx-auto leading-relaxed">
-            Scout is waiting. Your first session is free. No credit card required.
+            Scout launches in Early Access 2026. Join the waitlist to get first access.
           </p>
           <Link
-            href="/hatch"
+            href="/start"
             className="group inline-flex items-center gap-3 px-10 py-5 rounded-full font-black text-[#0d0c18] bg-[#c9a84c] hover:bg-[#d4b463] transition-all text-lg"
             style={{ boxShadow: "0 0 60px rgba(201,168,76,0.30)" }}
           >
-            Start tracking your performance
+            Join the waitlist
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </Link>
           <p className="mt-5 text-white/20 text-xs font-mono">

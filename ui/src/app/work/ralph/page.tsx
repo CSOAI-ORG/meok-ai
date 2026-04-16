@@ -208,7 +208,7 @@ export default function RalphPage() {
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6">
             <Link
-              href="/hatch"
+              href="/hatch?plan=family"
               className="group inline-flex items-center gap-2 px-8 py-3.5 rounded-full font-black text-[#0d0c18] bg-[#c9a84c] hover:bg-[#d4b463] transition-all text-sm shadow-lg shadow-amber-900/25"
             >
               <Crown className="w-4 h-4" />
@@ -423,7 +423,7 @@ export default function RalphPage() {
               <p className="text-white/50 text-sm mb-6">
                 Upgrade to Family plan to activate Ralph Mode and let him decompose and execute this project autonomously.
               </p>
-              <Link href="/hatch" className="inline-flex items-center gap-2 px-6 py-3 rounded-full font-black text-[#0d0c18] bg-[#c9a84c] hover:bg-[#d4b463] transition-all text-sm">
+              <Link href="/hatch?plan=family" className="inline-flex items-center gap-2 px-6 py-3 rounded-full font-black text-[#0d0c18] bg-[#c9a84c] hover:bg-[#d4b463] transition-all text-sm">
                 <Crown className="w-4 h-4" />
                 Upgrade to Family plan
                 <ArrowRight className="w-4 h-4" />
@@ -447,7 +447,7 @@ export default function RalphPage() {
             {/* Sovereign */}
             <div className="rounded-2xl border border-white/10 bg-[#0d0c18] p-8">
               <p className="text-xs font-black tracking-[0.2em] uppercase text-white/30 mb-3">Sovereign</p>
-              <p className="text-3xl font-black text-white mb-1">£12<span className="text-base font-semibold text-white/40">/mo</span></p>
+              <p className="text-3xl font-black text-white mb-1">£19<span className="text-base font-semibold text-white/40">/mo</span></p>
               <p className="text-sm text-white/40 mb-6">Individual. All three agents.</p>
               <ul className="space-y-3">
                 {[
@@ -494,7 +494,7 @@ export default function RalphPage() {
               </ul>
 
               <Link
-                href="/hatch"
+                href="/hatch?plan=family"
                 className="group mt-7 inline-flex items-center gap-2 px-6 py-3 rounded-full font-black text-[#0d0c18] bg-[#c9a84c] hover:bg-[#d4b463] transition-all text-sm w-full justify-center"
               >
                 <Crown className="w-4 h-4" />
@@ -524,7 +524,7 @@ export default function RalphPage() {
           <div>
             <h2 className="text-2xl sm:text-3xl font-black text-white mb-5 leading-tight">Is Ralph Mode available on the Sovereign tier?</h2>
             <p className="text-white/55 text-base leading-relaxed">
-              Ralph Mode is exclusive to the Family plan at £29/mo. The Sovereign tier (£12/mo) includes Orion, Riri, and Hourman as independent agents — each powerful on their own. Ralph Mode activates when you need all three working together on a single coordinated project.
+              Ralph Mode is exclusive to the Family plan at £29/mo. The Sovereign tier (£9/mo) includes Orion, Riri, and Hourman as independent agents — each powerful on their own. Ralph Mode activates when you need all three working together on a single coordinated project.
             </p>
           </div>
         </div>

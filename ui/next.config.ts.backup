@@ -7,7 +7,7 @@ const nextConfig: NextConfig = {
   // Performance optimizations
   compress: true,
   poweredByHeader: false,
-
+  
   // Reduce memory usage during build
   experimental: {
     serverActions: {
@@ -41,9 +41,8 @@ const nextConfig: NextConfig = {
     }
     return config;
   },
-
+  
   images: {
-    unoptimized: true,
     remotePatterns: [
       // GitHub avatars (user profile images)
       { protocol: "https", hostname: "avatars.githubusercontent.com" },
@@ -67,8 +66,6 @@ const nextConfig: NextConfig = {
       { source: '/product/ralph',           destination: '/work',       permanent: true },
       { source: '/product/family-guardian', destination: '/guardian',   permanent: true },
       { source: '/product/characters',      destination: '/characters', permanent: true },
-      { source: '/register',                destination: '/start',      permanent: false },
-      { source: '/hatch',                   destination: '/start',      permanent: false },
     ];
   },
 
@@ -87,6 +84,7 @@ const nextConfig: NextConfig = {
         source: "/(.*)",
         headers: [
           { key: "X-Content-Type-Options",  value: "nosniff" },
+          // SAMEORIGIN allows embedding within meok.ai itself (e.g. iframes in dashboard)
           { key: "X-Frame-Options",          value: "SAMEORIGIN" },
           { key: "X-XSS-Protection",         value: "1; mode=block" },
           { key: "Referrer-Policy",           value: "strict-origin-when-cross-origin" },
@@ -96,6 +94,7 @@ const nextConfig: NextConfig = {
             key: "Content-Security-Policy",
             value: [
               "default-src 'self'",
+              // Sentry added to connect-src and script-src
               "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://clerk.accounts.dev https://*.clerk.accounts.dev https://js.stripe.com https://browser.sentry-cdn.com",
               "style-src 'self' 'unsafe-inline'",
               "img-src 'self' data: blob: https:",
@@ -116,7 +115,7 @@ const sentryWebpackPluginOptions = {
   org: process.env.SENTRY_ORG || "meok-ai",
   project: process.env.SENTRY_PROJECT || "meok-ui",
   authToken: process.env.SENTRY_AUTH_TOKEN,
-  silent: true,
+  silent: true,        // no terminal spam
   widenClientFileUpload: true,
   hideSourceMaps: true,
   disableLogger: true,

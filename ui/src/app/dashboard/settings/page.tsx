@@ -199,9 +199,7 @@ export default function SettingsPage() {
   const [profileSaved, setProfileSaved] = useState(false);
 
   // 92.2 Companion extended settings
-  const COMPANION_OPTIONS = ["Aria", "Sage", "Luna", "Gabriel", "Marcus", "Shanti"];
   const LANGUAGES = ["English", "Spanish", "French", "German", "Japanese"];
-  const [activeCompanion, setActiveCompanion] = useState("Aria");
   const [responseStyle, setResponseStyle] = useState(1); // 0=concise,1=balanced,2=detailed
   const [language, setLanguage] = useState("English");
 
@@ -665,32 +663,6 @@ export default function SettingsPage() {
                     </button>
                   );
                 })}
-              </div>
-            </div>
-
-            {/* 92.2 — Active companion selector */}
-            <div>
-              <label className="block text-xs text-white/35 uppercase tracking-wider mb-2">
-                Active Companion
-              </label>
-              <div className="relative">
-                <select
-                  value={activeCompanion}
-                  onChange={(e) => setActiveCompanion(e.target.value)}
-                  className="w-full appearance-none px-4 py-2.5 pr-10 rounded-lg text-sm text-white focus:outline-none transition-colors"
-                  style={{
-                    background: "rgba(255,255,255,0.05)",
-                    border: "1px solid rgba(255,255,255,0.10)",
-                    caretColor: GOLD,
-                  }}
-                  onFocus={(e) => { e.currentTarget.style.borderColor = `${GOLD}60`; }}
-                  onBlur={(e) => { e.currentTarget.style.borderColor = "rgba(255,255,255,0.10)"; }}
-                >
-                  {COMPANION_OPTIONS.map((c) => (
-                    <option key={c} value={c} style={{ background: "#13121f" }}>{c}</option>
-                  ))}
-                </select>
-                <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-white/30 pointer-events-none" />
               </div>
             </div>
 

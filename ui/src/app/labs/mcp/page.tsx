@@ -25,14 +25,14 @@ const STATS = [
 ];
 
 const PACKS = [
-  { name: "Legal & Compliance", price: "99", servers: 12, desc: "EU AI Act, NIST, ISO 42001, GDPR, SOC 2, HIPAA + crosswalk" },
-  { name: "Healthcare", price: "79", servers: 7, desc: "FHIR R4, patient safety, clinical trials, HIPAA, GDPR" },
-  { name: "Financial Services", price: "79", servers: 9, desc: "SOC 2, PCI DSS, tax, budget, expense, risk, stock" },
-  { name: "Cybersecurity", price: "79", servers: 8, desc: "OWASP Agentic, deepfake detection, trust chains, credentials" },
-  { name: "SMB Operations", price: "49", servers: 10, desc: "Invoice, expense, CRM, support, time tracking, PM" },
-  { name: "Marketing & Growth", price: "49", servers: 10, desc: "Ad copy, content calendar, SEO, social, leads, sentiment" },
-  { name: "Developer Tools", price: "29", servers: 10, desc: "Code review, CI/CD, testing, API docs, Docker, git" },
-  { name: "Enterprise All-In", price: "499", servers: 208, desc: "Every server, unlimited calls, SSO, SLA, on-premise" },
+  { name: "Legal & Compliance", price: "99", servers: 12, desc: "EU AI Act, NIST, ISO 42001, GDPR, SOC 2, HIPAA + crosswalk", href: "https://buy.stripe.com/fZu00l0xS4gi8slcyQ8k82W" },
+  { name: "Healthcare", price: "79", servers: 7, desc: "FHIR R4, patient safety, clinical trials, HIPAA, GDPR", href: "https://buy.stripe.com/4gMbJ3gwQ6oq38142k8k82Z" },
+  { name: "Financial Services", price: "79", servers: 9, desc: "SOC 2, PCI DSS, tax, budget, expense, risk, stock", href: "https://buy.stripe.com/5kQ00ldkEdQS9wp42k8k82Y" },
+  { name: "Cybersecurity", price: "79", servers: 8, desc: "OWASP Agentic, deepfake detection, trust chains, credentials", href: "https://buy.stripe.com/14A3cx1BW3ce7oh7ew8k82X" },
+  { name: "SMB Operations", price: "49", servers: 10, desc: "Invoice, expense, CRM, support, time tracking, PM", href: "https://buy.stripe.com/00w28tdkE3ce6kd7ew8k82R" },
+  { name: "Marketing & Growth", price: "49", servers: 10, desc: "Ad copy, content calendar, SEO, social, leads, sentiment", href: "https://buy.stripe.com/8x200l6Wg7su9wpeGY8k82T" },
+  { name: "Developer Tools", price: "29", servers: 10, desc: "Code review, CI/CD, testing, API docs, Docker, git", href: "https://buy.stripe.com/3cI4gB80k5kmcIB42k8k82S" },
+  { name: "Enterprise All-In", price: "499", servers: 208, desc: "Every server, unlimited calls, SSO, SLA, on-premise", href: "https://buy.stripe.com/6oUdRb1BWeUWcIBbuM8k82Q" },
 ];
 
 const TIERS = [
@@ -53,7 +53,7 @@ const TIERS = [
     desc: "For small businesses",
     features: ["1 industry pack included", "500 API calls/day", "Data persistence", "Email support", "Audit logging"],
     cta: "Start Free Trial",
-    href: "/checkout?plan=governance-smb",
+    href: "https://buy.stripe.com/00w28tdkE3ce6kd7ew8k82R",
     popular: false,
   },
   {
@@ -63,7 +63,7 @@ const TIERS = [
     desc: "For consultants & mid-market",
     features: ["Full compliance suite", "12 framework crosswalks", "2,000 API calls/day", "Audit trail export", "Priority support", "1 industry pack included"],
     cta: "Start Free Trial",
-    href: "/checkout?plan=governance-professional",
+    href: "https://buy.stripe.com/eVqcN74O8bIK7oh42k8k830",
     popular: true,
   },
   {
@@ -251,14 +251,22 @@ export default function LabsMcpPage() {
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {PACKS.map((pack) => (
-              <Surface key={pack.name} variant="elevated" className="p-5 hover:border-white/15 transition-colors">
+              <Surface key={pack.name} variant="elevated" className="p-5 hover:border-white/15 transition-colors flex flex-col">
                 <h3 className="font-semibold mb-1">{pack.name}</h3>
                 <p className="text-xs text-[#f5f0e8]/40 mb-3">{pack.desc}</p>
                 <div className="flex items-baseline gap-1">
                   <span className="text-xl font-bold text-[#c9a84c]">£{pack.price}</span>
                   <span className="text-xs text-[#f5f0e8]/40">/mo</span>
                 </div>
-                <div className="text-xs text-[#f5f0e8]/30 mt-1">{pack.servers} servers</div>
+                <div className="text-xs text-[#f5f0e8]/30 mt-1 mb-4">{pack.servers} servers</div>
+                <a
+                  href={pack.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-auto block w-full text-center py-2 rounded-lg font-semibold text-sm bg-white/10 hover:bg-white/20 text-white transition-colors"
+                >
+                  Buy Now
+                </a>
               </Surface>
             ))}
           </div>

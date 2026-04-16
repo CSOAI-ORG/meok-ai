@@ -124,7 +124,7 @@ const navGroups: NavGroup[] = [
     title: "Character",
     items: [
       { href: "/dashboard/companion", label: "Select", icon: Heart },
-      { href: "/birth", label: "Create", icon: Star },
+      { href: "/start", label: "Create", icon: Star },
       { href: "/dashboard/evolution", label: "Evolution", icon: Sparkles },
       { href: "/dashboard/bond", label: "Analytics", icon: LayoutDashboard },
     ],
@@ -141,7 +141,7 @@ const navGroups: NavGroup[] = [
   {
     title: "Work",
     items: [
-      { href: "/work/orion", label: "Orion", icon: Star },
+      { href: "/work/ralph", label: "Ralph", icon: Star },
       { href: "/work/riri", label: "Riri", icon: Cpu },
       { href: "/work/hourman", label: "Hourman", icon: Crown },
       { href: "/dashboard/ralph", label: "Ralph Mode", icon: Zap, proOnly: true },
@@ -159,7 +159,7 @@ const navGroups: NavGroup[] = [
     title: "Guardian",
     items: [
       { href: "/dashboard/family-circle", label: "Family", icon: Heart },
-      { href: "/guardian", label: "Protection", icon: Shield },
+      { href: "/dashboard/guardian", label: "Protection", icon: Shield },
       { href: "/guardian/scam-stop", label: "Scam Stop", icon: Lock },
     ],
   },

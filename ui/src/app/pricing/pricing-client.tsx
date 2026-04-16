@@ -33,7 +33,7 @@ interface CompareRow {
 
 const COMPARE_ROWS: CompareRow[] = [
   { label: "Price",               byok: "£5/mo",             explorer: "Free forever",  sovereign: "£9/mo",            pro: "£19/mo" },
-  { label: "Messages/day",        byok: "100 (own credits)", explorer: "100",           sovereign: "Unlimited",         pro: "Unlimited" },
+  { label: "Messages/day",        byok: "100 (own credits)", explorer: "50",            sovereign: "Unlimited",         pro: "Unlimited" },
   { label: "Memory",              byok: "Basic vault",       explorer: "Permanent encrypted", sovereign: "Permanent vault", pro: "Permanent + shared" },
   { label: "Companions",          byok: "1",                 explorer: "1",             sovereign: "3",                 pro: "7" },
   { label: "LLM access",          byok: "Your own keys",     explorer: "DeepSeek + Llama", sovereign: "Claude + GPT-4o", pro: "All LLMs incl. GPT-4o + Claude Sonnet" },
@@ -44,6 +44,7 @@ const COMPARE_ROWS: CompareRow[] = [
   { label: "Advanced care scoring", byok: false,             explorer: false,           sovereign: true,                pro: true },
   { label: "Ralph Mode (full autonomy agent)", byok: false,  explorer: false,           sovereign: false,               pro: true },
   { label: "Family Circle",       byok: false,               explorer: false,           sovereign: false,               pro: true },
+  { label: "Family plan (up to 5 members)", byok: false,     explorer: false,           sovereign: false,               pro: true },
   { label: "Priority API access", byok: false,               explorer: false,           sovereign: false,               pro: true },
   { label: "Shared family memory vault", byok: false,        explorer: false,           sovereign: false,               pro: true },
   { label: "Full data export",    byok: true,                explorer: true,            sovereign: true,                pro: true },
@@ -155,7 +156,7 @@ function resolveQuizResult(answers: Record<string, string>): QuizResult {
     return { plan: "BYOK", headline: "BYOK — Bring Your Own Keys", sub: "You want full control over models and costs. BYOK gives you the companion OS at a flat £5/mo — zero inference markup.", href: "/waitlist?plan=byok", cta: "Join BYOK waitlist →" };
 
   if (teamSize === "group" || useCase === "family")
-    return { plan: "Sovereign Pro", headline: "Sovereign Pro", sub: "7 companions, Family Circle, Ralph Mode autonomy, and everything Sovereign offers — all for £19/month.", href: "/checkout?plan=sovereign_pro_monthly", cta: "Go Pro →" };
+    return { plan: "Family", headline: "Family — for households that need AI together", sub: "Up to 5 companions, shared family vault, full Guardian dashboard, and Ralph Mode autonomy — all for £29/month.", href: "/checkout?plan=family_monthly", cta: "Go Family →" };
 
   if (budget === "free")
     return { plan: "Explorer", headline: "MEOK Explorer — free forever", sub: "50 messages/day, permanent encrypted memory, and a Birth Ceremony. No credit card, no trial, no expiry.", href: "/birth", cta: "Hatch free 🥚" };
@@ -438,7 +439,7 @@ export default function PricingClient() {
           </h1>
 
           <p className="text-xl text-[#1a1a2e]/60 max-w-xl mx-auto leading-relaxed mb-4">
-            Free gets you a sovereign AI companion, 100 messages a day, permanent encrypted Sovereign Memory, and a Birth Ceremony. No expiry. No pressure. That is not a trial — that is a permanent offer.
+            Free gets you a sovereign AI companion, 50 messages a day, permanent encrypted Sovereign Memory, and a Birth Ceremony. No expiry. No pressure. That is not a trial — that is a permanent offer.
           </p>
 
           {/* Why is it free callout */}
@@ -582,7 +583,7 @@ export default function PricingClient() {
               </div>
               <ul className="space-y-3 flex-1 mb-7">
                 {[
-                  "100 messages/day",
+                  "50 messages/day",
                   "1 AI companion",
                   "Core features",
                   "Permanent encrypted Sovereign Memory",
@@ -731,6 +732,34 @@ export default function PricingClient() {
             </div>
           </div>
 
+          {/* ── Family Plan ── */}
+          <div className="mt-6 max-w-4xl mx-auto">
+            <div className="rounded-2xl border border-[#c9a84c]/30 bg-gradient-to-r from-[#1a1a2e] to-[#13131a] p-6 sm:p-8 flex flex-col sm:flex-row items-start sm:items-center gap-6 shadow-lg">
+              <div className="flex-1">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#c9a84c]/15 border border-[#c9a84c]/30 text-[#c9a84c] text-[10px] font-black tracking-wide uppercase mb-3">
+                  <Users className="w-3.5 h-3.5" />
+                  Households & Teams
+                </div>
+                <h3 className="text-xl font-black text-white mb-1">Family Plan</h3>
+                <p className="text-sm text-white/50 max-w-lg">
+                  Up to 5 AI companions under one roof. Shared family memory vault, full Guardian dashboard, and Ralph Mode autonomy.
+                </p>
+              </div>
+              <div className="flex flex-col sm:items-end gap-3">
+                <div className="flex items-baseline gap-1">
+                  <span className="text-4xl font-black text-white">£29</span>
+                  <span className="text-white/30 text-sm">/mo</span>
+                </div>
+                <button
+                  onClick={() => { window.location.href = "/checkout?plan=family_monthly"; }}
+                  className="px-6 py-2.5 rounded-full text-sm font-bold text-[#1a1a2e] bg-[#c9a84c] hover:bg-[#d4b463] transition-all"
+                >
+                  Go Family →
+                </button>
+              </div>
+            </div>
+          </div>
+
           {isAnnual && (
             <p className="text-xs text-[#1a1a2e]/30 text-center mt-5">
               * Annual prices shown per month. Billed as one payment upfront.
@@ -740,7 +769,8 @@ export default function PricingClient() {
           {/* Overage note */}
           <p className="text-xs text-[#1a1a2e]/40 text-center mt-6 max-w-lg mx-auto leading-relaxed">
             <span className="font-semibold text-[#1a1a2e]/55">Need more?</span>{" "}
-            Sovereign and Sovereign Pro users can add message packs: 500 extra messages for £2. Enterprise plans include custom quotas.
+            Sovereign and Sovereign Pro users can add message packs: 500 extra messages for £2. Enterprise plans include custom quotas.{" "}
+            <Link href="/family" className="underline hover:text-[#1a1a2e]/60">Looking for Family? £29/mo for up to 5 members →</Link>
           </p>
         </div>
       </section>

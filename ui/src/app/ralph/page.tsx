@@ -79,7 +79,7 @@ const jsonLd = {
           name: "Which plan includes Ralph Mode?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "Ralph Mode is included in the Sovereign plan (£12/mo) and Family plan (£29/mo). The free tier does not include overnight autonomous operation.",
+            text: "Ralph Mode is included in the Sovereign Pro plan (£19/mo) and Family plan (£29/mo). The free tier does not include overnight autonomous operation.",
           },
         },
         {
@@ -229,7 +229,7 @@ const FAQ_ITEMS = [
   },
   {
     q: "Which plan includes Ralph Mode?",
-    a: "Ralph Mode is included in the Sovereign plan (£12/mo) and Family plan (£29/mo). The free tier does not include overnight autonomous operation.",
+    a: "Ralph Mode is included in the Sovereign Pro plan (£19/mo) and Family plan (£29/mo). The free tier does not include overnight autonomous operation.",
   },
   {
     q: "What happens if Ralph can't complete a task?",
@@ -536,7 +536,7 @@ export default function RalphPage() {
         {/* CTAs */}
         <div className="flex flex-col sm:flex-row items-center gap-4 mb-16">
           <Link
-            href="/hatch"
+            href="/hatch?plan=pro"
             className="group flex items-center gap-2 px-8 py-3.5 rounded-full font-bold text-black bg-cyan-400 hover:bg-cyan-300 transition-all hover:shadow-[0_0_30px_rgba(34,211,238,0.4)] text-sm sm:text-base"
           >
             Activate Ralph Mode
@@ -1107,9 +1107,9 @@ export default function RalphPage() {
               <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-cyan-500 text-xs font-bold text-black whitespace-nowrap">
                 Includes Ralph
               </div>
-              <p className="text-cyan-400 text-xs font-mono uppercase tracking-wider mb-1">Sovereign</p>
+              <p className="text-cyan-400 text-xs font-mono uppercase tracking-wider mb-1">Sovereign Pro</p>
               <p className="text-2xl font-black mb-1">
-                £12<span className="text-sm text-white/30 font-normal">/mo</span>
+                £19<span className="text-sm text-white/30 font-normal">/mo</span>
               </p>
               <div className="mt-4 flex items-center gap-2 text-sm text-cyan-400">
                 <Zap className="w-4 h-4 flex-shrink-0" />
@@ -1183,7 +1183,7 @@ export default function RalphPage() {
           </p>
 
           <Link
-            href="/hatch"
+            href="/hatch?plan=pro"
             className="group inline-flex items-center gap-3 px-10 py-4 rounded-full font-black text-black bg-gradient-to-r from-cyan-400 to-cyan-300 hover:from-cyan-300 hover:to-cyan-200 transition-all hover:shadow-[0_0_40px_rgba(34,211,238,0.35)] text-base sm:text-lg"
           >
             Activate Ralph Mode — free trial

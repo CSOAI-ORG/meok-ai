@@ -439,6 +439,7 @@ export default function FamilyGuardianPage() {
             <Mail size={16} color={GOLD} />
             <span className="text-sm font-black text-white">Weekly Safety Email</span>
             <span className="text-xs text-white/25 ml-auto">Every Monday, 9:00 AM</span>
+            <span className="ml-3 inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wide bg-white/10 text-white/50 border border-white/10">Demo Data</span>
           </div>
 
           <div className="p-6 space-y-4">
@@ -470,7 +471,9 @@ export default function FamilyGuardianPage() {
 
             <div className="flex gap-3">
               <button
-                className="flex-1 px-4 py-2 rounded-lg text-sm font-medium transition-all"
+                disabled
+                title="Coming soon"
+                className="flex-1 px-4 py-2 rounded-lg text-sm font-medium transition-all opacity-50 cursor-not-allowed"
                 style={{
                   background: "rgba(201,168,76,0.15)",
                   color: GOLD,
@@ -480,7 +483,9 @@ export default function FamilyGuardianPage() {
                 Send Test Email
               </button>
               <button
-                className="flex-1 px-4 py-2 rounded-lg text-sm font-medium transition-all"
+                disabled
+                title="Coming soon"
+                className="flex-1 px-4 py-2 rounded-lg text-sm font-medium transition-all opacity-50 cursor-not-allowed"
                 style={{
                   background: "rgba(255,255,255,0.05)",
                   color: "rgba(255,255,255,0.7)",

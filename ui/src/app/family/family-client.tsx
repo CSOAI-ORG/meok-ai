@@ -314,7 +314,7 @@ export default function FamilyClient() {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Link
-              href="/hatch"
+              href="/start?plan=family"
               className="inline-flex items-center gap-2 bg-[#c9a84c] text-[#0d0c18] font-bold rounded-full px-8 py-3.5 hover:bg-[#e0bb60] transition-all hover:shadow-[0_0_40px_rgba(201,168,76,0.4)]"
             >
               Get early access →
@@ -645,7 +645,7 @@ export default function FamilyClient() {
                 ))}
               </ul>
               <a
-                href="/hatch"
+                href="/start?plan=family"
                 className="mt-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full font-black text-[#1a1a2e] transition-all hover:opacity-90"
                 style={{ background: "#c9a84c" }}
               >
@@ -951,7 +951,7 @@ export default function FamilyClient() {
             </div>
             <p className="text-xs text-white/25 mb-6 font-mono">Up to 5 family members · 14-day free trial · Cancel anytime</p>
             <a
-              href="/hatch"
+              href="/start?plan=family"
               className="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full font-black text-[#1a1a2e] transition-all hover:opacity-90"
               style={{ background: "#c9a84c" }}
             >
@@ -1065,7 +1065,7 @@ export default function FamilyClient() {
             MEOK won&apos;t replace you. It will make sure you show up when it counts — rested, informed, and present — for every person who needs you.
           </p>
           <Link
-            href="/hatch"
+            href="/start?plan=family"
             className="inline-flex items-center gap-2 bg-[#c9a84c] text-[#0d0c18] font-black rounded-full px-10 py-4 hover:bg-[#e0bb60] transition-all hover:shadow-[0_0_40px_rgba(201,168,76,0.4)] text-base"
           >
             Start your family free trial →
