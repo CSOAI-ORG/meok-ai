@@ -723,7 +723,19 @@ function HeroSection() {
         style={{ background: "radial-gradient(ellipse 70% 50% at 50% 40%, rgba(201,168,76,0.10) 0%, transparent 70%)" }}
       />
 
-      <div className="relative max-w-4xl mx-auto flex flex-col items-center">
+      <div className="relative max-w-6xl mx-auto flex flex-col items-center">
+        {/* CSOAI Robot - Desktop Only */}
+        <div className="hidden lg:block absolute -right-20 top-0 w-[320px] animate-fade-in">
+          <img
+            src="/brand/csoai-robot.png"
+            alt="CSOAI Robot Mascot"
+            className="w-full h-auto rounded-2xl"
+            style={{
+              filter: "drop-shadow(0 0 40px rgba(201,168,76,0.2))",
+            }}
+          />
+        </div>
+
         <span
           className="inline-flex items-center gap-2 px-5 py-2 rounded-full text-sm font-semibold mb-10"
           style={{ border: `1px solid ${GOLD}`, color: GOLD, background: "rgba(201,168,76,0.08)" }}

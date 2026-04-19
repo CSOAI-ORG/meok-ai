@@ -472,16 +472,26 @@ export function Sidebar({ consciousnessMode }: { consciousnessMode?: string }) {
         className="px-5 pt-5 pb-4 flex-shrink-0"
         style={{ borderBottom: "1px solid rgba(255,255,255,0.05)" }}
       >
-        {/* MEOK OS wordmark */}
+        {/* MEOK OS wordmark with CSOAI robot */}
         <div className="flex items-center justify-between mb-4">
-          <div className="flex items-baseline gap-1.5">
-            <span className="text-lg font-black tracking-tight text-white">MEOK</span>
-            <span
-              className="text-xs font-bold tracking-widest uppercase"
-              style={{ color: GOLD }}
-            >
-              OS
-            </span>
+          <div className="flex items-center gap-2">
+            <Link href="/csoai" title="Powered by CSOAI" className="flex-shrink-0">
+              <img
+                src="/brand/csoai-robot.png"
+                alt="CSOAI"
+                className="w-7 h-7 rounded-lg object-cover opacity-80 hover:opacity-100 transition-opacity"
+                style={{ filter: "drop-shadow(0 0 4px rgba(201,168,76,0.3))" }}
+              />
+            </Link>
+            <div className="flex items-baseline gap-1.5">
+              <span className="text-lg font-black tracking-tight text-white">MEOK</span>
+              <span
+                className="text-xs font-bold tracking-widest uppercase"
+                style={{ color: GOLD }}
+              >
+                OS
+              </span>
+            </div>
           </div>
           {/* Consciousness mode pill with animation */}
           <div

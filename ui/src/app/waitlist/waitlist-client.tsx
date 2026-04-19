@@ -33,7 +33,7 @@ const jsonLd = {
   eventAttendanceMode: 'https://schema.org/OnlineEventAttendanceMode',
   location: {
     '@type': 'VirtualLocation',
-    url: 'https://meok.ai/hatch',
+    url: 'https://meok.ai/start',
   },
   organizer: {
     '@type': 'Organization',

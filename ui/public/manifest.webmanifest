@@ -1,7 +1,7 @@
 {
-  "name": "MEOK.AI — Your Sovereign AI OS",
+  "name": "MEOK.AI — Your Sovereign AI Companion",
   "short_name": "MEOK",
-  "description": "Birth your sovereign AI from an egg. Your personal AI OS that hatches, grows, and answers only to you.",
+  "description": "Your sovereign AI companion with permanent memory. Built by CSOAI.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#0d0c18",
@@ -16,7 +16,8 @@
     { "src": "/brand/cover.png", "sizes": "1280x800", "type": "image/png", "form_factor": "wide" }
   ],
   "shortcuts": [
-    { "name": "Chat with your AI", "short_name": "Chat", "description": "Open your sovereign AI chat", "url": "/chat", "icons": [{ "src": "/brand/hero-eggs.png", "sizes": "96x96" }] },
-    { "name": "Dashboard", "short_name": "Dashboard", "description": "Open your AI OS dashboard", "url": "/dashboard", "icons": [{ "src": "/brand/hero-eggs.png", "sizes": "96x96" }] }
+    { "name": "Chat", "short_name": "Chat", "description": "Chat with your sovereign AI", "url": "/chat", "icons": [{ "src": "/brand/icon-192.png", "sizes": "96x96" }] },
+    { "name": "Dashboard", "short_name": "Dashboard", "description": "Open your AI dashboard", "url": "/dashboard", "icons": [{ "src": "/brand/icon-192.png", "sizes": "96x96" }] },
+    { "name": "Birth", "short_name": "Birth", "description": "Create a new companion", "url": "/birth", "icons": [{ "src": "/brand/icon-192.png", "sizes": "96x96" }] }
   ]
 }

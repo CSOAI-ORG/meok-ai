@@ -131,13 +131,26 @@ export default function LabsMcpPage() {
             </div>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl mx-auto mb-12">
             {STATS.map((stat) => (
               <Surface key={stat.label} variant="glass" className="p-4 text-center">
                 <div className="text-3xl font-bold text-[#c9a84c]">{stat.value}</div>
                 <div className="text-sm text-[#f5f0e8]/50">{stat.label}</div>
               </Surface>
             ))}
+          </div>
+
+          {/* CSOAI Robot */}
+          <div className="max-w-xs mx-auto text-center">
+            <img
+              src="/brand/csoai-robot.png"
+              alt="CSOAI Robot Mascot"
+              className="w-full h-auto rounded-2xl mb-4"
+              style={{
+                filter: "drop-shadow(0 0 30px rgba(201,168,76,0.15))",
+              }}
+            />
+            <p className="text-sm text-[#f5f0e8]/40">CSOAI Labs — Built by agents, for agents</p>
           </div>
         </div>
       </section>

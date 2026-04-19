@@ -10,6 +10,9 @@ import { useUser } from "@clerk/nextjs";
 import { EVOLUTION_STAGES, getEvolutionStage, getProgressToNextStage, interactionsUntilNextStage } from "@/lib/evolution";
 import { OnboardingChecklist } from "@/components/onboarding-checklist";
 import { GuardianAlerts } from "@/components/guardian-alerts";
+import { WelcomeBanner } from "@/components/WelcomeBanner";
+import { EvolutionProgress } from "@/components/EvolutionProgress";
+import { ActivityFeed } from "@/components/ActivityFeed";
 import { cn } from "@/lib/utils";
 import {
   Surface,
@@ -595,6 +598,12 @@ export default function DashboardOverview() {
         {/* ── Onboarding Checklist (shows until dismissed) ── */}
         <OnboardingChecklist />
 
+        {/* ── Welcome Banner ── */}
+        <WelcomeBanner
+          userName={displayName}
+          daysSinceHatch={daysSinceHatch ?? 0}
+        />
+
         {/* ── Quick Chat — star of the show ── */}
         <Surface
           variant="surface"
@@ -828,7 +837,7 @@ export default function DashboardOverview() {
             </Surface>
 
             {/* Emotional state dimensions */}
-            <Surface variant="elevated" className="p-5 flex-1">
+            <Surface variant="elevated" className="p-5">
               <p className="text-[10px] font-bold uppercase tracking-widest mb-3 text-[#c9a84c]/50">
                 Emotional State
               </p>
@@ -856,6 +865,31 @@ export default function DashboardOverview() {
                 ))}
               </div>
             </Surface>
+
+            {/* Evolution Progress */}
+            {loadedEntity && entity && (
+              <EvolutionProgress
+                level={entityLevel}
+                label={entity.hatch_label || "Companion"}
+                progress={evolutionProgress}
+                nextThreshold={entity.next_threshold}
+                interactionsCount={entity.interactions_count}
+              />
+            )}
+
+            {/* Activity Feed */}
+            <ActivityFeed
+              activities={activityItems.map((item, i) => ({
+                id: `activity-${i}`,
+                type: item.icon === "💬" ? "message" : 
+                      item.icon === "🧠" ? "memory" :
+                      item.icon === "📊" ? "evolution" : "guardian",
+                title: item.text,
+                description: item.sub,
+                timestamp: new Date().toISOString(),
+              }))}
+              isLoading={!loadedEntity}
+            />
           </div>
 
           {/* Left: secondary info col (2/3) — order-1 so it appears first on desktop */}

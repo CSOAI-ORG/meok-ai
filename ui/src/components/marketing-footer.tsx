@@ -325,19 +325,24 @@ export function MarketingFooter() {
 
           {/* Powered by CSOAI */}
           <div className="border-t border-[#2a2a3a] pt-8 pb-6">
-            <div className="flex flex-col items-center gap-3">
+            <div className="flex flex-col items-center gap-4">
               <span className="text-[10px] font-semibold tracking-[0.25em] uppercase text-[#9a9a8a]/40">
                 Infrastructure Partner
               </span>
-              <a
-                href="https://csoai.org"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[#D4A843]/30 bg-[#D4A843]/5 hover:bg-[#D4A843]/10 transition-colors"
+              <Link
+                href="/csoai"
+                className="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-[#D4A843]/30 bg-[#D4A843]/5 hover:bg-[#D4A843]/10 transition-colors"
               >
-                <span className="text-sm font-bold text-[#D4A843]">Powered by CSOAI</span>
-                <span className="text-xs text-[#9a9a8a]/70">— The Global Standard for AI Safety</span>
-              </a>
+                <img
+                  src="/brand/csoai-robot.png"
+                  alt="CSOAI"
+                  className="w-8 h-8 rounded-lg object-cover"
+                />
+                <div className="flex flex-col">
+                  <span className="text-sm font-bold text-[#D4A843]">Powered by CSOAI</span>
+                  <span className="text-xs text-[#9a9a8a]/70">Corporate Sovereign Open AI</span>
+                </div>
+              </Link>
             </div>
           </div>
 

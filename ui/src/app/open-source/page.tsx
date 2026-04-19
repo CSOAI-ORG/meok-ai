@@ -89,22 +89,39 @@ export default function OpenSourcePage() {
           aria-hidden="true"
         />
 
-        <div className="relative z-10 max-w-4xl mx-auto text-center">
-          {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[rgba(201,168,76,0.3)] bg-[rgba(201,168,76,0.08)] text-[#c9a84c] text-sm font-medium mb-8">
-            Open Source
+        <div className="relative z-10 max-w-6xl mx-auto">
+          <div className="flex flex-col lg:flex-row items-center gap-12">
+            {/* Left: Text Content */}
+            <div className="flex-1 text-center lg:text-left">
+              {/* Badge */}
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[rgba(201,168,76,0.3)] bg-[rgba(201,168,76,0.08)] text-[#c9a84c] text-sm font-medium mb-8">
+                Open Source
+              </div>
+
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6">
+                Built in the open.{" "}
+                <br />
+                <span className="text-gradient-gold">Governed by covenant.</span>
+              </h1>
+
+              <p className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                MEOK&apos;s core tools are open-source. Not because we have to be — because{" "}
+                <span className="text-white/80">sovereignty requires transparency</span>.
+              </p>
+            </div>
+
+            {/* Right: CSOAI Robot */}
+            <div className="w-full max-w-sm lg:max-w-md">
+              <img
+                src="/brand/csoai-robot.png"
+                alt="CSOAI Robot Mascot — Corporate Sovereign Open AI"
+                className="w-full h-auto rounded-2xl"
+                style={{
+                  filter: "drop-shadow(0 0 40px rgba(201,168,76,0.2))",
+                }}
+              />
+            </div>
           </div>
-
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6">
-            Built in the open.{" "}
-            <br />
-            <span className="text-gradient-gold">Governed by covenant.</span>
-          </h1>
-
-          <p className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed">
-            MEOK&apos;s core tools are open-source. Not because we have to be — because{" "}
-            <span className="text-white/80">sovereignty requires transparency</span>.
-          </p>
         </div>
       </section>
 

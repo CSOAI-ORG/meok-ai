@@ -37,10 +37,10 @@ export default function NotFound() {
             Back home
           </Link>
           <Link
-            href="/hatch"
+            href="/start"
             className="border border-[#c9a84c]/40 text-[#f5f0e8] font-bold px-8 py-3 rounded-full hover:border-[#c9a84c] hover:text-[#c9a84c] transition-colors"
           >
-            Hatch your AI
+            Start your AI
           </Link>
         </div>
 
@@ -51,8 +51,8 @@ export default function NotFound() {
           </p>
           <ul className="space-y-2 text-sm">
             {[
-              ['/hatch', 'Hatch — start your AI companion'],
-              ['/characters', 'Characters — meet the archetypes'],
+              ['/start', 'Start — create your AI companion'],
+              ['/birth', 'Birth — meet the archetypes'],
               ['/pricing', 'Pricing — plans and tiers'],
               ['/faq', 'FAQ — common questions'],
               ['/blog', 'Blog — insights and research'],

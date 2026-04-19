@@ -1,24 +1,30 @@
 export default function Loading() {
   return (
     <div className="fixed inset-0 flex items-center justify-center" style={{ background: '#0d0c18' }}>
-      <div className="flex flex-col items-center gap-4">
-        {/* Pulsing orb */}
-        <div className="relative w-16 h-16">
+      <div className="flex flex-col items-center gap-6">
+        {/* CSOAI Robot with pulse */}
+        <div className="relative">
           <div
-            className="absolute inset-0 rounded-full animate-ping opacity-20"
+            className="absolute inset-0 rounded-2xl animate-ping opacity-10"
             style={{ background: '#c9a84c' }}
           />
-          <div
-            className="absolute inset-2 rounded-full animate-pulse"
+          <img
+            src="/brand/csoai-robot.png"
+            alt="Loading..."
+            className="w-24 h-24 object-cover rounded-xl animate-pulse"
             style={{
-              background: 'radial-gradient(circle at 35% 35%, #c9a84ccc, #c9a84c44)',
-              boxShadow: '0 0 24px #c9a84c44',
+              filter: 'drop-shadow(0 0 20px rgba(201,168,76,0.3))',
             }}
           />
         </div>
-        <p className="text-sm font-medium" style={{ color: 'rgba(255,255,255,0.4)' }}>
-          Loading...
-        </p>
+        <div className="text-center">
+          <p className="text-sm font-bold text-[#c9a84c] mb-1">
+            CSOAI
+          </p>
+          <p className="text-xs font-medium" style={{ color: 'rgba(255,255,255,0.4)' }}>
+            Initializing...
+          </p>
+        </div>
       </div>
     </div>
   );

@@ -14,6 +14,10 @@ import { GlobalNav } from "@/components/GlobalNav";
 import { MarketingFooter } from "@/components/marketing-footer";
 import { SensoryInit } from "@/components/sensory-init";
 import { ConsentAwareProviders } from "@/components/consent-aware-providers";
+import { ScrollToTop } from "@/components/ScrollToTop";
+import { KeyboardShortcuts } from "@/components/KeyboardShortcuts";
+import { ToastProvider } from "@/components/Toast";
+import { CommandPalette } from "@/components/CommandPalette";
 import "./globals.css";
 
 const dmSans = DM_Sans({
@@ -182,11 +186,22 @@ export default function RootLayout({
         </head>
         <body className={`${dmSans.variable} font-sans antialiased bg-[#FAF9F6] text-[#111111] min-h-screen`}>
           <SensoryInit />
-          <ExperienceModeProvider>
-            <GlobalNav />
-            <ConsentAwareProviders>{children}</ConsentAwareProviders>
-            <MarketingFooter />
-          </ExperienceModeProvider>
+          <ToastProvider>
+            <ExperienceModeProvider>
+              {/* Skip to content link for accessibility */}
+              <a href="#main-content" className="skip-to-content">
+                Skip to content
+              </a>
+              <GlobalNav />
+              <main id="main-content" tabIndex={-1}>
+                <ConsentAwareProviders>{children}</ConsentAwareProviders>
+              </main>
+              <MarketingFooter />
+              <ScrollToTop />
+              <KeyboardShortcuts />
+              <CommandPalette />
+            </ExperienceModeProvider>
+          </ToastProvider>
         </body>
       </html>
     </MaybeClerk>
