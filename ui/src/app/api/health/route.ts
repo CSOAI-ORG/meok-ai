@@ -13,7 +13,7 @@ const startTime = Date.now();
 
 export async function GET() {
   // Database check
-  let db = { connected: false, error: 'Not checked' };
+  let db: { connected: boolean; latencyMs?: number; error?: string } = { connected: false, error: 'Not checked' };
   try {
     if (sql) {
       const start = Date.now();
