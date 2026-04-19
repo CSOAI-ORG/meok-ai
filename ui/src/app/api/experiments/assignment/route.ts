@@ -1,73 +1,48 @@
 /**
  * MEOK A/B Testing - Experiment Assignment API
- * 
- * Records user assignments to experiments for accurate analytics
  */
 
 import { NextRequest, NextResponse } from 'next/server';
-import { sql } from '@/lib/db';
-import { getAuthUserId } from '@/lib/api-auth';
+import { ACTIVE_EXPERIMENTS, assignVariant } from '@/lib/ab-testing';
 
-interface AssignmentPayload {
-  experimentId: string;
-  variant: string;
-  userId?: string;
-  timestamp: string;
-  metadata?: Record<string, unknown>;
-}
+export const runtime = 'edge';
 
-export async function POST(req: NextRequest): Promise<NextResponse> {
+export async function POST(req: NextRequest) {
   try {
-    const body: AssignmentPayload = await req.json();
-    const { experimentId, variant, userId, timestamp, metadata } = body;
+    const body = await req.json();
+    const { experimentId, userId } = body;
 
-    if (!experimentId || !variant) {
+    if (!experimentId) {
       return NextResponse.json(
-        { error: 'Missing experimentId or variant' },
+        { error: 'Missing experimentId' },
         { status: 400 }
       );
     }
 
-    // Get authenticated user ID if not provided
-    const authUserId = await getAuthUserId();
-    const finalUserId = userId || authUserId;
+    const experiment = ACTIVE_EXPERIMENTS.find(e => e.id === experimentId);
+    if (!experiment) {
+      return NextResponse.json(
+        { error: 'Experiment not found' },
+        { status: 404 }
+      );
+    }
 
-    // Store assignment in database
-    await sql`
-      INSERT INTO experiment_assignments (
-        experiment_id,
-        variant,
-        user_id,
-        assigned_at,
-        metadata
-      ) VALUES (
-        ${experimentId},
-        ${variant},
-        ${finalUserId || 'anonymous'},
-        ${timestamp || new Date().toISOString()},
-        ${metadata ? JSON.stringify(metadata) : null}
-      )
-      ON CONFLICT (experiment_id, user_id) DO UPDATE SET
-        variant = EXCLUDED.variant,
-        assigned_at = EXCLUDED.assigned_at,
-        metadata = EXCLUDED.metadata
-    `;
+    const variant = assignVariant(experimentId, userId || 'anonymous', experiment);
 
     return NextResponse.json({
-      success: true,
       experimentId,
       variant,
     });
   } catch (error) {
     console.error('[experiments/assignment] Error:', error);
     return NextResponse.json(
-      { error: 'Failed to record assignment' },
+      { error: 'Failed to assign variant' },
       { status: 500 }
     );
   }
 }
 
-export async function GET(req: NextRequest): Promise<NextResponse> {
+export async function GET(req: NextRequest) {
   try {
     const { searchParams } = new URL(req.url);
     const experimentId = searchParams.get('experimentId');
@@ -80,28 +55,19 @@ export async function GET(req: NextRequest): Promise<NextResponse> {
       );
     }
 
-    const authUserId = await getAuthUserId();
-    const finalUserId = userId || authUserId;
-
-    // Query database
-    const result = await sql`
-      SELECT variant FROM experiment_assignments
-      WHERE experiment_id = ${experimentId}
-      AND user_id = ${finalUserId || 'anonymous'}
-      ORDER BY assigned_at DESC
-      LIMIT 1
-    `;
-
-    if (result.length === 0) {
+    const experiment = ACTIVE_EXPERIMENTS.find(e => e.id === experimentId);
+    if (!experiment) {
       return NextResponse.json(
-        { error: 'No assignment found' },
+        { error: 'Experiment not found' },
         { status: 404 }
       );
     }
 
+    const variant = assignVariant(experimentId, userId || 'anonymous', experiment);
+
     return NextResponse.json({
       experimentId,
-      variant: result[0].variant,
+      variant,
     });
   } catch (error) {
     console.error('[experiments/assignment] Error:', error);
