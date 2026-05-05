@@ -62,7 +62,37 @@ const nextConfig: NextConfig = {
   },
 
   async redirects() {
+    // MCP package names → /labs/mcp/servers (PyPI homepage links land here)
+    const mcpPackageRedirects = [
+      'meok-watermark-attest-mcp',
+      'meok-omnibus-tracker-mcp',
+      'meok-cra-annex-iv-classifier-mcp',
+      'meok-mcp-injection-scan-mcp',
+      'meok-fria-generator-mcp',
+      'meok-dora-tlpt-planner-mcp',
+      'meok-nis2-de-register-mcp',
+      'dora-compliance-mcp',
+      'nis2-compliance-mcp',
+      'cra-compliance-mcp',
+      'ai-bom-mcp',
+      'csrd-compliance-mcp',
+      'eu-ai-act-compliance-mcp',
+      'healthcare-fhir-mcp',
+      'uk-ai-bill-compliance-mcp',
+      'dora-nis2-crosswalk-mcp',
+      'ai-incident-reporting-mcp',
+      'gods-eye-geospatial-mcp',
+      'care-membrane-mcp',
+      'meok-attestation-verify',
+      'prompt-injection-firewall-mcp',
+    ].map(pkg => ({
+      source: `/${pkg}`,
+      destination: '/labs/mcp/servers',
+      permanent: false,
+    }));
+
     return [
+      ...mcpPackageRedirects,
       { source: '/product/companions',      destination: '/characters', permanent: true },
       { source: '/product/ralph',           destination: '/work',       permanent: true },
       { source: '/product/family-guardian', destination: '/guardian',   permanent: true },
