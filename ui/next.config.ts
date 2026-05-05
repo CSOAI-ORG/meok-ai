@@ -62,11 +62,16 @@ const nextConfig: NextConfig = {
   },
 
   async redirects() {
+    // MCP packages with dedicated landing pages
+    const mcpDedicatedPages = [
+      { source: '/meok-watermark-attest-mcp', destination: '/mcp/watermark', permanent: false },
+      { source: '/meok-cra-annex-iv-classifier-mcp', destination: '/mcp/cra-classifier', permanent: false },
+      { source: '/ai-bom-mcp', destination: '/mcp/ai-bom', permanent: false },
+    ];
+
     // MCP package names → /labs/mcp/servers (PyPI homepage links land here)
     const mcpPackageRedirects = [
-      'meok-watermark-attest-mcp',
       'meok-omnibus-tracker-mcp',
-      'meok-cra-annex-iv-classifier-mcp',
       'meok-mcp-injection-scan-mcp',
       'meok-fria-generator-mcp',
       'meok-dora-tlpt-planner-mcp',
@@ -74,7 +79,6 @@ const nextConfig: NextConfig = {
       'dora-compliance-mcp',
       'nis2-compliance-mcp',
       'cra-compliance-mcp',
-      'ai-bom-mcp',
       'csrd-compliance-mcp',
       'eu-ai-act-compliance-mcp',
       'healthcare-fhir-mcp',
@@ -92,6 +96,7 @@ const nextConfig: NextConfig = {
     }));
 
     return [
+      ...mcpDedicatedPages,
       ...mcpPackageRedirects,
       { source: '/product/companions',      destination: '/characters', permanent: true },
       { source: '/product/ralph',           destination: '/work',       permanent: true },

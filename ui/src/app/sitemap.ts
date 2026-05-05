@@ -64,6 +64,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/vs-onetrust',
   ];
 
+  const mcpLandingPages = [
+    '/mcp/watermark',
+    '/mcp/cra-classifier',
+    '/mcp/ai-bom',
+  ];
+
   const product = [
     '/labs', '/labs/mcp', '/labs/mcp/packs', '/labs/mcp/servers',
     '/tools',
@@ -101,6 +107,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...merge(highValue, 1.0, 'weekly'),
     ...merge(euAiActArticles, 0.95, 'weekly'),
     ...merge(verticals, 0.92, 'weekly'),
+    ...merge(mcpLandingPages, 0.92, 'weekly'),
     ...merge(versusPages, 0.9, 'weekly'),
     ...merge(blogIndex, 0.85, 'daily'),
     ...merge(product, 0.7, 'weekly'),
