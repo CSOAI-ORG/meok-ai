@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Business Solutions — MEOK.AI</title>
+  <meta name="description" content="EU AI Act compliance audits, MCP enterprise platforms, and COBOL modernization for fintech, healthcare, and defence.">
+  <link rel="stylesheet" href="nav.css">
+  <style>
+    :root {
+      --deep-blue: #2563eb;
+      --green: #16a34a;
+      --dark: #0f172a;
+      --mid: #64748b;
+      --light: #f1f5f9;
+      --border: #e2e8f0;
+      --radius: 12px;
+      --shadow-lg: 0 10px 40px rgba(0,0,0,0.08);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; color: var(--dark); line-height: 1.6; background: #fff; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .hero { text-align: center; padding: 100px 24px 60px; background: linear-gradient(180deg, #f8fafc 0%, #fff 100%); }
+    .hero-badge { display: inline-block; background: var(--deep-blue); color: #fff; padding: 6px 16px; border-radius: 100px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; }
+    .hero h1 { font-size: 3rem; font-weight: 900; margin-bottom: 16px; }
+    .hero p { font-size: 1.2rem; color: var(--mid); max-width: 640px; margin: 0 auto 32px; }
+    .urgency-banner {
+      background: linear-gradient(90deg, #fef3c7, #fff);
+      border: 1px solid #f59e0b;
+      border-radius: var(--radius);
+      padding: 20px 24px;
+      margin: 40px auto;
+      max-width: 720px;
+      text-align: center;
+    }
+    .urgency-banner strong { color: #b45309; }
+    .section { padding: 80px 24px; }
+    .section-alt { background: var(--light); }
+    .section h2 { text-align: center; font-size: 2.2rem; font-weight: 800; margin-bottom: 16px; }
+    .section > .container > p { text-align: center; color: var(--mid); max-width: 600px; margin: 0 auto 48px; }
+    .pricing-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 24px; }
+    .pricing-card { background: #fff; border: 1px solid var(--border); border-radius: var(--radius); padding: 40px 32px; position: relative; transition: all 0.2s; }
+    .pricing-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+    .pricing-card.featured { border-color: var(--deep-blue); box-shadow: 0 0 0 2px var(--deep-blue); }
+    .featured-badge { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--deep-blue); color: #fff; font-size: 0.72rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 5px 16px; border-radius: 100px; }
+    .vertical-tag { font-size: 0.72rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--mid); margin-bottom: 6px; }
+    .plan-name { font-size: 1.35rem; font-weight: 800; margin-bottom: 4px; }
+    .plan-desc { font-size: 0.92rem; color: var(--mid); margin-bottom: 20px; }
+    .plan-price { margin: 16px 0; }
+    .plan-price .amount { font-size: 2.8rem; font-weight: 900; color: var(--deep-blue); }
+    .plan-price .period { font-size: 1rem; color: var(--mid); }
+    .plan-features { list-style: none; display: grid; gap: 10px; margin: 28px 0; }
+    .plan-features li { font-size: 0.9rem; color: var(--mid); display: flex; gap: 10px; align-items: flex-start; }
+    .plan-features li::before { content: '✓'; color: var(--green); font-weight: 700; flex-shrink: 0; }
+    .plan-cta { display: block; width: 100%; text-align: center; padding: 14px; border-radius: var(--radius); font-weight: 700; font-size: 0.95rem; text-decoration: none; transition: all 0.2s; border: none; cursor: pointer; }
+    .plan-cta.primary { background: var(--deep-blue); color: #fff; }
+    .plan-cta.primary:hover { background: #1d4ed8; }
+    .plan-cta.secondary { background: var(--light); color: var(--deep-blue); }
+    .plan-cta.secondary:hover { background: var(--border); }
+    .comparison { overflow-x: auto; }
+    .comparison table { width: 100%; border-collapse: collapse; }
+    .comparison th, .comparison td { padding: 16px; text-align: left; border-bottom: 1px solid var(--border); }
+    .comparison th { color: var(--mid); font-weight: 600; font-size: 0.82rem; text-transform: uppercase; }
+    .yes { color: var(--green); font-weight: 700; }
+    .no { color: var(--mid); opacity: 0.5; }
+    .faq-item { background: #fff; border: 1px solid var(--border); border-radius: var(--radius); padding: 28px; margin-bottom: 16px; }
+    .faq-item h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 8px; }
+    .faq-item p { color: var(--mid); font-size: 0.95rem; }
+    .cta-section { text-align: center; padding: 80px 24px; background: var(--dark); color: #fff; }
+    .cta-section h2 { font-size: 2.4rem; font-weight: 800; margin-bottom: 16px; }
+    .cta-section p { color: #94a3b8; max-width: 560px; margin: 0 auto 32px; }
+    .btn { display: inline-block; padding: 14px 32px; border-radius: var(--radius); font-weight: 700; text-decoration: none; transition: all 0.2s; }
+    .btn-light { background: #fff; color: var(--dark); }
+    .btn-light:hover { background: var(--light); }
+    footer { text-align: center; padding: 40px 24px; color: var(--mid); font-size: 0.9rem; border-top: 1px solid var(--border); }
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 2rem; }
+      .plan-price .amount { font-size: 2.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">MEOK<span>.AI</span></a>
+    <button class="nav-hamburger" onclick="this.nextElementSibling.classList.toggle('open')" aria-label="Menu">&#9776;</button>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="business.html">Business</a></li>
+      <li><a href="pricing.html">Consumer Pricing</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="business.html#audit" class="nav-cta">Get Audit</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="container">
+    <div class="hero-badge">Enterprise</div>
+    <h1>AI Compliance & Infrastructure for Business</h1>
+    <p>From EU AI Act audits to sovereign MCP platforms. Fixed-price engagements. No surprises.</p>
+  </div>
+  <div class="urgency-banner">
+    <strong>⏰ EU AI Act Deadline: August 2, 2026</strong><br>
+    High-risk AI systems face penalties up to <strong>€35 million</strong> or 7% of global turnover.
+    <br><a href="#audit" style="color:var(--deep-blue);font-weight:700;">Book a 48-hour audit →</a>
+  </div>
+</section>
+
+<section class="section" id="audit">
+  <div class="container">
+    <h2>Professional Services</h2>
+    <p>One-time engagements with fixed pricing. Start with an audit. Expand to a platform.</p>
+    <div class="pricing-grid">
+
+      <div class="pricing-card featured">
+        <span class="featured-badge">Most Popular</span>
+        <div class="vertical-tag">Compliance</div>
+        <h3 class="plan-name">EU AI Act Audit</h3>
+        <p class="plan-desc">48-hour compliance gap analysis for fintech and HR-tech.</p>
+        <div class="plan-price"><span class="amount">£5,000</span> <span class="period">one-time</span></div>
+        <ul class="plan-features">
+          <li>Complete compliance gap analysis</li>
+          <li>Specific remediation roadmap</li>
+          <li>EU AI Act documentation templates</li>
+          <li>Risk exposure quantification</li>
+          <li>30 days email support</li>
+          <li>Delivered within 48 hours</li>
+          <li>100% refund if not satisfied</li>
+        </ul>
+        <a href="mailto:audit@meok.ai?subject=EU%20AI%20Act%20Audit%20Request" class="plan-cta primary">Request Audit</a>
+      </div>
+
+      <div class="pricing-card">
+        <div class="vertical-tag">Legacy Modernization</div>
+        <h3 class="plan-name">COBOL Assessment</h3>
+        <p class="plan-desc">Legacy system audit and modernization roadmap for banks and insurers.</p>
+        <div class="plan-price"><span class="amount">£5,000</span> <span class="period">one-time</span></div>
+        <ul class="plan-features">
+          <li>Complete COBOL landscape mapping</li>
+          <li>Risk assessment per system</li>
+          <li>Modernization roadmap</li>
+          <li>Quick-win identification</li>
+          <li>Bridge architecture plan</li>
+          <li>Cost/benefit analysis</li>
+          <li>30 days support</li>
+        </ul>
+        <a href="mailto:enterprise@meok.ai?subject=COBOL%20Assessment%20Request" class="plan-cta secondary">Request Assessment</a>
+      </div>
+
+      <div class="pricing-card">
+        <div class="vertical-tag">Strategic</div>
+        <h3 class="plan-name">Enterprise Assessment</h3>
+        <p class="plan-desc">Comprehensive AI governance and infrastructure review.</p>
+        <div class="plan-price"><span class="amount">£15,000</span> <span class="period">one-time</span></div>
+        <ul class="plan-features">
+          <li>Everything in EU AI Act Audit</li>
+          <li>Multi-system architecture review</li>
+          <li>Custom policy framework</li>
+          <li>Executive board presentation</li>
+          <li>90 days support</li>
+          <li>Quarterly check-ins</li>
+          <li>Priority escalation</li>
+        </ul>
+        <a href="mailto:enterprise@meok.ai?subject=Enterprise%20Assessment%20Request" class="plan-cta secondary">Contact Sales</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt" id="platform">
+  <div class="container">
+    <h2>MCP Platform Subscriptions</h2>
+    <p>API access to 200+ MCP servers. Scale from startup to enterprise.</p>
+    <div class="pricing-grid">
+
+      <div class="pricing-card">
+        <div class="vertical-tag">Developer</div>
+        <h3 class="plan-name">MCP Starter</h3>
+        <p class="plan-desc">For individual developers and early-stage startups.</p>
+        <div class="plan-price"><span class="amount">£49</span> <span class="period">/month</span></div>
+        <ul class="plan-features">
+          <li>50 MCP servers</li>
+          <li>10,000 API calls/month</li>
+          <li>Community support</li>
+          <li>Standard documentation</li>
+        </ul>
+        <a href="https://buy.stripe.com/starter" class="plan-cta secondary">Start Free Trial</a>
+      </div>
+
+      <div class="pricing-card featured">
+        <span class="featured-badge">Best Value</span>
+        <div class="vertical-tag">Team</div>
+        <h3 class="plan-name">MCP Pro</h3>
+        <p class="plan-desc">For scaling teams building production AI systems.</p>
+        <div class="plan-price"><span class="amount">£299</span> <span class="period">/month</span></div>
+        <ul class="plan-features">
+          <li>200+ MCP servers</li>
+          <li>100,000 API calls/month</li>
+          <li>Priority support</li>
+          <li>Custom MCP development</li>
+          <li>Usage analytics</li>
+          <li>99.9% SLA</li>
+        </ul>
+        <a href="https://buy.stripe.com/pro" class="plan-cta primary">Start Free Trial</a>
+      </div>
+
+      <div class="pricing-card">
+        <div class="vertical-tag">Enterprise</div>
+        <h3 class="plan-name">MCP Enterprise</h3>
+        <p class="plan-desc">Sovereign deployment. On-premise or private cloud.</p>
+        <div class="plan-price"><span class="amount">Custom</span></div>
+        <ul class="plan-features">
+          <li>Unlimited MCP servers</li>
+          <li>Unlimited API calls</li>
+          <li>Dedicated engineer</li>
+          <li>On-premise deployment</li>
+          <li>White-label license</li>
+          <li>99.99% SLA</li>
+        </ul>
+        <a href="mailto:enterprise@meok.ai?subject=MCP%20Enterprise%20Inquiry" class="plan-cta secondary">Contact Sales</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2>Compare All Plans</h2>
+    <div class="comparison">
+      <table>
+        <thead>
+          <tr><th>Feature</th><th>Starter</th><th>Pro</th><th>Enterprise</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>MCP servers</td><td>50</td><td>200+</td><td>Unlimited</td></tr>
+          <tr><td>API calls/month</td><td>10,000</td><td>100,000</td><td>Unlimited</td></tr>
+          <tr><td>Custom MCPs</td><td class="no">—</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+          <tr><td>Usage analytics</td><td class="no">—</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+          <tr><td>Support</td><td>Community</td><td>Priority</td><td>Dedicated engineer</td></tr>
+          <tr><td>SLA</td><td class="no">—</td><td>99.9%</td><td>99.99%</td></tr>
+          <tr><td>On-premise</td><td class="no">—</td><td class="no">—</td><td class="yes">✓</td></tr>
+          <tr><td>White-label</td><td class="no">—</td><td class="no">—</td><td class="yes">✓</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <h3>What's included in the 48-hour audit?</h3>
+      <p>We analyze your AI systems against all 5 EU AI Act compliance pillars: data governance, transparency, human oversight, accuracy, and cybersecurity. You receive a gap analysis, remediation roadmap, documentation templates, and 30 days of email support. Delivered within 48 hours of kickoff.</p>
+    </div>
+    <div class="faq-item">
+      <h3>What if we're not satisfied with the audit?</h3>
+      <p>100% money-back guarantee. If the audit doesn't identify actionable gaps or you don't find value, we'll refund the full £5,000. No questions asked.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Do you work with non-UK companies?</h3>
+      <p>Yes. We work with any company subject to EU AI Act jurisdiction — including EU-based companies, UK companies serving EU customers, and non-EU companies with EU operations.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Can we upgrade from an audit to a platform subscription?</h3>
+      <p>Yes. Many clients start with the £5k audit to understand their gaps, then upgrade to the compliance platform for ongoing monitoring and documentation.</p>
+    </div>
+    <div class="faq-item">
+      <h3>What's the difference between MCP Starter and Pro?</h3>
+      <p>Starter gives you access to 50 curated MCP servers with 10,000 API calls/month. Pro unlocks all 200+ servers, 100,000 calls, custom MCP development, and priority support. Enterprise adds on-premise deployment, white-labeling, and a dedicated engineer.</p>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="container">
+    <h2>Ready to get compliant?</h2>
+    <p>108 days until EU AI Act enforcement. Book your 48-hour audit today and know exactly where you stand.</p>
+    <a href="mailto:audit@meok.ai?subject=EU%20AI%20Act%20Audit%20Request" class="btn btn-light">Request Audit — £5,000</a>
+    <p style="margin-top:16px;font-size:0.9rem;color:#94a3b8;">100% refund guarantee · Delivered in 48 hours · 30 days support included</p>
+  </div>
+</section>
+
+<footer>
+  <p>MEOK AI Labs Ltd · UK Company · <a href="mailto:enterprise@meok.ai">enterprise@meok.ai</a></p>
+  <p style="margin-top:8px;">Sovereign AI. British Built. Globally Deployed.</p>
+</footer>
+
+</body>
+</html>

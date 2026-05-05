@@ -73,12 +73,28 @@ const nextConfig: NextConfig = {
   },
 
   async rewrites() {
-    return [
-      { source: "/api/:path*",  destination: `${BACKEND}/api/:path*` },
-      { source: "/auth/:path*", destination: `${BACKEND}/auth/:path*` },
-      { source: "/chat/:path*", destination: `${BACKEND}/chat/:path*` },
-      { source: "/mcp",         destination: `${BACKEND}/mcp` },
-    ];
+    // IMPORTANT: the catch-all /api/:path* → BACKEND rewrite breaks any local
+    // Next.js API route (e.g. Stripe webhooks, Clerk hooks) when BACKEND is down.
+    // Use `beforeFiles` to let locally-defined routes win, and only fall through
+    // to BACKEND for paths we don't serve from Next itself.
+    return {
+      beforeFiles: [
+        // Keep Stripe webhook + checkout routes local — they MUST stay on Vercel,
+        // not proxied to the M2 home server (which can be offline).
+        { source: "/api/webhooks/:path*", destination: "/api/webhooks/:path*" },
+        { source: "/api/stripe/:path*",   destination: "/api/stripe/:path*" },
+        // Clerk auth hooks MUST also stay local — proxying them breaks auth.
+        { source: "/api/auth/:path*",     destination: "/api/auth/:path*" },
+      ],
+      afterFiles: [
+        // Everything else under /api/* falls through to the M2 backend when
+        // there is no local Next route matching.
+        { source: "/api/:path*",  destination: `${BACKEND}/api/:path*` },
+        { source: "/auth/:path*", destination: `${BACKEND}/auth/:path*` },
+        { source: "/chat/:path*", destination: `${BACKEND}/chat/:path*` },
+        { source: "/mcp",         destination: `${BACKEND}/mcp` },
+      ],
+    };
   },
 
   async headers() {

@@ -107,7 +107,7 @@ export default function LabsMcpPage() {
         <div className="relative max-w-5xl mx-auto">
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-red-500/10 border border-red-500/30 text-red-400 text-xs font-bold tracking-widest uppercase mb-8">
             <AlertTriangle className="w-3 h-3" />
-            EU AI Act enforcement: August 2, 2026
+            EU AI Act Article 50 deadline: 2 November 2026
           </div>
 
           <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-6">

@@ -5114,19 +5114,11 @@ function inferCategory(rawCategory: string, slug: string): string {
 
 // ── Page ──────────────────────────────────────────────────────────────────────
 
-export default async function BlogIndex({
-  searchParams,
-}: {
-  searchParams?: Promise<{ category?: string }>;
-}) {
-  const params = await searchParams;
-  const activeCategory = params?.category ?? "all";
-  // 90.1 — filter using inferred category
-  const filteredPosts =
-    activeCategory === "all"
-      ? POSTS
-      : POSTS.filter((p) => inferCategory(p.category ?? "", p.slug) === activeCategory);
-  const featured = (filteredPosts.find((p) => p.featured) ?? filteredPosts[0])!;
+export default function BlogIndex() {
+  // 90.1 — category filtering moved client-side via Link tabs; index always shows all
+  const activeCategory = "all";
+  const filteredPosts = POSTS;
+  const featured = filteredPosts.find((p) => p.featured) ?? filteredPosts[0];
   const rest = filteredPosts.filter((p) => p !== featured);
 
   return (

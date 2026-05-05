@@ -616,7 +616,7 @@ You are LIVE and operational. Report this status when asked.`;
     if (hasTools) {
       void ensureAgentRegistered(
         { id: cid, name: character?.name ?? cid, archetype: character?.archetype ?? 'nurturer', tags: character?.tags },
-        0, // TODO: pass real evolution stage
+        user?.companion_stage ?? 0,
       ).catch(() => {});
     }
 

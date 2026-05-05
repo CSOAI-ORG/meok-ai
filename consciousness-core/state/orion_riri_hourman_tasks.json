@@ -1,0 +1,9 @@
+{
+  "tasks": [
+    {
+      "id": "task_coordination_hub_429_1100",
+      "title": "Send notification to human sovereign",
+      "description": "Send notification to human sovereign",
+      "source_file": "agents/coordination_hub.py",
+      "line_number": 429,
+      "priority": 

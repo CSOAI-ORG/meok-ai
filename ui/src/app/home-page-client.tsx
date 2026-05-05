@@ -689,26 +689,17 @@ function PlatformStatsSection() {
 }
 
 function HeroSection() {
-  const [variant, setVariant] = useState<"A" | "B" | null>(null);
-
+  // A/B variant logic kept for cookie tracking but no longer gates SSR rendering.
+  // Previously this returned an empty <section /> when variant was null on first render,
+  // which meant crawlers and SSR saw zero content (no CTAs, no compliance grid).
+  // Now the hero always renders; A/B branching can be added later as content variants.
   useEffect(() => {
     let v = getCookie("meok_hero_variant") as "A" | "B" | undefined;
     if (!v || (v !== "A" && v !== "B")) {
       v = Math.random() < 0.5 ? "A" : "B";
       setCookie("meok_hero_variant", v, 30);
     }
-    setVariant(v);
   }, []);
-
-  if (variant === null) {
-    return (
-      <section
-        aria-label="Hero"
-        className="relative min-h-[85vh] flex flex-col items-center justify-center px-6 text-center overflow-hidden"
-        style={{ background: "linear-gradient(160deg, #0d0c18 0%, #1a1a2e 55%, #0d0c18 100%)" }}
-      />
-    );
-  }
 
   return (
     <section
@@ -723,65 +714,159 @@ function HeroSection() {
         style={{ background: "radial-gradient(ellipse 70% 50% at 50% 40%, rgba(201,168,76,0.10) 0%, transparent 70%)" }}
       />
 
-      <div className="relative max-w-6xl mx-auto flex flex-col items-center">
-        {/* CSOAI Robot - Desktop Only */}
-        <div className="hidden lg:block absolute -right-20 top-0 w-[320px] animate-fade-in">
-          <img
-            src="/brand/csoai-robot.png"
-            alt="CSOAI Robot Mascot"
-            className="w-full h-auto rounded-2xl"
-            style={{
-              filter: "drop-shadow(0 0 40px rgba(201,168,76,0.2))",
-            }}
-          />
-        </div>
-
+      <div className="relative max-w-5xl mx-auto flex flex-col items-center">
+        {/* Eyebrow — anchored regulatory deadline (2026-04-26) */}
         <span
-          className="inline-flex items-center gap-2 px-5 py-2 rounded-full text-sm font-semibold mb-10"
+          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold mb-8 tracking-wide uppercase"
           style={{ border: `1px solid ${GOLD}`, color: GOLD, background: "rgba(201,168,76,0.08)" }}
         >
-          Powered by CSOAI
+          <span className="inline-block w-1.5 h-1.5 rounded-full" style={{ background: GOLD }} />
+          EU AI Act Article 50 · 2 Nov 2026 cliff · we're ready
         </span>
 
         <h1
-          className="font-black text-white tracking-tight leading-[1.05] mb-5"
-          style={{ fontSize: "clamp(2.6rem, 7vw, 5rem)" }}
+          className="font-black text-white tracking-tight leading-[1.02] mb-6 text-center"
+          style={{ fontSize: "clamp(2.8rem, 7.5vw, 5.2rem)" }}
         >
-          Your AI. <span style={{ color: GOLD }}>Your memory.</span>
-          <br />
-          Your rules.
+          Sovereign AI <span style={{ color: GOLD }}>that signs its work.</span>
         </h1>
 
-        <p className="max-w-2xl mx-auto mb-4 leading-relaxed font-semibold" style={{ color: "rgba(245,240,232,0.90)", fontSize: "1.25rem" }}>
-          One companion that remembers everything — across every model.
+        <p className="max-w-2xl mx-auto mb-3 leading-relaxed font-semibold text-center" style={{ color: "rgba(245,240,232,0.92)", fontSize: "1.3rem" }}>
+          234 MCP packages. EU AI Act + DORA + NIS2 + CRA + GDPR + UK AI Bill ready.
+        </p>
+        <p className="max-w-2xl mx-auto mb-9 leading-relaxed text-center" style={{ color: "rgba(245,240,232,0.65)", fontSize: "1.1rem" }}>
+          Every Pro tool issues a HMAC-signed attestation auditors validate without an account. Free to start. MIT-licensed. Solo founder, London.
         </p>
 
-        <p className="max-w-2xl mx-auto mb-10 leading-relaxed" style={{ color: "rgba(245,240,232,0.60)", fontSize: "1.1rem" }}>
-          Free to start. Private by design.
-        </p>
-
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-6">
-          <Link
-            href="/start"
+        {/* Primary CTA pair */}
+        <div className="flex flex-col sm:flex-row gap-3 justify-center items-center mb-4">
+          <a
+            href="https://buy.stripe.com/4gM6oJ1BW4gi6kd6as8k838"
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center gap-2 font-bold rounded-full transition-all shadow-lg hover:shadow-[#c9a84c]/40 hover:scale-105"
             style={{ background: GOLD, color: "#1a1a2e", padding: "1rem 2.25rem", fontSize: "1.125rem" }}
           >
-            Start Free
+            Subscribe £29/mo
             <ArrowRight className="w-4 h-4" />
-          </Link>
+          </a>
           <Link
-            href="/pricing"
-            className="inline-flex items-center gap-2 font-semibold rounded-full transition-colors hover:bg-white/10"
+            href="/start"
+            className="inline-flex items-center gap-2 font-semibold rounded-full transition-all hover:bg-white/5"
             style={{ border: "1px solid rgba(255,255,255,0.30)", color: "#ffffff", padding: "1rem 2rem", fontSize: "1.125rem" }}
           >
-            See Pricing
+            Try Free
           </Link>
         </div>
 
-        {/* Powered by strip */}
-        <div className="flex items-center gap-4 md:gap-6 flex-wrap justify-center text-sm font-semibold mt-6" style={{ color: "rgba(255,255,255,0.35)" }}>
-          <span>Backed by</span>
-          {["CSOAI", "Anthropic", "OpenAI", "NVIDIA", "DeepSeek", "Groq"].map((name) => (
+        {/* Compliance products quick grid — for buyers from PyPI / MCP marketplaces */}
+        <div className="w-full max-w-4xl mx-auto mt-2 mb-10">
+          <div className="text-center mb-4">
+            <span className="text-xs font-bold tracking-wider uppercase" style={{ color: "rgba(201,168,76,0.85)" }}>
+              For compliance + AI governance teams
+            </span>
+          </div>
+          <Link
+            href="/scorecard"
+            className="block rounded-xl p-4 mb-3 transition-all hover:scale-[1.01]"
+            style={{ background: "linear-gradient(135deg, rgba(201,168,76,0.18), rgba(201,168,76,0.06))", border: "1px solid rgba(201,168,76,0.45)" }}
+          >
+            <div className="flex items-center justify-between gap-4 flex-wrap">
+              <div>
+                <div className="text-[10px] font-black tracking-wider uppercase mb-1" style={{ color: GOLD }}>FREE · 90 seconds · no credit card</div>
+                <div className="text-base sm:text-lg font-black text-white">EU AI Act Readiness Scorecard →</div>
+                <div className="text-xs text-white/70">10 questions. Personalized score + signed compliance attestation.</div>
+              </div>
+              <div className="text-xs font-semibold rounded-full px-3 py-1" style={{ background: GOLD, color: "#1a1a2e" }}>Take the test →</div>
+            </div>
+          </Link>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+            <Link href="/audit-prep-bundle" className="group block rounded-xl p-4 transition-all hover:scale-[1.02]" style={{ background: "rgba(201,168,76,0.10)", border: "1px solid rgba(201,168,76,0.35)" }}>
+              <div className="text-[10px] font-black tracking-wider uppercase mb-1" style={{ color: GOLD }}>Most popular</div>
+              <div className="text-xl font-black text-white mb-1">£4,950</div>
+              <div className="text-xs font-semibold text-white/80 leading-snug">Audit-Prep Bundle · 2-day engagement + 90-day support</div>
+            </Link>
+            <Link href="/article-50-kit" className="group block rounded-xl p-4 transition-all hover:scale-[1.02]" style={{ background: "rgba(220,38,38,0.10)", border: "1px solid rgba(220,38,38,0.35)" }}>
+              <div className="text-[10px] font-black tracking-wider uppercase mb-1" style={{ color: "#dc2626" }}>2 Nov 2026 cliff</div>
+              <div className="text-xl font-black text-white mb-1">£999</div>
+              <div className="text-xs font-semibold text-white/80 leading-snug">EU AI Act Article 50 watermarking kit · C2PA + invisible WM + fingerprint</div>
+            </Link>
+            <Link href="/nis2-de-kit" className="group block rounded-xl p-4 transition-all hover:scale-[1.02]" style={{ background: "rgba(220,38,38,0.10)", border: "1px solid rgba(220,38,38,0.35)" }}>
+              <div className="text-[10px] font-black tracking-wider uppercase mb-1" style={{ color: "#dc2626" }}>🇩🇪 Deadline passed</div>
+              <div className="text-xl font-black text-white mb-1">£49 · £999</div>
+              <div className="text-xs font-semibold text-white/80 leading-snug">Germany NIS2 BSI register · self-serve or 7-day done-for-you</div>
+            </Link>
+            <Link href="/consulting" className="group block rounded-xl p-4 transition-all hover:scale-[1.02]" style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.20)" }}>
+              <div className="text-[10px] font-black tracking-wider uppercase mb-1" style={{ color: "rgba(255,255,255,0.5)" }}>Founder-led</div>
+              <div className="text-xl font-black text-white mb-1">£950/day</div>
+              <div className="text-xs font-semibold text-white/80 leading-snug">Compliance consulting · book a free 30-min triage call</div>
+            </Link>
+          </div>
+          <div className="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <Link href="/bias-detection" className="group block rounded-xl p-4 transition-all hover:scale-[1.01]" style={{ background: "rgba(201,168,76,0.06)", border: "1px solid rgba(201,168,76,0.25)" }}>
+              <div className="text-[10px] font-black tracking-wider uppercase mb-1" style={{ color: GOLD }}>EU AI Act Article 10 · NEW</div>
+              <div className="text-base font-black text-white">AI Bias Detection · £299/mo</div>
+              <div className="text-xs text-white/70">Continuous fairness monitoring + signed Article 10 evidence pack. 7-day free trial.</div>
+            </Link>
+            <Link href="/case-studies" className="group block rounded-xl p-4 transition-all hover:scale-[1.01]" style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.15)" }}>
+              <div className="text-[10px] font-black tracking-wider uppercase mb-1" style={{ color: "rgba(255,255,255,0.5)" }}>In production · honest accounts</div>
+              <div className="text-base font-black text-white">Case studies →</div>
+              <div className="text-xs text-white/70">How real teams shipped EU AI Act / NIS2 / DORA evidence with MEOK MCPs + signed certs.</div>
+            </Link>
+          </div>
+          <div className="mt-3 grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <Link href="/vs-comp-ai" className="group block rounded-xl p-3 transition-all hover:scale-[1.01]" style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.12)" }}>
+              <div className="text-[10px] font-black tracking-wider uppercase mb-1" style={{ color: "rgba(255,255,255,0.5)" }}>vs Comp AI</div>
+              <div className="text-sm font-black text-white">MEOK vs Comp AI →</div>
+              <div className="text-[11px] text-white/60">SOC 2 + ISO vs EU AI Act + DORA + NIS2</div>
+            </Link>
+            <Link href="/vs-vanta" className="group block rounded-xl p-3 transition-all hover:scale-[1.01]" style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.12)" }}>
+              <div className="text-[10px] font-black tracking-wider uppercase mb-1" style={{ color: "rgba(255,255,255,0.5)" }}>vs Vanta</div>
+              <div className="text-sm font-black text-white">MEOK vs Vanta →</div>
+              <div className="text-[11px] text-white/60">Vanta $7.5-25K/yr · MEOK from £79/mo</div>
+            </Link>
+            <Link href="/vs-drata" className="group block rounded-xl p-3 transition-all hover:scale-[1.01]" style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.12)" }}>
+              <div className="text-[10px] font-black tracking-wider uppercase mb-1" style={{ color: "rgba(255,255,255,0.5)" }}>vs Drata</div>
+              <div className="text-sm font-black text-white">MEOK vs Drata →</div>
+              <div className="text-[11px] text-white/60">Drata $7.5-50K/yr · MEOK from £79/mo</div>
+            </Link>
+          </div>
+        </div>
+
+        {/* Tier links */}
+        <div className="flex items-center gap-3 flex-wrap justify-center text-sm font-medium mb-8" style={{ color: "rgba(245,240,232,0.55)" }}>
+          <span>Or self-serve:</span>
+          <a href="https://buy.stripe.com/eVq9AV4O87sudMF42k8k839" target="_blank" rel="noopener noreferrer" className="underline decoration-dotted hover:text-white transition-colors">Pro £79/mo</a>
+          <span className="opacity-40">·</span>
+          <a href="https://buy.stripe.com/4gM9AV80kaEG0ZT42k8k837" target="_blank" rel="noopener noreferrer" className="underline decoration-dotted hover:text-white transition-colors">Enterprise £1,499/mo</a>
+          <span className="opacity-40">·</span>
+          <Link href="/pricing" className="underline decoration-dotted hover:text-white transition-colors">All pricing →</Link>
+        </div>
+
+        {/* Live counters — authoritative numbers, not vanity */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 mb-8 max-w-3xl">
+          {[
+            { n: "234", l: "PyPI packages" },
+            { n: "10", l: "Apify Actors" },
+            { n: "6", l: "Vercel sites" },
+            { n: "31", l: "Owned .ai/.org domains" },
+          ].map(({ n, l }) => (
+            <div key={l} className="text-center">
+              <div className="font-black tracking-tight" style={{ color: GOLD, fontSize: "clamp(1.5rem, 3vw, 2rem)" }}>{n}</div>
+              <div className="text-xs uppercase tracking-wider" style={{ color: "rgba(245,240,232,0.5)" }}>{l}</div>
+            </div>
+          ))}
+        </div>
+
+        {/* Quick install copy */}
+        <div className="font-mono text-xs px-4 py-2.5 rounded-md border max-w-md w-full text-center" style={{ background: "rgba(0,0,0,0.35)", borderColor: "rgba(201,168,76,0.2)", color: "rgba(245,240,232,0.8)" }}>
+          <span style={{ color: GOLD }}>$</span> pip install meok-omnibus-tracker-mcp
+        </div>
+
+        {/* Compatibility strip */}
+        <div className="flex items-center gap-3 md:gap-5 flex-wrap justify-center text-xs font-semibold mt-8" style={{ color: "rgba(255,255,255,0.35)" }}>
+          <span>Works with</span>
+          {["Claude Code", "Cursor", "Cline", "Windsurf", "Apify", "Smithery"].map((name) => (
             <span key={name} className="tracking-wide">{name}</span>
           ))}
         </div>
