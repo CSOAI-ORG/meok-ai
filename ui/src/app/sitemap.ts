@@ -65,54 +65,26 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ];
 
   const product = [
-    '/os', '/os/control-room',
-    '/dashboard',
-    '/os/sovereign-os', '/os/fly-eye', '/os/any-llm', '/os/consciousness',
-    '/birth', '/birth/aria', '/birth/sage', '/birth/marcus',
-    '/birth/luna', '/birth/gabriel', '/birth/shanti', '/birth/scout',
-    '/work', '/work/ralph',
-    '/guardian', '/guardian/scam-stop', '/guardian/school-safe', '/guardian/predator-stop',
-    '/gaming', '/gaming/live-copilot', '/gaming/strategy', '/gaming/post-game',
-    '/personal', '/family', '/for-developers', '/business', '/sovereign',
-    '/about', '/csoai', '/open-source',
-    '/start', '/connect', '/help',
     '/labs', '/labs/mcp', '/labs/mcp/packs', '/labs/mcp/servers',
-    '/mcp-dashboard', '/marketplace',
-    '/waitlist',
+    '/tools',
+    '/integrations',
+    '/resources',
+    '/docs',
+    '/case-studies',
+    '/trust',
+    '/smb',
   ];
 
   const legal = [
-    '/privacy', '/terms', '/cookies', '/ai-act', '/accessibility', '/sub-processors',
+    '/sub-processors',
   ];
 
   const blogIndex = ['/blog'];
 
   const blogPosts = [
-    '/blog/what-is-sovereign-ai',
-    '/blog/maternal-covenant-explained',
-    '/blog/sovereign-ai-explained',
-    '/blog/byzantine-council-explained',
-    '/blog/cognitive-symbiosis-explained',
-    '/blog/what-is-mcp',
-    '/blog/best-ai-companion-2026',
-    '/blog/why-meok',
-    '/blog/the-40-day-build',
-    '/blog/why-i-built-meok',
-    '/blog/ralph-mode-explained',
-    '/blog/morning-briefing-explained',
-    '/blog/data-sovereignty-ai',
-    '/blog/personal-ai-data-sovereignty',
-    '/blog/care-based-ai-alignment',
-    '/blog/meok-vs-chatgpt',
-    '/blog/meok-vs-claude',
-    '/blog/meok-vs-replika',
-    '/blog/meok-vs-character-ai',
-    '/blog/meok-review',
-    '/blog/the-future-of-ai-companions',
-    '/blog/what-is-an-ai-companion',
-    '/blog/ai-memory-explained',
-    '/blog/origin-story',
-    '/blog/90-day-gtm',
+    '/blog/article-50-watermarking-guide',
+    '/blog/digital-omnibus-delay-2026',
+    '/blog/nis2-germany-deadline-2026',
   ];
 
   const today = new Date();
