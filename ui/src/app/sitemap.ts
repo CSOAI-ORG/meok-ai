@@ -64,6 +64,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/vs-onetrust',
   ];
 
+  const verticalConsulting = [
+    '/verticals',
+    '/verticals/construction',
+    '/verticals/waste-management',
+    '/verticals/healthcare',
+  ];
+
   const mcpLandingPages = [
     '/mcp/watermark',
     '/mcp/cra-classifier',
@@ -107,6 +114,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...merge(highValue, 1.0, 'weekly'),
     ...merge(euAiActArticles, 0.95, 'weekly'),
     ...merge(verticals, 0.92, 'weekly'),
+    ...merge(verticalConsulting, 0.92, 'weekly'),
     ...merge(mcpLandingPages, 0.92, 'weekly'),
     ...merge(versusPages, 0.9, 'weekly'),
     ...merge(blogIndex, 0.85, 'daily'),
