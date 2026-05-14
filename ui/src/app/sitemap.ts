@@ -98,6 +98,34 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/blog/article-50-watermarking-guide',
     '/blog/digital-omnibus-delay-2026',
     '/blog/nis2-germany-deadline-2026',
+    '/blog/38-governance-mcps-in-3-weeks',
+    '/blog/article-50-c2pa-sigstore-moat',
+  ];
+
+  // All 38 governance/A2A/trade/cyber/industry MCP detail pages
+  const mcpServers = [
+    '/mcp/eu-ai-act-compliance', '/mcp/bias-detection', '/mcp/ai-bom',
+    '/mcp/dora-compliance', '/mcp/nis2-compliance', '/mcp/cra-compliance',
+    '/mcp/ai-incident-reporting', '/mcp/dora-nis2-crosswalk',
+    '/mcp/agent-prompt-injection-firewall', '/mcp/agent-handoff-certified',
+    '/mcp/agent-policy-enforcement', '/mcp/agent-audit-logger',
+    '/mcp/uk-ai-bill-compliance', '/mcp/agent-rate-limiter',
+    '/mcp/watermarking-authenticity', '/mcp/agent-data-residency',
+    '/mcp/haulage-uk-compliance', '/mcp/skip-hire-ai', '/mcp/construction-iso-19650',
+    '/mcp/nrswa-ai', '/mcp/chas-elite-prep', '/mcp/crane-hire-cpcs',
+    '/mcp/concrete-pump-cpa', '/mcp/mica-crypto', '/mcp/fsa-food-safety',
+    '/mcp/mdr-medical-device', '/mcp/fda-samd', '/mcp/coppa-ferpa',
+    '/mcp/basel-ai-overlay', '/mcp/mifid-ii-ai', '/mcp/aml-ai',
+    '/mcp/cisa-kev', '/mcp/sbom-cyclonedx', '/mcp/mitre-attack',
+    '/mcp/mitre-atlas', '/mcp/slsa-supply-chain', '/mcp/sigstore-cosign',
+    '/mcp/cobol-bridge',
+    // Optical + care vertical
+    '/mcp/gos-claim-validator', '/mcp/mhra-samd-optometry', '/mcp/dispense-record',
+    '/mcp/care-home-cqc', '/mcp/domiciliary-care', '/mcp/optical-care-home-bridge',
+  ];
+
+  const industryHubs = [
+    '/medtech', '/fintech', '/cybersec', '/kidsai',
   ];
 
   const today = new Date();
@@ -116,6 +144,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...merge(verticals, 0.92, 'weekly'),
     ...merge(verticalConsulting, 0.92, 'weekly'),
     ...merge(mcpLandingPages, 0.92, 'weekly'),
+    ...merge(industryHubs, 0.92, 'weekly'),
+    ...merge(mcpServers, 0.88, 'weekly'),
     ...merge(versusPages, 0.9, 'weekly'),
     ...merge(blogIndex, 0.85, 'daily'),
     ...merge(product, 0.7, 'weekly'),

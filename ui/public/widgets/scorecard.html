@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MEOK Compliance Scorecard</title>
+<meta name="description" content="Free 60-second EU AI Act / DORA / NIS2 readiness scorecard. Cryptographically signed attestations from MEOK AI Labs.">
+<link rel="canonical" href="https://meok.ai/scorecard">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}
+  body{background:#0D0B21;color:#fff;padding:2rem 1rem;min-height:100vh}
+  .widget{max-width:760px;margin:0 auto;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:18px;backdrop-filter:blur(20px);padding:2.5rem 2rem}
+  h1{font-size:1.9rem;font-weight:800;letter-spacing:-.02em;margin-bottom:.5rem;color:#fff}
+  .sub{color:#E8E4F0;opacity:.7;font-size:1rem;margin-bottom:2rem;line-height:1.5}
+  .reg-tabs{display:flex;gap:.5rem;margin-bottom:2rem;flex-wrap:wrap}
+  .reg-tab{padding:.55rem 1.2rem;border-radius:8px;border:1px solid rgba(212,168,67,.3);color:#D4A843;cursor:pointer;font-weight:600;font-size:.92rem;transition:all .2s}
+  .reg-tab.active,.reg-tab:hover{background:linear-gradient(135deg,#D4A843,#E8B76D);color:#0D0B21;border-color:transparent}
+  .question{margin-bottom:1.5rem;padding:1.2rem;background:rgba(255,255,255,.03);border-radius:12px;border:1px solid rgba(255,255,255,.06)}
+  .question label{display:block;font-weight:600;color:#fff;margin-bottom:.6rem;font-size:.98rem}
+  .opts{display:flex;gap:.5rem;flex-wrap:wrap}
+  .opt{flex:1;min-width:90px;padding:.6rem;background:transparent;border:1px solid rgba(255,255,255,.15);color:#E8E4F0;border-radius:8px;cursor:pointer;font-size:.88rem;font-weight:600;transition:all .15s}
+  .opt:hover{border-color:#D4A843;color:#D4A843}
+  .opt.selected{background:rgba(212,168,67,.15);border-color:#D4A843;color:#D4A843}
+  .result{display:none;margin-top:2rem;padding:1.75rem;background:rgba(255,255,255,.06);border:1px solid rgba(212,168,67,.25);border-radius:12px;animation:fadeIn .4s ease}
+  .result.show{display:block}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+  .score-num{font-size:3rem;font-weight:800;color:#D4A843;line-height:1}
+  .score-band{font-size:1rem;color:#fff;margin-top:.25rem;font-weight:600}
+  .breakdown{margin-top:1rem;color:#E8E4F0;line-height:1.7;font-size:.95rem}
+  .cta{display:inline-block;margin-top:1.25rem;padding:.85rem 1.6rem;background:linear-gradient(135deg,#D4A843,#E8B76D);color:#0D0B21;border-radius:10px;text-decoration:none;font-weight:700;font-size:.95rem}
+  .cta:hover{opacity:.9}
+  .footer{text-align:center;margin-top:1.5rem;color:rgba(255,255,255,.4);font-size:.82rem}
+  .footer a{color:#D4A843;text-decoration:none}
+  #submit{width:100%;padding:1rem;background:linear-gradient(135deg,#D4A843,#E8B76D);color:#0D0B21;border:none;border-radius:12px;font-weight:700;font-size:1rem;cursor:pointer;margin-top:.5rem}
+  #submit:hover{opacity:.95}
+  #submit:disabled{opacity:.5;cursor:not-allowed}
+</style>
+</head>
+<body>
+<div class="widget">
+  <h1>60-Second Compliance Scorecard</h1>
+  <p class="sub">Pick your regulation. Answer 5 questions. Get an instant 0-100 readiness score with the top 3 gaps. Pro tier unlocks signed attestations your auditor verifies independently.</p>
+
+  <div class="reg-tabs">
+    <button class="reg-tab active" data-reg="eu-ai-act">EU AI Act</button>
+    <button class="reg-tab" data-reg="dora">DORA</button>
+    <button class="reg-tab" data-reg="nis2">NIS2</button>
+    <button class="reg-tab" data-reg="cra">CRA</button>
+    <button class="reg-tab" data-reg="gdpr">GDPR</button>
+    <button class="reg-tab" data-reg="iso42001">ISO 42001</button>
+  </div>
+
+  <div id="questions"></div>
+
+  <button id="submit" disabled>Calculate readiness score</button>
+
+  <div class="result" id="result">
+    <div class="score-num" id="score-num">--</div>
+    <div class="score-band" id="score-band"></div>
+    <div class="breakdown" id="breakdown"></div>
+    <a class="cta" href="https://buy.stripe.com/14A4gB3K4eUWgYR56o8k836" target="_blank">Upgrade to Pro (£79/mo) for signed attestation →</a>
+  </div>
+
+  <p class="footer">Powered by <a href="https://meok.ai">MEOK AI Labs</a> · <a href="https://meok-attestation-api.vercel.app/verify">Verify any signed cert</a></p>
+</div>
+
+<script>
+const QUESTIONS = {
+  "eu-ai-act": [
+    {q:"Have you classified your AI system's risk tier (Article 6)?", opts:["Yes documented","Partial","No","N/A"], w:[20,10,0,15]},
+    {q:"Do you have an Article 11 technical documentation set?", opts:["Yes","Drafted","Not started"], w:[20,10,0]},
+    {q:"Do you run bias detection per Article 10?", opts:["Automated quarterly","Manual annual","Not yet"], w:[15,10,0]},
+    {q:"Article 50 transparency / watermarking ready (Nov 2026)?", opts:["C2PA + watermark live","Planned","Not started"], w:[20,10,0]},
+    {q:"Article 26(9) FRIA done for deployment?", opts:["Yes signed","Drafted","No"], w:[25,10,0]},
+  ],
+  "dora": [
+    {q:"ICT risk management framework (Art 6-16) documented?", opts:["Yes board-signed","Drafted","No"], w:[25,12,0]},
+    {q:"Incident classification logic per (EU) 2024/1772?", opts:["Automated","Manual","Not yet"], w:[20,12,0]},
+    {q:"4h / 72h / 1 month reporting flow tested end-to-end?", opts:["Yes","Drafted","No"], w:[25,12,0]},
+    {q:"Register of Information (Art 28) maintained?", opts:["Live","Drafted","No"], w:[15,8,0]},
+    {q:"TLPT scope defined (significant entity only)?", opts:["Yes","Planned","N/A"], w:[15,8,15]},
+  ],
+  "nis2": [
+    {q:"Entity classification (essential vs important) done?", opts:["Yes","Drafted","No"], w:[15,8,0]},
+    {q:"All 10 Article 21(2) measures in place?", opts:["Yes all","Partial","No"], w:[35,18,0]},
+    {q:"Article 23 incident reporting flow (24h/72h/1mo)?", opts:["Tested","Drafted","No"], w:[25,12,0]},
+    {q:"Management body training (Art 20) attested?", opts:["Yes","Planned","No"], w:[15,8,0]},
+    {q:"National CSIRT contact + escalation matrix?", opts:["Yes","Drafted","No"], w:[10,5,0]},
+  ],
+  "cra": [
+    {q:"Product class (Annex III) determined?", opts:["Yes","Drafted","No"], w:[15,8,0]},
+    {q:"Essential requirements (Annex I) gap analysis?", opts:["Yes","Partial","No"], w:[30,15,0]},
+    {q:"24h vulnerability notification flow ready?", opts:["Tested","Drafted","No"], w:[25,12,0]},
+    {q:"5-year support commitment documented?", opts:["Yes","Drafted","No"], w:[15,8,0]},
+    {q:"SBOM generated (CycloneDX/SPDX)?", opts:["Automated","Manual","No"], w:[15,8,0]},
+  ],
+  "gdpr": [
+    {q:"Records of processing (Art 30) maintained?", opts:["Live","Outdated","Missing"], w:[20,10,0]},
+    {q:"DPIA done for high-risk processing?", opts:["Yes per process","Some","None"], w:[20,10,0]},
+    {q:"International transfers — SCCs + TIA (post-Schrems II)?", opts:["Yes","Partial","None"], w:[25,12,0]},
+    {q:"Breach notification flow (72h) tested?", opts:["Tested","Drafted","No"], w:[20,10,0]},
+    {q:"Data subject rights workflow (access, erasure)?", opts:["Automated","Manual","Ad-hoc"], w:[15,10,0]},
+  ],
+  "iso42001": [
+    {q:"AI management system scope defined (Clause 4)?", opts:["Yes","Drafted","No"], w:[15,8,0]},
+    {q:"Leadership commitment + policy (Clause 5)?", opts:["Yes","Drafted","No"], w:[15,8,0]},
+    {q:"AI risk assessment + treatment plan (Clause 6)?", opts:["Yes","Drafted","No"], w:[25,12,0]},
+    {q:"Operational controls (Annex A) implemented?", opts:["Yes all","Partial","Few"], w:[30,15,5]},
+    {q:"Internal audit schedule active?", opts:["Yes","Planned","No"], w:[15,8,0]},
+  ],
+};
+
+let currentReg = "eu-ai-act";
+let answers = {};
+
+function render(reg){
+  currentReg = reg;
+  answers = {};
+  const qEl = document.getElementById("questions");
+  qEl.innerHTML = "";
+  QUESTIONS[reg].forEach((qq, i) => {
+    const div = document.createElement("div");
+    div.className = "question";
+    div.innerHTML = `<label>${i+1}. ${qq.q}</label><div class="opts">${qq.opts.map((o, oi) => `<button class="opt" data-q="${i}" data-w="${qq.w[oi]}" data-max="${Math.max(...qq.w)}">${o}</button>`).join("")}</div>`;
+    qEl.appendChild(div);
+  });
+  document.querySelectorAll(".opt").forEach(b => b.addEventListener("click", e => {
+    const qIdx = e.target.dataset.q;
+    document.querySelectorAll(`.opt[data-q="${qIdx}"]`).forEach(s => s.classList.remove("selected"));
+    e.target.classList.add("selected");
+    answers[qIdx] = {weight: parseInt(e.target.dataset.w), max: parseInt(e.target.dataset.max)};
+    document.getElementById("submit").disabled = Object.keys(answers).length < QUESTIONS[currentReg].length;
+  }));
+  document.getElementById("result").classList.remove("show");
+}
+
+document.querySelectorAll(".reg-tab").forEach(t => t.addEventListener("click", e => {
+  document.querySelectorAll(".reg-tab").forEach(s => s.classList.remove("active"));
+  e.target.classList.add("active");
+  render(e.target.dataset.reg);
+}));
+
+document.getElementById("submit").addEventListener("click", () => {
+  const total = Object.values(answers).reduce((s,a) => s + a.weight, 0);
+  const max = Object.values(answers).reduce((s,a) => s + a.max, 0);
+  const pct = Math.round((total / max) * 100);
+  const band = pct >= 80 ? "Strong — ready for audit" : pct >= 60 ? "Solid — minor gaps" : pct >= 40 ? "Partial — multiple gaps" : "Weak — significant exposure";
+  document.getElementById("score-num").textContent = pct + "/100";
+  document.getElementById("score-band").textContent = band;
+  // Top 3 gaps
+  const gaps = QUESTIONS[currentReg]
+    .map((q, i) => ({q: q.q, gap: q.w.indexOf(answers[i].weight) === q.w.length - 1 ? "Critical" : answers[i].weight < q.w[0] ? "Partial" : "OK", weight: q.w[0] - answers[i].weight}))
+    .filter(g => g.gap !== "OK")
+    .sort((a, b) => b.weight - a.weight)
+    .slice(0, 3);
+  document.getElementById("breakdown").innerHTML = gaps.length > 0
+    ? "<strong style='color:#fff'>Top 3 gaps to close:</strong><br>" + gaps.map((g, i) => `${i+1}. ${g.q}`).join("<br>")
+    : "✓ No major gaps detected. Run full audit for a signed cert.";
+  document.getElementById("result").classList.add("show");
+  document.getElementById("result").scrollIntoView({behavior: "smooth", block: "nearest"});
+});
+
+render("eu-ai-act");
+</script>
+</body>
+</html>
