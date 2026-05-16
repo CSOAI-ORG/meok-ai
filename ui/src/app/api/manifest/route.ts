@@ -77,7 +77,7 @@ const BUY_URLS: Record<string, string> = {
   "sigstore-cosign": "https://buy.stripe.com/9B6aEZgwQ7su3810Q88k90h",
 };
 
-const ENTRIES: Array<Omit<ManifestEntry, "pypi_url" | "github_url" | "registry_url" | "detail_url" | "install" | "claude_desktop_config">> = [
+const ENTRIES: Array<Omit<ManifestEntry, "pypi_url" | "github_url" | "registry_url" | "detail_url" | "install" | "claude_desktop_config" | "buy_url" | "monthly_price_gbp" | "tier">> = [
   // Governance
   { slug: "eu-ai-act-compliance", registry_name: "io.github.CSOAI-ORG/eu-ai-act-compliance-mcp", pypi_package: "eu-ai-act-compliance-mcp", pack: "governance", title: "EU AI Act Compliance MCP", tagline: "410 articles from EUR-Lex via FTS5 search. Instant risk scan + Annex IV evidence pack." },
   { slug: "dora-compliance", registry_name: "io.github.CSOAI-ORG/dora-compliance-mcp", pypi_package: "dora-compliance-mcp", pack: "governance", title: "DORA Compliance MCP", tagline: "Digital Operational Resilience Act for EU financial entities. ICT risk + third-party register." },
