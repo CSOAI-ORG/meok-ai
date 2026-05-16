@@ -159,18 +159,47 @@ export default async function MCPDetailPage({ params }: { params: Promise<{ slug
         <p style={{ fontSize: "1.05rem", color: NAVY, opacity: .75, marginBottom: "2rem", lineHeight: 1.55 }}>{mcp.tagline}</p>
 
         {buyUrl && (
-          <section style={{ marginBottom: "2rem", padding: "1.5rem", background: PRIMARY, color: "#fff", borderRadius: 14, boxShadow: "0 6px 24px rgba(59,130,246,.18)" }}>
-            <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between", gap: "1rem" }}>
-              <div>
-                <div style={{ fontSize: ".82rem", textTransform: "uppercase", letterSpacing: ".08em", opacity: .9, marginBottom: ".25rem" }}>Subscribe — Starter</div>
-                <div style={{ fontSize: "1.7rem", fontWeight: 800, letterSpacing: "-.01em" }}>£29 <span style={{ fontSize: "1rem", fontWeight: 500, opacity: .85 }}>/ month</span></div>
-                <div style={{ fontSize: ".88rem", opacity: .9, marginTop: ".35rem", maxWidth: 480 }}>Signed compliance attestations + unlimited audits + email support. Cancel anytime.</div>
+          <>
+            {/* Urgency banner — governance MCPs face EU AI Act 2 Aug 2026 cliff */}
+            {mcp.pack === "governance" && (
+              <div style={{ marginBottom: ".75rem", padding: ".75rem 1.25rem", background: "#FB923C", color: "#fff", borderRadius: 10, fontSize: ".88rem", fontWeight: 600 }}>
+                ⏰ EU AI Act Article 50 transparency obligations apply <strong>2 Nov 2026</strong>; high-risk Annex III obligations <strong>2 Dec 2027</strong>. First-10 subscribers lock today&apos;s £29/mo for life.
               </div>
-              <a href={buyUrl} style={{ background: "#fff", color: PRIMARY, padding: "1rem 1.75rem", borderRadius: 12, fontWeight: 800, textDecoration: "none", fontSize: "1.05rem", boxShadow: "0 2px 8px rgba(0,0,0,.08)" }}>
-                Subscribe via Stripe →
-              </a>
-            </div>
-          </section>
+            )}
+            {mcp.pack === "a2a" && (
+              <div style={{ marginBottom: ".75rem", padding: ".75rem 1.25rem", background: "#FB923C", color: "#fff", borderRadius: 10, fontSize: ".88rem", fontWeight: 600 }}>
+                ⏰ Agent compliance is now an active DRCF concern (ICO+FCA+CMA+Ofcom joint statement, May 2026). First-10 subscribers lock today&apos;s £29/mo for life.
+              </div>
+            )}
+            {mcp.pack === "industry" && (
+              <div style={{ marginBottom: ".75rem", padding: ".75rem 1.25rem", background: "#FB923C", color: "#fff", borderRadius: 10, fontSize: ".88rem", fontWeight: 600 }}>
+                ⏰ Vertical regulatory cliffs are live now (DORA in force, MiCA effective, FDA AI/ML guidance enforced). First-10 subscribers lock today&apos;s £29/mo for life.
+              </div>
+            )}
+            {mcp.pack === "trade" && (
+              <div style={{ marginBottom: ".75rem", padding: ".75rem 1.25rem", background: "#FB923C", color: "#fff", borderRadius: 10, fontSize: ".88rem", fontWeight: 600 }}>
+                ⏰ DVSA/CHAS/LOLER audits run year-round — one failed inspection costs £5-15k. First-10 subscribers lock today&apos;s £29/mo for life.
+              </div>
+            )}
+            {mcp.pack === "cybersec" && (
+              <div style={{ marginBottom: ".75rem", padding: ".75rem 1.25rem", background: "#FB923C", color: "#fff", borderRadius: 10, fontSize: ".88rem", fontWeight: 600 }}>
+                ⏰ EU CRA (Sept 2027 cliff) + US EO 14028 + NIS2 all require SBOMs + signed artefacts now. First-10 subscribers lock today&apos;s £29/mo for life.
+              </div>
+            )}
+
+            <section style={{ marginBottom: "2rem", padding: "1.5rem", background: PRIMARY, color: "#fff", borderRadius: 14, boxShadow: "0 6px 24px rgba(59,130,246,.18)" }}>
+              <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between", gap: "1rem" }}>
+                <div>
+                  <div style={{ fontSize: ".82rem", textTransform: "uppercase", letterSpacing: ".08em", opacity: .9, marginBottom: ".25rem" }}>Subscribe — Starter</div>
+                  <div style={{ fontSize: "1.7rem", fontWeight: 800, letterSpacing: "-.01em" }}>£29 <span style={{ fontSize: "1rem", fontWeight: 500, opacity: .85 }}>/ month</span></div>
+                  <div style={{ fontSize: ".88rem", opacity: .9, marginTop: ".35rem", maxWidth: 480 }}>Signed compliance attestations + unlimited audits + email support. Cancel anytime · 14-day refund.</div>
+                </div>
+                <a href={buyUrl} style={{ background: "#fff", color: PRIMARY, padding: "1rem 1.75rem", borderRadius: 12, fontWeight: 800, textDecoration: "none", fontSize: "1.05rem", boxShadow: "0 2px 8px rgba(0,0,0,.08)" }}>
+                  Subscribe via Stripe →
+                </a>
+              </div>
+            </section>
+          </>
         )}
 
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: ".75rem", marginBottom: "2.5rem" }}>
