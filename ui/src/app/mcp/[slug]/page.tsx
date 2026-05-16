@@ -68,9 +68,53 @@ const CATALOG: Record<string, MCPRecord> = {
   "cobol-bridge": { slug: "cobol-bridge", pkg: "cobol-bridge-mcp", name: "io.github.CSOAI-ORG/cobol-bridge-mcp", title: "COBOL Bridge MCP", tagline: "COBOL ↔ modern stack. Copybook parsing + EBCDIC + JCL + CICS to JSON/REST.", pack: "industry", features: ["Copybook → JSON schema", "EBCDIC ↔ UTF-8 conversion", "JCL + CICS workflow bridge", "Mainframe modernisation prep"] },
 };
 
+// Per-MCP Stripe payment links — generated 2026-05-16 by monetisation sweep
+// All £29/mo GBP recurring. Master list in ~/clawd/revenue/monetisation_sweep_2026-05-16.md
+const BUY_URLS: Record<string, string> = {
+  "eu-ai-act-compliance": "https://buy.stripe.com/dRm8wRdkEcMO4c5dCU8k83O",
+  "dora-compliance": "https://buy.stripe.com/7sYaEZbcw5km8sl56o8k83P",
+  "nis2-compliance": "https://buy.stripe.com/3cI8wR3K4aEG7oh56o8k83Q",
+  "cra-compliance": "https://buy.stripe.com/aFa5kFa8s9AC23XgP68k83R",
+  "ai-bom": "https://buy.stripe.com/bJeeVf3K428agYR9mE8k83S",
+  "ai-incident-reporting": "https://buy.stripe.com/3cI7sNfsMaEG5g9dCU8k83T",
+  "dora-nis2-crosswalk": "https://buy.stripe.com/aFa5kF1BW146gYRdCU8k83U",
+  "bias-detection": "https://buy.stripe.com/fZu14p4O8fZ06kd6as8k83V",
+  "watermarking-authenticity": "https://buy.stripe.com/cNi00l94o6oqgYR9mE8k83W",
+  "uk-ai-bill-compliance": "https://buy.stripe.com/cNi4gB80kdQS9wpdCU8k83X",
+  "agent-prompt-injection-firewall": "https://buy.stripe.com/6oUcN73K45kmfUNcyQ8k83Y",
+  "agent-data-residency": "https://buy.stripe.com/6oU00l5Sc28aaAt0Q88k83Z",
+  "agent-handoff-certified": "https://buy.stripe.com/5kQ4gB1BWbIKdMFeGY8k840",
+  "agent-policy-enforcement": "https://buy.stripe.com/00w28t94o5km38156o8k841",
+  "agent-audit-logger": "https://buy.stripe.com/8x2eVf1BW9ACaAt1Uc8k842",
+  "agent-rate-limiter": "https://buy.stripe.com/4gMeVfa8sfZ07ohfL28k843",
+  "haulage-uk-compliance": "https://buy.stripe.com/4gMbJ3fsM28a381fL28k844",
+  "skip-hire-ai": "https://buy.stripe.com/4gM8wR6Wg8wy4c5gP68k845",
+  "construction-iso-19650": "https://buy.stripe.com/eVq9AV0xSeUW6kdeGY8k846",
+  "nrswa-ai": "https://buy.stripe.com/7sYdRbcgA1466kd0Q88k847",
+  "chas-elite-prep": "https://buy.stripe.com/9B6aEZ94ocMO6kdcyQ8k900",
+  "crane-hire-cpcs": "https://buy.stripe.com/14AcN70xS6oq8sl56o8k901",
+  "concrete-pump-cpa": "https://buy.stripe.com/fZu3cxa8seUW6kdfL28k902",
+  "mica-crypto": "https://buy.stripe.com/00wdRbcgAaEG9wpfL28k903",
+  "fsa-food-safety": "https://buy.stripe.com/7sYbJ3gwQeUW5g91Uc8k904",
+  "mdr-medical-device": "https://buy.stripe.com/eVq9AV6Wg8wy8slbuM8k905",
+  "fda-samd": "https://buy.stripe.com/5kQcN7dkE8wy8slbuM8k906",
+  "coppa-ferpa": "https://buy.stripe.com/28EfZj6WgfZ03818iA8k907",
+  "basel-ai-overlay": "https://buy.stripe.com/eVqbJ36Wg5km9wpfL28k908",
+  "mifid-ii-ai": "https://buy.stripe.com/14A3cxfsM28a5g90Q88k909",
+  "aml-ai": "https://buy.stripe.com/aFa7sN80k6oqeQJ0Q88k90a",
+  "cobol-bridge": "https://buy.stripe.com/6oU28tdkE8wyeQJ6as8k90b",
+  "cisa-kev": "https://buy.stripe.com/4gM00lgwQ00223X42k8k90c",
+  "sbom-cyclonedx": "https://buy.stripe.com/00w9AV4O828a6kd56o8k90d",
+  "mitre-attack": "https://buy.stripe.com/eVqdRbdkE9ACfUN6as8k90e",
+  "mitre-atlas": "https://buy.stripe.com/28E8wRbcw0024c5fL28k90f",
+  "slsa-supply-chain": "https://buy.stripe.com/28E00lbcw28a8sl0Q88k90g",
+  "sigstore-cosign": "https://buy.stripe.com/9B6aEZgwQ7su3810Q88k90h",
+};
+
 const NAVY = "#1a1a2e";
 const GOLD = "#c9a84c";
 const BG = "#f5f0e8";
+const PRIMARY = "#3B82F6"; // anchor blue — Buy CTA
 
 export async function generateStaticParams() {
   return Object.keys(CATALOG).map((slug) => ({ slug }));
@@ -101,6 +145,7 @@ export default async function MCPDetailPage({ params }: { params: Promise<{ slug
   const pypiUrl = `https://pypi.org/project/${mcp.pkg}/`;
   const registryUrl = `https://registry.modelcontextprotocol.io/v0/servers?search=${mcp.pkg}`;
   const githubUrl = `https://github.com/CSOAI-ORG/${mcp.pkg}`;
+  const buyUrl = BUY_URLS[slug];
 
   return (
     <main style={{ background: BG, color: NAVY, minHeight: "100vh", padding: "3rem 1.5rem" }}>
@@ -112,6 +157,21 @@ export default async function MCPDetailPage({ params }: { params: Promise<{ slug
 
         <h1 style={{ fontSize: "2.5rem", fontWeight: 800, letterSpacing: "-.02em", marginBottom: ".5rem" }}>{mcp.title}</h1>
         <p style={{ fontSize: "1.05rem", color: NAVY, opacity: .75, marginBottom: "2rem", lineHeight: 1.55 }}>{mcp.tagline}</p>
+
+        {buyUrl && (
+          <section style={{ marginBottom: "2rem", padding: "1.5rem", background: PRIMARY, color: "#fff", borderRadius: 14, boxShadow: "0 6px 24px rgba(59,130,246,.18)" }}>
+            <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between", gap: "1rem" }}>
+              <div>
+                <div style={{ fontSize: ".82rem", textTransform: "uppercase", letterSpacing: ".08em", opacity: .9, marginBottom: ".25rem" }}>Subscribe — Starter</div>
+                <div style={{ fontSize: "1.7rem", fontWeight: 800, letterSpacing: "-.01em" }}>£29 <span style={{ fontSize: "1rem", fontWeight: 500, opacity: .85 }}>/ month</span></div>
+                <div style={{ fontSize: ".88rem", opacity: .9, marginTop: ".35rem", maxWidth: 480 }}>Signed compliance attestations + unlimited audits + email support. Cancel anytime.</div>
+              </div>
+              <a href={buyUrl} style={{ background: "#fff", color: PRIMARY, padding: "1rem 1.75rem", borderRadius: 12, fontWeight: 800, textDecoration: "none", fontSize: "1.05rem", boxShadow: "0 2px 8px rgba(0,0,0,.08)" }}>
+                Subscribe via Stripe →
+              </a>
+            </div>
+          </section>
+        )}
 
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: ".75rem", marginBottom: "2.5rem" }}>
           <a href={pypiUrl} target="_blank" rel="noopener noreferrer" style={{ background: NAVY, color: BG, padding: ".95rem 1.25rem", borderRadius: 10, fontWeight: 700, textDecoration: "none", textAlign: "center" }}>

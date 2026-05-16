@@ -27,6 +27,54 @@ type ManifestEntry = {
     npx_meok_setup: string;
   };
   claude_desktop_config: Record<string, unknown>;
+  // NEW (2026-05-16): per-MCP Stripe checkout for direct purchase
+  buy_url: string;
+  monthly_price_gbp: number;
+  tier: "starter";
+};
+
+// Per-MCP Stripe payment links (generated 2026-05-16 by monetisation sweep)
+// All £29/mo GBP recurring. Metadata includes mcp_slug for webhook routing.
+// Master list: ~/clawd/revenue/monetisation_sweep_2026-05-16.md
+const BUY_URLS: Record<string, string> = {
+  "eu-ai-act-compliance": "https://buy.stripe.com/dRm8wRdkEcMO4c5dCU8k83O",
+  "dora-compliance": "https://buy.stripe.com/7sYaEZbcw5km8sl56o8k83P",
+  "nis2-compliance": "https://buy.stripe.com/3cI8wR3K4aEG7oh56o8k83Q",
+  "cra-compliance": "https://buy.stripe.com/aFa5kFa8s9AC23XgP68k83R",
+  "ai-bom": "https://buy.stripe.com/bJeeVf3K428agYR9mE8k83S",
+  "ai-incident-reporting": "https://buy.stripe.com/3cI7sNfsMaEG5g9dCU8k83T",
+  "dora-nis2-crosswalk": "https://buy.stripe.com/aFa5kF1BW146gYRdCU8k83U",
+  "bias-detection": "https://buy.stripe.com/fZu14p4O8fZ06kd6as8k83V",
+  "watermarking-authenticity": "https://buy.stripe.com/cNi00l94o6oqgYR9mE8k83W",
+  "uk-ai-bill-compliance": "https://buy.stripe.com/cNi4gB80kdQS9wpdCU8k83X",
+  "agent-prompt-injection-firewall": "https://buy.stripe.com/6oUcN73K45kmfUNcyQ8k83Y",
+  "agent-data-residency": "https://buy.stripe.com/6oU00l5Sc28aaAt0Q88k83Z",
+  "agent-handoff-certified": "https://buy.stripe.com/5kQ4gB1BWbIKdMFeGY8k840",
+  "agent-policy-enforcement": "https://buy.stripe.com/00w28t94o5km38156o8k841",
+  "agent-audit-logger": "https://buy.stripe.com/8x2eVf1BW9ACaAt1Uc8k842",
+  "agent-rate-limiter": "https://buy.stripe.com/4gMeVfa8sfZ07ohfL28k843",
+  "haulage-uk-compliance": "https://buy.stripe.com/4gMbJ3fsM28a381fL28k844",
+  "skip-hire-ai": "https://buy.stripe.com/4gM8wR6Wg8wy4c5gP68k845",
+  "construction-iso-19650": "https://buy.stripe.com/eVq9AV0xSeUW6kdeGY8k846",
+  "nrswa-ai": "https://buy.stripe.com/7sYdRbcgA1466kd0Q88k847",
+  "chas-elite-prep": "https://buy.stripe.com/9B6aEZ94ocMO6kdcyQ8k900",
+  "crane-hire-cpcs": "https://buy.stripe.com/14AcN70xS6oq8sl56o8k901",
+  "concrete-pump-cpa": "https://buy.stripe.com/fZu3cxa8seUW6kdfL28k902",
+  "mica-crypto": "https://buy.stripe.com/00wdRbcgAaEG9wpfL28k903",
+  "fsa-food-safety": "https://buy.stripe.com/7sYbJ3gwQeUW5g91Uc8k904",
+  "mdr-medical-device": "https://buy.stripe.com/eVq9AV6Wg8wy8slbuM8k905",
+  "fda-samd": "https://buy.stripe.com/5kQcN7dkE8wy8slbuM8k906",
+  "coppa-ferpa": "https://buy.stripe.com/28EfZj6WgfZ03818iA8k907",
+  "basel-ai-overlay": "https://buy.stripe.com/eVqbJ36Wg5km9wpfL28k908",
+  "mifid-ii-ai": "https://buy.stripe.com/14A3cxfsM28a5g90Q88k909",
+  "aml-ai": "https://buy.stripe.com/aFa7sN80k6oqeQJ0Q88k90a",
+  "cobol-bridge": "https://buy.stripe.com/6oU28tdkE8wyeQJ6as8k90b",
+  "cisa-kev": "https://buy.stripe.com/4gM00lgwQ00223X42k8k90c",
+  "sbom-cyclonedx": "https://buy.stripe.com/00w9AV4O828a6kd56o8k90d",
+  "mitre-attack": "https://buy.stripe.com/eVqdRbdkE9ACfUN6as8k90e",
+  "mitre-atlas": "https://buy.stripe.com/28E8wRbcw0024c5fL28k90f",
+  "slsa-supply-chain": "https://buy.stripe.com/28E00lbcw28a8sl0Q88k90g",
+  "sigstore-cosign": "https://buy.stripe.com/9B6aEZgwQ7su3810Q88k90h",
 };
 
 const ENTRIES: Array<Omit<ManifestEntry, "pypi_url" | "github_url" | "registry_url" | "detail_url" | "install" | "claude_desktop_config">> = [
@@ -95,6 +143,10 @@ export async function GET() {
         },
       },
     },
+    // NEW (2026-05-16): direct-to-checkout deep link per MCP
+    buy_url: BUY_URLS[e.slug] || `https://meok.ai/pricing#${e.slug}`,
+    monthly_price_gbp: 29,
+    tier: "starter" as const,
   }));
 
   const manifest = {
