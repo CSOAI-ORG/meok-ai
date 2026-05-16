@@ -69,7 +69,9 @@ const CATALOG: Record<string, MCPRecord> = {
 };
 
 // Per-MCP Stripe payment links — generated 2026-05-16 by monetisation sweep
-// All £29/mo GBP recurring. Master list in ~/clawd/revenue/monetisation_sweep_2026-05-16.md
+// All £29/mo GBP recurring with 14-day free trial. Master list in monetisation_sweep_2026-05-16.md
+// Pro tier (£79-£99/mo) URLs in PRO_URLS below — Pro CTA renders only when set.
+// 4 MCPs ARCHIVED (sigstore-cosign, mitre-attack, mitre-atlas, cisa-kev) — these wrap free upstream services so paid tier doesn't make sense; their pages now point at the MEOK Defence bundle.
 const BUY_URLS: Record<string, string> = {
   "eu-ai-act-compliance": "https://buy.stripe.com/dRm8wRdkEcMO4c5dCU8k83O",
   "dora-compliance": "https://buy.stripe.com/7sYaEZbcw5km8sl56o8k83P",
@@ -108,7 +110,27 @@ const BUY_URLS: Record<string, string> = {
   "mitre-attack": "https://buy.stripe.com/eVqdRbdkE9ACfUN6as8k90e",
   "mitre-atlas": "https://buy.stripe.com/28E8wRbcw0024c5fL28k90f",
   "slsa-supply-chain": "https://buy.stripe.com/28E00lbcw28a8sl0Q88k90g",
-  "sigstore-cosign": "https://buy.stripe.com/9B6aEZgwQ7su3810Q88k90h",
+  // sigstore-cosign + mitre-attack + mitre-atlas + cisa-kev intentionally OMITTED:
+  // they wrap free upstream services — see ARCHIVED_BUNDLE_UPSELL below.
+};
+
+// Pro tier URLs (£79-£99/mo, 14-day trial) — only set for high-value enterprise MCPs.
+// When set, the slug page renders a second "Subscribe Pro" button alongside Starter.
+const PRO_URLS: Record<string, { url: string; price: string }> = {
+  "eu-ai-act-compliance":  { url: "https://buy.stripe.com/7sY14p3K4dQSaAt0Q88k90i", price: "£79" },
+  "dora-compliance":       { url: "https://buy.stripe.com/3cI8wRbcwaEG23X56o8k90j", price: "£79" },
+  "nis2-compliance":       { url: "https://buy.stripe.com/7sY4gBbcw9ACfUN0Q88k90k", price: "£79" },
+  "mdr-medical-device":    { url: "https://buy.stripe.com/bJeaEZa8s3ce5g9cyQ8k90l", price: "£99" },
+  "fda-samd":              { url: "https://buy.stripe.com/6oU28t94o7subEx2Yg8k90m", price: "£99" },
+};
+
+// MCPs whose Stripe products are archived (wrap free upstream).
+// On their slug pages, show "Free + MEOK Defence £499/mo for signed bundle" instead.
+const ARCHIVED_BUNDLE_UPSELL: Record<string, true> = {
+  "sigstore-cosign": true,
+  "mitre-attack": true,
+  "mitre-atlas": true,
+  "cisa-kev": true,
 };
 
 const NAVY = "#1a1a2e";
@@ -146,6 +168,8 @@ export default async function MCPDetailPage({ params }: { params: Promise<{ slug
   const registryUrl = `https://registry.modelcontextprotocol.io/v0/servers?search=${mcp.pkg}`;
   const githubUrl = `https://github.com/CSOAI-ORG/${mcp.pkg}`;
   const buyUrl = BUY_URLS[slug];
+  const proInfo = PRO_URLS[slug];
+  const isArchivedBundleUpsell = !!ARCHIVED_BUNDLE_UPSELL[slug];
 
   return (
     <main style={{ background: BG, color: NAVY, minHeight: "100vh", padding: "3rem 1.5rem" }}>
@@ -158,7 +182,22 @@ export default async function MCPDetailPage({ params }: { params: Promise<{ slug
         <h1 style={{ fontSize: "2.5rem", fontWeight: 800, letterSpacing: "-.02em", marginBottom: ".5rem" }}>{mcp.title}</h1>
         <p style={{ fontSize: "1.05rem", color: NAVY, opacity: .75, marginBottom: "2rem", lineHeight: 1.55 }}>{mcp.tagline}</p>
 
-        {buyUrl && (
+        {isArchivedBundleUpsell && (
+          <section style={{ marginBottom: "2rem", padding: "1.5rem", background: NAVY, color: BG, borderRadius: 14 }}>
+            <div style={{ fontSize: ".82rem", textTransform: "uppercase", letterSpacing: ".08em", opacity: .8, marginBottom: ".25rem" }}>Free MCP · open-source wrapper</div>
+            <h2 style={{ fontSize: "1.3rem", fontWeight: 700, marginBottom: ".5rem" }}>This MCP is free</h2>
+            <p style={{ fontSize: ".95rem", opacity: .85, marginBottom: "1rem", lineHeight: 1.55 }}>
+              It wraps a free upstream service (sigstore, MITRE, or CISA data). Use it without subscription.
+              For <strong>signed bundles, monitoring, and 24h SLA across all 38 MEOK MCPs</strong>,
+              consider MEOK Defence at £499/mo.
+            </p>
+            <a href="https://meok.ai/pricing" style={{ background: GOLD, color: NAVY, padding: ".75rem 1.25rem", borderRadius: 10, fontWeight: 700, textDecoration: "none" }}>
+              See MEOK Defence £499/mo →
+            </a>
+          </section>
+        )}
+
+        {buyUrl && !isArchivedBundleUpsell && (
           <>
             {/* Urgency banner — governance MCPs face EU AI Act 2 Aug 2026 cliff */}
             {mcp.pack === "governance" && (
@@ -187,18 +226,34 @@ export default async function MCPDetailPage({ params }: { params: Promise<{ slug
               </div>
             )}
 
-            <section style={{ marginBottom: "2rem", padding: "1.5rem", background: PRIMARY, color: "#fff", borderRadius: 14, boxShadow: "0 6px 24px rgba(59,130,246,.18)" }}>
+            <section style={{ marginBottom: ".75rem", padding: "1.5rem", background: PRIMARY, color: "#fff", borderRadius: 14, boxShadow: "0 6px 24px rgba(59,130,246,.18)" }}>
               <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between", gap: "1rem" }}>
                 <div>
-                  <div style={{ fontSize: ".82rem", textTransform: "uppercase", letterSpacing: ".08em", opacity: .9, marginBottom: ".25rem" }}>Subscribe — Starter</div>
-                  <div style={{ fontSize: "1.7rem", fontWeight: 800, letterSpacing: "-.01em" }}>£29 <span style={{ fontSize: "1rem", fontWeight: 500, opacity: .85 }}>/ month</span></div>
-                  <div style={{ fontSize: ".88rem", opacity: .9, marginTop: ".35rem", maxWidth: 480 }}>Signed compliance attestations + unlimited audits + email support. Cancel anytime · 14-day refund.</div>
+                  <div style={{ fontSize: ".82rem", textTransform: "uppercase", letterSpacing: ".08em", opacity: .9, marginBottom: ".25rem" }}>Starter · 14 days free</div>
+                  <div style={{ fontSize: "1.7rem", fontWeight: 800, letterSpacing: "-.01em" }}>£29 <span style={{ fontSize: "1rem", fontWeight: 500, opacity: .85 }}>/ month, after trial</span></div>
+                  <div style={{ fontSize: ".88rem", opacity: .9, marginTop: ".35rem", maxWidth: 480 }}>Signed attestations + unlimited audits + email support. Trial = £0 for 14 days, cancel anytime. Use code <code style={{ background: "rgba(0,0,0,.2)", padding: ".1rem .35rem", borderRadius: 4 }}>FREE14</code> for first month free.</div>
                 </div>
                 <a href={buyUrl} style={{ background: "#fff", color: PRIMARY, padding: "1rem 1.75rem", borderRadius: 12, fontWeight: 800, textDecoration: "none", fontSize: "1.05rem", boxShadow: "0 2px 8px rgba(0,0,0,.08)" }}>
-                  Subscribe via Stripe →
+                  Start 14-day trial →
                 </a>
               </div>
             </section>
+
+            {/* Pro tier — only renders for the 5 high-value enterprise MCPs */}
+            {proInfo && (
+              <section style={{ marginBottom: "2rem", padding: "1.25rem 1.5rem", background: NAVY, color: BG, borderRadius: 14, border: `2px solid ${GOLD}` }}>
+                <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between", gap: "1rem" }}>
+                  <div>
+                    <div style={{ fontSize: ".82rem", textTransform: "uppercase", letterSpacing: ".08em", color: GOLD, fontWeight: 700, marginBottom: ".25rem" }}>★ Pro · 14 days free · Recommended</div>
+                    <div style={{ fontSize: "1.4rem", fontWeight: 800 }}>{proInfo.price} <span style={{ fontSize: ".95rem", fontWeight: 500, opacity: .8 }}>/ month, after trial</span></div>
+                    <div style={{ fontSize: ".88rem", opacity: .85, marginTop: ".35rem", maxWidth: 480 }}>Everything in Starter + priority support + 24h SLA + monthly regulatory brief + custom-domain signing endpoint.</div>
+                  </div>
+                  <a href={proInfo.url} style={{ background: GOLD, color: NAVY, padding: "1rem 1.75rem", borderRadius: 12, fontWeight: 800, textDecoration: "none", fontSize: "1.05rem" }}>
+                    Start Pro trial →
+                  </a>
+                </div>
+              </section>
+            )}
           </>
         )}
 
