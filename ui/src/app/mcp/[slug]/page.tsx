@@ -98,8 +98,9 @@ const BUY_URLS: Record<string, string> = {
   "concrete-pump-cpa": "https://buy.stripe.com/fZu3cxa8seUW6kdfL28k902",
   "mica-crypto": "https://buy.stripe.com/00wdRbcgAaEG9wpfL28k903",
   "fsa-food-safety": "https://buy.stripe.com/7sYbJ3gwQeUW5g91Uc8k904",
-  "mdr-medical-device": "https://buy.stripe.com/eVq9AV6Wg8wy8slbuM8k905",
-  "fda-samd": "https://buy.stripe.com/5kQcN7dkE8wy8slbuM8k906",
+  // mdr-medical-device + fda-samd intentionally OMITTED:
+  // Selling medical-device regulatory tools without FDA/MDR credentialing
+  // is legally risky. See ARCHIVED_BUNDLE_UPSELL below.
   "coppa-ferpa": "https://buy.stripe.com/28EfZj6WgfZ03818iA8k907",
   "basel-ai-overlay": "https://buy.stripe.com/eVqbJ36Wg5km9wpfL28k908",
   "mifid-ii-ai": "https://buy.stripe.com/14A3cxfsM28a5g90Q88k909",
@@ -120,17 +121,20 @@ const PRO_URLS: Record<string, { url: string; price: string }> = {
   "eu-ai-act-compliance":  { url: "https://buy.stripe.com/7sY14p3K4dQSaAt0Q88k90i", price: "£79" },
   "dora-compliance":       { url: "https://buy.stripe.com/3cI8wRbcwaEG23X56o8k90j", price: "£79" },
   "nis2-compliance":       { url: "https://buy.stripe.com/7sY4gBbcw9ACfUN0Q88k90k", price: "£79" },
-  "mdr-medical-device":    { url: "https://buy.stripe.com/bJeaEZa8s3ce5g9cyQ8k90l", price: "£99" },
-  "fda-samd":              { url: "https://buy.stripe.com/6oU28t94o7subEx2Yg8k90m", price: "£99" },
+  // mdr-medical-device + fda-samd intentionally omitted (legal risk without credentialing)
 };
 
-// MCPs whose Stripe products are archived (wrap free upstream).
-// On their slug pages, show "Free + MEOK Defence £499/mo for signed bundle" instead.
-const ARCHIVED_BUNDLE_UPSELL: Record<string, true> = {
-  "sigstore-cosign": true,
-  "mitre-attack": true,
-  "mitre-atlas": true,
-  "cisa-kev": true,
+// MCPs whose Stripe products are archived. Two categories:
+// (a) wrap-free-upstream (sigstore/MITRE/CISA) — paid tier doesn't make sense
+// (b) legal-risk-without-credentialing (medical device) — won't sell these
+// All show "this MCP is free + MEOK Defence £499/mo for signed bundle" on their slug page.
+const ARCHIVED_BUNDLE_UPSELL: Record<string, "free-upstream" | "legal-risk"> = {
+  "sigstore-cosign": "free-upstream",
+  "mitre-attack": "free-upstream",
+  "mitre-atlas": "free-upstream",
+  "cisa-kev": "free-upstream",
+  "mdr-medical-device": "legal-risk",
+  "fda-samd": "legal-risk",
 };
 
 const NAVY = "#1a1a2e";
@@ -169,7 +173,7 @@ export default async function MCPDetailPage({ params }: { params: Promise<{ slug
   const githubUrl = `https://github.com/CSOAI-ORG/${mcp.pkg}`;
   const buyUrl = BUY_URLS[slug];
   const proInfo = PRO_URLS[slug];
-  const isArchivedBundleUpsell = !!ARCHIVED_BUNDLE_UPSELL[slug];
+  const isArchivedBundleUpsell = ARCHIVED_BUNDLE_UPSELL[slug] || null;
 
   return (
     <main style={{ background: BG, color: NAVY, minHeight: "100vh", padding: "3rem 1.5rem" }}>
@@ -182,17 +186,30 @@ export default async function MCPDetailPage({ params }: { params: Promise<{ slug
         <h1 style={{ fontSize: "2.5rem", fontWeight: 800, letterSpacing: "-.02em", marginBottom: ".5rem" }}>{mcp.title}</h1>
         <p style={{ fontSize: "1.05rem", color: NAVY, opacity: .75, marginBottom: "2rem", lineHeight: 1.55 }}>{mcp.tagline}</p>
 
-        {isArchivedBundleUpsell && (
+        {isArchivedBundleUpsell === "free-upstream" && (
           <section style={{ marginBottom: "2rem", padding: "1.5rem", background: NAVY, color: BG, borderRadius: 14 }}>
             <div style={{ fontSize: ".82rem", textTransform: "uppercase", letterSpacing: ".08em", opacity: .8, marginBottom: ".25rem" }}>Free MCP · open-source wrapper</div>
             <h2 style={{ fontSize: "1.3rem", fontWeight: 700, marginBottom: ".5rem" }}>This MCP is free</h2>
             <p style={{ fontSize: ".95rem", opacity: .85, marginBottom: "1rem", lineHeight: 1.55 }}>
               It wraps a free upstream service (sigstore, MITRE, or CISA data). Use it without subscription.
-              For <strong>signed bundles, monitoring, and 24h SLA across all 38 MEOK MCPs</strong>,
+              For <strong>signed bundles, monitoring, and 24h SLA across all MEOK MCPs</strong>,
               consider MEOK Defence at £499/mo.
             </p>
             <a href="https://meok.ai/pricing" style={{ background: GOLD, color: NAVY, padding: ".75rem 1.25rem", borderRadius: 10, fontWeight: 700, textDecoration: "none" }}>
               See MEOK Defence £499/mo →
+            </a>
+          </section>
+        )}
+
+        {isArchivedBundleUpsell === "legal-risk" && (
+          <section style={{ marginBottom: "2rem", padding: "1.5rem", background: "#7C3F1B", color: "#fff", borderRadius: 14 }}>
+            <div style={{ fontSize: ".82rem", textTransform: "uppercase", letterSpacing: ".08em", opacity: .9, marginBottom: ".25rem" }}>Information only · not for sale</div>
+            <h2 style={{ fontSize: "1.3rem", fontWeight: 700, marginBottom: ".5rem" }}>Medical-device compliance — informational reference only</h2>
+            <p style={{ fontSize: ".95rem", opacity: .92, marginBottom: "1rem", lineHeight: 1.55 }}>
+              This MCP is a reference implementation of EU MDR / FDA SaMD requirements. <strong>It is not a regulated medical device, not a substitute for Notified Body / FDA submissions, and we don&apos;t hold the credentialing to sell it as a compliance product.</strong> Use the open-source code freely; for an actual medical-device regulatory submission, engage a qualified Notified Body or FDA agent.
+            </p>
+            <a href={`https://github.com/CSOAI-ORG/${mcp.pkg}`} target="_blank" rel="noopener noreferrer" style={{ background: "#fff", color: "#7C3F1B", padding: ".75rem 1.25rem", borderRadius: 10, fontWeight: 700, textDecoration: "none" }}>
+              View on GitHub (MIT)
             </a>
           </section>
         )}
