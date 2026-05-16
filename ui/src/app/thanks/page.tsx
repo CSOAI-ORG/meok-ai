@@ -1,5 +1,8 @@
-import type { Metadata } from "next";
+"use client";
+
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
+import { Suspense } from "react";
 
 // ---------------------------------------------------------------------------
 // /thanks — post-purchase landing for Stripe checkout
@@ -7,13 +10,6 @@ import Link from "next/link";
 // URL pattern: /thanks?mcp=<slug>&session_id=<checkout_session_id>
 // ---------------------------------------------------------------------------
 
-export const metadata: Metadata = {
-  title: "Welcome to MEOK · Your subscription is active",
-  description: "Your MEOK AI Labs subscription is active. Get your HMAC signing key and install your MCP.",
-  robots: { index: false, follow: false },
-};
-
-// Same map as /mcp/[slug]/page.tsx — keep in sync (or refactor to shared module later)
 const MCP_TITLES: Record<string, { title: string; pkg: string; pack: string }> = {
   "eu-ai-act-compliance": { title: "EU AI Act Compliance MCP", pkg: "eu-ai-act-compliance-mcp", pack: "governance" },
   "dora-compliance": { title: "DORA Compliance MCP", pkg: "dora-compliance-mcp", pack: "governance" },
@@ -61,66 +57,63 @@ const BG = "#f5f0e8";
 const PRIMARY = "#3B82F6";
 const SUCCESS = "#7BC47F";
 
-type SP = Promise<{ mcp?: string; session_id?: string }>;
-
-export default async function ThanksPage({ searchParams }: { searchParams: SP }) {
-  const sp = await searchParams;
-  const mcpSlug = (sp.mcp || "").trim();
-  const sessionId = (sp.session_id || "").trim();
+function ThanksContent() {
+  const sp = useSearchParams();
+  const mcpSlug = (sp?.get("mcp") || "").trim();
+  const sessionId = (sp?.get("session_id") || "").trim();
   const mcp = MCP_TITLES[mcpSlug];
 
   return (
-    <main style={{ background: BG, color: NAVY, minHeight: "100vh", padding: "3rem 1.5rem" }}>
-      <div style={{ maxWidth: 720, margin: "0 auto" }}>
-        {/* Success banner */}
-        <div style={{
-          padding: "2rem",
-          background: SUCCESS,
-          color: NAVY,
-          borderRadius: 16,
-          marginBottom: "2rem",
-          textAlign: "center",
-          boxShadow: "0 6px 24px rgba(123,196,127,.25)"
-        }}>
-          <div style={{ fontSize: "3rem", marginBottom: ".5rem" }}>✓</div>
-          <h1 style={{ fontSize: "2rem", fontWeight: 800, letterSpacing: "-.02em", marginBottom: ".5rem" }}>
-            Welcome to MEOK AI Labs
-          </h1>
-          <p style={{ fontSize: "1.05rem", opacity: .85, marginBottom: 0 }}>
-            Your subscription is active. {mcp ? `Your ${mcp.title} is ready to install.` : "Your MCP access is ready."}
-          </p>
-        </div>
+    <div style={{ maxWidth: 720, margin: "0 auto" }}>
+      {/* Success banner */}
+      <div style={{
+        padding: "2rem",
+        background: SUCCESS,
+        color: NAVY,
+        borderRadius: 16,
+        marginBottom: "2rem",
+        textAlign: "center",
+        boxShadow: "0 6px 24px rgba(123,196,127,.25)"
+      }}>
+        <div style={{ fontSize: "3rem", marginBottom: ".5rem" }}>✓</div>
+        <h1 style={{ fontSize: "2rem", fontWeight: 800, letterSpacing: "-.02em", marginBottom: ".5rem" }}>
+          Welcome to MEOK AI Labs
+        </h1>
+        <p style={{ fontSize: "1.05rem", opacity: .85, marginBottom: 0 }}>
+          Your subscription is active. {mcp ? `Your ${mcp.title} is ready to install.` : "Your MCP access is ready."}
+        </p>
+      </div>
 
-        {/* What you bought (if mcp slug is known) */}
-        {mcp && (
-          <section style={{ marginBottom: "2rem", padding: "1.5rem", background: "#fff", borderRadius: 14, border: `1px solid ${NAVY}22` }}>
-            <div style={{ fontSize: ".82rem", textTransform: "uppercase", letterSpacing: ".08em", opacity: .65, marginBottom: ".25rem" }}>
-              Your subscription · £29/month · {mcp.pack}
-            </div>
-            <h2 style={{ fontSize: "1.4rem", fontWeight: 700, marginBottom: ".75rem" }}>{mcp.title}</h2>
-            <pre style={{ background: NAVY, color: BG, padding: "1rem 1.25rem", borderRadius: 10, fontFamily: "ui-monospace,Menlo,monospace", fontSize: ".88rem", overflowX: "auto", margin: 0 }}>
+      {/* What you bought (if mcp slug is known) */}
+      {mcp && (
+        <section style={{ marginBottom: "2rem", padding: "1.5rem", background: "#fff", borderRadius: 14, border: `1px solid ${NAVY}22` }}>
+          <div style={{ fontSize: ".82rem", textTransform: "uppercase", letterSpacing: ".08em", opacity: .65, marginBottom: ".25rem" }}>
+            Your subscription · £29/month · {mcp.pack}
+          </div>
+          <h2 style={{ fontSize: "1.4rem", fontWeight: 700, marginBottom: ".75rem" }}>{mcp.title}</h2>
+          <pre style={{ background: NAVY, color: BG, padding: "1rem 1.25rem", borderRadius: 10, fontFamily: "ui-monospace,Menlo,monospace", fontSize: ".88rem", overflowX: "auto", margin: 0 }}>
 {`# Install
 uvx ${mcp.pkg}
 
 # Or pip
 pip install ${mcp.pkg}`}
-            </pre>
-          </section>
-        )}
+          </pre>
+        </section>
+      )}
 
-        {/* Get your HMAC signing key */}
-        <section style={{ marginBottom: "2rem", padding: "1.5rem", background: PRIMARY, color: "#fff", borderRadius: 14 }}>
-          <h2 style={{ fontSize: "1.2rem", fontWeight: 700, marginBottom: ".75rem" }}>
-            Get your HMAC signing key
-          </h2>
-          <p style={{ fontSize: ".95rem", opacity: .92, marginBottom: "1rem", lineHeight: 1.55 }}>
-            Your signing key is provisioned from your Stripe session ID. Use the email
-            you paid with — it&apos;s used to derive your unique key.
-          </p>
+      {/* Get your HMAC signing key */}
+      <section style={{ marginBottom: "2rem", padding: "1.5rem", background: PRIMARY, color: "#fff", borderRadius: 14 }}>
+        <h2 style={{ fontSize: "1.2rem", fontWeight: 700, marginBottom: ".75rem" }}>
+          Get your HMAC signing key
+        </h2>
+        <p style={{ fontSize: ".95rem", opacity: .92, marginBottom: "1rem", lineHeight: 1.55 }}>
+          Your signing key is provisioned from your Stripe session ID. Use the email
+          you paid with — it&apos;s used to derive your unique key.
+        </p>
 
-          <details style={{ background: "rgba(0,0,0,.18)", padding: "1rem 1.25rem", borderRadius: 10, marginBottom: ".75rem" }}>
-            <summary style={{ cursor: "pointer", fontWeight: 600 }}>Option A · Retrieve via curl (recommended)</summary>
-            <pre style={{ background: "rgba(0,0,0,.3)", padding: "1rem", borderRadius: 8, fontFamily: "ui-monospace,Menlo,monospace", fontSize: ".82rem", overflowX: "auto", marginTop: ".75rem", marginBottom: 0 }}>
+        <details style={{ background: "rgba(0,0,0,.18)", padding: "1rem 1.25rem", borderRadius: 10, marginBottom: ".75rem" }}>
+          <summary style={{ cursor: "pointer", fontWeight: 600 }}>Option A · Retrieve via curl (recommended)</summary>
+          <pre style={{ background: "rgba(0,0,0,.3)", padding: "1rem", borderRadius: 8, fontFamily: "ui-monospace,Menlo,monospace", fontSize: ".82rem", overflowX: "auto", marginTop: ".75rem", marginBottom: 0 }}>
 {`curl -X POST https://meok-attestation-api.vercel.app/provision \\
   -H "Content-Type: application/json" \\
   -d '{
@@ -128,74 +121,83 @@ pip install ${mcp.pkg}`}
     "tier": "pro",
     "session_id": "${sessionId || "cs_live_<paste-from-stripe-receipt>"}"
   }'`}
-            </pre>
-          </details>
+          </pre>
+        </details>
 
-          <details style={{ background: "rgba(0,0,0,.18)", padding: "1rem 1.25rem", borderRadius: 10 }}>
-            <summary style={{ cursor: "pointer", fontWeight: 600 }}>Option B · Email me — I&apos;ll send the key</summary>
-            <p style={{ marginTop: ".75rem", marginBottom: 0, fontSize: ".88rem" }}>
-              Email <a href="mailto:hello@meok.ai?subject=API key request" style={{ color: "#fff", textDecoration: "underline" }}>hello@meok.ai</a> from
-              the address you used at checkout. I&apos;ll send your key within 24 hours.
-              Include your Stripe session ID if you have it: <code style={{ background: "rgba(0,0,0,.3)", padding: ".15rem .4rem", borderRadius: 4 }}>{sessionId || "(none provided)"}</code>
-            </p>
-          </details>
+        <details style={{ background: "rgba(0,0,0,.18)", padding: "1rem 1.25rem", borderRadius: 10 }}>
+          <summary style={{ cursor: "pointer", fontWeight: 600 }}>Option B · Email me — I&apos;ll send the key</summary>
+          <p style={{ marginTop: ".75rem", marginBottom: 0, fontSize: ".88rem" }}>
+            Email <a href="mailto:hello@meok.ai?subject=API key request" style={{ color: "#fff", textDecoration: "underline" }}>hello@meok.ai</a> from
+            the address you used at checkout. I&apos;ll send your key within 24 hours.
+            Include your Stripe session ID if you have it: <code style={{ background: "rgba(0,0,0,.3)", padding: ".15rem .4rem", borderRadius: 4 }}>{sessionId || "(none provided)"}</code>
+          </p>
+        </details>
+      </section>
+
+      {/* Next steps */}
+      <section style={{ marginBottom: "2rem" }}>
+        <h2 style={{ fontSize: "1.05rem", fontWeight: 700, marginBottom: "1rem" }}>What to do next</h2>
+        <ul style={{ display: "grid", gap: ".75rem", listStyle: "none", padding: 0 }}>
+          <li style={{ padding: "1rem 1.25rem", background: "#fff", borderRadius: 10, border: `1px solid ${NAVY}22`, fontSize: ".95rem" }}>
+            <span style={{ color: GOLD, fontWeight: 800, marginRight: ".5rem" }}>1.</span>
+            Install the MCP using the snippet above (or <code>npx meok-setup --pack {mcp?.pack || "all"}</code> to get all)
+          </li>
+          <li style={{ padding: "1rem 1.25rem", background: "#fff", borderRadius: 10, border: `1px solid ${NAVY}22`, fontSize: ".95rem" }}>
+            <span style={{ color: GOLD, fontWeight: 800, marginRight: ".5rem" }}>2.</span>
+            Retrieve your signing key (above) and store it as <code>MEOK_PRO_KEY</code> in your environment
+          </li>
+          <li style={{ padding: "1rem 1.25rem", background: "#fff", borderRadius: 10, border: `1px solid ${NAVY}22`, fontSize: ".95rem" }}>
+            <span style={{ color: GOLD, fontWeight: 800, marginRight: ".5rem" }}>3.</span>
+            Call any <code>sign_*</code> tool with your key — signed compliance attestations land in your audit log
+          </li>
+          <li style={{ padding: "1rem 1.25rem", background: "#fff", borderRadius: 10, border: `1px solid ${NAVY}22`, fontSize: ".95rem" }}>
+            <span style={{ color: GOLD, fontWeight: 800, marginRight: ".5rem" }}>4.</span>
+            Need help? Reply to your Stripe receipt — or email <a href="mailto:hello@meok.ai" style={{ color: NAVY, fontWeight: 600 }}>hello@meok.ai</a>
+          </li>
+        </ul>
+      </section>
+
+      {/* Manage subscription */}
+      <section style={{ padding: "1rem 1.25rem", background: "#fff", borderRadius: 10, border: `1px solid ${NAVY}22`, fontSize: ".88rem", opacity: .85, marginBottom: "2rem" }}>
+        <strong>Manage your subscription:</strong> use the link in your Stripe receipt email.
+        Cancel anytime — no questions. Refund within 14 days if it&apos;s not for you.
+      </section>
+
+      {/* Cross-sell */}
+      {mcp && (
+        <section style={{ paddingTop: "1.5rem", borderTop: `1px solid ${NAVY}22`, fontSize: ".95rem" }}>
+          <p style={{ marginBottom: ".5rem", opacity: .75 }}>Other MCPs you might want:</p>
+          <p>
+            <Link href={`/labs/mcp`} style={{ color: NAVY, fontWeight: 600 }}>
+              See all 38 MEOK MCPs →
+            </Link>
+            {" · "}
+            <Link href={`/pricing`} style={{ color: NAVY, fontWeight: 600 }}>
+              Upgrade to MEOK Pro (all 38, £79/mo) →
+            </Link>
+          </p>
         </section>
+      )}
 
-        {/* Next steps */}
-        <section style={{ marginBottom: "2rem" }}>
-          <h2 style={{ fontSize: "1.05rem", fontWeight: 700, marginBottom: "1rem" }}>What to do next</h2>
-          <ul style={{ display: "grid", gap: ".75rem", listStyle: "none", padding: 0 }}>
-            <li style={{ padding: "1rem 1.25rem", background: "#fff", borderRadius: 10, border: `1px solid ${NAVY}22`, fontSize: ".95rem" }}>
-              <span style={{ color: GOLD, fontWeight: 800, marginRight: ".5rem" }}>1.</span>
-              Install the MCP using the snippet above (or `npx meok-setup --pack {mcp?.pack || "all"}` to get all)
-            </li>
-            <li style={{ padding: "1rem 1.25rem", background: "#fff", borderRadius: 10, border: `1px solid ${NAVY}22`, fontSize: ".95rem" }}>
-              <span style={{ color: GOLD, fontWeight: 800, marginRight: ".5rem" }}>2.</span>
-              Retrieve your signing key (above) and store it as MEOK_PRO_KEY in your environment
-            </li>
-            <li style={{ padding: "1rem 1.25rem", background: "#fff", borderRadius: 10, border: `1px solid ${NAVY}22`, fontSize: ".95rem" }}>
-              <span style={{ color: GOLD, fontWeight: 800, marginRight: ".5rem" }}>3.</span>
-              Call any `sign_*` tool with your key — signed compliance attestations land in your audit log
-            </li>
-            <li style={{ padding: "1rem 1.25rem", background: "#fff", borderRadius: 10, border: `1px solid ${NAVY}22`, fontSize: ".95rem" }}>
-              <span style={{ color: GOLD, fontWeight: 800, marginRight: ".5rem" }}>4.</span>
-              Need help? Reply to your Stripe receipt — or email <a href="mailto:hello@meok.ai" style={{ color: NAVY, fontWeight: 600 }}>hello@meok.ai</a>
-            </li>
-          </ul>
-        </section>
-
-        {/* Manage subscription */}
-        <section style={{ padding: "1rem 1.25rem", background: "#fff", borderRadius: 10, border: `1px solid ${NAVY}22`, fontSize: ".88rem", opacity: .85, marginBottom: "2rem" }}>
-          <strong>Manage your subscription:</strong> use the link in your Stripe receipt email.
-          Cancel anytime — no questions. Refund within 14 days if it&apos;s not for you.
-        </section>
-
-        {/* Cross-sell — other MCPs in same pack */}
-        {mcp && (
-          <section style={{ paddingTop: "1.5rem", borderTop: `1px solid ${NAVY}22`, fontSize: ".95rem" }}>
-            <p style={{ marginBottom: ".5rem", opacity: .75 }}>Other MCPs you might want:</p>
-            <p>
-              <Link href={`/labs/mcp`} style={{ color: NAVY, fontWeight: 600 }}>
-                See all 38 MEOK MCPs →
-              </Link>
-              {" · "}
-              <Link href={`/pricing`} style={{ color: NAVY, fontWeight: 600 }}>
-                Upgrade to MEOK Pro (all 38, £79/mo) →
-              </Link>
-            </p>
-          </section>
+      {/* Footer */}
+      <div style={{ paddingTop: "2rem", textAlign: "center", fontSize: ".82rem", opacity: .6 }}>
+        MIT licensed code · HMAC-signed commercial attestations · By <a href="https://meok.ai" style={{ color: NAVY }}>MEOK AI Labs</a>
+        {sessionId && (
+          <div style={{ marginTop: ".5rem", fontFamily: "ui-monospace,Menlo,monospace", fontSize: ".72rem" }}>
+            Session: {sessionId.slice(0, 12)}…{sessionId.slice(-8)}
+          </div>
         )}
-
-        {/* Footer */}
-        <div style={{ paddingTop: "2rem", textAlign: "center", fontSize: ".82rem", opacity: .6 }}>
-          MIT licensed code · HMAC-signed commercial attestations · By <a href="https://meok.ai" style={{ color: NAVY }}>MEOK AI Labs</a>
-          {sessionId && (
-            <div style={{ marginTop: ".5rem", fontFamily: "ui-monospace,Menlo,monospace", fontSize: ".72rem" }}>
-              Session: {sessionId.slice(0, 12)}…{sessionId.slice(-8)}
-            </div>
-          )}
-        </div>
       </div>
+    </div>
+  );
+}
+
+export default function ThanksPage() {
+  return (
+    <main style={{ background: BG, color: NAVY, minHeight: "100vh", padding: "3rem 1.5rem" }}>
+      <Suspense fallback={<div style={{ textAlign: "center", padding: "3rem" }}>Loading…</div>}>
+        <ThanksContent />
+      </Suspense>
     </main>
   );
 }
