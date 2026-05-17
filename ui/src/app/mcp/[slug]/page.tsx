@@ -188,7 +188,25 @@ export default async function MCPDetailPage({ params }: { params: Promise<{ slug
         </nav>
 
         <h1 style={{ fontSize: "2.5rem", fontWeight: 800, letterSpacing: "-.02em", marginBottom: ".5rem" }}>{mcp.title}</h1>
-        <p style={{ fontSize: "1.05rem", color: NAVY, opacity: .75, marginBottom: "2rem", lineHeight: 1.55 }}>{mcp.tagline}</p>
+        <p style={{ fontSize: "1.05rem", color: NAVY, opacity: .75, marginBottom: "1.25rem", lineHeight: 1.55 }}>{mcp.tagline}</p>
+
+        {/* Trust bar — real public PyPI numbers, MIT licence, registry presence */}
+        <div style={{ display: "flex", flexWrap: "wrap", gap: ".5rem .9rem", alignItems: "center", marginBottom: "2rem", fontSize: ".8rem", color: NAVY, opacity: .8 }}>
+          <span style={{ padding: ".25rem .6rem", background: "#fff", border: `1px solid ${NAVY}22`, borderRadius: 999 }}>★ MIT licensed</span>
+          <span style={{ padding: ".25rem .6rem", background: "#fff", border: `1px solid ${NAVY}22`, borderRadius: 999 }}>📦 39 servers shipped</span>
+          <span style={{ padding: ".25rem .6rem", background: "#fff", border: `1px solid ${NAVY}22`, borderRadius: 999 }}>↓ 4,400+ monthly installs across suite</span>
+          <span style={{ padding: ".25rem .6rem", background: "#fff", border: `1px solid ${NAVY}22`, borderRadius: 999 }}>🛡 HMAC-signed attestations</span>
+          <span style={{ padding: ".25rem .6rem", background: "#fff", border: `1px solid ${NAVY}22`, borderRadius: 999 }}>🔌 Anthropic MCP Registry listed</span>
+        </div>
+
+        {/* Free-tier framing — kills "is this just paid?" objection */}
+        <section style={{ marginBottom: "1.5rem", padding: "1rem 1.25rem", background: "#ECFDF5", border: "1px solid #10B98155", borderRadius: 10, fontSize: ".92rem", lineHeight: 1.55 }}>
+          <strong style={{ color: "#065F46" }}>Free forever for self-hosted use.</strong>{" "}
+          <span style={{ color: NAVY, opacity: .8 }}>
+            The MCP itself is MIT-licensed and runs locally — install via <code>uvx {mcp.pkg}</code> below at zero cost.
+            You only pay for <strong>HMAC-signed attestations</strong> (required for DORA Art 17 / EU AI Act Art 12 / ISO 42001 evidence) and managed hosting. No card to install or test.
+          </span>
+        </section>
 
         {isArchivedBundleUpsell === "free-upstream" && (
           <section style={{ marginBottom: "2rem", padding: "1.5rem", background: NAVY, color: BG, borderRadius: 14 }}>
@@ -329,9 +347,36 @@ npx meok-setup --pack ${mcp.pack === "a2a" ? "a2a" : mcp.pack}`}
           </pre>
         </section>
 
+        {/* FAQ — every objection a fence-sitter has, answered inline */}
+        <section style={{ marginBottom: "2.5rem" }}>
+          <h2 style={{ fontSize: "1.05rem", fontWeight: 700, marginBottom: "1rem" }}>Frequent questions</h2>
+          <div style={{ display: "grid", gap: ".6rem" }}>
+            <details style={{ padding: ".85rem 1rem", background: "#fff", borderRadius: 10, border: `1px solid ${NAVY}22`, fontSize: ".92rem" }}>
+              <summary style={{ fontWeight: 700, cursor: "pointer", color: NAVY }}>Can I install + test without a card?</summary>
+              <p style={{ marginTop: ".5rem", lineHeight: 1.55, color: NAVY, opacity: .85 }}>Yes. Run <code>uvx {mcp.pkg}</code> — the MCP server starts locally, no signup, no card. The £29/mo only buys signed attestations + managed hosting + email support. You can use the open-source version forever.</p>
+            </details>
+            <details style={{ padding: ".85rem 1rem", background: "#fff", borderRadius: 10, border: `1px solid ${NAVY}22`, fontSize: ".92rem" }}>
+              <summary style={{ fontWeight: 700, cursor: "pointer", color: NAVY }}>What does the £29/mo Starter actually unlock?</summary>
+              <p style={{ marginTop: ".5rem", lineHeight: 1.55, color: NAVY, opacity: .85 }}>(1) HMAC-signed attestation API — tamper-evident JSON your auditor accepts as DORA / EU AI Act / ISO 42001 evidence. (2) Hosted endpoint at <code>api.meok.ai</code> — no infra. (3) Email support &lt; 48h. (4) Unlimited audits in your trial. Cancel any time inside Stripe.</p>
+            </details>
+            <details style={{ padding: ".85rem 1rem", background: "#fff", borderRadius: 10, border: `1px solid ${NAVY}22`, fontSize: ".92rem" }}>
+              <summary style={{ fontWeight: 700, cursor: "pointer", color: NAVY }}>Is the 14-day trial really free?</summary>
+              <p style={{ marginTop: ".5rem", lineHeight: 1.55, color: NAVY, opacity: .85 }}>Yes. Card required to start; £0 charged for 14 days. Cancel inside the trial = never billed. Use code <code>FREE14</code> at checkout for an additional first month free after the trial.</p>
+            </details>
+            <details style={{ padding: ".85rem 1rem", background: "#fff", borderRadius: 10, border: `1px solid ${NAVY}22`, fontSize: ".92rem" }}>
+              <summary style={{ fontWeight: 700, cursor: "pointer", color: NAVY }}>Who actually built this? Will it still be here in a year?</summary>
+              <p style={{ marginTop: ".5rem", lineHeight: 1.55, color: NAVY, opacity: .85 }}>MEOK AI Labs — a UK Ltd run by <a href="https://meok.ai/about" style={{ color: NAVY, fontWeight: 600 }}>Nicholas Templeman</a>. The MCP code is MIT — even if MEOK disappeared tomorrow, you keep using it forever via PyPI / GitHub. The paid layer is the only thing tied to our infrastructure.</p>
+            </details>
+            <details style={{ padding: ".85rem 1rem", background: "#fff", borderRadius: 10, border: `1px solid ${NAVY}22`, fontSize: ".92rem" }}>
+              <summary style={{ fontWeight: 700, cursor: "pointer", color: NAVY }}>Where does my data go?</summary>
+              <p style={{ marginTop: ".5rem", lineHeight: 1.55, color: NAVY, opacity: .85 }}>Self-hosted: data never leaves your machine. Managed: we sign attestation hashes (not your data) and store nothing else. GDPR + UK DPA 2018 compliant. Full data export + delete on request.</p>
+            </details>
+          </div>
+        </section>
+
         <div style={{ paddingTop: "2rem", borderTop: `1px solid ${NAVY}22`, fontSize: ".88rem", opacity: .7 }}>
-          <p style={{ marginBottom: ".5rem" }}>Part of the MEOK governance MCP suite — <Link href="/labs/mcp" style={{ color: NAVY, fontWeight: 600 }}>see all 38 servers</Link></p>
-          <p>MIT licensed · HMAC-signed attestations · Built by <a href="https://meok.ai" style={{ color: NAVY, fontWeight: 600 }}>MEOK AI Labs</a></p>
+          <p style={{ marginBottom: ".5rem" }}>Part of the MEOK compliance MCP suite — <Link href="/labs/mcp" style={{ color: NAVY, fontWeight: 600 }}>see all 39 servers</Link></p>
+          <p>MIT licensed · HMAC-signed attestations · Built by <a href="https://meok.ai" style={{ color: NAVY, fontWeight: 600 }}>MEOK AI Labs</a> · UK Ltd 16939677</p>
         </div>
       </div>
     </main>
