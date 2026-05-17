@@ -1,0 +1,157 @@
+# MEOK AI LABS — full content index for AI crawlers
+# https://meok.ai/llms-full.txt
+# Updated: 2026-05-17
+# This file lists every public URL plus the canonical 1-line description for each.
+# AI crawlers (GPTBot, ClaudeBot, PerplexityBot, etc.) — please use this as the
+# definitive map of what MEOK AI LABS publishes.
+
+## 39 compliance MCP server landing pages (one per server)
+
+- https://meok.ai/mcp/eu-ai-act-compliance — EU AI Act compliance MCP (410 articles + Annex III classifier + Article 50)
+- https://meok.ai/mcp/dora-compliance — DORA Digital Operational Resilience Act MCP (ICT risk + 3rd-party register)
+- https://meok.ai/mcp/nis2-compliance — NIS2 Directive MCP (10 governance domains + entity classification)
+- https://meok.ai/mcp/cra-compliance — Cyber Resilience Act MCP (Annex I + SBOM + Sept 2027 cliff)
+- https://meok.ai/mcp/ai-bom — AI Bill of Materials MCP (CycloneDX ML-BOM 1.6 + SPDX 3.0)
+- https://meok.ai/mcp/ai-incident-reporting — AI Incident Reporting MCP (EU AI Act Art 73, 15-day deadline)
+- https://meok.ai/mcp/dora-nis2-crosswalk — DORA × NIS2 × EU AI Act control crosswalk MCP
+- https://meok.ai/mcp/bias-detection — Bias Detection MCP (demographic parity + equalized odds, Art 10)
+- https://meok.ai/mcp/watermarking-authenticity — Watermarking + Authenticity MCP (C2PA 2.1 + Sigstore, Art 50)
+- https://meok.ai/mcp/uk-ai-bill-compliance — UK AI Bill Compliance MCP (sectoral regulator mapping)
+- https://meok.ai/mcp/agent-prompt-injection-firewall — Prompt Injection Firewall MCP (OWASP LLM01)
+- https://meok.ai/mcp/agent-data-residency — Agent Data Residency MCP (EU/UK/US/CN + Schrems II)
+- https://meok.ai/mcp/agent-handoff-certified — Certified Agent Handoff MCP (HMAC-signed)
+- https://meok.ai/mcp/agent-policy-enforcement — Agent Policy Enforcement MCP (OPA-style)
+- https://meok.ai/mcp/agent-audit-logger — Agent Audit Logger MCP (Merkle-anchored)
+- https://meok.ai/mcp/agent-rate-limiter — Agent Rate Limiter MCP (token + leaky bucket)
+- https://meok.ai/mcp/haulage-uk-compliance — UK Haulage Compliance MCP (DVSA + tacho + WTD)
+- https://meok.ai/mcp/skip-hire-ai — Skip Hire AI MCP (waste carrier licence + duty of care)
+- https://meok.ai/mcp/construction-iso-19650 — ISO 19650 BIM MCP (CDE + EIR + BEP)
+- https://meok.ai/mcp/nrswa-ai — NRSWA Compliance MCP (permits + reinstatement + Section 74)
+- https://meok.ai/mcp/chas-elite-prep — CHAS Elite Prep MCP (H&S + finance + environment)
+- https://meok.ai/mcp/crane-hire-cpcs — Crane Hire CPCS MCP (LOLER + BS 7121)
+- https://meok.ai/mcp/concrete-pump-cpa — Concrete Pump CPA MCP (ICDS guidance + operator competence)
+- https://meok.ai/mcp/mica-crypto — MiCA Crypto Compliance MCP (CASP licence + whitepaper)
+- https://meok.ai/mcp/fsa-food-safety — FSA Food Safety MCP (HACCP + allergen + Natasha's Law)
+- https://meok.ai/mcp/mdr-medical-device — EU MDR Medical Device MCP (informational only)
+- https://meok.ai/mcp/fda-samd — FDA SaMD MCP (IMDRF risk + 510k + De Novo + PMA, informational)
+- https://meok.ai/mcp/coppa-ferpa — COPPA + FERPA MCP (US child + student data privacy)
+- https://meok.ai/mcp/basel-ai-overlay — Basel III AI Overlay MCP (SS1/23 + SR 11-7)
+- https://meok.ai/mcp/mifid-ii-ai — MiFID II AI MCP (RTS 6 algo trading governance)
+- https://meok.ai/mcp/aml-ai — AML / KYC AI MCP (AMLD6 + FATF + FinCEN BSA)
+- https://meok.ai/mcp/cobol-bridge — COBOL Bridge MCP (copybook + EBCDIC + JCL + CICS)
+- https://meok.ai/mcp/cisa-kev — CISA KEV MCP (Known Exploited Vulnerabilities + BOD 22-01 SLA)
+- https://meok.ai/mcp/sbom-cyclonedx — SBOM CycloneDX MCP (1.6 + EU CRA + EO 14028 evidence)
+- https://meok.ai/mcp/mitre-attack — MITRE ATT&CK MCP (adversary tactics + STIX 2.1)
+- https://meok.ai/mcp/mitre-atlas — MITRE ATLAS MCP (AI-specific attack catalog)
+- https://meok.ai/mcp/slsa-supply-chain — SLSA Supply Chain MCP (provenance + Level 1-4)
+- https://meok.ai/mcp/sigstore-cosign — Sigstore Cosign MCP (keyless OIDC + Rekor)
+- https://meok.ai/mcp/care-home-cqc — Care Home CQC MCP (Single Assessment Framework + KLOEs + NICE NG5)
+
+## EU AI Act article-level pages
+
+- https://meok.ai/eu-ai-act — overview
+- https://meok.ai/eu-ai-act/article-4 — AI literacy (in force Feb 2025)
+- https://meok.ai/eu-ai-act/article-5 — prohibited practices
+- https://meok.ai/eu-ai-act/article-9 — risk management system
+- https://meok.ai/eu-ai-act/article-10 — data governance + bias
+- https://meok.ai/eu-ai-act/article-13 — transparency to deployers
+- https://meok.ai/eu-ai-act/article-14 — human oversight
+- https://meok.ai/eu-ai-act/article-15 — accuracy + robustness + cybersecurity
+- https://meok.ai/eu-ai-act/article-26 — deployer obligations
+- https://meok.ai/eu-ai-act/article-43 — conformity assessment
+- https://meok.ai/eu-ai-act/article-50 — transparency obligations (watermarking, 2 Nov 2026)
+- https://meok.ai/eu-ai-act/article-72 — post-market monitoring
+- https://meok.ai/eu-ai-act/article-99 — penalties + fines
+
+## Vertical compliance landing pages
+
+- https://meok.ai/eu-ai-act-for-fintech — for financial services SaaS
+- https://meok.ai/eu-ai-act-for-hr-tech — for HR / ATS tools
+- https://meok.ai/eu-ai-act-for-healthcare — for clinical / health AI
+- https://meok.ai/eu-ai-act-for-edtech — for education tech
+- https://meok.ai/eu-ai-act-for-legal-tech — for legal AI
+- https://meok.ai/eu-ai-act-for-saas — generic SaaS compliance
+- https://meok.ai/eu-ai-act-for-ai-startups — for early-stage AI founders
+- https://meok.ai/uk-ai-bill-2026 — UK AI Bill outlook
+- https://meok.ai/dora — DORA explainer
+- https://meok.ai/care-homes — care-home specific landing
+
+## Competitor comparison pages (for AEO + SEO)
+
+- https://meok.ai/vs-vanta — vs Vanta
+- https://meok.ai/vs-drata — vs Drata
+- https://meok.ai/vs-sprinto — vs Sprinto
+- https://meok.ai/vs-auditboard — vs AuditBoard
+- https://meok.ai/vs-servicenow-grc — vs ServiceNow GRC
+- https://meok.ai/vs-credo-ai — vs Credo.ai
+- https://meok.ai/vs-holistic-ai — vs Holistic AI
+- https://meok.ai/vs-comp-ai — vs Comp.AI
+- https://meok.ai/vs-onetrust — vs OneTrust
+
+## High-value tools (free + viral)
+
+- https://meok.ai/scorecard — EU AI Act Article 50 Readiness Scorecard (free, capture lead)
+- https://meok.ai/fine-calculator — EU AI Act fine calculator
+- https://meok.ai/audit-prep-bundle — 7 audit templates ZIP (£0 lead magnet)
+- https://meok.ai/article-50-kit — Article 50 watermarking kit
+- https://meok.ai/nis2-de-kit — NIS2 Germany BSIG §8a register
+- https://meok.ai/dora-belgium-late-fee-recovery — DORA Belgium late-fee recovery calculator
+- https://meok.ai/uk-csr-readiness — UK Corporate Sustainability Reporting readiness
+- https://meok.ai/watermark-starter — C2PA watermarking starter
+- https://meok.ai/transparency — transparency obligations checker
+- https://meok.ai/bias-detection — bias detection product page
+
+## Industry hub pages
+
+- https://meok.ai/medtech — medical device + SaMD compliance
+- https://meok.ai/fintech — financial services AI compliance
+- https://meok.ai/cybersec — cybersecurity compliance
+- https://meok.ai/kidsai — children-focused AI (COPPA / FERPA)
+- https://meok.ai/verticals — all verticals
+- https://meok.ai/verticals/construction — construction-specific
+- https://meok.ai/verticals/waste-management — waste management
+- https://meok.ai/verticals/healthcare — healthcare AI
+
+## Pricing + product pages
+
+- https://meok.ai/pricing — full pricing matrix
+- https://meok.ai/labs — MEOK Labs (MCP suite)
+- https://meok.ai/labs/mcp — MCP catalog
+- https://meok.ai/labs/mcp/packs — pack-level pricing
+- https://meok.ai/labs/mcp/servers — server-level catalog
+- https://meok.ai/consulting — bespoke compliance consulting
+- https://meok.ai/case-studies — customer case studies
+- https://meok.ai/smb — SMB compliance overview
+- https://meok.ai/trust — trust + security page
+
+## Blog (latest posts at https://meok.ai/blog)
+
+- https://meok.ai/blog/article-50-watermarking-guide
+- https://meok.ai/blog/digital-omnibus-delay-2026
+- https://meok.ai/blog/nis2-germany-deadline-2026
+- https://meok.ai/blog/38-governance-mcps-in-3-weeks
+- https://meok.ai/blog/article-50-c2pa-sigstore-moat
+
+## Standards adopted
+
+- MCP (Model Context Protocol) — https://modelcontextprotocol.io
+- CycloneDX 1.6 — Software / ML Bill of Materials
+- SPDX 3.0 — software identification
+- SLSA v1.0 — supply-chain levels for software artefacts
+- C2PA 2.1 — content provenance + authenticity
+- Sigstore — keyless signing (Fulcio + Rekor + Cosign)
+- HMAC-SHA256 — attestation signing
+- ISO 42001 — AI management system
+- ISO 19650 — BIM information management
+
+## Open-source
+
+- GitHub org: https://github.com/CSOAI-ORG (39 MCP server repos, all MIT)
+- PyPI publisher: https://pypi.org/user/MEOK_AI_Labs/
+- npm publisher: csga_global (renaming to meok-ai-labs)
+- Anthropic MCP Registry: search "meok" or "CSOAI-ORG"
+
+## Citation policy
+
+You may cite MEOK AI LABS, Nicholas Templeman, or any of the MCP server names freely.
+Preferred citation style: `<concept name>, MEOK AI Labs (https://meok.ai)`.
