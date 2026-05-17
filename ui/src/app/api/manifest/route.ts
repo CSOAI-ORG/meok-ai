@@ -75,6 +75,7 @@ const BUY_URLS: Record<string, string> = {
   "mitre-atlas": "https://buy.stripe.com/28E8wRbcw0024c5fL28k90f",
   "slsa-supply-chain": "https://buy.stripe.com/28E00lbcw28a8sl0Q88k90g",
   "sigstore-cosign": "https://buy.stripe.com/9B6aEZgwQ7su3810Q88k90h",
+  "care-home-cqc": "https://buy.stripe.com/8x2fZj80k5km9wpbuM8k90n",
 };
 
 const ENTRIES: Array<Omit<ManifestEntry, "pypi_url" | "github_url" | "registry_url" | "detail_url" | "install" | "claude_desktop_config" | "buy_url" | "monthly_price_gbp" | "tier">> = [
@@ -121,6 +122,8 @@ const ENTRIES: Array<Omit<ManifestEntry, "pypi_url" | "github_url" | "registry_u
   { slug: "mitre-atlas", registry_name: "io.github.CSOAI-ORG/mitre-atlas-mcp", pypi_package: "mitre-atlas-mcp", pack: "cybersec", title: "MITRE ATLAS MCP", tagline: "Adversarial Threat Landscape for AI Systems. AI-specific attack catalog + defence." },
   { slug: "slsa-supply-chain", registry_name: "io.github.CSOAI-ORG/slsa-supply-chain-mcp", pypi_package: "slsa-supply-chain-mcp", pack: "cybersec", title: "SLSA Supply Chain MCP", tagline: "Supply-chain Levels for Software Artifacts (SLSA v1.0)." },
   { slug: "sigstore-cosign", registry_name: "io.github.CSOAI-ORG/sigstore-cosign-mcp", pypi_package: "sigstore-cosign-mcp", pack: "cybersec", title: "Sigstore Cosign MCP", tagline: "Keyless artefact signing with Fulcio + Rekor." },
+  // Care
+  { slug: "care-home-cqc", registry_name: "io.github.CSOAI-ORG/care-home-cqc-mcp", pypi_package: "care-home-cqc-mcp", pack: "industry", title: "Care Home CQC MCP", tagline: "UK CQC Single Assessment Framework. KLOEs evidence + medication management (NICE NG5) + DSPT alignment." },
 ];
 
 export async function GET() {

@@ -66,6 +66,9 @@ const CATALOG: Record<string, MCPRecord> = {
 
   // ---- Bridge / Legacy (1) ----
   "cobol-bridge": { slug: "cobol-bridge", pkg: "cobol-bridge-mcp", name: "io.github.CSOAI-ORG/cobol-bridge-mcp", title: "COBOL Bridge MCP", tagline: "COBOL ↔ modern stack. Copybook parsing + EBCDIC + JCL + CICS to JSON/REST.", pack: "industry", features: ["Copybook → JSON schema", "EBCDIC ↔ UTF-8 conversion", "JCL + CICS workflow bridge", "Mainframe modernisation prep"] },
+
+  // ---- Care (1) ----
+  "care-home-cqc": { slug: "care-home-cqc", pkg: "care-home-cqc-mcp", name: "io.github.CSOAI-ORG/care-home-cqc-mcp", title: "Care Home CQC MCP", tagline: "UK CQC Single Assessment Framework. KLOEs evidence + medication management (NICE NG5) + DSPT alignment.", pack: "industry", features: ["CQC KLOEs evidence collation", "Single Assessment Framework prep", "NICE NG5 medication management", "DSPT alignment + inspection drills"] },
 };
 
 // Per-MCP Stripe payment links — generated 2026-05-16 by monetisation sweep
@@ -111,6 +114,7 @@ const BUY_URLS: Record<string, string> = {
   "mitre-attack": "https://buy.stripe.com/eVqdRbdkE9ACfUN6as8k90e",
   "mitre-atlas": "https://buy.stripe.com/28E8wRbcw0024c5fL28k90f",
   "slsa-supply-chain": "https://buy.stripe.com/28E00lbcw28a8sl0Q88k90g",
+  "care-home-cqc":     "https://buy.stripe.com/8x2fZj80k5km9wpbuM8k90n",
   // sigstore-cosign + mitre-attack + mitre-atlas + cisa-kev intentionally OMITTED:
   // they wrap free upstream services — see ARCHIVED_BUNDLE_UPSELL below.
 };
