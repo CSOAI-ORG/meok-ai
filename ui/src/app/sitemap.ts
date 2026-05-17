@@ -119,9 +119,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/mcp/cisa-kev', '/mcp/sbom-cyclonedx', '/mcp/mitre-attack',
     '/mcp/mitre-atlas', '/mcp/slsa-supply-chain', '/mcp/sigstore-cosign',
     '/mcp/cobol-bridge',
-    // Optical + care vertical
-    '/mcp/gos-claim-validator', '/mcp/mhra-samd-optometry', '/mcp/dispense-record',
-    '/mcp/care-home-cqc', '/mcp/domiciliary-care', '/mcp/optical-care-home-bridge',
+    // Care vertical (live)
+    '/mcp/care-home-cqc',
+    // NOTE: gos-claim-validator, mhra-samd-optometry, dispense-record, domiciliary-care, optical-care-home-bridge
+    // exist as marketplace dirs but are not yet published/in CATALOG — removed from sitemap to avoid 404s.
   ];
 
   const industryHubs = [
