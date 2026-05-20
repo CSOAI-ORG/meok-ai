@@ -75,7 +75,7 @@ export default function LegalTechPage() {
           <p style={{ color: "rgba(255,255,255,0.6)", marginBottom: 20, maxWidth: 640 }}>EU justice ministries + bar associations are putting Article 14 + Article 26(9) into RFPs. Ship signed evidence and you get past the gate.</p>
           <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
             <Link href="/audit-prep-bundle" style={{ display: "inline-block", padding: "14px 24px", background: GOLD, color: NAVY, borderRadius: 12, fontWeight: 900, textDecoration: "none", fontSize: 14 }}>£4,950 audit-prep →</Link>
-            <a href="mailto:nicholas@csoai.org?subject=Legal%20tech%20gap%20analysis" style={{ display: "inline-block", padding: "14px 24px", background: "transparent", color: "white", border: "1px solid rgba(255,255,255,0.3)", borderRadius: 12, fontWeight: 900, textDecoration: "none", fontSize: 14 }}>Free triage →</a>
+            <a href="mailto:nicholas@meok.ai?subject=Legal%20tech%20gap%20analysis" style={{ display: "inline-block", padding: "14px 24px", background: "transparent", color: "white", border: "1px solid rgba(255,255,255,0.3)", borderRadius: 12, fontWeight: 900, textDecoration: "none", fontSize: 14 }}>Free triage →</a>
           </div>
         </div>
 

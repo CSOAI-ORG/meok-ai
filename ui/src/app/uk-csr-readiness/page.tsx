@@ -17,7 +17,7 @@ const FAQ = [
   { q: "Who's newly in scope?", a: "Managed service providers (MSPs) — IT outsourcing, managed security, managed cloud. Data centres above a threshold. Some critical digital infrastructure operators not previously in NIS. The exact threshold + scope wording is still moving in committee." },
   { q: "What incident reporting is required?", a: "Phased: initial notification within 24 hours of becoming aware of a significant incident, full report within 72 hours. Mirrors EU NIS2 Article 23 timelines. Designated Critical Operations require additional reports to relevant sector regulators." },
   { q: "When does the Bill take effect?", a: "Phased implementation expected from 2026 onward, contingent on Royal Assent and statutory instruments. Current estimate: substantive obligations from 2027 with grace periods for new in-scope entities." },
-  { q: "How does MEOK help?", a: "We're scaffolding a meok-uk-csr-readiness MCP based on the existing meok-nis2-de-register-mcp codebase. Same evidence-pack pattern: entity classifier + register payload + signed compliance attestation. Available to early customers — email nicholas@csoai.org for early access." },
+  { q: "How does MEOK help?", a: "We're scaffolding a meok-uk-csr-readiness MCP based on the existing meok-nis2-de-register-mcp codebase. Same evidence-pack pattern: entity classifier + register payload + signed compliance attestation. Available to early customers — email nicholas@meok.ai for early access." },
 ];
 
 const FAQ_JSONLD = { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: FAQ.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })) };
@@ -74,7 +74,7 @@ export default function UKCSRPage() {
             We're shipping the meok-uk-csr-readiness MCP + evidence-pack template to the first 10 MSPs that ask. Free during the early access window in exchange for feedback. Email below.
           </p>
           <div style={{ display: "flex", gap: 12, flexWrap: "wrap", justifyContent: "center" }}>
-            <a href="mailto:nicholas@csoai.org?subject=UK%20CSR%20Bill%20early%20access" style={{ display: "inline-block", padding: "14px 24px", background: GOLD, color: NAVY, borderRadius: 12, fontWeight: 900, textDecoration: "none", fontSize: 14 }}>Request early access →</a>
+            <a href="mailto:nicholas@meok.ai?subject=UK%20CSR%20Bill%20early%20access" style={{ display: "inline-block", padding: "14px 24px", background: GOLD, color: NAVY, borderRadius: 12, fontWeight: 900, textDecoration: "none", fontSize: 14 }}>Request early access →</a>
             <Link href="/audit-prep-bundle" style={{ display: "inline-block", padding: "14px 24px", background: "transparent", color: "white", border: "1px solid rgba(255,255,255,0.3)", borderRadius: 12, fontWeight: 900, textDecoration: "none", fontSize: 14 }}>£4,950 audit-prep bundle →</Link>
           </div>
         </div>

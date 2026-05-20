@@ -100,7 +100,7 @@ export default function CareHomesPage() {
             Subscribe £150/mo →
           </a>
           <a
-            href="mailto:nicholas@csoai.org?subject=Care%20Home%20Compliance%20Pack%20-%20questions%20before%20I%20subscribe&body=Hi%20Nicholas%2C%0A%0AI%20run%20%5BHome%20name%5D%2C%20a%20%5BNN%5D-bed%20%5Bnursing%2Fresidential%5D%20home%20in%20%5Btown%5D.%0A%0AI%27d%20like%20to%20understand%3A%0A%0A1.%20Whether%20the%20pack%20covers%20%5Bspecific%20concern%5D%0A2.%20%0A3.%20%0A%0AThanks%2C%0A%5BYour%20name%5D"
+            href="mailto:nicholas@meok.ai?subject=Care%20Home%20Compliance%20Pack%20-%20questions%20before%20I%20subscribe&body=Hi%20Nicholas%2C%0A%0AI%20run%20%5BHome%20name%5D%2C%20a%20%5BNN%5D-bed%20%5Bnursing%2Fresidential%5D%20home%20in%20%5Btown%5D.%0A%0AI%27d%20like%20to%20understand%3A%0A%0A1.%20Whether%20the%20pack%20covers%20%5Bspecific%20concern%5D%0A2.%20%0A3.%20%0A%0AThanks%2C%0A%5BYour%20name%5D"
             style={{
               display: "inline-block",
               padding: "14px 28px",

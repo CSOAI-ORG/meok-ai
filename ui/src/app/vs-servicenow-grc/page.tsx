@@ -98,7 +98,7 @@ export default function VsServiceNowGRCPage() {
           <h3 style={{ fontSize: "1.4rem", fontWeight: 900, marginBottom: 8 }}>Save 6 months of ServiceNow PS work</h3>
           <p style={{ color: "rgba(255,255,255,0.6)", marginBottom: 20, maxWidth: 640 }}>Bring your ServiceNow GRC scope, we map gaps to pre-built MEOK EU AI Act + DORA + NIS2 + CRA controls + signed evidence flow.</p>
           <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
-            <a href="mailto:nicholas@csoai.org?subject=ServiceNow%20GRC%20gap%20analysis" style={{ display: "inline-block", padding: "14px 24px", background: GOLD, color: NAVY, borderRadius: 12, fontWeight: 900, textDecoration: "none", fontSize: 14 }}>Book gap-analysis (free) →</a>
+            <a href="mailto:nicholas@meok.ai?subject=ServiceNow%20GRC%20gap%20analysis" style={{ display: "inline-block", padding: "14px 24px", background: GOLD, color: NAVY, borderRadius: 12, fontWeight: 900, textDecoration: "none", fontSize: 14 }}>Book gap-analysis (free) →</a>
             <Link href="/audit-prep-bundle" style={{ display: "inline-block", padding: "14px 24px", background: "transparent", color: "white", border: "1px solid rgba(255,255,255,0.3)", borderRadius: 12, fontWeight: 900, textDecoration: "none", fontSize: 14 }}>£4,950 audit-prep bundle →</Link>
           </div>
         </div>

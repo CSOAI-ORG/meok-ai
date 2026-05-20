@@ -6,7 +6,7 @@ import HomePageClient from "./home-page-client";
 export const metadata: Metadata = {
   title: "MEOK AI Labs — Sovereign AI OS & Agent Infrastructure",
   description:
-    "MEOK is the sovereign AI operating system: one encrypted memory layer, every LLM, built to work, guard, and play. Powered by CSOAI.",
+    "MEOK is the sovereign AI operating system: one encrypted memory layer, every LLM, built to work, guard, and play..",
   keywords: [
     "personal sovereign AI",
     "sovereign AI OS",
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "MEOK.AI — Personal Sovereign AI That Remembers You",
     description:
-      "MEOK is the sovereign AI operating system: one encrypted memory layer, every LLM, built to work, guard, and play. Powered by CSOAI.",
+      "MEOK is the sovereign AI operating system: one encrypted memory layer, every LLM, built to work, guard, and play..",
     type: "website",
     url: "https://meok.ai",
     siteName: "MEOK.AI",
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "MEOK.AI — Personal Sovereign AI That Remembers You",
     description:
-      "MEOK is the sovereign AI operating system: one encrypted memory layer, every LLM, built to work, guard, and play. Powered by CSOAI.",
+      "MEOK is the sovereign AI operating system: one encrypted memory layer, every LLM, built to work, guard, and play..",
     site: "@meok_ai",
     images: ["https://meok.ai/api/og?title=MEOK.AI&desc=Your+sovereign+AI.+Built+to+remember.+Designed+to+care."],
   },
@@ -75,7 +75,7 @@ const websiteJsonLd = {
   name: "MEOK.AI",
   url: "https://meok.ai",
   description:
-    "Sovereign AI OS and agent infrastructure. One memory layer. Every LLM. Zero compromise. Built for work, Guardian safety, and gaming — powered by CSOAI.",
+    "Sovereign AI OS and agent infrastructure. One memory layer. Every LLM. Zero compromise. Built for work, Guardian safety, and gaming —.",
   publisher: { "@type": "Organization", name: "MEOK AI LABS" },
   potentialAction: {
     "@type": "SearchAction",
@@ -93,7 +93,7 @@ const faqJsonLd = {
       name: "What is MEOK AI?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "MEOK.AI is the sovereign AI operating system. It unifies encrypted memory, multi-LLM routing, and a 255-node MCP marketplace into one secure platform — powered by CSOAI.",
+        text: "MEOK.AI is the sovereign AI operating system. It unifies encrypted memory, multi-LLM routing, and a 255-node MCP marketplace into one secure platform —.",
       },
     },
     {

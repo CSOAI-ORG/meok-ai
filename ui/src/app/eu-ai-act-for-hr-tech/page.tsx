@@ -71,7 +71,7 @@ export default function HRTechPage() {
           <h3 style={{ fontSize: "1.4rem", fontWeight: 900, marginBottom: 8 }}>Make EU AI Act a sales accelerator, not a blocker</h3>
           <p style={{ color: "rgba(255,255,255,0.6)", marginBottom: 20, maxWidth: 640 }}>White-label our FRIA generator + bias dashboard so your customers stop saying "wait, we need to check with legal" and start saying "yes, we'll buy."</p>
           <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
-            <a href="mailto:nicholas@csoai.org?subject=HR%20Tech%20OEM%20partnership" style={{ display: "inline-block", padding: "14px 24px", background: GOLD, color: NAVY, borderRadius: 12, fontWeight: 900, textDecoration: "none", fontSize: 14 }}>OEM partnership →</a>
+            <a href="mailto:nicholas@meok.ai?subject=HR%20Tech%20OEM%20partnership" style={{ display: "inline-block", padding: "14px 24px", background: GOLD, color: NAVY, borderRadius: 12, fontWeight: 900, textDecoration: "none", fontSize: 14 }}>OEM partnership →</a>
             <Link href="/audit-prep-bundle" style={{ display: "inline-block", padding: "14px 24px", background: "transparent", color: "white", border: "1px solid rgba(255,255,255,0.3)", borderRadius: 12, fontWeight: 900, textDecoration: "none", fontSize: 14 }}>£4,950 audit-prep →</Link>
           </div>
         </div>

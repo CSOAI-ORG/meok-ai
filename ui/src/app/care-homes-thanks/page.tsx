@@ -83,7 +83,7 @@ export default function CareHomesThanksPage() {
           <h2 style={{ fontSize: "1.1rem", fontWeight: 900, marginBottom: 16 }}>What happens next</h2>
           <ol style={{ paddingLeft: 20, color: `${NAVY}88`, lineHeight: 1.9, fontSize: 14, margin: 0 }}>
             <li>Fill in the <code style={{ background: `${NAVY}0d`, padding: "1px 4px", borderRadius: 4 }}>[HOME NAME]</code> and <code style={{ background: `${NAVY}0d`, padding: "1px 4px", borderRadius: 4 }}>[DATE]</code> placeholders in each template</li>
-            <li><strong>Book your 30-min onboarding call</strong> — email <a href="mailto:nicholas@csoai.org?subject=Care%20Home%20Pack%20%E2%80%94%20Onboarding%20call" style={{ color: GOLD, fontWeight: 700 }}>nicholas@csoai.org</a> to schedule</li>
+            <li><strong>Book your 30-min onboarding call</strong> — email <a href="mailto:nicholas@meok.ai?subject=Care%20Home%20Pack%20%E2%80%94%20Onboarding%20call" style={{ color: GOLD, fontWeight: 700 }}>nicholas@meok.ai</a> to schedule</li>
             <li>Each quarter: complete the <strong>Quarterly Self-Attestation</strong> template, sign it, and file it with your CQC evidence folder</li>
           </ol>
         </div>
@@ -91,7 +91,7 @@ export default function CareHomesThanksPage() {
         {/* Founder note */}
         <div style={{ background: `${GOLD}18`, border: `1px solid ${GOLD}55`, borderRadius: 14, padding: 24, marginBottom: 32 }}>
           <p style={{ fontSize: 14, lineHeight: 1.7, margin: 0, color: NAVY }}>
-            <strong>Direct line to the founder:</strong> Email <a href="mailto:nicholas@csoai.org" style={{ color: GOLD, fontWeight: 700 }}>nicholas@csoai.org</a> with any questions. Reply within 4 hours Mon–Fri. If anything in the templates doesn&apos;t fit your home&apos;s shape, I&apos;ll customise them with you on the onboarding call.
+            <strong>Direct line to the founder:</strong> Email <a href="mailto:nicholas@meok.ai" style={{ color: GOLD, fontWeight: 700 }}>nicholas@meok.ai</a> with any questions. Reply within 4 hours Mon–Fri. If anything in the templates doesn&apos;t fit your home&apos;s shape, I&apos;ll customise them with you on the onboarding call.
           </p>
         </div>
 

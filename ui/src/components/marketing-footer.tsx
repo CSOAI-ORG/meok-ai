@@ -287,10 +287,13 @@ export function MarketingFooter() {
             </div>
           </div>
 
-          {/* LLM Partners & Gaming Partners */}
+          {/* LLM integration list — labelled honestly as "Works with", NOT
+              presented as partnerships. A procurement-savvy CTO can screenshot
+              a "Partner" claim and bin the deal; "Works with" reads as an
+              integration matrix and is defensible. */}
           <div className="border-t border-[#2a2a3a] pt-10 pb-6">
             <p className="text-center text-xs font-semibold tracking-[0.2em] uppercase text-[#9a9a8a]/50 mb-8">
-              Powered by the world&apos;s best AI infrastructure
+              Works with — supported LLM providers
             </p>
             <div className="flex flex-wrap justify-center items-center gap-x-10 gap-y-5 mb-8">
               {LLM_PARTNERS.map((p) => (
@@ -306,7 +309,7 @@ export function MarketingFooter() {
               ))}
             </div>
             <p className="text-center text-xs font-semibold tracking-[0.2em] uppercase text-[#9a9a8a]/50 mb-5">
-              Gaming ecosystem
+              Compatible with gaming platforms
             </p>
             <div className="flex flex-wrap justify-center items-center gap-x-8 gap-y-4">
               {GAMING_PARTNERS.map((p) => (
@@ -323,28 +326,8 @@ export function MarketingFooter() {
             </div>
           </div>
 
-          {/* Powered by CSOAI */}
-          <div className="border-t border-[#2a2a3a] pt-8 pb-6">
-            <div className="flex flex-col items-center gap-4">
-              <span className="text-[10px] font-semibold tracking-[0.25em] uppercase text-[#9a9a8a]/40">
-                Infrastructure Partner
-              </span>
-              <Link
-                href="/csoai"
-                className="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-[#D4A843]/30 bg-[#D4A843]/5 hover:bg-[#D4A843]/10 transition-colors"
-              >
-                <img
-                  src="/brand/csoai-robot.png"
-                  alt="CSOAI"
-                  className="w-8 h-8 rounded-lg object-cover"
-                />
-                <div className="flex flex-col">
-                  <span className="text-sm font-bold text-[#D4A843]">Powered by CSOAI</span>
-                  <span className="text-xs text-[#9a9a8a]/70">Corporate Sovereign Open AI</span>
-                </div>
-              </Link>
-            </div>
-          </div>
+          {/* CSOAI block removed 2026-05-17: severed brand, never reference.
+              See user memory feedback_no_csga.md. */}
 
           {/* Bottom bar */}
           <div className="border-t border-[#2a2a3a] pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#9a9a8a]">

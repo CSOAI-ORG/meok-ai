@@ -92,7 +92,7 @@ export default function CaseStudiesPage() {
         </p>
         <p style={{ fontSize: 14, color: `${NAVY}66`, marginBottom: 48 }}>
           Customers running MEOK and willing to be named: email{" "}
-          <a href="mailto:nicholas@csoai.org?subject=Case%20study%20participation" style={{ color: GOLD }}>nicholas@csoai.org</a> — we'll add yours to this page.
+          <a href="mailto:nicholas@meok.ai?subject=Case%20study%20participation" style={{ color: GOLD }}>nicholas@meok.ai</a> — we'll add yours to this page.
         </p>
 
         <div style={{ display: "grid", gap: 24, marginBottom: 64 }}>

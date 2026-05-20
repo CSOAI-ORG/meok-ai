@@ -49,7 +49,7 @@ export default function DoraBelgiumPage() {
           <a href={STRIPE_LINK} target="_blank" rel="noopener noreferrer" style={{ padding: "16px 28px", borderRadius: 12, background: GOLD, color: NAVY, fontWeight: 900, textDecoration: "none", fontSize: 15 }}>
             Book Belgium DORA late-filing — £999 →
           </a>
-          <a href="mailto:nicholas@csoai.org?subject=Belgium%20DORA%20late-filing%20call" target="_blank" rel="noopener noreferrer" style={{ padding: "16px 28px", borderRadius: 12, background: "transparent", color: NAVY, fontWeight: 900, textDecoration: "none", fontSize: 15, border: `1px solid ${NAVY}33` }}>
+          <a href="mailto:nicholas@meok.ai?subject=Belgium%20DORA%20late-filing%20call" target="_blank" rel="noopener noreferrer" style={{ padding: "16px 28px", borderRadius: 12, background: "transparent", color: NAVY, fontWeight: 900, textDecoration: "none", fontSize: 15, border: `1px solid ${NAVY}33` }}>
             Or book a 30-min triage call (free) →
           </a>
         </div>
@@ -79,7 +79,7 @@ export default function DoraBelgiumPage() {
           <p style={{ color: "rgba(255,255,255,0.6)", marginBottom: 20, maxWidth: 580, margin: "0 auto 20px" }}>
             We're building the same kit pattern for France, Germany, Netherlands, Italy. Email us if your jurisdiction needs the same treatment.
           </p>
-          <a href="mailto:nicholas@csoai.org?subject=DORA%20jurisdiction%20kit%20request" style={{ display: "inline-block", padding: "12px 22px", background: GOLD, color: NAVY, borderRadius: 10, fontWeight: 900, textDecoration: "none", fontSize: 14 }}>
+          <a href="mailto:nicholas@meok.ai?subject=DORA%20jurisdiction%20kit%20request" style={{ display: "inline-block", padding: "12px 22px", background: GOLD, color: NAVY, borderRadius: 10, fontWeight: 900, textDecoration: "none", fontSize: 14 }}>
             Request a jurisdiction kit →
           </a>
         </div>

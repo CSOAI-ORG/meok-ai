@@ -85,7 +85,7 @@ export default function DORAHubPage() {
               <div style={{ fontSize: 13, color: `${NAVY}99`, lineHeight: 1.5 }}>{k.desc}</div>
             </Link>
           ))}
-          <div style={{ fontSize: 12, color: `${NAVY}66`, padding: "8px 4px" }}>More country kits in production: France (ACPR), Germany (BaFin), Italy (Banca d&apos;Italia), Netherlands (DNB), Ireland (Central Bank). <a href="mailto:nicholas@csoai.org?subject=DORA%20country%20kit%20request" style={{ color: GOLD }}>Request priority →</a></div>
+          <div style={{ fontSize: 12, color: `${NAVY}66`, padding: "8px 4px" }}>More country kits in production: France (ACPR), Germany (BaFin), Italy (Banca d&apos;Italia), Netherlands (DNB), Ireland (Central Bank). <a href="mailto:nicholas@meok.ai?subject=DORA%20country%20kit%20request" style={{ color: GOLD }}>Request priority →</a></div>
         </div>
 
         <h2 style={{ fontSize: "1.5rem", fontWeight: 900, marginTop: 56, marginBottom: 20 }}>Frequently asked</h2>
@@ -102,7 +102,7 @@ export default function DORAHubPage() {
           <h3 style={{ fontSize: "1.4rem", fontWeight: 900, marginBottom: 8 }}>Behind on DORA? 14-day catch-up</h3>
           <p style={{ color: "rgba(255,255,255,0.6)", marginBottom: 20, maxWidth: 640 }}>Free 30-min triage call: bring your DORA gap, we map remediation + signed evidence flow.</p>
           <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
-            <a href="mailto:nicholas@csoai.org?subject=DORA%20gap%20analysis" style={{ display: "inline-block", padding: "14px 24px", background: GOLD, color: NAVY, borderRadius: 12, fontWeight: 900, textDecoration: "none", fontSize: 14 }}>Free DORA triage →</a>
+            <a href="mailto:nicholas@meok.ai?subject=DORA%20gap%20analysis" style={{ display: "inline-block", padding: "14px 24px", background: GOLD, color: NAVY, borderRadius: 12, fontWeight: 900, textDecoration: "none", fontSize: 14 }}>Free DORA triage →</a>
             <Link href="/audit-prep-bundle" style={{ display: "inline-block", padding: "14px 24px", background: "transparent", color: "white", border: "1px solid rgba(255,255,255,0.3)", borderRadius: 12, fontWeight: 900, textDecoration: "none", fontSize: 14 }}>£4,950 audit-prep →</Link>
           </div>
         </div>

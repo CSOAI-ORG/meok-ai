@@ -74,7 +74,7 @@ export default function AIStartupPage() {
           <h3 style={{ fontSize: "1.4rem", fontWeight: 900, marginBottom: 8 }}>Founders → free 30-min office hours</h3>
           <p style={{ color: "rgba(255,255,255,0.6)", marginBottom: 20, maxWidth: 640 }}>I'm Nicholas Templeman, solo UK founder of MEOK AI Labs. Pre-Series-C AI founders get a free 30 min on EU AI Act scoping — no sales pitch, just answers.</p>
           <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
-            <a href="mailto:nicholas@csoai.org?subject=Founder%20office%20hours%20EU%20AI%20Act" style={{ display: "inline-block", padding: "14px 24px", background: GOLD, color: NAVY, borderRadius: 12, fontWeight: 900, textDecoration: "none", fontSize: 14 }}>Book office hours →</a>
+            <a href="mailto:nicholas@meok.ai?subject=Founder%20office%20hours%20EU%20AI%20Act" style={{ display: "inline-block", padding: "14px 24px", background: GOLD, color: NAVY, borderRadius: 12, fontWeight: 900, textDecoration: "none", fontSize: 14 }}>Book office hours →</a>
             <Link href="/scorecard" style={{ display: "inline-block", padding: "14px 24px", background: "transparent", color: "white", border: "1px solid rgba(255,255,255,0.3)", borderRadius: 12, fontWeight: 900, textDecoration: "none", fontSize: 14 }}>Free scorecard first →</Link>
           </div>
         </div>

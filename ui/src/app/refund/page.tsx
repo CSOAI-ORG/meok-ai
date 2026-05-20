@@ -131,8 +131,8 @@ export default function RefundPage() {
           <h3 style={{ fontSize: "1.2rem", fontWeight: 900, marginBottom: 12 }}>How to request a refund</h3>
           <p style={{ color: "rgba(255,255,255,0.75)", fontSize: 14, marginBottom: 16, lineHeight: 1.6 }}>
             Email{" "}
-            <a href="mailto:nicholas@csoai.org?subject=Refund%20request" style={{ color: GOLD, textDecoration: "underline" }}>
-              nicholas@csoai.org
+            <a href="mailto:nicholas@meok.ai?subject=Refund%20request" style={{ color: GOLD, textDecoration: "underline" }}>
+              nicholas@meok.ai
             </a>{" "}
             with the order email, the product, and one sentence on why. We respond within 24h on
             weekdays. Refunds processed via Stripe back to the original payment method, typically 5-10

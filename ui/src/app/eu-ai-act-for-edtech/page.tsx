@@ -75,7 +75,7 @@ export default function EdtechPage() {
           <p style={{ color: "rgba(255,255,255,0.6)", marginBottom: 20, maxWidth: 640 }}>Universities + schools now require pre-built Annex III evidence in vendor RFPs. Ship the FRIA + DPIA + bias dashboard and you get on shortlist; don't and you don't.</p>
           <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
             <Link href="/audit-prep-bundle" style={{ display: "inline-block", padding: "14px 24px", background: GOLD, color: NAVY, borderRadius: 12, fontWeight: 900, textDecoration: "none", fontSize: 14 }}>£4,950 audit-prep →</Link>
-            <a href="mailto:nicholas@csoai.org?subject=EdTech%20gap%20analysis" style={{ display: "inline-block", padding: "14px 24px", background: "transparent", color: "white", border: "1px solid rgba(255,255,255,0.3)", borderRadius: 12, fontWeight: 900, textDecoration: "none", fontSize: 14 }}>Free triage →</a>
+            <a href="mailto:nicholas@meok.ai?subject=EdTech%20gap%20analysis" style={{ display: "inline-block", padding: "14px 24px", background: "transparent", color: "white", border: "1px solid rgba(255,255,255,0.3)", borderRadius: 12, fontWeight: 900, textDecoration: "none", fontSize: 14 }}>Free triage →</a>
           </div>
         </div>
 

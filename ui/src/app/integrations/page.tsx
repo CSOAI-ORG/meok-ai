@@ -287,7 +287,7 @@ export default function IntegrationsPage() {
             Need a host that's not listed?
           </h3>
           <p style={{ color: "rgba(255,255,255,0.6)", marginBottom: 20, fontSize: 14 }}>
-            Email <a href="mailto:nicholas@csoai.org?subject=MCP%20integration%20request" style={{ color: GOLD }}>nicholas@csoai.org</a> with the host name and we'll add a config example here within 48h.
+            Email <a href="mailto:nicholas@meok.ai?subject=MCP%20integration%20request" style={{ color: GOLD }}>nicholas@meok.ai</a> with the host name and we'll add a config example here within 48h.
           </p>
           <Link href="/docs" style={{ display: "inline-block", padding: "12px 22px", background: GOLD, color: NAVY, borderRadius: 10, fontWeight: 900, textDecoration: "none", fontSize: 14 }}>
             See full /docs →

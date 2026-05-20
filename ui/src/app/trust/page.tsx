@@ -62,7 +62,7 @@ const SUB_PROCESSORS = [
   { name: "Stripe Inc.", purpose: "Payment processing", region: "EU + US", website: "https://stripe.com/legal/dpa" },
   { name: "Anthropic PBC", purpose: "LLM inference (when configured)", region: "US (zero data retention on API)", website: "https://www.anthropic.com/legal/privacy" },
   { name: "Cloudflare Inc.", purpose: "DNS + DDoS protection (Cloudflare-fronted MCPs only)", region: "Global", website: "https://www.cloudflare.com/cloudflare-customer-dpa/" },
-  { name: "Namecheap PrivateEmail", purpose: "Business email (nicholas@csoai.org)", region: "EU + US", website: "https://www.namecheap.com/legal/general/privacy-policy/" },
+  { name: "Namecheap PrivateEmail", purpose: "Business email (nicholas@meok.ai)", region: "EU + US", website: "https://www.namecheap.com/legal/general/privacy-policy/" },
   { name: "GitHub Inc. (Microsoft)", purpose: "Source code hosting + CI", region: "Global", website: "https://docs.github.com/en/site-policy/privacy-policies/github-data-protection-agreement" },
   { name: "PyPI (Python Software Foundation)", purpose: "Package distribution (234 MCPs)", region: "Global", website: "https://www.python.org/privacy/" },
 ];
@@ -199,7 +199,7 @@ export default function TrustPage() {
           <p style={{ color: "rgba(255,255,255,0.7)", marginBottom: 16, fontSize: 14, lineHeight: 1.6 }}>
             Found a vulnerability or compliance concern? Email{" "}
             <a href="mailto:security@csoai.org" style={{ color: GOLD, textDecoration: "underline" }}>security@csoai.org</a>{" "}
-            (mirrors to nicholas@csoai.org). 24-hour acknowledgement, 72-hour triage. We do not run a paid
+            (mirrors to nicholas@meok.ai). 24-hour acknowledgement, 72-hour triage. We do not run a paid
             bug bounty yet but credit researchers in the next monthly trust update.
           </p>
         </div>

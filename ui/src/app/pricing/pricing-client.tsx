@@ -412,6 +412,19 @@ export default function PricingClient() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(pricingJsonLd) }}
       />
 
+      {/* ── Compliance-traffic safety banner ────────────────────────────────
+          This /pricing page sells the MEOK companion product (Sovereign / BYOK
+          / Family). Compliance buyers (EU AI Act, DORA, NIS2, CSRD, GDPR) want
+          a different ladder — they are routed to councilof.ai via this banner
+          so they don't bounce thinking we are a chatbot. Added 17 May 2026. */}
+      <div className="bg-[#1a1a2e] text-white px-4 py-3 text-center text-sm">
+        <strong>Looking for AI compliance pricing?</strong>{" "}
+        <span className="text-white/70">EU AI Act · DORA · NIS2 · CSRD · GDPR · ISO 42001 · NIST AI RMF.</span>{" "}
+        <a href="https://councilof.ai#offers" className="text-[#c9a84c] font-bold underline underline-offset-2">
+          See compliance ladder on councilof.ai →
+        </a>
+      </div>
+
       {/* ── Hero ──────────────────────────────────────────────────────────── */}
       <section className="meok-grid-bg relative pt-28 pb-20 px-6 text-center overflow-hidden">
         <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
@@ -585,7 +598,7 @@ export default function PricingClient() {
               </ul>
               <a href="https://buy.stripe.com/4gM9AV80kaEG0ZT42k8k837" className="block text-center py-3 rounded-xl border-2 border-[#c9a84c] text-[#c9a84c] font-black text-sm hover:bg-[#c9a84c] hover:text-[#1a1a2e] transition">Subscribe Monthly →</a>
               <a href="https://buy.stripe.com/9B6fZj0xS002eQJ8iA8k83j" className="block text-center mt-2 text-xs text-white/70 font-bold hover:text-white">or pay annual £14,990 (save £2,998) →</a>
-              <a href="mailto:nicholas@csoai.org?subject=MEOK%20Enterprise%20PO%2Finvoice" className="block text-center mt-1 text-[11px] text-white/40 hover:text-white/60">Need PO / invoice? Email us →</a>
+              <a href="mailto:nicholas@meok.ai?subject=MEOK%20Enterprise%20PO%2Finvoice" className="block text-center mt-1 text-[11px] text-white/40 hover:text-white/60">Need PO / invoice? Email us →</a>
             </div>
           </div>
 

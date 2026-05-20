@@ -15,7 +15,7 @@ const BG = "#f5f0e8";
 const FAQ = [
   { q: "How does the partner program work?", a: "You embed the MEOK scorecard on your firm's site as an iframe (1 line of HTML). Visitors run the scorecard, see your branding, get a signed attestation. If they upgrade to a paid MEOK product (Pro / Audit-Prep / Consulting), you earn 30% recurring revenue share for life of the customer." },
   { q: "What does the embed look like?", a: "An iframe pointed at meok.ai/scorecard/embed?utm_source={your-firm-id}. The scorecard renders inside your page, scrollable, mobile-responsive. No external dependencies. Scorecard runs send results to MEOK + Buttondown subscriber list, attribution tagged to your firm." },
-  { q: "What about white-label / co-branded?", a: "Available for partners doing 5+ scorecard embeds/month or pre-signed €25K/yr partnership. We spin up {your-firm}.meok.ai/scorecard with your logo + colors. Email nicholas@csoai.org for the deal sheet." },
+  { q: "What about white-label / co-branded?", a: "Available for partners doing 5+ scorecard embeds/month or pre-signed €25K/yr partnership. We spin up {your-firm}.meok.ai/scorecard with your logo + colors. Email nicholas@meok.ai for the deal sheet." },
   { q: "Who's the ideal partner?", a: "Boutique GRC consultancies (5-50 staff), AI lawyers / law firms with EU practice, Notified Bodies for AI conformity assessment, MSPs serving regulated SMEs, AI ethics consultancies. Anyone who has an audience asking 'are we EU AI Act ready?'" },
   { q: "How is revenue tracked?", a: "Stripe partner-tracking via UTM source on every paid checkout. Monthly statement of referred customers + recurring revenue. Paid out monthly via wire / Stripe Connect." },
 ];
@@ -81,7 +81,7 @@ export default function PartnersPage() {
         <div style={{ background: NAVY, color: "white", padding: 32, borderRadius: 16, marginTop: 32 }}>
           <h3 style={{ fontSize: "1.4rem", fontWeight: 900, marginBottom: 8 }}>Apply for a partner ID (5-min email)</h3>
           <p style={{ color: "rgba(255,255,255,0.6)", marginBottom: 20, maxWidth: 640 }}>Tell us your firm name, sectors served, and rough audience size. We&apos;ll issue a partner ID + Stripe Connect onboarding within 24h.</p>
-          <a href="mailto:nicholas@csoai.org?subject=MEOK%20partner%20ID%20application&body=Firm%20name%3A%0ASectors%20served%3A%0AAudience%20size%3A%0AWebsite%20URL%3A%0ASample%20client%20type%3A%0A" style={{ display: "inline-block", padding: "14px 24px", background: GOLD, color: NAVY, borderRadius: 12, fontWeight: 900, textDecoration: "none", fontSize: 14 }}>Apply for partner ID →</a>
+          <a href="mailto:nicholas@meok.ai?subject=MEOK%20partner%20ID%20application&body=Firm%20name%3A%0ASectors%20served%3A%0AAudience%20size%3A%0AWebsite%20URL%3A%0ASample%20client%20type%3A%0A" style={{ display: "inline-block", padding: "14px 24px", background: GOLD, color: NAVY, borderRadius: 12, fontWeight: 900, textDecoration: "none", fontSize: 14 }}>Apply for partner ID →</a>
         </div>
 
         <p style={{ marginTop: 40, color: `${NAVY}66`, fontSize: 12, textAlign: "center", lineHeight: 1.6 }}>

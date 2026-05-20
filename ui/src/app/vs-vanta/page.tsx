@@ -155,7 +155,7 @@ export default function VsVantaPage() {
             Free 30-min triage call: bring your Vanta dashboard, we map gaps to EU AI Act + DORA + NIS2 + CRA. You leave with an action list and a 14-day quote if you want one.
           </p>
           <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
-            <a href="mailto:nicholas@csoai.org?subject=Vanta%20gap%20analysis%20call" style={{ display: "inline-block", padding: "14px 24px", background: GOLD, color: NAVY, borderRadius: 12, fontWeight: 900, textDecoration: "none", fontSize: 14 }}>Book gap-analysis (free) →</a>
+            <a href="mailto:nicholas@meok.ai?subject=Vanta%20gap%20analysis%20call" style={{ display: "inline-block", padding: "14px 24px", background: GOLD, color: NAVY, borderRadius: 12, fontWeight: 900, textDecoration: "none", fontSize: 14 }}>Book gap-analysis (free) →</a>
             <Link href="/audit-prep-bundle" style={{ display: "inline-block", padding: "14px 24px", background: "transparent", color: "white", border: "1px solid rgba(255,255,255,0.3)", borderRadius: 12, fontWeight: 900, textDecoration: "none", fontSize: 14 }}>£4,950 audit-prep bundle →</Link>
           </div>
         </div>

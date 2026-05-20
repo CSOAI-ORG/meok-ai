@@ -261,7 +261,7 @@ export default function TransparencyPage() {
             Free 30-min triage call: bring the RFP, we map every transparency clause to a MEOK cert + public verify URL. No pitch deck.
           </p>
           <div style={{ display: "flex", gap: 12, flexWrap: "wrap", justifyContent: "center" }}>
-            <a href="mailto:nicholas@csoai.org?subject=Transparency%20RFP%20triage" style={{ display: "inline-block", padding: "14px 24px", background: GOLD, color: NAVY, borderRadius: 12, fontWeight: 900, textDecoration: "none", fontSize: 14 }}>
+            <a href="mailto:nicholas@meok.ai?subject=Transparency%20RFP%20triage" style={{ display: "inline-block", padding: "14px 24px", background: GOLD, color: NAVY, borderRadius: 12, fontWeight: 900, textDecoration: "none", fontSize: 14 }}>
               Book RFP triage (free) →
             </a>
             <Link href="/audit-prep-bundle" style={{ display: "inline-block", padding: "14px 24px", background: "transparent", color: "white", border: "1px solid rgba(255,255,255,0.3)", borderRadius: 12, fontWeight: 900, textDecoration: "none", fontSize: 14 }}>
