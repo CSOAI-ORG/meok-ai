@@ -16,7 +16,7 @@ const GOLD = "#c9a84c";
 const BG = "#f5f0e8";
 
 export const metadata: Metadata = {
-  title: `${MCPS.length}+ MEOK compliance MCPs in the Anthropic Registry`,
+  title: `${MCPS.length}+ MEOK compliance MCPs in the Anthropic Registry (now with BFT Council + Token Budget + Stripe ACP + ISO 42005)`,
   description: `${MCPS.length} MIT-licensed compliance MCP servers from MEOK AI Labs — EU AI Act, DORA, NIS2, CRA, A2A patterns, and more — all live in the official Anthropic Registry. Install via uvx or pip.`,
   alternates: { canonical: "https://meok.ai/anthropic-registry" },
   openGraph: {

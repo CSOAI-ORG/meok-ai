@@ -11,10 +11,13 @@ export type RegistryMCP = {
 };
 
 export const MCPS: RegistryMCP[] = [
-  // ── Governance (10) ────────────────────────────────────────────
+  // ── Governance (11) ────────────────────────────────────────────
   { slug: "eu-ai-act-compliance-mcp", version: "1.5.1", category: "governance",
     title: "EU AI Act Compliance",
     description: "410 articles from EUR-Lex via FTS5 search, Annex III high-risk classifier, Article 50 transparency, Article 73 incident reporting, 42-point audit, penalty calculator." },
+  { slug: "iso-42005-impact-mcp", version: "1.0.0", category: "governance",
+    title: "ISO/IEC 42005:2025 AI Impact Assessment",
+    description: "First international standard for AI impact assessment (May 2025). 6 lifecycle phases × 7 impact categories. Cross-walks to EU AI Act Articles + ISO 42001 clauses. Companion to ISO 42001 AIMS." },
   { slug: "dora-compliance-mcp", version: "1.2.9", category: "governance",
     title: "DORA Compliance",
     description: "EU Digital Operational Resilience Act 5-pillar audit, Article 28 Register of Information, TLPT readiness, incident classification." },
@@ -43,7 +46,16 @@ export const MCPS: RegistryMCP[] = [
     title: "UK AI Bill Compliance",
     description: "UK AI White Paper 5 principles, AI (Regulation) Bill audit, Algorithmic Transparency Recording Standard, ICO/FCA/MHRA/CMA/Ofcom/HSE guidance." },
 
-  // ── A2A patterns (12) ──────────────────────────────────────────
+  // ── A2A patterns (15) ──────────────────────────────────────────
+  { slug: "bft-progress-council-mcp", version: "1.0.0", category: "a2a",
+    title: "BFT Progress Council (NEW)",
+    description: "5-voter Byzantine Fault Tolerant council halts agentic loops when 3-of-5 voters agree no real progress is happening. Detects: repetition · identical errors · goal drift · rapid-fire spinning · no artefact growth. The anti-loop guardrail every agent fleet needs. Saves £1-£3 per agent run on free tier; £100-£1,000/mo on Substrate." },
+  { slug: "agent-token-budget-mcp", version: "1.0.0", category: "a2a",
+    title: "Agent Token Budget (NEW)",
+    description: "Hard per-session spend cap with signed budget-exhausted attestations. 13 pre-loaded model rates. Twin of BFT Progress Council — spend axis vs stall axis. Pays for itself first time it halts an over-spending agent." },
+  { slug: "agent-commerce-protocol-mcp", version: "1.0.0", category: "a2a",
+    title: "Agent Commerce Protocol (Stripe ACP) (NEW)",
+    description: "Bridges Stripe ACP + Google AP2 + Coinbase x402 — the only MCP that covers all 3 live agent-payment protocols. PSD2 + MiCA + 6AMLD + FinCEN BSA overlays. Explicitly addresses the IBM ACP / Stripe ACP name collision." },
   { slug: "agent-prompt-injection-firewall-mcp", version: "1.0.4", category: "a2a",
     title: "Prompt Injection Firewall",
     description: "The WAF for AI agents — scans prompts, RAG docs, tool args, A2A payloads for OWASP LLM01 prompt injection BEFORE they reach a downstream agent." },
@@ -80,6 +92,11 @@ export const MCPS: RegistryMCP[] = [
   { slug: "agent-orchestrator-mcp", version: "1.0.3", category: "a2a",
     title: "Agent Orchestrator",
     description: "Workflow orchestration over A2A — sequence, branch, retry across heterogeneous agents." },
+
+  // ── Platform (geospatial — new public MCP) ─────────────────────
+  { slug: "gods-eye-geospatial-mcp", version: "1.0.0", category: "platform",
+    title: "Gods Eye Geospatial",
+    description: "Civilian open-source geospatial awareness — wraps ESA Copernicus Sentinel-1/2/3/5p + OpenStreetMap + Overture Maps + Ordnance Survey UK + INSPIRE EU + DEFRA behind one MCP. Care Membrane ethics gate refuses high-risk targeting/surveillance queries." },
 
   // ── Cybersecurity (1, more coming) ─────────────────────────────
   { slug: "sbom-cyclonedx-mcp", version: "1.0.2", category: "cybersec",
