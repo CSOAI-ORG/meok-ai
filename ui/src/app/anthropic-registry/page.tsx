@@ -169,8 +169,14 @@ export default function AnthropicRegistryPage() {
           </p>
           <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
             <Link
-              href="/catalogue"
+              href="/a2a"
               style={{ padding: "12px 22px", background: GOLD, color: NAVY, textDecoration: "none", fontWeight: 800, borderRadius: 12, fontSize: 14 }}
+            >
+              A2A Substrate £999/mo — 12 in one →
+            </Link>
+            <Link
+              href="/catalogue"
+              style={{ padding: "12px 22px", background: "transparent", color: "#fff", border: "1px solid rgba(255,255,255,0.25)", textDecoration: "none", fontWeight: 800, borderRadius: 12, fontSize: 14 }}
             >
               See full catalogue →
             </Link>
@@ -178,19 +184,33 @@ export default function AnthropicRegistryPage() {
               href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(shareUrl)}&via=meok_ai`}
               target="_blank"
               rel="noopener noreferrer"
-              style={{ padding: "12px 22px", background: "transparent", color: "#fff", border: "1px solid rgba(255,255,255,0.25)", textDecoration: "none", fontWeight: 800, borderRadius: 12, fontSize: 14 }}
+              style={{ padding: "12px 22px", background: "transparent", color: "rgba(255,255,255,0.7)", border: "1px solid rgba(255,255,255,0.15)", textDecoration: "none", fontWeight: 700, borderRadius: 12, fontSize: 14 }}
             >
               Share on Twitter →
             </a>
-            <a
-              href="https://github.com/CSOAI-ORG"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{ padding: "12px 22px", background: "transparent", color: "rgba(255,255,255,0.7)", border: "1px solid rgba(255,255,255,0.15)", textDecoration: "none", fontWeight: 700, borderRadius: 12, fontSize: 14 }}
-            >
-              github.com/CSOAI-ORG
-            </a>
           </div>
+        </div>
+
+        {/* A2A Substrate spotlight banner */}
+        <div style={{ padding: "1.4rem 1.6rem", marginBottom: 28, background: "linear-gradient(95deg, #1a1a2e 0%, #2a2a4e 100%)", color: "#fff", borderRadius: 14, border: `2px solid ${GOLD}`, display: "flex", gap: 16, alignItems: "center", flexWrap: "wrap", justifyContent: "space-between" }}>
+          <div style={{ flex: "1 1 320px" }}>
+            <div style={{ fontSize: 11, fontWeight: 800, color: GOLD, letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 4 }}>
+              New — A2A Substrate
+            </div>
+            <div style={{ fontSize: 16, fontWeight: 800, marginBottom: 4 }}>
+              The 12 A2A MCPs as one £999/mo signed pipeline
+            </div>
+            <div style={{ fontSize: 12, color: "rgba(255,255,255,0.7)", lineHeight: 1.5 }}>
+              Identity → policy → firewall → rate-limit → handoff → audit → governance.
+              100K calls/mo · unified api.meok.ai endpoint · or pay £0.0002 per call.
+            </div>
+          </div>
+          <Link
+            href="/a2a"
+            style={{ padding: "10px 18px", background: GOLD, color: NAVY, textDecoration: "none", fontWeight: 800, borderRadius: 10, fontSize: 13, whiteSpace: "nowrap" }}
+          >
+            See the Substrate →
+          </Link>
         </div>
 
         {/* Trust band */}
@@ -246,7 +266,7 @@ export default function AnthropicRegistryPage() {
           </h2>
           <p style={{ color: "rgba(255,255,255,0.7)", marginBottom: 20, maxWidth: 560, margin: "0 auto 20px", fontSize: 14, lineHeight: 1.55 }}>
             Self-host MIT for free. £29/mo Starter adds HMAC-signed attestations.
-            £79/mo Pro adds 24h SLA. £1,499/mo Enterprise adds SLA + multi-BU
+            £149/mo Pro adds 24h SLA. £999/mo Defence adds SLA + multi-BU
             separation + reseller white-label.
           </p>
           <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
