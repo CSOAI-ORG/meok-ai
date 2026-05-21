@@ -95,39 +95,87 @@ const TIMELINE = [
 const personJsonLd = {
   "@context": "https://schema.org",
   "@type": "Person",
+  "@id": "https://meok.ai/about#nicholas",
   name: "Nicholas Templeman",
-  jobTitle: "Founder & CEO",
+  givenName: "Nicholas",
+  familyName: "Templeman",
+  jobTitle: "Founder & sole engineer",
   worksFor: {
     "@type": "Organization",
-    name: "MEOK AI LABS",
+    "@id": "https://meok.ai/#org",
+    name: "MEOK AI Labs",
+    legalName: "CSOAI LTD",
     url: "https://meok.ai",
-    foundingDate: "2026",
-    foundingLocation: "United Kingdom",
+    foundingDate: "2026-02-26",
+    foundingLocation: { "@type": "Place", address: { "@type": "PostalAddress", addressRegion: "Lincolnshire", addressCountry: "GB" } },
+    identifier: "UK Companies House 16939677",
     description:
-      "MEOK AI LABS builds sovereign AI companions governed by the Maternal Covenant — a machine-enforced ethical framework ensuring care, privacy, and data sovereignty.",
+      "MEOK AI Labs publishes 47 MIT-licensed AI compliance MCPs in the official Anthropic MCP Registry, bridges 8 agent-interop protocols (MCP, A2A, IBM ACP, Stripe ACP, AP2, x402, OASF, ANP), and ships an HMAC-signed audit chain verifiable at verify.meok.ai. Trading name of CSOAI LTD (UK Companies House 16939677).",
   },
   nationality: "British",
   url: "https://meok.ai/about",
+  email: "nicholas@meok.ai",
+  image: "https://meok.ai/brand/csoai-robot.png",
+  address: { "@type": "PostalAddress", addressRegion: "Lincolnshire", addressCountry: "GB" },
   description:
-    "Nicholas Templeman built MEOK AI from a caravan on his farm in the UK. He launched Easter Sunday 2026 — 40 days after beginning the build.",
+    "Nicholas Templeman is the solo founder + sole engineer of MEOK AI Labs (CSOAI LTD · UK Companies House 16939677). Solo built from Lincolnshire, UK. 47 MIT-licensed compliance MCPs in the Anthropic Registry, 247 PyPI packages, 294 npm packages, 91 commits on the COBOL Bridge repo (sole contributor). Operates Templeman Opticians (Rayleigh, Essex) as the family eyecare business.",
+  sameAs: [
+    "https://github.com/CSOAI-ORG",
+    "https://pypi.org/user/MEOK_AI_Labs/",
+    "https://www.npmjs.com/~meok-ai",
+    "https://registry.modelcontextprotocol.io",
+    "https://find-and-update.company-information.service.gov.uk/company/16939677",
+    "https://twitter.com/meok_ai",
+    "https://meok.ai",
+    "https://councilof.ai",
+    "https://csoai.org",
+    "https://cobolbridge.ai",
+    "https://templeman-opticians.com"
+  ],
+  knowsAbout: [
+    "EU AI Act", "DORA", "NIS2", "Cyber Resilience Act", "GDPR",
+    "ISO/IEC 42001", "ISO/IEC 42005", "NIST AI RMF", "NIST AI 100-2 E2025",
+    "MITRE ATT&CK", "MITRE ATLAS", "OWASP LLM Top 10",
+    "Model Context Protocol", "Agent-to-Agent protocol", "Stripe ACP", "AP2", "x402", "OASF",
+    "Byzantine Fault Tolerant council", "Mixture of Experts compliance",
+    "COBOL modernization", "FPT COBOL-Coder-14B",
+    "HMAC-signed attestations", "ML-DSA-65 post-quantum signatures"
+  ]
 };
 
 const orgJsonLd = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  name: "MEOK AI LABS",
+  "@id": "https://meok.ai/#org",
+  name: "MEOK AI Labs",
+  legalName: "CSOAI LTD",
+  alternateName: ["MEOK", "Council of AI", "CSOAI"],
   url: "https://meok.ai",
-  logo: "https://meok.ai/logo.png",
-  foundingDate: "2026",
-  founder: { "@type": "Person", name: "Nicholas Templeman" },
+  logo: "https://meok.ai/brand/csoai-robot.png",
+  foundingDate: "2026-02-26",
+  identifier: "UK Companies House 16939677",
+  founder: { "@id": "https://meok.ai/about#nicholas" },
   description:
-    "MEOK AI LABS is a UK-registered company building the world's first sovereign AI OS — an AI companion that remembers you, protects your data, and cares constitutionally.",
-  address: { "@type": "PostalAddress", addressCountry: "GB" },
+    "MEOK AI Labs is a UK-registered company (CSOAI LTD, Companies House 16939677) publishing 47 MIT-licensed compliance MCPs to the official Anthropic MCP Registry. Bridges 8 live agent-interop protocols (MCP, A2A, IBM ACP, Stripe ACP, AP2, x402, OASF, ANP) and 30+ regulatory frameworks. Linux-Foundation-governed A2A spine, HMAC-signed evidence chain at verify.meok.ai.",
+  address: { "@type": "PostalAddress", addressRegion: "Lincolnshire", addressCountry: "GB" },
   contactPoint: [
-    { "@type": "ContactPoint", email: "press@meok.ai", contactType: "press" },
-    { "@type": "ContactPoint", email: "hello@meok.ai", contactType: "customer service" },
+    { "@type": "ContactPoint", email: "nicholas@meok.ai", contactType: "founder + press + customer service" },
   ],
-  sameAs: ["https://github.com/meok-ai/meok-ai"],
+  sameAs: [
+    "https://github.com/CSOAI-ORG",
+    "https://pypi.org/user/MEOK_AI_Labs/",
+    "https://www.npmjs.com/~meok-ai",
+    "https://registry.modelcontextprotocol.io",
+    "https://find-and-update.company-information.service.gov.uk/company/16939677",
+    "https://twitter.com/meok_ai",
+    "https://councilof.ai",
+    "https://csoai.org",
+    "https://cobolbridge.ai"
+  ],
+  subOrganization: [
+    { "@type": "Organization", name: "Council of AI", url: "https://councilof.ai" },
+    { "@type": "Organization", name: "CobolBridge", url: "https://cobolbridge.ai" }
+  ]
 };
 
 const faqJsonLd = {
