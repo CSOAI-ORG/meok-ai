@@ -2,6 +2,7 @@
 
 import { useState, useMemo } from "react";
 import Link from "next/link";
+import EmailCapture from "@/components/email-capture";
 
 const NAVY = "#1a1a2e";
 const GOLD = "#c9a84c";
@@ -298,6 +299,17 @@ export default function FineCalculatorClient() {
               £4,950 audit-prep bundle →
             </Link>
           </div>
+        </div>
+
+        {/* Email capture — newsletter signup */}
+        <div style={{ marginTop: 24 }}>
+          <EmailCapture
+            interest="eu-ai-act-fine-calc"
+            headline="Get the monthly EU AI compliance brief"
+            subheadline="One email a month. Article amendments, enforcement updates, one new MEOK MCP per issue. Free. Unsubscribe anytime."
+            cta="Subscribe"
+            theme="light"
+          />
         </div>
 
         <p style={{ marginTop: 32, color: `${NAVY}66`, fontSize: 12, textAlign: "center", lineHeight: 1.6 }}>

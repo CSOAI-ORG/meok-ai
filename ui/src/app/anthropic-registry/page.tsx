@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import EmailCapture from "@/components/email-capture";
 import { MCPS, CATEGORIES, type RegistryMCP } from "./data";
 
 // ---------------------------------------------------------------------------
@@ -193,7 +194,7 @@ export default function AnthropicRegistryPage() {
         </div>
 
         {/* Trust band */}
-        <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginBottom: 28, padding: "1rem 1.2rem", background: "#fff", borderRadius: 12, fontSize: 13, color: `${NAVY}99` }}>
+        <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginBottom: 20, padding: "1rem 1.2rem", background: "#fff", borderRadius: 12, fontSize: 13, color: `${NAVY}99` }}>
           <div><strong style={{ color: NAVY }}>{MCPS.length}</strong> MCPs in Anthropic Registry</div>
           <div>·</div>
           <div><strong style={{ color: NAVY }}>247</strong> packages on PyPI</div>
@@ -203,6 +204,17 @@ export default function AnthropicRegistryPage() {
           <div><strong style={{ color: NAVY }}>HMAC-signed</strong> attestations</div>
           <div>·</div>
           <div>CSOAI LTD · Companies House <strong style={{ color: NAVY }}>16939677</strong></div>
+        </div>
+
+        {/* Newsletter capture — early in the page so visitors who scroll the list see it */}
+        <div style={{ marginBottom: 28 }}>
+          <EmailCapture
+            interest="anthropic-registry-launch"
+            headline="Notify me when MEOK ships a new compliance MCP"
+            subheadline="One email when a new MCP lands in the Registry, plus a monthly EU AI Act / DORA / NIS2 enforcement digest. Unsubscribe anytime."
+            cta="Notify me"
+            theme="light"
+          />
         </div>
 
         {/* By category */}
