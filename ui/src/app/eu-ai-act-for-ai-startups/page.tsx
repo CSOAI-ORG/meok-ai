@@ -4,7 +4,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "EU AI Act for AI Startups (2026): What's Binding, What's Delayed, What Costs Money",
   description:
-    "Pre-Series-C AI startup EU AI Act guide: SME penalty cap discount, Article 4 literacy, Article 50 watermarking, Annex III scoping. Pre-built signed evidence pack from £79/mo.",
+    "Pre-Series-C AI startup EU AI Act guide: SME penalty cap discount, Article 4 literacy, Article 50 watermarking, Annex III scoping. Pre-built signed evidence pack from £149/mo.",
   alternates: { canonical: "https://meok.ai/eu-ai-act-for-ai-startups" },
 };
 
@@ -17,7 +17,7 @@ const FAQ = [
   { q: "What's the cheapest viable compliance posture?", a: "Free path: 90-sec scorecard at /scorecard → identifies which articles bind you. Article 4 literacy programme — write a 2-page training memo, log staff completion, done. Article 5 prohibition self-check — confirm no manipulation/social-scoring/etc. If non-Annex-III + non-GPAI: that's most of your obligations met. Total time: 4 hours. Cost: £0." },
   { q: "When does paid compliance kit actually pay back?", a: "Three triggers: (1) you start landing EU enterprise deals (procurement RFPs ask for signed evidence) — buy the £4,950 audit-prep bundle once, reuse for every deal; (2) you ship generative AI outputs (need Article 50 watermarking by 2 Nov 2026) — £99 starter kit; (3) you fall in Annex III (HR tech, EdTech, fintech credit-scoring, etc.) — bias detection £299/mo + transparency logs £399/mo are operational requirements." },
   { q: "What about open-weight model providers?", a: "Recital 102 of the EU AI Act reduces obligations for providers of open-weight foundation models — you publish weights, you have lighter Article 53 disclosure burden. Downstream deployers pick up most obligations. Practical: ship a model card with training-data summary, copyright policy, ban-list (Art. 5 things you didn't filter) — and you're mostly done as the open-weight provider." },
-  { q: "What's the lowest-cost MEOK ladder?", a: "(1) FREE: scorecard + fine-calculator + UK-CSR check + 31+ MIT MCPs on PyPI; (2) £79/mo Pro: enhanced rate limits + signed remote attestations + private MCPs; (3) £99 ONE-TIME: Article 50 watermark starter kit; (4) £299/mo: bias detection (only if Annex III); (5) £4,950 ONE-TIME: 14-day audit-prep bundle (only when you start landing enterprise deals). Most pre-Series-C startups can run on FREE + £79/mo for first year." },
+  { q: "What's the lowest-cost MEOK ladder?", a: "(1) FREE: scorecard + fine-calculator + UK-CSR check + 31+ MIT MCPs on PyPI; (2) £149/mo Pro: enhanced rate limits + signed remote attestations + private MCPs; (3) £99 ONE-TIME: Article 50 watermark starter kit; (4) £299/mo: bias detection (only if Annex III); (5) £4,950 ONE-TIME: 14-day audit-prep bundle (only when you start landing enterprise deals). Most pre-Series-C startups can run on FREE + £149/mo for first year." },
 ];
 
 const FAQ_JSONLD = { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: FAQ.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })) };
@@ -29,7 +29,7 @@ export default function AIStartupPage() {
       <div style={{ maxWidth: 940, margin: "0 auto", padding: "5rem 1.5rem" }}>
         <div style={{ display: "inline-block", padding: "6px 12px", borderRadius: 999, background: "rgba(201,168,76,0.15)", border: `1px solid rgba(201,168,76,0.4)`, color: GOLD, fontSize: 12, fontWeight: 900, letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: 24 }}>AI Startup vertical · 28 April 2026</div>
         <h1 style={{ fontSize: "clamp(2.4rem, 5vw, 3.6rem)", fontWeight: 900, lineHeight: 1.05, letterSpacing: "-0.02em", marginBottom: 16 }}>EU AI Act for AI Startups</h1>
-        <p style={{ fontSize: "1.2rem", color: GOLD, fontWeight: 900, marginBottom: 8 }}>SME discount + lean compliance ladder. Free → £79/mo → £4,950.</p>
+        <p style={{ fontSize: "1.2rem", color: GOLD, fontWeight: 900, marginBottom: 8 }}>SME discount + lean compliance ladder. Free → £149/mo → £4,950.</p>
         <p style={{ fontSize: "1.05rem", color: `${NAVY}99`, maxWidth: 720, marginBottom: 40, lineHeight: 1.6 }}>
           Pre-Series-C AI startup, mostly bootstrapped, EU customers in pipeline. EU AI Act feels like an existential threat. It's not — Article 99(6) gives SMEs a fine cap discount + most of your obligations are 4 hours of writing. We built this stack because we're you.
         </p>
@@ -38,7 +38,7 @@ export default function AIStartupPage() {
           {[
             { title: "Free Readiness Scorecard", price: "£0", href: "/scorecard", desc: "90 sec, signed cert. Tells you which articles bind you. Most startups: 3-4 articles total." },
             { title: "Article 50 Watermark Kit", price: "£99 once", href: "/article-50-kit", desc: "If you ship generative outputs. C2PA manifest + watermark template + signed cert." },
-            { title: "Pro tier MCPs", price: "£79/mo", href: "/pricing", desc: "Enhanced limits + private MCPs + remote signed attestations. For founders shipping in agent stacks." },
+            { title: "Pro tier MCPs", price: "£149/mo", href: "/pricing", desc: "Enhanced limits + private MCPs + remote signed attestations. For founders shipping in agent stacks." },
             { title: "Audit-Prep (when EU deals land)", price: "£4,950 once", href: "/audit-prep-bundle", desc: "Buy when you have first €100K+ EU enterprise deal that wants signed evidence in RFP." },
           ].map((c) => (
             <Link key={c.href} href={c.href} style={{ background: "white", borderRadius: 14, padding: 20, border: `1px solid ${NAVY}1a`, textDecoration: "none", color: NAVY, display: "block" }}>

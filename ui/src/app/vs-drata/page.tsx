@@ -4,7 +4,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "MEOK vs Drata: EU AI Act, DORA, NIS2 & CRA Bolt-On (2026)",
   description:
-    "Drata is excellent for SOC 2 + ISO 27001 + HIPAA. It does NOT cover EU AI Act, DORA, NIS2, or EU CRA. MEOK is the EU-regulatory bolt-on at £79-£1,499/mo vs Drata's $7.5-50K/yr.",
+    "Drata is excellent for SOC 2 + ISO 27001 + HIPAA. It does NOT cover EU AI Act, DORA, NIS2, or EU CRA. MEOK is the EU-regulatory bolt-on at £149-£999/mo vs Drata's $7.5-50K/yr.",
   alternates: { canonical: "https://meok.ai/vs-drata" },
   openGraph: {
     title: "MEOK vs Drata — what Drata does NOT cover (EU AI Act, DORA, NIS2)",
@@ -43,7 +43,7 @@ const COMPARISON: { row: string; drata: string | boolean; meok: string | boolean
   { row: "NIST AI RMF", drata: false, meok: true },
   { row: "Open-source under MIT", drata: false, meok: true, note: "234 MCP packages on PyPI" },
   { row: "HMAC-signed evidence per control", drata: false, meok: true, note: "Auditor curl-verifiable" },
-  { row: "Pricing entry", drata: "$7,500-$50,000/yr", meok: "£0 free + £79/mo Pro" },
+  { row: "Pricing entry", drata: "$7,500-$50,000/yr", meok: "£0 free + £149/mo Pro" },
 ];
 
 const FAQ = [
@@ -57,7 +57,7 @@ const FAQ = [
   },
   {
     q: "Drata vs MEOK pricing — what's the real cost?",
-    a: "Drata starts around $7,500/yr at the entry tier and scales to $50,000+/yr for enterprise multi-framework. MEOK Pro is £79/mo (£790/yr annual) and Enterprise is £1,499/mo (£14,990/yr annual). Combined Drata entry + MEOK Pro is approximately £6,000-£8,000/yr for SOC 2 + ISO + EU AI Act + DORA + NIS2 + CRA — typically a quarter of running Drata + a separate EU compliance tool stack.",
+    a: "Drata starts around $7,500/yr at the entry tier and scales to $50,000+/yr for enterprise multi-framework. MEOK Pro is £149/mo (£1,490/yr annual) and Defence is £999/mo (£9,990/yr annual). Combined Drata entry + MEOK Pro is approximately £6,000-£8,000/yr for SOC 2 + ISO + EU AI Act + DORA + NIS2 + CRA — typically a quarter of running Drata + a separate EU compliance tool stack.",
   },
   {
     q: "Does Drata sign cryptographic attestations?",

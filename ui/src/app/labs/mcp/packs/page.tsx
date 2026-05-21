@@ -172,10 +172,10 @@ const PACKS = [
     orbVariant: "teal" as const,
   },
   {
-    id: "enterprise",
-    name: "Enterprise All-In",
+    id: "defence",
+    name: "Defence All-In",
     icon: Globe,
-    price: 499,
+    price: 999,
     servers: ["All 208 servers included"],
     features: [
       "Every MCP server we make — forever",
@@ -189,7 +189,7 @@ const PACKS = [
       "Multi-tenant isolation",
       "Priority support (4-hour response)",
     ],
-    highlight: "Credo AI costs £150K/yr. We cost £6K/yr.",
+    highlight: "Credo AI costs £150K/yr. We cost £12K/yr.",
     color: "white",
     orbVariant: "gold" as const,
   },

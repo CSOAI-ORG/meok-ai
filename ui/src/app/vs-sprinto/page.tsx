@@ -4,7 +4,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "MEOK vs Sprinto: EU AI Act, DORA, NIS2 & CRA Bolt-On (2026)",
   description:
-    "Sprinto is great for SOC 2 + ISO 27001 + HIPAA + GDPR continuous monitoring. It does NOT cover EU AI Act, DORA, NIS2, or EU CRA. MEOK is the EU regulatory bolt-on at £79-£1,499/mo.",
+    "Sprinto is great for SOC 2 + ISO 27001 + HIPAA + GDPR continuous monitoring. It does NOT cover EU AI Act, DORA, NIS2, or EU CRA. MEOK is the EU regulatory bolt-on at £149-£999/mo.",
   alternates: { canonical: "https://meok.ai/vs-sprinto" },
   openGraph: {
     title: "MEOK vs Sprinto — what Sprinto does NOT cover",
@@ -40,13 +40,13 @@ const COMPARISON: { row: string; sprinto: string | boolean; meok: string | boole
   { row: "ISO/IEC 42001 (AI mgmt)", sprinto: false, meok: true },
   { row: "HMAC-signed evidence per control", sprinto: false, meok: true, note: "Auditor curl-verifiable" },
   { row: "Open-source MCPs (MIT)", sprinto: false, meok: true, note: "8 packages on PyPI" },
-  { row: "Pricing entry", sprinto: "$2,500-$15,000+/yr", meok: "£0 free + £79/mo Pro" },
+  { row: "Pricing entry", sprinto: "$2,500-$15,000+/yr", meok: "£0 free + £149/mo Pro" },
 ];
 
 const FAQ = [
   { q: "Does Sprinto cover the EU AI Act?", a: "No. Sprinto's launched scope (continuous compliance for cloud + SaaS) covers SOC 2, ISO 27001, HIPAA, GDPR baseline, PCI DSS, and a handful of cloud-security frameworks. The EU AI Act, DORA, NIS2, and the EU CRA are not on Sprinto's roadmap as of 27 April 2026. For EU AI/cyber regulations you need a bolt-on like MEOK." },
   { q: "Can I run Sprinto and MEOK together?", a: "Yes — recommended. Sprinto handles your continuous-monitoring evidence platform for SOC 2 / ISO 27001 / HIPAA / GDPR baseline. MEOK handles the EU regulatory evidence layer for EU AI Act + DORA + NIS2 + CRA + ISO/IEC 42001. Different control families, different auditor audiences, no overlap." },
-  { q: "Sprinto vs MEOK pricing — what's the real cost?", a: "Sprinto pricing is opaque but indie reports suggest $2,500-$15,000+/yr depending on company size + framework count. MEOK Pro is £79/mo (£790/yr annual) and Enterprise is £1,499/mo (£14,990/yr annual). Combined Sprinto entry + MEOK Pro is approximately £3,000-£8,000/yr for SOC 2 + EU AI Act + DORA + NIS2 + CRA — typically half of running Sprinto + a separate EU compliance tool stack." },
+  { q: "Sprinto vs MEOK pricing — what's the real cost?", a: "Sprinto pricing is opaque but indie reports suggest $2,500-$15,000+/yr depending on company size + framework count. MEOK Pro is £149/mo (£1,490/yr annual) and Defence is £999/mo (£9,990/yr annual). Combined Sprinto entry + MEOK Pro is approximately £3,000-£8,000/yr for SOC 2 + EU AI Act + DORA + NIS2 + CRA — typically half of running Sprinto + a separate EU compliance tool stack." },
   { q: "Does Sprinto sign cryptographic attestations?", a: "No. Sprinto produces dashboards + continuous-monitoring evidence — auditors can read it via Sprinto's UI but the evidence isn't cryptographically signed for independent verification. MEOK signs every attestation with HMAC-SHA256 and exposes a public verify_url any auditor can curl from outside the platform." },
   { q: "How long to add MEOK on top of Sprinto?", a: "The free /scorecard takes 90 seconds. Bias Detection (Article 10) is a 7-day free trial then £299/mo. Audit-Prep Bundle is a 14-day engagement at £4,950. No data migration — MEOK is API + signed-evidence side, Sprinto is dashboard side; they don't share storage." },
 ];

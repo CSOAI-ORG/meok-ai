@@ -262,7 +262,7 @@ export default function AgisafePage() {
                 Most Popular
               </div>
               <h3 className="text-xl font-semibold text-white mb-2">Professional</h3>
-              <div className="text-4xl font-bold text-white mb-4">£499<span className="text-lg text-slate-400">/mo</span></div>
+              <div className="text-4xl font-bold text-white mb-4">£999<span className="text-lg text-slate-400">/mo</span></div>
               <p className="text-slate-400 mb-6">For organisations with serious AI deployments.</p>
               <ul className="space-y-3 text-slate-300 mb-8">
                 <li>✓ 100,000 AI interactions/month</li>

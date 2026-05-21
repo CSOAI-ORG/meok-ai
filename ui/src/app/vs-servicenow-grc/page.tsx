@@ -4,7 +4,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "MEOK vs ServiceNow GRC: Open-source EU AI Act Bolt-On (2026)",
   description:
-    "ServiceNow GRC is an enterprise risk + audit + policy + business continuity platform. It does NOT cover EU AI Act, DORA, NIS2, or EU CRA out of the box. MEOK is the open-source bolt-on at £79-£1,499/mo.",
+    "ServiceNow GRC is an enterprise risk + audit + policy + business continuity platform. It does NOT cover EU AI Act, DORA, NIS2, or EU CRA out of the box. MEOK is the open-source bolt-on at £149-£999/mo.",
   alternates: { canonical: "https://meok.ai/vs-servicenow-grc" },
 };
 
@@ -35,13 +35,13 @@ const COMPARISON: { row: string; sn: string | boolean; meok: string | boolean; n
   { row: "Pre-built EU regulatory crosswalks", sn: "Manual config", meok: "Out-of-box" },
   { row: "Open-source MIT MCPs", sn: false, meok: true },
   { row: "HMAC-signed cryptographic evidence", sn: false, meok: true },
-  { row: "Pricing entry", sn: "$70K-$500K+/yr enterprise", meok: "£0 free + £79/mo Pro" },
+  { row: "Pricing entry", sn: "$70K-$500K+/yr enterprise", meok: "£0 free + £149/mo Pro" },
 ];
 
 const FAQ = [
   { q: "Does ServiceNow GRC cover the EU AI Act?", a: "Out of the box, no. ServiceNow GRC is a configurable enterprise platform for ERM, audit management, policy management, business continuity, and vendor risk. Customers CAN configure EU AI Act controls in ServiceNow if they have months of consulting time + a 6-figure ServiceNow PS budget. MEOK ships pre-built EU AI Act + DORA + NIS2 + CRA controls out of the box, MIT-licensed, no configuration." },
   { q: "Can I run ServiceNow and MEOK together?", a: "Yes — common in large enterprises. ServiceNow handles ERM + ITSM + audit workflow + business continuity. MEOK provides the EU regulatory crosswalks + signed evidence + cryptographic verifier that flow INTO ServiceNow as evidence artefacts. Different layers; complementary." },
-  { q: "What's the price gap?", a: "ServiceNow GRC starts ~$70K/yr for the platform license + typically $50K-$200K of consulting for an EU AI Act configuration. MEOK Pro is £79/mo (£790/yr). Combined, ServiceNow + MEOK at Pro is roughly $80K/yr — saves $50K-$200K of EU-specific PS work because MEOK comes pre-built." },
+  { q: "What's the price gap?", a: "ServiceNow GRC starts ~$70K/yr for the platform license + typically $50K-$200K of consulting for an EU AI Act configuration. MEOK Pro is £149/mo (£1,490/yr). Combined, ServiceNow + MEOK at Pro is roughly $80K/yr — saves $50K-$200K of EU-specific PS work because MEOK comes pre-built." },
   { q: "Does ServiceNow sign cryptographic attestations?", a: "Not natively. ServiceNow GRC produces audit evidence but doesn't HMAC-sign it for independent auditor verification. MEOK signs every attestation with HMAC-SHA256 and exposes a public verify_url. The signed certs flow into ServiceNow as evidence + give external auditors a verification path that doesn't require ServiceNow access." },
   { q: "Why pick MEOK over ServiceNow GRC?", a: "Three reasons: (1) you need pre-built EU AI Act / DORA / NIS2 / CRA controls without months of ServiceNow PS configuration; (2) you need cryptographically signed evidence with external verifier; (3) you want open-source MIT-licensed tooling. For Fortune 500 ITSM-anchored companies running ServiceNow already, MEOK augments. For pre-Series-C AI companies, MEOK alone is sufficient." },
 ];

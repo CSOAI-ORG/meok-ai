@@ -57,7 +57,7 @@ const POLICIES: { product: string; price: string; window: string; terms: string 
   },
   {
     product: "Pro / Enterprise subscriptions",
-    price: "£79-£1,499/mo",
+    price: "£149-£2,499/mo",
     window: "30 days · annual: pro-rated",
     terms: "Cancel any time, no further charges. Within 30 days of first invoice: full refund. Annual plans: pro-rated refund of unused months on cancellation. Enterprise SLA breaches: service credits per contract terms.",
   },

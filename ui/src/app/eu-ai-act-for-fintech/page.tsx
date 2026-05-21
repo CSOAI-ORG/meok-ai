@@ -4,7 +4,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "EU AI Act for Fintech (2026): DORA + Article 10 Bias + Credit Scoring Compliance",
   description:
-    "Fintech AI compliance: EU AI Act Article 10 bias for credit scoring, DORA Reg 2022/2554 ICT risk, NIS2 if you process payments. Pre-built signed evidence pack from £79/mo.",
+    "Fintech AI compliance: EU AI Act Article 10 bias for credit scoring, DORA Reg 2022/2554 ICT risk, NIS2 if you process payments. Pre-built signed evidence pack from £149/mo.",
   alternates: { canonical: "https://meok.ai/eu-ai-act-for-fintech" },
 };
 

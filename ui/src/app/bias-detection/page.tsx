@@ -11,6 +11,14 @@ export const metadata: Metadata = {
     description: "£299/mo continuous bias monitoring with HMAC-signed compliance certificates.",
     type: "website",
     url: "https://meok.ai/bias-detection",
+    images: [{ url: "/api/og?title=AI+Bias+Detection&desc=EU+AI+Act+Article+10+Compliance", width: 1200, height: 630, alt: "AI Bias Detection" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "AI Bias Detection — EU AI Act Article 10",
+    description: "£299/mo continuous bias monitoring with HMAC-signed compliance certificates.",
+    site: "@meok_ai",
+    images: ["/api/og?title=AI+Bias+Detection&desc=EU+AI+Act+Article+10+Compliance"],
   },
 };
 

@@ -170,6 +170,47 @@ export default function ComplianceAuditClient() {
           </div>
         </div>
 
+        {/* Email Capture */}
+        <div className="bg-blue-50 rounded-2xl p-8 mb-16 text-center">
+          <h2 className="text-2xl font-bold mb-3">Stay Ahead of AI Regulation</h2>
+          <p className="text-gray-600 mb-6 max-w-lg mx-auto">
+            Weekly compliance updates, enforcement deadlines, and framework changes — delivered to your inbox.
+          </p>
+          <form
+            onSubmit={async (e) => {
+              e.preventDefault();
+              const form = e.target as HTMLFormElement;
+              const email = (form.elements.namedItem("email") as HTMLInputElement).value;
+              if (!email) return;
+              try {
+                await fetch("/api/subscribe", {
+                  method: "POST",
+                  headers: { "Content-Type": "application/json" },
+                  body: JSON.stringify({ email, source: "compliance.meok.ai" }),
+                });
+                form.innerHTML = '<div class="text-green-600 font-semibold text-lg">✓ You are subscribed.</div><p class="text-gray-500 text-sm mt-1">Compliance updates delivered weekly.</p>';
+              } catch {
+                form.innerHTML = '<div class="text-red-600 font-semibold">Something went wrong. Please try again.</div>';
+              }
+            }}
+            className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto"
+          >
+            <input
+              type="email"
+              name="email"
+              required
+              placeholder="your@email.com"
+              className="flex-1 px-5 py-3 rounded-xl border border-gray-300 focus:outline-none focus:border-blue-600 focus:ring-2 focus:ring-blue-100 transition-colors"
+            />
+            <button
+              type="submit"
+              className="px-6 py-3 rounded-xl bg-blue-600 text-white font-semibold hover:bg-blue-700 transition-colors"
+            >
+              Subscribe
+            </button>
+          </form>
+        </div>
+
         <div className="mb-16">
           <h2 className="text-2xl font-bold mb-6">Frequently Asked Questions</h2>
           <div className="space-y-4">

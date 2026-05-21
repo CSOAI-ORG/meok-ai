@@ -54,9 +54,9 @@ export default function PartnersPage() {
         <div style={{ display: "grid", gap: 12, marginBottom: 32 }}>
           {[
             { tier: "Free scorecard", you: "—", meok: "—", note: "Lead capture only" },
-            { tier: "Pro tier subscriber (£79/mo)", you: "£23.70/mo recurring", meok: "£55.30/mo", note: "30% lifetime" },
+            { tier: "Pro tier subscriber (£149/mo)", you: "£23.70/mo recurring", meok: "£55.30/mo", note: "30% lifetime" },
             { tier: "Audit-prep bundle (£4,950 once)", you: "£1,485 commission", meok: "£3,465", note: "30% one-time" },
-            { tier: "Enterprise (£1,499/mo)", you: "£449.70/mo recurring", meok: "£1,049.30/mo", note: "30% lifetime" },
+            { tier: "Defence (£999/mo)", you: "£449.70/mo recurring", meok: "£1,049.30/mo", note: "30% lifetime" },
             { tier: "Consulting block (£950/day)", you: "£285/day commission", meok: "£665/day", note: "30% per engagement" },
           ].map((row) => (
             <div key={row.tier} style={{ display: "grid", gridTemplateColumns: "2fr 1.2fr 1fr 1fr", fontSize: 13, alignItems: "center", padding: "10px 16px", background: "white", borderRadius: 10, border: `1px solid ${NAVY}1a` }}>

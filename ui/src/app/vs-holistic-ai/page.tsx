@@ -4,11 +4,11 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "MEOK vs Holistic AI: Open-source EU AI Act Bolt-On (2026)",
   description:
-    "Holistic AI is enterprise AI governance ($30K+/yr). MEOK is the open-source EU AI Act + DORA + NIS2 + CRA bolt-on at £79-£1,499/mo. 8 MIT-licensed MCPs + signed cryptographic attestations.",
+    "Holistic AI is enterprise AI governance ($30K+/yr). MEOK is the open-source EU AI Act + DORA + NIS2 + CRA bolt-on at £149-£999/mo. 8 MIT-licensed MCPs + signed cryptographic attestations.",
   alternates: { canonical: "https://meok.ai/vs-holistic-ai" },
   openGraph: {
     title: "MEOK vs Holistic AI — open-source bolt-on for EU compliance",
-    description: "Holistic AI = $30K+/yr enterprise. MEOK = £79/mo + open-source MCPs.",
+    description: "Holistic AI = $30K+/yr enterprise. MEOK = £149/mo + open-source MCPs.",
     type: "website",
     url: "https://meok.ai/vs-holistic-ai",
     images: [{ url: "/api/og?title=MEOK+vs+Holistic+AI&desc=Open-source+EU+AI+Act+bolt-on", width: 1200, height: 630, alt: "MEOK vs Holistic AI" }],
@@ -37,7 +37,7 @@ const COMPARISON: { row: string; holistic: string | boolean; meok: string | bool
   { row: "Self-host option", holistic: false, meok: true, note: "Run MEOK MCPs locally on your laptop" },
   { row: "Enterprise dashboards", holistic: true, meok: false, note: "Holistic AI's strength — keep using if you have it" },
   { row: "Pre-built model audits (commercial models)", holistic: true, meok: false, note: "Holistic AI runs on big-vendor models" },
-  { row: "Pricing entry", holistic: "$30,000+/yr enterprise", meok: "£0 free + £79/mo Pro", note: "MEOK 50x cheaper at entry" },
+  { row: "Pricing entry", holistic: "$30,000+/yr enterprise", meok: "£0 free + £149/mo Pro", note: "MEOK 50x cheaper at entry" },
 ];
 
 const FAQ = [
@@ -47,7 +47,7 @@ const FAQ = [
   },
   {
     q: "How does the pricing differ?",
-    a: "Holistic AI is enterprise-tier ($30,000+ annual contracts, mid-market starting around $50K). MEOK starts free (8 MIT-licensed MCPs on PyPI) and scales to £79/mo Pro / £1,499/mo Enterprise. For most pre-Series-B AI startups, Holistic AI prices them out — MEOK is the working alternative at that stage.",
+    a: "Holistic AI is enterprise-tier ($30,000+ annual contracts, mid-market starting around $50K). MEOK starts free (8 MIT-licensed MCPs on PyPI) and scales to £149/mo Pro / £999/mo Defence. For most pre-Series-B AI startups, Holistic AI prices them out — MEOK is the working alternative at that stage.",
   },
   {
     q: "Can I run them together?",

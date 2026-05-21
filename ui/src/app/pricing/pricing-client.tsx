@@ -315,28 +315,30 @@ const pricingJsonLd = {
           priceCurrency: "GBP",
           description: "Sovereign AI companion, free forever. No credit card.",
         },
-        {
-          "@type": "Offer",
-          name: "Sovereign",
-          price: "9",
-          priceCurrency: "GBP",
-          billingIncrement: "P1M",
-          description: "Unlimited messages, 3 companions, all features, Guardian 24/7.",
-        },
-        {
-          "@type": "Offer",
-          name: "Sovereign Pro",
-          price: "19",
-          priceCurrency: "GBP",
-          billingIncrement: "P1M",
-          description: "Everything in Sovereign plus 7 companions, Ralph Mode, Priority API, and Family Circle.",
-        },
-        {
-          "@type": "Offer",
-          name: "Enterprise",
-          priceCurrency: "GBP",
-          description: "Custom pricing. Contact us.",
-        },
+{
+           "@type": "Offer",
+           name: "Pro",
+           price: "149",
+           priceCurrency: "GBP",
+           billingIncrement: "P1M",
+           description: "Full compliance suite, 12 framework crosswalks, 2000 API calls/day, priority support.",
+         },
+         {
+           "@type": "Offer",
+           name: "Defence",
+           price: "999",
+           priceCurrency: "GBP",
+           billingIncrement: "P1M",
+           description: "All 208 servers, unlimited API calls, SSO, SLA, custom verify domain.",
+         },
+         {
+           "@type": "Offer",
+           name: "Enterprise",
+           price: "2499",
+           priceCurrency: "GBP",
+           billingIncrement: "P1M",
+           description: "Multi-BU audit-grade separation, white-label, dedicated CSM, air-gapped deployment.",
+         },
       ],
     },
   ],
@@ -547,7 +549,7 @@ export default function PricingClient() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 items-start">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-5 items-start">
             {/* Free */}
             <div className="rounded-2xl bg-white/5 border border-white/10 p-6 flex flex-col">
               <div className="text-xs font-black tracking-wider text-white/50 mb-2">FREE FOREVER</div>
@@ -567,8 +569,8 @@ export default function PricingClient() {
               <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-[#c9a84c] text-[#1a1a2e] text-xs font-black tracking-wider">MOST POPULAR</div>
               <div className="text-xs font-black tracking-wider text-[#c9a84c] mb-2">SCALE-UP / DEPT</div>
               <h3 className="text-2xl font-black text-white mb-1">Pro</h3>
-              <div className="text-3xl font-black text-white mb-1">£79<span className="text-base font-normal text-white/50">/mo</span></div>
-              <div className="text-xs text-white/50 mb-4">or £790/yr (save £158)</div>
+              <div className="text-3xl font-black text-white mb-1">£149<span className="text-base font-normal text-white/50">/mo</span></div>
+              <div className="text-xs text-white/50 mb-4">or £1,490/yr (save £298)</div>
               <ul className="text-sm text-white/70 space-y-2 mb-6 flex-1">
                 <li className="flex gap-2"><span className="text-[#c9a84c]">✓</span> Everything in Free</li>
                 <li className="flex gap-2"><span className="text-[#c9a84c]">✓</span> Your own HMAC signing key</li>
@@ -578,26 +580,45 @@ export default function PricingClient() {
                 <li className="flex gap-2"><span className="text-[#c9a84c]">✓</span> Unlimited attestations</li>
               </ul>
               <a href="https://buy.stripe.com/14A4gB3K4eUWgYR56o8k836" className="block text-center py-3 rounded-xl bg-[#c9a84c] text-[#1a1a2e] font-black text-sm hover:bg-[#d4b258] transition">Subscribe Monthly →</a>
-              <a href="https://buy.stripe.com/28E3cx2G07su9wpdCU8k83i" className="block text-center mt-2 text-xs text-white/70 font-bold hover:text-white">or pay annual £790 (save £158) →</a>
+              <a href="https://buy.stripe.com/28E3cx2G07su9wpdCU8k83i" className="block text-center mt-2 text-xs text-white/70 font-bold hover:text-white">or pay annual £1,490 (save £298) →</a>
               <p className="text-[11px] text-white/40 mt-2 text-center">Cancel anytime · 14-day refund</p>
+            </div>
+
+            {/* Defence */}
+            <div className="rounded-2xl bg-white/5 border border-white/10 p-6 flex flex-col">
+              <div className="text-xs font-black tracking-wider text-white/50 mb-2">REGULATED INDUSTRIES</div>
+              <h3 className="text-2xl font-black text-white mb-1">Defence</h3>
+              <div className="text-3xl font-black text-white mb-1">£999<span className="text-base font-normal text-white/50">/mo</span></div>
+              <div className="text-xs text-white/50 mb-4">or £9,990/yr (save £1,998) · SSO + SLA + custom verify domain</div>
+              <ul className="text-sm text-white/70 space-y-2 mb-6 flex-1">
+                <li className="flex gap-2"><span className="text-[#c9a84c]">✓</span> Everything in Pro</li>
+                <li className="flex gap-2"><span className="text-[#c9a84c]">✓</span> All 208 MCP servers</li>
+                <li className="flex gap-2"><span className="text-[#c9a84c]">✓</span> Unlimited API calls</li>
+                <li className="flex gap-2"><span className="text-[#c9a84c]">✓</span> SSO / SAML</li>
+                <li className="flex gap-2"><span className="text-[#c9a84c]">✓</span> On-premise option</li>
+                <li className="flex gap-2"><span className="text-[#c9a84c]">✓</span> 99.9% SLA</li>
+                <li className="flex gap-2"><span className="text-[#c9a84c]">✓</span> Custom verify domain</li>
+              </ul>
+              <a href="https://buy.stripe.com/cNk8wR3K4eUWgYR56o8k83h" className="block text-center py-3 rounded-xl border-2 border-white/20 text-white font-black text-sm hover:bg-white/10 transition">Subscribe Monthly →</a>
+              <a href="https://buy.stripe.com/9B6fZj0xS002eQJ8iA8k83j" className="block text-center mt-2 text-xs text-white/70 font-bold hover:text-white">or pay annual £9,990 (save £1,998) →</a>
+              <a href="mailto:nicholas@meok.ai?subject=MEOK%20Defence%20plan%20question" className="block text-center mt-1 text-[11px] text-white/40 hover:text-white/60">Questions? Email us →</a>
             </div>
 
             {/* Enterprise */}
             <div className="rounded-2xl bg-white/5 border border-white/10 p-6 flex flex-col">
-              <div className="text-xs font-black tracking-wider text-white/50 mb-2">MULTI-BU + AUDITS</div>
+              <div className="text-xs font-black tracking-wider text-white/50 mb-2">MULTI-BU + GLOBAL</div>
               <h3 className="text-2xl font-black text-white mb-1">Enterprise</h3>
-              <div className="text-3xl font-black text-white mb-1">£1,499<span className="text-base font-normal text-white/50">/mo</span></div>
-              <div className="text-xs text-white/50 mb-4">or £14,990/yr (save £2,998) · SLA + multi-BU separation</div>
+              <div className="text-3xl font-black text-white mb-1">£2,499<span className="text-base font-normal text-white/50">/mo</span></div>
+              <div className="text-xs text-white/50 mb-4">or £24,990/yr (save £4,998) · Dedicated CSM + white-label</div>
               <ul className="text-sm text-white/70 space-y-2 mb-6 flex-1">
-                <li className="flex gap-2"><span className="text-[#c9a84c]">✓</span> Everything in Pro</li>
-                <li className="flex gap-2"><span className="text-[#c9a84c]">✓</span> 99.9% SLA on attestation API</li>
+                <li className="flex gap-2"><span className="text-[#c9a84c]">✓</span> Everything in Defence</li>
                 <li className="flex gap-2"><span className="text-[#c9a84c]">✓</span> Multi-BU audit-grade separation</li>
                 <li className="flex gap-2"><span className="text-[#c9a84c]">✓</span> Reseller white-label option</li>
                 <li className="flex gap-2"><span className="text-[#c9a84c]">✓</span> Dedicated CSM</li>
                 <li className="flex gap-2"><span className="text-[#c9a84c]">✓</span> Pay by invoice / PO accepted</li>
+                <li className="flex gap-2"><span className="text-[#c9a84c]">✓</span> Air-gapped deployment option</li>
               </ul>
-              <a href="https://buy.stripe.com/4gM9AV80kaEG0ZT42k8k837" className="block text-center py-3 rounded-xl border-2 border-[#c9a84c] text-[#c9a84c] font-black text-sm hover:bg-[#c9a84c] hover:text-[#1a1a2e] transition">Subscribe Monthly →</a>
-              <a href="https://buy.stripe.com/9B6fZj0xS002eQJ8iA8k83j" className="block text-center mt-2 text-xs text-white/70 font-bold hover:text-white">or pay annual £14,990 (save £2,998) →</a>
+              <a href="mailto:nicholas@meok.ai?subject=MEOK%20Enterprise%20PO%2Finvoice" className="block text-center py-3 rounded-xl border-2 border-[#c9a84c] text-[#c9a84c] font-black text-sm hover:bg-[#c9a84c] hover:text-[#1a1a2e] transition">Contact Sales →</a>
               <a href="mailto:nicholas@meok.ai?subject=MEOK%20Enterprise%20PO%2Finvoice" className="block text-center mt-1 text-[11px] text-white/40 hover:text-white/60">Need PO / invoice? Email us →</a>
             </div>
           </div>

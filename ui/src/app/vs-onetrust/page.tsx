@@ -4,7 +4,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "MEOK vs OneTrust — Open-Source EU AI Act Bolt-On (2026)",
   description:
-    "OneTrust is enterprise privacy GRC ($50K-$300K+/yr). It does NOT cover EU AI Act, DORA, NIS2, or EU CRA out of the box. MEOK is the open-source EU regulatory bolt-on at £79-£1,499/mo.",
+    "OneTrust is enterprise privacy GRC ($50K-$300K+/yr). It does NOT cover EU AI Act, DORA, NIS2, or EU CRA out of the box. MEOK is the open-source EU regulatory bolt-on at £149-£999/mo.",
   alternates: { canonical: "https://meok.ai/vs-onetrust" },
 };
 
@@ -35,13 +35,13 @@ const COMPARISON: { row: string; ot: string | boolean; meok: string | boolean; n
   { row: "Pre-built EU regulatory crosswalks", ot: "Manual config", meok: "Out-of-box" },
   { row: "Open-source MIT MCPs", ot: false, meok: true, note: "31+ on PyPI" },
   { row: "HMAC-signed cryptographic evidence", ot: false, meok: true, note: "Auditor curl-verifiable" },
-  { row: "Pricing entry", ot: "$50K-$300K+/yr enterprise", meok: "£0 free + £79/mo Pro" },
+  { row: "Pricing entry", ot: "$50K-$300K+/yr enterprise", meok: "£0 free + £149/mo Pro" },
 ];
 
 const FAQ = [
   { q: "Does OneTrust cover the EU AI Act?", a: "OneTrust shipped a generic 'AI Governance' module in 2024 covering AI inventory + risk classification, but it does not ship pre-built EU AI Act Article-by-Article controls. To configure Articles 4/9/10/13/14/15/26/43/50/72 + DORA + NIS2 + CRA on OneTrust requires significant professional services time + 6-figure contract. MEOK ships those pre-built, MIT-licensed, no configuration." },
   { q: "Can I run OneTrust and MEOK together?", a: "Yes — recommended for enterprise. OneTrust handles privacy GRC + cookie consent + DSAR + vendor TPRM. MEOK provides the EU regulatory crosswalks + signed evidence + cryptographic verifier that flow into OneTrust as evidence artefacts. Different layers; complementary." },
-  { q: "What's the price gap?", a: "OneTrust enterprise starts ~$50K/yr (small team, 1-2 modules) and scales to $300K+/yr (multi-module + AI Governance + Privacy + ESG). MEOK Pro is £79/mo (£790/yr). For a typical mid-market company already paying for OneTrust, adding MEOK Pro is a rounding error that closes the EU regulatory gap." },
+  { q: "What's the price gap?", a: "OneTrust enterprise starts ~$50K/yr (small team, 1-2 modules) and scales to $300K+/yr (multi-module + AI Governance + Privacy + ESG). MEOK Pro is £149/mo (£1,490/yr). For a typical mid-market company already paying for OneTrust, adding MEOK Pro is a rounding error that closes the EU regulatory gap." },
   { q: "Does OneTrust sign cryptographic attestations?", a: "Not natively. OneTrust produces audit-ready dashboards + assessment reports but does not HMAC-sign evidence for independent auditor verification. MEOK signs every attestation with HMAC-SHA256 and exposes a public verify_url. The signed certs flow into OneTrust as evidence + give external auditors a verification path." },
   { q: "Why pick MEOK over OneTrust for AI compliance specifically?", a: "Three reasons: (1) you need pre-built EU AI Act / DORA / NIS2 / CRA controls without months of OneTrust professional services configuration; (2) you need cryptographically signed evidence with external verifier; (3) you want open-source MIT-licensed MCPs you can pull into your own agent stack. For Fortune 500 privacy GRC teams running OneTrust already, MEOK augments. For pre-Series-C AI companies, MEOK alone is sufficient." },
 ];

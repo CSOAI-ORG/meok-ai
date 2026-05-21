@@ -38,6 +38,7 @@ function CheckoutContent() {
       // Governance / Labs MCP tiers (monthly only)
       "governance-smb": { tier: "governance-smb", interval: "month" },
       "governance-professional": { tier: "governance-professional", interval: "month" },
+      "governance-defence": { tier: "governance-defence", interval: "month" },
       "governance-enterprise": { tier: "governance-enterprise", interval: "month" },
     };
 

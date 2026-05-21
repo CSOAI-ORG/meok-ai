@@ -37,7 +37,7 @@ const COMPARISON: { row: string; credo: string | boolean; meok: string | boolean
   { row: "Signed cryptographic attestations", credo: false, meok: true },
   { row: "Drop-in MCP for Claude/Cursor/Cline", credo: false, meok: true },
   { row: "Self-host option", credo: false, meok: true },
-  { row: "Pricing entry", credo: "$30K-$100K/yr enterprise", meok: "£0 free + £79/mo Pro" },
+  { row: "Pricing entry", credo: "$30K-$100K/yr enterprise", meok: "£0 free + £149/mo Pro" },
 ];
 
 const FAQ = [
@@ -51,7 +51,7 @@ const FAQ = [
   },
   {
     q: "What's the pricing gap?",
-    a: "Credo AI is enterprise-tier ($30K-$100K+ annual contracts). MEOK starts free (8 MIT MCPs on PyPI) and scales to £79/mo Pro / £1,499/mo Enterprise. MEOK is appropriate for pre-Series-C AI startups and mid-market companies; Credo is appropriate for Fortune 500 AI governance committees.",
+    a: "Credo AI is enterprise-tier ($30K-$100K+ annual contracts). MEOK starts free (8 MIT MCPs on PyPI) and scales to £149/mo Pro / £999/mo Defence. MEOK is appropriate for pre-Series-C AI startups and mid-market companies; Credo is appropriate for Fortune 500 AI governance committees.",
   },
   {
     q: "Does Credo cover Article 50 watermarking, DORA, NIS2, or CRA?",

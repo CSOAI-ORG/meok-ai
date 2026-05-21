@@ -4,7 +4,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "MEOK vs Vanta: EU AI Act, DORA, NIS2 & CRA Bolt-On (2026)",
   description:
-    "Vanta is excellent for SOC 2 + ISO 27001 + GDPR. It does NOT cover EU AI Act, DORA, NIS2, or EU CRA. MEOK is the EU-regulatory bolt-on you stack on top — £79-£1,499/mo vs $7.5-25K/yr.",
+    "Vanta is excellent for SOC 2 + ISO 27001 + GDPR. It does NOT cover EU AI Act, DORA, NIS2, or EU CRA. MEOK is the EU-regulatory bolt-on you stack on top — £149-£999/mo vs $7.5-25K/yr.",
   alternates: { canonical: "https://meok.ai/vs-vanta" },
   openGraph: {
     title: "MEOK vs Vanta — what Vanta does NOT cover (EU AI Act, DORA, NIS2)",
@@ -41,7 +41,7 @@ const COMPARISON: { row: string; vanta: string | boolean; meok: string | boolean
   { row: "NIST AI RMF", vanta: false, meok: true },
   { row: "HMAC-signed evidence per control", vanta: false, meok: true, note: "Auditor curl-verifiable, not dashboard trust" },
   { row: "Open-source MCP packages", vanta: false, meok: true, note: "234 packages, MIT licensed" },
-  { row: "Pricing entry point", vanta: "$7,500-$25,000/yr", meok: "£0 free + £79/mo Pro", note: "10x cheaper at the entry tier" },
+  { row: "Pricing entry point", vanta: "$7,500-$25,000/yr", meok: "£0 free + £149/mo Pro", note: "10x cheaper at the entry tier" },
 ];
 
 const FAQ = [
@@ -55,7 +55,7 @@ const FAQ = [
   },
   {
     q: "How does Vanta pricing compare to MEOK?",
-    a: "Vanta starts around $7,500/yr at the entry tier and scales to $25,000+/yr for mid-market with full multi-framework coverage. MEOK Pro is £79/mo (£790/yr annual) and Enterprise is £1,499/mo (£14,990/yr annual). Combined Vanta entry + MEOK Pro is approximately £6,000-£8,000/yr for SOC 2 + EU AI Act + DORA + NIS2 + CRA — typically less than half of Vanta+Drata side-by-side.",
+    a: "Vanta starts around $7,500/yr at the entry tier and scales to $25,000+/yr for mid-market with full multi-framework coverage. MEOK Pro is £149/mo (£1,490/yr annual) and Defence is £999/mo (£9,990/yr annual). Combined Vanta entry + MEOK Pro is approximately £6,000-£8,000/yr for SOC 2 + EU AI Act + DORA + NIS2 + CRA — typically less than half of Vanta+Drata side-by-side.",
   },
   {
     q: "Does Vanta sign cryptographic attestations?",

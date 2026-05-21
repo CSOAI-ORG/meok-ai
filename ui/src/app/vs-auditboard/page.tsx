@@ -4,7 +4,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "MEOK vs AuditBoard: Open-source EU AI Act Bolt-On (2026)",
   description:
-    "AuditBoard is enterprise GRC for SOX, internal audit, ESG. It does NOT cover EU AI Act, DORA, NIS2, or EU CRA. MEOK is the open-source EU regulatory bolt-on at £79-£1,499/mo.",
+    "AuditBoard is enterprise GRC for SOX, internal audit, ESG. It does NOT cover EU AI Act, DORA, NIS2, or EU CRA. MEOK is the open-source EU regulatory bolt-on at £149-£999/mo.",
   alternates: { canonical: "https://meok.ai/vs-auditboard" },
 };
 
@@ -35,13 +35,13 @@ const COMPARISON: { row: string; ab: string | boolean; meok: string | boolean; n
   { row: "ISO/IEC 42001", ab: false, meok: true },
   { row: "Open-source under MIT", ab: false, meok: true },
   { row: "HMAC-signed evidence per control", ab: false, meok: true },
-  { row: "Pricing entry", ab: "$50K-$200K+/yr enterprise", meok: "£0 free + £79/mo Pro" },
+  { row: "Pricing entry", ab: "$50K-$200K+/yr enterprise", meok: "£0 free + £149/mo Pro" },
 ];
 
 const FAQ = [
   { q: "Does AuditBoard cover the EU AI Act?", a: "No. AuditBoard is enterprise GRC focused on SOX compliance, internal audit workflow, enterprise risk management (ERM), and ESG reporting. EU AI Act, DORA, NIS2, and EU CRA are not on AuditBoard's roadmap as of 27 April 2026. For EU AI/cyber regulations you need a bolt-on like MEOK." },
   { q: "Can I run AuditBoard and MEOK together?", a: "Yes — that's the recommended setup for large enterprises. AuditBoard handles SOX + ERM + internal audit workflow + ESG. MEOK handles the EU regulatory evidence layer (EU AI Act + DORA + NIS2 + CRA + ISO/IEC 42001) with cryptographically signed attestations. Different surfaces, complementary. The signed certs from MEOK can flow into AuditBoard's evidence repository as auditor-verifiable artefacts." },
-  { q: "What's the pricing gap?", a: "AuditBoard is enterprise-tier ($50K-$200K+ annual contracts). MEOK starts free (8 MIT MCPs on PyPI) and scales to £79/mo Pro / £1,499/mo Enterprise. MEOK is appropriate for pre-Series-C AI companies + mid-market with EU exposure; AuditBoard is appropriate for Fortune 500 / large public companies." },
+  { q: "What's the pricing gap?", a: "AuditBoard is enterprise-tier ($50K-$200K+ annual contracts). MEOK starts free (8 MIT MCPs on PyPI) and scales to £149/mo Pro / £999/mo Defence. MEOK is appropriate for pre-Series-C AI companies + mid-market with EU exposure; AuditBoard is appropriate for Fortune 500 / large public companies." },
   { q: "Does AuditBoard sign cryptographic attestations?", a: "No. AuditBoard provides workflow + dashboards + evidence repository — auditors read evidence via the platform. MEOK signs every attestation with HMAC-SHA256 and exposes a public verify_url any auditor can curl independently. Different evidence model." },
   { q: "Why pick MEOK over AuditBoard?", a: "Three reasons: (1) you need EU AI Act / DORA / NIS2 / CRA coverage that AuditBoard doesn't provide; (2) you need open-source MIT-licensed tooling drop-in to your agent stack; (3) you're price-sensitive — MEOK is 100×+ cheaper at the entry tier. For Fortune 500 SOX work you need AuditBoard; for an AI startup shipping to the EU you need MEOK." },
 ];

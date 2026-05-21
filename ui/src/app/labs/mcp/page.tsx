@@ -32,7 +32,7 @@ const PACKS = [
   { name: "SMB Operations", price: "49", servers: 10, desc: "Invoice, expense, CRM, support, time tracking, PM", href: "https://buy.stripe.com/00w28tdkE3ce6kd7ew8k82R" },
   { name: "Marketing & Growth", price: "49", servers: 10, desc: "Ad copy, content calendar, SEO, social, leads, sentiment", href: "https://buy.stripe.com/8x200l6Wg7su9wpeGY8k82T" },
   { name: "Developer Tools", price: "29", servers: 10, desc: "Code review, CI/CD, testing, API docs, Docker, git", href: "https://buy.stripe.com/3cI4gB80k5kmcIB42k8k82S" },
-  { name: "Enterprise All-In", price: "499", servers: 208, desc: "Every server, unlimited calls, SSO, SLA, on-premise", href: "https://buy.stripe.com/6oUdRb1BWeUWcIBbuM8k82Q" },
+  { name: "Defence All-In", price: "999", servers: 208, desc: "Every server, unlimited calls, SSO, SLA, on-premise", href: "https://buy.stripe.com/6oUdRb1BWeUWcIBbuM8k82Q" },
 ];
 
 const TIERS = [
@@ -47,7 +47,7 @@ const TIERS = [
     popular: false,
   },
   {
-    name: "SMB",
+    name: "Starter",
     price: "£49",
     period: "/month",
     desc: "For small businesses",
@@ -57,7 +57,7 @@ const TIERS = [
     popular: false,
   },
   {
-    name: "Professional",
+    name: "Pro",
     price: "£149",
     period: "/month",
     desc: "For consultants & mid-market",
@@ -67,12 +67,22 @@ const TIERS = [
     popular: true,
   },
   {
-    name: "Enterprise",
-    price: "£499",
+    name: "Defence",
+    price: "£999",
     period: "/month",
     desc: "For regulated industries",
     features: ["All 208 servers", "Unlimited API calls", "SSO / SAML", "On-premise option", "99.9% SLA", "Dedicated manager", "Custom frameworks"],
     cta: "Book a Demo",
+    href: "mailto:nicholas@meok.ai?subject=MEOK Labs Defence Inquiry",
+    popular: false,
+  },
+  {
+    name: "Enterprise",
+    price: "£2,499",
+    period: "/month",
+    desc: "For multi-BU deployments & global compliance",
+    features: ["Everything in Defence", "Multi-BU audit-grade separation", "Custom verify domain", "White-label option", "Pay by invoice / PO", "Dedicated CSM + SLA", "On-premise + air-gapped option"],
+    cta: "Contact Sales",
     href: "mailto:nicholas@meok.ai?subject=MEOK Labs Enterprise Inquiry",
     popular: false,
   },
@@ -196,7 +206,7 @@ export default function LabsMcpPage() {
               <div className="text-xs text-[#f5f0e8]/30 mt-1">Manual, slow, not scalable</div>
             </Surface>
             <Surface variant="glass" glow="gold" className="p-5 text-center">
-              <div className="text-2xl font-bold text-green-400">£49-499/mo</div>
+              <div className="text-2xl font-bold text-green-400">£49-999/mo</div>
               <div className="text-sm text-[#f5f0e8]/50 mt-1">MEOK Labs</div>
               <div className="text-xs text-[#f5f0e8]/30 mt-1">Automated, API-driven, instant</div>
             </Surface>
@@ -293,7 +303,7 @@ export default function LabsMcpPage() {
             <h2 className="text-2xl font-bold mb-2">Pricing</h2>
             <p className="text-[#f5f0e8]/50">Start free. Scale when ready.</p>
           </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-5">
             {TIERS.map((tier) => (
               <Surface
                 key={tier.name}

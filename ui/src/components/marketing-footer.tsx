@@ -326,8 +326,53 @@ export function MarketingFooter() {
             </div>
           </div>
 
-          {/* CSOAI block removed 2026-05-17: severed brand, never reference.
-              See user memory feedback_no_csga.md. */}
+          {/* MEOK Portfolio — cross-linked properties for SEO link equity */}
+          <div className="border-t border-[#2a2a3a] pt-10 pb-4">
+            <p className="text-center text-xs font-semibold tracking-[0.2em] uppercase text-[#9a9a8a]/50 mb-6">
+              MEOK Portfolio
+            </p>
+            <div className="flex flex-wrap justify-center items-center gap-x-8 gap-y-3">
+              <a
+                href="https://csoai.org"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm text-[#e8e4dc] hover:text-white transition-colors group relative"
+              >
+                CSOAI — AI Compliance
+                <span className="absolute -bottom-px left-0 right-0 h-px bg-white/40 scale-x-0 group-hover:scale-x-100 transition-transform origin-left" />
+              </a>
+              <span className="text-[#2a2a3a] text-sm">|</span>
+              <a
+                href="https://www.cobolbridge.ai"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm text-[#e8e4dc] hover:text-white transition-colors group relative"
+              >
+                COBOL Bridge — Legacy Modernization
+                <span className="absolute -bottom-px left-0 right-0 h-px bg-white/40 scale-x-0 group-hover:scale-x-100 transition-transform origin-left" />
+              </a>
+              <span className="text-[#2a2a3a] text-sm">|</span>
+              <a
+                href="https://proofof.ai"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm text-[#e8e4dc] hover:text-white transition-colors group relative"
+              >
+                ProofOf.AI — AI Safety Certification
+                <span className="absolute -bottom-px left-0 right-0 h-px bg-white/40 scale-x-0 group-hover:scale-x-100 transition-transform origin-left" />
+              </a>
+              <span className="text-[#2a2a3a] text-sm">|</span>
+              <a
+                href="https://compliance.meok.ai"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm text-[#e8e4dc] hover:text-white transition-colors group relative"
+              >
+                Compliance Centre
+                <span className="absolute -bottom-px left-0 right-0 h-px bg-white/40 scale-x-0 group-hover:scale-x-100 transition-transform origin-left" />
+              </a>
+            </div>
+          </div>
 
           {/* Bottom bar */}
           <div className="border-t border-[#2a2a3a] pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#9a9a8a]">

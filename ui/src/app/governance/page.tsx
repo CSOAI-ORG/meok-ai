@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import EmailCapture from "@/components/email-capture";
+import ShareButtons from "@/components/ShareButtons";
+import { withUtm } from "@/lib/stripe-utm";
 
 // ---------------------------------------------------------------------------
 // /governance — MEOK Governance Substrate landing
@@ -111,13 +113,13 @@ export default function GovernancePage() {
           </p>
           <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
             <a
-              href="https://buy.stripe.com/3cIbJ36Wg5kmdMF2Yg8k90t"
+              href={withUtm("https://buy.stripe.com/3cIbJ36Wg5kmdMF2Yg8k90t", "/governance", "governance_substrate_499")}
               style={{ padding: "14px 28px", background: GOLD, color: NAVY, textDecoration: "none", fontWeight: 800, borderRadius: 12, fontSize: 14 }}
             >
               Start Governance Substrate £499/mo →
             </a>
             <a
-              href="https://buy.stripe.com/00w3cxcgAaEGcIBcyQ8k90s"
+              href={withUtm("https://buy.stripe.com/00w3cxcgAaEGcIBcyQ8k90s", "/governance", "payg_universal_29")}
               style={{ padding: "14px 28px", background: "transparent", color: "#fff", border: "1px solid rgba(255,255,255,0.25)", textDecoration: "none", fontWeight: 800, borderRadius: 12, fontSize: 14 }}
             >
               PAYG £0.0002/call →
@@ -129,6 +131,13 @@ export default function GovernancePage() {
               See your max fine →
             </Link>
           </div>
+          <ShareButtons
+            text="13 EU AI Act compliance MCPs. 1 signed evidence pack. £499/mo or self-host MIT."
+            url="https://meok.ai/governance"
+            hashtags={["EUAIAct", "DORA", "NIS2", "compliance", "mcp"]}
+            hnTitle="MEOK Governance Substrate — 13 EU compliance MCPs, 1 signed pipeline"
+            variant="dark"
+          />
         </div>
 
         {/* Why this exists */}

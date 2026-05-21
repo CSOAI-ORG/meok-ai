@@ -823,12 +823,12 @@ function HeroSection() {
             <Link href="/vs-vanta" className="group block rounded-xl p-3 transition-all hover:scale-[1.01]" style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.12)" }}>
               <div className="text-[10px] font-black tracking-wider uppercase mb-1" style={{ color: "rgba(255,255,255,0.5)" }}>vs Vanta</div>
               <div className="text-sm font-black text-white">MEOK vs Vanta →</div>
-              <div className="text-[11px] text-white/60">Vanta $7.5-25K/yr · MEOK from £79/mo</div>
+              <div className="text-[11px] text-white/60">Vanta $7.5-25K/yr · MEOK from £149/mo</div>
             </Link>
             <Link href="/vs-drata" className="group block rounded-xl p-3 transition-all hover:scale-[1.01]" style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.12)" }}>
               <div className="text-[10px] font-black tracking-wider uppercase mb-1" style={{ color: "rgba(255,255,255,0.5)" }}>vs Drata</div>
               <div className="text-sm font-black text-white">MEOK vs Drata →</div>
-              <div className="text-[11px] text-white/60">Drata $7.5-50K/yr · MEOK from £79/mo</div>
+              <div className="text-[11px] text-white/60">Drata $7.5-50K/yr · MEOK from £149/mo</div>
             </Link>
           </div>
         </div>
@@ -836,9 +836,9 @@ function HeroSection() {
         {/* Tier links */}
         <div className="flex items-center gap-3 flex-wrap justify-center text-sm font-medium mb-8" style={{ color: "rgba(245,240,232,0.55)" }}>
           <span>Or self-serve:</span>
-          <a href="https://buy.stripe.com/eVq9AV4O87sudMF42k8k839" target="_blank" rel="noopener noreferrer" className="underline decoration-dotted hover:text-white transition-colors">Pro £79/mo</a>
+          <a href="https://buy.stripe.com/eVq9AV4O87sudMF42k8k839" target="_blank" rel="noopener noreferrer" className="underline decoration-dotted hover:text-white transition-colors">Pro £149/mo</a>
           <span className="opacity-40">·</span>
-          <a href="https://buy.stripe.com/4gM9AV80kaEG0ZT42k8k837" target="_blank" rel="noopener noreferrer" className="underline decoration-dotted hover:text-white transition-colors">Enterprise £1,499/mo</a>
+          <a href="https://buy.stripe.com/4gM9AV80kaEG0ZT42k8k837" target="_blank" rel="noopener noreferrer" className="underline decoration-dotted hover:text-white transition-colors">Defence £999/mo</a>
           <span className="opacity-40">·</span>
           <Link href="/pricing" className="underline decoration-dotted hover:text-white transition-colors">All pricing →</Link>
         </div>

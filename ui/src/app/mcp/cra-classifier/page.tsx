@@ -157,7 +157,7 @@ export default function CraClassifierPage() {
               fontSize: 15,
             }}
           >
-            Get Pro — £79/mo →
+            Get Pro — £149/mo →
           </a>
           <a
             href="https://github.com/CSOAI-ORG/meok-cra-annex-iv-classifier-mcp"
@@ -271,12 +271,12 @@ export default function CraClassifierPage() {
           </div>
           <div style={{ padding: 24, background: "white", borderRadius: 14, border: `2px solid ${GOLD}` }}>
             <h3 style={{ fontSize: "1.15rem", fontWeight: 900, marginBottom: 4 }}>Pro</h3>
-            <p style={{ color: GOLD, fontWeight: 900, fontSize: "1.4rem", marginBottom: 8 }}>£79/mo</p>
+            <p style={{ color: GOLD, fontWeight: 900, fontSize: "1.4rem", marginBottom: 8 }}>£149/mo</p>
             <p style={{ color: `${NAVY}99`, fontSize: 13, lineHeight: 1.5 }}>Unlimited classifications + HMAC-signed attestations + priority support.</p>
           </div>
           <div style={{ padding: 24, background: "white", borderRadius: 14, border: `1px solid ${NAVY}1a` }}>
             <h3 style={{ fontSize: "1.15rem", fontWeight: 900, marginBottom: 4 }}>Enterprise</h3>
-            <p style={{ color: GOLD, fontWeight: 900, fontSize: "1.4rem", marginBottom: 8 }}>£1,499/mo</p>
+            <p style={{ color: GOLD, fontWeight: 900, fontSize: "1.4rem", marginBottom: 8 }}>£999/mo</p>
             <p style={{ color: `${NAVY}99`, fontSize: 13, lineHeight: 1.5 }}>Dedicated signing keys, custom verify domain, SLA, onboarding call.</p>
           </div>
         </div>
@@ -312,7 +312,7 @@ export default function CraClassifierPage() {
               fontSize: 15,
             }}
           >
-            Get Pro — £79/mo →
+            Get Pro — £149/mo →
           </a>
         </div>
 

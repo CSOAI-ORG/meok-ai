@@ -12,6 +12,14 @@ export const metadata: Metadata = {
       "Real-time AI safety monitoring for enterprise AI deployments. GDPR, SOC2, and EU AI Act compliant.",
     type: "website",
     url: "https://agisafe.ai",
+    images: [{ url: "https://meok.ai/api/og?title=AGISafe.ai&desc=AI+Safety+Monitoring+%26+Compliance", width: 1200, height: 630, alt: "AGISafe.ai" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "AGISafe.ai — AI Safety & Compliance",
+    description: "Real-time AI safety monitoring for enterprise AI deployments. GDPR, SOC2, and EU AI Act compliant.",
+    site: "@meok_ai",
+    images: ["https://meok.ai/api/og?title=AGISafe.ai&desc=AI+Safety+Monitoring+%26+Compliance"],
   },
 };
 

@@ -90,19 +90,24 @@ export type Tier = keyof typeof TIERS;
 // ---------------------------------------------------------------------------
 export const GOVERNANCE_TIERS = {
   'governance-smb': {
-    name: 'Governance SMB',
+    name: 'Governance Starter',
     price_monthly: 49,
     features: ['1 industry pack', '500 API calls/day', 'Data persistence', 'Email support', 'Audit logging'],
   },
   'governance-professional': {
-    name: 'Governance Professional',
+    name: 'Governance Pro',
     price_monthly: 149,
     features: ['Full compliance suite', '12 framework crosswalks', '2,000 API calls/day', 'Audit trail export', 'Priority support', '1 industry pack included'],
   },
+  'governance-defence': {
+    name: 'Governance Defence',
+    price_monthly: 999,
+    features: ['All 208 servers', 'Unlimited API calls', 'SSO / SAML', 'On-premise option', '99.9% SLA', 'Dedicated manager', 'Custom frameworks'],
+  },
   'governance-enterprise': {
     name: 'Governance Enterprise',
-    price_monthly: 499,
-    features: ['All 208 servers', 'Unlimited API calls', 'SSO / SAML', 'On-premise option', '99.9% SLA', 'Dedicated manager', 'Custom frameworks'],
+    price_monthly: 2499,
+    features: ['Everything in Defence', 'Multi-BU audit-grade separation', 'Custom verify domain', 'White-label option', 'Pay by invoice / PO', 'Dedicated CSM + SLA', 'Air-gapped deployment'],
   },
 } as const;
 
@@ -131,6 +136,8 @@ export async function createCheckoutSession(params: {
     priceId = process.env.STRIPE_PRICE_GOVERNANCE_SMB_MONTHLY!;
   } else if (tier === 'governance-professional') {
     priceId = process.env.STRIPE_PRICE_GOVERNANCE_PRO_MONTHLY!;
+  } else if (tier === 'governance-defence') {
+    priceId = process.env.STRIPE_PRICE_GOVERNANCE_DEFENCE_MONTHLY!;
   } else if (tier === 'governance-enterprise') {
     priceId = process.env.STRIPE_PRICE_GOVERNANCE_ENTERPRISE_MONTHLY!;
   } else if (tier === 'sovereign') {

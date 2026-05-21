@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import EmailCapture from "@/components/email-capture";
+import ShareButtons from "@/components/ShareButtons";
+import { withUtm } from "@/lib/stripe-utm";
 
 // ---------------------------------------------------------------------------
 // /a2a — MEOK A2A Substrate landing
 //
-// Sells the 12 agent-to-agent MCPs as ONE end-to-end signed pipeline.
-// £999/mo bundle (covers all 12) OR £0.0002/call pay-as-you-go.
+// Sells the 20 agent-to-agent MCPs as ONE end-to-end signed pipeline.
+// £999/mo bundle (covers all 20) OR £0.0002/call pay-as-you-go.
 //
 // The flagship product for the post-MCP-sprawl era — 1 invoice, 1 signed
 // event per agent interaction, 7 attestations chained.
@@ -18,18 +20,18 @@ const BG = "#f5f0e8";
 const GREEN = "#7BC47F";
 
 export const metadata: Metadata = {
-  title: "MEOK A2A Substrate — 12 agent-to-agent MCPs, 1 signed event, 1 invoice",
+  title: "MEOK A2A Substrate — 20 agent-to-agent MCPs, 1 signed event, 1 invoice",
   description:
-    "The 12 agent-to-agent primitives every multi-agent system needs — identity, trust, policy enforcement, prompt-injection firewall, rate limiting, certified handoff, audit logging, governance bridge — bundled as one £999/mo signed substrate. Or pay £0.0002 per call.",
+    "20 agent-to-agent primitives — identity, trust, policy, firewall, rate-limit, certified handoff, audit, governance bridge, BFT progress council, token budget, cost allocator, commerce protocol (ACP / AP2 / x402), OASF directory, EUDI wallet, replay debugger — bundled as one £999/mo signed substrate. Or pay £0.0002 per call.",
   alternates: { canonical: "https://meok.ai/a2a" },
   openGraph: {
-    title: "MEOK A2A Substrate — 12 primitives, 1 signed event",
+    title: "MEOK A2A Substrate — 20 primitives, 1 signed event",
     description: "Identity · Trust · Policy · Firewall · Rate-limit · Handoff · Audit · Governance. £999/mo. Pay-as-you-go £0.0002/call.",
     type: "website",
     url: "https://meok.ai/a2a",
     siteName: "MEOK.AI",
     images: [{
-      url: "https://meok.ai/api/og?title=MEOK+A2A+Substrate&desc=12+primitives+%C2%B7+1+signed+event+%C2%B7+1+invoice",
+      url: "https://meok.ai/api/og?title=MEOK+A2A+Substrate&desc=20+primitives+%C2%B7+1+signed+event+%C2%B7+1+invoice",
       width: 1200,
       height: 630,
       alt: "MEOK A2A Substrate",
@@ -51,6 +53,15 @@ const PRIMITIVES: Primitive[] = [
   { num: 10, slug: "agent-commerce-payments-mcp", title: "Commerce + Payments", one_liner: "A2A payments + PSD2 / MiCA attest", pypi: "agent-commerce-payments-mcp" },
   { num: 11, slug: "agent-negotiation-mcp", title: "Negotiation", one_liner: "Auction + bidding primitives", pypi: "agent-negotiation-mcp" },
   { num: 12, slug: "a2a-governance-bridge-mcp", title: "Governance Bridge", one_liner: "Folds 7 signals into EU AI Act / DORA / ISO 42001 evidence", pypi: "a2a-governance-bridge-mcp" },
+  // ── New 2026-05 batch ──────────────────────────────────────────
+  { num: 13, slug: "bft-progress-council-mcp", title: "BFT Progress Council", one_liner: "5-voter Byzantine council halts agent loops on no-progress", pypi: "bft-progress-council-mcp" },
+  { num: 14, slug: "agent-token-budget-mcp", title: "Token Budget Cap", one_liner: "Per-session hard cap with signed budget-exhausted attestation", pypi: "agent-token-budget-mcp" },
+  { num: 15, slug: "agent-cost-allocator-mcp", title: "Cost Allocator", one_liner: "Multi-tenant chargeback splitter with signed per-tenant summary", pypi: "agent-cost-allocator-mcp" },
+  { num: 16, slug: "agent-commerce-protocol-mcp", title: "Agent Commerce Protocol", one_liner: "Stripe ACP + Google AP2 + Coinbase x402 bridge", pypi: "agent-commerce-protocol-mcp" },
+  { num: 17, slug: "agent-x402-paywall-mcp", title: "x402 Paywall", one_liner: "Coinbase HTTP 402 on-chain settlement — pay-per-call without Stripe", pypi: "agent-x402-paywall-mcp" },
+  { num: 18, slug: "oasf-agent-directory-mcp", title: "OASF Directory", one_liner: "Cisco OASF + AGNTCY bridge under Linux Foundation", pypi: "oasf-agent-directory-mcp" },
+  { num: 19, slug: "eudi-wallet-mcp", title: "EUDI Wallet", one_liner: "EU Digital Identity Wallet (eIDAS 2.0) for AI agents", pypi: "eudi-wallet-mcp" },
+  { num: 20, slug: "agent-replay-debugger-mcp", title: "Replay Debugger", one_liner: "Step-debug agent runs + deterministic replay + signed audit", pypi: "agent-replay-debugger-mcp" },
 ];
 
 const PIPELINE_STAGES = [
@@ -75,12 +86,12 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Product",
   "name": "MEOK A2A Substrate",
-  "description": "12 agent-to-agent MCPs bundled as one signed end-to-end pipeline. Identity, trust, policy, firewall, rate-limit, handoff, audit, governance.",
+  "description": "20 agent-to-agent MCPs bundled as one signed end-to-end pipeline. Identity, trust, policy, firewall, rate-limit, handoff, audit, governance, BFT progress council, token budget, cost allocator, commerce protocol, x402 paywall, OASF directory, EUDI wallet, replay debugger.",
   "brand": { "@type": "Brand", "name": "MEOK AI Labs" },
   "url": "https://meok.ai/a2a",
   "image": "https://meok.ai/api/og?title=MEOK+A2A+Substrate",
   "offers": [
-    { "@type": "Offer", "price": "0", "priceCurrency": "GBP", "name": "Self-host (MIT, all 12 MCPs)", "url": "https://github.com/CSOAI-ORG" },
+    { "@type": "Offer", "price": "0", "priceCurrency": "GBP", "name": "Self-host (MIT, all 20 MCPs)", "url": "https://github.com/CSOAI-ORG" },
     { "@type": "Offer", "price": "499", "priceCurrency": "GBP", "name": "Substrate Monthly", "priceSpecification": { "@type": "UnitPriceSpecification", "billingDuration": "P1M" } },
     { "@type": "Offer", "price": "4990", "priceCurrency": "GBP", "name": "Substrate Annual (save £998)", "priceSpecification": { "@type": "UnitPriceSpecification", "billingDuration": "P1Y" } },
     { "@type": "Offer", "price": "0.0002", "priceCurrency": "GBP", "name": "Pay-as-you-go per call", "priceSpecification": { "@type": "UnitPriceSpecification", "unitText": "API call" } },
@@ -100,7 +111,7 @@ export default function A2APage() {
             New — 2026-05-21
           </div>
           <h1 style={{ fontSize: "clamp(2.2rem, 5vw, 3.6rem)", fontWeight: 900, lineHeight: 1.05, letterSpacing: "-0.02em", marginBottom: 14 }}>
-            <span style={{ color: GOLD }}>12 primitives.</span>
+            <span style={{ color: GOLD }}>20 primitives.</span>
             <br />
             1 signed event.
             <br />
@@ -114,7 +125,7 @@ export default function A2APage() {
           </p>
           <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
             <a
-              href="https://buy.stripe.com/bJe3cx6WgcMO38142k8k90o"
+              href={withUtm("https://buy.stripe.com/bJe3cx6WgcMO38142k8k90o", "/a2a", "a2a_substrate_999")}
               style={{ padding: "14px 28px", background: GOLD, color: NAVY, textDecoration: "none", fontWeight: 800, borderRadius: 12, fontSize: 14 }}
             >
               Start Substrate £999/mo →
@@ -132,18 +143,25 @@ export default function A2APage() {
               Free self-host (MIT) →
             </Link>
           </div>
+          <ShareButtons
+            text="20 agent-to-agent MCPs. 1 signed event. 1 invoice. MIT self-host or £999/mo managed."
+            url="https://meok.ai/a2a"
+            hashtags={["mcp", "agents", "compliance", "a2a"]}
+            hnTitle="MEOK A2A Substrate — 20 agent-to-agent MCPs, 1 signed event chain"
+            variant="dark"
+          />
         </div>
 
         {/* Why this exists */}
         <section style={{ marginBottom: "2.4rem", padding: "1.6rem 1.8rem", background: "#fff", borderRadius: 14, border: `1px solid ${NAVY}1a` }}>
-          <h2 style={{ fontSize: "1.3rem", fontWeight: 900, marginBottom: 10 }}>Why ship 12 separate MCPs as one substrate?</h2>
+          <h2 style={{ fontSize: "1.3rem", fontWeight: 900, marginBottom: 10 }}>Why ship 20 separate MCPs as one substrate?</h2>
           <p style={{ fontSize: 15, lineHeight: 1.6, color: `${NAVY}cc`, margin: 0 }}>
             Because the next protocol layer agents are converging on is <strong>agent-to-agent infrastructure</strong>,
             not the chatbox. Anthropic shipped MCP. Google shipped A2A. Stripe shipped A2A Payments.
             The pieces between agents — identity, trust, policy, audit — need standardisation.
             <br /><br />
             Sold separately, each primitive is £29-£149/month. Bought together as the Substrate, you
-            get all 12, the unified <code style={{ background: `${NAVY}10`, padding: "2px 6px", borderRadius: 4, fontFamily: "monospace" }}>api.meok.ai/v1/a2a/&lt;primitive&gt;</code> endpoint,
+            get all 20, the unified <code style={{ background: `${NAVY}10`, padding: "2px 6px", borderRadius: 4, fontFamily: "monospace" }}>api.meok.ai/v1/a2a/&lt;primitive&gt;</code> endpoint,
             100K calls/month included, and the signed governance-bridge event chain — for £999/month.
             <br /><br />
             Or skip the subscription entirely: <strong>£0.0002 per call</strong>, no monthly minimum, billed monthly via Stripe metered.
@@ -177,9 +195,9 @@ export default function A2APage() {
           </p>
         </section>
 
-        {/* The 12 primitives */}
+        {/* The 20 primitives */}
         <section style={{ marginBottom: "2.4rem" }}>
-          <h2 style={{ fontSize: "1.5rem", fontWeight: 900, marginBottom: 16 }}>All 12 primitives in the Substrate</h2>
+          <h2 style={{ fontSize: "1.5rem", fontWeight: 900, marginBottom: 16 }}>All 20 primitives in the Substrate</h2>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 12 }}>
             {PRIMITIVES.map((p) => (
               <div key={p.slug} style={{ padding: "1rem 1.2rem", background: "#fff", borderRadius: 12, border: `1px solid ${NAVY}1a` }}>
@@ -211,7 +229,7 @@ export default function A2APage() {
               <div style={{ fontSize: "1.8rem", fontWeight: 900, marginBottom: 4 }}>£0</div>
               <div style={{ fontSize: 11, color: `${NAVY}99`, marginBottom: 12 }}>Self-host all 12 (MIT)</div>
               <ul style={{ listStyle: "none", padding: 0, margin: 0, fontSize: 12, color: `${NAVY}cc`, lineHeight: 1.8 }}>
-                <li>✓ All 12 MCPs via uvx</li>
+                <li>✓ All 20 MCPs via uvx</li>
                 <li>✓ Local-only attestations</li>
                 <li>✓ Forever free</li>
               </ul>
@@ -228,7 +246,7 @@ export default function A2APage() {
               <div style={{ fontSize: "1.8rem", fontWeight: 900, marginBottom: 4 }}>£999<span style={{ fontSize: ".9rem", color: "rgba(255,255,255,0.5)" }}>/mo</span></div>
               <div style={{ fontSize: 11, color: "rgba(255,255,255,0.65)", marginBottom: 12 }}>or £4,990/yr (save £998)</div>
               <ul style={{ listStyle: "none", padding: 0, margin: 0, fontSize: 12, color: "rgba(255,255,255,0.85)", lineHeight: 1.8 }}>
-                <li><span style={{ color: GOLD }}>✓</span> All 12 MCPs managed</li>
+                <li><span style={{ color: GOLD }}>✓</span> All 20 MCPs managed</li>
                 <li><span style={{ color: GOLD }}>✓</span> Unified api.meok.ai endpoint</li>
                 <li><span style={{ color: GOLD }}>✓</span> 100K calls/month included</li>
                 <li><span style={{ color: GOLD }}>✓</span> 99.9% SLA</li>
@@ -248,7 +266,7 @@ export default function A2APage() {
               <div style={{ fontSize: 11, color: `${NAVY}99`, marginBottom: 12 }}>No monthly minimum</div>
               <ul style={{ listStyle: "none", padding: 0, margin: 0, fontSize: 12, color: `${NAVY}cc`, lineHeight: 1.8 }}>
                 <li>✓ Stripe metered billing</li>
-                <li>✓ Any of the 12 primitives</li>
+                <li>✓ Any of the 20 primitives</li>
                 <li>✓ Signed attestations</li>
                 <li>✓ Bills monthly · cap anytime</li>
               </ul>
@@ -379,13 +397,13 @@ export default function A2APage() {
           <h2 style={{ fontSize: "1.5rem", fontWeight: 900, marginBottom: 16 }}>FAQ</h2>
           <div style={{ display: "grid", gap: 12 }}>
             {[
-              { q: "Can I self-host the whole substrate?", a: "Yes. All 12 MCPs are MIT-licensed. uvx <name>-mcp installs each. The Substrate subscription gives you the managed pipeline + signed verify URL + 99.9% SLA — not the source code (which is free)." },
-              { q: "What counts as a call for usage-based billing?", a: "Each tool invocation on any of the 12 primitives = 1 call. A typical A2A interaction traverses ~3-5 primitives, so one customer-facing request = ~3-5 billable calls. 100K Substrate-included calls ≈ 20-30K full pipeline runs/month." },
+              { q: "Can I self-host the whole substrate?", a: "Yes. All 20 MCPs are MIT-licensed. uvx <name>-mcp installs each. The Substrate subscription gives you the managed pipeline + signed verify URL + 99.9% SLA — not the source code (which is free)." },
+              { q: "What counts as a call for usage-based billing?", a: "Each tool invocation on any of the 20 primitives = 1 call. A typical A2A interaction traverses ~3-5 primitives, so one customer-facing request = ~3-5 billable calls. 100K Substrate-included calls ≈ 20-30K full pipeline runs/month." },
               { q: "Is the data moat aggregation an opt-in?", a: "Substrate customers opt-out by default for moat data sharing during the first 60 days. After that, anonymized aggregate metadata feeds the moats with no payload reading. Enterprise contracts can require permanent opt-out — no discount, but available." },
               { q: "How does this compare to LangGraph / Crew AI / Autogen?", a: "Those are orchestrators. We're the trust + audit substrate underneath them. Use them for workflow, use us for what regulators ask for. Many customers run both." },
               { q: "What about ACP? I heard there's a new agent comms protocol.", a: "Two protocols share the 'ACP' acronym. IBM ACP (Agent Communication Protocol) was wound down in September 2025 and merged into A2A under the Linux Foundation — our Substrate already supports it via A2A. Stripe ACP (Agentic Commerce Protocol) is a separate live protocol for agent commerce inside ChatGPT — we ship the bridge in Q3 2026. See the multi-protocol coverage table above." },
-              { q: "Do you support AP2 mandates and x402?", a: "AP2 (Google Agent Payments Protocol) and x402 (Coinbase HTTP 402) are both on the Q3 roadmap. Our agent-commerce-payments-mcp already handles the PSD2 + MiCA regulatory overlay; AP2 mandate signing + x402 settlement get added Q3. x402 also wraps our api.meok.ai gateway so you can pay-per-call without a Stripe account." },
-              { q: "What's on the roadmap?", a: "13th primitive: agent-cost-allocator (per-call cost attribution back to upstream tenant). 14th: agent-content-watermark (Article 50 + C2PA integration). 15th: agent-commerce-protocol-mcp (Stripe ACP bridge). 16th: agent-x402-paywall-mcp (Coinbase HTTP 402). All Q3." },
+              { q: "Do you support AP2 mandates and x402?", a: "Yes — both shipped. agent-commerce-protocol-mcp covers Stripe ACP + Google AP2 mandates + Coinbase x402 in one bridge. agent-x402-paywall-mcp is the dedicated Coinbase HTTP 402 + on-chain settlement primitive. x402 also wraps our api.meok.ai gateway so you can pay-per-call without a Stripe account." },
+              { q: "What's on the roadmap?", a: "Live now: BFT Progress Council (loop halt), Token Budget cap, Cost Allocator, ACP bridge, x402 paywall, OASF Directory (Cisco/AGNTCY), EUDI Wallet (eIDAS 2.0), Replay Debugger. Next: agent-content-watermark (Article 50 + C2PA), agent-incident-relay (Article 73 5-clock broadcaster), agent-eu-mlbom-export." },
             ].map((f, i) => (
               <details key={i} style={{ padding: "1rem 1.2rem", background: "#fff", borderRadius: 10, border: `1px solid ${NAVY}1a` }}>
                 <summary style={{ cursor: "pointer", fontWeight: 700, fontSize: 14, color: NAVY }}>{f.q}</summary>

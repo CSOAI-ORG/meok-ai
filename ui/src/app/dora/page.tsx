@@ -4,7 +4,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "DORA Compliance Bolt-On (2026) — Reg 2022/2554 Pre-Built Evidence Pack",
   description:
-    "DORA Reg 2022/2554 is fully applicable since 17 January 2025. ICT risk register, incident classification, threat-led penetration testing schedule, third-party risk crosswalk. Pre-built signed evidence pack from £79/mo.",
+    "DORA Reg 2022/2554 is fully applicable since 17 January 2025. ICT risk register, incident classification, threat-led penetration testing schedule, third-party risk crosswalk. Pre-built signed evidence pack from £149/mo.",
   alternates: { canonical: "https://meok.ai/dora" },
 };
 

@@ -73,7 +73,7 @@ const CATALOG: Record<string, MCPRecord> = {
 
 // Per-MCP Stripe payment links — generated 2026-05-16 by monetisation sweep
 // All £29/mo GBP recurring with 14-day free trial. Master list in monetisation_sweep_2026-05-16.md
-// Pro tier (£79-£99/mo) URLs in PRO_URLS below — Pro CTA renders only when set.
+// Pro tier (£149/mo) URLs in PRO_URLS below — Pro CTA renders only when set.
 // 4 MCPs ARCHIVED (sigstore-cosign, mitre-attack, mitre-atlas, cisa-kev) — these wrap free upstream services so paid tier doesn't make sense; their pages now point at the MEOK Defence bundle.
 const BUY_URLS: Record<string, string> = {
   "eu-ai-act-compliance": "https://buy.stripe.com/dRm8wRdkEcMO4c5dCU8k83O",
@@ -119,19 +119,19 @@ const BUY_URLS: Record<string, string> = {
   // they wrap free upstream services — see ARCHIVED_BUNDLE_UPSELL below.
 };
 
-// Pro tier URLs (£79-£99/mo, 14-day trial) — only set for high-value enterprise MCPs.
+// Pro tier URLs (£149/mo, 14-day trial) — only set for high-value enterprise MCPs.
 // When set, the slug page renders a second "Subscribe Pro" button alongside Starter.
 const PRO_URLS: Record<string, { url: string; price: string }> = {
-  "eu-ai-act-compliance":  { url: "https://buy.stripe.com/7sY14p3K4dQSaAt0Q88k90i", price: "£79" },
-  "dora-compliance":       { url: "https://buy.stripe.com/3cI8wRbcwaEG23X56o8k90j", price: "£79" },
-  "nis2-compliance":       { url: "https://buy.stripe.com/7sY4gBbcw9ACfUN0Q88k90k", price: "£79" },
+  "eu-ai-act-compliance":  { url: "https://buy.stripe.com/7sY14p3K4dQSaAt0Q88k90i", price: "£149" },
+  "dora-compliance":       { url: "https://buy.stripe.com/3cI8wRbcwaEG23X56o8k90j", price: "£149" },
+  "nis2-compliance":       { url: "https://buy.stripe.com/7sY4gBbcw9ACfUN0Q88k90k", price: "£149" },
   // mdr-medical-device + fda-samd intentionally omitted (legal risk without credentialing)
 };
 
 // MCPs whose Stripe products are archived. Two categories:
 // (a) wrap-free-upstream (sigstore/MITRE/CISA) — paid tier doesn't make sense
 // (b) legal-risk-without-credentialing (medical device) — won't sell these
-// All show "this MCP is free + MEOK Defence £499/mo for signed bundle" on their slug page.
+// All show "this MCP is free + MEOK Defence £999/mo for signed bundle" on their slug page.
 const ARCHIVED_BUNDLE_UPSELL: Record<string, "free-upstream" | "legal-risk"> = {
   "sigstore-cosign": "free-upstream",
   "mitre-attack": "free-upstream",
@@ -215,10 +215,10 @@ export default async function MCPDetailPage({ params }: { params: Promise<{ slug
             <p style={{ fontSize: ".95rem", opacity: .85, marginBottom: "1rem", lineHeight: 1.55 }}>
               It wraps a free upstream service (sigstore, MITRE, or CISA data). Use it without subscription.
               For <strong>signed bundles, monitoring, and 24h SLA across all MEOK MCPs</strong>,
-              consider MEOK Defence at £499/mo.
+              consider MEOK Defence at £999/mo.
             </p>
             <a href="https://meok.ai/pricing" style={{ background: GOLD, color: NAVY, padding: ".75rem 1.25rem", borderRadius: 10, fontWeight: 700, textDecoration: "none" }}>
-              See MEOK Defence £499/mo →
+              See MEOK Defence £999/mo →
             </a>
           </section>
         )}

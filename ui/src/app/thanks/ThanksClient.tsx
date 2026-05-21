@@ -273,7 +273,7 @@ pip install ${mcp.pkg}`}
             </Link>
             {" · "}
             <Link href={`/pricing`} style={{ color: NAVY, fontWeight: 600 }}>
-              Upgrade to MEOK Pro (all 38, £79/mo) →
+              Upgrade to MEOK Pro (all 38, £149/mo) →
             </Link>
           </p>
         </section>

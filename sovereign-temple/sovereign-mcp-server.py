@@ -6,6 +6,7 @@ Complete implementation with all 5 expansion modules
 
 import asyncio
 import json
+import logging
 import re
 import sys
 import os

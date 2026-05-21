@@ -1,0 +1,41 @@
+{
+  "agent_kimi_8a0bf05a": {
+    "id": "agent_kimi_8a0bf05a",
+    "name": "Kimi",
+    "description": "Moonshot AI code agent \u2014 frontend builds, TypeScript, React",
+    "capabilities": [
+      "code_execution",
+      "creative",
+      "analysis"
+    ],
+    "trust_level": 0.7,
+    "status": "idle",
+    "last_seen": "2026-05-09T06:17:11.260426"
+  },
+  "agent_kimi_6be64d70": {
+    "id": "agent_kimi_6be64d70",
+    "name": "Kimi",
+    "description": "Moonshot AI code agent \u2014 frontend builds, TypeScript, React",
+    "capabilities": [
+      "code_execution",
+      "creative",
+      "analysis"
+    ],
+    "trust_level": 0.7,
+    "status": "idle",
+    "last_seen": "2026-05-09T06:18:00.282749"
+  },
+  "agent_kimi_3da316cc": {
+    "id": "agent_kimi_3da316cc",
+    "name": "Kimi",
+    "description": "Moonshot AI code agent \u2014 frontend builds, TypeScript, React",
+    "capabilities": [
+      "code_execution",
+      "creative",
+      "analysis"
+    ],
+    "trust_level": 0.7,
+    "status": "idle",
+    "last_seen": "2026-05-09T06:28:33.147687"
+  }
+}

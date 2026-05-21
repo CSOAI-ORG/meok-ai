@@ -13,6 +13,13 @@ export const metadata: Metadata = {
     url: "https://meok.ai/transparency",
     images: [{ url: "/api/og?title=AI+Transparency+%26+Explainability&desc=Article+50+%2B+GDPR+22+%2B+EU+AI+Act+evidence+pack", width: 1200, height: 630, alt: "Transparency Product" }],
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "AI Transparency & Explainability — Article 50 + GDPR 22",
+    description: "Continuous decision-trace logging + signed evidence pack. £399-£1,499/mo.",
+    site: "@meok_ai",
+    images: ["/api/og?title=AI+Transparency+%26+Explainability&desc=Article+50+%2B+GDPR+22+%2B+EU+AI+Act+evidence+pack"],
+  },
 };
 
 const NAVY = "#1a1a2e";

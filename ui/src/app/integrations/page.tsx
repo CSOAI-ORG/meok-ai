@@ -136,7 +136,7 @@ smithery run @csoai-org/meok-omnibus-tracker-mcp`,
     configFile: "mcpize.com/dashboard",
     status: "ready",
     example: `# Submit each MCP via mcpize.com — set price, Stripe payouts handled
-# £79/mo for typical compliance MCP, 6% conversion benchmark`,
+# £149/mo for typical compliance MCP, 6% conversion benchmark`,
     href: "https://mcpize.com",
   },
   {
@@ -154,7 +154,7 @@ smithery run @csoai-org/meok-omnibus-tracker-mcp`,
 const FAQ = [
   {
     q: "Do I need an API key to use MEOK MCPs?",
-    a: "No. All 8 MEOK MCPs run locally via uvx or pip and don't require any MEOK key for the free tier. The signed-attestation calls go to meok-attestation-api.vercel.app/sign with email-only auth (free) or Pro API key (£79/mo for custom verify domain).",
+    a: "No. All 8 MEOK MCPs run locally via uvx or pip and don't require any MEOK key for the free tier. The signed-attestation calls go to meok-attestation-api.vercel.app/sign with email-only auth (free) or Pro API key (£149/mo for custom verify domain).",
   },
   {
     q: "Do MEOK MCPs work offline?",

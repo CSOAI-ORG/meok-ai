@@ -27,7 +27,7 @@ const FAQ_VS = [
   },
   {
     q: "What's the price difference?",
-    a: "Comp AI lists Starter $199/mo, Pro $997/mo, Done-For-You $3,000+. MEOK Pro is £79/mo, Bias Detection (Article 10) is £299/mo, Audit-Prep Bundle is £4,950 one-time. Combined Comp AI Starter + MEOK Bias Detection is roughly £450/mo for SOC 2 + ISO + EU AI Act Article 10 coverage — typically less than half the cost of Vanta or Drata at the same coverage breadth.",
+    a: "Comp AI lists Starter $199/mo, Pro $997/mo, Done-For-You $3,000+. MEOK Pro is £149/mo, Bias Detection (Article 10) is £299/mo, Audit-Prep Bundle is £4,950 one-time. Combined Comp AI Starter + MEOK Bias Detection is roughly £500/mo for SOC 2 + ISO + EU AI Act Article 10 coverage — typically less than half the cost of Vanta or Drata at the same coverage breadth.",
   },
   {
     q: "How long does it take to add MEOK on top of Comp AI?",
@@ -93,13 +93,13 @@ const PRICING_MIRROR: { tier: string; comp: string; meok: string; meokHref: stri
   {
     tier: "Starter (~£199/mo)",
     comp: "$199/mo · SOC 2 + ISO 27001",
-    meok: "£299/mo · Bias Detection (Article 10) + signed certs",
-    meokHref: "/bias-detection",
+    meok: "£149/mo · Pro (full compliance suite + signed certs)",
+    meokHref: "/labs/mcp",
   },
   {
     tier: "Pro (~£997/mo)",
     comp: "$997/mo · multi-framework + automation",
-    meok: "£1,499/mo · Enterprise (multi-BU, SLA, custom verify domain)",
+    meok: "£999/mo · Defence (all 208 servers, unlimited, SSO, SLA)",
     meokHref: "/pricing",
   },
   {

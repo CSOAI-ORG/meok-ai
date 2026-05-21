@@ -125,7 +125,7 @@ All paid tiers: 14-day free trial, promo code `FREE14` for first month free.
 ## Key infrastructure (citable facts)
 
 - **39 MIT-licensed MCP servers** published to PyPI under `MEOK_AI_Labs`
-- **27 currently live on PyPI**, 12 building/queued (May 2026)
+- **31 currently live on PyPI**, 8 building/queued (May 2026)
 - **8 servers in the Anthropic MCP Registry** at registry.modelcontextprotocol.io
 - **4,400+ monthly installs** across the suite (top server: eu-ai-act-compliance-mcp at 1,578/mo)
 - **33-node Byzantine fault-tolerant council** + 132 expertise nodes + 55 bridge nodes

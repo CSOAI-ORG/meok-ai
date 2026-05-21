@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import EmailCapture from "@/components/email-capture";
+import ShareButtons from "@/components/ShareButtons";
 import { MCPS, CATEGORIES, type RegistryMCP } from "./data";
 
 // ---------------------------------------------------------------------------
@@ -163,8 +164,8 @@ export default function AnthropicRegistryPage() {
             live in the Anthropic Registry.
           </h1>
           <p style={{ fontSize: "1.05rem", color: "rgba(255,255,255,0.7)", lineHeight: 1.55, marginBottom: 22, maxWidth: 680 }}>
-            EU AI Act · DORA · NIS2 · CRA · UK AI Bill · MITRE ATT&CK · SBOM · A2A patterns ·
-            Care membrane · 12 governance MCPs · 12 agent-to-agent MCPs · MIT-licensed,
+            EU AI Act · DORA · NIS2 · CRA · UK AI Bill · Korea AI Basic Act · OASF · EUDI Wallet · MITRE ATT&amp;CK · SBOM ·
+            A2A patterns · BFT Council · x402 · Stripe ACP · Care membrane — <strong style={{ color: GOLD }}>14 governance MCPs</strong> + <strong style={{ color: GOLD }}>20 A2A MCPs</strong> · MIT-licensed,
             self-hostable via <code style={{ background: "rgba(0,0,0,0.4)", padding: "2px 6px", borderRadius: 4 }}>uvx</code> in 10 seconds.
           </p>
           <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
@@ -180,15 +181,14 @@ export default function AnthropicRegistryPage() {
             >
               See full catalogue →
             </Link>
-            <a
-              href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(shareUrl)}&via=meok_ai`}
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{ padding: "12px 22px", background: "transparent", color: "rgba(255,255,255,0.7)", border: "1px solid rgba(255,255,255,0.15)", textDecoration: "none", fontWeight: 700, borderRadius: 12, fontSize: 14 }}
-            >
-              Share on Twitter →
-            </a>
           </div>
+          <ShareButtons
+            text={shareText}
+            url={shareUrl}
+            hashtags={["mcp", "claudecode", "EUAIAct", "compliance"]}
+            hnTitle={`${MCPS.length} MEOK MCPs in the Anthropic Registry — EU AI Act + DORA + NIS2 + A2A`}
+            variant="dark"
+          />
         </div>
 
         {/* A2A Substrate spotlight banner */}
