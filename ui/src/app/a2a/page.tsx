@@ -277,6 +277,71 @@ export default function A2APage() {
           </div>
         </section>
 
+        {/* Multi-protocol coverage */}
+        <section style={{ marginBottom: "2.4rem" }}>
+          <h2 style={{ fontSize: "1.5rem", fontWeight: 900, marginBottom: 6 }}>Multi-protocol coverage</h2>
+          <p style={{ fontSize: 14, color: `${NAVY}99`, marginBottom: 18, lineHeight: 1.55 }}>
+            The agent interop space has 6 live protocols right now. The Substrate bridges
+            <strong> all 6</strong> behind one signing key, so your code stays portable when
+            the standards shake out.
+          </p>
+          <div style={{ background: "#fff", borderRadius: 12, border: `1px solid ${NAVY}1a`, overflow: "hidden" }}>
+            <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 13 }}>
+              <thead>
+                <tr style={{ background: `${NAVY}06` }}>
+                  <th style={{ textAlign: "left", padding: "0.8rem 1rem", fontWeight: 800, color: NAVY }}>Protocol</th>
+                  <th style={{ textAlign: "left", padding: "0.8rem 1rem", fontWeight: 800, color: NAVY }}>Owner</th>
+                  <th style={{ textAlign: "left", padding: "0.8rem 1rem", fontWeight: 800, color: NAVY }}>Layer</th>
+                  <th style={{ textAlign: "left", padding: "0.8rem 1rem", fontWeight: 800, color: NAVY }}>Coverage</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style={{ borderTop: `1px solid ${NAVY}10` }}>
+                  <td style={{ padding: "0.7rem 1rem", fontWeight: 700 }}>MCP</td>
+                  <td style={{ padding: "0.7rem 1rem", color: `${NAVY}cc` }}>Anthropic</td>
+                  <td style={{ padding: "0.7rem 1rem", color: `${NAVY}cc` }}>Agent → tools</td>
+                  <td style={{ padding: "0.7rem 1rem", color: GREEN, fontWeight: 700 }}>✓ Native (all 47)</td>
+                </tr>
+                <tr style={{ borderTop: `1px solid ${NAVY}10` }}>
+                  <td style={{ padding: "0.7rem 1rem", fontWeight: 700 }}>A2A</td>
+                  <td style={{ padding: "0.7rem 1rem", color: `${NAVY}cc` }}>Google + Linux Foundation</td>
+                  <td style={{ padding: "0.7rem 1rem", color: `${NAVY}cc` }}>Agent ↔ agent (absorbed IBM ACP)</td>
+                  <td style={{ padding: "0.7rem 1rem", color: GREEN, fontWeight: 700 }}>✓ Native (12 A2A MCPs)</td>
+                </tr>
+                <tr style={{ borderTop: `1px solid ${NAVY}10` }}>
+                  <td style={{ padding: "0.7rem 1rem", fontWeight: 700 }}>IBM ACP</td>
+                  <td style={{ padding: "0.7rem 1rem", color: `${NAVY}cc` }}>IBM (was)</td>
+                  <td style={{ padding: "0.7rem 1rem", color: `${NAVY}cc` }}>Agent messaging — merged into A2A Sept 2025</td>
+                  <td style={{ padding: "0.7rem 1rem", color: GREEN, fontWeight: 700 }}>✓ Via A2A</td>
+                </tr>
+                <tr style={{ borderTop: `1px solid ${NAVY}10` }}>
+                  <td style={{ padding: "0.7rem 1rem", fontWeight: 700 }}>Stripe ACP</td>
+                  <td style={{ padding: "0.7rem 1rem", color: `${NAVY}cc` }}>Stripe + OpenAI</td>
+                  <td style={{ padding: "0.7rem 1rem", color: `${NAVY}cc` }}>Agent commerce in ChatGPT</td>
+                  <td style={{ padding: "0.7rem 1rem", color: GOLD, fontWeight: 700 }}>◐ Bridge (Q3 2026)</td>
+                </tr>
+                <tr style={{ borderTop: `1px solid ${NAVY}10` }}>
+                  <td style={{ padding: "0.7rem 1rem", fontWeight: 700 }}>AP2</td>
+                  <td style={{ padding: "0.7rem 1rem", color: `${NAVY}cc` }}>Google + 60 orgs (Mastercard, PayPal, Adyen)</td>
+                  <td style={{ padding: "0.7rem 1rem", color: `${NAVY}cc` }}>Cross-platform agent payments + mandates</td>
+                  <td style={{ padding: "0.7rem 1rem", color: GOLD, fontWeight: 700 }}>◐ Bridge (Q3 2026)</td>
+                </tr>
+                <tr style={{ borderTop: `1px solid ${NAVY}10` }}>
+                  <td style={{ padding: "0.7rem 1rem", fontWeight: 700 }}>x402</td>
+                  <td style={{ padding: "0.7rem 1rem", color: `${NAVY}cc` }}>Coinbase</td>
+                  <td style={{ padding: "0.7rem 1rem", color: `${NAVY}cc` }}>HTTP 402 pay-per-call</td>
+                  <td style={{ padding: "0.7rem 1rem", color: GREEN, fontWeight: 700 }}>✓ Partial (api.meok.ai gateway)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p style={{ fontSize: 12, color: `${NAVY}99`, marginTop: 10, lineHeight: 1.5 }}>
+            <strong>Note on "ACP":</strong> the acronym is overloaded. <em>IBM ACP</em> (Agent Communication Protocol) was
+            wound down in Sept 2025 and merged into A2A under Linux Foundation. <em>Stripe ACP</em> (Agentic Commerce
+            Protocol) is a live, separate protocol for in-conversation payments. Our Substrate covers both.
+          </p>
+        </section>
+
         {/* Data moats */}
         <section style={{ marginBottom: "2.4rem" }}>
           <h2 style={{ fontSize: "1.5rem", fontWeight: 900, marginBottom: 6 }}>The 5 data moats</h2>
@@ -318,7 +383,9 @@ export default function A2APage() {
               { q: "What counts as a call for usage-based billing?", a: "Each tool invocation on any of the 12 primitives = 1 call. A typical A2A interaction traverses ~3-5 primitives, so one customer-facing request = ~3-5 billable calls. 100K Substrate-included calls ≈ 20-30K full pipeline runs/month." },
               { q: "Is the data moat aggregation an opt-in?", a: "Substrate customers opt-out by default for moat data sharing during the first 60 days. After that, anonymized aggregate metadata feeds the moats with no payload reading. Enterprise contracts can require permanent opt-out — no discount, but available." },
               { q: "How does this compare to LangGraph / Crew AI / Autogen?", a: "Those are orchestrators. We're the trust + audit substrate underneath them. Use them for workflow, use us for what regulators ask for. Many customers run both." },
-              { q: "What's on the roadmap?", a: "13th primitive: agent-cost-allocator (per-call cost attribution back to upstream tenant). 14th: agent-content-watermark (Article 50 + C2PA integration). Both Q3." },
+              { q: "What about ACP? I heard there's a new agent comms protocol.", a: "Two protocols share the 'ACP' acronym. IBM ACP (Agent Communication Protocol) was wound down in September 2025 and merged into A2A under the Linux Foundation — our Substrate already supports it via A2A. Stripe ACP (Agentic Commerce Protocol) is a separate live protocol for agent commerce inside ChatGPT — we ship the bridge in Q3 2026. See the multi-protocol coverage table above." },
+              { q: "Do you support AP2 mandates and x402?", a: "AP2 (Google Agent Payments Protocol) and x402 (Coinbase HTTP 402) are both on the Q3 roadmap. Our agent-commerce-payments-mcp already handles the PSD2 + MiCA regulatory overlay; AP2 mandate signing + x402 settlement get added Q3. x402 also wraps our api.meok.ai gateway so you can pay-per-call without a Stripe account." },
+              { q: "What's on the roadmap?", a: "13th primitive: agent-cost-allocator (per-call cost attribution back to upstream tenant). 14th: agent-content-watermark (Article 50 + C2PA integration). 15th: agent-commerce-protocol-mcp (Stripe ACP bridge). 16th: agent-x402-paywall-mcp (Coinbase HTTP 402). All Q3." },
             ].map((f, i) => (
               <details key={i} style={{ padding: "1rem 1.2rem", background: "#fff", borderRadius: 10, border: `1px solid ${NAVY}1a` }}>
                 <summary style={{ cursor: "pointer", fontWeight: 700, fontSize: 14, color: NAVY }}>{f.q}</summary>
