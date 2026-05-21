@@ -26,8 +26,8 @@ const NAVY = "#1a1a2e";
 const GOLD = "#c9a84c";
 const BG = "#f5f0e8";
 
-const STRIPE_499 = "https://buy.stripe.com/PLACEHOLDER_ETHICAL_STD";
-const STRIPE_1999 = "https://buy.stripe.com/PLACEHOLDER_ETHICAL_ENT";
+const STRIPE_499 = "https://buy.stripe.com/4gM9AV80kaEG0ZT42k8k837";
+const STRIPE_1999 = "https://buy.stripe.com/28EcN7fsM002fUN1Uc8k835";
 
 const TIERS = [
   {
