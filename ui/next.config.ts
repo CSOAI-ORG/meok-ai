@@ -14,6 +14,22 @@ const nextConfig: NextConfig = {
   compress: true,
   poweredByHeader: false,
 
+  // RSC compat fix — Next.js 15.5.15 + React 19.2.3 + @clerk/nextjs 7.0.5
+  // hits `Cannot read properties of undefined (reading 'registerClientReference')`
+  // in _not-found page-data collection. Excluding these packages from RSC
+  // bundling lets them be require()'d at runtime where their version-specific
+  // react-server-dom-webpack export is resolvable.
+  serverExternalPackages: [
+    "@clerk/nextjs",
+    "@clerk/backend",
+    "@clerk/clerk-sdk-node",
+    "@clerk/shared",
+    "@neondatabase/serverless",
+    "postgres",
+    "stripe",
+    "svix",
+  ],
+
   // Reduce memory usage during build
   experimental: {
     serverActions: {
