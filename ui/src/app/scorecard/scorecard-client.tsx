@@ -19,7 +19,7 @@ const QUESTIONS: { id: string; q: string; yes_pts: number; partial_pts: number; 
   },
   {
     id: "art_50_watermark",
-    q: "If you generate synthetic content (image / video / audio / text), do you embed C2PA + invisible watermark + perceptual fingerprint per the Code of Practice (effective 2 Nov 2026)?",
+    q: "If you generate synthetic content (image / video / audio / text), do you embed C2PA + invisible watermark + perceptual fingerprint per the Code of Practice (effective 2 Aug 2026)?",
     yes_pts: 10,
     partial_pts: 4,
     framework: "EU AI Act Article 50",

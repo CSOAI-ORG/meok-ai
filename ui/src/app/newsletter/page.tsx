@@ -108,7 +108,7 @@ export default function NewsletterPage() {
 
           <div style={{ fontSize: 15, fontWeight: 900, marginBottom: 12 }}>This week's practical tip</div>
           <p style={{ color: `${NAVY}99`, lineHeight: 1.7, fontSize: 13, marginBottom: 16 }}>
-            If you ship generative outputs, confirm your C2PA signing key chain rolls up to a recognized CA before 2 November 2026. Most teams forget that self-signed certs work for testing but fail Adobe / Google / Microsoft surface verification.
+            If you ship generative outputs, confirm your C2PA signing key chain rolls up to a recognized CA before 2 August 2026. Most teams forget that self-signed certs work for testing but fail Adobe / Google / Microsoft surface verification.
           </p>
 
           <div style={{ fontSize: 15, fontWeight: 900, marginBottom: 12 }}>One resource</div>

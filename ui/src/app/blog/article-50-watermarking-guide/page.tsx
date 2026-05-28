@@ -2,12 +2,12 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Article 50 Watermarking — Complete Implementation Guide for 2 November 2026 | MEOK Blog",
+  title: "Article 50 Watermarking — Complete Implementation Guide for 2 August 2026 | MEOK Blog",
   description:
-    "EU AI Act Article 50 binds generative AI providers from 2 November 2026. Here's the C2PA Content Credentials manifest, SynthID-class watermarking, and end-user disclosure pattern that satisfies it.",
+    "EU AI Act Article 50 binds generative AI providers from 2 August 2026. Here's the C2PA Content Credentials manifest, SynthID-class watermarking, and end-user disclosure pattern that satisfies it.",
   alternates: { canonical: "https://meok.ai/blog/article-50-watermarking-guide" },
   openGraph: {
-    title: "Article 50 Watermarking — Complete Guide for 2 November 2026",
+    title: "Article 50 Watermarking — Complete Guide for 2 August 2026",
     description:
       "C2PA Content Credentials 2.1 manifest + SynthID-class robust watermark + end-user disclosure. The pattern that satisfies Article 50.",
     type: "article",
@@ -25,12 +25,12 @@ const BG = "#f5f0e8";
 const ARTICLE_JSONLD = {
   "@context": "https://schema.org",
   "@type": "Article",
-  headline: "Article 50 Watermarking — Complete Implementation Guide for 2 November 2026",
+  headline: "Article 50 Watermarking — Complete Implementation Guide for 2 August 2026",
   datePublished: "2026-04-27",
   dateModified: "2026-04-27",
   author: { "@type": "Person", name: "Nicholas Templeman", url: "https://meok.ai/about" },
   publisher: { "@type": "Organization", name: "MEOK AI Labs", logo: { "@type": "ImageObject", url: "https://meok.ai/logo.png" } },
-  description: "EU AI Act Article 50 binds generative AI from 2 Nov 2026. The C2PA + SynthID + disclosure pattern that satisfies it.",
+  description: "EU AI Act Article 50 binds generative AI from 2 Aug 2026. The C2PA + SynthID + disclosure pattern that satisfies it.",
   mainEntityOfPage: { "@type": "WebPage", "@id": "https://meok.ai/blog/article-50-watermarking-guide" },
 };
 
@@ -42,7 +42,7 @@ export default function Article50GuidePage() {
         <Link href="/blog" style={{ fontSize: 13, color: `${NAVY}66`, textDecoration: "none" }}>← All posts</Link>
         <div style={{ fontSize: 12, color: GOLD, fontWeight: 900, letterSpacing: "0.12em", textTransform: "uppercase", marginTop: 24, marginBottom: 16 }}>EU AI Act Article 50 · 27 April 2026 · 8 min read</div>
         <h1 style={{ fontSize: "clamp(2.2rem, 5vw, 3.2rem)", fontWeight: 900, lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: 16 }}>Article 50 Watermarking — the implementation pattern</h1>
-        <p style={{ fontSize: "1.15rem", color: `${NAVY}99`, lineHeight: 1.6, marginBottom: 32 }}>The clock to 2 November 2026 is real. The Commission Q1 2026 implementing-act guidance settled most of the open questions, and the pattern that satisfies Article 50 is now concrete: <strong>C2PA Content Credentials 2.1 manifest, robust per-output watermark, end-user disclosure</strong>. Here's what each piece looks like in practice.</p>
+        <p style={{ fontSize: "1.15rem", color: `${NAVY}99`, lineHeight: 1.6, marginBottom: 32 }}>The clock to 2 August 2026 is real. The Commission Q1 2026 implementing-act guidance settled most of the open questions, and the pattern that satisfies Article 50 is now concrete: <strong>C2PA Content Credentials 2.1 manifest, robust per-output watermark, end-user disclosure</strong>. Here's what each piece looks like in practice.</p>
 
         <h2 style={{ fontSize: "1.5rem", fontWeight: 900, marginTop: 40, marginBottom: 16 }}>What Article 50 actually says</h2>
         <p style={{ color: `${NAVY}99`, lineHeight: 1.7, marginBottom: 16 }}>Article 50(2) binds <strong>providers</strong> of generative AI systems (text, image, audio, video, synthetic decision content) to ensure outputs are <em>marked in a machine-readable format and detectable as artificially generated or manipulated</em>.</p>
@@ -85,7 +85,7 @@ export default function Article50GuidePage() {
           <li><strong>Synthetic-data training pipelines</strong> — outputs of generative models used to seed downstream training don't trigger Article 50 directly (training-data ≠ output to public). But the resulting model's outputs do.</li>
         </ul>
 
-        <h2 style={{ fontSize: "1.5rem", fontWeight: 900, marginTop: 40, marginBottom: 16 }}>What to ship by 2 November 2026</h2>
+        <h2 style={{ fontSize: "1.5rem", fontWeight: 900, marginTop: 40, marginBottom: 16 }}>What to ship by 2 August 2026</h2>
         <ol style={{ paddingLeft: 20, color: `${NAVY}99`, lineHeight: 1.8, marginBottom: 24 }}>
           <li>C2PA manifest generator wired into your output pipeline (every generation produces a manifest).</li>
           <li>Signing key custody — hardware HSM or cloud KMS. NEVER bundle private keys client-side.</li>

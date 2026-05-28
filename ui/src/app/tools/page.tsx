@@ -38,7 +38,7 @@ const TOOLS = [
   {
     href: "/article-50-kit",
     title: "Article 50 Watermark Starter Kit",
-    blurb: "C2PA Content Credentials manifest + SynthID-class watermarking template. Comply with the 2 Nov 2026 deadline.",
+    blurb: "C2PA Content Credentials manifest + SynthID-class watermarking template. Comply with the 2 Aug 2026 deadline.",
     badge: "£99 · ZIP",
     emoji: "🔏",
   },
@@ -105,7 +105,7 @@ const FAQ = [
   },
   {
     q: "Which is the right starting point?",
-    a: "If you have no idea whether you're in scope, run the Readiness Scorecard (90 sec) — it tells you which articles apply. If you're already mid-build and worried about budget exposure, run the Fine Calculator (30 sec) to see what's at stake. If you're shipping a generative AI product, the Article 50 Kit is the fastest path to November 2026 compliance.",
+    a: "If you have no idea whether you're in scope, run the Readiness Scorecard (90 sec) — it tells you which articles apply. If you're already mid-build and worried about budget exposure, run the Fine Calculator (30 sec) to see what's at stake. If you're shipping a generative AI product, the Article 50 Kit is the fastest path to August 2026 compliance.",
   },
   {
     q: "How do these connect to MEOK's MCP servers?",

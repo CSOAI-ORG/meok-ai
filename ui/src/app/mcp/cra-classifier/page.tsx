@@ -144,7 +144,7 @@ export default function CraClassifierPage() {
 
         <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginBottom: 64 }}>
           <a
-            href="https://buy.stripe.com/14A4gB3K4eUWgYR56o8k836"
+            href="https://buy.stripe.com/eVq14pcgAcMO9wp7ew8k90N"
             target="_blank"
             rel="noopener noreferrer"
             style={{
@@ -298,7 +298,7 @@ export default function CraClassifierPage() {
             Know your product category and close security gaps before conformity assessment begins.
           </p>
           <a
-            href="https://buy.stripe.com/14A4gB3K4eUWgYR56o8k836"
+            href="https://buy.stripe.com/eVq14pcgAcMO9wp7ew8k90N"
             target="_blank"
             rel="noopener noreferrer"
             style={{

@@ -18,7 +18,7 @@ type MCPRecord = {
 
 const CATALOG: Record<string, MCPRecord> = {
   // ---- Governance pack (8) ----
-  "eu-ai-act-compliance": { slug: "eu-ai-act-compliance", pkg: "eu-ai-act-compliance-mcp", name: "io.github.CSOAI-ORG/eu-ai-act-compliance-mcp", title: "EU AI Act Compliance MCP", tagline: "410 articles from EUR-Lex via FTS5 search. Instant risk scan + Annex IV evidence pack.", pack: "governance", features: ["EUR-Lex full text via FTS5 search", "Annex III high-risk classifier (Dec 2027 cliff)", "Article 50 transparency obligations (Nov 2026)", "HMAC-signed compliance attestations"] },
+  "eu-ai-act-compliance": { slug: "eu-ai-act-compliance", pkg: "eu-ai-act-compliance-mcp", name: "io.github.CSOAI-ORG/eu-ai-act-compliance-mcp", title: "EU AI Act Compliance MCP", tagline: "410 articles from EUR-Lex via FTS5 search. Instant risk scan + Annex IV evidence pack.", pack: "governance", features: ["EUR-Lex full text via FTS5 search", "Annex III high-risk classifier (Dec 2027 cliff)", "Article 50 transparency obligations (Aug 2026)", "HMAC-signed compliance attestations"] },
   "dora-compliance": { slug: "dora-compliance", pkg: "dora-compliance-mcp", name: "io.github.CSOAI-ORG/dora-compliance-mcp", title: "DORA Compliance MCP", tagline: "Digital Operational Resilience Act for EU financial entities. ICT risk + third-party register.", pack: "governance", features: ["ICT risk management framework", "Third-party register builder", "Incident reporting (within 24h)", "DORA-NIS2 crosswalk built-in"] },
   "nis2-compliance": { slug: "nis2-compliance", pkg: "nis2-compliance-mcp", name: "io.github.CSOAI-ORG/nis2-compliance-mcp", title: "NIS2 Compliance MCP", tagline: "EU NIS2 Directive cybersecurity baseline. 10 governance domains + entity classification.", pack: "governance", features: ["Entity classification (Essential / Important)", "10 cybersecurity governance domains", "Incident notification workflow", "DE-specific register integration"] },
   "cra-compliance": { slug: "cra-compliance", pkg: "cra-compliance-mcp", name: "io.github.CSOAI-ORG/cra-compliance-mcp", title: "Cyber Resilience Act MCP", tagline: "EU CRA Annex I classifier + SBOM + vulnerability handling. Sept 2027 cliff.", pack: "governance", features: ["Annex I classification (Class I / Class II / important)", "SBOM in CycloneDX 1.6 format", "Vulnerability handling process", "Conformity assessment routing"] },
@@ -26,7 +26,7 @@ const CATALOG: Record<string, MCPRecord> = {
   "ai-incident-reporting": { slug: "ai-incident-reporting", pkg: "ai-incident-reporting-mcp", name: "io.github.CSOAI-ORG/ai-incident-reporting-mcp", title: "AI Incident Reporting MCP", tagline: "EU AI Act Article 73 serious-incident reports. Within 15-day deadline + market surveillance routing.", pack: "governance", features: ["Article 73 incident classification", "15-day reporting workflow", "Market surveillance authority routing", "Incident severity scoring"] },
   "dora-nis2-crosswalk": { slug: "dora-nis2-crosswalk", pkg: "dora-nis2-crosswalk-mcp", name: "io.github.CSOAI-ORG/dora-nis2-crosswalk-mcp", title: "DORA × NIS2 Crosswalk MCP", tagline: "Map shared controls across DORA + NIS2 + EU AI Act. One control test, multi-regulation evidence.", pack: "governance", features: ["DORA → NIS2 control mapping", "NIS2 → EU AI Act mapping", "Shared evidence library", "Single audit, multiple frameworks"] },
   "bias-detection": { slug: "bias-detection", pkg: "bias-detection-mcp", name: "io.github.CSOAI-ORG/bias-detection-mcp", title: "Bias Detection MCP", tagline: "Demographic parity + equalized odds + calibration. EU AI Act Article 10 testing baseline.", pack: "governance", features: ["Demographic parity test", "Equalized odds + calibration metrics", "EU AI Act Article 10 alignment", "Disparate impact reports"] },
-  "watermarking-authenticity": { slug: "watermarking-authenticity", pkg: "watermarking-authenticity-mcp", name: "io.github.CSOAI-ORG/watermarking-authenticity-mcp", title: "Watermarking + Authenticity MCP", tagline: "C2PA 2.1 + invisible watermark + Sigstore. EU AI Act Article 50 (2 Nov 2026 cliff).", pack: "governance", features: ["C2PA 2.1 manifest generation", "Invisible perturbation watermarking", "Sigstore-signed provenance", "RFC 3161 timestamp authority"] },
+  "watermarking-authenticity": { slug: "watermarking-authenticity", pkg: "watermarking-authenticity-mcp", name: "io.github.CSOAI-ORG/watermarking-authenticity-mcp", title: "Watermarking + Authenticity MCP", tagline: "C2PA 2.1 + invisible watermark + Sigstore. EU AI Act Article 50 (2 Aug 2026 cliff).", pack: "governance", features: ["C2PA 2.1 manifest generation", "Invisible perturbation watermarking", "Sigstore-signed provenance", "RFC 3161 timestamp authority"] },
   "uk-ai-bill-compliance": { slug: "uk-ai-bill-compliance", pkg: "uk-ai-bill-compliance-mcp", name: "io.github.CSOAI-ORG/uk-ai-bill-compliance-mcp", title: "UK AI Bill Compliance MCP", tagline: "Pro-innovation UK framework + sectoral regulator mapping (ICO/CMA/FCA/Ofcom).", pack: "governance", features: ["UK AI Bill 2026 obligations", "ICO + CMA + FCA + Ofcom mapping", "Pro-innovation principles checklist", "Sectoral regulator routing"] },
 
   // ---- A2A pack (6) ----
@@ -109,10 +109,10 @@ const BUY_URLS: Record<string, string> = {
   "mifid-ii-ai": "https://buy.stripe.com/14A3cxfsM28a5g90Q88k909",
   "aml-ai": "https://buy.stripe.com/aFa7sN80k6oqeQJ0Q88k90a",
   "cobol-bridge": "https://buy.stripe.com/6oU28tdkE8wyeQJ6as8k90b",
-  "cisa-kev": "https://buy.stripe.com/4gM00lgwQ00223X42k8k90c",
+  "cisa-kev": "https://buy.stripe.com/eVq14pcgAcMO9wp7ew8k90N",
   "sbom-cyclonedx": "https://buy.stripe.com/00w9AV4O828a6kd56o8k90d",
-  "mitre-attack": "https://buy.stripe.com/eVqdRbdkE9ACfUN6as8k90e",
-  "mitre-atlas": "https://buy.stripe.com/28E8wRbcw0024c5fL28k90f",
+  "mitre-attack": "https://buy.stripe.com/eVq14pcgAcMO9wp7ew8k90N",
+  "mitre-atlas": "https://buy.stripe.com/eVq14pcgAcMO9wp7ew8k90N",
   "slsa-supply-chain": "https://buy.stripe.com/28E00lbcw28a8sl0Q88k90g",
   "care-home-cqc":     "https://buy.stripe.com/8x2fZj80k5km9wpbuM8k90n",
   // sigstore-cosign + mitre-attack + mitre-atlas + cisa-kev intentionally OMITTED:
@@ -241,7 +241,7 @@ export default async function MCPDetailPage({ params }: { params: Promise<{ slug
             {/* Urgency banner — governance MCPs face EU AI Act 2 Aug 2026 cliff */}
             {mcp.pack === "governance" && (
               <div style={{ marginBottom: ".75rem", padding: ".75rem 1.25rem", background: "#FB923C", color: "#fff", borderRadius: 10, fontSize: ".88rem", fontWeight: 600 }}>
-                ⏰ EU AI Act Article 50 transparency obligations apply <strong>2 Nov 2026</strong>; high-risk Annex III obligations <strong>2 Dec 2027</strong>. First-10 subscribers lock today&apos;s £29/mo for life.
+                ⏰ EU AI Act Article 50 transparency obligations apply <strong>2 Aug 2026</strong>; high-risk Annex III obligations <strong>2 Dec 2027</strong>. First-10 subscribers lock today&apos;s £29/mo for life.
               </div>
             )}
             {mcp.pack === "a2a" && (

@@ -34,7 +34,7 @@ const COMPARISON: { row: string; drata: string | boolean; meok: string | boolean
   { row: "EU AI Act Article 14 (oversight)", drata: false, meok: true },
   { row: "EU AI Act Article 26(9) (FRIA)", drata: false, meok: true, note: "EDPB harmonised template wired" },
   { row: "EU AI Act Article 43 (conformity)", drata: false, meok: true },
-  { row: "EU AI Act Article 50 (watermarking)", drata: false, meok: true, note: "Live at /article-50-kit · 2 Nov 2026" },
+  { row: "EU AI Act Article 50 (watermarking)", drata: false, meok: true, note: "Live at /article-50-kit · 2 Aug 2026" },
   { row: "EU AI Act Article 72 (post-market)", drata: false, meok: true },
   { row: "DORA (Reg 2022/2554)", drata: false, meok: true },
   { row: "NIS2 / NIS2-UmsuCG (DE)", drata: false, meok: true, note: "Live at /nis2-de-kit" },

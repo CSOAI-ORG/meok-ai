@@ -104,7 +104,7 @@ function useCountUp(target: number, duration = 1800, started = false) {
 
 // ─── COUNTDOWN TIMER ────────────────────────────────────────────────────────
 
-const LAUNCH_DATE = new Date('2026-04-05T00:00:00+01:00'); // April 5 BST
+const ARTICLE_50_DEADLINE = new Date('2026-08-02T00:00:00+02:00'); // 2 Aug 2026 CEST
 
 function useCountdown(target: Date) {
   const [remaining, setRemaining] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0, launched: false });
@@ -132,24 +132,24 @@ function useCountdown(target: Date) {
 }
 
 function CountdownBanner() {
-  const { days, hours, minutes, seconds, launched } = useCountdown(LAUNCH_DATE);
+  const { days, hours, minutes, seconds, launched } = useCountdown(ARTICLE_50_DEADLINE);
   if (launched) {
     return (
-      <div className="bg-[#c9a84c] text-[#1a1a2e] py-2.5 px-6 text-center text-sm font-bold tracking-wide">
-        MEOK is live — deploy your first agent.{" "}
-        <a href="/start" className="underline underline-offset-2 hover:opacity-80">
-          Start free <span aria-hidden="true">→</span>
+      <div className="bg-[#dc2626] text-white py-2.5 px-6 text-center text-sm font-bold tracking-wide">
+        EU AI Act Article 50 is NOW IN FORCE — check your compliance.{" "}
+        <a href="/scorecard" className="underline underline-offset-2 hover:opacity-80">
+          Free assessment <span aria-hidden="true">→</span>
         </a>
       </div>
     );
   }
   return (
-    <div className="bg-[#c9a84c] text-[#1a1a2e] py-2.5 px-6 text-center text-sm font-bold tracking-wide">
-      <span className="hidden sm:inline">Launching soon — </span>
+    <div className="bg-[#dc2626] text-white py-2.5 px-6 text-center text-sm font-bold tracking-wide">
+      <span className="hidden sm:inline">EU AI Act Article 50 deadline — </span>
       <span className="font-mono">{days}d {hours}h {minutes}m {seconds}s</span>
-      <span className="hidden sm:inline"> until launch</span>{" "}
-      <a href="/waitlist" className="underline underline-offset-2 hover:opacity-80 ml-1">
-        Join Early Access <span aria-hidden="true">→</span>
+      <span className="hidden sm:inline"> remaining</span>{" "}
+      <a href="/scorecard" className="underline underline-offset-2 hover:opacity-80 ml-1">
+        Free compliance check <span aria-hidden="true">→</span>
       </a>
     </div>
   );
@@ -721,7 +721,7 @@ function HeroSection() {
           style={{ border: `1px solid ${GOLD}`, color: GOLD, background: "rgba(201,168,76,0.08)" }}
         >
           <span className="inline-block w-1.5 h-1.5 rounded-full" style={{ background: GOLD }} />
-          EU AI Act Article 50 · 2 Nov 2026 cliff · we're ready
+          EU AI Act Article 50 · 2 Aug 2026 cliff · we're ready
         </span>
 
         <h1
@@ -734,6 +734,18 @@ function HeroSection() {
         <p className="max-w-2xl mx-auto mb-3 leading-relaxed font-semibold text-center" style={{ color: "rgba(245,240,232,0.92)", fontSize: "1.3rem" }}>
           234 MCP packages. EU AI Act + DORA + NIS2 + CRA + GDPR + UK AI Bill ready.
         </p>
+        <div className="flex items-center justify-center gap-2 mb-6">
+          <div className="flex -space-x-2">
+            {[1, 2, 3, 4].map((i) => (
+              <div key={i} className="w-8 h-8 rounded-full border-2 border-[#1a1a2e] bg-[#c9a84c]/20 overflow-hidden">
+                <img src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${i * 555}`} alt="User" />
+              </div>
+            ))}
+          </div>
+          <p className="text-sm font-semibold text-[#c9a84c]">
+            <span className="text-white">1,578 downloads/mo</span> &middot; Trusted by AI governance teams
+          </p>
+        </div>
         <p className="max-w-2xl mx-auto mb-9 leading-relaxed text-center" style={{ color: "rgba(245,240,232,0.65)", fontSize: "1.1rem" }}>
           Every Pro tool issues a HMAC-signed attestation auditors validate without an account. Free to start. MIT-licensed. Solo founder, London.
         </p>
@@ -741,7 +753,7 @@ function HeroSection() {
         {/* Primary CTA pair */}
         <div className="flex flex-col sm:flex-row gap-3 justify-center items-center mb-4">
           <a
-            href="https://buy.stripe.com/4gM6oJ1BW4gi6kd6as8k838"
+            href="https://buy.stripe.com/00wfZjcgAeUW4c5cyQ8k90K"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 font-bold rounded-full transition-all shadow-lg hover:shadow-[#c9a84c]/40 hover:scale-105"
@@ -787,7 +799,7 @@ function HeroSection() {
               <div className="text-xs font-semibold text-white/80 leading-snug">Audit-Prep Bundle · 2-day engagement + 90-day support</div>
             </Link>
             <Link href="/article-50-kit" className="group block rounded-xl p-4 transition-all hover:scale-[1.02]" style={{ background: "rgba(220,38,38,0.10)", border: "1px solid rgba(220,38,38,0.35)" }}>
-              <div className="text-[10px] font-black tracking-wider uppercase mb-1" style={{ color: "#dc2626" }}>2 Nov 2026 cliff</div>
+              <div className="text-[10px] font-black tracking-wider uppercase mb-1" style={{ color: "#dc2626" }}>2 Aug 2026 cliff</div>
               <div className="text-xl font-black text-white mb-1">£999</div>
               <div className="text-xs font-semibold text-white/80 leading-snug">EU AI Act Article 50 watermarking kit · C2PA + invisible WM + fingerprint</div>
             </Link>
@@ -836,9 +848,9 @@ function HeroSection() {
         {/* Tier links */}
         <div className="flex items-center gap-3 flex-wrap justify-center text-sm font-medium mb-8" style={{ color: "rgba(245,240,232,0.55)" }}>
           <span>Or self-serve:</span>
-          <a href="https://buy.stripe.com/eVq9AV4O87sudMF42k8k839" target="_blank" rel="noopener noreferrer" className="underline decoration-dotted hover:text-white transition-colors">Pro £149/mo</a>
+          <a href="https://buy.stripe.com/7sY00l6WgbIK0ZTfL28k90Q" target="_blank" rel="noopener noreferrer" className="underline decoration-dotted hover:text-white transition-colors">Pro £149/mo</a>
           <span className="opacity-40">·</span>
-          <a href="https://buy.stripe.com/4gM9AV80kaEG0ZT42k8k837" target="_blank" rel="noopener noreferrer" className="underline decoration-dotted hover:text-white transition-colors">Defence £999/mo</a>
+          <a href="https://buy.stripe.com/7sY00l6WgbIK0ZTfL28k90Q" target="_blank" rel="noopener noreferrer" className="underline decoration-dotted hover:text-white transition-colors">Defence £999/mo</a>
           <span className="opacity-40">·</span>
           <Link href="/pricing" className="underline decoration-dotted hover:text-white transition-colors">All pricing →</Link>
         </div>

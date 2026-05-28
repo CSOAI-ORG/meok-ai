@@ -27,7 +27,7 @@ const GOLD = "#c9a84c";
 const BG = "#f5f0e8";
 
 const STRIPE_299 = "https://buy.stripe.com/3cI7sNfsMaEG5g9dCU8k83T";
-const STRIPE_999 = "https://buy.stripe.com/28EcN7fsM002fUN1Uc8k835";
+const STRIPE_999 = "https://buy.stripe.com/00wfZjcgAeUW4c5cyQ8k90K";
 
 const TIERS = [
   {

@@ -21,7 +21,7 @@ const ARTICLES = [
   { num: 15, title: "Accuracy / Robustness / Cybersecurity", desc: "Technical guarantees + adversarial-attack resilience + audit-grade logging for high-risk AI.", deadline: "Annex III now Dec 2027", href: "/eu-ai-act/article-15" },
   { num: 26, title: "Deployer Obligations + FRIA (26(9))", desc: "Operational obligations on companies USING high-risk AI, plus the Fundamental Rights Impact Assessment for public-sector + insurance deployers.", deadline: "Annex III now Dec 2027", href: "/eu-ai-act/article-26" },
   { num: 43, title: "Conformity Assessment + CE Marking", desc: "Self-assessment (Annex VI) or Notified Body audit (Annex VII) before placing on EU market. EU declaration of conformity + CE marking.", deadline: "Annex III now Dec 2027", href: "/eu-ai-act/article-43" },
-  { num: 50, title: "Transparency + Watermarking", desc: "Machine-readable AI-content marking + visible deepfake disclosure. C2PA Content Credentials + SynthID-class watermark.", deadline: "2 November 2026 — HARD CLIFF", href: "/eu-ai-act/article-50" },
+  { num: 50, title: "Transparency + Watermarking", desc: "Machine-readable AI-content marking + visible deepfake disclosure. C2PA Content Credentials + SynthID-class watermark.", deadline: "2 August 2026 — HARD CLIFF", href: "/eu-ai-act/article-50" },
   { num: 72, title: "Post-Market Monitoring", desc: "Documented PMM plan + continuous data collection + feedback loop into Article 9 RMS + Article 73 incident reporting.", deadline: "Annex III now Dec 2027", href: "/eu-ai-act/article-72" },
 ];
 

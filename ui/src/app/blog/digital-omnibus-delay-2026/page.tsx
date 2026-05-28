@@ -60,7 +60,7 @@ export default function DigitalOmnibusDelayPage() {
         <ul style={{ paddingLeft: 20, color: `${NAVY}99`, lineHeight: 1.8, marginBottom: 24 }}>
           <li><strong>Article 4 — AI literacy.</strong> In force since 2 February 2025. No grace period. Every provider AND every deployer needs a documented AI literacy programme covering staff who use, oversee, or are affected by AI. <Link href="/eu-ai-act/article-4" style={{ color: GOLD }}>Detail</Link>.</li>
           <li><strong>Article 5 — prohibited practices.</strong> Fully in force. Manipulative subliminal techniques, exploitation of vulnerabilities, social scoring, real-time biometric ID in public spaces (with narrow exceptions): banned now.</li>
-          <li><strong>Article 50 — transparency / watermarking.</strong> Now <strong>2 November 2026</strong>. Generative AI providers + deployers need C2PA-class provenance markers. <Link href="/eu-ai-act/article-50" style={{ color: GOLD }}>Detail</Link> · <Link href="/article-50-kit" style={{ color: GOLD }}>£99 starter kit</Link>.</li>
+          <li><strong>Article 50 — transparency / watermarking.</strong> Now <strong>2 August 2026</strong>. Generative AI providers + deployers need C2PA-class provenance markers. <Link href="/eu-ai-act/article-50" style={{ color: GOLD }}>Detail</Link> · <Link href="/article-50-kit" style={{ color: GOLD }}>£99 starter kit</Link>.</li>
           <li><strong>Articles 51-55 — GPAI obligations.</strong> Already in force since 2 August 2025. Foundation-model providers need technical docs, training-data summaries, copyright policies, systemic-risk assessments where applicable.</li>
           <li><strong>Articles 99-101 — penalties.</strong> Effective per the original timeline for whichever obligations the penalties attach to.</li>
         </ul>
@@ -76,7 +76,7 @@ export default function DigitalOmnibusDelayPage() {
         <h2 style={{ fontSize: "1.5rem", fontWeight: 900, marginTop: 40, marginBottom: 16 }}>What to do this quarter</h2>
         <ol style={{ paddingLeft: 20, color: `${NAVY}99`, lineHeight: 1.8, marginBottom: 24 }}>
           <li><strong>Article 4 literacy programme</strong> — document training, identify affected roles, log completion. Already overdue.</li>
-          <li><strong>Article 50 watermarking</strong> — pick a C2PA-compatible provider, integrate, test, ship before 2 Nov 2026. <Link href="/article-50-kit" style={{ color: GOLD }}>Starter kit</Link>.</li>
+          <li><strong>Article 50 watermarking</strong> — pick a C2PA-compatible provider, integrate, test, ship before 2 Aug 2026. <Link href="/article-50-kit" style={{ color: GOLD }}>Starter kit</Link>.</li>
           <li><strong>Annex III scoping</strong> — even though obligations are deferred, classification work is not. Knowing now whether you're in scope is what lets you budget for 2027.</li>
           <li><strong>NIS2-DE entity classification</strong> — German operations or German revenue: you're likely in scope. <Link href="/nis2-de-kit" style={{ color: GOLD }}>£499 kit</Link>.</li>
           <li><strong>Take the readiness scorecard</strong> if you don't know where to start. Free, 90 sec, signed attestation: <Link href="/scorecard" style={{ color: GOLD }}>meok.ai/scorecard</Link>.</li>

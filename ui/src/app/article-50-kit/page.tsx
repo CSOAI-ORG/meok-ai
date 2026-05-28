@@ -5,11 +5,11 @@ import { Article50Countdown } from "@/components/Article50Countdown";
 export const metadata: Metadata = {
   title: "EU AI Act Article 50 Watermarking Kit · £999 · MEOK AI Labs",
   description:
-    "C2PA + invisible watermark + fingerprinting bundle for EU AI Act Article 50 transparency obligations. Hard 2 November 2026 deadline. £999 one-time + £99/mo monitoring optional. Ships in 7 days.",
+    "C2PA + invisible watermark + fingerprinting bundle for EU AI Act Article 50 transparency obligations. Hard 2 August 2026 deadline. £999 one-time + £99/mo monitoring optional. Ships in 7 days.",
   alternates: { canonical: "https://meok.ai/article-50-kit" },
   openGraph: {
     title: "EU AI Act Article 50 Watermarking Kit — £999, ships in 7 days",
-    description: "C2PA + invisible watermark + fingerprinting + signed Article 50 conformity attestation. 2 Nov 2026 cliff.",
+    description: "C2PA + invisible watermark + fingerprinting + signed Article 50 conformity attestation. 2 Aug 2026 cliff.",
     type: "website",
     url: "https://meok.ai/article-50-kit",
     images: [{ url: "/api/og?title=EU+AI+Act+Article+50+Watermarking+Kit&desc=%C2%A3999+%C2%B7+ships+in+7+days+%C2%B7+2+Aug+2026+cliff", width: 1200, height: 630, alt: "Article 50 Watermarking Kit" }],
@@ -20,7 +20,7 @@ const NAVY = "#1a1a2e";
 const GOLD = "#c9a84c";
 const BG = "#f5f0e8";
 
-const STRIPE_LINK = "https://buy.stripe.com/dRmcN794o4gi8sl0Q88k83e";
+const STRIPE_LINK = "https://buy.stripe.com/00wfZjcgAeUW4c5cyQ8k90K";
 
 const PILLARS = [
   {
@@ -55,7 +55,7 @@ const WHY = [
 const FAQ = [
   {
     q: "When does EU AI Act Article 50 apply?",
-    a: "Article 50 transparency obligations apply from 2 November 2026. Providers of generative AI systems must mark AI-generated outputs as machine-readable; deployers must disclose AI generation to people exposed to it.",
+    a: "Article 50 transparency obligations apply from 2 August 2026. Providers of generative AI systems must mark AI-generated outputs as machine-readable; deployers must disclose AI generation to people exposed to it.",
   },
   {
     q: "What's the fine for Article 50 non-compliance?",
@@ -128,7 +128,7 @@ export default function Article50KitPage() {
             marginBottom: 24,
           }}
         >
-          ⚠️ Hard cliff: 2 November 2026
+          ⚠️ Hard cliff: 2 August 2026
         </div>
 
         <h1

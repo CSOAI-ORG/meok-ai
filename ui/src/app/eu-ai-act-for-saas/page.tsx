@@ -4,7 +4,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "EU AI Act for SaaS Companies (2026): Provider, Deployer, or GPAI?",
   description:
-    "Most SaaS shipping AI features land in 'provider' role under the EU AI Act. Article 4 literacy already binds. Article 50 watermarking 2 Nov 2026. Annex III high-risk delayed to 2 Dec 2027.",
+    "Most SaaS shipping AI features land in 'provider' role under the EU AI Act. Article 4 literacy already binds. Article 50 watermarking 2 Aug 2026. Annex III high-risk delayed to 2 Dec 2027.",
   alternates: { canonical: "https://meok.ai/eu-ai-act-for-saas" },
 };
 
@@ -14,9 +14,9 @@ const BG = "#f5f0e8";
 
 const FAQ = [
   { q: "Am I a provider, deployer, or GPAI under the EU AI Act?", a: "If you SHIP an AI system or feature in your SaaS — you're a PROVIDER (Article 3(3)). If you USE someone else's AI system in your business — you're a DEPLOYER (Article 3(4)). If you train + ship a foundation/general-purpose model — you're a GPAI provider (Articles 51-55). Most B2B SaaS with AI features land squarely in PROVIDER role for their own model + DEPLOYER for any third-party model they integrate. You can be all three at once." },
-  { q: "What's binding now for SaaS?", a: "Article 4 (literacy) since 2 February 2025 — your staff need a documented AI training programme. Article 5 (prohibited practices) — fully in force, no manipulative AI / social scoring / etc. GPAI obligations 51-55 — if you ship a foundation model. Article 50 (watermarking) — 2 Nov 2026 if you ship generative outputs. NIS2 (where transposed) — Germany 17 Oct 2026, depends on member state." },
+  { q: "What's binding now for SaaS?", a: "Article 4 (literacy) since 2 February 2025 — your staff need a documented AI training programme. Article 5 (prohibited practices) — fully in force, no manipulative AI / social scoring / etc. GPAI obligations 51-55 — if you ship a foundation model. Article 50 (watermarking) — 2 Aug 2026 if you ship generative outputs. NIS2 (where transposed) — Germany 17 Oct 2026, depends on member state." },
   { q: "Is my SaaS Annex III high-risk?", a: "Probably not — most B2B SaaS with AI features (productivity tools, CRM AI, dev tools, design tools) is NOT Annex III high-risk. Annex III(1)-(8) covers specific use-cases: biometric ID, critical infrastructure, education, employment, essential services, law enforcement, migration/border control, justice. If your SaaS is used by customers IN those domains, you may face deployer-side obligations downstream — your customers will push them back through contract." },
-  { q: "What changes with the Digital Omnibus delay?", a: "Annex III high-risk obligations now apply 2 December 2027 (was 2 August 2026). Annex I product-safety AI now 2 August 2028. Article 50 watermarking applies 2 November 2026. Article 4, Article 5, and GPAI 51-55 are already in force. For most SaaS the only thing that changed is that the high-risk classification work has 16 more months — which means you have time to GET classified properly + ship evidence on day one when obligations bite." },
+  { q: "What changes with the Digital Omnibus delay?", a: "Annex III high-risk obligations now apply 2 December 2027 (was 2 August 2026). Annex I product-safety AI now 2 August 2028. Article 50 watermarking applies 2 August 2026. Article 4, Article 5, and GPAI 51-55 are already in force. For most SaaS the only thing that changed is that the high-risk classification work has 16 more months — which means you have time to GET classified properly + ship evidence on day one when obligations bite." },
   { q: "What does MEOK ship for SaaS?", a: "Free 90-second readiness scorecard at /scorecard with signed attestation. Article 50 watermark starter kit £99 if you ship generative outputs. /transparency £399/mo for instructions-for-use + decision-trace logging. /audit-prep-bundle £4,950 if you need full evidence pack for enterprise customer due-diligence. All MIT-licensed MCPs on PyPI you can self-host." },
 ];
 
@@ -55,7 +55,7 @@ export default function SaaSPage() {
           <li><strong>Article 4 literacy programme</strong> — already binding. Document staff training.</li>
           <li><strong>Article 5 prohibition check</strong> — verify no banned practices (manipulation, exploitation of vulnerabilities, social scoring, etc.).</li>
           <li><strong>Annex III scoping</strong> — check if your AI features fall under Annex III(1)-(8). Most B2B SaaS does not.</li>
-          <li><strong>Article 50 watermarking</strong> — if you ship generative outputs, ship C2PA + watermark by 2 Nov 2026.</li>
+          <li><strong>Article 50 watermarking</strong> — if you ship generative outputs, ship C2PA + watermark by 2 Aug 2026.</li>
           <li><strong>GPAI 51-55</strong> — if you ship a foundation model, technical docs + training-data summary + copyright policy.</li>
           <li><strong>Customer-facing evidence</strong> — your enterprise customers will ask for signed compliance attestation in RFPs. Ship it.</li>
         </ul>

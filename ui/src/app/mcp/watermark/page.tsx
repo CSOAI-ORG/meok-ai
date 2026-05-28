@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "EU AI Act Article 50 Watermarking MCP · MEOK AI Labs",
     description:
-      "Article 50 hits 2 November 2026. Your AI-generated content needs machine-readable provenance markers. Install in 30 seconds.",
+      "Article 50 hits 2 August 2026. Your AI-generated content needs machine-readable provenance markers. Install in 30 seconds.",
     type: "website",
     url: "https://meok.ai/mcp/watermark",
   },
@@ -125,14 +125,14 @@ export default function WatermarkPage() {
           EU AI Act <span style={{ color: GOLD }}>Article 50</span> Watermarking MCP
         </h1>
         <p style={{ fontSize: "1.15rem", color: `${NAVY}99`, maxWidth: 640, marginBottom: 32 }}>
-          Article 50 hits 2 November 2026. Your AI-generated content needs machine-readable provenance
+          Article 50 hits 2 August 2026. Your AI-generated content needs machine-readable provenance
           markers. This MCP server classifies your obligations, generates compliant disclosures, audits
           your content pipeline, and emits cryptographically signed attestations — all from your IDE.
         </p>
 
         <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginBottom: 64 }}>
           <a
-            href="https://buy.stripe.com/14A4gB3K4eUWgYR56o8k836"
+            href="https://buy.stripe.com/eVq14pcgAcMO9wp7ew8k90N"
             target="_blank"
             rel="noopener noreferrer"
             style={{
@@ -280,13 +280,13 @@ export default function WatermarkPage() {
           }}
         >
           <h3 style={{ fontSize: "1.4rem", fontWeight: 900, marginBottom: 8 }}>
-            Article 50 deadline: 2 November 2026
+            Article 50 deadline: 2 August 2026
           </h3>
           <p style={{ color: "rgba(255,255,255,0.6)", marginBottom: 20 }}>
             Start generating compliant provenance markers today. Free tier available — no credit card required.
           </p>
           <a
-            href="https://buy.stripe.com/14A4gB3K4eUWgYR56o8k836"
+            href="https://buy.stripe.com/eVq14pcgAcMO9wp7ew8k90N"
             target="_blank"
             rel="noopener noreferrer"
             style={{

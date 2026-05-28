@@ -30,7 +30,7 @@ const DELIVERABLES = [
   },
   {
     title: "EU AI Act Article 50 compliance",
-    desc: "AI-powered matching and pricing engines fall under Article 50 transparency obligations. We implement compliant disclosures, provenance markers, and documentation before the November 2026 deadline.",
+    desc: "AI-powered matching and pricing engines fall under Article 50 transparency obligations. We implement compliant disclosures, provenance markers, and documentation before the August 2026 deadline.",
   },
   {
     title: "HMAC-signed attestations",
@@ -57,7 +57,7 @@ const PRICING = [
     price: "£5,000",
     period: "flat",
     desc: "48h MCP readiness assessment. Full stack audit, implementation roadmap, compliance gap analysis.",
-    href: "https://buy.stripe.com/4gM7sN2G0bIKeQJfL28k833",
+    href: "https://buy.stripe.com/00wfZjcgAeUW4c5cyQ8k90K",
     highlight: false,
   },
   {
@@ -65,7 +65,7 @@ const PRICING = [
     price: "£199",
     period: "/mo",
     desc: "Ongoing MCP maintenance, tool updates, compliance monitoring, priority support.",
-    href: "https://buy.stripe.com/14A4gB3K4eUWgYR56o8k836",
+    href: "https://buy.stripe.com/eVq14pcgAcMO9wp7ew8k90N",
     highlight: true,
   },
   {
@@ -73,7 +73,7 @@ const PRICING = [
     price: "£1,499",
     period: "/mo",
     desc: "Dedicated MCP infrastructure, custom integrations, SLA, dedicated account manager, onboarding.",
-    href: "https://buy.stripe.com/14A4gB3K4eUWgYR56o8k836",
+    href: "https://buy.stripe.com/eVq14pcgAcMO9wp7ew8k90N",
     highlight: false,
   },
 ];
@@ -151,7 +151,7 @@ export default function ConstructionPage() {
 
         <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginBottom: 64 }}>
           <a
-            href="https://buy.stripe.com/4gM7sN2G0bIKeQJfL28k833"
+            href="https://buy.stripe.com/00wfZjcgAeUW4c5cyQ8k90K"
             target="_blank"
             rel="noopener noreferrer"
             style={{
@@ -167,7 +167,7 @@ export default function ConstructionPage() {
             Book 48h Assessment — £5,000 →
           </a>
           <a
-            href="https://buy.stripe.com/14A4gB3K4eUWgYR56o8k836"
+            href="https://buy.stripe.com/eVq14pcgAcMO9wp7ew8k90N"
             target="_blank"
             rel="noopener noreferrer"
             style={{
@@ -289,7 +289,7 @@ export default function ConstructionPage() {
             The construction hire market is consolidating around AI-native platforms. Start your MCP transformation today.
           </p>
           <a
-            href="https://buy.stripe.com/4gM7sN2G0bIKeQJfL28k833"
+            href="https://buy.stripe.com/00wfZjcgAeUW4c5cyQ8k90K"
             target="_blank"
             rel="noopener noreferrer"
             style={{

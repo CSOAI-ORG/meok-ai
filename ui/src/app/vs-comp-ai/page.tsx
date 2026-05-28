@@ -70,7 +70,7 @@ const COMPARISON: { row: string; comp: string | boolean; meok: string | boolean;
   { row: "EU AI Act Article 14 (human oversight)", comp: false, meok: true },
   { row: "EU AI Act Article 26(9) (FRIA — Fundamental Rights Impact)", comp: false, meok: true, note: "EDPB harmonised template (14 Apr 2026) wired" },
   { row: "EU AI Act Article 43 (conformity assessment)", comp: false, meok: true },
-  { row: "EU AI Act Article 50 (transparency + watermarking)", comp: false, meok: true, note: "Live at /article-50-kit · 2 Nov 2026 cliff" },
+  { row: "EU AI Act Article 50 (transparency + watermarking)", comp: false, meok: true, note: "Live at /article-50-kit · 2 Aug 2026 cliff" },
   { row: "EU AI Act Article 72 (post-market monitoring)", comp: false, meok: true },
   { row: "DORA (Reg 2022/2554) — financial entities", comp: false, meok: true, note: "Belgium hard cliff already passed 18 Apr 2026" },
   { row: "NIS2 / NIS2-UmsuCG (DE)", comp: false, meok: true, note: "Live at /nis2-de-kit · DE deadline missed by ~17.5K entities" },

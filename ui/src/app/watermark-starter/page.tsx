@@ -20,7 +20,7 @@ const GOLD = "#c9a84c";
 const BG = "#f5f0e8";
 const RED = "#dc2626";
 
-const STRIPE_LINK = "https://buy.stripe.com/7sY8wR94o9AC5g98iA8k83q";
+const STRIPE_LINK = "https://buy.stripe.com/dRmfZj2G03ceeQJ8iA8k90O";
 
 const CONTENTS = [
   {
@@ -41,7 +41,7 @@ const CONTENTS = [
   },
   {
     file: "05-conformity-attestation-template.json",
-    desc: "Signed Article 50 conformity attestation JSON template. HMAC-SHA256, public verify URL, dated to 2 November 2026 cliff. Plug your entity name + signing key + paste into your evidence pack.",
+    desc: "Signed Article 50 conformity attestation JSON template. HMAC-SHA256, public verify URL, dated to 2 August 2026 cliff. Plug your entity name + signing key + paste into your evidence pack.",
   },
   {
     file: "06-disclosure-copy-library.md",
@@ -118,7 +118,7 @@ export default function WatermarkStarterPage() {
         <Link href="/" style={{ fontSize: 13, color: `${NAVY}66`, textDecoration: "none" }}>← meok.ai</Link>
 
         <div style={{ display: "inline-block", padding: "6px 12px", borderRadius: 999, background: "rgba(220,38,38,0.1)", border: `1px solid rgba(220,38,38,0.4)`, color: RED, fontSize: 12, fontWeight: 900, letterSpacing: "0.12em", textTransform: "uppercase", marginTop: 24, marginBottom: 24 }}>
-          ⚠️ 2 Nov 2026 cliff · £99 self-serve · 2-hour ship
+          ⚠️ 2 Aug 2026 cliff · £99 self-serve · 2-hour ship
         </div>
 
         <h1 style={{ fontSize: "clamp(2.4rem, 5vw, 3.6rem)", fontWeight: 900, lineHeight: 1.05, letterSpacing: "-0.02em", marginBottom: 16 }}>

@@ -42,7 +42,7 @@ const PROTOCOLS: { id: string; name: string; owner: string; layer: string; statu
 ];
 
 const FRAMEWORKS = [
-  { code: "EU AI Act", date: "In force · Art 50 cliff Nov 2026 · Annex III Dec 2027", status: "native" as ProtoStatus, mcp: "eu-ai-act-compliance-mcp" },
+  { code: "EU AI Act", date: "In force · Art 50 cliff Aug 2026 · Annex III Dec 2027", status: "native" as ProtoStatus, mcp: "eu-ai-act-compliance-mcp" },
   { code: "DORA", date: "In force · 17 Jan 2025", status: "native" as ProtoStatus, mcp: "dora-compliance-mcp" },
   { code: "NIS2", date: "In force · DE 6 Mar 2026", status: "native" as ProtoStatus, mcp: "nis2-compliance-mcp + meok-nis2-de-register-mcp" },
   { code: "EU Cyber Resilience Act", date: "In force · 11 Dec 2027", status: "native" as ProtoStatus, mcp: "cra-compliance-mcp" },

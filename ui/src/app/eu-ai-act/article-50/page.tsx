@@ -3,13 +3,13 @@ import Link from "next/link";
 import { Article50Countdown } from "@/components/Article50Countdown";
 
 export const metadata: Metadata = {
-  title: "EU AI Act Article 50 — Transparency & Watermarking (2 Nov 2026 cliff)",
+  title: "EU AI Act Article 50 — Transparency & Watermarking (2 Aug 2026 cliff)",
   description:
     "What EU AI Act Article 50 actually requires: machine-readable AI-content marking + visible disclosure to users. Code of Practice 2-layer approach. €15M / 3% turnover fines. Implementation guide.",
   alternates: { canonical: "https://meok.ai/eu-ai-act/article-50" },
   openGraph: {
     title: "EU AI Act Article 50 — Watermarking + Transparency Guide",
-    description: "C2PA + invisible watermark + fingerprinting. 2 Nov 2026 deadline. Fines €15M / 3%.",
+    description: "C2PA + invisible watermark + fingerprinting. 2 Aug 2026 deadline. Fines €15M / 3%.",
     type: "article",
     url: "https://meok.ai/eu-ai-act/article-50",
   },
@@ -23,7 +23,7 @@ const RED = "#dc2626";
 const FAQ = [
   {
     q: "When does EU AI Act Article 50 apply?",
-    a: "Article 50 transparency obligations apply from 2 November 2026 (24 months after entry into force on 1 August 2024). Providers of AI systems generating synthetic content must mark outputs as machine-readable. Deployers must visibly disclose AI generation to people exposed to it.",
+    a: "Article 50 transparency obligations apply from 2 August 2026 (24 months after entry into force on 1 August 2024). Providers of AI systems generating synthetic content must mark outputs as machine-readable. Deployers must visibly disclose AI generation to people exposed to it.",
   },
   {
     q: "What does 'machine-readable marking' actually mean?",
@@ -69,7 +69,7 @@ const ARTICLE_JSONLD = {
   "@context": "https://schema.org",
   "@type": "Article",
   headline: "EU AI Act Article 50 — Transparency & Watermarking",
-  description: "Implementation guide for EU AI Act Article 50 transparency obligations. 2 November 2026 cliff.",
+  description: "Implementation guide for EU AI Act Article 50 transparency obligations. 2 August 2026 cliff.",
   author: { "@type": "Organization", name: "MEOK AI Labs", url: "https://meok.ai" },
   publisher: { "@type": "Organization", name: "MEOK AI Labs", url: "https://meok.ai" },
   datePublished: "2026-04-27",
@@ -89,7 +89,7 @@ export default function Article50Page() {
         </Link>
 
         <div style={{ display: "inline-block", padding: "6px 12px", borderRadius: 999, background: "rgba(220,38,38,0.1)", border: `1px solid rgba(220,38,38,0.4)`, color: RED, fontSize: 12, fontWeight: 900, letterSpacing: "0.12em", textTransform: "uppercase", marginTop: 24, marginBottom: 24 }}>
-          ⚠️ 2 November 2026 cliff
+          ⚠️ 2 August 2026 cliff
         </div>
 
         <h1 style={{ fontSize: "clamp(2.4rem, 5vw, 3.6rem)", fontWeight: 900, lineHeight: 1.05, letterSpacing: "-0.02em", marginBottom: 16 }}>
@@ -97,7 +97,7 @@ export default function Article50Page() {
         </h1>
         <p style={{ fontSize: "1.1rem", color: `${NAVY}99`, maxWidth: 720, marginBottom: 40, lineHeight: 1.6 }}>
           Article 50 is the EU AI Act provision that forces every consumer-facing AI product into
-          provable transparency. Effective 2 November 2026. €15M / 3% turnover fines. The Code of
+          provable transparency. Effective 2 August 2026. €15M / 3% turnover fines. The Code of
           Practice on AI-generated content marking — final draft expected June 2026 — adds a
           two-layer technical specification most current tools do not meet.
         </p>
@@ -158,7 +158,7 @@ export default function Article50Page() {
         </div>
 
         <div style={{ background: NAVY, color: "white", padding: 32, borderRadius: 16, textAlign: "center", marginTop: 32 }}>
-          <h3 style={{ fontSize: "1.4rem", fontWeight: 900, marginBottom: 8 }}>2 Nov 2026 is the only real EU AI Act cliff left</h3>
+          <h3 style={{ fontSize: "1.4rem", fontWeight: 900, marginBottom: 8 }}>2 Aug 2026 is the only real EU AI Act cliff left</h3>
           <p style={{ color: "rgba(255,255,255,0.6)", marginBottom: 20, maxWidth: 580, margin: "0 auto 20px" }}>
             The Digital Omnibus delayed Annex III high-risk to Dec 2027. Article 50 wasn't delayed.
           </p>

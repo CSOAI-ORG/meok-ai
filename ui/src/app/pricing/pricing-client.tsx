@@ -303,7 +303,7 @@ const pricingJsonLd = {
         {
           "@type": "Offer",
           name: "BYOK",
-          price: "5",
+          price: "19",
           priceCurrency: "GBP",
           billingIncrement: "P1M",
           description: "Bring your own API keys. Platform access at a flat monthly fee.",
@@ -315,7 +315,15 @@ const pricingJsonLd = {
           priceCurrency: "GBP",
           description: "Sovereign AI companion, free forever. No credit card.",
         },
-{
+        {
+           "@type": "Offer",
+           name: "Starter",
+           price: "49",
+           priceCurrency: "GBP",
+           billingIncrement: "P1M",
+           description: "Professional AI with persistent memory and 24/7 Guardian protection.",
+         },
+        {
            "@type": "Offer",
            name: "Pro",
            price: "149",
@@ -390,11 +398,11 @@ function FaqItem({ q, a }: { q: string; a: string }) {
 export default function PricingClient() {
   const [isAnnual, setIsAnnual] = useState(false);
 
-  const sovereignMonthly = 9;
-  const proMonthly = 19;
+  const sovereignMonthly = 49;
+  const proMonthly = 149;
 
-  const sovereignAnnualTotal = 90;
-  const proAnnualTotal = 190;
+  const sovereignAnnualTotal = 490;
+  const proAnnualTotal = 1490;
 
   const sovereignAnnualPerMonth = Math.round((sovereignAnnualTotal / 12) * 100) / 100;
   const proAnnualPerMonth = Math.round((proAnnualTotal / 12) * 100) / 100;
@@ -579,8 +587,8 @@ export default function PricingClient() {
                 <li className="flex gap-2"><span className="text-[#c9a84c]">✓</span> Slack support channel</li>
                 <li className="flex gap-2"><span className="text-[#c9a84c]">✓</span> Unlimited attestations</li>
               </ul>
-              <a href="https://buy.stripe.com/14A4gB3K4eUWgYR56o8k836" className="block text-center py-3 rounded-xl bg-[#c9a84c] text-[#1a1a2e] font-black text-sm hover:bg-[#d4b258] transition">Subscribe Monthly →</a>
-              <a href="https://buy.stripe.com/28E3cx2G07su9wpdCU8k83i" className="block text-center mt-2 text-xs text-white/70 font-bold hover:text-white">or pay annual £1,490 (save £298) →</a>
+              <a href="https://buy.stripe.com/eVq14pcgAcMO9wp7ew8k90N" className="block text-center py-3 rounded-xl bg-[#c9a84c] text-[#1a1a2e] font-black text-sm hover:bg-[#d4b258] transition">Subscribe Monthly →</a>
+              <a href="https://buy.stripe.com/dRmfZj2G03ceeQJ8iA8k90O" className="block text-center mt-2 text-xs text-white/70 font-bold hover:text-white">or pay annual £1,490 (save £298) →</a>
               <p className="text-[11px] text-white/40 mt-2 text-center">Cancel anytime · 14-day refund</p>
             </div>
 
@@ -599,8 +607,8 @@ export default function PricingClient() {
                 <li className="flex gap-2"><span className="text-[#c9a84c]">✓</span> 99.9% SLA</li>
                 <li className="flex gap-2"><span className="text-[#c9a84c]">✓</span> Custom verify domain</li>
               </ul>
-              <a href="https://buy.stripe.com/cNk8wR3K4eUWgYR56o8k83h" className="block text-center py-3 rounded-xl border-2 border-white/20 text-white font-black text-sm hover:bg-white/10 transition">Subscribe Monthly →</a>
-              <a href="https://buy.stripe.com/9B6fZj0xS002eQJ8iA8k83j" className="block text-center mt-2 text-xs text-white/70 font-bold hover:text-white">or pay annual £9,990 (save £1,998) →</a>
+              <a href="https://buy.stripe.com/eVq7sN6Wg9AC3812Yg8k90R" className="block text-center py-3 rounded-xl border-2 border-white/20 text-white font-black text-sm hover:bg-white/10 transition">Subscribe Monthly →</a>
+              <a href="https://buy.stripe.com/eVq7sN6Wg9AC3812Yg8k90R" className="block text-center mt-2 text-xs text-white/70 font-bold hover:text-white">or pay annual £9,990 (save £1,998) →</a>
               <a href="mailto:nicholas@meok.ai?subject=MEOK%20Defence%20plan%20question" className="block text-center mt-1 text-[11px] text-white/40 hover:text-white/60">Questions? Email us →</a>
             </div>
 
@@ -631,8 +639,8 @@ export default function PricingClient() {
               <p className="text-sm text-white/60">Of ~30K obligated entities, only 11.5K registered by deadline. ~18K are non-compliant right now.</p>
             </div>
             <div className="flex flex-col sm:flex-row gap-3 flex-shrink-0">
-              <a href="https://buy.stripe.com/9B69AVfsM28afUN0Q88k83b" className="px-5 py-3 rounded-xl bg-white text-[#1a1a2e] font-black text-sm whitespace-nowrap">£49 self-serve →</a>
-              <a href="https://buy.stripe.com/bJedRb1BWdQSgYRfL28k83c" className="px-5 py-3 rounded-xl bg-[#c9a84c] text-[#1a1a2e] font-black text-sm whitespace-nowrap">£999 done-for-you →</a>
+              <a href="https://buy.stripe.com/7sY00l6WgbIK0ZTfL28k90Q" className="px-5 py-3 rounded-xl bg-white text-[#1a1a2e] font-black text-sm whitespace-nowrap">£49 self-serve →</a>
+              <a href="https://buy.stripe.com/7sY00l6WgbIK0ZTfL28k90Q" className="px-5 py-3 rounded-xl bg-[#c9a84c] text-[#1a1a2e] font-black text-sm whitespace-nowrap">£999 done-for-you →</a>
             </div>
           </div>
 
@@ -804,7 +812,7 @@ export default function PricingClient() {
                 </div>
                 <div className="flex items-baseline gap-2 mb-1">
                   {isAnnual && (
-                    <span className="text-xl font-black text-white/25 line-through">£19</span>
+                    <span className="text-xl font-black text-white/25 line-through">£149</span>
                   )}
                   <span className="text-5xl font-black text-white">{fmt(proPrice)}</span>
                   <span className="text-white/30 text-sm">/mo{isAnnual ? "*" : ""}</span>

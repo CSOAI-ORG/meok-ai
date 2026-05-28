@@ -39,7 +39,7 @@ export const metadata: Metadata = {
 
 type GovMCP = { num: number; slug: string; title: string; framework: string; deadline?: string };
 const GOV_MCPS: GovMCP[] = [
-  { num: 1, slug: "eu-ai-act-compliance-mcp", title: "EU AI Act Compliance", framework: "EU AI Act (Reg 2024/1689)", deadline: "Art 50 watermarking · 2 Nov 2026" },
+  { num: 1, slug: "eu-ai-act-compliance-mcp", title: "EU AI Act Compliance", framework: "EU AI Act (Reg 2024/1689)", deadline: "Art 50 watermarking · 2 Aug 2026" },
   { num: 2, slug: "dora-compliance-mcp", title: "DORA Compliance", framework: "EU DORA (Reg 2022/2554)", deadline: "In force · 17 Jan 2025" },
   { num: 3, slug: "nis2-compliance-mcp", title: "NIS2 Compliance", framework: "EU NIS2 Directive 2022/2555", deadline: "In force · DE deadline passed 6 Mar 2026" },
   { num: 4, slug: "cra-compliance-mcp", title: "Cyber Resilience Act", framework: "EU CRA (Reg 2024/2847)", deadline: "In force · main obligations 11 Dec 2027" },
@@ -47,7 +47,7 @@ const GOV_MCPS: GovMCP[] = [
   { num: 6, slug: "ai-incident-reporting-mcp", title: "AI Incident Reporting", framework: "EU AI Act Art 73 + DORA Art 19 + NIS2 Art 23 + GDPR Art 33 + ISO 42001 cl 9", deadline: "EU AI Act 15-day clock" },
   { num: 7, slug: "dora-nis2-crosswalk-mcp", title: "DORA × NIS2 Crosswalk", framework: "Dual-compliance mapping", deadline: "For EU banks, CASPs, CTPPs" },
   { num: 8, slug: "bias-detection-mcp", title: "Bias Detection", framework: "EU AI Act Art 10 + ISO 42005 + NIST AI 600-1", deadline: "Continuous monitoring" },
-  { num: 9, slug: "watermarking-authenticity-mcp", title: "Watermarking + C2PA", framework: "EU AI Act Art 50 + C2PA + EU Code of Practice GenAI", deadline: "2 Nov 2026 cliff" },
+  { num: 9, slug: "watermarking-authenticity-mcp", title: "Watermarking + C2PA", framework: "EU AI Act Art 50 + C2PA + EU Code of Practice GenAI", deadline: "2 Aug 2026 cliff" },
   { num: 10, slug: "uk-ai-bill-compliance-mcp", title: "UK AI Bill Compliance", framework: "UK AI White Paper + AI (Regulation) Bill + ATRS + ICO/FCA/MHRA/CMA/Ofcom/HSE", deadline: "ATRS already mandated" },
 ];
 

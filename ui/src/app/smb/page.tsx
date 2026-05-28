@@ -605,12 +605,12 @@ export default function SMBPage() {
               Regulatory deadline approaching
             </div>
             <h2 className="text-3xl sm:text-4xl font-black mb-4 leading-tight">
-              EU AI Act: Nov 2026 transparency cliff.
+              EU AI Act: Aug 2026 transparency cliff.
               <br />
               <span className="text-gradient-gold">Is your business ready?</span>
             </h2>
             <p className="text-white/50 max-w-2xl mx-auto leading-relaxed">
-              Article 50 transparency + watermarking obligations apply 2 November 2026 to anyone shipping GenAI in the EU.
+              Article 50 transparency + watermarking obligations apply 2 August 2026 to anyone shipping GenAI in the EU.
               The Digital Omnibus (March 2026) delayed Annex III high-risk to 2 Dec 2027 — but Article 50 wasn&apos;t delayed.
               Most businesses still think they have until 2027. MEOK is compliant from day one.
             </p>

@@ -73,7 +73,7 @@ export default function ComplianceAuditClient() {
         <div className="text-center mb-12">
           <div className="inline-flex items-center gap-2 bg-amber-50 text-amber-700 px-4 py-2 rounded-full text-sm font-medium mb-6">
             <Clock className="w-4 h-4" />
-            EU AI Act Article 50 watermarking: 2 November 2026
+            EU AI Act Article 50 watermarking: 2 August 2026
           </div>
           <h1 className="text-5xl font-bold tracking-tight mb-4">
             EU AI Act Compliance<br />

@@ -32,7 +32,7 @@ const COMPARISON: { row: string; vanta: string | boolean; meok: string | boolean
   { row: "EU AI Act Article 14 (oversight)", vanta: false, meok: true },
   { row: "EU AI Act Article 26(9) (FRIA)", vanta: false, meok: true, note: "EDPB harmonised template (14 Apr 2026) wired" },
   { row: "EU AI Act Article 43 (conformity)", vanta: false, meok: true },
-  { row: "EU AI Act Article 50 (watermarking)", vanta: false, meok: true, note: "Live at /article-50-kit · 2 Nov 2026 cliff" },
+  { row: "EU AI Act Article 50 (watermarking)", vanta: false, meok: true, note: "Live at /article-50-kit · 2 Aug 2026 cliff" },
   { row: "EU AI Act Article 72 (post-market)", vanta: false, meok: true },
   { row: "DORA (Reg 2022/2554)", vanta: false, meok: true, note: "Belgium hard cliff already passed 18 Apr 2026" },
   { row: "NIS2 / NIS2-UmsuCG (DE)", vanta: false, meok: true, note: "Live at /nis2-de-kit" },

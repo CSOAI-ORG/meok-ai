@@ -25,14 +25,14 @@ const STATS = [
 ];
 
 const PACKS = [
-  { name: "Legal & Compliance", price: "99", servers: 12, desc: "EU AI Act, NIST, ISO 42001, GDPR, SOC 2, HIPAA + crosswalk", href: "https://buy.stripe.com/fZu00l0xS4gi8slcyQ8k82W" },
-  { name: "Healthcare", price: "79", servers: 7, desc: "FHIR R4, patient safety, clinical trials, HIPAA, GDPR", href: "https://buy.stripe.com/4gMbJ3gwQ6oq38142k8k82Z" },
-  { name: "Financial Services", price: "79", servers: 9, desc: "SOC 2, PCI DSS, tax, budget, expense, risk, stock", href: "https://buy.stripe.com/5kQ00ldkEdQS9wp42k8k82Y" },
-  { name: "Cybersecurity", price: "79", servers: 8, desc: "OWASP Agentic, deepfake detection, trust chains, credentials", href: "https://buy.stripe.com/14A3cx1BW3ce7oh7ew8k82X" },
-  { name: "SMB Operations", price: "49", servers: 10, desc: "Invoice, expense, CRM, support, time tracking, PM", href: "https://buy.stripe.com/00w28tdkE3ce6kd7ew8k82R" },
-  { name: "Marketing & Growth", price: "49", servers: 10, desc: "Ad copy, content calendar, SEO, social, leads, sentiment", href: "https://buy.stripe.com/8x200l6Wg7su9wpeGY8k82T" },
-  { name: "Developer Tools", price: "29", servers: 10, desc: "Code review, CI/CD, testing, API docs, Docker, git", href: "https://buy.stripe.com/3cI4gB80k5kmcIB42k8k82S" },
-  { name: "Defence All-In", price: "999", servers: 208, desc: "Every server, unlimited calls, SSO, SLA, on-premise", href: "https://buy.stripe.com/6oUdRb1BWeUWcIBbuM8k82Q" },
+  { name: "Legal & Compliance", price: "99", servers: 12, desc: "EU AI Act, NIST, ISO 42001, GDPR, SOC 2, HIPAA + crosswalk", href: "https://buy.stripe.com/00wfZjcgAeUW4c5cyQ8k90K" },
+  { name: "Healthcare", price: "79", servers: 7, desc: "FHIR R4, patient safety, clinical trials, HIPAA, GDPR", href: "https://buy.stripe.com/aFaeVfeoIbIKcIBdCU8k90S" },
+  { name: "Financial Services", price: "79", servers: 9, desc: "SOC 2, PCI DSS, tax, budget, expense, risk, stock", href: "https://buy.stripe.com/aFaeVfeoIbIKcIBdCU8k90S" },
+  { name: "Cybersecurity", price: "79", servers: 8, desc: "OWASP Agentic, deepfake detection, trust chains, credentials", href: "https://buy.stripe.com/aFaeVfeoIbIKcIBdCU8k90S" },
+  { name: "SMB Operations", price: "49", servers: 10, desc: "Invoice, expense, CRM, support, time tracking, PM", href: "https://buy.stripe.com/aFaeVfeoIbIKcIBdCU8k90S" },
+  { name: "Marketing & Growth", price: "49", servers: 10, desc: "Ad copy, content calendar, SEO, social, leads, sentiment", href: "https://buy.stripe.com/eVq7sN6Wg9AC3812Yg8k90R" },
+  { name: "Developer Tools", price: "29", servers: 10, desc: "Code review, CI/CD, testing, API docs, Docker, git", href: "https://buy.stripe.com/eVq7sN6Wg9AC3812Yg8k90R" },
+  { name: "Defence All-In", price: "999", servers: 208, desc: "Every server, unlimited calls, SSO, SLA, on-premise", href: "https://buy.stripe.com/eVq7sN6Wg9AC3812Yg8k90R" },
 ];
 
 const TIERS = [
@@ -53,7 +53,7 @@ const TIERS = [
     desc: "For small businesses",
     features: ["1 industry pack included", "500 API calls/day", "Data persistence", "Email support", "Audit logging"],
     cta: "Start Free Trial",
-    href: "https://buy.stripe.com/00w28tdkE3ce6kd7ew8k82R",
+    href: "https://buy.stripe.com/aFaeVfeoIbIKcIBdCU8k90S",
     popular: false,
   },
   {
@@ -63,7 +63,7 @@ const TIERS = [
     desc: "For consultants & mid-market",
     features: ["Full compliance suite", "12 framework crosswalks", "2,000 API calls/day", "Audit trail export", "Priority support", "1 industry pack included"],
     cta: "Start Free Trial",
-    href: "https://buy.stripe.com/eVqcN74O8bIK7oh42k8k830",
+    href: "https://buy.stripe.com/00wfZjcgAeUW4c5cyQ8k90K",
     popular: true,
   },
   {
@@ -117,7 +117,7 @@ export default function LabsMcpPage() {
         <div className="relative max-w-5xl mx-auto">
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-red-500/10 border border-red-500/30 text-red-400 text-xs font-bold tracking-widest uppercase mb-8">
             <AlertTriangle className="w-3 h-3" />
-            EU AI Act Article 50 deadline: 2 November 2026
+            EU AI Act Article 50 deadline: 2 August 2026
           </div>
 
           <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-6">
@@ -129,6 +129,18 @@ export default function LabsMcpPage() {
           <p className="text-xl text-[#f5f0e8]/70 max-w-3xl mx-auto mb-4">
             208 MCP servers. 1,054 tools. 12 regulatory frameworks.
           </p>
+          <div className="flex items-center justify-center gap-2 mb-6">
+            <div className="flex -space-x-2">
+              {[1, 2, 3, 4].map((i) => (
+                <div key={i} className="w-8 h-8 rounded-full border-2 border-[#0d0c18] bg-[#c9a84c]/20 overflow-hidden">
+                  <img src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${i * 123}`} alt="User" />
+                </div>
+              ))}
+            </div>
+            <p className="text-sm font-semibold text-[#c9a84c]">
+              <span className="text-white">1,578 downloads/mo</span> &middot; Trusted by AI governance teams
+            </p>
+          </div>
           <p className="text-lg text-[#f5f0e8]/50 max-w-2xl mx-auto mb-8">
             The only MCP provider with ISO 42001 compliance and 12-framework crosswalk mapping.
             Enterprise compliance at SMB prices.

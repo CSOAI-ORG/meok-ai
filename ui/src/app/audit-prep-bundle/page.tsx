@@ -19,12 +19,12 @@ const NAVY = "#1a1a2e";
 const GOLD = "#c9a84c";
 const BG = "#f5f0e8";
 
-const STRIPE_LINK = "https://buy.stripe.com/dRmfZjcgA6oq5g9cyQ8k83d";
+const STRIPE_LINK = "https://buy.stripe.com/00wfZjcgAeUW4c5cyQ8k90K";
 
 const INCLUDES = [
   { item: "Day 1 — full audit", desc: "Full review of your AI/data pipeline against EU AI Act Article 6 risk classification, Article 26(9) FRIA, Article 50 transparency obligations, and any relevant overlay (DORA / NIS2 / CRA / GDPR)." },
   { item: "Day 2 — fix + sign", desc: "Hands-on remediation of the gaps surfaced. Generate the signed compliance attestation pack via meok-attestation-api with HMAC-SHA256 verification URLs." },
-  { item: "EU AI Act Article 50 kit (£999 retail)", desc: "C2PA + invisible watermark + fingerprinting bundled and ready for the 2 November 2026 cliff." },
+  { item: "EU AI Act Article 50 kit (£999 retail)", desc: "C2PA + invisible watermark + fingerprinting bundled and ready for the 2 August 2026 cliff." },
   { item: "NIS2 DE register kit (£999 retail)", desc: "Section 30/32 register payload, KRITIS classification, BSI Elster cert walkthrough." },
   { item: "90-day post-engagement support", desc: "Async email + Slack channel for follow-up questions, regulatory clarifications, and minor corrections." },
   { item: "Custom signing keys", desc: "Your own HMAC signing key + verify subdomain (your-firm.com/verify/<cert_id>) so attestations are independent of MEOK's central key." },
@@ -34,7 +34,7 @@ const FIT = [
   "Series A AI startups facing first compliance review",
   "EU SaaS scale-ups going through SOC 2 / ISO 27001 / EU AI Act dry-run",
   "DORA-scoped fintechs preparing the Article 28 register",
-  "UK firms shipping GenAI products into the EU before the 2 Nov 2026 Article 50 transparency cliff (Annex III high-risk now delayed to 2 Dec 2027 per Digital Omnibus)",
+  "UK firms shipping GenAI products into the EU before the 2 Aug 2026 Article 50 transparency cliff (Annex III high-risk now delayed to 2 Dec 2027 per Digital Omnibus)",
 ];
 
 export default function AuditPrepBundlePage() {
