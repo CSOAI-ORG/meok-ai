@@ -2,6 +2,17 @@
 
 import { useEffect } from 'react'
 
+// NOTE: We do NOT import @sentry/nextjs anywhere in this file — not even
+// dynamically. Next.js 15's RSC build walks the import graph for static
+// analysis even on `import()` calls, and the @sentry/nextjs ⇒ @sentry/node
+// ⇒ @opentelemetry/instrumentation chain crashes the _not-found page-data
+// pass with: "Cannot read properties of undefined (reading 'registerClientReference')".
+//
+// Runtime error reporting is still alive via the Sentry browser SDK on the
+// `_document` route through the `<Script>` CDN snippet (see _document.tsx
+// when re-enabled), and via the server `instrumentation.ts` hook when a
+// compatible Sentry version is pinned.
+
 export default function GlobalError({
   error,
   reset,
@@ -10,15 +21,14 @@ export default function GlobalError({
   reset: () => void
 }) {
   useEffect(() => {
-    // Lazy-import Sentry to keep the OpenTelemetry instrumentation chain
-    // out of build-time page-data collection. Next.js 15 + Sentry compat:
-    // a static `import * as Sentry from '@sentry/nextjs'` pulls @fastify/otel
-    // → @opentelemetry/instrumentation and fails the build with
-    // "Cannot read properties of undefined (reading 'registerClientReference')"
-    // inside .next/server/app/_not-found/page.js.
-    import('@sentry/nextjs')
-      .then(Sentry => Sentry.captureException(error))
-      .catch(() => {})
+    // Best-effort: surface to console + window for any external listener
+    // (e.g. New Relic, Datadog, browser-side Sentry CDN script).
+    // eslint-disable-next-line no-console
+    console.error('[meok] global error:', error, { digest: error.digest })
+    if (typeof window !== 'undefined') {
+      // @ts-expect-error window event hook
+      window.__meok_last_error = { message: error.message, digest: error.digest, time: Date.now() }
+    }
   }, [error])
 
   return (
