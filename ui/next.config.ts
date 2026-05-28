@@ -1,5 +1,11 @@
 import type { NextConfig } from "next";
-import { withSentryConfig } from "@sentry/nextjs";
+// NOTE: `withSentryConfig` import removed — @sentry/nextjs 10.45.0 + Next.js
+// 15.5.15 produce build-time RSC errors ("Cannot read properties of undefined
+// (reading 'registerClientReference')") in _not-found page data collection.
+// Sentry runtime capture is still available via `import('@sentry/nextjs')`
+// inside `global-error.tsx`. Re-enable the webpack wrapper after pinning a
+// compatible Sentry version.
+// import { withSentryConfig } from "@sentry/nextjs";
 
 const BACKEND = process.env.MEOK_BACKEND_URL || "http://198.53.64.194:40646";
 
@@ -162,18 +168,18 @@ const nextConfig: NextConfig = {
   },
 };
 
-// Sentry config — only wraps when NEXT_PUBLIC_SENTRY_DSN is set
-const sentryWebpackPluginOptions = {
-  org: process.env.SENTRY_ORG || "meok-ai",
-  project: process.env.SENTRY_PROJECT || "meok-ui",
-  authToken: process.env.SENTRY_AUTH_TOKEN,
-  silent: true,
-  widenClientFileUpload: true,
-  hideSourceMaps: true,
-  disableLogger: true,
-  automaticVercelMonitors: true,
-};
-
-export default process.env.NEXT_PUBLIC_SENTRY_DSN
-  ? withSentryConfig(nextConfig, sentryWebpackPluginOptions)
-  : nextConfig;
+// Sentry webpack wrapper disabled — see note at top of file. Re-enable with:
+//   const sentryWebpackPluginOptions = {
+//     org: process.env.SENTRY_ORG || "meok-ai",
+//     project: process.env.SENTRY_PROJECT || "meok-ui",
+//     authToken: process.env.SENTRY_AUTH_TOKEN,
+//     silent: true,
+//     widenClientFileUpload: true,
+//     hideSourceMaps: true,
+//     disableLogger: true,
+//     automaticVercelMonitors: true,
+//   };
+//   export default process.env.NEXT_PUBLIC_SENTRY_DSN
+//     ? withSentryConfig(nextConfig, sentryWebpackPluginOptions)
+//     : nextConfig;
+export default nextConfig;
