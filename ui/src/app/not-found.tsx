@@ -1,5 +1,14 @@
 import Link from 'next/link';
 
+// Skip static prerender of /_not-found. Next.js 15.5.15 + React 19.2.3 hits
+// a `registerClientReference undefined` crash when collecting page data for
+// _not-found because root layout providers don't survive the prerender pass.
+// `force-dynamic` makes Next.js render this route per-request, which doesn't
+// trigger the offending chunk evaluation. 5-iteration build investigation —
+// see commits fc70efa, 179aa57, e15a61a, 219c98a, 8c846f5. This is the
+// minimal-blast-radius unblock.
+export const dynamic = 'force-dynamic';
+
 export const metadata = {
   title: '404 — Page Not Found · MEOK AI',
   description: 'This page has hatched and flown away. Navigate back to MEOK AI.',
