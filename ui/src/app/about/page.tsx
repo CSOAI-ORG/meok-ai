@@ -118,7 +118,7 @@ const personJsonLd = {
   image: "https://meok.ai/brand/csoai-robot.png",
   address: { "@type": "PostalAddress", addressRegion: "Lincolnshire", addressCountry: "GB" },
   description:
-    "Nicholas Templeman is the solo founder + sole engineer of MEOK AI Labs (CSOAI LTD · UK Companies House 16939677). Solo built from Lincolnshire, UK. 47 MIT-licensed compliance MCPs in the Anthropic Registry, 247 PyPI packages, 294 npm packages, 91 commits on the COBOL Bridge repo (sole contributor). Operates Templeman Opticians (Rayleigh, Essex) as the family eyecare business.",
+    "Nicholas Templeman is the solo founder + sole engineer of MEOK AI Labs (CSOAI LTD · UK Companies House 16939677). Solo built from Lincolnshire, UK. 26 MIT-licensed compliance MCPs on PyPI, 6,798 monthly installs, 91 commits on the COBOL Bridge repo (sole contributor). Operates Templeman Opticians (Rayleigh, Essex) as the family eyecare business.",
   sameAs: [
     "https://github.com/CSOAI-ORG",
     "https://pypi.org/user/MEOK_AI_Labs/",

@@ -18,7 +18,7 @@ const SECTIONS = [
     items: [
       { name: "EU AI Act Readiness Scorecard", href: "/scorecard", desc: "10 questions · 90 seconds · personalised score + signed attestation" },
       { name: "EU AI Act Fine Calculator", href: "/fine-calculator", desc: "Maximum exposure by tier — €35M / €15M / €7.5M based on Article 99" },
-      { name: "Live Catalogue (234 PyPI MCPs)", href: "https://meok-attestation-api.vercel.app/catalogue", desc: "Public catalogue + signed-cert listing", external: true },
+      { name: "Live Catalogue (26 PyPI MCPs)", href: "https://meok-attestation-api.vercel.app/catalogue", desc: "Public catalogue + signed-cert listing", external: true },
       { name: "Verifier", href: "https://meok-attestation-api.vercel.app/verify", desc: "Cryptographically verify any MEOK signed certificate", external: true },
     ],
   },

@@ -732,7 +732,7 @@ function HeroSection() {
         </h1>
 
         <p className="max-w-2xl mx-auto mb-3 leading-relaxed font-semibold text-center" style={{ color: "rgba(245,240,232,0.92)", fontSize: "1.3rem" }}>
-          234 MCP packages. EU AI Act + DORA + NIS2 + CRA + GDPR + UK AI Bill ready.
+          26 PyPI packages · 6,798 monthly installs · EU AI Act + DORA + NIS2 + CRA + GDPR + UK AI Bill ready.
         </p>
         <div className="flex items-center justify-center gap-2 mb-6">
           <div className="flex -space-x-2">
@@ -858,7 +858,7 @@ function HeroSection() {
         {/* Live counters — authoritative numbers, not vanity */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 mb-8 max-w-3xl">
           {[
-            { n: "234", l: "PyPI packages" },
+            { n: "26", l: "PyPI packages" },
             { n: "10", l: "Apify Actors" },
             { n: "6", l: "Vercel sites" },
             { n: "31", l: "Owned .ai/.org domains" },

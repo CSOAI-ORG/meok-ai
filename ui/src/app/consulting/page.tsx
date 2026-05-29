@@ -54,7 +54,7 @@ const ENGAGEMENTS = [
 
 const CREDS = [
   "Solo founder of MEOK AI Labs (UK CSOAI LTD, Companies House 16939677)",
-  "234 open-source MCPs published; 7 deep-flagship covering EU AI Act, DORA, NIS2, CRA, GDPR, UK AI Bill",
+  "26 open-source MCPs published with 6,798 monthly installs; 7 deep-flagship covering EU AI Act, DORA, NIS2, CRA, GDPR, UK AI Bill",
   "Public attestation API at meok-attestation-api.vercel.app handling signed compliance artifacts",
   "Listed on Glama, MCPize (21 servers), Anthropic Plugin Directory queue (20 submissions)",
   "Building from a UK farm — no Big-4 day-rates, no procurement overhead",

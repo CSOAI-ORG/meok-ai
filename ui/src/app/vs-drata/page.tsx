@@ -41,7 +41,7 @@ const COMPARISON: { row: string; drata: string | boolean; meok: string | boolean
   { row: "EU CRA (Reg 2024/2847)", drata: false, meok: true },
   { row: "ISO/IEC 42001", drata: false, meok: true },
   { row: "NIST AI RMF", drata: false, meok: true },
-  { row: "Open-source under MIT", drata: false, meok: true, note: "234 MCP packages on PyPI" },
+  { row: "Open-source under MIT", drata: false, meok: true, note: "26 MCP packages on PyPI" },
   { row: "HMAC-signed evidence per control", drata: false, meok: true, note: "Auditor curl-verifiable" },
   { row: "Pricing entry", drata: "$7,500-$50,000/yr", meok: "£0 free + £149/mo Pro" },
 ];

@@ -564,7 +564,7 @@ export default function PricingClient() {
               <h3 className="text-2xl font-black text-white mb-1">Open Source</h3>
               <div className="text-3xl font-black text-white mb-4">£0</div>
               <ul className="text-sm text-white/70 space-y-2 mb-6 flex-1">
-                <li className="flex gap-2"><span className="text-[#c9a84c]">✓</span> All 234 MEOK MCP servers (MIT)</li>
+                <li className="flex gap-2"><span className="text-[#c9a84c]">✓</span> All 26 MEOK MCP servers (MIT)</li>
                 <li className="flex gap-2"><span className="text-[#c9a84c]">✓</span> Email-only signed attestations</li>
                 <li className="flex gap-2"><span className="text-[#c9a84c]">✓</span> Public verify URLs</li>
                 <li className="flex gap-2"><span className="text-[#c9a84c]">✓</span> 1-year cert validity</li>

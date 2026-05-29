@@ -64,7 +64,7 @@ const SUB_PROCESSORS = [
   { name: "Cloudflare Inc.", purpose: "DNS + DDoS protection (Cloudflare-fronted MCPs only)", region: "Global", website: "https://www.cloudflare.com/cloudflare-customer-dpa/" },
   { name: "Namecheap PrivateEmail", purpose: "Business email (nicholas@meok.ai)", region: "EU + US", website: "https://www.namecheap.com/legal/general/privacy-policy/" },
   { name: "GitHub Inc. (Microsoft)", purpose: "Source code hosting + CI", region: "Global", website: "https://docs.github.com/en/site-policy/privacy-policies/github-data-protection-agreement" },
-  { name: "PyPI (Python Software Foundation)", purpose: "Package distribution (234 MCPs)", region: "Global", website: "https://www.python.org/privacy/" },
+  { name: "PyPI (Python Software Foundation)", purpose: "Package distribution (26 MCPs)", region: "Global", website: "https://www.python.org/privacy/" },
 ];
 
 const POLICIES = [
@@ -73,7 +73,7 @@ const POLICIES = [
   { name: "Security Statement", href: "/security", desc: "Encryption, key handling, incident response, access controls." },
   { name: "Sub-processors", href: "/sub-processors", desc: "Full list of vendors that may process personal data on our behalf." },
   { name: "Verifier", href: "https://meok-attestation-api.vercel.app/verify", desc: "Independent cryptographic verification of any signed MEOK certificate." },
-  { name: "Catalogue", href: "https://meok-attestation-api.vercel.app/catalogue", desc: "All 234 published MCP packages + verify URLs." },
+  { name: "Catalogue", href: "https://meok-attestation-api.vercel.app/catalogue", desc: "All 26 published MCP packages + verify URLs." },
 ];
 
 const SECURITY_PRACTICES = [
@@ -81,7 +81,7 @@ const SECURITY_PRACTICES = [
   "Stripe webhook signatures verified on every event — fail-loud if signature header missing.",
   "API rate limiting: 120 req/min per IP, applied at middleware before any handler.",
   "No PII stored beyond email + entity name in lead-capture flow; certs purge after 365 days.",
-  "All 234 PyPI packages signed at upload time; sigstore / SBOM roadmap Q3 2026.",
+  "All 26 PyPI packages signed at upload time; sigstore / SBOM roadmap Q3 2026.",
   "Founder is sole technical operator; access to production is single-key + audit-logged.",
   "Source code public on GitHub (CSOAI-ORG); third-party security review welcomed.",
   "Open-source AGPLv3 / MIT licensing on MCP packages; commercial features licensed separately.",

@@ -39,7 +39,7 @@ const FAQ_VS = [
   },
   {
     q: "Is MEOK open-source like Comp AI?",
-    a: "Yes — all 234 MEOK MCP packages are MIT-licensed on PyPI. Self-host, fork, audit. Paid tiers are for hosted attestation API + signed certificates with custom verify domains + SLA, not for the underlying MCPs.",
+    a: "Yes — all 26 MEOK MCP packages are MIT-licensed on PyPI. Self-host, fork, audit. Paid tiers are for hosted attestation API + signed certificates with custom verify domains + SLA, not for the underlying MCPs.",
   },
 ];
 
@@ -80,14 +80,14 @@ const COMPARISON: { row: string; comp: string | boolean; meok: string | boolean;
   { row: "UK Cyber Security & Resilience Bill", comp: false, meok: true, note: "MCP scaffolded, ready when Bill passes" },
   { row: "HMAC-signed compliance attestations (any framework)", comp: false, meok: true, note: "Live at meok-attestation-api.vercel.app" },
   { row: "Public verify URLs auditors can curl", comp: false, meok: true, note: "Cryptographic proof, not dashboard trust" },
-  { row: "234 PyPI MCP packages — drop into any agent stack", comp: false, meok: true, note: "Free-tier always" },
+  { row: "26 PyPI MCP packages — drop into any agent stack", comp: false, meok: true, note: "Free-tier always · 6,798 monthly installs" },
 ];
 
 const PRICING_MIRROR: { tier: string; comp: string; meok: string; meokHref: string }[] = [
   {
     tier: "Free / Open Source",
     comp: "AGPLv3 self-host",
-    meok: "All 234 MCPs MIT + email-only signed attestations",
+    meok: "All 26 MCPs MIT + email-only signed attestations",
     meokHref: "https://github.com/CSOAI-ORG",
   },
   {
