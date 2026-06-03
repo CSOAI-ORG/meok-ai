@@ -1,6 +1,11 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 
+
+// PAYG-deploy fix: ClerkProvider's useContext can't run at static-prerender;
+// force-dynamic skips prerender for this page without changing UX.
+export const dynamic = "force-dynamic";
+
 // ── Metadata ───────────────────────────────────────────────────────────────────
 
 export const metadata: Metadata = {

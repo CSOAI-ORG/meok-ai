@@ -2,6 +2,11 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
+
+// PAYG-deploy fix: ClerkProvider's useContext can't run at static-prerender;
+// force-dynamic skips prerender for this page without changing UX.
+export const dynamic = "force-dynamic";
+
 // ---------------------------------------------------------------------------
 // MCP catalog — every published MEOK MCP server gets a /mcp/<slug> detail page
 // ---------------------------------------------------------------------------
