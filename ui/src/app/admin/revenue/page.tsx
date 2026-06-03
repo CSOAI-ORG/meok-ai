@@ -13,6 +13,9 @@ import {
   ShoppingBag,
 } from "lucide-react";
 
+// Admin dashboard: render on-demand, skip static prerender
+export const dynamic = "force-dynamic";
+
 // Mock data - in production this would come from API
 const REVENUE_DATA = {
   mrr: 45230,

@@ -20,16 +20,12 @@ export async function POST(request: NextRequest) {
 
     if (process.env.DATABASE_URL) {
       try {
-        const { Pool } = await import("pg");
-        const pool = new Pool({ connectionString: process.env.DATABASE_URL });
-        const client = await pool.connect();
+        const postgres = (await import("postgres")).default;
+        const sql = postgres(process.env.DATABASE_URL);
         try {
-          await client.query(
-            "INSERT INTO subscribers (email, source, created_at) VALUES ($1, $2, NOW()) ON CONFLICT DO NOTHING",
-            [email, source || "meok.ai"]
-          );
+          await sql`INSERT INTO subscribers (email, source, created_at) VALUES (${email}, ${source || "meok.ai"}, NOW()) ON CONFLICT DO NOTHING`;
         } finally {
-          client.release();
+          await sql.end();
         }
       } catch (dbErr) {
         console.error("DB write failed (non-critical):", dbErr);
