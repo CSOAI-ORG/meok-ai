@@ -557,6 +557,23 @@ export default function PricingClient() {
             </p>
           </div>
 
+          {/* ── NEW: PAYG callout (no-subscription pay-per-call) ─────────── */}
+          <div className="mb-8 rounded-2xl bg-white/5 border border-[#c9a84c]/40 p-6 flex flex-col md:flex-row items-start md:items-center gap-5">
+            <div className="flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center" style={{ background: "rgba(201,168,76,0.18)" }}>
+              <span className="text-2xl">⚡</span>
+            </div>
+            <div className="flex-1">
+              <div className="text-xs font-black tracking-wider text-[#c9a84c] mb-1">NEW · NO SUBSCRIPTION</div>
+              <h3 className="text-xl font-black text-white mb-1">PAYG — £0.05 per call across 7 compliance MCPs</h3>
+              <p className="text-sm text-white/60">
+                One <code className="text-[#c9a84c]">MEOK_PAYG_KEY</code> env var. £0.05 per tool call across EU AI Act, DORA, NIS2, CRA, CSRD, GDPR, and ISO 42001 MCPs. Top up once, deduct per call. Stripe + USDC-on-Base accepted. No monthly bill.
+              </p>
+            </div>
+            <a href="https://councilof.ai/payg" className="px-5 py-3 rounded-xl bg-[#c9a84c] text-[#1a1a2e] font-black text-sm whitespace-nowrap hover:bg-[#d4b258] transition">
+              Start PAYG →
+            </a>
+          </div>
+
           <div className="grid grid-cols-1 md:grid-cols-4 gap-5 items-start">
             {/* Free */}
             <div className="rounded-2xl bg-white/5 border border-white/10 p-6 flex flex-col">
