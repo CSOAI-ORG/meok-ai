@@ -378,7 +378,7 @@ export function MarketingFooter() {
           <div className="border-t border-[#2a2a3a] pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#9a9a8a]">
             <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4 text-center sm:text-left">
               <span>
-                © 2026 MEOK AI LABS. All rights reserved. Registered in England &amp; Wales.
+                © 2026 MEOK AI LABS · CSOAI LTD · UK Companies House <strong className="text-[#D4A843]">16939677</strong> · Registered in England &amp; Wales.
               </span>
               <span className="hidden sm:inline text-[#2a2a3a]">|</span>
               <span className="italic text-[#9a9a8a]/60">
