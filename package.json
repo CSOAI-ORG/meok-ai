@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "cd ui && npm run dev",
-    "build": "cd ui && rm -rf .next node_modules && npm install --legacy-peer-deps && NODE_OPTIONS='--max-old-space-size=14336' npm run build",
+    "build": "cd ui && rm -rf .next node_modules && npm install --include=dev --legacy-peer-deps && NODE_OPTIONS='--max-old-space-size=14336' npm run build",
     "start": "cd ui && npm start",
     "test": "cd ui && npm test"
   },
