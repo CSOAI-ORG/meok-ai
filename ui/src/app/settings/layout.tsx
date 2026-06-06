@@ -5,11 +5,10 @@ import { MaybeClerk } from "@/components/maybe-clerk";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "Checkout — MEOK AI LABS",
-  description: "Secure checkout for your MEOK Sovereign AI subscription. Upgrade to unlimited messages, every LLM, and permanent encrypted memory.",
+  title: "Settings — MEOK AI LABS",
   robots: { index: false, follow: false },
 };
 
-export default function CheckoutLayout({ children }: { children: React.ReactNode }) {
+export default function SettingsLayout({ children }: { children: React.ReactNode }) {
   return <MaybeClerk>{children}</MaybeClerk>;
 }

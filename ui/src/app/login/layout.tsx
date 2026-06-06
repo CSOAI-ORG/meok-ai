@@ -1,4 +1,8 @@
 import type { Metadata } from "next";
+import { MaybeClerk } from "@/components/maybe-clerk";
+
+// Auth-gated, interactive — never static-prerender (ClerkProvider lives here).
+export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "Sign In — MEOK AI LABS",
@@ -7,5 +11,5 @@ export const metadata: Metadata = {
 };
 
 export default function LoginLayout({ children }: { children: React.ReactNode }) {
-  return <>{children}</>;
+  return <MaybeClerk>{children}</MaybeClerk>;
 }

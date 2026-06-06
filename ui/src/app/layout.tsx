@@ -1,14 +1,5 @@
 import type { Metadata } from "next";
 import { DM_Sans } from "next/font/google";
-import { ClerkProvider } from "@clerk/nextjs";
-
-const clerkKey = process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY ?? '';
-const hasValidClerk = clerkKey.startsWith('pk_') && !clerkKey.includes('REPLACE');
-
-function MaybeClerk({ children }: { children: React.ReactNode }) {
-  if (!hasValidClerk) return <>{children}</>;
-  return <ClerkProvider>{children}</ClerkProvider>;
-}
 import { ExperienceModeProvider } from "@/components/experience-mode";
 import { GlobalNav } from "@/components/GlobalNav";
 import { MarketingFooter } from "@/components/marketing-footer";
@@ -168,9 +159,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <MaybeClerk>
-      <html lang="en" className="dark">
-        <head>
+    <html lang="en" className="dark">
+      <head>
           <meta name="mobile-web-app-capable" content="yes" />
           <meta name="apple-mobile-web-app-capable" content="yes" />
           <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
@@ -204,6 +194,5 @@ export default function RootLayout({
           </ToastProvider>
         </body>
       </html>
-    </MaybeClerk>
   );
 }

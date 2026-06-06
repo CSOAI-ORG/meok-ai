@@ -1,5 +1,9 @@
 import type { Metadata } from "next";
+import { MaybeClerk } from "@/components/maybe-clerk";
 import DashboardShell from "./dashboard-shell";
+
+// Auth-gated, interactive — never static-prerender (ClerkProvider lives here).
+export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: {
@@ -11,5 +15,9 @@ export const metadata: Metadata = {
 };
 
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
-  return <DashboardShell>{children}</DashboardShell>;
+  return (
+    <MaybeClerk>
+      <DashboardShell>{children}</DashboardShell>
+    </MaybeClerk>
+  );
 }
