@@ -1,3 +1,5 @@
+import { RAGUARD_PATTERNS } from './intelligence/raguard-patterns';
+
 /**
  * MEOK AI LABS — Guardian Scam Detection
  * Pattern library for identifying scam attempts in conversations.
@@ -6,7 +8,7 @@
 // ── Types ──────────────────────────────────────────────────────────────────
 
 export interface ScamSignal {
-  type: 'urgency' | 'financial' | 'secrecy' | 'authority' | 'isolation' | 'emotional';
+  type: 'urgency' | 'financial' | 'secrecy' | 'authority' | 'isolation' | 'emotional' | 'security_threat';
   pattern: string;
   score: number; // 0-1
   description: string;
@@ -15,7 +17,7 @@ export interface ScamSignal {
 export interface ScamAnalysis {
   totalScore: number;  // 0-1 aggregate
   signals: ScamSignal[];
-  scamType?: 'tech_support' | 'romance' | 'investment' | 'grandparent' | 'phishing' | 'impersonation';
+  scamType?: 'tech_support' | 'romance' | 'investment' | 'grandparent' | 'phishing' | 'impersonation' | 'injection_attempt';
   riskLevel: 'safe' | 'low' | 'medium' | 'high' | 'critical';
   recommendedAction: 'none' | 'gentle_warning' | 'strong_warning' | 'block_and_alert';
 }
@@ -130,15 +132,16 @@ function determineAction(riskLevel: ScamAnalysis['riskLevel']): ScamAnalysis['re
 function matchPatterns(
   text: string,
   type: ScamSignal['type'],
-  patterns: PatternEntry[],
+  patterns: any[],
 ): ScamSignal[] {
   const signals: ScamSignal[] = [];
   for (const p of patterns) {
-    if (p.regex.test(text)) {
+    const regex = p.regex || p;
+    if (regex.test(text)) {
       signals.push({
         type,
-        pattern: p.regex.source,
-        score: p.score,
+        pattern: regex.source,
+        score: p.score || (p.severity === 'critical' ? 0.9 : p.severity === 'high' ? 0.6 : 0.3),
         description: p.description,
       });
     }
@@ -170,6 +173,7 @@ export function analyzeForScams(
     ...matchPatterns(fullText, 'authority', AUTHORITY_PATTERNS),
     ...matchPatterns(fullText, 'isolation', ISOLATION_PATTERNS),
     ...matchPatterns(fullText, 'emotional', EMOTIONAL_PATTERNS),
+    ...matchPatterns(fullText, 'security_threat', RAGUARD_PATTERNS),
   ];
 
   // Aggregate score, capped at 1.0
@@ -180,7 +184,12 @@ export function analyzeForScams(
 
   const riskLevel = determineRiskLevel(totalScore);
   const recommendedAction = determineAction(riskLevel);
-  const scamType = signals.length > 0 ? classifyScamType(signals) : undefined;
+  let scamType = signals.length > 0 ? classifyScamType(signals) : undefined;
+  
+  // Tag as injection attempt if security threats found
+  if (!scamType && signals.some(s => s.type === 'security_threat')) {
+    scamType = 'injection_attempt';
+  }
 
   return {
     totalScore,

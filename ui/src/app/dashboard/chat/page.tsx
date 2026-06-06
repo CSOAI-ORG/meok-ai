@@ -15,6 +15,7 @@ import { speakAsCharacter, stopSpeaking, isTTSSupported } from '@/lib/voice-synt
 import { startListening, stopListening, isVoiceSupported } from '@/lib/voice';
 import { copyToClipboard } from '@/lib/chat-actions';
 import { KEYFRAMES_IDLE } from '@/lib/animation-state';
+import { Cpu, Network, Zap, Shield, Brain, ChevronRight } from 'lucide-react';
 
 // ─── Mood config ──────────────────────────────────────────────────────────────
 const MOOD_CYCLE: Array<{ label: string; color: string }> = [
@@ -206,13 +207,39 @@ function ThinkingIndicator({ messageLength, characterName }: { messageLength: nu
   const name = characterName ?? 'AI';
   const label = messageLength > 200 ? `${name} is deep thinking` : `${name} is thinking`;
   return (
-    <div className="flex items-center gap-2 px-1 py-1.5" style={{ animation: 'fadeSlideUp 0.3s ease both' }}>
-      <div className="flex gap-[3px] items-center">
-        <span className="w-1.5 h-1.5 rounded-full animate-bounce" style={{ background: GOLD, animationDuration: '1.2s', animationDelay: '0ms' }} />
-        <span className="w-1.5 h-1.5 rounded-full animate-bounce" style={{ background: GOLD, opacity: 0.7, animationDuration: '1.2s', animationDelay: '200ms' }} />
-        <span className="w-1.5 h-1.5 rounded-full animate-bounce" style={{ background: GOLD, opacity: 0.4, animationDuration: '1.2s', animationDelay: '400ms' }} />
+    <div className="flex flex-col gap-3 py-1.5" style={{ animation: 'fadeSlideUp 0.3s ease both' }}>
+      <div className="flex items-center gap-2 px-1">
+        <div className="flex gap-[3px] items-center">
+          <span className="w-1.5 h-1.5 rounded-full animate-bounce" style={{ background: GOLD, animationDuration: '1.2s', animationDelay: '0ms' }} />
+          <span className="w-1.5 h-1.5 rounded-full animate-bounce" style={{ background: GOLD, opacity: 0.7, animationDuration: '1.2s', animationDelay: '200ms' }} />
+          <span className="w-1.5 h-1.5 rounded-full animate-bounce" style={{ background: GOLD, opacity: 0.4, animationDuration: '1.2s', animationDelay: '400ms' }} />
+        </div>
+        <span className="text-xs font-medium" style={{ color: `${GOLD}90` }}>{label}</span>
       </div>
-      <span className="text-xs font-medium" style={{ color: `${GOLD}90` }}>{label}</span>
+      
+      {/* 🧬 NEURAL OVERLAY (BFT Consensus Visualization) */}
+      <div className="ml-1 p-3 rounded-xl bg-white/[0.02] border border-white/[0.05] max-w-[280px] space-y-3">
+         <div className="flex justify-between items-center text-[8px] font-mono tracking-widest text-white/20 uppercase">
+            <span>BFT_V3_Consensus</span>
+            <span className="animate-pulse text-[#c9a84c]">Collecting_Votes...</span>
+         </div>
+         <div className="grid grid-cols-7 gap-1">
+            {[...Array(33)].map((_, i) => (
+              <div 
+                key={i} 
+                className="w-1.5 h-1.5 rounded-full" 
+                style={{ 
+                  background: i < (Math.random() * 20 + 10) ? GOLD : 'rgba(255,255,255,0.05)',
+                  opacity: Math.random() > 0.3 ? 1 : 0.4 
+                }} 
+              />
+            ))}
+         </div>
+         <div className="flex items-center gap-2 pt-1">
+            <Network className="w-2.5 h-2.5 text-blue-400/40" />
+            <span className="text-[7px] font-mono text-white/30 uppercase">Generals_Engaged: [DRUID, ARCHIVIST, GUARDIAN]</span>
+         </div>
+      </div>
     </div>
   );
 }

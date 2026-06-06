@@ -33,6 +33,17 @@ CONSCIOUSNESS_TOOLS = [
             }
         }
     },
+    {
+        "name": "set_character_metadata",
+        "description": "Update the consciousness engine with character tier and soul ID.",
+        "inputSchema": {
+            "type": "object",
+            "properties": {
+                "tier": {"type": "string"},
+                "soul_id": {"type": "string"}
+            }
+        }
+    }
 ]
 
 
@@ -43,6 +54,15 @@ async def handle_consciousness_tool(name: str, arguments: Dict[str, Any], state:
             if not state.consciousness:
                 return {"error": "Consciousness module not available"}
             return state.consciousness.get_consciousness_state()
+
+        elif name == "set_character_metadata":
+            if not state.consciousness:
+                return {"error": "Consciousness module not available"}
+            if "tier" in arguments:
+                state.consciousness.tier = arguments["tier"]
+            if "soul_id" in arguments:
+                state.consciousness.soul_id = arguments["soul_id"]
+            return {"status": "metadata_updated", "tier": state.consciousness.tier, "soul_id": state.consciousness.soul_id}
 
         elif name == "trigger_reflection":
             if not state.consciousness:

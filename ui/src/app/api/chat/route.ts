@@ -42,6 +42,7 @@ import { analyzeVoicePattern, formatConsistencyDirective } from '@/lib/voice-fin
 import { detectCulturalVariant, getCulturalVariant, formatCulturalContext } from '@/lib/cultural-variants';
 import { analyzeForScams } from '@/lib/guardian/scam-detection';
 import { generateGentleWarning } from '@/lib/guardian/gentle-warnings';
+import { emperor } from '@/lib/emperor-router';
 import { draftWithLocal } from '@/lib/draft-refine';
 import { checkRateLimit, type RateLimitTier } from '@/lib/rate-limit';
 import { logInfo } from '@/lib/logger';
@@ -773,6 +774,16 @@ You are LIVE and operational. Report this status when asked.`;
     // Evolution metadata
     const totalMessages = (user?.messages_total ?? 0) + 1;
     const stage = getEvolutionStage(totalMessages);
+
+    // MEOKCLAW OS: Routing & Consensus
+    const assignedGeneral = emperor.route(trimmed);
+    const consensus = await emperor.reachConsensus(assignedGeneral);
+
+    sovereignHeaders.set('X-MEOK-Model', model);
+    sovereignHeaders.set('X-MEOK-General', assignedGeneral.name);
+    sovereignHeaders.set('X-MEOK-Votes', String(consensus.votes));
+    sovereignHeaders.set('X-MEOK-Attestation', consensus.attestation);
+    sovereignHeaders.set('X-MEOK-TaskType', taskType);
     sovereignHeaders.set('X-MEOK-Stage', String(stage.id));
     sovereignHeaders.set('X-MEOK-StageName', stage.name);
     sovereignHeaders.set('X-MEOK-Interactions', String(totalMessages));

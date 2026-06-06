@@ -2,14 +2,11 @@ import { NextRequest, NextResponse } from 'next/server';
 import Stripe from 'stripe';
 import { getStripe } from '@/lib/stripe';
 import { updateUserTier, type Tier } from '@/lib/db/user';
-import { ensureApiKeysTable, createApiKey, type ApiKeyTier } from '@/lib/db/api-keys';
 
 // Next.js 15: disable body parsing so Stripe can verify the raw bytes
 export const dynamic = 'force-dynamic';
 
 const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET!;
-
-let apiKeysTableReady = false;
 
 // Simple in-memory idempotency guard (per-process). In a multi-instance deployment,
 // switch to Redis or a database table.
@@ -118,6 +115,7 @@ async function handleCheckoutCompleted(session: Stripe.Checkout.Session): Promis
   // Prefer explicit tier from metadata; fall back to price→tier mapping
   let tier = session.metadata?.tier;
   if (!tier && session.subscription) {
+    // Expand line items if tier not in metadata
     try {
       const expandedSession = await getStripe().checkout.sessions.retrieve(session.id, {
         expand: ['line_items'],
@@ -129,7 +127,7 @@ async function handleCheckoutCompleted(session: Stripe.Checkout.Session): Promis
     }
   }
 
-  console.log('[Stripe] Checkout completed', { tier, sessionId: session.id });
+  console.log('[Stripe] Checkout completed', { userId, email, tier, sessionId: session.id });
 
   if (!userId) {
     console.warn('[Stripe] checkout.session.completed — no userId in metadata, skipping DB update');
@@ -145,26 +143,43 @@ async function handleCheckoutCompleted(session: Stripe.Checkout.Session): Promis
     subscriptionId,
   });
 
-  // Generate API key for paid users (sovereign+ tier)
-  if (resolvedTier !== 'explorer') {
-    try {
-      if (!apiKeysTableReady) {
-        await ensureApiKeysTable();
-        apiKeysTableReady = true;
-      }
-      const apiKeyTier: ApiKeyTier = resolvedTier === 'family' ? 'family' : 'sovereign';
-      const existing = await import('@/lib/db/api-keys').then(m => m.listApiKeys(userId));
-      if (!existing || existing.length === 0) {
-        const key = await createApiKey(userId, apiKeyTier, 'Generated on signup');
-        console.log(`[Stripe] API key generated for user *** (prefix=${key.prefix})`);
-        // key.plaintext is available here — deliver via Resend email when configured
-      }
-    } catch (err) {
-      console.error('[Stripe] API key generation failed (non-fatal):', err);
-    }
+  console.log(`[Stripe] Updated user ${userId} to tier=${resolvedTier}`);
+
+  // 🚀 TRIGGER N8N WORKFLOW (Lead-to-Cash)
+  void triggerN8nWorkflow({
+    event: 'checkout.session.completed',
+    userId,
+    email,
+    tier: resolvedTier,
+    sessionId: session.id,
+    amount: session.amount_total,
+    currency: session.currency,
+  });
+}
+
+// ─── n8n Automation ─────────────────────────────────────────────────────────
+
+async function triggerN8nWorkflow(payload: Record<string, any>): Promise<void> {
+  const n8nUrl = process.env.N8N_WEBHOOK_URL;
+  if (!n8nUrl) {
+    console.info('[n8n] N8N_WEBHOOK_URL not set — automation skip');
+    return;
   }
 
-  console.log(`[Stripe] Updated user *** to tier=${resolvedTier}`);
+  try {
+    const res = await fetch(n8nUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    });
+    if (res.ok) {
+      console.log('[n8n] Workflow triggered successfully');
+    } else {
+      console.error(`[n8n] Workflow trigger failed: ${res.status}`);
+    }
+  } catch (err) {
+    console.error('[n8n] Exception during workflow trigger:', err);
+  }
 }
 
 async function handleSubscriptionUpdated(subscription: Stripe.Subscription): Promise<void> {
@@ -174,9 +189,11 @@ async function handleSubscriptionUpdated(subscription: Stripe.Subscription): Pro
   const status  = subscription.status;
 
   console.log('[Stripe] Subscription updated', {
+    userId,
     tier,
     priceId,
     status,
+    subscriptionId: subscription.id,
   });
 
   if (!userId) {
@@ -193,7 +210,7 @@ async function handleSubscriptionUpdated(subscription: Stripe.Subscription): Pro
       subscriptionId: subscription.id,
     });
 
-    console.log(`[Stripe] Updated user *** to tier=${resolvedTier} (subscription ${status})`);
+    console.log(`[Stripe] Updated user ${userId} to tier=${resolvedTier} (subscription ${status})`);
   }
 }
 
@@ -202,6 +219,8 @@ async function handleSubscriptionDeleted(subscription: Stripe.Subscription): Pro
   const downgradedTier = 'explorer';
 
   console.log('[Stripe] Subscription cancelled — downgrading to Explorer', {
+    userId,
+    subscriptionId: subscription.id,
     cancelledAt: subscription.canceled_at
       ? new Date(subscription.canceled_at * 1000).toISOString()
       : null,
@@ -213,7 +232,7 @@ async function handleSubscriptionDeleted(subscription: Stripe.Subscription): Pro
   }
 
   await updateUserTier(userId, downgradedTier as Tier);
-  console.log(`[Stripe] Downgraded user *** to tier=${downgradedTier}`);
+  console.log(`[Stripe] Downgraded user ${userId} to tier=${downgradedTier}`);
 }
 
 async function handleInvoicePaid(invoice: Stripe.Invoice): Promise<void> {
@@ -222,6 +241,7 @@ async function handleInvoicePaid(invoice: Stripe.Invoice): Promise<void> {
 
   console.log('[Stripe] Invoice paid', {
     invoiceId: invoice.id,
+    subscriptionId,
     amountPaid: invoice.amount_paid,
     currency: invoice.currency,
   });
@@ -231,7 +251,7 @@ async function handleInvoicePaid(invoice: Stripe.Invoice): Promise<void> {
   try {
     const subscription = await getStripe().subscriptions.retrieve(subscriptionId);
     await handleSubscriptionUpdated(subscription);
-    console.log(`[Stripe] Refreshed tier after invoice payment for subscription=***`);
+    console.log(`[Stripe] Refreshed tier after invoice payment for subscription=${subscriptionId}`);
   } catch (err) {
     console.warn('[Stripe] Could not refresh subscription after invoice.paid:', err);
   }
@@ -247,6 +267,8 @@ async function handlePaymentFailed(invoice: Stripe.Invoice): Promise<void> {
   const attemptCount  = inv.attempt_count ?? 1;
 
   console.warn('[Stripe] Payment failed', {
+    customerId,
+    subscriptionId,
     invoiceId: inv.id,
     attemptCount,
     amountDue: inv.amount_due,
@@ -258,11 +280,11 @@ async function handlePaymentFailed(invoice: Stripe.Invoice): Promise<void> {
   // `customer.subscription.deleted` will fire, which handles the actual downgrade.
 
   // Payment failure notification: logged for monitoring; email integration pending Resend setup
-  console.error(`[Stripe] Payment failure alert — attempt=${attemptCount} amount=${inv.amount_due} ${inv.currency}`);
+  console.error(`[Stripe] Payment failure alert — customerId=${customerId} subscriptionId=${subscriptionId} attempt=${attemptCount} amount=${inv.amount_due} ${inv.currency}`);
 
   // Flag account on 3rd+ failure: set grace period so user retains access temporarily
   if (attemptCount >= 3) {
-    console.error(`[Stripe] Payment failed ${attemptCount} times for customer=*** — setting grace period`);
+    console.error(`[Stripe] Payment failed ${attemptCount} times for customerId=${customerId} — setting grace period`);
     try {
       // Attempt to find userId from subscription metadata and set grace period
       if (subscriptionId && process.env.STRIPE_SECRET_KEY) {
@@ -271,7 +293,7 @@ async function handlePaymentFailed(invoice: Stripe.Invoice): Promise<void> {
         if (subUserId) {
           const { setGracePeriod } = await import('@/lib/db/user');
           await setGracePeriod(subUserId, 7);
-          console.warn(`[Stripe] Grace period set for user=*** (7 days)`);
+          console.warn(`[Stripe] Grace period set for userId=${subUserId} (7 days)`);
         }
       }
     } catch (graceErr) {

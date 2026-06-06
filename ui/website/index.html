@@ -14,6 +14,8 @@
   <meta name="twitter:title" content="MEOK.AI — Your AI. Your Data. Your Companion.">
   <meta name="twitter:description" content="A personal AI companion that lives on your device, remembers your life, and never sells your data.">
   <link rel="stylesheet" href="nav.css">
+  <link rel="stylesheet" href="cookie-banner.css">
+  <script src="cookie-banner.js"></script>
   <style>
     .hero { padding-top: 112px; padding-bottom: 96px; }
 
@@ -96,7 +98,20 @@
   </style>
 </head>
 <body>
-
+  <!-- GDPR Cookie Consent Banner -->
+  <div id="cookie-banner">
+    <div class="cookie-content">
+      <div class="cookie-text">
+        We use essential cookies to provide our services and optional analytics to improve your experience. By clicking "Accept All", you consent to our use of cookies. 
+        <a href="legal/cookies.html" style="color:#60A5FA">Read our Cookie Policy</a>.
+      </div>
+      <div class="cookie-buttons">
+        <button class="cookie-btn reject" onclick="rejectCookies()">Reject</button>
+        <button class="cookie-btn accept" onclick="acceptCookies()">Accept All</button>
+      </div>
+    </div>
+  </div>
+  
 <!-- NAV — see _nav.html for full dropdown spec -->
 <nav class="nav" role="navigation" aria-label="Main navigation">
   <div class="nav-inner">

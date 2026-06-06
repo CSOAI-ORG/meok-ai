@@ -5,9 +5,9 @@ Tool registry — aggregates all tool modules and provides unified dispatch.
 from datetime import datetime
 from typing import Dict, Any
 
-from meok.mcp.state import ServiceState
+from mcp.state import ServiceState
 
-from meok.mcp.tools.neural import NEURAL_TOOLS, handle_neural_tool
+from mcp.tools.neural import NEURAL_TOOLS, handle_neural_tool
 from meok.mcp.tools.memory import MEMORY_TOOLS, handle_memory_tool
 from meok.mcp.tools.monitoring import MONITORING_TOOLS, handle_monitoring_tool
 from meok.mcp.tools.agents import AGENT_TOOLS, handle_agent_tool
@@ -38,6 +38,27 @@ from meok.mcp.tools.care_shield import CARE_SHIELD_TOOLS, handle_care_shield
 from meok.mcp.tools.notifications import NOTIFICATION_TOOLS, handle_notifications_tool
 from meok.mcp.tools.character_catalog import CHARACTER_CATALOG_TOOLS, handle_character_catalog_tool
 from meok.mcp.tools.faith import FAITH_TOOLS, handle_faith_tool
+from meok.mcp.tools.asisecurity import ASISECURITY_TOOLS, handle_asisecurity_tool
+from meok.mcp.tools.councilofai import COUNCILOFAI_TOOLS, handle_councilofai_tool
+from meok.mcp.tools.industrial_hire import INDUSTRIAL_HIRE_TOOLS, handle_industrial_hire_tool
+from meok.mcp.tools.industrial_domains import INDUSTRIAL_DOMAINS_TOOLS, handle_industrial_domains_tool
+from meok.mcp.tools.loopfactory import LOOPFACTORY_TOOLS, handle_loopfactory_tool
+from meok.mcp.tools.koikeeper import KOIKEEPER_TOOLS, handle_koikeeper_tool
+from meok.mcp.tools.fishkeeper import FISHKEEPER_TOOLS, handle_fishkeeper_tool
+from meok.mcp.tools.diyhelp import DIYHELP_TOOLS, handle_diyhelp_tool
+from meok.mcp.tools.suicidestop import SUICIDESTOP_TOOLS, handle_suicidestop_tool
+from meok.mcp.tools.pokerhud import POKERHUD_TOOLS, handle_pokerhud_tool
+from meok.mcp.tools.safety import SAFETY_TOOLS, handle_safety_tool
+from meok.mcp.tools.assti import ASSTI_TOOLS, handle_assti_tool
+from meok.mcp.tools.aibom import AIBOM_TOOLS, handle_aibom_tool
+from meok.mcp.tools.sovereign_shield import SHIELD_TOOLS, handle_shield_tool
+from meok.mcp.tools.audit_receipt import AUDIT_TOOLS, handle_audit_tool
+from meok.mcp.tools.openai_bridge import OPENAI_BRIDGE_TOOLS, handle_openai_bridge_tool
+from meok.mcp.tools.killswitch import KILLSWITCH_TOOLS, handle_killswitch_tool
+from meok.mcp.tools.agentik import AGENTIK_TOOLS, handle_agentik_tool
+from meok.mcp.tools.revenue import REVENUE_TOOLS, handle_revenue_tool
+from meok.mcp.tools.character_factory import CHARACTER_TOOLS, handle_character_factory_tool
+from meok.mcp.tools.council_bft import COUNCIL_BFT_TOOLS, handle_council_tool
 
 # Combined tool list — order matches the original monolithic server
 ALL_TOOLS = (
@@ -71,7 +92,22 @@ ALL_TOOLS = (
     + CARE_SHIELD_TOOLS          # Phase L: always-on sovereign monitoring
     + NOTIFICATION_TOOLS         # Phase L: alert delivery (WhatsApp, Web Push, Email)
     + CHARACTER_CATALOG_TOOLS    # 24 AI companions with CPM integration
-    + FAITH_TOOLS                # Faith calibration: 6-billion-person multi-tradition care layer
+    + FAITH_TOOLS
+    + ASISECURITY_TOOLS
+    + COUNCILOFAI_TOOLS
+    + INDUSTRIAL_HIRE_TOOLS
+    + INDUSTRIAL_DOMAINS_TOOLS
+    + LOOPFACTORY_TOOLS
+    + KOIKEEPER_TOOLS
+    + FISHKEEPER_TOOLS
+    + DIYHELP_TOOLS
+    + SUICIDESTOP_TOOLS
+    + POKERHUD_TOOLS                # Faith calibration: 6-billion-person multi-tradition care layer
+    + SAFETY_TOOLS               # AI safety: audit, bias, explainability, risk, monitoring, red-team
+    + ASSTI_TOOLS                # AI Self-State Transparency Index
+    + AIBOM_TOOLS                # AI Bill of Materials (EuConform-compatible)
+    + SHIELD_TOOLS               # Sovereign Shield deterministic security
+    + AUDIT_TOOLS                # Nobulex-style Ed25519 audit receipts
 )
 
 # Build name -> handler lookup from each module's tool list
@@ -139,6 +175,52 @@ for _tool in CHARACTER_CATALOG_TOOLS:
     _TOOL_NAME_TO_HANDLER[_tool["name"]] = handle_character_catalog_tool
 for _tool in FAITH_TOOLS:
     _TOOL_NAME_TO_HANDLER[_tool["name"]] = handle_faith_tool
+for _tool in ASISECURITY_TOOLS:
+    _TOOL_NAME_TO_HANDLER[_tool["name"]] = handle_asisecurity_tool
+for _tool in COUNCILOFAI_TOOLS:
+    _TOOL_NAME_TO_HANDLER[_tool["name"]] = handle_councilofai_tool
+for _tool in INDUSTRIAL_HIRE_TOOLS:
+    _TOOL_NAME_TO_HANDLER[_tool["name"]] = handle_industrial_hire_tool
+for _tool in INDUSTRIAL_DOMAINS_TOOLS:
+    _TOOL_NAME_TO_HANDLER[_tool["name"]] = handle_industrial_domains_tool
+for _tool in LOOPFACTORY_TOOLS:
+    _TOOL_NAME_TO_HANDLER[_tool["name"]] = handle_loopfactory_tool
+for _tool in KOIKEEPER_TOOLS:
+    _TOOL_NAME_TO_HANDLER[_tool["name"]] = handle_koikeeper_tool
+for _tool in FISHKEEPER_TOOLS:
+    _TOOL_NAME_TO_HANDLER[_tool["name"]] = handle_fishkeeper_tool
+for _tool in DIYHELP_TOOLS:
+    _TOOL_NAME_TO_HANDLER[_tool["name"]] = handle_diyhelp_tool
+for _tool in SUICIDESTOP_TOOLS:
+    _TOOL_NAME_TO_HANDLER[_tool["name"]] = handle_suicidestop_tool
+for _tool in POKERHUD_TOOLS:
+    _TOOL_NAME_TO_HANDLER[_tool["name"]] = handle_pokerhud_tool
+for _tool in SAFETY_TOOLS:
+    _TOOL_NAME_TO_HANDLER[_tool["name"]] = handle_safety_tool
+for _tool in ASSTI_TOOLS:
+    _TOOL_NAME_TO_HANDLER[_tool["name"]] = handle_assti_tool
+for _tool in AIBOM_TOOLS:
+    _TOOL_NAME_TO_HANDLER[_tool["name"]] = handle_aibom_tool
+for _tool in SHIELD_TOOLS:
+    _TOOL_NAME_TO_HANDLER[_tool["name"]] = handle_shield_tool
+for _tool in AUDIT_TOOLS:
+    _TOOL_NAME_TO_HANDLER[_tool["name"]] = handle_audit_tool
+for _tool in OPENAI_BRIDGE_TOOLS:
+    _TOOL_NAME_TO_HANDLER[_tool["name"]] = handle_openai_bridge_tool
+for _tool in KILLSWITCH_TOOLS:
+    _TOOL_NAME_TO_HANDLER[_tool["name"]] = handle_killswitch_tool
+for _tool in AGENTIK_TOOLS:
+    _TOOL_NAME_TO_HANDLER[_tool["name"]] = handle_agentik_tool
+for _tool in COUNCIL_BFT_TOOLS:
+    _TOOL_NAME_TO_HANDLER[_tool["name"]] = handle_council_tool
+for _tool in KILLSWITCH_TOOLS:
+    _TOOL_NAME_TO_HANDLER[_tool["name"]] = handle_killswitch_tool
+for _tool in AGENTIK_TOOLS:
+    _TOOL_NAME_TO_HANDLER[_tool["name"]] = handle_agentik_tool
+for _tool in REVENUE_TOOLS:
+    _TOOL_NAME_TO_HANDLER[_tool["name"]] = handle_revenue_tool
+for _tool in CHARACTER_TOOLS:
+    _TOOL_NAME_TO_HANDLER[_tool["name"]] = handle_character_factory_tool
 
 # Also expose as a dict for external inspection
 TOOL_HANDLERS = {
@@ -164,6 +246,13 @@ TOOL_HANDLERS = {
     "family_guardian": handle_family_guardian,
     "intelligence": handle_intelligence,
     "character_emergence": handle_character_emergence_tool,
+    "killswitch": handle_killswitch_tool,
+    "agentik": handle_agentik_tool,
+    "council_bft": handle_council_tool,
+    "killswitch": handle_killswitch_tool,
+    "agentik": handle_agentik_tool,
+    "revenue": handle_revenue_tool,
+    "character_factory": handle_character_factory_tool,
 }
 
 

@@ -13,6 +13,7 @@ const nextConfig: NextConfig = {
   // Performance optimizations
   compress: true,
   poweredByHeader: false,
+  reactStrictMode: true,
 
   // RSC compat fix — Next.js 15.5.15 + React 19.2.3 + @clerk/nextjs 7.0.5
   // hits `Cannot read properties of undefined (reading 'registerClientReference')`
@@ -159,6 +160,7 @@ const nextConfig: NextConfig = {
       {
         source: "/(.*)",
         headers: [
+          { key: "X-DNS-Prefetch-Control", value: "on" },
           { key: "X-Content-Type-Options",  value: "nosniff" },
           { key: "X-Frame-Options",          value: "SAMEORIGIN" },
           { key: "X-XSS-Protection",         value: "1; mode=block" },

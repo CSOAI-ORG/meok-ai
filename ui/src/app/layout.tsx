@@ -184,6 +184,7 @@ export default function RootLayout({
           <meta name="apple-mobile-web-app-capable" content="yes" />
           <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
           <meta name="theme-color" content="#c9a84c" />
+          <link rel="llms-txt" href="/llms.txt" title="MEOK AI Labs — Sovereign AI Platform" />
           <script
             type="application/ld+json"
             dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}

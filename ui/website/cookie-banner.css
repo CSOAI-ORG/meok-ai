@@ -1,0 +1,95 @@
+/* GDPR Cookie Consent Banner - MEOK AI */
+#cookie-banner {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(15, 23, 42, 0.95);
+  backdrop-filter: blur(10px);
+  color: #fff;
+  padding: 20px 24px;
+  z-index: 9999;
+  box-shadow: 0 -4px 20px rgba(0,0,0,0.3);
+}
+
+#cookie-banner.show {
+  display: block;
+  animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+
+.cookie-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.cookie-text {
+  flex: 1;
+  min-width: 280px;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: rgba(255,255,255,0.85);
+}
+
+.cookie-text a {
+  color: #60A5FA;
+  text-decoration: underline;
+}
+
+.cookie-buttons {
+  display: flex;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.cookie-btn {
+  padding: 10px 24px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: none;
+  font-family: inherit;
+}
+
+.cookie-btn.accept {
+  background: #3182ce;
+  color: #fff;
+}
+
+.cookie-btn.accept:hover {
+  background: #1e40af;
+  transform: translateY(-1px);
+}
+
+.cookie-btn.reject {
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.3);
+}
+
+.cookie-btn.reject:hover {
+  background: rgba(255,255,255,0.2);
+}
+
+@media (max-width: 640px) {
+  .cookie-content {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .cookie-buttons {
+    width: 100%;
+    justify-content: center;
+  }
+}

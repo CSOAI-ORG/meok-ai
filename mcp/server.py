@@ -38,6 +38,22 @@ from meok.api.memory_search import (
     router as memory_router,
     set_pg_pool as memory_set_pg_pool,
 )
+from meok.a2a.gateway import router as a2a_router
+from meok.acp.gateway import router as acp_router
+from meok.api.unified import router as unified_router
+from meok.api.compliance_map import router as compliance_map_router
+from meok.mcp.server_card import router as server_card_router
+from meok.api.trust_layer import router as trust_router
+from meok.api.marketplace import router as marketplace_router
+from meok.api.enterprise_characters import router as enterprise_router
+from meok.api.government import router as government_router
+from meok.api.defense import router as defense_router
+from meok.api.gods_eye import router as gods_eye_router
+from meok.api.hatch_worlds import router as hatch_router
+from meok.api.killswitch_api import router as killswitch_router
+from meok.api.agentik_api import router as agentik_router
+from meok.api.rainbow_api import router as rainbow_router
+from meok.api.council_api import router as council_router
 from meok.config.settings import get_settings
 from meok.auth.models import (
     UserCreate,
@@ -128,6 +144,24 @@ app.add_middleware(
 app.include_router(dispatch_router)  # POST /api/v1/tools/dispatch  (intent → tool)
 app.include_router(neural_router)  # POST /api/v1/predict          (neural inference)
 app.include_router(memory_router)  # POST /api/v1/memory/search    (RAG retrieval)
+
+# Protocol Nexus routers
+app.include_router(a2a_router)
+app.include_router(acp_router)
+app.include_router(unified_router)
+app.include_router(compliance_map_router)
+app.include_router(server_card_router)
+app.include_router(trust_router)
+app.include_router(marketplace_router)
+app.include_router(enterprise_router)
+app.include_router(government_router)
+app.include_router(defense_router)
+app.include_router(gods_eye_router)
+app.include_router(hatch_router)
+app.include_router(killswitch_router)
+app.include_router(agentik_router)
+app.include_router(rainbow_router)
+app.include_router(council_router)
 
 
 # ── Health ────────────────────────────────────────────────────────

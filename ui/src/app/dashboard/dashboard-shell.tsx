@@ -1,153 +1,155 @@
 "use client";
 
-import { useEffect, useState, Suspense } from "react";
-import { useRouter } from "next/navigation";
+import { useEffect, useState, Suspense, useCallback } from "react";
+import { useRouter, usePathname } from "next/navigation";
 import { useUser } from "@clerk/nextjs";
 import { Sidebar } from "@/components/sidebar";
 import NotificationCenter from "@/components/notification-center";
 import { TrialBanner } from "@/components/trial-banner";
 import { ErrorBoundary } from "@/components/error-boundary";
-import { OsEntryBanner } from "@/components/os-entry-banner";
 import { OnboardingTour } from "@/components/onboarding-tour";
+import { Brain, Cpu, Shield, Globe, Menu, X, Activity, Zap, Command } from "lucide-react";
+import { GlowText, Surface } from "@/components/design-system";
+import { mcp, callTool } from "@/lib/api";
+import { EmperorCommandBar } from "@/components/EmperorCommandBar";
 
-// ─── Page loading skeleton ─────────────────────────────────────────────────────
+// ─── TYPES ──────────────────────────────────────────────────────────────────
+
+interface SystemStatus {
+  care: number;
+  consciousness: number;
+  nodes: number;
+  latency: number;
+  mode: string;
+}
+
+// ─── TOP BAR COMPONENT ───────────────────────────────────────────────────────
+
+function TopBar({ status, toggleSidebar }: { status: SystemStatus; toggleSidebar: () => void }) {
+  const pathname = usePathname();
+  const appName = pathname.split("/").pop()?.replace(/-/g, " ").toUpperCase() || "CORE";
+
+  return (
+    <header className="h-14 border-b border-white/[0.05] bg-[#0d0c18]/80 backdrop-blur-xl flex items-center justify-between px-4 md:px-6 sticky top-0 z-40 transition-all">
+      <div className="flex items-center gap-4">
+        <button 
+          onClick={toggleSidebar}
+          className="p-2 -ml-2 hover:bg-white/05 rounded-lg md:hidden"
+        >
+          <Menu className="w-5 h-5 text-[#c9a84c]" />
+        </button>
+        
+        <div className="flex items-center gap-2">
+          <div className="w-2 h-2 rounded-full bg-[#c9a84c] shadow-[0_0_8px_#c9a84c]" />
+          <span className="text-[10px] font-bold tracking-[0.2em] text-white/40 uppercase hidden sm:inline">
+            MEOKCLAW_OS
+          </span>
+          <span className="text-white/20 mx-2 hidden sm:inline">/</span>
+          <span className="text-[11px] font-bold tracking-widest text-[#c9a84c]">
+            {appName}
+          </span>
+        </div>
+      </div>
+
+      <div className="flex items-center gap-6">
+        {/* Emperor Command Bar */}
+        <EmperorCommandBar />
+
+        {/* Telemetry - Desktop only */}
+        <div className="hidden lg:flex items-center gap-6">
+          <div className="flex flex-col items-end">
+            <span className="text-[9px] text-white/20 uppercase tracking-tighter">Care_Score</span>
+            <span className="text-[11px] font-mono text-[#2d9b8a]">{status.care.toFixed(1)}%</span>
+          </div>
+          <div className="w-px h-6 bg-white/05" />
+          <div className="flex flex-col items-end">
+            <span className="text-[9px] text-white/20 uppercase tracking-tighter">Consciousness</span>
+            <span className="text-[11px] font-mono text-[#a78bfa]">{status.consciousness.toFixed(3)}</span>
+          </div>
+          <div className="w-px h-6 bg-white/05" />
+          <div className="flex flex-col items-end">
+            <span className="text-[9px] text-white/20 uppercase tracking-tighter">Active_Nodes</span>
+            <span className="text-[11px] font-mono text-white/60">{status.nodes}</span>
+          </div>
+        </div>
+
+        <div className="flex items-center gap-3 ml-2">
+          <div className="p-2 hover:bg-white/05 rounded-lg transition-colors cursor-pointer group">
+             <Command className="w-4 h-4 text-white/30 group-hover:text-[#c9a84c] transition-colors" />
+          </div>
+          <NotificationCenter />
+        </div>
+      </div>
+    </header>
+  );
+}
+
+// ─── PAGE LOADING SKELETON ──────────────────────────────────────────────────
+
 function PageSkeleton() {
   return (
-    <div
-      style={{
-        padding: "32px 24px",
-        display: "flex",
-        flexDirection: "column",
-        gap: 16,
-        minHeight: "100vh",
-        background: "#0d0c18",
-      }}
-    >
-      <div style={{ height: 32, width: "40%", borderRadius: 8, background: "rgba(255,255,255,0.06)" }} />
-      <div style={{ height: 18, width: "60%", borderRadius: 6, background: "rgba(255,255,255,0.04)" }} />
-      <div style={{ marginTop: 8, display: "flex", gap: 16 }}>
-        <div style={{ flex: 1, height: 120, borderRadius: 12, background: "rgba(255,255,255,0.05)" }} />
-        <div style={{ flex: 1, height: 120, borderRadius: 12, background: "rgba(255,255,255,0.05)" }} />
-        <div style={{ flex: 1, height: 120, borderRadius: 12, background: "rgba(255,255,255,0.05)" }} />
+    <div className="p-8 space-y-6 animate-in fade-in duration-500">
+      <div className="h-8 w-1/3 bg-white/05 rounded-lg" />
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="h-32 bg-white/05 rounded-2xl" />
+        <div className="h-32 bg-white/05 rounded-2xl" />
+        <div className="h-32 bg-white/05 rounded-2xl" />
       </div>
-      <div style={{ height: 200, borderRadius: 12, background: "rgba(255,255,255,0.04)" }} />
-      <div style={{ height: 18, width: "50%", borderRadius: 6, background: "rgba(255,255,255,0.04)" }} />
-      <div style={{ height: 18, width: "70%", borderRadius: 6, background: "rgba(255,255,255,0.04)" }} />
+      <div className="h-64 bg-white/05 rounded-2xl" />
     </div>
   );
 }
 
-// ─── Floating OS Launcher ─────────────────────────────────────────────────────
-function OsLauncherButton() {
-  const router = useRouter();
-  const [hovered, setHovered] = useState(false);
-
-  return (
-    <div
-      style={{
-        position: "fixed",
-        bottom: "24px",
-        right: "24px",
-        zIndex: 9999,
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        gap: "6px",
-      }}
-    >
-      {hovered && (
-        <div
-          style={{
-            background: "#13121f",
-            border: "1px solid rgba(201,168,76,0.35)",
-            color: "#c9a84c",
-            fontSize: "11px",
-            fontWeight: 600,
-            letterSpacing: "0.08em",
-            padding: "5px 10px",
-            borderRadius: "8px",
-            whiteSpace: "nowrap",
-            pointerEvents: "none",
-            boxShadow: "0 4px 16px rgba(0,0,0,0.4)",
-          }}
-        >
-          Enter OS Mode
-        </div>
-      )}
-      <button
-        onClick={() => router.push("/os/sovereign-os")}
-        onMouseEnter={() => setHovered(true)}
-        onMouseLeave={() => setHovered(false)}
-        aria-label="Enter OS Mode"
-        title="Enter OS Mode"
-        style={{
-          width: "52px",
-          height: "52px",
-          borderRadius: "50%",
-          background: "#c9a84c",
-          border: "none",
-          cursor: "pointer",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          boxShadow: hovered
-            ? "0 0 0 4px rgba(201,168,76,0.25), 0 8px 24px rgba(201,168,76,0.35)"
-            : "0 4px 16px rgba(201,168,76,0.25)",
-          transform: hovered ? "scale(1.08)" : "scale(1)",
-          transition: "all 0.18s ease",
-        }}
-      >
-        <svg
-          width="22"
-          height="22"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="#1a1a2e"
-          strokeWidth="2.2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
-          <circle cx="12" cy="12" r="3" />
-        </svg>
-      </button>
-    </div>
-  );
-}
+// ─── MAIN SHELL ─────────────────────────────────────────────────────────────
 
 export default function DashboardShell({ children }: { children: React.ReactNode }) {
   const { user, isLoaded, isSignedIn } = useUser();
   const router = useRouter();
-  const [mode, setMode] = useState("waking");
+  const [sidebarOpen, setSidebarOpen] = useState(true);
+  const [sysStatus, setSystemStatus] = useState<SystemStatus>({
+    care: 99.2,
+    consciousness: 0.788,
+    nodes: 235,
+    latency: 42,
+    mode: "waking"
+  });
 
+  // Auth guard
   useEffect(() => {
     if (isLoaded && !isSignedIn) {
       router.replace("/login");
     }
   }, [isLoaded, isSignedIn, router]);
 
-  // Poll consciousness mode
+  // Poll system health
   useEffect(() => {
     const poll = async () => {
       try {
         const res = await fetch("/api/health");
         if (res.ok) {
           const data = await res.json();
-          setMode(data.components?.consciousness?.consciousness_mode || "waking");
+          const cons = data.components?.consciousness;
+          setSystemStatus(prev => ({
+            ...prev,
+            mode: cons?.consciousness_mode || "waking",
+            consciousness: cons?.consciousness_level || prev.consciousness
+          }));
         }
       } catch {}
     };
     poll();
-    const id = setInterval(poll, 15000);
+    const id = setInterval(poll, 30000);
     return () => clearInterval(id);
   }, []);
 
+  const toggleSidebar = useCallback(() => setSidebarOpen(prev => !prev), []);
+
   if (!isLoaded) {
     return (
-      <div className="flex items-center justify-center min-h-screen bg-[#0f0e1a]">
-        <div className="flex flex-col items-center gap-3">
-          <div className="w-8 h-8 rounded-full border-2 border-[#c9a84c] border-t-transparent animate-spin" />
-          <span className="text-[#c9a84c]/60 text-sm font-medium tracking-wide">Loading MEOK OS...</span>
+      <div className="min-h-screen bg-[#0d0c18] flex items-center justify-center">
+        <div className="flex flex-col items-center gap-4">
+          <div className="w-10 h-10 border-2 border-[#c9a84c] border-t-transparent rounded-full animate-spin" />
+          <p className="text-[10px] font-mono text-[#c9a84c] tracking-[0.3em] uppercase animate-pulse">Initialising_MEOKCLAW</p>
         </div>
       </div>
     );
@@ -156,27 +158,48 @@ export default function DashboardShell({ children }: { children: React.ReactNode
   if (!isSignedIn) return null;
 
   return (
-    <div className="flex flex-col min-h-screen bg-[#0d0c18]">
-      <TrialBanner
-        daysLeft={Math.max(0, 14 - Math.floor((Date.now() - (user?.createdAt?.getTime?.() ?? Date.now())) / 86400000))}
-        totalDays={14}
-      />
-      <OsEntryBanner />
-      <div className="flex flex-1 min-h-0">
-        <Sidebar consciousnessMode={mode} />
-        <main className="flex-1 ml-0 md:ml-60 min-h-screen bg-[#0d0c18]">
-          <div className="absolute top-3 right-4 z-50 md:right-6">
-            <NotificationCenter />
+    <div className="min-h-screen bg-[#0d0c18] text-[#f5f0e8] flex font-sans overflow-hidden">
+      <style>{`
+        /* OS Shell Resets */
+        body { background: #0d0c18; overflow: hidden; }
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.05); border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: rgba(201,168,76,0.2); }
+      `}</style>
+
+      {/* Sidebar */}
+      <Sidebar consciousnessMode={sysStatus.mode} />
+
+      {/* Workspace */}
+      <div className="flex-1 flex flex-col min-w-0 md:ml-60 h-screen">
+        <TopBar status={sysStatus} toggleSidebar={toggleSidebar} />
+        
+        <main className="flex-1 overflow-y-auto overflow-x-hidden relative">
+          {/* Ambient Background Layer */}
+          <div className="absolute inset-0 pointer-events-none opacity-30">
+            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#c9a84c]/05 blur-[120px]" />
+            <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[#2d9b8a]/05 blur-[120px]" />
           </div>
-          <ErrorBoundary companionId={(user?.publicMetadata?.companionId as string) ?? undefined}>
-            <Suspense fallback={<PageSkeleton />}>
-              {children}
-            </Suspense>
-          </ErrorBoundary>
+
+          <div className="relative z-10 min-h-full">
+            <TrialBanner
+              daysLeft={Math.max(0, 14 - Math.floor((Date.now() - (user?.createdAt?.getTime?.() ?? Date.now())) / 86400000))}
+              totalDays={14}
+            />
+            
+            <ErrorBoundary companionId={(user?.publicMetadata?.companionId as string) ?? undefined}>
+              <Suspense fallback={<PageSkeleton />}>
+                <div className="animate-in fade-in slide-in-from-bottom-2 duration-700 ease-out">
+                  {children}
+                </div>
+              </Suspense>
+            </ErrorBoundary>
+          </div>
         </main>
       </div>
+
       <OnboardingTour />
-      <OsLauncherButton />
     </div>
   );
 }

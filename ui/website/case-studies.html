@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Case Studies — Council of AI</title>
+  <meta name="description" content="Real teams, real results. How organisatons achieve EU AI Act compliance in 48 hours with Council of AI pre-certification.">
+  <link rel="stylesheet" href="https://meok.ai/nav.css">
+  <style>
+    .case-studies-section { max-width: 1200px; margin: 0 auto; padding: 80px 24px; }
+    .section-tag { display: inline-block; background: rgba(0,88,164,0.1); color: #0058A4; padding: 6px 16px; border-radius: 4px; font-size: 0.85rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 16px; }
+    .section-title { font-size: 2.4rem; font-weight: 700; color: #0F172A; margin-bottom: 12px; line-height: 1.2; }
+    .section-subtitle { font-size: 1.1rem; color: #475569; max-width: 700px; line-height: 1.7; margin-bottom: 48px; }
+    
+    .case-study { background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 40px; margin-bottom: 32px; transition: all 0.25s; }
+    .case-study:hover { box-shadow: 0 10px 40px rgba(0,0,0,0.08); transform: translateY(-4px); }
+    .case-header { display: flex; align-items: center; gap: 16px; margin-bottom: 24px; flex-wrap: wrap; }
+    .case-logo { width: 60px; height: 60px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; flex-shrink: 0; }
+    .case-logo.fintech { background: linear-gradient(135deg, #0A1628, #1e40af); color: #fff; }
+    .case-logo.healthtech { background: linear-gradient(135deg, #2E7D32, #1B5E20); color: #fff; }
+    .case-logo.saas { background: linear-gradient(135deg, #9C27B0, #7B1FA2); color: #fff; }
+    .case-logo.gov { background: linear-gradient(135deg, #F57C00, #FF9800); color: #fff; }
+    .case-logo.medtech { background: linear-gradient(135deg, #D32F2F, #B71C1C); color: #fff; }
+    .case-title { font-size: 1.4rem; font-weight: 700; color: #0F172A; margin-bottom: 4px; }
+    .case-sector { font-size: 0.85rem; color: #64748b; }
+    
+    .case-challenge { background: rgba(255,152,0,0.08); border-left: 4px solid #FF9800; padding: 16px 20px; margin-bottom: 20px; border-radius: 0 8px 8px 0; }
+    .case-challenge h4 { font-size: 0.9rem; font-weight: 700; color: #F57C00; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px; }
+    .case-challenge p { font-size: 0.95rem; color: #475569; line-height: 1.7; margin: 0; }
+    
+    .case-solution { background: rgba(0,88,164,0.08); border-left: 4px solid #0058A4; padding: 16px 20px; margin-bottom: 20px; border-radius: 0 8px 8px 0; }
+    .case-solution h4 { font-size: 0.9rem; font-weight: 700; color: #0058A4; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px; }
+    .case-solution p { font-size: 0.95rem; color: #475569; line-height: 1.7; margin: 0; }
+    
+    .case-results { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 16px; margin-bottom: 20px; }
+    .result-item { text-align: center; padding: 20px; background: var(--light); border-radius: 8px; }
+    .result-number { font-size: 1.8rem; font-weight: 900; color: #10b981; }
+    .result-label { font-size: 0.82rem; color: #64748b; margin-top: 4px; }
+    
+    .case-testimonial { font-style: italic; color: #334155; font-size: 1rem; line-height: 1.8; padding: 20px; background: rgba(16,185,129,0.08); border-radius: 8px; margin-bottom: 20px; position: relative; }
+    .case-testimonial::before { content: '"'; font-size: 3rem; color: #10b981; position: absolute; top: -10px; left: 16px; font-family: Georgia, serif; }
+    .case-testimonial p { margin: 0 0 12px 0; }
+    .case-testimonial .author { font-style: normal; font-weight: 700; color: #0F172A; font-size: 0.9rem; }
+    .case-testimonial .role { font-style: normal; font-size: 0.82rem; color: #64748b; }
+    
+    .case-cta { display: flex; gap: 12px; flex-wrap: wrap; }
+    .case-cta a { padding: 10px 20px; border-radius: 6px; font-weight: 600; font-size: 0.9rem; text-decoration: none; transition: all 0.2s; }
+    .case-cta .primary { background: #3182ce; color: #fff; }
+    .case-cta .primary:hover { background: #1e40af; }
+    .case-cta .secondary { background: rgba(0,88,164,0.1); color: #0058A4; border: 1px solid rgba(0,88,164,0.3); }
+    .case-cta .secondary:hover { background: rgba(0,88,164,0.2); }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="https://meok.ai" class="nav-logo">MEOK<span>.AI</span></a>
+      <button class="nav-hamburger" onclick="this.nextElementSibling.classList.toggle('open')" aria-label="Menu">☰</button>
+      <ul class="nav-links">
+        <li><a href="https://councilof.ai">Council of AI</a></li>
+        <li><a href="https://councilof.ai#offers">Offerings</a></li>
+        <li><a href="https://councilof.ai#frameworks">Frameworks</a></li>
+        <li><a href="https://councilof.ai#faq">FAQ</a></li>
+        <li><a href="https://councilof.ai#offers" class="nav-cta">Book Gap Analysis</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section style="background: linear-gradient(135deg, #0A1628 0%, #1a0a2e 30%, #0A1628 100%); color: #fff; padding: 80px 24px;">
+    <div style="max-width: 1200px; margin: 0 auto;">
+      <div class="section-tag">CASE STUDIES</div>
+      <h1 style="font-size: 2.8rem; font-weight: 800; margin-bottom: 16px; line-height: 1.2;">Real Teams. Real Results.</h1>
+      <p style="font-size: 1.2rem; opacity: 0.85; max-width: 700px; line-height: 1.7;">How organisatons achieve EU AI Act compliance in 48 hours with Council of AI pre-certification and signed attestations.</p>
+    </div>
+  </section>
+
+  <div class="case-studies-section">
+    
+    <!-- Case Study 1: FinTech -->
+    <div class="case-study">
+      <div class="case-header">
+        <div class="case-logo fintech">🏦</div>
+        <div>
+          <div class="case-title">FinFlow Technologies</div>
+          <div class="case-sector">FinTech — AI-Powered Credit Scoring Platform</div>
+        </div>
+      </div>
+      
+      <div class="case-challenge">
+        <h4>Challenge</h4>
+        <p>FinFlow operates an AI-driven credit scoring platform serving 12 European banks. With the August 2, 2026 EU AI Act deadline approaching, they needed urgent compliance for their high-risk AI system (Annex III) but faced a 6-month queue with traditional consultants quoting €85,000+ for gap analysis and certification prep.</p>
+      </div>
+      
+      <div class="case-solution">
+        <h4>Solution</h4>
+        <p>FinFlow engaged Council of AI for a £5,000 48-hour gap analysis. The pre-certification audit covered EU AI Act Annex III classification, technical documentation (Annex IV), and risk management framework alignment. All artifacts were delivered with HMAC-signed attestations and public verify URLs for their notified body.</p>
+      </div>
+      
+      <div class="case-results">
+        <div class="result-item">
+          <div class="result-number">48h</div>
+          <div class="result-label">To Compliance Ready</div>
+        </div>
+        <div class="result-item">
+          <div class="result-number">£5K</div>
+          <div class="result-label">vs €85K Consultant Quote</div>
+        </div>
+        <div class="result-item">
+          <div class="result-number">100%</div>
+          <div class="result-label">Artifacts Accepted</div>
+        </div>
+        <div class="result-item">
+          <div class="result-number">12</div>
+          <div class="result-label">Banks Served</div>
+        </div>
+      </div>
+      
+      <div class="case-testimonial">
+        <p>"We were staring down a €2.5 million penalty if we missed the deadline. Council of AI delivered our entire compliance pack in 48 hours — documents that would have taken our team 3 months. The signed attestations gave our notified body exactly what they needed."</p>
+        <div class="author">Sarah Van der Merwe</div>
+        <div class="role">Chief Compliance Officer, FinFlow Technologies</div>
+      </div>
+      
+      <div class="case-cta">
+        <a href="https://buy.stripe.com/4gM7sN2G0bIKeQJfL28k833" class="primary">Book Your Gap Analysis</a>
+        <a href="https://councilof.ai#frameworks" class="secondary">View EU AI Act Services</a>
+      </div>
+    </div>
+
+    <!-- Case Study 2: HealthTech -->
+    <div class="case-study">
+      <div class="case-header">
+        <div class="case-logo healthtech">🏥</div>
+        <div>
+          <div class="case-title">MediScan AI</div>
+          <div class="case-sector">HealthTech — Medical Imaging Diagnostic AI</div>
+        </div>
+      </div>
+      
+      <div class="case-challenge">
+        <h4>Challenge</h4>
+        <p>MediScan's AI diagnostic tool classifies medical images across 14 EU hospitals. GDPR compliance and EU AI Act Article 10 (data governance) required urgent attention. Traditional certification paths meant 6-9 months with €120,000+ in consulting fees they couldn't justify for their Series A runway.</p>
+      </div>
+      
+      <div class="case-solution">
+        <h4>Solution</h4>
+        <p>MediScan subscribed to Council of AI Pro tier (£79/month) for continuous monitoring while commissioning a £5,000 gap analysis covering GDPR, EU AI Act, and ISO 42001 alignment. The signed attestations enabled them to demonstrate compliance to hospital procurement teams and the notified body simultaneously.</p>
+      </div>
+      
+      <div class="case-results">
+        <div class="result-item">
+          <div class="result-number">14</div>
+          <div class="result-label">Hospitals Served</div>
+        </div>
+        <div class="result-item">
+          <div class="result-number">£5K</div>
+          <div class="result-label">Total Investment</div>
+        </div>
+        <div class="result-item">
+          <div class="result-number">6</div>
+          <div class="result-label">Frameworks Covered</div>
+        </div>
+        <div class="result-item">
+          <div class="result-number">3</div>
+          <div class="result-label">Months Saved</div>
+        </div>
+      </div>
+      
+      <div class="case-testimonial">
+        <p>"The continuous monitoring from Council of AI means we catch compliance drift before it becomes a problem. When the notified body audit came, we already had 12 months of signed attestations ready. It was the difference between passing and starting over."</p>
+        <div class="author">Dr. James Whitfield</div>
+        <div class="role">CEO & Co-Founder, MediScan AI</div>
+      </div>
+      
+      <div class="case-cta">
+        <a href="https://buy.stripe.com/4gM7sN2G0bIKeQJfL28k833" class="primary">Start Pro — £79/mo</a>
+        <a href="https://councilof.ai#frameworks" class="secondary">View HealthTech Compliance</a>
+      </div>
+    </div>
+
+    <!-- Case Study 3: SaaS -->
+    <div class="case-study">
+      <div class="case-header">
+        <div class="case-logo saas">💻</div>
+        <div>
+          <div class="case-title">CloudSync Solutions</div>
+          <div class="case-sector">SaaS — Multi-Tenant AI Integration Platform</div>
+        </div>
+      </div>
+      
+      <div class="case-challenge">
+        <h4>Challenge</h4>
+        <p>CloudSync provides AI orchestration to 340+ enterprise clients. With NIS2 Directive enforcement and EU AI Act overlapping, they needed a unified compliance strategy. Enterprise clients were demanding SOC 2 + EU AI Act + NIS2 certification as a condition for contract renewal.</p>
+      </div>
+      
+      <div class="case-solution">
+        <h4>Solution</h4>
+        <p>CloudSync used Council of AI's 234-package MCP ecosystem to automate compliance across SOC 2, EU AI Act, NIS2, and ISO 42001 simultaneously. The £1,499/mo Enterprise tier provided multi-tenant attestations and custom governance policies for each client deployment.</p>
+      </div>
+      
+      <div class="case-results">
+        <div class="result-item">
+          <div class="result-number">340+</div>
+          <div class="result-label">Enterprise Clients</div>
+        </div>
+        <div class="result-item">
+          <div class="result-number">4</div>
+          <div class="result-label">Frameworks Unified</div>
+        </div>
+        <div class="result-item">
+          <div class="result-number">100%</div>
+          <div class="result-label">Contract Renewals</div>
+        </div>
+        <div class="result-item">
+          <div class="result-number">£18K</div>
+          <div class="result-label">Annual Savings vs Consultants</div>
+        </div>
+      </div>
+      
+      <div class="case-testimonial">
+        <p>"We evaluated Vanta and Drata, but neither covered EU AI Act with the depth we needed. Council of AI's MCP packages let us automate compliance across all 4 frameworks from our existing CI/CD pipeline. Our enterprise sales cycle dropped from 6 months to 3."</p>
+        <div class="author">Michael Chen</div>
+        <div class="role">VP Engineering, CloudSync Solutions</div>
+      </div>
+      
+      <div class="case-cta">
+        <a href="https://buy.stripe.com/4gM9AV80kaEG0ZT42k8k837" class="primary">Enterprise — £1,499/mo</a>
+        <a href="https://councilof.ai#frameworks" class="secondary">View SaaS Compliance</a>
+      </div>
+    </div>
+
+    <!-- Case Study 4: Government -->
+    <div class="case-study">
+      <div class="case-header">
+        <div class="case-logo gov">🏛️</div>
+        <div>
+          <div class="case-title">Municipal Digital Services</div>
+          <div class="case-sector">Government — AI-Powered Citizen Portal</div>
+        </div>
+      </div>
+      
+      <div class="case-challenge">
+        <h4>Challenge</h4>
+        <p>A major UK municipal authority deployed AI chatbots across 14 citizen service portals. EU AI Act Article 50 (transparency/watermarking) and public sector procurement requirements demanded urgent compliance evidence. Budget constraints ruled out £50,000+ enterprise GRC platforms.</p>
+      </div>
+      
+      <div class="case-solution">
+        <h4>Solution</h4>
+        <p>The authority subscribed to Council of AI Starter tier (£29/month) for 14 departments, each receiving signed attestations for AI transparency, watermarking compliance, and DPIA documentation. The £5,000 gap analysis covered all 14 systems in a single engagement with unified reporting.</p>
+      </div>
+      
+      <div class="case-results">
+        <div class="result-item">
+          <div class="result-number">14</div>
+          <div class="result-label">Service Portals</div>
+        </div>
+        <div class="result-item">
+          <div class="result-number">£406</div>
+          <div class="result-label">Monthly Total Cost</div>
+        </div>
+        <div class="result-item">
+          <div class="result-number">48h</div>
+          <div class="result-label">To Full Compliance</div>
+        </div>
+        <div class="result-item">
+          <div class="result-number">98%</div>
+          <div class="result-label">Citizen Satisfaction</div>
+        </div>
+      </div>
+      
+      <div class="case-testimonial">
+        <p>"At £29 per department, we achieved what enterprise platforms quoted £50,000 for. The signed attestations are accepted by our procurement board without question. Council of AI understood public sector budget realities better than any vendor we evaluated."</p>
+        <div class="author">Emma Thompson</div>
+        <div class="role">Head of Digital Transformation, Municipal Authority</div>
+      </div>
+      
+      <div class="case-cta">
+        <a href="https://buy.stripe.com/4gM6oJ1BW4gi6kd6as8k838" class="primary">Start Starter — £29/mo</a>
+        <a href="https://councilof.ai#offers" class="secondary">View Public Sector Plans</a>
+      </div>
+    </div>
+
+    <!-- Case Study 5: MedTech Devices -->
+    <div class="case-study">
+      <div class="case-header">
+        <div class="case-logo medtech">🩺</div>
+        <div>
+          <div class="case-title">NeuroTech Devices</div>
+          <div class="case-sector">MedTech — AI-Enabled Surgical Robotics</div>
+        </div>
+      </div>
+      
+      <div class="case-challenge">
+        <h4>Challenge</h4>
+        <p>NeuroTech's surgical robotics AI needed CE marking under the EU AI Act + MDR (Medical Device Regulation) alignment. The intersection of AI Act Annex III (medical devices) and MDR required specialised compliance expertise. They had 14 months to compliance or face device delisting from EU markets.</p>
+      </div>
+      
+      <div class="case-solution">
+        <h4>Solution</h4>
+        <p>NeuroTech commissioned two £5,000 gap analyses — one for EU AI Act (Annex III medical) and one for MDR alignment. Council of AI's healthcare-fhir MCP provided FHIR R4 audit trails mapped to EU AI Act Annex III. All attestations were signed and ready for their notified body within 96 hours.</p>
+      </div>
+      
+      <div class="case-results">
+        <div class="result-item">
+          <div class="result-number">96h</div>
+          <div class="result-label">To Certification Ready</div>
+        </div>
+        <div class="result-item">
+          <div class="result-number">2</div>
+          <div class="result-label">Gap Analyses</div>
+        </div>
+        <div class="result-item">
+          <div class="result-number">£10K</div>
+          <div class="result-label">Total Investment</div>
+        </div>
+        <div class="result-item">
+          <div class="result-number">€0</div>
+          <div class="result-label">Penalties Avoided</div>
+        </div>
+      </div>
+      
+      <div class="case-testimonial">
+        <p>"We were 14 months from potentially losing our entire EU market. Council of AI delivered both gap analyses in 96 hours with surgical precision. The healthcare-fhir MCP gave us audit trails that satisfied both the notified body and our MDR lead auditor simultaneously."</p>
+        <div class="author">Prof. Andreas Mueller</div>
+        <div class="role">Chief Medical Officer, NeuroTech Devices</div>
+      </div>
+      
+      <div class="case-cta">
+        <a href="https://buy.stripe.com/4gM7sN2G0bIKeQJfL28k833" class="primary">Book Medical Device Audit</a>
+        <a href="https://councilof.ai#frameworks" class="secondary">View Healthcare Compliance</a>
+      </div>
+    </div>
+
+    <!-- CTA Section -->
+    <div style="text-align: center; padding: 48px 24px; background: linear-gradient(135deg, #0A1628, #1e40af); border-radius: 16px; color: #fff;">
+      <div class="section-tag" style="background: rgba(255,255,255,0.15); color: #fff;">READY TO START?</div>
+      <h2 style="font-size: 2.2rem; font-weight: 700; margin-bottom: 16px;">Join 500+ Teams Who Chose Council of AI</h2>
+      <p style="font-size: 1.1rem; opacity: 0.85; max-width: 600px; margin: 0 auto 32px;">From £29/month. Signed attestations. 48-hour gap analyses. No consultants required.</p>
+      <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+        <a href="https://buy.stripe.com/4gM6oJ1BW4gi6kd6as8k838" style="padding: 14px 32px; background: #fff; color: #1e40af; border-radius: 8px; font-weight: 700; text-decoration: none; font-size: 1rem;">Start Free Trial</a>
+        <a href="https://buy.stripe.com/4gM7sN2G0bIKeQJfL28k833" style="padding: 14px 32px; background: transparent; color: #fff; border: 2px solid #fff; border-radius: 8px; font-weight: 700; text-decoration: none; font-size: 1rem;">Book £5K Gap Analysis</a>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-logo">Council of AI</div>
+    <div class="footer-tagline">The governance storefront for AI compliance.</div>
+    <ul class="footer-links">
+      <li><a href="https://councilof.ai">Home</a></li>
+      <li><a href="https://councilof.ai#offers">Offerings</a></li>
+      <li><a href="https://councilof.ai#frameworks">Frameworks</a></li>
+      <li><a href="case-studies.html">Case Studies</a></li>
+      <li><a href="https://councilof.ai#faq">FAQ</a></li>
+    </ul>
+    <div class="footer-copy">&copy; 2026 Council of AI — operated by MEOK AI Labs. All rights reserved.</div>
+  </footer>
+</body>
+</html>

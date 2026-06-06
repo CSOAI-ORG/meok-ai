@@ -1,55 +1,52 @@
 import type { Metadata } from "next";
 import HomePageClient from "./home-page-client";
 
-// ─── METADATA ──────────────────────────────────────────────────────────────
-
 export const metadata: Metadata = {
-  title: "MEOK AI Labs — Sovereign AI OS & Agent Infrastructure",
+  title: "MEOK AI Labs — Sovereign AI Compliance Infrastructure",
   description:
-    "MEOK is the sovereign AI operating system: one encrypted memory layer, every LLM, built to work, guard, and play..",
+    "218 open-source MCP servers. 15 regulatory frameworks. One command to install. MEOK AI Labs builds the compliance infrastructure layer for autonomous AI agents.",
   keywords: [
-    "personal sovereign AI",
-    "sovereign AI OS",
-    "AI that remembers you",
-    "care-aligned AI",
-    "AI companion",
-    "personal AI operating system",
-    "MEOK AI",
-    "Maternal Covenant",
-    "Byzantine AI governance",
-    "AI memory",
-    "multi-LLM AI",
-    "private AI",
+    "MCP servers",
+    "AI compliance",
+    "EU AI Act",
+    "DORA",
+    "NIS2",
+    "GDPR",
+    "HMAC-SHA256 attestation",
+    "agent-native compliance",
+    "open source AI",
+    "MEOK AI Labs",
+    "SafetyOf.AI",
+    "SOV3",
+    "x402 payments",
   ],
   alternates: { canonical: "https://meok.ai" },
   openGraph: {
-    title: "MEOK.AI — Personal Sovereign AI That Remembers You",
+    title: "MEOK AI Labs — Sovereign AI Compliance Infrastructure",
     description:
-      "MEOK is the sovereign AI operating system: one encrypted memory layer, every LLM, built to work, guard, and play..",
+      "218 open-source MCP servers. 15 regulatory frameworks. One command to install.",
     type: "website",
     url: "https://meok.ai",
-    siteName: "MEOK.AI",
+    siteName: "MEOK AI Labs",
     locale: "en_GB",
     images: [
       {
-        url: "https://meok.ai/api/og?title=MEOK.AI&desc=Your+sovereign+AI.+Built+to+remember.+Designed+to+care.",
+        url: "https://meok.ai/api/og?title=MEOK+AI+Labs&desc=Sovereign+AI+Compliance+Infrastructure",
         width: 1200,
         height: 630,
-        alt: "MEOK.AI — Personal Sovereign AI OS",
+        alt: "MEOK AI Labs — Sovereign AI Compliance Infrastructure",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "MEOK.AI — Personal Sovereign AI That Remembers You",
+    title: "MEOK AI Labs — Sovereign AI Compliance Infrastructure",
     description:
-      "MEOK is the sovereign AI operating system: one encrypted memory layer, every LLM, built to work, guard, and play..",
+      "218 open-source MCP servers. 15 regulatory frameworks. One command to install.",
     site: "@meok_ai",
-    images: ["https://meok.ai/api/og?title=MEOK.AI&desc=Your+sovereign+AI.+Built+to+remember.+Designed+to+care."],
+    images: ["https://meok.ai/api/og?title=MEOK+AI+Labs&desc=Sovereign+AI+Compliance+Infrastructure"],
   },
 };
-
-// ─── JSON-LD ────────────────────────────────────────────────────────────────
 
 const organizationJsonLd = {
   "@context": "https://schema.org",
@@ -60,69 +57,34 @@ const organizationJsonLd = {
   foundingDate: "2026",
   founder: { "@type": "Person", name: "Nicholas Templeman" },
   description:
-    "MEOK AI Labs builds the sovereign AI operating system and agent infrastructure that powers secure, memory-enabled AI across gaming, safety, and productivity.",
+    "MEOK AI Labs builds sovereign AI compliance infrastructure: 218 open-source MCP servers, 15 regulatory frameworks, cryptographic attestation, and agent-native payments.",
   address: { "@type": "PostalAddress", addressCountry: "GB" },
   contactPoint: [
     { "@type": "ContactPoint", email: "hello@meok.ai", contactType: "customer service" },
     { "@type": "ContactPoint", email: "press@meok.ai", contactType: "press" },
   ],
-  sameAs: ["https://github.com/meok-ai/meok-ai"],
+  sameAs: [
+    "https://github.com/CSOAI-ORG",
+    "https://pypi.org/user/meok-ai/",
+    "https://smithery.ai/@meok-ai",
+  ],
 };
 
 const websiteJsonLd = {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  name: "MEOK.AI",
+  name: "MEOK AI Labs",
   url: "https://meok.ai",
   description:
-    "Sovereign AI OS and agent infrastructure. One memory layer. Every LLM. Zero compromise. Built for work, Guardian safety, and gaming —.",
+    "Sovereign AI compliance infrastructure. 218 open-source MCP servers. 15 regulatory frameworks. One command to install.",
   publisher: { "@type": "Organization", name: "MEOK AI LABS" },
-  potentialAction: {
-    "@type": "SearchAction",
-    target: "https://meok.ai/search?q={search_term_string}",
-    "query-input": "required name=search_term_string",
-  },
 };
-
-const faqJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: [
-    {
-      "@type": "Question",
-      name: "What is MEOK AI?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "MEOK.AI is the sovereign AI operating system. It unifies encrypted memory, multi-LLM routing, and a 255-node MCP marketplace into one secure platform —.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Does MEOK AI remember me?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Yes. Unlike other AI tools that reset every session, MEOK maintains a permanent encrypted memory vault across all your conversations.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "How much does MEOK cost?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "MEOK is free forever at the base tier (Explorer). Sovereign is £9/month or £90/year. Sovereign Pro is £19/month or £190/year. Enterprise pricing is custom. All paid plans include a 30-day money-back guarantee.",
-      },
-    },
-  ],
-};
-
-// ─── PAGE ────────────────────────────────────────────────────────────────────
 
 export default function HomePage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <HomePageClient />
     </>
   );

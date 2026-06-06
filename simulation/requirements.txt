@@ -1,0 +1,9 @@
+jax==0.4.26
+jaxlib==0.4.26
+mujoco==3.1.4
+mujoco-mjx==3.1.4
+dm-haiku==0.0.12
+optax==0.2.2
+torch==2.3.0
+torch-geometric==2.5.3
+networkx==3.2.1

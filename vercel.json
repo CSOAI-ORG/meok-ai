@@ -1,4 +1,16 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "outputDirectory": "ui/.next"
+  "outputDirectory": "ui/.next",
+  "experimentalServices": {
+    "sovereign-temple": {
+      "entrypoint": "sovereign-temple",
+      "routePrefix": "/"
+    }
+  },
+  "routes": [
+    { "src": "/unified-dashboard.html", "dest": "/ui/website/unified-dashboard.html" },
+    { "src": "/case-studies.html", "dest": "/ui/website/case-studies.html" },
+    { "src": "/(.*\\.html)", "dest": "/ui/website/$1" },
+    { "src": "/(.*)", "dest": "/$1" }
+  ]
 }

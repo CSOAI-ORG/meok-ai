@@ -25,6 +25,7 @@ const SCAM_TYPE_LABELS: Record<NonNullable<ScamAnalysis['scamType']>, string> = 
   grandparent:    'a grandparent scam',
   phishing:       'a phishing attempt',
   impersonation:  'an impersonation scam',
+  injection_attempt: 'an adversarial injection attempt',
 };
 
 // ── Tone calibration ───────────────────────────────────────────────────────

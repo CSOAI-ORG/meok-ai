@@ -428,6 +428,47 @@ export default function GeneralsPage() {
         </CardContent>
       </Card>
 
+      {/* 🚀 SWARM DISCOVERIES */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+        <Card className="border-[#f87171]/20 bg-[#f87171]/05">
+          <CardHeader className="pb-2">
+            <div className="flex justify-between items-start">
+               <span className="text-[10px] font-black text-[#f87171] uppercase tracking-widest">Active_Inference_Core</span>
+               <span className="text-[8px] font-mono text-white/20">04:22:45</span>
+            </div>
+            <CardTitle className="text-sm font-black uppercase text-white/90">Field Coherence Protocol</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <p className="text-[11px] text-white/40 leading-relaxed mb-4">
+               A new method for synchronous swarm behavior in distributed agents was identified in ArXiv 2605.12241. Successfully mapped to BFT council architecture.
+            </p>
+            <div className="flex gap-2">
+               <Button variant="outline" size="sm" className="h-6 text-[9px] border-[#f87171]/20 text-[#f87171] hover:bg-[#f87171]/10">Codify_Skill</Button>
+               <Button variant="ghost" size="sm" className="h-6 text-[9px] text-white/30">Archive</Button>
+            </div>
+          </CardContent>
+        </Card>
+
+        <Card className="border-[#60a5fa]/20 bg-[#60a5fa]/05">
+          <CardHeader className="pb-2">
+            <div className="flex justify-between items-start">
+               <span className="text-[10px] font-black text-[#60a5fa] uppercase tracking-widest">MCP_Intelligence</span>
+               <span className="text-[8px] font-mono text-white/20">03:52:44</span>
+            </div>
+            <CardTitle className="text-sm font-black uppercase text-white/90">Orbital & Crypto Substrates</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <p className="text-[11px] text-white/40 leading-relaxed mb-4">
+               Astro-tools & Universal-crypto MCP servers identified. Expanding 'Emperor' routing into astrodynamics and on-chain state verification domains.
+            </p>
+            <div className="flex gap-2">
+               <Button variant="outline" size="sm" className="h-6 text-[9px] border-[#60a5fa]/20 text-[#60a5fa] hover:bg-[#60a5fa]/10">Inject_Registry</Button>
+               <Button variant="ghost" size="sm" className="h-6 text-[9px] text-white/30">Explore_Code</Button>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+
       {/* Division Generals */}
       <Card>
         <CardHeader>

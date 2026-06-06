@@ -751,6 +751,10 @@ class ConsciousnessOrchestrator:
         self.dream = DreamState(memory_store, self.emotional_state)
         self.consciousness_mode = ConsciousnessMode.JAGRAT
         self.meta_monitor = MetaMonitor()
+        
+        # Sovereign Premium Metadata
+        self.tier = "explorer"
+        self.soul_id = None
 
     async def initialize(self):
         """Initialize all consciousness subsystems"""
@@ -866,7 +870,9 @@ class ConsciousnessOrchestrator:
                 self.meta_monitor.observations[-1]["coherence_score"]
                 if self.meta_monitor.observations else None
             ),
-            "consciousness_level": self._calculate_consciousness_level()
+            "consciousness_level": self._calculate_consciousness_level(),
+            "tier": self.tier,
+            "soul_id": self.soul_id
         }
 
     def _calculate_consciousness_level(self) -> float:
