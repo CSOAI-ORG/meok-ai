@@ -20,7 +20,7 @@ const NAVY = "#1a1a2e";
 const GOLD = "#c9a84c";
 const BG = "#f5f0e8";
 
-const STRIPE_LINK = "https://buy.stripe.com/00wfZjcgAeUW4c5cyQ8k90K";
+const STRIPE_LINK = "https://buy.stripe.com/aFa14pfsMcMOdMF0Q88k91g";
 
 const PILLARS = [
   {

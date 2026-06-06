@@ -604,8 +604,8 @@ export default function PricingClient() {
                 <li className="flex gap-2"><span className="text-[#c9a84c]">✓</span> Slack support channel</li>
                 <li className="flex gap-2"><span className="text-[#c9a84c]">✓</span> Unlimited attestations</li>
               </ul>
-              <a href="https://buy.stripe.com/eVq14pcgAcMO9wp7ew8k90N" className="block text-center py-3 rounded-xl bg-[#c9a84c] text-[#1a1a2e] font-black text-sm hover:bg-[#d4b258] transition">Subscribe Monthly →</a>
-              <a href="https://buy.stripe.com/dRmfZj2G03ceeQJ8iA8k90O" className="block text-center mt-2 text-xs text-white/70 font-bold hover:text-white">or pay annual £1,490 (save £298) →</a>
+              <a href="https://buy.stripe.com/4gMfZja8seUWbEx1Uc8k915?prefilled_promo_code=LAUNCH50" className="block text-center py-3 rounded-xl bg-[#c9a84c] text-[#1a1a2e] font-black text-sm hover:bg-[#d4b258] transition">Subscribe Monthly →</a>
+              <a href="https://buy.stripe.com/4gMfZja8seUWbEx1Uc8k915?prefilled_promo_code=LAUNCH50" className="block text-center mt-2 text-xs text-white/70 font-bold hover:text-white">50% off 6 months with LAUNCH50 →</a>
               <p className="text-[11px] text-white/40 mt-2 text-center">Cancel anytime · 14-day refund</p>
             </div>
 
@@ -613,8 +613,8 @@ export default function PricingClient() {
             <div className="rounded-2xl bg-white/5 border border-white/10 p-6 flex flex-col">
               <div className="text-xs font-black tracking-wider text-white/50 mb-2">REGULATED INDUSTRIES</div>
               <h3 className="text-2xl font-black text-white mb-1">Defence</h3>
-              <div className="text-3xl font-black text-white mb-1">£999<span className="text-base font-normal text-white/50">/mo</span></div>
-              <div className="text-xs text-white/50 mb-4">or £9,990/yr (save £1,998) · SSO + SLA + custom verify domain</div>
+              <div className="text-3xl font-black text-white mb-1">£499<span className="text-base font-normal text-white/50">/mo</span></div>
+              <div className="text-xs text-white/50 mb-4">or £4,790/yr · SSO + SLA + custom verify domain</div>
               <ul className="text-sm text-white/70 space-y-2 mb-6 flex-1">
                 <li className="flex gap-2"><span className="text-[#c9a84c]">✓</span> Everything in Pro</li>
                 <li className="flex gap-2"><span className="text-[#c9a84c]">✓</span> All 208 MCP servers</li>
@@ -624,8 +624,8 @@ export default function PricingClient() {
                 <li className="flex gap-2"><span className="text-[#c9a84c]">✓</span> 99.9% SLA</li>
                 <li className="flex gap-2"><span className="text-[#c9a84c]">✓</span> Custom verify domain</li>
               </ul>
-              <a href="https://buy.stripe.com/eVq7sN6Wg9AC3812Yg8k90R" className="block text-center py-3 rounded-xl border-2 border-white/20 text-white font-black text-sm hover:bg-white/10 transition">Subscribe Monthly →</a>
-              <a href="https://buy.stripe.com/eVq7sN6Wg9AC3812Yg8k90R" className="block text-center mt-2 text-xs text-white/70 font-bold hover:text-white">or pay annual £9,990 (save £1,998) →</a>
+              <a href="https://buy.stripe.com/fZu28t80kaEGeQJ2Yg8k83E" className="block text-center py-3 rounded-xl border-2 border-white/20 text-white font-black text-sm hover:bg-white/10 transition">Subscribe Monthly →</a>
+              <a href="https://buy.stripe.com/fZu28t80kaEGeQJ2Yg8k83E" className="block text-center mt-2 text-xs text-white/70 font-bold hover:text-white">Defence £499/mo →</a>
               <a href="mailto:nicholas@meok.ai?subject=MEOK%20Defence%20plan%20question" className="block text-center mt-1 text-[11px] text-white/40 hover:text-white/60">Questions? Email us →</a>
             </div>
 
@@ -656,8 +656,8 @@ export default function PricingClient() {
               <p className="text-sm text-white/60">Of ~30K obligated entities, only 11.5K registered by deadline. ~18K are non-compliant right now.</p>
             </div>
             <div className="flex flex-col sm:flex-row gap-3 flex-shrink-0">
-              <a href="https://buy.stripe.com/7sY00l6WgbIK0ZTfL28k90Q" className="px-5 py-3 rounded-xl bg-white text-[#1a1a2e] font-black text-sm whitespace-nowrap">£49 self-serve →</a>
-              <a href="https://buy.stripe.com/7sY00l6WgbIK0ZTfL28k90Q" className="px-5 py-3 rounded-xl bg-[#c9a84c] text-[#1a1a2e] font-black text-sm whitespace-nowrap">£999 done-for-you →</a>
+              <a href="https://buy.stripe.com/9B6eVf6WgeUWfUN2Yg8k91e" className="px-5 py-3 rounded-xl bg-white text-[#1a1a2e] font-black text-sm whitespace-nowrap">£99 self-serve →</a>
+              <a href="https://buy.stripe.com/00waEZ80kaEG0ZTdCU8k91f" className="px-5 py-3 rounded-xl bg-[#c9a84c] text-[#1a1a2e] font-black text-sm whitespace-nowrap">£499 done-for-you →</a>
             </div>
           </div>
 

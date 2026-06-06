@@ -30,9 +30,9 @@ const PACKS = [
   { name: "Financial Services", price: "79", servers: 9, desc: "SOC 2, PCI DSS, tax, budget, expense, risk, stock", href: "https://buy.stripe.com/aFaeVfeoIbIKcIBdCU8k90S" },
   { name: "Cybersecurity", price: "79", servers: 8, desc: "OWASP Agentic, deepfake detection, trust chains, credentials", href: "https://buy.stripe.com/aFaeVfeoIbIKcIBdCU8k90S" },
   { name: "SMB Operations", price: "49", servers: 10, desc: "Invoice, expense, CRM, support, time tracking, PM", href: "https://buy.stripe.com/aFaeVfeoIbIKcIBdCU8k90S" },
-  { name: "Marketing & Growth", price: "49", servers: 10, desc: "Ad copy, content calendar, SEO, social, leads, sentiment", href: "https://buy.stripe.com/eVq7sN6Wg9AC3812Yg8k90R" },
-  { name: "Developer Tools", price: "29", servers: 10, desc: "Code review, CI/CD, testing, API docs, Docker, git", href: "https://buy.stripe.com/eVq7sN6Wg9AC3812Yg8k90R" },
-  { name: "Defence All-In", price: "999", servers: 208, desc: "Every server, unlimited calls, SSO, SLA, on-premise", href: "https://buy.stripe.com/eVq7sN6Wg9AC3812Yg8k90R" },
+  { name: "Marketing & Growth", price: "49", servers: 10, desc: "Ad copy, content calendar, SEO, social, leads, sentiment", href: "/pricing" },
+  { name: "Developer Tools", price: "29", servers: 10, desc: "Code review, CI/CD, testing, API docs, Docker, git", href: "/pricing" },
+  { name: "Defence All-In", price: "999", servers: 208, desc: "Every server, unlimited calls, SSO, SLA, on-premise", href: "/pricing" },
 ];
 
 const TIERS = [

@@ -2,13 +2,13 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "AI Transparency & Explainability · £399-£1,499/mo · MEOK AI Labs",
+  title: "AI Transparency & Explainability · £79-£1,499/mo · MEOK AI Labs",
   description:
     "Article 50 + GDPR Article 22 + EU AI Act explainability evidence pack. Continuous decision-trace logging + signed transparency attestations. The FinServ + Healthcare RFP ticket.",
   alternates: { canonical: "https://meok.ai/transparency" },
   openGraph: {
     title: "AI Transparency & Explainability — MEOK Article 50 + GDPR 22 + EU AI Act",
-    description: "Continuous decision-trace logging + signed evidence pack. £399-£1,499/mo.",
+    description: "Continuous decision-trace logging + signed evidence pack. £79-£1,499/mo.",
     type: "website",
     url: "https://meok.ai/transparency",
     images: [{ url: "/api/og?title=AI+Transparency+%26+Explainability&desc=Article+50+%2B+GDPR+22+%2B+EU+AI+Act+evidence+pack", width: 1200, height: 630, alt: "Transparency Product" }],
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "AI Transparency & Explainability — Article 50 + GDPR 22",
-    description: "Continuous decision-trace logging + signed evidence pack. £399-£1,499/mo.",
+    description: "Continuous decision-trace logging + signed evidence pack. £79-£1,499/mo.",
     site: "@meok_ai",
     images: ["/api/og?title=AI+Transparency+%26+Explainability&desc=Article+50+%2B+GDPR+22+%2B+EU+AI+Act+evidence+pack"],
   },
@@ -26,13 +26,13 @@ const NAVY = "#1a1a2e";
 const GOLD = "#c9a84c";
 const BG = "#f5f0e8";
 
-const STRIPE_399 = "https://buy.stripe.com/00wfZjcgAeUW4c5cyQ8k90K";
-const STRIPE_1499 = "https://buy.stripe.com/7sY00l6WgbIK0ZTfL28k90Q";
+const STRIPE_399 = "https://buy.stripe.com/4gMfZja8seUWbEx1Uc8k915?prefilled_promo_code=LAUNCH50";
+const STRIPE_1499 = "https://buy.stripe.com/7sY5kF3K4cMObEx2Yg8k917";
 
 const TIERS = [
   {
-    name: "Standard",
-    price: "£399/mo",
+    name: "Pro",
+    price: "£79/mo",
     desc: "FinServ + Healthcare baseline. 50K decision-traces / month. Article 50 transparency obligations + GDPR Article 22 explainability + EU AI Act high-risk Article 13 documentation.",
     href: STRIPE_399,
     highlight: false,
@@ -111,7 +111,7 @@ const REGULATIONS = [
 const FAQ = [
   {
     q: "Why is this priced higher than the rest of the MEOK suite?",
-    a: "Transparency is the FinServ and Healthcare RFP ticket. Bank credit-decision systems and clinical-decision-support systems are subject to additional explainability obligations (PSD2 + EBA Guidelines for FinServ, MDR + EU MDR for healthcare). Buyers in those verticals already pay £30K-£200K/yr for explainability dashboards — £399/mo is a 50× cost reduction with cryptographic evidence on top.",
+    a: "Transparency is the FinServ and Healthcare RFP ticket. Bank credit-decision systems and clinical-decision-support systems are subject to additional explainability obligations (PSD2 + EBA Guidelines for FinServ, MDR + EU MDR for healthcare). Buyers in those verticals already pay £30K-£200K/yr for explainability dashboards — £79/mo is a massive cost reduction with cryptographic evidence on top.",
   },
   {
     q: "What's a 'decision-trace'?",
@@ -131,7 +131,7 @@ const FAQ = [
   },
   {
     q: "Do I need this if I'm not in FinServ or Healthcare?",
-    a: "Not as a hard obligation. EU AI Act Article 13 only binds high-risk providers (Annex III + Annex I); GDPR Article 22 binds anyone making solely-automated decisions with significant effects. If you're outside both, the /bias-detection (£299/mo) + /audit-prep-bundle (£4,950) covers most needs. /transparency is the FinServ/Healthcare/credit-scoring/insurance-pricing escalation tier.",
+    a: "Not as a hard obligation. EU AI Act Article 13 only binds high-risk providers (Annex III + Annex I); GDPR Article 22 binds anyone making solely-automated decisions with significant effects. If you're outside both, the /bias-detection (£79/mo) + /audit-prep-bundle (£4,950) covers most needs. /transparency is the FinServ/Healthcare/credit-scoring/insurance-pricing escalation tier.",
   },
 ];
 
@@ -175,7 +175,7 @@ export default function TransparencyPage() {
           AI Transparency & Explainability
         </h1>
         <p style={{ fontSize: "1.3rem", color: GOLD, fontWeight: 900, marginBottom: 8 }}>
-          £399/mo Standard · £1,499/mo Enterprise
+          £79/mo Pro · £1,499/mo Enterprise
         </p>
         <p style={{ fontSize: "1.05rem", color: `${NAVY}99`, maxWidth: 720, marginBottom: 40, lineHeight: 1.6 }}>
           Continuous decision-trace logging + signed transparency attestations for FinServ, Healthcare,

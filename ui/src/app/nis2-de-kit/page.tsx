@@ -2,17 +2,17 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "NIS2-UmsuCG BSI-Registrierung · Late-Filing Kit · £49 / £999",
+  title: "NIS2-UmsuCG BSI-Registrierung · Late-Filing Kit · £99 / £499",
   description:
-    "NIS2-UmsuCG late-filing rapid response for the ~17,500 German Mittelstand entities that missed the 6 March 2026 BSI deadline. £49 self-serve or £999 done-for-you with 7-day turnaround.",
+    "NIS2-UmsuCG late-filing rapid response for the ~17,500 German Mittelstand entities that missed the 6 March 2026 BSI deadline. £99 self-serve or £499 done-for-you with 7-day turnaround.",
   alternates: { canonical: "https://meok.ai/nis2-de-kit" },
   openGraph: {
-    title: "Germany NIS2 BSI Register — Late-Filing Kit (£49 / £999)",
+    title: "Germany NIS2 BSI Register — Late-Filing Kit (£99 / £499)",
     description: "Of 30K obligated entities, only ~11.5K registered by 6 March 2026. ~17.5K still non-compliant. 7-day turnaround.",
     type: "website",
     url: "https://meok.ai/nis2-de-kit",
     locale: "de_DE",
-    images: [{ url: "/api/og?title=NIS2-UmsuCG+BSI-Registrierung&desc=%C2%A349+self-serve+%E2%80%A2+%C2%A3999+done-for-you", width: 1200, height: 630, alt: "NIS2-DE Kit" }],
+    images: [{ url: "/api/og?title=NIS2-UmsuCG+BSI-Registrierung&desc=%C2%A399+self-serve+%E2%80%A2+%C2%A3499+done-for-you", width: 1200, height: 630, alt: "NIS2-DE Kit" }],
   },
 };
 
@@ -20,8 +20,8 @@ const NAVY = "#1a1a2e";
 const GOLD = "#c9a84c";
 const BG = "#f5f0e8";
 
-const SELF_SERVE = "https://buy.stripe.com/7sY00l6WgbIK0ZTfL28k90Q";
-const DFY = "https://buy.stripe.com/7sY00l6WgbIK0ZTfL28k90Q";
+const SELF_SERVE = "https://buy.stripe.com/9B6eVf6WgeUWfUN2Yg8k91e";
+const DFY = "https://buy.stripe.com/00waEZ80kaEG0ZTdCU8k91f";
 
 const SELF_INCLUDES = [
   "Step-by-step BSI MIP register walkthrough (English-first)",
@@ -93,7 +93,7 @@ export default function NIS2DeKitPage() {
             <div style={{ fontSize: 12, fontWeight: 900, color: `${NAVY}66`, marginBottom: 8 }}>
               SELF-SERVE
             </div>
-            <h2 style={{ fontSize: "2rem", fontWeight: 900, marginBottom: 4 }}>£49</h2>
+            <h2 style={{ fontSize: "2rem", fontWeight: 900, marginBottom: 4 }}>£99</h2>
             <div style={{ fontSize: 13, color: `${NAVY}99`, marginBottom: 20 }}>
               one-time · ~30 min to complete
             </div>
@@ -118,7 +118,7 @@ export default function NIS2DeKitPage() {
                 fontSize: 14,
               }}
             >
-              Buy Self-Serve · £49 →
+              Buy Self-Serve · £99 →
             </a>
           </div>
 
@@ -150,7 +150,7 @@ export default function NIS2DeKitPage() {
             <div style={{ fontSize: 12, fontWeight: 900, marginBottom: 8, opacity: 0.7 }}>
               DONE-FOR-YOU
             </div>
-            <h2 style={{ fontSize: "2rem", fontWeight: 900, marginBottom: 4 }}>£999</h2>
+            <h2 style={{ fontSize: "2rem", fontWeight: 900, marginBottom: 4 }}>£499</h2>
             <div style={{ fontSize: 13, opacity: 0.85, marginBottom: 20 }}>
               one-time · 7-day turnaround
             </div>
@@ -175,7 +175,7 @@ export default function NIS2DeKitPage() {
                 fontSize: 14,
               }}
             >
-              Book Done-For-You · £999 →
+              Book Done-For-You · £499 →
             </a>
           </div>
         </div>
