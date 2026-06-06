@@ -19,7 +19,7 @@ const NAVY = "#1a1a2e";
 const GOLD = "#c9a84c";
 const BG = "#f5f0e8";
 
-const STRIPE_LINK = "https://buy.stripe.com/00wfZjcgAeUW4c5cyQ8k90K";
+const STRIPE_LINK = "https://buy.stripe.com/3cIaEZfsMcMO9wp7ew8k83F";
 
 const PRODUCT_JSONLD = {
   "@context": "https://schema.org",

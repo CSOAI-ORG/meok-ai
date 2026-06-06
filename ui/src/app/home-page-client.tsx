@@ -759,7 +759,7 @@ function HeroSection() {
             className="inline-flex items-center gap-2 font-bold rounded-full transition-all shadow-lg hover:shadow-[#c9a84c]/40 hover:scale-105"
             style={{ background: GOLD, color: "#1a1a2e", padding: "1rem 2.25rem", fontSize: "1.125rem" }}
           >
-            Subscribe £29/mo
+            Subscribe £79/mo
             <ArrowRight className="w-4 h-4" />
           </a>
           <Link
@@ -848,9 +848,9 @@ function HeroSection() {
         {/* Tier links */}
         <div className="flex items-center gap-3 flex-wrap justify-center text-sm font-medium mb-8" style={{ color: "rgba(245,240,232,0.55)" }}>
           <span>Or self-serve:</span>
-          <a href="https://buy.stripe.com/7sY00l6WgbIK0ZTfL28k90Q" target="_blank" rel="noopener noreferrer" className="underline decoration-dotted hover:text-white transition-colors">Pro £149/mo</a>
+          <a href="https://buy.stripe.com/00wfZjcgAeUW4c5cyQ8k90K" target="_blank" rel="noopener noreferrer" className="underline decoration-dotted hover:text-white transition-colors">Pro £79/mo</a>
           <span className="opacity-40">·</span>
-          <a href="https://buy.stripe.com/7sY00l6WgbIK0ZTfL28k90Q" target="_blank" rel="noopener noreferrer" className="underline decoration-dotted hover:text-white transition-colors">Defence £999/mo</a>
+          <a href="https://buy.stripe.com/7sY5kF3K4cMObEx2Yg8k917" target="_blank" rel="noopener noreferrer" className="underline decoration-dotted hover:text-white transition-colors">Enterprise £1,499/mo</a>
           <span className="opacity-40">·</span>
           <Link href="/pricing" className="underline decoration-dotted hover:text-white transition-colors">All pricing →</Link>
         </div>
