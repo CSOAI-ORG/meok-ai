@@ -19,7 +19,7 @@ const NAVY = "#1a1a2e";
 const GOLD = "#c9a84c";
 const BG = "#f5f0e8";
 
-const STRIPE_LINK = "https://buy.stripe.com/00wfZjcgAeUW4c5cyQ8k90K";
+const STRIPE_LINK = "https://buy.stripe.com/5kQ6oJ0xS3ce8sl7ew8k91j";
 
 const INCLUDES = [
   { item: "Day 1 — full audit", desc: "Full review of your AI/data pipeline against EU AI Act Article 6 risk classification, Article 26(9) FRIA, Article 50 transparency obligations, and any relevant overlay (DORA / NIS2 / CRA / GDPR)." },

@@ -253,7 +253,7 @@ export default function McpStackDemoPage() {
             </pre>
             <div style={{ marginTop: 18, display: "flex", gap: 10, flexWrap: "wrap" }}>
               <a
-                href="https://buy.stripe.com/3cIbJ36Wg5kmdMF2Yg8k90t"
+                href="https://buy.stripe.com/5kQ6oJ0xS3ce8sl7ew8k91j"
                 style={{ padding: "12px 22px", background: GOLD, color: NAVY, textDecoration: "none", borderRadius: 10, fontSize: 13, fontWeight: 800 }}
               >
                 Buy Governance Substrate £499/mo →

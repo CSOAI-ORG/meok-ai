@@ -75,9 +75,9 @@ const jsonLd = {
   "url": "https://meok.ai/cobol",
   "image": "https://meok.ai/api/og?title=MEOK+COBOL+Substrate",
   "offers": [
-    { "@type": "Offer", "price": "999", "priceCurrency": "GBP", "name": "COBOL Substrate Pro Monthly", "url": "https://buy.stripe.com/3cIfZj1BW7su4c5eGY8k90w" },
-    { "@type": "Offer", "price": "9990", "priceCurrency": "GBP", "name": "COBOL Substrate Pro Annual", "url": "https://buy.stripe.com/9B6bJ3eoIaEGgYRfL28k90x" },
-    { "@type": "Offer", "price": "4990", "priceCurrency": "GBP", "name": "COBOL Substrate Defence", "url": "https://buy.stripe.com/8x25kF0xSeUW6kd0Q88k90y" },
+    { "@type": "Offer", "price": "999", "priceCurrency": "GBP", "name": "COBOL Substrate Pro Monthly", "url": "https://buy.stripe.com/5kQ6oJ0xS3ce8sl7ew8k91j" },
+    { "@type": "Offer", "price": "9990", "priceCurrency": "GBP", "name": "COBOL Substrate Pro Annual", "url": "https://buy.stripe.com/5kQ6oJ0xS3ce8sl7ew8k91j" },
+    { "@type": "Offer", "price": "4990", "priceCurrency": "GBP", "name": "COBOL Substrate Defence", "url": "https://buy.stripe.com/5kQ6oJ0xS3ce8sl7ew8k91j" },
   ],
 };
 
@@ -107,13 +107,13 @@ export default function CobolPage() {
           </p>
           <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
             <a
-              href="https://buy.stripe.com/3cIfZj1BW7su4c5eGY8k90w"
+              href="https://buy.stripe.com/5kQ6oJ0xS3ce8sl7ew8k91j"
               style={{ padding: "14px 28px", background: GOLD, color: NAVY, textDecoration: "none", fontWeight: 800, borderRadius: 12, fontSize: 14 }}
             >
               Start COBOL Substrate £999/mo →
             </a>
             <a
-              href="https://buy.stripe.com/8x25kF0xSeUW6kd0Q88k90y"
+              href="https://buy.stripe.com/5kQ6oJ0xS3ce8sl7ew8k91j"
               style={{ padding: "14px 28px", background: "transparent", color: "#fff", border: "1px solid rgba(255,255,255,0.25)", textDecoration: "none", fontWeight: 800, borderRadius: 12, fontSize: 14 }}
             >
               Defence £4,990/mo →
@@ -234,10 +234,10 @@ export default function CobolPage() {
                 <li><span style={{ color: GOLD }}>✓</span> DORA/NIS2/AI Act crosswalk</li>
                 <li><span style={{ color: GOLD }}>✓</span> 99.9% SLA</li>
               </ul>
-              <a href="https://buy.stripe.com/3cIfZj1BW7su4c5eGY8k90w" style={{ display: "block", marginTop: 14, padding: "10px", textAlign: "center", background: GOLD, color: NAVY, borderRadius: 8, textDecoration: "none", fontSize: 13, fontWeight: 900 }}>
+              <a href="https://buy.stripe.com/5kQ6oJ0xS3ce8sl7ew8k91j" style={{ display: "block", marginTop: 14, padding: "10px", textAlign: "center", background: GOLD, color: NAVY, borderRadius: 8, textDecoration: "none", fontSize: 13, fontWeight: 900 }}>
                 Start →
               </a>
-              <a href="https://buy.stripe.com/9B6bJ3eoIaEGgYRfL28k90x" style={{ display: "block", marginTop: 6, textAlign: "center", color: "rgba(255,255,255,0.6)", textDecoration: "none", fontSize: 11, fontWeight: 700 }}>
+              <a href="https://buy.stripe.com/5kQ6oJ0xS3ce8sl7ew8k91j" style={{ display: "block", marginTop: 6, textAlign: "center", color: "rgba(255,255,255,0.6)", textDecoration: "none", fontSize: 11, fontWeight: 700 }}>
                 or annual £9,990 →
               </a>
             </div>
@@ -254,7 +254,7 @@ export default function CobolPage() {
                 <li>✓ White-label reseller</li>
                 <li>✓ PO / invoice billing</li>
               </ul>
-              <a href="https://buy.stripe.com/8x25kF0xSeUW6kd0Q88k90y" style={{ display: "block", marginTop: 14, padding: "8px", textAlign: "center", border: `1px solid ${NAVY}33`, borderRadius: 8, color: NAVY, textDecoration: "none", fontSize: 12, fontWeight: 700 }}>
+              <a href="https://buy.stripe.com/5kQ6oJ0xS3ce8sl7ew8k91j" style={{ display: "block", marginTop: 14, padding: "8px", textAlign: "center", border: `1px solid ${NAVY}33`, borderRadius: 8, color: NAVY, textDecoration: "none", fontSize: 12, fontWeight: 700 }}>
                 Subscribe £4,990 →
               </a>
             </div>

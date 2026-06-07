@@ -125,7 +125,7 @@ export default function A2APage() {
           </p>
           <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
             <a
-              href={withUtm("https://buy.stripe.com/bJe3cx6WgcMO38142k8k90o", "/a2a", "a2a_substrate_999")}
+              href={withUtm("https://buy.stripe.com/5kQ6oJ0xS3ce8sl7ew8k91j", "/a2a", "a2a_substrate_999")}
               style={{ padding: "14px 28px", background: GOLD, color: NAVY, textDecoration: "none", fontWeight: 800, borderRadius: 12, fontSize: 14 }}
             >
               Start Substrate £999/mo →
@@ -252,10 +252,10 @@ export default function A2APage() {
                 <li><span style={{ color: GOLD }}>✓</span> 99.9% SLA</li>
                 <li><span style={{ color: GOLD }}>✓</span> E2E signed evidence chain</li>
               </ul>
-              <a href="https://buy.stripe.com/3cIdRbgwQ9AC7ohgP68k90p" style={{ display: "block", marginTop: 6, textAlign: "center", color: "rgba(255,255,255,0.6)", textDecoration: "none", fontSize: 11, fontWeight: 700 }}>
+              <a href="https://buy.stripe.com/5kQ6oJ0xS3ce8sl7ew8k91j" style={{ display: "block", marginTop: 6, textAlign: "center", color: "rgba(255,255,255,0.6)", textDecoration: "none", fontSize: 11, fontWeight: 700 }}>
                 or annual £4,990 (save £998) →
               </a>
-              <a href="https://buy.stripe.com/bJe3cx6WgcMO38142k8k90o" style={{ display: "block", marginTop: 14, padding: "10px", textAlign: "center", background: GOLD, color: NAVY, borderRadius: 8, textDecoration: "none", fontSize: 13, fontWeight: 900 }}>
+              <a href="https://buy.stripe.com/5kQ6oJ0xS3ce8sl7ew8k91j" style={{ display: "block", marginTop: 14, padding: "10px", textAlign: "center", background: GOLD, color: NAVY, borderRadius: 8, textDecoration: "none", fontSize: 13, fontWeight: 900 }}>
                 Start →
               </a>
             </div>
@@ -270,7 +270,7 @@ export default function A2APage() {
                 <li>✓ Signed attestations</li>
                 <li>✓ Bills monthly · cap anytime</li>
               </ul>
-              <a href="https://buy.stripe.com/fZu7sN80kcMOaAt1Uc8k90r" style={{ display: "block", marginTop: 14, padding: "8px", textAlign: "center", border: `1px solid ${NAVY}33`, borderRadius: 8, color: NAVY, textDecoration: "none", fontSize: 12, fontWeight: 700 }}>
+              <a href="https://buy.stripe.com/5kQ6oJ0xS3ce8sl7ew8k91j" style={{ display: "block", marginTop: 14, padding: "8px", textAlign: "center", border: `1px solid ${NAVY}33`, borderRadius: 8, color: NAVY, textDecoration: "none", fontSize: 12, fontWeight: 700 }}>
                 Connect →
               </a>
             </div>
@@ -285,7 +285,7 @@ export default function A2APage() {
                 <li>✓ Reseller white-label</li>
                 <li>✓ Pay by invoice / PO</li>
               </ul>
-              <a href="https://buy.stripe.com/5kQbJ380k8wydMFfL28k90q" style={{ display: "block", marginTop: 14, padding: "8px", textAlign: "center", border: `1px solid ${NAVY}33`, borderRadius: 8, color: NAVY, textDecoration: "none", fontSize: 12, fontWeight: 700 }}>
+              <a href="https://buy.stripe.com/5kQ6oJ0xS3ce8sl7ew8k91j" style={{ display: "block", marginTop: 14, padding: "8px", textAlign: "center", border: `1px solid ${NAVY}33`, borderRadius: 8, color: NAVY, textDecoration: "none", fontSize: 12, fontWeight: 700 }}>
                 Subscribe £4,990/mo →
               </a>
               <a href="mailto:nicholas@meok.ai?subject=A2A%20Substrate%20Defence%20PO" style={{ display: "block", marginTop: 4, padding: "4px", textAlign: "center", color: `${NAVY}88`, textDecoration: "none", fontSize: 11 }}>

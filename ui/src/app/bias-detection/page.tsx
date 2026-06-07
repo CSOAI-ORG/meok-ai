@@ -26,7 +26,7 @@ const NAVY = "#1a1a2e";
 const GOLD = "#c9a84c";
 const BG = "#f5f0e8";
 
-const STRIPE_LINK = "https://buy.stripe.com/4gMfZja8seUWbEx1Uc8k915?prefilled_promo_code=LAUNCH50";
+const STRIPE_LINK = "https://buy.stripe.com/5kQ6oJ0xS3ce8sl7ew8k91j?prefilled_promo_code=LAUNCH50";
 
 const FEATURES = [
   {
@@ -130,7 +130,7 @@ export default function BiasDetectionPage() {
             >
               Start 7-day trial — £79/mo →
             </a>
-            <a href="https://buy.stripe.com/7sY5kF3K4cMObEx2Yg8k917" style={{ fontSize: 12, color: `${NAVY}77`, fontWeight: 700, textAlign: "center", textDecoration: "none" }} target="_blank" rel="noopener noreferrer">or go Enterprise £1,499/mo (unlimited) →</a>
+            <a href="https://buy.stripe.com/5kQ6oJ0xS3ce8sl7ew8k91j" style={{ fontSize: 12, color: `${NAVY}77`, fontWeight: 700, textAlign: "center", textDecoration: "none" }} target="_blank" rel="noopener noreferrer">or go Enterprise £1,499/mo (unlimited) →</a>
           </div>
           <a
             href="mailto:nicholas@meok.ai?subject=Compliance%20triage%20call%20request%20&body=Hi%20Nicholas%2C%0A%0AI%27d%20like%20to%20book%20the%20free%2030-min%20compliance%20triage%20call.%20My%20availability%3A%0A%0A-%20%5Byour%20preferred%20day%2Ftime%5D%0A%0ACompany%3A%20%5BCompany%5D%0AContext%3A%20%5BEU%20AI%20Act%20%2F%20DORA%20%2F%20NIS2%20%2F%20CRA%5D%0A%0AThanks"

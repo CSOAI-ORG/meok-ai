@@ -13,7 +13,7 @@ const GOLD = "#c9a84c";
 const BG = "#f5f0e8";
 const RED = "#dc2626";
 
-const STRIPE_LINK = "https://buy.stripe.com/9B63cx1BW9AC4c56as8k91i";
+const STRIPE_LINK = "https://buy.stripe.com/5kQ6oJ0xS3ce8sl7ew8k91j";
 
 const FAQ = [
   { q: "What was the 18 April 2026 Belgium DORA cutoff?", a: "Belgium became the first EU member state to enforce a hard self-assessment deadline under the Digital Operational Resilience Act (DORA, Reg 2022/2554). Belgian financial entities (banks, insurers, IORPs, payment institutions) had to submit their first self-assessment by 18 April 2026." },

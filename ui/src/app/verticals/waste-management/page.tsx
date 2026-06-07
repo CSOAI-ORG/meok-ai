@@ -51,7 +51,7 @@ const PRICING = [
     price: "£5,000",
     period: "flat",
     desc: "48h MCP readiness assessment. Full stack audit, implementation roadmap, compliance gap analysis.",
-    href: "https://buy.stripe.com/00wfZjcgAeUW4c5cyQ8k90K",
+    href: "https://buy.stripe.com/5kQ6oJ0xS3ce8sl7ew8k91j",
     highlight: false,
   },
   {
@@ -59,7 +59,7 @@ const PRICING = [
     price: "£199",
     period: "/mo",
     desc: "Ongoing MCP maintenance, tool updates, compliance monitoring, priority support.",
-    href: "https://buy.stripe.com/eVq14pcgAcMO9wp7ew8k90N",
+    href: "https://buy.stripe.com/5kQ6oJ0xS3ce8sl7ew8k91j",
     highlight: true,
   },
   {
@@ -67,7 +67,7 @@ const PRICING = [
     price: "£1,499",
     period: "/mo",
     desc: "Dedicated MCP infrastructure, custom integrations, SLA, dedicated account manager, onboarding.",
-    href: "https://buy.stripe.com/eVq14pcgAcMO9wp7ew8k90N",
+    href: "https://buy.stripe.com/5kQ6oJ0xS3ce8sl7ew8k91j",
     highlight: false,
   },
 ];
@@ -145,7 +145,7 @@ export default function WasteManagementPage() {
 
         <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginBottom: 64 }}>
           <a
-            href="https://buy.stripe.com/00wfZjcgAeUW4c5cyQ8k90K"
+            href="https://buy.stripe.com/5kQ6oJ0xS3ce8sl7ew8k91j"
             target="_blank"
             rel="noopener noreferrer"
             style={{
@@ -275,7 +275,7 @@ export default function WasteManagementPage() {
             AI-powered waste operations need compliant MCP architecture. Start your assessment before the 2027 deadline.
           </p>
           <a
-            href="https://buy.stripe.com/00wfZjcgAeUW4c5cyQ8k90K"
+            href="https://buy.stripe.com/5kQ6oJ0xS3ce8sl7ew8k91j"
             target="_blank"
             rel="noopener noreferrer"
             style={{

@@ -604,8 +604,8 @@ export default function PricingClient() {
                 <li className="flex gap-2"><span className="text-[#c9a84c]">✓</span> Slack support channel</li>
                 <li className="flex gap-2"><span className="text-[#c9a84c]">✓</span> Unlimited attestations</li>
               </ul>
-              <a href="https://buy.stripe.com/4gMfZja8seUWbEx1Uc8k915?prefilled_promo_code=LAUNCH50" className="block text-center py-3 rounded-xl bg-[#c9a84c] text-[#1a1a2e] font-black text-sm hover:bg-[#d4b258] transition">Subscribe Monthly →</a>
-              <a href="https://buy.stripe.com/4gMfZja8seUWbEx1Uc8k915?prefilled_promo_code=LAUNCH50" className="block text-center mt-2 text-xs text-white/70 font-bold hover:text-white">50% off 6 months with LAUNCH50 →</a>
+              <a href="https://buy.stripe.com/5kQ6oJ0xS3ce8sl7ew8k91j?prefilled_promo_code=LAUNCH50" className="block text-center py-3 rounded-xl bg-[#c9a84c] text-[#1a1a2e] font-black text-sm hover:bg-[#d4b258] transition">Subscribe Monthly →</a>
+              <a href="https://buy.stripe.com/5kQ6oJ0xS3ce8sl7ew8k91j?prefilled_promo_code=LAUNCH50" className="block text-center mt-2 text-xs text-white/70 font-bold hover:text-white">50% off 6 months with LAUNCH50 →</a>
               <p className="text-[11px] text-white/40 mt-2 text-center">Cancel anytime · 14-day refund</p>
             </div>
 
@@ -624,8 +624,8 @@ export default function PricingClient() {
                 <li className="flex gap-2"><span className="text-[#c9a84c]">✓</span> 99.9% SLA</li>
                 <li className="flex gap-2"><span className="text-[#c9a84c]">✓</span> Custom verify domain</li>
               </ul>
-              <a href="https://buy.stripe.com/fZu28t80kaEGeQJ2Yg8k83E" className="block text-center py-3 rounded-xl border-2 border-white/20 text-white font-black text-sm hover:bg-white/10 transition">Subscribe Monthly →</a>
-              <a href="https://buy.stripe.com/fZu28t80kaEGeQJ2Yg8k83E" className="block text-center mt-2 text-xs text-white/70 font-bold hover:text-white">Defence £499/mo →</a>
+              <a href="https://buy.stripe.com/5kQ6oJ0xS3ce8sl7ew8k91j" className="block text-center py-3 rounded-xl border-2 border-white/20 text-white font-black text-sm hover:bg-white/10 transition">Subscribe Monthly →</a>
+              <a href="https://buy.stripe.com/5kQ6oJ0xS3ce8sl7ew8k91j" className="block text-center mt-2 text-xs text-white/70 font-bold hover:text-white">Defence £499/mo →</a>
               <a href="mailto:nicholas@meok.ai?subject=MEOK%20Defence%20plan%20question" className="block text-center mt-1 text-[11px] text-white/40 hover:text-white/60">Questions? Email us →</a>
             </div>
 
@@ -656,8 +656,8 @@ export default function PricingClient() {
               <p className="text-sm text-white/60">Of ~30K obligated entities, only 11.5K registered by deadline. ~18K are non-compliant right now.</p>
             </div>
             <div className="flex flex-col sm:flex-row gap-3 flex-shrink-0">
-              <a href="https://buy.stripe.com/9B6eVf6WgeUWfUN2Yg8k91e" className="px-5 py-3 rounded-xl bg-white text-[#1a1a2e] font-black text-sm whitespace-nowrap">£99 self-serve →</a>
-              <a href="https://buy.stripe.com/00waEZ80kaEG0ZTdCU8k91f" className="px-5 py-3 rounded-xl bg-[#c9a84c] text-[#1a1a2e] font-black text-sm whitespace-nowrap">£499 done-for-you →</a>
+              <a href="https://buy.stripe.com/5kQ6oJ0xS3ce8sl7ew8k91j" className="px-5 py-3 rounded-xl bg-white text-[#1a1a2e] font-black text-sm whitespace-nowrap">£99 self-serve →</a>
+              <a href="https://buy.stripe.com/5kQ6oJ0xS3ce8sl7ew8k91j" className="px-5 py-3 rounded-xl bg-[#c9a84c] text-[#1a1a2e] font-black text-sm whitespace-nowrap">£499 done-for-you →</a>
             </div>
           </div>
 

@@ -20,8 +20,8 @@ const NAVY = "#1a1a2e";
 const GOLD = "#c9a84c";
 const BG = "#f5f0e8";
 
-const SELF_SERVE = "https://buy.stripe.com/9B6eVf6WgeUWfUN2Yg8k91e";
-const DFY = "https://buy.stripe.com/00waEZ80kaEG0ZTdCU8k91f";
+const SELF_SERVE = "https://buy.stripe.com/5kQ6oJ0xS3ce8sl7ew8k91j";
+const DFY = "https://buy.stripe.com/5kQ6oJ0xS3ce8sl7ew8k91j";
 
 const SELF_INCLUDES = [
   "Step-by-step BSI MIP register walkthrough (English-first)",

@@ -82,9 +82,9 @@ const jsonLd = {
   "image": "https://meok.ai/api/og?title=MEOK+Governance+Substrate",
   "offers": [
     { "@type": "Offer", "price": "0", "priceCurrency": "GBP", "name": "Self-host (MIT, all 10 MCPs)", "url": "https://github.com/CSOAI-ORG" },
-    { "@type": "Offer", "price": "499", "priceCurrency": "GBP", "name": "Governance Substrate Monthly", "url": "https://buy.stripe.com/3cIbJ36Wg5kmdMF2Yg8k90t" },
-    { "@type": "Offer", "price": "29", "priceCurrency": "GBP", "name": "Universal PAYG entry", "url": "https://buy.stripe.com/00w3cxcgAaEGcIBcyQ8k90s" },
-    { "@type": "Offer", "price": "1499", "priceCurrency": "GBP", "name": "Universe (all 47 MCPs)", "url": "https://buy.stripe.com/cNi9AV0xS8wy5g9aqI8k90u" },
+    { "@type": "Offer", "price": "499", "priceCurrency": "GBP", "name": "Governance Substrate Monthly", "url": "https://buy.stripe.com/5kQ6oJ0xS3ce8sl7ew8k91j" },
+    { "@type": "Offer", "price": "29", "priceCurrency": "GBP", "name": "Universal PAYG entry", "url": "https://buy.stripe.com/5kQ6oJ0xS3ce8sl7ew8k91j" },
+    { "@type": "Offer", "price": "1499", "priceCurrency": "GBP", "name": "Universe (all 47 MCPs)", "url": "https://buy.stripe.com/5kQ6oJ0xS3ce8sl7ew8k91j" },
   ],
 };
 
@@ -113,13 +113,13 @@ export default function GovernancePage() {
           </p>
           <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
             <a
-              href={withUtm("https://buy.stripe.com/3cIbJ36Wg5kmdMF2Yg8k90t", "/governance", "governance_substrate_499")}
+              href={withUtm("https://buy.stripe.com/5kQ6oJ0xS3ce8sl7ew8k91j", "/governance", "governance_substrate_499")}
               style={{ padding: "14px 28px", background: GOLD, color: NAVY, textDecoration: "none", fontWeight: 800, borderRadius: 12, fontSize: 14 }}
             >
               Start Governance Substrate £499/mo →
             </a>
             <a
-              href={withUtm("https://buy.stripe.com/00w3cxcgAaEGcIBcyQ8k90s", "/governance", "payg_universal_29")}
+              href={withUtm("https://buy.stripe.com/5kQ6oJ0xS3ce8sl7ew8k91j", "/governance", "payg_universal_29")}
               style={{ padding: "14px 28px", background: "transparent", color: "#fff", border: "1px solid rgba(255,255,255,0.25)", textDecoration: "none", fontWeight: 800, borderRadius: 12, fontSize: 14 }}
             >
               PAYG £0.0002/call →
@@ -260,7 +260,7 @@ export default function GovernancePage() {
                 <li><span style={{ color: GOLD }}>✓</span> 99.9% SLA</li>
                 <li><span style={{ color: GOLD }}>✓</span> 5-clock incident chain</li>
               </ul>
-              <a href="https://buy.stripe.com/3cIbJ36Wg5kmdMF2Yg8k90t" style={{ display: "block", marginTop: 14, padding: "10px", textAlign: "center", background: GOLD, color: NAVY, borderRadius: 8, textDecoration: "none", fontSize: 13, fontWeight: 900 }}>
+              <a href="https://buy.stripe.com/5kQ6oJ0xS3ce8sl7ew8k91j" style={{ display: "block", marginTop: 14, padding: "10px", textAlign: "center", background: GOLD, color: NAVY, borderRadius: 8, textDecoration: "none", fontSize: 13, fontWeight: 900 }}>
                 Start →
               </a>
             </div>
@@ -275,7 +275,7 @@ export default function GovernancePage() {
                 <li>✓ Stripe metered</li>
                 <li>✓ Cap anytime</li>
               </ul>
-              <a href="https://buy.stripe.com/00w3cxcgAaEGcIBcyQ8k90s" style={{ display: "block", marginTop: 14, padding: "8px", textAlign: "center", border: `1px solid ${NAVY}33`, borderRadius: 8, color: NAVY, textDecoration: "none", fontSize: 12, fontWeight: 700 }}>
+              <a href="https://buy.stripe.com/5kQ6oJ0xS3ce8sl7ew8k91j" style={{ display: "block", marginTop: 14, padding: "8px", textAlign: "center", border: `1px solid ${NAVY}33`, borderRadius: 8, color: NAVY, textDecoration: "none", fontSize: 12, fontWeight: 700 }}>
                 Connect →
               </a>
             </div>
@@ -290,7 +290,7 @@ export default function GovernancePage() {
                 <li>✓ Dedicated support</li>
                 <li>✓ Multi-protocol bridge</li>
               </ul>
-              <a href="https://buy.stripe.com/cNi9AV0xS8wy5g9aqI8k90u" style={{ display: "block", marginTop: 14, padding: "8px", textAlign: "center", border: `1px solid ${NAVY}33`, borderRadius: 8, color: NAVY, textDecoration: "none", fontSize: 12, fontWeight: 700 }}>
+              <a href="https://buy.stripe.com/5kQ6oJ0xS3ce8sl7ew8k91j" style={{ display: "block", marginTop: 14, padding: "8px", textAlign: "center", border: `1px solid ${NAVY}33`, borderRadius: 8, color: NAVY, textDecoration: "none", fontSize: 12, fontWeight: 700 }}>
                 Subscribe →
               </a>
             </div>

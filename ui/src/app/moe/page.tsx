@@ -90,9 +90,9 @@ const jsonLd = {
   "image": "https://meok.ai/api/og?title=MEOK+MoE",
   "offers": [
     { "@type": "Offer", "price": "0", "priceCurrency": "GBP", "name": "Self-host any expert (MIT)" },
-    { "@type": "Offer", "price": "499", "priceCurrency": "GBP", "name": "Substrate (A2A or Governance pack of ~10 experts)", "url": "https://buy.stripe.com/bJe3cx6WgcMO38142k8k90o" },
-    { "@type": "Offer", "price": "1499", "priceCurrency": "GBP", "name": "Universe (all 47 experts)", "url": "https://buy.stripe.com/cNi9AV0xS8wy5g9aqI8k90u" },
-    { "@type": "Offer", "price": "4990", "priceCurrency": "GBP", "name": "Defence (multi-BU + on-prem)", "url": "https://buy.stripe.com/8x25kF0xSeUW6kd0Q88k90y" },
+    { "@type": "Offer", "price": "499", "priceCurrency": "GBP", "name": "Substrate (A2A or Governance pack of ~10 experts)", "url": "https://buy.stripe.com/5kQ6oJ0xS3ce8sl7ew8k91j" },
+    { "@type": "Offer", "price": "1499", "priceCurrency": "GBP", "name": "Universe (all 47 experts)", "url": "https://buy.stripe.com/5kQ6oJ0xS3ce8sl7ew8k91j" },
+    { "@type": "Offer", "price": "4990", "priceCurrency": "GBP", "name": "Defence (multi-BU + on-prem)", "url": "https://buy.stripe.com/5kQ6oJ0xS3ce8sl7ew8k91j" },
   ],
 };
 
