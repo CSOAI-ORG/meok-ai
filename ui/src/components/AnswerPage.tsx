@@ -68,7 +68,7 @@ export function AnswerPage({ data }: { data: AnswerPageData }) {
             <p className="text-lg text-white/80 leading-relaxed">{data.answer}</p>
           </div>
           <Link
-            href={data.product.external ? data.product.url : new URL(data.product.url, "https://meok.ai").pathname}
+            href={data.product.url}
             {...(data.product.external ? { target: "_blank", rel: "noopener" } : {})}
             className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#c9a84c] text-[#0d0c18] font-semibold hover:bg-[#d8b85c] transition-colors"
           >
