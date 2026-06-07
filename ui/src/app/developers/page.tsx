@@ -212,6 +212,23 @@ export default function DevelopersPage() {
         </div>
       </section>
 
+      {/* A2A / ACP — discoverable on the agentic web */}
+      <section className="pb-20 px-6">
+        <div className="max-w-3xl mx-auto rounded-2xl border border-[#c9a84c]/25 bg-[#c9a84c]/[0.05] p-6">
+          <h2 className="text-xl font-bold mb-2">Discoverable on A2A + ACP, not just MCP</h2>
+          <p className="text-sm text-white/60 leading-relaxed mb-4">
+            The whole MEOK compliance fleet is published as <strong>A2A Agent Cards</strong> (Google /
+            Linux Foundation) and <strong>ACP descriptors</strong> (IBM BeeAI) — so agents can find and
+            call it across the agentic web, not only in MCP directories. One canonical registry, every agent.
+          </p>
+          <div className="flex flex-wrap gap-3 text-sm">
+            <a href="/.well-known/agents.json" className="inline-flex items-center gap-1.5 text-[#c9a84c] font-semibold hover:underline">A2A registry →</a>
+            <a href="/.well-known/agents-acp.json" className="inline-flex items-center gap-1.5 text-[#c9a84c] font-semibold hover:underline">ACP registry →</a>
+            <a href="/.well-known/agent-card.json" className="inline-flex items-center gap-1.5 text-[#c9a84c] font-semibold hover:underline">MEOK agent card →</a>
+          </div>
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="pb-32 px-6">
         <div className="max-w-3xl mx-auto text-center rounded-3xl border border-white/10 bg-white/[0.03] p-8">

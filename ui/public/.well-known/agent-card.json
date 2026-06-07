@@ -1,0 +1,42 @@
+{
+  "name": "MEOK Compliance Fleet",
+  "version": "1.0.0",
+  "url": "https://meok.ai/a2a",
+  "capabilities": {
+    "streaming": false,
+    "pushNotifications": false,
+    "stateTransitionHistory": false
+  },
+  "protocolVersion": "0.3.0",
+  "description": "The MEOK AI Labs compliance-MCP fleet as one A2A agent: EU AI Act, DORA, NIS2, CRA, GDPR, bias, watermarking + 330 more. Signed, verifiable, governed by the CSOAI charter.",
+  "provider": {
+    "organization": "MEOK AI LABS",
+    "url": "https://meok.ai"
+  },
+  "defaultInputModes": [
+    "application/json",
+    "text/plain"
+  ],
+  "defaultOutputModes": [
+    "application/json",
+    "text/plain"
+  ],
+  "documentationUrl": "https://meok.ai/developers",
+  "skills": [
+    {
+      "id": "discover",
+      "name": "Discover agents",
+      "description": "List the 340 MEOK compliance agents + their skills via the registry at /.well-known/agents.json",
+      "tags": [
+        "compliance",
+        "governance",
+        "registry"
+      ]
+    }
+  ],
+  "x-meok": {
+    "registry": "https://meok.ai/.well-known/agents.json",
+    "acp": "https://meok.ai/.well-known/agents-acp.json",
+    "verifier": "https://proofof.ai/verify"
+  }
+}
