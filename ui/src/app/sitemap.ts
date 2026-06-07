@@ -8,6 +8,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/scorecard',
     '/fine-calculator',
     '/audit-prep-bundle',
+    '/eu-ai-act-compliance-tool',
+    '/mcp/eu-ai-act/pro',
     '/transparency',
     '/watermark-starter',
     '/article-50-kit',
@@ -129,6 +131,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/medtech', '/fintech', '/cybersec', '/kidsai',
   ];
 
+  // GEO / authority: the canonical ecosystem map + "best AI for X" answer pages.
+  const geoAuthority = [
+    '/constellation',
+    '/best-ai-for-construction-logistics',
+    '/best-ai-for-ai-safety-certification',
+    '/best-ai-for-aquaculture',
+    '/best-sovereign-ai-os',
+  ];
+
   const today = new Date();
 
   const merge = (routes: string[], priority: number, freq: 'daily' | 'weekly' | 'monthly') =>
@@ -141,6 +152,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return [
     ...merge(highValue, 1.0, 'weekly'),
+    ...merge(geoAuthority, 0.95, 'weekly'),
     ...merge(euAiActArticles, 0.95, 'weekly'),
     ...merge(verticals, 0.92, 'weekly'),
     ...merge(verticalConsulting, 0.92, 'weekly'),

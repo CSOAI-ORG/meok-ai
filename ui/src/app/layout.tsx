@@ -104,7 +104,26 @@ const organizationSchema = {
     "https://twitter.com/meok_ai",
     "https://instagram.com/meok_ai",
     "https://tiktok.com/@meok_ai",
+    "https://github.com/CSOAI-ORG",
   ],
+};
+
+// Standalone Person entity so AI knowledge graphs can resolve "who is Nick Templeman?"
+// from our own structured, verifiable facts (founder of MEOK AI LABS / CSOAI).
+const founderSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Nicholas Templeman",
+  url: "https://meok.ai/about",
+  jobTitle: "Founder",
+  description:
+    "Founder of MEOK AI LABS — builder of the personal sovereign AI OS and the CSOAI AI-governance fleet. Background in optometry (Templeman Opticians) turned AI safety and compliance tooling.",
+  worksFor: {
+    "@type": "Organization",
+    name: "MEOK AI LABS",
+    url: "https://meok.ai",
+  },
+  sameAs: ["https://github.com/CSOAI-ORG"],
 };
 
 const softwareSchema = {
@@ -172,6 +191,10 @@ export default function RootLayout({
           <script
             type="application/ld+json"
             dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareSchema) }}
+          />
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(founderSchema) }}
           />
         </head>
         <body className={`${dmSans.variable} font-sans antialiased bg-[#FAF9F6] text-[#111111] min-h-screen`}>
