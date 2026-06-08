@@ -1,7 +1,7 @@
 {
   "name": "MEOK Compliance Fleet",
   "version": "1.0.0",
-  "url": "https://meok.ai/a2a",
+  "url": "https://meok.ai/api/a2a",
   "capabilities": {
     "streaming": false,
     "pushNotifications": false,

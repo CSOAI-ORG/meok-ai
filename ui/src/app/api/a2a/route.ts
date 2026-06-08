@@ -12,7 +12,7 @@ export const dynamic = "force-dynamic";
 const AGENT_CARD = {
   name: "MEOK Compliance Fleet",
   version: "1.0.0",
-  url: "https://meok.ai/a2a",
+  url: "https://meok.ai/api/a2a",
   protocolVersion: "0.3.0",
   capabilities: { streaming: false, pushNotifications: false, stateTransitionHistory: false },
   description:
