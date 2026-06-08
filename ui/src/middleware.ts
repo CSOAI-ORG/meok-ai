@@ -63,11 +63,13 @@ const clerkWithRateLimit = clerkMiddleware(async (auth, req) => {
 
 // Public, agent-facing routes that MUST be reachable by non-browser clients (no Clerk
 // handshake). Clerk dev keys 403 all /api/* otherwise — A2A agents aren't browsers.
-const isPublicApiRoute = createRouteMatcher(['/api/a2a(.*)']);
+// Plain pathname check (Clerk's createRouteMatcher needs Clerk context; this doesn't).
 const guardedMiddleware = hasValidClerk ? clerkWithRateLimit : passthroughMiddleware;
 
 export default function middleware(req: NextRequest, event: unknown) {
-  if (isPublicApiRoute(req)) return passthroughMiddleware(req);
+  if (req.nextUrl.pathname.startsWith('/api/a2a')) {
+    return passthroughMiddleware(req);
+  }
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   return (guardedMiddleware as any)(req, event);
 }
