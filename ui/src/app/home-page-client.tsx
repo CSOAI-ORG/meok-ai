@@ -86,7 +86,10 @@ function setCookie(name: string, value: string, days: number) {
 // ─── ANIMATED COUNTER ────────────────────────────────────────────────────────
 
 function useCountUp(target: number, duration = 1800, started = false) {
-  const [value, setValue] = useState(0);
+  // Initialise at the real target so SSR, crawlers and no-JS visitors see the
+  // true number (never a bare "0"). The scroll-triggered count-up is a pure
+  // client-side enhancement on top of an already-correct value.
+  const [value, setValue] = useState(target);
   useEffect(() => {
     if (!started) return;
     const start = performance.now();
@@ -178,19 +181,19 @@ function SocialProofSection() {
 
   const stats = [
     {
-      display: started ? `${waitlist.toLocaleString()}+` : "0+",
+      display: started ? `${waitlist.toLocaleString()}+` : "2,400+",
       label: "people on the waitlist",
       sub: "and growing every day",
       accent: GOLD,
     },
     {
-      display: started ? `${Math.floor(rating / 10)}.${rating % 10}★` : "0.0★",
+      display: started ? `${Math.floor(rating / 10)}.${rating % 10}★` : "4.9★",
       label: "from early access users",
       sub: "across 200+ reviews",
       accent: "#A78BFA",
     },
     {
-      display: started ? `${countries}` : "0",
+      display: started ? `${countries}` : "12",
       label: "countries using MEOK",
       sub: "and counting",
       accent: "#3B82F6",
@@ -651,14 +654,14 @@ function PlatformStatsSection() {
     return () => observer.disconnect();
   }, []);
 
-  const mcp = useCountUp(202, 1500, started);
+  const mcp = useCountUp(337, 1500, started);
   const agents = useCountUp(50, 1200, started);
   const models = useCountUp(469, 1600, started);
 
   const items = [
-    { stat: started ? `${mcp}` : "0", suffix: "+", label: "MCP Servers", sub: "open source on GitHub" },
-    { stat: started ? `${agents}` : "0", suffix: "+", label: "AI Agents", sub: "9 archetypes" },
-    { stat: started ? `${models}` : "0", suffix: "+", label: "AI Models", sub: "10+ providers" },
+    { stat: started ? `${mcp}` : "337", suffix: "+", label: "MCP Servers", sub: "open source on GitHub" },
+    { stat: started ? `${agents}` : "50", suffix: "+", label: "AI Agents", sub: "9 archetypes" },
+    { stat: started ? `${models}` : "469", suffix: "+", label: "AI Models", sub: "10+ providers" },
     { stat: "∞", suffix: "", label: "Memory", sub: "never forgets you" },
   ];
 
@@ -850,7 +853,7 @@ function HeroSection() {
           <span>Or self-serve:</span>
           <a href="https://buy.stripe.com/5kQ6oJ0xS3ce8sl7ew8k91j" target="_blank" rel="noopener noreferrer" className="underline decoration-dotted hover:text-white transition-colors">Pro £79/mo</a>
           <span className="opacity-40">·</span>
-          <a href="https://buy.stripe.com/5kQ6oJ0xS3ce8sl7ew8k91j" target="_blank" rel="noopener noreferrer" className="underline decoration-dotted hover:text-white transition-colors">Enterprise £1,499/mo</a>
+          <a href="https://buy.stripe.com/bJe4gB3K4002aAtgP68k91r" target="_blank" rel="noopener noreferrer" className="underline decoration-dotted hover:text-white transition-colors">Enterprise £1,499/mo</a>
           <span className="opacity-40">·</span>
           <Link href="/pricing" className="underline decoration-dotted hover:text-white transition-colors">All pricing →</Link>
         </div>
