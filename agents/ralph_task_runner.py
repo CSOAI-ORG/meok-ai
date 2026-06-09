@@ -11,6 +11,7 @@ Deps: asyncpg, pgqueuer (pip install pgqueuer)
 """
 
 import asyncio
+import json
 import logging
 import os
 from datetime import datetime, timezone
@@ -56,7 +57,7 @@ class RalphTaskRunner:
                 SET status = 'running', started_at = NOW()
                 WHERE id = (
                     SELECT id FROM ralph_tasks
-                    WHERE status = 'pending'
+                    WHERE status IN ('queued','pending')
                       AND (scheduled_at IS NULL OR scheduled_at <= NOW())
                     ORDER BY priority ASC, created_at ASC
                     LIMIT 1
@@ -70,9 +71,20 @@ class RalphTaskRunner:
         async with self.pool.acquire() as conn:
             await conn.execute("""
                 UPDATE ralph_tasks
-                SET status = 'done', result = $1, completed_at = NOW()
+                SET status = 'complete', result = $1, completed_at = NOW()
                 WHERE task_id = $2
             """, result, task_id)
+
+    async def mark_delegated(self, task_id: str, result: dict):
+        """Task handed to SOV3's agent system — status 'running', NOT 'complete'
+        (assigned != done). A reconciliation step (poll SOV3 for the delegated
+        task's final status) flips it to 'complete' only when work truly lands.
+        This is what keeps the completion-survival metric honest."""
+        async with self.pool.acquire() as conn:
+            await conn.execute(
+                "UPDATE ralph_tasks SET status='running', output_data=$1::jsonb WHERE task_id=$2",
+                json.dumps(result), task_id,
+            )
 
     async def fail_task(self, task_id: str, error: str, retry: bool = True):
         async with self.pool.acquire() as conn:
@@ -80,7 +92,7 @@ class RalphTaskRunner:
                 await conn.execute("""
                     UPDATE ralph_tasks
                     SET status = CASE
-                        WHEN retry_count < max_retries THEN 'pending'
+                        WHEN retry_count < max_retries THEN 'queued'
                         ELSE 'failed'
                     END,
                     retry_count = retry_count + 1,
@@ -106,17 +118,80 @@ class RalphTaskRunner:
             """, task_name, task_type, priority, payload or {}, tags or [])
             return row["task_id"]
 
+    async def _dispatch_agent(self, agent: str, task: dict) -> dict:
+        """Route a UI task to the LIVE SOV3 MCP runtime (delegate_task → the care-gated
+        Orion agent system). Real delegation over HTTP+token; raises on any failure so
+        the task is recorded honestly (we never fake-complete)."""
+        import os as _os, json as _json
+        title = task.get("title") or task.get("task_name") or ""
+        base = _os.getenv("SOV3_MCP_URL", "http://localhost:3101/mcp")
+        tok = _os.getenv("SOV3_MCP_TOKEN", "")
+        if not tok:
+            try:
+                tok = open(_os.path.expanduser("~/clawd/sovereign-temple/.sov3_mcp_token")).read().strip()
+            except Exception:
+                pass
+        # valid AgentCapability values: neural_inference, memory_operations, web_search,
+        # code_execution, analysis, creative, communication, monitoring, security, planning
+        caps = [c.strip() for c in _os.getenv("RALPH_DEFAULT_CAPABILITY", "planning").split(",") if c.strip()]
+        rpc = {"jsonrpc": "2.0", "id": 1, "method": "tools/call",
+               "params": {"name": "delegate_task", "arguments": {
+                   "description": (f"[{agent}] {title}" if agent else title).strip(),
+                   "required_capabilities": caps,
+                   "priority": int(task.get("priority") or 5)}}}
+        try:
+            import httpx
+        except ImportError:
+            raise RuntimeError("httpx not installed — cannot reach SOV3 runtime")
+        async with httpx.AsyncClient(timeout=httpx.Timeout(connect=4.0, read=90.0, write=10.0, pool=4.0)) as cli:
+            r = await cli.post(base, headers={"Authorization": f"Bearer {tok}",
+                                              "Content-Type": "application/json",
+                                              "Accept": "application/json, text/event-stream"}, json=rpc)
+        body = r.text
+        if "data:" in body and '"result"' in body:  # streamable-http SSE framing
+            for ln in body.splitlines():
+                if ln.startswith("data:"):
+                    body = ln[5:].strip(); break
+        try:
+            data = _json.loads(body)
+        except Exception:
+            raise RuntimeError(f"SOV3 non-JSON response: {body[:160]}")
+        if data.get("error"):
+            raise RuntimeError(f"SOV3 delegate_task error: {data['error']}")
+        res = data.get("result", data)
+        # MCP wraps tool output as result.content[].text — surface + detect embedded errors
+        txt = ""
+        if isinstance(res, dict) and isinstance(res.get("content"), list):
+            txt = " ".join(c.get("text", "") for c in res["content"] if isinstance(c, dict))
+            if '"error"' in txt:
+                raise RuntimeError(f"SOV3 delegate_task returned error: {txt[:200]}")
+        return {"delegated_via": "sov3.delegate_task", "agent": agent, "sov3": txt or res}
+
     async def run_one(self, task: dict) -> None:
         """Execute a single task with its registered handler."""
-        name = task["task_name"]
+        name = task.get("task_name") or task.get("title")
         handler = self.handlers.get(name)
         if not handler:
-            logger.warning(f"No handler for task '{name}' — skipping")
-            await self.fail_task(task["task_id"], f"No handler registered for '{name}'", retry=False)
+            # UI-created tasks carry `agent` + `title` instead of a registered task_name.
+            # Dispatch to the REAL agent — never stub-complete (fake completions poison the
+            # completion-survival selection signal). If no agent runtime, fail honestly.
+            if task.get("agent"):
+                try:
+                    result = await self._dispatch_agent(task["agent"], task)
+                    # delegate_task returns 'assigned' (async) — mark delegated/running,
+                    # NOT complete. Reconciliation flips to 'complete' when SOV3 finishes.
+                    await self.mark_delegated(task["task_id"], result or {"status": "assigned"})
+                    logger.info(f"Task '{name}' delegated to SOV3 ({task['agent']})")
+                except Exception as e:
+                    logger.error(f"Agent dispatch failed for '{name}': {e}")
+                    await self.fail_task(task["task_id"], f"agent dispatch: {e}", retry=False)
+                return
+            logger.warning(f"No handler/agent for task '{name}' — failing (no fake completion)")
+            await self.fail_task(task["task_id"], f"No handler or agent for '{name}'", retry=False)
             return
 
         try:
-            result = await handler(task["payload"])
+            result = await handler(task.get("payload") or task.get("input_data") or {})
             await self.complete_task(task["task_id"], result or {"status": "ok"})
             logger.info(f"Task '{name}' ({task['task_id'][:8]}) completed")
         except Exception as e:

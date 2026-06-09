@@ -13,3 +13,4 @@ venv/
 .vercel
 model/
 node_modules/
+.completion_survival_state.json
