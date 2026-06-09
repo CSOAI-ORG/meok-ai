@@ -20,8 +20,8 @@ const NAVY = "#1a1a2e";
 const GOLD = "#c9a84c";
 const BG = "#f5f0e8";
 
-const SELF_SERVE = "https://buy.stripe.com/00waEZ3K48wydMF6as8k91k";
-const DFY = "https://buy.stripe.com/00waEZ3K48wydMF6as8k91k";
+const SELF_SERVE = "https://buy.stripe.com/8x200l5Sc5kmeQJ9mE8k91p"; // £99 self-serve (price_1TfJVOQvIueK5XpbbP8CBCPL)
+const DFY = "https://buy.stripe.com/00waEZ3K48wydMF6as8k91k"; // £499 done-for-you
 
 const SELF_INCLUDES = [
   "Step-by-step BSI MIP register walkthrough (English-first)",
