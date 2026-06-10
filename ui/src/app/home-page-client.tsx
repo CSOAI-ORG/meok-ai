@@ -811,6 +811,11 @@ function HeroSection() {
               <div className="text-xl font-black text-white mb-1">£49 · £999</div>
               <div className="text-xs font-semibold text-white/80 leading-snug">Germany NIS2 BSI register · self-serve or 7-day done-for-you</div>
             </Link>
+            <Link href="/nis2-nl" className="group block rounded-xl p-4 transition-all hover:scale-[1.02]" style={{ background: "rgba(220,38,38,0.10)", border: "1px solid rgba(220,38,38,0.35)" }}>
+              <div className="text-[10px] font-black tracking-wider uppercase mb-1" style={{ color: "#dc2626" }}>🇳🇱 30 June 2026</div>
+              <div className="text-xl font-black text-white mb-1">£499</div>
+              <div className="text-xs font-semibold text-white/80 leading-snug">Netherlands NIS2 NCSC-NL registration · done-for-you in 7 days</div>
+            </Link>
             <Link href="/consulting" className="group block rounded-xl p-4 transition-all hover:scale-[1.02]" style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.20)" }}>
               <div className="text-[10px] font-black tracking-wider uppercase mb-1" style={{ color: "rgba(255,255,255,0.5)" }}>Founder-led</div>
               <div className="text-xl font-black text-white mb-1">£950/day</div>
