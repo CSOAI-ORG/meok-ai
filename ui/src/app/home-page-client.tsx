@@ -1438,6 +1438,8 @@ export default function HomePageClient() {
               <p className="mt-6 text-sm" style={{ color: "rgba(245,240,232,0.28)" }}>
                 Free forever · No credit card · Sovereign by design
               </p>
+
+              <FreeApiKeyForm />
             </div>
           </section>
         </main>
@@ -1445,5 +1447,76 @@ export default function HomePageClient() {
         {/* Footer moved to root layout as <GlobalFooter /> */}
       </div>
     </>
+  );
+}
+
+function FreeApiKeyForm() {
+  const [email, setEmail] = useState("");
+  const [status, setStatus] = useState<"idle" | "loading" | "done" | "error">("idle");
+  const [result, setResult] = useState("");
+
+  async function issueKey(e: React.FormEvent) {
+    e.preventDefault();
+    setStatus("loading");
+    try {
+      const r = await fetch("https://www.proofof.ai/signup", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
+      const j = await r.json();
+      if (j.ok) {
+        setResult(j.api_key);
+        setStatus("done");
+      } else {
+        setResult(j.error || "Something went wrong — try again.");
+        setStatus("error");
+      }
+    } catch {
+      setResult("Network error — try again.");
+      setStatus("error");
+    }
+  }
+
+  return (
+    <div
+      className="mx-auto mt-12 max-w-md rounded-2xl p-6 text-left"
+      style={{ border: `1px solid ${GOLD}59`, background: `${GOLD}0f` }}
+    >
+      <strong className="block text-white mb-1">Free API key — 200 calls/day on every MEOK MCP</strong>
+      <span className="text-sm" style={{ color: "rgba(245,240,232,0.50)" }}>
+        No card. Works across all 300+ compliance servers.
+      </span>
+      {status === "done" ? (
+        <p className="mt-3 text-sm text-white break-all">
+          ✅ Your key: <code className="px-1 rounded" style={{ background: "rgba(0,0,0,0.4)", color: GOLD }}>{result}</code>
+          <br />
+          Set <code style={{ color: GOLD }}>MEOK_API_KEY</code> in your MCP client env. Copy it now — it is not emailed.
+        </p>
+      ) : (
+        <form onSubmit={issueKey} className="mt-3 flex flex-wrap gap-2">
+          <input
+            type="email"
+            required
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="you@company.com"
+            className="flex-1 min-w-[200px] rounded-lg px-3 py-2.5 text-sm text-white"
+            style={{ border: `1px solid ${GOLD}66`, background: "rgba(10,9,20,0.6)" }}
+          />
+          <button
+            type="submit"
+            disabled={status === "loading"}
+            className="rounded-lg px-4 py-2.5 text-sm font-bold transition-opacity disabled:opacity-60"
+            style={{ background: GOLD, color: "#1a1a2e" }}
+          >
+            {status === "loading" ? "Issuing…" : "Get free key"}
+          </button>
+        </form>
+      )}
+      {status === "error" && (
+        <p className="mt-2 text-sm" style={{ color: "#f87171" }}>⚠️ {result}</p>
+      )}
+    </div>
   );
 }
