@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
-const TARGET = new Date("2026-11-02T00:00:00Z").getTime();
+const TARGET = new Date("2026-08-02T00:00:00Z").getTime();
 const GOLD = "#c9a84c";
 
 export function Article50Countdown() {
@@ -42,7 +42,7 @@ export function Article50Countdown() {
       }}
     >
       <span>
-        ⏳ EU AI Act Article 50 deadline · <strong>{days}d {hours}h</strong> · 2 November 2026
+        ⏳ EU AI Act Article 50 deadline · <strong>{days}d {hours}h</strong> · 2 August 2026
       </span>
       <Link
         href="/article-50-kit"

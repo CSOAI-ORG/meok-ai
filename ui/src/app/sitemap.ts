@@ -14,6 +14,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/watermark-starter',
     '/article-50-kit',
     '/nis2-de-kit',
+    '/nis2-nl',
     '/dora-belgium-late-fee-recovery',
     '/uk-csr-readiness',
     '/bias-detection',

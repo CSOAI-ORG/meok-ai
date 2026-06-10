@@ -735,7 +735,7 @@ function HeroSection() {
         </h1>
 
         <p className="max-w-2xl mx-auto mb-3 leading-relaxed font-semibold text-center" style={{ color: "rgba(245,240,232,0.92)", fontSize: "1.3rem" }}>
-          26 PyPI packages · 6,798 monthly installs · EU AI Act + DORA + NIS2 + CRA + GDPR + UK AI Bill ready.
+          294 servers in the official MCP Registry (verified June 2026) · thousands of monthly installs · EU AI Act + DORA + NIS2 + CRA + GDPR + UK AI Bill ready.
         </p>
         <div className="flex items-center justify-center gap-2 mb-6">
           <div className="flex -space-x-2">
@@ -746,7 +746,7 @@ function HeroSection() {
             ))}
           </div>
           <p className="text-sm font-semibold text-[#c9a84c]">
-            <span className="text-white">1,578 downloads/mo</span> &middot; Trusted by AI governance teams
+            <span className="text-white">294 registry-verified servers</span> &middot; Trusted by AI governance teams
           </p>
         </div>
         <p className="max-w-2xl mx-auto mb-9 leading-relaxed text-center" style={{ color: "rgba(245,240,232,0.65)", fontSize: "1.1rem" }}>
