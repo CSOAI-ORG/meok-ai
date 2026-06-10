@@ -135,7 +135,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // GEO / authority: the canonical ecosystem map + "best AI for X" answer pages.
   const geoAuthority = [
     '/constellation',
+    '/sponsors',
     '/developers',
+    '/developers/sdk-pro',
+    '/optimobile-gos',
+    '/council/certifications',
     '/best-ai-for-construction-logistics',
     '/best-ai-for-ai-safety-certification',
     '/best-ai-for-aquaculture',
