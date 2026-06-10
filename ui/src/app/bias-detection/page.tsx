@@ -4,11 +4,11 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "AI Bias Detection · EU AI Act Article 10 Compliance · MEOK AI Labs",
   description:
-    "Continuous bias detection + signed compliance attestations for EU AI Act Article 10 (data quality + bias mitigation). £79/mo standalone or embedded API. Auditor-verifiable certificates.",
+    "Continuous bias detection + signed compliance attestations for EU AI Act Article 10 (data quality + bias mitigation). £199/mo standalone or embedded API. Auditor-verifiable certificates.",
   alternates: { canonical: "https://meok.ai/bias-detection" },
   openGraph: {
     title: "AI Bias Detection — EU AI Act Article 10",
-    description: "£79/mo continuous bias monitoring with HMAC-signed compliance certificates.",
+    description: "£199/mo continuous bias monitoring with HMAC-signed compliance certificates.",
     type: "website",
     url: "https://meok.ai/bias-detection",
     images: [{ url: "/api/og?title=AI+Bias+Detection&desc=EU+AI+Act+Article+10+Compliance", width: 1200, height: 630, alt: "AI Bias Detection" }],
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "AI Bias Detection — EU AI Act Article 10",
-    description: "£79/mo continuous bias monitoring with HMAC-signed compliance certificates.",
+    description: "£199/mo continuous bias monitoring with HMAC-signed compliance certificates.",
     site: "@meok_ai",
     images: ["/api/og?title=AI+Bias+Detection&desc=EU+AI+Act+Article+10+Compliance"],
   },
@@ -26,7 +26,7 @@ const NAVY = "#1a1a2e";
 const GOLD = "#c9a84c";
 const BG = "#f5f0e8";
 
-const STRIPE_LINK = "https://buy.stripe.com/5kQ6oJ0xS3ce8sl7ew8k91j?prefilled_promo_code=LAUNCH50";
+const STRIPE_LINK = "https://buy.stripe.com/aFa7sNcgAdQS0ZT1Uc8k91t?prefilled_promo_code=LAUNCH50";
 
 const FEATURES = [
   {
@@ -66,7 +66,7 @@ const COMPARISON = [
   { tool: "Fiddler AI", price: "$40K-$80K/yr", limit: "Enterprise-only · no Article 10 evidence pack" },
   { tool: "Arthur AI", price: "$60K-$200K/yr", limit: "Enterprise-only · US-centric metrics" },
   { tool: "Credo AI", price: "$30K-$100K/yr", limit: "Governance platform · not pure bias detection" },
-  { tool: "MEOK Bias Detection", price: "£79/mo", limit: "EU-first · Article 10 + ISO 42001 + NIST · signed certs" },
+  { tool: "MEOK Bias Detection", price: "£199/mo", limit: "EU-first · Article 10 + ISO 42001 + NIST · signed certs" },
 ];
 
 export default function BiasDetectionPage() {
@@ -103,7 +103,7 @@ export default function BiasDetectionPage() {
           AI Bias Detection
         </h1>
         <p style={{ fontSize: "1.5rem", color: GOLD, fontWeight: 900, marginBottom: 8 }}>
-          £79/mo · 10K bias tests/mo · signed compliance certificates
+          £199/mo · 10K bias tests/mo · signed compliance certificates
         </p>
         <p style={{ fontSize: "1.05rem", color: `${NAVY}99`, maxWidth: 640, marginBottom: 32 }}>
           Continuous fairness monitoring + auditor-verifiable certificates. The only EU-first bias
@@ -128,7 +128,7 @@ export default function BiasDetectionPage() {
                 textAlign: "center",
               }}
             >
-              Start 7-day trial — £79/mo →
+              Start 7-day trial — £199/mo →
             </a>
             <a href="https://buy.stripe.com/bJe4gB3K4002aAtgP68k91r" style={{ fontSize: 12, color: `${NAVY}77`, fontWeight: 700, textAlign: "center", textDecoration: "none" }} target="_blank" rel="noopener noreferrer">or go Enterprise £1,499/mo (unlimited) →</a>
           </div>
@@ -215,7 +215,7 @@ export default function BiasDetectionPage() {
           </h3>
           <p style={{ color: "rgba(255,255,255,0.6)", marginBottom: 20 }}>
             We ship the API + the evidence pack + the signed cert in one go. 7-day free trial,
-            then £79/mo. Cancel any time.
+            then £199/mo. Cancel any time.
           </p>
           <a
             href={STRIPE_LINK}

@@ -25,7 +25,7 @@ const BG = "#f5f0e8";
 const PRIMARY = "#3B82F6";
 
 // Stripe payment link for £999 audit (existing product prod_UTyzRPBkBQrqCQ "COBOL Bridge Analysis")
-const AUDIT_BUY_URL = "https://buy.stripe.com/5kQ6oJ0xS3ce8sl7ew8k91j";
+const AUDIT_BUY_URL = "https://buy.stripe.com/aFa7sNcgAdQS0ZT1Uc8k91t";
 
 export default function CobolAuditPage() {
   return (

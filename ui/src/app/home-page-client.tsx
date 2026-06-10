@@ -756,13 +756,13 @@ function HeroSection() {
         {/* Primary CTA pair */}
         <div className="flex flex-col sm:flex-row gap-3 justify-center items-center mb-4">
           <a
-            href="https://buy.stripe.com/5kQ6oJ0xS3ce8sl7ew8k91j"
+            href="https://buy.stripe.com/aFa7sNcgAdQS0ZT1Uc8k91t"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 font-bold rounded-full transition-all shadow-lg hover:shadow-[#c9a84c]/40 hover:scale-105"
             style={{ background: GOLD, color: "#1a1a2e", padding: "1rem 2.25rem", fontSize: "1.125rem" }}
           >
-            Subscribe £79/mo
+            Subscribe £199/mo
             <ArrowRight className="w-4 h-4" />
           </a>
           <Link
@@ -851,7 +851,7 @@ function HeroSection() {
         {/* Tier links */}
         <div className="flex items-center gap-3 flex-wrap justify-center text-sm font-medium mb-8" style={{ color: "rgba(245,240,232,0.55)" }}>
           <span>Or self-serve:</span>
-          <a href="https://buy.stripe.com/5kQ6oJ0xS3ce8sl7ew8k91j" target="_blank" rel="noopener noreferrer" className="underline decoration-dotted hover:text-white transition-colors">Pro £79/mo</a>
+          <a href="https://buy.stripe.com/aFa7sNcgAdQS0ZT1Uc8k91t" target="_blank" rel="noopener noreferrer" className="underline decoration-dotted hover:text-white transition-colors">Pro £199/mo</a>
           <span className="opacity-40">·</span>
           <a href="https://buy.stripe.com/bJe4gB3K4002aAtgP68k91r" target="_blank" rel="noopener noreferrer" className="underline decoration-dotted hover:text-white transition-colors">Enterprise £1,499/mo</a>
           <span className="opacity-40">·</span>

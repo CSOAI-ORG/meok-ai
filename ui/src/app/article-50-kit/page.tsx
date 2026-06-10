@@ -20,7 +20,7 @@ const NAVY = "#1a1a2e";
 const GOLD = "#c9a84c";
 const BG = "#f5f0e8";
 
-const STRIPE_LINK = "https://buy.stripe.com/5kQ6oJ0xS3ce8sl7ew8k91j";
+const STRIPE_LINK = "https://buy.stripe.com/4gM3cx0xScMOdMFfL28k91u"; // £999 one-time Article 50 kit
 
 const PILLARS = [
   {

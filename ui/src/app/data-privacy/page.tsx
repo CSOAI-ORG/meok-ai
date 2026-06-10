@@ -2,13 +2,13 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "AI Data Privacy Compliance · £79-£1,499/mo · MEOK AI Labs",
+  title: "AI Data Privacy Compliance · £199-£1,499/mo · MEOK AI Labs",
   description:
     "GDPR Article 35 + EU AI Act Article 10 + Data Governance Act. Automated DPIA generation, data processing inventory, cross-border transfer compliance, and data subject rights automation.",
   alternates: { canonical: "https://meok.ai/data-privacy" },
   openGraph: {
     title: "AI Data Privacy Compliance — MEOK GDPR 35 + EU AI Act Art 10 + DGA",
-    description: "Automated DPIA generation + data subject rights automation + signed attestations. £79-£1,499/mo.",
+    description: "Automated DPIA generation + data subject rights automation + signed attestations. £199-£1,499/mo.",
     type: "website",
     url: "https://meok.ai/data-privacy",
     images: [{ url: "/api/og?title=AI+Data+Privacy+Compliance&desc=GDPR+35+%2B+EU+AI+Act+Art+10+%2B+Data+Governance+Act", width: 1200, height: 630, alt: "Data Privacy Product" }],
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "AI Data Privacy Compliance — GDPR 35 + EU AI Act Art 10",
-    description: "Automated DPIA generation + data subject rights automation + signed attestations. £79-£1,499/mo.",
+    description: "Automated DPIA generation + data subject rights automation + signed attestations. £199-£1,499/mo.",
     site: "@meok_ai",
     images: ["/api/og?title=AI+Data+Privacy+Compliance&desc=GDPR+35+%2B+EU+AI+Act+Art+10+%2B+Data+Governance+Act"],
   },
@@ -26,13 +26,13 @@ const NAVY = "#1a1a2e";
 const GOLD = "#c9a84c";
 const BG = "#f5f0e8";
 
-const STRIPE_299 = "https://buy.stripe.com/5kQ6oJ0xS3ce8sl7ew8k91j?prefilled_promo_code=LAUNCH50";
-const STRIPE_999 = "https://buy.stripe.com/5kQ6oJ0xS3ce8sl7ew8k91j";
+const STRIPE_299 = "https://buy.stripe.com/aFa7sNcgAdQS0ZT1Uc8k91t?prefilled_promo_code=LAUNCH50";
+const STRIPE_999 = "https://buy.stripe.com/aFa7sNcgAdQS0ZT1Uc8k91t";
 
 const TIERS = [
   {
     name: "Pro",
-    price: "£79/mo",
+    price: "£199/mo",
     desc: "GDPR + EU AI Act baseline. Automated DPIA generation per Article 35. Data processing inventory with AI-specific classifications. Data subject rights automation (Articles 15-22).",
     href: STRIPE_299,
     highlight: false,
@@ -170,7 +170,7 @@ export default function DataPrivacyPage() {
           AI Data Privacy Compliance
         </h1>
         <p style={{ fontSize: "1.3rem", color: GOLD, fontWeight: 900, marginBottom: 8 }}>
-          £79/mo Pro · £1,499/mo Enterprise
+          £199/mo Pro · £1,499/mo Enterprise
         </p>
         <p style={{ fontSize: "1.05rem", color: `${NAVY}99`, maxWidth: 720, marginBottom: 40, lineHeight: 1.6 }}>
           Automated DPIA generation, data processing inventory, cross-border transfer compliance,

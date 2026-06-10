@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "EU AI Act Compliance Tool — Free + £79/mo Pro | MEOK AI Labs",
+  title: "EU AI Act Compliance Tool — Free + £199/mo Pro | MEOK AI Labs",
   description:
     "The open-source EU AI Act compliance tool: classify AI-system risk, check Article 50 transparency & GPAI obligations, generate Annex IV evidence, and emit auditor-verifiable signed attestations. Free to install. Article 50 enforceable 2 Aug 2026.",
   alternates: { canonical: "https://meok.ai/eu-ai-act-compliance-tool" },
@@ -14,14 +14,14 @@ export const metadata: Metadata = {
 };
 
 const NAVY = "#1a1a2e"; const GOLD = "#c9a84c"; const BG = "#f5f0e8";
-const STRIPE_PRO = "https://buy.stripe.com/5kQ6oJ0xS3ce8sl7ew8k91j?prefilled_promo_code=LAUNCH50&utm_source=seo&utm_campaign=compliance_tool";
+const STRIPE_PRO = "https://buy.stripe.com/aFa7sNcgAdQS0ZT1Uc8k91t?prefilled_promo_code=LAUNCH50&utm_source=seo&utm_campaign=compliance_tool";
 const AUDIT = "https://meok.ai/audit-prep-bundle";
 const READINESS = "https://csoai-readiness-o8qtxthmo-niks-projects-0a2ef942.vercel.app";
 
 const FAQ = [
   { q: "What is the EU AI Act compliance tool?", a: "An open-source MCP server (eu-ai-act-compliance-mcp) that runs inside Claude, Cursor, or any MCP client. It classifies your AI system's risk tier, checks Article 50 transparency and GPAI obligations across all 410 articles, generates Annex IV technical-documentation evidence, and emits HMAC-signed attestations an auditor can verify." },
   { q: "When does EU AI Act Article 50 apply?", a: "Article 50 transparency and AI-content marking obligations are enforceable from 2 August 2026. Non-compliance carries fines up to €15M or 3% of global turnover (Article 99(4))." },
-  { q: "Is it free?", a: "Yes — the core tool is MIT-licensed and free: pip install eu-ai-act-compliance-mcp (10 checks/day). Pro (£79/mo) unlocks unlimited checks plus auditor-verifiable signed attestations. A £4,950 2-day audit-prep engagement gets you fully audit-ready." },
+  { q: "Is it free?", a: "Yes — the core tool is MIT-licensed and free: pip install eu-ai-act-compliance-mcp (10 checks/day). Pro (£199/mo) unlocks unlimited checks plus auditor-verifiable signed attestations. A £4,950 2-day audit-prep engagement gets you fully audit-ready." },
   { q: "Does it cover DORA, NIS2, CRA and GDPR too?", a: "Yes. MEOK AI Labs ships a 290-server compliance suite covering EU AI Act, DORA, NIS2, CRA, GDPR, ISO 42001, SOC 2 and HIPAA — all on PyPI and the official MCP Registry." },
 ];
 
@@ -46,7 +46,7 @@ export default function Page() {
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(220px,1fr))", gap: 14, marginBottom: 36 }}>
           {[
             { t: "Free", p: "£0", d: "10 checks/day · all 410 articles · risk classification · MIT", cta: "Run free readiness check →", href: READINESS, primary: false },
-            { t: "Pro", p: "£39.50/mo", d: "Launch offer — 50% off first 6 months (then £79/mo). Unlimited checks + auditor-verifiable signed attestations + verify URLs", cta: "Subscribe — 50% off 6mo →", href: STRIPE_PRO, primary: true },
+            { t: "Pro", p: "£39.50/mo", d: "Launch offer — 50% off first 6 months (then £199/mo). Unlimited checks + auditor-verifiable signed attestations + verify URLs", cta: "Subscribe — 50% off 6mo →", href: STRIPE_PRO, primary: true },
             { t: "Audit-Prep", p: "£4,950", d: "2-day engagement: gap analysis, watermarking wired in, signed evidence pack", cta: "Get audit-ready →", href: AUDIT, primary: false },
           ].map(c => (
             <div key={c.t} style={{ background: "#fff", border: `1px solid ${c.primary ? GOLD : NAVY + "1a"}`, borderRadius: 16, padding: 22, boxShadow: c.primary ? "0 8px 30px rgba(201,168,76,0.18)" : "none" }}>

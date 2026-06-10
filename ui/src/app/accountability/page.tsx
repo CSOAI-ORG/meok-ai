@@ -2,13 +2,13 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "AI Algorithmic Accountability · £79-£1,499/mo · MEOK AI Labs",
+  title: "AI Algorithmic Accountability · £199-£1,499/mo · MEOK AI Labs",
   description:
     "EU AI Act Article 9 (Risk Management) + UK AI Bill + NIST AI RMF. Automated risk management systems, algorithmic impact assessments, continuous monitoring with drift detection, and board-ready accountability reports.",
   alternates: { canonical: "https://meok.ai/accountability" },
   openGraph: {
     title: "AI Algorithmic Accountability — MEOK Article 9 + UK AI Bill + NIST RMF",
-    description: "Automated risk management + algorithmic impact assessments + signed attestations. £79-£1,499/mo.",
+    description: "Automated risk management + algorithmic impact assessments + signed attestations. £199-£1,499/mo.",
     type: "website",
     url: "https://meok.ai/accountability",
     images: [{ url: "/api/og?title=AI+Algorithmic+Accountability&desc=Article+9+%2B+UK+AI+Bill+%2B+NIST+AI+RMF", width: 1200, height: 630, alt: "Accountability Product" }],
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "AI Algorithmic Accountability — Article 9 + UK AI Bill + NIST RMF",
-    description: "Automated risk management + algorithmic impact assessments + signed attestations. £79-£1,499/mo.",
+    description: "Automated risk management + algorithmic impact assessments + signed attestations. £199-£1,499/mo.",
     site: "@meok_ai",
     images: ["/api/og?title=AI+Algorithmic+Accountability&desc=Article+9+%2B+UK+AI+Bill+%2B+NIST+AI+RMF"],
   },
@@ -26,13 +26,13 @@ const NAVY = "#1a1a2e";
 const GOLD = "#c9a84c";
 const BG = "#f5f0e8";
 
-const STRIPE_399 = "https://buy.stripe.com/5kQ6oJ0xS3ce8sl7ew8k91j?prefilled_promo_code=LAUNCH50";
-const STRIPE_1499 = "https://buy.stripe.com/5kQ6oJ0xS3ce8sl7ew8k91j";
+const STRIPE_399 = "https://buy.stripe.com/aFa7sNcgAdQS0ZT1Uc8k91t?prefilled_promo_code=LAUNCH50";
+const STRIPE_1499 = "https://buy.stripe.com/aFa7sNcgAdQS0ZT1Uc8k91t";
 
 const TIERS = [
   {
     name: "Pro",
-    price: "£79/mo",
+    price: "£199/mo",
     desc: "Risk management baseline. Automated risk management system per Article 9. Algorithmic impact assessments with signed attestations. NIST AI RMF MAP + MEASURE crosswalk.",
     href: STRIPE_399,
     highlight: false,
@@ -175,7 +175,7 @@ export default function AccountabilityPage() {
           AI Algorithmic Accountability
         </h1>
         <p style={{ fontSize: "1.3rem", color: GOLD, fontWeight: 900, marginBottom: 8 }}>
-          £79/mo Pro · £1,499/mo Enterprise
+          £199/mo Pro · £1,499/mo Enterprise
         </p>
         <p style={{ fontSize: "1.05rem", color: `${NAVY}99`, maxWidth: 720, marginBottom: 40, lineHeight: 1.6 }}>
           Automated risk management systems, algorithmic impact assessments, and continuous

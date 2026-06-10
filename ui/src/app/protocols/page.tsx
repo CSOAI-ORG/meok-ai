@@ -261,9 +261,9 @@ export default function ProtocolsPage() {
           <div style={{ display: "flex", gap: 10, justifyContent: "center", flexWrap: "wrap" }}>
             <Link href="/a2a" style={{ padding: "10px 18px", background: NAVY, color: "#fff", textDecoration: "none", fontWeight: 700, borderRadius: 10, fontSize: 13 }}>A2A £499</Link>
             <Link href="/governance" style={{ padding: "10px 18px", background: NAVY, color: "#fff", textDecoration: "none", fontWeight: 700, borderRadius: 10, fontSize: 13 }}>Governance £499</Link>
-            <a href="https://buy.stripe.com/5kQ6oJ0xS3ce8sl7ew8k91j" style={{ padding: "10px 18px", background: NAVY, color: "#fff", textDecoration: "none", fontWeight: 700, borderRadius: 10, fontSize: 13 }}>Cybersec £199</a>
-            <a href="https://buy.stripe.com/5kQ6oJ0xS3ce8sl7ew8k91j" style={{ padding: "10px 18px", background: GOLD, color: NAVY, textDecoration: "none", fontWeight: 800, borderRadius: 10, fontSize: 13 }}>Universe £1,499</a>
-            <a href="https://buy.stripe.com/5kQ6oJ0xS3ce8sl7ew8k91j" style={{ padding: "10px 18px", background: "transparent", color: NAVY, border: `1px solid ${NAVY}33`, textDecoration: "none", fontWeight: 700, borderRadius: 10, fontSize: 13 }}>PAYG £29</a>
+            <a href="https://buy.stripe.com/aFa7sNcgAdQS0ZT1Uc8k91t" style={{ padding: "10px 18px", background: NAVY, color: "#fff", textDecoration: "none", fontWeight: 700, borderRadius: 10, fontSize: 13 }}>Cybersec £199</a>
+            <a href="https://buy.stripe.com/aFa7sNcgAdQS0ZT1Uc8k91t" style={{ padding: "10px 18px", background: GOLD, color: NAVY, textDecoration: "none", fontWeight: 800, borderRadius: 10, fontSize: 13 }}>Universe £1,499</a>
+            <a href="https://buy.stripe.com/aFa7sNcgAdQS0ZT1Uc8k91t" style={{ padding: "10px 18px", background: "transparent", color: NAVY, border: `1px solid ${NAVY}33`, textDecoration: "none", fontWeight: 700, borderRadius: 10, fontSize: 13 }}>PAYG £29</a>
           </div>
         </div>
 

@@ -132,7 +132,7 @@ export default function WatermarkPage() {
 
         <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginBottom: 64 }}>
           <a
-            href="https://buy.stripe.com/5kQ6oJ0xS3ce8sl7ew8k91j"
+            href="https://buy.stripe.com/aFa7sNcgAdQS0ZT1Uc8k91t"
             target="_blank"
             rel="noopener noreferrer"
             style={{
@@ -286,7 +286,7 @@ export default function WatermarkPage() {
             Start generating compliant provenance markers today. Free tier available — no credit card required.
           </p>
           <a
-            href="https://buy.stripe.com/5kQ6oJ0xS3ce8sl7ew8k91j"
+            href="https://buy.stripe.com/aFa7sNcgAdQS0ZT1Uc8k91t"
             target="_blank"
             rel="noopener noreferrer"
             style={{

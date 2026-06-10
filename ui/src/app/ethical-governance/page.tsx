@@ -2,13 +2,13 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "AI Ethical Governance · £79-£1,499/mo · MEOK AI Labs",
+  title: "AI Ethical Governance · £199-£1,499/mo · MEOK AI Labs",
   description:
     "ISO 42001 + EU AI Act Chapter III + IEEE 7000. AI Management System audits, conformity assessments, ethical design integration, bias + fairness + transparency unified dashboard, and signed governance attestations.",
   alternates: { canonical: "https://meok.ai/ethical-governance" },
   openGraph: {
     title: "AI Ethical Governance — MEOK ISO 42001 + EU AI Act Ch III + IEEE 7000",
-    description: "AIMS audit + conformity assessment + ethical design integration + signed attestations. £79-£1,499/mo.",
+    description: "AIMS audit + conformity assessment + ethical design integration + signed attestations. £199-£1,499/mo.",
     type: "website",
     url: "https://meok.ai/ethical-governance",
     images: [{ url: "/api/og?title=AI+Ethical+Governance&desc=ISO+42001+%2B+EU+AI+Act+Ch+III+%2B+IEEE+7000", width: 1200, height: 630, alt: "Ethical Governance Product" }],
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "AI Ethical Governance — ISO 42001 + EU AI Act Ch III + IEEE 7000",
-    description: "AIMS audit + conformity assessment + ethical design integration + signed attestations. £79-£1,499/mo.",
+    description: "AIMS audit + conformity assessment + ethical design integration + signed attestations. £199-£1,499/mo.",
     site: "@meok_ai",
     images: ["/api/og?title=AI+Ethical+Governance&desc=ISO+42001+%2B+EU+AI+Act+Ch+III+%2B+IEEE+7000"],
   },
@@ -26,13 +26,13 @@ const NAVY = "#1a1a2e";
 const GOLD = "#c9a84c";
 const BG = "#f5f0e8";
 
-const STRIPE_499 = "https://buy.stripe.com/5kQ6oJ0xS3ce8sl7ew8k91j?prefilled_promo_code=LAUNCH50";
-const STRIPE_1999 = "https://buy.stripe.com/5kQ6oJ0xS3ce8sl7ew8k91j";
+const STRIPE_499 = "https://buy.stripe.com/aFa7sNcgAdQS0ZT1Uc8k91t?prefilled_promo_code=LAUNCH50";
+const STRIPE_1999 = "https://buy.stripe.com/aFa7sNcgAdQS0ZT1Uc8k91t";
 
 const TIERS = [
   {
     name: "Pro",
-    price: "£79/mo",
+    price: "£199/mo",
     desc: "Governance baseline. ISO 42001 AI Management System audit. EU AI Act Chapter III conformity assessment. IEEE 7000 ethical design integration. Unified bias + fairness + transparency dashboard.",
     href: STRIPE_499,
     highlight: false,
@@ -127,7 +127,7 @@ const FAQ = [
   },
   {
     q: "Is this only for large enterprises?",
-    a: "No. Any organisation placing high-risk AI on the EU market needs Chapter III conformity (Article 43). Startups building high-risk AI (healthcare, HR, credit scoring, law enforcement) face the same obligations. The Pro tier at £79/mo is designed to make enterprise-grade governance accessible to scale-ups.",
+    a: "No. Any organisation placing high-risk AI on the EU market needs Chapter III conformity (Article 43). Startups building high-risk AI (healthcare, HR, credit scoring, law enforcement) face the same obligations. The Pro tier at £199/mo is designed to make enterprise-grade governance accessible to scale-ups.",
   },
   {
     q: "How does the stakeholder engagement framework work?",
@@ -175,7 +175,7 @@ export default function EthicalGovernancePage() {
           AI Ethical Governance
         </h1>
         <p style={{ fontSize: "1.3rem", color: GOLD, fontWeight: 900, marginBottom: 8 }}>
-          £79/mo Pro · £1,499/mo Enterprise
+          £199/mo Pro · £1,499/mo Enterprise
         </p>
         <p style={{ fontSize: "1.05rem", color: `${NAVY}99`, maxWidth: 720, marginBottom: 40, lineHeight: 1.6 }}>
           The full governance stack for AI deployers: ISO 42001 AIMS audits, EU AI Act Chapter III

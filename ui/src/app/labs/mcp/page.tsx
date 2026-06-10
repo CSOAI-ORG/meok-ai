@@ -25,11 +25,11 @@ const STATS = [
 ];
 
 const PACKS = [
-  { name: "Legal & Compliance", price: "99", servers: 12, desc: "EU AI Act, NIST, ISO 42001, GDPR, SOC 2, HIPAA + crosswalk", href: "https://buy.stripe.com/5kQ6oJ0xS3ce8sl7ew8k91j" },
-  { name: "Healthcare", price: "79", servers: 7, desc: "FHIR R4, patient safety, clinical trials, HIPAA, GDPR", href: "https://buy.stripe.com/5kQ6oJ0xS3ce8sl7ew8k91j" },
-  { name: "Financial Services", price: "79", servers: 9, desc: "SOC 2, PCI DSS, tax, budget, expense, risk, stock", href: "https://buy.stripe.com/5kQ6oJ0xS3ce8sl7ew8k91j" },
-  { name: "Cybersecurity", price: "79", servers: 8, desc: "OWASP Agentic, deepfake detection, trust chains, credentials", href: "https://buy.stripe.com/5kQ6oJ0xS3ce8sl7ew8k91j" },
-  { name: "SMB Operations", price: "49", servers: 10, desc: "Invoice, expense, CRM, support, time tracking, PM", href: "https://buy.stripe.com/5kQ6oJ0xS3ce8sl7ew8k91j" },
+  { name: "Legal & Compliance", price: "99", servers: 12, desc: "EU AI Act, NIST, ISO 42001, GDPR, SOC 2, HIPAA + crosswalk", href: "https://buy.stripe.com/aFa7sNcgAdQS0ZT1Uc8k91t" },
+  { name: "Healthcare", price: "79", servers: 7, desc: "FHIR R4, patient safety, clinical trials, HIPAA, GDPR", href: "https://buy.stripe.com/aFa7sNcgAdQS0ZT1Uc8k91t" },
+  { name: "Financial Services", price: "79", servers: 9, desc: "SOC 2, PCI DSS, tax, budget, expense, risk, stock", href: "https://buy.stripe.com/aFa7sNcgAdQS0ZT1Uc8k91t" },
+  { name: "Cybersecurity", price: "79", servers: 8, desc: "OWASP Agentic, deepfake detection, trust chains, credentials", href: "https://buy.stripe.com/aFa7sNcgAdQS0ZT1Uc8k91t" },
+  { name: "SMB Operations", price: "49", servers: 10, desc: "Invoice, expense, CRM, support, time tracking, PM", href: "https://buy.stripe.com/aFa7sNcgAdQS0ZT1Uc8k91t" },
   { name: "Marketing & Growth", price: "49", servers: 10, desc: "Ad copy, content calendar, SEO, social, leads, sentiment", href: "/pricing" },
   { name: "Developer Tools", price: "29", servers: 10, desc: "Code review, CI/CD, testing, API docs, Docker, git", href: "/pricing" },
   { name: "Defence All-In", price: "999", servers: 208, desc: "Every server, unlimited calls, SSO, SLA, on-premise", href: "/pricing" },
@@ -53,7 +53,7 @@ const TIERS = [
     desc: "For small businesses",
     features: ["1 industry pack included", "500 API calls/day", "Data persistence", "Email support", "Audit logging"],
     cta: "Start Free Trial",
-    href: "https://buy.stripe.com/5kQ6oJ0xS3ce8sl7ew8k91j",
+    href: "https://buy.stripe.com/aFa7sNcgAdQS0ZT1Uc8k91t",
     popular: false,
   },
   {
@@ -63,7 +63,7 @@ const TIERS = [
     desc: "For consultants & mid-market",
     features: ["Full compliance suite", "12 framework crosswalks", "2,000 API calls/day", "Audit trail export", "Priority support", "1 industry pack included"],
     cta: "Start Free Trial",
-    href: "https://buy.stripe.com/5kQ6oJ0xS3ce8sl7ew8k91j",
+    href: "https://buy.stripe.com/aFa7sNcgAdQS0ZT1Uc8k91t",
     popular: true,
   },
   {

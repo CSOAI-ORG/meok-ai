@@ -151,7 +151,7 @@ export default function AiBomPage() {
 
         <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginBottom: 64 }}>
           <a
-            href="https://buy.stripe.com/5kQ6oJ0xS3ce8sl7ew8k91j"
+            href="https://buy.stripe.com/aFa7sNcgAdQS0ZT1Uc8k91t"
             target="_blank"
             rel="noopener noreferrer"
             style={{
@@ -305,7 +305,7 @@ export default function AiBomPage() {
             EU AI Act Annex IV requires detailed technical documentation. CycloneDX ML-BOM is the emerging standard. Get ahead now.
           </p>
           <a
-            href="https://buy.stripe.com/5kQ6oJ0xS3ce8sl7ew8k91j"
+            href="https://buy.stripe.com/aFa7sNcgAdQS0ZT1Uc8k91t"
             target="_blank"
             rel="noopener noreferrer"
             style={{

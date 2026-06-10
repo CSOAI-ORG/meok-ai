@@ -20,7 +20,7 @@ const GOLD = "#c9a84c";
 const BG = "#f5f0e8";
 const RED = "#dc2626";
 
-const STRIPE_LINK = "https://buy.stripe.com/5kQ6oJ0xS3ce8sl7ew8k91j";
+const STRIPE_LINK = "https://buy.stripe.com/cNi14pfsMdQS8sl6as8k91w";
 
 const CONTENTS = [
   {

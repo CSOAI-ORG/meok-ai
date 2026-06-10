@@ -51,7 +51,7 @@ const PRICING = [
     price: "£5,000",
     period: "flat",
     desc: "48h MCP readiness assessment. Full stack audit, FHIR compliance review, implementation roadmap.",
-    href: "https://buy.stripe.com/5kQ6oJ0xS3ce8sl7ew8k91j",
+    href: "https://buy.stripe.com/aFa7sNcgAdQS0ZT1Uc8k91t",
     highlight: false,
   },
   {
@@ -59,7 +59,7 @@ const PRICING = [
     price: "£199",
     period: "/mo",
     desc: "Ongoing MCP maintenance, FHIR updates, compliance monitoring, priority support.",
-    href: "https://buy.stripe.com/5kQ6oJ0xS3ce8sl7ew8k91j",
+    href: "https://buy.stripe.com/aFa7sNcgAdQS0ZT1Uc8k91t",
     highlight: true,
   },
   {
@@ -67,7 +67,7 @@ const PRICING = [
     price: "£1,499",
     period: "/mo",
     desc: "Dedicated MCP infrastructure, NHS integration support, SLA, clinical data governance, onboarding.",
-    href: "https://buy.stripe.com/5kQ6oJ0xS3ce8sl7ew8k91j",
+    href: "https://buy.stripe.com/aFa7sNcgAdQS0ZT1Uc8k91t",
     highlight: false,
   },
 ];
@@ -145,7 +145,7 @@ export default function HealthcarePage() {
 
         <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginBottom: 64 }}>
           <a
-            href="https://buy.stripe.com/5kQ6oJ0xS3ce8sl7ew8k91j"
+            href="https://buy.stripe.com/aFa7sNcgAdQS0ZT1Uc8k91t"
             target="_blank"
             rel="noopener noreferrer"
             style={{
@@ -275,7 +275,7 @@ export default function HealthcarePage() {
             Annex III classification means conformity assessments, risk management systems, and post-market monitoring. Start now — the December 2027 deadline is closer than you think.
           </p>
           <a
-            href="https://buy.stripe.com/5kQ6oJ0xS3ce8sl7ew8k91j"
+            href="https://buy.stripe.com/aFa7sNcgAdQS0ZT1Uc8k91t"
             target="_blank"
             rel="noopener noreferrer"
             style={{
