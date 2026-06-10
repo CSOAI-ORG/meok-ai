@@ -70,6 +70,10 @@ export default function middleware(req: NextRequest, event: unknown) {
   if (req.nextUrl.pathname.startsWith('/api/a2a')) {
     return passthroughMiddleware(req);
   }
+  // Agent/AEO discovery files must be world-readable — never auth-gated.
+  if (req.nextUrl.pathname.startsWith('/.well-known')) {
+    return passthroughMiddleware(req);
+  }
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   return (guardedMiddleware as any)(req, event);
 }
