@@ -118,7 +118,7 @@ export default function Nis2NlPage() {
             Done-For-You — £499 →
           </a>
           <a
-            href="https://pypi.org/project/meok-nis2-nl-register-mcp/"
+            href="https://github.com/CSOAI-ORG/meok-nis2-nl-register-mcp"
             target="_blank"
             rel="noopener noreferrer"
             style={{ padding: "16px 28px", borderRadius: 12, background: "transparent", color: NAVY, fontWeight: 900, textDecoration: "none", fontSize: 15, border: `1px solid ${NAVY}33` }}
