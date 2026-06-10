@@ -3,9 +3,9 @@ import Link from "next/link";
 import { Article50Countdown } from "@/components/Article50Countdown";
 
 export const metadata: Metadata = {
-  title: "EU AI Act Article 50 Watermarking Kit · £999 · MEOK AI Labs",
+  title: "Article 50 deadline did NOT move — 2 Aug 2026 · £999 two-layer marking kit · MEOK AI Labs",
   description:
-    "C2PA + invisible watermark + fingerprinting bundle for EU AI Act Article 50 transparency obligations. Hard 2 August 2026 deadline. £999 one-time + £99/mo monitoring optional. Ships in 7 days.",
+    "The EU Digital Omnibus did not defer Article 50 for new systems: 2 August 2026 is live, and the June 2026 Code of Practice requires at least two active layers of machine-readable marking. C2PA + invisible watermark + fingerprinting, £999 one-time. Ships in 7 days.",
   alternates: { canonical: "https://meok.ai/article-50-kit" },
   openGraph: {
     title: "EU AI Act Article 50 Watermarking Kit — £999, ships in 7 days",
@@ -46,10 +46,10 @@ const PILLARS = [
 ];
 
 const WHY = [
-  "Single-layer C2PA is NOT sufficient under the EU Code of Practice on AI-generated content (finalising May-June 2026)",
-  "All three layers (C2PA + invisible watermark + fingerprint) are required",
-  "Penalties up to €15M or 3% global turnover under EU AI Act Article 99",
-  "Existing tools cover ONE layer at most. We bundle all three.",
+  "“Isn't one watermark enough?” — Not under the June 2026 Code of Practice. It calls for at least two active layers; watermark + C2PA metadata satisfies it.",
+  "“We'll just use the model provider's marking.” — Provider marks are single-layer and don't produce YOUR signed, auditor-verifiable evidence. The kit gives you proof you own.",
+  "“Is C2PA real?” — v2.3, ISO/IEC 22144; Google Pixel 10 ships it, Microsoft added it to M365, OpenAI signs GPT-Image-2 with it. It's the standard.",
+  "Penalties up to €15M or 3% global turnover under EU AI Act Article 99.",
 ];
 
 const FAQ = [
@@ -140,16 +140,43 @@ export default function Article50KitPage() {
             marginBottom: 16,
           }}
         >
-          EU AI Act Article 50 Watermarking Kit
+          The EU AI Act Article 50 deadline did <em>not</em> move.
+          <br />
+          <span style={{ color: GOLD }}>2 August 2026 is live.</span>
         </h1>
         <p style={{ fontSize: "1.5rem", color: GOLD, fontWeight: 900, marginBottom: 8 }}>
-          £999 one-time + £99/mo monitoring (optional)
+          Article 50 Watermarking Kit — £999 one-time + £99/mo monitoring (optional)
         </p>
-        <p style={{ fontSize: "1.05rem", color: `${NAVY}99`, maxWidth: 640, marginBottom: 32 }}>
-          The only open-source bundle that is Code-of-Practice-aligned: C2PA manifest + invisible
-          watermark + perceptual fingerprinting + signed Article 50 conformity attestation. Drop-in
-          for any GenAI pipeline producing images, video, audio or text.
+        <p style={{ fontSize: "1.05rem", color: `${NAVY}99`, maxWidth: 640, marginBottom: 24 }}>
+          New AI systems must mark machine-generated output with <strong>at least two active layers</strong> of
+          machine-readable marking. We ship both — turnkey — in days: C2PA manifest + invisible
+          watermark + perceptual fingerprinting + signed Article 50 conformity attestation.
         </p>
+
+        <div
+          style={{
+            background: "white",
+            borderLeft: `4px solid #dc2626`,
+            borderRadius: 12,
+            padding: "18px 22px",
+            maxWidth: 680,
+            marginBottom: 32,
+          }}
+        >
+          <p style={{ fontWeight: 900, marginBottom: 8, fontSize: 14, letterSpacing: "0.04em", textTransform: "uppercase" }}>
+            What the Digital Omnibus actually changed (and didn&apos;t)
+          </p>
+          <ul style={{ paddingLeft: 18, color: `${NAVY}cc`, fontSize: 14, lineHeight: 1.7, margin: 0 }}>
+            <li><strong>New systems: still 2 August 2026.</strong> Not deferred.</li>
+            <li><em>Legacy</em> generative systems: 2 December 2026.</li>
+            <li>High-risk (Annex III) classification: slipped to Dec 2027.</li>
+            <li>
+              The final <strong>Code of Practice on AI-Generated Content (June 2026)</strong> requires{" "}
+              <strong>at least two active layers of machine-readable marking</strong> — watermark{" "}
+              <strong>+</strong> metadata/C2PA. One layer is no longer enough.
+            </li>
+          </ul>
+        </div>
 
         <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginBottom: 64 }}>
           <a
@@ -168,6 +195,21 @@ export default function Article50KitPage() {
           >
             Buy Kit — £999 →
           </a>
+          <Link
+            href="/scorecard"
+            style={{
+              padding: "16px 28px",
+              borderRadius: 12,
+              background: "transparent",
+              color: NAVY,
+              fontWeight: 900,
+              textDecoration: "none",
+              fontSize: 15,
+              border: `1px solid ${NAVY}33`,
+            }}
+          >
+            Not sure you&apos;re in scope? Free 90-sec Scorecard →
+          </Link>
           <a
             href="mailto:nicholas@meok.ai?subject=Compliance%20triage%20call%20request%20&body=Hi%20Nicholas%2C%0A%0AI%27d%20like%20to%20book%20the%20free%2030-min%20compliance%20triage%20call.%20My%20availability%3A%0A%0A-%20%5Byour%20preferred%20day%2Ftime%5D%0A%0ACompany%3A%20%5BCompany%5D%0AContext%3A%20%5BEU%20AI%20Act%20%2F%20DORA%20%2F%20NIS2%20%2F%20CRA%5D%0A%0AThanks"
             target="_blank"
@@ -188,7 +230,7 @@ export default function Article50KitPage() {
         </div>
 
         <h2 style={{ fontSize: "1.8rem", fontWeight: 900, marginBottom: 24, letterSpacing: "-0.01em" }}>
-          Why all three layers
+          Why two layers, why us
         </h2>
         <ul style={{ marginBottom: 32, paddingLeft: 20, color: `${NAVY}99`, lineHeight: 1.8 }}>
           {WHY.map((w) => (

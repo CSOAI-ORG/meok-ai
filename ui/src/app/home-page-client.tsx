@@ -804,7 +804,7 @@ function HeroSection() {
             <Link href="/article-50-kit" className="group block rounded-xl p-4 transition-all hover:scale-[1.02]" style={{ background: "rgba(220,38,38,0.10)", border: "1px solid rgba(220,38,38,0.35)" }}>
               <div className="text-[10px] font-black tracking-wider uppercase mb-1" style={{ color: "#dc2626" }}>2 Aug 2026 cliff</div>
               <div className="text-xl font-black text-white mb-1">£999</div>
-              <div className="text-xs font-semibold text-white/80 leading-snug">EU AI Act Article 50 watermarking kit · C2PA + invisible WM + fingerprint</div>
+              <div className="text-xs font-semibold text-white/80 leading-snug">EU AI Act Article 50 watermarking kit · 2 Aug confirmed · two-layer marking required</div>
             </Link>
             <Link href="/nis2-de-kit" className="group block rounded-xl p-4 transition-all hover:scale-[1.02]" style={{ background: "rgba(220,38,38,0.10)", border: "1px solid rgba(220,38,38,0.35)" }}>
               <div className="text-[10px] font-black tracking-wider uppercase mb-1" style={{ color: "#dc2626" }}>🇩🇪 Deadline passed</div>

@@ -363,9 +363,7 @@ export function MarketingFooter() {
               </a>
               <span className="text-[#2a2a3a] text-sm">|</span>
               <a
-                href="https://compliance.meok.ai"
-                target="_blank"
-                rel="noopener noreferrer"
+                href="/ai-act"
                 className="text-sm text-[#e8e4dc] hover:text-white transition-colors group relative"
               >
                 Compliance Centre
