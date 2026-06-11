@@ -1,0 +1,47 @@
+{
+  "name": "MEOK AI Labs \u2014 meok-attestation-verify",
+  "version": "1.2.1",
+  "url": "https://pypi.org/project/meok-attestation-verify/",
+  "capabilities": {
+    "streaming": true,
+    "pushNotifications": false,
+    "stateTransitionHistory": true
+  },
+  "protocolVersion": "0.3.0",
+  "description": "Independent verifier \u2014 pip install meok-attestation-verify, no account needed. Part of the MEOK 294-server A2A + compliance fleet (official MCP Registry, certified June 2026). Each tool emits an HMAC + Ed25519 signed attestation with a public verify URL \u2014 your auditor validates offline, no account, no contact with MEOK.",
+  "provider": {
+    "organization": "MEOK AI Labs (CSOAI LTD, UK Companies House 16939677)",
+    "url": "https://meok.ai"
+  },
+  "defaultInputModes": [
+    "application/json",
+    "text/plain"
+  ],
+  "defaultOutputModes": [
+    "application/json",
+    "text/plain"
+  ],
+  "documentationUrl": "https://meok.ai/mcp/meok-attestation-verify",
+  "skills": [
+    {
+      "id": "meok-attestation-verify",
+      "name": "meok-attestation-verify",
+      "description": "Independent verifier \u2014 pip install meok-attestation-verify, no account needed",
+      "tags": [
+        "verify",
+        "auditor",
+        "offline",
+        "ed25519"
+      ]
+    }
+  ],
+  "x-meok": {
+    "registry": "https://meok.ai/.well-known/agents.json",
+    "verifier": "https://proofof.ai/verify",
+    "pypi_user": "https://pypi.org/user/MEOK_AI_Labs/",
+    "github_org": "https://github.com/CSOAI-ORG",
+    "flagship": true,
+    "ed25519": true,
+    "hmac": true
+  }
+}

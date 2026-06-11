@@ -1,0 +1,47 @@
+{
+  "name": "MEOK AI Labs \u2014 agent-identity-trust-mcp",
+  "version": "1.2.1",
+  "url": "https://mcp.meok.ai/agent-identity-trust-mcp",
+  "capabilities": {
+    "streaming": true,
+    "pushNotifications": false,
+    "stateTransitionHistory": true
+  },
+  "protocolVersion": "0.3.0",
+  "description": "W3C DID + verifiable credentials \u2192 trust score. Part of the MEOK 294-server A2A + compliance fleet (official MCP Registry, certified June 2026). Each tool emits an HMAC + Ed25519 signed attestation with a public verify URL \u2014 your auditor validates offline, no account, no contact with MEOK.",
+  "provider": {
+    "organization": "MEOK AI Labs (CSOAI LTD, UK Companies House 16939677)",
+    "url": "https://meok.ai"
+  },
+  "defaultInputModes": [
+    "application/json",
+    "text/plain"
+  ],
+  "defaultOutputModes": [
+    "application/json",
+    "text/plain"
+  ],
+  "documentationUrl": "https://meok.ai/mcp/agent-identity-trust",
+  "skills": [
+    {
+      "id": "agent-identity-trust-mcp",
+      "name": "agent-identity-trust-mcp",
+      "description": "W3C DID + verifiable credentials \u2192 trust score",
+      "tags": [
+        "identity",
+        "trust",
+        "did",
+        "w3c-vc"
+      ]
+    }
+  ],
+  "x-meok": {
+    "registry": "https://meok.ai/.well-known/agents.json",
+    "verifier": "https://proofof.ai/verify",
+    "pypi_user": "https://pypi.org/user/MEOK_AI_Labs/",
+    "github_org": "https://github.com/CSOAI-ORG",
+    "flagship": true,
+    "ed25519": true,
+    "hmac": true
+  }
+}
