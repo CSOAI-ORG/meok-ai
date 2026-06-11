@@ -19,9 +19,44 @@ export const metadata: Metadata = {
   },
 };
 
+const GOS_JSONLD = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Product",
+      "name": "Optimobile GOS Reconciliation",
+      "description": "NHS GOS claim reconciliation for UK opticians. Surfaces missing/dropped claims in the 3-month window, produces a signed reconciliation report. £29/mo solo, £99/mo group.",
+      "brand": { "@type": "Brand", "name": "Optimobile.AI" },
+      "url": "https://meok.ai/optimobile-gos",
+      "category": "Healthcare > Optometry > Practice Management > NHS Claims",
+      "offers": [
+        {
+          "@type": "Offer", "name": "Solo Practice", "price": "29.00", "priceCurrency": "GBP",
+          "priceSpecification": { "billingIncrement": 1, "unitCode": "MON" },
+          "url": "https://buy.stripe.com/aFa7sNcgAdQS0ZT1Uc8k91t",
+          "availability": "https://schema.org/InStock",
+          "seller": { "@type": "Organization", "name": "MEOK AI Labs" },
+        },
+        {
+          "@type": "Offer", "name": "Group Practice", "price": "99.00", "priceCurrency": "GBP",
+          "priceSpecification": { "billingIncrement": 1, "unitCode": "MON" },
+          "url": "https://buy.stripe.com/4gM9AV80kcMO23X0Q88k91o",
+          "availability": "https://schema.org/InStock",
+          "seller": { "@type": "Organization", "name": "MEOK AI Labs" },
+        },
+      ],
+    },
+  ],
+};
+
 export default function OptimobileGosPage() {
   return (
-    <main className="mx-auto max-w-5xl px-4 py-12 sm:px-6 lg:px-8">
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(GOS_JSONLD) }}
+      />
+      <main className="mx-auto max-w-5xl px-4 py-12 sm:px-6 lg:px-8">
       <header className="mb-10">
         <p className="mb-2 text-sm font-semibold uppercase tracking-wider text-emerald-400">
           Optimobile.ai · for independent opticians
@@ -244,6 +279,7 @@ export default function OptimobileGosPage() {
         Built by Templeman Opticians (since 1994) + MEOK AI Labs · CSOAI LTD (UK CH 16939677)
       </footer>
     </main>
+    </>
   );
 }
 

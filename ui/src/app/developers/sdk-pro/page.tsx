@@ -5,6 +5,87 @@ import {
   CheckCircle2, Server, Activity, Lock, Webhook, KeyRound, BarChart3,
 } from "lucide-react";
 
+const JSONLD = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Product",
+      "name": "MEOK SDK Pro",
+      "description": "Hosted attestation endpoint, priority signing queue, usage analytics, 99.9% SLA, and webhooks on every cert. £9/mo self-serve, £99/mo team.",
+      "brand": { "@type": "Brand", "name": "MEOK AI Labs" },
+      "url": "https://meok.ai/developers/sdk-pro",
+      "category": "Software > Developer Tools > API > Compliance",
+      "offers": [
+        {
+          "@type": "Offer",
+          "name": "Pro",
+          "price": "9.00",
+          "priceCurrency": "GBP",
+          "priceSpecification": { "billingIncrement": 1, "unitCode": "MON" },
+          "url": "https://buy.stripe.com/28E8wR2G0dQS5g92Yg8k91n",
+          "availability": "https://schema.org/InStock",
+          "seller": { "@type": "Organization", "name": "MEOK AI Labs" },
+        },
+        {
+          "@type": "Offer",
+          "name": "Team",
+          "price": "99.00",
+          "priceCurrency": "GBP",
+          "priceSpecification": { "billingIncrement": 1, "unitCode": "MON" },
+          "url": "https://buy.stripe.com/4gM9AV80kcMO23X0Q88k91o",
+          "availability": "https://schema.org/InStock",
+          "seller": { "@type": "Organization", "name": "MEOK AI Labs" },
+        },
+      ],
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Can I switch between Free and Pro without losing my keys?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Free and Pro use the same HMAC key derivation — upgrading is a flag change on the client constructor, not a re-onboarding.",
+          },
+        },
+        {
+          "@type": "Question",
+          "name": "Is the public verifier still free?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. POST /verify stays public and rate-limited but unauthenticated. Auditors, regulators, and customers can verify any cert with no key.",
+          },
+        },
+        {
+          "@type": "Question",
+          "name": "What about Team — do you support SSO?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes — Clerk SSO on all 10 seats. SAML on request for Enterprise.",
+          },
+        },
+        {
+          "@type": "Question",
+          "name": "What's the Ed25519 upgrade path?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The Pro plan includes the Ed25519 signature upgrade the moment we ship it (Q3 2026, per the 33-week plan). HMAC remains the default until then.",
+          },
+        },
+        {
+          "@type": "Question",
+          "name": "Cancel anytime?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, self-serve, no contract. Cancel = next billing cycle stops. Keys keep working until the cycle ends.",
+          },
+        },
+      ],
+    },
+  ],
+};
+
 export const metadata: Metadata = {
   title: "MEOK SDK Pro — hosted attestation, priority queue, usage analytics | MEOK.AI",
   description:
@@ -49,7 +130,12 @@ const TEAM_FEATURES = [
 
 export default function SdkProPage() {
   return (
-    <main className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(JSONLD) }}
+      />
+      <main className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
       <header className="mb-10">
         <p className="mb-2 text-sm font-semibold uppercase tracking-wider text-emerald-400">
           MEOK for Developers
@@ -278,6 +364,7 @@ cert = client.sign({
         MEOK AI Labs · CSOAI LTD (UK CH 16939677)
       </footer>
     </main>
+    </>
   );
 }
 

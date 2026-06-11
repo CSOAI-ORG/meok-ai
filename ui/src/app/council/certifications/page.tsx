@@ -89,9 +89,41 @@ const CERTS = [
   },
 ];
 
+const CERTS_JSONLD = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ItemList",
+      "name": "CSOAI Certification Ladder",
+      "url": "https://meok.ai/council/certifications",
+      "itemListElement": CERTS.map((c, i) => ({
+        "@type": "ListItem",
+        "position": i + 1,
+        "item": {
+          "@type": "EducationalOccupationalCredential",
+          "name": c.title,
+          "credentialCategory": c.code,
+          "url": "https://meok.ai/council/certifications#" + c.code.toLowerCase(),
+          "recognizedBy": { "@type": "Organization", "name": "CSOAI Standards Body", "url": "https://councilof.ai" },
+          "offers": c.stripeLink ? {
+            "@type": "Offer", "price": c.price.replace(/[£,]/g, ""), "priceCurrency": "GBP",
+            "url": c.stripeLink, "availability": "https://schema.org/InStock",
+            "seller": { "@type": "Organization", "name": "MEOK AI Labs" },
+          } : undefined,
+        },
+      })),
+    },
+  ],
+};
+
 export default function CertificationsPage() {
   return (
-    <main className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(CERTS_JSONLD) }}
+      />
+      <main className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
       <header className="mb-10">
         <p className="mb-2 text-sm font-semibold uppercase tracking-wider text-emerald-400">
           CSOAI Standards Body · CouncilOf.AI
@@ -212,6 +244,7 @@ export default function CertificationsPage() {
         MEOK AI Labs · CSOAI LTD (UK CH 16939677) · CouncilOf.AI · nicholas@csoai.org
       </footer>
     </main>
+    </>
   );
 }
 

@@ -87,9 +87,58 @@ const FAQ = [
   },
 ];
 
+const SPONSOR_JSONLD = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Product",
+      "name": "MEOK /constellation Sponsor Programme",
+      "description": "5 sponsor slots on the MEOK /constellation ecosystem hub. Permanent placement, dofollow backlink, signed OpenAPI metadata, co-authored blog posts. Standards + Open-Source sponsorships at £500/mo, Founding Constellation Partner at £1,000/mo (12-month commit).",
+      "brand": { "@type": "Brand", "name": "MEOK AI Labs" },
+      "url": "https://meok.ai/sponsors",
+      "category": "Marketing > Sponsorship > Digital > Developer Audience",
+      "offers": [
+        {
+          "@type": "Offer", "name": "Founding Constellation Partner", "price": "1000.00", "priceCurrency": "GBP",
+          "priceSpecification": { "billingIncrement": 1, "unitCode": "MON" },
+          "url": "mailto:nicholas@csoai.org?subject=Founding%20Constellation%20Partner%20slot",
+          "availability": "https://schema.org/LimitedAvailability", "inventoryLevel": { "@type": "QuantitativeValue", "value": 1 },
+          "seller": { "@type": "Organization", "name": "MEOK AI Labs" },
+        },
+        {
+          "@type": "Offer", "name": "Standards Sponsor", "price": "500.00", "priceCurrency": "GBP",
+          "priceSpecification": { "billingIncrement": 1, "unitCode": "MON" },
+          "url": "mailto:nicholas@csoai.org?subject=Standards%20Sponsor%20slot",
+          "availability": "https://schema.org/LimitedAvailability", "inventoryLevel": { "@type": "QuantitativeValue", "value": 2 },
+          "seller": { "@type": "Organization", "name": "MEOK AI Labs" },
+        },
+        {
+          "@type": "Offer", "name": "Open-Source Sponsor", "price": "500.00", "priceCurrency": "GBP",
+          "priceSpecification": { "billingIncrement": 1, "unitCode": "MON" },
+          "url": "mailto:nicholas@csoai.org?subject=Open-Source%20Sponsor%20slot",
+          "availability": "https://schema.org/LimitedAvailability", "inventoryLevel": { "@type": "QuantitativeValue", "value": 2 },
+          "seller": { "@type": "Organization", "name": "MEOK AI Labs" },
+        },
+      ],
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": FAQ.map(({ q, a }) => ({
+        "@type": "Question", "name": q,
+        "acceptedAnswer": { "@type": "Answer", "text": a },
+      })),
+    },
+  ],
+};
+
 export default function SponsorsPage() {
   return (
-    <main className="mx-auto max-w-5xl px-4 py-12 sm:px-6 lg:px-8">
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(SPONSOR_JSONLD) }}
+      />
+      <main className="mx-auto max-w-5xl px-4 py-12 sm:px-6 lg:px-8">
       <header className="mb-10">
         <p className="mb-2 text-sm font-semibold uppercase tracking-wider text-emerald-400">
           MEOK /constellation
@@ -151,6 +200,7 @@ export default function SponsorsPage() {
         MEOK AI Labs · CSOAI LTD (UK CH 16939677) · nicholas@csoai.org
       </footer>
     </main>
+    </>
   );
 }
 
