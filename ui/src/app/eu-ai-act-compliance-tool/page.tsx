@@ -14,12 +14,12 @@ export const metadata: Metadata = {
 };
 
 const NAVY = "#1a1a2e"; const GOLD = "#c9a84c"; const BG = "#f5f0e8";
-const STRIPE_PRO = "https://buy.stripe.com/aFa7sNcgAdQS0ZT1Uc8k91t?prefilled_promo_code=LAUNCH50&utm_source=seo&utm_campaign=compliance_tool";
+const STRIPE_PRO = "https://buy.stripe.com/5kQ6oJ0xS3ce8sl7ew8k91j?prefilled_promo_code=LAUNCH50&utm_source=seo&utm_campaign=compliance_tool";
 const AUDIT = "https://meok.ai/audit-prep-bundle";
 const READINESS = "https://csoai-readiness-o8qtxthmo-niks-projects-0a2ef942.vercel.app";
 
 const FAQ = [
-  { q: "What is the EU AI Act compliance tool?", a: "An open-source MCP server (eu-ai-act-compliance-mcp) that runs inside Claude, Cursor, or any MCP client. It classifies your AI system's risk tier, checks Article 50 transparency and GPAI obligations across all 410 articles, generates Annex IV technical-documentation evidence, and emits HMAC-signed attestations an auditor can verify." },
+  { q: "What is the EU AI Act compliance tool?", a: "An open-source MCP server (eu-ai-act-compliance-mcp) that runs inside Claude, Cursor, or any MCP client. It classifies your AI system's risk tier, checks Article 50 transparency and GPAI obligations across all 410 articles, generates Annex IV technical-documentation evidence, and emits HMAC + Ed25519-signed attestations an auditor can verify." },
   { q: "When does EU AI Act Article 50 apply?", a: "Article 50 transparency and AI-content marking obligations are enforceable from 2 August 2026. Non-compliance carries fines up to €15M or 3% of global turnover (Article 99(4))." },
   { q: "Is it free?", a: "Yes — the core tool is MIT-licensed and free: pip install eu-ai-act-compliance-mcp (10 checks/day). Pro (£199/mo) unlocks unlimited checks plus auditor-verifiable signed attestations. A £4,950 2-day audit-prep engagement gets you fully audit-ready." },
   { q: "Does it cover DORA, NIS2, CRA and GDPR too?", a: "Yes. MEOK AI Labs ships a 290-server compliance suite covering EU AI Act, DORA, NIS2, CRA, GDPR, ISO 42001, SOC 2 and HIPAA — all on PyPI and the official MCP Registry." },

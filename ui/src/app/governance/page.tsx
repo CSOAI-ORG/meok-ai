@@ -82,9 +82,9 @@ const jsonLd = {
   "image": "https://meok.ai/api/og?title=MEOK+Governance+Substrate",
   "offers": [
     { "@type": "Offer", "price": "0", "priceCurrency": "GBP", "name": "Self-host (MIT, all 10 MCPs)", "url": "https://github.com/CSOAI-ORG" },
-    { "@type": "Offer", "price": "499", "priceCurrency": "GBP", "name": "Governance Substrate Monthly", "url": "https://buy.stripe.com/aFa7sNcgAdQS0ZT1Uc8k91t" },
-    { "@type": "Offer", "price": "29", "priceCurrency": "GBP", "name": "Universal PAYG entry", "url": "https://buy.stripe.com/aFa7sNcgAdQS0ZT1Uc8k91t" },
-    { "@type": "Offer", "price": "1499", "priceCurrency": "GBP", "name": "Universe (all 47 MCPs)", "url": "https://buy.stripe.com/aFa7sNcgAdQS0ZT1Uc8k91t" },
+    { "@type": "Offer", "price": "199", "priceCurrency": "GBP", "name": "Governance Pro Monthly", "url": "https://buy.stripe.com/aFa7sNcgAdQS0ZT1Uc8k91t" },
+    { "@type": "Offer", "price": "199", "priceCurrency": "GBP", "name": "Pro Monthly", "url": "https://buy.stripe.com/aFa7sNcgAdQS0ZT1Uc8k91t" },
+    { "@type": "Offer", "price": "1499", "priceCurrency": "GBP", "name": "Enterprise (all 47 MCPs)", "url": "https://buy.stripe.com/bJe4gB3K4002aAtgP68k91r" },
   ],
 };
 

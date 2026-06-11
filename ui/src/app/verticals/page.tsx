@@ -168,7 +168,7 @@ export default function VerticalsIndexPage() {
             We audit your stack, map it to MCP primitives, and deliver a ranked implementation roadmap. £5,000 flat.
           </p>
           <a
-            href="https://buy.stripe.com/aFa7sNcgAdQS0ZT1Uc8k91t"
+            href="https://buy.stripe.com/eVq6oJ3K49AC0ZTaqI8k91m"
             target="_blank"
             rel="noopener noreferrer"
             style={{

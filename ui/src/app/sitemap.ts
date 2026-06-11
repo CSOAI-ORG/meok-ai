@@ -9,8 +9,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/fine-calculator',
     '/audit-prep-bundle',
     '/eu-ai-act-compliance-tool',
-    '/mcp/eu-ai-act/pro',
-    '/transparency',
+    '/mcp/eu-ai-act-compliance', '/mcp/bias-detection', '/mcp/ai-bom',
     '/watermark-starter',
     '/article-50-kit',
     '/nis2-de-kit',
@@ -22,6 +21,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/consulting',
     '/pricing',
     '/refund',
+    '/transparency',
   ];
 
   const euAiActArticles = [

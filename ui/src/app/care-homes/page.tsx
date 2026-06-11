@@ -19,7 +19,7 @@ const NAVY = "#1a1a2e";
 const GOLD = "#c9a84c";
 const BG = "#f5f0e8";
 
-const STRIPE_LINK = "https://buy.stripe.com/aFa7sNcgAdQS0ZT1Uc8k91t";
+const STRIPE_LINK = "https://buy.stripe.com/5kQ6oJ0xS3ce8sl7ew8k91j?prefilled_promo_code=LAUNCH50";
 
 const PRODUCT_JSONLD = {
   "@context": "https://schema.org",
@@ -40,7 +40,7 @@ const PRODUCT_JSONLD = {
 
 const FAQ = [
   { q: "Who is this for?", a: "UK independent care homes (10-100 beds), owner-operator structure, turnover £500K-£5M. Both nursing homes and residential homes. If you're CQC-registered and worried about how you handle GDPR + AI tools (medication scheduling, fall detection, family communication apps), this is for you." },
-  { q: "What's actually in the pack?", a: "(1) AI Use Policy template (covers any AI tool your home uses — medication scheduling apps, fall detection, family communication, etc). (2) GDPR Article 9 Care Home Notice (special-category data — health, biometric, family). (3) Staff AI Literacy training log + quarterly refresher. (4) Quarterly Self-Attestation generator (HMAC-SHA256 signed, auditor-verifiable URL). (5) 30-min/quarter live consult call. (6) Slack/email support for new regulatory updates as they land." },
+  { q: "What's actually in the pack?", a: "(1) AI Use Policy template (covers any AI tool your home uses — medication scheduling apps, fall detection, family communication, etc). (2) GDPR Article 9 Care Home Notice (special-category data — health, biometric, family). (3) Staff AI Literacy training log + quarterly refresher. (4) Quarterly Self-Attestation generator (HMAC-SHA256 + Ed25519 signed, auditor-verifiable URL). (5) 30-min/quarter live consult call. (6) Slack/email support for new regulatory updates as they land." },
   { q: "Why £150/mo and not one-time?", a: "Compliance isn't a one-time project — it's an ongoing posture. UK GDPR, CQC inspections, AI Bill obligations all evolve. The £150/mo keeps your templates current, your attestations fresh, and gives you direct access to ask 'is this OK?' before you do a thing. One CQC failure costs £10K-£100K in remediation; this pack is £1,800/yr." },
   { q: "Is this CQC-recognised?", a: "Not officially endorsed by CQC (no third-party tool is). But the templates align with CQC Key Lines of Enquiry (KLOE) for Safe + Well-led, and the signed attestation is auditor-verifiable evidence that you ran the check on a specific date with specific answers. Inspectors love that level of paper trail." },
   { q: "What if my home doesn't use any AI yet?", a: "Most homes already use SOME AI without realizing it — automated rota systems, family communication apps, fall detection, medication scheduling. The pack covers all of those. Even if you're 'analog only', the AI Use Policy is now expected paperwork from insurers + commissioners." },
@@ -79,7 +79,7 @@ export default function CareHomesPage() {
             <li><strong>AI Use Policy template</strong> — covers any AI tool your home uses (rota, family comms, fall detection, medication, etc.). Updated as UK AI Bill evolves.</li>
             <li><strong>GDPR Article 9 Care Home Notice</strong> — special-category data (health, biometric, family) compliant template.</li>
             <li><strong>Staff AI Literacy training log</strong> — Article 4 EU AI Act-style record of who, when, what training. Auditor-ready.</li>
-            <li><strong>Quarterly Self-Attestation generator</strong> — HMAC-SHA256 signed, public verify URL. CQC inspectors and insurers can curl-verify independently.</li>
+            <li><strong>Quarterly Self-Attestation generator</strong> — HMAC-SHA256 + Ed25519 signed, public verify URL. CQC inspectors and insurers can curl-verify independently.</li>
             <li><strong>30-min/quarter live consult call</strong> — direct founder access. No sales reps. No call queues.</li>
             <li><strong>Slack/email support</strong> — ping me when a new reg lands; I tell you if it applies.</li>
           </ul>

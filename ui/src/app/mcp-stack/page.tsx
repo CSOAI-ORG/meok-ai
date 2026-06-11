@@ -173,7 +173,7 @@ export default function McpStackPage() {
           </p>
           <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
             <a
-              href={withUtm("https://buy.stripe.com/aFa7sNcgAdQS0ZT1Uc8k91t", "/mcp-stack", "a2a_substrate_999")}
+              href={withUtm("https://buy.stripe.com/eVq6oJ3K49AC0ZTaqI8k91m", "/mcp-stack", "a2a_substrate_4950")}
               style={{ padding: "14px 28px", background: GOLD, color: NAVY, textDecoration: "none", fontWeight: 800, borderRadius: 12, fontSize: 14 }}
             >
               Get the full stack £999/mo →

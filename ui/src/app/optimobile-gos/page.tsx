@@ -33,7 +33,7 @@ const GOS_JSONLD = {
         {
           "@type": "Offer", "name": "Solo Practice", "price": "29.00", "priceCurrency": "GBP",
           "priceSpecification": { "billingIncrement": 1, "unitCode": "MON" },
-          "url": "https://buy.stripe.com/aFa7sNcgAdQS0ZT1Uc8k91t",
+          "url": "https://buy.stripe.com/5kQ6oJ0xS3ce8sl7ew8k91j",
           "availability": "https://schema.org/InStock",
           "seller": { "@type": "Organization", "name": "MEOK AI Labs" },
         },
@@ -71,7 +71,7 @@ export default function OptimobileGosPage() {
         </p>
         <div className="mt-6 flex flex-wrap gap-3">
           <Link
-            href="https://buy.stripe.com/aFa7sNcgAdQS0ZT1Uc8k91t"
+            href="https://buy.stripe.com/5kQ6oJ0xS3ce8sl7ew8k91j"
             className="inline-flex items-center gap-2 rounded-md bg-emerald-500 px-4 py-2 text-sm font-semibold text-slate-950 hover:bg-emerald-400"
           >
             Start £29/mo
@@ -125,7 +125,7 @@ export default function OptimobileGosPage() {
           <Feature
             icon={<ShieldCheck className="h-5 w-5 text-emerald-400" />}
             title="Signed reconciliation report"
-            body="Every report is HMAC-SHA256 signed and verifiable at proofof.ai/verify. Useful for your practice accounts and for ICB / NHSE audit trails."
+            body="Every report is HMAC-SHA256 + Ed25519 signed and verifiable at proofof.ai/verify. Useful for your practice accounts and for ICB / NHSE audit trails."
           />
         </div>
       </section>
@@ -204,7 +204,7 @@ export default function OptimobileGosPage() {
             </li>
           </ul>
           <Link
-            href="https://buy.stripe.com/aFa7sNcgAdQS0ZT1Uc8k91t"
+            href="https://buy.stripe.com/5kQ6oJ0xS3ce8sl7ew8k91j"
             className="mt-6 block rounded-md bg-emerald-500 px-4 py-2 text-center text-sm font-semibold text-slate-950 hover:bg-emerald-400"
           >
             Start £29/mo

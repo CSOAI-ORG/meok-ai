@@ -125,7 +125,7 @@ export default function A2APage() {
           </p>
           <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
             <a
-              href={withUtm("https://buy.stripe.com/aFa7sNcgAdQS0ZT1Uc8k91t", "/a2a", "a2a_substrate_999")}
+              href={withUtm("https://buy.stripe.com/bJe4gB3K4002aAtgP68k91r", "/a2a", "a2a_substrate_1499")}
               style={{ padding: "14px 28px", background: GOLD, color: NAVY, textDecoration: "none", fontWeight: 800, borderRadius: 12, fontSize: 14 }}
             >
               Start Substrate £999/mo →
