@@ -413,6 +413,7 @@ export default function PricingClient() {
 
   const starterSaving = starterMonthly * 12 - starterAnnualTotal;
   const proSaving = proMonthly * 12 - proAnnualTotal;
+  const sovereignSaving = starterSaving; // legacy alias — same tier family
 
   const fmt = (n: number) => `£${n % 1 === 0 ? n.toFixed(0) : n.toFixed(0)}`;
 
