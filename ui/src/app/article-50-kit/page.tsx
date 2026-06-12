@@ -21,6 +21,9 @@ const GOLD = "#c9a84c";
 const BG = "#f5f0e8";
 
 const STRIPE_LINK = "https://buy.stripe.com/4gM3cx0xScMOdMFfL28k91u"; // £999 one-time Article 50 kit
+const STRIPE_LINK_LAUNCH50 = `${STRIPE_LINK}?prefilled_promo_code=LAUNCH50`; // 50% off for early adopters
+const STRIPE_LINK_PRO = "https://buy.stripe.com/aFa7sNcgAdQS0ZT1Uc8k91t?prefilled_promo_code=LAUNCH50"; // £199/mo Pro
+const STRIPE_LINK_ENTERPRISE = "https://buy.stripe.com/bJe4gB3K4002aAtgP68k91r"; // £1,499/mo Enterprise
 
 const PILLARS = [
   {
@@ -145,7 +148,7 @@ export default function Article50KitPage() {
           <span style={{ color: GOLD }}>2 August 2026 is live.</span>
         </h1>
         <p style={{ fontSize: "1.5rem", color: GOLD, fontWeight: 900, marginBottom: 8 }}>
-          Article 50 Watermarking Kit — £999 one-time + £99/mo monitoring (optional)
+          Article 50 Watermarking Kit — £999 one-time (or £499 with LAUNCH50) + £99/mo monitoring (optional)
         </p>
         <p style={{ fontSize: "1.05rem", color: `${NAVY}99`, maxWidth: 640, marginBottom: 24 }}>
           New AI systems must mark machine-generated output with <strong>at least two active layers</strong> of
@@ -281,6 +284,112 @@ export default function Article50KitPage() {
           >
             Buy — £999 →
           </a>
+        </div>
+
+        <h2 style={{ fontSize: "1.6rem", fontWeight: 900, marginTop: 64, marginBottom: 16, letterSpacing: "-0.01em" }}>
+          Three tiers — pick the one that fits
+        </h2>
+        <p style={{ color: `${NAVY}99`, fontSize: 14, marginBottom: 24 }}>
+          Use LAUNCH50 at checkout for 50% off (early-adopter only, expires with the cliff).
+        </p>
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
+            gap: 16,
+            marginBottom: 48,
+          }}
+        >
+          {/* Tier 1: Kit */}
+          <div style={{ background: "white", border: `2px solid ${GOLD}`, borderRadius: 14, padding: 22 }}>
+            <p style={{ fontSize: 11, fontWeight: 900, letterSpacing: "0.1em", textTransform: "uppercase", color: GOLD, marginBottom: 6 }}>
+              Small business
+            </p>
+            <p style={{ fontSize: "1.6rem", fontWeight: 900, marginBottom: 4 }}>£999</p>
+            <p style={{ fontSize: 12, color: `${NAVY}80`, marginBottom: 12 }}>one-time · 90-day support</p>
+            <p style={{ fontSize: 13, color: `${NAVY}cc`, lineHeight: 1.55, marginBottom: 16 }}>
+              C2PA + invisible watermark + fingerprinting + signed conformity attestation. 1 production environment. Self-implementation.
+            </p>
+            <a
+              href={STRIPE_LINK_LAUNCH50}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                display: "block",
+                textAlign: "center",
+                padding: "10px 16px",
+                background: GOLD,
+                color: NAVY,
+                borderRadius: 10,
+                fontWeight: 900,
+                textDecoration: "none",
+                fontSize: 14,
+              }}
+            >
+              Buy with LAUNCH50 →
+            </a>
+          </div>
+
+          {/* Tier 2: Pro */}
+          <div style={{ background: "white", border: `1px solid ${NAVY}1a`, borderRadius: 14, padding: 22 }}>
+            <p style={{ fontSize: 11, fontWeight: 900, letterSpacing: "0.1em", textTransform: "uppercase", color: NAVY, marginBottom: 6 }}>
+              Mid-market
+            </p>
+            <p style={{ fontSize: "1.6rem", fontWeight: 900, marginBottom: 4 }}>£199/mo</p>
+            <p style={{ fontSize: 12, color: `${NAVY}80`, marginBottom: 12 }}>Pro tier · cancel any time</p>
+            <p style={{ fontSize: 13, color: `${NAVY}cc`, lineHeight: 1.55, marginBottom: 16 }}>
+              Everything in Kit + monthly attestations + multi-environment + dashboard + custom verify URL + ongoing Code-of-Practice updates.
+            </p>
+            <a
+              href={STRIPE_LINK_PRO}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                display: "block",
+                textAlign: "center",
+                padding: "10px 16px",
+                background: NAVY,
+                color: "white",
+                borderRadius: 10,
+                fontWeight: 900,
+                textDecoration: "none",
+                fontSize: 14,
+              }}
+            >
+              Subscribe to Pro →
+            </a>
+          </div>
+
+          {/* Tier 3: Enterprise */}
+          <div style={{ background: "white", border: `1px solid ${NAVY}1a`, borderRadius: 14, padding: 22 }}>
+            <p style={{ fontSize: 11, fontWeight: 900, letterSpacing: "0.1em", textTransform: "uppercase", color: NAVY, marginBottom: 6 }}>
+              Enterprise
+            </p>
+            <p style={{ fontSize: "1.6rem", fontWeight: 900, marginBottom: 4 }}>£1,499/mo</p>
+            <p style={{ fontSize: 12, color: `${NAVY}80`, marginBottom: 12 }}>Enterprise · 12-month min.</p>
+            <p style={{ fontSize: 13, color: `${NAVY}cc`, lineHeight: 1.55, marginBottom: 16 }}>
+              Everything in Pro + white-label option + custom verify domain on your own subdomain + dedicated CSM + on-premise/air-gapped option.
+            </p>
+            <a
+              href={STRIPE_LINK_ENTERPRISE}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                display: "block",
+                textAlign: "center",
+                padding: "10px 16px",
+                background: "transparent",
+                color: NAVY,
+                border: `1px solid ${NAVY}33`,
+                borderRadius: 10,
+                fontWeight: 900,
+                textDecoration: "none",
+                fontSize: 14,
+              }}
+            >
+              Talk to sales →
+            </a>
+          </div>
         </div>
 
         {/* FAQ section — visible + schema */}
