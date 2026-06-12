@@ -145,7 +145,7 @@ export default function HealthcarePage() {
 
         <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginBottom: 64 }}>
           <a
-            href=https://buy.stripe.com/eVq6oJ3K49AC0ZTaqI8k91m
+            href="https://buy.stripe.com/eVq6oJ3K49AC0ZTaqI8k91m"
             target="_blank"
             rel="noopener noreferrer"
             style={{
@@ -275,7 +275,7 @@ export default function HealthcarePage() {
             Annex III classification means conformity assessments, risk management systems, and post-market monitoring. Start now — the December 2027 deadline is closer than you think.
           </p>
           <a
-            href=https://buy.stripe.com/eVq6oJ3K49AC0ZTaqI8k91m
+            href="https://buy.stripe.com/eVq6oJ3K49AC0ZTaqI8k91m"
             target="_blank"
             rel="noopener noreferrer"
             style={{
