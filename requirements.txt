@@ -28,6 +28,10 @@ alembic>=1.13.0
 PyJWT>=2.8.0
 bcrypt>=4.1.0
 
+# Ed25519 signatures — L0-G PBFT council voting (PR-A) + SIGIL attest (PR-B)
+# Hard-fail at module load in production if missing — see meok/council/pubkey_registry.py
+pynacl>=1.5.0
+
 # Semantic Embeddings — Phase D (Ralph Mode)
 # GPU auto-detected on Vast.ai CUDA instances. Falls back to CPU.
 # Upgrade path: MiniLM-L6-v2 (now) → BGE-M3 (Q2, 1024-dim multilingual)
