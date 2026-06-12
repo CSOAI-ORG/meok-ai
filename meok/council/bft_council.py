@@ -136,6 +136,25 @@ class BFTCouncil:
         self.node_count = len(COUNCIL_NODES)
         self.domains = list(set(n['domain'] for n in COUNCIL_NODES))
 
+        # Per-node pubkeys (L0-G PBFT Invariant #3: every vote is signed
+        # by a council pubkey, not by the API key of the caller).
+        # Lazy: keys are generated on first access via pubkey_registry.
+        # Deterministic from MEOK_COUNCIL_MASTER_SEED so rebuilds from
+        # the same seed produce the same keys (anyone can verify a vote
+        # was signed by the canonical ethics-alpha).
+        try:
+            from meok.council.pubkey_registry import (
+                get_or_create_node_keypair, get_public_key,
+            )
+            for n in self.nodes:
+                # get_or_create is idempotent + safe to call on every init
+                _, pub_hex = get_or_create_node_keypair(n["id"], n["domain"])
+                n["pubkey_hex"] = pub_hex
+        except ImportError:
+            # pubkey_registry not yet deployed; nodes still vote
+            # but the substrate marks ballots as `unsigned=True`
+            pass
+
         # Fractal architecture — expertise rings + bridge mesh
         self.expertise_network = ExpertiseNetwork(COUNCIL_NODES)
         self.bridge_network = BridgeNetwork()

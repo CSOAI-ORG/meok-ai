@@ -207,7 +207,114 @@ async def propose(req: ProposalRequest, user: TokenPayload = Depends(get_current
 
 
 @app.get("/api/council/history")
+async def council_history(
+    limit: int = 20,
+    offset: int = 0,
+    user: TokenPayload = Depends(get_current_user),
+):
+    """Recent decisions (paged, read-only) — L0-G PR-A. Returns the
+    full decision audit trail (per spec §2.4)."""
+    return {
+        "decisions": cv_list_decisions(limit=limit, offset=offset),
+        "total": len(cv_list_decisions(limit=10000, offset=0)),
+    }
+
+
+# ---------------------------------------------------------------------------
+# L0-G: PBFT Council Voting — 4 new endpoints (PR-A, 2026-06-12)
+# Spec: /Users/nicholas/clawd/_TABS/L0G_PBFT_COUNCIL_VOTE_SPEC_2026-06-12.md
+# Engine: meok/council/bft_council.py:BFTCouncil (real, 33 nodes, 22/33 threshold)
+# Wire: meok/api/council_vote.py (thin HTTP wrapper)
+# ---------------------------------------------------------------------------
+
+from meok.api.council_vote import (
+    open_round as cv_open_round,
+    submit_ballot as cv_submit_ballot,
+    get_current_round as cv_get_current_round,
+    list_open_rounds as cv_list_open_rounds,
+    get_decision as cv_get_decision,
+    list_decisions as cv_list_decisions,
+)
+
+
+class VoteRequest(BaseModel):
+    """Per the spec §2.1 — POST /api/council/vote payload."""
+    round_id: str
+    node_id: str
+    decision: str  # approve | reject | abstain
+    rationale_hash: Optional[str] = None
+    ballot_signature: Optional[str] = None
+    phase: str = "prepare"  # pre-prepare | prepare | commit
+
+
+class OpenRoundRequest(BaseModel):
+    """Per the spec — payload to open a new PBFT round."""
+    subject_type: str  # watchdog_cert_issuance | framework_classification | cross_jurisdiction_handoff
+    subject_ref: str
+    opener_node_id: str
+    rationale: str = ""
+    commit_window_seconds: int = 60  # spec: 30s target, 60s default
+
+
+@app.post("/api/council/vote")
+async def council_vote(req: VoteRequest, user: TokenPayload = Depends(get_current_user)):
+    """Submit a per-node signed ballot for a council round (L0-G).
+
+    Hard-fails (503) if PyNaCl is missing in production. The substrate's
+    startup health check should also catch this — but /vote is the
+    canary endpoint that flags a misconfigured production deploy.
+    """
+    result = cv_submit_ballot(
+        round_id=req.round_id,
+        node_id=req.node_id,
+        decision=req.decision,
+        rationale_hash=req.rationale_hash,
+        ballot_signature=req.ballot_signature,
+        phase=req.phase,
+    )
+    status = result.pop("status_code", 200)
+    if status != 200:
+        raise HTTPException(status_code=status, detail=result)
+    return result
+
+
+@app.get("/api/council/proposals")
+async def council_proposals(user: TokenPayload = Depends(get_current_user)):
+    """Current open round (or null when idle). 404 if no open round."""
+    current = cv_get_current_round()
+    if current is None:
+        raise HTTPException(status_code=404, detail={"error": "no open round", "open_rounds": len(cv_list_open_rounds())})
+    return current
+
+
+@app.post("/api/council/round/open")
+async def council_round_open(req: OpenRoundRequest, user: TokenPayload = Depends(get_current_user)):
+    """Open a new PBFT round. Returns 409 if a round is already open for the same subject."""
+    result = cv_open_round(
+        subject_type=req.subject_type,
+        subject_ref=req.subject_ref,
+        opener_node_id=req.opener_node_id,
+        rationale=req.rationale,
+        commit_window_seconds=req.commit_window_seconds,
+    )
+    if "error" in result:
+        status = 409 if "already open" in result["error"] else 400
+        raise HTTPException(status_code=status, detail=result)
+    return result
+
+
+@app.get("/api/council/decisions/{decision_id}")
+async def council_decision(decision_id: str, user: TokenPayload = Depends(get_current_user)):
+    """Per-decision audit trail. 404 if unknown."""
+    d = cv_get_decision(decision_id)
+    if d is None:
+        raise HTTPException(status_code=404, detail={"error": f"unknown decision_id: {decision_id}"})
+    return d
+
+
+@app.get("/api/council/history")
 async def council_history(user: TokenPayload = Depends(get_current_user)):
+    """Backwards-compat endpoint (no params). Use the paged version above."""
     return {
         "total_decisions": len(_decision_history),
         "decisions": list(reversed(_decision_history[:50])),

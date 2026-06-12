@@ -1,0 +1,7 @@
+# Council pubkeys + private keys — derived deterministically from MEOK_COUNCIL_MASTER_SEED.
+# These files contain the actual signing material for each council node.
+# NEVER commit them. Rotate MEOK_COUNCIL_MASTER_SEED to invalidate all keys
+# (deterministic regeneration from a new seed produces a new keyring).
+keys/*.hex
+keys/*.pub.hex
+keys/*.tmp
