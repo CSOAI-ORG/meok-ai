@@ -59,7 +59,7 @@ const PRICING = [
     price: "£199",
     period: "/mo",
     desc: "Ongoing MCP maintenance, FHIR updates, compliance monitoring, priority support.",
-    href: https://buy.stripe.com/eVq6oJ3K49AC0ZTaqI8k91m,
+    href: "https://buy.stripe.com/eVq6oJ3K49AC0ZTaqI8k91m",
     highlight: true,
   },
   {
