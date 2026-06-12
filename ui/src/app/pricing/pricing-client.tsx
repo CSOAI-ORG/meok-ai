@@ -32,7 +32,7 @@ interface CompareRow {
 // ─── Static data ───────────────────────────────────────────────────────────
 
 const COMPARE_ROWS: CompareRow[] = [
-  { label: "Price",               byok: "£5/mo",             explorer: "Free forever",  sovereign: "£9/mo",            pro: "£19/mo" },
+  { label: "Price",               byok: "£5/mo",             explorer: "Free forever",  sovereign: "£79/mo",            pro: "£199/mo" },
   { label: "Messages/day",        byok: "100 (own credits)", explorer: "50",            sovereign: "Unlimited",         pro: "Unlimited" },
   { label: "Memory",              byok: "Basic vault",       explorer: "Permanent encrypted", sovereign: "Permanent vault", pro: "Permanent + shared" },
   { label: "Companions",          byok: "1",                 explorer: "1",             sovereign: "3",                 pro: "7" },
@@ -62,7 +62,7 @@ const FAQ_ITEMS = [
   },
   {
     q: "How is MEOK different from ChatGPT Plus?",
-    a: "ChatGPT Plus costs £16/month and forgets you between sessions — every conversation starts from scratch. MEOK Sovereign costs £9/month and remembers everything, encrypted, in a permanent vault that is yours and never used for training. MEOK also includes Work OS tools (Orion, Riri, Hourman), Guardian protection, and morning briefings — things ChatGPT does not offer. You get more for less, with the one thing ChatGPT cannot give you: continuity.",
+    a: "ChatGPT Plus costs £20/month and forgets you between sessions — every conversation starts from scratch. MEOK Sovereign costs £79/month and remembers everything, encrypted, in a permanent vault that is yours and never used for training. MEOK also includes Work OS tools (Orion, Riri, Hourman), Guardian protection, and morning briefings — things ChatGPT does not offer. You get more for less, with the one thing ChatGPT cannot give you: continuity.",
   },
   {
     q: "Can I downgrade after upgrading?",
@@ -398,19 +398,20 @@ function FaqItem({ q, a }: { q: string; a: string }) {
 export default function PricingClient() {
   const [isAnnual, setIsAnnual] = useState(false);
 
-  const sovereignMonthly = 49;
-  const proMonthly = 149;
+  const starterMonthly = 79;
+  const proMonthly = 199;
+  const enterpriseMonthly = 1499;
 
-  const sovereignAnnualTotal = 490;
-  const proAnnualTotal = 1490;
+  const starterAnnualTotal = 790;
+  const proAnnualTotal = 1990;
 
-  const sovereignAnnualPerMonth = Math.round((sovereignAnnualTotal / 12) * 100) / 100;
+  const starterAnnualPerMonth = Math.round((starterAnnualTotal / 12) * 100) / 100;
   const proAnnualPerMonth = Math.round((proAnnualTotal / 12) * 100) / 100;
 
-  const sovereignPrice = isAnnual ? sovereignAnnualPerMonth : sovereignMonthly;
+  const starterPrice = isAnnual ? starterAnnualPerMonth : starterMonthly;
   const proPrice = isAnnual ? proAnnualPerMonth : proMonthly;
 
-  const sovereignSaving = sovereignMonthly * 12 - sovereignAnnualTotal;
+  const starterSaving = starterMonthly * 12 - starterAnnualTotal;
   const proSaving = proMonthly * 12 - proAnnualTotal;
 
   const fmt = (n: number) => `£${n % 1 === 0 ? n.toFixed(0) : n.toFixed(0)}`;
@@ -594,8 +595,8 @@ export default function PricingClient() {
               <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-[#c9a84c] text-[#1a1a2e] text-xs font-black tracking-wider">MOST POPULAR</div>
               <div className="text-xs font-black tracking-wider text-[#c9a84c] mb-2">SCALE-UP / DEPT</div>
               <h3 className="text-2xl font-black text-white mb-1">Pro</h3>
-              <div className="text-3xl font-black text-white mb-1">£149<span className="text-base font-normal text-white/50">/mo</span></div>
-              <div className="text-xs text-white/50 mb-4">or £1,490/yr (save £298)</div>
+              <div className="text-3xl font-black text-white mb-1">£79<span className="text-base font-normal text-white/50">/mo</span></div>
+              <div className="text-xs text-white/50 mb-4">or £790/yr (save £158)</div>
               <ul className="text-sm text-white/70 space-y-2 mb-6 flex-1">
                 <li className="flex gap-2"><span className="text-[#c9a84c]">✓</span> Everything in Free</li>
                 <li className="flex gap-2"><span className="text-[#c9a84c]">✓</span> Your own HMAC signing key</li>
@@ -613,8 +614,8 @@ export default function PricingClient() {
             <div className="rounded-2xl bg-white/5 border border-white/10 p-6 flex flex-col">
               <div className="text-xs font-black tracking-wider text-white/50 mb-2">REGULATED INDUSTRIES</div>
               <h3 className="text-2xl font-black text-white mb-1">Defence</h3>
-              <div className="text-3xl font-black text-white mb-1">£499<span className="text-base font-normal text-white/50">/mo</span></div>
-              <div className="text-xs text-white/50 mb-4">or £4,790/yr · SSO + SLA + custom verify domain</div>
+              <div className="text-3xl font-black text-white mb-1">£199<span className="text-base font-normal text-white/50">/mo</span></div>
+              <div className="text-xs text-white/50 mb-4">or £1,990/yr · SSO + SLA + custom verify domain</div>
               <ul className="text-sm text-white/70 space-y-2 mb-6 flex-1">
                 <li className="flex gap-2"><span className="text-[#c9a84c]">✓</span> Everything in Pro</li>
                 <li className="flex gap-2"><span className="text-[#c9a84c]">✓</span> All 208 MCP servers</li>
@@ -625,7 +626,7 @@ export default function PricingClient() {
                 <li className="flex gap-2"><span className="text-[#c9a84c]">✓</span> Custom verify domain</li>
               </ul>
               <a href="https://buy.stripe.com/5kQ6oJ0xS3ce8sl7ew8k91j" className="block text-center py-3 rounded-xl border-2 border-white/20 text-white font-black text-sm hover:bg-white/10 transition">Subscribe Monthly →</a>
-              <a href="https://buy.stripe.com/5kQ6oJ0xS3ce8sl7ew8k91j" className="block text-center mt-2 text-xs text-white/70 font-bold hover:text-white">Defence £499/mo →</a>
+              <a href="https://buy.stripe.com/5kQ6oJ0xS3ce8sl7ew8k91j" className="block text-center mt-2 text-xs text-white/70 font-bold hover:text-white">Defence £199/mo →</a>
               <a href="mailto:nicholas@meok.ai?subject=MEOK%20Defence%20plan%20question" className="block text-center mt-1 text-[11px] text-white/40 hover:text-white/60">Questions? Email us →</a>
             </div>
 
@@ -633,8 +634,8 @@ export default function PricingClient() {
             <div className="rounded-2xl bg-white/5 border border-white/10 p-6 flex flex-col">
               <div className="text-xs font-black tracking-wider text-white/50 mb-2">MULTI-BU + GLOBAL</div>
               <h3 className="text-2xl font-black text-white mb-1">Enterprise</h3>
-              <div className="text-3xl font-black text-white mb-1">£2,499<span className="text-base font-normal text-white/50">/mo</span></div>
-              <div className="text-xs text-white/50 mb-4">or £24,990/yr (save £4,998) · Dedicated CSM + white-label</div>
+              <div className="text-3xl font-black text-white mb-1">£1,499<span className="text-base font-normal text-white/50">/mo</span></div>
+              <div className="text-xs text-white/50 mb-4">or £14,990/yr (save £2,998) · Dedicated CSM + white-label</div>
               <ul className="text-sm text-white/70 space-y-2 mb-6 flex-1">
                 <li className="flex gap-2"><span className="text-[#c9a84c]">✓</span> Everything in Defence</li>
                 <li className="flex gap-2"><span className="text-[#c9a84c]">✓</span> Multi-BU audit-grade separation</li>
@@ -643,7 +644,7 @@ export default function PricingClient() {
                 <li className="flex gap-2"><span className="text-[#c9a84c]">✓</span> Pay by invoice / PO accepted</li>
                 <li className="flex gap-2"><span className="text-[#c9a84c]">✓</span> Air-gapped deployment option</li>
               </ul>
-              <a href="mailto:nicholas@meok.ai?subject=MEOK%20Enterprise%20PO%2Finvoice" className="block text-center py-3 rounded-xl border-2 border-[#c9a84c] text-[#c9a84c] font-black text-sm hover:bg-[#c9a84c] hover:text-[#1a1a2e] transition">Contact Sales →</a>
+              <a href="https://buy.stripe.com/fZu5kF0xS8wy9wpeGY8k91s" className="block text-center py-3 rounded-xl border-2 border-[#c9a84c] text-[#c9a84c] font-black text-sm hover:bg-[#c9a84c] hover:text-[#1a1a2e] transition">Contact Sales →</a>
               <a href="mailto:nicholas@meok.ai?subject=MEOK%20Enterprise%20PO%2Finvoice" className="block text-center mt-1 text-[11px] text-white/40 hover:text-white/60">Need PO / invoice? Email us →</a>
             </div>
           </div>
@@ -657,7 +658,7 @@ export default function PricingClient() {
             </div>
             <div className="flex flex-col sm:flex-row gap-3 flex-shrink-0">
               <a href="https://buy.stripe.com/5kQ6oJ0xS3ce8sl7ew8k91j" className="px-5 py-3 rounded-xl bg-white text-[#1a1a2e] font-black text-sm whitespace-nowrap">£99 self-serve →</a>
-              <a href="https://buy.stripe.com/5kQ6oJ0xS3ce8sl7ew8k91j" className="px-5 py-3 rounded-xl bg-[#c9a84c] text-[#1a1a2e] font-black text-sm whitespace-nowrap">£499 done-for-you →</a>
+              <a href="https://buy.stripe.com/5kQ6oJ0xS3ce8sl7ew8k91j" className="px-5 py-3 rounded-xl bg-[#c9a84c] text-[#1a1a2e] font-black text-sm whitespace-nowrap">£799 done-for-you →</a>
             </div>
           </div>
 
@@ -769,18 +770,18 @@ export default function PricingClient() {
                 </div>
                 <div className="flex items-baseline gap-2 mb-1">
                   {isAnnual && (
-                    <span className="text-xl font-black text-white/25 line-through">£9</span>
+                    <span className="text-xl font-black text-white/25 line-through">£79</span>
                   )}
-                  <span className="text-5xl font-black text-white">{fmt(sovereignPrice)}</span>
+                  <span className="text-5xl font-black text-white">{fmt(starterPrice)}</span>
                   <span className="text-white/30 text-sm">/mo{isAnnual ? "*" : ""}</span>
                 </div>
                 {isAnnual ? (
                   <p className="text-xs text-[#c9a84c] font-semibold mb-1">
-                    £90/year — you save £{sovereignSaving}
+                    £790/year — you save £{starterSaving}
                   </p>
                 ) : (
                   <p className="text-xs text-white/35 font-semibold mb-1">
-                    or £90/yr billed annually — save £{sovereignSaving}/yr
+                    or £790/yr billed annually — save £{starterSaving}/yr
                   </p>
                 )}
               </div>
@@ -805,9 +806,7 @@ export default function PricingClient() {
               </ul>
               <button
                 onClick={() => {
-                  window.location.href = isAnnual
-                    ? "/checkout?plan=sovereign_annual"
-                    : "/checkout?plan=sovereign_monthly";
+                  window.location.href = "https://buy.stripe.com/5kQ6oJ0xS3ce8sl7ew8k91j";
                 }}
                 className="block w-full py-3.5 rounded-full text-sm font-bold text-center text-[#1a1a2e] bg-[#c9a84c] hover:bg-[#d4b463] transition-all gold-glow cursor-pointer"
               >
@@ -829,18 +828,18 @@ export default function PricingClient() {
                 </div>
                 <div className="flex items-baseline gap-2 mb-1">
                   {isAnnual && (
-                    <span className="text-xl font-black text-white/25 line-through">£149</span>
+                    <span className="text-xl font-black text-white/25 line-through">£199</span>
                   )}
                   <span className="text-5xl font-black text-white">{fmt(proPrice)}</span>
                   <span className="text-white/30 text-sm">/mo{isAnnual ? "*" : ""}</span>
                 </div>
                 {isAnnual ? (
                   <p className="text-xs text-[#c9a84c] font-semibold mb-1">
-                    £190/year — you save £{proSaving}
+                    £1,990/year — you save £{proSaving}
                   </p>
                 ) : (
                   <p className="text-xs text-white/35 font-semibold mb-1">
-                    or £190/yr billed annually — save £{proSaving}/yr
+                    or £1,990/yr billed annually — save £{proSaving}/yr
                   </p>
                 )}
                 <div className="flex items-center gap-1.5 mt-2">
@@ -867,9 +866,7 @@ export default function PricingClient() {
               </ul>
               <button
                 onClick={() => {
-                  window.location.href = isAnnual
-                    ? "/checkout?plan=sovereign_pro_annual"
-                    : "/checkout?plan=sovereign_pro_monthly";
+                  window.location.href = "https://buy.stripe.com/5kQ6oJ0xS3ce8sl7ew8k91j";
                 }}
                 className="block w-full py-3.5 rounded-full text-sm font-bold text-center text-white border-2 border-[#c9a84c]/40 hover:border-[#c9a84c]/70 hover:bg-[#c9a84c]/10 transition-all cursor-pointer"
               >
