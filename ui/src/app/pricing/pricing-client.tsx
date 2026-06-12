@@ -399,21 +399,25 @@ export default function PricingClient() {
   const [isAnnual, setIsAnnual] = useState(false);
 
   const starterMonthly = 79;
+  const sovereignMonthly = 9;
   const proMonthly = 199;
   const enterpriseMonthly = 1499;
 
   const starterAnnualTotal = 790;
+  const sovereignAnnualTotal = 90;
   const proAnnualTotal = 1990;
 
   const starterAnnualPerMonth = Math.round((starterAnnualTotal / 12) * 100) / 100;
+  const sovereignAnnualPerMonth = Math.round((sovereignAnnualTotal / 12) * 100) / 100;
   const proAnnualPerMonth = Math.round((proAnnualTotal / 12) * 100) / 100;
 
   const starterPrice = isAnnual ? starterAnnualPerMonth : starterMonthly;
+  const sovereignPrice = isAnnual ? sovereignAnnualPerMonth : sovereignMonthly;
   const proPrice = isAnnual ? proAnnualPerMonth : proMonthly;
 
   const starterSaving = starterMonthly * 12 - starterAnnualTotal;
+  const sovereignSaving = sovereignMonthly * 12 - sovereignAnnualTotal;
   const proSaving = proMonthly * 12 - proAnnualTotal;
-  const sovereignSaving = starterSaving; // legacy alias — same tier family
 
   const fmt = (n: number) => `£${n % 1 === 0 ? n.toFixed(0) : n.toFixed(0)}`;
 
