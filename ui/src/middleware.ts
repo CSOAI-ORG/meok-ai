@@ -47,7 +47,13 @@ function passthroughMiddleware(req: NextRequest) {
   return NextResponse.next();
 }
 
-// Clerk middleware wrapped with rate limiting on API routes
+// Clerk middleware wrapped with rate limiting on API routes.
+// The Clerk handshake can throw on stale session cookies (kid mismatch) when
+// a Clerk instance migration happened — e.g. dev → live key switch, or a
+// different Clerk instance than the one that minted the cookie. We catch
+// that and fall through to passthrough so non-stale users still get auth
+// and stale-cookie users degrade gracefully to unauthenticated (matching
+// the "no __session cookie" path).
 const clerkWithRateLimit = clerkMiddleware(async (auth, req) => {
   // Apply rate limiting to API routes even when Clerk is active
   if (req.nextUrl.pathname.startsWith('/api/')) {
@@ -61,10 +67,23 @@ const clerkWithRateLimit = clerkMiddleware(async (auth, req) => {
   }
 });
 
+// Wrapped dispatcher: on Clerk kid-mismatch / handshake errors, drop to
+// passthrough (no auth) instead of 500. Stale cookies then expire naturally.
+function safeClerkDispatch(req: NextRequest, event: unknown) {
+  try {
+    return (clerkWithRateLimit as unknown as (r: NextRequest, e: unknown) => Response)(req, event);
+  } catch (err) {
+    if (process.env.NODE_ENV !== 'production') {
+      console.error('[middleware] Clerk handshake failed, falling through:', err);
+    }
+    return passthroughMiddleware(req);
+  }
+}
+
 // Public, agent-facing routes that MUST be reachable by non-browser clients (no Clerk
 // handshake). Clerk dev keys 403 all /api/* otherwise — A2A agents aren't browsers.
 // Plain pathname check (Clerk's createRouteMatcher needs Clerk context; this doesn't).
-const guardedMiddleware = hasValidClerk ? clerkWithRateLimit : passthroughMiddleware;
+const guardedMiddleware = hasValidClerk ? safeClerkDispatch : passthroughMiddleware;
 
 export default function middleware(req: NextRequest, event: unknown) {
   if (req.nextUrl.pathname.startsWith('/api/a2a')) {
