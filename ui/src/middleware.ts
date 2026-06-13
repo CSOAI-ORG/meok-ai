@@ -69,9 +69,10 @@ const clerkWithRateLimit = clerkMiddleware(async (auth, req) => {
 
 // Wrapped dispatcher: on Clerk kid-mismatch / handshake errors, drop to
 // passthrough (no auth) instead of 500. Stale cookies then expire naturally.
-function safeClerkDispatch(req: NextRequest, event: unknown) {
+// Must be async + use await to catch async throws from clerkMiddleware.
+async function safeClerkDispatch(req: NextRequest, event: unknown): Promise<Response> {
   try {
-    return (clerkWithRateLimit as unknown as (r: NextRequest, e: unknown) => Response)(req, event);
+    return await (clerkWithRateLimit as unknown as (r: NextRequest, e: unknown) => Promise<Response>)(req, event);
   } catch (err) {
     if (process.env.NODE_ENV !== 'production') {
       console.error('[middleware] Clerk handshake failed, falling through:', err);
@@ -83,12 +84,12 @@ function safeClerkDispatch(req: NextRequest, event: unknown) {
 // Public, agent-facing routes that MUST be reachable by non-browser clients (no Clerk
 // handshake). Clerk dev keys 403 all /api/* otherwise — A2A agents aren't browsers.
 // Plain pathname check (Clerk's createRouteMatcher needs Clerk context; this doesn't).
+// Note: when Clerk is active, /api/* must go through Clerk's middleware so it can
+// surface auth state to the route handler. The Clerk handshake is wrapped in
+// safeClerkDispatch which catches stale-cookie throws and falls back to passthrough.
 const guardedMiddleware = hasValidClerk ? safeClerkDispatch : passthroughMiddleware;
 
-export default function middleware(req: NextRequest, event: unknown) {
-  if (req.nextUrl.pathname.startsWith('/api/a2a')) {
-    return passthroughMiddleware(req);
-  }
+export default async function middleware(req: NextRequest, event: unknown) {
   // Agent/AEO discovery files must be world-readable — never auth-gated.
   if (req.nextUrl.pathname.startsWith('/.well-known')) {
     return passthroughMiddleware(req);
