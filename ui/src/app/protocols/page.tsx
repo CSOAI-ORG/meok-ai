@@ -154,7 +154,7 @@ export default function ProtocolsPage() {
               href="/a2a"
               style={{ padding: "12px 22px", background: "transparent", color: "rgba(255,255,255,0.7)", border: "1px solid rgba(255,255,255,0.15)", textDecoration: "none", fontWeight: 700, borderRadius: 12, fontSize: 14 }}
             >
-              A2A Substrate £499/mo →
+              A2A Substrate £799/mo →
             </Link>
           </div>
         </div>
@@ -256,14 +256,14 @@ export default function ProtocolsPage() {
         <div style={{ padding: "1.8rem", background: "#fff", borderRadius: 14, border: `1px solid ${NAVY}1a`, textAlign: "center" }}>
           <h3 style={{ fontSize: "1.2rem", fontWeight: 900, marginBottom: 8 }}>Pick your substrate</h3>
           <p style={{ color: `${NAVY}99`, marginBottom: 20, fontSize: 14, lineHeight: 1.55 }}>
-            Free self-host, £99-£499/mo per substrate, or £1,499/mo for the lot.
+            Free self-host, £99-£799/mo per substrate, or £1,499/mo for the lot.
           </p>
           <div style={{ display: "flex", gap: 10, justifyContent: "center", flexWrap: "wrap" }}>
-            <Link href="/a2a" style={{ padding: "10px 18px", background: NAVY, color: "#fff", textDecoration: "none", fontWeight: 700, borderRadius: 10, fontSize: 13 }}>A2A £499</Link>
-            <Link href="/governance" style={{ padding: "10px 18px", background: NAVY, color: "#fff", textDecoration: "none", fontWeight: 700, borderRadius: 10, fontSize: 13 }}>Governance £499</Link>
-            <a href="https://buy.stripe.com/aFa7sNcgAdQS0ZT1Uc8k91t" style={{ padding: "10px 18px", background: NAVY, color: "#fff", textDecoration: "none", fontWeight: 700, borderRadius: 10, fontSize: 13 }}>Cybersec Pro £199</a>
-            <a href="https://buy.stripe.com/bJe4gB3K4002aAtgP68k91r" style={{ padding: "10px 18px", background: GOLD, color: NAVY, textDecoration: "none", fontWeight: 800, borderRadius: 10, fontSize: 13 }}>Universe Enterprise £1,499</a>
-            <a href="https://buy.stripe.com/aFa7sNcgAdQS0ZT1Uc8k91t" style={{ padding: "10px 18px", background: "transparent", color: NAVY, border: `1px solid ${NAVY}33`, textDecoration: "none", fontWeight: 700, borderRadius: 10, fontSize: 13 }}>Pro £199</a>
+            <Link href="/a2a" style={{ padding: "10px 18px", background: NAVY, color: "#fff", textDecoration: "none", fontWeight: 700, borderRadius: 10, fontSize: 13 }}>A2A £799</Link>
+            <Link href="/governance" style={{ padding: "10px 18px", background: NAVY, color: "#fff", textDecoration: "none", fontWeight: 700, borderRadius: 10, fontSize: 13 }}>Governance £799</Link>
+            <a href="https://buy.stripe.com/5kQ6oJ0xS3ce8sl7ew8k91j" style={{ padding: "10px 18px", background: NAVY, color: "#fff", textDecoration: "none", fontWeight: 700, borderRadius: 10, fontSize: 13 }}>Cybersec Pro £199</a>
+            <a href="https://buy.stripe.com/28E7sNdkEeUW5g96as8k91U" style={{ padding: "10px 18px", background: GOLD, color: NAVY, textDecoration: "none", fontWeight: 800, borderRadius: 10, fontSize: 13 }}>Universe Enterprise £1,499</a>
+            <a href="https://buy.stripe.com/5kQ6oJ0xS3ce8sl7ew8k91j" style={{ padding: "10px 18px", background: "transparent", color: NAVY, border: `1px solid ${NAVY}33`, textDecoration: "none", fontWeight: 700, borderRadius: 10, fontSize: 13 }}>Pro £199</a>
           </div>
         </div>
 

@@ -67,7 +67,7 @@ const PRICING = [
     price: "£1,499",
     period: "/mo",
     desc: "Dedicated MCP infrastructure, NHS integration support, SLA, clinical data governance, onboarding.",
-    href: "https://buy.stripe.com/bJe4gB3K4002aAtgP68k91r",
+    href: "https://buy.stripe.com/28E7sNdkEeUW5g96as8k91U",
     highlight: false,
   },
 ];

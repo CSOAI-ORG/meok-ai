@@ -9,7 +9,7 @@ import { withUtm } from "@/lib/stripe-utm";
 //
 // Sells the 10 governance MCPs as one signed pipeline for EU AI Act + DORA
 // + NIS2 + CRA + GDPR + UK AI Bill + ISO 42001 + ISO 42005 evidence chain.
-// £499/mo bundle or £0.0002/call PAYG.
+// £799/mo bundle or £0.0002/call PAYG.
 // ---------------------------------------------------------------------------
 
 const NAVY = "#1a1a2e";
@@ -20,11 +20,11 @@ const GREEN = "#7BC47F";
 export const metadata: Metadata = {
   title: "MEOK Governance Substrate — 10 compliance MCPs, 1 signed evidence pack",
   description:
-    "EU AI Act + DORA + NIS2 + CRA + UK AI Bill + AI-BOM + bias detection + watermarking + DORA×NIS2 crosswalk + AI incident reporting — bundled as one £499/mo Substrate with unified api.meok.ai endpoint and HMAC-signed evidence chain for ISO 42001 + ISO 42005 audit.",
+    "EU AI Act + DORA + NIS2 + CRA + UK AI Bill + AI-BOM + bias detection + watermarking + DORA×NIS2 crosswalk + AI incident reporting — bundled as one £799/mo Substrate with unified api.meok.ai endpoint and HMAC-signed evidence chain for ISO 42001 + ISO 42005 audit.",
   alternates: { canonical: "https://meok.ai/governance" },
   openGraph: {
     title: "MEOK Governance Substrate — 10 MCPs, 1 invoice",
-    description: "EU AI Act + DORA + NIS2 + CRA + UK AI Bill + 5 more, £499/mo or £0.0002/call. HMAC-signed audit evidence.",
+    description: "EU AI Act + DORA + NIS2 + CRA + UK AI Bill + 5 more, £799/mo or £0.0002/call. HMAC-signed audit evidence.",
     type: "website",
     url: "https://meok.ai/governance",
     siteName: "MEOK.AI",
@@ -82,9 +82,9 @@ const jsonLd = {
   "image": "https://meok.ai/api/og?title=MEOK+Governance+Substrate",
   "offers": [
     { "@type": "Offer", "price": "0", "priceCurrency": "GBP", "name": "Self-host (MIT, all 10 MCPs)", "url": "https://github.com/CSOAI-ORG" },
-    { "@type": "Offer", "price": "199", "priceCurrency": "GBP", "name": "Governance Pro Monthly", "url": "https://buy.stripe.com/aFa7sNcgAdQS0ZT1Uc8k91t" },
-    { "@type": "Offer", "price": "199", "priceCurrency": "GBP", "name": "Pro Monthly", "url": "https://buy.stripe.com/aFa7sNcgAdQS0ZT1Uc8k91t" },
-    { "@type": "Offer", "price": "1499", "priceCurrency": "GBP", "name": "Enterprise (all 47 MCPs)", "url": "https://buy.stripe.com/bJe4gB3K4002aAtgP68k91r" },
+    { "@type": "Offer", "price": "199", "priceCurrency": "GBP", "name": "Governance Pro Monthly", "url": "https://buy.stripe.com/5kQ6oJ0xS3ce8sl7ew8k91j" },
+    { "@type": "Offer", "price": "199", "priceCurrency": "GBP", "name": "Pro Monthly", "url": "https://buy.stripe.com/5kQ6oJ0xS3ce8sl7ew8k91j" },
+    { "@type": "Offer", "price": "1499", "priceCurrency": "GBP", "name": "Enterprise (all 47 MCPs)", "url": "https://buy.stripe.com/28E7sNdkEeUW5g96as8k91U" },
   ],
 };
 
@@ -109,17 +109,17 @@ export default function GovernancePage() {
           <p style={{ fontSize: "1.1rem", color: "rgba(255,255,255,0.75)", lineHeight: 1.55, marginBottom: 22, maxWidth: 700 }}>
             EU AI Act + DORA + NIS2 + CRA + UK AI Bill + ISO 42001 + ISO 42005 + GDPR — bundled as
             one signed pipeline. Risk classify → Article 50 transparency → Article 10 bias → AI-BOM
-            → crosswalk → incident → signed evidence. <strong style={{ color: GOLD }}>£499/mo</strong> Substrate or pay-as-you-go.
+            → crosswalk → incident → signed evidence. <strong style={{ color: GOLD }}>£799/mo</strong> Substrate or pay-as-you-go.
           </p>
           <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
             <a
-              href={withUtm("https://buy.stripe.com/aFa7sNcgAdQS0ZT1Uc8k91t", "/governance", "governance_substrate_499")}
+              href={withUtm("https://buy.stripe.com/5kQ6oJ0xS3ce8sl7ew8k91j", "/governance", "governance_substrate_499")}
               style={{ padding: "14px 28px", background: GOLD, color: NAVY, textDecoration: "none", fontWeight: 800, borderRadius: 12, fontSize: 14 }}
             >
-              Start Governance Substrate £499/mo →
+              Start Governance Substrate £799/mo →
             </a>
             <a
-              href={withUtm("https://buy.stripe.com/aFa7sNcgAdQS0ZT1Uc8k91t", "/governance", "payg_universal_29")}
+              href={withUtm("https://buy.stripe.com/5kQ6oJ0xS3ce8sl7ew8k91j", "/governance", "payg_universal_29")}
               style={{ padding: "14px 28px", background: "transparent", color: "#fff", border: "1px solid rgba(255,255,255,0.25)", textDecoration: "none", fontWeight: 800, borderRadius: 12, fontSize: 14 }}
             >
               PAYG £0.0002/call →
@@ -132,7 +132,7 @@ export default function GovernancePage() {
             </Link>
           </div>
           <ShareButtons
-            text="13 EU AI Act compliance MCPs. 1 signed evidence pack. £499/mo or self-host MIT."
+            text="13 EU AI Act compliance MCPs. 1 signed evidence pack. £799/mo or self-host MIT."
             url="https://meok.ai/governance"
             hashtags={["EUAIAct", "DORA", "NIS2", "compliance", "mcp"]}
             hnTitle="MEOK Governance Substrate — 13 EU compliance MCPs, 1 signed pipeline"
@@ -251,7 +251,7 @@ export default function GovernancePage() {
                 Best value
               </div>
               <div style={{ fontSize: 11, fontWeight: 800, textTransform: "uppercase", color: GOLD, marginBottom: 6 }}>Substrate</div>
-              <div style={{ fontSize: "1.8rem", fontWeight: 900, marginBottom: 4 }}>£499<span style={{ fontSize: ".9rem", color: "rgba(255,255,255,0.5)" }}>/mo</span></div>
+              <div style={{ fontSize: "1.8rem", fontWeight: 900, marginBottom: 4 }}>£799<span style={{ fontSize: ".9rem", color: "rgba(255,255,255,0.5)" }}>/mo</span></div>
               <div style={{ fontSize: 11, color: "rgba(255,255,255,0.65)", marginBottom: 12 }}>10 governance MCPs</div>
               <ul style={{ listStyle: "none", padding: 0, margin: 0, fontSize: 12, color: "rgba(255,255,255,0.85)", lineHeight: 1.8 }}>
                 <li><span style={{ color: GOLD }}>✓</span> All 10 managed</li>
@@ -260,7 +260,7 @@ export default function GovernancePage() {
                 <li><span style={{ color: GOLD }}>✓</span> 99.9% SLA</li>
                 <li><span style={{ color: GOLD }}>✓</span> 5-clock incident chain</li>
               </ul>
-              <a href="https://buy.stripe.com/aFa7sNcgAdQS0ZT1Uc8k91t" style={{ display: "block", marginTop: 14, padding: "10px", textAlign: "center", background: GOLD, color: NAVY, borderRadius: 8, textDecoration: "none", fontSize: 13, fontWeight: 900 }}>
+              <a href="https://buy.stripe.com/5kQ6oJ0xS3ce8sl7ew8k91j" style={{ display: "block", marginTop: 14, padding: "10px", textAlign: "center", background: GOLD, color: NAVY, borderRadius: 8, textDecoration: "none", fontSize: 13, fontWeight: 900 }}>
                 Start →
               </a>
             </div>
@@ -275,7 +275,7 @@ export default function GovernancePage() {
                 <li>✓ Stripe metered</li>
                 <li>✓ Cap anytime</li>
               </ul>
-              <a href="https://buy.stripe.com/aFa7sNcgAdQS0ZT1Uc8k91t" style={{ display: "block", marginTop: 14, padding: "8px", textAlign: "center", border: `1px solid ${NAVY}33`, borderRadius: 8, color: NAVY, textDecoration: "none", fontSize: 12, fontWeight: 700 }}>
+              <a href="https://buy.stripe.com/5kQ6oJ0xS3ce8sl7ew8k91j" style={{ display: "block", marginTop: 14, padding: "8px", textAlign: "center", border: `1px solid ${NAVY}33`, borderRadius: 8, color: NAVY, textDecoration: "none", fontSize: 12, fontWeight: 700 }}>
                 Connect →
               </a>
             </div>
@@ -290,7 +290,7 @@ export default function GovernancePage() {
                 <li>✓ Dedicated support</li>
                 <li>✓ Multi-protocol bridge</li>
               </ul>
-              <a href="https://buy.stripe.com/aFa7sNcgAdQS0ZT1Uc8k91t" style={{ display: "block", marginTop: 14, padding: "8px", textAlign: "center", border: `1px solid ${NAVY}33`, borderRadius: 8, color: NAVY, textDecoration: "none", fontSize: 12, fontWeight: 700 }}>
+              <a href="https://buy.stripe.com/5kQ6oJ0xS3ce8sl7ew8k91j" style={{ display: "block", marginTop: 14, padding: "8px", textAlign: "center", border: `1px solid ${NAVY}33`, borderRadius: 8, color: NAVY, textDecoration: "none", fontSize: 12, fontWeight: 700 }}>
                 Subscribe →
               </a>
             </div>

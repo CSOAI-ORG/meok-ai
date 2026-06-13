@@ -20,10 +20,10 @@ const NAVY = "#1a1a2e";
 const GOLD = "#c9a84c";
 const BG = "#f5f0e8";
 
-const STRIPE_LINK = "https://buy.stripe.com/4gM3cx0xScMOdMFfL28k91u"; // £999 one-time Article 50 kit
+const STRIPE_LINK = "https://buy.stripe.com/fZu00l4O8fZ07oh0Q88k91V"; // £999 one-time Article 50 kit
 const STRIPE_LINK_LAUNCH50 = `${STRIPE_LINK}?prefilled_promo_code=LAUNCH50`; // 50% off for early adopters
-const STRIPE_LINK_PRO = "https://buy.stripe.com/aFa7sNcgAdQS0ZT1Uc8k91t?prefilled_promo_code=LAUNCH50"; // £199/mo Pro
-const STRIPE_LINK_ENTERPRISE = "https://buy.stripe.com/bJe4gB3K4002aAtgP68k91r"; // £1,499/mo Enterprise
+const STRIPE_LINK_PRO = "https://buy.stripe.com/eVq14p1BWcMO4c59mE8k91T?prefilled_promo_code=LAUNCH50"; // £199/mo Pro
+const STRIPE_LINK_ENTERPRISE = "https://buy.stripe.com/28E7sNdkEeUW5g96as8k91U"; // £1,499/mo Enterprise
 
 const PILLARS = [
   {

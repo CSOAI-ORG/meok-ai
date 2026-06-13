@@ -85,7 +85,7 @@ export default function Page() {
             Run a free 90-sec GDPR-AI scorecard
           </Link>
           <a
-            href="https://buy.stripe.com/aFa7sNcgAdQS0ZT1Uc8k91t?prefilled_promo_code=LAUNCH50"
+            href="https://buy.stripe.com/eVq14p1BWcMO4c59mE8k91T?prefilled_promo_code=LAUNCH50"
             target="_blank"
             rel="noopener noreferrer"
             className="px-8 py-4 rounded-xl font-bold text-white border border-white/30 hover:border-white transition-colors"

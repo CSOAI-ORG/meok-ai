@@ -92,7 +92,7 @@ export default function Page() {
             Book a 30-min audit review
           </Link>
           <a
-            href="https://buy.stripe.com/aFa7sNcgAdQS0ZT1Uc8k91t"
+            href="https://buy.stripe.com/eVq14p1BWcMO4c59mE8k91T"
             className="px-8 py-4 rounded-xl font-bold text-white border border-white/20 hover:border-white/40"
           >
             Pro tier — £199/mo

@@ -25,14 +25,14 @@ const STATS = [
 ];
 
 const PACKS = [
-  { name: "Legal & Compliance", price: "99", servers: 12, desc: "EU AI Act, NIST, ISO 42001, GDPR, SOC 2, HIPAA + crosswalk", href: "https://buy.stripe.com/aFa7sNcgAdQS0ZT1Uc8k91t" },
-  { name: "Healthcare", price: "79", servers: 7, desc: "FHIR R4, patient safety, clinical trials, HIPAA, GDPR", href: "https://buy.stripe.com/aFa7sNcgAdQS0ZT1Uc8k91t" },
-  { name: "Financial Services", price: "79", servers: 9, desc: "SOC 2, PCI DSS, tax, budget, expense, risk, stock", href: "https://buy.stripe.com/aFa7sNcgAdQS0ZT1Uc8k91t" },
-  { name: "Cybersecurity", price: "79", servers: 8, desc: "OWASP Agentic, deepfake detection, trust chains, credentials", href: "https://buy.stripe.com/aFa7sNcgAdQS0ZT1Uc8k91t" },
-  { name: "SMB Operations", price: "49", servers: 10, desc: "Invoice, expense, CRM, support, time tracking, PM", href: "https://buy.stripe.com/aFa7sNcgAdQS0ZT1Uc8k91t" },
-  { name: "Marketing & Growth", price: "49", servers: 10, desc: "Ad copy, content calendar, SEO, social, leads, sentiment", href: "/pricing" },
-  { name: "Developer Tools", price: "29", servers: 10, desc: "Code review, CI/CD, testing, API docs, Docker, git", href: "/pricing" },
-  { name: "Defence All-In", price: "999", servers: 208, desc: "Every server, unlimited calls, SSO, SLA, on-premise", href: "/pricing" },
+  { name: "Legal & Compliance", price: "79", servers: 12, desc: "EU AI Act, NIST, ISO 42001, GDPR, SOC 2, HIPAA + crosswalk", href: "https://buy.stripe.com/5kQ6oJ0xS3ce8sl7ew8k91j" },
+  { name: "Healthcare", price: "79", servers: 7, desc: "FHIR R4, patient safety, clinical trials, HIPAA, GDPR", href: "https://buy.stripe.com/5kQ6oJ0xS3ce8sl7ew8k91j" },
+  { name: "Financial Services", price: "79", servers: 9, desc: "SOC 2, PCI DSS, tax, budget, expense, risk, stock", href: "https://buy.stripe.com/5kQ6oJ0xS3ce8sl7ew8k91j" },
+  { name: "Cybersecurity", price: "79", servers: 8, desc: "OWASP Agentic, deepfake detection, trust chains, credentials", href: "https://buy.stripe.com/5kQ6oJ0xS3ce8sl7ew8k91j" },
+  { name: "SMB Operations", price: "79", servers: 10, desc: "Invoice, expense, CRM, support, time tracking, PM", href: "https://buy.stripe.com/5kQ6oJ0xS3ce8sl7ew8k91j" },
+  { name: "Marketing & Growth", price: "79", servers: 10, desc: "Ad copy, content calendar, SEO, social, leads, sentiment", href: "/pricing" },
+  { name: "Developer Tools", price: "79", servers: 10, desc: "Code review, CI/CD, testing, API docs, Docker, git", href: "/pricing" },
+  { name: "Defence All-In", price: "1499", servers: 208, desc: "Every server, unlimited calls, SSO, SLA, on-premise", href: "/pricing" },
 ];
 
 const TIERS = [
@@ -48,38 +48,38 @@ const TIERS = [
   },
   {
     name: "Starter",
-    price: "£49",
+    price: "£79",
     period: "/month",
     desc: "For small businesses",
     features: ["1 industry pack included", "500 API calls/day", "Data persistence", "Email support", "Audit logging"],
-    cta: "Start Free Trial",
-    href: "https://buy.stripe.com/aFa7sNcgAdQS0ZT1Uc8k91t",
+    cta: "Subscribe — £79/mo",
+    href: "https://buy.stripe.com/5kQ6oJ0xS3ce8sl7ew8k91j",
     popular: false,
   },
   {
     name: "Pro",
-    price: "£149",
+    price: "£199",
     period: "/month",
     desc: "For consultants & mid-market",
     features: ["Full compliance suite", "12 framework crosswalks", "2,000 API calls/day", "Audit trail export", "Priority support", "1 industry pack included"],
-    cta: "Start Free Trial",
-    href: "https://buy.stripe.com/aFa7sNcgAdQS0ZT1Uc8k91t",
+    cta: "Subscribe — £199/mo",
+    href: "https://buy.stripe.com/5kQ6oJ0xS3ce8sl7ew8k91j",
     popular: true,
   },
   {
     name: "Defence",
-    price: "£999",
+    price: "£1999",
     period: "/month",
     desc: "For regulated industries",
     features: ["All 208 servers", "Unlimited API calls", "SSO / SAML", "On-premise option", "99.9% SLA", "Dedicated manager", "Custom frameworks"],
-    cta: "Book a Demo",
-    href: "mailto:nicholas@meok.ai?subject=MEOK Labs Defence Inquiry",
+    cta: "Subscribe — £1,499/mo",
+    href: "https://buy.stripe.com/fZu5kF0xS8wy9wpeGY8k91s",
     popular: false,
   },
   {
     name: "Enterprise",
-    price: "£2,499",
-    period: "/month",
+    price: "Custom",
+    period: "/bespoke",
     desc: "For multi-BU deployments & global compliance",
     features: ["Everything in Defence", "Multi-BU audit-grade separation", "Custom verify domain", "White-label option", "Pay by invoice / PO", "Dedicated CSM + SLA", "On-premise + air-gapped option"],
     cta: "Contact Sales",
@@ -218,7 +218,7 @@ export default function LabsMcpPage() {
               <div className="text-xs text-[#f5f0e8]/30 mt-1">Manual, slow, not scalable</div>
             </Surface>
             <Surface variant="glass" glow="gold" className="p-5 text-center">
-              <div className="text-2xl font-bold text-green-400">£49-999/mo</div>
+              <div className="text-2xl font-bold text-green-400">£79-1499/mo</div>
               <div className="text-sm text-[#f5f0e8]/50 mt-1">MEOK Labs</div>
               <div className="text-xs text-[#f5f0e8]/30 mt-1">Automated, API-driven, instant</div>
             </Surface>

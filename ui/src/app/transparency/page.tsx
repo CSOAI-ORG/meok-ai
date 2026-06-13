@@ -26,15 +26,15 @@ const NAVY = "#1a1a2e";
 const GOLD = "#c9a84c";
 const BG = "#f5f0e8";
 
-const STRIPE_399 = "https://buy.stripe.com/5kQ6oJ0xS3ce8sl7ew8k91j?prefilled_promo_code=LAUNCH50";
-const STRIPE_1499 = "https://buy.stripe.com/5kQ6oJ0xS3ce8sl7ew8k91j";
+const STRIPE_199 = "https://buy.stripe.com/eVq14p1BWcMO4c59mE8k91T";
+const STRIPE_1499 = "https://buy.stripe.com/fZu5kF0xS8wy9wpeGY8k91s";
 
 const TIERS = [
   {
     name: "Pro",
     price: "£199/mo",
     desc: "FinServ + Healthcare baseline. 50K decision-traces / month. Article 50 transparency obligations + GDPR Article 22 explainability + EU AI Act high-risk Article 13 documentation.",
-    href: STRIPE_399,
+    href: STRIPE_199,
     highlight: false,
     features: [
       "Continuous decision-trace logging API",

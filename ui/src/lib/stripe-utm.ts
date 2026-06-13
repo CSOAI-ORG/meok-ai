@@ -3,7 +3,7 @@
  *
  * Usage:
  *   import { withUtm } from "@/lib/stripe-utm";
- *   <a href={withUtm("https://buy.stripe.com/5kQ6oJ0xS3ce8sl7ew8k91j", "/a2a", "a2a_substrate_499")} />
+ *   <a href={withUtm("https://buy.stripe.com/eVq14p1BWcMO4c59mE8k91T", "/a2a", "a2a_substrate_499")} />
  *
  * The resulting URL adds utm_source / utm_medium / utm_campaign + a `client_reference_id`
  * (Stripe propagates this into the Checkout session so we can attribute revenue
@@ -21,7 +21,7 @@ export type UtmCampaign =
   | "defence_substrate_4990"
   | "payg_universal_29"
   | "starter_29"
-  | "pro_79"
+  | "pro_199"
   | "pro_149"
   | "scorecard_audit"
   | "watermark_attest"

@@ -45,7 +45,7 @@ export default function EnterprisePage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href="https://buy.stripe.com/bJe4gB3K4002aAtgP68k91r"
+              href="https://buy.stripe.com/28E7sNdkEeUW5g96as8k91U"
               className="px-8 py-4 rounded-xl font-bold text-black transition-colors"
               style={{ backgroundColor: GOLD }}
             >

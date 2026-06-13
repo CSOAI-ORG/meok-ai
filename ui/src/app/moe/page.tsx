@@ -19,11 +19,11 @@ const GREEN = "#7BC47F";
 export const metadata: Metadata = {
   title: "MEOK MoE — Mixture of Experts for AI Compliance (47 domain-expert MCPs)",
   description:
-    "47 MEOK MCPs as a Mixture-of-Experts compliance system. The BFT Council routes each call to the right domain expert (DORA expert, NIS2 expert, COBOL expert, Article 50 expert, MITRE ATLAS expert, …). Sparse routing, HMAC-signed evidence, MIT-licensed self-host or £499/mo Substrate.",
+    "47 MEOK MCPs as a Mixture-of-Experts compliance system. The BFT Council routes each call to the right domain expert (DORA expert, NIS2 expert, COBOL expert, Article 50 expert, MITRE ATLAS expert, …). Sparse routing, HMAC-signed evidence, MIT-licensed self-host or £799/mo Substrate.",
   alternates: { canonical: "https://meok.ai/moe" },
   openGraph: {
     title: "MEOK MoE — 47 compliance experts, BFT-routed",
-    description: "Mixture-of-Experts pattern applied to AI compliance. Sparse routing across 47 specialised MCPs. £499–£14,990/mo.",
+    description: "Mixture-of-Experts pattern applied to AI compliance. Sparse routing across 47 specialised MCPs. £799–£14,990/mo.",
     type: "website",
     url: "https://meok.ai/moe",
     siteName: "MEOK.AI",
@@ -73,7 +73,7 @@ const EXPERTS: Expert[] = [
 const REASONS = [
   { h: "Sparse routing", b: "Don't pay to run 47 models for every request. The BFT Council routes each call to the 1-3 experts whose domain actually applies. A bias query goes to bias-detection-mcp. A DORA incident query fires the 5-clock chain across audit-logger + incident-reporting + dora-compliance experts." },
   { h: "Domain weight, not parameter weight", b: "A traditional MoE LLM uses learned router weights to pick activated experts. MEOK uses the request payload's regulatory context — schema-validated, deterministic, auditable. Auditors can verify which expert touched which decision because every routing decision signs into the audit chain." },
-  { h: "Compositional substrates", b: "Buy one expert (£29/mo) · buy a pack of 6-12 (£199-£499/mo) · buy all 47 (£1,499/mo). The Council pattern composes them. You don't need to choose between depth (one specialised MCP) and breadth (full substrate) — the architecture supports both." },
+  { h: "Compositional substrates", b: "Buy one expert (£29/mo) · buy a pack of 6-12 (£199-£799/mo) · buy all 47 (£1,499/mo). The Council pattern composes them. You don't need to choose between depth (one specialised MCP) and breadth (full substrate) — the architecture supports both." },
   { h: "MIT-licensed self-host", b: "Run any subset of experts locally. uvx <name>-mcp installs each. The Council layer is what we sell — Substrate subscriptions give you the managed router, the HMAC signing keys, the SLA. Source code stays free." },
   { h: "Adding experts is additive", b: "Q3 roadmap: 15 new MCPs (Korea AI Basic Act expert, Stripe ACP expert, x402 paywall expert, ISO 42005 impact expert, EUDI Wallet expert, …). Each new expert plugs into the existing Council without breaking the others. No retraining, no migration." },
 ];
@@ -90,8 +90,8 @@ const jsonLd = {
   "image": "https://meok.ai/api/og?title=MEOK+MoE",
   "offers": [
     { "@type": "Offer", "price": "0", "priceCurrency": "GBP", "name": "Self-host any expert (MIT)" },
-    { "@type": "Offer", "price": "199", "priceCurrency": "GBP", "name": "Pro (A2A or Governance pack of ~10 experts)", "url": "https://buy.stripe.com/aFa7sNcgAdQS0ZT1Uc8k91t" },
-    { "@type": "Offer", "price": "1499", "priceCurrency": "GBP", "name": "Enterprise (all 47 experts)", "url": "https://buy.stripe.com/bJe4gB3K4002aAtgP68k91r" },
+    { "@type": "Offer", "price": "199", "priceCurrency": "GBP", "name": "Pro (A2A or Governance pack of ~10 experts)", "url": "https://buy.stripe.com/5kQ6oJ0xS3ce8sl7ew8k91j" },
+    { "@type": "Offer", "price": "1499", "priceCurrency": "GBP", "name": "Enterprise (all 47 experts)", "url": "https://buy.stripe.com/28E7sNdkEeUW5g96as8k91U" },
     { "@type": "Offer", "price": "4950", "priceCurrency": "GBP", "name": "Defence (multi-BU + on-prem)", "url": "https://buy.stripe.com/eVq6oJ3K49AC0ZTaqI8k91m" },
   ],
 };
@@ -123,7 +123,7 @@ export default function MoEPage() {
               href="/a2a"
               style={{ padding: "14px 28px", background: GOLD, color: NAVY, textDecoration: "none", fontWeight: 800, borderRadius: 12, fontSize: 14 }}
             >
-              See a Substrate £499/mo →
+              See a Substrate £799/mo →
             </Link>
             <Link
               href="/anthropic-registry"

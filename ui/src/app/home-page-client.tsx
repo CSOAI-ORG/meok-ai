@@ -756,7 +756,7 @@ function HeroSection() {
         {/* Primary CTA pair */}
         <div className="flex flex-col sm:flex-row gap-3 justify-center items-center mb-4">
           <a
-            href="https://buy.stripe.com/aFa7sNcgAdQS0ZT1Uc8k91t"
+            href="https://buy.stripe.com/5kQ6oJ0xS3ce8sl7ew8k91j"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 font-bold rounded-full transition-all shadow-lg hover:shadow-[#c9a84c]/40 hover:scale-105"
@@ -808,12 +808,12 @@ function HeroSection() {
             </Link>
             <Link href="/nis2-de-kit" className="group block rounded-xl p-4 transition-all hover:scale-[1.02]" style={{ background: "rgba(220,38,38,0.10)", border: "1px solid rgba(220,38,38,0.35)" }}>
               <div className="text-[10px] font-black tracking-wider uppercase mb-1" style={{ color: "#dc2626" }}>🇩🇪 Deadline passed</div>
-              <div className="text-xl font-black text-white mb-1">£49 · £999</div>
+              <div className="text-xl font-black text-white mb-1">£79 · £999</div>
               <div className="text-xs font-semibold text-white/80 leading-snug">Germany NIS2 BSI register · self-serve or 7-day done-for-you</div>
             </Link>
             <Link href="/nis2-nl" className="group block rounded-xl p-4 transition-all hover:scale-[1.02]" style={{ background: "rgba(220,38,38,0.10)", border: "1px solid rgba(220,38,38,0.35)" }}>
               <div className="text-[10px] font-black tracking-wider uppercase mb-1" style={{ color: "#dc2626" }}>🇳🇱 30 June 2026</div>
-              <div className="text-xl font-black text-white mb-1">£499</div>
+              <div className="text-xl font-black text-white mb-1">£799</div>
               <div className="text-xs font-semibold text-white/80 leading-snug">Netherlands NIS2 NCSC-NL registration · done-for-you in 7 days</div>
             </Link>
             <Link href="/consulting" className="group block rounded-xl p-4 transition-all hover:scale-[1.02]" style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.20)" }}>
@@ -843,12 +843,12 @@ function HeroSection() {
             <Link href="/vs-vanta" className="group block rounded-xl p-3 transition-all hover:scale-[1.01]" style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.12)" }}>
               <div className="text-[10px] font-black tracking-wider uppercase mb-1" style={{ color: "rgba(255,255,255,0.5)" }}>vs Vanta</div>
               <div className="text-sm font-black text-white">MEOK vs Vanta →</div>
-              <div className="text-[11px] text-white/60">Vanta $7.5-25K/yr · MEOK from £149/mo</div>
+              <div className="text-[11px] text-white/60">Vanta $7.5-25K/yr · MEOK from £199/mo</div>
             </Link>
             <Link href="/vs-drata" className="group block rounded-xl p-3 transition-all hover:scale-[1.01]" style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.12)" }}>
               <div className="text-[10px] font-black tracking-wider uppercase mb-1" style={{ color: "rgba(255,255,255,0.5)" }}>vs Drata</div>
               <div className="text-sm font-black text-white">MEOK vs Drata →</div>
-              <div className="text-[11px] text-white/60">Drata $7.5-50K/yr · MEOK from £149/mo</div>
+              <div className="text-[11px] text-white/60">Drata $7.5-50K/yr · MEOK from £199/mo</div>
             </Link>
           </div>
         </div>
@@ -856,9 +856,9 @@ function HeroSection() {
         {/* Tier links */}
         <div className="flex items-center gap-3 flex-wrap justify-center text-sm font-medium mb-8" style={{ color: "rgba(245,240,232,0.55)" }}>
           <span>Or self-serve:</span>
-          <a href="https://buy.stripe.com/aFa7sNcgAdQS0ZT1Uc8k91t" target="_blank" rel="noopener noreferrer" className="underline decoration-dotted hover:text-white transition-colors">Pro £199/mo</a>
+          <a href="https://buy.stripe.com/eVq14p1BWcMO4c59mE8k91T" target="_blank" rel="noopener noreferrer" className="underline decoration-dotted hover:text-white transition-colors">Pro £199/mo</a>
           <span className="opacity-40">·</span>
-          <a href="https://buy.stripe.com/bJe4gB3K4002aAtgP68k91r" target="_blank" rel="noopener noreferrer" className="underline decoration-dotted hover:text-white transition-colors">Enterprise £1,499/mo</a>
+          <a href="https://buy.stripe.com/fZu5kF0xS8wy9wpeGY8k91s" target="_blank" rel="noopener noreferrer" className="underline decoration-dotted hover:text-white transition-colors">Enterprise £1,499/mo</a>
           <span className="opacity-40">·</span>
           <Link href="/pricing" className="underline decoration-dotted hover:text-white transition-colors">All pricing →</Link>
         </div>

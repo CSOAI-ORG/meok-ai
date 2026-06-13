@@ -8,7 +8,7 @@ import { withUtm } from "@/lib/stripe-utm";
 // /a2a — MEOK A2A Substrate landing
 //
 // Sells the 20 agent-to-agent MCPs as ONE end-to-end signed pipeline.
-// £499/mo bundle (covers all 20) OR £0.0002/call pay-as-you-go.
+// £799/mo bundle (covers all 20) OR £0.0002/call pay-as-you-go.
 //
 // The flagship product for the post-MCP-sprawl era — 1 invoice, 1 signed
 // event per agent interaction, 7 attestations chained.
@@ -22,11 +22,11 @@ const GREEN = "#7BC47F";
 export const metadata: Metadata = {
   title: "MEOK A2A Substrate — 20 agent-to-agent MCPs, 1 signed event, 1 invoice",
   description:
-    "20 agent-to-agent primitives — identity, trust, policy, firewall, rate-limit, certified handoff, audit, governance bridge, BFT progress council, token budget, cost allocator, commerce protocol (ACP / AP2 / x402), OASF directory, EUDI wallet, replay debugger — bundled as one £499/mo signed substrate. Or pay £0.0002 per call.",
+    "20 agent-to-agent primitives — identity, trust, policy, firewall, rate-limit, certified handoff, audit, governance bridge, BFT progress council, token budget, cost allocator, commerce protocol (ACP / AP2 / x402), OASF directory, EUDI wallet, replay debugger — bundled as one £799/mo signed substrate. Or pay £0.0002 per call.",
   alternates: { canonical: "https://meok.ai/a2a" },
   openGraph: {
     title: "MEOK A2A Substrate — 20 primitives, 1 signed event",
-    description: "Identity · Trust · Policy · Firewall · Rate-limit · Handoff · Audit · Governance. £499/mo. Pay-as-you-go £0.0002/call.",
+    description: "Identity · Trust · Policy · Firewall · Rate-limit · Handoff · Audit · Governance. £799/mo. Pay-as-you-go £0.0002/call.",
     type: "website",
     url: "https://meok.ai/a2a",
     siteName: "MEOK.AI",
@@ -121,14 +121,14 @@ export default function A2APage() {
             Every agent-to-agent call traverses identity → trust → policy → firewall → rate-limit →
             handoff → audit → governance. Each stage emits a signed attestation. The whole pipeline
             chains into one auditor-defensible event for EU AI Act Article 12 + DORA Article 17 +
-            ISO 42001 clause 9. MIT-licensed self-host or <strong style={{ color: GOLD }}>£499/mo</strong> managed.
+            ISO 42001 clause 9. MIT-licensed self-host or <strong style={{ color: GOLD }}>£799/mo</strong> managed.
           </p>
           <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
             <a
               href="mailto:nicholas@meok.ai?subject=A2A%20Substrate%20%C2%A3499%2Fmo%20%E2%80%94%20onboard%20me&body=Hi%20Nick%2C%0A%0AI%20want%20to%20start%20the%20%C2%A3499%2Fmo%20A2A%20Substrate%20pilot.%0A%0AOur%20agent%20fleet%3A%0A%20%E2%80%A2%20Size%3A%20%5B%20%5D%0A%20%E2%80%A2%20Use%20case%3A%20%5B%20%5D%0A%20%E2%80%A2%20Region%3A%20%5B%20%5D%0A%0AThanks%2C%0A%5Byour%20name%5D"
               style={{ padding: "14px 28px", background: GOLD, color: NAVY, textDecoration: "none", fontWeight: 800, borderRadius: 12, fontSize: 14 }}
             >
-              Start Substrate £499/mo (pilot) →
+              Start Substrate £799/mo (pilot) →
             </a>
             <Link
               href="#pipeline"
@@ -144,7 +144,7 @@ export default function A2APage() {
             </Link>
           </div>
           <ShareButtons
-            text="20 agent-to-agent MCPs. 1 signed event. 1 invoice. MIT self-host or £499/mo managed."
+            text="20 agent-to-agent MCPs. 1 signed event. 1 invoice. MIT self-host or £799/mo managed."
             url="https://meok.ai/a2a"
             hashtags={["mcp", "agents", "compliance", "a2a"]}
             hnTitle="MEOK A2A Substrate — 20 agent-to-agent MCPs, 1 signed event chain"
@@ -160,9 +160,9 @@ export default function A2APage() {
             not the chatbox. Anthropic shipped MCP. Google shipped A2A. Stripe shipped A2A Payments.
             The pieces between agents — identity, trust, policy, audit — need standardisation.
             <br /><br />
-            Sold separately, each primitive is £29-£149/month. Bought together as the Substrate, you
+            Sold separately, each primitive is £29-£199/month. Bought together as the Substrate, you
             get all 20, the unified <code style={{ background: `${NAVY}10`, padding: "2px 6px", borderRadius: 4, fontFamily: "monospace" }}>api.meok.ai/v1/a2a/&lt;primitive&gt;</code> endpoint,
-            100K calls/month included, and the signed governance-bridge event chain — for £499/month.
+            100K calls/month included, and the signed governance-bridge event chain — for £799/month.
             <br /><br />
             Or skip the subscription entirely: <strong>£0.0002 per call</strong>, no monthly minimum, billed monthly via Stripe metered.
           </p>
@@ -243,7 +243,7 @@ export default function A2APage() {
                 Best value
               </div>
               <div style={{ fontSize: 11, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.08em", color: GOLD, marginBottom: 6 }}>Substrate</div>
-              <div style={{ fontSize: "1.8rem", fontWeight: 900, marginBottom: 4 }}>£499<span style={{ fontSize: ".9rem", color: "rgba(255,255,255,0.5)" }}>/mo</span></div>
+              <div style={{ fontSize: "1.8rem", fontWeight: 900, marginBottom: 4 }}>£799<span style={{ fontSize: ".9rem", color: "rgba(255,255,255,0.5)" }}>/mo</span></div>
               <div style={{ fontSize: 11, color: "rgba(255,255,255,0.65)", marginBottom: 12 }}>or £4,990/yr (save £998)</div>
               <ul style={{ listStyle: "none", padding: 0, margin: 0, fontSize: 12, color: "rgba(255,255,255,0.85)", lineHeight: 1.8 }}>
                 <li><span style={{ color: GOLD }}>✓</span> All 20 MCPs managed</li>
@@ -252,10 +252,10 @@ export default function A2APage() {
                 <li><span style={{ color: GOLD }}>✓</span> 99.9% SLA</li>
                 <li><span style={{ color: GOLD }}>✓</span> E2E signed evidence chain</li>
               </ul>
-              <a href="https://buy.stripe.com/aFa7sNcgAdQS0ZT1Uc8k91t" style={{ display: "block", marginTop: 6, textAlign: "center", color: "rgba(255,255,255,0.6)", textDecoration: "none", fontSize: 11, fontWeight: 700 }}>
+              <a href="https://buy.stripe.com/5kQ6oJ0xS3ce8sl7ew8k91j" style={{ display: "block", marginTop: 6, textAlign: "center", color: "rgba(255,255,255,0.6)", textDecoration: "none", fontSize: 11, fontWeight: 700 }}>
                 or annual £4,990 (save £998) →
               </a>
-              <a href="https://buy.stripe.com/aFa7sNcgAdQS0ZT1Uc8k91t" style={{ display: "block", marginTop: 14, padding: "10px", textAlign: "center", background: GOLD, color: NAVY, borderRadius: 8, textDecoration: "none", fontSize: 13, fontWeight: 900 }}>
+              <a href="https://buy.stripe.com/5kQ6oJ0xS3ce8sl7ew8k91j" style={{ display: "block", marginTop: 14, padding: "10px", textAlign: "center", background: GOLD, color: NAVY, borderRadius: 8, textDecoration: "none", fontSize: 13, fontWeight: 900 }}>
                 Start →
               </a>
             </div>
@@ -270,7 +270,7 @@ export default function A2APage() {
                 <li>✓ Signed attestations</li>
                 <li>✓ Bills monthly · cap anytime</li>
               </ul>
-              <a href="https://buy.stripe.com/aFa7sNcgAdQS0ZT1Uc8k91t" style={{ display: "block", marginTop: 14, padding: "8px", textAlign: "center", border: `1px solid ${NAVY}33`, borderRadius: 8, color: NAVY, textDecoration: "none", fontSize: 12, fontWeight: 700 }}>
+              <a href="https://buy.stripe.com/5kQ6oJ0xS3ce8sl7ew8k91j" style={{ display: "block", marginTop: 14, padding: "8px", textAlign: "center", border: `1px solid ${NAVY}33`, borderRadius: 8, color: NAVY, textDecoration: "none", fontSize: 12, fontWeight: 700 }}>
                 Connect →
               </a>
             </div>
@@ -285,7 +285,7 @@ export default function A2APage() {
                 <li>✓ Reseller white-label</li>
                 <li>✓ Pay by invoice / PO</li>
               </ul>
-              <a href="https://buy.stripe.com/aFa7sNcgAdQS0ZT1Uc8k91t" style={{ display: "block", marginTop: 14, padding: "8px", textAlign: "center", border: `1px solid ${NAVY}33`, borderRadius: 8, color: NAVY, textDecoration: "none", fontSize: 12, fontWeight: 700 }}>
+              <a href="https://buy.stripe.com/5kQ6oJ0xS3ce8sl7ew8k91j" style={{ display: "block", marginTop: 14, padding: "8px", textAlign: "center", border: `1px solid ${NAVY}33`, borderRadius: 8, color: NAVY, textDecoration: "none", fontSize: 12, fontWeight: 700 }}>
                 Subscribe £4,990/mo →
               </a>
               <a href="mailto:nicholas@meok.ai?subject=A2A%20Substrate%20Defence%20PO" style={{ display: "block", marginTop: 4, padding: "4px", textAlign: "center", color: `${NAVY}88`, textDecoration: "none", fontSize: 11 }}>

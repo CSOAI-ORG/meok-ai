@@ -22,7 +22,7 @@ const LADDER = [
     badge: "For AI video / image / text shops",
     blurb:
       "Implementation guide for the EU AI Act Article 50 (2 Nov 2026 watermarking cliff). C2PA + EU-Icon spec + JSON-LD emitter + uvx-runnable script. Built for Synthesia / HeyGen / Runway / Pika-class shops.",
-    href: "https://buy.stripe.com/aFa7sNcgAdQS0ZT1Uc8k91t",
+    href: "https://buy.stripe.com/5kQ6oJ0xS3ce8sl7ew8k91j",
     cta: "Get the £9 kit",
     schemaId: "quick-kit",
     delivery: "Instant — PDF + JSON-LD + uvx install script.",
@@ -33,7 +33,7 @@ const LADDER = [
     badge: "30 minutes, 1-on-1",
     blurb:
       "Direct call with Nicholas Templeman, founder of MEOK AI Labs. EU AI Act, DORA, NIS2, CRA, UK AI Bill, AAIF, A2A, ACP — honest answers to your compliance questions. No upsell quota.",
-    href: "https://buy.stripe.com/aFa7sNcgAdQS0ZT1Uc8k91t",
+    href: "https://buy.stripe.com/5kQ6oJ0xS3ce8sl7ew8k91j",
     cta: "Book the £29 founder call",
     schemaId: "founder-call",
     delivery: "Cal.com booking link in receipt. Pick a slot in next 7 days.",
