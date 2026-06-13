@@ -145,7 +145,7 @@ export default function WasteManagementPage() {
 
         <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginBottom: 64 }}>
           <a
-            href=https://buy.stripe.com/eVq6oJ3K49AC0ZTaqI8k91m
+            href="https://buy.stripe.com/eVq6oJ3K49AC0ZTaqI8k91m"
             target="_blank"
             rel="noopener noreferrer"
             style={{
@@ -275,7 +275,7 @@ export default function WasteManagementPage() {
             AI-powered waste operations need compliant MCP architecture. Start your assessment before the 2027 deadline.
           </p>
           <a
-            href=https://buy.stripe.com/eVq6oJ3K49AC0ZTaqI8k91m
+            href="https://buy.stripe.com/eVq6oJ3K49AC0ZTaqI8k91m"
             target="_blank"
             rel="noopener noreferrer"
             style={{

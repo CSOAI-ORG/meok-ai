@@ -126,7 +126,7 @@ export default function DigitalTwinPage() {
            <Surface variant="glass" className="p-8 border-white/[0.02] space-y-6">
               <h3 className="text-[10px] font-bold tracking-[0.2em] text-white/40 uppercase">Physical_Handshake_Log</h3>
               <div className="space-y-3 font-mono text-[8px] text-white/20">
-                 <p>[09:12:01] M4_Leader -> M2_Helper: Syncing_Grover_Search</p>
+                 <p>[09:12:01] M4_Leader &gt; M2_Helper: Syncing_Grover_Search</p>
                  <p>[09:14:22] Active_Inference: Surprise_Minimized(0.012)</p>
                  <p>[09:15:55] Marangoni_Pulse: Triggered_Node_01_Success</p>
                  <p className="text-[#2d9b8a]">[09:20:00] ABUNTU_LEGAL_COMPLIANCE: PASSED</p>

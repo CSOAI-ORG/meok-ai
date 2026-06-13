@@ -151,7 +151,7 @@ export default function ConstructionPage() {
 
         <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginBottom: 64 }}>
           <a
-            href=https://buy.stripe.com/eVq6oJ3K49AC0ZTaqI8k91m
+            href="https://buy.stripe.com/eVq6oJ3K49AC0ZTaqI8k91m"
             target="_blank"
             rel="noopener noreferrer"
             style={{
@@ -167,7 +167,7 @@ export default function ConstructionPage() {
             Book 48h Assessment — £5,000 →
           </a>
           <a
-            href=https://buy.stripe.com/eVq6oJ3K49AC0ZTaqI8k91m
+            href="https://buy.stripe.com/eVq6oJ3K49AC0ZTaqI8k91m"
             target="_blank"
             rel="noopener noreferrer"
             style={{
@@ -289,7 +289,7 @@ export default function ConstructionPage() {
             The construction hire market is consolidating around AI-native platforms. Start your MCP transformation today.
           </p>
           <a
-            href=https://buy.stripe.com/eVq6oJ3K49AC0ZTaqI8k91m
+            href="https://buy.stripe.com/eVq6oJ3K49AC0ZTaqI8k91m"
             target="_blank"
             rel="noopener noreferrer"
             style={{
