@@ -1,16 +1,12 @@
 {
-  "$schema": "https://openapi.vercel.sh/vercel.json",
-  "outputDirectory": "ui/.next",
-  "experimentalServices": {
-    "sovereign-temple": {
-      "entrypoint": "sovereign-temple",
-      "routePrefix": "/"
-    }
-  },
+  "outputDirectory": "ui/website",
+  "buildCommand": null,
+  "framework": null,
+  "installCommand": null,
   "routes": [
-    { "src": "/unified-dashboard.html", "dest": "/ui/website/unified-dashboard.html" },
-    { "src": "/case-studies.html", "dest": "/ui/website/case-studies.html" },
-    { "src": "/(.*\\.html)", "dest": "/ui/website/$1" },
+    { "src": "/unified-dashboard.html", "dest": "/unified-dashboard.html" },
+    { "src": "/case-studies.html", "dest": "/case-studies.html" },
+    { "src": "/(.*\\.html)", "dest": "/$1" },
     { "src": "/(.*)", "dest": "/$1" }
   ]
 }
