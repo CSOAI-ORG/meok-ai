@@ -115,12 +115,12 @@ export async function requireAuth(
 
     const rateLimitResult = await checkRateLimit(userId, tier);
     if (!rateLimitResult.allowed) {
-      return {
-        error: NextResponse.json(
-          { error: 'Rate limit exceeded', reset_at: rateLimitResult.reset_at },
-          { status: 429 },
-        ),
-      };
+          return {
+            error: NextResponse.json(
+              { error: 'Rate limit exceeded', reset_at: rateLimitResult.resetAt },
+              { status: 429 },
+            ),
+          };
     }
   }
 
