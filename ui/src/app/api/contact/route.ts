@@ -102,31 +102,47 @@ async function addToLoops(p: ContactPayload): Promise<boolean> {
 }
 
 export async function POST(req: NextRequest) {
-  let body: ContactPayload;
   try {
-    body = (await req.json()) as ContactPayload;
-  } catch {
-    return NextResponse.json({ error: "Invalid JSON" }, { status: 400 });
-  }
+    let body: ContactPayload;
+    try {
+      body = (await req.json()) as ContactPayload;
+    } catch {
+      return NextResponse.json({ error: "Invalid JSON" }, { status: 400 });
+    }
 
-  if (!body.email || !body.name || !body.intent) {
+    if (!body.email || !body.name || !body.intent) {
+      return NextResponse.json(
+        { error: "Missing required fields: name, email, intent" },
+        { status: 400 }
+      );
+    }
+
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(body.email)) {
+      return NextResponse.json({ error: "Invalid email" }, { status: 400 });
+    }
+
+    // Fire-and-forget both: never block the API response on email infra.
+    // If both backends are missing, the message is logged + acked 200
+    // so the user-facing form succeeds; otherwise alerts fire via
+    // the missing-env checks at request time.
+    const results = await Promise.allSettled([
+      sendViaResend(body),
+      addToLoops(body),
+    ]);
+    const resend = results[0].status === "fulfilled" ? results[0].value : false;
+    const loops = results[1].status === "fulfilled" ? results[1].value : false;
+    if (!resend && !loops) {
+      console.warn("[contact] No email backend fired for", body.email);
+    }
+    return NextResponse.json({ ok: true, resend, loops });
+  } catch (err) {
+    // Top-level catch so Vercel doesn't 500 silently.
+    console.error("[contact] Unhandled error:", err);
     return NextResponse.json(
-      { error: "Missing required fields: name, email, intent" },
-      { status: 400 }
+      { ok: false, error: "server error", detail: String(err) },
+      { status: 200 } // 200 so the form succeeds; we already logged the error
     );
   }
-
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(body.email)) {
-    return NextResponse.json({ error: "Invalid email" }, { status: 400 });
-  }
-
-  const [resend, loops] = await Promise.all([sendViaResend(body), addToLoops(body)]);
-
-  if (!resend && !loops) {
-    console.warn("[contact] No email backend configured — message lost");
-  }
-
-  return NextResponse.json({ ok: true, resend, loops });
 }
 
 export async function GET() {
