@@ -1,12 +1,4 @@
 {
-  "outputDirectory": "ui/website",
-  "buildCommand": null,
-  "framework": null,
-  "installCommand": null,
-  "routes": [
-    { "src": "/unified-dashboard.html", "dest": "/unified-dashboard.html" },
-    { "src": "/case-studies.html", "dest": "/case-studies.html" },
-    { "src": "/(.*\\.html)", "dest": "/$1" },
-    { "src": "/(.*)", "dest": "/$1" }
-  ]
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "outputDirectory": "ui/.next"
 }
