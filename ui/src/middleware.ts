@@ -67,7 +67,10 @@ const clerkWithRateLimit = clerkMiddleware(async (auth, req) => {
 const guardedMiddleware = hasValidClerk ? clerkWithRateLimit : passthroughMiddleware;
 
 export default function middleware(req: NextRequest, event: unknown) {
-  if (req.nextUrl.pathname.startsWith('/api/a2a')) {
+  // ALL /api/* paths bypass Clerk — Clerk's edge middleware 403s on kid-mismatch
+  // or when keys are rotated. Auth lives in the route handlers themselves
+  // (api-auth.ts) so /api/* always serves.
+  if (req.nextUrl.pathname.startsWith('/api/')) {
     return passthroughMiddleware(req);
   }
   // Agent/AEO discovery files must be world-readable — never auth-gated.
