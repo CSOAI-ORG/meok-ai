@@ -37,6 +37,9 @@ import {  Box,
   Zap,
   Star,
   Lock,
+  Factory,
+  LifeBuoy,
+  Wrench,
 } from "lucide-react";
 import { useUser, useClerk } from "@clerk/nextjs";
 import { useEffect, useState } from "react";

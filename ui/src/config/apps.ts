@@ -14,7 +14,8 @@ import {
   LifeBuoy,
   Wrench,
   Gamepad2,
-  Factory
+  Factory,
+  Box,
 } from "lucide-react";
 
 export interface AppConfig {
