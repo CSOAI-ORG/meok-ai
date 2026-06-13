@@ -1,29 +1,24 @@
-import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server';
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
-const clerkKey = process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY ?? '';
-const clerkSecretKey = process.env.CLERK_SECRET_KEY ?? '';
-const localMode = process.env.MEOK_LOCAL_MODE === 'true';
-const hasValidClerk = !localMode && clerkKey.startsWith('pk_') && !clerkKey.includes('REPLACE') && clerkSecretKey.startsWith('sk_') && !clerkSecretKey.includes('REPLACE') && clerkSecretKey.length > 15;
+// IMPORTANT: clerkMiddleware is imported via dynamic import inside safeClerkDispatch.
+// A static `import { clerkMiddleware } from '@clerk/nextjs/server'` at the top
+// causes the EDGE middleware to fail at module-load on /api/* paths because
+// the Clerk edge SDK module can throw on initialization when the runtime
+// can't reach Clerk (kid-mismatch, no JWKS, runtime unsupported). Even with
+// the runtime itself never calling the imported function, the import-time
+// evaluation is enough to 500 every /api/* request. The original middleware
+// file had this import; fixing by isolating it behind a dynamic import.
 
-const isProtectedRoute = createRouteMatcher([
-  '/dashboard(.*)',
-  '/chat(.*)',
-  '/settings(.*)',
-]);
-
-// ── Global API rate limiter (IP-based, 60 req/min) ──────────────────────
 const apiRateMap = new Map<string, { count: number; reset: number }>();
-const API_RATE_LIMIT = 120; // requests per window
-const API_RATE_WINDOW = 60_000; // 1 minute
+const API_RATE_LIMIT = 120;
+const API_RATE_WINDOW = 60_000;
 
 function checkApiRate(ip: string): boolean {
   const now = Date.now();
   const entry = apiRateMap.get(ip);
   if (!entry || now > entry.reset) {
     apiRateMap.set(ip, { count: 1, reset: now + API_RATE_WINDOW });
-    // Periodic cleanup: evict expired entries to prevent memory leak
     if (apiRateMap.size > 10_000) {
       for (const [key, val] of apiRateMap) {
         if (now > val.reset) apiRateMap.delete(key);
@@ -35,11 +30,11 @@ function checkApiRate(ip: string): boolean {
   return entry.count <= API_RATE_LIMIT;
 }
 
-// When Clerk is not configured, allow all routes (dev mode) with rate limiting
-function passthroughMiddleware(req: NextRequest) {
-  // Apply rate limiting to API routes
+function passthroughMiddleware(req: NextRequest): Response {
   if (req.nextUrl.pathname.startsWith('/api/')) {
-    const ip = req.headers.get('x-forwarded-for')?.split(',')[0] ?? req.headers.get('x-real-ip') ?? '127.0.0.1';
+    const ip = req.headers.get('x-forwarded-for')?.split(',')[0]
+      ?? req.headers.get('x-real-ip')
+      ?? '127.0.0.1';
     if (!checkApiRate(ip)) {
       return NextResponse.json({ error: 'Rate limit exceeded' }, { status: 429 });
     }
@@ -47,60 +42,74 @@ function passthroughMiddleware(req: NextRequest) {
   return NextResponse.next();
 }
 
-// Clerk middleware wrapped with rate limiting on API routes.
-// The Clerk handshake can throw on stale session cookies (kid mismatch) when
-// a Clerk instance migration happened — e.g. dev → live key switch, or a
-// different Clerk instance than the one that minted the cookie. We catch
-// that and fall through to passthrough so non-stale users still get auth
-// and stale-cookie users degrade gracefully to unauthenticated (matching
-// the "no __session cookie" path).
-const clerkWithRateLimit = clerkMiddleware(async (auth, req) => {
-  // Apply rate limiting to API routes even when Clerk is active
+// Dynamic Clerk import — only loaded when we actually need to run Clerk
+// middleware for protected routes. /api/* never triggers this import.
+let _clerkModulePromise: Promise<typeof import('@clerk/nextjs/server')> | null = null;
+async function getClerkModule() {
+  if (!_clerkModulePromise) {
+    _clerkModulePromise = import('@clerk/nextjs/server');
+  }
+  return _clerkModulePromise;
+}
+
+async function clerkWithRateLimit(req: NextRequest, event: unknown): Promise<Response> {
+  const { clerkMiddleware, createRouteMatcher } = await getClerkModule();
+
   if (req.nextUrl.pathname.startsWith('/api/')) {
-    const ip = req.headers.get('x-forwarded-for')?.split(',')[0] ?? req.headers.get('x-real-ip') ?? '127.0.0.1';
+    const ip = req.headers.get('x-forwarded-for')?.split(',')[0]
+      ?? req.headers.get('x-real-ip')
+      ?? '127.0.0.1';
     if (!checkApiRate(ip)) {
       return NextResponse.json({ error: 'Rate limit exceeded' }, { status: 429 });
     }
   }
-  if (isProtectedRoute(req)) {
-    await auth.protect();
-  }
-});
 
-// Wrapped dispatcher: on Clerk kid-mismatch / handshake errors, drop to
-// passthrough (no auth) instead of 500. Stale cookies then expire naturally.
-// Must be async + use await to catch async throws from clerkMiddleware.
-async function safeClerkDispatch(req: NextRequest, event: unknown): Promise<Response> {
-  try {
-    return await (clerkWithRateLimit as unknown as (r: NextRequest, e: unknown) => Promise<Response>)(req, event);
-  } catch (err) {
-    if (process.env.NODE_ENV !== 'production') {
-      console.error('[middleware] Clerk handshake failed, falling through:', err);
-    }
+  const isProtectedRoute = createRouteMatcher([
+    '/dashboard(.*)',
+    '/chat(.*)',
+    '/settings(.*)',
+  ]);
+
+  // Build the Clerk middleware on demand
+  const clerkKey = process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY ?? '';
+  const clerkSecretKey = process.env.CLERK_SECRET_KEY ?? '';
+  const hasValidClerk = clerkKey.startsWith('pk_') && !clerkKey.includes('REPLACE')
+    && clerkSecretKey.startsWith('sk_') && !clerkSecretKey.includes('REPLACE')
+    && clerkSecretKey.length > 15;
+
+  if (!hasValidClerk) {
     return passthroughMiddleware(req);
   }
+
+  // Call clerkMiddleware and run it
+  const handler = clerkMiddleware(async (auth: any) => {
+    if (isProtectedRoute(req)) {
+      await auth.protect();
+    }
+  });
+
+  return await (handler as unknown as (r: NextRequest, e: unknown) => Promise<Response>)(req, event);
 }
 
-// Public, agent-facing routes that MUST be reachable by non-browser clients (no Clerk
-// handshake). Clerk's edge-middleware can throw on stale session cookies (kid-mismatch
-// during instance migration) or in environments where Clerk auth() is unsupported
-// (e.g. when the runtime can't reach Clerk's API). We treat ALL /api/* as
-// passthrough — the route handler itself does Clerk auth (via getAuthUserId()
-// which has a local-mode bypass and returns null on failure). This is the same
-// pattern used by /api/a2a and /api/health (both edge-runtime, no Clerk).
-function guardedMiddleware(req: NextRequest): Response {
-  return passthroughMiddleware(req);
-}
-
-export default async function middleware(req: NextRequest, _event: unknown) {
-  // Agent/AEO discovery files must be world-readable — never auth-gated.
+export default async function middleware(req: NextRequest, event: unknown) {
+  // /api/* and .well-known never load Clerk. Auth happens in route handlers
+  // via getAuthUserId() in api-auth.ts which has its own try/catch and
+  // MEOK_LOCAL_MODE bypass.
   if (req.nextUrl.pathname.startsWith('/.well-known')) {
     return passthroughMiddleware(req);
   }
-  // All other routes (including /api/*) go through passthrough. Clerk auth
-  // happens in the route handler via getAuthUserId() which is the supported
-  // pattern for Node-runtime API routes.
-  return guardedMiddleware(req);
+  if (req.nextUrl.pathname.startsWith('/api/')) {
+    return passthroughMiddleware(req);
+  }
+  // UI routes: dynamically load Clerk only when needed
+  try {
+    return await clerkWithRateLimit(req, event);
+  } catch (err) {
+    if (process.env.NODE_ENV !== 'production') {
+      console.error('[middleware] Clerk path failed, falling through:', err);
+    }
+    return passthroughMiddleware(req);
+  }
 }
 
 export const config = {
