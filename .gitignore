@@ -14,3 +14,8 @@ venv/
 model/
 node_modules/
 .completion_survival_state.json
+
+# Local dev artifacts
+simulation_venv/
+ui/registry-cron.log
+*.log
