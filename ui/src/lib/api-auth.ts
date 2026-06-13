@@ -9,30 +9,57 @@
  *   if (error) return error; // auto-returns 401 or 429
  */
 
-import { auth } from '@clerk/nextjs/server';
 import { NextResponse } from 'next/server';
 import { checkRateLimit, type RateLimitTier } from './rate-limit';
-import { getUserById } from './db/user';
+import type { getUserById as GetUserByIdType } from './db/user';
 
 const _clerkKey = process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY ?? '';
 const _localMode = process.env.MEOK_LOCAL_MODE === 'true';
 const _hasClerk = !_localMode && _clerkKey.startsWith('pk_') && !_clerkKey.includes('REPLACE');
 
+// Clerk is dynamically imported ONLY when actually needed. Static import
+// causes module-load failures on Vercel's serverless runtime (the @clerk/nextjs
+// edge bundle can fail to initialize due to JWKS, kid-mismatch, or runtime
+// constraints — 500 with empty message). The dynamic import is cached so
+// we only pay the cost once per process.
+type ClerkAuth = () => Promise<{ userId: string | null }>;
+let _clerkAuthPromise: Promise<ClerkAuth | null> | null = null;
+
+async function loadClerkAuth(): Promise<ClerkAuth | null> {
+  if (!_hasClerk) return null;
+  if (!_clerkAuthPromise) {
+    _clerkAuthPromise = (async () => {
+      try {
+        const mod = await import('@clerk/nextjs/server');
+        return mod.auth as ClerkAuth;
+      } catch (err) {
+        if (process.env.NODE_ENV !== 'production') {
+          console.warn('[api-auth] Failed to load Clerk auth:', err);
+        }
+        return null;
+      }
+    })();
+  }
+  return _clerkAuthPromise;
+}
+
 /**
  * Get the authenticated user ID, with local mode bypass.
  * Use this instead of `auth()` directly in API routes.
  *
- * Wrapped in try/catch so any Clerk runtime failure (kid-mismatch,
- * network, missing JWKS) degrades to "no user" rather than 500ing the
- * whole API. Routes that require auth should use `requireAuth` which
- * returns a 401 in that case — but unauthenticated endpoints can just
- * check for null.
+ * Three layers of safety:
+ * 1. MEOK_LOCAL_MODE=true → return local_sovereign_user, never touch Clerk
+ * 2. _hasClerk false (no live key) → return local_sovereign_user
+ * 3. Dynamic import fails → return null (treat as unauthenticated)
+ * 4. auth() throws → catch + return null
  */
 export async function getAuthUserId(): Promise<string | null> {
-  if (!_hasClerk) return 'local_sovereign_user';
+  if (_localMode || !_hasClerk) return 'local_sovereign_user';
   try {
-    const { userId } = await auth();
-    return userId;
+    const auth = await loadClerkAuth();
+    if (!auth) return null;
+    const result = await auth();
+    return result.userId;
   } catch (err) {
     if (process.env.NODE_ENV !== 'production') {
       console.warn('[api-auth] Clerk auth() failed, treating as unauthenticated:', err);
@@ -62,20 +89,7 @@ export interface AuthError {
 export async function requireAuth(
   opts: { skipRateLimit?: boolean; tier?: RateLimitTier } = {},
 ): Promise<AuthResult | AuthError> {
-  let userId: string | null = null;
-
-  // Dev/local bypass: when MEOK_LOCAL_MODE=true or Clerk keys not configured
-  const clerkKey = process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY ?? '';
-  const localMode = process.env.MEOK_LOCAL_MODE === 'true';
-  const hasClerk = !localMode && clerkKey.startsWith('pk_') && !clerkKey.includes('REPLACE');
-
-  if (hasClerk) {
-    const authResult = await auth();
-    userId = authResult.userId;
-  } else {
-    // Local dev mode — no Clerk, use sovereign local user
-    userId = 'local_sovereign_user';
-  }
+  const userId = await getAuthUserId();
 
   if (!userId) {
     return {
@@ -88,32 +102,26 @@ export async function requireAuth(
     let tier: RateLimitTier = opts.tier ?? 'explorer';
     if (!opts.tier) {
       try {
-        const user = await getUserById(userId);
+        // Dynamic import to avoid loading DB module when not needed
+        const dbModule = await import('./db/user');
+        const user = await (dbModule.getUserById as typeof GetUserByIdType)(userId);
         if (user?.tier === 'sovereign' || user?.tier === 'family') {
           tier = user.tier as RateLimitTier;
         }
       } catch {
-        // Non-fatal: fall back to explorer tier limits
+        // ignore — fall back to explorer tier
       }
     }
 
-    const result = checkRateLimit(userId, tier);
-    if (!result.allowed) {
+    const rateLimitResult = await checkRateLimit(userId, tier);
+    if (!rateLimitResult.allowed) {
       return {
         error: NextResponse.json(
-          { error: 'Rate limit exceeded', resetAt: result.resetAt },
-          {
-            status: 429,
-            headers: {
-              'X-RateLimit-Remaining': '0',
-              'X-RateLimit-Reset': String(result.resetAt),
-            },
-          },
+          { error: 'Rate limit exceeded', reset_at: rateLimitResult.reset_at },
+          { status: 429 },
         ),
       };
     }
-
-    return { userId, tier };
   }
 
   return { userId, tier: opts.tier ?? 'explorer' };
