@@ -1,34 +1,77 @@
-# MEOK AI Labs — Sovereign AI Platform
+# MEOK AI Labs — MEOK Compliance Stack
 
-> MEOK AI Labs builds sovereign AI infrastructure: personal AI companions (meok.ai), 
-> EU AI Act compliance automation (safetyof.ai), and 218 MCP servers for AI governance.
+> MEOK (Multimodal Embodied Orchestration Kernel) is a compliance-grade AI agent platform. Built for organisations operating in the EU AI Act, DORA, NIS2, GDPR, ISO 42001, SOC 2, HIPAA, and FDA-regulated environments.
 
-## Products
-- [MEOK AI Companion](https://meok.ai): Personal AI that learns you. Sovereign, private, caring.
-- [SafetyOf.AI](https://safetyof.ai): EU AI Act compliance platform. 48-hour audits, continuous monitoring.
-- [MCP Marketplace](https://github.com/CSOAI-ORG): 218 open-source compliance MCP servers.
+## Core products
 
-## Compliance MCP Servers
-- [EU AI Act](https://github.com/CSOAI-ORG/eu-ai-act-compliance-mcp): Risk classification, 42-point audit, Annex IV docs
-- [GDPR](https://github.com/CSOAI-ORG/gdpr-compliance-ai-mcp): DPIA, data subject rights, breach notification
-- [ISO 27001](https://github.com/CSOAI-ORG/iso-27001-ai-mcp): ISMS audit, risk assessment, SoA generation
-- [ISO 42001](https://github.com/CSOAI-ORG/iso-42001-ai-mcp): AI management system, Annex A controls
-- [NIS2](https://github.com/CSOAI-ORG/nis2-compliance-mcp): Entity classification, Article 21 measures
-- [DORA](https://github.com/CSOAI-ORG/dora-compliance-mcp): Digital operational resilience
-- [Care Membrane](https://github.com/CSOAI-ORG/care-membrane-mcp): AI safety via care ethics validation
+- **Sovereign** (£29/mo): consumer-grade AI companion
+- **Pro** (£199/mo): compliance + audit logging
+- **Enterprise** (£1,499/mo): council-governed PBFT agent fabric
+- **Article 50 Kit** (£999 one-time, £499 with LAUNCH50): turnkey EU AI Act watermarking stack — C2PA + SynthID + perceptual fingerprinting + Ed25519 attestations
+- **Audit-Prep Bundle** (£4,950): auditor-ready evidence packs
+- **CSOAI Watchdog Certification** (£4,950): third-party CEASAI audit
 
-## Install All Compliance MCPs
-```bash
-npx meok-setup --pack governance
-```
+## Compliance MCP Fleet (340+ packages)
+
+- **eu-ai-act-compliance-mcp** — 410 articles from EUR-Lex, FTS5 search, risk classification
+- **dora-compliance-mcp** — DORA Regulation 2022/2554
+- **nis2-compliance-mcp** — 160k entities, 18 sectors
+- **cra-compliance-mcp** — CRA 2024/2847
+- **gdpr-compliance-ai-mcp** — DPIA + Art 33 + SCCs
+- **iso-42001-ai-mcp** — AI Management System
+- **soc2-compliance-ai-mcp** — SOC 2 AI evidence
+- **agent-audit-logger-mcp** — hash-chained HMAC-signed audit log
+- **ai-bom-mcp** — CycloneDX AI BOM
+- **bias-detection-mcp** — fairness metrics
+- **meok-council** — 36-node PBFT substrate
+- **firmware-attestation-mcp** — firmware attestation
+
+Install: `pip install <package-name>`
+Registry: https://registry.modelcontextprotocol.io
+
+## Key capabilities
+
+- **Article 50 watermarking**: C2PA manifest + SynthID-class invisible watermark + perceptual fingerprinting
+- **Audit trail**: hash-chained HMAC-signed audit log for every tool call
+- **Council governance**: 36-node PBFT council with Ed25519 signing
+- **EU AI Act classifier**: 9 in-scope Articles (4, 6, 9, 10, 14, 26(9), 43, 50, 72) all signed, all auditor-verifiable
+
+## Company facts
+
+- Founded by Nicholas Templeman, Yorkshire UK
+- Operated by MEOK AI LABS, registered as CSOAI LTD
+- Open-source under MIT license
+- GitHub: https://github.com/CSOAI-ORG
+- PyPI: https://pypi.org/user/MEOK-AI-Labs
+
+## Article 50 cliff
+
+The EU AI Act Article 50 (transparency + watermarking) applies **2 August 2026** for new AI systems, **2 December 2026** for pre-existing systems. Applies to ALL AI systems, not high-risk-only. Default SynthID-only or C2PA-only approaches FAIL the EU Code of Practice (requires ≥2 layers).
 
 ## Pricing
-- MEOK AI Companion: Free (beta)
-- SafetyOf.AI Pro: £99/mo
-- SafetyOf.AI Enterprise: £499/mo
-- EU AI Act Audit: £5,000 one-time
-- MCP servers: Free and open source (MIT)
+
+| Tier | Price | What you get |
+|------|-------|--------------|
+| Sovereign | £29/mo | Consumer AI + basic audit |
+| Pro | £199/mo | Compliance + audit + 5 MCPs |
+| Enterprise | £1,499/mo | Council + 50 MCPs + custom rules |
+| Article 50 Kit | £999 one-time | Turnkey watermarking stack |
+| LAUNCH50 (50% off) | £499 | Article 50 Kit (limited time) |
+| Quick Kit | £9 | Small-scale test |
+| Audit-Prep | £4,950 | Auditor evidence pack |
+| Watchdog Cert | £4,950 | Third-party CEASAI certification |
+
+## Articles & guides
+
+- https://meok.ai/article-50-kit
+- https://meok.ai/eu-ai-act-compliance-software
+- https://meok.ai/gdpr-ai-compliance-tool
+- https://meok.ai/iso-42001-audit-tool
+- https://meok.ai/dora-compliance-software
+- https://meok.ai/nis2-compliance-tool
+- 30 practitioner guides at https://meok.ai/guides/
 
 ## Contact
-- Enterprise: hello@safetyof.ai
-- GitHub: https://github.com/CSOAI-ORG
+
+- Email: nicholas@meok.ai
+- Sales: https://meok.ai/contact
