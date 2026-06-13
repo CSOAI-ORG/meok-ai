@@ -1,4 +1,15 @@
-"""FastAPI auth dependencies for injection into routes."""
+"""FastAPI auth dependencies for injection into routes.
+
+Auth precedence (top wins):
+  1. MEOK_DEV_BEARER env var match on Authorization: Bearer <token>
+     (substrate test bearer for local SOV3/bridge/test work — explicit, opt-in)
+  2. JWT from Authorization: Bearer header
+  3. X-API-Key header
+  4. settings.auth.required=False → default tenant
+  5. else 401
+"""
+
+import os
 
 from fastapi import Depends, HTTPException, Request, status
 
@@ -9,6 +20,11 @@ from meok.config.settings import get_settings
 
 # Default payload when auth is disabled (dev mode)
 _DEFAULT_PAYLOAD = TokenPayload(sub="default", tenant_id="default", exp=0)
+
+# Dev shortcut: an explicit Bearer token set via env, used for substrate test
+# harnesses (SOV3 bridge, automated council tests, local meok-mcp clients).
+# NOT for production: dev/test/staging only. Audit log will mark sub="dev-bearer".
+_DEV_BEARER_PAYLOAD = TokenPayload(sub="dev-bearer", tenant_id="dev", exp=0)
 
 # Module-level singleton — reused across requests
 _auth_repo = None
@@ -30,8 +46,16 @@ async def get_current_user(request: Request) -> TokenPayload:
     """
     settings = get_settings()
 
-    # Try JWT from Authorization header
+    # Dev shortcut: MEOK_DEV_BEARER env var (explicit opt-in, not silent).
+    # If the bearer matches the env-set token, return a marked dev payload.
+    # Substrate test harnesses (SOV3 bridge, local meok-mcp) set this env.
     auth_header = request.headers.get("authorization", "")
+    dev_bearer = os.environ.get("MEOK_DEV_BEARER", "")
+    if dev_bearer and auth_header.startswith("Bearer "):
+        if auth_header[7:] == dev_bearer:
+            return _DEV_BEARER_PAYLOAD
+
+    # Try JWT from Authorization header
     if auth_header.startswith("Bearer "):
         token = auth_header[7:]
         try:

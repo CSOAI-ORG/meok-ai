@@ -1,0 +1,36 @@
+{
+  "name": "meok.ai",
+  "description": "The customer-facing compliance portal \u2014 B2B dashboard, attestation verifier, API-key manager.",
+  "url": "https://meok.ai",
+  "provider": {
+    "organization": "CSOAI LTD (UK Companies House 16939677)",
+    "url": "https://csoai.org"
+  },
+  "version": "1.0.0",
+  "capabilities": {
+    "streaming": false,
+    "pushNotifications": false
+  },
+  "defaultInputModes": [
+    "text"
+  ],
+  "defaultOutputModes": [
+    "text"
+  ],
+  "skills": [
+    {
+      "id": "governance-check",
+      "name": "meok.ai Governance Check",
+      "description": "Verify compliance against meok.ai frameworks."
+    },
+    {
+      "id": "attestation",
+      "name": "Signed Attestation",
+      "description": "Generate HMAC-signed compliance certs for meok.ai."
+    }
+  ],
+  "endpoints": {
+    "catalogue": "https://www.proofof.ai",
+    "standards": "https://csoai.org"
+  }
+}
