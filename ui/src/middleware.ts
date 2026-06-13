@@ -82,20 +82,23 @@ async function safeClerkDispatch(req: NextRequest, event: unknown): Promise<Resp
 }
 
 // Public, agent-facing routes that MUST be reachable by non-browser clients (no Clerk
-// handshake). Clerk dev keys 403 all /api/* otherwise — A2A agents aren't browsers.
-// Plain pathname check (Clerk's createRouteMatcher needs Clerk context; this doesn't).
-// Note: when Clerk is active, /api/* must go through Clerk's middleware so it can
-// surface auth state to the route handler. The Clerk handshake is wrapped in
-// safeClerkDispatch which catches stale-cookie throws and falls back to passthrough.
-const guardedMiddleware = hasValidClerk ? safeClerkDispatch : passthroughMiddleware;
+// handshake). Clerk's edge-middleware can throw on stale session cookies (kid-mismatch
+// during instance migration) or in environments where Clerk auth() is unsupported
+// (e.g. when the runtime can't reach Clerk's API). We treat ALL /api/* as
+// passthrough — the route handler itself does Clerk auth (via getAuthUserId()
+// which has a local-mode bypass and returns null on failure). This is the same
+// pattern used by /api/a2a and /api/health (both edge-runtime, no Clerk).
+const guardedMiddleware = passthroughMiddleware;
 
 export default async function middleware(req: NextRequest, event: unknown) {
   // Agent/AEO discovery files must be world-readable — never auth-gated.
   if (req.nextUrl.pathname.startsWith('/.well-known')) {
     return passthroughMiddleware(req);
   }
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  return (guardedMiddleware as any)(req, event);
+  // All other routes (including /api/*) go through passthrough. Clerk auth
+  // happens in the route handler via getAuthUserId() which is the supported
+  // pattern for Node-runtime API routes.
+  return guardedMiddleware(req, event);
 }
 
 export const config = {
