@@ -88,9 +88,11 @@ async function safeClerkDispatch(req: NextRequest, event: unknown): Promise<Resp
 // passthrough — the route handler itself does Clerk auth (via getAuthUserId()
 // which has a local-mode bypass and returns null on failure). This is the same
 // pattern used by /api/a2a and /api/health (both edge-runtime, no Clerk).
-const guardedMiddleware = passthroughMiddleware;
+function guardedMiddleware(req: NextRequest): Response {
+  return passthroughMiddleware(req);
+}
 
-export default async function middleware(req: NextRequest, event: unknown) {
+export default async function middleware(req: NextRequest, _event: unknown) {
   // Agent/AEO discovery files must be world-readable — never auth-gated.
   if (req.nextUrl.pathname.startsWith('/.well-known')) {
     return passthroughMiddleware(req);
@@ -98,7 +100,7 @@ export default async function middleware(req: NextRequest, event: unknown) {
   // All other routes (including /api/*) go through passthrough. Clerk auth
   // happens in the route handler via getAuthUserId() which is the supported
   // pattern for Node-runtime API routes.
-  return guardedMiddleware(req, event);
+  return guardedMiddleware(req);
 }
 
 export const config = {
