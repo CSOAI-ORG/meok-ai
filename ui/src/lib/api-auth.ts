@@ -21,11 +21,24 @@ const _hasClerk = !_localMode && _clerkKey.startsWith('pk_') && !_clerkKey.inclu
 /**
  * Get the authenticated user ID, with local mode bypass.
  * Use this instead of `auth()` directly in API routes.
+ *
+ * Wrapped in try/catch so any Clerk runtime failure (kid-mismatch,
+ * network, missing JWKS) degrades to "no user" rather than 500ing the
+ * whole API. Routes that require auth should use `requireAuth` which
+ * returns a 401 in that case — but unauthenticated endpoints can just
+ * check for null.
  */
 export async function getAuthUserId(): Promise<string | null> {
   if (!_hasClerk) return 'local_sovereign_user';
-  const { userId } = await auth();
-  return userId;
+  try {
+    const { userId } = await auth();
+    return userId;
+  } catch (err) {
+    if (process.env.NODE_ENV !== 'production') {
+      console.warn('[api-auth] Clerk auth() failed, treating as unauthenticated:', err);
+    }
+    return null;
+  }
 }
 
 export interface AuthResult {
