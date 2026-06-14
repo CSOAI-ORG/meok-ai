@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Verify — MEOK AI Labs | HMAC + Ed25519 attestation verifier</title>
+<meta name="description" content="MEOK attestation verifier. POST a cert_id, get back HMAC-SHA256 + Ed25519 signature, and verify offline with the public key at meok.ai/publickey.">
+<link rel="canonical" href="https://meok.ai/verify">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Verify — MEOK AI Labs attestation verifier">
+<meta property="og:description" content="HMAC + Ed25519 attestation verification. Any auditor can curl and confirm.">
+<meta property="og:url" content="https://meok.ai/verify">
+<meta property="og:site_name" content="MEOK AI Labs">
+<style>
+:root{--bg:#0a0a14;--fg:#e8e8f0;--muted:#8a8aa0;--accent:#5b21b6;--accent-light:#7c3aed;--green:#22c55e;--border:#1a1a2e;--card:#13132a}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--fg);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",Roboto,sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased}
+.container{max-width:920px;margin:0 auto;padding:48px 24px 96px}
+.hero{text-align:center;padding:48px 0 32px;border-bottom:1px solid var(--border);margin-bottom:48px}
+.kicker{color:var(--accent-light);font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;margin:0 0 12px}
+h1{font-size:42px;font-weight:800;margin:0 0 16px;line-height:1.1;letter-spacing:-0.02em}
+.subtitle{color:var(--muted);font-size:18px;max-width:680px;margin:0 auto}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-bottom:48px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px}
+.card h3{margin:0 0 8px;font-size:16px;font-weight:700;color:var(--accent-light)}
+.card p{margin:0;font-size:14px;color:var(--muted);line-height:1.5}
+.cta{display:inline-block;background:var(--accent-light);color:#fff;padding:14px 28px;border-radius:10px;font-weight:700;text-decoration:none;font-size:15px;margin:8px 8px 8px 0}
+.cta.secondary{background:transparent;border:1px solid var(--accent-light);color:var(--accent-light)}
+pre{background:#000;border:1px solid var(--border);border-radius:8px;padding:18px;overflow:auto;font-size:13px;line-height:1.6;color:var(--green);font-family:"SF Mono",Menlo,Consolas,monospace;margin:16px 0}
+.kv{display:grid;grid-template-columns:160px 1fr;gap:8px 16px;font-size:14px;margin:16px 0}
+.kv dt{color:var(--muted);font-weight:600}
+.kv dd{margin:0;color:var(--fg);font-family:"SF Mono",Menlo,Consolas,monospace;font-size:13px;word-break:break-all}
+.section{margin-bottom:48px}
+.section h2{font-size:24px;font-weight:700;margin:0 0 16px;letter-spacing:-0.01em}
+.section p{color:var(--muted);font-size:15px;line-height:1.6;margin:0 0 12px}
+.callout{background:rgba(91,33,182,.12);border:1px solid var(--accent);border-radius:10px;padding:20px;margin:24px 0}
+.callout strong{color:var(--accent-light)}
+footer{border-top:1px solid var(--border);padding-top:32px;margin-top:48px;color:var(--muted);font-size:13px;text-align:center}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="hero">
+    <p class="kicker">MEOK Attestation Verifier</p>
+    <h1>HMAC + Ed25519. Auditable. Offline-verifiable.</h1>
+    <p class="subtitle">Verify any MEOK-issued compliance certificate with curl. No login, no SDK, no trust required. We give you the public key, the canonical message, the signature — and you decide whether to believe it.</p>
+    <div style="margin-top:24px">
+      <a class="cta" href="https://meok.ai/verify-api">Open API reference →</a>
+      <a class="cta secondary" href="https://meok.ai/publickey">Get the public key</a>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>How to verify (5 steps, 2 minutes)</h2>
+    <div class="cards">
+      <div class="card"><h3>1. Get the cert</h3><p>Every MEOK certificate has a verify_url. Example: <code style="color:var(--green)">https://meok.ai/verify?cert=MEOK-EUAIAC-MAIN</code></p></div>
+      <div class="card"><h3>2. curl the endpoint</h3><p>Returns JSON with signature, issued_at, issuer, and Ed25519 public key fingerprint.</p></div>
+      <div class="card"><h3>3. Verify Ed25519 offline</h3><p>Decode the signature with any Ed25519 lib + the public key at <a href="/publickey" style="color:var(--green)">/publickey</a>.</p></div>
+      <div class="card"><h3>4. Verify HMAC online</h3><p>POST the cert_id to /api/verify — get the HMAC-SHA256 over the canonical message, recomputed.</p></div>
+      <div class="card"><h3>5. Trust no one (including us)</h3><p>Rotation events are signed by the prior key. The full rotation history is at /publickey.</p></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Quick curl</h2>
+    <pre>curl -sS 'https://meok.ai/verify?cert=MEOK-EUAIAC-MAIN' | jq .</pre>
+    <p>Returns the canonical JSON with both signatures. Audit it with:</p>
+    <pre>curl -sS 'https://meok.ai/verify?cert=MEOK-EUAIAC-MAIN' \
+  | jq -r '.signature' | base64 -d > /tmp/sig.bin
+# Verify with any Ed25519 lib:
+python3 -c "
+import nacl.signing, base64
+vk = nacl.signing.VerifyKey(base64.b64decode('&lt;pubkey&gt;'))
+vk.verify(open('/tmp/canonical_message.txt','rb').read(),
+          open('/tmp/sig.bin','rb').read())
+print('Valid')
+"</pre>
+  </div>
+
+  <div class="section">
+    <h2>Live signed attestations</h2>
+    <p>8 frameworks. All HMAC-signed. All Ed25519-counter-signed. All auditor-verifiable.</p>
+    <dl class="kv">
+      <dt>EU AI Act</dt><dd>MEOK-EUAIAC-MAIN — Articles 4, 6, 9, 10, 14, 26(9), 43, 50, 72</dd>
+      <dt>DORA</dt><dd>MEOK-DORA-MAIN — Operational resilience, 3rd-party register</dd>
+      <dt>NIS2</dt><dd>MEOK-NIS2-MAIN — 10 governance domains, 9 member-state transpositions</dd>
+      <dt>GDPR</dt><dd>MEOK-GDPR-MAIN — DPIA + Art 35(7) checklist, FRIA bridge</dd>
+      <dt>ISO 42001</dt><dd>MEOK-ISO42001-MAIN — AIMS controls + ISO 42005 impact assessment</dd>
+      <dt>ISO 19650</dt><dd>MEOK-ISO19650-MAIN — BIM information management</dd>
+      <dt>CRA</dt><dd>MEOK-CRA-MAIN — Cyber Resilience Act Annex I + SBOM</dd>
+      <dt>SOC 2 (AI)</dt><dd>MEOK-SOC2-MAIN — Trust service criteria + AI overlay</dd>
+    </dl>
+    <div class="callout">
+      <strong>Why both HMAC AND Ed25519?</strong> HMAC is fast, online, recoverable. Ed25519 is asymmetric, offline-verifiable. The signing key never leaves MEOK. The verifying key is public. <strong>Both signatures are over the same canonical JSON.</strong> If either fails, the cert is invalid.
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Trust center</h2>
+    <p>Read the full <a href="/methodology" style="color:var(--green)">MEOK methodology</a> (what we count, what we don't, our fail rules) or jump to the <a href="/publickey" style="color:var(--green)">public key</a> to start verifying offline.</p>
+  </div>
+
+  <footer>
+    <p>MEOK AI Labs (CSOAI LTD, UK Companies House 16939677) · <a href="/charter" style="color:var(--green)">Charter</a> · <a href="/attestations" style="color:var(--green)">Attestations</a> · <a href="/methodology" style="color:var(--green)">Methodology</a> · <a href="https://github.com/CSOAI-ORG" style="color:var(--green)">Open source</a></p>
+  </footer>
+</div>
+</body>
+</html>
