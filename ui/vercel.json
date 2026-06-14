@@ -572,6 +572,14 @@
     {
       "source": "/pricing/",
       "destination": "/pricing.html"
+    },
+    {
+      "source": "/verify",
+      "destination": "/verify.html"
+    },
+    {
+      "source": "/verify/",
+      "destination": "/verify.html"
     }
   ],
   "headers": [
