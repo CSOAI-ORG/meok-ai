@@ -7,7 +7,9 @@ import type { NextConfig } from "next";
 // compatible Sentry version.
 // import { withSentryConfig } from "@sentry/nextjs";
 
-const BACKEND = process.env.MEOK_BACKEND_URL || "http://198.53.64.194:40646";
+// Trim whitespace/newlines from BACKEND env — a trailing \n in .env.production
+// was percent-encoding to %0A inside the CSP and tripping CSP parsers.
+const BACKEND = (process.env.MEOK_BACKEND_URL || "http://198.53.64.194:40646").trim().replace(/\s+/g, '');
 
 const nextConfig: NextConfig = {
   // Performance optimizations
